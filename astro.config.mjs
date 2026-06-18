@@ -9,7 +9,8 @@ const SITE = 'https://parafomo.com';
 // https://astro.build/config
 export default defineConfig({
   site: SITE,
-  trailingSlash: 'ignore',
+  // Cloudflare statik sunumu sonda '/' zorluyor; canonical/sitemap ile uyum için 'always'.
+  trailingSlash: 'always',
   integrations: [
     mdx(),
     sitemap({
