@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c1410"/>
+      <stop offset="1" stop-color="#102018"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#19c37d"/>
+      <stop offset="1" stop-color="#0e9e63"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1050" cy="80" r="320" fill="#19c37d" opacity="0.08"/>
+  <circle cx="120" cy="560" r="260" fill="#e8b84b" opacity="0.06"/>
+  <g transform="translate(90,250)">
+    <rect width="70" height="70" rx="16" fill="url(#brand)"/>
+    <path d="M24 56 V20 h16 a12 12 0 0 1 0 24 h-16" fill="none" stroke="#04130c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="31" y1="12" x2="31" y2="64" stroke="#04130c" stroke-width="6" stroke-linecap="round"/>
+    <text x="92" y="50" font-family="Georgia, serif" font-size="44" font-weight="600" fill="#e8f0ea">Para<tspan fill="#19c37d">FOMO</tspan></text>
+  </g>
+  <text x="90" y="400" font-family="Georgia, serif" font-size="76" font-weight="600" fill="#e8f0ea">Parana akıl kat.</text>
+  <text x="90" y="470" font-family="Inter, Arial, sans-serif" font-size="32" fill="#aebcb2">Yatırım · Borsa · Kripto · Kişisel Finans</text>
+  <text x="90" y="560" font-family="Inter, Arial, sans-serif" font-size="26" fill="#7d8d82">Sade, güvenilir, bağımsız Türkçe finans rehberi</text>
+</svg>

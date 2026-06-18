@@ -1,0 +1,180 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import FormatDate from '../components/FormatDate.astro';
+import Newsletter from '../components/Newsletter.astro';
+import PostCard from '../components/PostCard.astro';
+import { categorySlug, SITE } from '../site.config';
+
+const { post, headings = [], related = [] } = Astro.props;
+const { title, description, pubDate, updatedDate, category, tags, author, readingTime, cover } = post.data;
+const url = new URL(`/blog/${post.id}`, SITE.url).href;
+const tocHeadings = headings.filter((h: any) => h.depth === 2 || h.depth === 3);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={cover ?? '/og-default.svg'}
+  type="article"
+  publishedTime={pubDate.toISOString()}
+  modifiedTime={(updatedDate ?? pubDate).toISOString()}
+>
+  <div class="reading-bar" id="readingBar"></div>
+
+  <article class="post container">
+    <header class="post-header">
+      <div class="post-meta">
+        <a href={`/kategori/${categorySlug(category)}`} class="chip">{category}</a>
+        <FormatDate date={pubDate} />
+        {readingTime && <span class="muted">· {readingTime} dk okuma</span>}
+      </div>
+      <h1>{title}</h1>
+      <p class="lede soft">{description}</p>
+      <div class="byline">
+        <span class="avatar" aria-hidden="true">{author.charAt(0)}</span>
+        <span>{author}</span>
+      </div>
+    </header>
+
+    <div class="post-body-wrap">
+      {tocHeadings.length > 2 && (
+        <aside class="toc" aria-label="İçindekiler">
+          <p class="toc-title">İçindekiler</p>
+          <ul>
+            {tocHeadings.map((h: any) => (
+              <li class:list={[{ sub: h.depth === 3 }]}>
+                <a href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )}
+
+      <div class="prose post-content">
+        <slot />
+
+        {tags && tags.length > 0 && (
+          <div class="tags">
+            {tags.map((t: string) => <span class="chip chip-gold">#{t}</span>)}
+          </div>
+        )}
+
+        <div class="share">
+          <span class="muted">Paylaş:</span>
+          <a href={`https://x.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`} target="_blank" rel="noopener">X</a>
+          <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`} target="_blank" rel="noopener">LinkedIn</a>
+          <a href={`https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`} target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <Newsletter compact />
+
+    {related.length > 0 && (
+      <section class="related">
+        <h2>İlgili Yazılar</h2>
+        <div class="related-grid">
+          {related.map((p: any) => <PostCard post={p} />)}
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .reading-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--brand), var(--gold));
+    z-index: 100;
+    transition: width 0.1s linear;
+  }
+  .post { padding-top: 2.5rem; }
+  .post-header { max-width: var(--maxw-prose); margin: 0 auto 2.5rem; text-align: center; }
+  .post-meta { display: flex; align-items: center; justify-content: center; gap: 0.6rem; flex-wrap: wrap; font-size: var(--step--1); margin-bottom: 1.2rem; }
+  .post-header h1 { font-size: var(--step-3); margin-bottom: 0.6rem; }
+  .lede { font-size: var(--step-1); line-height: 1.5; max-width: 56ch; margin: 0 auto 1.4rem; }
+  .byline { display: inline-flex; align-items: center; gap: 0.6rem; font-size: var(--step--1); color: var(--text-soft); }
+  .avatar { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--brand); color: #04130c; font-weight: 700; }
+
+  .post-body-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: center;
+    gap: 2.5rem;
+    position: relative;
+  }
+  .toc {
+    display: none;
+  }
+
+  .post-content { max-width: var(--maxw-prose); margin: 0 auto; font-size: 1.12rem; }
+  .post-content :global(h2) { font-size: var(--step-2); margin-top: 2.4rem; scroll-margin-top: 90px; }
+  .post-content :global(h3) { font-size: var(--step-1); margin-top: 1.8rem; scroll-margin-top: 90px; }
+  .post-content :global(h2 a), .post-content :global(h3 a) { color: inherit; }
+  .post-content :global(ul), .post-content :global(ol) { margin-bottom: 1.2rem; }
+  .post-content :global(li) { margin-bottom: 0.4rem; }
+  .post-content :global(table) { width: 100%; border-collapse: collapse; margin: 1.6rem 0; font-size: var(--step--1); }
+  .post-content :global(th), .post-content :global(td) { border: 1px solid var(--border); padding: 0.6rem 0.8rem; text-align: left; }
+  .post-content :global(th) { background: var(--surface); font-family: var(--font-sans); }
+  .post-content :global(strong) { color: var(--text); }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2.5rem; }
+  .share { display: flex; align-items: center; gap: 0.9rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-soft); font-size: var(--step--1); }
+  .share a { font-weight: 600; }
+
+  .related { max-width: var(--maxw); margin: 3rem auto 0; }
+  .related h2 { font-size: var(--step-2); margin-bottom: 1.4rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.4rem; }
+
+  @media (min-width: 1080px) {
+    .post-body-wrap { grid-template-columns: 240px minmax(0, var(--maxw-prose)); justify-content: center; align-items: start; }
+    .toc {
+      display: block;
+      position: sticky;
+      top: 90px;
+      font-size: var(--step--1);
+    }
+    .toc-title { font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 0.8rem; }
+    .toc ul { list-style: none; padding: 0; margin: 0; border-left: 1px solid var(--border); }
+    .toc li { padding: 0; }
+    .toc li.sub a { padding-left: 1.6rem; }
+    .toc a { display: block; padding: 0.35rem 0 0.35rem 1rem; margin-left: -1px; color: var(--text-muted); border-left: 2px solid transparent; }
+    .toc a:hover, .toc a.active { color: var(--brand); border-left-color: var(--brand); }
+    .post-content { margin: 0; }
+  }
+</style>
+
+<script>
+  // Okuma ilerleme çubuğu
+  const bar = document.getElementById('readingBar');
+  const article = document.querySelector('.post-content');
+  function updateBar() {
+    if (!bar || !article) return;
+    const rect = article.getBoundingClientRect();
+    const total = rect.height - window.innerHeight;
+    const scrolled = Math.min(Math.max(-rect.top, 0), Math.max(total, 1));
+    bar.style.width = `${(scrolled / Math.max(total, 1)) * 100}%`;
+  }
+  document.addEventListener('scroll', updateBar, { passive: true });
+  updateBar();
+
+  // İçindekiler aktif başlık takibi
+  const tocLinks = Array.from(document.querySelectorAll('.toc a')) as HTMLAnchorElement[];
+  const ids = tocLinks.map((a) => a.getAttribute('href')?.slice(1)).filter(Boolean) as string[];
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          tocLinks.forEach((a) => a.classList.remove('active'));
+          const active = tocLinks.find((a) => a.getAttribute('href') === `#${e.target.id}`);
+          active?.classList.add('active');
+        }
+      });
+    },
+    { rootMargin: '-90px 0px -70% 0px' }
+  );
+  ids.forEach((id) => { const el = document.getElementById(id); if (el) observer.observe(el); });
+</script>

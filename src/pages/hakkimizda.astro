@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { SITE } from '../site.config';
+
+const values = [
+  { t: 'Bağımsızlık', d: 'Hiçbir kuruma, fona ya da projeye bağlı değiliz. Tek taraf tuttuğumuz şey okurun cebi.' },
+  { t: 'Sadelik', d: 'Finansı korkutucu olmaktan çıkarıyoruz. Jargon değil, anlaşılır ve uygulanabilir bilgi.' },
+  { t: 'Kanıt', d: 'İddialarımızı veriye dayandırırız. Hype değil, sürdürülebilir kararlar.' },
+  { t: 'Uzun vade', d: 'Zengin olma vaadi satmıyoruz. Disiplin ve zamanla büyüyen servet anlatıyoruz.' },
+];
+---
+
+<BaseLayout
+  title="Hakkımızda"
+  description="ParaFOMO neden var, neye inanıyoruz ve okurlarımıza nasıl değer katıyoruz?"
+>
+  <article class="container about prose">
+    <span class="eyebrow">Hakkımızda</span>
+    <h1>Finansal kararlarını korkuyla değil, bilgiyle ver.</h1>
+    <p class="lede soft">
+      ParaFOMO, "kaçırma korkusunun" (FOMO) en pahalı yatırım hatalarına yol açtığı bir dünyada doğdu.
+      Amacımız tam tersi: paniğin değil, sağlam bilginin yön verdiği finansal kararlar.
+    </p>
+
+    <p>
+      Türkiye'de finansal okuryazarlık hâlâ büyük bir eksik. Birçok kişi enflasyon karşısında
+      birikiminin nasıl eridiğini izliyor, doğru bilgiye ulaşmakta zorlanıyor ya da kötü tavsiyelerin
+      kurbanı oluyor. ParaFOMO bu boşluğu kapatmak için var: <strong>karmaşık finansal konuları
+      herkesin anlayıp uygulayabileceği rehberlere çeviriyoruz.</strong>
+    </p>
+
+    <h2>Neye inanıyoruz?</h2>
+    <div class="values">
+      {values.map((v) => (
+        <div class="value card">
+          <h3>{v.t}</h3>
+          <p class="soft">{v.d}</p>
+        </div>
+      ))}
+    </div>
+
+    <h2>Ne yazıyoruz?</h2>
+    <p>
+      Yatırımın temellerinden borsa ve kripto analizlerine, bütçe yönetiminden emekliliğe kadar
+      paranı ilgilendiren her konuda derinlemesine rehberler hazırlıyoruz. Her yazı tek bir soruya
+      cevap verir: <em>"Bu bilgi okurun finansal hayatını gerçekten iyileştiriyor mu?"</em>
+    </p>
+
+    <div class="cta-box card">
+      <h3>Sorun mu var, fikir mi?</h3>
+      <p class="soft">Bize <a href={`mailto:${SITE.email}`}>{SITE.email}</a> üzerinden ulaşabilirsin.</p>
+    </div>
+
+    <p class="disclaimer muted">
+      <strong>Yasal uyarı:</strong> ParaFOMO'daki tüm içerikler yalnızca bilgilendirme amaçlıdır ve
+      yatırım tavsiyesi niteliği taşımaz. Yatırım kararlarından doğan sorumluluk tamamen size aittir.
+    </p>
+  </article>
+
+  <div class="container"><Newsletter /></div>
+</BaseLayout>
+
+<style>
+  .about { padding-top: 3rem; max-width: var(--maxw-prose); }
+  .about h1 { font-size: var(--step-3); margin: 0.6rem 0 0.8rem; }
+  .about .lede { font-size: var(--step-1); line-height: 1.5; }
+  .about h2 { font-size: var(--step-2); margin-top: 2.5rem; }
+  .values { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+  .value { padding: 1.3rem; }
+  .value h3 { font-size: var(--step-1); margin: 0 0 0.4rem; color: var(--brand); }
+  .value p { margin: 0; font-size: var(--step--1); }
+  .cta-box { padding: 1.6rem; margin: 2.5rem 0; text-align: center; }
+  .cta-box h3 { margin: 0 0 0.4rem; }
+  .cta-box p { margin: 0; }
+  .disclaimer { font-size: var(--step--1); margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border-soft); }
+  @media (max-width: 600px) { .values { grid-template-columns: 1fr; } }
+</style>

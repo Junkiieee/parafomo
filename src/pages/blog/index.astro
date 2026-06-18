@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { CATEGORIES } from '../../site.config';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+---
+
+<BaseLayout
+  title="Tüm Yazılar"
+  description="ParaFOMO'nun yatırım, borsa, kripto ve kişisel finans üzerine tüm rehber ve analizleri."
+>
+  <div class="container page-head">
+    <span class="eyebrow">Blog</span>
+    <h1>Tüm Yazılar</h1>
+    <p class="soft lede">Paranı yönetmen için ihtiyacın olan her şey — tek bir arşivde.</p>
+
+    <div class="filter-bar">
+      <a href="/blog" class="filter active">Tümü</a>
+      {CATEGORIES.map((c) => (
+        <a href={`/kategori/${c.slug}`} class="filter">{c.name}</a>
+      ))}
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="post-grid">
+      {posts.map((p) => <PostCard post={p} />)}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-head { padding-top: 3rem; text-align: center; }
+  .page-head h1 { font-size: var(--step-3); margin: 0.6rem 0; }
+  .page-head .lede { font-size: var(--step-1); max-width: 50ch; margin: 0 auto 1.6rem; }
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 2.5rem; }
+  .filter {
+    font-size: var(--step--1); font-weight: 500;
+    padding: 0.45rem 0.95rem; border-radius: 999px;
+    border: 1px solid var(--border); color: var(--text-soft);
+  }
+  .filter:hover { border-color: var(--brand); color: var(--brand); }
+  .filter.active { background: var(--brand); color: #04130c; border-color: var(--brand); }
+  .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.4rem; }
+</style>

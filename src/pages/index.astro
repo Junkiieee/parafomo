@@ -1,0 +1,155 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { CATEGORIES, SITE } from '../site.config';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+const featured = posts.find((p) => p.data.featured) ?? posts[0];
+const rest = posts.filter((p) => p.id !== featured?.id).slice(0, 6);
+const postCount = posts.length;
+---
+
+<BaseLayout>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <span class="eyebrow"><span class="pulse"></span> Bağımsız finans yayını</span>
+        <h1>Parana <span class="accent">akıl</span> kat.</h1>
+        <p class="lede soft">
+          Yatırım, borsa, kripto ve kişisel finans… Karmaşık konuları sade ve uygulanabilir
+          rehberlere çeviriyoruz. Reklam yok, taraf yok — sadece paranı korumana ve
+          büyütmene yardım eden net bilgi.
+        </p>
+        <div class="hero-cta">
+          <a href="/blog" class="btn btn-primary">Yazıları Keşfet</a>
+          <a href="/hakkimizda" class="btn btn-ghost">Bizi Tanı</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>{postCount}+</strong><span class="muted">Derinlemesine rehber</span></div>
+          <div><strong>6</strong><span class="muted">Konu başlığı</span></div>
+          <div><strong>%100</strong><span class="muted">Bağımsız içerik</span></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="ticker-card">
+          <div class="tc-row"><span>BIST 100</span><span class="up">▲ 1.8%</span></div>
+          <div class="tc-row"><span>Bitcoin</span><span class="up">▲ 3.2%</span></div>
+          <div class="tc-row"><span>Gram Altın</span><span class="up">▲ 0.6%</span></div>
+          <div class="tc-row"><span>Dolar/TL</span><span class="down">▼ 0.3%</span></div>
+          <div class="tc-chart">
+            <svg viewBox="0 0 200 60" preserveAspectRatio="none">
+              <polyline points="0,48 25,40 50,44 75,28 100,32 125,18 150,22 175,10 200,6"
+                fill="none" stroke="var(--brand)" stroke-width="2.5" />
+              <polygon points="0,48 25,40 50,44 75,28 100,32 125,18 150,22 175,10 200,6 200,60 0,60"
+                fill="url(#g)" opacity="0.25" />
+              <defs>
+                <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="var(--brand)" />
+                  <stop offset="100%" stop-color="transparent" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED -->
+  {featured && (
+    <section class="container section">
+      <div class="section-head">
+        <h2>Öne Çıkan</h2>
+        <a href="/blog" class="muted-link">Tümü →</a>
+      </div>
+      <PostCard post={featured} featured />
+    </section>
+  )}
+
+  <!-- CATEGORIES -->
+  <section class="container section">
+    <div class="section-head"><h2>Konular</h2></div>
+    <div class="cat-grid">
+      {CATEGORIES.map((c) => (
+        <a href={`/kategori/${c.slug}`} class="cat-card card">
+          <h3>{c.name}</h3>
+          <p class="soft">{c.desc}</p>
+          <span class="cat-go">Keşfet →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- LATEST -->
+  {rest.length > 0 && (
+    <section class="container section">
+      <div class="section-head">
+        <h2>Son Yazılar</h2>
+        <a href="/blog" class="muted-link">Tümü →</a>
+      </div>
+      <div class="post-grid">
+        {rest.map((p) => <PostCard post={p} />)}
+      </div>
+    </section>
+  )}
+
+  <div class="container">
+    <Newsletter />
+  </div>
+</BaseLayout>
+
+<style>
+  .hero { padding: clamp(2.5rem, 6vw, 5rem) 0 2rem; position: relative; }
+  .hero-inner { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 3rem; align-items: center; }
+  .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 0 var(--brand); animation: pulse 2s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(25,195,125,0.5); } 70% { box-shadow: 0 0 0 8px rgba(25,195,125,0); } 100% { box-shadow: 0 0 0 0 rgba(25,195,125,0); } }
+  .hero-text h1 { font-size: var(--step-4); margin: 1rem 0 1rem; }
+  .accent { color: var(--brand); }
+  .hero-text .lede { font-size: var(--step-1); max-width: 52ch; line-height: 1.55; }
+  .hero-cta { display: flex; gap: 0.8rem; margin: 1.8rem 0 2rem; flex-wrap: wrap; }
+  .hero-stats { display: flex; gap: 2.2rem; flex-wrap: wrap; padding-top: 1.5rem; border-top: 1px solid var(--border-soft); }
+  .hero-stats strong { display: block; font-family: var(--font-serif); font-size: var(--step-2); color: var(--text); }
+  .hero-stats span { font-size: var(--step--1); }
+
+  .hero-visual { display: flex; justify-content: center; }
+  .ticker-card {
+    width: 100%; max-width: 360px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.4rem;
+    box-shadow: var(--shadow-soft);
+  }
+  .tc-row { display: flex; justify-content: space-between; padding: 0.65rem 0; border-bottom: 1px solid var(--border-soft); font-size: var(--step--1); }
+  .tc-row span:first-child { color: var(--text-soft); }
+  .up { color: var(--brand); font-weight: 600; }
+  .down { color: var(--danger); font-weight: 600; }
+  .tc-chart { margin-top: 1rem; }
+  .tc-chart svg { width: 100%; height: 60px; }
+
+  .section { margin-top: clamp(3rem, 7vw, 5rem); }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; }
+  .section-head h2 { font-size: var(--step-2); margin: 0; }
+  .muted-link { color: var(--text-muted); font-size: var(--step--1); font-weight: 600; }
+  .muted-link:hover { color: var(--brand); }
+
+  .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.1rem; }
+  .cat-card { padding: 1.4rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .cat-card h3 { font-size: var(--step-1); margin: 0; color: var(--text); }
+  .cat-card p { font-size: var(--step--1); margin: 0; flex: 1; }
+  .cat-go { font-size: var(--step--1); font-weight: 600; color: var(--brand); margin-top: 0.6rem; }
+
+  .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.4rem; }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { order: -1; }
+    .ticker-card { max-width: 100%; }
+  }
+</style>

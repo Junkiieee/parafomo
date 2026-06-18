@@ -1,0 +1,25 @@
+---
+/**
+ * Analytics — yalnızca ilgili ortam değişkeni tanımlıysa script eklenir.
+ * Yayına alırken hosting panelinden (Cloudflare/Netlify) ortam değişkeni gir:
+ *   PUBLIC_GA_ID            -> Google Analytics 4 (örn. G-XXXXXXX)
+ *   PUBLIC_PLAUSIBLE_DOMAIN -> Plausible (örn. parafomo.com)
+ * Cloudflare Web Analytics kullanırsan onu Cloudflare panelinden otomatik enjekte ettir.
+ */
+const GA = import.meta.env.PUBLIC_GA_ID;
+const PLAUSIBLE = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
+---
+{GA && (
+  <>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA}`}></script>
+    <script is:inline define:vars={{ GA }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', GA);
+    </script>
+  </>
+)}
+{PLAUSIBLE && (
+  <script is:inline defer data-domain={PLAUSIBLE} src="https://plausible.io/js/script.js"></script>
+)}

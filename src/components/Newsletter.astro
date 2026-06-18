@@ -1,0 +1,56 @@
+---
+// Newsletter kayıt bloğu. action yayında bir ESP (MailerLite/Buttondown) formuna bağlanacak.
+const { compact = false } = Astro.props;
+---
+<section class:list={['newsletter', { compact }]}>
+  <div class="nl-inner">
+    <div class="nl-text">
+      <span class="eyebrow">Ücretsiz Bülten</span>
+      <h2>Haftada bir, paranı büyütecek tek e-posta.</h2>
+      <p class="soft">Piyasa özeti, yeni rehberler ve uygulanabilir finans taktikleri. Spam yok, istediğin an çık.</p>
+    </div>
+    <form class="nl-form" action="#" method="post" aria-label="Bülten kayıt formu">
+      <input type="email" name="email" required placeholder="E-posta adresin" aria-label="E-posta adresi" />
+      <button type="submit" class="btn btn-primary">Abone Ol</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .newsletter {
+    margin: 4rem 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background:
+      radial-gradient(80% 140% at 100% 0%, rgba(25, 195, 125, 0.12), transparent 60%),
+      var(--bg-card);
+    padding: 2.5rem;
+  }
+  .nl-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .nl-text { max-width: 46ch; }
+  .nl-text h2 { font-size: var(--step-2); margin: 0.6rem 0 0.4rem; }
+  .nl-text p { margin: 0; }
+  .nl-form { display: flex; gap: 0.6rem; flex: 1; min-width: 280px; }
+  .nl-form input {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.75rem 1.1rem;
+    color: var(--text);
+    font-size: var(--step--1);
+    font-family: inherit;
+  }
+  .nl-form input:focus { outline: none; border-color: var(--brand); }
+  .compact { margin: 2.5rem 0; padding: 1.8rem; }
+  @media (max-width: 620px) {
+    .nl-form { flex-direction: column; }
+    .nl-form button { width: 100%; justify-content: center; }
+  }
+</style>

@@ -1,0 +1,106 @@
+---
+import { categorySlug } from '../site.config';
+import FormatDate from './FormatDate.astro';
+
+interface Props {
+  post: {
+    id: string;
+    data: {
+      title: string;
+      description: string;
+      pubDate: Date;
+      category: string;
+      readingTime?: number;
+    };
+  };
+  featured?: boolean;
+}
+const { post, featured = false } = Astro.props;
+const { title, description, pubDate, category, readingTime } = post.data;
+const href = `/blog/${post.id}`;
+---
+
+<article class:list={['post-card card', { featured }]}>
+  <a href={href} class="cover" aria-hidden="true" tabindex="-1">
+    <span class="cover-cat">{category}</span>
+  </a>
+  <div class="body">
+    <div class="meta">
+      <a href={`/kategori/${categorySlug(category)}`} class="chip">{category}</a>
+      <span class="dot">·</span>
+      <FormatDate date={pubDate} />
+      {readingTime && <><span class="dot">·</span><span class="muted">{readingTime} dk</span></>}
+    </div>
+    <h3><a href={href}>{title}</a></h3>
+    <p class="soft">{description}</p>
+    <a href={href} class="read-more">Devamını oku →</a>
+  </div>
+</article>
+
+<style>
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .cover {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background:
+      radial-gradient(120% 120% at 0% 0%, rgba(25, 195, 125, 0.22), transparent 55%),
+      radial-gradient(120% 120% at 100% 100%, rgba(232, 184, 75, 0.16), transparent 55%),
+      var(--surface);
+    display: block;
+  }
+  .cover::after {
+    content: '₿ ↗ %';
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    letter-spacing: 0.3em;
+    color: rgba(232, 240, 234, 0.14);
+  }
+  .cover-cat {
+    position: absolute;
+    bottom: 0.8rem;
+    left: 0.8rem;
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--text);
+    background: color-mix(in srgb, var(--bg) 70%, transparent);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    z-index: 1;
+  }
+  .body { padding: 1.2rem 1.25rem 1.4rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .dot { color: var(--text-muted); }
+  h3 { margin: 0.2rem 0; font-size: var(--step-1); }
+  h3 a { color: var(--text); }
+  h3 a:hover { color: var(--brand); }
+  .body p { margin: 0; font-size: var(--step--1); flex: 1; }
+  .read-more { font-size: var(--step--1); font-weight: 600; margin-top: 0.4rem; }
+
+  .featured { flex-direction: row; }
+  .featured .cover { aspect-ratio: auto; width: 46%; min-height: 300px; }
+  .featured .body { padding: 2rem; justify-content: center; }
+  .featured h3 { font-size: var(--step-2); }
+  .featured .body p { font-size: var(--step-0); }
+
+  @media (max-width: 760px) {
+    .featured { flex-direction: column; }
+    .featured .cover { width: 100%; min-height: 0; aspect-ratio: 16/9; }
+    .featured .body { padding: 1.4rem; }
+  }
+</style>

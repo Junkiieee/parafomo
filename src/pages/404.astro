@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Sayfa Bulunamadı" noindex>
+  <section class="container nf">
+    <span class="code">404</span>
+    <h1>Bu sayfa portföyde yok.</h1>
+    <p class="soft">Aradığın içerik taşınmış ya da hiç var olmamış olabilir. Anasayfaya dönelim.</p>
+    <div class="nf-cta">
+      <a href="/" class="btn btn-primary">Anasayfa</a>
+      <a href="/blog" class="btn btn-ghost">Yazılara Göz At</a>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .nf { text-align: center; padding: 6rem 0; }
+  .code { font-family: var(--font-serif); font-size: clamp(4rem, 14vw, 9rem); font-weight: 600; color: var(--brand); line-height: 1; }
+  .nf h1 { font-size: var(--step-2); margin: 0.5rem 0; }
+  .nf p { max-width: 40ch; margin: 0 auto 1.6rem; }
+  .nf-cta { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+</style>
