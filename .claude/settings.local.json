@@ -9,7 +9,10 @@
       "Bash(curl -s http://127.0.0.1:4321/blog/bitcoin-nedir-nasil-alinir)",
       "Bash(kill %1)",
       "Bash(npx --yes playwright --version)",
-      "Read(//root/.cache/ms-playwright/**)"
+      "Read(//root/.cache/ms-playwright/**)",
+      "Skill(schedule)",
+      "Bash(git add *)",
+      "Bash(git -c user.name=ParaFOMO -c user.email=merhaba@parafomo.com commit -q -m 'docs: günlük içerik motoru için hazır routine konfigürasyonu *)"
     ]
   }
 }

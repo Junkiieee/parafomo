@@ -1,0 +1,33 @@
+{
+  "_not": "Bu, GitHub reposu açılınca tek seferde oluşturulacak günlük bulut routine'inin hazır konfigürasyonudur.",
+  "_aktivasyon": "Repo URL'i (ORG/REPO) gelince url alanı doldurulup RemoteTrigger create ile oluşturulacak.",
+  "name": "ParaFOMO Günlük İçerik Motoru",
+  "cron_expression": "7 8 * * *",
+  "_cron_aciklama": "Her gün 08:07 UTC (kullanıcı saat dilimi UTC ile aynı).",
+  "enabled": true,
+  "job_config": {
+    "ccr": {
+      "environment_id": "env_01WG8cwMXFHKgq7bSkFDSCH5",
+      "session_context": {
+        "model": "claude-sonnet-4-6",
+        "sources": [
+          { "git_repository": { "url": "https://github.com/ORG/REPO" } }
+        ],
+        "allowed_tools": ["Bash", "Read", "Write", "Edit", "Glob", "Grep"]
+      },
+      "events": [
+        {
+          "data": {
+            "type": "user",
+            "session_id": "",
+            "parent_tool_use_id": null,
+            "message": {
+              "role": "user",
+              "content": "Sen ParaFOMO finans blogunun günlük içerik editörüsün. Hedef: organik SEO ile günlük 1000 ziyaretçi. Bugün şu adımları sırayla yap:\n\n1) docs/content-playbook.md ve docs/growth-plan.md dosyalarını oku (kalite ve strateji standardı).\n2) docs/keywords.md'de 'Sıradaki konular' altındaki EN ÜSTTEKİ [ ] işaretli konuyu seç.\n3) O konu için playbook standardında (900-1600 kelime, H2/H3, en az bir karşılaştırma tablosu, adım listeleri, Özet bölümü, yasal not) kaliteli, özgün Türkçe SEO makalesi yaz. Hedef anahtar kelimeyi title, ilk paragraf, bir H2 ve description'da doğal kullan.\n4) Makaleyi src/content/blog/<uygun-slug>.md olarak oluştur. Frontmatter şablonu playbook'ta. pubDate bugünün tarihi olsun. Doğru category seç.\n5) src/content/blog/ altındaki mevcut yazılara bak; yeni yazıdan ilgili 2-3 eskiye markdown iç link ver (/blog/<slug>).\n6) docs/keywords.md'de seçtiğin konuyu [x] yap ve 'Yayınlananlar' listesine slug'ıyla ekle.\n7) `npm install` (gerekirse) ve `npm run build` çalıştır; build başarısızsa hatayı düzelt, tekrar dene.\n8) Değişiklikleri commit'le ve git remote varsa push'la (mesaj: 'içerik: <başlık>'). Push otomatik deploy'u tetikler.\n9) docs/daily-log.md'nin EN ÜSTÜNE bugünün girdisini ekle: yayınlanan yazının başlığı+linki, X (Twitter) için 1 thread taslağı + Instagram için 1 carousel/post metni (hashtag'lerle), ve kullanıcının bugün yapması gereken 1-2 madde (paylaşımı yayınla, ilgili toplulukta paylaş).\n\nKurallar: Yatırım tavsiyesi verme, bilgilendirme dili kullan. Mevcut bir yazının kopyasını üretme (Yayınlananlar listesini kontrol et). Tek commit'te bitir. Tüm adımları tamamladığından emin ol."
+            }
+          }
+        }
+      ]
+    }
+  }
+}
