@@ -11,7 +11,7 @@ export const SITE = {
   locale: 'tr_TR',
   lang: 'tr',
   author: 'ParaFOMO',
-  email: 'merhaba@parafomo.com',
+  email: 'info@parafomo.com',
   // Yayına alırken doğru kullanıcı adlarıyla güncelle.
   social: {
     x: 'https://x.com/parafomo',
