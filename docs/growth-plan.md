@@ -38,13 +38,13 @@ Zamanlanmış ajan her gün:
 ## 🔴 Kullanıcının (senin) yapman gerekenler
 
 ### Tek seferlik kurulum (önce bunlar)
-- [ ] **Domain** al → `parafomo.com` (veya uygun bir alternatif). Aldıktan sonra Claude'a bildir.
-- [ ] **GitHub** hesabı aç → repoyu buraya yükle (Claude push erişimi için bilgi ver).
-- [ ] **Cloudflare Pages** (veya Netlify) → repoyu bağla, build `npm run build`, output `dist`, `NODE_VERSION=22`.
-- [ ] **Domain'i hosting'e bağla** (DNS).
-- [ ] **Google Search Console** → domaini doğrula, `sitemap-index.xml` gönder.
-- [ ] **Analytics** → GA4 oluştur ve `PUBLIC_GA_ID` gir, ya da Cloudflare Web Analytics aç.
-- [ ] **Sosyal hesaplar** → X (@parafomo) ve Instagram (@parafomo) aç.
+- [x] **Domain** al → `parafomo.com` ✅ (canlı, HTTP 200)
+- [x] **GitHub** hesabı aç → repoyu yükle ✅
+- [x] **Cloudflare Pages** → repoyu bağla, build `npm run build`, output `dist`, `NODE_VERSION=22` ✅ (deploy çalışıyor)
+- [x] **Domain'i hosting'e bağla** (DNS) ✅ (parafomo.com yönleniyor)
+- [x] **Google Search Console** → domain doğrulandı + `sitemap-index.xml` gönderildi ✅
+- [x] **Analytics** → GA4 kuruldu, ölçüm kimliği `G-4KNGH3574V` koda fallback olarak gömüldü, canlıda gtag basılıyor ✅
+- [x] **Sosyal hesaplar** → X (@parafomo) + Instagram (@parafomo) açıldı ✅
 - [ ] **Bülten** → MailerLite/Buttondown (ücretsiz) hesabı aç, form linkini Claude'a ver.
 
 ### Her gün (5-10 dk, otomasyonun ürettiğini dağıt)

@@ -12,7 +12,15 @@
       "Read(//root/.cache/ms-playwright/**)",
       "Skill(schedule)",
       "Bash(git add *)",
-      "Bash(git -c user.name=ParaFOMO -c user.email=merhaba@parafomo.com commit -q -m 'docs: günlük içerik motoru için hazır routine konfigürasyonu *)"
+      "Bash(git -c user.name=ParaFOMO -c user.email=merhaba@parafomo.com commit -q -m 'docs: günlük içerik motoru için hazır routine konfigürasyonu *)",
+      "Bash(curl -s -o /dev/null -w \"HTTP:%{http_code} süre:%{time_total}s\\\\n\" \"https://parafomo.com/\")",
+      "Bash(curl -sL -o /dev/null -w \"blog HTTP:%{http_code}\\\\n\" \"https://parafomo.com/blog/\")",
+      "Bash(curl -s \"https://parafomo.com/\")",
+      "Bash(curl -s -o /dev/null -w \"SSL:%{ssl_verify_result} \\(0=geçerli\\)\\\\n\" \"https://parafomo.com/\")",
+      "Bash(git ls-remote *)",
+      "Bash(curl -s \"https://parafomo.com/blog/\")",
+      "Bash(git commit -q -m 'analytics: GA4 ölçüm kimliğini \\(G-4KNGH3574V\\) fallback olarak göm *)",
+      "Bash(git push *)"
     ]
   }
 }
