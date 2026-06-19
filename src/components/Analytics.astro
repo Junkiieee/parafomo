@@ -6,7 +6,7 @@
  *   PUBLIC_PLAUSIBLE_DOMAIN -> Plausible (örn. parafomo.com)
  * Cloudflare Web Analytics kullanırsan onu Cloudflare panelinden otomatik enjekte ettir.
  */
-const GA = import.meta.env.PUBLIC_GA_ID;
+const GA = import.meta.env.PUBLIC_GA_ID || 'G-4KNGH3574V';
 const PLAUSIBLE = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
 ---
 {GA && (
