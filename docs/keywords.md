@@ -7,7 +7,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 ## Sıradaki konular (öncelik sırasıyla)
 
 - [x] Altın mı dolar mı? Hangisi daha mantıklı? — `Ekonomi` — hedef: "altın mı dolar mı"
-- [ ] Hisse senedi nasıl seçilir? Temel analiz rehberi — `Borsa` — hedef: "hisse senedi nasıl seçilir"
+- [x] Hisse senedi nasıl seçilir? Temel analiz rehberi — `Borsa` — hedef: "hisse senedi nasıl seçilir"
 - [ ] Endeks fonu nedir, nasıl alınır? — `Yatırım` — hedef: "endeks fonu nedir"
 - [ ] Bileşik getiri nedir ve neden bu kadar güçlü? — `Yatırım` — hedef: "bileşik faiz nedir"
 - [ ] Dolar maliyet ortalaması (DCA) stratejisi nedir? — `Yatırım` — hedef: "maliyet ortalaması nedir"
@@ -47,3 +47,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] BES mantıklı mı — `bes-bireysel-emeklilik-mantikli-mi`
 - [x] Acil durum fonu — `acil-durum-fonu-nedir`
 - [x] Altın mı dolar mı — `altin-mi-dolar-mi`
+- [x] Hisse senedi nasıl seçilir? Temel analiz rehberi — `hisse-senedi-nasil-secilir`
