@@ -1,7 +1,5 @@
 ---
-import { Image } from 'astro:assets';
 import { SITE, CATEGORIES } from '../site.config';
-import wordmark from '../assets/parafomo-wordmark.png';
 const year = new Date().getFullYear();
 ---
 
@@ -9,7 +7,10 @@ const year = new Date().getFullYear();
   <div class="container footer-grid">
     <div class="footer-brand">
       <a href="/" class="brand" aria-label={`${SITE.name} anasayfa`}>
-        <Image src={wordmark} alt={SITE.name} class="brand-logo" widths={[160, 320]} sizes="160px" loading="lazy" />
+        <picture>
+          <source srcset="/parafomo-wordmark.webp" type="image/webp" />
+          <img src="/parafomo-wordmark.png" alt={SITE.name} class="brand-logo" width="737" height="120" loading="lazy" />
+        </picture>
       </a>
       <p class="soft">{SITE.tagline} Yatırım, borsa ve kişisel finansta sade ve güvenilir Türkçe rehber.</p>
       <div class="socials">
