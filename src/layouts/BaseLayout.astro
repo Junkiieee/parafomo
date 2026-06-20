@@ -18,7 +18,7 @@ interface Props {
 const {
   title,
   description = SITE.description,
-  image = '/og-default.svg',
+  image = '/og-default.png',
   type = 'website',
   publishedTime,
   modifiedTime,
@@ -42,7 +42,7 @@ const jsonLd = {
   publisher: {
     '@type': 'Organization',
     name: SITE.name,
-    logo: { '@type': 'ImageObject', url: new URL('/favicon.svg', SITE.url).href },
+    logo: { '@type': 'ImageObject', url: new URL('/favicon-512.png', SITE.url).href, width: 512, height: 512 },
   },
   ...(publishedTime && { datePublished: publishedTime }),
   ...(modifiedTime && { dateModified: modifiedTime }),
@@ -69,6 +69,8 @@ const jsonLd = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     {publishedTime && <meta property="article:published_time" content={publishedTime} />}
     {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
 
