@@ -12,6 +12,7 @@ export const SITE = {
   lang: 'tr',
   author: 'ParaFOMO',
   email: 'info@parafomo.com',
+  twitter: '@parafomo',
   // Yayına alırken doğru kullanıcı adlarıyla güncelle.
   social: {
     x: 'https://x.com/parafomo',

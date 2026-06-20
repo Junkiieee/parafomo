@@ -9,6 +9,11 @@ const { post, headings = [], related = [] } = Astro.props;
 const { title, description, pubDate, updatedDate, category, tags, author, readingTime, cover } = post.data;
 const url = new URL(`/blog/${post.id}`, SITE.url).href;
 const tocHeadings = headings.filter((h: any) => h.depth === 2 || h.depth === 3);
+const breadcrumbs = [
+  { name: 'Anasayfa', url: '/' },
+  { name: category, url: `/kategori/${categorySlug(category)}` },
+  { name: title, url: `/blog/${post.id}` },
+];
 ---
 
 <BaseLayout
@@ -18,6 +23,10 @@ const tocHeadings = headings.filter((h: any) => h.depth === 2 || h.depth === 3);
   type="article"
   publishedTime={pubDate.toISOString()}
   modifiedTime={(updatedDate ?? pubDate).toISOString()}
+  author={author}
+  section={category}
+  tags={tags}
+  breadcrumbs={breadcrumbs}
 >
   <div class="reading-bar" id="readingBar"></div>
 
