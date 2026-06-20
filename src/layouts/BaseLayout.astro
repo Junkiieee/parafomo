@@ -17,6 +17,7 @@ interface Props {
   section?: string;
   tags?: string[];
   breadcrumbs?: { name: string; url: string }[];
+  faq?: { q: string; a: string }[];
 }
 
 const {
@@ -31,6 +32,7 @@ const {
   section,
   tags = [],
   breadcrumbs = [],
+  faq = [],
 } = Astro.props;
 
 const pageTitle = title ? `${title} — ${SITE.name}` : `${SITE.name} — ${SITE.tagline}`;
@@ -62,6 +64,19 @@ const jsonLd = {
   ...(publishedTime && { datePublished: publishedTime }),
   ...(modifiedTime && { dateModified: modifiedTime }),
 };
+
+const faqLd =
+  faq.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faq.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      }
+    : null;
 
 const breadcrumbLd =
   breadcrumbs.length > 0
@@ -131,6 +146,7 @@ const breadcrumbLd =
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     {breadcrumbLd && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />}
+    {faqLd && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
     <Analytics />
   </head>
   <body>

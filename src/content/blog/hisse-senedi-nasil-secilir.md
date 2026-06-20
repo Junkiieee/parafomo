@@ -6,6 +6,13 @@ category: "Borsa"
 tags: ["hisse senedi", "temel analiz", "borsa", "BIST", "yatırım"]
 readingTime: 7
 featured: false
+faq:
+  - q: "Hisse senedi seçerken hangi temel analiz oranlarına bakmalıyım?"
+    a: "En sık kullanılan oranlar F/K (Fiyat/Kazanç), PD/DD (Piyasa Değeri/Defter Değeri), özsermaye kârlılığı (ROE) ve borç/özsermaye oranıdır. Tek bir orana değil, oranların birlikte verdiği resme ve şirketin sektör ortalamasına göre konumuna bakmak gerekir."
+  - q: "Düşük F/K oranı her zaman ucuz hisse anlamına gelir mi?"
+    a: "Hayır. Düşük F/K bazen şirketin geleceğine yönelik olumsuz beklentiyi veya tek seferlik kârları yansıtabilir. F/K'yı şirketin büyüme hızı, borç durumu ve sektör ortalamasıyla birlikte değerlendirmek gerekir."
+  - q: "Temel analiz mi teknik analiz mi daha önemli?"
+    a: "İkisi farklı sorulara yanıt verir: temel analiz 'hangi şirket?' sorusuna, teknik analiz 'ne zaman?' sorusuna odaklanır. Uzun vadeli yatırımcı için temel analiz önceliklidir; alım-satım zamanlaması için teknik analiz tamamlayıcı olabilir."
 ---
 
 "Hangi hisseyi alayım?" Borsaya yeni girenlerden deneyimlilere kadar herkesin sorduğu soru bu. Ve maalesef çoğunlukla sosyal medya tavsiyesiyle ya da "ucuz görünüyor" hissiyle yanıt buluyor. **Hisse senedi nasıl seçilir?** sorusunun gerçek cevabı ise sistematik bir yöntemde yatıyor: **temel analiz.**

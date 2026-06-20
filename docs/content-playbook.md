@@ -14,6 +14,7 @@ Her makale bu standartları karşılamalı. Amaç: Google'da sıralanan **ve** o
 - **Tablo:** Mümkünse bir karşılaştırma tablosu (Google öne çıkarır, snippet alır).
 - **Listeler:** Adım adım / madde madde aksiyon.
 - **Özet bölümü:** Sonda "Özet" başlığı + 3-4 maddelik çıkarım.
+- **SSS (FAQ):** Frontmatter'daki `faq` alanına 3-5 soru-cevap ekle (hedef kelimeyle ilgili gerçek sorular). Site bunu otomatik görünür SSS bölümü + Google FAQPage yapısal verisi olarak basar → arama sonuçlarında açılır kutu şansı. Cevaplar 1-3 cümle, net.
 - **Yasal not:** Sonda "yatırım tavsiyesi değildir" uyarısı.
 
 ## SEO standartları
@@ -42,5 +43,12 @@ category: ""   # Yatırım | Borsa | Kripto | Kişisel Finans | Ekonomi | Emekli
 tags: []
 readingTime: 8
 featured: false
+faq:
+  - q: "Soru 1?"
+    a: "Kısa, net cevap (1-3 cümle)."
+  - q: "Soru 2?"
+    a: "Kısa, net cevap."
+  - q: "Soru 3?"
+    a: "Kısa, net cevap."
 ---
 ```
