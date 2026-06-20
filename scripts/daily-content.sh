@@ -57,4 +57,8 @@ else
   echo "[i] Push edilecek yeni commit yok"
 fi
 
+# 5) Telegram kanalına (@parafomo) yeni yazıyı gönder (dedup'lı — aynı yazıyı 2 kez atmaz)
+echo "[*] Telegram'a gönderiliyor"
+"$REPO/scripts/post-telegram.sh" || echo "UYARI: Telegram gönderimi başarısız (devam)"
+
 echo "[$(date -u '+%Y-%m-%d %H:%M:%S UTC')] Tamamlandı"
