@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { SITE, NAV } from '../site.config';
+import wordmark from '../assets/parafomo-wordmark.png';
 const path = Astro.url.pathname;
 const isActive = (href: string) =>
   href === '/' ? path === '/' : path.startsWith(href);
@@ -8,8 +10,7 @@ const isActive = (href: string) =>
 <header class="site-header">
   <div class="container header-inner">
     <a href="/" class="brand" aria-label={`${SITE.name} anasayfa`}>
-      <span class="brand-mark" aria-hidden="true">₿</span>
-      <span class="brand-name">Para<span class="brand-accent">FOMO</span></span>
+      <Image src={wordmark} alt={SITE.name} class="brand-logo" widths={[160, 320]} sizes="160px" loading="eager" />
     </a>
 
     <nav class="nav-desktop" aria-label="Ana menü">
@@ -56,26 +57,12 @@ const isActive = (href: string) =>
   .brand {
     display: inline-flex;
     align-items: center;
-    gap: 0.55rem;
-    color: var(--text);
-    font-family: var(--font-serif);
-    font-weight: 600;
   }
-  .brand:hover { color: var(--text); }
-  .brand-mark {
-    display: grid;
-    place-items: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 9px;
-    background: linear-gradient(135deg, var(--brand), var(--brand-deep));
-    color: #04130c;
-    font-size: 1.1rem;
-    font-weight: 700;
-    box-shadow: 0 4px 14px rgba(25, 195, 125, 0.3);
+  .brand-logo {
+    height: 30px;
+    width: auto;
+    display: block;
   }
-  .brand-name { font-size: 1.25rem; letter-spacing: -0.02em; }
-  .brand-accent { color: var(--brand); }
 
   .nav-desktop {
     display: flex;

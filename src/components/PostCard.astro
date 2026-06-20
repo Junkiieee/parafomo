@@ -47,21 +47,30 @@ const href = `/blog/${post.id}`;
     position: relative;
     aspect-ratio: 16 / 9;
     background:
-      radial-gradient(120% 120% at 0% 0%, rgba(25, 195, 125, 0.22), transparent 55%),
-      radial-gradient(120% 120% at 100% 100%, rgba(232, 184, 75, 0.16), transparent 55%),
-      var(--surface);
+      radial-gradient(120% 130% at 12% 10%, rgba(99, 212, 145, 0.30), transparent 55%),
+      radial-gradient(130% 130% at 92% 96%, rgba(30, 107, 127, 0.28), transparent 58%),
+      var(--brand-tint);
     display: block;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(30, 107, 127, 0.14) 1px, transparent 1.4px);
+    background-size: 16px 16px;
+    opacity: 0.5;
   }
   .cover::after {
-    content: '₿ ↗ %';
+    content: '↗';
     position: absolute;
     inset: 0;
     display: grid;
     place-items: center;
     font-family: var(--font-serif);
-    font-size: 2rem;
-    letter-spacing: 0.3em;
-    color: rgba(232, 240, 234, 0.14);
+    font-size: 3.4rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-shadow: 0 2px 10px rgba(30, 107, 127, 0.2);
   }
   .cover-cat {
     position: absolute;
@@ -69,11 +78,12 @@ const href = `/blog/${post.id}`;
     left: 0.8rem;
     font-size: var(--step--1);
     font-weight: 600;
-    color: var(--text);
-    background: color-mix(in srgb, var(--bg) 70%, transparent);
+    color: var(--brand-ink);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
     padding: 0.25rem 0.6rem;
     border-radius: 999px;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(255, 255, 255, 0.7);
     z-index: 1;
   }
   .body { padding: 1.2rem 1.25rem 1.4rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }

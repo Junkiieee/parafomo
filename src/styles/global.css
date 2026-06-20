@@ -1,53 +1,58 @@
 /* ===========================================================
    ParaFOMO — Global Styles
-   Editöryel, güven veren finans estetiği.
+   Aydınlık, editöryel, profesyonel finans estetiği.
+   Marka: teal→yeşil gradyan · zemin beyaz · kompakt tipografi.
    =========================================================== */
 
 :root {
-  /* Renk paleti — derin yeşil (güven/para) + sıcak altın aksan */
-  --bg: #0c1410;
-  --bg-elev: #111c16;
-  --bg-card: #14211a;
-  --surface: #18271f;
-  --border: #243a2e;
-  --border-soft: #1c2c23;
+  /* ---------- Renk paleti (light) ---------- */
+  --bg: #ffffff;
+  --bg-elev: #f6faf8;        /* footer / yükseltilmiş yüzey */
+  --bg-card: #ffffff;
+  --surface: #eef4f1;        /* hafif teal-gri yüzey */
+  --border: #e0e8e4;
+  --border-soft: #eef2f0;
 
-  --text: #e8f0ea;
-  --text-soft: #aebcb2;
-  --text-muted: #7d8d82;
+  --text: #121417;           /* Neutral — ana metin */
+  --text-soft: #485049;
+  --text-muted: #79837c;
 
-  --brand: #19c37d;        /* canlı yeşil — büyüme */
-  --brand-deep: #0e9e63;
-  --brand-soft: rgba(25, 195, 125, 0.12);
-  --gold: #e8b84b;         /* altın aksan */
-  --gold-soft: rgba(232, 184, 75, 0.12);
-  --danger: #ef5b5b;
+  /* Marka — logodan: teal-yeşil gradyan */
+  --brand: #16a085;          /* erişilebilir teal (buton zemini, vurgu) */
+  --brand-2: #2bb194;        /* Primary */
+  --brand-light: #63d491;    /* Secondary */
+  --brand-deep: #1e6b7f;     /* Tertiary — link metni, başlık aksanı */
+  --brand-ink: #0f5a4a;      /* beyaz üstünde koyu teal metin */
+  --brand-soft: rgba(43, 177, 148, 0.1);
+  --brand-tint: #e7f5f0;     /* çok açık teal dolgu */
+  --grad: linear-gradient(115deg, #1e6b7f 0%, #2bb194 55%, #63d491 100%);
+  --danger: #e2475a;
 
   --radius: 14px;
-  --radius-sm: 8px;
-  --radius-lg: 22px;
-  --maxw: 1160px;
-  --maxw-prose: 720px;
+  --radius-sm: 9px;
+  --radius-lg: 20px;
+  --maxw: 1140px;
+  --maxw-prose: 700px;
 
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 30px rgba(0, 0, 0, 0.28);
-  --shadow-soft: 0 1px 0 rgba(255, 255, 255, 0.02), 0 12px 40px rgba(0, 0, 0, 0.32);
+  --shadow-xs: 0 1px 2px rgba(18, 20, 23, 0.05);
+  --shadow: 0 1px 2px rgba(18, 20, 23, 0.04), 0 6px 20px rgba(18, 20, 23, 0.06);
+  --shadow-soft: 0 2px 8px rgba(18, 20, 23, 0.05), 0 18px 44px rgba(20, 60, 50, 0.08);
 
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-serif: 'Fraunces', 'Georgia', 'Times New Roman', serif;
 
-  --step--1: clamp(0.83rem, 0.78rem + 0.2vw, 0.9rem);
-  --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.08rem);
-  --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.4rem);
-  --step-2: clamp(1.5rem, 1.3rem + 1vw, 1.95rem);
-  --step-3: clamp(1.95rem, 1.6rem + 1.8vw, 2.8rem);
-  --step-4: clamp(2.5rem, 1.9rem + 3vw, 4rem);
+  /* ---------- Kompakt tip ölçeği (küçük puntolar) ---------- */
+  --step--1: clamp(0.78rem, 0.75rem + 0.12vw, 0.82rem);
+  --step-0: clamp(0.92rem, 0.89rem + 0.14vw, 0.97rem);
+  --step-1: clamp(1.04rem, 0.99rem + 0.24vw, 1.18rem);
+  --step-2: clamp(1.3rem, 1.16rem + 0.6vw, 1.6rem);
+  --step-3: clamp(1.6rem, 1.36rem + 1vw, 2.1rem);
+  --step-4: clamp(1.95rem, 1.55rem + 1.85vw, 2.85rem);
 }
 
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-}
+*::after { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
@@ -60,12 +65,12 @@ body {
   color: var(--text);
   font-family: var(--font-sans);
   font-size: var(--step-0);
-  line-height: 1.7;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   background-image:
-    radial-gradient(60rem 40rem at 110% -10%, rgba(25, 195, 125, 0.07), transparent 60%),
-    radial-gradient(50rem 40rem at -10% 0%, rgba(232, 184, 75, 0.05), transparent 55%);
+    radial-gradient(48rem 32rem at 100% -8%, rgba(43, 177, 148, 0.08), transparent 60%),
+    radial-gradient(40rem 30rem at -8% 4%, rgba(99, 212, 145, 0.06), transparent 55%);
   background-attachment: fixed;
   min-height: 100vh;
 }
@@ -73,59 +78,60 @@ body {
 h1, h2, h3, h4 {
   font-family: var(--font-serif);
   font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
   color: var(--text);
   margin: 0 0 0.5em;
 }
 
-p { margin: 0 0 1.1em; }
+p { margin: 0 0 1em; }
 
 a {
-  color: var(--brand);
+  color: var(--brand-deep);
   text-decoration: none;
   transition: color 0.18s ease;
 }
-a:hover { color: var(--gold); }
+a:hover { color: var(--brand-2); }
 
 img { max-width: 100%; height: auto; display: block; }
 
-ul, ol { padding-left: 1.3em; }
+ul, ol { padding-left: 1.25em; }
 
 hr {
   border: none;
   border-top: 1px solid var(--border);
-  margin: 2.5rem 0;
+  margin: 2.2rem 0;
 }
 
 code {
   font-family: 'SFMono-Regular', ui-monospace, Menlo, Consolas, monospace;
-  font-size: 0.9em;
+  font-size: 0.88em;
   background: var(--surface);
-  padding: 0.15em 0.4em;
+  padding: 0.14em 0.4em;
   border-radius: 5px;
   border: 1px solid var(--border-soft);
 }
 
 pre {
   border-radius: var(--radius);
-  padding: 1.1rem 1.2rem;
+  padding: 1.05rem 1.15rem;
   overflow-x: auto;
   border: 1px solid var(--border);
+  background: var(--bg-elev);
 }
 pre code { background: none; border: none; padding: 0; }
 
 blockquote {
-  margin: 1.6rem 0;
-  padding: 0.4rem 0 0.4rem 1.3rem;
-  border-left: 3px solid var(--gold);
+  margin: 1.5rem 0;
+  padding: 0.3rem 0 0.3rem 1.2rem;
+  border-left: 3px solid var(--brand-2);
   color: var(--text-soft);
   font-style: italic;
 }
 
 ::selection {
   background: var(--brand-soft);
-  color: var(--text);
+  color: var(--brand-ink);
 }
 
 /* ---------- Layout helpers ---------- */
@@ -136,9 +142,7 @@ blockquote {
   padding-inline: clamp(1.1rem, 4vw, 2rem);
 }
 
-.prose {
-  max-width: var(--maxw-prose);
-}
+.prose { max-width: var(--maxw-prose); }
 
 .eyebrow {
   display: inline-flex;
@@ -147,9 +151,9 @@ blockquote {
   font-family: var(--font-sans);
   font-size: var(--step--1);
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: var(--brand);
+  color: var(--brand-deep);
 }
 
 .muted { color: var(--text-muted); }
@@ -162,53 +166,55 @@ blockquote {
   gap: 0.5rem;
   font-weight: 600;
   font-size: var(--step--1);
-  padding: 0.7rem 1.25rem;
+  padding: 0.68rem 1.2rem;
   border-radius: 999px;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
   line-height: 1;
 }
 .btn:hover { transform: translateY(-1px); }
 .btn-primary {
-  background: var(--brand);
-  color: #04130c;
+  background: var(--grad);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(30, 107, 127, 0.25);
 }
-.btn-primary:hover { background: var(--brand-deep); color: #04130c; }
+.btn-primary:hover { color: #ffffff; box-shadow: 0 6px 20px rgba(30, 107, 127, 0.32); }
 .btn-ghost {
-  background: transparent;
+  background: #ffffff;
   color: var(--text);
   border-color: var(--border);
 }
-.btn-ghost:hover { border-color: var(--brand); color: var(--text); }
+.btn-ghost:hover { border-color: var(--brand-2); color: var(--brand-ink); }
 
 /* ---------- Tag / chip ---------- */
 .chip {
   display: inline-flex;
   align-items: center;
   font-size: var(--step--1);
-  font-weight: 500;
-  padding: 0.28rem 0.7rem;
+  font-weight: 600;
+  padding: 0.26rem 0.66rem;
   border-radius: 999px;
-  background: var(--brand-soft);
-  color: var(--brand);
-  border: 1px solid rgba(25, 195, 125, 0.18);
+  background: var(--brand-tint);
+  color: var(--brand-ink);
+  border: 1px solid rgba(43, 177, 148, 0.2);
 }
 .chip-gold {
-  background: var(--gold-soft);
-  color: var(--gold);
-  border-color: rgba(232, 184, 75, 0.2);
+  background: var(--surface);
+  color: var(--text-soft);
+  border-color: var(--border);
 }
 
 /* ---------- Cards ---------- */
 .card {
   background: var(--bg-card);
-  border: 1px solid var(--border-soft);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
+  box-shadow: var(--shadow-xs);
   transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 .card:hover {
-  border-color: var(--border);
+  border-color: rgba(43, 177, 148, 0.45);
   transform: translateY(-3px);
   box-shadow: var(--shadow-soft);
 }

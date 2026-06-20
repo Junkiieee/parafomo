@@ -1,14 +1,15 @@
 ---
+import { Image } from 'astro:assets';
 import { SITE, CATEGORIES } from '../site.config';
+import wordmark from '../assets/parafomo-wordmark.png';
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <a href="/" class="brand">
-        <span class="brand-mark" aria-hidden="true">₿</span>
-        <span class="brand-name">Para<span class="brand-accent">FOMO</span></span>
+      <a href="/" class="brand" aria-label={`${SITE.name} anasayfa`}>
+        <Image src={wordmark} alt={SITE.name} class="brand-logo" widths={[160, 320]} sizes="160px" loading="lazy" />
       </a>
       <p class="soft">{SITE.tagline} Yatırım, borsa ve kişisel finansta sade ve güvenilir Türkçe rehber.</p>
       <div class="socials">
@@ -55,10 +56,8 @@ const year = new Date().getFullYear();
     gap: 2.5rem;
     padding-bottom: 2.5rem;
   }
-  .footer-brand .brand { display: inline-flex; align-items: center; gap: 0.55rem; color: var(--text); font-family: var(--font-serif); font-weight: 600; margin-bottom: 0.8rem; }
-  .brand-mark { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; background: linear-gradient(135deg, var(--brand), var(--brand-deep)); color: #04130c; font-weight: 700; }
-  .brand-name { font-size: 1.2rem; }
-  .brand-accent { color: var(--brand); }
+  .footer-brand .brand { display: inline-flex; align-items: center; margin-bottom: 0.9rem; }
+  .brand-logo { height: 28px; width: auto; display: block; }
   .footer-brand p { max-width: 34ch; font-size: var(--step--1); }
 
   .socials { display: flex; gap: 0.5rem; margin-top: 1rem; }
