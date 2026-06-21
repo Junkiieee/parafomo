@@ -1,0 +1,105 @@
+{
+  "updated": "2026-06-20",
+  "fetch_ok": true,
+  "events": [
+    {
+      "date": "2026-06-17",
+      "time": "6:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "CPI y/y",
+      "source": "forexfactory",
+      "hook": "ABD enflasyonu — dolar yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-06-17",
+      "time": "6:00pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Federal Funds Rate",
+      "source": "forexfactory",
+      "hook": "Fed faiz kararı — 'Fed faizi TL ve borsayı nasıl etkiler' explainer'ı."
+    },
+    {
+      "date": "2026-06-17",
+      "time": "6:00pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "FOMC Economic Projections",
+      "source": "forexfactory",
+      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
+    },
+    {
+      "date": "2026-06-17",
+      "time": "6:00pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "FOMC Statement",
+      "source": "forexfactory",
+      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
+    },
+    {
+      "date": "2026-06-17",
+      "time": "6:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "FOMC Press Conference",
+      "source": "forexfactory",
+      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
+    },
+    {
+      "date": "2026-06-18",
+      "time": "11:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "Monetary Policy Summary",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-06-18",
+      "time": "11:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "MPC Official Bank Rate Votes",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-06-18",
+      "time": "11:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "Official Bank Rate",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-06-18",
+      "time": "6:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "Claimant Count Change",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-07-03",
+      "time": "10:00",
+      "region": "TR",
+      "impact": "High",
+      "title": "TÜİK enflasyon (TÜFE) verisi",
+      "source": "tuik-rule",
+      "hook": "Enflasyon verisi öncesi 'enflasyon verisi nasıl okunur / paranı nasıl korursun' explainer'ı."
+    },
+    {
+      "date": "2026-07-23",
+      "region": "TR",
+      "impact": "High",
+      "title": "TCMB faiz kararı (PPK)",
+      "hook": "Faiz kararı kredi, mevduat, döviz ve borsayı doğrudan etkiler — karar öncesi 'faiz kararı paranı nasıl etkiler' explainer'ı yaz.",
+      "time": "",
+      "source": "tcmb"
+    }
+  ]
+}

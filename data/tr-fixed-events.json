@@ -1,0 +1,14 @@
+{
+  "_aciklama": "Türkiye'ye özgü, önceden açıklanan ekonomik olaylar. TCMB resmi PPK takviminden alınmıştır (tcmb.gov.tr). Yeni yıl takvimi yayınlanınca güncelle. TÜİK enflasyon verisi scriptte kural ile (her ayın ~3'ü) otomatik üretilir.",
+  "_kaynak": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Temel+Faaliyetler/Para+Politikasi/PPK/",
+  "events": [
+    { "date": "2026-07-23", "region": "TR", "impact": "High", "title": "TCMB faiz kararı (PPK)", "hook": "Faiz kararı kredi, mevduat, döviz ve borsayı doğrudan etkiler — karar öncesi 'faiz kararı paranı nasıl etkiler' explainer'ı yaz." },
+    { "date": "2026-07-30", "region": "TR", "impact": "Medium", "title": "TCMB PPK toplantı özeti", "hook": "Kararın gerekçesini sade dille yorumla." },
+    { "date": "2026-09-10", "region": "TR", "impact": "High", "title": "TCMB faiz kararı (PPK)", "hook": "Faiz kararı explainer'ı." },
+    { "date": "2026-09-17", "region": "TR", "impact": "Medium", "title": "TCMB PPK toplantı özeti", "hook": "Karar gerekçesi yorumu." },
+    { "date": "2026-10-22", "region": "TR", "impact": "High", "title": "TCMB faiz kararı (PPK)", "hook": "Faiz kararı explainer'ı." },
+    { "date": "2026-10-30", "region": "TR", "impact": "Medium", "title": "TCMB PPK toplantı özeti", "hook": "Karar gerekçesi yorumu." },
+    { "date": "2026-12-10", "region": "TR", "impact": "High", "title": "TCMB faiz kararı (PPK)", "hook": "Faiz kararı explainer'ı." },
+    { "date": "2026-12-17", "region": "TR", "impact": "Medium", "title": "TCMB PPK toplantı özeti", "hook": "Karar gerekçesi yorumu." }
+  ]
+}

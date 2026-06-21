@@ -28,6 +28,10 @@ cd "$REPO" || { echo "HATA: repo dizinine girilemedi"; exit 1; }
 echo "[*] git pull --rebase"
 git pull --rebase --autostash origin main || echo "UYARI: pull başarısız, devam ediliyor"
 
+# 1b) Ekonomik takvimi güncelle (tek dış sorgu; içerik seçimi bunu okuyabilir)
+echo "[*] Ekonomik takvim çekiliyor"
+python3 "$REPO/scripts/fetch-economic-calendar.py" 2>&1 | sed 's/^/    [takvim] /' || echo "UYARI: takvim güncellenemedi (devam)"
+
 # 2) Headless claude ile içerik üret (agent: yazıyı yazar, keywords/daily-log günceller, build eder, commit'ler)
 echo "[*] claude headless çalışıyor (içerik üretimi)..."
 PROMPT="$(cat "$PROMPT_FILE")"
