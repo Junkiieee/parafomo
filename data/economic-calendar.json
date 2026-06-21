@@ -1,96 +1,115 @@
 {
-  "updated": "2026-06-20",
+  "updated": "2026-06-21",
   "fetch_ok": true,
+  "source": "investing",
   "events": [
     {
-      "date": "2026-06-17",
-      "time": "6:00am",
-      "region": "GBP",
-      "impact": "High",
-      "title": "CPI y/y",
-      "source": "forexfactory",
-      "hook": "ABD enflasyonu — dolar yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-06-17",
-      "time": "6:00pm",
+      "date": "2026-06-25",
+      "time": "15:30",
       "region": "USD",
       "impact": "High",
-      "title": "Federal Funds Rate",
-      "source": "forexfactory",
-      "hook": "Fed faiz kararı — 'Fed faizi TL ve borsayı nasıl etkiler' explainer'ı."
+      "title": "Core PCE Price Index (MoM) (May)",
+      "source": "investing",
+      "hook": "ABD çekirdek enflasyon (PCE) — Fed'in tercih ettiği gösterge, dolar yönü."
     },
     {
-      "date": "2026-06-17",
-      "time": "6:00pm",
+      "date": "2026-06-25",
+      "time": "15:30",
       "region": "USD",
       "impact": "High",
-      "title": "FOMC Economic Projections",
-      "source": "forexfactory",
-      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
+      "title": "Core PCE Price Index (YoY) (May)",
+      "source": "investing",
+      "hook": "ABD çekirdek enflasyon (PCE) — Fed'in tercih ettiği gösterge, dolar yönü."
     },
     {
-      "date": "2026-06-17",
-      "time": "6:00pm",
+      "date": "2026-06-25",
+      "time": "15:30",
       "region": "USD",
       "impact": "High",
-      "title": "FOMC Statement",
-      "source": "forexfactory",
-      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
+      "title": "GDP (QoQ) (Q1)",
+      "source": "investing",
+      "hook": "Büyüme verisi — küresel görünüm."
     },
     {
-      "date": "2026-06-17",
-      "time": "6:30pm",
+      "date": "2026-07-01",
+      "time": "12:00",
+      "region": "EUR",
+      "impact": "High",
+      "title": "CPI (YoY) (Jun)",
+      "source": "investing",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-07-01",
+      "time": "17:00",
       "region": "USD",
       "impact": "High",
-      "title": "FOMC Press Conference",
-      "source": "forexfactory",
-      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
+      "title": "ISM Manufacturing PMI (Jun)",
+      "source": "investing",
+      "hook": "ISM/PMI — ABD ekonomik aktivitesi, risk iştahı."
     },
     {
-      "date": "2026-06-18",
-      "time": "11:00am",
-      "region": "GBP",
+      "date": "2026-07-01",
+      "time": "17:00",
+      "region": "USD",
       "impact": "High",
-      "title": "Monetary Policy Summary",
-      "source": "forexfactory",
-      "hook": ""
+      "title": "ISM Manufacturing Prices (Jun)",
+      "source": "investing",
+      "hook": "ISM/PMI — ABD ekonomik aktivitesi, risk iştahı."
     },
     {
-      "date": "2026-06-18",
-      "time": "11:00am",
-      "region": "GBP",
+      "date": "2026-07-02",
+      "time": "15:30",
+      "region": "USD",
       "impact": "High",
-      "title": "MPC Official Bank Rate Votes",
-      "source": "forexfactory",
-      "hook": ""
+      "title": "Nonfarm Payrolls (Jun)",
+      "source": "investing",
+      "hook": "ABD istihdam (NFP) — dolar ve risk iştahı."
     },
     {
-      "date": "2026-06-18",
-      "time": "11:00am",
-      "region": "GBP",
+      "date": "2026-07-02",
+      "time": "15:30",
+      "region": "USD",
       "impact": "High",
-      "title": "Official Bank Rate",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-06-18",
-      "time": "6:00am",
-      "region": "GBP",
-      "impact": "High",
-      "title": "Claimant Count Change",
-      "source": "forexfactory",
-      "hook": ""
+      "title": "Unemployment Rate (Jun)",
+      "source": "investing",
+      "hook": "İşsizlik verisi — büyüme ve faiz beklentisi."
     },
     {
       "date": "2026-07-03",
       "time": "10:00",
       "region": "TR",
       "impact": "High",
-      "title": "TÜİK enflasyon (TÜFE) verisi",
-      "source": "tuik-rule",
-      "hook": "Enflasyon verisi öncesi 'enflasyon verisi nasıl okunur / paranı nasıl korursun' explainer'ı."
+      "title": "TÜİK enflasyon (TÜFE, aylık)",
+      "source": "investing",
+      "hook": "Aylık enflasyon — sepet ve alım gücü yorumu."
+    },
+    {
+      "date": "2026-07-03",
+      "time": "10:00",
+      "region": "TR",
+      "impact": "High",
+      "title": "TÜİK enflasyon (TÜFE, yıllık)",
+      "source": "investing",
+      "hook": "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı."
+    },
+    {
+      "date": "2026-07-06",
+      "time": "17:00",
+      "region": "USD",
+      "impact": "High",
+      "title": "ISM Non-Manufacturing PMI (Jun)",
+      "source": "investing",
+      "hook": "ISM/PMI — ABD ekonomik aktivitesi, risk iştahı."
+    },
+    {
+      "date": "2026-07-06",
+      "time": "17:00",
+      "region": "USD",
+      "impact": "High",
+      "title": "ISM Non-Manufacturing Prices (Jun)",
+      "source": "investing",
+      "hook": "ISM/PMI — ABD ekonomik aktivitesi, risk iştahı."
     },
     {
       "date": "2026-07-23",
