@@ -4,6 +4,82 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-06-21
+
+**Yayınlanan yazı:** [Endeks Fonu Nedir, Nasıl Alınır? Türkiye Rehberi](/blog/endeks-fonu-nedir)
+
+---
+
+### X (Twitter) Thread Taslağı
+
+1/ "Hangi hisseyi alayım?" diye sormak zorunda değilsin.
+
+Endeks fonu tam olarak bu sorunu çözer. Nasıl? 👇
+
+2/ Endeks fonu nedir?
+
+BIST 100 gibi bir endeksi taklit eden yatırım aracı.
+Tek bir alımla 100 şirkete ortak olursun — tek şirket batsa diğerleri taşır.
+
+3/ Neden aktif yönetilen fon değil?
+
+Küresel veriler ortada:
+Aktif fonların %80'i 15 yılda kendi endeksinin gerisinde kalıyor.
+Üstelik yönetim ücreti %1,5-2,5/yıl — bileşikte bu çok büyük para.
+
+Endeks fonu: %0,1-0,3. Fark = senin kazancın.
+
+4/ Türkiye'den nasıl alınır?
+
+✅ Aracı kurum hesabı aç
+✅ BIST 100 ETF sembolünü ara
+✅ Adet gir, onayla
+✅ Her ay düzenli alım yap (DCA)
+
+TEFAS üzerinden küresel endeks fonlarına da ulaşabilirsin.
+
+5/ En önemli maliyet: yönetim ücreti.
+
+100.000 TL'de, 20 yılda:
+• %0,2 ücretle → neredeyse tüm getiri sende
+• %1,5 ücretle → on binlerce TL fon yöneticisinde
+
+6/ Kısaca: Endeks fonu = düşük maliyet + geniş çeşitlendirme + sadelik.
+
+Uzun vadeli yatırımın en kanıtlanmış yolu.
+
+Detaylı rehber: parafomo.com/blog/endeks-fonu-nedir
+
+#yatırım #endeksfonu #ETF #BIST #pasifyatırım #finans #paraFOMO
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Görsel 1 (kapak):** Endeks Fonu Nedir? Türkiye Rehberi
+
+**Post metni:**
+Hisse analizi yapmadan borsaya yatırım yapmak mümkün mü? Evet — endeks fonu tam da bunun için var 👇
+
+Slide 1: Endeks fonu nedir, nasıl çalışır?
+Slide 2: Aktif fon vs. endeks fonu maliyet karşılaştırması
+Slide 3: ETF mi, yatırım fonu mu? Fark nedir?
+Slide 4: Türkiye'de nasıl alınır? (4 adım)
+Slide 5: Avantajlar ve dikkat edilmesi gerekenler
+
+Detaylı rehber için profildeki linke tıkla.
+
+#endeksfonu #ETF #pasifyatırım #BIST #yatırım #borsa #paraFOMO #finansalözgürlük #tasarruf #birikim
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. Yukarıdaki X thread taslağını @parafomo hesabından paylaş; linki `parafomo.com/blog/endeks-fonu-nedir` olarak güncelle.
+2. Instagram'da carousel veya tek kart post olarak yayınla; story'ye ekle, "Endeks fonu rehberi linkte 👆" CTA'sı koy.
+
+---
+
 ## 2026-06-20
 
 **Yayınlanan yazı:** [Hisse Senedi Nasıl Seçilir? Temel Analiz Rehberi](/blog/hisse-senedi-nasil-secilir)
