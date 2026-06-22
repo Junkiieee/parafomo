@@ -4,6 +4,87 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-06-22
+
+**Yayınlanan yazı:** [PCE Nedir? Fed'in Enflasyon Göstergesi Dolar'ı Nasıl Etkiler?](/blog/pce-nedir-fed-enflasyon-gostergesi)
+
+> **Neden bu konu?** 25 Haziran Perşembe günü saat 15:30'da ABD Core PCE (Mayıs) açıklanıyor — ekonomik takvimde 🔴 High etkili. Fed'in faiz göstergesi olduğundan dolar/TL/altın üzerinde doğrudan etkisi var. Veri öncesi explainer yazdık.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+1/ 25 Haziran'da piyasaları sarsabilecek bir veri geliyor.
+
+Fed'in en sevdiği enflasyon göstergesi: PCE.
+
+Neden önemli? Neden sadece siz değil, TL ve altın da etkileniyor? 👇
+
+2/ PCE nedir?
+
+Personal Consumption Expenditures — Kişisel Tüketim Harcamaları.
+
+Fed, yıllardır yüzde iki hedefini CPI'a göre değil, PCE'ye göre belirliyor.
+
+Neden? Çünkü CPI sabit sepet kullanır. PCE ise tüketicinin davranışını takip eder — gerçekçidir.
+
+3/ Çekirdek PCE (Core PCE) nedir?
+
+Gıda ve enerji çıkarıldıktan sonra kalan PCE.
+
+Bu ikisi çok oynak: petrol fiyatı, hava şartları hepsini etkiler.
+
+Fed kalıcı enflasyonu ölçmek için çekirdek PCE'ye bakar.
+
+4/ 25 Haziran'da ne olabilir?
+
+▶ Beklentilerin üzeri gelirse → Dolar güçlenir → TL/USD kuru yükselir, altın baskı altına girer
+▶ Beklentilerin altı gelirse → Dolar zayıflar → altın yükselir, BIST için olumlu sinyal
+▶ Paralel gelirse → Büyük hareket yok, Fed'in yorumu yönü belirler
+
+5/ Türk yatırımcı için pratik özet:
+
+Fed politikası → dolar yönü → TL kuru → enflasyon ve BIST
+
+Tek bir veriye göre portföy değiştirme.
+Uzun vadeli stratejini koru, verinin ardından piyasanın nasıl sindirdiğini izle.
+
+6/ 25 Haziran saat 15:30'ı not al.
+
+Detaylı explainer: parafomo.com/blog/pce-nedir-fed-enflasyon-gostergesi
+
+#PCE #Fed #dolar #enflasyon #ABD #TL #yatırım #paraFOMO
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Görsel 1 (kapak):** PCE Nedir? Fed'in Enflasyon Göstergesi — 25 Haziran'a Dikkat!
+
+**Post metni:**
+25 Haziran'da piyasalar hareketlenebilir 📊
+
+Fed'in favori enflasyon göstergesi PCE açıklanıyor ve bu veri doğrudan dolar kurunu, altını ve Türk yatırımcısını etkiliyor.
+
+Slide 1: PCE nedir? CPI'dan farkı nedir?
+Slide 2: Core PCE neden daha önemli?
+Slide 3: Veri sonucuna göre dolar/altın nasıl hareket eder? (tablo)
+Slide 4: Türk yatırımcı için ne anlama gelir?
+Slide 5: 25 Haziran'da ne izlemeliyiz?
+
+Detaylı rehber için profildeki linke tıkla.
+
+#PCE #Fed #enflasyon #dolar #altın #TL #paraFOMO #yatırım #ekonomi #finans #ABD
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. Yukarıdaki X thread'ini @parafomo hesabından yayınla; linki `parafomo.com/blog/pce-nedir-fed-enflasyon-gostergesi` olarak ekle. **Zamanlama önerisi:** Bugün yayınlarsan 25 Haziran öncesinde öne çıkma şansı yakalarsın.
+2. Instagram'da carousel veya tek kart post olarak paylaş; "25 Haziran'a kaç gün kaldı?" gibi bir story kaydı ek ilgi çekebilir.
+
+---
+
 ## 2026-06-21
 
 **Yayınlanan yazı:** [Endeks Fonu Nedir, Nasıl Alınır? Türkiye Rehberi](/blog/endeks-fonu-nedir)
