@@ -1,0 +1,15 @@
+{
+  "name": "parafomo-x-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "ParaFOMO X (Twitter) yerel paylaşım botu — local makinede çalışır.",
+  "scripts": {
+    "login": "node post-x.mjs --login",
+    "dry": "node post-x.mjs --dry",
+    "post": "node post-x.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}

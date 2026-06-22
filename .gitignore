@@ -28,3 +28,10 @@ logs/
 
 # Haftalık trafik raporu (yerel dashboard, trafik verisi)
 docs/analytics-report.md
+
+# X botu (yerel makine) — oturum, dedup, log, bağımlılıklar repoya girmez
+x-bot/.profile/
+x-bot/posted.json
+x-bot/x-bot.log
+x-bot/node_modules/
+x-bot/package-lock.json
