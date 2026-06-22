@@ -25,3 +25,6 @@ Thumbs.db
 
 # Cron logları
 logs/
+
+# Haftalık trafik raporu (yerel dashboard, trafik verisi)
+docs/analytics-report.md
