@@ -25,3 +25,8 @@ Thumbs.db
 
 # Cron logları
 logs/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example

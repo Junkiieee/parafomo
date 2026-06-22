@@ -5,6 +5,8 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // Yayına alırken bu adresi kendi alan adınla değiştir.
 const SITE = 'https://parafomo.com';
 
@@ -30,8 +32,10 @@ try {
 // https://astro.build/config
 export default defineConfig({
   site: SITE,
+
   // Cloudflare statik sunumu sonda '/' zorluyor; canonical/sitemap ile uyum için 'always'.
   trailingSlash: 'always',
+
   integrations: [
     mdx(),
     sitemap({
@@ -48,13 +52,17 @@ export default defineConfig({
       },
     }),
   ],
+
   markdown: {
     shikiConfig: {
       theme: 'github-dark',
       wrap: true,
     },
   },
+
   build: {
     inlineStylesheets: 'auto',
   },
+
+  adapter: cloudflare()
 });
