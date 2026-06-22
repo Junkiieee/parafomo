@@ -98,14 +98,30 @@ async function humanType(page, locator, text) {
 
 async function launch(headless) {
   // channel:'chrome' → bundled Chromium yerine kurulu gerçek Chrome (daha az bot sinyali)
-  const opts = { headless, viewport: { width: 1280, height: 860 },
-    locale: 'tr-TR', timezoneId: 'Europe/Istanbul' };
+  // args/ignoreDefaultArgs → Playwright'in "ben otomasyonum" sinyalini (navigator.webdriver,
+  // --enable-automation infobar) kaldırır; X'in otomasyon tespitini zorlaştırır.
+  const opts = {
+    headless,
+    viewport: { width: 1280, height: 860 },
+    locale: 'tr-TR',
+    timezoneId: 'Europe/Istanbul',
+    args: ['--disable-blink-features=AutomationControlled', '--start-maximized'],
+    ignoreDefaultArgs: ['--enable-automation'],
+  };
+  let ctx;
   try {
-    return await chromium.launchPersistentContext(PROFILE_DIR, { ...opts, channel: 'chrome' });
+    ctx = await chromium.launchPersistentContext(PROFILE_DIR, { ...opts, channel: 'chrome' });
   } catch {
     log('Chrome bulunamadı, bundled Chromium kullanılıyor.');
-    return await chromium.launchPersistentContext(PROFILE_DIR, opts);
+    ctx = await chromium.launchPersistentContext(PROFILE_DIR, opts);
   }
+  // navigator.webdriver vb. izleri her sayfada gizle (ek güvence)
+  await ctx.addInitScript(() => {
+    Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+    // eklenti/dil sinyalleri gerçekçi olsun
+    Object.defineProperty(navigator, 'languages', { get: () => ['tr-TR', 'tr', 'en-US'] });
+  });
+  return ctx;
 }
 
 async function isLoggedIn(page) {
