@@ -1,4 +1,6 @@
 ---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import BaseLayout from './BaseLayout.astro';
 import FormatDate from '../components/FormatDate.astro';
 import Newsletter from '../components/Newsletter.astro';
@@ -8,6 +10,10 @@ import { categorySlug, SITE } from '../site.config';
 const { post, headings = [], related = [] } = Astro.props;
 const { title, description, pubDate, updatedDate, category, tags, author, readingTime, cover, faq } = post.data;
 const url = new URL(`/blog/${post.id}`, SITE.url).href;
+// og:image: önce frontmatter cover, yoksa yazıya özel sosyal kart (varsa), yoksa genel.
+const socialCard = `/social/${post.id}.png`;
+const hasCard = existsSync(join(process.cwd(), 'public', 'social', `${post.id}.png`));
+const ogImage = cover ?? (hasCard ? socialCard : '/og-default.png');
 const tocHeadings = headings.filter((h: any) => h.depth === 2 || h.depth === 3);
 const breadcrumbs = [
   { name: 'Anasayfa', url: '/' },
@@ -19,7 +25,7 @@ const breadcrumbs = [
 <BaseLayout
   title={title}
   description={description}
-  image={cover ?? '/og-default.png'}
+  image={ogImage}
   type="article"
   publishedTime={pubDate.toISOString()}
   modifiedTime={(updatedDate ?? pubDate).toISOString()}

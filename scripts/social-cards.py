@@ -1,28 +1,33 @@
 #!/usr/bin/env python3
 """
-ParaFOMO — sosyal medya kartı üretici (Twitter/X, 1600x900).
+ParaFOMO — sosyal medya kartı üretici (Twitter/X, 1200x630 = og:image spec).
 
 Her blog yazısı için markalı bir görsel üretir: teal-yeşil palet, ParaFOMO
-wordmark, kategori etiketi, büyük serif başlık. Çıktı: public/social/<slug>.png
-(siteyle yayınlanır → public URL; X planlı gönderiye yüklenir, ileride IG için de).
+wordmark, kategori etiketi, büyük serif başlık. Çıktı: public/social/<slug>.png.
+Bu görsel her yazının og:image'ı olarak bağlanır → X/WhatsApp/Telegram/LinkedIn
+link önizlemesinde yazıya özel kart otomatik çıkar (yükleme gerekmez).
 
-Kaynak: parafomo.com/rss.xml (tüm yazılar) veya --slug ile tek yazı.
-Yalnızca PIL + sistem fontları (Liberation Serif/Sans).
+Kaynak: YEREL içerik dosyaları (src/content/blog/*.md) — henüz yayında olmayan
+yeni yazılar da build'den önce kart alır. Yalnızca PIL + sistem fontları.
+
+Kullanım:
+  python3 scripts/social-cards.py            # tüm yerel yazılar (eksikleri + günceller)
+  python3 scripts/social-cards.py --slug X   # tek yazı
+  python3 scripts/social-cards.py --missing   # yalnız kartı olmayanları üret
 """
 import os
 import re
 import sys
-import html
-import urllib.request
+import glob
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(ROOT, "public", "social")
 WORDMARK = os.path.join(ROOT, "public", "parafomo-wordmark.png")
-RSS = "https://parafomo.com/rss.xml"
+BLOG_DIR = os.path.join(ROOT, "src", "content", "blog")
 
-W, H = 1600, 900
-MARGIN = 110
+W, H = 1200, 630
+MARGIN = 80
 
 # Palet
 INK = (18, 20, 23)
@@ -72,14 +77,14 @@ def wrap(draw, text, font, max_w):
 
 def fit_title(draw, text, max_w, max_h, max_lines=4):
     """Başlığı kutuya sığacak en büyük punto + satırlar."""
-    for size in range(92, 49, -3):
+    for size in range(66, 33, -2):
         font = f(SERIF_BOLD, size)
         lines = wrap(draw, text, font, max_w)
         lh = int(size * 1.16)
         if len(lines) <= max_lines and len(lines) * lh <= max_h:
             return font, lines, lh
-    font = f(SERIF_BOLD, 52)
-    return font, wrap(draw, text, font, max_w)[:max_lines], int(52 * 1.16)
+    font = f(SERIF_BOLD, 34)
+    return font, wrap(draw, text, font, max_w)[:max_lines], int(34 * 1.16)
 
 
 def make_card(title, category, slug):
@@ -87,46 +92,46 @@ def make_card(title, category, slug):
     d = ImageDraw.Draw(img)
 
     # Sol kenar gradyan şerit
-    bar = lin_gradient(26, H, DEEP, LIGHT, horizontal=False)
+    bar = lin_gradient(18, H, DEEP, LIGHT, horizontal=False)
     img.paste(bar, (0, 0))
 
     # Sağ üst köşede yumuşak marka dairesi (hafif)
     glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     gd = ImageDraw.Draw(glow)
-    gd.ellipse([W - 360, -200, W + 200, 360], fill=(99, 212, 145, 38))
-    gd.ellipse([W - 230, -120, W + 160, 270], fill=(43, 177, 148, 30))
+    gd.ellipse([W - 260, -150, W + 150, 260], fill=(99, 212, 145, 38))
+    gd.ellipse([W - 170, -90, W + 120, 200], fill=(43, 177, 148, 30))
     img = Image.alpha_composite(img.convert("RGBA"), glow).convert("RGB")
     d = ImageDraw.Draw(img)
 
     # Kategori etiketi (teal pill)
     cat = (category or "Finans").upper()
-    cf = f(SANS_BOLD, 30)
+    cf = f(SANS_BOLD, 24)
     tw = d.textlength(cat, font=cf)
-    px, py = MARGIN, 150
-    pill_h = 56
-    d.rounded_rectangle([px, py, px + tw + 56, py + pill_h], radius=28, fill=BRAND)
-    d.text((px + 28, py + pill_h / 2), cat, font=cf, fill=WHITE, anchor="lm")
+    px, py = MARGIN, 96
+    pill_h = 46
+    d.rounded_rectangle([px, py, px + tw + 44, py + pill_h], radius=23, fill=BRAND)
+    d.text((px + 22, py + pill_h / 2), cat, font=cf, fill=WHITE, anchor="lm")
 
     # Başlık
-    title_top = py + pill_h + 50
-    max_title_h = H - title_top - 220
-    font, lines, lh = fit_title(d, title, W - 2 * MARGIN - 40, max_title_h, max_lines=4)
+    title_top = py + pill_h + 36
+    max_title_h = H - title_top - 130
+    font, lines, lh = fit_title(d, title, W - 2 * MARGIN - 30, max_title_h, max_lines=4)
     y = title_top
     for ln in lines:
         d.text((MARGIN, y), ln, font=font, fill=INK)
         y += lh
 
-    # Alt çizgi (gradyan) + wordmark + alan adı
-    d.rectangle([MARGIN, H - 150, W - MARGIN, H - 147], fill=BRAND)
+    # Alt çizgi (gradyan) + wordmark + slogan
+    d.rectangle([MARGIN, H - 108, W - MARGIN, H - 106], fill=BRAND)
     if os.path.exists(WORDMARK):
         wm = Image.open(WORDMARK).convert("RGBA")
-        target_h = 56
+        target_h = 42
         ratio = target_h / wm.height
         wm = wm.resize((int(wm.width * ratio), target_h), Image.LANCZOS)
-        img.paste(wm, (MARGIN, H - 120), wm)
+        img.paste(wm, (MARGIN, H - 84), wm)
     tag = "parana akıl kat."
-    tf = f(SANS, 30)
-    d.text((W - MARGIN, H - 92), tag, font=tf, fill=GREY, anchor="rm")
+    tf = f(SANS, 24)
+    d.text((W - MARGIN, H - 63), tag, font=tf, fill=GREY, anchor="rm")
 
     os.makedirs(OUT_DIR, exist_ok=True)
     out = os.path.join(OUT_DIR, f"{slug}.png")
@@ -134,32 +139,37 @@ def make_card(title, category, slug):
     return out
 
 
-def posts_from_rss():
-    xml = urllib.request.urlopen(
-        urllib.request.Request(RSS, headers={"User-Agent": "Mozilla/5.0"}), timeout=20
-    ).read().decode()
+def fm_value(text, key):
+    """Frontmatter'dan basit alan çek (title/category)."""
+    m = re.search(rf'^{key}:\s*"?(.*?)"?\s*$', text, re.MULTILINE)
+    return m.group(1).strip() if m else ""
+
+
+def posts_from_local():
     out = []
-    for it in xml.split("<item>")[1:]:
-        def pick(tag):
-            m = re.search(rf"<{tag}>([\s\S]*?)</{tag}>", it)
-            return html.unescape(re.sub(r"<!\[CDATA\[|\]\]>", "", m.group(1)).strip()) if m else ""
-        cats = [html.unescape(c.strip()) for c in re.findall(r"<category>([\s\S]*?)</category>", it)]
-        link = pick("link")
-        slug = link.rstrip("/").split("/")[-1]
-        out.append({"title": pick("title"), "category": cats[0] if cats else "Finans", "slug": slug})
+    for path in sorted(glob.glob(os.path.join(BLOG_DIR, "*.md"))):
+        fm = open(path, encoding="utf-8").read().split("---", 2)
+        front = fm[1] if len(fm) >= 3 else ""
+        slug = os.path.splitext(os.path.basename(path))[0]
+        out.append({
+            "slug": slug,
+            "title": fm_value(front, "title") or slug,
+            "category": fm_value(front, "category") or "Finans",
+        })
     return out
 
 
 def main():
-    only = None
-    if "--slug" in sys.argv:
-        only = sys.argv[sys.argv.index("--slug") + 1]
-    posts = posts_from_rss()
+    only = sys.argv[sys.argv.index("--slug") + 1] if "--slug" in sys.argv else None
+    missing_only = "--missing" in sys.argv
+    posts = posts_from_local()
     n = 0
     for p in posts:
         if only and p["slug"] != only:
             continue
-        out = make_card(p["title"], p["category"], p["slug"])
+        if missing_only and os.path.exists(os.path.join(OUT_DIR, f"{p['slug']}.png")):
+            continue
+        make_card(p["title"], p["category"], p["slug"])
         n += 1
         print(f"[+] {p['slug']}.png  ←  {p['title'][:50]}")
     print(f"[+] {n} kart üretildi -> {OUT_DIR}")
