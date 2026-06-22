@@ -49,3 +49,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Altın mı dolar mı — `altin-mi-dolar-mi`
 - [x] Hisse senedi nasıl seçilir? Temel analiz rehberi — `hisse-senedi-nasil-secilir`
 - [x] Endeks fonu nedir, nasıl alınır? — `endeks-fonu-nedir`
+- [x] PCE nedir? Fed'in enflasyon göstergesi — `pce-nedir-fed-enflasyon-gostergesi` (takvim: 25 Haziran Core PCE açıklaması)
