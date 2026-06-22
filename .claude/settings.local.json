@@ -42,7 +42,17 @@
       "Bash(chmod +x scripts/fetch-economic-calendar.py)",
       "Bash(python3 scripts/fetch-economic-calendar.py)",
       "Bash(cd *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Read(//root/.config/parafomo/**)",
+      "Bash(python3 -c \"import google.oauth2.service_account, googleapiclient\")",
+      "Bash(chmod 600 /root/.config/parafomo/ga-sa.json)",
+      "Bash(pip install *)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(set -e)",
+      "Bash(python3 -m venv /root/.venvs/parafomo)",
+      "Bash(/root/.venvs/parafomo/bin/pip install *)",
+      "Bash(/root/.venvs/parafomo/bin/python -c \"import google.oauth2.service_account, googleapiclient, google.analytics.data_v1beta; print\\('OK — kütüphaneler kuruldu'\\)\")",
+      "Bash(/root/.venvs/parafomo/bin/python *)"
     ]
   }
 }
