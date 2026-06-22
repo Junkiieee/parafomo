@@ -82,9 +82,20 @@ Yeni yazı yoksa hiçbir şey yapmaz (zaten paylaşılmışı tekrar atmaz).
 
 | Komut | Ne yapar |
 |-------|----------|
+| `node post-x.mjs --plan`  | **TÜM yazılar için tweet metni döker** → X'te elle "Planlanmış gönderi" ile koy (tarayıcı/giriş gerekmez, en güvenli yol) |
 | `node post-x.mjs --login` | Tarayıcıyı aç, X'e elle giriş yap (tek seferlik) |
-| `node post-x.mjs --dry`   | Tweet'i derle ve yazdır (paylaşmaz) |
-| `node post-x.mjs`         | En yeni yazıyı paylaş (paylaşılmadıysa) |
+| `node post-x.mjs --dry`   | En yeni yazının tweet'ini derle ve yazdır (paylaşmaz) |
+| `node post-x.mjs`         | En yeni yazıyı otomatik paylaş (paylaşılmadıysa) |
+
+### ÖNERİLEN YOL: X "Planlanmış gönderi" (botsuz, risksiz)
+Tarayıcı otomasyonu yerine X'in kendi zamanlama özelliğini kullan — ToS'a uygun,
+askıya alma riski yok:
+1. `node post-x.mjs --plan` çalıştır → tüm tweet metinleri ekrana dökülür.
+2. X'te (web) **Gönder/Post** kutusuna metni yapıştır.
+3. Kutunun altındaki **takvim/saat ikonuna** tıkla → ileri bir gün/saat seç
+   (günde 1 öneri, farklı saatlerde) → **Schedule**.
+4. Tüm yazıları böyle sıraya diz. Bitince (yeni yazılar eklendikçe) tekrar
+   `--plan` çalıştırıp kalanları planla.
 
 ## Sorun giderme
 - **"GİRİŞ YOK" yazıyor:** Oturum düşmüş. Tekrar `node post-x.mjs --login` yap.

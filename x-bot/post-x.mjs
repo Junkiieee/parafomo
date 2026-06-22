@@ -26,7 +26,9 @@ const RSS_URL = 'https://parafomo.com/rss.xml';
 const SITE = 'parafomo.com';
 
 const args = process.argv.slice(2);
-const MODE = args.includes('--login') ? 'login' : args.includes('--dry') ? 'dry' : 'post';
+const MODE = args.includes('--login') ? 'login'
+  : args.includes('--plan') ? 'plan'
+  : args.includes('--dry') ? 'dry' : 'post';
 
 // --- yardımcılar ---
 const rnd = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
@@ -41,22 +43,22 @@ function savePosted(list) {
   writeFileSync(POSTED_FILE, JSON.stringify(list.slice(-200), null, 2));
 }
 
-// --- RSS'ten en yeni yazıyı çek ---
-async function latestPost() {
-  const res = await fetch(RSS_URL, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-  const xml = await res.text();
-  const item = xml.split('<item>')[1] || '';
+// --- RSS'ten yazıları çek ---
+function parseItem(item) {
   const pick = (tag) => {
     const m = item.match(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`));
     return m ? decode(m[1].replace(/<!\[CDATA\[|\]\]>/g, '').trim()) : '';
   };
   const cats = [...item.matchAll(/<category>([\s\S]*?)<\/category>/g)].map((m) => decode(m[1].trim()));
-  return {
-    title: pick('title'),
-    link: pick('link'),
-    description: pick('description'),
-    categories: cats,
-  };
+  return { title: pick('title'), link: pick('link'), description: pick('description'), categories: cats };
+}
+async function allPosts() {
+  const res = await fetch(RSS_URL, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+  const xml = await res.text();
+  return xml.split('<item>').slice(1).map(parseItem).filter((p) => p.title && p.link);
+}
+async function latestPost() {
+  return (await allPosts())[0] || {};
 }
 function decode(s) {
   return s.replace(/&apos;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, '&')
@@ -196,7 +198,20 @@ async function doPost(dry) {
   }
 }
 
+// --- mod: plan (tarayıcı yok; tüm yazılar için tweet metni döker → X'te elle planla) ---
+async function doPlan() {
+  const posts = await allPosts();
+  console.log(`# ParaFOMO — Planlanacak tweet'ler (${posts.length} yazı)\n`);
+  console.log('Her birini X "Planlanmış gönderi" ile farklı gün/saate koy (günde 1 öneri).\n');
+  posts.forEach((p, i) => {
+    console.log(`──────── ${i + 1}/${posts.length} ────────`);
+    console.log(buildTweet(p));
+    console.log('');
+  });
+}
+
 (async () => {
   if (MODE === 'login') return doLogin();
+  if (MODE === 'plan') return doPlan();
   return doPost(MODE === 'dry');
 })();
