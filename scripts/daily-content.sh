@@ -32,6 +32,13 @@ git pull --rebase --autostash origin main || echo "UYARI: pull başarısız, dev
 echo "[*] Ekonomik takvim çekiliyor"
 python3 "$REPO/scripts/fetch-economic-calendar.py" 2>&1 | sed 's/^/    [takvim] /' || echo "UYARI: takvim güncellenemedi (devam)"
 
+# 1c) GSC fırsat sorgularını güncelle (içerik seçimi KAYNAK (b) — takvimden sonra,
+#     backlog'dan önce). venv'de google kütüphaneleri var (sistem Python'da yok).
+echo "[*] GSC fırsat sorguları çekiliyor"
+GSC_PY="/root/.venvs/parafomo/bin/python"
+[ -x "$GSC_PY" ] || GSC_PY="python3"
+"$GSC_PY" "$REPO/scripts/seo-opportunities.py" 2>&1 | sed 's/^/    [seo] /' || echo "UYARI: GSC fırsatları güncellenemedi (motor backlog'a düşer)"
+
 # 2) Headless claude ile içerik üret (agent: yazıyı yazar, keywords/daily-log günceller, build eder, commit'ler)
 echo "[*] claude headless çalışıyor (içerik üretimi)..."
 PROMPT="$(cat "$PROMPT_FILE")"
