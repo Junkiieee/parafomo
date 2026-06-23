@@ -24,6 +24,10 @@ const blog = defineCollection({
     cover: z.string().optional(),
     // Sıkça Sorulan Sorular — verilirse sayfada görünür SSS bölümü + FAQPage schema üretilir.
     faq: z.array(z.object({ q: z.string(), a: z.string() })).optional(),
+    // YouTube Shorts senaryosu (kalıcı kayıt): [0]=kanca, ortadakiler=vuruşlar, [-1]=CTA.
+    // scripts/shorts-script.py üretir; scripts/shorts-build.py kullanır. Sayfada gösterilmez.
+    shorts: z.array(z.string()).optional(),
+    shorts_broll: z.array(z.string()).optional(),
   }),
 });
 

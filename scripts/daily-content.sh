@@ -32,6 +32,10 @@ git pull --rebase --autostash origin main || echo "UYARI: pull başarısız, dev
 echo "[*] Ekonomik takvim çekiliyor"
 python3 "$REPO/scripts/fetch-economic-calendar.py" 2>&1 | sed 's/^/    [takvim] /' || echo "UYARI: takvim güncellenemedi (devam)"
 
+# 1b2) BIST halka arz takvimini güncelle (data/halka-arz.json -> /halka-arz sayfası)
+echo "[*] Halka arz takvimi çekiliyor"
+python3 "$REPO/scripts/fetch-halka-arz.py" 2>&1 | sed 's/^/    [halka-arz] /' || echo "UYARI: halka arz takvimi güncellenemedi (devam)"
+
 # 1c) GSC fırsat sorgularını güncelle (içerik seçimi KAYNAK (b) — takvimden sonra,
 #     backlog'dan önce). venv'de google kütüphaneleri var (sistem Python'da yok).
 echo "[*] GSC fırsat sorguları çekiliyor"

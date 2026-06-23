@@ -28,3 +28,7 @@ logs/
 
 # Haftalık trafik raporu (yerel dashboard, trafik verisi)
 docs/analytics-report.md
+
+# python cache
+__pycache__/
+*.pyc

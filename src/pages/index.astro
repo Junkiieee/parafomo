@@ -36,26 +36,13 @@ const postCount = posts.length;
           <div><strong>%100</strong><span class="muted">Bağımsız içerik</span></div>
         </div>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="ticker-card">
-          <div class="tc-row"><span>BIST 100</span><span class="up">▲ 1.8%</span></div>
-          <div class="tc-row"><span>Bitcoin</span><span class="up">▲ 3.2%</span></div>
-          <div class="tc-row"><span>Gram Altın</span><span class="up">▲ 0.6%</span></div>
-          <div class="tc-row"><span>Dolar/TL</span><span class="down">▼ 0.3%</span></div>
-          <div class="tc-chart">
-            <svg viewBox="0 0 200 60" preserveAspectRatio="none">
-              <polyline points="0,48 25,40 50,44 75,28 100,32 125,18 150,22 175,10 200,6"
-                fill="none" stroke="var(--brand)" stroke-width="2.5" />
-              <polygon points="0,48 25,40 50,44 75,28 100,32 125,18 150,22 175,10 200,6 200,60 0,60"
-                fill="url(#g)" opacity="0.25" />
-              <defs>
-                <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="var(--brand)" />
-                  <stop offset="100%" stop-color="transparent" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
+      <div class="hero-visual">
+        <div class="ticker-card" id="ticker">
+          <div class="tc-row" data-row="bist"><span>BIST 100</span><span class="tc-val"><b data-val>—</b><i class="chg" data-chg></i></span></div>
+          <div class="tc-row" data-row="btc"><span>Bitcoin</span><span class="tc-val"><b data-val>—</b><i class="chg" data-chg></i></span></div>
+          <div class="tc-row" data-row="gold"><span>Gram Altın</span><span class="tc-val"><b data-val>—</b><i class="chg" data-chg></i></span></div>
+          <div class="tc-row" data-row="usd"><span>Dolar/TL</span><span class="tc-val"><b data-val>—</b><i class="chg" data-chg></i></span></div>
+          <div class="tc-foot"><span class="muted">Son 24 saat değişimi</span><span data-updated class="muted"></span></div>
         </div>
       </div>
     </div>
@@ -128,10 +115,14 @@ const postCount = posts.length;
   }
   .tc-row { display: flex; justify-content: space-between; padding: 0.65rem 0; border-bottom: 1px solid var(--border-soft); font-size: var(--step--1); }
   .tc-row span:first-child { color: var(--text-soft); }
+  .tc-val { display: flex; align-items: baseline; gap: 0.5rem; }
+  .tc-val b { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--text); }
+  .chg { font-size: var(--step--2); font-weight: 600; font-style: normal; }
+  .chg:empty::before { content: ''; }
   .up { color: var(--brand); font-weight: 600; }
   .down { color: var(--danger); font-weight: 600; }
-  .tc-chart { margin-top: 1rem; }
-  .tc-chart svg { width: 100%; height: 60px; }
+  .tc-row:last-of-type { border-bottom: none; }
+  .tc-foot { display: flex; justify-content: space-between; font-size: var(--step--2); color: var(--text-muted); margin-top: 0.9rem; padding-top: 0.7rem; border-top: 1px solid var(--border-soft); }
 
   .section { margin-top: clamp(3rem, 7vw, 5rem); }
   .section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; }
@@ -153,3 +144,43 @@ const postCount = posts.length;
     .ticker-card { max-width: 100%; }
   }
 </style>
+
+<script>
+  const fmt = (n: number, d = 0) =>
+    n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+
+  function setRow(key: string, value: number | null | undefined, change: number | null | undefined, prefix = '', decimals = 0) {
+    const row = document.querySelector(`[data-row="${key}"]`);
+    if (!row) return;
+    const v = row.querySelector('[data-val]') as HTMLElement | null;
+    const c = row.querySelector('[data-chg]') as HTMLElement | null;
+    if (v && value != null && !Number.isNaN(value)) v.textContent = prefix + fmt(value, decimals);
+    if (c && change != null && !Number.isNaN(change)) {
+      const up = change >= 0;
+      c.textContent = (up ? '▲ ' : '▼ ') + Math.abs(change).toFixed(2) + '%';
+      c.className = 'chg ' + (up ? 'up' : 'down');
+    }
+  }
+
+  async function loadTicker() {
+    try {
+      const res = await fetch('https://finans.truncgil.com/v4/today.json');
+      const d = await res.json();
+      setRow('bist', d.XU100?.Selling, d.XU100?.Change, '', 0);
+      setRow('gold', d.GRA?.Selling, d.GRA?.Change, '₺', 0);
+      setRow('usd', d.USD?.Selling, d.USD?.Change, '₺', 2);
+      const upd = document.querySelector('[data-updated]');
+      if (upd && typeof d.Update_Date === 'string') {
+        upd.textContent = 'Güncel: ' + d.Update_Date.slice(11, 16);
+      }
+    } catch { /* canlı veri alınamadıysa placeholder kalır */ }
+
+    try {
+      const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=try&include_24hr_change=true');
+      const d = await res.json();
+      setRow('btc', d.bitcoin?.try, d.bitcoin?.try_24h_change, '₺', 0);
+    } catch { /* yoksay */ }
+  }
+
+  loadTicker();
+</script>

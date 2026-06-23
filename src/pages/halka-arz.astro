@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import data from '../../data/halka-arz.json';
+
+type IPO = {
+  company: string;
+  bist_code: string;
+  slug: string;
+  link: string;
+  date_text: string;
+  start: string | null;
+  end: string | null;
+  status: string;
+  price: string;
+  distribution: string;
+  lot: string;
+  broker: string;
+};
+
+const items = (data.items ?? []) as IPO[];
+const by = (s: string) => items.filter((i) => i.status === s);
+
+const ongoing = by('Devam Ediyor');
+const upcoming = by('Yaklaşan');
+const pending = by('Tarih Bekleniyor');
+const completed = by('Tamamlandı');
+
+const updated = new Date(data.updated).toLocaleDateString('tr-TR', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const groups = [
+  { key: 'ongoing', title: 'Talep Toplanıyor', desc: 'Şu anda halka arzı süren şirketler.', list: ongoing, tone: 'live' },
+  { key: 'upcoming', title: 'Yaklaşan Halka Arzlar', desc: 'Tarihi açıklanmış, talep toplama bekleyenler.', list: upcoming, tone: 'soon' },
+  { key: 'pending', title: 'Tarih Bekleyenler', desc: 'Başvurusu yapılmış, talep tarihi henüz belli olmayan şirketler.', list: pending, tone: 'wait' },
+  { key: 'completed', title: 'Son Tamamlananlar', desc: 'Yakın zamanda işlem görmeye başlayan halka arzlar.', list: completed, tone: 'done' },
+].filter((g) => g.list.length > 0);
+---
+
+<BaseLayout
+  title="BIST Halka Arz Takvimi"
+  description="Borsa İstanbul (BIST) güncel halka arz takvimi: talep toplanan, yaklaşan ve son tamamlanan halka arzlar — tarih, fiyat, lot ve aracı kurum bilgisiyle. Her gün güncellenir."
+>
+  <section class="container ha-head">
+    <span class="eyebrow"><span class="dot"></span> Borsa İstanbul</span>
+    <h1>Halka Arz Takvimi</h1>
+    <p class="lede soft">
+      BIST’te talep toplanan, yaklaşan ve son tamamlanan halka arzlar. Tarih, fiyat,
+      dağıtım yöntemi ve aracı kurum bilgileriyle tek sayfada — her gün otomatik güncellenir.
+    </p>
+    <p class="upd muted">Son güncelleme: {updated}</p>
+  </section>
+
+  {groups.map((g) => (
+    <section class="container ha-section">
+      <div class="ha-section-head">
+        <h2>{g.title} <span class="count">{g.list.length}</span></h2>
+        <p class="soft">{g.desc}</p>
+      </div>
+
+      {g.key === 'pending' ? (
+        <ul class="ha-pending">
+          {g.list.map((i) => (
+            <li>
+              <a href={i.link} target="_blank" rel="noopener">{i.company}</a>
+              {i.broker && <span class="muted"> · {i.broker}</span>}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div class="ha-grid">
+          {g.list.map((i) => (
+            <a class={`ha-card card tone-${g.tone}`} href={i.link} target="_blank" rel="noopener">
+              <div class="ha-card-top">
+                <span class="ha-name">{i.company}</span>
+                {i.bist_code && <span class="ha-code">{i.bist_code}</span>}
+              </div>
+              {i.date_text && <div class="ha-date">{i.date_text}</div>}
+              <dl class="ha-meta">
+                {i.price && (<><dt>Fiyat</dt><dd>{i.price}</dd></>)}
+                {i.lot && (<><dt>Pay</dt><dd>{i.lot}</dd></>)}
+                {i.distribution && (<><dt>Dağıtım</dt><dd>{i.distribution}</dd></>)}
+                {i.broker && (<><dt>Aracı kurum</dt><dd>{i.broker}</dd></>)}
+              </dl>
+            </a>
+          ))}
+        </div>
+      )}
+    </section>
+  ))}
+
+  <section class="container ha-note">
+    <p class="muted">
+      Veriler <a href={data.source_url} target="_blank" rel="noopener">{data.source}</a> kaynağından
+      derlenir ve günlük güncellenir. Bu sayfa yalnızca bilgilendirme amaçlıdır;
+      yatırım tavsiyesi değildir. Kesin tarih, fiyat ve koşullar için izahname ve KAP
+      duyurularını esas alın.
+    </p>
+  </section>
+
+  <div class="container">
+    <Newsletter />
+  </div>
+</BaseLayout>
+
+<style>
+  .ha-head { padding: clamp(2rem, 5vw, 3.5rem) 0 0.5rem; max-width: 760px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: var(--step--1); font-weight: 600; color: var(--brand); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); }
+  .ha-head h1 { font-size: var(--step-4); margin: 0.8rem 0 0.6rem; }
+  .ha-head .lede { font-size: var(--step-1); line-height: 1.55; }
+  .upd { font-size: var(--step--1); margin-top: 0.8rem; }
+
+  .ha-section { margin-top: clamp(2rem, 5vw, 3rem); }
+  .ha-section-head { margin-bottom: 1.2rem; }
+  .ha-section-head h2 { font-size: var(--step-2); margin: 0 0 0.2rem; display: flex; align-items: center; gap: 0.6rem; }
+  .ha-section-head .count { font-size: var(--step--1); font-weight: 600; color: var(--text-muted); background: var(--surface); border-radius: 999px; padding: 0.1rem 0.6rem; }
+  .ha-section-head p { font-size: var(--step--1); margin: 0; }
+
+  .ha-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.1rem; }
+  .ha-card { display: block; padding: 1.2rem 1.3rem 1.3rem; text-decoration: none; color: inherit; border-left: 3px solid var(--border); transition: border-color 0.18s ease, transform 0.18s ease; }
+  .ha-card:hover { transform: translateY(-2px); }
+  .ha-card.tone-live { border-left-color: var(--brand); }
+  .ha-card.tone-soon { border-left-color: #e0a83a; }
+  .ha-card.tone-done { border-left-color: var(--border); opacity: 0.92; }
+  .ha-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.6rem; }
+  .ha-name { font-family: var(--font-serif); font-weight: 600; font-size: var(--step-0); line-height: 1.3; color: var(--text); }
+  .ha-code { flex: none; font-size: var(--step--2); font-weight: 700; letter-spacing: 0.03em; color: var(--brand); background: color-mix(in srgb, var(--brand) 12%, transparent); border-radius: var(--radius-sm); padding: 0.15rem 0.5rem; }
+  .ha-date { font-size: var(--step--1); font-weight: 600; color: var(--text-soft); margin: 0.6rem 0 0.4rem; }
+
+  .ha-meta { display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 0.8rem; margin: 0.6rem 0 0; }
+  .ha-meta dt { font-size: var(--step--2); color: var(--text-muted); }
+  .ha-meta dd { font-size: var(--step--2); margin: 0; color: var(--text-soft); }
+
+  .ha-pending { list-style: none; padding: 0; margin: 0; columns: 2; column-gap: 2rem; }
+  .ha-pending li { break-inside: avoid; padding: 0.4rem 0; border-bottom: 1px solid var(--border-soft); font-size: var(--step--1); }
+  .ha-pending a { color: var(--text); font-weight: 500; }
+  .ha-pending a:hover { color: var(--brand); }
+
+  .ha-note { margin-top: clamp(2.5rem, 6vw, 4rem); }
+  .ha-note p { font-size: var(--step--1); line-height: 1.6; max-width: 760px; }
+  .ha-note a { color: var(--brand); }
+
+  @media (max-width: 640px) {
+    .ha-pending { columns: 1; }
+  }
+</style>

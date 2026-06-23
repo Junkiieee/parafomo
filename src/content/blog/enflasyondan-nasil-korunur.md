@@ -6,6 +6,17 @@ category: "Kişisel Finans"
 tags: ["enflasyon", "tasarruf", "yatırım", "altın"]
 readingTime: 9
 featured: true
+shorts:
+  - "1000 liranız artık 1000 lira değil."
+  - "Mevduat yüzde kırk faiz verse de enflasyon elliyse alım gücünüz gerçekte azalmaya devam ediyor."
+  - "Altın, döviz ve endeks fonu enflasyona karşı en yaygın araçlardır; her birinin artısı ve eksileri farklıdır."
+  - "Acil fonu mevduatta tut, orta vadede altın dengesi kur, uzun vadede hisse ağırlıklı portföy oluştur."
+  - "Tüm karşılaştırma tablosu ve strateji detayları parafomo.com'da."
+shorts_broll:
+  - "inflation money losing value"
+  - "turkish lira banknotes wallet"
+  - "stock market growth chart"
+  - "gold bars investment"
 ---
 
 Cebinizdeki 1.000 lira, bir yıl önceki 1.000 lira değil. Enflasyon, hiçbir şey yapmasanız bile paranızın değerini sessizce eritir. İyi haber şu: enflasyona karşı koymanın yolu daha çok çalışmak değil, **paranızı doğru yere koymak.**
