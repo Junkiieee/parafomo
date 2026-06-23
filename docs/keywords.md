@@ -50,3 +50,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Hisse senedi nasıl seçilir? Temel analiz rehberi — `hisse-senedi-nasil-secilir`
 - [x] Endeks fonu nedir, nasıl alınır? — `endeks-fonu-nedir`
 - [x] PCE nedir? Fed'in enflasyon göstergesi — `pce-nedir-fed-enflasyon-gostergesi` (takvim: 25 Haziran Core PCE açıklaması)
+- [x] GDP (GSYİH) nedir? Büyüme verisi piyasaları nasıl etkiler? — `gdp-gsyih-nedir-nasil-yorumlanir` (takvim: 25 Haziran Q1 GDP açıklaması)
