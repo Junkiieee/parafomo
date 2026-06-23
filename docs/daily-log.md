@@ -4,6 +4,101 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-06-23
+
+**Yayınlanan yazı:** [GDP (GSYİH) Nedir? Büyüme Verisi Piyasaları Nasıl Etkiler?](/blog/gdp-gsyih-nedir-nasil-yorumlanir)
+
+> **Neden bu konu?** 25 Haziran Perşembe günü saat 15:30'da ABD Q1 2026 GDP (büyüme) verisi açıklanıyor — ekonomik takvimde 🔴 High etkili. Aynı gün PCE ile birlikte gelecek; birlikte değerlendirilince Fed politikası, dolar, TL ve BIST yönü netleşecek. Veri öncesi bu explainer ile okuyucuyu hazırladık.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+1/ 25 Haziran'da iki kritik veri aynı anda açıklanıyor: PCE enflasyonu + ABD büyüme (GDP).
+
+Bu ikisi birlikte ne anlama gelir? Türkiye'deki dolar ve altın yatırımcısını nasıl etkiler? 👇
+
+2/ GDP nedir?
+
+GSYİH — Gayri Safi Yurt İçi Hasıla.
+
+Bir ülkenin belli bir dönemde ürettiği her şeyin toplam fatura değeri.
+
+Büyüme artıyorsa ekonomi genişliyor. Düşüyorsa daralma var.
+
+İki çeyrek art arda eksi büyüme = resesyon.
+
+3/ ABD Q1 büyüme verisi neden bizi ilgilendiriyor?
+
+Zincir şöyle işliyor:
+
+ABD güçlü büyüme → Fed faiz indirme → Dolar güçlü → TL baskı → Enflasyon
+ABD zayıf büyüme → Fed gevşeyebilir → Dolar zayıflar → Gelişen piyasalar nefes alır
+
+4/ 25 Haziran'daki sürpriz senaryolar:
+
+▶ GDP beklenti üzeri + PCE yüksek → Fed'in elinde faiz indirme yok. Dolar güçlü, TL baskı altında
+▶ GDP zayıf + PCE düşük → Faiz indirimi kapısı açılır. Gelişen piyasalar için iyimserlik
+▶ İkisi de beklentide → Büyük hareket yok, piyasa yorum bekler
+
+5/ Altın yatırımcısı özellikle dikkat etmeli.
+
+Zayıf büyüme → resesyon korkusu → güvenli liman talebi → altın yükselir
+
+Güçlü büyüme → dolar güçlü → altın baskı altında
+
+6/ Pratik not: tek bir veriye göre portföy değiştirme.
+
+Bu anlık tepkiler çoğu zaman geri döner.
+
+25 Haziran 15:30'ı not al, izle, sonrasında piyasanın nasıl sindirdiğine bak.
+
+Detaylı rehber: parafomo.com/blog/gdp-gsyih-nedir-nasil-yorumlanir
+
+#GDP #GSYİH #büyüme #dolar #ABD #altın #BIST #paraFOMO
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Slayt 1 — Başlık:**
+📊 25 Haziran'da ne açıklanıyor?
+ABD büyüme verisi (GDP) — ve bu seni nasıl etkiler?
+
+**Slayt 2:**
+GDP nedir?
+→ Bir ülkenin ürettiği her şeyin toplam değeri
+→ Artar = ekonomi büyüyor
+→ Düşer = daralma var
+→ 2 çeyrek eksi = resesyon
+
+**Slayt 3:**
+ABD büyüme → sen nasıl etkilenirsin?
+
+Güçlü GDP → Dolar yükselir → TL baskı altında 📉
+Zayıf GDP → Dolar zayıflar → BIST/TL nefes alır 📈
+
+**Slayt 4:**
+Altın yatırımcısı için:
+→ Resesyon korkusu → altın yükselir 🥇
+→ Güçlü büyüme → altın baskı altında
+
+**Slayt 5 — CTA:**
+Detaylı analiz linkte 👆
+25 Haziran 15:30'ı not al 📅
+
+#GDP #GSYİH #yatırım #dolar #altın #parafomo #finans #ekonomi #Türkiye
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **Thread'i X'te yayınla** — mümkünse bugün, tercihen sabah/öğle saatlerinde. 25 Haziran veri günü yakın, haber ömrü kısa.
+2. **Instagram carousel paylaş** — 5 slayt formatında, son slayta profil linki ekle (`parafomo.com`).
+3. **İlgili finans topluluklarında paylaş** — "25 Haziran'da GDP ve PCE aynı gün açıklanıyor, neden önemli?" başlığıyla ilgili Telegram/WhatsApp finans gruplarında değer katarak paylaşabilirsin.
+
+---
+
 ## 2026-06-22
 
 **Yayınlanan yazı:** [PCE Nedir? Fed'in Enflasyon Göstergesi Dolar'ı Nasıl Etkiler?](/blog/pce-nedir-fed-enflasyon-gostergesi)
