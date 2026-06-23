@@ -52,7 +52,10 @@
       "Bash(python3 -m venv /root/.venvs/parafomo)",
       "Bash(/root/.venvs/parafomo/bin/pip install *)",
       "Bash(/root/.venvs/parafomo/bin/python -c \"import google.oauth2.service_account, googleapiclient, google.analytics.data_v1beta; print\\('OK — kütüphaneler kuruldu'\\)\")",
-      "Bash(/root/.venvs/parafomo/bin/python *)"
+      "Bash(/root/.venvs/parafomo/bin/python *)",
+      "Read(//tmp/**)",
+      "Read(//tmp/reel_frames/**)",
+      "Bash(git check-ignore *)"
     ]
   }
 }
