@@ -197,4 +197,8 @@ const postCount = posts.length;
   }
 
   loadTicker();
+  // Fiyatları her 60 saniyede bir otomatik tazele (sekme görünürken).
+  setInterval(() => {
+    if (document.visibilityState === 'visible') loadTicker();
+  }, 60000);
 </script>
