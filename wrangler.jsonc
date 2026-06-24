@@ -1,0 +1,13 @@
+{
+  // ParaFOMO — statik Astro sitesi, Cloudflare Workers Static Assets ile yayınlanır.
+  // `npm run build` -> dist/ üretir; `npx wrangler deploy` bunu parafomo worker'ına
+  // statik asset olarak yükler. Worker script'i yok (assets-only); bu yüzden `main` yok.
+  // Worker adı dashboard'daki ad ile BİREBİR aynı olmalı (parafomo) — yoksa yeni worker açılır.
+  "name": "parafomo",
+  "compatibility_date": "2026-06-24",
+  "assets": {
+    "directory": "./dist",
+    // Bulunamayan yollarda Astro'nun ürettiği 404.html sunulur.
+    "not_found_handling": "404-page"
+  }
+}
