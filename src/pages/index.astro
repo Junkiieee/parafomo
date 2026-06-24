@@ -149,12 +149,19 @@ const postCount = posts.length;
   const fmt = (n: number, d = 0) =>
     n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
 
+  // Büyük değerleri (ör. Bitcoin ~2,9 milyon TL) okunur kısalt: "2,92 mn".
+  // Aksi halde "2.916.477" binlik ayracı yüzünden "2916" gibi okunuyor.
+  function fmtPrice(n: number, decimals: number): string {
+    if (n >= 1_000_000) return fmt(n / 1_000_000, 2) + ' mn';
+    return fmt(n, decimals);
+  }
+
   function setRow(key: string, value: number | null | undefined, change: number | null | undefined, prefix = '', decimals = 0) {
     const row = document.querySelector(`[data-row="${key}"]`);
     if (!row) return;
     const v = row.querySelector('[data-val]') as HTMLElement | null;
     const c = row.querySelector('[data-chg]') as HTMLElement | null;
-    if (v && value != null && !Number.isNaN(value)) v.textContent = prefix + fmt(value, decimals);
+    if (v && value != null && !Number.isNaN(value)) v.textContent = prefix + fmtPrice(value, decimals);
     if (c && change != null && !Number.isNaN(change)) {
       const up = change >= 0;
       c.textContent = (up ? '▲ ' : '▼ ') + Math.abs(change).toFixed(2) + '%';
@@ -162,23 +169,30 @@ const postCount = posts.length;
     }
   }
 
+  // Truncgil API'si zaman zaman KESİK/bozuk JSON döndürüyor; res.json() patlayınca
+  // tüm TL değerleri güncellenmiyordu. İhtiyacımız olan alanlar (USD/GRA/XU100) hep
+  // yanıtın başında olduğundan metinden regex ile çekiyoruz — kesik yanıtta da çalışır.
+  function pick(text: string, key: string, prop: string): number | null {
+    const m = text.match(new RegExp('"' + key + '"\\s*:\\s*\\{[^}]*?"' + prop + '"\\s*:\\s*(-?[0-9.]+)'));
+    return m ? parseFloat(m[1]) : null;
+  }
+
   async function loadTicker() {
     try {
       const res = await fetch('https://finans.truncgil.com/v4/today.json');
-      const d = await res.json();
-      setRow('bist', d.XU100?.Selling, d.XU100?.Change, '', 0);
-      setRow('gold', d.GRA?.Selling, d.GRA?.Change, '₺', 0);
-      setRow('usd', d.USD?.Selling, d.USD?.Change, '₺', 2);
+      const text = await res.text();
+      setRow('bist', pick(text, 'XU100', 'Selling'), pick(text, 'XU100', 'Change'), '', 0);
+      setRow('gold', pick(text, 'GRA', 'Selling'), pick(text, 'GRA', 'Change'), '₺', 0);
+      setRow('usd', pick(text, 'USD', 'Selling'), pick(text, 'USD', 'Change'), '₺', 2);
       const upd = document.querySelector('[data-updated]');
-      if (upd && typeof d.Update_Date === 'string') {
-        upd.textContent = 'Güncel: ' + d.Update_Date.slice(11, 16);
-      }
+      const dm = text.match(/"Update_Date"\s*:\s*"([^"]+)"/);
+      if (upd && dm) upd.textContent = 'Güncel: ' + dm[1].slice(11, 16);
     } catch { /* canlı veri alınamadıysa placeholder kalır */ }
 
     try {
-      const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=try&include_24hr_change=true');
+      const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true');
       const d = await res.json();
-      setRow('btc', d.bitcoin?.try, d.bitcoin?.try_24h_change, '₺', 0);
+      setRow('btc', d.bitcoin?.usd, d.bitcoin?.usd_24h_change, '$', 0);
     } catch { /* yoksay */ }
   }
 
