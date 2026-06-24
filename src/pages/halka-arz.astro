@@ -4,44 +4,24 @@ import Newsletter from '../components/Newsletter.astro';
 import data from '../../data/halka-arz.json';
 
 type IPO = {
-  company: string;
-  bist_code: string;
-  slug: string;
-  link: string;
-  date_text: string;
-  start: string | null;
-  end: string | null;
-  status: string;
-  price: string;
-  distribution: string;
-  lot: string;
-  broker: string;
+  company: string; bist_code: string; slug: string; link: string;
+  date_text: string; start: string | null; end: string | null;
+  status: string; price: string; distribution: string; lot: string; broker: string;
 };
 
 const items = (data.items ?? []) as IPO[];
 const by = (s: string) => items.filter((i) => i.status === s);
-
-const ongoing = by('Devam Ediyor');
-const upcoming = by('Yaklaşan');
 const pending = by('Tarih Bekleniyor');
 const completed = by('Tamamlandı');
 
-const updated = new Date(data.updated).toLocaleDateString('tr-TR', {
-  day: 'numeric', month: 'long', year: 'numeric',
-});
+const updated = new Date(data.updated).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
 
-const stats = [
-  { n: ongoing.length, label: 'Talep toplanıyor' },
-  { n: upcoming.length, label: 'Yaklaşan' },
-  { n: pending.length, label: 'Tarih bekleyen' },
-  { n: completed.length, label: 'Son tamamlanan' },
-].filter((s) => s.n > 0);
-
-// ---------- Takvim verisi ----------
 const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
-const DOW = ['Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct', 'Pz'];
+const DOW = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'];
 const pad = (n: number) => String(n).padStart(2, '0');
-const toneOf = (s: string) => (s === 'Devam Ediyor' ? 'live' : s === 'Yaklaşan' ? 'soon' : 'done');
+
+// aktif → yeşil, yaklaşan → sarı, geçmiş/tamamlanmış → kırmızı
+const toneOf = (s: string) => (s === 'Devam Ediyor' ? 'live' : s === 'Yaklaşan' ? 'soon' : 'past');
 
 // Tarihli halka arzları gün gün haritaya yerleştir.
 const dated = items.filter((i) => i.start) as (IPO & { start: string })[];
@@ -56,147 +36,77 @@ for (const i of dated) {
   }
 }
 
+// SADECE bu ay — günler satır satır.
 const today = new Date();
-const todayKey = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
-
-// Gösterilecek aylar: bu ay, gelecek ay + aktif/yaklaşan etkinliklerin ayları.
-const monthSet = new Set<string>();
-const cur = new Date(today.getFullYear(), today.getMonth(), 1);
-monthSet.add(`${cur.getFullYear()}-${pad(cur.getMonth() + 1)}`);
-const nxt = new Date(today.getFullYear(), today.getMonth() + 1, 1);
-monthSet.add(`${nxt.getFullYear()}-${pad(nxt.getMonth() + 1)}`);
-for (const i of [...ongoing, ...upcoming]) {
-  if (i.start) monthSet.add(i.start.slice(0, 7));
-}
-const monthKeys = [...monthSet].sort();
-
-type Cell = { day: number | null; key: string; isToday: boolean; events: IPO[] };
-function buildMonth(key: string): Cell[] {
-  const [y, m] = key.split('-').map(Number); // m: 1-12
-  const firstWeekday = (new Date(y, m - 1, 1).getDay() + 6) % 7; // Pazartesi = 0
-  const daysInMonth = new Date(y, m, 0).getDate();
-  const cells: Cell[] = [];
-  for (let i = 0; i < firstWeekday; i++) cells.push({ day: null, key: '', isToday: false, events: [] });
-  for (let d = 1; d <= daysInMonth; d++) {
-    const dk = `${y}-${pad(m)}-${pad(d)}`;
-    cells.push({ day: d, key: dk, isToday: dk === todayKey, events: eventsByDay.get(dk) ?? [] });
-  }
-  return cells;
-}
-const calendars = monthKeys.map((k) => {
-  const [y, m] = k.split('-').map(Number);
-  return { label: `${MONTHS[m - 1]} ${y}`, cells: buildMonth(k) };
+const y = today.getFullYear();
+const m0 = today.getMonth();
+const todayKey = `${y}-${pad(m0 + 1)}-${pad(today.getDate())}`;
+const monthLabel = `${MONTHS[m0]} ${y}`;
+const daysInMonth = new Date(y, m0 + 1, 0).getDate();
+const days = Array.from({ length: daysInMonth }, (_, idx) => {
+  const d = idx + 1;
+  const dk = `${y}-${pad(m0 + 1)}-${pad(d)}`;
+  const dow = (new Date(y, m0, d).getDay() + 6) % 7;
+  // Geçmiş günde yine bir etkinlik varsa kırmızıya zorla.
+  const evs = (eventsByDay.get(dk) ?? []).map((e) => ({
+    ...e,
+    tone: dk < todayKey ? 'past' : toneOf(e.status),
+  }));
+  return { d, dow: DOW[dow], isWeekend: dow >= 5, key: dk, isToday: dk === todayKey, isPast: dk < todayKey, events: evs };
 });
-
-const active = [...ongoing, ...upcoming];
 ---
 
 <BaseLayout
   title="BIST Halka Arz Takvimi"
-  description="Borsa İstanbul (BIST) güncel halka arz takvimi: talep toplama tarihleri ay ay takvimde, fiyat, lot ve aracı kurum bilgisiyle. Her gün otomatik güncellenir."
+  description="Borsa İstanbul (BIST) bu ayki halka arz takvimi: talep toplama günleri, yaklaşanlar ve son tamamlananlar. Her gün otomatik güncellenir."
 >
   <section class="container ha-hero">
-    <span class="eyebrow"><span class="pulse"></span> Borsa İstanbul · Canlı takvim</span>
+    <span class="eyebrow"><span class="pulse"></span> Borsa İstanbul</span>
     <h1>Halka Arz Takvimi</h1>
-    <p class="lede soft">
-      BIST’te talep toplanan, yaklaşan ve son tamamlanan halka arzlar — ay ay takvimde,
-      fiyat ve aracı kurum detaylarıyla. Her gün otomatik güncellenir.
-    </p>
-
-    {stats.length > 0 && (
-      <div class="ha-stats">
-        {stats.map((s) => (<div class="ha-stat"><strong>{s.n}</strong><span>{s.label}</span></div>))}
-        <div class="ha-stat ha-stat-upd"><strong>{updated}</strong><span>Son güncelleme</span></div>
-      </div>
-    )}
+    <p class="lede soft">{monthLabel} ayının halka arz takvimi. Her gün otomatik güncellenir.</p>
+    <p class="ha-upd">Son güncelleme: {updated}</p>
   </section>
 
-  <!-- TAKVİM -->
   <section class="container ha-section">
-    <div class="ha-shead">
-      <h2>Takvim</h2>
-      <p class="soft">Talep toplama tarihleri. Bir güne tıklayınca ilgili halka arz açılır.</p>
-    </div>
-
     <div class="cal-legend">
       <span><i class="dot live"></i> Talep toplanıyor</span>
       <span><i class="dot soon"></i> Yaklaşan</span>
-      <span><i class="dot done"></i> Tamamlandı</span>
-      <span><i class="dot today-dot"></i> Bugün</span>
+      <span><i class="dot past"></i> Tarihi geçti</span>
     </div>
 
-    <div class="cal-wrap">
-      {calendars.map((c) => (
-        <div class="cal">
-          <div class="cal-title">{c.label}</div>
-          <div class="cal-grid cal-dow-row">
-            {DOW.map((d) => <div class="cal-dow">{d}</div>)}
-          </div>
-          <div class="cal-grid">
-            {c.cells.map((cell) => (
-              <div class:list={['cal-day', { 'is-out': cell.day === null, 'is-today': cell.isToday, 'has-ev': cell.events.length > 0 }]}>
-                {cell.day !== null && (
-                  <>
-                    <span class="cal-num">{cell.day}</span>
-                    {cell.events.slice(0, 3).map((e) => (
-                      <a class={`cal-ev tone-${toneOf(e.status)}`} href={e.link} target="_blank" rel="noopener" title={`${e.company} — ${e.date_text}`}>
-                        {e.bist_code || e.company}
-                      </a>
-                    ))}
-                  </>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
+    <div class="cal-month">
+      <div class="cal-month-title">{monthLabel}</div>
+      <ul class="cal-list">
+        {days.map((day) => (
+          <li class:list={['cal-row', { today: day.isToday, past: day.isPast, weekend: day.isWeekend, empty: day.events.length === 0 }]}>
+            <div class="cal-d">
+              <span class="cal-num">{day.d}</span>
+              <span class="cal-dow">{day.dow}</span>
+              {day.isToday && <span class="cal-bugun">bugün</span>}
+            </div>
+            <div class="cal-ev-wrap">
+              {day.events.length === 0
+                ? <span class="cal-none">—</span>
+                : day.events.map((e) => (
+                    <a class={`cal-ev tone-${e.tone}`} href={e.link} target="_blank" rel="noopener" title={`${e.company} — ${e.date_text}`}>
+                      <span class="cal-ev-name">{e.company}</span>
+                      {e.bist_code && <span class="cal-ev-code">{e.bist_code}</span>}
+                    </a>
+                  ))}
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
-  <!-- AKTİF / YAKLAŞAN DETAYLAR -->
-  {active.length > 0 && (
-    <section class="container ha-section">
-      <div class="ha-shead">
-        <h2>Talep Toplanan & Yaklaşanlar</h2>
-        <span class="ha-shead-count">{active.length}</span>
-        <p class="soft">Tarihi belli halka arzların detayları.</p>
-      </div>
-      <div class="ha-grid">
-        {active.map((i) => (
-          <a class={`ha-card tone-${toneOf(i.status)}`} href={i.link} target="_blank" rel="noopener">
-            <div class="ha-card-head">
-              <h3 class="ha-name">{i.company}</h3>
-              {i.bist_code && <span class="ha-code">{i.bist_code}</span>}
-            </div>
-            <div class="ha-date">
-              {i.status === 'Devam Ediyor' && <span class="ha-live">CANLI</span>}
-              {i.date_text && <span>{i.date_text}</span>}
-            </div>
-            <dl class="ha-meta">
-              {i.price && (<div><dt>Fiyat</dt><dd class="ha-price">{i.price}</dd></div>)}
-              {i.lot && (<div><dt>Pay</dt><dd>{i.lot}</dd></div>)}
-              {i.distribution && (<div><dt>Dağıtım</dt><dd>{i.distribution}</dd></div>)}
-              {i.broker && (<div><dt>Aracı kurum</dt><dd class="ha-broker">{i.broker}</dd></div>)}
-            </dl>
-            <span class="ha-go">Detay →</span>
-          </a>
-        ))}
-      </div>
-    </section>
-  )}
-
-  <!-- TARİH BEKLEYENLER -->
   {pending.length > 0 && (
     <section class="container ha-section">
-      <div class="ha-shead">
-        <h2>Tarih Bekleyenler</h2>
-        <span class="ha-shead-count">{pending.length}</span>
-        <p class="soft">Başvurusu yapılmış, talep toplama tarihi henüz açıklanmamış şirketler.</p>
-      </div>
+      <div class="ha-shead"><h2>Tarih Bekleyenler</h2><span class="ha-shead-count">{pending.length}</span></div>
       <div class="ha-chips">
         {pending.map((i) => (
           <a class="ha-chip" href={i.link} target="_blank" rel="noopener">
-            <span class="ha-chip-name">{i.company}</span>
+            <span>{i.company}</span>
             {i.bist_code && <span class="ha-chip-code">{i.bist_code}</span>}
           </a>
         ))}
@@ -204,14 +114,9 @@ const active = [...ongoing, ...upcoming];
     </section>
   )}
 
-  <!-- SON TAMAMLANANLAR -->
   {completed.length > 0 && (
     <section class="container ha-section">
-      <div class="ha-shead">
-        <h2>Son Tamamlananlar</h2>
-        <span class="ha-shead-count">{completed.length}</span>
-        <p class="soft">Yakın zamanda işlem görmeye başlayan halka arzlar.</p>
-      </div>
+      <div class="ha-shead"><h2>Son Tamamlananlar</h2><span class="ha-shead-count">{completed.length}</span></div>
       <ul class="ha-done-list">
         {completed.map((i) => (
           <li>
@@ -230,8 +135,8 @@ const active = [...ongoing, ...upcoming];
   <section class="container ha-note">
     <p>
       Veriler <a href={data.source_url} target="_blank" rel="noopener">{data.source}</a> kaynağından
-      derlenir ve günde birkaç kez güncellenir. Bu sayfa yalnızca bilgilendirme amaçlıdır; yatırım
-      tavsiyesi değildir. Kesin tarih, fiyat ve koşullar için izahname ve KAP duyurularını esas alın.
+      derlenir ve günde birkaç kez güncellenir. Yalnızca bilgilendirme amaçlıdır; yatırım tavsiyesi
+      değildir. Kesin tarih, fiyat ve koşullar için izahname ve KAP duyurularını esas alın.
     </p>
   </section>
 
@@ -239,103 +144,93 @@ const active = [...ongoing, ...upcoming];
 </BaseLayout>
 
 <style>
-  /* ---------- Hero + stats ---------- */
-  .ha-hero { padding: clamp(2rem, 5vw, 3.5rem) 0 0; max-width: 820px; }
-  .eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: var(--step--1); font-weight: 600; color: var(--brand); }
-  .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 0 rgba(22,160,133,0.5); animation: pulse 2s infinite; }
-  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(22,160,133,0.5); } 70% { box-shadow: 0 0 0 7px rgba(22,160,133,0); } 100% { box-shadow: 0 0 0 0 rgba(22,160,133,0); } }
-  .ha-hero h1 { font-size: var(--step-4); margin: 0.9rem 0 0.6rem; }
-  .ha-hero .lede { font-size: var(--step-1); line-height: 1.55; }
-  .ha-stats { display: flex; flex-wrap: wrap; margin-top: 2rem; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg-card); box-shadow: var(--shadow-xs); }
-  .ha-stat { flex: 1 1 0; min-width: 120px; padding: 1rem 1.2rem; border-right: 1px solid var(--border-soft); }
-  .ha-stat:last-child { border-right: none; }
-  .ha-stat strong { display: block; font-family: var(--font-serif); font-size: var(--step-2); color: var(--text); line-height: 1.1; }
-  .ha-stat span { font-size: var(--step--2); color: var(--text-muted); }
-  .ha-stat-upd { background: var(--bg-elev); }
-  .ha-stat-upd strong { font-size: var(--step-0); color: var(--brand-deep); }
+  /* ---------- Hero ---------- */
+  .ha-hero { padding: clamp(1.6rem, 4vw, 2.6rem) 0 0; max-width: 720px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 0.45rem; font-size: var(--step--2); font-weight: 600; color: var(--brand); }
+  .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 0 rgba(22,160,133,0.5); animation: pulse 2s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(22,160,133,0.5); } 70% { box-shadow: 0 0 0 6px rgba(22,160,133,0); } 100% { box-shadow: 0 0 0 0 rgba(22,160,133,0); } }
+  .ha-hero h1 { font-size: var(--step-2); margin: 0.6rem 0 0.4rem; }
+  .ha-hero .lede { font-size: var(--step-0); line-height: 1.5; margin: 0; }
+  .ha-upd { font-size: var(--step--2); color: var(--text-muted); margin: 0.5rem 0 0; }
 
-  /* ---------- Section header ---------- */
-  .ha-section { margin-top: clamp(2.5rem, 6vw, 4rem); }
-  .ha-shead { display: grid; grid-template-columns: auto auto 1fr; align-items: center; gap: 0.7rem; margin-bottom: 1.2rem; }
-  .ha-shead h2 { font-size: var(--step-2); margin: 0; }
-  .ha-shead-count { justify-self: start; font-size: var(--step--2); font-weight: 700; color: var(--brand-deep); background: var(--brand-tint); border-radius: 999px; padding: 0.15rem 0.6rem; }
-  .ha-shead p { grid-column: 1 / -1; font-size: var(--step--1); margin: 0; }
+  .ha-section { margin-top: clamp(1.6rem, 4vw, 2.6rem); }
+  .ha-shead { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.9rem; }
+  .ha-shead h2 { font-size: var(--step-1); margin: 0; }
+  .ha-shead-count { font-size: 0.66rem; font-weight: 700; color: var(--brand-deep); background: var(--brand-tint); border-radius: 999px; padding: 0.1rem 0.55rem; }
 
-  /* ---------- Calendar ---------- */
-  .cal-legend { display: flex; flex-wrap: wrap; gap: 1.1rem; margin-bottom: 1.2rem; font-size: var(--step--2); color: var(--text-muted); }
+  /* ---------- Legend ---------- */
+  .cal-legend { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.9rem; font-size: var(--step--2); color: var(--text-muted); }
   .cal-legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
-  .cal-legend .dot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+  .cal-legend .dot { width: 9px; height: 9px; border-radius: 3px; display: inline-block; }
   .dot.live { background: var(--brand); }
-  .dot.soon { background: #e0a83a; }
-  .dot.done { background: var(--text-muted); opacity: 0.5; }
-  .dot.today-dot { background: transparent; border: 2px solid var(--brand-deep); border-radius: 50%; }
+  .dot.soon { background: #d8982f; }
+  .dot.past { background: var(--danger); }
 
-  .cal-wrap { display: flex; flex-wrap: wrap; gap: 1.4rem; }
-  .cal { flex: 1 1 320px; max-width: 460px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); padding: 1rem 1rem 1.1rem; box-shadow: var(--shadow-xs); }
-  .cal-title { font-family: var(--font-serif); font-weight: 600; font-size: var(--step-0); margin-bottom: 0.7rem; color: var(--text); }
-  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
-  .cal-dow-row { margin-bottom: 4px; }
-  .cal-dow { text-align: center; font-size: var(--step--2); font-weight: 600; color: var(--text-muted); padding: 0.2rem 0; }
-  .cal-day { min-height: 58px; border: 1px solid var(--border-soft); border-radius: var(--radius-sm); padding: 0.25rem; display: flex; flex-direction: column; gap: 2px; background: var(--bg); }
-  .cal-day.is-out { border-color: transparent; background: transparent; }
-  .cal-day.is-today { border-color: var(--brand-deep); box-shadow: inset 0 0 0 1px var(--brand-deep); }
-  .cal-day.has-ev { background: var(--bg-elev); }
-  .cal-num { font-size: var(--step--2); color: var(--text-muted); font-weight: 600; line-height: 1; }
-  .is-today .cal-num { color: var(--brand-deep); }
-  .cal-ev { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.02em; color: #fff; border-radius: 4px; padding: 0.12rem 0.25rem; text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 1.3; }
-  .cal-ev.tone-live { background: var(--brand); }
-  .cal-ev.tone-soon { background: #d8982f; }
-  .cal-ev.tone-done { background: var(--text-muted); opacity: 0.7; }
-  .cal-ev:hover { filter: brightness(1.08); }
+  /* ---------- Month list (günler satır satır) ---------- */
+  .cal-month { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg-card); box-shadow: var(--shadow-xs); max-width: 640px; }
+  .cal-month-title { font-family: var(--font-serif); font-weight: 600; font-size: var(--step-0); padding: 0.7rem 1rem; border-bottom: 1px solid var(--border); background: var(--bg-elev); }
+  .cal-list { list-style: none; margin: 0; padding: 0; }
+  .cal-row { display: grid; grid-template-columns: 56px 1fr; align-items: center; gap: 0.7rem; padding: 0.3rem 0.9rem; border-bottom: 1px solid var(--border-soft); border-left: 3px solid transparent; min-height: 34px; }
+  .cal-row:last-child { border-bottom: none; }
+  .cal-row.empty { opacity: 0.55; }
+  .cal-row.weekend.empty { background: var(--bg-elev); }
+  .cal-row.today { border-left-color: var(--brand-deep); background: var(--brand-tint); }
 
-  /* ---------- Detail cards ---------- */
-  .ha-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem; }
-  .ha-card { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.3rem 1.4rem 1.1rem; text-decoration: none; color: inherit; box-shadow: var(--shadow-xs); position: relative; transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease; }
-  .ha-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: var(--radius) 0 0 var(--radius); background: var(--border); }
-  .ha-card.tone-live::before { background: linear-gradient(var(--brand), var(--brand-light)); }
-  .ha-card.tone-soon::before { background: #e0a83a; }
-  .ha-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--brand-light); }
-  .ha-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.6rem; margin-bottom: 0.7rem; }
-  .ha-name { font-family: var(--font-serif); font-weight: 600; font-size: var(--step-1); line-height: 1.25; margin: 0; color: var(--text); }
-  .ha-code { flex: none; font-size: var(--step--2); font-weight: 700; letter-spacing: 0.04em; color: var(--brand-deep); background: var(--brand-tint); border-radius: var(--radius-sm); padding: 0.2rem 0.55rem; white-space: nowrap; }
-  .ha-date { display: flex; align-items: center; gap: 0.5rem; font-size: var(--step--1); font-weight: 600; color: var(--brand-deep); margin-bottom: 0.9rem; flex-wrap: wrap; }
-  .ha-live { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em; color: #fff; background: var(--brand); border-radius: 999px; padding: 0.15rem 0.5rem; }
-  .ha-meta { margin: 0; border-top: 1px solid var(--border-soft); padding-top: 0.7rem; }
-  .ha-meta > div { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 0.3rem 0; }
-  .ha-meta dt { font-size: var(--step--2); color: var(--text-muted); flex: none; }
-  .ha-meta dd { font-size: var(--step--1); margin: 0; color: var(--text-soft); text-align: right; }
-  .ha-meta .ha-price { font-weight: 700; color: var(--text); font-size: var(--step-0); }
-  .ha-meta .ha-broker { font-size: var(--step--2); }
-  .ha-go { margin-top: 0.9rem; font-size: var(--step--1); font-weight: 600; color: var(--brand); }
-  .ha-card:hover .ha-go { text-decoration: underline; }
+  .cal-d { display: flex; align-items: baseline; gap: 0.35rem; }
+  .cal-num { font-size: var(--step--1); font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; min-width: 1.1em; text-align: right; }
+  .cal-dow { font-size: 0.62rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; }
+  .cal-bugun { font-size: 0.56rem; font-weight: 700; color: #fff; background: var(--brand-deep); border-radius: 999px; padding: 0.05rem 0.35rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .cal-row.empty .cal-num { color: var(--text-muted); font-weight: 600; }
+
+  .cal-ev-wrap { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .cal-none { color: var(--text-muted); font-size: var(--step--2); opacity: 0.6; }
+  .cal-ev { display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none; border-radius: 6px; padding: 0.2rem 0.5rem; font-size: var(--step--2); font-weight: 600; line-height: 1.3; border: 1px solid transparent; }
+  .cal-ev-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 14rem; }
+  .cal-ev-code { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.03em; padding: 0.02rem 0.3rem; border-radius: 4px; background: rgba(255,255,255,0.45); }
+  .cal-ev.tone-live { background: var(--brand); color: #fff; }
+  .cal-ev.tone-soon { background: #fbf0d8; color: #8a5a12; border-color: #eccf94; }
+  .cal-ev.tone-soon .cal-ev-code { background: #f0dcb0; }
+  .cal-ev.tone-past { background: #fbe3e6; color: #a32437; border-color: #f1bcc3; }
+  .cal-ev.tone-past .cal-ev-code { background: #f3ccd1; }
+  .cal-ev:hover { filter: brightness(0.97); }
 
   /* ---------- Pending chips ---------- */
-  .ha-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-  .ha-chip { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; padding: 0.45rem 0.5rem 0.45rem 0.9rem; font-size: var(--step--1); color: var(--text-soft); text-decoration: none; transition: border-color 0.16s ease, color 0.16s ease, background 0.16s ease; }
-  .ha-chip:hover { border-color: var(--brand-light); color: var(--text); background: var(--bg-elev); }
-  .ha-chip-name { font-weight: 500; }
-  .ha-chip-code { font-size: var(--step--2); font-weight: 700; color: var(--brand-deep); background: var(--brand-tint); border-radius: 999px; padding: 0.1rem 0.5rem; }
+  .ha-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .ha-chip { display: inline-flex; align-items: center; gap: 0.45rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; padding: 0.35rem 0.45rem 0.35rem 0.8rem; font-size: var(--step--2); color: var(--text-soft); text-decoration: none; transition: border-color 0.16s ease, background 0.16s ease; }
+  .ha-chip:hover { border-color: var(--brand-light); background: var(--bg-elev); }
+  .ha-chip-code { font-size: 0.6rem; font-weight: 700; color: var(--brand-deep); background: var(--brand-tint); border-radius: 999px; padding: 0.08rem 0.45rem; }
 
   /* ---------- Completed list ---------- */
-  .ha-done-list { list-style: none; padding: 0; margin: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg-card); }
+  .ha-done-list { list-style: none; padding: 0; margin: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg-card); max-width: 640px; }
   .ha-done-list li { border-bottom: 1px solid var(--border-soft); }
   .ha-done-list li:last-child { border-bottom: none; }
-  .ha-done-list a { display: grid; grid-template-columns: 1fr auto auto auto; align-items: center; gap: 0.8rem; padding: 0.7rem 1rem; text-decoration: none; color: var(--text-soft); font-size: var(--step--1); }
+  .ha-done-list a { display: grid; grid-template-columns: 1fr auto auto auto; align-items: center; gap: 0.7rem; padding: 0.55rem 0.9rem; text-decoration: none; color: var(--text-soft); font-size: var(--step--2); }
   .ha-done-list a:hover { background: var(--bg-elev); }
-  .dl-name { color: var(--text); font-weight: 500; }
-  .dl-code { font-size: var(--step--2); font-weight: 700; color: var(--brand-deep); background: var(--brand-tint); border-radius: 999px; padding: 0.1rem 0.5rem; }
-  .dl-date { color: var(--text-muted); font-size: var(--step--2); }
+  .dl-name { color: var(--text); font-weight: 600; }
+  .dl-code { font-size: 0.6rem; font-weight: 700; color: var(--brand-deep); background: var(--brand-tint); border-radius: 999px; padding: 0.08rem 0.45rem; }
+  .dl-date { color: var(--text-muted); }
   .dl-price { font-weight: 700; color: var(--text); }
 
   /* ---------- Note ---------- */
-  .ha-note { margin-top: clamp(2.5rem, 6vw, 4rem); }
-  .ha-note p { font-size: var(--step--1); line-height: 1.65; max-width: 760px; color: var(--text-muted); padding: 1rem 1.2rem; background: var(--bg-elev); border: 1px solid var(--border-soft); border-radius: var(--radius); }
+  .ha-note { margin-top: clamp(1.6rem, 4vw, 2.6rem); }
+  .ha-note p { font-size: var(--step--2); line-height: 1.6; max-width: 640px; color: var(--text-muted); padding: 0.8rem 1rem; background: var(--bg-elev); border: 1px solid var(--border-soft); border-radius: var(--radius); }
   .ha-note a { color: var(--brand); font-weight: 600; }
 
-  @media (max-width: 640px) {
-    .ha-stat { flex-basis: 50%; min-width: 0; }
-    .cal-day { min-height: 46px; }
-    .ha-done-list a { grid-template-columns: 1fr auto; row-gap: 0.2rem; }
+  @media (max-width: 560px) {
+    .cal-ev-name { max-width: 9rem; }
+    .ha-done-list a { grid-template-columns: 1fr auto; row-gap: 0.15rem; }
     .dl-date { grid-column: 1 / -1; }
   }
 </style>
+
+<script define:vars={{ built: data.updated }}>
+  // Veri (cron ile) değiştiğinde açık sayfa kendini yeniler.
+  async function checkUpdate() {
+    try {
+      const r = await fetch('/halka-arz.json?_=' + Date.now(), { cache: 'no-store' });
+      const d = await r.json();
+      if (d && d.updated && d.updated !== built) location.reload();
+    } catch { /* yoksay */ }
+  }
+  setInterval(() => { if (document.visibilityState === 'visible') checkUpdate(); }, 300000);
+</script>

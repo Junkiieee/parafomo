@@ -23,14 +23,14 @@ git pull --rebase --autostash origin main >/dev/null 2>&1 || echo "UYARI: pull b
 # Veriyi çek (ağ hatasında mevcut JSON'u korur, çökmez)
 python3 "$REPO/scripts/fetch-halka-arz.py" 2>&1 | sed 's/^/  /'
 
-# Değişiklik var mı?
-if [ -z "$(git status --porcelain data/halka-arz.json)" ]; then
+# Değişiklik var mı? (hem build verisi hem public kopya)
+if [ -z "$(git status --porcelain data/halka-arz.json public/halka-arz.json)" ]; then
   echo "[i] Değişiklik yok — deploy gerekmiyor."
   exit 0
 fi
 
 echo "[*] Değişiklik bulundu, commit + push"
-git add data/halka-arz.json
+git add data/halka-arz.json public/halka-arz.json
 git commit -m "halka-arz: takvim verisi güncellendi (otomatik $(date -u '+%F %H:%M UTC'))" || { echo "commit başarısız"; exit 0; }
 if git push origin main 2>&1 | sed 's/^/  [push] /'; then
   echo "[+] Push başarılı — Cloudflare deploy tetiklendi"

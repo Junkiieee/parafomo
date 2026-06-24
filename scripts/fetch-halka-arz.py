@@ -24,6 +24,8 @@ from datetime import date, datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STORE = os.path.join(ROOT, "data", "halka-arz.json")
+# Açık sayfanın veri değişimini fark edip kendini yenilemesi için public kopya.
+PUBLIC = os.path.join(ROOT, "public", "halka-arz.json")
 
 BASE = "https://halkarz.com"
 FIELDS = "id,slug,link,title,date,modified"
@@ -235,6 +237,12 @@ def main():
         return 0 if os.path.exists(STORE) else 1
     with open(STORE, "w", encoding="utf-8") as fh:
         json.dump(data, fh, ensure_ascii=False, indent=2)
+    try:
+        os.makedirs(os.path.dirname(PUBLIC), exist_ok=True)
+        with open(PUBLIC, "w", encoding="utf-8") as fh:
+            json.dump(data, fh, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f"UYARI: public kopya yazılamadı: {e}", file=sys.stderr)
     n = sum(1 for i in data["items"] if i["status"] in ("Yaklaşan", "Devam Ediyor"))
     print(f"[+] {data['count']} kayıt yazıldı ({n} aktif/yaklaşan) -> {STORE}")
     return 0
