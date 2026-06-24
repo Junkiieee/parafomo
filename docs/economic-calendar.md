@@ -1,6 +1,6 @@
 # Ekonomik Takvim (otomatik)
 
-> Son güncelleme: 2026-06-23 · `scripts/fetch-economic-calendar.py` tarafından üretilir. ELLE DÜZENLEME.
+> Son güncelleme: 2026-06-24 · `scripts/fetch-economic-calendar.py` tarafından üretilir. ELLE DÜZENLEME.
 > Kaynaklar: Investing.com (TR + küresel, birincil), TCMB (faiz kararı), yedek: ForexFactory + TÜİK kuralı.
 
 İçerik üreticisi için: yaklaşan **🔴 High** etkili bir TR/küresel olay 1-3 gün içindeyse,
@@ -22,4 +22,8 @@ o olayın `hook`'una göre bir **explainer** yazısını sıraya al (omurga ever
 | 2026-07-03 | Cuma | 10:00 | 🇹🇷 | 🔴 High | TÜİK enflasyon (TÜFE, yıllık) | Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı. |
 | 2026-07-06 | Pazartesi | 17:00 | 🇺🇸 | 🔴 High | ISM Non-Manufacturing PMI (Jun) | ISM/PMI — ABD ekonomik aktivitesi, risk iştahı. |
 | 2026-07-06 | Pazartesi | 17:00 | 🇺🇸 | 🔴 High | ISM Non-Manufacturing Prices (Jun) | ISM/PMI — ABD ekonomik aktivitesi, risk iştahı. |
+| 2026-07-14 | Salı | 15:30 | 🇺🇸 | 🔴 High | Core CPI (MoM) (Jun) | Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi. |
+| 2026-07-14 | Salı | 15:30 | 🇺🇸 | 🔴 High | CPI (MoM) (Jun) | Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi. |
+| 2026-07-14 | Salı | 15:30 | 🇺🇸 | 🔴 High | CPI (YoY) (Jun) | Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi. |
 | 2026-07-23 | Perşembe |  | 🇹🇷 | 🔴 High | TCMB faiz kararı (PPK) | Faiz kararı kredi, mevduat, döviz ve borsayı doğrudan etkiler — karar öncesi 'faiz kararı paranı nasıl etkiler' explainer'ı yaz. |
+| 2026-07-29 | Çarşamba | 21:00 | 🇺🇸 | 🔴 High | Fed Interest Rate Decision | Faiz kararı — küresel faiz beklentisi TL ve borsayı etkiler. |

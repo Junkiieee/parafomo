@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-23",
+  "updated": "2026-06-24",
   "fetch_ok": true,
   "source": "investing",
   "events": [
@@ -112,6 +112,33 @@
       "hook": "ISM/PMI — ABD ekonomik aktivitesi, risk iştahı."
     },
     {
+      "date": "2026-07-14",
+      "time": "15:30",
+      "region": "USD",
+      "impact": "High",
+      "title": "Core CPI (MoM) (Jun)",
+      "source": "investing",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-07-14",
+      "time": "15:30",
+      "region": "USD",
+      "impact": "High",
+      "title": "CPI (MoM) (Jun)",
+      "source": "investing",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-07-14",
+      "time": "15:30",
+      "region": "USD",
+      "impact": "High",
+      "title": "CPI (YoY) (Jun)",
+      "source": "investing",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
       "date": "2026-07-23",
       "region": "TR",
       "impact": "High",
@@ -119,6 +146,15 @@
       "hook": "Faiz kararı kredi, mevduat, döviz ve borsayı doğrudan etkiler — karar öncesi 'faiz kararı paranı nasıl etkiler' explainer'ı yaz.",
       "time": "",
       "source": "tcmb"
+    },
+    {
+      "date": "2026-07-29",
+      "time": "21:00",
+      "region": "USD",
+      "impact": "High",
+      "title": "Fed Interest Rate Decision",
+      "source": "investing",
+      "hook": "Faiz kararı — küresel faiz beklentisi TL ve borsayı etkiler."
     }
   ]
 }

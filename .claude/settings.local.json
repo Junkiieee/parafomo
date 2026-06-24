@@ -55,7 +55,26 @@
       "Bash(/root/.venvs/parafomo/bin/python *)",
       "Read(//tmp/**)",
       "Read(//tmp/reel_frames/**)",
-      "Bash(git check-ignore *)"
+      "Bash(git check-ignore *)",
+      "Bash(command -v ffmpeg)",
+      "Bash(echo \"ffmpeg: $\\(command -v ffmpeg || echo YOK\\)\")",
+      "Read(//usr/bin/**)",
+      "Bash(/root/.venvs/parafomo/bin/pip list *)",
+      "Bash(command -v edge-tts)",
+      "Bash(sed 's/=.*/=***/' .env)",
+      "Bash(command -v ffprobe)",
+      "Bash(echo \"ffprobe: $\\(command -v ffprobe || echo YOK\\)\")",
+      "Bash(python3 -c \"import PIL; print\\('Pillow', PIL.__version__\\)\")",
+      "Bash(ffprobe -v error -select_streams v:0 -show_entries stream=width,height,codec_name -of default=noprint_wrappers=1 public/social/short-gdp-gsyih-nedir-nasil-yorumlanir.mp4)",
+      "Bash(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate,channels -of default=noprint_wrappers=1 public/social/short-gdp-gsyih-nedir-nasil-yorumlanir.mp4)",
+      "Bash(ffmpeg -y -ss 1 -i public/social/short-gdp-gsyih-nedir-nasil-yorumlanir.mp4 -frames:v 1 /tmp/prev_hook.png)",
+      "Bash(ffmpeg -y -ss 22 -i public/social/short-gdp-gsyih-nedir-nasil-yorumlanir.mp4 -frames:v 1 /tmp/prev_point.png)",
+      "Bash(ffmpeg -hide_banner -filters)",
+      "Bash(echo \"libass: $\\(ffmpeg -hide_banner -filters)",
+      "Bash(chmod +x scripts/shorts-daily.sh scripts/shorts-state.py scripts/shorts-script.py scripts/youtube-upload.py)",
+      "Bash(awk '/^shorts:/{p=1} p{print} /^---/{if\\(p\\)exit}' src/content/blog/enflasyondan-nasil-korunur.md)",
+      "Bash(python3 scripts/fetch-halka-arz.py)",
+      "Bash(grep -oE \"vs_currencies=usd|fmtPrice|\\\\\\\\\\\\$|usd_24h_change\" dist/index.html)"
     ]
   }
 }
