@@ -33,7 +33,7 @@ NAVY_TOP, NAVY_BOT = (10, 28, 56), (14, 40, 74)
 WHITE, SOFT, TEAL, TEAL_LT = (238, 243, 250), (150, 170, 196), (43, 177, 148), (99, 212, 145)
 GREEN, RED = (60, 200, 130), (235, 92, 92)
 
-BADGE = {"acilis": "GÜNAYDIN · BIST AÇILDI", "kapanis": "BIST KAPANIŞ · GÜN SONU"}
+BADGE = {"acilis": "BIST AÇILIŞ", "kapanis": "BIST KAPANIŞ · GÜN SONU"}
 
 
 def F(n, s):
