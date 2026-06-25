@@ -17,6 +17,17 @@ faq:
     a: "Bu yöntem kısa vadeli spekülatif araçlarda pek anlam taşımaz; en iyi sonucu 3-5 yıl ve üzerinde, uzun vadeli yatırımlarda verir. Vade uzadıkça piyasa ortalamasının üzerinde getiri yakalama olasılığı artar."
   - q: "Türkiye'de DCA nasıl pratik olarak uygulanır?"
     a: "Her maaş gününde bütçenizin %10-20'sini seçtiğiniz araça (BIST ETF, endeks fonu veya gram altın) yatıracak şekilde sabit bir alım planı oluşturun. Birçok aracı kurum 'otomatik yatırım' özelliği sunmaktadır — bu sayede kararı duygulara bırakmadan otomatikleştirmiş olursunuz."
+shorts:
+  - "Piyasanın dibini profesyoneller bile tahmin edemiyor."
+  - "Her ay sabit miktarda yatırım yaparak fiyat düştüğünde otomatik daha fazla birim alır, ortalama maliyetinizi aşağı çekersiniz."
+  - "Piyasa çakıldığında panikleyip satmak yerine DCA sizi sabit bir ritme bağlar ve duygusal kararları devre dışı bırakır."
+  - "Türkiye'de nakit tutmak alım gücünüzü eritiyor; DCA ile paranızı düzenli aralıklarla varlıklara yönlendirerek enflasyona karşı koyabilirsiniz."
+  - "Adım adım hesaplama ve Türkiye örnekleri için parafomo.com'a bakın."
+shorts_broll:
+  - "dollar cost averaging investment graph"
+  - "monthly savings coins jar money"
+  - "stock market price fluctuation chart"
+  - "turkish lira inflation cash wallet"
 ---
 
 Piyasanın en dibini yakalamak herkesin hayalidir. Gerçekte ise profesyonel yatırımcıların büyük çoğunluğu bile bunu tutarlı biçimde başaramaz. **Maliyet ortalaması**, bu zorlu soruyu tamamen ortadan kaldıran bir yatırım yöntemidir: "Ne zaman almalıyım?" diye sormak yerine "Her ay alıyorum" ilkesiyle hareket edersiniz. Bu yazıda DCA'nın (Dolar Cost Averaging) ne olduğunu, nasıl çalıştığını ve Türkiye bağlamında nasıl uygulayabileceğinizi adım adım anlatıyoruz.
