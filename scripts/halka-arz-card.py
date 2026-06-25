@@ -145,9 +145,10 @@ def load_item(args):
     sys.exit("[ha] duyurulabilir kayıt yok")
 
 
-def build(it):
+def build(it, ptype="tarih"):
     img = vgrad(W, H, NAVY_TOP, NAVY_BOT).convert("RGBA")
     d = ImageDraw.Draw(img)
+    badge_txt = "SPK ONAYI" if ptype == "onay" else "HALKA ARZ TARİHİ"
 
     f_badge = F("DejaVuSans-Bold.ttf", 30)
     f_co = F("DejaVuSans-Bold.ttf", 50)
@@ -156,9 +157,9 @@ def build(it):
     f_val = F("DejaVuSans-Bold.ttf", 38)
     f_foot = F("DejaVuSans.ttf", 28)
 
-    # --- üst teal şerit + "YENİ HALKA ARZ" ---
+    # --- üst teal şerit + rozet ---
     d.rectangle([0, 0, W, 14], fill=TEAL)
-    badge = "YENİ HALKA ARZ"
+    badge = badge_txt
     bb = d.textbbox((0, 0), badge, font=f_badge)
     bw = bb[2] - bb[0]
     pad = 30
@@ -218,14 +219,16 @@ def build(it):
 
     # --- detay satırları ---
     size = offer_size(it.get("lot"), it.get("price"))
+    date_val = clean(it.get("date_text")) if ptype != "onay" and clean(it.get("date_text")) \
+        else "Yakında açıklanacak"
     rows = [
-        ("Halka Arz Tarihi", clean(it.get("date_text"))),
+        ("Halka Arz Tarihi", date_val),
         ("Dağıtım Yöntemi", clean(it.get("distribution"))),
         ("Pay Fiyatı", clean(it.get("price"))),
         ("Arz Büyüklüğü", size or "—"),
         ("Toplam Lot", clean(it.get("lot"))),
     ]
-    rows = [(k, v) for k, v in rows if v and v != "—" or k == "Arz Büyüklüğü"]
+    rows = [(k, v) for k, v in rows if (v and v != "—") or k in ("Arz Büyüklüğü", "Halka Arz Tarihi")]
 
     top = y + 10
     avail = H - top - 250
@@ -268,11 +271,13 @@ def build(it):
 
 def main():
     args = sys.argv[1:]
+    ptype = args[args.index("--type") + 1] if "--type" in args else "tarih"
     it = load_item(args)
-    img = build(it)
+    img = build(it, ptype)
     os.makedirs(OUT_DIR, exist_ok=True)
-    code = (it.get("bist_code") or it.get("slug") or "ha").upper()
-    out = os.path.join(OUT_DIR, f"halka-arz-{code}.jpg")
+    key = (it.get("slug") or it.get("bist_code") or "ha")
+    key = re.sub(r"[^A-Za-z0-9-]", "", key)
+    out = os.path.join(OUT_DIR, f"halka-arz-{key}-{ptype}.jpg")
     img.save(out, "JPEG", quality=90)
     img.save(os.path.join(OUT_DIR, "halka-arz-preview.jpg"), "JPEG", quality=90)
     print(f"[ha] kart üretildi: {out}  ({it.get('company')})")

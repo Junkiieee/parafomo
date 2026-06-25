@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """
-ParaFOMO — Yeni halka arzı Instagram'a postlar (olay-tetiklemeli).
+ParaFOMO — Halka arz TARİH postu (talep tarihleri belli olunca) Instagram'a.
 
-data/halka-arz.json'da tarihi+fiyatı belli, daha önce postlanmamış arzları
-bulur. halka-arz-card.py'nin ürettiği kartı (GitHub raw URL) IG'ye yayınlar.
-dedup: logs/halka-arz-posted.txt (postlanan BİST kodları, satır satır).
+data/halka-arz.json'da talep tarihi belli (status Yaklaşan/Devam Ediyor),
+daha önce tarih-postu atılmamış arzları bulur. halka-arz-card.py'nin
+ürettiği kartı (--type tarih, GitHub raw URL) IG'ye yayınlar.
+dedup: logs/halka-arz-posted.txt (slug satır satır).
 
 Modlar:
-  --list            : postlanabilir YENİ kodları yazdırır (orkestrasyon kullanır)
-  --code BETAE      : o kartı postlar (kart zaten üretilmiş+push'lanmış olmalı),
-                      başarılıysa kodu posted.txt'e ekler
-  --code BETAE --dry: caption+URL göster, yayınlama
+  --list             : tarih-postlanabilir YENİ slug'ları yazdırır
+  --slug <slug>      : o kartı postlar (kart üretilmiş+push'lanmış olmalı)
+  --slug <slug> --dry: caption+URL göster, yayınlama
 """
 import os
 import re
@@ -27,38 +27,32 @@ POSTED = os.path.join(ROOT, "logs", "halka-arz-posted.txt")
 ENV_FILE = os.path.expanduser("~/.config/parafomo/instagram.env")
 RAW = "https://raw.githubusercontent.com/Junkiieee/parafomo/main/public/social"
 API = "https://graph.facebook.com/v21.0"
-
-HASHTAGS = ("#halkaarz #borsa #bist #borsaistanbul #yatırım #hisse #parafomo")
+HASHTAGS = "#halkaarz #borsa #bist #borsaistanbul #yatırım #hisse #parafomo"
 
 
 def items():
     return json.load(open(DATA, encoding="utf-8"))["items"]
 
 
-def posted_codes():
+def posted_slugs():
     if not os.path.exists(POSTED):
         return set()
-    return {l.strip().upper() for l in open(POSTED) if l.strip()}
+    return {l.strip() for l in open(POSTED) if l.strip()}
 
 
-def is_postable(it):
-    return bool(it.get("price")) and bool(it.get("start")) and \
-        it.get("status") != "Tamamlandı" and bool(it.get("bist_code"))
+def is_tarih(it):
+    return bool(it.get("start")) and it.get("status") in ("Yaklaşan", "Devam Ediyor") \
+        and bool(it.get("slug"))
 
 
-def new_codes():
-    done = posted_codes()
-    out = []
+def new_slugs():
+    done = posted_slugs()
+    return [it["slug"] for it in items() if is_tarih(it) and it["slug"] not in done]
+
+
+def find(slug):
     for it in items():
-        code = (it.get("bist_code") or "").upper()
-        if is_postable(it) and code and code not in done and code not in out:
-            out.append(code)
-    return out
-
-
-def find(code):
-    for it in items():
-        if (it.get("bist_code") or "").upper() == code.upper():
+        if it.get("slug") == slug:
             return it
     return None
 
@@ -93,11 +87,10 @@ def offer_size(lot, price):
 def build_caption(it):
     co = clean(it.get("company"))
     code = (it.get("bist_code") or "").upper()
+    title = f"🚀 {co}" + (f" ({code})" if code else "")
+    title += f" halka arzı {clean(it.get('date_text'))} tarihlerinde başlıyor!"
     size = offer_size(it.get("lot"), it.get("price"))
-    head = f"🚀 Yeni halka arz: {co} ({code}) Borsa İstanbul yolunda!"
     lines = []
-    if clean(it.get("date_text")):
-        lines.append(f"📅 Tarih: {clean(it.get('date_text'))}")
     if clean(it.get("price")):
         lines.append(f"💰 Fiyat: {clean(it.get('price'))}")
     if clean(it.get("distribution")):
@@ -106,10 +99,9 @@ def build_caption(it):
         lines.append(f"📊 Arz büyüklüğü: {size}")
     if clean(it.get("lot")):
         lines.append(f"🔢 Lot: {clean(it.get('lot'))}")
-    body = "\n".join(lines)
     cta = "Halka arz takviminin tamamı → parafomo.com/halka-arz"
     tags = HASHTAGS + (f" #{code.lower()}" if code else "")
-    return "\n\n".join([head, body, cta, tags])
+    return "\n\n".join([title, "\n".join(lines), cta, tags])
 
 
 def load_env():
@@ -145,19 +137,20 @@ def url_ok(url):
         return False
 
 
-def record(code):
+def record(slug):
     os.makedirs(os.path.dirname(POSTED), exist_ok=True)
     with open(POSTED, "a") as f:
-        f.write(code.upper() + "\n")
+        f.write(slug + "\n")
 
 
-def post(code, dry=False):
-    it = find(code)
+def post(slug, dry=False):
+    it = find(slug)
     if not it:
-        sys.exit(f"[ha] {code} bulunamadı")
-    img_url = f"{RAW}/halka-arz-{code.upper()}.jpg"
+        sys.exit(f"[ha] {slug} bulunamadı")
+    key = re.sub(r"[^A-Za-z0-9-]", "", slug)
+    img_url = f"{RAW}/halka-arz-{key}-tarih.jpg"
     caption = build_caption(it)
-    print(f"[ha] {it.get('company')} ({code})")
+    print(f"[ha] {it.get('company')}  ({slug})")
     print(f"[ha] URL: {img_url}")
     print(f"[ha] ----- caption -----\n{caption}\n[ha] -----------------")
     if dry:
@@ -177,22 +170,19 @@ def post(code, dry=False):
     if "id" not in pub:
         sys.exit(f"[ha] HATA (yayın): {json.dumps(pub, ensure_ascii=False)}")
     print(f"[ha] ✅ YAYINLANDI! media_id={pub['id']}")
-    record(code)
+    record(slug)
 
 
 def main():
     args = sys.argv[1:]
     if "--list" in args:
-        for c in new_codes():
-            print(c)
+        for s in new_slugs():
+            print(s)
         return
-    if "--code" in args:
-        code = args[args.index("--code") + 1]
-        post(code, dry="--dry" in args)
+    if "--slug" in args:
+        post(args[args.index("--slug") + 1], dry="--dry" in args)
         return
-    # argümansız: yeni kodları listele
-    codes = new_codes()
-    print("Yeni postlanabilir kodlar:", ", ".join(codes) if codes else "(yok)")
+    print("Yeni tarih-postlanabilir:", ", ".join(new_slugs()) or "(yok)")
 
 
 if __name__ == "__main__":
