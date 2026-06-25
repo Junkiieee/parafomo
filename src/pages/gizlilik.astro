@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../site.config';
+
+const updated = '25 Haziran 2026';
+---
+
+<BaseLayout
+  title="Gizlilik Politikası"
+  description="ParaFOMO gizlilik politikası: hangi verileri topluyoruz, nasıl kullanıyoruz ve haklarınız nelerdir?"
+>
+  <article class="container legal prose">
+    <span class="eyebrow">Yasal</span>
+    <h1>Gizlilik Politikası</h1>
+    <p class="soft">Son güncelleme: {updated}</p>
+
+    <p>
+      {SITE.name} ("biz", "site") olarak gizliliğinize önem veriyoruz. Bu politika,
+      <a href={SITE.url}>{SITE.url}</a> adresini ziyaret ettiğinizde hangi bilgilerin
+      toplandığını, nasıl kullanıldığını ve haklarınızı açıklar.
+    </p>
+
+    <h2>Topladığımız veriler</h2>
+    <p>
+      {SITE.name} bir içerik (blog) sitesidir. Üyelik veya hesap oluşturmanızı gerektirmez.
+      Aşağıdaki sınırlı verileri işleriz:
+    </p>
+    <ul>
+      <li>
+        <strong>Anonim kullanım istatistikleri:</strong> Sayfa görüntülemeleri, ziyaret edilen
+        sayfalar, yaklaşık coğrafi konum (ülke/şehir), tarayıcı ve cihaz türü gibi
+        toplulaştırılmış veriler. Bu veriler analiz araçları (ör. Google Analytics, Google
+        Search Console) aracılığıyla, sizi kişisel olarak tanımlamadan toplanır.
+      </li>
+      <li>
+        <strong>Bülten e-postası (isteğe bağlı):</strong> Bültenimize abone olursanız yalnızca
+        verdiğiniz e-posta adresini saklarız.
+      </li>
+      <li>
+        <strong>İletişim:</strong> Bize e-posta gönderirseniz, yanıt verebilmek için
+        mesajınızı ve e-posta adresinizi işleriz.
+      </li>
+    </ul>
+
+    <h2>Çerezler</h2>
+    <p>
+      Site, temel işlevsellik ve anonim analiz için çerezler kullanabilir. Tarayıcı
+      ayarlarınızdan çerezleri reddedebilir veya silebilirsiniz; bu, sitenin temel
+      kullanımını etkilemez.
+    </p>
+
+    <h2>Sosyal medya</h2>
+    <p>
+      İçeriklerimizi Instagram, X (Twitter), YouTube ve Telegram gibi platformlarda
+      paylaşırız. Bu platformlardaki etkileşimleriniz ilgili platformun kendi gizlilik
+      politikasına tabidir. Bu paylaşımlar sırasında sitemiz, ziyaretçilerine ait kişisel
+      veriyi bu platformlara aktarmaz.
+    </p>
+
+    <h2>Verilerin kullanımı</h2>
+    <p>
+      Toplanan veriler yalnızca içeriğimizi iyileştirmek, site performansını ölçmek ve
+      (abone olduysanız) bülten göndermek için kullanılır. Verilerinizi satmayız veya
+      üçüncü taraflarla pazarlama amacıyla paylaşmayız.
+    </p>
+
+    <h2>Haklarınız</h2>
+    <p>
+      KVKK ve GDPR kapsamında; verilerinize erişme, düzeltme, silme ve işlemeye itiraz etme
+      haklarına sahipsiniz. Verilerinizin silinmesini talep etmek için
+      <a href="/veri-silme">Veri Silme</a> sayfamıza bakabilirsiniz.
+    </p>
+
+    <h2>İletişim</h2>
+    <p>
+      Gizlilikle ilgili her türlü soru için bize
+      <a href={`mailto:${SITE.email}`}>{SITE.email}</a> adresinden ulaşabilirsiniz.
+    </p>
+
+    <p class="disclaimer muted">
+      Bu politika zaman zaman güncellenebilir. Değişiklikler bu sayfada yayımlandığı
+      tarihte yürürlüğe girer.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal { padding-top: 3rem; max-width: var(--maxw-prose); }
+  .legal h1 { font-size: var(--step-3); margin: 0.6rem 0 0.4rem; }
+  .legal h2 { font-size: var(--step-1); margin-top: 2rem; color: var(--brand); }
+  .legal ul { padding-left: 1.2rem; }
+  .legal li { margin: 0.5rem 0; }
+  .disclaimer { font-size: var(--step--1); margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border-soft); }
+</style>

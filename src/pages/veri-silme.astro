@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../site.config';
+
+const updated = '25 Haziran 2026';
+---
+
+<BaseLayout
+  title="Veri Silme Talebi"
+  description="ParaFOMO ile ilişkili kişisel verilerinizin silinmesini nasıl talep edebileceğinizi öğrenin."
+>
+  <article class="container legal prose">
+    <span class="eyebrow">Yasal</span>
+    <h1>Veri Silme Talebi</h1>
+    <p class="soft">Son güncelleme: {updated}</p>
+
+    <p>
+      {SITE.name} bir içerik sitesidir ve ziyaretçilerinden kişisel hesap verisi toplamaz.
+      Yalnızca anonim kullanım istatistikleri ve (abone olduysanız) bülten e-posta adresiniz
+      saklanır.
+    </p>
+
+    <h2>Verilerinizin silinmesini nasıl talep edersiniz?</h2>
+    <p>
+      Sizinle ilgili saklanan herhangi bir verinin (ör. bülten e-postanız veya bize
+      gönderdiğiniz iletişim mesajları) silinmesini istiyorsanız:
+    </p>
+    <ol>
+      <li>
+        <a href={`mailto:${SITE.email}?subject=Veri%20Silme%20Talebi`}>{SITE.email}</a>
+        adresine "Veri Silme Talebi" konulu bir e-posta gönderin.
+      </li>
+      <li>
+        E-postanızda, hangi verinin silinmesini istediğinizi belirtin (örneğin bülten
+        aboneliğinizde kullandığınız e-posta adresi).
+      </li>
+      <li>
+        Talebinizi aldıktan sonra <strong>en geç 30 gün içinde</strong> ilgili verileri
+        siler ve size onay veririz.
+      </li>
+    </ol>
+
+    <h2>Instagram / Facebook üzerinden gelen veriler</h2>
+    <p>
+      {SITE.name}, içeriklerini paylaşmak için Meta (Instagram/Facebook) platformlarını
+      kullanır ancak bu platformların kullanıcılarına ait kişisel veriyi toplamaz veya
+      saklamaz. Meta hesabınızla ilgili veri silme işlemleri için doğrudan ilgili platformun
+      ayarlarını kullanabilir veya yukarıdaki e-posta adresinden bizimle iletişime
+      geçebilirsiniz.
+    </p>
+
+    <h2>İletişim</h2>
+    <p>
+      Veri silme veya gizlilikle ilgili sorularınız için:
+      <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal { padding-top: 3rem; max-width: var(--maxw-prose); }
+  .legal h1 { font-size: var(--step-3); margin: 0.6rem 0 0.4rem; }
+  .legal h2 { font-size: var(--step-1); margin-top: 2rem; color: var(--brand); }
+  .legal ol { padding-left: 1.2rem; }
+  .legal li { margin: 0.5rem 0; }
+</style>
