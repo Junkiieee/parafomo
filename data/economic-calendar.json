@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-24",
+  "updated": "2026-06-25",
   "fetch_ok": true,
   "source": "investing",
   "events": [
@@ -155,6 +155,15 @@
       "title": "Fed Interest Rate Decision",
       "source": "investing",
       "hook": "Faiz kararı — küresel faiz beklentisi TL ve borsayı etkiler."
+    },
+    {
+      "date": "2026-07-30",
+      "region": "TR",
+      "impact": "Medium",
+      "title": "TCMB PPK toplantı özeti",
+      "hook": "Kararın gerekçesini sade dille yorumla.",
+      "time": "",
+      "source": "tcmb"
     }
   ]
 }
