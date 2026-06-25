@@ -55,6 +55,13 @@ done
 [ "$ok" != "1" ] && { echo "HATA: görsel canlı değil"; exit 1; }
 
 echo "[*] Instagram'a postlanıyor"
-python3 "$REPO/scripts/post-bist-instagram.py" --type "$PTYPE" 2>&1 | sed 's/^/    [ig] /'
+OUT=$(python3 "$REPO/scripts/post-bist-instagram.py" --type "$PTYPE" 2>&1); echo "$OUT" | sed 's/^/    [ig] /'
+
+# Feed postu yayınlandıysa ~2-3 dk sonra story paylaş
+if echo "$OUT" | grep -q "YAYINLANDI"; then
+  [ "$PTYPE" = "kapanis" ] && SLBL="BIST KAPANIŞ" || SLBL="BIST AÇILIŞ"
+  echo "[*] Story planlandı (~2-3 dk sonra)"
+  bash "$REPO/scripts/share-story.sh" "$IMG" "$SLBL" "BIST 100 ve piyasa profilde" 2>&1 | sed 's/^/    [story] /' || true
+fi
 
 echo "[$(date -u '+%F %T UTC')] BIST $PTYPE postu tamamlandı"

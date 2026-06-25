@@ -48,6 +48,12 @@ done
 [ "$ok" != "1" ] && { echo "HATA: görsel canlı değil"; exit 1; }
 
 echo "[*] IG post"
-"$VENV_PY" "$REPO/scripts/spk-onay.py" --post 2>&1 | sed 's/^/    [ig] /'
+OUT=$("$VENV_PY" "$REPO/scripts/spk-onay.py" --post 2>&1); echo "$OUT" | sed 's/^/    [ig] /'
+
+# Feed postu yayınlandıysa ~2-3 dk sonra story paylaş
+if echo "$OUT" | grep -q "YAYINLANDI"; then
+  echo "[*] Story planlandı (~2-3 dk sonra)"
+  bash "$REPO/scripts/share-story.sh" "public/social/$IMG" "SPK ONAYI" "Detaylar profilde" 2>&1 | sed 's/^/    [story] /' || true
+fi
 
 echo "[$(date -u '+%F %T UTC')] SPK onay kontrolü tamamlandı"

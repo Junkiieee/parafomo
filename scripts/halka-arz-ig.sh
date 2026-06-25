@@ -54,7 +54,11 @@ for s in $SEL; do
   done
   [ "$ok" != "1" ] && { echo "UYARI: $s görseli canlı değil, atlanıyor"; continue; }
   echo "[*] IG post: $s"
-  python3 "$REPO/scripts/post-halka-arz-instagram.py" --slug "$s" 2>&1 | sed 's/^/    [ig] /'
+  OUT=$(python3 "$REPO/scripts/post-halka-arz-instagram.py" --slug "$s" 2>&1); echo "$OUT" | sed 's/^/    [ig] /'
+  if echo "$OUT" | grep -q "YAYINLANDI"; then
+    echo "[*] Story planlandı (~2-3 dk sonra)"
+    bash "$REPO/scripts/share-story.sh" "public/social/halka-arz-${KEY}-tarih.jpg" "HALKA ARZ" "Detaylar profilde" 2>&1 | sed 's/^/    [story] /' || true
+  fi
 done
 
 echo "[$(date -u '+%F %T UTC')] Halka arz TARİH kontrolü tamamlandı"

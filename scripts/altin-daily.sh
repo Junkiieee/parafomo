@@ -64,6 +64,12 @@ done
 
 # 6) Instagram'a postla
 echo "[*] Instagram'a postlanıyor"
-python3 "$REPO/scripts/post-altin-instagram.py" 2>&1 | sed 's/^/    [ig] /'
+OUT=$(python3 "$REPO/scripts/post-altin-instagram.py" 2>&1); echo "$OUT" | sed 's/^/    [ig] /'
+
+# 7) Feed postu yayınlandıysa ~2-3 dk sonra story paylaş
+if echo "$OUT" | grep -q "YAYINLANDI"; then
+  echo "[*] Story planlandı (~2-3 dk sonra)"
+  bash "$REPO/scripts/share-story.sh" "$IMG" "GÜNCEL ALTIN" "Tüm fiyatlar profilde" 2>&1 | sed 's/^/    [story] /' || true
+fi
 
 echo "[$(date -u '+%F %T UTC')] Altın IG postu tamamlandı"
