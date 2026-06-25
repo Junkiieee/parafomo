@@ -23,6 +23,7 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(ROOT, "public", "social")
 WORDMARK = os.path.join(ROOT, "public", "parafomo-wordmark.png")
+BG_ASSET = os.path.join(ROOT, "public", "social", "assets", "bist-bg.jpg")
 TG = "https://finans.truncgil.com/v4/today.json"
 CG = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true"
 FONT_DIR = "/usr/share/fonts/truetype/dejavu"
@@ -77,6 +78,35 @@ def vgrad(w, h, top, bot):
     return base
 
 
+def cover(im, w, h):
+    s = max(w / im.width, h / im.height)
+    im = im.resize((int(im.width * s) + 1, int(im.height * s) + 1))
+    x, y = (im.width - w) // 2, (im.height - h) // 2
+    return im.crop((x, y, x + w, y + h))
+
+
+def background():
+    """Lacivert gradyan + üstte mum grafik fotosu (aşağı doğru lacivderte erir)."""
+    base = vgrad(W, H, NAVY_TOP, NAVY_BOT).convert("RGBA")
+    if not os.path.exists(BG_ASSET):
+        return base
+    ch = cover(Image.open(BG_ASSET).convert("RGB"), W, H).convert("RGBA")
+    mask = Image.new("L", (W, H))
+    md = mask.load()
+    for y in range(H):
+        t = y / H
+        vis = 0.55 * (1 - t / 0.62) if t < 0.62 else 0.0   # üstte ~%55, %62'de biter
+        a = int(255 * max(0.0, vis))
+        for x in range(W):
+            md[x, y] = a
+    ch.putalpha(mask)
+    base.alpha_composite(ch)
+    # üst kısma hafif koyu vinyet (metin okunurluğu)
+    ov = Image.new("RGBA", (W, 470), (10, 28, 56, 60))
+    base.alpha_composite(ov, (0, 0))
+    return base
+
+
 def arrow(d, cx, cy, up, color, s=16):
     if up:
         d.polygon([(cx, cy - s), (cx - s, cy + s), (cx + s, cy + s)], fill=color)
@@ -93,7 +123,7 @@ def chg_txt(c):
 
 def build(ptype, date_label):
     data = fetch()
-    img = vgrad(W, H, NAVY_TOP, NAVY_BOT).convert("RGBA")
+    img = background()
     d = ImageDraw.Draw(img)
     f_badge = F("DejaVuSans-Bold.ttf", 30)
     f_lbl = F("DejaVuSans.ttf", 36)
