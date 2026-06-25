@@ -9,8 +9,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Altın mı dolar mı? Hangisi daha mantıklı? — `Ekonomi` — hedef: "altın mı dolar mı"
 - [x] Hisse senedi nasıl seçilir? Temel analiz rehberi — `Borsa` — hedef: "hisse senedi nasıl seçilir"
 - [x] Endeks fonu nedir, nasıl alınır? — `Yatırım` — hedef: "endeks fonu nedir"
-- [ ] Bileşik getiri nedir ve neden bu kadar güçlü? — `Yatırım` — hedef: "bileşik faiz nedir"
-- [ ] Dolar maliyet ortalaması (DCA) stratejisi nedir? — `Yatırım` — hedef: "maliyet ortalaması nedir"
+- [x] Bileşik getiri nedir ve neden bu kadar güçlü? — `Yatırım` — hedef: "bileşik faiz nedir"
+- [x] Dolar maliyet ortalaması (DCA) stratejisi nedir? — `Yatırım` — hedef: "maliyet ortalaması nedir"
 - [ ] Kredi kartı borcundan nasıl kurtulunur? — `Kişisel Finans` — hedef: "kredi kartı borcundan kurtulma"
 - [ ] Eurobond nedir, kimler için uygun? — `Yatırım` — hedef: "eurobond nedir"
 - [ ] Ethereum nedir, Bitcoin'den farkı ne? — `Kripto` — hedef: "ethereum nedir"
@@ -51,3 +51,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Endeks fonu nedir, nasıl alınır? — `endeks-fonu-nedir`
 - [x] PCE nedir? Fed'in enflasyon göstergesi — `pce-nedir-fed-enflasyon-gostergesi` (takvim: 25 Haziran Core PCE açıklaması)
 - [x] GDP (GSYİH) nedir? Büyüme verisi piyasaları nasıl etkiler? — `gdp-gsyih-nedir-nasil-yorumlanir` (takvim: 25 Haziran Q1 GDP açıklaması)
+- [x] Bileşik getiri nedir ve neden bu kadar güçlü? — `bilesik-faiz-nedir`
+- [x] Dolar maliyet ortalaması (DCA) stratejisi nedir? — `dca-nedir-maliyet-ortalamasi`
