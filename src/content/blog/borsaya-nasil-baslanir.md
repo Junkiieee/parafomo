@@ -5,6 +5,17 @@ pubDate: 2026-05-18
 category: "Borsa"
 tags: ["borsa", "hisse senedi", "BIST", "yeni başlayanlar"]
 readingTime: 10
+shorts:
+  - "Hisse almak sandığın kadar karmaşık değil, işte kanıtı."
+  - "Borsa aslında çok basit: bir şirketten hisse alırsın, şirket büyüdükçe paranın değeri de artar."
+  - "Başlamadan önce acil fon kur, kredi kartı borcunu kapat ve sadece kaybetmeyi göze aldığın parayı yatır."
+  - "Tek hisseye girmek yerine endeks fonu seç; düzenli ve sabırlı yatırım, sürekli al-sat yapandan çok daha iyi sonuç verir."
+  - "Adım adım tam rehber parafomo.com'da, hemen oku."
+shorts_broll:
+  - "stock market chart screen"
+  - "person using mobile banking app"
+  - "turkish lira banknotes"
+  - "index fund portfolio diversification"
 ---
 
 Borsa, çoğu kişiye "karmaşık ekranlar ve risk" gibi görünür. Oysa temel mantığı şaşırtıcı derecede basittir: **bir şirketin küçük bir ortağı olursunuz ve şirket büyüdükçe payınızın değeri artar.** Bu rehberde sıfırdan, hiçbir ön bilgi gerektirmeden borsaya nasıl başlayacağınızı anlatıyoruz.
