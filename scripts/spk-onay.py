@@ -250,12 +250,9 @@ def render_multi(b):
     title = f"Bu Hafta {len(comps)} Halka Arz Onaylandı"
     for i, ln in enumerate(_wrap(d, title, f_title, W - 140)[:2]):
         tb = d.textbbox((0, 0), ln, font=f_title)
-        d.text(((W - (tb[2] - tb[0])) // 2, 150 + i * 60), ln, font=f_title, fill=WHITE)
-    sub = f"SPK Bülteni {b['num']}"
-    sbb = d.textbbox((0, 0), sub, font=f_sub)
-    d.text(((W - (sbb[2] - sbb[0])) // 2, 272), sub, font=f_sub, fill=TEAL_LT)
+        d.text(((W - (tb[2] - tb[0])) // 2, 160 + i * 60), ln, font=f_title, fill=WHITE)
 
-    top = 340
+    top = 300
     avail = H - top - 150
     rh = min(150, avail // max(1, len(comps)))
     lsz = min(96, rh - 24)
@@ -278,9 +275,6 @@ def render_multi(b):
     d.line([(70, top + len(comps) * rh), (W - 70, top + len(comps) * rh)],
            fill=(255, 255, 255, 26), width=1)
 
-    note = "Talep tarihleri belli oldukça ayrıca paylaşacağız."
-    nb = d.textbbox((0, 0), note, font=f_foot)
-    d.text(((W - (nb[2] - nb[0])) // 2, H - 170), note, font=f_foot, fill=SOFT)
     if os.path.exists(WORDMARK):
         wm = Image.open(WORDMARK).convert("RGBA")
         ww = 200

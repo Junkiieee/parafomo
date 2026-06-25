@@ -242,19 +242,6 @@ def build(it, ptype="tarih"):
     rows_bottom = top + len(rows) * rh
     d.line([(96, rows_bottom), (W - 96, rows_bottom)], fill=(255, 255, 255, 26), width=1)
 
-    # --- aracı kurum (alt, küçük; genişliğe göre kısalt) ---
-    broker = clean(it.get("broker"))
-    if broker:
-        broker = re.sub(r"\s+", " ", broker)
-        prefix = "Aracı Kurum: "
-        maxw = W - 192
-        full = prefix + broker
-        if d.textbbox((0, 0), full, font=f_foot)[2] > maxw:
-            while broker and d.textbbox((0, 0), prefix + broker + "…", font=f_foot)[2] > maxw:
-                broker = broker.rsplit(" ", 1)[0] if " " in broker else broker[:-1]
-            full = prefix + broker + "…"
-        d.text((96, rows_bottom + 22), full, font=f_foot, fill=SOFT)
-
     # --- footer ---
     if os.path.exists(WORDMARK):
         wm = Image.open(WORDMARK).convert("RGBA")
