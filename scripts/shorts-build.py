@@ -48,8 +48,8 @@ ASS_FONT = "Liberation Sans"
 
 EDGE_VOICE = "tr-TR-EmelNeural"
 GOOGLE_VOICE = "tr-TR-Chirp3-HD-Kore"
-GOOGLE_RATE = 1.05
-EDGE_RATE = "+6%"
+GOOGLE_RATE = 1.15  # daha hızlı/enerjik anlatım (donuk tonu canlandırmak için ↑ 2026-06-25)
+EDGE_RATE = "+15%"
 LEAD = 0.45
 TAIL = 0.55
 FPS = 30
@@ -111,15 +111,15 @@ def build_segments(front):
         hook, cta = custom[0], (custom[-1] if len(custom) > 2 else "Tümü parafomo.com'da. Takip et!")
         points = custom[1:-1] if len(custom) > 2 else custom[1:]
         segs.append(("hook", category, hook))
-        for i, p in enumerate(points[:4], 1):
-            segs.append(("point", f"{i}", p))
+        for p in points[:4]:
+            segs.append(("point", "", p))
         segs.append(("cta", "", cta))
         return title, segs
     faq = parse_faq(front)[:3]
     hk = re.sub(r'\s+', ' ', title).strip()
     segs.append(("hook", category, hk if hk.endswith(("?", ".", "!")) else hk + "."))
-    for i, (q, a) in enumerate(faq, 1):
-        segs.append(("point", f"{i}/{len(faq)}", f"{q.rstrip('?')}? {first_sentences(a,1)}"))
+    for q, a in faq:
+        segs.append(("point", "", f"{q.rstrip('?')}? {first_sentences(a,1)}"))
     segs.append(("cta", "", "Tüm detaylar parafomo.com'da. Takip et, paranı büyüt!"))
     return title, segs
 

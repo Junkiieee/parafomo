@@ -23,10 +23,9 @@ BLOG = os.path.join(ROOT, "src", "content", "blog")
 STATE = os.path.join(ROOT, "logs", "shorts-state.json")
 
 # günlük rotasyon — Chirp3-HD sesleri (kadın/erkek karışık); her gün biri kullanılır
+# Not: Despina ve Leda kullanıcı isteğiyle çıkarıldı (donuk bulundu — 2026-06-25).
 VOICES = [
-    "tr-TR-Chirp3-HD-Despina",
     "tr-TR-Chirp3-HD-Orus",
-    "tr-TR-Chirp3-HD-Leda",
     "tr-TR-Chirp3-HD-Schedar",
     "tr-TR-Chirp3-HD-Callirrhoe",
     "tr-TR-Chirp3-HD-Charon",
