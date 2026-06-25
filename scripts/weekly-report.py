@@ -13,9 +13,17 @@ Kullanım:
   /root/.venvs/parafomo/bin/python scripts/weekly-report.py            # rapor yaz
   /root/.venvs/parafomo/bin/python scripts/weekly-report.py --telegram # + Telegram
 """
+import logging
 import os
 import sys
 from datetime import date, timedelta
+
+# google-auth (>=2.40) servis hesabı için "Regional Access Boundary" lookup'ı dener;
+# bu ortamda yapılandırılmadığı için FAILED_PRECONDITION ile döner ve her çağrıda
+# stderr'e zararsız bir WARNING basar. Lookup non-fatal (rapor yine üretiliyor),
+# bu yüzden ilgili Google logger'larını ERROR seviyesine çekip gürültüyü susturuyoruz.
+logging.getLogger("google.auth").setLevel(logging.ERROR)
+logging.getLogger("google.oauth2").setLevel(logging.ERROR)
 
 from google.oauth2 import service_account
 from googleapiclient.discovery import build

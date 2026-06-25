@@ -29,6 +29,9 @@ logs/
 # Haftalık trafik raporu (yerel dashboard, trafik verisi)
 docs/analytics-report.md
 
+# Shorts videoları (büyük ikili dosyalar — senaryo .json'ları repoda tutulur, mp4'ler değil)
+public/social/*.mp4
+
 # python cache
 __pycache__/
 *.pyc
