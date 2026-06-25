@@ -4,6 +4,119 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-06-25
+
+**Yayınlanan yazı:** [Maliyet Ortalaması (DCA) Nedir? Piyasayı Zamanlamadan Yatırım](/blog/dca-nedir-maliyet-ortalamasi)
+
+> **Neden bu konu?** Takvimdeki PCE ve GDP yazıları zaten yayınlanmıştı; GSC fırsatı henüz oluşmadı. Backlog'dan sıradaki konu: dolar maliyet ortalaması (DCA). "Piyasanın dibini beklemek" yerine düzenli alım yapan her yatırımcının bilmesi gereken temel strateji rehberi.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+1/ "Piyasa düşünce alacağım" diyip hiç alamayanlar için bir strateji var.
+
+Adı: Maliyet Ortalaması (DCA). Tek soruyu ortadan kaldırır: "Ne zaman girmeliyim?" 👇
+
+2/ DCA nedir?
+
+Her ay sabit bir miktar yatırıyorsunuz — piyasa yüksek mi alçak mı, önemli değil.
+
+Fiyat düşünce: daha fazla birim alırsınız.
+Fiyat yükselince: daha az birim alırsınız.
+
+Sonuç: ortalama maliyetiniz otomatik olarak düşer.
+
+3/ Somut örnek:
+
+Her ay 1.000 TL → 4 ay
+
+Ocak: 10 TL/birim → 100 birim alıyorsunuz
+Şubat: 8 TL/birim → 125 birim alıyorsunuz
+Mart: 12 TL/birim → 83 birim alıyorsunuz
+Nisan: 9 TL/birim → 111 birim alıyorsunuz
+
+Dönem ort. fiyat: 9,75 TL
+Sizin ort. maliyetiniz: 9,55 TL ✅
+
+4/ Neden bu işe yarıyor?
+
+Profesyoneller bile "en dibi" tutarlı yakalayamıyor.
+
+DCA bu soruyu tamamen devre dışı bırakır:
+"Doğru anı bekle" → "Her ay al"
+
+Duygusal kararlar (panikle sat, heyecanla al) da böylece önleniyor.
+
+5/ Türkiye bağlamı:
+
+Nakit tutmak → enflasyon yiyor
+DCA ile endeks fonu / gram altın / ETF → enflasyonu geçebilir
+
+Her maaş günü %10-15'ini yatırıma yönlendirin, gerisi otomatik.
+
+6/ En büyük DCA hataları:
+
+❌ "Piyasa düştü, bu ay atlayayım" → zinciri kır
+❌ Yüksek maliyetli araç seç → bileşik düşman
+❌ 3 ayda sonuç bekle → bu 5 yıllık strateji
+
+7/ Detaylı rehber: parafomo.com/blog/dca-nedir-maliyet-ortalamasi
+
+Bileşik büyüme + DCA = en güçlü ikili. Erken başlayanın farkı zamanla 2-3 kat oluyor.
+
+#DCA #maliyetortalaması #yatırım #BIST #altın #paraFOMO
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Slide 1 — Kapak:**
+Piyasanın dibini bekleyenler için kötü haber: kimse tutarlı biçimde bulamıyor.
+İyi haber: buna ihtiyacın yok. 👇
+**#DCA #MaliyetOrtalaması**
+
+**Slide 2:**
+📌 Maliyet Ortalaması Nedir?
+Her ay sabit miktarda yatırım yaparsın.
+Fiyat düşünce → daha fazla birim
+Fiyat yükselince → daha az birim
+Ortalama maliyet otomatik düşer.
+
+**Slide 3:**
+📊 Basit örnek (aylık 1.000 TL):
+Ocak 10 TL → 100 birim
+Şubat 8 TL → 125 birim
+Mart 12 TL → 83 birim
+Dönem ort: 9,75 TL | Senin ort: 9,55 TL ✅
+
+**Slide 4:**
+🇹🇷 Türkiye'de nasıl uygularsın?
+→ Endeks fonu / ETF
+→ Gram altın
+→ Dolar/Euro
+Her maaş günü %10-15 → otomatik talimat kur → karar verme yükü yok
+
+**Slide 5:**
+⚠️ DCA'yı öldüren 3 hata:
+1. "Bu ay atlayayım" diyip zinciri kırmak
+2. Yüksek ücretli araç seçmek
+3. 3 ayda sonuç beklemek (bu 5+ yıllık strateji)
+
+**Caption:**
+Piyasayı zamanlamaya gerek yok — düzenli olmak yeter. Linkteki yazıda tablo, karşılaştırma ve Türkiye için adım adım rehber var. 👆
+
+#DCA #maliyetortalaması #yatırım #borsa #altın #paraFOMO #kişiselfinans #tasarruf
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş** — yukarıdaki taslakları kullan; Instagram için carousel 5 slide'lık bir post olacak, story olarak da paylaşabilirsin.
+2. **İlgili bir toplulukta paylaş** — r/Turkey veya Türkiye finans Telegram/WhatsApp gruplarında "Maliyet ortalaması nedir?" sorusunu soran birine bu yazıyı referans göster (spam değil, değer katarak).
+
+---
+
 ## 2026-06-23
 
 **Yayınlanan yazı:** [GDP (GSYİH) Nedir? Büyüme Verisi Piyasaları Nasıl Etkiler?](/blog/gdp-gsyih-nedir-nasil-yorumlanir)
