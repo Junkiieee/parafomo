@@ -1,36 +1,36 @@
 {
-  "updated": "2026-06-25T18:15+00:00",
+  "updated": "2026-06-26T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 50,
+  "count": 49,
   "items": [
     {
-      "company": "Beta Enerji ve Teknoloji A.Ş.",
-      "bist_code": "BETAE",
-      "slug": "beta-enerji-ve-teknoloji-a-s",
-      "link": "https://halkarz.com/beta-enerji-ve-teknoloji-a-s/",
-      "date_text": "23-24-25 Haziran 2026",
-      "start": "2026-06-23",
-      "end": "2026-06-25",
-      "status": "Devam Ediyor",
-      "price": "40,00 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "60.750.000 Lot",
-      "broker": "Türkiye Sınai Kalkınma Bankası A.Ş. Ziraat Yatırım Menkul Değerler A.Ş. Yatırım Finansman Menkul Değerler A.Ş."
-    },
-    {
       "company": "(Orzax) Orzaks İlaç ve Kimya San. Tic. A.Ş.",
-      "bist_code": "",
+      "bist_code": "ORZAX",
       "slug": "orzaks-ilac-ve-kimya-san-tic-a-s",
       "link": "https://halkarz.com/orzaks-ilac-ve-kimya-san-tic-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
+      "date_text": "29-30 Haziran, 1 Temmuz 2026 09:00-17:00",
+      "start": "2026-06-29",
+      "end": "2026-07-01",
+      "status": "Yaklaşan",
       "price": "69,00 TL",
       "distribution": "Eşit Dağıtım **",
       "lot": "52.500.000 Lot",
       "broker": "İnfo Yatırım Menkul Değerler A.Ş."
+    },
+    {
+      "company": "İsvea Seramik ve Banyo Ürünleri Sanayi A.Ş.",
+      "bist_code": "ISVEA",
+      "slug": "isvea-seramik-ve-banyo-urunleri-sanayi-a-s",
+      "link": "https://halkarz.com/isvea-seramik-ve-banyo-urunleri-sanayi-a-s/",
+      "date_text": "1-2-3 Temmuz 2026 09:00-17:00",
+      "start": "2026-07-01",
+      "end": "2026-07-03",
+      "status": "Yaklaşan",
+      "price": "20,90 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "67.000.000 Lot",
+      "broker": "Halk Yatırım Menkul Değerler A.Ş. Ahlatcı Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "(Intercity) Ekim Turizm Tic. ve San. A.Ş.",
@@ -59,20 +59,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "100.000.000 Lot",
       "broker": "İntegral Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "İsvea Seramik ve Banyo Ürünleri Sanayi A.Ş.",
-      "bist_code": "",
-      "slug": "isvea-seramik-ve-banyo-urunleri-sanayi-a-s",
-      "link": "https://halkarz.com/isvea-seramik-ve-banyo-urunleri-sanayi-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "20,90 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "67.000.000 Lot",
-      "broker": "Halk Yatırım Menkul Değerler A.Ş. Ahlatcı Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "Golda Gıda San. ve Tic. A.Ş.",
@@ -537,6 +523,20 @@
       "broker": "Yapı Kredi Yatırım Menkul Değerler A.Ş."
     },
     {
+      "company": "Beta Enerji ve Teknoloji A.Ş.",
+      "bist_code": "BETAE",
+      "slug": "beta-enerji-ve-teknoloji-a-s",
+      "link": "https://halkarz.com/beta-enerji-ve-teknoloji-a-s/",
+      "date_text": "23-24-25 Haziran 2026",
+      "start": "2026-06-23",
+      "end": "2026-06-25",
+      "status": "Tamamlandı",
+      "price": "40,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "60.750.000 Lot",
+      "broker": "Türkiye Sınai Kalkınma Bankası A.Ş. Ziraat Yatırım Menkul Değerler A.Ş. Yatırım Finansman Menkul Değerler A.Ş."
+    },
+    {
       "company": "Ekinciler Demir ve Çelik Sanayi A.Ş.",
       "bist_code": "EKDMR",
       "slug": "ekinciler-demir-ve-celik-sanayi-a-s",
@@ -689,20 +689,6 @@
       "distribution": "Eşit Dağıtım",
       "lot": "54.700.000 Lot",
       "broker": "Halk Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Netcad Yazılım A.Ş.",
-      "bist_code": "NETCD",
-      "slug": "netcad-yazilim-a-s",
-      "link": "https://halkarz.com/netcad-yazilim-a-s/",
-      "date_text": "28-29-30 Ocak 2026",
-      "start": "2026-01-28",
-      "end": "2026-01-30",
-      "status": "Tamamlandı",
-      "price": "46,00 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "40.000.000 Lot",
-      "broker": "İnfo Yatırım Menkul Değerler A.Ş."
     }
   ]
 }
