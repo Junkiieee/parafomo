@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-25",
+  "updated": "2026-06-26",
   "fetch_ok": true,
   "source": "investing",
   "events": [
@@ -137,6 +137,24 @@
       "title": "CPI (YoY) (Jun)",
       "source": "investing",
       "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-07-16",
+      "time": "15:30",
+      "region": "USD",
+      "impact": "High",
+      "title": "Core Retail Sales (MoM) (Jun)",
+      "source": "investing",
+      "hook": "Perakende satışlar — tüketim ve büyüme sinyali."
+    },
+    {
+      "date": "2026-07-16",
+      "time": "15:30",
+      "region": "USD",
+      "impact": "High",
+      "title": "Retail Sales (MoM) (Jun)",
+      "source": "investing",
+      "hook": "Perakende satışlar — tüketim ve büyüme sinyali."
     },
     {
       "date": "2026-07-23",

@@ -74,7 +74,28 @@
       "Bash(chmod +x scripts/shorts-daily.sh scripts/shorts-state.py scripts/shorts-script.py scripts/youtube-upload.py)",
       "Bash(awk '/^shorts:/{p=1} p{print} /^---/{if\\(p\\)exit}' src/content/blog/enflasyondan-nasil-korunur.md)",
       "Bash(python3 scripts/fetch-halka-arz.py)",
-      "Bash(grep -oE \"vs_currencies=usd|fmtPrice|\\\\\\\\\\\\$|usd_24h_change\" dist/index.html)"
+      "Bash(grep -oE \"vs_currencies=usd|fmtPrice|\\\\\\\\\\\\$|usd_24h_change\" dist/index.html)",
+      "Read(//root/.venvs/parafomo/lib/**)",
+      "Bash(xargs -0 git rm --cached)",
+      "Bash(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 public/social/short-dca-nedir-maliyet-ortalamasi.mp4)",
+      "Bash(ffmpeg -y -ss 2 -i public/social/short-dca-nedir-maliyet-ortalamasi.mp4 -frames:v 1 /tmp/frame_hook.png)",
+      "Bash(ffmpeg -y -ss 14 -i public/social/short-dca-nedir-maliyet-ortalamasi.mp4 -frames:v 1 /tmp/frame_point.png)",
+      "Bash(git commit -q -m 'özellik: yazılara konuya özel Pexels kapak görseli \\(site içi hero + kart\\) *)",
+      "Bash(mkdir -p ~/.config/parafomo)",
+      "Bash(cat)",
+      "Bash(chmod 600 ~/.config/parafomo/instagram.env)",
+      "Bash(python3 -)",
+      "Bash(git commit -q -m 'instagram: Graph API content-publish entegrasyonu + gizlilik/veri-silme sayfaları *)",
+      "Bash(npx wrangler *)",
+      "Bash(sudo crontab -l)",
+      "Bash(grep -niE 'ticker|setInterval|setTimeout|refresh|fetch|api|price|coingecko|finnhub|[0-9]{4,}' src/pages/index.astro)",
+      "Bash(python3 -c \"from PIL import Image; im=Image.open\\('public/parafomo-wordmark.png'\\); print\\('wordmark', im.size, im.mode\\)\")",
+      "Bash(python3 -c \"from PIL import Image; im=Image.open\\('public/favicon-512.png'\\); print\\('favicon-512', im.size, im.mode\\)\")",
+      "Bash(chmod +x scripts/altin-card.py scripts/altin-yorum.py scripts/post-altin-instagram.py scripts/altin-daily.sh)",
+      "Bash(python3 scripts/altin-yorum.py)",
+      "Bash(python3 scripts/post-altin-instagram.py --dry)",
+      "Bash(chmod +x scripts/bist-card.py scripts/bist-yorum.py scripts/post-bist-instagram.py scripts/bist-daily.sh)",
+      "Bash(python3 scripts/post-bist-instagram.py --type acilis --dry)"
     ]
   }
 }

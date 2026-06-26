@@ -4,6 +4,71 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-06-26
+
+**Yayınlanan yazı:** [Kredi Kartı Borcundan Nasıl Kurtulunur? Adım Adım Plan](/blog/kredi-karti-borcundan-kurtulma)
+
+**X (Twitter) Thread Taslağı:**
+
+🧵 Kredi kartı borcunda minimum ödeme yapıyor musun?
+
+Seninle acı bir gerçeği paylaşayım:
+50.000 TL borcu minimum ödemeyle kapatmak yıllarca sürebilir.
+Faiz olarak anapara kadar ek ödeme yaparsın.
+
+Çıkış yolu var. İşte iki yöntem 👇
+
+1/ Kartopu yöntemi:
+→ En küçük borçtan başla
+→ O borcu bitir
+→ O ödemeyi bir sonrakine ekle
+→ Her kapattığında motivasyon artar
+
+2/ Çığ yöntemi:
+→ En yüksek faizliden başla
+→ Matematiksel olarak daha az faiz ödersin
+→ Disiplin isteyenler için ideal
+
+3/ Hangisini seçmelisin?
+Kendin için en sürdürülabilir olanı.
+Tamamlanmış plan > mükemmel ama yarım plan
+
+4/ Kural:
+→ Bütçeni sıfırdan kur
+→ Zorunlu olmayan harcamayı geçici kes
+→ Artakalan her kuruşu borca yönlendir
+
+5/ Borçtan kurtulduktan sonra
+o ödeme kapasitenini yatırıma yönlendir.
+Bileşik faiz seni bu sefer senin tarafında çalıştırsın.
+
+Detaylar: parafomo.com/blog/kredi-karti-borcundan-kurtulma
+
+**Instagram Post/Carousel Metni:**
+
+💳 Kredi kartı borcundan çıkmak için 2 yöntem:
+
+1️⃣ KARTOPu YÖNTEMİ
+En küçük borçtan başla → Motivasyonun yüksek kalır
+
+2️⃣ ÇIĞ YÖNTEMİ
+En yüksek faizliden başla → Toplam maliyetin düşer
+
+🔑 Anahtar kural:
+Her ay minimum üzerinde öde. Artakalan her kuruşu en öncelikli borca yığ.
+
+Detaylı adım adım plan için → parafomo.com/blog/kredi-karti-borcundan-kurtulma 🔗 (biyografdeki link)
+
+#kişiselfinans #kreditkarti #borçkapatma #finansalözgürlük #parayönetimi #tasarruf #finansipuçları
+
+---
+
+**Bugün senin yapman gerekenler:**
+1. X thread'ini ve Instagram post'unu yayınla (sosyal kartı `public/social/kredi-karti-borcundan-kurtulma.png` kullanabilirsin).
+2. Türkiye'de kişisel finans konuşulan Facebook grubu veya Telegram kanalında konuya değer katan bir yorum bırak, makaleyi paylaş.
+
+---
+
 ## 2026-06-25
 
 **Yayınlanan yazı:** [Maliyet Ortalaması (DCA) Nedir? Piyasayı Zamanlamadan Yatırım](/blog/dca-nedir-maliyet-ortalamasi)
