@@ -11,7 +11,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Endeks fonu nedir, nasıl alınır? — `Yatırım` — hedef: "endeks fonu nedir"
 - [x] Bileşik getiri nedir ve neden bu kadar güçlü? — `Yatırım` — hedef: "bileşik faiz nedir"
 - [x] Dolar maliyet ortalaması (DCA) stratejisi nedir? — `Yatırım` — hedef: "maliyet ortalaması nedir"
-- [ ] Kredi kartı borcundan nasıl kurtulunur? — `Kişisel Finans` — hedef: "kredi kartı borcundan kurtulma"
+- [x] Kredi kartı borcundan nasıl kurtulunur? — `Kişisel Finans` — hedef: "kredi kartı borcundan kurtulma"
 - [ ] Eurobond nedir, kimler için uygun? — `Yatırım` — hedef: "eurobond nedir"
 - [ ] Ethereum nedir, Bitcoin'den farkı ne? — `Kripto` — hedef: "ethereum nedir"
 - [ ] Stablecoin nedir, riskleri neler? — `Kripto` — hedef: "stablecoin nedir"
@@ -53,3 +53,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] GDP (GSYİH) nedir? Büyüme verisi piyasaları nasıl etkiler? — `gdp-gsyih-nedir-nasil-yorumlanir` (takvim: 25 Haziran Q1 GDP açıklaması)
 - [x] Bileşik getiri nedir ve neden bu kadar güçlü? — `bilesik-faiz-nedir`
 - [x] Dolar maliyet ortalaması (DCA) stratejisi nedir? — `dca-nedir-maliyet-ortalamasi`
+- [x] Kredi kartı borcundan nasıl kurtulunur? — `kredi-karti-borcundan-kurtulma`
