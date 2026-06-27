@@ -64,6 +64,14 @@ C_SHADOW = "&HA0000000"
 BROLL_POOL = ["stock market", "city skyline aerial", "money cash counting",
               "financial district night", "trading charts screen", "business people walking"]
 
+# Türkçe sayı kelimeleri → rakam (ekran içi stat kartı için)
+NUM_WORDS = {
+    "sıfır": 0, "bir": 1, "iki": 2, "üç": 3, "dört": 4, "beş": 5, "altı": 6,
+    "yedi": 7, "sekiz": 8, "dokuz": 9, "on": 10, "yirmi": 20, "otuz": 30,
+    "kırk": 40, "elli": 50, "altmış": 60, "yetmiş": 70, "seksen": 80,
+    "doksan": 90, "yüz": 100, "bin": 1000,
+}
+
 
 def fnt(p, s):
     return ImageFont.truetype(p, s)
@@ -268,7 +276,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     lines = [head]
     for start, end, chunk, big, ypos in events:
         ktext = "".join(f"{{\\k{max(1,k)}}}{ass_escape(w)} " for w, k in chunk).strip()
-        fs = "\\fs118" if big else ""
+        fs = "\\fs128" if big else ""
         pre = (f"{{\\an5\\pos(540,{ypos}){fs}\\fad(80,60)"
                f"\\t(0,120,\\fscx100\\fscy100)\\fscx92\\fscy92}}")
         lines.append(f"Dialogue: 0,{ts(start)},{ts(end)},Kar,,0,0,0,,{pre}{ktext}")
@@ -371,22 +379,97 @@ def make_overlay(kind, eyebrow, path):
     img.save(path)
 
 
-def make_clip(broll, audio, overlay, dur, out_clip):
+# ---------- ekran içi stat kartı (sayı vurgusu) ----------
+
+def _tr_word_num(tok):
+    tok = re.sub(r'[^a-zğüşıöç]', '', tok.lower())
+    for k, v in NUM_WORDS.items():
+        if tok == k or tok.startswith(k):
+            return v
+    return None
+
+
+def _grp(n):
+    return format(int(n), ",").replace(",", ".")
+
+
+def extract_stat(text):
+    """Cümleden en çarpıcı tek sayıyı bul → kısa etiket (yoksa None)."""
+    t = text.lower()
+    m = re.search(r'%\s?(\d+)', text)
+    if m:
+        return f"%{m.group(1)}"
+    m = re.search(r'yüzde\s+([a-zğüşıöç]+)', t)
+    if m:
+        n = _tr_word_num(m.group(1))
+        if n is not None:
+            return f"%{n}"
+    m = re.search(r'([\d][\d.\s]*\d|\d)\s*(lira|tl|₺)', t)
+    if m:
+        digits = re.sub(r'\D', '', m.group(1))
+        if digits:
+            return f"{_grp(digits)} TL"
+    m = re.search(r'(\d+)\s*kat', t)
+    if m:
+        return f"{m.group(1)}x"
+    m = re.search(r'\b(\d{3,})\b', text)
+    if m:
+        return _grp(m.group(1))
+    return None
+
+
+def make_stat_badge(text, path):
+    """Yuvarlak köşeli, marka renkli, büyük sayı rozeti üretir (animasyon make_clip'te)."""
+    probe = ImageDraw.Draw(Image.new("RGBA", (10, 10)))
+    fs = 180
+    for fs in (180, 158, 136, 116, 98):
+        f = fnt(SANS_B, fs)
+        tw = probe.textlength(text, font=f)
+        if tw <= 740:
+            break
+    f = fnt(SANS_B, fs)
+    tw = probe.textlength(text, font=f)
+    padx, pady = 74, 40
+    w, h = int(tw + padx * 2), int(fs + pady * 2)
+    img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([0, 0, w - 1, h - 1], radius=42, fill=(11, 16, 18, 234),
+                        outline=(*BRAND, 255), width=9)
+    d.rounded_rectangle([14, 14, w - 15, 24], radius=6, fill=(*LIGHT, 230))
+    d.text((w // 2, h // 2 + 6), text, font=f, fill=(*LIGHT, 255), anchor="mm")
+    img.save(path)
+
+
+def make_clip(broll, audio, overlay, dur, out_clip, badge=None):
     delay = int(LEAD * 1000)
+    D = f"{dur:.3f}"
+    bt = LEAD          # rozet konuşma başlarken belirir
+    BY = 500           # rozet üst-orta; altyazıların üstünde
+    inputs = []
     if broll:
-        vin = ["-stream_loop", "-1", "-t", f"{dur:.3f}", "-i", broll]
-        vsrc = ("[0:v]scale=1080:1920:force_original_aspect_ratio=increase,"
-                "crop=1080:1920,fps=30,eq=saturation=1.08:brightness=-0.03[bg];")
-        aud_idx, ov_idx = "1", "2"
+        # Ken Burns: kademeli zoom-in (statik "slayt" hissini kırar)
+        inputs += ["-stream_loop", "-1", "-t", D, "-i", broll]
+        fc = (f"[0:v]scale=1296:2304:force_original_aspect_ratio=increase,crop=1296:2304,"
+              f"crop=w='1296-216*min(t/{D}\\,1)':h='2304-384*min(t/{D}\\,1)':"
+              f"x='(in_w-out_w)/2':y='(in_h-out_h)/2',scale=1080:1920,setsar=1,fps=30,"
+              f"eq=saturation=1.10:brightness=-0.03,fade=t=in:st=0:d=0.20[bg];")
     else:
-        vin = ["-f", "lavfi", "-t", f"{dur:.3f}", "-i", "color=c=0x1E6B7F:s=1080x1920"]
-        vsrc = "[0:v]fps=30[bg];"
-        aud_idx, ov_idx = "1", "2"
-    fc = (vsrc + f"[bg][{ov_idx}:v]overlay=0:0[v];"
-          f"[{aud_idx}:a]adelay={delay}|{delay},apad=whole_dur={dur}[a]")
-    subprocess.run(["ffmpeg", "-y", *vin, "-i", audio, "-loop", "1", "-t", f"{dur:.3f}",
-                    "-i", overlay, "-filter_complex", fc, "-map", "[v]", "-map", "[a]",
-                    "-t", f"{dur:.3f}", "-c:v", "libx264", "-r", str(FPS), "-pix_fmt", "yuv420p",
+        inputs += ["-f", "lavfi", "-t", D, "-i", "color=c=0x14323C:s=1080x1920"]
+        fc = "[0:v]fps=30,fade=t=in:st=0:d=0.20[bg];"
+    inputs += ["-i", audio, "-loop", "1", "-t", D, "-i", overlay]
+    aud_idx, ov_idx = "1", "2"
+    if badge:
+        inputs += ["-loop", "1", "-t", D, "-i", badge]
+        fc += f"[bg][{ov_idx}:v]overlay=0:0[vb];"
+        fc += (f"[3:v]format=rgba,fade=t=in:st={bt:.2f}:d=0.30:alpha=1[bdg];"
+               f"[vb][bdg]overlay=x=(W-w)/2:"
+               f"y='{BY}+70*max(0\\,1-(t-{bt:.2f})/0.32)':"
+               f"enable='gte(t\\,{bt:.2f})'[v];")
+    else:
+        fc += f"[bg][{ov_idx}:v]overlay=0:0[v];"
+    fc += f"[{aud_idx}:a]adelay={delay}|{delay},apad=whole_dur={dur}[a]"
+    subprocess.run(["ffmpeg", "-y", *inputs, "-filter_complex", fc, "-map", "[v]", "-map", "[a]",
+                    "-t", D, "-c:v", "libx264", "-r", str(FPS), "-pix_fmt", "yuv420p",
                     "-c:a", "aac", "-b:a", "160k", "-ar", "44100", out_clip],
                    check=True, capture_output=True)
 
@@ -434,9 +517,15 @@ def main():
         make_overlay(kind, eyebrow, ov)
         query = broll_kw[i % len(broll_kw)] if not args.no_broll else None
         broll = pexels_broll(query, f"{TMP}/broll{i:02d}.mp4") if query else None
+        # ekran içi sayı vurgusu (CTA hariç) — finans Shorts'unda en yüksek etkili öğe
+        stat = extract_stat(spoken) if kind != "cta" else None
+        badge = None
+        if stat:
+            badge = f"{TMP}/badge{i:02d}.png"
+            make_stat_badge(stat, badge)
         clip_dur = LEAD + ad + TAIL
         clip = f"{TMP}/clip{i:02d}.mp4"
-        make_clip(broll, aud, ov, clip_dur, clip)
+        make_clip(broll, aud, ov, clip_dur, clip, badge=badge)
         clips.append(clip)
 
         # gerçek senkron: whisper → hizala → karaoke chunk
@@ -461,7 +550,8 @@ def main():
                 kk.append((w, max(1, int(round((nxt - st) * 100)))))
             events.append((cstart, cend, kk, big, ypos))
         tcur += clip_dur
-        print(f"    [{kind:5}] {clip_dur:4.1f}sn  broll={'✓' if broll else '—'}  {spoken[:42]}")
+        print(f"    [{kind:5}] {clip_dur:4.1f}sn  broll={'✓' if broll else '—'}"
+              f"  stat={stat or '—':>7}  {spoken[:38]}")
 
     lst = f"{TMP}/list.txt"
     open(lst, "w").write("".join(f"file '{c}'\n" for c in clips))
@@ -483,7 +573,7 @@ def main():
     out = os.path.join(OUT_DIR, f"short-{args.slug}.mp4")
     sub = f"subtitles={assf}:fontsdir={FONTSDIR}"
     if music:
-        fc = (f"[0:v]{sub}[v];[1:a]volume=0.10[bed];"
+        fc = (f"[0:v]{sub}[v];[1:a]volume=0.13[bed];"
               f"[bed][0:a]sidechaincompress=threshold=0.03:ratio=10:attack=15:release=350[d];"
               f"[0:a][d]amix=inputs=2:duration=first:dropout_transition=0[a]")
         subprocess.run(["ffmpeg", "-y", "-i", joined, "-stream_loop", "-1", "-i", music,

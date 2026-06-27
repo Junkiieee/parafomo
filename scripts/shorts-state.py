@@ -22,17 +22,35 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BLOG = os.path.join(ROOT, "src", "content", "blog")
 STATE = os.path.join(ROOT, "logs", "shorts-state.json")
 
-# günlük rotasyon — Chirp3-HD sesleri (kadın/erkek karışık); her gün biri kullanılır
-# Not: Despina ve Leda kullanıcı isteğiyle çıkarıldı (donuk bulundu — 2026-06-25).
+# günlük rotasyon — Chirp3-HD sesleri (kadın/erkek karışık); her gün biri kullanılır.
+# Amaç: kullanıcı her sesi tek tek dinleyip karar versin → henüz DENENMEMİŞ 24 ses sırada.
+# Denenip BEĞENİLMEYEN (bir daha kullanılmayacak): Despina, Leda, Aoede, Puck — 2026-06-26.
+# Denenip kullanılmaya devam edenler (rotasyon dışı, beğenildi): Orus, Schedar.
 VOICES = [
-    "tr-TR-Chirp3-HD-Orus",
-    "tr-TR-Chirp3-HD-Schedar",
+    "tr-TR-Chirp3-HD-Achernar",
+    "tr-TR-Chirp3-HD-Achird",
+    "tr-TR-Chirp3-HD-Algenib",
+    "tr-TR-Chirp3-HD-Algieba",
+    "tr-TR-Chirp3-HD-Alnilam",
+    "tr-TR-Chirp3-HD-Autonoe",
     "tr-TR-Chirp3-HD-Callirrhoe",
     "tr-TR-Chirp3-HD-Charon",
-    "tr-TR-Chirp3-HD-Aoede",
-    "tr-TR-Chirp3-HD-Puck",
-    "tr-TR-Chirp3-HD-Sulafat",
+    "tr-TR-Chirp3-HD-Enceladus",
+    "tr-TR-Chirp3-HD-Erinome",
     "tr-TR-Chirp3-HD-Fenrir",
+    "tr-TR-Chirp3-HD-Gacrux",
+    "tr-TR-Chirp3-HD-Iapetus",
+    "tr-TR-Chirp3-HD-Kore",
+    "tr-TR-Chirp3-HD-Laomedeia",
+    "tr-TR-Chirp3-HD-Pulcherrima",
+    "tr-TR-Chirp3-HD-Rasalgethi",
+    "tr-TR-Chirp3-HD-Sadachbia",
+    "tr-TR-Chirp3-HD-Sadaltager",
+    "tr-TR-Chirp3-HD-Sulafat",
+    "tr-TR-Chirp3-HD-Umbriel",
+    "tr-TR-Chirp3-HD-Vindemiatrix",
+    "tr-TR-Chirp3-HD-Zephyr",
+    "tr-TR-Chirp3-HD-Zubenelgenubi",
 ]
 
 

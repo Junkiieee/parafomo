@@ -4,6 +4,76 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-06-27
+
+**Yayınlanan yazı:** [Eurobond Nedir? Türkiye'den Dolar Faizi Almanın Yolu](/blog/eurobond-nedir)
+
+**Kategori:** Yatırım | **Hedef anahtar kelime:** eurobond nedir | **Okuma süresi:** ~8 dk
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+Dolar mevduatın faizi yetmiyor, ama dövizini çalıştırmak istiyorsun.
+İşte bu boşluğu dolduran araç: Eurobond 🧵
+
+**Tweet 2:**
+Eurobond = devletin ya da büyük şirketlerin uluslararası piyasalarda dolar/euro cinsinden ihraç ettiği tahvil.
+
+Türk yatırımcı için ne demek?
+→ TL riski yok
+→ Sabit dolar faizi
+→ 6 ayda bir kupon ödemesi
+
+**Tweet 3:**
+Dolar mevduata göre farkı ne?
+
+Dolar mevduat: düşük-orta faiz, yüksek likidite
+Eurobond: daha yüksek faiz (+1-3 puan), orta likidite
+
+2-3 yıl dokunamayacağın birikimlerde eurobond kazanır.
+
+**Tweet 4:**
+Nasıl alınır?
+1️⃣ Banka veya aracı kurumda döviz hesabı aç
+2️⃣ Hazine eurobond teklifini sor
+3️⃣ Minimum ~1.000 USD ile girilebilir
+4️⃣ Kupon her 6 ayda bir döviz hesabına düşer
+
+**Tweet 5 (CTA):**
+Tam karşılaştırma, vergi hesabı ve "kimler için uygun" sorusunun cevabı linkte 👇
+parafomo.com/blog/eurobond-nedir
+
+---
+
+### Instagram Post Metni
+
+**Başlık:** Eurobond nedir? 💵 Dolar faizi almanın yolu
+
+**Post metni:**
+Dolar hesabında yatırken mevduatın faizi yetmiyor mu? Eurobond tam da bunun için var.
+
+Devletin uluslararası piyasalarda çıkardığı dolar tahvili — sabit kupon, 6 ayda bir ödeme, minimum ~1.000 USD.
+
+✅ TL riski yok
+✅ Dolar mevduattan 1-3 puan fazla faiz
+✅ Banka şubesinden kolayca alınır
+⚠️ Ama 2-3 yıl dokunamayacağın birikim olmalı
+
+Tam rehber, karşılaştırma tabloları ve vergi hesabı bio linkte 🔗
+
+#eurobond #dolar #yatırım #parafomo #kişiselfinans #hazinebonosu #finans #tasarruf
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **X thread'ini yayınla** — Yukarıdaki 5 tweet'i sırayla paylaş; son tweet'e parafomo.com/blog/eurobond-nedir linkini ekle.
+2. **Instagram'da yayınla** — Post metnini ve kapak görselini (`public/covers/eurobond-nedir.jpg`) yükle; Eurobond konusuyla ilgili Türk finans gruplarında veya ilgili hesaplarda yazıyı paylaş.
+
+---
+
 ## 2026-06-26
 
 **Yayınlanan yazı:** [Kredi Kartı Borcundan Nasıl Kurtulunur? Adım Adım Plan](/blog/kredi-karti-borcundan-kurtulma)
