@@ -6,6 +6,17 @@ category: "Kişisel Finans"
 tags: ["bütçe", "tasarruf", "para yönetimi", "50-30-20"]
 readingTime: 8
 featured: false
+shorts:
+  - "Paran nereye gidiyor, hiç bilmiyor musun?"
+  - "Net gelirinizi üçe bölün: yüzde 50 ihtiyaçlara, yüzde 30 isteklere, yüzde 20 de geleceğinize ayırın."
+  - "Maaş gelir gelmez yüzde 20'yi ayrı hesaba otomatik aktarın; tasarruf iradeye kalmayınca çok daha kolay olur."
+  - "Oranlar size uymuyorsa esnetin; önemli olan bilinçli bir dağılımınızın olması, kuralın kendisi değil."
+  - "Kendi bütçeni kurmak için parafomo.com'u ziyaret et."
+shorts_broll:
+  - "personal budget planning notebook"
+  - "monthly expenses tracking app"
+  - "automatic bank transfer savings"
+  - "financial freedom money management"
 ---
 
 "Para nereye gidiyor anlamıyorum" cümlesini çok kuruyorsanız, sorun büyük ihtimalle ne kadar kazandığınız değil, **paranızı nasıl yönettiğinizdir.** İyi haber: karmaşık tablolar gerekmez. **50/30/20 kuralı**, dünyanın en pratik bütçeleme yöntemlerinden biridir ve 10 dakikada kurulur.
