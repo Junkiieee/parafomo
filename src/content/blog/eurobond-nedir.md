@@ -17,6 +17,17 @@ faq:
     a: "Türkiye'de yerleşik bireyler için Hazine eurobond kupon gelirinden yüzde 10 stopaj vergisi kesilir. İkincil piyasada gerçekleşen sermaye kazancında uygulama ihraç tarihine ve elde tutma süresine göre farklılaşabilir; güncel mevzuat için mali müşavirle görüşün."
   - q: "Eurobond mu dolar mevduat mı daha iyi?"
     a: "Eurobond tipik olarak dolar mevduattan 1-3 puan daha yüksek faiz sunar; ancak ikincil piyasada fiyatı dalgalanabilir ve anında nakde çevirmek zordur. Kısa vadeli nakit tutacaksanız mevduat daha güvenli; 2-3 yıl veya daha uzun süre bekleyebilecekseniz eurobond avantajlı olabilir."
+shorts:
+  - "Doların bankada bekliyor ama faiz mi düşük?"
+  - "Eurobond, devletin uluslararası piyasada dolar ya da euroyla ihraç ettiği tahvildir; TL riskini tamamen devre dışı bırakıp sabit döviz getirisi elde edersin."
+  - "Yılda iki kez kupon faizi hesabına otomatik girer; bin dolarlık eurobond yüzde yedide yılda tam yetmiş dolar kazandırır."
+  - "Türk bankaları aracılığıyla minimum bin dolarla alabilirsin; vadeye kadar tutarsan piyasa dalgalanmaları seni etkilemez, kupon ve anaparanı tam alırsın."
+  - "Tüm detaylar ve karşılaştırma tablosu için parafomo.com'u ziyaret et."
+shorts_broll:
+  - "dollar bills stacked on table"
+  - "government bond certificate document"
+  - "interest rate financial chart screen"
+  - "foreign currency exchange bank counter"
 ---
 
 Dövizini banka hesabında tutuyorsun ama getiri enflasyonu karşılamıyor. Dolar mevduatının faizi piyasanın gerisinde kalıyor. İşte bu noktada **eurobond** devreye giriyor: döviz cinsinden sabit ve genellikle mevduattan daha yüksek faiz sunan bir yatırım aracı.
