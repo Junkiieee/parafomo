@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-26T18:15+00:00",
+  "updated": "2026-06-27T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 49,
@@ -47,6 +47,20 @@
       "broker": "Halk Yatırım Menkul Değerler A.Ş. Ahlatcı Yatırım Menkul Değerler A.Ş."
     },
     {
+      "company": "(Intercity) Ekim Turizm Tic. ve San. A.Ş.",
+      "bist_code": "EKIM",
+      "slug": "ekim-turizm-tic-ve-san-a-s",
+      "link": "https://halkarz.com/ekim-turizm-tic-ve-san-a-s/",
+      "date_text": "1-2-3 Temmuz 2026 09:00-17:00",
+      "start": "2026-07-01",
+      "end": "2026-07-03",
+      "status": "Yaklaşan",
+      "price": "30,26 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "161.999.998 Lot",
+      "broker": "Ak Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş."
+    },
+    {
       "company": "Golda Gıda San. ve Tic. A.Ş.",
       "bist_code": "GOLDA",
       "slug": "golda-gida-san-ve-tic-a-s",
@@ -59,20 +73,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "87.499.998 Lot",
       "broker": "Gedik Yatırım Menkul Değerler A.Ş. Misyon Yatırım Bankası A.Ş."
-    },
-    {
-      "company": "(Intercity) Ekim Turizm Tic. ve San. A.Ş.",
-      "bist_code": "EKIM",
-      "slug": "ekim-turizm-tic-ve-san-a-s",
-      "link": "https://halkarz.com/ekim-turizm-tic-ve-san-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "30,26 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "162.000.000 Lot",
-      "broker": "Ak Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "Rönesans Altyapı Sistemleri A.Ş.",
