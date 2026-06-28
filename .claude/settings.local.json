@@ -96,7 +96,9 @@
       "Bash(python3 scripts/post-altin-instagram.py --dry)",
       "Bash(chmod +x scripts/bist-card.py scripts/bist-yorum.py scripts/post-bist-instagram.py scripts/bist-daily.sh)",
       "Bash(python3 scripts/post-bist-instagram.py --type acilis --dry)",
-      "Bash(python3 -c \"import json;d=json.load\\(open\\('logs/shorts-state.json'\\)\\);print\\(len\\(d['done']\\)\\);print\\('done:',d['done']\\)\")"
+      "Bash(python3 -c \"import json;d=json.load\\(open\\('logs/shorts-state.json'\\)\\);print\\(len\\(d['done']\\)\\);print\\('done:',d['done']\\)\")",
+      "Bash(bash -n scripts/viral-daily.sh)",
+      "Bash(chmod +x scripts/youtube-extras.py scripts/youtube-reauth.py)"
     ]
   }
 }
