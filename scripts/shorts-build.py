@@ -123,7 +123,7 @@ def build_segments(front):
     custom = parse_shorts(front)
     segs = []
     if custom:
-        hook, cta = custom[0], (custom[-1] if len(custom) > 2 else "Tümü parafomo.com'da. Takip et!")
+        hook, cta = custom[0], (custom[-1] if len(custom) > 2 else "Her gün yeni analiz için abone ol, kaçırma!")
         points = custom[1:-1] if len(custom) > 2 else custom[1:]
         segs.append(("hook", category, hook))
         for p in points[:4]:
@@ -135,7 +135,7 @@ def build_segments(front):
     segs.append(("hook", category, hk if hk.endswith(("?", ".", "!")) else hk + "."))
     for q, a in faq:
         segs.append(("point", "", f"{q.rstrip('?')}? {first_sentences(a,1)}"))
-    segs.append(("cta", "", "Tüm detaylar parafomo.com'da. Takip et, paranı büyüt!"))
+    segs.append(("cta", "", "Her gün yeni finans analizi için abone ol, paranı büyüt!"))
     return title, segs
 
 
@@ -371,13 +371,22 @@ def make_overlay(kind, eyebrow, path):
         img.alpha_composite(wm, (M, H - 120))
     d.text((W - M, H - 92), "@parafomo", font=fnt(SANS_B, 34), fill=(*LIGHT, 255), anchor="rm")
     if kind == "cta":
-        d.text((W // 2, 1340), "parafomo.com", font=fnt(SERIF_B, 92), fill=WHITE, anchor="mm")
-        bf = fnt(SANS_B, 44)
-        txt = "Takip et  @parafomo"
-        bw = d.textlength(txt, font=bf)
-        d.rounded_rectangle([(W - bw) // 2 - 46, 1430, (W + bw) // 2 + 46, 1430 + 92],
-                            radius=46, fill=(*BRAND, 255))
-        d.text((W // 2, 1476), txt, font=bf, fill=WHITE, anchor="mm")
+        # YouTube abone-odaklı kart: kırmızı "ABONE OL" butonu (play üçgeni) + marka satırı.
+        bf = fnt(SANS_B, 62)
+        label = "ABONE OL"
+        bw = d.textlength(label, font=bf)
+        pad_l, tri_w, gap, pad_r = 60, 46, 32, 56
+        box_w = int(pad_l + tri_w + gap + bw + pad_r)
+        x0 = (W - box_w) // 2
+        y0, bh = 1320, 126
+        d.rounded_rectangle([x0, y0, x0 + box_w, y0 + bh], radius=30, fill=(237, 28, 36, 255))
+        cy = y0 + bh // 2
+        tx = x0 + pad_l
+        d.polygon([(tx, cy - 27), (tx, cy + 27), (tx + tri_w, cy)], fill=WHITE)  # play üçgeni
+        d.text((tx + tri_w + gap, cy), label, font=bf, fill=WHITE, anchor="lm")
+        # marka + site satırı
+        d.text((W // 2, y0 + bh + 66), "@parafomo   ·   parafomo.com",
+               font=fnt(SANS_B, 42), fill=(*LIGHT, 255), anchor="mm")
     img.save(path)
 
 
