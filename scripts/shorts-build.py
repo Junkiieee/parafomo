@@ -648,7 +648,8 @@ def main():
     meta = {"title": title[:90] + " #Shorts",
             "description": desc,
             "tags": meta_tags,
-            "file": out, "slug": args.slug}
+            "file": out, "slug": args.slug,
+            "format": (scenario.get("format", "") if scenario else "")}
     json.dump(meta, open(os.path.join(OUT_DIR, f"short-{args.slug}.json"), "w",
                          encoding="utf-8"), ensure_ascii=False, indent=2)
     return 0

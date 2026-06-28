@@ -107,6 +107,12 @@ else
   echo "UYARI: YouTube yükleme atlandı/başarısız (devam)"
 fi
 
+# 6b) Abone-büyütme ekstraları: oynatma listesi + abone CTA yorumu (force-ssl scope
+#     yoksa zarifçe atlar; youtube-reauth.py ile aktive edilir). Pipeline'ı düşürmez.
+if [ -n "$YT_URL" ]; then
+  "$VPY" "$REPO/scripts/youtube-extras.py" "$SLUG" --format "$FORMAT" 2>&1 | sed 's/^/    [extras] /' || true
+fi
+
 # 7) Telegram önizleme
 echo "[*] Telegram'a gönderiliyor..."
 VID="$REPO/public/social/short-$SLUG.mp4"

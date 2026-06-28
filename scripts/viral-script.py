@@ -119,7 +119,7 @@ FORMAT: %(fmt_name)s
 Kurallar:
 - hook: en fazla 9 kelime; merak/şaşkınlık/FOMO uyandıran KISA cümle. Tıklama tuzağı değil, doğru.
 - 3 beat: her biri 12-20 kelime, tek başına anlaşılır, akıcı Türkçe. Kopuk ifade yok.
-- cta: kısa; KANALA ABONE olmaya çağır + bir SEBEP/vaat ver (ör. "her gün yeni yatırım analizi, kaçırma"). "abone ol" ifadesi mutlaka geçsin.
+- cta: kısa; önce ileriye dönük bir MERAK cümlesi (ör. "yarın hangi yatırım patlar, kaçırma") sonra KANALA ABONE olmaya çağır + bir SEBEP/vaat ("her gün yeni analiz"). "abone ol" ifadesi mutlaka geçsin.
 - Sade, net, abartısız; değer ver. Yanlış/uydurma rakam verme; tahmini ifadeleri "yaklaşık/olası" diye ver.
 - Her segmente bir "visual" ekle.
 %(visual_guide)s
