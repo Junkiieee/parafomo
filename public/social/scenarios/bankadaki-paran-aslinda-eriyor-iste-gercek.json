@@ -1,0 +1,59 @@
+{
+  "slug": "bankadaki-paran-aslinda-eriyor-iste-gercek",
+  "title": "Bankadaki Paran Aslında Eriyor — İşte Gerçek",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Banka mevduatının 'güvenli' göründüğü ama yüksek enflasyonda reel değer kaybettirdiğini açıklıyoruz. Türk yatırımcısı için kritik bilgi.",
+  "tags": [
+    "enflasyon",
+    "mevduat",
+    "faiz",
+    "reel getiri",
+    "türkiye",
+    "altın",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Bankada para tutmak güvenli sanıyorsun.",
+      "visual": {
+        "type": "scene",
+        "query": "bank counter money cash teller"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Enflasyon yüksekken banka faizi rakamı artırır ama paranın gerçek değeri her ay sessizce eriyor.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation money purchasing power losing value"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Reel getiri faizden enflasyonu çıkarınca kalır; yaklaşık yüzde kırk faizde yüzde altmış beş enflasyon varsa ekside kalırsın.",
+      "visual": {
+        "type": "concept",
+        "query": "interest rate vs inflation gap chart screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Altın, dolar veya hisse tutan Türk yatırımcılar, mevduatçıya kıyasla reel anlamda çok daha iyi korundu.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars coins"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Enflasyonu gerçekten geçen yatırım araçlarını yarın açıklıyoruz, kaçırma. Her gün yeni analiz için hemen abone ol.",
+      "visual": {
+        "type": "concept",
+        "query": "stock market investment growth chart screen"
+      }
+    }
+  ]
+}
