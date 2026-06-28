@@ -20,10 +20,17 @@ import json
 import base64
 import difflib
 import argparse
+import importlib.util
 import subprocess
 import urllib.request
 import urllib.parse
 from PIL import Image, ImageDraw, ImageFont
+
+# viral-visuals.py (tireli dosya adı) → modül olarak yükle
+_vv_spec = importlib.util.spec_from_file_location(
+    "viral_visuals", os.path.join(os.path.dirname(os.path.abspath(__file__)), "viral-visuals.py"))
+vv = importlib.util.module_from_spec(_vv_spec)
+_vv_spec.loader.exec_module(vv)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BLOG = os.path.join(ROOT, "src", "content", "blog")
@@ -351,12 +358,7 @@ def make_overlay(kind, eyebrow, path):
     d = ImageDraw.Draw(img)
     # üst marka bandı
     d.rectangle([0, 0, W, 10], fill=(*BRAND, 255))
-    # eyebrow chip
-    if eyebrow:
-        cf = fnt(SANS_B, 36)
-        tw = d.textlength(eyebrow, font=cf)
-        d.rounded_rectangle([M, 70, M + tw + 60, 70 + 70], radius=35, fill=(*BRAND, 255))
-        d.text((M + 30, 105), eyebrow, font=cf, fill=WHITE, anchor="lm")
+    # (kategori/eyebrow chip kaldırıldı — kullanıcı isteği 2026-06-28: kategori adı yazılmasın)
     # footer
     if os.path.exists(WORDMARK):
         wm = Image.open(WORDMARK).convert("RGBA")
@@ -488,6 +490,8 @@ def gen_pad(dur, path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("slug")
+    ap.add_argument("--scenario", default=None,
+                    help="Bağımsız viral senaryo JSON'u (blog yerine). Beat başına görsel içerir.")
     ap.add_argument("--engine", default="auto", choices=["auto", "google", "edge"])
     ap.add_argument("--voice", default=None)
     ap.add_argument("--edge-voice", default=EDGE_VOICE)
@@ -495,12 +499,32 @@ def main():
     ap.add_argument("--no-broll", action="store_true")
     args = ap.parse_args()
 
-    path = os.path.join(BLOG, f"{args.slug}.md")
-    if not os.path.exists(path):
-        print(f"HATA: yazı yok: {path}"); return 1
-    front = open(path, encoding="utf-8").read().split("---", 2)[1]
-    title, segs = build_segments(front)
-    broll_kw = parse_list(front, "shorts_broll") or BROLL_POOL
+    # Kaynak: bağımsız viral senaryo JSON'u VEYA blog yazısı frontmatter'ı.
+    front = ""
+    scenario = None
+    seg_visuals = []      # beat başına {type, query} veya None
+    meta_desc = ""
+    meta_tags = ["finans", "yatırım", "para", "ekonomi", "parafomo"]
+    blog_link = True
+    if args.scenario:
+        scenario = json.load(open(args.scenario, encoding="utf-8"))
+        title = scenario["title"]
+        segs = [(s.get("kind", "point"), s.get("eyebrow", ""), s["spoken"])
+                for s in scenario["segments"]]
+        seg_visuals = [s.get("visual") for s in scenario["segments"]]
+        broll_kw = None
+        meta_desc = scenario.get("description", "")
+        meta_tags = scenario.get("tags") or meta_tags
+        blog_link = False
+    else:
+        path = os.path.join(BLOG, f"{args.slug}.md")
+        if not os.path.exists(path):
+            print(f"HATA: yazı yok: {path}"); return 1
+        front = open(path, encoding="utf-8").read().split("---", 2)[1]
+        title, segs = build_segments(front)
+        broll_kw = parse_list(front, "shorts_broll") or BROLL_POOL
+        seg_visuals = [None] * len(segs)
+        meta_desc = fm(front, "description")
     synth, label = make_synth(args.engine, args.voice or GOOGLE_VOICE, args.edge_voice)
     print(f"[*] '{title}' → {len(segs)} segment, ses: {label}")
 
@@ -508,22 +532,36 @@ def main():
     for f in os.listdir(TMP):
         os.remove(os.path.join(TMP, f))
 
-    clips, events, tcur = [], [], 0.0
+    clips, events, tcur, credits = [], [], 0.0, []
     for i, (kind, eyebrow, spoken) in enumerate(segs):
         aud = f"{TMP}/aud{i:02d}.mp3"
         ov = f"{TMP}/ov{i:02d}.png"
         synth(spoken, aud)
         ad = duration(aud)
         make_overlay(kind, eyebrow, ov)
-        query = broll_kw[i % len(broll_kw)] if not args.no_broll else None
-        broll = pexels_broll(query, f"{TMP}/broll{i:02d}.mp4") if query else None
-        # ekran içi sayı vurgusu (CTA hariç) — finans Shorts'unda en yüksek etkili öğe
-        stat = extract_stat(spoken) if kind != "cta" else None
+        clip_dur = LEAD + ad + TAIL
+        # B-roll: senaryo beat'inde görsel spec'i varsa onu çöz (Wikimedia/Pexels),
+        # yoksa eski yol (shorts_broll anahtar kelimeleriyle Pexels).
+        brollpath = f"{TMP}/broll{i:02d}.mp4"
+        broll = None
+        visual = seg_visuals[i] if i < len(seg_visuals) else None
+        if args.no_broll:
+            broll = None
+        elif visual and visual.get("query"):
+            broll, attr = vv.resolve(visual, clip_dur, brollpath)
+            if attr and attr.get("need_attribution") and attr.get("credit"):
+                credits.append(attr["credit"])
+        else:
+            query = broll_kw[i % len(broll_kw)] if broll_kw else None
+            broll = pexels_broll(query, brollpath) if query else None
+        # ekran içi sayı vurgusu (CTA hariç) — finans Shorts'unda en yüksek etkili öğe.
+        # chart görselinde grafik zaten sayı gösterir → rozet eklenmez (çakışma olmasın).
+        is_chart = bool(visual and visual.get("type") == "chart")
+        stat = extract_stat(spoken) if (kind != "cta" and not is_chart) else None
         badge = None
         if stat:
             badge = f"{TMP}/badge{i:02d}.png"
             make_stat_badge(stat, badge)
-        clip_dur = LEAD + ad + TAIL
         clip = f"{TMP}/clip{i:02d}.mp4"
         make_clip(broll, aud, ov, clip_dur, clip, badge=badge)
         clips.append(clip)
@@ -590,9 +628,17 @@ def main():
     if total > 60:
         print(f"[!] {total:.0f}sn > 60 — senaryoyu kısalt")
 
+    tagline = " ".join("#" + t for t in meta_tags[:5]) or "#finans #yatırım"
+    if blog_link:
+        desc = f"{meta_desc}\n\nTüm yazı: https://parafomo.com/blog/{args.slug}/\n\n#Shorts {tagline}"
+    else:
+        desc = f"{meta_desc}\n\nDaha fazlası: https://parafomo.com\n\n#Shorts {tagline}"
+    # CC-BY görseller için atıf (kamu malı / CC0 atıf gerektirmez, eklenmez)
+    if credits:
+        desc += "\n\nGörseller: " + " · ".join(dict.fromkeys(credits))
     meta = {"title": title[:90] + " #Shorts",
-            "description": f"{fm(front,'description')}\n\nTüm yazı: https://parafomo.com/blog/{args.slug}/\n\n#Shorts #finans #yatırım #parafomo",
-            "tags": ["finans", "yatırım", "para", "ekonomi", "parafomo"],
+            "description": desc,
+            "tags": meta_tags,
             "file": out, "slug": args.slug}
     json.dump(meta, open(os.path.join(OUT_DIR, f"short-{args.slug}.json"), "w",
                          encoding="utf-8"), ensure_ascii=False, indent=2)
