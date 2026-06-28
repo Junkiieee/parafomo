@@ -1,0 +1,58 @@
+{
+  "slug": "ev-almak-seni-zengin-etmiyor-iste-gercek-rakamlar",
+  "title": "Ev Almak Seni Zengin Etmiyor: İşte Gerçek Rakamlar",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Türkiye'de konut 'güvenli yatırım' sanılır, ama enflasyona göre düzeltince tablo çoğu dönem çok farklı görünür.",
+  "tags": [
+    "konut yatırımı",
+    "gayrimenkul",
+    "enflasyon",
+    "türkiye yatırım",
+    "parafomo",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Ev almak her zaman kazandırır sanıyorsun.",
+      "visual": {
+        "type": "scene",
+        "query": "luxury apartment building istanbul real estate"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Türkiye'de konut fiyatları TL bazında artıyor, evet. Ama enflasyona göre düzeltince tablo çoğu dönem hayal kırıklığı yaratıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation money purchasing power loss cash"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Son 10 yılda konut değerleri nominal olarak yükselse de enflasyon düşüldüğünde reel kazanç çoğu zaman sıfıra yakın kaldı.",
+      "visual": {
+        "type": "concept",
+        "query": "real estate price chart inflation adjusted graph decline"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Evin tek yatırım aracın olmamalı; döviz, altın veya hisse ile çeşitlendirmek uzun vadede çok daha sağlam bir tablo yaratır.",
+      "visual": {
+        "type": "concept",
+        "query": "investment portfolio diversification gold stocks currency"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Gerçek getiriyi nasıl hesaplarsın diyorsan parafomo.com'a gir, kanalımıza abone ol, kaçırma!",
+      "visual": {
+        "type": "concept",
+        "query": "finance website mobile phone modern screen"
+      }
+    }
+  ]
+}

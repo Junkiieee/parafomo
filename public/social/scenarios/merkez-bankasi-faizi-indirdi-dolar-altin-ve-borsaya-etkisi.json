@@ -1,0 +1,59 @@
+{
+  "slug": "merkez-bankasi-faizi-indirdi-dolar-altin-ve-borsaya-etkisi",
+  "title": "Merkez Bankası Faizi İndirdi: Dolar, Altın ve Borsaya Etkisi",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Merkez Bankası'nın faiz kararı piyasaları nasıl etkiler? Dolar, altın ve borsa için mekanizmayı 45 saniyede açıklıyoruz.",
+  "tags": [
+    "merkez bankası",
+    "faiz kararı",
+    "tcmb",
+    "dolar tl",
+    "altın",
+    "borsa istanbul",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Merkez Bankası faizi indirdi — paran ne olacak?",
+      "visual": {
+        "type": "place",
+        "query": "Türkiye Cumhuriyet Merkez Bankası Ankara"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Faiz düşünce bankalar daha ucuz kredi verir, piyasaya para akar ve enflasyon baskısı yükselir.",
+      "visual": {
+        "type": "concept",
+        "query": "interest rate cut bank loans money flow chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Düşük faiz TL'yi daha az cazip kılar; yabancı yatırımcılar dövize yönelme eğilimi gösterebilir.",
+      "visual": {
+        "type": "concept",
+        "query": "Turkish lira dollar exchange rate screen trading"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Enflasyon beklentisi arttıkça altın tarihsel olarak güçlenir; borsa da ucuz krediden olumlu etkilenir.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars shiny"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Günlük piyasa analizleri için parafomo.com'u ziyaret et ve bizi takip et.",
+      "visual": {
+        "type": "concept",
+        "query": "finance news laptop screen modern desk"
+      }
+    }
+  ]
+}

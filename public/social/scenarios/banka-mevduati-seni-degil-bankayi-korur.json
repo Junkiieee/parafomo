@@ -1,0 +1,57 @@
+{
+  "slug": "banka-mevduati-seni-degil-bankayi-korur",
+  "title": "Banka Mevduatı Seni Değil, Bankayı Korur",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Paranı bankada tutmak güvenli sanılır ama Türkiye'deki enflasyon gerçekliğinde reel getirim çoğunlukla negatife düşer. Mit yıkıyoruz.",
+  "tags": [
+    "enflasyon",
+    "banka mevduatı",
+    "türkiye yatırım",
+    "finansal okuryazarlık",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Bankada para tutmak seni korumaz, eritir.",
+      "visual": {
+        "type": "scene",
+        "query": "bank vault door opening money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Enflasyon faiz getirisini geçtiği anda paranın satın alma gücü sessizce erir, fark etmezsin bile.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation money melting purchasing power loss"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Reel getiri, faizden enflasyonu çıkardığında kalan rakam; Türkiye'de bu çoğunlukla negatif çıkar.",
+      "visual": {
+        "type": "concept",
+        "query": "negative real interest rate graph red chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çözüm tek sepete koymamak: altın, hisse ya da döviz çeşitlendirmesi paranı çok daha iyi korur.",
+      "visual": {
+        "type": "concept",
+        "query": "gold coins stocks currency investment diversification"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Doğru yatırım hamlesi için parafomo.com'a gel, kanalı takip et, geç kalma.",
+      "visual": {
+        "type": "scene",
+        "query": "financial growth chart upward arrow success"
+      }
+    }
+  ]
+}
