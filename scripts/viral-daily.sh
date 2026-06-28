@@ -10,8 +10,15 @@
 #   Pzt karşılaştırma · Sal mit · Çar geri-dönük getiri · Per sayı şoku
 #   Cum güncel/tepki · Cmt tek kavram · Paz mit (evergreen güçlü)
 #
-# Cron örneği (her gün 12:30 UTC — blog shorts'undan ayrı bir saat):
-#   30 12 * * * /root/parafomo/scripts/viral-daily.sh >> /root/parafomo/logs/viral.log 2>&1
+# ZAMAN DİLİMİ DENEYİ: cron'da 6 satır (her aday saat için bir tane), her biri --at <i>
+# taşır; yalnız bugünün slotuna (gün_no % 6) denk gelen satır yayınlar. Yayın saati
+# logs/viral-times.csv'ye yazılır → en iyi saati izlenme ile kıyaslamak için.
+#   0  5 * * * /root/parafomo/scripts/viral-daily.sh --at 0 >> /root/parafomo/logs/viral.log 2>&1
+#   0  8 * * * /root/parafomo/scripts/viral-daily.sh --at 1 >> /root/parafomo/logs/viral.log 2>&1
+#   0 10 * * * /root/parafomo/scripts/viral-daily.sh --at 2 >> /root/parafomo/logs/viral.log 2>&1
+#   0 13 * * * /root/parafomo/scripts/viral-daily.sh --at 3 >> /root/parafomo/logs/viral.log 2>&1
+#   30 15 * * * /root/parafomo/scripts/viral-daily.sh --at 4 >> /root/parafomo/logs/viral.log 2>&1
+#   30 18 * * * /root/parafomo/scripts/viral-daily.sh --at 5 >> /root/parafomo/logs/viral.log 2>&1
 
 set -uo pipefail
 export PATH="/root/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -30,13 +37,40 @@ set -a; . "$REPO/.env"; set +a
 # 1) Senkronla
 git pull --rebase --autostash origin main || echo "UYARI: pull başarısız (devam)"
 
-# 2) Günün formatı (override: $1 ile elle format verilebilir)
+# Argümanlar: --at N (zaman-dilimi slot indeksi), --format X, --topic "..."
+SLOT_AT=""; FORMAT_OVERRIDE=""; TOPIC=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --at)     SLOT_AT="$2"; shift 2 ;;
+    --format) FORMAT_OVERRIDE="$2"; shift 2 ;;
+    --topic)  TOPIC="$2"; shift 2 ;;
+    *)        echo "UYARI: bilinmeyen arg '$1'"; shift ;;
+  esac
+done
+
+# 2a) ZAMAN DİLİMİ DENEYİ — 6 aday saat (UTC). Her gün SADECE biri yayınlar; hangisi
+#     olduğu yıl-günü ile döner (slot = gün_no % 6). Cron'da 6 satır var, her biri kendi
+#     --at indeksini taşır; yalnız bugünün slotuna denk gelen satır devam eder, diğerleri çıkar.
+#     Amaç: zamanla her slotun izlenme performansını kıyaslayıp en iyi saati bulmak.
+SLOTS_UTC=("05:00" "08:00" "10:00" "13:00" "15:30" "18:30")  # TR(UTC+3): 08 11 13 16 18:30 21:30
+NUM_SLOTS=${#SLOTS_UTC[@]}
+TODAY_SLOT=$(( 10#$(date -u +%j) % NUM_SLOTS ))
+SLOT_LABEL="manual"
+if [ -n "$SLOT_AT" ]; then
+  if [ "$SLOT_AT" != "$TODAY_SLOT" ]; then
+    echo "[i] Slot $SLOT_AT bugünün slotu değil (bugün: $TODAY_SLOT = ${SLOTS_UTC[$TODAY_SLOT]} UTC) — atlanıyor."
+    exit 0
+  fi
+  SLOT_LABEL="${SLOTS_UTC[$TODAY_SLOT]}"
+  echo "[*] Zaman dilimi: slot $TODAY_SLOT = $SLOT_LABEL UTC (TR $(printf '%02d' $(( (10#${SLOT_LABEL%%:*} + 3) % 24 ))):${SLOT_LABEL##*:}))"
+fi
+
+# 2b) Günün formatı (haftanın günü; slottan bağımsız). Override: --format
 declare -A DOW_FMT=(
   [1]=comparison [2]=myth [3]=backtest_return [4]=shock_number
   [5]=news_reaction [6]=single_concept [7]=myth
 )
-FORMAT="${1:-${DOW_FMT[$(date -u +%u)]}}"
-TOPIC="${2:-}"
+FORMAT="${FORMAT_OVERRIDE:-${DOW_FMT[$(date -u +%u)]}}"
 echo "[*] Format: $FORMAT ${TOPIC:+| Konu: $TOPIC}"
 
 # 3) Ses rotasyonu (blog hattının done-state'inden bağımsız; yıl-günü ile döner)
@@ -76,7 +110,7 @@ fi
 # 7) Telegram önizleme
 echo "[*] Telegram'a gönderiliyor..."
 VID="$REPO/public/social/short-$SLUG.mp4"
-CAP="🎬 Viral Shorts [$FORMAT]%0A%0A${YT_URL:+▶️ $YT_URL%0A}🔊 ${VOICE##*-}%0A%0A#parafomo"
+CAP="🎬 Viral Shorts [$FORMAT] · ⏰ $SLOT_LABEL UTC%0A%0A${YT_URL:+▶️ $YT_URL%0A}🔊 ${VOICE##*-}%0A%0A#parafomo"
 curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendVideo" \
   -F "chat_id=${TELEGRAM_CHAT_ID}" -F "video=@${VID}" -F "supports_streaming=true" \
   --form-string "caption=$(printf '%b' "$CAP")" >/dev/null || echo "UYARI: Telegram gönderilemedi"
@@ -88,4 +122,9 @@ if [ -f "public/social/scenarios/$SLUG.json" ]; then
   git push origin main 2>&1 | sed 's/^/    [push] /' || echo "UYARI: push başarısız"
 fi
 
-echo "[$(date -u '+%F %T UTC')] Tamamlandı: $SLUG ${YT_URL:+→ $YT_URL}"
+# 9) Yayın saatini logla (en iyi saati bulmak için sonradan izlenme ile kıyaslanır)
+CSV="$REPO/logs/viral-times.csv"
+[ -f "$CSV" ] || echo "yayin_utc,slot_utc,slot_idx,format,slug,youtube_url" > "$CSV"
+echo "$(date -u '+%F %T'),$SLOT_LABEL,${SLOT_AT:-manual},$FORMAT,$SLUG,$YT_URL" >> "$CSV"
+
+echo "[$(date -u '+%F %T UTC')] Tamamlandı: $SLUG @ $SLOT_LABEL UTC ${YT_URL:+→ $YT_URL}"
