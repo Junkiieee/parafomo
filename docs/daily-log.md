@@ -4,6 +4,76 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-06-28
+
+**Yayınlanan yazı:** [AB Enflasyonu (CPI) Nedir? Euro Bölgesi Verisi Türkiye'yi Nasıl Etkiler](/blog/ab-enflasyonu-cpi-nedir-turkiye-etkisi)
+
+**Kategori:** Ekonomi | **Hedef anahtar kelime:** ab enflasyonu nedir | **Okuma süresi:** ~7 dk
+**Tetikleyici:** 1 Temmuz 2026 AB CPI (YoY) verisi — takvim 🔴 High olayı
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+1 Temmuz'da AB enflasyon verisi açıklanıyor.
+Bu sayı seni neden ilgilendiriyor? Çünkü EUR/TRY'yi ve cüzdanındaki fiyatları doğrudan etkiliyor 🧵
+
+**Tweet 2:**
+AB CPI = Euro Bölgesi'ndeki fiyat artışının ölçüsü.
+
+ECB bu veriyi izler ve faiz kararını bu veriyle alır.
+→ CPI yüksek → ECB faiz artırır → Euro güçlenir → EUR/TRY yükselir
+
+**Tweet 3:**
+EUR/TRY yükselince ne olur?
+
+Türkiye'nin ithalatının ⅓'ü Avrupa'dan geliyor:
+– Makine, kimyasal madde, otomobil parçası, gıda
+– Bunların hepsi daha pahalıya geliyor
+– Bu maliyet sana yansıyor
+
+**Tweet 4:**
+Yatırımcı ne yapmalı?
+
+❌ Tek veriye göre büyük karar alma
+✅ Döviz dengenin makul olup olmadığını sorgula
+✅ 2-3 gün içinde TÜİK TÜFE da açıklanacak — ikisini birlikte oku
+
+**Tweet 5 (CTA):**
+AB enflasyonu nasıl okunur, ECB tepkisi nasıl gelir, Türkiye'yi tam nasıl etkiler?
+Tablolarla anlattım 👇
+parafomo.com/blog/ab-enflasyonu-cpi-nedir-turkiye-etkisi
+
+---
+
+### Instagram Post Metni
+
+**Başlık:** 1 Temmuz AB enflasyon verisi — cebini nasıl etkiler? 📊
+
+**Post metni:**
+1 Temmuz'da açıklanacak AB CPI (enflasyon) verisi sadece Avrupalıları değil, seni de etkiliyor.
+
+Neden?
+
+🔗 ECB faiz artışı → euro güçlenir → EUR/TRY yükselir → ithal ürünler pahalanır → yerel enflasyon artar
+
+Kısacası: Avrupa'nın enflasyon rakamı, marketteki fiyatına ve portföyüne kadar uzanıyor.
+
+Verinin ne anlama geldiğini, senaryoları ve yatırımcı için pratik adımları yazdım.
+Bio'daki linkten okuyabilirsin 🔗
+
+#enflasyon #abenflasyonu #cpi #eurotl #ekonomi #parafomo #yatırım #kişiselfinans
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **X thread'ini yayınla** — Yukarıdaki 5 tweet'i sırayla paylaş; son tweet'e `parafomo.com/blog/ab-enflasyonu-cpi-nedir-turkiye-etkisi` linkini ekle. **Zamanlama:** 1 Temmuz sabahı veri açıklanmadan önce (08:00-11:00 arası) tekrar paylaşabilirsin — timely içerik etkileşim artırır.
+2. **Instagram'da yayınla** — Post metnini ve kapak görselini (`public/covers/ab-enflasyonu-cpi-nedir-turkiye-etkisi.jpg`) paylaş. Ekonomi/finans gruplarında veya Ekşi Sözlük "enflasyon" başlıklarında yazıyı paylaşmayı değerlendir.
+
+---
+
 ## 2026-06-27
 
 **Yayınlanan yazı:** [Eurobond Nedir? Türkiye'den Dolar Faizi Almanın Yolu](/blog/eurobond-nedir)

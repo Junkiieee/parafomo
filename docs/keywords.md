@@ -55,3 +55,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Dolar maliyet ortalaması (DCA) stratejisi nedir? — `dca-nedir-maliyet-ortalamasi`
 - [x] Kredi kartı borcundan nasıl kurtulunur? — `kredi-karti-borcundan-kurtulma`
 - [x] Eurobond nedir, kimler için uygun? — `eurobond-nedir`
+- [x] AB Enflasyonu (CPI) nedir? Euro Bölgesi verisi Türkiye'yi nasıl etkiler — `ab-enflasyonu-cpi-nedir-turkiye-etkisi` (takvim: 1 Temmuz AB CPI açıklaması)
