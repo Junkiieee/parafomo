@@ -1,0 +1,77 @@
+{
+  "slug": "altin-mi-dolar-mi-borsa-mi-1-yilin-kazanani-soke-etti",
+  "title": "Altın mı Dolar mı Borsa mı? 1 Yılın Kazananı Şoke Etti",
+  "category": "KARŞILAŞTIRMA",
+  "format": "comparison",
+  "description": "Son bir yılda Türk yatırımcısının en fazla kazandığı araç hangisi oldu? Gram altın, dolar ve BIST 100 gerçek rakamlarla karşı karşıya.",
+  "tags": [
+    "altın",
+    "dolar",
+    "BIST100",
+    "yatırım",
+    "getiri",
+    "borsa",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KARŞILAŞTIRMA",
+      "spoken": "Altın mı, dolar mı, borsa mı? Hangisi gerçekten kazandırdı?",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins stacked shiny"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Dolar son bir yılda yüzde on beş getirdi; enflasyonun çok gerisinde kaldı.",
+      "visual": {
+        "type": "concept",
+        "query": "dollar currency exchange rate cash"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "BIST 100 yüzde otuz üçle güçlü göründü ama bu da birinci olmaya yetmedi.",
+      "visual": {
+        "type": "concept",
+        "query": "stock market trading screen green chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gram altın yüzde kırk getiriyle zirveye oturdu; rakiplerine fark attı, işte bir yıllık tablo.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "bars",
+          "title": "Bu Yıl Kim Kazandırdı?",
+          "items": [
+            {
+              "name": "Gram Altın",
+              "pct": 40
+            },
+            {
+              "name": "BIST 100",
+              "pct": 33
+            },
+            {
+              "name": "Dolar/TL",
+              "pct": 15
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki önümüzdeki dönemde hangi yatırım öne çıkar? Kaçırma; her gün yeni analiz için kanala abone ol.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars investment"
+      }
+    }
+  ]
+}
