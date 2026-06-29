@@ -1,35 +1,8 @@
 {
-  "updated": "2026-06-28",
+  "updated": "2026-06-29",
   "fetch_ok": true,
   "source": "investing",
   "events": [
-    {
-      "date": "2026-06-25",
-      "time": "15:30",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core PCE Price Index (MoM) (May)",
-      "source": "investing",
-      "hook": "ABD çekirdek enflasyon (PCE) — Fed'in tercih ettiği gösterge, dolar yönü."
-    },
-    {
-      "date": "2026-06-25",
-      "time": "15:30",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core PCE Price Index (YoY) (May)",
-      "source": "investing",
-      "hook": "ABD çekirdek enflasyon (PCE) — Fed'in tercih ettiği gösterge, dolar yönü."
-    },
-    {
-      "date": "2026-06-25",
-      "time": "15:30",
-      "region": "USD",
-      "impact": "High",
-      "title": "GDP (QoQ) (Q1)",
-      "source": "investing",
-      "hook": "Büyüme verisi — küresel görünüm."
-    },
     {
       "date": "2026-07-01",
       "time": "12:00",
