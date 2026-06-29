@@ -4,6 +4,73 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-06-29
+
+**Yayınlanan yazı:** [ABD Tarım Dışı İstihdam (NFP) Nedir? Dolar ve TL'yi Nasıl Etkiler?](/blog/nfp-nedir-abd-tarim-disi-istihdam)
+
+**Konu seçim gerekçesi:** 2 Temmuz'da ABD Haziran NFP verisi açıklanıyor (3 gün içinde, 🔴 High). AB CPI yazısı zaten mevcut olduğundan en büyük yaklaşan olay NFP seçildi. Evergreen + takvim bağı bir arada.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+2 Temmuz'da piyasaları sarsacak bir veri geliyor: ABD Tarım Dışı İstihdam (NFP) 📊
+
+Güçlü gelirse dolar güçlenir → TL baskı altına girebilir.
+Zayıf gelirse tam tersi.
+
+NFP nedir ve seni nasıl etkiler? 🧵👇
+
+**Tweet 2:**
+NFP = her ayın ilk Cuması açıklanan ABD istihdam raporu.
+
+Tarım hariç tüm sektörlerde bir önceki aya göre kaç iş eklendi/silindi?
+
+Tek bir sayı. Ama o sayı Fed kararlarını, dolar kurunu ve dolaylı olarak TL'yi belirliyor.
+
+**Tweet 3:**
+Nasıl okuyacaksın?
+
+✅ Açıklanan rakam değil, BEKLENTİDEN SAPMA önemli
+✅ Önceki ay revizyonunu da kontrol et
+✅ İşsizlik oranı ve ücret artışı da aynı gün geliyor — üçünü birlikte oku
+
+**Tweet 4:**
+2 Temmuz saat 15:30'da ekranda ol.
+
+Detaylı rehber 👇
+parafomo.com/blog/nfp-nedir-abd-tarim-disi-istihdam
+
+#NFP #dolar #TL #ekonomi #yatırım
+
+---
+
+### Instagram Post Metni
+
+**Caption:**
+2 Temmuz'da piyasalar NFP verisine kilitlenecek 📊
+
+ABD'nin aylık istihdam raporu = dolar yönünü belirleyen en önemli veri.
+
+Güçlü gelirse → dolar güçlenir, TL baskı altında
+Zayıf gelirse → dolar geriler, BIST ve TL destek bulabilir
+
+Ama dikkat: ham rakam değil, beklentiden sapma önemli!
+
+Tüm detaylar linkte 👆
+
+#NFP #tarimDisiIstihdam #dolarTL #ekonomi #yatirim #parafomo #borsa #finans
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **Thread + post yayınla:** Yukarıdaki X thread'ini ve Instagram postunu bugün paylaş; 2 Temmuz öncesi zamanlama kritik — takipçiler veriyi beklerken bu içeriği görmüş olacak.
+2. **2 Temmuz 15:30'u takvime ekle:** NFP açıklandığında "beklenti vs gerçek" kısa yorumunu X'te paylaşmayı planla — reaktif içerik yüksek etkileşim alır.
+
+---
+
 ## 2026-06-28
 
 **Yayınlanan yazı:** [AB Enflasyonu (CPI) Nedir? Euro Bölgesi Verisi Türkiye'yi Nasıl Etkiler](/blog/ab-enflasyonu-cpi-nedir-turkiye-etkisi)
