@@ -56,3 +56,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Kredi kartı borcundan nasıl kurtulunur? — `kredi-karti-borcundan-kurtulma`
 - [x] Eurobond nedir, kimler için uygun? — `eurobond-nedir`
 - [x] AB Enflasyonu (CPI) nedir? Euro Bölgesi verisi Türkiye'yi nasıl etkiler — `ab-enflasyonu-cpi-nedir-turkiye-etkisi` (takvim: 1 Temmuz AB CPI açıklaması)
+- [x] ABD Tarım Dışı İstihdam (NFP) nedir? Dolar ve TL'yi nasıl etkiler? — `nfp-nedir-abd-tarim-disi-istihdam` (takvim: 2 Temmuz ABD NFP açıklaması)
