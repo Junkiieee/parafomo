@@ -22,7 +22,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [ ] Temel analiz vs teknik analiz: farkı ne? — `Borsa` — hedef: "temel analiz teknik analiz farkı"
 - [ ] F/K oranı nedir, nasıl yorumlanır? — `Borsa` — hedef: "f/k oranı nedir"
 - [ ] BIST 100 endeksi nedir, nasıl yatırım yapılır? — `Borsa` — hedef: "bist 100 nedir"
-- [ ] Enflasyon nedir, neden yükselir? — `Ekonomi` — hedef: "enflasyon nedir"
+- [x] Enflasyon nedir, neden yükselir? — `Ekonomi` — hedef: "enflasyon nedir"
 - [ ] Finansal özgürlük nedir, nasıl ulaşılır? (FIRE) — `Yatırım` — hedef: "finansal özgürlük nasıl"
 - [ ] Borçtan çıkış planı: kartopu vs çığ yöntemi — `Kişisel Finans` — hedef: "borç kapatma yöntemi"
 - [ ] Genç yaşta yatırıma nasıl başlanır? — `Yatırım` — hedef: "genç yaşta yatırım"
@@ -57,3 +57,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Eurobond nedir, kimler için uygun? — `eurobond-nedir`
 - [x] AB Enflasyonu (CPI) nedir? Euro Bölgesi verisi Türkiye'yi nasıl etkiler — `ab-enflasyonu-cpi-nedir-turkiye-etkisi` (takvim: 1 Temmuz AB CPI açıklaması)
 - [x] ABD Tarım Dışı İstihdam (NFP) nedir? Dolar ve TL'yi nasıl etkiler? — `nfp-nedir-abd-tarim-disi-istihdam` (takvim: 2 Temmuz ABD NFP açıklaması)
+- [x] TÜİK Enflasyon Verisi Nasıl Okunur? TÜFE Sepeti ve Alım Gücüne Etkisi — `tufe-enflasyon-verisi-nasil-okunur` (takvim: 3 Temmuz TÜİK TÜFE açıklaması)
