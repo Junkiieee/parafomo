@@ -1,0 +1,59 @@
+{
+  "slug": "faiz-enflasyonu-gecti-diye-kazandigini-sanma",
+  "title": "Faiz Enflasyonu Geçti Diye Kazandığını Sanma!",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Mevduat faizin resmi enflasyonu geçse bile stopaj vergisi ve gerçek yaşam maliyetleri seni hâlâ zararda bırakabilir.",
+  "tags": [
+    "enflasyon",
+    "mevduat faizi",
+    "stopaj vergisi",
+    "Türkiye ekonomisi",
+    "kişisel finans",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Faizin enflasyonu geçti diye kazandığını sanıyorsun.",
+      "visual": {
+        "type": "scene",
+        "query": "bank teller counter cash money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Stopaj vergisi mevduat getirinizden pay alır; elinize geçen net kazanç sandığınızdan daha az olabilir.",
+      "visual": {
+        "type": "concept",
+        "query": "tax deduction income money document"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Resmi enflasyon sepeti kira, market ve fatura gibi gerçek giderlerinizi tam yansıtmayabilir; gerçek kayıp daha büyük olabilir.",
+      "visual": {
+        "type": "scene",
+        "query": "grocery store expensive price tag inflation"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gerçek korunma için hisse, altın ve dövizi dengeli tutan çeşitlendirilmiş bir portföy çok daha etkili.",
+      "visual": {
+        "type": "concept",
+        "query": "diversified investment portfolio stocks gold dollar"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Yarın hangi varlık sınıfı öne çıkacak, kaçırma. Abone ol, her gün yeni analiz geliyor.",
+      "visual": {
+        "type": "concept",
+        "query": "financial growth chart subscribe notification"
+      }
+    }
+  ]
+}
