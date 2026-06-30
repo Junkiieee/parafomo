@@ -98,7 +98,11 @@
       "Bash(python3 scripts/post-bist-instagram.py --type acilis --dry)",
       "Bash(python3 -c \"import json;d=json.load\\(open\\('logs/shorts-state.json'\\)\\);print\\(len\\(d['done']\\)\\);print\\('done:',d['done']\\)\")",
       "Bash(bash -n scripts/viral-daily.sh)",
-      "Bash(chmod +x scripts/youtube-extras.py scripts/youtube-reauth.py)"
+      "Bash(chmod +x scripts/youtube-extras.py scripts/youtube-reauth.py)",
+      "WebFetch(domain:replicate.com)",
+      "Bash(awk -F= '/^\\(PEXELS_API_KEY\\)=/{print $1\": \"\\(length\\($2\\)>3?\"DOLU\":\"BOŞ\"\\)}' .env)",
+      "Bash(python3 -c \"import faster_whisper\")",
+      "Bash(find / -name \"faster_whisper\" -maxdepth 6 -type d)"
     ]
   }
 }
