@@ -649,6 +649,7 @@ def main():
             "description": desc,
             "tags": meta_tags,
             "file": out, "slug": args.slug,
+            "voice": label,  # "google:<ses>" | "edge:<ses>" — A/B karşılaştırması için
             "format": (scenario.get("format", "") if scenario else "")}
     json.dump(meta, open(os.path.join(OUT_DIR, f"short-{args.slug}.json"), "w",
                          encoding="utf-8"), ensure_ascii=False, indent=2)

@@ -2,15 +2,20 @@
 """
 ParaFOMO — Shorts otomasyon durumu (kuyruk + ses rotasyonu).
 
-Durum dosyası: logs/shorts-state.json (gitignore'lu) → {"done": [...], "voice_index": N}
+Durum dosyası: logs/shorts-state.json (gitignore'lu) →
+  {"done": [...], "voice_index": N, "edge_voice_index": M, "engine_index": K}
 Her gün 2 Shorts yayınlanır: biri EN YENİ (o günkü blog yazısıyla senkron),
 biri EN ESKİ işlenmemiş yazı (backlog'u eritir). İkisi ortada buluşunca doğal
 olarak günde 1'e iner. Her işte FARKLI ses (VOICES listesinde sırayla döner).
 
+A/B: her işte MOTOR da sırayla döner (ENGINES: google → edge → ...). Hangi motor
+daha çok tutarsa ona geçilir; üretilen videonun .json'una "voice": "<motor>:<ses>"
+yazılır (shorts-build.py).
+
 Komutlar:
-  next [newest|oldest]   → "<slug>\t<voice>"  (işlenecek yazı yoksa boş)
+  next [newest|oldest]   → "<slug>\t<voice>\t<engine>"  (işlenecek yazı yoksa boş)
                            varsayılan: oldest (geriye dönük uyumluluk)
-  commit <slug>          → slug'ı done'a ekle, voice_index'i artır
+  commit <slug>          → slug'ı done'a ekle, ilgili ses index'ini + engine_index'i artır
 """
 import os
 import re
@@ -53,11 +58,28 @@ VOICES = [
     "tr-TR-Chirp3-HD-Zubenelgenubi",
 ]
 
+# Microsoft Edge TTS — Türkçe neural sesler (ücretsiz, API anahtarı gerektirmez).
+# edge motoru seçildiğinde bu listeden sırayla dönülür.
+EDGE_VOICES = [
+    "tr-TR-EmelNeural",   # kadın
+    "tr-TR-AhmetNeural",  # erkek
+]
+
+# A/B motor rotasyonu — her işte sırayla değişir. ElevenLabs ileride buraya eklenebilir.
+ENGINES = ["google", "edge"]
+
 
 def load():
     if os.path.exists(STATE):
         return json.load(open(STATE))
-    return {"done": [], "voice_index": 0}
+    return {"done": [], "voice_index": 0, "edge_voice_index": 0, "engine_index": 0}
+
+
+def pick_voice(s, engine):
+    """Seçili motora göre sıradaki sesi döndür."""
+    if engine == "edge":
+        return EDGE_VOICES[s.get("edge_voice_index", 0) % len(EDGE_VOICES)]
+    return VOICES[s.get("voice_index", 0) % len(VOICES)]
 
 
 def save(s):
@@ -91,15 +113,24 @@ def main():
         if not queue:
             return 0  # kuyruk boş
         slug = queue[-1] if where == "newest" else queue[0]
-        print(f"{slug}\t{VOICES[s['voice_index'] % len(VOICES)]}")
+        engine = ENGINES[s.get("engine_index", 0) % len(ENGINES)]
+        print(f"{slug}\t{pick_voice(s, engine)}\t{engine}")
         return 0
     if cmd == "commit":
         slug = sys.argv[2]
         if slug not in s["done"]:
             s["done"].append(slug)
-        s["voice_index"] = s.get("voice_index", 0) + 1
+        # commit, next ile aynı engine_index'i görür (araya başka commit girmez) →
+        # bu işte hangi motor kullanıldıysa o motorun ses index'ini ilerlet.
+        engine = ENGINES[s.get("engine_index", 0) % len(ENGINES)]
+        if engine == "edge":
+            s["edge_voice_index"] = s.get("edge_voice_index", 0) + 1
+        else:
+            s["voice_index"] = s.get("voice_index", 0) + 1
+        s["engine_index"] = s.get("engine_index", 0) + 1
         save(s)
-        print(f"[+] commit: {slug} (toplam {len(s['done'])}, sıradaki ses index {s['voice_index']})")
+        print(f"[+] commit: {slug} (toplam {len(s['done'])}, motor={engine}, "
+              f"sıradaki engine index {s['engine_index']})")
         return 0
     print("bilinmeyen komut"); return 1
 

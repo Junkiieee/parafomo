@@ -28,17 +28,19 @@ git pull --rebase --autostash origin main || echo "UYARI: pull başarısız (dev
 # Tek bir yazıyı baştan sona işler: senaryo → video → YouTube → Telegram → durum + push.
 # Dönüş: 0 başarı, 1 atla (boş/zaten işlenmiş), 2 hata.
 process_one() {
-  local slug="$1" voice="$2"
+  local slug="$1" voice="$2" engine="${3:-google}"
   [ -z "$slug" ] && return 1
   echo "--------------------------------------------------"
-  echo "[*] Yazı: $slug | Ses: $voice"
+  echo "[*] Yazı: $slug | Motor: $engine | Ses: $voice"
 
   # Senaryo (yoksa Claude üretir; başarısızsa build auto-FAQ'e düşer)
   "$VPY" "$REPO/scripts/shorts-script.py" "$slug" || echo "UYARI: senaryo üretilemedi (auto-FAQ kullanılacak)"
 
-  # Video üret
+  # Video üret — motora göre doğru ses bayrağı (google: --voice, edge: --edge-voice)
   echo "[*] Video üretiliyor..."
-  if ! "$VPY" "$REPO/scripts/shorts-build.py" "$slug" --engine google --voice "$voice"; then
+  local voice_flag="--voice"
+  [ "$engine" = "edge" ] && voice_flag="--edge-voice"
+  if ! "$VPY" "$REPO/scripts/shorts-build.py" "$slug" --engine "$engine" "$voice_flag" "$voice"; then
     echo "HATA: video üretilemedi ($slug) — atlanıyor"; return 2
   fi
 
@@ -53,7 +55,7 @@ process_one() {
   # Telegram önizleme
   echo "[*] Telegram'a gönderiliyor..."
   local vid="$REPO/public/social/short-$slug.mp4"
-  local cap="🎬 Yeni Shorts yayında!%0A%0A🔊 Ses: ${voice##*-}%0A▶️ ${yt_url}%0A%0A#parafomo"
+  local cap="🎬 Yeni Shorts yayında!%0A%0A🔊 Ses: ${voice##*-} (${engine})%0A▶️ ${yt_url}%0A%0A#parafomo"
   curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendVideo" \
     -F "chat_id=${TELEGRAM_CHAT_ID}" -F "video=@${vid}" -F "supports_streaming=true" \
     --form-string "caption=$(printf '%b' "$cap")" >/dev/null || echo "UYARI: Telegram gönderilemedi"
@@ -79,6 +81,7 @@ for WHERE in newest oldest; do
   NEXT="$("$VPY" "$REPO/scripts/shorts-state.py" next "$WHERE")"
   SLUG="$(echo "$NEXT" | cut -f1)"
   VOICE="$(echo "$NEXT" | cut -f2)"
+  ENGINE="$(echo "$NEXT" | cut -f3)"
   if [ -z "$SLUG" ]; then
     echo "[i] '$WHERE' için işlenecek yazı yok."
     continue
@@ -86,7 +89,7 @@ for WHERE in newest oldest; do
   case " $DONE_SLUGS " in
     *" $SLUG "*) echo "[i] $SLUG zaten bu çalıştırmada işlendi — atlanıyor."; continue ;;
   esac
-  if process_one "$SLUG" "$VOICE"; then
+  if process_one "$SLUG" "$VOICE" "$ENGINE"; then
     PROCESSED=$((PROCESSED + 1))
     DONE_SLUGS="$DONE_SLUGS $SLUG"
   fi
