@@ -5,6 +5,17 @@ pubDate: 2026-06-13
 category: "Kişisel Finans"
 tags: ["acil durum fonu", "tasarruf", "finansal güvenlik", "para yönetimi"]
 readingTime: 7
+shorts:
+  - "Borsadan önce bu parayı biriktirmen şart."
+  - "Acil durum fonu, iş kaybı veya sağlık gideri gibi krizlerde borca girmeden ayakta kalmanı sağlayan finansal yastığındır."
+  - "Hedef 3 ila 6 aylık zorunlu giderin; serbest çalışıyorsan bu rakam 12 aya kadar çıkabilir."
+  - "Bu fonu borsa veya kriptoda değil, likit fon ya da kısa vadeli mevduatta, ayrı bir hesapta tutmalısın."
+  - "Hesabını nasıl yapacağını öğrenmek için parafomo.com'a gir."
+shorts_broll:
+  - "emergency savings jar with coins"
+  - "person stressed about bills and debt"
+  - "mobile banking app transfer money"
+  - "piggy bank financial security concept"
 ---
 
 Finansal planlamada yatırımdan, borsadan, kriptodan **önce** gelen tek şey vardır: **acil durum fonu.** Bu fon, hayatın size attığı sürprizlerde (işten çıkma, sağlık gideri, ani tamir) borca girmeden ayakta kalmanızı sağlayan finansal yastığınızdır.
