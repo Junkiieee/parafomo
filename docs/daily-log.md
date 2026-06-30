@@ -4,6 +4,90 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-06-30
+
+**Yayınlanan yazı:** [TÜİK Enflasyon Verisi Nasıl Okunur? TÜFE Sepeti ve Alım Gücüne Etkisi](/blog/tufe-enflasyon-verisi-nasil-okunur)
+
+**Konu seçim gerekçesi:** 3 Temmuz 2026 TÜİK TÜFE açıklaması (🔴 High, 1-3 gün içinde) — takvim önceliği. TÜFE sepeti + alım gücü explainer, mevcut `enflasyondan-nasil-korunur` yazısından farklı niyet.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+3 Temmuz sabahı TÜİK enflasyon rakamını açıklıyor.
+
+"Enflasyon düştü / yükseldi" haberini görünce aslında ne okuduğunuzu biliyor musunuz?
+
+TÜFE nedir, nasıl hesaplanır, maaşınıza ve tasarruflarınıza ne yapar — thread 👇
+
+**Tweet 2:**
+TÜFE = Tüketici Fiyat Endeksi
+
+TÜİK ~40.000 haneyi anket ederek ortalama harcama sepetini çıkarıyor.
+O sepetteki ürünlerin fiyatını takip ediyor.
+Sonuç → tek bir yüzde rakamı.
+
+Ama o yüzdenin arkasında iki farklı sayı var 👇
+
+**Tweet 3:**
+Aylık TÜFE (MoM): geçen aya göre artış → kısa vadeli sinyal
+Yıllık TÜFE (YoY): 1 yıl öncesine göre artış → asıl olan bu
+Çekirdek TÜFE: gıda+enerji hariç → TCMB'nin baktığı gösterge
+
+Medyada manşete çıkan hep yıllık TÜFE.
+
+**Tweet 4:**
+Enflasyon %40 iken maaşınız %30 zam aldıysa:
+
+Reel değişim = (1,30 / 1,40) − 1 = −%7,1
+
+Kağıtta zam var, gerçekte alım gücü düştü.
+Birikimlerde de aynı hesap geçerli — mevduat faizi enflasyonun altında kalırsa reel getiri negatif.
+
+**Tweet 5:**
+3 Temmuz verisinde 4 şeye bakın:
+1️⃣ Aylık beklentiye göre sapma var mı?
+2️⃣ Çekirdek enflasyon ne diyor?
+3️⃣ Hangi kalem öne çıktı? (gıda, kira, yakıt)
+4️⃣ Trend son 3 ayda ne yönde?
+
+Tek aylık rakama bakıp karar almak yanıltıcı.
+
+**Tweet 6:**
+Tüm sepet ağırlıkları, alım gücü hesabı ve TCMB faiz bağlantısını anlattık:
+👉 parafomo.com/blog/tufe-enflasyon-verisi-nasil-okunur
+
+3 Temmuz geldiğinde hazır olun.
+
+---
+
+### Instagram Post Metni
+
+**Caption:**
+3 Temmuz sabahı TÜİK enflasyon verisini açıklıyor — ve bu sayı maaşınızı, birikimlerinizi, TCMB'nin faiz kararını doğrudan etkiliyor.
+
+Peki "enflasyon %X oldu" haberi aslında ne anlama geliyor?
+
+✅ TÜFE nedir, nasıl hesaplanır
+✅ Aylık ve yıllık enflasyon farkı
+✅ TÜFE sepeti: paranın nereye gittiği
+✅ Maaşınıza reel etkisi nasıl hesaplanır
+✅ 3 Temmuz verisinde nelere bakmalı
+
+Link bio'da 👆 parafomo.com
+
+#tüfe #enflasyon #türkiyeekonomisi #tcmb #parafomo #finans #ekonomi #yatırım #alımgücü #tüik
+
+---
+
+### Bugün yapman gerekenler
+
+1. **X thread'ini paylaş** — yukarıdaki 6 tweet'i sırayla yayınla; Tweet 1'i pin et.
+2. **Instagram'da paylaş** — yukarıdaki metni kullan; cover görselini (`public/covers/tufe-enflasyon-verisi-nasil-okunur.jpg`) gönderi fotoğrafı olarak ekle.
+
+---
+
 ## 2026-06-29
 
 **Yayınlanan yazı:** [ABD Tarım Dışı İstihdam (NFP) Nedir? Dolar ve TL'yi Nasıl Etkiler?](/blog/nfp-nedir-abd-tarim-disi-istihdam)
