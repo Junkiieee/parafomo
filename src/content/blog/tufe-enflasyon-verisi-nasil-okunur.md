@@ -17,6 +17,17 @@ faq:
     a: "Maaşınız enflasyonun altında artıyorsa reel ücretiniz düşüyor demektir. Örneğin enflasyon yüzde kırk iken maaşınız yüzde otuz arttıysa fiilen yüzde yedi daha az satın alabiliyorsunuz. Reel getiri = (1 + nominal artış) / (1 + enflasyon) − 1 formülüyle hesaplanır."
   - q: "TÜFE verisi yatırımları nasıl etkiler?"
     a: "Yüksek gelen TÜFE, TCMB'nin faiz indirmesini zorlaştırır; bu borsa ve mevduatı doğrudan etkiler. Beklentinin üzerinde gelen enflasyon genellikle TL'de değer kaybına ve yatırımcıların altına yönelmesine neden olur."
+shorts:
+  - "3 Temmuz'da TÜİK açıklayacak; cebinize etkisini biliyor musunuz?"
+  - "TÜFE, kırk bin hanenin harcama alışkanlıklarından derlenen sanal bir sepetteki ürünlerin aylık fiyat değişimini ölçen ana enflasyon göstergesi."
+  - "Medyada gördüğünüz yüzde rakamı yıllık enflasyon; ama merkez bankası asıl kararlarını gıda ve enerji hariç çekirdek veriye göre alıyor."
+  - "Gıda sepette yüzde yirmi beş ağırlıkta; fiyatlar hızlı artarsa kişisel enflasyonunuz TÜİK ortalamasının çok üstüne çıkabiliyor."
+  - "Güncel analiz ve veri takibi için parafomo.com'u ziyaret edin."
+shorts_broll:
+  - "turkish inflation statistics chart"
+  - "grocery shopping cart supermarket prices"
+  - "central bank interest rate decision"
+  - "turkish lira coins and banknotes"
 ---
 
 3 Temmuz sabahı saat 10:00'da TÜİK, Haziran 2026 enflasyon rakamını açıklıyor. Bu sayı cebinizdeki alım gücünü, TCMB'nin faiz kararını ve yatırım araçlarınızın reel getirisini doğrudan şekillendiriyor. **TÜFE nedir**, nasıl okunur ve bu veri sizi somut olarak nasıl etkiliyor? Adım adım açıklıyoruz.
