@@ -39,6 +39,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] ISM PMI nedir, ABD üretim verisi — `ism-pmi-nedir-abd-uretim-verisi` (takvim: 1 Temmuz ISM Manufacturing PMI açıklaması)
 - [x] Enflasyondan korunma rehberi — `enflasyondan-nasil-korunur`
 - [x] Borsaya nasıl başlanır — `borsaya-nasil-baslanir`
 - [x] Bitcoin nedir nasıl alınır — `bitcoin-nedir-nasil-alinir`
