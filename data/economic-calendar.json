@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-30",
+  "updated": "2026-07-01",
   "fetch_ok": true,
   "source": "investing",
   "events": [
@@ -83,6 +83,15 @@
       "title": "ISM Non-Manufacturing Prices (Jun)",
       "source": "investing",
       "hook": "ISM/PMI — ABD ekonomik aktivitesi, risk iştahı."
+    },
+    {
+      "date": "2026-07-08",
+      "time": "21:00",
+      "region": "USD",
+      "impact": "High",
+      "title": "FOMC Meeting Minutes",
+      "source": "investing",
+      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
     },
     {
       "date": "2026-07-14",
