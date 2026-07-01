@@ -6,6 +6,17 @@ category: "Ekonomi"
 tags: ["altın", "dolar", "döviz", "enflasyon", "yatırım", "tasarruf"]
 readingTime: 8
 featured: false
+shorts:
+  - "Altın mı dolar mı? Yanlış seçersen fark büyük."
+  - "Türkiye'de yüksek enflasyon ve lira değer kayıpları, hem altını hem doları klasik birer güvenli liman haline getirdi."
+  - "Küresel kriz, savaş veya düşen ABD faizlerinde altın parlar; tarihsel olarak enflasyona karşı en güçlü korumalardan birini sunar."
+  - "ABD faizleri yüksek olduğunda dolar mevduat, hem kur koruması hem faiz geliri sunduğu için altının önüne geçebilir."
+  - "Hangi koşulda hangisi kazanır? Karşılaştırmalı tabloyu parafomo.com'da gör."
+shorts_broll:
+  - "gold bars investment close up"
+  - "turkish lira banknotes wallet"
+  - "US dollar bills stack"
+  - "inflation economy chart rising"
 ---
 
 Banka şubesinde ya da çarşıda "Altın mı alsam dolar mı?" sorusunu soran kaç kişiyle karşılaşmışsınızdır. Bu iki araç, Türkiye'de enflasyona karşı en yaygın kalkan olarak görülür. Ama hangisi gerçekten daha iyi? Cevap, tek kelimeyle "bağlı" — neye, ne kadar süreyle ve hangi koşulda tutacağınıza bağlı. Altın mı dolar mı sorusunu adım adım yanıtlayalım.
