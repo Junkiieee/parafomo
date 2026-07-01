@@ -4,6 +4,94 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-01
+
+**Yayınlanan yazı:** [ISM PMI Nedir? ABD Üretim Verisi Dolar ve TL'yi Nasıl Etkiler?](/blog/ism-pmi-nedir-abd-uretim-verisi)
+
+**Konu seçim gerekçesi:** 1 Temmuz 2026 saat 17:00'de ISM Manufacturing PMI (Haziran) açıklanıyor (🔴 High). Takvim önceliği — AB CPI, NFP ve TÜİK için yazılar zaten yayında; ISM PMI henüz karşılanmamıştı.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+Bugün saat 17:00'de açıklanacak ABD verisi piyasaları sarsabilir.
+
+ISM Manufacturing PMI — tek bir sayı, ama dolar, altın ve TL'yi doğrudan etkiliyor.
+
+Nedir bu veri? 50 eşiği neden bu kadar önemli? 🧵👇
+
+**Tweet 2:**
+PMI = Purchasing Managers' Index
+
+ABD'deki yüzlerce fabrika müdürüne sor:
+— Yeni sipariş arttı mı?
+— Üretim nasıl?
+— İşe alım var mı?
+
+Cevapları birleştir → tek sayı çıkar.
+
+**Tweet 3:**
+50'nin üzeri = büyüme ✅
+50'nin altı = daralma 🔴
+
+Bu kadar basit.
+
+Ama sapmalar büyük para hareketleri yaratır.
+
+**Tweet 4:**
+Bugün PMI güçlü gelirse:
+→ Fed faiz indiremez
+→ Dolar güçlenir
+→ TL/USD kuru yükselir
+
+Zayıf gelirse:
+→ Resesyon korkusu
+→ Altın yükselir
+→ BIST dışarıdan baskı
+
+**Tweet 5:**
+Türkiye'de oturuyorsun ama ABD fabrika verisi seni etkiliyor.
+
+Neden? Çünkü küresel sermaye dolar cinsinden hareket eder.
+
+Detaylı açıklama ve bugün izlenecek eşikler → 🔗 [link]
+
+**Tweet 6:**
+Kısa özet:
+→ ISM PMI = ABD üretim sektörü termometresi
+→ 50 eşiği kritik
+→ Bugün 17:00 TR saatinde açıklanacak
+→ Beraberinde Manufacturing Prices verisi de geliyor (enflasyon bileşeni)
+
+Sakin olun, hareketi gözlemleyin. 📊
+
+---
+
+### Instagram Carousel / Post Taslağı
+
+**Caption:**
+ABD'den bugün kritik veri geliyor: ISM Manufacturing PMI 🏭
+
+Saat 17:00'de açıklanacak bu tek sayı dolar, altın ve TL'yi hareketlendirebilir.
+
+📌 50 üzeri = ABD ekonomisi büyüyor
+📌 50 altı = daralma sinyali
+📌 Beklentiden sapma = piyasa hareketi
+
+Ayrıntılı açıklama, tablo ve bugünkü izlenecek eşikler için linke bak (bio'da) 👆
+
+#ISM #PMI #piyasalar #dolar #TL #ekonomi #yatırım #parafomo
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **Thread ve Instagram postunu paylaş** — veri açıklanmadan (17:00 öncesi) yayınla; "bugün bu veri geliyor, takip et" havasıyla. Veri sonrasında sonucu yorumlayan bir follow-up tweet at.
+2. **Finans gruplarında paylaş** — "Bugün 17:00'de ISM PMI geliyor, ne izlemeliyiz?" diye topluluğa sor; link ver, tartışma başlat.
+
+---
+
 ## 2026-06-30
 
 **Yayınlanan yazı:** [TÜİK Enflasyon Verisi Nasıl Okunur? TÜFE Sepeti ve Alım Gücüne Etkisi](/blog/tufe-enflasyon-verisi-nasil-okunur)
