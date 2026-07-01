@@ -1,0 +1,88 @@
+{
+  "slug": "10-000-tl-yi-altina-koysaydin-bugun-kac-tl-olurdu",
+  "title": "10.000 TL'yi Altına Koysaydın Bugün Kaç TL Olurdu?",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "Geçen yıl bu zamanlar 10.000 TL'yi gram altına yatırsaydın bugün yaklaşık 13.786 TL'n olurdu. Bir yılda yaklaşık yüzde 38 getiri.",
+  "tags": [
+    "gram altın",
+    "altın yatırımı",
+    "yatırım getirisi",
+    "TL",
+    "parafomo",
+    "enflasyon"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "10.000 TL'yi bir yıl önce altına koysaydın ne olurdu?",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Temmuz 2025'te gram altın yaklaşık 4.000 TL civarındaydı; 10.000 TL ile kabaca 2,5 gram alabilirdin.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins close up shiny"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Aradan bir yıl geçti; altın hem küresel piyasalarda hem TL bazında ciddi değer kazandı.",
+      "visual": {
+        "type": "concept",
+        "query": "gold market rally trading screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "O 10.000 TL bugün yaklaşık 13.786 TL olurdu; yani bir yılda yaklaşık yüzde 38 getiri.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "Gram Altın",
+          "unit": "TL",
+          "points": [
+            4351.41,
+            4643.36,
+            5189.66,
+            5762.96,
+            5973.38,
+            6585.85,
+            6802.65,
+            6838.62,
+            5998.91
+          ],
+          "x": [
+            "07/25",
+            "08/25",
+            "09/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "04/26",
+            "05/26",
+            "07/26"
+          ],
+          "amount": 10000,
+          "end_value": 13786,
+          "pct": 38
+        }
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki önümüzdeki yılın kazananı ne olacak? Kaçırma, kanala abone ol; her gün yeni yatırım analizi.",
+      "visual": {
+        "type": "concept",
+        "query": "investment growth money future"
+      }
+    }
+  ]
+}
