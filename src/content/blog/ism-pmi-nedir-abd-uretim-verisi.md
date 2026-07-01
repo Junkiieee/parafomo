@@ -17,6 +17,17 @@ faq:
     a: "ABD üretimi güçlenirse küresel talep artar, risk iştahı yükselir; bu gelişmekte olan piyasalara sermaye çeker, TL ve BIST olumlu etkilenebilir. Zayıf PMI ise küresel riskten kaçışa neden olur, dolar güçlenir, TL baskı altına girebilir."
   - q: "ISM PMI ne zaman açıklanır?"
     a: "ISM Manufacturing PMI her ayın ilk iş gününde, Türkiye saatiyle 17:00'de yayınlanır. Temmuz 2026 verisi (Haziran ayına ait) 1 Temmuz 2026'da açıklanacak."
+shorts:
+  - "Bu tek sayı tüm piyasaları nasıl sallar?"
+  - "ISM PMI, ABD'deki yüzlerce fabrika yöneticisine sorulan anketin birleştirilmesiyle elde edilen, ekonomiyi özetleyen kritik bir göstergedir."
+  - "50 eşiği her şeyi belirler: üzerindeyse ABD ekonomisi büyüyor, altındaysa daralıyor ve resesyon sinyali veriyor."
+  - "Veri beklentilerin üzerinde gelirse dolar güçlenir ve TL değer kaybeder; altında kalırsa dolar zayıflar, kur düşer."
+  - "Günlük piyasa analizleri için parafomo.com'u takip et."
+shorts_broll:
+  - "US factory workers manufacturing floor"
+  - "economic PMI data chart screen"
+  - "US dollar bills close up"
+  - "Turkish lira currency exchange rate"
 ---
 
 Bugün saat 17:00'de (Türkiye saati) açıklanacak ISM Manufacturing PMI verisi küresel piyasaları sarsabilecek kritik bir gösterge. **ISM PMI nedir**, bu tek sayı nasıl bu kadar güçlü bir piyasa hareketi yaratır ve Türk yatırımcısını nasıl etkiler? Tüm detayları aşağıda bulacaksınız.
