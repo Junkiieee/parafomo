@@ -1,0 +1,59 @@
+{
+  "slug": "turklerin-evinde-uyuyan-5-000-ton-altin-sirri",
+  "title": "Türklerin Evinde Uyuyan 5.000 Ton Altın Sırrı",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Türk hanelerinin yastık altında sakladığı yaklaşık 5.000 ton altın, Merkez Bankası rezervinin üç katı. Bu servetin anlamı, sebebi ve yatırımcı için önemi.",
+  "tags": [
+    "altın",
+    "yastık altı altın",
+    "Türkiye ekonomisi",
+    "altın yatırımı",
+    "TCMB",
+    "enflasyon",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Türklerin evinde yaklaşık 5.000 ton altın uyuyor.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars pile"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu rakam, Merkez Bankası'nın resmi altın rezervinin yaklaşık üç katı; trilyonlarca liraya eşdeğer devasa bir servet.",
+      "visual": {
+        "type": "place",
+        "query": "Türkiye Cumhuriyet Merkez Bankası"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Onlarca yıllık yüksek enflasyon ve bankacılık krizleri, kuşaktan kuşağa 'altını evde sakla' alışkanlığını derinlere işledi.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation cash money losing value"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu altın bankacılık sistemine girerse faizler düşer, kredi ucuzlar; bu dönüşümü erken görmek sana avantaj sağlar.",
+      "visual": {
+        "type": "concept",
+        "query": "bank deposit gold investment growth chart"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu altını harekete geçirecek politika hangisi, hangi yatırım fırsatı doğar? Yarın açıklıyoruz, kaçırma. ParaFOMO'ya abone ol, her gün yeni analiz seni bekliyor.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins savings jar investment"
+      }
+    }
+  ]
+}
