@@ -1,6 +1,6 @@
 # Ekonomik Takvim (otomatik)
 
-> Son güncelleme: 2026-07-01 · `scripts/fetch-economic-calendar.py` tarafından üretilir. ELLE DÜZENLEME.
+> Son güncelleme: 2026-07-02 · `scripts/fetch-economic-calendar.py` tarafından üretilir. ELLE DÜZENLEME.
 > Kaynaklar: Investing.com (TR + küresel, birincil), TCMB (faiz kararı), yedek: ForexFactory + TÜİK kuralı.
 
 İçerik üreticisi için: yaklaşan **🔴 High** etkili bir TR/küresel olay 1-3 gün içindeyse,
@@ -10,9 +10,6 @@ o olayın `hook`'una göre bir **explainer** yazısını sıraya al (omurga ever
 
 | Tarih | Gün | Saat | Bölge | Etki | Olay | İçerik fırsatı |
 |-------|-----|------|-------|------|------|----------------|
-| 2026-07-01 | Çarşamba | 12:00 | 🇪🇺 | 🔴 High | CPI (YoY) (Jun) | Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi. |
-| 2026-07-01 | Çarşamba | 17:00 | 🇺🇸 | 🔴 High | ISM Manufacturing PMI (Jun) | ISM/PMI — ABD ekonomik aktivitesi, risk iştahı. |
-| 2026-07-01 | Çarşamba | 17:00 | 🇺🇸 | 🔴 High | ISM Manufacturing Prices (Jun) | ISM/PMI — ABD ekonomik aktivitesi, risk iştahı. |
 | 2026-07-02 | Perşembe | 15:30 | 🇺🇸 | 🔴 High | Nonfarm Payrolls (Jun) | ABD istihdam (NFP) — dolar ve risk iştahı. |
 | 2026-07-02 | Perşembe | 15:30 | 🇺🇸 | 🔴 High | Unemployment Rate (Jun) | İşsizlik verisi — büyüme ve faiz beklentisi. |
 | 2026-07-03 | Cuma | 10:00 | 🇹🇷 | 🔴 High | TÜİK enflasyon (TÜFE, aylık) | Aylık enflasyon — sepet ve alım gücü yorumu. |
