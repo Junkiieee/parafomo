@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-02T12:15+00:00",
+  "updated": "2026-07-02T18:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 48,
+  "count": 49,
   "items": [
     {
       "company": "İsvea Seramik ve Banyo Ürünleri Sanayi A.Ş.",
@@ -45,6 +45,20 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "87.499.998 Lot",
       "broker": "Gedik Yatırım Menkul Değerler A.Ş. Misyon Yatırım Bankası A.Ş."
+    },
+    {
+      "company": "Bulls Yatırım Menkul Değerler A.Ş.",
+      "bist_code": "BLSMD",
+      "slug": "bulls-yatirim-menkul-degerler-a-s",
+      "link": "https://halkarz.com/bulls-yatirim-menkul-degerler-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "100.000.000 Lot",
+      "broker": "Bulls Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "Şa-Ra Enerji İnşaat Tic. ve San. A.Ş.",
