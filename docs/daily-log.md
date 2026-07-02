@@ -4,6 +4,89 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-02
+
+**Yayınlanan yazı:** [Ethereum Nedir? Bitcoin'den Farkı, Akıllı Sözleşmeler ve ETH Nasıl Alınır](/blog/ethereum-nedir)
+
+**Konu seçim gerekçesi:** Takvim olayları (NFP + TÜİK enflasyonu) zaten yayında. GSC fırsatları (endeks fonu, GDP) da kapsanmış. Backlog'dan ilk [ ] madde: "Ethereum nedir" — yüksek arama hacimli, Bitcoin yazısının doğal tamamlayıcısı.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+Kripto para = Bitcoin diyenlere soruyorum:
+
+Ethereum nedir biliyor musunuz?
+
+Piyasa değeri olarak 2 numara ama Bitcoin'den temelden farklı. İşte her Türk yatırımcının bilmesi gerekenler 🧵👇
+
+**Tweet 2:**
+Bitcoin = dijital altın (sadece değer saklama + transfer)
+
+Ethereum = programlanabilir blokzincir platformu
+
+Üzerine uygulama yazabilirsin. Akıllı sözleşme kurabilirsin. DeFi, NFT, DAO hepsi burada çalışıyor.
+
+**Tweet 3:**
+ETH'nin para birimi "Ether"
+
+İki işlevi var:
+1️⃣ Gas ücreti — ağda işlem yapmak için ödersin
+2️⃣ Yatırım varlığı — alınıp satılır
+
+Ağ ne kadar kullanılırsa, ETH'ye talep o kadar artar.
+
+**Tweet 4:**
+Bitcoin vs Ethereum karşılaştırması:
+
+₿ BTC: sınırlı 21M arz, ~10 dk blok, madencilik
+⟠ ETH: stake sistemi, ~12 sn blok, akıllı sözleşme
+
+Hangisi "daha iyi"? Yanlış soru. İkisi farklı iş yapıyor.
+
+**Tweet 5:**
+Kripto portföyünde ETH'ye yer ayırıyorsan:
+
+✅ Toplam portföyün %5-10'u geçmesin
+✅ Acil durum fonunu önce kur
+✅ Uzun vadeli düşün, panikle satma
+✅ Seed phrase'ini dijital ortamda saklama
+
+Detaylı rehber 👇
+parafomo.com/blog/ethereum-nedir
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Başlık:** Ethereum Nedir? Bitcoin'den Ne Farkı Var?
+
+**Post metni:**
+Kripto dünyasının 2 numarası Ethereum hakkında bilmen gerekenler ⬇️
+
+🔷 Bitcoin = dijital para
+🔷 Ethereum = programlanabilir platform
+
+Üzerine akıllı sözleşme yazılabilir, DeFi + NFT burada çalışır.
+
+ETH iki işe yarar:
+① Ağda işlem ücreti (gas)
+② Yatırım varlığı
+
+Ethereum nasıl alınır, stake nedir, riskleri neler? Linkimizde tam rehber var. 👆
+
+#ethereum #eth #kriptopara #bitcoin #blockchain #yatırım #defi #nft #finansokuryazarlığı #parafomo
+
+---
+
+### ✅ Bugün Yapman Gerekenler
+
+1. **Thread'i paylaş:** X'te (@parafomo) yukarıdaki thread taslağını yayınla — sabah 09:00-11:00 veya akşam 19:00-21:00 arası etkileşim yüksek.
+2. **Instagram'a koy:** Carousel post hazırla (6-8 slayt: başlık + tanım + BTC vs ETH tablo + akıllı sözleşme + riskler + nasıl alınır + özet). Post metnini yukarıdan kopyala. Pexels'ten aldığımız kapak fotoğrafını ilk slayt olarak kullanabilirsin.
+
+---
+
 ## 2026-07-01
 
 **Yayınlanan yazı:** [ISM PMI Nedir? ABD Üretim Verisi Dolar ve TL'yi Nasıl Etkiler?](/blog/ism-pmi-nedir-abd-uretim-verisi)
