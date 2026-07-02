@@ -1,37 +1,9 @@
 {
-  "updated": "2026-07-01T18:15+00:00",
+  "updated": "2026-07-02T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 49,
+  "count": 48,
   "items": [
-    {
-      "company": "(Orzax) Orzaks İlaç ve Kimya San. Tic. A.Ş.",
-      "bist_code": "ORZAX",
-      "slug": "orzaks-ilac-ve-kimya-san-tic-a-s",
-      "link": "https://halkarz.com/orzaks-ilac-ve-kimya-san-tic-a-s/",
-      "date_text": "29-30 Haziran, 1 Temmuz 2026",
-      "start": "2026-06-29",
-      "end": "2026-07-01",
-      "status": "Devam Ediyor",
-      "price": "69,00 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "52.500.000 Lot",
-      "broker": "İnfo Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Soho Giyim ve Enerji A.Ş.",
-      "bist_code": "SOHOE",
-      "slug": "soho-giyim-ve-enerji-a-s",
-      "link": "https://halkarz.com/soho-giyim-ve-enerji-a-s/",
-      "date_text": "30 Haziran, 1 Temmuz 2026",
-      "start": "2026-06-30",
-      "end": "2026-07-01",
-      "status": "Devam Ediyor",
-      "price": "15,00 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "100.000.000 Lot",
-      "broker": "İntegral Yatırım Menkul Değerler A.Ş."
-    },
     {
       "company": "İsvea Seramik ve Banyo Ürünleri Sanayi A.Ş.",
       "bist_code": "ISVEA",
@@ -73,6 +45,34 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "87.499.998 Lot",
       "broker": "Gedik Yatırım Menkul Değerler A.Ş. Misyon Yatırım Bankası A.Ş."
+    },
+    {
+      "company": "Şa-Ra Enerji İnşaat Tic. ve San. A.Ş.",
+      "bist_code": "",
+      "slug": "sa-ra-enerji-insaat-tic-ve-san-a-s",
+      "link": "https://halkarz.com/sa-ra-enerji-insaat-tic-ve-san-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "70,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "",
+      "broker": "Tera Yatırım Menkul Değerler A.Ş."
+    },
+    {
+      "company": "Saat ve Saat San. ve Tic. A.Ş.",
+      "bist_code": "",
+      "slug": "saat-ve-saat-san-ve-tic-a-s",
+      "link": "https://halkarz.com/saat-ve-saat-san-ve-tic-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "56,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "66.944.955 Lot",
+      "broker": "Garanti Yatırım Menkul Kıymetler A.Ş. Halk Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "Rönesans Altyapı Sistemleri A.Ş.",
@@ -509,18 +509,32 @@
       "broker": "Yatırım Finansman Menkul Değerler A.Ş."
     },
     {
-      "company": "Anemon Turizm ve İnşaat Tic. A.Ş.",
-      "bist_code": "",
-      "slug": "anemon-turizm-ve-insaat-tic-a-s",
-      "link": "https://halkarz.com/anemon-turizm-ve-insaat-tic-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "",
+      "company": "(Orzax) Orzaks İlaç ve Kimya San. Tic. A.Ş.",
+      "bist_code": "ORZAX",
+      "slug": "orzaks-ilac-ve-kimya-san-tic-a-s",
+      "link": "https://halkarz.com/orzaks-ilac-ve-kimya-san-tic-a-s/",
+      "date_text": "29-30 Haziran, 1 Temmuz 2026",
+      "start": "2026-06-29",
+      "end": "2026-07-01",
+      "status": "Tamamlandı",
+      "price": "69,00 TL",
       "distribution": "Eşit Dağıtım **",
-      "lot": "56.250.000 Lot",
-      "broker": "Yapı Kredi Yatırım Menkul Değerler A.Ş."
+      "lot": "52.500.000 Lot",
+      "broker": "İnfo Yatırım Menkul Değerler A.Ş."
+    },
+    {
+      "company": "Soho Giyim ve Enerji A.Ş.",
+      "bist_code": "SOHOE",
+      "slug": "soho-giyim-ve-enerji-a-s",
+      "link": "https://halkarz.com/soho-giyim-ve-enerji-a-s/",
+      "date_text": "30 Haziran, 1 Temmuz 2026",
+      "start": "2026-06-30",
+      "end": "2026-07-01",
+      "status": "Tamamlandı",
+      "price": "15,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "100.000.000 Lot",
+      "broker": "İntegral Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "Beta Enerji ve Teknoloji A.Ş.",
@@ -532,7 +546,7 @@
       "end": "2026-06-25",
       "status": "Tamamlandı",
       "price": "40,00 TL",
-      "distribution": "Eşit Dağıtım **",
+      "distribution": "Eşit Dağıtım",
       "lot": "60.750.000 Lot",
       "broker": "Türkiye Sınai Kalkınma Bankası A.Ş. Ziraat Yatırım Menkul Değerler A.Ş. Yatırım Finansman Menkul Değerler A.Ş."
     },
@@ -661,34 +675,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "280.000.000 Lot",
       "broker": "Tera Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Best Brands Grup Enerji Yatırım A.Ş.",
-      "bist_code": "BESTE",
-      "slug": "best-brands-grup-enerji-yatirim-a-s",
-      "link": "https://halkarz.com/best-brands-grup-enerji-yatirim-a-s/",
-      "date_text": "5-6 Şubat 2026",
-      "start": "2026-02-05",
-      "end": "2026-02-06",
-      "status": "Tamamlandı",
-      "price": "14,70 TL",
-      "distribution": "Eşit Dağıtım",
-      "lot": "54.578.570 Lot",
-      "broker": "Global Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Akhan Un Fabrikası ve Tarım Ürünleri Gıda Sanayi Tic. A.Ş.",
-      "bist_code": "AKHAN",
-      "slug": "akhan-un-fabrikasi-ve-tarim-urunleri-gida-sanayi-tic-a-s",
-      "link": "https://halkarz.com/akhan-un-fabrikasi-ve-tarim-urunleri-gida-sanayi-tic-a-s/",
-      "date_text": "28-29-30 Ocak 2026",
-      "start": "2026-01-28",
-      "end": "2026-01-30",
-      "status": "Tamamlandı",
-      "price": "21,50 TL",
-      "distribution": "Eşit Dağıtım",
-      "lot": "54.700.000 Lot",
-      "broker": "Halk Yatırım Menkul Değerler A.Ş."
     }
   ]
 }
