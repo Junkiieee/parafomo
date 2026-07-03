@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-03T00:15+00:00",
+  "updated": "2026-07-03T06:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 48,
@@ -33,6 +33,20 @@
       "broker": "Ak Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş."
     },
     {
+      "company": "Saat ve Saat San. ve Tic. A.Ş.",
+      "bist_code": "SSAAT",
+      "slug": "saat-ve-saat-san-ve-tic-a-s",
+      "link": "https://halkarz.com/saat-ve-saat-san-ve-tic-a-s/",
+      "date_text": "6-7-8 Temmuz 2026 09:00-17:00",
+      "start": "2026-07-06",
+      "end": "2026-07-08",
+      "status": "Yaklaşan",
+      "price": "56,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "66.944.955 Lot",
+      "broker": "Garanti Yatırım Menkul Kıymetler A.Ş. Halk Yatırım Menkul Değerler A.Ş."
+    },
+    {
       "company": "Bulls Yatırım Menkul Değerler A.Ş.",
       "bist_code": "BLSMD",
       "slug": "bulls-yatirim-menkul-degerler-a-s",
@@ -59,20 +73,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "",
       "broker": "Tera Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Saat ve Saat San. ve Tic. A.Ş.",
-      "bist_code": "",
-      "slug": "saat-ve-saat-san-ve-tic-a-s",
-      "link": "https://halkarz.com/saat-ve-saat-san-ve-tic-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "56,00 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "66.944.955 Lot",
-      "broker": "Garanti Yatırım Menkul Kıymetler A.Ş. Halk Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "Rönesans Altyapı Sistemleri A.Ş.",
