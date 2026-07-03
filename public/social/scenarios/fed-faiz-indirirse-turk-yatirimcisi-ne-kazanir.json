@@ -1,0 +1,59 @@
+{
+  "slug": "fed-faiz-indirirse-turk-yatirimcisi-ne-kazanir",
+  "title": "Fed Faiz İndirirse Türk Yatırımcısı Ne Kazanır?",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Jerome Powell'ın faiz kararı dolara, BIST'e ve altına nasıl yansır; mekanizmayı sade Türkçeyle anlattık.",
+  "tags": [
+    "Fed",
+    "faiz indirimi",
+    "dolar TL",
+    "BIST",
+    "altın",
+    "Jerome Powell",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Powell faiz indirirse senin paranı ne olur?",
+      "visual": {
+        "type": "person",
+        "query": "Jerome Powell"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fed faiz indirince dolar global olarak zayıflar; bu TL üzerindeki baskıyı geçici de olsa hafifletir.",
+      "visual": {
+        "type": "concept",
+        "query": "dollar turkish lira exchange rate chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ucuz dolar dönemi yabancı yatırımcıyı gelişen piyasalara iter; tarihsel olarak BIST bu dönemlerde yükselir.",
+      "visual": {
+        "type": "place",
+        "query": "Borsa İstanbul"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Dolar zayıflayınca altın yükselir; ama TL değer kazanırsa TL bazlı altın daha yavaş artar, dikkat.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Hangi varlık daha çok kazandırır yarın açıklıyoruz; her gün yeni analiz için abone ol.",
+      "visual": {
+        "type": "concept",
+        "query": "investment portfolio growth chart"
+      }
+    }
+  ]
+}
