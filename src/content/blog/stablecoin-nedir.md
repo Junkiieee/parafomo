@@ -17,6 +17,17 @@ faq:
     a: "Evet. DeFi platformlarında veya bazı kripto borsalarında stablecoin'lerinizi borç verme havuzlarına kilitleyerek yıllık %3-10 arasında değişen getiri elde etmek mümkündür. Ancak bu getiri sabit değildir ve platform riski, akıllı sözleşme açığı gibi ek riskler taşır."
   - q: "Türkiye'de stablecoin tutmak yasal mı?"
     a: "2024 itibarıyla Türkiye'de kripto varlıklara ilişkin yasal çerçeve gelişmektedir; stablecoin dahil kripto varlıklar SPK denetimindeki lisanslı borsalar üzerinden alınıp satılabilir. Yasal durum değişken olduğundan güncel mevzuatı takip etmek önerilir."
+shorts:
+  - "Stablecoin güvenli sanıyordun, ama 40 milyar dolar çöktü."
+  - "Stablecoin, değeri dolara sabitlenmiş kripto paradır; Bitcoin gibi dalgalanmaz, borsada güvenli liman görevi görür."
+  - "USDT en büyük stablecoin ama rezervleri tam şeffaf değil; USDC daha küçük, buna karşın aylık bağımsız denetim raporu yayınlıyor."
+  - "Algoritmik stablecoin'ler en riskli kategori: Terra'nın UST'si 2022'de çöküp kırk milyar doların üzerinde değeri bir haftada sildi."
+  - "Tüm stablecoin karşılaştırmasını parafomo.com'da ücretsiz okuyabilirsin."
+shorts_broll:
+  - "stablecoin cryptocurrency dollar bills"
+  - "crypto exchange trading chart"
+  - "terra luna crypto crash"
+  - "blockchain digital money transfer"
 ---
 
 Kripto para piyasasında Bitcoin veya Ethereum satın aldığınızda yüzde elli değer kaybına hazırlıklı olmanız gerekir. Ama kripto borsasındaki paranızı dolar değerinde sabit tutmak isteseydiniz ne yapardınız? **Stablecoin** tam da bu ihtiyaç için doğdu: blokzincir altyapısını kullanırken fiyat istikrarından ödün vermemenin yolu.
