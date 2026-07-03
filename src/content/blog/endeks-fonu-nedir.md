@@ -17,6 +17,17 @@ faq:
     a: "Endeks fonunun getirisi, takip ettiği endeksin getirisine eşittir (yönetim ücreti düşüldükten sonra). BIST 100 uzun vadede yıllık enflasyonun üzerinde reel getiri sağlamıştır; ancak kısa vadede ciddi dalgalanmalar yaşanabilir. Geçmiş performans geleceği garanti etmez."
   - q: "Endeks fonu güvenli midir, parasını kaybeder misin?"
     a: "Endeks fonları diversifikasyon sayesinde tek hisse riskini büyük ölçüde azaltır; ancak piyasa genel olarak düştüğünde değer kaybı yaşanabilir. Portföyünüzün tamamını tek bir endeks fonuna koymak yerine yatırım sürenize ve risk toleransınıza göre çeşitlendirme önerilir."
+shorts:
+  - "Hangi hisseyi alayım sorusunu hiç sormamak mümkün."
+  - "Endeks fonu, BIST 100 gibi bir piyasayı taklit eder; tek alımda yüzlerce şirkete birden ortak olursun."
+  - "Aktif fonlar yılda yüzde 3'e kadar ücret alır ve yine de çoğunlukla endeksin gerisinde kalır."
+  - "Türkiye'de ETF almak için aracı kurum hesabı yeterli; hisse gibi borsadan saniyeler içinde işlem yaparsın."
+  - "Adım adım rehber ve fon karşılaştırmaları için parafomo.com'a göz at."
+shorts_broll:
+  - "stock market index chart screen"
+  - "passive investing portfolio growth"
+  - "Istanbul stock exchange trading floor"
+  - "Turkish lira money savings"
 ---
 
 "Hangi hisseyi alayım?" sorusunu sormadan yatırım yapabilir misiniz? Evet — **endeks fonu** tam olarak bunu sağlar. Tek bir alımla onlarca veya yüzlerce şirkete ortak olur, piyasanın ortalama getirisini takip edersiniz. Bu rehberde **endeks fonu nedir**, nasıl çalışır ve Türkiye'den nasıl alınır sorularını adım adım ele alıyoruz.
