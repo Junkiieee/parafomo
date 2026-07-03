@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-02",
+  "updated": "2026-07-03",
   "fetch_ok": true,
   "source": "investing",
   "events": [
@@ -155,6 +155,33 @@
       "hook": "Faiz kararı kredi, mevduat, döviz ve borsayı doğrudan etkiler — karar öncesi 'faiz kararı paranı nasıl etkiler' explainer'ı yaz.",
       "time": "",
       "source": "tcmb"
+    },
+    {
+      "date": "2026-07-23",
+      "time": "14:00",
+      "region": "TR",
+      "impact": "Medium",
+      "title": "One-Week Repo Rate (Jul)",
+      "source": "investing",
+      "hook": ""
+    },
+    {
+      "date": "2026-07-23",
+      "time": "15:15",
+      "region": "EUR",
+      "impact": "High",
+      "title": "Deposit Facility Rate (Jul)",
+      "source": "investing",
+      "hook": "ECB faiz kararı — euro ve küresel faiz."
+    },
+    {
+      "date": "2026-07-23",
+      "time": "15:15",
+      "region": "EUR",
+      "impact": "High",
+      "title": "ECB Interest Rate Decision (Jul)",
+      "source": "investing",
+      "hook": "Faiz kararı — küresel faiz beklentisi TL ve borsayı etkiler."
     },
     {
       "date": "2026-07-29",

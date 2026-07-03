@@ -4,6 +4,93 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-03
+
+**Yayınlanan yazı:** [Stablecoin Nedir? USDT, USDC Farkları ve Taşıdığı Riskler](/blog/stablecoin-nedir)
+
+**Konu seçim gerekçesi:** TÜİK TÜFE yazısı (tufe-enflasyon-verisi-nasil-okunur) dün zaten yayınlanmış. GSC fırsatları (endeks fonu, GDP) mevcut yazılarla kapsanmış. Backlog'dan ilk [ ] madde: "Stablecoin nedir, riskleri neler?" — kripto kategorisi, yüksek niyet sinyalli sorgu.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+USDT ya da USDC duymuşsunuzdur — ama fark nedir, risk taşır mı?
+
+Stablecoin hakkında bilmek istediğin her şey 👇
+
+**Tweet 2:**
+Stablecoin = değeri 1 dolara sabitlenmiş kripto para.
+
+Bitcoin gibi dalgalanmıyor. Amaç: kripto borsasında kalırken dolar değerini korumak.
+
+**Tweet 3:**
+3 tür var:
+• Fiat destekli (USDT, USDC) — en yaygın, ama şirkete güvenmek gerekiyor
+• Kripto teminatlı (DAI) — merkezi değil, akıllı sözleşme yönetir
+• Algoritmik — en riskli. Terra/LUNA bunu kanıtladı.
+
+**Tweet 4:**
+USDT vs USDC farkı:
+→ USDT: yüksek hacim, kısmi şeffaflık
+→ USDC: aylık bağımsız denetim, ABD uyumlu
+
+İkisi de 1 dolara sabitlendi. Şeffaflık öncelikse USDC daha güçlü.
+
+**Tweet 5:**
+"Sabitlenmiş" = risksiz demek değil.
+
+Gerçek riskler:
+❌ Karşı taraf (şirket iflas ederse?)
+❌ Rezerv şeffaflığı sorunu
+❌ Algoritmik çöküş (Terra/LUNA -40 Mrd $)
+❌ Regülasyon değişikliği
+
+**Tweet 6:**
+TL enflasyonuna karşı dolar tutmak istiyorsan stablecoin bir araç.
+
+Ama banka mevduatı gibi güvencesi YOK — TMSF kapsamı dışında.
+
+Çeşitlendirme şart: altın + döviz mevduat + endeks fonu.
+
+**Tweet 7:**
+Detaylı rehber → parafomo.com/blog/stablecoin-nedir
+
+USDT/USDC/DAI karşılaştırma tablosu, nasıl alınır, portföyde nasıl konumlanır — hepsi var.
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Caption:**
+💵 Stablecoin nedir, gerçekten "güvenli" mi?
+
+USDT ve USDC en popüler stablecoin'ler — değerleri 1 dolara sabitlenmiş kripto paralar.
+
+Ama "sabitlenmiş" = risksiz değil ❗
+
+🔴 Karşı taraf riski (şirkete güveniyorsunuz)
+🔴 Rezerv şeffaflığı sorunu
+🔴 Algoritmik çöküş — Terra/LUNA 40 milyar doları sildi
+
+✅ Kim için işe yarar?
+→ Volatiliteden geçici korunma
+→ Ucuz uluslararası transfer
+→ DeFi getiri aracı
+
+📖 Tüm ayrıntılar: parafomo.com/blog/stablecoin-nedir
+
+#stablecoin #USDT #USDC #kripto #kriptopara #parafomo #finansokuryazarligi #yatirim #dijitalpara
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **Paylaşımı yayınla:** X thread'ini ve Instagram post'unu yukarıdaki taslakla paylaş (en iyi saat: sabah 09:00-10:00 ya da öğleden sonra 18:00-20:00).
+2. **Kripto topluluklarında paylaş:** Reddit r/Turkey veya Türk kripto Telegram/Discord gruplarına "Stablecoin nedir" sorusuna cevap verir nitelikte değer katarak bağlantıyı ekle.
+
+---
+
 ## 2026-07-02
 
 **Yayınlanan yazı:** [Ethereum Nedir? Bitcoin'den Farkı, Akıllı Sözleşmeler ve ETH Nasıl Alınır](/blog/ethereum-nedir)
