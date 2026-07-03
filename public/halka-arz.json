@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-02T18:15+00:00",
+  "updated": "2026-07-03T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 49,
+  "count": 48,
   "items": [
     {
       "company": "İsvea Seramik ve Banyo Ürünleri Sanayi A.Ş.",
@@ -31,20 +31,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "162.000.000 Lot",
       "broker": "Ak Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Golda Gıda San. ve Tic. A.Ş.",
-      "bist_code": "GOLDA",
-      "slug": "golda-gida-san-ve-tic-a-s",
-      "link": "https://halkarz.com/golda-gida-san-ve-tic-a-s/",
-      "date_text": "1-2 Temmuz 2026",
-      "start": "2026-07-01",
-      "end": "2026-07-02",
-      "status": "Devam Ediyor",
-      "price": "9,20 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "87.499.998 Lot",
-      "broker": "Gedik Yatırım Menkul Değerler A.Ş. Misyon Yatırım Bankası A.Ş."
     },
     {
       "company": "Bulls Yatırım Menkul Değerler A.Ş.",
@@ -523,6 +509,20 @@
       "broker": "Yatırım Finansman Menkul Değerler A.Ş."
     },
     {
+      "company": "Golda Gıda San. ve Tic. A.Ş.",
+      "bist_code": "GOLDA",
+      "slug": "golda-gida-san-ve-tic-a-s",
+      "link": "https://halkarz.com/golda-gida-san-ve-tic-a-s/",
+      "date_text": "1-2 Temmuz 2026",
+      "start": "2026-07-01",
+      "end": "2026-07-02",
+      "status": "Tamamlandı",
+      "price": "9,20 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "87.499.998 Lot",
+      "broker": "Gedik Yatırım Menkul Değerler A.Ş. Misyon Yatırım Bankası A.Ş."
+    },
+    {
       "company": "(Orzax) Orzaks İlaç ve Kimya San. Tic. A.Ş.",
       "bist_code": "ORZAX",
       "slug": "orzaks-ilac-ve-kimya-san-tic-a-s",
@@ -675,20 +675,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "38.000.000 Lot",
       "broker": "Halk Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Ata Turizm İşletmecilik Taşımacılık Madencilik Kuyumculuk San. ve Dış Ticaret A.Ş.",
-      "bist_code": "ATATR",
-      "slug": "ata-turizm-isletmecilik-tasimacilik-madencilik-kuyumculuk-san-ve-dis-ticaret-a-s",
-      "link": "https://halkarz.com/ata-turizm-isletmecilik-tasimacilik-madencilik-kuyumculuk-san-ve-dis-ticaret-a-s/",
-      "date_text": "11-12-13 Şubat 2026",
-      "start": "2026-02-11",
-      "end": "2026-02-13",
-      "status": "Tamamlandı",
-      "price": "11,20 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "280.000.000 Lot",
-      "broker": "Tera Yatırım Menkul Değerler A.Ş."
     }
   ]
 }
