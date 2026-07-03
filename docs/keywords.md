@@ -14,7 +14,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Kredi kartı borcundan nasıl kurtulunur? — `Kişisel Finans` — hedef: "kredi kartı borcundan kurtulma"
 - [x] Eurobond nedir, kimler için uygun? — `Yatırım` — hedef: "eurobond nedir"
 - [x] Ethereum nedir, Bitcoin'den farkı ne? — `Kripto` — hedef: "ethereum nedir"
-- [ ] Stablecoin nedir, riskleri neler? — `Kripto` — hedef: "stablecoin nedir"
+- [x] Stablecoin nedir, riskleri neler? — `Kripto` — hedef: "stablecoin nedir"
 - [ ] Faiz nedir, ekonomiyi nasıl etkiler? — `Ekonomi` — hedef: "faiz nedir nasıl etkiler"
 - [ ] Tasarruf nasıl yapılır? 20 pratik yöntem — `Kişisel Finans` — hedef: "nasıl tasarruf edilir"
 - [ ] Pasif gelir fikirleri: gerçekçi 10 yol — `Kişisel Finans` — hedef: "pasif gelir fikirleri"
@@ -60,3 +60,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] ABD Tarım Dışı İstihdam (NFP) nedir? Dolar ve TL'yi nasıl etkiler? — `nfp-nedir-abd-tarim-disi-istihdam` (takvim: 2 Temmuz ABD NFP açıklaması)
 - [x] TÜİK Enflasyon Verisi Nasıl Okunur? TÜFE Sepeti ve Alım Gücüne Etkisi — `tufe-enflasyon-verisi-nasil-okunur` (takvim: 3 Temmuz TÜİK TÜFE açıklaması)
 - [x] Ethereum nedir, Bitcoin'den farkı ne? — `ethereum-nedir`
+- [x] Stablecoin nedir, riskleri neler? — `stablecoin-nedir`
