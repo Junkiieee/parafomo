@@ -1,0 +1,59 @@
+{
+  "slug": "carry-trade-yabancilar-turk-faizinden-nasil-para-kazaniyor",
+  "title": "Carry Trade: Yabancılar Türk Faizinden Nasıl Para Kazanıyor?",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Carry trade nedir, Türkiye'ye nasıl etki eder ve neden tehlikeli olabilir — günlük bir metaforla 40 saniyede anlat.",
+  "tags": [
+    "carry trade",
+    "Türkiye faiz",
+    "döviz",
+    "yatırım",
+    "TCMB",
+    "TL",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "CARRY TRADE",
+      "spoken": "Yabancılar sıfır faizle borç alıp Türkiye'den servet mi yapıyor?",
+      "visual": {
+        "type": "concept",
+        "query": "foreign investor currency money flow trading"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Carry trade şu demek: ucuz ülkede borç al, yüksek faizli ülkeye yatır, farkı cebe koy.",
+      "visual": {
+        "type": "concept",
+        "query": "interest rate arbitrage bank money transfer"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Örneğin Japonya'da düşük faizle borç alıp Türkiye'deki yüksek faize yatırınca fark devasa görünür.",
+      "visual": {
+        "type": "place",
+        "query": "Bank of Japan"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama TL değer kaybedince dolar bazlı kâr buharlaşır; yabancı parasını çeker, borsa ve kur birlikte sarsılır.",
+      "visual": {
+        "type": "concept",
+        "query": "currency devaluation stock market sell off crash"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki hangi para birimi şu an carry trade'de öne çıkıyor? Yarın açıklıyoruz, kaçırma — abone ol, her gün yeni analiz gelir.",
+      "visual": {
+        "type": "concept",
+        "query": "youtube subscribe notification bell screen"
+      }
+    }
+  ]
+}
