@@ -17,6 +17,17 @@ faq:
     a: "PMI 50'nin altına indiğinde hizmetler sektörünün daraldığı sinyali verilir. ABD ekonomisinin büyük çoğunluğu hizmetlerden oluştuğu için bu durum resesyon endişesini imalat PMI'ına kıyasla çok daha hızlı tetikler."
   - q: "ISM Hizmetler PMI Türkiye'yi nasıl etkiler?"
     a: "Güçlü veri dolara güç verir, TL üzerinde baskı oluşturabilir. Zayıf veri ise Fed faiz indirimi beklentisini güçlendirir, dolar zayıflar ve gelişmekte olan piyasalar nispeten destek bulabilir. BIST 100 ve kur bu mekanizma üzerinden etkilenir."
+shorts:
+  - "Bir ABD verisi TL'yi nasıl bu kadar sarsar?"
+  - "ISM Hizmetler PMI, ABD ekonomisinin yüzde 70'ini kapsayan hizmet sektörünün büyüme hızını ölçen aylık bir ankettir."
+  - "50'nin üzerindeki her okuma büyümeye, altındaki her okuma ise daralmaya işaret eder; Fed bu veriyi faiz kararlarında doğrudan kullanır."
+  - "Veri beklentinin üzerinde gelirse dolar güçlenir ve TL değer kaybeder; beklenenden zayıf çıkarsa tam tersi hareket yaşanır."
+  - "Günlük piyasa analizleri için parafomo.com'u takip et."
+shorts_broll:
+  - "US service sector economy growth chart"
+  - "Federal Reserve interest rate decision meeting"
+  - "Turkish lira US dollar exchange rate"
+  - "business survey economic activity office workers"
 ---
 
 Pazartesi günü saat 17:00'de açıklanacak **ISM Hizmetler PMI** (Non-Manufacturing PMI) verisi, küresel piyasaların radar ekranında kırmızı bir noktayla işaretli. Ama çoğu yatırımcı bu göstergeyi kardeşi ISM İmalat PMI'ı ile karıştırıyor ya da neden bu kadar önemli olduğunu tam kavrayamıyor. Oysa ABD ekonomisinin yaklaşık **%70'ini hizmet sektörü** oluşturuyor — bu veri, milyonlarca çalışanın, tüketicinin ve işletmenin nabzını tek bir sayıda özetliyor.
