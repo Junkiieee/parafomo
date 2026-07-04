@@ -4,6 +4,84 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-04
+
+**Yayınlanan yazı:** [ISM Hizmetler PMI Nedir? ABD Servis Sektörü Verisi Dolar ve TL'yi Nasıl Etkiler?](/blog/ism-hizmetler-pmi-nedir)
+
+**Konu seçim gerekçesi:** Ekonomik takvimde 6 Temmuz (Pazartesi) için 🔴 High etkili ISM Non-Manufacturing PMI açıklaması var. Mevcut ISM makalesi yalnızca imalat sektörünü kapsıyordu; bu explainer hizmetler sektörünü (ABD GDP'nin %70'i) anlatıyor.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+Pazartesi 17:00'de ABD'nin en kritik ekonomik verilerinden biri açıklanacak: ISM Hizmetler PMI
+
+ABD ekonomisinin %70'ini hizmet sektörü oluşturuyor.
+Bu tek sayı dolar, altın ve TL'yi birkaç dakika içinde hareket ettirebilir.
+
+Ne izlemeli? Nasıl etkilenir? 🧵
+
+**Tweet 2:**
+ISM Hizmetler PMI nedir?
+
+ABD'deki restoran, banka, hastane, IT şirketi yöneticilerine yapılan anket.
+"İşler nasıl gidiyor?" sorusunun ekonomik dili.
+
+50 üzeri → büyüme
+50 altı → daralma
+
+Bu kadar basit, bu kadar güçlü.
+
+**Tweet 3:**
+Güçlü veri gelirse ne olur?
+
+▶ Fed faiz indirmeye acele etmez
+▶ Dolar güçlenir
+▶ TL/USD kuru yükselme baskısı altına girebilir
+
+Zayıf veri gelirse?
+
+▶ Resesyon endişesi artar
+▶ Fed faiz indirir beklentisi güçlenir
+▶ Dolar zayıflar, altın yükselir
+
+**Tweet 4:**
+Peki siz ne yapmalısınız?
+
+Açıklama öncesi spekülatif pozisyon alma.
+İlk 15-30 dakikayı bekle, piyasa veriyi nasıl sindiriyor izle.
+Uzun vadeli planını tek veriye göre değiştirme.
+
+Detaylar → parafomo.com/blog/ism-hizmetler-pmi-nedir
+
+---
+
+### Instagram Post Metni
+
+**Görsel fikri:** ISM 50 eşiği infografik (Büyüme / Daralma)
+
+**Caption:**
+Pazartesi 17:00 → ABD Hizmetler PMI açıklanıyor 📊
+
+Bu veri neden önemli?
+✅ ABD ekonomisinin %70'ini hizmet sektörü oluşturuyor
+✅ 50 üzeri gelirse dolar güçlenir, TL baskı altına girebilir
+✅ 50 altı gelirse Fed faiz indirim beklentisi güçlenir
+
+Detaylı rehber profildeki linkte ↗
+
+#ABDEkonomisi #ISMpmi #DolarTL #PiyasaTakip #Ekonomi #ParaFOMO #YatırımRehberi #FinansEğitim
+
+---
+
+### Bugün senin yapman gerekenler
+
+1. **X thread'ini yayınla** — Pazartesi sabahı (6 Temmuz) erken saatte paylaşmak ideal; açıklamaya 4-5 saat önce göndermek merak uyandırır.
+2. **Instagram post'unu paylaş** — Aynı gün sabah 09:00-10:00 arası iyi bir dilim; story olarak da ilgili soruyla etkileşim aç ("50'nin altına düşer mi? Oy ver!").
+
+---
+
 ## 2026-07-03
 
 **Yayınlanan yazı:** [Stablecoin Nedir? USDT, USDC Farkları ve Taşıdığı Riskler](/blog/stablecoin-nedir)
