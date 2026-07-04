@@ -1,37 +1,9 @@
 {
-  "updated": "2026-07-03T18:15+00:00",
+  "updated": "2026-07-04T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 48,
+  "count": 46,
   "items": [
-    {
-      "company": "İsvea Seramik ve Banyo Ürünleri Sanayi A.Ş.",
-      "bist_code": "ISVEA",
-      "slug": "isvea-seramik-ve-banyo-urunleri-sanayi-a-s",
-      "link": "https://halkarz.com/isvea-seramik-ve-banyo-urunleri-sanayi-a-s/",
-      "date_text": "1-2-3 Temmuz 2026",
-      "start": "2026-07-01",
-      "end": "2026-07-03",
-      "status": "Devam Ediyor",
-      "price": "20,90 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "67.000.000 Lot",
-      "broker": "Halk Yatırım Menkul Değerler A.Ş. Ahlatcı Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "(Intercity) Ekim Turizm Tic. ve San. A.Ş.",
-      "bist_code": "EKIM",
-      "slug": "ekim-turizm-tic-ve-san-a-s",
-      "link": "https://halkarz.com/ekim-turizm-tic-ve-san-a-s/",
-      "date_text": "1-2-3 Temmuz 2026",
-      "start": "2026-07-01",
-      "end": "2026-07-03",
-      "status": "Devam Ediyor",
-      "price": "30,26 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "162.000.000 Lot",
-      "broker": "Ak Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş."
-    },
     {
       "company": "Saat ve Saat San. ve Tic. A.Ş.",
       "bist_code": "SSAAT",
@@ -509,6 +481,34 @@
       "broker": "Yatırım Finansman Menkul Değerler A.Ş."
     },
     {
+      "company": "İsvea Seramik ve Banyo Ürünleri Sanayi A.Ş.",
+      "bist_code": "ISVEA",
+      "slug": "isvea-seramik-ve-banyo-urunleri-sanayi-a-s",
+      "link": "https://halkarz.com/isvea-seramik-ve-banyo-urunleri-sanayi-a-s/",
+      "date_text": "1-2-3 Temmuz 2026",
+      "start": "2026-07-01",
+      "end": "2026-07-03",
+      "status": "Tamamlandı",
+      "price": "20,90 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "67.000.000 Lot",
+      "broker": "Halk Yatırım Menkul Değerler A.Ş. Ahlatcı Yatırım Menkul Değerler A.Ş."
+    },
+    {
+      "company": "(Intercity) Ekim Turizm Tic. ve San. A.Ş.",
+      "bist_code": "EKIM",
+      "slug": "ekim-turizm-tic-ve-san-a-s",
+      "link": "https://halkarz.com/ekim-turizm-tic-ve-san-a-s/",
+      "date_text": "1-2-3 Temmuz 2026",
+      "start": "2026-07-01",
+      "end": "2026-07-03",
+      "status": "Tamamlandı",
+      "price": "30,26 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "162.000.000 Lot",
+      "broker": "Ak Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş."
+    },
+    {
       "company": "Golda Gıda San. ve Tic. A.Ş.",
       "bist_code": "GOLDA",
       "slug": "golda-gida-san-ve-tic-a-s",
@@ -647,34 +647,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "124.845.000 Lot",
       "broker": "Deniz Yatırım Menkul Kıymetler A.Ş."
-    },
-    {
-      "company": "Savur Gayrimenkul Yatırım Ortaklığı A.Ş.",
-      "bist_code": "SVGYO",
-      "slug": "savur-gayrimenkul-yatirim-ortakligi-a-s",
-      "link": "https://halkarz.com/savur-gayrimenkul-yatirim-ortakligi-a-s/",
-      "date_text": "26-27 Şubat, 2 Mart 2026",
-      "start": "2026-02-26",
-      "end": "2026-03-02",
-      "status": "Tamamlandı",
-      "price": "3,64 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "295.400.000 Lot",
-      "broker": "Tera Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Empa Elektronik San. ve Tic. A.Ş.",
-      "bist_code": "EMPAE",
-      "slug": "empa-elektronik-san-ve-tic-a-s",
-      "link": "https://halkarz.com/empa-elektronik-san-ve-tic-a-s/",
-      "date_text": "19-20 Şubat 2026",
-      "start": "2026-02-19",
-      "end": "2026-02-20",
-      "status": "Tamamlandı",
-      "price": "22,00 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "38.000.000 Lot",
-      "broker": "Halk Yatırım Menkul Değerler A.Ş."
     }
   ]
 }
