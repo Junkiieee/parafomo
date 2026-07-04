@@ -39,6 +39,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] ISM Hizmetler PMI nedir, ABD servis sektörü verisi — `ism-hizmetler-pmi-nedir` (takvim: 6 Temmuz ISM Non-Manufacturing PMI açıklaması)
+
 - [x] ISM PMI nedir, ABD üretim verisi — `ism-pmi-nedir-abd-uretim-verisi` (takvim: 1 Temmuz ISM Manufacturing PMI açıklaması)
 - [x] Enflasyondan korunma rehberi — `enflasyondan-nasil-korunur`
 - [x] Borsaya nasıl başlanır — `borsaya-nasil-baslanir`
