@@ -17,6 +17,17 @@ faq:
     a: "ABD'nin faiz kararları küresel risk iştahını belirler. Dolar güçlenirse TL değer kaybeder, altın fiyatı baskılanabilir. Fed faiz indirimine başlarsa gelişmekte olan ülkelere sermaye akışı artar — BIST100 ve TL bundan olumlu etkilenebilir."
   - q: "PCE verisi ne zaman açıklanır?"
     a: "PCE verisi ABD Ticaret Bakanlığı tarafından her ayın sonunda açıklanır. Mayıs 2026 verisi 25 Haziran 2026 Perşembe günü saat 15:30 Türkiye saatiyle yayınlanacak."
+shorts:
+  - "Bu tek veri dolar kurunu alt üst edebilir."
+  - "PCE, Fed'in tercih ettiği enflasyon göstergesi; yüzde iki hedefiyle fiyat istikrarını bu veriyle takip ediyor."
+  - "CPI'dan farkı şu: tüketicinin ucuz alternatife geçme davranışını da hesaba katıyor, bu yüzden daha gerçekçi bir tablo çiziyor."
+  - "PCE yüksek gelirse Fed faiz indiremez, dolar güçlenir; düşük gelirse faiz indirimi yaklaşır ve TL üzerindeki baskı hafifler."
+  - "Tüm detaylar ve grafikler parafomo.com'da, takipte kal."
+shorts_broll:
+  - "Federal Reserve building Washington DC"
+  - "US dollar bills close up"
+  - "inflation chart rising graph"
+  - "currency exchange rate board"
 ---
 
 25 Haziran'da piyasaları hareketlendirecek kritik bir veri geliyor: Fed'in favori enflasyon göstergesi PCE raporu. Bu sayı, dolar yönünü, küresel faiz beklentilerini ve dolaylı yoldan TL'yi şekillendirecek. **PCE nedir** ve sizi nasıl etkiler? Adım adım açıklıyoruz.
