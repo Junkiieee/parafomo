@@ -1,6 +1,6 @@
 # Ekonomik Takvim (otomatik)
 
-> Son güncelleme: 2026-07-04 · `scripts/fetch-economic-calendar.py` tarafından üretilir. ELLE DÜZENLEME.
+> Son güncelleme: 2026-07-05 · `scripts/fetch-economic-calendar.py` tarafından üretilir. ELLE DÜZENLEME.
 > Kaynaklar: Investing.com (TR + küresel, birincil), TCMB (faiz kararı), yedek: ForexFactory + TÜİK kuralı.
 
 İçerik üreticisi için: yaklaşan **🔴 High** etkili bir TR/küresel olay 1-3 gün içindeyse,

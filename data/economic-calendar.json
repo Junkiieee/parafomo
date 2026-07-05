@@ -1,35 +1,8 @@
 {
-  "updated": "2026-07-04",
+  "updated": "2026-07-05",
   "fetch_ok": true,
   "source": "investing",
   "events": [
-    {
-      "date": "2026-07-01",
-      "time": "12:00",
-      "region": "EUR",
-      "impact": "High",
-      "title": "CPI (YoY) (Jun)",
-      "source": "investing",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-07-01",
-      "time": "17:00",
-      "region": "USD",
-      "impact": "High",
-      "title": "ISM Manufacturing PMI (Jun)",
-      "source": "investing",
-      "hook": "ISM/PMI — ABD ekonomik aktivitesi, risk iştahı."
-    },
-    {
-      "date": "2026-07-01",
-      "time": "17:00",
-      "region": "USD",
-      "impact": "High",
-      "title": "ISM Manufacturing Prices (Jun)",
-      "source": "investing",
-      "hook": "ISM/PMI — ABD ekonomik aktivitesi, risk iştahı."
-    },
     {
       "date": "2026-07-02",
       "time": "15:30",
