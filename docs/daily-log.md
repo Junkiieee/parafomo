@@ -4,6 +4,85 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-05
+
+**Yayınlanan yazı:** [FOMC Toplantı Tutanakları Nedir? Fed Kararları TL'yi Nasıl Etkiler?](/blog/fomc-toplanti-tutanaklari-nedir)
+
+**Konu seçim gerekçesi:** Ekonomik takvimde 8 Temmuz (Çarşamba) 21:00 için 🔴 High etkili FOMC Meeting Minutes açıklaması var. Fed'in iç tartışmaları, dolar yönü ve TL üzerindeki etkisi bu explainer ile anlatıldı.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+Çarşamba 21:00'de önemli bir belge açıklanacak: FOMC Toplantı Tutanakları
+
+Fed'in perde arkasındaki tartışmalar… Ve doğrudan TL'yi etkiliyor 🧵
+
+**Tweet 2:**
+FOMC nedir?
+ABD Merkez Bankası Fed'in faiz kararlarını alan 12 kişilik komite
+
+Yılda 8 kez toplanır — her toplantıdan 3 hafta sonra tartışmaların tamamı yayımlanır
+
+**Tweet 3:**
+Tutanaklar, faiz kararından farklıdır:
+
+• Faiz kararı → kısa açıklama, ani etki
+• Tutanaklar → 15-25 sayfa, üye yorumları, gelecek sinyali
+
+Piyasalar bu belgeyi "bir sonraki adım ne?" sorusu için okur
+
+**Tweet 4:**
+Fed şahin mesaj verirse:
+→ Dolar güçlenir
+→ TL baskı altına girer
+→ BIST'ten yabancı çıkışı yaşanabilir
+
+Fed güvercin mesaj verirse:
+→ Dolar zayıflar
+→ TL nefes alır
+→ Borsa yükselir
+
+**Tweet 5:**
+8 Temmuz tutanaklarında bakılacak 3 şey:
+1. Enflasyon soğudu mu, Fed tatmin oldu mu?
+2. Faiz indirim takvimi belirginleşiyor mu?
+3. Azınlık oy kullanan üye argümanı ne?
+
+Detaylar blogda 👇
+parafomo.com/blog/fomc-toplanti-tutanaklari-nedir
+
+---
+
+### Instagram Post Metni
+
+**Caption:**
+
+8 Temmuz akşamı 21:00 — piyasaların gözü bu belgede 📄
+
+FOMC Toplantı Tutanakları açıklanıyor.
+
+Bunlar Fed'in iç tartışmalarını gösteren 15-25 sayfalık belgeler. Faiz kararı zaten biliniyor; tutanaklar "neden ve sıradaki adım ne?" sorusunu cevaplıyor.
+
+🔴 Fed şahin mesaj verirse → dolar güçlenir, TL değer kaybeder
+🟢 Fed güvercin mesaj verirse → dolar zayıflar, TL rahatlar
+
+Türkiye'nin yüksek dış borcu bu etkiyi daha derin hissettiriyor.
+
+Tüm detaylar bağlantıda 👆
+
+#FOMC #Fed #dolar #faiz #ekonomi #parafomo #yatırım #borsa #dolarTL #merkezdankası
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **X thread'ini paylaş** — akşam 18:00-20:00 arası (salı akşamı peak saati); "Çarşamba 21:00'deki FOMC tutanaklarına hazır mısın?" gibi soru ekleyebilirsin.
+2. **Instagram post'unu yayınla** — görseli public/social/fomc-toplanti-tutanaklari-nedir.png olarak kullan; caption hazır.
+
+---
+
 ## 2026-07-04
 
 **Yayınlanan yazı:** [ISM Hizmetler PMI Nedir? ABD Servis Sektörü Verisi Dolar ve TL'yi Nasıl Etkiler?](/blog/ism-hizmetler-pmi-nedir)

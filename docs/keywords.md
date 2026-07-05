@@ -39,6 +39,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] FOMC Toplantı Tutanakları Nedir? Fed Kararları TL'yi Nasıl Etkiler? — `fomc-toplanti-tutanaklari-nedir` (takvim: 8 Temmuz FOMC Meeting Minutes açıklaması)
 - [x] ISM Hizmetler PMI nedir, ABD servis sektörü verisi — `ism-hizmetler-pmi-nedir` (takvim: 6 Temmuz ISM Non-Manufacturing PMI açıklaması)
 
 - [x] ISM PMI nedir, ABD üretim verisi — `ism-pmi-nedir-abd-uretim-verisi` (takvim: 1 Temmuz ISM Manufacturing PMI açıklaması)
