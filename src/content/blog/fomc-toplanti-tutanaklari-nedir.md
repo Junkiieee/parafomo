@@ -17,6 +17,17 @@ faq:
     a: "Faiz kararı toplantı günü kısa bir açıklamayla gelir. Tutanaklar ise üye yorumlarını, argümanları ve oylamaları barındıran ayrıntılı belgedir — piyasalar bunu gelecekteki adımlara dair ipucu için okur."
   - q: "FOMC tutanaklarına nereden bakabilirim?"
     a: "Fed'in resmi sitesi federalreserve.gov'dan ücretsiz erişilebilir. Investing.com ve Bloomberg Türkçe de Türkçe özet yayımlar."
+shorts:
+  - "Bir belge yayınlandı, TL sarsıldı — neden?"
+  - "FOMC, ABD Merkez Bankası'nın faiz kararlarını alan üst kuruldur; kararları tüm dünya para birimlerini doğrudan etkiler."
+  - "Tutanaklar, toplantıdan 3 hafta sonra gelen sahne arkasıdır; üyelerin tartışmaları bir sonraki faiz hamlesinin ipucunu verir."
+  - "Fed sıkı sinyal verirse yabancılar TL'den kaçar; gevşeme sinyalinde ise TL değer kazanır, borsa yükselir."
+  - "Tüm detaylar ve ekonomi takvimi parafomo.com'da."
+shorts_broll:
+  - "Federal Reserve building exterior"
+  - "Turkish lira dollar currency exchange"
+  - "FOMC meeting room officials"
+  - "emerging market stock chart volatility"
 ---
 
 8 Temmuz 2026 akşamı Türkiye saatiyle 21:00'de piyasalar bir belge için nefesini tutacak: Fed'in son toplantısının perde arkasını gösteren **FOMC toplantı tutanakları**. Dolar kurunu, TL'yi, BIST'i ve hatta altını etkileyebilecek bu doküman tam olarak nedir, neden bu kadar önemlidir?
