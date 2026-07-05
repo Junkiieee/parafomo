@@ -1,0 +1,59 @@
+{
+  "slug": "ev-aldim-ya-rahatladim-diyenlere-kotu-haber",
+  "title": "Ev Aldım Ya Rahatladım Diyenlere Kötü Haber",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Türkiye'de konut 'her zaman kazandırır' miti gerçekte nasıl çöküyor? Kira getirisi, gizli maliyetler ve doğru portföy karması.",
+  "tags": [
+    "konut yatırımı",
+    "emlak",
+    "kira getirisi",
+    "enflasyon",
+    "yatırım",
+    "ev fiyatları",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Ev almak hep kazandırır sanıyorsun.",
+      "visual": {
+        "type": "building",
+        "query": "istanbul apartment building"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Türkiye'de ortalama kira getirisi yaklaşık yüzde iki-üç; yıllık enflasyona karşı bu rakam neredeyse sıfır kalıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "low rental yield inflation chart gap graph money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Tapu vergisi, alım-satım komisyonu ve yıllık bakım masrafları birleşince gerçek getirinizin büyük bölümü eriyor.",
+      "visual": {
+        "type": "concept",
+        "query": "real estate hidden costs tax documents calculator receipt"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Konutu hisse senedi ve altınla dengeleyen portföy, tek başına evi uzun vadede çoğunlukla geride bırakıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "diversified investment portfolio stocks gold balance scale"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki hangi varlık karması şu an gerçekten kazandırıyor? Kaçırma. Abone ol, her gün yeni analiz.",
+      "visual": {
+        "type": "concept",
+        "query": "financial growth chart investment analysis screen data"
+      }
+    }
+  ]
+}
