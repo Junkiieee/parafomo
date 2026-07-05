@@ -17,6 +17,17 @@ faq:
     a: "QoQ (Quarter over Quarter), büyümeyi önceki çeyrekle kıyaslar; kısa vadeli ivmeyi gösterir. YoY (Year over Year) ise aynı çeyreği bir önceki yılın aynı çeyreğiyle karşılaştırır; mevsimsel etkilerden arındırılmış daha sağlıklı bir resim sunar."
   - q: "GDP verisi ne zaman ve nasıl açıklanır?"
     a: "ABD'de GDP her çeyrek için üç kez açıklanır: öncü (advance), ikinci tahmin (second estimate) ve nihai (final). ABD Q1 2026 ikinci tahmini 25 Haziran 2026 Perşembe saat 15:30 Türkiye saatiyle yayınlanacak."
+shorts:
+  - "ABD'nin büyüme verisi dolar kurunu nasıl uçurur?"
+  - "GDP, bir ülkedeki fabrikalardan harcamalara, yatırımlara kadar tüm ekonomik aktiviteyi tek rakamda özetler."
+  - "ABD büyümesi beklentinin üzerinde gelirse Fed faiz indirmez, dolar güçlenir ve TL üzerinde doğrudan baskı oluşur."
+  - "Tersine, zayıf bir GDP gelişen piyasalara sermaye akışını hızlandırır; BIST ve TL için olumlu bir ortam doğar."
+  - "Senaryo analizlerinin tamamı ve ekonomi takviminiz parafomo.com'da."
+shorts_broll:
+  - "US GDP economic growth chart"
+  - "Federal Reserve interest rate decision"
+  - "Turkish lira dollar exchange rate"
+  - "emerging markets stock trading floor"
 ---
 
 25 Haziran Perşembe günü saat 15:30'da piyasaları doğrudan etkileyen iki kritik ABD verisi açıklanacak: PCE enflasyon raporu ve **Q1 2026 GDP büyüme verisi**. **GSYİH nedir** ve bu sayı neden Türkiye'deki dolar, altın ve borsa yatırımcısını da yakından ilgilendiriyor? Tüm detaylarıyla anlattık.
