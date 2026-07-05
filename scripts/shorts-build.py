@@ -532,7 +532,17 @@ def main():
         front = open(path, encoding="utf-8").read().split("---", 2)[1]
         title, segs = build_segments(front)
         broll_kw = parse_list(front, "shorts_broll") or BROLL_POOL
-        seg_visuals = [None] * len(segs)
+        # Beat-başına eşleşen görsel ("type|query"); en çok izlenen videoların yöntemi.
+        # Yoksa/eksikse ilgili segment yedek b-roll'a düşer.
+        raw_vis = parse_list(front, "shorts_visuals")
+        seg_visuals = []
+        for i in range(len(segs)):
+            spec = raw_vis[i] if i < len(raw_vis) else ""
+            if spec and "|" in spec:
+                t, q = spec.split("|", 1)
+                seg_visuals.append({"type": t.strip(), "query": q.strip()} if q.strip() else None)
+            else:
+                seg_visuals.append(None)
         meta_desc = fm(front, "description")
     synth, label = make_synth(args.engine, args.voice or GOOGLE_VOICE, args.edge_voice)
     print(f"[*] '{title}' → {len(segs)} segment, ses: {label}")

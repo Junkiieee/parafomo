@@ -56,6 +56,21 @@ def pick_angle(slug, title, category):
     return "curiosity"
 
 
+# En çok izlenen videoların görsel yöntemi: her beat'e İÇERİKLE EŞLEŞEN görsel
+# ({type,query}) → jenerik stok yerine somut/gerçek imge. Bu vocab shorts-build.py'nin
+# (viral-visuals.py) çözdüğü tiplerle birebir aynıdır; "chart" hariç (blog hattında
+# gerçek veri yok → grafik üretilemez, çıkarıldı).
+ALLOWED_TYPES = {"person", "place", "building", "logo", "gold", "object", "concept", "scene"}
+VISUAL_GUIDE = """Görsel tipleri ve "query" kuralı (görsel motoru buna göre kaynak seçer):
+- "person": gerçek kişi → query = TAM ÖZEL AD (ör. "Recep Tayyip Erdoğan", "Jerome Powell").
+- "place"/"building": gerçek yer/kurum → query = özel ad (ör. "Borsa İstanbul", "Türkiye Cumhuriyet Merkez Bankası").
+- "logo": marka/şirket → query = "<Şirket> logo".
+- "gold": altın → query İNGİLİZCE (ör. "gold bullion bars", "gold coins").
+- "object": gerçek nesne → query İNGİLİZCE isim (ör. "credit card", "turkish lira banknotes").
+- "concept"/"scene": soyut/sahne stok video → query İNGİLİZCE (ör. "inflation money losing value", "stock market chart screen", "bank counter customer").
+KURAL: hook ve beat'in ana öznesi gerçek kişi/yer/marka ise MUTLAKA person/place/logo kullan (stok değil). Her görsel o beat'in İÇERİĞİYLE birebir örtüşsün. Emin değilsen concept/scene + net İngilizce sahne."""
+
+
 PROMPT = """Sen bir Türk finans kanalı (ParaFOMO) için VİRAL YouTube Shorts senaryosu yazıyorsun.
 Aşağıdaki blog yazısından 40-45 saniyelik, akıcı, KONUŞMA dilinde bir senaryo çıkar.
 İzleyiciyi İLK 2 SANİYEDE durduracak bir KANCA şart.
@@ -67,11 +82,15 @@ Kurallar:
 - hook: ilk 2 saniyede durduran KISA cümle (en fazla 9 kelime), yukarıdaki açıya UYGUN. Merak/şaşkınlık uyandırsın; tıklama tuzağı değil, doğru.
 - beats: tam 3 madde. Her biri yazının bir ana fikrini anlatan, tek başına anlaşılır, akıcı Türkçe cümle (12-20 kelime). Kopuk ifade YOK.
 - cta: kısa; önce ileriye dönük bir MERAK cümlesi, sonra KANALA ABONE çağrısı ("abone ol" geçsin) + kısa bir sebep. "parafomo.com" de geçsin.
-- broll: konuyla ilgili 4 adet İngilizce stok video arama terimi (örn. "stock market chart", "turkish lira money").
+- broll: konuyla ilgili 4 adet İngilizce stok video arama terimi (yedek; örn. "stock market chart", "turkish lira money").
+- visuals: TAM 5 görsel — sırayla [hook, beat1, beat2, beat3, cta]. Her biri {"type","query"} ve o segmentin İÇERİĞİYLE ÖRTÜŞSÜN.
 - Sade, net; uydurma rakam YOK. Yazıda olmayan sayı verme.
 
+%(visual_guide)s
+
 SADECE şu JSON'u döndür, başka HİÇBİR şey yazma (markdown, ``` , açıklama YOK):
-{"hook": "...", "beats": ["...", "...", "..."], "cta": "...", "broll": ["...","...","...","..."]}
+{"hook": "...", "beats": ["...", "...", "..."], "cta": "...", "broll": ["...","...","...","..."],
+ "visuals": [{"type":"...","query":"..."},{"type":"...","query":"..."},{"type":"...","query":"..."},{"type":"...","query":"..."},{"type":"...","query":"..."}]}
 
 --- YAZI ---
 Başlık: %(title)s
@@ -114,7 +133,8 @@ def main():
     angle = args.angle or pick_angle(args.slug, title, category)
     angle_name, angle_guide = ANGLES[angle]
     prompt = PROMPT % {"title": title, "category": category, "body": body_txt,
-                       "angle_name": angle_name, "angle_guide": angle_guide}
+                       "angle_name": angle_name, "angle_guide": angle_guide,
+                       "visual_guide": VISUAL_GUIDE}
     print(f"[*] {args.slug}: claude -p ile senaryo üretiliyor... (açı: {angle})")
     try:
         r = subprocess.run(["claude", "-p", prompt, "--model", args.model],
@@ -132,22 +152,37 @@ def main():
         beats = [b.strip() for b in data["beats"]][:3]
         cta = data["cta"].strip()
         broll = [b.strip() for b in data.get("broll", [])][:4]
+        visuals = data.get("visuals", [])
     except Exception as e:
         print(f"HATA: JSON ayrıştırılamadı ({e}). Çıktı: {out[:200]}"); return 1
     if not hook or len(beats) < 3 or not cta:
         print("HATA: eksik alan"); return 1
 
+    # Beat-başına eşleşen görseller (en çok izlenen videoların yöntemi). 5 segmente
+    # hizalı "type|query". Eksik/geçersizse o segment yedek b-roll'a düşer (build tarafı).
+    vis_lines = []
+    for v in visuals[:5]:
+        t = (v.get("type") or "").strip().lower()
+        q = (v.get("query") or "").strip()
+        vis_lines.append(f"{t}|{q}" if (t in ALLOWED_TYPES and q) else "")
+    while len(vis_lines) < 5:
+        vis_lines.append("")
+
     items = [hook] + beats + [cta]
     block = "shorts:\n" + "".join(f"  - {yaml_q(x)}\n" for x in items)
     if broll:
         block += "shorts_broll:\n" + "".join(f"  - {yaml_q(x)}\n" for x in broll)
+    if any(vis_lines):
+        block += "shorts_visuals:\n" + "".join(f"  - {yaml_q(x)}\n" for x in vis_lines)
 
-    # frontmatter'a ekle (varsa eski shorts:/shorts_broll: bloklarını temizle)
+    # frontmatter'a ekle (varsa eski shorts:/shorts_broll:/shorts_visuals: bloklarını temizle)
     front = re.sub(r'^shorts:\n(?:  - .*\n)+', '', front, flags=re.MULTILINE)
     front = re.sub(r'^shorts_broll:\n(?:  - .*\n)+', '', front, flags=re.MULTILINE)
+    front = re.sub(r'^shorts_visuals:\n(?:  - .*\n)+', '', front, flags=re.MULTILINE)
     front = front.rstrip("\n") + "\n" + block
     open(path, "w", encoding="utf-8").write(f"---{front}---{body}")
-    print(f"[+] {args.slug}: senaryo kaydedildi ({len(items)} satır + {len(broll)} broll)")
+    n_vis = sum(1 for x in vis_lines if x)
+    print(f"[+] {args.slug}: senaryo kaydedildi ({len(items)} satır + {len(broll)} broll + {n_vis}/5 eşleşen görsel)")
     print(f"    kanca: {hook}")
     return 0
 
