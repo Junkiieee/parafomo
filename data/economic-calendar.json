@@ -1,26 +1,8 @@
 {
-  "updated": "2026-07-05",
+  "updated": "2026-07-06",
   "fetch_ok": true,
   "source": "investing",
   "events": [
-    {
-      "date": "2026-07-02",
-      "time": "15:30",
-      "region": "USD",
-      "impact": "High",
-      "title": "Nonfarm Payrolls (Jun)",
-      "source": "investing",
-      "hook": "ABD istihdam (NFP) — dolar ve risk iştahı."
-    },
-    {
-      "date": "2026-07-02",
-      "time": "15:30",
-      "region": "USD",
-      "impact": "High",
-      "title": "Unemployment Rate (Jun)",
-      "source": "investing",
-      "hook": "İşsizlik verisi — büyüme ve faiz beklentisi."
-    },
     {
       "date": "2026-07-03",
       "time": "10:00",

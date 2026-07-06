@@ -4,6 +4,50 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-06
+
+**Yayınlanan yazı:** [Faiz Nedir? Ekonomiyi, Borsayı ve Dolar'ı Nasıl Etkiler?](/blog/faiz-nedir-ekonomiyi-nasil-etkiler)
+
+**X (Twitter) thread taslağı:**
+
+🧵 Sabah "faiz değişmedi" haberi görüyorsun. Dolar oynuyor, borsa dalgalanıyor — ama TÜM BUNLAR senin birikim ve kredinle nasıl bağlantılı?
+
+🔑 Faiz = paranın kira bedeli. Merkez bankası bu bedeli artırır/düşürür → ekonominin her köşesi değişir.
+
+📈 Faiz artışı → mevduat cazip, kredi pahalı, borsa baskılı, TL potansiyel güçlü
+📉 Faiz indirimi → kredi ucuz, borsa canlanır, enflasyon riski artar
+
+🇹🇷 TCMB faizi, 🇺🇸 Fed faizi — ikisi de TL'ni ve borsanı etkiler.
+
+Tam rehber + karşılaştırma tablosu 👇
+parafomo.com/blog/faiz-nedir-ekonomiyi-nasil-etkiler
+
+#faiz #merkez bankası #TCMB #Fed #kişisel finans #yatırım
+
+---
+
+**Instagram carousel/post metni:**
+
+💰 FAİZ NEDİR — ve seni nasıl etkiler?
+
+Slide 1: Politika faizi nedir?
+Slide 2: Faiz artınca ne olur? (mevduat ↑ kredi ↑ borsa ↓)
+Slide 3: Faiz düşünce ne olur? (kredi ↓ borsa ↑ enflasyon riski)
+Slide 4: TCMB vs Fed — ikisi de önemli
+Slide 5: Hangi ortamda ne yapmalısın?
+
+Detaylı rehber linkte 👆 (bio'daki link)
+
+#faiz #merkez bankası #tcmb #fed #ekonomi #kişiselfinans #yatırım #parafomo #paranıyönet #finansokuryazarlığı
+
+---
+
+**Bugün yapman gerekenler:**
+1. X thread'ini paylaş (TCMB faiz kararı Temmuz 23'te — bu yazıyı şimdiden öne çıkarmak için iyi zamanlama).
+2. Instagram carousel hazırla ve paylaş; story'de "Faiz kararı yaklaşıyor, şimdi oku" diye hatırlatma ver.
+
+---
+
 ## 2026-07-05
 
 **Yayınlanan yazı:** [FOMC Toplantı Tutanakları Nedir? Fed Kararları TL'yi Nasıl Etkiler?](/blog/fomc-toplanti-tutanaklari-nedir)
