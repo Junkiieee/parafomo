@@ -1,0 +1,59 @@
+{
+  "slug": "abd-hizmet-pmi-aciklandi-dolar-ve-altin-ne-yapacak",
+  "title": "ABD Hizmet PMI Açıklandı: Dolar ve Altın Ne Yapacak?",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "ISM Non-Manufacturing PMI ABD hizmet sektörünün sağlığını ölçer. Güçlü veri Fed'i bekletir, dolar güçlenir; bu da altın ve Borsa İstanbul'u doğrudan etkiler.",
+  "tags": [
+    "ISM PMI",
+    "ABD ekonomisi",
+    "dolar kuru",
+    "altın fiyatı",
+    "risk iştahı",
+    "Borsa İstanbul",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "ABD hizmet PMI açıklandı — risk iştahı değişti mi?",
+      "visual": {
+        "type": "logo",
+        "query": "ISM Institute for Supply Management logo"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "ISM Non-Manufacturing PMI, ABD'nin dev hizmet sektörünü ölçer; 50 üzeri büyüme, altı daralma anlamına gelir.",
+      "visual": {
+        "type": "concept",
+        "query": "US services sector economy PMI survey data chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Güçlü PMI Fed'in faiz indirimini geciktireceği sinyalini verir; dolar değer kazanır, gelişen piyasalar baskı altına girer.",
+      "visual": {
+        "type": "place",
+        "query": "Federal Reserve Washington DC building"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Dolar güçlenince altın genellikle geri çekilir; Borsa İstanbul'da da yabancı sermaye çıkışı riski artar.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars price chart"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bu veri yarın hangi yatırımı patlatır, kaçırma; her gün yeni analiz için kanala abone ol.",
+      "visual": {
+        "type": "concept",
+        "query": "stock market trading screen charts graphs"
+      }
+    }
+  ]
+}
