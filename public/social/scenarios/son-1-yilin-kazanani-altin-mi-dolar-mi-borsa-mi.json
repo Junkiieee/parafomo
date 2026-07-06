@@ -1,0 +1,77 @@
+{
+  "slug": "son-1-yilin-kazanani-altin-mi-dolar-mi-borsa-mi",
+  "title": "Son 1 Yılın Kazananı: Altın mı, Dolar mı, Borsa mı?",
+  "category": "KARŞILAŞTIRMA",
+  "format": "comparison",
+  "description": "Son bir yılda hangi yatırım en çok kazandırdı? Altın, dolar ve BIST 100 gerçek getirilerle karşı karşıya.",
+  "tags": [
+    "altın",
+    "dolar",
+    "borsa",
+    "BIST100",
+    "yatırım",
+    "getiri",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KARŞILAŞTIRMA",
+      "spoken": "Altın mı, dolar mı, borsa mı — kazanan kim?",
+      "visual": {
+        "type": "concept",
+        "query": "gold dollar stocks investment race"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Dolar yüzde 14 getirdi; mevduat da bunun yakınında kaldı. Yeterliydi ama çok değil.",
+      "visual": {
+        "type": "concept",
+        "query": "dollar bills cash exchange"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "BIST 100 yüzde 29 ile daha iyi; ama sürpriz geldi, çünkü bir rakip daha iyi yaptı.",
+      "visual": {
+        "type": "place",
+        "query": "Borsa İstanbul"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gram altın yüzde 35 ile birinci; bak grafiğe, fark açık — son bir yılın şampiyonu o.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "bars",
+          "title": "Bu Yıl Kim Kazandırdı?",
+          "items": [
+            {
+              "name": "Gram Altın",
+              "pct": 35
+            },
+            {
+              "name": "BIST 100",
+              "pct": 29
+            },
+            {
+              "name": "Dolar/TL",
+              "pct": 14
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu yıl sıralama değişir mi, hangi araç öne geçer — kaçırma; her gün yeni analiz için abone ol.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bars shining light"
+      }
+    }
+  ]
+}
