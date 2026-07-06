@@ -15,7 +15,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Eurobond nedir, kimler için uygun? — `Yatırım` — hedef: "eurobond nedir"
 - [x] Ethereum nedir, Bitcoin'den farkı ne? — `Kripto` — hedef: "ethereum nedir"
 - [x] Stablecoin nedir, riskleri neler? — `Kripto` — hedef: "stablecoin nedir"
-- [ ] Faiz nedir, ekonomiyi nasıl etkiler? — `Ekonomi` — hedef: "faiz nedir nasıl etkiler"
+- [x] Faiz nedir, ekonomiyi nasıl etkiler? — `Ekonomi` — hedef: "faiz nedir nasıl etkiler"
 - [ ] Tasarruf nasıl yapılır? 20 pratik yöntem — `Kişisel Finans` — hedef: "nasıl tasarruf edilir"
 - [ ] Pasif gelir fikirleri: gerçekçi 10 yol — `Kişisel Finans` — hedef: "pasif gelir fikirleri"
 - [ ] Risk ve getiri ilişkisi: portföy nasıl dengelenir? — `Yatırım` — hedef: "risk getiri ilişkisi"
@@ -39,6 +39,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] Faiz Nedir? Ekonomiyi, Borsayı ve Dolar'ı Nasıl Etkiler? — `faiz-nedir-ekonomiyi-nasil-etkiler` (backlog: evergreen ekonomi)
 - [x] FOMC Toplantı Tutanakları Nedir? Fed Kararları TL'yi Nasıl Etkiler? — `fomc-toplanti-tutanaklari-nedir` (takvim: 8 Temmuz FOMC Meeting Minutes açıklaması)
 - [x] ISM Hizmetler PMI nedir, ABD servis sektörü verisi — `ism-hizmetler-pmi-nedir` (takvim: 6 Temmuz ISM Non-Manufacturing PMI açıklaması)
 
