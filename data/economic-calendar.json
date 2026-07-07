@@ -1,26 +1,8 @@
 {
-  "updated": "2026-07-06",
+  "updated": "2026-07-07",
   "fetch_ok": true,
   "source": "investing",
   "events": [
-    {
-      "date": "2026-07-03",
-      "time": "10:00",
-      "region": "TR",
-      "impact": "High",
-      "title": "TÜİK enflasyon (TÜFE, aylık)",
-      "source": "investing",
-      "hook": "Aylık enflasyon — sepet ve alım gücü yorumu."
-    },
-    {
-      "date": "2026-07-03",
-      "time": "10:00",
-      "region": "TR",
-      "impact": "High",
-      "title": "TÜİK enflasyon (TÜFE, yıllık)",
-      "source": "investing",
-      "hook": "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı."
-    },
     {
       "date": "2026-07-06",
       "time": "17:00",
