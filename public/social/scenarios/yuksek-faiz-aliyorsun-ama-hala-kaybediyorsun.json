@@ -1,0 +1,58 @@
+{
+  "slug": "yuksek-faiz-aliyorsun-ama-hala-kaybediyorsun",
+  "title": "Yüksek Faiz Alıyorsun, Ama Hâlâ Kaybediyorsun",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Yüksek nominal faiz her zaman kazanç değildir. Reel faizin ne anlama geldiğini ve nasıl hesaplanacağını öğren.",
+  "tags": [
+    "faiz",
+    "enflasyon",
+    "reel faiz",
+    "yatırım",
+    "türkiye ekonomi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Yüksek faiz alıyorsan kazanıyorsun sanıyorsun.",
+      "visual": {
+        "type": "scene",
+        "query": "bank savings account interest cash money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Enflasyon yüzde elli iken yüzde kırk faiz alıyorsan, alım gücün aslında yaklaşık yüzde on eriyor.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation rising prices shopping money value loss"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Buna reel faiz deniyor; negatif çıkıyorsa banka hesabın seni değil, bankayı koruyor.",
+      "visual": {
+        "type": "scene",
+        "query": "bank counter teller money transaction"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Reel getirini hesapla: nominal faizden enflasyonu çıkar; sıfırın altındaysa alternatifleri değerlendirme vakti.",
+      "visual": {
+        "type": "object",
+        "query": "calculator financial planning numbers spreadsheet"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki reel kazandıran yatırımlar hangileri? Yarın açıklıyoruz, kaçırma. ParaFOMO'ya abone ol, her gün yeni analiz.",
+      "visual": {
+        "type": "scene",
+        "query": "subscribe notification bell youtube channel"
+      }
+    }
+  ]
+}
