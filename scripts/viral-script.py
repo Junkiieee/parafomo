@@ -112,15 +112,34 @@ FORMATS = {
 PROMPT = """Sen bir Türk finans kanalı (ParaFOMO) için VİRAL YouTube Shorts senaryosu yazıyorsun.
 40-45 saniyelik, akıcı, KONUŞMA dilinde, izleyiciyi ilk 2 saniyede durduran bir senaryo üret.
 
+İZLEYİCİ: enflasyondan yorulmuş, finansı karmaşık bulan, birikimini korumak isteyen Türk.
+SES: net, dürüst, hafif iddialı bir arkadaş — abartı ve pazarlama dili YOK, güven veren sadelik var.
+
 FORMAT: %(fmt_name)s
 %(fmt_guide)s
 %(topic_line)s
-%(facts_block)s
+%(avoid_block)s%(facts_block)s
 %(chart_instruction)s
 Kurallar:
-- hook: en fazla 9 kelime; merak/şaşkınlık/FOMO uyandıran KISA cümle. Tıklama tuzağı değil, doğru.
-- 3 beat: her biri 12-20 kelime, tek başına anlaşılır, akıcı Türkçe. Kopuk ifade yok.
-- cta: kısa; önce ileriye dönük bir MERAK cümlesi (ör. "yarın hangi yatırım patlar, kaçırma") sonra KANALA ABONE olmaya çağır + bir SEBEP/vaat ("her gün yeni analiz"). "abone ol" ifadesi mutlaka geçsin.
+- hook: EN FAZLA 9 kelime. Şu kalıplardan BİRİNİ kullan (kelimesi kelimesine kopyalama, konuya uyarla):
+    • Çarpıcı sayı:   "100 lira 3 ayda 74 liraya düştü."
+    • Sezgi-dışı:     "Faiz kazandırmıyor, seni fakirleştiriyor."
+    • Açık döngü:     "Bankanın sana söylemediği tek şey var."
+    • Sen-dili + kayıp: "Paran sen fark etmeden eriyor."
+  YASAK klişeler (kullanma): "işte gerçek", "şoke etti", "kötü haber", "bunu yanlış biliyorsun",
+  "inanılmaz", "herkes kaçırıyor", "aman dikkat". Tıklama tuzağı değil: söz verdiğini içerikte KARŞILA.
+- 3 beat YÜKSELEREK ilerlesin (izleyiciyi sonuna kadar tutacak akış):
+    beat 1: kancadaki merakı DERİNLEŞTİR — neden/nasıl olduğunu, yeni bir bilgiyle aç.
+    beat 2: gerilim/çelişki — "ama" ile beklenmedik bir dönüş ya da çarpıcı bir rakam getir.
+    beat 3: ÖDÜL — net çıkarım + izleyicinin cebine dokunan somut sonuç/eylem.
+  Her beat 12-20 kelime, tek başına anlaşılır, akıcı Türkçe; kopuk ifade yok.
+- SOMUT konuş: soyut laf ("faiz eriyor") yerine günlük çapa kullan (market arabası, kira, 100 bin TL,
+  bir yıl önce vs bugün). Jargonu günlük dile çevir; teknik terim kullanırsan hemen sadeleştir.
+- cta: kısa. Önce ileriye dönük bir MERAK cümlesi (HER SEFERİNDE FARKLI ifade et; kalıplaşma),
+  sonra abone çağrısı + net bir SEBEP/vaat ("her gün 60 saniyede tek net analiz" gibi, bunu da döndür).
+  "abone ol" ifadesi mutlaka geçsin ama aynı cümleyi tekrarlama.
+- title: kancadan FARKLI olsun (aynı cümleyi tekrarlama), merak boşluğu taşısın, <70 karakter,
+  klişe içermesin; tıklanınca içerik sözü tutsun.
 - Sade, net, abartısız; değer ver. Yanlış/uydurma rakam verme; tahmini ifadeleri "yaklaşık/olası" diye ver.
 - Her segmente bir "visual" ekle.
 %(visual_guide)s
@@ -146,6 +165,51 @@ def slugify(s):
     s = s.translate(tr).encode("ascii", "ignore").decode()
     s = re.sub(r"[^a-zA-Z0-9]+", "-", s).strip("-").lower()
     return s[:60] or "viral"
+
+
+def load_recent_titles(out_dir, limit=45):
+    """Son üretilen senaryoların başlıklarını (yeni→eski) döndür — tekrar önleme için."""
+    try:
+        files = [os.path.join(out_dir, f) for f in os.listdir(out_dir) if f.endswith(".json")]
+    except FileNotFoundError:
+        return []
+    files.sort(key=lambda p: os.path.getmtime(p), reverse=True)
+    titles = []
+    for p in files[:limit]:
+        try:
+            t = (json.load(open(p, encoding="utf-8")).get("title") or "").strip()
+        except Exception:
+            continue
+        if t:
+            titles.append(t)
+    return titles
+
+
+# Başlık benzerliği için: anlamsız/çok geçen kelimeleri ele, öz kelime kümesi çıkar.
+_STOP = {"mi", "mu", "mı", "mü", "ne", "ile", "ve", "bir", "bu", "için", "olur",
+         "olurdu", "koysaydin", "kac", "sen", "ama", "gibi", "daha", "cok", "ise",
+         "diye", "iste", "gercek", "gercegi", "yapacak", "anlama", "geliyor"}
+
+
+def _tokens(s):
+    s = s.lower().translate(str.maketrans("çğıöşü", "cgiosu"))
+    return {w for w in re.findall(r"[a-z0-9]+", s) if len(w) > 2 and w not in _STOP}
+
+
+def most_similar(title, recent, thresh=0.5):
+    """title son başlıklardan birine yeterince benziyorsa o başlığı döndür (Jaccard)."""
+    a = _tokens(title)
+    if not a:
+        return ""
+    best, best_j = "", 0.0
+    for t in recent:
+        b = _tokens(t)
+        if not b:
+            continue
+        j = len(a & b) / len(a | b)
+        if j > best_j:
+            best, best_j = t, j
+    return best if best_j >= thresh else ""
 
 
 def main():
@@ -178,37 +242,69 @@ def main():
         except Exception as e:
             print(f"UYARI: piyasa verisi alınamadı ({str(e)[:70]}) — grafiksiz devam", file=sys.stderr)
 
-    prompt = PROMPT % {
-        "fmt_name": args.format, "fmt_guide": fmt["guide"], "topic_line": topic_line,
-        "facts_block": facts_block, "chart_instruction": chart_instruction,
-        "visual_guide": VISUAL_GUIDE, "eyebrow": fmt["category"],
-    }
+    # Tekrar önleme: son üretilen başlıkları prompt'a "bunları TEKRARLAMA" olarak göm.
+    recent_titles = load_recent_titles(args.out_dir)
 
-    print(f"[*] viral senaryo üretiliyor: format={args.format} topic={args.topic or '(serbest)'}",
-          file=sys.stderr)
+    def build_prompt(extra_avoid=()):
+        titles = list(dict.fromkeys(recent_titles + list(extra_avoid)))
+        if titles:
+            lst = "\n".join(f"- {t}" for t in titles[:45])
+            avoid_block = (
+                "SON ÜRETİLEN VİDEOLAR (aşağıdaki başlıklar zaten yayınlandı). "
+                "Bunları ne KONU ne de AÇI olarak TEKRARLAMA; aynı konuyu farklı "
+                "kelimelerle yeniden anlatmak da yasak. Listede OLMAYAN, tamamen "
+                "farklı ve TAZE bir konu/açı seç:\n" + lst + "\n\n")
+        else:
+            avoid_block = ""
+        return PROMPT % {
+            "fmt_name": args.format, "fmt_guide": fmt["guide"], "topic_line": topic_line,
+            "avoid_block": avoid_block, "facts_block": facts_block,
+            "chart_instruction": chart_instruction, "visual_guide": VISUAL_GUIDE,
+            "eyebrow": fmt["category"],
+        }
+
+    print(f"[*] viral senaryo üretiliyor: format={args.format} topic={args.topic or '(serbest)'} "
+          f"(kaçınılan başlık: {len(recent_titles)})", file=sys.stderr)
 
     # Oturum limiti / geçici hata: anlık takılmalar için kısa beklemeli birkaç tekrar.
     # Uzun süreli (saatlik) limitte tümü tükenir → çağıran betik yeniden zamanlar.
     TRANSIENT = ("session limit", "hit your", "rate limit", "overloaded",
                  "try again", "temporarily", "usage limit")
-    MAX_TRIES, WAIT = 3, 90
-    out, m = "", None
-    for attempt in range(1, MAX_TRIES + 1):
+    MAX_TRIES, WAIT = 4, 90
+
+    def one_shot(prompt):
+        """Tek claude çağrısı → (data|None, transient_bool, ham_çıktı)."""
         try:
             r = subprocess.run(["claude", "-p", prompt, "--model", args.model],
                                capture_output=True, text=True, timeout=180)
             out = (r.stdout or "").strip()
         except Exception as e:
-            print(f"UYARI: claude çağrısı başarısız (deneme {attempt}/{MAX_TRIES}): {e}",
-                  file=sys.stderr)
-            out = ""
-
+            print(f"UYARI: claude çağrısı başarısız: {e}", file=sys.stderr)
+            return None, True, ""
         m = re.search(r"\{.*\}", out, re.DOTALL)
-        if m:
-            break
+        if not m:
+            low = out.lower()
+            transient = (not out) or any(t in low for t in TRANSIENT)
+            return None, transient, out
+        try:
+            return json.loads(m.group(0)), False, out
+        except Exception as e:
+            print(f"UYARI: JSON ayrıştırılamadı ({e}): {out[:160]}", file=sys.stderr)
+            return None, False, out
 
-        low = out.lower()
-        transient = (not out) or any(t in low for t in TRANSIENT)
+    data, extra_avoid, out = None, [], ""
+    for attempt in range(1, MAX_TRIES + 1):
+        d, transient, out = one_shot(build_prompt(extra_avoid))
+        if d is not None:
+            title = (d.get("title") or "").strip()
+            dup = most_similar(title, recent_titles + extra_avoid)
+            if dup and attempt < MAX_TRIES:
+                print(f"UYARI: '{title}' son videolara çok benziyor (≈ '{dup}') — "
+                      f"yeni konu isteniyor (deneme {attempt}/{MAX_TRIES})", file=sys.stderr)
+                extra_avoid.append(title)
+                continue
+            data = d
+            break
         if attempt < MAX_TRIES and transient:
             print(f"UYARI: senaryo alınamadı (deneme {attempt}/{MAX_TRIES}), "
                   f"{WAIT}sn sonra tekrar. Çıktı: {out[:160]}", file=sys.stderr)
@@ -216,13 +312,9 @@ def main():
             continue
         break
 
-    if not m:
-        print(f"HATA: JSON bulunamadı ({MAX_TRIES} deneme). Çıktı: {out[:200]}",
+    if data is None:
+        print(f"HATA: senaryo üretilemedi ({MAX_TRIES} deneme). Çıktı: {out[:200]}",
               file=sys.stderr); return 1
-    try:
-        data = json.loads(m.group(0))
-    except Exception as e:
-        print(f"HATA: JSON ayrıştırılamadı ({e}). Çıktı: {out[:200]}", file=sys.stderr); return 1
 
     # doğrulama
     segs = data.get("segments", [])

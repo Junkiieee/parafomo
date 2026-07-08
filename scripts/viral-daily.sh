@@ -73,6 +73,18 @@ declare -A DOW_FMT=(
 FORMAT="${FORMAT_OVERRIDE:-${DOW_FMT[$(date -u +%u)]}}"
 echo "[*] Format: $FORMAT ${TOPIC:+| Konu: $TOPIC}"
 
+# 2c) Veri-formatı rotasyonu — aksi halde backtest hep 'gold' + 10.000 TL üretir,
+#     bu da birebir aynı videoyu doğurur. Enstrüman/tutar/aralığı yıl-günüyle döndür.
+EXTRA_ARGS=()
+if [ "$FORMAT" = "backtest_return" ]; then
+  INSTR_POOL=(gold usd bist); AMT_POOL=(5000 10000 25000 50000 100000); RNG_POOL=(1y 2y 3y 5y)
+  DOY=$(( 10#$(date -u +%j) ))
+  EXTRA_ARGS+=(--instrument "${INSTR_POOL[$(( DOY % 3 ))]}" \
+               --amount "${AMT_POOL[$(( DOY % 5 ))]}" \
+               --range "${RNG_POOL[$(( (DOY / 3) % 4 ))]}")
+  echo "[*] Backtest rotasyonu: ${EXTRA_ARGS[*]}"
+fi
+
 # 3) Ses rotasyonu (blog hattının done-state'inden bağımsız; yıl-günü ile döner)
 VOICE="$("$VPY" - <<PY
 import datetime, importlib.util
@@ -85,7 +97,7 @@ PY
 echo "[*] Ses: $VOICE"
 
 # 4) Senaryo üret (stdout son satırı = json yolu)
-SCEN="$("$VPY" "$REPO/scripts/viral-script.py" --format "$FORMAT" ${TOPIC:+--topic "$TOPIC"} | tail -1)"
+SCEN="$("$VPY" "$REPO/scripts/viral-script.py" --format "$FORMAT" ${TOPIC:+--topic "$TOPIC"} ${EXTRA_ARGS[@]+"${EXTRA_ARGS[@]}"} | tail -1)"
 if [ -z "$SCEN" ] || [ ! -f "$SCEN" ]; then
   echo "HATA: senaryo üretilemedi (format=$FORMAT)"; exit 2
 fi
