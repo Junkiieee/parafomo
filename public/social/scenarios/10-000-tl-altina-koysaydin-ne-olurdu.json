@@ -1,0 +1,89 @@
+{
+  "slug": "10-000-tl-altina-koysaydin-ne-olurdu",
+  "title": "10.000 TL Altına Koysaydın Ne Olurdu?",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "Ağustos 2025'te 10.000 TL'lik gram altın alımı yapan biri Temmuz 2026'ya yaklaşık 13.275 TL ile ulaştı. Yüzde 33'lük bu getiri ne anlama geliyor?",
+  "tags": [
+    "gram altın",
+    "altın getirisi",
+    "yatırım",
+    "türk yatırımcı",
+    "altın fiyatı",
+    "backtest",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "10.000 TL'yi bir yıl önce altına koysaydın?",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins pile shiny"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ağustos 2025'te gram altından aldığın bu para, yaklaşık 31-32 gram fiziki altına dönüşürdü.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars stacked"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Temmuz 2026 itibarıyla o yatırım yaklaşık 13.275 TL değerinde; bu da yaklaşık yüzde 33 kazanç demek.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "Gram Altın",
+          "unit": "TL",
+          "points": [
+            4643.36,
+            5189.66,
+            5762.96,
+            5973.38,
+            6585.85,
+            6802.65,
+            6838.62,
+            6055.46,
+            6164.11
+          ],
+          "x": [
+            "08/25",
+            "09/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26"
+          ],
+          "amount": 10000,
+          "end_value": 13275,
+          "pct": 33
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yüksek enflasyon döneminde altın hem değer korudu hem de üstüne kattı; banka faizini bile geçti.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation money cash wallet"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki önümüzdeki dönemde hangi yatırım daha fazla kazandırır, kaçırma. Her gün yeni analiz için kanala abone ol.",
+      "visual": {
+        "type": "concept",
+        "query": "financial chart investment growth screen"
+      }
+    }
+  ]
+}
