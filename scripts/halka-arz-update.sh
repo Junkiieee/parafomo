@@ -18,7 +18,7 @@ cd "$REPO" || { echo "HATA: repo yok"; exit 1; }
 echo "[$(date -u '+%F %T UTC')] Halka arz güncelleme başladı"
 
 # Uzakla senkronla (çakışmayı önle)
-git pull --rebase --autostash origin main >/dev/null 2>&1 || echo "UYARI: pull başarısız (devam)"
+{ git fetch origin main && git rebase --autostash origin/main; } >/dev/null 2>&1 || echo "UYARI: pull başarısız (devam)"
 
 # Veriyi çek (ağ hatasında mevcut JSON'u korur, çökmez)
 python3 "$REPO/scripts/fetch-halka-arz.py" 2>&1 | sed 's/^/  /'

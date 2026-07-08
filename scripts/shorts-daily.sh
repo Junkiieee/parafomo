@@ -23,7 +23,7 @@ echo "[$(date -u '+%F %T UTC')] Shorts otomasyonu başladı"
 set -a; . "$REPO/.env"; set +a
 
 # 1) Senkronla
-git pull --rebase --autostash origin main || echo "UYARI: pull başarısız (devam)"
+{ git fetch origin main && git rebase --autostash origin/main; } || echo "UYARI: pull başarısız (devam)"
 
 # Tek bir yazıyı baştan sona işler: senaryo → video → YouTube → Telegram → durum + push.
 # Dönüş: 0 başarı, 1 atla (boş/zaten işlenmiş), 2 hata.

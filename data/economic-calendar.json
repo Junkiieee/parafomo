@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-07",
+  "updated": "2026-07-08",
   "fetch_ok": true,
   "source": "investing",
   "events": [
@@ -29,6 +29,15 @@
       "title": "FOMC Meeting Minutes",
       "source": "investing",
       "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
+    },
+    {
+      "date": "2026-07-13",
+      "time": "10:00",
+      "region": "TR",
+      "impact": "Medium",
+      "title": "Perakende satışlar",
+      "source": "investing",
+      "hook": "Tüketim gücü göstergesi."
     },
     {
       "date": "2026-07-14",

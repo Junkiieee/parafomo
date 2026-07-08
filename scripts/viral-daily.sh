@@ -35,7 +35,7 @@ echo "[$(date -u '+%F %T UTC')] Viral Shorts otomasyonu başladı"
 set -a; . "$REPO/.env"; set +a
 
 # 1) Senkronla
-git pull --rebase --autostash origin main || echo "UYARI: pull başarısız (devam)"
+{ git fetch origin main && git rebase --autostash origin/main; } || echo "UYARI: pull başarısız (devam)"
 
 # Argümanlar: --at N (zaman-dilimi slot indeksi), --format X, --topic "..."
 SLOT_AT=""; FORMAT_OVERRIDE=""; TOPIC=""

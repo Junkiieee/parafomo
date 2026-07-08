@@ -27,7 +27,7 @@ if [ "$FORCE" != "--now" ] && [ "$DOW" -ge 6 ]; then
 fi
 
 echo "[$(date -u '+%F %T UTC')] BIST $PTYPE postu başladı"
-git pull --rebase --autostash origin main >/dev/null 2>&1 || echo "UYARI: pull başarısız"
+{ git fetch origin main && git rebase --autostash origin/main; } >/dev/null 2>&1 || echo "UYARI: pull başarısız"
 
 echo "[*] Kart üretiliyor"
 "$VENV_PY" "$REPO/scripts/bist-card.py" --type "$PTYPE" 2>&1 | sed 's/^/    [kart] /' || { echo "HATA: kart"; exit 1; }

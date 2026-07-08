@@ -25,6 +25,7 @@ import os
 import re
 import sys
 import json
+import time
 import argparse
 import subprocess
 import unicodedata
@@ -185,16 +186,39 @@ def main():
 
     print(f"[*] viral senaryo üretiliyor: format={args.format} topic={args.topic or '(serbest)'}",
           file=sys.stderr)
-    try:
-        r = subprocess.run(["claude", "-p", prompt, "--model", args.model],
-                           capture_output=True, text=True, timeout=180)
-        out = r.stdout.strip()
-    except Exception as e:
-        print(f"HATA: claude çağrısı başarısız: {e}", file=sys.stderr); return 1
 
-    m = re.search(r"\{.*\}", out, re.DOTALL)
+    # Oturum limiti / geçici hata: anlık takılmalar için kısa beklemeli birkaç tekrar.
+    # Uzun süreli (saatlik) limitte tümü tükenir → çağıran betik yeniden zamanlar.
+    TRANSIENT = ("session limit", "hit your", "rate limit", "overloaded",
+                 "try again", "temporarily", "usage limit")
+    MAX_TRIES, WAIT = 3, 90
+    out, m = "", None
+    for attempt in range(1, MAX_TRIES + 1):
+        try:
+            r = subprocess.run(["claude", "-p", prompt, "--model", args.model],
+                               capture_output=True, text=True, timeout=180)
+            out = (r.stdout or "").strip()
+        except Exception as e:
+            print(f"UYARI: claude çağrısı başarısız (deneme {attempt}/{MAX_TRIES}): {e}",
+                  file=sys.stderr)
+            out = ""
+
+        m = re.search(r"\{.*\}", out, re.DOTALL)
+        if m:
+            break
+
+        low = out.lower()
+        transient = (not out) or any(t in low for t in TRANSIENT)
+        if attempt < MAX_TRIES and transient:
+            print(f"UYARI: senaryo alınamadı (deneme {attempt}/{MAX_TRIES}), "
+                  f"{WAIT}sn sonra tekrar. Çıktı: {out[:160]}", file=sys.stderr)
+            time.sleep(WAIT)
+            continue
+        break
+
     if not m:
-        print(f"HATA: JSON bulunamadı. Çıktı: {out[:200]}", file=sys.stderr); return 1
+        print(f"HATA: JSON bulunamadı ({MAX_TRIES} deneme). Çıktı: {out[:200]}",
+              file=sys.stderr); return 1
     try:
         data = json.loads(m.group(0))
     except Exception as e:

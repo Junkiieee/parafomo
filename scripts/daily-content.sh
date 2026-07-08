@@ -26,7 +26,7 @@ cd "$REPO" || { echo "HATA: repo dizinine girilemedi"; exit 1; }
 
 # 1) Uzak depo ile senkronla (çakışmayı önle)
 echo "[*] git pull --rebase"
-git pull --rebase --autostash origin main || echo "UYARI: pull başarısız, devam ediliyor"
+{ git fetch origin main && git rebase --autostash origin/main; } || echo "UYARI: pull başarısız, devam ediliyor"
 
 # 1b) Ekonomik takvimi güncelle (tek dış sorgu; içerik seçimi bunu okuyabilir)
 echo "[*] Ekonomik takvim çekiliyor"

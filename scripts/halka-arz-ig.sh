@@ -23,7 +23,7 @@ if [ "$FORCE" != "--now" ] && { [ "$HOUR" -lt 9 ] || [ "$HOUR" -ge 21 ]; }; then
 fi
 
 echo "[$(date -u '+%F %T UTC')] Halka arz TARİH kontrolü başladı"
-git pull --rebase --autostash origin main >/dev/null 2>&1 || echo "UYARI: pull başarısız"
+{ git fetch origin main && git rebase --autostash origin/main; } >/dev/null 2>&1 || echo "UYARI: pull başarısız"
 
 SLUGS=$(python3 "$REPO/scripts/post-halka-arz-instagram.py" --list)
 [ -z "$SLUGS" ] && { echo "[i] Yeni tarihli arz yok."; exit 0; }

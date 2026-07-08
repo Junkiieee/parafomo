@@ -4,6 +4,67 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-08
+
+**Yayınlanan yazı:** [Nasıl Tasarruf Edilir? 20 Pratik Yöntemle Para Biriktirme Rehberi](/blog/nasil-tasarruf-edilir)
+
+**Konu seçimi:** Takvimde FOMC Meeting Minutes (bugün 21:00) var fakat bu konu için yazı 8 Temmuz için zaten yayınlanmıştı. GSC fırsatlarındaki sorgular (endeks fonu, gdp, nfp vb.) da mevcut yazılarda karşılanmış durumda. Bu nedenle backlog'daki ilk açık konu seçildi: "nasıl tasarruf edilir" (evergreen kişisel finans).
+
+---
+
+### X (Twitter) Thread Taslağı
+
+🧵 Maaş geldi, ay bitti — aradaki para nereye gitti?
+
+1/ "Nasıl tasarruf edilir?" sorusunun cevabı "daha az harca" değil. Çünkü sorun irade değil, **yapı** eksikliği.
+
+2/ Beyin "şimdi" harcamayı sever. Çözüm basit: paranın harcamadan önce ayrılması. Buna "önce kendine öde" diyoruz.
+
+3/ 20 kanıtlanmış yöntemden en kritikleri:
+✅ Maaş gününde otomatik transfer kur
+✅ Abonelik listesini yılda bir tara (30 gün kullanmadığını iptal et)
+✅ Büyük alımlarda 72 saat bekle
+✅ Kredi kartı borcunu yatırımdan önce kapat
+
+4/ Karşılaştırma tablosu: 50/30/20 vs zarf yöntemi vs sıfır tabanlı bütçe — hangisi sana uyar?
+
+5/ Ve kritik not: tasarrufu bankada bekletmek de bir kayıp. Enflasyon her yıl değerini eritiyor.
+
+Detayların tamamı 👇
+🔗 parafomo.com/blog/nasil-tasarruf-edilir
+
+#tasarruf #paraineyeGitti #kişiselfinans #bütçe #parafomo
+
+---
+
+### Instagram Carousel / Post Metni
+
+💰 Maaş gelir, ay biter — para bir türlü birikemez.
+
+Sebep: irade sorunu değil, sistem sorunu.
+
+**Nasıl tasarruf edilir? 20 yöntem 👇**
+
+1️⃣ Önce kendine öde — maaş gelince otomatik aktar
+2️⃣ 30 gün kullanmadığın abonelikleri iptal et
+3️⃣ Büyük alımda 72 saat bekle
+4️⃣ Faturayı arayarak müzakere et (%10–20 düşüyor)
+5️⃣ Kredi kartı borcu varsa önce onu kapat
+6️⃣ Acil durum fonu kur — 3–6 aylık gider
+
+📌 Tüm 20 yöntem + bütçe yöntemi karşılaştırma tablosu → biyodaki linkte
+
+#tasarruf #parabiriktirme #kişiselfinans #bütçe #finansalözgürlük #parafomo #paratavsiyesi #türkiye
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş:** Yukarıdaki thread + carousel metnini kopyalayıp yayınla. Instagram'da link biyoda olmalı (`parafomo.com`).
+2. **Bir toplulukta değer katarak paylaş:** Türkiye finans odaklı Reddit/Ekşi/Facebook gruplarında "nasıl tasarruf edilir" arayan birine bu yazıyı önererek gönder — spam değil, bağlam içinde.
+
+---
+
 ## 2026-07-06
 
 **Yayınlanan yazı:** [Faiz Nedir? Ekonomiyi, Borsayı ve Dolar'ı Nasıl Etkiler?](/blog/faiz-nedir-ekonomiyi-nasil-etkiler)

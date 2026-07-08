@@ -24,7 +24,7 @@ if [ "${1:-}" != "--now" ]; then
 fi
 
 # 1) Senkronla
-git pull --rebase --autostash origin main >/dev/null 2>&1 || echo "UYARI: pull başarısız (devam)"
+{ git fetch origin main && git rebase --autostash origin/main; } >/dev/null 2>&1 || echo "UYARI: pull başarısız (devam)"
 
 # 2) Günlük kartı üret
 echo "[*] Kart üretiliyor"

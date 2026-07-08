@@ -28,7 +28,7 @@ echo "=================================================="
 echo "[$(date -u '+%F %T UTC')] Gündem yakalayıcı başladı (window=$WINDOW)"
 
 set -a; . "$REPO/.env"; set +a
-git pull --rebase --autostash origin main || echo "UYARI: pull başarısız (devam)"
+{ git fetch origin main && git rebase --autostash origin/main; } || echo "UYARI: pull başarısız (devam)"
 
 # 1) Takvimi tazele (best-effort; başarısız olursa mevcut json ile devam)
 "$VPY" "$REPO/scripts/fetch-economic-calendar.py" 2>&1 | sed 's/^/    [cal] /' || echo "UYARI: takvim tazelenemedi (mevcut veri kullanılacak)"
