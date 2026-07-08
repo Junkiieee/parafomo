@@ -17,6 +17,23 @@ faq:
     a: "Çoğunlukla 'ay sonunda artarsa biriktiririm' düşüncesi engeller. Ay başında otomatik transfer kurmak bu engeli kaldırır — para görünmeden önce ayrılırsa 'kalmıyor' yanılsaması da ortadan kalkar."
   - q: "Tasarruf ile yatırım arasındaki fark nedir?"
     a: "Tasarruf, harcamadığınız paranın bir kenarda tutulmasıdır; güvenli ama enflasyona karşı savunmasız. Yatırım ise bu parayı büyütme girişimidir; risk içerir ama uzun vadede alım gücünü korur. İkisi birbirini tamamlar."
+shorts:
+  - "Beyin seni kasıtlı olarak harcatıyor, biliyor muydun?"
+  - "Ay sonu hesabında para kalmıyor çünkü beyin, bugünkü harcamayı gelecekteki güvenceden çok daha tatmin edici buluyor."
+  - "Çözüm irade değil, yapı: maaş gelir gelmez belirlediğin miktarı otomatik olarak ayrı bir hesaba aktarman yeterli."
+  - "Bir şey almadan önce fiyatı saatlik kazancına böl; bu basit test gereksiz harcamaların büyük çoğunluğunu durduruyor."
+  - "Peki, biriktirdiğin parayı enflasyona karşı nasıl koruyacaksın? Kanala abone ol, parafomo.com'da hep bir adım önde kal."
+shorts_broll:
+  - "empty wallet money"
+  - "automatic bank transfer savings"
+  - "grocery shopping list budget"
+  - "piggy bank savings growth"
+shorts_visuals:
+  - "concept|person checking empty bank account on phone"
+  - "concept|brain decision making instant gratification money"
+  - "concept|automatic bank transfer savings account setup"
+  - "object|price tag shopping decision calculator"
+  - "concept|savings growth piggy bank investment"
 ---
 
 Maaş hesabına yatıyor, ay sonunda bakıyorsunuz: sıfır. Ya da daha kötüsü, eksi. "Nasıl tasarruf edilir?" sorusunun cevabı "daha az harca" gibi görünse de gerçek sorun çok daha sinsice çalışır: para gözünüzün önünde durduğu sürece harcanır. Bu rehberde enflasyonun kemirdiği TL ile gerçekten tasarruf etmenin 20 yolunu, neden çalıştıklarını ve nasıl uygulayacağınızı paylaşıyorum.
