@@ -1,0 +1,59 @@
+{
+  "slug": "fed-tutanaklari-cikti-tl-icin-ne-anlama-geliyor",
+  "title": "Fed Tutanakları Çıktı: TL İçin Ne Anlama Geliyor?",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "FOMC toplantı tutanakları açıklandı. Fed'in faiz sinyali dolar üzerinden direkt TL'yi etkiliyor — mekanizmayı anlıyoruz.",
+  "tags": [
+    "fed",
+    "fomc",
+    "tl",
+    "dolar",
+    "faiz",
+    "türk lirası",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Fed tutanakları açıklandı — TL sahipleri ne yapacak?",
+      "visual": {
+        "type": "building",
+        "query": "Federal Reserve building Washington"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fed toplantı tutanakları, yetkililerinin faiz indirimi için hangi koşulları beklediğini ortaya koyuyor.",
+      "visual": {
+        "type": "person",
+        "query": "Jerome Powell"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Tutanaklar şahin çıkarsa — faiz yüksek kalacak sinyali veriyorlarsa — dolar güçlenir, TL baskı altına girer.",
+      "visual": {
+        "type": "concept",
+        "query": "US dollar exchange rate screen currency"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "TL değer kaybedince dolar ve altın tutan yatırımcı kazanır; enflasyona karşı korunma önem kazanır.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Önümüzdeki hafta hangi ekonomik veri piyasayı sarsacak, kaçırma. Abone ol, her gün yeni piyasa analizi.",
+      "visual": {
+        "type": "scene",
+        "query": "istanbul city skyline night"
+      }
+    }
+  ]
+}
