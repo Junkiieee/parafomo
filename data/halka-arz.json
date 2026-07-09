@@ -1,23 +1,9 @@
 {
-  "updated": "2026-07-08T18:15+00:00",
+  "updated": "2026-07-09T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 46,
+  "count": 45,
   "items": [
-    {
-      "company": "Saat ve Saat San. ve Tic. A.Ş.",
-      "bist_code": "SSAAT",
-      "slug": "saat-ve-saat-san-ve-tic-a-s",
-      "link": "https://halkarz.com/saat-ve-saat-san-ve-tic-a-s/",
-      "date_text": "6-7-8 Temmuz 2026",
-      "start": "2026-07-06",
-      "end": "2026-07-08",
-      "status": "Devam Ediyor",
-      "price": "56,00 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "66.944.955 Lot",
-      "broker": "Garanti Yatırım Menkul Kıymetler A.Ş. Halk Yatırım Menkul Değerler A.Ş."
-    },
     {
       "company": "Şa-Ra Enerji İnşaat Tic. ve San. A.Ş.",
       "bist_code": "SARAE",
@@ -481,6 +467,20 @@
       "broker": "Yatırım Finansman Menkul Değerler A.Ş."
     },
     {
+      "company": "Saat ve Saat San. ve Tic. A.Ş.",
+      "bist_code": "SSAAT",
+      "slug": "saat-ve-saat-san-ve-tic-a-s",
+      "link": "https://halkarz.com/saat-ve-saat-san-ve-tic-a-s/",
+      "date_text": "6-7-8 Temmuz 2026",
+      "start": "2026-07-06",
+      "end": "2026-07-08",
+      "status": "Tamamlandı",
+      "price": "56,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "66.944.955 Lot",
+      "broker": "Garanti Yatırım Menkul Kıymetler A.Ş. Halk Yatırım Menkul Değerler A.Ş."
+    },
+    {
       "company": "İsvea Seramik ve Banyo Ürünleri Sanayi A.Ş.",
       "bist_code": "ISVEA",
       "slug": "isvea-seramik-ve-banyo-urunleri-sanayi-a-s",
@@ -504,7 +504,7 @@
       "end": "2026-07-03",
       "status": "Tamamlandı",
       "price": "30,26 TL",
-      "distribution": "Eşit Dağıtım **",
+      "distribution": "Eşit Dağıtım",
       "lot": "162.000.000 Lot",
       "broker": "Ak Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş."
     },
@@ -518,7 +518,7 @@
       "end": "2026-07-02",
       "status": "Tamamlandı",
       "price": "9,20 TL",
-      "distribution": "Eşit Dağıtım **",
+      "distribution": "Eşit Dağıtım",
       "lot": "87.499.998 Lot",
       "broker": "Gedik Yatırım Menkul Değerler A.Ş. Misyon Yatırım Bankası A.Ş."
     },
@@ -633,20 +633,6 @@
       "distribution": "Eşit Dağıtım",
       "lot": "120.000.000 Lot",
       "broker": "Tera Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Gentaş Kimya San. ve Tic. Pazarlama A.Ş.",
-      "bist_code": "GENKM",
-      "slug": "gentas-kimya-san-ve-tic-pazarlama-a-s",
-      "link": "https://halkarz.com/gentas-kimya-san-ve-tic-pazarlama-a-s/",
-      "date_text": "2-3 Mart 2026",
-      "start": "2026-03-02",
-      "end": "2026-03-03",
-      "status": "Tamamlandı",
-      "price": "11,00 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "124.845.000 Lot",
-      "broker": "Deniz Yatırım Menkul Kıymetler A.Ş."
     }
   ]
 }
