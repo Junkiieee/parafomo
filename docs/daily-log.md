@@ -4,6 +4,86 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-09
+
+**Yayınlanan yazı:** [Pasif Gelir Fikirleri: Türkiye'de Gerçekten İşe Yarayan 10 Yol](/blog/pasif-gelir-fikirleri)
+
+**Hedef anahtar kelime:** `pasif gelir fikirleri` — GSC'de şu an gösterim var ama tıklama sıfıra yakın. Bu yazıyla o fırsatı yakalamayı hedefliyoruz.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+"Uyurken para kazanmak" mümkün mü?
+
+Evet — ama önce gerçekçi olmak lazım.
+
+Türkiye'de işe yarayan 10 pasif gelir yöntemi, risk ve sermaye karşılaştırmasıyla 👇
+
+**Tweet 2:**
+📌 Sermaye bazlı yollar:
+• Temettü hisseleri → yıllık %5–20 verim
+• Endeks fonu → çok düşük başlangıç
+• BES → devlet %30 katkı veriyor
+• Kira geliri / GYF → enflasyona dirençli
+
+**Tweet 3:**
+📌 Emek bazlı yollar (sermaye gerekmez):
+• Dijital ürün (e-kitap, şablon, kurs)
+• Affiliate / içerik üretimi
+• Telif hakkı (fotoğraf, müzik)
+
+Bir kez üret, uzun süre kazan.
+
+**Tweet 4:**
+Başlamadan önce kritik sıra:
+1. Acil durum fonu kur (3-6 ay gider)
+2. Kredi kartı borcunu kapat
+3. Aylık bütçeni netleştir
+4. Çeşitlendirmeyi unutma
+
+Sonra yatırıma geç.
+
+**Tweet 5 (CTA):**
+Karşılaştırma tablosu, risk seviyeleri ve hangi yöntem kime uyar — hepsi burada:
+
+→ parafomo.com/blog/pasif-gelir-fikirleri
+
+#pasifgelir #yatırım #kişiselfinans #BIST #finansalözgürlük
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Başlık:** Pasif Gelir: 10 Gerçekçi Yol (Türkiye için)
+
+**Slide 1:** "Uyurken para kazanmak" — mümkün, ama önce gerçeği öğren.
+
+**Slide 2:** Sermaye bazlı → Temettü hisseleri | Endeks fonu | BES | Kira geliri
+
+**Slide 3:** Emek bazlı → Dijital ürün | Affiliate | Telif hakkı | İçerik üretimi
+
+**Slide 4:** Başlamadan önce: Acil fon + Borçları kapat + Bütçe + Çeşitlendirme
+
+**Slide 5:** Karşılaştırma, riskler ve detaylar için → parafomo.com (biyografi linki)
+
+**Caption:**
+Pasif gelir için "çok param yok" bahanesi artık geçmez — endeks fonuna birkaç yüz TL ile başlanıyor. Ama hızlı zenginleşme vaatlerine de inanma.
+
+Gerçekçi 10 yol, risk karşılaştırması ve nereden başlayacağını anlattık 👆
+
+#pasifgelir #yatırım #finans #parabilgi #bist #kirageliri #temettü #kişiselfinans #finansalözgürlük #parafomo
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **X thread'ini paylaş** — Yukarıdaki 5-tweet thread'ini @parafomo hesabından yayınla. En iyi saat: sabah 08:00–10:00 veya akşam 19:00–21:00 arası.
+2. **Instagram carousel oluştur** — Slide metinlerini 5 slaytlık carousel'e dönüştür, parafomo.com/blog/pasif-gelir-fikirleri linkini biyografine ekle, paylaş. Reel olarak da kısa versiyon işe yarar.
+
+---
+
 ## 2026-07-08
 
 **Yayınlanan yazı:** [Nasıl Tasarruf Edilir? 20 Pratik Yöntemle Para Biriktirme Rehberi](/blog/nasil-tasarruf-edilir)

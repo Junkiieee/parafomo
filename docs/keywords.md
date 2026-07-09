@@ -17,7 +17,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Stablecoin nedir, riskleri neler? — `Kripto` — hedef: "stablecoin nedir"
 - [x] Faiz nedir, ekonomiyi nasıl etkiler? — `Ekonomi` — hedef: "faiz nedir nasıl etkiler"
 - [x] Tasarruf nasıl yapılır? 20 pratik yöntem — `Kişisel Finans` — hedef: "nasıl tasarruf edilir"
-- [ ] Pasif gelir fikirleri: gerçekçi 10 yol — `Kişisel Finans` — hedef: "pasif gelir fikirleri"
+- [x] Pasif gelir fikirleri: gerçekçi 10 yol — `Kişisel Finans` — hedef: "pasif gelir fikirleri"
 - [ ] Risk ve getiri ilişkisi: portföy nasıl dengelenir? — `Yatırım` — hedef: "risk getiri ilişkisi"
 - [ ] Temel analiz vs teknik analiz: farkı ne? — `Borsa` — hedef: "temel analiz teknik analiz farkı"
 - [ ] F/K oranı nedir, nasıl yorumlanır? — `Borsa` — hedef: "f/k oranı nedir"
@@ -66,3 +66,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] TÜİK Enflasyon Verisi Nasıl Okunur? TÜFE Sepeti ve Alım Gücüne Etkisi — `tufe-enflasyon-verisi-nasil-okunur` (takvim: 3 Temmuz TÜİK TÜFE açıklaması)
 - [x] Ethereum nedir, Bitcoin'den farkı ne? — `ethereum-nedir`
 - [x] Stablecoin nedir, riskleri neler? — `stablecoin-nedir`
+- [x] Pasif gelir fikirleri: gerçekçi 10 yol — `pasif-gelir-fikirleri` (backlog: evergreen kişisel finans)
