@@ -6,7 +6,7 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ## 2026-07-09
 
-**Yayınlanan yazı:** [Pasif Gelir Fikirleri: Türkiye'de Gerçekten İşe Yarayan 10 Yol](/blog/pasif-gelir-fikirleri)
+**Yayınlanan yazı:** [Pasif Gelir Fikirleri: Türkiye'de Gerçekten İşe Yarayan 10 Yol](https://parafomo.com/blog/pasif-gelir-fikirleri/)
 
 **Hedef anahtar kelime:** `pasif gelir fikirleri` — GSC'de şu an gösterim var ama tıklama sıfıra yakın. Bu yazıyla o fırsatı yakalamayı hedefliyoruz.
 
