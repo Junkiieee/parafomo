@@ -17,6 +17,23 @@ faq:
     a: "Türkiye'de temettü geliri stopaja tabidir. Kira geliri belirli bir tutarın üzerinde beyan edilmelidir. Faiz gelirleri de vergi kapsamındadır. Her pasif gelir türünün yükümlülüğü farklıdır; başlamadan önce güncel mevzuatı ve mali müşavir görüşünü almanızı öneririz."
   - q: "Pasif gelir için en iyi yatırım aracı hangisi?"
     a: "Tek bir 'en iyisi' yoktur; risk toleransınıza, sürenize ve sermayenize göre değişir. Uzun vadeli düşük riskli birikim için endeks fonları, düzenli nakit akışı için temettü hisseleri, enflasyona karşı koruma için kira geliri öne çıkar."
+shorts:
+  - "12 ay sabret, sonra uyurken para kazan!"
+  - "Pasif gelir bedavaya gelmez: ya başlangıç sermayesi ister ya da önceden verilen ciddi bir emek."
+  - "Temettü ve kira gibi yollar sermaye isterken; blog, kurs ve dijital ürünler emek ve sabır gerektirir."
+  - "İçerik üretimi neredeyse sıfır sermayeyle başlar; ancak anlamlı kitleye ulaşmak 12 ila 24 ay alır."
+  - "Hangi yol sana daha uygun, merak ediyor musun? Detayların tamamı parafomo.com'da — kanala abone ol, her hafta bir adım öne geç."
+shorts_broll:
+  - "passive income streams financial freedom"
+  - "content creator youtube filming setup"
+  - "dividend stock market portfolio"
+  - "digital product online course laptop"
+shorts_visuals:
+  - "concept|clock time money passive income growing"
+  - "concept|investment capital money working return"
+  - "concept|multiple income streams diagram chart"
+  - "concept|content creator laptop blog writing studio"
+  - "concept|youtube subscribe button notification bell"
 ---
 
 "Uyurken para kazan" — internette en çok rastlanan vaatlerden biri bu. Gerçek tablo hem daha mütevazı hem de daha umut verici: çoğu **pasif gelir fikri** gerçekten işe yarar, ama başlangıçta ya sermaye ya emek — ya da ikisi birden — ister. Bu yazıda Türkiye koşullarında gerçekçi 10 pasif gelir yolunu, beklenti yönetimini ve hangisinin size uygun olduğunu karşılaştırmalı biçimde ele alıyoruz.
