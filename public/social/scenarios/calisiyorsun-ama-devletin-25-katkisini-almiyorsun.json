@@ -1,0 +1,58 @@
+{
+  "slug": "calisiyorsun-ama-devletin-25-katkisini-almiyorsun",
+  "title": "Çalışıyorsun Ama Devletin %25 Katkısını Almıyorsun",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Türkiye'de çalışanların yaklaşık üçte ikisi BES'teki devlet katkısından yararlanmıyor; somut rakamlarla ne kaçırdığını gösteriyoruz.",
+  "tags": [
+    "BES",
+    "bireyselEmeklilik",
+    "devletKatkısı",
+    "tasarruf",
+    "parafomo",
+    "türkFinans"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Her 100 çalışandan 65'i ücretsiz parayı reddediyor.",
+      "visual": {
+        "type": "scene",
+        "query": "turkish workers payroll office salary"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Devlet, BES'e yatırdığın her 100 liraya otomatik 25 lira ekliyor. Faiz yok, risk yok — saf kazanç.",
+      "visual": {
+        "type": "scene",
+        "query": "government money cash bonus reward hand"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama çalışanların yaklaşık üçte ikisi BES'e hiç girmemiş. 100 bin TL biriktirdin mi? 25 bini devletten gelebilirdi.",
+      "visual": {
+        "type": "scene",
+        "query": "empty wallet no money loss regret"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ortalama maaşlıysan her ay küçük bir kesinti devlet katkısıyla fona giriyor büyüyor. Başlamak için tek iş bir emeklilik şirketiyle anlaşmak.",
+      "visual": {
+        "type": "scene",
+        "query": "savings growth compound interest fund chart"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu %25'i aldıktan sonra hangi fonda tutmak en mantıklı? Bunu yakında kırıyoruz. Her gün 60 saniyede cebine dokunan bir konuyu duymak için abone ol.",
+      "visual": {
+        "type": "scene",
+        "query": "subscribe notification bell phone screen"
+      }
+    }
+  ]
+}
