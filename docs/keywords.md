@@ -18,7 +18,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Faiz nedir, ekonomiyi nasıl etkiler? — `Ekonomi` — hedef: "faiz nedir nasıl etkiler"
 - [x] Tasarruf nasıl yapılır? 20 pratik yöntem — `Kişisel Finans` — hedef: "nasıl tasarruf edilir"
 - [x] Pasif gelir fikirleri: gerçekçi 10 yol — `Kişisel Finans` — hedef: "pasif gelir fikirleri"
-- [ ] Risk ve getiri ilişkisi: portföy nasıl dengelenir? — `Yatırım` — hedef: "risk getiri ilişkisi"
+- [x] Risk ve getiri ilişkisi: portföy nasıl dengelenir? — `Yatırım` — hedef: "risk getiri ilişkisi"
 - [ ] Temel analiz vs teknik analiz: farkı ne? — `Borsa` — hedef: "temel analiz teknik analiz farkı"
 - [ ] F/K oranı nedir, nasıl yorumlanır? — `Borsa` — hedef: "f/k oranı nedir"
 - [ ] BIST 100 endeksi nedir, nasıl yatırım yapılır? — `Borsa` — hedef: "bist 100 nedir"
@@ -67,3 +67,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Ethereum nedir, Bitcoin'den farkı ne? — `ethereum-nedir`
 - [x] Stablecoin nedir, riskleri neler? — `stablecoin-nedir`
 - [x] Pasif gelir fikirleri: gerçekçi 10 yol — `pasif-gelir-fikirleri` (backlog: evergreen kişisel finans)
+- [x] Risk ve getiri ilişkisi: portföy nasıl dengelenir? — `risk-getiri-iliskisi` (backlog: evergreen yatırım)
