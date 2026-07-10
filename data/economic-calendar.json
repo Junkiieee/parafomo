@@ -1,26 +1,8 @@
 {
-  "updated": "2026-07-09",
+  "updated": "2026-07-10",
   "fetch_ok": true,
   "source": "investing",
   "events": [
-    {
-      "date": "2026-07-06",
-      "time": "17:00",
-      "region": "USD",
-      "impact": "High",
-      "title": "ISM Non-Manufacturing PMI (Jun)",
-      "source": "investing",
-      "hook": "ISM/PMI — ABD ekonomik aktivitesi, risk iştahı."
-    },
-    {
-      "date": "2026-07-06",
-      "time": "17:00",
-      "region": "USD",
-      "impact": "High",
-      "title": "ISM Non-Manufacturing Prices (Jun)",
-      "source": "investing",
-      "hook": "ISM/PMI — ABD ekonomik aktivitesi, risk iştahı."
-    },
     {
       "date": "2026-07-08",
       "time": "21:00",
@@ -146,6 +128,33 @@
       "hook": "Kararın gerekçesini sade dille yorumla.",
       "time": "",
       "source": "tcmb"
+    },
+    {
+      "date": "2026-07-30",
+      "time": "15:30",
+      "region": "USD",
+      "impact": "High",
+      "title": "Core PCE Price Index (MoM) (Jun)",
+      "source": "investing",
+      "hook": "ABD çekirdek enflasyon (PCE) — Fed'in tercih ettiği gösterge, dolar yönü."
+    },
+    {
+      "date": "2026-07-30",
+      "time": "15:30",
+      "region": "USD",
+      "impact": "High",
+      "title": "Core PCE Price Index (YoY) (Jun)",
+      "source": "investing",
+      "hook": "ABD çekirdek enflasyon (PCE) — Fed'in tercih ettiği gösterge, dolar yönü."
+    },
+    {
+      "date": "2026-07-30",
+      "time": "15:30",
+      "region": "USD",
+      "impact": "High",
+      "title": "GDP (QoQ) (Q2)",
+      "source": "investing",
+      "hook": "Büyüme verisi — küresel görünüm."
     }
   ]
 }

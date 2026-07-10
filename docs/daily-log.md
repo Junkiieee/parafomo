@@ -4,6 +4,73 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-10
+
+**Yayınlanan yazı:** [Risk ve Getiri İlişkisi: Portföyünü Nasıl Dengelirsin?](https://parafomo.com/blog/risk-getiri-iliskisi/)
+
+**Konu seçim gerekçesi:** GSC fırsatlarının tamamı zaten yayınlanmış yazılarla karşılanıyor (endeks-fonu, gdp, nfp). Backlog'dan ilk `[ ]` konu: "risk getiri ilişkisi" — yatırımcının temel sorusu, evergreen değer taşıyor.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+🧵 "Daha fazla kazanmak istiyorum ama ne kadar risk almalıyım?" — Her yatırımcının sorduğu soru. Cevap: risk-getiri ilişkisi.
+
+1/ Yüksek getiri potansiyeli = yüksek belirsizlik. Bu finansın değişmez yasası. Mevduat düşük kazandırır çünkü garantidir. Hisse yüksek kazandırabilir çünkü garantisi yoktur.
+
+2/ 2 tip risk var:
+- Sistematik: piyasanın tamamı düşer (çeşitlendirme çaresiz)
+- Sistematik olmayan: tek şirket batar (çeşitlendirmeyle çözülür)
+
+3/ Portföy dengeleme formülü:
+✅ Farklı varlık sınıfı (hisse + tahvil + altın)
+✅ Farklı coğrafya (BIST + küresel)
+✅ Yılda 1x rebalancing
+
+4/ Risk toleransın = min(finansal kapasite, psikolojik tolerans). 30 yıl çalışabildiğin paranı kaybetme korkusuyla satıyorsan, portföy profili sana uygun değil.
+
+5/ Daha fazlası → parafomo.com/blog/risk-getiri-iliskisi 🔗
+
+#yatırım #portföy #kişiselfinans #borsa
+
+---
+
+### Instagram Post/Carousel Metni
+
+**Slide 1 — Hook:**
+Risk almadan kazanç olmaz. Peki NE KADAR risk?
+
+**Slide 2 — Temel Kural:**
+Getiri ↑ = Risk ↑
+Bu finans dünyasının altın yasası.
+
+**Slide 3 — 2 Risk Türü:**
+🔴 Sistematik: Tüm piyasa düşer → çaresizsin
+🟡 Sistematik Olmayan: Tek hisse batar → çeşitlendirme çözer
+
+**Slide 4 — Portföy Önerim:**
+• %60 Hisse (çeşitlendirilmiş)
+• %25 Tahvil/Bono
+• %10 Altın
+• %5 Nakit
+
+**Slide 5 — CTA:**
+Link bio'da → Risk toleransını nasıl belirlersin, tam rehber parafomo.com'da 🔗
+
+**Caption:**
+Yatırımda "ne kadar risk alayım?" sorusunun cevabı hem finansal hem psikolojik toleransına bağlı. Detaylı rehber linkte 👆
+
+#yatırım #portföy #kişiselfinans #borsa #riskrisk #parasalözgürlük
+
+---
+
+### Senin Bugün Yapman Gerekenler
+
+1. **X + Instagram'da paylaş:** Yukarıdaki taslakları kopyalayıp yayınla. X'te thread olarak, Instagram'da 5 slide carousel (görseller için Canva veya CapCut kullanabilirsin).
+2. **1-2 toplulukta paylaş:** Reddit r/Turkey veya finans Telegram gruplarında "Risk alma olmadan getiri olmaz — ama ne kadar risk?" şeklinde değer katan bir paylaşım yap, yazının linkini ekle.
+
+---
+
 ## 2026-07-09
 
 **Yayınlanan yazı:** [Pasif Gelir Fikirleri: Türkiye'de Gerçekten İşe Yarayan 10 Yol](https://parafomo.com/blog/pasif-gelir-fikirleri/)

@@ -1,6 +1,6 @@
 # Ekonomik Takvim (otomatik)
 
-> Son güncelleme: 2026-07-09 · `scripts/fetch-economic-calendar.py` tarafından üretilir. ELLE DÜZENLEME.
+> Son güncelleme: 2026-07-10 · `scripts/fetch-economic-calendar.py` tarafından üretilir. ELLE DÜZENLEME.
 > Kaynaklar: Investing.com (TR + küresel, birincil), TCMB (faiz kararı), yedek: ForexFactory + TÜİK kuralı.
 
 İçerik üreticisi için: yaklaşan **🔴 High** etkili bir TR/küresel olay 1-3 gün içindeyse,
@@ -23,3 +23,6 @@ o olayın `hook`'una göre bir **explainer** yazısını sıraya al (omurga ever
 | 2026-07-23 | Perşembe | 15:15 | 🇪🇺 | 🔴 High | ECB Interest Rate Decision (Jul) | Faiz kararı — küresel faiz beklentisi TL ve borsayı etkiler. |
 | 2026-07-29 | Çarşamba | 21:00 | 🇺🇸 | 🔴 High | Fed Interest Rate Decision | Faiz kararı — küresel faiz beklentisi TL ve borsayı etkiler. |
 | 2026-07-30 | Perşembe |  | 🇹🇷 | 🟡 Med | TCMB PPK toplantı özeti | Kararın gerekçesini sade dille yorumla. |
+| 2026-07-30 | Perşembe | 15:30 | 🇺🇸 | 🔴 High | Core PCE Price Index (MoM) (Jun) | ABD çekirdek enflasyon (PCE) — Fed'in tercih ettiği gösterge, dolar yönü. |
+| 2026-07-30 | Perşembe | 15:30 | 🇺🇸 | 🔴 High | Core PCE Price Index (YoY) (Jun) | ABD çekirdek enflasyon (PCE) — Fed'in tercih ettiği gösterge, dolar yönü. |
+| 2026-07-30 | Perşembe | 15:30 | 🇺🇸 | 🔴 High | GDP (QoQ) (Q2) | Büyüme verisi — küresel görünüm. |
