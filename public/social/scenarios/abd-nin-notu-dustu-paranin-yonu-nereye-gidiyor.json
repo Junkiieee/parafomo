@@ -1,0 +1,59 @@
+{
+  "slug": "abd-nin-notu-dustu-paranin-yonu-nereye-gidiyor",
+  "title": "ABD'nin Notu Düştü: Paranın Yönü Nereye Gidiyor?",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Moody's'in ABD kredi notu kararı dolar, altın ve Türk yatırımcısı için ne anlama geliyor? Mekanizmayı sade anlattık.",
+  "tags": [
+    "Moody's",
+    "ABD kredi notu",
+    "altın",
+    "dolar",
+    "Türk yatırımcısı",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Moody's ABD'yi düşürdü; şimdi paranın yönü değişiyor.",
+      "visual": {
+        "type": "logo",
+        "query": "Moody's logo"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Moody's, yüz yıldır korunan ABD'nin AAA notunu indirdi. Yani dünyanın 'en güvenli' tahvili artık resmi olarak daha riskli sayılıyor.",
+      "visual": {
+        "type": "building",
+        "query": "US Treasury building Washington"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama dolar düşmedi — tersine güçlü kaldı. Neden? Çünkü başka güvenli liman yok; para zoraki bir güvenden dolara akar, bu da riski gizler.",
+      "visual": {
+        "type": "concept",
+        "query": "US dollar currency bills pile cash"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu kırılganlık altına yansıyor. Merkez bankaları rekor miktarda altın alıyor; TL'deki birikiminle sadece izlemek yetersiz kalır.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars central bank reserve"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "ABD notu düştükçe altın mı güçlenir, dolar mı — cevabı piyasa her gün biraz daha veriyor. Kaçırmamak için hemen abone ol; ParaFOMO'da her sabah 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "concept",
+        "query": "financial news screen chart analysis trading"
+      }
+    }
+  ]
+}
