@@ -17,6 +17,23 @@ faq:
     a: "Genel kural: yılda bir kez ya da bir varlık sınıfı hedef ağırlığından %5'ten fazla saptığında yeniden dengele. Çok sık işlem hem maliyet hem vergi yükü oluşturur; çok seyrek ise portföyün risk profilinin hedeften uzaklaşmasına yol açar."
   - q: "Hisse senedi ve tahvil oranı nasıl belirlenmeli?"
     a: "Yaygın bir başlangıç kuralı: hisse oranı = 100 - yaşın. 30 yaşındaysan %70 hisse, %30 tahvil/sabit getiri gibi. Ancak bu kaba bir kılavuzdur; kendi risk toleransın, gelirlerin ve yatırım hedeflerin oran üzerinde daha belirleyicidir."
+shorts:
+  - "100 hisse al, piyasa düşerse sen de düşersin."
+  - "Çoğu yatırımcı çeşitlendirmenin her riski ortadan kaldırdığını sanır ama ekonomik kriz geldiğinde tüm piyasa birlikte aşağı gider."
+  - "Bunun adı sistematik risk; faiz artışı, jeopolitik kriz veya pandemi gibi olaylar elindeki tüm varlıkları etkiler, kaçış yoktur."
+  - "Çeşitlendirme yalnızca tek şirket veya sektör riskini azaltır; gerçek denge için hisse, tahvil, altın ve coğrafi dağılım şart."
+  - "Peki kendi risk toleransını nasıl bulacaksın, portföyünü nasıl kuracaksın? Cevaplar parafomo.com'da; kanalımıza abone ol, her gün doğru finans bilgisi için."
+shorts_broll:
+  - "stock market crash all red"
+  - "portfolio diversification asset classes"
+  - "financial crisis economic risk"
+  - "investment strategy planning chart"
+shorts_visuals:
+  - "concept|stock market crash all assets falling red screen"
+  - "concept|investor watching diversified portfolio stocks"
+  - "concept|economic crisis financial systemic risk"
+  - "concept|asset class diversification stocks bonds gold"
+  - "concept|financial planning investment growth laptop"
 ---
 
 Her yatırımcı bir noktada şu soruyla yüzleşir: "Daha fazla kazanmak istiyorum, ama ne kadar risk almak zorundayım?" Risk ve getiri ilişkisi, yatırım dünyasının belki de en temel yasasıdır. Bu ilişkiyi kavramadan portföy oluşturmak, pusulasız gemi sürmek gibidir.
