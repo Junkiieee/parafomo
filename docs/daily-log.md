@@ -6,13 +6,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ## 2026-07-11
 
-**Yayınlanan yazı:** [ABD Enflasyon Verisi (CPI) Nedir? Haziran Rakamları Dolar ve TL'yi Nasıl Etkiler?](https://parafomo.com/blog/abd-cpi-enflasyon-verisi-nedir/)
+**Yayınlanan yazı (1):** [ABD Enflasyon Verisi (CPI) Nedir? Haziran Rakamları Dolar ve TL'yi Nasıl Etkiler?](https://parafomo.com/blog/abd-cpi-enflasyon-verisi-nedir/)
 
 **Konu seçim gerekçesi:** Takvim tetikleyicisi — 14 Temmuz 2026 Salı günü saat 15:30'da ABD Haziran CPI verisi açıklanıyor (🔴 High; Core CPI, CPI MoM, CPI YoY). Bu Temmuz sonu Fed toplantısı öncesindeki son kritik enflasyon ölçümü. Timely explainer yazdık.
 
 ---
 
-### X (Twitter) Thread Taslağı
+### X (Twitter) Thread Taslağı — ABD CPI
 
 🧵 14 Temmuz Salı 15:30'da piyasaları sarsabilecek bir veri geliyor: ABD enflasyon raporu (CPI). İşte bilmen gerekenler:
 
@@ -24,11 +24,11 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 4/ Pratik tavsiye: veri açıklanma anında panik alım-satımı yapmayın. İlk 30 dakika yön birkaç kez değişebilir. Asıl etki saatler içinde oturur.
 
-5/ Tüm detaylar, senaryo tablosu ve Türk yatırımcı için adım adım rehber → [parafomo.com/blog/abd-cpi-enflasyon-verisi-nedir/]
+5/ Tüm detaylar, senaryo tablosu ve Türk yatırımcı için adım adım rehber → parafomo.com/blog/abd-cpi-enflasyon-verisi-nedir/
 
 ---
 
-### Instagram Carousel/Post Metni
+### Instagram Carousel/Post Metni — ABD CPI
 
 📊 14 Temmuz'da piyasaları değiştirebilecek tek veri
 
@@ -46,12 +46,87 @@ Ne yapmalısın? Paniğe gerek yok, ama konumunu bilmek önemli. Detaylı açık
 
 ---
 
-### Bugün senin yapman gerekenler
+**Yayınlanan yazı (2):** [Temel Analiz ve Teknik Analiz Farkı: Hangisi Sana Uygun?](https://parafomo.com/blog/temel-analiz-teknik-analiz-farki/)
 
-1. **Thread'i yayınla** — X'te (@parafomo) yukarıdaki 5 tweet'lik thread'i paylaş; 14 Temmuz sabahı saat 10:00-11:00 arası iyi bir zaman dilimi (veriden önce, dikkat yüksek).
-2. **Instagram'a ekle** — carousel post olarak paylaş veya text-post formatında yükle; 14 Temmuz öncesi 1-2 gün erken paylaşmak "önceden bilgilendirme" algısı yaratır, etkileşim artırır.
+**Hedef anahtar kelime:** `temel analiz teknik analiz farkı` — Backlog'dan ilk `[ ]` konu: Borsa kategorisinde evergreen değer taşıyan, yeni başlayan yatırımcıların sıkça sorduğu soru. Temel ve teknik analizi karşılaştırmalı tabloyla, güçlü/zayıf yönleriyle ve Türkiye bağlamıyla ele aldık.
 
 ---
+
+### X (Twitter) Thread Taslağı — Temel vs Teknik Analiz
+
+🧵 "Bu hisseyi almalı mıyım?" sorusunun iki farklı cevabı var.
+
+Biri grafiğe bakar, biri bilançoya. Peki ikisinden hangisi doğru — temel analiz mi, teknik analiz mi?
+
+1/ Temel analiz sorar: "Bu şirket gerçekte ne kadar değer?"
+→ Kâr marjı, borç, büyüme, F/K oranı.
+→ Uzun vadeli yatırımcının silahı.
+
+2/ Teknik analiz sorar: "Grafik şimdi ne diyor?"
+→ RSI, MACD, destek-direnç seviyeleri.
+→ Zamanlamayı optimize etmek isteyenin aracı.
+
+3/ Fark şu:
+• Temel analiz → HANGİ şirket?
+• Teknik analiz → NE ZAMAN?
+
+İkisi rakip değil, tamamlayıcı.
+
+4/ En akıllıca yol: temel analizle sağlam şirketi bul, teknik analizle uygun giriş fırsatını bekle.
+
+5/ BIST'te dikkat: ince piyasada teknik sinyaller yanıltıcı olabilir + enflasyon muhasebesi temel rakamları değiştiriyor. İkisini de bilerek kullan.
+
+Detaylı rehber → parafomo.com/blog/temel-analiz-teknik-analiz-farki 🔗
+
+#borsa #hissesenedi #teknikanaliz #temelanaliz
+
+---
+
+### Instagram Post/Carousel Metni — Temel vs Teknik Analiz
+
+**Slide 1 — Hook:**
+Temel analiz mi teknik analiz mi?
+İşte doğru soru bu değil 👇
+
+**Slide 2 — Temel Analiz:**
+📊 Temel Analiz
+→ Bilanço + kâr + borç
+→ "Bu şirket değerli mi?"
+→ Uzun vadeli yatırımcı için
+
+**Slide 3 — Teknik Analiz:**
+📈 Teknik Analiz
+→ Grafik + RSI + MACD
+→ "Ne zaman almalıyım?"
+→ Kısa vadeli trader için
+
+**Slide 4 — Karşılaştırma:**
+| | Temel | Teknik |
+|---|---|---|
+| Soru | Hangi? | Ne zaman? |
+| Veri | Finansal tablo | Grafik/hacim |
+| Ufuk | Yıllar | Günler-haftalar |
+
+**Slide 5 — Hibrit Yaklaşım:**
+✅ En iyi yol:
+1. Temel analizle hisseyi bul
+2. Teknik analizle giriş zamanla
+3. Stop-loss koy, planla hareket et
+
+**Slide 6 — CTA:**
+Her iki yöntemin detaylı karşılaştırması + adım adım nasıl kullanırsın → Link bio'da 🔗
+
+**Caption:**
+"Bu hisseyi alayım mı?" sorusunun iki farklı cevabı var. Biri grafiğe bakar, biri bilançoya. Hangisi ne zaman işe yarar? Karşılaştırmalı rehber parafomo.com'da 👆
+
+#borsa #hissesenedi #teknikanaliz #temelanaliz #yatırım #bist
+
+---
+
+### Senin Bugün Yapman Gerekenler
+
+1. **ABD CPI için paylaş:** 14 Temmuz sabahı X'te (@parafomo) CPI thread'ini paylaş; Instagram'da carousel veya text-post olarak yükle.
+2. **Temel/Teknik Analiz yazısını paylaş:** X'te 6 tweet'lik thread olarak, Instagram'da 6 slide carousel olarak paylaş. Reddit r/Turkey veya finans Telegram gruplarında "Temel analiz ve teknik analiz arasındaki temel fark nedir?" tartışması açarak yazıyı referans göster.
 
 ## 2026-07-10
 
