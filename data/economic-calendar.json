@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-10",
+  "updated": "2026-07-11",
   "fetch_ok": true,
   "source": "investing",
   "events": [
@@ -155,6 +155,15 @@
       "title": "GDP (QoQ) (Q2)",
       "source": "investing",
       "hook": "Büyüme verisi — küresel görünüm."
+    },
+    {
+      "date": "2026-07-31",
+      "time": "12:00",
+      "region": "EUR",
+      "impact": "High",
+      "title": "CPI (YoY) (Jul)",
+      "source": "investing",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
     }
   ]
 }
