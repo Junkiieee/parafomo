@@ -1,23 +1,9 @@
 {
-  "updated": "2026-07-10T18:15+00:00",
+  "updated": "2026-07-11T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 45,
+  "count": 44,
   "items": [
-    {
-      "company": "Şa-Ra Enerji İnşaat Tic. ve San. A.Ş.",
-      "bist_code": "SARAE",
-      "slug": "sa-ra-enerji-insaat-tic-ve-san-a-s",
-      "link": "https://halkarz.com/sa-ra-enerji-insaat-tic-ve-san-a-s/",
-      "date_text": "8-9-10 Temmuz 2026",
-      "start": "2026-07-08",
-      "end": "2026-07-10",
-      "status": "Devam Ediyor",
-      "price": "70,00 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "89.000.000 Lot",
-      "broker": "Tera Yatırım Menkul Değerler A.Ş."
-    },
     {
       "company": "Bulls Yatırım Menkul Değerler A.Ş.",
       "bist_code": "BLSMD",
@@ -467,6 +453,20 @@
       "broker": "Yatırım Finansman Menkul Değerler A.Ş."
     },
     {
+      "company": "Şa-Ra Enerji İnşaat Tic. ve San. A.Ş.",
+      "bist_code": "SARAE",
+      "slug": "sa-ra-enerji-insaat-tic-ve-san-a-s",
+      "link": "https://halkarz.com/sa-ra-enerji-insaat-tic-ve-san-a-s/",
+      "date_text": "8-9-10 Temmuz 2026",
+      "start": "2026-07-08",
+      "end": "2026-07-10",
+      "status": "Tamamlandı",
+      "price": "70,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "89.000.000 Lot",
+      "broker": "Tera Yatırım Menkul Değerler A.Ş."
+    },
+    {
       "company": "Saat ve Saat San. ve Tic. A.Ş.",
       "bist_code": "SSAAT",
       "slug": "saat-ve-saat-san-ve-tic-a-s",
@@ -618,20 +618,6 @@
       "price": "80,00 TL",
       "distribution": "Eşit Dağıtım",
       "lot": "18.900.000 Lot",
-      "broker": "Tera Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Luxera Gayrimenkul Yatırım Ortaklığı A.Ş.",
-      "bist_code": "LXGYO",
-      "slug": "luxera-gayrimenkul-yatirim-ortakligi-a-s",
-      "link": "https://halkarz.com/luxera-gayrimenkul-yatirim-ortakligi-a-s/",
-      "date_text": "2-3-4 Mart 2026",
-      "start": "2026-03-02",
-      "end": "2026-03-04",
-      "status": "Tamamlandı",
-      "price": "12,05 TL",
-      "distribution": "Eşit Dağıtım",
-      "lot": "120.000.000 Lot",
       "broker": "Tera Yatırım Menkul Değerler A.Ş."
     }
   ]
