@@ -39,6 +39,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] ABD Enflasyon Verisi (CPI) Nedir? Haziran Rakamları Dolar ve TL'yi Nasıl Etkiler? — `abd-cpi-enflasyon-verisi-nedir` (takvim: 14 Temmuz ABD CPI/Core CPI açıklaması)
+
 - [x] Nasıl Tasarruf Edilir? 20 Pratik Yöntemle Para Biriktirme Rehberi — `nasil-tasarruf-edilir` (backlog: evergreen kişisel finans)
 - [x] Faiz Nedir? Ekonomiyi, Borsayı ve Dolar'ı Nasıl Etkiler? — `faiz-nedir-ekonomiyi-nasil-etkiler` (backlog: evergreen ekonomi)
 - [x] FOMC Toplantı Tutanakları Nedir? Fed Kararları TL'yi Nasıl Etkiler? — `fomc-toplanti-tutanaklari-nedir` (takvim: 8 Temmuz FOMC Meeting Minutes açıklaması)
