@@ -1,0 +1,58 @@
+{
+  "slug": "profesyonel-fon-yoneticisi-neden-yetemedi",
+  "title": "Profesyonel Fon Yöneticisi Neden Yetemedi?",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Yüksek ücret alan fon yöneticilerinin büyük çoğunluğu basit bir endeks fonunu uzun vadede yetemez. BIST 100 endeks fonu nedir, Türkiye'de nasıl işe yarar?",
+  "tags": [
+    "endeks fonu",
+    "pasif yatırım",
+    "BIST 100",
+    "yatırım fonu",
+    "borsa Türkiye",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ENDEKS FONU",
+      "spoken": "En pahalı yönetilen fon, en ucuzunu yenemedi.",
+      "visual": {
+        "type": "concept",
+        "query": "investment fund performance chart comparison"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Endeks fonu, piyasadaki tüm büyük hisselere aynı anda yatırım yapar. Tek bilet, 100 şirkete ortak — kim büyürse sen de büyürsün.",
+      "visual": {
+        "type": "concept",
+        "query": "diversified stock portfolio investment basket"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Akla yatmıyor ama araştırmalar açık: profesyonel fon yöneticilerinin büyük çoğunluğu uzun vadede bu basit stratejiyi yetemedi.",
+      "visual": {
+        "type": "concept",
+        "query": "fund manager office financial data screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Türkiye'de BIST 100 endeks fonu var; yönetim maliyeti aktif fondan çok daha düşük. Aylık küçük bir tutarla tüm piyasaya ortak olabilirsin.",
+      "visual": {
+        "type": "place",
+        "query": "Borsa İstanbul"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Hangi endeks fonunu seçmeli, nasıl açılır, maliyetler ne kadar — onu da ele alalım mı? Her gün kısa ve net piyasa bilgisi için ParaFOMO'ya abone ol.",
+      "visual": {
+        "type": "concept",
+        "query": "mobile phone subscribe financial app notification"
+      }
+    }
+  ]
+}
