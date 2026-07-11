@@ -4,6 +4,55 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-11
+
+**Yayınlanan yazı:** [ABD Enflasyon Verisi (CPI) Nedir? Haziran Rakamları Dolar ve TL'yi Nasıl Etkiler?](https://parafomo.com/blog/abd-cpi-enflasyon-verisi-nedir/)
+
+**Konu seçim gerekçesi:** Takvim tetikleyicisi — 14 Temmuz 2026 Salı günü saat 15:30'da ABD Haziran CPI verisi açıklanıyor (🔴 High; Core CPI, CPI MoM, CPI YoY). Bu Temmuz sonu Fed toplantısı öncesindeki son kritik enflasyon ölçümü. Timely explainer yazdık.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+🧵 14 Temmuz Salı 15:30'da piyasaları sarsabilecek bir veri geliyor: ABD enflasyon raporu (CPI). İşte bilmen gerekenler:
+
+1/ ABD'nin aylık enflasyon verisi bu kez çok daha kritik çünkü hemen ardından Fed'in faiz toplantısı var. Rakam sürpriz yaparsa kur ve borsa sert hareket edebilir.
+
+2/ Core CPI nedir? Gıda ve enerji hariç enflasyon. Fed bunu izler çünkü kalıcı trendi gösterir. Bu sayı beklentinin üzerinde gelirse Fed faiz indiremez → dolar güçlenir.
+
+3/ Türkiye bağlantısı şu: dolar güçlenirse TL/USD yükselir, ithalat pahalanır, BIST üzerinde baskı artar. Dolar zayıflarsa gelişen piyasalara para akar, TL nefes alır.
+
+4/ Pratik tavsiye: veri açıklanma anında panik alım-satımı yapmayın. İlk 30 dakika yön birkaç kez değişebilir. Asıl etki saatler içinde oturur.
+
+5/ Tüm detaylar, senaryo tablosu ve Türk yatırımcı için adım adım rehber → [parafomo.com/blog/abd-cpi-enflasyon-verisi-nedir/]
+
+---
+
+### Instagram Carousel/Post Metni
+
+📊 14 Temmuz'da piyasaları değiştirebilecek tek veri
+
+ABD enflasyon raporu (CPI) açıklanıyor ve bu sayı:
+→ Dolar kurunu etkiliyor
+→ Fed'in faiz kararını şekillendiriyor
+→ Dolaylı yoldan TL ve BIST'i hareket ettiriyor
+
+Core CPI yüksek gelirse 👉 dolar güçlenir, TL baskı altına girer
+Core CPI düşük gelirse 👉 faiz indirimi yaklaşır, gelişen piyasalar nefes alır
+
+Ne yapmalısın? Paniğe gerek yok, ama konumunu bilmek önemli. Detaylı açıklama linkte ⬆️
+
+#enflasyon #abdenflasyonu #cpi #dolar #tl #faiz #parafomo #yatırım #ekonomi #borsa
+
+---
+
+### Bugün senin yapman gerekenler
+
+1. **Thread'i yayınla** — X'te (@parafomo) yukarıdaki 5 tweet'lik thread'i paylaş; 14 Temmuz sabahı saat 10:00-11:00 arası iyi bir zaman dilimi (veriden önce, dikkat yüksek).
+2. **Instagram'a ekle** — carousel post olarak paylaş veya text-post formatında yükle; 14 Temmuz öncesi 1-2 gün erken paylaşmak "önceden bilgilendirme" algısı yaratır, etkileşim artırır.
+
+---
+
 ## 2026-07-10
 
 **Yayınlanan yazı:** [Risk ve Getiri İlişkisi: Portföyünü Nasıl Dengelirsin?](https://parafomo.com/blog/risk-getiri-iliskisi/)
