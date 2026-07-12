@@ -4,6 +4,94 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-12
+
+**Yayınlanan yazı:** [F/K Oranı Nedir? Hisse Senedi Değerlemesi Nasıl Yapılır?](https://parafomo.com/blog/fk-orani-nedir/)
+Kategori: Borsa | Hedef sorgu: "f/k oranı nedir" | ~1.250 kelime
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana hook):**
+Bir hissenin "ucuz" ya da "pahalı" olduğunu nasıl anlarsın?
+
+Sadece fiyatına bakarak değil.
+
+F/K oranı bu soruyu cevaplamanın en hızlı yolu. İşte nasıl çalıştığı 👇
+
+**Tweet 2:**
+F/K = Hisse Fiyatı ÷ Hisse Başı Kâr
+
+Hisse 120 TL, yıllık kârı 15 TL → F/K = 8
+
+Bu demek oluyor ki: piyasa, şirketin 1 TL kârı için 8 TL ödüyor.
+Kâr sabit kalsa yatırımını 8 yılda geri alırsın.
+
+**Tweet 3:**
+Ama düşük F/K her zaman fırsat değil 🔴
+
+Bazen büyüme yok.
+Bazen yapısal sorun var.
+Bazen tek seferlik kâr şişirdi.
+
+"Değer tuzağı" denen şey tam da bu.
+
+**Tweet 4:**
+Sektör karşılaştırması şart:
+
+• Teknoloji → F/K 25–60 (büyüme beklentisi)
+• Bankacılık → F/K 4–10 (olgun, düzenlenmiş)
+• BIST 100 ort. → F/K 5–12 (gelişmekte olan piyasa iskontosu)
+
+Bankacılık hissesi F/K 8 → normal
+Teknoloji hissesi F/K 8 → büyüme sinyali yok
+
+**Tweet 5:**
+F/K tek başına yetersiz — şunlarla destekle:
+✅ PEG oranı (büyümeye göre F/K)
+✅ FD/FAVÖK (borç dahil değerleme)
+✅ Özkaynak kârlılığı (ROE)
+
+Rehberin tamamı: parafomo.com/blog/fk-orani-nedir/
+
+#borsa #yatırım #temelanaliz #bist
+
+---
+
+### Instagram Post Metni
+
+**Caption:**
+📊 F/K Oranı Nedir?
+
+Bir hissene bakıyorsun: fiyat 120 TL. Ucuz mu, pahalı mı?
+
+Bunu anlamanın en temel yolu F/K (Fiyat/Kazanç) oranı.
+
+👉 Formül: Hisse Fiyatı ÷ Hisse Başı Kâr
+👉 F/K = 8 → şirketin 1 TL kârı için 8 TL ödüyorsun
+👉 Kâr sabit kalsa 8 yılda geri alırsın yatırımını
+
+❗ Dikkat:
+Düşük F/K her zaman fırsat değil. Bazen büyüme yok, bazen şirket sıkıntıda. Sektör ortalamasıyla karşılaştırmak şart.
+
+Hangi sektörde F/K ne kadar olmalı, nasıl yorumlanır?
+
+Linki bio'dan gör 🔗 parafomo.com/blog/fk-orani-nedir/
+
+#fkoranı #borsa #temelanaliz #hissesenedi #bist100 #yatırım #parafomo #finansokur
+
+---
+
+### Senin Bugün Yapman Gerekenler
+
+- [ ] **X thread'ini paylaş** — 5 tweet'lik hazır taslak yukarıda. "Tweet 1"den başla, diğerlerini reply olarak ekle.
+- [ ] **Instagram'a kaydet ve yayınla** — caption hazır; görsel olarak sosyal kart (`public/social/fk-orani-nedir.png`) veya kapak fotoğrafı kullanılabilir.
+
+> **Bonus:** Yarın (13 Temmuz) ABD CPI verisi yaklaşıyor; bu konudaki yazımız zaten yayında (`/blog/abd-cpi-enflasyon-verisi-nedir/`). Veri açıklanmadan önce o yazıyı da sosyalde paylaşmak için iyi bir zamanlama.
+
+---
+
 ## 2026-07-11
 
 **Yayınlanan yazı (1):** [ABD Enflasyon Verisi (CPI) Nedir? Haziran Rakamları Dolar ve TL'yi Nasıl Etkiler?](https://parafomo.com/blog/abd-cpi-enflasyon-verisi-nedir/)
