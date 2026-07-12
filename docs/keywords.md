@@ -20,7 +20,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Pasif gelir fikirleri: gerçekçi 10 yol — `Kişisel Finans` — hedef: "pasif gelir fikirleri"
 - [x] Risk ve getiri ilişkisi: portföy nasıl dengelenir? — `Yatırım` — hedef: "risk getiri ilişkisi"
 - [x] Temel analiz vs teknik analiz: farkı ne? — `Borsa` — hedef: "temel analiz teknik analiz farkı"
-- [ ] F/K oranı nedir, nasıl yorumlanır? — `Borsa` — hedef: "f/k oranı nedir"
+- [x] F/K oranı nedir, nasıl yorumlanır? — `Borsa` — hedef: "f/k oranı nedir"
 - [ ] BIST 100 endeksi nedir, nasıl yatırım yapılır? — `Borsa` — hedef: "bist 100 nedir"
 - [x] Enflasyon nedir, neden yükselir? — `Ekonomi` — hedef: "enflasyon nedir"
 - [ ] Finansal özgürlük nedir, nasıl ulaşılır? (FIRE) — `Yatırım` — hedef: "finansal özgürlük nasıl"
@@ -39,6 +39,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] F/K Oranı Nedir? Hisse Senedi Değerlemesi Nasıl Yapılır? — `fk-orani-nedir` (backlog: borsa temel analiz)
 - [x] ABD Enflasyon Verisi (CPI) Nedir? Haziran Rakamları Dolar ve TL'yi Nasıl Etkiler? — `abd-cpi-enflasyon-verisi-nedir` (takvim: 14 Temmuz ABD CPI/Core CPI açıklaması)
 
 - [x] Nasıl Tasarruf Edilir? 20 Pratik Yöntemle Para Biriktirme Rehberi — `nasil-tasarruf-edilir` (backlog: evergreen kişisel finans)
