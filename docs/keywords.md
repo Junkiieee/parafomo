@@ -21,7 +21,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Risk ve getiri ilişkisi: portföy nasıl dengelenir? — `Yatırım` — hedef: "risk getiri ilişkisi"
 - [x] Temel analiz vs teknik analiz: farkı ne? — `Borsa` — hedef: "temel analiz teknik analiz farkı"
 - [x] F/K oranı nedir, nasıl yorumlanır? — `Borsa` — hedef: "f/k oranı nedir"
-- [ ] BIST 100 endeksi nedir, nasıl yatırım yapılır? — `Borsa` — hedef: "bist 100 nedir"
+- [x] BIST 100 endeksi nedir, nasıl yatırım yapılır? — `Borsa` — hedef: "bist 100 nedir"
 - [x] Enflasyon nedir, neden yükselir? — `Ekonomi` — hedef: "enflasyon nedir"
 - [ ] Finansal özgürlük nedir, nasıl ulaşılır? (FIRE) — `Yatırım` — hedef: "finansal özgürlük nasıl"
 - [ ] Borçtan çıkış planı: kartopu vs çığ yöntemi — `Kişisel Finans` — hedef: "borç kapatma yöntemi"
@@ -72,3 +72,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Pasif gelir fikirleri: gerçekçi 10 yol — `pasif-gelir-fikirleri` (backlog: evergreen kişisel finans)
 - [x] Risk ve getiri ilişkisi: portföy nasıl dengelenir? — `risk-getiri-iliskisi` (backlog: evergreen yatırım)
 - [x] Temel analiz vs teknik analiz: farkı ne? — `temel-analiz-teknik-analiz-farki` (backlog: evergreen borsa)
+- [x] BIST 100 endeksi nedir, nasıl yatırım yapılır? — `bist-100-nedir-nasil-yatirim-yapilir` (backlog: evergreen borsa)

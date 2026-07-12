@@ -4,6 +4,94 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-12 — BIST 100 Rehberi
+
+**Yayınlanan yazı:** [BIST 100 Nedir? Türkiye Borsasına Nasıl Yatırım Yapılır?](https://parafomo.com/blog/bist-100-nedir-nasil-yatirim-yapilir/)
+Kategori: Borsa | Hedef sorgu: "bist 100 nedir" | ~1.200 kelime
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana hook):**
+"Hangi hisseyi alayım?" diye düşünmek yerine soruyu şöyle sor:
+
+"Tüm piyasayı tek seferde alabilir miyim?"
+
+Evet, alabilirsin. BIST 100 tam olarak bu. 👇
+
+**Tweet 2:**
+BIST 100 = Borsa İstanbul'daki en büyük 100 şirket.
+
+Garanti, Koç, BİM, Tupraş, Akbank, Migros...
+Hepsi tek sepette.
+
+Tek hisse almak yerine 100'ünün küçük ortağı olursun.
+
+**Tweet 3:**
+Peki nasıl alınır?
+
+3 yol var:
+1. Doğrudan hisse (100 şirketi tek tek) → Zahmetli
+2. BIST 100 ETF → Hisse gibi borsadan, anlık
+3. Endeks yatırım fonu → Bankadan kolay erişim
+
+Çoğu kişi için: ETF en pratik seçenek ✅
+
+**Tweet 4:**
+Yıllık maliyet karşılaştırması:
+
+• ETF: ~%0,3–0,6 yönetim ücreti
+• Endeks fonu: ~%0,5–1,5
+• Aktif fon: ~%2–3 (ve çoğu zaman endeksin gerisinde)
+
+Uzun vadede bu küçük fark büyük getiri farkına dönüşür.
+
+**Tweet 5:**
+Risk var mı? Evet, ama yönetilebilir:
+
+❗ Kur riski: TL değer kaybederse dolar bazında aşınırsın
+❗ Sektör yoğunluğu: bankalar büyük pay tutuyor
+✅ Çeşitlendirme: tek hisseden çok daha güvenli
+✅ Uzun vade: 3-5 yıl+ tutanlarda volatilite törpülenir
+
+Tam rehber: parafomo.com/blog/bist-100-nedir-nasil-yatirim-yapilir/
+
+#bist100 #borsa #yatırım #borsaistanbul
+
+---
+
+### Instagram Post Metni
+
+**Caption:**
+📈 BIST 100 Nedir? Türkiye Borsasına Nasıl Yatırım Yapılır?
+
+Borsada "hangi hisseyi alayım" sorusunun en akıllı cevabı:
+→ Hepsini al. Yani BIST 100'ü.
+
+BIST 100, Borsa İstanbul'daki en büyük 100 şirketi kapsayan Türkiye'nin ana piyasa endeksidir.
+
+🔹 Tek satın alımla 100 şirkete ortak olursun
+🔹 ETF ile borsadan hisse gibi saniyeler içinde alınır
+🔹 Yıllık yönetim ücreti %0,3–0,6 (aktif fona göre çok daha ucuz)
+🔹 3-5 yıl ve üzeri ufukla tarihsel olarak enflasyonun üzerinde reel getiri
+
+❗ Dikkat: Kur riski ve sektörel yoğunlaşma var. Her yatırım gibi risk taşır.
+
+Nasıl alınır, ne kadara mal olur, ETF ile endeks fonu farkı nedir?
+👉 Tam rehber linki bio'da: parafomo.com/blog/bist-100-nedir-nasil-yatirim-yapilir/
+
+#BIST100 #Borsaİstanbul #borsa #hissesenedi #ETF #yatırım #parafomo
+
+---
+
+### Senin Bugün Yapman Gerekenler
+
+- [ ] **X thread'ini paylaş** — 5 tweet'lik hazır taslak yukarıda. Tweet 1'den başla, diğerlerini reply olarak ekle. En son tweete link koy.
+- [ ] **1 toplulukta değer katarak paylaş** — "borsaya yeni başlayacaklar" veya "yatırım" gruplarında (Telegram, Reddit, Facebook) linki paylaş; sade, yardımcı bir mesajla. Spam değil, gerçek değer.
+
+---
+
 ## 2026-07-12
 
 **Yayınlanan yazı:** [F/K Oranı Nedir? Hisse Senedi Değerlemesi Nasıl Yapılır?](https://parafomo.com/blog/fk-orani-nedir/)
