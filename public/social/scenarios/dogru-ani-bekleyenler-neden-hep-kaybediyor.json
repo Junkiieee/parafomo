@@ -1,0 +1,59 @@
+{
+  "slug": "dogru-ani-bekleyenler-neden-hep-kaybediyor",
+  "title": "Doğru Anı Bekleyenler Neden Hep Kaybediyor?",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Borsaya 'doğru zamanda' girmeye çalışmak çoğu zaman büyük fırsatların kaçırılmasına neden olur. Zamanlamak değil, içinde kalmak kazandırır.",
+  "tags": [
+    "borsa",
+    "yatırım",
+    "BIST",
+    "piyasazamanlaması",
+    "paraFOMO",
+    "finanseğitimi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "En kötü günde alan, bekleyenden daha çok kazandı.",
+      "visual": {
+        "type": "concept",
+        "query": "stock market crash investor buying opportunity"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yatırımcıların çoğu 'biraz daha düşer' diyerek piyasanın dışında bekliyor. O bekleme, getirinizin büyük bölümünü yiyor.",
+      "visual": {
+        "type": "concept",
+        "query": "investor watching waiting stock market screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama işte rakam: Yılın en iyi 10 gününü kaçıran yatırımcı, getirisinin yaklaşık yarısını kaybediyor — hem de sadece birkaç günü ıskaladığı için.",
+      "visual": {
+        "type": "concept",
+        "query": "stock market best days performance bar chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çözüm mükemmel anı beklemek değil: düzenli küçük alımlar, zamanlamaya çalışmaktan tarihsel olarak çok daha iyi sonuç veriyor.",
+      "visual": {
+        "type": "concept",
+        "query": "dollar cost averaging systematic investment growth"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki 2008 krizinin tam dibinde alan mı, 'toparlandı' diye giren mi daha çok kazandı? Cevap tahmin ettiğinden farklı — bir sonraki videoda kırıyorum. Her gün 60 saniyede tek net analiz için abone ol.",
+      "visual": {
+        "type": "concept",
+        "query": "financial education money growth subscribe"
+      }
+    }
+  ]
+}
