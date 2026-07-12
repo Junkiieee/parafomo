@@ -17,6 +17,23 @@ faq:
     a: "Hayır. Şirketin borç yapısı (FD/FAVÖK), büyüme hızı (PEG oranı), kâr marjları ve sektör dinamikleri olmadan F/K yanıltıcı olabilir. Özellikle zararda olan şirketlerin F/K'sı anlamsızdır. En az 2-3 destekleyici göstergeyle birlikte kullanılmalıdır."
   - q: "Negatif F/K ne anlama gelir?"
     a: "Şirketin zarar ettiği anlamına gelir — payda (kazanç) negatif olduğu için F/K hesaplanamaz veya negatif çıkar. Zararlı şirketler için F/K yerine gelir büyümesi, nakit akışı veya FD/Satış gibi oranlar daha anlamlıdır."
+shorts:
+  - "Hisse fiyatı 120 TL — ucuz mu, pahalı mı?"
+  - "F/K oranı, hisse fiyatını şirketin yıllık kârına bölerek o hissenin gerçekten değerinde mi satıldığını gösteren temel bir değerleme aracıdır."
+  - "Hisse 120 TL'den işlem görüyor, yıllık kârı 15 TL ise F/K 8 demek — yatırımını tam 8 yılda geri alırsın."
+  - "Düşük F/K her zaman fırsat değil; kâr geçiciyse tuzak olabilir — bu yüzden sektör ortalamasıyla karşılaştırmak şarttır."
+  - "Peki teknoloji ile bankacılık hisselerinin F/K'sı neden bu kadar farklı? Tüm detaylar parafomo.com'da — kanalımıza abone ol, doğru yatırım kararları için yanında olalım."
+shorts_broll:
+  - "stock market price board numbers"
+  - "price earnings ratio financial chart"
+  - "investment return calculator years"
+  - "stock sector comparison analysis"
+shorts_visuals:
+  - "concept|stock market price board numbers screen"
+  - "concept|price earnings ratio formula whiteboard chart"
+  - "concept|calculator financial investment return years"
+  - "concept|stock market sector comparison bar chart"
+  - "place|Borsa İstanbul"
 ---
 
 Bir hisseye bakıyorsunuz: fiyat 120 TL. Ucuz mu? Pahalı mı? Bu soruyu sadece fiyata bakarak cevaplamak imkânsız. Şirketin ne kadar kazandığını, ne kadar büyüyeceğini ve piyasanın ona ne kadar değer biçtiğini bilmeden fiyat tek başına hiçbir şey ifade etmez.
