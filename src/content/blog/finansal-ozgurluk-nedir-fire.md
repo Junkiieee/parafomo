@@ -17,6 +17,23 @@ faq:
     a: "Evet, ancak dolar/euro bazlı yatırımlar veya enflasyona karşı dayanaklı varlıklar (altın, hisse, kira geliri) olmadan TL bazlı bir plan ciddi risk taşır. Türkiye koşullarında 'reel getiri' odaklı bir strateji zorunludur."
   - q: "FIRE için hangi yatırım araçları kullanılmalı?"
     a: "Global endeks fonları ve ETF'ler (düşük maliyet, geniş çeşitlendirme), temettü hisseleri (nakit akışı), BES (vergi avantajı) ve kira geliri Türkiye'deki FIRE yatırımcılarının sıklıkla başvurduğu araçlardır. Tek araç yerine çeşitlendirilmiş bir yapı daha sağlıklıdır."
+shorts:
+  - "40'ında emekli olanlar hangi sırrı biliyor?"
+  - "Finansal özgürlük, sabah uyandığında işe gidip gitmemeye kendin karar verebildiğin noktadır; emekli olmak zorunluluk değil seçim olur."
+  - "FIRE hareketi, gelirinizin en az yarısını yatırıma yönlendirerek yaklaşık on yedi yılda çalışma zorunluluğunu ortadan kaldırmayı hedefler."
+  - "Tasarruf oranını yüzde yirmiden elliye çıkarmak, finansal özgürlüğe ulaşma süresini tam yirmi yıl öne çekiyor."
+  - "Türkiye'de bu hesap gerçekten işe yarar mı? Kanala abone ol, parafomo.com'da tüm adımları bulabilirsin."
+shorts_broll:
+  - "financial independence early retirement lifestyle"
+  - "compound interest investment growth chart"
+  - "savings money piggy bank jar"
+  - "fire movement financial planning desk"
+shorts_visuals:
+  - "concept|person circling retirement date on calendar freedom"
+  - "concept|person choosing between office work and outdoor freedom"
+  - "concept|investment portfolio compound interest growth chart"
+  - "concept|savings rate percentage calculator financial planning"
+  - "scene|early retirement relaxing travel lifestyle freedom"
 ---
 
 "Finansal özgürlük nasıl elde edilir?" sorusu, son yıllarda Türkiye'de de hızla yayılan bir arayışın adı. Sebepler net: artan geçim sıkıntısı, enflasyon ve tek kaynaktan gelen maaşın kırılganlığı insanları farklı düşünmeye itiyor. Bu yazıda finansal özgürlüğün ne anlama geldiğini, FIRE hareketinin matematiksel temellerini ve Türkiye koşullarında nasıl uygulanabileceğini adım adım ele alıyoruz.
