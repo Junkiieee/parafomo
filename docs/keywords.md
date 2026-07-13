@@ -39,6 +39,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] ABD Perakende Satışları (Retail Sales) Nedir? Dolar ve TL'ye Etkisi — `abd-perakende-satislari-nedir` (takvim: 16 Temmuz ABD Retail Sales/Core Retail Sales açıklaması)
 - [x] Finansal Özgürlük Nedir? FIRE Hareketi ile Erken Emekliliğe Ulaşma Rehberi — `finansal-ozgurluk-nedir-fire` (backlog: evergreen yatırım)
 - [x] F/K Oranı Nedir? Hisse Senedi Değerlemesi Nasıl Yapılır? — `fk-orani-nedir` (backlog: borsa temel analiz)
 - [x] ABD Enflasyon Verisi (CPI) Nedir? Haziran Rakamları Dolar ve TL'yi Nasıl Etkiler? — `abd-cpi-enflasyon-verisi-nedir` (takvim: 14 Temmuz ABD CPI/Core CPI açıklaması)
