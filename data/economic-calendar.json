@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-12",
+  "updated": "2026-07-13",
   "fetch_ok": true,
   "source": "investing",
   "events": [
@@ -155,6 +155,24 @@
       "title": "CPI (YoY) (Jul)",
       "source": "investing",
       "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-08-03",
+      "time": "10:00",
+      "region": "TR",
+      "impact": "High",
+      "title": "TÜİK enflasyon (TÜFE, aylık)",
+      "source": "investing",
+      "hook": "Aylık enflasyon — sepet ve alım gücü yorumu."
+    },
+    {
+      "date": "2026-08-03",
+      "time": "10:00",
+      "region": "TR",
+      "impact": "High",
+      "title": "TÜİK enflasyon (TÜFE, yıllık)",
+      "source": "investing",
+      "hook": "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı."
     }
   ]
 }
