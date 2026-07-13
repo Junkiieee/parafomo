@@ -4,6 +4,104 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-13 — Finansal Özgürlük & FIRE Rehberi
+
+**Yayınlanan yazı:** [Finansal Özgürlük Nedir? FIRE Hareketi ile Erken Emekliliğe Ulaşma Rehberi](https://parafomo.com/blog/finansal-ozgurluk-nedir-fire/)
+Kategori: Yatırım | Hedef sorgu: "finansal özgürlük nasıl" | ~1.300 kelime
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana hook):**
+"Emekli olmak istiyorum" deme.
+
+Şunu de: "Çalışıp çalışmamaya kendim karar vermek istiyorum."
+
+İşte bu — finansal özgürlük. 👇
+
+**Tweet 2:**
+FIRE hareketi bu soruya şöyle cevap veriyor:
+
+Gelirinizin büyük kısmını yatırıma yönlendir.
+Bileşik büyüme işini yapsın.
+Portföyün yaşam giderini karşılar hale gelsin.
+
+Standart emeklilik değil — özgür olmak.
+
+**Tweet 3:**
+Kritik soru: Ne kadar birikime ihtiyacın var?
+
+Cevap: Yıllık giderin × 25
+
+Örnek: Yılda 300.000 TL harcıyorsan → Hedef: 7.500.000 TL
+
+Türkiye'de enflasyon nedeniyle bu katsayıyı biraz daha yüksek tutmak akıllıca.
+
+**Tweet 4:**
+Hangi FIRE sana göre?
+
+🟢 Lean FIRE → Minimal yaşam, en erken çıkış
+🟡 Regular FIRE → Standart yaşam, dengeli hedef
+🔵 Fat FIRE → Konforlu yaşam, büyük portföy
+🟠 Barista FIRE → Yarı zamanlı çalışmayla desteklenen özgürlük
+
+Türkiye için Barista FIRE çoğu zaman en gerçekçi başlangıç noktası.
+
+**Tweet 5:**
+Şaşırtıcı gerçek: Tasarruf oranın her şeyi değiştiriyor.
+
+%50 tasarruf → ~17 yılda finansal özgürlük
+%70 tasarruf → ~8.5 yılda
+
+Maaşın değil, harcama alışkanlıkların belirliyor.
+
+Detaylar + tablolar → parafomo.com/blog/finansal-ozgurluk-nedir-fire/
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Kapak:** "Finansal özgürlüğe kaç yılın var? 📊"
+
+**Slayt 1 — Finansal özgürlük nedir?**
+Çalışıp çalışmamaya kendin karar verebiliyorsan finansal özgürsün. Para seni yönetmiyor, sen parayı yönetiyorsun.
+
+**Slayt 2 — FIRE nedir?**
+Financial Independence, Retire Early.
+Yüksek tasarruf + akıllı yatırım = erken özgürlük.
+Türkiye'de de uygulanabilir — doğru araçlarla.
+
+**Slayt 3 — Kaç yılın var? (Tasarruf oranı tablosu)**
+%10 tasarruf → ~43 yıl
+%30 tasarruf → ~28 yıl
+%50 tasarruf → ~17 yıl
+%70 tasarruf → ~8,5 yıl
+
+**Slayt 4 — FIRE türleri**
+Lean FIRE → Minimal, en hızlı
+Regular FIRE → Dengeli standart
+Fat FIRE → Konforlu, büyük portföy
+Barista FIRE → Yarı zamanlı destek
+
+**Slayt 5 — Türkiye için ipucu**
+BES devlet katkısı %30 → bedava para.
+Global endeks fonları → enflasyona karşı kalkan.
+Barista FIRE → tam değil, ama özgürlüğe yakın.
+
+Tam rehber: parafomo.com/blog/finansal-ozgurluk-nedir-fire/
+
+**Hashtag'ler:** #finansalözgürlük #FIRE #erkenemeklilik #yatırım #parafönetimi #parafomo
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş:** Yukarıdaki thread ve carousel taslağını kopyala, hesaplarından yayınla (@parafomo). Instagram'da link bio'ya ekle: parafomo.com/blog/finansal-ozgurluk-nedir-fire/
+2. **1 ilgili toplulukta paylaş:** r/Turkey veya Türkçe finans Facebook/Telegram gruplarında "Finansal özgürlük nedir, FIRE hareketi Türkiye'de nasıl uygulanır?" diye sorulmuş bir konuya ya da yeni açacağın bir başlığa bu yazıyı değer katarak paylaş (spam değil, soruyu cevapla + linki bırak).
+
+---
+
 ## 2026-07-12 — BIST 100 Rehberi
 
 **Yayınlanan yazı:** [BIST 100 Nedir? Türkiye Borsasına Nasıl Yatırım Yapılır?](https://parafomo.com/blog/bist-100-nedir-nasil-yatirim-yapilir/)

@@ -23,7 +23,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] F/K oranı nedir, nasıl yorumlanır? — `Borsa` — hedef: "f/k oranı nedir"
 - [x] BIST 100 endeksi nedir, nasıl yatırım yapılır? — `Borsa` — hedef: "bist 100 nedir"
 - [x] Enflasyon nedir, neden yükselir? — `Ekonomi` — hedef: "enflasyon nedir"
-- [ ] Finansal özgürlük nedir, nasıl ulaşılır? (FIRE) — `Yatırım` — hedef: "finansal özgürlük nasıl"
+- [x] Finansal özgürlük nedir, nasıl ulaşılır? (FIRE) — `Yatırım` — hedef: "finansal özgürlük nasıl"
 - [ ] Borçtan çıkış planı: kartopu vs çığ yöntemi — `Kişisel Finans` — hedef: "borç kapatma yöntemi"
 - [ ] Genç yaşta yatırıma nasıl başlanır? — `Yatırım` — hedef: "genç yaşta yatırım"
 - [ ] Döviz kuru nasıl belirlenir? — `Ekonomi` — hedef: "döviz kuru nasıl belirlenir"
@@ -39,6 +39,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] Finansal Özgürlük Nedir? FIRE Hareketi ile Erken Emekliliğe Ulaşma Rehberi — `finansal-ozgurluk-nedir-fire` (backlog: evergreen yatırım)
 - [x] F/K Oranı Nedir? Hisse Senedi Değerlemesi Nasıl Yapılır? — `fk-orani-nedir` (backlog: borsa temel analiz)
 - [x] ABD Enflasyon Verisi (CPI) Nedir? Haziran Rakamları Dolar ve TL'yi Nasıl Etkiler? — `abd-cpi-enflasyon-verisi-nedir` (takvim: 14 Temmuz ABD CPI/Core CPI açıklaması)
 
