@@ -24,7 +24,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] BIST 100 endeksi nedir, nasıl yatırım yapılır? — `Borsa` — hedef: "bist 100 nedir"
 - [x] Enflasyon nedir, neden yükselir? — `Ekonomi` — hedef: "enflasyon nedir"
 - [x] Finansal özgürlük nedir, nasıl ulaşılır? (FIRE) — `Yatırım` — hedef: "finansal özgürlük nasıl"
-- [ ] Borçtan çıkış planı: kartopu vs çığ yöntemi — `Kişisel Finans` — hedef: "borç kapatma yöntemi"
+- [x] Borçtan çıkış planı: kartopu vs çığ yöntemi — `Kişisel Finans` — hedef: "borç kapatma yöntemi"
 - [ ] Genç yaşta yatırıma nasıl başlanır? — `Yatırım` — hedef: "genç yaşta yatırım"
 - [ ] Döviz kuru nasıl belirlenir? — `Ekonomi` — hedef: "döviz kuru nasıl belirlenir"
 - [ ] Kripto cüzdan türleri ve güvenlik rehberi — `Kripto` — hedef: "kripto cüzdan nedir"
@@ -75,3 +75,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Risk ve getiri ilişkisi: portföy nasıl dengelenir? — `risk-getiri-iliskisi` (backlog: evergreen yatırım)
 - [x] Temel analiz vs teknik analiz: farkı ne? — `temel-analiz-teknik-analiz-farki` (backlog: evergreen borsa)
 - [x] BIST 100 endeksi nedir, nasıl yatırım yapılır? — `bist-100-nedir-nasil-yatirim-yapilir` (backlog: evergreen borsa)
+- [x] Borçtan çıkış planı: kartopu vs çığ yöntemi — `borc-kapatma-yontemi-kartopu-cig` (backlog: evergreen kişisel finans)

@@ -4,6 +4,90 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-14 — Borç Kapatma Yöntemi: Kartopu ve Çığ
+
+**Yayınlanan yazı:** [Borç Kapatma Yöntemi: Kartopu mu Çığ mı Seçmelisin?](https://parafomo.com/blog/borc-kapatma-yontemi-kartopu-cig/)
+Kategori: Kişisel Finans | Hedef sorgu: "borç kapatma yöntemi" | ~1.100 kelime
+İç linkler: 50/30/20 bütçe yazısı, acil durum fonu yazısı, kredi kartı borç yazısı
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (hook):**
+Birden fazla borcun varsa şu soruyu mutlaka sor:
+
+"Hangisini önce kapatıyorum?"
+
+Rastgele cevap = binlerce TL ekstra faiz.
+Sistematik cevap = kartopu veya çığ yöntemi. 👇
+
+**Tweet 2:**
+🔴 Yanlış yol: Her borca eşit ödeme dağıtmak.
+
+Faizi eritir, anaparayı değil.
+Plan olmadan borç bitmez.
+
+**Tweet 3:**
+❄️ KARTOPU YÖNTEMİ
+
+En küçük borçtan başla.
+Bitince o ödemeyi bir sonrakine ekle.
+
+Avantaj: "Bitti!" hissi erken gelir.
+Dezavantaj: Toplam faiz daha yüksek.
+
+**Tweet 4:**
+🌊 ÇIĞ YÖNTEMİ
+
+En yüksek faizliden başla.
+Bitince bir sonraki yüksek faizliye geç.
+
+Avantaj: Toplam faiz en düşük.
+Dezavantaj: İlk kazanım geç gelir.
+
+**Tweet 5:**
+Hangisi sana göre?
+
+→ Motivasyona ihtiyacın varsa: Kartopu
+→ Sayılar seni motive ediyorsa: Çığ
+
+En iyi plan, sona kadar uygulayabildiğindir.
+
+**Tweet 6:**
+Tüm detaylar + sayısal örnek + adım adım plan:
+👉 parafomo.com/blog/borc-kapatma-yontemi-kartopu-cig/
+
+#KişiselFinans #BorçYönetimi #ParaYönetimi #Finans
+
+---
+
+### Instagram Carousel/Post Metni
+
+**Başlık:** Borçtan çıkmak istiyorsan bu iki yöntemi bil 💡
+
+**Post metni:**
+Birden fazla borcun varsa rastgele ödeme yapma — sistematik bir plan kullan.
+
+Kartopu yöntemi: En küçük borçtan başla, bitince bir sonrakine geç. Erken kazanım motivasyon verir.
+
+Çığ yöntemi: En yüksek faizliden başla. Matematiği kazanır, toplam faiz maliyeti düşer.
+
+Hangisini seçersen seç: Ekstra ödemeyi TEK bir hedefe yönlendir.
+
+Tüm detaylar için → parafomo.com 🔗 (bio'daki link)
+
+#KişiselFinans #BorçYönetimi #ParaYönetimi #Finans #TasarrufTüyoları #BorçKapatma
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş:** Yukarıdaki taslakları kullanarak bugünün yazısını X'te thread olarak, Instagram'da ise post/carousel olarak yayınla.
+2. **1 toplulukta paylaş:** İlgili bir Telegram finans grubunda veya Reddit'te (r/Turkey finansal) konuya değer katarak yazının linkini paylaş — sadece link atmak değil, "şu soruya cevap arıyorsan..." şeklinde giriş yap.
+
+---
+
 ## 2026-07-13 — Finansal Özgürlük & FIRE + ABD Perakende Satışları
 
 **Yayınlanan yazı 1:** [Finansal Özgürlük Nedir? FIRE Hareketi ile Erken Emekliliğe Ulaşma Rehberi](https://parafomo.com/blog/finansal-ozgurluk-nedir-fire/)
