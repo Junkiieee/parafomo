@@ -1,7 +1,7 @@
 {
-  "updated": "2026-07-13",
+  "updated": "2026-07-14",
   "fetch_ok": true,
-  "source": "investing",
+  "source": "forexfactory+tuik (yedek)",
   "events": [
     {
       "date": "2026-07-13",
@@ -11,6 +11,42 @@
       "title": "Perakende satışlar",
       "source": "investing",
       "hook": "Tüketim gücü göstergesi."
+    },
+    {
+      "date": "2026-07-14",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Core CPI m/m",
+      "source": "forexfactory",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-07-14",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Core CPI y/y",
+      "source": "forexfactory",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-07-14",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "CPI m/m",
+      "source": "forexfactory",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-07-14",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "CPI y/y",
+      "source": "forexfactory",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
     },
     {
       "date": "2026-07-14",
@@ -40,6 +76,51 @@
       "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
     },
     {
+      "date": "2026-07-14",
+      "time": "2:00pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Fed Chairman Warsh Testifies",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-07-14",
+      "time": "8:00pm",
+      "region": "GBP",
+      "impact": "High",
+      "title": "BOE Gov Bailey Speaks",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-07-15",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Core PPI m/m",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-07-15",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "PPI m/m",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-07-15",
+      "time": "2:00pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Fed Chairman Warsh Testifies",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
       "date": "2026-07-16",
       "time": "15:30",
       "region": "USD",
@@ -56,6 +137,15 @@
       "title": "Retail Sales (MoM) (Jun)",
       "source": "investing",
       "hook": "Perakende satışlar — tüketim ve büyüme sinyali."
+    },
+    {
+      "date": "2026-07-16",
+      "time": "6:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "GDP m/m",
+      "source": "forexfactory",
+      "hook": "Büyüme verisi — küresel görünüm."
     },
     {
       "date": "2026-07-17",
@@ -172,6 +262,15 @@
       "impact": "High",
       "title": "TÜİK enflasyon (TÜFE, yıllık)",
       "source": "investing",
+      "hook": "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı."
+    },
+    {
+      "date": "2026-08-03",
+      "time": "10:00",
+      "region": "TR",
+      "impact": "High",
+      "title": "TÜİK enflasyon (TÜFE) verisi",
+      "source": "tuik-rule",
       "hook": "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı."
     }
   ]
