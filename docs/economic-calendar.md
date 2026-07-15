@@ -1,6 +1,6 @@
 # Ekonomik Takvim (otomatik)
 
-> Son güncelleme: 2026-07-14 · `scripts/fetch-economic-calendar.py` tarafından üretilir. ELLE DÜZENLEME.
+> Son güncelleme: 2026-07-15 · `scripts/fetch-economic-calendar.py` tarafından üretilir. ELLE DÜZENLEME.
 > Kaynaklar: Investing.com (TR + küresel, birincil), TCMB (faiz kararı), yedek: ForexFactory + TÜİK kuralı.
 
 İçerik üreticisi için: yaklaşan **🔴 High** etkili bir TR/küresel olay 1-3 gün içindeyse,
@@ -10,15 +10,6 @@ o olayın `hook`'una göre bir **explainer** yazısını sıraya al (omurga ever
 
 | Tarih | Gün | Saat | Bölge | Etki | Olay | İçerik fırsatı |
 |-------|-----|------|-------|------|------|----------------|
-| 2026-07-14 | Salı | 12:30pm | 🇺🇸 | 🔴 High | Core CPI m/m | Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi. |
-| 2026-07-14 | Salı | 12:30pm | 🇺🇸 | 🔴 High | Core CPI y/y | Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi. |
-| 2026-07-14 | Salı | 12:30pm | 🇺🇸 | 🔴 High | CPI m/m | Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi. |
-| 2026-07-14 | Salı | 12:30pm | 🇺🇸 | 🔴 High | CPI y/y | Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi. |
-| 2026-07-14 | Salı | 15:30 | 🇺🇸 | 🔴 High | Core CPI (MoM) (Jun) | Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi. |
-| 2026-07-14 | Salı | 15:30 | 🇺🇸 | 🔴 High | CPI (MoM) (Jun) | Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi. |
-| 2026-07-14 | Salı | 15:30 | 🇺🇸 | 🔴 High | CPI (YoY) (Jun) | Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi. |
-| 2026-07-14 | Salı | 2:00pm | 🇺🇸 | 🔴 High | Fed Chairman Warsh Testifies |  |
-| 2026-07-14 | Salı | 8:00pm | 🇬🇧 | 🔴 High | BOE Gov Bailey Speaks |  |
 | 2026-07-15 | Çarşamba | 12:30pm | 🇺🇸 | 🔴 High | Core PPI m/m |  |
 | 2026-07-15 | Çarşamba | 12:30pm | 🇺🇸 | 🔴 High | PPI m/m |  |
 | 2026-07-15 | Çarşamba | 2:00pm | 🇺🇸 | 🔴 High | Fed Chairman Warsh Testifies |  |
