@@ -4,6 +4,93 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-15 — Genç Yaşta Yatırım: 20'li Yaşlarda Nasıl Başlanır?
+
+**Yayınlanan yazı:** [Genç Yaşta Yatırım: 20'li Yaşlarda Nasıl Başlanır?](https://parafomo.com/blog/genc-yasta-yatirima-nasil-baslanir/)
+Kategori: Yatırım | Hedef sorgu: "genç yaşta yatırım" | ~1.150 kelime
+İç linkler: bileşik faiz, acil durum fonu, endeks fonu, borsaya başlangıç, DCA yazıları
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (hook):**
+20'li yaşlarda "param az, ileride yaparım" diyenlere:
+
+500 TL/ay yatırım yapsan —
+• 20 yaşında başlarsan → 60'ta ~5.9M TL
+• 40 yaşında başlarsan → 60'ta ~494K TL
+
+Aynı para, 12 kat fark. Nedeni: zaman 👇
+
+**Tweet 2:**
+Bileşik getiri şu anlama gelir:
+
+Kazandığın getiri de para kazanır.
+O getirinin getirisi de para kazanır.
+Onlarca yıl boyunca.
+
+Başlangıç tutarından çok BAŞLANGICI erken yapmak önemli.
+
+**Tweet 3:**
+Ama önce sırayı bilmek lazım:
+
+1️⃣ Acil durum fonu oluştur (3-6 aylık gider)
+2️⃣ Kredi kartı / yüksek faizli borçları kapat
+3️⃣ Sonra yatırıma başla
+
+Sıralamayı atlayan ilk düşüşte paniğe kapılır.
+
+**Tweet 4:**
+Genç yatırımcı için en mantıklı başlangıç araçları:
+
+📊 Endeks fonu → çeşitlendirilmiş, düşük maliyetli
+🏦 BES → devlet %25 katkı ekliyor
+📈 DCA → her ay sabit tutar, zamanlama stresi yok
+
+Karmaşık değil. Basit + istikrarlı = güçlü.
+
+**Tweet 5:**
+En sık yapılan hata:
+
+"Piyasa düşünce girerim" beklemek.
+
+Piyasayı zamanlamak profesyoneller için bile zor.
+Her ay küçük yatırmak, büyük zamanlamadan çok daha iyi sonuç verir.
+
+**Tweet 6:**
+20'li yaşlarda yatırım rehberi — hangi araçlar, hangi sıra, ne kadar:
+👉 parafomo.com/blog/genc-yasta-yatirima-nasil-baslanir/
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Caption:**
+20'li yaşlarda yatırım yapmamak için "az param var" demen gerekmiyor 📊
+
+Aslında az para + erken başlangıç, büyük para + geç başlangıçtan çok daha güçlü.
+
+Neden mi? Bileşik getiri. 10 yıl beklemek, yüzlerce bin TL'ye mal olabilir.
+
+✅ Sıfırdan nasıl başlanır?
+✅ Hangi araçlar uygun?
+✅ Acil durum fonu ne işe yarar?
+✅ BES neden gençlere özel avantaj sunar?
+
+Tüm cevaplar linkte 👆 (bio'daki link)
+
+#gençyatırım #yatırım #borsa #kişiselfinans #paranızyönet #finansalözgürlük
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **Yukarıdaki Twitter thread'ini ve Instagram gönderisini paylaş.** Thread için 6 tweet'i sırasıyla göster; Instagram'da bir carousel (her tweet bir slayt) veya tek fotoğraf + caption formatı kullan.
+2. **1 ilgili toplulukta değer katarak paylaş.** Örnek: r/Turkey veya Türkiye finans Facebook/Telegram gruplarında "Genç yaşta yatırıma nasıl başlanır?" sorusunu soran birine veya bu konuyu açan bir tartışmaya yazıyı referans göster. Spam değil, gerçek yanıt ver.
+
+---
+
 ## 2026-07-14 — Borç Kapatma Yöntemi: Kartopu ve Çığ
 
 **Yayınlanan yazı:** [Borç Kapatma Yöntemi: Kartopu mu Çığ mı Seçmelisin?](https://parafomo.com/blog/borc-kapatma-yontemi-kartopu-cig/)
