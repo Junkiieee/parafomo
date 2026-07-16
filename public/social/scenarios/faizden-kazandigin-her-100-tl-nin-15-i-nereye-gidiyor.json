@@ -1,0 +1,59 @@
+{
+  "slug": "faizden-kazandigin-her-100-tl-nin-15-i-nereye-gidiyor",
+  "title": "Faizden Kazandığın Her 100 TL'nin 15'i Nereye Gidiyor?",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Banka faiz getirisinden otomatik kesilen yüzde on beş stopaj vergisi, Türk yatırımcısının gerçek getirisini nasıl eritiyor?",
+  "tags": [
+    "stopaj vergisi",
+    "banka faizi",
+    "mevduat getirisi",
+    "türkiye yatırım",
+    "finansal okuryazarlık",
+    "paraFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "100 bin TL faizinden 15 bin TL'yi devlet alıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "bank teller cash withdrawal counter money Turkey"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Banka yüzde kırk faiz verdiğini söylüyor ama yüzde on beş stopaj vergisini sen görmeden otomatik kesiyor.",
+      "visual": {
+        "type": "concept",
+        "query": "tax deduction document calculator money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Stopaj sonrası gerçek getin yüzde otuz dörde düşüyor. Enflasyon hâlâ bunun üstündeyse, market arabanın alım gücü yine eriyor.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation grocery shopping cart prices rising"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fiziksel altın bu vergiden muaf. Yatırım kararı vermeden önce vergi sonrası net getiriyi hesaplamak zorundasın.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bars coins investment safe"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki tüm yatırım araçlarının vergi sonrası gerçek getirisi nedir, karşılaştırdık. Her gün 60 saniyede somut bir para analizi için abone ol, cebine dokunanı kaçırma.",
+      "visual": {
+        "type": "concept",
+        "query": "investment comparison chart financial planning screen"
+      }
+    }
+  ]
+}
