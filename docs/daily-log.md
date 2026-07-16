@@ -4,6 +4,89 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-16 — Döviz Kuru Nasıl Belirlenir? Kuru Etkileyen 5 Temel Faktör
+
+**Yayınlanan yazı:** [Döviz Kuru Nasıl Belirlenir? Kuru Etkileyen 5 Temel Faktör](https://parafomo.com/blog/doviz-kuru-nasil-belirlenir/)
+Kategori: Ekonomi | Hedef sorgu: "döviz kuru nasıl belirlenir" | ~1.100 kelime
+İç linkler: faiz nedir, altın mı dolar mı, enflasyondan nasıl korunur
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (hook):**
+Dolar neden yükseliyor, kim belirliyor?
+
+"Merkez bankası" diyenler yanlış biliyor.
+
+Kuru aslında 5 faktör belirliyor 👇
+
+**Tweet 2:**
+1️⃣ Arz-Talep
+Piyasada dolar talebi arzı geçerse kur yükselir.
+İthalat, borç ödemeleri, spekülatif alımlar → talep artırır.
+İhracat, turizm, yatırım girişi → arz artırır.
+
+**Tweet 3:**
+2️⃣ Faiz oranları
+TCMB faiz artırırsa → TL mevduat cazip olur → yabancı para girer → TL güçlenir.
+Faiz düşürürse → sermaye çıkar → TL zayıflar.
+
+Bu yüzden faiz kararları kuru anında etkiliyor.
+
+**Tweet 4:**
+3️⃣ Enflasyon farkı
+Türkiye enflasyonu yüksek → TL'nin satın alma gücü eriyor → uzun vadede değer kaybı kaçınılmaz.
+Bu teorinin adı: Satın Alma Gücü Paritesi.
+
+**Tweet 5:**
+4️⃣ Cari açık
+İthalat > İhracat = Sürekli döviz talebi.
+Türkiye yapısal cari açık veriyor; bu TL'yi kronik baskı altında tutuyor.
+
+5️⃣ Güven ortamı
+Siyasi belirsizlik, kredi notu indirimi, merkez bankası bağımsızlığına şüphe → anında dolar alımı.
+
+**Tweet 6:**
+Kur sadece finansçıları değil, herkesi etkiliyor:
+• Benzin pahalılaşıyor (petrol dolar bazlı)
+• İthal ürünler şişiyor
+• Dövizli borç ağırlaşıyor
+
+Dolar kurunu takip etmek artık bir lüks değil, zorunluluk.
+
+Ayrıntılar → parafomo.com/blog/doviz-kuru-nasil-belirlenir/
+
+---
+
+### Instagram Carousel/Post Metni
+
+**Caption:**
+📈 Dolar neden yükselir? Kim belirliyor?
+
+"Merkez bankası belirler" diyenler yanlış biliyor — aslında 5 ayrı faktör devrede.
+
+Slide'larda her faktörü sade örneklerle anlattık 👇
+
+💡 Arz-Talep
+💡 Faiz Oranları
+💡 Enflasyon Farkı
+💡 Cari Açık
+💡 Güven ve Beklentiler
+
+Tüm detaylar biyografideki linkte → parafomo.com
+
+#döviz #dolarkuru #ekonomi #tcmb #finansaleğitim #parafomo
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+- [ ] X ve Instagram'da thread/post paylaş (taslaklar yukarıda hazır).
+- [ ] 1 finans topluluğunda (Ekşi Sözlük, Reddit r/Turkey veya ilgili Telegram/Facebook grubu) "döviz kurunu etkileyen faktörler" konuşması geçiyorsa yazıya link vererek değer kat.
+
+---
+
 ## 2026-07-15 — Genç Yaşta Yatırım: 20'li Yaşlarda Nasıl Başlanır?
 
 **Yayınlanan yazı:** [Genç Yaşta Yatırım: 20'li Yaşlarda Nasıl Başlanır?](https://parafomo.com/blog/genc-yasta-yatirima-nasil-baslanir/)
