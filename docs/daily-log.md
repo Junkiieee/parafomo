@@ -4,6 +4,103 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-17 — Kripto Cüzdan Nedir? Türleri, Güvenlik ve Doğru Seçim Rehberi
+
+**Yayınlanan yazı:** [Kripto Cüzdan Nedir? Türleri, Güvenlik ve Doğru Seçim Rehberi](https://parafomo.com/blog/kripto-cuzdan-nedir/)
+Kategori: Kripto | Hedef sorgu: "kripto cüzdan nedir" | ~1.350 kelime
+
+---
+
+### X (Twitter) Thread Taslağı
+
+🔐 Kripto aldın, ama nerede saklıyorsun?
+
+"Borsada dursun" dersen büyük hata yapıyor olabilirsin.
+
+Kripto cüzdan ne demek, hangisi ne zaman kullanılır — hızlı rehber 👇
+
+---
+
+2/ Cüzdan aslında para "saklamaz".
+Paranız blokzincirde durur.
+Cüzdan sadece erişim anahtarını tutar.
+
+Anahtarı kaybedersen → paranı kaybedersin.
+Anahtarı çaldırırsan → paranı kaybedersin.
+
+---
+
+3/ İki ana tür var:
+
+🔥 Sıcak cüzdan (MetaMask, Trust Wallet)
+→ Kolay, ücretsiz, ama internete bağlı = risk
+
+❄️ Soğuk/Donanım cüzdan (Ledger, Trezor)
+→ Pahalı ama neredeyse hacklenemez
+
+Küçük tutarlar → sıcak
+Büyük tutarlar → soğuk
+
+---
+
+4/ Seed phrase = cüzdanın anahtarı (12-24 kelime)
+
+✅ Kâğıda yaz, iki kopyasını farklı yerlerde sakla
+✅ Dijital ortama ASLA kaydetme (fotoğraf, mail, bulut)
+✅ Kimseyle paylaşma — "destek ekibi" sormaz, soran dolandırıcıdır
+
+---
+
+5/ Tarih acımasız:
+• Mt. Gox 2014 → 850k BTC uçtu
+• FTX 2022 → 8 milyar dolar 
+• Thodex → kurucu kaçtı, para gitti
+
+"Not your keys, not your coins."
+
+Detaylı rehber → parafomo.com/blog/kripto-cuzdan-nedir
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Slide 1 — Hook:**
+🔐 Kripto cüzdan seçimi hayati önem taşır
+
+**Slide 2:**
+Sıcak cüzdan vs Soğuk cüzdan
+MetaMask ↔ Ledger — hangisini ne zaman kullanırsın?
+
+**Slide 3 — Tablo:**
+| | Sıcak | Soğuk |
+|---|---|---|
+| İnternet | Gerekli | Yok |
+| Güvenlik | Orta | Çok yüksek |
+| Fiyat | Ücretsiz | 60-200$ |
+| Kim için | Küçük tutar | Büyük tutar |
+
+**Slide 4 — Seed Phrase:**
+12-24 kelime = tüm varlığının anahtarı
+→ Kâğıda yaz, 2 kopya, dijitale asla!
+
+**Slide 5 — CTA:**
+"Not your keys, not your coins"
+Detaylı rehber link'te 👆
+
+**Caption:**
+Kripto aldın ama nerede saklıyorsun? Borsa "güvenli" değil — FTX ve Thodex bunu acı şekilde öğretti. Sıcak cüzdan, soğuk cüzdan, seed phrase güvenliği hakkında bilmen gereken her şey yeni yazımızda. 🔗 parafomo.com/blog/kripto-cuzdan-nedir
+
+#kriptocüzdan #metamask #ledger #bitcoingüvenlik #kriptopara #parafomo #seedphrase #coldwallet #kişiselfinans
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **X thread'ini paylaş** — yukarıdaki taslağı @parafomo hesabından yayınla.
+2. **Instagram carousel koy** — 5 slide'lık kart oluştur (Canva şablonu kullanabilirsin), caption'ı yapıştır.
+
+---
+
 ## 2026-07-16 — Döviz Kuru Nasıl Belirlenir? Kuru Etkileyen 5 Temel Faktör
 
 **Yayınlanan yazı:** [Döviz Kuru Nasıl Belirlenir? Kuru Etkileyen 5 Temel Faktör](https://parafomo.com/blog/doviz-kuru-nasil-belirlenir/)
