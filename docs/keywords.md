@@ -27,7 +27,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Borçtan çıkış planı: kartopu vs çığ yöntemi — `Kişisel Finans` — hedef: "borç kapatma yöntemi"
 - [x] Genç yaşta yatırıma nasıl başlanır? — `Yatırım` — hedef: "genç yaşta yatırım"
 - [x] Döviz kuru nasıl belirlenir? — `Ekonomi` — hedef: "döviz kuru nasıl belirlenir"
-- [ ] Kripto cüzdan türleri ve güvenlik rehberi — `Kripto` — hedef: "kripto cüzdan nedir"
+- [x] Kripto cüzdan türleri ve güvenlik rehberi — `Kripto` — hedef: "kripto cüzdan nedir"
 - [ ] Altın çeşitleri: gram, çeyrek, ons, ziynet farkı — `Yatırım` — hedef: "altın çeşitleri farkı"
 - [ ] Yatırım fonu nedir, nasıl seçilir? — `Yatırım` — hedef: "yatırım fonu nedir"
 - [ ] Acil durumda bütçeyi nasıl ayakta tutarsın? — `Kişisel Finans` — hedef: "kriz döneminde bütçe"
@@ -78,3 +78,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Borçtan çıkış planı: kartopu vs çığ yöntemi — `borc-kapatma-yontemi-kartopu-cig` (backlog: evergreen kişisel finans)
 - [x] Genç yaşta yatırıma nasıl başlanır? — `genc-yasta-yatirima-nasil-baslanir` (backlog: evergreen yatırım)
 - [x] Döviz kuru nasıl belirlenir? Kuru Etkileyen 5 Temel Faktör — `doviz-kuru-nasil-belirlenir` (backlog: evergreen ekonomi)
+- [x] Kripto cüzdan türleri ve güvenlik rehberi — `kripto-cuzdan-nedir` (backlog: evergreen kripto)

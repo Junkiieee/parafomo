@@ -4,6 +4,96 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-17 — Kripto Cüzdan Nedir? Türleri ve Güvenli Kullanım Rehberi
+
+**Yayınlanan yazı:** [Kripto Cüzdan Nedir? Türleri ve Güvenli Kullanım Rehberi](https://parafomo.com/blog/kripto-cuzdan-nedir/)
+Kategori: Kripto | Hedef sorgu: "kripto cüzdan nedir" | ~1.300 kelime
+İç linkler: bitcoin nedir nasıl alınır, ethereum nedir, stablecoin nedir
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (hook):**
+Kripto paranı borsada mı tutuyorsun?
+
+"Not your keys, not your coins."
+Yani anahtarlar sende değilse, coinler de sende değil.
+
+Kripto cüzdan türleri ve güvenli kullanım 👇
+
+**Tweet 2:**
+🔑 Kripto cüzdan nedir?
+
+Aslında "para" tutmaz — blokzincirdeki varlıklarına erişimi sağlayan şifreleme anahtarlarını saklar.
+
+• Public key = hesap numarın (paylaşabilirsin)
+• Private key = şifren (KİMSEYE VERME)
+
+**Tweet 3:**
+🌡️ Sıcak cüzdan (Hot Wallet)
+İnternete bağlı, pratik, ama hackleme riski var.
+
+• Borsa cüzdanı → en kolay ama en riskli
+• MetaMask → DeFi için şart
+• Trust Wallet / Exodus → mobil kullanım
+
+**Tweet 4:**
+🧊 Soğuk cüzdan (Cold Wallet)
+İnternete bağlı değil → hacklenemez.
+
+• Ledger / Trezor → donanım cüzdanı, ~50–200$
+• Büyük miktarlar için neredeyse zorunlu
+
+Uzun vadede tutacaksan bu senin arkadaşın.
+
+**Tweet 5:**
+⚠️ Seed phrase = her şeyin sıfırı
+
+12–24 kelime. Bunları kaybedersen coinlerin gider.
+
+✅ Kağıda yaz, fiziksel sakla
+✅ 2 ayrı yerde kopya tut
+❌ Fotoğraf çekme, buluta yükleme, kimseye söyleme
+
+**Tweet 6:**
+Hangi cüzdanı seçmelisin?
+
+• Aktif alım-satım → borsa cüzdanı yeter
+• DeFi kullanıyorsan → MetaMask
+• Uzun vadeli birikim → donanım cüzdanı
+
+Tüm rehber → parafomo.com/blog/kripto-cuzdan-nedir/
+
+---
+
+### Instagram Carousel/Post Metni
+
+**Caption:**
+🔐 Kripto cüzdanın var mı?
+
+"Kripto borsada duruyor, güvende" diyenler için ufak ama önemli bir hatırlatma:
+Borsada tuttuğun kripto teknik olarak SANA AİT DEĞİL.
+
+Slide'larda kripto cüzdan türlerini ve güvenli kullanım kurallarını anlattık 👇
+
+🌡️ Hot Wallet — pratik, ama riskli
+🧊 Cold Wallet — güvenli, uzun vade için ideal
+🔑 Seed phrase — her şeyin anahtarı
+
+Biyografideki linkte tam rehber → parafomo.com
+
+#kriptocüzdan #bitcoin #kripto #ethereum #blockchain #güvenlik #parafomo
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+- [ ] X ve Instagram'da thread/post paylaş (taslaklar yukarıda hazır).
+- [ ] Kripto ile ilgili bir Telegram grubu veya Reddit (r/Turkey, r/CryptoCurrency Türkçe) topluluğunda "cüzdan güvenliği" sorusu geçiyorsa yazıya link vererek değer kat.
+
+---
+
 ## 2026-07-16 — Döviz Kuru Nasıl Belirlenir? Kuru Etkileyen 5 Temel Faktör
 
 **Yayınlanan yazı:** [Döviz Kuru Nasıl Belirlenir? Kuru Etkileyen 5 Temel Faktör](https://parafomo.com/blog/doviz-kuru-nasil-belirlenir/)
