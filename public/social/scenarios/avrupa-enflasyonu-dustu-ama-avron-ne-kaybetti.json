@@ -1,0 +1,59 @@
+{
+  "slug": "avrupa-enflasyonu-dustu-ama-avron-ne-kaybetti",
+  "title": "Avrupa Enflasyonu Düştü, Ama Avron Ne Kaybetti?",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Haziran Eurozone CPI verisi AMB faiz beklentilerini şekillendiriyor. Avrodaki birikimi olan Türk yatırımcısı için EUR/USD paritesi neden kritik?",
+  "tags": [
+    "avrupa enflasyonu",
+    "eurozone cpi",
+    "euro dolar",
+    "AMB faiz",
+    "EUR/USD paritesi",
+    "türk yatırımcı",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Avrupa enflasyonu açıklandı — avrodaki birikimlerin güvende mi?",
+      "visual": {
+        "type": "place",
+        "query": "European Central Bank Frankfurt"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Haziran verisi AMB'nin faiz indirmeye devam edeceğini gösteriyor; bu sinyali piyasalar saniyeler içinde fiyatlıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "eurozone inflation data chart screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama Fed faizi tutarken AMB indirim yaparsa avro dolar karşısında değer kaybeder — EUR/USD paritesi aşağı gider.",
+      "visual": {
+        "type": "place",
+        "query": "Federal Reserve building Washington DC"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Avron TL'de artıyor görünse bile dolar bazında eriyebilir — yüz bin TL'lik avro birikiminde bu fark somut olarak hissedilir.",
+      "visual": {
+        "type": "object",
+        "query": "euro dollar currency coins comparison"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "AMB ne zaman duracak, EUR/USD nereye gidiyor? Bunu yakında burada kıyaslayacağız — şimdi abone ol, her sabah 60 saniyede paranı etkileyen tek net analiz burada.",
+      "visual": {
+        "type": "concept",
+        "query": "financial news notification subscribe screen"
+      }
+    }
+  ]
+}
