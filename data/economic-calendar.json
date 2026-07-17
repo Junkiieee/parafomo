@@ -1,17 +1,8 @@
 {
-  "updated": "2026-07-16",
+  "updated": "2026-07-17",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-07-13",
-      "time": "10:00",
-      "region": "TR",
-      "impact": "Medium",
-      "title": "Perakende satışlar",
-      "source": "investing",
-      "hook": "Tüketim gücü göstergesi."
-    },
     {
       "date": "2026-07-14",
       "time": "12:30pm",
