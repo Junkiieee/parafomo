@@ -1,9 +1,37 @@
 {
-  "updated": "2026-07-17T12:15+00:00",
+  "updated": "2026-07-17T18:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 46,
   "items": [
+    {
+      "company": "Metgün Enerji Yatırımları A.Ş.",
+      "bist_code": "METEN",
+      "slug": "metgun-enerji-yatirimlari-a-s",
+      "link": "https://halkarz.com/metgun-enerji-yatirimlari-a-s/",
+      "date_text": "20-21-22 Temmuz 2026 09:00-17:00",
+      "start": "2026-07-20",
+      "end": "2026-07-22",
+      "status": "Yaklaşan",
+      "price": "20,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "135.579.000 Lot",
+      "broker": "İnfo Yatırım Menkul Değerler A.Ş."
+    },
+    {
+      "company": "Kardemir Çelik Sanayi A.Ş.",
+      "bist_code": "KARCL",
+      "slug": "kardemir-celik-sanayi-a-s",
+      "link": "https://halkarz.com/kardemir-celik-sanayi-a-s/",
+      "date_text": "22-23-24 Temmuz 2026 09:00-17:00",
+      "start": "2026-07-22",
+      "end": "2026-07-24",
+      "status": "Yaklaşan",
+      "price": "35,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "128.000.000 Lot",
+      "broker": "A1 Capital Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş. Ziraat Yatırım Menkul Değerler A.Ş."
+    },
     {
       "company": "Albayrak Hazır Beton San. ve Tic. A.Ş.",
       "bist_code": "",
@@ -20,7 +48,7 @@
     },
     {
       "company": "Masfen Enerji A.Ş.",
-      "bist_code": "",
+      "bist_code": "MASFN",
       "slug": "masfen-enerji-a-s",
       "link": "https://halkarz.com/masfen-enerji-a-s/",
       "date_text": "",
@@ -31,34 +59,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "85.000.000 Lot",
       "broker": "Deniz Yatırım Menkul Kıymetler A.Ş."
-    },
-    {
-      "company": "Metgün Enerji Yatırımları A.Ş.",
-      "bist_code": "",
-      "slug": "metgun-enerji-yatirimlari-a-s",
-      "link": "https://halkarz.com/metgun-enerji-yatirimlari-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "20,00 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "135.579.000 Lot",
-      "broker": "İnfo Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Kardemir Çelik Sanayi A.Ş.",
-      "bist_code": "",
-      "slug": "kardemir-celik-sanayi-a-s",
-      "link": "https://halkarz.com/kardemir-celik-sanayi-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "35,00 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "128.000.000 Lot",
-      "broker": "A1 Capital Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "Bulls Yatırım Menkul Değerler A.Ş.",
