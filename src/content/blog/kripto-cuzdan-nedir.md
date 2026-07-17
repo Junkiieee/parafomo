@@ -1,150 +1,126 @@
 ---
-title: "Kripto Cüzdan Nedir? Türleri, Güvenlik ve Doğru Seçim Rehberi"
-description: "Kripto cüzdan nedir, sıcak ve soğuk cüzdan farkı nedir? MetaMask, Ledger, Trust Wallet karşılaştırması ve güvenli saklama rehberi."
+title: "Kripto Cüzdan Nedir? Türleri ve Güvenli Kullanım Rehberi"
+description: "Kripto cüzdan nedir, nasıl çalışır? Hot wallet, cold wallet, donanım cüzdanı farkları, seed phrase güvenliği ve doğru cüzdan seçimi için pratik rehber."
 pubDate: 2026-07-17
 category: "Kripto"
-tags: ["kripto cüzdan", "donanım cüzdan", "metamask", "ledger", "kripto güvenlik", "blokzincir"]
-readingTime: 9
+tags: ["kripto cüzdan", "kripto para", "cold wallet", "hot wallet", "donanım cüzdanı", "seed phrase", "güvenlik"]
+readingTime: 8
 featured: false
 faq:
-  - q: "Kripto cüzdan nedir, ne işe yarar?"
-    a: "Kripto cüzdan, dijital varlıklarınızı blokzincirde kontrol etmenizi sağlayan özel ve açık anahtarları saklayan bir araçtır. Banka hesabı değil, asıl olarak bir şifreli anahtar kasasıdır; paranız blokzincirde durur, cüzdan sadece ona erişim hakkınızı tutar."
-  - q: "Sıcak cüzdan mı soğuk cüzdan mı tercih edilmeli?"
-    a: "Az miktarlar ve sık işlem için sıcak cüzdan (MetaMask, Trust Wallet) pratiktir. Büyük tutarlar ve uzun vadeli saklama için soğuk/donanım cüzdan (Ledger, Trezor) çok daha güvenlidir; internet bağlantısı olmadığından hackleme riski minimum düzeydedir."
-  - q: "Seed phrase (kurtarma ifadesi) nedir, neden bu kadar önemli?"
-    a: "Seed phrase, cüzdanınızı yeniden oluşturmak için gereken 12-24 sözcüklük gizli listedir. Bu listeyi kaybeden kişi kripto varlıklarına bir daha erişemez; ele geçiren kişi ise tüm varlıklara anında ulaşabilir. Kâğıda yazıp çevrimdışı, güvenli yerde saklayın."
-  - q: "Kripto borsasında para bırakmak güvenli midir?"
-    a: "Kısa vadeli işlemler için kabul edilebilir bir risk olabilir; ancak borsa cüzdanları 'gözaltı' (custodial) yapıdadır — anahtarları borsa tutar, siz değil. Büyük miktarları uzun süre borsada tutmak önerilmez; tarihsel olarak birçok borsa hacklendi ya da iflas etti."
-  - q: "MetaMask güvenli bir cüzdan mı?"
-    a: "MetaMask yazılım bazlı sıcak bir cüzdandır; kendi anahtarlarınızı siz tutarsınız. Ancak internet bağlantısı olan bir cihazda çalıştığı için phishing ve kötü amaçlı yazılım riskine maruz kalabilir. Orta büyüklükte tutarlar için yeterince güvenlidir; büyük miktarlar için donanım cüzdanıyla kombinlemek daha akıllıca olur."
+  - q: "Kripto cüzdan nedir, nasıl çalışır?"
+    a: "Kripto cüzdan, coinleri değil, onlara erişimi sağlayan şifreleme anahtarlarını (özel anahtar) saklayan bir yazılım ya da donanım aracıdır. Public key ile para alır, private key ile gönderirsiniz."
+  - q: "En güvenli kripto cüzdan türü hangisidir?"
+    a: "Büyük miktarlar için internet bağlantısı olmayan soğuk cüzdanlar (donanım cüzdanları) en güvenli seçenektir. Ledger ve Trezor, bu kategorinin en bilinen ürünleridir."
+  - q: "Seed phrase'imi kaybedersem ne olur?"
+    a: "Seed phrase'i kaybederseniz ve cihazınız da bozulur ya da kaybolursa kripto paralarınıza bir daha erişemezsiniz. Bu yüzden seed phrase'i çevrimdışı ve güvenli bir yerde saklamak hayati önem taşır."
+  - q: "Kripto borsası cüzdanı ile kendi cüzdanım arasındaki fark nedir?"
+    a: "Borsada tuttuğunuz kripto para teknik olarak size ait değildir; borsanın özel anahtarları kontrol ettiği anlamına gelir. Kendi cüzdanınızda ise özel anahtarlar sizde olur."
+  - q: "Türkiye'den hangi kripto cüzdanları kullanılabilir?"
+    a: "MetaMask, Trust Wallet ve Exodus gibi yazılım cüzdanları Türkiye'den serbestçe kullanılabilir. Donanım cüzdanı olarak Ledger ve Trezor uluslararası kargo ile temin edilebilir."
 ---
 
-Kripto para aldınız ama nerede saklayacağınızı bilmiyor musunuz? "Borsada dursun" diye düşünüyorsanız, birkaç dakikanızı ayırmanız gerekiyor. Kripto dünyasında "varlığın üzerinde gerçek kontrol" demek, **cüzdanınızın anahtarlarına sahip olmak** demektir. Bu rehberde **kripto cüzdan nedir**, türleri arasındaki farklar nedir ve hangisi size uygun, tüm detaylarıyla açıklıyoruz.
+Kripto para aldınız, borsa hesabınıza yatırdınız ve "güvende" diye düşündünüz. Oysa kripto dünyasında "Not your keys, not your coins" (Anahtarlar sizin değilse coinler de sizin değil) sözü boşuna söylenmez. **Kripto cüzdan nedir** ve paranızı gerçekten korumak için neye ihtiyacınız var? Bu rehberde tüm cüzdan türlerini, güvenlik kurallarını ve doğru seçim kriterlerini bulacaksınız.
 
 ## Kripto Cüzdan Nedir?
 
-Kripto cüzdan, aslında adına rağmen para "saklamaz". Paranız blokzincirde durur — kimse onu silemez, fiziksel olarak taşıyamaz. Cüzdan; o paraya erişim hakkını gösteren **özel anahtar (private key)** ve **açık anahtar (public key)** çiftini saklar.
+Kripto cüzdan, adı biraz yanıltıcıdır. Fiziksel bir cüzdan gibi "para" tutmaz. Aslında yaptığı şey, blokzincirdeki kripto paralarınıza erişim sağlayan **şifreleme anahtarlarını** saklamaktır.
 
-Bunu şöyle düşünebilirsiniz:
+Blokzincirde her işlem iki temel unsura dayanır:
 
-- **Açık anahtar** = banka hesap numaranız: herkese verebilirsiniz, karşı taraf size para gönderir.
-- **Özel anahtar** = banka şifreniz: yalnızca sizin bilmeniz gerekir; kaybederseniz ya da çaldırırsanız varlıklarınızı geri almanın yolu yoktur.
+- **Public key (genel anahtar):** Banka hesap numaranız gibi düşünün. Başkalarının size kripto gönderebilmesi için paylaşırsınız.
+- **Private key (özel anahtar):** Hesabınızın şifresi gibi. Bunu bilen, kripto paralarınızı hareket ettirebilir. **Asla kimseyle paylaşmayın.**
 
-Cüzdan, bu iki anahtarı yönetir ve blokzincirle işlem imzalamanızı sağlar. Dolayısıyla "cüzdanı kaybet" derken aslında "anahtarları kaybet" diyorsunuz — ki bu, paranızı sonsuza kadar kaybetmek anlamına gelir.
+Kripto cüzdan, özünde bu private key'i güvenle saklayan ve işlem imzalamanızı sağlayan araçtır.
+
+## Seed Phrase Nedir ve Neden Bu Kadar Önemli?
+
+Cüzdan kurulumunda size 12 ya da 24 kelimelik bir liste verilir. Buna **seed phrase** (kurtarma ifadesi veya gizli kelimeler) denir. Bu kelimeler, private key'inizi yeniden üretmenin tek yoludur.
+
+Cihazınız çalınsa, kaybolsa ya da bozulsa bile seed phrase ile tüm kripto varlıklarınızı sıfırdan kurtarabilirsiniz. Ama seed phrase kaybolursa ya da çalınırsa, geri dönüşü yoktur.
+
+**Altın kural:** Seed phrase'i asla dijital ortamda (telefon notu, e-posta, ekran görüntüsü) saklamayın. Fiziksel olarak yazıp, birden fazla güvenli yerde kağıt ya da metal plakaya kaydedin.
 
 ## Kripto Cüzdan Türleri
 
-### Sıcak Cüzdan (Hot Wallet)
+Cüzdanlar iki ana gruba ayrılır: **sıcak (hot)** ve **soğuk (cold)** cüzdanlar. Temel fark, internet bağlantısıyla ilişkilidir.
 
-İnternete bağlı cihazlarda çalışan cüzdanlardır. Kullanımı kolay, hızlı ve genellikle ücretsizdir. Ama sürekli çevrimiçi oldukları için hackleme, phishing ve kötü amaçlı yazılım riski taşırlar.
+### Sıcak Cüzdanlar (Hot Wallets)
 
-**Alt türleri:**
+İnternet bağlantılı cihazlarda çalışır. Erişim kolaylığı yüksek, güvenlik riski görece daha fazladır.
 
-- **Yazılım / Masaüstü cüzdan:** Bilgisayara yüklenen uygulamalar. Electrum (Bitcoin), Exodus.
-- **Mobil cüzdan:** Telefon uygulaması. Trust Wallet, MetaMask mobil.
-- **Tarayıcı eklentisi:** MetaMask, Coinbase Wallet.
-- **Borsa cüzdanı:** Binance, BTCTurk gibi borsalardaki hesabınız. "Custodial" yani anahtarlar sizin değil, borsanın elindedir.
+**Borsa cüzdanları:** Binance, Coinbase, BtcTurk gibi platformlarda hesap açtığınızda kripto paralarınız borsanın cüzdanında tutulur. Özel anahtarlar sizde değil, borsadadır. Borsanın hacklenmesi ya da batması durumunda varlıklarınız risk altındadır. Küçük, aktif alım-satım miktarları için uygun; uzun vadeli birikim için önerilmez.
 
-### Soğuk Cüzdan (Cold Wallet)
+**Masaüstü/mobil yazılım cüzdanları:** Exodus, Electrum gibi uygulamalar bilgisayar ya da telefonunuza yüklenir, özel anahtarlar cihazınızda kalır. Borsadan daha güvenlidir ama cihazınız virüs kapabilir ya da çalınabilir.
 
-İnternetten bağımsız ortamlarda özel anahtarı saklayan yöntemlerdir. Hacklenmesi neredeyse imkânsızdır çünkü anahtarlar hiçbir zaman çevrimiçi bir sisteme girmez.
+**Tarayıcı eklentisi cüzdanları:** MetaMask ve Phantom en yaygın örneklerdir. DeFi (merkeziyetsiz finans) platformlarını ve NFT marketlerini kullanmak için neredeyse zorunludur. Kimlik avı (phishing) saldırılarına karşı dikkatli olunmalıdır.
 
-**Alt türleri:**
+### Soğuk Cüzdanlar (Cold Wallets)
 
-- **Donanım cüzdan:** USB benzeri fiziksel cihaz. Ledger, Trezor. En yüksek güvenlik seviyesi.
-- **Kâğıt cüzdan:** Anahtar çiftinin kâğıda yazılması ya da QR koda basılması. Ucuz ama kâğıt yanabilir, kaybolabilir, yırtılabilir.
-- **Çelik cüzdan:** Seed phrase'i metal üzerine kazımak. Yangın ve suya karşı dayanıklı, yüksek güvenlik.
+İnternet bağlantısı olmayan ortamlarda private key saklar. Hackleme riski çok düşüktür; uzun vadeli büyük miktarlar için idealdir.
 
-## Sıcak vs. Soğuk Cüzdan Karşılaştırması
+**Donanım cüzdanları:** Ledger (Nano S Plus, Nano X) ve Trezor (Model T, Model One) bu kategorinin öncü ürünleridir. USB sürücüye benzeyen bir cihaz; private key asla internet ortamına çıkmaz, işlemler cihaz üzerinde imzalanır. Maliyeti genellikle 50–200 dolar arasında değişir, ancak yüksek miktarda kripto tutan biri için bu bedel küçük bir sigorta primidir.
 
-| Özellik | Sıcak Cüzdan | Soğuk / Donanım Cüzdan |
-|---|---|---|
-| İnternet bağlantısı | Gerekli | Gerekmez |
-| Kullanım kolaylığı | Çok kolay | Orta (cihaz bağlamanız gerekir) |
-| Güvenlik seviyesi | Orta | Çok yüksek |
-| Fiyat | Genellikle ücretsiz | 60 – 200 $ arası (donanım) |
-| Hacklenme riski | Var (phishing, malware) | Minimum |
-| Kimler için uygun | Küçük tutarlar, sık işlem | Büyük tutarlar, uzun vadeli saklama |
-| Örnek ürünler | MetaMask, Trust Wallet | Ledger Nano S/X, Trezor Model One/T |
+**Kağıt cüzdanlar:** Public ve private key'in çevrimdışı olarak kağıda basılmış halidir. Teorik olarak güvenlidir ama fiziksel hasar (ıslanma, yanma) ya da kağıdın bulunması kritik risk oluşturur. Artık nadir tercih edilir.
 
-## Popüler Kripto Cüzdanlar
+## Kripto Cüzdan Türleri Karşılaştırma Tablosu
 
-### MetaMask
-Web tarayıcısı eklentisi ve mobil uygulama olarak çalışır. Ethereum ve EVM uyumlu zincirlerde (Polygon, BNB Chain, Arbitrum) standart hale gelmiştir. DeFi, NFT ve Web3 uygulamaları için fiili standart. **Anahtarları siz tutarsınız** ama internet bağlantılı ortamda çalışır.
+| Cüzdan Türü | Güvenlik | Kullanım Kolaylığı | İdeal Kullanım |
+|---|---|---|---|
+| Borsa cüzdanı | Düşük–Orta | Çok kolay | Aktif alım-satım |
+| Yazılım cüzdanı (mobil/masaüstü) | Orta | Kolay | Günlük kullanım |
+| Tarayıcı eklentisi (MetaMask vb.) | Orta | Kolay | DeFi, NFT |
+| Donanım cüzdanı | Çok yüksek | Orta | Uzun vadeli birikim |
+| Kağıt cüzdan | Yüksek* | Zor | Yalnızca saklama |
 
-### Trust Wallet
-Binance'ın sahip olduğu mobil cüzdan. 100'den fazla blokzincir ve binlerce token desteği. Kullanımı son derece basit; başlangıç seviyesi için idealdir.
+*Fiziksel korunmaya bağlı.
 
-### Ledger Nano S Plus / Nano X
-Piyasanın en yaygın donanım cüzdanları. Özel anahtar hiçbir zaman cihaz dışına çıkmaz; işlem imzalama fiziksel cihaz üzerinde yapılır. Nano X Bluetooth desteğiyle mobilde de kullanılabilir. Ledger'ın 2023'te yaşadığı veri sızıntısı kullanıcı bilgilerini etkiledi ama varlıkları etkilemedi — bu, donanım güvenliğinin doğru çalıştığının kanıtıdır.
+## Hangi Kripto Cüzdanı Seçmelisiniz?
 
-### Trezor Model One / Model T
-Ledger'ın açık kaynaklı rakibi. Model T renkli dokunmatik ekrana sahip; Model One fiyat/performans açısından öne çıkar. Firmware tamamen açık kaynak olduğundan bağımsız denetlenebilir.
+Cevap tamamen ihtiyacınıza ve portföy büyüklüğüne bağlıdır:
 
-### Exodus
-Masaüstü ve mobil uygulaması olan yazılım cüzdanı. Şık arayüzü ve yerleşik kripto borsası (swap) özelliği ile sık işlem yapanlar için pratik.
+1. **Küçük miktarlar, sık kullanım:** Borsa cüzdanı yeterli olabilir — ancak borsanın lisanslı ve güvenilir olduğundan emin olun.
+2. **DeFi veya Web3 kullanımı:** MetaMask gibi bir tarayıcı cüzdanına ihtiyaç duyarsınız.
+3. **Orta büyüklükte portföy, uzun vade:** Yazılım cüzdanı + birincil borsa kombinasyonu çalışabilir.
+4. **Büyük miktarlar, uzun vade:** Donanım cüzdanı edinmek neredeyse zorunludur.
 
-## Seed Phrase Nedir ve Nasıl Korunur?
+Pratik bir kural: "Eğer bu parayı bir ay sonra geri almayacaksam ve miktar beni rahatsız edecek büyüklükteyse, soğuk cüzdana geçmeliyim."
 
-Cüzdan oluşturduğunuzda size **12 veya 24 sözcüklük bir liste** gösterilir. Bu liste **seed phrase** ya da **kurtarma ifadesi** olarak adlandırılır. Anlık görünen bu liste aslında tüm cüzdanınızın anahtarıdır.
+## Kripto Cüzdan Güvenliğinde Yapılması ve Yapılmaması Gerekenler
 
-**Seed phrase'i doğru saklama adımları:**
+Güvenlik açıkların büyük bölümü teknik zafiyetten değil, kullanıcı hatalarından kaynaklanır.
 
-1. **Kâğıda yazın.** Hiçbir dijital cihaza, uygulamaya ya da bulut depolamaya kaydetmeyin. Ekran görüntüsü almayın.
-2. **İki kopya yapın.** Biri evinizde kasada, diğeri güvendiğiniz farklı bir konumda (ev dışı).
-3. **Kimseyle paylaşmayın.** Hiçbir kripto borsası, destek ekibi ya da uygulama seed phrase'inizi sormaz — soran kişi/kurum dolandırıcıdır.
-4. **Çelik kart düşünün.** Yangın veya su hasarına karşı metal üzerine kazıyabileceğiniz ürünler mevcuttur.
-5. **Test edin.** Yeni cüzdan oluşturduğunuzda küçük bir tutarı aktarın, sonra cüzdanı silerek seed phrase ile yeniden yükleyin. Erişim sağladığınızı doğrulayın.
+**Yapın:**
+- Seed phrase'i fiziksel olarak, çevrimdışı saklayın. Birden fazla güvenli yerde kopya bulundurun.
+- Donanım cüzdanı alırken yalnızca resmi satıcıyı (ledger.com, trezor.io) tercih edin; ikinci el almayın.
+- MetaMask gibi tarayıcı cüzdanları için yalnızca resmi bağlantıyı kullanın, arama sonuçlarındaki reklam bağlantılarına tıklamayın.
+- Yazılım cüzdanı kurulu cihazınızı güncel tutun ve antivirüs kullanın.
 
-[Bitcoin nasıl alınır rehberimizde](/blog/bitcoin-nedir-nasil-alinir) güvenlik adımlarını daha detaylı ele aldık; aynı kurallar tüm kripto varlıklar için geçerlidir.
+**Yapmayın:**
+- Seed phrase'i hiçbir web sitesine ya da uygulamaya girmeyin. Gerçek bir cüzdan veya borsa bunu isteyemez.
+- Private key'inizi kimseyle paylaşmayın — "teknik destek" adıyla arayanlar dahil.
+- Airdrop veya "bedava kripto" vaat eden sitelere cüzdanınızı bağlamayın.
+- Tüm kriptolarınızı tek bir borsada tutmayın.
 
-## Borsa Cüzdanı Kullanmak Ne Kadar Riskli?
+## Türkiye'de Yaygın Kullanılan Kripto Cüzdanlar
 
-"Custodial" yani emanet cüzdanlarda borsa anahtarları tutar, siz değil. Bu şu demek: borsa iflasa giderse, hacklenirsе ya da hükümet tarafından dondurulursa, varlıklarınıza erişemezsiniz.
+Türkiye'den erişilen en yaygın seçenekler şunlardır:
 
-Tarihe bakarsak:
-- **Mt. Gox (2014):** 850.000 BTC çalındı, borsa battı.
-- **FTX (2022):** 8 milyar dolar müşteri parasını kötüye kullanma nedeniyle iflas.
-- Türkiye'den **Thodex (2021):** Kurucu ülkeden kaçtı, kullanıcılar paralarına ulaşamadı.
+- **MetaMask:** Ethereum ve EVM uyumlu ağlar (BSC, Polygon, Avalanche) için standart tarayıcı cüzdanı. DeFi kullanıyorsanız kaçınılmaz.
+- **Trust Wallet:** Binance destekli, çok zincirli mobil cüzdan. Geniş coin desteği ve kolay arayüzüyle öne çıkar.
+- **Exodus:** Masaüstü ve mobilde çalışan, görsel arayüzü güçlü yazılım cüzdanı. Yeni başlayanlar için uygundur.
+- **Ledger Nano S Plus / X:** Donanım cüzdanı arayanların ilk durağı. Türkiye'ye uluslararası kargo ile gönderim yapılabiliyor.
+- **Trezor Model One / T:** Açık kaynak kodlu donanım cüzdanı alternatifi. Güvenlik araştırmacıları arasında saygın bir konumu var.
 
-Bu örnekler "paranız borsada güvende" yanılgısının ne kadar tehlikeli olduğunu gösteriyor. Küçük günlük işlemler için borsa cüzdanı kabul edilebilir; ama uzun vadeli ve büyük tutarlar için **kendi anahtarlarınızı kontrol etmeniz** gerekir.
-
-> "Not your keys, not your coins." — Kripto topluluğunun en temel kuralı.
-
-## Hangi Cüzdan Size Uygun?
-
-Durumunuza göre değerlendirin:
-
-| Profil | Önerilen Yöntem |
-|---|---|
-| İlk kez kripto alanlar, küçük tutar | Trust Wallet ya da Exodus (mobil) |
-| DeFi / Web3 kullananlar | MetaMask (tarayıcı) |
-| Orta büyüklükte varlık, orta risk iştahı | MetaMask + donanım cüzdan kombinasyonu |
-| Büyük tutar, uzun vadeli saklama | Ledger Nano X veya Trezor Model T |
-| Teknik bilgisi gelişmiş | Açık kaynak cüzdan + çelik seed saklama |
-
-[Ethereum rehberimizde](/blog/ethereum-nedir) ETH almak için cüzdan kurulumunu adım adım anlattık. [Stablecoin'leri](/blog/stablecoin-nedir) güvenle saklamak isteyenler de aynı yöntemleri uygulayabilir; stablecoin'lerin fiyat riski düşük olsa da güvenlik riski tamamen aynıdır.
-
-## Sık Yapılan Hatalar
-
-**1. Seed phrase'i telefona ya da e-postaya kaydetmek.** Telefon çalınsa, telefon hacklense veya bulut hesabı ele geçirilse tüm varlıklar tehlikededir.
-
-**2. Sahte cüzdan uygulaması indirmek.** MetaMask veya Trust Wallet'ı yalnızca resmi web sitesi ya da büyük uygulama mağazalarından indirin. Arama motorundaki reklamlara dikkat edin — sahte siteler ilk sıralarda çıkabilir.
-
-**3. Cüzdanı sıfırlamadan önce seed phrase'i not almamak.** Telefon arızalandığında ya da uygulama silindiğinde yalnızca seed phrase sizi kurtarır. "Yarın yazarım" çok pahalıya patlayabilir.
-
-**4. Tek bir cihazda tüm varlık.** Değer büyüdükçe tek cüzdana bağımlılık risk yaratır; büyük tutarları birden fazla cüzdana dağıtmak makuldür.
-
-**5. Phishing bağlantılarına tıklamak.** "Cüzdanınız askıya alındı, şimdi doğrulayın" türü mesajlar klasik dolandırıcılıktır. Cüzdan uygulamaları kullanıcıya seed phrase sormaz.
+[Bitcoin nedir, nasıl alınır](/blog/bitcoin-nedir-nasil-alinir/) rehberinde Bitcoin satın alma adımlarını, [Ethereum nedir](/blog/ethereum-nedir/) yazımızda ise ETH'nin farklı blokzincir ağlarında nasıl çalıştığını bulabilirsiniz. Ayrıca dolar sabitli kripto paraları anlamak isteyenler için [Stablecoin nedir](/blog/stablecoin-nedir/) yazımıza göz atabilirsiniz.
 
 ## Özet
 
-- Kripto cüzdan para saklamaz; **blokzincirdeki varlığınıza erişimi sağlayan özel ve açık anahtarları korur**.
-- **Sıcak cüzdanlar** (MetaMask, Trust Wallet) kolay ve ücretsizdir; küçük tutarlar ve sık işlemler için uygundur.
-- **Soğuk / donanım cüzdanlar** (Ledger, Trezor) büyük tutarlar için en güvenli seçenektir; internete bağlı değildir.
-- **Seed phrase** cüzdanınızın anahtarıdır — dijital ortamda saklamayın, iki fiziksel kopyasını güvenli konumlarda tutun.
-- Büyük miktarları borsada bırakmak tarihin defalarca gösterdiği üzere önemli risk taşır; "kendi anahtarın kendi elinde" ilkesini benimseyin.
+- **Kripto cüzdan**, kripto paralarınıza erişim sağlayan özel anahtarları (private key) saklar; coinlerin kendisini değil.
+- **Seed phrase** (12–24 kelime), cüzdanınızı kurtarmanın tek yoludur; çevrimdışı ve güvenli saklanmalıdır.
+- **Hot wallet**lar pratik ancak internet riski taşır; **cold wallet**lar (donanım cüzdanı) büyük miktarlar için en güvenli seçenektir.
+- Borsa cüzdanı kullanıyorsanız "not your keys, not your coins" ilkesini aklınızdan çıkarmayın; büyük miktarları borsada tutmak ek risk demektir.
+- Phishing (kimlik avı) saldırılarına karşı dikkatli olun; hiçbir site ya da kişi seed phrase'inizi talep edemez.
 
 ---
 
-*Bu içerik yatırım tavsiyesi değildir; genel bilgilendirme amaçlıdır. Kripto varlıklar yüksek risk taşır; değerinizin tamamını kaybedebilirsiniz. Yatırım kararı almadan önce kendi mali durumunuzu ve risk toleransınızı değerlendirin; gerekirse lisanslı bir finansal danışmandan destek alın.*
+*Bu makale yalnızca bilgilendirme amaçlıdır; yatırım tavsiyesi değildir. Kripto para piyasaları yüksek risk taşır; yalnızca kaybetmeyi göze alabileceğiniz miktarda işlem yapın.*

@@ -4,100 +4,94 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
-## 2026-07-17 — Kripto Cüzdan Nedir? Türleri, Güvenlik ve Doğru Seçim Rehberi
+## 2026-07-17 — Kripto Cüzdan Nedir? Türleri ve Güvenli Kullanım Rehberi
 
-**Yayınlanan yazı:** [Kripto Cüzdan Nedir? Türleri, Güvenlik ve Doğru Seçim Rehberi](https://parafomo.com/blog/kripto-cuzdan-nedir/)
-Kategori: Kripto | Hedef sorgu: "kripto cüzdan nedir" | ~1.350 kelime
+**Yayınlanan yazı:** [Kripto Cüzdan Nedir? Türleri ve Güvenli Kullanım Rehberi](https://parafomo.com/blog/kripto-cuzdan-nedir/)
+Kategori: Kripto | Hedef sorgu: "kripto cüzdan nedir" | ~1.300 kelime
+İç linkler: bitcoin nedir nasıl alınır, ethereum nedir, stablecoin nedir
 
 ---
 
 ### X (Twitter) Thread Taslağı
 
-🔐 Kripto aldın, ama nerede saklıyorsun?
-
-"Borsada dursun" dersen büyük hata yapıyor olabilirsin.
-
-Kripto cüzdan ne demek, hangisi ne zaman kullanılır — hızlı rehber 👇
-
----
-
-2/ Cüzdan aslında para "saklamaz".
-Paranız blokzincirde durur.
-Cüzdan sadece erişim anahtarını tutar.
-
-Anahtarı kaybedersen → paranı kaybedersin.
-Anahtarı çaldırırsan → paranı kaybedersin.
-
----
-
-3/ İki ana tür var:
-
-🔥 Sıcak cüzdan (MetaMask, Trust Wallet)
-→ Kolay, ücretsiz, ama internete bağlı = risk
-
-❄️ Soğuk/Donanım cüzdan (Ledger, Trezor)
-→ Pahalı ama neredeyse hacklenemez
-
-Küçük tutarlar → sıcak
-Büyük tutarlar → soğuk
-
----
-
-4/ Seed phrase = cüzdanın anahtarı (12-24 kelime)
-
-✅ Kâğıda yaz, iki kopyasını farklı yerlerde sakla
-✅ Dijital ortama ASLA kaydetme (fotoğraf, mail, bulut)
-✅ Kimseyle paylaşma — "destek ekibi" sormaz, soran dolandırıcıdır
-
----
-
-5/ Tarih acımasız:
-• Mt. Gox 2014 → 850k BTC uçtu
-• FTX 2022 → 8 milyar dolar 
-• Thodex → kurucu kaçtı, para gitti
+**Tweet 1 (hook):**
+Kripto paranı borsada mı tutuyorsun?
 
 "Not your keys, not your coins."
+Yani anahtarlar sende değilse, coinler de sende değil.
 
-Detaylı rehber → parafomo.com/blog/kripto-cuzdan-nedir
+Kripto cüzdan türleri ve güvenli kullanım 👇
+
+**Tweet 2:**
+🔑 Kripto cüzdan nedir?
+
+Aslında "para" tutmaz — blokzincirdeki varlıklarına erişimi sağlayan şifreleme anahtarlarını saklar.
+
+• Public key = hesap numarın (paylaşabilirsin)
+• Private key = şifren (KİMSEYE VERME)
+
+**Tweet 3:**
+🌡️ Sıcak cüzdan (Hot Wallet)
+İnternete bağlı, pratik, ama hackleme riski var.
+
+• Borsa cüzdanı → en kolay ama en riskli
+• MetaMask → DeFi için şart
+• Trust Wallet / Exodus → mobil kullanım
+
+**Tweet 4:**
+🧊 Soğuk cüzdan (Cold Wallet)
+İnternete bağlı değil → hacklenemez.
+
+• Ledger / Trezor → donanım cüzdanı, ~50–200$
+• Büyük miktarlar için neredeyse zorunlu
+
+Uzun vadede tutacaksan bu senin arkadaşın.
+
+**Tweet 5:**
+⚠️ Seed phrase = her şeyin sıfırı
+
+12–24 kelime. Bunları kaybedersen coinlerin gider.
+
+✅ Kağıda yaz, fiziksel sakla
+✅ 2 ayrı yerde kopya tut
+❌ Fotoğraf çekme, buluta yükleme, kimseye söyleme
+
+**Tweet 6:**
+Hangi cüzdanı seçmelisin?
+
+• Aktif alım-satım → borsa cüzdanı yeter
+• DeFi kullanıyorsan → MetaMask
+• Uzun vadeli birikim → donanım cüzdanı
+
+Tüm rehber → parafomo.com/blog/kripto-cuzdan-nedir/
 
 ---
 
-### Instagram Post / Carousel Metni
-
-**Slide 1 — Hook:**
-🔐 Kripto cüzdan seçimi hayati önem taşır
-
-**Slide 2:**
-Sıcak cüzdan vs Soğuk cüzdan
-MetaMask ↔ Ledger — hangisini ne zaman kullanırsın?
-
-**Slide 3 — Tablo:**
-| | Sıcak | Soğuk |
-|---|---|---|
-| İnternet | Gerekli | Yok |
-| Güvenlik | Orta | Çok yüksek |
-| Fiyat | Ücretsiz | 60-200$ |
-| Kim için | Küçük tutar | Büyük tutar |
-
-**Slide 4 — Seed Phrase:**
-12-24 kelime = tüm varlığının anahtarı
-→ Kâğıda yaz, 2 kopya, dijitale asla!
-
-**Slide 5 — CTA:**
-"Not your keys, not your coins"
-Detaylı rehber link'te 👆
+### Instagram Carousel/Post Metni
 
 **Caption:**
-Kripto aldın ama nerede saklıyorsun? Borsa "güvenli" değil — FTX ve Thodex bunu acı şekilde öğretti. Sıcak cüzdan, soğuk cüzdan, seed phrase güvenliği hakkında bilmen gereken her şey yeni yazımızda. 🔗 parafomo.com/blog/kripto-cuzdan-nedir
+🔐 Kripto cüzdanın var mı?
 
-#kriptocüzdan #metamask #ledger #bitcoingüvenlik #kriptopara #parafomo #seedphrase #coldwallet #kişiselfinans
+"Kripto borsada duruyor, güvende" diyenler için ufak ama önemli bir hatırlatma:
+Borsada tuttuğun kripto teknik olarak SANA AİT DEĞİL.
+
+Slide'larda kripto cüzdan türlerini ve güvenli kullanım kurallarını anlattık 👇
+
+🌡️ Hot Wallet — pratik, ama riskli
+🧊 Cold Wallet — güvenli, uzun vade için ideal
+🔑 Seed phrase — her şeyin anahtarı
+
+Biyografideki linkte tam rehber → parafomo.com
+
+#kriptocüzdan #bitcoin #kripto #ethereum #blockchain #güvenlik #parafomo
 
 ---
 
 ### Bugün Senin Yapman Gerekenler
 
 1. **X thread'ini paylaş** — yukarıdaki taslağı @parafomo hesabından yayınla.
-2. **Instagram carousel koy** — 5 slide'lık kart oluştur (Canva şablonu kullanabilirsin), caption'ı yapıştır.
+2. **Instagram carousel koy** — biyografideki link + hashtag'lerle caption'ı paylaş.
+3. Kripto ile ilgili bir Telegram grubu veya Reddit (r/Turkey) topluluğunda "cüzdan güvenliği" sorusu geçiyorsa yazıya link vererek değer kat.
 
 ---
 
