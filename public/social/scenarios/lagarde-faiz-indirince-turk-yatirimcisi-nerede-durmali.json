@@ -1,0 +1,59 @@
+{
+  "slug": "lagarde-faiz-indirince-turk-yatirimcisi-nerede-durmali",
+  "title": "Lagarde Faiz İndirince Türk Yatırımcısı Nerede Durmalı?",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "ECB faiz indirimi zincirleme etki yaratıyor: Euro, dolar, yabancı sermaye ve nihayetinde TL. Mekanizmayı anlayanlar pozisyonunu önceden ayarlıyor.",
+  "tags": [
+    "ECB",
+    "Lagarde",
+    "faiz indirimi",
+    "TL",
+    "Borsa İstanbul",
+    "döviz",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Lagarde faizi indirince senin TL'n ne oluyor?",
+      "visual": {
+        "type": "person",
+        "query": "Christine Lagarde"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "ECB faiz indirince Euro ucuzlar, dolar güçlenir. Ama bu mekanizmanın ikinci adımı kritik: güçlü dolar gelişen piyasalara para çeker.",
+      "visual": {
+        "type": "concept",
+        "query": "euro dollar exchange rate currency market"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Türkiye'de faiz hâlâ yüksek. Avrupa'da getiri düşünce yabancı para Türk faizine yönelir; TL'ye destek verir, borsa yükselir.",
+      "visual": {
+        "type": "concept",
+        "query": "emerging market capital flow investors money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "ECB indirimi TL mevduatı ve Borsa İstanbul için olumlu sinyal. Dövizde ağırsın, pozisyonunu bir daha gözden geçir.",
+      "visual": {
+        "type": "place",
+        "query": "Borsa İstanbul"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bir sonraki ECB kararından önce nerede konumlanacağını bilmek istiyorsan kanalı takipte tut. ParaFOMO'ya abone ol: her gün 60 saniyede bir konuyu net bir şekilde bitiriyoruz.",
+      "visual": {
+        "type": "concept",
+        "query": "youtube subscribe notification bell"
+      }
+    }
+  ]
+}
