@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-17T18:15+00:00",
+  "updated": "2026-07-18T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 46,
@@ -33,6 +33,20 @@
       "broker": "A1 Capital Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş. Ziraat Yatırım Menkul Değerler A.Ş."
     },
     {
+      "company": "Masfen Enerji A.Ş.",
+      "bist_code": "MASFN",
+      "slug": "masfen-enerji-a-s",
+      "link": "https://halkarz.com/masfen-enerji-a-s/",
+      "date_text": "22-23-24 Temmuz 2026 09:00-17:00",
+      "start": "2026-07-22",
+      "end": "2026-07-24",
+      "status": "Yaklaşan",
+      "price": "45,68 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "85.000.000 Lot",
+      "broker": "Deniz Yatırım Menkul Kıymetler A.Ş."
+    },
+    {
       "company": "Albayrak Hazır Beton San. ve Tic. A.Ş.",
       "bist_code": "",
       "slug": "albayrak-hazir-beton-san-ve-tic-a-s",
@@ -45,20 +59,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "70.000.000 Lot",
       "broker": "Tacirler Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Masfen Enerji A.Ş.",
-      "bist_code": "MASFN",
-      "slug": "masfen-enerji-a-s",
-      "link": "https://halkarz.com/masfen-enerji-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "45,68 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "85.000.000 Lot",
-      "broker": "Deniz Yatırım Menkul Kıymetler A.Ş."
     },
     {
       "company": "Bulls Yatırım Menkul Değerler A.Ş.",
