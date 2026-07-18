@@ -32,7 +32,9 @@ import urllib.request
 
 OAUTH = "/root/.config/parafomo/youtube_oauth.json"
 SCOPES = ("https://www.googleapis.com/auth/youtube.upload "
-          "https://www.googleapis.com/auth/youtube.force-ssl")
+          "https://www.googleapis.com/auth/youtube.force-ssl "
+          "https://www.googleapis.com/auth/youtube.readonly "
+          "https://www.googleapis.com/auth/yt-analytics.readonly")
 AUTH_EP = "https://accounts.google.com/o/oauth2/v2/auth"
 TOKEN_EP = "https://oauth2.googleapis.com/token"
 

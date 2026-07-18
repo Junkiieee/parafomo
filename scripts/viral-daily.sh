@@ -71,6 +71,12 @@ declare -A DOW_FMT=(
   [5]=news_reaction [6]=single_concept [7]=myth
 )
 FORMAT="${FORMAT_OVERRIDE:-${DOW_FMT[$(date -u +%u)]}}"
+# Öğrenme katmanı: metrik yeterliyse KANITLANMIŞ formatı kullan; yoksa winner.py BOŞ
+# döner ve gün-bazlı rotasyon (keşif) sürer. Manuel --format her ikisini de ezer.
+if [ -z "$FORMAT_OVERRIDE" ]; then
+  LEARNED_FMT="$("$VPY" "$REPO/scripts/learn/winner.py" viral.format 2>/dev/null || true)"
+  if [ -n "$LEARNED_FMT" ]; then FORMAT="$LEARNED_FMT"; echo "[🧠] Öğrenilen format devrede: $FORMAT"; fi
+fi
 echo "[*] Format: $FORMAT ${TOPIC:+| Konu: $TOPIC}"
 
 # 2c) Veri-formatı rotasyonu — aksi halde backtest hep 'gold' + 10.000 TL üretir,

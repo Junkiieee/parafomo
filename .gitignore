@@ -35,3 +35,8 @@ public/social/*.mp4
 # python cache
 __pycache__/
 *.pyc
+
+# Öğrenme döngüsü — üretilen veri (rapor docs/learning-report.md commit'lenir)
+data/learning/*.jsonl
+data/learning/winners.json
+data/learning/web-queries.json

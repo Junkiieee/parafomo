@@ -82,6 +82,20 @@ def pick_voice(s, engine):
     return VOICES[s.get("voice_index", 0) % len(VOICES)]
 
 
+def learned(dotted):
+    """winners.json'dan kararlaştırılmış (policy=exploit) seçimi getir; yoksa None.
+    Öğrenme katmanı yeterli veri toplamadan ASLA müdahale etmez → rotasyon sürer."""
+    wp = os.path.join(ROOT, "data", "learning", "winners.json")
+    try:
+        w = json.load(open(wp))
+        node = w
+        for p in dotted.split("."):
+            node = node[p]
+        return node.get("next_pick") or None
+    except (OSError, KeyError, ValueError, TypeError):
+        return None
+
+
 def save(s):
     os.makedirs(os.path.dirname(STATE), exist_ok=True)
     json.dump(s, open(STATE, "w"), ensure_ascii=False, indent=2)
@@ -114,7 +128,16 @@ def main():
             return 0  # kuyruk boş
         slug = queue[-1] if where == "newest" else queue[0]
         engine = ENGINES[s.get("engine_index", 0) % len(ENGINES)]
-        print(f"{slug}\t{pick_voice(s, engine)}\t{engine}")
+        voice = pick_voice(s, engine)
+        # Öğrenme katmanı: kararlaştırılmışsa motoru/sesi ez; yoksa rotasyon sürer.
+        eng_w = learned("shorts.engine")
+        if eng_w in ENGINES:
+            engine = eng_w
+            voice = pick_voice(s, engine)
+        voice_w = learned("shorts.voice")
+        if voice_w:
+            voice = voice_w
+        print(f"{slug}\t{voice}\t{engine}")
         return 0
     if cmd == "commit":
         slug = sys.argv[2]
