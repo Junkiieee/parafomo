@@ -81,3 +81,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Genç yaşta yatırıma nasıl başlanır? — `genc-yasta-yatirima-nasil-baslanir` (backlog: evergreen yatırım)
 - [x] Döviz kuru nasıl belirlenir? Kuru Etkileyen 5 Temel Faktör — `doviz-kuru-nasil-belirlenir` (backlog: evergreen ekonomi)
 - [x] Kripto cüzdan türleri ve güvenlik rehberi — `kripto-cuzdan-nedir` (backlog: evergreen kripto)
+- [x] Altın çeşitleri: gram, çeyrek, ons, ziynet farkı — `altin-cesitleri-farki` (backlog: evergreen yatırım)

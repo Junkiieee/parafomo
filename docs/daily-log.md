@@ -4,6 +4,84 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-18 — Altın Çeşitleri Farkı: Gram, Çeyrek, Ons ve Ziynet Altını
+
+**Yayınlanan yazı:** [Altın Çeşitleri Farkı: Gram, Çeyrek, Ons ve Ziynet Altını](https://parafomo.com/blog/altin-cesitleri-farki/)
+Kategori: Yatırım | Hedef sorgu: "altın çeşitleri farkı" | ~1.100 kelime
+İç linkler: altın mı dolar mı, enflasyondan nasıl korunur, risk ve getiri ilişkisi
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (hook):**
+"Altın aldım" diyenlerin yarısı aslında doğru altını almıyor.
+
+Gram mı? Çeyrek mi? Ons mu? Ziynet mi?
+Her biri farklı fiyat, farklı risk, farklı mantık.
+
+Açıklıyorum 👇
+
+**Tweet 2:**
+💛 Gram altın → en esnek seçenek
+
+Bankandan veya aracı kurumdan dakikalar içinde alınır.
+İşçilik yok, saf altın fiyatı üzerinden işlem.
+Küçük bütçe için mükemmel.
+
+**Tweet 3:**
+🪙 Çeyrek, yarım, tam altın → Cumhuriyet altınları
+
+Darphane basımı, 22 ayar (%91,66 saf altın).
+Fiziksel, elle tutulabilir.
+Ama saklama ihtiyacı var — kasanda ya da banka kasasında.
+
+**Tweet 4:**
+🌍 Ons altın → uluslararası standart
+
+1 ons = 31,1 gram saf altın.
+Borsa İstanbul'da ya da banka altın hesabıyla alınabilir.
+Dolar kuru da getiriyi etkiler — dikkat.
+
+**Tweet 5:**
+⚠️ Ziynet altını (bilezik, küpe, kolye) → yatırım için değil
+
+Alırken işçilik ödersin.
+Satarken işçilik geri gelmez.
+Fark doğrudan kayıp — %10-30 olabilir.
+
+**Tweet 6 (CTA):**
+Tam karşılaştırma tablosu, hangi tür kime uygun ve dikkat edilmesi gerekenler:
+👉 https://parafomo.com/blog/altin-cesitleri-farki/
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Caption:**
+
+Altın mı alacaksın? Dur bir dakika 🛑
+
+"Gram mı olsun, çeyrek mi, ziynet mi?" sorusu kafanı karıştırıyorsa, aralarındaki fark hem bütçeni hem getirinizi doğrudan etkiliyor.
+
+✅ Gram altın — en esnek, işçilik yok
+✅ Çeyrek/Tam altın — fiziksel, likit
+✅ Ons altın — büyük yatırımlar için
+⚠️ Ziynet altını — işçilik kaybı var, dikkat!
+
+Hangisi sana uygun? Linkteki rehberde tüm detaylar var 👆
+
+#AltınYatırımı #GramAltın #ÇeyrekAltın #OnsAltın #ParaFOMO #YatırımRehberi
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş:** Yukarıdaki taslakları kopyalayıp X (Twitter) thread ve Instagram post olarak yayınla. Instagram için 4-6 slayt carousel yapmak etkiyi artırır (her slide için yukarıdaki tweet metinlerini kullanabilirsin).
+2. **1 toplulukta değer katarak paylaş:** Altın yatırımının konuşulduğu bir Facebook/Telegram grubu ya da Reddit'te (r/Turkey veya finans odaklı gruplar) sorulan bir soruya cevap verirken bu yazıyı referans göster.
+
+---
+
 ## 2026-07-17 — Kripto Cüzdan Nedir? Türleri ve Güvenli Kullanım Rehberi
 
 **Yayınlanan yazı:** [Kripto Cüzdan Nedir? Türleri ve Güvenli Kullanım Rehberi](https://parafomo.com/blog/kripto-cuzdan-nedir/)
