@@ -1,0 +1,59 @@
+{
+  "slug": "dolarin-icindeki-dolar-tl-nin-asil-pusulasi",
+  "title": "Doların İçindeki Dolar: TL'nin Asıl Pusulası",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Çoğu kişi USD/TRY izlerken asıl dolar endeksini (DXY) atlıyor. DXY güçlenince tüm gelişen piyasa paraları zayıflar — TL de dahil.",
+  "tags": [
+    "DXY",
+    "dolar endeksi",
+    "TL",
+    "kur",
+    "döviz",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "DOLAR ENDEKSİ",
+      "spoken": "Dolar izliyorsun ama yanlış doları izliyorsun.",
+      "visual": {
+        "type": "concept",
+        "query": "DXY dollar index chart trading screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "USD/TRY değil, DXY'a bak — dünyanın 6 büyük parasına karşı doların gücünü tek rakamda ölçen endeks. Dünya ekonomisinin dolar termometresi.",
+      "visual": {
+        "type": "concept",
+        "query": "world currency exchange rates dashboard monitor"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "DXY yükselince TL değil, Brezilya reali de Meksika pesosu da düşüyor. Akıntı tüm tekneleri birden aşağı çekiyor.",
+      "visual": {
+        "type": "concept",
+        "query": "emerging markets currency decline chart falling"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "DXY yüksekken dövize girersen rüzgarı arkana alıyorsun. Bu tek grafik, döviz zamanlamanı komple değiştirebilir.",
+      "visual": {
+        "type": "concept",
+        "query": "dollar index rising investment chart analysis"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki şu an DXY nerede duruyor ve TL için ne söylüyor? Bunu da ele alacağız. Abone ol — her gün 60 saniyede paranı etkileyen tek net analiz burada.",
+      "visual": {
+        "type": "concept",
+        "query": "phone notification subscribe youtube bell"
+      }
+    }
+  ]
+}
