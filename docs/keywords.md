@@ -28,7 +28,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Genç yaşta yatırıma nasıl başlanır? — `Yatırım` — hedef: "genç yaşta yatırım"
 - [x] Döviz kuru nasıl belirlenir? — `Ekonomi` — hedef: "döviz kuru nasıl belirlenir"
 - [x] Kripto cüzdan türleri ve güvenlik rehberi — `Kripto` — hedef: "kripto cüzdan nedir"
-- [ ] Altın çeşitleri: gram, çeyrek, ons, ziynet farkı — `Yatırım` — hedef: "altın çeşitleri farkı"
+- [x] Altın çeşitleri: gram, çeyrek, ons, ziynet farkı — `Yatırım` — hedef: "altın çeşitleri farkı"
 - [ ] Yatırım fonu nedir, nasıl seçilir? — `Yatırım` — hedef: "yatırım fonu nedir"
 - [ ] Acil durumda bütçeyi nasıl ayakta tutarsın? — `Kişisel Finans` — hedef: "kriz döneminde bütçe"
 - [ ] Emeklilikte ne kadar paraya ihtiyacın var? — `Emeklilik` — hedef: "emeklilik için ne kadar para"
@@ -39,6 +39,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] Altın Çeşitleri Nelerdir? Gram, Çeyrek, Ons ve Ziynet Farkı — `altin-cesitleri-gram-ceyrek-ons-ziynet` (backlog: evergreen yatırım)
 - [x] Kripto Cüzdan Nedir? Türleri, Güvenlik ve Doğru Seçim Rehberi — `kripto-cuzdan-nedir` (backlog: evergreen kripto)
 - [x] ABD Perakende Satışları (Retail Sales) Nedir? Dolar ve TL'ye Etkisi — `abd-perakende-satislari-nedir` (takvim: 16 Temmuz ABD Retail Sales/Core Retail Sales açıklaması)
 - [x] Finansal Özgürlük Nedir? FIRE Hareketi ile Erken Emekliliğe Ulaşma Rehberi — `finansal-ozgurluk-nedir-fire` (backlog: evergreen yatırım)
