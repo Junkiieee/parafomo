@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-07-19T14:27:04Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-07-19T14:32:02Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -19,26 +19,26 @@
 - `tr-TR-Chirp3-HD-Erinome` — skor 55.65, örnek 1
 - `tr-TR-Chirp3-HD-Sulafat` — skor 53.37, örnek 3
 - `tr-TR-Chirp3-HD-Rasalgethi` — skor 52.625, örnek 2
-- `tr-TR-Chirp3-HD-Enceladus` — skor 47.5, örnek 2
+- `tr-TR-Chirp3-HD-Enceladus` — skor 49.0, örnek 2
 - `tr-TR-Chirp3-HD-Charon` — skor 47.0, örnek 1
 
-### Shorts motoru (google/edge) — **exploit** → seçim: `google`
+### Shorts motoru (google/edge) — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `google` — skor 43.927, örnek 33
+- `google` — skor 44.018, örnek 33
 - `edge` — skor 41.625, örnek 13
 
 ### Viral format — **explore** (yeterli veri yok, rotasyon sürüyor)
 
 - `backtest_return` — skor 53.325, örnek 2
 - `comparison` — skor 49.1, örnek 2
-- `myth` — skor 48.235, örnek 6
+- `myth` — skor 48.735, örnek 6
 - `single_concept` — skor 44.79, örnek 3
 - `shock_number` — skor 35.66, örnek 3
 - `news_reaction` — skor 35.06, örnek 6
 
-### Viral yayın slotu — **exploit** → seçim: `5`
+### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `2` — skor 58.06, örnek 2
+- `2` — skor 59.56, örnek 2
 - `3` — skor 48.385, örnek 2
 - `5` — skor 44.12, örnek 4
 - `1` — skor 40.97, örnek 4
