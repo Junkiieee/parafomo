@@ -4,55 +4,125 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
-## 2026-07-18 — Altın Çeşitleri Farkı: Gram, Çeyrek, Ons ve Ziynet Altını
+## 2026-07-19 — TCMB Faiz Kararı Paranı Nasıl Etkiler?
 
-**Yayınlanan yazı:** [Altın Çeşitleri Farkı: Gram, Çeyrek, Ons ve Ziynet Altını](https://parafomo.com/blog/altin-cesitleri-farki/)
-Kategori: Yatırım | Hedef sorgu: "altın çeşitleri farkı" | ~1.100 kelime
-İç linkler: altın mı dolar mı, enflasyondan nasıl korunur, risk ve getiri ilişkisi
+**Yayınlanan yazı:** [TCMB Faiz Kararı Paranı Nasıl Etkiler? Kredi, Mevduat ve Dövize Yansımaları](https://parafomo.com/blog/tcmb-faiz-karari-nasil-etkiler/)
+Kategori: Ekonomi | Hedef sorgu: "tcmb faiz kararı" | ~1.100 kelime
+Tetikleyici: Takvim → 23 Temmuz 2026 TCMB PPK faiz kararı (🔴 High)
+İç linkler: faiz-nedir-ekonomiyi-nasil-etkiler, enflasyondan-nasil-korunur, doviz-kuru-nasil-belirlenir, altin-mi-dolar-mi, bist-100-nedir-nasil-yatirim-yapilir
 
 ---
 
 ### X (Twitter) Thread Taslağı
 
 **Tweet 1 (hook):**
-"Altın aldım" diyenlerin yarısı aslında doğru altını almıyor.
+23 Temmuz Perşembe TCMB faiz kararı açıklıyor.
 
-Gram mı? Çeyrek mi? Ons mu? Ziynet mi?
-Her biri farklı fiyat, farklı risk, farklı mantık.
+Bu karar:
+→ Kredin pahalılaşabilir
+→ Mevduatın yükselir (ya da düşer)
+→ Dolar/TL oynayabilir
+→ BIST sert tepki verebilir
 
-Açıklıyorum 👇
+Hangisinin seni nasıl etkileyeceğini açıklıyorum 👇
 
 **Tweet 2:**
-💛 Gram altın → en esnek seçenek
+3 senaryo, 3 sonuç:
 
-Bankandan veya aracı kurumdan dakikalar içinde alınır.
-İşçilik yok, saf altın fiyatı üzerinden işlem.
-Küçük bütçe için mükemmel.
+📈 Faiz ARTARSA:
+✅ Mevduat → cazip, getiri yükselir
+❌ Kredi → pahalılaşır
+📉 Dolar/TL → düşme eğilimi
+📉 BIST → baskı altında
 
 **Tweet 3:**
-🪙 Çeyrek, yarım, tam altın → Cumhuriyet altınları
+📉 Faiz DÜŞERSE:
+❌ Mevduat → getiri azalır
+✅ Kredi → ucuzlar
+📈 Dolar/TL → yükselme riski
+📈 BIST → canlanabilir
 
-Darphane basımı, 22 ayar (%91,66 saf altın).
-Fiziksel, elle tutulabilir.
-Ama saklama ihtiyacı var — kasanda ya da banka kasasında.
+Ama dikkat: Güven ortamı bu mekanizmayı kırabilir. Özellikle döviz kurunda.
 
 **Tweet 4:**
-🌍 Ons altın → uluslararası standart
+Mevduatı olanlar için kritik:
 
-1 ons = 31,1 gram saf altın.
-Borsa İstanbul'da ya da banka altın hesabıyla alınabilir.
-Dolar kuru da getiriyi etkiler — dikkat.
+Faiz artış beklentisi varsa → vadesini bekle, yüksek faizle yenile
+Faiz indirimi beklentisi varsa → şimdiden uzun vadeye kilitle
+
+Bankalar arası fark büyük olabilir, karşılaştır.
 
 **Tweet 5:**
-⚠️ Ziynet altını (bilezik, küpe, kolye) → yatırım için değil
+Kredi çekeceksen:
 
-Alırken işçilik ödersin.
-Satarken işçilik geri gelmez.
-Fark doğrudan kayıp — %10-30 olabilir.
+Faiz artış beklentisi → karardan önce harekete geç
+Faiz indirim beklentisi → bekle
+
+PPK açıklamasının hemen ardındaki 15-30 dakikada spekülatif işlem yapma. İlk tepki çoğu zaman abartılıdır.
 
 **Tweet 6 (CTA):**
-Tam karşılaştırma tablosu, hangi tür kime uygun ve dikkat edilmesi gerekenler:
-👉 https://parafomo.com/blog/altin-cesitleri-farki/
+3 senaryo tablosu, adım adım pratik rehber ve karar takvimi:
+👉 https://parafomo.com/blog/tcmb-faiz-karari-nasil-etkiler/
+
+#TCMB #FaizKararı #PPK #Ekonomi #ParaFOMO
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Caption:**
+🏦 23 Temmuz Perşembe — TCMB faiz kararı geliyor
+
+Bu karar seni doğrudan etkiliyor:
+→ Kredin pahalılaşabilir ya da ucuzlayabilir
+→ Mevduatının getirisi değişebilir
+→ Dolar kuru ve borsa sert tepki verebilir
+
+✅ Faiz artarsa ne yapmalısın?
+✅ Faiz düşerse mevduatı ne zaman yenilemelisin?
+✅ Karar anında spekülatif işlem neden tehlikeli?
+
+Tüm sorular 3 senaryo tablosuyla cevaplanıyor 👆 (bio'daki link)
+
+#TCMB #FaizKararı #PPK #Ekonomi #MerkezBankası #ParaFOMO #Mevduat #DolarKuru #YatırımRehberi
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş:** Yukarıdaki taslakları kopyalayıp yayınla. TCMB faiz kararı gündem konusu olduğu için bugün ve yarın paylaşım etkili olacak; karardan önce trafik yakalamak için ideal pencere.
+2. **Finans topluluğunda paylaş:** Türkiye finans Telegram gruplarında veya Reddit r/Turkey'de "23 Temmuz TCMB faiz kararı ne bekliyorsunuz?" sorusuna cevap yazarken yazıya link ver — değer katarak, spam değil.
+
+---
+
+## 2026-07-18 — Altın Çeşitleri Nelerdir? Gram, Çeyrek, Ons ve Ziynet Farkı
+
+**Yayınlanan yazı:** [Altın Çeşitleri Nelerdir? Gram, Çeyrek, Ons ve Ziynet Farkı](https://parafomo.com/blog/altin-cesitleri-gram-ceyrek-ons-ziynet/)  
+Kategori: Yatırım | Hedef sorgu: "altın çeşitleri farkı" | ~1.200 kelime  
+Kaynak: Backlog (evergreen yatırım)
+
+---
+
+### X (Twitter) Thread Taslağı
+
+🪙 Kuyumcuya girince "gram mı, çeyrek mi?" diye kafan mı karışıyor?
+
+Altın çeşitleri arasındaki farkı 2 dakikada öğren 👇
+
+1/ Gram, çeyrek, yarım ve tam altın aynı saflıkta (22 ayar). Sadece ağırlıkları farklı. İşçilik içermiyor → yatırım için uygunu bu.
+
+2/ Ziynet altını (bilezik, kolye) = işçilik %15-30 ücret. Satarken bu para geri gelmez. Yatırım için değil, takı için.
+
+3/ Ons = 31,1 gram ham altın. Tüm gram fiyatları buradan türer:
+Gram TL = Ons $ × Dolar kuru ÷ 31,1
+
+4/ Kuyumcuda spread %3-8. Bankada altın hesabı veya ETF'de %0,1-0,5. Aradaki fark uzun vadede büyük etki yapar.
+
+5/ Sonuç: Küçük birikim → gram altın veya banka hesabı. Büyük tutar → ETF / altın fonu. Ziynet → sadece takı için.
+
+🔗 Detaylı karşılaştırma tablosu: parafomo.com/blog/altin-cesitleri-gram-ceyrek-ons-ziynet/
+
+#altın #yatırım #gramaltın #paratavsiyesi
 
 ---
 
@@ -60,25 +130,27 @@ Tam karşılaştırma tablosu, hangi tür kime uygun ve dikkat edilmesi gerekenl
 
 **Caption:**
 
-Altın mı alacaksın? Dur bir dakika 🛑
+Altın alacaksın ama hangi çeşidi? 🤔
 
-"Gram mı olsun, çeyrek mi, ziynet mi?" sorusu kafanı karıştırıyorsa, aralarındaki fark hem bütçeni hem getirinizi doğrudan etkiliyor.
+Gram mı, çeyrek mi, ons mu, ziynet mi — herkesin kafasını karıştıran o soru.
 
-✅ Gram altın — en esnek, işçilik yok
-✅ Çeyrek/Tam altın — fiziksel, likit
-✅ Ons altın — büyük yatırımlar için
-⚠️ Ziynet altını — işçilik kaybı var, dikkat!
+İşte kısa cevap 👇
 
-Hangisi sana uygun? Linkteki rehberde tüm detaylar var 👆
+✅ Gram / çeyrek / yarım / tam altın → 22 ayar, işçilik yok, yatırım için doğru seçim
+❌ Ziynet altını → %15-30 işçilik var, satarken geri almıyorsun — takı için güzel, yatırım için değil
+📊 Ons altın → küresel piyasanın referansı; gram fiyatı buradan türer
+💻 Dijital altın (ETF/hesap) → en düşük maliyet, en yüksek likidite
 
-#AltınYatırımı #GramAltın #ÇeyrekAltın #OnsAltın #ParaFOMO #YatırımRehberi
+Detaylı karşılaştırma tablosu için linke tıkla (bio'da 👆)
+
+#altın #gramaltın #çeyrekaltın #yatırım #paratavsiyesi #kişiselfinans #parafomo #tasarruf #altınfiyatı
 
 ---
 
-### ✅ Bugün Senin Yapman Gerekenler
+### ✅ Bugün senin yapman gerekenler
 
-1. **X ve Instagram'da paylaş:** Yukarıdaki taslakları kopyalayıp X (Twitter) thread ve Instagram post olarak yayınla. Instagram için 4-6 slayt carousel yapmak etkiyi artırır (her slide için yukarıdaki tweet metinlerini kullanabilirsin).
-2. **1 toplulukta değer katarak paylaş:** Altın yatırımının konuşulduğu bir Facebook/Telegram grubu ya da Reddit'te (r/Turkey veya finans odaklı gruplar) sorulan bir soruya cevap verirken bu yazıyı referans göster.
+1. **X ve Instagram'da paylaş** — yukarıdaki taslakları kopyalayıp yayınla; altın fiyatları gündemde olduğu için bugün etkileşim iyi olabilir.
+2. **Topluluk paylaşımı** — r/Turkey veya Türkiye finans gruplarında (Telegram/Facebook) "Ziynet altınına dikkat — yatırım amaçlı neden riskli?" başlığıyla yorum veya gönderi yap; parafomo bağlantısını bırak.
 
 ---
 

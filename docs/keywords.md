@@ -39,6 +39,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] TCMB Faiz Kararı Paranı Nasıl Etkiler? Kredi, Mevduat ve Dövize Yansımaları — `tcmb-faiz-karari-nasil-etkiler` (takvim: 23 Temmuz 2026 TCMB PPK faiz kararı)
 - [x] Altın Çeşitleri Nelerdir? Gram, Çeyrek, Ons ve Ziynet Farkı — `altin-cesitleri-gram-ceyrek-ons-ziynet` (backlog: evergreen yatırım)
 - [x] Kripto Cüzdan Nedir? Türleri, Güvenlik ve Doğru Seçim Rehberi — `kripto-cuzdan-nedir` (backlog: evergreen kripto)
 - [x] ABD Perakende Satışları (Retail Sales) Nedir? Dolar ve TL'ye Etkisi — `abd-perakende-satislari-nedir` (takvim: 16 Temmuz ABD Retail Sales/Core Retail Sales açıklaması)
