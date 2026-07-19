@@ -37,10 +37,17 @@ PLAYLIST_TITLES = {
 }
 DEFAULT_PL = "ParaFOMO Shorts"
 
-COMMENT_TEXT = (
-    "👉 Her gün altın, dolar, borsa ve halka arz analizleri burada. "
-    "Kaçırmamak için ABONE OL! 📊 Detaylar: https://parafomo.com"
-)
+BLOG_DIR = os.path.join(ROOT, "src", "content", "blog")
+
+
+def funnel_comment(slug):
+    """Sabit yorum: blog shortsa YAZIYA, viralse ana sayfaya link (huni + backlink)."""
+    if os.path.exists(os.path.join(BLOG_DIR, f"{slug}.md")):
+        url = f"https://parafomo.com/blog/{slug}/"
+        return (f"📖 Bu videonun tam yazısı (ücretsiz rehber):\n👉 {url}\n\n"
+                "🔔 Her gün finans için ABONE OL!")
+    return ("👉 Her gün altın, dolar, borsa ve halka arz analizleri burada. "
+            "Kaçırmamak için ABONE OL! 📊 Detaylar: https://parafomo.com")
 
 
 def get_service():
@@ -140,7 +147,7 @@ def main():
     # 2) abone CTA yorumu
     if not args.no_comment:
         try:
-            post_comment(yt, video_id, COMMENT_TEXT)
+            post_comment(yt, video_id, funnel_comment(args.slug))
             print("[+] Abone CTA yorumu atıldı (sabitlemeyi Studio'dan yapabilirsin)", file=sys.stderr)
         except Exception as e:
             print(f"[i] Yorum atılamadı: {str(e)[:120]}", file=sys.stderr)

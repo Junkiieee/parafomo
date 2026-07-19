@@ -16,8 +16,28 @@ import argparse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(ROOT, "public", "social")
+BLOG_DIR = os.path.join(ROOT, "src", "content", "blog")
 OAUTH = "/root/.config/parafomo/youtube_oauth.json"
 CATEGORY_EDUCATION = "27"
+
+
+def site_url_for(slug):
+    """Slug bir blog yazısıysa o yazıya, değilse (viral standalone) ana sayfaya link.
+    HUNİ: her Short izleyicisini siteye çeker + bağlamsal backlink üretir."""
+    if os.path.exists(os.path.join(BLOG_DIR, f"{slug}.md")):
+        return f"https://parafomo.com/blog/{slug}/"
+    return "https://parafomo.com"
+
+
+def with_funnel(description, slug):
+    """Açıklamaya siteye yönlendiren altbilgi + abone CTA ekle (huni)."""
+    url = site_url_for(slug)
+    is_article = url != "https://parafomo.com"
+    lead = "📖 Konunun tam rehberi (ücretsiz):" if is_article else "📊 Günlük altın/dolar/borsa analizleri:"
+    footer = (f"\n\n———\n{lead}\n👉 {url}\n\n"
+              "🔔 Kaçırmamak için ABONE OL — her gün yeni finans içeriği.\n\n"
+              "#finans #para #yatırım #ekonomi #borsa #altın #dolar")
+    return (description[:4900 - len(footer)] + footer)
 
 
 def get_service():
@@ -55,7 +75,7 @@ def main():
     body = {
         "snippet": {
             "title": meta["title"][:100],
-            "description": meta["description"][:4900],
+            "description": with_funnel(meta["description"], args.slug),
             "tags": meta.get("tags", []),
             "categoryId": CATEGORY_EDUCATION,
             "defaultLanguage": "tr",
