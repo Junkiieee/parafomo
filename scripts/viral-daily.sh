@@ -54,15 +54,34 @@ done
 #     Amaç: zamanla her slotun izlenme performansını kıyaslayıp en iyi saati bulmak.
 SLOTS_UTC=("05:00" "08:00" "10:00" "13:00" "15:30" "18:30")  # TR(UTC+3): 08 11 13 16 18:30 21:30
 NUM_SLOTS=${#SLOTS_UTC[@]}
-TODAY_SLOT=$(( 10#$(date -u +%j) % NUM_SLOTS ))
+DOY=$(( 10#$(date -u +%j) ))
+TODAY_SLOT=$(( DOY % NUM_SLOTS ))
+
+# Öğrenme katmanı: en iyi saat KANITLANMIŞSA (policy=exploit) hedef slotu ona çek —
+# ama 3 günde 1 gün KEŞFE ayır ki diğer slotlar taze veri almaya devam etsin (aksi halde
+# kazanan slota kilitlenince diğerleri bir daha hiç yayınlamaz = keşif ölür). Keşif günü
+# TÜM slotları sırayla gezer ((DOY/3)%N → 1,2,3,4,5,0,...), yalnız bugünün slotunu değil.
+LEARNED_SLOT="$("$VPY" "$REPO/scripts/learn/winner.py" viral.slot 2>/dev/null || true)"
+if [ -n "$LEARNED_SLOT" ] && [ "$LEARNED_SLOT" -ge 0 ] 2>/dev/null && [ "$LEARNED_SLOT" -lt "$NUM_SLOTS" ] 2>/dev/null; then
+  if [ $(( DOY % 3 )) -eq 0 ]; then
+    TARGET_SLOT=$(( (DOY / 3) % NUM_SLOTS ))
+    echo "[🧠] Keşif günü: slot $TARGET_SLOT = ${SLOTS_UTC[$TARGET_SLOT]} UTC (diğer saatler taze veri alsın)"
+  else
+    TARGET_SLOT="$LEARNED_SLOT"
+    echo "[🧠] Öğrenilen yayın saati devrede: slot $TARGET_SLOT = ${SLOTS_UTC[$TARGET_SLOT]} UTC"
+  fi
+else
+  TARGET_SLOT="$TODAY_SLOT"   # karar yok → tam rotasyon (mevcut keşif davranışı)
+fi
+
 SLOT_LABEL="manual"
 if [ -n "$SLOT_AT" ]; then
-  if [ "$SLOT_AT" != "$TODAY_SLOT" ]; then
-    echo "[i] Slot $SLOT_AT bugünün slotu değil (bugün: $TODAY_SLOT = ${SLOTS_UTC[$TODAY_SLOT]} UTC) — atlanıyor."
+  if [ "$SLOT_AT" != "$TARGET_SLOT" ]; then
+    echo "[i] Slot $SLOT_AT bugünün hedefi değil (hedef: $TARGET_SLOT = ${SLOTS_UTC[$TARGET_SLOT]} UTC) — atlanıyor."
     exit 0
   fi
-  SLOT_LABEL="${SLOTS_UTC[$TODAY_SLOT]}"
-  echo "[*] Zaman dilimi: slot $TODAY_SLOT = $SLOT_LABEL UTC (TR $(printf '%02d' $(( (10#${SLOT_LABEL%%:*} + 3) % 24 ))):${SLOT_LABEL##*:}))"
+  SLOT_LABEL="${SLOTS_UTC[$TARGET_SLOT]}"
+  echo "[*] Zaman dilimi: slot $TARGET_SLOT = $SLOT_LABEL UTC (TR $(printf '%02d' $(( (10#${SLOT_LABEL%%:*} + 3) % 24 ))):${SLOT_LABEL##*:}))"
 fi
 
 # 2b) Günün formatı (haftanın günü; slottan bağımsız). Override: --format
@@ -84,7 +103,6 @@ echo "[*] Format: $FORMAT ${TOPIC:+| Konu: $TOPIC}"
 EXTRA_ARGS=()
 if [ "$FORMAT" = "backtest_return" ]; then
   INSTR_POOL=(gold usd bist); AMT_POOL=(5000 10000 25000 50000 100000); RNG_POOL=(1y 2y 3y 5y)
-  DOY=$(( 10#$(date -u +%j) ))
   EXTRA_ARGS+=(--instrument "${INSTR_POOL[$(( DOY % 3 ))]}" \
                --amount "${AMT_POOL[$(( DOY % 5 ))]}" \
                --range "${RNG_POOL[$(( (DOY / 3) % 4 ))]}")
