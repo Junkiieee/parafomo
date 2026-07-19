@@ -95,6 +95,87 @@ Tüm sorular 3 senaryo tablosuyla cevaplanıyor 👆 (bio'daki link)
 
 ---
 
+## 2026-07-19 — Yatırım Fonu Nedir, Nasıl Seçilir? Türkiye Rehberi
+
+**Yayınlanan yazı:** [Yatırım Fonu Nedir, Nasıl Seçilir? Türkiye Rehberi](https://parafomo.com/blog/yatirim-fonu-nedir-nasil-secilir/)
+Kategori: Yatırım | Hedef sorgu: "yatırım fonu nedir" | ~1.100 kelime
+İç linkler: endeks fonu nedir, bileşik faiz nedir, risk ve getiri ilişkisi
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (hook):**
+Birikiminizi mevduat dışında bir yere koymak istiyorsunuz ama hangi hisseyi alacağınızı bilmiyorsunuz.
+
+Yatırım fonu tam da bunun için var.
+
+Nasıl çalışır, nasıl seçilir? 👇
+
+**Tweet 2:**
+📦 Yatırım fonu nedir?
+
+Binlerce yatırımcının parasını bir havuzda toplayan, profesyonel yöneticilerin bu parayı hisse, tahvil, dövize yatırdığı bir yapı.
+
+Küçük bütçeyle geniş çeşitlendirme — tek başınıza yapamayacağınız şeyi yapıyor.
+
+**Tweet 3:**
+🗂️ 5 ana tür var:
+
+💧 Para piyasası fonu → en düşük risk
+📄 Tahvil/bono fonu → orta risk, istikrarlı
+📈 Hisse fonu → en yüksek potansiyel
+⚖️ Karma fon → ikisini dengeler
+🧺 Fon sepeti → fon içinde fon
+
+**Tweet 4:**
+💸 En kritik detay: Yönetim ücreti (TGO)
+
+Yıllık %0,5 ile %2,5 arasındaki fark küçük görünür.
+20 yıllık bileşik hesapta on binlerce TL etkisi var.
+
+TEFAS'ta filtreyi önce TGO'ya göre çekin.
+
+**Tweet 5:**
+📊 Aktif fon mu, pasif endeks fonu mu?
+
+Aktif: yönetici karar verir, ücret yüksek
+Pasif (ETF): endeksi taklit eder, ücret düşük
+
+Uzun vadeli veride çoğu aktif fon endeks getirisinin gerisinde kalır.
+
+**Tweet 6 (CTA):**
+Adım adım TEFAS rehberi, fon türleri karşılaştırması ve nelere bakmanız gerektiği:
+👉 https://parafomo.com/blog/yatirim-fonu-nedir-nasil-secilir/
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Caption:**
+
+Mevduat dışına çıkmak istiyorsun ama hisse senedi korkutuyor mu? 🤔
+
+Yatırım fonu tam senin için 👇
+
+✅ Küçük tutarlarla büyük çeşitlendirme
+✅ Profesyonel portföy yönetimi
+✅ SPK denetimli ve TEFAS'ta şeffaf
+⚠️ Ama anapara garantisi yok — fon türünü iyi seç!
+
+5 fon türü, nasıl seçilir, TEFAS'ta adım adım nasıl alınır — linkteki rehberde her şey var 👆
+
+#YatırımFonu #TEFAS #ParaPiyasasıFonu #HisseFonu #YatırımRehberi #ParaFOMO
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş:** Yukarıdaki thread taslağını X'te yayınla; Instagram için her tweet'i ayrı bir slide olarak kullanabilirsin (6 slide carousel).
+2. **1 toplulukta değer katarak paylaş:** "Yatırım fonlarına nasıl başlarım?" sorusunun sorulduğu bir Telegram, Facebook veya Reddit grubunda bu yazıyı referans göstererek yanıt ver.
+
+---
+
 ## 2026-07-18 — Altın Çeşitleri Nelerdir? Gram, Çeyrek, Ons ve Ziynet Farkı
 
 **Yayınlanan yazı:** [Altın Çeşitleri Nelerdir? Gram, Çeyrek, Ons ve Ziynet Farkı](https://parafomo.com/blog/altin-cesitleri-gram-ceyrek-ons-ziynet/)  
@@ -151,6 +232,84 @@ Detaylı karşılaştırma tablosu için linke tıkla (bio'da 👆)
 
 1. **X ve Instagram'da paylaş** — yukarıdaki taslakları kopyalayıp yayınla; altın fiyatları gündemde olduğu için bugün etkileşim iyi olabilir.
 2. **Topluluk paylaşımı** — r/Turkey veya Türkiye finans gruplarında (Telegram/Facebook) "Ziynet altınına dikkat — yatırım amaçlı neden riskli?" başlığıyla yorum veya gönderi yap; parafomo bağlantısını bırak.
+
+---
+
+## 2026-07-18 — Altın Çeşitleri Farkı: Gram, Çeyrek, Ons ve Ziynet Altını
+
+**Yayınlanan yazı:** [Altın Çeşitleri Farkı: Gram, Çeyrek, Ons ve Ziynet Altını](https://parafomo.com/blog/altin-cesitleri-farki/)
+Kategori: Yatırım | Hedef sorgu: "altın çeşitleri farkı" | ~1.100 kelime
+İç linkler: altın mı dolar mı, enflasyondan nasıl korunur, risk ve getiri ilişkisi
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (hook):**
+"Altın aldım" diyenlerin yarısı aslında doğru altını almıyor.
+
+Gram mı? Çeyrek mi? Ons mu? Ziynet mi?
+Her biri farklı fiyat, farklı risk, farklı mantık.
+
+Açıklıyorum 👇
+
+**Tweet 2:**
+💛 Gram altın → en esnek seçenek
+
+Bankandan veya aracı kurumdan dakikalar içinde alınır.
+İşçilik yok, saf altın fiyatı üzerinden işlem.
+Küçük bütçe için mükemmel.
+
+**Tweet 3:**
+🪙 Çeyrek, yarım, tam altın → Cumhuriyet altınları
+
+Darphane basımı, 22 ayar (%91,66 saf altın).
+Fiziksel, elle tutulabilir.
+Ama saklama ihtiyacı var — kasanda ya da banka kasasında.
+
+**Tweet 4:**
+🌍 Ons altın → uluslararası standart
+
+1 ons = 31,1 gram saf altın.
+Borsa İstanbul'da ya da banka altın hesabıyla alınabilir.
+Dolar kuru da getiriyi etkiler — dikkat.
+
+**Tweet 5:**
+⚠️ Ziynet altını (bilezik, küpe, kolye) → yatırım için değil
+
+Alırken işçilik ödersin.
+Satarken işçilik geri gelmez.
+Fark doğrudan kayıp — %10-30 olabilir.
+
+**Tweet 6 (CTA):**
+Tam karşılaştırma tablosu, hangi tür kime uygun ve dikkat edilmesi gerekenler:
+👉 https://parafomo.com/blog/altin-cesitleri-farki/
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Caption:**
+
+Altın mı alacaksın? Dur bir dakika 🛑
+
+"Gram mı olsun, çeyrek mi, ziynet mi?" sorusu kafanı karıştırıyorsa, aralarındaki fark hem bütçeni hem getirinizi doğrudan etkiliyor.
+
+✅ Gram altın — en esnek, işçilik yok
+✅ Çeyrek/Tam altın — fiziksel, likit
+✅ Ons altın — büyük yatırımlar için
+⚠️ Ziynet altını — işçilik kaybı var, dikkat!
+
+Hangisi sana uygun? Linkteki rehberde tüm detaylar var 👆
+
+#AltınYatırımı #GramAltın #ÇeyrekAltın #OnsAltın #ParaFOMO #YatırımRehberi
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş:** Yukarıdaki taslakları kopyalayıp X (Twitter) thread ve Instagram post olarak yayınla. Instagram için 4-6 slayt carousel yapmak etkiyi artırır (her slide için yukarıdaki tweet metinlerini kullanabilirsin).
+2. **1 toplulukta değer katarak paylaş:** Altın yatırımının konuşulduğu bir Facebook/Telegram grubu ya da Reddit'te (r/Turkey veya finans odaklı gruplar) sorulan bir soruya cevap verirken bu yazıyı referans göster.
 
 ---
 

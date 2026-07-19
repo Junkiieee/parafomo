@@ -29,7 +29,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Döviz kuru nasıl belirlenir? — `Ekonomi` — hedef: "döviz kuru nasıl belirlenir"
 - [x] Kripto cüzdan türleri ve güvenlik rehberi — `Kripto` — hedef: "kripto cüzdan nedir"
 - [x] Altın çeşitleri: gram, çeyrek, ons, ziynet farkı — `Yatırım` — hedef: "altın çeşitleri farkı"
-- [ ] Yatırım fonu nedir, nasıl seçilir? — `Yatırım` — hedef: "yatırım fonu nedir"
+- [x] Yatırım fonu nedir, nasıl seçilir? — `Yatırım` — hedef: "yatırım fonu nedir"
 - [ ] Acil durumda bütçeyi nasıl ayakta tutarsın? — `Kişisel Finans` — hedef: "kriz döneminde bütçe"
 - [ ] Emeklilikte ne kadar paraya ihtiyacın var? — `Emeklilik` — hedef: "emeklilik için ne kadar para"
 - [ ] Hisse senedi temettü takvimi nasıl okunur? — `Borsa` — hedef: "temettü takvimi"
@@ -83,3 +83,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Döviz kuru nasıl belirlenir? Kuru Etkileyen 5 Temel Faktör — `doviz-kuru-nasil-belirlenir` (backlog: evergreen ekonomi)
 - [x] Kripto cüzdan türleri ve güvenlik rehberi — `kripto-cuzdan-nedir` (backlog: evergreen kripto)
 - [x] Altın çeşitleri: gram, çeyrek, ons, ziynet farkı — `altin-cesitleri-farki` (backlog: evergreen yatırım)
+- [x] Yatırım fonu nedir, nasıl seçilir? — `yatirim-fonu-nedir-nasil-secilir` (backlog: evergreen yatırım)
