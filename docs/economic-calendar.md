@@ -1,6 +1,6 @@
 # Ekonomik Takvim (otomatik)
 
-> Son güncelleme: 2026-07-17 · `scripts/fetch-economic-calendar.py` tarafından üretilir. ELLE DÜZENLEME.
+> Son güncelleme: 2026-07-19 · `scripts/fetch-economic-calendar.py` tarafından üretilir. ELLE DÜZENLEME.
 > Kaynaklar: Investing.com (TR + küresel, birincil), TCMB (faiz kararı), yedek: ForexFactory + TÜİK kuralı.
 
 İçerik üreticisi için: yaklaşan **🔴 High** etkili bir TR/küresel olay 1-3 gün içindeyse,
@@ -10,8 +10,12 @@ o olayın `hook`'una göre bir **explainer** yazısını sıraya al (omurga ever
 
 | Tarih | Gün | Saat | Bölge | Etki | Olay | İçerik fırsatı |
 |-------|-----|------|-------|------|------|----------------|
-| 2026-07-17 | Cuma | 12:00 | 🇪🇺 | 🔴 High | CPI (YoY) (Jun) | Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi. |
+| 2026-07-21 | Salı | 6:00am | 🇬🇧 | 🔴 High | Claimant Count Change |  |
+| 2026-07-22 | Çarşamba | 6:00am | 🇬🇧 | 🔴 High | CPI y/y | Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi. |
 | 2026-07-23 | Perşembe |  | 🇹🇷 | 🔴 High | TCMB faiz kararı (PPK) | Faiz kararı kredi, mevduat, döviz ve borsayı doğrudan etkiler — karar öncesi 'faiz kararı paranı nasıl etkiler' explainer'ı yaz. |
+| 2026-07-23 | Perşembe | 12:15pm | 🇪🇺 | 🔴 High | Main Refinancing Rate |  |
+| 2026-07-23 | Perşembe | 12:15pm | 🇪🇺 | 🔴 High | Monetary Policy Statement |  |
+| 2026-07-23 | Perşembe | 12:45pm | 🇪🇺 | 🔴 High | ECB Press Conference | ECB — euro ve küresel faiz beklentisi. |
 | 2026-07-23 | Perşembe | 14:00 | 🇹🇷 | 🟡 Med | One-Week Repo Rate (Jul) |  |
 | 2026-07-23 | Perşembe | 15:15 | 🇪🇺 | 🔴 High | Deposit Facility Rate (Jul) | ECB faiz kararı — euro ve küresel faiz. |
 | 2026-07-23 | Perşembe | 15:15 | 🇪🇺 | 🔴 High | ECB Interest Rate Decision (Jul) | Faiz kararı — küresel faiz beklentisi TL ve borsayı etkiler. |

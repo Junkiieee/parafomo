@@ -1,6 +1,6 @@
 # ParaFOMO — GSC Fırsat Sorguları (içerik motoru için)
 
-> Üretim: 2026-07-17 · Dönem: son 28 gün · Kaynak: `scripts/seo-opportunities.py`
+> Üretim: 2026-07-19 · Dönem: son 28 gün · Kaynak: `scripts/seo-opportunities.py`
 > Kullanım: günlük içerik motoru, takvimde acil olay yoksa buradaki **en üstteki** fırsatı
 > konu seçer (Yayınlananlar'da zaten varsa atla). Liste boşsa keywords.md backlog'una düşer.
 
@@ -12,3 +12,4 @@
 - [ ] `endeks fonları` — gösterim 6, sıra 33.3, tıklama 0
 - [ ] `nfp verisi` — gösterim 5, sıra 5.4, tıklama 0
 - [ ] `endex fonu nedir` — gösterim 3, sıra 18.3, tıklama 0
+- [ ] `eurobond fonu mu mevduat mı` — gösterim 3, sıra 39.7, tıklama 0

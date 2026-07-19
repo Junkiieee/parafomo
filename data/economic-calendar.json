@@ -1,116 +1,8 @@
 {
-  "updated": "2026-07-17",
+  "updated": "2026-07-19",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-07-14",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core CPI m/m",
-      "source": "forexfactory",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-07-14",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core CPI y/y",
-      "source": "forexfactory",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-07-14",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "CPI m/m",
-      "source": "forexfactory",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-07-14",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "CPI y/y",
-      "source": "forexfactory",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-07-14",
-      "time": "15:30",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core CPI (MoM) (Jun)",
-      "source": "investing",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-07-14",
-      "time": "15:30",
-      "region": "USD",
-      "impact": "High",
-      "title": "CPI (MoM) (Jun)",
-      "source": "investing",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-07-14",
-      "time": "15:30",
-      "region": "USD",
-      "impact": "High",
-      "title": "CPI (YoY) (Jun)",
-      "source": "investing",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-07-14",
-      "time": "2:00pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Fed Chairman Warsh Testifies",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-07-14",
-      "time": "8:00pm",
-      "region": "GBP",
-      "impact": "High",
-      "title": "BOE Gov Bailey Speaks",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-07-15",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core PPI m/m",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-07-15",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "PPI m/m",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-07-15",
-      "time": "2:00pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Fed Chairman Warsh Testifies",
-      "source": "forexfactory",
-      "hook": ""
-    },
     {
       "date": "2026-07-16",
       "time": "15:30",
@@ -148,6 +40,24 @@
       "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
     },
     {
+      "date": "2026-07-21",
+      "time": "6:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "Claimant Count Change",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-07-22",
+      "time": "6:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "CPI y/y",
+      "source": "forexfactory",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
       "date": "2026-07-23",
       "region": "TR",
       "impact": "High",
@@ -155,6 +65,33 @@
       "hook": "Faiz kararı kredi, mevduat, döviz ve borsayı doğrudan etkiler — karar öncesi 'faiz kararı paranı nasıl etkiler' explainer'ı yaz.",
       "time": "",
       "source": "tcmb"
+    },
+    {
+      "date": "2026-07-23",
+      "time": "12:15pm",
+      "region": "EUR",
+      "impact": "High",
+      "title": "Main Refinancing Rate",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-07-23",
+      "time": "12:15pm",
+      "region": "EUR",
+      "impact": "High",
+      "title": "Monetary Policy Statement",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-07-23",
+      "time": "12:45pm",
+      "region": "EUR",
+      "impact": "High",
+      "title": "ECB Press Conference",
+      "source": "forexfactory",
+      "hook": "ECB — euro ve küresel faiz beklentisi."
     },
     {
       "date": "2026-07-23",
