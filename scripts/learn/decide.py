@@ -27,6 +27,9 @@ import lib  # noqa: E402
 WINDOW_DAYS = 45
 MIN_N = 4          # bir kolun "karara hazır" sayılması için asgari örnek
 EPSILON = 0.2
+Z_SEP = 1.0        # kazanan kolun ikinciyi geçmesi gereken asgari birleşik std hata
+                   # (etki-büyüklüğü kapısı: yeterli örnek olsa bile BERABERE kollara
+                   #  kilitlenme — MIN_N örnek sayısını, Z_SEP fark anlamlılığını korur)
 
 
 # --------------------------- skor fonksiyonları ---------------------------
@@ -101,6 +104,13 @@ def decide_dim(items, key_fn, seed):
     eligible = {k: v for k, v in agg.items() if v["n"] >= MIN_N}
     if len(eligible) >= 2:
         pick, policy = lib.pick_bandit(eligible, EPSILON, MIN_N, seed)
+        if policy == "exploit":
+            # Etki-büyüklüğü kapısı: kazanan, ikinciyi Z_SEP birleşik std hata kadar
+            # geçmiyorsa kollar fiilen BERABERE → kilitleme, keşfe devam et.
+            ordered = sorted(eligible.values(), key=lambda v: -v["score"])
+            if not lib.separated(ordered[0], ordered[1], Z_SEP):
+                return {"policy": "explore", "next_pick": None, "ranking": rank,
+                        "decided": False, "tied": True}
         return {"policy": policy if policy != "explore-cold" else "explore",
                 "next_pick": pick if policy == "exploit" else None,
                 "ranking": rank, "decided": policy == "exploit"}
@@ -194,8 +204,13 @@ def write_report(w, items):
           f"- Web (GA4+GSC): {'✅' if s['web'] else '❌'}", ""]
 
     def dim(title, d):
-        out = [f"### {title} — **{d['policy']}**"
-               + (f" → seçim: `{d['next_pick']}`" if d.get("next_pick") else " (yeterli veri yok, rotasyon sürüyor)"), ""]
+        if d.get("next_pick"):
+            tail = f" → seçim: `{d['next_pick']}`"
+        elif d.get("tied"):
+            tail = " (kollar berabere — fark anlamlı değil, rotasyon sürüyor)"
+        else:
+            tail = " (yeterli veri yok, rotasyon sürüyor)"
+        out = [f"### {title} — **{d['policy']}**" + tail, ""]
         for r in d["ranking"][:8]:
             if r["arm"]:
                 out.append(f"- `{r['arm']}` — skor {r['score']}, örnek {r['n']}")

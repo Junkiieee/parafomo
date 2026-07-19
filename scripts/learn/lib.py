@@ -181,21 +181,40 @@ def pick_bandit(arms, epsilon=0.2, min_n=5, seed=""):
 # --------------------------- skorlama ---------------------------
 
 def aggregate(items, key_fn, value_fn):
-    """items → {kol: {"score": ortalama_deger, "n": adet, "total": toplam}}
-    value_fn None döndüren öğeler o kova için sayılmaz."""
+    """items → {kol: {"score": ortalama, "n": adet, "total": toplam, "var": örnek_varyansı}}
+    value_fn None döndüren öğeler o kova için sayılmaz. var, separated() için gerekli."""
     buckets = {}
     for it in items:
         k = key_fn(it)
         v = value_fn(it)
         if k is None or v is None:
             continue
-        b = buckets.setdefault(k, {"sum": 0.0, "n": 0})
+        b = buckets.setdefault(k, {"sum": 0.0, "sumsq": 0.0, "n": 0})
         b["sum"] += v
+        b["sumsq"] += v * v
         b["n"] += 1
     out = {}
     for k, b in buckets.items():
-        out[k] = {"score": b["sum"] / b["n"] if b["n"] else 0.0, "n": b["n"], "total": b["sum"]}
+        n = b["n"]
+        mean = b["sum"] / n if n else 0.0
+        # örnek varyansı (n-1); tek örnekte 0 → separated() bunu güvensiz sayar
+        var = (b["sumsq"] - b["sum"] ** 2 / n) / (n - 1) if n > 1 else 0.0
+        out[k] = {"score": mean, "n": n, "total": b["sum"], "var": max(var, 0.0)}
     return out
+
+
+def separated(a, b, z=1.0):
+    """a'nın ortalaması b'ninkini en az z BİRLEŞİK STANDART HATA kadar aşıyor mu?
+    Küçük örnek veya yüksek varyansta std hata büyür → berabere kollar 'ayrık değil'
+    sayılır ve sistem kilitlenmez. Örnek büyüdükçe/fark açıldıkça otomatik True olur.
+    a,b: aggregate() çıktısı kol sözlükleri (score,n,var)."""
+    import math
+    na = max(a.get("n", 1), 1)
+    nb = max(b.get("n", 1), 1)
+    se = math.sqrt(a.get("var", 0.0) / na + b.get("var", 0.0) / nb)
+    if se <= 0:  # varyans ölçülemedi (ör. hepsi aynı) → yalın ortalama kıyası
+        return a["score"] > b["score"]
+    return (a["score"] - b["score"]) / se >= z
 
 
 def ranking(agg):
