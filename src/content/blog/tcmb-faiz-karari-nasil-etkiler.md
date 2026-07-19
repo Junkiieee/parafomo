@@ -17,6 +17,23 @@ faq:
     a: "Faiz artışı beklentisi varsa kredi planınızı karar öncesine almak maliyeti düşürebilir; zira kararın hemen ardından bankalar faizlerini güncelleyebilir. Faiz indirim beklentisi varsa beklemeye değer olabilir. Her iki durumda da bankaları karşılaştırmanızı öneririz."
   - q: "TCMB faiz kararı borsayı neden etkiler?"
     a: "Faiz arttığında risksiz mevduat/tahvil getirisi yükselir; hisse senedine olan talep düşer ve şirketlerin finansman maliyeti artar. Bu etki BIST üzerinde baskı yaratır. Faiz düşünce tam tersi: mevduattan çıkan para alternatif arar, borsa canlanabilir."
+shorts:
+  - "Mevduat faizi yüksek, ama paran yine eriyor."
+  - "TCMB'nin her faiz kararı bankalar üzerinden kredi maliyetinden mevduat getirisine, dolar kurundan borsaya kadar zincirleme yansır."
+  - "Politika faizi yüksek görünse de enflasyonun altında kaldığı dönemlerde mevduatın reel getirisi eksi olur, satın alma gücün erir."
+  - "23 Temmuz PPK toplantısı öncesinde kredi zamanlamanı, mevduat vadesini ve döviz pozisyonunu doğru ayarlamak sana somut parasal avantaj sağlar."
+  - "Peki karar açıklanınca ilk ne yapmalısın? Abone ol, her PPK kararının etki analizini parafomo.com'da yayınlıyoruz."
+shorts_broll:
+  - "central bank interest rate decision"
+  - "turkish lira banknotes"
+  - "savings account deposit bank"
+  - "inflation money losing value"
+shorts_visuals:
+  - "concept|savings account interest inflation erosion money"
+  - "place|Türkiye Cumhuriyet Merkez Bankası"
+  - "concept|money losing value purchasing power inflation"
+  - "concept|financial calendar investment planning deadline"
+  - "concept|subscribe notification social media phone screen"
 ---
 
 TCMB faiz kararı her ay Türkiye'nin ekonomi gündeminin en ağır taşlarından biri. **23 Temmuz 2026 Perşembe günü Para Politikası Kurulu (PPK) toplanacak** ve alınan karar, kredi maliyetlerinden dolar kuruna, mevduat getirisinden Borsa İstanbul'a kadar geniş bir alanda yansıma yaratacak. Bu kararı pasif izlemek yerine anlayarak hazırlanmak, senin için doğrudan parasal fark yaratabilir.
