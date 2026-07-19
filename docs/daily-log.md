@@ -4,6 +4,87 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-19 — Yatırım Fonu Nedir, Nasıl Seçilir? Türkiye Rehberi
+
+**Yayınlanan yazı:** [Yatırım Fonu Nedir, Nasıl Seçilir? Türkiye Rehberi](https://parafomo.com/blog/yatirim-fonu-nedir-nasil-secilir/)
+Kategori: Yatırım | Hedef sorgu: "yatırım fonu nedir" | ~1.100 kelime
+İç linkler: endeks fonu nedir, bileşik faiz nedir, risk ve getiri ilişkisi
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (hook):**
+Birikiminizi mevduat dışında bir yere koymak istiyorsunuz ama hangi hisseyi alacağınızı bilmiyorsunuz.
+
+Yatırım fonu tam da bunun için var.
+
+Nasıl çalışır, nasıl seçilir? 👇
+
+**Tweet 2:**
+📦 Yatırım fonu nedir?
+
+Binlerce yatırımcının parasını bir havuzda toplayan, profesyonel yöneticilerin bu parayı hisse, tahvil, dövize yatırdığı bir yapı.
+
+Küçük bütçeyle geniş çeşitlendirme — tek başınıza yapamayacağınız şeyi yapıyor.
+
+**Tweet 3:**
+🗂️ 5 ana tür var:
+
+💧 Para piyasası fonu → en düşük risk
+📄 Tahvil/bono fonu → orta risk, istikrarlı
+📈 Hisse fonu → en yüksek potansiyel
+⚖️ Karma fon → ikisini dengeler
+🧺 Fon sepeti → fon içinde fon
+
+**Tweet 4:**
+💸 En kritik detay: Yönetim ücreti (TGO)
+
+Yıllık %0,5 ile %2,5 arasındaki fark küçük görünür.
+20 yıllık bileşik hesapta on binlerce TL etkisi var.
+
+TEFAS'ta filtreyi önce TGO'ya göre çekin.
+
+**Tweet 5:**
+📊 Aktif fon mu, pasif endeks fonu mu?
+
+Aktif: yönetici karar verir, ücret yüksek
+Pasif (ETF): endeksi taklit eder, ücret düşük
+
+Uzun vadeli veride çoğu aktif fon endeks getirisinin gerisinde kalır.
+
+**Tweet 6 (CTA):**
+Adım adım TEFAS rehberi, fon türleri karşılaştırması ve nelere bakmanız gerektiği:
+👉 https://parafomo.com/blog/yatirim-fonu-nedir-nasil-secilir/
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Caption:**
+
+Mevduat dışına çıkmak istiyorsun ama hisse senedi korkutuyor mu? 🤔
+
+Yatırım fonu tam senin için 👇
+
+✅ Küçük tutarlarla büyük çeşitlendirme
+✅ Profesyonel portföy yönetimi
+✅ SPK denetimli ve TEFAS'ta şeffaf
+⚠️ Ama anapara garantisi yok — fon türünü iyi seç!
+
+5 fon türü, nasıl seçilir, TEFAS'ta adım adım nasıl alınır — linkteki rehberde her şey var 👆
+
+#YatırımFonu #TEFAS #ParaPiyasasıFonu #HisseFonu #YatırımRehberi #ParaFOMO
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş:** Yukarıdaki thread taslağını X'te yayınla; Instagram için her tweet'i ayrı bir slide olarak kullanabilirsin (6 slide carousel).
+2. **1 toplulukta değer katarak paylaş:** "Yatırım fonlarına nasıl başlarım?" sorusunun sorulduğu bir Telegram, Facebook veya Reddit grubunda bu yazıyı referans göstererek yanıt ver.
+
+---
+
 ## 2026-07-18 — Altın Çeşitleri Farkı: Gram, Çeyrek, Ons ve Ziynet Altını
 
 **Yayınlanan yazı:** [Altın Çeşitleri Farkı: Gram, Çeyrek, Ons ve Ziynet Altını](https://parafomo.com/blog/altin-cesitleri-farki/)
