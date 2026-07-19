@@ -149,10 +149,20 @@ if [ -n "$YT_URL" ]; then
   "$VPY" "$REPO/scripts/youtube-extras.py" "$SLUG" --format "$FORMAT" 2>&1 | sed 's/^/    [extras] /' || true
 fi
 
+# 6c) Instagram Reels — aynı videoyu Reel olarak yayınla (IG pivot: feed yerine Reels).
+#     Kendi videosunu media dalına barındırıp IG'ye verir; hata olsa hattı düşürmez.
+echo "[*] Instagram Reel yayınlanıyor..."
+IG_REEL=""
+if "$VPY" "$REPO/scripts/instagram-reel.py" "$SLUG" 2>&1 | sed 's/^/    [reel] /'; then
+  IG_REEL="$("$VPY" -c "import json;print(json.load(open('public/social/short-$SLUG.json')).get('ig_reel_permalink',''))" 2>/dev/null || true)"
+else
+  echo "UYARI: IG Reel atlandı/başarısız (devam)"
+fi
+
 # 7) Telegram önizleme
 echo "[*] Telegram'a gönderiliyor..."
 VID="$REPO/public/social/short-$SLUG.mp4"
-CAP="🎬 Viral Shorts [$FORMAT] · ⏰ $SLOT_LABEL UTC%0A%0A${YT_URL:+▶️ $YT_URL%0A}🔊 ${VOICE##*-}%0A%0A#parafomo"
+CAP="🎬 Viral Shorts [$FORMAT] · ⏰ $SLOT_LABEL UTC%0A%0A${YT_URL:+▶️ $YT_URL%0A}${IG_REEL:+📸 $IG_REEL%0A}🔊 ${VOICE##*-}%0A%0A#parafomo"
 curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendVideo" \
   -F "chat_id=${TELEGRAM_CHAT_ID}" -F "video=@${VID}" -F "supports_streaming=true" \
   --form-string "caption=$(printf '%b' "$CAP")" >/dev/null || echo "UYARI: Telegram gönderilemedi"
