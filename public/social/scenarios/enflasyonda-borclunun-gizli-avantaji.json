@@ -1,0 +1,59 @@
+{
+  "slug": "enflasyonda-borclunun-gizli-avantaji",
+  "title": "Enflasyonda Borçlunun Gizli Avantajı",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Borç almak her zaman tehlike değil. Yüksek enflasyon dönemlerinde sabit faizli borçlanmanın gerçek maliyetini açıklıyoruz.",
+  "tags": [
+    "borç",
+    "enflasyon",
+    "yatırım",
+    "kredi",
+    "kişisel finans",
+    "türkiye ekonomisi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Borçsuz kalmak bazen en pahalı hata oluyor.",
+      "visual": {
+        "type": "concept",
+        "query": "person debt free money worried saving"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Enflasyon yükseldikçe ödediğin TL'nin satın alma gücü eriyor — sabit faizli borcunun gerçek ağırlığı da her ay azalıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation rate rising graph money value eroding"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2022'de bazı krediler yüzde yirmi sekizden verilirken enflasyon yüzde seksen koşuyordu. O dönem borçlu olmak, tasarrufçu kalmaktan fiilen daha kârlıydı.",
+      "visual": {
+        "type": "concept",
+        "query": "turkish lira banknotes inflation economic crisis"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kritik fark şu: değer kazanan varlık için borç yatırım, kredi kartıyla tatil ya da telefon ise kayıp.",
+      "visual": {
+        "type": "concept",
+        "query": "investment asset versus consumer spending decision"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki senin borcun seni ileriye mi götürüyor, geriye mi? Cevap göründüğünden çarpıcı — abone ol, her sabah 60 saniyede tek net analiz sende.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification bell mobile phone screen"
+      }
+    }
+  ]
+}
