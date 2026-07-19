@@ -26,17 +26,19 @@ echo "[2/4] Metrikler toplanıyor"
 "$VPY" "$LEARN/metrics_web.py"       || echo "UYARI: web metrik başarısız"
 "$VPY" "$LEARN/metrics_instagram.py" || echo "UYARI: ig metrik başarısız"
 "$VPY" "$LEARN/metrics_youtube.py"   || echo "UYARI: yt metrik başarısız"
+"$VPY" "$LEARN/seo_targets.py"       || echo "UYARI: seo hedefleri başarısız"
 
 echo "[3/4] Karar üretiliyor"
 TG=""; [ "${1:-}" = "--telegram" ] && TG="--telegram"
 "$VPY" "$LEARN/decide.py" $TG || echo "UYARI: karar üretimi başarısız"
 
-echo "[4/4] Rapor commit ediliyor (yalnız docs/learning-report.md)"
+echo "[4/4] Rapor + SEO hedefleri commit ediliyor"
 if [ -n "$(git ls-files -u 2>/dev/null)" ]; then
-  echo "UYARI: çözülmemiş merge var → rapor commit atlanıyor (rapor yine de güncel)"
-elif [ -n "$(git status --porcelain docs/learning-report.md 2>/dev/null)" ]; then
-  git add docs/learning-report.md
-  git commit -m "öğrenme: günlük rapor güncellendi ($(date -u '+%F'))" || true
+  echo "UYARI: çözülmemiş merge var → commit atlanıyor (dosyalar yine de güncel)"
+elif [ -n "$(git status --porcelain docs/learning-report.md src/data/seo-targets.json 2>/dev/null)" ]; then
+  git add docs/learning-report.md src/data/seo-targets.json
+  git commit -m "öğrenme: günlük rapor + SEO iç-link hedefleri ($(date -u '+%F'))" || true
+  git push origin main 2>&1 | sed 's/^/    [push] /' || echo "UYARI: push başarısız"
 fi
 
 echo "[$(date -u '+%F %T UTC')] Öğrenme döngüsü tamamlandı"

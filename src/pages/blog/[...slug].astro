@@ -1,15 +1,36 @@
 ---
 import { getCollection, render } from 'astro:content';
 import PostLayout from '../../layouts/PostLayout.astro';
+import seoTargets from '../../data/seo-targets.json';
 
 export async function getStaticPaths() {
+  // Öğrenme döngüsünün ürettiği "zirveye en yakın" sayfalar. İlgili Yazılar
+  // sıralamasında (yalnız zaten konu-alakalıysa) bonus alır → site içi otorite
+  // kazanan sayfalarda yoğunlaşır, onları sayfa 1'e iter. Dosya boşsa etkisiz.
+  // NOT: yardımcılar getStaticPaths İÇİNDE tanımlı olmalı (Astro izole çalıştırır).
+  const BOOST = new Set<string>((seoTargets as any).boost ?? []);
+  const norm = (s: string) => s.toLowerCase().trim();
+
   const posts = await getCollection('blog', ({ data }) => !data.draft);
   return posts.map((post) => {
-    const related = posts
-      .filter((p) => p.id !== post.id && p.data.category === post.data.category)
-      .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-      .slice(0, 3);
-    return { params: { slug: post.id }, props: { post, related } };
+    const myTags = new Set((post.data.tags ?? []).map(norm));
+    const scored = posts
+      .filter((p) => p.id !== post.id)
+      .map((p) => {
+        const overlap = (p.data.tags ?? []).filter((t: string) => myTags.has(norm(t))).length;
+        const sameCat = p.data.category === post.data.category ? 1 : 0;
+        // konu-alaka puanı: ortak etiket (en güçlü) + aynı kategori
+        const rel = overlap * 3 + sameCat * 2;
+        // SEO bonusu YALNIZ zaten alakalı adaya (alakasız hedefe link vermeyiz)
+        const boost = rel > 0 && BOOST.has(p.id) ? 2 : 0;
+        return { p, score: rel + boost };
+      })
+      .sort((a, b) =>
+        b.score - a.score ||
+        b.p.data.pubDate.getTime() - a.p.data.pubDate.getTime())
+      .slice(0, 3)
+      .map((x) => x.p);
+    return { params: { slug: post.id }, props: { post, related: scored } };
   });
 }
 

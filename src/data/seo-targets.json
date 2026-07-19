@@ -1,0 +1,45 @@
+{
+  "generated_utc": "2026-07-19T17:29:48Z",
+  "boost": [
+    "nfp-nedir-abd-tarim-disi-istihdam",
+    "endeks-fonu-nedir",
+    "gdp-gsyih-nedir-nasil-yorumlanir",
+    "abd-cpi-enflasyon-verisi-nedir",
+    "fomc-toplanti-tutanaklari-nedir",
+    "ism-pmi-nedir-abd-uretim-verisi",
+    "acil-durum-fonu-nedir",
+    "abd-perakende-satislari-nedir",
+    "tufe-enflasyon-verisi-nasil-okunur",
+    "finansal-ozgurluk-nedir-fire",
+    "ethereum-nedir",
+    "dca-nedir-maliyet-ortalamasi",
+    "faiz-nedir-ekonomiyi-nasil-etkiler",
+    "fk-orani-nedir",
+    "temettu-hisseleri-pasif-gelir",
+    "temel-analiz-teknik-analiz-farki",
+    "eurobond-nedir",
+    "kredi-karti-borcundan-kurtulma"
+  ],
+  "near_miss": [
+    "nfp-nedir-abd-tarim-disi-istihdam",
+    "endeks-fonu-nedir",
+    "gdp-gsyih-nedir-nasil-yorumlanir",
+    "abd-cpi-enflasyon-verisi-nedir",
+    "fomc-toplanti-tutanaklari-nedir",
+    "ism-pmi-nedir-abd-uretim-verisi",
+    "acil-durum-fonu-nedir",
+    "abd-perakende-satislari-nedir",
+    "tufe-enflasyon-verisi-nasil-okunur",
+    "finansal-ozgurluk-nedir-fire",
+    "ethereum-nedir",
+    "dca-nedir-maliyet-ortalamasi"
+  ],
+  "buried": [
+    "faiz-nedir-ekonomiyi-nasil-etkiler",
+    "fk-orani-nedir",
+    "temettu-hisseleri-pasif-gelir",
+    "temel-analiz-teknik-analiz-farki",
+    "eurobond-nedir",
+    "kredi-karti-borcundan-kurtulma"
+  ]
+}
