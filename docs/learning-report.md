@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-07-18T19:35:10Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-07-19T08:45:21Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -29,9 +29,9 @@
 - nfp-nedir-abd-tarim-disi-istihdam — skor 13.03
 - stablecoin-nedir — skor 11.43
 - fomc-toplanti-tutanaklari-nedir — skor 9.12
-- endeks-fonu-nedir — skor 4.23
+- endeks-fonu-nedir — skor 5.23
 - hisse-senedi-nasil-secilir — skor 2.1
-- altin-mi-dolar-mi — skor 2.02
+- fk-orani-nedir — skor 2.0
 
 **🎯 Fırsat sorguları** (içerik/başlık iyileştir):
 - `endeks fonu nedir` — gös 19, sıra 11.7
