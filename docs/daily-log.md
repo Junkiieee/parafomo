@@ -4,6 +4,110 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-20 — Kriz Döneminde Bütçe Nasıl Ayakta Tutulur? Acil Finansal Plan
+
+**Yayınlanan yazı:** [Kriz Döneminde Bütçe Nasıl Ayakta Tutulur? Acil Finansal Plan](https://parafomo.com/blog/kriz-doneminde-butce-nasil-yonetilir/)
+Kategori: Kişisel Finans | Hedef sorgu: "kriz döneminde bütçe" | ~1.150 kelime
+Kaynak: Evergreen backlog
+
+---
+
+### X (Twitter) Thread Taslağı
+
+İş kaybı. Ani sağlık gideri. Ekonomik belirsizlik.
+
+Kriz döneminde bütçeyi ayakta tutmak için 8 pratik adım 👇
+
+1/ İlk adım: Tabloyu görmek
+Paniklemeden önce şunu yaz:
+→ Aylık zorunlu giderlerin ne kadar?
+→ Elinizde kaç aylık nakit var?
+Belirsizlik, rakamlardan çok daha tehlikeli.
+
+2/ Harcamaları 3 kategoriye ayır:
+✅ Zorunlu → kira, fatura, gıda
+⏸️ Ertelenebilir → bazı sigortalar, üyelikler
+❌ Kesilebilir → abonelikler, dışarıda yemek, eğlence
+"Kesilebilir"den başla.
+
+3/ Abonelikleri dondur
+Ortalama kişinin farkında olmadığı 3-5 aktif aboneliği var.
+Banka ekstreni tara, tümünü iptal et veya duraklat.
+Kriz geçince yeniden açarsın.
+
+4/ Borç için bankana ulaş
+Konut kredisi, araç finansmanı için yapılandırma iste.
+Bankalar çoğunlukla ödeme erteleme sunar.
+Sormadan alamazsın.
+
+5/ Kriz bütçesini haftalık takip et
+Aylık bütçe kriz döneminde çok geniş bir ufuktur.
+Her hafta başında: "Bu hafta ne çıkar, ne girer?" sorusunu sor.
+
+6/ Nakit = kral
+Kriz döneminde birikimini borsaya sokma.
+Piyasa tam o anda aşağı gidebilir.
+Nakit ve likit araçlar öncelik.
+
+7/ Ek gelir arayışında aktif ol
+Serbest çalışma, ikinci el satış, kısa dönem iş…
+Küçük miktarlar bile kriz bütçesinde fark yaratır.
+
+8/ Kriz geçince: Önce acil fonu doldur
+Kriz onu kullandıysa, ilk öncelik odur.
+Sonra kademeli normalize et.
+
+Tam rehber: parafomo.com/blog/kriz-doneminde-butce-nasil-yonetilir/
+
+#KrizDönemi #Bütçe #ParaYönetimi #KişiselFinans #ParaFOMO
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Slide 1 — Kapak:**
+Kriz Döneminde Bütçe Nasıl Ayakta Tutulur?
+İş kaybı, sağlık gideri, ekonomik belirsizlik — 8 adımda acil finansal plan 💡
+
+**Slide 2:**
+İlk 48 saat en kritik.
+Paniklemeden önce şunu yaz:
+📋 Zorunlu aylık giderlerin
+💰 Elindeki mevcut nakit
+📅 Kaç ay idare edebilirsin?
+
+**Slide 3:**
+Harcamalarını 3 gruba ayır:
+✅ Zorunlu → öde (kira, fatura, gıda)
+⏸️ Ertelenebilir → ertele
+❌ Kesilebilir → hemen kes (abonelikler, dışarıda yemek)
+
+**Slide 4:**
+Yaygın hatalar:
+❌ "Bu kadar küçük ne önemi var" demek
+❌ Tabloyu görmekten kaçınmak
+❌ Nakit yerine borsaya yönelmek
+❌ Hane içinde iletişim kurmamak
+
+**Slide 5:**
+Kriz geçince:
+1️⃣ Önce acil durum fonunu yeniden doldur
+2️⃣ Kestiklerini kademeli aç
+3️⃣ Krizde edindiğin alışkanlıkları koru
+
+**Slide 6 — CTA:**
+Tam rehber bio linkten 🔗
+#KrizDönemi #BütçeYönetimi #ParaYönetimi #AcilFinansPlan #KişiselFinans #ParaFOMO
+
+---
+
+### ✅ Bugün senin yapman gerekenler
+
+1. **Thread'i X'te paylaş** — kriz/tasarruf içerikleri yüksek etkileşim alır; thread formatı özellikle iyi çalışır.
+2. **Instagram carousel'ini paylaş** — 6 slayt formatında yukarıdaki metni kullan; kişisel finans Telegram gruplarında veya Facebook gruplarında değer katarak paylaş.
+
+---
+
 ## 2026-07-20 — ECB Faiz Kararı Nedir? Euro Bölgesi Faizi TL ve Borsayı Nasıl Etkiler?
 
 **Yayınlanan yazı:** [ECB Faiz Kararı Nedir? Euro Bölgesi Faizi TL ve Borsayı Nasıl Etkiler?](https://parafomo.com/blog/ecb-faiz-karari-nedir-etkisi/)
