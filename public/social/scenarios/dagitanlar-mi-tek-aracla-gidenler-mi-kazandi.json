@@ -1,0 +1,77 @@
+{
+  "slug": "dagitanlar-mi-tek-aracla-gidenler-mi-kazandi",
+  "title": "Dağıtanlar mı, Tek Araçla Gidenler mi Kazandı?",
+  "category": "KARŞILAŞTIRMA",
+  "format": "comparison",
+  "description": "Altın, borsa ve doları eşit bölen yatırımcılarla yalnızca altına odaklananlara ne olduğunu sayıyla karşılaştırıyoruz.",
+  "tags": [
+    "altın",
+    "borsa",
+    "dolar",
+    "portföy",
+    "yatırım",
+    "BIST100",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KARŞILAŞTIRMA",
+      "spoken": "3'e böldüm diye rahat uyuyanlar ne kaybetti?",
+      "visual": {
+        "type": "concept",
+        "query": "money split three ways investment choice"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Son bir yılda altın yüzde 31, borsa yüzde 25, dolar yüzde 15 getirdi — sırayla böyle.",
+      "visual": {
+        "type": "concept",
+        "query": "gold stock market dollar returns comparison race"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama üçünü eşit böldüysen ortalaman yüzde 24'te kaldı — altından tam 7 puan geride.",
+      "visual": {
+        "type": "concept",
+        "query": "portfolio diversification equal allocation split investment"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Matematik açık: doğru aracı seçen dağıtandan kazandı; yanlış seçen ise dağıtmayı keşke yapsaydım dedi.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "bars",
+          "title": "Bu Yıl Kim Kazandırdı?",
+          "items": [
+            {
+              "name": "Gram Altın",
+              "pct": 31
+            },
+            {
+              "name": "BIST 100",
+              "pct": 25
+            },
+            {
+              "name": "Dolar/TL",
+              "pct": 15
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki önümüzdeki dönem hangisi öne çıkacak, bölmek mi yoksa tek araç mı? Takipte kal, abone ol — her gün bir yatırım kararının matematiği burada.",
+      "visual": {
+        "type": "concept",
+        "query": "person watching financial news phone screen"
+      }
+    }
+  ]
+}
