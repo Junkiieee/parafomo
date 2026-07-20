@@ -1,35 +1,8 @@
 {
-  "updated": "2026-07-19",
+  "updated": "2026-07-20",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-07-16",
-      "time": "15:30",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core Retail Sales (MoM) (Jun)",
-      "source": "investing",
-      "hook": "Perakende satışlar — tüketim ve büyüme sinyali."
-    },
-    {
-      "date": "2026-07-16",
-      "time": "15:30",
-      "region": "USD",
-      "impact": "High",
-      "title": "Retail Sales (MoM) (Jun)",
-      "source": "investing",
-      "hook": "Perakende satışlar — tüketim ve büyüme sinyali."
-    },
-    {
-      "date": "2026-07-16",
-      "time": "6:00am",
-      "region": "GBP",
-      "impact": "High",
-      "title": "GDP m/m",
-      "source": "forexfactory",
-      "hook": "Büyüme verisi — küresel görünüm."
-    },
     {
       "date": "2026-07-17",
       "time": "12:00",

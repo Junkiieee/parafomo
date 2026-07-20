@@ -102,7 +102,15 @@
       "WebFetch(domain:replicate.com)",
       "Bash(awk -F= '/^\\(PEXELS_API_KEY\\)=/{print $1\": \"\\(length\\($2\\)>3?\"DOLU\":\"BOŞ\"\\)}' .env)",
       "Bash(python3 -c \"import faster_whisper\")",
-      "Bash(find / -name \"faster_whisper\" -maxdepth 6 -type d)"
+      "Bash(find / -name \"faster_whisper\" -maxdepth 6 -type d)",
+      "Bash(git commit *)",
+      "Bash(echo \"=== EXIT: $? ===\")",
+      "Bash(gh auth *)",
+      "Bash(gh release *)",
+      "Bash(gh api *)",
+      "Bash(sed -E 's/\\(=.{4}\\).*/\\\\1****/')",
+      "Bash(env)",
+      "Bash(git remote *)"
     ]
   }
 }
