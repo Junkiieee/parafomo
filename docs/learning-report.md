@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-07-19T14:32:02Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-07-20T08:45:27Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -11,39 +11,39 @@
 
 ## Kararlar
 
-### Shorts sesi — **explore** (yeterli veri yok, rotasyon sürüyor)
+### Shorts sesi — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
 - `tr-TR-Chirp3-HD-Umbriel` — skor 70.825, örnek 2
+- `tr-TR-Chirp3-HD-Vindemiatrix` — skor 70.503, örnek 3
+- `tr-TR-Chirp3-HD-Enceladus` — skor 62.5, örnek 2
 - `tr-TR-Chirp3-HD-Sadachbia` — skor 60.755, örnek 2
-- `tr-TR-Chirp3-HD-Vindemiatrix` — skor 56.503, örnek 3
 - `tr-TR-Chirp3-HD-Erinome` — skor 55.65, örnek 1
+- `tr-TR-Chirp3-HD-Charon` — skor 55.0, örnek 1
 - `tr-TR-Chirp3-HD-Sulafat` — skor 53.37, örnek 3
-- `tr-TR-Chirp3-HD-Rasalgethi` — skor 52.625, örnek 2
-- `tr-TR-Chirp3-HD-Enceladus` — skor 49.0, örnek 2
-- `tr-TR-Chirp3-HD-Charon` — skor 47.0, örnek 1
+- `tr-TR-Chirp3-HD-Rasalgethi` — skor 49.435, örnek 2
 
-### Shorts motoru (google/edge) — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
+### Shorts motoru (google/edge) — **explore** (yeterli veri yok, rotasyon sürüyor)
 
-- `google` — skor 44.018, örnek 33
-- `edge` — skor 41.625, örnek 13
+- `google` — skor 47.361, örnek 33
+- `edge` — skor 38.647, örnek 13
 
 ### Viral format — **explore** (yeterli veri yok, rotasyon sürüyor)
 
 - `backtest_return` — skor 53.325, örnek 2
+- `myth` — skor 53.235, örnek 6
 - `comparison` — skor 49.1, örnek 2
-- `myth` — skor 48.735, örnek 6
-- `single_concept` — skor 44.79, örnek 3
-- `shock_number` — skor 35.66, örnek 3
-- `news_reaction` — skor 35.06, örnek 6
+- `single_concept` — skor 47.457, örnek 3
+- `news_reaction` — skor 40.847, örnek 6
+- `shock_number` — skor 37.327, örnek 3
 
 ### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `2` — skor 59.56, örnek 2
+- `2` — skor 73.06, örnek 2
 - `3` — skor 48.385, örnek 2
-- `5` — skor 44.12, örnek 4
-- `1` — skor 40.97, örnek 4
-- `0` — skor 40.727, örnek 4
-- `manual` — skor 40.333, örnek 4
+- `manual` — skor 47.515, örnek 4
+- `5` — skor 45.37, örnek 4
+- `1` — skor 42.97, örnek 4
+- `0` — skor 42.225, örnek 4
 - `4` — skor 34.24, örnek 2
 
 ## Konu sinyalleri
@@ -52,7 +52,7 @@
 - nfp-nedir-abd-tarim-disi-istihdam — skor 13.03
 - stablecoin-nedir — skor 11.43
 - fomc-toplanti-tutanaklari-nedir — skor 9.12
-- endeks-fonu-nedir — skor 5.23
+- endeks-fonu-nedir — skor 8.0
 - hisse-senedi-nasil-secilir — skor 2.1
 - fk-orani-nedir — skor 2.0
 

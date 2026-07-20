@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-19T17:29:48Z",
+  "generated_utc": "2026-07-20T08:45:27Z",
   "boost": [
     "nfp-nedir-abd-tarim-disi-istihdam",
     "endeks-fonu-nedir",
@@ -8,11 +8,12 @@
     "fomc-toplanti-tutanaklari-nedir",
     "ism-pmi-nedir-abd-uretim-verisi",
     "acil-durum-fonu-nedir",
-    "abd-perakende-satislari-nedir",
     "tufe-enflasyon-verisi-nasil-okunur",
+    "risk-getiri-iliskisi",
     "finansal-ozgurluk-nedir-fire",
     "ethereum-nedir",
     "dca-nedir-maliyet-ortalamasi",
+    "abd-perakende-satislari-nedir",
     "faiz-nedir-ekonomiyi-nasil-etkiler",
     "fk-orani-nedir",
     "temettu-hisseleri-pasif-gelir",
@@ -28,11 +29,12 @@
     "fomc-toplanti-tutanaklari-nedir",
     "ism-pmi-nedir-abd-uretim-verisi",
     "acil-durum-fonu-nedir",
-    "abd-perakende-satislari-nedir",
     "tufe-enflasyon-verisi-nasil-okunur",
+    "risk-getiri-iliskisi",
     "finansal-ozgurluk-nedir-fire",
     "ethereum-nedir",
-    "dca-nedir-maliyet-ortalamasi"
+    "dca-nedir-maliyet-ortalamasi",
+    "abd-perakende-satislari-nedir"
   ],
   "buried": [
     "faiz-nedir-ekonomiyi-nasil-etkiler",
