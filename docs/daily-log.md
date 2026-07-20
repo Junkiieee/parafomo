@@ -4,6 +4,83 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-20 — ECB Faiz Kararı Nedir? Euro Bölgesi Faizi TL ve Borsayı Nasıl Etkiler?
+
+**Yayınlanan yazı:** [ECB Faiz Kararı Nedir? Euro Bölgesi Faizi TL ve Borsayı Nasıl Etkiler?](https://parafomo.com/blog/ecb-faiz-karari-nedir-etkisi/)
+Kategori: Ekonomi | Hedef sorgu: "ecb faiz kararı" | ~1.100 kelime
+Neden bugün: 23 Temmuz 2026 ECB faiz kararı 🔴 High etkili, 3 gün içinde.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+🏦 23 Temmuz'da ECB faiz kararı açıklıyor.
+
+Bu karar dolar/TL kurunu, BIST'i ve altını doğrudan etkiler. İşte bilmen gereken 5 şey 🧵
+
+1/ ECB nedir?
+Avrupa'nın 20 ülkesinin ortak para birimi euroyu yöneten merkez bankası. Türkiye'nin en büyük ihracat ortağı AB, bu yüzden ECB kararları bizi de etkiler.
+
+2/ ECB faiz düşürürse ne olur?
+• Euro değer kaybeder
+• Dolar güçlenir
+• TL baskı altına girebilir
+• BIST'e yabancı ilgisi azalabilir
+
+3/ ECB faiz artırırsa ne olur?
+• Euro güçlenir
+• Dolar zayıflar
+• Risk iştahı artar → gelişen piyasalara sermaye akabilir
+• TL kısmen toparlanabilir
+
+4/ 23 Temmuz takvimi:
+• Saat 12:15 → Faiz kararı açıklanır
+• Saat 12:45 → Başkan Lagarde basın toplantısı
+(Lagarde'ın tonu bazen karardan daha etkili olur!)
+
+5/ Yatırımcı ne yapmalı?
+Karar öncesi spekülasyon yerine → volatiliteyi izle, uzun vadeli pozisyonunu bozma.
+
+Detaylar: parafomo.com/blog/ecb-faiz-karari-nedir-etkisi/
+
+#ECB #FaizKararı #Euro #TL #Borsa #ParaFOMO
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Slide 1 — Kapak:**
+ECB Faiz Kararı Nedir?
+📅 23 Temmuz'da açıklanıyor — TL ve BIST'i nasıl etkiler?
+
+**Slide 2:**
+ECB = Avrupa Merkez Bankası 🏦
+20 ülkenin para birimi euro'yu yönetir.
+Türkiye'nin %40+ ihracatı AB'ye → ECB kararı bizi de yakından ilgilendiriyor.
+
+**Slide 3:**
+Faiz düşürürse → Euro zayıflar, dolar güçlenir, TL baskı altına girebilir.
+Faiz artırırsa → Euro güçlenir, risk iştahı artar, gelişen piyasalar nefes alır.
+
+**Slide 4:**
+23 Temmuz takvimi:
+🕐 12:15 — Karar açıklanır
+🎙️ 12:45 — Başkan Lagarde konuşur
+(Konuşma bazen karardan daha sert hareket yaratır!)
+
+**Slide 5 — CTA:**
+Tam analizi oku → bio linkten 🔗
+#ECB #FaizKararı #YatırımTürkiye #Ekonomi #ParaFOMO #Euro #TL
+
+---
+
+### ✅ Bugün senin yapman gerekenler
+
+1. **Thread'i X'te paylaş** — 23 Temmuz kararı yaklaşırken erken paylaşmak arama trafiği ve etkileşim açısından avantajlıdır.
+2. **Instagram carousel'ini paylaş** — 5 slayt formatında yukarıdaki metni kullan; ekonomi/finans grubuna da gönder (r/Turkey, Ekşi, Telegram finans grupları).
+
+---
+
 ## 2026-07-19 — TCMB Faiz Kararı Paranı Nasıl Etkiler?
 
 **Yayınlanan yazı:** [TCMB Faiz Kararı Paranı Nasıl Etkiler? Kredi, Mevduat ve Dövize Yansımaları](https://parafomo.com/blog/tcmb-faiz-karari-nasil-etkiler/)
