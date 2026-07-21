@@ -1,17 +1,8 @@
 {
-  "updated": "2026-07-20",
+  "updated": "2026-07-21",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-07-17",
-      "time": "12:00",
-      "region": "EUR",
-      "impact": "High",
-      "title": "CPI (YoY) (Jun)",
-      "source": "investing",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
     {
       "date": "2026-07-21",
       "time": "6:00am",
