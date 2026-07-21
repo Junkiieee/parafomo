@@ -4,6 +4,113 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-21 — Emeklilikte Ne Kadar Paraya İhtiyacın Var? Gerçekçi Hesap Rehberi
+
+**Yayınlanan yazı:** [Emeklilikte Ne Kadar Paraya İhtiyacın Var? Gerçekçi Hesap Rehberi](https://parafomo.com/blog/emeklilik-icin-ne-kadar-para/)
+Kategori: Emeklilik | Hedef sorgu: "emeklilik için ne kadar para" | ~1.200 kelime
+Kaynak: Evergreen backlog
+
+---
+
+### X (Twitter) Thread Taslağı
+
+"Emeklilik için ne kadar para lazım?" sorusunu hiç hesapladın mı?
+
+Çoğu insan bunu emekliliğe birkaç yıl kala soruyor. Çok geç.
+
+İşte gerçekçi formül 👇
+
+1/ Temel mantık şu:
+Emeklilikte istediğin aylık geliri belirle.
+SGK maaşını düş.
+Kalan = "emeklilik açığın"
+
+Bu açığı kapatacak birikimi biriktirmen lazım.
+
+2/ Türkiye'de güvenli kural: 33x
+Klasik %4 kuralı ABD için, düşük enflasyon varsayımıyla.
+Türkiye'de daha muhafazakâr yaklaş:
+→ Yıllık emeklilik açığın × 33 = Hedef birikim
+
+3/ Örnek hesap:
+Aylık 30.000 TL harcamak istiyorsun.
+SGK maaşı: 12.000 TL
+Açık: 18.000 TL/ay → yılda 216.000 TL
+× 33 = 7.128.000 TL özel birikim hedefi.
+
+4/ Yaşa göre birikim kontrolü:
+30 yaş → yıllık gelir kadar birikim
+40 yaş → gelirin 3 katı
+50 yaş → gelirin 6 katı
+60 yaş → gelirin 8–10 katı
+Gerisindeysen paniklemek değil, hızlanmak lazım.
+
+5/ En büyük 4 risk:
+→ Uzun yaşam (plan yetmeyebilir)
+→ Sağlık giderleri (ileri yaşta artar)
+→ Enflasyon şoku (TL bazlı portföy erir)
+→ Sıra riski (emekliliğin ilk yıllarında piyasa düşüşü)
+
+6/ Erken başlamanın gücü:
+30'da başlamak 50'de başlamaktan 10 kat daha kolay.
+Bileşik getiri zaman ister. Zaman ise ertelemekle geçer.
+
+Tam rehber: parafomo.com/blog/emeklilik-icin-ne-kadar-para/
+
+#Emeklilik #EmeklilikPlanı #ParaYönetimi #KişiselFinans #ParaFOMO
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Slide 1 — Kapak:**
+Emeklilikte Ne Kadar Paraya İhtiyacın Var?
+Türkiye koşullarında gerçekçi emeklilik hesabı 📊
+
+**Slide 2:**
+Temel formül:
+(Hedef aylık gelir – SGK maaşı) × 12 × 33
+= Özel birikim hedefiniz
+
+Neden 33? Türkiye'de enflasyon %4 kuralını riskli kılıyor.
+
+**Slide 3:**
+3 farklı yaşam standardı için tahmini hedef:
+🏠 Mütevazı (küçük şehir): ~6 milyon TL
+🏙️ Orta (büyükşehir): ~12 milyon TL
+✈️ Konforlu (seyahat, sağlık dahil): ~22 milyon TL
+
+*2026 tahmini, enflasyonla güncellenmeli
+
+**Slide 4:**
+Yaşa göre kontrol noktaları:
+30 yaş → 1x yıllık gelir
+40 yaş → 3x yıllık gelir
+50 yaş → 6x yıllık gelir
+60 yaş → 8–10x yıllık gelir
+
+**Slide 5:**
+Göz ardı edilmeyecek 4 risk:
+❗ Uzun yaşam riski
+❗ Sağlık giderleri
+❗ Enflasyon şoku
+❗ Erken emeklilik yıllarında piyasa düşüşü
+
+**Slide 6 — CTA:**
+SGK maaşınla açıkla arasındaki farkı hesapla.
+Tam rehber ve adım adım formül bio linkten 🔗
+
+#Emeklilik #EmeklilikPlanı #ParaFOMO #FinansalPlanlama #SGK #BES #TasarrufHedefi
+
+---
+
+### ✅ Bugün senin yapman gerekenler
+
+1. **Thread'i X'te paylaş** — "emeklilik için ne kadar para" sorusu yüksek arama hacmine sahip; kişisel finans kitlesi bu içeriği çok paylaşır.
+2. **Instagram carousel'ini paylaş** — 6 slayt formatını kullan; emeklilik/finans Telegram veya Facebook gruplarında değer katarak paylaş (doğrudan reklam değil, faydalı bilgi olarak).
+
+---
+
 ## 2026-07-20 — Kriz Döneminde Bütçe Nasıl Ayakta Tutulur? Acil Finansal Plan
 
 **Yayınlanan yazı:** [Kriz Döneminde Bütçe Nasıl Ayakta Tutulur? Acil Finansal Plan](https://parafomo.com/blog/kriz-doneminde-butce-nasil-yonetilir/)

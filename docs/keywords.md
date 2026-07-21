@@ -31,7 +31,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Altın çeşitleri: gram, çeyrek, ons, ziynet farkı — `Yatırım` — hedef: "altın çeşitleri farkı"
 - [x] Yatırım fonu nedir, nasıl seçilir? — `Yatırım` — hedef: "yatırım fonu nedir"
 - [x] Acil durumda bütçeyi nasıl ayakta tutarsın? — `Kişisel Finans` — hedef: "kriz döneminde bütçe"
-- [ ] Emeklilikte ne kadar paraya ihtiyacın var? — `Emeklilik` — hedef: "emeklilik için ne kadar para"
+- [x] Emeklilikte ne kadar paraya ihtiyacın var? — `Emeklilik` — hedef: "emeklilik için ne kadar para"
 - [ ] Hisse senedi temettü takvimi nasıl okunur? — `Borsa` — hedef: "temettü takvimi"
 - [ ] Vergi avantajlı yatırım araçları — `Yatırım` — hedef: "vergi avantajlı yatırım"
 - [ ] NFT nedir, yatırım mantıklı mı? — `Kripto` — hedef: "nft nedir"
@@ -86,3 +86,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Altın çeşitleri: gram, çeyrek, ons, ziynet farkı — `altin-cesitleri-farki` (backlog: evergreen yatırım)
 - [x] Yatırım fonu nedir, nasıl seçilir? — `yatirim-fonu-nedir-nasil-secilir` (backlog: evergreen yatırım)
 - [x] Acil durumda bütçeyi nasıl ayakta tutarsın? — `kriz-doneminde-butce-nasil-yonetilir` (backlog: evergreen kişisel finans)
+- [x] Emeklilikte ne kadar paraya ihtiyacın var? — `emeklilik-icin-ne-kadar-para` (backlog: evergreen emeklilik)
