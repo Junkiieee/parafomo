@@ -17,6 +17,23 @@ faq:
     a: "CPI tüm mal ve hizmetleri kapsar; Çekirdek CPI gıda ve enerji gibi oynak kalemleri dışarıda bırakır. Bank of England faiz kararlarında çekirdek CPI'ı daha belirleyici bulur."
   - q: "Bank of England İngiltere CPI'ı nasıl kullanır?"
     a: "Bank of England'ın resmi enflasyon hedefi yüzde 2'dir. CPI bu hedefin sürekli üzerinde kalırsa faiz artışı, altında kalırsa indirim ihtimali güçlenir. Para Politikası Komitesi (MPC) kararlarında CPI ana referans noktasıdır."
+shorts:
+  - "İngiltere enflasyonu seni hiç ilgilendirmez mi sanıyorsun?"
+  - "Bank of England, CPI verisi beklentinin üzerinde gelince faiz artırır ve sterlin değer kazanarak küresel sermaye akışlarının yönünü değiştirir."
+  - "İngiltere'de faiz yükselince gelişmekte olan ülkelere akan yabancı sermaye azalır ve Türkiye de bu dalgadan doğrudan nasibini alır."
+  - "Sterlin güçlendiğinde veya zayıfladığında Türk yatırımcının döviz sepeti, hisse portföyü ve emtia pozisyonları bunların hepsinden etkilenir."
+  - "Peki 22 Temmuz'daki CPI verisi piyasaları hangi yöne çekecek? Kanala abone ol, küresel verileri Türkçe sade dille anlatıyoruz. Daha fazlası için parafomo.com'a gel."
+shorts_broll:
+  - "Bank of England interest rate decision"
+  - "global stock market trading screen"
+  - "turkish lira exchange rate fluctuation"
+  - "inflation consumer prices rising graph"
+shorts_visuals:
+  - "concept|economic data surprise inflation shock"
+  - "place|Bank of England"
+  - "concept|emerging market capital outflow stock chart"
+  - "object|turkish lira banknotes"
+  - "concept|financial news website laptop screen"
 ---
 
 22 Temmuz 2026'da İngiltere'nin Haziran ayı CPI enflasyon verisi açıklanıyor. Peki bu rakam neden küresel piyasaları bu kadar heyecanlandırıyor, sterline nasıl yansıyor ve Türk yatırımcısı bu veriden ne anlamalı? **İngiltere CPI nedir** sorusunu ve pratik etkilerini adım adım ele alıyorum.
