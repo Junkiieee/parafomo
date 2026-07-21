@@ -1,0 +1,59 @@
+{
+  "slug": "gram-altin-hesabi-gercek-altin-degil",
+  "title": "Gram Altın Hesabı Gerçek Altın Değil",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Bankadaki gram altın hesabı fiziksel altın sahipliği değil. Spread maliyeti ve gerçek mülkiyet farkını net anlıyoruz.",
+  "tags": [
+    "gram altın",
+    "altın hesabı",
+    "altın yatırımı",
+    "finansal okuryazarlık",
+    "banka",
+    "yatırım tüyoları",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Bankadaki gram altın, aslında senin değil.",
+      "visual": {
+        "type": "concept",
+        "query": "bank app smartphone gold account screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Banka uygulamasından gram altın satın aldığında fiziksel altın almıyorsun. Hesabında görünen sadece bir sayı — bankaya karşı bir talep hakkı, gerçek bir külçe değil.",
+      "visual": {
+        "type": "concept",
+        "query": "banking app digital account balance numbers screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl darbe spread. Her alım-satımda yüzde bir ila iki arası kaybediyorsun — fiyat hareket etmeden önce. 10.000 TL yatırdığında 100-200 TL zaten gitti.",
+      "visual": {
+        "type": "concept",
+        "query": "money coins falling loss red arrow down chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fiziksel gram altın kuyumcuda nakde dönüşüyor, elde tutuluyor, miras kalıyor. Banka hesabındaki altın ise tek bir kurumun güvenilirliğine bağlı. Fark küçük görünür, uzun vadede büyük.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins physical hand close up"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki fiziksel altın almak neden herkesin sandığı kadar basit değil? Bunu da açıklıyoruz. Abone ol — her gün 60 saniyede net bir analiz, bir tanesini bile kaçırma.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification bell phone screen"
+      }
+    }
+  ]
+}
