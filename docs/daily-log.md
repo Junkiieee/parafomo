@@ -66,6 +66,217 @@ Detaylı analiz → parafomo.com/blog/ingiltere-cpi-nedir-sterlin-etkisi/
 
 ---
 
+## 2026-07-21 — Emeklilikte Ne Kadar Paraya İhtiyacın Var? Gerçekçi Hesap Rehberi
+
+**Yayınlanan yazı:** [Emeklilikte Ne Kadar Paraya İhtiyacın Var? Gerçekçi Hesap Rehberi](https://parafomo.com/blog/emeklilik-icin-ne-kadar-para/)
+Kategori: Emeklilik | Hedef sorgu: "emeklilik için ne kadar para" | ~1.200 kelime
+Kaynak: Evergreen backlog
+
+---
+
+### X (Twitter) Thread Taslağı
+
+"Emeklilik için ne kadar para lazım?" sorusunu hiç hesapladın mı?
+
+Çoğu insan bunu emekliliğe birkaç yıl kala soruyor. Çok geç.
+
+İşte gerçekçi formül 👇
+
+1/ Temel mantık şu:
+Emeklilikte istediğin aylık geliri belirle.
+SGK maaşını düş.
+Kalan = "emeklilik açığın"
+
+Bu açığı kapatacak birikimi biriktirmen lazım.
+
+2/ Türkiye'de güvenli kural: 33x
+Klasik %4 kuralı ABD için, düşük enflasyon varsayımıyla.
+Türkiye'de daha muhafazakâr yaklaş:
+→ Yıllık emeklilik açığın × 33 = Hedef birikim
+
+3/ Örnek hesap:
+Aylık 30.000 TL harcamak istiyorsun.
+SGK maaşı: 12.000 TL
+Açık: 18.000 TL/ay → yılda 216.000 TL
+× 33 = 7.128.000 TL özel birikim hedefi.
+
+4/ Yaşa göre birikim kontrolü:
+30 yaş → yıllık gelir kadar birikim
+40 yaş → gelirin 3 katı
+50 yaş → gelirin 6 katı
+60 yaş → gelirin 8–10 katı
+Gerisindeysen paniklemek değil, hızlanmak lazım.
+
+5/ En büyük 4 risk:
+→ Uzun yaşam (plan yetmeyebilir)
+→ Sağlık giderleri (ileri yaşta artar)
+→ Enflasyon şoku (TL bazlı portföy erir)
+→ Sıra riski (emekliliğin ilk yıllarında piyasa düşüşü)
+
+6/ Erken başlamanın gücü:
+30'da başlamak 50'de başlamaktan 10 kat daha kolay.
+Bileşik getiri zaman ister. Zaman ise ertelemekle geçer.
+
+Tam rehber: parafomo.com/blog/emeklilik-icin-ne-kadar-para/
+
+#Emeklilik #EmeklilikPlanı #ParaYönetimi #KişiselFinans #ParaFOMO
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Slide 1 — Kapak:**
+Emeklilikte Ne Kadar Paraya İhtiyacın Var?
+Türkiye koşullarında gerçekçi emeklilik hesabı 📊
+
+**Slide 2:**
+Temel formül:
+(Hedef aylık gelir – SGK maaşı) × 12 × 33
+= Özel birikim hedefiniz
+
+Neden 33? Türkiye'de enflasyon %4 kuralını riskli kılıyor.
+
+**Slide 3:**
+3 farklı yaşam standardı için tahmini hedef:
+🏠 Mütevazı (küçük şehir): ~6 milyon TL
+🏙️ Orta (büyükşehir): ~12 milyon TL
+✈️ Konforlu (seyahat, sağlık dahil): ~22 milyon TL
+
+*2026 tahmini, enflasyonla güncellenmeli
+
+**Slide 4:**
+Yaşa göre kontrol noktaları:
+30 yaş → 1x yıllık gelir
+40 yaş → 3x yıllık gelir
+50 yaş → 6x yıllık gelir
+60 yaş → 8–10x yıllık gelir
+
+**Slide 5:**
+Göz ardı edilmeyecek 4 risk:
+❗ Uzun yaşam riski
+❗ Sağlık giderleri
+❗ Enflasyon şoku
+❗ Erken emeklilik yıllarında piyasa düşüşü
+
+**Slide 6 — CTA:**
+SGK maaşınla açıkla arasındaki farkı hesapla.
+Tam rehber ve adım adım formül bio linkten 🔗
+
+#Emeklilik #EmeklilikPlanı #ParaFOMO #FinansalPlanlama #SGK #BES #TasarrufHedefi
+
+---
+
+### ✅ Bugün senin yapman gerekenler
+
+1. **Thread'i X'te paylaş** — "emeklilik için ne kadar para" sorusu yüksek arama hacmine sahip; kişisel finans kitlesi bu içeriği çok paylaşır.
+2. **Instagram carousel'ini paylaş** — 6 slayt formatını kullan; emeklilik/finans Telegram veya Facebook gruplarında değer katarak paylaş (doğrudan reklam değil, faydalı bilgi olarak).
+
+---
+
+## 2026-07-20 — Kriz Döneminde Bütçe Nasıl Ayakta Tutulur? Acil Finansal Plan
+
+**Yayınlanan yazı:** [Kriz Döneminde Bütçe Nasıl Ayakta Tutulur? Acil Finansal Plan](https://parafomo.com/blog/kriz-doneminde-butce-nasil-yonetilir/)
+Kategori: Kişisel Finans | Hedef sorgu: "kriz döneminde bütçe" | ~1.150 kelime
+Kaynak: Evergreen backlog
+
+---
+
+### X (Twitter) Thread Taslağı
+
+İş kaybı. Ani sağlık gideri. Ekonomik belirsizlik.
+
+Kriz döneminde bütçeyi ayakta tutmak için 8 pratik adım 👇
+
+1/ İlk adım: Tabloyu görmek
+Paniklemeden önce şunu yaz:
+→ Aylık zorunlu giderlerin ne kadar?
+→ Elinizde kaç aylık nakit var?
+Belirsizlik, rakamlardan çok daha tehlikeli.
+
+2/ Harcamaları 3 kategoriye ayır:
+✅ Zorunlu → kira, fatura, gıda
+⏸️ Ertelenebilir → bazı sigortalar, üyelikler
+❌ Kesilebilir → abonelikler, dışarıda yemek, eğlence
+"Kesilebilir"den başla.
+
+3/ Abonelikleri dondur
+Ortalama kişinin farkında olmadığı 3-5 aktif aboneliği var.
+Banka ekstreni tara, tümünü iptal et veya duraklat.
+Kriz geçince yeniden açarsın.
+
+4/ Borç için bankana ulaş
+Konut kredisi, araç finansmanı için yapılandırma iste.
+Bankalar çoğunlukla ödeme erteleme sunar.
+Sormadan alamazsın.
+
+5/ Kriz bütçesini haftalık takip et
+Aylık bütçe kriz döneminde çok geniş bir ufuktur.
+Her hafta başında: "Bu hafta ne çıkar, ne girer?" sorusunu sor.
+
+6/ Nakit = kral
+Kriz döneminde birikimini borsaya sokma.
+Piyasa tam o anda aşağı gidebilir.
+Nakit ve likit araçlar öncelik.
+
+7/ Ek gelir arayışında aktif ol
+Serbest çalışma, ikinci el satış, kısa dönem iş…
+Küçük miktarlar bile kriz bütçesinde fark yaratır.
+
+8/ Kriz geçince: Önce acil fonu doldur
+Kriz onu kullandıysa, ilk öncelik odur.
+Sonra kademeli normalize et.
+
+Tam rehber: parafomo.com/blog/kriz-doneminde-butce-nasil-yonetilir/
+
+#KrizDönemi #Bütçe #ParaYönetimi #KişiselFinans #ParaFOMO
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Slide 1 — Kapak:**
+Kriz Döneminde Bütçe Nasıl Ayakta Tutulur?
+İş kaybı, sağlık gideri, ekonomik belirsizlik — 8 adımda acil finansal plan 💡
+
+**Slide 2:**
+İlk 48 saat en kritik.
+Paniklemeden önce şunu yaz:
+📋 Zorunlu aylık giderlerin
+💰 Elindeki mevcut nakit
+📅 Kaç ay idare edebilirsin?
+
+**Slide 3:**
+Harcamalarını 3 gruba ayır:
+✅ Zorunlu → öde (kira, fatura, gıda)
+⏸️ Ertelenebilir → ertele
+❌ Kesilebilir → hemen kes (abonelikler, dışarıda yemek)
+
+**Slide 4:**
+Yaygın hatalar:
+❌ "Bu kadar küçük ne önemi var" demek
+❌ Tabloyu görmekten kaçınmak
+❌ Nakit yerine borsaya yönelmek
+❌ Hane içinde iletişim kurmamak
+
+**Slide 5:**
+Kriz geçince:
+1️⃣ Önce acil durum fonunu yeniden doldur
+2️⃣ Kestiklerini kademeli aç
+3️⃣ Krizde edindiğin alışkanlıkları koru
+
+**Slide 6 — CTA:**
+Tam rehber bio linkten 🔗
+#KrizDönemi #BütçeYönetimi #ParaYönetimi #AcilFinansPlan #KişiselFinans #ParaFOMO
+
+---
+
+### ✅ Bugün senin yapman gerekenler
+
+1. **Thread'i X'te paylaş** — kriz/tasarruf içerikleri yüksek etkileşim alır; thread formatı özellikle iyi çalışır.
+2. **Instagram carousel'ini paylaş** — 6 slayt formatında yukarıdaki metni kullan; kişisel finans Telegram gruplarında veya Facebook gruplarında değer katarak paylaş.
+
+---
+
 ## 2026-07-20 — ECB Faiz Kararı Nedir? Euro Bölgesi Faizi TL ve Borsayı Nasıl Etkiler?
 
 **Yayınlanan yazı:** [ECB Faiz Kararı Nedir? Euro Bölgesi Faizi TL ve Borsayı Nasıl Etkiler?](https://parafomo.com/blog/ecb-faiz-karari-nedir-etkisi/)
