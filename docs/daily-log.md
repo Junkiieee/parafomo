@@ -4,6 +4,68 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-21 — İngiltere CPI Nedir? Enflasyon Verisi ve Sterlinin Türk Yatırımcısına Etkisi
+
+**Yayınlanan yazı:** [İngiltere CPI Nedir? Enflasyon Verisi ve Sterlinin Türk Yatırımcısına Etkisi](https://parafomo.com/blog/ingiltere-cpi-nedir-sterlin-etkisi/)
+Kategori: Ekonomi | Hedef sorgu: "ingiltere cpi nedir" | ~1.150 kelime
+Neden bugün: 22 Temmuz 2026 İngiltere CPI verisi açıklanıyor 🔴 High etkili, yarın.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+🇬🇧 Yarın sabah 09:00'da İngiltere enflasyon verisi (CPI) açıklanıyor.
+
+Bu rakam sterlin, euro ve dolayısıyla TL'yi etkiler. Yatırımcı olarak ne bilmen gerekiyor? 🧵
+
+1/ İngiltere CPI nedir?
+ONS'un aylık açıkladığı tüketici fiyat endeksi. Bank of England'ın hedefi %2 — bu hedeften her sapma faiz beklentisini değiştirir.
+
+2/ Beklentinin üzerinde gelirse:
+• Bank of England faiz artırabilir
+• Sterlin değer kazanabilir (GBP/USD ↑)
+• Küresel faiz baskısı → gelişmekte olan piyasalara baskı → TL etkilenebilir
+
+3/ Beklentinin altında gelirse:
+• Faiz indirimi kapısı aralanır
+• Sterlin zayıflar
+• Risk iştahı artabilir → TL'ye hafif destek
+
+4/ Türk yatırımcısı için pratik ipucu:
+Açıklama anında GBP/USD paritesini izle. 30 dk sonra USD/TRY tepkisine bak — küresel risk iştahının yansıması oraya gelir.
+
+5/ Çekirdek CPI'a özellikle dikkat:
+Gıda ve enerji hariç çekirdek veri, merkez bankası kararları için asıl belirleyicidir.
+
+Detaylı analiz → parafomo.com/blog/ingiltere-cpi-nedir-sterlin-etkisi/
+
+#İngiltere #CPI #sterlin #enflasyon #parafomo
+
+---
+
+### Instagram Post Metni
+
+📊 YARIN SABAH İZLE: İngiltere enflasyon verisi açıklanıyor!
+
+🇬🇧 Saat 09:00'da açıklanacak İngiltere CPI rakamı küresel piyasalarda nasıl bir etki yaratır?
+
+✅ Beklentinin üzeri → sterlin güçlenir, faiz artışı beklentisi ↑
+✅ Beklentinin altı → sterlin zayıflar, risk iştahı artabilir
+✅ Türk yatırımcısı: USD/TRY üzerinden dolaylı etki
+
+💡 Veriyi nasıl okuyacağını ve Türk yatırımcısını nasıl etkileyeceğini adım adım anlattık 👉 Link bio'da!
+
+#ingiltere #enflasyon #sterlin #cpi #bankofengland #yatirim #ekonomi #parafomo #finans #doviz
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **Sosyal paylaşım:** X thread taslağını ve Instagram postunu bugün yayınla — veri yarın açıklanıyor, bugün paylaşmak tam zamanlaması.
+2. **Takip:** Yarın sabah 09:00'da İngiltere CPI verisini takip et; açıklanan rakamı, piyasa beklentisiyle karşılaştır. İstersen sonucu X'te anlık yorum olarak paylaş ("CPI beklentinin X puan üzerinde/altında geldi, sterlin şu tepkiyi verdi").
+
+---
+
 ## 2026-07-20 — ECB Faiz Kararı Nedir? Euro Bölgesi Faizi TL ve Borsayı Nasıl Etkiler?
 
 **Yayınlanan yazı:** [ECB Faiz Kararı Nedir? Euro Bölgesi Faizi TL ve Borsayı Nasıl Etkiler?](https://parafomo.com/blog/ecb-faiz-karari-nedir-etkisi/)
