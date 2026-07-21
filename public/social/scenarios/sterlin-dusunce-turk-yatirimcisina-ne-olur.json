@@ -1,0 +1,59 @@
+{
+  "slug": "sterlin-dusunce-turk-yatirimcisina-ne-olur",
+  "title": "Sterlin Düşünce Türk Yatırımcısına Ne Olur?",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "İngiltere işsizlik yardımı verisi (Claimant Count) arttığında sterlin değer kaybeder; bu zincirleme etki dolar güçlenmesi ve TL baskısı olarak Türk yatırımcısına dokunur.",
+  "tags": [
+    "sterlin",
+    "GBP",
+    "İngiltere ekonomisi",
+    "işsizlik",
+    "dolar TL",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "İngiltere işsizlik verisi açıklandı, senin paran nerede?",
+      "visual": {
+        "type": "place",
+        "query": "Bank of England building London"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Claimant Count Change, İngiltere'de kaç kişinin işsizlik yardımı almaya başladığını ölçüyor. Bu sayı artınca sterlin satılıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "unemployment benefits office queue people"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl baskı burada başlıyor: sterlin zayıflayınca yatırımcılar dolara koşuyor, TL üzerindeki baskı artıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "dollar currency safe haven financial crisis"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Sonuç şu: bu veri kötü geldiğinde dolar/TL yükselebilir, 100 bin TL'si olan biri için birkaç günde ciddi fark anlamına gelebilir.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars price chart rising"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Önümüzdeki ay bu veri neye işaret edecek? Takipte kal, abone ol — her gün 60 saniyede bir piyasa mekanizmasını gerçek rakamlarla anlatıyoruz.",
+      "visual": {
+        "type": "concept",
+        "query": "financial charts analysis screen monitor"
+      }
+    }
+  ]
+}
