@@ -39,6 +39,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] İngiltere CPI Nedir? Enflasyon Verisi ve Sterlinin Türk Yatırımcısına Etkisi — `ingiltere-cpi-nedir-sterlin-etkisi` (takvim: 22 Temmuz 2026 İngiltere CPI açıklaması)
 - [x] ECB Faiz Kararı Nedir? Euro Bölgesi Faizi TL ve Borsayı Nasıl Etkiler? — `ecb-faiz-karari-nedir-etkisi` (takvim: 23 Temmuz 2026 ECB faiz kararı)
 - [x] TCMB Faiz Kararı Paranı Nasıl Etkiler? Kredi, Mevduat ve Dövize Yansımaları — `tcmb-faiz-karari-nasil-etkiler` (takvim: 23 Temmuz 2026 TCMB PPK faiz kararı)
 - [x] Altın Çeşitleri Nelerdir? Gram, Çeyrek, Ons ve Ziynet Farkı — `altin-cesitleri-gram-ceyrek-ons-ziynet` (backlog: evergreen yatırım)
