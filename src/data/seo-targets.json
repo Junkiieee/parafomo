@@ -1,47 +1,49 @@
 {
-  "generated_utc": "2026-07-20T08:45:27Z",
+  "generated_utc": "2026-07-21T08:45:30Z",
   "boost": [
     "nfp-nedir-abd-tarim-disi-istihdam",
     "endeks-fonu-nedir",
-    "gdp-gsyih-nedir-nasil-yorumlanir",
     "abd-cpi-enflasyon-verisi-nedir",
+    "gdp-gsyih-nedir-nasil-yorumlanir",
     "fomc-toplanti-tutanaklari-nedir",
     "ism-pmi-nedir-abd-uretim-verisi",
     "acil-durum-fonu-nedir",
+    "abd-perakende-satislari-nedir",
     "tufe-enflasyon-verisi-nasil-okunur",
     "risk-getiri-iliskisi",
     "finansal-ozgurluk-nedir-fire",
     "ethereum-nedir",
     "dca-nedir-maliyet-ortalamasi",
-    "abd-perakende-satislari-nedir",
-    "faiz-nedir-ekonomiyi-nasil-etkiler",
     "fk-orani-nedir",
-    "temettu-hisseleri-pasif-gelir",
+    "faiz-nedir-ekonomiyi-nasil-etkiler",
     "temel-analiz-teknik-analiz-farki",
+    "temettu-hisseleri-pasif-gelir",
     "eurobond-nedir",
-    "kredi-karti-borcundan-kurtulma"
+    "kredi-karti-borcundan-kurtulma",
+    "bist-100-nedir-nasil-yatirim-yapilir"
   ],
   "near_miss": [
     "nfp-nedir-abd-tarim-disi-istihdam",
     "endeks-fonu-nedir",
-    "gdp-gsyih-nedir-nasil-yorumlanir",
     "abd-cpi-enflasyon-verisi-nedir",
+    "gdp-gsyih-nedir-nasil-yorumlanir",
     "fomc-toplanti-tutanaklari-nedir",
     "ism-pmi-nedir-abd-uretim-verisi",
     "acil-durum-fonu-nedir",
+    "abd-perakende-satislari-nedir",
     "tufe-enflasyon-verisi-nasil-okunur",
     "risk-getiri-iliskisi",
     "finansal-ozgurluk-nedir-fire",
     "ethereum-nedir",
-    "dca-nedir-maliyet-ortalamasi",
-    "abd-perakende-satislari-nedir"
+    "dca-nedir-maliyet-ortalamasi"
   ],
   "buried": [
-    "faiz-nedir-ekonomiyi-nasil-etkiler",
     "fk-orani-nedir",
-    "temettu-hisseleri-pasif-gelir",
+    "faiz-nedir-ekonomiyi-nasil-etkiler",
     "temel-analiz-teknik-analiz-farki",
+    "temettu-hisseleri-pasif-gelir",
     "eurobond-nedir",
-    "kredi-karti-borcundan-kurtulma"
+    "kredi-karti-borcundan-kurtulma",
+    "bist-100-nedir-nasil-yatirim-yapilir"
   ]
 }
