@@ -32,13 +32,14 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Yatırım fonu nedir, nasıl seçilir? — `Yatırım` — hedef: "yatırım fonu nedir"
 - [x] Acil durumda bütçeyi nasıl ayakta tutarsın? — `Kişisel Finans` — hedef: "kriz döneminde bütçe"
 - [x] Emeklilikte ne kadar paraya ihtiyacın var? — `Emeklilik` — hedef: "emeklilik için ne kadar para"
-- [ ] Hisse senedi temettü takvimi nasıl okunur? — `Borsa` — hedef: "temettü takvimi"
+- [x] Hisse senedi temettü takvimi nasıl okunur? — `Borsa` — hedef: "temettü takvimi"
 - [ ] Vergi avantajlı yatırım araçları — `Yatırım` — hedef: "vergi avantajlı yatırım"
 - [ ] NFT nedir, yatırım mantıklı mı? — `Kripto` — hedef: "nft nedir"
 - [ ] Para psikolojisi: zengin edenlerin alışkanlıkları — `Kişisel Finans` — hedef: "para yönetimi alışkanlıkları"
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] Hisse senedi temettü takvimi nasıl okunur? — `temettu-takvimi-nasil-okunur` (backlog: evergreen borsa)
 - [x] Eurobond Fonu mu Mevduat mı? Hangisi Daha Mantıklı? — `eurobond-fonu-mu-mevduat-mi` (GSC fırsatı: "eurobond fonu mu mevduat mı")
 - [x] İngiltere CPI Nedir? Enflasyon Verisi ve Sterlinin Türk Yatırımcısına Etkisi — `ingiltere-cpi-nedir-sterlin-etkisi` (takvim: 22 Temmuz 2026 İngiltere CPI açıklaması)
 - [x] ECB Faiz Kararı Nedir? Euro Bölgesi Faizi TL ve Borsayı Nasıl Etkiler? — `ecb-faiz-karari-nedir-etkisi` (takvim: 23 Temmuz 2026 ECB faiz kararı)

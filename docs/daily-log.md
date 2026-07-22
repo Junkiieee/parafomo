@@ -4,6 +4,68 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-22 — Hisse Senedi Temettü Takvimi Nasıl Okunur? Tarihler ve Stratejiler
+
+**Yayınlanan yazı:** [Hisse Senedi Temettü Takvimi Nasıl Okunur? Tarihler ve Stratejiler](https://parafomo.com/blog/temettu-takvimi-nasil-okunur/)
+Kategori: Borsa | Hedef sorgu: "temettü takvimi" | ~1.200 kelime
+Kaynak: Evergreen backlog
+
+---
+
+### X (Twitter) Thread Taslağı
+
+BIST'te temettü almak isteyip hisseyi yanlış günde alanlar var. Sonuç: Bir yıl temettüsüz bekleme.
+
+Temettü takvimini nasıl okursun? 4 kritik tarih: 🧵
+
+1/ Genel Kurul Tarihi
+Şirket ortakları hisse başı kaç TL temettü dağıtılacağına burada oy verir. Karar buradan çıkar.
+
+2/ Hak Tarihi (Kayıt Tarihi)
+Bu tarih itibarıyla portföyünde kayıtlı olan hissedarlar o dönem temettüsünü alır.
+
+3/ Ex-Temettü (Ayrım) Tarihi ← EN ÖNEMLİ
+Bu tarihte veya sonrasında hisse alanlar temettüsüz kalır.
+→ En az 1 iş günü önce almalısın.
+
+4/ Ödeme Tarihi
+Temettü tutarı aracı kurum hesabına geçer. Brüt rakamdan %15 stopaj düşüldüğünü unutma.
+
+📌 Pro tip: Ayrım gününde hisse "ucuzladı" diye alırsan o dönem temettüsünü alamazsın — bu fiyat düşüşü zaten temettüyü yansıtır.
+
+Tüm detaylar + gerçek takvim örneği → parafomo.com/blog/temettu-takvimi-nasil-okunur/
+
+#temettü #BIST #hissesenedi #yatırım #parafomo
+
+---
+
+### Instagram Post Metni
+
+📅 BIST'te temettü almak isteyenler dikkat!
+
+Temettü takvimindeki 4 kritik tarih:
+
+1️⃣ Genel Kurul → Temettü kararı burada alınır
+2️⃣ Hak/Kayıt Tarihi → Bu tarihte portföyde olan hissedarlar temettü alır
+3️⃣ Ex-Temettü (Ayrım) Tarihi → Bu günde veya sonrasında alanlar o dönemi kaçırır!
+4️⃣ Ödeme Tarihi → Para hesabına geçer
+
+💡 Altın kural: Hisseyi ayrım tarihinden EN AZ 1 iş günü önce al.
+💡 Brüt temettüden %15 stopaj düşülür — net rakamla hesapla.
+
+Temettü takvimi nasıl okunur, KAP'ta nasıl bulunur ve sık yapılan 5 hata için linke tıkla 👉 Bio'da!
+
+#temettu #bist #hissesenedi #borsa #yatirim #parafomo #borsaistanbul #temettutakvimi #pasifgelir #finans
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **Sosyal paylaşım:** X thread taslağını ve Instagram postunu bugün yayınla — temettü sezonu bitmeden evergreen konu için ideal zaman.
+2. **Topluluk paylaşımı:** İlgili bir borsa/yatırım grubu veya forumunda (Ekşi Sözlük, Reddit r/Turkey, Telegram finans grupları) bu yazıya değer katarak link bırak.
+
+---
+
 ## 2026-07-22 — Eurobond Fonu mu Mevduat mı? Hangisi Daha Mantıklı?
 
 **Yayınlanan yazı:** [Eurobond Fonu mu Mevduat mı? Hangisi Daha Mantıklı?](https://parafomo.com/blog/eurobond-fonu-mu-mevduat-mi/)
