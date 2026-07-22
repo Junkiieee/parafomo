@@ -17,6 +17,23 @@ faq:
     a: "Hayır. Yüksek temettü verimi bazen hisse fiyatının çok düşmesinden kaynaklanabilir. Şirketin kâr sürdürülebilirliğini, borç yapısını ve ödeme geçmişini mutlaka değerlendirin."
   - q: "Temettü hesabıma ne zaman geçer?"
     a: "Genel kurul kararı ve SPK onayı ardından belirlenen ödeme tarihi itibarıyla temettü aracı kurum hesaplarına aktarılır. Genellikle ödeme günü veya 1-2 iş günü içinde hesabınıza yansır."
+shorts:
+  - "Bir gün geç aldın; temettünün tümü gitti."
+  - "Temettü takviminde dört kritik tarih var ve ayrım tarihi en önemlisi; o günden itibaren hisse alanlar o dönem temettüsünü hiç alamaz."
+  - "Ayrım tarihinde hisse fiyatı temettü kadar düşer, bu normaldir; o gün alım yapan yatırımcı temettüsüz bir hisse tutmuş olur."
+  - "Temettüye hak kazanmak için hisseyi ayrım tarihinden en az bir iş günü önce portföyüne almış olmak zorundasın."
+  - "Hangi BIST hisselerinin temettü takvimi yaklaşıyor, merak ediyorsan abone ol; tüm analizleri parafomo.com'da yayınlıyoruz."
+shorts_broll:
+  - "dividend payment calendar schedule"
+  - "stock market trading screen"
+  - "investor portfolio analysis"
+  - "turkish lira banknotes"
+shorts_visuals:
+  - "concept|investor missing dividend payment regret"
+  - "place|Borsa İstanbul"
+  - "concept|stock price dropping chart screen"
+  - "concept|calendar deadline important date marked"
+  - "concept|investor checking phone stock portfolio app"
 ---
 
 "Bu hissenin temettü takvimi ne zaman, hisseyi ne zaman almalıyım?" sorusu BIST yatırımcılarının sık karıştırdığı konuların başında gelir. Temettü takvimini yanlış okuyunca ya temettü almayı kaçırırsınız ya da ayrım tarihinde alım yapıp temettüsüz hisse tutarsınız. Bu yazıda temettü takviminin nasıl okunduğunu, kritik tarihlerin ne anlama geldiğini ve takvimi doğru takip etmek için nelere dikkat etmeniz gerektiğini adım adım anlatıyoruz.
