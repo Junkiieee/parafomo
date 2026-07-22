@@ -17,6 +17,23 @@ faq:
     a: "Ne kadar erken başlanırsa o kadar iyi; bileşik getiri erken yatırımı katlar. 30 yaşında başlamak 50 yaşında başlamaktan çarpıcı biçimde kolaydır. Ama hiç başlamamaktan her yaşta başlamak iyidir — geç kaldım diye ertelemek en büyük hata."
   - q: "Türkiye'de emeklilik için yüzde 4 kuralı işe yarar mı?"
     a: "Yüzde 4 kuralı ABD'de düşük enflasyon varsayımıyla oluşturulmuştur. Türkiye'de çift haneli enflasyon dönemlerinde bu kural risklidir. Daha güvenli yaklaşım: döviz bazlı varlıklara ağırlık vermek, yüzde 3 çekiş oranını hedeflemek veya portföyün 33 katını birikim hedefi olarak almak."
+shorts:
+  - "Emeklilik için ne kadar biriktirmen gerektiğini biliyor musun?"
+  - "Türkiye'de enflasyon yüksek olduğundan yıllık harcamanın 33 katını hedeflemek çok daha güvenli bir stratejidir."
+  - "SGK maaşını hesaba katarsan özel birikim ihtiyacın ciddi biçimde düşer ve hedef rakam küçülür."
+  - "Emeklilikte sağlık giderleri belirgin biçimde artar; mevcut bütçene en az yüzde on beş ek pay hesapla."
+  - "Kendi emeklilik rakamını nasıl hesaplayacağını merak ediyorsan parafomo.com'da detaylı rehbere bak — kanala abone ol, finansal kararlarını verilerle ver."
+shorts_broll:
+  - "retirement savings nest egg money"
+  - "turkish lira banknotes wallet"
+  - "pension income elderly couple"
+  - "financial planning calculator notebook"
+shorts_visuals:
+  - "concept|retirement savings nest egg money jar"
+  - "concept|inflation money losing value over time"
+  - "concept|pension social security income check"
+  - "scene|elderly person doctor hospital visit"
+  - "scene|financial planning calculator notebook desk"
 ---
 
 "Emeklilik için ne kadar para gerekiyor?" sorusu çoğunlukla en son sorulan ama en önce sorulması gereken sorudur. Yoksa on yıllarca biriktirip "bu yeter mi?" kaygısıyla yaşlanmak kaçınılmaz olur. Bu yazıda emeklilik için ne kadar paraya ihtiyacın olduğunu Türkiye koşullarında gerçekçi biçimde hesaplıyoruz.
