@@ -1,0 +1,59 @@
+{
+  "slug": "londra-enflasyonu-altin-ve-dolara-neden-dokunuyor",
+  "title": "Londra Enflasyonu Altın ve Dolara Neden Dokunuyor?",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "İngiltere CPI verisi Bank of England'ın faiz yolunu yeniden şekillendiriyor; bu dolar endeksini ve dolayısıyla altını etkiliyor. Türk yatırımcısı için mekanizma burada.",
+  "tags": [
+    "ingiltere enflasyon",
+    "cpi gbp",
+    "dolar",
+    "altın",
+    "bank of england",
+    "faiz beklentisi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "İngiltere CPI verisi açıklandı; dolar neden umursar ki?",
+      "visual": {
+        "type": "building",
+        "query": "Bank of England London"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "İngiltere enflasyonu yüksek çıkınca Bank of England faiz indiremez; bu tek cümle dolar piyasasını saniyelerde etkiler.",
+      "visual": {
+        "type": "concept",
+        "query": "UK CPI inflation data chart screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama burada kritik bir dönüş var: Sterlin güçlenince dolar zayıflar; zayıf dolar altın fiyatını otomatik olarak yukarı iter.",
+      "visual": {
+        "type": "concept",
+        "query": "British pound dollar exchange rate forex chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Elinde gram altın ya da döviz tutan her Türk yatırımcısı Londra'daki bu veriyi takip etmeli; çünkü yön buradan çıkıyor.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars price chart rising"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bu mekanizma başka hangi ülkelerde aynı etkiyi yaratıyor, merak ediyor musun? Abone ol, her sabah bir dakikada tüm piyasa sana gelsin.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification bell smartphone"
+      }
+    }
+  ]
+}
