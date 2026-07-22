@@ -4,6 +4,76 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-22 — Eurobond Fonu mu Mevduat mı? Hangisi Daha Mantıklı?
+
+**Yayınlanan yazı:** [Eurobond Fonu mu Mevduat mı? Hangisi Daha Mantıklı?](https://parafomo.com/blog/eurobond-fonu-mu-mevduat-mi/)
+Kategori: Yatırım | Hedef sorgu: "eurobond fonu mu mevduat mı" | ~1.300 kelime
+Kaynak: GSC fırsatı (gösterim 3, sıra 39.7, tıklama 0)
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+Eurobond fonu mu, mevduat mı daha mantıklı? 🧵
+
+İki araç da "güvenli" görünüyor — ama getiri, risk ve esneklik açısından aralarında çok büyük farklar var.
+
+**Tweet 2:**
+📊 Mevduat:
+✅ BDDK güvencesi (limit dahilinde)
+✅ Anapara korumalı
+✅ Yüksek likidite
+❌ Getiri enflasyonu karşılamıyor
+
+**Tweet 3:**
+📈 Eurobond Fonu:
+✅ Mevduattan 1-3 puan fazla getiri potansiyeli
+✅ Minimum tutar yok (TEFAS'ta birkaç yüz TL)
+❌ Anapara garantisi yok
+❌ Faiz oranları değişince fon değeri sallanır
+
+**Tweet 4:**
+👉 Kural basit:
+- Kısa vadeli nakit → Mevduat
+- 2 yıl+ birikim → Eurobond fonu düşünülebilir
+- Acil rezerv → Mevduat (asla fona koyma)
+
+**Tweet 5:**
+Tam karşılaştırma tablosu ve hangi profil hangisini seçmeli → parafomo.com/blog/eurobond-fonu-mu-mevduat-mi
+
+#yatırım #mevduat #eurobond #paraFOMO
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Caption:**
+💰 Eurobond fonu mu, mevduat mı?
+
+Birikimini değerlendirmek istiyorsun ama hangisini seçeceğini bilemiyorsun — işte 30 saniyede karar:
+
+🏦 Mevduat seç eğer:
+→ 1 yıldan kısa vaden varsa
+→ Anapara kaybına tahammülün yoksa
+→ Parayı acil durumda çekmen gerekebilirse
+
+📊 Eurobond fonunu dene eğer:
+→ 2+ yıl dokunmayacağın birikimin varsa
+→ Mevduat getirisi yetersiz kalıyorsa
+→ 1.000 dolar eşiğine ulaşmadan eurobond piyasasına girmek istiyorsan
+
+Detaylı karşılaştırma (tablo dahil) → linkte 👆
+
+#eurobond #mevduat #yatırım #parabiriktirme #finansalözgürlük #TEFAS #paraFOMO
+
+---
+
+### Senin Yapman Gerekenler 📋
+
+1. **Paylaşımları yayınla:** X thread'ini ve Instagram carousel'ini bugün yayınla. Yazı canlıda: https://parafomo.com/blog/eurobond-fonu-mu-mevduat-mi/
+2. **Toplulukta paylaş:** "Kişisel Finans Türkiye" veya benzer bir Facebook/Reddit/forum grubunda "eurobond fonu mu mevduat mı" konuyu paylaş — organik tıklama için.
+
+---
+
 ## 2026-07-21 — İngiltere CPI Nedir? Enflasyon Verisi ve Sterlinin Türk Yatırımcısına Etkisi
 
 **Yayınlanan yazı:** [İngiltere CPI Nedir? Enflasyon Verisi ve Sterlinin Türk Yatırımcısına Etkisi](https://parafomo.com/blog/ingiltere-cpi-nedir-sterlin-etkisi/)
