@@ -4,65 +4,76 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
-## 2026-07-23 — Vergi Avantajlı Yatırım Araçları: Türkiye'de Yasal Vergi Tasarrufu Yolları
+## 2026-07-23 — Vergi Avantajlı Yatırım Araçları: Türkiye'de Yasal Vergi Tasarrufu
 
-**Yayınlanan yazı:** [Vergi Avantajlı Yatırım Araçları: Türkiye'de Yasal Vergi Tasarrufu Yolları](https://parafomo.com/blog/vergi-avantajli-yatirim-araclari/)
-Kategori: Yatırım | Hedef sorgu: "vergi avantajlı yatırım" | ~1.150 kelime
+**Yayınlanan yazı:** [Vergi Avantajlı Yatırım Araçları: Türkiye'de Yasal Vergi Tasarrufu](https://parafomo.com/blog/vergi-avantajli-yatirim-araclari/)
+Kategori: Yatırım | Hedef sorgu: "vergi avantajlı yatırım" | ~1.100 kelime
 Kaynak: Evergreen backlog
 
 ---
 
 ### X (Twitter) Thread Taslağı
 
-Aynı parayı yatırırken daha az vergi ödeyebilirsin. Yasal yollar var, çoğu insan bilmiyor.
+Aynı getiriyi sunan iki yatırım — biri %10, biri %0 stopaj öder.
+20 yılda fark: ek 1 yıllık kazanç kadar.
 
-Türkiye'de 5 vergi avantajlı yatırım aracı: 🧵
+Türkiye'de hangi araçlar sizi daha az vergilendirir? 🧵
 
-1/ BES — En güçlü silah
-Her 100 TL yatırdığında devlet 30 TL ekliyor.
-Üstüne bir de brüt ücretin %10'una kadar gelir vergisi matrahından düşüyor.
-→ Yüzde 27 vergi dilimindeysen 5.000 TL katkıya karşılık ~1.350 TL vergi iadesi + devlet katkısı.
+1/ BES: İlk günden bonus
+Devlet, ödediğiniz katkının %25'ini kendi hesabınıza ekler.
+Hiçbir piyasa bunu garanti edemez.
 
-2/ Hisse ağırlıklı yatırım fonu — Sıfır stopaj
-Portföyde %51+ BİST hissesi varsa stopaj: %0.
-Diğer fonlarda %10. BES'te ise sistem içindeyken hiç yok.
+2/ BIST hisse senedi
+Bireysel yatırımcılar için sermaye kazancı stopajı çok düşük.
+Mevduat faizine kıyasla net getiri daha yüksek olabiliyor.
 
-3/ Temettü — Yarısı vergisiz
-BIST hisselerinden aldığın temettünün %50'si gelir vergisinden muaf.
-Uzun vadeli hissedar için sessiz kazanç.
+3/ Devlet tahvili (DİBS)
+Özel sektör tahvilinden genellikle daha düşük stopaj.
+Güvenli + avantajlı ikili.
 
-4/ Devlet tahvili — Dövizden daha iyi stopaj
-DİBS faizine %10, döviz mevduatına %15 stopaj var.
-Aynı güvenlik, daha az vergi.
+4/ Hisse ağırlıklı yatırım fonu
+Düşük stopaj + otomatik kesinti → ayrı beyan yok.
+Para piyasası fonundan daha avantajlı olabilir.
 
-5/ Altın ve döviz mevduat — Dikkat
-%15 ile en yüksek stopaj bunlarda. "Güvenli liman" derken vergi yükünü unutma.
+5/ Karşılaştırma tablosu yazımızda:
+BES / hisse / DİBS / yatırım fonu / altın — hepsini yan yana koyduk.
+→ [Link]
 
-Karşılaştırma tablosu + hangisi sana uygun: [link]
+Vergi, getirinin sessiz aşındırıcısıdır.
+Yasal avantajları kullanmak bir seçenek değil, bir zorunluluktur. ✅
+
 ---
 
 ### Instagram Carousel / Post Metni
 
-**Post metni:**
+**Slayt 1 (Kapak):**
+"Aynı para, daha az vergi — yasal yollarla mümkün 🇹🇷💰"
 
-Türkiye'de yasal vergi tasarrufu yapmanın 5 yolu 👇
+**Slayt 2:**
+Neden önemli?
+%10 ile %0 stopaj arasındaki fark 20 yılda portföyünü ciddi etkiler.
 
-BES → Her 100 TL'ye devlet 30 TL ekliyor + vergi indirimi
-Hisse fonu → %51 BİST hissesi olan fondaki stopaj: %0
-Temettü → Gelirin yarısı gelir vergisinden muaf
-Devlet tahvili → Döviz mevduatından %5 daha az stopaj
-Döviz/altın mevduat → %15 stopajla en pahalısı
+**Slayt 3:**
+BES → Devlet %25 katkı koyar (piyasadan bağımsız!)
 
-Hangisi sana uygun? Linkteki tabloda karşılaştır 👆
+**Slayt 4:**
+BIST Hisse Senedi → Düşük sermaye kazancı stopajı (mevduata kıyasla avantajlı)
 
-#vergitasarrufu #yatırım #BES #borsa #kişiselfinans #türkiye #finansokuryazarlığı #parafomo
+**Slayt 5:**
+Devlet Tahvili + Yatırım Fonu → Rekabetçi stopaj, kolay işlem
+
+**Slayt 6:**
+Net getiri = Brüt getiri − Stopaj
+Doğru araç seçimi, kazancını doğrudan etkiler. Detaylar linkte!
+
+#vergitasarrufu #BES #yatırım #hissesenedi #devlettahvili #finansalözgürlük
 
 ---
 
-### Senin Yapman Gerekenler
+### Bugün Senin Yapman Gerekenler
 
-1. **X ve Instagram'da paylaş** — Thread ve post metni yukarıda hazır. Makale linki: `https://parafomo.com/blog/vergi-avantajli-yatirim-araclari/`
-2. **Finans topluluklarında paylaş** — "Vergi avantajlı yatırım" arayan kişilerin bulunduğu bir Facebook grubuna ya da Ekşi Sözlük'e konu başlığı açarak değer katıcı biçimde paylaşabilirsin.
+1. **Paylaşımı yayınla:** Yukarıdaki X thread taslağını ve Instagram carousel metnini hesaplarında paylaş. Instagram'da son slayda blog linkini ekle.
+2. **Toplulukta paylaş:** X'te "@parafomo" taglayan finans topluluklarında veya Ekşi Sözlük'te "vergi avantajlı yatırım" başlığında değer katarak bu yazıyı paylaş.
 
 ---
 

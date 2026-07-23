@@ -39,7 +39,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
-- [x] Vergi Avantajlı Yatırım Araçları: Türkiye'de Yasal Vergi Tasarrufu Yolları — `vergi-avantajli-yatirim-araclari` (backlog: evergreen yatırım)
+- [x] Vergi avantajlı yatırım araçları — `vergi-avantajli-yatirim-araclari` (backlog: evergreen yatırım)
 - [x] Hisse senedi temettü takvimi nasıl okunur? — `temettu-takvimi-nasil-okunur` (backlog: evergreen borsa)
 - [x] Eurobond Fonu mu Mevduat mı? Hangisi Daha Mantıklı? — `eurobond-fonu-mu-mevduat-mi` (GSC fırsatı: "eurobond fonu mu mevduat mı")
 - [x] İngiltere CPI Nedir? Enflasyon Verisi ve Sterlinin Türk Yatırımcısına Etkisi — `ingiltere-cpi-nedir-sterlin-etkisi` (takvim: 22 Temmuz 2026 İngiltere CPI açıklaması)
