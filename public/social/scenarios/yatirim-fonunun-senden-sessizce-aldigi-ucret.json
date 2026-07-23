@@ -1,0 +1,59 @@
+{
+  "slug": "yatirim-fonunun-senden-sessizce-aldigi-ucret",
+  "title": "Yatırım Fonunun Senden Sessizce Aldığı Ücret",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Ortalama yüzde iki yönetim gider oranı, bileşik faiz etkisiyle 10 yılda birikiminin yüzde on yedisini eritiyor. Endeks fon ve ETF bu maliyeti beşte bire indiriyor.",
+  "tags": [
+    "yatırım fonu",
+    "gider oranı",
+    "endeks fon",
+    "ETF",
+    "bileşik faiz",
+    "TEFAS",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "10 yılda birikiminin yüzde on yedisini fon ücreti yiyor.",
+      "visual": {
+        "type": "concept",
+        "query": "piggy bank money drain disappearing"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Her yatırım fonunun içinde yönetim gider oranı var. Türkiye'de ortalama yüzde iki. Yılda yüzde iki, önemsiz gibi görünür.",
+      "visual": {
+        "type": "concept",
+        "query": "investment fund document fees fine print"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama bileşik faiz tersine çalışır. 100 bin TL'de yüzde iki gider oranı, 10 yılda yaklaşık 43 bin liranı sessizce eritiyor.",
+      "visual": {
+        "type": "concept",
+        "query": "two piggy banks size comparison money loss"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çözüm: endeks fon ya da ETF. Aynı piyasa, yüzde 0.3 gider oranı. O 43 bin lira senin cebinde kalır.",
+      "visual": {
+        "type": "concept",
+        "query": "index fund ETF low cost stock market growth"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki TEFAS'ta hangi endeks fonlar gerçekten düşük maliyetli, nasıl bulursun? Bunu da konuşacağız. Günde bir finans gerçeği için abone ol — bildirimleri açarsan hiçbirini kaçırmazsın.",
+      "visual": {
+        "type": "concept",
+        "query": "phone notification subscribe bell mobile"
+      }
+    }
+  ]
+}
