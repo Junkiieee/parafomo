@@ -4,6 +4,68 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-23 — Vergi Avantajlı Yatırım Araçları: Türkiye'de Yasal Vergi Tasarrufu Yolları
+
+**Yayınlanan yazı:** [Vergi Avantajlı Yatırım Araçları: Türkiye'de Yasal Vergi Tasarrufu Yolları](https://parafomo.com/blog/vergi-avantajli-yatirim-araclari/)
+Kategori: Yatırım | Hedef sorgu: "vergi avantajlı yatırım" | ~1.150 kelime
+Kaynak: Evergreen backlog
+
+---
+
+### X (Twitter) Thread Taslağı
+
+Aynı parayı yatırırken daha az vergi ödeyebilirsin. Yasal yollar var, çoğu insan bilmiyor.
+
+Türkiye'de 5 vergi avantajlı yatırım aracı: 🧵
+
+1/ BES — En güçlü silah
+Her 100 TL yatırdığında devlet 30 TL ekliyor.
+Üstüne bir de brüt ücretin %10'una kadar gelir vergisi matrahından düşüyor.
+→ Yüzde 27 vergi dilimindeysen 5.000 TL katkıya karşılık ~1.350 TL vergi iadesi + devlet katkısı.
+
+2/ Hisse ağırlıklı yatırım fonu — Sıfır stopaj
+Portföyde %51+ BİST hissesi varsa stopaj: %0.
+Diğer fonlarda %10. BES'te ise sistem içindeyken hiç yok.
+
+3/ Temettü — Yarısı vergisiz
+BIST hisselerinden aldığın temettünün %50'si gelir vergisinden muaf.
+Uzun vadeli hissedar için sessiz kazanç.
+
+4/ Devlet tahvili — Dövizden daha iyi stopaj
+DİBS faizine %10, döviz mevduatına %15 stopaj var.
+Aynı güvenlik, daha az vergi.
+
+5/ Altın ve döviz mevduat — Dikkat
+%15 ile en yüksek stopaj bunlarda. "Güvenli liman" derken vergi yükünü unutma.
+
+Karşılaştırma tablosu + hangisi sana uygun: [link]
+---
+
+### Instagram Carousel / Post Metni
+
+**Post metni:**
+
+Türkiye'de yasal vergi tasarrufu yapmanın 5 yolu 👇
+
+BES → Her 100 TL'ye devlet 30 TL ekliyor + vergi indirimi
+Hisse fonu → %51 BİST hissesi olan fondaki stopaj: %0
+Temettü → Gelirin yarısı gelir vergisinden muaf
+Devlet tahvili → Döviz mevduatından %5 daha az stopaj
+Döviz/altın mevduat → %15 stopajla en pahalısı
+
+Hangisi sana uygun? Linkteki tabloda karşılaştır 👆
+
+#vergitasarrufu #yatırım #BES #borsa #kişiselfinans #türkiye #finansokuryazarlığı #parafomo
+
+---
+
+### Senin Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş** — Thread ve post metni yukarıda hazır. Makale linki: `https://parafomo.com/blog/vergi-avantajli-yatirim-araclari/`
+2. **Finans topluluklarında paylaş** — "Vergi avantajlı yatırım" arayan kişilerin bulunduğu bir Facebook grubuna ya da Ekşi Sözlük'e konu başlığı açarak değer katıcı biçimde paylaşabilirsin.
+
+---
+
 ## 2026-07-22 — Hisse Senedi Temettü Takvimi Nasıl Okunur? Tarihler ve Stratejiler
 
 **Yayınlanan yazı:** [Hisse Senedi Temettü Takvimi Nasıl Okunur? Tarihler ve Stratejiler](https://parafomo.com/blog/temettu-takvimi-nasil-okunur/)
