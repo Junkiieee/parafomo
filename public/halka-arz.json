@@ -1,23 +1,9 @@
 {
-  "updated": "2026-07-22T18:15+00:00",
+  "updated": "2026-07-23T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 46,
+  "count": 45,
   "items": [
-    {
-      "company": "Metgün Enerji Yatırımları A.Ş.",
-      "bist_code": "METEN",
-      "slug": "metgun-enerji-yatirimlari-a-s",
-      "link": "https://halkarz.com/metgun-enerji-yatirimlari-a-s/",
-      "date_text": "20-21-22 Temmuz 2026",
-      "start": "2026-07-20",
-      "end": "2026-07-22",
-      "status": "Devam Ediyor",
-      "price": "20,00 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "135.579.000 Lot",
-      "broker": "İnfo Yatırım Menkul Değerler A.Ş."
-    },
     {
       "company": "Kardemir Çelik Sanayi A.Ş.",
       "bist_code": "KARCL",
@@ -481,6 +467,20 @@
       "broker": "İş Yatırım Menkul Değerler A.Ş. Türkiye Sınai Kalkınma Bankası A.Ş. Ziraat Yatırım Menkul Değerler A.Ş."
     },
     {
+      "company": "Metgün Enerji Yatırımları A.Ş.",
+      "bist_code": "METEN",
+      "slug": "metgun-enerji-yatirimlari-a-s",
+      "link": "https://halkarz.com/metgun-enerji-yatirimlari-a-s/",
+      "date_text": "20-21-22 Temmuz 2026",
+      "start": "2026-07-20",
+      "end": "2026-07-22",
+      "status": "Tamamlandı",
+      "price": "20,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "135.579.000 Lot",
+      "broker": "İnfo Yatırım Menkul Değerler A.Ş."
+    },
+    {
       "company": "Şa-Ra Enerji İnşaat Tic. ve San. A.Ş.",
       "bist_code": "SARAE",
       "slug": "sa-ra-enerji-insaat-tic-ve-san-a-s",
@@ -633,20 +633,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "176.000.000 Lot",
       "broker": "İnfo Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "(MetropolCard) Metropal Kurumsal Hizmetler A.Ş.",
-      "bist_code": "MCARD",
-      "slug": "metropal-kurumsal-hizmetler-a-s",
-      "link": "https://halkarz.com/metropal-kurumsal-hizmetler-a-s/",
-      "date_text": "2-3-4 Mart 2026",
-      "start": "2026-03-02",
-      "end": "2026-03-04",
-      "status": "Tamamlandı",
-      "price": "80,00 TL",
-      "distribution": "Eşit Dağıtım",
-      "lot": "18.900.000 Lot",
-      "broker": "Tera Yatırım Menkul Değerler A.Ş."
     }
   ]
 }
