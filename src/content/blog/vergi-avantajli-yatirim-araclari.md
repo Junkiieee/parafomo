@@ -17,6 +17,23 @@ faq:
     a: "TL cinsinden devlet iç borçlanma senetleri bireysel yatırımcılar için belirli oranlarda stopaja tabidir; ancak bu oran özel sektör enstrümanlarına kıyasla rekabetçi olabilir. Enflasyona endeksli tahviller vergi hesaplamasında farklı formüller içerebilir."
   - q: "Yatırım fonlarında vergi nasıl hesaplanır?"
     a: "Yatırım fonu kazançları için uygulanan stopaj oranı, fonun türüne (hisse ağırlıklı mı, sabit getirili mi) ve yatırımcı profiline göre değişir. Fondan çıkışta stopaj otomatik kesilir; ayrı beyan gerekmez. Güncel oranları aracı kurumunuzdan teyit edin."
+shorts:
+  - "Yatırım yaparken devletten %25 prim alabilirsin, nasıl?"
+  - "BES'e yatırdığın her paraya devlet otomatik yüzde yirmi beş katkı ekliyor, piyasadan bağımsız garantili bir başlangıç bonusu bu."
+  - "Borsa İstanbul'da hisse senedinden kazandığın para, mevduat faizine kıyasla tarihsel olarak çok daha düşük stopajla vergilendiriliyor."
+  - "Devlet tahvilleri ve yatırım fonları da fon türüne göre farklı vergi avantajı sunuyor, doğru seçim uzun vadede büyük fark yaratıyor."
+  - "Hangi araç sana en fazla vergi tasarrufu sağlar merak ediyorsan, parafomo.com'da detayları okuyabilirsin; kanalımıza abone ol, her gün yeni bir finans sırrı paylaşıyoruz."
+shorts_broll:
+  - "tax savings investment calculator"
+  - "turkish lira banknotes counting"
+  - "stock market trading screen"
+  - "retirement savings piggy bank"
+shorts_visuals:
+  - "concept|money taxes calculator income"
+  - "concept|retirement savings government contribution bonus"
+  - "place|Borsa İstanbul"
+  - "concept|government bonds investment fund portfolio"
+  - "concept|financial growth wealth building long term"
 ---
 
 Biriktirdiğiniz paranın ne kadarının vergiye gittiğini hiç hesapladınız mı? Türkiye'de yatırım gelirleri — faiz, temettü, fon kazancı — stopaj yoluyla kaynaktan kesilir. Ancak her araç aynı oranda vergilendirilmez. **Vergi avantajlı yatırım** araçlarını seçmek, aynı getiriyle elinizde kalan tutarı yasal yollarla anlamlı biçimde artırabilir.
