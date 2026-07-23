@@ -1,0 +1,59 @@
+{
+  "slug": "ppk-karari-bitmeden-piyasa-zaten-hareket-eder",
+  "title": "PPK Kararı Bitmeden Piyasa Zaten Hareket Eder",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "TCMB faiz kararı açıklanmadan önce dolar ve altın zaten yön değiştirmiş olur. Kararın mevduat, kredi ve dövize zincir etkisini anlıyoruz.",
+  "tags": [
+    "TCMB",
+    "PPK",
+    "faiz kararı",
+    "merkez bankası",
+    "mevduat",
+    "dolar",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "TCMB bu hafta karar veriyor — sen hazır mısın?",
+      "visual": {
+        "type": "place",
+        "query": "Türkiye Cumhuriyet Merkez Bankası Ankara"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "TCMB oranı bankaların taban fiyatı. Değişince mevduat, kredi ve mortgage faizlerin birkaç gün içinde takip eder.",
+      "visual": {
+        "type": "concept",
+        "query": "bank interest rate chain money domino effect"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama karar açıklanmadan önce piyasa beklentiyi zaten fiyatlar. Toplantı haftasında dolar ve altın, açıklama gelmeden harekete geçer.",
+      "visual": {
+        "type": "concept",
+        "query": "currency exchange screen dollar turkish lira stock market chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çıkarım net: faiz inecekse uzun vadeli mevduatı şimdi aç. Artacaksa değişken faizli kredinle hesaplaş — karar sonrası geç kalırsın.",
+      "visual": {
+        "type": "concept",
+        "query": "bank savings deposit calculator financial planning"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Faiz inince dolar tam olarak ne yapar — o zinciri de açacağız. Kanalı takip etmek için abone ol: her gün altmış saniyede paranı etkileyen tek net analiz sende olsun.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification bell mobile phone app"
+      }
+    }
+  ]
+}
