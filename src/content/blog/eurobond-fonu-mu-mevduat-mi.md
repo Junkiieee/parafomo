@@ -17,6 +17,23 @@ faq:
     a: "TEFAS üzerinden işlem gören eurobond fonlarında minimum tutar genellikle 10-100 TL gibi çok düşük seviyelerde başlar. Bu, direkt eurobond almanın gerektirdiği 1.000 dolar eşiğine kıyasla çok büyük bir erişim kolaylığı sağlar."
   - q: "Eurobond fonu ile mevduatın vergisi aynı mı?"
     a: "Hayır, farklı. Eurobond fonlarında fon bünyesinde stopaj uygulanır ve bireyler için ek vergi beyan zorunluluğu genellikle yoktur; fon yöneticisi vergiyi içeride halleder. Mevduat faizinde ise banka stopajı keser. Döviz mevduatta kur farkı kazancı da ayrıca değerlendirilebilir. Güncel vergi detayı için mali müşavire danış."
+shorts:
+  - "Döviz mevduatın 'güvenli' — ama yılda 200 dolar yanıyor."
+  - "Bankalar döviz mevduatına piyasadan düşük faiz verdiği için eurobond'a kıyasla her yıl ciddi para kaybediyorsun."
+  - "Türkiye'nin dolar eurobond'ları, döviz mevduatından tipik olarak yüzde 1 ila 3 daha yüksek getiri sunuyor."
+  - "Eurobond fonuna TEFAS üzerinden 100 TL ile girebilir, istediğin iş günü sonunda nakde çevirebilirsin."
+  - "Peki hangi profil eurobond fonunu seçmeli, hangisi mevduatta kalmalı? Tam karşılaştırma tablosu parafomo.com'da — kanala abone ol, paranı doğru değerlendiren analizler her hafta burada."
+shorts_broll:
+  - "eurobond investment returns chart"
+  - "bank deposit interest rate comparison"
+  - "TEFAS investment platform Turkey"
+  - "turkish lira money savings"
+shorts_visuals:
+  - "concept|bank deposit vs investment fund comparison"
+  - "object|turkish lira banknotes"
+  - "concept|eurobond dollar yield returns chart"
+  - "scene|mobile investment app trading screen"
+  - "concept|financial planning investment decision"
 ---
 
 Birikimini değerlendirmek istiyorsun ama elinde iki seçenek var: eurobond fonu mu mevduat mı? Her iki araç da "güvenli" görünüyor — ama getiri, risk ve esneklik açısından aralarında ciddi farklar var.
