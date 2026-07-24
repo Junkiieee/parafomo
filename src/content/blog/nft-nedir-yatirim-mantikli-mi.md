@@ -17,6 +17,23 @@ faq:
     a: "Herkes ekran görüntüsü alabilir, ancak blockchain üzerindeki sahiplik kaydı yalnızca bir kişiye aittir. NFT, 'orijinal eser sahibi' olma hakkını tokenize eder."
   - q: "Türkiye'den NFT alınabilir mi?"
     a: "Evet. Kripto cüzdan ve Ethereum ile OpenSea gibi platformlara erişilebiliyor. Ancak Türk vergi mevzuatı NFT gelirlerini değer artış kazancı olarak değerlendirebilir; muhasebeci önerilir."
+shorts:
+  - "Dijital bir resme neden milyonlar ödeniyor?"
+  - "NFT, blockchain üzerinde kayıtlı benzersiz bir sahiplik belgesidir; para gibi birbiriyle değiştirilemez."
+  - "Sanatçılar akıllı sözleşmeler sayesinde her ikincil satıştan otomatik olarak telif ücreti kazanabiliyor."
+  - "Ama NFT piyasası son derece spekülatif; çoğu koleksiyon zaman içinde değerini tamamen yitiriyor."
+  - "Peki NFT yatırımı gerçekten mantıklı mı? Öğrenmek için kanala abone ol, parafomo.com'da eksiksiz rehber seni bekliyor."
+shorts_broll:
+  - "NFT marketplace trading screen"
+  - "ethereum blockchain technology visualization"
+  - "digital art collection nft gallery"
+  - "crypto market investment risk graph"
+shorts_visuals:
+  - "concept|NFT digital art million dollar auction sale"
+  - "concept|blockchain distributed ledger network nodes"
+  - "concept|artist digital contract royalty payment"
+  - "concept|cryptocurrency market crash price falling chart"
+  - "concept|youtube subscribe button notification bell screen"
 ---
 
 NFT kavramını duymuşsundur: dijital sanat eserleri milyonlara satılıyor, ünlüler koleksiyon çıkarıyor, Twitter profil fotoğrafları "özel" oluyor. Peki **NFT nedir** gerçekten, değeri nereden geliyor ve yatırım yapmak mantıklı mı? Bu rehber, Türkiye bağlamında sade ve dürüst bir cevap veriyor.
