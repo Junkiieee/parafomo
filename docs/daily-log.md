@@ -4,6 +4,73 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-24 — NFT Nedir? Yatırım Mantıklı Mı? Eksiksiz Türkçe Rehber
+
+**Yayınlanan yazı:** [NFT Nedir? Yatırım Mantıklı Mı? Eksiksiz Türkçe Rehber](https://parafomo.com/blog/nft-nedir-yatirim-mantikli-mi/)
+Kategori: Kripto | Hedef sorgu: "nft nedir" | ~1.200 kelime
+
+**X (Twitter) Thread Taslağı:**
+
+🧵 NFT gerçekten para kazandırır mı, yoksa sadece hype mi?
+
+1/ NFT = Blockchain üzerinde benzersiz dijital sahiplik belgesi. Satın aldığın şey "orijinal eser sahibi olma hakkı" — herkes görebilir ama sahip sadece sen. 🖼️
+
+2/ Nasıl çalışır?
+• Sanatçı → mint eder (blockchain'e yazar)
+• Sen → kripto cüzdanla satın alırsın
+• Sahiplik → otomatik güncellenir, şeffaf
+
+3/ NFT türleri risk tablosu 👇
+🔴 Sanat/koleksiyon: çok spekülatif
+🟡 Oyun eşyaları: kullanım değeri var
+🟡 Müzik NFT: topluluk odaklı
+🟢 Üyelik/bilet: en somut faydacı NFT
+
+4/ Ama riskler gerçek:
+❌ Likidite düşük → satmak zor
+❌ Rug pull yaygın
+❌ Vergi belirsizliği (TR'de değer artış kazancı kapsamı)
+❌ Fiyat tamamen beklenti bazlı
+
+5/ Sonuç: NFT, toplam portföyünüzün %1-5'inden fazlasına uygun değil. Araştırılmış, gerçek kullanım değeri olan projelerde, kaybetmeye hazır parayla değerlendirin.
+
+Tüm rehber → parafomo.com/blog/nft-nedir-yatirim-mantikli-mi/
+
+#NFT #Kripto #Blockchain #Finans #ParaFOMO
+
+---
+
+**Instagram Post Metni:**
+
+NFT nedir, gerçekten kazandırır mı? 🤔
+
+💡 NFT = dijital sahiplik belgesi (blockchain üzerinde)
+
+✅ Her NFT benzersiz — Bitcoin gibi birebir değiştirilemez
+✅ Sanatçılar her satıştan telif alır
+✅ Gerçek kullanım değeri olan projelerde potansiyel var
+
+⚠️ Ama dikkat:
+• Çoğu NFT koleksiyonu değer kaybetti
+• Rug pull (dolandırıcılık) riski yüksek
+• Satmak zor, likidite düşük
+• Türkiye'de vergi mevzuatı belirsiz
+
+📌 Portföyünün max %1-5'i = sağlıklı yaklaşım
+
+Tüm rehber bio'daki linkte 👆
+
+#NFT #Kripto #Blockchain #Yatırım #ParaFOMO #FinansTürkiye #KriptoParaTürkiye
+
+---
+
+**Bugün senin yapman gerekenler:**
+
+1. **Paylaşımı yayınla:** X thread'ini ve Instagram post'unu yukarıdaki taslakları kullanarak paylaş.
+2. **Kripto toplulukları:** Reddit r/Turkey veya Türk kripto Telegram gruplarında "NFT nedir merak ediyorum" konusu açıksa yazıyı değer katarak paylaş (spam değil, soru soran biri varsa link bırak).
+
+---
+
 ## 2026-07-23 — Vergi Avantajlı Yatırım Araçları: Türkiye'de Yasal Vergi Tasarrufu
 
 **Yayınlanan yazı:** [Vergi Avantajlı Yatırım Araçları: Türkiye'de Yasal Vergi Tasarrufu](https://parafomo.com/blog/vergi-avantajli-yatirim-araclari/)
