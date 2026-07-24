@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-23T18:15+00:00",
+  "updated": "2026-07-24T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 45,
@@ -33,18 +33,32 @@
       "broker": "Deniz Yatırım Menkul Kıymetler A.Ş."
     },
     {
-      "company": "Albayrak Hazır Beton San. ve Tic. A.Ş.",
-      "bist_code": "ALBTN",
-      "slug": "albayrak-hazir-beton-san-ve-tic-a-s",
-      "link": "https://halkarz.com/albayrak-hazir-beton-san-ve-tic-a-s/",
-      "date_text": "22-23 Temmuz 2026",
-      "start": "2026-07-22",
-      "end": "2026-07-23",
-      "status": "Devam Ediyor",
-      "price": "38,60 TL",
+      "company": "Quick Sigorta A.Ş.",
+      "bist_code": "",
+      "slug": "quick-sigorta-a-s",
+      "link": "https://halkarz.com/quick-sigorta-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "76,60 TL",
       "distribution": "Eşit Dağıtım **",
-      "lot": "70.000.000 Lot",
-      "broker": "Tacirler Yatırım Menkul Değerler A.Ş."
+      "lot": "48.312.950 Lot",
+      "broker": "Garanti Yatırım Menkul Kıymetler A.Ş."
+    },
+    {
+      "company": "Bewen Enerji A.Ş.",
+      "bist_code": "",
+      "slug": "bewen-enerji-a-s",
+      "link": "https://halkarz.com/bewen-enerji-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "48,10 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "80.000.000 Lot",
+      "broker": "Türkiye Sınai Kalkınma Bankası A.Ş. Yatırım Finansman Menkul Değerler A.Ş."
     },
     {
       "company": "Bulls Yatırım Menkul Değerler A.Ş.",
@@ -453,18 +467,18 @@
       "broker": "Ak Yatırım Menkul Değerler A.Ş. Ziraat Yatırım Menkul Değerler A.Ş."
     },
     {
-      "company": "Schmid Pekintaş Güneş Enerji Sistemleri San. ve Tic. A.Ş.",
-      "bist_code": "",
-      "slug": "schmid-pekintas-gunes-enerji-sistemleri-san-ve-tic-a-s",
-      "link": "https://halkarz.com/schmid-pekintas-gunes-enerji-sistemleri-san-ve-tic-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "",
+      "company": "Albayrak Hazır Beton San. ve Tic. A.Ş.",
+      "bist_code": "ALBTN",
+      "slug": "albayrak-hazir-beton-san-ve-tic-a-s",
+      "link": "https://halkarz.com/albayrak-hazir-beton-san-ve-tic-a-s/",
+      "date_text": "22-23 Temmuz 2026",
+      "start": "2026-07-22",
+      "end": "2026-07-23",
+      "status": "Tamamlandı",
+      "price": "38,60 TL",
       "distribution": "Eşit Dağıtım **",
-      "lot": "160.000.000 Lot",
-      "broker": "İş Yatırım Menkul Değerler A.Ş. Türkiye Sınai Kalkınma Bankası A.Ş. Ziraat Yatırım Menkul Değerler A.Ş."
+      "lot": "70.000.000 Lot",
+      "broker": "Tacirler Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "Metgün Enerji Yatırımları A.Ş.",
@@ -619,20 +633,6 @@
       "distribution": "",
       "lot": "",
       "broker": ""
-    },
-    {
-      "company": "Ağaoğlu Avrasya Gayrimenkul Yatırım Ortaklığı A.Ş.",
-      "bist_code": "AAGYO",
-      "slug": "agaoglu-avrasya-gayrimenkul-yatirim-ortakligi-a-s",
-      "link": "https://halkarz.com/agaoglu-avrasya-gayrimenkul-yatirim-ortakligi-a-s/",
-      "date_text": "1-2-3 Nisan 2026",
-      "start": "2026-04-01",
-      "end": "2026-04-03",
-      "status": "Tamamlandı",
-      "price": "21,10 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "176.000.000 Lot",
-      "broker": "İnfo Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş."
     }
   ]
 }
