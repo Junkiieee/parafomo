@@ -17,6 +17,23 @@ faq:
     a: "Enflasyon yüksekken nakit tutmak kayıp demektir. Önce acil durum fonunu koru, sonra gerçek getiri (nominal getiri eksi enflasyon) pozitif olan araçlara yönel: BIST hisseleri, altın, eurobond gibi. Harcama bütçeni aylık güncelle."
   - q: "Gelir az olduğunda para yönetimi alışkanlıkları işe yarar mı?"
     a: "Evet, hatta daha kritiktir. Düşük gelirde marjinal karar kaliteniz yüksek fark yaratır. Küçük miktarlarda bile 'önce biriktir' alışkanlığı, bileşik faizin zamanla etkisiyle önemli bir birikim oluşturur."
+shorts:
+  - "Sporcular milyonlarca kazanır, peki neden iflas eder?"
+  - "Beynimiz 100 TL kaybetmeyi kazanmaktan iki kat daha acı verici hisseder; bu yüzden zararlı yatırımı satmak çok zor gelir."
+  - "Maaş gelir gelmez yüzde onunu otomatik olarak ayırın; irade gücüne değil otomasyona güvenin, çünkü bahaneler her zaman çıkar."
+  - "Harcama kararlarımızın yüzde otuzdan fazlası sosyal normlardan gelir; bu baskıyı fark etmek en güçlü koruma kalkanınızdır."
+  - "Peki hangi alışkanlık sizi en çok dönüştürür? Detaylar parafomo.com'da; kanala abone ol, her gün bir finansal sır öğren."
+shorts_broll:
+  - "behavioral finance money decision brain"
+  - "automatic savings transfer bank app"
+  - "social pressure lifestyle spending friends"
+  - "wealth habits financial freedom success"
+shorts_visuals:
+  - "concept|bankrupt athlete money loss financial ruin"
+  - "concept|brain psychology money loss decision making"
+  - "concept|automatic bank transfer savings phone app"
+  - "concept|social pressure lifestyle spending peer influence"
+  - "concept|financial freedom success money growth chart"
 ---
 
 Servetini nasıl yönettiğin, ne kadar kazandığından çoğu zaman daha belirleyicidir. Yüksek gelirli ama iflas eden sporcular, düşük maaşlı ama rahat emeklilik yapan öğretmenler — fark çoğunlukla IQ ya da şans değil, **para yönetimi alışkanlıklarıdır**. Davranış bilimi son 30 yılda bu alışkanlıkların ne olduğunu oldukça net ortaya koydu.
