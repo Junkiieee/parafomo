@@ -1,0 +1,59 @@
+{
+  "slug": "buffett-in-300-milyarlik-sessiz-uyarisi",
+  "title": "Buffett'ın 300 Milyarlık Sessiz Uyarısı",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Warren Buffett rekor nakit biriktiriyor — bu küresel risk iştahını etkiliyor ve Türk yatırımcısının dolar-altın dengesini doğrudan değiştiriyor.",
+  "tags": [
+    "warren buffett",
+    "berkshire hathaway",
+    "türk yatırımcı",
+    "dolar",
+    "altın",
+    "gelişen piyasalar",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Buffett 300 milyar doları borsaya atmıyor.",
+      "visual": {
+        "type": "person",
+        "query": "Warren Buffett"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu paranın büyük bölümü ABD hazine bonolarında; yüzde beş kazanarak borsanın ucuzlamasını bekliyor.",
+      "visual": {
+        "type": "logo",
+        "query": "Berkshire Hathaway logo"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama dünyanın en ünlü yatırımcısı kenara çekilince küresel risk iştahı düşüyor; Türkiye gibi gelişen piyasalardan para çıkışı hızlanıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "emerging market capital outflow currency chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu ortamda dolar ve altın görece daha güvenli; portföyünde bu ağırlığı biraz artırmak küçük ama somut bir koruma sağlar.",
+      "visual": {
+        "type": "concept",
+        "query": "gold bars dollar bills savings portfolio"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Buffett tekrar alıma geçerse piyasalar ne yapar — bunu da anlatalım. Günlük 60 saniyede tek net analiz için abone ol.",
+      "visual": {
+        "type": "concept",
+        "query": "stock market bull rally investment screen"
+      }
+    }
+  ]
+}
