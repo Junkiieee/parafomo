@@ -34,11 +34,12 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Emeklilikte ne kadar paraya ihtiyacın var? — `Emeklilik` — hedef: "emeklilik için ne kadar para"
 - [x] Hisse senedi temettü takvimi nasıl okunur? — `Borsa` — hedef: "temettü takvimi"
 - [x] Vergi avantajlı yatırım araçları — `Yatırım` — hedef: "vergi avantajlı yatırım"
-- [ ] NFT nedir, yatırım mantıklı mı? — `Kripto` — hedef: "nft nedir"
+- [x] NFT nedir, yatırım mantıklı mı? — `Kripto` — hedef: "nft nedir"
 - [ ] Para psikolojisi: zengin edenlerin alışkanlıkları — `Kişisel Finans` — hedef: "para yönetimi alışkanlıkları"
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] NFT nedir, yatırım mantıklı mı? — `nft-nedir-yatirim-mantikli-mi` (backlog: evergreen kripto)
 - [x] Vergi avantajlı yatırım araçları — `vergi-avantajli-yatirim-araclari` (backlog: evergreen yatırım)
 - [x] Hisse senedi temettü takvimi nasıl okunur? — `temettu-takvimi-nasil-okunur` (backlog: evergreen borsa)
 - [x] Eurobond Fonu mu Mevduat mı? Hangisi Daha Mantıklı? — `eurobond-fonu-mu-mevduat-mi` (GSC fırsatı: "eurobond fonu mu mevduat mı")
