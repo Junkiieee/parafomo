@@ -35,10 +35,11 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Hisse senedi temettü takvimi nasıl okunur? — `Borsa` — hedef: "temettü takvimi"
 - [x] Vergi avantajlı yatırım araçları — `Yatırım` — hedef: "vergi avantajlı yatırım"
 - [x] NFT nedir, yatırım mantıklı mı? — `Kripto` — hedef: "nft nedir"
-- [ ] Para psikolojisi: zengin edenlerin alışkanlıkları — `Kişisel Finans` — hedef: "para yönetimi alışkanlıkları"
+- [x] Para psikolojisi: zengin edenlerin alışkanlıkları — `Kişisel Finans` — hedef: "para yönetimi alışkanlıkları"
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] Para psikolojisi: zengin edenlerin alışkanlıkları — `para-psikolojisi-aliskanliklari` (backlog: evergreen kişisel finans)
 - [x] NFT nedir, yatırım mantıklı mı? — `nft-nedir-yatirim-mantikli-mi` (backlog: evergreen kripto)
 - [x] Vergi avantajlı yatırım araçları — `vergi-avantajli-yatirim-araclari` (backlog: evergreen yatırım)
 - [x] Hisse senedi temettü takvimi nasıl okunur? — `temettu-takvimi-nasil-okunur` (backlog: evergreen borsa)

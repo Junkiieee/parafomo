@@ -4,6 +4,98 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-24 — Para Psikolojisi: Zengin Edenlerin Para Yönetimi Alışkanlıkları
+
+**Yayınlanan yazı:** [Para Psikolojisi: Zengin Edenlerin Para Yönetimi Alışkanlıkları](https://parafomo.com/blog/para-psikolojisi-aliskanliklari/)
+Kategori: Kişisel Finans | Hedef sorgu: "para yönetimi alışkanlıkları" | ~1.100 kelime
+Kaynak: Evergreen backlog
+
+---
+
+### X (Twitter) Thread Taslağı
+
+Yüksek gelirli ama iflas eden sporcular var.
+Düşük maaşlı ama rahat emekliyet eden öğretmenler de.
+
+Fark IQ değil, para alışkanlıkları. İşte 8'i 🧵
+
+1/ "Önce kendinize ödeyin"
+Maaş gelir gelmez %10-20'yi ayır — kalan ile geçin.
+Tersini yaparsanız (kalanı biriktiririm) birikim genelde sıfır kalır.
+
+2/ Bütçe stres yaratır
+Katı bütçe çoğu kişide terk edilir.
+Bunun yerine: ay sonunda harcamaları 5-6 kategoriye ayır ve bak.
+Görmek, zaten davranışı değiştirir.
+
+3/ İrade değil otomasyon
+Maaş günü otomatik transfer, otomatik yatırım planı.
+İnsan her ay karar verse, bir bahane her zaman çıkar.
+
+4/ Türkiye gerçeği
+Yüksek enflasyon "bugün harcamak mantıklı" yanılgısı yaratır.
+Nakit tutmak = gerçek getiri negatif.
+Çözüm: düzenli, otomatik varlık alımı.
+
+5/ Kötü alışkanlığı bırakmak için:
+→ Önce fark et
+→ 24 saat bekle kuralı
+→ Küçük başla (200 TL'lik otomasyon)
+→ Tetikleyicileri kaldır (bildirimler, favoriler)
+→ Kendini ödüllendir
+
+Davranış bilimi ne diyor? 66 gün. Sonra otomatik.
+
+Detaylı rehber 👇
+parafomo.com/blog/para-psikolojisi-aliskanliklari/
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Slide 1 (kapak):**
+Para psikolojisi
+Zenginler nasıl düşünür?
+
+**Slide 2:**
+Fark IQ değil alışkanlık
+Yüksek gelirli ama iflas eden çok var.
+Düşük maaşlı ama rahat emekliyet eden de.
+
+**Slide 3:**
+Alışkanlık 1: Önce biriktir
+Maaş → %10-20 otomatik ayrıl → Kalan ile geçin
+Tersini yapanların birikimi genelde sıfır.
+
+**Slide 4:**
+Alışkanlık 2: Otomasyona güven
+İrade gücü biter, otomasyon bitmez.
+Maaş günü otomatik transfer = oyun değiştirici.
+
+**Slide 5:**
+Türkiye bağlamı
+Enflasyon "bugün harcamak mantıklı" dedirtir.
+Nakit tutmak = para eriyor.
+Çözüm: düzenli varlık alımı (altın, hisse, döviz).
+
+**Slide 6:**
+66 gün yeterli
+Yeni bir alışkanlık ortalama 66 günde otomatik hale gelir.
+Küçük başla, tutarlı ol.
+
+parafomo.com/blog/para-psikolojisi-aliskanliklari/
+
+#ParaPsikolojisi #ParaYönetimi #KişiselFinans #Tasarruf #FinansSal #TürkiyeFinans
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş:** Yukarıdaki thread ve carousel taslağını yayınla. Bu konu Instagram'da özellikle iyi performans gösterir — slide formatı ile paylaşmayı dene.
+2. **1 toplulukta değer katarak paylaş:** "Para harcama alışkanlıklarını nasıl değiştirdiniz?" sorusu sorulan bir konu/grup bul; deneyimini anlat ve yazıyı kaynak olarak ekle.
+
+---
+
 ## 2026-07-24 — NFT Nedir? Yatırım Mantıklı Mı? Eksiksiz Türkçe Rehber
 
 **Yayınlanan yazı:** [NFT Nedir? Yatırım Mantıklı Mı? Eksiksiz Türkçe Rehber](https://parafomo.com/blog/nft-nedir-yatirim-mantikli-mi/)
