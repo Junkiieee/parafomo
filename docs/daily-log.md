@@ -4,6 +4,69 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-25 — Fed Faiz Kararı Nedir? ABD Merkez Bankası Faizi TL ve Borsayı Nasıl Etkiler?
+
+**Yayınlanan yazı:** [Fed Faiz Kararı Nedir? ABD Merkez Bankası Faizi TL ve Borsayı Nasıl Etkiler?](https://parafomo.com/blog/fed-faiz-karari-nedir-etkisi/)
+Kategori: Ekonomi | Hedef sorgu: "fed faiz kararı nedir" | ~1.200 kelime
+Kaynak: Takvim — 29 Temmuz 2026 Fed faiz kararı öncesi explainer (Fed-spesifik boşluk; ECB ve TCMB yazıları zaten var)
+
+---
+
+### X (Twitter) Thread Taslağı
+
+29 Temmuz'da ABD Merkez Bankası (Fed) faiz kararı açıklıyor.
+
+Bu kararın TL'ye, borsaya ve cebine etkisi ne?
+Çoğu Türk yatırımcının bilmediği 5 şey 🧵
+
+1/ Fed ne yapar?
+Bankaların birbirine gecelik borç verdiği faizi belirler.
+Bu oran değişince bütün kredi, mevduat ve döviz kurları zincirleme etkiler.
+
+2/ Fed faiz artırırsa TL ne olur?
+Dolar getirisi artar → yatırımcılar TL'den çıkar → kur yükselir.
+Türkiye'deki dolar borçlu şirketler zarar yazar. BIST zayıflar.
+
+3/ Fed faiz indirirse?
+Tam tersi: dolar zayıflar, gelişen piyasalara para akar.
+TL ve BIST için nefes alma fırsatı.
+
+4/ Ama asıl mesele beklentiler.
+Piyasalar kararı zaten haftalarca önceden fiyatlar.
+29 Temmuz'da sürpriz yoksa büyük hareket olmaz.
+Sürpriz varsa: sert volatilite.
+
+5/ Yatırımcı ne yapmalı?
+→ Döviz/hisse dengesini şimdiden gözden geçir.
+→ Karar günü panikle işlem yapma.
+→ Basın toplantısının tonu, kararın kendisi kadar önemli.
+
+Detaylı anlatım → parafomo.com/blog/fed-faiz-karari-nedir-etkisi/
+
+---
+
+### Instagram Post Metni
+
+📢 29 Temmuz'da Fed faiz kararı açıklıyor — ve bu karar cebini doğrudan etkiliyor.
+
+Fed faiz artırırsa: 💵 dolar güçlenir, 📉 TL zayıflar, BIST'te satış baskısı
+Fed faiz indirirse: 📈 gelişen piyasalar nefes alır, TL'ye rahatlama
+
+Ama şunu bil: piyasalar kararı haftalar önceden fiyatlar. Asıl sürpriz "ton"da gizli.
+
+Detaylı rehberi okumak için profildeki linke tıkla 👆
+
+#fedkararı #abdfaiz #merkezdankası #doviz #dolartl #bist100 #yatırım #borsa #ekonomi #parafomo
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **Yukarıdaki X thread'ini** @parafomo hesabından paylaş. Kararın ne zaman açıklandığını ("29 Temmuz, gece 21:00") tweet'in sonuna ekle.
+2. **Instagram post'unu** yayınla; kapak fotoğrafı olarak `public/covers/fed-faiz-karari-nedir-etkisi.jpg` dosyasını kullanabilirsin. 29 Temmuz öncesi hafta sonu paylaşımları daha fazla etkileşim alır.
+
+---
+
 ## 2026-07-24 — Para Psikolojisi: Zengin Edenlerin Para Yönetimi Alışkanlıkları
 
 **Yayınlanan yazı:** [Para Psikolojisi: Zengin Edenlerin Para Yönetimi Alışkanlıkları](https://parafomo.com/blog/para-psikolojisi-aliskanliklari/)

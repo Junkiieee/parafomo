@@ -39,6 +39,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] Fed Faiz Kararı Nedir? ABD Merkez Bankası Faizi TL ve Borsayı Nasıl Etkiler? — `fed-faiz-karari-nedir-etkisi` (takvim: 29 Temmuz 2026 Fed faiz kararı)
 - [x] Para psikolojisi: zengin edenlerin alışkanlıkları — `para-psikolojisi-aliskanliklari` (backlog: evergreen kişisel finans)
 - [x] NFT nedir, yatırım mantıklı mı? — `nft-nedir-yatirim-mantikli-mi` (backlog: evergreen kripto)
 - [x] Vergi avantajlı yatırım araçları — `vergi-avantajli-yatirim-araclari` (backlog: evergreen yatırım)
