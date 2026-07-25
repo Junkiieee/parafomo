@@ -17,6 +17,23 @@ faq:
     a: "Fed (Federal Reserve), ABD'nin merkez bankasıdır. FOMC (Federal Open Market Committee) ise Fed bünyesindeki para politikası komitesidir. Faiz kararını FOMC alır, ama karar halk arasında 'Fed kararı' olarak bilinir."
   - q: "Fed kararı Türkiye piyasalarını ne kadar hızlı etkiler?"
     a: "Etki genellikle kararın açıklandığı gece başlar: Dolar/TL kuru, BIST vadeli ve döviz işlemleri anlık tepki verir. Borsa ve tahvil piyasasındaki tam etki birkaç gün ile birkaç hafta içinde yerleşir."
+shorts:
+  - "Fed faiz artırırsa Türkiye'deki paran erir."
+  - "Fed faiz artırınca küresel para ABD'ye kaçar, Türkiye'den sermaye çıkışı yaşanır ve TL değer kaybeder."
+  - "Yabancı yatırımcılar Türk hisselerini satışa çıkarır; TL zayıflarsa döviz borcu olan şirketler de ekstra zarar yazar."
+  - "TCMB bağımsız görünse de kur baskısı altında Fed'in yüksek faiz ortamı Türkiye'yi de faizi yüksek tutmaya zorlar."
+  - "Peki Fed bir sonraki adımda ne yapacak ve senin yatırımın nasıl etkilenecek? Güncel analizler için ParaFOMO'ya abone ol ve parafomo.com'u takipte tut."
+shorts_broll:
+  - "federal reserve building washington dc"
+  - "turkish lira currency exchange rate"
+  - "istanbul stock market trading screen"
+  - "emerging markets capital outflow graph"
+shorts_visuals:
+  - "building|Federal Reserve Washington DC"
+  - "object|turkish lira banknotes"
+  - "place|Borsa İstanbul"
+  - "place|Türkiye Cumhuriyet Merkez Bankası"
+  - "concept|financial growth investment subscribe"
 ---
 
 ABD Merkez Bankası'nın (Fed) aldığı faiz kararları sadece Amerikalıları değil, İstanbul'daki tasarruf sahiplerini de doğrudan etkiler. Dolar/TL kuru, borsanın yönü, mevduat faizleri ve hatta sepetteki ürünlerin fiyatı — tümü kısmen Fed'in kararlarıyla şekillenir. **Fed faiz kararı nedir**, nasıl alınır ve Türkiye'deki yatırımcı bunu neden yakından takip etmeli? Bu yazıda adım adım anlatıyoruz.
