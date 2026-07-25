@@ -4,6 +4,113 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-25 — NFT Nedir? Yatırım Mantıklı Mı? Eksiksiz Türkçe Rehber
+
+**Yayınlanan yazı:** [NFT Nedir? Yatırım Mantıklı Mı? Eksiksiz Türkçe Rehber](https://parafomo.com/blog/nft-nedir-yatirim-mantikli-mi/)
+Kategori: Kripto | Hedef sorgu: "nft nedir" | ~1.350 kelime
+Kaynak: Evergreen backlog
+
+---
+
+### X (Twitter) Thread Taslağı
+
+2021'de NFT'ler için milyonlar ödendi.
+2025-2026'da çoğu sıfıra yakın.
+Ama bazıları hâlâ ilgi görüyor. Neden? 🧵
+
+1/ NFT nedir?
+Non-Fungible Token = eşsiz dijital token.
+1 Bitcoin her zaman 1 Bitcoin'e eşittir.
+Ama bir NFT, başka bir NFT'nin tam yerine geçemez. Eşsizdir.
+Sahipliği blokzincirde kayıtlı; silinemiyor.
+
+2/ Ne işe yarar?
+→ Dijital sanat koleksiyonu
+→ Oyun içi eşya sahipliği
+→ Etkinlik bileti
+→ Kimlik doğrulama (diploma, POAP)
+→ Metaverse arazisi
+
+Spekülatif olan = sanat/koleksiyon.
+Faydalı olan = bilet, kimlik, oyun.
+
+3/ NFT değeri ne belirler?
+Yaratıcının üne + topluluk büyüklüğü + nadirlük + işlem hacmi.
+Bunların tamamı nesnel değil, spekülatif.
+Bugünün hit'i yarın sıfır olabilir.
+
+4/ Risk neden bu kadar yüksek?
+❌ Çoğu koleksiyon işlem görmez hale geldi
+❌ "Rug pull" dolandırıcılıkları hâlâ yaygın
+❌ Cüzdan hacklendi mi? NFT geri alınamaz
+❌ Gas ücreti bazen NFT değerini aşıyor
+❌ Türkiye'de vergi düzenlemesi henüz belirsiz
+
+5/ Peki yatırım mantıklı mı?
+Dürüst yanıt: çoğu kişi için, büyük ihtimalle hayır.
+Ama kullanım senaryosu olan (bilet, kimlik) projelerde gerçek fayda var.
+Kaybetmeyi göze alabileceğin miktarla başlamak ve projeyi araştırmak şart.
+
+Detaylı rehber 👇
+parafomo.com/blog/nft-nedir-yatirim-mantikli-mi/
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Slide 1 (kapak):**
+NFT Nedir?
+Yatırım mantıklı mı?
+Dürüst rehber 👀
+
+**Slide 2:**
+NFT = Eşsiz dijital token
+Blokzincirde kayıtlı sahiplik kanıtı.
+1 BTC = 1 BTC → fungible
+1 NFT ≠ başka bir NFT → non-fungible
+
+**Slide 3:**
+Ne işe yarar?
+🎨 Dijital sanat
+🎮 Oyun içi eşya
+🎫 Etkinlik bileti
+🪪 Kimlik / diploma
+🌍 Metaverse arazisi
+
+**Slide 4:**
+NFT değeri ne belirler?
+→ Yaratıcının üne
+→ Topluluk büyüklüğü
+→ Koleksiyondaki nadirlük
+→ İşlem hacmi
+Bunların hepsi spekülatif. Dikkat.
+
+**Slide 5:**
+Riskler
+❌ Piyasa 2021'den bu yana %90+ düştü
+❌ Rug pull: ekip para alıp kaçar
+❌ Likidite yok: alıcı bulamayabilirsin
+❌ Cüzdan hacki = geri dönüş yok
+
+**Slide 6:**
+Yatırım mantıklı mı?
+Çoğu kişi için: hayır.
+Kullanım senaryolu projelerde: belki.
+Altın kural: kaybetmeyi göze alabileceğin kadarını yatır.
+
+parafomo.com/blog/nft-nedir-yatirim-mantikli-mi/
+
+#NFT #NFTNedir #Kripto #Blockchain #DigitalVarlık #KriptoTürkiye
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş:** NFT konusu özellikle kripto meraklılarında iyi etkileşim alır; thread formatı soru-cevap tarzında ilgi çekiyor. Yorum sorusu ekle: "NFT aldın mı, deneyimin nasıldı?"
+2. **1 toplulukta değer katarak paylaş:** Kripto veya finans gruplarında "NFT mantıklı mı?" sorusu hâlâ tartışılıyor; bağlamına uygun yerde yazıyı referans göster.
+
+---
+
 ## 2026-07-23 — Vergi Avantajlı Yatırım Araçları: Türkiye'de Yasal Vergi Tasarrufu
 
 **Yayınlanan yazı:** [Vergi Avantajlı Yatırım Araçları: Türkiye'de Yasal Vergi Tasarrufu](https://parafomo.com/blog/vergi-avantajli-yatirim-araclari/)
