@@ -1,9 +1,23 @@
 {
-  "updated": "2026-07-25T06:15+00:00",
+  "updated": "2026-07-25T08:07+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 43,
   "items": [
+    {
+      "company": "Bewen Enerji A.Ş.",
+      "bist_code": "BEWEN",
+      "slug": "bewen-enerji-a-s",
+      "link": "https://halkarz.com/bewen-enerji-a-s/",
+      "date_text": "29-30-31 Temmuz 2026 09:00-17:00",
+      "start": "2026-07-29",
+      "end": "2026-07-31",
+      "status": "Yaklaşan",
+      "price": "48,10 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "80.000.000 Lot",
+      "broker": "Türkiye Sınai Kalkınma Bankası A.Ş. Yatırım Finansman Menkul Değerler A.Ş."
+    },
     {
       "company": "Quick Sigorta A.Ş.",
       "bist_code": "QUICK",
@@ -17,20 +31,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "48.312.950 Lot",
       "broker": "Garanti Yatırım Menkul Kıymetler A.Ş."
-    },
-    {
-      "company": "Bewen Enerji A.Ş.",
-      "bist_code": "",
-      "slug": "bewen-enerji-a-s",
-      "link": "https://halkarz.com/bewen-enerji-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "48,10 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "80.000.000 Lot",
-      "broker": "Türkiye Sınai Kalkınma Bankası A.Ş. Yatırım Finansman Menkul Değerler A.Ş."
     },
     {
       "company": "Bulls Yatırım Menkul Değerler A.Ş.",
