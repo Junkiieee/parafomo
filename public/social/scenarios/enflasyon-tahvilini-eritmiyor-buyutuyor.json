@@ -1,0 +1,59 @@
+{
+  "slug": "enflasyon-tahvilini-eritmiyor-buyutuyor",
+  "title": "Enflasyon Tahvilini Eritmiyor, Büyütüyor",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "TÜFE'ye endeksli devlet tahvili nasıl çalışır? Anaparası enflasyonla büyüyen bu araca çoğu yatırımcı dikkat etmiyor.",
+  "tags": [
+    "TÜFEx",
+    "devlet tahvili",
+    "enflasyon",
+    "yatırım",
+    "anaparayı korumak",
+    "TÜFE",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "TÜFE ENDEKSLİ TAHVİL",
+      "spoken": "Enflasyon ne kadar yükselirse, bu tahvil o kadar büyüyor.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation chart arrow rising economy"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Normal tahviller sabit faiz öder. Bu biri farklı: anaparanı TÜFE'ye bağlar — kira endeksli sözleşme gibi.",
+      "visual": {
+        "type": "object",
+        "query": "rental lease contract document signing"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama kupon faizi düşük görünür, yüzde iki civarı. Kâr anaparanın şişmesinde gizli — saymayı bilmeyenler onu düşük getirili sanır.",
+      "visual": {
+        "type": "concept",
+        "query": "hidden value magnifying glass document numbers"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Enflasyon yüzde elli giderse, 100 bin liranın anaparası kabaca 150 bine çıkar — üstüne bir de faiz gelir. Mevduatın yapamadığı bu.",
+      "visual": {
+        "type": "concept",
+        "query": "money stack growing investment increase chart"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu tahvile nasıl yatırım yapılır, en az tutar ne kadar? Türk yatırımcısının bilmediği araçları her gün 60 saniyede net anlatıyoruz — abone ol.",
+      "visual": {
+        "type": "concept",
+        "query": "notification bell subscribe social media"
+      }
+    }
+  ]
+}
