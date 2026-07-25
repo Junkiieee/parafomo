@@ -1,152 +1,144 @@
 ---
 title: "NFT Nedir? Yatırım Mantıklı Mı? Eksiksiz Türkçe Rehber"
-description: "NFT nedir, nasıl çalışır ve düşen piyasada yatırım mantıklı mı? NFT'nin riskleri, kullanım alanları ve Türk yatırımcı için pratik rehber."
-pubDate: 2026-07-25
+description: "NFT nedir, nasıl çalışır, ne kadar kazandırır? Türk yatırımcılar için riskler, fırsatlar ve dikkat edilmesi gerekenler bu rehberde."
+pubDate: 2026-07-24
 category: "Kripto"
-tags: ["nft nedir", "nft yatırım", "dijital varlık", "kripto sanat", "blockchain", "web3"]
-readingTime: 9
+tags: ["nft nedir", "nft yatırım", "kripto sanat", "dijital varlık", "blockchain", "ethereum nft"]
+readingTime: 8
 featured: false
 faq:
-  - q: "NFT nedir, kısaca açıklar mısın?"
-    a: "NFT (Non-Fungible Token), blokzincir üzerinde kayıtlı, eşsiz ve değiştirilemez dijital bir token'dır. Her NFT, başka bir NFT ile birebir değiştirilemez; bu onu kripto paradan ayırır. Dijital sanat, müzik, oyun içi eşya veya koleksiyona konu olabilir."
-  - q: "NFT satın almak için ne gerekir?"
-    a: "Bir kripto cüzdanı (genellikle MetaMask), küçük miktarda Ethereum (ETH) veya Solana (SOL) ve OpenSea, Blur, Magic Eden gibi bir NFT pazaryeri hesabı yeterlidir. İşlem ücretlerine (gas fee) dikkat edin."
-  - q: "NFT değerini ne belirler?"
-    a: "Yaratıcının üne ve topluluğun büyüklüğüne, koleksiyonun toplam arzına, geçmiş satış verilerine ve o NFT'nin belirli özelliklerin (trait) nadirliliğine bakılır. Spekülatif beklentiler kısa vadede fiyatı çok yükseltebilir ya da düşürebilir."
-  - q: "NFT'de kayıp riski var mı?"
-    a: "Evet, oldukça yüksektir. NFT piyasası 2021-2022 zirvesinden bu yana büyük ölçüde daraldı; birçok koleksiyon sıfıra yakın işlem görüyor. Sahte/dolandırıcı projeler, cüzdan saldırıları ve likidite yokluğu önemli riskler arasındadır."
-  - q: "NFT ile kripto para arasındaki fark nedir?"
-    a: "Bitcoin veya ETH birbirinin yerini tutabilir (fungible); 1 BTC her zaman 1 BTC değerindedir. NFT ise eşsizdir; aynı koleksiyondan iki farklı NFT'nin değeri farklıdır. NFT sahipliği blokzincirde kayıtlıdır ve devredilebilir."
+  - q: "NFT nedir kısaca?"
+    a: "NFT (Non-Fungible Token), blockchain üzerinde kayıtlı, benzersiz ve kopyalanamaz bir dijital sahiplik belgesidir. Her NFT birbirinden farklıdır; bu yüzden Bitcoin gibi birebir değiştirilemez."
+  - q: "NFT almak için ne gerekiyor?"
+    a: "Bir kripto cüzdanı (örn. MetaMask), Ethereum (ETH) gibi kripto para ve OpenSea ya da Magic Eden gibi bir NFT pazar yeri hesabı gerekiyor."
+  - q: "NFT'ye yatırım kazandırır mı?"
+    a: "Kimi NFT'ler büyük getiri sağladı, kimileri ise sıfıra yakın değere düştü. Piyasa spekülatif ve yüksek risk taşıyor; yatırım kararını dikkatli değerlendir."
+  - q: "NFT ile dijital resim arasındaki fark ne?"
+    a: "Herkes ekran görüntüsü alabilir, ancak blockchain üzerindeki sahiplik kaydı yalnızca bir kişiye aittir. NFT, 'orijinal eser sahibi' olma hakkını tokenize eder."
+  - q: "Türkiye'den NFT alınabilir mi?"
+    a: "Evet. Kripto cüzdan ve Ethereum ile OpenSea gibi platformlara erişilebiliyor. Ancak Türk vergi mevzuatı NFT gelirlerini değer artış kazancı olarak değerlendirebilir; muhasebeci önerilir."
+shorts:
+  - "Dijital bir resme neden milyonlar ödeniyor?"
+  - "NFT, blockchain üzerinde kayıtlı benzersiz bir sahiplik belgesidir; para gibi birbiriyle değiştirilemez."
+  - "Sanatçılar akıllı sözleşmeler sayesinde her ikincil satıştan otomatik olarak telif ücreti kazanabiliyor."
+  - "Ama NFT piyasası son derece spekülatif; çoğu koleksiyon zaman içinde değerini tamamen yitiriyor."
+  - "Peki NFT yatırımı gerçekten mantıklı mı? Öğrenmek için kanala abone ol, parafomo.com'da eksiksiz rehber seni bekliyor."
+shorts_broll:
+  - "NFT marketplace trading screen"
+  - "ethereum blockchain technology visualization"
+  - "digital art collection nft gallery"
+  - "crypto market investment risk graph"
+shorts_visuals:
+  - "concept|NFT digital art million dollar auction sale"
+  - "concept|blockchain distributed ledger network nodes"
+  - "concept|artist digital contract royalty payment"
+  - "concept|cryptocurrency market crash price falling chart"
+  - "concept|youtube subscribe button notification bell screen"
 ---
 
-"NFT nedir?" sorusu 2021-2022'de milyonlarca kişinin kafasını karıştırdı; o tarihten bu yana ise pek çok yatırımcı ciddi kayıplar yaşadı. Şimdi hem NFT'nin gerçekte ne olduğunu hem de "hâlâ yatırım mantıklı mı?" sorusunu dürüstçe ele alacağız.
+NFT kavramını duymuşsundur: dijital sanat eserleri milyonlara satılıyor, ünlüler koleksiyon çıkarıyor, Twitter profil fotoğrafları "özel" oluyor. Peki **NFT nedir** gerçekten, değeri nereden geliyor ve yatırım yapmak mantıklı mı? Bu rehber, Türkiye bağlamında sade ve dürüst bir cevap veriyor.
 
-## NFT Nedir?
+## NFT Nedir? Teknik Tanım
 
-**NFT**, İngilizce *Non-Fungible Token* ifadesinin kısaltmasıdır. Türkçeye "değiştirilemez token" veya "eşsiz token" olarak çevrilebilir.
+NFT, İngilizce **Non-Fungible Token** (Değiştirilemez Token) kısaltmasıdır. "Fungible" yani değiştirilebilir demek, iki nesnenin birbirinin yerine geçebileceği anlamına gelir. 10 TL'yi 10 TL ile değiştirirsin, hiçbir şey değişmez; Bitcoin de böyle çalışır. NFT ise tam tersi: **her biri birbirinden farklı, benzersizdir**.
 
-"Değiştirilemez" (non-fungible) kavramı ekonomiden gelir: bir varlık, aynı değerdeki başka bir varlıkla birebir değiştirilebiliyorsa fungible'dır. 1 TL'lik banknot ile başka bir 1 TL'lik banknot aynı değeri taşır — biri diğerinin yerine geçer. Buna karşın özgün bir Picasso tablosu, başka bir tablonun tam yerine geçemez; o eşsizdir.
+Bir NFT şunları içerebilir:
+- Dijital resim veya fotoğraf
+- Müzik dosyası veya albüm
+- Video klipler
+- Oyun içi eşyalar (silah, karakter, arazi)
+- Alan adları veya biletler
+- Metaverse arazileri
 
-NFT bu mantıkla blokzincir üzerinde çalışır: her token benzersiz bir kimlik numarası (metadata) taşır, sahipliği zincirde kayıtlıdır ve kopyalanamaz. Dijital bir dosyayı kopyalayabilirsiniz; ama NFT sahipliğini **blokzincirde** kopyalayamazsınız.
-
-Ethereum ve Solana, NFT ekosisteminin en büyük blokzincirlerindendir. [Ethereum'un nasıl çalıştığını ve Bitcoin'den farkını](/blog/ethereum-nedir) merak ediyorsan ayrı bir rehberimize göz atabilirsin.
+Sahiplik kaydı **blockchain** üzerinde tutulur. Bu, merkezi bir sunucu yerine binlerce bilgisayara dağıtılmış, değiştirilmesi son derece güç bir deftere benzer. Çoğu NFT Ethereum ağı üzerinde çalışır; Solana ve diğer ağlar da kullanılmaktadır.
 
 ## NFT Nasıl Çalışır?
 
-NFT'nin teknik altyapısı üç bileşene dayanır:
+Bir NFT'nin yaşam döngüsü üç aşamadan oluşur:
 
-### 1. Akıllı Sözleşme (Smart Contract)
-NFT'yi tanımlayan kod parçasıdır. Ethereum ağında en yaygın standartlar **ERC-721** ve **ERC-1155**'tir. Bu sözleşme; token'ın kimin olduğunu, kaç tane üretildiğini ve hangi kurallara tabi olduğunu belirler.
+**1. Mint etme (Basım):** Sanatçı ya da geliştirici dijital dosyasını bir platforma yükler, ağ ücreti (gas fee) öder ve blockchain'de benzersiz bir token oluşturur. Bu token, eserin "sahiplik belgesidir."
 
-### 2. Metadata
-Her NFT'nin görseli, adı, koleksiyon bilgisi ve özellikleri (trait) "metadata" dosyasında saklanır. Bu dosya genellikle IPFS gibi merkeziyetsiz bir depoda ya da bir merkezi sunucuda tutulur. Sunucu kapanırsa görsele erişim kesilebilir; bu önemli bir risktir.
+**2. İkincil piyasada alım-satım:** NFT'ler OpenSea, Blur, Magic Eden gibi pazar yerlerinde listelenir. Alıcı kripto cüzdanından ödeme yapar; sahiplik blockchain'de otomatik güncellenir.
 
-### 3. Blokzincir Kaydı
-Sahiplik ve transfer geçmişi blokzincirde kalıcı olarak yazılır. Kimse bu kaydı silemez veya değiştiremez; ancak NFT'yi oluşturan projenin ekibi projeyi terk ederse koleksiyon değersizleşebilir.
+**3. Telif akışı:** Sanatçılar akıllı sözleşmeyle genellikle her ikincil satıştan %5-10 telif alır. Bu, sanatçılar için yeni bir gelir modeli oluşturmuştur.
 
-## NFT Çeşitleri
+> Önemli: NFT satın almak, içeriğin telif hakkını almak değildir. Orijinal eserin sahipliğini kanıtlayan blockchain kaydını almaktır.
 
-| Tür | Örnekler | Kullanım Amacı |
-|-----|---------|----------------|
-| **Dijital sanat** | CryptoPunks, Bored Ape YC | Koleksiyon, statü simgesi |
-| **Müzik/içerik** | Royal, Sound.xyz | Telif hakkı paylaşımı |
-| **Oyun içi eşya** | Axie Infinity, Gods Unchained | Gerçek ekonomili oyun varlığı |
-| **Etkinlik bileti** | GET Protocol | Sahte bilet önleme, devir |
-| **Kimlik/sertifika** | POAP | Katılım kanıtı, diploma |
-| **Metaverse arazisi** | Decentraland, The Sandbox | Sanal dünyada mülkiyet |
+## NFT Türleri ve Karşılaştırması
 
-Spekülatif NFT'ler (dijital sanat ve koleksiyonlar) en çok ilgi gören ama en yüksek riski taşıyan türdür. Bilet, kimlik ve oyun içi eşya NFT'leri ise daha somut kullanım senaryoları sunar.
+| NFT Türü | Örnekler | Risk Seviyesi | Likidite |
+|----------|----------|---------------|----------|
+| Sanat NFT'si | Bored Ape, CryptoPunks | Çok Yüksek | Düşük–Orta |
+| Oyun içi eşyalar | Axie Infinity, Gods Unchained | Yüksek | Orta |
+| Müzik NFT'si | Audius, Catalog | Yüksek | Düşük |
+| Spor koleksiyonları | NBA Top Shot, Sorare | Orta–Yüksek | Orta |
+| Metaverse arazisi | Decentraland, The Sandbox | Çok Yüksek | Düşük |
+| Üyelik/faydacı NFT | DAO üyeliği, etkinlik bileti | Değişken | Düşük |
 
-## NFT Değerini Ne Belirler?
-
-NFT fiyatlandırması son derece öznel ve volatildir. Piyasa değerini etkileyen başlıca unsurlar:
-
-| Etken | Açıklama |
-|-------|----------|
-| **Yaratıcının üne** | Ünlü bir sanatçı veya marka desteği fiyatı hızla artırır |
-| **Topluluk büyüklüğü** | Discord/Twitter'da aktif ve büyüyen topluluk talep yaratır |
-| **Koleksiyon arzı** | 10.000 adetlik koleksiyonda 100 adetlik göre daha düşük nadirliktir |
-| **Nadirluk (Rarity)** | Belirli özellik kombinasyonu ne kadar az bulunursa fiyat o kadar yüksek |
-| **İşlem hacmi** | Günlük alım-satım yüksekse likidite vardır; yoksa satmak güçleşir |
-| **Piyasa koşulları** | Kripto genel trendi NFT değerlerini etkiler |
-
-Bu etkenler nesnel olmaktan çok spekülatiftir. Bugün milyonlarca dolara satılan bir NFT yarın değersizleşebilir.
-
-## NFT Yatırımının Riskleri
-
-NFT piyasası, 2021 zirvesinden bu yana dramatik biçimde daraldı. Açık gözle değerlendirilmesi gereken başlıca riskler:
-
-### 1. Likidite Riski
-Hisse senedinde "satmak istediğinde alıcı bulursun" varsayımı NFT için geçerli değildir. Piyasanın soğuduğu dönemlerde birçok koleksiyona alıcı bulmak haftalarca ya da aylarca sürebilir.
-
-### 2. Değer Kayıp Riski
-DappRadar verilerine göre tüm NFT koleksiyonlarının büyük çoğunluğu işlem görmez hale gelmiştir. Popüler koleksiyonlar bile değerinin %80-95'ini yitirebilir.
-
-### 3. Dolandırıcılık ve Sahte Projeler
-"Rug pull" olarak bilinen bu yöntemde proje ekibi para topladıktan sonra ortadan kaybolur. Whitelist vaat eden, fiyatı yapay yükselten ve ardından piyasayı terk eden projelere her dönemde rastlanır.
-
-### 4. Cüzdan Güvenlik Riski
-NFT'ler, özel anahtarlarını kaybedersen ya da kimlik avı (phishing) saldırısına uğrarsan geri alınamaz biçimde kaybolur. [Kripto cüzdan güvenliğini](/blog/kripto-cuzdan-nedir) dikkate almak bu nedenle kritiktir.
-
-### 5. Düzenleyici Belirsizlik
-Türkiye ve pek çok ülkede NFT'ye yönelik özel vergi ve yasal düzenleme henüz netleşmemiştir. İleride ek yükümlülükler gelebilir.
-
-### 6. Gas Ücretleri
-Ethereum ağında her işlemde "gas" adı verilen ücret ödenir. Ağ yoğunken bu ücret NFT bedelinin üstüne çıkabilir.
-
-## NFT ile Kripto Para: Temel Fark
-
-| Özellik | Kripto Para (BTC, ETH) | NFT |
-|---------|----------------------|-----|
-| **Değiştirilebilirlik** | Evet (1 ETH = 1 ETH) | Hayır (her biri eşsiz) |
-| **Standart** | ERC-20 | ERC-721 / ERC-1155 |
-| **Likidite** | Yüksek (borsalarda anında) | Düşük (alıcı bulmak gerekir) |
-| **Kullanım amacı** | Ödeme, değer saklama | Sahiplik kanıtı, koleksiyon |
-| **Fiyat referansı** | Piyasa fiyatı (anlık) | Son satış + nadirluk |
-
-NFT almak için önce ETH veya SOL gibi bir kripto paraya sahip olman gerekir. [Bitcoin ve kripto para piyasasına genel giriş için buraya bakabilirsin](/blog/bitcoin-nedir-nasil-alinir).
+Sanat ve koleksiyon NFT'leri piyasanın en spekülatif bölümüdür. Oyun içi eşyalar ve müzik NFT'leri "gerçek kullanım" sunduğu için daha savunulabilir bir değer önerisi taşır.
 
 ## NFT Nasıl Alınır? Adım Adım
 
-1. **Kripto cüzdanı oluştur:** MetaMask (Ethereum için) veya Phantom (Solana için) tarayıcı uzantısını kur. Seed phrase'ini güvenli bir yere yaz — kağıda, dijital değil.
-2. **Cüzdana kripto para yükle:** Bir borsadan (Binance, OKX vb.) ETH veya SOL satın al; cüzdanına transfer et.
-3. **Pazaryerine bağlan:** OpenSea (Ethereum), Blur (pro kullanıcı), Magic Eden (Solana) en büyük platformlardır.
-4. **Koleksiyonu araştır:** İşlem hacmi, sahibi sayısı, proje ekibinin geçmişi ve Discord topluluğunu incele.
-5. **Satın al veya teklif ver:** "Buy Now" ile anlık alım ya da "Make Offer" ile fiyat teklifi yapabilirsin. Her işlemde gas ücreti ödenir.
-6. **Güvenli sakla:** Yüksek değerli NFT'ler için donanım cüzdanı (Ledger, Trezor) kullan.
+### 1. Kripto cüzdanı kur
+MetaMask en yaygın seçenek. Tarayıcı eklentisi olarak yüklenir, güvenli tohum cümlesini (seed phrase) çevrimdışı sakla. Kripto cüzdan türleri ve güvenlik konusunda daha fazla bilgi için [kripto cüzdan rehberimize](/blog/kripto-cuzdan-nedir) bakabilirsin.
 
-## NFT Yatırımı Mantıklı mı?
+### 2. Ethereum (ETH) al
+NFT pazar yerlerinin büyük çoğunluğu ETH kabul eder. Türkiye'deki borsalardan (BtcTurk, Paribu vb.) TL ile alıp cüzdanına transfer edebilirsin.
 
-Dürüst yanıt: **çoğu kişi için, büyük ihtimalle hayır.**
+### 3. Pazar yerine bağlan
+OpenSea.io gibi bir platforma git, "Connect Wallet" ile MetaMask'ı bağla.
 
-Bunun nedeni yalnızca teknolojinin kötü olması değil. NFT'nin spekülatif boyutu, yaratıcı ve topluluk bağına olan bağımlılığı ve çoğu koleksiyonun sıfırlanması, onu yüksek riskli kategoriye yerleştirir.
+### 4. Araştır, filtrele
+Koleksiyonun işlem hacmine, eser sayısına ve topluluk aktivitesine bak. Düşük hacimli, "floor price" sıfıra yakın koleksiyonlardan uzak dur.
 
-Bununla birlikte bazı kullanım alanları (bilet, kimlik doğrulama, oyun içi sahiplik) gerçek fayda sunabilir ve bu alanlarda ılımlı bir gelişme söz konusu olabilir.
+### 5. Teklif ver ya da direkt al
+"Buy Now" fiyatını öde ya da "Make Offer" ile teklif sun. Gas fee'yi (ağ işlem ücreti) hesaba kat; yoğun dönemlerde önemli maliyet yaratabilir.
 
-NFT'yi değerlendirirken şu sorular yardımcı olur:
-- Bu paranın **tamamını kaybetmeyi** göze alabilir misin?
-- Proje ekibi kimden oluşuyor, geçmişleri şeffaf mı?
-- Koleksiyon hangi somut faydayı sunuyor?
-- Platforma bağlı kalmak yerine NFT'yi blokzincirde gerçekten sahip olabiliyor musun?
+## NFT'nin Riskleri
 
-[Risk ve getiri ilişkisini](/blog/risk-getiri-iliskisi) anlamak, NFT kararlarında da yol gösterici bir çerçeve sunar; yüksek getiri potansiyeli her zaman yüksek kayıp riskiyle birlikte gelir.
+NFT piyasası cazip getiri hikayeleriyle tanınır, ancak riskleri de sert:
 
-## Türk Yatırımcı için Pratik Değerlendirme
+**Likidite riski:** Çoğu NFT koleksiyonunda alıcı bulmak aylar alabilir. Satmak istediğinde alıcı olmayabilir.
 
-Türkiye'de NFT almak teknik olarak mümkündür; ancak birkaç pratik husus göz önünde tutulmalıdır:
+**Proje/ekip riski:** "Rug pull" adı verilen dolandırıcılıklar yaygındır. Ekip parayı alıp projeyi terk eder, NFT'nin değeri sıfıra düşer.
 
-- **Vergi:** Türkiye'de kripto varlık gelirleri Gelir Vergisi'ne tabi tutulmaktadır. NFT satış kazancı da bu kapsamda değerlendirilebilir; bir mali müşavire danışmak faydalıdır.
-- **TL/dolar riski:** NFT'ler çoğunlukla ETH cinsinden fiyatlanır. Hem ETH değeri hem dolar/TL kuru değiştiğinde TL bazındaki değer ikili bir volatiliteye maruz kalır.
-- **Yasal çerçeve:** Türkiye'de NFT'ye özgü yasal düzenleme henüz yeterince netleşmemiştir; bu belirsizlik ileride risk yaratabilir.
+**Piyasa döngüsü:** NFT hacimleri 2021-2022 zirvesine göre dramatik düştü. Yüksek fiyata aldığın NFT uzun süre düşük kalabilir.
+
+**Teknik risk:** Cüzdan bilgilerini çalan phishing saldırıları, akıllı sözleşme açıkları.
+
+**Değerleme belirsizliği:** "Bu NFT neden 10 ETH?" sorusunun nesnel cevabı çoğunlukla yoktur. Fiyat tamamen alıcı-satıcı psikolojisine bağlıdır.
+
+**Vergi:** Türk mevzuatı NFT gelirine henüz net bir çerçeve çizmemiştir; ancak değer artış kazancı kapsamında değerlendirilebilir. Önemli işlemler için mali müşavir önerilir.
+
+## NFT'ye Yatırım Mantıklı Mı?
+
+Kısa cevap: **Çoğu kişi için hayır, spekülatif ve küçük portföy diliminde evet.**
+
+2021 boğa döneminde Bored Ape Yacht Club'ın floor fiyatı 0.08 ETH'den 150 ETH'e fırladı. Ama aynı dönemde yüz binlerce NFT koleksiyonu sıfıra gitti. Hayatta kalan kazanan hikayeleri sesi çıkar, kaybedenlerin büyük çoğunluğu sessiz kalır.
+
+Mantıklı bir yaklaşım şöyle kurulabilir:
+
+- NFT'ye risk portföyünün en fazla %1-5'ini ayır.
+- Kaybetmeye hazır olmadığın parayla girme.
+- "Kullanım değeri" olan NFT'lere (gerçek oyun, topluluk üyeliği) bak; saf koleksiyon NFT'lerine değil.
+- Proje ekibini araştır: geçmiş işler, kimlik şeffaflığı, topluluk aktifliği.
+
+Kripto varlıkların risk-getiri profilini anlamak için [stablecoin rehberimize](/blog/stablecoin-nedir) ve genel [risk-getiri ilişkisi yazımıza](/blog/risk-getiri-iliskisi) bakabilirsin.
+
+## Türkiye'den NFT Alımında Pratik Notlar
+
+- Türk borsaları doğrudan NFT satmıyor; ETH/SOL alıp kendi cüzdanına çekmen gerekiyor.
+- Ethereum ağ ücretleri (gas) çok işlem yapıyorsan ciddi maliyet çıkarabilir; Solana veya Polygon tabanlı koleksiyonlar daha ucuz.
+- TL/dolar kuru değişkenliği ek bir katman ekler: ETH düşse bile TL değer kaybetmişse zararın farklı görünebilir.
+- NFT pazar yerlerinin büyük çoğunluğu Türkçe desteklememektedir.
 
 ## Özet
 
-- **NFT**, blokzincirde kayıtlı, eşsiz ve değiştirilemez dijital bir token'dır; sahipliği herkese açık biçimde doğrulanabilir.
-- **Dijital sanat, müzik, oyun, etkinlik bileti ve kimlik doğrulama** gibi alanlarda kullanılır; her türün risk/fayda dengesi farklıdır.
-- **2021-2022 balonundan bu yana** NFT piyasası büyük ölçüde daraldı; koleksiyonların büyük çoğunluğu değerini yitirdi.
-- **Başlıca riskler:** likidite eksikliği, değer kaybı, dolandırıcılık, cüzdan güvenliği ve düzenleyici belirsizlik.
-- **Yatırım kararı** vermeden önce projeyi derinlemesine araştır; kaybetmeyi göze alabileceğin miktarın ötesine geçme.
+- **NFT nedir:** Blockchain üzerinde kayıtlı, benzersiz dijital sahiplik belgesi.
+- **Nasıl çalışır:** Sanatçı "mint" eder, alıcı kripto cüzdanla satın alır; sahiplik blockchain'de şeffaf şekilde görünür.
+- **Risk profili:** Yüksek spekülatif; likidite düşük, rug pull riski gerçek, piyasa döngüsel.
+- **Yatırım mantığı:** Büyük çoğunluğa uymaz; küçük risk bütçesiyle, araştırılmış projelerde, kaybetmeye hazır parayla değerlendirilebilir.
 
 ---
 
-*Bu içerik yalnızca bilgilendirme amaçlıdır; yatırım tavsiyesi niteliği taşımaz. NFT piyasası son derece spekülatif ve volatildir. Yatırım kararlarını kendi araştırman ve risk toleransın çerçevesinde, gerekirse bir finansal danışmanın desteğiyle ver.*
+*Bu içerik yalnızca bilgilendirme amaçlıdır; yatırım tavsiyesi değildir. Kripto ve NFT piyasaları yüksek risk içerir; yatırım kararlarını kendi araştırman ve gerekirse uzman görüşü alarak ver.*

@@ -4,110 +4,225 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
-## 2026-07-25 — NFT Nedir? Yatırım Mantıklı Mı? Eksiksiz Türkçe Rehber
+## 2026-07-25 — Fed Faiz Kararı Nedir? ABD Merkez Bankası Faizi TL ve Borsayı Nasıl Etkiler?
 
-**Yayınlanan yazı:** [NFT Nedir? Yatırım Mantıklı Mı? Eksiksiz Türkçe Rehber](https://parafomo.com/blog/nft-nedir-yatirim-mantikli-mi/)
-Kategori: Kripto | Hedef sorgu: "nft nedir" | ~1.350 kelime
+**Yayınlanan yazı:** [Fed Faiz Kararı Nedir? ABD Merkez Bankası Faizi TL ve Borsayı Nasıl Etkiler?](https://parafomo.com/blog/fed-faiz-karari-nedir-etkisi/)
+Kategori: Ekonomi | Hedef sorgu: "fed faiz kararı nedir" | ~1.200 kelime
+Kaynak: Takvim — 29 Temmuz 2026 Fed faiz kararı öncesi explainer (Fed-spesifik boşluk; ECB ve TCMB yazıları zaten var)
+
+---
+
+### X (Twitter) Thread Taslağı
+
+29 Temmuz'da ABD Merkez Bankası (Fed) faiz kararı açıklıyor.
+
+Bu kararın TL'ye, borsaya ve cebine etkisi ne?
+Çoğu Türk yatırımcının bilmediği 5 şey 🧵
+
+1/ Fed ne yapar?
+Bankaların birbirine gecelik borç verdiği faizi belirler.
+Bu oran değişince bütün kredi, mevduat ve döviz kurları zincirleme etkiler.
+
+2/ Fed faiz artırırsa TL ne olur?
+Dolar getirisi artar → yatırımcılar TL'den çıkar → kur yükselir.
+Türkiye'deki dolar borçlu şirketler zarar yazar. BIST zayıflar.
+
+3/ Fed faiz indirirse?
+Tam tersi: dolar zayıflar, gelişen piyasalara para akar.
+TL ve BIST için nefes alma fırsatı.
+
+4/ Ama asıl mesele beklentiler.
+Piyasalar kararı zaten haftalarca önceden fiyatlar.
+29 Temmuz'da sürpriz yoksa büyük hareket olmaz.
+Sürpriz varsa: sert volatilite.
+
+5/ Yatırımcı ne yapmalı?
+→ Döviz/hisse dengesini şimdiden gözden geçir.
+→ Karar günü panikle işlem yapma.
+→ Basın toplantısının tonu, kararın kendisi kadar önemli.
+
+Detaylı anlatım → parafomo.com/blog/fed-faiz-karari-nedir-etkisi/
+
+---
+
+### Instagram Post Metni
+
+📢 29 Temmuz'da Fed faiz kararı açıklıyor — ve bu karar cebini doğrudan etkiliyor.
+
+Fed faiz artırırsa: 💵 dolar güçlenir, 📉 TL zayıflar, BIST'te satış baskısı
+Fed faiz indirirse: 📈 gelişen piyasalar nefes alır, TL'ye rahatlama
+
+Ama şunu bil: piyasalar kararı haftalar önceden fiyatlar. Asıl sürpriz "ton"da gizli.
+
+Detaylı rehberi okumak için profildeki linke tıkla 👆
+
+#fedkararı #abdfaiz #merkezdankası #doviz #dolartl #bist100 #yatırım #borsa #ekonomi #parafomo
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **Yukarıdaki X thread'ini** @parafomo hesabından paylaş. Kararın ne zaman açıklandığını ("29 Temmuz, gece 21:00") tweet'in sonuna ekle.
+2. **Instagram post'unu** yayınla; kapak fotoğrafı olarak `public/covers/fed-faiz-karari-nedir-etkisi.jpg` dosyasını kullanabilirsin. 29 Temmuz öncesi hafta sonu paylaşımları daha fazla etkileşim alır.
+
+---
+
+## 2026-07-24 — Para Psikolojisi: Zengin Edenlerin Para Yönetimi Alışkanlıkları
+
+**Yayınlanan yazı:** [Para Psikolojisi: Zengin Edenlerin Para Yönetimi Alışkanlıkları](https://parafomo.com/blog/para-psikolojisi-aliskanliklari/)
+Kategori: Kişisel Finans | Hedef sorgu: "para yönetimi alışkanlıkları" | ~1.100 kelime
 Kaynak: Evergreen backlog
 
 ---
 
 ### X (Twitter) Thread Taslağı
 
-2021'de NFT'ler için milyonlar ödendi.
-2025-2026'da çoğu sıfıra yakın.
-Ama bazıları hâlâ ilgi görüyor. Neden? 🧵
+Yüksek gelirli ama iflas eden sporcular var.
+Düşük maaşlı ama rahat emekliyet eden öğretmenler de.
 
-1/ NFT nedir?
-Non-Fungible Token = eşsiz dijital token.
-1 Bitcoin her zaman 1 Bitcoin'e eşittir.
-Ama bir NFT, başka bir NFT'nin tam yerine geçemez. Eşsizdir.
-Sahipliği blokzincirde kayıtlı; silinemiyor.
+Fark IQ değil, para alışkanlıkları. İşte 8'i 🧵
 
-2/ Ne işe yarar?
-→ Dijital sanat koleksiyonu
-→ Oyun içi eşya sahipliği
-→ Etkinlik bileti
-→ Kimlik doğrulama (diploma, POAP)
-→ Metaverse arazisi
+1/ "Önce kendinize ödeyin"
+Maaş gelir gelmez %10-20'yi ayır — kalan ile geçin.
+Tersini yaparsanız (kalanı biriktiririm) birikim genelde sıfır kalır.
 
-Spekülatif olan = sanat/koleksiyon.
-Faydalı olan = bilet, kimlik, oyun.
+2/ Bütçe stres yaratır
+Katı bütçe çoğu kişide terk edilir.
+Bunun yerine: ay sonunda harcamaları 5-6 kategoriye ayır ve bak.
+Görmek, zaten davranışı değiştirir.
 
-3/ NFT değeri ne belirler?
-Yaratıcının üne + topluluk büyüklüğü + nadirlük + işlem hacmi.
-Bunların tamamı nesnel değil, spekülatif.
-Bugünün hit'i yarın sıfır olabilir.
+3/ İrade değil otomasyon
+Maaş günü otomatik transfer, otomatik yatırım planı.
+İnsan her ay karar verse, bir bahane her zaman çıkar.
 
-4/ Risk neden bu kadar yüksek?
-❌ Çoğu koleksiyon işlem görmez hale geldi
-❌ "Rug pull" dolandırıcılıkları hâlâ yaygın
-❌ Cüzdan hacklendi mi? NFT geri alınamaz
-❌ Gas ücreti bazen NFT değerini aşıyor
-❌ Türkiye'de vergi düzenlemesi henüz belirsiz
+4/ Türkiye gerçeği
+Yüksek enflasyon "bugün harcamak mantıklı" yanılgısı yaratır.
+Nakit tutmak = gerçek getiri negatif.
+Çözüm: düzenli, otomatik varlık alımı.
 
-5/ Peki yatırım mantıklı mı?
-Dürüst yanıt: çoğu kişi için, büyük ihtimalle hayır.
-Ama kullanım senaryosu olan (bilet, kimlik) projelerde gerçek fayda var.
-Kaybetmeyi göze alabileceğin miktarla başlamak ve projeyi araştırmak şart.
+5/ Kötü alışkanlığı bırakmak için:
+→ Önce fark et
+→ 24 saat bekle kuralı
+→ Küçük başla (200 TL'lik otomasyon)
+→ Tetikleyicileri kaldır (bildirimler, favoriler)
+→ Kendini ödüllendir
+
+Davranış bilimi ne diyor? 66 gün. Sonra otomatik.
 
 Detaylı rehber 👇
-parafomo.com/blog/nft-nedir-yatirim-mantikli-mi/
+parafomo.com/blog/para-psikolojisi-aliskanliklari/
 
 ---
 
 ### Instagram Post / Carousel Metni
 
 **Slide 1 (kapak):**
-NFT Nedir?
-Yatırım mantıklı mı?
-Dürüst rehber 👀
+Para psikolojisi
+Zenginler nasıl düşünür?
 
 **Slide 2:**
-NFT = Eşsiz dijital token
-Blokzincirde kayıtlı sahiplik kanıtı.
-1 BTC = 1 BTC → fungible
-1 NFT ≠ başka bir NFT → non-fungible
+Fark IQ değil alışkanlık
+Yüksek gelirli ama iflas eden çok var.
+Düşük maaşlı ama rahat emekliyet eden de.
 
 **Slide 3:**
-Ne işe yarar?
-🎨 Dijital sanat
-🎮 Oyun içi eşya
-🎫 Etkinlik bileti
-🪪 Kimlik / diploma
-🌍 Metaverse arazisi
+Alışkanlık 1: Önce biriktir
+Maaş → %10-20 otomatik ayrıl → Kalan ile geçin
+Tersini yapanların birikimi genelde sıfır.
 
 **Slide 4:**
-NFT değeri ne belirler?
-→ Yaratıcının üne
-→ Topluluk büyüklüğü
-→ Koleksiyondaki nadirlük
-→ İşlem hacmi
-Bunların hepsi spekülatif. Dikkat.
+Alışkanlık 2: Otomasyona güven
+İrade gücü biter, otomasyon bitmez.
+Maaş günü otomatik transfer = oyun değiştirici.
 
 **Slide 5:**
-Riskler
-❌ Piyasa 2021'den bu yana %90+ düştü
-❌ Rug pull: ekip para alıp kaçar
-❌ Likidite yok: alıcı bulamayabilirsin
-❌ Cüzdan hacki = geri dönüş yok
+Türkiye bağlamı
+Enflasyon "bugün harcamak mantıklı" dedirtir.
+Nakit tutmak = para eriyor.
+Çözüm: düzenli varlık alımı (altın, hisse, döviz).
 
 **Slide 6:**
-Yatırım mantıklı mı?
-Çoğu kişi için: hayır.
-Kullanım senaryolu projelerde: belki.
-Altın kural: kaybetmeyi göze alabileceğin kadarını yatır.
+66 gün yeterli
+Yeni bir alışkanlık ortalama 66 günde otomatik hale gelir.
+Küçük başla, tutarlı ol.
 
-parafomo.com/blog/nft-nedir-yatirim-mantikli-mi/
+parafomo.com/blog/para-psikolojisi-aliskanliklari/
 
-#NFT #NFTNedir #Kripto #Blockchain #DigitalVarlık #KriptoTürkiye
+#ParaPsikolojisi #ParaYönetimi #KişiselFinans #Tasarruf #FinansSal #TürkiyeFinans
 
 ---
 
 ### Bugün Yapman Gerekenler
 
-1. **X ve Instagram'da paylaş:** NFT konusu özellikle kripto meraklılarında iyi etkileşim alır; thread formatı soru-cevap tarzında ilgi çekiyor. Yorum sorusu ekle: "NFT aldın mı, deneyimin nasıldı?"
-2. **1 toplulukta değer katarak paylaş:** Kripto veya finans gruplarında "NFT mantıklı mı?" sorusu hâlâ tartışılıyor; bağlamına uygun yerde yazıyı referans göster.
+1. **X ve Instagram'da paylaş:** Yukarıdaki thread ve carousel taslağını yayınla. Bu konu Instagram'da özellikle iyi performans gösterir — slide formatı ile paylaşmayı dene.
+2. **1 toplulukta değer katarak paylaş:** "Para harcama alışkanlıklarını nasıl değiştirdiniz?" sorusu sorulan bir konu/grup bul; deneyimini anlat ve yazıyı kaynak olarak ekle.
+
+---
+
+## 2026-07-24 — NFT Nedir? Yatırım Mantıklı Mı? Eksiksiz Türkçe Rehber
+
+**Yayınlanan yazı:** [NFT Nedir? Yatırım Mantıklı Mı? Eksiksiz Türkçe Rehber](https://parafomo.com/blog/nft-nedir-yatirim-mantikli-mi/)
+Kategori: Kripto | Hedef sorgu: "nft nedir" | ~1.200 kelime
+
+**X (Twitter) Thread Taslağı:**
+
+🧵 NFT gerçekten para kazandırır mı, yoksa sadece hype mi?
+
+1/ NFT = Blockchain üzerinde benzersiz dijital sahiplik belgesi. Satın aldığın şey "orijinal eser sahibi olma hakkı" — herkes görebilir ama sahip sadece sen. 🖼️
+
+2/ Nasıl çalışır?
+• Sanatçı → mint eder (blockchain'e yazar)
+• Sen → kripto cüzdanla satın alırsın
+• Sahiplik → otomatik güncellenir, şeffaf
+
+3/ NFT türleri risk tablosu 👇
+🔴 Sanat/koleksiyon: çok spekülatif
+🟡 Oyun eşyaları: kullanım değeri var
+🟡 Müzik NFT: topluluk odaklı
+🟢 Üyelik/bilet: en somut faydacı NFT
+
+4/ Ama riskler gerçek:
+❌ Likidite düşük → satmak zor
+❌ Rug pull yaygın
+❌ Vergi belirsizliği (TR'de değer artış kazancı kapsamı)
+❌ Fiyat tamamen beklenti bazlı
+
+5/ Sonuç: NFT, toplam portföyünüzün %1-5'inden fazlasına uygun değil. Araştırılmış, gerçek kullanım değeri olan projelerde, kaybetmeye hazır parayla değerlendirin.
+
+Tüm rehber → parafomo.com/blog/nft-nedir-yatirim-mantikli-mi/
+
+#NFT #Kripto #Blockchain #Finans #ParaFOMO
+
+---
+
+**Instagram Post Metni:**
+
+NFT nedir, gerçekten kazandırır mı? 🤔
+
+💡 NFT = dijital sahiplik belgesi (blockchain üzerinde)
+
+✅ Her NFT benzersiz — Bitcoin gibi birebir değiştirilemez
+✅ Sanatçılar her satıştan telif alır
+✅ Gerçek kullanım değeri olan projelerde potansiyel var
+
+⚠️ Ama dikkat:
+• Çoğu NFT koleksiyonu değer kaybetti
+• Rug pull (dolandırıcılık) riski yüksek
+• Satmak zor, likidite düşük
+• Türkiye'de vergi mevzuatı belirsiz
+
+📌 Portföyünün max %1-5'i = sağlıklı yaklaşım
+
+Tüm rehber bio'daki linkte 👆
+
+#NFT #Kripto #Blockchain #Yatırım #ParaFOMO #FinansTürkiye #KriptoParaTürkiye
+
+---
+
+**Bugün senin yapman gerekenler:**
+
+1. **Paylaşımı yayınla:** X thread'ini ve Instagram post'unu yukarıdaki taslakları kullanarak paylaş.
+2. **Kripto toplulukları:** Reddit r/Turkey veya Türk kripto Telegram gruplarında "NFT nedir merak ediyorum" konusu açıksa yazıyı değer katarak paylaş (spam değil, soru soran biri varsa link bırak).
 
 ---
 

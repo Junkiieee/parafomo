@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-07-23T08:45:28Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-07-24T08:45:34Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -11,40 +11,40 @@
 
 ## Kararlar
 
-### Shorts sesi — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
+### Shorts sesi — **explore** (yeterli veri yok, rotasyon sürüyor)
 
-- `tr-TR-Chirp3-HD-Zubenelgenubi` — skor 90.093, örnek 3
-- `tr-TR-Chirp3-HD-Achernar` — skor 85.17, örnek 3
+- `tr-TR-Chirp3-HD-Achernar` — skor 84.837, örnek 3
 - `tr-TR-Chirp3-HD-Sadachbia` — skor 60.755, örnek 2
 - `tr-TR-Chirp3-HD-Sulafat` — skor 56.287, örnek 3
-- `tr-TR-Chirp3-HD-Gacrux` — skor 53.987, örnek 3
+- `tr-TR-Chirp3-HD-Iapetus` — skor 55.303, örnek 3
 - `tr-TR-Chirp3-HD-Rasalgethi` — skor 49.435, örnek 2
-- `tr-TR-Chirp3-HD-Vindemiatrix` — skor 44.383, örnek 3
-- `tr-TR-Chirp3-HD-Fenrir` — skor 43.147, örnek 3
+- `tr-TR-Chirp3-HD-Zubenelgenubi` — skor 44.83, örnek 3
+- `tr-TR-Chirp3-HD-Vindemiatrix` — skor 44.68, örnek 3
+- `tr-TR-Chirp3-HD-Gacrux` — skor 43.527, örnek 3
 
 ### Shorts motoru (google/edge) — **exploit** → seçim: `google`
 
-- `google` — skor 47.965, örnek 45
+- `google` — skor 44.046, örnek 48
 - `edge` — skor 36.698, örnek 14
 
 ### Viral format — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `myth` — skor 51.207, örnek 7
-- `news_reaction` — skor 43.067, örnek 9
+- `backtest_return` — skor 62.55, örnek 3
+- `shock_number` — skor 46.712, örnek 4
+- `myth` — skor 41.634, örnek 7
 - `single_concept` — skor 40.283, örnek 3
-- `shock_number` — skor 37.962, örnek 4
-- `backtest_return` — skor 36.55, örnek 3
+- `news_reaction` — skor 37.866, örnek 10
 - `comparison` — skor 36.46, örnek 3
 
 ### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `4` — skor 54.493, örnek 3
-- `manual` — skor 47.264, örnek 7
+- `5` — skor 52.47, örnek 5
+- `0` — skor 49.126, örnek 5
 - `2` — skor 45.08, örnek 2
-- `0` — skor 42.126, örnek 5
-- `1` — skor 37.59, örnek 4
-- `5` — skor 36.87, örnek 5
+- `manual` — skor 42.559, örnek 7
 - `3` — skor 35.983, örnek 3
+- `1` — skor 34.872, örnek 5
+- `4` — skor 32.157, örnek 3
 
 ## Konu sinyalleri
 

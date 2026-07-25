@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-23T08:45:28Z",
+  "generated_utc": "2026-07-24T08:45:34Z",
   "boost": [
     "nfp-nedir-abd-tarim-disi-istihdam",
     "endeks-fonu-nedir",
@@ -9,16 +9,16 @@
     "ism-pmi-nedir-abd-uretim-verisi",
     "acil-durum-fonu-nedir",
     "abd-perakende-satislari-nedir",
+    "borc-kapatma-yontemi-kartopu-cig",
     "tufe-enflasyon-verisi-nasil-okunur",
     "risk-getiri-iliskisi",
     "ethereum-nedir",
     "dca-nedir-maliyet-ortalamasi",
-    "borc-kapatma-yontemi-kartopu-cig",
     "fk-orani-nedir",
     "faiz-nedir-ekonomiyi-nasil-etkiler",
     "temel-analiz-teknik-analiz-farki",
-    "eurobond-nedir",
     "bist-100-nedir-nasil-yatirim-yapilir",
+    "eurobond-nedir",
     "temettu-hisseleri-pasif-gelir",
     "kredi-karti-borcundan-kurtulma"
   ],
@@ -31,18 +31,18 @@
     "ism-pmi-nedir-abd-uretim-verisi",
     "acil-durum-fonu-nedir",
     "abd-perakende-satislari-nedir",
+    "borc-kapatma-yontemi-kartopu-cig",
     "tufe-enflasyon-verisi-nasil-okunur",
     "risk-getiri-iliskisi",
     "ethereum-nedir",
-    "dca-nedir-maliyet-ortalamasi",
-    "borc-kapatma-yontemi-kartopu-cig"
+    "dca-nedir-maliyet-ortalamasi"
   ],
   "buried": [
     "fk-orani-nedir",
     "faiz-nedir-ekonomiyi-nasil-etkiler",
     "temel-analiz-teknik-analiz-farki",
-    "eurobond-nedir",
     "bist-100-nedir-nasil-yatirim-yapilir",
+    "eurobond-nedir",
     "temettu-hisseleri-pasif-gelir",
     "kredi-karti-borcundan-kurtulma"
   ]
