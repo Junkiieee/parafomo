@@ -4,6 +4,79 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-26 — BOE Faiz Kararı Nedir? Bank of England Kararı Sterlin ve TL'ye Etkisi
+
+**Yayınlanan yazı:** [BOE Faiz Kararı Nedir? Bank of England Kararı Sterlin ve TL'ye Etkisi](https://parafomo.com/blog/boe-faiz-karari-nedir-etkisi/)
+Kategori: Ekonomi | Hedef sorgu: "boe faiz kararı" | ~1.350 kelime
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+Bank of England yarın (30 Temmuz) faiz kararı açıklıyor 🇬🇧
+
+Fed'den bir gün sonra. İki kararın yönü ayrışırsa sterlin/dolar paritesi sert hareket edebilir — bu da TL'yi etkiler.
+
+Peki BOE nedir, nasıl karar alır? 🧵
+
+**Tweet 2:**
+BOE = Bank of England. Dünyanın en eski merkez bankalarından biri (1694).
+
+9 kişilik Para Politikası Komitesi (MPC) faiz kararlarını oy çokluğuyla alır.
+Fed'in FOMC'u gibi, ama sterlin için.
+
+**Tweet 3:**
+BOE faiz artırırsa → sterlin güçlenir
+BOE faiz indirirse → dolar görece güçlenir → TL üzerinde baskı
+
+Kararın kendisi kadar MPC oylama dağılımı da kritik.
+5-4 bölünmüş oy, ilerideki kararı fiyatlar.
+
+**Tweet 4:**
+30 Temmuz takvimi (Londra saati):
+🕚 11:00 — Faiz kararı + Para Politikası Raporu
+🕦 11:30 — BOE Başkanı basın toplantısı
+
+Fed + BOE aynı hafta → volatilite yüksek olabilir.
+
+Detaylar: [link]
+
+---
+
+### 📸 Instagram Post/Carousel Metni
+
+**Başlık:** Bank of England 30 Temmuz'da faiz kararı açıklıyor 🇬🇧
+
+**Ana metin:**
+Fed'den bir gün sonra BOE da sahne alıyor.
+
+İşte bilmen gerekenler:
+
+📌 BOE nedir?
+→ İngiltere'nin merkez bankası. 9 kişilik MPC faiz kararlarını alır.
+
+📌 Karar nasıl etkiler?
+→ Faiz artışı: sterlin güçlenir, dolar zayıflar
+→ Faiz indirimi: sterlin zayıflar, dolar güçlenir → TL baskı altına girebilir
+
+📌 Takvim:
+→ 30 Temmuz, 11:00 Londra saati
+
+🔗 Tüm açıklama biyografimizdeki linkte.
+
+**Hashtag'ler:**
+#BOE #BankOfEngland #sterlin #faizkarari #merkezdankasifaizi #yatirim #ekonomi #parafomo
+
+---
+
+### ✅ Bugün Yapman Gerekenler
+
+1. **X Thread'ini paylaş** — 30 Temmuz BOE toplantısı öncesinde zamanlama mükemmel; bu hafta hem Fed hem BOE kararı var, toplu haber akışında görünürlük yüksek.
+2. **Instagram post'unu paylaş** — Sterlin/TL'yi etkileyen BOE kararı hakkında farkındalık yaratmak için, özellikle "bu hafta merkez bankası kararları" teması etrafında.
+
+---
+
 ## 2026-07-25 — Fed Faiz Kararı Nedir? ABD Merkez Bankası Faizi TL ve Borsayı Nasıl Etkiler?
 
 **Yayınlanan yazı:** [Fed Faiz Kararı Nedir? ABD Merkez Bankası Faizi TL ve Borsayı Nasıl Etkiler?](https://parafomo.com/blog/fed-faiz-karari-nedir-etkisi/)
