@@ -1,0 +1,59 @@
+{
+  "slug": "maasin-artiyor-peki-serveti-nerede",
+  "title": "Maaşın Artıyor, Peki Serveti Nerede?",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Çok çalışmak gelir getirir, servet yaratmaz. Türkiye'de yükselen maaşa rağmen alım gücü neden donup kaldı.",
+  "tags": [
+    "yatırım",
+    "maaş",
+    "servet",
+    "finansal özgürlük",
+    "enflasyon",
+    "türk yatırımcı",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Çok çalışmak seni zengin eder sanıyorsun.",
+      "visual": {
+        "type": "concept",
+        "query": "hard working employee office desk overtime"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Son 5 yılda Türkiye'de maaşlar yaklaşık 5 kat arttı. Ama market arabasını doldurmak neden hâlâ bu kadar zor?",
+      "visual": {
+        "type": "concept",
+        "query": "supermarket shopping cart expensive groceries inflation"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çünkü enflasyon maaşın kadar büyüdü, hatta geçti. Bankadaki 100 bin TL, 5 yılda alım gücünün yaklaşık dörtte birini kaybetti.",
+      "visual": {
+        "type": "concept",
+        "query": "money cash losing value inflation eroding savings"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Formül şu: gelir artı yatırım. Paranın bir kısmı sana çalışmalı. Aylık 500 TL bile doğru araçta bileşik olarak büyür.",
+      "visual": {
+        "type": "concept",
+        "query": "compound interest investment growth money chart"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Hangi araçlara aylık 500 TL ile başlanır? Hesabı yarın birlikte yapıyoruz. Her gün 60 saniyede finans gerçeği için abone ol.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification bell smartphone screen"
+      }
+    }
+  ]
+}
