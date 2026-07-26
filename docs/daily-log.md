@@ -4,6 +4,72 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-26 — ETF Nedir? Borsa Yatırım Fonuna Başlangıç Rehberi
+
+**Yayınlanan yazı:** [ETF Nedir? Borsa Yatırım Fonuna Başlangıç Rehberi](https://parafomo.com/blog/etf-nedir-borsa-yatirim-fonu/)
+Kategori: Yatırım | Hedef sorgu: "etf nedir" | ~1.100 kelime
+Kaynak: Backlog — evergreen yatırım; ETF kavramı yatırım fonu ve endeks fonu yazılarını tamamlar, distinct bir konu.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+ETF nedir biliyor musun?
+
+Yatırım fonunun çeşitlendirmesi + hisse senedinin esnekliği = ETF.
+Ve yönetim ücreti genellikle çok daha düşük. 🧵
+
+1/ ETF (Exchange Traded Fund), borsada hisse gibi alınıp satılabilen bir yatırım sepeti.
+Tek bir alımla 100'den fazla şirkete ortaksın — en basit hâliyle bu.
+
+2/ Yatırım fonundan ne farkı var?
+→ Gün içinde istediğin saatte al-sat (fon gün sonunda)
+→ Yönetim ücreti çok daha düşük (yüzde 0,10 ile yüzde 3 arasındaki fark 20 yılda çok büyür)
+→ Portföyü her gün görebilirsin
+
+3/ ETF türleri:
+📈 Hisse senedi ETF → BIST 100, S&P 500
+🏦 Tahvil ETF → sabit gelir arayanlar için
+🥇 Altın ETF → TL üzerinden fiziksel altın
+🏭 Sektör ETF → tek sektöre odaklan
+
+4/ Türkiye'de nasıl alırsın?
+Aracı kurum hesabı aç → ETF sembolünü platforma yaz → hisse gibi emir gir.
+BIST'te altın ve endeks ETF'leri işlem görüyor.
+
+5/ Dikkat et:
+❌ Kaldıraçlı ETF yeni başlayanlar için değil
+✅ Düşük TER (yönetim ücreti) olan fonu seç
+✅ İşlem hacmi yüksek ETF daha likit
+
+Detaylı rehber → parafomo.com/blog/etf-nedir-borsa-yatirim-fonu/
+
+---
+
+### Instagram Post Metni
+
+💡 ETF nedir, hiç duydun mu?
+
+Kısaca: hisse senedinin esnekliği + yatırım fonunun çeşitlendirmesi — üstelik düşük maliyetle.
+
+📌 Tek alımla yüzlerce şirkete ortak olursun
+📌 Gün içinde istediğin saatte al-sat
+📌 Yönetim ücretleri aktif fonlara göre çok daha düşük
+📌 Türkiye'de BIST üzerinden altın ve endeks ETF'leri mevcut
+
+Sade anlatım, karşılaştırma tablosu ve adım adım rehber için linke tıkla 👉 parafomo.com/blog/etf-nedir-borsa-yatirim-fonu/
+
+#ETF #BorsaYatırımFonu #Yatırım #ParaFOMO #KişiselFinans #BorsaRehberi
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **Bu yazıyı X ve Instagram'da paylaş** — yukarıdaki taslakları kullanabilirsin; kendi tarzınla kısalt ya da emojilerini değiştir.
+2. **1 ilgili toplulukta değer katarak paylaş** — r/Borsa, r/Turkey veya ilgili bir Telegram/Facebook finans grubunda "ETF nasıl alınır merak ediyordum" gibi bir tartışmaya katkı sağla, yazıya bağlantı ver.
+
+---
+
 ## 2026-07-25 — Fed Faiz Kararı Nedir? ABD Merkez Bankası Faizi TL ve Borsayı Nasıl Etkiler?
 
 **Yayınlanan yazı:** [Fed Faiz Kararı Nedir? ABD Merkez Bankası Faizi TL ve Borsayı Nasıl Etkiler?](https://parafomo.com/blog/fed-faiz-karari-nedir-etkisi/)

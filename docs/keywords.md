@@ -36,9 +36,11 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Vergi avantajlı yatırım araçları — `Yatırım` — hedef: "vergi avantajlı yatırım"
 - [x] NFT nedir, yatırım mantıklı mı? — `Kripto` — hedef: "nft nedir"
 - [x] Para psikolojisi: zengin edenlerin alışkanlıkları — `Kişisel Finans` — hedef: "para yönetimi alışkanlıkları"
+- [x] ETF nedir? Borsa yatırım fonu rehberi — `Yatırım` — hedef: "etf nedir"
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] ETF Nedir? Borsa Yatırım Fonuna Başlangıç Rehberi — `etf-nedir-borsa-yatirim-fonu` (backlog: evergreen yatırım)
 - [x] Fed Faiz Kararı Nedir? ABD Merkez Bankası Faizi TL ve Borsayı Nasıl Etkiler? — `fed-faiz-karari-nedir-etkisi` (takvim: 29 Temmuz 2026 Fed faiz kararı)
 - [x] Para psikolojisi: zengin edenlerin alışkanlıkları — `para-psikolojisi-aliskanliklari` (backlog: evergreen kişisel finans)
 - [x] NFT nedir, yatırım mantıklı mı? — `nft-nedir-yatirim-mantikli-mi` (backlog: evergreen kripto)
