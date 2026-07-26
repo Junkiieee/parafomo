@@ -17,6 +17,23 @@ faq:
     a: "MPC (Monetary Policy Committee — Para Politikası Komitesi), BOE bünyesinde faiz kararlarını veren 9 üyeli komitedir. 5 üye BOE içinden (Başkan dahil), 4 üye ise Hazine tarafından atanan bağımsız ekonomistlerden oluşur. Kararlar oy çokluğuyla alınır."
   - q: "Sterlin TL'ye karşı nasıl hareket eder?"
     a: "Sterlin/TL paritesi önce sterlin/dolar (GBP/USD), ardından dolar/TL (USD/TRY) üzerinden çapraz olarak belirlenir. Sterlin güçlenirse TL'ye karşı da değer kazanır; bu Birleşik Krallık'a ihracat yapan Türk firmaları ve GBP bazlı borçlar için maliyet etkisi doğurur."
+shorts:
+  - "332 yıllık banka bugün TL'ni etkiliyor."
+  - "Bank of England 1694'te kuruldu; bugün sterlin değerini ve İngiltere enflasyonunu yöneten dünyanın en köklü merkez bankalarından biridir."
+  - "9 kişilik MPC komitesi her toplantıda faizi artır, indir ya da sabit tut diye oylayarak sterlinin yönünü doğrudan belirliyor."
+  - "Sterlin güçlenince Türk ihracatçıların İngiltere gelirleri artar; sterlin zayıflayınca TL üzerinde satış baskısı oluşabilir."
+  - "30 Temmuz BOE kararı TL'yi nasıl etkileyecek? Kaçırmamak için kanala abone ol, tüm analiz parafomo.com'da seni bekliyor."
+shorts_broll:
+  - "Bank of England London exterior"
+  - "interest rate decision central bank"
+  - "currency exchange rate screen monitor"
+  - "turkish lira british pound trading"
+shorts_visuals:
+  - "place|Bank of England"
+  - "place|Bank of England"
+  - "concept|central bank committee voting meeting"
+  - "concept|turkish lira british pound exchange rate chart"
+  - "concept|financial news subscribe notification bell"
 ---
 
 30 Temmuz 2026'da Bank of England (BOE), yılın en kritik Para Politikası Komitesi (MPC) toplantılarından birini yapacak. Fed'in faiz kararını aynı haftada açıklaması piyasaları zaten gergin tutuyorken BOE kararı da sterlin, dolar ve dolaylı yoldan TL üzerinde belirleyici bir etki yaratabilir. Peki BOE nedir, nasıl karar alır ve bu karar seni nasıl etkiler?
