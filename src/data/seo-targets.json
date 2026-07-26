@@ -1,11 +1,10 @@
 {
-  "generated_utc": "2026-07-25T08:45:30Z",
+  "generated_utc": "2026-07-26T08:45:38Z",
   "boost": [
     "nfp-nedir-abd-tarim-disi-istihdam",
     "endeks-fonu-nedir",
     "abd-cpi-enflasyon-verisi-nedir",
     "fomc-toplanti-tutanaklari-nedir",
-    "gdp-gsyih-nedir-nasil-yorumlanir",
     "ism-pmi-nedir-abd-uretim-verisi",
     "acil-durum-fonu-nedir",
     "abd-perakende-satislari-nedir",
@@ -17,17 +16,16 @@
     "fk-orani-nedir",
     "faiz-nedir-ekonomiyi-nasil-etkiler",
     "temel-analiz-teknik-analiz-farki",
+    "gdp-gsyih-nedir-nasil-yorumlanir",
     "bist-100-nedir-nasil-yatirim-yapilir",
     "eurobond-nedir",
-    "kredi-karti-borcundan-kurtulma",
-    "temettu-hisseleri-pasif-gelir"
+    "kredi-karti-borcundan-kurtulma"
   ],
   "near_miss": [
     "nfp-nedir-abd-tarim-disi-istihdam",
     "endeks-fonu-nedir",
     "abd-cpi-enflasyon-verisi-nedir",
     "fomc-toplanti-tutanaklari-nedir",
-    "gdp-gsyih-nedir-nasil-yorumlanir",
     "ism-pmi-nedir-abd-uretim-verisi",
     "acil-durum-fonu-nedir",
     "abd-perakende-satislari-nedir",
@@ -41,9 +39,9 @@
     "fk-orani-nedir",
     "faiz-nedir-ekonomiyi-nasil-etkiler",
     "temel-analiz-teknik-analiz-farki",
+    "gdp-gsyih-nedir-nasil-yorumlanir",
     "bist-100-nedir-nasil-yatirim-yapilir",
     "eurobond-nedir",
-    "kredi-karti-borcundan-kurtulma",
-    "temettu-hisseleri-pasif-gelir"
+    "kredi-karti-borcundan-kurtulma"
   ]
 }
