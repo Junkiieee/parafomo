@@ -1,17 +1,8 @@
 {
-  "updated": "2026-07-25",
+  "updated": "2026-07-26",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-07-22",
-      "time": "6:00am",
-      "region": "GBP",
-      "impact": "High",
-      "title": "CPI y/y",
-      "source": "forexfactory",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
     {
       "date": "2026-07-23",
       "region": "TR",
@@ -85,6 +76,33 @@
       "hook": "Faiz kararı — küresel faiz beklentisi TL ve borsayı etkiler."
     },
     {
+      "date": "2026-07-29",
+      "time": "6:00pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Federal Funds Rate",
+      "source": "forexfactory",
+      "hook": "Fed faiz kararı — 'Fed faizi TL ve borsayı nasıl etkiler' explainer'ı."
+    },
+    {
+      "date": "2026-07-29",
+      "time": "6:00pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "FOMC Statement",
+      "source": "forexfactory",
+      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
+    },
+    {
+      "date": "2026-07-29",
+      "time": "6:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "FOMC Press Conference",
+      "source": "forexfactory",
+      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
+    },
+    {
       "date": "2026-07-30",
       "region": "TR",
       "impact": "Medium",
@@ -92,6 +110,60 @@
       "hook": "Kararın gerekçesini sade dille yorumla.",
       "time": "",
       "source": "tcmb"
+    },
+    {
+      "date": "2026-07-30",
+      "time": "11:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "BOE Monetary Policy Report",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-07-30",
+      "time": "11:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "Monetary Policy Summary",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-07-30",
+      "time": "11:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "MPC Official Bank Rate Votes",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-07-30",
+      "time": "11:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "Official Bank Rate",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-07-30",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Advance GDP q/q",
+      "source": "forexfactory",
+      "hook": "Büyüme verisi — küresel görünüm."
+    },
+    {
+      "date": "2026-07-30",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Core PCE Price Index m/m",
+      "source": "forexfactory",
+      "hook": "ABD çekirdek enflasyon (PCE) — Fed'in tercih ettiği gösterge, dolar yönü."
     },
     {
       "date": "2026-07-30",
@@ -128,6 +200,42 @@
       "title": "CPI (YoY) (Jul)",
       "source": "investing",
       "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-07-31",
+      "time": "2:30am",
+      "region": "JPY",
+      "impact": "High",
+      "title": "BOJ Policy Rate",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-07-31",
+      "time": "2:30am",
+      "region": "JPY",
+      "impact": "High",
+      "title": "Monetary Policy Statement",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-07-31",
+      "time": "2:31am",
+      "region": "JPY",
+      "impact": "High",
+      "title": "BOJ Outlook Report",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-07-31",
+      "time": "5:30am",
+      "region": "JPY",
+      "impact": "High",
+      "title": "BOJ Press Conference",
+      "source": "forexfactory",
+      "hook": ""
     },
     {
       "date": "2026-08-03",
