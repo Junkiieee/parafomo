@@ -41,6 +41,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 ## Yayınlananlar (otomasyon buraya ekler)
 
 - [x] ETF Nedir? Borsa Yatırım Fonuna Başlangıç Rehberi — `etf-nedir-borsa-yatirim-fonu` (backlog: evergreen yatırım)
+- [x] BOE Faiz Kararı Nedir? Bank of England Kararı Sterlin ve TL'ye Etkisi — `boe-faiz-karari-nedir-etkisi` (takvim: 30 Temmuz 2026 BOE faiz kararı)
 - [x] Fed Faiz Kararı Nedir? ABD Merkez Bankası Faizi TL ve Borsayı Nasıl Etkiler? — `fed-faiz-karari-nedir-etkisi` (takvim: 29 Temmuz 2026 Fed faiz kararı)
 - [x] Para psikolojisi: zengin edenlerin alışkanlıkları — `para-psikolojisi-aliskanliklari` (backlog: evergreen kişisel finans)
 - [x] NFT nedir, yatırım mantıklı mı? — `nft-nedir-yatirim-mantikli-mi` (backlog: evergreen kripto)
