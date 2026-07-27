@@ -1,71 +1,8 @@
 {
-  "updated": "2026-07-26",
+  "updated": "2026-07-27",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-07-23",
-      "region": "TR",
-      "impact": "High",
-      "title": "TCMB faiz kararı (PPK)",
-      "hook": "Faiz kararı kredi, mevduat, döviz ve borsayı doğrudan etkiler — karar öncesi 'faiz kararı paranı nasıl etkiler' explainer'ı yaz.",
-      "time": "",
-      "source": "tcmb"
-    },
-    {
-      "date": "2026-07-23",
-      "time": "12:15pm",
-      "region": "EUR",
-      "impact": "High",
-      "title": "Main Refinancing Rate",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-07-23",
-      "time": "12:15pm",
-      "region": "EUR",
-      "impact": "High",
-      "title": "Monetary Policy Statement",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-07-23",
-      "time": "12:45pm",
-      "region": "EUR",
-      "impact": "High",
-      "title": "ECB Press Conference",
-      "source": "forexfactory",
-      "hook": "ECB — euro ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-07-23",
-      "time": "14:00",
-      "region": "TR",
-      "impact": "Medium",
-      "title": "One-Week Repo Rate (Jul)",
-      "source": "investing",
-      "hook": ""
-    },
-    {
-      "date": "2026-07-23",
-      "time": "15:15",
-      "region": "EUR",
-      "impact": "High",
-      "title": "Deposit Facility Rate (Jul)",
-      "source": "investing",
-      "hook": "ECB faiz kararı — euro ve küresel faiz."
-    },
-    {
-      "date": "2026-07-23",
-      "time": "15:15",
-      "region": "EUR",
-      "impact": "High",
-      "title": "ECB Interest Rate Decision (Jul)",
-      "source": "investing",
-      "hook": "Faiz kararı — küresel faiz beklentisi TL ve borsayı etkiler."
-    },
     {
       "date": "2026-07-29",
       "time": "21:00",
