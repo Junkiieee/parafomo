@@ -17,6 +17,23 @@ faq:
     a: "Japonya 1990'larda varlık balonunun patlamasıyla deflasyon sarmalına girdi. BOJ on yıllar boyunca ekonomiyi canlandırmak için faizleri sıfıra yakın veya negatif tuttu. Yüksek yaşlı nüfus, zayıf iç tüketim ve düşük büyüme oranları bu politikayı zorunlu kıldı."
   - q: "BOJ ile Fed faiz politikası arasındaki temel fark nedir?"
     a: "Fed enflasyonu kontrol etmek için faizi hem artırıp hem düşürür; BOJ ise onlarca yıl süren deflasyonla mücadele için faizi aşırı düşük tuttu. 2024'ten itibaren BOJ deflasyondan çıkış süreciyle faizleri yükseltmeye başladı — bu iki büyük merkez bankasının yollarının ayrıldığı tarihi bir dönüm noktasıydı."
+shorts:
+  - "Japonya faiz artırınca Türk portföyün neden çöktü?"
+  - "2024 Temmuz'unda BOJ faizi sürpriz artırınca carry trade çözüldü; Nasdaq yüzde üç geriledi, Türk yatırımcının portföyü de vuruldu."
+  - "Sıfır faizli Japonya'dan ucuza borçlanıp yüksek faizli piyasalara yatırmak carry trade'dir; BOJ faiz artırınca bu pozisyonlar hızla kapanır."
+  - "31 Temmuz 2026 BOJ toplantısı kritik; kararın ani mi kademeli mi geleceği, doğrudan TL ve BIST'e yansıyacak."
+  - "31 Temmuz'da BOJ ne yapacak, piyasalar nasıl sarsılacak? Abone ol, tüm detaylar parafomo.com'da."
+shorts_broll:
+  - "Bank of Japan interest rate decision"
+  - "yen carry trade currency market"
+  - "Nasdaq stock market crash chart"
+  - "Istanbul stock exchange BIST trading"
+shorts_visuals:
+  - "place|Bank of Japan Tokyo building"
+  - "scene|global stock market crash red screen"
+  - "concept|yen currency forex carry trade"
+  - "place|Borsa İstanbul"
+  - "concept|investor watching financial news screen"
 ---
 
 2024 yılı Temmuz'unda küresel borsalar birkaç günde sert düşüş yaşadı. Nasdaq tek günde %3'ten fazla geriledi, Tokyo borsası tarihin en büyük günlük kayıplarından birini yaşadı ve Türk yatırımcıların portföyleri de çarptı. Bunun arkasında tek bir tetikleyici vardı: **Bank of Japan (BOJ), faizi beklenmedik biçimde artırdı.**
