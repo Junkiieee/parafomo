@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-26T08:45:38Z",
+  "generated_utc": "2026-07-27T08:45:38Z",
   "boost": [
     "nfp-nedir-abd-tarim-disi-istihdam",
     "endeks-fonu-nedir",
@@ -16,9 +16,9 @@
     "fk-orani-nedir",
     "faiz-nedir-ekonomiyi-nasil-etkiler",
     "temel-analiz-teknik-analiz-farki",
-    "gdp-gsyih-nedir-nasil-yorumlanir",
-    "bist-100-nedir-nasil-yatirim-yapilir",
     "eurobond-nedir",
+    "bist-100-nedir-nasil-yatirim-yapilir",
+    "gdp-gsyih-nedir-nasil-yorumlanir",
     "kredi-karti-borcundan-kurtulma"
   ],
   "near_miss": [
@@ -39,9 +39,9 @@
     "fk-orani-nedir",
     "faiz-nedir-ekonomiyi-nasil-etkiler",
     "temel-analiz-teknik-analiz-farki",
-    "gdp-gsyih-nedir-nasil-yorumlanir",
-    "bist-100-nedir-nasil-yatirim-yapilir",
     "eurobond-nedir",
+    "bist-100-nedir-nasil-yatirim-yapilir",
+    "gdp-gsyih-nedir-nasil-yorumlanir",
     "kredi-karti-borcundan-kurtulma"
   ]
 }
