@@ -17,6 +17,23 @@ faq:
     a: "Türkiye'de devlet tahvillerini banka şubeleri, internet bankacılığı veya aracı kurumlar üzerinden satın alabilirsin. Halka arzlarda Hazine ihalelerine bireysel katılım da mümkündür."
   - q: "Tahvilden elde edilen gelir vergiye tabi midir?"
     a: "Evet. Devlet iç borçlanma senetlerinden elde edilen faiz geliri %10 oranında stopaja tabidir. Özel sektör tahvillerinde oran farklılık gösterebilir."
+shorts:
+  - "Devlete borç verip düzenli gelir almak mümkün mü?"
+  - "Tahvil tam olarak bu: devlete ya da büyük şirkete para veriyorsun, onlar da sana düzenli faiz ödüyor."
+  - "Hazine bonosu ile devlet tahvili arasındaki tek fark vadedir; biri bir yılın altında, diğeri üzerinde."
+  - "TÜFE'ye endeksli tahvil anaparanı enflasyona göre güncelliyor, yüksek enflasyonda alım gücünü korumanın en güçlü yolu bu."
+  - "Peki tahvil portföyüne gerçekten ne katar? Detaylı karşılaştırma parafomo.com'da; kanala abone ol, her gün finans bilgin artsın."
+shorts_broll:
+  - "government bond certificate document"
+  - "interest rate money bank payment"
+  - "inflation price tag rising"
+  - "investment portfolio diversification chart"
+shorts_visuals:
+  - "concept|person handing money to bank teller"
+  - "concept|cash interest payment money hand"
+  - "concept|treasury bond government document paper"
+  - "concept|inflation rising prices consumer goods"
+  - "place|Borsa İstanbul"
 ---
 
 Elinizde birikim var ama mevduat faizi yetmez, borsa riski fazla geliyor. Tam bu noktada tahvil devreye girer: devlete ya da büyük bir şirkete belirli bir süreliğine kredi verip karşılığında düzenli faiz alıyorsunuz.
