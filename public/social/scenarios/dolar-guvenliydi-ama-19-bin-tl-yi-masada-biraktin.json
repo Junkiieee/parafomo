@@ -1,0 +1,77 @@
+{
+  "slug": "dolar-guvenliydi-ama-19-bin-tl-yi-masada-biraktin",
+  "title": "Dolar Güvenliydi, Ama 19 Bin TL'yi Masada Bıraktın",
+  "category": "KARŞILAŞTIRMA",
+  "format": "comparison",
+  "description": "Son bir yılda dolar, altın ve BIST 100 yarıştı. Kazanan beklediğin değil — ve fark somut bir rakam.",
+  "tags": [
+    "altın",
+    "dolar",
+    "borsa",
+    "BIST100",
+    "yatırım",
+    "getiri",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KARŞILAŞTIRMA",
+      "spoken": "Dolar mı, altın mı, borsa mı — kazanan seni şaşırtır.",
+      "visual": {
+        "type": "concept",
+        "query": "gold coins dollar bills stock market"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Türkiye'de doları güvenli liman sayan milyonlarca insan var. Ama güvenli, en karlı demek değil.",
+      "visual": {
+        "type": "concept",
+        "query": "dollar bills safe vault bank"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Son bir yılda altın yüzde 34, borsa yüzde 22, dolar ise yalnızca yüzde 15 getirdi. Fark neredeyse iki katı.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "bars",
+          "title": "Bu Yıl Kim Kazandırdı?",
+          "items": [
+            {
+              "name": "Gram Altın",
+              "pct": 34
+            },
+            {
+              "name": "BIST 100",
+              "pct": 22
+            },
+            {
+              "name": "Dolar/TL",
+              "pct": 15
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "100 bin TL: altında 134 bin, borsada 122 bin, dolar tutanda 115 bin. 19 bin TL fark, fark edilmeden gidiyor.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Önümüzdeki bir yılda bu tablo değişir mi? Abone ol — her gün 60 saniyede piyasanın bir adım önünde ol.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification bell phone"
+      }
+    }
+  ]
+}
