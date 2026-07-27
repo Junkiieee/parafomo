@@ -4,6 +4,94 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-27 — Tahvil Nedir? Devlet Tahvili ve Hazine Bonosunda Yatırım Rehberi
+
+**Yayınlanan yazı:** [Tahvil Nedir? Devlet Tahvili ve Hazine Bonosunda Yatırım Rehberi](https://parafomo.com/blog/tahvil-nedir-devlet-tahvili-hazine-bonosu/)
+Kategori: Yatırım | Hedef sorgu: "tahvil nedir" | ~1.100 kelime
+Konu seçim gerekçesi: Backlog tükendi; tahvil temel bir yatırım aracı olmasına rağmen sitede kapsamlı bir karşılığı yoktu. "Tahvil nedir", "devlet tahvili" ve "hazine bonosu" sorguları birlikte güçlü bir evergreen fırsat oluşturuyor.
+
+### X (Twitter) Thread Taslağı
+
+Mevduat az, borsa riskli — ne yapacaksın?
+
+Cevap: Tahvil. Ama çoğu kişi neden kaçındığını bile bilmiyor.
+
+Kısa bir özet 👇
+
+1/ Tahvil, devlete ya da büyük bir şirkete belirli süreliğine borç vermektir. Karşılığında düzenli faiz (kupon) alırsın, vade sonunda anaparandan geri döner.
+
+2/ Hazine bonosu ile tahvil aynı şey değil:
+• Bono → 1 yılın altı vade
+• Tahvil → 1 yıl ve üzeri
+İkisi de T.C. Hazinesi güvencesi altında.
+
+3/ TÜFE'ye endeksli tahvil özellikle güçlü: Anaparası enflasyona göre güncelleniyor. Yüksek enflasyon döneminde alım gücü korunuyor.
+
+4/ Nasıl alınır?
+→ Bankan ya da aracı kurumun mobil uygulamasından "DİBS / Tahvil" bölümüne gir
+→ Vadeyi seç, miktarı gir
+→ Kuponlar hesabına otomatik yatar
+
+5/ Kimler için uygun?
+✅ Düzenli gelir isteyenler
+✅ Borsaya girmek istemeyenler
+✅ Portföyünü dengelemek isteyenler
+
+Tüm detaylar → parafomo.com/blog/tahvil-nedir-devlet-tahvili-hazine-bonosu/
+
+#Tahvil #DevletTahvili #HazineBonosu #Yatırım #ParaFOMO #KişiselFinans
+
+---
+
+### Instagram Post/Carousel Metni
+
+**Slide 1 (kapak):**
+Tahvil Nedir?
+Devlete borç ver, faiz kazan — tam rehber 💰
+
+**Slide 2:**
+Tahvil = borç senedi
+Devlet ya da şirkete para veriyorsun.
+Karşılığında: düzenli faiz + vade sonunda anapara.
+
+**Slide 3:**
+Bono vs Tahvil
+📌 Hazine Bonosu → 1 yıldan kısa
+📌 Devlet Tahvili → 1 yıldan uzun
+Her ikisi de Türkiye Hazinesi güvenceli.
+
+**Slide 4:**
+TÜFE Endeksli Tahvil
+Enflasyona karşı korunmak mı istiyorsun?
+Anaparası her yıl TÜFE kadar güncelleniyor.
+Yüksek enflasyon döneminde güçlü bir araç!
+
+**Slide 5:**
+Kimler için uygun?
+✅ Sabit faiz geliri isteyenler
+✅ Düşük-orta risk toleransı olanlar
+✅ Portföy çeşitlendirmek isteyenler
+
+**Slide 6:**
+Nasıl alınır?
+→ Banka uygulamasından "DİBS" bölümüne gir
+→ Vadeyi seç
+→ Faizler otomatik hesabına yatar
+
+**Caption:**
+Mevduat az, borsa riskli — aradaki altın seçenek: tahvil. Devlet güvenceli, düzenli faizli, portföy dengeleyici. Tam rehber linkte 👆
+
+#Tahvil #HazineBonosu #DevletTahvili #ParaFOMO #Yatırım #SabitGetiri #KişiselFinans
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **X/Twitter'da paylaş:** Yukarıdaki thread taslağını yayınla. "Mevduat az, borsa riskli" açılışı merak uyandırıcı — tıklanma potansiyeli yüksek.
+2. **Instagram carousel yayınla:** 6 slide'lık taslağı Canva'da tasarla ve paylaş; #Tahvil hashtag'i nişe özgü, rakip az.
+
+---
+
 ## 2026-07-27 — BOJ Faiz Kararı Nedir? Japonya Merkez Bankası ve Küresel Piyasalara Etkisi
 
 **Yayınlanan yazı:** [BOJ Faiz Kararı Nedir?](https://parafomo.com/blog/boj-faiz-karari-nedir-etkisi/)

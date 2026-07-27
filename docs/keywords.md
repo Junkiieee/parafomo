@@ -40,6 +40,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] Tahvil Nedir? Devlet Tahvili ve Hazine Bonosunda Yatırım Rehberi — `tahvil-nedir-devlet-tahvili-hazine-bonosu` (backlog: evergreen yatırım; "tahvil nedir" / "devlet tahvili" / "hazine bonosu" sorguları)
 - [x] BOJ Faiz Kararı Nedir? Japonya Merkez Bankası ve Küresel Piyasalara Etkisi — `boj-faiz-karari-nedir-etkisi` (takvim: 31 Temmuz 2026 BOJ Policy Rate; learning: merkez bankası serisi)
 - [x] ETF Nedir? Borsa Yatırım Fonuna Başlangıç Rehberi — `etf-nedir-borsa-yatirim-fonu` (backlog: evergreen yatırım)
 - [x] BOE Faiz Kararı Nedir? Bank of England Kararı Sterlin ve TL'ye Etkisi — `boe-faiz-karari-nedir-etkisi` (takvim: 30 Temmuz 2026 BOE faiz kararı)
