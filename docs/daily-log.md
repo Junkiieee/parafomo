@@ -4,6 +4,74 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-27 — BOJ Faiz Kararı Nedir? Japonya Merkez Bankası ve Küresel Piyasalara Etkisi
+
+**Yayınlanan yazı:** [BOJ Faiz Kararı Nedir?](https://parafomo.com/blog/boj-faiz-karari-nedir-etkisi/)
+Kategori: Ekonomi | Hedef sorgu: "boj faiz kararı" | ~1.200 kelime
+Konu seçim gerekçesi: 31 Temmuz BOJ Policy Rate kararı yaklaşıyor; merkez bankası serisi (Fed/ECB/BOE/TCMB) tamamlanıyor; learning raporu FOMC makalesinin 9.12 skor yaptığını gösteriyor.
+
+### X (Twitter) Thread Taslağı
+
+🇯🇵 Japonya Merkez Bankası (BOJ) bu hafta faiz kararı açıklayacak.
+
+Peki bu senin portföyünü nasıl etkiler?
+
+Kısa özet 👇
+
+1/ BOJ, onlarca yıl sıfır hatta NEGATİF faiz uyguladı. Bu sürede yatırımcılar Yen'i ucuza borçlanıp Türkiye gibi yüksek faizli ülkelere yatırım yaptı → "carry trade"
+
+2/ 2024'te BOJ bu politikayı değiştirdi. Faizi artırınca ne oldu? Küresel borsalar 2-3 günde sert düşüş yaşadı. BIST de etkilendi.
+
+3/ 31 Temmuz 2026 toplantısında yeni karar gelecek. BOJ artırım yaparsa → Yen güçlenir → carry trade çözülür → gelişen piyasalar (TL dahil) baskı altına girer.
+
+4/ Panik yapman gerekmiyor ama şunu izle: Dolar/Yen kuru (USD/JPY) düşüyorsa carry trade çözülüyor demektir. VIX yükseliyorsa küresel risk iştahı azalıyor.
+
+Detaylı analiz → parafomo.com/blog/boj-faiz-karari-nedir-etkisi/
+
+#BOJ #Japonya #FaizKararı #TL #BIST #Yatırım
+
+---
+
+### Instagram Post/Carousel Metni
+
+**Slide 1 (kapak):**
+🇯🇵 BOJ Faiz Kararı Geliyor
+31 Temmuz'da Japonya Merkez Bankası karar açıklıyor. Portföyünü nasıl etkiler?
+
+**Slide 2:**
+BOJ nedir?
+Japonya'nın merkez bankası. Onlarca yıl sıfır faizle çalıştı. Bu sayede trilyonlarca dolarlık "carry trade" doğdu.
+
+**Slide 3:**
+Carry trade nedir?
+Yen ucuzken borçlan → yüksek faizli ülkeye yatır → fark kazan. TL bu akıştan besleniyordu.
+
+**Slide 4:**
+BOJ faiz artırırsa ne olur?
+📉 Carry trade çözülür
+📉 Gelişen piyasalardan sermaye çıkar
+📉 TL ve BIST baskı altına girebilir
+
+**Slide 5:**
+Ne izlemeliyim?
+• Dolar/Yen kuru (USD/JPY)
+• VIX endeksi
+• Gelişen piyasa ETF'leri
+
+**Caption:**
+Japonya Merkez Bankası (BOJ) bu hafta karar açıklıyor — ve bu karar Türkiye'deki yatırımını etkileyebilir. Nasıl mı? Linkteki yazıda tam analizimiz var 👆
+
+#BOJ #JaponyaMerkezBankası #FaizKararı #ParaFOMO #Yatırım #TL #BIST #FinansBlogu #KüreselPiyasalar
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **X/Twitter'da paylaş:** Yukarıdaki thread taslağını yayınla. Özellikle "31 Temmuz BOJ kararı geliyor" zamanlamasını vurgula — güncel bir olay, tıklanma oranı yüksek olabilir.
+2. **Instagram'da paylaş:** Carousel post'u yayınla (oluşturmak için Canva veya benzer araç kullanabilirsin, sosyal kart `public/social/boj-faiz-karari-nedir-etkisi.png` hazır).
+
+---
+
 ## 2026-07-26 — ETF Nedir? Borsa Yatırım Fonuna Başlangıç Rehberi
 
 **Yayınlanan yazı:** [ETF Nedir? Borsa Yatırım Fonuna Başlangıç Rehberi](https://parafomo.com/blog/etf-nedir-borsa-yatirim-fonu/)
