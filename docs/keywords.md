@@ -6,6 +6,17 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Sıradaki konular (öncelik sırasıyla)
 
+- [x] Halka arz (IPO) nedir, nasıl yatırım yapılır? — `Borsa` — hedef: "halka arz nedir"
+- [ ] Portföy çeşitlendirmesi nasıl yapılır? — `Yatırım` — hedef: "portföy çeşitlendirmesi nasıl yapılır"
+- [ ] Konut yatırımı mı hisse senedi mi? — `Yatırım` — hedef: "konut yatırımı mı hisse senedi mi"
+- [ ] Mevduat faizi nedir, vadeli mevduat nasıl açılır? — `Kişisel Finans` — hedef: "mevduat faizi nedir"
+- [ ] Repo nedir, nasıl çalışır? — `Yatırım` — hedef: "repo nedir nasıl çalışır"
+- [ ] Portföy yönetimi nedir, nasıl yapılır? — `Yatırım` — hedef: "portföy yönetimi nedir"
+- [ ] Türkiye'de en iyi yatırım araçları 2026 — `Yatırım` — hedef: "en iyi yatırım araçları"
+- [ ] Borsa teknik analiz temelleri: grafik okuma rehberi — `Borsa` — hedef: "teknik analiz grafik okuma"
+- [ ] Döviz hesabı nedir, dövizde nasıl yatırım yapılır? — `Yatırım` — hedef: "döviz hesabı nedir"
+- [ ] Altın fonu nedir, gram altından farkı ne? — `Yatırım` — hedef: "altın fonu nedir"
+
 - [x] Altın mı dolar mı? Hangisi daha mantıklı? — `Ekonomi` — hedef: "altın mı dolar mı"
 - [x] Hisse senedi nasıl seçilir? Temel analiz rehberi — `Borsa` — hedef: "hisse senedi nasıl seçilir"
 - [x] Endeks fonu nedir, nasıl alınır? — `Yatırım` — hedef: "endeks fonu nedir"
@@ -41,7 +52,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 ## Yayınlananlar (otomasyon buraya ekler)
 
 - [x] Merkez Bankası Nedir? Faiz Kararı Nasıl Alınır ve Piyasalara Etkisi — `merkez-bankasi-nedir-faiz-karari` (takvim: 29-31 Temmuz 2026 Fed/BOE/BOJ kararları haftası; meta-explainer)
-
+- [x] Halka Arz (IPO) Nedir? Yeni Hisse Senetlerine Nasıl Yatırım Yapılır? — `halka-arz-nedir-ipo` (backlog: evergreen borsa)
 - [x] Tahvil Nedir? Devlet Tahvili ve Hazine Bonosunda Yatırım Rehberi — `tahvil-nedir-devlet-tahvili-hazine-bonosu` (backlog: evergreen yatırım; "tahvil nedir" / "devlet tahvili" / "hazine bonosu" sorguları)
 - [x] BOJ Faiz Kararı Nedir? Japonya Merkez Bankası ve Küresel Piyasalara Etkisi — `boj-faiz-karari-nedir-etkisi` (takvim: 31 Temmuz 2026 BOJ Policy Rate; learning: merkez bankası serisi)
 - [x] ETF Nedir? Borsa Yatırım Fonuna Başlangıç Rehberi — `etf-nedir-borsa-yatirim-fonu` (backlog: evergreen yatırım)

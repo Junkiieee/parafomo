@@ -4,6 +4,70 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-28 — Halka Arz (IPO) Nedir? Yeni Hisse Senetlerine Nasıl Yatırım Yapılır?
+
+**Yayınlanan yazı:** [Halka Arz (IPO) Nedir? Yeni Hisse Senetlerine Nasıl Yatırım Yapılır?](https://parafomo.com/blog/halka-arz-nedir-ipo/)
+Kategori: Borsa | Hedef sorgu: "halka arz nedir" | ~1.100 kelime
+
+### X (Twitter) Thread Taslağı
+
+"Bu halka arza gireyim mi?" diye soruyorsun ama izahnameyi hiç açmadın.
+
+İşte halka arz hakkında bilmen gereken her şey, sade bir özetle 👇
+
+1/ Halka arz (IPO), bir şirketin hisselerini ilk kez kamuya açık satışa çıkarmasıdır. Bundan sonra hisse BIST'te serbestçe alınıp satılır.
+
+2/ Şirket neden halka arz olur?
+→ Büyüme sermayesi toplamak
+→ Mevcut ortaklar satış yapmak istiyor
+→ Kurumsal güvenilirlik kazanmak
+
+İkinci madde dikkat: kurucu satıyorsa sormak gerekir, "neden çıkıyor?"
+
+3/ Nasıl katılırsın?
+→ Aracı kurumda yatırım hesabı aç
+→ Talep toplama döneminde başvur
+→ Tutar bloke edilir
+→ Tahsis sonucunu bekle
+→ Kotasyon gününde hisse işleme açılır
+
+4/ Her IPO kâr mı getirir?
+Hayır. İlk gün hem yüzde 20 artabilir hem yüzde 15 düşebilir.
+
+Kontrol listesi:
+✅ 3 yıllık gelir artışı var mı?
+✅ Borç yükü ağır mı?
+✅ Şirket mi satıyor, kurucu mu?
+✅ Sektör F/K ortalamasıyla değerleme uyumlu mu?
+
+5/ İzahnameyi oku, KAP'ı takip et, körü körüne girme.
+
+Tam rehber → parafomo.com/blog/halka-arz-nedir-ipo/
+
+#HalkaArz #IPO #Borsa #BIST #HisseSenedi #ParaFOMO
+
+---
+
+### Instagram Post/Carousel Metni
+
+**Slide 1 (kapak):** Halka Arz (IPO) Nedir? Yeni hisselere nasıl yatırım yapılır? 📈
+**Slide 2:** IPO = İlk halka arz. Şirket borsaya açılıyor. Sen de kuruluş fiyatından ortak olabilirsin.
+**Slide 3:** Nasıl katılırsın? 1️⃣ Aracı kurumda hesap aç 2️⃣ Talep döneminde başvur 3️⃣ Tahsis sonucunu bekle 4️⃣ Kotasyon gününde hisse işleme girer
+**Slide 4:** Her IPO kâr mı? Hayır ❌ Bazıları ilk gün %20 artar, bazıları düşer.
+**Slide 5:** Sorman gereken sorular: ✅ Şirket gerçekten büyüyor mu? ✅ Mevcut ortaklar mı satıyor? ✅ Borç yükü ne kadar? ✅ Değerleme makul mu?
+**Slide 6:** Tam rehber — parafomo.com/blog/halka-arz-nedir-ipo/
+
+#HalkaArz #IPO #BorsaYatırım #BIST #HisseSenedi #ParaFOMO
+
+---
+
+### Bugün Yapman Gerekenler (Halka Arz yazısı)
+
+1. **Sosyal medyada paylaş:** X thread'ini ve Instagram carousel'ini yayınla.
+2. **Toplulukta değer kat:** Reddit r/Turkey, r/borsa veya ilgili Telegram/Facebook finans gruplarında "halka arza nasıl katılıyorum" sorusu görürsen bu yazıyı kaynak göstererek yanıt ver.
+
+---
+
 ## 2026-07-28 — Merkez Bankası Nedir? Faiz Kararı Nasıl Alınır ve Piyasalara Etkisi
 
 **Yayınlanan yazı:** [Merkez Bankası Nedir? Faiz Kararı Nasıl Alınır ve Piyasalara Etkisi](https://parafomo.com/blog/merkez-bankasi-nedir-faiz-karari/)
@@ -70,6 +134,65 @@ Dolar dünya rezerv para birimi. Fed kararı Türkiye'yi de etkiler.
 
 1. **Paylaşımı yayınla:** X thread'ini ve Instagram post'unu bugün paylaş — çarşamba sabahı Fed kararı öncesi bu içerik çok zamanında olacak.
 2. **Toplulukta paylaş:** Ekşi Sözlük "merkez bankası" veya "Fed faiz kararı" entry'lerini ziyaret et; ilgili bir yerde yorum bırak ve yazıyı kaynak olarak paylaş (değer katan yorum, spam değil).
+
+4/ Her IPO kâr mı getirir?
+Hayır. İlk gün hem yüzde 20 artabilir hem yüzde 15 düşebilir.
+
+Kontrol listesi:
+✅ 3 yıllık gelir artışı var mı?
+✅ Borç yükü ağır mı?
+✅ Şirket mi satıyor, kurucu mu?
+✅ Sektör F/K ortalamasıyla değerleme uyumlu mu?
+
+5/ İzahnameyi oku, KAP'ı takip et, körü körüne girme.
+
+Tam rehber → parafomo.com/blog/halka-arz-nedir-ipo/
+
+#HalkaArz #IPO #Borsa #BIST #HisseSenedi #ParaFOMO
+
+---
+
+### Instagram Post/Carousel Metni
+
+**Slide 1 (kapak):**
+Halka Arz (IPO) Nedir?
+Yeni hisselere nasıl yatırım yapılır? 📈
+
+**Slide 2:**
+IPO = İlk halka arz
+Şirket borsaya açılıyor.
+Sen de kuruluş fiyatından ortak olabilirsin.
+
+**Slide 3:**
+Nasıl katılırsın?
+1️⃣ Aracı kurumda hesap aç
+2️⃣ Talep döneminde başvur
+3️⃣ Tahsis sonucunu bekle
+4️⃣ Kotasyon gününde hisse işleme girer
+
+**Slide 4:**
+Her IPO kâr mı?
+Hayır ❌
+Bazıları ilk gün %20 artar, bazıları düşer.
+
+**Slide 5:**
+Sorman gereken sorular:
+✅ Şirket gerçekten büyüyor mu?
+✅ Mevcut ortaklar mı satıyor?
+✅ Borç yükü ne kadar?
+✅ Değerleme makul mu?
+
+**Slide 6:**
+Tam rehber — parafomo.com/blog/halka-arz-nedir-ipo/
+
+#HalkaArz #IPO #BorsaYatırım #BIST #HisseSenedi #ParaFOMO
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **Sosyal medyada paylaş:** X thread'ini ve Instagram carousel'ini yayınla. Özellikle yaklaşan bir halka arz varsa "işte bu konuyu okuman lazım" bağlantısıyla paylaş.
+2. **Toplulukta değer kat:** Reddit r/Turkey, r/borsa veya ilgili Telegram/Facebook finans gruplarında "halka arza nasıl katılıyorum" sorusu gören biri varsa bu yazıyı referans göstererek yanıt ver — spam değil, gerçek değer.
 
 ---
 
