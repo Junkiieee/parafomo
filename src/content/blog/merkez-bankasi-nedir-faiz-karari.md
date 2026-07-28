@@ -17,6 +17,23 @@ faq:
     a: "Fed (ABD Merkez Bankası) tek amaçla çalışmaz; hem fiyat istikrarı hem de tam istihdam hedefler (çift mandası). TCMB'nin temel amacı fiyat istikrarıdır. Ayrıca Fed'in aldığı kararlar tüm dünyayı doğrudan etkilerken TCMB kararları öncelikle Türkiye ekonomisini etkiler."
   - q: "Merkez bankası faiz kararlarını nereden takip edebilirim?"
     a: "Fed kararları için federalreserve.gov, TCMB için tcmb.gov.tr, ECB için ecb.europa.eu resmi siteleri kullanılır. Yatırım platformlarının ekonomik takvim bölümleri bu kararların tarih ve saatlerini listeler."
+shorts:
+  - "Faiz kararını merkez bankası başkanı tek başına almıyor."
+  - "Fed, TCMB gibi merkez bankalarında faiz kararları komite oylamasıyla alınır; tek bir kişinin inisiyatifine bırakılmaz."
+  - "Dolar dünya rezerv para birimi olduğundan Fed'in her kararı, Türkiye'nin kurunu ve borçlanma maliyetini de doğrudan belirliyor."
+  - "Politika faizi artınca kredi pahalanır, tüketim yavaşlar, enflasyon baskılanır — bu kararlar senin market alışverişinden ev kirayana kadar her şeyi etkiler."
+  - "Peki bu kararlar cebini nasıl etkiler ve kendin nasıl hazırlanabilirsin? Öğrenmek için abone ol — tüm detaylar parafomo.com'da."
+shorts_broll:
+  - "central bank interest rate decision"
+  - "committee meeting vote boardroom"
+  - "turkish lira exchange rate screen"
+  - "inflation grocery store prices rising"
+shorts_visuals:
+  - "concept|central bank boardroom committee meeting decision"
+  - "concept|committee members voting hands raised formal meeting"
+  - "building|Federal Reserve"
+  - "concept|inflation prices rising grocery store consumer"
+  - "concept|personal finance savings money growth wallet"
 ---
 
 Bu hafta küresel piyasalar üç büyük merkez bankasının kararını bekliyor: Fed (ABD), BOE (İngiltere) ve BOJ (Japonya). Peki bu kurumlar kimdir, faiz kararını nasıl alır ve bu kararlar senin cebini nasıl etkiler?
