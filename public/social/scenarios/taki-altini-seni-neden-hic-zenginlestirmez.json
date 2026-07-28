@@ -1,0 +1,59 @@
+{
+  "slug": "taki-altini-seni-neden-hic-zenginlestirmez",
+  "title": "Takı Altını Seni Neden Hiç Zenginleştirmez?",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Kuyumcudan aldığın takı altını piyasa fiyatından değil, işçilik bedeli eklenmiş fiyattan satılır. Sattığında bu fark geri gelmez — takı, yatırım değil masraftır.",
+  "tags": [
+    "altın yatırımı",
+    "çeyiz altını",
+    "kuyumcu",
+    "cumhuriyet altını",
+    "gram altın",
+    "yatırım tüyoları",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Aldığın altın takı, anında yüzde yirmi küçülüyor.",
+      "visual": {
+        "type": "scene",
+        "query": "gold jewelry shop display case"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kuyumcudan takı alırken işçilik bedeli ekleniyor. Bu, piyasa fiyatının üstünde yüzde on beş ile yirmi beş arası ekstra para demek.",
+      "visual": {
+        "type": "scene",
+        "query": "jewelry store gold bracelet price tag close up"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama sattığında kuyumcu sana sadece ham altın fiyatını ödüyor. İşçilik bedeli geri dönmüyor — o para orada kalıyor.",
+      "visual": {
+        "type": "scene",
+        "query": "cash money exchange jeweler counter transaction"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Altını yatırım olarak tutmak istiyorsan cumhuriyet altını al. Alış-satış farkı yüzde iki civarı; takı gibi yüzde yirmi değil.",
+      "visual": {
+        "type": "object",
+        "query": "gold bullion coin investment stack"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bu fark on yılda birikimini nasıl etkiliyor? Hesabı yakında çıkartıyoruz — abone ol, her gün tek bir finans gerçeği seninle.",
+      "visual": {
+        "type": "concept",
+        "query": "gold savings long term investment growth"
+      }
+    }
+  ]
+}
