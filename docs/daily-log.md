@@ -4,6 +4,75 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-28 — Merkez Bankası Nedir? Faiz Kararı Nasıl Alınır ve Piyasalara Etkisi
+
+**Yayınlanan yazı:** [Merkez Bankası Nedir? Faiz Kararı Nasıl Alınır ve Piyasalara Etkisi](https://parafomo.com/blog/merkez-bankasi-nedir-faiz-karari/)
+Kategori: Ekonomi | Hedef sorgu: "merkez bankası nedir" | ~1.350 kelime
+Konu seçim gerekçesi: Bu hafta Fed (29 Temmuz), BOE (30 Temmuz) ve BOJ (31 Temmuz) art arda karar açıklıyor. Bireysel merkez bankası yazıları vardı ama "merkez bankası nedir / faiz nasıl belirlenir" sorusunu cevaplayan meta-explainer eksikti. Learning report: merkez bankası içeriği en yüksek performansı veriyor (NFP, FOMC top scorers).
+
+### X (Twitter) Thread Taslağı
+
+Bu hafta 3 büyük merkez bankası karar açıklayacak: Fed, BOE ve BOJ.
+
+Peki bu kurumlar ne yapar, faiz kararını nasıl alır?
+
+Basit anlatım 👇
+
+1/ Merkez bankası, ülkenin para politikasını yöneten kurumdur. Faiz belirler, para arzını kontrol eder, bankaların bankasıdır.
+
+2/ Faiz kararı tek kişinin değil, kurulların oylamasıdır:
+→ Fed: FOMC (12 üye)
+→ İngiltere: MPC (9 üye)
+→ Türkiye: PPK
+→ Yılda 8 toplantı, her biri piyasaları şekillendirir.
+
+3/ Faiz artınca ne olur?
+→ Kredi pahalılaşır
+→ Tüketim yavaşlar
+→ Enflasyon baskılanır
+→ Döviz güçlenebilir
+→ Borsa baskı altına girer
+
+4/ Neden Fed kararı Türkiye'yi etkiler?
+Dolar dünya rezerv para birimi → Fed faizi artırınca global para dolar'a akar → TL baskı, ithal enflasyon riski.
+
+5/ Bu hafta takvim:
+📅 29 Temmuz → Fed (sabah sonuçlar gelir)
+📅 30 Temmuz → BOE
+📅 31 Temmuz → BOJ
+
+Tüm rehber: parafomo.com/blog/merkez-bankasi-nedir-faiz-karari/
+
+### Instagram Carousel / Post Metni
+
+📌 Bu hafta 3 ülkenin merkez bankası faiz kararı açıklıyor — Fed, BOE, BOJ.
+
+Peki merkez bankası ne yapar?
+
+🏛️ Para politikasını yönetir
+📊 Faiz oranlarını belirler
+🏦 Bankaların bankasıdır
+
+💡 Faiz artışı ne anlama gelir?
+→ Kredi pahalılaşır
+→ Enflasyon baskılanmaya çalışılır
+→ Döviz güçlenebilir
+→ Borsa genellikle düşer
+
+🌍 Fed neden herkesi etkiler?
+Dolar dünya rezerv para birimi. Fed kararı Türkiye'yi de etkiler.
+
+🔗 Tüm merkez bankalarını, karar sürecini ve sana etkisini anlattık → Link bio'da
+
+#merkez bankası #faiz kararı #Fed #parafomo #finans #ekonomi #TCMB #yatırım
+
+### Bugün Yapman Gerekenler
+
+1. **Paylaşımı yayınla:** X thread'ini ve Instagram post'unu bugün paylaş — çarşamba sabahı Fed kararı öncesi bu içerik çok zamanında olacak.
+2. **Toplulukta paylaş:** Ekşi Sözlük "merkez bankası" veya "Fed faiz kararı" entry'lerini ziyaret et; ilgili bir yerde yorum bırak ve yazıyı kaynak olarak paylaş (değer katan yorum, spam değil).
+
+---
+
 ## 2026-07-27 — Tahvil Nedir? Devlet Tahvili ve Hazine Bonosunda Yatırım Rehberi
 
 **Yayınlanan yazı:** [Tahvil Nedir? Devlet Tahvili ve Hazine Bonosunda Yatırım Rehberi](https://parafomo.com/blog/tahvil-nedir-devlet-tahvili-hazine-bonosu/)

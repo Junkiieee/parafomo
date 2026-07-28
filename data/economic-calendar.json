@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-27",
+  "updated": "2026-07-28",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
@@ -81,6 +81,15 @@
       "region": "GBP",
       "impact": "High",
       "title": "Official Bank Rate",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-07-30",
+      "time": "11:30am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "BOE Gov Bailey Speaks",
       "source": "forexfactory",
       "hook": ""
     },
