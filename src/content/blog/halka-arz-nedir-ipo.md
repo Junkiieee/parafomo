@@ -17,6 +17,23 @@ faq:
     a: "Evet, talep toplama döneminde başvurduğun tutar hesabında bloke edilir. Tahsis gerçekleşirse o tutar kullanılır; tahsis olmazsa paranın kilidi açılır ve serbest kalır."
   - q: "BIST'te halka arzları nereden takip edebilirim?"
     a: "Borsa İstanbul'un resmi web sitesi, KAP (Kamuyu Aydınlatma Platformu) ve kullandığın aracı kurumun uygulaması yaklaşan halka arzları listeler. Aracı kurumlar genellikle SMS/bildirim gönderir."
+shorts:
+  - "Halka arz fırsatı mı, yoksa tuzak mı?"
+  - "Bir şirket hisselerini ilk kez halka açtığında sen de piyasa fiyatı oluşmadan önce ortak olabilirsin."
+  - "Asıl soru şu: şirket büyüme için mi para arıyor, yoksa mevcut ortaklar kârlarını realize edip mi çıkıyor?"
+  - "Talep toplama döneminde aracı kurumundan başvuruyorsun; hisseler tahsis edilirse kotasyon günü borsada işlem görmeye başlıyor."
+  - "Peki hangi halka arzlar gerçekten değer, hangisi tuzak? Kanala abone ol, kaçırma; tüm analizler parafomo.com'da."
+shorts_broll:
+  - "IPO stock market listing screen"
+  - "investor checking mobile trading app"
+  - "stock exchange trading floor"
+  - "company shares going public celebration"
+shorts_visuals:
+  - "concept|IPO stock market risk opportunity scale"
+  - "place|Borsa İstanbul"
+  - "concept|company board meeting founder handshake exit"
+  - "concept|mobile trading app investment portfolio screen"
+  - "concept|stock market growth chart upward trend"
 ---
 
 "Bu şirketin hissesi daha alınmadan önce sıfır komisyonla sahip olunabiliyor" — halka arz duyurularında bu tür cümleler çok sık görülür. Peki **halka arz (IPO) nedir** ve gerçekten fırsat mı, risk mi? Bu yazıda sıfırdan, adım adım her şeyi açıklıyoruz.
