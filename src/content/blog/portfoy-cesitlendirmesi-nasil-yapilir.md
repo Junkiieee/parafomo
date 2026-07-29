@@ -17,6 +17,23 @@ faq:
     a: "Endeks fonu veya ETF satın almak en basit yoldur. Tek işlemle onlarca hisseye ortak olursunuz, maliyet düşük tutulur ve çeşitlendirmeyi kendiniz yapmak zorunda kalmazsınız."
   - q: "Çeşitlendirme riski tamamen ortadan kaldırır mı?"
     a: "Hayır. Çeşitlendirme sistematik olmayan (şirkete özgü) riski azaltır; ancak piyasanın tümünü etkileyen sistematik riski (savaş, küresel kriz) sıfırlamaz. Beklentileri gerçekçi tutmak önemlidir."
+shorts:
+  - "5 farklı hisse aldın ama hâlâ çeşitlendirmedin."
+  - "Aynı borsadaki birden fazla hisse almak değil, birbiriyle ilişkisiz varlık sınıflarını bir araya getirmek gerçek çeşitlendirmedir."
+  - "Türkiye'de hisse, tahvil, altın ve dövizi birlikte tutmak; TL değer kayıplarına ve yüksek enflasyona karşı seni gerçekten korur."
+  - "Risk toleransına ve yatırım vadesine göre muhafazakârdan agresife farklı dağılım şablonları var; tek doğru formül senin koşulun belirler."
+  - "Peki senin portföyün gerçekten çeşitlendirilmiş mi? Öğrenmek için parafomo.com'a gir ve kanala abone ol — her hafta böyle bilgiler seni bekliyor."
+shorts_broll:
+  - "portfolio diversification investment assets"
+  - "gold bars currency exchange"
+  - "stock market chart multiple assets"
+  - "financial allocation pie chart"
+shorts_visuals:
+  - "concept|multiple investment assets stocks bonds gold"
+  - "person|Harry Markowitz"
+  - "object|gold coins turkish lira banknotes dollar bills"
+  - "concept|investment portfolio allocation pie chart"
+  - "concept|financial blog website laptop screen"
 ---
 
 Bütün paranı tek bir hisseye yatırdığını düşün. Şirket haberleri beklenmedik bir anda çakılıverirse, portföyün de onunla birlikte düşer. **Portföy çeşitlendirmesi nasıl yapılır** sorusunun cevabı tam da bu riski dağıtmakla başlar: farklı varlık sınıflarına yatırım yaparak tek bir "kazanın" seni mahvetmesinin önüne geçersin.
