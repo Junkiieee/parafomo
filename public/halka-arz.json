@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-28T18:15+00:00",
+  "updated": "2026-07-29T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 43,
@@ -12,7 +12,7 @@
       "date_text": "29-30-31 Temmuz 2026 09:00-17:00",
       "start": "2026-07-29",
       "end": "2026-07-31",
-      "status": "Yaklaşan",
+      "status": "Devam Ediyor",
       "price": "48,10 TL",
       "distribution": "Eşit Dağıtım **",
       "lot": "80.000.000 Lot",
@@ -26,7 +26,7 @@
       "date_text": "29-30-31 Temmuz 2026 09:00-17:00",
       "start": "2026-07-29",
       "end": "2026-07-31",
-      "status": "Yaklaşan",
+      "status": "Devam Ediyor",
       "price": "76,60 TL",
       "distribution": "Eşit Dağıtım **",
       "lot": "48.312.950 Lot",
@@ -476,7 +476,7 @@
       "end": "2026-07-23",
       "status": "Tamamlandı",
       "price": "38,60 TL",
-      "distribution": "Eşit Dağıtım **",
+      "distribution": "Eşit Dağıtım",
       "lot": "70.000.000 Lot",
       "broker": "Tacirler Yatırım Menkul Değerler A.Ş."
     },
