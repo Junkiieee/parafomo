@@ -17,6 +17,23 @@ faq:
     a: "Her ikisi de pasif gelir sağlar. Kira geliri daha öngörülebilir ancak gider (vergi, bakım, boş kalma) düşüldükten sonra brüt kira getirisinin önemli bölümü erir. Temettü hisseleri ise kira gibi yönetim yükü oluşturmaz; yalnızca stopaj vergisine tabidir."
   - q: "Konut ve hisse senedini birlikte tutmak mantıklı mı?"
     a: "Evet. Birbirinden farklı risk-getiri profilleri olan iki varlık sınıfını bir arada tutmak portföy çeşitlendirmesinin özüdür. Konut bir 'tuğla güvencesi' sunarken hisseler büyüme ve likidite avantajı sağlar."
+shorts:
+  - "Ev mi hisse senedi mi, hangisi kazandırır?"
+  - "Konut kira geliri sağlar ama vergi, bakım ve boş kalma süreleri net kazancı ciddi ölçüde düşürür."
+  - "Hisse senedinde birkaç yüz TL ile başlanır; evi satmak aylar alırken hisseyi saniyede nakde çevirirsin."
+  - "Doğru tercih yatırım ufkuna ve risk toleransına göre değişir; her iki aracın da kendine özgü avantajları var."
+  - "Peki senin için hangisi daha mantıklı? Öğrenmek için abone ol, tüm rehberler parafomo.com'da."
+shorts_broll:
+  - "house keys and cash money"
+  - "stock market trading screen chart"
+  - "apartment building city rental"
+  - "investment portfolio financial planning"
+shorts_visuals:
+  - "concept|house keys versus stock market chart decision"
+  - "concept|apartment rental hidden costs maintenance bills"
+  - "place|Borsa İstanbul"
+  - "concept|investment risk financial decision planning"
+  - "concept|financial growth investment future savings"
 ---
 
 "Biriktirdiğim paraya ev mi alsam, hisse senedine mi yatırsam?" Bu soru Türkiye'deki her yatırımcının zihninde en az bir kez yankılanmıştır. **Konut yatırımı mı hisse senedi mi** sorusunun net bir cevabı yok; doğru tercih kişisel koşullara, yatırım ufkuna ve risk toleransına bağlı. Ama bu iki aracı doğru kıyaslayabilirsek, kendi durumun için daha iyi bir karar verebilirsin.
