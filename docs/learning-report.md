@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-07-28T08:45:35Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-07-29T08:45:35Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -13,38 +13,38 @@
 
 ### Shorts sesi — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `tr-TR-Chirp3-HD-Alnilam` — skor 319.0, örnek 2
-- `tr-TR-Chirp3-HD-Pulcherrima` — skor 312.853, örnek 3
-- `tr-TR-Chirp3-HD-Autonoe` — skor 170.04, örnek 2
-- `tr-TR-Chirp3-HD-Gacrux` — skor 138.693, örnek 3
-- `tr-TR-Chirp3-HD-Algieba` — skor 104.27, örnek 2
-- `tr-TR-Chirp3-HD-Rasalgethi` — skor 75.623, örnek 3
-- `tr-TR-Chirp3-HD-Sadachbia` — skor 60.755, örnek 2
+- `tr-TR-Chirp3-HD-Sadachbia` — skor 355.837, örnek 3
+- `tr-TR-Chirp3-HD-Autonoe` — skor 166.693, örnek 3
+- `tr-TR-Chirp3-HD-Gacrux` — skor 140.39, örnek 3
+- `tr-TR-Chirp3-HD-Alnilam` — skor 115.05, örnek 2
+- `tr-TR-Chirp3-HD-Rasalgethi` — skor 75.957, örnek 3
 - `tr-TR-Chirp3-HD-Sulafat` — skor 53.627, örnek 3
+- `tr-TR-Chirp3-HD-Enceladus` — skor 49.57, örnek 2
+- `tr-TR-Chirp3-HD-Algieba` — skor 44.605, örnek 2
 
-### Shorts motoru (google/edge) — **exploit** → seçim: `google`
+### Shorts motoru (google/edge) — **explore** (yeterli veri yok, rotasyon sürüyor)
 
-- `google` — skor 76.694, örnek 58
-- `edge` — skor 36.593, örnek 14
+- `google` — skor 68.509, örnek 63
+- `edge` — skor 37.057, örnek 14
 
-### Viral format — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
+### Viral format — **explore** (yeterli veri yok, rotasyon sürüyor)
 
-- `backtest_return` — skor 160.337, örnek 3
-- `myth` — skor 144.826, örnek 8
-- `comparison` — skor 59.345, örnek 4
-- `single_concept` — skor 39.155, örnek 4
-- `news_reaction` — skor 38.751, örnek 10
+- `myth` — skor 140.956, örnek 9
+- `backtest_return` — skor 130.502, örnek 4
+- `comparison` — skor 59.595, örnek 4
+- `single_concept` — skor 39.445, örnek 4
+- `news_reaction` — skor 36.215, örnek 11
 - `shock_number` — skor 35.165, örnek 4
 
 ### Viral yayın slotu — **explore** (yeterli veri yok, rotasyon sürüyor)
 
-- `3` — skor 243.238, örnek 4
-- `5` — skor 111.17, örnek 5
-- `4` — skor 56.715, örnek 4
-- `2` — skor 42.577, örnek 3
-- `manual` — skor 41.046, örnek 7
-- `0` — skor 39.854, örnek 5
-- `1` — skor 38.362, örnek 5
+- `5` — skor 250.308, örnek 6
+- `4` — skor 56.965, örnek 4
+- `2` — skor 42.963, örnek 3
+- `0` — skor 40.045, örnek 6
+- `1` — skor 38.316, örnek 5
+- `manual` — skor 37.301, örnek 8
+- `3` — skor 34.235, örnek 4
 
 ## Konu sinyalleri
 
