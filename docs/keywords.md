@@ -8,7 +8,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 - [x] Halka arz (IPO) nedir, nasıl yatırım yapılır? — `Borsa` — hedef: "halka arz nedir"
 - [x] Portföy çeşitlendirmesi nasıl yapılır? — `Yatırım` — hedef: "portföy çeşitlendirmesi nasıl yapılır"
-- [ ] Konut yatırımı mı hisse senedi mi? — `Yatırım` — hedef: "konut yatırımı mı hisse senedi mi"
+- [x] Konut yatırımı mı hisse senedi mi? — `Yatırım` — hedef: "konut yatırımı mı hisse senedi mi"
 - [ ] Mevduat faizi nedir, vadeli mevduat nasıl açılır? — `Kişisel Finans` — hedef: "mevduat faizi nedir"
 - [ ] Repo nedir, nasıl çalışır? — `Yatırım` — hedef: "repo nedir nasıl çalışır"
 - [ ] Portföy yönetimi nedir, nasıl yapılır? — `Yatırım` — hedef: "portföy yönetimi nedir"
@@ -51,6 +51,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] Konut Yatırımı mı Hisse Senedi mi? Hangisi Daha Mantıklı? — `konut-yatirimi-mi-hisse-senedi-mi` (backlog: evergreen yatırım; "konut yatırımı mı hisse senedi mi" sorgusu)
 - [x] Portföy Çeşitlendirmesi Nasıl Yapılır? Yatırım Riskini Azaltma Rehberi — `portfoy-cesitlendirmesi-nasil-yapilir` (backlog: evergreen yatırım)
 - [x] Merkez Bankası Nedir? Faiz Kararı Nasıl Alınır ve Piyasalara Etkisi — `merkez-bankasi-nedir-faiz-karari` (takvim: 29-31 Temmuz 2026 Fed/BOE/BOJ kararları haftası; meta-explainer)
 - [x] Halka Arz (IPO) Nedir? Yeni Hisse Senetlerine Nasıl Yatırım Yapılır? — `halka-arz-nedir-ipo` (backlog: evergreen borsa)

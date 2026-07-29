@@ -4,6 +4,69 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-29 — Konut Yatırımı mı Hisse Senedi mi? Hangisi Daha Mantıklı?
+
+**Yayınlanan yazı:** [Konut Yatırımı mı Hisse Senedi mi? Hangisi Daha Mantıklı?](https://parafomo.com/blog/konut-yatirimi-mi-hisse-senedi-mi/)
+Kategori: Yatırım | Hedef sorgu: "konut yatırımı mı hisse senedi mi" | ~1.250 kelime
+
+### X (Twitter) Thread Taslağı
+
+"Ev mi alayım, borsaya mı yatırayım?" — en sık sorulan yatırım sorusu.
+
+İkisini karşılaştırdık, cevap hem beklediğin hem beklemediğin yerde 👇
+
+1/ Konut yatırımının avantajı:
+→ Kira geliri (aylık nakit)
+→ Kaldıraç (krediyle büyük varlık)
+→ Somut, panikte satılmaz
+→ Uzun vadeli değer artışı
+
+2/ Ama konutun dezavantajları da var:
+→ Likiditesi çok düşük (satmak aylar sürer)
+→ Başlangıç sermayesi çok yüksek
+→ Vergi + sigorta + bakım = net getiri erir
+→ Kiracı riski, boş kalma dönemleri
+
+3/ Hisse senedinin avantajı:
+→ Saniyede satılabilir, likidite çok yüksek
+→ Yüzlerce TL'yle başlanır
+→ Endeks fonu ile anında çeşitlendirme
+→ Yönetim yükü yok
+
+4/ Türkiye'de konut net kira getirisi genellikle %2-4 brüt.
+Buna vergisi, boş kalması, bakımı girince gerçek getiri çok daha düşer.
+
+5/ Karar çerçevesi:
+Büyük peşinat + uzun vade + kira geliri istiyorsan → Konut
+Küçük bütçe + likidite + çeşitlendirme istiyorsan → Hisse
+Her ikisi birlikte? En mantıklısı bu.
+
+Tam karşılaştırma tablosu → parafomo.com/blog/konut-yatirimi-mi-hisse-senedi-mi/
+
+#KonutYatırımı #HisseSenedi #Yatırım #Emlak #BIST #ParaFOMO
+
+---
+
+### Instagram Post/Carousel Metni
+
+**Slide 1 (kapak):** Konut mu? Borsa mı? 🏠 vs 📈 Hangisi daha mantıklı?
+**Slide 2:** Konutun artıları ✅ Kira geliri ✅ Kaldıraç (kredi) ✅ Somut varlık ✅ Panikle satılmaz
+**Slide 3:** Konutun eksileri ❌ Milyonlarca TL başlangıç ❌ Satmak aylar alır ❌ Vergi + bakım + boş kalma getiriyi ezer ❌ Kiracı riski
+**Slide 4:** Hisse senedinin artıları ✅ Yüzlerce TL'den başlar ✅ Saniyede sat ✅ Endeks fonu ile çeşitlendirme ✅ Yönetim yükü yok
+**Slide 5:** Sonuç: Rakip değil, tamamlayıcı! İkisini birlikte tutmak en sağlıklı strateji.
+**Slide 6:** Karşılaştırma tablosu + adım adım rehber → parafomo.com/blog/konut-yatirimi-mi-hisse-senedi-mi/
+
+#KonutYatırımı #HisseSenedi #Yatırım #Emlak #BIST #ParaFOMO
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **Sosyal medyada paylaş:** X thread'ini ve Instagram carousel'ini bugün içinde yayınla.
+2. **Toplulukta değer kat:** Ekşi Sözlük, Reddit r/Turkey veya finans gruplarında "ev mi borsa mı" tartışmalarında bu yazıyı kaynak göstererek değer katıcı bir yorum yap.
+
+---
+
 ## 2026-07-29 — Portföy Çeşitlendirmesi Nasıl Yapılır? Yatırım Riskini Azaltma Rehberi
 
 **Yayınlanan yazı:** [Portföy Çeşitlendirmesi Nasıl Yapılır? Yatırım Riskini Azaltma Rehberi](https://parafomo.com/blog/portfoy-cesitlendirmesi-nasil-yapilir/)
