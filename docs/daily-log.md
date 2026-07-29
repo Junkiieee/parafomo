@@ -4,6 +4,72 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-29 — Portföy Çeşitlendirmesi Nasıl Yapılır? Yatırım Riskini Azaltma Rehberi
+
+**Yayınlanan yazı:** [Portföy Çeşitlendirmesi Nasıl Yapılır? Yatırım Riskini Azaltma Rehberi](https://parafomo.com/blog/portfoy-cesitlendirmesi-nasil-yapilir/)
+Kategori: Yatırım | Hedef sorgu: "portföy çeşitlendirmesi nasıl yapılır" | ~1.350 kelime
+
+**Konu seçim gerekçesi:** Takvimde Fed kararı var ama explainer'ı dün yazıldı. GSC fırsatlarının tamamı mevcut içerikle karşılanmış. Backlog'un ilk açık maddesi olan portföy çeşitlendirmesi seçildi; yüksek hacimli evergreen sorgu, risk-getiri ve ETF yazılarıyla iç link bağlantısı güçlü.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+Bütün paranı tek hisseye koyuyorsan, çeşitlendirme neden "ücretsiz öğle yemeği" sayılıyor öğren 👇
+
+**Tweet 2:**
+Temel kural: birbiriyle tam ilişkili olmayan varlıkları bir araya getirince toplam risk azalır.
+Nobel ödüllü Markowitz'in 1952'den beri bildiğimiz şeyi neden Türkiye'de çok az uyguluyoruz?
+
+**Tweet 3:**
+Türkiye'deki 5 temel çeşitlendirme aracı:
+• Hisse senedi (BIST / yabancı)
+• Devlet tahvili / hazine bonosu
+• Altın (gram / fon)
+• Döviz
+• Endeks fonu / ETF
+
+**Tweet 4:**
+"100 eksi yaş" kuralını duydun mu?
+30 yaşındaysan → %70 hisse, %30 tahvil.
+Ama bu Türkiye koşulları için doğrudan uygulanamaz — döviz ve enflasyon faktörünü hesaba kat.
+
+**Tweet 5 (CTA):**
+Hangi orandan başlamak gerekiyor, gerçek karşılaştırma tablosu ve 6 adımlık plan için:
+👉 https://parafomo.com/blog/portfoy-cesitlendirmesi-nasil-yapilir/
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Başlık kartı:** "Tüm yumurtaları tek sepete koyma — portföyünü nasıl çeşitlendirirsin?"
+
+**Post metni:**
+💼 Portföy çeşitlendirmesi neden kritik?
+
+Tek bir hisse veya araçta toplu para tutmak, o araç düştüğünde tüm portföyü vurur. Çözüm: farklı yönlerde hareket eden varlıkları birlikte tutmak.
+
+✅ Türkiye'de 5 temel çeşitlendirme aracı:
+1️⃣ Hisse senedi (BIST & yabancı ETF)
+2️⃣ Devlet tahvili / hazine bonosu
+3️⃣ Altın (gram veya fon)
+4️⃣ Döviz (dolar/euro)
+5️⃣ Endeks fonu / ETF
+
+📊 Profil bazlı dağılım tablosu ve 6 adımlık plan linkde 👆
+
+#portföy #çeşitlendirme #yatırım #kişiselfinans #bist #altın #etf #parafomo #finansokuryazarlığı
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş** — yukarıdaki taslakları kopyala, parafomo.com linkini ekle, paylaş. Carousel için 5-6 slayt yap (her tweet bir slayt).
+2. **Finans topluluklarında paylaş** — Reddit r/Turkey veya Türkçe yatırım Telegram gruplarında konuya uygun yorumla birlikte bağlantıyı paylaş (spam değil, değer katarak).
+
+---
+
 ## 2026-07-28 — Halka Arz (IPO) Nedir? Yeni Hisse Senetlerine Nasıl Yatırım Yapılır?
 
 **Yayınlanan yazı:** [Halka Arz (IPO) Nedir? Yeni Hisse Senetlerine Nasıl Yatırım Yapılır?](https://parafomo.com/blog/halka-arz-nedir-ipo/)
