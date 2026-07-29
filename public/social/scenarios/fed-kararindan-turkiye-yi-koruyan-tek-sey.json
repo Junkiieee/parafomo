@@ -1,0 +1,59 @@
+{
+  "slug": "fed-kararindan-turkiye-yi-koruyan-tek-sey",
+  "title": "Fed Kararından Türkiye'yi Koruyan Tek Şey",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Fed faiz kararı açıklandı. Güçlü dolar gelişmekte olan piyasaları nasıl etkiliyor ve Türkiye bu dalgadan nasıl korunuyor? Mekanizmayı sade anlattık.",
+  "tags": [
+    "fed",
+    "faiz kararı",
+    "dolar",
+    "tl",
+    "bist",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Fed faiz kararı açıklandı — TL'n neden sallandı?",
+      "visual": {
+        "type": "place",
+        "query": "Federal Reserve building Washington DC"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fed faizi yüksek tutunca dolar güçleniyor. Yatırımcılar parasını ABD tahvillerine çekiyor; Türkiye gibi gelişmekte olan ülkelerden sermaye çıkıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "dollar bills US treasury bonds finance"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama bir çelişki var. Türkiye çok yüksek faiz veriyor, yabancıya cazip. Güçlü dolar bu farkı tek başına eziyor.",
+      "visual": {
+        "type": "concept",
+        "query": "stock market chart emerging markets volatility"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kısaca: Türkiye-ABD faiz farkı daraldıkça BIST ve TL sallantıya giriyor. Portföyünde dolar varsa korunuyorsun, yoksa açık kalıyorsun.",
+      "visual": {
+        "type": "concept",
+        "query": "Turkish lira dollar exchange currency"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki Fed bir sonraki toplantıda ne yapacak ve Türkiye hazır mı? Merak ediyorsan abone ol — her gün kısa, rakamlarla, net.",
+      "visual": {
+        "type": "concept",
+        "query": "financial analysis mobile phone chart"
+      }
+    }
+  ]
+}
