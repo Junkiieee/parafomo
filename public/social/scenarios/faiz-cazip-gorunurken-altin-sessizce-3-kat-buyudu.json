@@ -1,0 +1,127 @@
+{
+  "slug": "faiz-cazip-gorunurken-altin-sessizce-3-kat-buyudu",
+  "title": "Faiz Cazip Görünürken Altın Sessizce 3 Kat Büyüdü",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "2023'te bankalar yüzde 40 faiz sunarken gram altın, 5 bin TL'yi yaklaşık 17.900 TL'ye taşıdı. Güvenli görünen seçenek her zaman kazandırmıyor.",
+  "tags": [
+    "gram altın",
+    "mevduat faizi",
+    "yatırım karşılaştırması",
+    "türk yatırımcısı",
+    "altın getirisi",
+    "faiz vs altın",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "5 bin TL, 3 yılda neredeyse dört kat oldu.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars stacked"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2023'te bankalar yüzde 40'ın üzerinde faiz veriyordu; çoğu insan 'en güvenli bu' diyerek mevduata yöneldi.",
+      "visual": {
+        "type": "scene",
+        "query": "bank deposit counter customer cash"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama o tarihte 5 bin TL gram altına koysaydın, bugün yaklaşık 17 bin 900 TL olurdu — yüzde 258 yaklaşık getiri.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "Gram Altın",
+          "unit": "TL",
+          "points": [
+            1711.09,
+            1678.99,
+            1896.39,
+            1957.39,
+            1999.33,
+            2052.63,
+            2307.68,
+            2375.41,
+            2444.62,
+            2477.0,
+            2658.5,
+            2737.99,
+            2962.34,
+            3241.97,
+            3330.61,
+            3865.35,
+            4166.22,
+            4218.05,
+            4351.41,
+            4643.36,
+            5189.66,
+            5762.96,
+            5973.38,
+            6585.85,
+            6802.65,
+            6838.62,
+            6124.78,
+            6130.58
+          ],
+          "x": [
+            "08/23",
+            "09/23",
+            "11/23",
+            "12/23",
+            "01/24",
+            "02/24",
+            "03/24",
+            "04/24",
+            "05/24",
+            "06/24",
+            "07/24",
+            "08/24",
+            "11/24",
+            "01/25",
+            "02/25",
+            "03/25",
+            "04/25",
+            "05/25",
+            "07/25",
+            "08/25",
+            "09/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26"
+          ],
+          "amount": 5000,
+          "end_value": 17914,
+          "pct": 258
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yani 'güvenli' mevduatın iki katını aşan bir getiri; alternatifi görmeden seçim yapmak her zaman pahalıya patlıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "investment growth comparison two paths diverge"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki önümüzdeki üç yılda altın yeniden bu kadar güçlü olur mu? Bunu takip etmeye devam et — abone ol, her gün kısa ve net bir piyasa bakışı seninle.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins and banknotes savings"
+      }
+    }
+  ]
+}
