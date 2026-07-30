@@ -1,0 +1,59 @@
+{
+  "slug": "amerika-buyudu-senin-paran-buyudu-mu",
+  "title": "Amerika Büyüdü, Senin Paran Büyüdü mü?",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "ABD'nin güçlü büyüme verisi neden Türk lirası ve altın fiyatlarını doğrudan etkiliyor? Fed-dolar-TL zincirinin mekanizmasını 45 saniyede açıklıyoruz.",
+  "tags": [
+    "ABD GDP",
+    "büyüme verisi",
+    "dolar TL",
+    "Fed faiz",
+    "altın",
+    "Türk lirası",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "ABD büyüdü; bu haber dolara ve cebine ne yapıyor?",
+      "visual": {
+        "type": "place",
+        "query": "White House Washington DC"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Güçlü büyüme Fed'e faiz indirmek için bahane bırakmıyor; bu da doları yüksek tutuyor.",
+      "visual": {
+        "type": "logo",
+        "query": "Federal Reserve logo"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama beklenenden güçlü gelen her büyüme verisi gelişen ülke paralarını, özellikle TL'yi, baskı altına sokuyor.",
+      "visual": {
+        "type": "concept",
+        "query": "currency exchange rate chart emerging markets"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Sonuç somut: dolar güçlendikçe TL bazında altın değer kazanıyor; bu dönemde portföyde altın tampon işlevi görüyor.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars investment"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Fed faiz indirseydi bu denklem nasıl tersine dönerdi? Merak ediyorsan abone ol, her gün 60 saniyede paranı etkileyen bir verinin analizini buraya getiriyoruz.",
+      "visual": {
+        "type": "concept",
+        "query": "finance analysis smartphone trading app"
+      }
+    }
+  ]
+}
