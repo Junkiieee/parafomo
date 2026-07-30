@@ -4,6 +4,69 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-30 — Mevduat Faizi Nedir? Vadeli Mevduat Nasıl Açılır ve Kazanç Hesabı
+
+**Yayınlanan yazı:** [Mevduat Faizi Nedir? Vadeli Mevduat Nasıl Açılır ve Kazanç Hesabı](https://parafomo.com/blog/mevduat-faizi-nedir-vadeli-mevduat/)
+Kategori: Kişisel Finans | Hedef sorgu: "mevduat faizi nedir" | ~1.100 kelime
+
+### X (Twitter) Thread Taslağı
+
+Bankaya para yatırıyorsun ama ne kadar kazandığını biliyor musun?
+
+Mevduat faizi aslında basit — ama çoğu kişi net kazancı yanlış hesaplıyor 👇
+
+1/ Mevduat faizi nedir?
+Bankaya belirli süre için para yatırman karşılığında banka sana faiz öder.
+Vadeli mevduat = daha uzun süre taahhüt = daha yüksek faiz.
+
+2/ Net kazancını hesaplama formülü:
+Kazanç = Anapara × Yıllık Faiz × (Gün/365)
+NET = Brüt × 0,85 (çünkü %15 stopaj var!)
+
+100.000 TL / %42 faiz / 6 ay:
+→ Brüt: 20.712 TL
+→ Stopaj: 3.107 TL
+→ NET: 17.605 TL
+
+3/ TMSF güvencesi ne kadar?
+Kişi başı 750.000 TL'ye kadar devlet güvencesi var.
+Üzerindeyse → farklı bankalara böl.
+
+4/ Dikkat: nominal faiz ≠ reel getiri
+%40 faiz yüksek görünür.
+Ama enflasyon %45 ise paranın satın alma gücü ERIYOR.
+Reel getiriyi mutlaka hesapla.
+
+5/ Vadeli mevduat nasıl açılır?
+→ 3-4 banka karşılaştır (mobil app yeterli)
+→ Kimlikle hesap aç
+→ Para yatır + vade seç (1/3/6/12 ay)
+→ Otomatik yenileme kararı ver
+
+Tüm detaylar + tablo burada 👇
+parafomo.com/blog/mevduat-faizi-nedir-vadeli-mevduat/
+
+### Instagram Carousel/Post Metni
+
+**Kapak:** "Mevduat Faizinden Ne Kadar Kazanıyorsun? 💰"
+
+Bankana para yatırıyorsun — ama net kazancını biliyor musun?
+
+🔸 %15 stopaj vergisi otomatik kesilir
+🔸 750.000 TL'ye kadar TMSF güvencesi var
+🔸 Yüksek faiz ≠ yüksek reel getiri
+
+Hesaplama formülü ve karşılaştırma tablosu için biyografimizdeki linke tıkla 👆
+
+#mevduatfaizi #vadelimevduat #bankafaizi #tasarruf #kisiselfinans #parafomo #yatirim #TL #finansipuclari #birikim
+
+### Bugün yapman gerekenler
+
+1. **Thread'i paylaş** — X (@parafomo) hesabında yukarıdaki thread taslağını yayınla; ilk tweet'e yazının linkini ekle.
+2. **Instagram'da paylaş** — Carousel veya tek görsel olarak yukarıdaki metni yayınla; biyografi linkinin parafomo.com olduğundan emin ol.
+
+---
+
 ## 2026-07-29 — Konut Yatırımı mı Hisse Senedi mi? Hangisi Daha Mantıklı?
 
 **Yayınlanan yazı:** [Konut Yatırımı mı Hisse Senedi mi? Hangisi Daha Mantıklı?](https://parafomo.com/blog/konut-yatirimi-mi-hisse-senedi-mi/)
