@@ -1,11 +1,12 @@
 {
-  "generated_utc": "2026-07-29T08:45:35Z",
+  "generated_utc": "2026-07-30T08:45:35Z",
   "boost": [
     "nfp-nedir-abd-tarim-disi-istihdam",
     "endeks-fonu-nedir",
     "abd-cpi-enflasyon-verisi-nedir",
     "fomc-toplanti-tutanaklari-nedir",
     "ism-pmi-nedir-abd-uretim-verisi",
+    "finansal-ozgurluk-nedir-fire",
     "abd-perakende-satislari-nedir",
     "borc-kapatma-yontemi-kartopu-cig",
     "acil-durum-fonu-nedir",
@@ -14,14 +15,16 @@
     "ethereum-nedir",
     "dca-nedir-maliyet-ortalamasi",
     "fk-orani-nedir",
-    "faiz-nedir-ekonomiyi-nasil-etkiler",
     "temettu-takvimi-nasil-okunur",
+    "faiz-nedir-ekonomiyi-nasil-etkiler",
     "temel-analiz-teknik-analiz-farki",
+    "altin-cesitleri-farki",
     "bist-100-nedir-nasil-yatirim-yapilir",
+    "fed-faiz-karari-nedir-etkisi",
     "kredi-karti-borcundan-kurtulma",
     "eurobond-nedir",
     "gdp-gsyih-nedir-nasil-yorumlanir",
-    "altin-cesitleri-farki"
+    "ism-hizmetler-pmi-nedir"
   ],
   "near_miss": [
     "nfp-nedir-abd-tarim-disi-istihdam",
@@ -29,6 +32,7 @@
     "abd-cpi-enflasyon-verisi-nedir",
     "fomc-toplanti-tutanaklari-nedir",
     "ism-pmi-nedir-abd-uretim-verisi",
+    "finansal-ozgurluk-nedir-fire",
     "abd-perakende-satislari-nedir",
     "borc-kapatma-yontemi-kartopu-cig",
     "acil-durum-fonu-nedir",
@@ -39,13 +43,15 @@
   ],
   "buried": [
     "fk-orani-nedir",
-    "faiz-nedir-ekonomiyi-nasil-etkiler",
     "temettu-takvimi-nasil-okunur",
+    "faiz-nedir-ekonomiyi-nasil-etkiler",
     "temel-analiz-teknik-analiz-farki",
+    "altin-cesitleri-farki",
     "bist-100-nedir-nasil-yatirim-yapilir",
+    "fed-faiz-karari-nedir-etkisi",
     "kredi-karti-borcundan-kurtulma",
     "eurobond-nedir",
     "gdp-gsyih-nedir-nasil-yorumlanir",
-    "altin-cesitleri-farki"
+    "ism-hizmetler-pmi-nedir"
   ]
 }
