@@ -1,0 +1,58 @@
+{
+  "slug": "turklerin-19-u-kripto-aldi-kaci-gercekten-kazandi",
+  "title": "Türklerin %19'u Kripto Aldı — Kaçı Gerçekten Kazandı?",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Türkiye yüzde 19 kripto sahipliği ile Avrupa'yı geçiyor. Ama büyük giriş dalgası piyasa zirvesindeyken geldi ve kriptonun TMSF güvencesi yok.",
+  "tags": [
+    "kripto",
+    "bitcoin türkiye",
+    "türk yatırımcı",
+    "kripto riski",
+    "finansal okuryazarlık",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Her beş Türk'ten biri kripto aldı.",
+      "visual": {
+        "type": "concept",
+        "query": "cryptocurrency bitcoin coins pile close up"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Türkiye'nin kripto sahipliği oranı yaklaşık yüzde 19 — Almanya'yı, Fransa'yı geçiyor. Rastlantı değil: TL her yıl eriyor, insanlar alternatif arayışına giriyor.",
+      "visual": {
+        "type": "place",
+        "query": "Istanbul city skyline"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl giriş dalgası Bitcoin 60 bin dolarken, 2021'de geldi — kayıplar ciddi. Dahası kriptonun TMSF güvencesi yok; ne kaybedersen senin.",
+      "visual": {
+        "type": "concept",
+        "query": "bitcoin price chart crash red screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Araç değil, plan önemli. Kriptoya girmeden önce üç şeyi bilmen gerekiyor: ne kadar kayba dayanabileceğini, ne zaman çıkacağını, parasını nerede saklayacağını.",
+      "visual": {
+        "type": "concept",
+        "query": "financial planning notebook pen calculator desk"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki kripto dışında gerçekten ne işe yarıyor? Bunu sonraki videoda açıklayacağız. Her gün 60 saniyede bir konu, bir gerçek — abone ol, bir daha kaçırma.",
+      "visual": {
+        "type": "concept",
+        "query": "mobile phone social media subscribe button"
+      }
+    }
+  ]
+}
