@@ -276,7 +276,7 @@ def main():
         """Tek claude çağrısı → (data|None, transient_bool, ham_çıktı)."""
         try:
             r = subprocess.run(["claude", "-p", prompt, "--model", args.model],
-                               capture_output=True, text=True, timeout=180)
+                               capture_output=True, text=True, timeout=300)
             out = (r.stdout or "").strip()
         except Exception as e:
             print(f"UYARI: claude çağrısı başarısız: {e}", file=sys.stderr)

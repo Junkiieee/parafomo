@@ -138,7 +138,7 @@ def main():
     print(f"[*] {args.slug}: claude -p ile senaryo üretiliyor... (açı: {angle})")
     try:
         r = subprocess.run(["claude", "-p", prompt, "--model", args.model],
-                           capture_output=True, text=True, timeout=180)
+                           capture_output=True, text=True, timeout=300)
         out = r.stdout.strip()
     except Exception as e:
         print(f"HATA: claude çağrısı başarısız: {e}"); return 1
