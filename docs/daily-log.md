@@ -4,6 +4,76 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-30 — Mevduat Faizi Nedir? Vadeli Mevduat Nasıl Açılır?
+
+**Yayınlanan yazı:** [Mevduat Faizi Nedir? Vadeli Mevduat Nasıl Açılır?](https://parafomo.com/blog/mevduat-faizi-nedir-vadeli-mevduat/)
+Kategori: Kişisel Finans | Hedef sorgu: "mevduat faizi nedir" / "vadeli mevduat nasıl açılır" | ~1.150 kelime
+
+### X (Twitter) Thread Taslağı
+
+Paranı bankada mı tutuyorsun? Çoğu kişi mevduatı açıyor ama yanlış vadede, yanlış bankada veya net getiriyi hiç hesaplamadan. 🏦
+
+İşte bilmen gereken her şey 👇
+
+1/ Mevduat faizi nedir?
+→ Bankaya paranı ödünç veriyorsun
+→ Banka bunu kredi olarak kullandırıyor
+→ Karşılığında sana faiz ödüyor
+Basit ama içinden çıkmak zor
+
+2/ Vade ne kadar uzunsa faiz o kadar yüksek:
+→ 1 ay → en esnek, en düşük faiz
+→ 3 ay → orta seçenek
+→ 6 ay → makul oran
+→ 12 ay → en yüksek oran, en az likidite
+Parana ne zaman ihtiyacın olacağını bil!
+
+3/ TL vs Döviz mevduat:
+→ TL: yüksek nominal faiz, enflasyona dikkat
+→ Döviz: düşük faiz ama kur artışından kazanç şansı
+→ İkisi de TMSF güvencesi altında (150.000 TL'ye kadar)
+
+4/ Net getiriyi hesapla:
+Brüt faiz - stopaj vergisi = net faiz
+Stopaj vadeye göre %5-15 arası
+Uygulamanın gösterdiği rakam stopaj öncesi olabilir, dikkat!
+
+5/ TMSF güvencesi = 150.000 TL / banka
+→ 300.000 TL birikimin varsa iki bankaya dağıt
+→ Her banka için ayrı güvence geçerli
+
+Tüm detaylar → https://parafomo.com/blog/mevduat-faizi-nedir-vadeli-mevduat/
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Başlık (kapak slaytı):**
+Vadeli mevduat açmadan önce bunları bil 💰
+
+**Slayt 1:** Mevduat faizi = paranın bankadaki kirası. Banka senin paranı kredi olarak kullanıyor, karşılığında faiz ödüyor.
+
+**Slayt 2:** Vade seçimi kritik. 1 ay esnek ama faiz düşük. 12 ay yüksek faiz ama parana dokunamazsın. İhtiyacına göre seç.
+
+**Slayt 3:** TL mi döviz mi? TL yüksek faiz verir ama enflasyona karşı reel getiriyi kontrol et. Döviz düşük faiz ama kura karşı koruma sağlar.
+
+**Slayt 4:** TMSF güvencesi banka başına 150.000 TL. Fazlası güvenceli değil. Büyük tutarları farklı bankalara dağıt.
+
+**Slayt 5:** Net getiriyi hesapla! Stopaj vergisi kesilir. Brüt oran değil, net orana bak.
+
+**Kapanış:** Detaylı rehber: parafomo.com/blog/mevduat-faizi-nedir-vadeli-mevduat/ 🔗
+
+**Hashtag'ler:** #mevduat #vadeli mevduat #banka faizi #tasarruf #kişisel finans #parafomo
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş:** Yukarıdaki taslakları düzenleyip yayınla. Thread için gönderi saati 10:00-12:00 arası daha fazla etkileşim getirir.
+2. **1 toplulukta değer katarak paylaş:** Şikayet.com veya ilgili bir Telegram finans grubunda "vadeli mevduat hakkında sorularınız var mı?" gibi bir mesajla yazıya link ver. Spam değil, gerçek değer kat.
+
+---
+
 ## 2026-07-29 — Konut Yatırımı mı Hisse Senedi mi? Hangisi Daha Mantıklı?
 
 **Yayınlanan yazı:** [Konut Yatırımı mı Hisse Senedi mi? Hangisi Daha Mantıklı?](https://parafomo.com/blog/konut-yatirimi-mi-hisse-senedi-mi/)
