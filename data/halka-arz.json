@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-30T12:15+00:00",
+  "updated": "2026-07-30T18:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 43,
@@ -31,6 +31,20 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "48.312.950 Lot",
       "broker": "Garanti Yatırım Menkul Kıymetler A.Ş."
+    },
+    {
+      "company": "Sinbo Küçük Ev Aletleri San. ve Tic. A.Ş.",
+      "bist_code": "",
+      "slug": "sinbo-kucuk-ev-aletleri-san-ve-tic-a-s",
+      "link": "https://halkarz.com/sinbo-kucuk-ev-aletleri-san-ve-tic-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "301.435.772 Lot",
+      "broker": "Kuveyt Türk Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "Bulls Yatırım Menkul Değerler A.Ş.",
@@ -423,20 +437,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "250.000.000 Lot",
       "broker": "Halk Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş. Ziraat Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Tatilbudur Seyahat Acenteliği ve Turizm A.Ş.",
-      "bist_code": "",
-      "slug": "tatilbudur-seyahat-acenteligi-ve-turizm-a-s",
-      "link": "https://halkarz.com/tatilbudur-seyahat-acenteligi-ve-turizm-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "55.000.000 Lot",
-      "broker": "Ak Yatırım Menkul Değerler A.Ş. Ziraat Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "Kardemir Çelik Sanayi A.Ş.",
