@@ -17,6 +17,23 @@ faq:
     a: "Oranlar sürekli değişir. BDDK'nın Mevduat Faiz Oranları sayfasından veya bankaların mobil uygulamalarından güncel karşılaştırma yapabilirsiniz. Katılım bankalarının kâr payı oranları da alternatif olarak incelenebilir."
   - q: "TMSF güvencesi ne kadardır?"
     a: "Tasarruf Mevduatı Sigorta Fonu (TMSF), her banka için kişi başı 750.000 TL'ye kadar olan mevduatı güvence altına alır. Bu tutarın üzerindeki miktarlar güvence kapsamı dışındadır."
+shorts:
+  - "Bankadaki paran senin için çalışmıyor."
+  - "Vadesiz hesaptaki para neredeyse sıfır faiz kazanır; gerçek getiri için parayı vadeli hesaba taşıman şart."
+  - "TCMB politika faizi yükselince bankalar da mevduat oranlarını artırır; doğru zamanda vadeli açmak kazancını doğrudan etkiler."
+  - "Brüt faiz gelirinden yüzde on beş stopaj kesilir; elde ettiğini sandığın getirinin beşte biri devlete gider."
+  - "Peki hangi banka en yüksek oranı sunuyor ve nasıl karşılaştırırsın? Cevap için kanala abone ol, güncel finans rehberleri için parafomo.com'u ziyaret et."
+shorts_broll:
+  - "bank teller counter customer"
+  - "turkish lira banknotes stack"
+  - "interest rate chart rising"
+  - "bank mobile app savings account"
+shorts_visuals:
+  - "concept|money sitting idle in bank account"
+  - "concept|demand deposit vs time deposit savings comparison"
+  - "place|Türkiye Cumhuriyet Merkez Bankası"
+  - "concept|tax deduction withholding money"
+  - "concept|bank savings growth investment"
 ---
 
 Birikiminiz bankada bekliyorken büyüsün mü, yoksa enflasyona mı yenik düşsün? **Mevduat faizi**, paranızı belirli bir süreliğine bankaya yatırmanın karşılığında kazandığınız getiridir. Doğru hesap ve doğru vade seçimiyle sıradan bir birikim, kayda değer ek bir gelire dönüşebilir — ama nasıl çalışır, nasıl hesaplanır?
