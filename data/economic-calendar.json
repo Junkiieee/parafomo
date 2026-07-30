@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-29",
+  "updated": "2026-07-30",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
@@ -203,6 +203,15 @@
     },
     {
       "date": "2026-08-03",
+      "time": "10:00",
+      "region": "TR",
+      "impact": "High",
+      "title": "TÜİK enflasyon (TÜFE) verisi",
+      "source": "tuik-rule",
+      "hook": "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı."
+    },
+    {
+      "date": "2026-09-03",
       "time": "10:00",
       "region": "TR",
       "impact": "High",
