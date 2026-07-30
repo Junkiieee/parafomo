@@ -1,0 +1,58 @@
+{
+  "slug": "yatirim-yaparken-kredi-karti-borcun-seni-geciyor",
+  "title": "Yatırım Yaparken Kredi Kartı Borcun Seni Geçiyor",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Türkiye'de kredi kartı faizi yıllık yüzde ellinin çok üstüne çıkıyor. Yatırım yaparken bu borcu taşımak, kazancını sessizce siliyor.",
+  "tags": [
+    "kredi kartı faizi",
+    "yatırım",
+    "borç yönetimi",
+    "kişisel finans",
+    "türkiye",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Kredi kartı faizi yılda yüzde ellinin üstünde.",
+      "visual": {
+        "type": "concept",
+        "query": "credit card debt interest rate"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "10 bin TL borcun varsa yılda 5 bin TL yalnızca faize gidiyor. Birçok yatırım aracı bunu karşılamıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "calculator money bills debt payment"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama çoğu kişi solda yatırım yapıyor, sağda faiz ödüyor. İki taraf birbirini yiyor; net kazanç sıfıra düşüyor.",
+      "visual": {
+        "type": "concept",
+        "query": "balance scale money investment financial decision"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kredi kartı borcunu kapatmak, yüzde ellinin garantili getirisi demek. Piyasada bunu bulmak neredeyse imkânsız.",
+      "visual": {
+        "type": "concept",
+        "query": "paying off debt financial freedom money saving"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Borç bittikten sonra birikimi nerede değerlendirirsin, bunu da konuşacağız. Abone ol — her gün 60 saniyede tek net finans kararı.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification smartphone app"
+      }
+    }
+  ]
+}
