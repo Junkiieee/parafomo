@@ -4,6 +4,91 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-31 — Portföy Yönetimi Nedir? Nasıl Yapılır? Adım Adım Rehber
+
+**Yayınlanan yazı:** [Portföy Yönetimi Nedir? Nasıl Yapılır? Adım Adım Rehber](https://parafomo.com/blog/portfoy-yonetimi-nedir/)
+Kategori: Yatırım | Hedef sorgu: "portföy yönetimi nedir" | ~1.300 kelime
+
+### X (Twitter) Thread Taslağı
+
+Hisse aldın, altın aldın, fon aldın. Ama bunları gerçekten "yönetiyor" musun? 📊
+
+Portföy yönetimi = yatırımını bir BÜT olarak görüp hedefe doğru yönlendirmek. İşte adım adım nasıl yapılır 👇
+
+1/ Varlık dağılımı her şeydir.
+Uzun vadeli portföy getirisinin %80-90'ı hangi hisseyi seçtiğinden DEĞİL, varlık sınıfları arasındaki orandan geliyor.
+Hisse / tahvil / altın / döviz dengeni kurdun mu?
+
+2/ Risk profilin nerede?
+→ Muhafazakâr: %20 hisse, %40 tahvil, %25 altın, %15 döviz
+→ Dengeli: %40 hisse, %30 tahvil, %15 altın, %15 döviz
+→ Agresif: %75 hisse, %10 tahvil, %10 altın, %5 döviz
+
+3/ Aktif mi, pasif mi?
+Aktif yönetim: sık al-sat, maliyet yüksek, çoğu profesyonel fon bile endeksi yenemez.
+Pasif yönetim: ETF/endeks fonu al, ayda bir kontrol et, yılda bir dengele.
+Yeni başlayanlar için: pasiften başla.
+
+4/ Rebalancing nedir?
+Hisseler yükseldi, hedef dağılımın bozuldu.
+Yılda bir kez fazladan yükselen varlığı sat, geriden kalanı al → dengeyi geri getir.
+Plan olmazsa portföy kendi başına kayar.
+
+5/ Maliyet öldürür.
+Aktif fon: yıllık %2 ücret → 20 yılda on binlerce TL kayıp.
+ETF: %0,1-0,3 ücret → fark devasa.
+Düşük maliyet, yüksek disiplin → uzun vadede kazandırır.
+
+Tam rehber → parafomo.com/blog/portfoy-yonetimi-nedir/
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Slide 1 — Hook:**
+Yatırım yapıyorsun ama "portföy yönetimi" yapıyor musun? 🤔
+
+**Slide 2:**
+Portföy yönetimi nedir?
+Varlıklarını seçmek, izlemek ve hedefe doğru güncellemek.
+Tek hisse değil, TÜM yatırımını bir bütün olarak yönetmek.
+
+**Slide 3:**
+En kritik karar: Varlık dağılımı
+🔵 Hisse senedi → büyüme, yüksek risk
+🟡 Altın → enflasyon koruması
+🟢 Tahvil → istikrar
+💵 Döviz → TL riskine karşı kalkan
+
+**Slide 4:**
+Yıllık getirinin %80-90'ı hangi hisseyi aldığından değil, bu oranları doğru kurmaktan geliyor.
+
+**Slide 5:**
+Adım adım:
+1. Hedef belirle
+2. Risk profilini tanı
+3. Varlık dağılımını kur
+4. DCA ile düzenli al
+5. Yılda bir dengele (rebalancing)
+
+**Slide 6:**
+Maliyet uyarısı ⚠️
+Aktif fon: yıllık %2 → 20 yılda servetini eritir
+ETF/endeks fonu: %0,1-0,3 → bileşik getiriyi korur
+
+parafomo.com'da tam rehber →
+
+#portföyyönetimi #yatırım #borsa #etf #finansalözgürlük #paratavsiyesi
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **Paylaşımı yayınla:** X thread + Instagram carousel'i bugün paylaş (thread için en iyi saat 09:00-11:00 veya 20:00-22:00 arası).
+2. **Toplulukta değer kat:** İlgili bir Telegram finans grubunda veya Reddit'te (r/Turkey, r/borsa) konuya giren bir tartışmaya katıl, makaleyi doğal bir bağlamda paylaş — spam değil, gerçek katkı yap.
+
+---
+
 ## 2026-07-31 — Repo Nedir? Nasıl Çalışır ve Yatırım Aracı Olarak Değer Var mı?
 
 **Yayınlanan yazı:** [Repo Nedir? Nasıl Çalışır ve Yatırım Aracı Olarak Değer Var mı?](https://parafomo.com/blog/repo-nedir-nasil-calisir/)
