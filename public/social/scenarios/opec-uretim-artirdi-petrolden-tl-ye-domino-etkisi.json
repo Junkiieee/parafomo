@@ -1,0 +1,59 @@
+{
+  "slug": "opec-uretim-artirdi-petrolden-tl-ye-domino-etkisi",
+  "title": "OPEC Üretim Artırdı: Petrolden TL'ye Domino Etkisi",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "OPEC+ üretim artırıp petrol fiyatlarını düşürünce Türkiye'nin cari açığı, enflasyonu ve faiz kararları nasıl etkileniyor? Zincirleme mekanizmayı sade anlattık.",
+  "tags": [
+    "OPEC",
+    "petrol fiyatı",
+    "TL",
+    "cari açık",
+    "enflasyon",
+    "Merkez Bankası",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "OPEC üretim artırdı — şimdi TL'ye ne olacak?",
+      "visual": {
+        "type": "logo",
+        "query": "OPEC logo"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Türkiye her yıl yaklaşık 50 milyar dolar enerji ithal ediyor. Petrol ucuzlayınca bu fatura düşüyor, dışarıya giden dolar azalıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "oil tanker crude oil barrels petroleum refinery"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl kırılım şu: dolar çıkışı yavaşlayınca TL üzerindeki baskı hafifliyor. Merkez Bankası, enflasyon gevşerse faiz indirebilir hale geliyor.",
+      "visual": {
+        "type": "concept",
+        "query": "turkish lira currency exchange rate board numbers"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yani petrol kararı sırf enerji meselesi değil. Senin mevduat faizini ve borsa fiyatını dolaylı şekillendiriyor — etki 3 ile 6 ay içinde görülür.",
+      "visual": {
+        "type": "concept",
+        "query": "istanbul stock exchange trading floor screens bist"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki faiz indiriminde ilk kazanan varlık hangisi oluyor: altın mı, borsa mı, döviz mi? Cevabı görmek istiyorsan abone ol — her sabah 60 saniyede sadece işe yarayan analiz seni bekliyor.",
+      "visual": {
+        "type": "concept",
+        "query": "mobile phone financial app subscribe notification bell"
+      }
+    }
+  ]
+}
