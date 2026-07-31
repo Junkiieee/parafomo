@@ -17,6 +17,23 @@ faq:
     a: "Türkiye'de ETF veya yatırım fonuyla birkaç yüz TL ile başlamak mümkündür. Önemli olan tutar değil, düzenli yatırım alışkanlığı ve doğru varlık dağılımıdır."
   - q: "Portföy ne sıklıkla gözden geçirilmeli?"
     a: "Ayda bir kez kısa kontrol, yılda bir kez ise kapsamlı gözden geçirme önerilir. Piyasalar her gün izlenirse panik kararları alma riski artar; uzun vadeli planı ayakta tutmak daha değerlidir."
+shorts:
+  - "Elindeki yatırımlar neden seni zengin etmiyor?"
+  - "Portföy yönetimi, varlıklarını tek tek değil bütün olarak değerlendirip risk-getiri dengesini optimize etme sürecidir."
+  - "Araştırmalar, aktif yönetilen fonların büyük çoğunluğunun uzun vadede pasif endeks fonlarının gerisinde kaldığını gösteriyor."
+  - "Uzmanlar, portföy getirisinin yüzde seksen-doksanının hangi hisseyi değil hangi varlık sınıfını seçtiğinle belirlendiğini söylüyor."
+  - "Peki senin için doğru varlık dağılımı nasıl bulunur? Öğrenmek için hemen abone ol, her gün yatırım bilgin artsın; tam rehber parafomo.com'da."
+shorts_broll:
+  - "investment portfolio management strategy"
+  - "index fund vs active fund performance chart"
+  - "asset allocation diversified investments"
+  - "financial planning future wealth growth"
+shorts_visuals:
+  - "concept|investor looking confused at stock market screen"
+  - "concept|portfolio balance diverse investment assets overview"
+  - "concept|index fund passive investing performance comparison"
+  - "concept|asset allocation pie chart wealth distribution"
+  - "concept|financial freedom planning success future"
 ---
 
 Elinde birkaç farklı yatırım aracı varsa artık bir portföyün var demektir. Peki bu araçları bir amaç doğrultusunda nasıl yönetirsin? **Portföy yönetimi nedir** sorusunun cevabı tam burada başlar: doğru varlıkları seçmek, onları izlemek ve değişen koşullara göre ayarlamak. Bu rehberde, portföy yönetiminin ne anlama geldiğini ve Türkiye'den birinin bunu adım adım nasıl uygulayabileceğini ele alıyoruz.
