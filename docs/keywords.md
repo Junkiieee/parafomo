@@ -10,7 +10,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Portföy çeşitlendirmesi nasıl yapılır? — `Yatırım` — hedef: "portföy çeşitlendirmesi nasıl yapılır"
 - [x] Konut yatırımı mı hisse senedi mi? — `Yatırım` — hedef: "konut yatırımı mı hisse senedi mi"
 - [x] Mevduat faizi nedir, vadeli mevduat nasıl açılır? — `Kişisel Finans` — hedef: "mevduat faizi nedir"
-- [ ] Repo nedir, nasıl çalışır? — `Yatırım` — hedef: "repo nedir nasıl çalışır"
+- [x] Repo nedir, nasıl çalışır? — `Yatırım` — hedef: "repo nedir nasıl çalışır"
 - [ ] Portföy yönetimi nedir, nasıl yapılır? — `Yatırım` — hedef: "portföy yönetimi nedir"
 - [ ] Türkiye'de en iyi yatırım araçları 2026 — `Yatırım` — hedef: "en iyi yatırım araçları"
 - [ ] Borsa teknik analiz temelleri: grafik okuma rehberi — `Borsa` — hedef: "teknik analiz grafik okuma"
@@ -51,6 +51,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] Repo Nedir? Nasıl Çalışır ve Yatırım Aracı Olarak Değer Var mı? — `repo-nedir-nasil-calisir` (backlog: evergreen yatırım; "repo nedir nasıl çalışır" sorgusu)
 - [x] Mevduat Faizi Nedir? Vadeli Mevduat Nasıl Açılır ve Kazanç Hesabı — `mevduat-faizi-nedir-vadeli-mevduat` (backlog: evergreen kişisel finans; "mevduat faizi nedir" sorgusu)
 - [x] Konut Yatırımı mı Hisse Senedi mi? Hangisi Daha Mantıklı? — `konut-yatirimi-mi-hisse-senedi-mi` (backlog: evergreen yatırım; "konut yatırımı mı hisse senedi mi" sorgusu)
 - [x] Portföy Çeşitlendirmesi Nasıl Yapılır? Yatırım Riskini Azaltma Rehberi — `portfoy-cesitlendirmesi-nasil-yapilir` (backlog: evergreen yatırım)
