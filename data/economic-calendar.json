@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-30",
+  "updated": "2026-07-31",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
@@ -86,7 +86,7 @@
     },
     {
       "date": "2026-07-30",
-      "time": "11:30am",
+      "time": "12:00pm",
       "region": "GBP",
       "impact": "High",
       "title": "BOE Gov Bailey Speaks",
