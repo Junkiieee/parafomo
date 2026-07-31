@@ -4,6 +4,80 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-07-31 — Repo Nedir? Nasıl Çalışır ve Yatırım Aracı Olarak Değer Var mı?
+
+**Yayınlanan yazı:** [Repo Nedir? Nasıl Çalışır ve Yatırım Aracı Olarak Değer Var mı?](https://parafomo.com/blog/repo-nedir-nasil-calisir/)
+Kategori: Yatırım | Hedef sorgu: "repo nedir nasıl çalışır" | ~1.100 kelime
+
+### X (Twitter) Thread Taslağı
+
+Paranı birkaç günlüğüne nereye koyuyorsun?
+
+Bankada boş tutmak yerine çoğu kişinin bilmediği bir araç var: REPO 👇
+
+1/ Repo nedir?
+Devlet tahviliyle teminatlandırılmış, kısa vadeli bir yatırım.
+Bankaya para veriyorsun → banka teminat olarak tahvil gösteriyor → vade sonunda para + faiz sana dönüyor.
+
+2/ Kaç günlük?
+Genellikle 1-7 gün arası.
+Acil durum fonun varsa ve hep "yarın lazım olabilir" diyorsan — repo senin için.
+
+3/ Ne kadar kazanırsın?
+%45 brüt yıllık faizle 10.000 TL'yi 1 günlük repo'ya yatırsan:
+→ Brüt: ~12,33 TL
+→ %15 stopaj sonrası net: ~10,48 TL
+Küçük görünür ama her gün döndürünce yıllık ~%38,25 net eder.
+
+4/ Mevduattan farkı ne?
+Repo: 1-7 gün, esnek, TMSF yok, devlet tahvili teminatlı
+Mevduat: 1 ay+, sabit faiz, 200K TL'ye kadar TMSF güvencesi
+
+→ Kısa vadede para park etmek için REPO
+→ 1 ay+ bağlayabilirsen MEVDUAT
+
+5/ Nereden açılır?
+Banka uygulamanızdan "Yatırım → Repo" bölümüne gelin.
+Garanti, İş Bankası, Yapı Kredi, Akbank… hepsi var.
+Minimum 100-1000 TL ile başlanır.
+
+Detaylı rehber → parafomo.com/blog/repo-nedir-nasil-calisir/
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Slide 1 — Hook:**
+Paranı bankada boş mu tutuyorsun? 💸
+
+**Slide 2:**
+REPO nedir?
+Devlet tahviliyle teminatlı, 1-7 günlük kısa vadeli yatırım.
+
+**Slide 3:**
+Nasıl çalışır?
+Bankaya para ver → tahvil teminat olarak kalır → vade bitince para + faiz sana
+
+**Slide 4 — Karşılaştırma:**
+Repo vs Mevduat
+⚡ Repo: esnek, 1-7 gün, TMSF yok
+🏦 Mevduat: sabit, 1 ay+, TMSF güvenceli
+
+**Slide 5 — CTA:**
+Tüm detaylar biyografimizdeki linkte 👆
+@parafomo
+
+**Hashtags:** #repo #yatırım #paranıdeğerlendir #kısavadeliyatırım #tasarruf #finansalözgürlük #parafomo
+
+---
+
+### ✅ Bugün Yapman Gerekenler
+
+1. **X (Twitter) thread'ini paylaş** — yukarıdaki taslağı kullan. En iyi etkileşim saatleri: 12:00-13:00 veya 19:00-21:00.
+2. **Instagram carousel'ini yayınla** — Canva ile 5 slayt hazırla, slide 1'e "Repo nedir?" başlığı koy. Link biyografide olsun.
+
+---
+
 ## 2026-07-30 — Mevduat Faizi Nedir? Vadeli Mevduat Nasıl Açılır ve Kazanç Hesabı
 
 **Yayınlanan yazı:** [Mevduat Faizi Nedir? Vadeli Mevduat Nasıl Açılır ve Kazanç Hesabı](https://parafomo.com/blog/mevduat-faizi-nedir-vadeli-mevduat/)
