@@ -17,6 +17,23 @@ faq:
     a: "Ters repo, repo işleminin karşı tarafıdır. Yatırımcı açısından bakıldığında yaptığın işlem aslında ters repodur: sen bankaya nakit verirsin, banka sana teminat olarak menkul kıymet bırakır."
   - q: "Repo'ya minimum ne kadar parayla başlanabilir?"
     a: "Çoğu banka ve aracı kurumda minimum tutar 100-1000 TL arasındadır. Bazı online platformlarda bu eşik çok daha düşük olabilir."
+shorts:
+  - "Param boş dururken bile faiz kazanabilir mi?"
+  - "Bankaya nakit veriyorsun, karşılığında devlet tahvili teminat alıyorsun, vade sonunda paran artı faiz geri geliyor."
+  - "Repo faizi doğrudan TCMB'nin politika faizine bağlı; merkez bankası faiz artırınca repo getirisi de otomatik yükseliyor."
+  - "Banka uygulamasında yatırım bölümüne girip 2-3 dakikada repo açabiliyorsun, ayrı bir hesap açmana gerek yok."
+  - "Peki repo mu, mevduat mı daha çok kazandırır? Cevap için kanala abone ol, güncel karşılaştırmalar ve daha fazlası parafomo.com'da."
+shorts_broll:
+  - "overnight money market trading"
+  - "government bond certificate paper"
+  - "central bank interest rate decision"
+  - "mobile banking investment app screen"
+shorts_visuals:
+  - "concept|idle cash money jar savings"
+  - "concept|government bond collateral bank transaction"
+  - "place|Türkiye Cumhuriyet Merkez Bankası"
+  - "concept|mobile banking app investment screen"
+  - "concept|savings comparison financial growth chart"
 ---
 
 Elinizde birkaç günlüğüne boş duran para var ama ne yapacağınızı bilmiyorsunuz. Mevduata yatırsanız vade problemi var; borsaya girseniz kısa vade riskli. İşte tam bu senaryoda **repo**, Türk yatırımcısının sıklıkla tercih ettiği kısa vadeli bir çıkış noktası olarak devreye giriyor.
