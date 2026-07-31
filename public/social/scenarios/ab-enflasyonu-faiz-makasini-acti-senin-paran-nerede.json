@@ -1,0 +1,59 @@
+{
+  "slug": "ab-enflasyonu-faiz-makasini-acti-senin-paran-nerede",
+  "title": "AB Enflasyonu Faiz Makasını Açtı — Senin Paran Nerede?",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Avrupa Temmuz CPI verisi ECB ile Fed arasındaki faiz farkını nasıl şekillendiriyor ve bu dolar hareketi Türk yatırımcısına nasıl yansıyor?",
+  "tags": [
+    "avrupa enflasyonu",
+    "AB CPI",
+    "ECB faiz",
+    "dolar euro",
+    "küresel faiz",
+    "Türk yatırımcı",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Avrupa'da enflasyon düşünce dolar neden yükseliyor?",
+      "visual": {
+        "type": "logo",
+        "query": "European Central Bank logo"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Temmuz AB enflasyonu açıklandı. Rakam beklentinin altında kalırsa ECB faiz indirecek demek — Fed ise henüz orada değil.",
+      "visual": {
+        "type": "building",
+        "query": "European Central Bank building Frankfurt"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "İşte çelişki burada: ECB indirimde, Fed beklemede. Faiz farkı açıldığında para euroya değil dolara akar, dolar güçlenir.",
+      "visual": {
+        "type": "concept",
+        "query": "euro dollar exchange rate divergence chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Güçlü dolar gelişen piyasaları sıkar — TL de dahil. AB enflasyon sürprizi saatler içinde senin portföyüne dokunabilir.",
+      "visual": {
+        "type": "concept",
+        "query": "emerging markets currency dollar pressure"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki veri ne zaman çıkıyor, piyasa nasıl fiyatlıyor — önceden bilmek istiyorsan abone ol; her gün 60 saniyede tek net analiz burada.",
+      "visual": {
+        "type": "concept",
+        "query": "financial data analysis monitor screen"
+      }
+    }
+  ]
+}
