@@ -12,7 +12,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Mevduat faizi nedir, vadeli mevduat nasıl açılır? — `Kişisel Finans` — hedef: "mevduat faizi nedir"
 - [x] Repo nedir, nasıl çalışır? — `Yatırım` — hedef: "repo nedir nasıl çalışır"
 - [x] Portföy yönetimi nedir, nasıl yapılır? — `Yatırım` — hedef: "portföy yönetimi nedir"
-- [ ] Türkiye'de en iyi yatırım araçları 2026 — `Yatırım` — hedef: "en iyi yatırım araçları"
+- [x] Türkiye'de en iyi yatırım araçları 2026 — `Yatırım` — hedef: "en iyi yatırım araçları"
 - [ ] Borsa teknik analiz temelleri: grafik okuma rehberi — `Borsa` — hedef: "teknik analiz grafik okuma"
 - [ ] Döviz hesabı nedir, dövizde nasıl yatırım yapılır? — `Yatırım` — hedef: "döviz hesabı nedir"
 - [ ] Altın fonu nedir, gram altından farkı ne? — `Yatırım` — hedef: "altın fonu nedir"
@@ -51,6 +51,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] Türkiye'de En İyi Yatırım Araçları 2026: Hangisi Sana Uygun? — `turkiyede-en-iyi-yatirim-araclari-2026` (backlog: evergreen yatırım; "en iyi yatırım araçları" sorgusu)
 - [x] Portföy Yönetimi Nedir? Nasıl Yapılır? Adım Adım Rehber — `portfoy-yonetimi-nedir` (backlog: evergreen yatırım; "portföy yönetimi nedir" sorgusu)
 
 - [x] Repo Nedir? Nasıl Çalışır ve Yatırım Aracı Olarak Değer Var mı? — `repo-nedir-nasil-calisir` (backlog: evergreen yatırım; "repo nedir nasıl çalışır" sorgusu)
