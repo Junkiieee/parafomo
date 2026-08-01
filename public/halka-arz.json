@@ -1,37 +1,9 @@
 {
-  "updated": "2026-07-31T18:15+00:00",
+  "updated": "2026-08-01T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 43,
+  "count": 41,
   "items": [
-    {
-      "company": "Bewen Enerji A.Ş.",
-      "bist_code": "BEWEN",
-      "slug": "bewen-enerji-a-s",
-      "link": "https://halkarz.com/bewen-enerji-a-s/",
-      "date_text": "29-30-31 Temmuz 2026",
-      "start": "2026-07-29",
-      "end": "2026-07-31",
-      "status": "Devam Ediyor",
-      "price": "48,10 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "80.000.000 Lot",
-      "broker": "Türkiye Sınai Kalkınma Bankası A.Ş. Yatırım Finansman Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Quick Sigorta A.Ş.",
-      "bist_code": "QUICK",
-      "slug": "quick-sigorta-a-s",
-      "link": "https://halkarz.com/quick-sigorta-a-s/",
-      "date_text": "29-30-31 Temmuz 2026",
-      "start": "2026-07-29",
-      "end": "2026-07-31",
-      "status": "Devam Ediyor",
-      "price": "76,60 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "48.312.950 Lot",
-      "broker": "Garanti Yatırım Menkul Kıymetler A.Ş."
-    },
     {
       "company": "Sinbo Küçük Ev Aletleri San. ve Tic. A.Ş.",
       "bist_code": "",
@@ -439,6 +411,34 @@
       "broker": "Halk Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş. Ziraat Yatırım Menkul Değerler A.Ş."
     },
     {
+      "company": "Bewen Enerji A.Ş.",
+      "bist_code": "BEWEN",
+      "slug": "bewen-enerji-a-s",
+      "link": "https://halkarz.com/bewen-enerji-a-s/",
+      "date_text": "29-30-31 Temmuz 2026",
+      "start": "2026-07-29",
+      "end": "2026-07-31",
+      "status": "Tamamlandı",
+      "price": "48,10 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "80.000.000 Lot",
+      "broker": "Türkiye Sınai Kalkınma Bankası A.Ş. Yatırım Finansman Menkul Değerler A.Ş."
+    },
+    {
+      "company": "Quick Sigorta A.Ş.",
+      "bist_code": "QUICK",
+      "slug": "quick-sigorta-a-s",
+      "link": "https://halkarz.com/quick-sigorta-a-s/",
+      "date_text": "29-30-31 Temmuz 2026",
+      "start": "2026-07-29",
+      "end": "2026-07-31",
+      "status": "Tamamlandı",
+      "price": "76,60 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "48.312.950 Lot",
+      "broker": "Garanti Yatırım Menkul Kıymetler A.Ş."
+    },
+    {
       "company": "Kardemir Çelik Sanayi A.Ş.",
       "bist_code": "KARCL",
       "slug": "kardemir-celik-sanayi-a-s",
@@ -565,20 +565,6 @@
       "broker": "Gedik Yatırım Menkul Değerler A.Ş. Misyon Yatırım Bankası A.Ş."
     },
     {
-      "company": "(Orzax) Orzaks İlaç ve Kimya San. Tic. A.Ş.",
-      "bist_code": "ORZAX",
-      "slug": "orzaks-ilac-ve-kimya-san-tic-a-s",
-      "link": "https://halkarz.com/orzaks-ilac-ve-kimya-san-tic-a-s/",
-      "date_text": "29-30 Haziran, 1 Temmuz 2026",
-      "start": "2026-06-29",
-      "end": "2026-07-01",
-      "status": "Tamamlandı",
-      "price": "69,00 TL",
-      "distribution": "Eşit Dağıtım",
-      "lot": "52.500.000 Lot",
-      "broker": "İnfo Yatırım Menkul Değerler A.Ş."
-    },
-    {
       "company": "Soho Giyim ve Enerji A.Ş.",
       "bist_code": "SOHOE",
       "slug": "soho-giyim-ve-enerji-a-s",
@@ -591,20 +577,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "100.000.000 Lot",
       "broker": "İntegral Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Beta Enerji ve Teknoloji A.Ş.",
-      "bist_code": "BETAE",
-      "slug": "beta-enerji-ve-teknoloji-a-s",
-      "link": "https://halkarz.com/beta-enerji-ve-teknoloji-a-s/",
-      "date_text": "23-24-25 Haziran 2026",
-      "start": "2026-06-23",
-      "end": "2026-06-25",
-      "status": "Tamamlandı",
-      "price": "40,00 TL",
-      "distribution": "Eşit Dağıtım",
-      "lot": "60.750.000 Lot",
-      "broker": "Türkiye Sınai Kalkınma Bankası A.Ş. Ziraat Yatırım Menkul Değerler A.Ş. Yatırım Finansman Menkul Değerler A.Ş."
     }
   ]
 }
