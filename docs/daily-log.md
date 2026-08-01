@@ -4,6 +4,53 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-01 — Teknik Analiz Grafik Okuma Rehberi: Borsada Temelleri Öğren
+
+**Yayınlanan yazı:** [Teknik Analiz Grafik Okuma Rehberi: Borsada Temelleri Öğren](https://parafomo.com/blog/teknik-analiz-grafik-okuma/)
+Kategori: Borsa | Hedef sorgu: "teknik analiz grafik okuma" | ~1.200 kelime
+
+**X (Twitter) Thread Taslağı:**
+
+🧵 Borsada grafik nasıl okunur? Teknik analizin temellerini anlat başlamak isteyenler için adım adım anlattık.
+
+1/ Mum grafiği, destek-direnç, RSI, MACD... Bu kavramlar kulağa karmaşık geliyorsa bu thread tam sana göre.
+
+2/ Her mum 4 şeyi gösterir: açılış · kapanış · en yüksek · en düşük. Yeşil gövde = fiyat yükseldi. Kırmızı = düştü. Bu kadar basit.
+
+3/ Destek = fiyatın defalarca geri döndüğü zemin. Direnç = fiyatın tavan yaptığı bölge. Bu iki seviyeyi bil, al-sat kararlarında 50% daha bilinçli olursun.
+
+4/ RSI 30'un altındaysa "aşırı satım" → dikkat et, fırsat olabilir. 70'in üstündeyse "aşırı alım" → dikkatli ol, düzeltme gelebilir.
+
+5/ Tam rehber (grafik türleri + mum formasyonları + MACD adım adım) → parafomo.com/blog/teknik-analiz-grafik-okuma/
+
+#borsa #teknikanaliz #ParaFOMO #BIST #yatırım #grafik
+
+---
+
+**Instagram Post / Carousel Metni:**
+
+📈 Borsa grafiği okumayı bilmek ister misin?
+
+Slayt 1: "Grafik mi anlıyorsun?" — Teknik analizin temeli bu soruya cevap vermek.
+Slayt 2: 3 grafik türü: Çizgi · Bar · Mum (Candlestick)
+Slayt 3: Mum grafiği nasıl okunur? Gövde + fitil = 4 kritik veri
+Slayt 4: Destek nedir? Direnç nedir? Fiyatın zeminini ve tavanını anla.
+Slayt 5: RSI + MACD + Hareketli Ortalama → 3 temel gösterge
+Slayt 6: Adım adım grafik analizi: trend → seviyeler → göstergeler → hacim
+
+Detaylı rehber link bio'da 👆
+
+#teknikanaliz #borsa #BIST #grafik #yatırım #parafomo
+
+---
+
+**Bugün senin yapman gerekenler:**
+
+1. X thread'ini ve Instagram carousel'ini yayınla (en yüksek etkileşim saatleri: 09:00-10:00 veya 20:00-21:00 TSİ).
+2. Reddit r/borsa veya ilgili bir Telegram finans grubunda "teknik analiz öğrenmek isteyenler" sorusuna değer katarak bu yazıyı paylaş.
+
+---
+
 ## 2026-08-01 — Türkiye'de En İyi Yatırım Araçları 2026: Hangisi Sana Uygun?
 
 **Yayınlanan yazı:** [Türkiye'de En İyi Yatırım Araçları 2026: Hangisi Sana Uygun?](https://parafomo.com/blog/turkiyede-en-iyi-yatirim-araclari-2026/)

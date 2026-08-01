@@ -13,7 +13,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Repo nedir, nasıl çalışır? — `Yatırım` — hedef: "repo nedir nasıl çalışır"
 - [x] Portföy yönetimi nedir, nasıl yapılır? — `Yatırım` — hedef: "portföy yönetimi nedir"
 - [x] Türkiye'de en iyi yatırım araçları 2026 — `Yatırım` — hedef: "en iyi yatırım araçları"
-- [ ] Borsa teknik analiz temelleri: grafik okuma rehberi — `Borsa` — hedef: "teknik analiz grafik okuma"
+- [x] Borsa teknik analiz temelleri: grafik okuma rehberi — `Borsa` — hedef: "teknik analiz grafik okuma"
 - [ ] Döviz hesabı nedir, dövizde nasıl yatırım yapılır? — `Yatırım` — hedef: "döviz hesabı nedir"
 - [ ] Altın fonu nedir, gram altından farkı ne? — `Yatırım` — hedef: "altın fonu nedir"
 
@@ -119,3 +119,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Yatırım fonu nedir, nasıl seçilir? — `yatirim-fonu-nedir-nasil-secilir` (backlog: evergreen yatırım)
 - [x] Acil durumda bütçeyi nasıl ayakta tutarsın? — `kriz-doneminde-butce-nasil-yonetilir` (backlog: evergreen kişisel finans)
 - [x] Emeklilikte ne kadar paraya ihtiyacın var? — `emeklilik-icin-ne-kadar-para` (backlog: evergreen emeklilik)
+- [x] Borsa teknik analiz temelleri: grafik okuma rehberi — `teknik-analiz-grafik-okuma` (backlog: evergreen borsa; "teknik analiz grafik okuma" sorgusu)
