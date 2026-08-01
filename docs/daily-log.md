@@ -4,6 +4,50 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-01 — Türkiye'de En İyi Yatırım Araçları 2026: Hangisi Sana Uygun?
+
+**Yayınlanan yazı:** [Türkiye'de En İyi Yatırım Araçları 2026: Hangisi Sana Uygun?](https://parafomo.com/blog/turkiyede-en-iyi-yatirim-araclari-2026/)
+Kategori: Yatırım | Hedef sorgu: "en iyi yatırım araçları" | ~1.350 kelime
+
+**X (Twitter) Thread Taslağı:**
+
+🧵 2026'da paranı nereye yatırırsın? Türkiye'de 8 farklı yatırım aracını karşılaştırdık.
+
+1/ Mevduat mu? Altın mı? Hisse mi? Kripto mu? Doğru cevap herkese göre farklı — risk toleransın ve zaman ufkuna bağlı.
+
+2/ Güvenli başlangıç → Vadeli mevduat + devlet tahvili. Enflasyona karşı → Altın + döviz. Uzun vade → Endeks fonu, ETF ve BES.
+
+3/ BES'i unutma: her 100 TL'ye devlet 30 TL ekliyor. Bu katkı başka hiçbir araçta yok. Uzun vadeli birikim yapacaksan mutlaka değerlendir.
+
+4/ Hangi araç sana uygun? Detaylı karşılaştırma tablosu ve risk profiline göre öneri → parafomo.com/blog/turkiyede-en-iyi-yatirim-araclari-2026/
+
+#yatırım #ParaFOMO #kişiselfinans #BIST #altın #BES
+
+---
+
+**Instagram Post / Carousel Metni:**
+
+📊 2026'da hangi yatırım aracı daha mantıklı?
+
+Slayt 1: "Paramı nereye yatırıyım?" sorusunun cevabı kişiden kişiye değişir.
+Slayt 2: 8 yatırım aracı karşılaştırma tablosu (risk · getiri · likidite)
+Slayt 3: Muhafazakâr → mevduat + tahvil + altın
+Slayt 4: Dengeli → endeks fonu + mevduat + altın + BES
+Slayt 5: Büyüme odaklı → hisse + BES + altın + kripto
+Slayt 6: Her koşulda: çeşitlendirme + acil durum fonu önce!
+
+Detaylı rehber link bio'da 👆
+
+#yatırım2026 #paranıkoru #türkiyeyatırım #BES #endeksfonu #ETF #altınyatırım #ParaFOMO
+
+---
+
+**Bugün senin yapman gerekenler:**
+1. X Thread'i yukarıdaki taslaktan yayınla — mümkünse sabah 09:00–10:00 arası.
+2. Instagram'a carousel olarak paylaş; link bio'ya ekle (parafomo.com/blog/turkiyede-en-iyi-yatirim-araclari-2026/).
+
+---
+
 ## 2026-07-31 — Portföy Yönetimi Nedir? Nasıl Yapılır? Adım Adım Rehber
 
 **Yayınlanan yazı:** [Portföy Yönetimi Nedir? Nasıl Yapılır? Adım Adım Rehber](https://parafomo.com/blog/portfoy-yonetimi-nedir/)
