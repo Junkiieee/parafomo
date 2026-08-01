@@ -1,0 +1,58 @@
+{
+  "slug": "primlerinden-kaci-gercekten-sana-kaliyor",
+  "title": "Primlerinden Kaçı Gerçekten Sana Kalıyor?",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Birikimli hayat sigortası 'yatırım' gibi satılıyor, ama her primden sigorta payı ve yönetim ücreti çıkıyor. Geriye ne kalıyor?",
+  "tags": [
+    "birikimli hayat sigortası",
+    "yatırım",
+    "sigorta",
+    "Türkiye finans",
+    "para yönetimi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "BİRİKİMLİ SİGORTA",
+      "spoken": "Her ay prim yatırıyorsun, sigorta şirketi kazanıyor.",
+      "visual": {
+        "type": "object",
+        "query": "insurance policy document pen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Birikimli sigorta aslında delikli bir kova. Ödediğin primden sigorta payı, sonra yönetim ücreti çıkar, geri kalan fona düşer.",
+      "visual": {
+        "type": "concept",
+        "query": "leaking bucket water drops"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama o fon çoğu zaman enflasyonu bile karşılamıyor. Hem kesinti hem düşük getiri aynı anda aleyhine çalışıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "decreasing bar chart red downward trend"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Aynı parayı altına koysaydın çoğu zaman çok daha iyi olurdu. Birikimli sigorta, yatırım aracı değil.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins stacked beside paper documents"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki sigorta şirketleri bunu neden bu kadar çok satıyor? Onu da göstereceğiz. Abone ol — her gün piyasayı etkileyen tek net analiz burada.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification bell phone screen"
+      }
+    }
+  ]
+}
