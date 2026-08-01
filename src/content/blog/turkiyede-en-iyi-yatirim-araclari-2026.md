@@ -17,6 +17,23 @@ faq:
     a: "BES, uzun vadeli birikim (10+ yıl) yapacaklar için vergi avantajı ve devlet katkısı sayesinde daha avantajlıdır. Kısa vadede nakde ihtiyaç duyabilecekseniz mevduat daha likit bir seçenektir."
   - q: "Kripto para Türkiye'de yasal mı ve nasıl vergilendirilir?"
     a: "Kripto para Türkiye'de yasal bir yatırım aracıdır. 2025 itibarıyla kripto kazançları gelir vergisine tabidir; belirli bir eşiğin üzerindeki kazançların beyan edilmesi gerekir. Detay için güncel mevzuatı takip edin."
+shorts:
+  - "2026'da hangi yatırım aracı seni enflasyondan korur?"
+  - "2026 Türkiye'sinde yüksek enflasyon ve döviz baskısı ortamında mevduat, altın, hisse ve kripto arasındaki doğru seçim kişiden kişiye değişiyor."
+  - "Enflasyonun altında kalan her getiri aslında bir kayıptır; paranın değerini korumak için en azından enflasyona yakın bir kazanç şart."
+  - "Tüm parayı tek araçta tutmak — ister altın ister kripto — büyük risk; altın, mevduat ve hisseyi birlikte taşımak riski dağıtır."
+  - "Hangi araç sana uygun, nasıl hesaplarsın? Hemen abone ol, tüm detaylar parafomo.com'da seni bekliyor."
+shorts_broll:
+  - "turkish lira banknotes inflation"
+  - "stock market chart screen"
+  - "gold bars investment portfolio"
+  - "savings bank account money"
+shorts_visuals:
+  - "concept|investor choosing between multiple investment options"
+  - "place|Borsa İstanbul"
+  - "concept|inflation money losing value purchasing power"
+  - "concept|diversified investment portfolio allocation chart"
+  - "concept|financial growth subscribe notification bell"
 ---
 
 "Paramı nereye yatırırsam en iyi getiriyi alırım?" sorusu herkesi yakından ilgilendirir. Ne var ki doğru cevap, faiz oranına, enflasyona, kişisel risk toleransına ve yatırım süresine göre kişiden kişiye değişir. 2026 Türkiye koşullarında mevduat, altın, hisse senedi, ETF, BES ve kripto para arasındaki farkı net biçimde ortaya koyacak ve sana uygun aracı bulmanı sağlayacak bu rehberi hazırladık.
