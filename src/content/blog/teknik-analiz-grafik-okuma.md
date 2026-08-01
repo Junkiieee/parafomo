@@ -17,6 +17,23 @@ faq:
     a: "Her mum dört veriyi gösterir: açılış fiyatı, kapanış fiyatı, dönemin en yüksek değeri ve en düşük değeri. Gövde açılış-kapanış arasını, fitiller (gölgeler) ise yüksek-düşük aralığını temsil eder. Yeşil/beyaz gövde fiyat yükselişini, kırmızı/siyah gövde düşüşü ifade eder."
   - q: "Teknik analiz ne kadar güvenilir?"
     a: "Tartışmalı bir sorudur. Teknik analiz geleceği kesin olarak tahmin etmez; olasılıklar üzerinden çalışır. Risk yönetimi ve stop-loss ile birlikte kullanıldığında anlamlı bir araç olabilir. Ancak tek başına 'kesin kâr' garantisi sunamaz."
+shorts:
+  - "Grafiğe bakmak borsada gerçekten işe yarar mı?"
+  - "Teknik analiz şirketi değil piyasanın davranışını inceleyerek fiyatın nereye gideceğine dair ipuçları üretir."
+  - "Dünyada en çok kullanılan mum grafik her mumla sana o günün açılış kapanış en yüksek ve en düşük fiyatını gösterir."
+  - "Destek ve direnç seviyeleri fiyatın defalarca geri döndüğü kritik bölgeler olduğu için teknik analizin temel taşıdır."
+  - "Peki destek seviyesi kırılırsa ne olur? Öğrenmek için kanala abone ol, her gün yeni finans bilgisi seni bekliyor — detaylar parafomo.com'da."
+shorts_broll:
+  - "stock market chart screen"
+  - "candlestick chart trading platform"
+  - "financial graph analysis monitor"
+  - "stock market technical indicators"
+shorts_visuals:
+  - "concept|stock market chart screen trading"
+  - "concept|financial market price movement graph"
+  - "concept|candlestick chart trading screen closeup"
+  - "concept|support resistance level trading chart"
+  - "place|Borsa İstanbul"
 ---
 
 Borsada "ne zaman alayım, ne zaman satalım?" sorusuna cevap arayan her yatırımcı er ya da geç grafiklerin diline çarpar. İşte bu noktada **teknik analiz grafik okuma** becerisine ihtiyaç duyulur. Teknik analiz, geçmiş fiyat hareketlerini ve hacim verilerini kullanarak olası gelecek hareketler hakkında fikir üretme yöntemidir. Bu rehberde sıfırdan, pratik örneklerle ve BIST bağlamında temel kavramları ele alıyoruz.
