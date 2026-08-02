@@ -27,6 +27,9 @@ Bu deneysel bir iştir. **Hata yapabilirsin, sorun değil.** İzin isteme — ya
 
 ---
 
+## Kanal dengesi (ZORUNLU — her gece)
+Her gece **web + YouTube + Instagram'ın HER BİRİNE en az bir somut iş** yap (sadece teşhis değil — gerçek bir değişiklik/iyileştirme/deneme). Bu minimumları bitirdikten SONRA kalan bütçeyi en yüksek kaldıraçlı işe (genelde web/otorite) yönlendir. Bir kanalda o gün anlamlı iş yoksa, en azından küçük bir iyileştirme (bir başlık/kapak, bir caption, bir iç-link) yap ve raporda gerekçelendir. Sıra: önce üç kanalın minimumu, sonra kaldıraç.
+
 ## Kanallar
 
 ### 🌐 Web (parafomo.com) — Astro 6 statik, sıfır reklam bütçesi
