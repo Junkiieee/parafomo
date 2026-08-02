@@ -4,6 +4,54 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-02 — TÜFE Sepeti Nedir? Enflasyon Nasıl Hesaplanır ve Sizi Gerçekten Yansıtıyor mu?
+
+**Yayınlanan yazı:** [TÜFE Sepeti Nedir? Enflasyon Nasıl Hesaplanır ve Sizi Gerçekten Yansıtıyor mu?](https://parafomo.com/blog/tufe-sepeti-nedir-enflasyon-nasil-hesaplanir/)
+Kategori: Ekonomi | Hedef sorgu: "enflasyon sepeti nedir" | ~1.150 kelime
+Tetikleyici: 🔴 3 Ağustos 2026 TÜİK TÜFE verisi (Temmuz enflasyonu)
+
+**X (Twitter) Thread Taslağı:**
+
+🧵 Yarın sabah 10:00'da TÜİK enflasyon verisi açıklanıyor. "TÜFE yüzde X" duyduğunda ne anlama geldiğini biliyor musun?
+
+1/ TÜFE bir sepet: gıda, kira, yakıt, sağlık... ~400 ürün ve hizmetin fiyatı her ay takip edilir. Bu fiyatlar ne kadar arttıysa o oran "enflasyon" olur.
+
+2/ En büyük kalem: GıDA (%24,5). İkinci büyük: KONUT + ENERJİ (%15,3). Ulaşım: %14,3. Yani aylık harcamanın yarısından fazlası bu 3 kalemden geliyor.
+
+3/ "Resmi enflasyon beni yansıtmıyor" diyorsan haklısın. Sepet ülke ortalaması. Kiracıysan, büyük şehirdeysen, dışarıda çok yiyorsan — kişisel enflasyonun çok daha yüksek.
+
+4/ Peki yüksek enflasyon ne anlama gelir? → TL baskı altında → altın/dolar yükseliş eğiliminde → TCMB'nin faiz indirme alanı daralıyor.
+
+5/ Detayların tamamı + kişisel enflasyon nasıl hesaplanır → parafomo.com/blog/tufe-sepeti-nedir-enflasyon-nasil-hesaplanir/ 
+
+---
+
+**Instagram Post / Carousel Metni:**
+
+📊 Yarın sabah Türkiye'nin enflasyon verisi açıklanıyor!
+
+Haberlerde "TÜFE şu kadar oldu" denince bu rakam aslında nasıl hesaplanıyor?
+
+🛒 Gıda: %24,5
+🏠 Konut + enerji: %15,3
+🚗 Ulaşım: %14,3
+
+Bu üç kalem ülke ortalamasının yarısından fazlası — ama sen ortalamayla örtüşmeyebilirsin.
+
+Kira ve gıdaya çok harcıyorsan kişisel enflasyonun resmi rakamın üstünde!
+
+Link biyografide 👆
+
+#enflasyon #TÜFE #TÜİK #ekonomi #kişiselfinans #yatırım #parafomo #finans #türkiye
+
+---
+
+**Bugün yapman gerekenler:**
+1. Thread'i X'te paylaş (sabah 08:00-09:00 arası iyi slot; veri açıklanmadan önce yayında olsun).
+2. Instagram carousel veya post paylaş — yarın TÜFE açıklandığında story ile güncelle ("veri açıklandı, tahminim X çıktı" vs.).
+
+---
+
 ## 2026-08-01 — Teknik Analiz Grafik Okuma Rehberi: Borsada Temelleri Öğren
 
 **Yayınlanan yazı:** [Teknik Analiz Grafik Okuma Rehberi: Borsada Temelleri Öğren](https://parafomo.com/blog/teknik-analiz-grafik-okuma/)
