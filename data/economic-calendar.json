@@ -1,44 +1,8 @@
 {
-  "updated": "2026-08-01",
+  "updated": "2026-08-02",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-07-29",
-      "time": "21:00",
-      "region": "USD",
-      "impact": "High",
-      "title": "Fed Interest Rate Decision",
-      "source": "investing",
-      "hook": "Faiz kararı — küresel faiz beklentisi TL ve borsayı etkiler."
-    },
-    {
-      "date": "2026-07-29",
-      "time": "6:00pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Federal Funds Rate",
-      "source": "forexfactory",
-      "hook": "Fed faiz kararı — 'Fed faizi TL ve borsayı nasıl etkiler' explainer'ı."
-    },
-    {
-      "date": "2026-07-29",
-      "time": "6:00pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "FOMC Statement",
-      "source": "forexfactory",
-      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
-    },
-    {
-      "date": "2026-07-29",
-      "time": "6:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "FOMC Press Conference",
-      "source": "forexfactory",
-      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
-    },
     {
       "date": "2026-07-30",
       "region": "TR",
