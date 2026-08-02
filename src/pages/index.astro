@@ -73,6 +73,29 @@ const postCount = posts.length;
     </div>
   </section>
 
+  <!-- TOOLS -->
+  <section class="container section">
+    <div class="section-head"><h2>Canlı Araçlar</h2></div>
+    <div class="tools-grid">
+      <a href="/halka-arz" class="tool-card card">
+        <span class="tool-icon">📋</span>
+        <div>
+          <h3>Halka Arz Takvimi</h3>
+          <p class="soft">BIST'e yeni çıkan şirketler, talep toplama tarihleri ve detaylar.</p>
+        </div>
+        <span class="tool-go">Takibe al →</span>
+      </a>
+      <a href="/ekonomik-takvim" class="tool-card card">
+        <span class="tool-icon">📅</span>
+        <div>
+          <h3>Ekonomik Takvim</h3>
+          <p class="soft">FED, TCMB, TÜİK ve dünya merkez bankası kararlarını kaçırma.</p>
+        </div>
+        <span class="tool-go">Takibe al →</span>
+      </a>
+    </div>
+  </section>
+
   <!-- LATEST -->
   {rest.length > 0 && (
     <section class="container section">
@@ -135,6 +158,14 @@ const postCount = posts.length;
   .cat-card h3 { font-size: var(--step-1); margin: 0; color: var(--text); }
   .cat-card p { font-size: var(--step--1); margin: 0; flex: 1; }
   .cat-go { font-size: var(--step--1); font-weight: 600; color: var(--brand); margin-top: 0.6rem; }
+
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.1rem; }
+  .tool-card { padding: 1.2rem 1.4rem 1.4rem; display: flex; align-items: flex-start; gap: 0.9rem; }
+  .tool-icon { font-size: 1.6rem; line-height: 1; flex-shrink: 0; }
+  .tool-card h3 { font-size: var(--step-0); margin: 0 0 0.25rem; color: var(--text); }
+  .tool-card p { font-size: var(--step--2); margin: 0; flex: 1; line-height: 1.5; }
+  .tool-go { font-size: var(--step--1); font-weight: 600; color: var(--brand); margin-top: 0.6rem; display: block; }
+  .tool-card > div { display: flex; flex-direction: column; gap: 0.1rem; flex: 1; }
 
   .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.4rem; }
 

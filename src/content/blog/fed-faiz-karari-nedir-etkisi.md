@@ -127,7 +127,7 @@ Fed kararı öncesi ve sonrası için pratik bir kontrol listesi:
 
 ---
 
-**Daha fazlası için:** Fed'in hangi verilere baktığını merak ediyorsan [PCE nedir ve Fed neden önemser?](/blog/pce-nedir-fed-enflasyon-gostergesi) yazısına göz at. FOMC toplantı tutanaklarının piyasayı neden saatler içinde hareket ettirdiğini öğrenmek için [FOMC Toplantı Tutanakları Nedir?](/blog/fomc-toplanti-tutanaklari-nedir) yazısını oku. ECB'nin euro politikasının TL'ye nasıl sıçradığını merak ediyorsan [ECB Faiz Kararı Nedir?](/blog/ecb-faiz-karari-nedir-etkisi) karşılaştırmalı yazımıza bakabilirsin.
+**Daha fazlası için:** Fed'in hangi verilere baktığını merak ediyorsan [PCE nedir ve Fed neden önemser?](/blog/pce-nedir-fed-enflasyon-gostergesi) yazısına göz at. FOMC toplantı tutanaklarının piyasayı neden saatler içinde hareket ettirdiğini öğrenmek için [FOMC Toplantı Tutanakları Nedir?](/blog/fomc-toplanti-tutanaklari-nedir) yazısını oku. ECB'nin euro politikasının TL'ye nasıl sıçradığını merak ediyorsan [ECB Faiz Kararı Nedir?](/blog/ecb-faiz-karari-nedir-etkisi) karşılaştırmalı yazımıza bakabilirsin. Yaklaşan FED ve TCMB kararlarının tarihlerini takip etmek için [Ekonomik Takvim](/ekonomik-takvim) sayfamızı ziyaret et.
 
 ---
 
