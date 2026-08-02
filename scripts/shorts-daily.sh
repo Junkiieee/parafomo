@@ -5,8 +5,15 @@
 #       → video üret (B-roll+senkron+o günkü ses) → YouTube'a PUBLIC yükle
 #       → Telegram'a önizleme → durumu güncelle → senaryo değişikliğini commit+push.
 #
-# Cron örneği (her gün 09:30 UTC, içerik motorundan ~1.5 saat sonra):
-#   30 9 * * * /root/parafomo/scripts/shorts-daily.sh >> /root/parafomo/logs/shorts.log 2>&1
+# GECE/GÜNDÜZ AYRIMI (token'ı geceye topla):
+#   --prepare : SADECE senaryoyu üret (Claude) + commit, çık. state'i İLERLETMEZ →
+#               publish aynı slug'ı bulur. Gece (içerik motorundan sonra) çalışır.
+#   --publish : Claude ÇAĞIRMAZ (senaryo zaten var); render+upload+state. Sıfır token.
+#   (mod yoksa: eski hepsi-bir-arada davranış.)
+#
+# Cron örneği:
+#   30 1 * * * /root/parafomo/scripts/shorts-daily.sh --prepare >> .../shorts.log 2>&1
+#   30 9 * * * /root/parafomo/scripts/shorts-daily.sh --publish >> .../shorts.log 2>&1
 
 set -uo pipefail
 export PATH="/root/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -16,8 +23,15 @@ REPO="/root/parafomo"
 VPY="/root/.venvs/parafomo/bin/python"
 cd "$REPO" || { echo "HATA: repo yok"; exit 1; }
 
+# Mod: --prepare | --publish | (yok=full)
+MODE="full"
+case "${1:-}" in
+  --prepare) MODE="prepare" ;;
+  --publish) MODE="publish" ;;
+esac
+
 echo "=================================================="
-echo "[$(date -u '+%F %T UTC')] Shorts otomasyonu başladı"
+echo "[$(date -u '+%F %T UTC')] Shorts otomasyonu ($MODE) başladı"
 
 # .env (PEXELS, TELEGRAM)
 set -a; . "$REPO/.env"; set +a
@@ -25,16 +39,30 @@ set -a; . "$REPO/.env"; set +a
 # 1) Senkronla
 { git fetch origin main && git rebase --autostash origin/main; } || echo "UYARI: pull başarısız (devam)"
 
-# Tek bir yazıyı baştan sona işler: senaryo → video → YouTube → Telegram → durum + push.
+# Tek bir yazıyı işler. MODE'a göre: prepare=sadece senaryo; publish=render+yayın; full=hepsi.
 # Dönüş: 0 başarı, 1 atla (boş/zaten işlenmiş), 2 hata.
 process_one() {
   local slug="$1" voice="$2" engine="${3:-google}"
   [ -z "$slug" ] && return 1
   echo "--------------------------------------------------"
-  echo "[*] Yazı: $slug | Motor: $engine | Ses: $voice"
+  echo "[*] Yazı: $slug | Motor: $engine | Ses: $voice | Mod: $MODE"
 
-  # Senaryo (yoksa Claude üretir; başarısızsa build auto-FAQ'e düşer)
-  "$VPY" "$REPO/scripts/shorts-script.py" "$slug" || echo "UYARI: senaryo üretilemedi (auto-FAQ kullanılacak)"
+  # PREPARE: sadece senaryoyu üret (Claude) + commit; render/upload YOK, state İLERLEMEZ.
+  if [ "$MODE" = "prepare" ]; then
+    "$VPY" "$REPO/scripts/shorts-script.py" "$slug" || { echo "UYARI: senaryo üretilemedi ($slug)"; return 2; }
+    if [ -n "$(git status --porcelain src/content/blog/)" ]; then
+      git add src/content/blog/
+      git commit -m "shorts: $slug senaryosu hazırlandı (gece, otomatik)" || true
+      git push origin main 2>&1 | sed 's/^/    [push] /' || echo "UYARI: push başarısız"
+    fi
+    echo "[prepare] $slug senaryosu hazır — gündüz publish edilecek."
+    return 0
+  fi
+
+  # PUBLISH: senaryo zaten var → Claude ATLA. FULL: yoksa üret (yedek).
+  if [ "$MODE" != "publish" ]; then
+    "$VPY" "$REPO/scripts/shorts-script.py" "$slug" || echo "UYARI: senaryo üretilemedi (auto-FAQ kullanılacak)"
+  fi
 
   # Video üret — motora göre doğru ses bayrağı (google: --voice, edge: --edge-voice)
   echo "[*] Video üretiliyor..."
@@ -98,4 +126,5 @@ done
 if [ "$PROCESSED" -eq 0 ]; then
   echo "[i] Kuyruk boş — işlenecek yeni yazı yok."
 fi
-echo "[$(date -u '+%F %T UTC')] Tamamlandı — bu çalıştırmada $PROCESSED Shorts yayınlandı"
+VERB="yayınlandı"; [ "$MODE" = "prepare" ] && VERB="hazırlandı"
+echo "[$(date -u '+%F %T UTC')] Tamamlandı — bu çalıştırmada $PROCESSED Shorts $VERB"
