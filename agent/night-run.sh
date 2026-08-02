@@ -63,7 +63,7 @@ claude -p "$PROMPT" \
 
 echo "[night] beyin bitti. Oturum logu: $LOGDIR/night-$STAMP.log"
 
-# 5) Rapor + görev listesini Telegram'a gönder
-bash agent/notify.sh || echo "[uyarı] telegram bildirimi başarısız"
+# 5) Rapor + görev listesini TEK e-posta olarak gönder (Telegram YOK)
+bash agent/notify.sh || echo "[uyarı] e-posta bildirimi başarısız"
 
 echo "[night $STAMP] tamamlandı."
