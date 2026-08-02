@@ -17,6 +17,23 @@ faq:
     a: "Kur farkından doğan kazançlar belirli koşullarda vergiye tabi olabilir. Vadeli döviz faiz gelirlerinde stopaj uygulanır. Güncel vergi oranları için mali müşavir veya Gelir İdaresi Başkanlığı'nın resmi sitesine başvurun."
   - q: "Döviz yatırımı için en iyi yol hangisi?"
     a: "Hedefiniize bağlıdır. Kısa vadeli koruma için vadesiz döviz hesabı pratiktir. Faiz getirisi istiyorsanız vadeli döviz veya dövizli eurobond düşünebilirsiniz. Düşük işlem maliyetiyle erişmek için döviz ETF'leri de seçenek olabilir."
+shorts:
+  - "Birikimini enflasyona karşı korumanın yolu döviz mi?"
+  - "Döviz hesabı, TL yerine dolar veya euro cinsinden açılan bir banka hesabıdır; kur yükselince TL karşılığın da otomatik artar."
+  - "Vadeli döviz hesabında paranı belirli süre bankada tutarken hem kur artışından hem de döviz faizinden aynı anda yararlanırsın."
+  - "Dövizde yatırım sadece banka hesabıyla sınırlı değil; ETF ve Eurobond gibi araçlar da portföyünü çeşitlendirmek için güçlü alternatifler sunar."
+  - "Peki sana hangi döviz aracı daha uygun? Cevap için parafomo.com'a göz at ve kanala abone ol, her gün bir adım daha bilinçli yatırım yap."
+shorts_broll:
+  - "turkish lira dollar exchange rate board"
+  - "foreign currency bank savings account"
+  - "inflation money losing value"
+  - "investment portfolio diversification chart"
+shorts_visuals:
+  - "concept|turkish lira dollar exchange rate board"
+  - "concept|bank mobile app currency account opening"
+  - "concept|fixed deposit savings bank counter"
+  - "concept|investment portfolio stocks bonds diversification"
+  - "concept|financial growth savings coins piggy bank"
 ---
 
 Türkiye'de yaşayan her yatırımcının aklında bir noktada şu soru belirir: "Birikimimin bir kısmını dövize yatırsam ne olur?" Yüksek enflasyon ve TL'nin tarihsel olarak dolar karşısında değer kaybetme eğilimi, **döviz hesabı**nı Türk yatırımcılar için cazip bir araç hâline getiriyor. Bu rehberde döviz hesabının ne olduğunu, nasıl açıldığını ve dövizde yatırım yapmanın farklı yollarını adım adım ele alacağız.
