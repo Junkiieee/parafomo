@@ -4,6 +4,64 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-02 — Döviz Hesabı Nedir? Dövizde Nasıl Yatırım Yapılır?
+
+**Yayınlanan yazı:** [Döviz Hesabı Nedir? Dövizde Nasıl Yatırım Yapılır?](https://parafomo.com/blog/doviz-hesabi-nedir/)
+Kategori: Yatırım | Hedef sorgu: "döviz hesabı nedir" | ~1.100 kelime
+
+**X (Twitter) Thread Taslağı:**
+
+🧵 "Dolar almalı mıyım?" diye soruyorsan önce döviz hesabının ne olduğunu öğren.
+
+1/ Döviz hesabı = paranı TL yerine dolar, euro gibi yabancı para biriminde tuttuğun mevduat hesabı. Banka şubesi ya da mobil uygulama — dakikalar içinde açılıyor.
+
+2/ İki türü var:
+→ VADESİZ: istediğin zaman çekebilirsin, ama faiz yok ya da çok düşük.
+→ VADELİ: paranı kilitledin, karşılığında döviz faizi kazanırsın.
+
+3/ Dövizde yatırım yapmanın tek yolu döviz hesabı değil:
+💡 Döviz ETF'i → borsada alınır, düşük maliyet
+💡 Eurobond → faiz + kur getirisi
+💡 Vadeli döviz hesabı → mevduat güvencesiyle faiz
+
+4/ Ama dikkat: kur iki yönlü hareket eder. Dolar düştüğünde TL karşılığın da düşer. Geçmiş kur artışı gelecek garantisi değildir.
+
+5/ Dövizi portföyünün tamamı değil, çeşitlendirme aracı olarak düşün.
+Detaylı rehber → parafomo.com/blog/doviz-hesabi-nedir/
+
+---
+
+**Instagram Post / Carousel Metni:**
+
+💵 Döviz hesabı nedir? 5 soruda anlattık!
+
+Soru 1: Döviz hesabı ne işe yarar?
+→ Birikimini TL yerine dolar veya euro cinsinden tutarsın. Kur arttığında TL karşılığın yükselir.
+
+Soru 2: Vadesiz mi vadeli mi?
+→ Vadesiz: esnek ama faiz yok. Vadeli: kilitli ama döviz faizi kazanırsın.
+
+Soru 3: Hesap açmak zor mu?
+→ Hayır. Mobil bankacılık uygulamasından birkaç dakikada açabilirsin.
+
+Soru 4: Güvenli mi?
+→ Bankalardaki döviz mevduatı TMSF güvencesi kapsamında.
+
+Soru 5: Sadece döviz hesabı mı var?
+→ Hayır — döviz ETF'i, eurobond ve dövizli tahvil de seçenek.
+
+Tam rehber için link biyografide 👆
+
+#döviz #dövizHesabı #dolar #euro #yatırım #kişiselFinans #finans #parafomo #tasarruf
+
+---
+
+**Bugün yapman gerekenler:**
+1. Thread'i X'te paylaş (öğleden önce 10:00–12:00 arası iyi slot — iş günü dolar haberleri aktif).
+2. Instagram post paylaş; döviz kuruna dair güncel bir başlık varsa story'de bağlantılı paylaş.
+
+---
+
 ## 2026-08-02 — TÜFE Sepeti Nedir? Enflasyon Nasıl Hesaplanır ve Sizi Gerçekten Yansıtıyor mu?
 
 **Yayınlanan yazı:** [TÜFE Sepeti Nedir? Enflasyon Nasıl Hesaplanır ve Sizi Gerçekten Yansıtıyor mu?](https://parafomo.com/blog/tufe-sepeti-nedir-enflasyon-nasil-hesaplanir/)
