@@ -43,7 +43,10 @@ msg["From"] = user
 msg["To"] = to
 ctx = ssl.create_default_context()
 try:
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=ctx) as s:
+    # Port 465 (SSL) bulut sunucularda genelde engelli → 587 (STARTTLS).
+    with smtplib.SMTP("smtp.gmail.com", 587, timeout=30) as s:
+        s.ehlo()
+        s.starttls(context=ctx)
         s.login(user, pw)
         s.sendmail(user, [t.strip() for t in to.split(",")], msg.as_string())
     print("[mail] gönderildi ->", to)
