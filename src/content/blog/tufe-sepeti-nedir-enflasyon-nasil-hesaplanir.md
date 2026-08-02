@@ -17,6 +17,23 @@ faq:
     a: "Beklenenden yüksek TÜFE, TL'nin reel değerinin eridiğine işaret ettiği için yatırımcılar genellikle dolar ve altına yönelir. Aynı zamanda TCMB'nin faiz indirme kapsamı daralır, bu da mevduat faizlerini göreceli olarak canlı tutar."
   - q: "TÜFE ile ÜFE arasındaki fark nedir?"
     a: "TÜFE (Tüketici Fiyat Endeksi) tüketicilerin nihai alımlarını ölçer; ÜFE (Üretici Fiyat Endeksi) ise fabrika çıkış fiyatlarını takip eder. ÜFE, TÜFE'nin öncü göstergesi olarak değerlendirilir: üretici maliyetleri arttığında bu maliyet zamanla tüketiciye yansır."
+shorts:
+  - "Resmi enflasyon rakamı seni temsil etmiyor."
+  - "TÜFE, Türkiye'deki milyonlarca hanenin harcama ortalamasını temsil eder; sen bu ortalamayı oluşturan hayali kişi değilsin."
+  - "Sepetin en büyük kalemi gıda ve konut; kira harcaman yüksekse kişisel enflasyonun resmi rakamı kolayca ezer."
+  - "Kişisel enflasyonun resmi TÜFE'den farklı çıkması hesap hatası değil; her ikisi de aynı anda doğru olabilir."
+  - "Peki kendi enflasyonunu nasıl hesaplarsın? Bunu öğrenmek istiyorsan kanala abone ol, detayların tamamı parafomo.com'da."
+shorts_broll:
+  - "inflation price increase statistics chart"
+  - "supermarket food shopping cart prices"
+  - "turkish lira banknotes wallet"
+  - "personal budget calculation spreadsheet"
+shorts_visuals:
+  - "concept|official inflation statistics misleading numbers"
+  - "place|Türkiye İstatistik Kurumu"
+  - "scene|supermarket shopping cart food prices"
+  - "concept|personal budget vs official average comparison"
+  - "concept|youtube subscribe notification bell"
 ---
 
 Yarın sabah saat 10:00'da TÜİK aylık enflasyon verisini açıklıyor. Ekonomi haberlerinde "TÜFE yüzde X oldu" cümlesini duyduğunuzda ne anlama geldiğini gerçekten biliyor musunuz? Peki neden bazen resmi enflasyon rakamı size gerçekçi gelmiyor?
