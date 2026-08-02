@@ -30,7 +30,7 @@ fi
 # Satır biçimi:  **Yayınlanan yazı:** [Başlık](/blog/slug)
 LINE="$(grep -m1 'Yayınlanan yazı' "$LOG_FILE" 2>/dev/null)"
 TITLE="$(printf '%s' "$LINE" | sed -n 's/.*\[\(.*\)\](.*/\1/p')"
-SLUG="$(printf '%s' "$LINE" | sed -n 's#.*(/blog/\([^)]*\)).*#\1#p')"
+SLUG="$(printf '%s' "$LINE" | sed -n 's#.*/blog/\([^)/]*\).*#\1#p')"
 if [ -z "$SLUG" ] || [ -z "$TITLE" ]; then
   echo "[tg] HATA: daily-log.md'den yazı ayrıştırılamadı"; exit 1
 fi
