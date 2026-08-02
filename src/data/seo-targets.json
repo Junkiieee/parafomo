@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-08-01T08:45:40Z",
+  "generated_utc": "2026-08-02T08:45:36Z",
   "boost": [
     "fed-faiz-karari-nedir-etkisi",
     "abd-cpi-enflasyon-verisi-nedir",
@@ -7,27 +7,28 @@
     "endeks-fonu-nedir",
     "ism-pmi-nedir-abd-uretim-verisi",
     "nfp-nedir-abd-tarim-disi-istihdam",
+    "pce-nedir-fed-enflasyon-gostergesi",
     "finansal-ozgurluk-nedir-fire",
     "abd-perakende-satislari-nedir",
     "borc-kapatma-yontemi-kartopu-cig",
-    "acil-durum-fonu-nedir",
     "tufe-enflasyon-verisi-nasil-okunur",
     "risk-getiri-iliskisi",
-    "pce-nedir-fed-enflasyon-gostergesi",
     "para-psikolojisi-aliskanliklari",
+    "hisse-senedi-nasil-secilir",
     "ethereum-nedir",
     "dca-nedir-maliyet-ortalamasi",
+    "acil-durum-fonu-nedir",
     "fk-orani-nedir",
     "temettu-takvimi-nasil-okunur",
     "faiz-nedir-ekonomiyi-nasil-etkiler",
     "altin-cesitleri-farki",
     "temel-analiz-teknik-analiz-farki",
-    "bist-100-nedir-nasil-yatirim-yapilir",
-    "kredi-karti-borcundan-kurtulma",
-    "eurobond-nedir",
     "etf-nedir-borsa-yatirim-fonu",
-    "ism-hizmetler-pmi-nedir",
-    "doviz-kuru-nasil-belirlenir"
+    "bist-100-nedir-nasil-yatirim-yapilir",
+    "eurobond-nedir",
+    "kredi-karti-borcundan-kurtulma",
+    "doviz-kuru-nasil-belirlenir",
+    "ism-hizmetler-pmi-nedir"
   ],
   "near_miss": [
     "fed-faiz-karari-nedir-etkisi",
@@ -36,16 +37,17 @@
     "endeks-fonu-nedir",
     "ism-pmi-nedir-abd-uretim-verisi",
     "nfp-nedir-abd-tarim-disi-istihdam",
+    "pce-nedir-fed-enflasyon-gostergesi",
     "finansal-ozgurluk-nedir-fire",
     "abd-perakende-satislari-nedir",
     "borc-kapatma-yontemi-kartopu-cig",
-    "acil-durum-fonu-nedir",
     "tufe-enflasyon-verisi-nasil-okunur",
     "risk-getiri-iliskisi",
-    "pce-nedir-fed-enflasyon-gostergesi",
     "para-psikolojisi-aliskanliklari",
+    "hisse-senedi-nasil-secilir",
     "ethereum-nedir",
-    "dca-nedir-maliyet-ortalamasi"
+    "dca-nedir-maliyet-ortalamasi",
+    "acil-durum-fonu-nedir"
   ],
   "buried": [
     "fk-orani-nedir",
@@ -53,11 +55,11 @@
     "faiz-nedir-ekonomiyi-nasil-etkiler",
     "altin-cesitleri-farki",
     "temel-analiz-teknik-analiz-farki",
-    "bist-100-nedir-nasil-yatirim-yapilir",
-    "kredi-karti-borcundan-kurtulma",
-    "eurobond-nedir",
     "etf-nedir-borsa-yatirim-fonu",
-    "ism-hizmetler-pmi-nedir",
-    "doviz-kuru-nasil-belirlenir"
+    "bist-100-nedir-nasil-yatirim-yapilir",
+    "eurobond-nedir",
+    "kredi-karti-borcundan-kurtulma",
+    "doviz-kuru-nasil-belirlenir",
+    "ism-hizmetler-pmi-nedir"
   ]
 }
