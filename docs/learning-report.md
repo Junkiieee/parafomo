@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-08-02T08:45:36Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-08-03T08:45:47Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -11,45 +11,45 @@
 
 ## Kararlar
 
-### Shorts sesi — **explore** (yeterli veri yok, rotasyon sürüyor)
+### Shorts sesi — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
+- `tr-TR-Chirp3-HD-Zephyr` — skor 180.957, örnek 3
 - `tr-TR-Chirp3-HD-Gacrux` — skor 140.39, örnek 3
 - `tr-TR-Chirp3-HD-Alnilam` — skor 105.955, örnek 2
-- `tr-TR-Chirp3-HD-Erinome` — skor 96.207, örnek 4
-- `tr-TR-Chirp3-HD-Sadachbia` — skor 54.79, örnek 3
-- `tr-TR-Chirp3-HD-Umbriel` — skor 54.248, örnek 4
-- `tr-TR-Chirp3-HD-Sulafat` — skor 53.159, örnek 8
+- `tr-TR-Chirp3-HD-Erinome` — skor 98.957, örnek 4
+- `tr-TR-Chirp3-HD-Sadachbia` — skor 54.843, örnek 3
+- `tr-TR-Chirp3-HD-Sulafat` — skor 52.517, örnek 8
 - `tr-TR-Chirp3-HD-Enceladus` — skor 49.57, örnek 2
 - `tr-TR-Chirp3-HD-Vindemiatrix` — skor 48.955, örnek 4
 
 ### Shorts motoru (google/edge) — **exploit** → seçim: `google`
 
-- `google` — skor 49.958, örnek 75
+- `google` — skor 55.271, örnek 79
 - `edge` — skor 37.926, örnek 15
 
 ### Viral format — **exploit** → seçim: `backtest_return`
 
-- `backtest_return` — skor 131.343, örnek 4
-- `news_reaction` — skor 47.704, örnek 14
+- `backtest_return` — skor 202.074, örnek 5
 - `single_concept` — skor 44.156, örnek 5
-- `myth` — skor 40.816, örnek 9
+- `news_reaction` — skor 43.887, örnek 15
+- `myth` — skor 40.833, örnek 9
 - `comparison` — skor 35.765, örnek 4
-- `shock_number` — skor 34.027, örnek 6
+- `shock_number` — skor 34.225, örnek 6
 
 ### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `5` — skor 90.811, örnek 7
-- `2` — skor 55.722, örnek 4
-- `manual` — skor 47.33, örnek 10
+- `4` — skor 123.626, örnek 5
+- `5` — skor 91.004, örnek 7
+- `manual` — skor 48.49, örnek 11
 - `0` — skor 40.605, örnek 6
 - `3` — skor 40.364, örnek 5
+- `2` — skor 38.312, örnek 4
 - `1` — skor 36.352, örnek 6
-- `4` — skor 33.282, örnek 4
 
 ## Konu sinyalleri
 
 **En iyi blog sayfaları:**
-- fomc-toplanti-tutanaklari-nedir — skor 9.12
+- fomc-toplanti-tutanaklari-nedir — skor 8.12
 - endeks-fonu-nedir — skor 7.0
 - portfoy-cesitlendirmesi-nasil-yapilir — skor 2.02
 - fk-orani-nedir — skor 2.0
@@ -57,7 +57,7 @@
 - mevduat-faizi-nedir-vadeli-mevduat — skor 2.0
 
 **🎯 Fırsat sorguları** (içerik/başlık iyileştir):
-- `fed kararı` — gös 7, sıra 19.3
+- `fed kararı` — gös 8, sıra 18.9
 
 ## Notlar
 
