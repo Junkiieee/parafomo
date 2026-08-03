@@ -175,6 +175,42 @@
       "hook": "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı."
     },
     {
+      "date": "2026-08-03",
+      "time": "2:00pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "ISM Manufacturing PMI",
+      "source": "forexfactory",
+      "hook": "ISM/PMI — ABD ekonomik aktivitesi, risk iştahı."
+    },
+    {
+      "date": "2026-08-07",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Average Hourly Earnings m/m",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-08-07",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Non-Farm Employment Change",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-08-07",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Unemployment Rate",
+      "source": "forexfactory",
+      "hook": "İşsizlik verisi — büyüme ve faiz beklentisi."
+    },
+    {
       "date": "2026-09-03",
       "time": "10:00",
       "region": "TR",

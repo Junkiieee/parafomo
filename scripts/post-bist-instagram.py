@@ -44,11 +44,31 @@ def get_comment(ptype):
     return f"Borsa İstanbul'da günün {LABEL.get(ptype, '')} görünümü aşağıda."
 
 
+ENGAGEMENT_QUESTIONS = {
+    "acilis": [
+        "Bugün ne bekliyorsunuz: yükseliş mi, düşüş mü? 👇",
+        "BIST bugün sizi şaşırtır mı? 💬",
+        "Bu açılış rakamlarına ne diyorsunuz? Yorum yapın 👇",
+        "Bugün hisse alır mıydınız, yoksa bekler miydiniz? 💬",
+    ],
+    "kapanis": [
+        "Borsanın bugünkü kapanışı sizi şaşırttı mı? 👇",
+        "Bu sefer de doğru tahmin ettiniz mi? 💬",
+        "Bugün portföyünüz nasıldı? Yorum yapın 👇",
+        "Yarına iyimser mi bakıyorsunuz? 💬",
+    ],
+}
+
+
 def build_caption(ptype, date_label):
+    from datetime import date
     comment = get_comment(ptype)
     head = "🌅 BIST Açılış" if ptype == "acilis" else "🌆 BIST Kapanış"
+    questions = ENGAGEMENT_QUESTIONS.get(ptype, ENGAGEMENT_QUESTIONS["kapanis"])
+    question = questions[date.today().toordinal() % len(questions)]
     body = (f"{head} · {date_label}\n"
             "BIST 100 ve günün piyasa özeti 👆\n"
+            f"{question}\n"
             "Detaylı analizler → parafomo.com")
     return "\n\n".join([comment, body, HASHTAGS])
 

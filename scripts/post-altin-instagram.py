@@ -69,10 +69,24 @@ def get_comment():
     return "Güncel altın fiyatları aşağıda."
 
 
+ENGAGEMENT_QUESTIONS = [
+    "Siz altını birikimlerinizde tutmayı düşünür müsünüz? 💬",
+    "Gram altın mı, Cumhuriyet altını mı tercih edersiniz? 👇",
+    "Bu fiyatlar size göre almak için uygun mu? Yorumda yazın. 💬",
+    "Portföyünüzde altın var mı? Yorum yapın 👇",
+    "Dolar mı, altın mı? Siz ne tutuyorsunuz? 💬",
+    "Altının bu seyri sizi şaşırttı mı? 👇",
+    "Enflasyona karşı altın yeterli mi sizce? Düşüncenizi yazın. 💬",
+]
+
+
 def build_caption(date_label):
     comment = get_comment()
+    day_of_year = datetime.now().timetuple().tm_yday
+    question = ENGAGEMENT_QUESTIONS[day_of_year % len(ENGAGEMENT_QUESTIONS)]
     body = (f"📊 Güncel altın fiyatları · {date_label}\n"
             "Gram, çeyrek, yarım, tam, cumhuriyet 👆\n"
+            f"{question}\n"
             "Detaylı analizler → parafomo.com")
     return "\n\n".join([comment, body, HASHTAGS])
 

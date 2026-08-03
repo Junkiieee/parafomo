@@ -38,6 +38,7 @@ if [ -n "$(git ls-files -u 2>/dev/null)" ]; then
 elif [ -n "$(git status --porcelain docs/learning-report.md src/data/seo-targets.json 2>/dev/null)" ]; then
   git add docs/learning-report.md src/data/seo-targets.json
   git commit -m "öğrenme: günlük rapor + SEO iç-link hedefleri ($(date -u '+%F'))" || true
+  { git fetch origin main && git rebase --autostash origin/main; } >/dev/null 2>&1 || echo "UYARI: pull başarısız (devam)"
   git push origin main 2>&1 | sed 's/^/    [push] /' || echo "UYARI: push başarısız"
 fi
 

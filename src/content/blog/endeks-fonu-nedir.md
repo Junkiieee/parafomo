@@ -1,7 +1,7 @@
 ---
-title: "Endeks Fonu Nedir, Nasıl Alınır? Türkiye Rehberi"
-description: "Endeks fonu nedir, nasıl çalışır ve Türkiye'den nasıl alınır? ETF farkı, maliyet karşılaştırması ve adım adım satın alma rehberi."
-pubDate: 2026-06-21
+title: "Endeks Fonu Nedir? BIST 100 ETF ile Pasif Yatırım Rehberi 2026"
+description: "Endeks fonu nedir, Türkiye'den nasıl alınır? BIST 100 ETF vs aktif fon maliyet karşılaştırması, adım adım rehber ve hangi yatırımcıya uygun."
+pubDate: 2026-08-03
 category: "Yatırım"
 tags: ["endeks fonu", "ETF", "pasif yatırım", "BIST 100", "yatırım fonu"]
 readingTime: 8
