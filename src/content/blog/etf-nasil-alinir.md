@@ -17,6 +17,23 @@ faq:
     a: "BIST'te BIST 30, BIST 100, Altın, Gümüş, Teknoloji ETF'leri gibi çok sayıda seçenek var. Kısa kodlarıyla (XU030, XU100 vb.) aracı kurum platformlarından aranabilir."
   - q: "ETF almak hisse senedi almaktan ne kadar farklı?"
     a: "İşlem mekanizması aynıdır: BIST'te emir girersin. Fark şu: tek bir ETF alımıyla onlarca veya yüzlerce hisseye aynı anda yatırım yapmış olursun."
+shorts:
+  - "ETF almak hisse almaktan farklı mı gerçekten?"
+  - "ETF için ihtiyacın olan tek şey bir yatırım hesabı, TC kimliğin ve küçük bir başlangıç sermayesi."
+  - "Banka hesabı açmak kolaydır ama bağımsız aracı kurumların komisyonu yarı yarıya daha düşük olabiliyor."
+  - "Platforma girip ETF kodunu yaz, kaç lot istediğini seç, onayla ve hepsi bu kadar."
+  - "Hangi ETF'in sana uygun olduğunu merak ediyorsan o içerik de geliyor — parafomo.com'a gir, kanala abone ol ve hiçbir şeyi kaçırma."
+shorts_broll:
+  - "mobile stock trading app screen"
+  - "investment account opening laptop"
+  - "ETF portfolio chart growth"
+  - "brokerage commission fee comparison"
+shorts_visuals:
+  - "concept|stock market trading app phone screen"
+  - "object|turkish lira banknotes wallet identity card"
+  - "concept|bank branch counter versus online broker laptop"
+  - "concept|mobile trading app buy order confirmation button"
+  - "concept|investment portfolio growth screen chart"
 ---
 
 "ETF nasıl alınır?" — Bu soruyu soruyorsan, muhtemelen ETF'in akıllıca bir yatırım aracı olduğunu öğrendin ama satın alma adımlarında takıldın. İyi haber: BIST'te ETF almak, hisse senedi almaktan neredeyse hiç farkı yok. Bu rehberde Türkiye'de ETF almanın tam sürecini, doğru aracı kurum seçimini, hangi ETF'lerin mevcut olduğunu ve dikkat etmen gereken kriterleri bulacaksın.
