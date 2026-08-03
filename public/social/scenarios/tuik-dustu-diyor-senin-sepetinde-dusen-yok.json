@@ -1,0 +1,59 @@
+{
+  "slug": "tuik-dustu-diyor-senin-sepetinde-dusen-yok",
+  "title": "TÜİK 'Düştü' Diyor — Senin Sepetinde Düşen Yok",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "TÜİK TÜFE rakamı ile gerçek harcama sepetinin neden ayrıştığını ve bunun alım gücüne somut etkisini açıklıyoruz.",
+  "tags": [
+    "enflasyon",
+    "tüfe",
+    "tüik",
+    "alım gücü",
+    "sepet",
+    "tasarruf",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "TÜİK sepetindeki ağırlıklar senin gerçeğin değil.",
+      "visual": {
+        "type": "logo",
+        "query": "TÜİK logo"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "TÜİK TÜFE sepetinde gıdanın payı yaklaşık yüzde yirmi beş. Ama Türk hanehalkı harcamalarında mutfağa giden pay bunun neredeyse iki katı.",
+      "visual": {
+        "type": "concept",
+        "query": "supermarket grocery shopping cart turkey"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Aylık enflasyon düşse de fiyatlar geri gelmiyor. Son dört yılda biriken enflasyon kira ve gıdada yüzde üç yüzü aştı — düşen oran değil, artış hızı.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation price rise economic chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kira ve gıda bütçenin büyük bölümünü alıyorsa gerçek enflasyonun TÜİK rakamını aşıyor. Yatırım getirisini buna göre hesaplamayan her ay biraz daha eriiyor.",
+      "visual": {
+        "type": "concept",
+        "query": "household budget expenses money bills"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki kendi kişisel enflasyon oranını nasıl hesaplayabilirsin? Bunu yakında ele alıyoruz. Kaçırmamak için abone ol — her gün tek bir net finansal gerçek, altmış saniyede.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification bell phone screen"
+      }
+    }
+  ]
+}
