@@ -4,6 +4,70 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-03 — ETF Nasıl Alınır? Borsada Adım Adım ETF Rehberi
+
+**Yayınlanan yazı:** [ETF Nasıl Alınır? Borsada Adım Adım ETF Rehberi](https://parafomo.com/blog/etf-nasil-alinir/)
+Kategori: Yatırım | Hedef sorgu: "etf nasıl alınır" (GSC: 4 gösterim, sıra 34.2) | ~1.150 kelime
+
+**X (Twitter) Thread Taslağı:**
+
+🧵 "ETF almak istiyorum ama nasıl?" diyorsan bu thread tam sana.
+
+1/ ETF almak hisse senedi almakla aynı mekanizma: BIST'te emir girersin. Fark şu: tek bir ETF ile onlarca şirkete aynı anda yatırım yapmış olursun.
+
+2/ Gerekli olan şeyler:
+→ Aracı kurum hesabı (banka ya da bağımsız)
+→ TC kimlik numarası
+→ 1 lot sermaye (birkaç TL'den başlıyor)
+
+3/ Türkiye'de işlem gören başlıca ETF'ler:
+📊 XU030 → BIST 30 (en büyük 30 şirket)
+📊 XU100 → BIST 100
+🥇 GAU → Altın ETF
+Hepsi 10:00-18:00 arası BIST'te işlem görür.
+
+4/ ETF seçerken 4 kritere bak:
+✅ Yönetim ücreti düşük olsun
+✅ Günlük hacim yüksek olsun (likidite)
+✅ İzleme hatası küçük olsun
+✅ Vergi durumunu kontrol et
+
+5/ DCA stratejisiyle başlamak en mantıklısı: her ay düzenli küçük miktarlar al, piyasa zamanlamasıyla uğraşma.
+
+Adım adım tam rehber → parafomo.com/blog/etf-nasil-alinir/
+
+#ETF #Borsa #Yatırım #BIST #ParaFOMO
+
+---
+
+**Instagram Post/Carousel Metni:**
+
+📊 ETF Nasıl Alınır? (Yeni Başlayanlar İçin)
+
+ETF almak sandığından çok daha kolay 👇
+
+✅ Adım 1: Aracı kurum hesabı aç
+✅ Adım 2: Para transfer et
+✅ Adım 3: Platformda ETF kodunu ara (XU030, GAU vb.)
+✅ Adım 4: "Al" → adet gir → onayla
+✅ Adım 5: Portföyünde takip et
+
+💡 1 lot yeterli — birkaç TL'den başlıyor
+💡 Düzenli küçük alımlarla (DCA) riski dağıt
+
+Tüm Türkiye ETF'leri + seçim kriterleri → parafomo.com/blog/etf-nasil-alinir/
+
+#ETF #BorsaYatırım #YatırımRehberi #BIST #ParaFOMO #FinansTürkiye #Yatırım
+
+---
+
+**Bugün senin yapman gerekenler:**
+
+1. **X thread'ini paylaş** — Pazar/hafta başı günleri @parafomo hesabından finansal tweet'ler yüksek etkileşim alıyor; bu thread hazır.
+2. **Instagram'a carousel veya tek kart yükle** — Social card (`public/social/etf-nasil-alinir.png`) hazır, direkt yükleyebilirsin. Post metnini yukarıdan kopyala.
+
+---
+
 ## 2026-08-02 — Döviz Hesabı Nedir? Dövizde Nasıl Yatırım Yapılır?
 
 **Yayınlanan yazı:** [Döviz Hesabı Nedir? Dövizde Nasıl Yatırım Yapılır?](https://parafomo.com/blog/doviz-hesabi-nedir/)

@@ -51,6 +51,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] ETF Nasıl Alınır? Borsada Adım Adım ETF Rehberi — `etf-nasil-alinir` (GSC fırsatı: "etf nasıl alınır" — gösterim 4, sıra 34.2; mevcut ETF nedir yazısının tamamlayıcısı)
+
 - [x] TÜFE Sepeti Nedir? Enflasyon Nasıl Hesaplanır ve Sizi Gerçekten Yansıtıyor mu? — `tufe-sepeti-nedir-enflasyon-nasil-hesaplanir` (takvim: 3 Ağustos 2026 TÜİK TÜFE açıklaması; sepet metodolojisi + kişisel enflasyon farkı)
 
 - [x] Türkiye'de En İyi Yatırım Araçları 2026: Hangisi Sana Uygun? — `turkiyede-en-iyi-yatirim-araclari-2026` (backlog: evergreen yatırım; "en iyi yatırım araçları" sorgusu)
