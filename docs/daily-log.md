@@ -4,6 +4,70 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-03 — Altın Fonu Nedir? Gram Altından Farkı ve Yatırım Rehberi 2026
+
+**Yayınlanan yazı:** [Altın Fonu Nedir? Gram Altından Farkı ve Yatırım Rehberi 2026](https://parafomo.com/blog/altin-fonu-nedir-gram-altindan-farki/)
+Kategori: Yatırım | Hedef sorgu: "altın fonu nedir" | ~1.150 kelime
+
+**X (Twitter) Thread Taslağı:**
+
+🧵 Gram altın mı almalıyım, altın fonu mu? Fark sandığından büyük — işte özet:
+
+1/ Altın fonu: fiziki altın tutmadan, dijital ortamda altın fiyatına paralel getiri. Kuyumcu yok, kasa yok, makas yok.
+
+2/ Gram altın fiziki güvence hissi verir — ama kuyumcu makası %3-8. 1000 TL yatırırsan 30-80 TL'si hemen masraf.
+
+3/ Altın fonunun yönetim ücreti yıllık %0,1-0,5. Karşılaştırma tablosu:
+🏦 Depolama riski → Fon: YOK | Fiziki: VAR
+💸 Spread → Fon: ~%0,1-0,5 | Fiziki: %3-8
+📱 Likidite → Her ikisi de yüksek
+
+4/ Kimler tercih etmeli?
+→ Küçük, düzenli birikim yapıyorsan: Altın fonu ✅
+→ "Elimde olsun" diyorsan: Fiziki altın ✅
+
+5/ Nasıl alınır? TEFAS veya aracı kurum platformundan 2 dakikada. Minimum tutar 50-100 TL'ye kadar düşebiliyor.
+
+Detaylı rehber → parafomo.com/blog/altin-fonu-nedir-gram-altindan-farki/
+
+#AltınFonu #GramAltın #Yatırım #Altın #ParaFOMO
+
+---
+
+**Instagram Post/Carousel Metni:**
+
+🥇 Altın Fonu mu Gram Altın mı? İşte Farkı
+
+Altın alacaksan bu karşılaştırmayı bilmeden karar verme 👇
+
+📌 Altın Fonu
+✅ Depolama derdi yok
+✅ Makas %0,1-0,5 (çok düşük)
+✅ 50 TL'den başlanabilir
+⚠️ Yıllık küçük yönetim ücreti
+
+📌 Fiziki Gram Altın
+✅ Elle tutulabilir güvence
+✅ Kurum riski yok
+⚠️ Kuyumcu makası %3-8
+⚠️ Güvenli depolama gerekli
+
+💡 Uzun vadeli, düzenli birikim → Altın Fonu
+💡 "Elimin altında olsun" → Fiziki altın
+
+Tam karşılaştırma tablosu için → parafomo.com/blog/altin-fonu-nedir-gram-altindan-farki/
+
+#AltınFonu #GramAltın #YatırımRehberi #Altın #ParaFOMO #FinansTürkiye #Yatırım
+
+---
+
+**Bugün senin yapman gerekenler:**
+
+1. **X thread'ini paylaş** — "Gram altın mı altın fonu mu?" sorusu çok aranan bir konu; thread hazır, @parafomo'dan yayınla.
+2. **Instagram'a carousel yükle** — Yukarıdaki metni kullan; arka plana altın görseli koy. İlk slayta soruyu, son slayta siteyi yaz.
+
+---
+
 ## 2026-08-03 — ETF Nasıl Alınır? Borsada Adım Adım ETF Rehberi
 
 **Yayınlanan yazı:** [ETF Nasıl Alınır? Borsada Adım Adım ETF Rehberi](https://parafomo.com/blog/etf-nasil-alinir/)

@@ -15,7 +15,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Türkiye'de en iyi yatırım araçları 2026 — `Yatırım` — hedef: "en iyi yatırım araçları"
 - [x] Borsa teknik analiz temelleri: grafik okuma rehberi — `Borsa` — hedef: "teknik analiz grafik okuma"
 - [x] Döviz hesabı nedir, dövizde nasıl yatırım yapılır? — `Yatırım` — hedef: "döviz hesabı nedir"
-- [ ] Altın fonu nedir, gram altından farkı ne? — `Yatırım` — hedef: "altın fonu nedir"
+- [x] Altın fonu nedir, gram altından farkı ne? — `Yatırım` — hedef: "altın fonu nedir"
 
 - [x] Altın mı dolar mı? Hangisi daha mantıklı? — `Ekonomi` — hedef: "altın mı dolar mı"
 - [x] Hisse senedi nasıl seçilir? Temel analiz rehberi — `Borsa` — hedef: "hisse senedi nasıl seçilir"
@@ -50,6 +50,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] ETF nedir? Borsa yatırım fonu rehberi — `Yatırım` — hedef: "etf nedir"
 
 ## Yayınlananlar (otomasyon buraya ekler)
+
+- [x] Altın Fonu Nedir? Gram Altından Farkı ve Yatırım Rehberi 2026 — `altin-fonu-nedir-gram-altindan-farki` (backlog: evergreen yatırım; "altın fonu nedir" sorgusu)
 
 - [x] ETF Nasıl Alınır? Borsada Adım Adım ETF Rehberi — `etf-nasil-alinir` (GSC fırsatı: "etf nasıl alınır" — gösterim 4, sıra 34.2; mevcut ETF nedir yazısının tamamlayıcısı)
 
