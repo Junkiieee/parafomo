@@ -16,6 +16,7 @@ from collections import OrderedDict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 L = os.path.join(ROOT, "data", "learning")
+MEM = os.path.join(ROOT, "agent", "memory")
 
 
 def out(s=""):
@@ -137,7 +138,61 @@ def sec_blog():
         out(f"_(Blog envanteri alınamadı: {e})_\n")
 
 
+def sec_learnings():
+    try:
+        p = os.path.join(MEM, "learnings.md")
+        if not os.path.exists(p):
+            return
+        lines = [l.rstrip() for l in open(p, encoding="utf-8") if l.strip() and l.strip().startswith("-")]
+        if not lines:
+            return
+        out("## HAFIZA: Kalıcı öğrenimler (kararlarını BUNA göre ver — kanıtlıyı ikiye katla, kaybedeni tekrarlama)")
+        for l in lines[-70:]:
+            out(l)
+        out()
+    except Exception as e:
+        out(f"_(öğrenimler alınamadı: {e})_\n")
+
+
+def sec_experiments():
+    try:
+        p = os.path.join(MEM, "experiments.jsonl")
+        if not os.path.exists(p):
+            return
+        rows = []
+        for line in open(p, encoding="utf-8"):
+            line = line.strip()
+            if line:
+                try:
+                    rows.append(json.loads(line))
+                except Exception:
+                    pass
+        if not rows:
+            return
+        openr = [r for r in rows if r.get("status") == "open"]
+        closed = [r for r in rows if r.get("status") != "open"]
+        out("## HAFIZA: AÇIK deneyler (Adım 0'da SONUÇLARINI ÖLÇ ve kapat: won/lost/inconclusive)")
+        if openr:
+            for r in openr:
+                out(f"- `{r['id']}` [{r.get('channel','')}] {r.get('action','')} → izlenen metrik: **{r.get('metric','')}** (baseline: {r.get('baseline','')}, açılış: {r.get('date','')})")
+        else:
+            out("(açık deney yok)")
+        out()
+        if closed:
+            out("## HAFIZA: Kapanmış deneyler (son 25 — ne tuttu / ne tutmadı, PATERN ara)")
+            out("| id | kanal | eylem | sonuç | öğrenim |")
+            out("|---|---|---|---|---|")
+            for r in closed[-25:]:
+                out(f"| {r.get('id','')} | {r.get('channel','')} | {r.get('action','')[:32]} | {r.get('status','')}: {r.get('outcome','')[:38]} | {r.get('learning','')[:40]} |")
+            out()
+    except Exception as e:
+        out(f"_(deneyler alınamadı: {e})_\n")
+
+
 if __name__ == "__main__":
+    # Hafıza önce (karar öncesi görülsün), sonra ham veri.
+    sec_learnings()
+    sec_experiments()
     sec_gsc_queries()
     sec_learning()
     sec_youtube()

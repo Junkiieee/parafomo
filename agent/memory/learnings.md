@@ -1,0 +1,11 @@
+# ParaFOMO Büyüme Ajanı — Kalıcı Öğrenimler (biriken bilgi)
+
+Kararlarını buna göre ver. Kanıtlanmış kazananı ikiye katla, kaybedeni tekrarlama.
+Yeni ders: `python3 agent/exp.py learn --channel <k> --text "..."` veya deney kapatınca otomatik.
+
+## Başlangıç öğrenimleri (proje geçmişinden — doğrulanmış)
+- [2026-08-04][infra] Asıl darboğaz ÜRETİM değil; OTORİTE + DAĞITIM. Daha çok içerik üretmek ≠ büyüme. Enerjiyi duyurma/otorite/yeni-alan'a ver.
+- [2026-08-04][youtube] 16.000+ Shorts izlenmesi siteye ~0 ziyaretçi getirdi → Shorts→site huni YAPISAL olarak zayıf. YouTube hedefi önce abone+izlenme büyütmek; site-huni ikincil.
+- [2026-08-04][web] "Ekonomik takvim" sayfası (veri vardı, sayfa yoktu) hızlı kazanım oldu → veriyle beslenen, kendi başına trafik çeken HEDEF SAYFALAR yüksek kaldıraç.
+- [2026-08-04][web] GSC'de yüksek gösterim + 0 tıklama + pozisyon 10-30 olan sorgu = en isabetli SEO fırsatı (hedefli sayfa/başlık/iç-link ile ilk sayfaya çek).
+- [2026-08-04][infra] Dış veri kaynakları sessizce bozulabilir (Truncgil v4 fiyatları boşalttı → v3 + Yahoo). Kartlarda/verilerde boşluk görürsen kaynağı doğrula.

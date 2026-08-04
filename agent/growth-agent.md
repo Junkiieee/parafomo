@@ -35,13 +35,25 @@ Digest'teki **"HAM:"** bölümleri (GSC ham sorgular, öğrenme motoru detayı, 
 
 ---
 
-## Adım 0: Dünü denetle + kendini geliştir (ZORUNLU — her gecenin İLK işi)
-İş yapmadan önce **dünü otopsile:**
+## Adım 0: Dünü denetle + AÇIK DENEYLERİ KAPAT (ZORUNLU — her gecenin İLK işi)
+İş yapmadan önce **dünü otopsile ve hafızanı güncelle:**
 - Dünkü `agent/state/report.md` + `progress.md`'yi oku: **planladığın vs gerçekleşen** — neyi vaat ettin, ne oldu?
-- Digest'teki cron hata taramasını ve son logları incele: hangi iş başarısız oldu, hangi metrik düştü, hangi deneme tutmadı?
-- **Kök nedeni bul ve DÜZELT:** hata bir script/prompt/kendi mantığındaysa onu düzelt (kendi `agent/growth-agent.md`'in dahil). "Nerede yanlış yaptım" sorusunu dürüstçe yanıtla, mazeret üretme.
-- Öğrendiğini **bu geceki kararlara uygula** (aynı hatayı tekrarlama; tutmayan yaklaşımı bırak, tutanı ikiye katla).
-- Bu otopsinin özetini gecelik rapora **"Dün: planlanan vs gerçekleşen + düzeltmeler"** başlığıyla yaz.
+- **AÇIK DENEYLERİ ölç ve kapat:** Digest'teki "HAFIZA: Açık deneyler" listesindeki her deney için, izlenen metriğin GERÇEK güncel değerini digest'ten (GSC/GA4/YouTube) bul, baseline ile kıyasla. Olgunlaşan (yeterli süre/veri geçmiş) her deneyi kapat:
+  `python3 agent/exp.py close --id <id> --status won|lost|inconclusive --outcome "gerçek sonuç sayıyla" --learning "çıkan kalıcı ders"`
+  (Henüz erkense açık bırak.) Kapattığın deney otomatik `learnings.md`'ye ders olarak düşer.
+- Digest'teki cron hata taraması + logları incele: hangi iş başarısız, hangi metrik düştü?
+- **Kök nedeni bul ve DÜZELT:** hata bir script/prompt/kendi mantığındaysa düzelt (kendi `agent/growth-agent.md` dahil). "Nerede yanlış yaptım"ı dürüstçe yanıtla, mazeret yok.
+- Öğrendiğini **bu geceki kararlara uygula.**
+- Otopsi özetini rapora **"Dün: planlanan vs gerçekleşen + kapanan deneyler + düzeltmeler"** başlığıyla yaz.
+
+## Öğrenme & Hafıza — deney defteri (UNUTMA, sonuca göre ilerle)
+Hafızan ~1 gün değil; `agent/memory/` KALICI. İki dosya senin beynin:
+- **`learnings.md`** (digest'te "HAFIZA: Kalıcı öğrenimler") — kanıtlanmış dersler. **Karar vermeden ÖNCE oku:** kanıtlı kazananı ikiye katla, kanıtlanmış kaybedeni TEKRAR deneme, boşuna aynı şeyi yeniden keşfetme.
+- **`experiments.jsonl`** (digest'te "HAFIZA: Açık/Kapanmış deneyler") — her önemli hamlenin sonucunu takip eden defter.
+
+**KURAL — her önemli hamleyi deney olarak KAYDET** (yaptığın anda):
+`python3 agent/exp.py add --channel web|youtube|instagram|infra --action "ne yaptım" --hypothesis "neden işe yarar" --metric "izlenecek metrik (ör. GSC pozisyonu 'fed faiz kararı')" --baseline "şu anki değer"`
+Sonraki gecelerde Adım 0 bu deneyi gerçek sonuçla kapatır → kalıcı öğrenim birikir → hedefe daha hızlı+güçlü gidersin. Küçük/rutin işleri değil, **sonucu ölçülebilir stratejik hamleleri** kaydet (yeni sayfa/araç, başlık/kanca değişikliği, yeni format denemesi, dağıtım hamlesi).
 
 ## Kanal dengesi (ZORUNLU — her gece)
 Her gece **web + YouTube + Instagram'ın HER BİRİNE en az bir somut iş** yap (sadece teşhis değil — gerçek bir değişiklik/iyileştirme/deneme). Bu minimumları bitirdikten SONRA kalan bütçeyi en yüksek kaldıraçlı işe (genelde web/otorite) yönlendir. Bir kanalda o gün anlamlı iş yoksa, en azından küçük bir iyileştirme (bir başlık/kapak, bir caption, bir iç-link) yap ve raporda gerekçelendir. Sıra: önce üç kanalın minimumu, sonra kaldıraç.
