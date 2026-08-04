@@ -1,0 +1,89 @@
+{
+  "slug": "vadesiz-hesabin-bu-yil-sana-ne-kaybettirdi",
+  "title": "Vadesiz Hesabın Bu Yıl Sana Ne Kaybettirdi?",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "Maaşını vadesiz hesapta tutan Türklerin farkında olmadan kaçırdığı getiri. Gram altın eylül 2025'ten bu yana yaklaşık %21 kazandırdı.",
+  "tags": [
+    "gram altın",
+    "vadesiz hesap",
+    "yatırım",
+    "getiri",
+    "para yönetimi",
+    "maaş",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "Hesabında bekleyen paran seni geçiyor.",
+      "visual": {
+        "type": "concept",
+        "query": "money sitting idle bank account cash"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Türklerin büyük çoğunluğu maaşı vadesiz hesapta tutuyor; faiz yok, sadece enflasyona yem oluyorsun.",
+      "visual": {
+        "type": "concept",
+        "query": "bank savings account mobile app person checking"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama aynı 10.000 TL'yi geçen eylülde gram altına koysaydın, bugün yaklaşık 12.129 TL olurdu.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "Gram Altın",
+          "unit": "TL",
+          "points": [
+            5189.66,
+            5762.96,
+            5973.38,
+            6585.85,
+            6802.65,
+            6838.62,
+            6143.79,
+            6183.8,
+            6294.68
+          ],
+          "x": [
+            "09/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26"
+          ],
+          "amount": 10000,
+          "end_value": 12129,
+          "pct": 21
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu yaklaşık yüzde 21 getiri. Vadesizde sıfır. Fark 2.000 TL'nin üzerinde — sadece bir tercihin sonucu.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins turkish lira bills comparison"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki fiziksel altın mı gram hesap mı bu farkı daha da açıyor? Cevabı merak ediyorsan, her gün 60 saniyede net analiz için abone ol — kanalda kalacaksın.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification bell social media"
+      }
+    }
+  ]
+}
