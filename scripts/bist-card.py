@@ -24,7 +24,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(ROOT, "public", "social")
 WORDMARK = os.path.join(ROOT, "public", "parafomo-wordmark.png")
 BG_ASSET = os.path.join(ROOT, "public", "social", "assets", "bist-bg.jpg")
-TG = "https://finans.truncgil.com/v4/today.json"
+TG = "https://finans.truncgil.com/v3/today.json"
+YF = "https://query1.finance.yahoo.com/v8/finance/chart/XU100.IS?interval=1d&range=5d"
 CG = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true"
 FONT_DIR = "/usr/share/fonts/truetype/dejavu"
 
@@ -44,19 +45,40 @@ def fmt_tr(n, d=0):
     return f"{n:,.{d}f}".replace(",", "§").replace(".", ",").replace("§", ".")
 
 
+def _num(s):
+    """Türkçe biçimli sayı → float. '6.208,20'->6208.2, '%0,18'->0.18. None-safe."""
+    if s is None:
+        return None
+    s = str(s).replace("%", "").strip().replace(".", "").replace(",", ".")
+    try:
+        return float(s)
+    except ValueError:
+        return None
+
+
 def fetch():
-    t = urllib.request.urlopen(urllib.request.Request(TG, headers={"User-Agent": "Mozilla/5.0"}), timeout=20).read().decode("utf-8", "ignore")
+    # Truncgil v3 (v4 fiyatları boşalttı) — USD/EUR/gram-altın.
+    tj = json.loads(urllib.request.urlopen(urllib.request.Request(TG, headers={"User-Agent": "Mozilla/5.0"}), timeout=20).read().decode("utf-8", "ignore"))
 
     def pick(k, p):
-        m = re.search(r'"' + re.escape(k) + r'"\s*:\s*\{[^}]*?"' + p + r'"\s*:\s*(-?[0-9.]+)', t)
-        return float(m.group(1)) if m else None
+        return _num((tj.get(k) or {}).get(p))
 
     data = {
-        "bist": (pick("XU100", "Selling"), pick("XU100", "Change")),
         "usd": (pick("USD", "Selling"), pick("USD", "Change")),
         "eur": (pick("EUR", "Selling"), pick("EUR", "Change")),
-        "gold": (pick("GRA", "Selling"), pick("GRA", "Change")),
+        "gold": (pick("gram-altin", "Selling"), pick("gram-altin", "Change")),
     }
+    # BIST 100 (XU100) — Truncgil'de YOK → Yahoo Finance.
+    try:
+        y = json.loads(urllib.request.urlopen(urllib.request.Request(YF, headers={"User-Agent": "Mozilla/5.0"}), timeout=20).read())
+        meta = y["chart"]["result"][0]["meta"]
+        price = meta.get("regularMarketPrice")
+        prev = meta.get("chartPreviousClose") or meta.get("previousClose")
+        chg = ((price - prev) / prev * 100) if (price and prev) else None
+        data["bist"] = (price, chg)
+    except Exception:
+        data["bist"] = (None, None)
+    # Bitcoin (CoinGecko)
     try:
         d = json.loads(urllib.request.urlopen(urllib.request.Request(CG, headers={"User-Agent": "Mozilla/5.0"}), timeout=20).read())
         data["btc"] = (d["bitcoin"]["usd"], d["bitcoin"]["usd_24h_change"])

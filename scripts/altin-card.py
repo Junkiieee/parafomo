@@ -15,6 +15,7 @@ Kullanım:
 Bağımlılık: Pillow (venv'de). Salt standart kütüphane + PIL. Token harcamaz.
 """
 import json
+import json
 import os
 import re
 import sys
@@ -26,7 +27,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(ROOT, "public", "social")
 GOLD_ASSET = os.path.join(ROOT, "public", "social", "assets", "gold-bars.jpg")
 WORDMARK = os.path.join(ROOT, "public", "parafomo-wordmark.png")
-API = "https://finans.truncgil.com/v4/today.json"
+API = "https://finans.truncgil.com/v3/today.json"
 
 W, H = 1080, 1350
 FONT_DIR = "/usr/share/fonts/truetype/dejavu"
@@ -54,26 +55,38 @@ def fmt_tr(n, decimals=0):
     return s
 
 
+def _num(s):
+    """Türkçe biçimli sayı → float. '6.208,20'->6208.2, '%0,18'->0.18. None-safe."""
+    if s is None:
+        return None
+    s = str(s).replace("%", "").strip().replace(".", "").replace(",", ".")
+    try:
+        return float(s)
+    except ValueError:
+        return None
+
+
 def fetch():
+    # NOT: Truncgil v4 today.json fiyat alanlarını boşalttı (2026-08); v3 çalışıyor.
+    # v3 anahtarları küçük-harf tireli, değerler Türkçe biçimli string ("6.208,20").
     req = urllib.request.Request(API, headers={"User-Agent": "Mozilla/5.0 (ParaFOMO)"})
-    text = urllib.request.urlopen(req, timeout=20).read().decode("utf-8", "ignore")
+    data = json.loads(urllib.request.urlopen(req, timeout=20).read().decode("utf-8", "ignore"))
 
     def pick(key, prop):
-        m = re.search(r'"' + re.escape(key) + r'"\s*:\s*\{[^}]*?"' + prop + r'"\s*:\s*(-?[0-9.]+)', text)
-        return float(m.group(1)) if m else None
+        return _num((data.get(key) or {}).get(prop))
 
-    gra = pick("GRA", "Selling")
-    has = pick("HAS", "Selling")
+    gra = pick("gram-altin", "Selling")
+    has = pick("gram-has-altin", "Selling")
     usd = pick("USD", "Selling")
-    # Ons (USD): Truncgil ONS alanı 0 dönüyor; gram has + USD'den türet (saf 24 ayar).
+    # Ons (USD): gram has altın + USD'den türet (saf 24 ayar).
     ons = (has * 31.1035 / usd) if (has and usd) else None
     rows = [
-        ("24 Ayar Gram Altın", gra, pick("GRA", "Change"), "₺", 0),
-        ("Ons Altın", ons, pick("HAS", "Change"), "$", 0),
-        ("22 Ayar Altın", pick("YIA", "Selling"), pick("YIA", "Change"), "₺", 0),
-        ("Çeyrek Altın", pick("CEYREKALTIN", "Selling"), pick("CEYREKALTIN", "Change"), "₺", 0),
-        ("Cumhuriyet Altını", pick("CUMHURIYETALTINI", "Selling"), pick("CUMHURIYETALTINI", "Change"), "₺", 0),
-        ("Gram Gümüş", pick("GUMUS", "Selling"), pick("GUMUS", "Change"), "₺", 2),
+        ("24 Ayar Gram Altın", gra, pick("gram-altin", "Change"), "₺", 0),
+        ("Ons Altın", ons, pick("gram-has-altin", "Change"), "$", 0),
+        ("22 Ayar Altın", pick("22-ayar-bilezik", "Selling"), pick("22-ayar-bilezik", "Change"), "₺", 0),
+        ("Çeyrek Altın", pick("ceyrek-altin", "Selling"), pick("ceyrek-altin", "Change"), "₺", 0),
+        ("Cumhuriyet Altını", pick("cumhuriyet-altini", "Selling"), pick("cumhuriyet-altini", "Change"), "₺", 0),
+        ("Gram Gümüş", pick("gumus", "Selling"), pick("gumus", "Change"), "₺", 2),
     ]
     return rows
 
