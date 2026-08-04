@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-08-03T08:45:47Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-08-04T08:45:52Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -13,38 +13,38 @@
 
 ### Shorts sesi — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `tr-TR-Chirp3-HD-Zephyr` — skor 180.957, örnek 3
-- `tr-TR-Chirp3-HD-Gacrux` — skor 140.39, örnek 3
-- `tr-TR-Chirp3-HD-Alnilam` — skor 105.955, örnek 2
-- `tr-TR-Chirp3-HD-Erinome` — skor 98.957, örnek 4
-- `tr-TR-Chirp3-HD-Sadachbia` — skor 54.843, örnek 3
-- `tr-TR-Chirp3-HD-Sulafat` — skor 52.517, örnek 8
+- `tr-TR-Chirp3-HD-Zephyr` — skor 208.968, örnek 4
+- `tr-TR-Chirp3-HD-Gacrux` — skor 162.234, örnek 5
+- `tr-TR-Chirp3-HD-Alnilam` — skor 99.62, örnek 2
+- `tr-TR-Chirp3-HD-Zubenelgenubi` — skor 61.724, örnek 5
+- `tr-TR-Chirp3-HD-Sadachbia` — skor 54.897, örnek 3
+- `tr-TR-Chirp3-HD-Sulafat` — skor 54.461, örnek 8
 - `tr-TR-Chirp3-HD-Enceladus` — skor 49.57, örnek 2
-- `tr-TR-Chirp3-HD-Vindemiatrix` — skor 48.955, örnek 4
+- `tr-TR-Chirp3-HD-Fenrir` — skor 48.52, örnek 5
 
 ### Shorts motoru (google/edge) — **exploit** → seçim: `google`
 
-- `google` — skor 55.271, örnek 79
+- `google` — skor 58.259, örnek 84
 - `edge` — skor 37.926, örnek 15
 
 ### Viral format — **exploit** → seçim: `backtest_return`
 
-- `backtest_return` — skor 202.074, örnek 5
-- `single_concept` — skor 44.156, örnek 5
-- `news_reaction` — skor 43.887, örnek 15
-- `myth` — skor 40.833, örnek 9
+- `backtest_return` — skor 175.671, örnek 8
+- `news_reaction` — skor 45.16, örnek 15
+- `myth` — skor 41.318, örnek 9
 - `comparison` — skor 35.765, örnek 4
-- `shock_number` — skor 34.225, örnek 6
+- `single_concept` — skor 35.492, örnek 5
+- `shock_number` — skor 34.408, örnek 6
 
 ### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `4` — skor 123.626, örnek 5
-- `5` — skor 91.004, örnek 7
-- `manual` — skor 48.49, örnek 11
-- `0` — skor 40.605, örnek 6
-- `3` — skor 40.364, örnek 5
+- `4` — skor 130.066, örnek 5
+- `5` — skor 91.786, örnek 8
+- `0` — skor 64.329, örnek 8
+- `manual` — skor 50.226, örnek 11
 - `2` — skor 38.312, örnek 4
 - `1` — skor 36.352, örnek 6
+- `3` — skor 31.7, örnek 5
 
 ## Konu sinyalleri
 
@@ -57,7 +57,9 @@
 - mevduat-faizi-nedir-vadeli-mevduat — skor 2.0
 
 **🎯 Fırsat sorguları** (içerik/başlık iyileştir):
-- `fed kararı` — gös 8, sıra 18.9
+- `abd faiz kararı` — gös 5, sıra 19
+- `fed faiz kararı ne olur yorumlar` — gös 5, sıra 19
+- `fed faiz kararı nedir` — gös 5, sıra 12.8
 
 ## Notlar
 
