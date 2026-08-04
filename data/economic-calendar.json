@@ -1,53 +1,8 @@
 {
-  "updated": "2026-08-03",
+  "updated": "2026-08-04",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-07-31",
-      "time": "12:00",
-      "region": "EUR",
-      "impact": "High",
-      "title": "CPI (YoY) (Jul)",
-      "source": "investing",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-07-31",
-      "time": "3:11am",
-      "region": "JPY",
-      "impact": "High",
-      "title": "BOJ Policy Rate",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-07-31",
-      "time": "3:11am",
-      "region": "JPY",
-      "impact": "High",
-      "title": "Monetary Policy Statement",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-07-31",
-      "time": "3:11am",
-      "region": "JPY",
-      "impact": "High",
-      "title": "BOJ Outlook Report",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-07-31",
-      "time": "6:30am",
-      "region": "JPY",
-      "impact": "High",
-      "title": "BOJ Press Conference",
-      "source": "forexfactory",
-      "hook": ""
-    },
     {
       "date": "2026-08-03",
       "time": "10:00",

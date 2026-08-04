@@ -1,0 +1,77 @@
+{
+  "slug": "hangisi-3-yilda-fark-yaratti-altin-dolar-borsa-mevduat",
+  "title": "Hangisi 3 Yılda Fark Yarattı: Altın, Dolar, Borsa, Mevduat",
+  "category": "KARŞILAŞTIRMA",
+  "format": "comparison",
+  "description": "Dolar, altın, borsa ve mevduatı 3 yıl eşit başlatıp dokunmadığında kim kazandı? Rakamlar ortaya koyuyor — ve asıl mesele tutabilmek.",
+  "tags": [
+    "yatırım",
+    "altın",
+    "dolar",
+    "borsa",
+    "mevduat",
+    "bist100",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KARŞILAŞTIRMA",
+      "spoken": "3 yılda biri diğerini 8 puan geçti.",
+      "visual": {
+        "type": "concept",
+        "query": "horse race competition finish line"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Dördünü de eşit koydun, 3 yıl hiç dokunmadın; şimdi hesabı açınca hangisi mevduatı geride bırakıyor?",
+      "visual": {
+        "type": "concept",
+        "query": "bank deposit savings counter money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Dolar yüzde 14, altın yüzde 21, borsa yüzde 22 getirdi — ama mevduat enflasyonun hep gerisinde kaldı.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "bars",
+          "title": "Bu Yıl Kim Kazandırdı?",
+          "items": [
+            {
+              "name": "BIST 100",
+              "pct": 22
+            },
+            {
+              "name": "Gram Altın",
+              "pct": 21
+            },
+            {
+              "name": "Dolar/TL",
+              "pct": 14
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "BIST kazandı; ama 3 yıl tutabilmek için piyasa çakılınca çıkmamak tek fark yaratıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "stock market chart screen trading monitor"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Önümüzdeki 3 yılda bu sıralama değişir mi? Abone ol — her gün 60 saniyede tek net finans analizi.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification bell phone screen"
+      }
+    }
+  ]
+}
