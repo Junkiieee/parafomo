@@ -17,6 +17,23 @@ faq:
     a: "Fed'in iki temel hedefi vardır: fiyat istikrarı ve tam istihdam. İşsizlik düşüksa enflasyon baskısı artar, Fed faiz yükseltir. İşsizlik yüksekse büyüme yavaşlıyor demektir, Fed faiz indirir veya sabit tutar."
   - q: "Bu veri Türk yatırımcıyı nasıl etkiler?"
     a: "ABD işsizlik/NFP verisi, Fed faiz beklentisini ve dolayısıyla küresel risk iştahını değiştirir. Dolar güçlenirse TL zayıflar, BIST'teki yabancı para çıkışı artar. Altın ve tahvil fiyatları da bu veriden etkilenir."
+shorts:
+  - "60.000 kişilik anket TL kurunu belirliyor."
+  - "ABD İstatistik Bürosu, yalnızca 60.000 hanehalkıyla yaptığı anketle tüm dünya piyasalarını yönlendiren işsizlik rakamını hesaplıyor."
+  - "İşsizlik düşük, NFP yüksekse Fed faiz indirmez; dolar güçlenir ve bu TL üzerindeki baskıyı doğrudan artırır."
+  - "7 Ağustos Cuma saat 15:30'da açıklanacak bu tek veri paketi, aynı anda dolar, altın ve TL kurunu sarsabilir."
+  - "Peki bu Cuma hangi senaryo gerçekleşecek? Kaçırmamak için kanala abone ol — analizleri ilk biz yapıyoruz. Detaylar parafomo.com'da."
+shorts_broll:
+  - "unemployment rate chart screen"
+  - "federal reserve interest rate decision"
+  - "turkish lira dollar exchange rate"
+  - "nfp data release market reaction"
+shorts_visuals:
+  - "concept|household survey economic statistics data"
+  - "building|Bureau of Labor Statistics Washington DC"
+  - "building|Federal Reserve building Washington DC"
+  - "concept|stock market data release screen reaction"
+  - "concept|financial news analysis laptop screen"
 ---
 
 **7 Ağustos 2026 Cuma günü saat 15:30'da** piyasaların en yakından izlediği veri paketi açıklanacak: ABD Tarım Dışı İstihdam (NFP), İşsizlik Oranı ve Ortalama Saatlik Kazanç. Bu üç rakam, Fed'in bir sonraki faiz kararını şekillendirecek; bu da dolar, altın ve evet — TL üzerinde doğrudan iz bırakacak.
