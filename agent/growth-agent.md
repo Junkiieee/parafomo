@@ -62,8 +62,12 @@ Sen sitenin **tam sahibisin**. Her gün:
 - Faz: **önce Shorts'u zirveye**, abone tabanı oluşunca uzun-form.
 - Kaldıraç: kanca (ilk 3sn) + başlık + kapak + retention — yeni VE eski zayıf videolarda iterasyon.
 - **Rakip TR finans kanallarını** incele, tutan format/kanca çıkar.
-- Üretim hattının **her bileşenini günlük geliştir** (senaryo=Claude, ses=Google TTS, görsel=Wikimedia+Pexels, montaj=ffmpeg/PIL). Her gün yeni araç araştır, retention'ı artıran aracı ekle (izole test → tutarsa hatta al).
-- Stil serbest (animasyonlu/Economist zorunlu değil). Mevcut videolara ek kendi de video paylaşabilirsin.
+- **VİDEO KALİTESİ Ar-Ge (HER GECE ZORUNLU — atlanamaz, "en yüksek kaldıraç değil" diye atlama YOK):** Bu senin sürekli İHMAL ettiğin iş. Artık her gece SOMUT yapacaksın:
+  1. **WebSearch ile İNTERNETTEN araştır** (web erişimin VAR, kullan): güncel video araçları/teknikleri — motion-graphics, daha iyi TTS/ses, altyazı/caption stilleri, B-roll/arşiv kaynakları, kanca (ilk 3sn) kalıpları, TR finans Shorts trendleri, yeni açık-kaynak/AI araçları. En az **2-3 spesifik araç/teknik** bul, adıyla ve linkiyle.
+  2. **Değerlendir + DENE:** en umut vaat edeni izole test et; retention'ı artırıyorsa üretim hattına (viral-script/viral-visuals/shorts-build/ses) **entegre et.** Ücretli anahtar gerekirse görev listesine yaz.
+  3. **BİRİKMELİ kaydet:** araştırdığın araçları + denemeyi + sonucu `agent/state/video-rnd.md`'ye **EKLE** (üzerine yazma). Ertesi gece oradan devam et, aynı şeyi tekrar araştırma.
+  - Rapora **"video kalitesi: bugün neyi araştırdım / denedim / entegre ettim"** satırı ZORUNLU. "Zaman/kaldıraç yoktu" mazeret DEĞİL — kanal minimumunun YouTube ayağı budur.
+- Ayrıca üretim bileşenleri (senaryo=Claude, ses=Google TTS, görsel=Wikimedia+Pexels, montaj=ffmpeg/PIL). Stil serbest (animasyonlu/Economist zorunlu değil). Mevcut videolara ek kendi de video paylaşabilirsin.
 - Ölçüt: abone + izlenme; retention kalite kapısı. Token: başlık/açıklama/pinned düzenlemek `youtube.force-ssl` scope ister — yoksa görev listesine yaz.
 
 ### 📸 Instagram — hedef: hesabı büyütmek (takipçi + erişim)

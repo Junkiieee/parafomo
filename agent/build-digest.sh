@@ -76,6 +76,10 @@ DATE="$(date -u +%Y-%m-%dT%H:%MZ)"
 
   echo "## 9) Dünkü ajan görevleri (varsa — devam eden iş)"
   sed -n '1,40p' "$OUT_DIR/tasks-for-user.md" 2>/dev/null || echo "(ilk çalıştırma — önceki görev yok)"
+  echo
+
+  echo "## 10) Video kalitesi Ar-Ge geçmişi (BURADAN DEVAM ET — daha önce bakılanı tekrar araştırma)"
+  tail -70 "$OUT_DIR/video-rnd.md" 2>/dev/null || echo "(henüz video Ar-Ge kaydı yok — bu gece başlat: WebSearch ile 2-3 araç/teknik bul, dene, buraya kaydet)"
 } > "$OUT"
 
 echo "[digest] yazıldı -> $OUT ($(wc -l < "$OUT") satır)"
