@@ -4,6 +4,57 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-04 — ABD İşsizlik Oranı Nedir? NFP Verisi Fed Faizini ve TL'yi Nasıl Etkiler?
+
+**Yayınlanan yazı:** [ABD İşsizlik Oranı Nedir? NFP Verisi Fed Faizini ve TL'yi Nasıl Etkiler?](https://parafomo.com/blog/abd-issizlik-orani-nedir-nfp-etkisi/)
+Kategori: Ekonomi | Hedef sorgu: "abd işsizlik oranı" | ~1.050 kelime | Kanca: 7 Ağustos NFP verisi
+
+---
+
+**X (Twitter) Thread Taslağı:**
+
+🧵 7 Ağustos Cuma 15:30'da piyasaların en kritik verisi açıklanıyor: ABD İşsizlik Oranı + NFP.
+
+Bunu neden önemsemeliyiz? Çünkü bu rakam Fed'in faiz kararını — dolayısıyla dolar kurunu ve BIST'i — doğrudan etkiliyor 👇
+
+1/ ABD İşsizlik Oranı = iş arayan ama bulamayanların işgücüne oranı. %3,5-4,5 arası "normal" sayılır.
+
+2/ Aynı anda açıklanan NFP (Tarım Dışı İstihdam) o ay kaç yeni iş eklendiğini gösterir. İkisi birlikte Fed'e tablo sunar.
+
+3/ İşsizlik yükselirse → Fed faiz indirme sinyali → dolar zayıflar → TL görece rahatlar, altın fırlayabilir.
+
+4/ İşsizlik düşüksa → Fed faiz indirmeye acele etmez → dolar güçlenir → TL baskı altına girer.
+
+5/ Türk yatırımcı olarak portföyünde dolar, altın veya borsa varsa bu veriyi 7 Ağustos 15:30'da mutlaka takip et.
+
+👉 Detaylı analiz: parafomo.com/blog/abd-issizlik-orani-nedir-nfp-etkisi
+
+---
+
+**Instagram Post Metni:**
+
+7 AĞUSTOS SAAT 15:30 — PİYASALAR BU VERİYİ BEKLİYOR
+
+ABD İşsizlik Oranı + NFP açıklanıyor.
+
+Bu ne anlama geliyor?
+📌 İşsizlik yükselirse → Fed faiz indirir → dolar zayıflar
+📌 İşsizlik düşüksa → Fed bekler → dolar güçlür
+📌 Sonuç senin portföyünü etkiler: dolar, altın, borsa
+
+Detaylı analiz için biyografimizdeki linke tıkla 👆
+
+#yatırım #dolar #fed #nfp #issizlik #borsa #ekonomi #parafomo
+
+---
+
+**✅ Bugün yapman gerekenler:**
+
+1. X thread + Instagram postunu yayınla (özellikle bugün değerli çünkü 7 Ağustos öncesi güncel içerik).
+2. Finans/borsa gruplarında ya da Twitter'da "7 Ağustos NFP" konuşmaları varsa yazıya yorum bölümünde ya da thread olarak katıl — spam değil, değer katan yorum.
+
+---
+
 ## 2026-08-03 — Altın Fonu Nedir? Gram Altından Farkı ve Yatırım Rehberi 2026
 
 **Yayınlanan yazı:** [Altın Fonu Nedir? Gram Altından Farkı ve Yatırım Rehberi 2026](https://parafomo.com/blog/altin-fonu-nedir-gram-altindan-farki/)

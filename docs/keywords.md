@@ -51,6 +51,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] ABD İşsizlik Oranı Nedir? NFP Verisi Fed Faizini ve TL'yi Nasıl Etkiler? — `abd-issizlik-orani-nedir-nfp-etkisi` (takvim: 7 Ağustos 2026 NFP + İşsizlik Oranı açıklaması; GSC "fed faiz kararı" ailesi ile örtüşen ek açı)
+
 - [x] Altın Fonu Nedir? Gram Altından Farkı ve Yatırım Rehberi 2026 — `altin-fonu-nedir-gram-altindan-farki` (backlog: evergreen yatırım; "altın fonu nedir" sorgusu)
 
 - [x] ETF Nasıl Alınır? Borsada Adım Adım ETF Rehberi — `etf-nasil-alinir` (GSC fırsatı: "etf nasıl alınır" — gösterim 4, sıra 34.2; mevcut ETF nedir yazısının tamamlayıcısı)
