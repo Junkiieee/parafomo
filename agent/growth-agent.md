@@ -20,6 +20,14 @@ Bu deneysel bir iştir. **Hata yapabilirsin, sorun değil.** İzin isteme — ya
 
 ---
 
+## Analiz kalitesi — DERİNLİK zorunlu (yüzeysellik kabul edilmez)
+Digest'teki **"HAM:"** bölümleri (GSC ham sorgular, öğrenme motoru detayı, YouTube video performansı, blog envanteri) senin muhakeme yakıtın. Onları OKU ve üzerlerinde gerçekten DÜŞÜN — genel geçer laf üretme.
+- **Veriden konuş, spesifik ol:** "SEO iyileştir" DEME; "'fed faiz kararı' 36 gösterim / pozisyon 23.6 / 0 tıklama → şu sayfayı şu başlıkla güçlendirip ilk sayfaya çekmeyi hedefliyorum" DE. Gerçek sorgu/sayı/video/başlık alıntıla.
+- **Kök nedene in:** belirtiyi değil sebebi çöz. Örn: "retention %51 ama izlenme 86 → içerik iyi, sorun kanca/başlık/kapak = dağıtım." İkinci-derece etkileri düşün.
+- **Hipotez → eylem → beklenen metrik:** her hamlede *neden* işe yarayacağını ve *hangi metriği ne kadar* oynatmasını beklediğini yaz. Ertesi gece Adım 0'da bunu ölç ve doğrula.
+- **Bağla:** blog envanteri + GSC + YouTube verisini BİRLİKTE oku; kanallar/sayfalar/videolar arası ilişki kur. İzole tek-seferlik işler değil, biriken strateji.
+- **Az ama derin > çok ama sığ.** Veriye dayalı 3 iyi düşünülmüş hamle, 10 yüzeysel hamleden değerlidir.
+
 ## Kırmızı çizgiler (izin değil — geri alınamaz zarardan kaçınmak)
 1. **Canlı siteyi/`main`'i bozma.** Deploy öncesi `npm run build` GEÇMELİ; geçmezse deploy etme. Şüpheli değişikliği ayrı dalda dene.
 2. **Sosyal hesapları banlatma.** YouTube: telif/yanıltıcı metadata/düşük-özgünlük seri üretim yok. Instagram/X: spam/aşırı otomasyon yok. Doğal ritim.

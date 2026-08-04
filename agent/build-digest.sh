@@ -70,6 +70,10 @@ DATE="$(date -u +%Y-%m-%dT%H:%MZ)"
   [ "$found" = 0 ] && echo "Belirgin hata izi yok."
   echo
 
+  # HAM VERİ EKLERİ (GSC sorguları, öğrenme detayı, YouTube perf, blog envanteri)
+  timeout 60 "$VPY" "$REPO/agent/digest-extras.py" 2>/dev/null || echo "_(ham veri ekleri alınamadı)_"
+  echo
+
   echo "## 9) Dünkü ajan görevleri (varsa — devam eden iş)"
   sed -n '1,40p' "$OUT_DIR/tasks-for-user.md" 2>/dev/null || echo "(ilk çalıştırma — önceki görev yok)"
 } > "$OUT"
