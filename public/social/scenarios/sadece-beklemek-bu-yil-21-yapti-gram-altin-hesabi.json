@@ -1,0 +1,89 @@
+{
+  "slug": "sadece-beklemek-bu-yil-21-yapti-gram-altin-hesabi",
+  "title": "Sadece Beklemek Bu Yıl %21 Yaptı: Gram Altın Hesabı",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "Geçen yıl 10.000 TL'yi gram altına bırakanlar yaklaşık %21 kazandı. Aktif olmayanlar bu sefer daha iyi yaptı.",
+  "tags": [
+    "gram altın",
+    "altın yatırımı",
+    "getiri",
+    "backtest",
+    "yatırım",
+    "tasarruf",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "En iyi yatırım kararı hiçbir şey yapmamaktı.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bars resting still quiet"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Geçen yıl piyasalar çalkandı, herkes doğru anı bekledi — ama doğru an zaten bir yıl öncesiydi.",
+      "visual": {
+        "type": "concept",
+        "query": "person watching financial news screen stress"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "10 bin TL gram altına koysaydın, yaklaşık yüzde yirmi bir büyürdü — bugün 12 bin 100 TL olurdu.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "Gram Altın",
+          "unit": "TL",
+          "points": [
+            5189.66,
+            5762.96,
+            5973.38,
+            6585.85,
+            6802.65,
+            6838.62,
+            6143.79,
+            6183.8,
+            6279.45
+          ],
+          "x": [
+            "09/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26"
+          ],
+          "amount": 10000,
+          "end_value": 12100,
+          "pct": 21
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "İki bin yüz TL kâr — ve tek yaptığın şey beklemekti. Altını tutan, haberlerle boğuşandan önde çıktı.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins savings hands wealth"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Önümüzdeki altı ayda altın için ne düşünmek gerekiyor, onu da hesaplıyorum. Kaçırmak istemiyorsan abone ol — her gün piyasanın özetini 60 saniyede buraya getiriyorum.",
+      "visual": {
+        "type": "concept",
+        "query": "investment planning future growth calendar"
+      }
+    }
+  ]
+}

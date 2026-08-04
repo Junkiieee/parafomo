@@ -1,0 +1,71 @@
+{
+  "slug": "altin-mi-dolar-mi-borsa-mi-3-yilda-gercek-hesap",
+  "title": "Altın mı, Dolar mı, Borsa mı? 3 Yılda Gerçek Hesap",
+  "category": "GETİRİ",
+  "format": "comparison",
+  "description": "3 yıl önce 10.000 TL altına girseydin 37.404 TL olurdu; dolarda 17.312, borsada 16.090. Hangisi gerçekten kazandırdı?",
+  "tags": ["altın", "dolar", "borsa", "yatırım", "getiri", "karşılaştırma", "bist100", "gramaltın", "parafomo"],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "3 yıl önce 10 bin TL'n vardı. Altın mı, dolar mı, borsa mı — hangisi seni zengin ederdi?",
+      "visual": {
+        "type": "concept",
+        "query": "gold bars dollar bills stock chart comparison"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Borsaya koysaydın bugün yaklaşık 16 bin 90 TL — yüzde 61 kazanç.",
+      "visual": {
+        "type": "chart",
+        "query": "BIST 100 grafik",
+        "chart": {
+          "kind": "line",
+          "label": "BIST 100",
+          "unit": "",
+          "points": [8334.9, 7514.1, 7948.6, 7470.2, 8496.7, 9193.7, 9142.4, 10045.7, 10400.5, 10647.9, 10638.6, 9665.8, 9652.0, 9830.6, 10004.4, 9658.7, 9659.5, 9948.5, 10743.2, 11288.1, 13717.8, 13458.1, 14442.6, 13662.8, 14121.8, 13458.1, 13458.1, 13458.1],
+          "x": ["09/23", "11/23", "12/23", "01/24", "02/24", "03/24", "04/24", "05/24", "06/24", "07/24", "08/24", "11/24", "01/25", "02/25", "03/25", "04/25", "05/25", "07/25", "08/25", "09/25", "11/25", "12/25", "01/26", "04/26", "05/26", "06/26", "07/26", "08/26"],
+          "amount": 10000,
+          "end_value": 16090,
+          "pct": 61
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Dolara koysaydın yaklaşık 17 bin 312 TL — yüzde 73. Dolardan biraz iyi.",
+      "visual": {
+        "type": "concept",
+        "query": "US dollar Turkish lira exchange rate currency"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama gram altına girseydin? Bugün yaklaşık 37 bin 404 TL — yüzde 274. Ne borsayı ne doları bıraktı; altın farkla önde.",
+      "visual": {
+        "type": "chart",
+        "query": "gram altın fiyat grafik",
+        "chart": {
+          "kind": "line",
+          "label": "Gram Altın",
+          "unit": "TL",
+          "points": [1678.99, 1896.39, 1957.39, 1999.33, 2052.63, 2307.68, 2375.41, 2444.62, 2477.0, 2658.5, 2737.99, 2962.34, 3241.97, 3330.61, 3865.35, 4166.22, 4218.05, 4351.41, 4643.36, 5189.66, 5762.96, 5973.38, 6585.85, 6802.65, 6838.62, 6143.79, 6183.8, 6281.34],
+          "x": ["09/23", "11/23", "12/23", "01/24", "02/24", "03/24", "04/24", "05/24", "06/24", "07/24", "08/24", "11/24", "01/25", "02/25", "03/25", "04/25", "05/25", "07/25", "08/25", "09/25", "11/25", "12/25", "01/26", "04/26", "05/26", "06/26", "07/26", "08/26"],
+          "amount": 10000,
+          "end_value": 37404,
+          "pct": 274
+        }
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki önümüzdeki 3 yılda sıralama değişir mi? Hangi varlık öne geçer? Günlük yanıt için abone ol — parafomo.com'a gel.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification bell financial advice"
+      }
+    }
+  ]
+}
