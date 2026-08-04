@@ -1,9 +1,9 @@
 ---
-title: "Faiz Nedir? Ekonomiyi, Borsayı ve Dolar'ı Nasıl Etkiler?"
-description: "Faiz nedir, merkez bankaları neden faiz değiştirir ve bu kararlar dolar kuru, borsa, mevduat, kredi maliyetlerini nasıl etkiler? Türkiye bağlamıyla tam rehber."
-pubDate: 2026-07-06
+title: "Ekonomide Faiz Nedir? Borsayı, Dolar'ı ve Mevduatı Nasıl Etkiler?"
+description: "Ekonomide faiz nedir, merkez bankaları neden faiz değiştirir ve bu kararlar dolar kuru, borsa, mevduat, kredi maliyetlerini nasıl etkiler? Türkiye bağlamıyla tam rehber."
+pubDate: 2026-08-04
 category: "Ekonomi"
-tags: ["faiz nedir", "merkez bankası faizi", "tcmb faiz kararı", "faiz etkisi", "ekonomi", "enflasyon"]
+tags: ["ekonomide faiz nedir", "faiz nedir", "merkez bankası faizi", "tcmb faiz kararı", "faiz etkisi", "ekonomi", "enflasyon"]
 readingTime: 7
 featured: false
 faq:
@@ -12,7 +12,7 @@ faq:
   - q: "Faiz artınca dolar neden yükselir?"
     a: "Faiz arttığında TL mevduat ve tahvil daha cazip hale gelir; yabancı yatırımcılar dolar satıp TL alır. Bu dolar talebini azaltır, TL'yi güçlendirir (dolar düşer). Ancak Türkiye'de güven ortamı bozuksa bu mekanizma çalışmayabilir."
   - q: "TCMB faizi ne zaman açıklar?"
-    a: "TCMB Para Politikası Kurulu (PPK) her ay belirlenen takvimde toplanır; bir sonraki karar Temmuz 2026'da açıklanacak. Kararın tarihi ve saati TCMB'nin resmi web sitesinde duyurulur."
+    a: "TCMB Para Politikası Kurulu (PPK) her ay belirlenen takvimde toplanır ve faiz kararı açıklanır. Güncel toplantı tarihlerini TCMB'nin resmi web sitesinden veya parafomo.com Ekonomik Takvim sayfasından takip edebilirsin."
   - q: "Faiz artışı borsayı neden düşürür?"
     a: "Yüksek faiz ortamında risksiz mevduat/tahvil getirisi artar; hisse senedine olan talep azalır. Aynı zamanda şirketlerin kredi maliyeti yükselir, kârları düşer. Bu iki etki birden hisse değerlemelerini baskılar."
   - q: "Faiz düşünce mevduatımın getirisi ne olur?"

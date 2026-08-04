@@ -1,9 +1,9 @@
 ---
-title: "Fed Faiz Kararı Nedir? ABD Merkez Bankası Faizi TL ve Borsayı Nasıl Etkiler?"
-description: "Fed faiz kararı nedir, nasıl alınır ve Türkiye'deki yatırımcıyı nasıl etkiler? Dolar/TL, BIST ve mevduata yansımaları sade bir dille."
-pubDate: 2026-07-25
+title: "Fed Faiz Kararı Nedir? 2026 FOMC Takvimi ve Türkiye'ye Etkisi"
+description: "Fed faiz kararı nedir, FOMC 2026 toplantı tarihleri ve Türkiye'deki yatırımcıyı nasıl etkiler? Dolar/TL, BIST ve mevduata yansımaları sade bir dille."
+pubDate: 2026-08-04
 category: "Ekonomi"
-tags: ["fed faiz kararı", "abd merkez bankası", "faiz politikası", "dolar tl", "fomc"]
+tags: ["fed faiz kararı", "abd merkez bankası", "faiz politikası", "dolar tl", "fomc", "fed kararı 2026"]
 readingTime: 8
 featured: false
 faq:
@@ -98,13 +98,21 @@ TCMB, Fed'den bağımsız karar alır; ancak kur baskısı altındayken Fed'in y
 
 > **Not:** Yukarıdaki ilişkiler genel eğilimdir; her karar dönemi benzersizdir. Tek bir kararın etkisi bazen önceden fiyatlanmış olabilir.
 
-## Peki 29 Temmuz 2026 Kararı Ne Anlama Gelecek?
+## 2026 FOMC Toplantı Takvimi — Kalan Tarihler
 
-Fed'in 29 Temmuz 2026 toplantısı, piyasaların odaklandığı kritik bir noktada. Piyasalar Fed'in faizi sabit tutmasını öngörüyor ancak olası bir sürpriz (beklenmedik artış ya da güvercin mesajlar) TL ve BIST'te sert hareketlere yol açabilir.
+FOMC yılda 8 kez toplanır. 2026'da Temmuz toplantısı tamamlandı; yıl içinde kalan üç toplantı Türkiye piyasaları için kritik izlenme noktaları:
 
-Kararın ardından dikkat edilmesi gereken üç şey:
+| Toplantı | Tarih | Karar Açıklama (Türkiye Saati) |
+|----------|-------|-------------------------------|
+| Eylül 2026 | 15–16 Eylül 2026 | 16 Eylül, ~22:00 TSİ |
+| Ekim 2026 | 28–29 Ekim 2026 | 29 Ekim, ~21:00 TSİ |
+| Aralık 2026 | 9–10 Aralık 2026 | 10 Aralık, ~22:00 TSİ |
 
-1. **Karar metnindeki dil:** "Veri bağımlı" ifadesi temkin, "gerekirse indirim hazırlığı" ifadesi ise güvercin sinyal verir.
+> **Not:** Tarihleri kesinleştirmek için Fed'in resmi sitesini (federalreserve.gov) ve [Ekonomik Takvim](/ekonomik-takvim) sayfamızı kontrol edin.
+
+Her kararın ardından dikkat edilmesi gereken üç şey:
+
+1. **Karar metnindeki dil:** "Veri bağımlı" ifadesi temkin, "gerekirse indirim hazırlığı" ifadesi güvercin sinyal verir.
 2. **Nokta grafiği (dot plot):** Komite üyelerinin yıl sonu faiz tahminleri. Tahminler düşerse piyasalar sevinir.
 3. **Başkanlık basın toplantısı:** Söyledikleri kadar söylemedikleri de önemlidir.
 
