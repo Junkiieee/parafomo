@@ -25,7 +25,8 @@ DRY=0
 
 STAMP="$(date -u +%Y%m%d-%H%M)"
 LOGDIR="$REPO/agent/logs"; mkdir -p "$LOGDIR"
-MODEL="${AGENT_MODEL:-claude-sonnet-4-6}"
+MODEL="${AGENT_MODEL:-opus}"
+EFFORT="${AGENT_EFFORT:-xhigh}"
 
 echo "[night $STAMP] başlıyor (model=$MODEL, dry=$DRY)"
 
@@ -49,14 +50,17 @@ if [ "$DRY" = 1 ]; then
 fi
 
 # 4) Beyni çalıştır — TAM ÖZERK headless (cron'da izin sorusuna takılmamalı)
-#    AGENT_MAX_TURNS ayarlıysa turn tavanı uygulanır (ilk gözetimli koşu / bütçe kontrolü).
-TURN_ARGS=()
-[ -n "${AGENT_MAX_TURNS:-}" ] && TURN_ARGS=(--max-turns "$AGENT_MAX_TURNS")
-echo "[night] beyin başlıyor ${AGENT_MAX_TURNS:+(max-turns=$AGENT_MAX_TURNS)} ..."
+#    Model=Opus, effort=xhigh (derin muhakeme). Opsiyonel knob'lar:
+#    AGENT_MAX_TURNS (turn tavanı), AGENT_MAX_BUDGET (dolar tavanı).
+EXTRA=()
+[ -n "${AGENT_MAX_TURNS:-}" ]  && EXTRA+=(--max-turns "$AGENT_MAX_TURNS")
+[ -n "${AGENT_MAX_BUDGET:-}" ] && EXTRA+=(--max-budget-usd "$AGENT_MAX_BUDGET")
+echo "[night] beyin başlıyor (model=$MODEL, effort=$EFFORT${AGENT_MAX_TURNS:+, max-turns=$AGENT_MAX_TURNS}) ..."
 claude -p "$PROMPT" \
   --model "$MODEL" \
+  --effort "$EFFORT" \
   --dangerously-skip-permissions \
-  "${TURN_ARGS[@]}" \
+  "${EXTRA[@]}" \
   < /dev/null \
   > "$LOGDIR/night-$STAMP.log" 2>&1 \
   || echo "[uyarı] beyin oturumu hata/limit ile bitti (zarif çöküş — taban cron'lar sürüyor)"
