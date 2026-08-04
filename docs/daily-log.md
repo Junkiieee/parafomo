@@ -4,6 +4,62 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-04 — Açığa Satış (Short Selling) Nedir? Borsada Düşüşten Nasıl Kazanılır?
+
+**Yayınlanan yazı:** [Açığa Satış (Short Selling) Nedir? Borsada Düşüşten Nasıl Kazanılır?](https://parafomo.com/blog/aciga-satis-nedir-short-selling/)
+Kategori: Borsa | Hedef sorgu: "açığa satış nedir" | ~1.100 kelime | Kanca: Evergreen borsa stratejisi
+
+---
+
+**X (Twitter) Thread Taslağı:**
+
+🧵 Borsada düşüşten para kazanmak mümkün mü?
+
+Evet — ve buna açığa satış (short selling) deniyor. İşte herkesin merak ettiği ama az anlaşılan bu strateji 👇
+
+1/ Açığa satış nedir? Elinde olmayan hisseyi ödünç alıp bugün satmak, fiyat düşünce ucuza geri alarak farka kâr etmek.
+
+2/ Somut örnek: Hisseyi 100 TL'den sat, 70 TL'ye geri al → 30 TL kâr. Ama 130 TL'ye çıkarsa → 30 TL zarar. Kayıp sınırsız olabilir.
+
+3/ Short squeeze tehlikesi: Herkes aynı anda "zararı kesmek" için alınca fiyat roket gibi fırlar. GameStop 2021 tarihe geçti.
+
+4/ Türkiye'de yasal: BIST'te Ödünç Pay Piyasası (ÖPP) üzerinden belirli hisselerde yapılabilir. Teminat zorunlu.
+
+5/ Kimler için? Deneyimli yatırımcılar + hedge amaçlı kurumsal oyuncular. Yeni başlayanlar için değil — önce temelleri öğren.
+
+👉 Detaylı rehber: parafomo.com/blog/aciga-satis-nedir-short-selling
+
+---
+
+**Instagram Post Metni:**
+
+BORSADA DÜŞÜŞTEN PARA KAZANMAK MÜMKÜN MÜ? 📉➡️💰
+
+Cevap: Evet — ve buna açığa satış (short selling) deniyor.
+
+🔑 Nasıl çalışır?
+📌 Hisseyi ödünç al, yüksek fiyattan sat
+📌 Fiyat düşünce ucuza geri al
+📌 Aradaki fark = kârın
+
+⚠️ Risk: Kayıp sınırsız olabilir — hisse ne kadar yükselebilirse o kadar zarar
+⚡ Short squeeze: Herkes aynı anda kapanınca fiyat aniden fırlar
+
+Türkiye'de BIST'te yasal, ama deneyimli yatırımcılara özgü.
+
+Tüm mekanizma, adım adım rehber ve BIST'te nasıl yapılır → biyografimizdeki linkte 👆
+
+#açığasatış #shortselling #borsa #BIST #yatırım #hissesenedi #borsa101 #parafomo
+
+---
+
+**✅ Bugün yapman gerekenler:**
+
+1. X thread + Instagram postunu yayınla — "short selling" konusu İngilizce kelimeyle de aranıyor, gönderi dilini geniş tut.
+2. Borsa/yatırım gruplarında (Twitter Türkçe finans çevresi, Telegram finans toplulukları) bu konuda soru soran birileri varsa yazıya yönlendir — spam değil, gerçekten sorana cevap.
+
+---
+
 ## 2026-08-04 — ABD İşsizlik Oranı Nedir? NFP Verisi Fed Faizini ve TL'yi Nasıl Etkiler?
 
 **Yayınlanan yazı:** [ABD İşsizlik Oranı Nedir? NFP Verisi Fed Faizini ve TL'yi Nasıl Etkiler?](https://parafomo.com/blog/abd-issizlik-orani-nedir-nfp-etkisi/)

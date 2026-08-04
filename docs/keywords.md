@@ -6,6 +6,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Sıradaki konular (öncelik sırasıyla)
 
+- [x] Açığa satış (short selling) nedir, borsada düşüşten nasıl kazanılır? — `Borsa` — hedef: "açığa satış nedir"
 - [x] Halka arz (IPO) nedir, nasıl yatırım yapılır? — `Borsa` — hedef: "halka arz nedir"
 - [x] Portföy çeşitlendirmesi nasıl yapılır? — `Yatırım` — hedef: "portföy çeşitlendirmesi nasıl yapılır"
 - [x] Konut yatırımı mı hisse senedi mi? — `Yatırım` — hedef: "konut yatırımı mı hisse senedi mi"
@@ -50,6 +51,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] ETF nedir? Borsa yatırım fonu rehberi — `Yatırım` — hedef: "etf nedir"
 
 ## Yayınlananlar (otomasyon buraya ekler)
+
+- [x] Açığa Satış (Short Selling) Nedir? Borsada Düşüşten Nasıl Kazanılır? — `aciga-satis-nedir-short-selling` (backlog: evergreen borsa; "açığa satış nedir" sorgusu)
 
 - [x] ABD İşsizlik Oranı Nedir? NFP Verisi Fed Faizini ve TL'yi Nasıl Etkiler? — `abd-issizlik-orani-nedir-nfp-etkisi` (takvim: 7 Ağustos 2026 NFP + İşsizlik Oranı açıklaması; GSC "fed faiz kararı" ailesi ile örtüşen ek açı)
 
