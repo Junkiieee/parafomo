@@ -189,8 +189,42 @@ def sec_experiments():
         out(f"_(deneyler alınamadı: {e})_\n")
 
 
+def sec_kpi_trend():
+    try:
+        p = os.path.join(MEM, "kpi-history.jsonl")
+        if not os.path.exists(p):
+            return
+        rows = []
+        for line in open(p, encoding="utf-8"):
+            line = line.strip()
+            if line:
+                try:
+                    rows.append(json.loads(line))
+                except Exception:
+                    pass
+        if not rows:
+            return
+        rows = rows[-14:]
+        out("## KPI TAKİP: kuzey yıldızı metrikleri zaman içinde (HAREKETİ izle, hamlelerinle ilişkilendir)")
+        out("| Tarih | Organik/hf | Direct% | GSC tık | GSC gös | CTR% | En iyi poz | YT izlenme | YT abone |")
+        out("|---|---|---|---|---|---|---|---|---|")
+        for r in rows:
+            out(f"| {r.get('date','')} | {r.get('organic_week',0)} | {r.get('direct_share',0)} | {r.get('gsc_clicks_week',0)} | {r.get('gsc_impr_week',0)} | {r.get('gsc_ctr',0)} | {r.get('gsc_best_pos',0)} | {r.get('yt_views',0)} | {r.get('yt_subs',0)} |")
+        out()
+        if len(rows) >= 2:
+            a, b = rows[0], rows[-1]
+            out(f"_Değişim ({a.get('date')} → {b.get('date')}): organik {a.get('organic_week',0)}→{b.get('organic_week',0)} · "
+                f"GSC gösterim {a.get('gsc_impr_week',0)}→{b.get('gsc_impr_week',0)} · "
+                f"GSC tıklama {a.get('gsc_clicks_week',0)}→{b.get('gsc_clicks_week',0)} · "
+                f"YT izlenme {a.get('yt_views',0)}→{b.get('yt_views',0)}. Hangi hamle hangi kımıldamayı yaptı, Adım 0'da bağla._")
+        out()
+    except Exception as e:
+        out(f"_(KPI takip alınamadı: {e})_\n")
+
+
 if __name__ == "__main__":
-    # Hafıza önce (karar öncesi görülsün), sonra ham veri.
+    # KPI trend + hafıza önce (karar öncesi görülsün), sonra ham veri.
+    sec_kpi_trend()
     sec_learnings()
     sec_experiments()
     sec_gsc_queries()

@@ -41,6 +41,7 @@ Digest'teki **"HAM:"** bölümleri (GSC ham sorgular, öğrenme motoru detayı, 
 - **AÇIK DENEYLERİ ölç ve kapat:** Digest'teki "HAFIZA: Açık deneyler" listesindeki her deney için, izlenen metriğin GERÇEK güncel değerini digest'ten (GSC/GA4/YouTube) bul, baseline ile kıyasla. Olgunlaşan (yeterli süre/veri geçmiş) her deneyi kapat:
   `python3 agent/exp.py close --id <id> --status won|lost|inconclusive --outcome "gerçek sonuç sayıyla" --learning "çıkan kalıcı ders"`
   (Henüz erkense açık bırak.) Kapattığın deney otomatik `learnings.md`'ye ders olarak düşer.
+- **KPI TRENDİNİ oku ve ilişkilendir:** Digest'teki "KPI TAKİP" tablosu (organik trafik, GSC tıklama/gösterim/CTR/pozisyon, YouTube izlenme/abone — zaman içinde). Hareketi (artış/düşüş) dünkü/geçen haftaki hamlelerinle **bağla**: hangi hamle hangi metriği kımıldattı? Neyin işe yaradığını buradan gör, öğrenime çevir. Bu senin skor tabelan — her gece nereye gittiğini bil.
 - Digest'teki cron hata taraması + logları incele: hangi iş başarısız, hangi metrik düştü?
 - **Kök nedeni bul ve DÜZELT:** hata bir script/prompt/kendi mantığındaysa düzelt (kendi `agent/growth-agent.md` dahil). "Nerede yanlış yaptım"ı dürüstçe yanıtla, mazeret yok.
 - Öğrendiğini **bu geceki kararlara uygula.**
@@ -91,6 +92,7 @@ YouTube ile aynı çerçeve. **Reels = büyüme motoru.** Her bileşeni günlük
 Raporlama artık **TEK bir toplu e-posta** (Telegram YOK). `agent/state/report.md` doğrudan bu e-postanın gövdesidir — kullanıcının o sabah tek bakışta her şeyi anlayacağı **tek belge.** Şu bölümleri içersin:
 
 1. **`agent/state/report.md`** (= e-posta gövdesi):
+   - **📊 KPI TAKİP (en üstte):** kuzey yıldızı metriklerinin bugünkü değeri + geçen haftaya/düne göre yönü — organik trafik, GSC tıklama/gösterim/CTR/en iyi pozisyon, YouTube izlenme/abone. Kısa tablo/satır; kullanıcı sabah tek bakışta "nereye gidiyoruz" görsün. Kımıldayan varsa hangi hamleye bağladığını yaz.
    - **① Dün: planlanan vs gerçekleşen + düzeltmeler** (Adım 0 otopsisi — nerede hata oldu, ne düzelttin).
    - **② Bugün ne yaptım** — üç kanalda (web/YT/IG) somut işler + hangi kaldıraç.
    - **③ BUGÜN NE ZAMAN NE PAYLAŞILACAK** — net takvim tablosu: gün içinde hangi saatte hangi içerik/video/gönderi yayınlanacak (viral publish slotları, shorts 11:00, blog, IG). Kullanıcı "bugün ne çıkacak" diye buraya baksın.

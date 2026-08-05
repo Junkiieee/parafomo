@@ -23,7 +23,9 @@ DATE="$(date -u +%Y-%m-%dT%H:%MZ)"
   echo
 
   echo "## 1) Dürüst pano (dashboard.py — 8 haftalık trend, organik vs direct)"
-  timeout 150 "$VPY" scripts/dashboard.py 2>/dev/null | sed -n '1,90p' || echo "(dashboard alınamadı)"
+  timeout 150 "$VPY" scripts/dashboard.py --json "$OUT_DIR/kpi-today.json" 2>/dev/null | sed -n '1,90p' || echo "(dashboard alınamadı)"
+  # KPI zaman serisine bugünü ekle (trafik/tıklama/gösterim/izlenme takibi)
+  "$VPY" "$REPO/agent/kpi-track.py" "$OUT_DIR/kpi-today.json" 2>/dev/null || true
   echo
 
   echo "## 2) Öğrenme raporu (learn/decide — ne tutuyor: format/ses/saat/retention)"

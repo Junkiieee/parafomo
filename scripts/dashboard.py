@@ -194,6 +194,7 @@ def gsc_section(sc):
     lines.append("| Hafta | Tıklama | Gösterim | CTR |")
     lines.append("|---|---|---|---|")
     click_series = []
+    imp_series = []
     for (s, e) in buckets:
         clicks = imps = 0
         d = s
@@ -205,6 +206,7 @@ def gsc_section(sc):
             d += timedelta(days=1)
         ctr = (clicks / imps * 100) if imps else 0
         click_series.append(clicks)
+        imp_series.append(imps)
         lines.append(f"| {s.isoformat()} | {clicks} | {imps} | %{ctr:.1f} |")
     lines.append("")
     lines.append(f"**Tıklama trendi:** `{spark(click_series)}`  {trend_word(click_series)}")
@@ -232,7 +234,10 @@ def gsc_section(sc):
     for x in sorted(opp, key=lambda x: -x["impressions"])[:8]:
         lines.append(f"- `{x['keys'][0]}` — sıra {x['position']:.1f}, gös {int(x['impressions'])}")
     lines.append("")
-    return lines, {"clicks_last": click_series[-1], "best_pos": best_pos, "opportunities": len(opp)}
+    _imps_last = imp_series[-1] if imp_series else 0
+    _ctr_last = (click_series[-1] / _imps_last * 100) if _imps_last else 0
+    return lines, {"clicks_last": click_series[-1], "impressions_last": _imps_last,
+                   "ctr_last": round(_ctr_last, 2), "best_pos": best_pos, "opportunities": len(opp)}
 
 
 # ----------------------------- YouTube -----------------------------
@@ -368,6 +373,18 @@ def main():
         f.write(report)
     print(report)
     print(f"\n[+] Pano yazıldı -> {OUT_MD}")
+
+    # Yapısal KPI çıktısı (büyüme ajanı takibi için): --json <yol>
+    if "--json" in sys.argv:
+        import json as _json
+        try:
+            jpath = sys.argv[sys.argv.index("--json") + 1]
+            snap = {"date": date.today().isoformat(), "ga": ga, "gsc": gsc, "yt": yt}
+            with open(jpath, "w", encoding="utf-8") as jf:
+                _json.dump(snap, jf, ensure_ascii=False)
+            print(f"[+] KPI JSON -> {jpath}")
+        except Exception as e:
+            print(f"[!] KPI JSON yazılamadı: {e}")
 
     if "--telegram" in sys.argv:
         organic = ga.get("organic_last", 0)
