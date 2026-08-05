@@ -17,6 +17,23 @@ faq:
     a: "NFP (tarım dışı istihdam), işsizlik oranı, CPI ve PCE (çekirdek enflasyon) Fed'in en çok baktığı dört veri noktasıdır."
   - q: "Fed kararı ne zaman açıklanır?"
     a: "Fed, yılda 8 kez FOMC toplantısı yapar. Kararlar Türkiye saatiyle genellikle gece 21:00'de açıklanır; ardından Fed Başkanı basın toplantısı düzenler."
+shorts:
+  - "Fed kararını %70 olasılık belirliyor, peki nasıl?"
+  - "CME FedWatch aracı, Fed faiz vadeli sözleşmelerinden hesaplanan olasılıkları göstererek piyasanın kolektif beklentisini tek ekranda özetliyor."
+  - "Olasılık yüzde yetmişin üzerindeyse piyasa o kararı zaten fiyatlamış sayıyor; gerçek sürpriz ancak bu eşiğin altında gerçekleşiyor."
+  - "NFP, işsizlik, CPI ve Core PCE olmak üzere dört temel veri, Fed'in çift mandatını ölçerek faiz kararlarını doğrudan şekillendiriyor."
+  - "Peki bu veriler açıklandığında TL ve borsalar nasıl tepki verecek? Tüm rehber için parafomo.com'u ziyaret et ve güncel analizleri kaçırmamak için kanala abone ol."
+shorts_broll:
+  - "federal reserve building exterior"
+  - "interest rate probability chart screen"
+  - "economic data NFP CPI report"
+  - "stock market trader reaction screen"
+shorts_visuals:
+  - "concept|probability percentage gauge finance decision"
+  - "concept|CME futures market trading screen chart"
+  - "concept|70 percent threshold priced in market graph"
+  - "concept|NFP CPI economic data report dashboard"
+  - "concept|turkish lira dollar exchange rate screen"
 ---
 
 Fed faiz kararının ne olacağını bilmek pek çok yatırımcının hayaline girer. Dolar mı güçlenecek, TL üzerinde baskı mı artacak, borsalar ne tepki verecek? Bunları tam kesinlikle öngörmek mümkün değil; ama piyasanın *beklentisini* okumak ve bu beklentinin neden değiştiğini anlamak hem mümkün hem son derece işe yarar.
