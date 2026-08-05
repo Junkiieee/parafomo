@@ -10,6 +10,7 @@ export PATH="/root/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export HOME="/root"
 
 REPO="/root/parafomo"
+. "$REPO/scripts/lib/gitsync.sh"
 VENV_PY="/root/.venvs/parafomo/bin/python"
 [ -x "$VENV_PY" ] || VENV_PY="python3"
 cd "$REPO" || { echo "HATA: repo yok"; exit 1; }
@@ -42,7 +43,7 @@ rm -f public/social/altin-today.jpg 2>/dev/null || true  # önizleme artığı
 git add public/social/altin-*.jpg
 if ! git diff --cached --quiet; then
   git commit -m "altın: günlük IG kartı ${STAMP}" >/dev/null 2>&1
-  if git push origin main 2>&1 | sed 's/^/    [push] /'; then
+  if git_push_retry main; then
     echo "[+] Push başarılı"
   else
     echo "HATA: push başarısız"; exit 1

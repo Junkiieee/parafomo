@@ -14,6 +14,7 @@ export PATH="/root/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export HOME="/root"
 
 REPO="/root/parafomo"
+. "$REPO/scripts/lib/gitsync.sh"
 LOG_DIR="$REPO/logs"
 PROMPT_FILE="$REPO/scripts/daily-prompt.md"
 mkdir -p "$LOG_DIR"
@@ -62,7 +63,7 @@ fi
 # 4) Push (Cloudflare deploy'unu tetikler) — SSH deploy key ile şifresiz
 if git log origin/main..HEAD --oneline 2>/dev/null | grep -q .; then
   echo "[*] Yerel commit'ler push ediliyor"
-  if git push origin main 2>&1 | sed 's/^/    [push] /'; then
+  if git_push_retry main; then
     echo "[+] Push başarılı — Cloudflare deploy tetiklendi"
   else
     echo "[!] HATA: push başarısız (SSH deploy key eklendi mi?)"

@@ -66,11 +66,23 @@ def _num(s):
         return None
 
 
+def _get_json(url, tries=3):
+    """Ağ/yarım-JSON hatalarına dayanıklı fetch (Truncgil arada truncated dönüyor)."""
+    import time
+    last = None
+    for _ in range(tries):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (ParaFOMO)"})
+            return json.loads(urllib.request.urlopen(req, timeout=25).read().decode("utf-8", "ignore"))
+        except Exception as e:
+            last = e
+            time.sleep(1.5)
+    raise last
+
+
 def fetch():
-    # NOT: Truncgil v4 today.json fiyat alanlarını boşalttı (2026-08); v3 çalışıyor.
-    # v3 anahtarları küçük-harf tireli, değerler Türkçe biçimli string ("6.208,20").
-    req = urllib.request.Request(API, headers={"User-Agent": "Mozilla/5.0 (ParaFOMO)"})
-    data = json.loads(urllib.request.urlopen(req, timeout=20).read().decode("utf-8", "ignore"))
+    # Truncgil v4 fiyatları boşalttı (2026-08) → v3. Arada truncated JSON → _get_json retry.
+    data = _get_json(API)
 
     def pick(key, prop):
         return _num((data.get(key) or {}).get(prop))

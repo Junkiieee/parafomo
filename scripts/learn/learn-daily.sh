@@ -12,6 +12,7 @@ export PATH="/root/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export HOME="/root"
 
 REPO="/root/parafomo"
+. "$REPO/scripts/lib/gitsync.sh"
 VPY="/root/.venvs/parafomo/bin/python"
 LEARN="$REPO/scripts/learn"
 cd "$REPO" || { echo "HATA: repo yok"; exit 1; }
@@ -39,7 +40,7 @@ elif [ -n "$(git status --porcelain docs/learning-report.md src/data/seo-targets
   git add docs/learning-report.md src/data/seo-targets.json
   git commit -m "öğrenme: günlük rapor + SEO iç-link hedefleri ($(date -u '+%F'))" || true
   { git fetch origin main && git rebase --autostash origin/main; } >/dev/null 2>&1 || echo "UYARI: pull başarısız (devam)"
-  git push origin main 2>&1 | sed 's/^/    [push] /' || echo "UYARI: push başarısız"
+  git_push_retry main || echo "UYARI: push başarısız"
 fi
 
 echo "[$(date -u '+%F %T UTC')] Öğrenme döngüsü tamamlandı"

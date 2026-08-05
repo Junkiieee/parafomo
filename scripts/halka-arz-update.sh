@@ -13,6 +13,7 @@ export PATH="/root/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export HOME="/root"
 
 REPO="/root/parafomo"
+. "$REPO/scripts/lib/gitsync.sh"
 cd "$REPO" || { echo "HATA: repo yok"; exit 1; }
 
 echo "[$(date -u '+%F %T UTC')] Halka arz güncelleme başladı"
@@ -32,7 +33,7 @@ fi
 echo "[*] Değişiklik bulundu, commit + push"
 git add data/halka-arz.json public/halka-arz.json
 git commit -m "halka-arz: takvim verisi güncellendi (otomatik $(date -u '+%F %H:%M UTC'))" || { echo "commit başarısız"; exit 0; }
-if git push origin main 2>&1 | sed 's/^/  [push] /'; then
+if git_push_retry main; then
   echo "[+] Push başarılı — Cloudflare deploy tetiklendi"
 else
   echo "[!] Push başarısız"

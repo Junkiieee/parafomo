@@ -12,6 +12,7 @@ export PATH="/root/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export HOME="/root"
 
 REPO="/root/parafomo"
+. "$REPO/scripts/lib/gitsync.sh"
 VENV_PY="/root/.venvs/parafomo/bin/python"
 [ -x "$VENV_PY" ] || VENV_PY="python3"
 cd "$REPO" || { echo "HATA: repo yok"; exit 1; }
@@ -41,7 +42,7 @@ done
 git add public/social/halka-arz-*-tarih.jpg 2>/dev/null
 if ! git diff --cached --quiet; then
   git commit -m "halka arz: tarih kartı ($SEL )" >/dev/null 2>&1
-  git push origin main 2>&1 | sed 's/^/    [push] /' || { echo "HATA: push"; exit 1; }
+  git_push_retry main || { echo "HATA: push"; exit 1; }
 fi
 
 for s in $SEL; do
