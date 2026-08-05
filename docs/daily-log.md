@@ -4,6 +4,76 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-05
+
+**Yayınlanan yazı:** [Fed Faiz Kararı Ne Olur? Piyasa Beklentilerini Okuma Rehberi](/blog/fed-faiz-karari-ne-olur-beklentiler)
+*Seçim gerekçesi:* GSC'de "fed faiz kararı ne olur / yorumlar" sorguları açık ve tıklamasız (gösterim 5-10, sıra 19-26); mevcut `fed-faiz-karari-nedir-etkisi` yalnızca "nedir" niyetini karşılıyor. 7 Ağustos NFP verisiyle de zamanlama mükemmel. Learning report'ta FOMC içeriği en yüksek skor (8.12).
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+Fed faiz kararı ne olur diye merak ediyorsan bunu oku 🧵
+
+Fed kararını tahmin edemezsin — ama piyasanın NE BEKLEDIĞINI okuyabilirsin.
+Bunun için üç araç yeterli.
+
+**Tweet 2:**
+1️⃣ CME FedWatch
+
+Fed vadeli sözleşmelerinden hesaplanan "piyasa beklentisi" tablosu.
+Eylül indirimi %62 olasılıkla bekleniyor mu? Bu beklenti NFP sonrası değişirse — orası esas hareket.
+
+**Tweet 3:**
+2️⃣ Dot Plot
+
+Fed üyelerinin kendi faiz projeksiyonları.
+Medyan nokta yukarı kaydıysa → faiz daha uzun süre yüksek.
+Aşağı kaydıysa → indirim yaklaşıyor sinyali.
+
+**Tweet 4:**
+3️⃣ Bu 4 veri Fed'i doğrudan etkiliyor:
+• NFP (tarım dışı istihdam) ← 7 Ağustos'ta açıklanıyor!
+• İşsizlik oranı
+• CPI (enflasyon)
+• PCE (Fed'in favori enflasyon göstergesi)
+
+**Tweet 5:**
+Bu Cuma NFP verisi öncesinde FedWatch'ta Eylül olasılığını not et.
+Veri sonrası nasıl kaydığına bak.
+O kayma, verinin piyasa gözünde önemini gösterir.
+
+Tam rehber → parafomo.com/blog/fed-faiz-karari-ne-olur-beklentiler
+
+---
+
+### 📸 Instagram Post / Carousel Metni
+
+**Caption:**
+Fed faiz kararı ne olur? Piyasanın beklentisini okumayı öğren 📊
+
+Slide 1: "Fed kararını bilemezsin — ama piyasa ne bekliyor bunu görebilirsin"
+Slide 2: CME FedWatch — olasılık tablosunu nasıl okursun
+Slide 3: Dot Plot — Fed'in kendi projeksiyonları
+Slide 4: NFP, CPI, PCE — bu 4 veri Fed'i yönlendiriyor
+Slide 5: 7 Ağustos NFP verisi öncesi ne yapmalısın
+
+Bu Cuma çıkacak NFP verisi Eylül faiz kararının seyrini belirleyecek. Hazır mısın?
+
+🔗 Linki bio'da bul → parafomo.com
+
+#fedFaizKararı #CMEFedWatch #DotPlot #NFP #ParaPolitikası #Dolar #TürkYatırımcısı #Ekonomi #Yatırım #Borsa
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **Thread'i X'te yayınla** — 7 Ağustos NFP güncelinden önce ideali bugün. Makaleye link ver.
+2. **Instagram carousel'i paylaş** — 5 slide'lık bir dizi için yukarıdaki caption ve slide başlıklarını kullan. Link bio'ya ekle.
+
+---
+
 ## 2026-08-04 — Açığa Satış (Short Selling) Nedir? Borsada Düşüşten Nasıl Kazanılır?
 
 **Yayınlanan yazı:** [Açığa Satış (Short Selling) Nedir? Borsada Düşüşten Nasıl Kazanılır?](https://parafomo.com/blog/aciga-satis-nedir-short-selling/)
