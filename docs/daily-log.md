@@ -4,6 +4,74 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-05 (2. yayın)
+
+**Yayınlanan yazı:** [P/D Oranı Nedir? Defter Değeriyle Hisse Senedi Nasıl Değerlenir?](https://parafomo.com/blog/pd-orani-nedir/)
+*Seçim gerekçesi:* Backlog tamamen tükendi; F/K oranı yazısının arama kümesini tamamlayan, yüksek hacimli "p/d oranı nedir" sorgusunu hedefleyen doğal bir devam yazısı. Evergreen borsa — özellikle BIST bankacılık hisseleri araştıranlar için kritik.
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+Bir hisse ucuz mu pahalı mı bunu tek rakamla anlayabilirsin 🧵
+
+P/D oranı. Türkiye'deki yatırımcının en çok atladığı ama en çok ihtiyaç duyduğu ölçüt.
+
+**Tweet 2:**
+P/D = Hisse Fiyatı ÷ Hisse Başına Defter Değeri
+
+Defter değeri = Şirketin net varlıkları (borçlar düşülmüş).
+
+Basitçe: şirketi bugün kapatsak hissedarlara ne düşer?
+
+**Tweet 3:**
+P/D < 1 → Şirket, sahip olduklarından ucuza işlem görüyor.
+
+Ama dikkat: her düşük P/D fırsat değil.
+Şirket zarar ediyorsa, özsermaye eriyor demektir.
+Bu = değer tuzağı.
+
+**Tweet 4:**
+Bankacılık hisselerinde P/D'ye F/K'dan çok bakılır.
+
+Neden? Bankaların değeri kârdan çok varlıklarında saklı.
+BIST bankalarında tarihsel P/D: 0,5 – 1,5 bandı.
+
+**Tweet 5:**
+En güçlü kombinasyon:
+✅ Düşük P/D
+✅ Yüksek ROE (özsermaye kârlılığı)
+
+İkisi bir arada → gözden kaçmış fırsat olabilir.
+
+Tüm rehber → parafomo.com/blog/pd-orani-nedir/
+
+---
+
+### 📸 Instagram Post / Carousel Metni
+
+**Caption:**
+Hisse ucuz mu pahalı mı? P/D oranı bunu söyler 📊
+
+Slide 1: "P/D oranı nedir? — Defter değerinin üzerinde mi altında mı?"
+Slide 2: Formül: Hisse Fiyatı ÷ Hisse Başına Özsermaye
+Slide 3: P/D < 1 ne anlama gelir? — Fırsat mı, tuzak mı?
+Slide 4: Bankacılık vs Teknoloji — Sektöre göre beklenen P/D aralıkları
+Slide 5: ROE ile birlikte kullan — İşte güçlü kombinasyon
+Slide 6: 📌 parafomo.com/blog/pd-orani-nedir/
+
+**Hashtags:** #borsayatırım #hissesenedi #temelanaliz #BIST #yatırım #parafomo
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş:** Yukarıdaki thread ve carousel metnini kopyalayıp bugün yayınla. En iyi saat: sabah 09:00–10:00 veya akşam 18:00–19:00 (Türkiye saati).
+2. **Bir toplulukta değer katarak paylaş:** r/BIST ya da Ekşi Sözlük'te "p/d oranı" veya "hisse değerleme" üzerine bir tartışma veya soru varsa yazına link vererek katkıda bulun — spam değil, gerçek fayda.
+
+---
+
 ## 2026-08-05
 
 **Yayınlanan yazı:** [Fed Faiz Kararı Ne Olur? Piyasa Beklentilerini Okuma Rehberi](/blog/fed-faiz-karari-ne-olur-beklentiler)
