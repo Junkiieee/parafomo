@@ -132,3 +132,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Emeklilikte ne kadar paraya ihtiyacın var? — `emeklilik-icin-ne-kadar-para` (backlog: evergreen emeklilik)
 - [x] Borsa teknik analiz temelleri: grafik okuma rehberi — `teknik-analiz-grafik-okuma` (backlog: evergreen borsa; "teknik analiz grafik okuma" sorgusu)
 - [x] Döviz Hesabı Nedir? Dövizde Nasıl Yatırım Yapılır? — `doviz-hesabi-nedir` (backlog: evergreen yatırım; "döviz hesabı nedir" sorgusu)
+- [x] Fed Faiz Kararı Ne Olur? Piyasa Beklentilerini Okuma Rehberi — `fed-faiz-karari-ne-olur-beklentiler` (GSC fırsatı: "fed faiz kararı ne olur / yorumlar" sorguları; CME FedWatch + dot plot + 7 Ağustos NFP bağlantısı)
