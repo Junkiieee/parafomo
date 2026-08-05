@@ -29,6 +29,8 @@ Temel formülle:
 
 > **Bileşik Tutar = Anapara × (1 + Faiz Oranı)^Dönem Sayısı**
 
+> 🧮 **Kendi rakamlarınızla deneyin:** [Bileşik Faiz Hesaplama aracımızla](/bilesik-faiz-hesaplama) başlangıç tutarınızı, aylık düzenli yatırımınızı ve süreyi girip paranızın yıllara göre nasıl büyüdüğünü grafikle görebilirsiniz.
+
 Somut örnek: 10.000 TL'yi yıllık %10 getiriyle yatırıyorsunuz.
 
 - 1. yıl sonu: 10.000 × 1,10 = **11.000 TL**

@@ -29,6 +29,7 @@ export HOME="/root"
 REPO="/root/parafomo"
 VPY="/root/.venvs/parafomo/bin/python"
 cd "$REPO" || { echo "HATA: repo yok"; exit 1; }
+. "$REPO/scripts/lib/gitsync.sh"
 
 # .env (PEXELS, TELEGRAM)
 set -a; . "$REPO/.env"; set +a
@@ -150,7 +151,7 @@ PY
   if [ -f "public/social/scenarios/$SLUG.json" ]; then
     git add "public/social/scenarios/$SLUG.json"
     git commit -m "viral-shorts: $SLUG senaryosu ($FORMAT, otomatik)" || true
-    git push origin main 2>&1 | sed 's/^/    [push] /' || echo "UYARI: push başarısız"
+    git_push_retry main
   fi
 fi
 
@@ -171,7 +172,7 @@ fi
 # RENDER + YAYIN (publish/full) — sıfır token.
 # ============================================================================
 echo "[*] Video üretiliyor..."
-if ! "$VPY" "$REPO/scripts/shorts-build.py" "$SLUG" --scenario "$SCEN" --engine google --voice "$VOICE"; then
+if ! "$VPY" "$REPO/scripts/shorts-build-v4.py" "$SLUG" --scenario "$SCEN" --engine google --voice "$VOICE"; then
   echo "HATA: video üretilemedi ($SLUG)"; exit 2
 fi
 

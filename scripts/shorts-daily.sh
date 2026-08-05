@@ -22,6 +22,7 @@ export HOME="/root"
 REPO="/root/parafomo"
 VPY="/root/.venvs/parafomo/bin/python"
 cd "$REPO" || { echo "HATA: repo yok"; exit 1; }
+. "$REPO/scripts/lib/gitsync.sh"
 
 # Mod: --prepare | --publish | (yok=full)
 MODE="full"
@@ -53,7 +54,7 @@ process_one() {
     if [ -n "$(git status --porcelain src/content/blog/)" ]; then
       git add src/content/blog/
       git commit -m "shorts: $slug senaryosu hazırlandı (gece, otomatik)" || true
-      git push origin main 2>&1 | sed 's/^/    [push] /' || echo "UYARI: push başarısız"
+      git_push_retry main
     fi
     echo "[prepare] $slug senaryosu hazır — gündüz publish edilecek."
     return 0
@@ -68,7 +69,7 @@ process_one() {
   echo "[*] Video üretiliyor..."
   local voice_flag="--voice"
   [ "$engine" = "edge" ] && voice_flag="--edge-voice"
-  if ! "$VPY" "$REPO/scripts/shorts-build.py" "$slug" --engine "$engine" "$voice_flag" "$voice"; then
+  if ! "$VPY" "$REPO/scripts/shorts-build-v4.py" "$slug" --engine "$engine" "$voice_flag" "$voice"; then
     echo "HATA: video üretilemedi ($slug) — atlanıyor"; return 2
   fi
 
@@ -95,7 +96,7 @@ process_one() {
   if [ -n "$(git status --porcelain src/content/blog/)" ]; then
     git add src/content/blog/
     git commit -m "shorts: $slug senaryosu kaydedildi (otomatik)" || true
-    git push origin main 2>&1 | sed 's/^/    [push] /' || echo "UYARI: push başarısız"
+    git_push_retry main
   fi
   echo "[+] Tamamlandı: $slug → $yt_url"
   return 0

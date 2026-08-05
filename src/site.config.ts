@@ -30,6 +30,7 @@ export const NAV = [
   { label: 'Kişisel Finans', href: '/kategori/kisisel-finans' },
   { label: 'Halka Arz', href: '/halka-arz' },
   { label: 'Ekonomik Takvim', href: '/ekonomik-takvim' },
+  { label: 'Faiz Hesaplama', href: '/bilesik-faiz-hesaplama' },
   { label: 'Hakkımızda', href: '/hakkimizda' },
 ];
 

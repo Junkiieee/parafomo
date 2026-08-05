@@ -99,8 +99,11 @@ def build_caption(meta, slug):
     desc = _clean(meta.get("description", ""))
     hook = title or desc[:80]
     body = desc if desc and desc != title else ""
-    cta = (f"\n\n📲 Tam rehber (ücretsiz): {site_link(slug)}\n"
-           f"🔔 Günlük altın · dolar · borsa · faiz → TAKİP ET @parafomo")
+    # Erişim sinyali: yorum + kaydetme, beğeniden daha güçlü sıralama sinyalidir.
+    cta = (f"\n\n💬 Sen ne düşünüyorsun? Yorumda yaz 👇\n"
+           f"📌 Unutmamak için KAYDET · paylaş\n"
+           f"🔔 Günlük altın · dolar · borsa · faiz → TAKİP ET @parafomo\n"
+           f"📲 Tam rehber (ücretsiz): {site_link(slug)}")
     cap = f"{hook}\n\n{body}{cta}\n\n{HASHTAGS}"
     return cap[:2100]  # IG caption sınırı 2200
 

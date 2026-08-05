@@ -1,0 +1,307 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+
+// Sunucuda varsayılan hesap — JS kapalıyken bile sayfa dolu görünsün (SEO + no-JS).
+const D = { principal: 10000, monthly: 2500, rate: 30, years: 10 };
+
+function project(principal: number, monthly: number, ratePct: number, years: number) {
+  const i = ratePct / 100 / 12;
+  const rows: { year: number; balance: number; contributed: number; earnings: number }[] = [];
+  let balance = principal;
+  let contributed = principal;
+  for (let m = 1; m <= years * 12; m++) {
+    balance = balance * (1 + i) + monthly;
+    contributed += monthly;
+    if (m % 12 === 0) {
+      rows.push({ year: m / 12, balance, contributed, earnings: balance - contributed });
+    }
+  }
+  const finalRow = rows[rows.length - 1];
+  return { rows, final: finalRow };
+}
+
+const base = project(D.principal, D.monthly, D.rate, D.years);
+const fmt = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+
+const faq = [
+  {
+    q: 'Bileşik faiz nasıl hesaplanır?',
+    a: 'Bileşik faiz formülü FV = P × (1 + i)^n şeklindedir. P başlangıç tutarı, i dönemsel faiz/getiri oranı (yıllık oranın dönem sayısına bölünmüş hali), n toplam dönem sayısıdır. Düzenli ek yatırım varsa buna bir de anüite (yıllık ödeme) terimi eklenir. ParaFOMO hesaplayıcısı bu iki bileşeni birlikte, aylık bazda hesaplar.',
+  },
+  {
+    q: 'Aylık düzenli yatırımın bileşik getiriye etkisi ne kadar?',
+    a: 'Çok büyüktür. Başlangıç tutarı tek seferlik büyürken, her ay eklenen düzenli tutar da kendi bileşik büyümesini başlatır. Uzun vadede toplam servetin büyük kısmı genellikle düzenli aylık katkılardan ve onların ürettiği getiriden gelir — tek seferlik başlangıçtan değil.',
+  },
+  {
+    q: 'Enflasyon bileşik getiriyi nasıl etkiler?',
+    a: 'Hesaplayıcı nominal (kâğıt üzerindeki) getiriyi gösterir. Gerçek satın alma gücünü görmek için beklenen yıllık enflasyonu getiri oranından düşürüp öyle hesaplamak gerekir. Örneğin %30 nominal getiri ve %25 enflasyonda reel getiri yaklaşık %4 civarındadır.',
+  },
+  {
+    q: 'Hangi getiri oranını girmeliyim?',
+    a: 'Aracın hedefine göre değişir: mevduat için güncel net faiz, BIST 100 endeks fonu için uzun vadeli tarihsel ortalama, döviz/altın için beklentiniz. Gerçekçi olun; geçmiş getiriler geleceği garanti etmez. Farklı senaryoları (iyimser/kötümser) ayrı ayrı deneyip aralığı görmek en sağlıklısıdır.',
+  },
+  {
+    q: 'Bileşik faiz ile basit faiz arasındaki fark nedir?',
+    a: 'Basit faiz yalnızca ana para üzerinden işler; her dönem aynı tutarda kazanç verir. Bileşik faizde ise kazanılan getiri de ana paraya eklenir ve bir sonraki dönem o da getiri üretir. Bu "getirinin getirisi" etkisi, uzun vadede iki yöntem arasında çok büyük fark yaratır.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Bileşik Faiz Hesaplama', url: '/bilesik-faiz-hesaplama' },
+];
+---
+
+<BaseLayout
+  title="Bileşik Faiz Hesaplama | Birikim ve Yatırım Getirisi Hesaplayıcı"
+  description="Ücretsiz bileşik faiz hesaplama aracı: başlangıç tutarı, aylık düzenli yatırım, getiri oranı ve süreyi girin; paranızın yıllara göre nasıl büyüdüğünü grafikle görün."
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı</p>
+      <h1>Bileşik Faiz Hesaplama</h1>
+      <p class="lede">
+        Başlangıç tutarınızı, her ay eklediğiniz düzenli yatırımı, beklediğiniz yıllık
+        getiriyi ve süreyi girin. Paranızın <strong>bileşik getiri</strong> ile yıllara
+        göre nasıl büyüdüğünü anında görün.
+      </p>
+    </header>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Başlangıç tutarı (₺)</span>
+          <input type="number" id="in-principal" value={D.principal} min="0" step="1000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Aylık ek yatırım (₺)</span>
+          <input type="number" id="in-monthly" value={D.monthly} min="0" step="500" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Yıllık getiri (%)</span>
+          <input type="number" id="in-rate" value={D.rate} min="0" max="200" step="1" inputmode="decimal" />
+        </label>
+        <label>
+          <span>Süre (yıl)</span>
+          <input type="number" id="in-years" value={D.years} min="1" max="50" step="1" inputmode="numeric" />
+        </label>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">{D.years} yıl sonra toplam birikim</span>
+          <span class="result-value" id="out-final">₺{fmt(base.final.balance)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="dot dot-cont"></span>
+            <span class="split-label">Yatırdığın ana para</span>
+            <span class="split-val" id="out-contributed">₺{fmt(base.final.contributed)}</span>
+          </div>
+          <div class="split-item">
+            <span class="dot dot-earn"></span>
+            <span class="split-label">Bileşik getiri (kazanç)</span>
+            <span class="split-val" id="out-earnings">₺{fmt(base.final.earnings)}</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note"></p>
+      </div>
+    </div>
+
+    <figure class="calc-chart-wrap">
+      <figcaption>Yıllara göre birikim: <span class="lg lg-cont">ana para</span> + <span class="lg lg-earn">getiri</span></figcaption>
+      <div id="chart" class="chart"></div>
+    </figure>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır ve yatırım tavsiyesi değildir. Sonuçlar,
+      girdiğiniz sabit getiri varsayımına dayanır; gerçek piyasa getirileri yıldan yıla
+      değişir. Vergi (stopaj) ve fon giderleri hesaba katılmamıştır.
+    </p>
+
+    <section class="prose-block">
+      <h2>Bileşik faiz nedir ve neden bu kadar güçlü?</h2>
+      <p>
+        Bileşik faiz, kazandığınız getirinin de kendi başına getiri üretmeye başlaması
+        prensibidir — yani "getirinin getirisi". Kısa vadede fark küçük görünür; ancak
+        süre uzadıkça büyüme doğrusal değil <strong>üstel</strong> hale gelir. Bu yüzden
+        Einstein'a atfedilen o meşhur söz vardır: <em>"Bileşik faiz dünyanın sekizinci
+        harikasıdır."</em>
+      </p>
+      <p>
+        Yukarıdaki hesaplayıcıda süreyi uzattığınızda göreceksiniz: 10-15 yıl sonra
+        toplam servetinizin çoğu, cebinizden çıkan ana paradan değil, <strong>getirinin
+        ürettiği getiriden</strong> gelir. İşte uzun vadeli yatırımın sırrı budur.
+      </p>
+      <h2>Aracı nasıl kullanmalısınız?</h2>
+      <ul>
+        <li><strong>Gerçekçi getiri girin:</strong> TL mevduatı, BIST 100 endeks fonu, dolar veya altın için beklentiniz farklı olacaktır. Aşırı iyimser oranlar yanıltıcı sonuç verir.</li>
+        <li><strong>Enflasyonu unutmayın:</strong> Nominal getiriden beklenen enflasyonu düşerek reel (satın alma gücü) getirisini de deneyin.</li>
+        <li><strong>Düzenliliğin gücünü test edin:</strong> Aylık ek yatırımı artırıp süreyi uzattığınızda kazanç kaleminin nasıl patladığını görün. Erken başlamak, çok para yatırmaktan daha etkilidir.</li>
+      </ul>
+      <p class="cta-line">
+        Bileşik faizin arkasındaki mantığı gerçek örneklerle derinlemesine okumak için
+        → <a href="/blog/bilesik-faiz-nedir">Bileşik Faiz Nedir ve Neden Bu Kadar Güçlü?</a>
+        yazımıza göz atın. Düzenli yatırım stratejisi için
+        <a href="/blog/dca-nedir-maliyet-ortalamasi">maliyet ortalaması (DCA)</a> ve
+        <a href="/blog/endeks-fonu-nedir">endeks fonu</a> rehberlerimiz tamamlayıcıdır.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ D }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const inputs = ['in-principal', 'in-monthly', 'in-rate', 'in-years'].map($);
+
+      function project(principal, monthly, ratePct, years) {
+        const i = ratePct / 100 / 12;
+        const rows = [];
+        let balance = principal;
+        let contributed = principal;
+        const months = Math.round(years * 12);
+        for (let m = 1; m <= months; m++) {
+          balance = balance * (1 + i) + monthly;
+          contributed += monthly;
+          if (m % 12 === 0) rows.push({ year: m / 12, balance, contributed, earnings: balance - contributed });
+        }
+        if (rows.length === 0) rows.push({ year: years, balance, contributed, earnings: balance - contributed });
+        return rows;
+      }
+
+      function drawChart(rows) {
+        const W = 720, H = 300, padL = 8, padR = 8, padB = 26, padT = 10;
+        const max = Math.max(...rows.map((r) => r.balance), 1);
+        const n = rows.length;
+        const gap = 0.28;
+        const bw = (W - padL - padR) / n;
+        const barW = bw * (1 - gap);
+        let bars = '';
+        let labels = '';
+        rows.forEach((r, idx) => {
+          const x = padL + idx * bw + (bw - barW) / 2;
+          const hTot = (H - padT - padB) * (r.balance / max);
+          const hCont = (H - padT - padB) * (r.contributed / max);
+          const yTot = H - padB - hTot;
+          const yCont = H - padB - hCont;
+          // getiri (üst, teal-light) — ana para üstünde
+          bars += `<rect x="${x.toFixed(1)}" y="${yTot.toFixed(1)}" width="${barW.toFixed(1)}" height="${(hTot - hCont).toFixed(1)}" rx="3" fill="#2bb194"><title>${r.year}. yıl · getiri ₺${nf.format(Math.round(r.earnings))}</title></rect>`;
+          // ana para (alt, koyu)
+          bars += `<rect x="${x.toFixed(1)}" y="${yCont.toFixed(1)}" width="${barW.toFixed(1)}" height="${hCont.toFixed(1)}" rx="3" fill="#1e6b7f"><title>${r.year}. yıl · ana para ₺${nf.format(Math.round(r.contributed))}</title></rect>`;
+          if (n <= 15 || (idx + 1) % Math.ceil(n / 12) === 0 || idx === n - 1) {
+            labels += `<text x="${(x + barW / 2).toFixed(1)}" y="${H - 8}" text-anchor="middle" font-size="11" fill="#79837c">${r.year}</text>`;
+          }
+        });
+        return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Yıllara göre birikim grafiği" preserveAspectRatio="xMidYMid meet">${bars}${labels}</svg>`;
+      }
+
+      function update() {
+        const principal = Math.max(0, +$('in-principal').value || 0);
+        const monthly = Math.max(0, +$('in-monthly').value || 0);
+        const rate = Math.max(0, +$('in-rate').value || 0);
+        const years = Math.min(50, Math.max(1, +$('in-years').value || 1));
+        const rows = project(principal, monthly, rate, years);
+        const last = rows[rows.length - 1];
+        $('out-final').textContent = '₺' + nf.format(Math.round(last.balance));
+        $('out-contributed').textContent = '₺' + nf.format(Math.round(last.contributed));
+        $('out-earnings').textContent = '₺' + nf.format(Math.round(last.earnings));
+        const mult = last.contributed > 0 ? (last.balance / last.contributed) : 0;
+        const earnShare = last.balance > 0 ? Math.round((last.earnings / last.balance) * 100) : 0;
+        $('out-note').textContent = `Yatırdığın her ₺1, ${mult.toFixed(2)}₺'ye dönüştü. Toplam birikimin %${earnShare}'i bileşik getiriden geldi.`;
+        $('chart').innerHTML = drawChart(rows);
+      }
+
+      inputs.forEach((el) => { el.addEventListener('input', update); });
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 2rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 620px; margin: 0 auto; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input {
+      font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 1rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.5rem; }
+    .dot { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+    .dot-cont { background: #1e6b7f; }
+    .dot-earn { background: #2bb194; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; }
+    .result-note { font-size: 0.82rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .calc-chart-wrap { margin: 1.6rem 0 0; }
+    .calc-chart-wrap figcaption { font-size: 0.85rem; color: var(--text-soft); margin-bottom: 0.5rem; text-align: center; }
+    .lg { font-weight: 700; }
+    .lg-cont { color: #1e6b7f; }
+    .lg-earn { color: #16a085; }
+    .chart { width: 100%; }
+    .chart svg { width: 100%; height: auto; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block ul { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details {
+      border-bottom: 1px solid var(--border); padding: 0.9rem 0;
+    }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>

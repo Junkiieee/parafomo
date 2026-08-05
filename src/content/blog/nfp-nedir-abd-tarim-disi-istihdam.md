@@ -2,6 +2,7 @@
 title: "ABD Tarım Dışı İstihdam (NFP) Nedir? Dolar ve TL'yi Nasıl Etkiler?"
 description: "NFP nedir, ne zaman açıklanır, beklentinin üzerinde veya altında gelirse ne olur? ABD tarım dışı istihdam verisinin dolar, altın ve TL üzerindeki etkisini öğren."
 pubDate: 2026-06-29
+updatedDate: 2026-08-05
 category: "Ekonomi"
 tags: ["NFP nedir", "tarım dışı istihdam", "ABD istihdam verisi", "dolar TL etkisi", "Fed faiz kararı", "ekonomik gösterge"]
 readingTime: 7
@@ -21,7 +22,7 @@ faq:
 
 Her ayın ilk Cuması, küresel piyasalar tek bir veriye odaklanır: **ABD Tarım Dışı İstihdam (NFP)**. Bu sayı açıklandığında dolar dakikalar içinde yüzde birkaç hareket edebilir; altın, hisse senetleri ve gelişmekte olan ülke paraları ardından sarsılır. TL de bu dalgadan payını alır.
 
-2 Temmuz'da Haziran 2026 NFP verisi açıklanacak. Piyasalar bu veriye girerken NFP'nin tam olarak ne ölçtüğünü, nasıl okunacağını ve Türkiye'yi nasıl etkileyebileceğini bilmek, tepkisel kararlar yerine bilinçli bir tutum geliştirmenizi sağlar.
+Sıradaki veri **7 Ağustos 2026 Cuma günü saat 15:30'da (Türkiye saati)** açıklanacak Temmuz ayı NFP raporu. Piyasalar bu veriye girerken NFP'nin tam olarak ne ölçtüğünü, nasıl okunacağını ve Türkiye'yi nasıl etkileyebileceğini bilmek, tepkisel kararlar yerine bilinçli bir tutum geliştirmenizi sağlar. Aynı gün açıklanan [ABD işsizlik oranı](/blog/abd-issizlik-orani-nedir-nfp-etkisi) verisiyle birlikte okuduğunuzda tablo çok daha net oluşur.
 
 ## ABD Tarım Dışı İstihdam (NFP) Nedir?
 
@@ -107,10 +108,10 @@ Altın ve döviz arasındaki bu ilişkiyi daha ayrıntılı anlamak isteyenler i
 - **Yayın sıklığı:** Aylık (her ayın ilk Cuması)
 - **Yayın saati:** 08:30 EST = **15:30 Türkiye saati**
 - **Resmi kaynak:** BLS.gov (U.S. Bureau of Labor Statistics)
-- **Pratik takip:** Investing.com → Ekonomik Takvim → "Nonfarm Payrolls" filtresi
+- **Pratik takip:** [ParaFOMO Ekonomik Takvim](/ekonomik-takvim) sayfasında NFP dahil tüm kritik veri günlerini önceden görebilirsiniz.
 
 Aynı raporda ayrıca şunlar da açıklanır:
-- **İşsizlik oranı (Unemployment Rate)**
+- **[İşsizlik oranı (Unemployment Rate)](/blog/abd-issizlik-orani-nedir-nfp-etkisi)** — iş arayan ama bulamayanların işgücüne oranı; NFP ile birlikte Fed'in yön tayininde belirleyici.
 - **Ortalama saatlik kazanç (Average Hourly Earnings)**
 - Sektörel kırılım: imalat, hizmetler, devlet istihdamı
 
