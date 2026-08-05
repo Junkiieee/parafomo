@@ -1,0 +1,95 @@
+{
+  "slug": "dolara-baglananin-bir-yili-maas-zammi-kadar-kazandi",
+  "title": "Dolara Bağlananın Bir Yılı: Maaş Zammı Kadar Kazandı",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "Ağustos 2025'te 25.000 TL ile dolar alan biri bugün yaklaşık 28.589 TL'ye sahip. Yüzde 14 getiri koruma mı sağladı, yoksa büyüme fırsatı mı kaçtı?",
+  "tags": [
+    "dolar",
+    "yatırım",
+    "kur",
+    "enflasyon",
+    "tasarruf",
+    "getiri",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "Dolar bu yıl maaş zammın kadar kazandırdı.",
+      "visual": {
+        "type": "concept",
+        "query": "dollar bills paycheck salary comparison"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Enflasyondan korunmak için dolar alan milyonlarca Türk, bir yıl boyunca kuru bekledi.",
+      "visual": {
+        "type": "concept",
+        "query": "turkish lira dollar exchange money cash"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama getiri yaklaşık yüzde 14 — bu dönemde pek çok işçinin aldığı maaş zammı kadar.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "Dolar/TL",
+          "unit": "TL",
+          "points": [
+            41.58,
+            42.03,
+            42.49,
+            42.95,
+            43.46,
+            43.96,
+            45.17,
+            45.85,
+            46.64,
+            47.5,
+            47.5,
+            47.55
+          ],
+          "x": [
+            "08/25",
+            "09/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "02/26",
+            "03/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26"
+          ],
+          "amount": 25000,
+          "end_value": 28589,
+          "pct": 14
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "25 bin TL yaklaşık 28 bin 589 TL'ye döndü; dolar kayıp değil, ama büyüme aracı sanma.",
+      "visual": {
+        "type": "concept",
+        "query": "savings piggy bank protection money jar"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu dönemde gerçekten büyüten ne oldu? Bunu merak ediyorsan abone ol — her gün tek net analiz, her sabah sende.",
+      "visual": {
+        "type": "concept",
+        "query": "financial investment growth chart screen"
+      }
+    }
+  ]
+}
