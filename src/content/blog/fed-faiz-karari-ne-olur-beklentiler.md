@@ -36,7 +36,7 @@ shorts_visuals:
   - "concept|turkish lira dollar exchange rate screen"
 ---
 
-Fed faiz kararının ne olacağını bilmek pek çok yatırımcının hayaline girer. Dolar mı güçlenecek, TL üzerinde baskı mı artacak, borsalar ne tepki verecek? Bunları tam kesinlikle öngörmek mümkün değil; ama piyasanın *beklentisini* okumak ve bu beklentinin neden değiştiğini anlamak hem mümkün hem son derece işe yarar.
+[Fed faiz kararının](/blog/fed-faiz-karari-nedir-etkisi) ne olacağını bilmek pek çok yatırımcının hayaline girer. Dolar mı güçlenecek, TL üzerinde baskı mı artacak, borsalar ne tepki verecek? Bunları tam kesinlikle öngörmek mümkün değil; ama piyasanın *beklentisini* okumak ve bu beklentinin neden değiştiğini anlamak hem mümkün hem son derece işe yarar.
 
 Bu rehberde Fed kararını önceden ölçmenin somut araçlarını ve kritik ekonomik verileri adım adım inceliyoruz.
 

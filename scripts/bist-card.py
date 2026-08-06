@@ -70,9 +70,28 @@ def _get_json(url, tries=3):
     raise last
 
 
+def _yahoo(symbol):
+    """Yahoo chart → (fiyat, değişim%). None-safe; ağ/JSON hatası → (None, None)."""
+    try:
+        url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&range=5d"
+        y = json.loads(urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"}), timeout=20).read())
+        meta = y["chart"]["result"][0]["meta"]
+        price = meta.get("regularMarketPrice")
+        prev = meta.get("chartPreviousClose") or meta.get("previousClose")
+        chg = ((price - prev) / prev * 100) if (price and prev) else None
+        return (price, chg)
+    except Exception:
+        return (None, None)
+
+
 def fetch():
-    # Truncgil v3 (v4 fiyatları boşalttı) — USD/EUR/gram-altın. Arada truncated → retry.
-    tj = _get_json(TG)
+    # Truncgil v3 (v4 fiyatları boşalttı) — USD/EUR/gram-altın. Arada truncated JSON
+    # döndürüyor (retry sonrası bile) → FATAL DEĞİL: boş dict'e düş, FX'i Yahoo'dan doldur.
+    try:
+        tj = _get_json(TG)
+    except Exception as e:
+        print(f"    [kart] Truncgil alınamadı ({type(e).__name__}); Yahoo FX'e düşülüyor", flush=True)
+        tj = {}
 
     def pick(k, p):
         return _num((tj.get(k) or {}).get(p))
@@ -82,16 +101,19 @@ def fetch():
         "eur": (pick("EUR", "Selling"), pick("EUR", "Change")),
         "gold": (pick("gram-altin", "Selling"), pick("gram-altin", "Change")),
     }
+    # Truncgil eksik/boşsa USD & EUR'yu Yahoo FX ile doldur.
+    if data["usd"][0] is None:
+        data["usd"] = _yahoo("USDTRY=X")
+    if data["eur"][0] is None:
+        data["eur"] = _yahoo("EURTRY=X")
+    # Gram altın Truncgil'de yoksa Yahoo'dan türet: ons altın (GC=F, USD) / 31.1035 * USDTRY.
+    if data["gold"][0] is None:
+        ons_usd, ons_chg = _yahoo("GC=F")
+        usdtry = data["usd"][0]
+        if ons_usd and usdtry:
+            data["gold"] = (ons_usd / 31.1035 * usdtry, ons_chg)
     # BIST 100 (XU100) — Truncgil'de YOK → Yahoo Finance.
-    try:
-        y = json.loads(urllib.request.urlopen(urllib.request.Request(YF, headers={"User-Agent": "Mozilla/5.0"}), timeout=20).read())
-        meta = y["chart"]["result"][0]["meta"]
-        price = meta.get("regularMarketPrice")
-        prev = meta.get("chartPreviousClose") or meta.get("previousClose")
-        chg = ((price - prev) / prev * 100) if (price and prev) else None
-        data["bist"] = (price, chg)
-    except Exception:
-        data["bist"] = (None, None)
+    data["bist"] = _yahoo("XU100.IS")
     # Bitcoin (CoinGecko)
     try:
         d = json.loads(urllib.request.urlopen(urllib.request.Request(CG, headers={"User-Agent": "Mozilla/5.0"}), timeout=20).read())

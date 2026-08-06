@@ -99,7 +99,7 @@ TCMB faiz kararının döviz kuruna etkisi teorik olarak belirgin, uygulamada ç
 - Yabancı sermaye çıkışı yaşanabilir.
 - [Döviz kurunun belirlenme mekanizması](/blog/doviz-kuru-nasil-belirlenir) gereği arz-talep dengesi bozulur.
 
-**Kritik uyarı:** Türkiye'de döviz kuru salt faize değil; cari açık, siyasi beklentiler ve küresel risk iştahına da bağlıdır. Teorik faiz-kur ilişkisi güven ortamı bozuksa beklendiği gibi çalışmayabilir.
+**Kritik uyarı:** Türkiye'de döviz kuru salt faize değil; cari açık, siyasi beklentiler ve küresel risk iştahına da bağlıdır. Özellikle [Fed faiz kararı](/blog/fed-faiz-karari-nedir-etkisi) ve ABD'deki faiz ortamı, TL dahil gelişen ülke kurlarını doğrudan etkiler. Teorik faiz-kur ilişkisi güven ortamı bozuksa beklendiği gibi çalışmayabilir.
 
 ## Borsa (BIST) Üzerindeki Etkisi
 

@@ -34,10 +34,69 @@ IG_ENV = os.path.expanduser("~/.config/parafomo/instagram.env")
 API = "https://graph.facebook.com/v21.0"
 REPO_RAW = "https://raw.githubusercontent.com/Junkiieee/parafomo/media"
 
-# Türkçe finans erişim etiketleri (IG en fazla 30; keşfet için geniş+niş karışık)
-HASHTAGS = ("#parafomo #finans #para #yatırım #borsa #ekonomi #altın #dolar "
-            "#kriptopara #bitcoin #tasarruf #bist100 #faiz #enflasyon #bes "
-            "#temettü #hisse #finansalözgürlük #paratüyoları #ekonomihaber")
+# Türkçe finans erişim etiketleri. Her gönderiye AYNI blok yerine KONUYA-DUYARLI
+# set: küçük hesap dev hashtag havuzunda sıralanamaz → videonun kendi niş
+# havuzunu hedefle. Ayrıca aynı bloğun tekrarı IG'de otomasyon/spam sinyali.
+CORE_TAGS = ["#parafomo", "#finans", "#para", "#yatırım", "#borsa", "#ekonomi"]
+DISCOVERY_TAGS = ["#paratüyoları", "#ekonomihaber", "#finansalözgürlük"]
+TOPIC_TAGS = {
+    "altın": ["#altın", "#gramaltın", "#altınyatırımı", "#çeyrekaltın"],
+    "dolar": ["#dolar", "#dolartl", "#döviz", "#kur"],
+    "euro": ["#euro", "#döviz", "#eurotl"],
+    "bitcoin": ["#bitcoin", "#kripto", "#kriptopara", "#btc"],
+    "kripto": ["#kripto", "#kriptopara", "#bitcoin"],
+    "ethereum": ["#ethereum", "#kripto", "#altcoin"],
+    "stablecoin": ["#stablecoin", "#kripto", "#usdt"],
+    "nft": ["#nft", "#kripto", "#dijitalvarlık"],
+    "fed": ["#fed", "#faiz", "#dolar", "#abdekonomisi"],
+    "faiz": ["#faiz", "#merkezbankası", "#mevduat"],
+    "tcmb": ["#tcmb", "#faiz", "#merkezbankası"],
+    "merkez banka": ["#merkezbankası", "#faiz", "#parapolitikası"],
+    "enflasyon": ["#enflasyon", "#tüfe", "#zam"],
+    "tüfe": ["#enflasyon", "#tüfe", "#alımgücü"],
+    "tüik": ["#enflasyon", "#tüik", "#tüfe"],
+    "bist": ["#bist100", "#borsaistanbul", "#hisse"],
+    "borsa": ["#borsa", "#bist100", "#hissesenedi"],
+    "hisse": ["#hisse", "#hissesenedi", "#borsa"],
+    "temettü": ["#temettü", "#temettühisseleri", "#pasifgelir"],
+    "etf": ["#etf", "#endeksfonu", "#pasifyatırım"],
+    "endeks fon": ["#endeksfonu", "#etf", "#pasifyatırım"],
+    "fon": ["#yatırımfonu", "#tefas", "#fon"],
+    "eurobond": ["#eurobond", "#dolarfaizi", "#sabitgetiri"],
+    "tahvil": ["#tahvil", "#hazinebonosu", "#sabitgetiri"],
+    "repo": ["#repo", "#kısavade", "#faiz"],
+    "mevduat": ["#mevduat", "#vadelimevduat", "#tasarruf"],
+    "tasarruf": ["#tasarruf", "#parabiriktirme", "#bütçe"],
+    "bütçe": ["#bütçe", "#parayönetimi", "#tasarruf"],
+    "emeklilik": ["#emeklilik", "#bes", "#uzunvade"],
+    "bes": ["#bes", "#bireyselemeklilik", "#emeklilik"],
+    "kredi": ["#kredi", "#borç", "#kredikartı"],
+    "borç": ["#borç", "#borçtankurtulma", "#kredikartı"],
+    "nfp": ["#nfp", "#abdekonomisi", "#ekonomiveri"],
+    "issizlik": ["#işsizlik", "#abdekonomisi", "#nfp"],
+    "portföy": ["#portföy", "#varlıkdağılımı", "#yatırımstratejisi"],
+    "pasif gelir": ["#pasifgelir", "#finansalözgürlük"],
+    "finansal özgür": ["#finansalözgürlük", "#fire", "#pasifgelir"],
+    "bileşik faiz": ["#bileşikfaiz", "#uzunvadeyatırım"],
+    "halka arz": ["#halkaarz", "#ipo", "#borsa"],
+    "döviz": ["#döviz", "#dolar", "#kur"],
+    "konut": ["#konut", "#gayrimenkul", "#emlak"],
+}
+
+
+def build_hashtags(slug="", title="", desc=""):
+    """Videoya özgü niş + marka + keşfet karışımı. Küçük hesap için winnable havuzlar."""
+    text = f"{slug} {title} {desc}".lower().replace("-", " ")
+    tags = list(CORE_TAGS)
+    for kw, tg in TOPIC_TAGS.items():
+        if kw in text:
+            for t in tg:
+                if t not in tags:
+                    tags.append(t)
+    for t in DISCOVERY_TAGS:
+        if t not in tags:
+            tags.append(t)
+    return " ".join(tags[:24])
 
 
 def load_env():
@@ -104,7 +163,7 @@ def build_caption(meta, slug):
            f"📌 Unutmamak için KAYDET · paylaş\n"
            f"🔔 Günlük altın · dolar · borsa · faiz → TAKİP ET @parafomo\n"
            f"📲 Tam rehber (ücretsiz): {site_link(slug)}")
-    cap = f"{hook}\n\n{body}{cta}\n\n{HASHTAGS}"
+    cap = f"{hook}\n\n{body}{cta}\n\n{build_hashtags(slug, title, desc)}"
     return cap[:2100]  # IG caption sınırı 2200
 
 

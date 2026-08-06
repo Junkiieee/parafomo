@@ -9,3 +9,5 @@ Yeni ders: `python3 agent/exp.py learn --channel <k> --text "..."` veya deney ka
 - [2026-08-04][web] "Ekonomik takvim" sayfası (veri vardı, sayfa yoktu) hızlı kazanım oldu → veriyle beslenen, kendi başına trafik çeken HEDEF SAYFALAR yüksek kaldıraç.
 - [2026-08-04][web] GSC'de yüksek gösterim + 0 tıklama + pozisyon 10-30 olan sorgu = en isabetli SEO fırsatı (hedefli sayfa/başlık/iç-link ile ilk sayfaya çek).
 - [2026-08-04][infra] Dış veri kaynakları sessizce bozulabilir (Truncgil v4 fiyatları boşalttı → v3 + Yahoo). Kartlarda/verilerde boşluk görürsen kaynağı doğrula.
+- [2026-08-06][infra] Truncgil v3 today.json artık DA bozuk (truncated JSON, retry sonrası bile crash ediyordu). bist-card.py FX/altını Yahoo'ya fallback yaptı (USDTRY=X, EURTRY=X, GC=F/31.1035*usdtry); Truncgil non-fatal. Ders: tek dış kaynağa fatal bağlanma, her fetch degrade edebilmeli.
+- [2026-08-06][web] İç-link kümesi taktiği: head-term için pillar+satellite ayır, satelliti pillar'a head-anchor'la bağla (cannibalization çözümü), en yüksek learning-skorlu ilgili sayfadan pillar'a link ver (PageRank yoğunlaştırma). Fed kümesinde uygulandı (deney 2026-08-06-1).

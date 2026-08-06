@@ -105,7 +105,7 @@ Türkiye finansal olarak küresel piyasalara entegre. ABD Merkez Bankası (Fed) 
 2. Küresel risk iştahı azalır → yabancı sermaye Türkiye gibi ülkelerden çekilir.
 3. Dövizle borçlu Türk şirketlerinin yükü artar.
 
-Fed kararlarını anlamak için [FOMC toplantı tutanakları rehberine](/blog/fomc-toplanti-tutanaklari-nedir) göz atabilirsin.
+ABD tarafında [Fed faiz kararının nasıl alındığını](/blog/fed-faiz-karari-nedir-etkisi) ve [FOMC toplantı tutanakları rehberini](/blog/fomc-toplanti-tutanaklari-nedir) inceleyebilirsin.
 
 ## Faiz Artışı mı, İndirimi mi? Karşılaştırma Tablosu
 

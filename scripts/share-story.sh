@@ -11,6 +11,7 @@ REPO="/root/parafomo"
 VENV_PY="/root/.venvs/parafomo/bin/python"
 [ -x "$VENV_PY" ] || VENV_PY="python3"
 cd "$REPO" || exit 0
+. "$REPO/scripts/lib/gitsync.sh"
 
 CARD="${1:-}"; LABEL="${2:-GÜNCEL}"; CTA="${3:-Detaylar profilde}"
 [ -n "$CARD" ] && [ -f "$CARD" ] || { echo "[story] kart yok: $CARD"; exit 0; }
@@ -29,7 +30,7 @@ find public/social -name 'story-*.jpg' -type f -mtime +7 -delete 2>/dev/null || 
 git add public/social/ 2>/dev/null
 if ! git diff --cached --quiet; then
   git commit -m "story: $base" >/dev/null 2>&1
-  git push origin main >/dev/null 2>&1 || { echo "[story] push başarısız"; exit 0; }
+  git_push_retry main || { echo "[story] push başarısız"; exit 0; }
 fi
 
 RAW="https://raw.githubusercontent.com/Junkiieee/parafomo/main/$STORY"

@@ -66,7 +66,7 @@ Analistlerin tutanaklarda aradığı 5 sinyal:
 
 ## FOMC Kararları TL ve BIST'i Nasıl Etkiler?
 
-Türkiye, Fed kararlarına doğrudan maruz kalan gelişmekte olan bir ekonomidir. Aktarım mekanizması şöyle işler:
+Türkiye, [Fed faiz kararlarına](/blog/fed-faiz-karari-nedir-etkisi) doğrudan maruz kalan gelişmekte olan bir ekonomidir. Aktarım mekanizması şöyle işler:
 
 **Fed şahin mesaj verirse (faiz artış/sıkı kalma sinyali):**
 - Dolar yatırımı daha cazip hale gelir

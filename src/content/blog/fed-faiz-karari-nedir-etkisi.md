@@ -60,7 +60,7 @@ FOMC kararını vermek için onlarca ekonomik göstergeyi inceler. En çok ağı
 | **Core CPI** | Gıda ve enerji dışı enflasyon | Düşmezse Fed temkinli kalır |
 | **Tüketici Güveni** | Harcama iştahı | Düşükse Fed gevşemek ister |
 
-Fed bu verilerin bütününe bakarak kısa vadeli ekonomik dengeyi kurmaya çalışır: ne aşırı sıcak (enflasyon), ne aşırı soğuk (durgunluk).
+Fed bu verilerin bütününe bakarak kısa vadeli ekonomik dengeyi kurmaya çalışır: ne aşırı sıcak (enflasyon), ne aşırı soğuk (durgunluk). Piyasanın bir sonraki toplantıdan ne beklediğini (CME FedWatch olasılıkları, dot plot) okumak için [Fed faiz kararı ne olur? beklenti rehberimize](/blog/fed-faiz-karari-ne-olur-beklentiler) göz atabilirsin.
 
 ## Fed Faiz Kararı Neyi Etkiler?
 
