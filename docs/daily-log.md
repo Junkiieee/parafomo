@@ -4,6 +4,79 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-06 (2. yazı)
+
+**Yayınlanan yazı:** [GYO Nedir? Gayrimenkul Yatırım Ortaklığına Yatırım Rehberi](https://parafomo.com/blog/gyo-nedir-gayrimenkul-yatirim-ortakligi/)
+*Seçim gerekçesi:* Backlog tamamen tükendiğinden yeni evergreen yatırım konusu oluşturuldu. GYO, mevcut "konut yatırımı mı hisse senedi mi" ve "temettü hisseleri" yazılarını tamamlayan bir cluster piece; "gyo nedir" sorgusu arama hacmiyle güçlü, rekabet görece düşük ve BIST'teki GYO hisselerine yönelik Türk yatırımcı ilgisi yüksek.
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+"AVM'nin ya da ofis binasının sahibi olmak ister misin?"
+
+GYO (Gayrimenkul Yatırım Ortaklığı) ile birkaç yüz TL'den başlayabilirsin 🧵
+
+**Tweet 2:**
+GYO nedir?
+
+Borsaya kote bir şirket. Portföyünde AVM, ofis, lojistik depo, konut projeleri var.
+
+Hisse alıyorsun → onlarca gayrimenkule ortak oluyorsun.
+Kira gelirleri → sana temettü olarak yansıyabilir.
+
+**Tweet 3:**
+Konut almakla GYO hissesi almanın farkı:
+
+🏠 Konut: Yüz binler TL sermaye, aylarca satış süreci
+📊 GYO: Birkaç yüz TL'den başlar, borsa seansında dakikada sat
+
+Likidite farkı bu kadar büyük.
+
+**Tweet 4:**
+GYO'yu değerlendirirken 3 şeye bak:
+
+1️⃣ NAV iskontosu — hisse fiyatı portföy değerinin altında mı?
+2️⃣ Temettü verimi — mevduat faizine kıyasla nasıl?
+3️⃣ Borç oranı — faiz yükselişine dayanıklı mı?
+
+**Tweet 5 (CTA):**
+GYO türleri, adım adım BIST'te nasıl alınır, riskler ve değerleme rehberi — tamamı:
+👉 parafomo.com/blog/gyo-nedir-gayrimenkul-yatirim-ortakligi
+
+---
+
+### 📸 Instagram Post/Carousel Metni
+
+**Başlık:** Büyük gayrimenkule küçük bütçeyle ortak olmak mümkün 🏢
+
+**Metin:**
+GYO (Gayrimenkul Yatırım Ortaklığı) nedir?
+
+🔑 Ofisin, AVM'nin, deponun payını borsadan al
+💰 Birkaç yüz TL ile başla — yüz binler gerekmez
+📈 Kira gelirleri temettüye dönüşebilir
+💧 İstediğin an borsa seansında sat
+
+GYO vs. Konut:
+→ Likidite: çok yüksek vs. aylar süren satış
+→ Sermaye: düşük vs. yüksek
+→ Çeşitlendirme: onlarca mülk vs. tek mülk
+
+Detaylı rehber için bio'daki linke tıkla 👆
+
+#GYO #GayrimenkulYatırım #BorsaYatırım #Yatırım #ParaFOMO #FinansTürkiye
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **X + Instagram'da paylaş:** Yukarıdaki thread ve gönderi taslağını kopyala, hesaplarında yayınla. Instagram için görsel olarak minimal bir düzenleme yapabilirsin (Canva şablonunu kullanabilirsin).
+2. **1 toplulukta değer katarak paylaş:** İlgili bir Telegram finans grubu veya Reddit/Ekşi Sözlük ortamında "GYO nedir, borsada konut yatırımının alternatifi mi olabilir?" gibi bir tartışma açarak linki doğal biçimde paylaş — spam değil, gerçek soru/katkı formatında.
+
+---
+
 ## 2026-08-06
 
 **Yayınlanan yazı:** [Verim Eğrisi (Yield Curve) Nedir? Resesyon Uyarısını Nasıl Okursun?](https://parafomo.com/blog/verim-egrisi-nedir-resesyon-isareti/)

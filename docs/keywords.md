@@ -50,6 +50,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Para psikolojisi: zengin edenlerin alışkanlıkları — `Kişisel Finans` — hedef: "para yönetimi alışkanlıkları"
 - [x] ETF nedir? Borsa yatırım fonu rehberi — `Yatırım` — hedef: "etf nedir"
 - [x] P/D oranı nedir, hisse senedi defter değeri analizi — `Borsa` — hedef: "p/d oranı nedir"
+- [x] GYO nedir? Gayrimenkul Yatırım Ortaklığına yatırım rehberi — `Yatırım` — hedef: "gyo nedir"
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
@@ -136,3 +137,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Fed Faiz Kararı Ne Olur? Piyasa Beklentilerini Okuma Rehberi — `fed-faiz-karari-ne-olur-beklentiler` (GSC fırsatı: "fed faiz kararı ne olur / yorumlar" sorguları; CME FedWatch + dot plot + 7 Ağustos NFP bağlantısı)
 - [x] P/D Oranı Nedir? Defter Değeriyle Hisse Senedi Nasıl Değerlenir? — `pd-orani-nedir` (backlog: evergreen borsa; "p/d oranı nedir" sorgusu; F/K oranı yazısının tamamlayıcısı)
 - [x] Verim Eğrisi (Yield Curve) Nedir? Resesyon Uyarısını Nasıl Okursun? — `verim-egrisi-nedir-resesyon-isareti` (yeni evergreen ekonomi; "verim eğrisi nedir" sorgusu; tahvil+Fed+faiz cluster'ını birbirine bağlayan pillar piece)
+- [x] GYO Nedir? Gayrimenkul Yatırım Ortaklığına Yatırım Rehberi — `gyo-nedir-gayrimenkul-yatirim-ortakligi` (backlog genişletme: evergreen yatırım; "gyo nedir" sorgusu; konut yatırımı + temettü cluster'ını tamamlayan piece)
