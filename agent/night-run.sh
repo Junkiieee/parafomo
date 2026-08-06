@@ -26,7 +26,7 @@ DRY=0
 STAMP="$(date -u +%Y%m%d-%H%M)"
 LOGDIR="$REPO/agent/logs"; mkdir -p "$LOGDIR"
 MODEL="${AGENT_MODEL:-opus}"
-EFFORT="${AGENT_EFFORT:-xhigh}"
+EFFORT="${AGENT_EFFORT:-high}"
 
 echo "[night $STAMP] başlıyor (model=$MODEL, dry=$DRY)"
 
@@ -50,7 +50,7 @@ if [ "$DRY" = 1 ]; then
 fi
 
 # 4) Beyni çalıştır — TAM ÖZERK headless (cron'da izin sorusuna takılmamalı)
-#    Model=Opus, effort=xhigh (derin muhakeme). Opsiyonel knob'lar:
+#    Model=Opus, effort=high (varsayılan; AGENT_EFFORT ile değişir). Opsiyonel knob'lar:
 #    AGENT_MAX_TURNS (turn tavanı), AGENT_MAX_BUDGET (dolar tavanı).
 EXTRA=()
 [ -n "${AGENT_MAX_TURNS:-}" ]  && EXTRA+=(--max-turns "$AGENT_MAX_TURNS")
