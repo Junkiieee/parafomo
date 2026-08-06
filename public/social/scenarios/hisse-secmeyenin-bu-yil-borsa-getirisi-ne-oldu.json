@@ -1,0 +1,96 @@
+{
+  "slug": "hisse-secmeyenin-bu-yil-borsa-getirisi-ne-oldu",
+  "title": "Hisse Seçmeyenin Bu Yıl Borsa Getirisi Ne Oldu?",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "50.000 TL'yi tek bir hisse seçmeden BIST 100'e yatıranın 1 yıldaki yaklaşık %24 getirisi ve bireysel hisse seçmenin neden genellikle endeks yatırımının gerisinde kaldığı.",
+  "tags": [
+    "bist100",
+    "endeks yatırımı",
+    "pasif yatırım",
+    "borsa",
+    "türk yatırımcı",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "Hiç hisse seçmeden borsa bu yıl %24 getirdi.",
+      "visual": {
+        "type": "concept",
+        "query": "stock market index trading screen numbers"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Geçen yıl ağustos'ta 50.000 TL'yi doğrudan BIST 100'e yatırdın. Hangi hisseyi alsam diye düşünmedin.",
+      "visual": {
+        "type": "place",
+        "query": "Borsa İstanbul"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama tek tek hisse seçen yatırımcıların büyük kısmı endeksin gerisinde kalıyor; araştırmalar bunu defalarca gösterdi.",
+      "visual": {
+        "type": "concept",
+        "query": "investor analyzing stocks computer screen frustrated"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bugün o 50.000 TL yaklaşık 62.219 TL. Yani %24 getiri — hiçbir hisse analizi yapmadan.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "BIST 100",
+          "unit": "",
+          "points": [
+            11012.1,
+            10971.5,
+            10898.7,
+            11261.5,
+            13838.3,
+            13717.8,
+            12791.0,
+            14442.6,
+            13662.8,
+            14121.8,
+            13458.1,
+            13410.5,
+            13703.13
+          ],
+          "x": [
+            "08/25",
+            "09/25",
+            "10/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "02/26",
+            "03/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26"
+          ],
+          "amount": 50000,
+          "end_value": 62219,
+          "pct": 24
+        }
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki önümüzdeki yıl hangi araç daha mantıklı? Bunu konuşacağız — her gün 60 saniyede tek net analiz için abone ol.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification bell reminder"
+      }
+    }
+  ]
+}
