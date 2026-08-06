@@ -4,6 +4,81 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-06
+
+**Yayınlanan yazı:** [Verim Eğrisi (Yield Curve) Nedir? Resesyon Uyarısını Nasıl Okursun?](https://parafomo.com/blog/verim-egrisi-nedir-resesyon-isareti/)
+*Seçim gerekçesi:* Backlog tamamen tükendiğinden yeni evergreen ekonomi konusu oluşturuldu. Verim eğrisi, mevcut tahvil + Fed faiz + faiz genel yazılarını birbirine bağlayan pillar piece; "10Y-2Y spread" ve resesyon sinyali yüksek arama hacimli ve son dönemde piyasa gündeminde olan bir konu. Yarın ABD NFP verisiyle zamanlaması da uyuşuyor.
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+Fed'in bir sonraki adımını bilmek ister misin?
+
+Cevap tahvil piyasasında saklı.
+Verim eğrisi — finansın en az anlatılan ama en kritik göstergesi 🧵
+
+**Tweet 2:**
+Normal eğri: 10 yıllık tahvil > 2 yıllık tahvil getirisi.
+"Ekonomi iyi, büyüme var, para uzun vadede güvende."
+
+Ters eğri: 2 yıllık > 10 yıllık.
+"Piyasa Fed'in yakında faiz indirmek zorunda kalacağına inanıyor."
+
+**Tweet 3:**
+1970'ten bu yana yaşanan her büyük ABD resesyonundan önce verim eğrisi tersine döndü.
+
+2008 öncesi? Tersine döndü.
+2020 öncesi? 2019'da tersine döndü.
+
+Yüzde yüz değil, ama tarihsel en güçlü sinyal.
+
+**Tweet 4:**
+Türk yatırımcı için ne anlam taşıyor?
+
+Ters eğri → Fed faiz indirimi beklentisi → Dolar baskı altında → Altın ve EM varlıkları soluk alabilir.
+
+Ama Türkiye'nin kendi dinamikleri her zaman belirleyici. Tek veri noktasıyla değil, bağlamla oku.
+
+**Tweet 5 (CTA):**
+Verim eğrisi türleri, 10Y-2Y spread nasıl takip edilir, bankalar neden zarar görür — tamamı:
+👉 parafomo.com/blog/verim-egrisi-nedir-resesyon-isareti
+
+---
+
+### 📸 Instagram Post/Carousel Metni
+
+**Başlık:** Piyasalar resesyonu nasıl fiyatlar? 📉
+
+**Metin:**
+Finansın en kritik ama en az konuşulan göstergesi: Verim Eğrisi (Yield Curve)
+
+🔴 Ters eğri ne demek?
+→ Kısa vadeli tahvil faizi uzun vadenin üzerine çıkar
+→ Piyasa "Fed faiz indirecek" diyor
+→ Tarihsel olarak resesyondan 6-18 ay önce görülür
+
+📊 10Y-2Y spread neden önemli?
+10 yıllık ile 2 yıllık ABD tahvili arasındaki fark — negatife geçince dikkat!
+
+🇹🇷 Türk yatırımcı için:
+→ ABD eğrisi = küresel risk iştahı barometresi
+→ Fed faiz indirimi beklentisi = EM varlıkları için görece destek
+
+Detaylı okuma için link bio'da 👆
+
+#verimegrisi #yieldcurve #resesyon #yatirim #borsa #fedkararı #ekonomi #tahvil #parafomo #finansokuryazarlığı
+
+---
+
+### ✅ Bugün senin yapman gerekenler
+
+1. **X (Twitter) thread'ini yayınla** — yukarıdaki taslağı 5 tweet'lik thread olarak paylaş. Yarın NFP verisi açıklanıyor, zamanlama çok iyi — piyasa tartışmaları sıcakken görünürlük artar.
+2. **Instagram post'unu paylaş** — carousel ya da single post; görsel olarak "normal vs ters eğri" şemasını canlandırabilirsen (manuel düzenle) çok daha fazla etkileşim alır.
+
+---
+
 ## 2026-08-05 (2. yayın)
 
 **Yayınlanan yazı:** [P/D Oranı Nedir? Defter Değeriyle Hisse Senedi Nasıl Değerlenir?](https://parafomo.com/blog/pd-orani-nedir/)
