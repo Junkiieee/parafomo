@@ -17,6 +17,23 @@ faq:
     a: "Ters eğri bankaların net faiz marjını daraltır. Yatırımcılar resesyon beklentisiyle döngüsel hisseleri satıp defansif varlıklara yönelir; BIST'te banka ağırlıklı portföyler bu dinamikten dolaylı etkilenir."
   - q: "Türk yatırımcı verim eğrisini nereden takip eder?"
     a: "ABD eğrisi için Federal Reserve St. Louis (FRED) sitesi ve investing.com ücretsiz veri sağlar. Türkiye için TCMB'nin her iş günü yayımladığı TL verim eğrisi takip edilebilir."
+shorts:
+  - "Resesyonu aylarca önceden görebilen bir grafik var mı?"
+  - "Verim eğrisi devlet tahvillerinin vadeye göre getirilerini gösteren grafik; uzun vade normalde daha yüksek faiz öder."
+  - "Kısa vadeli faizler uzun vadenin üzerine çıkınca eğri tersine döner ve piyasalar 'ekonomi yavaşlıyor' sinyali verir."
+  - "1970'ten bu yana ABD'deki her büyük resesyon, bu eğrinin tersine dönmesinden 6 ila 18 ay sonra geldi."
+  - "Peki bugün verim eğrisi ne söylüyor? Öğrenmek için kanala abone ol, finans içerikleri kaçırma; parafomo.com'da hepsini bulabilirsin."
+shorts_broll:
+  - "US treasury bond market trading"
+  - "stock market recession chart"
+  - "federal reserve interest rate decision"
+  - "economic slowdown financial crisis"
+shorts_visuals:
+  - "concept|yield curve graph financial chart"
+  - "concept|government bond certificate treasury investment"
+  - "concept|inverted yield curve interest rate chart screen"
+  - "concept|stock market crash recession historical chart"
+  - "concept|financial news subscribe notification bell"
 ---
 
 Yarın ABD'den dev bir veri paketi geliyor: tarım dışı istihdam (NFP), işsizlik oranı, saatlik kazanç. Piyasalar bu verilere bu kadar odaklanıyor çünkü hepsi aslında tek bir büyük soruya cevap arıyor: Fed'in faiz adımı ne yönde? Ve bu sorunun yanıtı çoğu zaman **verim eğrisinde** görünür.
