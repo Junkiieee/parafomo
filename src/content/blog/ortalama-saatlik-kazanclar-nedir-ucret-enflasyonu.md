@@ -17,6 +17,23 @@ faq:
     a: "ABD ücret enflasyonu yüksekse Fed faiz indirmez; dolar güçlenir, gelişmekte olan ülkelere sermaye girişi azalır. TL üzerinde değer kaybı baskısı oluşur, BIST'te yabancı para çıkışı görülebilir."
   - q: "Ortalama saatlik kazançlar ile PCE/CPI farkı ne?"
     a: "PCE ve CPI tüketici fiyatlarını ölçerken ortalama saatlik kazançlar üretici tarafındaki maliyet baskısını gösterir. Ücret artışı bugün CPI artışının habercisi olabilir; bu yüzden Fed için öncü göstergedir."
+shorts:
+  - "NFP manşet, ama piyasaları asıl bu veri sarsar."
+  - "Ortalama saatlik kazançlar, ABD özel sektör ücretlerinin aylık değişimini ölçen ve enflasyona öncülük eden kritik bir göstergedir."
+  - "Ücretler yükselince harcamalar artar, şirketler maliyeti fiyatlara yansıtır ve zincirleme enflasyon sarmalı devreye girer."
+  - "Güçlü ücret artışı Fed'i faiz indirmekten alıkoyar, bu da doları güçlendirip TL kurunu ve Türk yatırımcısını doğrudan etkiler."
+  - "Peki Fed bir sonraki faiz kararını tam olarak bu veriye bakarak nasıl alıyor? Abone ol, her gün piyasa hareketlerini parafomo.com'da birlikte takip edelim."
+shorts_broll:
+  - "average hourly earnings wage chart"
+  - "federal reserve interest rate decision"
+  - "US dollar currency exchange rate"
+  - "inflation wages workers paycheck"
+shorts_visuals:
+  - "concept|jobs report financial data screen"
+  - "concept|worker wage paycheck salary calculation"
+  - "concept|inflation spiral prices rising wages"
+  - "place|Federal Reserve Building Washington DC"
+  - "concept|financial investor data analysis screen"
 ---
 
 Her ayın ilk Cuması, dünyanın gözü ABD istihdam raporuna çevrilir. NFP rakamı ve işsizlik oranı manşeti çalarken bir veri sessiz sedasız piyasaları şekillendirir: **ortalama saatlik kazançlar**. 7 Ağustos 2026'da da aynı saatte —Türkiye saatiyle 15:30'da— açıklanan bu gösterge, Fed'in faiz yolunu ve dolayısıyla TL kurunu doğrudan etkiliyor.
