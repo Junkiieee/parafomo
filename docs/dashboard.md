@@ -1,6 +1,6 @@
 # ParaFOMO — Dürüst Ölçüm Panosu
 
-> Üretim: 2026-08-06 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
+> Üretim: 2026-08-07 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
 
 ## 1) Organik trafik trendi (GA4 — son 8 hafta)
 
@@ -13,15 +13,16 @@
 | 202629 | 2 | 14 | 16 |
 | 202630 | 1 | 18 | 19 |
 | 202631 | 2 | 20 | 22 |
-| 202632 | 3 | 8 | 11 |
+| 202632 | 6 | 11 | 17 |
 
-**Gerçek erişim trendi:** `▁█▃▃▂▁▂▃`  📈 artıyor
-**Son hafta Direct payı:** %73 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
+**Gerçek erişim trendi:** `▁█▃▃▂▁▂▅`  📈 artıyor
+**Son hafta Direct payı:** %65 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
 
 **Gerçek erişim kaynağı (son 4 hafta toplamı):**
-- Organic Search: 5 kullanıcı
-- Organic Social: 2 kullanıcı
+- Organic Search: 6 kullanıcı
+- Organic Social: 3 kullanıcı
 - Referral: 1 kullanıcı
+- Cross-network: 1 kullanıcı
 
 ## 2) Google arama trendi (GSC — son 8 hafta)
 
@@ -59,16 +60,15 @@
 
 ## 3) YouTube motoru
 
-- **Abone:** 20  ·  **Toplam izlenme:** 24,458  ·  **Video:** 122
+- **Abone:** 20  ·  **Toplam izlenme:** 24,847  ·  **Video:** 125
 - İzlenme/abone dönüşümü: **0.08%** (izleyen kaç kişi abone/huniye giriyor)
 
 ## 4) 🎯 DÜRÜST HÜKÜM
 
 **Hedef:** 1000 ziyaretçi/gün = 7,000/hafta gerçek erişim.
-**Gerçek durum:** son hafta **3** gerçek ziyaretçi = hedefin **%0.04**'si. Kalan: **6,997** kişi/hafta.
+**Gerçek durum:** son hafta **6** gerçek ziyaretçi = hedefin **%0.09**'si. Kalan: **6,994** kişi/hafta.
 
 **Teşhis:**
-- ⚠️ Trafiğin %73'i Direct — bu büyük ihtimalle sen + botlar, gerçek keşif değil. Çıplak sayıya güvenme.
-- 💡 YouTube'da 24,458 izlenme var ama siteye ~0 akıyor. En büyük kullanılmayan kaldıraç: YouTube→site hunisi.
+- ⚠️ Trafiğin %65'i Direct — bu büyük ihtimalle sen + botlar, gerçek keşif değil. Çıplak sayıya güvenme.
 
 **Özet:** Öğrenme döngüsü ses/format/slot optimize ediyor ama yukarıdaki darboğaz oralarda değil. Sistemin 'kendi kendine öğrenip uygulaması' için önce ölçülen darboğaza (otorite/dağıtım) yönlendirilmesi gerekir.

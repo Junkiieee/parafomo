@@ -453,6 +453,49 @@ def make_stat_badge(text, path):
     img.save(path)
 
 
+COUNTUP_SCRIPT = os.path.join(ROOT, "scripts", "countup-overlay.py")
+
+
+def _num(v):
+    """'6.657 TL' / 6657.0 / '%21' → float. TR biçim (binlik '.', ondalık ',') temizlenir."""
+    if isinstance(v, (int, float)):
+        return float(v)
+    s = re.sub(r"[^\d,.\-]", "", str(v))
+    if not s:
+        return None
+    s = s.replace(".", "").replace(",", ".") if "," in s else s.replace(".", "")
+    try:
+        return float(s)
+    except ValueError:
+        return None
+
+
+def make_countup(chart, tmpdir):
+    """backtest_return chart payload'ından animasyonlu start→end sayaç kareleri üretir
+    ("motion earns the pause" — en yüksek skorlu format payoff'unu görselleştirir).
+    Başarısızsa None (canlı hat asla kırılmaz)."""
+    try:
+        start = _num(chart.get("amount"))
+        end = _num(chart.get("end_value"))
+        if end is None and start is not None:
+            pct = _num(chart.get("pct"))
+            if pct is not None:
+                end = start * (1 + pct / 100.0)
+        if start is None or end is None or start <= 0 or abs(end - start) < 1:
+            return None
+        r = subprocess.run(
+            [sys.executable, COUNTUP_SCRIPT, "--start", f"{start:.0f}", "--end", f"{end:.0f}",
+             "--suffix", " TL", "--label", "BUGÜN", "--cy", "600", "--size", "170",
+             "--dur", "2.2", "--hold", "0.8", "--fps", str(FPS), "--out", tmpdir],
+            capture_output=True, text=True, timeout=120)
+        if r.returncode == 0 and os.path.isdir(tmpdir) and os.listdir(tmpdir):
+            return tmpdir
+        print(f"[i] count-up atlandı: {(r.stderr or r.stdout or '').strip()[:80]}")
+    except Exception as e:
+        print(f"[i] count-up üretilemedi: {str(e)[:80]}")
+    return None
+
+
 def _kenburns(motion, D):
     """v4: sahne başına değişen kamera hareketi (zoom-in/out + pan) — statik
     'her klip aynı zoom' hissini kırar. Pencereler 9:16 kilitli (distorsiyon yok)."""
@@ -474,12 +517,13 @@ def _kenburns(motion, D):
     return f"crop=w='{w}':h='{h}':x='{x}':y='{y}'"
 
 
-def make_clip(broll, audio, overlay, dur, out_clip, badge=None, motion=0):
+def make_clip(broll, audio, overlay, dur, out_clip, badge=None, motion=0, countup_dir=None):
     delay = int(LEAD * 1000)
     D = f"{dur:.3f}"
     bt = LEAD          # rozet konuşma başlarken belirir
     BY = 500           # rozet üst-orta; altyazıların üstünde
     inputs = []
+    idx = 1            # [0] = video (broll/color)
     if broll:
         # v4: değişken Ken Burns + sinematik vignette/kontrast (stok 'düz' hissini azaltır)
         inputs += ["-stream_loop", "-1", "-t", D, "-i", broll]
@@ -490,17 +534,27 @@ def make_clip(broll, audio, overlay, dur, out_clip, badge=None, motion=0):
     else:
         inputs += ["-f", "lavfi", "-t", D, "-i", "color=c=0x14323C:s=1080x1920"]
         fc = "[0:v]fps=30,fade=t=in:st=0:d=0.20[bg];"
-    inputs += ["-i", audio, "-loop", "1", "-t", D, "-i", overlay]
-    aud_idx, ov_idx = "1", "2"
+    inputs += ["-i", audio]; aud_idx = str(idx); idx += 1
+    inputs += ["-loop", "1", "-t", D, "-i", overlay]; ov_idx = str(idx); idx += 1
+    # count-up varken bileşik video ara-etiket [vc]'ye yazılır (sonra sayaç bindirilir).
+    pre = "vc" if countup_dir else "v"
     if badge:
-        inputs += ["-loop", "1", "-t", D, "-i", badge]
+        inputs += ["-loop", "1", "-t", D, "-i", badge]; bdg_idx = str(idx); idx += 1
         fc += f"[bg][{ov_idx}:v]overlay=0:0[vb];"
-        fc += (f"[3:v]format=rgba,fade=t=in:st={bt:.2f}:d=0.30:alpha=1[bdg];"
+        fc += (f"[{bdg_idx}:v]format=rgba,fade=t=in:st={bt:.2f}:d=0.30:alpha=1[bdg];"
                f"[vb][bdg]overlay=x=(W-w)/2:"
                f"y='{BY}+70*max(0\\,1-(t-{bt:.2f})/0.32)':"
-               f"enable='gte(t\\,{bt:.2f})'[v];")
+               f"enable='gte(t\\,{bt:.2f})'[{pre}];")
     else:
-        fc += f"[bg][{ov_idx}:v]overlay=0:0[v];"
+        fc += f"[bg][{ov_idx}:v]overlay=0:0[{pre}];"
+    if countup_dir:
+        # backtest_return payoff: animasyonlu sayaç (start→end) sahnenin üstüne biner.
+        # setpts ile konuşma başlarken (bt+0.15) girer; biter bitmez son kare donar.
+        cst = bt + 0.15
+        inputs += ["-framerate", str(FPS), "-i", os.path.join(countup_dir, "frame_%04d.png")]
+        cu_idx = str(idx); idx += 1
+        fc += (f"[{cu_idx}:v]format=rgba,setpts=PTS-STARTPTS+{cst:.2f}/TB[cu];"
+               f"[vc][cu]overlay=0:0:eof_action=repeat[v];")
     fc += f"[{aud_idx}:a]adelay={delay}|{delay},apad=whole_dur={dur}[a]"
     subprocess.run(["ffmpeg", "-y", *inputs, "-filter_complex", fc, "-map", "[v]", "-map", "[a]",
                     "-t", D, "-c:v", "libx264", "-r", str(FPS), "-pix_fmt", "yuv420p",
@@ -594,9 +648,22 @@ def main():
         if stat:
             badge = f"{TMP}/badge{i:02d}.png"
             make_stat_badge(stat, badge)
+        # backtest_return payoff (chart beat): statik grafik üstüne animasyonlu count-up sayaç.
+        countup_dir = None
+        if (scenario and scenario.get("format") == "backtest_return"
+                and is_chart and isinstance((visual or {}).get("chart"), dict)):
+            countup_dir = make_countup(visual["chart"], f"{TMP}/cu{i:02d}")
         clip = f"{TMP}/clip{i:02d}.mp4"
         motion = "hook" if kind == "hook" else i  # v4: sahne başına değişen hareket
-        make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion)
+        try:
+            make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion,
+                      countup_dir=countup_dir)
+        except subprocess.CalledProcessError:
+            if countup_dir:   # sayaç hattı kırıldıysa asla videoyu düşürme — sayaçsız yeniden
+                print("[i] count-up'lı klip başarısız → sayaçsız yeniden kur")
+                make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion)
+            else:
+                raise
         clips.append(clip)
 
         # gerçek senkron: whisper → hizala → karaoke chunk

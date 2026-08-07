@@ -153,17 +153,32 @@ def _clean(text):
     return " ".join(out).strip()
 
 
+# Formata göre YORUM tetikleyen soru — jenerik "ne düşünüyorsun" yerine konuya
+# özgü soru çok daha fazla yorum çeker (erişim sinyali). IG önizlemede ilk 1-2
+# satır görünür; bu yüzden soru artık EN ÜSTE, görünür bölgeye taşındı.
+FORMAT_Q = {
+    "backtest_return": "Sen bu parayı nereye koyardın — altın mı, dolar mı, borsa mı?",
+    "comparison": "Sence uzun vadede hangisi kazandırır?",
+    "myth": "Sen de böyle mi biliyordun?",
+    "news_reaction": "Sence piyasa buna nasıl tepki verir?",
+    "single_concept": "Bunu daha önce biliyor muydun?",
+    "shock_number": "Bu rakam seni şaşırttı mı?",
+}
+
+
 def build_caption(meta, slug):
     title = re.sub(r"#\w+\s*$", "", meta.get("title", "")).strip()  # sondaki #Shorts vs
     desc = _clean(meta.get("description", ""))
     hook = title or desc[:80]
     body = desc if desc and desc != title else ""
+    q = FORMAT_Q.get((meta.get("format") or "").strip(), "Sen ne düşünüyorsun?")
     # Erişim sinyali: yorum + kaydetme, beğeniden daha güçlü sıralama sinyalidir.
-    cta = (f"\n\n💬 Sen ne düşünüyorsun? Yorumda yaz 👇\n"
-           f"📌 Unutmamak için KAYDET · paylaş\n"
+    # Soruyu görünür ilk bloğa al (yorum), kaydet/takip/link altta.
+    cta = (f"📌 Unutmamak için KAYDET · paylaş\n"
            f"🔔 Günlük altın · dolar · borsa · faiz → TAKİP ET @parafomo\n"
            f"📲 Tam rehber (ücretsiz): {site_link(slug)}")
-    cap = f"{hook}\n\n{body}{cta}\n\n{build_hashtags(slug, title, desc)}"
+    body_block = f"{body}\n\n" if body else ""
+    cap = f"{hook}\n\n💬 {q} Yorumda yaz 👇\n\n{body_block}{cta}\n\n{build_hashtags(slug, title, desc)}"
     return cap[:2100]  # IG caption sınırı 2200
 
 

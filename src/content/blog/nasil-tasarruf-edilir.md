@@ -138,7 +138,7 @@ Sigorta yenileme, okul ücreti, yıllık aidat: bunları takvime ekleyin. Sürpr
 
 ### 20. Birikiminizi enflasyona karşı çalıştırın
 
-Tasarruf hesabında bekleyen para, enflasyonla yavaşça erir. Acil durum fonunun üzerindeki birikim için enflasyonun üzerinde getiri sağlayan araçları değerlendirin. Bileşik getirinin neden bu kadar güçlü olduğunu burada anlattım: [Bileşik Faiz Nedir ve Neden Bu Kadar Güçlü?](/blog/bilesik-faiz-nedir).
+Tasarruf hesabında bekleyen para, enflasyonla yavaşça erir. Acil durum fonunun üzerindeki birikim için enflasyonun üzerinde getiri sağlayan araçları değerlendirin. Yeni başlayanlar için en düşük maliyetli ve en az uğraş isteyen seçeneklerin başında piyasanın tamamını tek alımda takip eden fonlar gelir — [endeks fonu nedir](/blog/endeks-fonu-nedir) ve Türkiye'den nasıl alınır sorusunu adım adım burada yanıtladım. Bileşik getirinin neden bu kadar güçlü olduğunu burada anlattım: [Bileşik Faiz Nedir ve Neden Bu Kadar Güçlü?](/blog/bilesik-faiz-nedir).
 
 ## Tasarruf Hedefi Nasıl Belirlenir?
 

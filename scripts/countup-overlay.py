@@ -78,7 +78,7 @@ def render(args):
     lab_f = font(OSWALD, max(40, args.size // 4))
 
     span = args.end - args.start
-    cy = H // 2
+    cy = args.cy if args.cy else H // 2
 
     for i in range(n_frames + hold):
         t = min(1.0, i / max(1, n_frames - 1))
@@ -124,6 +124,7 @@ def main():
     ap.add_argument("--decimals", type=int, default=0)
     ap.add_argument("--label", default="")
     ap.add_argument("--size", type=int, default=220)
+    ap.add_argument("--cy", type=int, default=0, help="sayının dikey merkezi (0=ekran ortası)")
     ap.add_argument("--out", required=True, help="çıktı klasörü (frame_%04d.png)")
     render(ap.parse_args())
 
