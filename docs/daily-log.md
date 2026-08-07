@@ -4,6 +4,70 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-07
+
+**Yayınlanan yazı:** [Ortalama Saatlik Kazançlar Nedir? Ücret Enflasyonu ve Fed Faiz Etkisi](https://parafomo.com/blog/ortalama-saatlik-kazanclar-nedir-ucret-enflasyonu/)
+*Seçim gerekçesi:* 7 Ağustos 2026 tarihli ABD istihdam raporu ile eş zamanlı — Average Hourly Earnings (Ortalama Saatlik Kazançlar) verisi hiç işlenmemiş bir açı; NFP ve işsizlik oranı yazılarını tamamlayan cluster piece. GSC "fed faiz kararı" fırsatları kümesine bağlanıyor; ücret enflasyonu Fed'in öncü göstergesi olduğundan arama niyeti yüksek.
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+"NFP ve işsizlik oranını duydun — ama asıl piyasayı sarsan rakam başka."
+
+Ortalama saatlik kazançlar: Fed'in gece yatmadan önce baktığı ücret enflasyonu 🧵
+
+**Tweet 2:**
+Fed'in 2 hedefi var:
+→ Enflasyonu %2'de tut
+→ Tam istihdamı sağla
+
+Ücret artışı bu iki hedefi aynı anda tehdit eder.
+Ücretler yükselirse şirketler fiyatları artırır → enflasyon canlanır → Fed faiz indirmez.
+
+**Tweet 3:**
+Peki bu Türkiye'yi nasıl etkiler?
+
+Yüksek ücret verisi → Fed faiz tutmaya devam eder → Dolar güçlenir → TL üzerinde baskı
+Düşük ücret verisi → Fed faiz yolunu açar → Gelişen piyasalara para girer → TL ve BIST soluk alır
+
+**Tweet 4:**
+Bugün 15:30'da açıklanan rakamı izle.
+Beklentinin üzerindeyse dolar spike yapabilir.
+Altındaysa risk iştahı açılabilir.
+
+Detayların tamamı: parafomo.com/blog/ortalama-saatlik-kazanclar-nedir-ucret-enflasyonu/
+
+---
+
+### 📸 Instagram Post / Reels Metni
+
+**Caption:**
+Fed neye bakıyor biliyor musun? 👀
+
+Bugün açıklanan ABD Ortalama Saatlik Kazançlar verisi, piyasaların gözünün içine baktığı gösterge. NFP'nin gölgesinde kalan ama belki de daha kritik bir rakam.
+
+Neden mi?
+
+Çünkü ücretler yükselince fiyatlar da yükseliyor. Bu "ücret-fiyat sarmalı" Fed'in en büyük kabusu. Kabus gerçekleşirse faiz indirim kapısı kapanıyor.
+
+Kapı kapanınca dolar güçleniyor, TL baskı altında kalıyor, BIST'te yabancı çekiliyor.
+
+Bu veriyi nasıl okuyacağını, sana nasıl yansıyacağını tam olarak anlattık 👇
+Linki biyografide 🔗
+
+#ücretenflasyonu #fed #faizkarari #dolar #tl #yatirim #parabiriktir #parafomo #finans #ekonomi #borsa
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **Sosyal paylaşım:** Yukarıdaki X thread'ini ve Instagram postunu yayınla — veri bugün açıklandı, zamanlama mükemmel; 15:30 sonrası (veri açıklandıktan sonra) paylaşırsan gündemdeyken yakalarsın.
+2. **Topluluk paylaşımı:** r/borsa veya Ekşi Sözlük "nfp" / "fed faiz" başlıklarında içeriği paylaş; "NFP verisiyle birlikte ortalama saatlik kazançlar da önemli, açıkladık" şeklinde değer katan bir yorum bırak.
+
+---
+
 ## 2026-08-06 (2. yazı)
 
 **Yayınlanan yazı:** [GYO Nedir? Gayrimenkul Yatırım Ortaklığına Yatırım Rehberi](https://parafomo.com/blog/gyo-nedir-gayrimenkul-yatirim-ortakligi/)
