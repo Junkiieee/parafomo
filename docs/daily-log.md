@@ -4,6 +4,83 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-07 (2. yazı)
+
+**Yayınlanan yazı:** [Stop-Loss Nedir? Borsada Zararı Sınırlamak için Emir Türleri Rehberi](https://parafomo.com/blog/stop-loss-nedir-zarar-kesme/)
+*Seçim gerekçesi:* Backlog tamamen tükendiğinden yeni evergreen borsa konusu eklendi. Stop-loss, teknik analiz grafik okuma yazısında yalnızca kısaca değinilen ama kendi başına yüksek arama hacmine sahip bir konu; "stop loss nedir" sorgusu özellikle BIST'te işlem yapan bireysel yatırımcıların sürekli aradığı, henüz kapsamlı karşılık bulmamış bir arama. Risk yönetimi + teknik analiz + hisse seçimi cluster'ını birbirine bağlayan kritik bir piece.
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+"Hisse yüzde 40 düştü. Satmadım. 'Toparlar' dedim."
+
+Borsada en çok para kaybedenler böyle düşündü. Stop-loss bu tuzağı ortadan kaldırır 🧵
+
+**Tweet 2:**
+Stop-loss nedir?
+
+Önceden belirlediğin bir fiyata hisse düşünce otomatik satış emri.
+
+Sen ekranda yokken bile çalışır.
+Panik kararı değil, plan çalışır.
+
+**Tweet 3:**
+4 temel emir türü:
+
+🔴 Stop-Loss (piyasa) → hızlı, ama fiyat garantisi yok
+🟡 Stop-Limit → fiyat kontrolü var, ama gerçekleşmeyebilir
+🟢 Trailing Stop → hisse yükseldikçe stop da yükselir (kârı kilitler!)
+🔵 OCO → hem stop hem kâr hedefi aynı anda
+
+**Tweet 4:**
+Seviye nasıl belirlenir?
+
+→ Destek noktasının biraz altı (teknik yöntem)
+→ Portföyün max yüzde 2'si (yüzde yöntemi)
+→ 1.5 ATR altı (volatiliteye göre)
+
+Risk/ödül oranı en az 1:2 olsun.
+
+**Tweet 5:**
+BIST'te nasıl girilir?
+Aracı kurum platformunda "Koşullu Emir" veya "Şartlı Emir" bölümü.
+
+Adım adım anlattık 👇
+parafomo.com/blog/stop-loss-nedir-zarar-kesme/
+
+---
+
+### 📸 Instagram Post / Reels Metni
+
+**Caption:**
+"Toparlar" derken yüzde 40 kaybettiren bu tuzağa düşme 🛑
+
+Stop-loss, borsanın en temel risk aracıdır. Ama çoğu yatırımcı ya hiç kullanmıyor ya da yanlış kullanıyor.
+
+Bugün anlattıklarımız:
+✅ Stop-loss nedir, nasıl çalışır
+✅ 4 emir türü ve farkları (tablo var!)
+✅ Seviye nasıl belirlenir — 3 yöntem
+✅ BIST'te koşullu emir nasıl girilir
+✅ En sık yapılan 5 hata
+
+Trailing stop'u öğrenince "ben niye daha önce bilmiyordum" diyeceksin 😅
+
+Linki biyografide 🔗
+
+#stoploss #borsa #bist #riskyönetimi #hissesenedi #yatırım #teknikanaliz #parafomo #finans #borsaklavuzu
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **Sosyal paylaşım:** Yukarıdaki X thread'ini ve Instagram postunu yayınla — stop-loss evergreen bir konu, zamanlama esnektir; akşam saatlerinde (18:00-21:00) paylaşmak katılımı artırır.
+2. **Topluluk paylaşımı:** r/borsa veya Ekşi Sözlük "stop loss" ya da "zarar kes" başlıklarında değer katan bir yorum bırak; "bunu merak edenler için kapsamlı bir Türkçe kaynak hazırladık" şeklinde dürüst bir paylaşım yap.
+
+---
+
 ## 2026-08-07
 
 **Yayınlanan yazı:** [Ortalama Saatlik Kazançlar Nedir? Ücret Enflasyonu ve Fed Faiz Etkisi](https://parafomo.com/blog/ortalama-saatlik-kazanclar-nedir-ucret-enflasyonu/)

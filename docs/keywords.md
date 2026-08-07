@@ -51,6 +51,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] ETF nedir? Borsa yatırım fonu rehberi — `Yatırım` — hedef: "etf nedir"
 - [x] P/D oranı nedir, hisse senedi defter değeri analizi — `Borsa` — hedef: "p/d oranı nedir"
 - [x] GYO nedir? Gayrimenkul Yatırım Ortaklığına yatırım rehberi — `Yatırım` — hedef: "gyo nedir"
+- [x] Stop-loss nedir? Borsada zararı sınırlamak için emir türleri rehberi — `Borsa` — hedef: "stop loss nedir"
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
@@ -139,3 +140,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Verim Eğrisi (Yield Curve) Nedir? Resesyon Uyarısını Nasıl Okursun? — `verim-egrisi-nedir-resesyon-isareti` (yeni evergreen ekonomi; "verim eğrisi nedir" sorgusu; tahvil+Fed+faiz cluster'ını birbirine bağlayan pillar piece)
 - [x] GYO Nedir? Gayrimenkul Yatırım Ortaklığına Yatırım Rehberi — `gyo-nedir-gayrimenkul-yatirim-ortakligi` (backlog genişletme: evergreen yatırım; "gyo nedir" sorgusu; konut yatırımı + temettü cluster'ını tamamlayan piece)
 - [x] Ortalama Saatlik Kazançlar Nedir? Ücret Enflasyonu ve Fed Faiz Etkisi — `ortalama-saatlik-kazanclar-nedir-ucret-enflasyonu` (takvim: 7 Ağustos 2026 Average Hourly Earnings açıklaması; NFP kümesini tamamlayan yeni açı; GSC "fed faiz kararı" fırsatlarına bağlı öncü gösterge)
+- [x] Stop-Loss Nedir? Borsada Zararı Sınırlamak için Emir Türleri Rehberi — `stop-loss-nedir-zarar-kesme` (backlog genişletme: evergreen borsa; "stop loss nedir" sorgusu; teknik analiz + risk yönetimi cluster'ını tamamlayan piece)
