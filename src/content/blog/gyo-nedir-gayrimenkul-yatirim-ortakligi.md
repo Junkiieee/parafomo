@@ -17,6 +17,23 @@ faq:
     a: "NAV (Net Aktif Değer), GYO'nun portföyündeki tüm gayrimenkullerin piyasa değerinden şirket borçları düşüldükten sonra kalan net değerdir. Hisse fiyatı NAV'ın altındaysa iskontolu, üstündeyse primli işlem gördüğü anlamına gelir."
   - q: "GYO'da faiz riski neden önemlidir?"
     a: "Faizler yükseldiğinde GYO'ların borçlanma maliyetleri artar ve bu kârlılığı olumsuz etkiler. Ayrıca yatırımcılar yüksek faizli mevduat ve tahvile yöneldiği için GYO hisse fiyatları görece baskı altına girebilir."
+shorts:
+  - "AVM sahibi olmak için milyoner olmak şart mı?"
+  - "GYO hissesi alarak bir alışveriş merkezinin kira gelirine sadece birkaç yüz TL ile ortak olabilirsin."
+  - "Konut satmak aylarca sürer; GYO hissesini borsa seansında saniyeler içinde nakde çevirebilirsin."
+  - "Tek bir hisseyle onlarca mülke dolaylı ortak olursun; kiracı, bakım ve tapu derdi tamamen şirkete ait."
+  - "Peki hangi GYO gerçekten değer mi? Bunu parafomo.com'da araştırıyoruz — kanala abone ol, her gün yeni analiz geliyor."
+shorts_broll:
+  - "shopping mall interior aerial view"
+  - "real estate investment stocks screen"
+  - "commercial property buildings aerial"
+  - "stock market trading terminal"
+shorts_visuals:
+  - "scene|luxury shopping mall interior crowded"
+  - "place|Borsa İstanbul"
+  - "scene|real estate for sale sign vs stock chart"
+  - "scene|commercial real estate portfolio office buildings"
+  - "scene|financial analysis laptop chart workspace"
 ---
 
 Büyük bir ticari alışveriş merkezine veya lojistik depoya ortak olmak, eskiden yalnızca milyonlarca TL sermayesi olan kurumsal yatırımcıların ayrıcalığıydı. GYO (Gayrimenkul Yatırım Ortaklığı) hisseleri bu kapıyı birkaç yüz TL ile bireysel yatırımcıya da açtı. Hem kira gelirine hem gayrimenkul değer artışına ortak olmanın en likit yolu olan GYO nedir, nasıl çalışır ve BIST'te nasıl değerlendirilir? İşte adım adım rehber.
