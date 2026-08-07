@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-08-06T08:45:45Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-08-07T08:45:56Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -13,37 +13,37 @@
 
 ### Shorts sesi — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `tr-TR-Chirp3-HD-Alnilam` — skor 99.62, örnek 2
 - `tr-TR-Chirp3-HD-Gacrux` — skor 99.246, örnek 5
-- `tr-TR-Chirp3-HD-Iapetus` — skor 80.098, örnek 5
+- `tr-TR-Chirp3-HD-Alnilam` — skor 98.605, örnek 2
 - `tr-TR-Chirp3-HD-Sadachbia` — skor 54.897, örnek 3
-- `tr-TR-Chirp3-HD-Sulafat` — skor 54.275, örnek 8
+- `tr-TR-Chirp3-HD-Sulafat` — skor 54.244, örnek 8
 - `tr-TR-Chirp3-HD-Enceladus` — skor 49.57, örnek 2
 - `tr-TR-Chirp3-HD-Rasalgethi` — skor 44.163, örnek 3
 - `tr-TR-Chirp3-HD-Sadaltager` — skor 42.78, örnek 4
+- `tr-TR-Chirp3-HD-Algieba` — skor 41.62, örnek 2
 
-### Shorts motoru (google/edge) — **exploit** → seçim: `google`
+### Shorts motoru (google/edge) — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `google` — skor 46.967, örnek 86
+- `google` — skor 44.427, örnek 86
 - `edge` — skor 38.955, örnek 15
 
 ### Viral format — **exploit** → seçim: `backtest_return`
 
-- `backtest_return` — skor 86.46, örnek 9
+- `backtest_return` — skor 78.273, örnek 10
 - `myth` — skor 41.318, örnek 9
-- `news_reaction` — skor 40.535, örnek 15
+- `news_reaction` — skor 38.222, örnek 16
 - `comparison` — skor 35.765, örnek 4
 - `single_concept` — skor 35.492, örnek 5
 - `shock_number` — skor 34.408, örnek 6
 
-### Viral yayın slotu — **explore** (yeterli veri yok, rotasyon sürüyor)
+### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
 - `5` — skor 84.495, örnek 8
-- `manual` — skor 43.626, örnek 11
-- `0` — skor 42.928, örnek 8
-- `1` — skor 41.159, örnek 7
-- `2` — skor 39.282, örnek 4
-- `4` — skor 36.398, örnek 5
+- `0` — skor 43.499, örnek 8
+- `1` — skor 40.873, örnek 7
+- `manual` — skor 40.285, örnek 12
+- `4` — skor 36.402, örnek 5
+- `2` — skor 31.826, örnek 5
 - `3` — skor 31.7, örnek 5
 
 ## Konu sinyalleri
@@ -52,9 +52,9 @@
 - genc-yasta-yatirima-nasil-baslanir — skor 8.83
 - fomc-toplanti-tutanaklari-nedir — skor 8.12
 - endeks-fonu-nedir — skor 7.0
-- turkiyede-en-iyi-yatirim-araclari-2026 — skor 2.03
+- turkiyede-en-iyi-yatirim-araclari-2026 — skor 3.72
+- abd-perakende-satislari-nedir — skor 3.42
 - portfoy-cesitlendirmesi-nasil-yapilir — skor 2.02
-- fk-orani-nedir — skor 2.0
 
 **🎯 Fırsat sorguları** (içerik/başlık iyileştir):
 - `abd faiz kararı` — gös 8, sıra 17.9
