@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-07T06:15+00:00",
+  "updated": "2026-08-07T12:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 43,
@@ -33,6 +33,20 @@
       "broker": "Halk Yatırım Menkul Değerler A.Ş. Ziraat Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş."
     },
     {
+      "company": "Kapeks Kimya Sanayi A.Ş.",
+      "bist_code": "KPEKS",
+      "slug": "kapeks-kimya-sanayi-a-s",
+      "link": "https://halkarz.com/kapeks-kimya-sanayi-a-s/",
+      "date_text": "12-13-14 Ağustos 2026 09:00-17:00",
+      "start": "2026-08-12",
+      "end": "2026-08-14",
+      "status": "Yaklaşan",
+      "price": "94,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "25.100.000 Lot",
+      "broker": "Ziraat Yatırım Menkul Kıymetler A.Ş. Türkiye Sınai Kalkınma Bankası A.Ş. Yatırım Finansman Menkul Değerler A.Ş."
+    },
+    {
       "company": "Teknika Plast Teknik Kalıp Plastik San. ve Tic. A.Ş.",
       "bist_code": "",
       "slug": "teknika-plast-teknik-kalip-plastik-san-ve-tic-a-s",
@@ -45,20 +59,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "31.000.000 Lot",
       "broker": "Tera Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Kapeks Kimya Sanayi A.Ş.",
-      "bist_code": "",
-      "slug": "kapeks-kimya-sanayi-a-s",
-      "link": "https://halkarz.com/kapeks-kimya-sanayi-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "94,00 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "25.100.000 Lot",
-      "broker": "Türkiye Sınai Kalkınma Bankası A.Ş. Ziraat Yatırım Menkul Değerler A.Ş. Yatırım Finansman Menkul Değerler A.Ş."
     },
     {
       "company": "Sinbo Küçük Ev Aletleri San. ve Tic. A.Ş.",
