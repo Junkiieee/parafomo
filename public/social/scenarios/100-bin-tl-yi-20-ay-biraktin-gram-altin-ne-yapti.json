@@ -1,0 +1,104 @@
+{
+  "slug": "100-bin-tl-yi-20-ay-biraktin-gram-altin-ne-yapti",
+  "title": "100 Bin TL'yi 20 Ay Bıraktın: Gram Altın Ne Yaptı?",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "Kasım 2024'te 100.000 TL'yi gram altına koysaydın, Ağustos 2026'da yaklaşık 222.379 TL olurdu. 20 ayda %122 — nasıl oldu, ne anlama geliyor?",
+  "tags": [
+    "gram altın",
+    "backtest",
+    "altın getirisi",
+    "yatırım",
+    "100 bin TL",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "20 ayda 100 bini ikiye katlayan tek şey.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars shining"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kasım 2024'te bankalar yüksek faiz vaat ediyordu. Çoğu birikim mevduata yattı; gram altın pek gündemde değildi.",
+      "visual": {
+        "type": "concept",
+        "query": "bank counter money deposit Turkey"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama gram altın o 20 ayda yaklaşık yüzde 122 yaptı. 100 bin TL, bugün yaklaşık 222 bin 379 lira olurdu.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "Gram Altın",
+          "unit": "TL",
+          "points": [
+            2962.34,
+            3241.97,
+            3330.61,
+            3865.35,
+            4166.22,
+            4218.05,
+            4351.41,
+            4643.36,
+            5189.66,
+            5762.96,
+            5973.38,
+            6585.85,
+            6802.65,
+            6838.62,
+            6143.79,
+            6188.83,
+            6587.61
+          ],
+          "x": [
+            "11/24",
+            "01/25",
+            "02/25",
+            "03/25",
+            "04/25",
+            "05/25",
+            "07/25",
+            "08/25",
+            "09/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26"
+          ],
+          "amount": 100000,
+          "end_value": 222379,
+          "pct": 122
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yani 122 bin liraya yakın ekstra — bir orta sınıf arabasını geçen kazanç, hiçbir şey yapmadan.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins money growth wealth"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu ivme devam edecek mi, yoksa dönüm noktasında mıyız? Cevabı kaçırmamak için abone ol — her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "concept",
+        "query": "financial analysis screen data"
+      }
+    }
+  ]
+}
