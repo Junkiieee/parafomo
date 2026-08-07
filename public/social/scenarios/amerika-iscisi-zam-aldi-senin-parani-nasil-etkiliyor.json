@@ -1,0 +1,59 @@
+{
+  "slug": "amerika-iscisi-zam-aldi-senin-parani-nasil-etkiliyor",
+  "title": "Amerika İşçisi Zam Aldı: Senin Paranı Nasıl Etkiliyor?",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "ABD'de saatlik ücret artışı beklentinin üzerinde geldi. Bu tek veri Fed'in faiz kararını etkiler, dolar güçlenir, TL baskı altına girer — mekanizma sade anlatımla.",
+  "tags": [
+    "saatlik kazanç verisi",
+    "ABD ekonomi",
+    "dolar TL kur",
+    "Fed faiz kararı",
+    "Türk yatırımcı",
+    "enflasyon",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Amerika maaş verisi çıktı, TL'nin faturası sana geldi.",
+      "visual": {
+        "type": "building",
+        "query": "Federal Reserve Washington DC building"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "ABD'de işçi saatlik ücretleri beklenenden fazla arttı. Yüksek ücret, yüksek enflasyon anlamına geliyor — Fed bunu görünce faiz indirmeyi erteliyor.",
+      "visual": {
+        "type": "concept",
+        "query": "US workers wages paycheck rising chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl mesele burada başlıyor: Fed faizi yüksek tutarsa dolar güçleniyor. Güçlü dolar, TL dahil gelişen ülke paralarını baskıya alıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "dollar currency exchange rate emerging markets pressure"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yani ABD'deki maaş artışı, senin market sepetini dolaylı olarak etkiliyor. Bu dönemlerde altın ve dolar, TL'ye karşı tampon görevi görüyor.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars coins savings protection"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu veri her ay geliyor — bir sonrakinde piyasa ne yapar, nasıl okumalısın? Takip etmek istiyorsan abone ol; her gün 60 saniyede para piyasasının nabzını sana çeviriyoruz.",
+      "visual": {
+        "type": "concept",
+        "query": "financial news smartphone screen investing dashboard"
+      }
+    }
+  ]
+}
