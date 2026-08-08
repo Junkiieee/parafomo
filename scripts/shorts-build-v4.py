@@ -17,6 +17,7 @@ import os
 import re
 import sys
 import json
+import shutil
 import base64
 import difflib
 import argparse
@@ -276,7 +277,7 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Kar,{ASS_FONT},112,{C_SUNG},{C_UNSUNG},{C_OUTLINE},{C_SHADOW},1,0,0,0,100,100,0.5,0,1,9,5,5,70,70,0,1
+Style: Kar,{ASS_FONT},94,{C_SUNG},{C_UNSUNG},{C_OUTLINE},{C_SHADOW},1,0,0,0,100,100,0.5,0,1,8,5,5,84,84,0,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -284,12 +285,54 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     lines = [head]
     for start, end, chunk, big, ypos in events:
         ktext = "".join(f"{{\\k{max(1,k)}}}{ass_escape(w)} " for w, k in chunk).strip()
-        fs = "\\fs140" if big else ""
+        fs = "\\fs118" if big else ""
         # v4: overshoot "pop" — 84 → 106 → 100 (CapCut tipik enerjik giriş)
         pre = (f"{{\\an5\\pos(540,{ypos}){fs}\\fad(70,55)\\fscx84\\fscy84"
                f"\\t(0,90,\\fscx106\\fscy106)\\t(90,180,\\fscx100\\fscy100)}}")
         lines.append(f"Dialogue: 0,{ts(start)},{ts(end)},Kar,,0,0,0,,{pre}{ktext}")
     open(path, "w", encoding="utf-8").write("\n".join(lines))
+
+
+# ---------- içerik-eşlemeli görsel seçimi ----------
+# Segmentin KONUŞMASINDAN geçen finans kavramını yakalayıp ona özgü İngilizce
+# Pexels arama terimi döndürür → ekrandaki görsel anlatılanla örtüşür (sabit havuz
+# round-robin'inin "konuyla alakasız" sorununu çözer). Öncelik sırası = liste sırası.
+CONCEPT_QUERIES = [
+    (("düş", "çöküş", "çöker", "zarar", "kayb", "kaybe", "riskli", "dalgalan", "sert iniş"),
+     "stock market crash red falling chart"),
+    (("gram altın", "külçe", "altın", " ons", "ons "), "stacked gold bars wealth"),
+    (("dolar", "euro", "sterlin", "döviz", "kur ", "parite", "usd"),
+     "foreign currency exchange dollar euro"),
+    (("borsa", "hisse", "bist", "endeks", "pay senedi", "temettü"),
+     "stock market trading screen candlestick"),
+    (("enflasyon", "zam", "pahalı", "hayat pahalılığı", "fiyat art"),
+     "rising prices inflation grocery shopping"),
+    (("faiz", "merkez bankas", "tcmb", "fed", "politika faiz"),
+     "central bank interest rate building"),
+    (("mevduat", "banka", "kredi", "hesap"), "bank counter counting money"),
+    (("kripto", "bitcoin", "ethereum", "btc", "coin", "blokzincir"),
+     "bitcoin cryptocurrency trading"),
+    (("konut", "ev ", " ev.", "kira", "gayrimenkul", "emlak", "daire"),
+     "real estate houses city aerial"),
+    (("maaş", "asgari ücret", "gelir", "kazanç"), "counting salary cash hands"),
+    (("tasarruf", "biriktir", "birikim", "kumbara"), "saving coins jar money"),
+    (("vergi", "stopaj", "beyanname"), "tax documents calculator"),
+    (("emekli", "emeklilik", "bes"), "retirement savings planning"),
+    (("petrol", "doğalgaz", "enerji", "varil"), "oil barrels energy industry"),
+    (("fabrika", "sanayi", "üretim", "ihracat"), "factory industry production line"),
+    (("bütçe", "harcama", "tasarruf plan"), "budget planning finance desk"),
+]
+CONCEPT_FALLBACK = "financial charts money city"
+
+
+def content_query(spoken, fallback=None):
+    """Konuşma metnindeki ilk (en öncelikli) finans kavramına göre İngilizce
+    Pexels sorgusu döndürür; hiçbiri yoksa fallback (yoksa jenerik finans)."""
+    t = " " + (spoken or "").lower() + " "
+    for keys, q in CONCEPT_QUERIES:
+        if any(k in t for k in keys):
+            return q
+    return fallback or CONCEPT_FALLBACK
 
 
 # ---------- B-roll (Pexels) ----------
@@ -496,6 +539,44 @@ def make_countup(chart, tmpdir):
     return None
 
 
+MANIM_SCENES = os.path.join(ROOT, "scripts", "manim_scenes.py")
+
+
+def manim_scene(visual, dur, out_path):
+    """visual.type=='manim' segmenti için Manim animasyon arka planı render eder
+    (backtest_return payoff'unu stok yerine tam-vektör animasyonla gösterir).
+    Başarısızsa None → çağıran Pexels/renksiz fallback'e düşer (canlı hat kırılmaz)."""
+    try:
+        scene = visual.get("scene", "backtest")
+        cmd = [sys.executable, MANIM_SCENES, "--scene", scene,
+               "--theme", visual.get("theme", "slate"), "--dur", f"{dur:.2f}", "--out", out_path]
+        # veri-eğrisi sahnesi: chart payload'ından start/end çöz (yoksa render etme)
+        if scene == "backtest":
+            chart = visual.get("chart") or {}
+            start = _num(chart.get("amount")); end = _num(chart.get("end_value"))
+            if end is None and start is not None:
+                pct = _num(chart.get("pct"))
+                if pct is not None:
+                    end = start * (1 + pct / 100.0)
+            if not start or not end or start <= 0 or abs(end - start) < 1:
+                return None
+            cmd += ["--start", f"{start:.0f}", "--end", f"{end:.0f}"]
+        if scene == "bigstat" and _num(visual.get("end")) is not None:
+            cmd += ["--end", f"{_num(visual.get('end')):.0f}"]
+        # düz metin/veri parametreleri (sahneye göre kullanılır; boşları geçme)
+        for key in ("title", "sub", "keyword", "stat", "items", "label", "glyph", "suffix"):
+            v = visual.get(key)
+            if v not in (None, ""):
+                cmd += [f"--{key}", str(v)]
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
+        if r.returncode == 0 and os.path.exists(out_path) and os.path.getsize(out_path) > 2000:
+            return out_path
+        print(f"[i] manim atlandı: {(r.stderr or r.stdout or '').strip()[-160:]}")
+    except Exception as e:
+        print(f"[i] manim üretilemedi: {str(e)[:100]}")
+    return None
+
+
 def _kenburns(motion, D):
     """v4: sahne başına değişen kamera hareketi (zoom-in/out + pan) — statik
     'her klip aynı zoom' hissini kırar. Pencereler 9:16 kilitli (distorsiyon yok)."""
@@ -543,7 +624,7 @@ def make_clip(broll, audio, overlay, dur, out_clip, badge=None, motion=0, countu
         inputs += ["-stream_loop", "-1", "-t", D, "-i", broll]
         fc = (f"[0:v]scale=1296:2304:force_original_aspect_ratio=increase,crop=1296:2304,"
               f"{_kenburns(motion, D)},scale=1080:1920,setsar=1,fps=30,"
-              f"eq=saturation=1.12:brightness=-0.03:contrast=1.06,vignette=PI/4.5,"
+              f"eq=saturation=1.06:brightness=-0.05:contrast=1.07,vignette=PI/4.5,"
               f"fade=t=in:st=0:d=0.20[bg];")
     else:
         inputs += ["-f", "lavfi", "-t", D, "-i", "color=c=0x14323C:s=1080x1920"]
@@ -630,7 +711,8 @@ def main():
 
     os.makedirs(TMP, exist_ok=True); os.makedirs(OUT_DIR, exist_ok=True)
     for f in os.listdir(TMP):
-        os.remove(os.path.join(TMP, f))
+        p = os.path.join(TMP, f)
+        shutil.rmtree(p, ignore_errors=True) if os.path.isdir(p) else os.remove(p)
 
     clips, events, tcur, credits = [], [], 0.0, []
     for i, (kind, eyebrow, spoken) in enumerate(segs):
@@ -645,19 +727,31 @@ def main():
         brollpath = f"{TMP}/broll{i:02d}.mp4"
         broll = None
         visual = seg_visuals[i] if i < len(seg_visuals) else None
+        is_manim = bool(visual and visual.get("type") == "manim")
         if args.no_broll:
             broll = None
+        elif is_manim:
+            # Manim animasyon sahnesi arka plan olur; düşerse stok B-roll'e geri düş.
+            broll = manim_scene(visual, clip_dur, brollpath)
+            if broll is None:
+                broll = pexels_broll(visual.get("query") or "financial data chart", brollpath)
         elif visual and visual.get("query"):
-            broll, attr = vv.resolve(visual, clip_dur, brollpath)
+            # concept/scene (soyut stok) beat'lerinde görseli KONUŞMAYLA eşle;
+            # person/place/logo/gold/object gibi spesifik tipler olduğu gibi kalır.
+            v = visual
+            if (v.get("type") or "").lower() in ("concept", "scene"):
+                v = {**v, "query": content_query(spoken, v.get("query"))}
+            broll, attr = vv.resolve(v, clip_dur, brollpath)
             if attr and attr.get("need_attribution") and attr.get("credit"):
                 credits.append(attr["credit"])
         else:
-            query = broll_kw[i % len(broll_kw)] if broll_kw else None
+            # blog yolu: sabit havuzu sırayla basmak yerine segmentin içeriğine eşle.
+            query = content_query(spoken, broll_kw[i % len(broll_kw)] if broll_kw else None)
             broll = pexels_broll(query, brollpath) if query else None
         # ekran içi sayı vurgusu (CTA hariç) — finans Shorts'unda en yüksek etkili öğe.
-        # chart görselinde grafik zaten sayı gösterir → rozet eklenmez (çakışma olmasın).
+        # chart/manim görselinde sayı zaten gösterilir → rozet eklenmez (çakışma olmasın).
         is_chart = bool(visual and visual.get("type") == "chart")
-        stat = extract_stat(spoken) if (kind != "cta" and not is_chart) else None
+        stat = extract_stat(spoken) if (kind != "cta" and not is_chart and not is_manim) else None
         badge = None
         if stat:
             badge = f"{TMP}/badge{i:02d}.png"
@@ -668,7 +762,8 @@ def main():
                 and is_chart and isinstance((visual or {}).get("chart"), dict)):
             countup_dir = make_countup(visual["chart"], f"{TMP}/cu{i:02d}")
         clip = f"{TMP}/clip{i:02d}.mp4"
-        motion = "hook" if kind == "hook" else i  # v4: sahne başına değişen hareket
+        # v4: sahne başına değişen hareket; Manim sahnesi kendi animasyonlu → Ken Burns kapalı
+        motion = 0 if is_manim else ("hook" if kind == "hook" else i)
         try:
             make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion,
                       countup_dir=countup_dir)
@@ -689,7 +784,7 @@ def main():
         big = (kind == "hook")
         # altyazı alt kısımda; CTA'da alttaki parafomo.com/buton ile çakışmasın diye yukarıda
         ypos = 1330 if kind == "hook" else (1040 if kind == "cta" else 1450)
-        mc, mw = (14, 3) if big else (22, 4)
+        mc, mw = (12, 3) if big else (18, 4)
         gstart = tcur + LEAD
         idx = 0
         for ch in chunk_words(words, mc, mw):
