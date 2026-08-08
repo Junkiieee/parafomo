@@ -76,6 +76,10 @@ DATE="$(date -u +%Y-%m-%dT%H:%MZ)"
   timeout 60 "$VPY" "$REPO/agent/digest-extras.py" 2>/dev/null || echo "_(ham veri ekleri alınamadı)_"
   echo
 
+  # BÜYÜME MOTORU — darboğaza kilitli 4 fırsat bloğu (araç sayfası / SERP-boşluk / dağıtım / öncü gösterge)
+  timeout 30 "$VPY" "$REPO/agent/growth-engine.py" 2>/dev/null || echo "_(büyüme motoru alınamadı)_"
+  echo
+
   echo "## 9) Dünkü ajan görevleri (varsa — devam eden iş)"
   sed -n '1,40p' "$OUT_DIR/tasks-for-user.md" 2>/dev/null || echo "(ilk çalıştırma — önceki görev yok)"
   echo

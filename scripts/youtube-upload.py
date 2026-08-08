@@ -29,10 +29,17 @@ def site_url_for(slug):
     return "https://parafomo.com"
 
 
+def with_utm(url):
+    """Huni linkine UTM etiketi ekle → GA4 'YouTube→site' trafiğini Direct'ten AYIRIR.
+    Ölçüm olmadan huninin çalışıp çalışmadığı bilinemez (24K izlenme → siteye ~0)."""
+    sep = "&" if "?" in url else "?"
+    return f"{url}{sep}utm_source=youtube&utm_medium=shorts&utm_campaign=funnel"
+
+
 def with_funnel(description, slug):
     """Açıklamaya siteye yönlendiren altbilgi + abone CTA ekle (huni)."""
-    url = site_url_for(slug)
-    is_article = url != "https://parafomo.com"
+    url = with_utm(site_url_for(slug))
+    is_article = "parafomo.com/blog/" in url
     lead = "📖 Konunun tam rehberi (ücretsiz):" if is_article else "📊 Günlük altın/dolar/borsa analizleri:"
     footer = (f"\n\n———\n{lead}\n👉 {url}\n\n"
               "🔔 Kaçırmamak için ABONE OL — her gün yeni finans içeriği.\n\n"

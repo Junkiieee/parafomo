@@ -88,6 +88,25 @@ YouTube ile aynı çerçeve. **Reels = büyüme motoru.** Her bileşeni günlük
 
 ---
 
+## 🚀 BÜYÜME MOTORU — darboğaza kilitli 4 hamle (HER GECE, kanal minimumlarından sonra)
+Darboğaz on-page üretim DEĞİL; **otorite + dağıtım + gösterim havuzu.** `agent/growth-engine.py` bunu digest'te **"🚀 BÜYÜME MOTORU"** başlığı altında 4 blok olarak önüne serer (token'sız). Her gece bu 4 bloğu OKU ve **en az iki**sinde somut hamle yap (hepsinde daha iyi). Her hamleyi `exp.py add` ile deney kaydet.
+
+**A) Araç/veri sayfası motoru — havuzu BÜYÜT (en yüksek kaldıraç, tam özerk).**
+Digest "BÜYÜME-A" toolable-niyet sorgularını (hesapla/ne kadar/kur/takvim/karşılaştır) ve sayfası olmayanları listeler. Bankalarla head-term'de dövüşmek yerine **kendi verinle ÖZGÜN interaktif araç/veri sayfası** kur (Astro island; ekonomik-takvim gibi). Aday yoksa `data/` kaynaklarından yeni bir hedef sayfa türet. `npm run build` GEÇMELİ. Bu, gösterim havuzunu büyüten TEK gerçek özerk kaldıraç.
+
+**B) SERP-boşluk zekâsı — sayfa-2'yi sayfa-1'e it (tam özerk, canlı analiz).**
+Digest "BÜYÜME-B" bizim sayfamızın 8-20. sırada (sayfa 2) olduğu sorguları verir. Her hedef için: **WebFetch ile o sorgunun 1. sayfa rakiplerini gerçekten oku** → neden geride olduğumuzu çıkar (içerik derinliği, H2 kapsamı, structured data, tazelik, başlık/snippet). Somut **on-page diff uygula** (eksik bölüm ekle, şema, başlık, tazelik). "SEO iyileştir" değil — rakip X'te şu var bizde yok, ekledim.
+
+**C) Dağıtım / backlink kuyruğu — dış otorite (DRAFT özerk, POST kullanıcı).**
+İç-link var olan otoriteyi dağıtır; YENİ otorite **dış atıf/backlink** ister ve headless POST edilemez (hesap/kredential + spam/ban riski). Yapabildiğin: digest "BÜYÜME-C" öncelikli konu için **ready-to-paste doğal katkı taslakları** üret — SPAM DEĞİL, gerçek bir soruya değerli cevap + TEK bağlamsal link. `agent/state/distribution-queue.md`'ye yaz (tarih + mecra + hazır metin), kullanıcı görevlerine (④) kuyrukla. Ayrıca **linklenebilir özgün veri varlığı** (ör. halka-arz getiri analizi) üretmek A) ile örtüşür — atıf mıknatısı.
+
+**D) Öncü göstergeler — deneyi HIZLI kapat (tam özerk).**
+Digest "BÜYÜME-D" gösterim/pozisyon/fırsat-sayısı gibi metriklerin 3-7 günlük deltasını verir. Bunlar tıklamadan ÖNCE kımıldar. Adım 0'da açık deneyleri kapatırken **tıklamayı haftalarca bekleme**: gösterim/pozisyon 5-7 günde yön verdiyse deneyi `won/lost/inconclusive` kapat. Hangi hamlenin hangi öncü göstergeyi oynattığını rapora bağla.
+
+**Ölçüm huni:** YouTube açıklama linkleri artık UTM'li (`utm_source=youtube`) → GA4'te "YT→site" Direct'ten ayrışır. Digest'te bu segmenti izle; huni gerçekten tık getiriyor mu D bloğunda takip et. (IG bio-linki UTM'li kurmak kullanıcı görevi — bir kez.)
+
+---
+
 ## Her gece SONUNDA şunları yaz (ZORUNLU)
 Raporlama artık **TEK bir toplu e-posta** (Telegram YOK). `agent/state/report.md` doğrudan bu e-postanın gövdesidir — kullanıcının o sabah tek bakışta her şeyi anlayacağı **tek belge.** Şu bölümleri içersin:
 
