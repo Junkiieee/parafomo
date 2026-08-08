@@ -4,6 +4,69 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-08
+
+**Yayınlanan yazı:** [Fed Faiz Kararı Sonrası Piyasalar Nasıl Tepki Verir? 48 Saat Rehberi](https://parafomo.com/blog/fed-faiz-karari-sonrasi-piyasa-tepkisi/)
+*Seçim gerekçesi:* GSC fırsatı — "fed faiz kararı sonucu" (7 gösterim, sıra 24.1) ve "fed faiz kararı piyasaları nasıl etkiler" (3 gösterim, sıra 27) mevcut iki Fed yazısıyla karşılanmamış açı; learning report'ta FOMC tutanakları yazısı en yüksek skor (8.12) — Fed kümesi genişletildi.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**
+Fed faiz kararı açıklandı, dolar ters yönde gitti. Neden? 🧵
+
+**Tweet 2:**
+Çünkü piyasalar kararı HAFTALARCA önce fiyatlar.
+%90 beklenti → karar gerçekleşti → "sat haberi" → dolar düşer.
+Buna "sell the news" denir.
+
+**Tweet 3:**
+Fed kararı sonrası 48 saatin haritası:
+— 0–5 dk: algoritmik tepki
+— 30 dk: Başkan konuşur, asıl yön netleşir
+— 24 saat: analistler yorumlar, ikinci dalga
+— 48 saat: piyasa oturur
+
+**Tweet 4:**
+Türk yatırımcısı için etki sırası:
+Dolar/TL → Altın → BIST 100 → Mevduat faizi
+
+**Tweet 5:**
+Karardan hemen sonra büyük hamle yapma.
+48 saat bekle, piyasanın oturmasını izle.
+
+Detaylı rehber 👇
+parafomo.com/blog/fed-faiz-karari-sonrasi-piyasa-tepkisi/
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Caption:**
+Fed faiz kararı açıklandıktan sonra piyasalar neden bazen tam tersi yönde gidiyor? 🤔
+
+Çünkü kararı değil — beklentiyi fiyatlar. Karar beklentiyi doğrulayınca "haberi sat" mantığıyla ilk hareket tersine döner.
+
+**48 saatlik piyasa haritası:**
+✅ 0–5 dk → anlık algoritmik tepki
+✅ 30 dk → basın toplantısı, gerçek yön burada
+✅ 24 saat → analist yorumları, ikinci dalga
+✅ 48 saat → piyasa oturur
+
+TL, BIST ve altın üzerindeki etkiyi + ne yapmamalısın listesini linkteki yazıda anlattık 👆
+
+#fedkararı #faizkarari #dolar #bist100 #parafomo #yatirim #finansokuryazarligi
+
+---
+
+### Bugün senin yapman gerekenler
+
+1. **Paylaşımı yayınla:** Yukarıdaki X thread'ini ve Instagram post'unu kopyalayıp paylaş.
+2. **Toplulukta paylaş:** "Fed kararı neden ters tepti?" sorusunun sorulduğu Twitter/X tartışmalarına veya finans Telegram gruplarına yazıyı değer katarak ekle.
+
+---
+
 ## 2026-08-07 (2. yazı)
 
 **Yayınlanan yazı:** [Stop-Loss Nedir? Borsada Zararı Sınırlamak için Emir Türleri Rehberi](https://parafomo.com/blog/stop-loss-nedir-zarar-kesme/)
