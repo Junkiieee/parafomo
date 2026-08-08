@@ -503,6 +503,20 @@ def _kenburns(motion, D):
     if motion == "hook":   # açılış: güçlü zoom-in (enerji)
         return (f"crop=w='1296-320*{p}':h='2304-569*{p}':"
                 f"x='(in_w-out_w)/2':y='(in_h-out_h)/2'")
+    # v4.1 micro-cut: uzun segmentlerde (>5sn) tek sürekli Ken Burns = >5sn statik
+    # blok (2026 retention: "5-saniye kuralı" — hiçbir blok görsel değişmeden 5sn
+    # geçmesin). Sahneyi ~2.7sn'lik alt-fazlara böl; her faz taze wide→tight zoom,
+    # faz sınırında kadraj wide'a SNAP eder = kesim hissi (pattern-interrupt).
+    try:
+        durf = float(D)
+    except (TypeError, ValueError):
+        durf = 0.0
+    if durf > 5.0:
+        n = max(2, round(durf / 2.7))      # ~2.7sn/faz → 8sn'de 3 kesim
+        seg = durf / n
+        pw = f"min(mod(t\\,{seg:.3f})/{seg:.3f}\\,1)"
+        return (f"crop=w='1296-316*{pw}':h='2304-562*{pw}':"
+                f"x='(in_w-out_w)/2':y='(in_h-out_h)/2'")
     m = motion % 5
     if m == 0:             # zoom-in
         w, h, x, y = f"1296-216*{p}", f"2304-384*{p}", "(in_w-out_w)/2", "(in_h-out_h)/2"

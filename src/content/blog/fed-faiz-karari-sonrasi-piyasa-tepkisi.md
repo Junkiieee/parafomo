@@ -2,6 +2,7 @@
 title: "Fed Faiz Kararı Sonrası Piyasalar Nasıl Tepki Verir? 48 Saat Rehberi"
 description: "Fed faiz kararı açıklandıktan sonra dolar, BIST ve altın nasıl hareket eder? Türk yatırımcı için 48 saatlik piyasa tepkisi rehberi ve ne yapmalısın."
 pubDate: 2026-08-08
+updatedDate: 2026-08-08
 category: "Ekonomi"
 tags: ["fed faiz kararı", "fed kararı sonrası", "piyasa tepkisi", "dolar tl", "fomc", "fed kararı yatırımcı"]
 readingTime: 8
@@ -38,7 +39,7 @@ shorts_visuals:
 
 Fed faiz kararı açıklandığında ekranlarda anlık haberler akar, sosyal medya çalışır; peki dolar neden bazen karar sonrası tam tersi yönde hareket eder? Piyasaların bu "şok" tepkisini anlamak, Türk yatırımcısı için hem zararlı hamlelerden kaçınmanın hem de fırsatları görmenin anahtarıdır.
 
-Bu rehberde Fed kararından sonraki **48 saati** adım adım inceleyecek, hangi varlığın neden hareket ettiğini ve ne yapman gerektiğini sade bir dille anlatacağım.
+Bu rehberde Fed kararından sonraki **48 saati** adım adım inceleyecek, hangi varlığın neden hareket ettiğini ve ne yapman gerektiğini sade bir dille anlatacağım. Kararın kendisinin ne olduğunu ve nasıl alındığını merak ediyorsan önce [Fed faiz kararı](/blog/fed-faiz-karari-nedir-etkisi) ana rehberimize, karar öncesi beklentileri okumak için ise [Fed faiz kararı ne olur? beklenti rehberine](/blog/fed-faiz-karari-ne-olur-beklentiler) göz atabilirsin; burada odağımız kararın *sonrası*.
 
 ## Fed Kararı Açıklandığında İlk 5 Dakika Ne Olur?
 

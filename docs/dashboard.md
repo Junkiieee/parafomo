@@ -1,6 +1,6 @@
 # ParaFOMO — Dürüst Ölçüm Panosu
 
-> Üretim: 2026-08-07 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
+> Üretim: 2026-08-08 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
 
 ## 1) Organik trafik trendi (GA4 — son 8 hafta)
 
@@ -13,16 +13,15 @@
 | 202629 | 2 | 14 | 16 |
 | 202630 | 1 | 18 | 19 |
 | 202631 | 2 | 20 | 22 |
-| 202632 | 6 | 11 | 17 |
+| 202632 | 6 | 13 | 19 |
 
 **Gerçek erişim trendi:** `▁█▃▃▂▁▂▅`  📈 artıyor
-**Son hafta Direct payı:** %65 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
+**Son hafta Direct payı:** %68 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
 
 **Gerçek erişim kaynağı (son 4 hafta toplamı):**
-- Organic Search: 6 kullanıcı
+- Organic Search: 7 kullanıcı
 - Organic Social: 3 kullanıcı
 - Referral: 1 kullanıcı
-- Cross-network: 1 kullanıcı
 
 ## 2) Google arama trendi (GSC — son 8 hafta)
 
@@ -60,7 +59,7 @@
 
 ## 3) YouTube motoru
 
-- **Abone:** 20  ·  **Toplam izlenme:** 24,847  ·  **Video:** 125
+- **Abone:** 20  ·  **Toplam izlenme:** 24,912  ·  **Video:** 129
 - İzlenme/abone dönüşümü: **0.08%** (izleyen kaç kişi abone/huniye giriyor)
 
 ## 4) 🎯 DÜRÜST HÜKÜM
@@ -69,6 +68,6 @@
 **Gerçek durum:** son hafta **6** gerçek ziyaretçi = hedefin **%0.09**'si. Kalan: **6,994** kişi/hafta.
 
 **Teşhis:**
-- ⚠️ Trafiğin %65'i Direct — bu büyük ihtimalle sen + botlar, gerçek keşif değil. Çıplak sayıya güvenme.
+- ⚠️ Trafiğin %68'i Direct — bu büyük ihtimalle sen + botlar, gerçek keşif değil. Çıplak sayıya güvenme.
 
 **Özet:** Öğrenme döngüsü ses/format/slot optimize ediyor ama yukarıdaki darboğaz oralarda değil. Sistemin 'kendi kendine öğrenip uygulaması' için önce ölçülen darboğaza (otorite/dağıtım) yönlendirilmesi gerekir.

@@ -85,18 +85,27 @@ TOPIC_TAGS = {
 
 
 def build_hashtags(slug="", title="", desc=""):
-    """Videoya özgü niş + marka + keşfet karışımı. Küçük hesap için winnable havuzlar."""
-    text = f"{slug} {title} {desc}".lower().replace("-", " ")
-    tags = list(CORE_TAGS)
-    for kw, tg in TOPIC_TAGS.items():
-        if kw in text:
-            for t in tg:
-                if t not in tags:
-                    tags.append(t)
-    for t in DISCOVERY_TAGS:
+    """2026 IG: 3-5 HİPER-İLGİLİ etiket > uzun jenerik liste. Mosseri: hashtag
+    erişimi ARTIRMAZ (arama/bağlam içindir) ve 5'ten fazlası 'düşük-niyet' sinyali
+    verip erişimi baskılayabilir. Bu yüzden niş-önce, marka + en fazla 5 etiket.
+    (Eski davranış: 24 etiket — CORE+TOPIC+DISCOVERY karışımı.)"""
+    prim = f"{slug} {title}".lower().replace("-", " ")   # asıl konu (slug/başlık)
+    sec = (desc or "").lower().replace("-", " ")          # tali (açıklamada geçenler)
+    tags = []
+    for source in (prim, sec):                 # ÖNCE asıl konu → niş etiketler önde
+        for kw, tg in TOPIC_TAGS.items():
+            if kw in source:
+                for t in tg:
+                    if t not in tags:
+                        tags.append(t)
+    if "#parafomo" not in tags:                # marka etiketi (bağlam/aranabilirlik)
+        tags.append("#parafomo")
+    for t in CORE_TAGS:                         # niş azsa 5'e kadar core ile doldur
+        if len(tags) >= 5:
+            break
         if t not in tags:
             tags.append(t)
-    return " ".join(tags[:24])
+    return " ".join(tags[:5])
 
 
 def load_env():

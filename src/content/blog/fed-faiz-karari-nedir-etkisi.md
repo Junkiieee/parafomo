@@ -125,6 +125,8 @@ Fed kararı öncesi ve sonrası için pratik bir kontrol listesi:
 - **Panikle işlem yapma:** Fed kararı günleri piyasalarda aşırı volatilite olur. Uzun vadeli yatırımcı için bu günler alım ya da "hareketsiz kal" günleridir, kaçış günü değil.
 - **Beklentileri takip et:** Asıl hareket, kararın öncesinde beklentilere göre şekillenir. "Al beklentide, sat gerçekte" denir — karardan önce fiyatlanmış bir senaryo açıklandığında ters hareket görebilirsin.
 
+Karar açıklandıktan sonraki saatlerde dolar, BIST ve altının nasıl hareket ettiğini merak ediyorsan, [Fed kararı sonrası piyasaların ilk 48 saatte nasıl tepki verdiğini](/blog/fed-faiz-karari-sonrasi-piyasa-tepkisi) adım adım anlattığımız rehbere göz atabilirsin.
+
 ## Özet
 
 - **Fed**, politika faizini belirleyen ABD Merkez Bankası; kararı FOMC alır ve yılda 8 kez açıklanır.
