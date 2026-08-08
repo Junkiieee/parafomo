@@ -52,8 +52,11 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] P/D oranı nedir, hisse senedi defter değeri analizi — `Borsa` — hedef: "p/d oranı nedir"
 - [x] GYO nedir? Gayrimenkul Yatırım Ortaklığına yatırım rehberi — `Yatırım` — hedef: "gyo nedir"
 - [x] Stop-loss nedir? Borsada zararı sınırlamak için emir türleri rehberi — `Borsa` — hedef: "stop loss nedir"
+- [x] Carry trade nedir? Düşük faizli dövizden kazanmanın mantığı ve riskleri — `Ekonomi` — hedef: "carry trade nedir"
 
 ## Yayınlananlar (otomasyon buraya ekler)
+
+- [x] Carry Trade Nedir? Düşük Faizli Dövizden Kazanmanın Mantığı ve Riskleri — `carry-trade-nedir` (backlog genişletme: evergreen ekonomi; "carry trade nedir" sorgusu; BOJ + Fed faiz + verim eğrisi cluster'ını birbirine bağlayan piece)
 
 - [x] Açığa Satış (Short Selling) Nedir? Borsada Düşüşten Nasıl Kazanılır? — `aciga-satis-nedir-short-selling` (backlog: evergreen borsa; "açığa satış nedir" sorgusu)
 

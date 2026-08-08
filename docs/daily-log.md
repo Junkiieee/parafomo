@@ -4,6 +4,79 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-08 (2. yazı)
+
+**Yayınlanan yazı:** [Carry Trade Nedir? Düşük Faizli Dövizden Kazanmanın Mantığı ve Riskleri](https://parafomo.com/blog/carry-trade-nedir/)
+*Seçim gerekçesi:* Backlog tükendi; BOJ'un Temmuz 2026 faiz artışı ve 7 Ağustos NFP verisinin ardından carry trade dinamiği gündem oldu. "Carry trade nedir" sorgusu henüz karşılık bulmamış, BOJ + Fed faiz + verim eğrisi cluster'ını birleştiren evergreen ekonomi içeriği. Küresel sıcak para akışı ve TL'ye etkisi ek bağlamı güçlendiriyor.
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**
+Japonya MB faiz artırdığında neden tüm dünya borsaları düştü? 🧵
+
+**Tweet 2:**
+Cevap: Carry trade.
+Trilyonlarca dolarlık strateji:
+→ Japonya'dan %0,5 faizle ödünç al
+→ Türkiye/Avustralya'ya %30+ faizle yatır
+→ Fark senin
+
+**Tweet 3:**
+Sorun: Japonya faizi artırınca yen değer kazanır.
+Pozisyonlar çözülür → satış dalgası → tüm piyasalar sallanır.
+Ağustos 2024'te yaşanan küresel çöküş budur.
+
+**Tweet 4:**
+Türkiye'nin yüksek TL faizi carry trade hedefi.
+Yabancı girer → TL güçlenir ✅
+Yabancı çıkar → TL çöker ❌
+Bu yüzden "sıcak para" iki ucu keskin kılıç.
+
+**Tweet 5:**
+Bireysel yatırımcı doğrudan carry yapmasın.
+Alternatif: kaldıraçsız döviz mevduatı veya eurobond.
+Aynı mantık, çok daha az risk.
+
+Detaylı rehber 👇
+parafomo.com/blog/carry-trade-nedir/
+
+---
+
+### 📸 Instagram Post / Carousel Metni
+
+**Caption:**
+Japonya merkez bankası faiz artırınca neden tüm dünya borsası sallandı? 🤔
+
+Cevap tek kelime: CARRY TRADE.
+
+**Nasıl çalışır:**
+🔵 Düşük faizli para biriminden (JPY) ucuza borçlan
+🔵 Yüksek faizli ülkeye (Türkiye, Avustralya...) yatır
+🔵 Aradaki faiz farkını cebe indir
+
+**Tehlikeli yanı:**
+⚠️ Yüksek faizli para değer kaybederse → faiz kazancı silinir
+⚠️ Herkes aynı anda kaçarsa → zincirleme satış, küresel çöküş
+
+**TL ile bağlantısı:**
+✅ Sıcak para girişi TL'yi destekler
+❌ Çıkış anında TL sert düşer
+
+Tüm detaylar parafomo.com'da 👆
+
+#carrytrade #döviz #faiz #TL #yatirim #parafomo #finansokuryazarligi #borsatuirkiye
+
+---
+
+### Bugün senin yapman gerekenler
+
+1. **Paylaşımı yayınla:** Yukarıdaki X thread'ini ve Instagram post'unu kopyalayıp paylaş. Carry trade şu sıralar özellikle BOJ haberleri nedeniyle trend — timing mükemmel.
+2. **Toplulukta paylaş:** "Japonya faizi neden önemli?" veya "carry trade nedir?" tartışmalarının yapıldığı Twitter/X thread'leri ile finans Telegram/Discord gruplarında yazıyı değer katarak paylaş.
+
+---
+
 ## 2026-08-08
 
 **Yayınlanan yazı:** [Fed Faiz Kararı Sonrası Piyasalar Nasıl Tepki Verir? 48 Saat Rehberi](https://parafomo.com/blog/fed-faiz-karari-sonrasi-piyasa-tepkisi/)
