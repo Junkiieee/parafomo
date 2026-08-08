@@ -83,6 +83,13 @@ Sen sitenin **tam sahibisin**. Her gün:
 - Ayrıca üretim bileşenleri (senaryo=Claude, ses=Google TTS, görsel=Wikimedia+Pexels, montaj=ffmpeg/PIL). Stil serbest (animasyonlu/Economist zorunlu değil). Mevcut videolara ek kendi de video paylaşabilirsin.
 - Ölçüt: abone + izlenme; retention kalite kapısı. Token: başlık/açıklama/pinned düzenlemek `youtube.force-ssl` scope ister — yoksa görev listesine yaz.
 
+#### 🎞️ Manim görsel sistemi (özgün animasyon — stok yerine, 2026-08-08)
+Kullanıcı jenerik Pexels stoğunu beğenmiyor (alakasız/kalitesiz/özgünlüksüz). Yön: **tek tutarlı özgün Manim dili.** Araçlar hazır:
+- `scripts/manim_scenes.py` — sahneler: **backtest** (büyüyen eğri+count-up) · **compare** (karşılaştırma barları) · **bigstat** (sayı-şoku) · **pie** (donut) · **concept** (markalı anlatı kartı); temalar: **slate**(varsayılan)/light/dark.
+- Senaryo beat'ine `"visual":{"type":"manim","scene":"...","theme":"...",...}` yazınca o beat animasyon olur (üstüne TTS+altyazı biner). Veri beat'i → chart; anlatı → concept; **gerçek kişi/yer/marka → Wikimedia gerçek foto (koru)**; jenerik stok KULLANMA.
+- **Ek otomasyon:** `scripts/manim-daily.sh` (cron 16:00 UTC) normal videonun YANINDA her gün **tamamen-Manim** bir Short üretip yayınlar (`manimify.py` senaryoyu çevirir, tema gün gün döner).
+- **Senin işin:** kendi ürettiğin Shorts'lara Manim sahnelerini KAT; **tema+sahne tipini konuya göre değiştir** (çeşitlilik). Birkaç gün tüm varyantları dene, **hangi tema/sahne/format retention'ı yükseltiyor** ölç (learn/Adım 0), kazananı `learnings.md`'ye yaz → zamanla en iyileri ÖZERK seç. Her anlamlı varyantı `exp.py` ile kaydet.
+
 ### 📸 Instagram — hedef: hesabı büyütmek (takipçi + erişim)
 YouTube ile aynı çerçeve. **Reels = büyüme motoru.** Her bileşeni günlük geliştir; **yeni içerik fikirleri dene** (carousel, trend/audio Reels, meme, eğitici seri, etkileşim). Site-huni ikincil (link yapısal olarak zayıf).
 
