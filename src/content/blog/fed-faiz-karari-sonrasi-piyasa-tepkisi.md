@@ -17,6 +17,23 @@ faq:
     a: "Karardan kısa süre önce pozisyon almak kumar gibidir; piyasa beklentisi yanılabilir. Uzun vadeli yatırımcılar için tek bir kararın değil, faiz döngüsünün tamamının önemi vardır."
   - q: "Fed kararı Türk yatırımcısını ne kadar süre etkiler?"
     a: "Anlık tepki saatler içinde gelir, piyasa yeniden fiyatlama ise 1-2 haftada tamamlanır. Kalıcı etki — dolar/TL kuru, sermaye akışları, TCMB kararları — aylarca sürebilir."
+shorts:
+  - "Piyasalar Fed kararını açıklanmadan %90 doğrulukla biliyor."
+  - "Algoritmalar kararı milisaniyeler içinde okuyup işlem yapıyor; beklentilerle örtüşmezse ilk dalgalanma anında geliyor."
+  - "Asıl tehlike karar değil, 30 dakika sonraki basın toplantısı; 'higher for longer' sinyali dolara güç, gelişen piyasalara baskı getirir."
+  - "Türkiye için kritik an ertesi sabah 10:00; BIST 100 açılışı ve sabah kuru, Fed'in gece verdiği sinyali yansıtır."
+  - "Peki 48 saatte hangi varlık ne yapıyor ve sen ne yapmalısın? Abone ol, bir sonraki Fed kararı seni hazırlıksız bulmasın; tam rehber parafomo.com'da."
+shorts_broll:
+  - "federal reserve press conference"
+  - "stock market algorithm trading screens"
+  - "istanbul stock exchange bist 100"
+  - "dollar turkish lira currency exchange"
+shorts_visuals:
+  - "scene|probability percentage chart financial prediction"
+  - "scene|high frequency trading algorithm screens"
+  - "person|Jerome Powell press conference"
+  - "place|Borsa İstanbul"
+  - "concept|dollar turkish lira currency rate chart"
 ---
 
 Fed faiz kararı açıklandığında ekranlarda anlık haberler akar, sosyal medya çalışır; peki dolar neden bazen karar sonrası tam tersi yönde hareket eder? Piyasaların bu "şok" tepkisini anlamak, Türk yatırımcısı için hem zararlı hamlelerden kaçınmanın hem de fırsatları görmenin anahtarıdır.
