@@ -1,0 +1,117 @@
+{
+  "slug": "dolar-2-yilda-40-verdi-bu-sefer-yetmedi",
+  "title": "Dolar 2 Yılda %40 Verdi — Bu Sefer Yetmedi",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "Ağustos 2024'te 5000 TL'yi dolara yatıran biri bugün yaklaşık 6982 TL'ye ulaşmış olurdu. Yüzde kırk kazanç kulağa iyi geliyor, ama alım gücün aynı kalmadı.",
+  "tags": [
+    "dolar yatırım",
+    "TL dolar getiri",
+    "döviz 2024 2026",
+    "para birikimine ne oldu",
+    "enflasyon dolar",
+    "yatırım karşılaştırma",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "5000 TL'yi iki yıl önce dolara bağlasaydın?",
+      "visual": {
+        "type": "concept",
+        "query": "dollar bills Turkish lira cash"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ağustos 2024. Enflasyon zirvede, faizler yüksek — 5000 TL'ni dolara mı, yüksek faize mi bağlayacaktın?",
+      "visual": {
+        "type": "concept",
+        "query": "currency exchange rate screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "İki yıl bekledikten sonra elinde yaklaşık 6.982 TL var. Yüzde kırk — grafik tam bunu gösteriyor.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "Dolar/TL",
+          "unit": "TL",
+          "points": [
+            34.15,
+            34.28,
+            34.68,
+            35.31,
+            35.85,
+            36.52,
+            38.5,
+            39.21,
+            39.89,
+            40.59,
+            41.1,
+            41.58,
+            42.03,
+            42.49,
+            42.95,
+            43.46,
+            43.96,
+            45.17,
+            45.85,
+            46.64,
+            47.5,
+            47.55,
+            47.69
+          ],
+          "x": [
+            "08/24",
+            "09/24",
+            "11/24",
+            "12/24",
+            "01/25",
+            "02/25",
+            "03/25",
+            "04/25",
+            "05/25",
+            "06/25",
+            "07/25",
+            "08/25",
+            "09/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "02/26",
+            "03/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26"
+          ],
+          "amount": 5000,
+          "end_value": 6982,
+          "pct": 40
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama aynı iki yılda market arabası, kira, fatura hepsi bundan hızlı arttı. Dolar korudu, zenginleştirmedi.",
+      "visual": {
+        "type": "concept",
+        "query": "grocery shopping cart inflation prices"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki hangi araç bu dönemde alım gücünü gerçekten korudu? Cevap gelecek — abone ol, her gün 60 saniyede cebine dokunan tek analiz.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification bell mobile phone"
+      }
+    }
+  ]
+}
