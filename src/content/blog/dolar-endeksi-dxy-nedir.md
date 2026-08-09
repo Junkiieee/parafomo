@@ -17,6 +17,23 @@ faq:
     a: "Fed faiz artırınca ABD'ye sermaye akışı hızlanır, dolara olan talep artar ve DXY genellikle yükselir. Ancak piyasanın beklentiyi önceden fiyatlaması durumunda karar açıklanınca tersine dönme (sell the news) görülebilir."
   - q: "DXY nasıl takip edilir?"
     a: "Ücretsiz olarak TradingView, Investing.com veya Yahoo Finance üzerinden 'DXY' veya 'USDX' aratarak güncel değeri ve grafiği görebilirsiniz. Çoğu forex ve yatırım platformunda da takip edilebilir."
+shorts:
+  - "Dolar endeksinin yüzde 57'si eurodur."
+  - "DXY, doların altı büyük para birimine karşı değerini ölçer; euro tek başına yüzde 57,6 ağırlık taşıdığı için EUR/USD çifti DXY ile neredeyse her zaman ters hareket eder."
+  - "Fed faiz artırınca ABD tahvillerinin getirisi yükselir, küresel yatırımcılar dolar satın alır ve bu artan talep doları güçlendirerek DXY'yi yukarı iter."
+  - "TL dolar endeksinde yer almaz ama dolar güçlenince yatırımcılar riskli varlıklardan kaçar ve TL de tüm gelişmekte olan para birimleri gibi değer kaybetme eğilimindedir."
+  - "Peki Fed'in bir sonraki faiz kararı TL'yi nasıl etkileyecek? Bunu kaçırmamak için kanala abone ol, daha fazla Türkçe finans analizi için parafomo.com'u ziyaret et."
+shorts_broll:
+  - "US dollar index DXY chart screen"
+  - "Federal Reserve interest rate decision"
+  - "Turkish lira currency exchange"
+  - "emerging markets currency sell off"
+shorts_visuals:
+  - "concept|euro dollar index comparison chart"
+  - "concept|currency basket world six currencies"
+  - "place|Federal Reserve Building Washington DC"
+  - "object|turkish lira banknotes dollar bills"
+  - "concept|finance subscribe notification bell"
 ---
 
 Finans haberlerini takip ederken "DXY 105'e çıktı" ya da "dolar endeksi geriledi" gibi ifadeler görürsünüz. Peki bu endeks tam olarak neyi ölçüyor ve TL'yi neden doğrudan etkiliyor? Bu rehberde dolar endeksini basit bir dille açıklıyoruz.
