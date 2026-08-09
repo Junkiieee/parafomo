@@ -338,43 +338,15 @@ def content_query(spoken, fallback=None):
 # ---------- B-roll (Pexels) ----------
 
 def pexels_broll(query, out_path):
-    """Sorgu için dikey stok video indirir (cache'li). Başarısızsa None."""
-    key = os.environ.get("PEXELS_API_KEY")
-    if not key:
-        return None
+    """Sorgu için Pexels+Pixabay'dan (beraber) dikey stok video (cache'li). Başarısızsa None.
+    İki kaynağı vv.stock_video rotasyonla kullanır → daha çok çeşit + dayanıklılık."""
     os.makedirs(BROLL_CACHE, exist_ok=True)
     cache = os.path.join(BROLL_CACHE, re.sub(r'\W+', '_', query) + ".mp4")
     if os.path.exists(cache) and os.path.getsize(cache) > 10000:
         return cache
-    UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"
-    try:
-        url = ("https://api.pexels.com/videos/search?orientation=portrait&size=medium&per_page=8&query="
-               + urllib.parse.quote(query))
-        req = urllib.request.Request(url, headers={"Authorization": key, "User-Agent": UA})
-        data = json.load(urllib.request.urlopen(req, timeout=20))
-        vids = data.get("videos", [])
-        if not vids:
-            return None
-        # 1080x1920'ye en yakın dikey dosyayı seç
-        best = None
-        for v in vids:
-            for f in v["video_files"]:
-                h = f.get("height") or 0
-                w = f.get("width") or 0
-                if h >= w and 1080 <= h <= 2200:
-                    score = abs(h - 1920)
-                    if best is None or score < best[0]:
-                        best = (score, f["link"])
-        if not best:
-            f = max(vids[0]["video_files"], key=lambda f: f.get("height", 0))
-            best = (0, f["link"])
-        dreq = urllib.request.Request(best[1], headers={"User-Agent": UA})
-        with urllib.request.urlopen(dreq, timeout=60) as r, open(cache, "wb") as o:
-            o.write(r.read())
+    if vv.stock_video(query, cache) and os.path.exists(cache) and os.path.getsize(cache) > 10000:
         return cache
-    except Exception as e:
-        print(f"[i] Pexels '{query}' alınamadı: {str(e)[:70]}")
-        return None
+    return None
 
 
 # ---------- overlay (marka çerçevesi) ----------

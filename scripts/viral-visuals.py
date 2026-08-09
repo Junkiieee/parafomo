@@ -166,6 +166,57 @@ def pexels_video(query, out_mp4):
         return None
 
 
+def pixabay_video(query, out_mp4):
+    """Pixabay'dan dikey (yoksa yatay, crop'lanır) stok video indirir. Döner: dict/None.
+    Pexels'in yanında ikinci ücretsiz kaynak → daha çok çeşit/kalite seçeneği."""
+    key = os.environ.get("PIXABAY_API_KEY")
+    if not key:
+        return None
+    try:
+        url = ("https://pixabay.com/api/videos/?safesearch=true&per_page=12&key=" + key
+               + "&q=" + urllib.parse.quote(query))
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        data = json.load(urllib.request.urlopen(req, timeout=20))
+        hits = data.get("hits", [])
+        if not hits:
+            return None
+        # dikeyi tercih et (h>=w); yoksa en iyi çözünürlüğü al (make_clip zaten crop eder)
+        best = None  # (dikey_mi, yükseklik, url)
+        for h in hits:
+            for size in ("large", "medium", "small"):
+                f = (h.get("videos") or {}).get(size) or {}
+                lnk, ht, wd = f.get("url"), f.get("height") or 0, f.get("width") or 0
+                if not lnk:
+                    continue
+                vertical = ht >= wd
+                cand = (vertical, ht, lnk)
+                if best is None or (cand[0], cand[1]) > (best[0], best[1]):
+                    best = cand
+        if not best:
+            return None
+        dreq = urllib.request.Request(best[2], headers={"User-Agent": UA})
+        with urllib.request.urlopen(dreq, timeout=60) as r, open(out_mp4, "wb") as o:
+            o.write(r.read())
+        return {"source": "Pixabay", "license": "Pixabay License", "need_attribution": False,
+                "credit": f"Pixabay — {query}"}
+    except Exception as e:
+        print(f"[i] Pixabay '{query}' alınamadı: {str(e)[:70]}")
+        return None
+
+
+def stock_video(query, out_mp4):
+    """Pexels + Pixabay'ı BERABER kullanır: sorguya göre rotasyonla birinden başlar,
+    boş dönerse diğerine düşer → iki kütüphanenin çeşitliliği + dayanıklılık."""
+    order = [pexels_video, pixabay_video]
+    if abs(hash(query)) % 2:
+        order.reverse()
+    for fn in order:
+        r = fn(query, out_mp4)
+        if r and os.path.exists(out_mp4) and os.path.getsize(out_mp4) > 10000:
+            return r
+    return None
+
+
 # ---------------------------------------------------------------- veri grafiği
 
 BRAND_HEX = "#2BB194"
@@ -337,12 +388,12 @@ def resolve(spec, dur, out_mp4, cache_dir=CACHE):
         # Wikimedia bulamazsa stok videoya düş
         print(f"[i] Wikimedia '{query}' yok → Pexels'e düşülüyor")
 
-    # 2) Soyut/sahne (veya entity fallback) → Pexels video
+    # 2) Soyut/sahne (veya entity fallback) → Pexels + Pixabay stok video (beraber)
     cache_vid = os.path.join(cache_dir, f"px_{_slug(query)}.mp4")
     if os.path.exists(cache_vid) and os.path.getsize(cache_vid) > 10000:
         subprocess.run(["cp", cache_vid, out_mp4], check=True)
-        return out_mp4, {"source": "Pexels", "need_attribution": False, "credit": query}
-    attr = pexels_video(query, cache_vid)
+        return out_mp4, {"source": "stock", "need_attribution": False, "credit": query}
+    attr = stock_video(query, cache_vid)
     if attr and os.path.exists(cache_vid):
         subprocess.run(["cp", cache_vid, out_mp4], check=True)
         return out_mp4, attr
