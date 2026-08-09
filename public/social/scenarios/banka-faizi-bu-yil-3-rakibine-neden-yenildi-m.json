@@ -1,0 +1,75 @@
+{
+  "slug": "banka-faizi-bu-yil-3-rakibine-neden-yenildi-m",
+  "title": "Banka Faizi Bu Yıl 3 Rakibine Neden Yenildi?",
+  "category": "KARŞILAŞTIRMA",
+  "format": "comparison",
+  "description": "Son 1 yılda altın, borsa ve dolar banka mevduatını geride bıraktı. 4 aracın gerçek sıralaması ve 100 bin TL'de ne anlama geldiği.",
+  "tags": [
+    "altın",
+    "mevduat",
+    "borsa",
+    "dolar",
+    "yatırım",
+    "gram altın",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KARŞILAŞTIRMA",
+      "spoken": "Güvenli bildiğin araç bu yıl en sona düştü.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Risk",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çoğu insan mevduatı seçiyor çünkü garantili görünüyor — ama bu yıl hem dolar hem borsa hem altın onu geçti.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Dolar %15, borsa %25, gram altın %30 verdi — mevduat bu üçünün de gerisinde kaldı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Altına koysaydın, 100 bin TL sana 30 bin TL kazandırırdı — mevduatta bekleyenler bu farkı masada bıraktı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Önümüzdeki 12 ayda bu sıralama değişir mi? Kaçırmamak için abone ol — her sabah tek bir analizle paran nerede duruyor öğreneceksin.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
