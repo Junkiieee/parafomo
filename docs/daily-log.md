@@ -4,6 +4,76 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-09
+
+**Yayınlanan yazı:** [Dolar Endeksi (DXY) Nedir? ABD Faiz Kararları TL'yi Nasıl Etkiler?](/blog/dolar-endeksi-dxy-nedir)
+
+Konu seçim mantığı: GSC'de "abd faiz kararı" ve "fed faiz kararı" sorguları 54 gösterimde sıra 22'de takılı. Mevcut 3 Fed makalesi o sorguları kaplıyor ama DXY aracının kendisi hiç yazılmamıştı. Sepet yapısı + TL/altın/BIST üzerindeki dolaylı etki + Fed kararı takvimi bağlantısı ile yeni açı eklendi.
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+**Tweet 1 (hook):**
+Fed faiz artırıyor, herkes "dolar mı alayım?" diye soruyor — ama asıl soru bu değil.
+Asıl soru: Dolar Endeksi (DXY) ne diyor?
+
+**Tweet 2:**
+DXY, doların euro/yen/sterlin/CAD/SEK/CHF sepetine karşı değerini ölçer.
+Euro %57 ağırlık taşıdığı için EUR/USD düştükçe DXY yükselir.
+TL bu sepette YOK — ama yine de doğrudan etkileniyor.
+
+**Tweet 3:**
+Nasıl mı?
+👉 DXY yükselince yatırımcılar gelişmekte olan ülkelerden çıkar
+👉 TL, Brezilya reali, Meksika pesosu basınç altına girer
+👉 Altın ve petrol düşme eğiliminde olur
+
+**Tweet 4:**
+Fed faiz artırınca DXY yükselir.
+Ama dikkat: piyasa beklentiyi önceden fiyatlar.
+"Buy the rumor, sell the news" 👇
+→ Karar açıklanınca DXY tersine dönebilir.
+
+**Tweet 5 (CTA):**
+DXY'yi nereden takip edersiniz?
+✅ TradingView → "DXY" yaz, ücretsiz
+✅ Investing.com → Dolar Endeksi sayfası
+
+Tüm ayrıntılar: parafomo.com/blog/dolar-endeksi-dxy-nedir
+#dolar #DXY #fed #faiz #ekonomi
+
+---
+
+### 📸 Instagram Post/Carousel Metni
+
+**Caption:**
+💵 Dolar Endeksi (DXY) nedir, neden önemli?
+
+Finans haberlerinde "DXY yükseldi" duyunca TL'nin baskı altına girdiğini fark ettiniz mi? İşte sebebi 👇
+
+🧺 DXY = Doların 6 para birimine (€, ¥, £, CAD, SEK, CHF) karşı değeri
+📊 Euro %57 ağırlıkla en büyük pay sahibi
+🇹🇷 TL sepette YOK ama dolaylı etkisi büyük
+
+📌 DXY yükselince ne olur:
+→ Gelişmekte olan ülke paraları değer kaybeder (TL dahil)
+→ Altın ve petrol düşme eğiliminde olur
+→ Yabancı sermaye BIST'ten çıkabilir
+
+📖 Tam rehber: parafomo.com/blog/dolar-endeksi-dxy-nedir
+
+#dolarendeksi #DXY #fedkararı #dolarkuru #yatırım #ekonomi #parafomo #finans #borsaturkiye
+
+---
+
+### ✅ Bugün Yapman Gerekenler
+
+1. **Sosyal paylaşım:** Yukarıdaki X thread'ini ve Instagram post'unu yayınla. DXY konusu Fed haberleriyle birlikte konuşulduğu için bu hafta çok güncel — geç bırakma.
+2. **Topluluk paylaşımı:** Reddit r/Turkey veya ilgili Telegram/Discord finans gruplarında "DXY nedir, Türk yatırımcısına etkisi nedir?" açısıyla yazıyı paylaş (spam değil, sorulan bir soruya cevap olarak ekle).
+
+---
+
 ## 2026-08-08 (2. yazı)
 
 **Yayınlanan yazı:** [Carry Trade Nedir? Düşük Faizli Dövizden Kazanmanın Mantığı ve Riskleri](https://parafomo.com/blog/carry-trade-nedir/)

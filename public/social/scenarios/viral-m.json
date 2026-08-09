@@ -1,0 +1,79 @@
+{
+  "title": "10.000 TL'yi 5 Yıl Önce Altına Yatırsaydın?",
+  "format": "backtest_return",
+  "description": "10.000 lirayı 5 yıl önce altına yatırsaydın bugün ne olurdu? Gerçek getiri ve unutulan risk.",
+  "tags": [
+    "altın",
+    "yatırım",
+    "enflasyon",
+    "finans",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "YATIRIM",
+      "spoken": "On bin lirayı beş yıl önce altına yatırsaydın, bugün cebinde ne olurdu? Cevap çoğu yatırımı utandırıyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "eyebrow": "",
+      "spoken": "O dönem gram altın yaklaşık dört yüz liraydı. Bugün iki bin lirayı çoktan geçti, yani beş katından fazla.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "eyebrow": "",
+      "spoken": "İşte o on bin lira, bugün kırk yedi bin sekiz yüz elli lira. Yüzde üç yüz yetmiş sekiz getiri, hem de sadece altında bekleyerek.",
+      "visual": {
+        "type": "manim",
+        "scene": "backtest",
+        "theme": "light",
+        "title": "10.000 ₺ → bugün",
+        "chart": {
+          "amount": 10000,
+          "end_value": 47850
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "eyebrow": "",
+      "spoken": "Ama unutma: geçmiş getiri geleceğin garantisi değil. Altın da düşer, sert dalgalanır, her zaman kazandırmaz.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Risk",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "cta",
+      "eyebrow": "",
+      "spoken": "Hangi varlık ne kazandırdı, her gün yeni analiz için abone ol, paranı büyüt.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ],
+  "slug": "viral-m"
+}

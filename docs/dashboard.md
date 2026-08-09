@@ -59,7 +59,7 @@
 
 ## 3) YouTube motoru
 
-- **Abone:** 20  ·  **Toplam izlenme:** 24,912  ·  **Video:** 129
+- **Abone:** 20  ·  **Toplam izlenme:** 24,931  ·  **Video:** 129
 - İzlenme/abone dönüşümü: **0.08%** (izleyen kaç kişi abone/huniye giriyor)
 
 ## 4) 🎯 DÜRÜST HÜKÜM
