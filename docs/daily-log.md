@@ -4,6 +4,80 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-09 (2. yazı)
+
+**Yayınlanan yazı:** [Reel Faiz Nedir? Enflasyona Göre Gerçek Getirinizi Hesaplayın](https://parafomo.com/blog/reel-faiz-nedir/)
+
+*Konu seçim gerekçesi:* Backlog'daki tüm konular tamamlandı. "Reel faiz nedir" sorgusu, Türkiye'nin yüksek enflasyon ortamında yüksek arama hacmine sahip; mevduat+tahvil+TCMB faiz kararı cluster'ını tamamlayan temel kavram yazısı. Enflasyon eriyişini somut hesaplama örnekleriyle gösteren, pratik değeri yüksek evergreen ekonomi içeriği.
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+**Tweet 1 (hook):**
+Bankanız size %38 faiz veriyor ama enflasyon %44'se — aslında kaybediyorsunuz.
+Bu farkı görünür kılan kavram: reel faiz. 🧵
+
+**Tweet 2:**
+Reel faiz = Nominal faiz − Enflasyon
+
+Örnek:
+📌 Brüt mevduat: %38
+📌 Stopaj sonrası net: ~%32
+📌 Yıllık TÜFE: %44
+📌 Net reel getiri: **−%12**
+
+**Tweet 3:**
+Yani birikimlerinizin TL değeri artıyor ama satın alma gücü yılda ~%12 eriyor.
+Kağıt üzerinde kazanıyorsunuz, gerçekte kaybediyorsunuz.
+
+**Tweet 4:**
+Ne yapabilirsiniz?
+✅ TÜFE'ye endeksli tahvil → anapara enflasyona göre güncellenir
+✅ Dövizli araçlar → TL enflasyonundan kısmen ayrışır (kur riski var)
+✅ Portföy çeşitlendirmesi → tek araca mahkûm kalmayın
+
+**Tweet 5 (CTA):**
+Kendi yatırım aracınızın reel getirisini adım adım nasıl hesaplayacağınızı anlattık 👇
+parafomo.com/blog/reel-faiz-nedir/
+#relfaiz #enflasyon #mevduat #yatırım #ekonomi
+
+---
+
+### 📸 Instagram Post/Carousel Metni
+
+**Caption:**
+📉 %38 faiz mi alıyorsunuz? Gerçekte kazanmıyor olabilirsiniz.
+
+Yüksek enflasyon döneminde *nominal* faize değil, *reel* faize bakmanız gerekiyor 👇
+
+🔢 Reel Faiz Formülü:
+Nominal Faiz − Enflasyon = Reel Faiz
+
+📊 Basit Örnek:
+→ Net mevduat faizi: %32
+→ Yıllık enflasyon: %44
+→ Reel getiri: **−%12** 😬
+
+💡 Alternatifler neler?
+✅ TÜFE'ye endeksli tahvil
+✅ Dövizli araçlar
+✅ Çeşitlendirilmiş portföy
+
+📖 Hesaplama rehberi ve karşılaştırma tablosu:
+parafomo.com/blog/reel-faiz-nedir/
+
+#relfaiz #enflasyon #mevduat #yatırım #faiz #parafomo #finans #ekonomi #birikim
+
+---
+
+### ✅ Bugün Yapman Gerekenler
+
+1. **Sosyal paylaşım:** Yukarıdaki X thread'ini ve Instagram post'unu yayınla. "Enflasyon ortamında yatırım" teması gündelik hayatı doğrudan ilgilendirdiği için yüksek etkileşim potansiyeli var.
+2. **Topluluk paylaşımı:** Reddit r/Turkey, Ekşi Sözlük finans topluluğu veya ilgili Telegram/Discord finans gruplarında "vadeli mevduatta gerçekten kazanıyor muyuz?" sorusuna cevap olarak bu yazıyı paylaş (değer katarak, spam değil).
+
+---
+
 ## 2026-08-09
 
 **Yayınlanan yazı:** [Dolar Endeksi (DXY) Nedir? ABD Faiz Kararları TL'yi Nasıl Etkiler?](/blog/dolar-endeksi-dxy-nedir)
