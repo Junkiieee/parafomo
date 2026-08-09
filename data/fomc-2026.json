@@ -1,0 +1,14 @@
+{
+  "year": 2026,
+  "note": "2026 FOMC toplantı takvimi. Karar, toplantının 2. günü açıklanır (ABD saatiyle 14:00; TSİ ile yaz saatinde 21:00, kış saatinde 22:00). Nokta grafiği (dot plot) ve ekonomik projeksiyonlar (SEP) Mart, Haziran, Eylül ve Aralık toplantılarında yayımlanır. Tutanaklar karardan ~3 hafta sonra açıklanır. Kesin saatler için Fed'in resmi sitesini kontrol edin.",
+  "meetings": [
+    { "range": "27-28 Ocak", "decisionDate": "2026-01-28", "tsiTime": "22:00", "dotPlot": false },
+    { "range": "17-18 Mart", "decisionDate": "2026-03-18", "tsiTime": "21:00", "dotPlot": true },
+    { "range": "28-29 Nisan", "decisionDate": "2026-04-29", "tsiTime": "21:00", "dotPlot": false },
+    { "range": "16-17 Haziran", "decisionDate": "2026-06-17", "tsiTime": "21:00", "dotPlot": true },
+    { "range": "28-29 Temmuz", "decisionDate": "2026-07-29", "tsiTime": "21:00", "dotPlot": false },
+    { "range": "15-16 Eylül", "decisionDate": "2026-09-16", "tsiTime": "21:00", "dotPlot": true },
+    { "range": "27-28 Ekim", "decisionDate": "2026-10-28", "tsiTime": "21:00", "dotPlot": false },
+    { "range": "8-9 Aralık", "decisionDate": "2026-12-09", "tsiTime": "22:00", "dotPlot": true }
+  ]
+}

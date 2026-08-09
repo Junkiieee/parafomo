@@ -174,13 +174,51 @@ FORMAT_Q = {
     "shock_number": "Bu rakam seni şaşırttı mı?",
 }
 
+# Blog Reels'inde viral "format" alanı yok → hepsi jenerik soruya düşüyordu
+# (kapalı-döngü dersi: jenerik soru zayıf). slug/başlık anahtarına göre KONUYA
+# ÖZGÜ soru = daha çok yorum (08-07-3 pattern'ini en yüksek-hacimli Reel'e taşır).
+# Sıra önemli: ilk eşleşen kazanır, spesifikten genele.
+TOPIC_Q = [
+    ("altın",      "Portföyünde altın var mı, yüzde kaç?"),
+    ("dolar",      "Sen dolar mı tutuyorsun, TL mi?"),
+    ("euro",       "Euro mu dolar mı — hangisi cebine göre?"),
+    ("bist",       "BIST'te misin, yoksa uzak mı duruyorsun?"),
+    ("borsa",      "Borsaya para koyar mıydın, neden?"),
+    ("hisse",      "Portföyünde kaç farklı hisse var?"),
+    ("etf",        "ETF mi tek hisse mi — sen ne tercih edersin?"),
+    ("fon",        "Sen fon mu alırsın, direkt mi?"),
+    ("faiz",       "Faiz kararı senin bütçeni nasıl etkiliyor?"),
+    ("enflasyon",  "Enflasyona karşı paranı nasıl koruyorsun?"),
+    ("mevduat",    "Paran mevduatta mı duruyor?"),
+    ("emeklilik",  "Emeklilik için bir kenara para koyuyor musun?"),
+    ("bes",        "BES'in var mı — sence mantıklı mı?"),
+    ("kripto",     "Kripton var mı, yoksa uzak mı duruyorsun?"),
+    ("bitcoin",    "Bitcoin: balon mu, gelecek mi?"),
+    ("tasarruf",   "Ayda gelirinin yüzde kaçını biriktiriyorsun?"),
+    ("butce",      "Sen bütçe tutuyor musun?"),
+    ("bütçe",      "Sen bütçe tutuyor musun?"),
+    ("kredi",      "Kredi kartı borcu senin için sorun mu?"),
+    ("eurobond",   "Dolar bazlı yatırım yapıyor musun?"),
+    ("temettü",    "Temettü hisselerin var mı?"),
+    ("gayrimenkul","Ev mi hisse mi — sence hangisi kazandırır?"),
+    ("konut",      "Ev mi hisse mi — sence hangisi kazandırır?"),
+]
+
+
+def topic_question(slug="", title=""):
+    hay = f"{slug} {title}".lower()
+    for key, q in TOPIC_Q:
+        if key in hay:
+            return q
+    return "Sen ne düşünüyorsun? 👇"
+
 
 def build_caption(meta, slug):
     title = re.sub(r"#\w+\s*$", "", meta.get("title", "")).strip()  # sondaki #Shorts vs
     desc = _clean(meta.get("description", ""))
     hook = title or desc[:80]
     body = desc if desc and desc != title else ""
-    q = FORMAT_Q.get((meta.get("format") or "").strip(), "Sen ne düşünüyorsun?")
+    q = FORMAT_Q.get((meta.get("format") or "").strip()) or topic_question(slug, title)
     # Erişim sinyali: yorum + kaydetme, beğeniden daha güçlü sıralama sinyalidir.
     # Soruyu görünür ilk bloğa al (yorum), kaydet/takip/link altta.
     cta = (f"📌 Unutmamak için KAYDET · paylaş\n"

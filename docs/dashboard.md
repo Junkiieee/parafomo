@@ -1,6 +1,6 @@
 # ParaFOMO — Dürüst Ölçüm Panosu
 
-> Üretim: 2026-08-08 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
+> Üretim: 2026-08-09 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
 
 ## 1) Organik trafik trendi (GA4 — son 8 hafta)
 
@@ -59,7 +59,7 @@
 
 ## 3) YouTube motoru
 
-- **Abone:** 20  ·  **Toplam izlenme:** 24,931  ·  **Video:** 129
+- **Abone:** 20  ·  **Toplam izlenme:** 25,236  ·  **Video:** 129
 - İzlenme/abone dönüşümü: **0.08%** (izleyen kaç kişi abone/huniye giriyor)
 
 ## 4) 🎯 DÜRÜST HÜKÜM

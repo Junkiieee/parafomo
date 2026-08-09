@@ -596,8 +596,14 @@ def _kenburns(motion, D):
         n = max(2, round(durf / 2.7))      # ~2.7sn/faz → 8sn'de 3 kesim
         seg = durf / n
         pw = f"min(mod(t\\,{seg:.3f})/{seg:.3f}\\,1)"
+        # v4.2: her faz taze wide→tight zoom + faz-parite ile YATAY kadraj yönü
+        # alternasyonu (2026 retention: sadece zoom tekrarı değil, görsel değişimin
+        # TÜRÜNÜ de değiştir). Çift faz soldan→merkeze, tek faz sağdan→merkeze pan
+        # eder → her faz FARKLI çekim gibi durur, faz-sınırı snapi karşı tarafa atlar.
+        s = f"(2*mod(floor(t/{seg:.3f})\\,2)-1)"           # faz0:-1, faz1:+1, ...
+        xf = f"(in_w-out_w)*(0.5-{s}*0.3*(1-{pw}))"        # frac ∈ [0.2,0.8], merkeze yaklaşır
         return (f"crop=w='1296-316*{pw}':h='2304-562*{pw}':"
-                f"x='(in_w-out_w)/2':y='(in_h-out_h)/2'")
+                f"x='{xf}':y='(in_h-out_h)/2'")
     m = motion % 5
     if m == 0:             # zoom-in
         w, h, x, y = f"1296-216*{p}", f"2304-384*{p}", "(in_w-out_w)/2", "(in_h-out_h)/2"

@@ -104,11 +104,11 @@ FOMC yılda 8 kez toplanır. 2026'da Temmuz toplantısı tamamlandı; yıl için
 
 | Toplantı | Tarih | Karar Açıklama (Türkiye Saati) |
 |----------|-------|-------------------------------|
-| Eylül 2026 | 15–16 Eylül 2026 | 16 Eylül, ~22:00 TSİ |
-| Ekim 2026 | 28–29 Ekim 2026 | 29 Ekim, ~21:00 TSİ |
-| Aralık 2026 | 9–10 Aralık 2026 | 10 Aralık, ~22:00 TSİ |
+| Eylül 2026 | 15–16 Eylül 2026 | 16 Eylül, ~21:00 TSİ · dot plot |
+| Ekim 2026 | 27–28 Ekim 2026 | 28 Ekim, ~21:00 TSİ |
+| Aralık 2026 | 8–9 Aralık 2026 | 9 Aralık, ~22:00 TSİ · dot plot |
 
-> **Not:** Tarihleri kesinleştirmek için Fed'in resmi sitesini (federalreserve.gov) ve [Ekonomik Takvim](/ekonomik-takvim) sayfamızı kontrol edin.
+> **Canlı takvim:** Sıradaki Fed kararına kaç gün kaldığını, tüm 2026 tarihlerini ve TSİ saatlerini [Fed Faiz Kararı Takvimi 2026](/fed-faiz-takvimi) sayfasından güncel takip edebilirsin. Kesin saatler için Fed'in resmi sitesini (federalreserve.gov) ve [Ekonomik Takvim](/ekonomik-takvim) sayfamızı da kontrol et.
 
 Her kararın ardından dikkat edilmesi gereken üç şey:
 
