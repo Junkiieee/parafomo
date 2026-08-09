@@ -56,6 +56,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] Dolar Endeksi (DXY) Nedir? ABD Faiz Kararları TL'yi Nasıl Etkiler? — `dolar-endeksi-dxy-nedir` (GSC fırsatı: "abd faiz kararı" / "fed faiz kararı" kümesi; DXY açısı yeni ve daha önce yazılmamış; makro ekonomi + döviz cluster'ını tamamlayan evergreen piece)
+
 - [x] Carry Trade Nedir? Düşük Faizli Dövizden Kazanmanın Mantığı ve Riskleri — `carry-trade-nedir` (backlog genişletme: evergreen ekonomi; "carry trade nedir" sorgusu; BOJ + Fed faiz + verim eğrisi cluster'ını birbirine bağlayan piece)
 
 - [x] Açığa Satış (Short Selling) Nedir? Borsada Düşüşten Nasıl Kazanılır? — `aciga-satis-nedir-short-selling` (backlog: evergreen borsa; "açığa satış nedir" sorgusu)
