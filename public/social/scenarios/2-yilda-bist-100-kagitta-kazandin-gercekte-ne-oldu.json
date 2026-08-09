@@ -1,0 +1,121 @@
+{
+  "slug": "2-yilda-bist-100-kagitta-kazandin-gercekte-ne-oldu",
+  "title": "2 Yılda BIST 100: Kâğıtta Kazandın, Gerçekte Ne Oldu?",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "10.000 TL'yi 2 yıl önce BIST 100'e koysaydın yaklaşık %43 kazanırdın. Ama enflasyonla hesaplaştığında tablo değişiyor.",
+  "tags": [
+    "BIST100",
+    "yatırım",
+    "enflasyon",
+    "borsa",
+    "reel getiri",
+    "nominal getiri",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "BIST 100'de %43 kazandın — neden yetmedi?",
+      "visual": {
+        "type": "concept",
+        "query": "stock market trading screen chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2 yıl önce 10 bin lirayı BIST 100'e koysaydın, bugün yaklaşık 14 bin 250 liran olurdu — kağıt üzerinde güzel görünüyor.",
+      "visual": {
+        "type": "concept",
+        "query": "istanbul stock exchange investment money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu 2 yılda enflasyon yaklaşık yüzde yetmişi geçti. 10 bin liranın alım gücünü korumak için yaklaşık 17 bin lira gerekiyordu.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "BIST 100",
+          "unit": "",
+          "points": [
+            9665.8,
+            8863.9,
+            9652.0,
+            9830.6,
+            10004.4,
+            9658.7,
+            9659.5,
+            9078.4,
+            9019.6,
+            9948.5,
+            10743.2,
+            11288.1,
+            11012.1,
+            10971.5,
+            10898.7,
+            11261.5,
+            13838.3,
+            13717.8,
+            12791.0,
+            14442.6,
+            13662.8,
+            14121.8,
+            13458.1,
+            13779.4,
+            13779.39
+          ],
+          "x": [
+            "08/24",
+            "09/24",
+            "10/24",
+            "11/24",
+            "12/24",
+            "01/25",
+            "02/25",
+            "03/25",
+            "04/25",
+            "05/25",
+            "06/25",
+            "07/25",
+            "08/25",
+            "09/25",
+            "10/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "02/26",
+            "03/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26"
+          ],
+          "amount": 10000,
+          "end_value": 14256,
+          "pct": 43
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "14 bin 250, 17 bine yetişemedi. Borsa kazandırdı ama enflasyonu geçemedi — 10 bin liranın değeri iki yılda eridi.",
+      "visual": {
+        "type": "concept",
+        "query": "money purchasing power inflation erosion"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bu 2 yılda hangi araç enflasyonu gerçekten geride bıraktı? Cevabı yakında veriyoruz — her gün net bir analiz için abone ol.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification mobile phone"
+      }
+    }
+  ]
+}
