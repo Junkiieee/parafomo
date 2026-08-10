@@ -1,0 +1,77 @@
+{
+  "slug": "krizde-siginak-altin-dolar-borsa-hangisi-tuttu",
+  "title": "Krizde Sığınak: Altın, Dolar, Borsa — Hangisi Tuttu?",
+  "category": "KARŞILAŞTIRMA",
+  "format": "comparison",
+  "description": "Kriz haberleri çıkınca pek çok yatırımcı dolara kaçtı. Ama bu yıl gerçek veriler, güvenli liman sandığımız araç sıralamasını altüst etti.",
+  "tags": [
+    "altın",
+    "dolar",
+    "borsa",
+    "kriz",
+    "güvenli liman",
+    "getiri karşılaştırma",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KARŞILAŞTIRMA",
+      "spoken": "Krizde dolara kaçanlar bu yıl en az kazandı.",
+      "visual": {
+        "type": "concept",
+        "query": "crisis investor panic money dollar cash fleeing"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Dolara koyan yüzde 15 aldı — güvenli liman sanılan araç, üçü arasında en alt sırada kaldı.",
+      "visual": {
+        "type": "concept",
+        "query": "dollar bills currency exchange rate safe"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "BIST 100 yüzde 25 yaptı, ama borsa bu yıl sert sallandı — sabır gösteremeyen erken çıktı, ortada kaldı.",
+      "visual": {
+        "type": "concept",
+        "query": "stock market volatility chart screen red green"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gram altın yüzde 30 ile birinci: kriz döneminde bile en çok koruyan araç yine o oldu.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "bars",
+          "title": "Bu Yıl Kim Kazandırdı?",
+          "items": [
+            {
+              "name": "Gram Altın",
+              "pct": 30
+            },
+            {
+              "name": "BIST 100",
+              "pct": 25
+            },
+            {
+              "name": "Dolar/TL",
+              "pct": 15
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bir sonraki çalkantıda paranız nerede durmalı — bunu takip etmeye devam edin. Abone olun, her sabah bir net veri 60 saniyede size ulaşıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe bell notification phone screen"
+      }
+    }
+  ]
+}
