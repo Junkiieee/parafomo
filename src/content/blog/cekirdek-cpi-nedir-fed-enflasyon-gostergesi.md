@@ -17,6 +17,23 @@ faq:
     a: "Core CPI beklentinin üzerinde gelirse piyasalar Fed'in faiz indirmekte geç kalacağını fiyatlar. Bu doların güçlenmesine, USD/TL kurunun yükselmesine ve gelişmekte olan piyasalara sermaye çıkışına yol açar. Türk yatırımcı için ithalat maliyetleri artar, dolar mevduatı değer kazanır."
   - q: "12 Ağustos 2026 ABD CPI verisi ne zaman açıklanıyor?"
     a: "Temmuz 2026 CPI ve Core CPI verileri 12 Ağustos 2026 Çarşamba günü saat 15:30 Türkiye saatiyle (12:30 UTC) açıklanıyor. Aynı raporda hem genel CPI hem de Core CPI rakamları yer alıyor."
+shorts:
+  - "Herkese açıklanan enflasyon rakamı Fed'i ilgilendirmiyor."
+  - "Genel CPI'ya gıda ve enerji dahil, ama bu fiyatlar kuraklık ve OPEC kararlarıyla sürekli sıçrayıp düşüyor."
+  - "Fed kalıcı enflasyonu görmek için çekirdek CPI'ı izler; bu rakam gıda ve enerjiyi tamamen dışarıda bırakır."
+  - "2022'de enerji krizi genel CPI'ı yüzde dokuza fırlattı, çekirdek CPI ısrarcı kaldı ve Fed tarihin en hızlı faiz artışını yaptı."
+  - "Peki çekirdek CPI yüksek gelirse dolar, altın ve Türk lirası ne olur? Kanala abone ol, parafomo.com'da her gün yatırımcı diliyle açıklıyoruz."
+shorts_broll:
+  - "core inflation economic data screen"
+  - "Federal Reserve interest rate decision"
+  - "US dollar currency strength"
+  - "stock market volatility chart"
+shorts_visuals:
+  - "place|Federal Reserve Washington DC building"
+  - "concept|food energy prices volatile market spike"
+  - "concept|core inflation economic analysis chart"
+  - "concept|interest rate hike 2022 financial chart"
+  - "concept|stock market gold dollar investment impact"
 ---
 
 12 Ağustos 2026 Çarşamba günü saat 15:30'da (Türkiye saati) ABD'nin Temmuz 2026 enflasyon verileri açıklanıyor. Piyasalar sadece "CPI kaç oldu?" sorusunu değil, daha kritik bir soruyu soruyor: **Core CPI ne geldi?** Çünkü Fed'in faiz kararlarını gerçekte yönlendiren rakam bu. Bu yazıda **çekirdek CPI**'ın ne olduğunu, genel CPI'dan farkını ve Türk yatırımcısına etkisini adım adım açıklıyorum.
