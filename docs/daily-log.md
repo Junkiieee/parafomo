@@ -4,6 +4,85 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-10
+
+**Yayınlanan yazı:**
+[Çekirdek CPI Nedir? Fed'in En Çok İzlediği Enflasyon Göstergesi](https://parafomo.com/blog/cekirdek-cpi-nedir-fed-enflasyon-gostergesi)
+_Tetikleyici: 12 Ağustos 2026 ABD Core CPI açıklaması (🔴 High etki)_
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**
+12 Ağustos'ta ABD enflasyon verisi açıklanıyor.
+
+Ama piyasalar CPI'dan çok başka bir rakama bakıyor: Core CPI.
+
+Fed'in faiz kararlarını yönlendiren gösterge bu. Neden? 🧵
+
+**Tweet 2:**
+Core CPI = Genel CPI − Gıda − Enerji
+
+Benzin fiyatı kuraklıkla ya da petrol savaşıyla değişebilir. Bunlar geçici.
+
+Fed kalıcı enflasyon trendini görmek istiyor. Core CPI tam bunu yapar.
+
+**Tweet 3:**
+Core CPI yüksek gelirse ne olur?
+
+→ Fed faiz indirimi uzaklaşır
+→ Dolar güçlenir
+→ USD/TL yükselir
+→ BIST ve altın baskı altına girer
+
+**Tweet 4:**
+Core CPI düşük gelirse:
+
+→ Faiz indirimi yaklaşır
+→ Dolar zayıflar
+→ TL nefes alır
+→ Borsa rally yapar
+
+**Tweet 5 (CTA):**
+12 Ağustos saat 15:30'a not al.
+
+Detaylı rehber → parafomo.com/blog/cekirdek-cpi-nedir-fed-enflasyon-gostergesi
+
+#CoreCPI #FedFaiz #Enflasyon #Dolar
+
+---
+
+### Instagram Post/Carousel Metni
+
+**Caption:**
+📊 12 Ağustos'ta ABD enflasyon verisi açıklanıyor — ama asıl soru şu:
+
+Core CPI ne gelecek?
+
+Fed faiz kararlarını genel CPI'a göre değil, gıda ve enerji çıkarılmış "çekirdek" rakama göre belirliyor.
+
+Swipe: Core CPI nedir, yüksek ya da düşük gelmesi Türk yatırımcıyı nasıl etkiler? 👇
+
+Slide 1: Core CPI = CPI − Gıda − Enerji
+Slide 2: Neden Fed buna bakar?
+Slide 3: Yüksek gelirse → Dolar yükselir, TL baskı altında
+Slide 4: Düşük gelirse → Dolar zayıflar, piyasalar rahatlar
+Slide 5: 12 Ağustos 15:30'u takvinine al
+
+📎 Link bio'da → parafomo.com
+
+#CoreCPI #FedFaiz #Enflasyon #Dolar #DolarKuru #BorsaTürkiye #ParaFOMO #Finans #Yatırım #EkonomikTakvim
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **X (Twitter) thread'ini paylaş** — yukarıdaki 5 tweet'i sırayla at; ilk tweet'i sabah veya öğle saatlerinde at (erişim daha yüksek).
+2. **Instagram carousel paylaş** — 12 Ağustos öncesi "veri neden önemli?" framing'iyle; story'de de paylaş ve link biyoya eklensin.
+
+---
+
 ## 2026-08-09 (2. yazı)
 
 **Yayınlanan yazı:** [Reel Faiz Nedir? Enflasyona Göre Gerçek Getirinizi Hesaplayın](https://parafomo.com/blog/reel-faiz-nedir/)

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-09",
+  "updated": "2026-08-10",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
@@ -29,6 +29,69 @@
       "title": "Unemployment Rate",
       "source": "forexfactory",
       "hook": "İşsizlik verisi — büyüme ve faiz beklentisi."
+    },
+    {
+      "date": "2026-08-12",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Core CPI m/m",
+      "source": "forexfactory",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-08-12",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Core CPI y/y",
+      "source": "forexfactory",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-08-12",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "CPI m/m",
+      "source": "forexfactory",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-08-12",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "CPI y/y",
+      "source": "forexfactory",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-08-13",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Core PPI m/m",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-08-13",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "PPI m/m",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-08-13",
+      "time": "6:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "GDP m/m",
+      "source": "forexfactory",
+      "hook": "Büyüme verisi — küresel görünüm."
     },
     {
       "date": "2026-09-03",
