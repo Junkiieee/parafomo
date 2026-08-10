@@ -361,7 +361,60 @@ def vgrad_alpha(w, h, a_top, a_bot):
     return img
 
 
-def make_overlay(kind, eyebrow, path):
+def _wrap_fit(d, text, font_path, max_w, max_size, min_size=56, max_lines=4):
+    """Metni max_w genişliğine sığacak EN BÜYÜK fontta sar. (font, satırlar, boyut)."""
+    words = text.split()
+    best = None
+    for size in range(max_size, min_size - 1, -4):
+        f = fnt(font_path, size)
+        lines, cur, overflow = [], "", False
+        for w in words:
+            trial = (cur + " " + w).strip()
+            if d.textlength(trial, font=f) <= max_w:
+                cur = trial
+            else:
+                if cur:
+                    lines.append(cur)
+                cur = w
+                if d.textlength(w, font=f) > max_w:
+                    overflow = True
+        if cur:
+            lines.append(cur)
+        best = (f, lines, size)
+        if not overflow and len(lines) <= max_lines:
+            return best
+    return best  # sığmasa bile min boyutta en iyi denemeyi ver
+
+
+def draw_hook_card(img, d, text):
+    """v5: açılış swipe-stop kartı — kanca metnini ÜST-MERKEZE büyük/kalın bas.
+    2026 Shorts verisi (retention↔views ≈ 0): izlenmeyi ilk kare belirler, gövde
+    değil. Metin overlay PNG'ye gömülü olduğundan sahnenin başından (0.20s fade)
+    görünür; kancanın alt karaoke'si bastırılır (çift metin olmasın)."""
+    ht = (text or "").strip().rstrip(".!").strip()
+    if not ht:
+        return
+    max_w = W - 2 * 108
+    f, lines, size = _wrap_fit(d, ht, SANS_B, max_w, 112)
+    lh = int(size * 1.16)
+    block_h = lh * len(lines)
+    y0 = max(720, 900 - block_h // 2)   # rozet (y≈500) altında, dikey merkez civarı
+    # okunabilirlik için yarı saydam koyu plaka
+    plate_w = min(W - 120, max(d.textlength(ln, font=f) for ln in lines) + 96)
+    px0 = (W - plate_w) // 2
+    plate = Image.new("RGBA", (int(plate_w), block_h + 72), (8, 11, 13, 165))
+    img.alpha_composite(plate, (int(px0), y0 - 36))
+    # sol kenarda marka aksan çubuğu
+    d.rectangle([px0, y0 - 36, px0 + 12, y0 + block_h + 36], fill=(*BRAND, 255))
+    y = y0
+    for ln in lines:
+        for dx, dy in ((-3, 0), (3, 0), (0, -3), (0, 3), (-2, -2), (2, 2)):
+            d.text((W // 2 + dx, y + dy), ln, font=f, fill=(6, 9, 11, 235), anchor="ma")
+        d.text((W // 2, y), ln, font=f, fill=(*WHITE, 255), anchor="ma")
+        y += lh
+
+
+def make_overlay(kind, eyebrow, path, hook_text=None):
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     # genel hafif karartma
     img.alpha_composite(Image.new("RGBA", (W, H), (10, 14, 16, 70)))
@@ -387,6 +440,8 @@ def make_overlay(kind, eyebrow, path):
         wm = wm.resize((int(wm.width * th / wm.height), th), Image.LANCZOS)
         img.alpha_composite(wm, (M, H - 120))
     d.text((W - M, H - 92), "@parafomo", font=fnt(SANS_B, 34), fill=(*LIGHT, 255), anchor="rm")
+    if kind == "hook" and hook_text:
+        draw_hook_card(img, d, hook_text)
     if kind == "cta":
         # YouTube abone-odaklı kart: kırmızı "ABONE OL" butonu (play üçgeni) + marka satırı.
         bf = fnt(SANS_B, 62)
@@ -718,7 +773,7 @@ def main():
         ov = f"{TMP}/ov{i:02d}.png"
         synth(spoken, aud)
         ad = duration(aud)
-        make_overlay(kind, eyebrow, ov)
+        make_overlay(kind, eyebrow, ov, hook_text=(spoken if kind == "hook" else None))
         clip_dur = LEAD + ad + TAIL
         # B-roll: senaryo beat'inde görsel spec'i varsa onu çöz (Wikimedia/Pexels),
         # yoksa eski yol (shorts_broll anahtar kelimeleriyle Pexels).
@@ -785,7 +840,9 @@ def main():
         mc, mw = (12, 3) if big else (18, 4)
         gstart = tcur + LEAD
         idx = 0
-        for ch in chunk_words(words, mc, mw):
+        # Kanca segmentinde alt karaoke YOK: metin zaten üst-merkezdeki büyük swipe-stop
+        # kartında (draw_hook_card) statik gösteriliyor; karaoke = çift metin/kalabalık olurdu.
+        for ch in ([] if kind == "hook" else chunk_words(words, mc, mw)):
             n = len(ch); part = aligned[idx:idx + n]; idx += n
             cstart = gstart + part[0][1]
             cend = gstart + part[-1][2] + 0.12
