@@ -4,6 +4,75 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-10 (Yazı 2)
+
+**Yayınlanan yazı:**
+[ABD 10 Yıllık Tahvil Faizi Nedir? Küresel Piyasaların Barometresi](https://parafomo.com/blog/abd-10-yillik-tahvil-faizi-nedir/)
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**
+"ABD tahvil faizi yükseldi" haberi neden TL'yi etkiliyor?
+
+Bunu anlamak için 1 sayfa okuman yeterli 🧵
+
+**Tweet 2:**
+ABD 10 yıllık tahvil faizi = küresel finansın barometresi.
+
+Bu oran yükselince:
+→ Dolar güçlenir
+→ Gelişen piyasalardan sermaye çıkışı başlar
+→ TL baskı altına girer
+→ BIST'teki yabancı pozisyonlar kapanır
+
+**Tweet 3:**
+Faizi belirleyen 3 güç:
+1. Fed politikası (kısa vadeyi kilitleyen)
+2. Enflasyon beklentisi (uzun vadeyi şekillendiren)
+3. Büyüme/risk iştahı (güvenli liman talebi)
+
+**Tweet 4:**
+Pratik takip adresleri:
+→ TradingView → US10Y
+→ Investing.com → US 10-Year Bond Yield
+→ Her ikisi de ücretsiz ve Türkçe
+
+**Tweet 5 (CTA):**
+2 yıllık vs 10 yıllık fark (verim eğrisi), resesyon sinyali mi veriyor?
+
+Tam rehber → parafomo.com/blog/abd-10-yillik-tahvil-faizi-nedir/
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Başlık:** ABD Tahvil Faizi Yükselince Ne Olur? 📊
+
+**Slayt 1:** "ABD 10 yıllık tahvil faizi yükseldi" — bu haber neden senin birikimini etkiliyor?
+
+**Slayt 2:** Bu oran = küresel finansın barometresi. Küresel yatırımcılar her şeyi buna göre fiyatlar.
+
+**Slayt 3:** Faiz yükselirse → Dolar güçlenir → TL zayıflar → BIST'ten sermaye çıkar.
+
+**Slayt 4:** Faiz düşerse → Dolar zayıflar → TL nefes alır → Gelişen piyasalar değer kazanır.
+
+**Slayt 5:** Takip yöntemi: TradingView'da US10Y sembolünü izle. Yönü anlamak için haber okumana gerek yok.
+
+**Slayt 6:** Detaylı rehber → parafomo.com/blog/abd-10-yillik-tahvil-faizi-nedir/ 🔗 Bio'dan ulaşabilirsin.
+
+#tahvilfahizi #abdtahvil #dolar #tl #bist #yatirim
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **Thread'i X'te yayınla:** Yukarıdaki 5 tweet'i @parafomo hesabından paylaş. En iyi zaman: 12:00–13:00 TRT veya 20:00–21:00 TRT.
+2. **Instagram carousel'i paylaş:** 6 slaytı hazırlayıp @parafomo Instagram'ından paylaş; bio linkini güncelle (parafomo.com/blog/abd-10-yillik-tahvil-faizi-nedir/).
+
+---
+
 ## 2026-08-10
 
 **Yayınlanan yazı:**

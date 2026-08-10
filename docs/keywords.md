@@ -53,8 +53,11 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] GYO nedir? Gayrimenkul Yatırım Ortaklığına yatırım rehberi — `Yatırım` — hedef: "gyo nedir"
 - [x] Stop-loss nedir? Borsada zararı sınırlamak için emir türleri rehberi — `Borsa` — hedef: "stop loss nedir"
 - [x] Carry trade nedir? Düşük faizli dövizden kazanmanın mantığı ve riskleri — `Ekonomi` — hedef: "carry trade nedir"
+- [x] ABD 10 yıllık tahvil faizi nedir? Küresel piyasaların barometresi ve TL'ye etkisi — `Ekonomi` — hedef: "abd 10 yıllık tahvil faizi nedir"
 
 ## Yayınlananlar (otomasyon buraya ekler)
+
+- [x] ABD 10 Yıllık Tahvil Faizi Nedir? Küresel Piyasaların Barometresi — `abd-10-yillik-tahvil-faizi-nedir` (yeni evergreen ekonomi; "abd 10 yıllık tahvil faizi nedir" sorgusu; verim eğrisi + carry trade + DXY + Fed faiz cluster'ını tamamlayan piece)
 
 - [x] Çekirdek CPI Nedir? Fed'in En Çok İzlediği Enflasyon Göstergesi — `cekirdek-cpi-nedir-fed-enflasyon-gostergesi` (takvim: 12 Ağustos 2026 ABD Core CPI açıklaması; genel CPI yazısının tamamlayıcısı; "fed faiz kararı" GSC kümesine bağlı yeni açı)
 
