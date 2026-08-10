@@ -2,6 +2,7 @@
 title: "Fed Faiz Kararı Nedir? 2026 FOMC Takvimi ve Türkiye'ye Etkisi"
 description: "Fed faiz kararı nedir, FOMC 2026 toplantı tarihleri ve Türkiye'deki yatırımcıyı nasıl etkiler? Dolar/TL, BIST ve mevduata yansımaları sade bir dille."
 pubDate: 2026-08-04
+updatedDate: 2026-08-10
 category: "Ekonomi"
 tags: ["fed faiz kararı", "abd merkez bankası", "faiz politikası", "dolar tl", "fomc", "fed kararı 2026"]
 readingTime: 8
@@ -15,6 +16,10 @@ faq:
     a: "Faiz indiriminde ABD'deki getiri düşeceği için dolar küresel ölçekte zayıflar. Yatırımcılar daha yüksek getiri için gelişen piyasalara yönelir; bu TL ve BIST gibi varlıklar için olumlu hava yaratır."
   - q: "FOMC ile Fed aynı şey mi?"
     a: "Fed (Federal Reserve), ABD'nin merkez bankasıdır. FOMC (Federal Open Market Committee) ise Fed bünyesindeki para politikası komitesidir. Faiz kararını FOMC alır, ama karar halk arasında 'Fed kararı' olarak bilinir."
+  - q: "Fed faiz kararı ne demek?"
+    a: "Fed faiz kararı, ABD Merkez Bankası'nın (Fed) politika faizini (federal funds rate) artırma, indirme veya sabit tutma yönünde aldığı karardır. Bu karar ABD'deki kredi ve tasarruf faizlerini, dolar kurunu ve dolaylı olarak Türkiye dahil gelişen piyasaların yönünü belirler."
+  - q: "ABD faiz kararı ile Fed faiz kararı aynı şey mi?"
+    a: "Evet. 'ABD faiz kararı', 'ABD Merkez Bankası faiz kararı' ve 'Fed faiz kararı' aynı olayı anlatır: ABD'nin merkez bankası Fed'in FOMC komitesi aracılığıyla açıkladığı politika faizi kararı. Türkçe haberlerde üçü de birbirinin yerine kullanılır."
   - q: "Fed kararı Türkiye piyasalarını ne kadar hızlı etkiler?"
     a: "Etki genellikle kararın açıklandığı gece başlar: Dolar/TL kuru, BIST vadeli ve döviz işlemleri anlık tepki verir. Borsa ve tahvil piyasasındaki tam etki birkaç gün ile birkaç hafta içinde yerleşir."
 shorts:
@@ -41,6 +46,8 @@ ABD Merkez Bankası'nın (Fed) aldığı faiz kararları sadece Amerikalıları 
 ## Fed Faiz Kararı Nedir?
 
 Fed faiz kararı, ABD Merkez Bankası'nın ekonomiyi yönetmek için belirlediği **politika faiz oranıdır** (federal funds rate). Bu oran, bankaların birbirinden gecelik borç alırken uyguladıkları referans faizi belirler ve zincirleme olarak tüm kredi faizlerini, tasarruf getirilerini ve döviz kurlarını etkiler.
+
+Türkçe haberlerde bu karar **"ABD faiz kararı"** veya **"ABD Merkez Bankası faiz kararı"** olarak da geçer — üçü de aynı olayı, yani Fed'in politika faizi kararını anlatır.
 
 Kararı alan kurul FOMC'tur (Federal Open Market Committee — Federal Açık Piyasa Komitesi). FOMC yılda 8 kez toplanır ve her toplantının sonunda faizi:
 

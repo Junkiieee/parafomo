@@ -635,6 +635,26 @@ def make_clip(broll, audio, overlay, dur, out_clip, badge=None, motion=0, countu
                    check=True, capture_output=True)
 
 
+def make_loop_tail(first_clip, out, dur=0.4):
+    """Loop-friendly kapanış: ilk klibin açılış karesini kısa bir sessiz dilim olarak sona
+    ekler. YouTube videoyu otomatik döngüye aldığında son kare ≈ ilk kare olur → sorunsuz
+    loop, rewatch'i (tekrar-izlenme) artırır. 2026 Shorts retention araştırması: 'loopable
+    ending' 3 tartışılmaz öğeden biri, rewatch'i besler. Başarısızsa None → hat asla kırılmaz."""
+    try:
+        png = f"{TMP}/loopstart.png"
+        subprocess.run(["ffmpeg", "-y", "-i", first_clip, "-frames:v", "1", png],
+                       check=True, capture_output=True)
+        subprocess.run(["ffmpeg", "-y", "-loop", "1", "-t", f"{dur:.2f}", "-i", png,
+                        "-f", "lavfi", "-t", f"{dur:.2f}", "-i", "anullsrc=r=44100:cl=stereo",
+                        "-vf", f"scale={W}:{H},setsar=1,fps={FPS},format=yuv420p",
+                        "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k",
+                        "-ar", "44100", "-shortest", out], check=True, capture_output=True)
+        return out if os.path.exists(out) else None
+    except Exception as e:
+        print(f"[i] loop-tail atlandı: {str(e)[:80]}")
+        return None
+
+
 def gen_pad(dur, path):
     inputs = []
     for f in (220.0, 277.16, 329.63, 164.81):
@@ -777,6 +797,14 @@ def main():
         tcur += clip_dur
         print(f"    [{kind:5}] {clip_dur:4.1f}sn  broll={'✓' if broll else '—'}"
               f"  stat={stat or '—':>7}  {spoken[:38]}")
+
+    # Loop-friendly kapanış: ilk klibin açılış karesini ~0.4sn sona ekle → YouTube loop'unda
+    # son kare ≈ ilk kare, sorunsuz döngü (rewatch artışı). Savunmacı: düşerse eklenmez.
+    if len(clips) >= 2 and not args.no_broll:
+        tail = make_loop_tail(clips[0], f"{TMP}/looptail.mp4")
+        if tail:
+            clips.append(tail)
+            print("    [loop ] 0.4sn  açılış karesine dönüş (seamless loop)")
 
     lst = f"{TMP}/list.txt"
     open(lst, "w").write("".join(f"file '{c}'\n" for c in clips))
