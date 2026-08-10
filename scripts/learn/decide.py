@@ -35,12 +35,17 @@ Z_SEP = 1.0        # kazanan kolun ikinciyi geçmesi gereken asgari birleşik st
 # --------------------------- skor fonksiyonları ---------------------------
 
 def yt_score(m):
-    """RETENTION öncelikli. Yoksa views. İkisi de yoksa None."""
-    if m.get("avg_view_pct") is not None:
-        return float(m["avg_view_pct"])
-    if m.get("views") is not None:
-        return float(m["views"])
-    return None
+    """ERİŞİM (views) ağırlıklı; retention bir bonus çarpanıdır (views baskın).
+    Hedef 1000 ziyaretçi/gün + Shorts geliri → ham izlenme önce gelir; tutulma
+    yalnızca beraberlikleri kırar. Views yoksa (yeni video) retention'a düş."""
+    v = m.get("views")
+    r = m.get("avg_view_pct")
+    if v is None:
+        return float(r) if r is not None else None
+    v = float(v)
+    if r is not None:
+        return v * (0.5 + float(r) / 100.0)  # retention bonus, views baskın
+    return v
 
 
 def yt_reach(m):

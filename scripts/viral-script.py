@@ -226,8 +226,19 @@ def main():
     args = ap.parse_args()
 
     fmt = FORMATS[args.format]
+    # KAZANAN DNA (2026-08 izlenme analizi): en çok izlenen 8 videonun HEPSİ altın
+    # ve/veya kayıp-korkusu temalı (takı altını, 5000 ton altın, "paran eriyor",
+    # "banka seni değil kendini korur"). Konu serbestse üretimi bu eksene yasla;
+    # tazelik "kaçınılacak başlıklar" listesiyle korunur.
+    WINNING_THEMES = (
+        "Öncelikli tema ekseni (izlenme verisi bunları ödüllendiriyor — bu eksenden "
+        "TAZE bir açı seç): (a) ALTIN gerçekleri — çeyrek/ziynet/gram/kasa/takı altını, "
+        "işçilik payı, altını atıl tutmanın maliyeti; (b) KAYIP-KORKUSU/karşıt görüş — "
+        "'paran sessizce eriyor', 'banka seni değil kendini korur', 'maaşın artıyor ama "
+        "serveti nerede', 'güvende sandığın araç aslında kaybettiriyor'; (c) OTORİTE DELME "
+        "— uzman/fon/kurum neden yetersiz kaldı. Sıkıcı 'X nedir' tanımından KAÇIN.")
     topic_line = (f"KONU (bu konuyu işle): {args.topic}" if args.topic
-                  else "KONU: Türk yatırımcısının ilgisini çekecek bir konuyu SEN seç (güncel/evergreen).")
+                  else "KONU: Türk yatırımcısının ilgisini çekecek TAZE bir konuyu SEN seç.\n" + WINNING_THEMES)
 
     # Veri formatları: gerçek geçmiş veriyi çek, prompt'a göm, grafiği hazırla
     facts_block, chart_instruction, chart_payload = "", "", None

@@ -112,7 +112,9 @@ fi
 # ============================================================================
 if [ -z "$SCEN" ]; then
   # Format
-  declare -A DOW_FMT=([1]=comparison [2]=myth [3]=backtest_return [4]=shock_number [5]=news_reaction [6]=single_concept [7]=myth)
+  # İzlenme verisine göre ağırlıklı (2026-08): myth 412 ort. lider, comparison 98 → ELENDİ.
+  # myth×2, shock_number×2, backtest×1, news×1, single_concept×1.
+  declare -A DOW_FMT=([1]=myth [2]=shock_number [3]=backtest_return [4]=myth [5]=news_reaction [6]=single_concept [7]=shock_number)
   FORMAT="${FORMAT_OVERRIDE:-${DOW_FMT[$(date -u +%u)]}}"
   if [ -z "$FORMAT_OVERRIDE" ]; then
     LEARNED_FMT="$("$VPY" "$REPO/scripts/learn/winner.py" viral.format 2>/dev/null || true)"
