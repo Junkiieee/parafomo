@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-08-10T14:25:00Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-08-11T08:46:08Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -14,7 +14,7 @@
 ### Shorts sesi — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
 - `tr-TR-Chirp3-HD-Pulcherrima` — skor 548.503, örnek 3
-- `tr-TR-Chirp3-HD-Alnilam` — skor 416.05, örnek 2
+- `tr-TR-Chirp3-HD-Alnilam` — skor 416.468, örnek 2
 - `tr-TR-Chirp3-HD-Laomedeia` — skor 402.57, örnek 3
 - `tr-TR-Chirp3-HD-Sadachbia` — skor 351.487, örnek 3
 - `tr-TR-Chirp3-HD-Sadaltager` — skor 283.146, örnek 4
@@ -24,27 +24,27 @@
 
 ### Shorts motoru (google/edge) — **exploit** → seçim: `google`
 
-- `google` — skor 193.829, örnek 86
+- `google` — skor 193.878, örnek 86
 - `edge` — skor 90.753, örnek 15
 
 ### Viral format — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
 - `myth` — skor 386.362, örnek 9
-- `shock_number` — skor 266.24, örnek 6
-- `backtest_return` — skor 249.389, örnek 12
-- `single_concept` — skor 198.599, örnek 5
-- `news_reaction` — skor 181.433, örnek 16
-- `comparison` — skor 84.321, örnek 5
+- `backtest_return` — skor 249.439, örnek 12
+- `shock_number` — skor 238.905, örnek 7
+- `single_concept` — skor 198.762, örnek 5
+- `news_reaction` — skor 181.416, örnek 16
+- `comparison` — skor 98.121, örnek 5
 
 ### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `5` — skor 351.177, örnek 9
-- `3` — skor 338.7, örnek 6
-- `0` — skor 288.08, örnek 9
-- `2` — skor 242.625, örnek 5
+- `5` — skor 351.61, örnek 9
+- `3` — skor 338.8, örnek 6
+- `0` — skor 321.34, örnek 8
+- `2` — skor 217.354, örnek 6
 - `4` — skor 200.938, örnek 5
-- `1` — skor 145.505, örnek 7
-- `manual` — skor 113.586, örnek 12
+- `1` — skor 136.294, örnek 8
+- `manual` — skor 113.564, örnek 12
 
 ## Konu sinyalleri
 
