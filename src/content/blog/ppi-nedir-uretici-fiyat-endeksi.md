@@ -17,6 +17,23 @@ faq:
     a: "Güçlü (yüksek) PPI → dolar güçlenir, dolar/TL yükselir, altın ve BIST'e baskı oluşabilir. Zayıf (düşük) PPI → Fed faiz indirimi beklentisini besler, dolar zayıflar, altın ve gelişen piyasa varlıkları nefes alır."
   - q: "Core PPI ile genel PPI farkı nedir?"
     a: "Core PPI (Çekirdek PPI), enerji ve gıda fiyatlarını dışarıda bırakır. Bu iki kalem çok oynak olduğundan Fed, yapısal enflasyon trendini okumak için çekirdek PPI'ya daha fazla ağırlık verir."
+shorts:
+  - "Bu Perşembe 15:30'da dolar ve altının yönü değişebilir."
+  - "PPI, üreticilerin maliyetlerini ölçer; fabrikadan rafta son fiyata uzanan maliyet zincirini CPI'dan aylar önce yakalar."
+  - "Buğday pahalanınca un, un pahalanınca ekmek fabrikası maliyeti artar; PPI bu zincirlemeyi raftan önce görür."
+  - "Yüksek PPI çıkarsa Fed faiz indirmez, dolar güçlenir ve dolar/TL yükselir; düşük PPI gelirse altın ve BIST nefes alır."
+  - "Bu hafta hangi senaryo gerçekleşecek? Merak ediyorsan kanala abone ol, her veri öncesi biz anlatıyoruz. Tüm analizler parafomo.com'da."
+shorts_broll:
+  - "US Federal Reserve interest rate decision"
+  - "producer price index chart screen"
+  - "dollar Turkish lira exchange rate"
+  - "gold price market movement"
+shorts_visuals:
+  - "concept|economic calendar data release markets volatility"
+  - "concept|factory production cost inflation rise"
+  - "concept|wheat grain bread factory production chain"
+  - "concept|US dollar currency market strengthening"
+  - "concept|stock market gold trading screen"
 ---
 
 13 Ağustos 2026'da açıklanacak **ABD Üretici Fiyat Endeksi (PPI)** verisi, piyasaların bu hafta en yakından takip edeceği ikinci büyük açıklama. CPI'ın hemen ardından gelen bu veri, dolar, altın ve borsa yönünü doğrudan etkiliyor. PPI nedir, nasıl okunur ve Türk yatırımcısı olarak neden önemser?
