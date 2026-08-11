@@ -1,0 +1,15 @@
+{
+  "year": 2026,
+  "note": "2026 TCMB Para Politikası Kurulu (PPK) toplantı takvimi. Faiz kararı toplantı günü TSİ 14:00'te tcmb.gov.tr üzerinden açıklanır. TCMB yılda 8 PPK toplantısı yapar (Ağustos'ta toplantı yoktur). Toplantı özeti karardan ~5 iş günü sonra yayımlanır. Kaynak: TCMB resmi PPK takvimi (tcmb.gov.tr). Yeni yıl takvimi yayınlanınca güncelle.",
+  "source": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Temel+Faaliyetler/Para+Politikasi/PPK/",
+  "meetings": [
+    { "range": "22 Ocak", "decisionDate": "2026-01-22", "tsiTime": "14:00" },
+    { "range": "12 Mart", "decisionDate": "2026-03-12", "tsiTime": "14:00" },
+    { "range": "22 Nisan", "decisionDate": "2026-04-22", "tsiTime": "14:00" },
+    { "range": "11 Haziran", "decisionDate": "2026-06-11", "tsiTime": "14:00" },
+    { "range": "23 Temmuz", "decisionDate": "2026-07-23", "tsiTime": "14:00" },
+    { "range": "10 Eylül", "decisionDate": "2026-09-10", "tsiTime": "14:00" },
+    { "range": "22 Ekim", "decisionDate": "2026-10-22", "tsiTime": "14:00" },
+    { "range": "10 Aralık", "decisionDate": "2026-12-10", "tsiTime": "14:00" }
+  ]
+}

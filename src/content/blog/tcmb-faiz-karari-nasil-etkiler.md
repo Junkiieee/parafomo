@@ -1,14 +1,15 @@
 ---
 title: "TCMB Faiz Kararı Paranı Nasıl Etkiler? Kredi, Mevduat ve Dövize Yansımaları"
-description: "23 Temmuz TCMB faiz kararı öncesinde bilmen gerekenler: artış, indirim veya sabit kararının kredi, mevduat, dolar kuru ve borsayı nasıl etkilediğini 3 senaryo tablosuyla anlat."
+description: "TCMB faiz kararı öncesinde bilmen gerekenler: artış, indirim veya sabit kararının kredi, mevduat, dolar kuru ve borsayı nasıl etkilediğini 3 senaryo tablosuyla anlatıyoruz."
 pubDate: 2026-07-19
+updatedDate: 2026-08-11
 category: "Ekonomi"
 tags: ["tcmb faiz kararı", "ppk kararı", "faiz artışı etkisi", "mevduat faizi", "dolar kuru", "merkez bankası"]
 readingTime: 7
 featured: false
 faq:
   - q: "TCMB faiz kararı ne zaman açıklanıyor?"
-    a: "Para Politikası Kurulu (PPK) 23 Temmuz 2026 Perşembe günü toplanıyor. Karar genellikle saat 14:00-15:00 arasında açıklanır; 30 Temmuz'da ise toplantı özet metni yayımlanır."
+    a: "TCMB Para Politikası Kurulu (PPK) 2026'da 8 kez toplanır (Ağustos hariç). Faiz kararı toplantı günü TSİ 14:00 civarında açıklanır, toplantı özeti ise ~5 iş günü sonra yayımlanır. Tüm 2026 tarihleri ve sonraki karara geri sayım için TCMB Faiz Kararı Takvimi 2026 sayfasına bakabilirsin."
   - q: "Faiz artınca mevduatım ne olur?"
     a: "Faiz artışı sonrası bankalar mevduat faizini yükseltir; ancak mevcut vadeli hesabınız vadeye kadar aynı oranla çalışmaya devam eder. Vade yenileme yapacaksanız karar sonrasını beklemek avantajlı olabilir."
   - q: "Faiz kararı dolar kurunu nasıl etkiler?"
@@ -132,12 +133,11 @@ Faiz kararı, uzun vadeli portföy stratejini değil kısa vadeli nakit akışı
 
 ## Karar Takvimini Nasıl Takip Edilir?
 
-TCMB PPK toplantı tarihleri yılın başında açıklanır. Temmuz için kritik tarihler:
+TCMB PPK toplantı tarihleri yılın başında açıklanır. 2026'da 8 toplantı yapılır (Ağustos hariç); faiz kararı toplantı günü TSİ 14:00 civarında, toplantı özeti ise karardan ~5 iş günü sonra yayımlanır.
 
-- **23 Temmuz 2026 (Perşembe), 14:00–15:00** — PPK faiz kararı açıklanır
-- **30 Temmuz 2026 (Perşembe)** — PPK toplantı özeti yayımlanır (kararın gerekçeleri)
+Bir sonraki karara kaç gün kaldığını ve 2026'nın tüm PPK tarihlerini tek sayfada geri sayımlı görmek için: **[TCMB Faiz Kararı Takvimi 2026](/tcmb-faiz-takvimi)**. Küresel tarafı birlikte izlemek istersen [Fed faiz kararı takvimi](/fed-faiz-takvimi) da yardımcı olur.
 
-Resmi kaynaklar: TCMB web sitesi (tcmb.gov.tr) ve Investing.com Türkiye ekonomi takvimi.
+Resmi kaynak: TCMB web sitesi (tcmb.gov.tr).
 
 ## Özet
 

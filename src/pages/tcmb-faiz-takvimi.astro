@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
-import fomc from '../../data/fomc-2026.json';
+import tcmb from '../../data/tcmb-2026.json';
 
-type Meeting = { range: string; decisionDate: string; tsiTime: string; dotPlot: boolean };
-const meetings = fomc.meetings as Meeting[];
+type Meeting = { range: string; decisionDate: string; tsiTime: string };
+const meetings = tcmb.meetings as Meeting[];
 
 const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 const DOW_TR = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
@@ -36,22 +36,22 @@ const updated = today.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long
 // FAQ schema — "ne zaman" niyetini hedefler
 const faq = [
   {
-    q: 'Fed faiz kararı ne zaman açıklanacak?',
+    q: 'TCMB faiz kararı ne zaman açıklanacak?',
     a: next
-      ? `2026'daki bir sonraki Fed (FOMC) faiz kararı ${next.dayLabel} günü (${nextCountdownText}), TSİ ${next.tsiTime} civarında açıklanacak. Karar, iki günlük toplantının ikinci günü duyurulur.`
-      : '2026 FOMC takvimi tamamlandı. 2027 tarihleri Fed tarafından açıklandığında bu sayfaya eklenecek.',
+      ? `2026'daki bir sonraki TCMB (PPK) faiz kararı ${next.dayLabel} günü (${nextCountdownText}), TSİ ${next.tsiTime} civarında açıklanacak. Karar, Para Politikası Kurulu'nun (PPK) toplantı günü duyurulur.`
+      : '2026 PPK takvimi tamamlandı. 2027 tarihleri TCMB tarafından açıklandığında bu sayfaya eklenecek.',
   },
   {
-    q: 'FOMC yılda kaç kez toplanır?',
-    a: 'FOMC (Federal Açık Piyasa Komitesi) yılda 8 kez, yaklaşık altı haftada bir toplanır. Her toplantı iki gün sürer ve faiz kararı ikinci günün sonunda açıklanır.',
+    q: 'Merkez Bankası yılda kaç kez faiz kararı verir?',
+    a: 'TCMB Para Politikası Kurulu (PPK) 2026 yılında 8 kez toplanır — genellikle ayda bir, Ağustos ayı hariç. Faiz kararı her toplantının aynı günü, TSİ 14:00 civarında açıklanır.',
   },
   {
-    q: 'Dot plot (nokta grafiği) hangi toplantılarda açıklanır?',
-    a: 'Ekonomik projeksiyonlar özeti (SEP) ve üyelerin faiz beklentilerini gösteren dot plot, yılda 4 kez — Mart, Haziran, Eylül ve Aralık toplantılarında — yayımlanır. Bu toplantılar piyasalar için genelde daha kritiktir.',
+    q: 'PPK toplantı özeti ne zaman yayımlanır?',
+    a: 'Kararın gerekçesini ayrıntılandıran PPK toplantı özeti, faiz kararından yaklaşık beş iş günü sonra TCMB’nin resmi sitesinde yayımlanır. Özet, kurulun gelecek adımlarına dair ipuçları taşıdığı için piyasalarca yakından izlenir.',
   },
   {
-    q: 'Fed faiz kararı Türkiye’yi nasıl etkiler?',
-    a: 'Fed faizi artırırsa dolar küresel olarak güçlenir; TL dahil gelişmekte olan piyasa para birimleri baskılanır, dolar/TL yukarı yönlü baskı görür. Faiz indirimi ya da güvercin ton tersi etki yapar. Karardan önceki günlerde piyasalarda volatilite artar.',
+    q: 'TCMB faiz kararı paranı nasıl etkiler?',
+    a: 'Faiz artışı mevduat getirisini ve kredi maliyetini yükseltir, TL’ye değer kazandırma yönünde baskı yapar; faiz indirimi tersi etki yaratır — krediler ucuzlar, mevduat getirisi düşer, döviz ve altına talep artabilir. Karar ayrıca borsayı ve tahvil faizlerini doğrudan etkiler.',
   },
 ];
 
@@ -67,17 +67,17 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title="Fed Faiz Kararı Takvimi 2026 — FOMC Toplantı Tarihleri ve Saatleri"
-  description="2026 Fed (FOMC) faiz kararı takvimi: tüm toplantı tarihleri, TSİ karar saatleri ve dot plot günleri. Bir sonraki Fed faiz kararına kaç gün kaldığını gör."
+  title="TCMB Faiz Kararı Takvimi 2026 — Merkez Bankası PPK Toplantı Tarihleri"
+  description="2026 TCMB (Merkez Bankası) faiz kararı takvimi: tüm PPK toplantı tarihleri ve TSİ açıklama saatleri. Bir sonraki Merkez Bankası faiz kararına kaç gün kaldığını gör."
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <section class="container fk-hero">
     <span class="eyebrow"><span class="pulse"></span> Canlı Takvim</span>
-    <h1>Fed Faiz Kararı Takvimi 2026</h1>
+    <h1>TCMB Faiz Kararı Takvimi 2026</h1>
     <p class="lede soft">
-      ABD Merkez Bankası'nın (FOMC) 2026 yılındaki tüm faiz kararı tarihleri, Türkiye saatiyle (TSİ)
-      açıklama saatleri ve dot plot günleri — tek sayfada.
+      Türkiye Cumhuriyet Merkez Bankası'nın (TCMB) 2026 yılındaki tüm Para Politikası Kurulu (PPK)
+      faiz kararı tarihleri ve Türkiye saatiyle (TSİ) açıklama saatleri — tek sayfada.
     </p>
 
     {next && (
@@ -87,24 +87,19 @@ const jsonLd = {
           <span class="fk-next-unit">gün</span>
         </div>
         <div class="fk-next-body">
-          <span class="fk-next-label">Sıradaki Fed faiz kararı</span>
+          <span class="fk-next-label">Sıradaki TCMB faiz kararı</span>
           <span class="fk-next-date">{next.dowLabel}, {next.dayLabel}</span>
-          <span class="fk-next-time">TSİ {next.tsiTime} · {next.dotPlot ? 'Dot plot + projeksiyonlar var' : 'Projeksiyon yok'}</span>
+          <span class="fk-next-time">TSİ {next.tsiTime} · Para Politikası Kurulu (PPK)</span>
         </div>
       </div>
     )}
-    <p class="fk-upd">Son güncelleme: {updated} · Kaynak: Federal Reserve resmi FOMC takvimi</p>
+    <p class="fk-upd">Son güncelleme: {updated} · Kaynak: TCMB resmi PPK takvimi</p>
   </section>
 
   <section class="container fk-section">
     <div class="fk-shead">
-      <h2>2026 FOMC Toplantı Tarihleri</h2>
+      <h2>2026 PPK Toplantı Tarihleri</h2>
       <span class="fk-shead-count">{meetings.length} toplantı</span>
-    </div>
-
-    <div class="fk-legend">
-      <span><i class="dot brand"></i> Dot plot + ekonomik projeksiyon (SEP) günü</span>
-      <span><i class="dot muted"></i> Standart karar</span>
     </div>
 
     <div class="fk-table">
@@ -112,12 +107,9 @@ const jsonLd = {
         <div class:list={['fk-row', { past: r.isPast, next: next != null && r.decisionDate === next.decisionDate }]}>
           <span class="fk-cell-date">
             <strong>{r.range}</strong>
-            <small>{r.dowLabel} kararı</small>
+            <small>{r.dowLabel} · faiz kararı</small>
           </span>
           <span class="fk-cell-time">TSİ {r.tsiTime}</span>
-          <span class:list={['fk-cell-tag', { on: r.dotPlot }]}>
-            {r.dotPlot ? '● Dot plot' : '—'}
-          </span>
           <span class="fk-cell-status">
             {r.isPast ? 'geçti' : next != null && r.decisionDate === next.decisionDate ? nextCountdownText : `${r.daysUntil} gün`}
           </span>
@@ -125,35 +117,36 @@ const jsonLd = {
       ))}
     </div>
     <p class="fk-fine">
-      Karar, iki günlük toplantının ikinci günü açıklanır. Saatler ABD saatiyle 14:00'e denk gelir;
-      TSİ değeri yaz/kış saati farkına göre 21:00 veya 22:00'dir. Kesin saat için Fed'in resmi sitesini kontrol edin.
+      Faiz kararı PPK toplantısının aynı günü, TSİ 14:00 civarında açıklanır. Kararın gerekçesini
+      içeren toplantı özeti karardan ~5 iş günü sonra yayımlanır. Ağustos ayında toplantı yapılmaz.
+      Kesin tarih ve saatler için TCMB'nin resmi sitesini kontrol edin.
     </p>
   </section>
 
   <section class="container fk-info">
-    <h2>Fed Faiz Kararı Nedir, Neden Takip Edilir?</h2>
+    <h2>TCMB Faiz Kararı Nedir, Neden Takip Edilir?</h2>
     <p>
-      Fed (Federal Reserve), ABD'nin merkez bankasıdır. Faiz kararlarını yılda 8 kez toplanan
-      <strong> FOMC</strong> (Federal Açık Piyasa Komitesi) verir. Politika faizi (federal funds rate)
-      küresel likiditeyi belirlediği için karar; dolar endeksini, altını, borsaları ve TL dahil tüm
-      gelişmekte olan piyasa para birimlerini doğrudan etkiler.
+      TCMB (Türkiye Cumhuriyet Merkez Bankası), ülkenin para politikasını yürüten kurumdur. Politika
+      faizini (bir haftalık repo faizi) <strong>Para Politikası Kurulu (PPK)</strong> belirler. Bu faiz;
+      kredi ve mevduat faizlerini, döviz kurunu, enflasyon beklentisini ve borsayı doğrudan etkilediği
+      için milyonlarca hane ve yatırımcıyı yakından ilgilendirir.
     </p>
     <p>
-      <strong>Kritik toplantılar:</strong> Mart, Haziran, Eylül ve Aralık toplantılarında Fed, üyelerin
-      faiz beklentilerini gösteren <strong>dot plot</strong>'u ve ekonomik projeksiyonları (SEP) da yayımlar.
-      Bu dört toplantı, piyasa yönü açısından genellikle diğerlerinden daha belirleyicidir.
+      <strong>Faiz artarsa:</strong> mevduat getirisi ve kredi maliyeti yükselir, TL görece değer kazanır.
+      <strong>Faiz inerse:</strong> krediler ucuzlar, mevduat getirisi düşer, döviz ve altına talep artabilir.
+      Bu yüzden karar günü ve öncesinde piyasalarda oynaklık genellikle artar.
     </p>
     <p>
-      <strong>Türk yatırımcı için:</strong> Fed faiz artırırsa dolar güçlenir, TL ve altın baskılanabilir;
-      indirim ya da güvercin ton tersi etki yapar. Karar öncesi günlerde volatilite artar — bu yüzden
-      takvimi önceden bilmek pozisyon yönetiminde avantaj sağlar.
+      <strong>Fed ile ilişki:</strong> TCMB kararları çoğu zaman küresel para politikasıyla, özellikle ABD
+      Merkez Bankası (Fed) faiz patikasıyla birlikte okunur. İki takvimi yan yana izlemek, dolar/TL yönü
+      için daha sağlıklı bir çerçeve verir.
     </p>
     <div class="fk-links">
-      <a href="/blog/fed-faiz-karari-nedir-etkisi">Fed Faiz Kararı Nedir? Türkiye'ye Etkileri →</a>
-      <a href="/blog/fed-faiz-karari-ne-olur-beklentiler">Fed Faiz Kararı Ne Olur? Beklentileri Okuma →</a>
-      <a href="/blog/fed-faiz-karari-sonrasi-piyasa-tepkisi">Fed Kararı Sonrası Piyasa Tepkisi →</a>
-      <a href="/blog/fomc-toplanti-tutanaklari-nedir">FOMC Toplantı Tutanakları Nedir? →</a>
-      <a href="/tcmb-faiz-takvimi">TCMB (Merkez Bankası) faiz kararı takvimi 2026 →</a>
+      <a href="/blog/tcmb-faiz-karari-nasil-etkiler">TCMB Faiz Kararı Paranı Nasıl Etkiler? →</a>
+      <a href="/blog/merkez-bankasi-nedir-faiz-karari">Merkez Bankası Nedir, Faiz Kararı Nasıl Alınır? →</a>
+      <a href="/blog/faiz-nedir-ekonomiyi-nasil-etkiler">Ekonomide Faiz Nedir? →</a>
+      <a href="/blog/mevduat-faizi-nedir-vadeli-mevduat">Mevduat Faizi Nedir? Vadeli Mevduat Rehberi →</a>
+      <a href="/fed-faiz-takvimi">Fed (FOMC) faiz kararı takvimi 2026 →</a>
       <a href="/ekonomik-takvim">Tüm ekonomik takvim (TCMB, NFP, TÜİK) →</a>
     </div>
   </section>
@@ -170,8 +163,8 @@ const jsonLd = {
 
   <section class="container fk-note">
     <p>
-      Bu sayfa yalnızca bilgilendirme amaçlıdır; yatırım tavsiyesi değildir. FOMC tarihleri Fed tarafından
-      önceden ilan edilir ancak nadiren güncellenebilir; kesin tarih ve saatler için federalreserve.gov adresini kontrol edin.
+      Bu sayfa yalnızca bilgilendirme amaçlıdır; yatırım tavsiyesi değildir. PPK tarihleri TCMB tarafından
+      önceden ilan edilir ancak nadiren güncellenebilir; kesin tarih ve saatler için tcmb.gov.tr adresini kontrol edin.
     </p>
   </section>
 
@@ -210,15 +203,9 @@ const jsonLd = {
   .fk-shead h2 { font-size: var(--step-1); margin: 0; }
   .fk-shead-count { font-size: 0.66rem; font-weight: 700; color: var(--brand-deep); background: var(--brand-tint); border-radius: 999px; padding: 0.1rem 0.55rem; }
 
-  .fk-legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; margin-bottom: 0.9rem; font-size: var(--step--2); color: var(--text-muted); }
-  .fk-legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
-  .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; }
-  .dot.brand { background: var(--brand); }
-  .dot.muted { background: var(--border); }
-
   .fk-table { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg-card); box-shadow: var(--shadow-xs); max-width: 700px; }
   .fk-row {
-    display: grid; grid-template-columns: 1fr auto auto auto; align-items: center;
+    display: grid; grid-template-columns: 1fr auto auto; align-items: center;
     gap: 0.5rem 1rem; padding: 0.7rem 1rem; border-bottom: 1px solid var(--border-soft);
   }
   .fk-row:last-child { border-bottom: none; }
@@ -228,8 +215,6 @@ const jsonLd = {
   .fk-cell-date strong { font-size: var(--step-0); color: var(--text); }
   .fk-cell-date small { font-size: var(--step--2); color: var(--text-muted); }
   .fk-cell-time { font-size: var(--step--1); font-weight: 700; color: var(--text-soft); font-variant-numeric: tabular-nums; }
-  .fk-cell-tag { font-size: var(--step--2); color: var(--text-muted); white-space: nowrap; }
-  .fk-cell-tag.on { color: var(--brand-deep); font-weight: 700; }
   .fk-cell-status { font-size: var(--step--2); font-weight: 700; color: var(--text-muted); text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
   .fk-row.next .fk-cell-status { color: var(--brand-deep); }
 
@@ -255,7 +240,6 @@ const jsonLd = {
   @media (max-width: 560px) {
     .fk-row { grid-template-columns: 1fr auto; row-gap: 0.3rem; }
     .fk-cell-time { grid-column: 2; text-align: right; }
-    .fk-cell-tag { grid-column: 1; }
     .fk-cell-status { grid-column: 2; }
   }
 </style>
