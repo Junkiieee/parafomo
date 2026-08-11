@@ -4,6 +4,85 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-11
+
+**Yayınlanan yazı:**
+[PPI Nedir? Üretici Fiyat Endeksi ve Fed Faizine Etkisi](https://parafomo.com/blog/ppi-nedir-uretici-fiyat-endeksi/)
+
+**Konu seçim gerekçesi:** 13 Ağustos'ta 🔴 High etkili ABD PPI açıklaması var; sitede PPI yazısı yoktu; CPI + PCE + FOMC kümesini tamamlayan öncü gösterge. "Fed faiz kararı" GSC fırsatlarıyla da örtüşüyor.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**
+Yarın CPI, öbür gün PPI.
+
+Bu hafta iki bomba enflasyon verisi geliyor.
+PPI nedir ve neden dolar/TL seyrini belirliyor? 🧵
+
+**Tweet 2:**
+PPI = Üretici Fiyat Endeksi.
+
+Fabrikadan çıkan fiyat ölçülür.
+CPI ise marketteki rafı ölçer.
+
+PPI → 1-3 ay sonra → CPI'ye yansır.
+Yani PPI, CPI'ın öncü habercisi.
+
+**Tweet 3:**
+Yüksek PPI ne anlama gelir?
+
+→ Enflasyon zinciri bozulmuyor
+→ Fed faizi daha uzun yüksek tutar
+→ Dolar güçlenir
+→ Dolar/TL yükselir
+→ Altına baskı
+
+**Tweet 4:**
+Düşük PPI ne anlama gelir?
+
+→ Maliyet baskısı yatışıyor
+→ Fed faiz indirimi masada kalır
+→ Dolar zayıflar
+→ Altın, hisse, BIST nefes alır
+
+**Tweet 5 (CTA):**
+13 Ağustos sabahı PPI açıklanıyor.
+
+CPI ile birlikte oku — yönleri aynıysa sinyal güçlü.
+
+Detaylı rehber: parafomo.com/blog/ppi-nedir-uretici-fiyat-endeksi/
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Başlık:** PPI Nedir? Bu Hafta Piyasaları Sallayacak Veri 📊
+
+**Slayt 1:** Yarın CPI, öbür gün PPI. Bu iki veri dolar/TL seyrini bu hafta belirleyecek.
+
+**Slayt 2:** PPI = Üretici Fiyat Endeksi. Fabrika çıkış fiyatı ölçülür. CPI = market reyonu. İkisi arasında 1-3 ay var.
+
+**Slayt 3:** Yüksek PPI → Fed sıkı durur → Dolar güçlenir → TL baskı altına girer.
+
+**Slayt 4:** Düşük PPI → Faiz indirimi beklentisi → Dolar zayıflar → Altın + gelişen piyasalar nefes alır.
+
+**Slayt 5:** 13 Ağustos Perşembe 15:30'da açıklanıyor. CPI ile aynı yöne işaret ediyorsa sinyal çok güçlü.
+
+**Slayt 6:** Tam rehber → parafomo.com/blog/ppi-nedir-uretici-fiyat-endeksi/ 🔗 Bio'da link!
+
+**Hashtag'ler:** #PPI #enflasyon #dolar #fedfariz #yatırım #borsa #piyasa #parafomo
+
+---
+
+### Senin Yapman Gerekenler (Bugün)
+
+1. **Thread'i yayınla** → Yukarıdaki X (Twitter) thread taslağını bugün paylaş; 13 Ağustos PPI açıklamasından önce yayınlanması önemli (zamanlama avantajı var).
+2. **Instagram'a yükle** → Carousel metnini kullanarak en az 5 slaytlık bir gönderi hazırla veya sadece tek bir grafik paylaş; PPI açıklamasına dikkat çekecek zamanlamayla (bugün veya yarın).
+
+---
+
 ## 2026-08-10 (Yazı 2)
 
 **Yayınlanan yazı:**
