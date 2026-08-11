@@ -56,20 +56,29 @@ DATE="$(date -u +%Y-%m-%dT%H:%MZ)"
   git status --short || true
   echo
 
-  echo "## 8) Cron sağlık taraması (son loglarda hata izi)"
+  echo "## 8) Cron sağlık taraması (yalnız SON çalıştırma bloğu — stale hata gösterme)"
   found=0
   for f in logs/*.log; do
     [ -f "$f" ] || continue
-    hits="$(grep -iE 'error|hata|traceback|fail|invalid_scope|403|429' "$f" 2>/dev/null | tail -4)"
+    # Sadece en son çalıştırma bloğunu tara: son "... başladı" / "====" işaretinden
+    # SONRAKİ satırlar. Böylece geçmiş çalıştırmaların (sonradan düzelen) hataları her
+    # gece yeniden "hata" diye görünmez. İşaret yoksa son 40 satıra düş.
+    block="$(awk '
+      /başladı|BAŞLADI|^={10,}/ { buf=""; next }
+      { buf = buf $0 "\n" }
+      END { printf "%s", buf }
+    ' "$f")"
+    [ -z "$block" ] && block="$(tail -40 "$f")"
+    hits="$(printf "%s" "$block" | grep -iE 'error|hata|traceback|fail|invalid_scope|403|429' 2>/dev/null | tail -4)"
     if [ -n "$hits" ]; then
       found=1
-      echo "### $f"
+      echo "### $f (son çalıştırma)"
       echo '```'
       echo "$hits"
       echo '```'
     fi
   done
-  [ "$found" = 0 ] && echo "Belirgin hata izi yok."
+  [ "$found" = 0 ] && echo "Son çalıştırmalarda belirgin hata izi yok (üretim sağlıklı)."
   echo
 
   # HAM VERİ EKLERİ (GSC sorguları, öğrenme detayı, YouTube perf, blog envanteri)
