@@ -1,35 +1,8 @@
 {
-  "updated": "2026-08-10",
+  "updated": "2026-08-11",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-08-07",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Average Hourly Earnings m/m",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-08-07",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Non-Farm Employment Change",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-08-07",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Unemployment Rate",
-      "source": "forexfactory",
-      "hook": "İşsizlik verisi — büyüme ve faiz beklentisi."
-    },
     {
       "date": "2026-08-12",
       "time": "12:30pm",

@@ -1,0 +1,57 @@
+{
+  "slug": "bankada-yatan-dolar-ne-kadar-kaybettiriyor",
+  "title": "Bankada Yatan Dolar Ne Kadar Kaybettiriyor?",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Türk bankalarındaki dolar mevduatlar yüzde 1 civarı faiz öderken aynı dolar yurt dışında çok daha fazla getiri sunuyor. Bu farkın 5 yıllık maliyeti çoğu kişiyi şaşırtıyor.",
+  "tags": [
+    "dolar mevduat",
+    "döviz faiz",
+    "türkiye finans",
+    "faiz kaybı",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Bankandaki dolar hesabının faizi yüzde 1.",
+      "visual": {
+        "type": "scene",
+        "query": "dollar bills bank savings account deposit"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Türk bankaları döviz mevduata bu kadar düşük faiz öder. Aynı dönemde ABD hazine bonoları yaklaşık yüzde 4 getiri sunuyordu.",
+      "visual": {
+        "type": "building",
+        "query": "Federal Reserve building Washington"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "10 bin doları 5 yıl yüzde 1'le bırakırsan 510 dolar kazanırsın. Yüzde 4'te bu rakam 2.160 dolar. Fark 1.650 dolar — bankaya kalan.",
+      "visual": {
+        "type": "concept",
+        "query": "interest rate comparison bar chart money growth"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bazı aracı kurumlar artık ABD hazine bonolarına bireysel erişim sunuyor. Dolarını bankada tutuyorsan, faiz oranını bir kez sormak binlerce lira fark yaratır.",
+      "visual": {
+        "type": "scene",
+        "query": "person using smartphone investment app trading screen"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu açığı kapatmak için nereden başlamalısın? Onu da yakında konuşacağız. Abone ol — her gün 60 saniyede paranı ilgilendiren tek net analiz burada.",
+      "visual": {
+        "type": "scene",
+        "query": "subscribe notification bell social media phone"
+      }
+    }
+  ]
+}

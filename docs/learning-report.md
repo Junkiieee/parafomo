@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-08-10T08:45:47Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-08-10T14:25:00Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -13,38 +13,38 @@
 
 ### Shorts sesi — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `tr-TR-Chirp3-HD-Gacrux` — skor 99.014, örnek 5
-- `tr-TR-Chirp3-HD-Alnilam` — skor 97.04, örnek 2
-- `tr-TR-Chirp3-HD-Sadachbia` — skor 54.91, örnek 3
-- `tr-TR-Chirp3-HD-Sulafat` — skor 53.98, örnek 8
-- `tr-TR-Chirp3-HD-Enceladus` — skor 49.57, örnek 2
-- `tr-TR-Chirp3-HD-Rasalgethi` — skor 44.163, örnek 3
-- `tr-TR-Chirp3-HD-Algieba` — skor 43.215, örnek 2
-- `tr-TR-Chirp3-HD-Sadaltager` — skor 42.78, örnek 4
+- `tr-TR-Chirp3-HD-Pulcherrima` — skor 548.503, örnek 3
+- `tr-TR-Chirp3-HD-Alnilam` — skor 416.05, örnek 2
+- `tr-TR-Chirp3-HD-Laomedeia` — skor 402.57, örnek 3
+- `tr-TR-Chirp3-HD-Sadachbia` — skor 351.487, örnek 3
+- `tr-TR-Chirp3-HD-Sadaltager` — skor 283.146, örnek 4
+- `tr-TR-Chirp3-HD-Achernar` — skor 278.156, örnek 4
+- `tr-TR-Chirp3-HD-Zubenelgenubi` — skor 245.447, örnek 5
+- `tr-TR-Chirp3-HD-Zephyr` — skor 236.733, örnek 4
 
-### Shorts motoru (google/edge) — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
+### Shorts motoru (google/edge) — **exploit** → seçim: `google`
 
-- `google` — skor 44.34, örnek 86
-- `edge` — skor 39.141, örnek 15
+- `google` — skor 193.829, örnek 86
+- `edge` — skor 90.753, örnek 15
 
-### Viral format — **exploit** → seçim: `backtest_return`
+### Viral format — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `backtest_return` — skor 70.839, örnek 12
-- `myth` — skor 41.322, örnek 9
-- `news_reaction` — skor 39.587, örnek 16
-- `single_concept` — skor 35.492, örnek 5
-- `shock_number` — skor 34.408, örnek 6
-- `comparison` — skor 32.412, örnek 5
+- `myth` — skor 386.362, örnek 9
+- `shock_number` — skor 266.24, örnek 6
+- `backtest_return` — skor 249.389, örnek 12
+- `single_concept` — skor 198.599, örnek 5
+- `news_reaction` — skor 181.433, örnek 16
+- `comparison` — skor 84.321, örnek 5
 
-### Viral yayın slotu — **exploit** → seçim: `5`
+### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `5` — skor 82.333, örnek 9
-- `manual` — skor 42.104, örnek 12
-- `0` — skor 40.596, örnek 9
-- `1` — skor 37.004, örnek 7
-- `4` — skor 36.388, örnek 5
-- `3` — skor 31.937, örnek 6
-- `2` — skor 31.426, örnek 5
+- `5` — skor 351.177, örnek 9
+- `3` — skor 338.7, örnek 6
+- `0` — skor 288.08, örnek 9
+- `2` — skor 242.625, örnek 5
+- `4` — skor 200.938, örnek 5
+- `1` — skor 145.505, örnek 7
+- `manual` — skor 113.586, örnek 12
 
 ## Konu sinyalleri
 
