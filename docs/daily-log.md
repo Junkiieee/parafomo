@@ -4,6 +4,101 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-11 (İkinci Yayın)
+
+**Yayınlanan yazı:**
+[Michigan Tüketici Güven Endeksi Nedir? Dolar ve Fed'e Etkisi](https://parafomo.com/blog/michigan-tuketici-guven-endeksi-nedir/)
+
+**Konu seçim gerekçesi:** Tüm backlog konuları tamamlandı; yeni evergreen konular eklendi. Michigan Tüketici Güven Endeksi ön verisi (~15 Ağustos Cuma) yaklaşırken zamanlaması mükemmel. PPI + CPI + PCE + Fed kümeleri var; tüketici duyarlılığı + enflasyon beklentisi açısı henüz işlenmemişti. "Fed faiz kararı" GSC fırsatlarıyla örtüşen tamamlayıcı piece.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**
+Bu Cuma 16:00'da dolar sert hareket edebilir.
+
+Michigan Tüketici Güven Endeksi açıklanacak.
+
+Nedir bu veri ve neden önemli? 🧵
+
+**Tweet 2:**
+ABD'li tüketicilerin ekonomiye bakışını ölçen bir anket.
+
+~500 kişiyle yapılır.
+Ayda iki kez açıklanır: ön veri + kesin veri.
+
+Fed bu veriyi yakından takip eder.
+
+**Tweet 3:**
+İçinde gömülü olan ENFLASYONBEKLENTİSİ alt verisi asıl bomba.
+
+"Tüketiciler önümüzdeki yıl fiyatların ne kadar artacağını düşünüyor?"
+
+Bu beklenti yüksekse → Fed faiz indiremez → dolar güçlenir → dolar/TL yükselir.
+
+**Tweet 4:**
+Pratik senaryo tablosu:
+
+📈 Güçlü veri + yüksek enflasyon beklentisi → dolar güçlenir, TL baskı altında
+📉 Zayıf veri + düşük beklenti → fed faiz indirimi beklentisi canlanır, altın yükselir
+⚖️ Güçlü veri ama düşük beklenti → "soft landing" → piyasalar sevinir
+
+**Tweet 5 (CTA):**
+Michigan endeksinin Conference Board'dan farkı nedir?
+Enflasyon beklentisi neden bu kadar kritik?
+Türk yatırımcısı ne yapmalı?
+
+Tam rehber burada 👇
+parafomo.com/blog/michigan-tuketici-guven-endeksi-nedir/
+
+---
+
+### Instagram Carousel / Post Metni
+
+📊 Michigan Tüketici Güven Endeksi nedir?
+
+Bu Cuma ABD'den önemli bir veri geliyor.
+
+Tüketicilerin ekonomiye güveni ölçülüyor.
+
+Peki bu veri dolar ve TL'yi nasıl etkiler?
+
+---
+Slayt 1: Michigan Endeksi Nedir?
+Michigan Üniversitesi her ay ~500 Amerikalıya soruyor:
+"Ekonomi nasıl gidecek? Fiyatlar ne kadar artacak?"
+
+---
+Slayt 2: Ayda 2 Kez Açıklanır
+🗓 Ön veri: Ayın 2. Cuma → Piyasalar buna daha güçlü tepki verir
+🗓 Kesin veri: Ayın son Cuma → Ufak revizyonlar
+
+---
+Slayt 3: Asıl Bomba: Enflasyon Beklentisi
+Başlık endeksinden daha önemli olabilir.
+Tüketiciler yüksek enflasyon bekliyorsa → Fed faiz indiremez → dolar güçlenir → dolar/TL yükselir.
+
+---
+Slayt 4: Türk Yatırımcısı İçin
+✅ Güçlü veri + yüksek beklenti → dolar/TL yukarı
+✅ Zayıf veri → fed indirim beklentisi → altın ve BIST nefes alabilir
+✅ Tek veri karar verme; haftalık tabloyu bütün oku
+
+---
+Detaylı rehber için link bio'da 🔗
+
+#MichiganEndeksi #TüketiciGüveni #FedFaiz #DolarTL #EkonomikVeri #ParaFOMO
+
+---
+
+### ✅ Senin Bugün Yapman Gerekenler
+
+1. **Sosyal paylaşım:** Yukarıdaki X thread'ini ve Instagram carousel'ini kopyalayıp yayınla — Cuma (Michigan ön verisi günü) öncesi paylaşmak zamanlamayı iyi kullanır.
+2. **Topluluk paylaşımı:** Twitter/X'te "michigan tüketici güveni" arayan ya da ekonomi tartışan hesapları reply ile bilgilendir; Ekşi Sözlük ya da ilgili Telegram finans gruplarında yazıyı değer katarak paylaş.
+
+---
+
 ## 2026-08-11
 
 **Yayınlanan yazı:**

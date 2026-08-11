@@ -54,8 +54,19 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Stop-loss nedir? Borsada zararı sınırlamak için emir türleri rehberi — `Borsa` — hedef: "stop loss nedir"
 - [x] Carry trade nedir? Düşük faizli dövizden kazanmanın mantığı ve riskleri — `Ekonomi` — hedef: "carry trade nedir"
 - [x] ABD 10 yıllık tahvil faizi nedir? Küresel piyasaların barometresi ve TL'ye etkisi — `Ekonomi` — hedef: "abd 10 yıllık tahvil faizi nedir"
+- [x] Michigan Tüketici Güven Endeksi nedir? Tüketici duyarlılığı ve Fed'e etkisi — `Ekonomi` — hedef: "michigan tüketici güven endeksi nedir"
+- [ ] İlk İşsizlik Başvuruları (Initial Jobless Claims) nedir? İşgücü piyasası ve Fed etkisi — `Ekonomi` — hedef: "işsizlik başvuruları nedir"
+- [ ] JOLTS İş İlanları (Job Openings) nedir? İşgücü açığı ve Fed'e sinyali — `Ekonomi` — hedef: "jolts nedir iş ilanları"
+- [ ] VIX (Korku Endeksi) nedir? Borsa volatilitesi nasıl okunur? — `Ekonomi` — hedef: "vix nedir korku endeksi"
+- [ ] ABD Konut Başlangıçları (Housing Starts) nedir? İnşaat verisi ekonomiye nasıl yansır? — `Ekonomi` — hedef: "housing starts nedir"
+- [ ] Vadeli İşlem Sözleşmesi (Futures) nedir? Türev ürün rehberi — `Yatırım` — hedef: "vadeli işlem sözleşmesi nedir"
+- [ ] Opsiyon nedir? Alım ve satım opsiyonu nasıl çalışır? — `Yatırım` — hedef: "opsiyon nedir"
+- [ ] Stagflasyon nedir? Enflasyon + durgunluk sarmalı ve yatırımcı stratejisi — `Ekonomi` — hedef: "stagflasyon nedir"
+- [ ] Quantitative Tightening (QT) nedir? Merkez bankası bilanço küçültme rehberi — `Ekonomi` — hedef: "quantitative tightening nedir"
 
 ## Yayınlananlar (otomasyon buraya ekler)
+
+- [x] Michigan Tüketici Güven Endeksi Nedir? Dolar ve Fed'e Etkisi — `michigan-tuketici-guven-endeksi-nedir` (yeni evergreen ekonomi; "michigan tüketici güven endeksi nedir" sorgusu; tüketici duyarlılığı + enflasyon beklentisi + Fed faiz cluster'ını tamamlayan piece; Ağustos ortası ön veri zamanlaması)
 
 - [x] ABD 10 Yıllık Tahvil Faizi Nedir? Küresel Piyasaların Barometresi — `abd-10-yillik-tahvil-faizi-nedir` (yeni evergreen ekonomi; "abd 10 yıllık tahvil faizi nedir" sorgusu; verim eğrisi + carry trade + DXY + Fed faiz cluster'ını tamamlayan piece)
 
