@@ -611,6 +611,14 @@ def _kenburns(motion, D):
     if motion == "hook":   # açılış: güçlü zoom-in (enerji)
         return (f"crop=w='1296-320*{p}':h='2304-569*{p}':"
                 f"x='(in_w-out_w)/2':y='(in_h-out_h)/2'")
+    if motion == "rehook":
+        # v4.3: ~%50 ikincil hook (2026 retention: her 10-15sn'de bir re-hook/pattern-
+        # interrupt "boredom clock"u sıfırlar, drop-off eğrisini düzleştirir). Sürekli
+        # Ken Burns yerine HIZLI punch-in: ilk ~0.55sn'de tam kadrajdan sıkı kadraja
+        # dalar, sonra sabitlenir → ani zoom = belirgin pattern-interrupt (kesim hissi).
+        pr = f"min(t/0.55\\,1)"
+        return (f"crop=w='1296-396*{pr}':h='2304-704*{pr}':"   # 1296→900 / 2304→1600 (9:16 kilitli)
+                f"x='(in_w-out_w)/2':y='(in_h-out_h)/2'")
     # v4.1 micro-cut: uzun segmentlerde (>5sn) tek sürekli Ken Burns = >5sn statik
     # blok (2026 retention: "5-saniye kuralı" — hiçbir blok görsel değişmeden 5sn
     # geçmesin). Sahneyi ~2.7sn'lik alt-fazlara böl; her faz taze wide→tight zoom,
@@ -768,6 +776,9 @@ def main():
         shutil.rmtree(p, ignore_errors=True) if os.path.isdir(p) else os.remove(p)
 
     clips, events, tcur, credits = [], [], 0.0, []
+    # v4.3 ikincil hook: ~orta beat'e mid-video pattern-interrupt (punch-in). Yeterli
+    # beat varsa (>=4) uygula; hook (0) ve son/CTA beat'i (len-1) hariç, ortadaki beat.
+    rehook_idx = (len(segs) // 2) if len(segs) >= 4 else -1
     for i, (kind, eyebrow, spoken) in enumerate(segs):
         aud = f"{TMP}/aud{i:02d}.mp3"
         ov = f"{TMP}/ov{i:02d}.png"
@@ -816,7 +827,16 @@ def main():
             countup_dir = make_countup(visual["chart"], f"{TMP}/cu{i:02d}")
         clip = f"{TMP}/clip{i:02d}.mp4"
         # v4: sahne başına değişen hareket; Manim sahnesi kendi animasyonlu → Ken Burns kapalı
-        motion = 0 if is_manim else ("hook" if kind == "hook" else i)
+        # v4.3: orta beat (rehook_idx) → mid-video punch-in pattern-interrupt. Manim/count-up
+        # beat'i kendi animasyonuna sahip → dokunma (rehook yalnız düz b-roll/color beat'te).
+        if is_manim:
+            motion = 0
+        elif kind == "hook":
+            motion = "hook"
+        elif i == rehook_idx and not countup_dir:
+            motion = "rehook"
+        else:
+            motion = i
         try:
             make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion,
                       countup_dir=countup_dir)
