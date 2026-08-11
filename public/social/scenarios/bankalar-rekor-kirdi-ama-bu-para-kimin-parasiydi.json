@@ -1,0 +1,59 @@
+{
+  "slug": "bankalar-rekor-kirdi-ama-bu-para-kimin-parasiydi",
+  "title": "Bankalar Rekor Kırdı — Ama Bu Para Kimin Parasıydı?",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Türk bankacılık sektörü 2024'te yaklaşık 1 trilyon TL net kâr etti. Bu kârın büyük bölümü faiz makasından geliyor: sana ödediği ile senden kazandığı arasındaki derin farktan.",
+  "tags": [
+    "mevduat faiz",
+    "faiz makası",
+    "banka kârı",
+    "hazine bonosu",
+    "para piyasası fonu",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Bankalar 2024'te yaklaşık 1 trilyon TL kâr etti.",
+      "visual": {
+        "type": "scene",
+        "query": "bank building exterior modern glass corporate"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu paranın büyük kısmı faiz makasından geliyor: sana yüzde 40 faiz öderken başkasına yüzde 70'e borç verdiler.",
+      "visual": {
+        "type": "concept",
+        "query": "bank counter teller cash money exchange"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Asıl çarpıcı olan şu: o kâr tam da enflasyonun en yüksek olduğu dönemde birikti — paranın en hızlı eridiği yıllarda.",
+      "visual": {
+        "type": "scene",
+        "query": "shopping cart supermarket groceries price tags inflation"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Hazine bonosu ve para piyasası fonları bu farkın önemli bir bölümünü sana geri verebilir — bankanın masaya koymadığı getiriyi.",
+      "visual": {
+        "type": "concept",
+        "query": "government treasury bonds investment portfolio growth chart"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Faiz inmeye devam ederse bu denklem nasıl değişecek? Merak ediyorsan abone ol — her gün piyasanın en net analizini burada bulursun.",
+      "visual": {
+        "type": "scene",
+        "query": "person smartphone finance app screen night"
+      }
+    }
+  ]
+}
