@@ -1,0 +1,75 @@
+{
+  "slug": "kira-geliri-var-diye-kazaniyor-musun-gercekten-m",
+  "title": "Kira Geliri Var Diye Kazanıyor musun Gerçekten?",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Kiralık ev cazip görünür ama masraflar ve enflasyon farkı hesaba girince net getiri hayal kırıklığı yaratır.",
+  "tags": [
+    "kira geliri",
+    "gayrimenkul yatırımı",
+    "enflasyon",
+    "reel getiri",
+    "ev kirası",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Kira gelirin enflasyonun önünde koşuyor sanıyorsun.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Net kira getirisi Türkiye'de yüzde iki ile üç arasında — masraflar düşünce brüt rakam yok oluyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Risk",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama enflasyon yüzde kırkken yüzde üç getiri, her yıl yüzde otuz yedi reel kayıp demek.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Konut servet göstergesidir, gelir aracı değil — reel getiri isteyen likit araçlara bakmalı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Konut",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki hangi araç kira açığını gerçekten kapatıyor? Merak ediyorsan abone ol — her gün tek net analiz burada.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
