@@ -1,0 +1,59 @@
+{
+  "slug": "enflasyon-verisi-aciklandiginda-altin-neden-hareket-eder",
+  "title": "Enflasyon Verisi Açıklandığında Altın Neden Hareket Eder?",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "ABD çekirdek enflasyon verisi Fed'in faiz kararlarını doğrudan şekillendiriyor. Bu mekanizmayı anlamak, altın ve dolar pozisyonunuzda hangi tarafta durduğunuzu gösterir.",
+  "tags": [
+    "core cpi",
+    "amerikan enflasyonu",
+    "fed faiz kararı",
+    "altın fiyatı",
+    "dolar yönü",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Amerikan enflasyon verisi açıklandı — altın ne yapacak?",
+      "visual": {
+        "type": "building",
+        "query": "Federal Reserve building Washington DC"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Enflasyon gerileyince Fed faiz indirme kararı alır — dolar zayıflar, faizsiz varlıklar öne çıkar.",
+      "visual": {
+        "type": "person",
+        "query": "Jerome Powell"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama veri beklentinin üzerinde gelirse tam tersi olur — dolar güçlenir, altın satış baskısıyla karşılaşır.",
+      "visual": {
+        "type": "concept",
+        "query": "gold price falling market red chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu yüzden veri açıklanmadan önce portföyünü kontrol et — ne tarafta olduğunu bil.",
+      "visual": {
+        "type": "concept",
+        "query": "investor checking portfolio mobile phone screen"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bir sonraki Core CPI açıklaması piyasayı nereye taşır? Abone ol — küresel verileri her gün senin paran için çözüyorum.",
+      "visual": {
+        "type": "concept",
+        "query": "financial news economic calendar data analysis screen"
+      }
+    }
+  ]
+}
