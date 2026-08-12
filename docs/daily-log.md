@@ -4,6 +4,68 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-12
+
+**Yayınlanan yazı:**  
+[İlk İşsizlik Başvuruları (Initial Jobless Claims) Nedir? Fed ve TL'ye Etkisi](/blog/ilk-issizlik-basvurulari-nedir-initial-jobless-claims)  
+Kategori: Ekonomi | Hedef sorgu: "işsizlik başvuruları nedir"
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**  
+Her Perşembe 15:30'da piyasaları sallayan veri: İlk İşsizlik Başvuruları 🇺🇸
+
+Beklentiden 10.000 bile sapsa dolar/TL anında hareket eder. Nasıl okunur? 🧵
+
+**Tweet 2:**  
+Initial Jobless Claims = Geçen hafta ilk kez işsizlik yardımı talep edenlerin sayısı.
+
+Aylık NFP'yi 4-6 hafta beklemek yerine, bu veri işgücü piyasasını HAFTADA BİR gösterir.
+
+**Tweet 3:**  
+Basit okuma tablosu:
+✅ <225.000 → güçlü işgücü → Fed faiz indirimini geciktirir → dolar güçlenir
+⚠️ 225-300k → piyasa soğuyor
+🔴 >300.000 → zayıf sinyal → Fed faiz indirebilir → dolar zayıflar → TL nefes alır
+
+**Tweet 4:**  
+Dikkat: Tek haftalık veriye takılmayın.
+
+4 haftalık hareketli ortalama, tatil/mevsimsellik gürültüsünü süzer ve gerçek trendi gösterir.
+
+**Tweet 5:**  
+Yarın Perşembe (13 Ağustos) yine bu veri açıklanıyor — PPI ile birlikte.
+
+Tam rehber → parafomo.com/blog/ilk-issizlik-basvurulari-nedir-initial-jobless-claims
+
+---
+
+### Instagram Post Metni
+
+📊 Her Perşembe 15:30'da piyasaları hareket ettiren veri
+
+ABD'de geçen hafta kaç kişi işsizlik yardımı için başvurdu?
+
+Bu basit soru dolara, tahvil faizine ve dolaylı olarak TL'ye yansıyor.
+
+📌 <225.000 → Fed faiz indirim ihtimali düşer, dolar güçlenir
+📌 >300.000 → Piyasa zayıf okur, Fed faiz indirebilir
+
+⚡ Yarın (13 Ağustos) yeni veri açıklanıyor. Hazır olmak için linkteki yazıyı oku!
+
+#yatırım #ekonomi #dolar #tl #fed #işsizlik #piyasalar #parafomo #finans #bilinçliyatırımcı
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **Thread'i X'te paylaş** — özellikle finans/ekonomi hesaplarını tag'le, yarın açıklanacak veriye atıfla zaman uyumlu.
+2. **Instagram post'unu yayınla** — görseli profil bağlantısına yönlendir; story'de "yarın bu veri açıklanıyor" diye hatırlatma yap.
+
+---
+
 ## 2026-08-11 (İkinci Yayın)
 
 **Yayınlanan yazı:**

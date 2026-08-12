@@ -1,0 +1,59 @@
+{
+  "slug": "evin-3-kat-oldu-ama-dolar-neyi-soyluyor",
+  "title": "Evin 3 Kat Oldu, Ama Dolar Neyi Söylüyor?",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Konut fiyatları TL'de 3 kat artmış görünüyor. Ama dolar ya da altın cinsinden hesaplayınca tablo bambaşka çıkıyor.",
+  "tags": [
+    "gayrimenkul",
+    "konut yatırımı",
+    "enflasyon",
+    "dolar",
+    "türk lirası",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "3 katlık artış, ama evin değeri düştü.",
+      "visual": {
+        "type": "concept",
+        "query": "apartment building real estate price chart decline"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2020'de 500 bin TL'ye alınan bir daire bugün 1.5 milyona satılıyor. Kağıt üzerinde harika görünüyor.",
+      "visual": {
+        "type": "concept",
+        "query": "istanbul residential apartment building modern"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama dolar aynı dönemde sekizden otuz sekize çıktı. O dairenin dolar değeri yaklaşık yüzde 37 eridi.",
+      "visual": {
+        "type": "concept",
+        "query": "dollar turkish lira exchange rate falling chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gayrimenkulü yalnız TL ile ölçme. Dolar ya da gram altın cinsinden hesapla; gerçek tablo o zaman görünür.",
+      "visual": {
+        "type": "concept",
+        "query": "real estate investment gold dollar comparison calculator"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Başka hangi 'kazancın' aslında eritildiğini görmek istersen kanalda kal. Abone ol — her gün paranı etkileyen tek bir gerçeği, sade ve net anlatıyoruz.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification bell financial education"
+      }
+    }
+  ]
+}
