@@ -4,6 +4,72 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-12 (İkinci Yayın)
+
+**Yayınlanan yazı:**  
+[JOLTS İş İlanları Nedir? İşgücü Açığı ve Fed'e Sinyali](https://parafomo.com/blog/jolts-nedir-is-ilanlari/)  
+Kategori: Ekonomi | Hedef sorgu: "jolts nedir iş ilanları"
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**  
+Fed'in faiz kararında NFP'nin yanı başında durduğu ama çoğunun adını bile bilmediği veri: JOLTS 📊
+
+İş ilanı sayısı + istifa oranı birlikte enflasyonun geleceğini şifreler. Nasıl okunur? 🧵
+
+**Tweet 2:**  
+JOLTS = Job Openings and Labor Turnover Survey
+
+ABD'de her ay kaç pozisyon boş bekliyor?
+Kaç kişi gönüllü istifa etti?
+Kaç kişi kovuldu?
+
+Bu 3 soru, Fed'in "işgücü piyasası sıkı mı?" sorusunun cevabı.
+
+**Tweet 3:**  
+Neden önemli?
+
+İş ilanı ↑ → Eleman bulunmuyor → Ücret artışı → Enflasyon → Fed faiz indirmiyor → Dolar güçlü → TL baskı altında
+
+İş ilanı ↓ → Talep soğuyor → Ücret baskısı azalıyor → Fed pivot kapısı aralanıyor
+
+**Tweet 4:**  
+Takip edilmesi gereken iki alt kalem:
+
+1. 📋 İş ilanı sayısı (seviye + beklenti sapması)
+2. 🚪 İstifa oranı — çalışanlar ancak daha iyi iş bulacaklarına eminlerse ayrılır = güven barometresi
+
+**Tweet 5:**  
+Tam rehber (Beveridge Eğrisi nedir? NFP ile farkı ne? Türk yatırımcıya etkisi?) → parafomo.com/blog/jolts-nedir-is-ilanlari/
+
+---
+
+### Instagram Post Metni
+
+📋 ABD'de kaç iş pozisyonu boş bekliyor?
+
+Bu sorunun cevabı JOLTS verisi — ve Fed faiz kararını doğrudan etkiliyor!
+
+✅ İş ilanı yüksekse → Dolar güçlenir, TL baskı altında
+🔻 İş ilanı düşüyorsa → Fed gevşeyebilir, TL nefes alır
+
+İstifa oranı da kritik: Çalışanlar ancak daha iyi iş bulacaklarına eminlerse işten ayrılır. Bu da ücret baskısının barometresi.
+
+👉 JOLTS nedir, nasıl okunur, sizi nasıl etkiler? Linkte tam rehber!
+
+#yatırım #ekonomi #dolar #tl #fed #işpiyasası #istihdam #piyasalar #parafomo #finans #jolts #bilinçliyatırımcı
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **Thread'i X'te paylaş** — JOLTS verisi genellikle ayın 2. haftası Salı günü açıklanır; gelecek JOLTS tarihine atıfla paylaşım daha fazla ilgi çeker.
+2. **Instagram post'unu yayınla** — "Fed ne zaman faiz indirir?" sorusunu soran kesimlere hedefle; story'de "bu veri Fed'i ne zaman harekete geçirir?" sorusunu sor.
+
+---
+
 ## 2026-08-12
 
 **Yayınlanan yazı:**  
