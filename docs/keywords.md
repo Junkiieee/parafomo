@@ -55,7 +55,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Carry trade nedir? Düşük faizli dövizden kazanmanın mantığı ve riskleri — `Ekonomi` — hedef: "carry trade nedir"
 - [x] ABD 10 yıllık tahvil faizi nedir? Küresel piyasaların barometresi ve TL'ye etkisi — `Ekonomi` — hedef: "abd 10 yıllık tahvil faizi nedir"
 - [x] Michigan Tüketici Güven Endeksi nedir? Tüketici duyarlılığı ve Fed'e etkisi — `Ekonomi` — hedef: "michigan tüketici güven endeksi nedir"
-- [ ] İlk İşsizlik Başvuruları (Initial Jobless Claims) nedir? İşgücü piyasası ve Fed etkisi — `Ekonomi` — hedef: "işsizlik başvuruları nedir"
+- [x] İlk İşsizlik Başvuruları (Initial Jobless Claims) nedir? İşgücü piyasası ve Fed etkisi — `Ekonomi` — hedef: "işsizlik başvuruları nedir"
 - [ ] JOLTS İş İlanları (Job Openings) nedir? İşgücü açığı ve Fed'e sinyali — `Ekonomi` — hedef: "jolts nedir iş ilanları"
 - [ ] VIX (Korku Endeksi) nedir? Borsa volatilitesi nasıl okunur? — `Ekonomi` — hedef: "vix nedir korku endeksi"
 - [ ] ABD Konut Başlangıçları (Housing Starts) nedir? İnşaat verisi ekonomiye nasıl yansır? — `Ekonomi` — hedef: "housing starts nedir"
@@ -165,3 +165,4 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Fed Faiz Kararı Sonrası Piyasalar Nasıl Tepki Verir? 48 Saat Rehberi — `fed-faiz-karari-sonrasi-piyasa-tepkisi` (GSC fırsatı: "fed faiz kararı sonucu" + "fed faiz kararı piyasaları nasıl etkiler"; Fed kararı üçlüsünü tamamlayan, karar-sonrası 48 saat rehberi)
 - [x] Reel Faiz Nedir? Enflasyona Göre Gerçek Getirinizi Hesaplayın — `reel-faiz-nedir` (yeni evergreen ekonomi; "reel faiz nedir" sorgusu; mevduat+enflasyon+TCMB+tahvil cluster'ını tamamlayan temel kavram yazısı)
 - [x] PPI Nedir? Üretici Fiyat Endeksi ve Fed Faizine Etkisi — `ppi-nedir-uretici-fiyat-endeksi` (takvim: 13 Ağustos 2026 ABD PPI açıklaması; CPI/PCE/FOMC cluster'ını tamamlayan öncü enflasyon göstergesi; "PPI nedir" / "üretici fiyat endeksi nedir" sorguları)
+- [x] İlk İşsizlik Başvuruları (Initial Jobless Claims) Nedir? Fed ve TL'ye Etkisi — `ilk-issizlik-basvurulari-nedir-initial-jobless-claims` (backlog: evergreen ekonomi; "işsizlik başvuruları nedir" / "initial jobless claims nedir" sorguları; haftalık Perşembe verisi; NFP+Fed faiz cluster'ını tamamlayan öncü gösterge)
