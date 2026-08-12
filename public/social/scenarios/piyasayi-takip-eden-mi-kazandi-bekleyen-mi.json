@@ -1,0 +1,145 @@
+{
+  "slug": "piyasayi-takip-eden-mi-kazandi-bekleyen-mi",
+  "title": "Piyasayı Takip Eden mi Kazandı, Bekleyen mi?",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "BIST 100 endeksine 100 bin TL yatırıp 3 yıl dokunmayanın yaklaşık %64 kazandığı backtest. Piyasayı aktif takip etmek çoğu zaman getiriyi artırmıyor, aksine satış zamanlamayı bozuyor.",
+  "tags": [
+    "BIST100",
+    "borsa",
+    "endeks fonu",
+    "pasif yatırım",
+    "borsa getirisi",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "Piyasayı takip etmek seni zenginleştirmiyor.",
+      "visual": {
+        "type": "concept",
+        "query": "investor watching multiple stock market screens stressed"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2023'te 100 bin TL'yi BIST 100'e koyup 3 yıl hiç bakmamak yeterliydi.",
+      "visual": {
+        "type": "concept",
+        "query": "calm relaxed person simple investment decision"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama sürekli haber okuyan, grafiğe bakan yatırımcı sattı — korku her düşüşte oyunu bozuyor.",
+      "visual": {
+        "type": "concept",
+        "query": "investor panic selling market crash fear"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "100 bin TL yaklaşık 164 bin 423 liraya dönmüş; yüzde 64 getiriyi alanlar bekleyenler oldu.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "BIST 100",
+          "unit": "",
+          "points": [
+            8334.9,
+            7514.1,
+            7948.6,
+            7470.2,
+            8496.7,
+            9193.7,
+            9142.4,
+            10045.7,
+            10400.5,
+            10647.9,
+            10638.6,
+            9833.2,
+            9665.8,
+            8863.9,
+            9652.0,
+            9830.6,
+            10004.4,
+            9658.7,
+            9659.5,
+            9078.4,
+            9019.6,
+            9948.5,
+            10743.2,
+            11288.1,
+            11012.1,
+            10971.5,
+            10898.7,
+            11261.5,
+            13838.3,
+            13717.8,
+            12791.0,
+            14442.6,
+            13662.8,
+            14121.8,
+            13458.1,
+            13779.4,
+            13704.52
+          ],
+          "x": [
+            "08/23",
+            "09/23",
+            "10/23",
+            "11/23",
+            "12/23",
+            "01/24",
+            "02/24",
+            "03/24",
+            "04/24",
+            "05/24",
+            "06/24",
+            "07/24",
+            "08/24",
+            "09/24",
+            "10/24",
+            "11/24",
+            "12/24",
+            "01/25",
+            "02/25",
+            "03/25",
+            "04/25",
+            "05/25",
+            "06/25",
+            "07/25",
+            "08/25",
+            "09/25",
+            "10/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "02/26",
+            "03/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26"
+          ],
+          "amount": 100000,
+          "end_value": 164423,
+          "pct": 64
+        }
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bugün hangi araç bekleyeni ödüllendiriyor? Her sabah 60 saniyede tek net cevap için abone ol.",
+      "visual": {
+        "type": "concept",
+        "query": "youtube subscribe notification bell phone"
+      }
+    }
+  ]
+}
