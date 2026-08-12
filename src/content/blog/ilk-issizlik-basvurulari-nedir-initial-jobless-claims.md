@@ -17,6 +17,23 @@ faq:
     a: "Initial claims, o hafta ilk kez işsizlik yardımı talep edenleri sayar ve yeni işten çıkarmaları gösterir. Continuing claims ise yardım almaya devam edenleri sayar; işsizlerin ne kadar sürede iş bulduğunu görmek için ikincisi izlenir."
   - q: "Neden tek haftalık veri yerine 4 haftalık hareketli ortalamaya bakılır?"
     a: "Mevsimsellik, tatil haftaları ve doğal afetler gibi geçici faktörler haftalık rakamı bozabilir. 4 haftalık hareketli ortalama bu gürültüyü temizleyerek gerçek trendi daha güvenilir biçimde gösterir."
+shorts:
+  - "Her Perşembe açıklanan bu veri neden TL'yi etkiler?"
+  - "ABD Çalışma Bakanlığı her Perşembe o hafta ilk kez işsiz kalan Amerikalıların sayısını yayımlar; bu rakam piyasalara anında yansır."
+  - "Profesyoneller tek haftaya değil dört haftalık hareketli ortalamaya bakar; 150-225 bin arası sağlıklı, 300 binin üstü alarm."
+  - "Beklentiden yüksek gelen rakam doları güçlendirir, tahvil faizlerini oynatır ve dolar/TL paritesini doğrudan yukarı taşır."
+  - "Peki Fed bu veriye nasıl tepki verir, faiz kararı nasıl şekillenir? Öğrenmek için kanala abone ol; parafomo.com'da her gün böyle içerikler var."
+shorts_broll:
+  - "jobless claims unemployment office queue"
+  - "wall street stock market reaction"
+  - "dollar turkish lira currency exchange"
+  - "federal reserve interest rate decision"
+shorts_visuals:
+  - "concept|weekly unemployment claims data chart"
+  - "place|US Department of Labor Washington DC"
+  - "concept|stock market chart analysis moving average"
+  - "concept|dollar turkish lira exchange rate chart"
+  - "concept|subscribe notification bell phone screen"
 ---
 
 İlk işsizlik başvuruları verisi, her Perşembe sabahı Wall Street'in nabzını tutan bir işaret fişeği gibidir. Bir hafta içinde işten çıkarılıp devlet yardımı talep eden Amerikalıların sayısı, piyasalara anında yansır — dolar güçlenir ya da zayıflar, tahvil faizleri hareket eder, dolar/TL paritesi bu habere göre şekil alır. Peki **işsizlik başvuruları nedir** ve bu rakamı nasıl doğru okumalısınız?
