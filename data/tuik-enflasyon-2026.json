@@ -1,0 +1,19 @@
+{
+  "_aciklama": "TÜİK 2026 Ulusal Veri Yayımlama Takvimi'nden TÜFE (enflasyon) haber bülteni yayım tarihleri. Veri, ilgili ayı takip eden ayın başında (genelde ~3'ü, hafta sonu/tatile denk gelirse sonraki iş günü) saat 10:00 TSİ'de açıklanır.",
+  "_kaynak": "https://www.tuik.gov.tr — Ulusal Veri Yayımlama Takvimi 2026",
+  "releaseTime": "10:00",
+  "releases": [
+    { "covers": "Aralık 2025", "date": "2026-01-05" },
+    { "covers": "Ocak 2026", "date": "2026-02-03" },
+    { "covers": "Şubat 2026", "date": "2026-03-03" },
+    { "covers": "Mart 2026", "date": "2026-04-03" },
+    { "covers": "Nisan 2026", "date": "2026-05-04" },
+    { "covers": "Mayıs 2026", "date": "2026-06-05" },
+    { "covers": "Haziran 2026", "date": "2026-07-03" },
+    { "covers": "Temmuz 2026", "date": "2026-08-03" },
+    { "covers": "Ağustos 2026", "date": "2026-09-03" },
+    { "covers": "Eylül 2026", "date": "2026-10-05" },
+    { "covers": "Ekim 2026", "date": "2026-11-03" },
+    { "covers": "Kasım 2026", "date": "2026-12-03" }
+  ]
+}

@@ -2,7 +2,7 @@
 """
 ParaFOMO — Shorts senaryosu üretici (Claude headless).
 
-Bir blog yazısını okur, `claude -p` ile konuşma diline/40-45sn'ye optimize bir
+Bir blog yazısını okur, `claude -p` ile konuşma diline/28-33sn'ye optimize bir
 YouTube Shorts senaryosu üretir ve yazının frontmatter'ına KALICI yazar:
   shorts:        [kanca, vuruş1, vuruş2, vuruş3, CTA]
   shorts_broll:  [4 İngilizce stok-video arama terimi]
@@ -72,15 +72,16 @@ KURAL: hook ve beat'in ana öznesi gerçek kişi/yer/marka ise MUTLAKA person/pl
 
 
 PROMPT = """Sen bir Türk finans kanalı (ParaFOMO) için VİRAL YouTube Shorts senaryosu yazıyorsun.
-Aşağıdaki blog yazısından 40-45 saniyelik, akıcı, KONUŞMA dilinde bir senaryo çıkar.
-İzleyiciyi İLK 2 SANİYEDE durduracak bir KANCA şart.
+Aşağıdaki blog yazısından 28-33 saniyelik (KISA ve YOĞUN), akıcı, KONUŞMA dilinde bir senaryo çıkar.
+İzleyiciyi İLK 2 SANİYEDE durduracak bir KANCA şart. Tamamlanma oranı Shorts sıralamasının #1
+sinyali: 20-35 sn videolar en yüksek tamamlanmayı alır — dolgu YOK, hedefin üstüne taşma.
 
 KANCA AÇISI: %(angle_name)s
 %(angle_guide)s
 
 Kurallar:
 - hook: ilk 2 saniyede durduran KISA cümle (en fazla 9 kelime), yukarıdaki açıya UYGUN. Merak/şaşkınlık uyandırsın; tıklama tuzağı değil, doğru.
-- beats: tam 3 madde. Her biri yazının bir ana fikrini anlatan, tek başına anlaşılır, akıcı Türkçe cümle (12-20 kelime). Kopuk ifade YOK.
+- beats: tam 3 madde. Her biri yazının bir ana fikrini anlatan, tek başına anlaşılır, akıcı Türkçe cümle (11-15 kelime — KISA tut, toplam süre 33 sn altı). Kopuk ifade YOK.
 - cta: kısa; önce ileriye dönük bir MERAK cümlesi, sonra KANALA ABONE çağrısı ("abone ol" geçsin) + kısa bir sebep. "parafomo.com" de geçsin.
 - broll: konuyla ilgili 4 adet İngilizce stok video arama terimi (yedek; örn. "stock market chart", "turkish lira money").
 - visuals: TAM 5 görsel — sırayla [hook, beat1, beat2, beat3, cta]. Her biri {"type","query"} ve o segmentin İÇERİĞİYLE ÖRTÜŞSÜN.

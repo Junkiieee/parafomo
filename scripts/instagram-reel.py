@@ -277,8 +277,12 @@ def main():
     print(f"[+] URL: {video_url}")
 
     print(f"[*] Reels container oluşturuluyor...")
+    # Kapak karesi: varsayılan İLK kare, v4 açılış punch-in zoom'unun ortasına denk
+    # gelip kanca metnini yarım/bulanık gösteriyor. Profil ızgarası kapağı IG'de
+    # profil→takip ve Reels-sekmesi tıklamasının en güçlü sürücüsü. thumb_offset ile
+    # kanca metninin TAM oturduğu ~1.3sn'lik kareyi kapak seç (punch-in'den sonra).
     cont = graph_post(f"{ig}/media", {
-        "media_type": "REELS", "video_url": video_url,
+        "media_type": "REELS", "video_url": video_url, "thumb_offset": "1300",
         "caption": caption, "share_to_feed": "true", "access_token": tok})
     if "__error__" in cont or "id" not in cont:
         print(f"HATA: container oluşmadı: {cont.get('__error__', cont)}"); return 2

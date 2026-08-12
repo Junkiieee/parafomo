@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
-import tcmb from '../../data/tcmb-2026.json';
+import tuik from '../../data/tuik-enflasyon-2026.json';
 
-type Meeting = { range: string; decisionDate: string; tsiTime: string };
-const meetings = tcmb.meetings as Meeting[];
+type Release = { covers: string; date: string };
+const releases = tuik.releases as Release[];
+const releaseTime = tuik.releaseTime as string;
 
 const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 const DOW_TR = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
@@ -14,12 +15,12 @@ const today = new Date();
 today.setHours(0, 0, 0, 0);
 const todayKey = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
 
-const rows = meetings.map((m) => {
-  const dt = new Date(m.decisionDate + 'T00:00:00');
-  const isPast = m.decisionDate < todayKey;
+const rows = releases.map((r) => {
+  const dt = new Date(r.date + 'T00:00:00');
+  const isPast = r.date < todayKey;
   const daysUntil = Math.round((dt.getTime() - today.getTime()) / 86400000);
   return {
-    ...m,
+    ...r,
     isPast,
     daysUntil,
     dowLabel: DOW_TR[dt.getDay()],
@@ -36,22 +37,26 @@ const updated = today.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long
 // FAQ schema — "ne zaman" niyetini hedefler
 const faq = [
   {
-    q: 'TCMB faiz kararı ne zaman açıklanacak?',
+    q: 'Enflasyon (TÜFE) ne zaman açıklanacak?',
     a: next
-      ? `2026'daki bir sonraki TCMB (PPK) faiz kararı ${next.dayLabel} günü (${nextCountdownText}), TSİ ${next.tsiTime} civarında açıklanacak. Karar, Para Politikası Kurulu'nun (PPK) toplantı günü duyurulur.`
-      : '2026 PPK takvimi tamamlandı. 2027 tarihleri TCMB tarafından açıklandığında bu sayfaya eklenecek.',
+      ? `${next.covers} dönemine ait TÜFE (enflasyon) verisi ${next.dayLabel} günü (${nextCountdownText}), saat TSİ ${releaseTime}'da TÜİK tarafından açıklanacak. TÜİK enflasyon verisini genellikle ilgili ayı takip eden ayın başında (~3'ü) yayımlar.`
+      : '2026 enflasyon yayım takvimi tamamlandı. 2027 tarihleri TÜİK Ulusal Veri Yayımlama Takvimi ile açıklandığında bu sayfaya eklenecek.',
   },
   {
-    q: 'Merkez Bankası yılda kaç kez faiz kararı verir?',
-    a: 'TCMB Para Politikası Kurulu (PPK) 2026 yılında 8 kez toplanır — genellikle ayda bir, Ağustos ayı hariç. Faiz kararı her toplantının aynı günü, TSİ 14:00 civarında açıklanır.',
+    q: 'TÜİK enflasyon verisini saat kaçta açıklıyor?',
+    a: `TÜİK, TÜFE (Tüketici Fiyat Endeksi) haber bültenini yayım günü sabahı saat ${releaseTime} (TSİ) itibarıyla resmi sitesinde yayımlar. Aynı saatte Yİ-ÜFE (üretici fiyatları) verisi de açıklanır.`,
   },
   {
-    q: 'PPK toplantı özeti ne zaman yayımlanır?',
-    a: 'Kararın gerekçesini ayrıntılandıran PPK toplantı özeti, faiz kararından yaklaşık beş iş günü sonra TCMB’nin resmi sitesinde yayımlanır. Özet, kurulun gelecek adımlarına dair ipuçları taşıdığı için piyasalarca yakından izlenir.',
+    q: 'Enflasyon her ayın kaçında açıklanıyor?',
+    a: 'Enflasyon verisi genellikle her ayın ilk günlerinde, çoğunlukla 3’ünde açıklanır. Bu tarih hafta sonuna ya da resmi tatile denk gelirse yayım, sonraki ilk iş gününe kayar. Kesin tarihler her yıl başında TÜİK’in Ulusal Veri Yayımlama Takvimi ile önceden ilan edilir.',
   },
   {
-    q: 'TCMB faiz kararı paranı nasıl etkiler?',
-    a: 'Faiz artışı mevduat getirisini ve kredi maliyetini yükseltir, TL’ye değer kazandırma yönünde baskı yapar; faiz indirimi tersi etki yaratır — krediler ucuzlar, mevduat getirisi düşer, döviz ve altına talep artabilir. Karar ayrıca borsayı ve tahvil faizlerini doğrudan etkiler.',
+    q: 'TÜFE ile Yİ-ÜFE arasındaki fark nedir?',
+    a: 'TÜFE (Tüketici Fiyat Endeksi) hanelerin satın aldığı mal ve hizmet sepetindeki fiyat değişimini — yani vatandaşın hissettiği enflasyonu — ölçer. Yİ-ÜFE (Yurt İçi Üretici Fiyat Endeksi) ise üreticilerin fiyatlarındaki değişimi ölçer ve gelecekteki tüketici enflasyonuna dair öncü sinyal verir. İkisi aynı gün açıklanır.',
+  },
+  {
+    q: 'Enflasyon verisi piyasaları nasıl etkiler?',
+    a: 'Beklentiden yüksek enflasyon, TCMB’nin faizi daha uzun süre yüksek tutacağı beklentisini güçlendirir; bu TL mevduatını cazip kılarken kredi maliyetini artırır. Beklentiden düşük enflasyon ise faiz indirimi ihtimalini öne çeker. Veri ayrıca memur/emekli maaş zamları ve kira artış oranı gibi birçok kalemi doğrudan belirlediği için geniş kesimi ilgilendirir.',
   },
 ];
 
@@ -67,17 +72,17 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title="TCMB Faiz Kararı Takvimi 2026 — Merkez Bankası PPK Toplantı Tarihleri"
-  description="2026 TCMB (Merkez Bankası) faiz kararı takvimi: tüm PPK toplantı tarihleri ve TSİ açıklama saatleri. Bir sonraki Merkez Bankası faiz kararına kaç gün kaldığını gör."
+  title="Enflasyon Ne Zaman Açıklanacak? 2026 TÜİK TÜFE Takvimi"
+  description="2026 TÜİK enflasyon (TÜFE) açıklama takvimi: her ayın verisi hangi gün ve saat kaçta açıklanacak. Bir sonraki enflasyon verisine kaç gün kaldığını gör."
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <section class="container fk-hero">
     <span class="eyebrow"><span class="pulse"></span> Canlı Takvim</span>
-    <h1>TCMB Faiz Kararı Takvimi 2026</h1>
+    <h1>Enflasyon Ne Zaman Açıklanacak? 2026 Takvimi</h1>
     <p class="lede soft">
-      Türkiye Cumhuriyet Merkez Bankası'nın (TCMB) 2026 yılındaki tüm Para Politikası Kurulu (PPK)
-      faiz kararı tarihleri ve Türkiye saatiyle (TSİ) açıklama saatleri — tek sayfada.
+      TÜİK'in 2026 yılında her ay TÜFE (enflasyon) verisini hangi gün ve saatte açıkladığı —
+      resmi Ulusal Veri Yayımlama Takvimi'nden, tek sayfada geri sayımla.
     </p>
 
     {next && (
@@ -87,68 +92,69 @@ const jsonLd = {
           <span class="fk-next-unit">gün</span>
         </div>
         <div class="fk-next-body">
-          <span class="fk-next-label">Sıradaki TCMB faiz kararı</span>
+          <span class="fk-next-label">Sıradaki enflasyon verisi</span>
           <span class="fk-next-date">{next.dowLabel}, {next.dayLabel}</span>
-          <span class="fk-next-time">TSİ {next.tsiTime} · Para Politikası Kurulu (PPK)</span>
+          <span class="fk-next-time">TSİ {releaseTime} · {next.covers} TÜFE</span>
         </div>
       </div>
     )}
-    <p class="fk-upd">Son güncelleme: {updated} · Kaynak: TCMB resmi PPK takvimi</p>
+    <p class="fk-upd">Son güncelleme: {updated} · Kaynak: TÜİK Ulusal Veri Yayımlama Takvimi</p>
   </section>
 
   <section class="container fk-section">
     <div class="fk-shead">
-      <h2>2026 PPK Toplantı Tarihleri</h2>
-      <span class="fk-shead-count">{meetings.length} toplantı</span>
+      <h2>2026 TÜFE Açıklama Tarihleri</h2>
+      <span class="fk-shead-count">{releases.length} veri</span>
     </div>
 
     <div class="fk-table">
       {rows.map((r) => (
-        <div class:list={['fk-row', { past: r.isPast, next: next != null && r.decisionDate === next.decisionDate }]}>
+        <div class:list={['fk-row', { past: r.isPast, next: next != null && r.date === next.date }]}>
           <span class="fk-cell-date">
-            <strong>{r.range}</strong>
-            <small>{r.dowLabel} · faiz kararı</small>
+            <strong>{r.dayLabel}</strong>
+            <small>{r.dowLabel} · {r.covers} enflasyonu</small>
           </span>
-          <span class="fk-cell-time">TSİ {r.tsiTime}</span>
+          <span class="fk-cell-time">TSİ {releaseTime}</span>
           <span class="fk-cell-status">
-            {r.isPast ? 'geçti' : next != null && r.decisionDate === next.decisionDate ? nextCountdownText : `${r.daysUntil} gün`}
+            {r.isPast ? 'açıklandı' : next != null && r.date === next.date ? nextCountdownText : `${r.daysUntil} gün`}
           </span>
         </div>
       ))}
     </div>
     <p class="fk-fine">
-      Faiz kararı PPK toplantısının aynı günü, TSİ 14:00 civarında açıklanır. Kararın gerekçesini
-      içeren toplantı özeti karardan ~5 iş günü sonra yayımlanır. Ağustos ayında toplantı yapılmaz.
-      Kesin tarih ve saatler için TCMB'nin resmi sitesini kontrol edin.
+      TÜFE (enflasyon) verisi ilgili ayı takip eden ayın başında, çoğunlukla ayın 3'ünde saat
+      TSİ {releaseTime}'da açıklanır; tarih hafta sonu veya tatile denk gelirse sonraki iş gününe kayar.
+      Aynı saatte Yİ-ÜFE (üretici fiyatları) da yayımlanır. Kesin tarihler için tuik.gov.tr'yi kontrol edin.
     </p>
   </section>
 
   <section class="container fk-info">
-    <h2>TCMB Faiz Kararı Nedir, Neden Takip Edilir?</h2>
+    <h2>Enflasyon Verisi Nedir, Neden Takip Edilir?</h2>
     <p>
-      TCMB (Türkiye Cumhuriyet Merkez Bankası), ülkenin para politikasını yürüten kurumdur. Politika
-      faizini (bir haftalık repo faizi) <strong>Para Politikası Kurulu (PPK)</strong> belirler. Bu faiz;
-      kredi ve mevduat faizlerini, döviz kurunu, enflasyon beklentisini ve borsayı doğrudan etkilediği
-      için milyonlarca hane ve yatırımcıyı yakından ilgilendirir.
+      Enflasyon, genel fiyat düzeyindeki artışı — yani paranın alım gücündeki erimeyi — ölçer.
+      Türkiye'de bu veriyi <strong>TÜİK (Türkiye İstatistik Kurumu)</strong> her ay
+      <strong>TÜFE (Tüketici Fiyat Endeksi)</strong> haber bülteniyle yayımlar. Aylık ve yıllık
+      enflasyon oranı; faiz kararlarını, maaş ve kira zamlarını, döviz ve altın talebini doğrudan
+      etkilediği için milyonlarca hane ve yatırımcı bu tarihi yakından izler.
     </p>
     <p>
-      <strong>Faiz artarsa:</strong> mevduat getirisi ve kredi maliyeti yükselir, TL görece değer kazanır.
-      <strong>Faiz inerse:</strong> krediler ucuzlar, mevduat getirisi düşer, döviz ve altına talep artabilir.
-      Bu yüzden karar günü ve öncesinde piyasalarda oynaklık genellikle artar.
+      <strong>Enflasyon beklentiden yüksek gelirse:</strong> TCMB'nin faizi yüksek tutacağı
+      beklentisi güçlenir; TL mevduatı cazipleşir, krediler pahalı kalır.
+      <strong>Beklentiden düşük gelirse:</strong> faiz indirimi ihtimali öne çıkar, borsa ve
+      faize duyarlı varlıklar olumlu tepki verebilir.
     </p>
     <p>
-      <strong>Fed ile ilişki:</strong> TCMB kararları çoğu zaman küresel para politikasıyla, özellikle ABD
-      Merkez Bankası (Fed) faiz patikasıyla birlikte okunur. İki takvimi yan yana izlemek, dolar/TL yönü
-      için daha sağlıklı bir çerçeve verir.
+      <strong>TCMB kararıyla ilişki:</strong> Enflasyon verisi, Merkez Bankası'nın Para Politikası
+      Kurulu (PPK) faiz kararlarının en önemli girdisidir. İki takvimi yan yana izlemek, faiz ve
+      kur yönü için daha sağlıklı bir çerçeve verir.
     </p>
     <div class="fk-links">
-      <a href="/blog/tcmb-faiz-karari-nasil-etkiler">TCMB Faiz Kararı Paranı Nasıl Etkiler? →</a>
-      <a href="/blog/merkez-bankasi-nedir-faiz-karari">Merkez Bankası Nedir, Faiz Kararı Nasıl Alınır? →</a>
-      <a href="/blog/faiz-nedir-ekonomiyi-nasil-etkiler">Ekonomide Faiz Nedir? →</a>
-      <a href="/blog/mevduat-faizi-nedir-vadeli-mevduat">Mevduat Faizi Nedir? Vadeli Mevduat Rehberi →</a>
-      <a href="/enflasyon-takvimi">Enflasyon (TÜFE) açıklama takvimi 2026 →</a>
-      <a href="/fed-faiz-takvimi">Fed (FOMC) faiz kararı takvimi 2026 →</a>
-      <a href="/ekonomik-takvim">Tüm ekonomik takvim (TCMB, NFP, TÜİK) →</a>
+      <a href="/blog/tufe-enflasyon-verisi-nasil-okunur">TÜİK Enflasyon Verisi Nasıl Okunur? →</a>
+      <a href="/blog/tufe-sepeti-nedir-enflasyon-nasil-hesaplanir">TÜFE Sepeti Nedir? Enflasyon Nasıl Hesaplanır? →</a>
+      <a href="/blog/enflasyondan-nasil-korunur">Enflasyondan Korunmak İçin Para Nereye Yatırılır? →</a>
+      <a href="/blog/reel-faiz-nedir">Reel Faiz Nedir? Enflasyona Göre Gerçek Getiri →</a>
+      <a href="/tcmb-faiz-takvimi">TCMB (Merkez Bankası) faiz kararı takvimi 2026 →</a>
+      <a href="/ekonomik-takvim">Tüm ekonomik takvim (TCMB, Fed, TÜİK) →</a>
     </div>
   </section>
 
@@ -164,8 +170,9 @@ const jsonLd = {
 
   <section class="container fk-note">
     <p>
-      Bu sayfa yalnızca bilgilendirme amaçlıdır; yatırım tavsiyesi değildir. PPK tarihleri TCMB tarafından
-      önceden ilan edilir ancak nadiren güncellenebilir; kesin tarih ve saatler için tcmb.gov.tr adresini kontrol edin.
+      Bu sayfa yalnızca bilgilendirme amaçlıdır; yatırım tavsiyesi değildir. Yayım tarihleri TÜİK
+      tarafından önceden ilan edilir ancak nadiren güncellenebilir; kesin tarih ve saatler için
+      tuik.gov.tr adresini kontrol edin.
     </p>
   </section>
 
@@ -181,7 +188,7 @@ const jsonLd = {
   .fk-hero .lede { font-size: var(--step-0); line-height: 1.5; margin: 0 0 0.9rem; }
   .fk-upd { font-size: var(--step--2); color: var(--text-muted); margin: 0.7rem 0 0; }
 
-  /* Next-decision countdown */
+  /* Next-release countdown */
   .fk-next {
     display: flex; align-items: center; gap: 1rem;
     background: var(--brand-tint); border: 1px solid var(--brand-light); border-radius: var(--radius);

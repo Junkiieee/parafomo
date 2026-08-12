@@ -110,7 +110,9 @@ FORMATS = {
 }
 
 PROMPT = """Sen bir Türk finans kanalı (ParaFOMO) için VİRAL YouTube Shorts senaryosu yazıyorsun.
-40-45 saniyelik, akıcı, KONUŞMA dilinde, izleyiciyi ilk 2 saniyede durduran bir senaryo üret.
+28-33 saniyelik (KISA ve YOĞUN), akıcı, KONUŞMA dilinde, izleyiciyi ilk 2 saniyede durduran bir
+senaryo üret. Tamamlanma oranı Shorts sıralamasının #1 sinyali: 20-35 sn videolar en yüksek
+tamamlanmayı alır; her cümle bir işe yarasın, dolgu/tekrar YOK, hedefin üstüne taşma.
 
 İZLEYİCİ: enflasyondan yorulmuş, finansı karmaşık bulan, birikimini korumak isteyen Türk.
 SES: net, dürüst, hafif iddialı bir arkadaş — abartı ve pazarlama dili YOK, güven veren sadelik var.
@@ -132,7 +134,8 @@ Kurallar:
     beat 1: kancadaki merakı DERİNLEŞTİR — neden/nasıl olduğunu, yeni bir bilgiyle aç.
     beat 2: gerilim/çelişki — "ama" ile beklenmedik bir dönüş ya da çarpıcı bir rakam getir.
     beat 3: ÖDÜL — net çıkarım + izleyicinin cebine dokunan somut sonuç/eylem.
-  Her beat 12-20 kelime, tek başına anlaşılır, akıcı Türkçe; kopuk ifade yok.
+  Her beat 11-15 kelime (KISA tut — toplam süreyi 33 sn'nin altında bırak), tek başına anlaşılır,
+  akıcı Türkçe; kopuk ifade yok.
 - SOMUT konuş: soyut laf ("faiz eriyor") yerine günlük çapa kullan (market arabası, kira, 100 bin TL,
   bir yıl önce vs bugün). Jargonu günlük dile çevir; teknik terim kullanırsan hemen sadeleştir.
 - cta: kısa. Önce ileriye dönük bir MERAK cümlesi (HER SEFERİNDE FARKLI ifade et; kalıplaşma),

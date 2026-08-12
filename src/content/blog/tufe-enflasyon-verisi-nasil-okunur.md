@@ -2,6 +2,7 @@
 title: "TÜİK Enflasyon Verisi Nasıl Okunur? TÜFE Sepeti ve Alım Gücüne Etkisi"
 description: "TÜFE nedir, TÜİK enflasyon verisi nasıl hesaplanır? 3 Temmuz açıklanacak aylık enflasyon rakamını anlamanın ve alım gücünüzü korumanın yolu."
 pubDate: 2026-06-30
+updatedDate: 2026-08-12
 category: "Ekonomi"
 tags: ["tüfe nedir", "tüik enflasyon", "enflasyon verisi", "alım gücü", "türkiye enflasyon", "tcmb faiz"]
 readingTime: 8
@@ -30,7 +31,7 @@ shorts_broll:
   - "turkish lira coins and banknotes"
 ---
 
-3 Temmuz sabahı saat 10:00'da TÜİK, Haziran 2026 enflasyon rakamını açıklıyor. Bu sayı cebinizdeki alım gücünü, TCMB'nin faiz kararını ve yatırım araçlarınızın reel getirisini doğrudan şekillendiriyor. **TÜFE nedir**, nasıl okunur ve bu veri sizi somut olarak nasıl etkiliyor? Adım adım açıklıyoruz.
+3 Temmuz sabahı saat 10:00'da TÜİK, Haziran 2026 enflasyon rakamını açıklıyor. Bu sayı cebinizdeki alım gücünü, TCMB'nin faiz kararını ve yatırım araçlarınızın reel getirisini doğrudan şekillendiriyor. **TÜFE nedir**, nasıl okunur ve bu veri sizi somut olarak nasıl etkiliyor? Adım adım açıklıyoruz. (Sıradaki verinin tam olarak ne zaman açıklanacağını görmek isterseniz: [2026 enflasyon açıklama takvimi](/enflasyon-takvimi).)
 
 ## TÜFE Nedir? TÜİK Enflasyonu Nasıl Hesaplar?
 

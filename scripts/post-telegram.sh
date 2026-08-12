@@ -27,8 +27,9 @@ if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
 fi
 
 # --- En yeni yayınlanan yazıyı daily-log.md'den çek ---
-# Satır biçimi:  **Yayınlanan yazı:** [Başlık](/blog/slug)
-LINE="$(grep -m1 'Yayınlanan yazı' "$LOG_FILE" 2>/dev/null)"
+# Biçim (2026-08 sonrası): "**Yayınlanan yazı:**" marker'ının ALTINDAKİ satırda
+#   [Başlık](/blog/slug)  → marker'dan sonraki ilk /blog/ satırını al.
+LINE="$(awk '/Yayınlanan yazı/{f=1;next} f&&/\/blog\//{print;exit}' "$LOG_FILE" 2>/dev/null)"
 TITLE="$(printf '%s' "$LINE" | sed -n 's/.*\[\(.*\)\](.*/\1/p')"
 SLUG="$(printf '%s' "$LINE" | sed -n 's#.*/blog/\([^)/]*\).*#\1#p')"
 if [ -z "$SLUG" ] || [ -z "$TITLE" ]; then
