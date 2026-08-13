@@ -66,6 +66,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] İngiltere GDP Nedir? Büyüme Verisi Sterlin ve Küresel Piyasalara Nasıl Etkiler? — `ingiltere-gdp-nedir-buyume-verisi` (takvim: 13 Ağustos 2026 İngiltere GDP m/m 🔴 açıklaması; BOE + İngiltere CPI cluster'ını tamamlayan büyüme rehberi; "ingiltere gdp nedir" / "ingiltere büyüme verisi" sorguları)
+
 - [x] Michigan Tüketici Güven Endeksi Nedir? Dolar ve Fed'e Etkisi — `michigan-tuketici-guven-endeksi-nedir` (yeni evergreen ekonomi; "michigan tüketici güven endeksi nedir" sorgusu; tüketici duyarlılığı + enflasyon beklentisi + Fed faiz cluster'ını tamamlayan piece; Ağustos ortası ön veri zamanlaması)
 
 - [x] ABD 10 Yıllık Tahvil Faizi Nedir? Küresel Piyasaların Barometresi — `abd-10-yillik-tahvil-faizi-nedir` (yeni evergreen ekonomi; "abd 10 yıllık tahvil faizi nedir" sorgusu; verim eğrisi + carry trade + DXY + Fed faiz cluster'ını tamamlayan piece)
