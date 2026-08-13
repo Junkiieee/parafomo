@@ -17,6 +17,23 @@ faq:
     a: "Aylık m/m önceki aya göre değişimi ölçer; piyasa için hızlı erken uyarı niteliği taşır. Çeyreklik q/q ise üç aylık kümülatif büyümeyi gösterir ve resmi resesyon tanımında kullanılır (iki ardışık negatif q/q = teknik resesyon)."
   - q: "Bank of England GDP verisini faiz kararında nasıl kullanır?"
     a: "Bank of England faiz kararlarında önce enflasyon (CPI) ve işgücü verilerini, ardından büyümeyi değerlendirir. Zayıf GDP faiz indirimini öne çekebilirken güçlü büyüme sıkılaştırıcı politikaya devam için zemin hazırlar. Tek bir veri kararı değiştirmez; eğilim önemlidir."
+shorts:
+  - "İngiltere'nin büyüme verisi neden tüm piyasaları sallıyor?"
+  - "GDP, İngiltere ekonomisinin sağlığını ölçen ve küresel piyasalara yansıyan anlık nabız veridedir."
+  - "Bank of England bu veriyi faiz kararlarında en temel girdi olarak doğrudan kullanır."
+  - "Faiz değişimi sterlini etkiler ve bu dalga Türk yatırımcısının portföyüne kadar ulaşır."
+  - "Sıradaki GDP verisi piyasaları nasıl sallayacak? Kaçırmamak için ParaFOMO'ya abone ol — tüm analizler parafomo.com'da."
+shorts_broll:
+  - "british pound sterling banknotes"
+  - "stock market economic growth chart"
+  - "global financial data screen"
+  - "currency exchange rates board"
+shorts_visuals:
+  - "concept|UK economy GDP growth financial chart screen"
+  - "concept|economic pulse health monitor global markets"
+  - "building|Bank of England"
+  - "concept|british pound currency exchange rate fluctuation"
+  - "concept|investor portfolio smartphone notification subscribe"
 ---
 
 13 Ağustos 2026'da İngiltere'nin Haziran ayı aylık GDP verisi açıklandı. Bu 🔴 yüksek etkili veri neden küresel piyasalar tarafından bu kadar yakından izleniyor? **İngiltere GDP büyüme verisi nedir**, sterline ve Türk yatırımcısının portföyüne nasıl yansır — adım adım ele alıyorum.
