@@ -4,6 +4,89 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-13 (2. Yazı)
+
+**Yayınlanan yazı:**  
+[VIX Nedir? Korku Endeksi Borsa Volatilitesini Nasıl Gösterir?](https://parafomo.com/blog/vix-nedir-korku-endeksi/)  
+Kategori: Ekonomi | Hedef sorgu: "vix nedir korku endeksi" / "korku endeksi nedir"  
+Konu: VIX seviyeleri, tarihsel kriz zirveleri, Türk yatırımcısına etkisi
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**  
+Borsa düşünce "VIX 35'e fırladı" haberleri çıkar.
+
+Peki bu korku endeksi tam olarak ne ölçüyor?
+Ve seni nasıl etkiliyor? 🧵👇
+
+**Tweet 2:**  
+VIX nedir?
+
+S&P 500 opsiyonlarına göre hesaplanan volatilite endeksi.
+Piyasanın önümüzdeki 30 günde ne kadar sert hareket edeceğini gösteriyor.
+
+Yüksek VIX = korku
+Düşük VIX = rehavet
+
+**Tweet 3:**  
+Nasıl okunur?
+
+📗 <20 → Sakin, normal piyasa
+📙 20–30 → Gergin, artan kaygı
+📕 30+ → Panik, belirgin korku
+🔴 40+ → Kriz modu
+
+Tarihsel rekor: 2008'de 89,53 🫨
+
+**Tweet 4:**  
+Türk yatırımcısını nasıl etkiliyor?
+
+VIX yükseldiğinde küresel risk iştahı düşer
+→ Gelişmekte olan piyasalardan çıkış hızlanır
+→ BIST baskı altına girebilir
+→ Dolar güçlenir, TL geriler
+
+**Tweet 5:**  
+VIX yüksekse ne yapmalısın?
+
+Panikle satmak yerine:
+✔️ Portföy çeşitlendirmeni kontrol et
+✔️ Stop-loss emirlerini gözden geçir
+✔️ Uzun vadeli stratejinden sapma
+
+VIX risk barometresi; alım/satım sinyali değil.
+
+Tam rehber → parafomo.com/blog/vix-nedir-korku-endeksi/
+
+---
+
+### Instagram Post Metni
+
+😱📉 VIX — yani "korku endeksi" — yükseldiğinde ne anlama geliyor?
+
+Borsada panik yaratan bu göstergeyi anlamak için 5 temel bilgi:
+
+1️⃣ VIX, S&P 500 opsiyonlarının volatilitesini ölçer
+2️⃣ 20 altı = sakin | 30 üstü = panik | 40+ = kriz modu
+3️⃣ 2008'de 89, COVID'de 85 — tarihsel zirveler krizlere tekabül etti
+4️⃣ Türkiye'yi dolaylı etkiler: risk iştahı ↓ → BIST baskı, dolar ↑
+5️⃣ Zıt gösterge: çok yüksek VIX dönemleri uzun vadeli fırsatlar doğurabilir
+
+Tam rehber linkte 👆
+
+#VIX #KorkuEndeksi #Borsa #Yatırım #FinansalOkuryazarlık #ParaFOMO
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **Paylaşımı yayınla:** Yukarıdaki X thread'ini ve Instagram postunu parafomo hesaplarından paylaş.
+2. **Toplulukta değer kat:** r/Turkey finansı veya ilgili bir Telegram/Facebook finans grubunda "VIX nedir, nasıl okunur?" sorusunu yanıtlar gibi yazıya link ver — spam değil, değer katarak.
+
+---
+
 ## 2026-08-13
 
 **Yayınlanan yazı:**  

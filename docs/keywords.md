@@ -57,7 +57,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Michigan Tüketici Güven Endeksi nedir? Tüketici duyarlılığı ve Fed'e etkisi — `Ekonomi` — hedef: "michigan tüketici güven endeksi nedir"
 - [x] İlk İşsizlik Başvuruları (Initial Jobless Claims) nedir? İşgücü piyasası ve Fed etkisi — `Ekonomi` — hedef: "işsizlik başvuruları nedir"
 - [x] JOLTS İş İlanları (Job Openings) nedir? İşgücü açığı ve Fed'e sinyali — `Ekonomi` — hedef: "jolts nedir iş ilanları"
-- [ ] VIX (Korku Endeksi) nedir? Borsa volatilitesi nasıl okunur? — `Ekonomi` — hedef: "vix nedir korku endeksi"
+- [x] VIX (Korku Endeksi) nedir? Borsa volatilitesi nasıl okunur? — `Ekonomi` — hedef: "vix nedir korku endeksi"
 - [ ] ABD Konut Başlangıçları (Housing Starts) nedir? İnşaat verisi ekonomiye nasıl yansır? — `Ekonomi` — hedef: "housing starts nedir"
 - [ ] Vadeli İşlem Sözleşmesi (Futures) nedir? Türev ürün rehberi — `Yatırım` — hedef: "vadeli işlem sözleşmesi nedir"
 - [ ] Opsiyon nedir? Alım ve satım opsiyonu nasıl çalışır? — `Yatırım` — hedef: "opsiyon nedir"
@@ -170,3 +170,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] İlk İşsizlik Başvuruları (Initial Jobless Claims) Nedir? Fed ve TL'ye Etkisi — `ilk-issizlik-basvurulari-nedir-initial-jobless-claims` (backlog: evergreen ekonomi; "işsizlik başvuruları nedir" / "initial jobless claims nedir" sorguları; haftalık Perşembe verisi; NFP+Fed faiz cluster'ını tamamlayan öncü gösterge)
 
 - [x] JOLTS İş İlanları Nedir? İşgücü Açığı ve Fed'e Sinyali — `jolts-nedir-is-ilanlari` (backlog: evergreen ekonomi; "jolts nedir iş ilanları" sorgusu; işgücü talebi açığı + Fed faiz + NFP cluster'ını tamamlayan piece; istifa oranı ve Beveridge Eğrisi açısı içeriyor)
+
+- [x] VIX Nedir? Korku Endeksi Borsa Volatilitesini Nasıl Gösterir? — `vix-nedir-korku-endeksi` (backlog: evergreen ekonomi; "vix nedir korku endeksi" sorgusu; verim eğrisi + Fed faiz + risk yönetimi cluster'ını tamamlayan piece; tarihsel kriz seviyeleri ve Türk yatırımcısına etkisi)
