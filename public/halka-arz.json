@@ -1,23 +1,9 @@
 {
-  "updated": "2026-08-12T18:15+00:00",
+  "updated": "2026-08-13T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 43,
+  "count": 42,
   "items": [
-    {
-      "company": "Çitlekçi Mağazacılık Gıda A.Ş.",
-      "bist_code": "CITAS",
-      "slug": "citlekci-magazacilik-gida-a-s",
-      "link": "https://halkarz.com/citlekci-magazacilik-gida-a-s/",
-      "date_text": "10-11-12 Ağustos 2026",
-      "start": "2026-08-10",
-      "end": "2026-08-12",
-      "status": "Devam Ediyor",
-      "price": "73,70 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "36.500.000 Lot",
-      "broker": "Tera Yatırım Menkul Değerler A.Ş."
-    },
     {
       "company": "Türker Vangölü Enerji Yatırım A.Ş.",
       "bist_code": "VEYAS",
@@ -439,6 +425,20 @@
       "broker": "Ziraat Yatırım Menkul Kıymetler A.Ş. İntegral Yatırım Menkul Değerler A.Ş."
     },
     {
+      "company": "Çitlekçi Mağazacılık Gıda A.Ş.",
+      "bist_code": "CITAS",
+      "slug": "citlekci-magazacilik-gida-a-s",
+      "link": "https://halkarz.com/citlekci-magazacilik-gida-a-s/",
+      "date_text": "10-11-12 Ağustos 2026",
+      "start": "2026-08-10",
+      "end": "2026-08-12",
+      "status": "Tamamlandı",
+      "price": "73,70 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "36.500.000 Lot",
+      "broker": "Tera Yatırım Menkul Değerler A.Ş."
+    },
+    {
       "company": "Quick Sigorta A.Ş.",
       "bist_code": "QUICK",
       "slug": "quick-sigorta-a-s",
@@ -577,20 +577,6 @@
       "distribution": "Eşit Dağıtım",
       "lot": "87.499.998 Lot",
       "broker": "Gedik Yatırım Menkul Değerler A.Ş. Misyon Yatırım Bankası A.Ş."
-    },
-    {
-      "company": "(Orzax) Orzaks İlaç ve Kimya San. Tic. A.Ş.",
-      "bist_code": "ORZAX",
-      "slug": "orzaks-ilac-ve-kimya-san-tic-a-s",
-      "link": "https://halkarz.com/orzaks-ilac-ve-kimya-san-tic-a-s/",
-      "date_text": "29-30 Haziran, 1 Temmuz 2026",
-      "start": "2026-06-29",
-      "end": "2026-07-01",
-      "status": "Tamamlandı",
-      "price": "69,00 TL",
-      "distribution": "Eşit Dağıtım",
-      "lot": "52.500.000 Lot",
-      "broker": "İnfo Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "Soho Giyim ve Enerji A.Ş.",
