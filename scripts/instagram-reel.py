@@ -315,6 +315,29 @@ def main():
     print(f"[+] REEL YAYINLANDI: {perma or reel_id}")
     meta["ig_reel_id"] = reel_id
     meta["ig_reel_permalink"] = perma
+
+    # Erken YORUM tohumu (2026-08-13): yeni yayınlanan Reel'e bir engagement sorusu düş.
+    # Erken yorumlar beğeniden güçlü bir erişim sinyali; hesabın kendi ilk yorumu sohbeti
+    # başlatır + izleyiciye yanıt hedefi verir. Caption'a DOKUNMAZ (açık deneyleri confound
+    # etmez — ayrı yüzey) ve link EKLEMEZ (caption'da zaten var; aşırı-link spam sinyalinden
+    # kaçın). Başarısızsa yalnızca log — yayın akışı asla kırılmaz.
+    seeds = [
+        "Sen hangisini yapıyorsun? 👇 Merak ettim, yorumda yazar mısın?",
+        "Bunu daha önce biliyor muydun? 👇 Dürüst ol 😄",
+        "Katılıyor musun, katılmıyor musun? 👇 Sebebini de yaz.",
+        "Bu videoyu kime göndermek isterdin? 👇 Etiketle.",
+    ]
+    seed = seeds[sum(ord(c) for c in args.slug) % len(seeds)]
+    try:
+        cm = graph_post(f"{reel_id}/comments", {"message": seed, "access_token": tok})
+        if "id" in cm:
+            print(f"[+] İlk yorum tohumu eklendi: {cm['id']}")
+            meta["ig_seed_comment_id"] = cm["id"]
+        else:
+            print(f"[i] İlk yorum atlandı: {cm.get('__error__', cm)}")
+    except Exception as e:
+        print(f"[i] İlk yorum atlandı (istisna): {str(e)[:80]}")
+
     json.dump(meta, open(meta_path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     return 0
 

@@ -1,0 +1,14 @@
+{
+  "_aciklama": "Konut ve iş yeri kira artışında yasal tavan olarak esas alınan 12 aylık TÜFE ortalaması (%). TÜİK her ay ~3'ünde bir önceki ayın enflasyonuyla birlikte 12 aylık ortalamayı açıklar; o ay sözleşmesi yenilenen kiralar için yasal üst sınır budur. 5 yıldan uzun süredir aynı kiracıya da aynı tavan uygulanır (eski %25 tavanı 2 Temmuz 2024'te sona erdi).",
+  "_kaynak": "TÜİK TÜFE 12 aylık ortalama; Bigpara/Uzmanpara/TEDB aylık kira artış oranı haberleri",
+  "_yasal_dayanak": "Türk Borçlar Kanunu md. 344 — konut ve çatılı iş yeri kira artışı bir önceki kira yılındaki 12 aylık TÜFE ortalamasını aşamaz.",
+  "guncelAy": "Ağustos 2026",
+  "guncelOran": 31.90,
+  "sonrakiAciklama": "2026-09-03",
+  "gecmis": [
+    { "ay": "Ağustos 2026", "oran": 31.90 },
+    { "ay": "Temmuz 2026", "oran": 32.03 },
+    { "ay": "Haziran 2026", "oran": 32.24 },
+    { "ay": "Mayıs 2026", "oran": 32.43 }
+  ]
+}

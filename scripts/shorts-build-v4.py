@@ -523,6 +523,35 @@ def make_stat_badge(text, path):
     img.save(path)
 
 
+# v4.4 (2026-08-13): mid-video SÖZEL/GÖRSEL tease-rehook kartları. v4.3 orta beat'e yalnız
+# görsel punch-in (zoom) koyuyordu; 2026 retention araştırması (aibrify retention-curve,
+# shortzly, joinbrands) "question/tease rehook" = ekranda kısa açık-döngü metniyle izleyicinin
+# 'boredom clock'unu sıfırlamayı öneriyor. Görsel zoom'la EŞ ZAMANLI kısa bir merak kartı =
+# birleşik pattern-interrupt. Slug'a göre deterministik rotasyon (video başına sabit, çeşitlilik).
+REHOOK_CARDS = ["PEKİ YA ŞU?", "AMA DUR—", "İŞTE ASIL MESELE", "BİR DE ŞUNU DÜŞÜN", "DİKKAT—"]
+
+
+def make_rehook_card(text, path):
+    """Küçük, marka renkli merak/tease kartı (mid-video sözel rehook). Konumlandırma +
+    fade animasyonu make_clip'te yapılır. Stil make_stat_badge ile tutarlı (marka dili)."""
+    probe = ImageDraw.Draw(Image.new("RGBA", (10, 10)))
+    fs = 108
+    for fs in (108, 96, 84):
+        f = fnt(SANS_B, fs)
+        if probe.textlength(text, font=f) <= 760:
+            break
+    f = fnt(SANS_B, fs)
+    tw = probe.textlength(text, font=f)
+    padx, pady = 64, 34
+    w, h = int(tw + padx * 2), int(fs + pady * 2)
+    img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([0, 0, w - 1, h - 1], radius=36, fill=(11, 16, 18, 236),
+                        outline=(*BRAND, 255), width=8)
+    d.text((w // 2, h // 2 + 4), text, font=f, fill=(*WHITE, 255), anchor="mm")
+    img.save(path)
+
+
 COUNTUP_SCRIPT = os.path.join(ROOT, "scripts", "countup-overlay.py")
 
 
@@ -653,7 +682,8 @@ def _kenburns(motion, D):
     return f"crop=w='{w}':h='{h}':x='{x}':y='{y}'"
 
 
-def make_clip(broll, audio, overlay, dur, out_clip, badge=None, motion=0, countup_dir=None):
+def make_clip(broll, audio, overlay, dur, out_clip, badge=None, motion=0, countup_dir=None,
+              rehook_card=None):
     delay = int(LEAD * 1000)
     D = f"{dur:.3f}"
     bt = LEAD          # rozet konuşma başlarken belirir
@@ -691,8 +721,19 @@ def make_clip(broll, audio, overlay, dur, out_clip, badge=None, motion=0, countu
         cu_idx = str(idx); idx += 1
         fc += (f"[{cu_idx}:v]format=rgba,setpts=PTS-STARTPTS+{cst:.2f}/TB[cu];"
                f"[vc][cu]overlay=0:0:eof_action=repeat[v];")
+    vmap = "v"
+    if rehook_card:
+        # v4.4: orta beat'te görsel punch-in ile EŞ ZAMANLI kısa tease metin kartı.
+        # ~0.15sn'de belirir, ~1.6sn'de kaybolur; merkez-üst (rozet altı, altyazı üstü).
+        inputs += ["-loop", "1", "-t", D, "-i", rehook_card]; rh_idx = str(idx); idx += 1
+        fc += (f"[{rh_idx}:v]format=rgba,fade=t=in:st=0.15:d=0.22:alpha=1,"
+               f"fade=t=out:st=1.32:d=0.30:alpha=1[rh];"
+               f"[v][rh]overlay=x=(W-w)/2:"
+               f"y='960-24*max(0\\,1-(t-0.15)/0.28)':"
+               f"enable='between(t\\,0.15\\,1.65)'[vr];")
+        vmap = "vr"
     fc += f"[{aud_idx}:a]adelay={delay}|{delay},apad=whole_dur={dur}[a]"
-    subprocess.run(["ffmpeg", "-y", *inputs, "-filter_complex", fc, "-map", "[v]", "-map", "[a]",
+    subprocess.run(["ffmpeg", "-y", *inputs, "-filter_complex", fc, "-map", f"[{vmap}]", "-map", "[a]",
                     "-t", D, "-c:v", "libx264", "-r", str(FPS), "-pix_fmt", "yuv420p",
                     "-c:a", "aac", "-b:a", "160k", "-ar", "44100", out_clip],
                    check=True, capture_output=True)
@@ -837,12 +878,22 @@ def main():
             motion = "rehook"
         else:
             motion = i
+        # v4.4: rehook beat'inde görsel punch-in ile eş zamanlı sözel tease kartı.
+        # Slug'a göre deterministik kart (video başına sabit; farklı videoda çeşitlilik).
+        rehook_card = None
+        if i == rehook_idx and not countup_dir and not is_manim:
+            rehook_card = f"{TMP}/rehook{i:02d}.png"
+            pick = sum(ord(c) for c in args.slug) % len(REHOOK_CARDS)  # stabil (hash randomize)
+            make_rehook_card(REHOOK_CARDS[pick], rehook_card)
         try:
             make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion,
-                      countup_dir=countup_dir)
+                      countup_dir=countup_dir, rehook_card=rehook_card)
         except subprocess.CalledProcessError:
             if countup_dir:   # sayaç hattı kırıldıysa asla videoyu düşürme — sayaçsız yeniden
                 print("[i] count-up'lı klip başarısız → sayaçsız yeniden kur")
+                make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion)
+            elif rehook_card:  # rehook kartı hattı kırdıysa kartsız yeniden kur (hat kırılmaz)
+                print("[i] rehook-kartlı klip başarısız → kartsız yeniden kur")
                 make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion)
             else:
                 raise
