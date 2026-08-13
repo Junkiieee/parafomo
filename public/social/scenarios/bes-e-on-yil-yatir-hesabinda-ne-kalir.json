@@ -1,0 +1,59 @@
+{
+  "slug": "bes-e-on-yil-yatir-hesabinda-ne-kalir",
+  "title": "BES'e On Yıl Yatır — Hesabında Ne Kalır?",
+  "category": "MİT",
+  "format": "myth",
+  "description": "BES'teki yüzde 25 devlet katkısı cazip görünüyor ama yönetim giderleri ve erken çıkış koşulları gerçek getiriyi önemli ölçüde değiştiriyor.",
+  "tags": [
+    "BES",
+    "bireysel emeklilik",
+    "devlet katkısı",
+    "yatırım",
+    "emeklilik tasarrufu",
+    "türkiye finans",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Devlet %25 ekliyor ama kasana geçmiyor.",
+      "visual": {
+        "type": "concept",
+        "query": "retirement savings piggy bank money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yıllık yaklaşık yüzde iki yönetim gideri var. Devlet katkısı gelirken bu kesinti sessizce gidiyor.",
+      "visual": {
+        "type": "concept",
+        "query": "money fees percentage deduction drain"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Üstelik 56 yaşından önce veya 10 yıl dolmadan çıkarsan, devlet katkısı iade ediliyor — para şartlı.",
+      "visual": {
+        "type": "concept",
+        "query": "locked vault money restricted access"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Vergi avantajı gerçek, koşulları bilerek girilirse BES anlam kazanıyor. Ama körü körüne değil.",
+      "visual": {
+        "type": "concept",
+        "query": "tax document financial planning benefit"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bu hesabı çözmeden BES'e girme. Günlük 60 saniyede net analiz için abone ol.",
+      "visual": {
+        "type": "concept",
+        "query": "person financial decision calculator desk"
+      }
+    }
+  ]
+}
