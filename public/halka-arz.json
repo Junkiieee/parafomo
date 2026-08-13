@@ -1,8 +1,8 @@
 {
-  "updated": "2026-08-13T06:15+00:00",
+  "updated": "2026-08-13T12:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 42,
+  "count": 43,
   "items": [
     {
       "company": "Türker Vangölü Enerji Yatırım A.Ş.",
@@ -45,6 +45,20 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "31.000.000 Lot",
       "broker": "Tera Yatırım Menkul Değerler A.Ş."
+    },
+    {
+      "company": "Hedef Grup Satış Dağıtım San. ve Tic. A.Ş.",
+      "bist_code": "",
+      "slug": "hedef-grup-satis-dagitim-san-ve-tic-a-s",
+      "link": "https://halkarz.com/hedef-grup-satis-dagitim-san-ve-tic-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "60.000.000 Lot",
+      "broker": "Yapı Kredi Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "Sinbo Küçük Ev Aletleri San. ve Tic. A.Ş.",
