@@ -1,0 +1,59 @@
+{
+  "slug": "abd-fabrika-fiyati-artinca-tl-neden-kayip-verir",
+  "title": "ABD Fabrika Fiyatı Artınca TL Neden Kayıp Verir?",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Çekirdek ÜFE yükselince Fed faiz indiremez, dolar güçlenir, TL baskılanır — ve bu etki doğrudan senin market sepetine yansır.",
+  "tags": [
+    "çekirdek üfe",
+    "ABD enflasyon",
+    "fed faiz",
+    "dolar tl",
+    "türk lirası",
+    "enflasyon",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "ABD fabrika verisi çıkınca TL'n neden sarsılır?",
+      "visual": {
+        "type": "building",
+        "query": "Federal Reserve building Washington"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çekirdek ÜFE, Amerikan üreticilerin maliyetini ölçer. Yükselince firmalar bu maliyeti ürün fiyatına yansıtır.",
+      "visual": {
+        "type": "scene",
+        "query": "factory production line manufacturing costs"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl etki buradan başlar: enflasyon artacak diye Fed faiz indiremez. Dolar güçlenmeye devam eder.",
+      "visual": {
+        "type": "scene",
+        "query": "interest rate decision financial chart screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Güçlü dolar TL'yi baskılar, ithalat pahalanır — yakıt, ilaç, elektronik. Market sepetine doğrudan yansır.",
+      "visual": {
+        "type": "scene",
+        "query": "supermarket shopping cart prices inflation"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki Fed ne zaman faiz indirir ve TL bundan gerçekten nefes alabilir mi? Görmek istiyorsan abone ol — her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "scene",
+        "query": "turkish lira dollar exchange rate screen"
+      }
+    }
+  ]
+}
