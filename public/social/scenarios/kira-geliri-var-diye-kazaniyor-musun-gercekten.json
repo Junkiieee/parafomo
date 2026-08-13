@@ -1,0 +1,59 @@
+{
+  "slug": "kira-geliri-var-diye-kazaniyor-musun-gercekten",
+  "title": "Kira Geliri Var Diye Kazanıyor musun Gerçekten?",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Kiralık ev cazip görünür ama masraflar ve enflasyon farkı hesaba girince net getiri hayal kırıklığı yaratır.",
+  "tags": [
+    "kira geliri",
+    "gayrimenkul yatırımı",
+    "enflasyon",
+    "reel getiri",
+    "ev kirası",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Kira gelirin enflasyonun önünde koşuyor sanıyorsun.",
+      "visual": {
+        "type": "scene",
+        "query": "istanbul apartment building rental street"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Net kira getirisi Türkiye'de yüzde iki ile üç arasında — masraflar düşünce brüt rakam yok oluyor.",
+      "visual": {
+        "type": "concept",
+        "query": "rental expense calculation paper bills cash"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama enflasyon yüzde kırkken yüzde üç getiri, her yıl yüzde otuz yedi reel kayıp demek.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation money purchasing power eroding cash"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Konut servet göstergesidir, gelir aracı değil — reel getiri isteyen likit araçlara bakmalı.",
+      "visual": {
+        "type": "concept",
+        "query": "gold stocks investment portfolio growth chart"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki hangi araç kira açığını gerçekten kapatıyor? Merak ediyorsan abone ol — her gün tek net analiz burada.",
+      "visual": {
+        "type": "concept",
+        "query": "financial growth investment return money chart"
+      }
+    }
+  ]
+}

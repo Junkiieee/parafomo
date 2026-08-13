@@ -4,6 +4,81 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-13
+
+**Yayınlanan yazı:**  
+[İngiltere GDP Nedir? Büyüme Verisi Sterlin ve Küresel Piyasalara Nasıl Etkiler?](https://parafomo.com/blog/ingiltere-gdp-nedir-buyume-verisi/)  
+Kategori: Ekonomi | Hedef sorgu: "ingiltere gdp nedir" / "ingiltere büyüme verisi"  
+Hook: 13 Ağustos 2026 İngiltere GDP m/m 🔴 açıklaması
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**  
+Bugün İngiltere büyüme verisi açıklandı 🇬🇧📊  
+GDP m/m — ve sterlin, euro, dolara karşı an be an tepki veriyor.
+
+Peki bu rakam seni neden ilgilendiriyor? 🧵
+
+**Tweet 2:**  
+İngiltere GDP nedir?
+
+Bir aylık dönemde üretilen tüm mal ve hizmetlerin toplam değeri.
+Beklentinin üzerinde → sterlin güçlenir
+Beklentinin altında → sterlin zayıflar, küresel büyüme endişesi artar
+
+**Tweet 3:**  
+İngiltere ekonomisinin %80'i hizmetler sektöründen geliyor.
+
+Finans, sigorta, perakende, sağlık...
+Bu yüzden aylık veri çok hassas: tüketici harcamaları duraksıyor mu diye bakıyoruz.
+
+**Tweet 4:**  
+Türk yatırımcısını nasıl etkiler?
+
+Doğrudan TL etkisi sınırlı ama:
+→ Sterlin zayıflarsa dolar güçlenebilir (DXY↑)
+→ DXY yükselirse gelişmekte olan piyasalar (Türkiye dahil) baskı altına girer
+→ BIST ve TL bu kanaldan etkilenebilir
+
+**Tweet 5:**  
+Aylık m/m mü çeyreklik q/q mi izlemeliyim?
+
+Piyasa tepkisi için → aylık m/m
+Resesyon teyidi için → çeyreklik q/q (iki negatif çeyrek = teknik resesyon)
+
+Tam rehber → parafomo.com/blog/ingiltere-gdp-nedir-buyume-verisi/
+
+---
+
+### Instagram Post Metni
+
+🇬🇧📊 İngiltere büyüme verisi açıklandı!
+
+GDP m/m verisi neden bu kadar önemli?
+
+✅ Beklentinin üzerinde → Sterlin güçlenir, faiz indirimi uzar
+📉 Beklentinin altında → Sterlin düşer, küresel büyüme endişesi tetiklenebilir
+
+Türk yatırımcısı için dolaylı etki:
+→ DXY yükselişi → TL ve BIST üzerinde satış baskısı
+→ Özellikle küresel "risk-off" ortamında dikkatli ol!
+
+🔍 İngiltere GDP nedir, nasıl okunur, hangi alt kalemlere dikkat edilmeli?
+👉 Linkte adım adım rehber!
+
+#ingilteredgp #buyumeverisi #sterlin #ekonomi #parafomo #yatirim #finans #döviz
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **Paylaşımı yayınla:** Yukarıdaki X thread'ini ve Instagram metnini parafomo hesaplarından paylaş (veri güncel ve zamanlı — bugün yapman önemli).
+2. **Toplulukta paylaş:** r/Turkey veya Türkiye finans Facebook/Telegram gruplarından birinde yazıyı ekonomi haberlerine ilgi duyan birine değer katacak şekilde paylaş.
+
+---
+
 ## 2026-08-12 (İkinci Yayın)
 
 **Yayınlanan yazı:**  
