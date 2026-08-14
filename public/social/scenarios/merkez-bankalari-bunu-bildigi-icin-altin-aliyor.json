@@ -1,0 +1,59 @@
+{
+  "slug": "merkez-bankalari-bunu-bildigi-icin-altin-aliyor",
+  "title": "Merkez Bankaları Bunu Bildiği İçin Altın Alıyor",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "World Gold Council verilerine göre merkez bankaları rekor düzeyde altın biriktiriyor. Bu kurumların tercihi Türk yatırımcısına ne anlatıyor?",
+  "tags": [
+    "altın",
+    "merkez bankası",
+    "gram altın",
+    "World Gold Council",
+    "yatırım",
+    "enflasyon",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Merkez bankaları 15 yılın zirvesinde altın biriktiriyor.",
+      "visual": {
+        "type": "place",
+        "query": "Federal Reserve building Washington DC"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu kurumların görevi değeri korumak — altını tam da bu yüzden seçiyorlar.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars stacked central bank"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama Türk mevduat hesabı son üç yılda enflasyonun gerisinde kaldı, her seferinde.",
+      "visual": {
+        "type": "concept",
+        "query": "bank savings deposit inflation Turkey"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kağıt para eridikçe merkez bankaları altına yöneldi. Senin 100 bin TL'n için de aynısı geçerli.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins Turkish lira savings"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Merkez bankalarının bu hamlesi ne zaman fiyata yansır, bunu da inceliyoruz. Günlük tek net analiz için hemen abone ol — her gün 60 saniye.",
+      "visual": {
+        "type": "concept",
+        "query": "gold price chart rising screen"
+      }
+    }
+  ]
+}
