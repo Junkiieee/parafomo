@@ -58,7 +58,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] İlk İşsizlik Başvuruları (Initial Jobless Claims) nedir? İşgücü piyasası ve Fed etkisi — `Ekonomi` — hedef: "işsizlik başvuruları nedir"
 - [x] JOLTS İş İlanları (Job Openings) nedir? İşgücü açığı ve Fed'e sinyali — `Ekonomi` — hedef: "jolts nedir iş ilanları"
 - [x] VIX (Korku Endeksi) nedir? Borsa volatilitesi nasıl okunur? — `Ekonomi` — hedef: "vix nedir korku endeksi"
-- [ ] ABD Konut Başlangıçları (Housing Starts) nedir? İnşaat verisi ekonomiye nasıl yansır? — `Ekonomi` — hedef: "housing starts nedir"
+- [x] ABD Konut Başlangıçları (Housing Starts) nedir? İnşaat verisi ekonomiye nasıl yansır? — `Ekonomi` — hedef: "housing starts nedir"
 - [ ] Vadeli İşlem Sözleşmesi (Futures) nedir? Türev ürün rehberi — `Yatırım` — hedef: "vadeli işlem sözleşmesi nedir"
 - [ ] Opsiyon nedir? Alım ve satım opsiyonu nasıl çalışır? — `Yatırım` — hedef: "opsiyon nedir"
 - [ ] Stagflasyon nedir? Enflasyon + durgunluk sarmalı ve yatırımcı stratejisi — `Ekonomi` — hedef: "stagflasyon nedir"
@@ -174,3 +174,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] VIX Nedir? Korku Endeksi Borsa Volatilitesini Nasıl Gösterir? — `vix-nedir-korku-endeksi` (backlog: evergreen ekonomi; "vix nedir korku endeksi" sorgusu; verim eğrisi + Fed faiz + risk yönetimi cluster'ını tamamlayan piece; tarihsel kriz seviyeleri ve Türk yatırımcısına etkisi)
 
 - [x] BOJ Nedir? Japonya Merkez Bankası Araçları ve Küresel Piyasalara Etkisi — `boj-nedir-japonya-merkez-bankasi` (GSC fırsatı: "boj nedir" — gösterim 7, sıra 11.9; kurumun tarihçesi + YCC + QQE + 2024 normalleşmesi + carry trade; mevcut "BOJ Faiz Kararı" yazısının tamamlayıcısı)
+
+- [x] ABD Konut Başlangıçları (Housing Starts) Nedir? İnşaat Verisi Ekonomiye Nasıl Yansır? — `housing-starts-nedir` (backlog: evergreen ekonomi; "housing starts nedir" / "abd konut başlangıçları" sorguları; Fed faiz + DXY + konut yatırımı cluster'ını tamamlayan öncü gösterge; 14 Ağustos 2026)

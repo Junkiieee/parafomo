@@ -4,6 +4,109 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-14 — Housing Starts
+
+**Yayınlanan yazı:**  
+[ABD Konut Başlangıçları (Housing Starts) Nedir? İnşaat Verisi Ekonomiye Nasıl Yansır?](https://parafomo.com/blog/housing-starts-nedir/)  
+Kategori: Ekonomi | Hedef sorgu: "housing starts nedir" | Slug: `housing-starts-nedir`  
+Konu: Housing Starts verisinin tanımı, alt kategoriler (Single-Family / Multi-Family), Fed faiz beklentilerine etkisi, DXY ve TL üzerindeki yansımaları, veri okuma rehberi.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**  
+Aylık bir veri var.
+ABD'de kaç evin temeli atılıyor?
+
+Bu sayı yükselince dolar güçlenir, TL baskı altına girebilir.
+
+Housing Starts nedir, nasıl okunur? 🧵👇
+
+**Tweet 2:**  
+Housing Starts = ABD'de o ay inşaata başlanan konut sayısı.
+
+ABD Nüfus Sayım Bürosu her ay ortasında açıklar.
+Her ayın 16-19. günleri arasında, Türkiye saatiyle 15:30.
+
+**Tweet 3:**  
+Neden önemli?
+
+Ev inşaatı başlayınca 15+ sektör harekete geçer:
+→ çelik, kereste, elektrik, mobilya, beyaz eşya...
+
+Konut sektörü ABD ekonomisinin %15-18'ini oluşturuyor.
+
+**Tweet 4:**  
+Fed bağlantısı:
+
+Housing Starts yükseldi → ekonomi ısınıyor → Fed faiz indiremez → dolar güçlenir → TL baskı altında.
+
+Housing Starts düştü → faiz artışı ekonomiye nüfuz ediyor → Fed yumuşayabilir → dolar zayıflar.
+
+**Tweet 5:**  
+Veriyi nasıl okursun?
+
+1. Konsensüs beklentisiyle karşılaştır
+2. Tek aile (Single-Family) kalemine bak → tüketici güveninin barometresi
+3. Building Permits ile karşılaştır → 1 ay öncü gösterge
+
+**Tweet 6:**  
+2006-2009: Housing Starts 2,3 milyondan 554.000'e çöktü.
+→ Mortgage krizinin erken uyarısıydı.
+
+2022: Fed hızlı faiz artırınca Housing Starts sert geriledi.
+→ "Sıkılaştırma çalışıyor" sinyali.
+
+**Tweet 7:**  
+Türk yatırımcısı neden izlemeli?
+
+Housing Starts → Fed beklentisi → DXY → TL.
+
+Bu zinciri anlayan, döviz pozisyonunu birkaç adım önceden yönetebilir.
+
+Tüm detaylar → parafomo.com/blog/housing-starts-nedir/
+
+---
+
+### Instagram Post Metni
+
+**Caption:**
+
+🏗️ ABD'de kaç evin temeli atıldı? Bu veri neden TL'yi etkiliyor?
+
+Housing Starts = ABD Konut Başlangıçları. Her ay ortasında açıklanan bu veri, onlarca sektörü ve Fed'in faiz kararını doğrudan etkiliyor.
+
+📌 Housing Starts yükselirse:
+✅ Ekonomi ısınıyor sinyali
+⚠️ Fed faiz indirimini geciktirebilir
+💵 Dolar güçlenir → TL baskı altında
+
+📌 Housing Starts düşerse:
+✅ Fed sıkılaştırması etkili oluyor
+🌍 Risk iştahı artar, dolar zayıflar
+📈 Gelişen piyasalar nefes alır
+
+📌 Nasıl takip edilir?
+• Her ayın 16-19. günleri, saat 15:30 TR
+• Single-Family alt kalemine özellikle bak
+• Building Permits ile birlikte oku
+
+Veri rehberini blog'da yayınladık 👆
+
+🔗 Linke bio'dan ulaş
+
+#HousingStarts #AbdKonut #FedFaiz #Dolar #TL #Ekonomi #MakroEkonomi #ParaFOMO #FinansalOkuryazarlık #YatırımTürkiye
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **Thread ve post'u yayınla:** Yukarıdaki X thread taslağını @parafomo hesabından paylaş; Instagram'da carousel veya tek görsel post olarak paylaş.
+2. **Toplulukta değer kat:** Reddit r/Turkey, Ekşi Sözlük "housing starts" veya "konut verisi" başlıklarında ya da ilgili bir finans Telegram/WhatsApp grubunda yazıyı doğrudan spam yapmadan referans göster — "bu veriyi bu şekilde okuyabiliriz" gibi bir bağlam koy.
+
+---
+
 ## 2026-08-14
 
 **Yayınlanan yazı:**  
