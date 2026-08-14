@@ -1,0 +1,75 @@
+{
+  "slug": "uzmanlar-borsayi-onerdi-kazanan-yine-altin-cikti-m",
+  "title": "Uzmanlar Borsayı Önerdi — Kazanan Yine Altın Çıktı",
+  "category": "KARŞILAŞTIRMA",
+  "format": "comparison",
+  "description": "Son 1 yılda gram altın yüzde 32 getiriyle BIST 100 ve doları geride bıraktı. Uzmanların önerisi tutmadı; elinde dolar bekleyenler en geride kaldı.",
+  "tags": [
+    "gram altın",
+    "BIST 100",
+    "dolar",
+    "yatırım karşılaştırma",
+    "altın getiri",
+    "borsa 2026",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KARŞILAŞTIRMA",
+      "spoken": "Uzmanlar borsayı önerdi, altın hepsini geçti.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Son bir yıla bak: üç araç yarıştı, sonuç sürpriz çıktı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Uzmanlar",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gram altın yüzde 32, BIST 100 yüzde 29, dolar yalnızca yüzde 15.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Elinde dolar bekleyenler hem altına hem borsaya 14-17 puan geride kaldı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bu sıralama önümüzdeki yıl değişecek mi, yoksa altın zirveyi bırakmayacak mı? Cevabı kaçırmamak için abone ol — her gün tek bir net analiz.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
