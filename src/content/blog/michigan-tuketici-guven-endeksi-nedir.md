@@ -17,6 +17,23 @@ faq:
     a: "Michigan, yaklaşık 500 kişiyle telefon/çevrimiçi anket yapar ve beklentilere daha fazla ağırlık verir; Conference Board ise 3.000 haneye posta anketi gönderir ve mevcut koşullara daha fazla odaklanır. İkisi birlikte okunduğunda daha sağlıklı bir tablo çıkar."
   - q: "Michigan verisi Türk yatırımcısını nasıl etkiler?"
     a: "Güçlü Michigan → güçlü ABD ekonomisi → Fed faiz indirmez → dolar güçlenir → dolar/TL yükselir, BIST'e dışarıdan baskı oluşabilir. Zayıf Michigan → Fed faiz indirimi beklentisi → dolar zayıflar, altın ve gelişen piyasalar nefes alır."
+shorts:
+  - "Bir ABD anketi neden dolar kurunu anında sallıyor?"
+  - "Michigan Üniversitesi her ay 500 haneye ekonomiyi nasıl hissettiklerini sorup güven endeksi çıkarıyor."
+  - "Piyasalar kesin veriye değil, ikinci Cuma açıklanan ön veriye çok daha sert tepki veriyor."
+  - "Anketin enflasyon beklentisi kısmı yükselirse Fed faiz artırır, dolar güçlenir, BIST sarsılır."
+  - "Peki Fed bu veriyle faizi gerçekten nasıl ayarlıyor? Öğrenmek istiyorsan abone ol, parafomo.com'da her gün yeni analiz var."
+shorts_broll:
+  - "consumer confidence survey interview"
+  - "Federal Reserve interest rate decision"
+  - "US dollar currency trading screen"
+  - "inflation grocery store prices rising"
+shorts_visuals:
+  - "concept|US dollar bills falling market volatility"
+  - "place|University of Michigan campus building"
+  - "concept|stock market trading screen chart"
+  - "person|Jerome Powell"
+  - "concept|finance blog website analytics screen"
 ---
 
 **Michigan Tüketici Güven Endeksi**, Türkiye piyasalarında sık konuşulmasa da dolar, altın ve BIST üzerinde haftalık etki yaratan bir ABD ekonomi göstergesidir. ABD tüketicisinin cebine ve geleceğe bakışına dair bir fotoğraf sunan bu endeks, Fed'in faiz kararlarını şekillendiren önemli verilerden biri.
