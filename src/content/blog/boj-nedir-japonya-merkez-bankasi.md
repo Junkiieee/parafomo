@@ -17,6 +17,23 @@ faq:
     a: "2024'te Japonya'da enflasyon beklentilerin üzerine çıktı, ücret artışları güçlendi ve deflasyon riski fiilen geride kaldı. BOJ, onlarca yıl süren aşırı gevşek politikadan normalleşmek için Mart 2024'te negatif faize son verdi, Temmuz 2024'te ise faizi artırdı."
   - q: "BOJ kararları Türk yatırımcısını neden etkiler?"
     a: "BOJ kararları Yen carry trade üzerinden Türkiye'yi etkiler: BOJ faiz artırınca Yen'de borçlanan yatırımcılar gelişen piyasalardaki pozisyonlarını kapatır, bu TL üzerinde baskı ve BIST'te satış dalgası yaratabilir. Küresel risk iştahını da doğrudan yönlendirir."
+shorts:
+  - "Japonya bizi etkilemez sanıyorsun — yanılıyorsun."
+  - "2024'te BOJ tek bir faiz kararıyla Nasdaq'ı yüzde üç düşürdü, BIST de sallandı."
+  - "Japonya 30 yıl sıfırın altında faiz tuttu, carry trade ile tüm dünyayı fonladı."
+  - "BOJ Tokyo borsasının yüzde yedisine sahip — hiçbir merkez bankası bunu daha önce yapmadı."
+  - "Peki BOJ bir daha faiz artırırsa dünya ne yaşar? Öğrenmek için kanala abone ol, analizler parafomo.com'da."
+shorts_broll:
+  - "bank of japan interest rate decision"
+  - "stock market crash red screen"
+  - "japanese yen carry trade forex"
+  - "central bank ETF purchase chart"
+shorts_visuals:
+  - "place|Bank of Japan"
+  - "concept|stock market crash red chart screen"
+  - "concept|carry trade yen currency global money flow"
+  - "concept|ETF portfolio stock market ownership chart"
+  - "concept|central bank interest rate decision news"
 ---
 
 2024 yılı Temmuz'unda küresel borsalar tek günde sert çöküş yaşadı. Nasdaq %3 geriledi, Tokyo borsası tarihin en büyük günlük kayıplarından birini yazdı, BIST de etkilendi. Sebep tek bir merkez bankasının aldığı bir karardı: **Bank of Japan (BOJ) faizi beklenmedik biçimde artırdı.**
