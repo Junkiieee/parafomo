@@ -4,6 +4,119 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-14
+
+**Yayınlanan yazı:**  
+[BOJ Nedir? Japonya Merkez Bankası Araçları ve Küresel Piyasalara Etkisi](https://parafomo.com/blog/boj-nedir-japonya-merkez-bankasi/)  
+Kategori: Ekonomi | Hedef sorgu: "boj nedir" (GSC: gösterim 7, sıra 11.9)  
+Konu: BOJ'un tarihçesi, YCC, QQE, negatif faiz, 2024 normalleşmesi, Türk yatırımcısına etkisi
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**  
+2024 yılında küresel borsalar tek günde çöktü.
+
+Nasdaq -%3, Tokyo -%12, BIST de vuruldu.
+
+Suçlu: Japonya Merkez Bankası (BOJ) 🧵👇
+
+**Tweet 2:**  
+BOJ nedir?
+
+Japonya'nın 1882'de kurulan merkez bankası.
+Fed'in ABD için yaptığını BOJ Japonya için yapar.
+
+Ama BOJ'u diğerlerinden FARKLI yapan şey var.
+
+**Tweet 3:**  
+30 yıl boyunca sıfır ve hatta negatif faiz uyguladı.
+
+Neden?
+
+1990'da Japonya'da büyük bir varlık balonu patladı.
+Deflasyon sarmalına girdi.
+
+BOJ faizleri dipte tutarak kurtarmaya çalıştı.
+
+**Tweet 4:**  
+Bu politika yan etkisi olmadan gelmedi.
+
+Ucuz Yen → küresel carry trade doğdu.
+
+Yatırımcılar bedavaya yakın Yen borçlandı,
+yüksek faizli piyasalara (Türkiye dahil) yatırdı.
+
+**Tweet 5:**  
+2024'te BOJ ani faiz artırdı.
+
+Carry trade pozisyonları hızla kapandı.
+Yen sert güçlendi.
+Gelişen piyasalardan para kaçtı.
+
+Türk yatırımcısı doğrudan hissetmese de dolaylı etkisi büyüktü.
+
+**Tweet 6:**  
+BOJ'un araçları Fed'den çok farklı:
+
+• YCC — tahvil faizini banda kilitleme
+• QQE — doğrudan hisse fonu alımı  
+• Negatif faiz — bankalar merkez bankasına ödüyordu
+
+Merkez bankacılığında eşi görülmemiş deneyler.
+
+**Tweet 7:**  
+2024'ten itibaren normalleşme başladı.
+
+Ama her toplantı küresel piyasaların gözü altında.
+
+BOJ ne yapacak? Yen nereye gider? Carry trade ne olur?
+
+Tüm detaylar yeni yazımızda → parafomo.com/blog/boj-nedir-japonya-merkez-bankasi/
+
+---
+
+### Instagram Post Metni
+
+**Caption:**
+
+🇯🇵 BOJ (Japonya Merkez Bankası) nedir ve neden tüm dünyayı etkiliyor?
+
+2024'te BOJ faiz artırdığında küresel borsalar çöktü. Tokyo -%12, Nasdaq -%3, BIST de etkilendi.
+
+Sebebi: 30 yıllık "sıfır faiz" politikasının yarattığı devasa carry trade mekanizması 👇
+
+📌 BOJ'un 3 eşsiz aracı:
+✅ YCC — tahvil faizini sıfırda kilitleme
+✅ QQE — doğrudan hisse senedi fonu alımı
+✅ Negatif faiz — bankalara ödeme sistemi
+
+📌 Türk yatırımcısına etkisi:
+• BOJ sıkılaşırsa → Yen güçlenir
+• Yen güçlenirse → gelişen piyasalardan para kaçar
+• TL baskı altına girebilir, BIST dalgalanabilir
+
+📌 Takip edilecek göstergeler:
+• USD/JPY kuru
+• VIX endeksi
+• 10 yıllık Japon tahvil faizi
+
+2024-2026 normalleşme sürecini ve YCC/QQE'yi sade dille anlattık.
+
+🔗 Linke bio'dan ulaş 👆
+
+#BojNedir #JaponyaMerkezBankası #BOJ #Yen #CarryTrade #Ekonomi #FinansalOkuryazarlık #ParaFOMO #Yatırım #KüreselEkonomi
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **X thread'ini yayınla** — yukarıdaki 7 tweet'i sırayla yayınla (veya Thread Reader ile tek seferde). Finans gündemine duyarlı saat: Türkiye sabahı 09:00-10:00 arası iyi.
+2. **Instagram'da paylaş** — caption'ı yapıştır, kapak görselini (`public/covers/boj-nedir-japonya-merkez-bankasi.jpg`) veya sosyal kartı (`public/social/boj-nedir-japonya-merkez-bankasi.png`) ekle, link bio'ya pin'le.
+
+---
+
 ## 2026-08-13 (2. Yazı)
 
 **Yayınlanan yazı:**  
