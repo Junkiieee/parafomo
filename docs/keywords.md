@@ -172,3 +172,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] JOLTS İş İlanları Nedir? İşgücü Açığı ve Fed'e Sinyali — `jolts-nedir-is-ilanlari` (backlog: evergreen ekonomi; "jolts nedir iş ilanları" sorgusu; işgücü talebi açığı + Fed faiz + NFP cluster'ını tamamlayan piece; istifa oranı ve Beveridge Eğrisi açısı içeriyor)
 
 - [x] VIX Nedir? Korku Endeksi Borsa Volatilitesini Nasıl Gösterir? — `vix-nedir-korku-endeksi` (backlog: evergreen ekonomi; "vix nedir korku endeksi" sorgusu; verim eğrisi + Fed faiz + risk yönetimi cluster'ını tamamlayan piece; tarihsel kriz seviyeleri ve Türk yatırımcısına etkisi)
+
+- [x] BOJ Nedir? Japonya Merkez Bankası Araçları ve Küresel Piyasalara Etkisi — `boj-nedir-japonya-merkez-bankasi` (GSC fırsatı: "boj nedir" — gösterim 7, sıra 11.9; kurumun tarihçesi + YCC + QQE + 2024 normalleşmesi + carry trade; mevcut "BOJ Faiz Kararı" yazısının tamamlayıcısı)
