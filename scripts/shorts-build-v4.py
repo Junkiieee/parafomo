@@ -683,11 +683,15 @@ def _kenburns(motion, D):
 
 
 def make_clip(broll, audio, overlay, dur, out_clip, badge=None, motion=0, countup_dir=None,
-              rehook_card=None):
+              rehook_card=None, opening=False):
     delay = int(LEAD * 1000)
     D = f"{dur:.3f}"
     bt = LEAD          # rozet konuşma başlarken belirir
     BY = 500           # rozet üst-orta; altyazıların üstünde
+    # v5.1 (2026-08-14): açılış (hook) klibinde from-black fade'i KES — 2026 Shorts verisi:
+    # %85 sessiz izleniyor + swipe kararı ilk 1-3sn (cliff %30-50 düşüş). İlk kare tam parlak
+    # sahne + kanca metni = maksimum swipe-stop. Sonraki sahneler yumuşak 0.20s geçişini korur.
+    fdin = "" if opening else "fade=t=in:st=0:d=0.20,"
     inputs = []
     idx = 1            # [0] = video (broll/color)
     if broll:
@@ -696,10 +700,10 @@ def make_clip(broll, audio, overlay, dur, out_clip, badge=None, motion=0, countu
         fc = (f"[0:v]scale=1296:2304:force_original_aspect_ratio=increase,crop=1296:2304,"
               f"{_kenburns(motion, D)},scale=1080:1920,setsar=1,fps=30,"
               f"eq=saturation=1.06:brightness=-0.05:contrast=1.07,vignette=PI/4.5,"
-              f"fade=t=in:st=0:d=0.20[bg];")
+              f"{fdin}null[bg];")
     else:
         inputs += ["-f", "lavfi", "-t", D, "-i", "color=c=0x14323C:s=1080x1920"]
-        fc = "[0:v]fps=30,fade=t=in:st=0:d=0.20[bg];"
+        fc = f"[0:v]fps=30,{fdin}null[bg];"
     inputs += ["-i", audio]; aud_idx = str(idx); idx += 1
     inputs += ["-loop", "1", "-t", D, "-i", overlay]; ov_idx = str(idx); idx += 1
     # count-up varken bileşik video ara-etiket [vc]'ye yazılır (sonra sayaç bindirilir).
@@ -885,16 +889,17 @@ def main():
             rehook_card = f"{TMP}/rehook{i:02d}.png"
             pick = sum(ord(c) for c in args.slug) % len(REHOOK_CARDS)  # stabil (hash randomize)
             make_rehook_card(REHOOK_CARDS[pick], rehook_card)
+        opening = (i == 0)
         try:
             make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion,
-                      countup_dir=countup_dir, rehook_card=rehook_card)
+                      countup_dir=countup_dir, rehook_card=rehook_card, opening=opening)
         except subprocess.CalledProcessError:
             if countup_dir:   # sayaç hattı kırıldıysa asla videoyu düşürme — sayaçsız yeniden
                 print("[i] count-up'lı klip başarısız → sayaçsız yeniden kur")
-                make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion)
+                make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion, opening=opening)
             elif rehook_card:  # rehook kartı hattı kırdıysa kartsız yeniden kur (hat kırılmaz)
                 print("[i] rehook-kartlı klip başarısız → kartsız yeniden kur")
-                make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion)
+                make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion, opening=opening)
             else:
                 raise
         clips.append(clip)

@@ -87,6 +87,7 @@ def build_caption(date_label):
     body = (f"📊 Güncel altın fiyatları · {date_label}\n"
             "Gram, çeyrek, yarım, tam, cumhuriyet 👆\n"
             f"{question}\n"
+            "🪙 Altınım kaç TL eder? → parafomo.com/altin-hesaplama\n"
             "Detaylı analizler → parafomo.com")
     return "\n\n".join([comment, body, HASHTAGS])
 
