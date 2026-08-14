@@ -1,0 +1,167 @@
+{
+  "slug": "5-yilda-12-kat-gram-altinda-5-000-tl-nin-hesabi",
+  "title": "5 Yılda 12 Kat: Gram Altında 5.000 TL'nin Hesabı",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "2021'de 5.000 TL'yi gram altına yatırsaydın bugün yaklaşık 63.210 TL olurdu — yaklaşık %1.164 getiri ile banka mevduatının çok ötesinde bir sonuç.",
+  "tags": [
+    "gram altın",
+    "yatırım",
+    "TL",
+    "altın getirisi",
+    "enflasyon",
+    "birikim",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "5.000 TL gram altında 5 yılda 63.000 lira oldu.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins stacked shiny"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2021'de gram altın yaklaşık 550 TL'ydi; 5.000 TL ile 9 gram alabilirdin.",
+      "visual": {
+        "type": "concept",
+        "query": "Turkish lira banknotes savings cash wallet"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama o 9 gram bugün yaklaşık 63.210 TL; dönem getirisi yaklaşık %1.164.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "Gram Altın",
+          "unit": "TL",
+          "points": [
+            537.54,
+            724.13,
+            780.89,
+            778.06,
+            856.7,
+            926.79,
+            1005.71,
+            1040.88,
+            1028.73,
+            1018.62,
+            992.68,
+            1046.35,
+            1092.91,
+            1110.4,
+            1230.92,
+            1318.8,
+            1644.1,
+            1657.79,
+            1690.34,
+            1711.09,
+            1678.99,
+            1896.39,
+            1957.39,
+            1999.33,
+            2052.63,
+            2307.68,
+            2375.41,
+            2444.62,
+            2477.0,
+            2658.5,
+            2737.99,
+            2962.34,
+            3241.97,
+            3330.61,
+            3865.35,
+            4166.22,
+            4218.05,
+            4351.41,
+            4643.36,
+            5189.66,
+            5762.96,
+            5973.38,
+            6585.85,
+            6802.65,
+            6838.62,
+            6143.79,
+            6216.19,
+            6795.63
+          ],
+          "x": [
+            "09/21",
+            "11/21",
+            "12/21",
+            "01/22",
+            "02/22",
+            "03/22",
+            "04/22",
+            "06/22",
+            "07/22",
+            "08/22",
+            "09/22",
+            "11/22",
+            "12/22",
+            "02/23",
+            "03/23",
+            "04/23",
+            "05/23",
+            "06/23",
+            "07/23",
+            "08/23",
+            "09/23",
+            "11/23",
+            "12/23",
+            "01/24",
+            "02/24",
+            "03/24",
+            "04/24",
+            "05/24",
+            "06/24",
+            "07/24",
+            "08/24",
+            "11/24",
+            "01/25",
+            "02/25",
+            "03/25",
+            "04/25",
+            "05/25",
+            "07/25",
+            "08/25",
+            "09/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26"
+          ],
+          "amount": 5000,
+          "end_value": 63210,
+          "pct": 1164
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Banka mevduatında bekleyen eridi; altında kalan ise yaklaşık 12 katına çıktı.",
+      "visual": {
+        "type": "concept",
+        "query": "bank vault money inflation erosion"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Gelecek 5 yılda hangi araç öne çıkar? Cevabı kaçırmamak için abone ol — her gün 60 saniyede net bir analiz.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bar investment wealth secure"
+      }
+    }
+  ]
+}
