@@ -4,6 +4,88 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-15 — 2026 Fed Toplantı Tarihleri
+
+**Yayınlanan yazı:**  
+[2026 Fed Toplantı Tarihleri: FOMC Takvimi ve Faiz Beklentileri](https://parafomo.com/blog/2026-fed-toplanti-tarihleri/)  
+Kategori: Ekonomi | Hedef sorgu: "2026 fed toplantı tarihleri" | Slug: `2026-fed-toplanti-tarihleri`  
+Konu: 2026'nın tüm 8 FOMC toplantı tarihi (5 tamamlandı, 3 yaklaşıyor), geçmiş kararların özeti, Eylül/Ekim/Aralık beklentileri, CME FedWatch kullanımı, USD/TRY ve BIST'e etki tablosu.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**  
+Fed'in 2026'da 8 toplantısı var.
+Eylül'dekine 33 gün kaldı.
+
+Bu toplantılar TL'yi, dolarını ve altınını doğrudan etkiliyor.
+
+Tarihler + ne beklenmeli → 🧵👇
+
+**Tweet 2:**  
+📅 2026 FOMC Takvimi:
+
+✅ 28-29 Ocak — Tamamlandı
+✅ 18-19 Mart — Tamamlandı
+✅ 6-7 Mayıs — Tamamlandı
+✅ 17-18 Haziran — Tamamlandı
+✅ 29-30 Temmuz — Tamamlandı
+🟡 16-17 EYLÜL — GELİYOR
+⏳ 28-29 Ekim
+⏳ 9-10 Aralık
+
+**Tweet 3:**  
+Eylül toplantısı neden kritik?
+
+→ SEP (ekonomik projeksiyonlar) güncelleniyor
+→ Dot plot revizyonu geliyor
+→ Yıl sonu faiz yolu netleşiyor
+
+Yani 17 Eylül = 2026'nın yön haritası.
+
+**Tweet 4:**  
+Fed kararı Türkiye saatiyle ~20:00'de açıklanıyor.
+
+Karar metninden 30-45 dk sonra Fed Başkanı basın toplantısı yapıyor.
+Tutanaklar ise 3 HAFTA sonra geliyor.
+
+Karar günleri volatilite artıyor → stop-loss kritik.
+
+**Tweet 5 (kapanış):**  
+Tüm 2026 FOMC tarihleri, geçmiş kararlar ve TL'ye etkisi:
+
+🔗 parafomo.com/blog/2026-fed-toplanti-tarihleri/
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Caption:**
+
+📅 2026'da Fed ne zaman toplanıyor?
+
+Bu takvimi bilmek, dolar ve TL pozisyonun için kritik.
+
+2026'nın 5 toplantısı tamamlandı.
+Eylül, Ekim ve Aralık'ta 3 toplantı daha var.
+
+👉 En kritik: 17 Eylül 2026
+Çünkü o gün Fed'in yıl sonu faiz yol haritası netleşiyor.
+
+Tüm tarihler, beklentiler ve USD/TRY etkisi için bağlantı bio'da 👆
+
+#Fed #FOMC #FaizKararı #Dolar #TL #Yatırım #Ekonomi #ParaFOMO #Finans #ABDFaiz #FedToplantı
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **Thread'i X'te yayınla** — Eylül toplantısı yaklaştığında arama trafiği artacak; şimdiden yayınlamak indexlenme için iyi.
+2. **Instagram post'unu paylaş** — Carousel formatı için 5 slayt önerisi: (1) "2026 FOMC Takvimi" başlığı, (2) geçmiş 5 toplantı listesi, (3) yaklaşan 3 toplantı, (4) Eylül neden kritik, (5) TL'ye etki tablosu.
+
+---
+
 ## 2026-08-14 — Housing Starts
 
 **Yayınlanan yazı:**  
