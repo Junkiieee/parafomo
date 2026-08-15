@@ -1,0 +1,59 @@
+{
+  "slug": "ekrandaki-altin-elindeki-altin-degil",
+  "title": "Ekrandaki Altın, Elindeki Altın Değil",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Bankada altın hesabı açtığında ekranda bir rakam görürsün — ama bu fiziksel altın değil. Sahipliğin gerçek anlamı kriz anında netleşir.",
+  "tags": [
+    "altın hesabı",
+    "fiziksel altın",
+    "yatırım",
+    "banka riski",
+    "gram altın",
+    "türk yatırımcı",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Altın hesabın var ama elinde hiç altın yok.",
+      "visual": {
+        "type": "gold",
+        "query": "physical gold bars close up hands"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Altın hesabı açmak bankaya borç vermek gibi — aldığın kâğıt hakkı, fiziksel metal değil.",
+      "visual": {
+        "type": "concept",
+        "query": "bank document paper digital account screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama altın hesabı bir banka riski taşır — elindeki fiziksel altın bu riski hiç taşımaz.",
+      "visual": {
+        "type": "concept",
+        "query": "bank financial risk warning sign stress"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fiziksel altın elindeyse hiçbir aracıya muhtaç değilsin — kriz anı bu farkı netçe gösterir.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins safe deposit box hands"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki altın hesabının işe yaradığı durumlar hiç yok mu? Bunu da mercek altına alacağız. ParaFOMO'ya abone ol — her gün 60 saniyede net para kararları.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification alert phone screen"
+      }
+    }
+  ]
+}
