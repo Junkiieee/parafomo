@@ -69,6 +69,7 @@ def build_caption(ptype, date_label):
     body = (f"{head} · {date_label}\n"
             "BIST 100 ve günün piyasa özeti 👆\n"
             f"{question}\n"
+            "📅 Piyasayı hareket ettiren veriler → parafomo.com/ekonomik-takvim\n"
             "Detaylı analizler → parafomo.com")
     return "\n\n".join([comment, body, HASHTAGS])
 

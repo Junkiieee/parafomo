@@ -62,6 +62,40 @@ def get_service():
     return build("youtube", "v3", credentials=creds, cache_discovery=False)
 
 
+def set_shorts_thumbnail(yt, vid, video_path):
+    """Shorts kapak karesini AÇIKÇA ayarla (2026-07 özelliği).
+
+    Kapak, swipe-player'da GÖRÜNMEZ ama kanal grid'i, arama, abonelik feed'i ve
+    ana sayfa Shorts rafında görünür → keşfedilebilirliği (dolayısıyla izlenmeyi)
+    etkiler. Varsayılan kapak çoğu zaman rastgele/bulanık bir orta kare olur; v5.1
+    ile frame-0 zaten tam-parlak, kalın kanca metinli tasarlanmış kare → onu kapak
+    yaparak grid/arama/abonelik yüzeylerini kontrol ediyoruz.
+
+    Non-fatal: kanal custom-thumbnail'a uygun değilse (doğrulanmamış) veya kare
+    çıkarılamazsa yükleme akışı KIRILMAZ, sadece uyarı basılır.
+    """
+    import subprocess, tempfile
+    try:
+        from googleapiclient.http import MediaFileUpload
+        cover = os.path.join(tempfile.gettempdir(), f"cover-{vid}.jpg")
+        # 0.35sn: hook metni tam çizilmiş, hâlâ ilk saniye içinde (v5.1 fade'siz açılış).
+        r = subprocess.run(
+            ["ffmpeg", "-y", "-ss", "0.35", "-i", video_path,
+             "-frames:v", "1", "-q:v", "2", cover],
+            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+        )
+        if r.returncode != 0 or not os.path.exists(cover):
+            print("    [kapak] kare çıkarılamadı — atlanıyor (non-fatal)")
+            return
+        yt.thumbnails().set(
+            videoId=vid, media_body=MediaFileUpload(cover, mimetype="image/jpeg")
+        ).execute()
+        print("    [kapak] custom Shorts thumbnail ayarlandı (frame-0 kanca karesi)")
+    except Exception as e:
+        # 403 (doğrulanmamış kanal / özellik yok) dahil her hata non-fatal.
+        print(f"    [kapak] ayarlanamadı (non-fatal): {str(e)[:140]}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("slug")
@@ -103,6 +137,8 @@ def main():
     vid = resp["id"]
     url = f"https://youtube.com/shorts/{vid}"
     print(f"[+] YÜKLENDI: {url}")
+    # Kapak karesini açıkça ayarla (keşfedilebilirlik — grid/arama/abonelik yüzeyleri).
+    set_shorts_thumbnail(yt, vid, video)
     meta["video_id"] = vid
     meta["youtube_url"] = url
     json.dump(meta, open(meta_path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
