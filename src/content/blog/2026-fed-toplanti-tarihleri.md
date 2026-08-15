@@ -17,6 +17,23 @@ faq:
     a: "FOMC toplantı tutanakları, kararın açıklandığı tarihten yaklaşık 21 gün (3 hafta) sonra Fed'in resmi sitesinde yayınlanır. Tutanaklar her üyenin görüşünü ve tartışma detaylarını içerir."
   - q: "2026 Fed kararları TL'yi nasıl etkiler?"
     a: "Fed faiz indirimi dolar endeksini (DXY) zayıflatır ve TL başta olmak üzere gelişen piyasa para birimlerine kısa vadeli destek verir. Faiz artışı veya şahin söylem ise TL üzerinde baskı yaratır. Türkiye'nin yüksek dış borcu bu etkiyi güçlendirir."
+shorts:
+  - "33 gün sonra Fed kararı doları ve altını sarsacak."
+  - "Fed 2026'da 8 kritik faiz kararı alıyor; Eylül 17 bu yılın en kritik toplantısı."
+  - "SEP ve dot plot güncellemesiyle yıl sonu faiz yolu netleşecek, piyasalar yeniden şekillenecek."
+  - "Bu tarihleri önceden bilen Türk yatırımcı dolar, altın ve Eurobond'da avantajlı pozisyon alabilir."
+  - "Eylül Fed'i ne yapacak? Kanalımıza abone ol, hiçbir kararı kaçırma; tüm analiz parafomo.com'da."
+shorts_broll:
+  - "Federal Reserve interest rate decision"
+  - "stock market dollar chart"
+  - "gold price FOMC reaction"
+  - "investor portfolio planning"
+shorts_visuals:
+  - "building|Federal Reserve Washington DC"
+  - "concept|interest rate decision stock market chart"
+  - "concept|FOMC dot plot economic projections"
+  - "concept|investor dollar gold eurobond portfolio"
+  - "concept|subscribe finance youtube channel notification"
 ---
 
 ABD Merkez Bankası Fed, 2026'da 8 kritik faiz kararı alacak. Bu toplantıların tarihlerini ve olası yönlerini önceden bilmek; dolar, altın veya Eurobond pozisyonu planlayan her Türk yatırımcısı için değerli bir avantaj. 2026 fed toplantı tarihleri takvimini, geçmiş kararların özetini ve önümüzdeki toplantı beklentilerini bu rehberde bulacaksın.
