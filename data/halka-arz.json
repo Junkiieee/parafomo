@@ -1,51 +1,9 @@
 {
-  "updated": "2026-08-14T18:15+00:00",
+  "updated": "2026-08-15T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 43,
+  "count": 40,
   "items": [
-    {
-      "company": "Türker Vangölü Enerji Yatırım A.Ş.",
-      "bist_code": "VEYAS",
-      "slug": "turker-vangolu-enerji-yatirim-a-s",
-      "link": "https://halkarz.com/turker-vangolu-enerji-yatirim-a-s/",
-      "date_text": "12-13-14 Ağustos 2026",
-      "start": "2026-08-12",
-      "end": "2026-08-14",
-      "status": "Devam Ediyor",
-      "price": "136,00 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "65.000.000 Lot",
-      "broker": "Halk Yatırım Menkul Değerler A.Ş. Ziraat Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Kapeks Kimya Sanayi A.Ş.",
-      "bist_code": "KPEKS",
-      "slug": "kapeks-kimya-sanayi-a-s",
-      "link": "https://halkarz.com/kapeks-kimya-sanayi-a-s/",
-      "date_text": "12-13-14 Ağustos 2026",
-      "start": "2026-08-12",
-      "end": "2026-08-14",
-      "status": "Devam Ediyor",
-      "price": "94,00 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "25.100.000 Lot",
-      "broker": "Ziraat Yatırım Menkul Kıymetler A.Ş. Türkiye Sınai Kalkınma Bankası A.Ş. Yatırım Finansman Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Teknika Plast Teknik Kalıp Plastik San. ve Tic. A.Ş.",
-      "bist_code": "TKNKA",
-      "slug": "teknika-plast-teknik-kalip-plastik-san-ve-tic-a-s",
-      "link": "https://halkarz.com/teknika-plast-teknik-kalip-plastik-san-ve-tic-a-s/",
-      "date_text": "12-13-14 Ağustos 2026",
-      "start": "2026-08-12",
-      "end": "2026-08-14",
-      "status": "Devam Ediyor",
-      "price": "85,40 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "31.000.000 Lot",
-      "broker": "Tera Yatırım Menkul Değerler A.Ş."
-    },
     {
       "company": "Hedef Grup Satış Dağıtım San. ve Tic. A.Ş.",
       "bist_code": "",
@@ -439,6 +397,48 @@
       "broker": "Ziraat Yatırım Menkul Kıymetler A.Ş. İntegral Yatırım Menkul Değerler A.Ş."
     },
     {
+      "company": "Türker Vangölü Enerji Yatırım A.Ş.",
+      "bist_code": "VEYAS",
+      "slug": "turker-vangolu-enerji-yatirim-a-s",
+      "link": "https://halkarz.com/turker-vangolu-enerji-yatirim-a-s/",
+      "date_text": "12-13-14 Ağustos 2026",
+      "start": "2026-08-12",
+      "end": "2026-08-14",
+      "status": "Tamamlandı",
+      "price": "136,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "65.000.000 Lot",
+      "broker": "Halk Yatırım Menkul Değerler A.Ş. Ziraat Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş."
+    },
+    {
+      "company": "Kapeks Kimya Sanayi A.Ş.",
+      "bist_code": "KPEKS",
+      "slug": "kapeks-kimya-sanayi-a-s",
+      "link": "https://halkarz.com/kapeks-kimya-sanayi-a-s/",
+      "date_text": "12-13-14 Ağustos 2026",
+      "start": "2026-08-12",
+      "end": "2026-08-14",
+      "status": "Tamamlandı",
+      "price": "94,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "25.100.000 Lot",
+      "broker": "Ziraat Yatırım Menkul Kıymetler A.Ş. Türkiye Sınai Kalkınma Bankası A.Ş. Yatırım Finansman Menkul Değerler A.Ş."
+    },
+    {
+      "company": "Teknika Plast Teknik Kalıp Plastik San. ve Tic. A.Ş.",
+      "bist_code": "TKNKA",
+      "slug": "teknika-plast-teknik-kalip-plastik-san-ve-tic-a-s",
+      "link": "https://halkarz.com/teknika-plast-teknik-kalip-plastik-san-ve-tic-a-s/",
+      "date_text": "12-13-14 Ağustos 2026",
+      "start": "2026-08-12",
+      "end": "2026-08-14",
+      "status": "Tamamlandı",
+      "price": "85,40 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "31.000.000 Lot",
+      "broker": "Tera Yatırım Menkul Değerler A.Ş."
+    },
+    {
       "company": "Çitlekçi Mağazacılık Gıda A.Ş.",
       "bist_code": "CITAS",
       "slug": "citlekci-magazacilik-gida-a-s",
@@ -563,48 +563,6 @@
       "distribution": "Eşit Dağıtım",
       "lot": "67.000.000 Lot",
       "broker": "Halk Yatırım Menkul Değerler A.Ş. Ahlatcı Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "(Intercity) Ekim Turizm Tic. ve San. A.Ş.",
-      "bist_code": "EKIM",
-      "slug": "ekim-turizm-tic-ve-san-a-s",
-      "link": "https://halkarz.com/ekim-turizm-tic-ve-san-a-s/",
-      "date_text": "1-2-3 Temmuz 2026",
-      "start": "2026-07-01",
-      "end": "2026-07-03",
-      "status": "Tamamlandı",
-      "price": "30,26 TL",
-      "distribution": "Eşit Dağıtım",
-      "lot": "162.000.000 Lot",
-      "broker": "Ak Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Golda Gıda San. ve Tic. A.Ş.",
-      "bist_code": "GOLDA",
-      "slug": "golda-gida-san-ve-tic-a-s",
-      "link": "https://halkarz.com/golda-gida-san-ve-tic-a-s/",
-      "date_text": "1-2 Temmuz 2026",
-      "start": "2026-07-01",
-      "end": "2026-07-02",
-      "status": "Tamamlandı",
-      "price": "9,20 TL",
-      "distribution": "Eşit Dağıtım",
-      "lot": "87.499.998 Lot",
-      "broker": "Gedik Yatırım Menkul Değerler A.Ş. Misyon Yatırım Bankası A.Ş."
-    },
-    {
-      "company": "Soho Giyim ve Enerji A.Ş.",
-      "bist_code": "SOHOE",
-      "slug": "soho-giyim-ve-enerji-a-s",
-      "link": "https://halkarz.com/soho-giyim-ve-enerji-a-s/",
-      "date_text": "30 Haziran, 1 Temmuz 2026",
-      "start": "2026-06-30",
-      "end": "2026-07-01",
-      "status": "Tamamlandı",
-      "price": "15,00 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "100.000.000 Lot",
-      "broker": "İntegral Yatırım Menkul Değerler A.Ş."
     }
   ]
 }
