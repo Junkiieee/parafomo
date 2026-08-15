@@ -176,3 +176,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] BOJ Nedir? Japonya Merkez Bankası Araçları ve Küresel Piyasalara Etkisi — `boj-nedir-japonya-merkez-bankasi` (GSC fırsatı: "boj nedir" — gösterim 7, sıra 11.9; kurumun tarihçesi + YCC + QQE + 2024 normalleşmesi + carry trade; mevcut "BOJ Faiz Kararı" yazısının tamamlayıcısı)
 
 - [x] ABD Konut Başlangıçları (Housing Starts) Nedir? İnşaat Verisi Ekonomiye Nasıl Yansır? — `housing-starts-nedir` (backlog: evergreen ekonomi; "housing starts nedir" / "abd konut başlangıçları" sorguları; Fed faiz + DXY + konut yatırımı cluster'ını tamamlayan öncü gösterge; 14 Ağustos 2026)
+
+- [x] 2026 Fed Toplantı Tarihleri: FOMC Takvimi ve Faiz Beklentileri — `2026-fed-toplanti-tarihleri` (GSC fırsatı: "2026 fed toplantı tarihleri" — gösterim 4, sıra 10.2; zaten sayfa 1'deyiz, hedefli yazıyla üst sıralara çıkma; FOMC tutanakları+Fed faiz kararı cluster'ını tamamlayan takvim rehberi; Eylül 2026 toplantısı yaklaşıyor)
