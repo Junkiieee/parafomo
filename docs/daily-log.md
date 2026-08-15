@@ -4,6 +4,93 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-15 — Vadeli İşlem Sözleşmesi (Futures) Nedir?
+
+**Yayınlanan yazı:**  
+[Vadeli İşlem Sözleşmesi (Futures) Nedir? Türev Ürün Rehberi](https://parafomo.com/blog/vadeli-islem-sozlesmesi-nedir/)  
+Kategori: Yatırım | Hedef sorgu: "vadeli işlem sözleşmesi nedir" | Slug: `vadeli-islem-sozlesmesi-nedir`  
+Konu: Futures sözleşmelerinin mantığı, kaldıraç mekanizması, VİOP'ta nasıl işlem yapılır, hedge vs spekülasyon kullanım senaryoları, spot piyasa ile karşılaştırma tablosu.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**  
+Küçük bir teminatla büyük piyasalarda işlem yapmak mümkün.
+
+Adı: Vadeli İşlem Sözleşmesi (Futures)
+Türkiye'deki adresi: VİOP
+
+Nasıl çalışır, riski nedir? 🧵👇
+
+**Tweet 2:**  
+📌 Futures nedir?
+
+Bir varlığı ileride, bugünden anlaştığın fiyata alma ya da satma YÜKÜMLÜLÜĞÜdür.
+
+→ İki taraf için de bağlayıcı
+→ Standart, borsada işlem görür
+→ Takas merkezi karşı taraf riskini üstlenir
+
+Spot piyasa: şimdi al, şimdi öde
+Futures: bugün anlaş, ileride teslim et
+
+**Tweet 3:**  
+⚡ Kaldıraç nasıl çalışır?
+
+100.000 TL'lik sözleşme için 10.000 TL teminat yatırırsın.
+
+Piyasa %5 yükselirse → teminatına oranla %50 kazandın
+Piyasa %5 düşerse → teminatının %50'si gitti
+
+Bu nedenle vadeli işlem, deneyim gerektiriyor.
+
+**Tweet 4:**  
+🇹🇷 Türkiye'de VİOP:
+
+• BIST 30 endeks futures
+• USDTRY / EURTRY
+• Gram altın futures
+• Seçili hisse futures
+
+Herhangi bir aracı kurumda hesap aç → vadeli işlem hesabı ekle → teminat yatır.
+
+**Tweet 5 (kapanış):**  
+Futures'ı anlamadan türev piyasalara adım atma.
+
+Tam rehber → 🔗 parafomo.com/blog/vadeli-islem-sozlesmesi-nedir/
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Caption:**
+
+📊 Vadeli İşlem Sözleşmesi (Futures) nedir?
+
+Küçük bir teminatla büyük piyasalara erişim.
+Ama dikkat — kaldıraç iki yönde de çalışır.
+
+Slide'larda ne öğreneceksin:
+1️⃣ Futures nedir, spot piyasadan farkı ne?
+2️⃣ Kaldıraç nasıl çalışır — gerçek örnekle
+3️⃣ Türkiye'de VİOP'ta ne işlem görür?
+4️⃣ Hedge mi, spekülasyon mu?
+5️⃣ Kimler için uygun?
+
+Tam rehber bio'daki linkte 👆
+
+#vadeliislem #futures #viop #borsa #yatirim #kaldıraç #türevürün #finanseğitim
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **Paylaşımı yayınla:** X ve Instagram'da yukarıdaki taslakları kullanarak paylaş. Instagram'da carousel formatı için 5-6 slayt hazırla.
+2. **Toplulukta paylaş:** Ekşi Sözlük "vadeli işlem" başlığına veya ilgili bir finans Telegram/Facebook grubuna değer katarak paylaş (reklam değil, bilgilendirme tonuyla).
+
+---
+
 ## 2026-08-15 — 2026 Fed Toplantı Tarihleri
 
 **Yayınlanan yazı:**  

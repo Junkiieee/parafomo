@@ -59,7 +59,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] JOLTS İş İlanları (Job Openings) nedir? İşgücü açığı ve Fed'e sinyali — `Ekonomi` — hedef: "jolts nedir iş ilanları"
 - [x] VIX (Korku Endeksi) nedir? Borsa volatilitesi nasıl okunur? — `Ekonomi` — hedef: "vix nedir korku endeksi"
 - [x] ABD Konut Başlangıçları (Housing Starts) nedir? İnşaat verisi ekonomiye nasıl yansır? — `Ekonomi` — hedef: "housing starts nedir"
-- [ ] Vadeli İşlem Sözleşmesi (Futures) nedir? Türev ürün rehberi — `Yatırım` — hedef: "vadeli işlem sözleşmesi nedir"
+- [x] Vadeli İşlem Sözleşmesi (Futures) nedir? Türev ürün rehberi — `Yatırım` — hedef: "vadeli işlem sözleşmesi nedir"
 - [ ] Opsiyon nedir? Alım ve satım opsiyonu nasıl çalışır? — `Yatırım` — hedef: "opsiyon nedir"
 - [ ] Stagflasyon nedir? Enflasyon + durgunluk sarmalı ve yatırımcı stratejisi — `Ekonomi` — hedef: "stagflasyon nedir"
 - [ ] Quantitative Tightening (QT) nedir? Merkez bankası bilanço küçültme rehberi — `Ekonomi` — hedef: "quantitative tightening nedir"
@@ -178,3 +178,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] ABD Konut Başlangıçları (Housing Starts) Nedir? İnşaat Verisi Ekonomiye Nasıl Yansır? — `housing-starts-nedir` (backlog: evergreen ekonomi; "housing starts nedir" / "abd konut başlangıçları" sorguları; Fed faiz + DXY + konut yatırımı cluster'ını tamamlayan öncü gösterge; 14 Ağustos 2026)
 
 - [x] 2026 Fed Toplantı Tarihleri: FOMC Takvimi ve Faiz Beklentileri — `2026-fed-toplanti-tarihleri` (GSC fırsatı: "2026 fed toplantı tarihleri" — gösterim 4, sıra 10.2; zaten sayfa 1'deyiz, hedefli yazıyla üst sıralara çıkma; FOMC tutanakları+Fed faiz kararı cluster'ını tamamlayan takvim rehberi; Eylül 2026 toplantısı yaklaşıyor)
+
+- [x] Vadeli İşlem Sözleşmesi (Futures) Nedir? Türev Ürün Rehberi — `vadeli-islem-sozlesmesi-nedir` (backlog: evergreen yatırım; "vadeli işlem sözleşmesi nedir" sorgusu; VİOP + kaldıraç + hedge cluster'ını tamamlayan türev ürün rehberi; opsiyon yazısının tamamlayıcısı)
