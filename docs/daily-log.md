@@ -4,6 +4,100 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-16 — Opsiyon Nedir? Alım ve Satım Opsiyonu Nasıl Çalışır?
+
+**Yayınlanan yazı:**  
+[Opsiyon Nedir? Alım ve Satım Opsiyonu Nasıl Çalışır?](https://parafomo.com/blog/opsiyon-nedir-alim-satim-opsiyonu/)  
+Slug: `opsiyon-nedir-alim-satim-opsiyonu` | Kategori: Yatırım | ~8 dk okuma  
+Hedef sorgu: **opsiyon nedir** (evergreen türev ürün; call/put + VİOP cluster)
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**
+"Bunu yapma hakkım var, ama yapmak zorunda değilim."
+
+Finansta buna OPSİYON denir. Ve doğru kullanıldığında portföyünü korumak ya da küçük primle büyük pozisyon kontrol etmek için güçlü bir araç.
+
+Opsiyon nedir, nasıl çalışır? 🧵👇
+
+**Tweet 2:**
+Opsiyon = hak, değil yükümlülük.
+
+📈 Call (Alım) opsiyonu: Yükselişten kazanmak için. Hisseyi bugün 110 TL'den alma hakkı al. Fiyat 130'a çıkarsa 20 TL kazanırsın. Düşse sadece primini kaybedersin.
+
+📉 Put (Satım) opsiyonu: Düşüşten korunmak ya da düşüşten kazanmak için. Elindeki hisseye "sigorta" gibi çalışır.
+
+**Tweet 3:**
+Vadeli işlemden (futures) en büyük farkı:
+
+Futures → İki taraf da zorunlu.
+Opsiyon → Alıcı özgür, satıcı yükümlü.
+
+Alıcı olarak **maksimum kaybın ödediğin primle sınırlı.** Bu küçük fark, opsiyonları birçok strateji için daha esnek kılar.
+
+**Tweet 4:**
+Türkiye'de VİOP üzerinden opsiyon işlemi yapabilirsin.
+
+BIST 30 hisse opsiyonları, döviz opsiyonları ve altın opsiyonları aktif. Herhangi bir aracı kurumdan VİOP hesabı açman yeterli.
+
+**Tweet 5 (kapanış):**
+Opsiyon stratejileri karmaşık görünse de temel mantık basit:
+
+✅ Call al → yükselişi al
+✅ Put al → düşüşe karşı korun
+✅ Covered call sat → hissen varken prim geliri kazan
+
+Tüm rehber 👇
+👉 https://parafomo.com/blog/opsiyon-nedir-alim-satim-opsiyonu/
+
+#opsiyon #yatırım #borsa #VİOP #türevürünler
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Kapak slaytı:** "Opsiyon Nedir? Alım ve Satım Opsiyonu Rehberi 📊"
+
+**Slayt 1 — Opsiyon = Hak, Zorunluluk Değil**
+Bir varlığı önceden belirlenen fiyattan alma ya da satma HAKKIDIR.
+Zorunluluk değil, seçim senin!
+
+**Slayt 2 — Call vs Put**
+📈 CALL: "Bu hisseyi 110 TL'den alma hakkım olsun."
+→ Fiyat yükselirse kazanırsın.
+
+📉 PUT: "Bu hisseyi 90 TL'den satma hakkım olsun."
+→ Fiyat düşerse korunursun.
+
+**Slayt 3 — Alıcı için Max. Kayıp = Prim**
+Futures'tan temel farkı bu!
+Ne kadar kaybedersin? Ödediğin prim kadar. Fazlası yok.
+
+**Slayt 4 — VİOP'ta Türkiye'de Opsiyon**
+BIST 30, USD/TRY, EUR/TRY ve gram altın opsiyonları aktif.
+Aracı kurumundan VİOP hesabı açman yeterli.
+
+**Slayt 5 — 3 Temel Strateji**
+🔵 Covered Call: Hissen varken prim geliri kazan.
+🟡 Protective Put: Portföyüne sigorta çek.
+🔴 Long Straddle: Yön bilmeden büyük hareketten kazan.
+
+**Caption:**
+Opsiyon; piyasada kendinizi korumak ya da kaldıraçlı pozisyon almak için kullanılan güçlü bir türev ürün 📊 Call ve put farkından VİOP'ta nasıl işlem yapılacağına kadar her şey profilimizdeki linkten → parafomo.com 👇
+
+#opsiyon #yatırım #borsa #VİOP #callput #türevürün #finanseğitimi
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **Sosyal medya taslağını paylaş:** Yukarıdaki X thread'ini ve Instagram carousel metnini hesaplarında yayınla (@parafomo).
+2. **1 toplulukta değer katarak paylaş:** Finans Türkiye Facebook grubu, Ekşi Sözlük veya Reddit r/Turkey'de "opsiyon nedir" konusunu arayan birine bu rehberi paylaş — reklam değil, değer katmak amacıyla.
+
+---
+
 ## 2026-08-16 — ABD Faiz Kararı Altın, Dolar ve TL'yi Nasıl Etkiler?
 
 **Yayınlanan yazı:**  
