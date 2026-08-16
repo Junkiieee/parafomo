@@ -4,6 +4,81 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-16 — ABD Faiz Kararı Altın, Dolar ve TL'yi Nasıl Etkiler?
+
+**Yayınlanan yazı:**  
+[ABD Faiz Kararı Altın, Dolar ve TL'yi Nasıl Etkiler?](https://parafomo.com/blog/abd-faiz-karari-altin-dolar-tl-etkisi/)  
+Slug: `abd-faiz-karari-altin-dolar-tl-etkisi` | Kategori: Ekonomi | ~7 dk okuma  
+Hedef sorgu: **abd faiz kararı** (GSC sıra 18.4 → sayfa 1 hedefi)
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**
+Fed faiz kararı açıklandığında altın, dolar ve TL aynı anda hareket eder.
+
+Peki hangisi nasıl etkileniyor? Türk yatırımcısı ne yapmalı?
+
+Kısa rehber 🧵👇
+
+**Tweet 2:**
+📊 Üç senaryo, üç farklı etki:
+
+• Faiz ↑ → Dolar güçlenir, altın düşer, TL baskı altında
+• Faiz ↓ → Dolar zayıflar, altın yükselir, TL nefes alır
+• Değişmez + şahin sinyal → Dolar yukarı, riskli varlıklar baskıda
+
+**Tweet 3:**
+🥇 Altın için kritik nokta: reel faiz (nominal faiz − enflasyon)
+
+Faiz artsa bile enflasyon hâlâ yüksekse altın dirençli kalır.
+TL bazında gram altın ise hem ons fiyatından hem dolar kurundan etkilenir — çift kanalı unutma.
+
+**Tweet 4:**
+🇹🇷 Türk yatırımcısı için pratik:
+
+1. CME FedWatch ile beklentiyi önceden kontrol et
+2. Karar anında DXY ve ons altını izle — 30 dakikada yön belli olur
+3. Sürpriz olmayan kararlar "sat söylentiyi, al haberi" mantığıyla hareket eder
+
+Detaylı rehber 👇
+parafomo.com/blog/abd-faiz-karari-altin-dolar-tl-etkisi/
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Caption:**
+ABD Faiz Kararı → Altın, Dolar ve TL Aynı Anda Nasıl Değişir?
+
+Fed faizini her değiştirdiğinde:
+🟡 Altın fiyatı oynar
+💵 Dolar endeksi yükselir ya da düşer
+🇹🇷 TL bunların ortasında sıkışır
+
+Ve tüm bu dalgalar senin portföyüne kadar gelir.
+
+Ne beklenti var, nasıl takip edilir, ne yapılır — linkteki rehberde anlattık.
+
+#abdFaizKararı #fedFaizKararı #altınFiyatı #dolarTL #finansOku #parafomo #yatırım #altın #döviz #merkezdankası
+
+**Carousel slide fikirleri (5 slayt):**
+1. Kapak: "Fed Faiz Kararı Gelince Altın, Dolar, TL Ne Yapar?"
+2. Tablo: Faiz Artışı / İndirimi / Değişmez → Dolar / Altın / TL / Borsa
+3. Altın mekanizması: Reel faiz = nominal faiz − enflasyon
+4. TL için: carry trade + risk iştahı + ithalat maliyeti
+5. Pratik checklist: CME FedWatch → DXY izle → ilk 30 dakika sinyal
+
+---
+
+### Bugün yapman gerekenler
+
+1. **X ve Instagram'da paylaş** — yukarıdaki thread ve caption'ı kopyala, yayınla. Fed/ABD faiz kararı güncel kalmaya devam ettiği için bu içerik sürekli geçerli.
+2. **Türkiye finans gruplarında paylaş** — r/Turkey, Ekşi Sözlük finans/altın başlıkları veya Telegram finans gruplarında "abd faiz kararı altın" arayanlar için değer katan bir yorum olarak paylaş (spam değil).
+
+---
+
 ## 2026-08-15 — Vadeli İşlem Sözleşmesi (Futures) Nedir?
 
 **Yayınlanan yazı:**  

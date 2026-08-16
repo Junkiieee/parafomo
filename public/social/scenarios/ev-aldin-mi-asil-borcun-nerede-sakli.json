@@ -1,0 +1,59 @@
+{
+  "slug": "ev-aldin-mi-asil-borcun-nerede-sakli",
+  "title": "Ev Aldın mı? Asıl Borcun Nerede Saklı?",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Türkiye'de aylık yüzde 3 faizle çekilen konut kredisi 10 yılda 3.7 kata çıkıyor — üstelik ilk taksitinin neredeyse tamamı faize gidiyor.",
+  "tags": [
+    "konut kredisi",
+    "mortgage",
+    "faiz",
+    "ev almak",
+    "kira mı kredi mi",
+    "Türkiye",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "1 milyon kredi, 3.7 milyon ödersin.",
+      "visual": {
+        "type": "concept",
+        "query": "mortgage loan documents desk calculator money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Konut faizi şu an aylık yaklaşık yüzde 3 — bu yılda yüzde 36 demek.",
+      "visual": {
+        "type": "concept",
+        "query": "bank interest rate percentage rising chart screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama banka bunu öne çıkarmaz: İlk ay taksitinin yüzde 97'si sadece faize gidiyor.",
+      "visual": {
+        "type": "concept",
+        "query": "loan amortization breakdown pie chart interest principal"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yani o evi gerçek fiyatının üç katını ödemeden asla tam sahibi olamazsın.",
+      "visual": {
+        "type": "concept",
+        "query": "house keys money stack payment burden"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki kira ödeyerek servet biriktirebilir misin? O hesabı bir sonraki videoda kırıyorum. Hesabını büyütmek istiyorsan abone ol — her gün 60 saniyede net analiz.",
+      "visual": {
+        "type": "concept",
+        "query": "person financial decision thinking apartment rent"
+      }
+    }
+  ]
+}

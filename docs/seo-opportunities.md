@@ -1,6 +1,6 @@
 # ParaFOMO — GSC Fırsat Sorguları (içerik motoru için)
 
-> Üretim: 2026-08-15 · Dönem: son 28 gün · Kaynak: `scripts/seo-opportunities.py`
+> Üretim: 2026-08-16 · Dönem: son 28 gün · Kaynak: `scripts/seo-opportunities.py`
 > Kullanım: günlük içerik motoru, takvimde acil olay yoksa buradaki **en üstteki** fırsatı
 > konu seçer (Yayınlananlar'da zaten varsa atla). Liste boşsa keywords.md backlog'una düşer.
 
@@ -14,4 +14,4 @@
 - [ ] `dövize yatırım` — gösterim 4, sıra 36.5, tıklama 0
 - [ ] `abd fed kararı` — gösterim 3, sıra 23.0, tıklama 0
 - [ ] `ekonomide faiz nedir` — gösterim 3, sıra 31.0, tıklama 0
-- [ ] `eurobond fonu vs serbest fon` — gösterim 3, sıra 38.0, tıklama 0
+- [ ] `döviz hesabı açmak mantıklı mı` — gösterim 3, sıra 38.0, tıklama 0
