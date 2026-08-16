@@ -66,6 +66,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] ABD Faiz Kararı Altın, Dolar ve TL'yi Nasıl Etkiler? — `abd-faiz-karari-altin-dolar-tl-etkisi` (GSC fırsatı: "abd faiz kararı" — gösterim 9, sıra 18.4; altın+dolar+TL üçlü etki açısı; learning report altın=kazanan konu; fed-faiz-karari cluster'ını tamamlayan pratik rehber)
+
 - [x] İngiltere GDP Nedir? Büyüme Verisi Sterlin ve Küresel Piyasalara Nasıl Etkiler? — `ingiltere-gdp-nedir-buyume-verisi` (takvim: 13 Ağustos 2026 İngiltere GDP m/m 🔴 açıklaması; BOE + İngiltere CPI cluster'ını tamamlayan büyüme rehberi; "ingiltere gdp nedir" / "ingiltere büyüme verisi" sorguları)
 
 - [x] Michigan Tüketici Güven Endeksi Nedir? Dolar ve Fed'e Etkisi — `michigan-tuketici-guven-endeksi-nedir` (yeni evergreen ekonomi; "michigan tüketici güven endeksi nedir" sorgusu; tüketici duyarlılığı + enflasyon beklentisi + Fed faiz cluster'ını tamamlayan piece; Ağustos ortası ön veri zamanlaması)
