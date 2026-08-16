@@ -1,0 +1,75 @@
+{
+  "slug": "altin-bilezik-aldin-ama-iscilik-sessizce-gitti-m",
+  "title": "Altın Bilezik Aldın, Ama İşçilik Sessizce Gitti",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Ziynet altını yatırım gibi görünür ama satarken işçilik bedelini geri alamazsın. Takı mı, gram altın mı — hangisi gerçekten korur?",
+  "tags": [
+    "ziynet altını",
+    "bilezik altın",
+    "işçilik ücreti",
+    "gram altın",
+    "çeyiz altını",
+    "kuyumcu",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ZİYNET ALTINI",
+      "spoken": "Takı aldın mı? Parasının bir kısmı geri gelmiyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bilezik alırken yalnızca altın değil, işçilik de ödersin; bu pay yüzde on beşten otuza ulaşır.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama kuyumcuya satarken işçilik parasını geri alamazsın; kuyumcu sadece altının değerini öder.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yatırım amacıyla alıyorsan gram altın veya cumhuriyet altını çok daha mantıklı — işçilik yok, kayıp yok.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki hangi altın en az kaybettiriyor? Cevabı almak için abone ol — her gün piyasadan bir gerçek.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
