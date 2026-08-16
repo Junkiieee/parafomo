@@ -36,14 +36,55 @@ def with_utm(url):
     return f"{url}{sep}utm_source=youtube&utm_medium=shorts&utm_campaign=funnel"
 
 
-def with_funnel(description, slug):
-    """Açıklamaya siteye yönlendiren altbilgi + abone CTA ekle (huni)."""
+# Konu → hashtag eşlemesi. IG'de KANITLANDI (08-06-2 / 08-08-2): konuya-duyarlı niş
+# etiketler jenerik geniş bloktan daha iyi keşif havuzu hedefler. Aynı ders YouTube
+# Shorts açıklamasına taşındı — her videoya aynı statik #finans #para... bloğu yerine
+# slug/başlıktan türeyen konu etiketleri (Shorts ARAMA/keşif yüzeyi; retention'ı etkilemez).
+_TAG_MAP = [
+    ("altın", ["#altın", "#gramaltın"]), ("gram-altin", ["#altın", "#gramaltın"]),
+    ("dolar", ["#dolar", "#döviz"]), ("döviz", ["#döviz"]), ("euro", ["#euro"]),
+    ("fed", ["#fed", "#faiz"]), ("faiz", ["#faiz", "#merkezbankası"]),
+    ("tcmb", ["#tcmb", "#faiz"]), ("enflasyon", ["#enflasyon", "#tüfe"]),
+    ("tüfe", ["#enflasyon", "#tüfe"]), ("kira", ["#kira", "#kiraartışı"]),
+    ("kredi", ["#kredi"]), ("mevduat", ["#mevduat", "#faiz"]),
+    ("kıdem", ["#kıdemtazminatı", "#tazminat"]), ("tazminat", ["#tazminat"]),
+    ("borsa", ["#borsa", "#bist100"]), ("bist", ["#borsa", "#bist100"]),
+    ("hisse", ["#hissesenedi", "#borsa"]), ("temettü", ["#temettü", "#borsa"]),
+    ("etf", ["#etf", "#yatırımfonu"]), ("fon", ["#yatırımfonu"]),
+    ("tahvil", ["#tahvil"]), ("eurobond", ["#eurobond", "#döviz"]),
+    ("bitcoin", ["#bitcoin", "#kripto"]), ("kripto", ["#kripto"]),
+    ("bes", ["#bes", "#emeklilik"]), ("emeklilik", ["#emeklilik"]),
+    ("tasarruf", ["#tasarruf", "#birikim"]), ("bütçe", ["#bütçe", "#tasarruf"]),
+    ("nfp", ["#abdekonomisi", "#fed"]), ("gdp", ["#ekonomi"]), ("pmi", ["#ekonomi"]),
+]
+
+
+def topic_hashtags(slug, title=""):
+    """Slug + başlıktan konuya-duyarlı hashtag üret (jenerik statik blok yerine)."""
+    text = (slug + " " + (title or "")).lower()
+    tags = ["#parafomo", "#finans"]
+    for key, tg in _TAG_MAP:
+        if key in text:
+            for t in tg:
+                if t not in tags:
+                    tags.append(t)
+    # Konu az sinyal verdiyse birkaç geniş etiketle tamamla (asla boş kalmasın).
+    for filler in ["#ekonomi", "#yatırım", "#para"]:
+        if len(tags) >= 8:
+            break
+        if filler not in tags:
+            tags.append(filler)
+    return " ".join(tags[:9])
+
+
+def with_funnel(description, slug, title=""):
+    """Açıklamaya siteye yönlendiren altbilgi + abone CTA + konu hashtag'leri ekle (huni)."""
     url = with_utm(site_url_for(slug))
     is_article = "parafomo.com/blog/" in url
     lead = "📖 Konunun tam rehberi (ücretsiz):" if is_article else "📊 Günlük altın/dolar/borsa analizleri:"
     footer = (f"\n\n———\n{lead}\n👉 {url}\n\n"
               "🔔 Kaçırmamak için ABONE OL — her gün yeni finans içeriği.\n\n"
-              "#finans #para #yatırım #ekonomi #borsa #altın #dolar")
+              + topic_hashtags(slug, title))
     return (description[:4900 - len(footer)] + footer)
 
 
@@ -116,7 +157,7 @@ def main():
     body = {
         "snippet": {
             "title": meta["title"][:100],
-            "description": with_funnel(meta["description"], args.slug),
+            "description": with_funnel(meta["description"], args.slug, meta.get("title", "")),
             "tags": meta.get("tags", []),
             "categoryId": CATEGORY_EDUCATION,
             "defaultLanguage": "tr",

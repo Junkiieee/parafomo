@@ -80,15 +80,28 @@ ENGAGEMENT_QUESTIONS = [
 ]
 
 
+# İkincil araç CTA'sı — gün gün döner. Birincil (altın hesaplayıcı) topical kalır;
+# ikinci satır jenerik "parafomo.com" yerine yeni araç/veri sayfalarına GÜNLÜK IG
+# erişimi verir (en yüksek hacimli günlük kart = altın). Reels deneylerine dokunmaz.
+SECONDARY_TOOLS = [
+    "💼 Kıdem tazminatın ne kadar? → parafomo.com/kidem-tazminati-hesaplama",
+    "💳 Kredi taksitini hesapla → parafomo.com/kredi-hesaplama",
+    "📅 Piyasa veri takvimi → parafomo.com/ekonomik-takvim",
+    "🏠 Yasal kira zam tavanı → parafomo.com/kira-artis-orani-hesaplama",
+    "📈 Bileşik faizle paran ne olur? → parafomo.com/bilesik-faiz-hesaplama",
+]
+
+
 def build_caption(date_label):
     comment = get_comment()
     day_of_year = datetime.now().timetuple().tm_yday
     question = ENGAGEMENT_QUESTIONS[day_of_year % len(ENGAGEMENT_QUESTIONS)]
+    secondary = SECONDARY_TOOLS[day_of_year % len(SECONDARY_TOOLS)]
     body = (f"📊 Güncel altın fiyatları · {date_label}\n"
             "Gram, çeyrek, yarım, tam, cumhuriyet 👆\n"
             f"{question}\n"
             "🪙 Altınım kaç TL eder? → parafomo.com/altin-hesaplama\n"
-            "Detaylı analizler → parafomo.com")
+            f"{secondary}")
     return "\n\n".join([comment, body, HASHTAGS])
 
 

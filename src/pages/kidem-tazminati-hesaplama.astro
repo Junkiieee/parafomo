@@ -1,0 +1,343 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+
+// 2026 ikinci yarı (1 Temmuz – 31 Aralık 2026) kıdem tazminatı tavanı.
+// Kaynak: Hazine ve Maliye Bakanlığı katsayı genelgesi (Alomaliye/TÜRMOB, 06.07.2026).
+// Her yıl Ocak ve Temmuz'da güncellenir → yılda iki kez elle güncelle.
+const TAVAN = 73729.87;
+const TAVAN_DONEM = '1 Temmuz – 31 Aralık 2026';
+const DAMGA = 0.00759; // binde 7,59
+
+// Varsayılan senaryo — JS kapalıyken bile sayfa dolu görünsün (SEO + no-JS).
+const D = { wage: 40000, years: 5, months: 0 };
+
+function severance(wageGross: number, years: number, months: number) {
+  const base = Math.min(wageGross, TAVAN); // tavanla sınırlı
+  const totalYears = years + months / 12;
+  const gross = base * totalYears;
+  const stamp = gross * DAMGA;
+  return { base, gross, stamp, net: gross - stamp, capped: wageGross > TAVAN };
+}
+const res = severance(D.wage, D.years, D.months);
+
+const fmt = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+
+// Kıdeme göre karşılaştırma (aynı ücret, farklı yıl) — build-time.
+const compareYears = [1, 3, 5, 10, 15, 20];
+const compareRows = compareYears.map((y) => {
+  const s = severance(D.wage, y, 0);
+  return { y, gross: s.gross, net: s.net };
+});
+
+// İhbar süreleri — İş Kanunu md.17 (yasal, değişmez).
+const ihbarRows = [
+  { label: '6 aydan az', weeks: 2 },
+  { label: '6 ay – 1,5 yıl', weeks: 4 },
+  { label: '1,5 yıl – 3 yıl', weeks: 6 },
+  { label: '3 yıldan fazla', weeks: 8 },
+];
+
+const faq = [
+  {
+    q: 'Kıdem tazminatı nasıl hesaplanır?',
+    a: `Kıdem tazminatı, çalıştığınız her tam yıl için bir aylık giydirilmiş brüt ücret tutarındadır: Kıdem tazminatı = giydirilmiş brüt aylık ücret × çalışılan yıl. Örneğin ${fmt(D.wage)} ₺ brüt ücretle ${D.years} yıl çalışan biri yaklaşık ${fmt(res.gross)} ₺ brüt tazminata hak kazanır; bundan yalnızca binde 7,59 damga vergisi kesilince eline yaklaşık ${fmt(res.net)} ₺ net geçer. Bir yıldan artan süreler de oranlanarak eklenir.`,
+  },
+  {
+    q: `Kıdem tazminatı tavanı 2026 ne kadar?`,
+    a: `${TAVAN_DONEM} döneminde kıdem tazminatı tavanı ${fmt(TAVAN)} ₺'dir. Bu, her bir kıdem yılı için ödenecek tutarın üst sınırıdır: brüt ücretiniz tavandan yüksek olsa bile, her yıl için en fazla ${fmt(TAVAN)} ₺ üzerinden hesaplanır. Tavan her yıl Ocak ve Temmuz aylarında memur maaş katsayısına göre güncellenir.`,
+  },
+  {
+    q: 'Kıdem tazminatından hangi kesintiler yapılır?',
+    a: 'Yasal sınırlar içinde ödenen kıdem tazminatından gelir vergisi ve SGK primi KESİLMEZ. Yalnızca binde 7,59 (%0,759) damga vergisi kesilir. Bu yönüyle kıdem tazminatı, maaş veya ihbar tazminatına göre çok daha az vergilendirilir; brüt ile net arasındaki fark küçüktür.',
+  },
+  {
+    q: 'Hangi durumlarda kıdem tazminatı hak edilir?',
+    a: 'Kıdem tazminatı için önce en az 1 yıl çalışmış olmak gerekir. İşveren tarafından haklı neden olmadan çıkarılma, işçinin haklı nedenle istifası (ödenmeyen ücret, mobbing vb.), askerlik, emeklilik, evlilik (kadın işçi için evlilikten sonraki 1 yıl içinde) ve erkek işçinin evlenmesi gibi haller tazminat hakkı doğurur. Kendi isteğiyle (haklı neden olmadan) istifa eden işçi kıdem tazminatı alamaz.',
+  },
+  {
+    q: 'İhbar tazminatı kıdem tazminatından farklı mı?',
+    a: 'Evet, ikisi ayrıdır. Kıdem tazminatı çalışılan yıl başına ödenir ve sadece damga vergisine tabidir. İhbar tazminatı ise iş sözleşmesi bildirim süresine (kıdeme göre 2–8 hafta) uyulmadan feshedilirse ödenir ve NORMAL ÜCRET gibi gelir vergisi + damga vergisiyle vergilendirilir — yani ihbar tazminatının neti, brütünden belirgin biçimde düşüktür. İstifa eden işçi ihbar tazminatı alamaz (aksine ihbar süresine uymazsa işverene ödemek zorunda kalabilir).',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Kıdem Tazminatı Hesaplama', url: '/kidem-tazminati-hesaplama' },
+];
+---
+
+<BaseLayout
+  title="Kıdem Tazminatı Hesaplama 2026 | Güncel Tavan ve Net Tutar"
+  description="Ücretsiz kıdem tazminatı hesaplama aracı. Brüt maaş ve çalışma sürenizi girin; 2026 güncel tavana göre brüt, damga vergisi ve net kıdem tazminatınızı anında görün. İhbar süreleri dahil."
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · İş & Tazminat</p>
+      <h1>Kıdem Tazminatı Hesaplama</h1>
+      <p class="lede">
+        Giydirilmiş brüt aylık ücretinizi ve çalışma sürenizi girin; <strong>2026 güncel
+        tavana göre brüt kıdem tazminatınızı, damga vergisini ve net eline geçecek tutarı</strong>
+        anında görün.
+      </p>
+    </header>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Giydirilmiş brüt aylık ücret (₺)</span>
+          <input type="number" id="in-wage" value={D.wage} min="0" step="500" inputmode="numeric" />
+        </label>
+        <div class="dur-row">
+          <label>
+            <span>Çalışılan yıl</span>
+            <input type="number" id="in-years" value={D.years} min="0" max="60" step="1" inputmode="numeric" />
+          </label>
+          <label>
+            <span>Ek ay</span>
+            <input type="number" id="in-months" value={D.months} min="0" max="11" step="1" inputmode="numeric" />
+          </label>
+        </div>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Net kıdem tazminatı</span>
+          <span class="result-value" id="out-net">₺{fmt(res.net)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Brüt tazminat</span>
+            <span class="split-val" id="out-gross">₺{fmt(res.gross)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Damga vergisi (binde 7,59)</span>
+            <span class="split-val" id="out-stamp">−₺{fmt(res.stamp)}</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note">
+          {res.capped
+            ? `Ücretiniz tavanın üzerinde: her yıl ${fmt(TAVAN)} ₺ tavan üzerinden hesaplandı.`
+            : `Hesap: ${fmt(res.base)} ₺ × ${(D.years + D.months / 12).toLocaleString('tr-TR', { maximumFractionDigits: 2 })} yıl.`}
+        </p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır, hukuki veya finansal tavsiye değildir.
+      Hesap, {TAVAN_DONEM} kıdem tavanı ({fmt(TAVAN)} ₺) ve binde 7,59 damga vergisi esas alınarak
+      yapılır. Gerçek tutar; giydirilmiş ücretin içeriği (ikramiye, yol, yemek yardımı), fesih
+      şekli ve güncel tavana göre değişir. Kesin hesap için işvereninizin/SGK'nın resmi bilgilerini esas alın.
+    </p>
+
+    <section class="table-block">
+      <h2>Çalışma süresine göre kıdem tazminatı</h2>
+      <p class="table-intro">
+        Aynı brüt ücret (₺<span id="cmp-wage">{fmt(D.wage)}</span>) için kıdem yılı arttıkça
+        tazminat doğrusal büyür:
+      </p>
+      <table class="rate-table" id="compare-table">
+        <thead><tr><th>Kıdem</th><th>Brüt tazminat</th><th>Net (damga sonrası)</th></tr></thead>
+        <tbody>
+          {compareRows.map((r) => (
+            <tr class={r.y === D.years ? 'current' : ''}>
+              <td>{r.y} yıl</td>
+              <td>₺{fmt(r.gross)}</td>
+              <td>₺{fmt(r.net)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">Tazminat için en az 1 yıl kıdem şarttır; 1 yıldan artan aylar oranlanarak eklenir.</p>
+    </section>
+
+    <section class="table-block">
+      <h2>İhbar süreleri (kıdeme göre)</h2>
+      <p class="table-intro">
+        İş sözleşmesi bildirim süresine uyulmadan feshedilirse ihbar tazminatı doğar. Yasal
+        bildirim süreleri (İş Kanunu md.17):
+      </p>
+      <table class="rate-table">
+        <thead><tr><th>Çalışma süresi</th><th>İhbar süresi</th></tr></thead>
+        <tbody>
+          {ihbarRows.map((r) => (
+            <tr>
+              <td>{r.label}</td>
+              <td>{r.weeks} hafta</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        İhbar tazminatı, kıdem tazminatının aksine gelir vergisi + damga vergisiyle vergilendirilir;
+        bu yüzden neti brütünden belirgin ölçüde düşüktür.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Kıdem tazminatı nasıl hesaplanır?</h2>
+      <p>
+        Kıdem tazminatının mantığı basittir: <strong>çalıştığınız her tam yıl için bir aylık
+        giydirilmiş brüt ücret</strong> kadar tazminat alırsınız. "Giydirilmiş ücret", çıplak
+        maaşa ek olarak düzenli ödenen yol, yemek, ikramiye gibi yan hakların aylık karşılığını da
+        içerir — bu yüzden kıdem hesabındaki ücret, bordronuzdaki temel maaştan yüksek olabilir.
+        Bir yıldan artan süreler (ay ve günler) de oranlanarak eklenir.
+      </p>
+      <h2>Kıdem tavanı ne demek?</h2>
+      <p>
+        Devlet, her bir kıdem yılı için ödenecek tutara bir <strong>üst sınır (tavan)</strong>
+        koyar. {TAVAN_DONEM} döneminde bu tavan <strong>{fmt(TAVAN)} ₺</strong>'dir. Brüt ücretiniz
+        tavandan yüksekse bile her yıl için en fazla bu tutar üzerinden hesaplama yapılır. Tavan,
+        en yüksek devlet memuru aylığına bağlı olarak her yıl <strong>Ocak ve Temmuz</strong>
+        aylarında güncellenir; hesaplarken içinde bulunduğunuz dönemin tavanını kullanmak gerekir.
+      </p>
+      <h2>Kıdem tazminatından ne kadar kesinti yapılır?</h2>
+      <p>
+        En çok merak edilen konu budur: yasal sınırlar içinde ödenen kıdem tazminatından
+        <strong>gelir vergisi ve SGK primi kesilmez</strong>; yalnızca <strong>binde 7,59
+        (%0,759) damga vergisi</strong> kesilir. Bu nedenle kıdem tazminatında brüt ile net
+        arasındaki fark çok küçüktür — maaşınızdan yapılan kesintilerle kıyaslanamayacak kadar azdır.
+      </p>
+      <p class="cta-line">
+        Eline geçen tazminatı enflasyona ezdirmeden değerlendirmek için →
+        <a href="/bilesik-faiz-hesaplama">bileşik faiz hesaplama</a> ile birikiminizin nasıl
+        büyüyeceğini görün, borcunuz varsa <a href="/kredi-hesaplama">kredi hesaplama</a> ile
+        erken kapama senaryosunu karşılaştırın.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ TAVAN, DAMGA }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const money = (n) => '₺' + nf.format(Math.round(n));
+
+      function severance(wageGross, years, months) {
+        const base = Math.min(wageGross, TAVAN);
+        const totalYears = years + months / 12;
+        const gross = base * totalYears;
+        const stamp = gross * DAMGA;
+        return { base, gross, stamp, net: gross - stamp, capped: wageGross > TAVAN };
+      }
+
+      function buildCompare(wage, curYears) {
+        const tbody = document.querySelector('#compare-table tbody');
+        if (!tbody) return;
+        const set = [1, 3, 5, 10, 15, 20];
+        if (!set.includes(curYears) && curYears >= 1) set.push(curYears);
+        set.sort((a, b) => a - b);
+        tbody.innerHTML = set.map((y) => {
+          const s = severance(wage, y, 0);
+          const cls = y === curYears ? ' class="current"' : '';
+          return `<tr${cls}><td>${y} yıl</td><td>${money(s.gross)}</td><td>${money(s.net)}</td></tr>`;
+        }).join('');
+      }
+
+      function update() {
+        const wage = Math.max(0, +$('in-wage').value || 0);
+        const years = Math.max(0, Math.min(60, Math.round(+$('in-years').value || 0)));
+        const months = Math.max(0, Math.min(11, Math.round(+$('in-months').value || 0)));
+        const s = severance(wage, years, months);
+        $('out-net').textContent = money(s.net);
+        $('out-gross').textContent = money(s.gross);
+        $('out-stamp').textContent = '−' + money(s.stamp);
+        const totalY = (years + months / 12).toLocaleString('tr-TR', { maximumFractionDigits: 2 });
+        $('out-note').textContent = s.capped
+          ? `Ücretiniz tavanın üzerinde: her yıl ${money(TAVAN)} tavan üzerinden hesaplandı.`
+          : `Hesap: ${money(s.base)} × ${totalY} yıl.`;
+        const cw = $('cmp-wage');
+        if (cw) cw.textContent = nf.format(Math.round(wage));
+        buildCompare(wage, years);
+      }
+
+      ['in-wage', 'in-years', 'in-months'].forEach((id) =>
+        $(id).addEventListener('input', update)
+      );
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 2rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 620px; margin: 0 auto; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input {
+      font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .dur-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 1rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .rate-table tr.current td { font-weight: 700; color: var(--brand-ink); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>
