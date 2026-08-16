@@ -17,6 +17,23 @@ faq:
     a: "Yüksek faiz, şirketlerin borçlanma maliyetini artırır ve kârları baskılar. Aynı zamanda hazine bonolarının getirisi yükselir; yatırımcılar hisse senedi riskini almak yerine güvenli sabit getirili araçlara yönelir. Bu da hisse değerlemelerini aşağı çeker."
   - q: "Türk yatırımcısı ABD faiz kararını nasıl takip edebilir?"
     a: "CME FedWatch aracı piyasanın faiz beklentisini gerçek zamanlı gösterir. Investing.com ve ekonomik takvimler karar saatini önceden bildirir. Karardan hemen sonra dolar endeksi (DXY), altın ve S&P 500'ü izlemek yeterli bir sinyal verir."
+shorts:
+  - "Yılda 8 ABD kararı TL'ni doğrudan vuruyor."
+  - "Fed, yılda sekiz kez toplanır; her karar saatler içinde dolar, altın ve TL'yi aynı anda etkiler."
+  - "Faiz artışı gelince dolar güçlenir, altın düşer ve TL değer kaybeder — hepsi eş zamanlı gerçekleşir."
+  - "TL'li yatırımcı dikkat: ons fiyatı düşse bile kur yükselirse gram altın gene pahalılaşabilir."
+  - "Bir sonraki Fed kararında portföyünüz ne olacak? Öğrenmek için abone ol — parafomo.com'da her karar öncesi rehberler var."
+shorts_broll:
+  - "Federal Reserve interest rate decision press conference"
+  - "gold price chart sharp decline"
+  - "dollar index DXY surge spike"
+  - "turkish lira banknotes exchange rate board"
+shorts_visuals:
+  - "place|Federal Reserve Washington DC"
+  - "concept|global financial markets moving screens"
+  - "concept|dollar strengthening gold price falling chart"
+  - "object|turkish lira banknotes gold coins"
+  - "concept|subscribe notification bell phone screen"
 ---
 
 ABD Merkez Bankası'nın (Fed) her faiz kararı, küresel piyasaların nefesini tuttuğu anlardır. Altın fiyatı oynar, dolar endeksi sıçrar ya da düşer, borsalar saatler içinde yön değiştirir — ve tüm bu dalgalar kaçınılmaz olarak Türk lirasına ve Türk yatırımcısının portföyüne ulaşır. Peki **ABD faiz kararı** tam olarak hangi varlıkları nasıl etkiler ve siz ne yapmalısınız?
