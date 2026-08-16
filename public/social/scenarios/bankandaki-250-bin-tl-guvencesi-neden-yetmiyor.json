@@ -1,0 +1,59 @@
+{
+  "slug": "bankandaki-250-bin-tl-guvencesi-neden-yetmiyor",
+  "title": "Bankandaki 250 Bin TL Güvencesi Neden Yetmiyor?",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Türkiye'de banka mevduatına verilen 250.000 TL TMSF güvencesi, kur değer kaybı nedeniyle dolar bazında 2018'den bu yana yaklaşık sekizde bire geriledi. Güvende sandığın para her geçen yıl daha az koruyor.",
+  "tags": [
+    "TMSF",
+    "mevduat güvencesi",
+    "banka",
+    "tasarruf",
+    "TL değer kaybı",
+    "enflasyon",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "250 bin TL güvencen 8 yılda sekizde bir oldu.",
+      "visual": {
+        "type": "concept",
+        "query": "bank vault money safe protection"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bankada yatan paranın 250 bin TL'si devlet güvencesinde — TMSF banka batsa öder.",
+      "visual": {
+        "type": "concept",
+        "query": "bank deposit insurance government protection fund"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "TL'deki limit sabit kaldı: 2018'de yaklaşık 55 bin dolar değerindeydi, bugün 7 bin dolara geriledi.",
+      "visual": {
+        "type": "concept",
+        "query": "dollar turkish lira currency exchange rate decline chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Güvencen kağıtta duruyor, ama kur eriyince korunan tutar her yıl küçülüyor.",
+      "visual": {
+        "type": "concept",
+        "query": "money melting inflation savings shrinking loss"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu güvenceyi gerçekten aşan araç var mı? Abone ol — her gün 30 saniyede paranın nerede eridiğini öğren.",
+      "visual": {
+        "type": "concept",
+        "query": "financial investment options savings growth"
+      }
+    }
+  ]
+}
