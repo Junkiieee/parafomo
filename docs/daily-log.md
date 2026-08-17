@@ -4,6 +4,95 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-17 — Stagflasyon Nedir? Enflasyon + Durgunluk Sarmalı ve Yatırımcı Stratejisi
+
+**Yayınlanan yazı:**  
+[Stagflasyon Nedir? Enflasyon + Durgunluk Sarmalı ve Yatırımcı Stratejisi](https://parafomo.com/blog/stagflasyon-nedir/)  
+Slug: `stagflasyon-nedir` | Kategori: Ekonomi | ~8 dk okuma  
+Hedef sorgu: **stagflasyon nedir** (evergreen ekonomi; resesyon + enflasyon ikilemi + korunma stratejisi)
+
+**Konu seçim gerekçesi:** Takvimde 19 Ağustos için FOMC tutanakları ve İngiltere CPI 🔴 High etkililer var; ikisi de mevcut makalelerle kaplı. GSC fırsatlarının tamamı da önceki yazılarla zaten karşılanmış. Backlog'un ilk `[ ]` maddesi olan stagflasyon; mevcut makro bağlamla (küresel enflasyon baskısı, Fed belirsizliği, resesyon sinyalleri) son derece zamanında.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**
+Ekonomi hem durgun hem pahalı olabilir mi?
+
+Evet. Buna STAGFLASYON denir ve merkez bankasının ikiye bölündüğü senaryo budur.
+
+Faiz artır → resesyon derinleşir.  
+Faiz indir → enflasyon alev alır.
+
+Çıkış yolu ne? 🧵👇
+
+**Tweet 2:**
+Stagflasyon = stagnation + inflation
+
+Normal resesyonda fiyatlar düşer: talep azalır, şirketler fiyat kırar. Ama stagflasyonda bu mekanizma çalışmaz — ekonomi yavaşlar, işsizlik artar, fiyatlar ise yukarıda kalır.
+
+1970'lerdeki petrol krizinde ABD bunu yaşadı. Fed faizi %20'ye çıkarmak zorunda kaldı.
+
+**Tweet 3:**
+Stagflasyonda kazandıran varlıklar:
+
+🥇 Altın → enflasyon + güvenli liman talebi
+🛢️ Emtia → arz şokunu fiyata yansıtır
+🏥 Defansif hisseler → gıda, sağlık, enerji
+📄 Kısa vadeli tahvil → uzun vadeli tahvil erir
+
+Kaybettiren: büyüme hisseleri, uzun tahvil, yüksek borçlu şirketler.
+
+**Tweet 4:**
+Türkiye için ekstra risk: ithalat bağımlılığı.
+
+Küresel bir enerji ya da emtia şoku geldiğinde "dışarıdan ithal edilmiş stagflasyon" baskısı en çok cari açıkla yaşayan ekonomileri vurur.
+
+TL, kur, enflasyon, büyüme — hepsi birbirine bağlı zincirler.
+
+**Tweet 5 (kapanış):**
+Stagflasyon sinyallerini erkenden okumak için şunlara bak:
+
+✅ CPI/PPI trendi yukarı mı?
+✅ GDP verileri yavaşlıyor mu?
+✅ İşsizlik yükseliyor mu?
+✅ Verim eğrisi ters mi?
+
+Bunların hepsi bir arada yükseliyorsa tetikte ol.
+
+Detaylı rehber 👉 parafomo.com/blog/stagflasyon-nedir/
+
+---
+
+### Instagram Post Taslağı
+
+**Caption:**
+
+🚨 Ekonomi hem durgun hem pahalı olabilir — buna STAGFLASYON denir.
+
+Peki yatırımcı ne yapmalı?
+
+📌 Stagflasyon = enflasyon + durgunluk aynı anda
+📌 Merkez bankası ikiye bölünür: faiz artıramaz, indiremez
+📌 1970'lerde ABD'de petrol kriziyle yaşandı
+📌 Altın ve emtia en güçlü korunan varlıklar oldu
+
+Sinyalleri nasıl okursun, portföyünü nasıl konumlandırırsın?
+
+Linkteki rehberde 👆 (profil linkinde)
+
+#stagflasyon #enflasyon #ekonomi #yatırım #altın #resesyon #merkez bankası #parasalfomo #paraFOMO #kisiselfinans
+
+---
+
+### Senin Bugün Yapman Gerekenler
+
+1. **Thread ve post paylaş** → Yukarıdaki X thread'ini ve Instagram post'unu yayınla. Gündem sıcakken (19 Ağustos FOMC ve İngiltere CPI var) bu yazı tam zamanında.
+2. **Toplulukta paylaş** → İlgili finans/ekonomi gruplarında (Facebook, Telegram) kısa bir yorum ekleyerek paylaş: "Merkez bankası stagflasyonda neden ikilemde kalır? Az bilinen ama kritik bir kavram: [link]"
+
+---
+
 ## 2026-08-16 — Opsiyon Nedir? Alım ve Satım Opsiyonu Nasıl Çalışır?
 
 **Yayınlanan yazı:**  
