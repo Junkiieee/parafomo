@@ -1,0 +1,58 @@
+{
+  "slug": "gram-altin-haberleri-seni-neden-yaniltiyor",
+  "title": "Gram Altın Haberleri Seni Neden Yanıltıyor",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Dolar bazlı altın düşüş haberleri Türk yatırımcısını yanıltıyor. TL gram altın fiyatı ons fiyatı ile döviz kurunun çarpımıdır; bu dinamik beklediğinin tersine çalışabilir.",
+  "tags": [
+    "altın",
+    "gram altın",
+    "döviz kuru",
+    "ons fiyatı",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Dolar altın düşünce TL altının da eridiğini sanıyorsun.",
+      "visual": {
+        "type": "concept",
+        "query": "gold price chart declining red screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Dolar bazlı altın haberleri günde onlarca geliyor. Ama bu haberler Türk yatırımcısını doğrudan etkilemiyor.",
+      "visual": {
+        "type": "concept",
+        "query": "financial news headlines television screen breaking news"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gram altın ons fiyatı çarpı döviz kuru. Dolar beş düştü, kur sekiz arttı mı? TL altının yükseliyor.",
+      "visual": {
+        "type": "concept",
+        "query": "currency exchange rate formula calculation whiteboard"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "TL altın hem fiyata hem kura karşı çalışıyor. Bu haberler seni değil, dolar yatırımcısını ilgilendiriyor.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bars coins protection safe investment"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu korumanın kırıldığı senaryo gerçekten var mı? Yakında burada. Abone ol — her gün 60 saniyede bir net analiz, başka bir yerden bulamazsın.",
+      "visual": {
+        "type": "concept",
+        "query": "smartphone subscribe notification bell social media"
+      }
+    }
+  ]
+}
