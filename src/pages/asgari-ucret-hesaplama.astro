@@ -1,0 +1,343 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+
+// 2026 asgari ücret — 1 Ocak 2026'dan itibaren geçerli resmî tutarlar.
+// Kaynak: Resmî Gazete / Çalışma ve Sosyal Güvenlik Bakanlığı (Alomaliye, EY, CSGB — doğrulandı 2026-08).
+// 2026 için Temmuz/ikinci yarı ara zam YAPILMADI (yılda tek zam); bu tutarlar 31 Aralık 2026'ya
+// kadar geçerli. Yeni tutar Aralık 2026 komisyonunda belirlenip 1 Ocak 2027'de yürürlüğe girer.
+// GÜNCELLEME: Ocak 2027'de yeni tutarlarla değiştir.
+const BRUT = 33030.0; // aylık brüt
+const NET = 28075.5; // aylık net (gelir+damga istisna, sadece SGK %14 + işsizlik %1 kesintili)
+const GUNLUK_BRUT = 1101.0;
+const SAATLIK_BRUT = 146.8;
+const SGK_ISCI = 4624.2; // %14
+const ISSIZLIK_ISCI = 330.3; // %1
+const TOPLAM_KESINTI = 4954.5;
+const NET_GUNLUK = NET / 30; // SGK 30 gün konvansiyonu
+
+// İşverene maliyet (aylık)
+const ISVEREN = [
+  { label: 'Teşviksiz (standart)', val: 40874.63 },
+  { label: 'İmalat — 5 puan indirimli', val: 39223.13 },
+  { label: 'İmalat dışı — 2 puan indirimli', val: 40214.03 },
+];
+const DESTEK = 1270.0; // asgari ücret desteği (maliyetten düşülür)
+
+// Sonraki asgari ücret: Aralık 2026 komisyonu → 1 Ocak 2027 yürürlük.
+const target = new Date('2027-01-01T00:00:00+03:00');
+const now = new Date();
+const daysToNew = Math.max(0, Math.ceil((target.getTime() - now.getTime()) / 86400000));
+
+// Varsayılan: tam ay (30 gün)
+const D = { days: 30 };
+
+const fmt = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+const fmt0 = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+
+const faq = [
+  {
+    q: '2026 asgari ücret ne kadar?',
+    a: `2026 yılında asgari ücret aylık brüt ${fmt0(BRUT)} ₺, net (eline geçen) ${fmt(NET)} ₺'dir. Günlük brüt ${fmt0(GUNLUK_BRUT)} ₺, saatlik brüt ${fmt(SAATLIK_BRUT)} ₺'dir. Bu tutarlar 1 Ocak 2026'dan 31 Aralık 2026'ya kadar geçerlidir.`,
+  },
+  {
+    q: 'Asgari ücretten ne kadar kesinti yapılıyor?',
+    a: `Asgari ücret gelir vergisi ve damga vergisinden istisnadır (2022'den beri). Brüt ${fmt0(BRUT)} ₺'den yalnızca SGK işçi payı %14 (${fmt(SGK_ISCI)} ₺) ve işsizlik sigortası işçi payı %1 (${fmt(ISSIZLIK_ISCI)} ₺) kesilir; toplam kesinti ${fmt(TOPLAM_KESINTI)} ₺'dir. Böylece net ${fmt(NET)} ₺ eline geçer.`,
+  },
+  {
+    q: 'Asgari ücretin işverene maliyeti ne kadar?',
+    a: `Teşviksiz senaryoda 2026 asgari ücretin işverene aylık toplam maliyeti ${fmt(ISVEREN[0].val)} ₺'dir (brüt ücret + %15,5 işveren SGK + %2 işveren işsizlik primi). İmalat sektöründe 5 puanlık indirimle ${fmt(ISVEREN[1].val)} ₺'ye düşer. Ayrıca aylık ${fmt0(DESTEK)} ₺ devlet asgari ücret desteği maliyetten düşülür.`,
+  },
+  {
+    q: '2027 asgari ücret ne zaman açıklanacak, zam ne zaman gelecek?',
+    a: `2026 için Temmuz'da (yıl ortası) ara zam yapılmadı; hükümet yılda tek zam politikasını sürdürüyor. Yeni asgari ücret, Asgari Ücret Tespit Komisyonu'nun Aralık 2026'daki toplantılarında belirlenecek ve 1 Ocak 2027'de yürürlüğe girecek. Bugünden itibaren buna yaklaşık ${daysToNew} gün var.`,
+  },
+  {
+    q: 'Günlük ve saatlik asgari ücret ne kadar?',
+    a: `2026 günlük brüt asgari ücret ${fmt0(GUNLUK_BRUT)} ₺, saatlik brüt ${fmt(SAATLIK_BRUT)} ₺'dir. Eksik günlü (part-time / ay içi işe giriş-çıkış) çalışmada ücret, çalışılan gün sayısıyla orantılanır: net günlük yaklaşık ${fmt(NET_GUNLUK)} ₺.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Asgari Ücret Hesaplama', url: '/asgari-ucret-hesaplama' },
+];
+---
+
+<BaseLayout
+  title="2026 Asgari Ücret Ne Kadar? Net, Brüt ve İşveren Maliyeti Hesaplama"
+  description="2026 asgari ücret: net 28.075,50 ₺, brüt 33.030 ₺. Güncel günlük/saatlik ücret, SGK kesinti dökümü, işveren maliyeti ve eksik günlü (kıst) asgari ücret hesaplama aracı."
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Maaş & Ücret</p>
+      <h1>2026 Asgari Ücret Ne Kadar?</h1>
+      <p class="lede">
+        2026'da asgari ücret <strong>net {fmt(NET)} ₺</strong>, brüt {fmt0(BRUT)} ₺'dir.
+        Aşağıda güncel <strong>kesinti dökümünü, işveren maliyetini</strong> ve çalıştığınız
+        gün sayısına göre <strong>eksik günlü (kıst) asgari ücreti</strong> hesaplayın.
+      </p>
+    </header>
+
+    <div class="stat-row">
+      <div class="stat"><span class="stat-label">Net (aylık)</span><span class="stat-val">₺{fmt(NET)}</span></div>
+      <div class="stat"><span class="stat-label">Brüt (aylık)</span><span class="stat-val">₺{fmt0(BRUT)}</span></div>
+      <div class="stat"><span class="stat-label">Günlük brüt</span><span class="stat-val">₺{fmt0(GUNLUK_BRUT)}</span></div>
+      <div class="stat"><span class="stat-label">Saatlik brüt</span><span class="stat-val">₺{fmt(SAATLIK_BRUT)}</span></div>
+    </div>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Çalışılan gün sayısı (ay içi)</span>
+          <input type="number" id="in-days" value={D.days} min="0" max="30" step="1" inputmode="numeric" />
+        </label>
+        <p class="input-hint">
+          Tam ay = 30 gün. Ay içinde işe giren/çıkan ya da part-time çalışanlar için gün girin.
+        </p>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Net (çalışılan güne göre)</span>
+          <span class="result-value" id="out-net">₺{fmt(NET)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Brüt</span>
+            <span class="split-val" id="out-gross">₺{fmt(BRUT)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">SGK işçi payı (%14)</span>
+            <span class="split-val" id="out-sgk">−₺{fmt(SGK_ISCI)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">İşsizlik sig. (%1)</span>
+            <span class="split-val" id="out-issizlik">−₺{fmt(ISSIZLIK_ISCI)}</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note">
+          Gelir vergisi ve damga vergisi asgari ücrette istisnadır (kesinti yok).
+        </p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır; hukuki/mali tavsiye değildir. 2026 için 1 Ocak
+      2026 tarihli resmî tutarlar (brüt {fmt0(BRUT)} ₺, net {fmt(NET)} ₺) esas alınmıştır ve
+      31 Aralık 2026'ya kadar geçerlidir. Eksik günlü hesap 30 günlük SGK konvansiyonuna göre
+      orantılanır; gerçek bordro, prim gün sayısı ve yan haklara göre değişebilir.
+    </p>
+
+    <section class="table-block countdown-block">
+      <h2>2027 asgari ücret ne zaman açıklanacak?</h2>
+      <p class="table-intro">
+        2026'da yıl ortası (Temmuz) ara zam yapılmadı. Yeni asgari ücret, Asgari Ücret Tespit
+        Komisyonu'nun <strong>Aralık 2026</strong> toplantılarında belirlenecek ve
+        <strong>1 Ocak 2027</strong>'de yürürlüğe girecek.
+      </p>
+      <div class="countdown">
+        <span class="cd-num">{daysToNew}</span>
+        <span class="cd-label">gün sonra yeni asgari ücret yürürlükte (1 Ocak 2027)</span>
+      </div>
+    </section>
+
+    <section class="table-block">
+      <h2>Asgari ücret kesinti dökümü (2026)</h2>
+      <table class="rate-table">
+        <thead><tr><th>Kalem</th><th>Oran</th><th>Tutar (aylık)</th></tr></thead>
+        <tbody>
+          <tr><td>Brüt asgari ücret</td><td>—</td><td>₺{fmt(BRUT)}</td></tr>
+          <tr><td>SGK primi işçi payı</td><td>%14</td><td>−₺{fmt(SGK_ISCI)}</td></tr>
+          <tr><td>İşsizlik sigortası işçi payı</td><td>%1</td><td>−₺{fmt(ISSIZLIK_ISCI)}</td></tr>
+          <tr><td>Gelir vergisi</td><td>İstisna</td><td>₺0,00</td></tr>
+          <tr><td>Damga vergisi</td><td>İstisna</td><td>₺0,00</td></tr>
+          <tr class="current"><td>Net (eline geçen)</td><td>—</td><td>₺{fmt(NET)}</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">
+        2022'den beri asgari ücret gelir ve damga vergisinden istisnadır; tek kesinti SGK + işsizlik primidir.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Asgari ücretin işverene maliyeti (2026)</h2>
+      <p class="table-intro">
+        İşverenin ödediği toplam maliyet, brüt ücrete işveren SGK primi (%15,5) ve işveren
+        işsizlik primi (%2) eklenerek bulunur:
+      </p>
+      <table class="rate-table">
+        <thead><tr><th>Senaryo</th><th>Aylık toplam maliyet</th></tr></thead>
+        <tbody>
+          {ISVEREN.map((r, i) => (
+            <tr class={i === 0 ? 'current' : ''}>
+              <td>{r.label}</td>
+              <td>₺{fmt(r.val)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Aylık {fmt0(DESTEK)} ₺ devlet asgari ücret desteği uygulandığında bu tutarlar yaklaşık
+        {fmt0(DESTEK)} ₺ azalır.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Net ve brüt asgari ücret arasındaki fark</h2>
+      <p>
+        <strong>Brüt ücret</strong>, işverenin bordroda gösterdiği toplam ücrettir;
+        <strong>net ücret</strong> ise kesintiler sonrası çalışanın eline geçen tutardır.
+        2026'da brüt {fmt0(BRUT)} ₺ olan asgari ücretten yalnızca SGK işçi payı (%14) ve
+        işsizlik sigortası işçi payı (%1) kesilir — toplam {fmt(TOPLAM_KESINTI)} ₺. Asgari ücret
+        gelir vergisi ve damga vergisinden muaf olduğu için net {fmt(NET)} ₺ eline geçer.
+      </p>
+      <h2>Eksik günlü (kıst) asgari ücret nasıl hesaplanır?</h2>
+      <p>
+        Ay içinde işe giren, işten ayrılan veya part-time çalışanlarda ücret, çalışılan gün
+        sayısıyla orantılanır. SGK 30 günlük ay esasını kullanır: <strong>günlük brüt
+        {fmt0(GUNLUK_BRUT)} ₺</strong> çalışılan günle çarpılır. Örneğin 15 gün çalışan biri
+        brüt {fmt0(GUNLUK_BRUT * 15)} ₺, net yaklaşık {fmt0(NET_GUNLUK * 15)} ₺ alır. Yukarıdaki
+        araçta gün sayısını girerek kendi tutarınızı görebilirsiniz.
+      </p>
+      <p class="cta-line">
+        Maaşınızı enflasyona karşı korumak için → <a href="/bilesik-faiz-hesaplama">bileşik faiz
+        hesaplama</a> ile birikiminizi büyütün; işten ayrılıyorsanız
+        <a href="/kidem-tazminati-hesaplama">kıdem tazminatı hesaplama</a> ile hak ettiğiniz
+        tazminatı, kira artışınızı ise <a href="/kira-artis-orani-hesaplama">kira artış oranı
+        hesaplama</a> ile öğrenin.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ GUNLUK_BRUT, NET, BRUT, SGK_ISCI, ISSIZLIK_ISCI }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const money = (n) => '₺' + nf.format(n);
+      const NET_GUNLUK = NET / 30;
+      const SGK_GUNLUK = SGK_ISCI / 30;
+      const ISS_GUNLUK = ISSIZLIK_ISCI / 30;
+
+      function update() {
+        let days = Math.round(+$('in-days').value || 0);
+        days = Math.max(0, Math.min(30, days));
+        const brut = GUNLUK_BRUT * days;
+        const sgk = SGK_GUNLUK * days;
+        const iss = ISS_GUNLUK * days;
+        const net = NET_GUNLUK * days;
+        $('out-net').textContent = money(net);
+        $('out-gross').textContent = money(brut);
+        $('out-sgk').textContent = '−' + money(sgk);
+        $('out-issizlik').textContent = '−' + money(iss);
+        $('out-note').textContent = days === 30
+          ? 'Gelir vergisi ve damga vergisi asgari ücrette istisnadır (kesinti yok).'
+          : `${days} günlük çalışma için orantılı hesaplandı (30 günlük ay esası).`;
+      }
+
+      $('in-days').addEventListener('input', update);
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .stat-row {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7rem; margin-bottom: 1.4rem;
+    }
+    .stat {
+      display: flex; flex-direction: column; gap: 0.2rem; text-align: center;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 0.75rem 0.5rem;
+    }
+    .stat-label { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; }
+    .stat-val { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600; color: var(--brand-ink); }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.6rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input {
+      font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .input-hint { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 0.9rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.95rem; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .rate-table tr.current td { font-weight: 700; color: var(--brand-ink); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .countdown-block { background: var(--surface); border-radius: var(--radius); padding: 1.3rem 1.4rem; }
+    .countdown { display: flex; align-items: baseline; gap: 0.7rem; margin-top: 0.6rem; }
+    .cd-num { font-family: var(--font-serif); font-size: 2.6rem; font-weight: 700; color: var(--brand-2); line-height: 1; }
+    .cd-label { font-size: 0.9rem; color: var(--text-soft); font-weight: 500; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+      .stat-row { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</BaseLayout>

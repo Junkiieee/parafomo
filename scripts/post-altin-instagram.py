@@ -89,6 +89,7 @@ SECONDARY_TOOLS = [
     "📅 Piyasa veri takvimi → parafomo.com/ekonomik-takvim",
     "🏠 Yasal kira zam tavanı → parafomo.com/kira-artis-orani-hesaplama",
     "📈 Bileşik faizle paran ne olur? → parafomo.com/bilesik-faiz-hesaplama",
+    "💵 2026 asgari ücret net/brüt → parafomo.com/asgari-ucret-hesaplama",
 ]
 
 
