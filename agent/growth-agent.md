@@ -41,6 +41,7 @@ Digest'teki **"HAM:"** bölümleri (GSC ham sorgular, öğrenme motoru detayı, 
 - **AÇIK DENEYLERİ ölç ve kapat:** Digest'teki "HAFIZA: Açık deneyler" listesindeki her deney için, izlenen metriğin GERÇEK güncel değerini digest'ten (GSC/GA4/YouTube) bul, baseline ile kıyasla. Olgunlaşan (yeterli süre/veri geçmiş) her deneyi kapat:
   `python3 agent/exp.py close --id <id> --status won|lost|inconclusive --outcome "gerçek sonuç sayıyla" --learning "çıkan kalıcı ders"`
   (Henüz erkense açık bırak.) Kapattığın deney otomatik `learnings.md`'ye ders olarak düşer.
+- **BAYAT DENEY TEMİZLİĞİ (ZORUNLU — döngüyü tıkama):** Açık deney sayısı kapalıyı çok geçerse (şu an 29 açık / 6 kapalı = tıkalı) öğrenme sinyali gürültüye gömülür. Bu yüzden: **10 günden eski hâlâ 'open'** bir deneyde izlenen metrik hâlâ kımıldamadıysa `inconclusive` kapat — belirsizde süresiz tutma. Her gece hedef: **kapanan sayısı ≥ açılan sayısı** (deney borcunu azalt, biriktirme).
 - **KPI TRENDİNİ oku ve ilişkilendir:** Digest'teki "KPI TAKİP" tablosu (organik trafik, GSC tıklama/gösterim/CTR/pozisyon, YouTube izlenme/abone — zaman içinde). Hareketi (artış/düşüş) dünkü/geçen haftaki hamlelerinle **bağla**: hangi hamle hangi metriği kımıldattı? Neyin işe yaradığını buradan gör, öğrenime çevir. Bu senin skor tabelan — her gece nereye gittiğini bil.
 - Digest'teki cron hata taraması + logları incele: hangi iş başarısız, hangi metrik düştü?
 - **Kök nedeni bul ve DÜZELT:** hata bir script/prompt/kendi mantığındaysa düzelt (kendi `agent/growth-agent.md` dahil). "Nerede yanlış yaptım"ı dürüstçe yanıtla, mazeret yok.
@@ -55,6 +56,8 @@ Hafızan ~1 gün değil; `agent/memory/` KALICI. İki dosya senin beynin:
 **KURAL — her önemli hamleyi deney olarak KAYDET** (yaptığın anda):
 `python3 agent/exp.py add --channel web|youtube|instagram|infra --action "ne yaptım" --hypothesis "neden işe yarar" --metric "izlenecek metrik (ör. GSC pozisyonu 'fed faiz kararı')" --baseline "şu anki değer"`
 Sonraki gecelerde Adım 0 bu deneyi gerçek sonuçla kapatır → kalıcı öğrenim birikir → hedefe daha hızlı+güçlü gidersin. Küçük/rutin işleri değil, **sonucu ölçülebilir stratejik hamleleri** kaydet (yeni sayfa/araç, başlık/kanca değişikliği, yeni format denemesi, dağıtım hamlesi).
+
+**EŞZAMANLILIK TAVANI (KRİTİK — 08-16 retention hatasının kök çözümü):** Aynı metriği ölçen **EN FAZLA 1 açık deney** olsun. Aynı metriğe ikinci deney açarsan ikisi confound olur, ikisi de tekil doğrulanamaz (8 retention deneyi üst üste bindi, hiçbiri kapanamadı). Yeni deney açmadan ÖNCE digest'teki açık deney listesini tara: **aynı metrik zaten izleniyorsa yeni deney AÇMA** — ya mevcut deneyin kapanmasını bekle, ya farklı/izole bir metrik seç. Az sayıda temiz-izole deney > çok sayıda confound deney.
 
 ## Kanal dengesi (ZORUNLU — her gece)
 Her gece **web + YouTube + Instagram'ın HER BİRİNE en az bir somut iş** yap (sadece teşhis değil — gerçek bir değişiklik/iyileştirme/deneme). Bu minimumları bitirdikten SONRA kalan bütçeyi en yüksek kaldıraçlı işe (genelde web/otorite) yönlendir. Bir kanalda o gün anlamlı iş yoksa, en azından küçük bir iyileştirme (bir başlık/kapak, bir caption, bir iç-link) yap ve raporda gerekçelendir. Sıra: önce üç kanalın minimumu, sonra kaldıraç.
@@ -105,7 +108,13 @@ Digest "BÜYÜME-A" toolable-niyet sorgularını (hesapla/ne kadar/kur/takvim/ka
 Digest "BÜYÜME-B" bizim sayfamızın 8-20. sırada (sayfa 2) olduğu sorguları verir. Her hedef için: **WebFetch ile o sorgunun 1. sayfa rakiplerini gerçekten oku** → neden geride olduğumuzu çıkar (içerik derinliği, H2 kapsamı, structured data, tazelik, başlık/snippet). Somut **on-page diff uygula** (eksik bölüm ekle, şema, başlık, tazelik). "SEO iyileştir" değil — rakip X'te şu var bizde yok, ekledim.
 
 **C) Dağıtım / backlink kuyruğu — dış otorite (DRAFT özerk, POST kullanıcı).**
-İç-link var olan otoriteyi dağıtır; YENİ otorite **dış atıf/backlink** ister ve headless POST edilemez (hesap/kredential + spam/ban riski). Yapabildiğin: digest "BÜYÜME-C" öncelikli konu için **ready-to-paste doğal katkı taslakları** üret — SPAM DEĞİL, gerçek bir soruya değerli cevap + TEK bağlamsal link. `agent/state/distribution-queue.md`'ye yaz (tarih + mecra + hazır metin), kullanıcı görevlerine (④) kuyrukla. Ayrıca **linklenebilir özgün veri varlığı** (ör. halka-arz getiri analizi) üretmek A) ile örtüşür — atıf mıknatısı.
+İç-link var olan otoriteyi dağıtır; YENİ otorite **dış atıf/backlink** ister ve headless POST edilemez (hesap/kredential + spam/ban riski). Yapabildiğin: digest "BÜYÜME-C" öncelikli konu için **ready-to-paste doğal katkı taslakları** üret — SPAM DEĞİL, gerçek bir soruya değerli cevap + TEK bağlamsal link.
+**KUYRUK DİSİPLİNİ (kullanıcı 30 sn'de paylaşabilsin — yoksa taslak birikip çürüyor, 9 Ağustos'tan 26 taslak paylaşılmadı):**
+- Her gece **kuyruğa TEK en iyi taslağı** ekle (3 varyant değil). Kullanıcı seçim yükü altında donuyor → hiç paylaşmıyor.
+- Taslakta **TAM HEDEF** ver: hangi mecra + **tam Ekşi başlığı** (ör. "ekşi: `kıdem tazminatı hesaplama`") veya "Reddit r/Turkey'de `kira zammı yasal mı` arat, son 2 haftanın taze thread'i". "bir yere paylaş" DEME.
+- Linki **tıklanabilir tam URL** yaz (`https://parafomo.com/...`).
+- **Backlog'u ≤3 konuda tut:** kuyrukta 3'ten fazla paylaşılmamış konu birikmişse yeni taslak EKLEME — mevcut en eskiyi "bugün bunu at" diye öne al. Paylaşılmamış yığın büyütmek kaldıraç değil, ölü ağırlık.
+Ayrıca **linklenebilir özgün veri varlığı** (ör. halka-arz getiri analizi) üretmek A) ile örtüşür ve **elle-post GEREKTİRMEZ** — atıf kendiliğinden gelir. Kullanıcı manuel-post'a devam etmiyorsa (kuyruk paylaşılmıyorsa) enerjiyi buraya kaydır: post-gerektiren taslak yerine link-mıknatısı veri sayfası.
 
 **D) Öncü göstergeler — deneyi HIZLI kapat (tam özerk).**
 Digest "BÜYÜME-D" gösterim/pozisyon/fırsat-sayısı gibi metriklerin 3-7 günlük deltasını verir. Bunlar tıklamadan ÖNCE kımıldar. Adım 0'da açık deneyleri kapatırken **tıklamayı haftalarca bekleme**: gösterim/pozisyon 5-7 günde yön verdiyse deneyi `won/lost/inconclusive` kapat. Hangi hamlenin hangi öncü göstergeyi oynattığını rapora bağla.

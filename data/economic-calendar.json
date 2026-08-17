@@ -1,34 +1,34 @@
 {
-  "updated": "2026-08-16",
+  "updated": "2026-08-17",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
     {
-      "date": "2026-08-13",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core PPI m/m",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-08-13",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "PPI m/m",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-08-13",
+      "date": "2026-08-18",
       "time": "6:00am",
       "region": "GBP",
       "impact": "High",
-      "title": "GDP m/m",
+      "title": "Claimant Count Change",
       "source": "forexfactory",
-      "hook": "Büyüme verisi — küresel görünüm."
+      "hook": ""
+    },
+    {
+      "date": "2026-08-19",
+      "time": "6:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "CPI y/y",
+      "source": "forexfactory",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-08-19",
+      "time": "6:00pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "FOMC Meeting Minutes",
+      "source": "forexfactory",
+      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
     },
     {
       "date": "2026-09-03",
