@@ -1,0 +1,75 @@
+{
+  "slug": "guvenli-liman-sandin-tahvilinde-ne-eriyor-m",
+  "title": "Güvenli Liman Sandın — Tahvilinde Ne Eriyor?",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Devlet garantisi paranı geri verir ama satın alma gücünü korumaz. Tahvilin enflasyon karşısındaki gerçek performansı düşündüğünden farklı.",
+  "tags": [
+    "devlet tahvili",
+    "hazine bonosu",
+    "enflasyon",
+    "yatırım",
+    "para yönetimi",
+    "finansal okuryazarlık",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Devlet garantisi paranı değil, devleti koruyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Güvenli",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Devlet paranı geri verir — ama faiz enflasyonun altında kalırsa, aradaki farkı sen ödüyorsun.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yüz bin lira tahvile girdi, faiz geldi — ama market sepeti çok daha hızlı büyüdü.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Faiz",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Tahvil borcunu öder, satın alma gücünü ödemez. Gerçek güvenli liman enflasyonu geçen araçtır.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Hangi araç gerçekten satın alma gücünü korudu? Karşılaştırmayı yakında açıklıyoruz. Abone ol — her gün 60 saniyede paran için net bir bilgi.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
