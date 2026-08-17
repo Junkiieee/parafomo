@@ -4,6 +4,108 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-17 — Quantitative Tightening (QT) Nedir? Merkez Bankası Bilanço Küçültme Rehberi
+
+**Yayınlanan yazı:**
+[Quantitative Tightening (QT) Nedir? Merkez Bankası Bilanço Küçültme Rehberi](https://parafomo.com/blog/quantitative-tightening-nedir/)
+Slug: `quantitative-tightening-nedir` | Kategori: Ekonomi | ~8 dk okuma
+Hedef sorgu: **quantitative tightening nedir** (evergreen ekonomi; Fed bilançosu + QE/QT döngüsü + verim eğrisi + reel faiz cluster)
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**
+Fed piyasaya para bastığında herkes biliyor: QE.
+
+Peki o parayı geri çektiğinde ne oluyor?
+
+Buna QT deniyor — ve tahvilleri, doları, TL'yi etkiliyor.
+
+Nasıl çalışır? 🧵👇
+
+**Tweet 2:**
+QT = Quantitative Tightening = "Niceliksel Sıkılaştırma"
+
+Fed QE döneminde tahvil alıp piyasaya para basar.
+QT döneminde tam tersini yapar: vadesi dolan tahvilleri yenilemez, para sistemden çekilir.
+
+Sonuç: Piyasada daha az para → borçlanma daha pahalı → enflasyon yavaşlar.
+
+**Tweet 3:**
+QT'nin piyasalara etkisi özetle:
+
+📈 Uzun vadeli faizler → yükselir
+📉 Tahvil fiyatları → düşer
+💵 Dolar → güçlenir
+📉 Büyüme hisseleri → baskı altında
+📉 TL → değer kaybı riski artar
+
+2022'den bu yana yaşadığımız budur.
+
+**Tweet 4:**
+Türk yatırımcısı için kritik:
+
+Fed QT yapınca dolar güçlenir → TL değer kaybeder.
+
+Ne yapabilirsin?
+✔️ Döviz çeşitlendirmesi
+✔️ Kısa vadeli araçlar tercih et (uzun tahvil değer kaybeder)
+✔️ Savunmacı hisseler (düşük borç, yüksek temettü)
+✔️ Likit kal — oynaklık fırsat da yaratır
+
+**Tweet 5 (kapanış + link):**
+QT ne zaman biter?
+
+Ekonomi yavaşlamaya, işsizlik artmaya başladığında Fed fren yapar. 2017-2019'da repo krizi QT'yi bitirdi. 2022 sonrasında da aynı sinyal bekleniyor.
+
+Detaylı rehber 👇
+parafomo.com/blog/quantitative-tightening-nedir/
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Kapak slayt:**
+Fed'in Gizli Silahı: QT 📊
+Piyasayı yönlendiren "bilanço küçültme" nedir?
+
+**Slayt 2:**
+QE vs QT
+🟢 QE: Para basar → faizler düşer → piyasalar yükselir
+🔴 QT: Para çeker → faizler yükselir → piyasalar baskı altında
+
+**Slayt 3:**
+QT Döneminde Kazananlar & Kaybedenler
+✅ Dolar güçlenir
+✅ Kısa vadeli tahvil görece dayanıklı
+✅ Savunmacı hisseler
+❌ Büyüme hisseleri (yüksek F/K)
+❌ Uzun vadeli tahvil
+❌ TL (değer kaybı riski)
+
+**Slayt 4:**
+Türk Yatırımcısı İçin QT Stratejisi
+• Döviz çeşitlendirmesi yap
+• Kısa vadeli araçları tercih et
+• Likit kal, oynaklığı fırsata çevir
+• Savunmacı sektörleri incele
+
+**Slayt 5 (CTA):**
+Tüm detaylar için 👇
+parafomo.com/blog/quantitative-tightening-nedir/
+
+Hashtag: #quantitativetightening #fedpolitikası #parapolikası #yatırım #ekonomi #parafomo
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş:** Yukarıdaki thread ve carousel metnini kopyalayıp bugün yayınla. Instagram'da 5 slaytlık carousel olarak hazırla.
+2. **1 ilgili toplulukta değer katarak paylaş:** Ekşi Sözlük'te "quantitative easing" veya "merkez bankası" başlıklarına, ya da finans Telegram/Discord gruplarına yazıyı spam yapmadan bağlam katarak ekle.
+
+---
+
 ## 2026-08-17 — Stagflasyon Nedir? Enflasyon + Durgunluk Sarmalı ve Yatırımcı Stratejisi
 
 **Yayınlanan yazı:**  

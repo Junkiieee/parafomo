@@ -62,7 +62,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Vadeli İşlem Sözleşmesi (Futures) nedir? Türev ürün rehberi — `Yatırım` — hedef: "vadeli işlem sözleşmesi nedir"
 - [x] Opsiyon nedir? Alım ve satım opsiyonu nasıl çalışır? — `Yatırım` — hedef: "opsiyon nedir"
 - [x] Stagflasyon nedir? Enflasyon + durgunluk sarmalı ve yatırımcı stratejisi — `Ekonomi` — hedef: "stagflasyon nedir"
-- [ ] Quantitative Tightening (QT) nedir? Merkez bankası bilanço küçültme rehberi — `Ekonomi` — hedef: "quantitative tightening nedir"
+- [x] Quantitative Tightening (QT) nedir? Merkez bankası bilanço küçültme rehberi — `Ekonomi` — hedef: "quantitative tightening nedir"
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
@@ -184,5 +184,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Vadeli İşlem Sözleşmesi (Futures) Nedir? Türev Ürün Rehberi — `vadeli-islem-sozlesmesi-nedir` (backlog: evergreen yatırım; "vadeli işlem sözleşmesi nedir" sorgusu; VİOP + kaldıraç + hedge cluster'ını tamamlayan türev ürün rehberi; opsiyon yazısının tamamlayıcısı)
 
 - [x] Opsiyon Nedir? Alım ve Satım Opsiyonu Nasıl Çalışır? — `opsiyon-nedir-alim-satim-opsiyonu` (backlog: evergreen yatırım; "opsiyon nedir" sorgusu; call/put + VİOP + türev ürün cluster'ını tamamlayan piece; vadeli işlem yazısının devamı niteliğinde)
+
+- [x] Quantitative Tightening (QT) Nedir? Merkez Bankası Bilanço Küçültme Rehberi — `quantitative-tightening-nedir` (backlog: evergreen ekonomi; "quantitative tightening nedir" sorgusu; Fed bilançosu + QE/QT döngüsü + verim eğrisi + reel faiz cluster'ını tamamlayan piece)
 
 - [x] Stagflasyon Nedir? Enflasyon + Durgunluk Sarmalı ve Yatırımcı Stratejisi — `stagflasyon-nedir` (backlog: evergreen ekonomi; "stagflasyon nedir" sorgusu; resesyon + enflasyon ikilemi; altın/emtia/defansif hisse korunma stratejisi; verim eğrisi + enflasyon cluster'ını tamamlayan piece)
