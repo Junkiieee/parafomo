@@ -1,0 +1,59 @@
+{
+  "slug": "faiz-hesabina-gecmeden-yuzde-on-besi-kim-aliyor",
+  "title": "Faiz Hesabına Geçmeden Yüzde On Beşi Kim Alıyor?",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Bankaya para yatırınca faizin yüzde on beşi stopaj vergisi olarak otomatik kesilir. Enflasyon da hesaba girince mevduatın gerçek getirisi çoğu zaman negatife düşüyor.",
+  "tags": [
+    "mevduat",
+    "stopaj",
+    "faiz vergisi",
+    "enflasyon",
+    "tasarruf",
+    "birikim",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Mevduat faizinin yüzde on beşini devlet alıyor, haberin yok.",
+      "visual": {
+        "type": "concept",
+        "query": "bank deposit money tax automatic cut"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "100 bin TL'ye 10 bin faiz kazandığında 1.500 lira vergi anında kesilir — görmeden gider.",
+      "visual": {
+        "type": "concept",
+        "query": "bank statement deduction amount receipt"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu mevduat kuralı sabit: devlet, faizi bankaya ödeyeceği anda kendi payını zaten ayırmış olur.",
+      "visual": {
+        "type": "place",
+        "query": "Hazine Bakanlığı Ankara"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Net faizden enflasyonu da çıkarırsan paran büyük ihtimalle gerçekte küçülüyor — sadece rakam artıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "negative real return savings inflation erosion cash"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Stopajın dışında hangi araç bu yıl enflasyonu geçti, sıradaki hesap onda — abone ol, her gün tek net rakam.",
+      "visual": {
+        "type": "concept",
+        "query": "investment comparison returns finance chart screen"
+      }
+    }
+  ]
+}
