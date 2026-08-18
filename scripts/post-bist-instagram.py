@@ -96,13 +96,21 @@ def http_post(url, data):
             return {"error": {"message": f"HTTP {e.code}"}}
 
 
-def url_ok(url):
-    try:
-        req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": "parafomo-ig/1.0"})
-        with urllib.request.urlopen(req, timeout=20) as r:
-            return r.status == 200
-    except Exception:
-        return False
+def url_ok(url, tries=6, delay=10):
+    # Push sonrası GitHub raw CDN gecikmesi olabilir; tek atış yerine geri-çekilmeli
+    # yeniden dene (görsel zaten push edildi, birkaç saniye/dk içinde canlılaşır).
+    for i in range(tries):
+        try:
+            req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": "parafomo-ig/1.0"})
+            with urllib.request.urlopen(req, timeout=20) as r:
+                if r.status == 200:
+                    return True
+        except Exception:
+            pass
+        if i < tries - 1:
+            print(f"[bist] görsel henüz canlı değil, {delay}s bekle (deneme {i+1}/{tries})…")
+            time.sleep(delay)
+    return False
 
 
 def main():

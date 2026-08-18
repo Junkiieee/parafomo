@@ -1,0 +1,374 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+
+// 2026 net/brüt maaş hesaplama — resmî parametreler.
+// Kaynak: 193 s. GVK md.103 ücret tarifesi (01.01.2026), Alomaliye/MuhasebeTR ile doğrulandı 2026-08.
+// Gelir vergisi ücret tarifesi (2026): 190.000'e kadar %15 · 190.001-400.000 %20 ·
+// 400.001-1.500.000 %27 · 1.500.001-5.300.000 %35 · üzeri %40.
+// Asgari ücret gelir + damga vergisi istisnası herkese uygulanır (2022'den beri).
+// GÜNCELLEME: Ocak 2027'de yeni asgari ücret + yeni tarife dilimleriyle güncelle.
+const MIN_BRUT = 33030.0; // 2026 aylık brüt asgari ücret
+const MIN_MATRAH = 28075.5; // asgari ücret gelir vergisi matrahı (brüt − %15 SGK/işsizlik)
+const SGK_TAVAN = MIN_BRUT * 7.5; // 2026 SGK/işsizlik prime esas kazanç tavanı = 247.725 ₺
+const DAMGA_ORAN = 0.00759; // binde 7,59
+const MIN_DAMGA = MIN_BRUT * DAMGA_ORAN; // asgari ücret damga istisnası
+
+// Ücret gelir vergisi tarifesi (2026) — [üst sınır, oran]
+const BRACKETS: [number, number][] = [
+  [190000, 0.15],
+  [400000, 0.2],
+  [1500000, 0.27],
+  [5300000, 0.35],
+  [Infinity, 0.4],
+];
+
+// Kümülatif matrah üzerinden toplam gelir vergisi
+function gv(m: number): number {
+  let tax = 0;
+  let prev = 0;
+  for (const [top, rate] of BRACKETS) {
+    if (m > top) {
+      tax += (top - prev) * rate;
+      prev = top;
+    } else {
+      tax += (m - prev) * rate;
+      return tax;
+    }
+  }
+  return tax;
+}
+
+// Sabit maaş varsayımıyla, belirtilen ay için net maaş
+function netMaas(brut: number, ay = 1) {
+  const sgkBase = Math.min(brut, SGK_TAVAN);
+  const sgk = sgkBase * 0.14;
+  const iss = sgkBase * 0.01;
+  const matrah = brut - sgk - iss;
+  const cumBefore = matrah * (ay - 1);
+  const gvMonth = gv(cumBefore + matrah) - gv(cumBefore);
+  const minCum = MIN_MATRAH * (ay - 1);
+  const minGv = gv(minCum + MIN_MATRAH) - gv(minCum);
+  const istisna = Math.min(gvMonth, minGv);
+  const gelirV = Math.max(0, gvMonth - istisna);
+  const damga = Math.max(0, brut * DAMGA_ORAN - MIN_DAMGA);
+  const net = brut - sgk - iss - gelirV - damga;
+  return { brut, sgk, iss, gelirV, damga, net, matrah };
+}
+
+const DEFAULT_BRUT = 75000;
+const d = netMaas(DEFAULT_BRUT, 1);
+
+// Örnek net maaş tablosu (ilk ay / yıl başı, %15 dilimi)
+const ORNEKLER = [33030, 40000, 50000, 75000, 100000, 150000, 250000].map((b) => netMaas(b, 1));
+
+const fmt = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+const fmt0 = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+
+const faq = [
+  {
+    q: 'Brütten nete nasıl geçilir? (2026)',
+    a: `Brüt maaştan önce SGK işçi payı %14 ve işsizlik sigortası %1 (toplam %15) kesilir; kalan tutar gelir vergisi matrahıdır. Matrah, yıl içinde biriken (kümülatif) tutara göre 2026 ücret tarifesinden vergilendirilir (190.000 ₺'ye kadar %15). Ardından binde 7,59 damga vergisi hesaplanır. Asgari ücret kadar kısmın gelir ve damga vergisi herkes için istisnadır, bu tutar vergiden düşülür. Kalan tutar net (eline geçen) maaştır.`,
+  },
+  {
+    q: 'Neden maaşım yıl ortasında düşüyor?',
+    a: `Türkiye'de gelir vergisi kümülatiftir: yıl başından beri biriken matrah arttıkça bir üst dilime geçilir. Kümülatif matrah 190.000 ₺'yi aşınca vergi oranı %15'ten %20'ye, 400.000 ₺'yi aşınca %27'ye çıkar. Bu yüzden aynı brüt maaşta net tutar yılın ikinci yarısında kademeli olarak azalır. Hesaplayıcıda "hangi ay" alanını değiştirerek bu etkiyi görebilirsiniz.`,
+  },
+  {
+    q: '2026 gelir vergisi dilimleri (ücret) nelerdir?',
+    a: `2026 ücret gelir vergisi tarifesi: 190.000 ₺'ye kadar %15; 190.001–400.000 ₺ arası %20; 400.001–1.500.000 ₺ arası %27; 1.500.001–5.300.000 ₺ arası %35; 5.300.000 ₺ üzeri %40. Dilim sınırı yıl içinde biriken kümülatif matraha göre belirlenir.`,
+  },
+  {
+    q: 'Asgari ücret istisnası ne demek?',
+    a: `2022'den beri asgari ücret tutarına denk gelen gelir vergisi ve damga vergisi tüm çalışanlar için istisnadır. Yani herkesin maaşından, asgari ücret üzerinden hesaplanan vergi (2026 ilk ay için aylık ${fmt0(MIN_MATRAH * 0.15)} ₺ gelir vergisi + ${fmt0(MIN_DAMGA)} ₺ damga) düşülür. Bu yüzden asgari ücretli hiç gelir/damga vergisi ödemez, üstündekiler ise yalnızca aşan kısım için öder.`,
+  },
+  {
+    q: 'Bu hesap gerçek bordromla birebir aynı mı?',
+    a: `Araç, sabit aylık maaş ve standart kesinti (%14 SGK + %1 işsizlik) varsayımıyla çalışır. Gerçek bordro; yan haklar (yol/yemek/ikramiye), özel sigorta/BES kesintisi, engellilik indirimi, prim gün sayısı ve SGK tavanı gibi etkenlerle değişebilir. Sonuç güçlü bir tahmindir, resmî bordro yerine geçmez.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Net Maaş Hesaplama', url: '/net-maas-hesaplama' },
+];
+---
+
+<BaseLayout
+  title="Net Maaş Hesaplama 2026 — Brütten Nete Maaş Hesaplama Aracı"
+  description="2026 net maaş hesaplama: brüt maaşı girin, SGK, gelir vergisi (kümülatif) ve damga vergisi kesintileriyle eline geçen net ücreti anında görün. Güncel 2026 gelir vergisi dilimleriyle."
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Maaş & Ücret</p>
+      <h1>Net Maaş Hesaplama (2026)</h1>
+      <p class="lede">
+        Brüt maaşınızı girin; <strong>SGK, gelir vergisi ve damga vergisi</strong> kesintileriyle
+        eline geçen <strong>net ücreti</strong> güncel 2026 tarifesiyle anında hesaplayın.
+      </p>
+    </header>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Brüt maaş (aylık, ₺)</span>
+          <input type="number" id="in-brut" value={DEFAULT_BRUT} min="0" step="500" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Hangi ay? (kümülatif etki)</span>
+          <select id="in-ay">
+            {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => (
+              <option value={m} selected={m === 1}>{m}. ay</option>
+            ))}
+          </select>
+        </label>
+        <p class="input-hint">
+          Sabit maaş varsayımıyla hesaplanır. "1. ay" yıl başı / en yüksek net; ilerleyen aylarda
+          kümülatif matrah büyüdükçe net düşebilir.
+        </p>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Net maaş (eline geçen)</span>
+          <span class="result-value" id="out-net">₺{fmt(d.net)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Brüt</span>
+            <span class="split-val" id="out-gross">₺{fmt(d.brut)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">SGK işçi payı (%14)</span>
+            <span class="split-val" id="out-sgk">−₺{fmt(d.sgk)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">İşsizlik sig. (%1)</span>
+            <span class="split-val" id="out-iss">−₺{fmt(d.iss)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Gelir vergisi (istisna sonrası)</span>
+            <span class="split-val" id="out-gv">−₺{fmt(d.gelirV)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Damga vergisi</span>
+            <span class="split-val" id="out-damga">−₺{fmt(d.damga)}</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note">
+          Asgari ücret kadar gelir/damga vergisi istisnası uygulandı.
+        </p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır; hukuki/mali tavsiye değildir. 2026 resmî gelir
+      vergisi ücret tarifesi ve %14 SGK + %1 işsizlik işçi payı esas alınmıştır. Sabit maaş
+      varsayımıyla hesaplanır; gerçek bordro yan haklar, prim gün sayısı, özel kesintiler ve SGK
+      tavanına göre değişebilir.
+    </p>
+
+    <section class="table-block">
+      <h2>2026 net maaş tablosu (brütten nete, ilk ay)</h2>
+      <p class="table-intro">
+        Yıl başı / %15 diliminde çeşitli brüt maaşların net karşılığı. İlerleyen aylarda kümülatif
+        matrah büyüdükçe net tutar bir miktar düşer.
+      </p>
+      <table class="rate-table">
+        <thead><tr><th>Brüt</th><th>SGK+İşsizlik</th><th>Gelir vergisi</th><th>Net (eline geçen)</th></tr></thead>
+        <tbody>
+          {ORNEKLER.map((r) => (
+            <tr class={r.brut === MIN_BRUT ? 'current' : ''}>
+              <td>₺{fmt0(r.brut)}{r.brut === MIN_BRUT ? ' (asgari)' : ''}</td>
+              <td>−₺{fmt0(r.sgk + r.iss)}</td>
+              <td>−₺{fmt0(r.gelirV)}</td>
+              <td>₺{fmt0(r.net)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Asgari ücrette (brüt {fmt0(MIN_BRUT)} ₺) gelir ve damga vergisi istisna olduğu için net
+        {fmt0(MIN_MATRAH)} ₺'dir.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>2026 gelir vergisi dilimleri (ücret)</h2>
+      <table class="rate-table">
+        <thead><tr><th>Kümülatif matrah</th><th>Oran</th></tr></thead>
+        <tbody>
+          <tr><td>190.000 ₺'ye kadar</td><td>%15</td></tr>
+          <tr><td>190.001 – 400.000 ₺</td><td>%20</td></tr>
+          <tr><td>400.001 – 1.500.000 ₺</td><td>%27</td></tr>
+          <tr><td>1.500.001 – 5.300.000 ₺</td><td>%35</td></tr>
+          <tr><td>5.300.000 ₺ üzeri</td><td>%40</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">
+        Dilim, yıl başından beri biriken (kümülatif) matraha göre belirlenir; bu yüzden aynı brüt
+        maaşın neti yılın ikinci yarısında kademeli düşer.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Brüt maaş nasıl nete çevrilir?</h2>
+      <p>
+        <strong>Brüt maaş</strong> işverenin bordroda gösterdiği toplam ücrettir;
+        <strong>net maaş</strong> ise tüm kesintiler sonrası elinize geçen tutardır. Sırasıyla:
+        (1) brütten %14 SGK ve %1 işsizlik primi düşülür, kalan <em>gelir vergisi matrahı</em>dır;
+        (2) matrah, yıl içinde biriken kümülatif tutara göre 2026 tarifesinden vergilendirilir;
+        (3) brüt üzerinden binde 7,59 damga vergisi hesaplanır; (4) asgari ücrete denk gelen
+        gelir ve damga vergisi istisnası düşülür. Kalan tutar net maaştır.
+      </p>
+      <h2>Kümülatif vergi matrahı neden önemli?</h2>
+      <p>
+        Gelir vergisi her ay sıfırlanmaz; yıl boyunca birikir. Kümülatif matrah 190.000 ₺'yi
+        aştığında oran %20'ye, 400.000 ₺'yi aştığında %27'ye yükselir. Yüksek maaşlılarda bu geçiş
+        yılın ortasında yaşanır ve net maaş görünür biçimde azalır. Yıllık bordronuzu planlarken
+        bu etkiyi hesaba katın.
+      </p>
+      <p class="cta-line">
+        İlgili araçlar: <a href="/asgari-ucret-hesaplama">asgari ücret hesaplama</a> ile 2026 net/brüt
+        asgari ücreti, işten ayrılırsanız <a href="/kidem-tazminati-hesaplama">kıdem tazminatı
+        hesaplama</a> ile hak ettiğiniz tazminatı, birikiminizi büyütmek için
+        <a href="/bilesik-faiz-hesaplama">bileşik faiz hesaplama</a> aracını kullanın.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p set:html={f.a} />
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ MIN_MATRAH, SGK_TAVAN, DAMGA_ORAN, MIN_DAMGA }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const money = (n) => '₺' + nf.format(n);
+      const BRACKETS = [[190000, 0.15], [400000, 0.2], [1500000, 0.27], [5300000, 0.35], [Infinity, 0.4]];
+
+      function gv(m) {
+        let tax = 0, prev = 0;
+        for (const [top, rate] of BRACKETS) {
+          if (m > top) { tax += (top - prev) * rate; prev = top; }
+          else { tax += (m - prev) * rate; return tax; }
+        }
+        return tax;
+      }
+
+      function update() {
+        const brut = Math.max(0, +$('in-brut').value || 0);
+        const ay = Math.max(1, Math.min(12, +$('in-ay').value || 1));
+        const sgkBase = Math.min(brut, SGK_TAVAN);
+        const sgk = sgkBase * 0.14;
+        const iss = sgkBase * 0.01;
+        const matrah = brut - sgk - iss;
+        const cumBefore = matrah * (ay - 1);
+        const gvMonth = gv(cumBefore + matrah) - gv(cumBefore);
+        const minCum = MIN_MATRAH * (ay - 1);
+        const minGv = gv(minCum + MIN_MATRAH) - gv(minCum);
+        const istisna = Math.min(gvMonth, minGv);
+        const gelirV = Math.max(0, gvMonth - istisna);
+        const damga = Math.max(0, brut * DAMGA_ORAN - MIN_DAMGA);
+        const net = brut - sgk - iss - gelirV - damga;
+
+        $('out-net').textContent = money(net);
+        $('out-gross').textContent = money(brut);
+        $('out-sgk').textContent = '−' + money(sgk);
+        $('out-iss').textContent = '−' + money(iss);
+        $('out-gv').textContent = '−' + money(gelirV);
+        $('out-damga').textContent = '−' + money(damga);
+        $('out-note').textContent = gelirV === 0
+          ? 'Bu tutarda gelir vergisi asgari ücret istisnasıyla tamamen karşılandı.'
+          : `${ay}. ay için kümülatif matrah üzerinden hesaplandı (asgari ücret istisnası düşüldü).`;
+      }
+
+      $('in-brut').addEventListener('input', update);
+      $('in-ay').addEventListener('change', update);
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.7rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input, .calc-inputs select {
+      font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus, .calc-inputs select:focus {
+      outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft);
+    }
+    .input-hint { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 0.9rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.95rem; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .rate-table tr.current td { font-weight: 700; color: var(--brand-ink); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>

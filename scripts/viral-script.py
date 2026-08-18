@@ -142,7 +142,10 @@ Kurallar:
   sonra abone çağrısı + net bir SEBEP/vaat ("her gün 60 saniyede tek net analiz" gibi, bunu da döndür).
   "abone ol" ifadesi mutlaka geçsin ama aynı cümleyi tekrarlama.
 - title: kancadan FARKLI olsun (aynı cümleyi tekrarlama), merak boşluğu taşısın, <70 karakter,
-  klişe içermesin; tıklanınca içerik sözü tutsun.
+  klişe içermesin; tıklanınca içerik sözü tutsun. ÖNEMLİ: Shorts akışı başlığı ~40 karakterde
+  KESER — bu yüzden en çarpıcı kelimeyi/konu anahtarını (altın, dolar, faiz, emeklilik vb.) İLK
+  40 karaktere yerleştir; merak/çengeli başa koy, açıklayıcı kısmı sona bırak. Soru değil,
+  iddialı/net cümle tercih et.
 - Sade, net, abartısız; değer ver. Yanlış/uydurma rakam verme; tahmini ifadeleri "yaklaşık/olası" diye ver.
 - Her segmente bir "visual" ekle.
 %(visual_guide)s
