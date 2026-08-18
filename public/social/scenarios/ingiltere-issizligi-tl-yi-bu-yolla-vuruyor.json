@@ -1,0 +1,59 @@
+{
+  "slug": "ingiltere-issizligi-tl-yi-bu-yolla-vuruyor",
+  "title": "İngiltere İşsizliği TL'yi Bu Yolla Vuruyor",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "İngiltere claimant count verisi yükseldiğinde sterlin zayıflar, risk iştahı düşer ve TL dahil gelişen piyasalar baskı altına girer — mekanizma 3 adımda.",
+  "tags": [
+    "ingiltere işsizlik",
+    "claimant count",
+    "sterlin",
+    "TL",
+    "döviz",
+    "altın",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Londra'da işsiz arttı — paran neden etkilendi?",
+      "visual": {
+        "type": "place",
+        "query": "Bank of England London building"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "İngiltere işsizlik yardımına başvuran sayısı arttıkça merkez bankası faiz indirmeye yaklaşıyor — sterlin zayıflıyor.",
+      "visual": {
+        "type": "logo",
+        "query": "Bank of England logo"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama darbe dolaylı: risk iştahı düşer, gelişen piyasalar satılır — TL de bu akımdan etkilenir.",
+      "visual": {
+        "type": "place",
+        "query": "Borsa İstanbul"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu ortamda altın genellikle güçlenir; TL'de birikimin varsa pozisyonunu gözden geçirmek mantıklı.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars safe haven"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu veri önümüzdeki haftanın piyasalarını nasıl şekillendirir? Öğrenmek istiyorsan abone ol — her gün kısa net analiz burada.",
+      "visual": {
+        "type": "scene",
+        "query": "financial chart mobile phone notification"
+      }
+    }
+  ]
+}
