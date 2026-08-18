@@ -4,6 +4,96 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-18 — Kaldıraç Nedir? Marjinli İşlemlerde Risk ve Getiri Hesabı
+
+**Yayınlanan yazı:**
+[Kaldıraç Nedir? Marjinli İşlemlerde Risk ve Getiri Hesabı](https://parafomo.com/blog/kaldirac-nedir-marjinli-islemler/)
+Slug: `kaldirac-nedir-marjinli-islemler` | Kategori: Yatırım | ~8 dk okuma
+Hedef sorgu: **kaldıraç nedir** (evergreen, türev ürün / VİOP cluster)
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**
+Az parayla büyük pozisyon açmak kulağa harika gelir.
+Peki gerçekte ne oluyor?
+
+Kaldıraç: Kazancı büyüten, ama kaybı da aynı oranda şişiren araç 🧵👇
+
+**Tweet 2:**
+Kaldıraç nedir?
+
+Elindeki sermayenin katı büyüklüğünde işlem yapmanı sağlayan mekanizma.
+
+📌 1.000 TL teminatla 10.000 TL'lik pozisyon → 1:10 kaldıraç
+
+**Tweet 3:**
+Piyasa %5 lehinize döndü mü?
+
+✅ Kaldıraçsız: 50 TL kazandın (%5)
+✅ 1:10 kaldıraçla: 500 TL kazandın (%50)
+
+Piyasa %5 aleyhe döndü mü?
+
+❌ Kaldıraçsız: 50 TL kaybettin
+❌ 1:10 kaldıraçla: 500 TL kaybettin
+
+**Tweet 4:**
+Ve en tehlikeli an: MARGIN CALL
+
+Hesabın belirli bir eşiğin altına düşünce aracı kurum pozisyonu zorla kapatır.
+
+Ek teminat yatırmazsan → tüm teminat gidebilir.
+
+**Tweet 5:**
+Türkiye'de kaldıraçlı işlemin en güvenli yeri: VİOP
+
+BIST 30 futures, döviz futures, altın futures — hepsi Borsa İstanbul bünyesinde, Takasbank güvencesiyle.
+
+**Tweet 6:**
+Altın kural: Her işlemde hesabının max %1-2'sini riske at.
+
+10 defa üst üste kaybet → hesabın %20 erir, bitmez.
+
+Risk yönetimi kaldıraçta en kritik beceridir.
+
+Detayların tamamı ↓
+https://parafomo.com/blog/kaldirac-nedir-marjinli-islemler/
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Başlık:** Kaldıraç Nedir? Az Parayla Büyük Pozisyon Açmanın Riskleri 📊
+
+**Post Metni:**
+
+Kaldıraç — borsada en çok kullanılan, en az anlaşılan kavramlardan biri.
+
+1.000 TL ile 10.000 TL'lik işlem yapmak mümkün. Ama nasıl?
+
+💡 Kaldıraç = küçük teminat, büyük pozisyon kontrolü.
+📈 Piyasa lehinize dönerse getiri büyür.
+📉 Piyasa aleyhinize dönerse kayıp da büyür.
+
+⚠️ Margin Call: Hesabın kritik eşiğin altına düştüğünde tüm pozisyon zorla kapatılabilir.
+
+Türkiye'de güvenli kaldıraçlı işlem: VİOP (Borsa İstanbul) ✅
+
+Detaylı rehber için linke tıkla 👆
+
+#kaldıraç #leverage #viop #borsaistanbul #vadelihislem #yatırım #finans #parafomo #finansokuryazarlığı #türevürün
+
+---
+
+### ✅ Senin Bugün Yapman Gerekenler
+
+1. **X thread'ini yayınla** — yukarıdaki taslağı X'te (@parafomo) paylaş.
+2. **Instagram'a carousel yayınla** — post metnini Instagram'da (@parafomo) paylaş; 4-6 slaytlık carousel şu başlıklarla: (1) Kaldıraç nedir, (2) Nasıl çalışır rakamlarla, (3) Margin Call nedir, (4) VİOP ne, (5) %1-2 kural, (6) Özet + link.
+
+---
+
 ## 2026-08-18 — Dövize Yatırım Mantıklı mı? 2026'da Döviz Hesabının Artıları ve Eksileri
 
 **Yayınlanan yazı:**

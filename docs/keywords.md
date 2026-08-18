@@ -6,6 +6,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Sıradaki konular (öncelik sırasıyla)
 
+- [x] Kaldıraç nedir? Marjinli işlemlerde risk ve getiri hesabı — `Yatırım` — hedef: "kaldıraç nedir"
 - [x] Açığa satış (short selling) nedir, borsada düşüşten nasıl kazanılır? — `Borsa` — hedef: "açığa satış nedir"
 - [x] Halka arz (IPO) nedir, nasıl yatırım yapılır? — `Borsa` — hedef: "halka arz nedir"
 - [x] Portföy çeşitlendirmesi nasıl yapılır? — `Yatırım` — hedef: "portföy çeşitlendirmesi nasıl yapılır"
@@ -65,6 +66,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Quantitative Tightening (QT) nedir? Merkez bankası bilanço küçültme rehberi — `Ekonomi` — hedef: "quantitative tightening nedir"
 
 ## Yayınlananlar (otomasyon buraya ekler)
+
+- [x] Kaldıraç Nedir? Marjinli İşlemlerde Risk ve Getiri Hesabı — `kaldirac-nedir-marjinli-islemler` (yeni evergreen yatırım; "kaldıraç nedir" sorgusu; vadeli işlem + opsiyon + VİOP cluster'ını tamamlayan temel türev kavramı; stop-loss + risk-getiri yazılarına iç link)
 
 - [x] ABD Faiz Kararı Altın, Dolar ve TL'yi Nasıl Etkiler? — `abd-faiz-karari-altin-dolar-tl-etkisi` (GSC fırsatı: "abd faiz kararı" — gösterim 9, sıra 18.4; altın+dolar+TL üçlü etki açısı; learning report altın=kazanan konu; fed-faiz-karari cluster'ını tamamlayan pratik rehber)
 
