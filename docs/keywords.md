@@ -188,3 +188,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Quantitative Tightening (QT) Nedir? Merkez Bankası Bilanço Küçültme Rehberi — `quantitative-tightening-nedir` (backlog: evergreen ekonomi; "quantitative tightening nedir" sorgusu; Fed bilançosu + QE/QT döngüsü + verim eğrisi + reel faiz cluster'ını tamamlayan piece)
 
 - [x] Stagflasyon Nedir? Enflasyon + Durgunluk Sarmalı ve Yatırımcı Stratejisi — `stagflasyon-nedir` (backlog: evergreen ekonomi; "stagflasyon nedir" sorgusu; resesyon + enflasyon ikilemi; altın/emtia/defansif hisse korunma stratejisi; verim eğrisi + enflasyon cluster'ını tamamlayan piece)
+
+- [x] Dövize Yatırım Mantıklı mı? 2026'da Döviz Hesabının Artıları ve Eksileri — `dovize-yatirim-mantikli-mi-2026` (GSC fırsatı: "dövize yatırım" gösterim 4, sıra 36.5 + "döviz hesabı açmak mantıklı mı" gösterim 3, sıra 38.0; mevcut "doviz-hesabi-nedir" yazısından farklı KARAR odaklı açı; enflasyon+kur+portföy çeşitlendirmesi cluster'ını tamamlayan pratik rehber)

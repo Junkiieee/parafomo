@@ -4,6 +4,100 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-18 — Dövize Yatırım Mantıklı mı? 2026'da Döviz Hesabının Artıları ve Eksileri
+
+**Yayınlanan yazı:**
+[Dövize Yatırım Mantıklı mı? 2026'da Döviz Hesabının Artıları ve Eksileri](https://parafomo.com/blog/dovize-yatirim-mantikli-mi-2026/)
+Slug: `dovize-yatirim-mantikli-mi-2026` | Kategori: Yatırım | ~8 dk okuma
+Hedef sorgu: **dövize yatırım** (gösterim 4, sıra 36.5) + **döviz hesabı açmak mantıklı mı** (gösterim 3, sıra 38.0)
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**
+"Döviz alsam mı?" diye kaç kez sordun kendinize?
+
+2026'da TL yine baskı altında.
+Ama döviz her zaman kazandırmaz.
+
+İşte dövize yatırımın gerçeği — kime mantıklı, kime değil 🧵👇
+
+**Tweet 2:**
+Dövize yatırım şu durumlarda mantıklıdır:
+
+✅ Yurt dışı harcama planın varsa
+✅ Portföyünü çeşitlendirmek istiyorsan
+✅ Kısa vadeli güvenli liman arıyorsan
+✅ TL mevduatın reel getirisi eksi ise
+
+**Tweet 3:**
+Ama şu durumlarda dikkatli ol:
+
+❌ Uzun vadeli büyüme hedefliyorsanız
+❌ Sürekli kur spekülasyonu yapıyorsanız
+❌ Tüm birikimini dövize çevirmeyi düşünüyorsanız
+❌ Sık alım-satım yapıyorsanız (spread maliyeti birikir)
+
+**Tweet 4:**
+Gerçek maliyet hesabı:
+
+💸 Spread: %0.5-2 her işlemde
+💸 Fırsat maliyeti: dolar %3 yükseldiyse hisse %20 getirdi
+💸 Vergi: vadeli faiz stopaja tabi
+💸 Kur riski çift yönlü — dolar da düşer
+
+**Tweet 5:**
+2026 tablosu:
+→ Fed temkinli, dolar güçlü kalmaya devam ediyor
+→ TCMB faizi yüksek, TL'de kısmi denge var
+→ Ama her iki yönde sürpriz mümkün
+
+Kural: portföyünün %20-30'unu dövizde tut — sigortası olsun, tamamı değil.
+
+Detaylı karşılaştırma tablosu + döviz fonu vs eurobond farkı → parafomo.com/blog/dovize-yatirim-mantikli-mi-2026/
+
+**Tweet 6:**
+Dövize yatırımın alternatifleri:
+
+🥇 Altın — hem enflasyon hem kur koruması
+📄 Eurobond — sabit döviz faizi
+📊 Döviz ETF/Fonu — borsa saatleri, düşük maliyet
+📈 Hisse senedi — uzun vadede dolar bazında güçlü
+
+Beğendiysen RT at, çevrene yardımcı ol 🙏
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Caption:**
+💵 Döviz hesabı açmak mantıklı mı?
+
+TL baskı altında → herkes "döviz alsam mı?" diye soruyor.
+Ama cevap hedefine bağlı.
+
+KAYDIRIP BAK 👉
+
+Slide 1: Döviz kime mantıklı?
+Slide 2: Kime mantıklı DEĞİL?
+Slide 3: 2026'da dolar/euro görünümü
+Slide 4: Döviz hesabı mı, fon mu, eurobond mu?
+Slide 5: Portföyde dövizin doğru yeri
+
+Detaylar bio'da 👆 parafomo.com
+
+#dövizehesabı #dövizeyatırım #kurkoru #finanshayatı #parayönetimi #yatırım #finansöğren #parafomo
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş:** Yukarıdaki thread ve carousel taslağını X (@parafomo) ve Instagram (@parafomo) hesaplarında yayınla.
+2. **Yarın takvim:** 19 Ağustos'ta İngiltere CPI ve FOMC tutanakları açıklanacak — zaten bu konularda yazılar mevcut, ilgili yazıları o gün sosyal medyada yeniden paylaşmayı düşün ([fomc-toplanti-tutanaklari-nedir](https://parafomo.com/blog/fomc-toplanti-tutanaklari-nedir/)).
+
+---
+
 ## 2026-08-17 — Quantitative Tightening (QT) Nedir? Merkez Bankası Bilanço Küçültme Rehberi
 
 **Yayınlanan yazı:**
