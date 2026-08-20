@@ -17,6 +17,23 @@ faq:
     a: "Hayır. Üretim kapasitesini artıran makine-teçhizat ithalatından kaynaklanan 'yatırım açığı' kabul edilebilir. Asıl sorun, açığın portföy yatırımı veya kısa vadeli borçla finanse edilmesidir; bu kırılganlık yaratır."
   - q: "Yatırımcı cari açık verisiyle ne yapmalı?"
     a: "Beklenenden yüksek cari açık TL üzerinde baskı oluşturabilir. Döviz veya altın pozisyonunu değerlendirirken bu sinyali TCMB rezervleri ve faiz politikasıyla birlikte okumak gerekir."
+shorts:
+  - "Cari açık haberi görünce dolar alıyorsan yanılıyorsun."
+  - "Önemli olan açığın büyüklüğü değil, kim ve nasıl finanse edildiği."
+  - "Turizm geliri ve doğrudan yabancı yatırım açığı TL'ye baskı yapmadan kapatır."
+  - "Kısa vadeli sıcak para ve dış borçla finanse edilirse kur çöker."
+  - "Peki hangi finansman kalemini nasıl takip edersin? ParaFOMO'ya abone ol, her hafta kritik ekonomi analizini kaçırma — parafomo.com'da daha fazlası var."
+shorts_broll:
+  - "current account deficit chart"
+  - "turkish lira exchange rate news"
+  - "foreign direct investment handshake"
+  - "capital outflow market crash"
+shorts_visuals:
+  - "concept|turkish lira dollar exchange rate screen"
+  - "concept|balance scale financial funding quality"
+  - "scene|tourists spending money at beach resort hotel"
+  - "concept|hot money capital outflow stock market crash red"
+  - "concept|person watching financial content subscribing on phone"
 ---
 
 Türkiye haberleri izliyorsan şu cümleyle mutlaka karşılaşmışsındır: "Cari açık rekor kırdı, dolar yükselecek." Peki bu cümle gerçekte ne anlama geliyor? Neden döviz kuru ve enflasyonla bu kadar iç içe geçmiş; yatırımcı olarak nasıl izlemelisin?
