@@ -4,6 +4,111 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-20 (2) — Deflasyon Nedir? Fiyatlar Düşerken Ekonomi ve Yatırımlarınız Nasıl Etkilenir?
+
+**Yayınlanan yazı:**
+[Deflasyon Nedir? Fiyatlar Düşerken Ekonomi ve Yatırımlarınız Nasıl Etkilenir?](https://parafomo.com/blog/deflasyon-nedir-ekonomi-yatirim-etkisi/)
+Slug: `deflasyon-nedir-ekonomi-yatirim-etkisi` | Kategori: Ekonomi | ~8 dk okuma
+Hedef sorgu: **deflasyon nedir** (yeni evergreen; enflasyon + stagflasyon + reel faiz cluster'ını tamamlıyor)
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**
+"Fiyatlar düşüyor — bu iyi değil mi?"
+
+Deflasyon böyle başlıyor.
+Japonya 30 yıl bu tuzakta kaldı.
+Büyük Buhran bu yüzden bu kadar ağır oldu.
+
+Neden? 🧵👇
+
+**Tweet 2:**
+Deflasyon = fiyatlar genel düzeyde sürekli düşüyor.
+
+Kulağa iyi geliyor ama şöyle düşün:
+"Bu arabayı 6 ay beklesem daha ucuza alırım"
+
+Herkes böyle düşününce kimse almıyor.
+Satışlar düşüyor → şirketler küçüldüyor → işsizlik artıyor → yine az harcıyor.
+
+Kısır döngü.
+
+**Tweet 3:**
+Tarih ne söylüyor?
+
+💥 Büyük Buhran 1929: ABD'de fiyatlar %25 düştü. İşsizlik %25'e çıktı.
+🇯🇵 Japonya 1990-2020: "Kayıp on yıllar" — insanlar harcamayı bıraktı, ekonomi dondu.
+
+En ağır krizler deflasyonun izini taşır.
+
+**Tweet 4:**
+Deflasyonda yatırım nasıl yapılır?
+
+✅ Nakit ve kısa vadeli mevduat (paranın reel değeri artar)
+✅ Uzun vadeli devlet tahvili (faiz düşer → fiyat yükselir)
+✅ Defansif hisseler (gıda, sağlık)
+❌ Borçlu şirket hisseleri
+❌ Döngüsel sektörler
+
+**Tweet 5 (kapanış + link):**
+Tam rehber — deflasyon vs enflasyon tablosu, Japonya dersi ve Türkiye bağlamı:
+
+👇 parafomo.com/blog/deflasyon-nedir-ekonomi-yatirim-etkisi/
+
+#deflasyon #ekonomi #yatırım #finans #parafomo
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Başlık:** Deflasyon Nedir? Fiyatlar Düşünce Neden Herkes Kaybeder?
+
+**Slide 1 — Kanca:**
+Fiyatlar düşüyor diye sevinme.
+Deflasyon enflasyondan da tehlikeli olabilir.
+İşte neden 👇
+
+**Slide 2 — Tanım:**
+📌 Deflasyon = fiyatlar genel seviyesinin sürekli düşmesi
+Bir ürün değil — her şey.
+TÜFE yıllık bazda negatife döndüğünde: deflasyon.
+
+**Slide 3 — Kısır Döngü:**
+🔄 Beklenti sarmalı:
+"Beklesem daha ucuza alırım" → kimse almıyor
+→ şirketler kaybediyor → işçi çıkarıyor
+→ daha az para harcanıyor → fiyatlar daha da düşüyor
+
+**Slide 4 — Karşılaştırma:**
+📊 Enflasyon vs Deflasyon vs Stagflasyon
+Enflasyon: fiyat artar, borç erir
+Deflasyon: fiyat düşer, borç ağırlaşır
+Stagflasyon: hem yüksek fiyat hem durgunluk
+
+**Slide 5 — Strateji:**
+💼 Deflasyonda portföy stratejisi:
+✅ Nakit ve kısa vadeli mevduat
+✅ Uzun vadeli devlet tahvili
+✅ Defansif hisseler (gıda, sağlık)
+❌ Yüksek borçlu şirketler
+
+**Slide 6 — CTA:**
+Büyük Buhran + Japonya dersleri + Türkiye bağlamı tam rehberde:
+🔗 parafomo.com/blog/deflasyon-nedir-ekonomi-yatirim-etkisi/
+
+#deflasyon #ekonomi #yatırım #finans #enflasyon #parafomo
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+- [ ] X thread taslağını yukarıdan kopyala, @parafomo hesabından paylaş.
+- [ ] Instagram carousel metnini hazırla ve @parafomo'dan paylaş.
+
+---
+
 ## 2026-08-20 — Cari Açık Nedir? Türkiye'nin Cari Açığı TL ve Enflasyonu Nasıl Etkiler?
 
 **Yayınlanan yazı:**

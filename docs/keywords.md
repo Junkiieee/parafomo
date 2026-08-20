@@ -64,6 +64,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Opsiyon nedir? Alım ve satım opsiyonu nasıl çalışır? — `Yatırım` — hedef: "opsiyon nedir"
 - [x] Stagflasyon nedir? Enflasyon + durgunluk sarmalı ve yatırımcı stratejisi — `Ekonomi` — hedef: "stagflasyon nedir"
 - [x] Quantitative Tightening (QT) nedir? Merkez bankası bilanço küçültme rehberi — `Ekonomi` — hedef: "quantitative tightening nedir"
+- [x] Deflasyon nedir? Fiyatlar düşerken ekonomi ve yatırımcılar nasıl etkilenir? — `Ekonomi` — hedef: "deflasyon nedir"
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
@@ -195,3 +196,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Dövize Yatırım Mantıklı mı? 2026'da Döviz Hesabının Artıları ve Eksileri — `dovize-yatirim-mantikli-mi-2026` (GSC fırsatı: "dövize yatırım" gösterim 4, sıra 36.5 + "döviz hesabı açmak mantıklı mı" gösterim 3, sıra 38.0; mevcut "doviz-hesabi-nedir" yazısından farklı KARAR odaklı açı; enflasyon+kur+portföy çeşitlendirmesi cluster'ını tamamlayan pratik rehber)
 
 - [x] Cari Açık Nedir? Türkiye'nin Cari Açığı TL ve Enflasyonu Nasıl Etkiler? — `cari-acik-nedir-turkiye-tl-etkisi` (yeni evergreen ekonomi; "cari açık nedir" sorgusu; döviz kuru + TCMB + enflasyon cluster'ını tamamlayan makro gösterge rehberi; enerji bağımlılığı + finansman kalitesi + yatırımcı sinyal tablosu)
+
+- [x] ABD Konut Başlangıçları (Housing Starts) Nedir? İnşaat Verisi Ekonomiye Nasıl Yansır? — `housing-starts-nedir` (backlog: evergreen ekonomi; "housing starts nedir" / "abd konut başlangıçları" sorguları; Fed faiz + DXY + konut yatırımı cluster'ını tamamlayan öncü gösterge; mortgage-faiz + TL kuru etkisi)
+
+- [x] Deflasyon Nedir? Fiyatlar Düşerken Ekonomi ve Yatırımlarınız Nasıl Etkilenir? — `deflasyon-nedir-ekonomi-yatirim-etkisi` (yeni evergreen ekonomi; "deflasyon nedir" sorgusu; enflasyon + stagflasyon + reel faiz + verim eğrisi cluster'ını tamamlayan temel kavram; Büyük Buhran ve Japonya "kayıp on yıllar" örnekleri; deflasyonda yatırım stratejisi; 20 Ağustos 2026)
