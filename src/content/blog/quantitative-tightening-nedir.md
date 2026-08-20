@@ -17,6 +17,23 @@ faq:
     a: "Fed genellikle ekonomik yavaşlama belirginleştiğinde, işsizlik artış hızlandığında veya piyasalarda ciddi stres işaretleri çıktığında QT'yi yavaşlatır ya da durdurur."
   - q: "QT Türk yatırımcısını nasıl etkiler?"
     a: "Fed QT uyguladığında dolar güçlenir, TL üzerinde değer kaybı baskısı oluşur. Döviz çeşitlendirmesi ve kısa vadeli sabit getirili araçlar bu dönemde koruyucu olabilir."
+shorts:
+  - "Fed faiz indirdi, piyasalar rahatladı sanıyorsun."
+  - "QT, faiz kararından bağımsız çalışır; Fed tahvil almayı bırakınca piyasadan trilyonlarca dolar çekilir."
+  - "Fed bilançosu pandemi döneminde 4'ten 9 trilyona çıktı ve tarihsel enflasyon dalgasını tetikledi."
+  - "QT sürecinde tahvil faizleri yükselir, dolar güçlenir, TL ve gelişen ülke paraları baskı görür."
+  - "Peki bu sıkılaşma ne zaman biter, TL üzerindeki baskı nasıl kalkar? Öğrenmek için kanala abone ol — tüm analizler parafomo.com'da."
+shorts_broll:
+  - "federal reserve interest rate decision"
+  - "quantitative tightening bond market chart"
+  - "dollar currency strengthening"
+  - "turkish lira exchange rate decline"
+shorts_visuals:
+  - "place|Federal Reserve Building Washington"
+  - "concept|central bank balance sheet shrinking chart"
+  - "concept|money printing inflation rising prices"
+  - "concept|dollar index rising emerging market currency fall"
+  - "concept|financial news screen subscribe notification bell"
 ---
 
 Quantitative tightening (QT), merkez bankalarının kolay para döneminde piyasaya sürdükleri fazla likiditeyi geri çekmek için uyguladığı bilanço küçültme politikasıdır. Fed'in QT adımlarını doğru okumak; tahvil faizleri, dolar kuru ve TL değeri üzerindeki etkileri anlamak için kaçınılmazdır.
