@@ -193,3 +193,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Stagflasyon Nedir? Enflasyon + Durgunluk Sarmalı ve Yatırımcı Stratejisi — `stagflasyon-nedir` (backlog: evergreen ekonomi; "stagflasyon nedir" sorgusu; resesyon + enflasyon ikilemi; altın/emtia/defansif hisse korunma stratejisi; verim eğrisi + enflasyon cluster'ını tamamlayan piece)
 
 - [x] Dövize Yatırım Mantıklı mı? 2026'da Döviz Hesabının Artıları ve Eksileri — `dovize-yatirim-mantikli-mi-2026` (GSC fırsatı: "dövize yatırım" gösterim 4, sıra 36.5 + "döviz hesabı açmak mantıklı mı" gösterim 3, sıra 38.0; mevcut "doviz-hesabi-nedir" yazısından farklı KARAR odaklı açı; enflasyon+kur+portföy çeşitlendirmesi cluster'ını tamamlayan pratik rehber)
+
+- [x] Cari Açık Nedir? Türkiye'nin Cari Açığı TL ve Enflasyonu Nasıl Etkiler? — `cari-acik-nedir-turkiye-tl-etkisi` (yeni evergreen ekonomi; "cari açık nedir" sorgusu; döviz kuru + TCMB + enflasyon cluster'ını tamamlayan makro gösterge rehberi; enerji bağımlılığı + finansman kalitesi + yatırımcı sinyal tablosu)

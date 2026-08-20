@@ -4,6 +4,82 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-20 — Cari Açık Nedir? Türkiye'nin Cari Açığı TL ve Enflasyonu Nasıl Etkiler?
+
+**Yayınlanan yazı:**
+[Cari Açık Nedir? Türkiye'nin Cari Açığı TL ve Enflasyonu Nasıl Etkiler?](https://parafomo.com/blog/cari-acik-nedir-turkiye-tl-etkisi/)
+Slug: `cari-acik-nedir-turkiye-tl-etkisi` | Kategori: Ekonomi | ~7 dk okuma
+Hedef sorgu: **cari açık nedir** (evergreen; döviz kuru + TCMB + enflasyon cluster'ını tamamlıyor)
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**
+"Cari açık rekor kırdı" haberi görünce çoğu kişi geçiyor.
+Ama dolarınla, enflasyonla, maaşınla doğrudan bağlantılı.
+
+Ne anlama geldiğini 4 maddede anlattım 🧵👇
+
+**Tweet 2:**
+Cari açık nedir?
+
+Türkiye'nin dışarıya ödediği dolar/euro toplamı,
+dışarıdan aldığından fazla olduğunda oluşur.
+
+📌 Enerji ithalatı + ara mal + dış borç faizi = kronik açık
+
+**Tweet 3:**
+Neden TL'yi etkiler?
+
+Açığı kapatmak için dövize ihtiyaç var.
+Talep artar → yeterli kaynak yoksa TL değer kaybeder → kur yükselir.
+
+Enerji ithalatı da TL'de pahalılaşır → enflasyon baskısı.
+
+**Tweet 4:**
+Her cari açık aynı değildir.
+
+Fabrika + makine ithalatından (yatırım açığı) → kabul edilebilir
+Enerji + tüketim + kısa vadeli borçtan → kırılgan
+
+Finansman kalitesine bak; tek sayıya değil.
+
+**Tweet 5 (CTA):**
+Tam rehber → parafomo.com/blog/cari-acik-nedir-turkiye-tl-etkisi/
+
+Hangi koşullarda döviz/altın pozisyonu mantıklı hale gelir, orada tablo var 👆
+
+---
+
+### Instagram Carousel / Post Metni
+
+**Caption:**
+
+Cari açık haberi gördüğünde "bu beni nasıl etkiler?" diye düşündün mü? 💡
+
+İşte cari açığın TL ve enflasyona etkisi 4 adımda:
+
+1️⃣ Türkiye, dışarıya ödediğinden daha az alınca cari açık oluşur (enerji, borç faizi, ara mal)
+2️⃣ Açığı kapatmak için dövize ihtiyaç var → TL baskı altına girer
+3️⃣ TL değer kaybedince ithal ürünler pahalılaşır → enflasyon yükselir
+4️⃣ Finansman kalitesi belirleyici: fabrika yatırımı sağlıklı, sıcak para kırılgan
+
+📌 Her ayın ortasında TCMB Ödemeler Dengesi raporunu takip et — güçlü bir bağlam sinyali.
+
+Tam analiz + yatırımcı sinyal tablosu → linkteki yazıda 👆
+
+#cari açık #TL #dolar #enflasyon #Türkiye ekonomisi #yatırım #parafomo #finans #ekonomi
+
+---
+
+### Senin Bugün Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş:** Yukarıdaki taslakları kopyala-yapıştır; X'te thread olarak, Instagram'da carousel başlığı olarak kullan.
+2. **Toplulukta paylaş:** Reddit r/Turkey veya finans odaklı Telegram/Facebook gruplarında "cari açık neden önemli" sorusu gördüğünde bu yazıyı referans göstererek değer katarak paylaş.
+
+---
+
 ## 2026-08-18 — Kaldıraç Nedir? Marjinli İşlemlerde Risk ve Getiri Hesabı
 
 **Yayınlanan yazı:**
