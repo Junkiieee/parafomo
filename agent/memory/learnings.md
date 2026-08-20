@@ -37,3 +37,4 @@ Yeni ders: `python3 agent/exp.py learn --channel <k> --text "..."` veya deney ka
 - [2026-08-18][web] insights izni gelene dek insights-bağımlı IG deneyi AÇMA (thumb_offset dahil); değişikliği yap ama exp olarak izleme
 - [2026-08-18][web] insights-bağımlı IG mikro-testi (seed-yorum) exp olarak tutulmaz; batch geri-test insights gelince
 - [2026-08-18][web] Dağıtım-C exp olarak izlenmez (kanıtlı): elle-post akışı durdukça referral=0; C'yi duran görev tut, enerji link-mıknatısı A sayfalarına
+- [2026-08-20][youtube] Yerel merkez-bankası TIMING sayfası (tcmb-faiz-takvimi) Fed-takvimi kadar HIZLI surface OLMADI: 'tcmb faiz kararı ne zaman' talebi 'fed toplantı tarihleri'nden düşük ve MEVSİMSEL (PPK tarihine yakın canlanır). Sayfa kaybeden değil — dormant/seasonal; bir sonraki PPK tarihine yakın yeniden ölç. Ders: yeni timing sayfası kurmadan önce GSC'de o timing sorgusunun taban talebini (≥5 gös) doğrula; her yerel-CB timing'i Fed gibi hızlı dönmez.

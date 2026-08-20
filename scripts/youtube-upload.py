@@ -29,6 +29,37 @@ def site_url_for(slug):
     return "https://parafomo.com"
 
 
+# Konu → İLGİLİ ARAÇ SAYFASI eşlemesi (huni iyileştirme). Blog olmayan viral Short'un
+# funnel linki jenerik ana sayfa yerine konuya uygun interaktif araca gider → izleyici
+# değerli bir sayfaya iner (jenerik ana sayfadan daha iyi landing). Retention'ı ve hashtag
+# arama bloğunu ETKİLEMEZ — ayrı funnel/UTM yüzeyi.
+_TOOL_MAP = [
+    ("kdv", "/kdv-hesaplama"),
+    ("altın", "/altin-hesaplama"), ("altin", "/altin-hesaplama"), ("gram", "/altin-hesaplama"),
+    ("asgari", "/asgari-ucret-hesaplama"),
+    ("net maaş", "/net-maas-hesaplama"), ("net maas", "/net-maas-hesaplama"),
+    ("maaş", "/net-maas-hesaplama"), ("maas", "/net-maas-hesaplama"),
+    ("kıdem", "/kidem-tazminati-hesaplama"), ("kidem", "/kidem-tazminati-hesaplama"),
+    ("tazminat", "/kidem-tazminati-hesaplama"),
+    ("kira", "/kira-artis-orani-hesaplama"),
+    ("kredi", "/kredi-hesaplama"), ("taksit", "/kredi-hesaplama"),
+    ("bileşik", "/bilesik-faiz-hesaplama"), ("bilesik", "/bilesik-faiz-hesaplama"),
+    ("enflasyon", "/enflasyon-takvimi"), ("tüfe", "/enflasyon-takvimi"), ("tufe", "/enflasyon-takvimi"),
+    ("tcmb", "/tcmb-faiz-takvimi"),
+    ("fed", "/fed-faiz-takvimi"), ("fomc", "/fed-faiz-takvimi"),
+    ("halka arz", "/halka-arz"), ("ipo", "/halka-arz"),
+]
+
+
+def tool_url_for(slug, title=""):
+    """Blog olmayan Short için konuya en uygun araç sayfası URL'i (yoksa ana sayfa)."""
+    hay = f"{slug} {title}".lower()
+    for kw, path in _TOOL_MAP:
+        if kw in hay:
+            return f"https://parafomo.com{path}"
+    return "https://parafomo.com/ekonomik-takvim"
+
+
 def with_utm(url):
     """Huni linkine UTM etiketi ekle → GA4 'YouTube→site' trafiğini Direct'ten AYIRIR.
     Ölçüm olmadan huninin çalışıp çalışmadığı bilinemez (24K izlenme → siteye ~0)."""
@@ -79,9 +110,19 @@ def topic_hashtags(slug, title=""):
 
 def with_funnel(description, slug, title=""):
     """Açıklamaya siteye yönlendiren altbilgi + abone CTA + konu hashtag'leri ekle (huni)."""
-    url = with_utm(site_url_for(slug))
-    is_article = "parafomo.com/blog/" in url
-    lead = "📖 Konunun tam rehberi (ücretsiz):" if is_article else "📊 Günlük altın/dolar/borsa analizleri:"
+    base = site_url_for(slug)
+    is_article = "parafomo.com/blog/" in base
+    # Blog değilse: jenerik ana sayfa yerine konuya uygun interaktif araç sayfası (daha iyi landing + huni).
+    if not is_article:
+        base = tool_url_for(slug, title)
+    url = with_utm(base)
+    is_tool = "/hesaplama" in base or "-takvimi" in base or "/halka-arz" in base
+    if is_article:
+        lead = "📖 Konunun tam rehberi (ücretsiz):"
+    elif is_tool:
+        lead = "🧮 İlgili ücretsiz hesaplama/veri aracı:"
+    else:
+        lead = "📊 Günlük altın/dolar/borsa analizleri:"
     footer = (f"\n\n———\n{lead}\n👉 {url}\n\n"
               "🔔 Kaçırmamak için ABONE OL — her gün yeni finans içeriği.\n\n"
               + topic_hashtags(slug, title))

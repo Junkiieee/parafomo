@@ -1,0 +1,362 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+
+// Varsayılan senaryo — JS kapalıyken bile sayfa dolu görünsün (SEO + no-JS).
+const D = { amount: 1000, rate: 20, mode: 'add' as 'add' | 'extract' };
+
+// mode 'add'   : girilen tutar KDV HARİÇ (matrah) → üstüne KDV eklenir
+// mode 'extract': girilen tutar KDV DAHİL (brüt) → içinden KDV ayrılır
+function kdvCalc(amount: number, ratePct: number, mode: 'add' | 'extract') {
+  const r = ratePct / 100;
+  if (mode === 'extract') {
+    const matrah = amount / (1 + r);
+    const kdv = amount - matrah;
+    return { matrah, kdv, total: amount };
+  }
+  const kdv = amount * r;
+  return { matrah: amount, kdv, total: amount + kdv };
+}
+const base = kdvCalc(D.amount, D.rate, D.mode);
+
+const fmt = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+
+// Güncel KDV oranları (2026) — 10 Temmuz 2023'ten beri geçerli (standart %18→%20, indirimli %8→%10).
+const rates = [
+  { rate: 20, label: 'Genel (standart) oran', ex: 'Elektronik, giyim, mobilya, beyaz eşya, çoğu hizmet, akaryakıt' },
+  { rate: 10, label: 'İndirimli oran', ex: 'Gıda (bazı), tekstil ürünleri, lokanta/yeme-içme, konaklama, ilaç' },
+  { rate: 1, label: 'Süper indirimli oran', ex: 'Temel gıda (ekmek, un, süt, sebze-meyve), gazete-dergi, cenaze hizmeti' },
+];
+
+const faq = [
+  {
+    q: 'KDV nasıl hesaplanır?',
+    a: `KDV, matrah (KDV hariç tutar) ile KDV oranının çarpımıdır: KDV = Matrah × (Oran ÷ 100). Örneğin ${fmt(D.amount)} ₺ KDV hariç bir mala %${D.rate} KDV eklerseniz KDV tutarı ${fmt(base.kdv)} ₺, KDV dahil toplam ${fmt(base.total)} ₺ olur. KDV dahil bir fiyattan matrahı bulmak için ise tutarı (1 + oran) sayısına bölersiniz.`,
+  },
+  {
+    q: 'KDV dahil fiyattan KDV nasıl ayrıştırılır?',
+    a: 'KDV dahil (brüt) bir tutarın içindeki KDV’yi bulmak için tutarı 1’in üzerine oran eklenmiş katsayıya bölersiniz. %20 için: Matrah = Brüt ÷ 1,20; KDV = Brüt − Matrah. Örneğin 120 ₺ KDV dahil fiyatta matrah 100 ₺, KDV 20 ₺’dir. Bu araçta "KDV dahil tutardan ayır" modunu seçerek bunu otomatik yapabilirsiniz. Pratik kısayol: %20 için brütün 1/6’sı (%16,67), %10 için 1/11’i, %1 için 1/101’i KDV’dir.',
+  },
+  {
+    q: '2026’da KDV oranları kaç?',
+    a: 'Türkiye’de üç KDV oranı uygulanır: genel (standart) oran %20, indirimli oran %10 ve süper indirimli oran %1. Bu oranlar 10 Temmuz 2023’ten bu yana geçerlidir (öncesinde %18 / %8 / %1 idi). Elektronik, giyim, mobilya ve çoğu hizmet %20; birçok gıda, lokanta ve konaklama %10; ekmek, un, süt gibi temel gıdalar ise %1 grubundadır.',
+  },
+  {
+    q: 'Matrah ne demek?',
+    a: 'Matrah, KDV hesaplanmadan önceki tutardır — yani malın veya hizmetin KDV hariç (net) bedeli. KDV her zaman matrah üzerinden hesaplanır. Faturada "mal/hizmet tutarı" satırı matrahı, "hesaplanan KDV" satırı bu matraha uygulanan vergiyi, "genel toplam" ise KDV dahil ödenecek tutarı gösterir.',
+  },
+  {
+    q: 'İşletmeler ödediği KDV’yi geri alabilir mi?',
+    a: 'KDV mükellefi işletmeler, satışlarından tahsil ettikleri "hesaplanan KDV"den, alışlarında ödedikleri "indirilecek KDV"yi düşer; aradaki farkı devlete öderler (KDV indirim mekanizması). Yani işletme için KDV genelde bir maliyet değil, aracılık edilen bir vergidir. Nihai tüketici ise indirim yapamaz; KDV’yi fiyatın içinde fiilen öder. Bu nedenle KDV bir "harcama/tüketim vergisi"dir.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'KDV Hesaplama', url: '/kdv-hesaplama' },
+];
+---
+
+<BaseLayout
+  title="KDV Hesaplama 2026 | KDV Ekle, KDV Dahil Tutardan Ayır"
+  description="Ücretsiz KDV hesaplama aracı. Tutarı ve oranı (%1, %10, %20) girin; KDV tutarını, KDV hariç matrahı ve KDV dahil toplamı anında görün. KDV ekleme ve KDV dahil fiyattan ayırma."
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Katma Değer Vergisi</p>
+      <h1>KDV Hesaplama</h1>
+      <p class="lede">
+        Tutarı ve KDV oranını girin; <strong>KDV tutarını, KDV hariç matrahı ve KDV dahil
+        toplamı</strong> anında görün. İster fiyatın üstüne KDV ekleyin, ister KDV dahil
+        fiyattan KDV’yi ayrıştırın.
+      </p>
+    </header>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Tutar (₺)</span>
+          <input type="number" id="in-amount" value={D.amount} min="0" step="10" inputmode="decimal" />
+        </label>
+        <label>
+          <span>KDV oranı</span>
+          <select id="in-rate">
+            <option value="20" selected>%20 (genel oran)</option>
+            <option value="10">%10 (indirimli)</option>
+            <option value="1">%1 (temel gıda)</option>
+            <option value="0">Diğer / özel oran</option>
+          </select>
+        </label>
+        <label id="custom-rate-wrap" hidden>
+          <span>Özel oran (%)</span>
+          <input type="number" id="in-custom-rate" value="8" min="0" max="100" step="0.5" inputmode="decimal" />
+        </label>
+        <fieldset class="mode-toggle">
+          <legend>Hesaplama yönü</legend>
+          <label class="radio">
+            <input type="radio" name="mode" value="add" checked />
+            <span>Tutara KDV <strong>ekle</strong> (girilen tutar KDV hariç)</span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="mode" value="extract" />
+            <span>KDV dahil tutardan <strong>ayır</strong> (girilen tutar KDV dahil)</span>
+          </label>
+        </fieldset>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label" id="out-main-label">KDV dahil toplam</span>
+          <span class="result-value" id="out-total">₺{fmt(base.total)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">KDV hariç matrah</span>
+            <span class="split-val" id="out-matrah">₺{fmt(base.matrah)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Hesaplanan KDV</span>
+            <span class="split-val" id="out-kdv">₺{fmt(base.kdv)}</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note">%{D.rate} oranıyla matrahın üzerine KDV eklendi.</p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır ve resmî/mali müşavirlik tavsiyesi değildir.
+      KDV oranları ürün ve hizmete göre değişebilir; kesin oran ve istisnalar için Gelir
+      İdaresi Başkanlığı (GİB) mevzuatını ve mali müşavirinizi esas alın.
+    </p>
+
+    <section class="table-block">
+      <h2>2026 KDV oranları ve kapsamı</h2>
+      <p class="table-intro">
+        Türkiye’de üç KDV oranı uygulanır (10 Temmuz 2023’ten beri geçerli). Ürününüzün
+        hangi gruba girdiği faturadaki KDV oranını belirler:
+      </p>
+      <table class="rate-table" id="rate-table">
+        <thead><tr><th>Oran</th><th>Grup</th><th>Örnek kapsam</th></tr></thead>
+        <tbody>
+          {rates.map((r) => (
+            <tr class={r.rate === D.rate ? 'current' : ''}>
+              <td>%{r.rate}</td>
+              <td>{r.label}</td>
+              <td>{r.ex}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">Aynı ürün grubu içinde bile istisnalar olabilir; tereddütte GİB oranını esas alın.</p>
+    </section>
+
+    <section class="table-block">
+      <h2>Sık kullanılan tutarlarda KDV (%<span id="q-rate">20</span>)</h2>
+      <p class="table-intro">Seçtiğiniz orana göre yaygın matrah tutarlarında KDV ve KDV dahil toplam:</p>
+      <table class="rate-table">
+        <thead><tr><th>KDV hariç</th><th>KDV tutarı</th><th>KDV dahil</th></tr></thead>
+        <tbody id="quick-body"></tbody>
+      </table>
+    </section>
+
+    <section class="prose-block">
+      <h2>KDV nasıl hesaplanır?</h2>
+      <p>
+        <strong>KDV (Katma Değer Vergisi)</strong>, bir mal veya hizmetin satış bedeli
+        (matrah) üzerinden alınan bir tüketim vergisidir. Hesabı basittir:
+        <strong>KDV = Matrah × (Oran ÷ 100)</strong>. KDV hariç 1.000 ₺’lik bir mala %20 KDV
+        eklerseniz 200 ₺ KDV çıkar ve KDV dahil fiyat 1.200 ₺ olur. Faturada bu üç satır
+        ayrı ayrı görünür: mal/hizmet tutarı (matrah), hesaplanan KDV ve genel toplam.
+      </p>
+      <h2>KDV dahil fiyattan KDV nasıl ayrılır?</h2>
+      <p>
+        Elinizde yalnızca KDV dahil (brüt) fiyat varsa, matrahı bulmak için tutarı
+        <strong>(1 + oran)</strong> katsayısına bölersiniz. %20 için brütü 1,20’ye,
+        %10 için 1,10’a, %1 için 1,01’e bölün. Aradaki fark KDV’dir. Pratik kısayol:
+        %20’de brütün altıda biri (%16,67), %10’da on birde biri KDV’dir. Bu araçta
+        <strong>“KDV dahil tutardan ayır”</strong> modunu seçerek bunu otomatik yaptırabilirsiniz —
+        fiş/fatura kontrolünde ve gider hesabında işinizi görür.
+      </p>
+      <h2>KDV kimin üzerinde kalır?</h2>
+      <p>
+        KDV mükellefi işletmeler, tahsil ettikleri KDV’den alışlarında ödedikleri KDV’yi
+        indirir; yalnızca aradaki farkı devlete öder. Bu yüzden KDV işletme için genelde bir
+        maliyet değil, aracılık edilen bir vergidir. Vergiyi nihayetinde <strong>nihai
+        tüketici</strong> öder — fiyatın içinde. KDV’nin alım gücünü nasıl etkilediğini merak
+        ediyorsanız, fiyat artışlarını ölçen <a href="/blog/tufe-enflasyon-verisi-nasil-okunur">TÜFE
+        enflasyon verisi</a>ne ve <a href="/enflasyon-takvimi">enflasyon takvimi</a>ne göz atın.
+      </p>
+      <p class="cta-line">
+        Diğer hesaplayıcılar → <a href="/net-maas-hesaplama">net maaş hesaplama</a>,
+        <a href="/kredi-hesaplama">kredi taksit hesaplama</a> ve
+        <a href="/kidem-tazminati-hesaplama">kıdem tazminatı hesaplama</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const money = (n) => '₺' + nf.format(n);
+
+      function currentRate() {
+        const sel = +$('in-rate').value;
+        if (sel === 0) return Math.max(0, +$('in-custom-rate').value || 0);
+        return sel;
+      }
+      function currentMode() {
+        const el = document.querySelector('input[name="mode"]:checked');
+        return el ? el.value : 'add';
+      }
+
+      function kdvCalc(amount, ratePct, mode) {
+        const r = ratePct / 100;
+        if (mode === 'extract') {
+          const matrah = r === -1 ? amount : amount / (1 + r);
+          return { matrah, kdv: amount - matrah, total: amount };
+        }
+        const kdv = amount * r;
+        return { matrah: amount, kdv, total: amount + kdv };
+      }
+
+      function buildQuick(ratePct) {
+        const body = $('quick-body');
+        if (!body) return;
+        const set = [100, 500, 1000, 5000, 10000, 50000];
+        body.innerHTML = set.map((m) => {
+          const c = kdvCalc(m, ratePct, 'add');
+          return `<tr><td>${money(c.matrah)}</td><td>${money(c.kdv)}</td><td>${money(c.total)}</td></tr>`;
+        }).join('');
+      }
+
+      function update() {
+        const amount = Math.max(0, +$('in-amount').value || 0);
+        const rate = currentRate();
+        const mode = currentMode();
+        // özel oran alanını göster/gizle
+        $('custom-rate-wrap').hidden = +$('in-rate').value !== 0;
+
+        const c = kdvCalc(amount, rate, mode);
+        $('out-total').textContent = money(mode === 'extract' ? c.matrah : c.total);
+        $('out-main-label').textContent = mode === 'extract' ? 'KDV hariç matrah' : 'KDV dahil toplam';
+        // ayır modunda ana kutu matrahı, ikinci satır toplamı gösterir
+        if (mode === 'extract') {
+          $('out-matrah').textContent = money(c.total);
+          document.querySelector('#out-matrah').previousElementSibling.textContent = 'KDV dahil tutar';
+        } else {
+          $('out-matrah').textContent = money(c.matrah);
+          document.querySelector('#out-matrah').previousElementSibling.textContent = 'KDV hariç matrah';
+        }
+        $('out-kdv').textContent = money(c.kdv);
+        $('out-note').textContent =
+          mode === 'extract'
+            ? `%${rate} oranıyla KDV dahil tutardan matrah ve KDV ayrıştırıldı.`
+            : `%${rate} oranıyla matrahın üzerine KDV eklendi.`;
+
+        const rr = document.getElementById('q-rate');
+        if (rr) rr.textContent = String(rate).replace('.', ',');
+        // oran tablosunda satır vurgusu
+        document.querySelectorAll('#rate-table tbody tr').forEach((tr) => {
+          const cell = tr.querySelector('td');
+          tr.classList.toggle('current', cell && cell.textContent.trim() === '%' + rate);
+        });
+        buildQuick(rate);
+      }
+
+      $('in-amount').addEventListener('input', update);
+      $('in-rate').addEventListener('change', update);
+      $('in-custom-rate').addEventListener('input', update);
+      document.querySelectorAll('input[name="mode"]').forEach((el) => el.addEventListener('change', update));
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 2rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 620px; margin: 0 auto; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs > label > span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input, .calc-inputs select {
+      font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+
+    .mode-toggle { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.7rem 0.8rem; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+    .mode-toggle legend { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); padding: 0 0.3rem; }
+    .radio { flex-direction: row !important; align-items: flex-start; gap: 0.5rem !important; cursor: pointer; }
+    .radio input { width: auto !important; margin-top: 0.15rem; }
+    .radio span { font-size: 0.85rem; font-weight: 500; color: var(--text-soft); }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 1rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .rate-table tr.current td { font-weight: 700; color: var(--brand-ink); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>

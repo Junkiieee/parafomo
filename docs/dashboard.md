@@ -1,12 +1,12 @@
 # ParaFOMO — Dürüst Ölçüm Panosu
 
-> Üretim: 2026-08-19 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
+> Üretim: 2026-08-20 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
 
 ## 1) Organik trafik trendi (GA4 — son 8 hafta)
 
 | Hafta | Gerçek erişim (Direct hariç) | Direct (≈sen/bot) | Toplam |
 |---|---|---|---|
-| 202626 | 9 | 26 | 35 |
+| 202626 | 6 | 16 | 22 |
 | 202627 | 3 | 23 | 26 |
 | 202628 | 3 | 13 | 16 |
 | 202629 | 2 | 14 | 16 |
@@ -14,13 +14,13 @@
 | 202631 | 2 | 20 | 22 |
 | 202632 | 9 | 15 | 24 |
 | 202633 | 24 | 16 | 40 |
-| 202634 | 10 | 16 | 26 |
+| 202634 | 13 | 18 | 31 |
 
-**Gerçek erişim trendi:** `▃▁▁▁▁▁▃█▃`  📈 artıyor
-**Son hafta Direct payı:** %62 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
+**Gerçek erişim trendi:** `▂▁▁▁▁▁▃█▄`  📈 artıyor
+**Son hafta Direct payı:** %58 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
 
 **Gerçek erişim kaynağı (son 4 hafta toplamı):**
-- Organic Video: 20 kullanıcı
+- Organic Video: 23 kullanıcı
 - Organic Search: 13 kullanıcı
 - Organic Social: 11 kullanıcı
 - Referral: 1 kullanıcı
@@ -62,15 +62,15 @@
 
 ## 3) YouTube motoru
 
-- **Abone:** 29  ·  **Toplam izlenme:** 34,563  ·  **Video:** 172
+- **Abone:** 29  ·  **Toplam izlenme:** 36,239  ·  **Video:** 174
 - İzlenme/abone dönüşümü: **0.08%** (izleyen kaç kişi abone/huniye giriyor)
 
 ## 4) 🎯 DÜRÜST HÜKÜM
 
 **Hedef:** 1000 ziyaretçi/gün = 7,000/hafta gerçek erişim.
-**Gerçek durum:** son hafta **10** gerçek ziyaretçi = hedefin **%0.14**'si. Kalan: **6,990** kişi/hafta.
+**Gerçek durum:** son hafta **13** gerçek ziyaretçi = hedefin **%0.19**'si. Kalan: **6,987** kişi/hafta.
 
 **Teşhis:**
-- ⚠️ Trafiğin %62'i Direct — bu büyük ihtimalle sen + botlar, gerçek keşif değil. Çıplak sayıya güvenme.
+- ⚠️ Trafiğin %58'i Direct — bu büyük ihtimalle sen + botlar, gerçek keşif değil. Çıplak sayıya güvenme.
 
 **Özet:** Öğrenme döngüsü ses/format/slot optimize ediyor ama yukarıdaki darboğaz oralarda değil. Sistemin 'kendi kendine öğrenip uygulaması' için önce ölçülen darboğaza (otorite/dağıtım) yönlendirilmesi gerekir.
