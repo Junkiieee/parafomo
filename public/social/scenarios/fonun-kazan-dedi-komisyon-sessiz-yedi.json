@@ -1,0 +1,59 @@
+{
+  "slug": "fonun-kazan-dedi-komisyon-sessiz-yedi",
+  "title": "Fonun Kazan Dedi, Komisyon Sessiz Yedi",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Yatırım fonları her yıl sessizce yüzde iki yönetim ücreti keser. Getirinin önemli kısmı fon yöneticisine gider, sende kalan sandığınızdan az.",
+  "tags": [
+    "yatırım fonu",
+    "fon komisyonu",
+    "yönetim ücreti",
+    "borsa yatırım fonu",
+    "BYF",
+    "ETF Türkiye",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Fon kazandı diyor — ama sen kazanmadın.",
+      "visual": {
+        "type": "scene",
+        "query": "investment fund portfolio profit screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yatırım fonları yıllık yüzde iki yönetim ücreti keser. Kimse söylemez, prospektüste yazar.",
+      "visual": {
+        "type": "concept",
+        "query": "financial contract document fine print paper"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fon yüzde on yaptı mı? Ama yüzde iki masraf düştü. Sende sekiz kaldı.",
+      "visual": {
+        "type": "concept",
+        "query": "money split hidden fees pie chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çözüm basit: borsa yatırım fonu seç. Komisyon on kat düşük, getirin cebinde kalır.",
+      "visual": {
+        "type": "concept",
+        "query": "low cost index fund growth chart green"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki hangi fonun maliyeti düşük, hangisi soyuyor? Abone ol — her gün 60 saniyede gerçeği öğren.",
+      "visual": {
+        "type": "scene",
+        "query": "subscribe bell notification social media phone"
+      }
+    }
+  ]
+}
