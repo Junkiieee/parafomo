@@ -1,12 +1,12 @@
 # ParaFOMO — Dürüst Ölçüm Panosu
 
-> Üretim: 2026-08-18 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
+> Üretim: 2026-08-19 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
 
 ## 1) Organik trafik trendi (GA4 — son 8 hafta)
 
 | Hafta | Gerçek erişim (Direct hariç) | Direct (≈sen/bot) | Toplam |
 |---|---|---|---|
-| 202626 | 9 | 29 | 38 |
+| 202626 | 9 | 26 | 35 |
 | 202627 | 3 | 23 | 26 |
 | 202628 | 3 | 13 | 16 |
 | 202629 | 2 | 14 | 16 |
@@ -14,16 +14,15 @@
 | 202631 | 2 | 20 | 22 |
 | 202632 | 9 | 15 | 24 |
 | 202633 | 24 | 16 | 40 |
-| 202634 | 9 | 11 | 20 |
+| 202634 | 10 | 16 | 26 |
 
-**Gerçek erişim trendi:** `▃▁▁▁▁▁▃█▃`  ➡️ düz
-**Son hafta Direct payı:** %55 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
+**Gerçek erişim trendi:** `▃▁▁▁▁▁▃█▃`  📈 artıyor
+**Son hafta Direct payı:** %62 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
 
 **Gerçek erişim kaynağı (son 4 hafta toplamı):**
-- Organic Video: 19 kullanıcı
-- Organic Search: 12 kullanıcı
-- Organic Social: 9 kullanıcı
-- Unassigned: 3 kullanıcı
+- Organic Video: 20 kullanıcı
+- Organic Search: 13 kullanıcı
+- Organic Social: 11 kullanıcı
 - Referral: 1 kullanıcı
 
 ## 2) Google arama trendi (GSC — son 8 hafta)
@@ -37,42 +36,41 @@
 | 2026-07-20 | 0 | 296 | %0.0 |
 | 2026-07-27 | 0 | 558 | %0.0 |
 | 2026-08-03 | 3 | 893 | %0.3 |
-| 2026-08-10 | 3 | 1314 | %0.2 |
+| 2026-08-10 | 4 | 1400 | %0.3 |
 
-**Tıklama trendi:** `▁█▃▃▁▁██`  📈 artıyor
+**Tıklama trendi:** `▁▆▂▂▁▁▆█`  📈 artıyor
 
 **En iyi sıralanan sorgular (gösterim≥3):**
 - `nfp verisi` — sıra 5.4, gös 5, tık 0
 - `fed faiz kararı bugün 12 ağustos 2026 fomc faiz kararı` — sıra 7.3, gös 3, tık 0
-- `ppı nedir ekonomi` — sıra 8.2, gös 10, tık 0
+- `ppı nedir ekonomi` — sıra 8.0, gös 11, tık 0
 - `2026 fed toplantı tarihleri` — sıra 9.2, gös 6, tık 0
 - `fed 2026 toplantı tarihleri` — sıra 10.0, gös 3, tık 0
-- `fed faiz kararı takvimi` — sıra 10.3, gös 37, tık 0
 - `fed faiz takvimi 2026` — sıra 10.3, gös 3, tık 0
-- `fed toplantı tarihleri 2026` — sıra 10.5, gös 21, tık 0
+- `fed toplantı tarihleri 2026` — sıra 10.4, gös 22, tık 0
+- `fed faiz kararı takvimi` — sıra 10.5, gös 38, tık 0
 
 **🎯 Ulaşılabilir fırsatlar (sıra 4-20, gösterim≥5):**
 - `fed faiz kararı takvimi 2026` — sıra 10.6, gös 45
-- `fed faiz kararı takvimi` — sıra 10.3, gös 37
-- `fed toplantı tarihleri 2026` — sıra 10.5, gös 21
+- `fed faiz kararı takvimi` — sıra 10.5, gös 38
+- `fed toplantı tarihleri 2026` — sıra 10.4, gös 22
 - `endeks fonu nedir` — sıra 11.8, gös 20
 - `fed kararı` — sıra 19.3, gös 19
-- `ppı nedir ekonomi` — sıra 8.2, gös 10
+- `ppı nedir ekonomi` — sıra 8.0, gös 11
 - `abd faiz kararı` — sıra 18.4, gös 9
 - `boj nedir` — sıra 11.9, gös 7
 
 ## 3) YouTube motoru
 
-- **Abone:** 28  ·  **Toplam izlenme:** 33,040  ·  **Video:** 168
+- **Abone:** 29  ·  **Toplam izlenme:** 34,563  ·  **Video:** 172
 - İzlenme/abone dönüşümü: **0.08%** (izleyen kaç kişi abone/huniye giriyor)
 
 ## 4) 🎯 DÜRÜST HÜKÜM
 
 **Hedef:** 1000 ziyaretçi/gün = 7,000/hafta gerçek erişim.
-**Gerçek durum:** son hafta **9** gerçek ziyaretçi = hedefin **%0.13**'si. Kalan: **6,991** kişi/hafta.
+**Gerçek durum:** son hafta **10** gerçek ziyaretçi = hedefin **%0.14**'si. Kalan: **6,990** kişi/hafta.
 
 **Teşhis:**
-- ⚠️ Trafiğin %55'i Direct — bu büyük ihtimalle sen + botlar, gerçek keşif değil. Çıplak sayıya güvenme.
-- ⚠️ Gerçek erişim haftalardır düz — mevcut otomasyon iğneyi oynatmıyor.
+- ⚠️ Trafiğin %62'i Direct — bu büyük ihtimalle sen + botlar, gerçek keşif değil. Çıplak sayıya güvenme.
 
 **Özet:** Öğrenme döngüsü ses/format/slot optimize ediyor ama yukarıdaki darboğaz oralarda değil. Sistemin 'kendi kendine öğrenip uygulaması' için önce ölçülen darboğaza (otorite/dağıtım) yönlendirilmesi gerekir.
