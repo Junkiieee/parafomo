@@ -1,0 +1,75 @@
+{
+  "slug": "ceyrek-altinda-10-var-sana-ait-degil-m",
+  "title": "Çeyrek Altında %10 Var — Sana Ait Değil",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Çeyrek altın alırken ödediğin darphane primini çoğu yatırımcı fark etmiyor. Satarken bu prim geri gelmiyor — birikim hesabını buna göre yap.",
+  "tags": [
+    "çeyrek altın",
+    "altın yatırımı",
+    "darphane primi",
+    "gram altın",
+    "kuyumcu",
+    "altın tasarruf",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Çeyrek altını bozduğunda yüzde on para uçuyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çeyrek fiyatı gram değil — darphane primiyle şişirilmiş bir rakam. Haberlerde bu fark görünmüyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Çeyrek",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Satarken prim geri gelmiyor. Kuyumcu gram değerinden alıyor, fazlası sende kalmıyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Çeyrek",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Birikim için gram altın veya külçe çok daha mantıklı. Çeyrek hediyedir, yatırım aracı değil.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Hangi altın türü seni sessizce en çok zarara uğratıyor? Cevap kanalda — abone ol, her gün 60 saniyede bir net analiz sende olsun.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
