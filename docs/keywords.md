@@ -65,6 +65,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Stagflasyon nedir? Enflasyon + durgunluk sarmalı ve yatırımcı stratejisi — `Ekonomi` — hedef: "stagflasyon nedir"
 - [x] Quantitative Tightening (QT) nedir? Merkez bankası bilanço küçültme rehberi — `Ekonomi` — hedef: "quantitative tightening nedir"
 - [x] Deflasyon nedir? Fiyatlar düşerken ekonomi ve yatırımcılar nasıl etkilenir? — `Ekonomi` — hedef: "deflasyon nedir"
+- [x] Jackson Hole Sempozyumu nedir? Fed başkanı konuşması piyasaları nasıl etkiler? — `Ekonomi` — hedef: "jackson hole sempozyumu nedir"
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
@@ -202,3 +203,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Deflasyon Nedir? Fiyatlar Düşerken Ekonomi ve Yatırımlarınız Nasıl Etkilenir? — `deflasyon-nedir-ekonomi-yatirim-etkisi` (yeni evergreen ekonomi; "deflasyon nedir" sorgusu; enflasyon + stagflasyon + reel faiz + verim eğrisi cluster'ını tamamlayan temel kavram; Büyük Buhran ve Japonya "kayıp on yıllar" örnekleri; deflasyonda yatırım stratejisi; 20 Ağustos 2026)
 
 - [x] ABD Faiz Artarsa Ne Olur? Dolar, TL, Altın ve Borsaya Etkisi — `abd-faiz-artarsa-ne-olur` (GSC fırsatı: "abd faiz artarsa dolar ne olur" — gösterim 3, sıra 31; "amerika faizi artırırsa ne olur" — gösterim 3, sıra 39.3; mevcut Fed/faiz cluster'ından farklı "nedensellik" açısı: faiz artarsa → her varlık sınıfı ne olur?; dolar-endeksi+abd-faiz-karari+reel-faiz cluster'ını tamamlayan pratik rehber; 21 Ağustos 2026)
+
+- [x] Jackson Hole Sempozyumu Nedir? Fed Başkanı Konuşması Piyasaları Nasıl Etkiler? — `jackson-hole-sempozyumu-nedir` (zamanlama: Ağustos 2026 Jackson Hole haftası; "jackson hole sempozyumu nedir" sorgusu; Fed faiz kararı + FOMC + dolar endeksi cluster'ını tamamlayan evergreen para politikası rehberi; hawkish/dovish sinyal okuma kılavuzu; 21 Ağustos 2026)

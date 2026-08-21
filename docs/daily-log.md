@@ -4,6 +4,61 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-21 — Jackson Hole Sempozyumu Nedir? Fed Başkanı Konuşması Piyasaları Nasıl Etkiler?
+
+**Yayınlanan yazı:**
+[Jackson Hole Sempozyumu Nedir? Fed Başkanı Konuşması Piyasaları Nasıl Etkiler?](https://parafomo.com/blog/jackson-hole-sempozyumu-nedir/)
+
+**Konu seçim gerekçesi:** Ağustos 2026 Jackson Hole Sempozyumu haftasında son derece zamanında; Fed yön sinyali + küresel merkez bankacıları buluşması; Fed faiz kararı/FOMC/dolar endeksi cluster'ını tamamlayan evergreen para politikası rehberi; hawkish/dovish sinyal okuma kılavuzu.
+
+---
+
+**X (Twitter) Thread Taslağı:**
+
+🧵 Piyasalar bu hafta Wyoming'deki küçük bir kasabaya bakıyor: Jackson Hole. Neden? 👇
+
+1/ Jackson Hole Sempozyumu, Fed başkanı dahil küresel merkez bankacılarının yılda bir toplanıp para politikasını konuştuğu en prestijli platformdur. Resmi değil ama etkisi resmi kararlardan çok daha büyük olabiliyor.
+
+2/ Fed başkanının tek bir cümlesi piyasaları sallar. 2022'de Powell "fiyat istikrarı için kararlıyız" dedi; borsa tek günde %3-4 düştü, dolar fırladı.
+
+3/ Anahtar kelimeler: "higher for longer" → faiz yüksek kalır → dolar güçlenir, TL baskı altına girer. "Gradual" → rahat nefes, sert hareket yok. "Data-dependent" → belirsizlik devam eder.
+
+4/ Türk yatırımcısı için ne anlam ifade ediyor? Hawkish mesaj → TL baskı, BIST'te yabancı çıkışı. Dovish mesaj → TL rahatlama, risk iştahı artar.
+
+5/ Konuşma öncesi aşırı kaldıraç alma. İlk 30 dakika yanıltıcı olabilir. Metni oku, sonra karar ver.
+
+→ Tüm tarihsel kırılma anları + sinyal okuma rehberi: parafomo.com/blog/jackson-hole-sempozyumu-nedir/
+
+---
+
+**Instagram Post/Carousel Metni:**
+
+📌 Jackson Hole nedir ve neden tüm piyasalar izliyor?
+
+🏔️ Her yıl ağustos sonunda Wyoming'de Fed başta tüm merkez bankacıları toplanır
+🎤 Fed başkanının konuşması = faiz yönünün habercisi
+📊 2022: "Faizler yüksek kalmalı" → Borsa %3 düştü, dolar fırladı
+
+Anahtar kelimeler:
+✅ "Higher for longer" → Hawkish → Dolar güçlenir
+✅ "Gradual" → Nötr → Sakin tepki
+✅ "Data-dependent" → Belirsizlik → Volatilite
+
+Türk yatırımcısı için: kur hareketlerine dikkat, kaldıraçlı pozisyonlardan kaçın.
+
+👉 Tarihsel tablo ve sinyal okuma rehberi:
+parafomo.com/blog/jackson-hole-sempozyumu-nedir/
+
+#JacksonHole #Fed #FaizKararı #Dolar #TL #Borsa #ParaFOMO #Ekonomi
+
+---
+
+**Bugün yapman gerekenler:**
+1. X thread taslağını yayınla (Cuma TSİ 15:00-17:00 arası konuşma vaktinde veya öncesinde yayınlamak etkiyi artırır).
+2. Instagram postunu paylaş ve story'de yazı linkini ekle; finans/ekonomi Telegram gruplarında ya da ilgili topluluklarda yazıyı değer katarak paylaş.
+
+---
+
 ## 2026-08-21 — ABD Faiz Artarsa Ne Olur? Dolar, TL, Altın ve Borsaya Etkisi
 
 **Yayınlanan yazı:**
