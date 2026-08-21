@@ -1,0 +1,59 @@
+{
+  "slug": "buffett-satti-uzmanlar-hala-bist-al-diyor",
+  "title": "Buffett Sattı, Uzmanlar Hâlâ 'BIST Al' Diyor",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Warren Buffett rekor nakit tutarken Türk yatırımcısına BIST alım tavsiyesi veriliyor — mekanizma nedir ve bu tavsiyeyi nasıl sorgulamalısın?",
+  "tags": [
+    "warren buffett",
+    "bist",
+    "borsa",
+    "yatırım tavsiyesi",
+    "nakit",
+    "hisse senedi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Buffett 350 milyar dolar nakit tutarken borsa mı alıyorsun?",
+      "visual": {
+        "type": "person",
+        "query": "Warren Buffett"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Dünyanın en başarılı yatırımcısı değerlemeler pahalıyken nakit biriktirir — ucuzlayınca alır, bu 60 yıllık disiplin.",
+      "visual": {
+        "type": "concept",
+        "query": "stock market overvalued bubble chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama Türkiye'de her ay 'BIST fırsat' haberi; hangi fiyatta, ne zaman çık — hiç bilgi yok.",
+      "visual": {
+        "type": "place",
+        "query": "Borsa İstanbul"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Soru şu: sana 'al' diyen ne zaman 'sat' dedi, paran nerede kaldı?",
+      "visual": {
+        "type": "concept",
+        "query": "financial analyst television recommendation"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bir sonraki tavsiyede bunu sor — cevap veremezse geç. Her gün 60 saniyede net analiz için abone ol, paranı kendine sakla.",
+      "visual": {
+        "type": "concept",
+        "query": "money savings hand piggy bank"
+      }
+    }
+  ]
+}
