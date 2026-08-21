@@ -4,6 +4,59 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-21 — ABD Faiz Artarsa Ne Olur? Dolar, TL, Altın ve Borsaya Etkisi
+
+**Yayınlanan yazı:**
+[ABD Faiz Artarsa Ne Olur? Dolar, TL, Altın ve Borsaya Etkisi](https://parafomo.com/blog/abd-faiz-artarsa-ne-olur/)
+
+**Konu seçim gerekçesi:** GSC fırsatı — "abd faiz artarsa dolar ne olur" (sıra 31, 3 gösterim) ve "amerika faizi artırırsa ne olur" (sıra 39.3, 3 gösterim); mevcut Fed/faiz cluster'ında "nedensellik" açısı eksikti; bu yazı o boşluğu kapattı.
+
+---
+
+**X (Twitter) Thread Taslağı:**
+
+🧵 ABD faizi artarsa ne olur? Dolar, TL, altın ve BIST için tam zincir 👇
+
+1/ Fed faizi artırınca → dolar güçlenir. Neden? Yüksek faiz ABD'yi daha cazip yapar, para ABD'ye akar, dolar endeksi (DXY) yükselir.
+
+2/ TL üzerinde çifte baskı: hem dolar yükselir, hem carry trade (taşıma işlemi) çözülür. Gelişmekte olan ülkelerden sermaye kaçar.
+
+3/ Altın genellikle düşer — faiz getirmeyen altın, artık daha yüksek getiren tahvile kıyasla cazibesini yitirir.
+
+4/ BIST için satış baskısı. Ama ihracatçı hisseler kur artışından görece avantaj sağlar.
+
+5/ Kritik nokta: piyasanın beklentisinden ne kadar saptığı önemli. Beklentiye uygun artış → sınırlı tepki. Sürpriz artış → sert hareket.
+
+→ Tüm mekanizma + 3 senaryo tablosu: parafomo.com/blog/abd-faiz-artarsa-ne-olur/
+
+---
+
+**Instagram Post/Carousel Metni:**
+
+📌 Fed faizi artırırsa cebine ne olur?
+
+💵 Dolar → Güçlenir (yabancı para ABD'ye akar)
+🇹🇷 TL → Baskı altına girer (carry trade çözülür)
+🥇 Altın → Çoğunlukla düşer (tahvil daha cazip)
+📈 BIST → Satış baskısı (ihracatçılar avantajlı)
+
+Ama asıl soru şu:
+Faiz artışı beklentiden büyük mü, küçük mü, yoksa tam mı?
+
+👉 Tüm senaryo tablosu ve Türk yatırımcısına pratik adımlar:
+parafomo.com/blog/abd-faiz-artarsa-ne-olur/
+
+#FedFaizKararı #Dolar #TL #Altın #Borsa #Ekonomi #ParaFOMO
+
+---
+
+**Bugün senin yapman gerekenler:**
+
+1. ✅ X ve Instagram'da yukarıdaki paylaşım taslağını yayınla (bir anlık haber gündeminde olmadığından sabah saatlerinde paylaşman yeterli).
+2. ✅ Finans/ekonomi Facebook/Telegram gruplarında yazıyı değer katarak paylaş (ör. "Fed toplantısı öncesi dolar ne yapar merak edenler için...").
+
+---
+
 ## 2026-08-20 (2) — Deflasyon Nedir? Fiyatlar Düşerken Ekonomi ve Yatırımlarınız Nasıl Etkilenir?
 
 **Yayınlanan yazı:**
