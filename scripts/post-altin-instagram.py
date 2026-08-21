@@ -92,6 +92,7 @@ SECONDARY_TOOLS = [
     "💵 2026 asgari ücret net/brüt → parafomo.com/asgari-ucret-hesaplama",
     "🧮 Brütten nete maaşını hesapla → parafomo.com/net-maas-hesaplama",
     "🧾 KDV ekle veya ayır → parafomo.com/kdv-hesaplama",
+    "🏦 Mevduatın net getirisi (stopaj sonrası) → parafomo.com/mevduat-faizi-hesaplama",
 ]
 
 

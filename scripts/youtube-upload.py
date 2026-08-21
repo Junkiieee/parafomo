@@ -44,6 +44,7 @@ _TOOL_MAP = [
     ("kira", "/kira-artis-orani-hesaplama"),
     ("kredi", "/kredi-hesaplama"), ("taksit", "/kredi-hesaplama"),
     ("bileşik", "/bilesik-faiz-hesaplama"), ("bilesik", "/bilesik-faiz-hesaplama"),
+    ("mevduat", "/mevduat-faizi-hesaplama"),
     ("enflasyon", "/enflasyon-takvimi"), ("tüfe", "/enflasyon-takvimi"), ("tufe", "/enflasyon-takvimi"),
     ("tcmb", "/tcmb-faiz-takvimi"),
     ("fed", "/fed-faiz-takvimi"), ("fomc", "/fed-faiz-takvimi"),

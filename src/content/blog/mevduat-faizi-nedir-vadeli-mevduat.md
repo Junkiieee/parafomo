@@ -2,6 +2,7 @@
 title: "Mevduat Faizi Nedir? Vadeli Mevduat Nasıl Açılır ve Kazanç Hesabı"
 description: "Mevduat faizi nedir, vadeli mevduat nasıl açılır, kazanç nasıl hesaplanır? TMSF güvencesi, stopaj ve TL faizi hakkında bilmeniz gereken her şey."
 pubDate: 2026-07-30
+updatedDate: 2026-08-21
 category: "Kişisel Finans"
 tags: ["mevduat faizi", "vadeli mevduat", "banka faizi", "TL mevduat", "tasarruf", "TMSF"]
 readingTime: 7
@@ -85,9 +86,9 @@ Brüt faiz geliri şu formülle hesaplanır:
 
 > **Kazanç = Anapara × Yıllık Faiz Oranı × (Gün Sayısı ÷ 365)**
 
-Türkiye'de TL mevduatına %15 stopaj uygulandığından net kazanç:
+Brüt kazançtan vadeye göre değişen stopaj düşülünce net kazanç kalır. Güncel oranlarla eline geçen net tutarı otomatik görmek için **[Mevduat Faizi Hesaplama](/mevduat-faizi-hesaplama)** aracımızı kullanabilirsin.
 
-> **Net Kazanç = Brüt Kazanç × 0,85**
+> **Net Kazanç = Brüt Kazanç − Stopaj (vadeye göre %17,5 / %15 / %10)**
 
 ### Örnek Hesaplamalar (Varsayımsal %40 Yıllık Faiz)
 
@@ -102,11 +103,13 @@ Türkiye'de TL mevduatına %15 stopaj uygulandığından net kazanç:
 
 ## Stopaj Vergisi: Net Kazancınızı Hesaplarken Unutmayın
 
-Türkiye'de mevduat faizi geliri stopaj vergisine tabidir:
+Türkiye'de mevduat faizi geliri stopaj vergisine tabidir. TL mevduatta oran **vadeye göre kademelidir** (9 Temmuz 2025'ten beri geçerli):
 
-- **TL mevduat:** %15 stopaj
-- **Döviz mevduatı:** Vadeye göre %0–%15
-- **Altın mevduatı:** Genellikle %15
+- **TL mevduat — 6 aya kadar:** %17,5 stopaj
+- **TL mevduat — 6 ay ile 1 yıl arası:** %15 stopaj
+- **TL mevduat — 1 yıldan uzun:** %10 stopaj (uzun vade daha az vergi)
+- **Döviz mevduatı:** Vadeye göre daha yüksek oran
+- **Altın mevduatı:** %15
 
 Stopaj doğrudan banka tarafından kesilip vergi dairesine aktarılır; elinize her zaman net tutar geçer. Ücretli çalışanlar için ayrıca yıllık beyanname verilmesi gerekmez.
 

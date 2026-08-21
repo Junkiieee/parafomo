@@ -1,0 +1,331 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+
+// 2026 güncel TL mevduat stopaj (gelir vergisi tevkifatı) oranları — vadeye göre.
+// Kaynak: banka resmi tabloları (DenizBank, Yapı Kredi), 9 Temmuz 2025'ten beri geçerli.
+// ≤6 ay: %17,5 · 6 ay–1 yıl: %15 · 1 yıldan uzun: %10.
+const STOPAJ = { short: 0.175, mid: 0.15, long: 0.10 };
+
+function tierForDays(days: number) {
+  if (days <= 180) return { rate: STOPAJ.short, label: '6 aya kadar' };
+  if (days <= 365) return { rate: STOPAJ.mid, label: '6 ay – 1 yıl' };
+  return { rate: STOPAJ.long, label: '1 yıldan uzun' };
+}
+
+function calc(principal: number, annualRatePct: number, days: number) {
+  const tier = tierForDays(days);
+  const gross = principal * (annualRatePct / 100) * (days / 365);
+  const stopaj = gross * tier.rate;
+  const net = gross - stopaj;
+  const total = principal + net;
+  const netAnnualYield = principal > 0 ? (net / principal) * (365 / days) * 100 : 0;
+  return { tier, gross, stopaj, net, total, netAnnualYield };
+}
+
+// Sunucuda varsayılan hesap — JS kapalıyken bile sayfa dolu görünsün (SEO + no-JS).
+const D = { principal: 100000, rate: 45, days: 92 };
+const base = calc(D.principal, D.rate, D.days);
+
+const fmt = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 }).format(n);
+const fmt0 = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+
+// Aynı brüt oran için vadeye göre net etkin getiri (stopaj etkisini izole eden karşılaştırma).
+const compareRate = 45;
+const compareRows = [
+  { label: '6 aya kadar (32 / 92 gün)', stopaj: STOPAJ.short },
+  { label: '6 ay – 1 yıl', stopaj: STOPAJ.mid },
+  { label: '1 yıldan uzun', stopaj: STOPAJ.long },
+].map((r) => ({ ...r, netRate: compareRate * (1 - r.stopaj) }));
+
+const faq = [
+  {
+    q: 'Mevduat faizi net getirisi nasıl hesaplanır?',
+    a: 'Önce brüt faiz getirisi bulunur: Anapara × yıllık faiz oranı × (vade gün / 365). Bu brüt getiriden vadeye göre değişen stopaj (gelir vergisi tevkifatı) düşülür. Kalan tutar cebinize giren net faizdir; anaparaya eklenince vade sonu toplamı elde edilir. ParaFOMO hesaplayıcısı bu adımları güncel 2026 stopaj oranlarıyla otomatik yapar.',
+  },
+  {
+    q: 'TL mevduatta stopaj oranı 2026 ne kadar?',
+    a: '2026 itibarıyla TL vadeli mevduat faizinde stopaj vadeye göre kademelidir: 6 aya kadar %17,5, 6 ay ile 1 yıl arası %15, 1 yıldan uzun vadede %10. Bu oranlar 9 Temmuz 2025\'ten beri geçerlidir ve bankaların resmi tablolarıyla uyumludur. Döviz (YP) mevduatında oran daha yüksektir; altın mevduatında %15 uygulanır.',
+  },
+  {
+    q: 'Uzun vadeli mevduat neden daha avantajlı?',
+    a: 'İki nedenle: Birincisi, stopaj oranı vade uzadıkça düşer (6 ayda %17,5 iken 1 yıl üstünde %10\'a iner) — yani aynı brüt faizde net getiriniz artar. İkincisi, uzun vade faiz oranını kilitler; faizlerin düşme ihtimaline karşı sizi korur. Hesaplayıcıda vadeyi değiştirerek net getiri farkını kendiniz görebilirsiniz.',
+  },
+  {
+    q: 'Bileşik faiz ile vadeli mevduat aynı şey mi?',
+    a: 'Değil. Klasik vadeli mevduat, vade sonunda faizi tek seferde öder (basit faiz). Bileşik etki ancak vade sonunda anapara + faizi birlikte yeniden yatırırsanız (rollover) ortaya çıkar. Uzun vadede bileşik büyümeyi görmek için Bileşik Faiz Hesaplama aracımızı kullanın.',
+  },
+  {
+    q: 'Enflasyon mevduat getirisini nasıl etkiler?',
+    a: 'Hesaplayıcı nominal (kâğıt üzerindeki) net getiriyi gösterir. Gerçek kazancınız için net faiz oranından beklenen enflasyonu düşmeniz gerekir. Örneğin net %37 getiri ve %35 enflasyonda reel getiri yalnızca ~%1,5 civarındadır. Bu ayrımı Reel Faiz yazımızda ayrıntılı ele alıyoruz.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Mevduat Faizi Hesaplama', url: '/mevduat-faizi-hesaplama' },
+];
+---
+
+<BaseLayout
+  title="Mevduat Faizi Hesaplama 2026 | Net Getiri ve Stopaj Hesaplayıcı"
+  description="Vadeli mevduat net getirisini anında hesapla: anapara, yıllık faiz ve vadeyi gir; 2026 güncel stopaj oranıyla brüt faiz, kesinti ve eline geçen net tutarı gör."
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı</p>
+      <h1>Mevduat Faizi Hesaplama</h1>
+      <p class="lede">
+        Anaparanı, bankanın verdiği <strong>yıllık brüt faiz oranını</strong> ve vadeyi gir.
+        2026 güncel <strong>stopaj</strong> kesintisi düşülünce cebine giren
+        <strong>net faizi</strong> ve vade sonu toplamını anında gör.
+      </p>
+    </header>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Anapara (₺)</span>
+          <input type="number" id="in-principal" value={D.principal} min="0" step="1000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Yıllık brüt faiz (%)</span>
+          <input type="number" id="in-rate" value={D.rate} min="0" max="200" step="0.5" inputmode="decimal" />
+        </label>
+        <label>
+          <span>Vade (gün)</span>
+          <input type="number" id="in-days" value={D.days} min="1" max="3650" step="1" inputmode="numeric" />
+        </label>
+        <div class="preset-row" role="group" aria-label="Hızlı vade seçimi">
+          <button type="button" class="preset" data-days="32">32 gün</button>
+          <button type="button" class="preset" data-days="92">3 ay</button>
+          <button type="button" class="preset" data-days="181">6 ay</button>
+          <button type="button" class="preset" data-days="365">1 yıl</button>
+        </div>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Vade sonu eline geçen net faiz</span>
+          <span class="result-value" id="out-net">₺{fmt0(base.net)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Brüt faiz getirisi</span>
+            <span class="split-val" id="out-gross">₺{fmt0(base.gross)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label" id="out-stopaj-label">Stopaj kesintisi (%{fmt(base.tier.rate * 100)})</span>
+            <span class="split-val neg" id="out-stopaj">−₺{fmt0(base.stopaj)}</span>
+          </div>
+          <div class="split-item strong">
+            <span class="split-label">Vade sonu toplam (anapara + net faiz)</span>
+            <span class="split-val" id="out-total">₺{fmt0(base.total)}</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note"></p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır ve yatırım tavsiyesi değildir. Hesap, klasik
+      (basit faizli) TL vadeli mevduatı ve bireysel mevduat sahiplerine uygulanan güncel stopaj
+      oranlarını esas alır. Bankaların uyguladığı oran, hesaplama günü ve döviz/altın mevduatı
+      farklılık gösterebilir. BSMV mevduat faizinde uygulanmaz.
+    </p>
+
+    <section class="prose-block">
+      <h2>Vade uzadıkça net getiri neden artıyor?</h2>
+      <p>
+        TL mevduat faizinden alınan stopaj (gelir vergisi tevkifatı) <strong>vadeye göre
+        kademelidir</strong>: kısa vadede yüksek, uzun vadede düşüktür. Yani bankalar aynı
+        yıllık faizi verse bile, daha uzun vadede devlet daha az kesinti yapar ve
+        <strong>eline daha fazla net faiz</strong> geçer. Aşağıdaki tablo, aynı <strong>%{compareRate}
+        brüt faiz</strong> için vadeye göre net etkin getiri farkını gösterir:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Vade</th><th>Stopaj</th><th>Net etkin faiz (%{compareRate} brütte)</th></tr>
+          </thead>
+          <tbody>
+            {compareRows.map((r) => (
+              <tr>
+                <td>{r.label}</td>
+                <td>%{fmt(r.stopaj * 100)}</td>
+                <td><strong>%{fmt(r.netRate)}</strong></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2>2026 TL mevduat stopaj oranları</h2>
+      <ul>
+        <li><strong>6 aya kadar vade:</strong> %17,5 stopaj</li>
+        <li><strong>6 ay – 1 yıl vade:</strong> %15 stopaj</li>
+        <li><strong>1 yıldan uzun vade:</strong> %10 stopaj</li>
+      </ul>
+      <p>
+        Bu oranlar 9 Temmuz 2025 tarihinden itibaren açılan/yenilenen hesaplar için geçerlidir
+        ve bankaların resmi stopaj tablolarıyla uyumludur. Döviz (YP) mevduatında oran daha
+        yüksek, altın (kıymetli maden) hesaplarında %15'tir. Mevduat faizi vergilendirmesi
+        kaynağında kesinti (stopaj) yöntemiyle olur; ayrıca yıllık beyanname vermeniz gerekmez.
+      </p>
+
+      <h2>Aracı nasıl kullanmalısınız?</h2>
+      <ul>
+        <li><strong>Brüt oranı girin:</strong> Bankanın ilan ettiği faiz genelde yıllık brüttür; net rakamı bu araç hesaplar.</li>
+        <li><strong>Vadeyi karşılaştırın:</strong> Aynı anapara ve faizle farklı vadeler deneyip stopaj farkının net getiriyi nasıl değiştirdiğini görün.</li>
+        <li><strong>Enflasyonu unutmayın:</strong> Net getiriden beklenen enflasyonu düşerek gerçek (reel) kazancınızı değerlendirin.</li>
+      </ul>
+      <p class="cta-line">
+        Mevduatın nasıl çalıştığını ve alternatiflerini derinlemesine okumak için
+        → <a href="/blog/mevduat-faizi-nedir-vadeli-mevduat">Mevduat Faizi Nedir?</a> yazımıza bakın.
+        Faizin enflasyona karşı <strong>gerçek</strong> getirisini görmek için
+        <a href="/blog/reel-faiz-nedir">reel faiz</a>; paranı yıllar içinde katlamak için
+        <a href="/bilesik-faiz-hesaplama">bileşik faiz hesaplama</a> aracımız tamamlayıcıdır.
+        Mevduatı döviz/eurobond ile kıyaslamak istersen
+        <a href="/blog/eurobond-fonu-mu-mevduat-mi">eurobond fonu mu mevduat mı?</a> karşılaştırması yardımcı olur.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ STOPAJ }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const nf2 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
+
+      function tierForDays(days) {
+        if (days <= 180) return { rate: STOPAJ.short, label: '6 aya kadar' };
+        if (days <= 365) return { rate: STOPAJ.mid, label: '6 ay – 1 yıl' };
+        return { rate: STOPAJ.long, label: '1 yıldan uzun' };
+      }
+
+      function update() {
+        const principal = Math.max(0, +$('in-principal').value || 0);
+        const rate = Math.max(0, +$('in-rate').value || 0);
+        const days = Math.min(3650, Math.max(1, +$('in-days').value || 1));
+        const tier = tierForDays(days);
+        const gross = principal * (rate / 100) * (days / 365);
+        const stopaj = gross * tier.rate;
+        const net = gross - stopaj;
+        const total = principal + net;
+        const netAnnual = principal > 0 ? (net / principal) * (365 / days) * 100 : 0;
+
+        $('out-net').textContent = '₺' + nf0.format(Math.round(net));
+        $('out-gross').textContent = '₺' + nf0.format(Math.round(gross));
+        $('out-stopaj').textContent = '−₺' + nf0.format(Math.round(stopaj));
+        $('out-stopaj-label').textContent = 'Stopaj kesintisi (%' + nf2.format(tier.rate * 100) + ')';
+        $('out-total').textContent = '₺' + nf0.format(Math.round(total));
+        $('out-note').textContent =
+          `${tier.label} vade → %${nf2.format(tier.rate * 100)} stopaj. ` +
+          `Net etkin yıllık getirin ≈ %${nf2.format(netAnnual)}.`;
+
+        document.querySelectorAll('.preset').forEach((b) => {
+          b.classList.toggle('active', +b.dataset.days === days);
+        });
+      }
+
+      ['in-principal', 'in-rate', 'in-days'].forEach((id) => {
+        $(id).addEventListener('input', update);
+      });
+      document.querySelectorAll('.preset').forEach((b) => {
+        b.addEventListener('click', () => { $('in-days').value = b.dataset.days; update(); });
+      });
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 2rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 620px; margin: 0 auto; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input {
+      font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .preset-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.2rem; }
+    .preset {
+      font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600; cursor: pointer;
+      padding: 0.35rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); color: var(--text-soft);
+    }
+    .preset:hover { border-color: var(--brand-2); }
+    .preset.active { background: var(--brand-2); border-color: var(--brand-2); color: #fff; }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 1rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-item.strong { border-top: 1px solid var(--border); padding-top: 0.55rem; margin-top: 0.15rem; }
+    .split-item.strong .split-val { font-size: 1.1rem; color: var(--brand-ink); }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; }
+    .split-val.neg { color: #c0392b; }
+    .result-note { font-size: 0.82rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block ul { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .table-wrap { overflow-x: auto; margin: 0.4rem 0 0.6rem; }
+    .prose-block table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .prose-block th, .prose-block td { text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid var(--border); }
+    .prose-block thead th { color: var(--text); font-weight: 700; background: var(--surface); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>
