@@ -17,6 +17,23 @@ faq:
     a: "Türk yatırımcıları için en yaygın strateji: portföyde dolar ağırlığını artırmak, kısa vadeli TL mevduatı tercih etmek ve altın pozisyonunu haber öncesinde gözden geçirmek. Yatırım tavsiyesi değildir."
   - q: "Fed faiz artışı BIST'i nasıl etkiler?"
     a: "ABD faiz artışı BIST'i genellikle olumsuz etkiler; yabancı sermaye çıkışı hisse değerlemelerini zorlar. Döviz geliri olan ihracatçı şirketler ise görece avantajlı konumda kalır."
+shorts:
+  - "2022'de Fed faiz artırdı, altın neden düşmedi?"
+  - "Fed faizi yükselince dolar güçlenir, yatırımcılar ABD tahvillerine koşar, TL otomatik baskı altına girer."
+  - "Carry trade çözülür, sermaye Türkiye'den çıkar; hem döviz hem dış borç maliyeti aynı anda yükselir."
+  - "Altın faizle ters hareket eder ama 2022'de jeopolitik belirsizlik güvenli liman talebini ayakta tuttu."
+  - "Peki bir sonraki Fed toplantısında hangi varlık kazanır? Öğrenmek için kanala abone ol — detaylı analizler parafomo.com'da."
+shorts_broll:
+  - "federal reserve interest rate decision"
+  - "turkish lira currency exchange rate"
+  - "gold price chart falling rising"
+  - "emerging market capital outflow"
+shorts_visuals:
+  - "building|Federal Reserve Building Washington DC"
+  - "concept|dollar index DXY chart rising screen"
+  - "object|turkish lira banknotes"
+  - "gold|gold bullion bars"
+  - "concept|stock market trading screen investor"
 ---
 
 Bir Fed toplantısı öncesinde en çok sorulan soru şudur: "ABD faizi artarsa ne olur?" Bu sorunun cevabı, doların, altının, Türk lirasının ve borsanın aynı anda nasıl hareket edeceğini şekillendirir. Bu rehberde o zinciri adım adım açıklıyoruz.
