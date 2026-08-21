@@ -1,0 +1,74 @@
+{
+  "slug": "birikimli-sigortada-kimin-kazandigi-ortaya-cikti-m",
+  "title": "Birikimli Sigortada Kimin Kazandığı Ortaya Çıktı",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Her ay düzenli prim ödüyorsun ama komisyon ve erken çıkış cezası paranın büyük bölümünü eritiyor. İmzalamadan önce bu hesabı bilmek servetini korur.",
+  "tags": [
+    "birikimli sigorta",
+    "hayat sigortası",
+    "sigorta komisyon",
+    "finansal okuryazarlık",
+    "para yönetimi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "BİRİKİMLİ SİGORTA",
+      "spoken": "Her ay sigorta dolduruyorsun — kova neden dolmuyor?",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Birikimli",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ödediğin primlerin büyük payı sana gelmeden komisyon ve yönetim gideri olarak kesiliyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Birikimli",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama erken çıkarsan durum daha kötü: yatırdığından bile az geri alıyorsun.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Birikimli",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kovanın iki deliği var: komisyon ve erken çıkış cezası — bunu imzadan önce bilmek lazım.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Birikimli",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki zaten imzaladıysan ne yapacaksın? Bunu da konuşacağız. Abone ol — her gün paranı koruyan bir hamle gelsin.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
