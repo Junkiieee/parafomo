@@ -1,9 +1,37 @@
 {
-  "updated": "2026-08-20T18:15+00:00",
+  "updated": "2026-08-21T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 40,
+  "count": 42,
   "items": [
+    {
+      "company": "İntetra Teknoloji ve Bilişim Hizmetleri A.Ş.",
+      "bist_code": "",
+      "slug": "intetra-teknoloji-ve-bilisim-hizmetleri-a-s",
+      "link": "https://halkarz.com/intetra-teknoloji-ve-bilisim-hizmetleri-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "53,60 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "40.000.000 Lot",
+      "broker": "Bulls Yatırım Menkul Değerler A.Ş."
+    },
+    {
+      "company": "Bakırcı Gayrimenkul Yatırım Ortaklığı A.Ş.",
+      "bist_code": "",
+      "slug": "bakirci-gayrimenkul-yatirim-ortakligi-a-s",
+      "link": "https://halkarz.com/bakirci-gayrimenkul-yatirim-ortakligi-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "12,93 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "167.000.000 Lot",
+      "broker": "Alnus Yatırım Menkul Değerler A.Ş. İntegral Yatırım Menkul Değerler A.Ş."
+    },
     {
       "company": "Hedef Grup Satış Dağıtım San. ve Tic. A.Ş.",
       "bist_code": "",
@@ -406,7 +434,7 @@
       "end": "2026-08-14",
       "status": "Tamamlandı",
       "price": "136,00 TL",
-      "distribution": "Eşit Dağıtım **",
+      "distribution": "Eşit Dağıtım",
       "lot": "65.000.000 Lot",
       "broker": "Halk Yatırım Menkul Değerler A.Ş. Ziraat Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş."
     },
@@ -420,7 +448,7 @@
       "end": "2026-08-14",
       "status": "Tamamlandı",
       "price": "94,00 TL",
-      "distribution": "Eşit Dağıtım **",
+      "distribution": "Eşit Dağıtım",
       "lot": "25.100.000 Lot",
       "broker": "Ziraat Yatırım Menkul Kıymetler A.Ş. Türkiye Sınai Kalkınma Bankası A.Ş. Yatırım Finansman Menkul Değerler A.Ş."
     },
@@ -434,7 +462,7 @@
       "end": "2026-08-14",
       "status": "Tamamlandı",
       "price": "85,40 TL",
-      "distribution": "Eşit Dağıtım **",
+      "distribution": "Eşit Dağıtım",
       "lot": "31.000.000 Lot",
       "broker": "Tera Yatırım Menkul Değerler A.Ş."
     },
