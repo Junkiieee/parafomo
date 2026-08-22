@@ -4,6 +4,100 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-22 — Resesyon Nedir? Ekonomik Durgunluk Döneminde Yatırımcı Stratejisi
+
+**Yayınlanan yazı:**
+[Resesyon Nedir? Ekonomik Durgunluk Döneminde Yatırımcı Stratejisi](https://parafomo.com/blog/resesyon-nedir-ekonomik-durgunluk/)
+
+**Konu seçim gerekçesi:** Tüm mevcut backlog konuları kaplandı; yeni konular eklendi. Stagflasyon + verim eğrisi + deflasyon + Jackson Hole cluster'ını tamamlayan, yüksek arama hacimli ve daha önce yazılmamış temel ekonomi kavramı. Jackson Hole Sempozyumu (21 Ağustos) ardından resesyon sorusunun gündemde yükselmesi mükemmel zamanlama sağlıyor.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (hook):**
+"Resesyon geliyor" haberleri gördükçe ne hissediyorsun?
+
+Korkuyorsan, doğru reaksiyon. Ama paniğe gerek yok. İşte bilmen gerekenler 🧵
+
+---
+
+**Tweet 2:**
+Resesyon = ard arda 2 çeyrek ekonomi küçülüyor.
+
+GDP eksi → şirket kârları düşüyor → işten çıkarmalar başlıyor → harcamalar kısılıyor → GDP daha da eksi.
+
+Kendi kendini besleyen bir sarmal. Ama geçici.
+
+---
+
+**Tweet 3:**
+Tarihin en kısa resesyonu: 2020 COVID → yaklaşık 2 çeyrek.
+En derin resesyonu: 2008 küresel kriz → 18 ay.
+Ortalama: 10-12 ay.
+
+Ve borsa, resesyon ilan edilmeden 6-12 ay ÖNCE düşer.
+Satmak için ilan beklersen çok geç olur.
+
+---
+
+**Tweet 4:**
+Resesyon döneminde ayakta kalanlar:
+✅ Altın (güvenli liman)
+✅ Kısa vadeli devlet tahvili
+✅ Defansif hisseler (gıda, sağlık)
+✅ Nakit rezerv
+
+Çökenler:
+❌ Büyüme hisseleri
+❌ Döngüsel sektörler (turizm, inşaat)
+❌ Yüksek borçlu şirketler
+
+---
+
+**Tweet 5 (CTA):**
+Resesyon nedir, Türkiye nasıl etkilenir ve portföyünü nasıl korursun?
+
+Tüm detaylar → parafomo.com/blog/resesyon-nedir-ekonomik-durgunluk/
+
+#resesyon #ekonomi #yatırım #parafomo
+
+---
+
+### Instagram Post Metni
+
+**Caption:**
+
+📉 Resesyon nedir ve portföyünüzü nasıl etkiler?
+
+Resesyon = ard arda 2 çeyrek ekonomik küçülme
+
+🔴 Riskli varlıklar:
+→ Büyüme hisseleri
+→ Döngüsel sektörler (turizm, inşaat)
+→ Yüksek borçlu şirketler
+
+🟢 Dirençli varlıklar:
+→ Altın
+→ Kısa vadeli tahvil
+→ Defansif hisseler (gıda, sağlık)
+→ Nakit rezerv
+
+⚠️ Kritik gerçek: Borsa, resesyonu 6-12 ay önce fiyatlar. Resmi ilan geldiğinde genellikle çok geç olur.
+
+Tam rehber profildeki link'te 👆
+
+#resesyon #ekonomi #yatırım #borsa #parafomo #kişiselfinans
+
+---
+
+### ✅ Senin Bugün Yapman Gerekenler
+
+1. **Sosyal medya paylaşımı:** Yukarıdaki X thread'ini ve Instagram postunu yayınla. Jackson Hole sonrası ekonomik belirsizlik gündemde yüksek — zamanlama çok iyi.
+2. **Topluluk paylaşımı:** r/Turkey finans veya ilgili Telegram/Facebook finans gruplarında "Resesyon nedir, Türkiye nasıl etkilenir?" sorusuyla konuşma aç, yazıyı kaynak olarak bağla (spam değil, değer katarak).
+
+---
+
 ## 2026-08-22 — TMSF Nedir? Bankadaki Paranız Ne Kadar Güvende?
 
 **Yayınlanan yazı:**

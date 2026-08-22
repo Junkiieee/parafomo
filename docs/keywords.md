@@ -69,7 +69,17 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 - [x] TMSF nedir? Bankada mevduat güvencesi — `Kişisel Finans` — hedef: "tmsf nedir"
 
+- [x] Resesyon nedir? Ekonomik durgunluk döneminde yatırımcı stratejisi — `Ekonomi` — hedef: "resesyon nedir"
+- [ ] S&P 500 nedir? ABD borsasına Türkiye'den nasıl yatırım yapılır? — `Yatırım` — hedef: "s&p 500 nedir"
+- [ ] Dow Jones Endeksi nedir? ABD borsası nasıl takip edilir? — `Borsa` — hedef: "dow jones nedir"
+- [ ] Sermaye artırımı nedir? Bedelsiz hisse ve rüçhan hakkı rehberi — `Borsa` — hedef: "sermaye artırımı nedir"
+- [ ] Hisse geri alımı (buyback) nedir? Şirket neden kendi hissesini satın alır? — `Borsa` — hedef: "hisse geri alımı nedir"
+- [ ] Bütçe açığı nedir? Kamu borcu ve ekonomiye etkisi — `Ekonomi` — hedef: "bütçe açığı nedir"
+- [ ] Döviz rezervleri nedir? Merkez bankası rezervleri ne anlama gelir? — `Ekonomi` — hedef: "döviz rezervleri nedir"
+
 ## Yayınlananlar (otomasyon buraya ekler)
+
+- [x] Resesyon Nedir? Ekonomik Durgunluk Döneminde Yatırımcı Stratejisi — `resesyon-nedir-ekonomik-durgunluk` (yeni evergreen ekonomi; "resesyon nedir" sorgusu; stagflasyon + deflasyon + verim eğrisi cluster'ını tamamlayan temel kavram rehberi; GSYİH + işsizlik + varlık sınıfı performans tablosu; 22 Ağustos 2026)
 
 - [x] Kaldıraç Nedir? Marjinli İşlemlerde Risk ve Getiri Hesabı — `kaldirac-nedir-marjinli-islemler` (yeni evergreen yatırım; "kaldıraç nedir" sorgusu; vadeli işlem + opsiyon + VİOP cluster'ını tamamlayan temel türev kavramı; stop-loss + risk-getiri yazılarına iç link)
 
