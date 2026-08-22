@@ -67,6 +67,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Deflasyon nedir? Fiyatlar düşerken ekonomi ve yatırımcılar nasıl etkilenir? — `Ekonomi` — hedef: "deflasyon nedir"
 - [x] Jackson Hole Sempozyumu nedir? Fed başkanı konuşması piyasaları nasıl etkiler? — `Ekonomi` — hedef: "jackson hole sempozyumu nedir"
 
+- [x] TMSF nedir? Bankada mevduat güvencesi — `Kişisel Finans` — hedef: "tmsf nedir"
+
 ## Yayınlananlar (otomasyon buraya ekler)
 
 - [x] Kaldıraç Nedir? Marjinli İşlemlerde Risk ve Getiri Hesabı — `kaldirac-nedir-marjinli-islemler` (yeni evergreen yatırım; "kaldıraç nedir" sorgusu; vadeli işlem + opsiyon + VİOP cluster'ını tamamlayan temel türev kavramı; stop-loss + risk-getiri yazılarına iç link)
@@ -205,3 +207,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] ABD Faiz Artarsa Ne Olur? Dolar, TL, Altın ve Borsaya Etkisi — `abd-faiz-artarsa-ne-olur` (GSC fırsatı: "abd faiz artarsa dolar ne olur" — gösterim 3, sıra 31; "amerika faizi artırırsa ne olur" — gösterim 3, sıra 39.3; mevcut Fed/faiz cluster'ından farklı "nedensellik" açısı: faiz artarsa → her varlık sınıfı ne olur?; dolar-endeksi+abd-faiz-karari+reel-faiz cluster'ını tamamlayan pratik rehber; 21 Ağustos 2026)
 
 - [x] Jackson Hole Sempozyumu Nedir? Fed Başkanı Konuşması Piyasaları Nasıl Etkiler? — `jackson-hole-sempozyumu-nedir` (zamanlama: Ağustos 2026 Jackson Hole haftası; "jackson hole sempozyumu nedir" sorgusu; Fed faiz kararı + FOMC + dolar endeksi cluster'ını tamamlayan evergreen para politikası rehberi; hawkish/dovish sinyal okuma kılavuzu; 21 Ağustos 2026)
+
+- [x] TMSF Nedir? Bankadaki Paranız Ne Kadar Güvende? — `tmsf-nedir-mevduat-guvencesi` (yeni evergreen kişisel finans; "tmsf nedir" / "mevduat güvencesi" sorgusu; mevduat+döviz hesabı+vadeli hesap cluster'ını tamamlayan temel güvenlik rehberi; 22 Ağustos 2026)
