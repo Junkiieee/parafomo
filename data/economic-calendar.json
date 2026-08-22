@@ -1,17 +1,8 @@
 {
-  "updated": "2026-08-21",
+  "updated": "2026-08-22",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-08-18",
-      "time": "6:00am",
-      "region": "GBP",
-      "impact": "High",
-      "title": "Claimant Count Change",
-      "source": "forexfactory",
-      "hook": ""
-    },
     {
       "date": "2026-08-19",
       "time": "6:00am",

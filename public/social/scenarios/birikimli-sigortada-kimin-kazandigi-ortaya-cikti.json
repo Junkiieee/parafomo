@@ -1,0 +1,58 @@
+{
+  "slug": "birikimli-sigortada-kimin-kazandigi-ortaya-cikti",
+  "title": "Birikimli Sigortada Kimin Kazandığı Ortaya Çıktı",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Her ay düzenli prim ödüyorsun ama komisyon ve erken çıkış cezası paranın büyük bölümünü eritiyor. İmzalamadan önce bu hesabı bilmek servetini korur.",
+  "tags": [
+    "birikimli sigorta",
+    "hayat sigortası",
+    "sigorta komisyon",
+    "finansal okuryazarlık",
+    "para yönetimi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "BİRİKİMLİ SİGORTA",
+      "spoken": "Her ay sigorta dolduruyorsun — kova neden dolmuyor?",
+      "visual": {
+        "type": "object",
+        "query": "leaky bucket water dripping coins"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ödediğin primlerin büyük payı sana gelmeden komisyon ve yönetim gideri olarak kesiliyor.",
+      "visual": {
+        "type": "concept",
+        "query": "insurance contract signing commission fee documents"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama erken çıkarsan durum daha kötü: yatırdığından bile az geri alıyorsun.",
+      "visual": {
+        "type": "concept",
+        "query": "money withdrawal loss penalty decreasing chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kovanın iki deliği var: komisyon ve erken çıkış cezası — bunu imzadan önce bilmek lazım.",
+      "visual": {
+        "type": "object",
+        "query": "bucket with holes money falling through"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki zaten imzaladıysan ne yapacaksın? Bunu da konuşacağız. Abone ol — her gün paranı koruyan bir hamle gelsin.",
+      "visual": {
+        "type": "concept",
+        "query": "financial planning calendar savings goal"
+      }
+    }
+  ]
+}
