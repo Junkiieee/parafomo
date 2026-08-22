@@ -4,6 +4,98 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-22 — TMSF Nedir? Bankadaki Paranız Ne Kadar Güvende?
+
+**Yayınlanan yazı:**
+[TMSF Nedir? Bankadaki Paranız Ne Kadar Güvende?](https://parafomo.com/blog/tmsf-nedir-mevduat-guvencesi/)
+
+**Konu seçim gerekçesi:** Tüm GSC fırsatları ve backlog konuları kaplı. Mevduat serisiyle doğal cluster içinde, sitede hiç yer almayan, çok yüksek arama niyetli yeni evergreen konu — bankaya para yatıran herkesin sorduğu temel güvenlik sorusu.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (hook):**
+"Banka batarsa birikimim ne olur?" diye düşündün mü hiç?
+
+Türkiye'de bu sorunun resmi bir cevabı var: TMSF 🧵
+
+---
+
+**Tweet 2:**
+TMSF = Tasarruf Mevduatı Sigorta Fonu
+
+Bir banka iflas ederse, TMSF devreye girer ve mevduat sahiplerine belirli limite kadar ödeme yapar.
+
+2026 itibarıyla bu limit: **750.000 TL / kişi / banka**
+
+---
+
+**Tweet 3:**
+Kapsam içi ✅
+→ TL vadeli mevduat
+→ TL vadesiz mevduat
+→ Döviz mevduatı (TL karşılığı)
+→ Altın mevduatı
+→ Katılım bankacılığı
+
+Kapsam dışı ❌
+→ Yatırım fonu
+→ Repo
+→ Hisse senedi
+→ Kripto
+
+---
+
+**Tweet 4:**
+Önemli strateji: Güvence her banka için ayrı ayrı geçerli.
+
+2 milyon TL'niz varsa → 3 farklı bankaya ~670.000 TL dağıtın. Tamamı güvence kapsamına girer.
+
+Tek bankada tutursanız 1,25 milyon TL güvence dışı kalır.
+
+---
+
+**Tweet 5 (CTA):**
+Banka batarsa ne olur, hangi hesaplar kapsam dışında, TMSF süreci nasıl işler?
+
+Tam rehber → parafomo.com/blog/tmsf-nedir-mevduat-guvencesi/
+
+#TMSF #mevduat #kişiselfinans #parafomo
+
+---
+
+### Instagram Post Metni
+
+**Caption:**
+
+💰 Bankada paranız güvende mi?
+
+TMSF (Tasarruf Mevduatı Sigorta Fonu) Türkiye'de mevduatları koruyan devlet güvencesidir.
+
+📌 2026 limiti: **750.000 TL / kişi / banka**
+
+✅ Kapsam içi: TL mevduat, döviz hesabı, altın mevduatı
+❌ Kapsam dışı: Yatırım fonu, repo, hisse, kripto
+
+💡 Pro strateji: Büyük birikimi birden fazla bankaya dağıtın → her biri 750K altında kalsın → tamamı güvence altında.
+
+Banka iflas ederse ne olur? Süreç nasıl işler? Tam rehber linkte 👇
+
+parafomo.com/blog/tmsf-nedir-mevduat-guvencesi/
+
+#TMSF #mevduat #banka #tasarruf #kişiselfinans #yatırım #paralarım #finansalözgürlük #parafomo
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş:** Yukarıdaki taslakları kopyala-yapıştır. X'te thread olarak yayınla (5 tweet), Instagram'da tek bir post olarak. "Banka batarsa ne olur?" sorusuyla başla — bu kanca çok merak uyandırıcı.
+
+2. **Finans gruplarında paylaş:** Reddit r/Turkey veya Ekşi Sözlük "banka güvencesi" başlığında bu yazıya değer katarak link ver. "TMSF limiti ne kadar?" sorulan yerlerde yönlendirici bir yorum yaz.
+
+---
+
 ## 2026-08-21 — Jackson Hole Sempozyumu Nedir? Fed Başkanı Konuşması Piyasaları Nasıl Etkiler?
 
 **Yayınlanan yazı:**
