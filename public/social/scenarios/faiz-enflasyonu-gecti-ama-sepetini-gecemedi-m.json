@@ -1,0 +1,75 @@
+{
+  "slug": "faiz-enflasyonu-gecti-ama-sepetini-gecemedi-m",
+  "title": "Faiz Enflasyonu Geçti — Ama Sepetini Geçemedi",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Vadeli faizin resmi enflasyonu geçmesi yetmiyor: kira, market ve fatura sepetindeki gerçek erime çok daha derin.",
+  "tags": [
+    "vadeli mevduat",
+    "enflasyon",
+    "faiz",
+    "reel getiri",
+    "kişisel finans",
+    "türkiye ekonomi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "%40 faiz aldın — ama paran hâlâ eridi.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Faiz",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Devlet enflasyonu geniş bir ulusal sepetten hesaplar; senin sepetinde kira, market, fatura ağır basar.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kiran %60 arttı diyelim, faizin %40 olsa bile — reel olarak geride kaldın, kazanmadın.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Faiz",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Asıl test şu: geçen yılın alışverişini bugün yapabiliyor musun? Yüzde değil, miktar cebinden çıkar.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Faiz",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Satın alma gücünü gerçekten koruyan hangisi — kıyaslaması geliyor. Abone ol, her gün 60 saniyede tek net karar burada.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
