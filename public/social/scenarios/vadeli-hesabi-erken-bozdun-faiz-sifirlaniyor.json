@@ -1,0 +1,59 @@
+{
+  "slug": "vadeli-hesabi-erken-bozdun-faiz-sifirlaniyor",
+  "title": "Vadeli Hesabı Erken Bozdun — Faiz Sıfırlanıyor",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Vadeli mevduatı vadesinden önce çözdüğünde banka vaat ettiği oran yerine çok düşük gecelik faiz uygular; bu kural sözleşmede gizlenir ve binlerce lirayı götürür.",
+  "tags": [
+    "vadeli mevduat",
+    "banka faizi",
+    "tasarruf",
+    "para yönetimi",
+    "finansal okuryazarlık",
+    "Türkiye ekonomi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "VADELİ MEVDUAT",
+      "spoken": "Vadeli hesabı erken bozdun — o faiz hiç ödenmedi.",
+      "visual": {
+        "type": "concept",
+        "query": "bank teller counter money transaction"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Rezervasyon gibi düşün: banka yüksek oran kilitler ama erken çıkarsan kural değişir.",
+      "visual": {
+        "type": "concept",
+        "query": "bank contract signing agreement fine print"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Erken bozunca vaat ettiği oran yerine gecelik düşük oran işler — sözleşmenin arkasında yazar.",
+      "visual": {
+        "type": "concept",
+        "query": "percentage drop interest rate downward arrow graph"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yüz bin TL'de bu fark binlerce lira olur. Vadeli açmadan esnek hesabı mutlaka sor.",
+      "visual": {
+        "type": "object",
+        "query": "Turkish lira cash banknotes pile"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Hangi hesap türü sana gerçekten ne kadar kazandırıyor — bunu yakında kırıyoruz. Kaçırmamak için abone ol; her gün bir dakikada tek net analiz.",
+      "visual": {
+        "type": "concept",
+        "query": "phone screen subscribe notification mobile app"
+      }
+    }
+  ]
+}
