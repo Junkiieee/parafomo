@@ -17,6 +17,23 @@ faq:
     a: "Evet. Güvence her banka için ayrı ayrı uygulanır. Farklı bankalardaki mevduatlarınız her biri için ayrı ayrı 750.000 TL'ye kadar TMSF kapsamındadır."
   - q: "Yatırım fonu ve repo TMSF güvencesinde mi?"
     a: "Hayır. Yatırım fonları, repo, hisse senetleri, devlet tahvili, eurobond ve kripto varlıklar TMSF güvencesi kapsamı dışındadır. Sadece mevduat ve katılım bankacılığı fonları kapsanmaktadır."
+shorts:
+  - "Bankadaki param güvende sanıyorsun — ama her şey değil."
+  - "TMSF sadece kişi başı 750.000 TL'yi güvence altına alır, fazlası riske girer."
+  - "Yatırım fonu, repo ve kripto bankadan alsan bile TMSF kapsamı dışında kalır."
+  - "Büyük birikimini farklı bankalara dağıtırsan her banka için limit ayrı ayrı işler."
+  - "Peki birikimin gerçekten güvende mi, nasıl anlarsın? ParaFOMO'ya abone ol — her gün bir finans gerçeği; detaylar parafomo.com'da."
+shorts_broll:
+  - "bank deposit insurance fund"
+  - "turkish lira savings bank"
+  - "investment fund cryptocurrency risk"
+  - "money spreading multiple banks"
+shorts_visuals:
+  - "concept|worried person checking bank account savings"
+  - "logo|TMSF logo"
+  - "concept|investment fund cryptocurrency excluded insurance"
+  - "concept|money split multiple bank buildings"
+  - "concept|person subscribing finance channel phone"
 ---
 
 Bankaya para yatırırken aklınıza en az bir kez şu soru gelmiştir: "Banka batarsa ne olur, birikimim ne olur?" Bu endişe tamamen yerinde — ve iyi haberi şu: Türkiye'de buna karşı resmi bir güvence sistemi var. Tasarruf Mevduatı Sigorta Fonu (TMSF), bireysel mevduat sahiplerini belirli bir limite kadar koruyan devlet kurumudur. Peki **TMSF nedir**, ne kadar güvence sunar ve hangi hesaplar bu korumanın dışında kalır?
