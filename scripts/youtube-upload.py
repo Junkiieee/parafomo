@@ -37,6 +37,8 @@ _TOOL_MAP = [
     ("kdv", "/kdv-hesaplama"),
     ("altın", "/altin-hesaplama"), ("altin", "/altin-hesaplama"), ("gram", "/altin-hesaplama"),
     ("asgari", "/asgari-ucret-hesaplama"),
+    ("işsizlik", "/issizlik-maasi-hesaplama"), ("issizlik", "/issizlik-maasi-hesaplama"),
+    ("işsizlik ödeneği", "/issizlik-maasi-hesaplama"), ("işten çıkar", "/issizlik-maasi-hesaplama"),
     ("net maaş", "/net-maas-hesaplama"), ("net maas", "/net-maas-hesaplama"),
     ("maaş", "/net-maas-hesaplama"), ("maas", "/net-maas-hesaplama"),
     ("kıdem", "/kidem-tazminati-hesaplama"), ("kidem", "/kidem-tazminati-hesaplama"),

@@ -1,0 +1,329 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+
+// 2026 işsizlik maaşı (işsizlik ödeneği) hesaplama — resmî parametreler.
+// Kaynak: 4447 s. İşsizlik Sigortası Kanunu md.50-51; İŞKUR 2026 uygulaması.
+// Kadim Hukuk, Çözüm Avukatlık, CottGroup 2026 tablolarıyla doğrulandı (2026-08).
+// Formül: günlük ödenek = son 4 ay ortalama günlük BRÜT prime esas kazanç × %40.
+//   Aylık brüt ödenek = ortalama aylık brüt × %40 (30 gün üzerinden eşdeğer).
+// TAVAN: aylık brüt asgari ücretin %80'i = 33.030 × 0,80 = 26.424 ₺.
+// TABAN (asgari ücretli için): 33.030 × 0,40 = 13.212 ₺.
+// Kesinti: yalnız binde 7,59 damga vergisi (gelir vergisi/SGK YOK).
+// Süre: son 3 yıl prim günü 600-899 → 180 gün · 900-1079 → 240 gün · 1080+ → 300 gün.
+// GÜNCELLEME: Ocak 2027'de yeni asgari ücretle MIN_BRUT'u güncelle (tavan/taban otomatik).
+const MIN_BRUT = 33030.0; // 2026 aylık brüt asgari ücret
+const ORAN = 0.4; // ödenek oranı %40
+const DAMGA_ORAN = 0.00759; // binde 7,59
+const TAVAN = MIN_BRUT * 0.8; // 26.424 ₺ — aylık brüt üst sınır
+const TABAN = MIN_BRUT * ORAN; // 13.212 ₺ — asgari ücretli için
+
+// Süre seçenekleri: prim günü → ödenek gün sayısı
+const SURELER = [
+  { gun: 180, label: '600 – 899 gün (180 gün ödenek = 6 ay)', ay: 6 },
+  { gun: 240, label: '900 – 1079 gün (240 gün ödenek = 8 ay)', ay: 8 },
+  { gun: 300, label: '1080 gün ve üzeri (300 gün ödenek = 10 ay)', ay: 10 },
+];
+
+function odenek(aylikBrut: number) {
+  const brutRaw = aylikBrut * ORAN;
+  const brut = Math.min(brutRaw, TAVAN); // tavan uygulanır
+  const capped = brutRaw > TAVAN;
+  const damga = brut * DAMGA_ORAN;
+  const net = brut - damga;
+  return { brut, damga, net, capped };
+}
+
+const DEFAULT_BRUT = 50000;
+const d = odenek(DEFAULT_BRUT);
+
+const fmt = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+const fmt0 = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+
+// Örnek tablo: çeşitli ortalama brüt maaşların aylık net ödeneği
+const ORNEKLER = [MIN_BRUT, 40000, 50000, 66060, 80000, 120000].map((b) => ({ b, ...odenek(b) }));
+
+const faq = [
+  {
+    q: 'İşsizlik maaşı nasıl hesaplanır? (2026)',
+    a: `İşsizlik ödeneği, son dört aydaki prime esas kazançların <strong>günlük ortalama brütünün %40'ı</strong> kadardır. Aylık tutar, ortalama aylık brüt maaşınızın %40'ına denk gelir. 2026'da bu tutar aylık brüt asgari ücretin %80'ini (${fmt0(TAVAN)} ₺) geçemez. Hesaplanan brüt ödenekten yalnızca binde 7,59 damga vergisi kesilir; gelir vergisi veya SGK primi kesilmez.`,
+  },
+  {
+    q: '2026 işsizlik maaşı en az ve en çok ne kadar?',
+    a: `2026 yılında en düşük (asgari ücretle çalışan için) aylık brüt işsizlik ödeneği ${fmt0(TABAN)} ₺, damga sonrası net ${fmt(TABAN - TABAN * DAMGA_ORAN)} ₺'dir. En yüksek (tavan) aylık brüt ödenek ${fmt0(TAVAN)} ₺, net ${fmt(TAVAN - TAVAN * DAMGA_ORAN)} ₺'dir. Ortalama maaşınız ne kadar yüksek olursa olsun aylık ödenek bu tavanı aşamaz.`,
+  },
+  {
+    q: 'İşsizlik maaşı kaç ay ödenir?',
+    a: `Ödeme süresi, işten ayrılmadan önceki son 3 yıldaki prim gün sayınıza bağlıdır: <strong>600–899 gün</strong> primi olana 180 gün (6 ay); <strong>900–1079 gün</strong> primi olana 240 gün (8 ay); <strong>1080 gün ve üzeri</strong> primi olana 300 gün (10 ay) ödenir.`,
+  },
+  {
+    q: 'İşsizlik maaşı almanın şartları neler?',
+    a: `Kendi isteği ve kusuru dışında işsiz kalmak; son 120 gün kesintisiz hizmet akdine tabi olmak; son 3 yılda en az 600 gün işsizlik sigortası primi ödemiş olmak; iş akdinin bitiminden itibaren <strong>30 gün içinde</strong> İŞKUR'a başvurmak gerekir. İstifa edenler ve kendi kusuruyla (haklı nedenle) işten çıkarılanlar genelde yararlanamaz.`,
+  },
+  {
+    q: 'Bu hesap İŞKUR ile birebir aynı mı?',
+    a: `Araç, son 4 ayın sabit ortalama brütü varsayımıyla resmî formülü (%40 + %80 tavan + binde 7,59 damga) uygular ve güçlü bir tahmin verir. Gerçek tutar; prime esas kazancın gerçek günlük ortalaması, eksik/fazla çalışılan günler ve İŞKUR'un nihai değerlendirmesine göre az miktarda değişebilir. Resmî sonuç için İŞKUR/e-Devlet başvurusu esastır.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'İşsizlik Maaşı Hesaplama', url: '/issizlik-maasi-hesaplama' },
+];
+---
+
+<BaseLayout
+  title="İşsizlik Maaşı Hesaplama 2026 — İşsizlik Ödeneği Ne Kadar?"
+  description="2026 işsizlik maaşı hesaplama: son 4 ayın ortalama brüt maaşını gir; %40 oran, tavan ve damga vergisiyle aylık net işsizlik ödeneğini ve kaç ay alacağını anında gör."
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Çalışma & Ücret</p>
+      <h1>İşsizlik Maaşı Hesaplama (2026)</h1>
+      <p class="lede">
+        Son 4 ayın <strong>ortalama brüt maaşını</strong> girin; <strong>%40 oran, 2026 tavanı ve
+        damga vergisi</strong> ile aylık <strong>net işsizlik ödeneğinizi</strong> ve kaç ay
+        alacağınızı anında hesaplayın.
+      </p>
+    </header>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Son 4 ay ortalama brüt maaş (aylık, ₺)</span>
+          <input type="number" id="in-brut" value={DEFAULT_BRUT} min="0" step="500" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Son 3 yıl prim gün sayısı</span>
+          <select id="in-sure">
+            {SURELER.map((s) => (
+              <option value={s.gun} selected={s.gun === 240}>{s.label}</option>
+            ))}
+          </select>
+        </label>
+        <p class="input-hint">
+          Ödenek, günlük ortalama brütün %40'ıdır ve aylık {fmt0(TAVAN)} ₺ tavanını aşamaz. Prim
+          günü ödeme süresini belirler.
+        </p>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Aylık net işsizlik maaşı</span>
+          <span class="result-value" id="out-net">₺{fmt(d.net)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Aylık brüt ödenek (%40)</span>
+            <span class="split-val" id="out-gross">₺{fmt(d.brut)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Damga vergisi (binde 7,59)</span>
+            <span class="split-val" id="out-damga">−₺{fmt(d.damga)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Ödeme süresi</span>
+            <span class="split-val" id="out-sure">8 ay (240 gün)</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Toplam alınacak (net)</span>
+            <span class="split-val" id="out-toplam">₺{fmt(d.net * 8)}</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note">
+          Aylık ödenek {fmt0(TAVAN)} ₺ tavanının altında; tam %40 uygulandı.
+        </p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır; hukuki/mali tavsiye değildir. 2026 resmî formül
+      (%40 oran + aylık brüt asgari ücretin %80'i tavan + binde 7,59 damga vergisi) esas alınmıştır.
+      Son 4 ayın sabit ortalama brütü varsayılır; gerçek tutar prime esas kazanç, eksik günler ve
+      İŞKUR'un değerlendirmesine göre değişebilir.
+    </p>
+
+    <section class="table-block">
+      <h2>2026 işsizlik maaşı tablosu (aylık, ortalama brüte göre)</h2>
+      <p class="table-intro">
+        Son 4 ayın ortalama brüt maaşına göre aylık net işsizlik ödeneği. Tavan {fmt0(TAVAN)} ₺'yi
+        aşan maaşlarda ödenek tavanda sabitlenir.
+      </p>
+      <table class="rate-table">
+        <thead><tr><th>Ortalama brüt maaş</th><th>Brüt ödenek (%40)</th><th>Damga</th><th>Aylık net ödenek</th></tr></thead>
+        <tbody>
+          {ORNEKLER.map((r) => (
+            <tr class={r.b === MIN_BRUT ? 'current' : ''}>
+              <td>₺{fmt0(r.b)}{r.b === MIN_BRUT ? ' (asgari)' : ''}{r.capped ? ' +' : ''}</td>
+              <td>₺{fmt0(r.brut)}{r.capped ? ' (tavan)' : ''}</td>
+              <td>−₺{fmt0(r.damga)}</td>
+              <td>₺{fmt0(r.net)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Asgari ücretle çalışan için taban {fmt0(TABAN)} ₺ brüt; {fmt0(TAVAN)} ₺ ve üzeri ortalama
+        brütte ödenek tavana ({fmt0(TAVAN)} ₺) sabitlenir. "+" tavanı aşan maaşı gösterir.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>İşsizlik maaşı kaç ay ödenir? (prim günü)</h2>
+      <table class="rate-table">
+        <thead><tr><th>Son 3 yıl prim günü</th><th>Ödenek süresi</th></tr></thead>
+        <tbody>
+          <tr><td>600 – 899 gün</td><td>180 gün (6 ay)</td></tr>
+          <tr><td>900 – 1079 gün</td><td>240 gün (8 ay)</td></tr>
+          <tr><td>1080 gün ve üzeri</td><td>300 gün (10 ay)</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">
+        Süre, işten ayrılmadan önceki son 3 yıldaki toplam işsizlik sigortası primi gün sayısına
+        göre belirlenir.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>İşsizlik maaşı nasıl hesaplanır?</h2>
+      <p>
+        <strong>İşsizlik ödeneği</strong>, kendi istek ve kusuru dışında işsiz kalan sigortalıya
+        İŞKUR tarafından ödenir. Tutar, son dört ayın <em>prime esas günlük brüt kazancının
+        ortalamasının %40'ı</em>dır. Aylık karşılığı, ortalama aylık brüt maaşınızın %40'ına denk
+        gelir. Ancak yasa bir üst sınır koyar: aylık ödenek, <strong>aylık brüt asgari ücretin
+        %80'ini</strong> ({fmt0(TAVAN)} ₺, 2026) aşamaz. Yüksek maaşlılar bu tavana takılır.
+      </p>
+      <h2>Ödenekten hangi kesinti yapılır?</h2>
+      <p>
+        İşsizlik ödeneğinden <strong>gelir vergisi ve SGK primi kesilmez</strong>; yalnızca binde
+        7,59 (<em>%0,759</em>) damga vergisi kesilir. Bu yüzden brüt ile net ödenek birbirine çok
+        yakındır. Örneğin tavandan ödenek alan biri {fmt0(TAVAN)} ₺ brütün {fmt(TAVAN * DAMGA_ORAN)}
+        ₺ damgası düşülünce {fmt(TAVAN - TAVAN * DAMGA_ORAN)} ₺ net alır.
+      </p>
+      <p class="cta-line">
+        İlgili araçlar: işten ayrılırken hak ettiğiniz tazminatı
+        <a href="/kidem-tazminati-hesaplama">kıdem tazminatı hesaplama</a> ile, güncel ücretinizi
+        <a href="/net-maas-hesaplama">net maaş hesaplama</a> ve
+        <a href="/asgari-ucret-hesaplama">asgari ücret hesaplama</a> araçlarıyla görebilirsiniz.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p set:html={f.a} />
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ ORAN, DAMGA_ORAN, TAVAN }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const money = (n) => '₺' + nf.format(n);
+
+      function update() {
+        const aylikBrut = Math.max(0, +$('in-brut').value || 0);
+        const gun = Math.max(180, +$('in-sure').value || 240);
+        const ay = Math.round(gun / 30);
+        const brutRaw = aylikBrut * ORAN;
+        const brut = Math.min(brutRaw, TAVAN);
+        const capped = brutRaw > TAVAN;
+        const damga = brut * DAMGA_ORAN;
+        const net = brut - damga;
+
+        $('out-net').textContent = money(net);
+        $('out-gross').textContent = money(brut);
+        $('out-damga').textContent = '−' + money(damga);
+        $('out-sure').textContent = ay + ' ay (' + gun + ' gün)';
+        $('out-toplam').textContent = money(net * ay);
+        $('out-note').textContent = capped
+          ? 'Ortalama maaş yüksek: aylık ödenek ' + money(TAVAN) + ' tavanında sabitlendi.'
+          : 'Aylık ödenek ' + money(TAVAN) + ' tavanının altında; tam %40 uygulandı.';
+      }
+
+      $('in-brut').addEventListener('input', update);
+      $('in-sure').addEventListener('change', update);
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.7rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input, .calc-inputs select {
+      font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus, .calc-inputs select:focus {
+      outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft);
+    }
+    .input-hint { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 0.9rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.95rem; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .rate-table tr.current td { font-weight: 700; color: var(--brand-ink); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>

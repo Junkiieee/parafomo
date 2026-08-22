@@ -93,6 +93,7 @@ SECONDARY_TOOLS = [
     "🧮 Brütten nete maaşını hesapla → parafomo.com/net-maas-hesaplama",
     "🧾 KDV ekle veya ayır → parafomo.com/kdv-hesaplama",
     "🏦 Mevduatın net getirisi (stopaj sonrası) → parafomo.com/mevduat-faizi-hesaplama",
+    "🧷 İşsizlik maaşın ne kadar, kaç ay? → parafomo.com/issizlik-maasi-hesaplama",
 ]
 
 

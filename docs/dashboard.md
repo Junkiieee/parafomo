@@ -1,12 +1,12 @@
 # ParaFOMO — Dürüst Ölçüm Panosu
 
-> Üretim: 2026-08-21 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
+> Üretim: 2026-08-22 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
 
 ## 1) Organik trafik trendi (GA4 — son 8 hafta)
 
 | Hafta | Gerçek erişim (Direct hariç) | Direct (≈sen/bot) | Toplam |
 |---|---|---|---|
-| 202626 | 2 | 13 | 15 |
+| 202626 | 1 | 6 | 7 |
 | 202627 | 3 | 23 | 26 |
 | 202628 | 3 | 13 | 16 |
 | 202629 | 2 | 14 | 16 |
@@ -14,16 +14,17 @@
 | 202631 | 2 | 20 | 22 |
 | 202632 | 9 | 15 | 24 |
 | 202633 | 24 | 16 | 40 |
-| 202634 | 16 | 18 | 34 |
+| 202634 | 22 | 22 | 44 |
 
-**Gerçek erişim trendi:** `▁▁▁▁▁▁▃█▅`  📈 artıyor
-**Son hafta Direct payı:** %53 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
+**Gerçek erişim trendi:** `▁▁▁▁▁▁▃█▇`  📈 artıyor
+**Son hafta Direct payı:** %50 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
 
 **Gerçek erişim kaynağı (son 4 hafta toplamı):**
-- Organic Video: 26 kullanıcı
-- Organic Search: 13 kullanıcı
-- Organic Social: 11 kullanıcı
+- Organic Video: 29 kullanıcı
+- Organic Search: 14 kullanıcı
+- Organic Social: 12 kullanıcı
 - Referral: 1 kullanıcı
+- Unassigned: 1 kullanıcı
 
 ## 2) Google arama trendi (GSC — son 8 hafta)
 
@@ -62,15 +63,15 @@
 
 ## 3) YouTube motoru
 
-- **Abone:** 31  ·  **Toplam izlenme:** 36,744  ·  **Video:** 178
+- **Abone:** 31  ·  **Toplam izlenme:** 37,644  ·  **Video:** 182
 - İzlenme/abone dönüşümü: **0.08%** (izleyen kaç kişi abone/huniye giriyor)
 
 ## 4) 🎯 DÜRÜST HÜKÜM
 
 **Hedef:** 1000 ziyaretçi/gün = 7,000/hafta gerçek erişim.
-**Gerçek durum:** son hafta **16** gerçek ziyaretçi = hedefin **%0.23**'si. Kalan: **6,984** kişi/hafta.
+**Gerçek durum:** son hafta **22** gerçek ziyaretçi = hedefin **%0.31**'si. Kalan: **6,978** kişi/hafta.
 
 **Teşhis:**
-- ⚠️ Trafiğin %53'i Direct — bu büyük ihtimalle sen + botlar, gerçek keşif değil. Çıplak sayıya güvenme.
+- ⚠️ Trafiğin %50'i Direct — bu büyük ihtimalle sen + botlar, gerçek keşif değil. Çıplak sayıya güvenme.
 
 **Özet:** Öğrenme döngüsü ses/format/slot optimize ediyor ama yukarıdaki darboğaz oralarda değil. Sistemin 'kendi kendine öğrenip uygulaması' için önce ölçülen darboğaza (otorite/dağıtım) yönlendirilmesi gerekir.
