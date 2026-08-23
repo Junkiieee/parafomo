@@ -657,7 +657,11 @@ def _kenburns(motion, D):
     except (TypeError, ValueError):
         durf = 0.0
     if durf > 5.0:
-        n = max(2, round(durf / 2.7))      # ~2.7sn/faz → 8sn'de 3 kesim
+        # v5.2 micro-cut: faz 2.7→1.8sn. 2026 retention 5x-teyitli (opus.pro,
+        # hailuoai, increditors, shortzly, 08-23 WebSearch): 1-2sn'de bir görsel
+        # değişim = sık sahne değişimi statik-çekime göre +%32 retention. 2.7sn %35
+        # yavaştı; 1.8sn 1-2sn bandına oturur → 8sn'de 4 kesim (3 yerine).
+        n = max(2, round(durf / 1.8))      # ~1.8sn/faz → 8sn'de 4 kesim
         seg = durf / n
         pw = f"min(mod(t\\,{seg:.3f})/{seg:.3f}\\,1)"
         # v4.2: her faz taze wide→tight zoom + faz-parite ile YATAY kadraj yönü

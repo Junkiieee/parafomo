@@ -2,6 +2,7 @@
 title: "Dolar Endeksi (DXY) Nedir? ABD Faiz Kararları TL'yi Nasıl Etkiler?"
 description: "Dolar endeksi (DXY) nedir, nasıl hesaplanır? Fed faiz kararları DXY'yi nasıl etkiler ve Türk yatırımcısı bu endeksi neden takip etmeli? Kapsamlı rehber."
 pubDate: 2026-08-09
+updatedDate: 2026-08-23
 category: "Ekonomi"
 tags: ["dolar endeksi", "DXY", "abd faiz kararı", "dolar kuru", "fed kararı", "para birimi"]
 readingTime: 8
@@ -143,7 +144,7 @@ Bireysel yatırımcı için DXY yeterli referans noktasını sağlar.
 - **Fed faiz artışı** → dolar güçlenir → DXY yükselir; **faiz indirimi** → tersi geçerlidir — ancak piyasa beklentiyi önceden fiyatlar.
 - **TL ve BIST**: DXY yükseldikçe TL baskı altına girebilir, yabancı sermaye çıkışı BIST'i olumsuz etkileyebilir.
 - **Altın ve emtia**: DXY ile genel olarak ters hareket eder.
-- Ücretsiz takip için TradingView veya Investing.com yeterlidir.
+- Güncel değeri hemen görmek için [canlı dolar endeksi (DXY) sayfamıza](/dolar-endeksi) bakabilir, bileşen döviz çiftlerini ve TL–altın etkisini takip edebilirsiniz.
 
 ---
 
