@@ -1,0 +1,59 @@
+{
+  "slug": "vadesiz-hesapta-yilda-38-bin-tl-kaybediyorsun",
+  "title": "Vadesiz Hesapta Yılda 38 Bin TL Kaybediyorsun",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Türkiye'deki vadesiz banka hesapları sıfır faiz kazandırırken enflasyon paranın alım gücünü sessizce eritiyor. Para piyasası fonlarıyla fark neden bu kadar büyük?",
+  "tags": [
+    "vadesiz hesap",
+    "para piyasası fonu",
+    "enflasyon",
+    "banka faizi",
+    "mevduat",
+    "finansal okuryazarlık",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "100 bin TL vadesiz yatıyor — yılda 38 bin eriyor.",
+      "visual": {
+        "type": "concept",
+        "query": "cash money disappearing inflation erosion"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Vadesiz hesap faiz yok. Yüzde 60 enflasyonda 100 bin TL yılda 62 bine eriyor.",
+      "visual": {
+        "type": "concept",
+        "query": "bank account balance decreasing red chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama Türkiye'de milyonlarca hesap hâlâ vadesiz. Bankalar sıfır maliyetle bu parayı işletiyor — senin adına.",
+      "visual": {
+        "type": "concept",
+        "query": "bank counter customers transactions interior"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Para piyasası fonu günlük çalışır — 100 bin TL için yılda yaklaşık 35 bin TL getiri.",
+      "visual": {
+        "type": "concept",
+        "query": "investment fund growth chart green upward"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu fonun hangi koşulda anlamı kalmıyor? ParaFOMO'ya abone ol — her gün net bir gerçek.",
+      "visual": {
+        "type": "concept",
+        "query": "smartphone banking app mobile finance screen"
+      }
+    }
+  ]
+}
