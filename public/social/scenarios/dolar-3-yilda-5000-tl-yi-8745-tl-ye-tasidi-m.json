@@ -1,0 +1,153 @@
+{
+  "slug": "dolar-3-yilda-5000-tl-yi-8745-tl-ye-tasidi-m",
+  "title": "Dolar 3 Yılda 5000 TL'yi 8745 TL'ye Taşıdı",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "Ağustos 2023'te 5.000 TL'yi dolara yatırsaydın bugün yaklaşık 8.745 TL olurdu — yaklaşık yüzde yetmiş beş getiri. Bankacılar o dönem faizi öneriyordu; peki hangisi kazandırdı?",
+  "tags": [
+    "dolar",
+    "tl yatırım",
+    "döviz getiri",
+    "parafomo",
+    "finans shorts",
+    "yatırım"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "5000 TL dolara gitseydi: 3 yılda 8745 TL.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Dolar",
+        "glyph": "$"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ağustos 2023'te 5.000 TL'yi dolara çevir, üç yıl sadece bekle ve başka hiçbir şey yapma.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Dolar",
+        "glyph": "$"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama o dönem bankacılar 'faiz yüksek, TL'de kal' diyordu — peki hangisi kazandırdı?",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Faiz",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bugün o dolarlar yaklaşık 8.745 TL ediyor — 3 yılda yaklaşık yüzde yetmiş beş net getiri.",
+      "visual": {
+        "type": "manim",
+        "scene": "backtest",
+        "theme": "light",
+        "title": "",
+        "chart": {
+          "kind": "line",
+          "label": "Dolar/TL",
+          "unit": "TL",
+          "points": [
+            27.46,
+            28.26,
+            28.94,
+            29.52,
+            30.36,
+            31.21,
+            32.37,
+            32.24,
+            32.73,
+            33.1,
+            34.08,
+            34.15,
+            34.28,
+            34.68,
+            35.31,
+            35.85,
+            36.52,
+            38.5,
+            39.21,
+            39.89,
+            40.59,
+            41.1,
+            41.58,
+            42.03,
+            42.49,
+            42.95,
+            43.46,
+            43.96,
+            45.17,
+            45.85,
+            46.64,
+            47.5,
+            48.03,
+            48.03
+          ],
+          "x": [
+            "08/23",
+            "09/23",
+            "11/23",
+            "12/23",
+            "01/24",
+            "02/24",
+            "03/24",
+            "04/24",
+            "05/24",
+            "06/24",
+            "07/24",
+            "08/24",
+            "09/24",
+            "11/24",
+            "12/24",
+            "01/25",
+            "02/25",
+            "03/25",
+            "04/25",
+            "05/25",
+            "06/25",
+            "07/25",
+            "08/25",
+            "09/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "02/26",
+            "03/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26"
+          ],
+          "amount": 5000,
+          "end_value": 8745,
+          "pct": 75
+        }
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki dolar önümüzdeki yıllarda yine bu kadar güçlü çıkacak mı? Her gün 60 saniyede net analiz için abone ol.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
