@@ -70,7 +70,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] TMSF nedir? Bankada mevduat güvencesi — `Kişisel Finans` — hedef: "tmsf nedir"
 
 - [x] Resesyon nedir? Ekonomik durgunluk döneminde yatırımcı stratejisi — `Ekonomi` — hedef: "resesyon nedir"
-- [ ] S&P 500 nedir? ABD borsasına Türkiye'den nasıl yatırım yapılır? — `Yatırım` — hedef: "s&p 500 nedir"
+- [x] S&P 500 nedir? ABD borsasına Türkiye'den nasıl yatırım yapılır? — `Yatırım` — hedef: "s&p 500 nedir"
 - [ ] Dow Jones Endeksi nedir? ABD borsası nasıl takip edilir? — `Borsa` — hedef: "dow jones nedir"
 - [ ] Sermaye artırımı nedir? Bedelsiz hisse ve rüçhan hakkı rehberi — `Borsa` — hedef: "sermaye artırımı nedir"
 - [ ] Hisse geri alımı (buyback) nedir? Şirket neden kendi hissesini satın alır? — `Borsa` — hedef: "hisse geri alımı nedir"
@@ -219,3 +219,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Jackson Hole Sempozyumu Nedir? Fed Başkanı Konuşması Piyasaları Nasıl Etkiler? — `jackson-hole-sempozyumu-nedir` (zamanlama: Ağustos 2026 Jackson Hole haftası; "jackson hole sempozyumu nedir" sorgusu; Fed faiz kararı + FOMC + dolar endeksi cluster'ını tamamlayan evergreen para politikası rehberi; hawkish/dovish sinyal okuma kılavuzu; 21 Ağustos 2026)
 
 - [x] TMSF Nedir? Bankadaki Paranız Ne Kadar Güvende? — `tmsf-nedir-mevduat-guvencesi` (yeni evergreen kişisel finans; "tmsf nedir" / "mevduat güvencesi" sorgusu; mevduat+döviz hesabı+vadeli hesap cluster'ını tamamlayan temel güvenlik rehberi; 22 Ağustos 2026)
+
+- [x] S&P 500 Nedir? ABD Borsasına Türkiye'den Nasıl Yatırım Yapılır? — `sp500-nedir-abd-borsasina-nasil-yatirim-yapilir` (backlog ilk [ ] konusu: evergreen yatırım; "s&p 500 nedir" sorgusu; ETF+portföy çeşitlendirmesi+DCA cluster'ını tamamlayan uluslararası yatırım rehberi; yurt içi fon vs doğrudan ETF karşılaştırması; 23 Ağustos 2026)

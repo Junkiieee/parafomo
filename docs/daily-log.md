@@ -4,6 +4,62 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-23 — S&P 500 Nedir? ABD Borsasına Türkiye'den Nasıl Yatırım Yapılır?
+
+**Yayınlanan yazı:**
+[S&P 500 Nedir? ABD Borsasına Türkiye'den Nasıl Yatırım Yapılır?](https://parafomo.com/blog/sp500-nedir-abd-borsasina-nasil-yatirim-yapilir/)
+
+**X (Twitter) thread taslağı:**
+
+🇺🇸 S&P 500 nedir, Türkiye'den nasıl yatırım yapılır?
+
+1/ ABD'nin en büyük 500 şirketi tek bir endeks: Apple, Microsoft, Amazon, Google... S&P 500 bunların hepsini kapsıyor.
+
+2/ Tarihsel veri çarpıcı: 1928'den bu yana yıllık ortalama ~%10 getiri. Düşüşler oldu (2008'de -%57), ama her seferinde yeni zirve geldi.
+
+3/ Türkiye'den 2 yol:
+→ Tefas'tan ABD hisse fonu (%0.5–2 yönetim ücreti)
+→ Interactive Brokers'tan VOO/IVV ETF (%0.03–0.09, çok daha ucuz)
+
+4/ Kur riski = kur fırsatı. TL değer kaybettikçe dolar bazlı S&P 500 TL getirisi otomatik artıyor. Ama tersi de işler.
+
+5/ En önemli kural: Al, tut, periyodik ekle. Zamanlamaya çalışma. DCA kazanır.
+
+👇 Detaylı rehber:
+parafomo.com/blog/sp500-nedir-abd-borsasina-nasil-yatirim-yapilir/
+
+#SP500 #ABDBorsası #ETF #Yatırım #ParaFOMO
+
+---
+
+**Instagram carousel/post metni:**
+
+📊 S&P 500 nedir? Türkiye'den nasıl yatırım yapılır?
+
+Apple, Microsoft, Amazon, Google — bunların hepsini tek endeksle tutabilirsin. İşte S&P 500'ün özeti:
+
+✅ 500 ABD devinin piyasa değeri ortalaması
+✅ 1928'den bu yana yıllık ~%10 getiri
+✅ Türkiye'den 2 yol: Tefas fonu (kolay) veya doğrudan ETF (ucuz)
+✅ Kur düştükçe TL getiriniz artıyor
+
+VOO: yıllık %0.03 maliyet
+Türk fonu: %0.5–2 maliyet 👀
+
+Uzun vadeli, düzenli, paniksiz yatırım → S&P 500'ü bu şekilde tutanlara tarih iyi davrandı.
+
+Link bio'da 🔗
+
+#SP500 #ABDBorsası #ETF #Yatırım #Borsa #ParaFOMO #FinansTürkiye #DolarYatırım
+
+---
+
+**Bugün senin yapman gerekenler:**
+1. X thread'ini kopyalayıp @parafomo hesabından yayınla.
+2. Instagram carousel'i paylaş; bio linkini parafomo.com/blog/sp500-nedir-abd-borsasina-nasil-yatirim-yapilir/ olarak güncelle.
+
+---
+
 ## 2026-08-22 — Resesyon Nedir? Ekonomik Durgunluk Döneminde Yatırımcı Stratejisi
 
 **Yayınlanan yazı:**
