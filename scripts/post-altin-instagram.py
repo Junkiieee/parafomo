@@ -94,6 +94,7 @@ SECONDARY_TOOLS = [
     "🧾 KDV ekle veya ayır → parafomo.com/kdv-hesaplama",
     "🏦 Mevduatın net getirisi (stopaj sonrası) → parafomo.com/mevduat-faizi-hesaplama",
     "🧷 İşsizlik maaşın ne kadar, kaç ay? → parafomo.com/issizlik-maasi-hesaplama",
+    "💵 Dolar endeksi (DXY) şu an kaç? → parafomo.com/dolar-endeksi",
 ]
 
 

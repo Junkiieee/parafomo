@@ -41,6 +41,10 @@ python3 "$REPO/scripts/fetch-halka-arz.py" 2>&1 | sed 's/^/    [halka-arz] /' ||
 echo "[*] Altın fiyatları çekiliyor"
 python3 "$REPO/scripts/altin-fiyat.py" 2>&1 | sed 's/^/    [altin] /' || echo "UYARI: altın fiyatı güncellenemedi (mevcut korunur, devam)"
 
+# 1b4) Güncel dolar endeksi (DXY) çek (data/dxy.json -> /dolar-endeksi sayfası)
+echo "[*] Dolar endeksi (DXY) çekiliyor"
+python3 "$REPO/scripts/dxy.py" 2>&1 | sed 's/^/    [dxy] /' || echo "UYARI: dolar endeksi güncellenemedi (mevcut korunur, devam)"
+
 # 1c) GSC fırsat sorgularını güncelle (içerik seçimi KAYNAK (b) — takvimden sonra,
 #     backlog'dan önce). venv'de google kütüphaneleri var (sistem Python'da yok).
 echo "[*] GSC fırsat sorguları çekiliyor"

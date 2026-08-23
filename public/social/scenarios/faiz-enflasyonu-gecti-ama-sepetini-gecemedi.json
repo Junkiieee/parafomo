@@ -1,0 +1,59 @@
+{
+  "slug": "faiz-enflasyonu-gecti-ama-sepetini-gecemedi",
+  "title": "Faiz Enflasyonu Geçti — Ama Sepetini Geçemedi",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Vadeli faizin resmi enflasyonu geçmesi yetmiyor: kira, market ve fatura sepetindeki gerçek erime çok daha derin.",
+  "tags": [
+    "vadeli mevduat",
+    "enflasyon",
+    "faiz",
+    "reel getiri",
+    "kişisel finans",
+    "türkiye ekonomi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "%40 faiz aldın — ama paran hâlâ eridi.",
+      "visual": {
+        "type": "concept",
+        "query": "bank savings account interest rate phone screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Devlet enflasyonu geniş bir ulusal sepetten hesaplar; senin sepetinde kira, market, fatura ağır basar.",
+      "visual": {
+        "type": "concept",
+        "query": "grocery store prices inflation shopping cart empty"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kiran %60 arttı diyelim, faizin %40 olsa bile — reel olarak geride kaldın, kazanmadın.",
+      "visual": {
+        "type": "concept",
+        "query": "apartment rent increase bills payment stress"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Asıl test şu: geçen yılın alışverişini bugün yapabiliyor musun? Yüzde değil, miktar cebinden çıkar.",
+      "visual": {
+        "type": "concept",
+        "query": "purchasing power money comparison wallet empty"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Satın alma gücünü gerçekten koruyan hangisi — kıyaslaması geliyor. Abone ol, her gün 60 saniyede tek net karar burada.",
+      "visual": {
+        "type": "concept",
+        "query": "financial analysis investment comparison chart screen"
+      }
+    }
+  ]
+}

@@ -76,7 +76,10 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [ ] Hisse geri alımı (buyback) nedir? Şirket neden kendi hissesini satın alır? — `Borsa` — hedef: "hisse geri alımı nedir"
 - [ ] Bütçe açığı nedir? Kamu borcu ve ekonomiye etkisi — `Ekonomi` — hedef: "bütçe açığı nedir"
 - [ ] Döviz rezervleri nedir? Merkez bankası rezervleri ne anlama gelir? — `Ekonomi` — hedef: "döviz rezervleri nedir"
+
 ## Yayınlananlar (otomasyon buraya ekler)
+
+- [x] Resesyon Nedir? Ekonomik Durgunluk Döneminde Yatırımcı Stratejisi — `resesyon-nedir-ekonomik-durgunluk` (yeni evergreen ekonomi; "resesyon nedir" sorgusu; stagflasyon + deflasyon + verim eğrisi cluster'ını tamamlayan temel kavram rehberi; GSYİH + işsizlik + varlık sınıfı performans tablosu; 22 Ağustos 2026)
 
 - [x] Kaldıraç Nedir? Marjinli İşlemlerde Risk ve Getiri Hesabı — `kaldirac-nedir-marjinli-islemler` (yeni evergreen yatırım; "kaldıraç nedir" sorgusu; vadeli işlem + opsiyon + VİOP cluster'ını tamamlayan temel türev kavramı; stop-loss + risk-getiri yazılarına iç link)
 

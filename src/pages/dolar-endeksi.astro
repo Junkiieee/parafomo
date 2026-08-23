@@ -1,0 +1,223 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import dxy from '../../data/dxy.json';
+
+// Veri — data/dxy.json (scripts/dxy.py, günlük rebuild'de tazelenir). Yahoo Finance.
+const components = (dxy.components ?? []) as {
+  symbol: string; label: string; weight: number; rate: number; change: number | null;
+}[];
+
+const upd = new Date(dxy.guncellenme);
+const updLabel = upd.toLocaleDateString('tr-TR', {
+  day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit',
+});
+
+const num = (n: number | null | undefined, d = 3) =>
+  n == null ? '—' : new Intl.NumberFormat('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d }).format(n);
+const sign = (n: number | null | undefined) => (n == null ? '' : n > 0 ? '+' : '');
+const dir = (n: number | null | undefined) => (n == null ? 'flat' : n > 0 ? 'up' : n < 0 ? 'down' : 'flat');
+
+const dxyDir = dir(dxy.dxyChange);
+const yon = dxy.dxyChange == null ? '' : dxy.dxyChange > 0 ? 'güçlendi' : dxy.dxyChange < 0 ? 'zayıfladı' : 'yatay seyretti';
+
+const faq = [
+  {
+    q: 'Dolar endeksi (DXY) şu an kaç?',
+    a: `${updLabel} itibarıyla ABD Dolar Endeksi (DXY) yaklaşık ${num(dxy.dxy)} seviyesinde ve önceki kapanışa göre %${num(Math.abs(dxy.dxyChange ?? 0), 2)} ${yon}. Değer gün içinde değişir; bu sayfa her gün otomatik güncellenir.`,
+  },
+  {
+    q: 'Dolar endeksi nedir, neyi ölçer?',
+    a: 'ABD Dolar Endeksi (DXY), doları altı büyük para birimine karşı bir sepet olarak ölçer: euro (%57,6), Japon yeni (%13,6), İngiliz sterlini (%11,9), Kanada doları (%9,1), İsveç kronu (%4,2) ve İsviçre frangı (%3,6). Endeks 100 baz değeriyle 1973’te başladı; 100’ün üstü doların o günden bu yana güçlendiğini, altı zayıfladığını gösterir. En büyük ağırlık euroda olduğu için DXY büyük ölçüde EUR/USD hareketini yansıtır.',
+  },
+  {
+    q: 'Dolar endeksi TL’yi ve altını nasıl etkiler?',
+    a: 'DXY yükseldiğinde (dolar küresel olarak güçlenince) gelişen ülke para birimleri —TL dahil— genelde baskı görür ve dolar/TL yukarı eğilimli olur; ons altın (USD cinsinden) ise çoğu zaman geriler. DXY düştüğünde tersi olur: TL ve altın için görece rahat bir ortam oluşur. Yani DXY, dolar/TL ve altın için önemli bir öncü göstergedir; tek başına yön belirlemez ama küresel dolar iştahını okur.',
+  },
+  {
+    q: 'DXY ile dolar/TL aynı şey mi?',
+    a: 'Hayır. DXY doların gelişmiş ülke paralarına (euro, yen, sterlin…) karşı gücüdür; dolar/TL ise doların Türk lirasına karşı kurudur. DXY düşerken bile yurt içi dinamikler (TCMB faizi, enflasyon, risk primi) yüzünden dolar/TL yükselebilir. İkisini birlikte okumak gerekir.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Dolar Endeksi (DXY)', url: '/dolar-endeksi' },
+];
+---
+
+<BaseLayout
+  title={`Dolar Endeksi (DXY) Canlı ${new Date().getFullYear()} | Güncel Değer, Bileşenler ve TL Etkisi`}
+  description={`ABD Dolar Endeksi (DXY) şu an kaç? Güncel değer ${num(dxy.dxy)}, bileşen döviz çiftleri ve dolar endeksinin TL ile altına etkisi. ${updLabel} verisiyle, her gün güncellenir.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="dxy-wrap">
+    <header class="dxy-head">
+      <p class="eyebrow">Canlı Veri · Dolar Endeksi</p>
+      <h1>Dolar Endeksi (DXY)</h1>
+      <p class="lede">
+        ABD dolarının altı büyük para birimine karşı gücü. Endeks <strong>{updLabel}</strong>
+        itibarıyla; her gün otomatik güncellenir.
+      </p>
+    </header>
+
+    <section class={`hero-value ${dxyDir}`} aria-label="Güncel dolar endeksi değeri">
+      <span class="hero-label">DXY — ABD Dolar Endeksi</span>
+      <span class="hero-num">{num(dxy.dxy)}</span>
+      <span class={`hero-change ${dxyDir}`}>
+        {sign(dxy.dxyChange)}{num(dxy.dxyChange, 2)}% <em>· önceki kapanış {num(dxy.dxyPrev)}</em>
+      </span>
+      <div class="hero-context">
+        <div class="ctx-item">
+          <span class="ctx-label">Dolar/TL</span>
+          <span class="ctx-val">₺{num(dxy.usdtry, 2)} <b class={dir(dxy.usdtryChange)}>{sign(dxy.usdtryChange)}{num(dxy.usdtryChange, 2)}%</b></span>
+        </div>
+        <div class="ctx-item">
+          <span class="ctx-label">Baz değer (1973)</span>
+          <span class="ctx-val">100,00</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="updated-strip">
+      <span class="dot"></span>
+      <span>Son güncelleme: <strong>{updLabel}</strong> · Kaynak: ICE US Dollar Index (gösterge, anlık işlem değeri değildir).</span>
+    </div>
+
+    <section class="table-block">
+      <h2>Dolar endeksini oluşturan para birimleri</h2>
+      <p class="table-intro">
+        DXY, dolara karşı altı para biriminin ağırlıklı geometrik ortalamasıdır. Ağırlığın yarıdan
+        fazlası euroda olduğu için endeks büyük ölçüde <strong>EUR/USD</strong> ile birlikte hareket eder.
+      </p>
+      <table class="rate-table">
+        <thead><tr><th>Para birimi</th><th>Sepet ağırlığı</th><th>Kur</th><th class="hide-sm">Günlük</th></tr></thead>
+        <tbody>
+          {components.map((c) => (
+            <tr>
+              <td>{c.label}</td>
+              <td>%{c.weight.toString().replace('.', ',')}</td>
+              <td>{num(c.rate, 4)}</td>
+              <td class={`hide-sm ${dir(c.change)}`}>{sign(c.change)}{num(c.change, 2)}%</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Kurlar Yahoo Finance verisidir; ağırlıklar ICE’nin 1999’dan beri sabit resmi sepet oranlarıdır.
+        EUR/USD ve GBP/USD çiftlerinde dolar paydada olduğu için yükselmeleri doları <em>zayıflatır.</em>
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Dolar endeksi ne işe yarar?</h2>
+      <p>
+        Dolar endeksi, doların tek bir ülke parasına karşı değil, dünyanın en çok işlem gören
+        para birimlerinden oluşan bir <strong>sepete</strong> karşı gücünü tek sayıda özetler.
+        Yatırımcılar ve merkez bankaları küresel “dolar iştahını” okumak için DXY’ye bakar:
+        endeks yükseliyorsa sermaye dolara kaçıyor (risk-off), düşüyorsa dolardan çıkıp riskli
+        varlıklara ve gelişen piyasalara para giriyor demektir.
+      </p>
+      <h2>DXY yükselince TL ve altına ne olur?</h2>
+      <p>
+        Doların küresel güçlenmesi (DXY yukarı) genelde <strong>gelişen ülke paralarına baskı</strong>
+        yapar — Türk lirası da bundan payını alır ve dolar/TL yukarı eğilimli olur. Aynı ortamda
+        ons altın (USD cinsinden fiyatlandığı için) çoğunlukla geriler; ancak TL bazında altın,
+        kurdaki artış nedeniyle yine de yükselebilir. DXY düştüğünde tablo tersine döner: TL ve
+        altın için görece rahat bir zemin oluşur. Bu yüzden DXY, dolar/TL ve altın kararlarında
+        izlenmesi gereken bir <strong>öncü göstergedir</strong> — tek başına değil, TCMB faizi ve
+        enflasyon gibi yurt içi dinamiklerle birlikte okunmalıdır.
+      </p>
+      <h2>DXY seviyesi nasıl yorumlanır?</h2>
+      <p>
+        Endeksin baz değeri 1973’te <strong>100</strong> kabul edildi. 100’ün üzeri, doların o
+        tarihten bu yana ortalama olarak güçlendiğini; altı ise zayıfladığını gösterir. Mutlak
+        seviyeden çok <em>yön ve hız</em> önemlidir: DXY’nin hızlı yükselmesi küresel bir
+        stres/faiz sinyali, istikrarlı düşmesi ise risk iştahının arttığı anlamına gelir.
+      </p>
+      <p class="cta-line">
+        Daha derine inmek için →
+        <a href="/blog/dolar-endeksi-dxy-nedir">Dolar Endeksi (DXY) nedir?</a>,
+        <a href="/blog/abd-faiz-karari-altin-dolar-tl-etkisi">ABD faiz kararının dolar-TL-altın etkisi</a> ve
+        <a href="/altin-hesaplama">güncel altın hesaplama</a> sayfalarına göz atın.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <style>
+    .dxy-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .dxy-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .dxy-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 620px; margin: 0 auto; }
+
+    .hero-value {
+      display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.8rem 1.4rem; box-shadow: var(--shadow-soft);
+      border-top: 4px solid var(--brand-2);
+    }
+    .hero-value.up { border-top-color: #15803d; }
+    .hero-value.down { border-top-color: #b91c1c; }
+    .hero-label { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); text-transform: uppercase; letter-spacing: 0.06em; }
+    .hero-num { font-family: var(--font-serif); font-size: clamp(2.6rem, 1.8rem + 4vw, 4rem); font-weight: 600; color: var(--brand-ink); line-height: 1; }
+    .hero-change { font-size: 1rem; font-weight: 700; }
+    .hero-change em { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.85rem; }
+    .hero-change.up, b.up, td.up { color: #15803d; }
+    .hero-change.down, b.down, td.down { color: #b91c1c; }
+    .hero-change.flat, b.flat, td.flat { color: var(--text-muted); }
+    .hero-context { display: flex; gap: 1.6rem; margin-top: 0.9rem; flex-wrap: wrap; justify-content: center; }
+    .ctx-item { display: flex; flex-direction: column; align-items: center; gap: 0.15rem; }
+    .ctx-label { font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .ctx-val { font-weight: 700; font-size: 1.02rem; }
+    .ctx-val b { font-size: 0.85rem; margin-left: 0.15rem; }
+
+    .updated-strip {
+      display: flex; align-items: center; gap: 0.55rem; margin: 1rem 0 0;
+      background: var(--surface); border-left: 3px solid var(--brand-2);
+      border-radius: var(--radius-sm); padding: 0.65rem 0.9rem; font-size: 0.82rem; color: var(--text-soft);
+    }
+    .updated-strip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-2); flex: none; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .table-intro { color: var(--text-soft); line-height: 1.7; margin: 0 0 1rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .hide-sm { display: none; }
+    }
+  </style>
+</BaseLayout>

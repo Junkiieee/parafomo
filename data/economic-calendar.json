@@ -1,26 +1,8 @@
 {
-  "updated": "2026-08-22",
+  "updated": "2026-08-23",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-08-19",
-      "time": "6:00am",
-      "region": "GBP",
-      "impact": "High",
-      "title": "CPI y/y",
-      "source": "forexfactory",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-08-19",
-      "time": "6:00pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "FOMC Meeting Minutes",
-      "source": "forexfactory",
-      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
-    },
     {
       "date": "2026-09-03",
       "time": "10:00",
