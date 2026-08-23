@@ -17,6 +17,23 @@ faq:
     a: "1928'den günümüze S&P 500'ün yıllık ortalama nominal getirisi yaklaşık yüzde 10'dur. Enflasyona göre reel getiri ise yıllık yaklaşık yüzde 7 civarındadır. Kısa vadede ciddi düşüşler yaşanabilmektedir."
   - q: "S&P 500 yatırımında kur riski var mı?"
     a: "Evet. Dolar bazlı bir yatırım olduğu için TL/USD paritesi getirinizi etkiler. TL değer kaybederse dolar bazlı getiri TL bazında daha yüksek görünür; TL güçlenirse ise tam tersi olur."
+shorts:
+  - "500 dev şirkete tek seferde nasıl yatırım yapılır?"
+  - "S&P 500, Apple'dan Tesla'ya 500 büyük ABD şirketini tek endekste toplar."
+  - "1928'den bu yana tarihi veriler yılda ortalama yüzde on getiri gösteriyor."
+  - "Türkiye'den TEFAS üzerinden TL ile bu endekse kolayca yatırım yapabilirsin."
+  - "Hangi yatırım yolu sana daha uygun, merak ediyor musun? Detaylar parafomo.com'da — kanala abone ol, her gün yeni finans bilgisi seni bekliyor."
+shorts_broll:
+  - "S&P 500 stock market index chart"
+  - "Wall Street trading floor"
+  - "long term investment portfolio growth"
+  - "Turkish lira currency banknotes"
+shorts_visuals:
+  - "concept|stock market index board multiple companies screen"
+  - "concept|big tech logos Apple Microsoft Amazon collage"
+  - "concept|long term stock market growth chart upward"
+  - "concept|mobile banking investment app screen"
+  - "concept|financial planning investment success laptop"
 ---
 
 Dünyanın en büyük 500 ABD şirketine tek bir hamlede yatırım yapmak isteseydiniz ne yapardınız? Cevap, küresel piyasaların referans endeksi olan S&P 500. Türkiye'den bu endekse yatırım yapmak artık hem mümkün hem de düşündüğünüzden kolay — ama doğru yolu seçmek önemli.
