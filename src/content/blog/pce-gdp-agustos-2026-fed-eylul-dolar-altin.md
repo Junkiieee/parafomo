@@ -17,6 +17,23 @@ faq:
     a: "BEA (ABD Ekonomik Analiz Bürosu), GSYİH ve kişisel tüketim harcamaları verilerini aynı yayın döngüsünde hesaplar. PCE, GDP bileşenlerinden türetildiği için iki veri teknik olarak birbirine bağlıdır."
   - q: "Bu veri Türkiye'deki altın ve dolar hesabını nasıl etkiler?"
     a: "ABD verileri dolar endeksini (DXY) hareket ettirdiğinde Türkiye'deki dolar kuru da etkilenir. Güçlü dolar ortamında TL'de değer kaybı baskısı artar; altın ons fiyatı düşerse TL/gram altın da düşer ancak dolar etkisi sınırlayabilir."
+shorts:
+  - "Bu iki veri doların kaderini belirleyebilir mi?"
+  - "PCE, Fed'in resmi enflasyon ölçütü; yüzde iki üzerinde kalırsa faiz indirimi ertelenebilir."
+  - "GDP ön tahmini büyümeyi gösterir; zayıf gelirse Fed faiz indirimi kapısını açar."
+  - "İki veri aynı gün açıklanıyor; kombinasyona göre dolar sert düşer, altın fırlar."
+  - "Eylül Fed kararı ne getirir? Öğrenmek için abone ol, tam senaryo tablosu parafomo.com'da."
+shorts_broll:
+  - "federal reserve interest rate decision"
+  - "inflation economic data chart screen"
+  - "gold bars price rising"
+  - "dollar currency exchange rate falling"
+shorts_visuals:
+  - "concept|economic data release market reaction trading screen"
+  - "place|Federal Reserve Washington DC"
+  - "concept|GDP growth chart United States economy"
+  - "concept|dollar falling gold price rising chart"
+  - "concept|financial analysis investment trading screen"
 ---
 
 Bu çarşamba (26 Ağustos 2026) piyasaların en çok beklediği iki veri aynı anda açıklanıyor: **ABD çekirdek PCE fiyat endeksi** ve **Q2 büyüme verisi (Prelim GDP)**. Tek başına her biri piyasaları sarsabilecek güçte; ikisinin aynı saatte gelmesi Fed'in Eylül kararına dair sinyal değerini iki katına çıkarıyor. Türk yatırımcısı için ne anlama geldiğini adım adım inceleyelim.
