@@ -17,6 +17,23 @@ faq:
     a: "Dow Jones'ta sert düşüşler küresel risk iştahını azaltır; bu durum genellikle gelişmekte olan piyasa para birimlerine baskı yapar ve TL üzerinde değer kaybı baskısı oluşturabilir."
   - q: "Dow Jones rekor seviyesi nedir?"
     a: "Dow Jones tarihsel açıdan 2025 itibarıyla 45.000 puanın üzerini test etmiştir. Rekor seviyeler piyasa koşullarına göre sürekli güncellenmektedir."
+shorts:
+  - "Dow Jones düştü dediklerinde aslında ne düşüyor?"
+  - "Dow Jones, ABD'nin en güçlü 30 şirketinin hisse fiyatını izleyen bir endekstir."
+  - "1896'da 40 puandan başladı; onlarca krizi atlattı, bugün 40 bin seviyesinde."
+  - "Fiyatı yüksek hisseler endeksi daha çok etkiler — bu yüzden S&P 500'den farklıdır."
+  - "Peki S&P 500 ve Nasdaq'tan gerçek farkı nedir? Öğrenmek için kanala abone ol, tüm rehber parafomo.com'da."
+shorts_broll:
+  - "stock market chart screen"
+  - "wall street trading floor"
+  - "dow jones ticker display"
+  - "US stock exchange trading"
+shorts_visuals:
+  - "concept|stock market news screen falling"
+  - "place|New York Stock Exchange"
+  - "concept|historical stock market growth chart long term"
+  - "concept|stock price ticker numbers screen close up"
+  - "concept|investor watching financial charts subscribe"
 ---
 
 Sabah haberlerini açtığınızda "Dow Jones dün gece 400 puan düştü" cümlesini okuduğunuzda ne hissediyorsunuz? Çoğu Türk yatırımcı bu haberin kendi portföyünü nasıl etkilediğini merak eder ama **Dow Jones nedir** sorusunun yanıtını tam olarak bilmez. Bu rehberde DJIA'nın ne olduğunu, nasıl çalıştığını ve Türkiye'den nasıl takip edilip yatırım yapılabileceğini adım adım açıklıyoruz.
