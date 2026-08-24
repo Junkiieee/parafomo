@@ -1,0 +1,59 @@
+{
+  "slug": "temettu-tuzagi-borsanin-sessiz-hesabi",
+  "title": "Temettü Tuzağı: Borsanın Sessiz Hesabı",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Temettü almak bedava para gibi görünür — ama hissenin fiyatı aynı miktarda düşer, üstüne stopaj kesilir. Asıl kazanç temettüde değil, büyüyen şirkette.",
+  "tags": [
+    "temettü",
+    "hisse senedi",
+    "borsa istanbul",
+    "bist yatırım",
+    "temettü vergi",
+    "stopaj",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Temettü aldın — ama hissen o kadar düştü.",
+      "visual": {
+        "type": "concept",
+        "query": "stock market dividend price drop chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Şirket temettü öder ödemez hissesi aynı miktarda değer kaybeder. Bu tesadüf değil, borsanın matematiksel kuralı.",
+      "visual": {
+        "type": "concept",
+        "query": "ex dividend date stock price drop graph"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Üstüne bir de yüzde on beş stopaj kesilir. Aynı günde hem düşük fiyat hem vergi.",
+      "visual": {
+        "type": "concept",
+        "query": "tax deduction money calculator finance"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gerçek getiri temettüde değil, büyüyen şirkette. Temettüsüz büyüyen hisse on yılda çok daha fazla kazandırıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "company stock long term growth upward chart"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Portföyünde kaç tane temettü tuzağı saklı? Görmek için abone ol — her gün 60 saniyede tek net analiz burada.",
+      "visual": {
+        "type": "concept",
+        "query": "youtube subscribe notification bell"
+      }
+    }
+  ]
+}
