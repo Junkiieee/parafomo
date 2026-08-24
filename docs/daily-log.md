@@ -4,7 +4,105 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
-## 2026-08-24 — 26 Ağustos PCE + Büyüme Verisi: Fed Eylül'de Ne Yapar? Dolar ve Altın Etkisi
+## 2026-08-24 — Sermaye Artırımı Nedir? Bedelsiz Hisse ve Rüçhan Hakkı Rehberi
+
+**Yayınlanan yazı:**
+[Sermaye Artırımı Nedir? Bedelsiz Hisse ve Rüçhan Hakkı Rehberi](https://parafomo.com/blog/sermaye-artirimi-nedir-bedelsiz-ruchan-hakki/)
+
+**Konu:** Bedelli ve bedelsiz sermaye artırımı arasındaki fark, rüçhan hakkının nasıl kullanılacağı, hisse fiyatına etkisi ve yatırımcının karar verirken sorması gereken sorular. Halka arz, F/K oranı ve hisse seçimi cluster'ını tamamlayan evergreen borsa rehberi.
+
+---
+
+**X (Twitter) Thread Taslağı:**
+
+🚨 "Şirket %100 bedelsiz sermaye artırımı yaptı" duyurusunu görüp panikleyenler için:
+
+Aslında bir kuruş bile kaybetmedin. Neden mi? 👇
+
+---
+
+1/ Sermaye artırımının 2 türü var:
+
+📊 Bedelsiz → şirket kendi iç kaynaklarını sermayeye aktarır, cebinden para çıkmaz.
+💸 Bedelli → ortaklardan yeni para toplar, "rüçhan hakkı" ile öncelikli alım imkânı verir.
+
+---
+
+2/ Bedelsizde matematik basit:
+
+100 lot × 20 TL = 2.000 TL
+%100 bedelsiz sonrası:
+200 lot × 10 TL = 2.000 TL
+
+Aynı pasta, daha çok dilim. Değer aynı.
+
+---
+
+3/ Bedellide ise:
+
+Şirket senden ekstra para ister. Örneğin %50 bedelli, ihraç 10 TL:
+→ 100 lot varsa 50 lot alma hakkın olur
+→ Ödemen gereken: 500 TL
+
+Ortaklık oranını korumak için kullanmak gerekir.
+
+---
+
+4/ Rüçhan hakkını kullanmazsan 3 seçenek:
+
+✅ Kullan (yeni payı al)
+✅ Borsada sat (nakit yarat)
+❌ Hiçbir şey yapma → süre bitince hak yanar
+
+Sonuncusu genelde kaybettiren seçenek.
+
+---
+
+5/ Ana soru: şirket toplanan parayı nereye harcayacak?
+
+🟢 Yeni fabrika/yatırım → orta vadede prim
+🔴 Borç ödemesi/nakit sıkıntısı → fiyat baskı altında
+
+İzahnamedeki "fon kullanım amacı"nı mutlaka oku.
+
+---
+
+Detaylı hesap örnekleri, karşılaştırma tablosu ve karar checklist'i için 👇
+
+parafomo.com/blog/sermaye-artirimi-nedir-bedelsiz-ruchan-hakki/
+
+#Borsa #Yatırım #BIST #SermayeArtırımı #RüçhanHakkı
+
+---
+
+**Instagram Post Metni:**
+
+📊 "%100 bedelsiz sermaye artırımı" duyuruldu ve ertesi gün hisse yarı fiyata düştü — cebinden bir kuruş bile çıkmadan.
+
+Peki neden? Ve **bedelli** sermaye artırımı bunun tam tersi mi?
+
+💡 Bu rehberde öğreneceklerin:
+• Bedelli vs bedelsiz sermaye artırımı farkı
+• Rüçhan hakkı nedir, nasıl kullanılır?
+• Pratik hesap örnekleriyle portföy etkisi
+• "Kullanmasam ne olur?" sorusunun net cevabı
+• Yatırımcı için karar checklist'i
+
+📌 Profildeki linke tıkla → tam rehber seni bekliyor.
+
+#parafomo #borsa #yatırım #bist #sermayeartırımı #rüçhanhakkı
+
+---
+
+**Bugün senin yapman gerekenler (5-10 dk):**
+
+- [ ] X (Twitter) thread'ini @parafomo hesabından yayınla. İlk tweet'e "Türk yatırımcısına özel rehber 🇹🇷" gibi bir hook ekleyebilirsin.
+- [ ] Instagram post metnini @parafomo hesabından paylaş (isterseniz 3-5 slaytlık carousel'e çevirebilirsiniz: 1) hook, 2) bedelsiz örneği, 3) bedelli örneği, 4) rüçhan hakkı 3 seçenek, 5) link CTA).
+- [ ] Reddit r/borsa veya Ekşi Sözlük "sermaye artırımı" başlığında **değer katarak** (spam değil) yazının linkini bırak — "bedelli/bedelsiz ayrımını basit örneklerle açıklıyor" gibi bir açıklamayla.
+
+---
+
+
 
 **Yayınlanan yazı:**
 [26 Ağustos PCE + Büyüme Verisi: Fed Eylül'de Ne Yapar? Dolar ve Altın Etkisi](https://parafomo.com/blog/pce-gdp-agustos-2026-fed-eylul-dolar-altin/)

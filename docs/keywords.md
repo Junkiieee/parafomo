@@ -72,12 +72,14 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Resesyon nedir? Ekonomik durgunluk döneminde yatırımcı stratejisi — `Ekonomi` — hedef: "resesyon nedir"
 - [x] S&P 500 nedir? ABD borsasına Türkiye'den nasıl yatırım yapılır? — `Yatırım` — hedef: "s&p 500 nedir"
 - [x] Dow Jones Endeksi nedir? ABD borsası nasıl takip edilir? — `Borsa` — hedef: "dow jones nedir"
-- [ ] Sermaye artırımı nedir? Bedelsiz hisse ve rüçhan hakkı rehberi — `Borsa` — hedef: "sermaye artırımı nedir"
+- [x] Sermaye artırımı nedir? Bedelsiz hisse ve rüçhan hakkı rehberi — `Borsa` — hedef: "sermaye artırımı nedir"
 - [ ] Hisse geri alımı (buyback) nedir? Şirket neden kendi hissesini satın alır? — `Borsa` — hedef: "hisse geri alımı nedir"
 - [ ] Bütçe açığı nedir? Kamu borcu ve ekonomiye etkisi — `Ekonomi` — hedef: "bütçe açığı nedir"
 - [ ] Döviz rezervleri nedir? Merkez bankası rezervleri ne anlama gelir? — `Ekonomi` — hedef: "döviz rezervleri nedir"
 
 ## Yayınlananlar (otomasyon buraya ekler)
+
+- [x] Sermaye Artırımı Nedir? Bedelsiz Hisse ve Rüçhan Hakkı Rehberi — `sermaye-artirimi-nedir-bedelsiz-ruchan-hakki` (backlog ilk [ ] konusu: evergreen borsa; "sermaye artırımı nedir" sorgusu; halka arz + F/K + hisse seçim cluster'ını tamamlayan piece; bedelli vs bedelsiz karşılaştırma tablosu + pratik hesap örnekleri + rüçhan hakkı adım listesi; 24 Ağustos 2026)
 
 - [x] Resesyon Nedir? Ekonomik Durgunluk Döneminde Yatırımcı Stratejisi — `resesyon-nedir-ekonomik-durgunluk` (yeni evergreen ekonomi; "resesyon nedir" sorgusu; stagflasyon + deflasyon + verim eğrisi cluster'ını tamamlayan temel kavram rehberi; GSYİH + işsizlik + varlık sınıfı performans tablosu; 22 Ağustos 2026)
 
