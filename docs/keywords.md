@@ -223,3 +223,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] S&P 500 Nedir? ABD Borsasına Türkiye'den Nasıl Yatırım Yapılır? — `sp500-nedir-abd-borsasina-nasil-yatirim-yapilir` (backlog ilk [ ] konusu: evergreen yatırım; "s&p 500 nedir" sorgusu; ETF+portföy çeşitlendirmesi+DCA cluster'ını tamamlayan uluslararası yatırım rehberi; yurt içi fon vs doğrudan ETF karşılaştırması; 23 Ağustos 2026)
 
 - [x] Dow Jones Endeksi Nedir? ABD Borsası Nasıl Takip Edilir? — `dow-jones-nedir` (backlog: evergreen borsa; "dow jones nedir" sorgusu; S&P 500 + ETF + BIST 100 cluster'ını tamamlayan ABD endeks rehberi; fiyat ağırlıklı hesaplama + 30 şirket karşılaştırma tablosu; 23 Ağustos 2026)
+
+- [x] 26 Ağustos PCE + Büyüme Verisi: Fed Eylül'de Ne Yapar? Dolar ve Altın Etkisi — `pce-gdp-agustos-2026-fed-eylul-dolar-altin` (takvim: 26 Ağustos 2026 🔴 Core PCE + Prelim GDP; PCE nedir + GDP nedir evergreen yazılarının tamamlayıcısı; Fed Eylül kararı öncesi "ne olur" açısı; senaryo tablosu + Türk yatırımcısı için pratik rehber; 24 Ağustos 2026)
