@@ -4,6 +4,87 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-24 — 26 Ağustos PCE + Büyüme Verisi: Fed Eylül'de Ne Yapar? Dolar ve Altın Etkisi
+
+**Yayınlanan yazı:**
+[26 Ağustos PCE + Büyüme Verisi: Fed Eylül'de Ne Yapar? Dolar ve Altın Etkisi](https://parafomo.com/blog/pce-gdp-agustos-2026-fed-eylul-dolar-altin/)
+
+**Konu:** 26 Ağustos'ta aynı saatte açıklanan çekirdek PCE + Q2 Prelim GDP verileri Fed'in Eylül faiz kararını şekillendiriyor. Türk yatırımcısı için senaryo tablosu ve dolar/altın/TL etkisi.
+
+---
+
+**X (Twitter) Thread Taslağı:**
+
+🚨 Bu Çarşamba (26 Ağustos) iki kritik ABD verisi aynı anda açıklanıyor:
+
+📊 Çekirdek PCE (Fed'in tercih ettiği enflasyon göstergesi)
+📈 Q2 Büyüme Verisi (Prelim GDP)
+
+Türk yatırımcısı için ne anlama geliyor? 👇
+
+---
+
+1/ PCE neden bu kadar önemli?
+
+Fed'in faiz kararlarını bu veriye göre veriyor. Hedef: %2.
+Üstünde çıkarsa → faiz sabit
+Altında çıkarsa → indirim kapısı açılıyor
+
+---
+
+2/ GDP ön tahmini ne söyler?
+
+Güçlü büyüme → Fed acelesiz
+Zayıf büyüme → faiz indirimi baskısı artar
+
+İkisi aynı günde açıklanıyor, iki yönlü sinyal geliyor.
+
+---
+
+3/ Senaryolar:
+
+✅ PCE düşük + Büyüme zayıf → Altın yükselir, Dolar düşer
+❌ PCE yüksek + Büyüme güçlü → Dolar güçlenir, Altın baskı altında
+
+Detaylı senaryo tablosu için → [link]
+
+---
+
+4/ Türkiye için:
+• Güçlü dolar → TL baskı altında
+• Zayıf dolar → TL soluklanabilir
+• Altın ons etkisi TL/gram fiyata yansır
+
+Saat 15:30'u takip edin 🔔
+
+#Fed #Dolar #Altın #TL #Ekonomi #Piyasalar
+
+---
+
+**Instagram Post Metni:**
+
+📊 26 Ağustos'ta dolar, altın ve TL'yi etkileyecek 2 kritik veri açıklanıyor — aynı anda.
+
+🔴 Çekirdek PCE: Fed'in en çok izlediği enflasyon göstergesi
+🔴 Q2 Büyüme Verisi: ABD ekonomisinin son çeyrek fotoğrafı
+
+Ne çıkarsa ne olur?
+
+📌 Profildeki linke tıkla → Senaryo tablosu + Türk yatırımcısı için rehber
+
+Saat 15:30 Türkiye saatini takip edin 👀
+
+#parafomo #dolar #altın #fed #faiz #ekonomi #piyasalar #yatırım #tl #merkez bankası #pceverisi #gdp
+
+---
+
+**Bugün senin yapman gerekenler:**
+
+1. **Paylaşımı yayınla:** Thread'i X'te ve Instagram postunu bugün paylaş — veri 2 gün sonra açıklanıyor, tam zamanlama.
+2. **26 Ağustos'ta takip et:** Veri açıklandıktan sonra sonucu Twitter'da kısa bir "Sonuç: PCE X çıktı, piyasalar şöyle tepki verdi" tweet'i at — güncellik trafiği çeker.
+
+---
+
 ## 2026-08-23 — Dow Jones Endeksi Nedir? ABD Borsası Nasıl Takip Edilir?
 
 **Yayınlanan yazı:**
