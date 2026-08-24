@@ -43,3 +43,12 @@ Yeni ders: `python3 agent/exp.py learn --channel <k> --text "..."` veya deney ka
 - [2026-08-22][web] Aylık-spike TÜİK/enflasyon takvim sayfası, tcmb-takvim (08-20) gibi MEVSİMSEL: düz 10-günlük pencerede yüzeye çıkmaz, açıklama tarihine (~her ayın 3'ü) yakın ölçülmeli. Yeni seasonal timing sayfası kurunca ölçüm penceresini olay-gününe hizala, düz takvim penceresinde 'kaybeden' sanma. 09-03'te enflasyon-takvimi trafiğini yeniden kontrol et.
 - [2026-08-23][web] kira-artış tavan sayfası da tcmb-takvim(08-20)/enflasyon-takvim(08-12) gibi MEVSİMSEL: düz 10-günlük pencerede yüzeye çıkmaz. TÜİK enflasyon açıklamasına (~her ayın 3'ü) yakın ölçülmeli — 09-03'te kira+enflasyon takvim trafiğini birlikte kontrol et. Seasonal-timing sayfasını düz pencerede 'kaybeden' sanma.
 - [2026-08-23][web] Sub-saniye görsel micro-edit'ler (fade/opening frame) bizim yüksek-varyanslı düşük-n retention ölçümünde ASLA temiz verdict vermez — 9x teyit. Retention slot'unu bu tür mikro-değişikliklere harcama; yalnız BÜYÜK/çok-teyitli pacing değişikliklerine (micro-cut 2.7→1.8sn, 4x dış-kaynak teyitli) ayır. Frozen-forever anti-paterni: bir deney 3 cycle donduysa kapat, slotu aç.
+- [2026-08-24][youtube] META-KONSOLİDASYON: 11 web calc-sayfası deneyi AYNI 'GSC gösterim havuzu' metriğinde confound (08-17 retention hatasının web tekrarı). Motor AGGREGATE düzeyde KANITLI-WON (organik 2→31, 08-11→08-24). Artık her yeni calc sayfası için AYRI exp AÇMA — motoru TEK KPI satırı olarak izle. Bireysel-sayfa toolable-query attribution bizim düşük-n GSC'sinde çözünmüyor.
+- [2026-08-24][youtube] Calc-sayfası confound konsolidasyonu (bkz 08-14-1): per-page exp izleme, motoru aggregate izle.
+- [2026-08-24][youtube] Calc confound konsolidasyonu (08-14-1).
+- [2026-08-24][youtube] Calc confound konsolidasyonu (08-14-1) + asgari-ücret MEVSİMSEL (Aralık zam takvimine yakın ölç).
+- [2026-08-24][youtube] Calc confound konsolidasyonu (08-14-1).
+- [2026-08-24][youtube] Calc confound konsolidasyonu (08-14-1).
+- [2026-08-24][youtube] Calc confound konsolidasyonu (08-14-1): 08-22-1 işsizlik TEK temsilci calc tracker; kalan calc'ler kapandı.
+- [2026-08-24][youtube] YT saf-keşif metrikleri (kapak/hashtag kaynaklı traffic-source payı) IG insights gibi: bizim düşük-n + traffic-source-detay yokluğunda çözünmez. Değişikliği yap (özellik aç) ama exp olarak İZLEME. Yalnız retention (ölçülebilir) ve toplam-izlenme trend'i izle.
+- [2026-08-24][youtube] YT hashtag/kapak keşif-payı exp olarak izlenmez (08-15-1 ile aynı ders) — traffic-source çözünürlüğü yok.

@@ -95,6 +95,7 @@ SECONDARY_TOOLS = [
     "🏦 Mevduatın net getirisi (stopaj sonrası) → parafomo.com/mevduat-faizi-hesaplama",
     "🧷 İşsizlik maaşın ne kadar, kaç ay? → parafomo.com/issizlik-maasi-hesaplama",
     "💵 Dolar endeksi (DXY) şu an kaç? → parafomo.com/dolar-endeksi",
+    "🪙 Altının kaç TL eder? Hesapla → parafomo.com/altin-hesaplama",
 ]
 
 
@@ -106,7 +107,7 @@ def build_caption(date_label):
     body = (f"📊 Güncel altın fiyatları · {date_label}\n"
             "Gram, çeyrek, yarım, tam, cumhuriyet 👆\n"
             f"{question}\n"
-            "🪙 Altınım kaç TL eder? → parafomo.com/altin-hesaplama\n"
+            "🥇 Bugünün tüm altın fiyatları → parafomo.com/altin-fiyatlari\n"
             f"{secondary}")
     return "\n\n".join([comment, body, HASHTAGS])
 

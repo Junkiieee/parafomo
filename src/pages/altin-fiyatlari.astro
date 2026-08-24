@@ -1,0 +1,277 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import altin from '../../data/altin-fiyat.json';
+
+// Fiyat verisi — data/altin-fiyat.json (scripts/altin-fiyat.py, günlük rebuild'de tazelenir).
+const items = altin.kalemler as {
+  key: string; label: string; gram: number; ayar: string; alis: number | null; satis: number | null;
+}[];
+
+const upd = new Date(altin.guncellenme);
+const updLabel = upd.toLocaleDateString('tr-TR', {
+  day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit',
+});
+const dateLabel = upd.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const fmt = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+
+const byKey = (k: string) => items.find((i) => i.key === k);
+const gram = byKey('gram-altin');
+const ceyrek = byKey('ceyrek-altin');
+const tam = byKey('tam-altin');
+const ons = byKey('ons');
+
+// Öne çıkan kalemler (hero altındaki hızlı-bakış kartları)
+const highlightKeys = ['gram-altin', 'ceyrek-altin', 'yarim-altin', 'tam-altin'];
+const highlights = highlightKeys.map((k) => byKey(k)).filter(Boolean) as typeof items;
+
+const gramTable = [
+  { ad: 'Gram altın', gram: '1 gram', ayar: '24 ayar (995-999)' },
+  { ad: 'Çeyrek altın', gram: '1,75 gram', ayar: '22 ayar' },
+  { ad: 'Yarım altın', gram: '3,5 gram', ayar: '22 ayar' },
+  { ad: 'Tam (ziynet) altın', gram: '7 gram', ayar: '22 ayar' },
+  { ad: 'Ata / Cumhuriyet altını', gram: '≈7,2 gram', ayar: '22 ayar' },
+  { ad: 'Ons altın', gram: '31,1035 gram', ayar: '24 ayar' },
+];
+
+const faq = [
+  {
+    q: 'Bugün gram altın ne kadar, kaç TL?',
+    a: `${updLabel} itibarıyla gram altın alış ${fmt(gram?.alis || 0)} ₺, satış ${fmt(gram?.satis || 0)} ₺ civarında. Gram altın 24 ayardır (saf altın). Fiyatlar gün içinde ons altın (USD) ve dolar/TL kuruna bağlı olarak değişir; bu sayfa her gün güncellenir.`,
+  },
+  {
+    q: 'Çeyrek altın fiyatı bugün ne kadar?',
+    a: `Çeyrek altın 1,75 gram ve 22 ayardır. ${dateLabel} tarihinde bir çeyrek altının bozdurma (alış) değeri yaklaşık ${fmt(ceyrek?.alis || 0)} ₺, almak için (satış) yaklaşık ${fmt(ceyrek?.satis || 0)} ₺'dir. Çeyrek altına ayrıca küçük bir darphane/işçilik payı eklenir; bu yüzden 1,75 gram gram-altından biraz farklı fiyatlanır.`,
+  },
+  {
+    q: 'Altın fiyatları neden yükselir veya düşer?',
+    a: 'TL cinsinden altın fiyatı iki kaldıraçla oynar: (1) uluslararası ons altın fiyatı (USD) — küresel faiz, jeopolitik risk ve dolar endeksi (DXY) belirler; (2) dolar/TL kuru. Dolar güçlenince (DXY yükselince) ons altın genelde baskılanır ama TL zayıflarsa TL bazında altın yine de yükselebilir. Bu yüzden altını hem küresel hareket hem de kur birlikte etkiler.',
+  },
+  {
+    q: 'Alış ve satış fiyatı arasındaki fark (makas) nedir?',
+    a: 'Satış, kuyumcunun size altın SATTIĞI fiyattır; alış ise sizden BOZDURARAK aldığı fiyattır. Alış her zaman satışın biraz altındadır — aradaki farka makas denir ve alım-satımda küçük bir maliyettir. "Elime ne geçer?" diye bakarken alış fiyatını esas alın.',
+  },
+  {
+    q: '22 ayar ile 24 ayar altın farkı nedir?',
+    a: '24 ayar altın saf altındır (995-999 milyem) — gram ve has altın bu ayardadır. 22 ayar altın (916 milyem) içinde dayanıklılık için başka metal karışımı bulunur; çeyrek, yarım, tam ve ata gibi ziynet altınları 22 ayardır. Aynı gramajda 24 ayar, 22 ayardan daha değerlidir.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Altın Fiyatları', url: '/altin-fiyatlari' },
+];
+
+const year = new Date().getFullYear();
+---
+
+<BaseLayout
+  title={`Altın Fiyatları Bugün ${year} | Güncel Gram, Çeyrek, Tam Altın Kaç TL?`}
+  description={`Güncel altın fiyatları: bugün gram altın ${fmt(gram?.satis || 0)} ₺, çeyrek altın ${fmt(ceyrek?.satis || 0)} ₺. Gram, çeyrek, yarım, tam, ata ve ons altının anlık alış-satış fiyatları — ${dateLabel} verisiyle, her gün güncel.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="gp-wrap">
+    <header class="gp-head">
+      <p class="eyebrow">Canlı Veri · Güncel Altın Fiyatları</p>
+      <h1>Altın Fiyatları Bugün</h1>
+      <p class="lede">
+        <strong>Gram, çeyrek, yarım, tam, ata</strong> ve <strong>ons altının</strong> bugünkü
+        alış-satış fiyatları. Değerler <strong>{updLabel}</strong> itibarıyla; her gün güncellenir.
+      </p>
+    </header>
+
+    <!-- Hero: öne çıkan gram altın -->
+    <div class="gp-hero">
+      <div class="hero-main">
+        <span class="hero-label">Gram Altın · Satış</span>
+        <span class="hero-value">₺{fmt(gram?.satis || 0)}</span>
+        <span class="hero-sub">Alış (bozdurma): ₺{fmt(gram?.alis || 0)} · 24 ayar</span>
+      </div>
+      <div class="hero-mini">
+        {highlights.map((i) => (
+          <div class="mini-card">
+            <span class="mini-name">{i.label}</span>
+            <span class="mini-val">₺{fmt(i.satis || 0)}</span>
+            <span class="mini-buy">Alış ₺{fmt(i.alis || 0)}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="updated-strip">
+      <span class="dot"></span>
+      <span>Son güncelleme: <strong>{updLabel}</strong> · Kaynak: piyasa verisi (gösterge). Kesin işlem fiyatı için kuyumcunuza danışın.</span>
+    </div>
+
+    <p class="calc-cta">
+      💡 Elindeki altının <strong>toplam değerini</strong> hesaplamak ister misin?
+      <a href="/altin-hesaplama">Altın hesaplama aracıyla</a> tür ve adet girip anında gör.
+    </p>
+
+    <section class="table-block">
+      <h2>Güncel altın fiyatları tablosu</h2>
+      <table class="rate-table">
+        <thead><tr><th>Altın türü</th><th>Alış (₺)</th><th>Satış (₺)</th><th class="hide-sm">Ayar</th></tr></thead>
+        <tbody>
+          {items.filter((i) => i.key !== 'ons').map((i) => (
+            <tr>
+              <td>{i.label}</td>
+              <td>{i.alis ? fmt(i.alis) : '—'}</td>
+              <td>{i.satis ? fmt(i.satis) : '—'}</td>
+              <td class="hide-sm">{i.ayar}</td>
+            </tr>
+          ))}
+          {ons && (
+            <tr class="ons-row">
+              <td>{ons.label} <span class="usd-tag">USD</span></td>
+              <td>${ons.alis ? fmt(ons.alis) : '—'}</td>
+              <td>${ons.satis ? fmt(ons.satis) : '—'}</td>
+              <td class="hide-sm">{ons.ayar}</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Alış = kuyumcunun sizden aldığı (bozdurma) fiyat · Satış = size sattığı fiyat · aradaki fark
+        <strong>makas</strong>. Ons altın fiyatı ABD doları cinsindendir.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Altın fiyatları neye göre belirlenir?</h2>
+      <p>
+        Türkiye'de altın fiyatı doğrudan kuyumcuların keyfine göre değil, iki küresel değişkenin
+        çarpımıyla oluşur: <strong>uluslararası ons altın fiyatı (USD)</strong> ve
+        <strong>dolar/TL kuru.</strong> Kaba formül:
+        <em>gram altın (₺) ≈ (ons fiyatı ÷ 31,1035) × USD/TL.</em> Bu yüzden altın, ons dünyada
+        yükseldiğinde de, dolar TL karşısında değer kazandığında da TL bazında pahalanır.
+      </p>
+      <h2>Dolar endeksi (DXY) altını nasıl etkiler?</h2>
+      <p>
+        Ons altın ile <strong>dolar endeksi (DXY)</strong> genelde ters yönlü hareket eder: dolar
+        küresel olarak güçlenince (DXY yükselince) ons altın baskılanır, dolar zayıflayınca altın
+        primlenir. Ama Türkiye'de kur da işin içinde olduğu için DXY düşse bile TL zayıflarsa altın
+        yine de yükselebilir. Doların o anki küresel gücünü
+        <a href="/dolar-endeksi">canlı DXY değeri sayfamızdan</a> takip edebilirsiniz.
+      </p>
+      <h2>Yatırım için gram mı, ziynet (çeyrek/tam) mı?</h2>
+      <p>
+        Yatırım amacıyla genelde <strong>gram/has altın</strong> tercih edilir: ziynet altınlarındaki
+        işçilik payı (makas) alım-satımda küçük bir kayıp yaratır. Fiziksel altının saklama ve makas
+        derdinden kaçınmak isteyenler için <strong>altın fonu</strong> bir alternatiftir. Detaylar için
+        <a href="/blog/altin-fonu-nedir-gram-altindan-farki">altın fonu nedir</a> yazımıza bakın.
+      </p>
+      <div class="cta-line">
+        Daha derine inmek için →
+        <a href="/blog/altin-cesitleri-gram-ceyrek-ons-ziynet">altın çeşitleri (gram, çeyrek, ons, ziynet)</a>,
+        <a href="/blog/altin-mi-dolar-mi">altın mı dolar mı?</a> ve
+        <a href="/altin-hesaplama">altın değer hesaplama aracımız</a>.
+      </div>
+    </section>
+
+    <section class="table-block">
+      <h2>Çeyrek altın kaç gram? (ağırlık karşılıkları)</h2>
+      <table class="rate-table">
+        <thead><tr><th>Altın</th><th>Ağırlık</th><th class="hide-sm">Ayar</th></tr></thead>
+        <tbody>
+          {gramTable.map((r) => (
+            <tr><td>{r.ad}</td><td>{r.gram}</td><td class="hide-sm">{r.ayar}</td></tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">Ziynet altınları (çeyrek/yarım/tam/ata) 22 ayardır; gram ve has altın 24 ayardır.</p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <style>
+    .gp-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .gp-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .gp-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .gp-hero {
+      display: grid; grid-template-columns: 1fr 1.3fr; gap: 1rem; align-items: stretch;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .hero-main {
+      display: flex; flex-direction: column; justify-content: center; gap: 0.25rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.1rem 1.2rem;
+    }
+    .hero-label { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .hero-value {
+      font-family: var(--font-serif); font-size: clamp(2rem, 1.4rem + 3vw, 3rem);
+      font-weight: 600; color: var(--brand-ink); line-height: 1.02;
+    }
+    .hero-sub { font-size: 0.82rem; color: var(--text-soft); font-weight: 500; }
+    .hero-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .mini-card {
+      display: flex; flex-direction: column; gap: 0.1rem; padding: 0.7rem 0.8rem;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    }
+    .mini-name { font-size: 0.78rem; color: var(--text-soft); font-weight: 600; }
+    .mini-val { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+    .mini-buy { font-size: 0.74rem; color: var(--text-muted); }
+
+    .updated-strip {
+      display: flex; align-items: center; gap: 0.55rem; margin: 1rem 0 0;
+      background: var(--surface); border-left: 3px solid var(--brand-2);
+      border-radius: var(--radius-sm); padding: 0.65rem 0.9rem; font-size: 0.82rem; color: var(--text-soft);
+    }
+    .updated-strip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-2); flex: none; }
+
+    .calc-cta {
+      margin: 1rem 0 0; background: var(--brand-tint); border-radius: var(--radius-sm);
+      padding: 0.85rem 1.1rem; font-size: 0.92rem; color: var(--brand-ink); line-height: 1.55;
+    }
+    .calc-cta a { font-weight: 700; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .ons-row td { font-weight: 600; }
+    .usd-tag { font-size: 0.68rem; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 0.05rem 0.35rem; color: var(--text-muted); margin-left: 0.3rem; }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block { margin-top: 2.5rem; }
+    .prose-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .cta-line { margin-top: 1.4rem; background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); color: var(--text-soft); line-height: 1.7; }
+
+    .faq-block { margin-top: 2.5rem; }
+    .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 640px) {
+      .gp-hero { grid-template-columns: 1fr; }
+      .hide-sm { display: none; }
+    }
+  </style>
+</BaseLayout>
