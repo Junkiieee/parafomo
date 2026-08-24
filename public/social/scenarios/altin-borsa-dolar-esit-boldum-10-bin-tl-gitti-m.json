@@ -1,0 +1,75 @@
+{
+  "slug": "altin-borsa-dolar-esit-boldum-10-bin-tl-gitti-m",
+  "title": "Altın, Borsa, Dolar: Eşit Böldüm, 10 Bin TL Gitti",
+  "category": "KARŞILAŞTIRMA",
+  "format": "comparison",
+  "description": "Son 1 yılda altın %40, borsa %32, dolar %16 kazandırdı. 100 bin TL'yi üçe eşit bölen biri, tüm parayı altına koyandan yaklaşık 10.700 TL daha az kazandı.",
+  "tags": [
+    "altın",
+    "borsa",
+    "dolar",
+    "yatırım",
+    "gram altın",
+    "çeşitlendirme",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KARŞILAŞTIRMA",
+      "spoken": "Altın, borsa, dolar — seçim 10 bin TL fark ediyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çoğu kişi 'riski dağıt' der ve üçüne eşit pay verir — mantıklı görünüyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama son 1 yılda altın yüzde 40, borsa yüzde 32, dolar yalnızca yüzde 16 kazandırdı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "100 binden eşit böldüysen 129 bin; altına koysaydın 140 bin çıkardı — 10.700 TL fark.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki ya önümüzdeki 1 yılda sıralama değişirse? Kaçırmamak için abone ol — her gün 60 saniyede tek net sonuç.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
