@@ -1,0 +1,77 @@
+{
+  "slug": "altin-borsa-dolar-esit-boldum-10-bin-tl-gitti",
+  "title": "Altın, Borsa, Dolar: Eşit Böldüm, 10 Bin TL Gitti",
+  "category": "KARŞILAŞTIRMA",
+  "format": "comparison",
+  "description": "Son 1 yılda altın %40, borsa %32, dolar %16 kazandırdı. 100 bin TL'yi üçe eşit bölen biri, tüm parayı altına koyandan yaklaşık 10.700 TL daha az kazandı.",
+  "tags": [
+    "altın",
+    "borsa",
+    "dolar",
+    "yatırım",
+    "gram altın",
+    "çeşitlendirme",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KARŞILAŞTIRMA",
+      "spoken": "Altın, borsa, dolar — seçim 10 bin TL fark ediyor.",
+      "visual": {
+        "type": "concept",
+        "query": "financial portfolio allocation investment split"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çoğu kişi 'riski dağıt' der ve üçüne eşit pay verir — mantıklı görünüyor.",
+      "visual": {
+        "type": "concept",
+        "query": "money split three equal parts investment"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama son 1 yılda altın yüzde 40, borsa yüzde 32, dolar yalnızca yüzde 16 kazandırdı.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "bars",
+          "title": "Bu Yıl Kim Kazandırdı?",
+          "items": [
+            {
+              "name": "Gram Altın",
+              "pct": 40
+            },
+            {
+              "name": "BIST 100",
+              "pct": 32
+            },
+            {
+              "name": "Dolar/TL",
+              "pct": 16
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "100 binden eşit böldüysen 129 bin; altına koysaydın 140 bin çıkardı — 10.700 TL fark.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bars coins stacked close up"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki ya önümüzdeki 1 yılda sıralama değişirse? Kaçırmamak için abone ol — her gün 60 saniyede tek net sonuç.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe notification bell mobile phone"
+      }
+    }
+  ]
+}
