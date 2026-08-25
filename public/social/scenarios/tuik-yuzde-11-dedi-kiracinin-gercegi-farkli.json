@@ -1,0 +1,59 @@
+{
+  "slug": "tuik-yuzde-11-dedi-kiracinin-gercegi-farkli",
+  "title": "TÜİK Yüzde 11 Dedi — Kiracının Gerçeği Farklı",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "TÜİK enflasyon sepetinde kiranın ağırlığı yaklaşık yüzde 11, oysa Türk hanelerinin büyük çoğunluğu gelirinin üçte birini kiraya veriyor. Bu fark, maaş zammını resmi enflasyona bağlayanların cebinde sessizce kayboluyor.",
+  "tags": [
+    "enflasyon",
+    "kira",
+    "TÜİK",
+    "TÜFE",
+    "Türkiye ekonomi",
+    "maaş zammı",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Kiranın enflasyon sepetindeki payı sadece yüzde 11.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation statistics chart data screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama çoğu Türk ailesinin gelirinin yaklaşık üçte biri kiraya gidiyor. Resmi sepet gerçeği yansıtmıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "istanbul apartment building rent housing city"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kira iki yılda neredeyse üç kat artarken, düşük sepet payı resmi enflasyonu olduğundan küçük gösterdi.",
+      "visual": {
+        "type": "concept",
+        "query": "rent price increase money inflation Turkey economy"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Maaş zammını resmi enflasyona bağlayanlar bu farkı ceplerinde hissetti. Rakam değil, faturan gerçeği söylüyor.",
+      "visual": {
+        "type": "concept",
+        "query": "empty wallet salary money cash loss"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki senin gerçek enflasyonun hangi rakamlara bakarak ölçülmeli? Abone ol — her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe youtube notification bell phone"
+      }
+    }
+  ]
+}
