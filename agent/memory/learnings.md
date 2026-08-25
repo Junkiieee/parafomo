@@ -52,3 +52,4 @@ Yeni ders: `python3 agent/exp.py learn --channel <k> --text "..."` veya deney ka
 - [2026-08-24][youtube] Calc confound konsolidasyonu (08-14-1): 08-22-1 işsizlik TEK temsilci calc tracker; kalan calc'ler kapandı.
 - [2026-08-24][youtube] YT saf-keşif metrikleri (kapak/hashtag kaynaklı traffic-source payı) IG insights gibi: bizim düşük-n + traffic-source-detay yokluğunda çözünmez. Değişikliği yap (özellik aç) ama exp olarak İZLEME. Yalnız retention (ölçülebilir) ve toplam-izlenme trend'i izle.
 - [2026-08-24][youtube] YT hashtag/kapak keşif-payı exp olarak izlenmez (08-15-1 ile aynı ders) — traffic-source çözünürlüğü yok.
+- [2026-08-25][web] Başlık/discovery-surface değişiklikleri (kapak 08-15-1, hashtag 08-16-3 ile aynı sınıf) bizim düşük-n + traffic-source-çözünürlüğü yokluğunda exp olarak doğrulanamaz. İyi pratiği (anahtar ilk-40-karakter front-load, declarative) KORU ama exp izleme; yalnız retention (ölçülebilir) + toplam-izlenme trendini izle.

@@ -96,6 +96,8 @@ SECONDARY_TOOLS = [
     "🧷 İşsizlik maaşın ne kadar, kaç ay? → parafomo.com/issizlik-maasi-hesaplama",
     "💵 Dolar endeksi (DXY) şu an kaç? → parafomo.com/dolar-endeksi",
     "🪙 Altının kaç TL eder? Hesapla → parafomo.com/altin-hesaplama",
+    "🏛️ Sıradaki Fed kararı ne zaman? (16 Eylül) → parafomo.com/fed-faiz-takvimi",
+    "🚀 Güncel halka arzlar ve tarihleri → parafomo.com/halka-arz",
 ]
 
 

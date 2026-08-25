@@ -55,11 +55,57 @@ def fetch():
         return json.loads(r.read().decode("utf-8", "ignore"))
 
 
+def _yahoo_price(symbol):
+    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}"
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 ParaFOMO"})
+    with urllib.request.urlopen(req, timeout=15) as r:
+        d = json.loads(r.read().decode("utf-8", "ignore"))
+    return float(d["chart"]["result"][0]["meta"]["regularMarketPrice"])
+
+
+def yahoo_fallback():
+    """Truncgil erişilemezse: son sağlam snapshot'ı canlı gram hareketiyle yeniden
+    ölçekle (ons GC=F × USDTRY). Tüm kalem ilişkileri/işçilik primleri korunur,
+    sadece board gram hareketi kadar kayar → sayfa asla bayat kalmaz."""
+    if not os.path.exists(OUT):
+        return None
+    try:
+        ons_usd = _yahoo_price("GC=F")          # ons altın (USD)
+        usdtry = _yahoo_price("USDTRY=X")
+    except Exception as e:
+        print(f"[altin-fiyat] Yahoo fallback da başarısız ({str(e)[:60]})", file=sys.stderr)
+        return None
+    new_gram = ons_usd / 31.1035 * usdtry       # 24 ayar gösterge gram (TL)
+    old = json.load(open(OUT, encoding="utf-8"))
+    kalemler = old.get("kalemler", [])
+    old_gram = next((k.get("satis") for k in kalemler if k.get("key") == "gram-altin"), None)
+    if not old_gram:
+        return None
+    factor = new_gram / old_gram
+    for k in kalemler:
+        for f in ("alis", "satis"):
+            if isinstance(k.get(f), (int, float)):
+                k[f] = round(k[f] * factor, 2)
+    old["kalemler"] = kalemler
+    old["_kaynak"] = "Yahoo (GC=F×USDTRY) — Truncgil erişilemedi, son snapshot ölçeklendi"
+    return old
+
+
 def main():
     try:
         data = fetch()
     except Exception as e:
-        print(f"[altin-fiyat] fetch başarısız ({str(e)[:80]}) → mevcut dosya korunuyor", file=sys.stderr)
+        print(f"[altin-fiyat] Truncgil fetch başarısız ({str(e)[:80]}) → Yahoo fallback deneniyor", file=sys.stderr)
+        fb = yahoo_fallback()
+        if fb is not None:
+            tr_now = datetime.now(timezone.utc).astimezone(timezone(timedelta(hours=3)))
+            fb["guncellenme"] = tr_now.strftime("%Y-%m-%dT%H:%M:%S+03:00")
+            fb["guncellemeEtiket"] = tr_now.strftime("%d %B %Y, %H:%M")
+            with open(OUT, "w", encoding="utf-8") as f:
+                json.dump(fb, f, ensure_ascii=False, indent=2)
+            print(f"[altin-fiyat] Yahoo fallback ile {len(fb.get('kalemler', []))} kalem tazelendi → {OUT}")
+            return 0
+        print("[altin-fiyat] fallback yok → mevcut dosya korunuyor", file=sys.stderr)
         if os.path.exists(OUT):
             return 0
         data = {}
