@@ -4,6 +4,79 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-25 — Hisse Geri Alımı (Buyback) Nedir? Şirket Neden Kendi Hissesini Satın Alır?
+
+**Yayınlanan yazı:**
+[Hisse Geri Alımı (Buyback) Nedir? Şirket Neden Kendi Hissesini Satın Alır?](https://parafomo.com/blog/hisse-geri-alimi-nedir-buyback/)
+
+**Konu:** Buyback mekanizması, EPS ve hisse fiyatına etkisi, temettü ile karşılaştırma tablosu, BIST'te KAP üzerinden geri alım takibi ve yatırım sinyali okuma kılavuzu. "Hisse geri alımı nedir" hedef sorgusu; temettü + F/K + hisse seçimi cluster'ını tamamlayan evergreen borsa rehberi.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+🧵 Şirket kendi hissesini neden satın alır? Ve bu sen için ne anlam ifade eder?
+
+1/ "Hisse geri alımı (buyback)" — dünyada trilyon dolarlık işlem hacmi var, BIST'te de giderek yaygınlaşıyor. Temel mantık şu:
+
+2/ Şirket borsadan kendi hisselerini satın alır → piyasadaki hisse sayısı azalır → aynı kâr daha az hisseye bölünür → pay başına kâr (EPS) yükselir ↑
+
+3/ EPS artışı → F/K oranı düşer → hisse "ucuzlamış" görünür → alım talebi artar → fiyat baskısı yukarı 📈
+
+4/ Buyback mi, temettü mi?
+• Temettü → nakit alırsın, ama Türkiye'de %15 stopaj var
+• Buyback → nakit gelmez ama vergi yok (satana kadar)
+• İkisi farklı yatırımcı profiline hitap eder
+
+5/ BIST'te nasıl takip edilir? KAP'ta şirketi ara → "Geri Alım Programı" bildirimleri → bütçe + tamamlanma oranına bak
+
+⚠️ Dikkat: Borçla finanse edilen buyback, hisse zirvesinde yapılan buyback = kırmızı bayrak
+
+6/ Buyback'in güçlü sinyal olduğu koşullar:
+✅ Düşük borç yükü
+✅ Güçlü serbest nakit akışı
+✅ Hisse değer altında işlem görüyor
+✅ Yönetim kendi hesabıyla da alıyor
+
+Tüm rehber → parafomo.com/blog/hisse-geri-alimi-nedir-buyback/ #borsa #yatırım #buyback
+
+---
+
+### Instagram Post/Carousel Metni
+
+**Slide 1:**
+Şirket kendi hissesini neden satın alır? 🤔 #buyback açıklandı
+
+**Slide 2:**
+Hisse geri alımı (buyback) = Şirketin borsadan kendi hisselerini satın alması
+→ Piyasadaki hisse sayısı ↓
+→ Pay başına kâr (EPS) ↑
+→ Hisse fiyatı genellikle ↑
+
+**Slide 3:**
+Buyback vs Temettü
+💰 Temettü → nakit ama %15 stopaj
+📈 Buyback → nakit yok ama vergi yok (satana kadar)
+
+**Slide 4:**
+BIST'te nasıl takip edersin?
+KAP'ta şirketi ara → "Geri Alım Programı" → bütçe + tamamlanma oranına bak
+
+**Slide 5:**
+Kırmızı bayrak: Borçla finanse edilen buyback ⚠️
+Güçlü sinyal: Nakit fazlasıyla + yönetim de alıyorsa ✅
+
+Tüm rehber linkte 👆 #borsa #yatırım #hissesenedi #bist #finansokuryazarlığı #buyback #finans
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **X (Twitter) thread'ini paylaş** — yukarıdaki taslağı kopyala, 25 Ağustos sabah saatlerinde yayınla. Bir kaç aktif takipçinin içeriği RT etmesi için ilk 30 dk'da etkileşim önemli.
+2. **Instagram carousel'ını hazırla ve paylaş** — 5 slide'lık carousel formatı; Canva'da kolayca oluşturabilirsin. Story'e de link ver.
+
+---
+
 ## 2026-08-24 — Sermaye Artırımı Nedir? Bedelsiz Hisse ve Rüçhan Hakkı Rehberi
 
 **Yayınlanan yazı:**
