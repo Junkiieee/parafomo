@@ -4,6 +4,80 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-25 — Bütçe Açığı Nedir? Kamu Borcu ve Ekonomiye Etkisi
+
+**Yayınlanan yazı:**
+[Bütçe Açığı Nedir? Kamu Borcu ve Ekonomiye Etkisi](https://parafomo.com/blog/butce-acigi-nedir-kamu-borcu-ekonomiye-etkisi/)
+
+**Konu:** Bütçe açığının tanımı, oluşum nedenleri, iç borç / dış borç / para basma yoluyla finansman karşılaştırma tablosu, enflasyon-faiz-döviz kuruna etkisi, ikiz açık dinamiği ve yatırımcı pratik rehberi. "Bütçe açığı nedir" hedef sorgusu; cari açık + tahvil + faiz cluster'ını tamamlayan evergreen ekonomi yazısı.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+🧵 Devlet harcamalarını karşılayamıyorsa ne yapar? Ve bu SENİ nasıl etkiler?
+
+1/ Bütçe açığı = devletin gelirinden fazla harcaması. Formül basit:
+Gelir − Gider < 0 → AÇIK
+Ve bu açık kapatılmak zorunda.
+
+2/ Üç yol var:
+📌 İç borç → tahvil satıp piyasadan borç alır
+📌 Dış borç → Eurobond / IMF kredisi
+📌 Para bas → en tehlikelisi, enflasyon kapıyı çalar
+
+3/ Seni nasıl etkiler?
+• Fazla tahvil arzı → faizler yükselir
+• Yükselen faiz → kredi pahalılaşır, hisse değerlemeleri düşer
+• Enflasyon riski → alım gücünü aşındırır
+• TL üzerinde baskı
+
+4/ İzlenmesi gereken 1 rakam: Bütçe Açığı / GSYİH
+%3 altı → makul
+%3-6 → dikkatli takip
+%6+ → risk bölgesi
+
+5/ Türkiye'nin durumunu Hazine ve Maliye Bakanlığı'nın aylık bütçe gerçekleşme raporlarından takip edebilirsin.
+
+Tam rehber → parafomo.com/blog/butce-acigi-nedir-kamu-borcu-ekonomiye-etkisi/ #ekonomi #bütçe #yatırım
+
+---
+
+### Instagram Post/Carousel Metni
+
+**Slide 1:**
+Devlet borcunu nasıl öder? Bütçe açığını anla 💡
+
+**Slide 2:**
+📌 Bütçe açığı nedir?
+Devletin topladığı vergiden fazla harcaması → farkı borçla kapatması.
+
+**Slide 3:**
+3 finansman yolu:
+1️⃣ İç borç (tahvil) → faizleri etkiler
+2️⃣ Dış borç (Eurobond) → kur riskini artırır
+3️⃣ Para basmak → enflasyona yol açar
+
+**Slide 4:**
+Yatırımcı olarak izle:
+📊 Açık/GSYİH oranı
+📈 Tahvil faizleri
+💱 TL kur hareketi
+
+**Slide 5:**
+Tüm detaylar → parafomo.com 🔗
+
+#bütçeaçığı #ekonomi #kamuborcu #yatırım #parafomo #türkiyeekonomisi
+
+---
+
+### Bugün Yapman Gerekenler
+
+- [ ] X thread'ini yayınla (yukarıdaki taslağı kullan, sabah saatlerinde paylaş)
+- [ ] 1 ilgili toplulukta (ekonomi / finans Facebook/Telegram grubu ya da Reddit r/Turkey) değer katarak yazıyı paylaş
+
+---
+
 ## 2026-08-25 — Hisse Geri Alımı (Buyback) Nedir? Şirket Neden Kendi Hissesini Satın Alır?
 
 **Yayınlanan yazı:**

@@ -74,10 +74,12 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Dow Jones Endeksi nedir? ABD borsası nasıl takip edilir? — `Borsa` — hedef: "dow jones nedir"
 - [x] Sermaye artırımı nedir? Bedelsiz hisse ve rüçhan hakkı rehberi — `Borsa` — hedef: "sermaye artırımı nedir"
 - [x] Hisse geri alımı (buyback) nedir? Şirket neden kendi hissesini satın alır? — `Borsa` — hedef: "hisse geri alımı nedir"
-- [ ] Bütçe açığı nedir? Kamu borcu ve ekonomiye etkisi — `Ekonomi` — hedef: "bütçe açığı nedir"
+- [x] Bütçe açığı nedir? Kamu borcu ve ekonomiye etkisi — `Ekonomi` — hedef: "bütçe açığı nedir"
 - [ ] Döviz rezervleri nedir? Merkez bankası rezervleri ne anlama gelir? — `Ekonomi` — hedef: "döviz rezervleri nedir"
 
 ## Yayınlananlar (otomasyon buraya ekler)
+
+- [x] Bütçe Açığı Nedir? Kamu Borcu ve Ekonomiye Etkisi — `butce-acigi-nedir-kamu-borcu-ekonomiye-etkisi` (backlog ilk [ ] konusu: evergreen ekonomi; "bütçe açığı nedir" sorgusu; cari açık + tahvil + faiz + döviz kuru cluster'ını tamamlayan kamu maliyesi rehberi; ikiz açık dinamiği + açık/GSYİH oranı tablosu; 25 Ağustos 2026)
 
 - [x] Sermaye Artırımı Nedir? Bedelsiz Hisse ve Rüçhan Hakkı Rehberi — `sermaye-artirimi-nedir-bedelsiz-ruchan-hakki` (backlog ilk [ ] konusu: evergreen borsa; "sermaye artırımı nedir" sorgusu; halka arz + F/K + hisse seçim cluster'ını tamamlayan piece; bedelli vs bedelsiz karşılaştırma tablosu + pratik hesap örnekleri + rüçhan hakkı adım listesi; 24 Ağustos 2026)
 
