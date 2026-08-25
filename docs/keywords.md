@@ -73,7 +73,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] S&P 500 nedir? ABD borsasına Türkiye'den nasıl yatırım yapılır? — `Yatırım` — hedef: "s&p 500 nedir"
 - [x] Dow Jones Endeksi nedir? ABD borsası nasıl takip edilir? — `Borsa` — hedef: "dow jones nedir"
 - [x] Sermaye artırımı nedir? Bedelsiz hisse ve rüçhan hakkı rehberi — `Borsa` — hedef: "sermaye artırımı nedir"
-- [ ] Hisse geri alımı (buyback) nedir? Şirket neden kendi hissesini satın alır? — `Borsa` — hedef: "hisse geri alımı nedir"
+- [x] Hisse geri alımı (buyback) nedir? Şirket neden kendi hissesini satın alır? — `Borsa` — hedef: "hisse geri alımı nedir"
 - [ ] Bütçe açığı nedir? Kamu borcu ve ekonomiye etkisi — `Ekonomi` — hedef: "bütçe açığı nedir"
 - [ ] Döviz rezervleri nedir? Merkez bankası rezervleri ne anlama gelir? — `Ekonomi` — hedef: "döviz rezervleri nedir"
 
@@ -227,3 +227,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Dow Jones Endeksi Nedir? ABD Borsası Nasıl Takip Edilir? — `dow-jones-nedir` (backlog: evergreen borsa; "dow jones nedir" sorgusu; S&P 500 + ETF + BIST 100 cluster'ını tamamlayan ABD endeks rehberi; fiyat ağırlıklı hesaplama + 30 şirket karşılaştırma tablosu; 23 Ağustos 2026)
 
 - [x] 26 Ağustos PCE + Büyüme Verisi: Fed Eylül'de Ne Yapar? Dolar ve Altın Etkisi — `pce-gdp-agustos-2026-fed-eylul-dolar-altin` (takvim: 26 Ağustos 2026 🔴 Core PCE + Prelim GDP; PCE nedir + GDP nedir evergreen yazılarının tamamlayıcısı; Fed Eylül kararı öncesi "ne olur" açısı; senaryo tablosu + Türk yatırımcısı için pratik rehber; 24 Ağustos 2026)
+
+- [x] Hisse Geri Alımı (Buyback) Nedir? Şirket Neden Kendi Hissesini Satın Alır? — `hisse-geri-alimi-nedir-buyback` (backlog ilk [ ] konusu: evergreen borsa; "hisse geri alımı nedir" sorgusu; temettü + F/K + hisse seçimi cluster'ını tamamlayan pratik rehber; buyback vs temettü karşılaştırma tablosu + BIST KAP takip kılavuzu; 25 Ağustos 2026)
