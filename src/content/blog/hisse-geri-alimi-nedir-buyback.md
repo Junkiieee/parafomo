@@ -17,6 +17,23 @@ faq:
     a: "Temettü nakit ödeme yapar, buyback ise hissenin değerini artırmayı hedefler. Vergi açısından Türkiye'de temettü stopaja tabidir; buyback'te yatırımcı hissesini satmadıkça vergi yükümlülüğü doğmaz. Her ikisinin de avantajı farklıdır."
   - q: "BIST'te hisse geri alımı nasıl takip edilir?"
     a: "Borsa İstanbul'da geri alım programları, şirketin Kamuyu Aydınlatma Platformu (KAP) bildirimleriyle duyurulur. KAP'ta şirketi arap, 'Geri Alım' kategorisindeki bildirimleri incele. Geri alım sınırı, süresi ve tamamlanma oranı burada yer alır."
+shorts:
+  - "Şirket kendi hissesini neden satın alır ki?"
+  - "Geri alım piyasadaki hisse sayısını azaltır, her hisse daha büyük kâr payı alır."
+  - "Yönetim hissenin ucuz olduğunu sinyalliyor; bu duyuru fiyatı yüzde iki-dört yukarı iter."
+  - "S&P 500 şirketleri son on yılda temettüden daha fazla parayı buyback'e harcadı."
+  - "Peki bu sana kazandırır mı, kaybettirir mi? Abone ol, parafomo.com'da tüm analiz seni bekliyor."
+shorts_broll:
+  - "stock market shares repurchase announcement"
+  - "earnings per share EPS calculation screen"
+  - "stock price chart rising after buyback"
+  - "S&P 500 companies cash flow"
+shorts_visuals:
+  - "concept|company buying own stock shares market"
+  - "concept|earnings per share EPS calculation"
+  - "concept|stock price rising chart announcement"
+  - "concept|S&P 500 companies spending cash buyback"
+  - "place|Borsa İstanbul"
 ---
 
 Bir şirket borsada kendi hisselerini satın alıyor — bu mantıklı mı, yoksa tehlike mi? **Hisse geri alımı nedir** sorusu Türk yatırımcılar arasında hâlâ yeterince bilinmeyen ama dünyada trilyonlarca dolarlık işlem hacmi oluşturan kritik bir konudur. S&P 500 şirketleri son on yılda temettüden daha fazla parayı buyback'e harcadı. BIST'te de giderek yaygınlaşan bu uygulamanın hisse fiyatına, EPS'e ve yatırım kararlarına etkisini bu rehberde ele alıyoruz.
