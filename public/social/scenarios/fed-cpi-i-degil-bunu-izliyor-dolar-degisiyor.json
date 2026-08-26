@@ -1,0 +1,59 @@
+{
+  "slug": "fed-cpi-i-degil-bunu-izliyor-dolar-degisiyor",
+  "title": "Fed CPI'ı Değil Bunu İzliyor — Dolar Değişiyor",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Fed'in tercih ettiği enflasyon ölçütü PCE beklentinin altında geldi. Bu veri doları nasıl etkiliyor ve dolar birikimin için ne anlama geliyor?",
+  "tags": [
+    "fed",
+    "pce",
+    "çekirdek enflasyon",
+    "dolar",
+    "faiz indirimi",
+    "altın",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "PCE düştü — dolar sana ne yapacak?",
+      "visual": {
+        "type": "person",
+        "query": "Jerome Powell"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fed faiz kararını PCE'ye göre veriyor — CPI değil. Bu ay PCE beklentinin altında geldi.",
+      "visual": {
+        "type": "building",
+        "query": "Federal Reserve building Washington DC"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama enflasyon yavaşlayınca Fed faiz indirir — ve faiz indirimi beklentisi doları anında aşağı çekiyor.",
+      "visual": {
+        "type": "concept",
+        "query": "US dollar currency exchange rate falling chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Dolar değer kaybederse 100 bin TL'lik dolar mevduatın erir — altın ise dolar cinsinden rahatlar.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars coins stacked"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Fed faiz indirim kararı ne zaman gelecek — bunu kaçırmak istemiyorsan ParaFOMO'ya abone ol; her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "concept",
+        "query": "smartphone notification subscribe bell"
+      }
+    }
+  ]
+}
