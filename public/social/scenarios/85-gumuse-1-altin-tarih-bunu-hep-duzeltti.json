@@ -1,0 +1,58 @@
+{
+  "slug": "85-gumuse-1-altin-tarih-bunu-hep-duzeltti",
+  "title": "85 Gümüşe 1 Altın — Tarih Bunu Hep Düzeltti",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Altın-gümüş oranı tarihsel ortalamasının çok üzerinde. Oran her normalleştiğinde gümüş öne çıktı — ama oynaklık bedelini ağır ödetebilir.",
+  "tags": [
+    "gümüş yatırım",
+    "altın gümüş oranı",
+    "altın yatırım",
+    "para biriktirme",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Şu an bir gram altın 85 gram gümüş ediyor.",
+      "visual": {
+        "type": "gold",
+        "query": "gold silver bars comparison shiny"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Oran tarihsel ortalamada 55'ti — bu seviyeye düştüğünde gümüş hep altını geçmişti.",
+      "visual": {
+        "type": "concept",
+        "query": "gold silver ratio historical chart timeline"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama gümüş oynak: 2020'de oran 125'e çıktı, gümüş kısa sürede yüzde 30 geriledi.",
+      "visual": {
+        "type": "concept",
+        "query": "silver price volatile crash financial chart red"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Oran normalleştiğinde gümüş hep hızlı hareket etti — küçük bir pay portföyü çeşitlendirir.",
+      "visual": {
+        "type": "object",
+        "query": "silver coins bars bullion investment"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Altın mı gümüş mü sorusunun net hesabı önümüzdeki videoda. Abone ol — her gün 60 saniyede cebini etkileyen bir finans gerçeği.",
+      "visual": {
+        "type": "gold",
+        "query": "gold silver coins pile investment wealth"
+      }
+    }
+  ]
+}

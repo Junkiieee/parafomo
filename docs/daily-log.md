@@ -4,6 +4,89 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-26 — Döviz Rezervleri Nedir? Merkez Bankası Rezervlerini Anlamak İçin Rehber
+
+**Yayınlanan yazı:**
+[Döviz Rezervleri Nedir? Merkez Bankası Rezervlerini Anlamak İçin Rehber](https://parafomo.com/blog/doviz-rezervleri-nedir-merkez-bankasi-rezervleri/)
+
+**Konu seçim mantığı:** Bugün takvimde Core PCE + GDP verileri var ancak 26 Ağustos için zaten `pce-gdp-agustos-2026-fed-eylul-dolar-altin` yazısı yazılmıştı. SEO fırsat listesindeki tüm sorgular mevcut yazılarla kapsamda. Backlog'un ilk boş konusu olan "döviz rezervleri nedir" seçildi — cari açık, döviz kuru ve TCMB faiz cluster'larını tamamlayan kritik bir makro ekonomi rehberi.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+🧵 Türkiye'nin rezervleri eridi mi haberi duyunca ne hissediyorsunuz?
+
+Brüt rezerv vs net rezerv farkını bilmeden bu haberleri yorumlamak mümkün değil.
+
+👇 Kısa bir özet:
+
+1/ Döviz rezervleri = merkez bankasının elindeki döviz + altın + SDR toplamı.
+Kurumu savunur, borç öder, ithalatı finanse eder.
+
+2/ Brüt rezerv → toplam varlık.
+Net rezerv → swap borçları ve yükümlülükler düşüldükten sonra kalan gerçek miktar.
+Fark bazen devasa olabiliyor.
+
+3/ Swap anlaşması neden aldatıcı?
+TCMB yabancı bankadan geçici döviz alır → brüt rezerve eklenir.
+Ama geri ödeme zorunluluğu var → net rezervi artırmaz, hatta düşürür.
+
+4/ Yatırımcılar şuna bakar:
+📌 Rezervler kaç aylık ithalatı karşılıyor? (≥3 ay sağlıklı)
+📌 Net rezervler pozitif mi?
+📌 Kısa vadeli dış borç / rezerv oranı nasıl?
+
+5/ Rezervler hızla düşünce:
+TL baskı altına girer → ithalat pahalılaşır → enflasyon yükselir → borçlanma zorlaşır.
+
+Detaylı rehber 👇
+parafomo.com/blog/doviz-rezervleri-nedir-merkez-bankasi-rezervleri/
+
+#Ekonomi #TCMB #DövizRezervi #TL #Finans
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Kapak:** "Döviz Rezervleri Neden Bu Kadar Önemli?"
+
+**Slide 1 — Soru:**
+"Türkiye'nin rezervleri eridi" haberlerini nasıl okuyorsunuz?
+Brüt ile net rezerv farkını bilmeden bu soruyu yanıtlamak zor.
+
+**Slide 2 — Tanım:**
+Döviz rezervleri = döviz + altın + SDR
+→ Merkez bankasının dış şoklara karşı kalkanı
+
+**Slide 3 — Kritik Ayrım:**
+Brüt rezerv: Toplam varlık
+Net rezerv: Swap borçları düşüldükten sonra gerçek miktar
+→ Asıl önemli olan net rakam!
+
+**Slide 4 — Swap Tuzağı:**
+Swap = geçici döviz borcu
+Brüt rezervi şişirir ama net rezervi artırmaz.
+Analistler bu yüzden "net net rezerv" hesaplar.
+
+**Slide 5 — Yatırımcı Sinyalleri:**
+✅ Rezervler artıyor → TL baskısı azalır
+⚠️ Hızla düşüyor → kur oynaklığı artabilir
+🚨 Net rezerv negatif → yapısal kırılganlık
+
+Detaylı okuma linki bio'da 👆
+
+#Ekonomi #TCMB #DövizRezervi #ParaFOMO #Finans #Yatırım #TL
+
+---
+
+### Bugün senin yapman gerekenler
+
+- [ ] X thread'ini ve Instagram carousel'ini paylaş.
+- [ ] Türkiye ekonomisini/TCMB'yi takip eden bir Telegram veya Facebook grubunda link paylaş (spam değil, değer katan bir kısa yorum ekle).
+
+---
+
 ## 2026-08-25 — Bütçe Açığı Nedir? Kamu Borcu ve Ekonomiye Etkisi
 
 **Yayınlanan yazı:**
