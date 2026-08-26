@@ -75,9 +75,11 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Sermaye artırımı nedir? Bedelsiz hisse ve rüçhan hakkı rehberi — `Borsa` — hedef: "sermaye artırımı nedir"
 - [x] Hisse geri alımı (buyback) nedir? Şirket neden kendi hissesini satın alır? — `Borsa` — hedef: "hisse geri alımı nedir"
 - [x] Bütçe açığı nedir? Kamu borcu ve ekonomiye etkisi — `Ekonomi` — hedef: "bütçe açığı nedir"
-- [ ] Döviz rezervleri nedir? Merkez bankası rezervleri ne anlama gelir? — `Ekonomi` — hedef: "döviz rezervleri nedir"
+- [x] Döviz rezervleri nedir? Merkez bankası rezervleri ne anlama gelir? — `Ekonomi` — hedef: "döviz rezervleri nedir"
 
 ## Yayınlananlar (otomasyon buraya ekler)
+
+- [x] Döviz Rezervleri Nedir? Merkez Bankası Rezervlerini Anlamak İçin Rehber — `doviz-rezervleri-nedir-merkez-bankasi-rezervleri` (backlog ilk [ ] konusu: evergreen ekonomi; "döviz rezervleri nedir" sorgusu; brüt vs net rezerv + swap etkisi + TCMB analizi; cari açık + döviz kuru + TCMB faiz cluster'ını tamamlayan makro gösterge rehberi; 26 Ağustos 2026)
 
 - [x] Bütçe Açığı Nedir? Kamu Borcu ve Ekonomiye Etkisi — `butce-acigi-nedir-kamu-borcu-ekonomiye-etkisi` (backlog ilk [ ] konusu: evergreen ekonomi; "bütçe açığı nedir" sorgusu; cari açık + tahvil + faiz + döviz kuru cluster'ını tamamlayan kamu maliyesi rehberi; ikiz açık dinamiği + açık/GSYİH oranı tablosu; 25 Ağustos 2026)
 
