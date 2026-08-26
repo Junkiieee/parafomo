@@ -17,6 +17,23 @@ faq:
     a: "Swap anlaşmasında TCMB yabancı bir bankadan döviz alır, karşılığında TL verir. Bu döviz brüt rezervlere eklenir ama geri ödeme yükümlülüğü yarattığı için net rezervi artırmaz; hatta düşürür. Bu yüzden 'net rezerv' rakamı analistler tarafından daha güvenilir bulunur."
   - q: "Döviz rezervleri düşünce ne olur, TL değer kaybeder mi?"
     a: "Rezervlerin belirgin biçimde erimesi piyasalarda güven bunalımı yaratabilir, TL üzerinde değer kaybı baskısını artırabilir ve dış borç ödemeleri konusunda soru işareti doğurabilir. Ancak rezerv düzeyi tek başına belirleyici değildir; döviz rejimi, cari denge ve yurt dışı finans koşulları da kritik rol oynar."
+shorts:
+  - "Rezervler şişirilmiş — gerçek rakam çok farklı."
+  - "Merkez bankasının açıkladığı brüt rezerv, kısa vadeli borçları dışarıda bırakarak gerçeği gizler."
+  - "Swap anlaşmalarıyla geçici alınan döviz brüte eklenir ama iade edilecek; net rezervi artırmaz."
+  - "Net net rezerv, swaplar ve zorunlu karşılıklar çıkarıldıktan sonra kalan gerçek döviz gücünü gösterir."
+  - "Peki Türkiye'nin gerçek rezerv gücü ne durumda? Kanala abone ol, her gün bu analizleri kaçırma — detaylar parafomo.com'da."
+shorts_broll:
+  - "central bank foreign exchange reserves chart"
+  - "currency swap agreement finance"
+  - "turkish lira banknotes stack"
+  - "bank balance sheet financial data"
+shorts_visuals:
+  - "concept|foreign exchange reserves declining chart screen"
+  - "concept|bank window display facade illusion numbers"
+  - "building|Türkiye Cumhuriyet Merkez Bankası"
+  - "concept|net currency reserves real money calculation"
+  - "object|turkish lira banknotes stack"
 ---
 
 "Türkiye'nin rezervleri eridi mi?" haberlerini görünce ne hissediyorsunuz? Kaygılanmak mı, yoksa bu rakamların ne anlama geldiğini anlamak mı istiyorsunuz? Döviz rezervleri, bir ülkenin ekonomik sağlığının en görünür göstergelerinden biridir — ama doğru yorumlamak için birkaç kritik ayrımı bilmek gerekiyor.
