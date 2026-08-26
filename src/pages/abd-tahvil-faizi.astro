@@ -1,0 +1,243 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import data from '../../data/us-tahvil.json';
+
+// Veri — data/us-tahvil.json (scripts/us-tahvil.py, günlük rebuild'de tazelenir). Yahoo Finance.
+const tenors = (data.tenors ?? []) as {
+  symbol: string; label: string; key: string; yield: number; changeBps: number | null; prev: number | null;
+}[];
+
+const upd = new Date(data.guncellenme);
+const updLabel = upd.toLocaleDateString('tr-TR', {
+  day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit',
+});
+
+const num = (n: number | null | undefined, d = 3) =>
+  n == null ? '—' : new Intl.NumberFormat('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d }).format(n);
+const sign = (n: number | null | undefined) => (n == null ? '' : n > 0 ? '+' : '');
+// Faiz için: yükseliş = kırmızı (tahvilde faiz artışı fiyat düşüşü / sıkılaşma), düşüş = yeşil.
+const dirFaiz = (n: number | null | undefined) => (n == null ? 'flat' : n > 0 ? 'down' : n < 0 ? 'up' : 'flat');
+
+const y10 = data.us10y as number | null;
+const chg = data.us10yChangeBps as number | null;
+const spread = data.spread10y3m as number | null;
+const inverted = data.inverted as boolean;
+const yon = chg == null ? '' : chg > 0 ? 'yükseldi' : chg < 0 ? 'geriledi' : 'yatay seyretti';
+
+const faq = [
+  {
+    q: 'ABD 10 yıllık tahvil faizi şu an kaç?',
+    a: `${updLabel} itibarıyla ABD 10 yıllık Hazine tahvili faizi yaklaşık %${num(y10)} seviyesinde ve önceki kapanışa göre ${chg == null ? '' : Math.abs(chg) + ' baz puan '}${yon}. Değer gün içinde değişir; bu sayfa her gün otomatik güncellenir.`,
+  },
+  {
+    q: 'ABD 10 yıllık tahvil faizi neden önemli?',
+    a: 'ABD 10 yıllık Hazine tahvili faizi, dünyanın "risksiz getiri" referansıdır. Konut kredisi faizinden hisse değerlemesine, doların gücünden gelişen piyasa varlıklarına kadar her şeyi fiyatlar. Faiz yükseldiğinde küresel para dolara ve ABD tahviline akar; bu da TL gibi gelişen piyasa paralarını ve (USD cinsi) altını baskılar. Faiz düştüğünde tersi olur.',
+  },
+  {
+    q: 'Getiri eğrisinin ters dönmesi (inversion) ne demek?',
+    a: 'Normalde uzun vadeli tahvil faizi kısa vadeliden yüksektir (parayı daha uzun bağlamanın karşılığı). Kısa vadeli faiz (ör. 3 aylık) uzun vadeliyi (10 yıllık) geçtiğinde eğri "ters döner" ve bu, tarihsel olarak ABD resesyonlarının en güvenilir öncü sinyallerinden biridir. 10 yıllık eksi 3 aylık farkı (spread) negatifse eğri terstir.',
+  },
+  {
+    q: 'ABD tahvil faizi TL ve altını nasıl etkiler?',
+    a: 'ABD tahvil faizi yükselince dolar küresel olarak güçlenir (DXY yukarı), TL dahil gelişen piyasa paraları baskı görür ve dolar/TL yukarı eğilimli olur; faiz getirmeyen altın ise USD cinsinden cazibesini kaybederek gerileyebilir. Faiz düştüğünde tablo tersine döner. Yani ABD 10 yıllık faizi, dolar/TL ve altın için önemli bir öncü göstergedir.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'ABD Tahvil Faizleri', url: '/abd-tahvil-faizi' },
+];
+---
+
+<BaseLayout
+  title={`ABD Tahvil Faizleri Canlı ${new Date().getFullYear()} | 10 Yıllık Getiri, Eğri ve TL Etkisi`}
+  description={`ABD 10 yıllık tahvil faizi şu an kaç? Güncel değer %${num(y10)}, 3 ay–30 yıl getiri eğrisi, resesyon sinyali ve tahvil faizinin dolar-TL-altına etkisi. ${updLabel} verisiyle, her gün güncellenir.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="ust-wrap">
+    <header class="ust-head">
+      <p class="eyebrow">Canlı Veri · ABD Tahvil Faizleri</p>
+      <h1>ABD Tahvil Faizleri (Getiri Eğrisi)</h1>
+      <p class="lede">
+        ABD Hazine tahvillerinin güncel faizleri <strong>{updLabel}</strong> itibarıyla;
+        her gün otomatik güncellenir. 10 yıllık faiz küresel piyasaların çıpasıdır.
+      </p>
+    </header>
+
+    <section class={`hero-value ${dirFaiz(chg)}`} aria-label="Güncel 10 yıllık ABD tahvil faizi">
+      <span class="hero-label">ABD 10 Yıllık Hazine Tahvili Faizi</span>
+      <span class="hero-num">%{num(y10)}</span>
+      <span class={`hero-change ${dirFaiz(chg)}`}>
+        {sign(chg)}{num(chg, 1)} baz puan <em>· önceki kapanışa göre</em>
+      </span>
+      <div class="hero-context">
+        <div class="ctx-item">
+          <span class="ctx-label">10Y − 3A farkı</span>
+          <span class="ctx-val">{spread == null ? '—' : (spread > 0 ? '+' : '') + num(spread, 2)} <b class={inverted ? 'down' : 'up'}>{inverted ? 'ters eğri' : 'normal'}</b></span>
+        </div>
+        <div class="ctx-item">
+          <span class="ctx-label">Dolar/TL</span>
+          <span class="ctx-val">₺{num(data.usdtry, 2)}</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="updated-strip">
+      <span class="dot"></span>
+      <span>Son güncelleme: <strong>{updLabel}</strong> · Kaynak: CBOE tahvil getiri endeksleri (gösterge, anlık işlem değeri değildir).</span>
+    </div>
+
+    <section class="table-block">
+      <h2>ABD getiri eğrisi — vadeye göre faizler</h2>
+      <p class="table-intro">
+        Farklı vadedeki ABD Hazine tahvillerinin faizi birlikte "getiri eğrisini" oluşturur.
+        Kısa vade uzun vadeyi geçtiğinde (ters eğri) piyasa, ilerideki faiz indirimlerini ve
+        <strong>olası bir yavaşlamayı</strong> fiyatlıyor demektir.
+      </p>
+      <table class="rate-table">
+        <thead><tr><th>Vade</th><th>Faiz (getiri)</th><th class="hide-sm">Günlük</th></tr></thead>
+        <tbody>
+          {tenors.map((t) => (
+            <tr>
+              <td>{t.label}</td>
+              <td>%{num(t.yield)}</td>
+              <td class={`hide-sm ${dirFaiz(t.changeBps)}`}>{sign(t.changeBps)}{num(t.changeBps, 1)} bps</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Faizler Yahoo Finance / CBOE getiri endeksi verisidir. 1 baz puan (bps) = %0,01 faiz.
+        Faiz yükselişi tahvil <em>fiyatının</em> düşmesi anlamına gelir; ikisi ters yönde hareket eder.
+      </p>
+    </section>
+
+    <section class={`signal-box ${inverted ? 'warn' : 'ok'}`}>
+      <h2>Resesyon sinyali: getiri eğrisi {inverted ? 'ters' : 'normal'}</h2>
+      <p>
+        {inverted
+          ? `10 yıllık faiz, 3 aylık faizin altında (fark ${num(spread, 2)}). Bu "ters getiri eğrisi", ABD'de son yarım yüzyıldaki resesyonların çoğunu önceden haber verdi — ama zamanlaması aylar, hatta bir yıldan uzun sürebilir. Kesin bir kehanet değil, güçlü bir uyarı sinyalidir.`
+          : `10 yıllık faiz, 3 aylık faizin ${num(spread, 2)} puan üzerinde — yani eğri normal (yukarı eğimli). Fed'in favori resesyon göstergesi olan 10Y−3A farkı pozitif olduğu sürece piyasa yakın vadede bir daralma fiyatlamıyor demektir. Fark daraldıkça / sıfıra yaklaştıkça dikkatle izlenir.`}
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>ABD 10 yıllık tahvil faizi neyi belirler?</h2>
+      <p>
+        10 yıllık ABD Hazine tahvili faizi, küresel finansın <strong>"risksiz getiri"</strong> çıpasıdır.
+        Bir hisse senedinin, bir gayrimenkulün ya da bir gelişen piyasa varlığının "değmesi" için
+        sunması gereken getiri, bu faizle kıyaslanarak belirlenir. Faiz yükseldiğinde güvenli ABD
+        tahvili daha cazip hale gelir; para riskli varlıklardan çıkıp tahvile akar. Faiz düştüğünde
+        tersine, yatırımcı getiri arayışıyla hisseye, altına ve gelişen piyasalara yönelir.
+      </p>
+      <h2>Tahvil faizi yükselince TL ve altına ne olur?</h2>
+      <p>
+        ABD faizi yükselince dolar küresel olarak güçlenir (<a href="/dolar-endeksi">dolar endeksi</a>
+        yukarı gider) ve Türk lirası dahil gelişen piyasa paraları baskı görür; dolar/TL yukarı
+        eğilimli olur. Faiz getirmeyen altın ise, "faizli dolar tahvili dururken neden altın
+        tutayım?" mantığıyla USD cinsinden gerileyebilir — ancak TL bazında altın, kurdaki artış
+        yüzünden yine de yükselebilir. Faiz düştüğünde bu baskı hafifler: TL ve altın için görece
+        rahat bir zemin oluşur.
+      </p>
+      <h2>Fed faizi ile tahvil faizi aynı şey mi?</h2>
+      <p>
+        Hayır. Fed'in belirlediği politika faizi <strong>kısa vadeyi</strong> (gecelik borçlanma)
+        doğrudan etkiler; 10 yıllık tahvil faizini ise piyasadaki alıcı-satıcılar belirler ve bu faiz
+        büyük ölçüde <strong>uzun vadeli büyüme ve enflasyon beklentisini</strong> yansıtır. Bu yüzden
+        Fed faiz indirse bile, enflasyon endişesi varsa 10 yıllık faiz yükselebilir. İkisini birlikte
+        okumak için Fed takvimini de takip etmek gerekir.
+      </p>
+      <p class="cta-line">
+        Daha derine inmek için →
+        <a href="/blog/abd-10-yillik-tahvil-faizi-nedir">ABD 10 yıllık tahvil faizi nedir?</a>,
+        <a href="/blog/verim-egrisi-nedir-resesyon-isareti">verim eğrisi ve resesyon işareti</a>,
+        <a href="/dolar-endeksi">canlı dolar endeksi</a> ve
+        <a href="/fed-faiz-takvimi">Fed faiz takvimi</a> sayfalarına göz atın.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <style>
+    .ust-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .ust-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .ust-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 620px; margin: 0 auto; }
+
+    .hero-value {
+      display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.8rem 1.4rem; box-shadow: var(--shadow-soft);
+      border-top: 4px solid var(--brand-2);
+    }
+    .hero-value.up { border-top-color: #15803d; }
+    .hero-value.down { border-top-color: #b91c1c; }
+    .hero-label { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); text-transform: uppercase; letter-spacing: 0.06em; }
+    .hero-num { font-family: var(--font-serif); font-size: clamp(2.6rem, 1.8rem + 4vw, 4rem); font-weight: 600; color: var(--brand-ink); line-height: 1; }
+    .hero-change { font-size: 1rem; font-weight: 700; }
+    .hero-change em { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.85rem; }
+    .hero-change.up, b.up, td.up { color: #15803d; }
+    .hero-change.down, b.down, td.down { color: #b91c1c; }
+    .hero-change.flat, b.flat, td.flat { color: var(--text-muted); }
+    .hero-context { display: flex; gap: 1.6rem; margin-top: 0.9rem; flex-wrap: wrap; justify-content: center; }
+    .ctx-item { display: flex; flex-direction: column; align-items: center; gap: 0.15rem; }
+    .ctx-label { font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .ctx-val { font-weight: 700; font-size: 1.02rem; }
+    .ctx-val b { font-size: 0.85rem; margin-left: 0.15rem; }
+
+    .updated-strip {
+      display: flex; align-items: center; gap: 0.55rem; margin: 1rem 0 0;
+      background: var(--surface); border-left: 3px solid var(--brand-2);
+      border-radius: var(--radius-sm); padding: 0.65rem 0.9rem; font-size: 0.82rem; color: var(--text-soft);
+    }
+    .updated-strip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-2); flex: none; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .table-intro { color: var(--text-soft); line-height: 1.7; margin: 0 0 1rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .signal-box { margin-top: 2rem; border-radius: var(--radius-lg); padding: 1.2rem 1.3rem; border: 1px solid var(--border); }
+    .signal-box.ok { background: color-mix(in srgb, #15803d 8%, var(--bg-card)); border-left: 4px solid #15803d; }
+    .signal-box.warn { background: color-mix(in srgb, #b91c1c 8%, var(--bg-card)); border-left: 4px solid #b91c1c; }
+    .signal-box h2 { font-size: var(--step-1); margin: 0 0 0.5rem; }
+    .signal-box p { color: var(--text-soft); line-height: 1.7; margin: 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .hide-sm { display: none; }
+    }
+  </style>
+</BaseLayout>

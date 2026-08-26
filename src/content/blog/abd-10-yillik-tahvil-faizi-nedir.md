@@ -123,7 +123,7 @@ Takip ederken şunlara odaklanın:
 - Faizi şekillendiren üç ana güç: Fed politikası, enflasyon beklentileri ve küresel büyüme görünümü.
 - 2 yıllık ile 10 yıllık arasındaki fark (verim eğrisi), ekonominin sağlık durumunu yansıtır; ters dönüş resesyon öncüsü sayılır.
 - Türkiye bağlamında yükselen tahvil faizi: TL değer kaybı, BIST'ten sermaye çıkışı ve carry trade pozisyonlarının kapanması anlamına gelebilir.
-- Platformlar arasında TradingView (US10Y) ve Investing.com ücretsiz, gerçek zamanlı takip imkânı sunar.
+- Güncel değeri ve getiri eğrisini (3 ay–30 yıl) tek sayfada takip etmek için: [ABD tahvil faizleri — canlı getiri eğrisi](/abd-tahvil-faizi). Platformlar arasında TradingView (US10Y) ve Investing.com da ücretsiz, gerçek zamanlı takip imkânı sunar.
 
 ---
 
