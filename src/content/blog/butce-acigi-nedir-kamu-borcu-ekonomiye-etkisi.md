@@ -17,6 +17,23 @@ faq:
     a: "Hayır. Savaş, doğal afet veya kriz dönemlerinde kontrollü bir bütçe açığı ekonomiyi destekleyebilir. Sorun, açığın sürekli ve yönetilemez boyuta ulaşmasıdır."
   - q: "Bütçe açığı yatırımcıları nasıl etkiler?"
     a: "Yüksek bütçe açığı faiz oranlarını yukarı iter, döviz kurunu baskılar ve enflasyon riskini artırır. Bu durum tahvil yatırımcıları için fırsat, mevduat sahipleri için ise reel getiri kaybı anlamına gelebilir."
+shorts:
+  - "Devletin bütçe açığı seni etkilemiyor sanıyorsun."
+  - "Devlet tahvil satarak borçlandığında piyasa faizleri yükselir ve senin kredi maliyetin artar."
+  - "Hazine para basarak açığı kapatırsa para arzı şişer, enflasyon satın alma gücünü eritir."
+  - "Yabancı yatırımcı güveni sarsılınca sermaye kaçar, TL değer kaybeder ve ithalat pahalanır."
+  - "Peki kamu borcu hangi noktada ekonomiyi felç eder? Merak ediyorsan parafomo.com'a gel ve kanala abone ol — her gün seni etkileyen finans bilgisi orada."
+shorts_broll:
+  - "government budget deficit spending chart"
+  - "treasury bond auction interest rate"
+  - "turkish lira currency exchange rate"
+  - "inflation money losing value cash"
+shorts_visuals:
+  - "concept|government debt budget deficit spending"
+  - "concept|treasury bond interest rate rising chart"
+  - "concept|money printing inflation cash pile"
+  - "object|turkish lira banknotes"
+  - "concept|financial education subscribe smartphone screen"
 ---
 
 Devlet bu ay bordro ödemeli, yol yapmalı, hastane işletmeli — ama kasası yetersiz. Toplanan vergiler harcamaları karşılamıyor. Bütçe açığı tam da bu anda doğar. Peki bu açık nasıl kapatılır, kimin cebinden çıkar ve yatırımcı olarak seni nasıl etkiler? Bu yazıda bütçe açığı nedir sorusunu tüm boyutlarıyla ele alıyoruz.
