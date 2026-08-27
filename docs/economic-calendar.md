@@ -1,6 +1,6 @@
 # Ekonomik Takvim (otomatik)
 
-> Son güncelleme: 2026-08-26 · `scripts/fetch-economic-calendar.py` tarafından üretilir. ELLE DÜZENLEME.
+> Son güncelleme: 2026-08-27 · `scripts/fetch-economic-calendar.py` tarafından üretilir. ELLE DÜZENLEME.
 > Kaynaklar: Investing.com (TR + küresel, birincil), TCMB (faiz kararı), yedek: ForexFactory + TÜİK kuralı.
 
 İçerik üreticisi için: yaklaşan **🔴 High** etkili bir TR/küresel olay 1-3 gün içindeyse,
@@ -10,8 +10,6 @@ o olayın `hook`'una göre bir **explainer** yazısını sıraya al (omurga ever
 
 | Tarih | Gün | Saat | Bölge | Etki | Olay | İçerik fırsatı |
 |-------|-----|------|-------|------|------|----------------|
-| 2026-08-26 | Çarşamba | 12:30pm | 🇺🇸 | 🔴 High | Core PCE Price Index m/m | ABD çekirdek enflasyon (PCE) — Fed'in tercih ettiği gösterge, dolar yönü. |
-| 2026-08-26 | Çarşamba | 12:30pm | 🇺🇸 | 🔴 High | Prelim GDP q/q | Büyüme verisi — küresel görünüm. |
 | 2026-08-28 | Cuma | 2:00pm | 🇺🇸 | 🔴 High | Fed Chairman Warsh Speaks |  |
 | 2026-08-28 | Cuma | 2:00pm | 🇺🇸 | 🔴 High | Prelim Benchmark Payrolls Revision |  |
 | 2026-09-03 | Perşembe | 10:00 | 🇹🇷 | 🔴 High | TÜİK enflasyon (TÜFE) verisi | Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı. |
