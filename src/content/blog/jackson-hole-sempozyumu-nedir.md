@@ -31,6 +31,8 @@ Her yılın ağustos sonunda küresel finans piyasaları tek bir yere odaklanır
 
 Jackson Hole Ekonomi Sempozyumu, her yıl ağustos ayının son haftasında ABD'nin Wyoming eyaletindeki Jackson Lake Lodge'da düzenlenen uluslararası ekonomi konferansıdır. Toplantıyı Kansas City Federal Reserve Bankası organize eder; ancak asıl ağırlığı Fed Genel Merkezi ve diğer büyük merkez bankalarının katılımı verir.
 
+Bu yılın kesin tarihleri, konuşmacı programı ve saatleri için [Jackson Hole 2026 ne zaman yapıldı ve Warsh'ın konuşması ne zaman?](/blog/jackson-hole-2026-ne-zaman-warsh-konusmasi/) yazımıza bakabilirsiniz; bu rehber ise sempozyumun ne olduğuna ve piyasalara etkisine odaklanıyor.
+
 Sempozyumun resmi adı "Economic Policy Symposium" olsa da basın ve piyasalar onu tutunduğu kasabadan "Jackson Hole" olarak anar. Merkez bankacıları, akademisyenler ve politika yapıcıların bir araya geldiği bu platform; küresel para politikasının resmi olmayan ama son derece etkili bir tartışma zeminidir.
 
 1978'den bu yana her yıl gerçekleştirilen sempozyum, özellikle 1980'lerden itibaren Fed'in politika yönünü sinyallemek için kullandığı kritik bir sahne haline geldi.

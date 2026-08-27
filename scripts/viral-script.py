@@ -123,7 +123,9 @@ FORMAT: %(fmt_name)s
 %(avoid_block)s%(facts_block)s
 %(chart_instruction)s
 Kurallar:
-- hook: EN FAZLA 9 kelime. Şu kalıplardan BİRİNİ kullan (kelimesi kelimesine kopyalama, konuya uyarla):
+- hook: EN FAZLA 7 kelime. ŞİMDİKİ ZAMAN + İDDİALI DÜZ CÜMLE (bold-claim) tercih et — SORU kancası
+  ("...mı?") daha zayıf tutuyor; kaçınılmaz değilse soru sorma, iddiayı DÜZ söyle. Şu kalıplardan
+  BİRİNİ kullan (kelimesi kelimesine kopyalama, konuya uyarla):
     • Çarpıcı sayı:   "100 lira 3 ayda 74 liraya düştü."
     • Sezgi-dışı:     "Faiz kazandırmıyor, seni fakirleştiriyor."
     • Açık döngü:     "Bankanın sana söylemediği tek şey var."
@@ -132,6 +134,8 @@ Kurallar:
   "inanılmaz", "herkes kaçırıyor", "aman dikkat". Tıklama tuzağı değil: söz verdiğini içerikte KARŞILA.
 - 3 beat YÜKSELEREK ilerlesin (izleyiciyi sonuna kadar tutacak akış):
     beat 1: kancadaki merakı DERİNLEŞTİR — neden/nasıl olduğunu, yeni bir bilgiyle aç.
+            KÖPRÜ: kancanın açtığı döngüye HEMEN somut bir ödül-kırıntısı ver (izleyici 1. saniyede
+            "cevap geliyor" hissetsin), açıklamayı sona saklama; boşlukta bekletme = kaydırma.
     beat 2: gerilim/çelişki — "ama" ile beklenmedik bir dönüş ya da çarpıcı bir rakam getir.
     beat 3: ÖDÜL — net çıkarım + izleyicinin cebine dokunan somut sonuç/eylem.
   Her beat 11-15 kelime (KISA tut — toplam süreyi 33 sn'nin altında bırak), tek başına anlaşılır,

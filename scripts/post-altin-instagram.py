@@ -97,7 +97,7 @@ SECONDARY_TOOLS = [
     "💵 Dolar endeksi (DXY) şu an kaç? → parafomo.com/dolar-endeksi",
     "📉 ABD 10 yıllık tahvil faizi (altını yönlendirir) → parafomo.com/abd-tahvil-faizi",
     "🪙 Altının kaç TL eder? Hesapla → parafomo.com/altin-hesaplama",
-    "🏛️ Sıradaki Fed kararı ne zaman? (16 Eylül) → parafomo.com/fed-faiz-takvimi",
+    "🏛️ Sıradaki Fed kararına kaç gün kaldı? → parafomo.com/fed-faiz-takvimi",
     "🚀 Güncel halka arzlar ve tarihleri → parafomo.com/halka-arz",
 ]
 
