@@ -1,23 +1,9 @@
 {
-  "updated": "2026-08-26T18:15+00:00",
+  "updated": "2026-08-27T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 42,
+  "count": 41,
   "items": [
-    {
-      "company": "Bakırcı Gayrimenkul Yatırım Ortaklığı A.Ş.",
-      "bist_code": "BKRGY",
-      "slug": "bakirci-gayrimenkul-yatirim-ortakligi-a-s",
-      "link": "https://halkarz.com/bakirci-gayrimenkul-yatirim-ortakligi-a-s/",
-      "date_text": "24-25-26 Ağustos 2026",
-      "start": "2026-08-24",
-      "end": "2026-08-26",
-      "status": "Devam Ediyor",
-      "price": "12,93 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "167.000.000 Lot",
-      "broker": "İntegral Yatırım Menkul Değerler A.Ş."
-    },
     {
       "company": "İntetra Teknoloji ve Bilişim Hizmetleri A.Ş.",
       "bist_code": "INTET",
@@ -425,6 +411,20 @@
       "broker": "Ziraat Yatırım Menkul Kıymetler A.Ş. İntegral Yatırım Menkul Değerler A.Ş."
     },
     {
+      "company": "Bakırcı Gayrimenkul Yatırım Ortaklığı A.Ş.",
+      "bist_code": "BKRGY",
+      "slug": "bakirci-gayrimenkul-yatirim-ortakligi-a-s",
+      "link": "https://halkarz.com/bakirci-gayrimenkul-yatirim-ortakligi-a-s/",
+      "date_text": "24-25-26 Ağustos 2026",
+      "start": "2026-08-24",
+      "end": "2026-08-26",
+      "status": "Tamamlandı",
+      "price": "12,93 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "167.000.000 Lot",
+      "broker": "İntegral Yatırım Menkul Değerler A.Ş."
+    },
+    {
       "company": "Türker Vangölü Enerji Yatırım A.Ş.",
       "bist_code": "VEYAS",
       "slug": "turker-vangolu-enerji-yatirim-a-s",
@@ -577,20 +577,6 @@
       "distribution": "Eşit Dağıtım",
       "lot": "66.944.955 Lot",
       "broker": "Garanti Yatırım Menkul Kıymetler A.Ş. Halk Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "İsvea Seramik ve Banyo Ürünleri Sanayi A.Ş.",
-      "bist_code": "ISVEA",
-      "slug": "isvea-seramik-ve-banyo-urunleri-sanayi-a-s",
-      "link": "https://halkarz.com/isvea-seramik-ve-banyo-urunleri-sanayi-a-s/",
-      "date_text": "1-2-3 Temmuz 2026",
-      "start": "2026-07-01",
-      "end": "2026-07-03",
-      "status": "Tamamlandı",
-      "price": "20,90 TL",
-      "distribution": "Eşit Dağıtım",
-      "lot": "67.000.000 Lot",
-      "broker": "Halk Yatırım Menkul Değerler A.Ş. Ahlatcı Yatırım Menkul Değerler A.Ş."
     }
   ]
 }
