@@ -4,6 +4,82 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-27 — Jackson Hole 2026 Ne Zaman? Warsh Konuşması ve Eylül Fed Kararına Etkisi
+
+**Yayınlanan yazı:**
+[Jackson Hole 2026 Ne Zaman? Warsh Konuşması ve Eylül Fed Kararına Etkisi](https://parafomo.com/blog/jackson-hole-2026-ne-zaman-warsh-konusmasi/)
+
+**Konu seçim gerekçesi:** GSC'nin en üst fırsatı "jackson hole ne zaman" (54 gösterim, sıra 9.3) + takvim olayı: 28 Ağustos 🔴 High — Fed Başkanı Warsh Konuşması + Prelim Benchmark Payrolls Revision. Learning report'ta "jackson-hole-sempozyumu-nedir" zaten #1 blog yazısı — cluster derinleşme perfect fit.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**
+Jackson Hole 2026 ne zaman bitti, peki 28 Ağustos neden daha önemli?
+
+Yarın iki bomba birden patlıyor: Fed Başkanı Warsh konuşması + yıllık istihdam revizyonu.
+
+Hangisi dolar/TL'yi daha çok sarsar? 🧵
+
+**Tweet 2:**
+📅 Jackson Hole Sempozyumu: 21-23 Ağustos ✅ Bitti
+
+Ama Fed Başkanı Warsh'ın 28 Ağustos'ta ayrı bir konuşması var.
+Eylül'de faiz indiriminin olup olmayacağını belirleyecek son büyük sinyal.
+
+**Tweet 3:**
+Aynı gün Prelim Benchmark Payrolls Revision açıklanıyor.
+
+Bu ne demek? ABD Çalışma Bakanlığı geçmiş 12 aylık istihdam rakamlarını yeniden hesaplıyor.
+
+2024'te: -818.000 iş silindi. Dolar battı, altın fırladı. 📉
+
+**Tweet 4:**
+Senaryo tablosu:
+
+🟢 Dovish Warsh + büyük aşağı revizyon → dolar zayıflar, altın yükselir, TL rahatlar
+🔴 Hawkish Warsh + yukarı revizyon → dolar güçlenir, TL baskı altına girer
+
+**Tweet 5:**
+Türk yatırımcısı için 3 pratik adım:
+
+1️⃣ TSİ 21:00'i takvine işaretle
+2️⃣ Kaldıraçlı pozisyonları küçült
+3️⃣ İlk 30 dk tepkisine bakma — metni oku, sonra hareket et
+
+Detaylı rehber: parafomo.com/blog/jackson-hole-2026-ne-zaman-warsh-konusmasi/
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Başlık:** "28 Ağustos = Piyasaların en gergin günü 👀"
+
+**Post metni:**
+Jackson Hole bitti ama iş bitmedi.
+
+Yarın AYNI ANDA iki kritik olay:
+• Fed Başkanı Warsh konuşması (Eylül faiz kararı için son büyük sinyal)
+• Yıllık ABD istihdam revizyonu (2024'te -818K işi silmişti!)
+
+Senaryo basit:
+↘️ İstihdam aşağı revize + Warsh gevşek konuşursa → dolar zayıflar, altın yükselir, TL rahatlar
+↗️ İstihdam güçlü çıkar + Warsh sert konuşursa → dolar güçlenir, TL baskı altına girer
+
+Türk yatırımcısı için hazırlık rehberi linkte 👆
+
+#jacksonhole #fed #dolar #tl #altin #faiz #ekonomi #yatirim
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **X thread'ini paylaş** — sabah 09:00-10:00 arası ideal (yarınki etkinlik öncesi ilgi en yüksek).
+2. **Instagram post'unu yayınla** — öğleden sonra 15:00-17:00 arası; yarın 28 Ağustos'ta da story olarak hatırlatma yapabilirsin ("Bugün piyasalar için kritik gün!").
+
+---
+
 ## 2026-08-26 — Döviz Rezervleri Nedir? Merkez Bankası Rezervlerini Anlamak İçin Rehber
 
 **Yayınlanan yazı:**

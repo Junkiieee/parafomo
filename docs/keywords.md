@@ -79,6 +79,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] Jackson Hole 2026 Ne Zaman? Warsh Konuşması ve Eylül Fed Kararına Etkisi — `jackson-hole-2026-ne-zaman-warsh-konusmasi` (GSC fırsatı: "jackson hole ne zaman" — gösterim 54, sıra 9.3; learning report #1 yazı jackson-hole-sempozyumu-nedir'in cluster derinleşme parçası; takvim: 28 Ağustos Fed Başkanı Warsh Konuşması + Prelim Benchmark Payrolls Revision 🔴; "ne zaman" arama niyetini karşılayan zamanlı yazı; 27 Ağustos 2026)
+
 - [x] Döviz Rezervleri Nedir? Merkez Bankası Rezervlerini Anlamak İçin Rehber — `doviz-rezervleri-nedir-merkez-bankasi-rezervleri` (backlog ilk [ ] konusu: evergreen ekonomi; "döviz rezervleri nedir" sorgusu; brüt vs net rezerv + swap etkisi + TCMB analizi; cari açık + döviz kuru + TCMB faiz cluster'ını tamamlayan makro gösterge rehberi; 26 Ağustos 2026)
 
 - [x] Bütçe Açığı Nedir? Kamu Borcu ve Ekonomiye Etkisi — `butce-acigi-nedir-kamu-borcu-ekonomiye-etkisi` (backlog ilk [ ] konusu: evergreen ekonomi; "bütçe açığı nedir" sorgusu; cari açık + tahvil + faiz + döviz kuru cluster'ını tamamlayan kamu maliyesi rehberi; ikiz açık dinamiği + açık/GSYİH oranı tablosu; 25 Ağustos 2026)
