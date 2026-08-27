@@ -17,6 +17,23 @@ faq:
     a: "İki büyük veri birden açıklandığında volatilite genellikle artar. Kaldıraçlı pozisyonlarınızı inceleyin, dolar/TL hareketlerine hazırlıklı olun. Payrolls revizyonu ve Warsh konuşması aynı gün geldiğinde piyasanın ilk tepkisi yanıltıcı olabilir; sindirilmiş yorumları bekleyin."
   - q: "Jackson Hole her yıl ne zaman yapılır?"
     a: "Kansas City Fed'in düzenlediği bu sempozyum genellikle ağustos ayının son tam haftasında (21-24 Ağustos civarı) yapılır. Fed Başkanı'nın açılış konuşması bu haftanın en kritik saatini oluşturur."
+shorts:
+  - "28 Ağustos'ta piyasalar neden nefesini tutacak?"
+  - "Jackson Hole, dünya merkez bankacılarının para politikası kararlarını açıkladığı yıllık kritik zirvedir."
+  - "O gün Warsh konuşurken yıllık istihdam revizyonu da eş zamanlı açıklanacak."
+  - "Revizyon düşük çıkarsa Eylül faiz indirimi güçlenir, dolar zayıflar, altın yükselir."
+  - "Eylül'de faiz gerçekten düşecek mi? Cevap için kanala abone ol, günlük analizler parafomo.com'da."
+shorts_broll:
+  - "Federal Reserve interest rate decision"
+  - "Jackson Hole economic symposium"
+  - "US dollar exchange rate chart"
+  - "stock market reaction news"
+shorts_visuals:
+  - "concept|stock market traders watching screen nervously"
+  - "place|Jackson Lake Lodge Wyoming"
+  - "person|Kevin Warsh"
+  - "gold|gold bullion bars price rising"
+  - "concept|subscribe notification bell social media"
 ---
 
 **Jackson Hole 2026 ne zaman?** Kısa cevap: Ağustos'un son haftası — ama asıl patlama noktası 28 Ağustos Cuma. O gün hem Fed Başkanı Warsh'ın kritik konuşması hem de yıllık çalışma revizyonu (Benchmark Payrolls Revision) piyasalara düşecek. Bu yazıda 2026 Jackson Hole takvimine bakıyor, Warsh'ın gündemini çözümlüyor ve Eylül faiz kararı için ne anlama geldiğini adım adım açıklıyoruz.
