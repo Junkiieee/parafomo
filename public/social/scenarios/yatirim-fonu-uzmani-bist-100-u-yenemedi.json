@@ -1,0 +1,59 @@
+{
+  "slug": "yatirim-fonu-uzmani-bist-100-u-yenemedi",
+  "title": "Yatırım Fonu Uzmanı BIST 100'ü Yenemedi",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Aktif yatırım fonundaki uzman piyasayı yönetir ve kazandırır sanıyorsun. Ama büyük çoğunluğu BIST 100'ün gerisinde kalırken yönetim ücreti yine de her yıl kesilmeye devam ediyor.",
+  "tags": [
+    "yatırım fonu",
+    "BIST 100",
+    "endeks fonu",
+    "aktif fon",
+    "fon yönetimi",
+    "türkiye finans",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Paranı uzmana verdin, endeks seni geçti.",
+      "visual": {
+        "type": "concept",
+        "query": "fund manager office professional desk"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Türkiye'deki aktif fonların büyük çoğunluğu son beş yılda BIST 100'ün getirisini yakalayamadı.",
+      "visual": {
+        "type": "place",
+        "query": "Borsa İstanbul"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama başarısız olsalar bile yönetim ücreti her yıl yüzde bir buçuk kesildi, duraksatmadan.",
+      "visual": {
+        "type": "concept",
+        "query": "bank statement fee deduction document money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Endeks fonu al: BIST 100'ü takip eder, masrafı aktif fonun beşte biri.",
+      "visual": {
+        "type": "concept",
+        "query": "stock market index chart screen blue simple"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Hangi endeks fonunda masraf en düşük, onu da mercek altına alacağız. ParaFOMO'ya abone ol — her gün bir finans gerçeği, hiç doldurma yok.",
+      "visual": {
+        "type": "concept",
+        "query": "financial analysis charts mobile phone"
+      }
+    }
+  ]
+}
