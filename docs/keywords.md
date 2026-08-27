@@ -77,7 +77,20 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Bütçe açığı nedir? Kamu borcu ve ekonomiye etkisi — `Ekonomi` — hedef: "bütçe açığı nedir"
 - [x] Döviz rezervleri nedir? Merkez bankası rezervleri ne anlama gelir? — `Ekonomi` — hedef: "döviz rezervleri nedir"
 
+- [x] Nasdaq 100 Nedir? ABD Teknoloji Borsasına Türkiye'den Nasıl Yatırım Yapılır? — `Borsa` — hedef: "nasdaq 100 nedir"
+- [ ] Russell 2000 Nedir? ABD Küçük Şirket Endeksi ve Yatırımcı Rehberi — `Borsa` — hedef: "russell 2000 nedir"
+- [ ] MSCI Gelişmekte Olan Piyasalar Endeksi Nedir? Türkiye'nin Ağırlığı ve Etkisi — `Yatırım` — hedef: "msci gelişmekte olan piyasalar nedir"
+- [ ] Parasal Genişleme (QE) Nedir? Merkez Bankası Para Basma ve Piyasa Etkisi — `Ekonomi` — hedef: "parasal genişleme nedir"
+- [ ] Borsa Neden Düşer? Piyasa Düzeltmesi ve Borsa Çöküşü Arasındaki Fark — `Borsa` — hedef: "borsa neden düşer"
+- [ ] Temettü Verimi (Dividend Yield) Nedir? Yüksek Temettü Hisseleri Nasıl Seçilir? — `Borsa` — hedef: "temettü verimi nedir"
+- [ ] Enflasyon Korumalı Tahvil (TIPS) Nedir? Reel Getiri ve Yatırım Rehberi — `Yatırım` — hedef: "tips nedir enflasyon korumalı tahvil"
+- [ ] Hisse Senedi Piyasa Değeri Nedir? Large Cap, Mid Cap, Small Cap Farkı — `Borsa` — hedef: "piyasa değeri nedir hisse senedi"
+- [ ] Volatilite Nedir? Standart Sapma ve Sharpe Oranı ile Risk Ölçümü — `Yatırım` — hedef: "volatilite nedir yatırım"
+- [ ] Gayrimenkul mi Borsa mı? 2026'da Hangi Yatırım Daha Mantıklı? — `Yatırım` — hedef: "gayrimenkul mi borsa mı"
+
 ## Yayınlananlar (otomasyon buraya ekler)
+
+- [x] Nasdaq 100 Nedir? ABD Teknoloji Borsasına Türkiye'den Nasıl Yatırım Yapılır? — `nasdaq-100-nedir-teknoloji-borsasina-yatirim` (backlog genişletme: evergreen borsa; "nasdaq 100 nedir" sorgusu; S&P 500 + Dow Jones + ETF cluster'ını tamamlayan üçüncü büyük ABD endeks rehberi; finans dışı Top 100 şirket + QQQ/QQQM karşılaştırması + Tefas alternatifi; 27 Ağustos 2026)
 
 - [x] Jackson Hole 2026 Ne Zaman? Warsh Konuşması ve Eylül Fed Kararına Etkisi — `jackson-hole-2026-ne-zaman-warsh-konusmasi` (GSC fırsatı: "jackson hole ne zaman" — gösterim 54, sıra 9.3; learning report #1 yazı jackson-hole-sempozyumu-nedir'in cluster derinleşme parçası; takvim: 28 Ağustos Fed Başkanı Warsh Konuşması + Prelim Benchmark Payrolls Revision 🔴; "ne zaman" arama niyetini karşılayan zamanlı yazı; 27 Ağustos 2026)
 

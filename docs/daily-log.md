@@ -4,6 +4,88 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-27 — Nasdaq 100 Nedir? ABD Teknoloji Borsasına Türkiye'den Nasıl Yatırım Yapılır?
+
+**Yayınlanan yazı:**
+[Nasdaq 100 Nedir? ABD Teknoloji Borsasına Türkiye'den Nasıl Yatırım Yapılır?](https://parafomo.com/blog/nasdaq-100-nedir-teknoloji-borsasina-yatirim/)
+
+**Konu seçim gerekçesi:** Backlog tükendi; 10 yeni konu eklendi. Nasdaq 100, S&P 500 ve Dow Jones ile birlikte "büyük üç ABD endeksi" serisini tamamlayan doğal üçüncü parçadır. "nasdaq 100 nedir" sorgusu yüksek arama hacmine sahip; mevcut etf-nedir, etf-nasil-alinir, sp500-nedir ve dow-jones-nedir yazılarıyla güçlü iç link ağı oluşturuyor.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+**Tweet 1 (kanca):**
+S&P 500 ve Dow Jones'u duydun. Ama asıl teknoloji endeksi hangisi? 🧵
+
+Apple, Microsoft, Nvidia, Amazon — hepsinin bir arada olduğu endeks: Nasdaq 100.
+İşte bilmen gereken her şey 👇
+
+**Tweet 2:**
+📌 Nasdaq 100 nedir?
+
+ABD'nin Nasdaq borsasındaki en büyük 100 şirketi (finans hariç) kapsayan endeks.
+~%55'i teknoloji sektörü.
+
+S&P 500'den farkı: daha az şirket, daha fazla teknoloji = daha yüksek volatilite.
+
+**Tweet 3:**
+İlk 10 şirket endeksin yarısını oluşturuyor:
+
+🥇 Apple ~9%
+🥈 Microsoft ~8%
+🥉 Nvidia ~7%
+4. Amazon ~6%
+5. Meta ~5%
+
+1 haberde 3 şirket sarsılsa endeks de sarsılır.
+
+**Tweet 4:**
+Türkiye'den nasıl yatırım yapılır?
+
+2 yol:
+1️⃣ Tefas → Yurt içi yatırım fonları (kolay, TL ile)
+2️⃣ Interactive Brokers → QQQ veya QQQM ETF (düşük maliyet: %0.15-0.20/yıl)
+
+Her iki yolda da kur riski var. Dolar/TL takip etmen şart.
+
+**Tweet 5:**
+⚠️ 2022'de Fed faiz artırınca Nasdaq 100 %33 düştü (S&P 500: %20)
+⚠️ Teknoloji yoğunluğu = faize aşırı duyarlı
+
+Ama uzun vadede büyüme dönemlerinde güçlü. Kur + çeşitlendirme + DCA = doğru strateji.
+
+Tam rehber: parafomo.com/blog/nasdaq-100-nedir-teknoloji-borsasina-yatirim/
+
+---
+
+### Instagram Post / Carousel Metni
+
+**Başlık:** "Nasdaq 100'ü hiç merak ettin mi? İşte içinde ne var 👇"
+
+**Post metni:**
+Apple + Microsoft + Nvidia + Amazon + Meta = Nasdaq 100 🚀
+
+ABD'nin en güçlü teknoloji endeksini Türkiye'den alabileceğini biliyor muydun?
+
+QQQ veya QQQM adlı ETF'lerle ya da Tefas üzerinden yurt içi fonlarla yatırım mümkün.
+
+Ama dikkat: S&P 500'den daha oynak. 2022'de %33 düştü. Uzun vadeli düşün 📊
+
+Tüm karşılaştırma tablosu ve adım adım rehber:
+👉 parafomo.com/blog/nasdaq-100-nedir-teknoloji-borsasina-yatirim/
+
+#nasdaq100 #etf #abdborsa #yatırım #teknolojihisseleri #parafomo
+
+---
+
+### ✅ Bugün yapman gerekenler
+
+1. **Sosyal medyayı paylaş:** Yukarıdaki X thread'ini ve Instagram postunu yayınla (Jackson Hole thread'i sabahtan paylaşıldıysa, bu akşam Nasdaq 100 içeriğini paylaşabilirsin).
+2. **Toplulukta paylaş:** Reddit r/Borsa veya ilgili bir Telegram/Discord finans grubunda "Nasdaq 100'e Türkiye'den yatırım nasıl yapılır?" başlığıyla değer katarak bağlantıyı paylaş.
+
+---
+
 ## 2026-08-27 — Jackson Hole 2026 Ne Zaman? Warsh Konuşması ve Eylül Fed Kararına Etkisi
 
 **Yayınlanan yazı:**
