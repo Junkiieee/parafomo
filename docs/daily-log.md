@@ -4,6 +4,64 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-28 — Russell 2000 Nedir? ABD Küçük Şirket Endeksi ve Yatırımcı Rehberi
+
+**Yayınlanan yazı:**
+[Russell 2000 Nedir? ABD Küçük Şirket Endeksi ve Yatırımcı Rehberi](https://parafomo.com/blog/russell-2000-nedir/)
+
+**Konu seçim gerekçesi:** Jackson Hole/Warsh etkinlikleri dün ve önceki gün iki yazıyla kaplandı. Tüm GSC fırsatları yazılmış. Backlog'un ilk `[ ]` maddesi olan Russell 2000, S&P 500 + Dow Jones + Nasdaq 100 ABD endeks kümesini tamamlayan missing piece konumundaydı.
+
+---
+
+**X (Twitter) Thread Taslağı:**
+
+🧵 Russell 2000 nedir, neden önemlidir ve Türkiye'den nasıl yatırım yapılır?
+
+1/ S&P 500'ü herkes bilir. Ama piyasa analistleri ABD ekonomisinin GERÇEK sağlığını ölçmek için başka bir endekse bakar: Russell 2000.
+
+2/ Russell 2000 = ABD'nin küçük şirketlerinin endeksi. 300M–3B dolar piyasa değerinde 2000 şirket. Gelirlerinin %70-80'i ABD iç pazarından → küresel riskten görece bağımsız.
+
+3/ Neden önemli? Çünkü küçük şirketler değişken faizli borç kullanır. Fed faiz indirirse → onların faiz gideri düşer → en çok fayda sağlayan bu segment.
+
+4/ S&P 500 vs Russell 2000 performansı:
+- Faiz artışında: Russell 2000 daha sert düşer
+- Ekonomik toparlanmada: Russell 2000 önce yükselir
+→ 2009 toparlanmasında S&P 500'ü 15 puan geçti.
+
+5/ Türkiye'den nasıl yatırım yapılır?
+- Tefas üzerinden small-cap yatırım fonları
+- IBKR üzerinden IWM ETF (%0.19 yönetim ücreti) veya VTWO (%0.10)
+
+Detaylar: parafomo.com/blog/russell-2000-nedir/ ↗
+
+---
+
+**Instagram Carousel / Post Metni:**
+
+📊 Russell 2000 nedir?
+
+Haberlerde S&P 500 ve Nasdaq'ı çok duyarsın. Ama ABD ekonomisinin gerçek nabzını tutan endeks Russell 2000.
+
+🔍 2000 küçük şirket
+💼 Gelirin %70-80'i ABD iç pazarından
+📉 Fed faiz artırınca en çok bu vurulur
+📈 Toparlanmada en önce bu fırlar
+
+🇹🇷 Türkiye'den IWM ETF ile yatırım yapılabilir.
+
+Detaylı rehber linkde 👆
+
+#russell2000 #abdBorsası #etf #yatırım #borsa #parafomo #küçükŞirketler #iwm #hisseSenedi #finansOkur
+
+---
+
+**Bugün senin yapman gerekenler:**
+
+1. Yukarıdaki X thread'ini ve Instagram postunu hesaplarında paylaş (link: parafomo.com/blog/russell-2000-nedir/).
+2. 1-2 Türk finans/borsa grubunda (Reddit r/Turkey, Ekşi Sözlük, Telegram finans grupları) yazıyı değer katarak paylaş — özellikle "Russell 2000 ne demek?" diye soran biri varsa cevap olarak bırak.
+
+---
+
 ## 2026-08-27 — Nasdaq 100 Nedir? ABD Teknoloji Borsasına Türkiye'den Nasıl Yatırım Yapılır?
 
 **Yayınlanan yazı:**

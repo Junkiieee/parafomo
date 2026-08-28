@@ -1,0 +1,59 @@
+{
+  "slug": "halka-arzda-herkes-kazanmiyor",
+  "title": "Halka Arzda Herkes Kazanmıyor",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Her halka arzın para kazandırdığı yanılgısını ve kurumsal-bireysel yatırımcı asimetrisini somut verilerle kırıyor.",
+  "tags": [
+    "halka arz",
+    "ipo",
+    "borsa",
+    "yatırım",
+    "hisse senedi",
+    "bist",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Her halka arz kazandırır sanıyorsun.",
+      "visual": {
+        "type": "place",
+        "query": "Borsa İstanbul"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "BIST'te halka arz sayısı patladı. İlk gün yükseliş gerçek — ama birkaç saatte bitiyor.",
+      "visual": {
+        "type": "concept",
+        "query": "stock market IPO opening bell celebration trading floor"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kurumsal yatırımcı ilk saatte satar, bireysel yatırımcı bekler. Çoğu hisse arz fiyatının altına iniyor.",
+      "visual": {
+        "type": "concept",
+        "query": "stock chart falling red bear market decline"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kazanmak için ya ilk saatte sat ya şirketi önceden incele. Tesadüf yok, strateji var.",
+      "visual": {
+        "type": "concept",
+        "query": "investor analyzing financial documents research desk"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Hangi hisse gerçek değer taşıyor, bunu anlamak istiyorsan abone ol — her gün net finans gerçeği.",
+      "visual": {
+        "type": "concept",
+        "query": "financial charts analysis laptop screen"
+      }
+    }
+  ]
+}
