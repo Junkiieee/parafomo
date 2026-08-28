@@ -1,23 +1,9 @@
 {
-  "updated": "2026-08-27T18:15+00:00",
+  "updated": "2026-08-28T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 41,
+  "count": 40,
   "items": [
-    {
-      "company": "İntetra Teknoloji ve Bilişim Hizmetleri A.Ş.",
-      "bist_code": "INTET",
-      "slug": "intetra-teknoloji-ve-bilisim-hizmetleri-a-s",
-      "link": "https://halkarz.com/intetra-teknoloji-ve-bilisim-hizmetleri-a-s/",
-      "date_text": "26-27 Ağustos 2026",
-      "start": "2026-08-26",
-      "end": "2026-08-27",
-      "status": "Devam Ediyor",
-      "price": "53,60 TL",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "40.000.000 Lot",
-      "broker": "Bulls Yatırım Menkul Değerler A.Ş."
-    },
     {
       "company": "Hedef Grup Satış Dağıtım San. ve Tic. A.Ş.",
       "bist_code": "",
@@ -411,6 +397,20 @@
       "broker": "Ziraat Yatırım Menkul Kıymetler A.Ş. İntegral Yatırım Menkul Değerler A.Ş."
     },
     {
+      "company": "İntetra Teknoloji ve Bilişim Hizmetleri A.Ş.",
+      "bist_code": "INTET",
+      "slug": "intetra-teknoloji-ve-bilisim-hizmetleri-a-s",
+      "link": "https://halkarz.com/intetra-teknoloji-ve-bilisim-hizmetleri-a-s/",
+      "date_text": "26-27 Ağustos 2026",
+      "start": "2026-08-26",
+      "end": "2026-08-27",
+      "status": "Tamamlandı",
+      "price": "53,60 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "40.000.000 Lot",
+      "broker": "Bulls Yatırım Menkul Değerler A.Ş."
+    },
+    {
       "company": "Bakırcı Gayrimenkul Yatırım Ortaklığı A.Ş.",
       "bist_code": "BKRGY",
       "slug": "bakirci-gayrimenkul-yatirim-ortakligi-a-s",
@@ -563,20 +563,6 @@
       "distribution": "Eşit Dağıtım",
       "lot": "89.000.000 Lot",
       "broker": "Tera Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Saat ve Saat San. ve Tic. A.Ş.",
-      "bist_code": "SSAAT",
-      "slug": "saat-ve-saat-san-ve-tic-a-s",
-      "link": "https://halkarz.com/saat-ve-saat-san-ve-tic-a-s/",
-      "date_text": "6-7-8 Temmuz 2026",
-      "start": "2026-07-06",
-      "end": "2026-07-08",
-      "status": "Tamamlandı",
-      "price": "56,00 TL",
-      "distribution": "Eşit Dağıtım",
-      "lot": "66.944.955 Lot",
-      "broker": "Garanti Yatırım Menkul Kıymetler A.Ş. Halk Yatırım Menkul Değerler A.Ş."
     }
   ]
 }
