@@ -1,0 +1,59 @@
+{
+  "slug": "dolar-gucleniyor-warsh-in-tl-ye-maliyeti",
+  "title": "Dolar Güçleniyor — Warsh'ın TL'ye Maliyeti",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Fed'in şahin adayı Warsh konuştu; piyasalar dolarda güçlenmeyi fiyatladı. TL birikimcisi için bu ne anlama geliyor?",
+  "tags": [
+    "fed",
+    "dolar",
+    "warsh",
+    "TL",
+    "faiz",
+    "kur",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Warsh konuştu — TL'nin değeri eriyor.",
+      "visual": {
+        "type": "person",
+        "query": "Kevin Warsh"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Warsh, Fed'in en güçlü şahin adayı; faizleri yüksek tutmayı savunuyor — bu dolar için net bir güç sinyali.",
+      "visual": {
+        "type": "place",
+        "query": "Federal Reserve building Washington"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama güçlü dolar döneminde TL değer kaybeder — market arabasındaki fiyat artışı bunu her seferinde yansıtıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "supermarket cart grocery prices inflation"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Sonuç: Warsh'ın her konuşması dolarda fiyatlanıyor — TL'de beklemek sessizce maliyet demek.",
+      "visual": {
+        "type": "concept",
+        "query": "dollar bill Turkish lira currency exchange screen"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Warsh gerçekten Fed başkanı olursa dolar nereye gider? Bunu analiz edeceğim — her gün net finans için abone ol.",
+      "visual": {
+        "type": "person",
+        "query": "Kevin Warsh"
+      }
+    }
+  ]
+}
