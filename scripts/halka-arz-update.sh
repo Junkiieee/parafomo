@@ -24,14 +24,17 @@ echo "[$(date -u '+%F %T UTC')] Halka arz güncelleme başladı"
 # Veriyi çek (ağ hatasında mevcut JSON'u korur, çökmez)
 python3 "$REPO/scripts/fetch-halka-arz.py" 2>&1 | sed 's/^/  /'
 
+# Getiri analizini güncelle (Yahoo güncel fiyatları; ağ hatasında mevcut depoyu korur)
+python3 "$REPO/scripts/ipo-returns.py" 2>&1 | sed 's/^/  /'
+
 # Değişiklik var mı? (hem build verisi hem public kopya)
-if [ -z "$(git status --porcelain data/halka-arz.json public/halka-arz.json)" ]; then
+if [ -z "$(git status --porcelain data/halka-arz.json public/halka-arz.json data/halka-arz-getiri.json public/halka-arz-getiri.json)" ]; then
   echo "[i] Değişiklik yok — deploy gerekmiyor."
   exit 0
 fi
 
 echo "[*] Değişiklik bulundu, commit + push"
-git add data/halka-arz.json public/halka-arz.json
+git add data/halka-arz.json public/halka-arz.json data/halka-arz-getiri.json public/halka-arz-getiri.json
 git commit -m "halka-arz: takvim verisi güncellendi (otomatik $(date -u '+%F %H:%M UTC'))" || { echo "commit başarısız"; exit 0; }
 if git_push_retry main; then
   echo "[+] Push başarılı — Cloudflare deploy tetiklendi"

@@ -23,6 +23,7 @@ import urllib.error
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data", "halka-arz.json")
+GETIRI = os.path.join(ROOT, "data", "halka-arz-getiri.json")
 POSTED = os.path.join(ROOT, "logs", "halka-arz-posted.txt")
 ENV_FILE = os.path.expanduser("~/.config/parafomo/instagram.env")
 RAW = "https://raw.githubusercontent.com/Junkiieee/parafomo/main/public/social"
@@ -100,6 +101,20 @@ def build_caption(it):
     if clean(it.get("lot")):
         lines.append(f"🔢 Lot: {clean(it.get('lot'))}")
     cta = "Halka arz takviminin tamamı → parafomo.com/halka-arz"
+    # Merak-kancası: bu yılki halka arzlar ortalama ne kazandırdı? (özgün veri sayfamız)
+    try:
+        g = json.load(open(GETIRI, encoding="utf-8"))
+        avg = g.get("avg_return_pct")
+        pp = g.get("positive_pct")
+        if avg is not None:
+            sign = "+" if avg > 0 else ""
+            cta += (
+                f"\n\n📈 2026 halka arzları ortalama {sign}%{avg} kazandırdı"
+                + (f" (%{pp}'i kârda)" if pp is not None else "")
+                + " — güncel getiri tablosu → parafomo.com/halka-arz-getiri"
+            )
+    except Exception:
+        pass
     tags = HASHTAGS + (f" #{code.lower()}" if code else "")
     return "\n\n".join([title, "\n".join(lines), cta, tags])
 

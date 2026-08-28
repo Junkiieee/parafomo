@@ -1,0 +1,222 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import data from '../../data/halka-arz-getiri.json';
+
+type Row = {
+  code: string; company: string; link: string;
+  start: string | null; date_text: string;
+  ipo_price: number; current_price: number; return_pct: number;
+};
+
+const items = (data.items ?? []) as Row[];
+const updated = new Date(data.updated).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+const fmt = (n: number) => n.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const pct = (n: number) => (n > 0 ? '+' : '') + n.toLocaleString('tr-TR', { maximumFractionDigits: 1 }) + '%';
+const toneOf = (n: number) => (n > 0 ? 'up' : n < 0 ? 'down' : 'flat');
+
+const best = items.find((i) => i.code === data.best.code);
+const worst = items.find((i) => i.code === data.worst.code);
+
+const faqs = [
+  {
+    q: '2026 halka arzları ortalama ne kadar kazandırdı?',
+    a: `Borsada işlem gören ${data.count} halka arzın halka arz fiyatına göre ortalama getirisi %${fmt(data.avg_return_pct)}. Bu şirketlerin %${data.positive_pct}'i (yani ${data.positive_count}/${data.count}'i) halka arz fiyatının üzerinde işlem görüyor. Rakamlar güncel fiyatla her gün otomatik yenilenir.`,
+  },
+  {
+    q: 'Halka arza katılan herkes kâr eder mi?',
+    a: `Hayır. 2026'da ${data.count} halka arzın ${data.count - data.positive_count} tanesi şu an halka arz fiyatının altında. En çok kazandıran ${data.best.code} (${pct(data.best.return_pct)}) olurken, en çok kaybettiren ${data.worst.code} (${pct(data.worst.return_pct)}) oldu. Getiri şirketten şirkete çok değişir; geçmiş getiri gelecek getirinin garantisi değildir.`,
+  },
+  {
+    q: 'Getiri nasıl hesaplanıyor?',
+    a: 'Getiri = (güncel fiyat − halka arz fiyatı) ÷ halka arz fiyatı. Halka arz fiyatı izahnamedeki sabit fiyattır; güncel fiyat Yahoo Finance BIST verisinden alınır. Temettü ve bedelsiz/bedelli sermaye artırımı etkisi dâhil edilmez.',
+  },
+];
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+
+<BaseLayout
+  title="2026 Halka Arz Getirileri: Hangi Halka Arz Ne Kazandırdı?"
+  description={`2026'da BIST'e gelen ${data.count} halka arzın güncel getirisi tek tabloda. Ortalama %${fmt(data.avg_return_pct)} getiri, %${data.positive_pct}'i kârda. Halka arz fiyatına göre her gün güncellenir.`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+
+  <section class="container gr-hero">
+    <span class="eyebrow"><span class="pulse"></span> Özgün veri · BIST 2026</span>
+    <h1>2026 Halka Arz Getirileri</h1>
+    <p class="lede soft">
+      Bu yıl Borsa İstanbul'da işlem görmeye başlayan halka arzlar, halka arz fiyatına göre bugün
+      ne durumda? Katılsaydınız ne kazanır ya da kaybederdiniz — tek tabloda, her gün güncel.
+    </p>
+    <p class="gr-upd">Son güncelleme: {updated}</p>
+  </section>
+
+  <section class="container gr-stats">
+    <div class="stat card">
+      <span class="stat-num">%{fmt(data.avg_return_pct)}</span>
+      <span class="stat-lbl">Ortalama getiri</span>
+    </div>
+    <div class="stat card">
+      <span class="stat-num">{data.positive_count}/{data.count}</span>
+      <span class="stat-lbl">Halka arz fiyatının üstünde (%{data.positive_pct})</span>
+    </div>
+    <div class="stat card">
+      <span class="stat-num up">{pct(data.best.return_pct)}</span>
+      <span class="stat-lbl">En çok kazandıran{best ? ` · ${best.code}` : ''}</span>
+    </div>
+    <div class="stat card">
+      <span class="stat-num down">{pct(data.worst.return_pct)}</span>
+      <span class="stat-lbl">En çok kaybettiren{worst ? ` · ${worst.code}` : ''}</span>
+    </div>
+  </section>
+
+  <section class="container gr-section">
+    <h2 class="gr-h2">Halka arz getiri tablosu <span class="gr-count">{data.count} şirket</span></h2>
+    <div class="gr-tablewrap">
+      <table class="gr-table">
+        <thead>
+          <tr>
+            <th>Şirket</th>
+            <th class="r">Halka arz</th>
+            <th class="r">Güncel</th>
+            <th class="r">Getiri</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((i) => (
+            <tr>
+              <td class="gr-co">
+                <a href={i.link} target="_blank" rel="noopener">
+                  <span class="gr-code">{i.code}</span>
+                  <span class="gr-name">{i.company}</span>
+                </a>
+                {i.date_text && <span class="gr-date">{i.date_text}</span>}
+              </td>
+              <td class="r gr-mono">{fmt(i.ipo_price)}</td>
+              <td class="r gr-mono">{fmt(i.current_price)}</td>
+              <td class="r">
+                <span class={`gr-ret tone-${toneOf(i.return_pct)}`}>{pct(i.return_pct)}</span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="gr-tnote">
+      Fiyatlar TL. Getiri = (güncel fiyat − halka arz fiyatı) ÷ halka arz fiyatı. Temettü ve bedelsiz
+      etkisi hariçtir. Çok yeni işlem görmeye başlayan bazı arzlar veri oturana kadar listede olmayabilir.
+    </p>
+  </section>
+
+  <section class="container gr-body">
+    <h2 class="gr-h2">2026 halka arzları: rakamlar ne anlatıyor?</h2>
+    <p>
+      2026'da BIST'te işlem gören <strong>{data.count} halka arzın ortalama getirisi %{fmt(data.avg_return_pct)}</strong> —
+      ilk bakışta güçlü bir tablo. Ama ortalamanın altında ciddi bir dağılım var:
+      {best && <> en iyi performans <strong>{best.code}</strong> ({pct(best.return_pct)})</>}
+      ile en kötü performans {worst && <><strong>{worst.code}</strong> ({pct(worst.return_pct)})</>} arasındaki
+      fark, "halka arz = garanti kâr" algısının neden yanıltıcı olduğunu gösteriyor.
+      Şirketlerin <strong>%{data.positive_pct}'i</strong> halka arz fiyatının üzerinde olsa da,
+      geri kalan {data.count - data.positive_count} şirkette katılımcılar bugün zararda.
+    </p>
+    <p>
+      Halka arz getirisi; sektöre, halka arz büyüklüğüne, dağıtım yöntemine (eşit vs oransal) ve
+      genel piyasa iştahına göre değişir. Katılmadan önce şirketin izahnamesini, halka arz fiyatının
+      makul olup olmadığını ve borsadaki ilk işlem günlerindeki hacmi incelemek gerekir.
+      <a href="/blog/halka-arz-nedir-ipo">Halka arz (IPO) nedir ve nasıl katılınır?</a> yazımızda süreci
+      adım adım anlatıyoruz; yaklaşan arzları ise <a href="/halka-arz">güncel halka arz takviminden</a>
+      takip edebilirsiniz.
+    </p>
+  </section>
+
+  <section class="container gr-faq">
+    <h2 class="gr-h2">Sık sorulan sorular</h2>
+    {faqs.map((f) => (
+      <details class="gr-fq">
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
+  </section>
+
+  <section class="container gr-note">
+    <p>
+      Veri kaynağı: {data.source}. Yalnızca bilgilendirme amaçlıdır; <strong>yatırım tavsiyesi değildir</strong>.
+      Geçmiş getiri gelecekteki getirinin garantisi değildir. Kesin bilgi için KAP duyurularını ve
+      izahnameleri esas alın.
+    </p>
+  </section>
+
+  <div class="container"><Newsletter /></div>
+</BaseLayout>
+
+<style>
+  .gr-hero { padding: clamp(1.6rem, 4vw, 2.6rem) 0 0; max-width: 720px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 0.45rem; font-size: var(--step--2); font-weight: 600; color: var(--brand); }
+  .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 0 rgba(22,160,133,0.5); animation: pulse 2s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(22,160,133,0.5); } 70% { box-shadow: 0 0 0 6px rgba(22,160,133,0); } 100% { box-shadow: 0 0 0 0 rgba(22,160,133,0); } }
+  .gr-hero h1 { font-size: var(--step-2); margin: 0.6rem 0 0.4rem; }
+  .gr-hero .lede { font-size: var(--step-0); line-height: 1.55; margin: 0; }
+  .gr-upd { font-size: var(--step--2); color: var(--text-muted); margin: 0.5rem 0 0; }
+
+  .gr-stats { margin-top: clamp(1.4rem, 3.5vw, 2.2rem); display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; }
+  .stat { padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.25rem; }
+  .stat-num { font-size: var(--step-2); font-weight: 800; font-variant-numeric: tabular-nums; color: var(--text); line-height: 1.1; }
+  .stat-num.up { color: var(--brand-deep); }
+  .stat-num.down { color: var(--danger); }
+  .stat-lbl { font-size: var(--step--2); color: var(--text-muted); line-height: 1.35; }
+
+  .gr-section, .gr-body, .gr-faq { margin-top: clamp(1.8rem, 4vw, 2.8rem); }
+  .gr-h2 { font-size: var(--step-1); margin: 0 0 0.9rem; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+  .gr-count { font-size: 0.66rem; font-weight: 700; color: var(--brand-deep); background: var(--brand-tint); border-radius: 999px; padding: 0.1rem 0.55rem; }
+
+  .gr-tablewrap { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg-card); box-shadow: var(--shadow-xs); }
+  .gr-table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+  .gr-table thead th { text-align: left; font-size: var(--step--2); color: var(--text-muted); font-weight: 600; padding: 0.6rem 0.9rem; background: var(--bg-elev); border-bottom: 1px solid var(--border); }
+  .gr-table th.r, .gr-table td.r { text-align: right; }
+  .gr-table tbody tr { border-bottom: 1px solid var(--border-soft); }
+  .gr-table tbody tr:last-child { border-bottom: none; }
+  .gr-table td { padding: 0.6rem 0.9rem; vertical-align: middle; }
+  .gr-co a { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+  .gr-code { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.03em; color: var(--brand-deep); background: var(--brand-tint); border-radius: 4px; padding: 0.1rem 0.4rem; }
+  .gr-name { color: var(--text); font-weight: 600; }
+  .gr-co a:hover .gr-name { color: var(--brand-deep); }
+  .gr-date { display: block; font-size: 0.62rem; color: var(--text-muted); margin-top: 0.15rem; }
+  .gr-mono { font-variant-numeric: tabular-nums; color: var(--text-soft); }
+  .gr-ret { font-weight: 800; font-variant-numeric: tabular-nums; border-radius: 6px; padding: 0.15rem 0.5rem; font-size: var(--step--1); }
+  .gr-ret.tone-up { background: var(--brand-tint); color: var(--brand-deep); }
+  .gr-ret.tone-down { background: #fbe3e6; color: #a32437; }
+  .gr-ret.tone-flat { background: var(--bg-elev); color: var(--text-muted); }
+  .gr-tnote { font-size: var(--step--2); color: var(--text-muted); line-height: 1.55; margin: 0.7rem 0 0; max-width: 720px; }
+
+  .gr-body { max-width: 720px; }
+  .gr-body p { font-size: var(--step-0); line-height: 1.65; color: var(--text-soft); margin: 0 0 0.9rem; }
+  .gr-body a { color: var(--brand); font-weight: 600; }
+
+  .gr-fq { border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); margin-bottom: 0.6rem; max-width: 720px; }
+  .gr-fq summary { cursor: pointer; padding: 0.8rem 1rem; font-weight: 600; font-size: var(--step-0); color: var(--text); }
+  .gr-fq p { padding: 0 1rem 0.9rem; margin: 0; font-size: var(--step--1); line-height: 1.6; color: var(--text-soft); }
+
+  .gr-note { margin-top: clamp(1.6rem, 4vw, 2.6rem); }
+  .gr-note p { font-size: var(--step--2); line-height: 1.6; max-width: 720px; color: var(--text-muted); padding: 0.8rem 1rem; background: var(--bg-elev); border: 1px solid var(--border-soft); border-radius: var(--radius); }
+
+  @media (max-width: 620px) {
+    .gr-stats { grid-template-columns: repeat(2, 1fr); }
+    .gr-name { max-width: 8.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  }
+</style>
+
+<script define:vars={{ built: data.updated }}>
+  async function checkUpdate() {
+    try {
+      const r = await fetch('/halka-arz-getiri.json?_=' + Date.now(), { cache: 'no-store' });
+      const d = await r.json();
+      if (d && d.updated && d.updated !== built) location.reload();
+    } catch { /* yoksay */ }
+  }
+  setInterval(() => { if (document.visibilityState === 'visible') checkUpdate(); }, 300000);
+</script>
