@@ -78,7 +78,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Döviz rezervleri nedir? Merkez bankası rezervleri ne anlama gelir? — `Ekonomi` — hedef: "döviz rezervleri nedir"
 
 - [x] Nasdaq 100 Nedir? ABD Teknoloji Borsasına Türkiye'den Nasıl Yatırım Yapılır? — `Borsa` — hedef: "nasdaq 100 nedir"
-- [ ] Russell 2000 Nedir? ABD Küçük Şirket Endeksi ve Yatırımcı Rehberi — `Borsa` — hedef: "russell 2000 nedir"
+- [x] Russell 2000 Nedir? ABD Küçük Şirket Endeksi ve Yatırımcı Rehberi — `Borsa` — hedef: "russell 2000 nedir"
 - [ ] MSCI Gelişmekte Olan Piyasalar Endeksi Nedir? Türkiye'nin Ağırlığı ve Etkisi — `Yatırım` — hedef: "msci gelişmekte olan piyasalar nedir"
 - [ ] Parasal Genişleme (QE) Nedir? Merkez Bankası Para Basma ve Piyasa Etkisi — `Ekonomi` — hedef: "parasal genişleme nedir"
 - [ ] Borsa Neden Düşer? Piyasa Düzeltmesi ve Borsa Çöküşü Arasındaki Fark — `Borsa` — hedef: "borsa neden düşer"
@@ -248,3 +248,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] 26 Ağustos PCE + Büyüme Verisi: Fed Eylül'de Ne Yapar? Dolar ve Altın Etkisi — `pce-gdp-agustos-2026-fed-eylul-dolar-altin` (takvim: 26 Ağustos 2026 🔴 Core PCE + Prelim GDP; PCE nedir + GDP nedir evergreen yazılarının tamamlayıcısı; Fed Eylül kararı öncesi "ne olur" açısı; senaryo tablosu + Türk yatırımcısı için pratik rehber; 24 Ağustos 2026)
 
 - [x] Hisse Geri Alımı (Buyback) Nedir? Şirket Neden Kendi Hissesini Satın Alır? — `hisse-geri-alimi-nedir-buyback` (backlog ilk [ ] konusu: evergreen borsa; "hisse geri alımı nedir" sorgusu; temettü + F/K + hisse seçimi cluster'ını tamamlayan pratik rehber; buyback vs temettü karşılaştırma tablosu + BIST KAP takip kılavuzu; 25 Ağustos 2026)
+
+- [x] Russell 2000 Nedir? ABD Küçük Şirket Endeksi ve Yatırımcı Rehberi — `russell-2000-nedir` (backlog ilk [ ] konusu: evergreen borsa; "russell 2000 nedir" sorgusu; S&P 500 + Nasdaq 100 + Dow Jones ABD endeks cluster'ını tamamlayan small-cap rehber; Fed faiz duyarlılığı + sektör analizi + IWM/VTWO ETF karşılaştırması; 28 Ağustos 2026)
