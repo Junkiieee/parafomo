@@ -1,0 +1,58 @@
+{
+  "slug": "bist-rekor-kirdi-dolar-bazinda-farkli-hikaye",
+  "title": "BIST Rekor Kırdı — Dolar Bazında Farklı Hikaye",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "BIST 100 TL bazında rekor kırıyor ama dolar bazında tablo çok farklı. Türk yatırımcısının gözden kaçırdığı kritik hesap.",
+  "tags": [
+    "bist100",
+    "borsa",
+    "dolar",
+    "yatırım",
+    "hisse",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "BIST 100 rekor kırdı, dolar bazında değil.",
+      "visual": {
+        "type": "place",
+        "query": "Borsa İstanbul"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "TL'de tarihi zirve görüyorsun — ama bu yükselişin bir kısmı TL'nin değer kaybından geliyor.",
+      "visual": {
+        "type": "concept",
+        "query": "turkish lira banknotes currency depreciation"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2018'de BIST 100 dolar bazında bugünkünün çok üzerindeydi. Yüzde seksen TL kaybını kimse hesaplamıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "stock market chart downtrend dollar exchange rate"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gerçek kazanç ölçmek için borsanın hem enflasyonu hem dolar kaybını geçip geçmediğine bakmak zorundasın.",
+      "visual": {
+        "type": "concept",
+        "query": "investor calculating financial returns currency comparison"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Son beş yılda hangisi gerçekten kazandırdı — altın mı, dolar mı, borsa mı? Abone ol, rakamları her gün çıkarıyoruz.",
+      "visual": {
+        "type": "concept",
+        "query": "gold coins dollar bills stock chart comparison"
+      }
+    }
+  ]
+}
