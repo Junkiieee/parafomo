@@ -4,6 +4,68 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-29 — Parasal Genişleme (QE) Nedir? Merkez Bankası Para Basma ve Piyasa Etkisi
+
+**Yayınlanan yazı:**
+[Parasal Genişleme (QE) Nedir? Merkez Bankası Para Basma ve Piyasa Etkisi](https://parafomo.com/blog/parasal-genisleme-nedir/)
+
+**Konu seçim gerekçesi:** Backlog'un ilk `[ ]` maddesi. QT yazısını (quantitative-tightening-nedir) tamamlayan doğal çift; Fed + ECB + BOJ bilanço döngüsünü anlatan temel kavram. "Parasal genişleme nedir" / "QE nedir" yüksek hacimli evergreen ekonomi sorgusu. QT + reel faiz + verim eğrisi + Fed faiz kararı cluster'ını birbirine bağlayan pillar piece.
+
+---
+
+**X (Twitter) Thread Taslağı:**
+
+🧵 "Para bastılar" derler, hiç düşündün mü gerçekte ne oluyor?
+
+1/ Parasal genişleme (QE), Fed'in piyasadan tahvil satın alarak bankacılık sistemine likidite enjekte etmesi. Fiziksel para değil, dijital rezerv.
+
+2/ Ne zaman devreye girer? Faiz sıfıra yaklaşınca. 2008 Krizi → QE1. 2020 Pandemi → tarihin en büyük QE'si: aylarca 120 milyar $ alım.
+
+3/ Peki TL'ye etkisi ne?
+📉 Dolar zayıflar
+📈 Gelişmekte olan piyasalara sermaye akar
+💹 BIST ve TL kısa vadede nefes alır
+
+4/ Risk: QE bitince tersine döner. Sermaye çıkışı, TL baskı altında, BIST frenliyor.
+
+5/ Yatırımcı notu: QE dönemlerinde altın ve hisseler güçlenir. QT dönemlerinde likit + kısa vadeli pozisyonlar öne çıkar.
+
+Detaylı rehber → parafomo.com/blog/parasal-genisleme-nedir/ 👇
+
+---
+
+**Instagram Carousel/Post Metni:**
+
+💡 Merkez Bankaları "Para Bastı" — Peki Bu Ne Anlama Geliyor?
+
+Slide 1: Parasal Genişleme (QE) Nedir?
+Merkez bankası piyasadan tahvil satın alır → sisteme nakit pompalanır → faizler düşer → ekonomi canlanır.
+
+Slide 2: Tarihte Büyük QE Dönemleri
+📌 2008 Finansal Kriz → Fed QE1-QE3
+📌 2015 Avrupa → ECB €2.5 trilyon
+📌 2020 Pandemi → Fed $4.5 trilyon (rekor!)
+
+Slide 3: Türk Yatırımcısına Etkisi
+✅ QE döneminde: Altın ↑ | Hisseler ↑ | Dolar ↓ | TL nefes alır
+❌ QE bitince: Dolar ↑ | Sermaye çıkışı | TL baskı altında
+
+Slide 4: QE ≠ Para Basma
+Fiziksel banknot değil. Dijital rezerv oluşturma. Ama para arzı genişliyor — enflasyon riski var.
+
+Tüm detaylar ve yatırımcı stratejisi → link biyografide 🔗
+
+#ParasalGenişleme #QE #Ekonomi #MerkezBankası #ParaFOMO #YatırımRehberi
+
+---
+
+**✅ Senin bugün yapman gerekenler:**
+
+1. X thread taslağını paylaş (yukarıda hazır); son tweete makale linkini ekle.
+2. Instagram carousel'ini paylaş ve biyografi linkini `parafomo.com/blog/parasal-genisleme-nedir/` olarak güncelle.
+
+---
+
 ## 2026-08-29 — MSCI Gelişmekte Olan Piyasalar Nedir? Türkiye'nin Ağırlığı ve Yatırım Rehberi
 
 **Yayınlanan yazı:**
