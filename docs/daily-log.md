@@ -4,6 +4,69 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-29 — MSCI Gelişmekte Olan Piyasalar Nedir? Türkiye'nin Ağırlığı ve Yatırım Rehberi
+
+**Yayınlanan yazı:**
+[MSCI Gelişmekte Olan Piyasalar Nedir? Türkiye'nin Ağırlığı ve Yatırım Rehberi](https://parafomo.com/blog/msci-gelismekte-olan-piyasalar-nedir/)
+
+**Konu seçim gerekçesi:** Ekonomik takvimde 1-3 gün içinde 🔴 High olay yok (en yakın 3 Eylül). Tüm GSC fırsatları (jackson hole, boj, abd faiz, dolar endeksi, 2026 fed tarihleri) zaten yayınlanmış. Backlog'un ilk `[ ]` maddesi olan MSCI Gelişmekte Olan Piyasalar seçildi — S&P 500, Nasdaq 100, Dow Jones ve Russell 2000 ABD endeks kümesini uluslararası boyutuyla tamamlayan evergreen yatırım rehberi.
+
+---
+
+**X (Twitter) Thread Taslağı:**
+
+🧵 "Emerging markets" duymuşsunuzdur — ama ne anlama gelir, Türkiye neden önemli ve nasıl yatırım yapılır?
+
+1/ MSCI Gelişmekte Olan Piyasalar Endeksi: dünyanın en büyük varlık yöneticilerinin trilyonlarca dolarlık kararını yönlendiren ölçüt. 24 ülke, ~1.200 hisse.
+
+2/ Türkiye bu endekste ~%0.4 ağırlıkla yer alıyor. Akbank, Ereğli, Sabancı, Garanti — bunlar sadece BİST hissesi değil, küresel EM fonlarının portföyünde.
+
+3/ Endeksteki büyük ağırlıklar:
+🇨🇳 Çin ~%27
+🇮🇳 Hindistan ~%18
+🇹🇼 Tayvan ~%17
+🇰🇷 Güney Kore ~%11
+🇹🇷 Türkiye ~%0.4
+
+4/ Bu endekse yatırım nasıl yapılır?
+• EEM (iShares) — yıllık %0.70 gider
+• VWO (Vanguard) — yıllık %0.08 (en ucuz)
+• IEMG (iShares) — yıllık %0.09
+Türkiye'den Tefas üzerinden bazı uluslararası fonlar da erişilebilir.
+
+5/ MSCI yılda 4 kez endeks revizyonu yapar. Türk şirketleri eklenip çıkarıldığında BİST'te ani yabancı alım-satım dalgalanmaları yaşanır. Bu tarihlere dikkat!
+
+6/ Detaylı rehber 👇
+parafomo.com/blog/msci-gelismekte-olan-piyasalar-nedir/
+
+---
+
+**Instagram Post Metni:**
+
+🌍 MSCI Gelişmekte Olan Piyasalar Endeksi nedir?
+
+Trilyonlarca dolarlık küresel fon bu endekse bağlı. Türkiye de içinde.
+
+Ne mi bilmen gerekiyor?
+
+✅ 24 ülke, ~1200 hisse
+✅ Türkiye ~%0.4 ağırlıkla dahil
+✅ Akbank, Ereğli, Sabancı bu listede
+✅ EEM ve VWO ile kolayca yatırım yapılabilir
+✅ Yılda 4 rebalans = BİST'te ani hareketler
+
+Detaylı yazı profilde 👆
+
+#MSCI #EmergingMarkets #GelişmektePiyasalar #Yatırım #BorsaTürkiye #ETF #ParaFOMO #FinansOku
+
+---
+
+**Bugün yapman gerekenler:**
+1. X thread taslağını @parafomo hesabından paylaş (en iyi saat: sabah 08-09 veya akşam 19-21).
+2. Instagram post metnini @parafomo hesabında yayınla; kapak görseli olarak `public/social/msci-gelismekte-olan-piyasalar-nedir.png` dosyasını kullan.
+
+---
+
 ## 2026-08-28 — Russell 2000 Nedir? ABD Küçük Şirket Endeksi ve Yatırımcı Rehberi
 
 **Yayınlanan yazı:**
