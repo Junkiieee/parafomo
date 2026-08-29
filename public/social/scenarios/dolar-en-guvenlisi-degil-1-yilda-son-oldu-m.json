@@ -1,0 +1,75 @@
+{
+  "slug": "dolar-en-guvenlisi-degil-1-yilda-son-oldu-m",
+  "title": "Dolar En Güvenlisi Değil — 1 Yılda Son Oldu",
+  "category": "KARŞILAŞTIRMA",
+  "format": "comparison",
+  "description": "Gram altın %35, BIST 100 %33, dolar sadece %16 kazandı. 'Güvenli' denen araç, geçen yılın kazanma yarışında son sıraya düştü.",
+  "tags": [
+    "altın",
+    "dolar",
+    "borsa",
+    "yatırım",
+    "getiri karşılaştırması",
+    "gram altın",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KARŞILAŞTIRMA",
+      "spoken": "En düşük getiriyi en güvenli verdi.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Risk",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Son 1 yılda şu tabloyu gör: Gram altın yüzde 35, BIST 100 yüzde 33 kazandı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama dolar, en güvenli denen araç, sadece yüzde 16 verdi — yaklaşık yarısı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Dolar",
+        "glyph": "$"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Altın 35, Borsa 33, Dolar 16 — riskli olanlar, güvenli doları geçti.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Risk",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki seneye bu tablo değişir mi? Abone ol — her gün 60 saniyede bir araç gerçeğiyle masada.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
