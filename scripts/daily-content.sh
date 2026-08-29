@@ -45,6 +45,10 @@ python3 "$REPO/scripts/altin-fiyat.py" 2>&1 | sed 's/^/    [altin] /' || echo "U
 echo "[*] Dolar endeksi (DXY) çekiliyor"
 python3 "$REPO/scripts/dxy.py" 2>&1 | sed 's/^/    [dxy] /' || echo "UYARI: dolar endeksi güncellenemedi (mevcut korunur, devam)"
 
+# 1b4b) Altın tarihsel getiri (data/altin-getiri.json -> /altin-getiri sayfası)
+echo "[*] Altın getiri analizi hesaplanıyor"
+python3 "$REPO/scripts/gold-returns.py" 2>&1 | sed 's/^/    [altin-getiri] /' || echo "UYARI: altın getiri güncellenemedi (mevcut korunur, devam)"
+
 # 1b5) Güncel ABD tahvil faizleri çek (data/us-tahvil.json -> /abd-tahvil-faizi sayfası)
 echo "[*] ABD tahvil faizleri (getiri eğrisi) çekiliyor"
 python3 "$REPO/scripts/us-tahvil.py" 2>&1 | sed 's/^/    [ustahvil] /' || echo "UYARI: ABD tahvil faizleri güncellenemedi (mevcut korunur, devam)"
