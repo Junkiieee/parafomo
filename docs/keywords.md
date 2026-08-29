@@ -79,7 +79,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 - [x] Nasdaq 100 Nedir? ABD Teknoloji Borsasına Türkiye'den Nasıl Yatırım Yapılır? — `Borsa` — hedef: "nasdaq 100 nedir"
 - [x] Russell 2000 Nedir? ABD Küçük Şirket Endeksi ve Yatırımcı Rehberi — `Borsa` — hedef: "russell 2000 nedir"
-- [ ] MSCI Gelişmekte Olan Piyasalar Endeksi Nedir? Türkiye'nin Ağırlığı ve Etkisi — `Yatırım` — hedef: "msci gelişmekte olan piyasalar nedir"
+- [x] MSCI Gelişmekte Olan Piyasalar Endeksi Nedir? Türkiye'nin Ağırlığı ve Etkisi — `Yatırım` — hedef: "msci gelişmekte olan piyasalar nedir"
 - [ ] Parasal Genişleme (QE) Nedir? Merkez Bankası Para Basma ve Piyasa Etkisi — `Ekonomi` — hedef: "parasal genişleme nedir"
 - [ ] Borsa Neden Düşer? Piyasa Düzeltmesi ve Borsa Çöküşü Arasındaki Fark — `Borsa` — hedef: "borsa neden düşer"
 - [ ] Temettü Verimi (Dividend Yield) Nedir? Yüksek Temettü Hisseleri Nasıl Seçilir? — `Borsa` — hedef: "temettü verimi nedir"
@@ -250,3 +250,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Hisse Geri Alımı (Buyback) Nedir? Şirket Neden Kendi Hissesini Satın Alır? — `hisse-geri-alimi-nedir-buyback` (backlog ilk [ ] konusu: evergreen borsa; "hisse geri alımı nedir" sorgusu; temettü + F/K + hisse seçimi cluster'ını tamamlayan pratik rehber; buyback vs temettü karşılaştırma tablosu + BIST KAP takip kılavuzu; 25 Ağustos 2026)
 
 - [x] Russell 2000 Nedir? ABD Küçük Şirket Endeksi ve Yatırımcı Rehberi — `russell-2000-nedir` (backlog ilk [ ] konusu: evergreen borsa; "russell 2000 nedir" sorgusu; S&P 500 + Nasdaq 100 + Dow Jones ABD endeks cluster'ını tamamlayan small-cap rehber; Fed faiz duyarlılığı + sektör analizi + IWM/VTWO ETF karşılaştırması; 28 Ağustos 2026)
+
+- [x] MSCI Gelişmekte Olan Piyasalar Endeksi Nedir? Türkiye'nin Ağırlığı ve Yatırım Rehberi — `msci-gelismekte-olan-piyasalar-nedir` (backlog ilk [ ] konusu: evergreen yatırım; "msci gelişmekte olan piyasalar nedir" sorgusu; S&P 500 + Russell 2000 + ETF + portföy çeşitlendirme cluster'ını tamamlayan uluslararası yatırım rehberi; Türkiye ağırlığı + rebalans etkisi + EEM/VWO/IEMG karşılaştırması; 29 Ağustos 2026)
