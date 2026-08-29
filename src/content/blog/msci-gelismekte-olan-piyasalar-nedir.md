@@ -17,6 +17,23 @@ faq:
     a: "Bu endekste kur riski, siyasi risk, likidite riski ve düzenleyici belirsizlik daha yüksektir. Bununla birlikte uzun vadede gelişmiş piyasaların üzerinde büyüme potansiyeli sunabilir."
   - q: "EEM ve VWO arasındaki fark nedir?"
     a: "Her ikisi de MSCI Emerging Markets veya benzer endeksleri izler. EEM (BlackRock/iShares) yıllık 0.70% gider oranıyla daha pahalı; VWO (Vanguard) ise 0.08% ile daha düşük maliyetlidir. Uzun vadeli yatırımcılar genellikle VWO'yu tercih eder."
+shorts:
+  - "Bir endeks listesi Türkiye'ye milyarlarca dolar akıtabilir?"
+  - "MSCI hisse satmaz, ülkeleri sıralar; varlık yöneticileri bu listeye göre para hareket ettirir."
+  - "Türkiye yaklaşık yüzde 0.4 ağırlıkla endekste; ama BİST'teki yabancı kurumsal para buraya bağlı."
+  - "MSCI rebalansında Türk hisseleri eklenirse ya da çıkarsa BİST'te anında dalgalanma yaşanır."
+  - "Peki bu endekse sen nasıl yatırım yapabilirsin? Abone ol, detayları parafomo.com'da açıklıyoruz."
+shorts_broll:
+  - "emerging markets stock exchange trading"
+  - "global investment fund portfolio"
+  - "Istanbul stock exchange trading floor"
+  - "index fund ETF performance chart"
+shorts_visuals:
+  - "concept|global money flow emerging markets world map"
+  - "concept|index provider stock market data screen"
+  - "place|Borsa İstanbul"
+  - "concept|stock market volatility chart fluctuation"
+  - "concept|ETF investment portfolio growth"
 ---
 
 Yatırım dünyasında "emerging markets" terimi sıkça geçer ama ne anlama geldiğini biliyor musun? **MSCI Gelişmekte Olan Piyasalar Endeksi**, dünyanın en büyük varlık yöneticilerinin trilyonlarca dolarlık yatırım kararlarını yönlendiren bir ölçüttür; Türkiye de bu endekste yer alır. Bu yazıda endeksin ne olduğunu, Türkiye'nin yerine ve bu endekse nasıl yatırım yapabileceğini adım adım açıklıyoruz. Konuya yabancıysan önce [ETF nedir rehberimize](/blog/etf-nedir-borsa-yatirim-fonu) göz atmanı öneririz.
