@@ -1,0 +1,59 @@
+{
+  "slug": "zam-enflasyonu-gecmiyorsa-kaybediyorsun",
+  "title": "Zam Enflasyonu Geçmiyorsa Kaybediyorsun",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Maaşın artıyor ama cebinde para kalmıyor gibi hissediyorsan sebebi bu: reel gelirin nasıl hesaplandığını çok az kişi biliyor.",
+  "tags": [
+    "maaş zammı",
+    "enflasyon",
+    "reel gelir",
+    "satın alma gücü",
+    "kişisel finans",
+    "ekonomi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "REEL GELİR",
+      "spoken": "Zam alıyorsun ama servetin eriyor.",
+      "visual": {
+        "type": "concept",
+        "query": "salary paycheck money erosion inflation"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Geçen yıl yüzde otuz zam aldın diyelim. İyi hissediyorsun. Ama enflasyon yüzde kırksa?",
+      "visual": {
+        "type": "concept",
+        "query": "percentage inflation bar chart rising numbers"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Reel kazancın eksi yüzde on. Maaşın arttı ama alabileceklerin azaldı. Kasada hissediyorsun bunu.",
+      "visual": {
+        "type": "concept",
+        "query": "supermarket grocery prices expensive shopping cart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Tek soru bu: zam enflasyondan fazla mı? Değilse artı kazanıyorum sanıp eksi gidiyorsun.",
+      "visual": {
+        "type": "concept",
+        "query": "finance scale balance comparison loss gain money"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Zamın gerçekten yeterli mi hiç hesapladın? Finans gerçekleri için abone ol — her gün 60 saniye.",
+      "visual": {
+        "type": "concept",
+        "query": "financial growth money saving wealth freedom"
+      }
+    }
+  ]
+}
