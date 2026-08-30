@@ -1,0 +1,58 @@
+{
+  "slug": "ev-sahibi-oldun-kira-getirin-yuzde-3-te-kaldi",
+  "title": "Ev Sahibi Oldun — Kira Getirin Yüzde 3'te Kaldı",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "İstanbul'da ortalama brüt kira getirisi yaklaşık yüzde 3. Giderler ve vergiler düşülünce net getiri yüzde 1-2'ye iniyor; ev sahiplerini zenginleştiren kira değil fiyat artışıydı.",
+  "tags": [
+    "kira getirisi",
+    "gayrimenkul yatırımı",
+    "İstanbul konut piyasası",
+    "ev almak mı kiralamak mı",
+    "enflasyon yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "İstanbul dairesinin kira getirisi yaklaşık yüzde üç.",
+      "visual": {
+        "type": "place",
+        "query": "İstanbul"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "6 milyon TL daire, ayda 15 bin TL kira — yılda 180 bin TL, yani yüzde 3.",
+      "visual": {
+        "type": "scene",
+        "query": "istanbul apartment building residential exterior"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bakım, vergi, boş kalma dönemi çıkınca net getiri yüzde 1-2'de kalıyor.",
+      "visual": {
+        "type": "scene",
+        "query": "bills expenses tax documents money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ev sahipleri kazandı — ama kira değil, fiyat artışından. O artış yavaşlayınca denklem değişiyor.",
+      "visual": {
+        "type": "scene",
+        "query": "real estate property price chart slowdown"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Hangi şehirde kira getirisi gerçekten mantıklı — merak ediyorsan abone ol, her gün 60 saniyede paranın gerçek tablosunu paylaşıyorum.",
+      "visual": {
+        "type": "scene",
+        "query": "turkey map cities real estate investment"
+      }
+    }
+  ]
+}
