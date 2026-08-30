@@ -1,26 +1,8 @@
 {
-  "updated": "2026-08-29",
+  "updated": "2026-08-30",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-08-26",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core PCE Price Index m/m",
-      "source": "forexfactory",
-      "hook": "ABD çekirdek enflasyon (PCE) — Fed'in tercih ettiği gösterge, dolar yönü."
-    },
-    {
-      "date": "2026-08-26",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Prelim GDP q/q",
-      "source": "forexfactory",
-      "hook": "Büyüme verisi — küresel görünüm."
-    },
     {
       "date": "2026-08-28",
       "time": "2:00pm",

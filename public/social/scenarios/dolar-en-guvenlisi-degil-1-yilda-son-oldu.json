@@ -1,0 +1,77 @@
+{
+  "slug": "dolar-en-guvenlisi-degil-1-yilda-son-oldu",
+  "title": "Dolar En Güvenlisi Değil — 1 Yılda Son Oldu",
+  "category": "KARŞILAŞTIRMA",
+  "format": "comparison",
+  "description": "Gram altın %35, BIST 100 %33, dolar sadece %16 kazandı. 'Güvenli' denen araç, geçen yılın kazanma yarışında son sıraya düştü.",
+  "tags": [
+    "altın",
+    "dolar",
+    "borsa",
+    "yatırım",
+    "getiri karşılaştırması",
+    "gram altın",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KARŞILAŞTIRMA",
+      "spoken": "En düşük getiriyi en güvenli verdi.",
+      "visual": {
+        "type": "concept",
+        "query": "safe bank vault deposit cash"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Son 1 yılda şu tabloyu gör: Gram altın yüzde 35, BIST 100 yüzde 33 kazandı.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars stack gleaming"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama dolar, en güvenli denen araç, sadece yüzde 16 verdi — yaklaşık yarısı.",
+      "visual": {
+        "type": "concept",
+        "query": "dollar bills currency exchange rate falling"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Altın 35, Borsa 33, Dolar 16 — riskli olanlar, güvenli doları geçti.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "bars",
+          "title": "Bu Yıl Kim Kazandırdı?",
+          "items": [
+            {
+              "name": "Gram Altın",
+              "pct": 35
+            },
+            {
+              "name": "BIST 100",
+              "pct": 33
+            },
+            {
+              "name": "Dolar/TL",
+              "pct": 16
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki seneye bu tablo değişir mi? Abone ol — her gün 60 saniyede bir araç gerçeğiyle masada.",
+      "visual": {
+        "type": "concept",
+        "query": "financial growth investment analysis chart future"
+      }
+    }
+  ]
+}

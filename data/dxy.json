@@ -1,8 +1,8 @@
 {
   "_aciklama": "Dolar Endeksi (DXY) ve bileşenleri. Yahoo Finance. Site günlük rebuild'de tazelenir; anlık/kesin işlem değeri değildir, göstergedir.",
   "_kaynak": "Yahoo Finance (ICE US Dollar Index DX-Y.NYB)",
-  "guncellenme": "2026-08-29T04:00:35+03:00",
-  "guncellemeEtiket": "29 Ağustos 2026, 04:00",
+  "guncellenme": "2026-08-30T04:00:36+03:00",
+  "guncellemeEtiket": "30 Ağustos 2026, 04:00",
   "dxy": 99.677,
   "dxyChange": 0.68,
   "dxyPrev": 99.0,
@@ -27,15 +27,15 @@
       "symbol": "GBPUSD=X",
       "label": "İngiliz Sterlini (GBP)",
       "weight": 11.9,
-      "rate": 1.3537,
-      "change": -0.86
+      "rate": 1.3534,
+      "change": -0.88
     },
     {
       "symbol": "USDCAD=X",
       "label": "Kanada Doları (CAD)",
       "weight": 9.1,
-      "rate": 1.3902,
-      "change": 0.79
+      "rate": 1.3901,
+      "change": 0.78
     },
     {
       "symbol": "USDSEK=X",
