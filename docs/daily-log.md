@@ -4,6 +4,88 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-30
+
+**Yayınlanan yazı:** [Borsa Neden Düşer? Piyasa Düzeltmesi ve Borsa Çöküşü Arasındaki Fark](https://parafomo.com/blog/borsa-neden-duser-piyasa-duzeltmesi)
+**Kaynak seçimi:** Backlog (GSC fırsatları zaten kaplı; ilk boş evergreen borsa konusu)
+**Hedef sorgu:** `borsa neden düşer`
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+Borsanın düşmesi seni korkutuyorsa, muhtemelen düzeltme ile çöküşü ayırt edemiyorsundur.
+
+İkisi arasındaki fark yatırım kararını kökten değiştirir 👇
+
+**Tweet 2:**
+📊 3 farklı "düşüş" var:
+
+🟡 Düzeltme → %10-20 arası
+🔴 Bear market → %20+, aylarca
+🚨 Çöküş → günler içinde sert kayıp
+
+Hangisinde ne yapacağını bilmek = paniklemeden hayatta kalmak
+
+**Tweet 3:**
+2020'de COVID paniğiyle borsadan çıkanlar ne oldu?
+
+S&P 500'ü 33 günde %34 düştü.
+Sonra aynı yıl bütün kaybını geri aldı.
+
+Panikle satanlar bu toparlanmayı kaçırdı 😬
+
+**Tweet 4:**
+Borsa düşüşü öncesinde dikkat edilmesi gereken 5 sinyal:
+
+1️⃣ Verim eğrisinin tersine dönmesi
+2️⃣ VIX'in 30 üzerine çıkması
+3️⃣ F/K oranlarının aşırı şişmesi
+4️⃣ Merkez bankasının sıkılaşması
+5️⃣ Tüketici güveninin erimesi
+
+**Tweet 5 (kapanış):**
+Detaylı rehber + tarihin en büyük 4 borsa çöküşünün analizi ve Türk yatırımcısı için pratik yol haritası burada:
+
+👉 parafomo.com/blog/borsa-neden-duser-piyasa-duzeltmesi
+
+#borsa #yatırım #BorsDüşüşü #BIST
+
+---
+
+### 📸 Instagram Post / Carousel Metni
+
+**Başlık (ilk kare):**
+Borsa düşünce ne yapacaksın? 📉
+
+**Gövde metni:**
+Portföyün düştüğünde 3 tür yatırımcı vardır:
+
+😱 Panikle satan → diplerde satar, tepede korkar
+🎲 Tahmin etmeye çalışan → çoğunlukla yanılır
+🧘 Hazırlıklı olan → düşüşü fırsat olarak görür
+
+Seni 3. kategorie taşıyacak bilgiler profilimizde 👆
+
+3 kavramı öğren, her borsa ortamında ayakta kal:
+
+✅ Düzeltme nedir?
+✅ Bear market ne zaman başlar?
+✅ Çöküş vs. düzeltme farkı
+
+**Hashtag'ler:**
+#borsa #yatırım #hissesenedi #borsaanaliz #kişiselfinans #parafomo #parasalozgurluk #BIST #finanseğitimi #bearmarket
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **Paylaşımı yayınla:** Yukarıdaki X thread'ini ve Instagram postunu bugün paylaş. Borsa güncel haberleriyle ilgili bir şey varsa (BIST düşüyor mu, küresel bir haber var mı?) o bağlantıyı da ek olarak kullan — zamanlama içeriği güçlendirir.
+2. **Toplulukta paylaş:** r/Turkey, Ekşi Sözlük borsa başlıkları ya da ilgili Telegram/WhatsApp finans gruplarından birinde yazıyı değer katarak paylaş. "Borsa neden düştü?" tartışmalarında bu yazıya referans ver.
+
+---
+
 ## 2026-08-29 — Parasal Genişleme (QE) Nedir? Merkez Bankası Para Basma ve Piyasa Etkisi
 
 **Yayınlanan yazı:**

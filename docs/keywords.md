@@ -81,7 +81,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Russell 2000 Nedir? ABD Küçük Şirket Endeksi ve Yatırımcı Rehberi — `Borsa` — hedef: "russell 2000 nedir"
 - [x] MSCI Gelişmekte Olan Piyasalar Endeksi Nedir? Türkiye'nin Ağırlığı ve Etkisi — `Yatırım` — hedef: "msci gelişmekte olan piyasalar nedir"
 - [ ] Parasal Genişleme (QE) Nedir? Merkez Bankası Para Basma ve Piyasa Etkisi — `Ekonomi` — hedef: "parasal genişleme nedir"
-- [ ] Borsa Neden Düşer? Piyasa Düzeltmesi ve Borsa Çöküşü Arasındaki Fark — `Borsa` — hedef: "borsa neden düşer"
+- [x] Borsa Neden Düşer? Piyasa Düzeltmesi ve Borsa Çöküşü Arasındaki Fark — `Borsa` — hedef: "borsa neden düşer"
 - [ ] Temettü Verimi (Dividend Yield) Nedir? Yüksek Temettü Hisseleri Nasıl Seçilir? — `Borsa` — hedef: "temettü verimi nedir"
 - [ ] Enflasyon Korumalı Tahvil (TIPS) Nedir? Reel Getiri ve Yatırım Rehberi — `Yatırım` — hedef: "tips nedir enflasyon korumalı tahvil"
 - [ ] Hisse Senedi Piyasa Değeri Nedir? Large Cap, Mid Cap, Small Cap Farkı — `Borsa` — hedef: "piyasa değeri nedir hisse senedi"
@@ -254,3 +254,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] MSCI Gelişmekte Olan Piyasalar Endeksi Nedir? Türkiye'nin Ağırlığı ve Yatırım Rehberi — `msci-gelismekte-olan-piyasalar-nedir` (backlog ilk [ ] konusu: evergreen yatırım; "msci gelişmekte olan piyasalar nedir" sorgusu; S&P 500 + Russell 2000 + ETF + portföy çeşitlendirme cluster'ını tamamlayan uluslararası yatırım rehberi; Türkiye ağırlığı + rebalans etkisi + EEM/VWO/IEMG karşılaştırması; 29 Ağustos 2026)
 
 - [x] Parasal Genişleme (QE) Nedir? Merkez Bankası Para Basma ve Piyasa Etkisi — `parasal-genisleme-nedir` (backlog ilk [ ] konusu: evergreen ekonomi; "parasal genişleme nedir" sorgusu; QT + reel faiz + Fed faiz kararı + verim eğrisi cluster'ını tamamlayan temel para politikası rehberi; QE tarihsel örnekler tablosu + QE vs geleneksel politika karşılaştırması + Türk yatırımcı pratik rehberi; 29 Ağustos 2026)
+
+- [x] Borsa Neden Düşer? Piyasa Düzeltmesi ve Borsa Çöküşü Arasındaki Fark — `borsa-neden-duser-piyasa-duzeltmesi` (backlog ilk [ ] konusu: evergreen borsa; "borsa neden düşer" sorgusu; düzeltme/bear market/çöküş farkı tablosu + tarihsel büyük krizler + Türk yatırımcısı pratik rehberi; resesyon + VIX + stop-loss + portföy çeşitlendirmesi cluster'ını tamamlayan temel borsa dinamikleri yazısı; 30 Ağustos 2026)
