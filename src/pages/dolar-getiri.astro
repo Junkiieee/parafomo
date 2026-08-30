@@ -1,12 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
-import data from '../../data/altin-getiri.json';
+import data from '../../data/dolar-getiri.json';
+import gold from '../../data/altin-getiri.json';
 
 type Period = {
   label: string; years?: number;
-  gram_tl_then: number; gram_tl_now: number; return_tl_pct: number;
-  oz_usd_then: number; oz_usd_now: number; return_usd_pct: number;
+  usdtry_then: number; usdtry_now: number; return_tl_pct: number;
 };
 
 const periods = (data.periods ?? []) as Period[];
@@ -18,27 +18,38 @@ const pct = (n: number) => (n > 0 ? '+' : '') + n.toLocaleString('tr-TR', { maxi
 const toneOf = (n: number) => (n > 0 ? 'up' : n < 0 ? 'down' : 'flat');
 
 const ten = periods.find((p) => p.years === 10) ?? periods[periods.length - 1];
-// "10.000 TL koysaydın" — en uzun dönem üzerinden
+// "10.000 TL'yi dolara çevirseydin" — en uzun dönem üzerinden
 const seed = 10000;
-const gramsThen = seed / ten.gram_tl_then;
-const valueNow = gramsThen * ten.gram_tl_now;
+const usdThen = seed / ten.usdtry_then;
+const valueNow = usdThen * ten.usdtry_now;
+
+// Altın ile kıyas (aynı dönem, TL bazında) — kümeyi bağlar, özgün içgörü
+const goldTen = (gold.periods ?? []).find((p: any) => p.years === ten.years);
+const goldRetTl = goldTen ? goldTen.return_tl_pct : null;
+const goldMultiple = goldTen ? (1 + goldTen.return_tl_pct / 100) / (1 + ten.return_tl_pct / 100) : null;
 
 const faqs = [
   {
-    q: `Altın son ${ten.years} yılda ne kadar kazandırdı?`,
-    a: `Gram altın son ${ten.years} yılda TL bazında %${fmt(ten.return_tl_pct)}, dolar (ons) bazında ise %${fmt(ten.return_usd_pct)} değer kazandı. TL getirisinin çok daha yüksek görünmesinin nedeni, aynı dönemde Türk lirasının dolar karşısında büyük değer kaybetmesidir; altının "gerçek" (döviz bazlı) getirisi ons fiyatındaki değişimdir.`,
+    q: `Dolar son ${ten.years} yılda TL bazında ne kadar kazandırdı?`,
+    a: `USD/TRY kuru son ${ten.years} yılda yaklaşık ${fmt(ten.usdtry_then)}'den ${fmt(ten.usdtry_now)}'ye çıktı; yani doları elde tutan biri TL bazında %${fmt(ten.return_tl_pct)} kazandı. Ancak bu "kazanç" gerçek bir zenginleşme değil, büyük ölçüde Türk lirasının değer kaybının aynadaki yansımasıdır: dolar bazında 1 dolar hâlâ 1 dolardır.`,
   },
   {
-    q: 'Neden TL getirisi dolar getirisinden bu kadar yüksek?',
-    a: 'Türkiye\'de altın fiyatı iki bileşenden oluşur: ons altının dolar fiyatı ve dolar/TL kuru. Gram altın TL ≈ (ons USD ÷ 31,1035) × USD/TRY. TL değer kaybettikçe aynı miktar altın daha çok TL eder. Bu yüzden TL getirisi hem altının küresel yükselişini hem de kur artışını içerir; enflasyona karşı korunma etkisi de buradan gelir.',
+    q: 'Dolar tutmak gerçekten kazandırıyor mu, yoksa TL mi eriyor?',
+    a: 'İkisi aynı olgunun iki yüzü. Dolar/TL yükseldiğinde, doları olan kişinin TL cinsinden serveti artar — ama alım gücü olarak dolar sabit kalır, asıl olan TL\'nin erimesidir. Bu yüzden dolar, Türkiye\'de bir "yatırım" olmaktan çok enflasyona ve kur riskine karşı bir korunma (hedge) aracıdır. Gerçek getiri için doların kendi enflasyonundan (ABD TÜFE) arındırılması gerekir.',
   },
   {
-    q: '10.000 TL\'yi altına koysaydım bugün ne olurdu?',
-    a: `${ten.years} yıl önce 10.000 TL ile yaklaşık ${fmt(gramsThen)} gram altın alınabilirdi. Bugünkü gram fiyatıyla bu ${fmt0(valueNow)} TL eder. Yani sadece altında tutmak, aynı parayı yastık altında TL olarak tutmaya kıyasla alım gücünü büyük ölçüde korurdu. (Geçmiş getiri gelecek getirinin garantisi değildir.)`,
+    q: `10.000 TL'yi ${ten.years} yıl önce dolara çevirseydim bugün ne olurdu?`,
+    a: `${ten.years} yıl önce 10.000 TL ile yaklaşık ${fmt(usdThen)} dolar alınabilirdi. Bugünkü kurla bu ${fmt0(valueNow)} TL eder. Aynı 10.000 TL'yi yastık altında TL olarak tutsaydınız bugün yine 10.000 TL olurdu — ama alım gücü büyük ölçüde erimiş olurdu. (Geçmiş getiri gelecek getirinin garantisi değildir.)`,
   },
   {
-    q: 'Bu rakamlar kesin işlem fiyatı mı?',
-    a: 'Hayır, göstergedir. Ons altın (GC=F) ve USD/TRY için Yahoo Finance verisi kullanılır; gram fiyatı bu ikisinden hesaplanır. Kuyumcu alış-satış makası, işçilik ve anlık piyasa farkları nedeniyle gerçek alım-satım fiyatı biraz farklı olabilir. Güncel kuyumcu fiyatları için altın fiyatları sayfamıza bakın.',
+    q: 'Dolar mı altın mı daha çok kazandırdı?',
+    a: goldRetTl !== null
+      ? `Son ${ten.years} yılda gram altın TL bazında %${fmt0(goldRetTl)}, dolar ise %${fmt0(ten.return_tl_pct)} kazandırdı. Yani altın aynı dönemde doları TL bazında yaklaşık ${fmt(goldMultiple as number)} katına çıkardı; çünkü altın hem kur artışından hem de ons altının küresel yükselişinden faydalandı, dolar ise yalnızca kur etkisini taşır. Detaylı karşılaştırma için altın getirisi sayfamıza bakabilirsiniz.`
+      : `Altın ve dolar getirilerini altın getirisi sayfamızda aynı dönem için karşılaştırdık.`,
+  },
+  {
+    q: 'Bu rakamlar kesin işlem kuru mu?',
+    a: 'Hayır, göstergedir. USD/TRY için Yahoo Finance aylık kapanış verisi kullanılır. Bankalar ve döviz bürolarının alış-satış makası, anlık piyasa hareketleri ve komisyonlar nedeniyle gerçek işlem kuru biraz farklı olabilir. Güncel dolar endeksi ve kur bağlamı için dolar endeksi (DXY) sayfamıza bakın.',
   },
 ];
 const faqLd = {
@@ -49,19 +60,19 @@ const faqLd = {
 ---
 
 <BaseLayout
-  title={`Altın Ne Kadar Kazandırdı? 1, 5, 10 Yıllık Getiri (TL ve Dolar)`}
-  description={`Gram altın son ${ten.years} yılda TL bazında %${fmt0(ten.return_tl_pct)}, dolar bazında %${fmt0(ten.return_usd_pct)} kazandırdı. Altının 1, 3, 5, 10 yıllık ve yıl başından beri getirisi tek tabloda — her gün güncel.`}
+  title={`Dolar Ne Kadar Kazandırdı? 1, 5, 10 Yıllık Getiri (TL Bazında)`}
+  description={`Doları elde tutmak son ${ten.years} yılda TL bazında %${fmt0(ten.return_tl_pct)} kazandırdı. USD/TRY'nin 1, 3, 5, 10 yıllık ve yıl başından beri getirisi tek tabloda — altınla karşılaştırmalı, her gün güncel.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
 
   <section class="container gr-hero">
-    <span class="eyebrow"><span class="pulse"></span> Özgün veri · Altın getirisi</span>
-    <h1>Altın Ne Kadar Kazandırdı?</h1>
+    <span class="eyebrow"><span class="pulse"></span> Özgün veri · Dolar getirisi</span>
+    <h1>Dolar Ne Kadar Kazandırdı?</h1>
     <p class="lede soft">
-      Gram altını 1, 3, 5 ve 10 yıl önce alsaydınız bugün elinizde ne olurdu? Hem TL hem dolar
-      (ons) bazında gerçek getiri — enflasyon ve kur etkisini ayırarak, tek tabloda, her gün güncel.
+      Doları 1, 3, 5 ve 10 yıl önce alsaydınız bugün TL bazında ne olurdu? USD/TRY'nin gerçek
+      geçmiş getirisi — altınla karşılaştırmalı, tek tabloda, her gün güncel.
     </p>
-    <p class="gr-upd">Son güncelleme: {updated} · Gram altın ≈ {fmt0(data.gram_tl_now)} TL</p>
+    <p class="gr-upd">Son güncelleme: {updated} · USD/TRY ≈ {fmt(data.usdtry_now)}</p>
   </section>
 
   <section class="container gr-stats">
@@ -70,83 +81,81 @@ const faqLd = {
       <span class="stat-lbl">{ten.years} yıllık getiri (TL)</span>
     </div>
     <div class="stat card">
-      <span class={`stat-num ${ten.return_usd_pct >= 0 ? 'up' : 'down'}`}>{pct(ten.return_usd_pct)}</span>
-      <span class="stat-lbl">{ten.years} yıllık getiri (dolar / ons)</span>
-    </div>
-    <div class="stat card">
       <span class={`stat-num ${ytd.return_tl_pct >= 0 ? 'up' : 'down'}`}>{pct(ytd.return_tl_pct)}</span>
       <span class="stat-lbl">Yıl başından beri (TL)</span>
     </div>
     <div class="stat card">
-      <span class="stat-num">{fmt0(data.gram_tl_now)} ₺</span>
-      <span class="stat-lbl">Güncel gram altın (gösterge)</span>
+      <span class="stat-num">{fmt(data.usdtry_now)} ₺</span>
+      <span class="stat-lbl">Güncel USD/TRY (gösterge)</span>
+    </div>
+    <div class="stat card">
+      <span class="stat-num">{fmt0(valueNow)} ₺</span>
+      <span class="stat-lbl">{ten.years} yıl önce dolara çevrilen 10.000 ₺</span>
     </div>
   </section>
 
   <section class="container gr-section">
-    <h2 class="gr-h2">Altın getiri tablosu <span class="gr-count">gram altın</span></h2>
+    <h2 class="gr-h2">Dolar getiri tablosu <span class="gr-count">USD/TRY</span></h2>
     <div class="gr-tablewrap">
       <table class="gr-table">
         <thead>
           <tr>
             <th>Dönem</th>
-            <th class="r">O zaman (gram ₺)</th>
-            <th class="r">Bugün (gram ₺)</th>
+            <th class="r">O zaman (USD/TRY)</th>
+            <th class="r">Bugün (USD/TRY)</th>
             <th class="r">Getiri (TL)</th>
-            <th class="r">Getiri ($/ons)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td class="gr-co"><span class="gr-name">{ytd.label}</span></td>
-            <td class="r gr-mono">{fmt0(ytd.gram_tl_then)}</td>
-            <td class="r gr-mono">{fmt0(ytd.gram_tl_now)}</td>
+            <td class="r gr-mono">{fmt(ytd.usdtry_then)}</td>
+            <td class="r gr-mono">{fmt(ytd.usdtry_now)}</td>
             <td class="r"><span class={`gr-ret tone-${toneOf(ytd.return_tl_pct)}`}>{pct(ytd.return_tl_pct)}</span></td>
-            <td class="r"><span class={`gr-ret tone-${toneOf(ytd.return_usd_pct)}`}>{pct(ytd.return_usd_pct)}</span></td>
           </tr>
           {periods.map((p) => (
             <tr>
               <td class="gr-co"><span class="gr-name">Son {p.label}</span></td>
-              <td class="r gr-mono">{fmt0(p.gram_tl_then)}</td>
-              <td class="r gr-mono">{fmt0(p.gram_tl_now)}</td>
+              <td class="r gr-mono">{fmt(p.usdtry_then)}</td>
+              <td class="r gr-mono">{fmt(p.usdtry_now)}</td>
               <td class="r"><span class={`gr-ret tone-${toneOf(p.return_tl_pct)}`}>{pct(p.return_tl_pct)}</span></td>
-              <td class="r"><span class={`gr-ret tone-${toneOf(p.return_usd_pct)}`}>{pct(p.return_usd_pct)}</span></td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
     <p class="gr-tnote">
-      Gram altın TL ≈ (ons USD ÷ 31,1035) × USD/TRY. "Getiri (TL)" hem altının küresel yükselişini
-      hem kur artışını içerir; "Getiri ($/ons)" altının döviz bazlı gerçek değer değişimidir. Göstergedir.
+      "Getiri (TL)", doları elde tutup bugün TL'ye çevirmenin nominal kazancıdır — büyük ölçüde
+      TL'nin değer kaybını yansıtır, dolar bazında 1 dolar yine 1 dolardır. Göstergedir.
     </p>
   </section>
 
   <section class="container gr-body">
-    <h2 class="gr-h2">10.000 TL'yi {ten.years} yıl önce altına koysaydınız?</h2>
+    <h2 class="gr-h2">10.000 TL'yi {ten.years} yıl önce dolara çevirseydiniz?</h2>
     <p>
-      {ten.years} yıl önce 10.000 TL ile yaklaşık <strong>{fmt(gramsThen)} gram altın</strong>
-      alabilirdiniz. Bugünkü gram fiyatıyla bu <strong>{fmt0(valueNow)} TL</strong> ediyor. Aynı
-      10.000 TL'yi yastık altında nakit tutsaydınız, bugün yine 10.000 TL olurdu — ama alım gücü
-      çoktan erimiş olurdu. Altının buradaki asıl işlevi "zengin etmek" değil, <strong>enflasyona ve
-      kur kaybına karşı alım gücünü korumaktır.</strong>
+      {ten.years} yıl önce 10.000 TL ile yaklaşık <strong>{fmt(usdThen)} dolar</strong>
+      alabilirdiniz. Bugünkü kurla bu <strong>{fmt0(valueNow)} TL</strong> ediyor. Aynı 10.000 TL'yi
+      nakit TL olarak tutsaydınız bugün yine 10.000 TL olurdu — ama alım gücü çoktan erimişti.
+      Doların buradaki işlevi "zengin etmek" değil, <strong>TL'nin erimesine ve kur riskine karşı
+      alım gücünü korumaktır.</strong>
     </p>
+    {goldRetTl !== null && (
+      <p>
+        Yine de dikkat: aynı {ten.years} yılda <strong>gram altın TL bazında %{fmt0(goldRetTl)}</strong>
+        kazandırırken dolar %{fmt0(ten.return_tl_pct)} kazandırdı — yani <strong>altın, doları TL bazında
+        yaklaşık {fmt(goldMultiple as number)} katına çıkardı.</strong> Bunun nedeni, altının hem kur
+        artışından hem de ons altının küresel yükselişinden faydalanması; dolar ise yalnızca kur
+        etkisini taşır. Bu yüzden uzun vadede altın, saf dövize kıyasla daha güçlü bir enflasyon
+        koruması olmuştur.
+      </p>
+    )}
     <p>
-      Dikkat edilmesi gereken nokta şu: TL bazında %{fmt0(ten.return_tl_pct)} gibi devasa bir getiri
-      görünse de, bunun büyük kısmı Türk lirasının değer kaybından gelir. Altının <strong>dolar (ons)
-      bazındaki getirisi %{fmt0(ten.return_usd_pct)}</strong> — yani küresel olarak altın da yükseldi,
-      ama TL'deki rakam kadar değil. Bu ayrımı görmek, "altın her zaman kazandırır" algısını daha
-      gerçekçi bir çerçeveye oturtur: altın sizi enflasyondan korur, ama getirinin çoğu çoğu zaman
-      kur etkisidir.
-    </p>
-    <p>
-      Farklı altın türlerinin (gram, çeyrek, ata, ziynet) makası ve işçilik farkı için
-      <a href="/blog/altin-cesitleri-farki">altın çeşitleri rehberimize</a>, güncel kuyumcu
-      fiyatları için <a href="/altin-fiyatlari">altın fiyatları sayfamıza</a>, belirli bir gram/adet
-      için TL karşılığını hesaplamak içinse <a href="/altin-hesaplama">altın hesaplama aracımıza</a>
-      bakabilirsiniz. Aynı dönemde <a href="/dolar-getiri">doların TL bazında ne kadar kazandırdığını</a>
-      karşılaştırmalı olarak inceleyebilir, altın mı dolar mı sorusunu ise
-      <a href="/blog/altin-mi-dolar-mi">bu yazıda</a> ayrıntılı ele aldığımızı görebilirsiniz.
+      Dolar/TL'yi neyin hareket ettirdiğini ve dolar endeksinin (DXY) TL üzerindeki etkisini
+      <a href="/dolar-endeksi">dolar endeksi sayfamızda</a>, altının aynı dönemdeki getirisini
+      <a href="/altin-getiri">altın getirisi sayfamızda</a> bulabilirsiniz. Altın mı dolar mı
+      sorusunu ise <a href="/blog/altin-mi-dolar-mi">bu yazıda</a> ayrıntılı karşılaştırdık; döviz
+      hesabıyla nasıl dolar tutulacağını <a href="/blog/doviz-hesabi-nedir">döviz hesabı rehberimizde</a>
+      anlattık.
     </p>
   </section>
 
@@ -224,7 +233,7 @@ const faqLd = {
 <script define:vars={{ built: data.updated }}>
   async function checkUpdate() {
     try {
-      const r = await fetch('/altin-getiri.json?_=' + Date.now(), { cache: 'no-store' });
+      const r = await fetch('/dolar-getiri.json?_=' + Date.now(), { cache: 'no-store' });
       const d = await r.json();
       if (d && d.updated && d.updated !== built) location.reload();
     } catch { /* yoksay */ }

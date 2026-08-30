@@ -100,6 +100,7 @@ SECONDARY_TOOLS = [
     "🏛️ Sıradaki Fed kararına kaç gün kaldı? → parafomo.com/fed-faiz-takvimi",
     "🚀 Güncel halka arzlar ve tarihleri → parafomo.com/halka-arz",
     "🏆 Altın 10 yılda ne kadar kazandırdı? → parafomo.com/altin-getiri",
+    "💵 Dolar mı kazandırdı altın mı? 10 yılın farkı → parafomo.com/dolar-getiri",
 ]
 
 

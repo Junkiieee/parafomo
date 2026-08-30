@@ -246,7 +246,11 @@ def main():
         "işçilik payı, altını atıl tutmanın maliyeti; (b) KAYIP-KORKUSU/karşıt görüş — "
         "'paran sessizce eriyor', 'banka seni değil kendini korur', 'maaşın artıyor ama "
         "serveti nerede', 'güvende sandığın araç aslında kaybettiriyor'; (c) OTORİTE DELME "
-        "— uzman/fon/kurum neden yetersiz kaldı. Sıkıcı 'X nedir' tanımından KAÇIN.")
+        "— uzman/fon/kurum neden yetersiz kaldı; (d) GERÇEK-VERİ ŞOKU — kendi güncel veri "
+        "sayfalarımızdaki çarpıcı rakamlar: son 10 yılda altın TL bazında dolardan ~3.6 KAT "
+        "fazla kazandırdı (altın ~%5450 vs dolar ~%1509); '10.000 TL'yi 10 yıl önce dolara "
+        "çevirseydin bugün ~160 bin TL, ama altına koysaydın ~550 bin TL' gibi somut "
+        "kur-vs-altın kıyasları izleyiciyi çarpar. Sıkıcı 'X nedir' tanımından KAÇIN.")
     topic_line = (f"KONU (bu konuyu işle): {args.topic}" if args.topic
                   else "KONU: Türk yatırımcısının ilgisini çekecek TAZE bir konuyu SEN seç.\n" + WINNING_THEMES)
 

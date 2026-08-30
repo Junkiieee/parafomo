@@ -49,6 +49,10 @@ python3 "$REPO/scripts/dxy.py" 2>&1 | sed 's/^/    [dxy] /' || echo "UYARI: dola
 echo "[*] Altın getiri analizi hesaplanıyor"
 python3 "$REPO/scripts/gold-returns.py" 2>&1 | sed 's/^/    [altin-getiri] /' || echo "UYARI: altın getiri güncellenemedi (mevcut korunur, devam)"
 
+# 1b4c) Dolar tarihsel getiri (data/dolar-getiri.json -> /dolar-getiri sayfası)
+echo "[*] Dolar getiri analizi hesaplanıyor"
+python3 "$REPO/scripts/dollar-returns.py" 2>&1 | sed 's/^/    [dolar-getiri] /' || echo "UYARI: dolar getiri güncellenemedi (mevcut korunur, devam)"
+
 # 1b5) Güncel ABD tahvil faizleri çek (data/us-tahvil.json -> /abd-tahvil-faizi sayfası)
 echo "[*] ABD tahvil faizleri (getiri eğrisi) çekiliyor"
 python3 "$REPO/scripts/us-tahvil.py" 2>&1 | sed 's/^/    [ustahvil] /' || echo "UYARI: ABD tahvil faizleri güncellenemedi (mevcut korunur, devam)"
