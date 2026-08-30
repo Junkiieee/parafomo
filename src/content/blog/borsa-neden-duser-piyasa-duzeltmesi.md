@@ -17,6 +17,23 @@ faq:
     a: "Panik satışından kaçının; portföy çeşitlendirmesi ve uzun vadeli bakış açısı en iyi korunma yöntemleridir. Stop-loss emirleri ve kademeli alım stratejisi (DCA) düşüş dönemlerinde yatırımcıyı korur."
   - q: "Borsa çöküşü ne kadar sürer?"
     a: "Tarihsel verilere göre borsa çöküşleri ortalama 9–18 ay sürmektedir. 2008 krizi yaklaşık 17 ay, 2020 COVID paniği ise yalnızca 33 gün sürdü. Toparlanma süresi düşüşün şiddetine ve ekonomik temellere bağlıdır."
+shorts:
+  - "Düşüş çöküş mü, düzeltme mi — farkı biliyor musun?"
+  - "Faiz yükselince şirketlerin kârı düşer, tahvil cazip gelir ve borsa geriler."
+  - "Zirveden yüzde 10-20 düşüş düzeltmedir; yüzde 20 üstü ise bear market."
+  - "COVID'de S&P 500 sadece 33 günde yüzde 34 düşüp yıl sonunda toparladı."
+  - "Peki bir sonraki düşüşte ne yapacaksın? parafomo.com'da detayları oku, kanala abone ol — doğru kararı önceden ver."
+shorts_broll:
+  - "stock market crash red screen"
+  - "federal reserve interest rate decision"
+  - "bear market chart decline"
+  - "panic selling stock exchange floor"
+shorts_visuals:
+  - "concept|stock market chart falling red"
+  - "concept|interest rate hike financial pressure"
+  - "concept|bear market correction chart comparison"
+  - "concept|panic selling investors crowd"
+  - "concept|investor reading financial news laptop"
 ---
 
 Dün gece uyurken portföyünüz yüzde beş gerilemiş. Haberler kaygı verici, sosyal medya panik dolu, çevrenizdeki herkes "daha da düşecek" diyor. **Borsa neden düşer** ve bu düşüş sıradan bir düzeltme mi, yoksa büyük bir çöküşün başlangıcı mı?
