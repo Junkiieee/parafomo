@@ -4,6 +4,85 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-30 (2. yayın)
+
+**Yayınlanan yazı:** [Temettü Verimi (Dividend Yield) Nedir? Yüksek Temettü Hisseleri Nasıl Seçilir?](https://parafomo.com/blog/temettu-verimi-nedir/)
+**Hedef sorgu:** `temettü verimi nedir` / `dividend yield nedir`
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+"%15 temettü verimi gördüm, müthiş fırsat!" — dur bir dakika.
+
+Yüksek verimin yarısı tuzaktır. Nasıl ayırt edilir? 👇
+
+**Tweet 2:**
+Formül basit:
+Yıllık Temettü ÷ Hisse Fiyatı × 100
+
+Hisse 50 TL, temettü 4 TL → %8 verim ✅
+
+Ama hisse 6 ay önce 200 TL'deydi ise?
+O %8, aslında %75 zarardır 🔴
+
+**Tweet 3:**
+Tuzaktan kaçmak için kontrol listesi:
+
+✅ Payout ratio < %80 mı?
+✅ Son 5 yıl düzenli ödedi mi?
+✅ Borç/özkaynak makul mu?
+✅ Kâr büyüyor mu?
+
+Hepsine evet → gerçek temettü fırsatı
+
+**Tweet 4:**
+BIST'te en yüksek verimi kim sunar?
+
+GYO → %5-15
+Holdingler → %3-8
+Bankacılık → %3-7 (BDDK kısıtlı)
+Teknoloji → %0-2
+
+GYO'lar öne çıkıyor ama seçim kriteri şart 👆
+
+**Tweet 5:**
+Detaylı rehber → parafomo.com/blog/temettu-verimi-nedir/
+
+Payout ratio hesabı + sektör karşılaştırma tablosu + adım adım BIST filtresi içeriyor 📊
+
+---
+
+### 📸 Instagram Carousel / Post Metni
+
+**Başlık:** Temettü Verimi Nedir? Yüksek = İyi Değil
+
+**Post metni:**
+Yüksek temettü verimi gördüğünde ne yaparsın?
+
+Hemen alırım diyorsan, bu gönderi tam sana göre 👇
+
+📌 Temettü verimi = Yıllık Temettü ÷ Hisse Fiyatı × 100
+📌 %80 altı payout ratio = sürdürülebilir
+📌 5 yıl düzenli ödeme = güvenilir şirket işareti
+📌 Sadece verimi değil; F/K, borç oranı ve kâr büyümesini birlikte değerlendir
+
+BIST'te GYO'lar en yüksek verimi sunar — ama doğru seçim yapmak için kriterleri bilmek şart.
+
+Tüm detaylar → profildeki link
+
+#temettü #temettüverimi #dividendyield #borsa #bist #hissesenedi #yatırım
+
+---
+
+### ✅ Bugün Yapman Gerekenler
+
+1. **Paylaşımı yayınla:** Yukarıdaki X thread'ini ve Instagram post'unu paylaş. Instagram'da carousel oluşturmak için formülü ve tabloyu görsel olarak hazırla (Canva gibi bir araç).
+2. **Toplulukta değer kat:** Reddit r/Turkey veya ilgili bir Türkiye finans Telegram grubunda "temettü verimi hesabı nasıl yapılır?" sorusuna değer katarak yanıt ver ve parafomo.com'daki rehberi referans göster (spam değil, gerçekten yardımcı ol).
+
+---
+
 ## 2026-08-30
 
 **Yayınlanan yazı:** [Borsa Neden Düşer? Piyasa Düzeltmesi ve Borsa Çöküşü Arasındaki Fark](https://parafomo.com/blog/borsa-neden-duser-piyasa-duzeltmesi)

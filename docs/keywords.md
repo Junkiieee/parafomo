@@ -80,15 +80,17 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Nasdaq 100 Nedir? ABD Teknoloji Borsasına Türkiye'den Nasıl Yatırım Yapılır? — `Borsa` — hedef: "nasdaq 100 nedir"
 - [x] Russell 2000 Nedir? ABD Küçük Şirket Endeksi ve Yatırımcı Rehberi — `Borsa` — hedef: "russell 2000 nedir"
 - [x] MSCI Gelişmekte Olan Piyasalar Endeksi Nedir? Türkiye'nin Ağırlığı ve Etkisi — `Yatırım` — hedef: "msci gelişmekte olan piyasalar nedir"
-- [ ] Parasal Genişleme (QE) Nedir? Merkez Bankası Para Basma ve Piyasa Etkisi — `Ekonomi` — hedef: "parasal genişleme nedir"
+- [x] Parasal Genişleme (QE) Nedir? Merkez Bankası Para Basma ve Piyasa Etkisi — `Ekonomi` — hedef: "parasal genişleme nedir"
 - [x] Borsa Neden Düşer? Piyasa Düzeltmesi ve Borsa Çöküşü Arasındaki Fark — `Borsa` — hedef: "borsa neden düşer"
-- [ ] Temettü Verimi (Dividend Yield) Nedir? Yüksek Temettü Hisseleri Nasıl Seçilir? — `Borsa` — hedef: "temettü verimi nedir"
+- [x] Temettü Verimi (Dividend Yield) Nedir? Yüksek Temettü Hisseleri Nasıl Seçilir? — `Borsa` — hedef: "temettü verimi nedir"
 - [ ] Enflasyon Korumalı Tahvil (TIPS) Nedir? Reel Getiri ve Yatırım Rehberi — `Yatırım` — hedef: "tips nedir enflasyon korumalı tahvil"
 - [ ] Hisse Senedi Piyasa Değeri Nedir? Large Cap, Mid Cap, Small Cap Farkı — `Borsa` — hedef: "piyasa değeri nedir hisse senedi"
 - [ ] Volatilite Nedir? Standart Sapma ve Sharpe Oranı ile Risk Ölçümü — `Yatırım` — hedef: "volatilite nedir yatırım"
 - [ ] Gayrimenkul mi Borsa mı? 2026'da Hangi Yatırım Daha Mantıklı? — `Yatırım` — hedef: "gayrimenkul mi borsa mı"
 
 ## Yayınlananlar (otomasyon buraya ekler)
+
+- [x] Temettü Verimi (Dividend Yield) Nedir? Yüksek Temettü Hisseleri Nasıl Seçilir? — `temettu-verimi-nedir` (backlog ilk [ ] konusu: evergreen borsa; "temettü verimi nedir" sorgusu; temettü hisseleri + buyback + F/K + GYO cluster'ını tamamlayan temel değerleme göstergesi rehberi; payout ratio tuzağı + sektör karşılaştırma tablosu + BIST pratik seçim adımları; 30 Ağustos 2026)
 
 - [x] Nasdaq 100 Nedir? ABD Teknoloji Borsasına Türkiye'den Nasıl Yatırım Yapılır? — `nasdaq-100-nedir-teknoloji-borsasina-yatirim` (backlog genişletme: evergreen borsa; "nasdaq 100 nedir" sorgusu; S&P 500 + Dow Jones + ETF cluster'ını tamamlayan üçüncü büyük ABD endeks rehberi; finans dışı Top 100 şirket + QQQ/QQQM karşılaştırması + Tefas alternatifi; 27 Ağustos 2026)
 
