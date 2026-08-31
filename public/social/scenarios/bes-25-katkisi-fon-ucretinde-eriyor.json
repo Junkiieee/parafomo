@@ -1,0 +1,59 @@
+{
+  "slug": "bes-25-katkisi-fon-ucretinde-eriyor",
+  "title": "BES %25 Katkısı Fon Ücretinde Eriyor",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Devlet BES'e %25 katkı ekliyor ama yıllık fon yönetim ücretleri on yılda bu avantajı büyük ölçüde yutuyor. Girmeden önce rakamları bilmek şart.",
+  "tags": [
+    "BES",
+    "bireysel emeklilik sistemi",
+    "devlet katkısı",
+    "fon yönetim ücreti",
+    "emeklilik",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "BES katkısı sandığın kadar kazandırmıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "retirement savings piggy bank coins money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Devlet %25 ekliyor — bu doğru. Ama fon şirketi yıllık yaklaşık yüzde iki yönetim ücreti kesiyor, fark etmeden.",
+      "visual": {
+        "type": "concept",
+        "query": "fund management fee fine print contract document"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "On yılda bu ücret katkının büyük bölümünü yutuyor. Erken çıkarsan kazancın yüzde on beşini de vergi alıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "cash money drain disappearing tax payment"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "BES tamamen kötü değil. Ama katkıyı bedava para sanarak girmek tehlikeli. Rakamı önce kendin hesapla.",
+      "visual": {
+        "type": "concept",
+        "query": "calculator financial planning retirement fund"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Hangi araç enflasyonu gerçekten döver? Yanıt yakında burada. Abone ol — her gün altmış saniyede bir finans gerçeği.",
+      "visual": {
+        "type": "concept",
+        "query": "subscribe bell notification social media phone"
+      }
+    }
+  ]
+}
