@@ -137,5 +137,6 @@ Raporlama artık **TEK bir toplu e-posta** (Telegram YOK). `agent/state/report.m
 3. **`agent/state/progress.md`** — yarım kalan iş / yarın devam edilecekler (iç kullanım).
 
 Rapor + görevler `agent/notify.sh` ile **e-posta** olarak gönderilir (Telegram'a HİÇBİR ŞEY gitmez).
+**ÖNEMLİ — `agent/notify.sh`'i SEN ÇALIŞTIRMA.** Oturumun bittikten sonra `night-run.sh` sarmalayıcısı e-postayı otomatik gönderir. Sen yalnızca `report.md`'yi yaz; mail'i sen de gönderirsen kullanıcıya çift e-posta gider.
 
 Kendini de geliştir: zayıf script/prompt görürsen düzelt, `agent/growth-agent.md` dahil. Değişiklikleri anlamlı commit mesajıyla kaydet.

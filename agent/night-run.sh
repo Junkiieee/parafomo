@@ -26,7 +26,7 @@ DRY=0
 STAMP="$(date -u +%Y%m%d-%H%M)"
 LOGDIR="$REPO/agent/logs"; mkdir -p "$LOGDIR"
 MODEL="${AGENT_MODEL:-opus}"
-EFFORT="${AGENT_EFFORT:-high}"
+EFFORT="${AGENT_EFFORT:-medium}"
 
 echo "[night $STAMP] başlıyor (model=$MODEL, dry=$DRY)"
 

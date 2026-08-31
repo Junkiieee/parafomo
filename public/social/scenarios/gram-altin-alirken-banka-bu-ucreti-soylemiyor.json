@@ -1,0 +1,59 @@
+{
+  "slug": "gram-altin-alirken-banka-bu-ucreti-soylemiyor",
+  "title": "Gram Altın Alırken Banka Bu Ücreti Söylemiyor",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Bankadan gram altın aldığında görünmeyen bir maliyet var: alış-satış makası. İlk günden yaklaşık yüzde 4 zararda başlıyorsun.",
+  "tags": [
+    "gram altın",
+    "altın yatırımı",
+    "banka altın",
+    "banka ücretleri",
+    "yatırım",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Bankadan altın alan, anında yüzde 4 zararda.",
+      "visual": {
+        "type": "scene",
+        "query": "bank teller counter exchange money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bankanın alış ve satış fiyatı aynı değil. Aradaki fark yaklaşık yüzde 4'e çıkıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "buy sell price gap financial chart screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kuyumcuda bu makas yarıya düşüyor. Aynı altın, bankada çok daha pahalıya geliyor.",
+      "visual": {
+        "type": "scene",
+        "query": "jewelry store gold display showcase Turkey"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Uzun vade tutuyorsan fark erir. Ama acil satışta banka önce kendi payını alır.",
+      "visual": {
+        "type": "scene",
+        "query": "person counting cash emergency money urgent"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Hangi yatırım aracının gizli maliyeti en yüksek? Kanalda cevap bekliyor. Abone ol — her gün 30 saniyede tek net gerçek.",
+      "visual": {
+        "type": "scene",
+        "query": "person watching financial content smartphone"
+      }
+    }
+  ]
+}

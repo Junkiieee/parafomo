@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-30",
+  "updated": "2026-08-31",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
@@ -22,6 +22,15 @@
       "hook": ""
     },
     {
+      "date": "2026-09-01",
+      "time": "2:00pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "ISM Manufacturing PMI",
+      "source": "forexfactory",
+      "hook": "ISM/PMI — ABD ekonomik aktivitesi, risk iştahı."
+    },
+    {
       "date": "2026-09-03",
       "time": "10:00",
       "region": "TR",
@@ -29,6 +38,42 @@
       "title": "TÜİK enflasyon (TÜFE) verisi",
       "source": "tuik-rule",
       "hook": "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı."
+    },
+    {
+      "date": "2026-09-04",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Average Hourly Earnings m/m",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-09-04",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Non-Farm Employment Change",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-09-04",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Unemployment Rate",
+      "source": "forexfactory",
+      "hook": "İşsizlik verisi — büyüme ve faiz beklentisi."
+    },
+    {
+      "date": "2026-09-04",
+      "time": "8:50am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "BOE Gov Bailey Speaks",
+      "source": "forexfactory",
+      "hook": ""
     },
     {
       "date": "2026-09-10",
@@ -47,6 +92,15 @@
       "hook": "Karar gerekçesi yorumu.",
       "time": "",
       "source": "tcmb"
+    },
+    {
+      "date": "2026-10-05",
+      "time": "10:00",
+      "region": "TR",
+      "impact": "High",
+      "title": "TÜİK enflasyon (TÜFE) verisi",
+      "source": "tuik-rule",
+      "hook": "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı."
     }
   ]
 }

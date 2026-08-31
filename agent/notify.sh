@@ -30,6 +30,16 @@ fi
 BODY_FILE="$REPO/agent/state/report.md"
 [ -f "$BODY_FILE" ] || { echo "[mail] rapor dosyası yok (beyin oturumu yarım kalmış olabilir)"; exit 0; }
 
+# --- Günde tek gönderim kilidi (çift e-posta önlemi) ---
+# Hem beyin ajanı hem night-run wrapper notify.sh çağırabilir; kim önce başarıyla
+# gönderirse marker konur, aynı UTC günü içindeki ikinci çağrı atlanır.
+# Elle yeniden göndermek için: bash agent/notify.sh --force
+MARKER="$REPO/agent/state/.mail-sent-$(date -u +%Y-%m-%d)"
+if [ "${1:-}" != "--force" ] && [ -f "$MARKER" ]; then
+  echo "[mail] bugün ($(date -u +%Y-%m-%d)) rapor zaten gönderildi — atlanıyor (çift önlemi). Zorlamak için: --force"
+  exit 0
+fi
+
 SUBJECT="🤖 ParaFOMO Gece Raporu — $(date -u +%Y-%m-%d)"
 
 python3 - "$USER_ADDR" "$PASS" "$TO" "$SUBJECT" "$BODY_FILE" <<'PY'
@@ -54,3 +64,10 @@ except Exception as e:
     print("[mail] HATA:", e)
     sys.exit(1)
 PY
+
+# Yalnızca gönderim BAŞARILIYSA marker koy (hata olursa sonraki çağrı yeniden dener).
+if [ $? -eq 0 ]; then
+  : > "$MARKER"
+  # eski marker'ları buda (son 7 gün kalsın)
+  find "$REPO/agent/state" -maxdepth 1 -name '.mail-sent-*' -type f -mtime +7 -delete 2>/dev/null || true
+fi

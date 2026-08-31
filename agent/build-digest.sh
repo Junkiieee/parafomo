@@ -89,6 +89,13 @@ DATE="$(date -u +%Y-%m-%dT%H:%MZ)"
   timeout 30 "$VPY" "$REPO/agent/growth-engine.py" 2>/dev/null || echo "_(büyüme motoru alınamadı)_"
   echo
 
+  # PLANLANMIŞ BÜYÜK ÖZELLİK / BACKLOG (başlıktaki BAŞLAMA TARİHİNE uy — erken başlama)
+  if [ -f "$OUT_DIR/feature-backlog.md" ]; then
+    echo "## 8b) ⚠️ PLANLANMIŞ BÜYÜK ÖZELLİK — OKU (başlama tarihine dikkat)"
+    cat "$OUT_DIR/feature-backlog.md"
+    echo
+  fi
+
   echo "## 9) Dünkü ajan görevleri (varsa — devam eden iş)"
   sed -n '1,40p' "$OUT_DIR/tasks-for-user.md" 2>/dev/null || echo "(ilk çalıştırma — önceki görev yok)"
   echo
