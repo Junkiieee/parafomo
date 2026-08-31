@@ -17,6 +17,23 @@ faq:
     a: "Deflasyon dönemlerinde anapara düşebilir. Ayrıca dolar cinsinden olduğundan TL yatırımcısı için kur riski taşır ve reel değer artışı üzerinden de vergi hesaplanabilir."
   - q: "Türkiye'de enflasyona endeksli tahvil var mı?"
     a: "Evet. Türkiye Hazinesi, TÜFE'ye endeksli 'Enflasyona Endeksli Devlet İç Borçlanma Senetleri' (EİDBS) ihraç etmektedir. Bu senetler bireysel yatırımcı ihaleleri veya yatırım fonları aracılığıyla alınabilir."
+shorts:
+  - "Tahvil güvenli sanıyorsun ama paranı yiyor."
+  - "Enflasyon yüksek seyrederken normal tahvil sahipleri farkında olmadan reel kayıp yaşar."
+  - "TIPS'te ise anaparan Amerikan enflasyon endeksine göre otomatik olarak güncellenir."
+  - "2022 ile 2024 arasında ABD'de enflasyon yüzde sekize fırlarken TIPS sahipleri zarar görmedi."
+  - "Peki Türkiye'den TIPS'e nasıl yatırım yapılır? Kanala abone ol, tüm detaylar parafomo.com'da seni bekliyor."
+shorts_broll:
+  - "inflation money losing value"
+  - "US treasury bonds market"
+  - "investment portfolio protection"
+  - "financial chart inflation 2022"
+shorts_visuals:
+  - "concept|paper money losing value inflation"
+  - "concept|savings being eroded by inflation purchasing power"
+  - "concept|US treasury bond certificate document"
+  - "concept|stock market chart inflation spike 2022"
+  - "concept|investor laptop financial planning portfolio"
 ---
 
 3 Eylül'de TÜİK Ağustos enflasyon verisini açıklayacak. Enflasyon yüksek seyrini korurken paranızın satın alma gücünü korumanın en sistematik yollarından biri **enflasyon korumalı tahvil (TIPS)** yatırımıdır. ABD'de 1997'den beri mevcut olan bu araç, son yıllarda Türk yatırımcısının da radarına girdi. TIPS nedir, nasıl çalışır ve Türkiye'den nasıl yatırım yapılır?
