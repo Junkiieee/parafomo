@@ -101,6 +101,7 @@ SECONDARY_TOOLS = [
     "🚀 Güncel halka arzlar ve tarihleri → parafomo.com/halka-arz",
     "🏆 Altın 10 yılda ne kadar kazandırdı? → parafomo.com/altin-getiri",
     "💵 Dolar mı kazandırdı altın mı? 10 yılın farkı → parafomo.com/dolar-getiri",
+    "📊 Borsa mı altın mı dolar mı? 10 yılın kazananı → parafomo.com/bist-getiri",
 ]
 
 
