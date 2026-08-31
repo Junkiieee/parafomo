@@ -4,7 +4,104 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
-## 2026-08-31
+## 2026-08-31 — Hisse Senedi Piyasa Değeri
+
+**Yayınlanan yazı:** [Hisse Senedi Piyasa Değeri Nedir? Large Cap, Mid Cap, Small Cap Farkı](https://parafomo.com/blog/piyasa-degeri-nedir-large-cap-mid-cap-small-cap/)
+**Hedef sorgu:** `piyasa değeri nedir hisse senedi` · Kategori: Borsa
+**İç linkler:** F/K Oranı, Hisse Senedi Nasıl Seçilir, BIST 100 rehberleri
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+Bir hissenin "büyük" mü "küçük" mü olduğunu nasıl anlarsın?
+
+Cevap: piyasa değeri.
+Ve bu tek sayı, risk profilini tamamen değiştiriyor. 👇
+
+**Tweet 2:**
+Piyasa değeri = Hisse fiyatı × Toplam hisse sayısı
+
+80 TL × 500 milyon hisse = 40 milyar TL piyasa değeri
+
+Bu kadar basit. Ama anlamı çok derin.
+
+**Tweet 3:**
+Piyasa değerine göre 3 kategori var:
+
+📦 Large cap (büyük) → BIST 30 şirketleri
+— Likit, köklü, temettü öder
+— Büyüme yavaş ama istikrarlı
+
+🟡 Mid cap (orta) → "Tatlı nokta"
+— Büyüme hikayesi devam ediyor
+— Large/small arasında denge
+
+🔴 Small cap (küçük) → Risk/ödül yüksek
+— Keşfedilmemiş potansiyel
+— Ama likidite düşük, oynaklık yüksek
+
+**Tweet 4:**
+BIST'te önemli bir nokta:
+
+Küçük bir şirket büyüyünce BIST 100'e terfi eder.
+Bu terfi, endeks fonlarından otomatik alım tetikler.
+Yani "endeks terfi" bir fiyat katalizörüdür.
+
+**Tweet 5:**
+Hangi kategori sana uygun?
+
+✅ Kısa vadeli → Large cap
+✅ Uzun vadeli büyüme → Mid/small cap
+✅ Her ikisi → Çeşitlendir
+
+Risk toleransın ne kadar yüksekse, small cap payın o kadar artabilir.
+
+Tüm detaylar ⬇️
+parafomo.com/blog/piyasa-degeri-nedir-large-cap-mid-cap-small-cap/
+
+---
+
+### 📸 Instagram Carousel / Post Metni
+
+**Başlık:** Large cap mı, small cap mı? Hangisi sana göre?
+
+**Post metni:**
+Borsada "büyük" ve "küçük" hisse deyince ne anlıyoruz?
+
+👉 Piyasa değeri = Hisse fiyatı × Hisse sayısı
+
+Bu basit formül, hangi kategoride olduğunuzu belirler:
+
+🔵 Large Cap (BIST 30 seviyesi)
+→ Likit, köklü, temettü var
+→ Az oynaklık, sınırlı büyüme
+
+🟡 Mid Cap
+→ Büyüme devam ediyor
+→ Risk/getiri dengesi
+
+🔴 Small Cap
+→ Yüksek potansiyel
+→ Dikkat: düşük likidite!
+
+Ayrıca: Küçük şirket büyüyünce endekse girer → endeks fonları otomatik alım yapar → fiyat yükselir. Bu "endeks terfi" etkisini takip edin.
+
+Detaylı rehber → parafomo.com/blog/piyasa-degeri-nedir-large-cap-mid-cap-small-cap/
+
+#piyasadegeri #largecap #smallcap #hissesenedi #borsa #BIST #yatırım #temelanaliz
+
+---
+
+### ✅ Bugün Yapman Gerekenler
+
+1. **Paylaşımı yayınla:** X thread'ini ve Instagram carousel'ini yayınla (üstteki taslakları kullan).
+2. **Toplulukta değer kat:** Reddit r/Turkey veya ilgili bir Telegram/Facebook finans grubunda yazıyı paylaş; "Large cap vs small cap - hangisi daha mantıklı?" sorusuyla sohbet başlat.
+
+---
+
+## 2026-08-31 — TIPS
 
 **Yayınlanan yazı:** [Enflasyon Korumalı Tahvil (TIPS) Nedir? Reel Getiri ve Yatırım Rehberi](https://parafomo.com/blog/tips-nedir-enflasyon-korumali-tahvil/)
 **Hedef sorgu:** `tips nedir enflasyon korumalı tahvil` · Kategori: Yatırım

@@ -84,11 +84,13 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Borsa Neden Düşer? Piyasa Düzeltmesi ve Borsa Çöküşü Arasındaki Fark — `Borsa` — hedef: "borsa neden düşer"
 - [x] Temettü Verimi (Dividend Yield) Nedir? Yüksek Temettü Hisseleri Nasıl Seçilir? — `Borsa` — hedef: "temettü verimi nedir"
 - [x] Enflasyon Korumalı Tahvil (TIPS) Nedir? Reel Getiri ve Yatırım Rehberi — `Yatırım` — hedef: "tips nedir enflasyon korumalı tahvil"
-- [ ] Hisse Senedi Piyasa Değeri Nedir? Large Cap, Mid Cap, Small Cap Farkı — `Borsa` — hedef: "piyasa değeri nedir hisse senedi"
+- [x] Hisse Senedi Piyasa Değeri Nedir? Large Cap, Mid Cap, Small Cap Farkı — `Borsa` — hedef: "piyasa değeri nedir hisse senedi"
 - [ ] Volatilite Nedir? Standart Sapma ve Sharpe Oranı ile Risk Ölçümü — `Yatırım` — hedef: "volatilite nedir yatırım"
 - [ ] Gayrimenkul mi Borsa mı? 2026'da Hangi Yatırım Daha Mantıklı? — `Yatırım` — hedef: "gayrimenkul mi borsa mı"
 
 ## Yayınlananlar (otomasyon buraya ekler)
+
+- [x] Hisse Senedi Piyasa Değeri Nedir? Large Cap, Mid Cap, Small Cap Farkı — `piyasa-degeri-nedir-large-cap-mid-cap-small-cap` (backlog ilk [ ] konusu: evergreen borsa; "piyasa değeri nedir hisse senedi" sorgusu; large/mid/small cap fark tablosu + BIST endeks terfi etkisi + hisse seçim adımları; F/K + hisse seçimi + BIST 100 cluster'ını tamamlayan temel değerleme kavramı; 31 Ağustos 2026)
 
 - [x] Temettü Verimi (Dividend Yield) Nedir? Yüksek Temettü Hisseleri Nasıl Seçilir? — `temettu-verimi-nedir` (backlog ilk [ ] konusu: evergreen borsa; "temettü verimi nedir" sorgusu; temettü hisseleri + buyback + F/K + GYO cluster'ını tamamlayan temel değerleme göstergesi rehberi; payout ratio tuzağı + sektör karşılaştırma tablosu + BIST pratik seçim adımları; 30 Ağustos 2026)
 
