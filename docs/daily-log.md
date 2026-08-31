@@ -4,6 +4,104 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-08-31
+
+**Yayınlanan yazı:** [Enflasyon Korumalı Tahvil (TIPS) Nedir? Reel Getiri ve Yatırım Rehberi](https://parafomo.com/blog/tips-nedir-enflasyon-korumali-tahvil/)
+**Hedef sorgu:** `tips nedir enflasyon korumalı tahvil` · Kategori: Yatırım
+**Zamanlama:** TÜİK Eylül TÜFE verisi 3 Eylül'de açıklanıyor — enflasyona karşı araçları arayanlar için zamanında.
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+Paranı enflasyondan korumak istiyorsun ama ne yapacağını bilmiyorsun.
+
+ABD'de 1997'den beri kullanılan bir araç var: TIPS.
+Ve Türkiye'nin de kendi versiyonu var. 👇
+
+**Tweet 2:**
+TIPS = Treasury Inflation-Protected Securities
+
+Nasıl çalışır?
+→ Anaparan enflasyon (CPI) oranında büyür
+→ Faiz, büyüyen anapara üzerinden ödenir
+→ Enflasyon ne kadar yüksek olursa, o kadar korursun
+
+%4 enflasyon → 1.000$ anaparandan 1.040$ olur 📈
+
+**Tweet 3:**
+Normal tahvil vs TIPS — fark ne?
+
+Normal tahvil:
+→ Anapara sabit
+→ %8 enflasyonda reel kayıp yaşarsın
+
+TIPS:
+→ Anapara enflasyona göre artar
+→ Reel getiri korunur
+
+Break-even noktası bu ikisi arasındaki seçimi belirler.
+
+**Tweet 4:**
+Türk yatırımcısı nasıl yatırım yapar?
+
+✅ TIP ETF (iShares) — en büyük, en likit
+✅ SCHP (Schwab) — düşük maliyetli
+✅ VTIP (Vanguard) — kısa vadeli
+
+⚠️ Dolar bazlı → kur riski var
+
+Türkiye'nin kendi versiyonu: Hazine'nin TÜFE'ye endeksli tahvilleri (EİDBS) 🇹🇷
+
+**Tweet 5:**
+3 Eylül TÜİK enflasyon verisi açıklanacak.
+
+Enflasyon yüksek gelirse → TIPS ve EİDBS cazibi artar
+Enflasyon düşük gelirse → Normal mevduat ve tahvil ön plana geçer
+
+Hangi araç sana uygun? → parafomo.com/blog/tips-nedir-enflasyon-korumali-tahvil/ 📊
+
+---
+
+### 📸 Instagram Carousel / Post Metni
+
+**Başlık:** Paranı Enflasyondan Koruyan Araç: TIPS Nedir?
+
+**Slide 1:** Enflasyon varken paranı nasıl korursun?
+→ ABD'den gelen cevap: TIPS (Enflasyon Korumalı Tahvil)
+
+**Slide 2:** Nasıl çalışır?
+📌 Anaparın enflasyona göre büyür
+📌 Faiz, büyüyen anapara üzerinden hesaplanır
+📌 Satın alma gücün korunur
+
+**Slide 3:** Normal tahvil vs TIPS
+| | Normal Tahvil | TIPS |
+|Anapara|Sabit|Büyür|
+|Enflasyon koruması|Yok|Var|
+|Deflasyon riski|Yok|Var|
+
+**Slide 4:** Türkiye'den nasıl yatırım yaparsın?
+🇺🇸 TIP, SCHP, VTIP ETF → dolar bazlı, aracı kurum üzerinden
+🇹🇷 EİDBS (Hazine TÜFE tahvili) → TL bazlı, kur riski yok
+
+**Slide 5:** 3 Eylül TÜİK verisi geliyor.
+Enflasyon hâlâ yüksekse, bu araçları bilmek işine yarayabilir.
+Detaylı rehber → profil linkinde 🔗
+
+**Hashtag'ler:**
+#enflasyon #tips #yatırım #paranıkoruma #tahvil #kişiselfinans #parafomo #finans #tufe #hazine
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **Paylaşımı yayınla:** X thread ve Instagram carousel'ini yayınla (3 Eylül TÜFE verisi yaklaşıyor — zamanlama mükemmel, bugün veya yarın paylaş).
+2. **Finans topluluklarında paylaş:** Instagram'da finans hesaplarının paylaşımlarını yorumla — "TIPS ve Türkiye EİDBS farkı nedir?" sorusu açıkça soruluyorsa yazını etiketle.
+
+---
+
 ## 2026-08-30 (2. yayın)
 
 **Yayınlanan yazı:** [Temettü Verimi (Dividend Yield) Nedir? Yüksek Temettü Hisseleri Nasıl Seçilir?](https://parafomo.com/blog/temettu-verimi-nedir/)

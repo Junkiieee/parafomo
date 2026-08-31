@@ -83,7 +83,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Parasal Genişleme (QE) Nedir? Merkez Bankası Para Basma ve Piyasa Etkisi — `Ekonomi` — hedef: "parasal genişleme nedir"
 - [x] Borsa Neden Düşer? Piyasa Düzeltmesi ve Borsa Çöküşü Arasındaki Fark — `Borsa` — hedef: "borsa neden düşer"
 - [x] Temettü Verimi (Dividend Yield) Nedir? Yüksek Temettü Hisseleri Nasıl Seçilir? — `Borsa` — hedef: "temettü verimi nedir"
-- [ ] Enflasyon Korumalı Tahvil (TIPS) Nedir? Reel Getiri ve Yatırım Rehberi — `Yatırım` — hedef: "tips nedir enflasyon korumalı tahvil"
+- [x] Enflasyon Korumalı Tahvil (TIPS) Nedir? Reel Getiri ve Yatırım Rehberi — `Yatırım` — hedef: "tips nedir enflasyon korumalı tahvil"
 - [ ] Hisse Senedi Piyasa Değeri Nedir? Large Cap, Mid Cap, Small Cap Farkı — `Borsa` — hedef: "piyasa değeri nedir hisse senedi"
 - [ ] Volatilite Nedir? Standart Sapma ve Sharpe Oranı ile Risk Ölçümü — `Yatırım` — hedef: "volatilite nedir yatırım"
 - [ ] Gayrimenkul mi Borsa mı? 2026'da Hangi Yatırım Daha Mantıklı? — `Yatırım` — hedef: "gayrimenkul mi borsa mı"
@@ -258,3 +258,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Parasal Genişleme (QE) Nedir? Merkez Bankası Para Basma ve Piyasa Etkisi — `parasal-genisleme-nedir` (backlog ilk [ ] konusu: evergreen ekonomi; "parasal genişleme nedir" sorgusu; QT + reel faiz + Fed faiz kararı + verim eğrisi cluster'ını tamamlayan temel para politikası rehberi; QE tarihsel örnekler tablosu + QE vs geleneksel politika karşılaştırması + Türk yatırımcı pratik rehberi; 29 Ağustos 2026)
 
 - [x] Borsa Neden Düşer? Piyasa Düzeltmesi ve Borsa Çöküşü Arasındaki Fark — `borsa-neden-duser-piyasa-duzeltmesi` (backlog ilk [ ] konusu: evergreen borsa; "borsa neden düşer" sorgusu; düzeltme/bear market/çöküş farkı tablosu + tarihsel büyük krizler + Türk yatırımcısı pratik rehberi; resesyon + VIX + stop-loss + portföy çeşitlendirmesi cluster'ını tamamlayan temel borsa dinamikleri yazısı; 30 Ağustos 2026)
+
+- [x] Enflasyon Korumalı Tahvil (TIPS) Nedir? Reel Getiri ve Yatırım Rehberi — `tips-nedir-enflasyon-korumali-tahvil` (backlog ilk [ ] konusu: evergreen yatırım; "tips nedir enflasyon korumalı tahvil" sorgusu; reel faiz + tahvil + enflasyon korunma cluster'ını tamamlayan araç rehberi; break-even enflasyon oranı + ABD TIPS ETF + Türkiye EİDBS karşılaştırması; TÜİK Eylül 2026 TÜFE verisi öncesi zamanlanmış; 31 Ağustos 2026)
