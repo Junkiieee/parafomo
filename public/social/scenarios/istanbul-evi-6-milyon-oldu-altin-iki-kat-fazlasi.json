@@ -1,0 +1,58 @@
+{
+  "slug": "istanbul-evi-6-milyon-oldu-altin-iki-kat-fazlasi",
+  "title": "İstanbul Evi 6 Milyon Oldu — Altın İki Kat Fazlası",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "2015'te 300 bin TL'yi eve değil altına koysaydın, bugün iki kat daha fazlan olurdu. TL'de güzel görünen ev yatırımının altın karşısındaki 10 yıllık gerçeği.",
+  "tags": [
+    "altın yatırımı",
+    "ev fiyatları",
+    "gayrimenkul",
+    "İstanbul emlak",
+    "altın vs ev",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Evin 20 kat arttı — altın 40 yaptı.",
+      "visual": {
+        "type": "place",
+        "query": "Istanbul skyline apartments city"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2015'te 300 bin TL İstanbul'da bir ev alırdı. Bugün o ev yaklaşık 6 milyon eder.",
+      "visual": {
+        "type": "scene",
+        "query": "istanbul apartment real estate building"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama aynı 300 bini altına koysaydın, bugün yaklaşık 12 milyon olurdu — dairenden iki kat fazla.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bars stacked wealth"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ev zenginleştirdi diye düşünüyorsun. Ama dolar bazında hesapla — fark net. Portföyünde mutlaka altın olsun.",
+      "visual": {
+        "type": "concept",
+        "query": "investment portfolio comparison growth chart"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Borsa ve dolar bu ikisine karşı nasıl durdu? Yarın açıklıyorum. Abone ol — her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "concept",
+        "query": "financial growth wealth future planning"
+      }
+    }
+  ]
+}

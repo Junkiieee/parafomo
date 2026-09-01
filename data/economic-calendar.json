@@ -1,26 +1,8 @@
 {
-  "updated": "2026-08-31",
+  "updated": "2026-09-01",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-08-28",
-      "time": "2:00pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Fed Chairman Warsh Speaks",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-08-28",
-      "time": "2:00pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Prelim Benchmark Payrolls Revision",
-      "source": "forexfactory",
-      "hook": ""
-    },
     {
       "date": "2026-09-01",
       "time": "2:00pm",
