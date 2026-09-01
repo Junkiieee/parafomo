@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-08-31T08:46:09Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-09-01T08:46:06Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -16,35 +16,35 @@
 - `tr-TR-Chirp3-HD-Sadachbia` — skor 890.251, örnek 1
 - `tr-TR-Chirp3-HD-Pulcherrima` — skor 701.143, örnek 1
 - `tr-TR-Chirp3-HD-Alnilam` — skor 416.444, örnek 2
-- `tr-TR-Chirp3-HD-Zephyr` — skor 297.757, örnek 3
+- `tr-TR-Chirp3-HD-Charon` — skor 319.571, örnek 1
+- `tr-TR-Chirp3-HD-Zephyr` — skor 298.305, örnek 3
 - `tr-TR-Chirp3-HD-Kore` — skor 293.611, örnek 1
-- `tr-TR-Chirp3-HD-Gacrux` — skor 207.749, örnek 4
+- `tr-TR-Chirp3-HD-Gacrux` — skor 209.155, örnek 4
 - `tr-TR-Chirp3-HD-Autonoe` — skor 192.652, örnek 2
-- `tr-TR-Chirp3-HD-Charon` — skor 187.915, örnek 2
 
 ### Shorts motoru (google/edge) — **explore** (yeterli veri yok, rotasyon sürüyor)
 
-- `google` — skor 163.885, örnek 57
-- `edge` — skor 77.163, örnek 4
+- `google` — skor 165.975, örnek 56
+- `edge` — skor 83.773, örnek 3
 
-### Viral format — **explore** (yeterli veri yok, rotasyon sürüyor)
+### Viral format — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `shock_number` — skor 348.75, örnek 9
-- `myth` — skor 291.601, örnek 9
-- `single_concept` — skor 215.309, örnek 6
-- `news_reaction` — skor 182.438, örnek 18
-- `backtest_return` — skor 161.06, örnek 12
+- `shock_number` — skor 377.754, örnek 9
+- `myth` — skor 279.099, örnek 10
+- `single_concept` — skor 244.746, örnek 5
+- `news_reaction` — skor 182.466, örnek 18
+- `backtest_return` — skor 161.135, örnek 12
 - `comparison` — skor 74.611, örnek 3
 
 ### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `5` — skor 334.323, örnek 8
-- `0` — skor 230.593, örnek 7
-- `3` — skor 213.252, örnek 6
-- `manual` — skor 205.167, örnek 13
-- `1` — skor 202.849, örnek 8
-- `2` — skor 194.328, örnek 9
-- `4` — skor 148.048, örnek 6
+- `5` — skor 334.977, örnek 8
+- `0` — skor 230.232, örnek 7
+- `2` — skor 223.662, örnek 9
+- `1` — skor 222.585, örnek 7
+- `3` — skor 205.216, örnek 7
+- `manual` — skor 205.205, örnek 13
+- `4` — skor 148.28, örnek 6
 
 ## Konu sinyalleri
 
@@ -52,19 +52,19 @@
 - pce-gdp-agustos-2026-fed-eylul-dolar-altin — skor 23.62
 - jackson-hole-sempozyumu-nedir — skor 9.88
 - turkiyede-en-iyi-yatirim-araclari-2026 — skor 8.72
+- jackson-hole-2026-ne-zaman-warsh-konusmasi — skor 7.75
 - abd-faiz-artarsa-ne-olur — skor 7.0
-- jackson-hole-2026-ne-zaman-warsh-konusmasi — skor 6.27
-- konut-yatirimi-mi-hisse-senedi-mi — skor 6.0
+- abd-faiz-karari-altin-dolar-tl-etkisi — skor 6.77
 
 **🎯 Fırsat sorguları** (içerik/başlık iyileştir):
 - `jackson hole toplantısı nedir` — gös 76, sıra 9.1
 - `jackson hole ne zaman` — gös 59, sıra 9.5
 - `boj nedir` — gös 26, sıra 8.8
+- `abd de faiz artarsa altın ne olur` — gös 15, sıra 5.8
 - `2026 fed toplantı tarihleri` — gös 8, sıra 10
-- `abd faiz arttırırsa ne olur` — gös 7, sıra 16.9
-- `abd işsizlik verisi altını nasıl etkiler` — gös 7, sıra 9.4
-- `abd işsizlik verisi ne zaman açıklanacak` — gös 7, sıra 10.6
-- `buyback nedir` — gös 7, sıra 11.1
+- `abd faiz arttırırsa ne olur` — gös 8, sıra 16
+- `abd işsizlik verisi altını nasıl etkiler` — gös 8, sıra 9.5
+- `buyback nedir` — gös 8, sıra 11.1
 
 ## Notlar
 
