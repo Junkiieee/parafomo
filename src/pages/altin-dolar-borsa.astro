@@ -1,0 +1,250 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import gold from '../../data/altin-getiri.json';
+import usd from '../../data/dolar-getiri.json';
+import bist from '../../data/bist-getiri.json';
+
+// Üç getiri veri setini tek karşılaştırma tablosunda birleştir (TL bazında).
+// Ortak dönemler: YTD + 1/3/5/10 yıl. Her dönemde kazananı işaretle.
+type Row = { label: string; years: number | null; gold: number; usd: number; bist: number };
+
+const periodYears = [1, 3, 5, 10];
+const retOf = (src: any, years: number): number | null => {
+  const p = (src.periods ?? []).find((x: any) => x.years === years);
+  return p ? p.return_tl_pct : null;
+};
+
+const rows: Row[] = [];
+rows.push({
+  label: 'Yıl başından beri',
+  years: 0,
+  gold: gold.ytd.return_tl_pct,
+  usd: usd.ytd.return_tl_pct,
+  bist: bist.ytd.return_tl_pct,
+});
+for (const y of periodYears) {
+  const g = retOf(gold, y), u = retOf(usd, y), b = retOf(bist, y);
+  if (g == null || u == null || b == null) continue;
+  rows.push({ label: `${y} yıl`, years: y, gold: g, usd: u, bist: b });
+}
+
+const updated = new Date(gold.updated).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+const fmt0 = (n: number) => n.toLocaleString('tr-TR', { maximumFractionDigits: 0 });
+const fmt1 = (n: number) => n.toLocaleString('tr-TR', { maximumFractionDigits: 1 });
+const pct = (n: number) => (n > 0 ? '+' : '') + fmt1(n) + '%';
+const toneOf = (n: number) => (n > 0 ? 'up' : n < 0 ? 'down' : 'flat');
+
+// En uzun ortak dönem (10 yıl) — ana kıyas
+const ten = rows.find((r) => r.years === 10)!;
+const assets = [
+  { key: 'gold', name: 'Altın', icon: '🥇', ret: ten.gold },
+  { key: 'usd', name: 'Dolar', icon: '💵', ret: ten.usd },
+  { key: 'bist', name: 'BIST 100', icon: '📊', ret: ten.bist },
+].sort((a, b) => b.ret - a.ret);
+const winner = assets[0];
+const loser = assets[assets.length - 1];
+
+// 10.000 TL senaryosu (10 yıl) — her varlık için bugünkü değer
+const seed = 10000;
+const valueOf = (retPct: number) => seed * (1 + retPct / 100);
+
+// Bir satırın kazananını bul (TL getiri en yüksek)
+const winnerKey = (r: Row): 'gold' | 'usd' | 'bist' => {
+  const m = Math.max(r.gold, r.usd, r.bist);
+  return r.gold === m ? 'gold' : r.usd === m ? 'usd' : 'bist';
+};
+
+const faqs = [
+  {
+    q: `Son 10 yılda altın mı, dolar mı, borsa mı daha çok kazandırdı?`,
+    a: `TL bazında son 10 yılda ${winner.name.toLowerCase()} açık ara önde: %${fmt0(winner.ret)} getiri. ${assets[1].name} %${fmt0(assets[1].ret)}, ${loser.name} ise %${fmt0(loser.ret)} kazandırdı. Yani 10 yıl önce her birine 10.000 TL koysaydınız, ${winner.name.toLowerCase()} bugün ${fmt0(valueOf(winner.ret))} TL, ${loser.name.toLowerCase()} ise ${fmt0(valueOf(loser.ret))} TL ederdi. (Geçmiş getiri gelecek getirinin garantisi değildir.)`,
+  },
+  {
+    q: 'Bu getirilerin çoğu kur kaybından mı geliyor?',
+    a: 'Büyük ölçüde evet. TL bazlı devasa rakamların önemli kısmı Türk lirasının değer kaybından kaynaklanır — özellikle dolar ve altında. Doların TL getirisi doğrudan kur artışıdır; altınınki ise ons fiyatı × kur\'dur. Borsa ise kur kaybının üstüne şirket kârı ve büyümesini ekleyebildiği için uzun vadede çoğu zaman kuru ve enflasyonu geçer. "Gerçek" getiriyi görmek için altının dolar/ons bazlı getirisine de bakın.',
+  },
+  {
+    q: 'Hangisine yatırım yapmalıyım?',
+    a: 'Bu sayfa geçmiş getiriyi gösterir, tavsiye vermez. Üçü farklı işlev görür: altın enflasyon ve kur kaybına karşı korunma (sigorta), dolar likidite ve kur riskinden kaçınma, borsa ise uzun vadeli büyüme ve reel getiri potansiyeli sunar. Çoğu finansal yaklaşım tek bir araca değil, risk toleransınıza göre bir karışıma (çeşitlendirme) işaret eder.',
+  },
+  {
+    q: 'Rakamlar kesin mi, ne sıklıkla güncelleniyor?',
+    a: 'Göstergedir ve her gün güncellenir. Altın için ons (GC=F) × USD/TRY, dolar için USD/TRY, borsa için BIST 100 (XU100.IS) Yahoo Finance verisi kullanılır. Gerçek alım-satım fiyatları makas, komisyon ve anlık piyasa farkları nedeniyle biraz değişebilir.',
+  },
+];
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+
+<BaseLayout
+  title={`Altın mı, Dolar mı, Borsa mı? 10 Yılın Kazananı (TL Getiri)`}
+  description={`Son 10 yılda TL bazında ${winner.name.toLowerCase()} %${fmt0(winner.ret)}, ${assets[1].name.toLowerCase()} %${fmt0(assets[1].ret)}, ${loser.name.toLowerCase()} %${fmt0(loser.ret)} kazandırdı. Altın, dolar ve BIST 100'ün 1, 3, 5, 10 yıllık getirisi tek tabloda — her gün güncel.`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+
+  <section class="container gr-hero">
+    <span class="eyebrow"><span class="pulse"></span> Özgün veri · Altın vs Dolar vs Borsa</span>
+    <h1>Altın mı, Dolar mı, Borsa mı?</h1>
+    <p class="lede soft">
+      Aynı parayı 1, 3, 5 veya 10 yıl önce altına, dolara ya da borsaya (BIST 100) koysaydınız
+      bugün elinizde ne olurdu? Üçünün TL bazında getirisi tek tabloda, kazananı işaretli — her gün güncel.
+    </p>
+    <p class="gr-upd">Son güncelleme: {updated}</p>
+  </section>
+
+  <section class="container gr-stats">
+    {assets.map((a, i) => (
+      <div class={`stat card ${i === 0 ? 'win' : ''}`}>
+        <span class={`stat-num ${a.ret >= 0 ? 'up' : 'down'}`}>{a.icon} {pct(a.ret)}</span>
+        <span class="stat-lbl">{a.name} · 10 yıllık TL getiri{i === 0 ? ' · 🏆 kazanan' : ''}</span>
+      </div>
+    ))}
+  </section>
+
+  <section class="container gr-section">
+    <h2 class="gr-h2">Getiri karşılaştırma tablosu <span class="gr-count">TL bazında</span></h2>
+    <div class="gr-tablewrap">
+      <table class="gr-table">
+        <thead>
+          <tr>
+            <th>Dönem</th>
+            <th class="r">🥇 Altın</th>
+            <th class="r">💵 Dolar</th>
+            <th class="r">📊 BIST 100</th>
+            <th>Kazanan</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => {
+            const wk = winnerKey(r);
+            return (
+              <tr>
+                <td class="gr-co"><span class="gr-name">{r.years === 0 ? r.label : `Son ${r.label}`}</span></td>
+                <td class="r"><span class={`gr-ret tone-${toneOf(r.gold)} ${wk === 'gold' ? 'is-win' : ''}`}>{pct(r.gold)}</span></td>
+                <td class="r"><span class={`gr-ret tone-${toneOf(r.usd)} ${wk === 'usd' ? 'is-win' : ''}`}>{pct(r.usd)}</span></td>
+                <td class="r"><span class={`gr-ret tone-${toneOf(r.bist)} ${wk === 'bist' ? 'is-win' : ''}`}>{pct(r.bist)}</span></td>
+                <td class="gr-win">{wk === 'gold' ? '🥇 Altın' : wk === 'usd' ? '💵 Dolar' : '📊 BIST'}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+    <p class="gr-tnote">
+      Tüm rakamlar TL bazında ve göstergedir. TL getirilerinin büyük kısmı Türk lirasının değer
+      kaybından gelir; "gerçek" (döviz bazlı) getiri için altının dolar/ons getirisine de bakın.
+    </p>
+  </section>
+
+  <section class="container gr-body">
+    <h2 class="gr-h2">10.000 TL'yi 10 yıl önce koysaydınız?</h2>
+    <p>
+      10 yıl önce 10.000 TL'yi üç farklı yere koysaydınız bugün elinizde şunlar olurdu:
+      <strong>{winner.name.toLowerCase()}</strong> {fmt0(valueOf(winner.ret))} TL,
+      <strong>{assets[1].name.toLowerCase()}</strong> {fmt0(valueOf(assets[1].ret))} TL ve
+      <strong>{loser.name.toLowerCase()}</strong> {fmt0(valueOf(loser.ret))} TL. Aynı 10.000 TL'yi
+      yastık altında nakit tutsaydınız, bugün yine 10.000 TL olurdu — ama alım gücü büyük ölçüde erirdi.
+    </p>
+    <p>
+      Buradaki asıl ders tek bir "kazanan" değil: <strong>üçü de nakitte kalmaya kıyasla alım gücünü
+      korudu</strong>, ama farklı işlevlerle. Altın enflasyon ve kur kaybına karşı sigorta gibi çalışır;
+      dolar kur riskinden kaçınmanın en likit yolu; borsa ise uzun vadede şirket kârı ve büyümeyi
+      eklediği için çoğu zaman kuru ve altını bile geçebilir — ama daha yüksek dalgalanmayla. Getirinin
+      büyük kısmının kur kaybından geldiğini unutmayın: "yüksek getiri" her zaman "zenginleşme" demek değildir.
+    </p>
+    <p>
+      Her varlığın kendi detaylı getiri dökümü için <a href="/altin-getiri">altın getirisi</a>,
+      <a href="/dolar-getiri">dolar getirisi</a> ve <a href="/bist-getiri">BIST 100 getirisi</a>
+      sayfalarına bakabilirsiniz. Altın mı dolar mı tercihini derinlemesine
+      <a href="/blog/altin-mi-dolar-mi">bu yazıda</a>, Türkiye'deki tüm yatırım araçlarını ise
+      <a href="/blog/turkiyede-en-iyi-yatirim-araclari-2026">bu rehberde</a> karşılaştırdık.
+    </p>
+  </section>
+
+  <section class="container gr-faq">
+    <h2 class="gr-h2">Sık sorulan sorular</h2>
+    {faqs.map((f) => (
+      <details class="gr-fq">
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
+  </section>
+
+  <section class="container gr-note">
+    <p>
+      Veri kaynağı: Yahoo Finance (GC=F, USDTRY=X, XU100.IS). Yalnızca bilgilendirme amaçlıdır;
+      <strong>yatırım tavsiyesi değildir</strong>. Geçmiş getiri gelecekteki getirinin garantisi değildir.
+    </p>
+  </section>
+
+  <div class="container"><Newsletter /></div>
+</BaseLayout>
+
+<style>
+  .gr-hero { padding: clamp(1.6rem, 4vw, 2.6rem) 0 0; max-width: 720px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 0.45rem; font-size: var(--step--2); font-weight: 600; color: var(--brand); }
+  .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 0 rgba(22,160,133,0.5); animation: pulse 2s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(22,160,133,0.5); } 70% { box-shadow: 0 0 0 6px rgba(22,160,133,0); } 100% { box-shadow: 0 0 0 0 rgba(22,160,133,0); } }
+  .gr-hero h1 { font-size: var(--step-2); margin: 0.6rem 0 0.4rem; }
+  .gr-hero .lede { font-size: var(--step-0); line-height: 1.55; margin: 0; }
+  .gr-upd { font-size: var(--step--2); color: var(--text-muted); margin: 0.5rem 0 0; }
+
+  .gr-stats { margin-top: clamp(1.4rem, 3.5vw, 2.2rem); display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
+  .stat { padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.25rem; }
+  .stat.win { border-color: var(--brand); box-shadow: 0 0 0 1px var(--brand); }
+  .stat-num { font-size: var(--step-2); font-weight: 800; font-variant-numeric: tabular-nums; color: var(--text); line-height: 1.1; }
+  .stat-num.up { color: var(--brand-deep); }
+  .stat-num.down { color: var(--danger); }
+  .stat-lbl { font-size: var(--step--2); color: var(--text-muted); line-height: 1.35; }
+
+  .gr-section, .gr-body, .gr-faq { margin-top: clamp(1.8rem, 4vw, 2.8rem); }
+  .gr-h2 { font-size: var(--step-1); margin: 0 0 0.9rem; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+  .gr-count { font-size: 0.66rem; font-weight: 700; color: var(--brand-deep); background: var(--brand-tint); border-radius: 999px; padding: 0.1rem 0.55rem; }
+
+  .gr-tablewrap { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg-card); box-shadow: var(--shadow-xs); }
+  .gr-table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+  .gr-table thead th { text-align: left; font-size: var(--step--2); color: var(--text-muted); font-weight: 600; padding: 0.6rem 0.9rem; background: var(--bg-elev); border-bottom: 1px solid var(--border); }
+  .gr-table th.r, .gr-table td.r { text-align: right; }
+  .gr-table tbody tr { border-bottom: 1px solid var(--border-soft); }
+  .gr-table tbody tr:last-child { border-bottom: none; }
+  .gr-table td { padding: 0.6rem 0.9rem; vertical-align: middle; }
+  .gr-name { color: var(--text); font-weight: 600; }
+  .gr-ret { font-weight: 800; font-variant-numeric: tabular-nums; border-radius: 6px; padding: 0.15rem 0.5rem; font-size: var(--step--1); }
+  .gr-ret.tone-up { background: var(--brand-tint); color: var(--brand-deep); }
+  .gr-ret.tone-down { background: #fbe3e6; color: #a32437; }
+  .gr-ret.tone-flat { background: var(--bg-elev); color: var(--text-muted); }
+  .gr-ret.is-win { outline: 2px solid var(--brand); outline-offset: 1px; }
+  .gr-win { font-weight: 700; color: var(--text-soft); white-space: nowrap; }
+  .gr-tnote { font-size: var(--step--2); color: var(--text-muted); line-height: 1.55; margin: 0.7rem 0 0; max-width: 720px; }
+
+  .gr-body { max-width: 720px; }
+  .gr-body p { font-size: var(--step-0); line-height: 1.65; color: var(--text-soft); margin: 0 0 0.9rem; }
+  .gr-body a { color: var(--brand); font-weight: 600; }
+
+  .gr-fq { border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); margin-bottom: 0.6rem; max-width: 720px; }
+  .gr-fq summary { cursor: pointer; padding: 0.8rem 1rem; font-weight: 600; font-size: var(--step-0); color: var(--text); }
+  .gr-fq p { padding: 0 1rem 0.9rem; margin: 0; font-size: var(--step--1); line-height: 1.6; color: var(--text-soft); }
+
+  .gr-note { margin-top: clamp(1.6rem, 4vw, 2.6rem); }
+  .gr-note p { font-size: var(--step--2); line-height: 1.6; max-width: 720px; color: var(--text-muted); padding: 0.8rem 1rem; background: var(--bg-elev); border: 1px solid var(--border-soft); border-radius: var(--radius); }
+
+  @media (max-width: 620px) {
+    .gr-stats { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script define:vars={{ built: gold.updated }}>
+  async function checkUpdate() {
+    try {
+      const r = await fetch('/altin-getiri.json?_=' + Date.now(), { cache: 'no-store' });
+      const d = await r.json();
+      if (d && d.updated && d.updated !== built) location.reload();
+    } catch { /* yoksay */ }
+  }
+  setInterval(() => { if (document.visibilityState === 'visible') checkUpdate(); }, 300000);
+</script>

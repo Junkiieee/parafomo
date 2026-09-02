@@ -365,6 +365,16 @@ def main():
         for s in chart_segs:
             s["visual"]["chart"] = chart_payload
 
+    # SEAMLESS-LOOP (2026-09-02, exp 2026-09-02-1): faceless Short'ta izleyiciye
+    # "video bitti" diyen fiziksel süreklilik ipucu yok → kapanış görselini açılış
+    # görseliyle özdeşleştirince Short loop'landığında kanca 2. kez izlenir, retention
+    # >%100'e çıkabilir (kanıtlı outlier: stagflasyon-nedir %162, bankandaki-250-bin %95).
+    # Deterministik + tek-değişken: cta beat'inin görseli = hook beat'inin görseli.
+    # Hook chart ise loop'a sokma (grafik kapanışı istemeyiz), aksi halde birebir kopyala.
+    hook_v = segs[0].get("visual") or {}
+    if hook_v.get("type") in ALLOWED_TYPES and hook_v.get("type") != "chart":
+        segs[4]["visual"] = {"type": hook_v["type"], "query": hook_v["query"]}
+
     slug = args.slug or slugify(data["title"])
     scenario = {
         "slug": slug,
