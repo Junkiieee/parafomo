@@ -21,6 +21,12 @@ export const SITE = {
   },
 };
 
+// Google ile giriş (portföy paneli). Herkese açık değer — güvenlik Google
+// tarafında "Authorized JavaScript origins" ile sağlanır. Boşsa Google butonu gizli.
+// Env (PUBLIC_GOOGLE_CLIENT_ID) verilirse onu, yoksa buradakini kullanır.
+export const GOOGLE_CLIENT_ID =
+  '1020605001020-3o64jftksul1tkqj2gov24j7qj4o18f4.apps.googleusercontent.com';
+
 export const NAV = [
   { label: 'Anasayfa', href: '/' },
   { label: 'Yazılar', href: '/blog' },

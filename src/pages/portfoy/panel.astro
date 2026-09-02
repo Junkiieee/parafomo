@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { GOOGLE_CLIENT_ID as CFG_GOOGLE_CLIENT_ID } from '../../site.config';
 
 // Üye paneli — SEO'ya girmez (noindex + robots disallow).
 // API'yi JWT ile çağırır; token localStorage'da tutulur.
-const GOOGLE_CLIENT_ID = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID || '';
+const GOOGLE_CLIENT_ID = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID || CFG_GOOGLE_CLIENT_ID || '';
 const breadcrumbs = [
   { name: 'Ana Sayfa', url: '/' },
   { name: 'Portföy Takip', url: '/portfoy-takip' },
