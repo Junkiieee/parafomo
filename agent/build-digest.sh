@@ -96,6 +96,13 @@ DATE="$(date -u +%Y-%m-%dT%H:%MZ)"
     echo
   fi
 
+  # PORTFÖY TAKİP SİSTEMİ — CANLI ürün, HER GECE bir adım geliştir (kullanıcı talimatı 2026-09-02)
+  if [ -f "$OUT_DIR/portfolio-roadmap.md" ]; then
+    echo "## 8c) 💼 PORTFÖY TAKİP — CANLI ürün; HER GECE UX/portföy-yönetimi bir adım geliştir (protokole uy)"
+    cat "$OUT_DIR/portfolio-roadmap.md"
+    echo
+  fi
+
   echo "## 9) Dünkü ajan görevleri (varsa — devam eden iş)"
   sed -n '1,40p' "$OUT_DIR/tasks-for-user.md" 2>/dev/null || echo "(ilk çalıştırma — önceki görev yok)"
   echo

@@ -73,6 +73,19 @@ Sen sitenin **tam sahibisin**. Her gün:
 - **Yaratıcılık (kaldıraç sırasıyla):** ① interaktif araçlar/hesaplayıcılar (Astro islands) ② programatik veri sayfaları ③ görsel/branding/video ④ blog derinleştirme.
 - **YENİ ALAN KEŞFİ (işin kalbi):** `halka-arz.astro` gibi *veriyle beslenen, kendi başına trafik çeken hedef sayfalar* üret. **Rakip finans sitelerini** (Investing, Bigpara, Midas, Doviz.com, Mynet, Bloomberg HT) araştır → hangi sayfa türleri trafik çekiyor çöz → **kendi verinle ÖZGÜN** kur (kopya değil). *Hazır fırsat:* `data/economic-calendar.json` var ama ekonomik takvim sayfası yok.
 
+#### 💼 Portföy Takip Sistemi — CANLI ürün, HER GECE geliştir (kullanıcı talimatı 2026-09-02)
+Ücretsiz üyelikli portföy takibi CANLI: `https://api.parafomo.com` (backend, systemd `parafomo-api`) +
+`/portfoy-takip` (halka açık SEO + üyeliksiz hesaplayıcı) + `/portfoy/panel` (üye paneli). Bu bir
+**retention/geri-dönüş motoru** — kullanıcı portföyünü izlemek için siteye tekrar tekrar gelir → kalıcı
+trafik. **Web minimumunun bir parçası olarak HER GECE bir adım geliştir** — özellikle **UX + portföy
+yönetimi.** Protokol ve öncelikli backlog: **`agent/state/portfolio-roadmap.md`** (digest 8c'de önüne
+serilir). Oradan en üstteki `[ ]` maddeyi al → uygula → TEST ET (`npm run build` geçmeli; backend
+değiştiyse uvicorn+curl) → DEPLOY (frontend: commit+push→Cloudflare; **backend: commit+push + `systemctl
+restart parafomo-api`** + `curl https://api.parafomo.com/health`) → canlı doğrula → maddeyi `[x]` yap,
+roadmap+progress'e kaydet. Güvenliği KORU (localhost bind, CORS sadece parafomo.com, parola hash,
+rate-limit, panel/reset noindex); sırları (`backend/.env`) commit ETME; build geçmeden push ETME.
+Rapora **"portföy: bugün ne geliştirdim"** satırı ZORUNLU. Detay: `deploy/DEPLOY.md`.
+
 ### 🎬 YouTube — hedef: kanalı büyütmek (izlenme + abone)
 Üretim çözülmüş (viral-daily, shorts-daily). Sen **büyüme + kalite** katmanısın:
 - Faz: **önce Shorts'u zirveye**, abone tabanı oluşunca uzun-form.
