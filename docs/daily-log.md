@@ -4,6 +4,105 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-09-02 — Dezenflasyon Nedir? Enflasyon Düşerken Yatırımcı Stratejisi
+
+**Yayınlanan yazı:** [Dezenflasyon Nedir? Enflasyon Düşerken Yatırımcı Stratejisi](https://parafomo.com/blog/dezenflasyon-nedir-enflasyon-duserken-yatirim/)
+**Hedef sorgu:** `dezenflasyon nedir` · Kategori: Ekonomi
+**Zamanlama:** TÜİK TÜFE verisi 3 Eylül 2026 🔴 öncesi explainer
+**İç linkler:** deflasyon, TÜFE sepeti, TCMB faiz kararı, reel faiz, mevduat faizi
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+Yarın TÜİK enflasyon verisi açıklanıyor.
+
+Ama asıl soru şu: Enflasyon düşüyor — bu senin için iyi mi kötü mü?
+
+Cevap: "Dezenflasyon" ne demek, bilmek gerekiyor. 👇
+
+**Tweet 2:**
+3 kavramı karıştırmayın:
+
+📈 Enflasyon → fiyatlar artıyor
+📉 Dezenflasyon → fiyatlar artmaya devam ediyor ama artış hızı yavaşlıyor
+⬇️ Deflasyon → fiyatlar gerçekten düşüyor (nadir & tehlikeli)
+
+Türkiye şu an ikincisinde.
+
+**Tweet 3:**
+Dezenflasyon döneminde ne olur?
+
+✅ Reel faiz yükselir → tasarruf sahipleri için iyi
+✅ Uzun vadeli tahvil fiyatı → yukarı
+⚠️ Altın → baskı altına girebilir (fırsat maliyeti artar)
+⚠️ Döviz → TL lehine potansiyel
+
+**Tweet 4:**
+Portföyünü nasıl konumlandırırsın?
+
+1. Reel faizi hesapla (nominal faiz − enflasyon)
+2. Sabit faizli enstrümanları değerlendir (mevduat, tahvil)
+3. Enflasyon koruma pozisyonlarını gözden geçir
+4. Faiz indirimi döngüsüne hazırlan
+
+**Tweet 5:**
+Yarın açıklanacak Ağustos TÜFE'sinde şunlara bak:
+
+📌 Çekirdek enflasyon (yapısal baskı)
+📌 Hizmet enflasyonu (en yapışkan kalem)
+📌 Gıda ve enerji (oynak, aldatıcı)
+
+Tek aylık rakama değil, trende bak.
+
+Detaylı rehber → [link]
+
+---
+
+### 📸 Instagram Post/Carousel Metni
+
+**Slide 1:**
+🔴 Yarın TÜİK enflasyon açıklıyor
+Ama dezenflasyon ne demek biliyor musun?
+
+**Slide 2:**
+Enflasyon yavaşlamak ≠ fiyatlar düşmek
+
+Dezenflasyon = artış hızı yavaşlıyor
+Deflasyon = fiyatlar gerçekten düşüyor
+
+**Slide 3:**
+Dezenflasyonda kazananlar 📊
+
+✅ Uzun vadeli tahvil
+✅ Sabit faizli mevduat
+⚠️ Altın → baskı altında
+⚠️ Döviz → dikkatli izle
+
+**Slide 4:**
+Yarın TÜFE çıkınca bak:
+→ Çekirdek enflasyon kaç?
+→ Trend yukarı mı aşağı mı?
+→ Tek aylık rakama takılma
+
+**Slide 5:**
+Detaylı rehber parafomo.com'da 👆
+Enflasyon düşerken portföyünü nasıl konumlandırırsın?
+
+**Hashtag'ler:**
+#enflasyon #tüfe #dezenflasyon #yatırım #ekonomi #tcmb #parafomo #finansalyatırım #dolar #altın
+
+---
+
+### ✅ Bugün Yapman Gerekenler
+
+1. **X (Twitter) thread'ini yayınla** — TÜİK TÜFE açıklanmadan önce yayınlarsan zamanlama mükemmel (sabah 08:00-09:00 ideal).
+2. **Instagram carousel'ini paylaş** — Slide formatında yayınla, story'de de paylaş ve yazının linkini biyografine ekle.
+3. **Topluluk paylaşımı (bonus):** Reddit r/Turkey veya r/ekonomi'de "Yarın enflasyon açıklanıyor, bu rehber işine yarar" şeklinde değer katarak paylaşabilirsin.
+
+---
+
 ## 2026-08-31 — Hisse Senedi Piyasa Değeri
 
 **Yayınlanan yazı:** [Hisse Senedi Piyasa Değeri Nedir? Large Cap, Mid Cap, Small Cap Farkı](https://parafomo.com/blog/piyasa-degeri-nedir-large-cap-mid-cap-small-cap/)
