@@ -1,0 +1,340 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+
+// Halka açık SEO sayfası + üyeliksiz "portföy değeri hesaplama" aracı.
+// Trafik mıknatısı ("ücretsiz portföy takip") + panele (üyelik) huni.
+const year = new Date().getFullYear();
+
+const faq = [
+  {
+    q: 'Portföy takip programı ücretsiz mi?',
+    a: 'Evet. ParaFOMO portföy takibi tamamen ücretsizdir. Hesap açıp BIST hisselerini, altınını ve gümüşünü ekleyerek portföyünün güncel değerini ve kâr/zararını canlı fiyatlarla takip edebilirsin. Ayrıca hesap açmadan da bu sayfadaki hesaplayıcıyla anlık değerini görebilirsin.',
+  },
+  {
+    q: 'Hangi varlıkları takip edebilirim?',
+    a: 'BIST (Borsa İstanbul) hisse senetleri, gram altın ve gram gümüş. Her pozisyon için adet/gram ve alış fiyatını girersin; sistem güncel piyasa fiyatıyla değerini ve getirini hesaplar.',
+  },
+  {
+    q: 'Fiyatlar ne kadar günceldir?',
+    a: 'BIST hisse fiyatları Borsa İstanbul verisinden (gün içi, kısa gecikmeli), altın ve gümüş güncel piyasa fiyatından alınır. Değerler birkaç dakikada bir tazelenir. Bu bir yatırım tavsiyesi değildir; kesin işlem fiyatı için aracı kurumunu esas al.',
+  },
+  {
+    q: 'Verilerim güvende mi?',
+    a: 'Portföyünü yalnızca sen görürsün; giriş e-posta+şifre (veya Google) ile korunur. Bu sayfadaki üyeliksiz hesaplayıcı ise hiçbir veriyi kaydetmez — girdiklerin yalnızca tarayıcında, o an hesaplama için kullanılır.',
+  },
+  {
+    q: 'Hesap açmadan portföyümü hesaplayabilir miyim?',
+    a: 'Evet. Aşağıdaki hesaplayıcıya varlıklarını ekleyip "Değeri hesapla" dediğinde anlık toplam değerini ve kâr/zararını görürsün. Kalıcı olarak takip etmek, pozisyon eklemeye devam etmek ve her açılışta güncel değeri görmek için ücretsiz hesap aç.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Portföy Takip', url: '/portfoy-takip' },
+];
+---
+
+<BaseLayout
+  title={`Ücretsiz Portföy Takip ${year} | BIST Hisse, Altın ve Gümüş`}
+  description="Ücretsiz portföy takip: BIST hisse, altın ve gümüş pozisyonlarını ekle, güncel değerini ve kâr/zararını canlı fiyatlarla takip et. Üyeliksiz portföy değeri hesaplama aracı da içerir."
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="pt-wrap">
+    <header class="pt-head">
+      <p class="eyebrow">Ücretsiz Araç · Portföy Takip</p>
+      <h1>Ücretsiz Portföy Takip</h1>
+      <p class="lede">
+        <strong>BIST hisse, altın ve gümüş</strong> pozisyonlarını tek yerde topla; portföyünün
+        güncel değerini ve <strong>kâr/zararını canlı fiyatlarla</strong> takip et. Hemen aşağıda
+        hesap açmadan deneyebilir, kalıcı takip için ücretsiz üye olabilirsin.
+      </p>
+      <div class="cta-row">
+        <a class="btn-primary" href="/portfoy/panel">Ücretsiz hesap aç</a>
+        <a class="btn-ghost" href="#hesaplayici">Üyeliksiz dene ↓</a>
+      </div>
+    </header>
+
+    <!-- ===== ÜYELİKSİZ HESAPLAYICI ===== -->
+    <section id="hesaplayici" class="calc-card">
+      <h2>Portföy değeri hesaplama <span class="badge">üyeliksiz</span></h2>
+      <p class="calc-intro">
+        Varlıklarını ekle, <strong>Değeri hesapla</strong>'ya bas. Anlık toplam değerini ve
+        kâr/zararını gör. Hiçbir şey kaydedilmez.
+      </p>
+
+      <div class="rows" id="rows"></div>
+
+      <button type="button" class="btn-add" id="add-row">+ Varlık ekle</button>
+
+      <div class="calc-actions">
+        <button type="button" class="btn-primary" id="calc-btn">Değeri hesapla</button>
+      </div>
+
+      <div class="calc-out" id="calc-out" hidden aria-live="polite">
+        <div class="out-top">
+          <div class="out-main">
+            <span class="out-label">Güncel toplam değer</span>
+            <span class="out-value" id="out-value">₺0</span>
+          </div>
+          <div class="out-sub">
+            <div><span>Maliyet</span><strong id="out-cost">₺0</strong></div>
+            <div><span>Kâr / Zarar</span><strong id="out-pl">₺0</strong></div>
+            <div><span>Getiri</span><strong id="out-pct">%0</strong></div>
+          </div>
+        </div>
+        <p class="out-note" id="out-note"></p>
+        <div class="save-cta">
+          <span>Bu portföyü kalıcı takip etmek ister misin?</span>
+          <a class="btn-primary sm" href="/portfoy/panel">Ücretsiz kaydet & takip et</a>
+        </div>
+      </div>
+      <p class="disclaimer">Yatırım tavsiyesi değildir. Fiyatlar gösterge amaçlıdır.</p>
+    </section>
+
+    <!-- ===== ÖZELLİKLER ===== -->
+    <section class="features">
+      <div class="feat">
+        <h3>📊 Tek panelde topla</h3>
+        <p>BIST hisse, altın ve gümüşü aynı yerde gör; dağınık ekran-görüntülerine son.</p>
+      </div>
+      <div class="feat">
+        <h3>⚡ Canlı değer & getiri</h3>
+        <p>Her açılışta güncel fiyatla portföy değeri ve kâr/zarar otomatik hesaplanır.</p>
+      </div>
+      <div class="feat">
+        <h3>🔒 Ücretsiz & gizli</h3>
+        <p>Ücretsiz hesap, sana özel portföy. E-posta veya Google ile 10 saniyede giriş.</p>
+      </div>
+    </section>
+
+    <!-- ===== SEO METİN ===== -->
+    <section class="prose-block">
+      <h2>Portföy takibi neden önemli?</h2>
+      <p>
+        Yatırımlarını takip etmeden "ne kadar kazandım, ne kadar kaybettim?" sorusuna net cevap
+        vermek zordur. Farklı varlıkları (hisse, altın, gümüş) tek bir yerde, güncel fiyatlarla
+        görmek; hangi pozisyonun taşındığını, portföyün ne kadar dağıtıldığını ve gerçek getiriyi
+        anlamanı sağlar. ParaFOMO portföy takibi bunu <strong>ücretsiz</strong> ve sade bir arayüzle sunar.
+      </p>
+      <h2>Portföy değeri nasıl hesaplanır?</h2>
+      <p>
+        Her pozisyonun güncel değeri <strong>adet (veya gram) × güncel birim fiyat</strong> ile bulunur.
+        Kâr/zarar ise <strong>güncel değer − maliyet</strong> (maliyet = adet × alış fiyatı). Yukarıdaki
+        hesaplayıcı bunu senin için canlı fiyatlarla otomatik yapar; hesap açtığında tüm portföyün için
+        toplu olarak ve her ziyaretinde tekrar hesaplar.
+      </p>
+      <h2>BIST, altın ve gümüşü birlikte takip et</h2>
+      <p>
+        Sadece güncel fiyatları görmek istiyorsan →
+        <a href="/altin-fiyatlari">altın fiyatları</a>,
+        <a href="/altin-hesaplama">altın hesaplama</a>,
+        <a href="/bist-getiri">BIST getiri</a> ve
+        <a href="/halka-arz">halka arz takvimi</a> sayfalarımıza göz at. Portföyünü kalıcı olarak
+        yönetmek için ise ücretsiz hesap açman yeterli.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <div class="bottom-cta">
+      <h2>Portföyünü ücretsiz takip etmeye başla</h2>
+      <p>E-posta veya Google ile saniyeler içinde hesap aç.</p>
+      <a class="btn-primary" href="/portfoy/panel">Ücretsiz hesap aç</a>
+    </div>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline>
+    (function () {
+      var API_BASE = localStorage.getItem('pf_api_base') || 'https://api.parafomo.com';
+      var $ = function (id) { return document.getElementById(id); };
+      var nf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      var nf2 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
+      var rowsEl = $('rows');
+      var idc = 0;
+
+      function tl(n) { return '₺' + nf.format(Math.round(n || 0)); }
+
+      function addRow(preset) {
+        preset = preset || {};
+        var id = 'r' + (idc++);
+        var div = document.createElement('div');
+        div.className = 'row';
+        div.dataset.id = id;
+        div.innerHTML =
+          '<select class="r-type">'
+            + '<option value="bist">BIST Hisse</option>'
+            + '<option value="gold">Altın (gram)</option>'
+            + '<option value="silver">Gümüş (gram)</option>'
+          + '</select>'
+          + '<input class="r-sym" type="text" placeholder="THYAO" maxlength="32" style="text-transform:uppercase" />'
+          + '<input class="r-qty" type="number" min="0" step="any" placeholder="Adet/Gram" inputmode="decimal" />'
+          + '<input class="r-cost" type="number" min="0" step="any" placeholder="Alış ₺" inputmode="decimal" />'
+          + '<button type="button" class="r-del" aria-label="Kaldır">✕</button>';
+        rowsEl.appendChild(div);
+        var typeSel = div.querySelector('.r-type');
+        var symIn = div.querySelector('.r-sym');
+        function syncSym() {
+          if (typeSel.value === 'bist') { symIn.style.display = ''; symIn.placeholder = 'THYAO'; }
+          else { symIn.style.display = 'none'; }
+        }
+        typeSel.addEventListener('change', syncSym);
+        if (preset.type) typeSel.value = preset.type;
+        if (preset.sym) symIn.value = preset.sym;
+        if (preset.qty) div.querySelector('.r-qty').value = preset.qty;
+        if (preset.cost) div.querySelector('.r-cost').value = preset.cost;
+        syncSym();
+        div.querySelector('.r-del').addEventListener('click', function () {
+          div.remove();
+          if (!rowsEl.children.length) addRow();
+        });
+      }
+
+      $('add-row').addEventListener('click', function () { addRow(); });
+
+      var priceCache = {};
+      async function priceFor(type, sym) {
+        var key = type + ':' + sym;
+        if (key in priceCache) return priceCache[key];
+        var url = API_BASE + '/public/price?asset_type=' + encodeURIComponent(type)
+          + (type === 'bist' ? '&symbol=' + encodeURIComponent(sym) : '');
+        try {
+          var res = await fetch(url);
+          var data = await res.json();
+          priceCache[key] = res.ok ? data.price : null;
+        } catch (e) { priceCache[key] = null; }
+        return priceCache[key];
+      }
+
+      $('calc-btn').addEventListener('click', async function () {
+        var btn = $('calc-btn'); btn.disabled = true; btn.textContent = 'Hesaplanıyor…';
+        var totalCost = 0, totalValue = 0, missing = [];
+        var rows = Array.prototype.slice.call(rowsEl.querySelectorAll('.row'));
+        for (var i = 0; i < rows.length; i++) {
+          var r = rows[i];
+          var type = r.querySelector('.r-type').value;
+          var sym = type === 'bist' ? r.querySelector('.r-sym').value.trim().toUpperCase() : type.toUpperCase();
+          var qty = parseFloat(r.querySelector('.r-qty').value);
+          var cost = parseFloat(r.querySelector('.r-cost').value);
+          if (!(qty > 0) || !(cost > 0)) continue;
+          if (type === 'bist' && !sym) continue;
+          totalCost += qty * cost;
+          var p = await priceFor(type, sym);
+          if (p == null) { missing.push(type === 'bist' ? sym : (type === 'gold' ? 'Altın' : 'Gümüş')); continue; }
+          totalValue += qty * p;
+        }
+        btn.disabled = false; btn.textContent = 'Değeri hesapla';
+
+        if (totalCost === 0) {
+          $('out-note').textContent = 'Lütfen en az bir satıra geçerli adet/gram ve alış fiyatı gir.';
+          $('calc-out').hidden = false;
+          $('out-value').textContent = '₺0'; $('out-cost').textContent = '₺0';
+          $('out-pl').textContent = '₺0'; $('out-pct').textContent = '%0';
+          return;
+        }
+        var pl = totalValue - totalCost;
+        var pct = totalCost ? (pl / totalCost * 100) : 0;
+        $('out-value').textContent = tl(totalValue);
+        $('out-cost').textContent = tl(totalCost);
+        var plEl = $('out-pl');
+        plEl.textContent = (pl >= 0 ? '+' : '−') + tl(Math.abs(pl)).slice(1);
+        plEl.className = pl >= 0 ? 'up' : 'down';
+        var pctEl = $('out-pct');
+        pctEl.textContent = (pct >= 0 ? '+' : '−') + nf2.format(Math.abs(pct)) + '%';
+        pctEl.className = pct >= 0 ? 'up' : 'down';
+        $('out-note').textContent = missing.length
+          ? ('Not: şu varlıkların fiyatı alınamadı, değere katılmadı: ' + missing.join(', ') + '. Hisse kodunu kontrol et (ör. THYAO).')
+          : 'Canlı fiyatlarla hesaplandı.';
+        $('calc-out').hidden = false;
+      });
+
+      // Başlangıç: örnek 2 satır
+      addRow({ type: 'bist', sym: 'THYAO', qty: '', cost: '' });
+      addRow({ type: 'gold' });
+    })();
+  </script>
+
+  <style>
+    .pt-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .pt-head { text-align: center; margin-bottom: 2rem; }
+    .pt-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto 1.3rem; }
+    .cta-row { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; }
+
+    .btn-primary { display: inline-block; border: none; background: var(--brand-2); color: #fff; font-weight: 700; font-size: 1rem; padding: 0.7rem 1.3rem; border-radius: var(--radius-sm); cursor: pointer; font-family: var(--font-sans); text-decoration: none; }
+    .btn-primary:hover { filter: brightness(1.05); }
+    .btn-primary:disabled { opacity: 0.6; cursor: default; }
+    .btn-primary.sm { padding: 0.5rem 0.9rem; font-size: 0.9rem; }
+    .btn-ghost { display: inline-block; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); font-weight: 600; padding: 0.7rem 1.3rem; border-radius: var(--radius-sm); text-decoration: none; }
+    .btn-ghost:hover { border-color: var(--brand-2); }
+
+    .calc-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.6rem; box-shadow: var(--shadow-soft); }
+    .calc-card h2 { font-size: var(--step-2); margin: 0 0 0.5rem; }
+    .badge { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; background: var(--brand-tint); color: var(--brand-ink); padding: 0.15rem 0.5rem; border-radius: 999px; vertical-align: middle; font-weight: 700; }
+    .calc-intro { color: var(--text-soft); font-size: 0.92rem; margin: 0 0 1.1rem; }
+
+    .rows { display: flex; flex-direction: column; gap: 0.55rem; }
+    .row { display: grid; grid-template-columns: 1.2fr 1fr 0.9fr 0.9fr auto; gap: 0.45rem; align-items: center; }
+    .row select, .row input { font-family: var(--font-sans); font-size: 0.92rem; color: var(--text); padding: 0.5rem 0.55rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .row select:focus, .row input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .r-del { border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); border-radius: var(--radius-sm); width: 32px; height: 34px; cursor: pointer; }
+    .r-del:hover { color: #b3261e; border-color: #b3261e; }
+    .btn-add { margin: 0.8rem 0 0; border: 1px dashed var(--border); background: var(--surface); color: var(--brand-2); font-weight: 700; padding: 0.55rem 0.9rem; border-radius: var(--radius-sm); cursor: pointer; font-family: var(--font-sans); }
+    .calc-actions { margin-top: 1.1rem; }
+
+    .calc-out { margin-top: 1.3rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .out-main { display: flex; flex-direction: column; gap: 0.2rem; margin-bottom: 0.9rem; }
+    .out-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .out-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.6rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .out-sub { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; }
+    .out-sub span { display: block; font-size: 0.76rem; color: var(--text-soft); }
+    .out-sub strong { font-size: 1rem; }
+    .out-sub .up { color: #087443; } .out-sub .down { color: #b3261e; }
+    .out-note { font-size: 0.82rem; color: var(--brand-ink); margin: 0.9rem 0 0; }
+    .save-cta { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; flex-wrap: wrap; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--text-soft); }
+    .disclaimer { font-size: 0.78rem; color: var(--text-muted); margin: 1rem 0 0; text-align: center; }
+
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2.5rem 0; }
+    .feat { background: var(--surface); border-radius: var(--radius); padding: 1.1rem; }
+    .feat h3 { font-size: 1rem; margin: 0 0 0.4rem; }
+    .feat p { font-size: 0.88rem; color: var(--text-soft); margin: 0; line-height: 1.5; }
+
+    .prose-block { margin-top: 2.5rem; }
+    .prose-block h2 { font-size: var(--step-2); margin: 1.8rem 0 0.8rem; }
+    .prose-block h2:first-child { margin-top: 0; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .prose-block a { color: var(--brand-2); }
+
+    .faq-block { margin-top: 2.5rem; }
+    .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    .bottom-cta { text-align: center; background: var(--brand-tint); border-radius: var(--radius-lg); padding: 2rem 1.2rem; margin-top: 2.5rem; }
+    .bottom-cta h2 { font-size: var(--step-2); margin: 0 0 0.4rem; }
+    .bottom-cta p { color: var(--text-soft); margin: 0 0 1.1rem; }
+
+    @media (max-width: 620px) {
+      .row { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; }
+      .r-del { grid-column: 2; justify-self: end; }
+      .features { grid-template-columns: 1fr; }
+      .out-sub { grid-template-columns: 1fr; gap: 0.4rem; }
+    }
+  </style>
+</BaseLayout>

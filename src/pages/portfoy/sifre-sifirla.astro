@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Şifre sıfırlama hedef sayfası (e-postadaki linkin açtığı sayfa).
+// Token URL'den (?token=) okunur; yeni şifre API'ye gönderilir. SEO'ya girmez.
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Portföy Takip', url: '/portfoy-takip' },
+  { name: 'Şifre Sıfırlama', url: '/portfoy/sifre-sifirla' },
+];
+---
+
+<BaseLayout
+  title="Şifre Sıfırlama"
+  description="ParaFOMO portföy hesabı şifre sıfırlama."
+  noindex={true}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="reset-wrap">
+    <section class="auth-card">
+      <header class="auth-head">
+        <p class="eyebrow">Portföy Takip</p>
+        <h1>Yeni şifre belirle</h1>
+        <p class="auth-sub" id="sub">Hesabın için yeni bir şifre gir.</p>
+      </header>
+
+      <form id="reset-form" autocomplete="on">
+        <label class="field">
+          <span>Yeni şifre</span>
+          <input type="password" id="pw1" required minlength="8" autocomplete="new-password" />
+          <small class="hint">En az 8 karakter.</small>
+        </label>
+        <label class="field">
+          <span>Yeni şifre (tekrar)</span>
+          <input type="password" id="pw2" required minlength="8" autocomplete="new-password" />
+        </label>
+        <p class="form-error" id="err" hidden></p>
+        <p class="form-ok" id="ok" hidden></p>
+        <button type="submit" class="btn-primary" id="submit">Şifreyi güncelle</button>
+      </form>
+
+      <p class="switch-line"><a class="link-a" href="/portfoy/panel">← Panele dön</a></p>
+    </section>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var API_BASE = localStorage.getItem('pf_api_base') || 'https://api.parafomo.com';
+      var $ = function (id) { return document.getElementById(id); };
+      var params = new URLSearchParams(location.search);
+      var rtoken = params.get('token') || '';
+
+      if (!rtoken) {
+        $('sub').textContent = 'Bağlantı geçersiz. Lütfen şifre sıfırlamayı yeniden başlat.';
+        $('reset-form').hidden = true;
+      }
+
+      $('reset-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var err = $('err'), ok = $('ok'); err.hidden = true; ok.hidden = true;
+        var p1 = $('pw1').value, p2 = $('pw2').value;
+        if (p1.length < 8) { err.textContent = 'Şifre en az 8 karakter olmalı.'; err.hidden = false; return; }
+        if (p1 !== p2) { err.textContent = 'Şifreler eşleşmiyor.'; err.hidden = false; return; }
+        var btn = $('submit'); btn.disabled = true;
+        try {
+          var res = await fetch(API_BASE + '/auth/reset-password', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token: rtoken, new_password: p1 }),
+          });
+          var data = null; try { data = await res.json(); } catch (e) {}
+          if (!res.ok) {
+            var msg = (data && data.detail) || 'Şifre güncellenemedi.';
+            if (Array.isArray(msg)) msg = msg.map(function (m) { return m.msg; }).join(' ');
+            throw new Error(msg);
+          }
+          if (data && data.access_token) localStorage.setItem('pf_token', data.access_token);
+          ok.textContent = 'Şifren güncellendi. Panele yönlendiriliyorsun…'; ok.hidden = false;
+          setTimeout(function () { location.href = '/portfoy/panel'; }, 1200);
+        } catch (ex) {
+          err.textContent = ex.message; err.hidden = false;
+          btn.disabled = false;
+        }
+      });
+    })();
+  </script>
+
+  <style>
+    .reset-wrap { max-width: 460px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .auth-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.8rem 1.6rem; box-shadow: var(--shadow-soft); }
+    .auth-head { text-align: center; margin-bottom: 1.4rem; }
+    .auth-head h1 { font-size: var(--step-2); margin: 0 0 0.4rem; }
+    .auth-sub { color: var(--text-soft); font-size: 0.92rem; margin: 0; }
+    .field { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.9rem; }
+    .field span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .field input { font-family: var(--font-sans); font-size: 1.02rem; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .field input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .field .hint { color: var(--text-muted); font-weight: 500; }
+    .btn-primary { width: 100%; border: none; background: var(--brand-2); color: #fff; font-weight: 700; font-size: 1rem; padding: 0.7rem; border-radius: var(--radius-sm); cursor: pointer; font-family: var(--font-sans); }
+    .btn-primary:hover { filter: brightness(1.05); }
+    .btn-primary:disabled { opacity: 0.6; cursor: default; }
+    .form-error { background: #fdecec; color: #b3261e; border-radius: var(--radius-sm); padding: 0.6rem 0.8rem; font-size: 0.88rem; margin: 0 0 0.9rem; }
+    .form-ok { background: var(--brand-tint); color: var(--brand-ink); border-radius: var(--radius-sm); padding: 0.6rem 0.8rem; font-size: 0.88rem; margin: 0 0 0.9rem; }
+    .switch-line { text-align: center; font-size: 0.9rem; margin: 1.1rem 0 0; }
+    .link-a { color: var(--brand-2); font-weight: 700; text-decoration: none; }
+    .link-a:hover { text-decoration: underline; }
+  </style>
+</BaseLayout>

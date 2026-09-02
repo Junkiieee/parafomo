@@ -1,0 +1,534 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Üye paneli — SEO'ya girmez (noindex + robots disallow).
+// API'yi JWT ile çağırır; token localStorage'da tutulur.
+const GOOGLE_CLIENT_ID = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID || '';
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Portföy Takip', url: '/portfoy-takip' },
+  { name: 'Panel', url: '/portfoy/panel' },
+];
+---
+
+<BaseLayout
+  title="Portföy Panelim"
+  description="ParaFOMO ücretsiz portföy takip paneli — BIST hisse, altın ve gümüş pozisyonlarını gir, canlı değer ve kâr/zararını takip et."
+  noindex={true}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="panel-wrap">
+    <!-- ===== GİRİŞ / KAYIT ===== -->
+    <section id="auth-view" class="auth-card" hidden>
+      <header class="auth-head">
+        <p class="eyebrow">Ücretsiz · Portföy Takip</p>
+        <h1 id="auth-title">Portföyüne giriş yap</h1>
+        <p class="auth-sub" id="auth-sub">
+          Hesabına gir; BIST hisse, altın ve gümüş pozisyonlarını canlı fiyatla takip et.
+        </p>
+      </header>
+
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab is-active" id="tab-login" role="tab">Giriş yap</button>
+        <button type="button" class="tab" id="tab-register" role="tab">Kayıt ol</button>
+      </div>
+
+      <form id="auth-form" autocomplete="on">
+        <label class="field" id="name-field" hidden>
+          <span>Ad (opsiyonel)</span>
+          <input type="text" id="f-name" maxlength="120" autocomplete="name" />
+        </label>
+        <label class="field">
+          <span>E-posta</span>
+          <input type="email" id="f-email" required autocomplete="email" inputmode="email" />
+        </label>
+        <label class="field">
+          <span>Şifre</span>
+          <input type="password" id="f-password" required minlength="8" autocomplete="current-password" />
+          <small class="hint" id="pw-hint" hidden>En az 8 karakter.</small>
+        </label>
+
+        <p class="form-error" id="auth-error" hidden></p>
+
+        <button type="submit" class="btn-primary" id="auth-submit">Giriş yap</button>
+      </form>
+
+      <p class="forgot-line" id="forgot-line">
+        <button type="button" class="link-btn muted" id="go-forgot">Şifreni mi unuttun?</button>
+      </p>
+
+      {GOOGLE_CLIENT_ID && (
+        <>
+          <div class="divider"><span>veya</span></div>
+          <div id="gbtn" class="gbtn-wrap"></div>
+        </>
+      )}
+
+      <p class="switch-line" id="switch-line">
+        Hesabın yok mu? <button type="button" class="link-btn" id="go-register">Ücretsiz kayıt ol</button>
+      </p>
+    </section>
+
+    <!-- ===== ŞİFREMİ UNUTTUM ===== -->
+    <section id="forgot-view" class="auth-card" hidden>
+      <header class="auth-head">
+        <p class="eyebrow">Şifre sıfırlama</p>
+        <h1>Şifreni sıfırla</h1>
+        <p class="auth-sub">E-postanı gir; sıfırlama bağlantısını gönderelim.</p>
+      </header>
+      <form id="forgot-form" autocomplete="on">
+        <label class="field">
+          <span>E-posta</span>
+          <input type="email" id="fg-email" required autocomplete="email" inputmode="email" />
+        </label>
+        <p class="form-ok" id="forgot-ok" hidden></p>
+        <p class="form-error" id="forgot-error" hidden></p>
+        <button type="submit" class="btn-primary" id="forgot-submit">Bağlantı gönder</button>
+      </form>
+      <p class="switch-line">
+        <button type="button" class="link-btn" id="back-login">← Girişe dön</button>
+      </p>
+    </section>
+
+    <!-- ===== PORTFÖY PANELİ ===== -->
+    <section id="app-view" hidden>
+      <header class="app-head">
+        <div>
+          <p class="eyebrow">Portföy Panelim</p>
+          <h1 id="hello">Portföyün</h1>
+        </div>
+        <button type="button" class="link-btn" id="logout">Çıkış</button>
+      </header>
+
+      <!-- Özet -->
+      <div class="summary-card" id="summary" aria-live="polite">
+        <div class="sum-main">
+          <span class="sum-label">Güncel değer</span>
+          <span class="sum-value" id="sum-value">₺0</span>
+        </div>
+        <div class="sum-split">
+          <div class="sum-item">
+            <span class="sum-k">Maliyet</span>
+            <span class="sum-v" id="sum-cost">₺0</span>
+          </div>
+          <div class="sum-item">
+            <span class="sum-k">Kâr / Zarar</span>
+            <span class="sum-v" id="sum-pl">₺0</span>
+          </div>
+          <div class="sum-item">
+            <span class="sum-k">Getiri</span>
+            <span class="sum-v" id="sum-plpct">%0</span>
+          </div>
+        </div>
+        <p class="sum-note" id="sum-note">Fiyatlar canlı; birkaç dakika gecikmeli olabilir.</p>
+      </div>
+
+      <!-- Pozisyon ekle -->
+      <details class="add-block" id="add-block">
+        <summary>+ Pozisyon ekle</summary>
+        <form id="add-form" autocomplete="off">
+          <div class="add-grid">
+            <label class="field">
+              <span>Varlık türü</span>
+              <select id="a-type">
+                <option value="bist">BIST Hisse</option>
+                <option value="gold">Altın (gram)</option>
+                <option value="silver">Gümüş (gram)</option>
+              </select>
+            </label>
+            <label class="field" id="symbol-field">
+              <span>Hisse kodu</span>
+              <input type="text" id="a-symbol" placeholder="THYAO" maxlength="32" style="text-transform:uppercase" />
+            </label>
+            <label class="field">
+              <span id="qty-label">Adet</span>
+              <input type="number" id="a-qty" min="0" step="any" placeholder="100" inputmode="decimal" />
+            </label>
+            <label class="field">
+              <span>Birim alış fiyatı (₺)</span>
+              <input type="number" id="a-cost" min="0" step="any" placeholder="250" inputmode="decimal" />
+            </label>
+            <label class="field">
+              <span>Alış tarihi (ops.)</span>
+              <input type="date" id="a-date" />
+            </label>
+          </div>
+          <p class="form-error" id="add-error" hidden></p>
+          <button type="submit" class="btn-primary" id="add-submit">Ekle</button>
+        </form>
+      </details>
+
+      <!-- Pozisyon listesi -->
+      <div class="holdings" id="holdings">
+        <p class="empty" id="empty-state" hidden>
+          Henüz pozisyonun yok. Yukarıdan ilk hisseni, altınını veya gümüşünü ekle.
+        </p>
+        <div class="table-scroll">
+          <table class="pf-table" id="pf-table" hidden>
+            <thead>
+              <tr>
+                <th>Varlık</th>
+                <th class="num">Adet/Gram</th>
+                <th class="num">Maliyet</th>
+                <th class="num">Güncel</th>
+                <th class="num">K/Z</th>
+                <th aria-label="İşlem"></th>
+              </tr>
+            </thead>
+            <tbody id="pf-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="disclaimer">
+        Yatırım tavsiyesi değildir. Fiyatlar ücretsiz gösterge kaynaklardan alınır; kesin işlem
+        fiyatı için aracı kurumunu esas al.
+      </p>
+    </section>
+
+    <div id="boot" class="boot">Yükleniyor…</div>
+  </div>
+
+  <script is:inline define:vars={{ GOOGLE_CLIENT_ID }}>
+    (function () {
+      // Prod: api.parafomo.com; yerel test için localStorage.pf_api_base ile override.
+      var API_BASE = localStorage.getItem('pf_api_base') || 'https://api.parafomo.com';
+      var TOKEN_KEY = 'pf_token';
+      var $ = function (id) { return document.getElementById(id); };
+      var nf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      var nf2 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
+      var mode = 'login'; // 'login' | 'register'
+
+      var TYPE_LABEL = { bist: '', gold: 'Altın (gram)', silver: 'Gümüş (gram)' };
+
+      function token() { return localStorage.getItem(TOKEN_KEY); }
+      function setToken(t) { localStorage.setItem(TOKEN_KEY, t); }
+      function clearToken() { localStorage.removeItem(TOKEN_KEY); }
+
+      function tl(n) { return '₺' + nf.format(Math.round(n || 0)); }
+
+      async function api(path, opts) {
+        opts = opts || {};
+        opts.headers = opts.headers || {};
+        if (opts.body && typeof opts.body !== 'string') {
+          opts.headers['Content-Type'] = 'application/json';
+          opts.body = JSON.stringify(opts.body);
+        }
+        var t = token();
+        if (t) opts.headers['Authorization'] = 'Bearer ' + t;
+        var res = await fetch(API_BASE + path, opts);
+        if (res.status === 401) { clearToken(); showAuth(); throw new Error('Oturum sona erdi, tekrar giriş yap.'); }
+        var data = null;
+        try { data = await res.json(); } catch (e) {}
+        if (!res.ok) {
+          var msg = (data && (data.detail || data.message)) || 'Bir hata oluştu.';
+          if (Array.isArray(msg)) msg = msg.map(function (m) { return m.msg; }).join(' ');
+          throw new Error(msg);
+        }
+        return data;
+      }
+
+      // ---- Görünüm geçişleri ----
+      function showAuth() {
+        $('boot').hidden = true;
+        $('app-view').hidden = true;
+        $('forgot-view').hidden = true;
+        $('auth-view').hidden = false;
+      }
+      function showForgot() {
+        $('auth-view').hidden = true;
+        $('app-view').hidden = true;
+        $('boot').hidden = true;
+        $('forgot-ok').hidden = true;
+        $('forgot-error').hidden = true;
+        $('forgot-view').hidden = false;
+      }
+      function showApp() {
+        $('boot').hidden = true;
+        $('auth-view').hidden = true;
+        $('forgot-view').hidden = true;
+        $('app-view').hidden = false;
+        loadPortfolio();
+      }
+
+      // ---- Auth sekmeleri ----
+      function setMode(m) {
+        mode = m;
+        var login = m === 'login';
+        $('tab-login').classList.toggle('is-active', login);
+        $('tab-register').classList.toggle('is-active', !login);
+        $('auth-title').textContent = login ? 'Portföyüne giriş yap' : 'Ücretsiz hesap oluştur';
+        $('name-field').hidden = login;
+        $('pw-hint').hidden = login;
+        $('auth-submit').textContent = login ? 'Giriş yap' : 'Kayıt ol';
+        $('f-password').setAttribute('autocomplete', login ? 'current-password' : 'new-password');
+        $('switch-line').innerHTML = login
+          ? 'Hesabın yok mu? <button type="button" class="link-btn" id="go-register">Ücretsiz kayıt ol</button>'
+          : 'Zaten üye misin? <button type="button" class="link-btn" id="go-login">Giriş yap</button>';
+        wireSwitch();
+        $('auth-error').hidden = true;
+      }
+      function wireSwitch() {
+        var gr = $('go-register'); if (gr) gr.onclick = function () { setMode('register'); };
+        var gl = $('go-login'); if (gl) gl.onclick = function () { setMode('login'); };
+      }
+
+      $('tab-login').onclick = function () { setMode('login'); };
+      $('tab-register').onclick = function () { setMode('register'); };
+
+      $('auth-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var err = $('auth-error'); err.hidden = true;
+        var btn = $('auth-submit'); btn.disabled = true;
+        try {
+          var body = { email: $('f-email').value.trim(), password: $('f-password').value };
+          if (mode === 'register') {
+            var nm = $('f-name').value.trim();
+            if (nm) body.display_name = nm;
+          }
+          var data = await api('/auth/' + (mode === 'register' ? 'register' : 'login'), { method: 'POST', body: body });
+          setToken(data.access_token);
+          showApp();
+        } catch (ex) {
+          err.textContent = ex.message; err.hidden = false;
+        } finally {
+          btn.disabled = false;
+        }
+      });
+
+      $('logout').onclick = function () { clearToken(); showAuth(); };
+
+      // ---- Pozisyon ekleme formu ----
+      $('a-type').addEventListener('change', function () {
+        var t = $('a-type').value;
+        $('symbol-field').hidden = t !== 'bist';
+        $('qty-label').textContent = t === 'bist' ? 'Adet' : 'Gram';
+      });
+
+      $('add-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var err = $('add-error'); err.hidden = true;
+        var btn = $('add-submit'); btn.disabled = true;
+        try {
+          var t = $('a-type').value;
+          var body = {
+            asset_type: t,
+            symbol: t === 'bist' ? ($('a-symbol').value.trim().toUpperCase()) : t.toUpperCase(),
+            quantity: parseFloat($('a-qty').value),
+            cost_price: parseFloat($('a-cost').value),
+          };
+          if (t === 'bist' && !body.symbol) throw new Error('Hisse kodunu gir (ör. THYAO).');
+          if (!(body.quantity > 0)) throw new Error('Geçerli bir adet/gram gir.');
+          if (!(body.cost_price > 0)) throw new Error('Geçerli bir birim alış fiyatı gir.');
+          if ($('a-date').value) body.purchase_date = $('a-date').value;
+          await api('/portfolio/holdings', { method: 'POST', body: body });
+          $('add-form').reset();
+          $('symbol-field').hidden = false;
+          $('qty-label').textContent = 'Adet';
+          $('add-block').open = false;
+          await loadPortfolio();
+        } catch (ex) {
+          err.textContent = ex.message; err.hidden = false;
+        } finally {
+          btn.disabled = false;
+        }
+      });
+
+      // ---- Portföy yükleme + render ----
+      async function loadPortfolio() {
+        try {
+          var s = await api('/portfolio/summary');
+          renderSummary(s);
+          renderHoldings(s.holdings);
+        } catch (ex) {
+          // 401 zaten showAuth tetikler
+        }
+      }
+
+      function renderSummary(s) {
+        $('sum-value').textContent = tl(s.total_value);
+        $('sum-cost').textContent = tl(s.total_cost);
+        var pl = s.total_profit_loss || 0;
+        var plEl = $('sum-pl');
+        plEl.textContent = (pl >= 0 ? '+' : '−') + tl(Math.abs(pl)).slice(1);
+        plEl.className = 'sum-v ' + (pl >= 0 ? 'up' : 'down');
+        var pct = s.total_profit_loss_pct || 0;
+        var pctEl = $('sum-plpct');
+        pctEl.textContent = (pct >= 0 ? '+' : '−') + nf2.format(Math.abs(pct)) + '%';
+        pctEl.className = 'sum-v ' + (pct >= 0 ? 'up' : 'down');
+      }
+
+      function assetLabel(h) {
+        if (h.asset_type === 'bist') return h.symbol;
+        return TYPE_LABEL[h.asset_type] || h.symbol;
+      }
+
+      function renderHoldings(list) {
+        var tbody = $('pf-tbody');
+        tbody.innerHTML = '';
+        if (!list || !list.length) {
+          $('empty-state').hidden = false;
+          $('pf-table').hidden = true;
+          return;
+        }
+        $('empty-state').hidden = true;
+        $('pf-table').hidden = false;
+        list.forEach(function (h) {
+          var tr = document.createElement('tr');
+          var qty = h.asset_type === 'bist' ? nf.format(h.quantity) : nf2.format(h.quantity) + ' gr';
+          var cur = h.current_value != null ? tl(h.current_value) : '—';
+          var pl = h.profit_loss;
+          var plStr = pl != null
+            ? (pl >= 0 ? '+' : '−') + tl(Math.abs(pl)).slice(1)
+              + ' <small>(' + (h.profit_loss_pct >= 0 ? '+' : '−') + nf2.format(Math.abs(h.profit_loss_pct)) + '%)</small>'
+            : '—';
+          var plCls = pl == null ? '' : (pl >= 0 ? 'up' : 'down');
+          tr.innerHTML =
+            '<td class="asset"><strong>' + assetLabel(h) + '</strong>'
+              + '<small>' + tl(h.cost_price) + ' birim</small></td>'
+            + '<td class="num">' + qty + '</td>'
+            + '<td class="num">' + tl(h.cost_value) + '</td>'
+            + '<td class="num">' + cur + '</td>'
+            + '<td class="num ' + plCls + '">' + plStr + '</td>'
+            + '<td class="num"><button type="button" class="del" data-id="' + h.id + '" aria-label="Sil">✕</button></td>';
+          tbody.appendChild(tr);
+        });
+        tbody.querySelectorAll('.del').forEach(function (b) {
+          b.onclick = async function () {
+            if (!confirm('Bu pozisyonu silmek istediğine emin misin?')) return;
+            try { await api('/portfolio/holdings/' + b.getAttribute('data-id'), { method: 'DELETE' }); await loadPortfolio(); }
+            catch (ex) { alert(ex.message); }
+          };
+        });
+      }
+
+      // ---- Şifremi unuttum ----
+      document.addEventListener('click', function (e) {
+        if (e.target && e.target.id === 'go-forgot') showForgot();
+        if (e.target && e.target.id === 'back-login') showAuth();
+      });
+      $('forgot-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var ok = $('forgot-ok'), err = $('forgot-error'); ok.hidden = true; err.hidden = true;
+        var btn = $('forgot-submit'); btn.disabled = true;
+        try {
+          var data = await api('/auth/request-password-reset', { method: 'POST', body: { email: $('fg-email').value.trim() } });
+          ok.textContent = data.message; ok.hidden = false;
+        } catch (ex) {
+          err.textContent = ex.message; err.hidden = false;
+        } finally { btn.disabled = false; }
+      });
+
+      // ---- Google ile giriş ----
+      window.__pfGoogleCallback = async function (resp) {
+        try {
+          var data = await api('/auth/google', { method: 'POST', body: { credential: resp.credential } });
+          setToken(data.access_token);
+          showApp();
+        } catch (ex) {
+          var err = $('auth-error'); err.textContent = ex.message; err.hidden = false;
+        }
+      };
+      function initGoogle() {
+        if (!GOOGLE_CLIENT_ID || !window.google || !window.google.accounts) return;
+        window.google.accounts.id.initialize({
+          client_id: GOOGLE_CLIENT_ID,
+          callback: window.__pfGoogleCallback,
+        });
+        var wrap = $('gbtn');
+        if (wrap) window.google.accounts.id.renderButton(wrap, { theme: 'outline', size: 'large', width: 320, locale: 'tr' });
+      }
+      window.__pfInitGoogle = initGoogle;
+      if (GOOGLE_CLIENT_ID && window.google && window.google.accounts) initGoogle();
+
+      // ---- Başlangıç ----
+      setMode('login');
+      if (token()) { showApp(); } else { showAuth(); }
+    })();
+  </script>
+
+  {GOOGLE_CLIENT_ID && (
+    <script
+      is:inline
+      src="https://accounts.google.com/gsi/client"
+      async
+      onload="window.__pfInitGoogle && window.__pfInitGoogle()"
+    ></script>
+  )}
+
+  <style>
+    .panel-wrap { max-width: 760px; margin: 0 auto; padding: 2.2rem 1.1rem 4rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .boot { text-align: center; color: var(--text-muted); padding: 3rem 0; }
+
+    /* Auth */
+    .auth-card { max-width: 440px; margin: 1.5rem auto 0; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.8rem 1.6rem; box-shadow: var(--shadow-soft); }
+    .auth-head { text-align: center; margin-bottom: 1.4rem; }
+    .auth-head h1 { font-size: var(--step-2); margin: 0 0 0.4rem; }
+    .auth-sub { color: var(--text-soft); font-size: 0.92rem; margin: 0; }
+    .tabs { display: flex; gap: 0.4rem; background: var(--surface); padding: 0.3rem; border-radius: var(--radius); margin-bottom: 1.2rem; }
+    .tab { flex: 1; border: none; background: transparent; padding: 0.55rem; border-radius: var(--radius-sm); font-weight: 600; color: var(--text-soft); cursor: pointer; font-family: var(--font-sans); }
+    .tab.is-active { background: var(--bg-card); color: var(--text); box-shadow: var(--shadow-soft); }
+
+    .field { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.9rem; }
+    .field span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .field input, .field select { font-family: var(--font-sans); font-size: 1.02rem; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .field input:focus, .field select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .field .hint { color: var(--text-muted); font-weight: 500; }
+
+    .btn-primary { width: 100%; border: none; background: var(--brand-2); color: #fff; font-weight: 700; font-size: 1rem; padding: 0.7rem; border-radius: var(--radius-sm); cursor: pointer; font-family: var(--font-sans); }
+    .btn-primary:hover { filter: brightness(1.05); }
+    .btn-primary:disabled { opacity: 0.6; cursor: default; }
+
+    .form-error { background: #fdecec; color: #b3261e; border-radius: var(--radius-sm); padding: 0.6rem 0.8rem; font-size: 0.88rem; margin: 0 0 0.9rem; }
+    .form-ok { background: var(--brand-tint); color: var(--brand-ink); border-radius: var(--radius-sm); padding: 0.6rem 0.8rem; font-size: 0.88rem; margin: 0 0 0.9rem; }
+    .forgot-line { text-align: center; margin: 0.6rem 0 0; }
+    .link-btn.muted { color: var(--text-muted); font-weight: 600; font-size: 0.86rem; }
+    .divider { display: flex; align-items: center; text-align: center; gap: 0.7rem; margin: 1.2rem 0; color: var(--text-muted); font-size: 0.8rem; }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .gbtn-wrap { display: flex; justify-content: center; min-height: 44px; }
+    .switch-line { text-align: center; font-size: 0.9rem; color: var(--text-soft); margin: 1.1rem 0 0; }
+    .link-btn { border: none; background: none; color: var(--brand-2); font-weight: 700; cursor: pointer; font-family: var(--font-sans); font-size: inherit; padding: 0; }
+    .link-btn:hover { text-decoration: underline; }
+
+    /* App */
+    .app-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem; }
+    .app-head h1 { font-size: var(--step-3); margin: 0; }
+
+    .summary-card { background: var(--brand-tint); border-radius: var(--radius-lg); padding: 1.4rem; margin-bottom: 1.2rem; }
+    .sum-main { display: flex; flex-direction: column; gap: 0.2rem; margin-bottom: 1rem; }
+    .sum-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .sum-value { font-family: var(--font-serif); font-size: clamp(2rem, 1.4rem + 3vw, 2.8rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .sum-split { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
+    .sum-item { display: flex; flex-direction: column; gap: 0.15rem; }
+    .sum-k { font-size: 0.78rem; color: var(--text-soft); }
+    .sum-v { font-weight: 700; font-size: 1.02rem; }
+    .sum-v.up { color: #087443; } .sum-v.down { color: #b3261e; }
+    .sum-note { font-size: 0.78rem; color: var(--text-muted); margin: 0.9rem 0 0; }
+
+    .add-block { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 1.2rem; }
+    .add-block summary { padding: 0.85rem 1.1rem; font-weight: 700; color: var(--brand-2); cursor: pointer; list-style: none; }
+    .add-block summary::-webkit-details-marker { display: none; }
+    #add-form { padding: 0 1.1rem 1.1rem; }
+    .add-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 0.9rem; }
+
+    .empty { text-align: center; color: var(--text-muted); padding: 2rem 1rem; background: var(--surface); border-radius: var(--radius); }
+    .table-scroll { overflow-x: auto; }
+    .pf-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+    .pf-table th, .pf-table td { padding: 0.65rem 0.5rem; border-bottom: 1px solid var(--border); text-align: left; }
+    .pf-table th { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .pf-table .num { text-align: right; }
+    .pf-table td.up { color: #087443; } .pf-table td.down { color: #b3261e; }
+    .pf-table td.asset strong { display: block; } .pf-table td.asset small { color: var(--text-muted); font-size: 0.78rem; }
+    .pf-table td .num small, .pf-table td.num small { font-weight: 500; opacity: 0.8; }
+    .del { border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); border-radius: var(--radius-sm); width: 28px; height: 28px; cursor: pointer; line-height: 1; }
+    .del:hover { color: #b3261e; border-color: #b3261e; }
+
+    .disclaimer { font-size: 0.78rem; color: var(--text-muted); margin: 1.5rem 0 0; text-align: center; }
+
+    @media (max-width: 560px) {
+      .add-grid { grid-template-columns: 1fr; }
+      .sum-split { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</BaseLayout>
