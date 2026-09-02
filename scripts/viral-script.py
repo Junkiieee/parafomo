@@ -293,8 +293,11 @@ def main():
 
     # Oturum limiti / geçici hata: anlık takılmalar için kısa beklemeli birkaç tekrar.
     # Uzun süreli (saatlik) limitte tümü tükenir → çağıran betik yeniden zamanlar.
-    TRANSIENT = ("session limit", "hit your", "rate limit", "overloaded",
-                 "try again", "temporarily", "usage limit")
+    TRANSIENT = ("session limit", "rate limit", "overloaded",
+                 "try again", "temporarily")
+    # Uzun süreli limitler (saatlik/günlük/haftalık): dakikalar içinde sıfırlanmaz →
+    # tekrar denemek anlamsız, anında çık ki 4×90sn boşuna beklenmesin.
+    HARD_LIMIT = ("weekly limit", "daily limit", "monthly limit", "hit your")
     MAX_TRIES, WAIT = 4, 90
 
     def one_shot(prompt):
@@ -309,6 +312,8 @@ def main():
         m = re.search(r"\{.*\}", out, re.DOTALL)
         if not m:
             low = out.lower()
+            if any(h in low for h in HARD_LIMIT):
+                return None, False, out  # hard limit → transient DEĞİL, hemen çık
             transient = (not out) or any(t in low for t in TRANSIENT)
             return None, transient, out
         try:
