@@ -25,6 +25,23 @@ class Token(BaseModel):
     token_type: str = "bearer"
 
 
+class GoogleLogin(BaseModel):
+    credential: str  # Google Identity Services ID token (JWT)
+
+
+class PasswordResetRequest(BaseModel):
+    email: EmailStr
+
+
+class PasswordResetConfirm(BaseModel):
+    token: str
+    new_password: str = Field(min_length=8, max_length=128)
+
+
+class Message(BaseModel):
+    message: str
+
+
 class UserOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 

@@ -3,7 +3,7 @@ import { SITE } from '../site.config';
 
 const robots = `User-agent: *
 Allow: /
-Disallow: /portfoy/panel
+Disallow: /portfoy/
 
 Sitemap: ${new URL('sitemap-index.xml', SITE.url).href}
 `;

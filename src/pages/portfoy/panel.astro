@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 // Üye paneli — SEO'ya girmez (noindex + robots disallow).
 // API'yi JWT ile çağırır; token localStorage'da tutulur.
+const GOOGLE_CLIENT_ID = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID || '';
 const breadcrumbs = [
   { name: 'Ana Sayfa', url: '/' },
   { name: 'Portföy Takip', url: '/portfoy-takip' },
@@ -52,8 +53,40 @@ const breadcrumbs = [
         <button type="submit" class="btn-primary" id="auth-submit">Giriş yap</button>
       </form>
 
+      <p class="forgot-line" id="forgot-line">
+        <button type="button" class="link-btn muted" id="go-forgot">Şifreni mi unuttun?</button>
+      </p>
+
+      {GOOGLE_CLIENT_ID && (
+        <>
+          <div class="divider"><span>veya</span></div>
+          <div id="gbtn" class="gbtn-wrap"></div>
+        </>
+      )}
+
       <p class="switch-line" id="switch-line">
         Hesabın yok mu? <button type="button" class="link-btn" id="go-register">Ücretsiz kayıt ol</button>
+      </p>
+    </section>
+
+    <!-- ===== ŞİFREMİ UNUTTUM ===== -->
+    <section id="forgot-view" class="auth-card" hidden>
+      <header class="auth-head">
+        <p class="eyebrow">Şifre sıfırlama</p>
+        <h1>Şifreni sıfırla</h1>
+        <p class="auth-sub">E-postanı gir; sıfırlama bağlantısını gönderelim.</p>
+      </header>
+      <form id="forgot-form" autocomplete="on">
+        <label class="field">
+          <span>E-posta</span>
+          <input type="email" id="fg-email" required autocomplete="email" inputmode="email" />
+        </label>
+        <p class="form-ok" id="forgot-ok" hidden></p>
+        <p class="form-error" id="forgot-error" hidden></p>
+        <button type="submit" class="btn-primary" id="forgot-submit">Bağlantı gönder</button>
+      </form>
+      <p class="switch-line">
+        <button type="button" class="link-btn" id="back-login">← Girişe dön</button>
       </p>
     </section>
 
@@ -156,7 +189,7 @@ const breadcrumbs = [
     <div id="boot" class="boot">Yükleniyor…</div>
   </div>
 
-  <script is:inline>
+  <script is:inline define:vars={{ GOOGLE_CLIENT_ID }}>
     (function () {
       // Prod: api.parafomo.com; yerel test için localStorage.pf_api_base ile override.
       var API_BASE = localStorage.getItem('pf_api_base') || 'https://api.parafomo.com';
@@ -199,11 +232,21 @@ const breadcrumbs = [
       function showAuth() {
         $('boot').hidden = true;
         $('app-view').hidden = true;
+        $('forgot-view').hidden = true;
         $('auth-view').hidden = false;
+      }
+      function showForgot() {
+        $('auth-view').hidden = true;
+        $('app-view').hidden = true;
+        $('boot').hidden = true;
+        $('forgot-ok').hidden = true;
+        $('forgot-error').hidden = true;
+        $('forgot-view').hidden = false;
       }
       function showApp() {
         $('boot').hidden = true;
         $('auth-view').hidden = true;
+        $('forgot-view').hidden = true;
         $('app-view').hidden = false;
         loadPortfolio();
       }
@@ -359,11 +402,59 @@ const breadcrumbs = [
         });
       }
 
+      // ---- Şifremi unuttum ----
+      document.addEventListener('click', function (e) {
+        if (e.target && e.target.id === 'go-forgot') showForgot();
+        if (e.target && e.target.id === 'back-login') showAuth();
+      });
+      $('forgot-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var ok = $('forgot-ok'), err = $('forgot-error'); ok.hidden = true; err.hidden = true;
+        var btn = $('forgot-submit'); btn.disabled = true;
+        try {
+          var data = await api('/auth/request-password-reset', { method: 'POST', body: { email: $('fg-email').value.trim() } });
+          ok.textContent = data.message; ok.hidden = false;
+        } catch (ex) {
+          err.textContent = ex.message; err.hidden = false;
+        } finally { btn.disabled = false; }
+      });
+
+      // ---- Google ile giriş ----
+      window.__pfGoogleCallback = async function (resp) {
+        try {
+          var data = await api('/auth/google', { method: 'POST', body: { credential: resp.credential } });
+          setToken(data.access_token);
+          showApp();
+        } catch (ex) {
+          var err = $('auth-error'); err.textContent = ex.message; err.hidden = false;
+        }
+      };
+      function initGoogle() {
+        if (!GOOGLE_CLIENT_ID || !window.google || !window.google.accounts) return;
+        window.google.accounts.id.initialize({
+          client_id: GOOGLE_CLIENT_ID,
+          callback: window.__pfGoogleCallback,
+        });
+        var wrap = $('gbtn');
+        if (wrap) window.google.accounts.id.renderButton(wrap, { theme: 'outline', size: 'large', width: 320, locale: 'tr' });
+      }
+      window.__pfInitGoogle = initGoogle;
+      if (GOOGLE_CLIENT_ID && window.google && window.google.accounts) initGoogle();
+
       // ---- Başlangıç ----
       setMode('login');
       if (token()) { showApp(); } else { showAuth(); }
     })();
   </script>
+
+  {GOOGLE_CLIENT_ID && (
+    <script
+      is:inline
+      src="https://accounts.google.com/gsi/client"
+      async
+      onload="window.__pfInitGoogle && window.__pfInitGoogle()"
+    ></script>
+  )}
 
   <style>
     .panel-wrap { max-width: 760px; margin: 0 auto; padding: 2.2rem 1.1rem 4rem; }
@@ -390,6 +481,12 @@ const breadcrumbs = [
     .btn-primary:disabled { opacity: 0.6; cursor: default; }
 
     .form-error { background: #fdecec; color: #b3261e; border-radius: var(--radius-sm); padding: 0.6rem 0.8rem; font-size: 0.88rem; margin: 0 0 0.9rem; }
+    .form-ok { background: var(--brand-tint); color: var(--brand-ink); border-radius: var(--radius-sm); padding: 0.6rem 0.8rem; font-size: 0.88rem; margin: 0 0 0.9rem; }
+    .forgot-line { text-align: center; margin: 0.6rem 0 0; }
+    .link-btn.muted { color: var(--text-muted); font-weight: 600; font-size: 0.86rem; }
+    .divider { display: flex; align-items: center; text-align: center; gap: 0.7rem; margin: 1.2rem 0; color: var(--text-muted); font-size: 0.8rem; }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .gbtn-wrap { display: flex; justify-content: center; min-height: 44px; }
     .switch-line { text-align: center; font-size: 0.9rem; color: var(--text-soft); margin: 1.1rem 0 0; }
     .link-btn { border: none; background: none; color: var(--brand-2); font-weight: 700; cursor: pointer; font-family: var(--font-sans); font-size: inherit; padding: 0; }
     .link-btn:hover { text-decoration: underline; }

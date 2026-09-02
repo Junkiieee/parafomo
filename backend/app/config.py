@@ -24,11 +24,29 @@ class Settings(BaseSettings):
 
     cors_origins: str = "http://localhost:4321"
 
+    # Panelin/sitesinin herkese açık kök adresi — şifre sıfırlama linki bununla kurulur
+    frontend_base_url: str = "https://parafomo.com"
+
     google_client_id: str = ""
+
+    # Şifre sıfırlama token ömrü (dakika)
+    reset_token_expire_minutes: int = 60
+
+    # E-posta (SMTP). Boşsa mail GÖNDERİLMEZ; link sunucu loguna yazılır (geliştirme).
+    smtp_host: str = ""
+    smtp_port: int = 587
+    smtp_user: str = ""
+    smtp_password: str = ""
+    smtp_from: str = "ParaFOMO <no-reply@parafomo.com>"
+    smtp_starttls: bool = True
 
     @property
     def cors_origin_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
+
+    @property
+    def smtp_enabled(self) -> bool:
+        return bool(self.smtp_host)
 
     @property
     def database_url(self) -> str:
