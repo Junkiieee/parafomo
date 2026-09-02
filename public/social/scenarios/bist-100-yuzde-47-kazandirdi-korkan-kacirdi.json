@@ -1,0 +1,121 @@
+{
+  "slug": "bist-100-yuzde-47-kazandirdi-korkan-kacirdi",
+  "title": "BIST 100 Yüzde 47 Kazandırdı — Korkan Kaçırdı",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "Geçen yıl ağustosta BIST 100'e 5000 TL yatırıp unutsaydın bugün yaklaşık 7360 TL olurdu. Peki çoğu kişi neden kaldı kenarda?",
+  "tags": [
+    "bist100",
+    "borsa",
+    "yatırım",
+    "getiri",
+    "enflasyon",
+    "türkiye",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "Borsa yüzde 47 verdi — korkan kaldı.",
+      "visual": {
+        "type": "concept",
+        "query": "istanbul stock exchange trading screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Geçen yıl ağustosta BIST 100'e 5000 TL yatırıp bir yıl beklemiş olsaydın.",
+      "visual": {
+        "type": "concept",
+        "query": "person making investment decision laptop money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bugün yaklaşık 7360 TL olurdu. Yüzde 47 getiri — tek bir araçla, tek hamleyle.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "BIST 100",
+          "unit": "",
+          "points": [
+            9665.8,
+            8863.9,
+            9652.0,
+            9830.6,
+            10004.4,
+            9658.7,
+            9659.5,
+            9078.4,
+            9019.6,
+            9948.5,
+            10743.2,
+            11288.1,
+            11012.1,
+            10971.5,
+            10898.7,
+            11261.5,
+            13838.3,
+            13717.8,
+            12791.0,
+            14442.6,
+            13662.8,
+            14121.8,
+            13458.1,
+            14641.6,
+            14229.01
+          ],
+          "x": [
+            "08/24",
+            "09/24",
+            "10/24",
+            "11/24",
+            "12/24",
+            "01/25",
+            "02/25",
+            "03/25",
+            "04/25",
+            "05/25",
+            "06/25",
+            "07/25",
+            "08/25",
+            "09/25",
+            "10/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "02/26",
+            "03/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "09/26"
+          ],
+          "amount": 5000,
+          "end_value": 7360,
+          "pct": 47
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Vadesizde tutsan o 5000 TL eridi — BIST enflasyonu yaklaşık geride bıraktı bu yıl.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation cash losing purchasing power"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Önümüzdeki yılın galibi hangi araç olur? Günlük sade analizler için abone ol — her gün tek bir kazanç haberi.",
+      "visual": {
+        "type": "concept",
+        "query": "financial growth chart analysis"
+      }
+    }
+  ]
+}
