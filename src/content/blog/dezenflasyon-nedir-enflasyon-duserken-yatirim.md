@@ -17,6 +17,23 @@ faq:
     a: "Nominally yüksek mevduat faizleri kısa süreliğine cazip görünse de enflasyon hızla düşerse reel faiz pozitife döner ve mevduat gerçek anlamda getiri sağlamaya başlar. Ancak ilerleyen dönemde merkez bankası faiz indirimleri mevduat faizlerini de aşağı çeker."
   - q: "Dezenflasyonda altın nasıl etkilenir?"
     a: "Altın, yüksek enflasyon dönemlerinde değer koruma aracı olarak parlar. Enflasyon düşerken reel faiz yükselir; bu da altının fırsat maliyetini artırır ve altın fiyatları üzerinde aşağı yönlü baskı oluşturabilir."
+shorts:
+  - "Enflasyon düşüyor diye fiyatlar düşmüyor."
+  - "Dezenflasyon fiyatların düşmesi değil, artış hızının yavaşlaması demek; cebinizden para çıkmaya devam ediyor."
+  - "Dezenflasyon döneminde tahvil ve mevduat, altın ile dövizin önüne geçiyor çünkü reel getiri artıyor."
+  - "TCMB'nin yüksek faiz politikası çalışıyor, Türkiye dezenflasyon yolunda ama henüz çift hanede."
+  - "Peki portföyünü şimdi nasıl konumlandırmalısın? Abone ol, her gün parafomo.com'daki piyasa analizlerini kısa videolarla getiriyoruz."
+shorts_broll:
+  - "inflation rate chart declining"
+  - "bank savings deposit high interest"
+  - "bond market investment rising"
+  - "gold price under pressure falling"
+shorts_visuals:
+  - "concept|price tags still rising inflation high"
+  - "concept|inflation rate slowing downward chart"
+  - "concept|bank deposit savings certificate return"
+  - "place|Türkiye Cumhuriyet Merkez Bankası"
+  - "concept|investment portfolio strategy planning"
 ---
 
 Yarın açıklanacak TÜİK TÜFE verisi, Türkiye'nin uzun süredir devam eden dezenflasyon yolculuğunun bir sonraki fotoğrafını çekecek. Peki bu süreç tam olarak ne anlama geliyor ve yatırımcı olarak portföyünü nasıl konumlandırmalısın?
