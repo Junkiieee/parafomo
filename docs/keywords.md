@@ -85,7 +85,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Temettü Verimi (Dividend Yield) Nedir? Yüksek Temettü Hisseleri Nasıl Seçilir? — `Borsa` — hedef: "temettü verimi nedir"
 - [x] Enflasyon Korumalı Tahvil (TIPS) Nedir? Reel Getiri ve Yatırım Rehberi — `Yatırım` — hedef: "tips nedir enflasyon korumalı tahvil"
 - [x] Hisse Senedi Piyasa Değeri Nedir? Large Cap, Mid Cap, Small Cap Farkı — `Borsa` — hedef: "piyasa değeri nedir hisse senedi"
-- [ ] Volatilite Nedir? Standart Sapma ve Sharpe Oranı ile Risk Ölçümü — `Yatırım` — hedef: "volatilite nedir yatırım"
+- [x] Volatilite Nedir? Standart Sapma ve Sharpe Oranı ile Risk Ölçümü — `Yatırım` — hedef: "volatilite nedir yatırım"
 - [ ] Gayrimenkul mi Borsa mı? 2026'da Hangi Yatırım Daha Mantıklı? — `Yatırım` — hedef: "gayrimenkul mi borsa mı"
 
 ## Yayınlananlar (otomasyon buraya ekler)
@@ -264,3 +264,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Enflasyon Korumalı Tahvil (TIPS) Nedir? Reel Getiri ve Yatırım Rehberi — `tips-nedir-enflasyon-korumali-tahvil` (backlog ilk [ ] konusu: evergreen yatırım; "tips nedir enflasyon korumalı tahvil" sorgusu; reel faiz + tahvil + enflasyon korunma cluster'ını tamamlayan araç rehberi; break-even enflasyon oranı + ABD TIPS ETF + Türkiye EİDBS karşılaştırması; TÜİK Eylül 2026 TÜFE verisi öncesi zamanlanmış; 31 Ağustos 2026)
 
 - [x] Dezenflasyon Nedir? Enflasyon Düşerken Yatırımcı Stratejisi — `dezenflasyon-nedir-enflasyon-duserken-yatirim` (takvim: 3 Eylül 2026 🔴 TÜİK TÜFE verisi; "dezenflasyon nedir" sorgusu; enflasyon+deflasyon+reel faiz+TCMB cluster'ını tamamlayan; dezenflasyon döneminde kazanan/kaybeden varlık sınıfları tablosu + portföy konumlanma adımları; 2 Eylül 2026)
+
+- [x] Volatilite Nedir? Standart Sapma ve Sharpe Oranıyla Risk Ölçümü — `volatilite-nedir-yatirim` (backlog ilk [ ] konusu: evergreen yatırım; "volatilite nedir yatırım" sorgusu; standart sapma+beta+Sharpe oranı üçlüsü; risk-getiri+VIX+portföy çeşitlendirmesi+stop-loss cluster'ını tamamlayan risk ölçüm rehberi; 3 Eylül 2026)
