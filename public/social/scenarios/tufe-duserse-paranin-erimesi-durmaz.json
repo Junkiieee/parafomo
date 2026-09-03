@@ -1,0 +1,59 @@
+{
+  "slug": "tufe-duserse-paranin-erimesi-durmaz",
+  "title": "TÜFE Düşerse Paranın Erimesi Durmaz",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "TÜİK enflasyon verisi açıklanmadan önce bilmen gereken: rapordaki düşüş gerçek olmayabilir. Baz etkisi nedir, veriyi nasıl doğru okursun?",
+  "tags": [
+    "enflasyon",
+    "TÜFE",
+    "TÜİK",
+    "baz etkisi",
+    "paranı koru",
+    "enflasyona karşı",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Düşen TÜFE paranın erimesini durdurmaz.",
+      "visual": {
+        "type": "logo",
+        "query": "TÜİK logo"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fiyatlar artmaya devam eder ama geçen yıl daha hızlı artmıştı. Taban yüksek olunca oran küçük çıkıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation rising prices supermarket shopping cart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Markette fiyat hâlâ yüksek — ama rapor düştü diyor. İkisi çelişmiyor: baz etkisi bu görüntüyü yaratıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "supermarket price tag compare before after"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Veri çıkınca geçen yılın aynı ayına bak. Baz etkisi bitince rakam yükselir — birikimi buna göre planla.",
+      "visual": {
+        "type": "concept",
+        "query": "financial planning calendar investment savings chart"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bir sonraki TÜFE verisinde baz etkisi bitti mi yoksa devam mı ediyor merak ediyorsan burada kal. Her gün 30 saniyede paranı net anlatan analize abone ol.",
+      "visual": {
+        "type": "logo",
+        "query": "TÜİK logo"
+      }
+    }
+  ]
+}
