@@ -14,18 +14,18 @@
 | 202633 | 24 | 16 | 40 |
 | 202634 | 32 | 27 | 59 |
 | 202635 | 37 | 24 | 61 |
-| 202636 | 11 | 5 | 16 |
+| 202636 | 13 | 7 | 20 |
 
-**Gerçek erişim trendi:** `▁▁▁▁▂▅▇█▂`  📉 düşüyor
-**Son hafta Direct payı:** %31 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
+**Gerçek erişim trendi:** `▁▁▁▁▂▅▇█▃`  📉 düşüyor
+**Son hafta Direct payı:** %35 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
 
 **Gerçek erişim kaynağı (son 4 hafta toplamı):**
 - Organic Video: 50 kullanıcı
-- Organic Search: 28 kullanıcı
-- Organic Social: 20 kullanıcı
+- Organic Search: 30 kullanıcı
+- Organic Social: 21 kullanıcı
 - Referral: 3 kullanıcı
-- Unassigned: 2 kullanıcı
 - AI Assistant: 1 kullanıcı
+- Unassigned: 1 kullanıcı
 
 ## 2) Google arama trendi (GSC — son 8 hafta)
 
@@ -64,13 +64,13 @@
 
 ## 3) YouTube motoru
 
-- **Abone:** 41  ·  **Toplam izlenme:** 44,909  ·  **Video:** 221
+- **Abone:** 42  ·  **Toplam izlenme:** 45,390  ·  **Video:** 223
 - İzlenme/abone dönüşümü: **0.09%** (izleyen kaç kişi abone/huniye giriyor)
 
 ## 4) 🎯 DÜRÜST HÜKÜM
 
 **Hedef:** 1000 ziyaretçi/gün = 7,000/hafta gerçek erişim.
-**Gerçek durum:** son hafta **11** gerçek ziyaretçi = hedefin **%0.16**'si. Kalan: **6,989** kişi/hafta.
+**Gerçek durum:** son hafta **13** gerçek ziyaretçi = hedefin **%0.19**'si. Kalan: **6,987** kişi/hafta.
 
 - Belirgin kırmızı bayrak yok; trend ve hedef mesafesine bak.
 

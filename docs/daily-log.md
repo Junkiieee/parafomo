@@ -4,6 +4,86 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-09-03 — Volatilite Nedir? Standart Sapma ve Sharpe Oranıyla Risk Ölçümü
+
+**Yayınlanan yazı:** [Volatilite Nedir? Standart Sapma ve Sharpe Oranıyla Risk Ölçümü](https://parafomo.com/blog/volatilite-nedir-yatirim/)
+**Hedef sorgu:** `volatilite nedir yatırım` · Kategori: Yatırım
+**Konu seçimi:** Backlog ilk `[ ]` (TÜİK TÜFE 3 Eylül için dün dezenflasyon yazısı yazılmıştı; GSC fırsatlarının tümü mevcut yazılarda karşılanmış)
+**İç linkler:** VIX, risk-getiri ilişkisi, portföy çeşitlendirmesi, stop-loss
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+"Bu hisse çok riskli" diyorsunuz — ama riski nasıl ölçüyorsunuz?
+
+Volatilite, standart sapma, Sharpe oranı… Sayı olmadan "riskli" lafı anlamını yitirir. 👇
+
+**Tweet 2:**
+Volatilite = fiyatın ne kadar geniş aralıkta salındığı.
+
+Aynı getiriyi iki portföy sunsa bile:
+📊 A: %30 getiri, %40 standart sapma
+📊 B: %20 getiri, %10 standart sapma
+
+Hangi daha iyi? Cevap: Sharpe oranına bakın.
+
+**Tweet 3:**
+Sharpe oranı = (Getiri − Risksiz faiz) / Standart Sapma
+
+A: (30−18)/40 = 0.30 ❌
+B: (20−18)/10 = 0.20 ❌
+
+Beklenmedik sonuç: Ham getirisi yüksek olan A, risk başına aslında B'den iyi!
+
+**Tweet 4:**
+Varlık sınıflarının volatilite tablosu:
+
+- Mevduat: %1-3 (ama enflasyon yer)
+- Altın: %12-18
+- BIST 100: %20-30
+- Bireysel hisse: %40-80+
+- Bitcoin: %60-100+
+
+Hangi risk sana uygun? Rehber: parafomo.com/blog/volatilite-nedir-yatirim
+
+**Tweet 5:**
+3 pratik kural:
+1. Pozisyon büyüklüğünü sınırla
+2. Stop-loss kullan
+3. Korelasyonu düşük varlıklar karıştır
+
+Volatilite = tehlike değil, yönetilebilir değişken.
+
+---
+
+### 📸 Instagram Carousel / Post Metni
+
+**Caption:**
+"Bu hisse riskli" demek için önce ölçmen lazım 📊
+
+Volatilite, standart sapma, Sharpe oranı — bu üç kavramı bilen yatırımcı, sezgiyle değil veriyle karar alır.
+
+📌 Bugünkü yazıda:
+✅ Volatilite nasıl hesaplanır?
+✅ Sharpe oranı neden ham getiriden önemlidir?
+✅ BIST, altın, Bitcoin karşılaştırma tablosu
+✅ Volatiliteyi yönetmek için 3 pratik kural
+
+Link bio'da 🔗
+
+#volatilite #yatırım #borsa #BIST #sharpe #riskanalizi #parafomo #finansokuryazarlığı #yatırımtürkiye #hissesenedi
+
+---
+
+### ✅ Bugün Yapman Gerekenler
+
+1. **Yazıyı sosyal medyada yayınla:** X thread'ini sabah saatlerinde (ideal: 09:00–11:00) paylaş; Instagram carousel'i öğleden sonra (15:00–18:00) yayınla.
+2. **Shorts fırsatı:** "Sharpe oranı nedir — aynı getiri için hangisi daha iyi?" başlıklı myth/comparison formatında kısa bir video çekebilirsin; A vs B karşılaştırması iyi kanca.
+
+---
+
 ## 2026-09-02 — Dezenflasyon Nedir? Enflasyon Düşerken Yatırımcı Stratejisi
 
 **Yayınlanan yazı:** [Dezenflasyon Nedir? Enflasyon Düşerken Yatırımcı Stratejisi](https://parafomo.com/blog/dezenflasyon-nedir-enflasyon-duserken-yatirim/)
