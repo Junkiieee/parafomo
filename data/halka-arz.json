@@ -1,9 +1,23 @@
 {
-  "updated": "2026-09-03T12:15+00:00",
+  "updated": "2026-09-03T18:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 40,
   "items": [
+    {
+      "company": "Anpa Gross Mağazacılık A.Ş.",
+      "bist_code": "",
+      "slug": "anpa-gross-magazacilik-a-s",
+      "link": "https://halkarz.com/anpa-gross-magazacilik-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "160.000.000 Lot",
+      "broker": "Tacirler Yatırım Menkul Değerler A.Ş."
+    },
     {
       "company": "Hedef Grup Satış Dağıtım San. ve Tic. A.Ş.",
       "bist_code": "",
@@ -381,20 +395,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "500.000.000 Lot",
       "broker": "İnfo Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Babacan Gayrimenkul Yatırım Ortaklığı A.Ş.",
-      "bist_code": "",
-      "slug": "babacan-gayrimenkul-yatirim-ortakligi-a-s",
-      "link": "https://halkarz.com/babacan-gayrimenkul-yatirim-ortakligi-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "210.600.000 Lot",
-      "broker": "Ziraat Yatırım Menkul Kıymetler A.Ş. İntegral Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "İntetra Teknoloji ve Bilişim Hizmetleri A.Ş.",
