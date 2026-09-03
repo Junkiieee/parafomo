@@ -17,6 +17,23 @@ faq:
     a: "Volatilite riskin önemli bir bileşenidir ancak tamamı değildir. Yüksek volatilite hem yukarı hem aşağı salınım anlamına gelir. Asıl risk, yanlış zamanda satmak zorunda kalmaktır; bu yüzden yatırım ufku da kritik değişkendir."
   - q: "Türkiye'de volatiliteyi takip etmek için hangi araçlar kullanılır?"
     a: "BIST hisse senetleri için KAP üzerinden geçmiş fiyat verilerini indirebilir, volatiliteyi hesaplayabilirsiniz. Küresel ölçekte VIX (ABD korku endeksi) en yaygın volatilite göstergesidir. Türk piyasasına özgü olarak BIST Volatilite Endeksi (VBI) de takip edilebilir."
+shorts:
+  - "Portföyün kazandı mı, yoksa sadece şanslı mıydın?"
+  - "İki portföy aynı getiriyi sunarsa kazanan, daha az riskle bunu başarandır."
+  - "Sharpe oranı tam bunu ölçer: risksiz faizi aşan getirinin dalgalanmaya bölümü."
+  - "Sharpe oranın 1'in altındaysa aynı riski taşıyarak daha iyi alternatifler vardı."
+  - "Peki senin portföyünün Sharpe oranı kaç? ParaFOMO'ya abone ol, ücretsiz portföy takibini parafomo.com'da hemen dene."
+shorts_broll:
+  - "stock market volatility chart"
+  - "investment portfolio risk comparison"
+  - "financial ratio calculation screen"
+  - "turkish lira banknotes"
+shorts_visuals:
+  - "concept|stock market chart volatility ups and downs"
+  - "concept|two investment portfolios comparison bar chart"
+  - "concept|risk return financial formula calculation"
+  - "concept|bank savings deposit low risk investment"
+  - "concept|financial dashboard portfolio analysis screen"
 ---
 
 Borsada büyük kazançları fırsatlar getirir; büyük kayıpları ise genellikle fark edilemeyen bir tehlike: **volatilite**. "Bu hisse çok riskli" dediğinizde aslında çoğunlukla yüksek volatiliteden söz ediyorsunuz. Peki volatilite nedir, yatırımda nasıl ölçülür ve portföy kararlarınıza nasıl yansıtırsınız? Bu rehberde adım adım açıklıyoruz.
