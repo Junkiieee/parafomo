@@ -1,0 +1,59 @@
+{
+  "slug": "bedelsiz-hisse-aldin-aslinda-bir-kurus-kazanmadin",
+  "title": "Bedelsiz Hisse Aldın — Aslında Bir Kuruş Kazanmadın",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Bedelsiz hisse dağıtımı yatırımcının hesabını büyütmüyor; hisse fiyatı aynı oranda düşüyor. Gerçek getiri şirketin kârından gelir, bedelsizden değil.",
+  "tags": [
+    "bedelsiz hisse",
+    "borsa",
+    "BIST",
+    "hisse senedi",
+    "yatırım",
+    "borsa tüyoları",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Bedelsiz hissede bir kuruş kazanmadın.",
+      "visual": {
+        "type": "concept",
+        "query": "stock portfolio mobile app brokerage screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "1'e 1 bedelsiz geldi: hisse fiyatı yarıya indi. 10 hissen 20 oldu, cüzdanında aynı para.",
+      "visual": {
+        "type": "concept",
+        "query": "stock price split chart whiteboard calculation"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama uygulamanda 'hisse sayın arttı' yazıyor — çoğu yatırımcı bunu gerçek kazanç sanıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "investor checking smartphone stock trading app"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gerçek getiri şirketin kârından gelir. Bedelsiz dağıtan her şirketi otomatik alma.",
+      "visual": {
+        "type": "concept",
+        "query": "company earnings profit growth business chart"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki hangi hisse gerçekten kazandırır? Bunu da masaya yatıracağız — kaçırmamak için abone ol, her gün net bir analiz.",
+      "visual": {
+        "type": "concept",
+        "query": "stock portfolio mobile app brokerage screen"
+      }
+    }
+  ]
+}
