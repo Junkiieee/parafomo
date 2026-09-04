@@ -1,9 +1,23 @@
 {
-  "updated": "2026-09-03T18:15+00:00",
+  "updated": "2026-09-04T00:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 40,
   "items": [
+    {
+      "company": "Net Global Endüstriyel Yatırımlar A.Ş.",
+      "bist_code": "",
+      "slug": "net-global-endustriyel-yatirimlar-a-s",
+      "link": "https://halkarz.com/net-global-endustriyel-yatirimlar-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "25,52 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "87.500.000 Lot",
+      "broker": "Tacirler Yatırım Menkul Değerler A.Ş."
+    },
     {
       "company": "Anpa Gross Mağazacılık A.Ş.",
       "bist_code": "",
@@ -381,20 +395,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "125.000.000 Lot",
       "broker": "Bulls Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Sönmez Global Plastik A.Ş.",
-      "bist_code": "",
-      "slug": "sonmez-global-plastik-a-s",
-      "link": "https://halkarz.com/sonmez-global-plastik-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "500.000.000 Lot",
-      "broker": "İnfo Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "İntetra Teknoloji ve Bilişim Hizmetleri A.Ş.",
