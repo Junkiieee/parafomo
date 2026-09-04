@@ -1,0 +1,59 @@
+{
+  "slug": "japonya-faiz-artirdi-carry-trade-tl-yi-salliyor",
+  "title": "Japonya Faiz Artırdı — Carry Trade TL'yi Sallıyor",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Japonya Merkez Bankası'nın faiz artışı, carry trade mekanizması üzerinden TL'yi nasıl etkiler? Türk yatırımcısının bu haftaki en önemli riski.",
+  "tags": [
+    "carry trade",
+    "Japonya faiz",
+    "BOJ",
+    "TL",
+    "kur riski",
+    "döviz",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Japonya faiz artırdı, carry trade şimdi çözülüyor.",
+      "visual": {
+        "type": "person",
+        "query": "Kazuo Ueda"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yatırımcılar yıllarca ucuz yen borçlanıp TL'ye yatırım yaptı. Japonya faiz artırınca bu para geri çekiliyor.",
+      "visual": {
+        "type": "concept",
+        "query": "yen currency exchange trading screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2024 ağustosunda BOJ faiz artırdığında küresel piyasalar tek haftada çakıldı. TL bu dalgadan birkaç günde etkilendi.",
+      "visual": {
+        "type": "concept",
+        "query": "stock market crash red numbers falling screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Carry trade çözülen dönemlerde altın değerini korudu, TL kayıplarını kapattı. Portföyde altın yoksa şimdi doğru an.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars safe haven investment"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bu dalga ne kadar sürer, TL nerede durur? Abone ol — her gün 60 saniyede tek net piyasa özeti.",
+      "visual": {
+        "type": "person",
+        "query": "Kazuo Ueda"
+      }
+    }
+  ]
+}
