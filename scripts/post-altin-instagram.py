@@ -103,6 +103,7 @@ SECONDARY_TOOLS = [
     "💵 Dolar mı kazandırdı altın mı? 10 yılın farkı → parafomo.com/dolar-getiri",
     "🏁 Altın mı dolar mı borsa mı? 10 yılın kazananı tek tabloda → parafomo.com/altin-dolar-borsa",
     "📊 Borsa (BIST 100) 10 yılda ne kadar kazandırdı? → parafomo.com/bist-getiri",
+    "💼 BIST + altın + gümüş portföyünü tek yerde ücretsiz takip et → parafomo.com/portfoy-takip",
 ]
 
 
