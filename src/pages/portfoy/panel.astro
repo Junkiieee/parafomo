@@ -190,6 +190,7 @@ const breadcrumbs = [
     <div id="boot" class="boot">Yükleniyor…</div>
   </div>
 
+  <script is:inline src="/portfoy-autocomplete.js"></script>
   <script is:inline define:vars={{ GOOGLE_CLIENT_ID }}>
     (function () {
       // Prod: api.parafomo.com; yerel test için localStorage.pf_api_base ile override.
@@ -306,21 +307,42 @@ const breadcrumbs = [
         $('qty-label').textContent = t === 'bist' ? 'Adet' : 'Gram';
       });
 
+      // BIST hisse arama/otomatik tamamlama (kod VEYA şirket adı)
+      if (window.BistAutocomplete) window.BistAutocomplete.attach($('a-symbol'));
+
       $('add-form').addEventListener('submit', async function (e) {
         e.preventDefault();
         var err = $('add-error'); err.hidden = true;
         var btn = $('add-submit'); btn.disabled = true;
         try {
           var t = $('a-type').value;
+          var symRaw = $('a-symbol').value.trim();
+          // Hisse kodunu şirket adı/koda göre doğru Yahoo ticker'ına çöz
+          if (t === 'bist' && window.BistAutocomplete) {
+            var list = await window.BistAutocomplete.load();
+            var hit = window.BistAutocomplete.resolve(list, symRaw);
+            if (hit) symRaw = hit.c;
+          }
           var body = {
             asset_type: t,
-            symbol: t === 'bist' ? ($('a-symbol').value.trim().toUpperCase()) : t.toUpperCase(),
+            symbol: t === 'bist' ? symRaw.toUpperCase() : t.toUpperCase(),
             quantity: parseFloat($('a-qty').value),
             cost_price: parseFloat($('a-cost').value),
           };
           if (t === 'bist' && !body.symbol) throw new Error('Hisse kodunu gir (ör. THYAO).');
           if (!(body.quantity > 0)) throw new Error('Geçerli bir adet/gram gir.');
           if (!(body.cost_price > 0)) throw new Error('Geçerli bir birim alış fiyatı gir.');
+          // Ekleme anında canlı fiyat doğrulaması: kod tanınmıyorsa net hata ver
+          if (t === 'bist') {
+            var chk = null;
+            try {
+              var pr = await fetch(API_BASE + '/public/price?asset_type=bist&symbol=' + encodeURIComponent(body.symbol));
+              if (pr.ok) { var pd = await pr.json(); chk = pd.price; }
+            } catch (e) { chk = null; }
+            if (chk == null) {
+              throw new Error('"' + body.symbol + '" için canlı veri bulunamadı. Hisse kodunu doğru gir (ör. Tüpraş → TUPRS) veya arama kutusundan listeden seç.');
+            }
+          }
           if ($('a-date').value) body.purchase_date = $('a-date').value;
           await api('/portfolio/holdings', { method: 'POST', body: body });
           $('add-form').reset();

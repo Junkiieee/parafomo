@@ -155,6 +155,7 @@ const breadcrumbs = [
     <Newsletter />
   </div>
 
+  <script is:inline src="/portfoy-autocomplete.js"></script>
   <script is:inline>
     (function () {
       var API_BASE = localStorage.getItem('pf_api_base') || 'https://api.parafomo.com';
@@ -190,6 +191,7 @@ const breadcrumbs = [
           else { symIn.style.display = 'none'; }
         }
         typeSel.addEventListener('change', syncSym);
+        if (window.BistAutocomplete) window.BistAutocomplete.attach(symIn);
         if (preset.type) typeSel.value = preset.type;
         if (preset.sym) symIn.value = preset.sym;
         if (preset.qty) div.querySelector('.r-qty').value = preset.qty;
@@ -225,6 +227,11 @@ const breadcrumbs = [
           var r = rows[i];
           var type = r.querySelector('.r-type').value;
           var sym = type === 'bist' ? r.querySelector('.r-sym').value.trim().toUpperCase() : type.toUpperCase();
+          // "tüpraş" gibi ad/yanlış-kod girildiyse doğru ticker'a çöz
+          if (type === 'bist' && sym && window.BistAutocomplete) {
+            var hit = window.BistAutocomplete.resolve(await window.BistAutocomplete.load(), sym);
+            if (hit) { sym = hit.c; r.querySelector('.r-sym').value = hit.c; }
+          }
           var qty = parseFloat(r.querySelector('.r-qty').value);
           var cost = parseFloat(r.querySelector('.r-cost').value);
           if (!(qty > 0) || !(cost > 0)) continue;
