@@ -88,6 +88,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Volatilite Nedir? Standart Sapma ve Sharpe Oranı ile Risk Ölçümü — `Yatırım` — hedef: "volatilite nedir yatırım"
 - [ ] Gayrimenkul mi Borsa mı? 2026'da Hangi Yatırım Daha Mantıklı? — `Yatırım` — hedef: "gayrimenkul mi borsa mı"
 
+- [x] ABD İşsizlik Verisi Altını ve Doları Nasıl Etkiler? NFP Sonrası Yatırımcı Rehberi — `Ekonomi` — hedef: "abd işsizlik verisi altını nasıl etkiler"
+
 ## Yayınlananlar (otomasyon buraya ekler)
 
 - [x] Hisse Senedi Piyasa Değeri Nedir? Large Cap, Mid Cap, Small Cap Farkı — `piyasa-degeri-nedir-large-cap-mid-cap-small-cap` (backlog ilk [ ] konusu: evergreen borsa; "piyasa değeri nedir hisse senedi" sorgusu; large/mid/small cap fark tablosu + BIST endeks terfi etkisi + hisse seçim adımları; F/K + hisse seçimi + BIST 100 cluster'ını tamamlayan temel değerleme kavramı; 31 Ağustos 2026)
@@ -266,3 +268,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Dezenflasyon Nedir? Enflasyon Düşerken Yatırımcı Stratejisi — `dezenflasyon-nedir-enflasyon-duserken-yatirim` (takvim: 3 Eylül 2026 🔴 TÜİK TÜFE verisi; "dezenflasyon nedir" sorgusu; enflasyon+deflasyon+reel faiz+TCMB cluster'ını tamamlayan; dezenflasyon döneminde kazanan/kaybeden varlık sınıfları tablosu + portföy konumlanma adımları; 2 Eylül 2026)
 
 - [x] Volatilite Nedir? Standart Sapma ve Sharpe Oranıyla Risk Ölçümü — `volatilite-nedir-yatirim` (backlog ilk [ ] konusu: evergreen yatırım; "volatilite nedir yatırım" sorgusu; standart sapma+beta+Sharpe oranı üçlüsü; risk-getiri+VIX+portföy çeşitlendirmesi+stop-loss cluster'ını tamamlayan risk ölçüm rehberi; 3 Eylül 2026)
+
+- [x] ABD İşsizlik Verisi Altını ve Doları Nasıl Etkiler? NFP Sonrası Yatırımcı Rehberi — `abd-issizlik-verisi-altin-dolar-etkisi` (takvim: 4 Eylül 2026 🔴 NFP + İşsizlik Oranı + Saatlik Kazançlar; GSC fırsatı: "abd işsizlik verisi altını nasıl etkiler" — gös 8, sıra 9.5, tıklama 0; altın-odaklı açı mevcut NFP/işsizlik yazılarında yok; senaryo tablosu + 10 Eylül TCMB bağlantısı; 4 Eylül 2026)
