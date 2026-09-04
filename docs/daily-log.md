@@ -4,6 +4,78 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-09-04 — ABD İşsizlik Verisi Altını ve Doları Nasıl Etkiler? NFP Sonrası Rehberi
+
+**Yayınlanan yazı:** [ABD İşsizlik Verisi Altını ve Doları Nasıl Etkiler?](https://parafomo.com/blog/abd-issizlik-verisi-altin-dolar-etkisi/)
+**Hedef sorgu:** `abd işsizlik verisi altını nasıl etkiler` · Kategori: Ekonomi
+**Konu seçimi:** Takvim + GSC fırsatı — bugün (4 Eylül) NFP/İşsizlik/Saatlik Kazançlar 🔴 üçlüsü açıklandı; "abd işsizlik verisi altını nasıl etkiler" GSC'de gös 8 / sıra 9.5 / tıklama 0; altın-odaklı açı mevcut yazılarda yoktu
+**İç linkler:** nfp-nedir, abd-issizlik-orani-nedir, abd-faiz-karari-altin-dolar-tl-etkisi, dolar-endeksi-dxy-nedir, altin-fonu-nedir, tcmb-faiz-karari-nasil-etkiler
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+**Tweet 1 (ana):**
+Bugün saat 15:30'da ABD işsizlik verisi açıklandı.
+
+Peki bu rakam altın fiyatını gerçekten etkiler mi? Eğer öyleyse nasıl? 👇
+
+**Tweet 2:**
+Mekanizma şöyle işliyor:
+
+📊 İşsizlik artar →
+⚡ Fed faiz indirme baskısı →
+💵 Dolar zayıflar →
+🥇 Altın yükselir
+
+Ama her zaman bu kadar basit değil…
+
+**Tweet 3:**
+"Karışık veri" senaryosu en tuzaklı olanı:
+
+Güçlü istihdam + yüksek ücret enflasyonu = Fed faiz indiremez.
+
+Bu durumda altın için tablo karışık, dolar için olumlu çıkıyor.
+
+**Tweet 4:**
+10 Eylül TCMB kararı da bu veriye bakıyor.
+
+Zayıf ABD verisi → dolar geriler → TL için dış baskı hafifler → TCMB'nin elini güçlendiriyor.
+
+Bağlantıyı ve senaryo tablosunu yazdım 👇
+
+🔗 [link]
+
+---
+
+### 📸 Instagram Post Metni
+
+**Caption:**
+Bugün küresel piyasaların en beklediği veri açıklandı: ABD işsizlik rakamları ve NFP. 📊
+
+Altın yatırımcıları bu veriye neden bu kadar dikkat eder?
+
+Çünkü işsizlik oranı → Fed faiz beklentisi → dolar → altın fiyatı zincirini tetikler.
+
+Zayıf veri = dolar geriler = altın yükselir.
+Güçlü veri = dolar güçlenir = altın baskı altında.
+
+Ama "karışık veri" en tuzaklısı 👀
+
+10 Eylül TCMB kararıyla bağlantısını da anlattık. Senaryo tablosu + pratik adımlar linkte 👆
+
+**Hashtag'ler:**
+#altın #dolar #nfp #issizlikverisi #fed #yatirim #ekonomi #parafomo #borsa #tlkuru
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **Saat 15:30'u izle:** ABD işsizlik verisi açıklandığında DXY ve altın fiyatını takip et — sosyal medyada "veri açıklandı, şimdiye kadar ne oldu?" şeklinde hızlı bir hikaye/story paylaşabilirsin; timely içerik etkileşimi artırır.
+2. **X ve Instagram'da paylaş:** Yukarıdaki thread + post metnini yayınla, 1-2 ilgili finans grubuna/topluluğuna (değer katarak) paylaşmayı unutma.
+
+---
+
 ## 2026-09-03 — Volatilite Nedir? Standart Sapma ve Sharpe Oranıyla Risk Ölçümü
 
 **Yayınlanan yazı:** [Volatilite Nedir? Standart Sapma ve Sharpe Oranıyla Risk Ölçümü](https://parafomo.com/blog/volatilite-nedir-yatirim/)
