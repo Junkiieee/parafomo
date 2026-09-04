@@ -1,0 +1,75 @@
+{
+  "slug": "10-bin-tl-kredi-karti-borcu-3-yilda-25-bine-cikiyor-m",
+  "title": "10 Bin TL Kredi Kartı Borcu 3 Yılda 25 Bine Çıkıyor",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Türkiye'de kredi kartı aylık faizi yaklaşık yüzde 4-5 — yıllık yüzde 60'ı aşıyor. Minimum ödemeyle gidenler 10 bin TL borca 3 yılda toplam yaklaşık 25 bin TL ödüyor.",
+  "tags": [
+    "kredi kartı",
+    "minimum ödeme",
+    "borç tuzağı",
+    "banka faizi",
+    "kişisel finans",
+    "borç kapatma",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Kredi kartı faizi yılda yüzde altmış.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Faiz",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "10 bin TL borç minimum ödemede 3 yılda bitmez — toplamda yaklaşık 25 bin ödersin.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Kredi",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çünkü banka her ay borcun yüzde 2'sini ödet diyor — kalanına yüzde 60 faiz işliyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Faiz",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çözüm tek: en yüksek faizli borcu önce kapat. Fark yatırıma gidince asıl büyüme başlar.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Faiz",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Hangi borcu önce ödemek daha mantıklı? Hesap kanalda — abone ol, her gün 60 saniyede net analiz.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
