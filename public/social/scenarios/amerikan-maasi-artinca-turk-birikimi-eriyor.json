@@ -1,0 +1,59 @@
+{
+  "slug": "amerikan-maasi-artinca-turk-birikimi-eriyor",
+  "title": "Amerikan Maaşı Artınca Türk Birikimi Eriyor",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "ABD saatlik kazanç verisi yüksek geldi — bunun Fed, dolar ve TL üzerindeki domino etkisini 30 saniyede anlıyorsun.",
+  "tags": [
+    "dolar",
+    "TL",
+    "Fed",
+    "faiz",
+    "ABD",
+    "kur",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Amerikalı işçi zam aldı — TL'nin değeri düştü.",
+      "visual": {
+        "type": "building",
+        "query": "Federal Reserve building Washington DC"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "ABD saatlik kazanç verisi yüksek geldi; bu Fed'in faiz indirmeyeceği anlamına geliyor.",
+      "visual": {
+        "type": "concept",
+        "query": "US dollar interest rate chart Federal Reserve"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama sen ABD'de çalışmıyorsun — güçlü dolar TL'yi baskılıyor, ithal mallar pahalılaşıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "turkish lira dollar exchange rate screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "100 bin TL'nin dolar karşılığı böyle bir veriyle aynı gün yüzde bir-iki aşağı inebiliyor.",
+      "visual": {
+        "type": "concept",
+        "query": "savings money shrinking cash inflation"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Fed bir sonraki toplantıda ne yapar, TL için kritik seviye nerede? Abone ol — her gün 60 saniyede paran için tek net analiz.",
+      "visual": {
+        "type": "building",
+        "query": "Federal Reserve building Washington DC"
+      }
+    }
+  ]
+}
