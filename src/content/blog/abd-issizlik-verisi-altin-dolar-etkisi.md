@@ -17,6 +17,23 @@ faq:
     a: "Veri zayıf çıkıp dolar gerileyen ortamda altın kısa vadeli hareket edebilir; ancak kalıcı yön birkaç günde netleşir. Kaldıraçsız ve kademeli alım tercih edilmeli."
   - q: "Eylül 2026 NFP verisi ne zaman açıklandı?"
     a: "Ağustos 2026 dönemi için NFP, saatlik kazançlar ve işsizlik oranı 4 Eylül 2026 tarihinde saat 15:30 Türkiye saatiyle (12:30 ET) açıklandı. Bir sonraki NFP Ekim başında gelecek."
+shorts:
+  - "İşsizlik verisi neden altın fiyatını değiştiriyor?"
+  - "ABD her ay ilk Cuma bir rapor açıklıyor ve bu rapor altın fiyatını doğrudan belirliyor."
+  - "İşsizlik yüksek çıkarsa Fed faiz indirir, dolar zayıflar, altın yukarı fırlıyor."
+  - "İşsizlik düşük çıkarsa dolar güçlenir, altın faiz getirisi olmadığı için değer kaybediyor."
+  - "TCMB 10 Eylül'de bu tabloyu nasıl okuyacak? Takip etmek için abone ol, tüm analizler parafomo.com'da."
+shorts_broll:
+  - "gold price chart rising"
+  - "federal reserve interest rate decision"
+  - "us dollar currency strength"
+  - "unemployment job market data"
+shorts_visuals:
+  - "concept|gold coins and dollar bills on table"
+  - "building|Federal Reserve"
+  - "concept|gold price rising chart screen"
+  - "concept|us dollar strengthening currency chart"
+  - "building|Türkiye Cumhuriyet Merkez Bankası"
 ---
 
 Her ayın ilk Cuma günü, küresel piyasalar nefesini tutar. ABD Tarım Dışı İstihdam Raporu — yani NFP —, Fed'in para politikası kararlarını şekillendiren en kritik veri paketi olma özelliğini korur. 4 Eylül 2026'da açıklanan bu ay raporuna özellikle dikkat etmek gerekiyor: **ABD işsizlik verisi altını nasıl etkiler?** sorusu, altın portföyü olan her Türk yatırımcısını doğrudan ilgilendiriyor.
