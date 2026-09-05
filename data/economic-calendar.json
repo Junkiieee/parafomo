@@ -1,17 +1,8 @@
 {
-  "updated": "2026-09-04",
+  "updated": "2026-09-05",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-09-01",
-      "time": "2:00pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "ISM Manufacturing PMI",
-      "source": "forexfactory",
-      "hook": "ISM/PMI — ABD ekonomik aktivitesi, risk iştahı."
-    },
     {
       "date": "2026-09-03",
       "time": "10:00",

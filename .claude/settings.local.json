@@ -115,7 +115,8 @@
       "Bash(/root/.venvs/parafomo/bin/manim -r 1080,1920 --fps 60 --format mp4 -o parafomo-manim-demo --media_dir /tmp/manim_media scripts/manim_demo.py ParaFomoDemo)",
       "Bash(ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate -show_entries format=duration -of default=noprint_wrappers=1 /tmp/manim_media/videos/manim_demo/1920p60/parafomo-manim-demo.mp4)",
       "Bash(cp /tmp/manim_media/videos/manim_demo/1920p60/parafomo-manim-demo.mp4 /root/parafomo/parafomo-manim-demo.mp4)",
-      "Bash(ffprobe -v error -show_entries stream=width,height,r_frame_rate -show_entries format=duration -of default=noprint_wrappers=1 /tmp/manim_seg_test.mp4)"
+      "Bash(ffprobe -v error -show_entries stream=width,height,r_frame_rate -show_entries format=duration -of default=noprint_wrappers=1 /tmp/manim_seg_test.mp4)",
+      "mcp__claude_ai_Gmail__search_threads"
     ]
   }
 }

@@ -1,60 +1,60 @@
 {
-  "updated": "2026-09-04T01:00+00:00",
+  "updated": "2026-09-05T01:00+00:00",
   "source": "Yahoo Finance (GC=F ons altın, USDTRY=X kur); gram = ons/31.1035 × USDTRY",
-  "gram_tl_now": 7044.25,
-  "oz_usd_now": 4527.8,
+  "gram_tl_now": 6970.52,
+  "oz_usd_now": 4477.2,
   "ytd": {
     "label": "Yıl başından beri",
     "gram_tl_then": 6585.85,
-    "gram_tl_now": 7044.25,
-    "return_tl_pct": 7.0,
+    "gram_tl_now": 6970.52,
+    "return_tl_pct": 5.8,
     "oz_usd_then": 4713.9,
-    "oz_usd_now": 4527.8,
-    "return_usd_pct": -3.9
+    "oz_usd_now": 4477.2,
+    "return_usd_pct": -5.0
   },
   "periods": [
     {
       "label": "1 yıl",
       "years": 1,
       "gram_tl_then": 5134.07,
-      "gram_tl_now": 7044.25,
-      "return_tl_pct": 37.2,
+      "gram_tl_now": 6970.52,
+      "return_tl_pct": 35.8,
       "oz_usd_then": 3840.8,
-      "oz_usd_now": 4527.8,
-      "return_usd_pct": 17.9
+      "oz_usd_now": 4477.2,
+      "return_usd_pct": 16.6
     },
     {
       "label": "3 yıl",
       "years": 3,
       "gram_tl_then": 1631.55,
-      "gram_tl_now": 7044.25,
-      "return_tl_pct": 331.8,
+      "gram_tl_now": 6970.52,
+      "return_tl_pct": 327.2,
       "oz_usd_then": 1848.1,
-      "oz_usd_now": 4527.8,
-      "return_usd_pct": 145.0
+      "oz_usd_now": 4477.2,
+      "return_usd_pct": 142.3
     },
     {
       "label": "5 yıl",
       "years": 5,
       "gram_tl_then": 503.17,
-      "gram_tl_now": 7044.25,
-      "return_tl_pct": 1300.0,
+      "gram_tl_now": 6970.52,
+      "return_tl_pct": 1285.3,
       "oz_usd_then": 1755.3,
-      "oz_usd_now": 4527.8,
-      "return_usd_pct": 158.0
+      "oz_usd_now": 4477.2,
+      "return_usd_pct": 155.1
     },
     {
       "label": "10 yıl",
       "years": 10,
       "gram_tl_then": 126.98,
-      "gram_tl_now": 7044.25,
-      "return_tl_pct": 5447.3,
+      "gram_tl_now": 6970.52,
+      "return_tl_pct": 5389.3,
       "oz_usd_then": 1271.5,
-      "oz_usd_now": 4527.8,
-      "return_usd_pct": 256.1
+      "oz_usd_now": 4477.2,
+      "return_usd_pct": 252.1
     }
   ],
   "headline_years": 10,
-  "headline_return_tl_pct": 5447.3,
-  "headline_return_usd_pct": 256.1
+  "headline_return_tl_pct": 5389.3,
+  "headline_return_usd_pct": 252.1
 }

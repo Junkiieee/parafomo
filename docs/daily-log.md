@@ -4,6 +4,70 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-09-05 — Gayrimenkul mi Borsa mı? 2026'da Hangi Yatırım Daha Mantıklı?
+
+**Yayınlanan yazı:** [Gayrimenkul mi Borsa mı? 2026'da Hangi Yatırım Daha Mantıklı?](https://parafomo.com/blog/gayrimenkul-mi-borsa-mi-2026/)
+**Hedef sorgu:** `gayrimenkul mi borsa mı` · Kategori: Yatırım
+**Konu seçim gerekçesi:** Takvimde 1-3 gün içinde 🔴 olay yok; GSC fırsatları mevcut yazılarla karşılanmış; backlog'daki ilk [ ] konu.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+🏠 vs 📈 "Gayrimenkul mi borsa mı?" — Türkiye'nin en büyük yatırım tartışması. 2026'da net cevap:
+
+2/ Gayrimenkul avantajı: enflasyona karşı tarihsel kalkan, kira geliri, kaldıraç imkânı. Dezavantajı: yüksek sermaye, düşük likidite, yönetim zahmeti.
+
+3/ Borsa avantajı: 500 TL ile başlanabilir, anlık likidite, BYF ile otomatik çeşitlendirme. Dezavantajı: kısa vadeli dalgalanma, duygusal karar riski.
+
+4/ 2026'da kira getiri oranları %2-4 bandında baskı altında. Konut kredisi faizleri yüksek. Saf mülk yatırımının getirisi zorlaştı.
+
+5/ Orta yol: GYO (Gayrimenkul Yatırım Ortaklığı). Borsada işlem görür ama altında gerçek mülk var. Likidite + gayrimenkul geliri bir arada.
+
+6/ Kritik soru: Sermayeniz var mı + uzun vadeli mi? → Gayrimenkul. Küçük sermaye + likidite mi? → Borsa/BYF. İkisi de → Karışık portföy.
+
+7/ Detaylı kriter tablosu + yatırımcı profil rehberi:
+👉 https://parafomo.com/blog/gayrimenkul-mi-borsa-mi-2026/
+
+#gayrimenkul #borsa #BIST #yatırım #parafomo
+
+---
+
+### Instagram Carousel / Post Metni
+
+🏠📈 **Gayrimenkul mi Borsa mı? 2026'da Net Cevap**
+
+En çok sorulan soruyu iki tarafı için kıyasladık:
+
+**Slayt 1:** Giriş sermayesi
+- Gayrimenkul: Yüzbinler (peşinat)
+- Borsa: 500 TL ile başlanır
+
+**Slayt 2:** Likidite
+- Gayrimenkul: Aylar sürer
+- Borsa: Saniyeler
+
+**Slayt 3:** Pasif gelir
+- Gayrimenkul: Kira (düzenli ama %2-4 getiri)
+- Borsa: Temettü (değişken, yıllık)
+
+**Slayt 4:** 2026 gerçeği
+- Kira getirileri baskı altında
+- GYO iki dünyanın köprüsü
+
+**Caption:**
+Hangi yatırım sana uygun? Kriterler, tablolar ve profil rehberi linkte 👆
+#gayrimenkul #borsa #bist #yatırım #konut #gyo #parafomocom
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **Sosyal paylaşım:** Yukarıdaki X thread'ini ve Instagram carousel'ini yayınla. Kariyer/finans kitlesi için en aktif saatler: sabah 08-09 veya akşam 20-21.
+2. **Topluluk paylaşımı:** Türkiye finans/yatırım Facebook gruplarında veya Reddit r/Turkey gibi platformlarda "Gayrimenkul mi Borsa mı?" sorusunu açan bir tartışma başlatıp yazıyı kaynak olarak paylaş (spam değil, gerçek soru sorar gibi).
+
+---
+
 ## 2026-09-04 — ABD İşsizlik Verisi Altını ve Doları Nasıl Etkiler? NFP Sonrası Rehberi
 
 **Yayınlanan yazı:** [ABD İşsizlik Verisi Altını ve Doları Nasıl Etkiler?](https://parafomo.com/blog/abd-issizlik-verisi-altin-dolar-etkisi/)
