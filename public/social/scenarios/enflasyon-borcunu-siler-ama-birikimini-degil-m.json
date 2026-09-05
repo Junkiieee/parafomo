@@ -1,0 +1,75 @@
+{
+  "slug": "enflasyon-borcunu-siler-ama-birikimini-degil-m",
+  "title": "Enflasyon Borcunu Siler — Ama Birikimini Değil",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Yüksek enflasyonda sabit faizli kredi çekenler borcun reel değerini düşerken, bankada birikim tutanlar sessizce kaybetti. Tersini herkes sanıyor.",
+  "tags": [
+    "enflasyon",
+    "konut kredisi",
+    "reel değer",
+    "Türkiye",
+    "kişisel finans",
+    "borç yönetimi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Enflasyonda borçlu kazanıyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2016'da sabit faizli 300 bin TL kredi çektin — enflasyon o borcu gerçekte eritip küçülttü.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama aynı 300 bin TL'yi mevduatta tutmuş olsaydın — alım gücün çok daha sert düştü.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Risk",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Enflasyon nakit tutanı cezalandırır, sabit borçluyu ödüllendirir. Tersini herkes sanıyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Enflasyon düşerse bu denklem tersine döner mi? Abone ol — her gün 30 saniyede tek net analiz.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
