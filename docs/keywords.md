@@ -86,11 +86,13 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] Enflasyon Korumalı Tahvil (TIPS) Nedir? Reel Getiri ve Yatırım Rehberi — `Yatırım` — hedef: "tips nedir enflasyon korumalı tahvil"
 - [x] Hisse Senedi Piyasa Değeri Nedir? Large Cap, Mid Cap, Small Cap Farkı — `Borsa` — hedef: "piyasa değeri nedir hisse senedi"
 - [x] Volatilite Nedir? Standart Sapma ve Sharpe Oranı ile Risk Ölçümü — `Yatırım` — hedef: "volatilite nedir yatırım"
-- [ ] Gayrimenkul mi Borsa mı? 2026'da Hangi Yatırım Daha Mantıklı? — `Yatırım` — hedef: "gayrimenkul mi borsa mı"
+- [x] Gayrimenkul mi Borsa mı? 2026'da Hangi Yatırım Daha Mantıklı? — `Yatırım` — hedef: "gayrimenkul mi borsa mı"
 
 - [x] ABD İşsizlik Verisi Altını ve Doları Nasıl Etkiler? NFP Sonrası Yatırımcı Rehberi — `Ekonomi` — hedef: "abd işsizlik verisi altını nasıl etkiler"
 
 ## Yayınlananlar (otomasyon buraya ekler)
+
+- [x] Gayrimenkul mi Borsa mı? 2026'da Hangi Yatırım Daha Mantıklı? — `gayrimenkul-mi-borsa-mi-2026` (backlog ilk [ ] konusu: evergreen yatırım; "gayrimenkul mi borsa mı" sorgusu; giriş sermayesi + likidite + kira getirisi + vergi karşılaştırma tablosu; GYO orta yol olarak; konut+BIST+portföy çeşitlendirmesi cluster'ını tamamlayan karar rehberi; 5 Eylül 2026)
 
 - [x] Hisse Senedi Piyasa Değeri Nedir? Large Cap, Mid Cap, Small Cap Farkı — `piyasa-degeri-nedir-large-cap-mid-cap-small-cap` (backlog ilk [ ] konusu: evergreen borsa; "piyasa değeri nedir hisse senedi" sorgusu; large/mid/small cap fark tablosu + BIST endeks terfi etkisi + hisse seçim adımları; F/K + hisse seçimi + BIST 100 cluster'ını tamamlayan temel değerleme kavramı; 31 Ağustos 2026)
 
