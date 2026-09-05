@@ -1,0 +1,59 @@
+{
+  "slug": "taki-altin-sattin-yuzde-yirmi-gitti",
+  "title": "Takı Altın Sattın, Yüzde Yirmi Gitti",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Ziynet altınında ödediğin işçilik satarken sıfırlanıyor. Yatırım amaçlıysa gram altın ya da has çubuk tercih et.",
+  "tags": [
+    "altın",
+    "takı altını",
+    "ziynet altını",
+    "işçilik",
+    "bilezik",
+    "gram altın",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ZİYNET ALTIN",
+      "spoken": "Bileziğindeki paranın bir kısmı sana ait değil.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bracelet jewelry close up"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bilezik alırken iki bedel var: altın fiyatı ve işçilik. İşçilik yüzde yirmiye kadar çıkabiliyor.",
+      "visual": {
+        "type": "concept",
+        "query": "jewelry store gold price tag display"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama sattığında kuyumcu sadece altın değerini öder. İşçilik sıfır — o para çoktan gitti.",
+      "visual": {
+        "type": "concept",
+        "query": "hand cash exchange money transaction counter"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yatırım için ziynet değil, gram altın ya da has çubuk al. İşçilik yok, kayıp yok.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bar investment"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki hangi altın gerçekten kaybettirmiyor? Günlük finansal gerçekler için abone ol — cevabı yarın burada.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bracelet jewelry close up"
+      }
+    }
+  ]
+}
