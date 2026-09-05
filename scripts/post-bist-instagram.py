@@ -66,10 +66,15 @@ def build_caption(ptype, date_label):
     head = "🌅 BIST Açılış" if ptype == "acilis" else "🌆 BIST Kapanış"
     questions = ENGAGEMENT_QUESTIONS.get(ptype, ENGAGEMENT_QUESTIONS["kapanis"])
     question = questions[date.today().toordinal() % len(questions)]
+    # Kapanış kartı = "portföyünüz nasıldı?" izleyicisi → portföy takip ürününün doğal hunisi.
+    # BIST hisse arama + canlı değer + kâr/zarar; ücretsiz, üyeliksiz hesaplayıcı da var.
+    cta = ("💼 BIST portföyünü ücretsiz takip et (kâr/zarar canlı) → parafomo.com/portfoy-takip"
+           if ptype == "kapanis"
+           else "📅 Piyasayı hareket ettiren veriler → parafomo.com/ekonomik-takvim")
     body = (f"{head} · {date_label}\n"
             "BIST 100 ve günün piyasa özeti 👆\n"
             f"{question}\n"
-            "📅 Piyasayı hareket ettiren veriler → parafomo.com/ekonomik-takvim\n"
+            f"{cta}\n"
             "Detaylı analizler → parafomo.com")
     return "\n\n".join([comment, body, HASHTAGS])
 
