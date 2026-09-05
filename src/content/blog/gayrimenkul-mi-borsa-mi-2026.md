@@ -17,6 +17,23 @@ faq:
     a: "BIST'te tek hisse veya BYF (borsa yatırım fonu) ile birkaç yüz TL ile başlanabilir. Gayrimenkulde ise peşinat bile büyük şehirlerde yüzbinleri buluyor. Küçük sermayeli yatırımcı için borsa veya GYO daha erişilebilir başlangıç noktasıdır."
   - q: "Gayrimenkul mi borsa mı sorusunda vergi farkı ne?"
     a: "Borsada yerli bireysel yatırımcılar için hisse senedi alım-satım kârı genellikle stopaj muafiyetinden yararlanır (1 yıl elde tutma koşulu); temettüde ise %15 stopaj uygulanır. Gayrimenkulde tapu harcı, emlak vergisi ve kira geliri vergisi (yıllık) söz konusu. İkisi arasındaki vergi avantajı profile ve tutma süresine göre değişir."
+shorts:
+  - "Hangisi daha kazandırır: ev mi, borsa mı?"
+  - "Büyük şehirde kira getirisi yalnızca yüzde iki-dört arası; yönetim giderleri düşünce daha da erir."
+  - "Borsaya beş yüz TL ile başlanır; BYF ile tek şirket riski dağıtılmış geniş sepete girilir."
+  - "Doğru yatırım elinde ne kadar sermaye olduğuna, sabrana ve riske dayanabilme gücüne göre değişir."
+  - "Hangi profil hangisini seçmeli tam kıyaslama için merak ediyorsan detaylar parafomo.com'da — abone ol, her gün finans kararların için veriler burada."
+shorts_broll:
+  - "real estate vs stock market"
+  - "istanbul apartment building exterior"
+  - "stock market trading screen"
+  - "investor financial decision making"
+shorts_visuals:
+  - "concept|real estate versus stock market balance scale"
+  - "concept|turkish lira rent money apartment keys"
+  - "concept|stock market chart screen trading BIST"
+  - "concept|investor choosing crossroads decision"
+  - "concept|financial growth investment chart laptop"
 ---
 
 "Param var, ne yapayım?" sorusunun Türkiye'deki en popüler yanıtı ya "daire al" ya da "borsaya gir" olur. 2026'da bu iki seçenek arasında mantıklı karar vermek için ham duygusal tercihten çıkıp sayılara ve kendi profilinize bakmak gerekiyor. Bu yazıda **gayrimenkul mi borsa mı** sorusunu kriterler bazında kıyaslıyor, GYO'yu alternatif olarak değerlendiriyor ve hangi profilin hangi yola gittiğini gösteriyoruz.
