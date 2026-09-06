@@ -77,6 +77,8 @@ ENGAGEMENT_QUESTIONS = [
     "Dolar mı, altın mı? Siz ne tutuyorsunuz? 💬",
     "Altının bu seyri sizi şaşırttı mı? 👇",
     "Enflasyona karşı altın yeterli mi sizce? Düşüncenizi yazın. 💬",
+    "Altınınız şu an kâr mı zarar mı? Takip ediyor musunuz? 💬",
+    "Portföyünüzü nasıl takip ediyorsunuz — defter, Excel, uygulama? 👇",
 ]
 
 
