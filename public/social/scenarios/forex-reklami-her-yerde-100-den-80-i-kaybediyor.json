@@ -1,0 +1,59 @@
+{
+  "slug": "forex-reklami-her-yerde-100-den-80-i-kaybediyor",
+  "title": "Forex Reklamı Her Yerde — 100'den 80'i Kaybediyor",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Avrupa düzenleyici verileri forex işlemi yapan bireysel yatırımcıların yüzde sekseninin zarar ettiğini ortaya koyuyor. Kaldıraç etkisi ve spread maliyetleri, reklamlarda vaat edilen kazancın tam tersine çoğunluğu sessizce tasfiye ediyor.",
+  "tags": [
+    "forex",
+    "kaldıraçlı işlem",
+    "yatırım kaybı",
+    "finansal okuryazarlık",
+    "trading",
+    "türk yatırımcı",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Forex'te her 100 kişiden 80'i para kaybediyor.",
+      "visual": {
+        "type": "concept",
+        "query": "forex trading red candlestick chart loss screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Avrupa düzenleyicileri ifşa ettirdi — her broker sitesinde yazar, kimse okumaz.",
+      "visual": {
+        "type": "concept",
+        "query": "financial risk warning disclosure document fine print"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kaldıraç küçük hareketle tüm hesabı bitirir. 10 bin TL yatırdın, hafta sonu sıfır olabilir.",
+      "visual": {
+        "type": "concept",
+        "query": "leverage risk money disappearing financial loss"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Forex'i zenginlik yolu gösteren reklamın arkasında bu oran var. İçeri girenler çoğunlukla boş çıkıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "advertising trap empty wallet financial warning"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Hangi araçlar gerçekten işe yarıyor? Abone ol — her gün 60 saniyede piyasanın gerçek yüzü geliyor.",
+      "visual": {
+        "type": "concept",
+        "query": "forex trading red candlestick chart loss screen"
+      }
+    }
+  ]
+}
