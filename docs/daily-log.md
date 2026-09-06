@@ -4,6 +4,76 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-09-06 — TCMB Eylül 2026 Faiz Kararı: PPK 10 Eylül'de Ne Yapacak?
+
+**Yayınlanan yazı:** [TCMB Eylül 2026 Faiz Kararı: PPK 10 Eylül'de Ne Yapacak?](https://parafomo.com/blog/tcmb-eylul-2026-faiz-karari-ppk-beklentiler/)
+**Hedef sorgu:** `tcmb eylül 2026 faiz kararı` / `ppk eylül 2026` · Kategori: Ekonomi
+**Konu seçim gerekçesi:** GSC fırsatları ve backlog tamamlanmış; takvimde TCMB PPK 10 Eylül 2026 🔴 (4 gün sonra) — mevcut genel TCMB yazısından farklı, Eylül'e özgü senaryo analizi.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+🏦 TCMB 10 Eylül Perşembe toplanıyor. PPK ne yapacak? 3 senaryo, paranıza etkisi:
+
+2/ Konsensüs = 250-500 baz puanlık küçük indirim. Ağustos enflasyonu ve TL kuru kararın tonunu belirleyecek.
+
+3/ Senaryo A — Büyük indirim (500bp+): Kredi faizleri hızla düşer, mevduat erir, TL'ye baskı. Sürpriz karar.
+
+4/ Senaryo B — Küçük indirim (konsensüs): Kademeli normalleşme devam. Kur ve borsa sınırlı tepki verir.
+
+5/ Senaryo C — Sabit: TL'ye kısa vadeli destek. Mevduat sahipleri memnun; borsa hayal kırıklığı.
+
+6/ Mevduat sahipleri: Vade yenilemeniz 10 Eylül'e denk geliyor mu? Karar öncesi sabit vadeye kilitlemek mantıklı olabilir.
+
+7/ Kredi planlayanlar: Kararı bekleyin. Beklenti dahilinde indirim gelirse faizler 1-2 hafta içinde güncellenir.
+
+8/ 3 senaryo tablosu + yatırımcı yapılacaklar listesi:
+👉 https://parafomo.com/blog/tcmb-eylul-2026-faiz-karari-ppk-beklentiler/
+
+#TCMB #PPK #faizKararı #paraFOMO #mevduat
+
+---
+
+### Instagram Carousel / Post Metni
+
+🏦 **TCMB 10 Eylül Faiz Kararı — 3 Senaryo**
+
+PPK toplantısı yaklaşıyor. Paranıza ne olacak?
+
+**Slayt 1:** Büyük İndirim
+- Kredi: hızla düşer
+- Mevduat: erir
+- TL: baskı altı
+
+**Slayt 2:** Küçük İndirim (konsensüs)
+- Kredi: kademeli düşer
+- Mevduat: yavaş geriler
+- Kur: sınırlı tepki
+
+**Slayt 3:** Sabit Karar
+- Kredi: değişmez
+- Mevduat: korunur
+- TL: kısa destek
+
+**Slayt 4:** Ne yapmalısın?
+→ Vade yenileme 10 Eylül'e mi denk geliyor? Kontrol et.
+→ Kredi planın varsa kararı izle.
+→ Borsa: banka hisselerinde volatilite bekle.
+
+Tam senaryo tablosu → link bio'da 🔗
+
+#tcmb #faiz #ppk #mevduat #kredi #dolar #yatırım #parafomo
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **Paylaşım:** X thread'ini ve Instagram carouselini bugün paylaş. TCMB toplantısı 4 gün sonra — timing mükemmel, erken paylaşım organik erişimi artırır.
+2. **Takip:** 10 Eylül karar gününde bir hatırlatma ekle: aynı yazının URL'sini yeniden paylaşabilir veya kararın hemen ardından kısa bir güncelleme tweeti atabilirsin ("PPK X bps indirdi — senaryo B gerçekleşti" gibi).
+
+---
+
 ## 2026-09-05 — Gayrimenkul mi Borsa mı? 2026'da Hangi Yatırım Daha Mantıklı?
 
 **Yayınlanan yazı:** [Gayrimenkul mi Borsa mı? 2026'da Hangi Yatırım Daha Mantıklı?](https://parafomo.com/blog/gayrimenkul-mi-borsa-mi-2026/)

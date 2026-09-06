@@ -1,0 +1,59 @@
+{
+  "slug": "enflasyon-borcunu-siler-ama-birikimini-degil",
+  "title": "Enflasyon Borcunu Siler — Ama Birikimini Değil",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Yüksek enflasyonda sabit faizli kredi çekenler borcun reel değerini düşerken, bankada birikim tutanlar sessizce kaybetti. Tersini herkes sanıyor.",
+  "tags": [
+    "enflasyon",
+    "konut kredisi",
+    "reel değer",
+    "Türkiye",
+    "kişisel finans",
+    "borç yönetimi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Enflasyonda borçlu kazanıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation money cash eroding value"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2016'da sabit faizli 300 bin TL kredi çektin — enflasyon o borcu gerçekte eritip küçülttü.",
+      "visual": {
+        "type": "concept",
+        "query": "mortgage loan document house keys"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama aynı 300 bin TL'yi mevduatta tutmuş olsaydın — alım gücün çok daha sert düştü.",
+      "visual": {
+        "type": "concept",
+        "query": "bank savings deposit money shrinking"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Enflasyon nakit tutanı cezalandırır, sabit borçluyu ödüllendirir. Tersini herkes sanıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "balance scale money debt financial comparison"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Enflasyon düşerse bu denklem tersine döner mi? Abone ol — her gün 30 saniyede tek net analiz.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation money cash eroding value"
+      }
+    }
+  ]
+}
