@@ -208,6 +208,7 @@ const breadcrumbs = [
       var mode = 'login'; // 'login' | 'register'
 
       var TYPE_LABEL = { bist: '', gold: 'Altın (gram)', silver: 'Gümüş (gram)' };
+      var holdingsById = {}; // satır düzenleme için ham pozisyon verisi
 
       function token() { return localStorage.getItem(TOKEN_KEY); }
       function setToken(t) { localStorage.setItem(TOKEN_KEY, t); }
@@ -404,8 +405,10 @@ const breadcrumbs = [
         $('empty-state').hidden = true;
         $('pf-table').hidden = false;
         $('pf-toolbar').hidden = false;
+        holdingsById = {};
         var stale = 0;
         list.forEach(function (h) {
+          holdingsById[h.id] = h;
           var tr = document.createElement('tr');
           var qty = h.asset_type === 'bist' ? nf.format(h.quantity) : nf2.format(h.quantity) + ' gr';
           var cur;
@@ -428,8 +431,14 @@ const breadcrumbs = [
             + '<td class="num">' + tl(h.cost_value) + '</td>'
             + '<td class="num">' + cur + '</td>'
             + '<td class="num ' + plCls + '">' + plStr + '</td>'
-            + '<td class="num"><button type="button" class="del" data-id="' + h.id + '" aria-label="Sil">✕</button></td>';
+            + '<td class="num actions">'
+              + '<button type="button" class="edit" data-id="' + h.id + '" aria-label="Düzenle" title="Düzenle">✎</button>'
+              + '<button type="button" class="del" data-id="' + h.id + '" aria-label="Sil" title="Sil">✕</button>'
+            + '</td>';
           tbody.appendChild(tr);
+        });
+        tbody.querySelectorAll('.edit').forEach(function (b) {
+          b.onclick = function () { editRow(b.getAttribute('data-id')); };
         });
         tbody.querySelectorAll('.del').forEach(function (b) {
           b.onclick = async function () {
@@ -445,6 +454,52 @@ const breadcrumbs = [
         } else {
           upd.textContent = 'Son güncelleme ' + hhmm;
         }
+      }
+
+      // ---- Satır içi pozisyon düzenleme ----
+      function editRow(id) {
+        var h = holdingsById[id];
+        if (!h) return;
+        var row = document.querySelector('#pf-tbody tr .edit[data-id="' + id + '"]');
+        row = row && row.closest('tr');
+        if (!row) return;
+        var qtyLabel = h.asset_type === 'bist' ? 'Adet' : 'Gram';
+        var qtyStep = h.asset_type === 'bist' ? '1' : 'any';
+        row.classList.add('editing');
+        row.innerHTML =
+          '<td class="asset"><strong>' + assetLabel(h) + '</strong>'
+            + '<small>düzenleniyor</small></td>'
+          + '<td class="num"><label class="edit-f"><span>' + qtyLabel + '</span>'
+            + '<input type="number" class="e-qty" min="0" step="' + qtyStep + '" value="' + h.quantity + '" inputmode="decimal"></label></td>'
+          + '<td class="num"><label class="edit-f"><span>Birim maliyet ₺</span>'
+            + '<input type="number" class="e-cost" min="0" step="any" value="' + h.cost_price + '" inputmode="decimal"></label></td>'
+          + '<td class="num"><label class="edit-f"><span>Alış tarihi</span>'
+            + '<input type="date" class="e-date" value="' + (h.purchase_date || '') + '"></label></td>'
+          + '<td class="num" colspan="2">'
+            + '<div class="edit-actions">'
+              + '<button type="button" class="btn-save" data-id="' + id + '">Kaydet</button>'
+              + '<button type="button" class="btn-cancel">Vazgeç</button>'
+            + '</div>'
+            + '<p class="edit-err" hidden></p></td>';
+        var errEl = row.querySelector('.edit-err');
+        row.querySelector('.btn-cancel').onclick = function () { loadPortfolio(); };
+        row.querySelector('.btn-save').onclick = async function () {
+          errEl.hidden = true;
+          var qty = parseFloat(row.querySelector('.e-qty').value);
+          var cost = parseFloat(row.querySelector('.e-cost').value);
+          var d = row.querySelector('.e-date').value;
+          if (!(qty > 0)) { errEl.textContent = 'Geçerli bir adet/gram gir.'; errEl.hidden = false; return; }
+          if (!(cost > 0)) { errEl.textContent = 'Geçerli bir birim maliyet gir.'; errEl.hidden = false; return; }
+          var body = { quantity: qty, cost_price: cost };
+          body.purchase_date = d || null;
+          var btn = this; btn.disabled = true;
+          try {
+            await api('/portfolio/holdings/' + id, { method: 'PATCH', body: body });
+            await loadPortfolio();
+          } catch (ex) {
+            errEl.textContent = ex.message; errEl.hidden = false; btn.disabled = false;
+          }
+        };
       }
 
       // ---- Fiyatları yenile ----
@@ -584,8 +639,21 @@ const breadcrumbs = [
     .pf-table td.up { color: #087443; } .pf-table td.down { color: #b3261e; }
     .pf-table td.asset strong { display: block; } .pf-table td.asset small { color: var(--text-muted); font-size: 0.78rem; }
     .pf-table td .num small, .pf-table td.num small { font-weight: 500; opacity: 0.8; }
-    .del { border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); border-radius: var(--radius-sm); width: 28px; height: 28px; cursor: pointer; line-height: 1; }
+    .pf-table td.actions { white-space: nowrap; }
+    .edit, .del { border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); border-radius: var(--radius-sm); width: 28px; height: 28px; cursor: pointer; line-height: 1; }
+    .edit { margin-right: 0.3rem; }
+    .edit:hover { color: var(--brand-2); border-color: var(--brand-2); }
     .del:hover { color: #b3261e; border-color: #b3261e; }
+    .pf-table tr.editing td { vertical-align: bottom; background: var(--brand-tint); }
+    .edit-f { display: flex; flex-direction: column; gap: 0.2rem; text-align: left; }
+    .edit-f span { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-muted); }
+    .edit-f input { font-family: var(--font-sans); font-size: 0.9rem; color: var(--text); padding: 0.4rem 0.5rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-card); width: 100%; min-width: 88px; }
+    .edit-f input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .edit-actions { display: flex; gap: 0.4rem; justify-content: flex-end; }
+    .btn-save { border: none; background: var(--brand-2); color: #fff; font-weight: 700; font-size: 0.85rem; padding: 0.45rem 0.9rem; border-radius: var(--radius-sm); cursor: pointer; font-family: var(--font-sans); }
+    .btn-save:disabled { opacity: 0.6; cursor: default; }
+    .btn-cancel { border: 1px solid var(--border); background: var(--bg-card); color: var(--text-soft); font-weight: 600; font-size: 0.85rem; padding: 0.45rem 0.8rem; border-radius: var(--radius-sm); cursor: pointer; font-family: var(--font-sans); }
+    .edit-err { color: #b3261e; font-size: 0.8rem; margin: 0.4rem 0 0; text-align: right; }
 
     .disclaimer { font-size: 0.78rem; color: var(--text-muted); margin: 1.5rem 0 0; text-align: center; }
 

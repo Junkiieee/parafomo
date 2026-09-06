@@ -11,7 +11,13 @@ from ..db import get_db
 from ..deps import get_current_user
 from ..models import AssetType, Holding, User
 from ..prices import get_price
-from ..schemas import HoldingCreate, HoldingOut, HoldingValued, PortfolioSummary
+from ..schemas import (
+    HoldingCreate,
+    HoldingOut,
+    HoldingUpdate,
+    HoldingValued,
+    PortfolioSummary,
+)
 
 router = APIRouter(prefix="/portfolio", tags=["portfolio"])
 
@@ -56,6 +62,26 @@ def list_holdings(
             .order_by(Holding.created_at.desc())
         )
     )
+
+
+@router.patch("/holdings/{holding_id}", response_model=HoldingOut)
+def update_holding(
+    holding_id: int,
+    body: HoldingUpdate,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> Holding:
+    holding = db.get(Holding, holding_id)
+    if holding is None or holding.user_id != user.id:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Pozisyon bulunamadı."
+        )
+    fields = body.model_dump(exclude_unset=True)
+    for key, value in fields.items():
+        setattr(holding, key, value)
+    db.commit()
+    db.refresh(holding)
+    return holding
 
 
 @router.delete(

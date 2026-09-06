@@ -61,6 +61,15 @@ class HoldingCreate(BaseModel):
     note: str | None = Field(default=None, max_length=280)
 
 
+class HoldingUpdate(BaseModel):
+    """Pozisyon düzenleme — yalnız gönderilen alanlar güncellenir."""
+
+    quantity: float | None = Field(default=None, gt=0)
+    cost_price: float | None = Field(default=None, gt=0)
+    purchase_date: date | None = None
+    note: str | None = Field(default=None, max_length=280)
+
+
 class HoldingOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
