@@ -92,6 +92,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] TCMB Eylül 2026 Faiz Kararı: PPK 10 Eylül'de Ne Yapacak? — `tcmb-eylul-2026-faiz-karari-ppk-beklentiler` (takvim: 10 Eylül 2026 🔴 TCMB PPK toplantısı; mevcut tcmb-faiz-karari-nasil-etkiler evergreen yazısından farklı; Eylül'e özgü beklenti+senaryo analizi; 3 senaryo tablosu + kredi/mevduat/kur/BIST etkisi; 6 Eylül 2026)
+
 - [x] Gayrimenkul mi Borsa mı? 2026'da Hangi Yatırım Daha Mantıklı? — `gayrimenkul-mi-borsa-mi-2026` (backlog ilk [ ] konusu: evergreen yatırım; "gayrimenkul mi borsa mı" sorgusu; giriş sermayesi + likidite + kira getirisi + vergi karşılaştırma tablosu; GYO orta yol olarak; konut+BIST+portföy çeşitlendirmesi cluster'ını tamamlayan karar rehberi; 5 Eylül 2026)
 
 - [x] Hisse Senedi Piyasa Değeri Nedir? Large Cap, Mid Cap, Small Cap Farkı — `piyasa-degeri-nedir-large-cap-mid-cap-small-cap` (backlog ilk [ ] konusu: evergreen borsa; "piyasa değeri nedir hisse senedi" sorgusu; large/mid/small cap fark tablosu + BIST endeks terfi etkisi + hisse seçim adımları; F/K + hisse seçimi + BIST 100 cluster'ını tamamlayan temel değerleme kavramı; 31 Ağustos 2026)
