@@ -17,6 +17,23 @@ faq:
     a: "Hızlı veya beklenti dışı büyük bir indirim TL'den sermaye çıkışını hızlandırabilir ve kuru yükseltebilir. Piyasanın beklediği ölçüde bir indirim genellikle sınırlı etki yaratır; beklenenden az indirim ise TL'ye kısa vadeli destek sağlar."
   - q: "TCMB faiz kararı borsayı etkiler mi?"
     a: "Faiz indirimi BIST'e olumlu etki yapar: risksiz mevduat getirisi düşer, para hisse senedine yönelir. Özellikle bankacılık ve inşaat hisseleri karar öncesi ve sonrasında hareketlenir. Beklenti içinde kalan bir indirim genellikle sınırlı tepkiyle geçiştirilir."
+shorts:
+  - "TCMB faizi yüzde elliden yirmi beşe indirdi!"
+  - "2024 sonunda yüzde elli olan politika faizi, iki yılda yaklaşık yüzde yirmi beşe geriledi."
+  - "10 Eylül'de PPK toplanıyor; bu karar kredi faizlerini, mevduat getirilerini ve kuru doğrudan etkiliyor."
+  - "Büyük indirim gelirse konut faizleri düşer ama bankadaki yüksek getirili mevduatlar hızla erir."
+  - "Peki PPK 10 Eylül'de ne yapacak? Tüm senaryolar parafomo.com'da — kanala abone ol, kararı kaçırma."
+shorts_broll:
+  - "interest rate cut decision"
+  - "turkish central bank meeting"
+  - "mortgage loan bank"
+  - "turkish lira exchange rate"
+shorts_visuals:
+  - "building|Türkiye Cumhuriyet Merkez Bankası"
+  - "concept|interest rate decline graph chart"
+  - "concept|central bank committee meeting board"
+  - "concept|bank loan mortgage interest rate"
+  - "object|turkish lira banknotes"
 ---
 
 10 Eylül 2026 Perşembe, Türkiye piyasaları için kritik bir gün. TCMB Para Politikası Kurulu (PPK), enflasyonun yıl boyu nasıl seyrettiğini ve küresel merkez bankalarının ne yaptığını tartıyor. **TCMB Eylül 2026 faiz kararı** öncesinde piyasaların ne beklediğini, üç olası senaryonun kredi, mevduat, kur ve borsayı nasıl etkileyeceğini bu yazıda bulacaksın.
