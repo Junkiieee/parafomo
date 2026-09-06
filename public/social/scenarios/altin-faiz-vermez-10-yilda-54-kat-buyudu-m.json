@@ -1,0 +1,75 @@
+{
+  "slug": "altin-faiz-vermez-10-yilda-54-kat-buyudu-m",
+  "title": "Altın Faiz Vermez — 10 Yılda 54 Kat Büyüdü",
+  "category": "MİT",
+  "format": "myth",
+  "description": "'Altın faiz vermez' diye kenara bırakmak 10 yılda ne kaybettirdi? TL bazında altın, doları 3,5 kat geride bıraktı.",
+  "tags": [
+    "altın",
+    "yatırım",
+    "faiz",
+    "dolar",
+    "birikim",
+    "türkiye",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Altın faiz vermez, bende boşta yatıyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "10 bin TL'yi 2014'te dolara çevirseydin, bugün yaklaşık 160 bin TL olurdu.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Dolar",
+        "glyph": "$"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama altına koysaydın? Bugün 550 bin TL ederdi — doların 3,5 katı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Faiz yok, doğru. Ama 54 kat büyüyen araç zaten kazandırıyor. Asıl kayıp hareketsiz kalmak.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Faiz",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Altını kasa mı yoksa dijital mi tutmak daha az sızdırıyor? Abone ol — her gün 60 saniyede bir ölçüm netleşiyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
