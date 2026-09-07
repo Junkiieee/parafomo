@@ -1,0 +1,59 @@
+{
+  "slug": "konut-kredisinde-bankanin-sessiz-hesabi",
+  "title": "Konut Kredisinde Bankanın Sessiz Hesabı",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Konut kredisinin toplam maliyetini açıklıyoruz: yüksek faiz döneminde ödediğin rakam aldığından katı aşıyor.",
+  "tags": [
+    "konut kredisi",
+    "mortgage",
+    "ev alma",
+    "faiz",
+    "banka",
+    "gayrimenkul",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "2 milyon eve 5 milyon ödersin.",
+      "visual": {
+        "type": "scene",
+        "query": "mortgage loan documents signing bank"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yüksek faizde taksitin çoğu faize gider, anapara ilk yıllarda neredeyse hiç azalmaz.",
+      "visual": {
+        "type": "scene",
+        "query": "loan amortization interest payment chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama banka sana sadece aylık taksiti gösterir — 15 yılda toplamda ne ödeyeceğini söylemez.",
+      "visual": {
+        "type": "scene",
+        "query": "bank teller counter money transaction"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kaçınılmazsa vadeyi kıs, erken öde. Her ekstra taksit faiz yükünü ciddi düşürür.",
+      "visual": {
+        "type": "scene",
+        "query": "house keys savings money jar"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki hangi bilgiyi banka hiç önüne koymaz? Öğrenmek için abone ol — her gün 60 saniyede bir net gerçek.",
+      "visual": {
+        "type": "scene",
+        "query": "mortgage loan documents signing bank"
+      }
+    }
+  ]
+}
