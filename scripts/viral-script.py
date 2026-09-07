@@ -132,6 +132,14 @@ Kurallar:
     • Sen-dili + kayıp: "Paran sen fark etmeden eriyor."
   YASAK klişeler (kullanma): "işte gerçek", "şoke etti", "kötü haber", "bunu yanlış biliyorsun",
   "inanılmaz", "herkes kaçırıyor", "aman dikkat". Tıklama tuzağı değil: söz verdiğini içerikte KARŞILA.
+- HOOK GÖRSEL-METİN ZITLIĞI (pattern-interrupt + merak boşluğu): hook beat'inin GÖRSELİ, hook METNİNİN
+  söylediğiyle bilerek ÇELİŞSİN. Yani ekranda çekici/beklenen olumlu yüzeyi göster (parlak altın bilezik,
+  yeni bir ev, dolu bir cüzdan, yükselen grafik) ama metin kaybı/miti söylesin ("Bu seni zengin etmez."):
+  göz "güzel" görürken kulak "tehlike" duyar → ilk 1-2 saniyede kaydırmayı keser. Bu yüzden hook görselinin
+  "query"si, hook metninin OLUMSUZ iddiasının aksine POZİTİF/İSTENEN nesneyi betimlesin.
+  İSTİSNA: hook'un öznesi gerçek bir kişi/yer/marka ise (özellikle news_reaction) ZITLIK YAPMA — o kişiyi/
+  kurumu birebir göster (person/place/logo). Zıtlık yalnız gold/object/concept görselli hook'lar için.
+  point beat'lerinin görselleri her zaman içerikle ÖRTÜŞSÜN (zıtlık sadece hook'ta).
 - 3 beat YÜKSELEREK ilerlesin (izleyiciyi sonuna kadar tutacak akış):
     beat 1: kancadaki merakı DERİNLEŞTİR — neden/nasıl olduğunu, yeni bir bilgiyle aç.
             KÖPRÜ: kancanın açtığı döngüye HEMEN somut bir ödül-kırıntısı ver (izleyici 1. saniyede
