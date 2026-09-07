@@ -1,12 +1,12 @@
 {
-  "updated": "2026-09-06T01:00+00:00",
+  "updated": "2026-09-07T01:00+00:00",
   "source": "Yahoo Finance (GC=F ons altın, USDTRY=X kur); gram = ons/31.1035 × USDTRY",
-  "gram_tl_now": 6969.58,
+  "gram_tl_now": 6970.99,
   "oz_usd_now": 4476.6,
   "ytd": {
     "label": "Yıl başından beri",
     "gram_tl_then": 6585.85,
-    "gram_tl_now": 6969.58,
+    "gram_tl_now": 6970.99,
     "return_tl_pct": 5.8,
     "oz_usd_then": 4713.9,
     "oz_usd_now": 4476.6,
@@ -17,7 +17,7 @@
       "label": "1 yıl",
       "years": 1,
       "gram_tl_then": 5134.07,
-      "gram_tl_now": 6969.58,
+      "gram_tl_now": 6970.99,
       "return_tl_pct": 35.8,
       "oz_usd_then": 3840.8,
       "oz_usd_now": 4476.6,
@@ -27,8 +27,8 @@
       "label": "3 yıl",
       "years": 3,
       "gram_tl_then": 1631.55,
-      "gram_tl_now": 6969.58,
-      "return_tl_pct": 327.2,
+      "gram_tl_now": 6970.99,
+      "return_tl_pct": 327.3,
       "oz_usd_then": 1848.1,
       "oz_usd_now": 4476.6,
       "return_usd_pct": 142.2
@@ -37,8 +37,8 @@
       "label": "5 yıl",
       "years": 5,
       "gram_tl_then": 503.17,
-      "gram_tl_now": 6969.58,
-      "return_tl_pct": 1285.1,
+      "gram_tl_now": 6970.99,
+      "return_tl_pct": 1285.4,
       "oz_usd_then": 1755.3,
       "oz_usd_now": 4476.6,
       "return_usd_pct": 155.0
@@ -47,14 +47,14 @@
       "label": "10 yıl",
       "years": 10,
       "gram_tl_then": 126.98,
-      "gram_tl_now": 6969.58,
-      "return_tl_pct": 5388.5,
+      "gram_tl_now": 6970.99,
+      "return_tl_pct": 5389.6,
       "oz_usd_then": 1271.5,
       "oz_usd_now": 4476.6,
       "return_usd_pct": 252.1
     }
   ],
   "headline_years": 10,
-  "headline_return_tl_pct": 5388.5,
+  "headline_return_tl_pct": 5389.6,
   "headline_return_usd_pct": 252.1
 }
