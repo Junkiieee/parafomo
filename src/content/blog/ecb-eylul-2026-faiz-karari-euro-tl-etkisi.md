@@ -17,6 +17,23 @@ faq:
     a: "ECB faiz indirirse dolar genellikle güçlenir ve dolar bazlı altın fiyatı baskı görür. Öte yandan küresel belirsizlik tırmanıyorsa altın güvenli liman talebine bağlı yükselmeye devam edebilir; iki kuvvet zaman zaman birbirini dengeler."
   - q: "ECB basın toplantısında nelere bakmalıyım?"
     a: "Başkanın 'veri bağımlı' mı yoksa 'önceden belirlenmiş yol' mu vurguladığı; çekirdek enflasyon ve büyüme tahminlerindeki revizyonlar; ve gelecek toplantılar için sinyal veren 'forward guidance' ifadelerini dikkatle izleyin."
+shorts:
+  - "ECB faizi 2 yılda yüzde dörtten yüzde ikiye yarılandı."
+  - "10 Eylül'de TCMB ve ECB aynı gün karar açıklıyor; euro, dolar, TL aynı anda sarsılabilir."
+  - "Piyasaların yüzde 55-60 ihtimalle beklediği 25 baz puanlık indirim euroda sınırlı düşüş yaratır."
+  - "Sürpriz duraklama kararı gelirse euro güçlenir, TL ise TCMB kararına göre şekillenir."
+  - "Hangi senaryo portföyünü nasıl etkiler? Abone ol, her faiz kararını anında analiz ediyoruz; tüm senaryolar parafomo.com'da."
+shorts_broll:
+  - "european central bank building frankfurt"
+  - "euro dollar currency exchange rate"
+  - "interest rate decision announcement"
+  - "turkish lira banknotes"
+shorts_visuals:
+  - "place|European Central Bank Frankfurt"
+  - "place|Türkiye Cumhuriyet Merkez Bankası"
+  - "concept|euro dollar currency chart falling"
+  - "concept|central bank interest rate hold decision screen"
+  - "concept|financial portfolio analysis investment"
 ---
 
 10 Eylül 2026 Perşembe, Türk yatırımcılar için sıradan bir borsa günü değil. Aynı takvim sayfasında iki büyük merkez bankası faiz kararı açıklıyor: TCMB öğleden önce PPK kararını verirken, saat 12:15'te Frankfurt'ta ECB Yönetim Konseyi'nin kararı da piyasalara düşüyor. Bu eş zamanlılık euro, dolar ve TL'yi aynı anda sarsabilir. Her senaryo ne anlama gelir, portföyünü nasıl konumlandırmalısın?
