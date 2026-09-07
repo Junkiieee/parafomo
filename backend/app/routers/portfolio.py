@@ -32,13 +32,45 @@ def _normalize_symbol(asset_type: AssetType, symbol: str) -> str:
 @router.post("/holdings", response_model=HoldingOut, status_code=status.HTTP_201_CREATED)
 def add_holding(
     body: HoldingCreate,
+    response: Response,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> Holding:
+    symbol = _normalize_symbol(body.asset_type, body.symbol)
+
+    # Aynı sembolde ikinci alım → ayrı satır AÇMA, mevcut pozisyona BİRLEŞTİR ve
+    # adet-ağırlıklı ortalama maliyet hesapla. Kullanıcı "TUPRS 10@100 sonra 5@130"
+    # eklediğinde tek satır: 15 adet, ort. maliyet (10*100+5*130)/15 = 110.
+    existing = db.scalar(
+        select(Holding).where(
+            Holding.user_id == user.id,
+            Holding.asset_type == body.asset_type,
+            Holding.symbol == symbol,
+        )
+    )
+    if existing is not None:
+        total_qty = existing.quantity + body.quantity
+        existing.cost_price = round(
+            (existing.quantity * existing.cost_price + body.quantity * body.cost_price)
+            / total_qty,
+            6,
+        )
+        existing.quantity = total_qty
+        # En erken alış tarihini koru (pozisyonun başlangıcı)
+        if body.purchase_date is not None and (
+            existing.purchase_date is None
+            or body.purchase_date < existing.purchase_date
+        ):
+            existing.purchase_date = body.purchase_date
+        db.commit()
+        db.refresh(existing)
+        response.status_code = status.HTTP_200_OK
+        return existing
+
     holding = Holding(
         user_id=user.id,
         asset_type=body.asset_type,
-        symbol=_normalize_symbol(body.asset_type, body.symbol),
+        symbol=symbol,
         quantity=body.quantity,
         cost_price=body.cost_price,
         purchase_date=body.purchase_date,
