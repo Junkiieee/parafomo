@@ -64,3 +64,4 @@ Yeni ders: `python3 agent/exp.py learn --channel <k> --text "..."` veya deney ka
 - [2026-09-04][web] Aggregate data-page motoruna katlandı (bkz 2026-08-28-1). Per-page getiri sorgusu izleme; motoru tek KPI satırı olarak izle.
 - [2026-09-04][web] Aggregate data-page motoruna katlandı (bkz 2026-08-28-1).
 - [2026-09-04][web] Aggregate data-page motoruna katlandı (bkz 2026-08-28-1). Getiri kümesi (altın/dolar/bist/hub) tek vein — tek tracker (hub 09-02-2) yeterli.
+- [2026-09-07][web] SEAMLESS-LOOP (cta beat görseli=hook görseli) da sub-saniye/mikro-görsel edit sınıfı gibi düşük-n yüksek-varyans retention'da temiz verdict vermedi (n=5, ort 32%, loop-outlier yok). İyi-pratik olarak KORU (zarar yok, loop kapanış tutarlı) ama retention exp'i olarak izleme. Retention slotu artık BOŞ → contradiction-hook (ilk-3sn tutma, video-rnd #2) izole açılabilir.
