@@ -79,6 +79,7 @@ ENGAGEMENT_QUESTIONS = [
     "Enflasyona karşı altın yeterli mi sizce? Düşüncenizi yazın. 💬",
     "Altınınız şu an kâr mı zarar mı? Takip ediyor musunuz? 💬",
     "Portföyünüzü nasıl takip ediyorsunuz — defter, Excel, uygulama? 👇",
+    "Aynı üründen iki farklı fiyattan aldıysanız ortalama maliyetinizi biliyor musunuz? 💬",
 ]
 
 
