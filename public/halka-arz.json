@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-07T06:15+00:00",
+  "updated": "2026-09-07T12:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 40,
@@ -17,6 +17,20 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "87.500.000 Lot",
       "broker": "Tacirler Yatırım Menkul Değerler A.Ş."
+    },
+    {
+      "company": "Hestaş Madencilik Petrol İnşaat Haritacılık Tic. A.Ş.",
+      "bist_code": "",
+      "slug": "hestas-madencilik-petrol-insaat-haritacilik-tic-a-s",
+      "link": "https://halkarz.com/hestas-madencilik-petrol-insaat-haritacilik-tic-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "170.000.000 Lot",
+      "broker": "Vakıf Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "Anpa Gross Mağazacılık A.Ş.",
@@ -381,20 +395,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "65.000.000 Lot",
       "broker": "Bizim Menkul Değerler A.Ş. Halk Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Ekol Girişim Sermayesi Yatırım Ortaklığı A.Ş.",
-      "bist_code": "",
-      "slug": "ekol-girisim-sermayesi-yatirim-ortakligi-a-s",
-      "link": "https://halkarz.com/ekol-girisim-sermayesi-yatirim-ortakligi-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "125.000.000 Lot",
-      "broker": "Bulls Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "İntetra Teknoloji ve Bilişim Hizmetleri A.Ş.",
