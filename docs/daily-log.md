@@ -4,6 +4,75 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-09-07 — ECB Eylül 2026 Faiz Kararı: Euro, Dolar ve TL'ye Etkisi
+
+**Yayınlanan yazı:** [ECB Eylül 2026 Faiz Kararı: Euro, Dolar ve TL'ye Etkisi](https://parafomo.com/blog/ecb-eylul-2026-faiz-karari-euro-tl-etkisi/)
+**Hedef sorgu:** `ecb eylül 2026 faiz kararı` / `ecb faiz kararı eylül` · Kategori: Ekonomi
+**Konu seçim gerekçesi:** Takvim: 10 Eylül 2026 🔴 ECB + TCMB aynı gün (1 günlük TCMB yazısının devamı niteliğinde); çift merkez bankası günü + euro/TL volatilite açısı mevcut evergreen ECB yazısında yok; Eylül'e özgü 3 senaryo analizi.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+🏦 10 Eylül Perşembe: TCMB ve ECB aynı gün faiz kararı açıklıyor.
+
+Bu eş zamanlılık EUR/TL'yi sarsabilir. İşte 3 senaryo ve paranıza etkisi:
+
+2/ Piyasa konsensüsü: ECB 25 bp indirim yapacak. Bu beklentinin büyük kısmı zaten fiyatlanmış; karar geldiğinde sert hareket gelmeyebilir.
+
+3/ Senaryo A — 25 bp İndirim (konsensüs): Euro hafif düşer, dolar hafif güçlenir. TL üzerinde sınırlı baskı. TCMB kararı belirleyici olur.
+
+4/ Senaryo B — Sabit: Sürpriz şahin sinyal! Euro güçlenir, DXY geri çekilir. TL için daha olumlu tablo — ama BIST daha temkinli tepki verir.
+
+5/ Senaryo C — 50 bp+ büyük indirim: Euro sert düşer, dolar güçlenir. Gelişmekte olan piyasalara çıkış. TL/USD baskılanır.
+
+6/ Aynı gün TCMB kararı da var. İki karar birleşince EUR/TL çift yönlü hareket edebilir. Stop-loss'suz pozisyon o gün tehlikeli.
+
+7/ Pratik öneri: Vadeli mevduat yenilemeyi 11 Eylül'e ertele. Her iki karar netleşsin.
+
+8/ 3 senaryo tablosu + yatırımcı yapılacaklar listesi:
+👉 https://parafomo.com/blog/ecb-eylul-2026-faiz-karari-euro-tl-etkisi/
+
+#ECB #faizKararı #euroTL #TCMB #paraFOMO
+
+---
+
+### Instagram Carousel / Post Metni
+
+🏦 **10 Eylül: TCMB + ECB Aynı Gün!**
+
+Aynı takvim, iki büyük merkez bankası. EUR/TL bu gün çok oynak olabilir.
+
+**Slayt 1: ECB 3 Senaryo**
+→ 25bp İndirim (konsensüs): Euro hafif düşer
+→ Sabit: Euro güçlenir, TL rahatlar
+→ 50bp+ Büyük indirim: Dolar çıkar, TL baskı
+
+**Slayt 2: Çift Merkez Bankası Günü**
+TCMB + ECB = çift volatilite
+EUR/TL çift yönlü hareket riski
+Stop-loss olmadan o gün pozisyon taşıma
+
+**Slayt 3: Ne Yapmalısın?**
+→ Vadeli mevduat: 11 Eylül'e ertele
+→ Kaldıraçlı döviz: stop-loss zorunlu
+→ Altın: bekle-gör (dolar hareketi belirleyici)
+→ BIST: ECB ikincil, TCMB birincil
+
+**Tüm detaylar için:**
+🔗 parafomo.com/blog/ecb-eylul-2026-faiz-karari-euro-tl-etkisi
+
+#ECB #faizKararı #TCMB #euro #dolar #TL #yatırım #parafomo
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **Thread'i X'te paylaş** — özellikle "10 Eylül'de hem TCMB hem ECB" mesajını öne çıkar; bu eş zamanlılık bugün gündem.
+2. **Instagram carousel olarak yükle** — görseller içeren 3-4 slaytlı bir format yap; "çift merkez bankası günü" kancası ilgi çekici.
+
+---
+
 ## 2026-09-06 — TCMB Eylül 2026 Faiz Kararı: PPK 10 Eylül'de Ne Yapacak?
 
 **Yayınlanan yazı:** [TCMB Eylül 2026 Faiz Kararı: PPK 10 Eylül'de Ne Yapacak?](https://parafomo.com/blog/tcmb-eylul-2026-faiz-karari-ppk-beklentiler/)

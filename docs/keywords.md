@@ -92,6 +92,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] ECB Eylül 2026 Faiz Kararı: Euro, Dolar ve TL'ye Etkisi — `ecb-eylul-2026-faiz-karari-euro-tl-etkisi` (takvim: 10 Eylül 2026 🔴 ECB kararı + TCMB ile aynı gün; mevcut genel ECB evergreen'den farklı, Eylül'e özgü senaryo analizi; 3 senaryo tablosu + çift merkez bankası günü volatilite rehberi; 7 Eylül 2026)
+
 - [x] TCMB Eylül 2026 Faiz Kararı: PPK 10 Eylül'de Ne Yapacak? — `tcmb-eylul-2026-faiz-karari-ppk-beklentiler` (takvim: 10 Eylül 2026 🔴 TCMB PPK toplantısı; mevcut tcmb-faiz-karari-nasil-etkiler evergreen yazısından farklı; Eylül'e özgü beklenti+senaryo analizi; 3 senaryo tablosu + kredi/mevduat/kur/BIST etkisi; 6 Eylül 2026)
 
 - [x] Gayrimenkul mi Borsa mı? 2026'da Hangi Yatırım Daha Mantıklı? — `gayrimenkul-mi-borsa-mi-2026` (backlog ilk [ ] konusu: evergreen yatırım; "gayrimenkul mi borsa mı" sorgusu; giriş sermayesi + likidite + kira getirisi + vergi karşılaştırma tablosu; GYO orta yol olarak; konut+BIST+portföy çeşitlendirmesi cluster'ını tamamlayan karar rehberi; 5 Eylül 2026)
@@ -273,4 +275,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 - [x] Volatilite Nedir? Standart Sapma ve Sharpe Oranıyla Risk Ölçümü — `volatilite-nedir-yatirim` (backlog ilk [ ] konusu: evergreen yatırım; "volatilite nedir yatırım" sorgusu; standart sapma+beta+Sharpe oranı üçlüsü; risk-getiri+VIX+portföy çeşitlendirmesi+stop-loss cluster'ını tamamlayan risk ölçüm rehberi; 3 Eylül 2026)
 
-- [x] ABD İşsizlik Verisi Altını ve Doları Nasıl Etkiler? NFP Sonrası Yatırımcı Rehberi — `abd-issizlik-verisi-altin-dolar-etkisi` (takvim: 4 Eylül 2026 🔴 NFP + İşsizlik Oranı + Saatlik Kazançlar; GSC fırsatı: "abd işsizlik verisi altını nasıl etkiler" — gös 8, sıra 9.5, tıklama 0; altın-odaklı açı mevcut NFP/işsizlik yazılarında yok; senaryo tablosu + 10 Eylül TCMB bağlantısı; 4 Eylül 2026)
+- [x] ABD İşsizlik Verisi Altını ve Doları Nasıl Etkiler? NFP Sonrası Yatırımcı Rehberi — `abd-issizlik-verisi-altin-dolar-etkisi`
+- [x] ECB Eylül 2026 Faiz Kararı: Euro, Dolar ve TL'ye Etkisi — `ecb-eylul-2026-faiz-karari-euro-tl-etkisi` (takvim: 4 Eylül 2026 🔴 NFP + İşsizlik Oranı + Saatlik Kazançlar; GSC fırsatı: "abd işsizlik verisi altını nasıl etkiler" — gös 8, sıra 9.5, tıklama 0; altın-odaklı açı mevcut NFP/işsizlik yazılarında yok; senaryo tablosu + 10 Eylül TCMB bağlantısı; 4 Eylül 2026)
