@@ -1,44 +1,8 @@
 {
-  "updated": "2026-09-07",
+  "updated": "2026-09-08",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-09-04",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Average Hourly Earnings m/m",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-09-04",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Non-Farm Employment Change",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-09-04",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Unemployment Rate",
-      "source": "forexfactory",
-      "hook": "İşsizlik verisi — büyüme ve faiz beklentisi."
-    },
-    {
-      "date": "2026-09-04",
-      "time": "8:50am",
-      "region": "GBP",
-      "impact": "High",
-      "title": "BOE Gov Bailey Speaks",
-      "source": "forexfactory",
-      "hook": ""
-    },
     {
       "date": "2026-09-10",
       "region": "TR",
