@@ -1,8 +1,8 @@
 {
-  "updated": "2026-09-09T12:15+00:00",
+  "updated": "2026-09-09T18:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 40,
+  "count": 41,
   "items": [
     {
       "company": "Net Global Endüstriyel Yatırımlar A.Ş.",
@@ -17,6 +17,20 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "87.500.000 Lot",
       "broker": "Tacirler Yatırım Menkul Değerler A.Ş."
+    },
+    {
+      "company": "Motor Aşin Otomotiv Bilgisayar San. ve Tic. A.Ş.",
+      "bist_code": "",
+      "slug": "motor-asin-otomotiv-bilgisayar-san-ve-tic-a-s",
+      "link": "https://halkarz.com/motor-asin-otomotiv-bilgisayar-san-ve-tic-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "186.798.000 Lot",
+      "broker": "İntegral Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "Hestaş Madencilik Petrol İnşaat Haritacılık Tic. A.Ş.",
