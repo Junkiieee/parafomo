@@ -17,6 +17,23 @@ faq:
     a: "Genel (headline) CPI gıda ve enerji dahil tüm kalemleri kapsar. Core CPI bu iki oynak kalemi dışarıda bırakır. Fed, kalıcı enflasyon trendini değerlendirirken core CPI'ya daha fazla ağırlık verir; bu nedenle piyasalar core CPI beklentisinden sapmaları daha sert fiyatlar."
   - q: "CPI verisi sonrası ne yapmalıyım?"
     a: "Tek bir veriyle ani pozisyon almak risklidir. Dolar ve altın pozisyonu taşıyorsanız ilk 30-60 dakikadaki oynaklığın geçmesini bekleyin. CPI bir Fed kararı değil, yalnızca bir girdidir; Fed'in faiz yolunu anlamak için birden fazla veri ve FOMC açıklamalarını birlikte izleyin."
+shorts:
+  - "Yüzde 0.3 aşılırsa TL, dolar ve altın sarsılır."
+  - "Fed enflasyonu yüzde iki hedefinde tutmaya çalışıyor; CPI tam bunu ölçüyor."
+  - "Veri yüzde 0.3'ü aşarsa Fed faiz indirmez, dolar güçlenir, altın düşer."
+  - "Soğuk veri gelirse tam tersi: dolar zayıflar, altın yükselir, TL nefes alır."
+  - "Yarın 15:30'da hangisi olacak ve cebini nasıl etkileyecek? Öğrenmek için parafomo.com'a bak, kanala abone ol."
+shorts_broll:
+  - "CPI inflation data release screen"
+  - "Federal Reserve interest rate decision"
+  - "US dollar index DXY chart"
+  - "gold price surge market"
+shorts_visuals:
+  - "concept|CPI inflation data release trading screen"
+  - "place|Federal Reserve Washington DC"
+  - "concept|US dollar strengthening chart market"
+  - "gold|gold bullion bars price drop"
+  - "concept|financial news website laptop screen"
 ---
 
 Yarın, 11 Eylül 2026 Cuma günü Türkiye saatiyle 15:30'da ABD Tüketici Fiyat Endeksi (CPI) açıklanıyor. Fed faiz beklentilerini doğrudan şekillendiren bu veri, piyasalarda dolar, altın ve TL adına belirleyici olacak. Hangi senaryo sizi nasıl etkiler — ve siz ne yapmalısınız?
