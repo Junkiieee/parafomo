@@ -92,6 +92,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] ABD Eylül 2026 CPI Verisi: Fed Faizini Dondurur mu? Dolar ve Altın Etkisi — `abd-eylul-2026-cpi-verisi-fed-dolar-altin` (takvim: 11 Eylül 2026 🔴 ABD Core CPI + CPI açıklaması; mevcut evergreen abd-cpi-enflasyon-verisi-nedir Haziran 2026'ya özgü, bu Eylül'e özgü; 3 senaryo tablosu + dolar+altın+TL etkisi; learning report top performers: pce-gdp-agustos #1 şablonu; 10 Eylül 2026)
+
 - [x] ECB Eylül 2026 Faiz Kararı: Euro, Dolar ve TL'ye Etkisi — `ecb-eylul-2026-faiz-karari-euro-tl-etkisi` (takvim: 10 Eylül 2026 🔴 ECB kararı + TCMB ile aynı gün; mevcut genel ECB evergreen'den farklı, Eylül'e özgü senaryo analizi; 3 senaryo tablosu + çift merkez bankası günü volatilite rehberi; 7 Eylül 2026)
 
 - [x] TCMB Eylül 2026 Faiz Kararı: PPK 10 Eylül'de Ne Yapacak? — `tcmb-eylul-2026-faiz-karari-ppk-beklentiler` (takvim: 10 Eylül 2026 🔴 TCMB PPK toplantısı; mevcut tcmb-faiz-karari-nasil-etkiler evergreen yazısından farklı; Eylül'e özgü beklenti+senaryo analizi; 3 senaryo tablosu + kredi/mevduat/kur/BIST etkisi; 6 Eylül 2026)
