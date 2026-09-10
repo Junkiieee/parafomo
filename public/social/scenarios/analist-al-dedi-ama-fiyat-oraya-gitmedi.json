@@ -1,0 +1,59 @@
+{
+  "slug": "analist-al-dedi-ama-fiyat-oraya-gitmedi",
+  "title": "Analist 'Al' Dedi — Ama Fiyat Oraya Gitmedi",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Aracı kurum analistlerinin hedef fiyat tavsiyeleri çoğunlukla piyasayı yenemiyor. Arkasındaki çıkar çatışmasını ve bu raporları nasıl okuман gerektiğini anlattık.",
+  "tags": [
+    "analist tavsiyesi",
+    "hedef fiyat",
+    "borsa",
+    "hisse senedi",
+    "yatırım",
+    "BIST",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Analist hedef fiyatı tahmin değil pazarlama.",
+      "visual": {
+        "type": "concept",
+        "query": "financial analyst confident buy rating stock chart presentation"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Aracı kurum analisti işlem hacminden komisyon kazanır, 'al' tavsiyesi müşteri işlemi demek.",
+      "visual": {
+        "type": "concept",
+        "query": "stock broker trading commission screen money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama şunu bak: çoğu hedef fiyat 12 ayda tutmuyor, hisse ortalamanın altında kalıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "stock market chart price underperformance benchmark comparison"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Raporu şirketi anlamak için oku, al-sat kararını kendin ver ya da endeks fonunu seç.",
+      "visual": {
+        "type": "concept",
+        "query": "index fund ETF diversified investment portfolio research"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Merak ettiğin başka bir piyasa yanılgısı var mı? Her gün bir miti çözüyoruz — abone ol, kaçırma.",
+      "visual": {
+        "type": "concept",
+        "query": "financial analyst confident buy rating stock chart presentation"
+      }
+    }
+  ]
+}
