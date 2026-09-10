@@ -124,6 +124,15 @@ const breadcrumbs = [
         <p class="sum-note" id="sum-note">Fiyatlar canlı; birkaç dakika gecikmeli olabilir.</p>
       </div>
 
+      <!-- Varlık dağılımı (donut) -->
+      <div class="alloc-card" id="alloc-card" hidden>
+        <span class="alloc-title">Varlık dağılımı</span>
+        <div class="alloc-body">
+          <svg class="alloc-donut" id="alloc-donut" viewBox="0 0 42 42" role="img" aria-label="Portföy varlık dağılımı grafiği"></svg>
+          <ul class="alloc-legend" id="alloc-legend"></ul>
+        </div>
+      </div>
+
       <!-- Pozisyon ekle -->
       <details class="add-block" id="add-block">
         <summary>+ Pozisyon ekle</summary>
@@ -384,6 +393,7 @@ const breadcrumbs = [
           var s = await api('/portfolio/summary');
           renderSummary(s);
           renderHoldings(s.holdings);
+          renderAllocation(s.holdings);
         } catch (ex) {
           // 401 zaten showAuth tetikler
         }
@@ -405,6 +415,48 @@ const breadcrumbs = [
       function assetLabel(h) {
         if (h.asset_type === 'bist') return h.symbol;
         return TYPE_LABEL[h.asset_type] || h.symbol;
+      }
+
+      var ALLOC_COLORS = ['#c8102e', '#1f6f8b', '#e0a458', '#2e7d5b', '#8e6bb0', '#d97b45', '#4a7ba6', '#a83e5b', '#6b8e23', '#7a7f8c'];
+
+      // Varlık dağılımı donut'u — güncel değere (yoksa maliyete) göre ağırlık %
+      function renderAllocation(list) {
+        var card = $('alloc-card');
+        var donut = $('alloc-donut');
+        var legend = $('alloc-legend');
+        if (!list || list.length < 2) { card.hidden = true; return; }
+        // Varlık başına değer (canlı değer yoksa maliyet), etikete göre grupla
+        var byLabel = {};
+        list.forEach(function (h) {
+          var v = h.current_value != null ? h.current_value : (h.cost_value || 0);
+          if (v <= 0) return;
+          var k = assetLabel(h);
+          byLabel[k] = (byLabel[k] || 0) + v;
+        });
+        var rows = Object.keys(byLabel).map(function (k) { return { label: k, value: byLabel[k] }; });
+        var total = rows.reduce(function (a, r) { return a + r.value; }, 0);
+        if (rows.length < 2 || total <= 0) { card.hidden = true; return; }
+        rows.sort(function (a, b) { return b.value - a.value; });
+        card.hidden = false;
+        // Donut: r=15.9155 → çevre ≈ 100 birim = %
+        var segs = '<circle class="alloc-bg" cx="21" cy="21" r="15.9155" fill="none" stroke="var(--border)" stroke-width="5"></circle>';
+        var offset = 25; // 12 yönünden başla
+        rows.forEach(function (r, i) {
+          var pct = r.value / total * 100;
+          var color = ALLOC_COLORS[i % ALLOC_COLORS.length];
+          segs += '<circle cx="21" cy="21" r="15.9155" fill="none" stroke="' + color + '" stroke-width="5"'
+            + ' stroke-dasharray="' + nf2.format(pct) + ' ' + nf2.format(100 - pct) + '"'
+            + ' stroke-dashoffset="' + nf2.format(offset) + '" transform="rotate(-90 21 21)"></circle>';
+          offset -= pct;
+        });
+        donut.innerHTML = segs;
+        legend.innerHTML = rows.map(function (r, i) {
+          var pct = r.value / total * 100;
+          var color = ALLOC_COLORS[i % ALLOC_COLORS.length];
+          return '<li><span class="alloc-dot" style="background:' + color + '"></span>'
+            + '<span class="alloc-lab">' + r.label + '</span>'
+            + '<span class="alloc-pct">%' + nf2.format(pct) + '</span></li>';
+        }).join('');
       }
 
       function renderHoldings(list) {
@@ -619,6 +671,15 @@ const breadcrumbs = [
     .app-head h1 { font-size: var(--step-3); margin: 0; }
 
     .summary-card { background: var(--brand-tint); border-radius: var(--radius-lg); padding: 1.4rem; margin-bottom: 1.2rem; }
+    .alloc-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.2rem 1.4rem; margin-bottom: 1.2rem; }
+    .alloc-title { display: block; font-size: 0.85rem; font-weight: 700; color: var(--text-soft); margin-bottom: 0.9rem; }
+    .alloc-body { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }
+    .alloc-donut { width: 116px; height: 116px; flex: none; }
+    .alloc-legend { list-style: none; margin: 0; padding: 0; flex: 1; min-width: 180px; display: flex; flex-direction: column; gap: 0.4rem; }
+    .alloc-legend li { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+    .alloc-dot { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+    .alloc-lab { font-weight: 600; color: var(--brand-ink); }
+    .alloc-pct { margin-left: auto; font-weight: 700; color: var(--text-soft); font-variant-numeric: tabular-nums; }
     .sum-main { display: flex; flex-direction: column; gap: 0.2rem; margin-bottom: 1rem; }
     .sum-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
     .sum-value { font-family: var(--font-serif); font-size: clamp(2rem, 1.4rem + 3vw, 2.8rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
