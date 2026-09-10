@@ -4,6 +4,57 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-09-10 — ABD Eylül 2026 CPI Verisi: Fed Faizini Dondurur mu? Dolar ve Altın Etkisi
+
+**Yayınlanan yazı:** [ABD Eylül 2026 CPI Verisi: Fed Faizini Dondurur mu? Dolar ve Altın Etkisi](https://parafomo.com/blog/abd-eylul-2026-cpi-verisi-fed-dolar-altin/)
+**Hedef sorgu:** `abd cpi eylül 2026` / `abd enflasyon verisi dolar altın etkisi` · Kategori: Ekonomi
+**Konu seçim gerekçesi:** Takvim: 11 Eylül 2026 🔴 ABD Core CPI + CPI açıklaması; TCMB ve ECB Eylül yazıları zaten yayında; learning report #1 formatı (timely + dolar/altın nexusu = pce-gdp-agustos şablonu); mevcut evergreen abd-cpi yazısından farklı: Eylül'e özgü 3 senaryo tablosu + Türk yatırımcı pratik rehberi.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+📊 Yarın 15:30'da ABD Eylül 2026 CPI açıklanıyor.
+
+Bu hafta TCMB + ECB kararlarının ardından son büyük veri geliyor. İşte 3 senaryo ve paranıza etkisi:
+
+2/ Piyasa beklentisi: aylık ~%0.2 (hem manşet hem çekirdek CPI). Bu "ılık" tablo gerçekleşirse büyük hareket gelmeyebilir. Ama sapma sert fiyatlanır.
+
+3/ Senaryo A — Sıcak (>%0.3): Fed faiz dondurma uzuyor. Dolar güçlenir, altın baskı altı, TL/USD yükselir. İthalat maliyetleri artar.
+
+4/ Senaryo B — Beklenti paraleli (~%0.2): Yol belirsizliği sürüyor. Dolar yatay, altın yatay, TL'de sınırlı hareket.
+
+5/ Senaryo C — Soğuk (<%0.1): Faiz indirim beklentisi güçlenir. Dolar zayıflar, altın rallisi, TL kısa vadeli rahatlar.
+
+6/ İlk 30-60 dakikada ani pozisyon almayın — spread'ler genişler, oynaklık sert olur. Sabırlı olun.
+
+7/ Detaylı senaryo tablosu + Türk yatırımcısı için pratik adımlar: https://parafomo.com/blog/abd-eylul-2026-cpi-verisi-fed-dolar-altin/
+
+---
+
+### Instagram Post / Carousel Metni
+
+📊 Yarın ABD Enflasyon Verisi Geliyor — Paran İçin 3 Senaryo
+
+Saat 15:30'da açıklanacak ABD CPI verisi dolar, altın ve TL'yi doğrudan etkileyecek.
+
+🔴 Sıcak veri → Dolar güçlenir, TL baskı altı
+🟡 Beklenti paraleli → Yatay, büyük hareket yok
+🟢 Soğuk veri → Dolar zayıflar, altın yukarı
+
+Tam senaryo tablosu + ne yapmalısın rehberi linkde.
+
+#abdcpi #enflasyon #dolar #altin #tcmb #yatirim #parafomo #ekonomi #finans #tl
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **Thread'i X'te paylaş** — sabah 09:00-10:00 arasında (veri öncesi tartışma trafiği yüksek).
+2. **Instagram carousel'ini yayınla** — öğlen 12:00-13:00 (CPI öncesi haber akışı yoğun; 5-7 slayt: giriş + 3 senaryo + pratik adımlar + CTA).
+
+---
+
 ## 2026-09-07 — ECB Eylül 2026 Faiz Kararı: Euro, Dolar ve TL'ye Etkisi
 
 **Yayınlanan yazı:** [ECB Eylül 2026 Faiz Kararı: Euro, Dolar ve TL'ye Etkisi](https://parafomo.com/blog/ecb-eylul-2026-faiz-karari-euro-tl-etkisi/)
