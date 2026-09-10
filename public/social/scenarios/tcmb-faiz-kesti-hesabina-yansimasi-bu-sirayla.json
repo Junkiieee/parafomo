@@ -1,0 +1,59 @@
+{
+  "slug": "tcmb-faiz-kesti-hesabina-yansimasi-bu-sirayla",
+  "title": "TCMB Faiz Kesti — Hesabına Yansıması Bu Sırayla",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "PPK faiz indirdi. Mevduat faizin bu hafta düşer, kredi farkı bankada kalır, TL baskı altına girer — mekanizmayı kısa anlattık.",
+  "tags": [
+    "TCMB",
+    "faiz kararı",
+    "PPK",
+    "mevduat faizi",
+    "merkez bankası",
+    "faiz indirimi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "TCMB faiz indirdi — mevduatın bu hafta değişir.",
+      "visual": {
+        "type": "place",
+        "query": "Türkiye Cumhuriyet Merkez Bankası binası Ankara"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "PPK indirdi mi, bankalar mevduat faizini aynı hafta günceller — kayıp anında başlar.",
+      "visual": {
+        "type": "concept",
+        "query": "bank savings account interest rate falling screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kredi faizleri aynı hızda düşmez. Banka ucuza mevduat alır, eskiyle kredi verir — fark bankanın.",
+      "visual": {
+        "type": "concept",
+        "query": "bank profit margin loan interest rate spread"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Faiz düşünce TL baskı altına girer, gram altın yükselir — mevduat reel olarak arkada kalır.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bars price rising chart"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bir sonraki PPK kararından önce ne yapmalısın, onu anlatacağız. Her gün 60 saniyede cebini etkileyen analizler için abone ol.",
+      "visual": {
+        "type": "place",
+        "query": "Türkiye Cumhuriyet Merkez Bankası binası Ankara"
+      }
+    }
+  ]
+}
