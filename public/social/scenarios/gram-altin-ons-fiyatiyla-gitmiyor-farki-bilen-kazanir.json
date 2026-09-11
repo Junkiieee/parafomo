@@ -1,0 +1,58 @@
+{
+  "slug": "gram-altin-ons-fiyatiyla-gitmiyor-farki-bilen-kazanir",
+  "title": "Gram Altın Ons Fiyatıyla Gitmiyor — Farkı Bilen Kazanır",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Gram altın TL fiyatını ons değil, dolar kuru belirler. 2023'te ons %13 artarken gram TL'de %78 kazandırdı.",
+  "tags": [
+    "altın",
+    "gram altın",
+    "ons altın",
+    "dolar kuru",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Ons fiyatına bakman seni yanıltıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "gold price chart screen rising monitor"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gram altın TL fiyatı ons değil, dolar kuru çarpımı belirler; ikisi bağımsız gidebilir.",
+      "visual": {
+        "type": "concept",
+        "query": "currency exchange rate dollar turkish lira screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2023'te ons yüzde 13 arttı, kur yüzde 58 atladı, gram TL'de yüzde 78 bitti.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation currency depreciation chart comparison"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gram altın ons düşse de kur artarsa TL'de yükselir; bu Türk yatırımcısına çift kalkan.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins stack protection investment"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki gram altın hangi kur seviyesinde gerçekten düşer? Günde 60 saniyede tek net analiz için abone ol.",
+      "visual": {
+        "type": "concept",
+        "query": "gold price chart screen rising monitor"
+      }
+    }
+  ]
+}
