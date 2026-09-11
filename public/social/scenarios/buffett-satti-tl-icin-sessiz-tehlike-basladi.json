@@ -1,0 +1,59 @@
+{
+  "slug": "buffett-satti-tl-icin-sessiz-tehlike-basladi",
+  "title": "Buffett Sattı — TL İçin Sessiz Tehlike Başladı",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Warren Buffett tarihin en büyük nakit rezervini biriktiriyor. Bu hareket küresel sermayeyi gelişen piyasalardan nasıl çekiyor ve TL tasarrufunu nasıl etkiliyor?",
+  "tags": [
+    "warren buffett",
+    "berkshire hathaway",
+    "TL tasarruf",
+    "dolar",
+    "altın",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Buffett borsayı satıyor, kasası patlıyor.",
+      "visual": {
+        "type": "person",
+        "query": "Warren Buffett"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Berkshire'ın kasası yaklaşık 270 milyar dolar — bir şirketin tuttuğu tarihin en büyük nakiti.",
+      "visual": {
+        "type": "logo",
+        "query": "Berkshire Hathaway logo"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Buffett sattıkça küresel fonlar güvenli limana kaçar; Türkiye gibi gelişen piyasalar ilk satılır.",
+      "visual": {
+        "type": "scene",
+        "query": "stock market red charts capital outflow emerging markets sell off"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu sinyali okuyanlar altın ve dolar ağırlığını artırdı — nakit TL bu ortamda en çok kaybettiren.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins dollar bills savings"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Buffett tekrar alıma geçtiğinde TL varlıkları ilk mi yükselir? Kaçırmamak için abone ol — her gün kısa ve sade piyasa analizi burada.",
+      "visual": {
+        "type": "person",
+        "query": "Warren Buffett"
+      }
+    }
+  ]
+}
