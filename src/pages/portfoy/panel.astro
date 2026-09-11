@@ -120,6 +120,10 @@ const breadcrumbs = [
             <span class="sum-k">Getiri</span>
             <span class="sum-v" id="sum-plpct">%0</span>
           </div>
+          <div class="sum-item" id="sum-day-item" hidden>
+            <span class="sum-k">Bugün</span>
+            <span class="sum-v" id="sum-day">₺0</span>
+          </div>
         </div>
         <p class="sum-note" id="sum-note">Fiyatlar canlı; birkaç dakika gecikmeli olabilir.</p>
       </div>
@@ -188,6 +192,7 @@ const breadcrumbs = [
                 <th class="num">Adet/Gram</th>
                 <th class="num">Maliyet</th>
                 <th class="num">Güncel</th>
+                <th class="num">Bugün</th>
                 <th class="num">K/Z</th>
                 <th aria-label="İşlem"></th>
               </tr>
@@ -410,6 +415,19 @@ const breadcrumbs = [
         var pctEl = $('sum-plpct');
         pctEl.textContent = (pct >= 0 ? '+' : '−') + nf2.format(Math.abs(pct)) + '%';
         pctEl.className = 'sum-v ' + (pct >= 0 ? 'up' : 'down');
+        // Gün içi K/Z (yalnız canlı gün-içi veri varsa göster)
+        var dayItem = $('sum-day-item');
+        if (s.total_day_change != null) {
+          var d = s.total_day_change;
+          var dp = s.total_day_change_pct;
+          var dEl = $('sum-day');
+          dEl.textContent = (d >= 0 ? '+' : '−') + tl(Math.abs(d)).slice(1)
+            + (dp != null ? ' (' + (dp >= 0 ? '+' : '−') + nf2.format(Math.abs(dp)) + '%)' : '');
+          dEl.className = 'sum-v ' + (d >= 0 ? 'up' : 'down');
+          dayItem.hidden = false;
+        } else {
+          dayItem.hidden = true;
+        }
       }
 
       function assetLabel(h) {
@@ -490,12 +508,23 @@ const breadcrumbs = [
               + ' <small>(' + (h.profit_loss_pct >= 0 ? '+' : '−') + nf2.format(Math.abs(h.profit_loss_pct)) + '%)</small>'
             : '—';
           var plCls = pl == null ? '' : (pl >= 0 ? 'up' : 'down');
+          // Gün içi değişim
+          var dc = h.change_pct;
+          var dayStr = '—', dayCls = '';
+          if (dc != null) {
+            dayCls = dc >= 0 ? 'up' : 'down';
+            dayStr = (dc >= 0 ? '+' : '−') + nf2.format(Math.abs(dc)) + '%';
+            if (h.day_change != null) {
+              dayStr += ' <small>(' + (h.day_change >= 0 ? '+' : '−') + tl(Math.abs(h.day_change)).slice(1) + ')</small>';
+            }
+          }
           tr.innerHTML =
             '<td class="asset"><strong>' + assetLabel(h) + '</strong>'
               + '<small>' + tl(h.cost_price) + ' birim</small></td>'
             + '<td class="num">' + qty + '</td>'
             + '<td class="num">' + tl(h.cost_value) + '</td>'
             + '<td class="num">' + cur + '</td>'
+            + '<td class="num ' + dayCls + '">' + dayStr + '</td>'
             + '<td class="num ' + plCls + '">' + plStr + '</td>'
             + '<td class="num actions">'
               + '<button type="button" class="edit" data-id="' + h.id + '" aria-label="Düzenle" title="Düzenle">✎</button>'
@@ -541,7 +570,7 @@ const breadcrumbs = [
             + '<input type="number" class="e-cost" min="0" step="any" value="' + h.cost_price + '" inputmode="decimal"></label></td>'
           + '<td class="num"><label class="edit-f"><span>Alış tarihi</span>'
             + '<input type="date" class="e-date" value="' + (h.purchase_date || '') + '"></label></td>'
-          + '<td class="num" colspan="2">'
+          + '<td class="num" colspan="3">'
             + '<div class="edit-actions">'
               + '<button type="button" class="btn-save" data-id="' + id + '">Kaydet</button>'
               + '<button type="button" class="btn-cancel">Vazgeç</button>'

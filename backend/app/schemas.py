@@ -91,6 +91,8 @@ class HoldingValued(HoldingOut):
     current_value: float | None
     profit_loss: float | None
     profit_loss_pct: float | None
+    change_pct: float | None = None      # gün içi değişim %
+    day_change: float | None = None      # gün içi K/Z (TL)
 
 
 class PortfolioSummary(BaseModel):
@@ -98,5 +100,7 @@ class PortfolioSummary(BaseModel):
     total_value: float
     total_profit_loss: float
     total_profit_loss_pct: float
+    total_day_change: float | None = None
+    total_day_change_pct: float | None = None
     holdings: list[HoldingValued]
     priced_at: datetime

@@ -19,8 +19,8 @@ _TRUNCGIL_URL = "https://finans.truncgil.com/v3/today.json"
 _YAHOO_URL = "https://query1.finance.yahoo.com/v8/finance/chart/{symbol}.IS"
 _UA = "Mozilla/5.0 (ParaFOMO Portfolio)"
 
-# Basit TTL cache: {cache_key: (timestamp, price)}
-_CACHE: dict[str, tuple[float, float]] = {}
+# Basit TTL cache: {cache_key: (timestamp, (price, change_pct))}
+_CACHE: dict[str, tuple[float, tuple[float, float | None]]] = {}
 _TTL_SECONDS = 120
 
 
@@ -36,15 +36,26 @@ def _num(value) -> float | None:
         return None
 
 
-def _cache_get(key: str) -> float | None:
+def _pct(value) -> float | None:
+    """Truncgil 'Change' alanı ('%0,43' / '%-1,2') → float yüzde."""
+    if value is None:
+        return None
+    s = str(value).strip().replace("%", "").replace(".", "").replace(",", ".")
+    try:
+        return float(s)
+    except ValueError:
+        return None
+
+
+def _cache_get(key: str) -> tuple[float, float | None] | None:
     hit = _CACHE.get(key)
     if hit and (time.time() - hit[0]) < _TTL_SECONDS:
         return hit[1]
     return None
 
 
-def _cache_set(key: str, price: float) -> None:
-    _CACHE[key] = (time.time(), price)
+def _cache_set(key: str, quote: tuple[float, float | None]) -> None:
+    _CACHE[key] = (time.time(), quote)
 
 
 def _fetch_truncgil() -> dict:
@@ -54,7 +65,7 @@ def _fetch_truncgil() -> dict:
         return r.json()
 
 
-def _gold_silver_price(asset_type: AssetType) -> float | None:
+def _gold_silver_quote(asset_type: AssetType) -> tuple[float, float | None] | None:
     key = "gram-altin" if asset_type is AssetType.GOLD else "gumus"
     cached = _cache_get(key)
     if cached is not None:
@@ -63,13 +74,16 @@ def _gold_silver_price(asset_type: AssetType) -> float | None:
         data = _fetch_truncgil()
     except (httpx.HTTPError, ValueError):
         return None
-    price = _num((data.get(key) or {}).get("Selling"))
-    if price is not None:
-        _cache_set(key, price)
-    return price
+    entry = data.get(key) or {}
+    price = _num(entry.get("Selling"))
+    if price is None:
+        return None
+    quote = (price, _pct(entry.get("Change")))
+    _cache_set(key, quote)
+    return quote
 
 
-def _bist_price(ticker: str) -> float | None:
+def _bist_quote(ticker: str) -> tuple[float, float | None] | None:
     ticker = ticker.strip().upper()
     cache_key = f"bist:{ticker}"
     cached = _cache_get(cache_key)
@@ -85,13 +99,23 @@ def _bist_price(ticker: str) -> float | None:
         price = _num(meta.get("regularMarketPrice")) if meta else None
     except (httpx.HTTPError, ValueError, KeyError, IndexError, AttributeError):
         return None
-    if price is not None:
-        _cache_set(cache_key, price)
-    return price
+    if price is None:
+        return None
+    prev = _num(meta.get("previousClose")) or _num(meta.get("chartPreviousClose"))
+    change_pct = ((price - prev) / prev * 100) if prev else None
+    quote = (price, change_pct)
+    _cache_set(cache_key, quote)
+    return quote
+
+
+def get_quote(asset_type: AssetType, symbol: str) -> tuple[float, float | None] | None:
+    """Güncel (birim fiyat TL, gün içi değişim %) döndürür; alınamazsa None."""
+    if asset_type is AssetType.BIST:
+        return _bist_quote(symbol)
+    return _gold_silver_quote(asset_type)
 
 
 def get_price(asset_type: AssetType, symbol: str) -> float | None:
     """Bir varlığın güncel birim fiyatını (TL) döndürür; alınamazsa None."""
-    if asset_type is AssetType.BIST:
-        return _bist_price(symbol)
-    return _gold_silver_price(asset_type)
+    quote = get_quote(asset_type, symbol)
+    return quote[0] if quote else None

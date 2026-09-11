@@ -10,7 +10,7 @@ from sqlalchemy.orm import Session
 from ..db import get_db
 from ..deps import get_current_user
 from ..models import AssetType, Holding, User
-from ..prices import get_price
+from ..prices import get_price, get_quote
 from ..schemas import (
     HoldingCreate,
     HoldingOut,
@@ -146,25 +146,37 @@ def portfolio_summary(
     )
 
     # Tekil fiyat çağrısı: aynı sembolü tekrar sorgulama
-    price_cache: dict[tuple[AssetType, str], float | None] = {}
+    quote_cache: dict[tuple[AssetType, str], tuple[float, float | None] | None] = {}
     valued: list[HoldingValued] = []
     total_cost = 0.0
     total_value = 0.0
+    total_day_change = 0.0
+    total_prev_value = 0.0  # gün içi % için önceki-kapanış değeri toplamı
 
     for h in holdings:
         key = (h.asset_type, h.symbol)
-        if key not in price_cache:
-            price_cache[key] = get_price(h.asset_type, h.symbol)
-        current_price = price_cache[key]
+        if key not in quote_cache:
+            quote_cache[key] = get_quote(h.asset_type, h.symbol)
+        quote = quote_cache[key]
+        current_price = quote[0] if quote else None
+        change_pct = quote[1] if quote else None
 
         cost_value = h.quantity * h.cost_price
         total_cost += cost_value
 
+        day_change = None
         if current_price is not None:
             current_value = h.quantity * current_price
             profit_loss = current_value - cost_value
             profit_loss_pct = (profit_loss / cost_value * 100) if cost_value else None
             total_value += current_value
+            if change_pct is not None:
+                # önceki kapanış = fiyat / (1 + %/100); gün içi K/Z = güncel - önceki
+                prev_price = current_price / (1 + change_pct / 100) if change_pct != -100 else 0.0
+                prev_value = h.quantity * prev_price
+                day_change = current_value - prev_value
+                total_day_change += day_change
+                total_prev_value += prev_value
         else:
             current_value = profit_loss = profit_loss_pct = None
 
@@ -183,17 +195,24 @@ def portfolio_summary(
                 current_value=round(current_value, 2) if current_value is not None else None,
                 profit_loss=round(profit_loss, 2) if profit_loss is not None else None,
                 profit_loss_pct=round(profit_loss_pct, 2) if profit_loss_pct is not None else None,
+                change_pct=round(change_pct, 2) if change_pct is not None else None,
+                day_change=round(day_change, 2) if day_change is not None else None,
             )
         )
 
     total_pl = total_value - total_cost
     total_pl_pct = (total_pl / total_cost * 100) if total_cost else 0.0
+    total_day_pct = (
+        total_day_change / total_prev_value * 100 if total_prev_value else None
+    )
 
     return PortfolioSummary(
         total_cost=round(total_cost, 2),
         total_value=round(total_value, 2),
         total_profit_loss=round(total_pl, 2),
         total_profit_loss_pct=round(total_pl_pct, 2),
+        total_day_change=round(total_day_change, 2) if total_prev_value else None,
+        total_day_change_pct=round(total_day_pct, 2) if total_day_pct is not None else None,
         holdings=valued,
         priced_at=datetime.now(timezone.utc),
     )
