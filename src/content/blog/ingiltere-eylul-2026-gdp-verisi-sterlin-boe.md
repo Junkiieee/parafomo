@@ -17,6 +17,23 @@ faq:
     a: "Bank of England, faiz kararlarında büyümeyi, enflasyonu ve işgücü verilerini birlikte değerlendirir. Zayıf GDP serisi BOE'nin faiz indirim hızını artırma baskısını yükseltir; güçlü büyüme ise temkinli tutumu destekler."
   - q: "Bugün hem İngiltere GDP hem ABD CPI açıklanıyor. Hangi veri daha önemli?"
     a: "ABD CPI piyasaların birincil odağıdır; Fed yön sinyali doğrudan dolardan tüm varlık sınıflarına yayılır. İngiltere GDP ise sterlin ve Avrupa risk iştahı için belirleyici olup piyasada ikincil veri konumundadır."
+shorts:
+  - "İngiltere büyüme verisi TL'yi neden etkiler ki?"
+  - "İngiltere dünyada aylık büyüme hesaplayan ender ülkelerden biri, veri çok erken sinyal verir."
+  - "Zayıf veri gelirse gelişen piyasalar çöker; Türkiye de bu kümede, TL etkilenir."
+  - "Güçlü veri sterlini yükseltir, BOE faiz indirimi ötelenir, risk iştahı yüksek kalır."
+  - "Bu veri sonrası piyasalar nereye gider? Detay parafomo.com'da; abone ol, finans haberlerini kaçırma."
+shorts_broll:
+  - "Bank of England exterior London"
+  - "British pound sterling currency exchange"
+  - "emerging markets stock market decline"
+  - "GDP economic data analysis screen"
+shorts_visuals:
+  - "concept|UK GDP economic growth data chart screen"
+  - "concept|economic statistics data release report"
+  - "concept|emerging markets currency risk selloff"
+  - "building|Bank of England"
+  - "concept|financial news website mobile screen"
 ---
 
 Bugün, 11 Eylül 2026, küresel piyasalar için çifte veri günü: Sabahın erken saatinde **İngiltere'nin aylık büyüme verisi (GDP m/m)** açıklandı; öğleden sonra ise tüm gözler ABD CPI'ya çevrili. İki veri de 🔴 High etki taşıyor — ancak Türk yatırımcısı için bunların ne anlama geldiğini, hangisinin daha baskın olduğunu ve portföyünüze nasıl yansıyabileceğini adım adım anlatalım.
