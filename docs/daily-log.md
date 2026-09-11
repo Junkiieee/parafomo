@@ -4,6 +4,59 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-09-11 — İngiltere Eylül 2026 GDP Verisi: Büyüme Yavaşlar mı? Sterlin, BOE ve TL'ye Etkisi
+
+**Yayınlanan yazı:** [İngiltere Eylül 2026 GDP Verisi: Büyüme Yavaşlar mı? Sterlin, BOE ve TL'ye Etkisi](https://parafomo.com/blog/ingiltere-eylul-2026-gdp-verisi-sterlin-boe/)
+**Hedef sorgu:** `ingiltere büyüme verisi` / `ingiltere gdp eylül 2026` · Kategori: Ekonomi
+**Konu seçim gerekçesi:** Takvim: 11 Eylül 2026 🔴 İngiltere GDP m/m açıklaması; ABD CPI (abd-eylul-2026-cpi-verisi) zaten yayında; aynı gün "çifte veri" açısı; Eylül'e özel, mevcut Ağustos GDP evergreen'inden farklı; 3 senaryo tablosu + BOE faiz yolu + TL dolaylı etki.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+📊 Bugün çifte büyük veri günü: İngiltere GDP (sabah) + ABD CPI (öğleden sonra).
+
+UK büyüme verisi az önce açıklandı. İşte 3 senaryo ve sterlinden TL'ye uzanan etki zinciri:
+
+2/ İngiltere aylık GDP m/m, ONS tarafından her ay yayımlanıyor. Piyasa konsensüsü +%0,1 idi. Gelen rakam beklentinin üzerinde mi, altında mı? Yanıt BOE'nin faiz rotasını değiştirir.
+
+3/ Senaryo A — Güçlü (+%0,2 üzeri): Sterlin değer kazanır, BOE faiz indirimini öteleyebilir. Küresel risk iştahı artar.
+
+4/ Senaryo B — Beklenti paraleli (%0,1): Piyasada büyük hareket yok. Asıl odak öğleden sonra ABD CPI'ya kayar.
+
+5/ Senaryo C — Zayıf/negatif: Sterlin baskı altına girer, BOE daha hızlı indirim yapacağı beklentisi artar. Küresel risk iştahı gerilir → gelişmekte olan piyasalar (TL dahil) etkilenebilir.
+
+6/ Türk yatırımcısı için not: UK verisi doğrudan değil ama küresel risk kanalıyla TL ve BIST'i etkiler. Öğleden sonra ABD CPI daha baskın olacak — hızlı pozisyon almayın.
+
+7/ Detaylı senaryo tablosu + pratik rehber: https://parafomo.com/blog/ingiltere-eylul-2026-gdp-verisi-sterlin-boe/
+
+---
+
+### Instagram Post / Carousel Metni
+
+📊 Bugün 2 Büyük Veri Var — Her İkisi de Piyasaları Etkiliyor
+
+🇬🇧 Sabah: İngiltere Büyüme Verisi (GDP)
+🇺🇸 Öğleden Sonra: ABD Enflasyon Verisi (CPI)
+
+İngiltere'den 3 senaryo:
+✅ Güçlü büyüme → Sterlin yukarda, risk iştahı artar
+🟡 Beklenti paraleli → Gözler ABD CPI'ya dönüyor
+🔴 Zayıf büyüme → Sterlin baskıda, TL dolaylı etkilenebilir
+
+Tam analiz + BOE faiz yolu rehberi linkde 👇
+
+#ingiltere #gdp #sterlin #boe #abdcpi #dolar #tl #yatirim #parafomo #ekonomi
+
+---
+
+### Bugün Senin Yapman Gerekenler
+
+1. **Thread'i X'te paylaş** — sabah 09:00-10:00 arasında (veri yeni açıklandı, tartışma trafiği yüksek).
+2. **Instagram carousel'ini yayınla** — 5-6 slayt: giriş (çifte veri günü) + 3 senaryo + Türk yatırımcısı pratik notu + CTA. Öğleden sonra ABD CPI öncesi reminder story at.
+
+---
+
 ## 2026-09-10 — ABD Eylül 2026 CPI Verisi: Fed Faizini Dondurur mu? Dolar ve Altın Etkisi
 
 **Yayınlanan yazı:** [ABD Eylül 2026 CPI Verisi: Fed Faizini Dondurur mu? Dolar ve Altın Etkisi](https://parafomo.com/blog/abd-eylul-2026-cpi-verisi-fed-dolar-altin/)
