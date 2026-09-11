@@ -81,6 +81,7 @@ ENGAGEMENT_QUESTIONS = [
     "Portföyünüzü nasıl takip ediyorsunuz — defter, Excel, uygulama? 👇",
     "Aynı üründen iki farklı fiyattan aldıysanız ortalama maliyetinizi biliyor musunuz? 💬",
     "Portföyünüzün yüzde kaçı altında? Dağılımınızı biliyor musunuz? 👇",
+    "Portföyünüz bugün kaç TL değişti — bugünkü kâr/zararınızı biliyor musunuz? 💬",
 ]
 
 
