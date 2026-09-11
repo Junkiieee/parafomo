@@ -1,0 +1,75 @@
+{
+  "slug": "altin-hesabinda-altin-yok-banka-bunu-soylemez-m",
+  "title": "Altın Hesabında Altın Yok — Banka Bunu Söylemez",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Bankadaki altın hesabı fiziksel altın değil, bankanın sana olan borcudur. Gerçek altın sahipliği ile hesap arasındaki kritik fark.",
+  "tags": [
+    "altın hesabı",
+    "gram altın",
+    "banka riski",
+    "altın yatırımı",
+    "finansal okuryazarlık",
+    "fiziksel altın",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Altın hesabında altın yok.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bankadaki altın hesabı sana fiziksel altın değil, alacak hakkı veriyor. Banka borçlun.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Hesabındaki altın kâğıt üstünde. Banka zorlanırsa bunu TL olarak ödeyebilir, seçenek senin değil.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fiziksel gram altın veya borsa altın fonu gerçek sahiplik sağlar. Hesap değil, metal.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki hangi platform gram altını en az götürüyor? Kıyasladık. Abone ol — her gün 60 saniyede net analiz.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
