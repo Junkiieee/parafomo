@@ -1,0 +1,59 @@
+{
+  "slug": "cumhuriyet-altini-gram-degerinden-pahali-neden",
+  "title": "Cumhuriyet Altını Gram Değerinden Pahalı — Neden",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Cumhuriyet ve ata altınları koleksiyonerlik primiyle gram altından yüzde beş ile yirmi arasında pahalı işlem görüyor. Sattığında bu primi geri alamıyorsun.",
+  "tags": [
+    "cumhuriyet altını",
+    "ata altını",
+    "gram altın",
+    "altın yatırım",
+    "kuyumcu",
+    "altın fiyatı",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Cumhuriyet altınında gizli bir prim var.",
+      "visual": {
+        "type": "gold",
+        "query": "Turkish gold coins shiny collection stacked"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gram altınla aynı saflıkta — ama koleksiyonerlik değeri ve darphane markası fiyata yüzde beşten yirmiye kadar ekleniyor.",
+      "visual": {
+        "type": "concept",
+        "query": "price label premium collector item value tag"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Sorun şu: sattığında kuyumcu yalnızca gram altın fiyatını öder, ödediğin koleksiyoner primini iade etmez.",
+      "visual": {
+        "type": "concept",
+        "query": "jeweler counter gold coins selling transaction cash"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yatırım amaçlıysa gram külçe altın daha hesaplı: saf altın değerine yakın ödüyorsun, gizli prim yok.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bar ingot investment stack"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Hangi altın türü satın alırken ne kadar fazla ödetir — bunu hesapladık. Abone ol, her gün tek net analiz.",
+      "visual": {
+        "type": "gold",
+        "query": "Turkish gold coins shiny collection stacked"
+      }
+    }
+  ]
+}
