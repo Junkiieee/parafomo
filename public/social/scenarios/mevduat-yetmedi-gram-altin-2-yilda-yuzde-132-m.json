@@ -1,0 +1,122 @@
+{
+  "slug": "mevduat-yetmedi-gram-altin-2-yilda-yuzde-132-m",
+  "title": "Mevduat Yetmedi — Gram Altın 2 Yılda Yüzde 132",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "Kasım 2024'te faiz yüzde 50'deydi ama 5 bin TL'yi gram altına yatırsaydın bugün yaklaşık 11 bin 617 TL olurdu; mevduat yaklaşık 9 bin TL'de kalırdı.",
+  "tags": [
+    "gram altın",
+    "altın yatırım",
+    "mevduat vs altın",
+    "faiz vs altın",
+    "getiri karşılaştırma",
+    "türk yatırımcı",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "Faiz değil, gram altın seni korudu.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kasım 2024'te faiz yüzde elliydi — mevduata koyan 5 bin TL bugün yaklaşık 9 bin TL.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Faiz",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gram altına koysaydın aynı para yaklaşık 11 bin 617 TL — yüzde 132 getiri.",
+      "visual": {
+        "type": "manim",
+        "scene": "backtest",
+        "theme": "slate",
+        "title": "",
+        "chart": {
+          "kind": "line",
+          "label": "Gram Altın",
+          "unit": "TL",
+          "points": [
+            2962.34,
+            3241.97,
+            3330.61,
+            3865.35,
+            4166.22,
+            4218.05,
+            4351.41,
+            4643.36,
+            5189.66,
+            5762.96,
+            5973.38,
+            6585.85,
+            6802.65,
+            6838.62,
+            6143.79,
+            6280.85,
+            6922.58,
+            6882.58
+          ],
+          "x": [
+            "11/24",
+            "01/25",
+            "02/25",
+            "03/25",
+            "04/25",
+            "05/25",
+            "07/25",
+            "08/25",
+            "09/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26",
+            "09/26"
+          ],
+          "amount": 5000,
+          "end_value": 11617,
+          "pct": 132
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yüzde 80'e karşı yüzde 132 — en yüksek faiz döneminde bile altın öndeydi.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Faiz inmeye devam ederse bu denge nasıl değişir — yakında hesaplayacağız. Her gün 60 saniyede piyasanın nabzını almak için abone ol.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
