@@ -1,10 +1,10 @@
 {
-  "updated": "2026-09-11T18:15+00:00",
+  "updated": "2026-09-12T00:15+00:00",
   "source": "Halka arz fiyatı: halkarz.com · Güncel fiyat: Yahoo Finance (BIST)",
-  "count": 12,
-  "avg_return_pct": 55.2,
-  "positive_count": 6,
-  "positive_pct": 50,
+  "count": 11,
+  "avg_return_pct": 59.0,
+  "positive_count": 5,
+  "positive_pct": 45,
   "best": {
     "code": "KARCL",
     "return_pct": 497.1
@@ -53,16 +53,6 @@
       "ipo_price": 53.6,
       "current_price": 63.9,
       "return_pct": 19.2
-    },
-    {
-      "code": "SARAE",
-      "company": "Şa-Ra Enerji İnşaat Tic. ve San. A.Ş.",
-      "link": "https://halkarz.com/sa-ra-enerji-insaat-tic-ve-san-a-s/",
-      "start": "2026-07-08",
-      "date_text": "8-9-10 Temmuz 2026",
-      "ipo_price": 70.0,
-      "current_price": 79.3,
-      "return_pct": 13.3
     },
     {
       "code": "KPEKS",
