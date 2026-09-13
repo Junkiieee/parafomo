@@ -1,12 +1,12 @@
 # ParaFOMO — Dürüst Ölçüm Panosu
 
-> Üretim: 2026-09-11 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
+> Üretim: 2026-09-12 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
 
 ## 1) Organik trafik trendi (GA4 — son 8 hafta)
 
 | Hafta | Gerçek erişim (Direct hariç) | Direct (≈sen/bot) | Toplam |
 |---|---|---|---|
-| 202629 | 2 | 3 | 5 |
+| 202629 | 1 | 2 | 3 |
 | 202630 | 1 | 18 | 19 |
 | 202631 | 2 | 20 | 22 |
 | 202632 | 9 | 15 | 24 |
@@ -14,18 +14,18 @@
 | 202634 | 32 | 27 | 59 |
 | 202635 | 37 | 24 | 61 |
 | 202636 | 35 | 23 | 58 |
-| 202637 | 30 | 10 | 40 |
+| 202637 | 36 | 11 | 47 |
 
-**Gerçek erişim trendi:** `▁▁▁▂▅▇█▇▆`  📉 düşüyor
-**Son hafta Direct payı:** %25 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
+**Gerçek erişim trendi:** `▁▁▁▂▅▇█▇▇`  📉 düşüyor
+**Son hafta Direct payı:** %23 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
 
 **Gerçek erişim kaynağı (son 4 hafta toplamı):**
-- Organic Search: 46 kullanıcı
-- Organic Video: 45 kullanıcı
-- Organic Social: 25 kullanıcı
-- Cross-network: 7 kullanıcı
+- Organic Search: 51 kullanıcı
+- Organic Video: 48 kullanıcı
+- Organic Social: 28 kullanıcı
 - AI Assistant: 5 kullanıcı
-- Unassigned: 4 kullanıcı
+- Unassigned: 3 kullanıcı
+- Cross-network: 3 kullanıcı
 - Referral: 2 kullanıcı
 
 ## 2) Google arama trendi (GSC — son 8 hafta)
@@ -65,13 +65,13 @@
 
 ## 3) YouTube motoru
 
-- **Abone:** 43  ·  **Toplam izlenme:** 49,070  ·  **Video:** 243
+- **Abone:** 45  ·  **Toplam izlenme:** 49,873  ·  **Video:** 246
 - İzlenme/abone dönüşümü: **0.09%** (izleyen kaç kişi abone/huniye giriyor)
 
 ## 4) 🎯 DÜRÜST HÜKÜM
 
 **Hedef:** 1000 ziyaretçi/gün = 7,000/hafta gerçek erişim.
-**Gerçek durum:** son hafta **30** gerçek ziyaretçi = hedefin **%0.43**'si. Kalan: **6,970** kişi/hafta.
+**Gerçek durum:** son hafta **36** gerçek ziyaretçi = hedefin **%0.51**'si. Kalan: **6,964** kişi/hafta.
 
 - Belirgin kırmızı bayrak yok; trend ve hedef mesafesine bak.
 

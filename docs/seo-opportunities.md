@@ -1,6 +1,6 @@
 # ParaFOMO — GSC Fırsat Sorguları (içerik motoru için)
 
-> Üretim: 2026-09-12 · Dönem: son 28 gün · Kaynak: `scripts/seo-opportunities.py`
+> Üretim: 2026-09-13 · Dönem: son 28 gün · Kaynak: `scripts/seo-opportunities.py`
 > Kullanım: günlük içerik motoru, takvimde acil olay yoksa buradaki **en üstteki** fırsatı
 > konu seçer (Yayınlananlar'da zaten varsa atla). Liste boşsa keywords.md backlog'una düşer.
 
@@ -13,8 +13,8 @@
 - [ ] `boj nedir` — gösterim 19, sıra 7.6, tıklama 0
 - [ ] `abd faiz yükseltirse dolar ne olur` — gösterim 19, sıra 27.1, tıklama 0
 - [ ] `abd faiz artırımı doları nasıl etkiler` — gösterim 15, sıra 24.1, tıklama 0
+- [ ] `abd işsizlik verisi altını nasıl etkiler` — gösterim 13, sıra 7.7, tıklama 0
 - [ ] `abd dolar endeksi` — gösterim 13, sıra 28.0, tıklama 0
 - [ ] `amerika faiz artırırsa dolar ne olur` — gösterim 13, sıra 30.7, tıklama 0
 - [ ] `amerika faiz artırımı yaparsa ne olur` — gösterim 13, sıra 37.1, tıklama 0
 - [ ] `abd faiz arttırırsa ne olur` — gösterim 12, sıra 15.3, tıklama 0
-- [ ] `amerika da faiz artarsa dolar ne olur` — gösterim 12, sıra 29.6, tıklama 0
