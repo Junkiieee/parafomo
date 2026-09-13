@@ -1,0 +1,75 @@
+{
+  "slug": "borsa-altindan-13-daha-fazla-kazandirdi-m",
+  "title": "Borsa Altından %13 Daha Fazla Kazandırdı",
+  "category": "KARŞILAŞTIRMA",
+  "format": "comparison",
+  "description": "Son 1 yılda BIST 100 yüzde 32, gram altın yüzde 19, dolar yüzde 16 kazandırdı. Üç araç aynı yılda, üç farklı sonuç.",
+  "tags": [
+    "borsa",
+    "altın",
+    "dolar",
+    "BIST100",
+    "yatırım",
+    "getiri",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KARŞILAŞTIRMA",
+      "spoken": "Çoğu Türk altın tuttu, borsa kazandı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Son bir yılda dolar yüzde on altı, gram altın yüzde on dokuz getirdi.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama BIST yüzde otuz iki yaptı: hem doları hem altını geride bıraktı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Borsadan kaçan her yüz lira on dokuz kazandı — borsada kalsaydı otuz iki olurdu.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Borsa",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bu sıralama önümüzdeki yıl değişir mi? Her gün tek grafikte net analiz için abone ol.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
