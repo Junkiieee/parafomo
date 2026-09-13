@@ -1,0 +1,59 @@
+{
+  "slug": "devlet-tahvili-guvenli-degil-100-tl-74-e-dustu",
+  "title": "Devlet Tahvili Güvenli Değil — 100 TL 74'e Düştü",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "2022'de devlet tahvili tutanlar yaklaşık yüzde 26 reel kayıp yaşadı. Güvenli sanılan araç enflasyonu geçemeyince birikimin sessizce erir.",
+  "tags": [
+    "devlet tahvili",
+    "reel getiri",
+    "enflasyon",
+    "altın yatırım",
+    "türkiye ekonomi",
+    "finansal okuryazarlık",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Devlet tahvili 100 liranı 74'e indirdi.",
+      "visual": {
+        "type": "concept",
+        "query": "stacked cash money savings piggy bank secure"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2022'de devlet tahvili yüzde 22 faiz verdi — ama o yıl enflasyon yüzde 64'e çıktı.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation rate graph rising chart economy divergence"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Oysa aynı yılda altın, TL bazında yaklaşık yüzde 40 değer kazandı.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bars shining coins wealth return"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Enflasyonu geçemeyen her araç, ne kadar güvenli görünse de seni geriye götürür.",
+      "visual": {
+        "type": "concept",
+        "query": "investment comparison returns financial decision analysis"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki o dönemde hangi araç enflasyonu en çok geçti? Merak ediyorsan abone ol — her gün 60 saniyede net bir finansal gerçek.",
+      "visual": {
+        "type": "concept",
+        "query": "stacked cash money savings piggy bank secure"
+      }
+    }
+  ]
+}
