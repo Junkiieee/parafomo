@@ -1,62 +1,8 @@
 {
-  "updated": "2026-09-13",
+  "updated": "2026-09-14",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-09-10",
-      "region": "TR",
-      "impact": "High",
-      "title": "TCMB faiz kararı (PPK)",
-      "hook": "Faiz kararı explainer'ı.",
-      "time": "",
-      "source": "tcmb"
-    },
-    {
-      "date": "2026-09-10",
-      "time": "12:15pm",
-      "region": "EUR",
-      "impact": "High",
-      "title": "Main Refinancing Rate",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-09-10",
-      "time": "12:15pm",
-      "region": "EUR",
-      "impact": "High",
-      "title": "Monetary Policy Statement",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-09-10",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core PPI m/m",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-09-10",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "PPI m/m",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-09-10",
-      "time": "12:45pm",
-      "region": "EUR",
-      "impact": "High",
-      "title": "ECB Press Conference",
-      "source": "forexfactory",
-      "hook": "ECB — euro ve küresel faiz beklentisi."
-    },
     {
       "date": "2026-09-11",
       "time": "12:30pm",
@@ -103,6 +49,60 @@
       "hook": "Büyüme verisi — küresel görünüm."
     },
     {
+      "date": "2026-09-15",
+      "time": "6:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "Claimant Count Change",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-09-16",
+      "time": "6:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "CPI y/y",
+      "source": "forexfactory",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-09-16",
+      "time": "6:00pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Federal Funds Rate",
+      "source": "forexfactory",
+      "hook": "Fed faiz kararı — 'Fed faizi TL ve borsayı nasıl etkiler' explainer'ı."
+    },
+    {
+      "date": "2026-09-16",
+      "time": "6:00pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "FOMC Economic Projections",
+      "source": "forexfactory",
+      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
+    },
+    {
+      "date": "2026-09-16",
+      "time": "6:00pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "FOMC Statement",
+      "source": "forexfactory",
+      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
+    },
+    {
+      "date": "2026-09-16",
+      "time": "6:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "FOMC Press Conference",
+      "source": "forexfactory",
+      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
+    },
+    {
       "date": "2026-09-17",
       "region": "TR",
       "impact": "Medium",
@@ -110,6 +110,60 @@
       "hook": "Karar gerekçesi yorumu.",
       "time": "",
       "source": "tcmb"
+    },
+    {
+      "date": "2026-09-17",
+      "time": "11:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "Monetary Policy Summary",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-09-17",
+      "time": "11:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "MPC Official Bank Rate Votes",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-09-17",
+      "time": "11:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "Official Bank Rate",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-09-18",
+      "time": "2:30am",
+      "region": "JPY",
+      "impact": "High",
+      "title": "BOJ Policy Rate",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-09-18",
+      "time": "2:30am",
+      "region": "JPY",
+      "impact": "High",
+      "title": "Monetary Policy Statement",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-09-18",
+      "time": "5:30am",
+      "region": "JPY",
+      "impact": "High",
+      "title": "BOJ Press Conference",
+      "source": "forexfactory",
+      "hook": ""
     },
     {
       "date": "2026-10-05",
