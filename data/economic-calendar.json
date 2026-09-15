@@ -1,53 +1,8 @@
 {
-  "updated": "2026-09-14",
+  "updated": "2026-09-15",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-09-11",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core CPI m/m",
-      "source": "forexfactory",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-09-11",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core CPI y/y",
-      "source": "forexfactory",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-09-11",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "CPI m/m",
-      "source": "forexfactory",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-09-11",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "CPI y/y",
-      "source": "forexfactory",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-09-11",
-      "time": "6:00am",
-      "region": "GBP",
-      "impact": "High",
-      "title": "GDP m/m",
-      "source": "forexfactory",
-      "hook": "Büyüme verisi — küresel görünüm."
-    },
     {
       "date": "2026-09-15",
       "time": "6:00am",
