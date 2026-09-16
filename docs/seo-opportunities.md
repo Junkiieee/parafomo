@@ -1,6 +1,6 @@
 # ParaFOMO — GSC Fırsat Sorguları (içerik motoru için)
 
-> Üretim: 2026-09-15 · Dönem: son 28 gün · Kaynak: `scripts/seo-opportunities.py`
+> Üretim: 2026-09-16 · Dönem: son 28 gün · Kaynak: `scripts/seo-opportunities.py`
 > Kullanım: günlük içerik motoru, takvimde acil olay yoksa buradaki **en üstteki** fırsatı
 > konu seçer (Yayınlananlar'da zaten varsa atla). Liste boşsa keywords.md backlog'una düşer.
 
@@ -8,13 +8,13 @@
 
 - [ ] `jackson hole toplantısı nedir` — gösterim 77, sıra 9.1, tıklama 1
 - [ ] `jackson hole ne zaman` — gösterim 68, sıra 9.4, tıklama 1
-- [ ] `abd de faiz artarsa altın ne olur` — gösterim 42, sıra 7.6, tıklama 0
-- [ ] `"albayrak hazır beton"` — gösterim 31, sıra 6.3, tıklama 0
-- [ ] `boj nedir` — gösterim 19, sıra 7.6, tıklama 0
-- [ ] `abd faiz yükseltirse dolar ne olur` — gösterim 18, sıra 26.3, tıklama 0
-- [ ] `abd faiz artırımı doları nasıl etkiler` — gösterim 16, sıra 23.7, tıklama 0
+- [ ] `"albayrak hazır beton"` — gösterim 43, sıra 5.2, tıklama 0
+- [ ] `abd de faiz artarsa altın ne olur` — gösterim 43, sıra 7.6, tıklama 0
+- [ ] `albtn` — gösterim 19, sıra 19.9, tıklama 0
+- [ ] `boj nedir` — gösterim 18, sıra 7.8, tıklama 0
+- [ ] `abd faiz yükseltirse dolar ne olur` — gösterim 16, sıra 23.5, tıklama 0
 - [ ] `abd işsizlik verisi altını nasıl etkiler` — gösterim 15, sıra 7.3, tıklama 0
-- [ ] `amerika faiz artırırsa dolar ne olur` — gösterim 15, sıra 31.9, tıklama 0
 - [ ] `abd faiz arttırırsa ne olur` — gösterim 14, sıra 15.7, tıklama 0
-- [ ] `amerika faiz artırımı yaparsa ne olur` — gösterim 14, sıra 36.1, tıklama 0
-- [ ] `abd dolar endeksi` — gösterim 13, sıra 28.0, tıklama 0
+- [ ] `abd faiz artırımı doları nasıl etkiler` — gösterim 14, sıra 24.1, tıklama 0
+- [ ] `amerika faiz artırırsa dolar ne olur` — gösterim 14, sıra 31.4, tıklama 0
+- [ ] `abd de faiz artarsa ne olur` — gösterim 14, sıra 39.7, tıklama 0
