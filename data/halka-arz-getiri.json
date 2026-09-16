@@ -1,17 +1,17 @@
 {
-  "updated": "2026-09-16T12:15+00:00",
+  "updated": "2026-09-16T18:15+00:00",
   "source": "Halka arz fiyatı: halkarz.com · Güncel fiyat: Yahoo Finance (BIST)",
   "count": 11,
-  "avg_return_pct": 44.4,
-  "positive_count": 5,
-  "positive_pct": 45,
+  "avg_return_pct": 43.8,
+  "positive_count": 4,
+  "positive_pct": 36,
   "best": {
     "code": "KARCL",
     "return_pct": 499.1
   },
   "worst": {
     "code": "BKRGY",
-    "return_pct": -43.2
+    "return_pct": -44.5
   },
   "items": [
     {
@@ -51,8 +51,8 @@
       "start": "2026-08-12",
       "date_text": "12-13-14 Ağustos 2026",
       "ipo_price": 94.0,
-      "current_price": 95.3,
-      "return_pct": 1.4
+      "current_price": 94.5,
+      "return_pct": 0.5
     },
     {
       "code": "INTET",
@@ -61,8 +61,8 @@
       "start": "2026-08-26",
       "date_text": "26-27 Ağustos 2026",
       "ipo_price": 53.6,
-      "current_price": 53.7,
-      "return_pct": 0.2
+      "current_price": 51.3,
+      "return_pct": -4.3
     },
     {
       "code": "METEN",
@@ -71,8 +71,8 @@
       "start": "2026-07-20",
       "date_text": "20-21-22 Temmuz 2026",
       "ipo_price": 20.0,
-      "current_price": 16.87,
-      "return_pct": -15.6
+      "current_price": 17.0,
+      "return_pct": -15.0
     },
     {
       "code": "MASFN",
@@ -81,18 +81,8 @@
       "start": "2026-07-22",
       "date_text": "22-23-24 Temmuz 2026",
       "ipo_price": 45.68,
-      "current_price": 33.7,
-      "return_pct": -26.2
-    },
-    {
-      "code": "ALBTN",
-      "company": "Albayrak Hazır Beton San. ve Tic. A.Ş.",
-      "link": "https://halkarz.com/albayrak-hazir-beton-san-ve-tic-a-s/",
-      "start": "2026-07-22",
-      "date_text": "22-23 Temmuz 2026",
-      "ipo_price": 38.6,
-      "current_price": 27.76,
-      "return_pct": -28.1
+      "current_price": 34.02,
+      "return_pct": -25.5
     },
     {
       "code": "VEYAS",
@@ -105,14 +95,24 @@
       "return_pct": -28.6
     },
     {
+      "code": "ALBTN",
+      "company": "Albayrak Hazır Beton San. ve Tic. A.Ş.",
+      "link": "https://halkarz.com/albayrak-hazir-beton-san-ve-tic-a-s/",
+      "start": "2026-07-22",
+      "date_text": "22-23 Temmuz 2026",
+      "ipo_price": 38.6,
+      "current_price": 27.26,
+      "return_pct": -29.4
+    },
+    {
       "code": "QUICK",
       "company": "Quick Sigorta A.Ş.",
       "link": "https://halkarz.com/quick-sigorta-a-s/",
       "start": "2026-07-29",
       "date_text": "29-30-31 Temmuz 2026",
       "ipo_price": 76.6,
-      "current_price": 53.9,
-      "return_pct": -29.6
+      "current_price": 53.6,
+      "return_pct": -30.0
     },
     {
       "code": "BKRGY",
@@ -121,8 +121,8 @@
       "start": "2026-08-24",
       "date_text": "24-25-26 Ağustos 2026",
       "ipo_price": 12.93,
-      "current_price": 7.34,
-      "return_pct": -43.2
+      "current_price": 7.18,
+      "return_pct": -44.5
     }
   ]
 }
