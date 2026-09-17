@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-16",
+  "updated": "2026-09-17",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
@@ -128,6 +128,15 @@
       "title": "TÜİK enflasyon (TÜFE) verisi",
       "source": "tuik-rule",
       "hook": "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı."
+    },
+    {
+      "date": "2026-10-22",
+      "region": "TR",
+      "impact": "High",
+      "title": "TCMB faiz kararı (PPK)",
+      "hook": "Faiz kararı explainer'ı.",
+      "time": "",
+      "source": "tcmb"
     }
   ]
 }
