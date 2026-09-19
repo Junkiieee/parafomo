@@ -1,17 +1,8 @@
 {
-  "updated": "2026-09-18",
+  "updated": "2026-09-19",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-09-15",
-      "time": "6:00am",
-      "region": "GBP",
-      "impact": "High",
-      "title": "Claimant Count Change",
-      "source": "forexfactory",
-      "hook": ""
-    },
     {
       "date": "2026-09-16",
       "time": "6:00am",
@@ -95,7 +86,7 @@
     },
     {
       "date": "2026-09-18",
-      "time": "2:30am",
+      "time": "2:54am",
       "region": "JPY",
       "impact": "High",
       "title": "BOJ Policy Rate",
@@ -104,7 +95,7 @@
     },
     {
       "date": "2026-09-18",
-      "time": "2:30am",
+      "time": "2:54am",
       "region": "JPY",
       "impact": "High",
       "title": "Monetary Policy Statement",
@@ -113,7 +104,7 @@
     },
     {
       "date": "2026-09-18",
-      "time": "5:30am",
+      "time": "6:30am",
       "region": "JPY",
       "impact": "High",
       "title": "BOJ Press Conference",
