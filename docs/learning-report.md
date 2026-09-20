@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-09-19T08:46:16Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-09-20T08:46:08Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -26,7 +26,7 @@
 - `comparison` — skor 69.198, örnek 1
 - `backtest_return` — skor 69.118, örnek 6
 
-### Viral yayın slotu — **explore** (yeterli veri yok, rotasyon sürüyor)
+### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
 - `2` — skor 292.052, örnek 8
 - `3` — skor 270.795, örnek 6
@@ -41,18 +41,18 @@
 **En iyi blog sayfaları:**
 - pce-gdp-agustos-2026-fed-eylul-dolar-altin — skor 23.62
 - jackson-hole-2026-ne-zaman-warsh-konusmasi — skor 13.75
-- abd-faiz-artarsa-ne-olur — skor 12.58
+- abd-faiz-artarsa-ne-olur — skor 10.58
 - abd-eylul-2026-cpi-verisi-fed-dolar-altin — skor 9.9
 - jackson-hole-sempozyumu-nedir — skor 6.88
 - fed-faiz-karari-sonrasi-piyasa-tepkisi — skor 6.87
 
 **🎯 Fırsat sorguları** (içerik/başlık iyileştir):
-- `jackson hole toplantısı nedir` — gös 77, sıra 9.1
-- `jackson hole ne zaman` — gös 68, sıra 9.4
+- `jackson hole toplantısı nedir` — gös 76, sıra 9.1
+- `jackson hole ne zaman` — gös 65, sıra 9.4
 - `"albayrak hazır beton"` — gös 54, sıra 4.6
 - `abd de faiz artarsa altın ne olur` — gös 44, sıra 7.6
+- `abd işsizlik verisi altını nasıl etkiler` — gös 21, sıra 6.5
 - `abd faiz arttırırsa ne olur` — gös 15, sıra 15.4
-- `abd işsizlik verisi altını nasıl etkiler` — gös 15, sıra 7.3
 - `boj nedir` — gös 12, sıra 8.9
 - `%tcmb politika faizi eylül 2026 faiz kararı` — gös 11, sıra 6.5
 
