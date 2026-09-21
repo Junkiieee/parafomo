@@ -1,9 +1,23 @@
 {
-  "updated": "2026-09-21T06:15+00:00",
+  "updated": "2026-09-21T12:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 40,
   "items": [
+    {
+      "company": "Pronet Güvenlik Hizmetleri A.Ş.",
+      "bist_code": "",
+      "slug": "pronet-guvenlik-hizmetleri-a-s",
+      "link": "https://halkarz.com/pronet-guvenlik-hizmetleri-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "459.764.198 Lot",
+      "broker": "Ak Yatırım Menkul Değerler A.Ş."
+    },
     {
       "company": "Motor Aşin Otomotiv Bilgisayar San. ve Tic. A.Ş.",
       "bist_code": "",
@@ -381,20 +395,6 @@
       "distribution": "Eşit Dağıtım **",
       "lot": "600.000.000 Lot",
       "broker": "Halk Yatırım Menkul Değerler A.Ş. Garanti Yatırım Menkul Değerler A.Ş. İş Yatırım Menkul Değerler A.Ş."
-    },
-    {
-      "company": "Aras Elektrik Dağıtım A.Ş.",
-      "bist_code": "",
-      "slug": "aras-elektrik-dagitim-a-s",
-      "link": "https://halkarz.com/aras-elektrik-dagitim-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "65.000.000 Lot",
-      "broker": "Bizim Menkul Değerler A.Ş. Halk Yatırım Menkul Değerler A.Ş."
     },
     {
       "company": "Net Global Endüstriyel Yatırımlar A.Ş.",
