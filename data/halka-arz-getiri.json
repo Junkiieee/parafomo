@@ -1,8 +1,8 @@
 {
-  "updated": "2026-09-21T12:15+00:00",
+  "updated": "2026-09-21T18:15+00:00",
   "source": "Halka arz fiyatı: halkarz.com · Güncel fiyat: Yahoo Finance (BIST)",
   "count": 12,
-  "avg_return_pct": 17.2,
+  "avg_return_pct": 18.0,
   "positive_count": 4,
   "positive_pct": 33,
   "best": {
@@ -11,7 +11,7 @@
   },
   "worst": {
     "code": "BKRGY",
-    "return_pct": -51.1
+    "return_pct": -49.9
   },
   "items": [
     {
@@ -61,8 +61,8 @@
       "start": "2026-08-26",
       "date_text": "26-27 Ağustos 2026",
       "ipo_price": 53.6,
-      "current_price": 49.64,
-      "return_pct": -7.4
+      "current_price": 51.7,
+      "return_pct": -3.5
     },
     {
       "code": "METEN",
@@ -71,8 +71,8 @@
       "start": "2026-07-20",
       "date_text": "20-21-22 Temmuz 2026",
       "ipo_price": 20.0,
-      "current_price": 17.59,
-      "return_pct": -12.1
+      "current_price": 17.94,
+      "return_pct": -10.3
     },
     {
       "code": "MASFN",
@@ -81,8 +81,8 @@
       "start": "2026-07-22",
       "date_text": "22-23-24 Temmuz 2026",
       "ipo_price": 45.68,
-      "current_price": 37.52,
-      "return_pct": -17.9
+      "current_price": 37.58,
+      "return_pct": -17.7
     },
     {
       "code": "KPEKS",
@@ -101,18 +101,8 @@
       "start": "2026-07-29",
       "date_text": "29-30-31 Temmuz 2026",
       "ipo_price": 76.6,
-      "current_price": 50.3,
-      "return_pct": -34.3
-    },
-    {
-      "code": "VEYAS",
-      "company": "Türker Vangölü Enerji Yatırım A.Ş.",
-      "link": "https://halkarz.com/turker-vangolu-enerji-yatirim-a-s/",
-      "start": "2026-08-12",
-      "date_text": "12-13-14 Ağustos 2026",
-      "ipo_price": 136.0,
-      "current_price": 84.65,
-      "return_pct": -37.8
+      "current_price": 50.6,
+      "return_pct": -33.9
     },
     {
       "code": "ALBTN",
@@ -121,8 +111,18 @@
       "start": "2026-07-22",
       "date_text": "22-23 Temmuz 2026",
       "ipo_price": 38.6,
-      "current_price": 23.5,
-      "return_pct": -39.1
+      "current_price": 24.26,
+      "return_pct": -37.2
+    },
+    {
+      "code": "VEYAS",
+      "company": "Türker Vangölü Enerji Yatırım A.Ş.",
+      "link": "https://halkarz.com/turker-vangolu-enerji-yatirim-a-s/",
+      "start": "2026-08-12",
+      "date_text": "12-13-14 Ağustos 2026",
+      "ipo_price": 136.0,
+      "current_price": 85.0,
+      "return_pct": -37.5
     },
     {
       "code": "BKRGY",
@@ -131,8 +131,8 @@
       "start": "2026-08-24",
       "date_text": "24-25-26 Ağustos 2026",
       "ipo_price": 12.93,
-      "current_price": 6.32,
-      "return_pct": -51.1
+      "current_price": 6.48,
+      "return_pct": -49.9
     }
   ]
 }
