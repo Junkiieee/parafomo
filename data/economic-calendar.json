@@ -1,44 +1,8 @@
 {
-  "updated": "2026-09-20",
+  "updated": "2026-09-21",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-09-17",
-      "region": "TR",
-      "impact": "Medium",
-      "title": "TCMB PPK toplantı özeti",
-      "hook": "Karar gerekçesi yorumu.",
-      "time": "",
-      "source": "tcmb"
-    },
-    {
-      "date": "2026-09-17",
-      "time": "11:00am",
-      "region": "GBP",
-      "impact": "High",
-      "title": "Monetary Policy Summary",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-09-17",
-      "time": "11:00am",
-      "region": "GBP",
-      "impact": "High",
-      "title": "MPC Official Bank Rate Votes",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-09-17",
-      "time": "11:00am",
-      "region": "GBP",
-      "impact": "High",
-      "title": "Official Bank Rate",
-      "source": "forexfactory",
-      "hook": ""
-    },
     {
       "date": "2026-09-18",
       "time": "2:54am",
@@ -63,6 +27,15 @@
       "region": "JPY",
       "impact": "High",
       "title": "BOJ Press Conference",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-09-25",
+      "time": "9:15am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "BOE Gov Bailey Speaks",
       "source": "forexfactory",
       "hook": ""
     },
