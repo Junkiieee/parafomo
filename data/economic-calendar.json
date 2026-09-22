@@ -1,35 +1,8 @@
 {
-  "updated": "2026-09-21",
+  "updated": "2026-09-22",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-09-18",
-      "time": "2:54am",
-      "region": "JPY",
-      "impact": "High",
-      "title": "BOJ Policy Rate",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-09-18",
-      "time": "2:54am",
-      "region": "JPY",
-      "impact": "High",
-      "title": "Monetary Policy Statement",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-09-18",
-      "time": "6:30am",
-      "region": "JPY",
-      "impact": "High",
-      "title": "BOJ Press Conference",
-      "source": "forexfactory",
-      "hook": ""
-    },
     {
       "date": "2026-09-25",
       "time": "9:15am",

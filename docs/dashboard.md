@@ -1,12 +1,11 @@
 # ParaFOMO — Dürüst Ölçüm Panosu
 
-> Üretim: 2026-09-20 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
+> Üretim: 2026-09-21 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
 
 ## 1) Organik trafik trendi (GA4 — son 8 hafta)
 
 | Hafta | Gerçek erişim (Direct hariç) | Direct (≈sen/bot) | Toplam |
 |---|---|---|---|
-| 202630 | 0 | 1 | 1 |
 | 202631 | 2 | 20 | 22 |
 | 202632 | 9 | 15 | 24 |
 | 202633 | 24 | 16 | 40 |
@@ -14,13 +13,13 @@
 | 202635 | 37 | 24 | 61 |
 | 202636 | 35 | 23 | 58 |
 | 202637 | 41 | 13 | 54 |
-| 202638 | 46 | 19 | 65 |
+| 202638 | 47 | 22 | 69 |
 
-**Gerçek erişim trendi:** `▁▁▂▄▅▆▆▇█`  📈 artıyor
-**Son hafta Direct payı:** %29 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
+**Gerçek erişim trendi:** `▁▂▄▅▆▆▇█`  📈 artıyor
+**Son hafta Direct payı:** %32 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
 
 **Gerçek erişim kaynağı (son 4 hafta toplamı):**
-- Organic Search: 84 kullanıcı
+- Organic Search: 85 kullanıcı
 - Organic Video: 31 kullanıcı
 - Organic Social: 26 kullanıcı
 - AI Assistant: 12 kullanıcı
@@ -31,7 +30,6 @@
 
 | Hafta | Tıklama | Gösterim | CTR |
 |---|---|---|---|
-| 2026-07-20 | 0 | 296 | %0.0 |
 | 2026-07-27 | 0 | 558 | %0.0 |
 | 2026-08-03 | 3 | 893 | %0.3 |
 | 2026-08-10 | 4 | 1400 | %0.3 |
@@ -39,38 +37,39 @@
 | 2026-08-24 | 12 | 2670 | %0.4 |
 | 2026-08-31 | 17 | 1920 | %0.9 |
 | 2026-09-07 | 14 | 2206 | %0.6 |
+| 2026-09-14 | 36 | 1258 | %2.9 |
 
-**Tıklama trendi:** `▁▁▂▂▃▅█▆`  📈 artıyor
+**Tıklama trendi:** `▁▁▁▂▃▄▃█`  📈 artıyor
 
 **En iyi sıralanan sorgular (gösterim≥3):**
 - `+türkiye 2026 mevduat faiz oranları tcmb politika faizi eylül 2026` — sıra 1.2, gös 4, tık 0
+- `jackson hole toplantısı ne zaman 2026` — sıra 3.3, gös 3, tık 0
 - `+tcmb eylül 2026 faiz kararı beklentisi 10 eylül 2026` — sıra 4.2, gös 6, tık 0
+- `"albayrak hazır beton"` — sıra 4.6, gös 54, tık 0
+- `altın son 1 yıl getirisi` — sıra 5.0, gös 3, tık 2
 - `+tcmb faiz kararı eylül 2026 politika faizi` — sıra 5.0, gös 3, tık 0
-- `"albayrak hazır beton"` — sıra 5.2, gös 43, tık 0
 - `+tcmb politika faizi eylül 2026 faiz kararı` — sıra 5.2, gös 4, tık 0
-- `%tcmb faiz kararı eylül 2026 politika faizi` — sıra 5.7, gös 6, tık 0
-- `+tcmb politika faizi eylül 2026 güncel` — sıra 5.8, gös 6, tık 0
-- `%tcmb eylül 2026 faiz kararı politika faizi` — sıra 6.4, gös 5, tık 0
+- `gram altın yıllık getirisi` — sıra 5.2, gös 4, tık 0
 
 **🎯 Ulaşılabilir fırsatlar (sıra 4-20, gösterim≥5):**
+- `jackson hole toplantısı ne zaman` — sıra 9.3, gös 131
+- `jackson hole sempozyumu nedir` — sıra 8.9, gös 80
 - `jackson hole toplantısı nedir` — sıra 9.1, gös 77
 - `jackson hole ne zaman` — sıra 9.4, gös 68
-- `fed faiz kararı takvimi` — sıra 11.1, gös 57
-- `fed faiz kararı takvimi 2026` — sıra 10.6, gös 57
-- `buyback nedir` — sıra 10.8, gös 49
-- `"albayrak hazır beton"` — sıra 5.2, gös 43
-- `abd de faiz artarsa altın ne olur` — sıra 7.6, gös 43
-- `fed toplantı tarihleri 2026` — sıra 10.0, gös 37
+- `jackson hole nedir` — sıra 10.7, gös 67
+- `fed faiz kararı takvimi` — sıra 11.1, gös 66
+- `fed faiz kararı takvimi 2026` — sıra 10.5, gös 66
+- `"albayrak hazır beton"` — sıra 4.6, gös 54
 
 ## 3) YouTube motoru
 
-- **Abone:** 46  ·  **Toplam izlenme:** 52,750  ·  **Video:** 250
-- İzlenme/abone dönüşümü: **0.09%** (izleyen kaç kişi abone/huniye giriyor)
+- **Abone:** 43  ·  **Toplam izlenme:** 52,763  ·  **Video:** 250
+- İzlenme/abone dönüşümü: **0.08%** (izleyen kaç kişi abone/huniye giriyor)
 
 ## 4) 🎯 DÜRÜST HÜKÜM
 
 **Hedef:** 1000 ziyaretçi/gün = 7,000/hafta gerçek erişim.
-**Gerçek durum:** son hafta **46** gerçek ziyaretçi = hedefin **%0.66**'si. Kalan: **6,954** kişi/hafta.
+**Gerçek durum:** son hafta **47** gerçek ziyaretçi = hedefin **%0.67**'si. Kalan: **6,953** kişi/hafta.
 
 - Belirgin kırmızı bayrak yok; trend ve hedef mesafesine bak.
 
