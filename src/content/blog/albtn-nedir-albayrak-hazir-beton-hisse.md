@@ -17,6 +17,23 @@ faq:
     a: "Hazır beton, inşaat faaliyetlerine doğrudan bağlı döngüsel bir sektördür. Türkiye'deki konut projeleri, altyapı yatırımları ve kentsel dönüşüm projeleri sektörün temel büyüme sürücüleridir. Faiz oranları ve inşaat maliyetleri sektörü doğrudan etkiler."
   - q: "Halka arz sonrası hisse nasıl takip edilir?"
     a: "KAP (Kamuyu Aydınlatma Platformu) üzerinden şirketin mali tablolarını, önemli açıklamalarını ve pay hareketlerini takip edebilirsiniz. Borsa İstanbul'un resmi sitesinden de anlık işlem verilerine ulaşılabilir."
+shorts:
+  - "Küçük yatırımcı dev kurumla nasıl eşit lot alır?"
+  - "Albayrak Hazır Beton, Türkiye'nin köklü holdinginin inşaat kolu olarak borsaya girdi."
+  - "Temmuz 2026 halka arzında eşit dağıtım, küçük yatırımcıya kurumsal yatırımcıyla aynı fırsatı tanıdı."
+  - "Sektör; faiz oranları, enerji maliyeti ve inşaat talebine göre yukarı ya da aşağı iniyor."
+  - "Peki bu hissede asıl dikkat etmen gereken nedir? Abone ol, tüm analizler parafomo.com'da seni bekliyor."
+shorts_broll:
+  - "construction site concrete mixer truck"
+  - "stock market IPO listing screen"
+  - "turkish lira money banknotes"
+  - "real estate building construction workers"
+shorts_visuals:
+  - "concept|stock market new IPO listing chart"
+  - "place|Borsa İstanbul"
+  - "concept|small investor equal opportunity stock trading"
+  - "scene|concrete mixer truck construction site workers"
+  - "concept|financial analysis investment research screen"
 ---
 
 BIST'te yeni işlem görmeye başlayan bir şirketi araştırırken ilk adım genellikle basit bir web araması oluyor: "ALBTN nedir?" ya da "albayrak hazır beton ne iş yapıyor?" Bu yazıda **Albayrak Hazır Beton**'u, gerçekleştirdiği halka arzı, faaliyet gösterdiği sektörü ve bu tip hisseleri değerlendirirken dikkat edilmesi gereken kriterleri ele alıyoruz.
