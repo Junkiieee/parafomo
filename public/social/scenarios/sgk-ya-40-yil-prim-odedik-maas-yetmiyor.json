@@ -1,0 +1,59 @@
+{
+  "slug": "sgk-ya-40-yil-prim-odedik-maas-yetmiyor",
+  "title": "SGK'ya 40 Yıl Prim Ödedik — Maaş Yetmiyor",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Türkiye'de emeklilerin büyük çoğunluğu asgari ücretin altında maaş alıyor. SGK formülü enflasyonu yakalayamıyor; erken ek birikim artık seçenek değil, zorunluluk.",
+  "tags": [
+    "emeklilik",
+    "SGK",
+    "emekli maaşı",
+    "birikim",
+    "enflasyon",
+    "finansal planlama",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Her 4 emekliden 3'ü asgari ücretin altında.",
+      "visual": {
+        "type": "scene",
+        "query": "happy retired couple relaxing garden smiling"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "40 yıl prim ödedin, emekli oldun — SGK maaşın asgari ücretin altında başlıyor. Formül enflasyonu yakalayamıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "pension document retirement papers official stamp"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yılda iki zam alıyorsun — ama market arabası her ay pahalılaşıyor. Hesap tutmuyor.",
+      "visual": {
+        "type": "concept",
+        "query": "supermarket shopping cart checkout price receipt"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "SGK tek başına yetmez. 30'larında başlamazsan 60'larda pişman olursun. Ek birikim şart.",
+      "visual": {
+        "type": "concept",
+        "query": "person phone savings investment app planning"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki emeklilikte yetecek kadar birikimi nasıl hesaplarsın? Abone ol — her gün net bir rakam, sade bir gerçek.",
+      "visual": {
+        "type": "scene",
+        "query": "happy retired couple relaxing garden smiling"
+      }
+    }
+  ]
+}
