@@ -4,6 +4,66 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-09-22 — ALBTN Nedir? Albayrak Hazır Beton Hisse Senedi Rehberi
+
+**Yayınlanan yazı:** [ALBTN Nedir? Albayrak Hazır Beton Hisse Senedi Rehberi](https://parafomo.com/blog/albtn-nedir-albayrak-hazir-beton-hisse/)
+**Hedef sorgu:** `albayrak hazır beton` / `albtn` · Kategori: Borsa
+**Konu seçim gerekçesi:** GSC + learning report: 54+31 gösterim, sıra 4.6 ve 30.1, tıklama 0; bu sorgu için mevcut yazı yoktu; Temmuz 2026'da halka arz tamamlanan şirket borsada işlem görüyor; sektör analizi + değerlendirme kriterleri + halka arz özeti ile tam arama niyetini karşılıyor.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+📊 ALBTN borsada görünce "Bu ne?" diye arayanlar için:
+
+Albayrak Hazır Beton, Temmuz 2026'da borsaya girdi. İşte bilmeniz gereken her şey:
+
+2/ ALBTN = Albayrak Hazır Beton San. ve Tic. A.Ş. Albayrak Grubu bünyesinde, Türkiye'nin inşaat malzemeleri sektöründe faaliyet gösteriyor.
+
+3/ Halka arz özeti:
+📅 22-23 Temmuz 2026
+💰 Fiyat: 38,60 TL
+📦 70.000.000 lot — Eşit Dağıtım
+🏦 Aracı: Tacirler Yatırım
+
+4/ Hazır beton sektörü neden önemli? İnşaat başladığında ilk ihtiyaç hazır betondur. Türkiye'nin kentsel dönüşüm ve altyapı projeleri bu sektörün büyüme motorları.
+
+5/ Dikkat: Döngüsel sektör. Faiz yükselince inşaat yavaşlar → hazır beton talebi düşer. F/K, borçluluk ve nakit akışına bakın; halka arz fiyatının "ucuz" olduğu varsayımı her zaman doğru değil.
+
+6/ KAP'tan şirketin finansal tablolarını ve özel durum açıklamalarını takip edebilirsiniz. Detaylı rehber → parafomo.com/blog/albtn-nedir-albayrak-hazir-beton-hisse/
+
+---
+
+### Instagram Carousel / Post Metni
+
+**ALBTN nedir? Kısaca anlatalım 👇**
+
+Albayrak Hazır Beton, Temmuz 2026'da borsaya giren bir inşaat malzemeleri şirketi.
+
+📌 BIST kodu: ALBTN
+💰 Halka arz fiyatı: 38,60 TL
+📦 70 milyon lot — eşit dağıtım
+
+Peki hazır beton sektörü nasıl çalışır?
+➡️ İnşaat projeleri arttıkça talep artar
+➡️ Faiz yükselince projeler yavaşlar
+➡️ Döngüsel, ama güçlü altyapı talebi var
+
+Mali tablo, borçluluk oranı ve sektör koşullarına bakarak karar vermek şart. Yatırım tavsiyesi değil, bilgilendirmedir.
+
+Detaylı analiz → parafomo.com 🔗
+
+#ALBTN #AlbayrakHazırBeton #HalkaArz #BIST #Borsa #HisseSenedi #ParaFOMO #Yatırım
+
+---
+
+### Bugün yapman gereken
+
+1. **Paylaşımları yayınla** — X thread'ini ve Instagram carousel'ini bugün paylaş; ilk 24 saatte organik erişim en yüksek.
+2. **Yatırım forumlarında paylaş** — Ekşi Sözlük'te "albayrak hazır beton" veya "albtn" başlığı varsa yazının linkini bırak; Şikayet & öneri içerikli değil, bilgilendirici şekilde.
+
+---
+
 ## 2026-09-11 — İngiltere Eylül 2026 GDP Verisi: Büyüme Yavaşlar mı? Sterlin, BOE ve TL'ye Etkisi
 
 **Yayınlanan yazı:** [İngiltere Eylül 2026 GDP Verisi: Büyüme Yavaşlar mı? Sterlin, BOE ve TL'ye Etkisi](https://parafomo.com/blog/ingiltere-eylul-2026-gdp-verisi-sterlin-boe/)
