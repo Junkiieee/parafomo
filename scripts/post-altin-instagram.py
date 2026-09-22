@@ -62,7 +62,10 @@ def get_comment():
         r = subprocess.run(["python3", os.path.join(SCRIPTS, "altin-yorum.py")],
                            capture_output=True, text=True, timeout=180)
         c = r.stdout.strip().split("\n")[-1].strip()
-        if c:
+        low = c.lower()
+        _bad = ("api error", "authenticate", "oauth", "access token",
+                "usage limit", "rate limit", "credit balance", "not logged in")
+        if c and not any(b in low for b in _bad):
             return c
     except Exception:
         pass

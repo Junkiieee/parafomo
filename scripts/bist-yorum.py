@@ -87,7 +87,12 @@ def build(ptype, val, chg, hl):
         r = subprocess.run(["claude", "-p", prompt, "--model", MODEL],
                            capture_output=True, text=True, timeout=120)
         out = r.stdout.strip().strip('"').split("\n")[0].strip()
-        if 15 < len(out) < 240:
+        # claude -p auth/limit hatası stdout'a düşebilir → hata metnini caption YAPMA
+        low = out.lower()
+        _bad = ("api error", "authenticate", "oauth", "access token",
+                "invalid api", "usage limit", "rate limit", "credit balance",
+                "please run", "not logged in")
+        if r.returncode == 0 and 15 < len(out) < 240 and not any(b in low for b in _bad):
             return out
     except Exception:
         pass
