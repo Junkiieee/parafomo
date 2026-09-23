@@ -1,0 +1,97 @@
+{
+  "slug": "hisse-secmeden-bist-100-20-kazandirdi",
+  "title": "Hisse Seçmeden BIST 100 %20 Kazandırdı",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "10 bin TL'yi bir yıl önce BIST 100 endeksine koysaydın yaklaşık 12 bin 30 TL olurdu. Bireysel hisse araştırmak yerine endeksi izleyen ETF bu getiriyi otomatik sağlardı.",
+  "tags": [
+    "BIST 100",
+    "borsa",
+    "ETF",
+    "pasif yatırım",
+    "hisse senedi",
+    "getiri",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "Hisse seçmen endeksi nadiren yener.",
+      "visual": {
+        "type": "concept",
+        "query": "investor celebrating green stock charts screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Geçen yıl BIST 100'e 10 bin TL koysaydın, yaklaşık 12 bin 30 TL olurdu.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "BIST 100",
+          "unit": "",
+          "points": [
+            10971.5,
+            10898.7,
+            11261.5,
+            13838.3,
+            13717.8,
+            12791.0,
+            14442.6,
+            13662.8,
+            14121.8,
+            13458.1,
+            14334.1,
+            13284.4,
+            13198.84
+          ],
+          "x": [
+            "09/25",
+            "10/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "02/26",
+            "03/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26",
+            "09/26"
+          ],
+          "amount": 10000,
+          "end_value": 12030,
+          "pct": 20
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama bireysel hisse seçenler saatlerce araştırdı — çoğu bu yüzde yirmiyi yakalayamadı.",
+      "visual": {
+        "type": "concept",
+        "query": "stressed investor multiple stock charts falling"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "BIST ETF'leri endeksi birebir izler; yaklaşık yüzde yirmi bu basit yolla da gelirdi.",
+      "visual": {
+        "type": "concept",
+        "query": "passive investing calm portfolio growth laptop"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Piyasanın bir sonraki hamlesi neyi değiştirir? Abone ol, her sabah tek net analiz sende olsun.",
+      "visual": {
+        "type": "concept",
+        "query": "investor celebrating green stock charts screen"
+      }
+    }
+  ]
+}
