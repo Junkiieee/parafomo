@@ -1,0 +1,95 @@
+{
+  "slug": "dolar-16-kazandirdi-paran-hala-eridi",
+  "title": "Dolar %16 Kazandırdı — Paran Hâlâ Eridi",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "5.000 TL'yi bir yıl önce dolara koysaydın bugün yaklaşık 5.808 TL olurdu. Yüzde on altı iyi görünür — ama gerçekte satın alma gücün geride kaldı.",
+  "tags": [
+    "dolar",
+    "enflasyon",
+    "reel getiri",
+    "türk lirası",
+    "para kaybı",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "Dolar kazandırdı — paran yine eridi.",
+      "visual": {
+        "type": "object",
+        "query": "dollar bills stack growing pile"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Geçen yıl 5.000 TL dolara çevirdin, bugün yaklaşık 5.808 TL var — yüzde on altı kazandın.",
+      "visual": {
+        "type": "concept",
+        "query": "currency exchange counter turkish lira dollar bills"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama aynı dönem enflasyonu yüzde on altıyı geçti. Grafik ikisini yan yana koyuyor: nominal kazanç, reel kayıp.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "Dolar/TL",
+          "unit": "TL",
+          "points": [
+            42.03,
+            42.49,
+            42.95,
+            43.46,
+            43.96,
+            45.17,
+            45.85,
+            46.64,
+            47.5,
+            48.25,
+            48.78,
+            48.82
+          ],
+          "x": [
+            "09/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "02/26",
+            "03/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26",
+            "09/26"
+          ],
+          "amount": 5000,
+          "end_value": 5808,
+          "pct": 16
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "5.808 TL bugün bir yıl önceki 5.000 TL'nin satın aldığını almıyor. Dolar korudu, ama yetmedi.",
+      "visual": {
+        "type": "concept",
+        "query": "empty shopping cart supermarket inflation"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki hangi araç enflasyonu gerçekten geçiyor? Cevabı takip etmek istiyorsan abone ol — her gün 60 saniyede tek net analiz sende olsun.",
+      "visual": {
+        "type": "object",
+        "query": "dollar bills stack growing pile"
+      }
+    }
+  ]
+}

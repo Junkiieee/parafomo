@@ -1,30 +1,32 @@
 # ParaFOMO — Dürüst Ölçüm Panosu
 
-> Üretim: 2026-09-21 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
+> Üretim: 2026-09-22 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
 
 ## 1) Organik trafik trendi (GA4 — son 8 hafta)
 
 | Hafta | Gerçek erişim (Direct hariç) | Direct (≈sen/bot) | Toplam |
 |---|---|---|---|
-| 202631 | 2 | 20 | 22 |
+| 202631 | 1 | 18 | 19 |
 | 202632 | 9 | 15 | 24 |
 | 202633 | 24 | 16 | 40 |
 | 202634 | 32 | 27 | 59 |
 | 202635 | 37 | 24 | 61 |
 | 202636 | 35 | 23 | 58 |
 | 202637 | 41 | 13 | 54 |
-| 202638 | 47 | 22 | 69 |
+| 202638 | 48 | 22 | 70 |
+| 202639 | 4 | 0 | 4 |
 
-**Gerçek erişim trendi:** `▁▂▄▅▆▆▇█`  📈 artıyor
-**Son hafta Direct payı:** %32 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
+**Gerçek erişim trendi:** `▁▂▄▅▆▆▆█▁`  📉 düşüyor
+**Son hafta Direct payı:** %0 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
 
 **Gerçek erişim kaynağı (son 4 hafta toplamı):**
-- Organic Search: 85 kullanıcı
-- Organic Video: 31 kullanıcı
-- Organic Social: 26 kullanıcı
-- AI Assistant: 12 kullanıcı
-- Unassigned: 4 kullanıcı
-- Referral: 2 kullanıcı
+- Organic Search: 70 kullanıcı
+- Organic Social: 24 kullanıcı
+- Organic Video: 14 kullanıcı
+- AI Assistant: 13 kullanıcı
+- Unassigned: 3 kullanıcı
+- Cross-network: 3 kullanıcı
+- Referral: 1 kullanıcı
 
 ## 2) Google arama trendi (GSC — son 8 hafta)
 
@@ -37,7 +39,7 @@
 | 2026-08-24 | 12 | 2670 | %0.4 |
 | 2026-08-31 | 17 | 1920 | %0.9 |
 | 2026-09-07 | 14 | 2206 | %0.6 |
-| 2026-09-14 | 36 | 1258 | %2.9 |
+| 2026-09-14 | 36 | 1456 | %2.5 |
 
 **Tıklama trendi:** `▁▁▁▂▃▄▃█`  📈 artıyor
 
@@ -56,21 +58,22 @@
 - `jackson hole sempozyumu nedir` — sıra 8.9, gös 80
 - `jackson hole toplantısı nedir` — sıra 9.1, gös 77
 - `jackson hole ne zaman` — sıra 9.4, gös 68
+- `fed faiz kararı takvimi` — sıra 11.1, gös 67
 - `jackson hole nedir` — sıra 10.7, gös 67
-- `fed faiz kararı takvimi` — sıra 11.1, gös 66
 - `fed faiz kararı takvimi 2026` — sıra 10.5, gös 66
 - `"albayrak hazır beton"` — sıra 4.6, gös 54
 
 ## 3) YouTube motoru
 
-- **Abone:** 43  ·  **Toplam izlenme:** 52,763  ·  **Video:** 250
-- İzlenme/abone dönüşümü: **0.08%** (izleyen kaç kişi abone/huniye giriyor)
+- **Abone:** 46  ·  **Toplam izlenme:** 52,773  ·  **Video:** 250
+- İzlenme/abone dönüşümü: **0.09%** (izleyen kaç kişi abone/huniye giriyor)
 
 ## 4) 🎯 DÜRÜST HÜKÜM
 
 **Hedef:** 1000 ziyaretçi/gün = 7,000/hafta gerçek erişim.
-**Gerçek durum:** son hafta **47** gerçek ziyaretçi = hedefin **%0.67**'si. Kalan: **6,953** kişi/hafta.
+**Gerçek durum:** son hafta **4** gerçek ziyaretçi = hedefin **%0.06**'si. Kalan: **6,996** kişi/hafta.
 
-- Belirgin kırmızı bayrak yok; trend ve hedef mesafesine bak.
+**Teşhis:**
+- 💡 YouTube'da 52,773 izlenme var ama siteye ~0 akıyor. En büyük kullanılmayan kaldıraç: YouTube→site hunisi.
 
 **Özet:** Öğrenme döngüsü ses/format/slot optimize ediyor ama yukarıdaki darboğaz oralarda değil. Sistemin 'kendi kendine öğrenip uygulaması' için önce ölçülen darboğaza (otorite/dağıtım) yönlendirilmesi gerekir.
