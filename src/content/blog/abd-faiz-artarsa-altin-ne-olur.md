@@ -17,6 +17,23 @@ faq:
     a: "2022 başında Rusya-Ukrayna savaşı altın talebini güvenli liman olarak yüksek tuttu. Yılın ikinci yarısında reel faiz belirgin biçimde pozitife döndükçe altın düzeltme yaşadı, ama savaş risk primi tamamen çözülmedi."
   - q: "BOE (İngiltere Merkez Bankası) faiz kararı altını etkiler mi?"
     a: "Doğrudan etkisi sınırlıdır çünkü altın dolar cinsinden fiyatlanır. Ancak BOE kararı küresel risk algısını ve dolar endeksini etkileyerek altına dolaylı yansıyabilir. Merkez bankalarının genel faiz eğilimi önemlidir."
+shorts:
+  - "Faiz 5 kat arttı, altın da iki katına çıktı."
+  - "Faiz artınca tahvil cazip olur, altına talep düşer ve fiyatı geriler."
+  - "Ama asıl belirleyici reel faizdir: enflasyon beklentisi faizden yüksekse altın düşmez."
+  - "2004-2006'da Fed 425 baz puan artırdı; altın yüksek enflasyonla iki katına yakın yükseldi."
+  - "Peki sıradaki faiz kararında altın ne yapar? Kanala abone ol, cevabı parafomo.com'da bul."
+shorts_broll:
+  - "federal reserve interest rate decision"
+  - "gold price chart rising falling"
+  - "inflation economic data screen"
+  - "gold bullion investment market"
+shorts_visuals:
+  - "place|Federal Reserve Building Washington"
+  - "concept|us treasury bond yield chart screen"
+  - "concept|inflation rate chart economy data"
+  - "gold|gold bullion bars price rising"
+  - "concept|financial investment analysis screen"
 ---
 
 Fed'in faiz kararı gündemde olduğunda pek çok yatırımcının aklına hemen şu soru gelir: "Faiz artarsa altın ne olur?" Yüzeysel cevap "düşer" olmakla birlikte, gerçek tablo çok daha karmaşık. Bu rehberde faiz-altın ilişkisinin mekanizmasını, tarihsel verileri ve 2026 yatırımcısı için pratik çerçeveyi ele alıyoruz.
