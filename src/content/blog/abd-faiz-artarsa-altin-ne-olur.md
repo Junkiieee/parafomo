@@ -79,11 +79,11 @@ Teorik çerçeveden çıkıp tarihe bakalım. ABD'nin önemli faiz artış döng
 |---|---|---|---|
 | 1994–1995 | %3'ten %6'ya hızlı artış | Yatay/hafif düşüş | Klasik ters korelasyon |
 | 1999–2000 | %4,75'ten %6,5'e artış | Düşüş (ons ~260$) | Dolar güçlü, altın zayıf dönem |
-| 2004–2006 | %1'den %5,25'e kademeli artış | Yükseliş (ons ~600$) | Şaşırtıcı: faiz ve altın birlikte yükseli |
+| 2004–2006 | %1'den %5,25'e kademeli artış | Yükseliş (ons ~600$) | Şaşırtıcı: faiz ve altın birlikte yükseldi |
 | 2015–2018 | %0,25'ten %2,5'e kademeli artış | İlk düşüş, sonra yükseliş | Düşük enflasyon ortamında karışık sinyaller |
 | 2022–2023 | %0,25'ten %5,5'e hızlı artış | İlk yükseliş, yılın 2. yarısında düzeltme | Jeopolitik talep ilk yarıda altını destekledi |
 
-Bu tablodan çarpıcı bir sonuç çıkıyor: **Faiz artışı dönemlerinde altın her zaman düşmüyor.** 2004–2006 döneminde Fed faizi 425 baz puan artırmasına rağmen altın iki katına yakın yükseldi. Sebebi: Aynı dönemde enflasyon beklentileri de yüksek kaldı; dolar zayıflıyordu; reel faiz çok sınırlı yükseldi.
+Bu tablodan çarpıcı bir sonuç çıkıyor: **Faiz artışı dönemlerinde altın her zaman düşmüyor.** 2004–2006 döneminde Fed faizi 425 baz puan artırmasına rağmen altın iki katına yakın yükseldi. Sebebi: Aynı dönemde enflasyon beklentileri de yüksek kaldı; dolar zayıflıyordu; reel faiz çok sınırlı yükseldi. Altının uzun vadeli getirisini gram ve ons bazında güncel veriyle karşılaştırmak için [altın getirisi verilerimize](/altin-getiri) göz atabilirsiniz.
 
 ## İstisna Anlar: Faiz Artışına Rağmen Altın Neden Yükseldi?
 
@@ -122,18 +122,18 @@ BOE Başkanı Bailey'nin konuşmaları piyasaların sterlin faiz yolunu fiyatlam
 - Jeopolitik risk primi tarihsel ortalamanın üzerinde.
 
 **Altın üzerinde baskı yaratan etkenler:**
-- Reel faiz, sıfır civarında ya da hafif pozifif seyredebilir; bu geçmiş dönemlerden daha kısıtlayıcı.
+- Reel faiz, sıfır civarında ya da hafif pozitif seyredebilir; bu geçmiş dönemlerden daha kısıtlayıcı.
 - Dolar, yüksek faiz sayesinde görece güçlü kalmayı sürdürüyor.
 - TÜİK enflasyon verisi (Ekim başında açıklanacak) Türk yatırımcısı için hem altın hem dolar tercihini etkileyecek.
 
-Sonuç: Altın için net bir "yükselir" ya da "düşer" yargısı vermek yerine reel faizin seyri ve küresel risk algısı takip edilmelidir.
+Sonuç: Altın için net bir "yükselir" ya da "düşer" yargısı vermek yerine reel faizin seyri ve küresel risk algısı takip edilmelidir. Faizin yalnızca altına değil dolar, TL ve borsaya etkisini birlikte görmek isterseniz [ABD faiz artarsa ne olur?](/blog/abd-faiz-artarsa-ne-olur) yazımız tüm varlık sınıflarını ele alıyor.
 
 ## Faiz Döngüsünde Altın Yatırımcısı Ne Yapmalı?
 
 Bu sorunun kesin bir yanıtı olmasa da şu adımlar çerçeve sağlar:
 
 1. **Reel faizi takip et:** ABD 10 yıllık TIPS getirisi reel faizin en pratik göstergesidir. [ABD 10 yıllık tahvil faizi](/blog/abd-10-yillik-tahvil-faizi-nedir) yazımızda bu veriye nasıl ulaşacağınızı anlattık.
-2. **Dolar endeksini izle (DXY):** Dolar güçleniyorsa altın için kısa vadeli baskı devam edebilir.
+2. **[Dolar endeksini (DXY)](/dolar-endeksi) izle:** Dolar güçleniyorsa altın için kısa vadeli baskı devam edebilir.
 3. **Portföyde oran belirle, zamanlama yapma:** Altının portföydeki payını belirleyip o orana sadık kalmak, "ne zaman almalıyım?" sorusuna cevap aramaktan daha güvenilirdir.
 4. **Türkiye bağlamı:** TL değer kaybı dönemlerinde TL cinsinden altın, dolar üzerindeki baskıya rağmen yükselebilir. Bu iki değişkeni birlikte değerlendirin.
 5. **Araç seçimi:** Fiziksel altın, altın fonu ve altın EFT'leri arasındaki farkı anlamak getiriyi ve vergi yükünü etkiler. [Altın fonu nedir?](/blog/altin-fonu-nedir-gram-altindan-farki) yazımız bu seçeneği karşılaştırıyor.

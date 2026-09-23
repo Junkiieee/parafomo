@@ -80,7 +80,7 @@ Altın dolar cinsinden fiyatlandığı için dolar güçlenince altın diğer pa
 
 ### Türk yatırımcısı için TL bazında altın
 
-Dikkat: TL bazında gram altın hem dolar kuru hem ons fiyatından etkilenir. Faiz artışı dolarda ani yükselişe yol açarsa TL bazında gram altın ons fiyatı düşse bile **pahalılaşabilir**. Bu yüzden "[altın mı dolar mı](/blog/altin-mi-dolar-mi)" sorusunun cevabı büyük ölçüde Fed kararına bağlıdır.
+Dikkat: TL bazında gram altın hem dolar kuru hem ons fiyatından etkilenir. Faiz artışı dolarda ani yükselişe yol açarsa TL bazında gram altın ons fiyatı düşse bile **pahalılaşabilir**. Bu yüzden "[altın mı dolar mı](/blog/altin-mi-dolar-mi)" sorusunun cevabı büyük ölçüde Fed kararına bağlıdır. Faiz artışının özellikle altın üzerindeki etkisini tarihsel veriyle derinlemesine incelediğimiz [ABD faiz artırırsa altın ne olur?](/blog/abd-faiz-artarsa-altin-ne-olur) yazımız bu konuyu ayrıntılandırıyor.
 
 ## ABD Faiz Kararı Doları Nasıl Etkiler?
 

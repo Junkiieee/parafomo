@@ -72,7 +72,7 @@ Altın, **reel faizle ters ilişkili** hareket eder.
 - Faiz getirmeyen altın, tahvile kıyasla daha az cazip hale gelir.
 - Yatırımcılar altını satıp tahvil alır → altın fiyatı düşer.
 
-**Ancak istisna:** Faiz artışı piyasayı bir resesyon veya sistemik risk sinyali olarak yorumlarsa altın güvenli liman talebiyle yükselebilir. 2022'de Fed agresif faiz artışlarına rağmen altın bir süre direnç gösterdi; çünkü jeopolitik belirsizlik aynı dönemde zirvedeydi.
+**Ancak istisna:** Faiz artışı piyasayı bir resesyon veya sistemik risk sinyali olarak yorumlarsa altın güvenli liman talebiyle yükselebilir. 2022'de Fed agresif faiz artışlarına rağmen altın bir süre direnç gösterdi; çünkü jeopolitik belirsizlik aynı dönemde zirvedeydi. Bu istisnaları ve tarihsel faiz döngülerinde altının gerçekte ne yaptığını [ABD faiz artırırsa altın ne olur?](/blog/abd-faiz-artarsa-altin-ne-olur) yazımızda veriyle detaylı ele aldık.
 
 [Altın fonu nedir?](/blog/altin-fonu-nedir-gram-altindan-farki) ve [altın mı dolar mı?](/blog/altin-mi-dolar-mi) yazılarımız bu kararı netleştirmenize yardımcı olabilir.
 
