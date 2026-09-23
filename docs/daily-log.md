@@ -4,6 +4,80 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-09-23 — ABD Faiz Artırırsa Altın Ne Olur? Gerçek Veri, Gerçek Yanıt
+
+**Yayınlanan yazı:** [ABD Faiz Artırırsa Altın Ne Olur?](https://parafomo.com/blog/abd-faiz-artarsa-altin-ne-olur/)
+**Hedef sorgu:** `abd de faiz artarsa altın ne olur` · Kategori: Ekonomi
+**Konu seçim gerekçesi:** GSC fırsatı: 42 gösterim, sıra 7.7, tıklama 0; BOE Bailey konuşması 25 Eylül takvim hook'u; mevcut abd-faiz-artarsa-ne-olur yazısının altın-odaklı derinleşen versiyonu; reel faiz mekanizması + tarihsel faiz döngüsü tablosu + 2026 çerçevesi.
+
+---
+
+### X (Twitter) Thread Taslağı
+
+📊 "Faiz artarsa altın düşer" — Bu formül her zaman doğru mu?
+
+Kısa cevap: Hayır. Ve bunun sebebi çoğu kişinin gözden kaçırdığı bir detayda saklı.
+
+🧵 Bir thread:
+
+2/ Altın, faiz ya da kira üretmez. Faiz yükselince tahvil daha cazip, altın daha az cazip hale gelir → "fırsat maliyeti" artar. Bu temel mekanizma.
+
+3/ Ama asıl belirleyici **reel faiz**:
+Reel faiz = Nominal faiz − Enflasyon beklentisi
+
+Nominal faiz %5'e çıksa da enflasyon beklentisi %6 ise reel faiz hâlâ negatif → altın direnç gösterir.
+
+4/ Tarihsel veri ilginç:
+📅 2004–06: Fed faizi 425 baz puan artırdı. Altın iki katına yakın yükseldi.
+📅 2022: Fed 500 baz puan artırdı. Altın yılın ilk yarısında güçlü kaldı.
+
+Sebebi: Enflasyon + jeopolitik risk = reel faiz baskısı sınırlı kaldı.
+
+5/ Yani "faiz artışı = altın düşer" formülü değil, şu üçlüyü takip et:
+→ Reel faiz (ABD 10Y TIPS)
+→ Dolar endeksi (DXY)
+→ Küresel risk algısı
+
+6/ Bu Cuma BOE Bailey konuşacak. Küresel merkez bankası faiz yoluna dair yeni sinyaller altını doğrudan değil, DXY üzerinden etkiler.
+
+Tam rehber → parafomo.com/blog/abd-faiz-artarsa-altin-ne-olur
+
+---
+
+### Instagram Post/Carousel Metni
+
+**Slide 1:** Faiz artarsa altın düşer mi? 🤔
+
+**Slide 2:** Klasik kural: Faiz ↑ → Tahvil cazip → Altın satılır → Fiyat ↓
+
+**Slide 3:** Ama kritik nokta şu: Nominal faiz değil, REEL FAİZ sayılır
+Reel faiz = Nominal − Enflasyon beklentisi
+
+**Slide 4:** 2004–06 gerçeği: Fed 425 baz puan artırdı → Altın ×2 oldu 🤯
+
+**Slide 5:** Neden? Enflasyon da yüksekti → Reel faiz çok artmadı
+
+**Slide 6:** Takip etmen gereken 3 şey:
+1️⃣ ABD 10Y TIPS getirisi (reel faiz)
+2️⃣ Dolar endeksi DXY
+3️⃣ Küresel risk iştahı
+
+**Caption:**
+"Faiz artarsa altın düşer" formülü her zaman işlemiyor. Asıl belirleyici reel faiz — ve tarih bazı sürprizler içeriyor. 📊
+
+BOE Bailey bu Cuma konuşacak, küresel faiz tablosu değişiyor. Tam analizi linkteki yazıda bulabilirsin.
+
+#altın #faiz #ABD #Fed #BOE #yatırım #parafomo #finans #ekonomi #altyatırım
+
+---
+
+### Bugün Yapman Gerekenler
+
+1. **X ve Instagram'da paylaş** — Yukarıdaki thread + carousel metnini yayınla. BOE Bailey Cuma konuşacak; bugün ve yarın bu konu gündemde olacak, zamanlama mükemmel.
+2. **İlgili topluluklarda paylaş** — "Faiz artarsa altın ne olur?" sorusunun aktif olduğu finans gruplarında (Telegram, Reddit r/Turkey, X finans topluluğu) değer katarak paylaş. Bağlantıyı doğrudan reklamcılık yerine soruya cevap olarak ver.
+
+---
+
 ## 2026-09-22 — ALBTN Nedir? Albayrak Hazır Beton Hisse Senedi Rehberi
 
 **Yayınlanan yazı:** [ALBTN Nedir? Albayrak Hazır Beton Hisse Senedi Rehberi](https://parafomo.com/blog/albtn-nedir-albayrak-hazir-beton-hisse/)

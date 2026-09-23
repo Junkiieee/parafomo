@@ -93,6 +93,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] ABD Faiz Artırırsa Altın Ne Olur? Gerçek Veri, Gerçek Yanıt — `abd-faiz-artarsa-altin-ne-olur` (GSC fırsatı: "abd de faiz artarsa altın ne olur" — gös 42, sıra 7.7; BOE Bailey konuşması takvim hook'u 25 Eylül; mevcut abd-faiz-artarsa-ne-olur yazısının altın-odaklı derinleşen versiyonu; reel faiz mekanizması + tarihsel döngü tablosu + 2026 çerçevesi; 23 Eylül 2026)
+
 - [x] ALBTN Nedir? Albayrak Hazır Beton Hisse Senedi Rehberi — `albtn-nedir-albayrak-hazir-beton-hisse` (GSC fırsatı: "albayrak hazır beton" — gös 54, sıra 4.6 + "albtn" — gös 31, sıra 30.1; halka arz Temmuz 2026 tamamlandı, borsada işlem görüyor; şirket profili + sektör analizi + değerlendirme kriterleri; halka-arz-nedir-ipo + bist-100 + hisse-secim cluster'ına iç link; 22 Eylül 2026)
 
 - [x] İngiltere Eylül 2026 GDP Verisi: Büyüme Yavaşlar mı? Sterlin, BOE ve TL'ye Etkisi — `ingiltere-eylul-2026-gdp-verisi-sterlin-boe` (takvim: 11 Eylül 2026 🔴 İngiltere GDP m/m; aynı gün ABD CPI da açıklanıyor; sterlin + BOE faiz yolu + TL dolaylı etki; 3 senaryo tablosu + çifte veri günü rehberi; mevcut evergreen ingiltere-gdp-nedir-buyume-verisi Ağustos'a özgü; 11 Eylül 2026)
