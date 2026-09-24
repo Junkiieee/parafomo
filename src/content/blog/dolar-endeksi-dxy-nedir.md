@@ -68,7 +68,7 @@ Fed faiz kararları ile dolar endeksi arasındaki bağlantı neredeyse mekanik b
 
 **Fed faiz artırınca ne olur?**
 
-Faiz artışı ABD tahvillerinin getirisini yükseltir. Daha yüksek getiri peşindeki küresel yatırımcılar dolar satın alır ve ABD tahvillerine yatırım yapar. Bu talep artışı doları güçlendirir → DXY yükselir.
+Faiz artışı ABD tahvillerinin getirisini yükseltir. Daha yüksek getiri peşindeki küresel yatırımcılar dolar satın alır ve ABD tahvillerine yatırım yapar. Bu talep artışı doları güçlendirir → DXY yükselir. Bu ilişkinin tarihsel veriyle ve senaryolarla ayrıntısı için [ABD faiz yükseltirse dolar ne olur?](/blog/abd-faiz-yukseltirse-dolar-ne-olur) yazımıza göz atabilirsin.
 
 **Fed faiz indirince ne olur?**
 

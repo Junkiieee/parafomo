@@ -48,7 +48,7 @@ Fed'in ana politika aracı olan "federal funds rate" (gecelik fonlama faizi), t�
 
 **Kural basittir: faiz yükselince dolar genellikle güçlenir.**
 
-Nedeni: Yatırımcılar, getirisi daha yüksek olan ABD tahvillerine ve mevduatlarına yönelir. Bu talebi karşılamak için dolar satın almaları gerekir. Sonuçta dolar endeksi (DXY) yükselir.
+Nedeni: Yatırımcılar, getirisi daha yüksek olan ABD tahvillerine ve mevduatlarına yönelir. Bu talebi karşılamak için dolar satın almaları gerekir. Sonuçta dolar endeksi (DXY) yükselir. Bu mekanizmanın tarihsel veriyle ayrıntısı için [ABD faiz yükseltirse dolar ne olur?](/blog/abd-faiz-yukseltirse-dolar-ne-olur) yazımıza bakabilirsin.
 
 Ama işin bir nüansı var: Eğer piyasa faiz artışını **önceden fiyatlamışsa**, karar açıklandığında dolar oturup düşebilir. "Söylenti üzerine al, haber üzerine sat" (buy the rumor, sell the news) klasik finans pratiklerinden biridir.
 

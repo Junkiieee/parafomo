@@ -50,7 +50,7 @@ Bu basit gerçek, faiz-altın ilişkisinin temelini oluşturur:
 
 Bu mekanizmayı finans dilinde "fırsat maliyeti" (opportunity cost) artışı olarak tanımlarız. Faizler yükseldikçe altın tutmanın fırsat maliyeti artar.
 
-Ayrıca güçlenen dolar devreye girer: Fed faiz artırınca dolar genellikle güçlenir; dolar cinsinden fiyatlanan altın ise yabancı alıcılar için otomatik olarak pahalılaşır. Bu da küresel talebi kısar.
+Ayrıca güçlenen dolar devreye girer: [Fed faiz artırınca dolar genellikle güçlenir](/blog/abd-faiz-yukseltirse-dolar-ne-olur); dolar cinsinden fiyatlanan altın ise yabancı alıcılar için otomatik olarak pahalılaşır. Bu da küresel talebi kısar.
 
 ## Nominal Faiz mi, Reel Faiz mi? Kritik Ayrım
 
