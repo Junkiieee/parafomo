@@ -17,6 +17,23 @@ faq:
     a: "Dolar endeksi (DXY) altı büyük dövize (Euro, Yen, Sterlin, Kanada Doları, İsveç Kronu, İsviçre Frangı) karşı ABD dolarının ağırlıklı değerini ölçer. DXY yükselince gelişmekte olan para birimleri baskılanır."
   - q: "Fed faiz artışını nasıl önceden takip edebilirim?"
     a: "CME FedWatch aracı piyasanın artış olasılığını yüzde olarak gösterir. %80 üzerinde olasılık zaten fiyatlandığı anlamına gelir; buna göre sürpriz payını değerlendirin."
+shorts:
+  - "Fed faiz artırdı, TL tek yılda yüzde 55 eridi."
+  - "ABD faizi yükselince dolar mevduatı daha cazip olur, küresel sermaye dolara akar."
+  - "2022-2023 en sert döngüde DXY 114.8'e çıktı, 20 yılın zirvesini gördü."
+  - "Türkiye cari açık ve sıcak para çıkışıyla TL'de yüzde 55 kayıp yaşadı."
+  - "Peki Fed yeniden faiz artırırsa TL ne kadar düşer? ParaFOMO'ya abone ol, tüm hareketleri önceden takip et; detaylar parafomo.com'da."
+shorts_broll:
+  - "federal reserve interest rate hike announcement"
+  - "dollar index DXY chart rising"
+  - "turkish lira currency exchange rate board"
+  - "US dollar banknotes pile"
+shorts_visuals:
+  - "person|Jerome Powell"
+  - "concept|global capital flows to US dollar"
+  - "concept|DXY dollar index chart all time high"
+  - "object|turkish lira banknotes"
+  - "concept|financial news subscribe notification bell"
 ---
 
 "ABD faiz yükseltirse dolar ne olur?" sorusu her Fed toplantısı öncesinde Türk yatırımcıların gündemine girer — ve haklı olarak. Binlerce kilometre uzakta alınan bir kararın dolar/TL kurunu, BIST'i ve altın fiyatlarını saatler içinde sarsabileceğini 2022'de hepimiz yaşadık. Bu rehberde mekanizmayı ve tarihsel döngüleri inceliyor, Türk yatırımcısı için pratik adımları sıralıyoruz.
