@@ -1,12 +1,12 @@
 # ParaFOMO — Dürüst Ölçüm Panosu
 
-> Üretim: 2026-09-22 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
+> Üretim: 2026-09-23 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
 
 ## 1) Organik trafik trendi (GA4 — son 8 hafta)
 
 | Hafta | Gerçek erişim (Direct hariç) | Direct (≈sen/bot) | Toplam |
 |---|---|---|---|
-| 202631 | 1 | 18 | 19 |
+| 202631 | 1 | 17 | 18 |
 | 202632 | 9 | 15 | 24 |
 | 202633 | 24 | 16 | 40 |
 | 202634 | 32 | 27 | 59 |
@@ -14,17 +14,17 @@
 | 202636 | 35 | 23 | 58 |
 | 202637 | 41 | 13 | 54 |
 | 202638 | 48 | 22 | 70 |
-| 202639 | 4 | 0 | 4 |
+| 202639 | 11 | 6 | 17 |
 
-**Gerçek erişim trendi:** `▁▂▄▅▆▆▆█▁`  📉 düşüyor
-**Son hafta Direct payı:** %0 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
+**Gerçek erişim trendi:** `▁▂▄▅▆▆▆█▂`  📉 düşüyor
+**Son hafta Direct payı:** %35 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
 
 **Gerçek erişim kaynağı (son 4 hafta toplamı):**
-- Organic Search: 70 kullanıcı
+- Organic Search: 73 kullanıcı
 - Organic Social: 24 kullanıcı
 - Organic Video: 14 kullanıcı
-- AI Assistant: 13 kullanıcı
-- Unassigned: 3 kullanıcı
+- AI Assistant: 14 kullanıcı
+- Unassigned: 6 kullanıcı
 - Cross-network: 3 kullanıcı
 - Referral: 1 kullanıcı
 
@@ -39,7 +39,7 @@
 | 2026-08-24 | 12 | 2670 | %0.4 |
 | 2026-08-31 | 17 | 1920 | %0.9 |
 | 2026-09-07 | 14 | 2206 | %0.6 |
-| 2026-09-14 | 36 | 1456 | %2.5 |
+| 2026-09-14 | 36 | 1609 | %2.2 |
 
 **Tıklama trendi:** `▁▁▁▂▃▄▃█`  📈 artıyor
 
@@ -65,15 +65,14 @@
 
 ## 3) YouTube motoru
 
-- **Abone:** 46  ·  **Toplam izlenme:** 52,773  ·  **Video:** 250
+- **Abone:** 47  ·  **Toplam izlenme:** 52,795  ·  **Video:** 253
 - İzlenme/abone dönüşümü: **0.09%** (izleyen kaç kişi abone/huniye giriyor)
 
 ## 4) 🎯 DÜRÜST HÜKÜM
 
 **Hedef:** 1000 ziyaretçi/gün = 7,000/hafta gerçek erişim.
-**Gerçek durum:** son hafta **4** gerçek ziyaretçi = hedefin **%0.06**'si. Kalan: **6,996** kişi/hafta.
+**Gerçek durum:** son hafta **11** gerçek ziyaretçi = hedefin **%0.16**'si. Kalan: **6,989** kişi/hafta.
 
-**Teşhis:**
-- 💡 YouTube'da 52,773 izlenme var ama siteye ~0 akıyor. En büyük kullanılmayan kaldıraç: YouTube→site hunisi.
+- Belirgin kırmızı bayrak yok; trend ve hedef mesafesine bak.
 
 **Özet:** Öğrenme döngüsü ses/format/slot optimize ediyor ama yukarıdaki darboğaz oralarda değil. Sistemin 'kendi kendine öğrenip uygulaması' için önce ölçülen darboğaza (otorite/dağıtım) yönlendirilmesi gerekir.
