@@ -1,17 +1,17 @@
 {
-  "updated": "2026-09-24T06:15+00:00",
+  "updated": "2026-09-24T12:15+00:00",
   "source": "Halka arz fiyatı: halkarz.com · Güncel fiyat: Yahoo Finance (BIST)",
   "count": 12,
-  "avg_return_pct": 4.2,
-  "positive_count": 3,
-  "positive_pct": 25,
+  "avg_return_pct": -0.9,
+  "positive_count": 2,
+  "positive_pct": 17,
   "best": {
     "code": "KARCL",
-    "return_pct": 254.3
+    "return_pct": 218.9
   },
   "worst": {
     "code": "BKRGY",
-    "return_pct": -52.7
+    "return_pct": -54.8
   },
   "items": [
     {
@@ -21,8 +21,8 @@
       "start": "2026-07-22",
       "date_text": "22-23-24 Temmuz 2026",
       "ipo_price": 35.0,
-      "current_price": 124.0,
-      "return_pct": 254.3
+      "current_price": 111.6,
+      "return_pct": 218.9
     },
     {
       "code": "CITAS",
@@ -31,8 +31,8 @@
       "start": "2026-08-10",
       "date_text": "10-11-12 Ağustos 2026",
       "ipo_price": 73.7,
-      "current_price": 84.6,
-      "return_pct": 14.8
+      "current_price": 93.05,
+      "return_pct": 26.3
     },
     {
       "code": "NETGL",
@@ -41,18 +41,8 @@
       "start": "2026-09-09",
       "date_text": "9-10-11 Eylül 2026",
       "ipo_price": 25.52,
-      "current_price": 27.52,
-      "return_pct": 7.8
-    },
-    {
-      "code": "TKNKA",
-      "company": "Teknika Plast Teknik Kalıp Plastik San. ve Tic. A.Ş.",
-      "link": "https://halkarz.com/teknika-plast-teknik-kalip-plastik-san-ve-tic-a-s/",
-      "start": "2026-08-12",
-      "date_text": "12-13-14 Ağustos 2026",
-      "ipo_price": 85.4,
-      "current_price": 83.4,
-      "return_pct": -2.3
+      "current_price": 24.78,
+      "return_pct": -2.9
     },
     {
       "code": "INTET",
@@ -61,8 +51,8 @@
       "start": "2026-08-26",
       "date_text": "26-27 Ağustos 2026",
       "ipo_price": 53.6,
-      "current_price": 52.05,
-      "return_pct": -2.9
+      "current_price": 50.7,
+      "return_pct": -5.4
     },
     {
       "code": "METEN",
@@ -75,14 +65,24 @@
       "return_pct": -9.6
     },
     {
+      "code": "TKNKA",
+      "company": "Teknika Plast Teknik Kalıp Plastik San. ve Tic. A.Ş.",
+      "link": "https://halkarz.com/teknika-plast-teknik-kalip-plastik-san-ve-tic-a-s/",
+      "start": "2026-08-12",
+      "date_text": "12-13-14 Ağustos 2026",
+      "ipo_price": 85.4,
+      "current_price": 75.1,
+      "return_pct": -12.1
+    },
+    {
       "code": "MASFN",
       "company": "Masfen Enerji A.Ş.",
       "link": "https://halkarz.com/masfen-enerji-a-s/",
       "start": "2026-07-22",
       "date_text": "22-23-24 Temmuz 2026",
       "ipo_price": 45.68,
-      "current_price": 38.56,
-      "return_pct": -15.6
+      "current_price": 38.22,
+      "return_pct": -16.3
     },
     {
       "code": "KPEKS",
@@ -91,18 +91,8 @@
       "start": "2026-08-12",
       "date_text": "12-13-14 Ağustos 2026",
       "ipo_price": 94.0,
-      "current_price": 63.4,
-      "return_pct": -32.6
-    },
-    {
-      "code": "QUICK",
-      "company": "Quick Sigorta A.Ş.",
-      "link": "https://halkarz.com/quick-sigorta-a-s/",
-      "start": "2026-07-29",
-      "date_text": "29-30-31 Temmuz 2026",
-      "ipo_price": 76.6,
-      "current_price": 49.04,
-      "return_pct": -36.0
+      "current_price": 62.3,
+      "return_pct": -33.7
     },
     {
       "code": "VEYAS",
@@ -111,8 +101,18 @@
       "start": "2026-08-12",
       "date_text": "12-13-14 Ağustos 2026",
       "ipo_price": 136.0,
-      "current_price": 86.7,
-      "return_pct": -36.2
+      "current_price": 85.0,
+      "return_pct": -37.5
+    },
+    {
+      "code": "QUICK",
+      "company": "Quick Sigorta A.Ş.",
+      "link": "https://halkarz.com/quick-sigorta-a-s/",
+      "start": "2026-07-29",
+      "date_text": "29-30-31 Temmuz 2026",
+      "ipo_price": 76.6,
+      "current_price": 44.64,
+      "return_pct": -41.7
     },
     {
       "code": "ALBTN",
@@ -121,8 +121,8 @@
       "start": "2026-07-22",
       "date_text": "22-23 Temmuz 2026",
       "ipo_price": 38.6,
-      "current_price": 23.86,
-      "return_pct": -38.2
+      "current_price": 22.36,
+      "return_pct": -42.1
     },
     {
       "code": "BKRGY",
@@ -131,8 +131,8 @@
       "start": "2026-08-24",
       "date_text": "24-25-26 Ağustos 2026",
       "ipo_price": 12.93,
-      "current_price": 6.12,
-      "return_pct": -52.7
+      "current_price": 5.84,
+      "return_pct": -54.8
     }
   ]
 }
