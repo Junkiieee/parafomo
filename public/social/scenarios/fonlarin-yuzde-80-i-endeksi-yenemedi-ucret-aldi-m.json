@@ -1,0 +1,75 @@
+{
+  "slug": "fonlarin-yuzde-80-i-endeksi-yenemedi-ucret-aldi-m",
+  "title": "Fonların Yüzde 80'i Endeksi Yenemedi, Ücret Aldı",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Türkiye'deki aktif yatırım fonlarının büyük bölümü uzun vadede BIST 100'ü geçemiyor; üstelik her yıl yüzde 2 yönetim ücreti alıyor.",
+  "tags": [
+    "yatırım fonu",
+    "borsa yatırım fonu",
+    "BYF",
+    "endeks fon",
+    "fon masrafı",
+    "BIST 100",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Yatırım fonlarının yüzde 80'i piyasayı yenemiyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Fonların",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ödediğin yöneticinin piyasayı geçme ihtimali beşte bir — ama ücreti, kaybet de kazan da, her yıl kesiliyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Risk",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yıllık yüzde 2 masraf küçük görünür; ama 10 yılda 100 bin liranın yaklaşık 20 bini komisyona gider.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Fonların",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Borsa yatırım fonları aynı BIST 100 endeksini yüzde 0.1 masrafla takip ediyor — 20 kat daha ucuz.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Borsa",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Parana gerçekten çalışan aracın hangisi olduğunu merak ediyorsan abone ol — her gün bir finans gerçeği, tam 60 saniyede.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
