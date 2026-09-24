@@ -120,7 +120,8 @@ def build_comment(prices, headlines):
         low = out.lower()
         _bad = ("api error", "authenticate", "oauth", "access token",
                 "invalid api", "usage limit", "rate limit", "credit balance",
-                "please run", "not logged in")
+                "please run", "not logged in", "weekly limit", "you've hit",
+                "hit your", "resets", "quota")
         if r.returncode == 0 and 15 < len(out) < 240 and not any(b in low for b in _bad):
             return out
     except Exception:
