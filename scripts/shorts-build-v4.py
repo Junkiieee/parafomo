@@ -38,6 +38,7 @@ BLOG = os.path.join(ROOT, "src", "content", "blog")
 WORDMARK = os.path.join(ROOT, "public", "parafomo-wordmark.png")
 OUT_DIR = os.path.join(ROOT, "public", "social")
 MUSIC = os.path.join(ROOT, "public", "social", "assets", "bed.mp3")
+SFX_DIR = os.path.join(ROOT, "assets", "sfx")  # cut-synced SFX (whoosh/impact, CC0)
 SA_JSON = "/root/.config/parafomo/ga-sa.json"
 BROLL_CACHE = "/root/.cache/parafomo/broll"
 TMP = "/tmp/shorts_frames"
@@ -778,6 +779,32 @@ def gen_pad(dur, path):
                     "-c:a", "mp3", path], check=True, capture_output=True)
 
 
+def build_sfx_track(cues, total, path):
+    """Cut-synced SFX (2026 Shorts retention lever): her sahne kesişimine whoosh, kanca +
+    orta-video punch-in beat'ine impact (CC0, Content-ID'siz VideoEditingSFX). cues = list of
+    (t_saniye, 'impact'|'whoosh'). Savunmacı: kaynak yoksa/başarısızsa None → hat kırılmaz."""
+    whoosh = os.path.join(SFX_DIR, "whoosh.wav")
+    impact = os.path.join(SFX_DIR, "impact.wav")
+    if not (os.path.exists(whoosh) and os.path.exists(impact)) or not cues:
+        return None
+    inputs, chains, mixins = [], [], ""
+    for n, (t, kind) in enumerate(cues):
+        src = impact if kind == "impact" else whoosh
+        vol = 0.26 if kind == "impact" else 0.13   # impact ~−12dB, whoosh ~−18dB (belirgin ama bastırmaz)
+        delay = max(0, int(t * 1000))
+        inputs += ["-i", src]
+        chains.append(f"[{n}:a]adelay={delay}|{delay},volume={vol}[s{n}]")
+        mixins += f"[s{n}]"
+    fc = ";".join(chains) + f";{mixins}amix=inputs={len(cues)}:normalize=0,apad=whole_dur={total:.2f}[a]"
+    try:
+        subprocess.run(["ffmpeg", "-y", *inputs, "-filter_complex", fc, "-map", "[a]",
+                        "-c:a", "pcm_s16le", "-ar", "44100", path], check=True, capture_output=True)
+        return path if os.path.exists(path) else None
+    except Exception as e:
+        print(f"[i] SFX track atlandı: {str(e)[:80]}")
+        return None
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("slug")
@@ -787,6 +814,7 @@ def main():
     ap.add_argument("--voice", default=None)
     ap.add_argument("--edge-voice", default=EDGE_VOICE)
     ap.add_argument("--no-music", action="store_true")
+    ap.add_argument("--no-sfx", action="store_true", help="cut-synced SFX'i kapat")
     ap.add_argument("--no-broll", action="store_true")
     args = ap.parse_args()
 
@@ -824,11 +852,19 @@ def main():
         p = os.path.join(TMP, f)
         shutil.rmtree(p, ignore_errors=True) if os.path.isdir(p) else os.remove(p)
 
-    clips, events, tcur, credits = [], [], 0.0, []
+    clips, events, tcur, credits, sfx_cues = [], [], 0.0, [], []
     # v4.3 ikincil hook: ~orta beat'e mid-video pattern-interrupt (punch-in). Yeterli
     # beat varsa (>=4) uygula; hook (0) ve son/CTA beat'i (len-1) hariç, ortadaki beat.
     rehook_idx = (len(segs) // 2) if len(segs) >= 4 else -1
     for i, (kind, eyebrow, spoken) in enumerate(segs):
+        # cut-synced SFX cue'su: kanca (t≈0) ve orta-video punch-in = impact (key beat),
+        # diğer her sahne kesişimi (i>=1) = whoosh. tcur = bu klibin başlangıç anı.
+        if i == 0:
+            sfx_cues.append((0.03, "impact"))
+        elif i == rehook_idx:
+            sfx_cues.append((tcur, "impact"))
+        else:
+            sfx_cues.append((tcur, "whoosh"))
         aud = f"{TMP}/aud{i:02d}.mp3"
         ov = f"{TMP}/ov{i:02d}.png"
         synth(spoken, aud)
@@ -960,9 +996,20 @@ def main():
             music = f"{TMP}/pad.mp3"; gen_pad(total + 1, music)
             print("[i] Gerçek müzik yok → geçici pad")
 
+    sfx = None if args.no_sfx else build_sfx_track(sfx_cues, total, f"{TMP}/sfx.wav")
+
     out = os.path.join(OUT_DIR, f"short-{args.slug}.mp4")
     sub = f"subtitles={assf}:fontsdir={FONTSDIR}"
-    if music:
+    if music and sfx:
+        # ses + ducking'li müzik yatağı + cut-synced SFX (3'lü amix); SFX düşük ses, ducking'e girmez.
+        fc = (f"[0:v]{sub}[v];[1:a]volume=0.13[bed];"
+              f"[bed][0:a]sidechaincompress=threshold=0.03:ratio=10:attack=15:release=350[d];"
+              f"[0:a][d][2:a]amix=inputs=3:duration=first:dropout_transition=0[a]")
+        subprocess.run(["ffmpeg", "-y", "-i", joined, "-stream_loop", "-1", "-i", music, "-i", sfx,
+                        "-filter_complex", fc, "-map", "[v]", "-map", "[a]", "-c:v", "libx264",
+                        "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k",
+                        "-movflags", "+faststart", "-shortest", out], check=True, capture_output=True)
+    elif music:
         fc = (f"[0:v]{sub}[v];[1:a]volume=0.13[bed];"
               f"[bed][0:a]sidechaincompress=threshold=0.03:ratio=10:attack=15:release=350[d];"
               f"[0:a][d]amix=inputs=2:duration=first:dropout_transition=0[a]")
@@ -970,10 +1017,19 @@ def main():
                         "-filter_complex", fc, "-map", "[v]", "-map", "[a]", "-c:v", "libx264",
                         "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k",
                         "-movflags", "+faststart", "-shortest", out], check=True, capture_output=True)
+    elif sfx:
+        fc = f"[0:v]{sub}[v];[0:a][1:a]amix=inputs=2:duration=first:dropout_transition=0[a]"
+        subprocess.run(["ffmpeg", "-y", "-i", joined, "-i", sfx,
+                        "-filter_complex", fc, "-map", "[v]", "-map", "[a]", "-c:v", "libx264",
+                        "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k",
+                        "-movflags", "+faststart", "-shortest", out], check=True, capture_output=True)
     else:
         subprocess.run(["ffmpeg", "-y", "-i", joined, "-vf", sub, "-c:v", "libx264",
                         "-pix_fmt", "yuv420p", "-c:a", "copy", "-movflags", "+faststart", out],
                        check=True, capture_output=True)
+    if sfx:
+        print(f"    [sfx  ] {len(sfx_cues)} cue (impact×{sum(1 for _,k in sfx_cues if k=='impact')}"
+              f" + whoosh×{sum(1 for _,k in sfx_cues if k=='whoosh')})")
 
     total = duration(out); sz = os.path.getsize(out) / 1024
     print(f"[+] Short: {out}  ({total:.0f}sn, {sz:.0f} KB)")
