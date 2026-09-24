@@ -4,6 +4,74 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-09-24 — ABD Faiz Yükseltirse Dolar Ne Olur? Tarihsel Veri ve Yatırımcı Rehberi
+
+**Yayınlanan yazı:** [ABD Faiz Yükseltirse Dolar Ne Olur?](https://parafomo.com/blog/abd-faiz-yukseltirse-dolar-ne-olur/)
+**Hedef sorgu:** `abd faiz yükseltirse dolar ne olur` · Kategori: Ekonomi
+**GSC fırsatı:** gös 12, sıra 16.8 + bağlı sorgular (abd faiz artırımı doları nasıl etkiler, amerika faiz artırırsa dolar ne olur)
+
+### X (Twitter) Thread Taslağı
+
+🇺🇸📉 "ABD faiz yükseltirse dolar ne olur?"
+
+Kısa yanıt: güçlenir. Ama her zaman değil.
+
+2004-2006 Fed faizi %5.25'e çıkardı → dolar yine de geriledi. İşte nedeni 🧵👇
+
+1/ Mekanizma şu: faiz artar → ABD tahvilleri cazip → dünya parası dolara akar → DXY yükselir
+
+Bu normal senaryodur. Ama piyasa artışı önceden bekliyorsa karar günü "satış" gelir.
+
+2/ Tarih:
+
+📊 1994-95: +10%
+📊 2004-06: -3% ← sürpriz yok
+📊 2015-18: +7%
+📊 2022-23: +20% (DXY 114.8 ile 20 yıl zirvesi!)
+
+3/ Türk yatırımcısına etkisi:
+
+🔴 TL değer kaybı (sıcak para çıkışı + cari açık)
+🔴 Altın USD bazında baskılı (ama TL bazı dengelenebilir)
+🟢 İhracatçı hisseler avantajlı
+
+4/ Ne yapmalısın?
+
+✅ CME FedWatch ile beklentiyi ölç
+✅ Portföyde döviz tamponunu ayarla
+✅ Karar günü paniksiz kal — oynaklık zirvede
+
+Detaylı analiz + tablo → parafomo.com/blog/abd-faiz-yukseltirse-dolar-ne-olur/
+
+### Instagram Carousel / Post Metni
+
+**Başlık:** ABD Faiz Artırırsa Dolara Ne Olur? 📊
+
+Slayt 1: "ABD faiz yükseltirse dolar ne olur?" — her Fed toplantısı öncesi sorulan soru
+
+Slayt 2: Mekanizma → faiz ↑ = dolar cazip = DXY ↑ = TL baskı altında
+
+Slayt 3: Tarihsel tablo — 4 büyük döngü:
+• 1994-95: +%10
+• 2004-06: -%3 (sürpriz yoktu!)
+• 2015-18: +%7
+• 2022-23: +%20
+
+Slayt 4: TL etkisi → sıcak para çıkışı + cari açık = TL değer kaybı
+
+Slayt 5: Ne yapmalısın? → CME FedWatch'ı takip et + döviz tamponunu ayarla
+
+Son slayt: Tam analiz → parafomo.com/blog/abd-faiz-yukseltirse-dolar-ne-olur/
+
+#dolar #fed #faiz #ekonomi #yatırım #türkiye #borsa #tl #dxy #parafomo
+
+### Bugün Yapman Gerekenler
+
+1. **X (Twitter) thread'ini yayınla** — yukarıdaki taslağı kullanarak. Fed mevsimi yaklaşırken bu içerik ilgi görecek.
+2. **Instagram carousel'i paylaş** — 5-6 slaytlık basit bir tasarım; Canva şablonuyla 10 dakikada hazır.
+
+---
+
 ## 2026-09-23 — ABD Faiz Artırırsa Altın Ne Olur? Gerçek Veri, Gerçek Yanıt
 
 **Yayınlanan yazı:** [ABD Faiz Artırırsa Altın Ne Olur?](https://parafomo.com/blog/abd-faiz-artarsa-altin-ne-olur/)

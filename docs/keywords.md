@@ -93,6 +93,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] ABD Faiz Yükseltirse Dolar Ne Olur? Tarihsel Veri ve Yatırımcı Rehberi — `abd-faiz-yukseltirse-dolar-ne-olur` (GSC fırsatı: "abd faiz yükseltirse dolar ne olur" — gös 12, sıra 16.8 + "abd faiz artırımı doları nasıl etkiler" gös 11, sıra 27.4 + "amerika faiz artırırsa dolar ne olur" gös 12, sıra 29.1; mevcut abd-faiz-artarsa-ne-olur yazısının dolar-odaklı derinleşen versiyonu; faiz farkı mekanizması + tarihsel döngü tablosu + TL/BIST etki analizi + "buy the rumor sell the news" rehberi; 24 Eylül 2026)
+
 - [x] ABD Faiz Artırırsa Altın Ne Olur? Gerçek Veri, Gerçek Yanıt — `abd-faiz-artarsa-altin-ne-olur` (GSC fırsatı: "abd de faiz artarsa altın ne olur" — gös 42, sıra 7.7; BOE Bailey konuşması takvim hook'u 25 Eylül; mevcut abd-faiz-artarsa-ne-olur yazısının altın-odaklı derinleşen versiyonu; reel faiz mekanizması + tarihsel döngü tablosu + 2026 çerçevesi; 23 Eylül 2026)
 
 - [x] ALBTN Nedir? Albayrak Hazır Beton Hisse Senedi Rehberi — `albtn-nedir-albayrak-hazir-beton-hisse` (GSC fırsatı: "albayrak hazır beton" — gös 54, sıra 4.6 + "albtn" — gös 31, sıra 30.1; halka arz Temmuz 2026 tamamlandı, borsada işlem görüyor; şirket profili + sektör analizi + değerlendirme kriterleri; halka-arz-nedir-ipo + bist-100 + hisse-secim cluster'ına iç link; 22 Eylül 2026)
