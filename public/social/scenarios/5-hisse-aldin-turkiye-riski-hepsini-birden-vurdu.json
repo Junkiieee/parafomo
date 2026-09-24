@@ -1,0 +1,59 @@
+{
+  "slug": "5-hisse-aldin-turkiye-riski-hepsini-birden-vurdu",
+  "title": "5 Hisse Aldın — Türkiye Riski Hepsini Birden Vurdu",
+  "category": "MİT",
+  "format": "myth",
+  "description": "BIST hisselerinin tamamı aynı makro riske maruz — gerçek çeşitlendirme için varlık sınıfını ve coğrafyayı değiştirmek şart.",
+  "tags": [
+    "çeşitlendirme",
+    "BIST",
+    "portföy",
+    "yatırım",
+    "borsa",
+    "kur riski",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "BIST'te çeşitlendirme diye bir şey yok.",
+      "visual": {
+        "type": "concept",
+        "query": "colorful diverse stock portfolio chart growing screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "BIST hisseleri birbirine zincirli — Türkiye'ye özgü kriz gelince hepsi birlikte iniyor.",
+      "visual": {
+        "type": "concept",
+        "query": "istanbul stock exchange trading floor red screens decline"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2018 dolar krizi, 2021 kur çöküşü — her şokta tüm BIST hisseleri birlikte sert aşağı indi.",
+      "visual": {
+        "type": "concept",
+        "query": "turkish lira dollar exchange rate crash decline chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gerçek çeşitlendirme demek: BIST yanına altın, döviz ya da yabancı varlık eklemek.",
+      "visual": {
+        "type": "concept",
+        "query": "diversified investment portfolio gold dollar foreign assets allocation pie chart"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Portföyünde kaç farklı risk var, hiç hesapladın mı? Abone ol — her gün piyasanın göze çarpmayan tarafını 60 saniyede anlatıyoruz.",
+      "visual": {
+        "type": "concept",
+        "query": "colorful diverse stock portfolio chart growing screen"
+      }
+    }
+  ]
+}
