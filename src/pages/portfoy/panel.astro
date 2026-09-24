@@ -181,6 +181,10 @@ const breadcrumbs = [
           </button>
           <span class="last-upd" id="last-upd" aria-live="polite"></span>
         </div>
+        <p class="pf-error" id="pf-error" role="alert" hidden>
+          <span id="err-msg">Portföyün yüklenemedi.</span>
+          <button type="button" class="link-btn" id="err-retry">Yeniden dene</button>
+        </p>
         <p class="empty" id="empty-state" hidden>
           Henüz pozisyonun yok. Yukarıdan ilk hisseni, altınını veya gümüşünü ekle.
         </p>
@@ -394,13 +398,21 @@ const breadcrumbs = [
 
       // ---- Portföy yükleme + render ----
       async function loadPortfolio() {
+        var errEl = $('pf-error');
         try {
           var s = await api('/portfolio/summary');
+          if (errEl) errEl.hidden = true;
           renderSummary(s);
           renderHoldings(s.holdings);
           renderAllocation(s.holdings);
         } catch (ex) {
-          // 401 zaten showAuth tetikler
+          // 401 → api() zaten clearToken+showAuth çağırır (app-view gizlenir). Diğer tüm
+          // hatalarda (ağ kopması, 500, api.parafomo.com erişilemez) kullanıcı sessiz
+          // kalmasın: net mesaj + "Yeniden dene" göster.
+          if (!$('app-view').hidden && errEl) {
+            $('err-msg').textContent = ex.message || 'Portföyün yüklenemedi — bağlantını kontrol et.';
+            errEl.hidden = false;
+          }
         }
       }
 
@@ -605,6 +617,8 @@ const breadcrumbs = [
         finally { btn.disabled = false; btn.classList.remove('is-spinning'); }
       });
 
+      $('err-retry').addEventListener('click', function () { loadPortfolio(); });
+
       // ---- Şifremi unuttum ----
       document.addEventListener('click', function (e) {
         if (e.target && e.target.id === 'go-forgot') showForgot();
@@ -736,6 +750,8 @@ const breadcrumbs = [
     .last-upd .upd-warn { color: #b3261e; font-weight: 600; }
     .pf-table .nodata { color: #b3261e; font-weight: 600; font-size: 0.82rem; white-space: nowrap; cursor: help; }
     .empty { text-align: center; color: var(--text-muted); padding: 2rem 1rem; background: var(--surface); border-radius: var(--radius); }
+    .pf-error { display: flex; flex-wrap: wrap; gap: 0.5rem 0.9rem; align-items: center; justify-content: center; text-align: center; padding: 1rem 1.1rem; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; border-radius: var(--radius); font-size: 0.93rem; }
+    .pf-error .link-btn { color: #991b1b; font-weight: 600; text-decoration: underline; }
     .table-scroll { overflow-x: auto; }
     .pf-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
     .pf-table th, .pf-table td { padding: 0.65rem 0.5rem; border-bottom: 1px solid var(--border); text-align: left; }
