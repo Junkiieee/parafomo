@@ -188,6 +188,11 @@ const breadcrumbs = [
         <p class="empty" id="empty-state" hidden>
           Henüz pozisyonun yok. Yukarıdan ilk hisseni, altınını veya gümüşünü ekle.
         </p>
+        <div class="pf-skeleton" id="pf-skeleton" aria-hidden="true" hidden>
+          <div class="sk-row"><span class="sk sk-lg"></span><span class="sk sk-sm"></span><span class="sk sk-sm"></span></div>
+          <div class="sk-row"><span class="sk sk-lg"></span><span class="sk sk-sm"></span><span class="sk sk-sm"></span></div>
+          <div class="sk-row"><span class="sk sk-lg"></span><span class="sk sk-sm"></span><span class="sk sk-sm"></span></div>
+        </div>
         <div class="table-scroll">
           <table class="pf-table" id="pf-table" hidden>
             <thead>
@@ -397,15 +402,26 @@ const breadcrumbs = [
       });
 
       // ---- Portföy yükleme + render ----
+      var pfLoaded = false; // ilk başarılı render olduysa true (skeleton yalnız ilk yüklemede)
+      function setSkeleton(on) {
+        var sk = $('pf-skeleton');
+        var sum = $('summary');
+        if (sk) sk.hidden = !on;
+        if (sum) sum.classList.toggle('loading', on);
+      }
       async function loadPortfolio() {
         var errEl = $('pf-error');
+        if (!pfLoaded) setSkeleton(true); // ilk yükleme: ₺0 flaş yerine shimmer
         try {
           var s = await api('/portfolio/summary');
           if (errEl) errEl.hidden = true;
+          setSkeleton(false);
+          pfLoaded = true;
           renderSummary(s);
           renderHoldings(s.holdings);
           renderAllocation(s.holdings);
         } catch (ex) {
+          setSkeleton(false);
           // 401 → api() zaten clearToken+showAuth çağırır (app-view gizlenir). Diğer tüm
           // hatalarda (ağ kopması, 500, api.parafomo.com erişilemez) kullanıcı sessiz
           // kalmasın: net mesaj + "Yeniden dene" göster.
@@ -746,6 +762,15 @@ const breadcrumbs = [
     .refresh-ic { display: inline-block; font-size: 1rem; line-height: 1; }
     .refresh-btn.is-spinning .refresh-ic { animation: pf-spin 0.7s linear infinite; }
     @keyframes pf-spin { to { transform: rotate(360deg); } }
+    /* İlk yükleme shimmer skeleton (₺0 flaşı yerine) */
+    .pf-skeleton { display: flex; flex-direction: column; gap: 0.6rem; padding: 0.4rem 0; }
+    .pf-skeleton .sk-row { display: flex; align-items: center; gap: 0.8rem; }
+    .sk { display: block; height: 0.85rem; border-radius: 5px; background: linear-gradient(90deg, var(--brand-tint) 25%, var(--border) 37%, var(--brand-tint) 63%); background-size: 400% 100%; animation: pf-shimmer 1.3s ease-in-out infinite; }
+    .sk-lg { flex: 1 1 auto; max-width: 160px; }
+    .sk-sm { width: 68px; }
+    .summary-card.loading .sum-value, .summary-card.loading .sum-v { color: transparent; position: relative; border-radius: 5px; background: linear-gradient(90deg, var(--brand-tint) 25%, var(--border) 37%, var(--brand-tint) 63%); background-size: 400% 100%; animation: pf-shimmer 1.3s ease-in-out infinite; }
+    @keyframes pf-shimmer { 0% { background-position: 100% 0; } 100% { background-position: 0 0; } }
+    @media (prefers-reduced-motion: reduce) { .sk, .summary-card.loading .sum-value, .summary-card.loading .sum-v, .refresh-btn.is-spinning .refresh-ic { animation: none; } }
     .last-upd { font-size: 0.78rem; color: var(--text-muted); }
     .last-upd .upd-warn { color: #b3261e; font-weight: 600; }
     .pf-table .nodata { color: #b3261e; font-weight: 600; font-size: 0.82rem; white-space: nowrap; cursor: help; }
