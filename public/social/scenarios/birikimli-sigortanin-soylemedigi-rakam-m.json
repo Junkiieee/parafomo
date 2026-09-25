@@ -1,0 +1,75 @@
+{
+  "slug": "birikimli-sigortanin-soylemedigi-rakam-m",
+  "title": "Birikimli Sigortanın Söylemediği Rakam",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Her ay prim öderken paranın büyük kısmı yatırıma değil, masraf ve komisyona akıyor. Hesabı görmeden bu sözleşmeyi imzalamayın.",
+  "tags": [
+    "birikimli sigorta",
+    "hayat sigortası",
+    "tasarruf",
+    "enflasyon",
+    "yatırım",
+    "türkiye",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "BİRİKİMLİ SİGORTA",
+      "spoken": "Birikimli sigortan sana değil bankaya çalışıyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Mevduat",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kovaya su doldurur gibi prim ödüyorsun; ama kovada delik var, büyük kısmı masrafa akıyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Birikimli",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kalan birikim yılda yüzde on beş büyüse bile Türkiye enflasyonunun çoğu zaman gerisinde kalıyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ucuz vadeli sigorta artı ayrı altın birikimi, aynı primleri çok daha verimli kullanıyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Elindeki poliçenin ücret tablosuna bir bak — rakamlar seni düşündürecek. Günlük net analiz için abone ol.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
