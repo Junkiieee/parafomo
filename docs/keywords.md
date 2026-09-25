@@ -93,6 +93,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] TÜİK Ekim 2026 Enflasyon Verisi: Beklentiler, Senaryo Analizi ve TCMB'ye Etkisi — `tuik-ekim-2026-enflasyon-verisi-beklentiler` (yeni konu; TÜİK 5 Ekim 2026 TÜFE açıklaması önizlemesi; TCMB 22 Ekim PPK kararı bağlantısı; 3 senaryo tablosu + yatırımcı aksiyon adımları; tufe-enflasyon-verisi-nasil-okunur + reel-faiz-nedir + dezenflasyon cluster'ı; 25 Eylül 2026)
+
 - [x] ABD Faiz Yükseltirse Dolar Ne Olur? Tarihsel Veri ve Yatırımcı Rehberi — `abd-faiz-yukseltirse-dolar-ne-olur` (GSC fırsatı: "abd faiz yükseltirse dolar ne olur" — gös 12, sıra 16.8 + "abd faiz artırımı doları nasıl etkiler" gös 11, sıra 27.4 + "amerika faiz artırırsa dolar ne olur" gös 12, sıra 29.1; mevcut abd-faiz-artarsa-ne-olur yazısının dolar-odaklı derinleşen versiyonu; faiz farkı mekanizması + tarihsel döngü tablosu + TL/BIST etki analizi + "buy the rumor sell the news" rehberi; 24 Eylül 2026)
 
 - [x] ABD Faiz Artırırsa Altın Ne Olur? Gerçek Veri, Gerçek Yanıt — `abd-faiz-artarsa-altin-ne-olur` (GSC fırsatı: "abd de faiz artarsa altın ne olur" — gös 42, sıra 7.7; BOE Bailey konuşması takvim hook'u 25 Eylül; mevcut abd-faiz-artarsa-ne-olur yazısının altın-odaklı derinleşen versiyonu; reel faiz mekanizması + tarihsel döngü tablosu + 2026 çerçevesi; 23 Eylül 2026)
