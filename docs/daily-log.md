@@ -4,6 +4,61 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-09-25 — TÜİK Ekim 2026 Enflasyon Verisi: Beklentiler, Senaryo Analizi ve TCMB'ye Etkisi
+
+**Yayınlanan yazı:** [TÜİK Ekim 2026 Enflasyon Verisi](https://parafomo.com/blog/tuik-ekim-2026-enflasyon-verisi-beklentiler/)
+**Hedef sorgu:** `tüik ekim 2026 enflasyon` · Kategori: Ekonomi
+**Konu seçimi:** Backlog boş, SEO fırsatları kapsamlandı → TÜİK 5 Ekim TÜFE açıklaması önizlemesi (learning report'ta en iyi performans gösteren "jackson-hole" olay-öncesi preview modeli)
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+1/ TÜİK 5 Ekim'de enflasyon verisini açıklıyor. Peki rakamlar TCMB'yi ne yöne çeker? 3 senaryo analizi 👇
+
+2/ 📅 Tarih: 5 Ekim 2026, saat 10:00 — Türkiye'nin Eylül TÜFE'si (aylık + yıllık enflasyon değişimi)
+
+3/ Bu veri neden önemli? Tam 17 gün sonra, 22 Ekim'de TCMB PPK toplanıyor. 5 Ekim verisi kararın yönünü şekillendirecek.
+
+4/ 3 Senaryo:
+🟢 Sürpriz düşüş → TL güçlenir, BIST yükselir, faiz indirim beklentisi artar
+🟡 Beklenti karşılandı → Piyasalar stabil
+🔴 Sürpriz yükseliş → TL baskı, dolar/altın yukarı, faiz indirimi ertelenir
+
+5/ Yatırımcı için 5 aksiyon adımı + senaryo tablosu tam yazıda:
+👉 parafomo.com/blog/tuik-ekim-2026-enflasyon-verisi-beklentiler
+
+#enflasyon #TÜFE #TÜİK #TCMB #türkiyeekonomisi
+
+---
+
+### 📸 Instagram Carousel / Post Metni
+
+**Başlık:** TÜİK 5 Ekim'de konuşuyor — TCMB ne duyuyor?
+
+Türkiye'de yatırım yapıyorsan 5 Ekim'i takvimine işle 📌
+
+📊 TÜİK Eylül 2026 TÜFE verisi açıklanıyor
+🏦 17 gün sonra TCMB PPK kararı → bu veri kararı şekillendirir
+
+3 senaryo şöyle:
+✅ Enflasyon beklentiden düşük → faiz indirim baskısı artar
+➡️ Beklenti karşılandı → piyasalar sakin
+❌ Enflasyon yüksek gelir → TL baskı, dolar/altın yukarı
+
+Ne yapmalısın? Link bio'da 👆
+
+#enflasyon #tcmb #türkiyeyatırım #parafomo #tüfe #yatırım #borsa #altın #dolar
+
+---
+
+### ✅ Bugün Senin Yapman Gerekenler
+
+1. **X (Twitter) thread'ini paylaş** — yukarıdaki 5 tweet'i sırayla yayınla; ilk tweet en fazla etkileşimi Türkiye saatiyle sabah 9-10 arası alır.
+2. **Instagram post/carousel yayınla** — görseli `public/social/tuik-ekim-2026-enflasyon-verisi-beklentiler.png` olarak kullan; ilk story'ye de "5 Ekim'i takvimine işle" çıkartması ekle.
+
+---
+
 ## 2026-09-24 — ABD Faiz Yükseltirse Dolar Ne Olur? Tarihsel Veri ve Yatırımcı Rehberi
 
 **Yayınlanan yazı:** [ABD Faiz Yükseltirse Dolar Ne Olur?](https://parafomo.com/blog/abd-faiz-yukseltirse-dolar-ne-olur/)
