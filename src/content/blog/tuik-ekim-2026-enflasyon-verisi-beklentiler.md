@@ -17,6 +17,23 @@ faq:
     a: "TÜİK'in sepet ağırlıklarına göre konut (kira), ulaşım ve gıda kalemleri genel endeksi en çok etkileyen gruplar. Bu kalemlerdeki mevsimsel hareketler Ekim ayını özellikle şekillendirir."
   - q: "Kişisel enflasyonum TÜFE'den neden farklı?"
     a: "TÜİK, ulusal ortalamaları ölçer; senin sepetine bağlı kişisel enflasyon farklı olabilir. Kiracıysanız veya bütçenizin büyük bölümü gıda/ulaşıma gidiyorsa, kişisel enflasyonunuz ortalamadan yüksek çıkabilir."
+shorts:
+  - "Enflasyon düşüyor diye rahatladıysan yanılıyorsun."
+  - "TÜİK 5 Ekim'de enflasyon verisi açıklıyor; piyasalar saniyeler içinde dövize ve borsaya yansıyor."
+  - "Sürpriz düşüş faiz indirimini hızlandırır; sürpriz yükseliş TL'yi ve borsayı vurur."
+  - "Bu veri TCMB'nin 22 Ekim faiz kararını belirliyor ve her yatırımcıyı doğrudan etkiliyor."
+  - "Hangi senaryo seni en çok etkiler? Bir sonraki videoda anlatıyorum — abone ol, veri öncesi hazır ol; parafomo.com'da detaylar var."
+shorts_broll:
+  - "inflation money losing value"
+  - "stock market chart screen"
+  - "turkish lira banknotes"
+  - "central bank interest rate meeting"
+shorts_visuals:
+  - "concept|inflation chart rising Turkey economy"
+  - "place|Türkiye İstatistik Kurumu"
+  - "concept|stock market bull bear chart scenarios"
+  - "place|Türkiye Cumhuriyet Merkez Bankası"
+  - "concept|Turkish lira investment portfolio money"
 ---
 
 5 Ekim 2026'da TÜİK, Eylül ayına ait TÜFE rakamlarını açıklayacak — ve bu rakam, Türkiye ekonomisinin önündeki en kritik iki soruya kapı açıyor: Dezenflasyon yolunda mıyız, yoksa enflasyon yeniden ivme kazanıyor mu? Ve bunun TCMB'nin 22 Ekim faiz toplantısında ne anlamı var?
