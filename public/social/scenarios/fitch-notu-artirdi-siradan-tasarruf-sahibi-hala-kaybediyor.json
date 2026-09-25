@@ -1,0 +1,59 @@
+{
+  "slug": "fitch-notu-artirdi-siradan-tasarruf-sahibi-hala-kaybediyor",
+  "title": "Fitch Notu Artırdı — Sıradan Tasarruf Sahibi Hâlâ Kaybediyor",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Fitch Türkiye'nin kredi notunu yükseltti — iyi haber gibi görünüyor. Ama bu artışın sıradan mevduat sahibinin reel kazancına hiçbir etkisi yok.",
+  "tags": [
+    "Fitch",
+    "kredi notu",
+    "Türkiye",
+    "mevduat",
+    "reel getiri",
+    "enflasyon",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Fitch Türkiye'yi yükseltti, reel kazancın değişmedi.",
+      "visual": {
+        "type": "logo",
+        "query": "Fitch Ratings logo"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yabancı Türk tahvilini alır, devlet ucuz borçlanır — ama senin mevduat faizin bundan etkilenmiyor.",
+      "visual": {
+        "type": "concept",
+        "query": "government bond foreign investor trading screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Enflasyon yüzde otuz devam ederken mevduat faizin yüzde yirmi beşte kalırsa, kayıp aynı.",
+      "visual": {
+        "type": "concept",
+        "query": "bank savings account negative real interest rate inflation chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kredi notu yatırımcının kararı için; senin kararın hâlâ reel getiriye göre şekillenmeli.",
+      "visual": {
+        "type": "concept",
+        "query": "personal savings investment real return decision calculator"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu not artışı dolar mı, altın mı portföyünü etkiler? Her gün 60 saniyede bir net analiz için abone ol.",
+      "visual": {
+        "type": "logo",
+        "query": "Fitch Ratings logo"
+      }
+    }
+  ]
+}
