@@ -1,0 +1,59 @@
+{
+  "slug": "bailey-konustu-sterlin-tutanlar-bunu-bilmeli",
+  "title": "Bailey Konuştu — Sterlin Tutanlar Bunu Bilmeli",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Bank of England Başkanı Bailey'nin son açıklamaları sterlin birikimler için ne anlama geliyor? İngiltere enflasyonu yapışkan kalırken sterlin gerçek güvenli liman mı?",
+  "tags": [
+    "sterlin",
+    "GBP",
+    "Andrew Bailey",
+    "Bank of England",
+    "döviz tasarruf",
+    "enflasyon",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Bailey konuştu — sterlin birikimi de eriyor.",
+      "visual": {
+        "type": "person",
+        "query": "Andrew Bailey"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "İngiltere enflasyonu yüzde 3 bandında yapışık; Bailey faizi serbestçe indiremedi, sterlin zayıfladı.",
+      "visual": {
+        "type": "place",
+        "query": "Bank of England London"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama sterlin TL'ye karşı güçlü görünüyor — sebebi sterlin'in kuvveti değil, TL'nin daha hızlı erimesi.",
+      "visual": {
+        "type": "concept",
+        "query": "currency exchange rate comparison chart board"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Sterlin tutmak TL kaybını yavaşlatır, ama enflasyondan tam korunmak için altın hâlâ önde.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars coins"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Hangi merkez bankası açıklaması portföyünü en çok etkiler? Abone ol — her sabah 60 saniyede tek net finansal gerçek.",
+      "visual": {
+        "type": "person",
+        "query": "Andrew Bailey"
+      }
+    }
+  ]
+}
