@@ -40,7 +40,7 @@ BIST'te yeni işlem görmeye başlayan bir şirketi araştırırken ilk adım ge
 
 ## ALBTN Nedir? Şirket Profili
 
-**Albayrak Hazır Beton San. ve Tic. A.Ş.**, Albayrak Grubu bünyesinde faaliyet gösteren bir inşaat malzemeleri şirketidir. Şirketin temel faaliyeti, konut projeleri, ticari yapılar ve altyapı projelerine hazır beton (ready-mix concrete) tedarik etmektir.
+**Albayrak Hazır Beton San. ve Tic. A.Ş.**, 2003 yılında kurulan ve Albayrak Grubu bünyesinde faaliyet gösteren bir inşaat malzemeleri şirketidir. Şirketin temel faaliyeti; konut projeleri, ticari yapılar ve altyapı projelerine (yol, köprü, tünel, metro) hazır beton (ready-mix concrete) tedarik etmek, ayrıca proje bazlı tedarik ve gayrimenkul geliştirme yapmaktır.
 
 Albayrak Grubu; enerji, inşaat, medya ve lojistik gibi birden fazla sektörde faaliyet gösteren köklü bir Türk holdingidir. ALBTN, bu grubun inşaat malzemeleri segmentini Borsa İstanbul'a taşıyan iştiraki olarak öne çıkıyor.
 
@@ -50,9 +50,14 @@ Albayrak Grubu; enerji, inşaat, medya ve lojistik gibi birden fazla sektörde f
 |---|---|
 | Şirket adı | Albayrak Hazır Beton San. ve Tic. A.Ş. |
 | BIST kodu | ALBTN |
+| Kuruluş | 2003 |
 | Sektör | İnşaat malzemeleri / Hazır beton |
 | Bağlı grup | Albayrak Grubu |
-| Faaliyet bölgesi | Türkiye |
+| Ana faaliyet bölgesi | İstanbul (Anadolu Yakası) |
+
+### Üretim kapasitesi
+
+Şirket, halka arz dönemindeki verilere göre toplam **5 hazır beton tesisi** (2 sabit + 3 mobil) ile faaliyet gösteriyor ve saatlik toplam **400 m³** üretim kapasitesine sahip. Bu tesisler ağırlıklı olarak İstanbul Anadolu Yakası'ndaki konut ve altyapı projelerine (yol, köprü, tünel, metro) beton tedarik ediyor. Sabit/mobil tesis dengesi, şirketin proje bazlı işlere hızlı konumlanabilmesini sağlayan operasyonel bir esneklik unsuru.
 
 ## Halka Arz Süreci: Ne Oldu, Nasıl Gerçekleşti?
 
@@ -65,9 +70,13 @@ ALBTN'nin halka arzı, **22-23 Temmuz 2026** tarihlerinde talep toplama süreciy
 | Halka arz tarihi | 22-23 Temmuz 2026 |
 | Halka arz fiyatı | 38,60 TL |
 | Toplam lot | 70.000.000 |
+| — Sermaye artırımı | 49.000.000 lot |
+| — Ortak satışı | 21.000.000 lot |
 | Dağıtım yöntemi | Eşit Dağıtım |
 | Aracı kurum | Tacirler Yatırım Menkul Değerler A.Ş. |
 | Durum | Tamamlandı |
+
+Arz yapısına dikkat: 70 milyon lotun **49 milyonu sermaye artırımından** (yeni pay ihracı — bu tutar şirket kasasına girer, büyümeye kaynak olur), **21 milyonu ise mevcut ortakların pay satışından** (bu tutar şirkete değil satan ortağa gider) oluştu. Sermaye artırımı ağırlıklı bir arz, halka arz gelirinin büyük kısmının şirkete yatırım kaynağı olarak kaldığı anlamına gelir — yatırımcı açısından değerlendirilmesi gereken bir yapısal ayrımdır.
 
 ### Eşit dağıtım ne anlama geliyor?
 
@@ -144,6 +153,16 @@ ALBTN hakkındaki tüm resmi açıklamalara KAP (Kamuyu Aydınlatma Platformu) �
 - **Genel kurul kararları**
 
 Bu bilgilerin takibi, anlık fiyat hareketlerinin ötesinde şirketin gerçek durumunu anlamlandırmanızı sağlar.
+
+## Halka Arz Sonrası Gelişmeler
+
+Bir hisseyi değerlendirirken halka arz anı kadar **arz sonrası şirket faaliyetleri** de önemlidir; çünkü gerçek performans, kotasyon sonrası atılan adımlarla şekillenir. ALBTN tarafında öne çıkan başlıklar:
+
+- **Piyasa değeri:** Kotasyon sonrası ilk günlerde şirketin piyasa değeri milyarlarca TL seviyesinde işlem gördü; güncel piyasa değeri anlık fiyata bağlı olarak KAP ve borsa terminallerinden takip edilebilir.
+- **Gayrimenkul/arsa hareketleri:** Şirketin faaliyet alanı yalnızca beton üretimi değil; gayrimenkul geliştirme tarafında arsa alımları gibi adımlar da KAP'a yansıyor. Bu tür özel durum açıklamaları, şirketin büyüme yönü hakkında ipucu verir.
+- **Finansal tablolar:** Halka arz sonrası ilk çeyreklik finansallar, izahnamedeki projeksiyonlarla gerçekleşenin karşılaştırılabildiği ilk somut veridir — takip edilmesi kritik.
+
+Bu gelişmeleri portföyünde tutmak isteyenler için, ALBTN dahil BIST hisselerinin güncel değerini ve kâr/zararını tek ekranda izleyebileceğin ücretsiz [portföy takip aracımızı](/portfoy-takip) kullanabilirsin.
 
 ---
 

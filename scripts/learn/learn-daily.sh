@@ -27,6 +27,7 @@ echo "[2/4] Metrikler toplanıyor"
 "$VPY" "$LEARN/metrics_web.py"       || echo "UYARI: web metrik başarısız"
 "$VPY" "$LEARN/metrics_instagram.py" || echo "UYARI: ig metrik başarısız"
 "$VPY" "$LEARN/metrics_youtube.py"   || echo "UYARI: yt metrik başarısız"
+"$VPY" "$LEARN/hook_retention.py"    || echo "UYARI: hook-retention başarısız"
 "$VPY" "$LEARN/seo_targets.py"       || echo "UYARI: seo hedefleri başarısız"
 
 echo "[3/4] Karar üretiliyor"

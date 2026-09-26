@@ -185,9 +185,17 @@ const breadcrumbs = [
           <span id="err-msg">Portföyün yüklenemedi.</span>
           <button type="button" class="link-btn" id="err-retry">Yeniden dene</button>
         </p>
-        <p class="empty" id="empty-state" hidden>
-          Henüz pozisyonun yok. Yukarıdan ilk hisseni, altınını veya gümüşünü ekle.
-        </p>
+        <div class="empty onboard" id="empty-state" hidden>
+          <div class="onboard-ic" aria-hidden="true">📊</div>
+          <h3>Portföyünü kurmaya başla</h3>
+          <p>Henüz pozisyonun yok. İlk hisseni, altınını veya gümüşünü ekle — güncel değerini ve kâr/zararını canlı fiyatlarla otomatik hesaplayalım.</p>
+          <ol class="onboard-steps">
+            <li>Varlık türünü seç (BIST hisse, altın veya gümüş)</li>
+            <li>Adet/gram, alış fiyatı ve tarihini gir</li>
+            <li>Kâr/zararını canlı takip et — istediğin zaman güncelle</li>
+          </ol>
+          <button type="button" class="onboard-cta" id="onboard-add">+ İlk pozisyonu ekle</button>
+        </div>
         <div class="pf-skeleton" id="pf-skeleton" aria-hidden="true" hidden>
           <div class="sk-row"><span class="sk sk-lg"></span><span class="sk sk-sm"></span><span class="sk sk-sm"></span></div>
           <div class="sk-row"><span class="sk sk-lg"></span><span class="sk sk-sm"></span><span class="sk sk-sm"></span></div>
@@ -635,6 +643,19 @@ const breadcrumbs = [
 
       $('err-retry').addEventListener('click', function () { loadPortfolio(); });
 
+      // Boş-durum onboarding CTA → ekleme formunu aç + ilk alana odaklan
+      (function () {
+        var ob = $('onboard-add');
+        if (!ob) return;
+        ob.addEventListener('click', function () {
+          var ab = $('add-block');
+          if (ab) ab.open = true;
+          var at = $('a-type');
+          if (at) at.focus();
+          if (ab && ab.scrollIntoView) ab.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      })();
+
       // ---- Şifremi unuttum ----
       document.addEventListener('click', function (e) {
         if (e.target && e.target.id === 'go-forgot') showForgot();
@@ -775,6 +796,14 @@ const breadcrumbs = [
     .last-upd .upd-warn { color: #b3261e; font-weight: 600; }
     .pf-table .nodata { color: #b3261e; font-weight: 600; font-size: 0.82rem; white-space: nowrap; cursor: help; }
     .empty { text-align: center; color: var(--text-muted); padding: 2rem 1rem; background: var(--surface); border-radius: var(--radius); }
+    .onboard { padding: 2.2rem 1.2rem; }
+    .onboard-ic { font-size: 2.4rem; line-height: 1; margin-bottom: 0.6rem; }
+    .onboard h3 { margin: 0 0 0.4rem; color: var(--text); font-size: 1.15rem; }
+    .onboard p { max-width: 32rem; margin: 0 auto 1rem; }
+    .onboard-steps { display: inline-block; text-align: left; margin: 0 auto 1.3rem; padding-left: 1.2rem; color: var(--text-muted); line-height: 1.7; max-width: 30rem; }
+    .onboard-cta { background: var(--brand-2); color: #fff; border: none; border-radius: var(--radius); padding: 0.75rem 1.4rem; font-weight: 700; font-size: 1rem; cursor: pointer; transition: filter 0.15s; }
+    .onboard-cta:hover { filter: brightness(1.08); }
+    .onboard-cta:focus-visible { outline: 2px solid var(--brand-2); outline-offset: 2px; }
     .pf-error { display: flex; flex-wrap: wrap; gap: 0.5rem 0.9rem; align-items: center; justify-content: center; text-align: center; padding: 1rem 1.1rem; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; border-radius: var(--radius); font-size: 0.93rem; }
     .pf-error .link-btn { color: #991b1b; font-weight: 600; text-decoration: underline; }
     .table-scroll { overflow-x: auto; }

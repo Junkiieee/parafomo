@@ -35,7 +35,7 @@ RAW = "https://raw.githubusercontent.com/Junkiieee/parafomo/main/public/social"
 API = "https://graph.facebook.com/v21.0"
 
 HASHTAGS = ("#altın #gramaltın #çeyrekaltın #altınfiyatları #cumhuriyetaltını "
-            "#yatırım #ekonomi #parafomo")
+            "#yatırım #ekonomi #dolar #borsa #finans #tasarruf #parafomo")
 
 
 def tr_now():
