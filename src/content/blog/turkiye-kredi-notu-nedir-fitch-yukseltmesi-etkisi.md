@@ -17,6 +17,23 @@ faq:
     a: "Kısa vadede olumlu etki görülebilir: döviz alım-satım makası daralabilir, BIST pozitif tepki verebilir. Uzun vadede TL'nin seyri ise enflasyon, cari açık ve TCMB kararlarına bağlıdır; tek başına not yeterli değildir."
   - q: "Kredi notu kimleri doğrudan etkiler?"
     a: "Öncelikle yabancı kurumsal yatırımcılar ve Türk devletinin dış borçlanma maliyetini etkiler. Bireysel yatırımcılar ise tahvil faizleri, BIST ve döviz kuru üzerinden dolaylı biçimde etkilenir."
+shorts:
+  - "Fitch notu yükseltti ama Türkiye hâlâ çöp kategorisinde."
+  - "Yeni notumuz BB+, ama yatırım yapılabilir eşiğin hâlâ bir basamak altındayız."
+  - "Dünya genelindeki büyük emeklilik fonları spekülatif notlu ülkelere yatırım yapamıyor."
+  - "Yükseltme uzun vadede devlet borçlanma maliyetini düşürür, Türkiye'ye yabancı sermaye çeker."
+  - "Türkiye investment grade'e ne zaman ulaşır? Kanala abone ol, gelişmeleri kaçırma — parafomo.com'da tüm detaylar var."
+shorts_broll:
+  - "credit rating agency financial report"
+  - "turkish lira currency exchange rate"
+  - "institutional investor pension fund portfolio"
+  - "government bond yield interest rate chart"
+shorts_visuals:
+  - "logo|Fitch Ratings logo"
+  - "concept|investment grade junk bond rating scale chart"
+  - "concept|pension fund institutional investor portfolio management"
+  - "concept|government bond interest rate falling chart"
+  - "concept|financial news website laptop screen"
 ---
 
 Fitch, Türkiye'nin kredi notunu yükseltti. Haberi duydunuz, piyasalarda bir iyimserlik dalgası geçti. Ama sonra bankaya gittiğinizde mevduat faiziniz aynı, dolar hâlâ baskıda, ve enflasyon alım gücünüzü kemirmeye devam ediyor. "Peki bu yükseltme benim için ne ifade ediyor?" sorusu tam da burada başlıyor.
