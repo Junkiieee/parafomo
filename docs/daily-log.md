@@ -4,6 +4,71 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-09-26 — Türkiye Kredi Notu Nedir? Fitch Yükseltmesi TL, Borsa ve Mevduatı Nasıl Etkiler?
+
+**Yayınlanan yazı:** [Türkiye Kredi Notu Nedir? Fitch Yükseltmesi TL, Borsa ve Mevduatı Nasıl Etkiler?](https://parafomo.com/blog/turkiye-kredi-notu-nedir-fitch-yukseltmesi-etkisi/)
+**Hedef sorgu:** `türkiye kredi notu` · Kategori: Ekonomi
+**Konu seçimi:** Takvimde 1-3 günde 🔴 olay yok (TÜİK 5 Ekim zaten kapsandı), tüm GSC fırsatları kapsamlandı → Fitch viral short hook'u + kapsanmamış kredi notu konusu; learning report "etkisi" + kişisel finans koruma açısı en iyi performans modeline uyuyor.
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+1/ Fitch, Türkiye'nin kredi notunu artırdı. Piyasalarda iyimserlik vardı. Ama mevduatın aynı, dolar baskıda, enflasyon sürüyor. Ne oluyor? 👇
+
+2/ Kredi notu, ülkenin borç ödeme kapasitesine verilen bir puan. Fitch, Moody's, S&P — dünyanın en büyük üç ajansı belirliyor.
+
+3/ Türkiye şu an BB+ seviyesinde. Yatırım yapılabilir eşiği (BBB-) bir basamak uzakta. Bu farkın sana ne etkisi var?
+
+4/ Yükseltme kısa vadede ne yapar:
+• TL → hafif güçlenme
+• BIST → pozitif açılış
+• Tahvil faizi → düşüş eğilimi
+Ama bu geçici. Uzun vadede enflasyon ve TCMB belirleyici olmaya devam ediyor.
+
+5/ Sıradan tasarruf sahibi için asıl soru: mevduat faiziyle gerçek enflasyon arasındaki fark kapandı mı? Not yükseltmesi buna cevap vermiyor — bu görevi TCMB üstleniyor.
+
+6/ Tam tablo + investment grade nedir + ne zaman önemli hale gelir:
+👉 parafomo.com/blog/turkiye-kredi-notu-nedir-fitch-yukseltmesi-etkisi
+
+---
+
+### 📸 Instagram Post / Carousel Metni
+
+**Slayt 1 — Başlık:**
+Fitch Türkiye'yi Yükseltti
+Ama Sen Neden Hâlâ Kaybediyorsun? 🤔
+
+**Slayt 2:**
+Kredi notu = ülkenin "kredi skoru"
+Fitch artırdı → BB+ seviyesindeyiz
+Yatırım yapılabilir eşik (BBB-) bir basamak uzakta
+
+**Slayt 3:**
+Not yükseltmesinin kısa vadeli etkisi:
+📈 BIST yükselir
+💵 TL hafif güçlenir
+📉 Tahvil faizi düşer
+
+**Slayt 4:**
+Ama mevduatın? Doğrudan etkilenmiyor.
+Çünkü mevduat faizini belirleyen → TCMB
+Kredi notu → devletin dış borçlanma maliyetini etkiler
+
+**Slayt 5 — CTA:**
+Tam açıklama + tablolar + yatırımcı rehberi:
+🔗 parafomo.com (bio linki)
+#krediNotu #fitch #türkiyeEkonomisi #tl #borsa #yatırım #parafomo
+
+---
+
+### ✅ Bugün Yapman Gereken 1-2 İş
+
+1. **Thread ve Instagram paylaşımını yayınla** — X'te thread'i, Instagram'da 5 slaytlık carousel'i paylaş; yorumlara "kredi notu ne demek?" sorusunu pinle.
+2. **İlgili toplulukta paylaş** — Ekşi Sözlük "kredi notu" veya "fitch türkiye" başlığında ya da bir finans Telegram grubunda yazıyı değer katarak paylaş.
+
+---
+
 ## 2026-09-25 — TÜİK Ekim 2026 Enflasyon Verisi: Beklentiler, Senaryo Analizi ve TCMB'ye Etkisi
 
 **Yayınlanan yazı:** [TÜİK Ekim 2026 Enflasyon Verisi](https://parafomo.com/blog/tuik-ekim-2026-enflasyon-verisi-beklentiler/)
