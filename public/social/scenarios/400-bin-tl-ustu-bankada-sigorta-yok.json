@@ -1,0 +1,59 @@
+{
+  "slug": "400-bin-tl-ustu-bankada-sigorta-yok",
+  "title": "400 Bin TL Üstü Bankada Sigorta Yok",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "TMSF mevduat sigortası her bankada yalnızca 400 bin TL'ye kadar geçerli — üstü tamamen açıkta. Enflasyon 15 kata çıktı, limit sadece 4 katına çıkabildi.",
+  "tags": [
+    "mevduat sigortası",
+    "TMSF",
+    "banka",
+    "tasarruf",
+    "finansal okuryazarlık",
+    "Türkiye",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MEVDUAT GÜVENCESİ",
+      "spoken": "400 binin üstü bankada sigortasız.",
+      "visual": {
+        "type": "concept",
+        "query": "bank vault overflowing with cash money stacks"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "TMSF her bankada sadece 400 bin TL'ye kadar güvence veriyor. Üstü tamamen açıkta.",
+      "visual": {
+        "type": "concept",
+        "query": "bank deposit insurance safety certificate document"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2015'te limit 100 bindi. Enflasyon 15 kata çıktı; limit yalnızca 4 katına çıkabildi.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation money value decrease chart graph"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çözüm basit: büyük birikimi 400 binin altında bloklara böl, farklı bankalara dağıt.",
+      "visual": {
+        "type": "concept",
+        "query": "savings divided multiple accounts bank branches"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bankacılığın sessiz kuralları bu kadar değil. Abone ol — her gün kısa bir finans gerçeği.",
+      "visual": {
+        "type": "concept",
+        "query": "bank vault overflowing with cash money stacks"
+      }
+    }
+  ]
+}
