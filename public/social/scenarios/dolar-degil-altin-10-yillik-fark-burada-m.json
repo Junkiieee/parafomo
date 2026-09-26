@@ -1,0 +1,75 @@
+{
+  "slug": "dolar-degil-altin-10-yillik-fark-burada-m",
+  "title": "Dolar Değil, Altın — 10 Yıllık Fark Burada",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Dolar son 10 yılda yaklaşık yüzde 1500 kazandırdı; ama altın aynı dönemde yüzde 5400'ü geçti. 10 bin TL'yi hangisine koymuş olmak gerekiyordu?",
+  "tags": [
+    "altın",
+    "dolar",
+    "yatırım",
+    "tl",
+    "tasarruf",
+    "gram altın",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Dolar en güvenli korunma sanıyorsun.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Dolar",
+        "glyph": "$"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "On yıl önce 10 bin TL'yi dolara çevirseydin, bugün 160 bin TL olurdu.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Dolar",
+        "glyph": "$"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama aynı 10 bin TL'yi altına koysaydın, bugün 550 bin TL yapardı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Altın dolardan 3.6 kat fazla kazandırdı. Gerçek para sığınağı altın, veri bunu söylüyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Altın neden dolardan hep öne geçiyor? Bunu da açıklayacağız. Abone ol — her gün en net finans kararı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
