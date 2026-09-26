@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-09-25T08:46:11Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-09-26T08:46:20Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -19,21 +19,21 @@
 
 ### Viral format — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `shock_number` — skor 450.823, örnek 8
+- `shock_number` — skor 450.055, örnek 8
 - `single_concept` — skor 431.344, örnek 5
-- `news_reaction` — skor 218.922, örnek 14
 - `myth` — skor 191.879, örnek 10
-- `backtest_return` — skor 72.847, örnek 4
+- `news_reaction` — skor 141.397, örnek 14
+- `backtest_return` — skor 80.626, örnek 4
 
-### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
+### Viral yayın slotu — **explore** (yeterli veri yok, rotasyon sürüyor)
 
-- `2` — skor 340.96, örnek 7
+- `2` — skor 345.406, örnek 7
 - `5` — skor 307.317, örnek 4
 - `0` — skor 261.037, örnek 4
-- `manual` — skor 258.726, örnek 9
-- `4` — skor 242.89, örnek 5
 - `3` — skor 240.21, örnek 6
-- `1` — skor 232.333, örnek 6
+- `1` — skor 231.309, örnek 6
+- `4` — skor 211.242, örnek 6
+- `manual` — skor 148.774, örnek 8
 
 ## Konu sinyalleri
 
@@ -46,12 +46,12 @@
 - tmsf-nedir-mevduat-guvencesi — skor 6.0
 
 **🎯 Fırsat sorguları** (içerik/başlık iyileştir):
+- `albayrak hazır beton hisse` — gös 77, sıra 12.3
 - `"albayrak hazır beton"` — gös 54, sıra 4.6
-- `abd de faiz artarsa altın ne olur` — gös 41, sıra 7.7
-- `abd işsizlik verisi altını nasıl etkiler` — gös 14, sıra 5.1
+- `abd de faiz artarsa altın ne olur` — gös 40, sıra 7.7
+- `abd işsizlik verisi altını nasıl etkiler` — gös 16, sıra 4.9
 - `%tcmb politika faizi eylül 2026 faiz kararı` — gös 11, sıra 6.5
 - `+tcmb faiz kararı 10 eylül 2026 politika faizi` — gös 10, sıra 9.9
-- `abd faiz arttırırsa ne olur` — gös 10, sıra 17.8
 - `abd faiz yükseltirse dolar ne olur` — gös 10, sıra 16.1
 - `%tcmb faiz kararı 10 eylül 2026 politika faizi` — gös 9, sıra 10
 
