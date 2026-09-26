@@ -1,0 +1,59 @@
+{
+  "slug": "birikimli-sigortanin-soylemedigi-rakam",
+  "title": "Birikimli Sigortanın Söylemediği Rakam",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Her ay prim öderken paranın büyük kısmı yatırıma değil, masraf ve komisyona akıyor. Hesabı görmeden bu sözleşmeyi imzalamayın.",
+  "tags": [
+    "birikimli sigorta",
+    "hayat sigortası",
+    "tasarruf",
+    "enflasyon",
+    "yatırım",
+    "türkiye",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "BİRİKİMLİ SİGORTA",
+      "spoken": "Birikimli sigortan sana değil bankaya çalışıyor.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank full of coins savings jar"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kovaya su doldurur gibi prim ödüyorsun; ama kovada delik var, büyük kısmı masrafa akıyor.",
+      "visual": {
+        "type": "object",
+        "query": "leaking bucket water dripping hole"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kalan birikim yılda yüzde on beş büyüse bile Türkiye enflasyonunun çoğu zaman gerisinde kalıyor.",
+      "visual": {
+        "type": "concept",
+        "query": "inflation rising prices chart money losing value"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ucuz vadeli sigorta artı ayrı altın birikimi, aynı primleri çok daha verimli kullanıyor.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins savings investment alternative"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Elindeki poliçenin ücret tablosuna bir bak — rakamlar seni düşündürecek. Günlük net analiz için abone ol.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank full of coins savings jar"
+      }
+    }
+  ]
+}
