@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-09-26T08:46:20Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-09-27T08:46:29Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -17,43 +17,43 @@
 ### Shorts motoru (google/edge) — **explore** (yeterli veri yok, rotasyon sürüyor)
 
 
-### Viral format — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
+### Viral format — **explore** (yeterli veri yok, rotasyon sürüyor)
 
-- `shock_number` — skor 450.055, örnek 8
-- `single_concept` — skor 431.344, örnek 5
-- `myth` — skor 191.879, örnek 10
-- `news_reaction` — skor 141.397, örnek 14
-- `backtest_return` — skor 80.626, örnek 4
+- `shock_number` — skor 400.38, örnek 9
+- `single_concept` — skor 364.945, örnek 6
+- `myth` — skor 191.883, örnek 10
+- `news_reaction` — skor 145.652, örnek 13
+- `backtest_return` — skor 73.324, örnek 3
 
-### Viral yayın slotu — **explore** (yeterli veri yok, rotasyon sürüyor)
+### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `2` — skor 345.406, örnek 7
-- `5` — skor 307.317, örnek 4
-- `0` — skor 261.037, örnek 4
-- `3` — skor 240.21, örnek 6
-- `1` — skor 231.309, örnek 6
-- `4` — skor 211.242, örnek 6
-- `manual` — skor 148.774, örnek 8
+- `2` — skor 385.77, örnek 6
+- `5` — skor 252.053, örnek 5
+- `3` — skor 240.542, örnek 6
+- `1` — skor 231.269, örnek 6
+- `4` — skor 211.111, örnek 6
+- `0` — skor 209.629, örnek 5
+- `manual` — skor 157.828, örnek 7
 
 ## Konu sinyalleri
 
 **En iyi blog sayfaları:**
-- jackson-hole-2026-ne-zaman-warsh-konusmasi — skor 11.75
+- abd-issizlik-verisi-altin-dolar-etkisi — skor 17.1
 - abd-eylul-2026-cpi-verisi-fed-dolar-altin — skor 9.9
-- abd-issizlik-verisi-altin-dolar-etkisi — skor 7.1
-- parasal-genisleme-nedir — skor 6.7
-- abd-faiz-artarsa-ne-olur — skor 6.58
 - tmsf-nedir-mevduat-guvencesi — skor 6.0
+- abd-faiz-artarsa-ne-olur — skor 5.58
+- housing-starts-nedir — skor 5.0
+- gayrimenkul-mi-borsa-mi-2026 — skor 5.0
 
 **🎯 Fırsat sorguları** (içerik/başlık iyileştir):
-- `albayrak hazır beton hisse` — gös 77, sıra 12.3
+- `albayrak hazır beton hisse` — gös 114, sıra 12.2
 - `"albayrak hazır beton"` — gös 54, sıra 4.6
-- `abd de faiz artarsa altın ne olur` — gös 40, sıra 7.7
-- `abd işsizlik verisi altını nasıl etkiler` — gös 16, sıra 4.9
+- `abd de faiz artarsa altın ne olur` — gös 29, sıra 8.6
 - `%tcmb politika faizi eylül 2026 faiz kararı` — gös 11, sıra 6.5
 - `+tcmb faiz kararı 10 eylül 2026 politika faizi` — gös 10, sıra 9.9
-- `abd faiz yükseltirse dolar ne olur` — gös 10, sıra 16.1
 - `%tcmb faiz kararı 10 eylül 2026 politika faizi` — gös 9, sıra 10
+- `abd faiz yükseltirse dolar ne olur` — gös 9, sıra 16.9
+- `borsa neden düşer` — gös 9, sıra 8.4
 
 ## Notlar
 
