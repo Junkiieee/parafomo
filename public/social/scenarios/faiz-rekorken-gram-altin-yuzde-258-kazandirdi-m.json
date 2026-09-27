@@ -1,0 +1,142 @@
+{
+  "slug": "faiz-rekorken-gram-altin-yuzde-258-kazandirdi-m",
+  "title": "Faiz Rekorken Gram Altın Yüzde 258 Kazandırdı",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "Kasım 2023'te faiz rekor seviyelere ulaşırken herkes mevduata koştu. O an 5.000 TL gram altına gitseydi bugün yaklaşık 17.918 TL olurdu — yaklaşık %258 getiri.",
+  "tags": [
+    "gram altın",
+    "yatırım",
+    "mevduat",
+    "faiz",
+    "altın getiri",
+    "birikim",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "Sen mevduatta beklerken 17.900 TL kaçtı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Mevduat",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kasım 2023. Faiz yüzde kırkı aştı, herkes birikimini mevduata taşıdı. Gram altın ise sessizdi.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "O dönem 5.000 TL gram altına gitseydi bugün yaklaşık 17.918 TL olurdu — yüzde 258.",
+      "visual": {
+        "type": "manim",
+        "scene": "backtest",
+        "theme": "slate",
+        "title": "",
+        "chart": {
+          "kind": "line",
+          "label": "Gram Altın",
+          "unit": "TL",
+          "points": [
+            1896.39,
+            1966.31,
+            1999.33,
+            2061.66,
+            2307.68,
+            2387.33,
+            2444.62,
+            2489.66,
+            2658.5,
+            2775.09,
+            2962.34,
+            3241.97,
+            3344.35,
+            3865.35,
+            4184.0,
+            4218.05,
+            4351.41,
+            4700.03,
+            5233.44,
+            5812.96,
+            5994.79,
+            6629.44,
+            6824.62,
+            6887.35,
+            6167.61,
+            6370.67,
+            7052.8,
+            6795.93
+          ],
+          "x": [
+            "11/23",
+            "12/23",
+            "01/24",
+            "02/24",
+            "03/24",
+            "04/24",
+            "05/24",
+            "06/24",
+            "07/24",
+            "08/24",
+            "11/24",
+            "01/25",
+            "02/25",
+            "03/25",
+            "04/25",
+            "05/25",
+            "07/25",
+            "08/25",
+            "09/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26",
+            "09/26"
+          ],
+          "amount": 5000,
+          "end_value": 17918,
+          "pct": 258
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yüzde 258, enflasyonun çok üstünde. Herkes konfor ararken gram altın sessizce çalıştı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Önümüzdeki dönemde bu devam eder mi? Abone ol — her sabah senin için bir finansal gerçek.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
