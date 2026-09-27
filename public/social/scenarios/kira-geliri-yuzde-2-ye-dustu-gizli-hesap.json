@@ -1,0 +1,58 @@
+{
+  "slug": "kira-geliri-yuzde-2-ye-dustu-gizli-hesap",
+  "title": "Kira Geliri Yüzde 2'ye Düştü — Gizli Hesap",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Türkiye'de kira getirisi brüt yüzde 3'e geriledi. Giderler eklenince net oran yüzde 2'ye iniyor ve vadeli faizin on katı gerisinde kalıyor.",
+  "tags": [
+    "kira getirisi",
+    "gayrimenkul yatırımı",
+    "istanbul ev",
+    "pasif gelir",
+    "yatırım karşılaştırma",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Kiralık dairenden yüzde 3 kazanıyorsun.",
+      "visual": {
+        "type": "scene",
+        "query": "luxury Istanbul apartment modern interior bright living room"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ev fiyatı beş yılda on katına çıktı ama kira onu yakalayamadı.",
+      "visual": {
+        "type": "concept",
+        "query": "real estate price chart rising steep inflation"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Aidat, boş ay, sigorta ve vergiyi düş — net getiri yüzde ikiye iner.",
+      "visual": {
+        "type": "concept",
+        "query": "bills expenses receipts household costs calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Vadeli mevduat yüzde otuz beş veriyor; kiradan on kat daha fazla.",
+      "visual": {
+        "type": "concept",
+        "query": "bank savings account deposit interest rate screen"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu hesap 10 yılda nasıl birikirdi? Cevabı yarın veriyorum — abone ol, her gün 60 saniyede bir net analiz.",
+      "visual": {
+        "type": "scene",
+        "query": "luxury Istanbul apartment modern interior bright living room"
+      }
+    }
+  ]
+}
