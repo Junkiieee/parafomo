@@ -1,8 +1,8 @@
 {
   "_aciklama": "Güncel altın fiyatları (Truncgil v3). Site günlük rebuild'de tazelenir; anlık/kesin işlem fiyatı değildir, göstergedir.",
   "_kaynak": "finans.truncgil.com v3",
-  "guncellenme": "2026-09-26T04:00:35+03:00",
-  "guncellemeEtiket": "26 September 2026, 04:00",
+  "guncellenme": "2026-09-27T04:00:35+03:00",
+  "guncellemeEtiket": "27 September 2026, 04:00",
   "kalemler": [
     {
       "key": "gram-altin",

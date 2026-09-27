@@ -1,0 +1,59 @@
+{
+  "slug": "dolar-degil-altin-10-yillik-fark-burada",
+  "title": "Dolar Değil, Altın — 10 Yıllık Fark Burada",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Dolar son 10 yılda yaklaşık yüzde 1500 kazandırdı; ama altın aynı dönemde yüzde 5400'ü geçti. 10 bin TL'yi hangisine koymuş olmak gerekiyordu?",
+  "tags": [
+    "altın",
+    "dolar",
+    "yatırım",
+    "tl",
+    "tasarruf",
+    "gram altın",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Dolar en güvenli korunma sanıyorsun.",
+      "visual": {
+        "type": "object",
+        "query": "US dollar bills bundle cash wallet"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "On yıl önce 10 bin TL'yi dolara çevirseydin, bugün 160 bin TL olurdu.",
+      "visual": {
+        "type": "concept",
+        "query": "dollar bills cash savings growth wallet"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama aynı 10 bin TL'yi altına koysaydın, bugün 550 bin TL yapardı.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars coins stack shiny"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Altın dolardan 3.6 kat fazla kazandırdı. Gerçek para sığınağı altın, veri bunu söylüyor.",
+      "visual": {
+        "type": "concept",
+        "query": "gold price chart rising upward trend"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Altın neden dolardan hep öne geçiyor? Bunu da açıklayacağız. Abone ol — her gün en net finans kararı.",
+      "visual": {
+        "type": "object",
+        "query": "US dollar bills bundle cash wallet"
+      }
+    }
+  ]
+}
