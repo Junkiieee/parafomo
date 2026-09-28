@@ -1,0 +1,75 @@
+{
+  "slug": "altin-neden-sonuncu-ama-herkes-aliyor-m",
+  "title": "Altın Neden Sonuncu — Ama Herkes Alıyor",
+  "category": "KARŞILAŞTIRMA",
+  "format": "comparison",
+  "description": "Son bir yılda dolar, borsa ve altın rakamlarla karşı karşıya — kazanan sürpriz. Kısa vade ile uzun vade farkını açıklıyoruz.",
+  "tags": [
+    "yatırım",
+    "altın",
+    "dolar",
+    "borsa",
+    "getiri",
+    "karşılaştırma",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KARŞILAŞTIRMA",
+      "spoken": "Dolar birinci, altın sonuncu.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Son bir yılda altın yüzde 12, borsa yüzde 15, dolar yüzde 17 ile birinci oldu.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama on yılda altın, dolara karşı 3,6 kat fazla kazandırdı — kısa vade yanıltıcı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kısa vadede dolar öne çıktı, uzun vadede altın — ikisini dengede tutmak en az riskli.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Risk",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Önümüzdeki yıl bu sıralama değişirse ne tutmalısın? Cevabı her gün 60 saniyede almak için abone ol.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
