@@ -17,6 +17,23 @@ faq:
     a: "30 Eylül PCE ve Final GDP, Fed'in Kasım FOMC toplantısı öncesinde gelen kritik çift veridir. İkisi birlikte enflasyon-büyüme dengesini ortaya koyduğu için faiz yolunu doğrudan şekillendirir."
   - q: "Türkiye'deki yatırımcı için bu veri neden önemli?"
     a: "ABD verileri dolar endeksini (DXY) hareket ettirdiğinde hem kur hem de altın TL bazında etkilenir. Üstelik 22 Ekim'de TCMB PPK toplantısı var; Fed beklentilerindeki değişim TCMB'nin hareket alanını da dolaylı biçimde etkiler."
+shorts:
+  - "30 Eylül iki rakam Fed'i köşeye sıkıştırır mı?"
+  - "PCE, Fed'in resmi enflasyon ölçütü; hedef yıllık yüzde iki seviyesi."
+  - "Final GDP en güvenilir büyüme rakamı, piyasa bunu son kez fiyatlar."
+  - "PCE yüksek gelirse dolar güçlenir, altın baskı altına girer, TL zayıflar."
+  - "Kasım'da Fed ne yapar? Senaryo tablosunun tamamı parafomo.com'da; abone ol, kritik verileri ilk sen öğren."
+shorts_broll:
+  - "US Federal Reserve interest rate decision"
+  - "core PCE inflation data chart"
+  - "GDP economic growth graph screen"
+  - "dollar gold exchange rate market"
+shorts_visuals:
+  - "place|Federal Reserve Washington DC"
+  - "concept|inflation rate chart Federal Reserve"
+  - "concept|GDP economic growth data chart"
+  - "concept|dollar gold currency exchange rate falling"
+  - "concept|financial news alert smartphone investor"
 ---
 
 30 Eylül 2026 Çarşamba günü Türkiye saati 15:30'da iki kritik ABD ekonomi verisi eş zamanlı açıklanıyor: **çekirdek PCE fiyat endeksi** ve **Q2 büyüme verisinin kesin (Final) hesabı**. Bu çift açıklama, Fed'in Kasım FOMC toplantısında faiz konusunda ne yapacağını belirleyecek en ağırlıklı veri noktası. Türk yatırımcısı için dolar, altın ve TL senaryo tablosu aşağıda.
