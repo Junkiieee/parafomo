@@ -1,0 +1,59 @@
+{
+  "slug": "bes-teki-yuzde-30-katki-seni-yaniltiyor",
+  "title": "BES'teki Yüzde 30 Katkı Seni Yanıltıyor",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Devlet BES katkısı 'bedava para' gibi görünüyor ama 10 yıl kilit, erken çıkış cezası ve fon ücretleri gerçek getiriyi ciddi etkiliyor.",
+  "tags": [
+    "BES",
+    "bireysel emeklilik",
+    "devlet katkısı",
+    "emeklilik planlaması",
+    "vergi indirimi",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "BES'te devlet katkısı bedava sanıyorsun.",
+      "visual": {
+        "type": "concept",
+        "query": "gift money cash envelope happy celebration"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu para 10 yıl kilitli; erken çıkarsan devlet katkısının büyük çoğunluğunu geri alamazsın.",
+      "visual": {
+        "type": "concept",
+        "query": "vault lock closed time calendar trapped"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Üstelik fon yönetim ücreti yıllık yüzde iki'ye kadar çıkabiliyor; 20 yılda devlet katkısını eritebilir.",
+      "visual": {
+        "type": "concept",
+        "query": "money leaking drain fees percentage chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Asıl avantaj vergi indirimi: maaşının yüzde on beşini BES'e yazarsan gelir vergisinden düşülüyor.",
+      "visual": {
+        "type": "concept",
+        "query": "tax return document calculator savings desk"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bu hesabı kaç kişi sisteme girerken hiç yapmadı? Her gün 60 saniyede net finans analizi için abone ol.",
+      "visual": {
+        "type": "concept",
+        "query": "gift money cash envelope happy celebration"
+      }
+    }
+  ]
+}
