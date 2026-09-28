@@ -292,3 +292,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 - [x] ABD İşsizlik Verisi Altını ve Doları Nasıl Etkiler? NFP Sonrası Yatırımcı Rehberi — `abd-issizlik-verisi-altin-dolar-etkisi`
 - [x] ECB Eylül 2026 Faiz Kararı: Euro, Dolar ve TL'ye Etkisi — `ecb-eylul-2026-faiz-karari-euro-tl-etkisi` (takvim: 4 Eylül 2026 🔴 NFP + İşsizlik Oranı + Saatlik Kazançlar; GSC fırsatı: "abd işsizlik verisi altını nasıl etkiler" — gös 8, sıra 9.5, tıklama 0; altın-odaklı açı mevcut NFP/işsizlik yazılarında yok; senaryo tablosu + 10 Eylül TCMB bağlantısı; 4 Eylül 2026)
+
+- [x] ABD Eylül 2026 PCE ve Final GDP: Fed Kasım'da Ne Yapar? Dolar ve Altın Etkisi — `pce-gdp-eylul-2026-fed-kasim-dolar-altin` (takvim: 30 Eylül 2026 🔴 Core PCE Price Index m/m + Final GDP q/q; Final GDP'nin Prelim'den farkı + TCMB 22 Ekim PPK bağlantısı; senaryo tablosu + Kasım Fed kararı çerçevesi; pce-nedir + gdp-gsyih + abd-faiz-artarsa-altin cluster'ı; 28 Eylül 2026)
