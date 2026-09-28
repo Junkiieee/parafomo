@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-27",
+  "updated": "2026-09-28",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
@@ -11,6 +11,51 @@
       "title": "BOE Gov Bailey Speaks",
       "source": "forexfactory",
       "hook": ""
+    },
+    {
+      "date": "2026-09-30",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Core PCE Price Index m/m",
+      "source": "forexfactory",
+      "hook": "ABD çekirdek enflasyon (PCE) — Fed'in tercih ettiği gösterge, dolar yönü."
+    },
+    {
+      "date": "2026-09-30",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Final GDP q/q",
+      "source": "forexfactory",
+      "hook": "Büyüme verisi — küresel görünüm."
+    },
+    {
+      "date": "2026-10-02",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Average Hourly Earnings m/m",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-10-02",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Non-Farm Employment Change",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-10-02",
+      "time": "12:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Unemployment Rate",
+      "source": "forexfactory",
+      "hook": "İşsizlik verisi — büyüme ve faiz beklentisi."
     },
     {
       "date": "2026-10-05",

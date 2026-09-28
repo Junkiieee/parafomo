@@ -4,6 +4,74 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-09-28 — ABD Eylül 2026 PCE ve Final GDP: Fed Kasım'da Ne Yapar? Dolar ve Altın Etkisi
+
+**Yayınlanan yazı:** [ABD Eylül 2026 PCE ve Final GDP: Fed Kasım'da Ne Yapar? Dolar ve Altın Etkisi](https://parafomo.com/blog/pce-gdp-eylul-2026-fed-kasim-dolar-altin/)
+**Hedef sorgu:** `pce gdp eylül 2026` · Kategori: Ekonomi
+**Konu seçimi:** Takvimde 2 gün içinde 🔴 yüksek etkili olay: 30 Eylül Core PCE + Final GDP açıklaması. Ağustos PCE-GDP yazısından farklı: Final GDP (Prelim değil, kesin revizyon), Fed Kasım kararı odağı ve TCMB 22 Ekim PPK bağlantısı.
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+1/ Bu çarşamba (30 Eylül) ABD'den iki kritik veri geliyor: PCE enflasyon + Q2 büyümesinin kesin rakamı. Fed'in Kasım faiz kararını bu ikisi belirleyecek. 👇
+
+2/ PCE nedir? Fed'in kendi enflasyon hedeflemesinde kullandığı gösterge. Hedef: yıllık %2. Üzerinde kalırsa "faiz indirimi için erken." Altındaysa güvercin mesaj.
+
+3/ Final GDP nedir? Q2 büyümesinin 3. ve kesin hesabı. Ağustos'taki Prelim'den ±0.3 puan sapabilir. Büyük sürpriz varsa piyasa yeniden fiyatlar.
+
+4/ 30 Eylül senaryo haritası:
+📍 PCE ↓ + GDP güçlü → Kasım indirim beklentisi yükselir, dolar zayıflar, altın fırlar
+📍 PCE ↑ + GDP güçlü → Faiz indirim ertelenir, dolar güçlenir
+📍 PCE ↓ + GDP zayıf → Neredeyse kesin indirim → altın sert yükselir
+📍 PCE ↑ + GDP zayıf → Stagflasyon kaygısı → oynaklık artar
+
+5/ Türk yatırımcısı için ek bağlam: 22 Ekim'de TCMB PPK var. Fed beklentileri değişirse → TL üzerindeki baskı da değişir → TCMB'nin hareket alanı etkilenir.
+
+6/ Saat 15:30 TR'de gözünü açık tut. Açıklama sonrası ilk 15 dakika en gürültülü — acele pozisyon gerekmez, senaryoyu oku, portföyünle uyumunu değerlendir.
+
+Tam senaryo tablosu + altın/dolar/TL rehberi: parafomo.com/blog/pce-gdp-eylul-2026-fed-kasim-dolar-altin ↗
+
+---
+
+### 📸 Instagram Post/Carousel Metni
+
+**Slide 1 — Başlık:**
+30 Eylül'de iki büyük ABD verisi geliyor 🇺🇸
+Altın ve doların yönü bu veriyle değişebilir 👇
+
+**Slide 2:**
+🔍 PCE Nedir?
+Fed'in enflasyon pusulası.
+Yüksekse → faiz indirim ertelenir.
+Düşükse → Kasım indirim kapısı açılır.
+
+**Slide 3:**
+📊 Final GDP Nedir?
+Q2 büyümesinin kesin hesabı.
+Ağustos Prelim'den farklıysa piyasa yeniden fiyatlar.
+
+**Slide 4 — Senaryo Tablosu:**
+PCE ↓ + GDP güçlü → Dolar zayıflar, ALTIN YUKARI ⬆️
+PCE ↑ + GDP güçlü → Dolar güçlenir, altın baskıda ⬇️
+PCE ↓ + GDP zayıf → Altın sert yükselir 🚀
+
+**Slide 5 — CTA:**
+30 Eylül saat 15:30 TR gözünü açık tut.
+Tam analiz ve yatırımcı rehberi:
+🔗 parafomo.com/blog/pce-gdp-eylul-2026-fed-kasim-dolar-altin
+
+**Hashtag'ler:** #pce #fedkararı #altın #dolar #yatırım #ekonomi #merkez bankası #türkiye
+
+---
+
+### ✅ Senin Bugün Yapman Gerekenler
+
+1. **Thread'i X'te yayınla** — 30 Eylül öncesi zamanlama kritik; bugün veya yarın paylaşmak en etkili pencere.
+2. **Instagram carousel veya tek görsel olarak paylaş** — öne çıkan Slide 4'teki senaryo tablosu çok güçlü; tek kare olarak da paylaşılabilir.
+
+---
+
 ## 2026-09-26 — Türkiye Kredi Notu Nedir? Fitch Yükseltmesi TL, Borsa ve Mevduatı Nasıl Etkiler?
 
 **Yayınlanan yazı:** [Türkiye Kredi Notu Nedir? Fitch Yükseltmesi TL, Borsa ve Mevduatı Nasıl Etkiler?](https://parafomo.com/blog/turkiye-kredi-notu-nedir-fitch-yukseltmesi-etkisi/)
