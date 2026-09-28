@@ -65,6 +65,8 @@ Türkiye'de bu iki kavram sıkça karıştırılır. Her ikisi de Hazine tarafı
 | Özel Sektör Tahvili | Şirketler | 1–7 yıl | Sabit veya değişken |
 | Eurobond | T.C. Hazinesi / Şirket | 5–30 yıl | Döviz cinsinden sabit |
 
+İskontolu bir hazine bonosunun bugünkü alış fiyatını ve vade-sonu getirisini kendi rakamlarınızla denemek isterseniz [bono hesaplama aracımızla](/bono-hesaplama) nominal, faiz ve vadeyi girip fiyatı, kazancı ve yıllık verimi anında görebilirsiniz.
+
 > **İlgili yazı:** Döviz bazlı tahvil merak ediyorsanız [Eurobond nedir?](/blog/eurobond-nedir/) yazımıza bakabilirsiniz.
 
 ## Türkiye'de Tahvil Çeşitleri

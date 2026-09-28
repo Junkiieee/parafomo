@@ -24,7 +24,21 @@ SCRIPTS = os.path.join(ROOT, "scripts")
 ENV_FILE = os.path.expanduser("~/.config/parafomo/instagram.env")
 RAW = "https://raw.githubusercontent.com/Junkiieee/parafomo/main/public/social"
 API = "https://graph.facebook.com/v21.0"
-HASHTAGS = "#borsa #bist #bist100 #borsaistanbul #yatırım #hisse #ekonomi #parafomo"
+# Çekirdek tag'ler her gönderide sabit; ekstra havuzdan gün-bazlı 4 tanesi eklenir.
+# Amaç: aynı tag bloğunu her gönderide tekrarlamamak (IG erişim baskısı) + keşif yüzeyini genişletmek.
+CORE_HASHTAGS = "#borsa #bist #bist100 #borsaistanbul #parafomo"
+EXTRA_HASHTAG_POOL = [
+    "#yatırım", "#hisse", "#ekonomi", "#hissesenedi", "#temettü", "#finans",
+    "#yatırımcı", "#tasarruf", "#döviz", "#altın", "#piyasa", "#endeks",
+]
+
+def build_hashtags():
+    from datetime import date
+    n = len(EXTRA_HASHTAG_POOL)
+    start = date.today().toordinal() % n
+    extras = [EXTRA_HASHTAG_POOL[(start + i) % n] for i in range(4)]
+    return CORE_HASHTAGS + " " + " ".join(extras)
+
 LABEL = {"acilis": "BIST açılış", "kapanis": "BIST kapanış"}
 
 
@@ -79,7 +93,7 @@ def build_caption(ptype, date_label):
             f"{question}\n"
             f"{cta}\n"
             "Detaylı analizler → parafomo.com")
-    return "\n\n".join([comment, body, HASHTAGS])
+    return "\n\n".join([comment, body, build_hashtags()])
 
 
 def load_env():

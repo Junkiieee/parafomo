@@ -417,9 +417,11 @@ const breadcrumbs = [
         if (sk) sk.hidden = !on;
         if (sum) sum.classList.toggle('loading', on);
       }
-      async function loadPortfolio() {
+      async function loadPortfolio(refreshing) {
         var errEl = $('pf-error');
+        var sum = $('summary');
         if (!pfLoaded) setSkeleton(true); // ilk yükleme: ₺0 flaş yerine shimmer
+        else if (refreshing && sum) sum.classList.add('loading'); // elle yenile: değer shimmer (fiyatlar güncelleniyor cue'su)
         try {
           var s = await api('/portfolio/summary');
           if (errEl) errEl.hidden = true;
@@ -637,7 +639,7 @@ const breadcrumbs = [
       $('refresh-btn').addEventListener('click', async function () {
         var btn = this;
         btn.disabled = true; btn.classList.add('is-spinning');
-        try { await loadPortfolio(); }
+        try { await loadPortfolio(true); }
         finally { btn.disabled = false; btn.classList.remove('is-spinning'); }
       });
 
