@@ -1,0 +1,75 @@
+{
+  "slug": "mevduat-faizinden-yuzde-15-once-devlete-gidiyor-m",
+  "title": "Mevduat Faizinden Yüzde 15 Önce Devlete Gidiyor",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Banka mevduat faizinden otomatik kesilen yüzde 15 stopaj vergisi reel getirinizi çarpıcı biçimde düşürüyor. Fiziksel altında ise bu kesinti hiç yok.",
+  "tags": [
+    "mevduat",
+    "stopaj vergisi",
+    "faiz",
+    "banka",
+    "tasarruf",
+    "kişisel finans",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Mevduat faizinin yüzde on beşini devlet alıyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Faiz",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Örnek ver: yüzde elli faiz hesapladın, stopajdan sonra elinize yüzde kırk iki buçuk geçiyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Faiz",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Enflasyon yüzde kırk civarındaysa net faizin onu sadece birkaç puanla geçiyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fiziksel altında bu stopaj hiç yok — gram altın kazancı kesilmeden kalıyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Hangi araç vergiyi en az yiyor, merak ediyorsan cevap burada — abone ol, her gün net analiz geliyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "ParaFOMO",
+        "sub": "abone ol, kaçırma",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
