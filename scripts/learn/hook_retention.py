@@ -30,6 +30,10 @@ SCOPES = [
 OUT = os.path.join(lib.DATA, "hook-retention.json")
 MAX_VIDEOS = 20  # en yeni N Short (maliyet: video başına 1 Analytics sorgusu)
 HOLD_SEC = 3.0   # "swipe or stay" penceresi
+# 2026 konsensüsü: <30sn Short'ta ort. izleme %'si (averageViewPercentage) bu eşiği
+# geçmeden algoritma videoyu topic-cluster + high-intent izleyiciye EŞLEŞTİRMİYOR.
+# Bkz. video-rnd.md 2026-09-28 bulgu #1 — dağıtım darboğazının SAYISAL kapısı.
+AVD_GATE_PCT = 65.0
 
 
 def parse_duration(iso_dur):
@@ -111,6 +115,25 @@ def main():
     except Exception as e:
         print(f"[hook] Analytics init hata: {type(e).__name__}: {str(e)[:150]}"); return 0
 
+    # Genel averageViewPercentage — TEK batched sorgu (dimensions=video),
+    # video başına ekstra sorgu yok. 65% AVD kapısını geçen video oranı için.
+    avd = {}
+    try:
+        rep = ya.reports().query(
+            ids="channel==MINE",
+            startDate=start, endDate=end,
+            dimensions="video",
+            metrics="averageViewPercentage",
+            filters="video==" + ",".join(vids),
+        ).execute()
+        h = [c["name"] for c in rep.get("columnHeaders", [])]
+        vi = h.index("video") if "video" in h else 0
+        pi = h.index("averageViewPercentage") if "averageViewPercentage" in h else 1
+        for row in rep.get("rows", []):
+            avd[row[vi]] = float(row[pi])
+    except Exception as e:
+        print(f"[hook] averageViewPercentage atlandı: {type(e).__name__}: {str(e)[:80]}")
+
     results = []
     for r in items:
         vid = r["refs"]["video_id"]
@@ -145,17 +168,24 @@ def main():
             "duration_sec": dur,
             "hold_3s": round(hold3, 3),               # 3sn izlenme/toplam-izlenme (loop ile >1 olabilir)
             "rel_perf_3s": round(rel3, 3) if rel3 is not None else None,  # 0-1 yüzdelik (akran kıyası)
+            "avg_view_pct": round(avd[vid], 1) if vid in avd else None,  # genel ort. izleme % (65 kapısı)
             "published_utc": r.get("published_utc"),
         })
 
     if not results:
         print("[hook] retention eğrisi çekilemedi (veri yok / scope yok)"); return 0
 
+    avds = [x["avg_view_pct"] for x in results if x["avg_view_pct"] is not None]
+    gate_pass = [x for x in results if x["avg_view_pct"] is not None and x["avg_view_pct"] >= AVD_GATE_PCT]
     payload = {
         "fetched_utc": lib.iso(),
         "hold_sec": HOLD_SEC,
         "n": len(results),
         "median_hold_3s": round(sorted(x["hold_3s"] for x in results)[len(results) // 2], 3),
+        "avd_gate_pct": AVD_GATE_PCT,
+        "median_avg_view_pct": round(sorted(avds)[len(avds) // 2], 1) if avds else None,
+        "gate_pass_share": round(len(gate_pass) / len(avds), 3) if avds else None,  # 65% kapısını geçen oran
+        "gate_pass_n": len(gate_pass),
         "videos": results,
     }
     with open(OUT, "w", encoding="utf-8") as f:
@@ -166,6 +196,10 @@ def main():
           f"%{payload['median_hold_3s'] * 100:.0f}")
     print(f"    en iyi: {results[0]['id'][:40]} %{results[0]['hold_3s'] * 100:.0f}")
     print(f"    en kötü: {results[-1]['id'][:40]} %{results[-1]['hold_3s'] * 100:.0f}")
+    if payload["median_avg_view_pct"] is not None:
+        print(f"    AVD: medyan %{payload['median_avg_view_pct']:.0f} · "
+              f"%{AVD_GATE_PCT:.0f} kapısını geçen: {payload['gate_pass_n']}/{len(avds)} "
+              f"(%{payload['gate_pass_share'] * 100:.0f})")
     print(f"    → {OUT}")
     return 0
 
