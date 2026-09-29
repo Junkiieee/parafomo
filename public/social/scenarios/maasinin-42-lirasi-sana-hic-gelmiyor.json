@@ -1,0 +1,59 @@
+{
+  "slug": "maasinin-42-lirasi-sana-hic-gelmiyor",
+  "title": "Maaşının 42 Lirası Sana Hiç Gelmiyor",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "İşverenin her 100 lirasının 42'si SGK, vergi ve primlere gidiyor; çalışanın eline yalnızca 58 lira geçiyor. Üstelik o 58 lira da enflasyonla eriyor.",
+  "tags": [
+    "maaş",
+    "net maaş",
+    "sgk",
+    "gelir vergisi",
+    "enflasyon",
+    "Türkiye",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "İşveren 100 ödüyor, sana 58 geliyor.",
+      "visual": {
+        "type": "concept",
+        "query": "happy employee receiving cash salary payment envelope"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bordrodaki SGK, işsizlik fonu ve gelir vergisi brüt maaşının yaklaşık yüzde 28'ini anında kesiyor.",
+      "visual": {
+        "type": "concept",
+        "query": "payroll deduction tax document form closeup"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama işveren bir de üstüne yaklaşık yüzde 22 SGK primi daha ödüyor — o parayı hiç göremiyorsun.",
+      "visual": {
+        "type": "concept",
+        "query": "hidden cost money invisible behind curtain surprise"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "100 liranın 42'si sana ulaşmadan gidiyor; kalan 58 lirayı da enflasyon sessizce eritiyor.",
+      "visual": {
+        "type": "concept",
+        "query": "money shrinking melting inflation purchasing power loss"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki o 58 liradan enflasyonu yenen bir şey yapılabilir mi — bunu da açıklıyorum. Abone ol, paranı etkileyen tek somut rakamı her gün 60 saniyede buradan öğrenirsin.",
+      "visual": {
+        "type": "concept",
+        "query": "happy employee receiving cash salary payment envelope"
+      }
+    }
+  ]
+}
