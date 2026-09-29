@@ -1,17 +1,8 @@
 {
-  "updated": "2026-09-28",
+  "updated": "2026-09-29",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-09-25",
-      "time": "9:15am",
-      "region": "GBP",
-      "impact": "High",
-      "title": "BOE Gov Bailey Speaks",
-      "source": "forexfactory",
-      "hook": ""
-    },
     {
       "date": "2026-09-30",
       "time": "12:30pm",
@@ -83,6 +74,15 @@
       "hook": "Karar gerekçesi yorumu.",
       "time": "",
       "source": "tcmb"
+    },
+    {
+      "date": "2026-11-03",
+      "time": "10:00",
+      "region": "TR",
+      "impact": "High",
+      "title": "TÜİK enflasyon (TÜFE) verisi",
+      "source": "tuik-rule",
+      "hook": "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı."
     }
   ]
 }

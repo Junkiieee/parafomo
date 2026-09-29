@@ -1,0 +1,77 @@
+{
+  "slug": "altin-neden-sonuncu-ama-herkes-aliyor",
+  "title": "Altın Neden Sonuncu — Ama Herkes Alıyor",
+  "category": "KARŞILAŞTIRMA",
+  "format": "comparison",
+  "description": "Son bir yılda dolar, borsa ve altın rakamlarla karşı karşıya — kazanan sürpriz. Kısa vade ile uzun vade farkını açıklıyoruz.",
+  "tags": [
+    "yatırım",
+    "altın",
+    "dolar",
+    "borsa",
+    "getiri",
+    "karşılaştırma",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KARŞILAŞTIRMA",
+      "spoken": "Dolar birinci, altın sonuncu.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins jewelry shiny bright"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Son bir yılda altın yüzde 12, borsa yüzde 15, dolar yüzde 17 ile birinci oldu.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "bars",
+          "title": "Bu Yıl Kim Kazandırdı?",
+          "items": [
+            {
+              "name": "Dolar/TL",
+              "pct": 17
+            },
+            {
+              "name": "BIST 100",
+              "pct": 15
+            },
+            {
+              "name": "Gram Altın",
+              "pct": 12
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama on yılda altın, dolara karşı 3,6 kat fazla kazandırdı — kısa vade yanıltıcı.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bars wealth long term"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kısa vadede dolar öne çıktı, uzun vadede altın — ikisini dengede tutmak en az riskli.",
+      "visual": {
+        "type": "concept",
+        "query": "balanced portfolio investment diversification"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Önümüzdeki yıl bu sıralama değişirse ne tutmalısın? Cevabı her gün 60 saniyede almak için abone ol.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins jewelry shiny bright"
+      }
+    }
+  ]
+}
