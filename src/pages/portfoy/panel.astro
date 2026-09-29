@@ -808,7 +808,7 @@ const breadcrumbs = [
     .onboard-cta:focus-visible { outline: 2px solid var(--brand-2); outline-offset: 2px; }
     .pf-error { display: flex; flex-wrap: wrap; gap: 0.5rem 0.9rem; align-items: center; justify-content: center; text-align: center; padding: 1rem 1.1rem; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; border-radius: var(--radius); font-size: 0.93rem; }
     .pf-error .link-btn { color: #991b1b; font-weight: 600; text-decoration: underline; }
-    .table-scroll { overflow-x: auto; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .pf-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
     .pf-table th, .pf-table td { padding: 0.65rem 0.5rem; border-bottom: 1px solid var(--border); text-align: left; }
     .pf-table th { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
@@ -837,6 +837,15 @@ const breadcrumbs = [
     @media (max-width: 560px) {
       .add-grid { grid-template-columns: 1fr; }
       .sum-split { grid-template-columns: 1fr 1fr; }
+      /* Dokunuş hedefleri: mobilde ≥40px (parmakla ıskalamayı azalt) */
+      .edit, .del { width: 40px; height: 40px; font-size: 1.05rem; }
+      .edit { margin-right: 0.4rem; }
+      .refresh-btn { padding: 0.6rem 0.9rem; }
+      .pf-table td.actions { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+      /* iOS odakta otomatik-zoom'u önle: yazı ≥16px */
+      .edit-f input { font-size: 16px; padding: 0.55rem 0.6rem; }
+      /* Yatay kaydırmanın var olduğunu belli et (ilk sütun ipucu) */
+      .pf-table th, .pf-table td { padding: 0.6rem 0.55rem; }
     }
   </style>
 </BaseLayout>
