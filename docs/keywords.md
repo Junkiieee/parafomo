@@ -93,6 +93,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] ABD Ekim 2026 İstihdam Verisi (NFP): Fed Kasım'da Ne Yapar? Dolar ve Altın Etkisi — `abd-ekim-2026-nfp-istihdam-verisi-fed-dolar-altin` (takvim: 2 Ekim 2026 🔴 NFP + İşsizlik + Saatlik Kazançlar; learning report #1 abd-issizlik-verisi-altin konusuna yakın; senaryo tablosu + Fed Kasım 2026 PPK bağlantısı; abd-issizlik-verisi-altin + nfp-nedir + ortalama-saatlik-kazanclar cluster'ı; 29 Eylül 2026)
+
 - [x] Türkiye Kredi Notu Nedir? Fitch Yükseltmesi TL, Borsa ve Mevduatı Nasıl Etkiler? — `turkiye-kredi-notu-nedir-fitch-yukseltmesi-etkisi` (yeni konu; Fitch Türkiye not yükseltmesi hook'u; BB+ seviyesi + investment grade yolu + sıradan tasarruf sahibi perspektifi; reel-faiz-nedir + tahvil + dezenflasyon cluster'ı; 26 Eylül 2026)
 
 - [x] TÜİK Ekim 2026 Enflasyon Verisi: Beklentiler, Senaryo Analizi ve TCMB'ye Etkisi — `tuik-ekim-2026-enflasyon-verisi-beklentiler` (yeni konu; TÜİK 5 Ekim 2026 TÜFE açıklaması önizlemesi; TCMB 22 Ekim PPK kararı bağlantısı; 3 senaryo tablosu + yatırımcı aksiyon adımları; tufe-enflasyon-verisi-nasil-okunur + reel-faiz-nedir + dezenflasyon cluster'ı; 25 Eylül 2026)

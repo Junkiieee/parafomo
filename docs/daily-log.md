@@ -4,6 +4,62 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-09-29 — ABD Ekim 2026 İstihdam Verisi (NFP): Fed Kasım'da Ne Yapar? Dolar ve Altın Etkisi
+
+**Yayınlanan yazı:** [ABD Ekim 2026 İstihdam Verisi (NFP): Fed Kasım'da Ne Yapar? Dolar ve Altın Etkisi](https://parafomo.com/blog/abd-ekim-2026-nfp-istihdam-verisi-fed-dolar-altin/)
+**Hedef sorgu:** `abd ekim 2026 nfp istihdam verisi` · Kategori: Ekonomi
+**Konu seçimi:** Takvimde 3 gün içinde 3 adet 🔴 yüksek etkili olay: 2 Ekim NFP + İşsizlik Oranı + Ortalama Saatlik Kazançlar. Learning report #1 yazısı `abd-issizlik-verisi-altin-dolar-etkisi` (skor 18.1) ile aynı konu seti. Önceki PCE/GDP yazısından farklı: istihdam odağı + Fed Kasım bağlantısı.
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+1/ Bu Cuma (2 Ekim) ABD'den üç kritik istihdam verisi geliyor: NFP (tarım dışı istihdam), işsizlik oranı, ortalama saatlik kazançlar — hepsi aynı anda, Türkiye saatiyle 15:30'da. 👇
+
+2/ NFP nedir? Bir ayda kaç yeni iş yaratıldığı. Fed'in en çok baktığı veri. 200.000+ → güçlü işgücü, faiz indirimini erteler. 100.000 altı → zayıflama sinyali, indirim yaklaşıyor.
+
+3/ Saatlik kazançlar çok az konuşuluyor ama belki en önemlisi. Ücretler yükseliyor → enflasyon canlı kalıyor → Fed elini bağlıyor. 0.4%+ = enflasyonist uyarı.
+
+4/ 2 Ekim senaryo haritası:
+📍 Güçlü NFP (>200K) → Dolar ↑, Altın ↓, Kasım indirim uzaklaşır
+📍 Beklenti karşılandı → Büyük hareket yok, gözler CPI'a kayar
+📍 Zayıf NFP (<100K) → Dolar ↓, Altın ↑, Kasım indirim neredeyse kesin
+
+5/ TL yatırımcısı için: Dolar güçlenirse kur baskısı artar. Ama 5 Ekim TÜİK TÜFE + 22 Ekim TCMB PPK da yakında — ABD verisi tek başına tablo değiştirmez.
+
+📖 Tüm senaryolar: [parafomo.com/blog/abd-ekim-2026-nfp-istihdam-verisi-fed-dolar-altin](https://parafomo.com/blog/abd-ekim-2026-nfp-istihdam-verisi-fed-dolar-altin/)
+
+---
+
+### 📸 Instagram Carousel / Post Metni
+
+**Başlık / İlk slayt:**
+🇺🇸 2 Ekim'de 3 kritik ABD verisi geliyor — dolar, altın ve TL ne olur?
+
+**Gövde (slaytlar):**
+▸ NFP (tarım dışı istihdam) — kaç yeni iş yaratıldı?
+▸ İşsizlik oranı — işgücü soğuyor mu?
+▸ Saatlik kazançlar — ücret enflasyonu devam ediyor mu?
+
+Üçü birden Fed'in Kasım faiz kararını belirleyecek.
+
+📊 Senaryo 1: Güçlü veri → Dolar ↑ · Altın ↓
+📊 Senaryo 2: Beklenti karşılandı → Sakin piyasa
+📊 Senaryo 3: Zayıf veri → Dolar ↓ · Altın ↑
+
+Türk yatırımcıları için sonuçları bio'daki linkte analiz ettik 👆
+
+**Hashtag:** #NFP #AltınFiyatı #Dolar #FedFaiz #ABDEkonomisi #TürkYatırımcı #ParaFOMO #EkonomikTakvim
+
+---
+
+### ✅ Bugün Senden Gereken
+
+1. **Twitter/X thread paylaşımını yayınla** — bu Cuma (2 Ekim) verisi açıklanmadan önce yayınlarsan "açıklama öncesi rehber" değeri taşır, veri geldikten sonra da trafik çeker.
+2. **Instagram'a carousel olarak at** — bugün yayınla; veri günü (Cuma) paylaşımın alarmını kur.
+
+---
+
 ## 2026-09-28 — ABD Eylül 2026 PCE ve Final GDP: Fed Kasım'da Ne Yapar? Dolar ve Altın Etkisi
 
 **Yayınlanan yazı:** [ABD Eylül 2026 PCE ve Final GDP: Fed Kasım'da Ne Yapar? Dolar ve Altın Etkisi](https://parafomo.com/blog/pce-gdp-eylul-2026-fed-kasim-dolar-altin/)
