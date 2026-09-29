@@ -17,6 +17,23 @@ faq:
     a: "Doğrudan bir bağ olmasa da dolar endeksinin yönü TL/USD kurunu etkiler. Güçlü dolar dönemlerinde TL genellikle değer kaybeder; zayıf dolar ise gelişmekte olan piyasa para birimlerine nefes aldırır."
   - q: "Fed Kasım 2026 toplantısı ne zaman?"
     a: "Fed'in bir sonraki FOMC toplantısı 4–5 Kasım 2026. 2 Ekim istihdam verisi, bu karar için son kritik makro veri bloklarından biri olacak."
+shorts:
+  - "Bir istihdam raporu dolar ve altını nasıl belirler?"
+  - "2 Ekim'de açıklanan NFP, Fed'in Kasım faiz kararını şekillendirecek son büyük veri."
+  - "Güçlü NFP dolara yükseliş, zayıf NFP ise altına destek getirebilir."
+  - "Dolar güçlenirse TL baskı görür; Fed indirim yaparsa gelişen piyasalar nefes alır."
+  - "Kasım'da Fed ne yapacak, birlikte takip edelim. Güncel analizler için abone ol — parafomo.com'da her şey var."
+shorts_broll:
+  - "US dollar bills falling"
+  - "gold price chart screen"
+  - "Federal Reserve building exterior"
+  - "stock market trading floor"
+shorts_visuals:
+  - "concept|employment report data chart screen"
+  - "building|Federal Reserve"
+  - "concept|dollar gold price comparison chart"
+  - "object|turkish lira banknotes"
+  - "concept|stock market financial data screen"
 ---
 
 2 Ekim 2026 Cuma günü üç kritik ABD verisi aynı anda piyasalara düşecek: **tarım dışı istihdam (NFP)**, **işsizlik oranı** ve **ortalama saatlik kazançlar**. Üçü birden Fed'in Kasım 2026 toplantısında faiz kararını şekillendirecek son büyük veri bloğu sayılıyor. Dolar, altın ve dolaylı olarak TL için yön kısa sürede netleşecek.
