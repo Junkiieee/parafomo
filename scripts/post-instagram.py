@@ -150,6 +150,14 @@ def fm_value(text, key):
     return m.group(1).strip() if m else ""
 
 
+def fm_tags(text):
+    """Frontmatter tags listesini ('tags: ["a", "b"]' veya çok satırlı) çeker."""
+    m = re.search(r'^tags:\s*\[(.*?)\]', text, re.MULTILINE | re.DOTALL)
+    if not m:
+        return []
+    return [t.strip().strip('"').strip("'") for t in m.group(1).split(",") if t.strip()]
+
+
 def load_post(slug):
     path = os.path.join(BLOG_DIR, f"{slug}.md")
     if not os.path.exists(path):
@@ -161,6 +169,7 @@ def load_post(slug):
         "title": fm_value(front, "title") or slug,
         "category": fm_value(front, "category") or "Finans",
         "description": fm_value(front, "description"),
+        "tags": fm_tags(front),
     }
 
 
@@ -191,14 +200,52 @@ def load_env():
     return env
 
 
+# Kategori → sabit ilgili hashtag (konu-duyarlı keşif)
+CAT_TAG = {
+    "Ekonomi": "ekonomi", "Borsa": "borsa", "Yatırım": "yatırım",
+    "Kripto": "kripto", "Kişisel Finans": "kişiselfinans",
+    "Emeklilik": "emeklilik",
+}
+# Gün-rotasyonlu havuz (her gönderide AYNI blok basmamak = IG tekrar-erişim baskısı riski ↓)
+ROT_POOL = ["tasarruf", "para", "altın", "dolar", "enflasyon", "faiz",
+            "bist", "hissesenedi", "birikim", "finansöküryazarlığı",
+            "ekonomihaberleri", "yatırımtavsiyesi"]
+
+
+def _slugify_tag(t):
+    """Etiketi hashtag'e çevir: boşluk/tire kaldır, küçült."""
+    s = re.sub(r"[\s\-]+", "", t.strip().lower())
+    return re.sub(r"[^0-9a-zçğıöşü]", "", s)
+
+
+def build_hashtags(post):
+    core = ["parafomo", "finans"]
+    cat = CAT_TAG.get(post.get("category", ""), "yatırım")
+    # Yazının kendi etiketlerinden 2 konu-duyarlı hashtag (tek kelimeleşenler daha temiz)
+    topic = []
+    for t in post.get("tags", []):
+        h = _slugify_tag(t)
+        if 3 <= len(h) <= 22 and h not in core and h != cat:
+            topic.append(h)
+        if len(topic) >= 2:
+            break
+    # Havuzdan gün-rotasyonlu 3 tag
+    yday = time.gmtime().tm_yday
+    rot = [ROT_POOL[(yday + i) % len(ROT_POOL)] for i in range(3)]
+    seen, out = set(), []
+    for h in core + [cat] + topic + rot:
+        if h and h not in seen:
+            seen.add(h); out.append("#" + h)
+    return " ".join(out)
+
+
 def build_caption(post):
     url = f"{SITE}/blog/{post['slug']}"
-    tags = "#finans #yatırım #parafomo #kişiselfinans #borsa #tasarruf #ekonomi"
     parts = [post["title"]]
     if post["description"]:
         parts.append(post["description"])
     parts.append(f"📖 Yazının tamamı: {url}\n(Profildeki linkten de ulaşabilirsin)")
-    parts.append(tags)
+    parts.append(build_hashtags(post))
     return "\n\n".join(parts)
 
 
