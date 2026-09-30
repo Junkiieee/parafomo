@@ -112,9 +112,15 @@ fi
 # ============================================================================
 if [ -z "$SCEN" ]; then
   # Format
-  # İzlenme verisine göre ağırlıklı (2026-08): myth 412 ort. lider, comparison 98 → ELENDİ.
-  # myth×2, shock_number×2, backtest×1, news×1, single_concept×1.
-  declare -A DOW_FMT=([1]=myth [2]=shock_number [3]=backtest_return [4]=myth [5]=news_reaction [6]=single_concept [7]=shock_number)
+  # 2026-09-30 REBALANS — 65% AVD KAPISI × format (hook_retention gate_by_format, n=43):
+  #   backtest_return medyan AVD %65 kapı %40 · myth %64 %25 · single_concept %44 %25
+  #   → BUNLAR dağıtım kapısını geçen (algoritma topic-cluster'a dağıtır).
+  #   shock_number %16 kapı 0/7 · news_reaction %27 0/6 → GÜÇLÜ KANCA/İZLENME ama
+  #   ORTA-VİDEO çöküyor, kapıyı GEÇMİYOR → izlenme siteye/keşfe akmıyor (16K→0 kök nedeni).
+  #   Views-ağırlıklı öğrenme shock_number'ı #1 seçiyordu; kapı ölçümü onu dağıtım-katili
+  #   gösterdi. Bu yüzden gate-geçenlere kaydırıldı; shock 2→1 (kanca baseline), news viral'dan
+  #   çıkarıldı (gündem zaten news-daily 06:30 cron'unda yakalanıyor). Exp 2026-09-30-1 izler.
+  declare -A DOW_FMT=([1]=myth [2]=backtest_return [3]=backtest_return [4]=myth [5]=single_concept [6]=single_concept [7]=shock_number)
   FORMAT="${FORMAT_OVERRIDE:-${DOW_FMT[$(date -u +%u)]}}"
   if [ -z "$FORMAT_OVERRIDE" ]; then
     LEARNED_FMT="$("$VPY" "$REPO/scripts/learn/winner.py" viral.format 2>/dev/null || true)"

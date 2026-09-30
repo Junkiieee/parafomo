@@ -30,8 +30,8 @@ const breadcrumbs = [
       </header>
 
       <div class="tabs" role="tablist">
-        <button type="button" class="tab is-active" id="tab-login" role="tab">Giriş yap</button>
-        <button type="button" class="tab" id="tab-register" role="tab">Kayıt ol</button>
+        <button type="button" class="tab is-active" id="tab-login" role="tab" aria-selected="true">Giriş yap</button>
+        <button type="button" class="tab" id="tab-register" role="tab" aria-selected="false">Kayıt ol</button>
       </div>
 
       <form id="auth-form" autocomplete="on">
@@ -298,6 +298,8 @@ const breadcrumbs = [
         var login = m === 'login';
         $('tab-login').classList.toggle('is-active', login);
         $('tab-register').classList.toggle('is-active', !login);
+        $('tab-login').setAttribute('aria-selected', login ? 'true' : 'false');
+        $('tab-register').setAttribute('aria-selected', login ? 'false' : 'true');
         $('auth-title').textContent = login ? 'Portföyüne giriş yap' : 'Ücretsiz hesap oluştur';
         $('name-field').hidden = login;
         $('pw-hint').hidden = login;
@@ -725,6 +727,13 @@ const breadcrumbs = [
     .tabs { display: flex; gap: 0.4rem; background: var(--surface); padding: 0.3rem; border-radius: var(--radius); margin-bottom: 1.2rem; }
     .tab { flex: 1; border: none; background: transparent; padding: 0.55rem; border-radius: var(--radius-sm); font-weight: 600; color: var(--text-soft); cursor: pointer; font-family: var(--font-sans); }
     .tab.is-active { background: var(--bg-card); color: var(--text); box-shadow: var(--shadow-soft); }
+
+    /* Klavye erişilebilirliği: tüm etkileşimli öğelerde görünür focus halkası (fare tıklamasında değil) */
+    .tab:focus-visible, .link-btn:focus-visible, .btn-primary:focus-visible,
+    .refresh-btn:focus-visible, .edit:focus-visible, .del:focus-visible,
+    .err-retry:focus-visible, button:focus-visible {
+      outline: 2px solid var(--brand-2); outline-offset: 2px; border-radius: var(--radius-sm);
+    }
 
     .field { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.9rem; }
     .field span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }

@@ -1,12 +1,12 @@
 # ParaFOMO — Dürüst Ölçüm Panosu
 
-> Üretim: 2026-09-29 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
+> Üretim: 2026-09-30 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
 
 ## 1) Organik trafik trendi (GA4 — son 8 hafta)
 
 | Hafta | Gerçek erişim (Direct hariç) | Direct (≈sen/bot) | Toplam |
 |---|---|---|---|
-| 202632 | 8 | 13 | 21 |
+| 202632 | 7 | 10 | 17 |
 | 202633 | 24 | 16 | 40 |
 | 202634 | 32 | 27 | 59 |
 | 202635 | 37 | 24 | 61 |
@@ -14,17 +14,17 @@
 | 202637 | 41 | 13 | 54 |
 | 202638 | 48 | 22 | 70 |
 | 202639 | 36 | 17 | 53 |
-| 202640 | 11 | 3 | 14 |
+| 202640 | 17 | 3 | 20 |
 
-**Gerçek erişim trendi:** `▁▃▅▆▅▆█▅▁`  📉 düşüyor
-**Son hafta Direct payı:** %21 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
+**Gerçek erişim trendi:** `▁▃▅▆▅▆█▅▂`  📉 düşüyor
+**Son hafta Direct payı:** %15 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
 
 **Gerçek erişim kaynağı (son 4 hafta toplamı):**
-- Organic Search: 79 kullanıcı
+- Organic Search: 87 kullanıcı
 - Organic Social: 27 kullanıcı
 - AI Assistant: 16 kullanıcı
-- Unassigned: 6 kullanıcı
 - Organic Video: 4 kullanıcı
+- Unassigned: 4 kullanıcı
 - Cross-network: 4 kullanıcı
 
 ## 2) Google arama trendi (GSC — son 8 hafta)
@@ -38,9 +38,9 @@
 | 2026-08-31 | 17 | 1920 | %0.9 |
 | 2026-09-07 | 14 | 2206 | %0.6 |
 | 2026-09-14 | 36 | 1609 | %2.2 |
-| 2026-09-21 | 13 | 1004 | %1.3 |
+| 2026-09-21 | 17 | 1156 | %1.5 |
 
-**Tıklama trendi:** `▁▁▁▂▃▃█▃`  📉 düşüyor
+**Tıklama trendi:** `▁▁▁▂▃▃█▃`  📈 artıyor
 
 **En iyi sıralanan sorgular (gösterim≥3):**
 - `+türkiye 2026 mevduat faiz oranları tcmb politika faizi eylül 2026` — sıra 1.2, gös 4, tık 0
@@ -53,24 +53,24 @@
 - `+tcmb faiz kararı eylül 2026 politika faizi` — sıra 5.0, gös 3, tık 0
 
 **🎯 Ulaşılabilir fırsatlar (sıra 4-20, gösterim≥5):**
-- `albayrak hazır beton hisse` — sıra 12.4, gös 164
+- `albayrak hazır beton hisse` — sıra 12.4, gös 165
 - `jackson hole toplantısı ne zaman` — sıra 9.3, gös 131
 - `jackson hole sempozyumu nedir` — sıra 8.9, gös 80
 - `jackson hole toplantısı nedir` — sıra 9.1, gös 77
 - `fed faiz kararı takvimi` — sıra 11.2, gös 70
 - `jackson hole ne zaman` — sıra 9.4, gös 68
-- `fed faiz kararı takvimi 2026` — sıra 10.5, gös 67
+- `fed faiz kararı takvimi 2026` — sıra 10.4, gös 68
 - `jackson hole nedir` — sıra 10.7, gös 67
 
 ## 3) YouTube motoru
 
-- **Abone:** 51  ·  **Toplam izlenme:** 56,246  ·  **Video:** 270
+- **Abone:** 51  ·  **Toplam izlenme:** 56,823  ·  **Video:** 273
 - İzlenme/abone dönüşümü: **0.09%** (izleyen kaç kişi abone/huniye giriyor)
 
 ## 4) 🎯 DÜRÜST HÜKÜM
 
 **Hedef:** 1000 ziyaretçi/gün = 7,000/hafta gerçek erişim.
-**Gerçek durum:** son hafta **11** gerçek ziyaretçi = hedefin **%0.16**'si. Kalan: **6,989** kişi/hafta.
+**Gerçek durum:** son hafta **17** gerçek ziyaretçi = hedefin **%0.24**'si. Kalan: **6,983** kişi/hafta.
 
 - Belirgin kırmızı bayrak yok; trend ve hedef mesafesine bak.
 

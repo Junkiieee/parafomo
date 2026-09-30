@@ -177,6 +177,60 @@ def main():
 
     avds = [x["avg_view_pct"] for x in results if x["avg_view_pct"] is not None]
     gate_pass = [x for x in results if x["avg_view_pct"] is not None and x["avg_view_pct"] >= AVD_GATE_PCT]
+
+    # ── 65% AVD kapısını FORMAT/KONU'ya kır (kuyruk #2c) ──────────────────
+    # Neden: %8 videonun kapıyı geçmesi = dağıtım darboğazının sayısal kanıtı;
+    # HANGİ format/subtype geçiyor bilmek format seçimini eyleme çevirir.
+    # AVD tek batched sorgu (dimensions=video) → curve gerekmeden ÇOK daha
+    # geniş kohort ölçülebilir; per-video maliyet YOK. Son GATE_BREAKDOWN_N
+    # videoyu format etiketiyle (ledger attrs) eşleştirip kapı-geçme oranını
+    # format bazında çıkarırız.
+    GATE_BREAKDOWN_N = 90
+    fmt_items = [r for r in lib.read_jsonl(lib.LEDGER)
+                 if r["channel"] == "youtube" and r["refs"].get("video_id")]
+    fmt_items.sort(key=lambda r: r.get("published_utc") or "", reverse=True)
+    fmt_items = fmt_items[:GATE_BREAKDOWN_N]
+    fmt_vids = [r["refs"]["video_id"] for r in fmt_items]
+    fmt_label = {}  # video_id -> (format, subtype)
+    for r in fmt_items:
+        a = r.get("attrs") or {}
+        fmt_label[r["refs"]["video_id"]] = (a.get("format") or r.get("subtype") or "?",
+                                            r.get("subtype") or "?")
+    wide_avd = dict(avd)  # top-20 zaten çekildi; kalanları batched çek
+    missing = [v for v in fmt_vids if v not in wide_avd]
+    for i in range(0, len(missing), 100):
+        chunk = missing[i:i + 100]
+        try:
+            rep = ya.reports().query(
+                ids="channel==MINE", startDate=start, endDate=end,
+                dimensions="video", metrics="averageViewPercentage",
+                filters="video==" + ",".join(chunk),
+            ).execute()
+            h = [c["name"] for c in rep.get("columnHeaders", [])]
+            vi = h.index("video") if "video" in h else 0
+            pi = h.index("averageViewPercentage") if "averageViewPercentage" in h else 1
+            for row in rep.get("rows", []):
+                wide_avd[row[vi]] = float(row[pi])
+        except Exception as e:
+            print(f"[hook] gate-breakdown AVD chunk atlandı: {type(e).__name__}: {str(e)[:80]}")
+
+    from collections import defaultdict
+    fmt_agg = defaultdict(list)
+    for v in fmt_vids:
+        if v in wide_avd:
+            fmt_agg[fmt_label[v][0]].append(wide_avd[v])
+    gate_by_format = {}
+    for fmt, vals in fmt_agg.items():
+        if len(vals) < 3:  # gürültü kapısı
+            continue
+        passed = [x for x in vals if x >= AVD_GATE_PCT]
+        gate_by_format[fmt] = {
+            "n": len(vals),
+            "median_avd": round(sorted(vals)[len(vals) // 2], 1),
+            "gate_pass_n": len(passed),
+            "gate_pass_share": round(len(passed) / len(vals), 3),
+        }
+
     payload = {
         "fetched_utc": lib.iso(),
         "hold_sec": HOLD_SEC,
@@ -186,6 +240,8 @@ def main():
         "median_avg_view_pct": round(sorted(avds)[len(avds) // 2], 1) if avds else None,
         "gate_pass_share": round(len(gate_pass) / len(avds), 3) if avds else None,  # 65% kapısını geçen oran
         "gate_pass_n": len(gate_pass),
+        "gate_breakdown_n": len([v for v in fmt_vids if v in wide_avd]),
+        "gate_by_format": gate_by_format,
         "videos": results,
     }
     with open(OUT, "w", encoding="utf-8") as f:
@@ -200,6 +256,12 @@ def main():
         print(f"    AVD: medyan %{payload['median_avg_view_pct']:.0f} · "
               f"%{AVD_GATE_PCT:.0f} kapısını geçen: {payload['gate_pass_n']}/{len(avds)} "
               f"(%{payload['gate_pass_share'] * 100:.0f})")
+    if gate_by_format:
+        print(f"    65% KAPISI × FORMAT (son {payload['gate_breakdown_n']} video):")
+        for fmt, s in sorted(gate_by_format.items(),
+                             key=lambda kv: kv[1]["median_avd"], reverse=True):
+            print(f"      {fmt:16s} medyan AVD %{s['median_avd']:.0f} · "
+                  f"kapı {s['gate_pass_n']}/{s['n']} (%{s['gate_pass_share'] * 100:.0f}) · n={s['n']}")
     print(f"    → {OUT}")
     return 0
 

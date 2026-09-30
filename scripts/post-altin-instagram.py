@@ -34,8 +34,21 @@ SITE = "https://parafomo.com"
 RAW = "https://raw.githubusercontent.com/Junkiieee/parafomo/main/public/social"
 API = "https://graph.facebook.com/v21.0"
 
-HASHTAGS = ("#altın #gramaltın #çeyrekaltın #altınfiyatları #cumhuriyetaltını "
-            "#yatırım #ekonomi #dolar #borsa #finans #tasarruf #parafomo")
+# Her gün AYNI hashtag bloğu = IG'de tekrar-erişim baskısı riski (bkz. blog caption
+# düzeltmesi 2026-09-29). Çekirdek (daima konuya uygun) + gün-rotasyonlu havuz → her
+# post farklı blok, konu bütünlüğü korunur. day_of_year ile döner (question/tool ile aynı ritim).
+HASHTAG_CORE = ["#altın", "#gramaltın", "#altınfiyatları", "#yatırım", "#parafomo"]
+HASHTAG_POOL = ["#çeyrekaltın", "#cumhuriyetaltını", "#ekonomi", "#dolar", "#borsa",
+                "#finans", "#tasarruf", "#altınyatırımı", "#gümüş", "#enflasyon",
+                "#kuyumcu", "#onsaltın", "#hasaltın", "#ziynetaltını", "#döviz"]
+
+
+def build_hashtags(day_of_year):
+    """Çekirdek + havuzdan gün-rotasyonlu 7 = toplam ~12 hashtag, her gün farklı blok."""
+    n = len(HASHTAG_POOL)
+    start = (day_of_year * 7) % n
+    rotated = [HASHTAG_POOL[(start + i) % n] for i in range(7)]
+    return " ".join(HASHTAG_CORE + rotated)
 
 
 def tr_now():
@@ -125,7 +138,7 @@ def build_caption(date_label):
             f"{question}\n"
             "🥇 Bugünün tüm altın fiyatları → parafomo.com/altin-fiyatlari\n"
             f"{secondary}")
-    return "\n\n".join([comment, body, HASHTAGS])
+    return "\n\n".join([comment, body, build_hashtags(day_of_year)])
 
 
 def http_post(url, data):
