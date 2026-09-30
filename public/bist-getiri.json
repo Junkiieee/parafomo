@@ -1,43 +1,43 @@
 {
-  "updated": "2026-09-29T01:00+00:00",
+  "updated": "2026-09-30T01:00+00:00",
   "source": "Yahoo Finance (XU100.IS BIST 100 endeksi, aylık kapanış)",
-  "bist_now": 12592.76,
+  "bist_now": 12290.58,
   "ytd": {
     "label": "Yıl başından beri",
     "bist_then": 13838.3,
-    "bist_now": 12592.76,
-    "return_tl_pct": -9.0
+    "bist_now": 12290.58,
+    "return_tl_pct": -11.2
   },
   "periods": [
     {
       "label": "1 yıl",
       "years": 1,
       "bist_then": 10971.5,
-      "bist_now": 12592.76,
-      "return_tl_pct": 14.8
+      "bist_now": 12290.58,
+      "return_tl_pct": 12.0
     },
     {
       "label": "3 yıl",
       "years": 3,
       "bist_then": 7514.1,
-      "bist_now": 12592.76,
-      "return_tl_pct": 67.6
+      "bist_now": 12290.58,
+      "return_tl_pct": 63.6
     },
     {
       "label": "5 yıl",
       "years": 5,
       "bist_then": 1522.0,
-      "bist_now": 12592.76,
-      "return_tl_pct": 727.4
+      "bist_now": 12290.58,
+      "return_tl_pct": 707.5
     },
     {
       "label": "10 yıl",
       "years": 10,
       "bist_then": 785.36,
-      "bist_now": 12592.76,
-      "return_tl_pct": 1503.4
+      "bist_now": 12290.58,
+      "return_tl_pct": 1465.0
     }
   ],
   "headline_years": 10,
-  "headline_return_tl_pct": 1503.4
+  "headline_return_tl_pct": 1465.0
 }

@@ -4,6 +4,63 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-09-30 — TCMB Ekim 2026 Faiz Kararı: PPK 22 Ekim'de Ne Yapacak?
+
+**Yayınlanan yazı:** [TCMB Ekim 2026 Faiz Kararı: PPK 22 Ekim'de Ne Yapacak?](https://parafomo.com/blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler/)
+**Hedef sorgu:** `tcmb ekim 2026 faiz kararı` · Kategori: Ekonomi
+**Konu seçimi:** Takvim + GSC sorguları + backlog tamamen tükenmiş; stratejik seçim: Takvimde 🔴 TCMB PPK 22 Ekim yok yazısı + bugünkü ABD PCE (30 Eylül) çift bağlamı. TÜİK 5 Ekim → TCMB 22 Ekim zinciri, Fitch kredi notu yükseltmesi ek manevra alanı. tcmb-eylul-2026 + tuik-ekim-2026 + reel-faiz cluster tamamlandı.
+
+---
+
+### 🐦 X (Twitter) Thread Taslağı
+
+1/ 22 Ekim'de TCMB PPK toplanıyor — ve bu toplantı öncesinde iki kritik veri var: 5 Ekim TÜİK TÜFE + bugün (30 Eylül) açıklanan ABD PCE enflasyonu. İşte bilmen gerekenler 👇
+
+2/ Türkiye politika faizi ~%22-25 bandında. Dezenflasyon sürüyor ama adımlar yavaşlıyor. PPK her kararı TL kuruna ve enflasyon verisine bakarak atıyor.
+
+3/ Konsensüs senaryo: 250-500 baz puan kademeli indirim. Ama sürpriz büyük indirim veya sabit karar da masada — belirleyici: 5 Ekim TÜFE rakamı.
+
+4/ Mevduatın varsa: Karar sonrası bankaların revize faiz oranlarını karşılaştır. Aceleyle uzun vade kilitleme. Kararı bekle.
+
+5/ Kredi planın varsa: Şimdi 3-4 bankadan ön teklif al. Karar günü imzalama — faizler 24-72 saat içinde oturur, sonra tekrar karşılaştır.
+
+6/ Tüm senaryo analizi, kredi + mevduat pratik rehber ve BIST etkisi → parafomo.com'da 👇 #TCMB #FaizKararı #Ekonomi
+
+---
+
+### 📸 Instagram Post/Reels Metni
+
+**Görsel fikri:** 3 kart — "Küçük İndirim / Büyük İndirim / Sabit" senaryoları + her birinin mevduat/kredi/kur oku.
+
+---
+🏦 TCMB 22 Ekim'de toplanıyor. Faiz ne olur?
+
+3 senaryo var:
+✅ Küçük indirim (konsensüs) → Mevduat yavaşça geriler
+⚡ Büyük indirim → Kredi faizleri düşer, kur baskısı artar
+⏸️ Sabit → Mevduat yüksek kalır, BIST temkinli
+
+📌 Bu kararı belirleyecek iki şey:
+→ 5 Ekim TÜİK TÜFE verisi
+→ Bugün açıklanan ABD PCE (Fed sinyali)
+
+Ne yapmalısın?
+→ Vade yenilemeden önce kararı bekle
+→ Kredi için şimdiden ön teklif al
+
+Detaylı analiz linkten ⤴️
+
+#TCMB #FaizKararı #Mevduat #Ekonomi #ParaFOMO
+
+---
+
+### ✅ Senin Yapman Gereken 2 İş
+
+1. **Bu yazıyı X (Twitter) ve Instagram'da paylaş** — 5 Ekim TÜİK verisi öncesinde okuyucular arama yapacak; erken paylaşım organik yayılım sağlar.
+2. **22 Ekim için hatırlatıcı koy** — PPK kararı açıklandığında sosyal medyada hızlı tepki verebilmek için. O gün haber paylaşımı engagement getirir.
+
+---
+
 ## 2026-09-29 — ABD Ekim 2026 İstihdam Verisi (NFP): Fed Kasım'da Ne Yapar? Dolar ve Altın Etkisi
 
 **Yayınlanan yazı:** [ABD Ekim 2026 İstihdam Verisi (NFP): Fed Kasım'da Ne Yapar? Dolar ve Altın Etkisi](https://parafomo.com/blog/abd-ekim-2026-nfp-istihdam-verisi-fed-dolar-altin/)
