@@ -1,0 +1,167 @@
+{
+  "slug": "50-bin-tl-gram-altinda-5-yilda-458-bin-oldu",
+  "title": "50 Bin TL Gram Altında 5 Yılda 458 Bin Oldu",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "2021 sonunda 50.000 TL gram altına koysaydın bugün yaklaşık 458.471 TL olurdu — yüzde 817 getiri. Bankada bırakanla arasındaki fark artık çok büyük.",
+  "tags": [
+    "gram altın",
+    "yatırım",
+    "enflasyon",
+    "ev peşinatı",
+    "tasarruf",
+    "türkiye ekonomi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "50 bini bankada bıraktın — ev uzaklaştı.",
+      "visual": {
+        "type": "object",
+        "query": "modern dream house exterior keys entrance"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2021'de 50 bini gram altına koyanın yüzü bugün gülüyor — rakam geliyor.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins investment savings grow"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bankada bıraksaydın faiz alırdın; ama enflasyon neredeyse her yıl faizin önünde gitti.",
+      "visual": {
+        "type": "concept",
+        "query": "bank counter inflation money value erosion"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gram altında yaklaşık 458 bin TL olurdu — yüzde 817 getiri, yaklaşık.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "Gram Altın",
+          "unit": "TL",
+          "points": [
+            724.13,
+            781.36,
+            778.06,
+            857.29,
+            926.79,
+            1006.97,
+            1042.72,
+            1028.73,
+            1026.58,
+            998.41,
+            1046.35,
+            1096.82,
+            1115.14,
+            1230.92,
+            1324.76,
+            1644.1,
+            1664.95,
+            1690.34,
+            1735.54,
+            1695.34,
+            1896.39,
+            1966.31,
+            1999.33,
+            2061.66,
+            2307.68,
+            2387.33,
+            2444.62,
+            2489.66,
+            2658.5,
+            2775.09,
+            2962.34,
+            3241.97,
+            3344.35,
+            3865.35,
+            4184.0,
+            4218.05,
+            4351.41,
+            4700.03,
+            5233.44,
+            5812.96,
+            5994.79,
+            6629.44,
+            6824.62,
+            6887.35,
+            6167.61,
+            6370.67,
+            7052.8,
+            6639.85
+          ],
+          "x": [
+            "11/21",
+            "12/21",
+            "01/22",
+            "02/22",
+            "03/22",
+            "04/22",
+            "06/22",
+            "07/22",
+            "08/22",
+            "09/22",
+            "11/22",
+            "12/22",
+            "02/23",
+            "03/23",
+            "04/23",
+            "05/23",
+            "06/23",
+            "07/23",
+            "08/23",
+            "09/23",
+            "11/23",
+            "12/23",
+            "01/24",
+            "02/24",
+            "03/24",
+            "04/24",
+            "05/24",
+            "06/24",
+            "07/24",
+            "08/24",
+            "11/24",
+            "01/25",
+            "02/25",
+            "03/25",
+            "04/25",
+            "05/25",
+            "07/25",
+            "08/25",
+            "09/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26",
+            "09/26"
+          ],
+          "amount": 50000,
+          "end_value": 458471,
+          "pct": 817
+        }
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Önümüzdeki 5 yıl gram altın mı banka mı kazanır? Bilmek için abone ol — her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "modern dream house exterior keys entrance"
+      }
+    }
+  ]
+}
