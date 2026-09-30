@@ -1,0 +1,59 @@
+{
+  "slug": "fed-in-baktigi-sayi-dolara-ne-yapiyor",
+  "title": "Fed'in Baktığı Sayı Dolara Ne Yapıyor",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "ABD çekirdek PCE enflasyonu Fed'in faiz kararlarının kilit göstergesi; beklentinin altına düştüğünde dolar yönü değişiyor. Türkiye'deki dolar ve altın birikimi sahipleri için ne anlama geliyor?",
+  "tags": [
+    "PCE",
+    "Fed",
+    "dolar",
+    "ABD enflasyon",
+    "faiz kararı",
+    "altın",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "ABD çekirdek enflasyonu düştü — dolar hareketlendi.",
+      "visual": {
+        "type": "place",
+        "query": "Federal Reserve building Washington DC"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fed faiz kesmek için PCE'nin düşmesini bekliyordu. Bu ay geldi — dolar için kapı açıldı.",
+      "visual": {
+        "type": "concept",
+        "query": "US dollar index chart falling screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama dolar zayıflamak demek herkes kazanır değil. Altın yükselir, dolar mevduatının getirisi anlamsızlaşır.",
+      "visual": {
+        "type": "concept",
+        "query": "gold price rising dollar falling chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu veri her ay açıklanıyor. Tarihini bilen portföyünü önceden ayarlıyor, bilmeyen sadece tepki veriyor.",
+      "visual": {
+        "type": "object",
+        "query": "calendar planner investment portfolio planning"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki PCE verisi piyasayı nasıl etkileyebilir? Cevabı kaçırmamak için abone ol — her gün 60 saniyede dürüst bir finans bakışı seni bekliyor.",
+      "visual": {
+        "type": "place",
+        "query": "Federal Reserve building Washington DC"
+      }
+    }
+  ]
+}
