@@ -17,6 +17,23 @@ faq:
     a: "Doğrudan değil, dolaylı etkiler. Güçlü ABD verileri Fed'i sertleştirirse dolar güçlenir, TL üzerinde kur baskısı artar ve TCMB'nin manevra alanı daralır."
   - q: "Faiz indirimi TL kurunu nasıl etkiler?"
     a: "Beklenti dahilindeki küçük indirimler genellikle sınırlı kur hareketi yaratır çünkü piyasa bunu önceden fiyatlar. Beklentinin çok ötesinde büyük bir indirim ise TL'den sermaye çıkışına zemin hazırlayabilir."
+shorts:
+  - "TCMB faizi iki yılda yüzde elliden yüzde yirmi beşe yarılandı."
+  - "TCMB, 2024 sonunda yüzde elli olan politika faizini dezenflasyonla birlikte yaklaşık yüzde yirmi iki-yirmi beşe çekti."
+  - "22 Ekim'de PPK toplanıyor; 5 Ekim'deki TÜİK enflasyon verisi ve TL kuru kararın seyrini belirleyecek."
+  - "Fitch'in BB+ kredi notu yükseltmesi TCMB'ye ek manevra alanı açtı, indirim yolu biraz daha kolaylaştı."
+  - "Peki bu karar mevduatın ve kredi faizin için ne anlama geliyor? Kanala abone ol, her kararı parafomo.com'da analiz ediyoruz."
+shorts_broll:
+  - "central bank interest rate decision"
+  - "turkish lira currency exchange"
+  - "inflation graph decreasing chart"
+  - "financial market trading screen"
+shorts_visuals:
+  - "place|Türkiye Cumhuriyet Merkez Bankası"
+  - "concept|interest rate falling chart decline"
+  - "concept|inflation data report announcement screen"
+  - "logo|Fitch Ratings logo"
+  - "concept|bank savings deposit money counter"
 ---
 
 22 Ekim 2026, TCMB Para Politikası Kurulu'nun (PPK) yılın sekizinci toplantı günü. **TCMB Ekim 2026 faiz kararı**; 5 Ekim'deki TÜİK TÜFE verisi, 30 Eylül'de açıklanan ABD Core PCE, 2 Ekim'deki NFP ve yakın zamandaki Fitch kredi notu yükseltmesiyle birleşince bu toplantıyı 2026'nın en merak uyandıran PPK günleri arasına koyuyor. Kararın ne olabileceğini, mevduatınıza ve kredinize nasıl yansıyacağını üç net senaryo üzerinden anlatalım.
