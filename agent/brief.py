@@ -207,6 +207,69 @@ def sec_kpi_snapshot():
             f"{yt.get('videos')} video")
 
 
+
+# ------------------------------------------------------------------ bahis metrikleri
+def _path(url):
+    return url.replace("https://parafomo.com", "").replace("http://parafomo.com", "") or "/"
+
+
+def sec_bet_metrics():
+    import bets as B
+    act = [r for r in B.load() if r.get("status") == "active" and r.get("pages")]
+    if not act:
+        out("(sayfa desenli aktif bahis yok — `bets.py set-pages` ile tanımla)")
+        return
+    end = TODAY - dt.timedelta(days=3)
+    rows7 = gsc(["page"], end - dt.timedelta(days=6), end, 1000)
+    rows28 = gsc(["page"], end - dt.timedelta(days=27), end, 1000)
+    sitemap = []
+    try:
+        import urllib.request
+        req = urllib.request.Request("https://parafomo.com/sitemap-0.xml",
+                                     headers={"User-Agent": "Mozilla/5.0 (parafomo-agent)"})  # Cloudflare python UA'yı 403'lüyor
+        xml = urllib.request.urlopen(req, timeout=20).read().decode()
+        sitemap = [_path(u) for u in re.findall(r"<loc>([^<]+)</loc>", xml)]
+    except Exception:
+        pass
+    for r in act:
+        rx = re.compile(r["pages"])
+        def agg(rows):
+            hit = [x for x in rows if rx.search(_path(x["keys"][0]))]
+            return (sum(int(x["clicks"]) for x in hit), sum(int(x["impressions"]) for x in hit), hit)
+        c7, i7, _ = agg(rows7)
+        c28, i28, hit28 = agg(rows28)
+        live = [u for u in sitemap if rx.search(u)]
+        seen = {_path(x["keys"][0]).rstrip("/") for x in hit28}
+        out(f"- **{r['id']}** `{r['pages']}` → 7g **{c7} tık / {i7} gös** · 28g {c28} tık / {i28} gös · "
+            f"sitemap'te {len(live)} sayfa, 28g'de gösterim alan {len(seen)} sayfa · hedef: {r['target']}")
+        for x in sorted(hit28, key=lambda x: (-x["clicks"], -x["impressions"]))[:5]:
+            out(f"  - {_path(x['keys'][0])} — {int(x['clicks'])} tık · {int(x['impressions'])} gös · poz {x['position']:.1f}")
+        if MODE == "weekly" and live:
+            sec_indexing([u for u in live if u.rstrip("/") not in seen][:12])
+
+
+def sec_indexing(paths):
+    """Gösterim almayan bahis sayfalarının Google indeks durumu (URL Inspection API)."""
+    _, _, sc = clients()
+    if not sc or not paths:
+        return
+    from collections import Counter
+    states = Counter()
+    sample = []
+    for pth in paths:
+        try:
+            res = sc.urlInspection().index().inspect(body={
+                "inspectionUrl": "https://parafomo.com" + pth, "siteUrl": DASH.GSC_SITE}).execute()
+            st = res.get("inspectionResult", {}).get("indexStatusResult", {}).get("coverageState", "?")
+        except Exception as e:
+            st = f"hata: {str(e)[:40]}"
+        states[st] += 1
+        if len(sample) < 4:
+            sample.append(f"{pth} → {st}")
+    out(f"  - İndeks (gösterimsiz {len(paths)} sayfa): " + " · ".join(f"{k}: {v}" for k, v in states.items()))
+    for x in sample:
+        out(f"    - {x}")
+
 # ------------------------------------------------------------------ YouTube
 def yt_videos():
     led = {}
@@ -430,6 +493,7 @@ def main():
                                                                        empty="(plan yok — haftalık koşu oluşturmalı)"))
     section("5) Bahisler (agent/bets.py)", lambda: out(__import__("bets").render(__import__("bets").load(),
                                                                                 show_all=MODE == "weekly")))
+    section("5b) Bahis metrikleri (otomatik — GSC, gecikmeli)", sec_bet_metrics)
     section("6) Kalıcı dersler (agent/memory/learnings.md)", lambda: cat(os.path.join(MEM, "learnings.md")))
     section("7) Web: arama ve trafik verisi", sec_web)
     section("8) YouTube", sec_youtube)

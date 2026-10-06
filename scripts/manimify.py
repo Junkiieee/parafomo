@@ -12,6 +12,12 @@ Kural:
 - Tema tüm video için tek (tutarlılık); gün gün döner (çeşitlilik).
 
 Kullanım: python scripts/manimify.py <senaryo.json>   → stdout SON satırı = yeni json yolu
+          python scripts/manimify.py <senaryo.json> --hybrid
+            KARMA (2026-10-06, marka görsel kimliği): YALNIZ jenerik stok sahneleri
+            ("concept"/"scene") markalı Manim kartına çevirir; gerçek kişi/yer/logo/altın/
+            nesne fotoğrafları ve grafikler AYNEN kalır. Dosya yerinde güncellenir (slug aynı).
+            Gerekçe: kullanıcı jenerik stok videoyu sevmiyor; tam-Manim videolar ise izlenmede
+            geride (medyan ~87 vs ~124-150) — gerçek görüntü + marka kartı karması.
 """
 import os, re, sys, json, datetime
 
@@ -53,9 +59,37 @@ def has_chart(visual):
     return isinstance(ch, dict) and (ch.get("amount") or ch.get("end_value") or ch.get("pct"))
 
 
+STOCK_TYPES = {"concept", "scene"}
+BRAND_THEME = "slate"   # marka teması — karma modda sabit (tutarlı kimlik)
+
+
+def hybridize(path):
+    sc = json.load(open(path, encoding="utf-8"))
+    title = sc.get("title", "")
+    n = 0
+    for seg in sc.get("segments", []):
+        vis = seg.get("visual") or {}
+        if (vis.get("type") or "").lower() not in STOCK_TYPES or has_chart(vis):
+            continue
+        if seg.get("kind") == "cta":
+            seg["visual"] = {"type": "manim", "scene": "concept", "theme": BRAND_THEME,
+                             "keyword": "ParaFOMO", "sub": "abone ol, kaçırma", "glyph": "₺"}
+        else:
+            kw, glyph = concept_kw(seg.get("spoken", ""), title)
+            seg["visual"] = {"type": "manim", "scene": "concept", "theme": BRAND_THEME,
+                             "keyword": kw, "glyph": glyph}
+        n += 1
+    json.dump(sc, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    print(f"[manimify] karma: {n} stok sahnesi → Manim marka kartı ({sc.get('slug')})", file=sys.stderr)
+    print(path)
+    return 0
+
+
 def main():
     if len(sys.argv) < 2 or not os.path.exists(sys.argv[1]):
         print("HATA: senaryo yolu gerekli", file=sys.stderr); return 1
+    if "--hybrid" in sys.argv:
+        return hybridize(sys.argv[1])
     sc = json.load(open(sys.argv[1], encoding="utf-8"))
     theme = THEMES[datetime.datetime.now(datetime.timezone.utc).timetuple().tm_yday % len(THEMES)]
     title = sc.get("title", "")

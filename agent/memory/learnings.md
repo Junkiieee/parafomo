@@ -53,4 +53,6 @@ _v1'in 59 deneyi + 2 aylık KPI'ından damıtıldı (2026-10-06). Haftalık koş
 - GSC ~2-3 gün gecikmeli; kısmi hafta düşüşü artefakttır (v1 bunu iki kez "çöküş" sandı).
 - Deploy: push → Cloudflare otomatik build (yerel build ~15 sn). IG Graph API JPEG + public URL ister
   (GitHub raw / `media` dalı); 9004 geçici hata tekrar denemeyle geçer.
+- **Telegram kanalı 2 üye** (2026-10-06): kanala otomatik blog/video paylaşımı şu an dağıtım değeri ~0;
+  büyütülmeden kaldıraç sayılmaz. Site bülten formu 2026-10-06'ya kadar `action="#"` idi (kimse abone olamadı).
 - Sunucu 2 çekirdek / 3,7 GB RAM / GPU yok: yerel ağır TTS (XTTS) çalışmaz; video render CPU'yu doyurur.

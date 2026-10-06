@@ -80,6 +80,12 @@ process_one() {
   local yt_url
   yt_url="$("$VPY" -c "import json;print(json.load(open('public/social/short-$slug.json')).get('youtube_url',''))")"
 
+  # Instagram Reel — blog videoları da Reels büyüme motoruna girsin (2026-10-06; önceden
+  # yalnız viral/Manim/gündem videoları Reel oluyordu). Hata yayını durdurmaz.
+  echo "[*] Instagram Reel yayınlanıyor..."
+  "$VPY" "$REPO/scripts/instagram-reel.py" "$slug" 2>&1 | sed 's/^/    [reel] /' \
+    || echo "UYARI: IG Reel atlandı/başarısız (devam)"
+
   # Telegram önizleme
   echo "[*] Telegram'a gönderiliyor..."
   local vid="$REPO/public/social/short-$slug.mp4"

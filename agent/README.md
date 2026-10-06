@@ -45,6 +45,7 @@ eller (deterministik cron'lar, ajan olmadan da çalışır) — deploy/crontab.t
 | `plan/content-queue.md` | blog konu kuyruğu (`scripts/daily-content.sh` en üsttekini yazar) |
 | `plan/user-tasks.md` | Kaan'a bağlı işler (≤3) |
 | `plan/backlog-portfolio.md` | portföy ürünü backlog'u |
+| `plan/brand.md` | marka kitabı (konumlandırma, ses, görsel kimlik, imza ürünler, gelir ilkeleri) |
 | `memory/learnings.md` | düzenlenmiş kalıcı dersler (≤40, haftalık yeniden yazılır) |
 | `state/` (git dışı) | brief, prompt, report, run-status, kpi |
 | `logs/` (git dışı) | koşu JSON'ları, build logları |
@@ -58,6 +59,7 @@ python3 agent/pubplan.py --all     # bugünün takvimi (arka plan işleri dahil)
 python3 agent/bets.py list --all   # bahisler
 python3 agent/notify.py report --dry
 python3 scripts/lib/llm.py --status   # Claude kota/oturum durumu
+bash scripts/backup.sh                # portföy DB + ayar yedeği → /root/parafomo-backups (bakım her gün çağırır)
 crontab /root/parafomo/deploy/crontab.txt   # cron'u kur/yenile
 ```
 

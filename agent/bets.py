@@ -9,7 +9,9 @@ Aynı anda en fazla 3 aktif bahis. Küçük işler bahis değildir (plan görevi
 
 Komutlar:
   add   --title "..." --lever web|youtube|instagram|infra --hypothesis "..."
-        --metric "..." --baseline "..." --target "..." --review YYYY-MM-DD
+        --metric "..." --baseline "..." --target "..." --review YYYY-MM-DD [--pages REGEX]
+  set-pages --id B... --pages REGEX   → brief bu desene uyan sayfaların GSC tık/gösterimini
+                                         ve (haftalık) Google indeks durumunu otomatik hesaplar
   note  --id B... --text "haftalık kanıt notu"
   close --id B... --status won|lost|killed --result "sayılarla sonuç" --learning "tek cümle ders"
   list  [--all] [--md]
@@ -67,7 +69,7 @@ def cmd_add(a):
     n = sum(1 for r in rows if r["id"].startswith(f"B{stamp}")) + 1
     rec = {"id": f"B{stamp}-{n}", "opened": today(), "title": a.title, "lever": a.lever,
            "hypothesis": a.hypothesis, "metric": a.metric, "baseline": a.baseline,
-           "target": a.target, "review": a.review, "status": "active",
+           "target": a.target, "review": a.review, "status": "active", "pages": a.pages or "",
            "notes": [], "result": "", "learning": "", "closed": ""}
     rows.append(rec)
     save(rows)
@@ -80,6 +82,15 @@ def cmd_note(a):
     r.setdefault("notes", []).append(f"{today()}: {a.text}")
     save(rows)
     print("not eklendi:", a.id)
+
+
+def cmd_set_pages(a):
+    import re
+    re.compile(a.pages)  # geçersiz desen erken patlasın
+    rows = load()
+    find(rows, a.id)["pages"] = a.pages
+    save(rows)
+    print(f"sayfa deseni: {a.id} → {a.pages}")
 
 
 def cmd_close(a):
@@ -98,7 +109,8 @@ def render(rows, show_all=False):
         out.append(f"- **{r['id']} — {r['title']}** [{r['lever']}] · açılış {r['opened']} · "
                    f"değerlendirme {r.get('review', '?')}{due}")
         out.append(f"  - Hipotez: {r['hypothesis']}")
-        out.append(f"  - Metrik: {r['metric']} · baz: {r['baseline']} · hedef: {r['target']}")
+        out.append(f"  - Metrik: {r['metric']} · baz: {r['baseline']} · hedef: {r['target']}"
+                   + (f" · sayfa deseni: `{r['pages']}`" if r.get("pages") else ""))
         for n in r.get("notes", [])[-3:]:
             out.append(f"  - Not: {n}")
     if not act:
@@ -128,7 +140,10 @@ def main():
     s = sub.add_parser("add")
     for k in ("title", "lever", "hypothesis", "metric", "baseline", "target", "review"):
         s.add_argument(f"--{k}", required=True)
+    s.add_argument("--pages", default="")
     s.set_defaults(fn=cmd_add)
+    s = sub.add_parser("set-pages"); s.add_argument("--id", required=True); s.add_argument("--pages", required=True)
+    s.set_defaults(fn=cmd_set_pages)
     s = sub.add_parser("note"); s.add_argument("--id", required=True); s.add_argument("--text", required=True)
     s.set_defaults(fn=cmd_note)
     s = sub.add_parser("close"); s.add_argument("--id", required=True)

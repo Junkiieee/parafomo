@@ -155,6 +155,8 @@ PY
   fi
   SLUG="$("$VPY" -c "import json,sys; print(json.load(open('$SCEN'))['slug'])")"
   echo "[+] Senaryo: $SCEN (slug=$SLUG)"
+  # Marka görsel kimliği: jenerik stok sahneleri → Manim marka kartı (gerçek foto/grafik kalır)
+  "$VPY" "$REPO/scripts/manimify.py" "$SCEN" --hybrid >/dev/null || echo "UYARI: karma Manim dönüşümü başarısız (stokla devam)"
 
   # Senaryo dosyasını commit+push (kayıt)
   if [ -f "public/social/scenarios/$SLUG.json" ]; then

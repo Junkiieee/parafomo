@@ -31,7 +31,12 @@ STATE = os.path.join(ROOT, "logs", "shorts-state.json")
 # Amaç: kullanıcı her sesi tek tek dinleyip karar versin → henüz DENENMEMİŞ 24 ses sırada.
 # Denenip BEĞENİLMEYEN (bir daha kullanılmayacak): Despina, Leda, Aoede, Puck — 2026-06-26.
 # Denenip kullanılmaya devam edenler (rotasyon dışı, beğenildi): Orus, Schedar.
-VOICES = [
+# MARKA SESİ (2026-10-06): tek tutarlı ses = kanal kimliği. Kullanıcının onayladığı Orus
+# tüm hatlarda (viral, blog→Short, Manim) sabit. Yedek onaylı ses: Schedar.
+# Eski 24 sesli deneme rotasyonu (Haziran'dan beri sonuçlanmadı) UNTESTED_VOICES'ta duruyor.
+VOICES = ["tr-TR-Chirp3-HD-Orus"]
+BACKUP_VOICE = "tr-TR-Chirp3-HD-Schedar"
+UNTESTED_VOICES = [
     "tr-TR-Chirp3-HD-Achernar",
     "tr-TR-Chirp3-HD-Achird",
     "tr-TR-Chirp3-HD-Algenib",
@@ -66,7 +71,7 @@ EDGE_VOICES = [
 ]
 
 # A/B motor rotasyonu — her işte sırayla değişir. ElevenLabs ileride buraya eklenebilir.
-ENGINES = ["google", "edge"]
+ENGINES = ["google"]  # Edge A/B kapatıldı (2026-10-06): Chirp3-HD daha doğal, marka sesi tek
 
 
 def load():

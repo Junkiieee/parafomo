@@ -34,6 +34,9 @@ Bugün: ~45-50 gerçek ziyaretçi/hafta (hedefin ~%0,7'si). Her kararın tek sor
   Saatler: `crontab -l` ve brief'teki sağlık tablosu.
 
 ## Kaan'ın kalıcı talepleri (unutma)
+- **Ana hedef (2026-10-06): ParaFOMO'yu bilinen bir MARKA yap ve siteden PARA kazan.** Tüm onaylar
+  verildi; ihtiyaç duyduğun hesap/API'yi Kaan getirir — `agent/plan/user-tasks.md`'ye net yaz.
+  **Marka kitabı `agent/plan/brand.md`** — her içerik, tasarım ve kanal kararında ona uy.
 - Kapsam finans + komşu alanlar (kripto, vergi, BES, kişisel finans, KOBİ, global piyasalar);
   alakasız dikeye atlama. Yatırım tavsiyesi verme, bilgilendirme dili.
 - Web: tüm UX/UI kararları senin; öncelik sırası ① interaktif araç/hesaplayıcı ② programatik veri
@@ -41,7 +44,9 @@ Bugün: ~45-50 gerçek ziyaretçi/hafta (hedefin ~%0,7'si). Her kararın tek sor
 - Portföy takip ürünü geliştirilmeye devam etsin (backlog: `agent/plan/backlog-portfolio.md`).
 - Video kalitesi önceliklidir: araştır → izole dene → işe yarıyorsa entegre et; kayıt
   `agent/archive/v1/video-rnd.md` (geçmiş) ve yeni bulgular plan/derslere. Jenerik stok video
-  SEVİLMİYOR (Manim/özgün görsel + gerçek kişi/yer için Wikimedia). Sesler: Orus/Schedar onaylı;
+  SEVİLMİYOR: viral videolarda soyut sahneler otomatik Manim marka kartına döner
+  (`scripts/manimify.py --hybrid`); gerçek kişi/yer/kurum için Wikimedia fotoğrafı, veri için grafik.
+  **Marka sesi Orus** — tüm hatlarda sabit (`scripts/shorts-state.py`), yedek Schedar;
   Despina/Leda/Aoede/Puck YASAK. Ekranda sayı/kategori chip'i YOK; sarı vurgulu altyazı; abone CTA.
 - YouTube hedefi önce Shorts büyümesi (izlenme+abone), sonra uzun-form. IG'de Reels büyüme motoru.
 - Raporlar e-postayla gider (Telegram'a rapor yok; @parafomo kanalına içerik dağıtımı sürer).

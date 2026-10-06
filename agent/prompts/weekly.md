@@ -6,6 +6,8 @@ Haftanın beyni bu koşu. Derin düşün; çıktıların kısa, somut ve uygulan
 ## 1. Skor kartı — ne oldu?
 Brief §1-2: gerçek organik ziyaretçi (7g/28g), GSC tık/gösterim, organik giriş sayfaları, AI asistan
 trafiği, YouTube abone/izlenme/video medyanı. Geçen hafta ve 4 hafta öncesiyle kıyasla.
+**Gelir ve marka da skor kartında:** AdSense durumu/geliri, bülten abone sayısı, sosyal hesap büyümesi
+(Kaan'ın hedefi: marka + siteden para). Bahis metrikleri brief §5b'de otomatik hesaplanır.
 - Kısmi haftayı tam haftayla, GSC'nin son 2-3 gününü (gecikmeli) gerçek düşüşle karıştırma.
 - Hareketi somut nedene bağla (hangi sayfa/olay/yayın). Bağlayamıyorsan "gürültü" de, uydurma.
 
@@ -41,8 +43,9 @@ sonra bahis kümeleri. Kaynak sorgunun gerçekten talep gördüğünü (GSC gös
 Kanıtlı çalışmayan / Kısıtlar ve çevre.
 
 ## 7. Kaan'ın görevleri
-`agent/plan/user-tasks.md`: **en fazla 3**, yalnız SADECE onun yapabileceği ve gerçekten değer
-katan işler (erişim, hesap, onay, para kararı). Her biri: ne · neden (etkisi) · nasıl (adım). 2 haftadır
+`agent/plan/user-tasks.md`: **en fazla 5**, en değerlisi üstte; yalnız SADECE onun yapabileceği ve
+gerçekten değer katan işler (erişim, hesap, onay, para kararı). Kaan "ne gerekiyorsa getiririm" dedi —
+gelir/marka için gereken hesap ve API'yi çekinmeden iste. Her biri: ne · neden (etkisi) · nasıl (adım). 2 haftadır
 yapılmayanı ya kaldır ya da gerekçesiyle bir kez daha sor — sonsuza kadar tekrarlama.
 
 ## 8. Maliyet ve sistem

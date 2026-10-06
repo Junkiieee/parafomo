@@ -17,7 +17,8 @@ export const SITE = {
   social: {
     x: 'https://x.com/parafomo',
     instagram: 'https://instagram.com/parafomo',
-    youtube: '',
+    youtube: 'https://www.youtube.com/@parafomo',
+    telegram: 'https://t.me/parafomo',
   },
 };
 

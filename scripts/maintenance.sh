@@ -40,6 +40,9 @@ done
 # 4) Ajan koşu logları — 45 günden eski
 find agent/logs -type f -mtime +45 -delete 2>/dev/null
 
+# 4b) Yedek: portföy DB (gerçek kullanıcı verisi) + ayarlar → /root/parafomo-backups (repo dışı)
+bash "$REPO/scripts/backup.sh" 2>&1 | sed 's/^/    /'
+
 # 5) Git hijyeni — yalnız ajan/ağır iş ÇALIŞMIYORSA (ağır-iş kilidi boştaysa)
 if flock -n "$REPO/.git/parafomo-heavy.lock" true; then
   git_locked bash -c '
