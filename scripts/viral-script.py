@@ -78,12 +78,13 @@ def build_market_context(fmt, instrument, amount, rng):
 # Görsel tipi sözlüğü — üreticiye DOĞRU kaynak-hizalı tip seçtirir.
 VISUAL_GUIDE = """Görsel tipleri ve "query" kuralı (görsel motoru buna göre kaynak seçer):
 - "person": gerçek kişi → query = TAM ÖZEL AD (ör. "Donald Trump", "Recep Tayyip Erdoğan", "Elon Musk"). Wikimedia'dan gerçek fotoğraf gelir.
-- "place" / "building": gerçek yer → query = özel ad (ör. "Borsa İstanbul", "Federal Reserve building").
+- "place" / "building": gerçek yer → query = özel ad. TÜRK kurumlarını GERÇEK adıyla kullan: "Central Bank of the Republic of Turkey" (TCMB), "Borsa İstanbul", "Grand Bazaar Istanbul", "Istanbul Levent skyline"; yabancılar için "Federal Reserve building" vb.
 - "logo": marka/şirket → query = "<Şirket> logo".
-- "gold": altın görseli → query İNGİLİZCE (ör. "gold bullion bars", "gold coins").
-- "object": gerçek nesne → query İNGİLİZCE isim.
-- "concept" / "scene": soyut/sahne stok video → query İNGİLİZCE arama terimi (ör. "inflation money cash", "stock market chart screen", "istanbul city skyline night", "bank counter money").
-ÖNEMLİ: hook ve konunun ana öznesi gerçek bir kişi/yer/marka ise MUTLAKA person/place/logo kullan (stok değil). Her beat'in görseli o beat'in İÇERİĞİYLE birebir örtüşsün."""
+- "gold": altın görseli → query İNGİLİZCE (ör. "gold bullion bars", "gold coins", "gold bracelet jewelry").
+- "object": EVRENSEL gerçek nesne → query İNGİLİZCE isim (ör. "calculator", "wallet", "piggy bank", "receipt paper", "smartphone banking app", "house keys").
+- "concept" / "scene": YALNIZ gerçekten soyut fikirler için (kayıp, risk, zaman, belirsizlik) → ekranda markalı animasyon KARTINA dönüşür (stok video gelmez); query İngilizce kısa terim.
+YASAK görseller (Türk izleyiciye yabancı/yanıltıcı): YABANCI banknot/para destesi, yabancı market fiyat etiketi, yabancı bayrak/bina; kişi/kurum belirsizse genel "building/people" yerine ilgili Türk kurumunu ya da evrensel nesneyi seç.
+ÖNEMLİ: hook ve konunun ana öznesi gerçek bir kişi/yer/marka ise MUTLAKA person/place/logo kullan (stok değil). Her beat'in görseli o beat'in İÇERİĞİYLE birebir örtüşsün; 5 beat'in en az 2'si somut (person/place/logo/gold/object/chart) olsun."""
 
 FORMATS = {
     "comparison": {

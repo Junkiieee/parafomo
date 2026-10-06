@@ -34,7 +34,8 @@ Bugün: ~45-50 gerçek ziyaretçi/hafta (hedefin ~%0,7'si). Her kararın tek sor
   Saatler: `crontab -l` ve brief'teki sağlık tablosu.
 
 ## Kaan'ın kalıcı talepleri (unutma)
-- **Ana hedef (2026-10-06): ParaFOMO'yu bilinen bir MARKA yap ve siteden PARA kazan.** Tüm onaylar
+- **Ana hedef (2026-10-06): ParaFOMO'yu bilinen bir MARKA yap ve siteden PARA kazan — ÖNCE TRAFİK.** AdSense
+  trafik ~1000/güne yaklaşana kadar açılmaz (Kaan kararı); şimdi her şey trafik + marka için. Tüm onaylar
   verildi; ihtiyaç duyduğun hesap/API'yi Kaan getirir — `agent/plan/user-tasks.md`'ye net yaz.
   **Marka kitabı `agent/plan/brand.md`** — her içerik, tasarım ve kanal kararında ona uy.
 - Kapsam finans + komşu alanlar (kripto, vergi, BES, kişisel finans, KOBİ, global piyasalar);

@@ -22,9 +22,9 @@ LOG_DIR="$REPO/logs"
 PROMPT_FILE="$REPO/scripts/daily-prompt.md"
 VPY="/root/.venvs/parafomo/bin/python"
 mkdir -p "$LOG_DIR"
-MODEL="${CONTENT_MODEL:-sonnet}"
+MODEL="${CONTENT_MODEL:-opus}"   # Max 5x (2026-10-06): blog = marka/SEO çekirdeği → en iyi model
 EFFORT="${CONTENT_EFFORT:-medium}"
-BUDGET="${CONTENT_MAX_BUDGET:-2.5}"
+BUDGET="${CONTENT_MAX_BUDGET:-6}"
 
 STAMP="$(date -u '+%Y-%m-%d %H:%M:%S UTC')"
 echo "=================================================="

@@ -64,9 +64,10 @@ crontab /root/parafomo/deploy/crontab.txt   # cron'u kur/yenile
 ```
 
 ## Knob'lar (cron satırında env olarak)
-`AGENT_DAILY_MODEL=sonnet` · `AGENT_DAILY_EFFORT=medium` · `AGENT_DAILY_BUDGET=4` ·
-`AGENT_WEEKLY_MODEL=opus` · `AGENT_WEEKLY_EFFORT=high` · `AGENT_WEEKLY_BUDGET=10` · `AGENT_WEEKLY_DOW=4` ·
-`CONTENT_MODEL=sonnet` · `CONTENT_EFFORT=medium` · `CONTENT_MAX_BUDGET=2.5`
+`AGENT_DAILY_MODEL=opus` · `AGENT_DAILY_EFFORT=medium` · `AGENT_DAILY_BUDGET=8` ·
+`AGENT_WEEKLY_MODEL=opus` · `AGENT_WEEKLY_EFFORT=high` · `AGENT_WEEKLY_BUDGET=20` · `AGENT_WEEKLY_DOW=4` ·
+`CONTENT_MODEL=opus` · `CONTENT_EFFORT=medium` · `CONTENT_MAX_BUDGET=6`
+(2026-10-06: Claude Max 5x'e geçildi → günlük koşu ve blog da Opus.)
 (Bütçeler API-eşdeğeri dolar; Pro aboneliğinde gerçek ödeme yok, kotayı sınırlar.)
 
 ## Kalıcı Claude token'ı (önerilir)

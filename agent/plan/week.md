@@ -3,7 +3,8 @@ _Kurulum oturumu (v2 başlangıç planı) · 2026-10-06 · ilk haftalık Opus ko
 <!-- plan-date: 2026-10-06 -->
 
 ## Durum
-- Kaan hedefi netleştirdi (2026-10-06): **ParaFOMO'yu marka yap ve siteden para kazan.** Tüm onaylar verildi;
+- Kaan hedefi netleştirdi (2026-10-06): **ParaFOMO'yu marka yap ve siteden para kazan — ama ÖNCE TRAFİK.**
+  AdSense trafik oturana kadar YOK (Kaan kararı). Claude Max 5x'e geçildi (günlük koşu da Opus). Tüm onaylar verildi;
   gereken hesap/API'yi o getirecek (`agent/plan/user-tasks.md`). Marka kitabı: `agent/plan/brand.md`.
 - Sistem 30 Eylül'den beri duraklatılmıştı; v2 ile yeniden başlıyor. Ajansız haftada bile gerçek erişim
   51/hafta (202640, rekor) — veri sayfası motoru gecikmeli çalışmaya devam ediyor.
@@ -14,7 +15,8 @@ _Kurulum oturumu (v2 başlangıç planı) · 2026-10-06 · ilk haftalık Opus ko
 ## Bahisler
 - **B261006-1 — Halka arz şirket sayfaları** · GSC /halka-arz/* ≥500 gös + ≥15 tık/hafta · 2026-11-03
 - **B261006-2 — Getiri kümesini genişlet** · küme 28g tık ~43 → ≥85 · 2026-11-03
-- **B261006-3 — Gelir altyapısı: AdSense onayı + güven sayfaları** · AdSense onaylı + reklam canlı · 2026-11-10
+- **B261006-4 — YouTube video kalite reformu** · yeni videolarda 7g medyan ≥200 izlenme + ≥8 abone/hafta · 2026-10-28
+- ~~B261006-3 AdSense~~ — kapatıldı (Kaan: önce trafik)
 
 ## Görev kuyruğu (günlük koşu en üstteki [ ]'yi alır)
 - [ ] T1 (B261006-1) — **Halka arz şirket sayfaları: `/halka-arz/<slug>` dinamik rota + ilk yayın.**
@@ -28,7 +30,7 @@ _Kurulum oturumu (v2 başlangıç planı) · 2026-10-06 · ilk haftalık Opus ko
   alan olmayan arzlar için de sayfa mantıklı mı karar ver (gerekirse `noindex`). Sayfalar
   `halka-arz-update.sh` 6 saatte bir veri tazeledikçe deploy'la kendiliğinden güncellenir.
   · Kabul: build geçer; canlıda ≥30 şirket sayfası 200 döner; sitemap'te görünür; /halka-arz'dan linkli.
-- [ ] M1 (B261006-3) — **Güven (E-E-A-T) sayfaları + Organization şeması.** `/hakkimizda`'yı yeniden yaz
+- [ ] M1 (SEO/marka) — **Güven (E-E-A-T) sayfaları + Organization şeması** (finans/YMYL sıralaması için; reklamla ilgisi yok). `/hakkimizda`'yı yeniden yaz
   (misyon = brand.md konumlandırması; içerik nasıl üretiliyor: veriler kaynaklarından otomatik çekilir,
   metinler yapay zekâ destekli hazırlanır — DÜRÜST yaz, olmayan insan/uzman denetimini iddia etme);
   yeni `/editoryal-politika` (kaynak, doğruluk, düzeltme, "yatırım tavsiyesi değildir", ortaklık/reklam
@@ -47,11 +49,6 @@ _Kurulum oturumu (v2 başlangıç planı) · 2026-10-06 · ilk haftalık Opus ko
   ("<Şirket> (<KOD>) halka arz: tarih, fiyat, lot ve getiri"); /halka-arz sayfasına "Ekim 2026 halka arz
   takvimi" bölümü + iç linkler; ALBTN blog yazısından şirket sayfasına bağlantı. · Kabul: meta + şema
   `grep` ile doğrulanır, canlıda kontrol.
-- [ ] M2 (B261006-3) — **AdSense hazırlığı (kimlik gelene kadar pasif).** `src/site.config.ts`'e
-  `ADSENSE_CLIENT = ''`; doluysa `<head>`'e AdSense script + `public/ads.txt` (`google.com, <pub-id>,
-  DIRECT, f08c47fec0942fa0`) üreten yapı; boşken HİÇBİR reklam kodu basılmaz. Reklam yerleşim planı: blog
-  yazısında içerik içi 1-2 alan + sonda 1; araç/hesaplayıcı sayfalarında ekranın üstünde reklam YOK.
-  Basit KVKK çerez bilgilendirme bandı. · Kabul: build geçer, ID boşken canlıda reklam kodu yok.
 - [ ] T3 (B261006-2) — **/gumus-getiri sayfası:** `scripts/silver-returns.py` (gold-returns.py kalıbı;
   Yahoo SI=F × USDTRY=X; gram gümüş TL = ons/31.1035 × kur; YTD + 1/3/5/10 yıl TL/USD getirisi; ağ hatasında
   mevcut veriyi koru) → `data/gumus-getiri.json` + `public/` kopyası → `src/pages/gumus-getiri.astro`
@@ -77,11 +74,17 @@ _Kurulum oturumu (v2 başlangıç planı) · 2026-10-06 · ilk haftalık Opus ko
   Kaan'a 3 adımlık görev yaz. · Kabul: kanal sayfasında yeni açıklama görünür.
 
 ## Kullanıcı girdisi gelince (o gün en üste al)
-- AdSense yayıncı kimliği (ca-pub-…) → M2'deki `ADSENSE_CLIENT`'ı doldur, ads.txt yayınla, Kaan'a "incelemeye gönder" de.
 - X API ödemesi açılınca → günlük veri kartı + yeni yazı paylaşım betiği (`scripts/post-x.py`), cron önerisi.
 - R2/S3 yedek bilgileri → `/root/.config/parafomo/backup.env` (backup.sh otomatik kullanır; boto3 gerekirse venv'e kur).
 
 ## Notlar
+- YouTube düzeltmeleri (2026-10-06, B261006-4): yayındaki videolarda alakasız yabancı stok (Filipin pesosu etiketi,
+  zloti, Hollanda bayrağı), simsiyah kare, "2.021" yıl rozeti, statik/İ'siz Manim kartları vardı. Düzeltildi:
+  kültüre özgü stok → rakamlı marka kartı (`content_concept` safe bayrağı); görsel yoksa kart; blog videoları
+  artık senaryonun seçtiği gerçek görselleri (TCMB binası, Fitch logosu) kullanıyor (`shorts_visuals` hiç
+  okunmuyordu); kart v2 (rakam ana öğe, Türkçe büyük harf, üst üçte bir, karartmasız); "yüzde on beş"=%15;
+  senaryo görsel kuralı: Türk kurumu gerçek adıyla, yabancı banknot/etiket/bayrak yasak.
+  Müzik: `/root/parafomo-media/music/` klasörüne parça konunca otomatik kullanılır (Kaan getirecek).
 - Kurulum oturumunda yapıldı (2026-10-06): marka sesi tüm videolarda **Orus** (Edge A/B kapandı);
   viral videolarda jenerik stok sahneler otomatik **Manim marka kartına** dönüşüyor (`manimify.py --hybrid`;
   gerçek foto/grafik korunuyor); blog→Short videoları artık IG Reel de oluyor; portföy DB günlük yedek

@@ -53,6 +53,7 @@ Her rakamın kaynağı ve tarihi var; tahminse "yaklaşık/olası" de. Her finan
 - Ritim doğal: spam/aşırı otomasyon yok; aynı içerik her platforma kopyala-yapıştır değil, formata uyarla.
 
 ## Gelir ilkeleri
+- **Önce trafik (Kaan, 2026-10-06):** AdSense ve diğer reklamlar trafik ~1000/güne yaklaşana kadar YOK.
 - Önce güven, sonra gelir: reklam kullanıcı deneyimini ve sayfa hızını bozmaz (araç sayfalarında
   ekranın üstünde reklam yok).
 - Ortaklık (affiliate) yalnız lisanslı kurumlar (SPK/BDDK) ve kullanıcıya gerçekten faydalı ürünler;

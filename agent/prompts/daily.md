@@ -15,7 +15,7 @@ Planı haftalık koşu yazdı; senin işin onu **uygulamak**. Strateji tartışm
    - Tek gecede bitmeyecek kadar büyükse: ilk anlamlı parçayı bitir + yayınla, kalanını yeni satır olarak
      kuyrukta bırak.
    - Görev artık anlamsızsa (veri değişti, zaten yapılmış): `- [-] ... — iptal: gerekçe` yap, sıradakine geç.
-4. **İkinci görev:** ilk görev temiz bittiyse ve bütçe varsa bir görev daha. Üçüncüye geçme.
+4. **Sonraki görevler:** önceki görev temiz bittiyse ve bütçe varsa sıradakine geç (gecede en fazla 3 görev).
 5. **Konu kuyruğu:** `agent/plan/content-queue.md`'de bekleyen (`- [ ]`) konu < 3 ise 3-5 konu ekle
    (kaynak sırası: yaklaşan takvim olayları → GSC fırsat sorguları → aktif bahsin kümesi).
    Her satır: başlık önerisi · hedef sorgu · neden şimdi (1 cümle) · iç-link hedefi.

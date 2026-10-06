@@ -15,9 +15,9 @@
 #
 # Modlar (v1'den farkı: her gece Opus yerine haftada bir Opus):
 #   weekly — Stratejist: skor kartı, bahis kararları, haftalık plan, dersleri yeniden yaz.
-#            Varsayılan opus/high, tavan $10. Perşembe (haftalık kota sıfırlamasından sonra).
+#            Varsayılan opus/high, tavan $20. Perşembe (haftalık kota sıfırlamasından sonra).
 #   daily  — Operatör: sağlık → plandaki sıradaki görevi uçtan uca bitir → kısa rapor.
-#            Varsayılan sonnet/medium, tavan $4.
+#            Varsayılan opus/medium, tavan $8 (Max 5x, 2026-10-06).
 # Knob'lar (env): AGENT_{DAILY,WEEKLY}_{MODEL,EFFORT,BUDGET}, AGENT_WEEKLY_DOW (4=Perş.)
 #
 set -uo pipefail
@@ -50,9 +50,9 @@ fi
 
 [ "$MODE" = "auto" ] && MODE="$("$VPY" agent/runlog.py pick-mode)"
 if [ "$MODE" = "weekly" ]; then
-  MODEL="${AGENT_WEEKLY_MODEL:-opus}"; EFFORT="${AGENT_WEEKLY_EFFORT:-high}"; BUDGET="${AGENT_WEEKLY_BUDGET:-10}"
+  MODEL="${AGENT_WEEKLY_MODEL:-opus}"; EFFORT="${AGENT_WEEKLY_EFFORT:-high}"; BUDGET="${AGENT_WEEKLY_BUDGET:-20}"
 else
-  MODEL="${AGENT_DAILY_MODEL:-sonnet}"; EFFORT="${AGENT_DAILY_EFFORT:-medium}"; BUDGET="${AGENT_DAILY_BUDGET:-4}"
+  MODEL="${AGENT_DAILY_MODEL:-opus}"; EFFORT="${AGENT_DAILY_EFFORT:-medium}"; BUDGET="${AGENT_DAILY_BUDGET:-8}"
 fi
 STAMP="$(date -u +%Y%m%d-%H%M)"
 echo "=================================================="

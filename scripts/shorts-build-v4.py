@@ -17,6 +17,7 @@ import os
 import re
 import sys
 import json
+import glob
 import shutil
 import base64
 import difflib
@@ -38,6 +39,9 @@ BLOG = os.path.join(ROOT, "src", "content", "blog")
 WORDMARK = os.path.join(ROOT, "public", "parafomo-wordmark.png")
 OUT_DIR = os.path.join(ROOT, "public", "social")
 MUSIC = os.path.join(ROOT, "public", "social", "assets", "bed.mp3")
+# Gerçek müzik kütüphanesi (repo DIŞI — telifsiz parçalar; ör. YouTube Ses Kütüphanesi "atıf gerekmez").
+# Klasöre .mp3/.m4a konunca her video slug'a göre deterministik bir parça seçer; boşsa eski pad'e düşer.
+MUSIC_DIR = "/root/parafomo-media/music"
 SFX_DIR = os.path.join(ROOT, "assets", "sfx")  # cut-synced SFX (whoosh/impact, CC0)
 SA_JSON = "/root/.config/parafomo/ga-sa.json"
 BROLL_CACHE = "/root/.cache/parafomo/broll"
@@ -298,30 +302,34 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 # Segmentin KONUŞMASINDAN geçen finans kavramını yakalayıp ona özgü İngilizce
 # Pexels arama terimi döndürür → ekrandaki görsel anlatılanla örtüşür (sabit havuz
 # round-robin'inin "konuyla alakasız" sorununu çözer). Öncelik sırası = liste sırası.
+# Her kavram: (anahtarlar, İngilizce stok sorgusu, kart kelimesi, kart sembolü, stok_güvenli_mi)
+# "Güvenli" = görüntü evrensel (altın külçe, borsa ekranı, kripto, fabrika...). Güvensiz = kültüre özgü
+# (yabancı banknot, yabancı market fiyat etiketi, yabancı merkez bankası/bayrak) → 2026-10-06'da yayındaki
+# videolarda Filipin pesosu etiketleri, Polonya zlotisi, Hollanda bayrağı çıktı → bunlarda MARKA KARTI.
 CONCEPT_QUERIES = [
     (("düş", "çöküş", "çöker", "zarar", "kayb", "kaybe", "riskli", "dalgalan", "sert iniş"),
-     "stock market crash red falling chart"),
-    (("gram altın", "külçe", "altın", " ons", "ons "), "stacked gold bars wealth"),
+     "stock market crash red falling chart", "Düşüş", "%", True),
+    (("gram altın", "külçe", "altın", " ons", "ons "), "stacked gold bars wealth", "Altın", "₺", True),
     (("dolar", "euro", "sterlin", "döviz", "kur ", "parite", "usd"),
-     "foreign currency exchange dollar euro"),
+     "foreign currency exchange dollar euro", "Döviz", "$", False),
     (("borsa", "hisse", "bist", "endeks", "pay senedi", "temettü"),
-     "stock market trading screen candlestick"),
+     "stock market trading screen candlestick", "Borsa", "%", True),
     (("enflasyon", "zam", "pahalı", "hayat pahalılığı", "fiyat art"),
-     "rising prices inflation grocery shopping"),
+     "rising prices inflation grocery shopping", "Enflasyon", "%", False),
     (("faiz", "merkez bankas", "tcmb", "fed", "politika faiz"),
-     "central bank interest rate building"),
-    (("mevduat", "banka", "kredi", "hesap"), "bank counter counting money"),
+     "central bank interest rate building", "Faiz", "%", False),
+    (("mevduat", "banka", "kredi", "hesap"), "bank counter counting money", "Mevduat", "₺", False),
     (("kripto", "bitcoin", "ethereum", "btc", "coin", "blokzincir"),
-     "bitcoin cryptocurrency trading"),
+     "bitcoin cryptocurrency trading", "Kripto", "₿", True),
     (("konut", "ev ", " ev.", "kira", "gayrimenkul", "emlak", "daire"),
-     "real estate houses city aerial"),
-    (("maaş", "asgari ücret", "gelir", "kazanç"), "counting salary cash hands"),
-    (("tasarruf", "biriktir", "birikim", "kumbara"), "saving coins jar money"),
-    (("vergi", "stopaj", "beyanname"), "tax documents calculator"),
-    (("emekli", "emeklilik", "bes"), "retirement savings planning"),
-    (("petrol", "doğalgaz", "enerji", "varil"), "oil barrels energy industry"),
-    (("fabrika", "sanayi", "üretim", "ihracat"), "factory industry production line"),
-    (("bütçe", "harcama", "tasarruf plan"), "budget planning finance desk"),
+     "real estate houses city aerial", "Konut", "₺", False),
+    (("maaş", "asgari ücret", "gelir", "kazanç"), "counting salary cash hands", "Maaş", "₺", False),
+    (("tasarruf", "biriktir", "birikim", "kumbara"), "saving coins jar money", "Tasarruf", "₺", True),
+    (("vergi", "stopaj", "beyanname"), "tax documents calculator", "Vergi", "₺", False),
+    (("emekli", "emeklilik", "bes"), "retirement savings planning", "Emeklilik", "₺", False),
+    (("petrol", "doğalgaz", "enerji", "varil"), "oil barrels energy industry", "Enerji", "$", True),
+    (("fabrika", "sanayi", "üretim", "ihracat"), "factory industry production line", "Sanayi", "₺", True),
+    (("bütçe", "harcama", "tasarruf plan"), "budget planning finance desk", "Bütçe", "₺", True),
 ]
 CONCEPT_FALLBACK = "financial charts money city"
 
@@ -330,10 +338,39 @@ def content_query(spoken, fallback=None):
     """Konuşma metnindeki ilk (en öncelikli) finans kavramına göre İngilizce
     Pexels sorgusu döndürür; hiçbiri yoksa fallback (yoksa jenerik finans)."""
     t = " " + (spoken or "").lower() + " "
-    for keys, q in CONCEPT_QUERIES:
+    for keys, q, *_ in CONCEPT_QUERIES:
         if any(k in t for k in keys):
             return q
     return fallback or CONCEPT_FALLBACK
+
+
+def content_concept(spoken):
+    """Konuşmadaki kavram → {query, kw, glyph, safe}. Eşleşme yoksa güvensiz (kart)."""
+    t = " " + (spoken or "").lower() + " "
+    for keys, q, kw, glyph, safe in CONCEPT_QUERIES:
+        if any(k in t for k in keys):
+            return {"query": q, "kw": kw, "glyph": glyph, "safe": safe}
+    return {"query": CONCEPT_FALLBACK, "kw": "Para", "glyph": "₺", "safe": False}
+
+
+def concept_card(spoken, kind, dur, out_path, c=None):
+    """Kültüre özgü/eksik görsel yerine markalı Manim kinetik kartı (rakam varsa ana öğe)."""
+    c = c or content_concept(spoken)
+    vis = {"type": "manim", "scene": "concept", "theme": "slate", "keyword": c["kw"], "glyph": c["glyph"]}
+    if kind == "cta":
+        vis["keyword"] = "ParaFOMO"
+    else:
+        st = extract_stat(spoken)
+        if st:
+            vis["stat"] = st
+    return manim_scene(vis, dur, out_path)
+
+
+def pick_music(slug):
+    files = sorted(glob.glob(os.path.join(MUSIC_DIR, "*.mp3")) + glob.glob(os.path.join(MUSIC_DIR, "*.m4a")))
+    if not files:
+        return None
+    return files[sum(ord(ch) for ch in slug) % len(files)]
 
 
 # ---------- B-roll (Pexels) ----------
@@ -477,17 +514,56 @@ def _grp(n):
     return format(int(n), ",").replace(",", ".")
 
 
+TR_UNITS = {"bir": 1, "iki": 2, "üç": 3, "dört": 4, "beş": 5, "altı": 6, "yedi": 7, "sekiz": 8, "dokuz": 9}
+TR_TENS = {"on": 10, "yirmi": 20, "otuz": 30, "kırk": 40, "elli": 50, "altmış": 60, "yetmiş": 70,
+           "seksen": 80, "doksan": 90}
+
+
+def _tr_words_num(words):
+    """Türkçe bileşik sayı: ['on','beşini'] → 15 · ['yirmi','beş'] → 25 · ['yüz','elli'] → 150."""
+    total, matched = 0, False
+    for w in words:
+        w = re.sub(r'[^a-zğüşıöç]', '', w.lower())
+        if w.startswith("yüzde"):   # ikinci "yüzde" yeni bir sayı başlatır → dur
+            break
+        if w.startswith("yüz"):
+            total = (total or 1) * 100
+            matched = True
+            continue
+        hit = None
+        for table in (TR_TENS, TR_UNITS):
+            for k, v in table.items():
+                if w == k or (w.startswith(k) and len(w) - len(k) <= 4):
+                    hit = v
+                    break
+            if hit is not None:
+                break
+        if hit is None:
+            break
+        total += hit
+        matched = True
+    return total if matched else None
+
+
 def extract_stat(text):
-    """Cümleden en çarpıcı tek sayıyı bul → kısa etiket (yoksa None)."""
+    """Cümleden en çarpıcı tek sayıyı bul → kısa etiket (yoksa None).
+    2026-10-06: 'yüzde on beş' artık %15 (eskiden %10), 'yüzde 300' → %300, '458 bin lira' →
+    '458 bin TL', yıllar (2021) rozet olmaz (yayında '2.021' çıkıyordu)."""
     t = text.lower()
-    m = re.search(r'%\s?(\d+)', text)
+    m = re.search(r'%\s?(\d+(?:[.,]\d+)?)', text)
     if m:
         return f"%{m.group(1)}"
-    m = re.search(r'yüzde\s+([a-zğüşıöç]+)', t)
+    m = re.search(r'yüzde\s+(\d+(?:[.,]\d+)?)', t)
     if m:
-        n = _tr_word_num(m.group(1))
+        return f"%{m.group(1)}"
+    m = re.search(r'yüzde\s+((?:[a-zğüşıöç]+\s*){1,3})', t)
+    if m:
+        n = _tr_words_num(m.group(1).split())
         if n is not None:
             return f"%{n}"
+    bins = [int(x) for x in re.findall(r'\b(\d{1,3})\s*bin', t)]
+    if bins:
+        return f"{max(bins)} bin TL" if re.search(r'\b(lira|tl)\b|₺', t) else f"{max(bins)} bin"
     m = re.search(r'([\d][\d.\s]*\d|\d)\s*(lira|tl|₺)', t)
     if m:
         digits = re.sub(r'\D', '', m.group(1))
@@ -496,8 +572,10 @@ def extract_stat(text):
     m = re.search(r'(\d+)\s*kat', t)
     if m:
         return f"{m.group(1)}x"
-    m = re.search(r'\b(\d{3,})\b', text)
-    if m:
+    for m in re.finditer(r'\b(\d{3,})\b', text):
+        n = int(m.group(1))
+        if len(m.group(1)) == 4 and 1900 <= n <= 2100:
+            continue  # yıl (2021, 2026) rakam rozeti değildir
         return _grp(m.group(1))
     return None
 
@@ -688,7 +766,7 @@ def _kenburns(motion, D):
 
 
 def make_clip(broll, audio, overlay, dur, out_clip, badge=None, motion=0, countup_dir=None,
-              rehook_card=None, opening=False):
+              rehook_card=None, opening=False, card=False):
     delay = int(LEAD * 1000)
     D = f"{dur:.3f}"
     bt = LEAD          # rozet konuşma başlarken belirir
@@ -699,7 +777,12 @@ def make_clip(broll, audio, overlay, dur, out_clip, badge=None, motion=0, countu
     fdin = "" if opening else "fade=t=in:st=0:d=0.20,"
     inputs = []
     idx = 1            # [0] = video (broll/color)
-    if broll:
+    if broll and card:
+        # Manim marka kartı: kendi animasyonlu ve marka renklerinde → Ken Burns/karartma/vignette YOK
+        # (stok için olan karartma kartları loş gösteriyordu, 2026-10-06 test render'ı)
+        inputs += ["-stream_loop", "-1", "-t", D, "-i", broll]
+        fc = f"[0:v]scale=1080:1920,setsar=1,fps=30,{fdin}null[bg];"
+    elif broll:
         # v4: değişken Ken Burns + sinematik vignette/kontrast (stok 'düz' hissini azaltır)
         inputs += ["-stream_loop", "-1", "-t", D, "-i", broll]
         fc = (f"[0:v]scale=1296:2304:force_original_aspect_ratio=increase,crop=1296:2304,"
@@ -842,7 +925,16 @@ def main():
         front = open(path, encoding="utf-8").read().split("---", 2)[1]
         title, segs = build_segments(front)
         broll_kw = parse_list(front, "shorts_broll") or BROLL_POOL
+        # Blog senaryosu beat başına görsel seçiyor (shorts-script.py → shorts_visuals: "type|query");
+        # 2026-10-06'ya kadar bu liste HİÇ okunmuyordu → gerçek TCMB binası yerine rastgele stok
+        # (Hollanda bayraklı bina) çıkıyordu. Liste segmentlerle hizalıysa kullan.
         seg_visuals = [None] * len(segs)
+        vis_lines = parse_list(front, "shorts_visuals")
+        if parse_shorts(front) and vis_lines:
+            for j, ln in enumerate(vis_lines[:len(segs)]):
+                vt, _, vq = ln.partition("|")
+                if vt.strip() and vq.strip():
+                    seg_visuals[j] = {"type": vt.strip().lower(), "query": vq.strip()}
         meta_desc = fm(front, "description")
     synth, label = make_synth(args.engine, args.voice or GOOGLE_VOICE, args.edge_voice)
     print(f"[*] '{title}' → {len(segs)} segment, ses: {label}")
@@ -875,28 +967,51 @@ def main():
         # yoksa eski yol (shorts_broll anahtar kelimeleriyle Pexels).
         brollpath = f"{TMP}/broll{i:02d}.mp4"
         broll = None
+        card_used = False
         visual = seg_visuals[i] if i < len(seg_visuals) else None
         is_manim = bool(visual and visual.get("type") == "manim")
         if args.no_broll:
             broll = None
         elif is_manim:
-            # Manim animasyon sahnesi arka plan olur; düşerse stok B-roll'e geri düş.
-            broll = manim_scene(visual, clip_dur, brollpath)
+            # Manim animasyon sahnesi arka plan olur; kavram kartında rakamı ana öğe yap.
+            vis_m = visual
+            if vis_m.get("scene") == "concept" and not vis_m.get("stat") and kind != "cta":
+                st_m = extract_stat(spoken)
+                if st_m:
+                    vis_m = {**vis_m, "stat": st_m}
+            broll = manim_scene(vis_m, clip_dur, brollpath)
             if broll is None:
                 broll = pexels_broll(visual.get("query") or "financial data chart", brollpath)
         elif visual and visual.get("query"):
-            # concept/scene (soyut stok) beat'lerinde görseli KONUŞMAYLA eşle;
-            # person/place/logo/gold/object gibi spesifik tipler olduğu gibi kalır.
+            # person/place/logo/gold/object/chart gibi spesifik tipler olduğu gibi kalır.
+            # concept/scene (soyut stok): kavram evrenselse stok, kültüre özgüyse MARKA KARTI.
             v = visual
             if (v.get("type") or "").lower() in ("concept", "scene"):
-                v = {**v, "query": content_query(spoken, v.get("query"))}
-            broll, attr = vv.resolve(v, clip_dur, brollpath)
-            if attr and attr.get("need_attribution") and attr.get("credit"):
-                credits.append(attr["credit"])
+                c = content_concept(spoken)
+                if c["safe"]:
+                    v = {**v, "query": c["query"]}
+                else:
+                    broll = concept_card(spoken, kind, clip_dur, brollpath, c)
+                    card_used = broll is not None
+                    v = None
+            if v is not None:
+                broll, attr = vv.resolve(v, clip_dur, brollpath)
+                if attr and attr.get("need_attribution") and attr.get("credit"):
+                    credits.append(attr["credit"])
         else:
-            # blog yolu: sabit havuzu sırayla basmak yerine segmentin içeriğine eşle.
-            query = content_query(spoken, broll_kw[i % len(broll_kw)] if broll_kw else None)
-            broll = pexels_broll(query, brollpath) if query else None
+            # blog yolu: kavram evrenselse stok, kültüre özgüyse (yabancı para/fiyat/bayrak) kart.
+            c = content_concept(spoken)
+            if c["safe"]:
+                broll = pexels_broll(c["query"], brollpath)
+            else:
+                broll = concept_card(spoken, kind, clip_dur, brollpath, c)
+                card_used = broll is not None
+        # Görsel hiç yoksa düz renk yerine marka kartı (yayında 4. saniyede simsiyah kare vardı).
+        if broll is None and not args.no_broll:
+            broll = concept_card(spoken, kind, clip_dur, brollpath)
+            card_used = broll is not None
+        if card_used:
+            is_manim = True   # kart kendi animasyonlu: rozet/Ken Burns/rehook kartı eklenmez
         # ekran içi sayı vurgusu (CTA hariç) — finans Shorts'unda en yüksek etkili öğe.
         # chart/manim görselinde sayı zaten gösterilir → rozet eklenmez (çakışma olmasın).
         is_chart = bool(visual and visual.get("type") == "chart")
@@ -931,15 +1046,15 @@ def main():
             make_rehook_card(REHOOK_CARDS[pick], rehook_card)
         opening = (i == 0)
         try:
-            make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion,
+            make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion, card=is_manim,
                       countup_dir=countup_dir, rehook_card=rehook_card, opening=opening)
         except subprocess.CalledProcessError:
             if countup_dir:   # sayaç hattı kırıldıysa asla videoyu düşürme — sayaçsız yeniden
                 print("[i] count-up'lı klip başarısız → sayaçsız yeniden kur")
-                make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion, opening=opening)
+                make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion, card=is_manim, opening=opening)
             elif rehook_card:  # rehook kartı hattı kırdıysa kartsız yeniden kur (hat kırılmaz)
                 print("[i] rehook-kartlı klip başarısız → kartsız yeniden kur")
-                make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion, opening=opening)
+                make_clip(broll, aud, ov, clip_dur, clip, badge=badge, motion=motion, card=is_manim, opening=opening)
             else:
                 raise
         clips.append(clip)
@@ -990,7 +1105,11 @@ def main():
     assf = f"{TMP}/cap.ass"; build_ass(events, assf)
     music = None
     if not args.no_music:
-        if os.path.exists(MUSIC):
+        picked = pick_music(args.slug)
+        if picked:
+            music = picked
+            print(f"[i] Müzik: {os.path.basename(picked)}")
+        elif os.path.exists(MUSIC):
             music = MUSIC
         else:
             music = f"{TMP}/pad.mp3"; gen_pad(total + 1, music)

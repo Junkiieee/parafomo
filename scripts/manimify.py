@@ -48,9 +48,12 @@ def concept_kw(spoken, title):
     for keys, kw in CONCEPT_KW:
         if any(k in t for k in keys):
             return kw
-    # kavram yoksa: başlıktan ilk anlamlı kelime, yoksa 'Para'
-    w = re.findall(r"[A-Za-zÇĞİÖŞÜçğıöşü]{4,}", title or "")
-    return ((w[0].capitalize() if w else "Para"), "₺")
+    # kavram konuşmada yoksa BAŞLIĞIN kavramına bak (çekimli ilk kelime "MAAŞININ" gibi garip kart yapıyordu)
+    tt = " " + (title or "").lower() + " "
+    for keys, kw in CONCEPT_KW:
+        if any(k in tt for k in keys):
+            return kw
+    return ("Para", "₺")
 
 
 def has_chart(visual):
@@ -73,7 +76,7 @@ def hybridize(path):
             continue
         if seg.get("kind") == "cta":
             seg["visual"] = {"type": "manim", "scene": "concept", "theme": BRAND_THEME,
-                             "keyword": "ParaFOMO", "sub": "abone ol, kaçırma", "glyph": "₺"}
+                             "keyword": "ParaFOMO", "glyph": "₺"}
         else:
             kw, glyph = concept_kw(seg.get("spoken", ""), title)
             seg["visual"] = {"type": "manim", "scene": "concept", "theme": BRAND_THEME,
@@ -102,7 +105,7 @@ def main():
                              "title": vis.get("title") or "", "chart": vis["chart"]}
         elif seg.get("kind") == "cta":
             seg["visual"] = {"type": "manim", "scene": "concept", "theme": theme,
-                             "keyword": "ParaFOMO", "sub": "abone ol, kaçırma", "glyph": "₺"}
+                             "keyword": "ParaFOMO", "glyph": "₺"}  # alt metin yok: altyazı+ABONE OL ile çakışıyordu
         else:
             kw, glyph = concept_kw(spoken, title)
             seg["visual"] = {"type": "manim", "scene": "concept", "theme": theme,

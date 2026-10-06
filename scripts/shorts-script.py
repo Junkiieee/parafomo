@@ -65,13 +65,14 @@ def pick_angle(slug, title, category):
 # gerçek veri yok → grafik üretilemez, çıkarıldı).
 ALLOWED_TYPES = {"person", "place", "building", "logo", "gold", "object", "concept", "scene"}
 VISUAL_GUIDE = """Görsel tipleri ve "query" kuralı (görsel motoru buna göre kaynak seçer):
-- "person": gerçek kişi → query = TAM ÖZEL AD (ör. "Recep Tayyip Erdoğan", "Jerome Powell").
-- "place"/"building": gerçek yer/kurum → query = özel ad (ör. "Borsa İstanbul", "Türkiye Cumhuriyet Merkez Bankası").
+- "person": gerçek kişi → query = TAM ÖZEL AD (ör. "Donald Trump", "Recep Tayyip Erdoğan", "Elon Musk"). Wikimedia'dan gerçek fotoğraf gelir.
+- "place" / "building": gerçek yer → query = özel ad. TÜRK kurumlarını GERÇEK adıyla kullan: "Central Bank of the Republic of Turkey" (TCMB), "Borsa İstanbul", "Grand Bazaar Istanbul", "Istanbul Levent skyline"; yabancılar için "Federal Reserve building" vb.
 - "logo": marka/şirket → query = "<Şirket> logo".
-- "gold": altın → query İNGİLİZCE (ör. "gold bullion bars", "gold coins").
-- "object": gerçek nesne → query İNGİLİZCE isim (ör. "credit card", "turkish lira banknotes").
-- "concept"/"scene": soyut/sahne stok video → query İNGİLİZCE (ör. "inflation money losing value", "stock market chart screen", "bank counter customer").
-KURAL: hook ve beat'in ana öznesi gerçek kişi/yer/marka ise MUTLAKA person/place/logo kullan (stok değil). Her görsel o beat'in İÇERİĞİYLE birebir örtüşsün. Emin değilsen concept/scene + net İngilizce sahne."""
+- "gold": altın görseli → query İNGİLİZCE (ör. "gold bullion bars", "gold coins", "gold bracelet jewelry").
+- "object": EVRENSEL gerçek nesne → query İNGİLİZCE isim (ör. "calculator", "wallet", "piggy bank", "receipt paper", "smartphone banking app", "house keys").
+- "concept" / "scene": YALNIZ gerçekten soyut fikirler için (kayıp, risk, zaman, belirsizlik) → ekranda markalı animasyon KARTINA dönüşür (stok video gelmez); query İngilizce kısa terim.
+YASAK görseller (Türk izleyiciye yabancı/yanıltıcı): YABANCI banknot/para destesi, yabancı market fiyat etiketi, yabancı bayrak/bina; kişi/kurum belirsizse genel "building/people" yerine ilgili Türk kurumunu ya da evrensel nesneyi seç.
+ÖNEMLİ: hook ve konunun ana öznesi gerçek bir kişi/yer/marka ise MUTLAKA person/place/logo kullan (stok değil). Her beat'in görseli o beat'in İÇERİĞİYLE birebir örtüşsün; 5 beat'in en az 2'si somut (person/place/logo/gold/object/chart) olsun."""
 
 
 PROMPT = """Sen bir Türk finans kanalı (ParaFOMO) için VİRAL YouTube Shorts senaryosu yazıyorsun.

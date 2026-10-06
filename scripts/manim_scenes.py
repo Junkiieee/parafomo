@@ -253,38 +253,55 @@ class PieScene(Scene):
         self.wait(max(0.7, A.dur + 0.6 - 4.5))
 
 
+def tr_upper(s):
+    """Türkçe büyük harf: i→İ, ı→I (Python .upper() 'faiz'i 'FAIZ' yapıyordu)."""
+    return (s or "").replace("i", "İ").replace("ı", "I").upper()
+
+
 class ConceptScene(Scene):
-    """Markalı anlatı kartı (STOK YERİNE): büyük anahtar kelime + vurgu istatistiği +
-    hafif hareketli sembol arka planı. Tüm video tek tutarlı özgün dilde kalır."""
+    """Markalı KİNETİK kart (stok yerine) — v2 (2026-10-06).
+    v1 sorunları (yayındaki videolardan): neredeyse boş/statik koyu ekran, 'FAIZ' (Türkçe İ yok),
+    alt yazı ve kanca kartıyla üst üste binen metin. v2:
+      - içerik YALNIZ üst üçte birde (y ≥ +2.2): ortadaki kanca kartı ve alttaki altyazıyla çakışmaz
+      - rakam varsa ANA ÖĞE o (sarı, büyük, sıçrayarak gelir); anahtar kelime üstte etiket olur
+      - Türkçe doğru büyük harf; sürekli hafif hareket (sürüklenen semboller + dolan çizgi)"""
     def construct(self):
-        # arka plan: soluk sürüklenen finans sembolleri (özgün doku, stok değil)
         rng = np.random.default_rng(abs(hash(A.keyword or A.title)) % (2**32))
         glyphs = VGroup()
-        for _ in range(12):
-            g = Text(A.glyph, font=FONT, weight=BOLD, color=T["teal"]).scale(rng.uniform(0.5, 1.4))
-            g.move_to([rng.uniform(-4, 4), rng.uniform(-7.5, 7.5), 0]).set_opacity(rng.uniform(0.05, 0.14))
+        for _ in range(14):
+            g = Text(A.glyph, font=FONT, weight=BOLD, color=T["teal"]).scale(rng.uniform(0.5, 1.5))
+            g.move_to([rng.uniform(-4, 4), rng.uniform(-7.5, 7.5), 0]).set_opacity(rng.uniform(0.06, 0.16))
             glyphs.add(g)
         self.add(glyphs)
         drift = ValueTracker(0)
-        glyphs.add_updater(lambda m, d=drift: m.shift(UP * 0.008))
+        glyphs.add_updater(lambda m, d=drift: m.shift(UP * 0.012))
 
-        kw = A.keyword or A.title or "PARA"
-        big = fit(Text(kw.upper(), font=FONT, weight=BOLD, color=T["ink"]).scale(1.5), 8.2)
-        big.move_to([0, 2.2, 0])
-        bar = Line([-2.2, 1.15, 0], [2.2, 1.15, 0], color=T["accent"], stroke_width=8)
-        self.play(FadeIn(big, shift=UP*0.3, scale=0.9), run_time=0.7)
-        self.play(Create(bar), run_time=0.4)
-
+        kw = tr_upper(A.keyword or A.title or "PARA")
+        used = 0.0
         if A.stat:
-            chip = fit(Text(A.stat, font=FONT, weight=BOLD, color=T["accent"]).scale(0.95), 8.0)
-            chip.move_to([0, -0.4, 0])
-            self.play(FadeIn(chip, scale=0.7), run_time=0.5)
-            self.play(chip.animate.scale(1.06), rate_func=there_and_back, run_time=0.35)
-        if A.sub:
-            sub = fit(Text(A.sub, font=FONT, color=T["mute"]).scale(0.6), 8.0).move_to([0, -3.0, 0])
-            self.play(FadeIn(sub, shift=UP*0.2), run_time=0.5)
-        used = 2.0 + (0.85 if A.stat else 0) + (0.5 if A.sub else 0)
-        self.play(drift.animate.set_value(1), run_time=max(0.8, A.dur + 0.7 - used), rate_func=linear)
+            label = fit(Text(kw, font=FONT, weight=BOLD, color=T["mute"]).scale(0.75), 7.5).move_to([0, 5.1, 0])
+            hero = fit(Text(A.stat, font=FONT, weight=BOLD, color=T["accent"]).scale(2.4), 8.2).move_to([0, 3.2, 0])
+            self.play(FadeIn(label, shift=DOWN * 0.2), run_time=0.35)
+            self.play(FadeIn(hero, scale=0.55), run_time=0.45)
+            self.play(hero.animate.scale(1.08), rate_func=there_and_back, run_time=0.35)
+            used = 1.15
+            bar_y = 1.9
+        else:
+            hero = fit(Text(kw, font=FONT, weight=BOLD, color=T["ink"]).scale(1.7), 8.2).move_to([0, 3.9, 0])
+            self.play(FadeIn(hero, shift=UP * 0.3, scale=0.85), run_time=0.55)
+            used = 0.55
+            bar_y = 2.75
+        bar = Line([-2.6, bar_y, 0], [2.6, bar_y, 0], color=T["accent"], stroke_width=9)
+        self.play(Create(bar), run_time=0.35)
+        used += 0.35
+        # dolan ince çizgi: kart boyunca süren hareket (statik ekran hissini kırar)
+        track = Line([-2.6, bar_y - 0.32, 0], [2.6, bar_y - 0.32, 0], color=T["axis"], stroke_width=5)
+        prog = Line([-2.6, bar_y - 0.32, 0], [-2.59, bar_y - 0.32, 0], color=T["tealL"], stroke_width=5)
+        self.add(track, prog)
+        rest = max(0.8, A.dur + 0.7 - used)
+        prog.add_updater(lambda m: m.put_start_and_end_on(
+            [-2.6, bar_y - 0.32, 0], [-2.6 + 5.2 * max(0.002, drift.get_value()), bar_y - 0.32, 0]))
+        self.play(drift.animate.set_value(1), run_time=rest, rate_func=linear)
 
 
 SCENES = {"backtest": BacktestScene, "compare": CompareScene, "bigstat": BigstatScene,
