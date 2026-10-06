@@ -27,11 +27,10 @@ STORY="public/social/story-${base}.jpg"
 # eski story görsellerini buda (>7 gün)
 find public/social -name 'story-*.jpg' -type f -mtime +7 -delete 2>/dev/null || true
 
-git add public/social/ 2>/dev/null
-if ! git diff --cached --quiet; then
-  git commit -m "story: $base" >/dev/null 2>&1
-  git_push_retry main || { echo "[story] push başarısız"; exit 0; }
-fi
+# Yalnız story dosyaları (eskiden tüm public/social süpürülüyordu → başka işlerin dosyaları
+# "story:" commit'ine karışıyordu). Tırnaklı pathspec budanan eski story'lerin silinmesini de alır.
+git_add_commit "story: $base" 'public/social/story-*.jpg' || { echo "[story] commit başarısız"; exit 0; }
+git_push_retry main || { echo "[story] push başarısız"; exit 0; }
 
 RAW="https://raw.githubusercontent.com/Junkiieee/parafomo/main/$STORY"
 for i in $(seq 1 18); do

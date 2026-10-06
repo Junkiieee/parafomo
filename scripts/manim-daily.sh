@@ -13,7 +13,7 @@ cd "$REPO" || { echo "HATA: repo yok"; exit 1; }
 . "$REPO/scripts/lib/gitsync.sh"
 set -a; . "$REPO/.env"; set +a
 
-{ git fetch origin main && git rebase --autostash origin/main; } || echo "UYARI: pull başarısız (devam)"
+git_sync || echo "UYARI: pull başarısız (devam)"
 echo "=================================================="
 echo "[$(date -u '+%F %T UTC')] Manim-daily (tam-Manim ek video) başladı"
 
@@ -74,8 +74,7 @@ curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendVideo" \
 
 # 5) Senaryoyu kaydet
 if [ -f "public/social/scenarios/$SLUG.json" ]; then
-  git add "public/social/scenarios/$SLUG.json"
-  git commit -m "manim-shorts: $SLUG (tam-Manim, otomatik)" || true
+  git_add_commit "manim-shorts: $SLUG (tam-Manim, otomatik)" "public/social/scenarios/$SLUG.json" || true
   git_push_retry main
 fi
 echo "[$(date -u '+%F %T UTC')] Manim-daily tamam: $SLUG ${YT_URL:+→ $YT_URL}"

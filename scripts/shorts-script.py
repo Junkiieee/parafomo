@@ -18,6 +18,9 @@ import json
 import argparse
 import subprocess
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "lib"))
+from llm import call as llm_call  # tek LLM kapısı: yalın çağrı + hata sınıfı + kota durumu
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BLOG = os.path.join(ROOT, "src", "content", "blog")
 
@@ -111,7 +114,7 @@ def main():
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--angle", choices=list(ANGLES), default="",
                     help="kanca açısı (boş: konudan otomatik seç)")
-    ap.add_argument("--model", default="claude-sonnet-4-6")
+    ap.add_argument("--model", default="sonnet")
     args = ap.parse_args()
 
     path = os.path.join(BLOG, f"{args.slug}.md")
@@ -137,12 +140,10 @@ def main():
                        "angle_name": angle_name, "angle_guide": angle_guide,
                        "visual_guide": VISUAL_GUIDE}
     print(f"[*] {args.slug}: claude -p ile senaryo üretiliyor... (açı: {angle})")
-    try:
-        r = subprocess.run(["claude", "-p", prompt, "--model", args.model],
-                           capture_output=True, text=True, timeout=300)
-        out = r.stdout.strip()
-    except Exception as e:
-        print(f"HATA: claude çağrısı başarısız: {e}"); return 1
+    ok, out, kind = llm_call(prompt, model=args.model, effort="medium", timeout=300,
+                             tries=2, tag="shorts-script")
+    if not ok:
+        print(f"HATA: LLM çağrısı başarısız ({kind}) — senaryo üretilmedi"); return 1
 
     m = re.search(r'\{.*\}', out, re.DOTALL)
     if not m:

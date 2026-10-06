@@ -38,7 +38,7 @@ echo "[$(date -u '+%F %T UTC')] Shorts otomasyonu ($MODE) başladı"
 set -a; . "$REPO/.env"; set +a
 
 # 1) Senkronla
-{ git fetch origin main && git rebase --autostash origin/main; } || echo "UYARI: pull başarısız (devam)"
+git_sync || echo "UYARI: pull başarısız (devam)"
 
 # Tek bir yazıyı işler. MODE'a göre: prepare=sadece senaryo; publish=render+yayın; full=hepsi.
 # Dönüş: 0 başarı, 1 atla (boş/zaten işlenmiş), 2 hata.
@@ -52,8 +52,7 @@ process_one() {
   if [ "$MODE" = "prepare" ]; then
     "$VPY" "$REPO/scripts/shorts-script.py" "$slug" || { echo "UYARI: senaryo üretilemedi ($slug)"; return 2; }
     if [ -n "$(git status --porcelain src/content/blog/)" ]; then
-      git add src/content/blog/
-      git commit -m "shorts: $slug senaryosu hazırlandı (gece, otomatik)" || true
+      git_add_commit "shorts: $slug senaryosu hazırlandı (gece, otomatik)" src/content/blog/ || true
       git_push_retry main
     fi
     echo "[prepare] $slug senaryosu hazır — gündüz publish edilecek."
@@ -94,8 +93,7 @@ process_one() {
 
   # Senaryo değişikliğini (frontmatter shorts:) commit + push
   if [ -n "$(git status --porcelain src/content/blog/)" ]; then
-    git add src/content/blog/
-    git commit -m "shorts: $slug senaryosu kaydedildi (otomatik)" || true
+    git_add_commit "shorts: $slug senaryosu kaydedildi (otomatik)" src/content/blog/ || true
     git_push_retry main
   fi
   echo "[+] Tamamlandı: $slug → $yt_url"

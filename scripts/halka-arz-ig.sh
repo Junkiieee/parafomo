@@ -24,7 +24,7 @@ if [ "$FORCE" != "--now" ] && { [ "$HOUR" -lt 9 ] || [ "$HOUR" -ge 21 ]; }; then
 fi
 
 echo "[$(date -u '+%F %T UTC')] Halka arz TARİH kontrolü başladı"
-{ git fetch origin main && git rebase --autostash origin/main; } >/dev/null 2>&1 || echo "UYARI: pull başarısız"
+git_sync >/dev/null 2>&1 || echo "UYARI: pull başarısız"
 
 SLUGS=$(python3 "$REPO/scripts/post-halka-arz-instagram.py" --list)
 [ -z "$SLUGS" ] && { echo "[i] Yeni tarihli arz yok."; exit 0; }
@@ -39,11 +39,8 @@ for s in $SEL; do
   "$VENV_PY" "$REPO/scripts/halka-arz-card.py" --slug "$s" --type tarih 2>&1 | sed 's/^/    [kart] /' || echo "UYARI: $s kartı üretilemedi"
 done
 
-git add public/social/halka-arz-*-tarih.jpg 2>/dev/null
-if ! git diff --cached --quiet; then
-  git commit -m "halka arz: tarih kartı ($SEL )" >/dev/null 2>&1
-  git_push_retry main || { echo "HATA: push"; exit 1; }
-fi
+git_add_commit "halka arz: tarih kartı ($SEL )" 'public/social/halka-arz-*-tarih.jpg' || { echo "HATA: commit"; exit 1; }
+git_push_retry main || { echo "HATA: push"; exit 1; }
 
 for s in $SEL; do
   KEY=$(echo "$s" | sed 's/[^A-Za-z0-9-]//g')

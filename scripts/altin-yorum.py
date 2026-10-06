@@ -17,11 +17,15 @@ import html
 import sys
 import json
 import subprocess
+import os
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "lib"))
+from llm import call as llm_call  # tek LLM kapısı (hata metni asla caption olmaz)
 import urllib.parse
 import urllib.request
 
 API = "https://finans.truncgil.com/v4/today.json"
-MODEL = "claude-sonnet-4-6"
+MODEL = "haiku"  # tek cümle: en ucuz model yeter
 
 
 def fetch_prices():
@@ -110,20 +114,20 @@ def build_comment(prices, headlines):
         f"CANLI VERİ: {pv}\n\nBAŞLIKLAR:\n{hl}"
     )
     try:
-        r = subprocess.run(["claude", "-p", prompt, "--model", MODEL],
-                           capture_output=True, text=True, timeout=120)
-        out = r.stdout.strip()
-        # tek cümleye indir, tırnak temizle
-        out = out.strip().strip('"').strip()
-        out = out.split("\n")[0].strip()
-        # claude -p auth/limit hatası stdout'a düşebilir → hata metnini caption YAPMA
-        low = out.lower()
-        _bad = ("api error", "authenticate", "oauth", "access token",
-                "invalid api", "usage limit", "rate limit", "credit balance",
-                "please run", "not logged in", "weekly limit", "you've hit",
-                "hit your", "resets", "quota")
-        if r.returncode == 0 and 15 < len(out) < 240 and not any(b in low for b in _bad):
-            return out
+        ok, out, _kind = llm_call(prompt, model=MODEL, effort="low", timeout=120, tries=1, tag="altin-yorum",
+                                  think=False)
+        if ok:
+            # tek cümleye indir, tırnak temizle
+            out = out.strip().strip('"').strip()
+            out = out.split("\n")[0].strip()
+            # ikinci emniyet: hata/limit metni yine de sızarsa caption YAPMA
+            low = out.lower()
+            _bad = ("api error", "authenticate", "oauth", "access token",
+                    "invalid api", "usage limit", "rate limit", "credit balance",
+                    "please run", "not logged in", "weekly limit", "you've hit",
+                    "hit your", "resets", "quota")
+            if 15 < len(out) < 240 and not any(b in low for b in _bad):
+                return out
     except Exception:
         pass
     return fallback(prices)

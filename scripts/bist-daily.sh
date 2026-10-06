@@ -28,7 +28,7 @@ if [ "$FORCE" != "--now" ] && [ "$DOW" -ge 6 ]; then
 fi
 
 echo "[$(date -u '+%F %T UTC')] BIST $PTYPE postu başladı"
-{ git fetch origin main && git rebase --autostash origin/main; } >/dev/null 2>&1 || echo "UYARI: pull başarısız"
+git_sync >/dev/null 2>&1 || echo "UYARI: pull başarısız"
 
 echo "[*] Kart üretiliyor"
 "$VENV_PY" "$REPO/scripts/bist-card.py" --type "$PTYPE" 2>&1 | sed 's/^/    [kart] /' || { echo "HATA: kart"; exit 1; }
@@ -41,11 +41,8 @@ IMG="public/social/bist-${PTYPE}-${STAMP}.jpg"
 find public/social -name 'bist-*.jpg' -type f -mtime +10 -delete 2>/dev/null || true
 rm -f public/social/bist-preview.jpg 2>/dev/null || true
 
-git add public/social/bist-*.jpg 2>/dev/null
-if ! git diff --cached --quiet; then
-  git commit -m "bist: $PTYPE kartı $STAMP" >/dev/null 2>&1
-  git_push_retry main || { echo "HATA: push"; exit 1; }
-fi
+git_add_commit "bist: $PTYPE kartı $STAMP" 'public/social/bist-*.jpg' || { echo "HATA: commit"; exit 1; }
+git_push_retry main || { echo "HATA: push"; exit 1; }
 
 RAW="https://raw.githubusercontent.com/Junkiieee/parafomo/main/${IMG}"
 ok=0

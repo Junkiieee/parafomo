@@ -1,0 +1,72 @@
+# ParaFOMO Ajanı v2 — izinli araçlar (claude --permission-mode acceptEdits --allowedTools ...)
+# Listede OLMAYAN araç/komut headless koşuda otomatik REDDEDİLİR (soru sorulmaz).
+# Dosya düzenleme yalnız repo dizininde otomatik kabul edilir (acceptEdits).
+# Bilerek YOK: rm, sudo, crontab (yazma), npm install, bash -c / env / xargs / timeout / nohup
+# (keyfi komut sarmalayıcıları), alt-ajan (token çarpanı). Gerekirse buraya satır ekle.
+
+Read
+Edit
+Write
+Glob
+Grep
+WebSearch
+WebFetch
+
+# git (yardımcılar: bash scripts/lib/... üzerinden değil, doğrudan git; push için git_push_retry tercih)
+Bash(git *)
+
+# build / site
+Bash(npm run build)
+Bash(npm run build *)
+Bash(npx astro *)
+
+# python + repo script'leri
+Bash(python3 *)
+Bash(/root/.venvs/parafomo/bin/python *)
+Bash(bash scripts/*)
+Bash(bash agent/*)
+
+# okuma / inceleme
+Bash(ls)
+Bash(ls *)
+Bash(cat *)
+Bash(head *)
+Bash(tail *)
+Bash(wc *)
+Bash(grep *)
+Bash(find *)
+Bash(sed -n *)
+Bash(sort *)
+Bash(uniq *)
+Bash(cut *)
+Bash(tr *)
+Bash(diff *)
+Bash(jq *)
+Bash(date)
+Bash(date *)
+Bash(du *)
+Bash(df *)
+Bash(stat *)
+Bash(pwd)
+Bash(echo *)
+Bash(printf *)
+Bash(cd *)
+Bash(sleep *)
+
+# dosya (repo içi)
+Bash(mkdir *)
+Bash(cp *)
+Bash(mv *)
+Bash(touch *)
+
+# ağ (canlı sayfa/API doğrulama)
+Bash(curl *)
+
+# portföy backend'i (yalnız durum/yeniden başlatma)
+Bash(systemctl status parafomo-api*)
+Bash(systemctl is-active parafomo-api*)
+Bash(systemctl restart parafomo-api)
+Bash(journalctl -u parafomo-api*)
+
+# cron yalnız OKUMA
+Bash(crontab -l)

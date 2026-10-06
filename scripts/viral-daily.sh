@@ -34,9 +34,6 @@ cd "$REPO" || { echo "HATA: repo yok"; exit 1; }
 # .env (PEXELS, TELEGRAM)
 set -a; . "$REPO/.env"; set +a
 
-# 1) Senkronla
-{ git fetch origin main && git rebase --autostash origin/main; } || echo "UYARI: pull başarısız (devam)"
-
 # Argümanlar: --prepare | --publish | --at N | --format X | --topic "..."
 MODE="full"; SLOT_AT=""; FORMAT_OVERRIDE=""; TOPIC=""
 while [ $# -gt 0 ]; do
@@ -85,6 +82,10 @@ if [ "$MODE" != "prepare" ]; then
     echo "[*] Zaman dilimi: slot $TARGET_SLOT = $SLOT_LABEL UTC"
   fi
 fi
+
+# 1) Senkronla — slot kontrolünden SONRA: bugünün slotu olmayan 5 çağrı git'e hiç dokunmaz
+#    (eskiden her biri fetch+rebase yapıp diğer cron'larla yarışıyordu).
+git_sync || echo "UYARI: pull başarısız (devam)"
 
 # ============================================================================
 # PUBLISH: gece hazırlanan senaryoyu yükle (Claude ÇAĞIRMA). Yoksa yedek üret.
@@ -157,8 +158,7 @@ PY
 
   # Senaryo dosyasını commit+push (kayıt)
   if [ -f "public/social/scenarios/$SLUG.json" ]; then
-    git add "public/social/scenarios/$SLUG.json"
-    git commit -m "viral-shorts: $SLUG senaryosu ($FORMAT, otomatik)" || true
+    git_add_commit "viral-shorts: $SLUG senaryosu ($FORMAT, otomatik)" "public/social/scenarios/$SLUG.json" || true
     git_push_retry main
   fi
 fi

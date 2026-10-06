@@ -30,6 +30,9 @@ import argparse
 import subprocess
 import unicodedata
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "lib"))
+from llm import call as llm_call  # tek LLM kapısı: yalın çağrı + hata sınıfı + kota durumu
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCEN_DIR = os.path.join(ROOT, "public", "social", "scenarios")
 
@@ -239,7 +242,7 @@ def main():
                     help="backtest_return için enstrüman")
     ap.add_argument("--amount", type=int, default=10000)
     ap.add_argument("--range", default="1y")
-    ap.add_argument("--model", default="claude-sonnet-4-6")
+    ap.add_argument("--model", default="sonnet")
     ap.add_argument("--out-dir", default=SCEN_DIR)
     args = ap.parse_args()
 
@@ -299,31 +302,19 @@ def main():
     print(f"[*] viral senaryo üretiliyor: format={args.format} topic={args.topic or '(serbest)'} "
           f"(kaçınılan başlık: {len(recent_titles)})", file=sys.stderr)
 
-    # Oturum limiti / geçici hata: anlık takılmalar için kısa beklemeli birkaç tekrar.
-    # Uzun süreli (saatlik) limitte tümü tükenir → çağıran betik yeniden zamanlar.
-    TRANSIENT = ("session limit", "rate limit", "overloaded",
-                 "try again", "temporarily")
-    # Uzun süreli limitler (saatlik/günlük/haftalık): dakikalar içinde sıfırlanmaz →
-    # tekrar denemek anlamsız, anında çık ki 4×90sn boşuna beklenmesin.
-    HARD_LIMIT = ("weekly limit", "daily limit", "monthly limit", "hit your")
-    MAX_TRIES, WAIT = 4, 90
+    # LLM çağrısı scripts/lib/llm.py kapısından geçer: auth/kota hatası ASLA içerik olmaz,
+    # sert limitte (session/weekly) anında döner — boşuna 4×90 sn beklenmez.
+    MAX_TRIES, WAIT = 4, 60
 
     def one_shot(prompt):
-        """Tek claude çağrısı → (data|None, transient_bool, ham_çıktı)."""
-        try:
-            r = subprocess.run(["claude", "-p", prompt, "--model", args.model],
-                               capture_output=True, text=True, timeout=300)
-            out = (r.stdout or "").strip()
-        except Exception as e:
-            print(f"UYARI: claude çağrısı başarısız: {e}", file=sys.stderr)
-            return None, True, ""
+        """Tek LLM çağrısı → (data|None, transient_bool, ham_çıktı_ya_da_hata_türü)."""
+        ok, out, kind = llm_call(prompt, model=args.model, effort="medium", timeout=300,
+                                 tries=2, tag="viral-script")
+        if not ok:
+            return None, kind == "transient", kind
         m = re.search(r"\{.*\}", out, re.DOTALL)
         if not m:
-            low = out.lower()
-            if any(h in low for h in HARD_LIMIT):
-                return None, False, out  # hard limit → transient DEĞİL, hemen çık
-            transient = (not out) or any(t in low for t in TRANSIENT)
-            return None, transient, out
+            return None, False, out
         try:
             return json.loads(m.group(0)), False, out
         except Exception as e:

@@ -24,7 +24,7 @@ if [ "$FORCE" != "--now" ] && { [ "$HOUR" -lt 9 ] || [ "$HOUR" -ge 21 ]; }; then
 fi
 
 echo "[$(date -u '+%F %T UTC')] SPK onay kontrolü başladı"
-{ git fetch origin main && git rebase --autostash origin/main; } >/dev/null 2>&1 || echo "UYARI: pull başarısız"
+git_sync >/dev/null 2>&1 || echo "UYARI: pull başarısız"
 
 # Yeni bülten varsa kartı üret ('NEW <no> <img>' / 'NONE')
 OUT=$("$VENV_PY" "$REPO/scripts/spk-onay.py" --build)
@@ -34,11 +34,8 @@ case "$OUT" in
   *) echo "[i] Yeni bülten yok."; exit 0 ;;
 esac
 
-git add "public/social/$IMG" 2>/dev/null
-if ! git diff --cached --quiet; then
-  git commit -m "halka arz: SPK onay kartı ($OUT)" >/dev/null 2>&1
-  git_push_retry main || { echo "HATA: push"; exit 1; }
-fi
+git_add_commit "halka arz: SPK onay kartı ($OUT)" "public/social/$IMG" || { echo "HATA: commit"; exit 1; }
+git_push_retry main || { echo "HATA: push"; exit 1; }
 
 RAW="https://raw.githubusercontent.com/Junkiieee/parafomo/main/public/social/$IMG"
 ok=0

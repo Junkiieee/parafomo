@@ -1,0 +1,39 @@
+# ParaFOMO cron — v2 (2026-10-06). Saatler UTC (TR = UTC+3). KAYNAK DOSYA: deploy/crontab.txt
+# Kur:        crontab /root/parafomo/deploy/crontab.txt
+# Duraklat:   crontab -l > /root/crontab-yedek-$(date +%F).txt && crontab -r
+#
+# İlke: LLM kullanan işler farklı 5 saatlik pencerelere yayılır (Claude Pro kotası);
+# ajan 03:00'te tek başına çalışır, blog motoru onun kilidini bekler. Video YAYINI ve
+# kartlar LLM'siz (hazır senaryo / şablon yedekli) — kota dolsa da akış sürer.
+# Tüm LLM çağrıları scripts/lib/llm.py kapısından geçer (kota/oturum durumu: logs/llm-status.json).
+
+# --- Gece: LLM hazırlık + ajan ---
+30 0 * * * /root/parafomo/scripts/viral-daily.sh --prepare >> /root/parafomo/logs/viral.log 2>&1
+0 3 * * * /root/parafomo/agent/run.sh auto >> /root/parafomo/logs/agent.log 2>&1
+30 4 * * * /root/parafomo/scripts/maintenance.sh >> /root/parafomo/logs/maintenance.log 2>&1
+
+# --- Sabah: blog (ajanın konu kuyruğundan) + blog→Short hazırlığı + gündem ---
+0 6 * * 1-5 /root/parafomo/scripts/daily-content.sh >> /root/parafomo/logs/cron.log 2>&1
+30 6 * * * /root/parafomo/scripts/news-daily.sh >> /root/parafomo/logs/news.log 2>&1
+45 7 * * * /root/parafomo/scripts/shorts-daily.sh --prepare >> /root/parafomo/logs/shorts.log 2>&1
+
+# --- YouTube Shorts + IG Reels yayını (viral: 6 aday saatten yalnız günün slotu yayınlar) ---
+0 5 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 0 >> /root/parafomo/logs/viral.log 2>&1
+0 8 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 1 >> /root/parafomo/logs/viral.log 2>&1
+0 10 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 2 >> /root/parafomo/logs/viral.log 2>&1
+0 13 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 3 >> /root/parafomo/logs/viral.log 2>&1
+30 15 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 4 >> /root/parafomo/logs/viral.log 2>&1
+30 18 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 5 >> /root/parafomo/logs/viral.log 2>&1
+0 11 * * * /root/parafomo/scripts/shorts-daily.sh --publish >> /root/parafomo/logs/shorts.log 2>&1
+0 16 * * * /root/parafomo/scripts/manim-daily.sh >> /root/parafomo/logs/manim-daily.log 2>&1
+
+# --- Instagram kartları (LLM yalnız tek cümlelik yorum; yoksa şablon) ---
+0 6 * * * /root/parafomo/scripts/altin-daily.sh >> /root/parafomo/logs/altin-ig.log 2>&1
+15 7 * * 1-5 /root/parafomo/scripts/bist-daily.sh acilis >> /root/parafomo/logs/bist.log 2>&1
+20 15 * * 1-5 /root/parafomo/scripts/bist-daily.sh kapanis >> /root/parafomo/logs/bist.log 2>&1
+45 6,9,12,15 * * * /root/parafomo/scripts/halka-arz-ig.sh >> /root/parafomo/logs/halka-arz-ig.log 2>&1
+30 7,11,15 * * * /root/parafomo/scripts/spk-onay-ig.sh >> /root/parafomo/logs/spk-onay.log 2>&1
+
+# --- Veri + ölçüm (LLM yok) ---
+15 */6 * * * /root/parafomo/scripts/halka-arz-update.sh >> /root/parafomo/logs/halka-arz.log 2>&1
+45 8 * * * /root/parafomo/scripts/learn/learn-daily.sh >> /root/parafomo/logs/learn.log 2>&1

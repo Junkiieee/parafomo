@@ -27,6 +27,9 @@ STAMP="$(date -u +%Y%m%d-%H%M)"
 LOGDIR="$REPO/agent/logs"; mkdir -p "$LOGDIR"
 MODEL="${AGENT_MODEL:-opus}"
 EFFORT="${AGENT_EFFORT:-medium}"
+# Bütçe tavanı: tek gece haftalık kotayı yiyip sistemi günlerce durdurmasın.
+# İzleyip ayarla — normal gece bu tavanın altında biter; env ile geçersiz kılınabilir.
+AGENT_MAX_BUDGET="${AGENT_MAX_BUDGET:-6}"
 
 echo "[night $STAMP] başlıyor (model=$MODEL, dry=$DRY)"
 
@@ -50,12 +53,11 @@ if [ "$DRY" = 1 ]; then
 fi
 
 # 4) Beyni çalıştır — TAM ÖZERK headless (cron'da izin sorusuna takılmamalı)
-#    Model=Opus, effort=high (varsayılan; AGENT_EFFORT ile değişir). Opsiyonel knob'lar:
-#    AGENT_MAX_TURNS (turn tavanı), AGENT_MAX_BUDGET (dolar tavanı).
+#    Model=Opus, effort=medium (varsayılan; AGENT_EFFORT ile değişir).
+#    Bütçe tavanı: AGENT_MAX_BUDGET (dolar) — tek gece kotayı yiyemesin.
 EXTRA=()
-[ -n "${AGENT_MAX_TURNS:-}" ]  && EXTRA+=(--max-turns "$AGENT_MAX_TURNS")
 [ -n "${AGENT_MAX_BUDGET:-}" ] && EXTRA+=(--max-budget-usd "$AGENT_MAX_BUDGET")
-echo "[night] beyin başlıyor (model=$MODEL, effort=$EFFORT${AGENT_MAX_TURNS:+, max-turns=$AGENT_MAX_TURNS}) ..."
+echo "[night] beyin başlıyor (model=$MODEL, effort=$EFFORT, max-budget=\$$AGENT_MAX_BUDGET) ..."
 claude -p "$PROMPT" \
   --model "$MODEL" \
   --effort "$EFFORT" \

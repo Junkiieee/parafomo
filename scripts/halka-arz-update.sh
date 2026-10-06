@@ -19,7 +19,7 @@ cd "$REPO" || { echo "HATA: repo yok"; exit 1; }
 echo "[$(date -u '+%F %T UTC')] Halka arz güncelleme başladı"
 
 # Uzakla senkronla (çakışmayı önle)
-{ git fetch origin main && git rebase --autostash origin/main; } >/dev/null 2>&1 || echo "UYARI: pull başarısız (devam)"
+git_sync >/dev/null 2>&1 || echo "UYARI: pull başarısız (devam)"
 
 # Veriyi çek (ağ hatasında mevcut JSON'u korur, çökmez)
 python3 "$REPO/scripts/fetch-halka-arz.py" 2>&1 | sed 's/^/  /'
@@ -34,8 +34,9 @@ if [ -z "$(git status --porcelain data/halka-arz.json public/halka-arz.json data
 fi
 
 echo "[*] Değişiklik bulundu, commit + push"
-git add data/halka-arz.json public/halka-arz.json data/halka-arz-getiri.json public/halka-arz-getiri.json
-git commit -m "halka-arz: takvim verisi güncellendi (otomatik $(date -u '+%F %H:%M UTC'))" || { echo "commit başarısız"; exit 0; }
+git_add_commit "halka-arz: takvim verisi güncellendi (otomatik $(date -u '+%F %H:%M UTC'))" \
+  data/halka-arz.json public/halka-arz.json data/halka-arz-getiri.json public/halka-arz-getiri.json \
+  || { echo "commit başarısız"; exit 0; }
 if git_push_retry main; then
   echo "[+] Push başarılı — Cloudflare deploy tetiklendi"
 else

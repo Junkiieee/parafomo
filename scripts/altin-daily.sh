@@ -25,7 +25,7 @@ if [ "${1:-}" != "--now" ]; then
 fi
 
 # 1) Senkronla
-{ git fetch origin main && git rebase --autostash origin/main; } >/dev/null 2>&1 || echo "UYARI: pull başarısız (devam)"
+git_sync >/dev/null 2>&1 || echo "UYARI: pull başarısız (devam)"
 
 # 2) Günlük kartı üret
 echo "[*] Kart üretiliyor"
@@ -40,16 +40,12 @@ find public/social -name 'altin-*.jpg' -type f -mtime +14 -delete 2>/dev/null ||
 rm -f public/social/altin-today.jpg 2>/dev/null || true  # önizleme artığı
 
 # 4) Commit + push (görseli GitHub'a taşır → raw URL canlı olur)
-git add public/social/altin-*.jpg
-if ! git diff --cached --quiet; then
-  git commit -m "altın: günlük IG kartı ${STAMP}" >/dev/null 2>&1
-  if git_push_retry main; then
-    echo "[+] Push başarılı"
-  else
-    echo "HATA: push başarısız"; exit 1
-  fi
+# (tırnaklı git pathspec: budanan eski kartların silinmesi de commit'e girer)
+git_add_commit "altın: günlük IG kartı ${STAMP}" 'public/social/altin-*.jpg' || { echo "HATA: commit başarısız"; exit 1; }
+if git_push_retry main; then
+  echo "[+] Push başarılı"
 else
-  echo "[i] Kart zaten commit'li"
+  echo "HATA: push başarısız"; exit 1
 fi
 
 # 5) Görsel GitHub raw'da canlı olana kadar bekle (max ~3 dk)
