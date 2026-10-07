@@ -17,6 +17,23 @@ faq:
     a: "Dağıtım sonuçları kesinleştikten sonra, karşılanmayan talep tutarı genellikle talep toplamanın bitiminden 1-3 iş günü içinde hesabına iade edilir veya blokesi kaldırılır."
   - q: "İki farklı aracı kurumdan talep verirsem daha fazla lot alır mıyım?"
     a: "Hayır. Talepler kimlik numarası üzerinden birleştirilir; aynı yatırımcı tek katılımcı sayılır. Bu yüzden birden fazla kurumdan talep vermek ek lot kazandırmaz."
+shorts:
+  - "50 bin TL yatırdın, hesabına sadece 375 TL'lik hisse geldi!"
+  - "Eşit dağıtımda 24 milyon lot, 1,6 milyon kişiye bölününce herkese sadece 15 lot düşüyor."
+  - "Sebebi basit: talebin ne kadar büyük olursa olsun, pay katılımcı sayısına eşit bölünüyor."
+  - "Bu yüzden beklenen eşit payın birkaç katı talep etmek yeterli, kalan paran zaten iade ediliyor."
+  - "Peki bir sonraki halka arzda kaç lot düşer? Abone ol, hesabı sana gösterelim; parafomo.com'da detaylar var."
+shorts_broll:
+  - "stock market chart"
+  - "calculator money"
+  - "smartphone banking app"
+  - "turkish lira money"
+shorts_visuals:
+  - "object|smartphone banking app"
+  - "object|calculator"
+  - "place|Borsa İstanbul"
+  - "object|wallet"
+  - "place|Borsa İstanbul"
 ---
 
 **Halka arza nasıl katılınır** sorusunun kısa cevabı şu: yetkili bir aracı kurumda hesap açarsın, talep toplama günlerinde uygulamadan talebini girersin, dağıtım sonucuna göre hesabına lot gelir ve artan paran iade edilir. Ama asıl kafa karıştıran kısım bu sürecin ortası: **eşit dağıtım mı oransal dağıtım mı**, 50 bin TL yatırınca neden sadece 12 lot geldi, kaç lot düşeceğini önceden nasıl tahmin edersin?
