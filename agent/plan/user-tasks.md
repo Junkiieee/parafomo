@@ -10,3 +10,8 @@
    gelmiyorsa Cloudflare → Email Routing'de info@ → Gmail yönlendirmesi ekle. _(2026-10-06)_
 5. **Uzak yedek (opsiyonel, 10 dk)** — Cloudflare R2 bucket + API token → `/root/.config/parafomo/backup.env`:
    `R2_ACCOUNT_ID=`, `R2_ACCESS_KEY_ID=`, `R2_SECRET_ACCESS_KEY=`, `R2_BUCKET=`. _(2026-10-06)_
+6. **Ajanın portföy backend'ini test edebilmesi için 2 izin (2 dk)** — bülten (N1) backend'e yeni uç
+   gerektiriyor ama ajan `parafomo-api` venv'ini ve servis restart'ını çalıştıramıyor (izin listesinde yok),
+   bu yüzden "geçici DB ile test → restart → /health" protokolü uygulanamıyor. `/root/parafomo/.claude/settings.local.json`
+   → `permissions.allow` listesine ekle: `"Bash(/root/.venvs/parafomo-api/bin/python *)"` ve
+   `"Bash(systemctl restart parafomo-api)"`. Eklenince ajan N1'i (çalışan bülten formu) bitirir. _(2026-10-07)_

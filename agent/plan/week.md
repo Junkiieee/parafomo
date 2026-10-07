@@ -30,7 +30,7 @@ _Kurulum oturumu (v2 başlangıç planı) · 2026-10-06 · ilk haftalık Opus ko
   alan olmayan arzlar için de sayfa mantıklı mı karar ver (gerekirse `noindex`). Sayfalar
   `halka-arz-update.sh` 6 saatte bir veri tazeledikçe deploy'la kendiliğinden güncellenir.
   · Kabul: build geçer; canlıda ≥30 şirket sayfası 200 döner; sitemap'te görünür; /halka-arz'dan linkli.
-- [ ] M1 (SEO/marka) — **Güven (E-E-A-T) sayfaları + Organization şeması** (finans/YMYL sıralaması için; reklamla ilgisi yok). `/hakkimizda`'yı yeniden yaz
+- [x] M1 (SEO/marka) — **Güven (E-E-A-T) sayfaları + Organization şeması** → 4 sayfa canlı 200 (/hakkimizda yeniden yazıldı — yapay zekâ desteği dürüstçe yazıldı, /editoryal-politika, /metodoloji, /iletisim), footer'da; tüm sayfalarda Organization JSON-LD (@id, sameAs ×4, publishingPrinciples, contactPoint); yazılarda author+publisher = Organization (önceden "ParaFOMO Ekibi" Person idi) · 2026-10-07 — (finans/YMYL sıralaması için; reklamla ilgisi yok). `/hakkimizda`'yı yeniden yaz
   (misyon = brand.md konumlandırması; içerik nasıl üretiliyor: veriler kaynaklarından otomatik çekilir,
   metinler yapay zekâ destekli hazırlanır — DÜRÜST yaz, olmayan insan/uzman denetimini iddia etme);
   yeni `/editoryal-politika` (kaynak, doğruluk, düzeltme, "yatırım tavsiyesi değildir", ortaklık/reklam
@@ -38,14 +38,14 @@ _Kurulum oturumu (v2 başlangıç planı) · 2026-10-06 · ilk haftalık Opus ko
   TCMB, TÜİK, halkarz.com...) ve `/iletisim` (SITE.email + sosyal hesaplar). Footer'a linkler. Tüm sayfalara
   `Organization` JSON-LD (logo + `sameAs`: X, Instagram, YouTube @parafomo, Telegram). Yazı şemasında
   publisher = Organization. · Kabul: 4 sayfa canlı 200; footer'da; şema `grep` ile doğrulanır.
-- [ ] N1 (dağıtım) — **Bülten v1 — kendi altyapımızla (bozuk formu onar).** Backend'e (`backend/`, portföy
+- [ ] N1 (dağıtım) — ⛔ 2026-10-07 BLOKE: ajan `parafomo-api` venv'ini/restart'ı çalıştıramıyor → test protokolü uygulanamaz; Kaan'a izin görevi yazıldı (user-tasks #6). İzin gelince en üste al. — **Bülten v1 — kendi altyapımızla (bozuk formu onar).** Backend'e (`backend/`, portföy
   protokolü: geçici DB ile test → restart → /health) `POST /newsletter/subscribe` (e-posta + KVKK onayı,
   IP rate-limit, çift onay: Brevo SMTP ile — portföy şifre sıfırlama maili zaten bu altyapıyı kullanıyor —
   onay linki), `GET /newsletter/confirm`, `GET /newsletter/unsubscribe` (token), ayrı `newsletter_subscribers`
   tablosu (mevcut tabloları DEĞİŞTİRME). `src/components/Newsletter.astro` formu bu uca bağlansın (başarı/
   hata mesajı, `action="#"` kalmasın). Haftalık gönderim betiği ayrı görev (N2). · Kabul: canlıda abone ol →
   onay maili gelir → onaylayınca DB'de `confirmed`; çık linki çalışır; build geçer.
-- [ ] T2 (B261006-1) — **Halka arz sayfalarını SEO ile güçlendir:** her sayfaya title/description şablonu
+- [x] T2 (B261006-1) — **Halka arz sayfalarını SEO ile güçlendir:** → şirket sayfası title/description şablonu ("<Ad> (<KOD>) Halka Arz: Tarih, Fiyat, Lot ve Getiri"), FAQPage+BreadcrumbList; /halka-arz başlığı "Halka Arz Takvimi Ekim 2026: …" (ay otomatik) + "Ekim 2026 Halka Arz Takvimi" H2 + 40 iç-link; ALBTN yazısından şirket sayfasına link · 2026-10-07 — her sayfaya title/description şablonu
   ("<Şirket> (<KOD>) halka arz: tarih, fiyat, lot ve getiri"); /halka-arz sayfasına "Ekim 2026 halka arz
   takvimi" bölümü + iç linkler; ALBTN blog yazısından şirket sayfasına bağlantı. · Kabul: meta + şema
   `grep` ile doğrulanır, canlıda kontrol.
