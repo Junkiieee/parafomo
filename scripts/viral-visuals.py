@@ -103,15 +103,46 @@ def _entity_score(c, want_portrait):
     return (_lic_rank(c["lic"]), round(shape, 2), -c["w"])
 
 
+_STOP = {"the", "of", "and", "on", "in", "with", "for", "logo", "photo", "image", "picture", "building"}
+
+
+def _fold(s):
+    """Aksan/Türkçe karakter katlama + küçük harf (başlık eşleştirme için)."""
+    import unicodedata
+    s = (s or "").replace("ı", "i").replace("İ", "i")
+    s = unicodedata.normalize("NFKD", s)
+    return "".join(ch for ch in s if not unicodedata.combining(ch)).lower().replace("_", " ")
+
+
+def _relevance(title, query):
+    """Sorgunun anlamlı kelimelerinin dosya başlığında geçme oranı (0..1)."""
+    toks = [t for t in re.findall(r"[a-z0-9]+", _fold(query)) if len(t) >= 3 and t not in _STOP]
+    if not toks:
+        return 1.0
+    tl = _fold(title)
+    return sum(1 for t in toks if t in tl) / len(toks)
+
+
 def wikimedia_image(query, out_img, want_portrait=True):
-    """En uygun Commons görselini indirir. Döner: dict(atıf) veya None."""
+    """En uygun Commons görselini indirir. Döner: dict(atıf) veya None.
+    2026-10-07: adaylar eskiden yalnız lisans/en-boy/çözünürlükle sıralanıyordu → "Federal Reserve
+    logo" için Lena Nehri uydu fotoğrafı geldi. Artık başlık-sorgu ilgisi zorunlu (≤2 kelimede hepsi,
+    daha uzunda ≥%67) ve sıralamanın ilk ölçütü."""
     cands = wikimedia_search(query)
     # belirgin alakasızları ele (ör. 'gene', 'map of' gibi gürültü başlıklar)
     cands = [c for c in cands if not re.search(r"\b(gene|chromosome|dna|molecule)\b",
                                                c["title"], re.I)]
+    ntok = len([t for t in re.findall(r"[a-z0-9]+", _fold(query)) if len(t) >= 3 and t not in _STOP])
+    need = 1.0 if ntok <= 2 else 0.67
+    for c in cands:
+        c["rel"] = _relevance(c["title"], query)
+    cands = [c for c in cands if c["rel"] >= need]
+    # adı tutan ama YANLIŞ yer: "Borsa İstanbul" → Karaköy'deki tarihi "Old Borsa Inn"
+    if "mosque" not in _fold(query) and "inn" not in _fold(query):
+        cands = [c for c in cands if not re.search(r"old borsa inn|mosque", _fold(c["title"]))]
     if not cands:
         return None
-    cands.sort(key=lambda c: _entity_score(c, want_portrait))
+    cands.sort(key=lambda c: (-c["rel"],) + _entity_score(c, want_portrait))
     best = cands[0]
     try:
         req = urllib.request.Request(best["url"], headers={"User-Agent": UA})
@@ -374,8 +405,9 @@ def resolve(spec, dur, out_mp4, cache_dir=CACHE):
     if not query:
         return None, None
 
-    # 1) Gerçek varlık → Wikimedia still
-    if typ in ENTITY_TYPES:
+    # 1) Gerçek varlık → Wikimedia still. Genel nesne (takvim, belge...) Commons'ta rastgele arşiv
+    #    fotoğrafı getiriyordu → doğrudan stok videoya.
+    if typ in ENTITY_TYPES and typ not in {"object", "thing"}:
         img = os.path.join(cache_dir, f"wm_{_slug(query)}.jpg")
         attr = None
         if os.path.exists(img) and os.path.getsize(img) > 8000:
@@ -385,6 +417,10 @@ def resolve(spec, dur, out_mp4, cache_dir=CACHE):
         if attr:
             still_to_broll(img, dur, out_mp4)
             return out_mp4, attr
+        if typ in {"person", "logo"}:
+            # kişi/logo için stok = rastgele yabancı biri/marka → çağıran marka kartına düşer
+            print(f"[i] Wikimedia '{query}' için ilgili görsel yok → marka kartı")
+            return None, None
         # Wikimedia bulamazsa stok videoya düş
         print(f"[i] Wikimedia '{query}' yok → Pexels'e düşülüyor")
 
