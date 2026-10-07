@@ -1,0 +1,120 @@
+{
+  "slug": "dolar-5000-tl-yi-bir-yilda-ne-yapti-bak",
+  "title": "Dolar 5000 TL'yi Bir Yılda Ne Yaptı, Bak",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "Geçen yıl 5000 TL'yi dolara çevirseydin bugün yaklaşık 7091 TL olurdu, yani yaklaşık %42 getiri. Bu getirinin enflasyon karşısında ne ifade ettiğini sade biçimde anlatan kısa bir geri-dönük analiz.",
+  "tags": [
+    "dolar",
+    "dolar tl",
+    "backtest",
+    "getiri",
+    "enflasyon",
+    "birikim",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "Dolara çevirdiğin para kazandırdı, ama yetmedi.",
+      "visual": {
+        "type": "object",
+        "query": "stack of cash wallet full of money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Geçen yıl bu zamanlar 5000 lirayı dolara çevirseydin, bugün yaklaşık 7091 lirası olurdu.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yani yaklaşık yüzde 42 getiri. Ama market arabası, kira ve faturalar da aynı sürede zamlandı.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "Dolar/TL",
+          "unit": "TL",
+          "points": [
+            34.68,
+            35.31,
+            35.85,
+            36.52,
+            38.5,
+            39.21,
+            39.89,
+            40.59,
+            41.1,
+            41.58,
+            42.03,
+            42.49,
+            42.95,
+            43.46,
+            43.96,
+            45.17,
+            45.85,
+            46.64,
+            47.5,
+            48.25,
+            49.01,
+            49.12,
+            49.18
+          ],
+          "x": [
+            "11/24",
+            "12/24",
+            "01/25",
+            "02/25",
+            "03/25",
+            "04/25",
+            "05/25",
+            "06/25",
+            "07/25",
+            "08/25",
+            "09/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "02/26",
+            "03/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26",
+            "09/26",
+            "10/26"
+          ],
+          "amount": 5000,
+          "end_value": 7091,
+          "pct": 42
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çıkarım şu: kazanmak tek başına yetmez. Getirini enflasyonun yanında tartmazsan, kazandığını sanırsın.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki karşılaştırmada altın ile dolar yan yana gelecek. Abone ol, her gün tek net hesabı kısa kısa göstereyim.",
+      "visual": {
+        "type": "object",
+        "query": "stack of cash wallet full of money"
+      }
+    }
+  ]
+}
