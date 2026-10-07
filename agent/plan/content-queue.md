@@ -5,9 +5,6 @@
 <3 kalınca doldurur). Satır biçimi: başlık önerisi · hedef sorgu · neden şimdi · iç-link hedefi.
 
 ## Kuyruk
-- [ ] **Halka arza nasıl katılınır? Eşit dağıtım, oransal dağıtım ve lot hesabı (2026 rehberi)** · hedef:
-  "halka arza nasıl katılınır", "halka arz eşit dağıtım nedir" · neden: B261006-1 halka arz kümesinin
-  rehber sayfası, şirket sayfaları buna bağlanacak · iç-link: /halka-arz, /halka-arz-getiri, ALBTN yazısı
 - [ ] **Gümüş mü altın mı? Son 10 yılda TL bazında hangisi kazandırdı** · hedef: "gümüş mü altın mı",
   "gümüş yatırımı mantıklı mı" · neden: B261006-2 getiri kümesi (T3 /gumus-getiri ile birlikte) · iç-link:
   /gumus-getiri (yayındaysa), /altin-getiri, /altin-dolar-borsa
@@ -22,3 +19,6 @@
   güncelle mi yeni mi karar ver (cannibalization'a dikkat) · iç-link: /tcmb-faiz-takvimi, mevduat hesaplama
 
 ## Yazılanlar
+- [x] **Halka arza nasıl katılınır? Eşit dağıtım, oransal dağıtım ve lot hesabı (2026 rehberi)** · hedef:
+  "halka arza nasıl katılınır", "halka arz eşit dağıtım nedir" · neden: B261006-1 halka arz kümesinin
+  rehber sayfası, şirket sayfaları buna bağlanacak · iç-link: /halka-arz, /halka-arz-getiri, ALBTN yazısı → /blog/halka-arza-nasil-katilinir-esit-dagitim-lot-hesabi (2026-10-07)

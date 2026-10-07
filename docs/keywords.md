@@ -93,6 +93,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] Halka Arza Nasıl Katılınır? Eşit Dağıtım ve Lot Hesabı — `halka-arza-nasil-katilinir-esit-dagitim-lot-hesabi` (ajan kuyruğu: B261006-1 halka arz kümesi rehberi; hedef "halka arza nasıl katılınır" + "halka arz eşit dağıtım nedir"; 5 adım süreç + eşit/oransal karşılaştırma tablosu + lot hesabı örnekleri; /halka-arz + /halka-arz-getiri + ALBTN + halka-arz-nedir-ipo cluster'ı; 7 Ekim 2026)
+
 - [x] TCMB Ekim 2026 Faiz Kararı: PPK 22 Ekim'de Ne Yapacak? — `tcmb-ekim-2026-faiz-karari-ppk-beklentiler` (takvim: 22 Ekim 2026 🔴 TCMB PPK; TÜİK 5 Ekim TÜFE + ABD PCE 30 Eylül + ABD NFP 2 Ekim bağlantısı; 3 senaryo tablosu + mevduat/kredi pratik rehber; tcmb-eylul-2026 + tuik-ekim-2026 + reel-faiz-nedir cluster'ı; 30 Eylül 2026)
 
 - [x] ABD Ekim 2026 İstihdam Verisi (NFP): Fed Kasım'da Ne Yapar? Dolar ve Altın Etkisi — `abd-ekim-2026-nfp-istihdam-verisi-fed-dolar-altin` (takvim: 2 Ekim 2026 🔴 NFP + İşsizlik + Saatlik Kazançlar; learning report #1 abd-issizlik-verisi-altin konusuna yakın; senaryo tablosu + Fed Kasım 2026 PPK bağlantısı; abd-issizlik-verisi-altin + nfp-nedir + ortalama-saatlik-kazanclar cluster'ı; 29 Eylül 2026)

@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-10-07 — Halka Arza Nasıl Katılınır? Eşit Dağıtım ve Lot Hesabı
+
+**Yayınlanan yazı:** [Halka Arza Nasıl Katılınır? Eşit Dağıtım ve Lot Hesabı](/blog/halka-arza-nasil-katilinir-esit-dagitim-lot-hesabi)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — B261006-1 halka arz kümesi rehberi)
+
+---
+
 ## 2026-09-30 — TCMB Ekim 2026 Faiz Kararı: PPK 22 Ekim'de Ne Yapacak?
 
 **Yayınlanan yazı:** [TCMB Ekim 2026 Faiz Kararı: PPK 22 Ekim'de Ne Yapacak?](https://parafomo.com/blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler/)
