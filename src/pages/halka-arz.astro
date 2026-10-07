@@ -57,8 +57,9 @@ const days = Array.from({ length: daysInMonth }, (_, idx) => {
 ---
 
 <BaseLayout
-  title="BIST Halka Arz Takvimi"
-  description="Borsa İstanbul (BIST) bu ayki halka arz takvimi: talep toplama günleri, yaklaşanlar ve son tamamlananlar. Her gün otomatik güncellenir."
+  title={`Halka Arz Takvimi ${monthLabel}: Talep Tarihleri, Fiyat ve Lot`}
+  description={`${monthLabel} BIST halka arz takvimi: talep toplama günleri, tarih bekleyen ${pending.length} şirket ve son tamamlanan arzlar. Her şirketin fiyat, lot, aracı kurum ve getiri künyesi. Günde 4 kez güncellenir.`}
+  breadcrumbs={[{ name: 'Ana sayfa', url: '/' }, { name: 'Halka Arz Takvimi', url: '/halka-arz/' }]}
 >
   <section class="container ha-hero">
     <span class="eyebrow"><span class="pulse"></span> Borsa İstanbul</span>
@@ -76,7 +77,7 @@ const days = Array.from({ length: daysInMonth }, (_, idx) => {
     </div>
 
     <div class="cal-month">
-      <div class="cal-month-title">{monthLabel}</div>
+      <h2 class="cal-month-title">{monthLabel} Halka Arz Takvimi</h2>
       <ul class="cal-list">
         {days.map((day) => (
           <li class:list={['cal-row', { today: day.isToday, past: day.isPast, weekend: day.isWeekend, empty: day.events.length === 0 }]}>
@@ -103,7 +104,7 @@ const days = Array.from({ length: daysInMonth }, (_, idx) => {
 
   {pending.length > 0 && (
     <section class="container ha-section">
-      <div class="ha-shead"><h2>Tarih Bekleyenler</h2><span class="ha-shead-count">{pending.length}</span></div>
+      <div class="ha-shead"><h2>Talep Tarihi Bekleyen Halka Arzlar</h2><span class="ha-shead-count">{pending.length}</span></div>
       <div class="ha-chips">
         {pending.map((i) => (
           <a class="ha-chip" href={`/halka-arz/${i.slug}/`}>
@@ -117,7 +118,7 @@ const days = Array.from({ length: daysInMonth }, (_, idx) => {
 
   {completed.length > 0 && (
     <section class="container ha-section">
-      <div class="ha-shead"><h2>Son Tamamlananlar</h2><span class="ha-shead-count">{completed.length}</span></div>
+      <div class="ha-shead"><h2>Son Tamamlanan Halka Arzlar</h2><span class="ha-shead-count">{completed.length}</span></div>
       <ul class="ha-done-list">
         {completed.map((i) => (
           <li>
@@ -172,7 +173,7 @@ const days = Array.from({ length: daysInMonth }, (_, idx) => {
 
   /* ---------- Month list (günler satır satır) ---------- */
   .cal-month { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg-card); box-shadow: var(--shadow-xs); max-width: 640px; }
-  .cal-month-title { font-family: var(--font-serif); font-weight: 600; font-size: var(--step-0); padding: 0.7rem 1rem; border-bottom: 1px solid var(--border); background: var(--bg-elev); }
+  .cal-month-title { margin: 0; font-family: var(--font-serif); font-weight: 600; font-size: var(--step-0); padding: 0.7rem 1rem; border-bottom: 1px solid var(--border); background: var(--bg-elev); }
   .cal-list { list-style: none; margin: 0; padding: 0; }
   .cal-row { display: grid; grid-template-columns: 56px 1fr; align-items: center; gap: 0.7rem; padding: 0.3rem 0.9rem; border-bottom: 1px solid var(--border-soft); border-left: 3px solid transparent; min-height: 34px; }
   .cal-row:last-child { border-bottom: none; }

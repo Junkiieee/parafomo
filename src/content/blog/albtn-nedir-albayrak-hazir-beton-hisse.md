@@ -38,6 +38,8 @@ shorts_visuals:
 
 BIST'te yeni işlem görmeye başlayan bir şirketi araştırırken ilk adım genellikle basit bir web araması oluyor: "ALBTN nedir?" ya da "albayrak hazır beton ne iş yapıyor?" Bu yazıda **Albayrak Hazır Beton**'u, gerçekleştirdiği halka arzı, faaliyet gösterdiği sektörü ve bu tip hisseleri değerlendirirken dikkat edilmesi gereken kriterleri ele alıyoruz.
 
+> 📋 Halka arzın tam künyesi (fon kullanımı, finansallar, dağıtım sonuçları, kişi başı lot) ve halka arz fiyatına göre **güncel getirisi**: [Albayrak Hazır Beton (ALBTN) halka arz sayfası](/halka-arz/albayrak-hazir-beton-san-ve-tic-a-s/)
+
 ## ALBTN Nedir? Şirket Profili
 
 **Albayrak Hazır Beton San. ve Tic. A.Ş.**, 2003 yılında kurulan ve Albayrak Grubu bünyesinde faaliyet gösteren bir inşaat malzemeleri şirketidir. Şirketin temel faaliyeti; konut projeleri, ticari yapılar ve altyapı projelerine (yol, köprü, tünel, metro) hazır beton (ready-mix concrete) tedarik etmek, ayrıca proje bazlı tedarik ve gayrimenkul geliştirme yapmaktır.
