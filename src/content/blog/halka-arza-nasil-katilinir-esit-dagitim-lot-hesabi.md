@@ -36,7 +36,7 @@ shorts_visuals:
   - "place|Borsa İstanbul"
 ---
 
-**Halka arza nasıl katılınır** sorusunun kısa cevabı şu: yetkili bir aracı kurumda hesap açarsın, talep toplama günlerinde uygulamadan talebini girersin, dağıtım sonucuna göre hesabına lot gelir ve artan paran iade edilir. Ama asıl kafa karıştıran kısım bu sürecin ortası: **eşit dağıtım mı oransal dağıtım mı**, 50 bin TL yatırınca neden sadece 12 lot geldi, kaç lot düşeceğini önceden nasıl tahmin edersin?
+**Halka arza nasıl katılınır** sorusunun kısa cevabı şu: yetkili bir aracı kurumda hesap açarsın, talep toplama günlerinde uygulamadan talebini girersin, dağıtım sonucuna göre hesabına lot gelir ve artan paran iade edilir. Ama asıl kafa karıştıran kısım bu sürecin ortası: **eşit dağıtım mı oransal dağıtım mı**, 50 bin TL yatırınca neden sadece 15 lot geldi, kaç lot düşeceğini önceden nasıl tahmin edersin?
 
 Bu rehberde bu soruların hepsini sayısal örneklerle cevaplıyoruz. Halka arzın ne olduğunu ve şirketlerin neden halka açıldığını merak ediyorsan önce [Halka Arz (IPO) Nedir?](/blog/halka-arz-nedir-ipo) yazısına göz atabilirsin; burada doğrudan **katılım mekaniğine** odaklanıyoruz.
 
@@ -97,7 +97,7 @@ Bazı halka arzlarda **karma yöntem** de kullanılır: payın bir kısmı eşit
 | Lot neye göre belirlenir? | Katılımcı sayısına | Talep tutarına |
 | Küçük yatırımcı için | Avantajlı | Görece dezavantajlı |
 | Büyük talep işe yarar mı? | Hayır, aynı lot düşer | Evet, orantılı fazla lot |
-| Tipik kişi başı sonuç | Az ama eşit (ör. 10-30 lot) | Bakiyeye göre değişir |
+| Tipik kişi başı sonuç | Eşit ama arza göre değişir (ör. NETGL ~54, ALBTN ~127 lot) | Bakiyeye göre değişir |
 | Bloke edilen para | Gereğinden fazlası boşa bekler | Tutar doğrudan sonucu etkiler |
 | Kullanıldığı yer | Son yıllardaki çoğu BIST arzı | Daha seyrek, genelde karma |
 
@@ -111,13 +111,13 @@ Halka arz duyurularında sık geçen terimleri bir yerde toplayalım:
 - **Yatırımcı grubu tahsisi:** Payın ne kadarının yurt içi bireysel, yurt içi kurumsal ve yurt dışı kurumsal yatırımcılara ayrıldığı. Sana düşecek lotu hesaplarken **sadece bireysel yatırımcı payını** kullan.
 - **Sermaye artırımı / ortak satışı:** Paranın şirkete mi (yatırım, borç azaltma) yoksa mevcut ortakların cebine mi gittiği. Bu ayrım için [sermaye artırımı rehberi](/blog/sermaye-artirimi-nedir-bedelsiz-ruchan-hakki) faydalı olabilir.
 - **Satmama taahhüdü:** Ortakların halka arz sonrası belli bir süre (genelde 1 yıl) ellerindeki payı satmayacağına dair taahhüt.
-- **Fiyat istikrarı:** Lider aracı kurumun, işlem başladıktan sonraki ilk dönemde (genelde 30 gün) fiyatın halka arz fiyatının altına sert düşmesini sınırlamak için yapabildiği alımlar. Garanti değildir.
+- **Fiyat istikrarı:** Lider aracı kurumun, işlem başladıktan sonraki, izahnamede belirtilen ilk dönemde (son arzlarda genellikle 15 gün) fiyatın halka arz fiyatının altına sert düşmesini sınırlamak için yapabildiği alımlar. Garanti değildir.
 
 ### Kendi lot tahminini yapmak için formül
 
 **Tahmini lot ≈ Bireysel yatırımcıya ayrılan lot ÷ Tahmini katılımcı sayısı**
 
-Katılımcı sayısı halka arzın popülerliğine, büyüklüğüne ve piyasa havasına göre birkaç yüz binden birkaç milyona kadar değişebilir. Bu yüzden sonucu kesin değil, aralık olarak düşün.
+Katılımcı sayısı halka arzın popülerliğine, büyüklüğüne ve piyasa havasına göre birkaç yüz binden birkaç milyona kadar değişebilir. Bu yüzden sonucu kesin değil, aralık olarak düşün. Gerçek bir örnek: [Net Global (NETGL)](/halka-arz/net-global-endustriyel-yatirimlar-a-s/) arzında bireysele ayrılan 35 milyon lot 652 bin katılımcıya bölündü ve kişi başı yaklaşık 54 lot düştü.
 
 ## Talep Verirken Dikkat Edilecek 6 Nokta
 
@@ -128,7 +128,7 @@ Katılımcı sayısı halka arzın popülerliğine, büyüklüğüne ve piyasa h
 5. **"Tavan serisi" beklentisine güvenme.** Bazı arzlar ilk günlerde tavan yapsa da her halka arz kazandırmaz; halka arz fiyatının altına düşen örnekler de vardır.
 6. **İade tarihini planla.** Bloke edilen paranın büyük kısmı birkaç gün sonra döner; bu parayı başka bir ihtiyaç için planlıyorsan tarihleri hesaba kat.
 
-Somut bir örnek olarak, Temmuz 2026'da eşit dağıtımla tamamlanan bir arzı ve sonrasını [ALBTN rehberinde](/blog/albtn-nedir-albayrak-hazir-beton-hisse) inceleyebilirsin.
+Somut bir örnek olarak, Temmuz 2026'da eşit dağıtımla tamamlanan bir arzı ve sonrasını [ALBTN rehberinde](/blog/albtn-nedir-albayrak-hazir-beton-hisse) inceleyebilirsin; kişi başı lot dahil dağıtım sonuçları [Albayrak Hazır Beton halka arz sayfasında](/halka-arz/albayrak-hazir-beton-san-ve-tic-a-s/).
 
 ## Halka Arzdan Sonra Ne Olur?
 
