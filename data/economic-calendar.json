@@ -1,53 +1,8 @@
 {
-  "updated": "2026-09-30",
+  "updated": "2026-10-07",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-09-30",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core PCE Price Index m/m",
-      "source": "forexfactory",
-      "hook": "ABD çekirdek enflasyon (PCE) — Fed'in tercih ettiği gösterge, dolar yönü."
-    },
-    {
-      "date": "2026-09-30",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Final GDP q/q",
-      "source": "forexfactory",
-      "hook": "Büyüme verisi — küresel görünüm."
-    },
-    {
-      "date": "2026-10-02",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Average Hourly Earnings m/m",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-10-02",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Non-Farm Employment Change",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-10-02",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Unemployment Rate",
-      "source": "forexfactory",
-      "hook": "İşsizlik verisi — büyüme ve faiz beklentisi."
-    },
     {
       "date": "2026-10-05",
       "time": "10:00",
@@ -56,6 +11,33 @@
       "title": "TÜİK enflasyon (TÜFE) verisi",
       "source": "tuik-rule",
       "hook": "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı."
+    },
+    {
+      "date": "2026-10-06",
+      "time": "6:35am",
+      "region": "JPY",
+      "impact": "High",
+      "title": "BOJ Gov Ueda Speaks",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-10-07",
+      "time": "6:00pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "FOMC Meeting Minutes",
+      "source": "forexfactory",
+      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
+    },
+    {
+      "date": "2026-10-08",
+      "time": "12:15pm",
+      "region": "GBP",
+      "impact": "High",
+      "title": "BOE Gov Bailey Speaks",
+      "source": "forexfactory",
+      "hook": ""
     },
     {
       "date": "2026-10-22",
