@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../site.config';
+---
+
+<BaseLayout
+  title="Editoryal Politika"
+  description="ParaFOMO içerikleri hangi kaynaklarla, hangi doğruluk ve düzeltme ilkeleriyle hazırlanır? Yapay zekâ kullanımı, bağımsızlık ve reklam ilkeleri."
+  breadcrumbs={[{ name: 'Ana sayfa', url: '/' }, { name: 'Editoryal Politika', url: '/editoryal-politika/' }]}
+>
+  <article class="container doc prose">
+    <span class="eyebrow">Güven</span>
+    <h1>Editoryal politika</h1>
+    <p class="lede soft">ParaFOMO'da yayımlanan her yazı, tablo, hesaplayıcı ve videonun uyduğu kurallar.</p>
+
+    <h2>1. Kaynak</h2>
+    <ul>
+      <li>Rakamlar birincil ya da yaygın kabul gören kaynaklardan alınır: TCMB, TÜİK, SPK/KAP izahnameleri,
+        Federal Reserve, ABD Çalışma Bakanlığı (BLS), Yahoo Finance piyasa verisi, halkarz.com.</li>
+      <li>Her veri sayfasında kaynak ve son güncelleme tarihi görünür. Yöntemler <a href="/metodoloji/">metodoloji</a> sayfasındadır.</li>
+      <li>Tahmin ve beklentiler kesin bilgi gibi sunulmaz; "beklenti", "olası", "yaklaşık" diye işaretlenir.</li>
+    </ul>
+
+    <h2>2. Doğruluk ve yapay zekâ kullanımı</h2>
+    <ul>
+      <li>Veriler betiklerle otomatik çekilir; kaynak erişilemezse eski veri korunur ve tarihi değişmez — uydurma ya da tahmini değer yazılmaz.</li>
+      <li>Yazılar ve video senaryoları yapay zekâ araçlarıyla, bu verilere ve resmi açıklamalara dayanarak hazırlanır;
+        yayından önce otomatik kontrollerden (kaynak, tarih ve sayı tutarlılığı) geçer.</li>
+      <li>İçerikler lisanslı bir yatırım danışmanı tarafından tek tek denetlenmez. Bu nedenle kararlarınızda
+        birincil kaynağı (izahname, KAP, kurum açıklaması) esas alın.</li>
+    </ul>
+
+    <h2>3. Düzeltme</h2>
+    <ul>
+      <li>Hata bildirimi: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Doğrulanan hatalar en kısa sürede düzeltilir.</li>
+      <li>Anlamı değiştiren düzeltmelerde yazının güncelleme tarihi yenilenir; gerekirse yazıya düzeltme notu eklenir.</li>
+    </ul>
+
+    <h2>4. Yatırım tavsiyesi değildir</h2>
+    <p>
+      ParaFOMO bir yatırım danışmanı ya da aracı kurum değildir. İçerikler genel bilgilendirme amaçlıdır;
+      kişisel durumunuza göre "al/sat/tut" önerisi içermez. Geçmiş getiri gelecek getirinin garantisi değildir.
+      Yatırım danışmanlığı, SPK lisanslı kurumlarla yapılacak yatırım danışmanlığı sözleşmesi çerçevesinde verilir.
+    </p>
+
+    <h2>5. Bağımsızlık, reklam ve ortaklık</h2>
+    <ul>
+      <li>Şu anda sitede reklam ya da ortaklık (affiliate) linki yoktur; içerik hiçbir kurumdan ücret alınarak hazırlanmaz.</li>
+      <li>İleride reklam veya ortaklık olursa: açıkça "reklam / ortaklık" olarak işaretlenir, içerik kararlarını etkilemez,
+        yalnızca lisanslı (SPK/BDDK) kurumlar kabul edilir. Forex, lisanssız kripto ve bahis tanıtımı yapılmaz.</li>
+      <li>Araç sayfalarında reklam, sayfanın kullanımını ve hızını bozacak şekilde yerleştirilmez.</li>
+    </ul>
+
+    <h2>6. Videolar ve görseller</h2>
+    <p>
+      Videolarda yapay zekâ ile üretilmiş seslendirme ve otomatik oluşturulan grafikler kullanılır. Gerçek kişi,
+      kurum ve yer görselleri lisansı uygun kaynaklardan (ör. Wikimedia Commons, Pexels) alınır. Yanıltıcı başlık
+      ve kapak kullanılmaz.
+    </p>
+
+    <p class="muted upd">Son güncelleme: 7 Ekim 2026 · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a></p>
+  </article>
+</BaseLayout>
+
+<style>
+  .doc { padding-top: 3rem; max-width: var(--maxw-prose); }
+  .doc h1 { font-size: var(--step-3); margin: 0.6rem 0 0.8rem; }
+  .doc .lede { font-size: var(--step-1); line-height: 1.5; }
+  .doc h2 { font-size: var(--step-1); margin-top: 2.2rem; }
+  .upd { font-size: var(--step--1); margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border-soft); }
+</style>

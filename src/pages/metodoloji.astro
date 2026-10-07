@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const sources = [
+  ['Altın getirisi', '/altin-getiri/', 'Yahoo Finance: GC=F (ons altın, USD) ve USDTRY=X aylık kapanışları', 'Gram altın TL ≈ ons USD ÷ 31,1035 × USD/TRY'],
+  ['Dolar getirisi', '/dolar-getiri/', 'Yahoo Finance: USDTRY=X aylık kapanış', '—'],
+  ['BIST 100 getirisi', '/bist-getiri/', 'Yahoo Finance: XU100.IS aylık kapanış', 'Fiyat endeksi; temettü dâhil değil'],
+  ['Halka arz takvimi ve şirket künyeleri', '/halka-arz/', 'halkarz.com (SPK onaylı / taslak izahname özetleri)', 'Tarih, fiyat, lot, dağıtım, fon kullanımı, finansallar'],
+  ['Halka arz getirileri', '/halka-arz-getiri/', 'Halka arz fiyatı: halkarz.com · güncel fiyat: Yahoo Finance (BIST)', '(güncel − halka arz fiyatı) ÷ halka arz fiyatı'],
+  ['Altın fiyatları', '/altin-fiyatlari/', 'finans.truncgil.com (gösterge fiyat)', 'Kesin işlem fiyatı değildir'],
+  ['Dolar endeksi (DXY)', '/dolar-endeksi/', 'Yahoo Finance: DX-Y.NYB', '—'],
+  ['ABD tahvil faizleri', '/abd-tahvil-faizi/', 'Yahoo Finance: ^IRX, ^FVX, ^TNX, ^TYX', '—'],
+  ['TCMB faiz takvimi', '/tcmb-faiz-takvimi/', 'TCMB resmi PPK toplantı takvimi', 'Karar günü TSİ 14:00'],
+  ['Fed faiz takvimi', '/fed-faiz-takvimi/', 'Federal Reserve resmi FOMC takvimi', 'Karar 2. günde, ABD saatiyle 14:00'],
+  ['Enflasyon takvimi / kira artış oranı', '/enflasyon-takvimi/', 'TÜİK Ulusal Veri Yayımlama Takvimi ve TÜFE bültenleri', 'Kira tavanı = 12 aylık TÜFE ortalaması'],
+  ['Ekonomik takvim', '/ekonomik-takvim/', 'ForexFactory (ABD/global), TCMB ve TÜİK takvimleri', 'Etki seviyesi kaynağın sınıflaması'],
+];
+---
+
+<BaseLayout
+  title="Veri ve Metodoloji"
+  description="ParaFOMO getiri tabloları, takvimler ve hesaplayıcılar hangi kaynaklardan, hangi formüllerle hesaplanıyor? Altın, dolar, BIST, halka arz ve faiz verilerinin yöntemi."
+  breadcrumbs={[{ name: 'Ana sayfa', url: '/' }, { name: 'Veri ve Metodoloji', url: '/metodoloji/' }]}
+>
+  <article class="container doc prose">
+    <span class="eyebrow">Güven</span>
+    <h1>Veri ve metodoloji</h1>
+    <p class="lede soft">Sitedeki her rakam nereden geliyor, nasıl hesaplanıyor ve ne sıklıkla güncelleniyor.</p>
+
+    <h2>Getiri hesabı</h2>
+    <p>
+      Getiri sayfalarında dönem getirisi, dönem başındaki aylık kapanış ile güncel değer arasındaki yüzde değişimdir:
+    </p>
+    <p class="formula">Getiri (%) = (Güncel değer ÷ Dönem başı değer − 1) × 100</p>
+    <ul>
+      <li><strong>Dönemler:</strong> yılbaşından bugüne (YTD) ve son 1, 3, 5, 10 yıl.</li>
+      <li><strong>TL ve USD bazı:</strong> altın hem TL (gram) hem USD (ons) bazında verilir; aradaki fark kur etkisidir.</li>
+      <li><strong>Dâhil olmayanlar:</strong> alım-satım makası, işçilik, komisyon, vergi, saklama maliyeti ve temettü.
+        Gerçek yatırımcı getirisi bu kalemler kadar farklı olabilir.</li>
+      <li><strong>Enflasyon:</strong> aksi belirtilmedikçe getiriler nominaldir (enflasyondan arındırılmamıştır).</li>
+    </ul>
+
+    <h2>Kaynaklar</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Sayfa</th><th>Kaynak</th><th>Not / formül</th></tr></thead>
+        <tbody>
+          {sources.map(([n, href, src, note]) => (
+            <tr><td><a href={href}>{n}</a></td><td>{src}</td><td>{note}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Hesaplayıcılar</h2>
+    <ul>
+      <li><strong>Mevduat faizi:</strong> brüt faiz = anapara × yıllık faiz × gün ÷ 365; net faiz = brüt − stopaj (vadeye göre güncel stopaj oranı).</li>
+      <li><strong>Bileşik faiz:</strong> gelecek değer = anapara × (1 + dönemsel faiz)<sup>dönem sayısı</sup> (+ düzenli katkılar).</li>
+      <li><strong>Kredi:</strong> eşit taksitli ödeme formülü; faize KKDF ve BSMV eklenir (ürün tipine göre).</li>
+      <li><strong>Net maaş, asgari ücret, kıdem ve işsizlik maaşı:</strong> yürürlükteki yıl için resmi gelir vergisi dilimleri,
+        SGK prim oranları, damga vergisi ve tavan tutarları kullanılır.</li>
+      <li><strong>Kira artışı:</strong> TÜİK'in açıkladığı 12 aylık TÜFE ortalaması yasal tavan olarak uygulanır.</li>
+    </ul>
+    <p>Hesaplayıcı sonuçları tahminidir; kesin tutar için banka, işveren veya resmi kurum hesabını esas alın.</p>
+
+    <h2>Güncelleme sıklığı</h2>
+    <ul>
+      <li>Getiri, fiyat ve tahvil verileri: hafta içi her gün otomatik.</li>
+      <li>Halka arz verileri: günde dört kez (6 saatte bir).</li>
+      <li>Takvimler: resmi takvim değiştiğinde ve hafta içi her gün kontrol edilerek.</li>
+      <li>Kaynağa ulaşılamazsa son geçerli veri korunur; sayfadaki "son güncelleme" tarihi verinin gerçek tarihini gösterir.</li>
+    </ul>
+
+    <p class="muted upd">
+      Bu sayfadaki bilgiler yalnızca bilgilendirme amaçlıdır; yatırım tavsiyesi değildir. Hata görürseniz:
+      <a href="/iletisim/">iletişim</a> · <a href="/editoryal-politika/">Editoryal politika</a>
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .doc { padding-top: 3rem; max-width: var(--maxw-prose); }
+  .doc h1 { font-size: var(--step-3); margin: 0.6rem 0 0.8rem; }
+  .doc .lede { font-size: var(--step-1); line-height: 1.5; }
+  .doc h2 { font-size: var(--step-1); margin-top: 2.2rem; }
+  .formula { font-family: var(--font-serif); font-weight: 600; background: var(--brand-tint); border-radius: var(--radius-sm); padding: 0.8rem 1rem; }
+  .tbl-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); }
+  .tbl-wrap table { width: 100%; border-collapse: collapse; font-size: var(--step--1); margin: 0; }
+  .tbl-wrap th, .tbl-wrap td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border-soft); text-align: left; vertical-align: top; }
+  .tbl-wrap thead th { background: var(--bg-elev); font-size: var(--step--2); color: var(--text-muted); }
+  .upd { font-size: var(--step--1); margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border-soft); }
+</style>

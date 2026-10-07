@@ -42,6 +42,22 @@ const ogImage = new URL(image, SITE.url).href;
 
 const isArticle = type === 'article';
 
+const ORG_ID = `${SITE.url}/#organization`;
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': ORG_ID,
+  name: SITE.name,
+  url: SITE.url,
+  slogan: SITE.tagline,
+  description: SITE.description,
+  email: SITE.email,
+  logo: { '@type': 'ImageObject', url: new URL('/favicon-512.png', SITE.url).href, width: 512, height: 512 },
+  sameAs: Object.values(SITE.social).filter(Boolean),
+  publishingPrinciples: new URL('/editoryal-politika/', SITE.url).href,
+  contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: SITE.email, url: new URL('/iletisim/', SITE.url).href, availableLanguage: 'tr' },
+};
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': isArticle ? 'Article' : 'WebSite',
@@ -53,14 +69,14 @@ const jsonLd = {
   inLanguage: 'tr-TR',
   ...(isArticle && { mainEntityOfPage: { '@type': 'WebPage', '@id': canonical } }),
   ...(isArticle && {
-    author: { '@type': 'Person', name: author ?? SITE.author },
+    // Yazılar marka adına yayımlanır (kişi değil) — şemada da kurum olarak beyan edilir.
+    author:
+      !author || author.startsWith(SITE.name)
+        ? { '@type': 'Organization', '@id': ORG_ID, name: SITE.name, url: SITE.url }
+        : { '@type': 'Person', name: author },
   }),
   ...(isArticle && section && { articleSection: section }),
-  publisher: {
-    '@type': 'Organization',
-    name: SITE.name,
-    logo: { '@type': 'ImageObject', url: new URL('/favicon-512.png', SITE.url).href, width: 512, height: 512 },
-  },
+  publisher: { '@type': 'Organization', '@id': ORG_ID, name: SITE.name, logo: orgLd.logo },
   ...(publishedTime && { datePublished: publishedTime }),
   ...(modifiedTime && { dateModified: modifiedTime }),
 };
@@ -144,6 +160,7 @@ const breadcrumbLd =
       rel="stylesheet"
     />
 
+    <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     {breadcrumbLd && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />}
     {faqLd && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}

@@ -3,58 +3,87 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import { SITE } from '../site.config';
 
-const values = [
-  { t: 'Bağımsızlık', d: 'Hiçbir kuruma, fona ya da projeye bağlı değiliz. Tek taraf tuttuğumuz şey okurun cebi.' },
-  { t: 'Sadelik', d: 'Finansı korkutucu olmaktan çıkarıyoruz. Jargon değil, anlaşılır ve uygulanabilir bilgi.' },
-  { t: 'Kanıt', d: 'İddialarımızı veriye dayandırırız. Hype değil, sürdürülebilir kararlar.' },
-  { t: 'Uzun vade', d: 'Zengin olma vaadi satmıyoruz. Disiplin ve zamanla büyüyen servet anlatıyoruz.' },
+const products = [
+  { t: 'Getiri sayfaları', d: 'Altın, dolar ve BIST 100 son 1-10 yılda TL bazında ne kazandırdı? Tek tabloda, kaynağıyla.', href: '/altin-dolar-borsa/' },
+  { t: 'Halka arz merkezi', d: 'Takvim, şirket künyeleri ve 2026 halka arzlarının güncel getiri karnesi.', href: '/halka-arz/' },
+  { t: 'Ekonomik takvim', d: 'TCMB, Fed ve TÜİK açıklamaları; olaydan önce "bu senin cebine ne yapar" açıklayıcıları.', href: '/ekonomik-takvim/' },
+  { t: 'Hesaplayıcılar', d: 'Mevduat, kredi, net maaş, kıdem, kira artışı… Güncel oran ve vergilerle.', href: '/bilesik-faiz-hesaplama/' },
+  { t: 'Portföy takip', d: 'Altın, gümüş ve BIST varlıklarını ücretsiz takip et; birikimin enflasyona karşı ne durumda gör.', href: '/portfoy-takip/' },
 ];
 ---
 
 <BaseLayout
   title="Hakkımızda"
-  description="ParaFOMO neden var, neye inanıyoruz ve okurlarımıza nasıl değer katıyoruz?"
+  description="ParaFOMO nedir, içerikleri nasıl hazırlar ve kimin için var? Türk tasarruf sahibine veriyle, sade ve dürüst finans."
+  breadcrumbs={[{ name: 'Ana sayfa', url: '/' }, { name: 'Hakkımızda', url: '/hakkimizda/' }]}
 >
   <article class="container about prose">
     <span class="eyebrow">Hakkımızda</span>
-    <h1>Finansal kararlarını korkuyla değil, bilgiyle ver.</h1>
+    <h1>Parana akıl kat.</h1>
     <p class="lede soft">
-      ParaFOMO, "kaçırma korkusunun" (FOMO) en pahalı yatırım hatalarına yol açtığı bir dünyada doğdu.
-      Amacımız tam tersi: paniğin değil, sağlam bilginin yön verdiği finansal kararlar.
+      ParaFOMO, Türk tasarruf sahibinin enflasyon karşısında birikimini <strong>veriyle</strong> korumasına
+      yardım eden bağımsız bir finans yayınıdır. Tahmin değil geçmiş veri; korku değil hesap.
     </p>
 
     <p>
-      Türkiye'de finansal okuryazarlık hâlâ büyük bir eksik. Birçok kişi enflasyon karşısında
-      birikiminin nasıl eridiğini izliyor, doğru bilgiye ulaşmakta zorlanıyor ya da kötü tavsiyelerin
-      kurbanı oluyor. ParaFOMO bu boşluğu kapatmak için var: <strong>karmaşık finansal konuları
-      herkesin anlayıp uygulayabileceği rehberlere çeviriyoruz.</strong>
+      Haber siteleri "ne oldu"yu anlatır. Biz şunu soruyoruz: <em>bu karar, bu veri, bu faiz senin cebine ne yapar?</em>
+      Altın mı dolar mı mevduat mı, halka arza girmeli miyim, kiram ne kadar artar — bu soruların cevabını
+      gerçek veriye dayanan, tek bakışta anlaşılır tablolar, hesaplayıcılar ve kısa açıklayıcılarla veriyoruz.
     </p>
 
-    <h2>Neye inanıyoruz?</h2>
+    <h2>Ne sunuyoruz?</h2>
     <div class="values">
-      {values.map((v) => (
-        <div class="value card">
-          <h3>{v.t}</h3>
-          <p class="soft">{v.d}</p>
-        </div>
+      {products.map((p) => (
+        <a class="value card" href={p.href}>
+          <h3>{p.t}</h3>
+          <p class="soft">{p.d}</p>
+        </a>
       ))}
     </div>
 
-    <h2>Ne yazıyoruz?</h2>
+    <h2>İçerikler nasıl hazırlanıyor?</h2>
+    <p>Bunu açıkça yazmayı okura borçluyuz:</p>
+    <ul>
+      <li>
+        <strong>Veriler kaynağından otomatik çekilir.</strong> Fiyat, getiri ve takvimler Yahoo Finance, TCMB, TÜİK,
+        Federal Reserve ve halkarz.com gibi kaynaklardan betiklerle düzenli olarak alınır; her sayfada kaynak ve
+        son güncelleme tarihi yazar. Ayrıntılar: <a href="/metodoloji/">Veri ve metodoloji</a>.
+      </li>
+      <li>
+        <strong>Metinler yapay zekâ desteğiyle hazırlanır.</strong> Yazılar ve video senaryoları, bu verilere ve
+        resmi açıklamalara dayanarak yapay zekâ araçlarıyla üretilir ve otomatik kontrollerden (kaynak, tarih,
+        sayı tutarlılığı) geçer. Her yazıyı bir lisanslı uzman tek tek denetlemez — bu yüzden rakamları
+        kaynağıyla birlikte veriyor, emin olmadığımız yerde "yaklaşık" diyoruz.
+      </li>
+      <li>
+        <strong>Hata görürsen düzeltiriz.</strong> Bildirilen hatalar düzeltilir ve gerekiyorsa yazıya not düşülür.
+        Kurallarımız: <a href="/editoryal-politika/">Editoryal politika</a>.
+      </li>
+    </ul>
+
+    <h2>Bağımsızlık</h2>
     <p>
-      Yatırımın temellerinden borsa ve kripto analizlerine, bütçe yönetiminden emekliliğe kadar
-      paranı ilgilendiren her konuda derinlemesine rehberler hazırlıyoruz. Her yazı tek bir soruya
-      cevap verir: <em>"Bu bilgi okurun finansal hayatını gerçekten iyileştiriyor mu?"</em>
+      ParaFOMO hiçbir banka, aracı kurum, fon ya da kripto projesine bağlı değildir ve şu anda reklam ya da
+      ortaklık (affiliate) geliri almaz. İleride reklam veya ortaklık olursa açıkça işaretlenir ve yalnızca
+      lisanslı (SPK/BDDK) kurumlarla çalışılır; forex, lisanssız kripto ve bahis tanıtımı yapılmaz.
+    </p>
+
+    <h2>Bizi takip et</h2>
+    <p>
+      Kısa veri videoları <a href={SITE.social.youtube} rel="me noopener" target="_blank">YouTube</a> ve
+      <a href={SITE.social.instagram} rel="me noopener" target="_blank">Instagram</a>'da, günlük kartlar
+      <a href={SITE.social.telegram} rel="me noopener" target="_blank">Telegram</a> kanalımızda.
     </p>
 
     <div class="cta-box card">
-      <h3>Sorun mu var, fikir mi?</h3>
-      <p class="soft">Bize <a href={`mailto:${SITE.email}`}>{SITE.email}</a> üzerinden ulaşabilirsin.</p>
+      <h3>Sorun, düzeltme ya da fikir?</h3>
+      <p class="soft"><a href={`mailto:${SITE.email}`}>{SITE.email}</a> · <a href="/iletisim/">İletişim sayfası</a></p>
     </div>
 
     <p class="disclaimer muted">
       <strong>Yasal uyarı:</strong> ParaFOMO'daki tüm içerikler yalnızca bilgilendirme amaçlıdır ve
-      yatırım tavsiyesi niteliği taşımaz. Yatırım kararlarından doğan sorumluluk tamamen size aittir.
+      yatırım tavsiyesi niteliği taşımaz. ParaFOMO bir yatırım danışmanı değildir; yatırım kararlarından doğan
+      sorumluluk tamamen size aittir.
     </p>
   </article>
 
@@ -67,7 +96,7 @@ const values = [
   .about .lede { font-size: var(--step-1); line-height: 1.5; }
   .about h2 { font-size: var(--step-2); margin-top: 2.5rem; }
   .values { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-  .value { padding: 1.3rem; }
+  .value { padding: 1.3rem; text-decoration: none; color: inherit; }
   .value h3 { font-size: var(--step-1); margin: 0 0 0.4rem; color: var(--brand); }
   .value p { margin: 0; font-size: var(--step--1); }
   .cta-box { padding: 1.6rem; margin: 2.5rem 0; text-align: center; }
