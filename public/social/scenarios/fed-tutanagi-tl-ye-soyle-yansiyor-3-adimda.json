@@ -1,0 +1,59 @@
+{
+  "slug": "fed-tutanagi-tl-ye-soyle-yansiyor-3-adimda",
+  "title": "Fed tutanağı TL'ye şöyle yansıyor: 3 adımda",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Fed toplantı tutanağı faiz beklentisini değiştirince dolar ve gelişen ülke paraları oynuyor. TL'ye etkisi bu zincirle geliyor.",
+  "tags": [
+    "Fed",
+    "FOMC",
+    "dolar",
+    "TL",
+    "faiz",
+    "kur",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Fed'in toplantı tutanağı TL'ye de dokunuyor.",
+      "visual": {
+        "type": "place",
+        "query": "Federal Reserve building"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fed faiz kararından üç hafta sonra tutanak yayınlar; kimin neyi savunduğu ilk kez görünür, piyasa buna bakar.",
+      "visual": {
+        "type": "object",
+        "query": "meeting documents on table"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama mesele karar değil, ton: indirim tartışması soğursa dolar güçlenir, gelişen ülke paraları baskı görür.",
+      "visual": {
+        "type": "logo",
+        "query": "Federal Reserve logo"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fed sıkı kalırsa yabancı Türkiye'ye gelmeye çekinir, kur baskısı artabilir. Birikimin TL'deyse tutanak gününü yaz.",
+      "visual": {
+        "type": "object",
+        "query": "wall calendar"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Fed'in bir sonraki hamlesi neyi değiştirecek, birlikte izleyelim. Abone ol, her gün 60 saniyede tek net analiz burada.",
+      "visual": {
+        "type": "place",
+        "query": "Federal Reserve building"
+      }
+    }
+  ]
+}
