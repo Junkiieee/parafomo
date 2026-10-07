@@ -1,8 +1,8 @@
 {
-  "updated": "2026-10-07T12:15+00:00",
+  "updated": "2026-10-07T18:15+00:00",
   "source": "Halka arz fiyatı: halkarz.com · Güncel fiyat: Yahoo Finance (BIST)",
   "count": 12,
-  "avg_return_pct": -19.7,
+  "avg_return_pct": -20.2,
   "positive_count": 3,
   "positive_pct": 25,
   "best": {
@@ -11,7 +11,7 @@
   },
   "worst": {
     "code": "BKRGY",
-    "return_pct": -58.8
+    "return_pct": -59.2
   },
   "items": [
     {
@@ -41,8 +41,8 @@
       "start": "2026-07-20",
       "date_text": "20-21-22 Temmuz 2026",
       "ipo_price": 20.0,
-      "current_price": 20.52,
-      "return_pct": 2.6
+      "current_price": 20.3,
+      "return_pct": 1.5
     },
     {
       "code": "INTET",
@@ -51,8 +51,8 @@
       "start": "2026-08-26",
       "date_text": "26-27 Ağustos 2026",
       "ipo_price": 53.6,
-      "current_price": 51.95,
-      "return_pct": -3.1
+      "current_price": 48.84,
+      "return_pct": -8.9
     },
     {
       "code": "MASFN",
@@ -61,8 +61,8 @@
       "start": "2026-07-22",
       "date_text": "22-23-24 Temmuz 2026",
       "ipo_price": 45.68,
-      "current_price": 36.94,
-      "return_pct": -19.1
+      "current_price": 36.98,
+      "return_pct": -19.0
     },
     {
       "code": "QUICK",
@@ -71,8 +71,8 @@
       "start": "2026-07-29",
       "date_text": "29-30-31 Temmuz 2026",
       "ipo_price": 76.6,
-      "current_price": 49.3,
-      "return_pct": -35.6
+      "current_price": 51.35,
+      "return_pct": -33.0
     },
     {
       "code": "TKNKA",
@@ -81,28 +81,8 @@
       "start": "2026-08-12",
       "date_text": "12-13-14 Ağustos 2026",
       "ipo_price": 85.4,
-      "current_price": 52.85,
-      "return_pct": -38.1
-    },
-    {
-      "code": "ALBTN",
-      "company": "Albayrak Hazır Beton San. ve Tic. A.Ş.",
-      "link": "https://halkarz.com/albayrak-hazir-beton-san-ve-tic-a-s/",
-      "start": "2026-07-22",
-      "date_text": "22-23 Temmuz 2026",
-      "ipo_price": 38.6,
-      "current_price": 22.76,
-      "return_pct": -41.0
-    },
-    {
-      "code": "VEYAS",
-      "company": "Türker Vangölü Enerji Yatırım A.Ş.",
-      "link": "https://halkarz.com/turker-vangolu-enerji-yatirim-a-s/",
-      "start": "2026-08-12",
-      "date_text": "12-13-14 Ağustos 2026",
-      "ipo_price": 136.0,
-      "current_price": 75.3,
-      "return_pct": -44.6
+      "current_price": 51.1,
+      "return_pct": -40.2
     },
     {
       "code": "KPEKS",
@@ -111,8 +91,28 @@
       "start": "2026-08-12",
       "date_text": "12-13-14 Ağustos 2026",
       "ipo_price": 94.0,
-      "current_price": 51.5,
-      "return_pct": -45.2
+      "current_price": 54.5,
+      "return_pct": -42.0
+    },
+    {
+      "code": "ALBTN",
+      "company": "Albayrak Hazır Beton San. ve Tic. A.Ş.",
+      "link": "https://halkarz.com/albayrak-hazir-beton-san-ve-tic-a-s/",
+      "start": "2026-07-22",
+      "date_text": "22-23 Temmuz 2026",
+      "ipo_price": 38.6,
+      "current_price": 22.12,
+      "return_pct": -42.7
+    },
+    {
+      "code": "VEYAS",
+      "company": "Türker Vangölü Enerji Yatırım A.Ş.",
+      "link": "https://halkarz.com/turker-vangolu-enerji-yatirim-a-s/",
+      "start": "2026-08-12",
+      "date_text": "12-13-14 Ağustos 2026",
+      "ipo_price": 136.0,
+      "current_price": 75.0,
+      "return_pct": -44.9
     },
     {
       "code": "NETGL",
@@ -121,8 +121,8 @@
       "start": "2026-09-09",
       "date_text": "9-10-11 Eylül 2026",
       "ipo_price": 25.52,
-      "current_price": 12.86,
-      "return_pct": -49.6
+      "current_price": 12.53,
+      "return_pct": -50.9
     },
     {
       "code": "BKRGY",
@@ -131,8 +131,8 @@
       "start": "2026-08-24",
       "date_text": "24-25-26 Ağustos 2026",
       "ipo_price": 12.93,
-      "current_price": 5.33,
-      "return_pct": -58.8
+      "current_price": 5.27,
+      "return_pct": -59.2
     }
   ]
 }
