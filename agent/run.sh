@@ -142,7 +142,7 @@ if [ "${#LEFT[@]}" -gt 0 ]; then
 fi
 
 # 6) Build kapısı + push: push'lanmamış commit varsa site build'i GEÇMEDEN gönderme
-if git log origin/main..HEAD --oneline 2>/dev/null | grep -q .; then
+if [ -n "$(git log origin/main..HEAD --oneline 2>/dev/null)" ]; then
   if npm run build > "$LOGDIR/build-$STAMP.log" 2>&1; then
     git_push_retry main && echo "[agent] push tamam (Cloudflare deploy tetiklendi)"
   else

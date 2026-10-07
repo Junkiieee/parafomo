@@ -12,7 +12,7 @@ REPO="/root/parafomo"
 cd "$REPO" || exit 1
 . "$REPO/scripts/lib/gitsync.sh"
 
-if ! git log origin/main..HEAD --oneline 2>/dev/null | grep -q .; then
+if ! [ -n "$(git log origin/main..HEAD --oneline 2>/dev/null)" ]; then
   echo "[deploy] push edilecek yerel commit yok"; exit 0
 fi
 if [ -n "$(git status --porcelain -- src astro.config.mjs package.json 2>/dev/null)" ]; then

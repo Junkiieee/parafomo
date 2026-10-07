@@ -143,7 +143,7 @@ if [ "$KIND" = "ok" ] && [ "${FACT_CHECK:-1}" = "1" ]; then
 fi
 
 # 4) Push (Cloudflare deploy'unu tetikler) — SSH deploy key ile şifresiz
-if git log origin/main..HEAD --oneline 2>/dev/null | grep -q .; then
+if [ -n "$(git log origin/main..HEAD --oneline 2>/dev/null)" ]; then
   echo "[*] Yerel commit'ler push ediliyor"
   if git_push_retry main; then
     echo "[+] Push başarılı — Cloudflare deploy tetiklendi"
