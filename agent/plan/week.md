@@ -19,7 +19,7 @@ _Kurulum oturumu (v2 başlangıç planı) · 2026-10-06 · ilk haftalık Opus ko
 - ~~B261006-3 AdSense~~ — kapatıldı (Kaan: önce trafik)
 
 ## Görev kuyruğu (günlük koşu en üstteki [ ]'yi alır)
-- [ ] T1 (B261006-1) — **Halka arz şirket sayfaları: `/halka-arz/<slug>` dinamik rota + ilk yayın.**
+- [x] T1 (B261006-1) — **Halka arz şirket sayfaları: `/halka-arz/<slug>` dinamik rota + ilk yayın.** → 40 sayfa canlı (40/40 200, sitemap 40, /halka-arz'dan 40 iç-link; örn. https://parafomo.com/halka-arz/albayrak-hazir-beton-san-ve-tic-a-s/). fetch-halka-arz.py künyeyi (şekil, fon kullanımı, finansallar, halka açıklık, iskonto, büyüklük, dağıtım sonuçları, kişi başı lot) yapısal çıkarıyor → hiçbir sayfa ince değil, hepsi index; kalıcı arşiv `data/halka-arz-sirketler.json` (takvimden düşen sayfa 404 olmaz). Title şablonu T2'den önden yapıldı · 2026-10-07
   `src/pages/halka-arz/[slug].astro` (getStaticPaths ← `data/halka-arz.json` items; `halka-arz-getiri.json`
   ile `bist_code`/şirket adı üzerinden birleştir). Her sayfa: H1 "<Şirket> Halka Arz" + durum, talep
   tarihleri, fiyat, lot, dağıtım yöntemi, aracı kurum tablosu; borsada işlem görüyorsa halka arz fiyatına
