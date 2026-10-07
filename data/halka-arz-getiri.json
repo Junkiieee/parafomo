@@ -1,29 +1,19 @@
 {
-  "updated": "2026-09-30T12:15+00:00",
+  "updated": "2026-10-07T00:15+00:00",
   "source": "Halka arz fiyatı: halkarz.com · Güncel fiyat: Yahoo Finance (BIST)",
   "count": 12,
-  "avg_return_pct": -13.7,
-  "positive_count": 2,
-  "positive_pct": 17,
+  "avg_return_pct": -18.2,
+  "positive_count": 4,
+  "positive_pct": 33,
   "best": {
-    "code": "KARCL",
-    "return_pct": 109.6
+    "code": "CITAS",
+    "return_pct": 56.9
   },
   "worst": {
     "code": "BKRGY",
-    "return_pct": -59.8
+    "return_pct": -57.5
   },
   "items": [
-    {
-      "code": "KARCL",
-      "company": "Kardemir Çelik Sanayi A.Ş.",
-      "link": "https://halkarz.com/kardemir-celik-sanayi-a-s/",
-      "start": "2026-07-22",
-      "date_text": "22-23-24 Temmuz 2026",
-      "ipo_price": 35.0,
-      "current_price": 73.35,
-      "return_pct": 109.6
-    },
     {
       "code": "CITAS",
       "company": "Çitlekçi Mağazacılık Gıda A.Ş.",
@@ -31,8 +21,18 @@
       "start": "2026-08-10",
       "date_text": "10-11-12 Ağustos 2026",
       "ipo_price": 73.7,
-      "current_price": 126.7,
-      "return_pct": 71.9
+      "current_price": 115.6,
+      "return_pct": 56.9
+    },
+    {
+      "code": "KARCL",
+      "company": "Kardemir Çelik Sanayi A.Ş.",
+      "link": "https://halkarz.com/kardemir-celik-sanayi-a-s/",
+      "start": "2026-07-22",
+      "date_text": "22-23-24 Temmuz 2026",
+      "ipo_price": 35.0,
+      "current_price": 48.2,
+      "return_pct": 37.7
     },
     {
       "code": "METEN",
@@ -41,28 +41,8 @@
       "start": "2026-07-20",
       "date_text": "20-21-22 Temmuz 2026",
       "ipo_price": 20.0,
-      "current_price": 18.23,
-      "return_pct": -8.8
-    },
-    {
-      "code": "TKNKA",
-      "company": "Teknika Plast Teknik Kalıp Plastik San. ve Tic. A.Ş.",
-      "link": "https://halkarz.com/teknika-plast-teknik-kalip-plastik-san-ve-tic-a-s/",
-      "start": "2026-08-12",
-      "date_text": "12-13-14 Ağustos 2026",
-      "ipo_price": 85.4,
-      "current_price": 73.55,
-      "return_pct": -13.9
-    },
-    {
-      "code": "MASFN",
-      "company": "Masfen Enerji A.Ş.",
-      "link": "https://halkarz.com/masfen-enerji-a-s/",
-      "start": "2026-07-22",
-      "date_text": "22-23-24 Temmuz 2026",
-      "ipo_price": 45.68,
-      "current_price": 37.62,
-      "return_pct": -17.6
+      "current_price": 20.76,
+      "return_pct": 3.8
     },
     {
       "code": "INTET",
@@ -71,28 +51,28 @@
       "start": "2026-08-26",
       "date_text": "26-27 Ağustos 2026",
       "ipo_price": 53.6,
-      "current_price": 43.56,
-      "return_pct": -18.7
+      "current_price": 54.25,
+      "return_pct": 1.2
     },
     {
-      "code": "NETGL",
-      "company": "Net Global Endüstriyel Yatırımlar A.Ş.",
-      "link": "https://halkarz.com/net-global-endustriyel-yatirimlar-a-s/",
-      "start": "2026-09-09",
-      "date_text": "9-10-11 Eylül 2026",
-      "ipo_price": 25.52,
-      "current_price": 16.29,
-      "return_pct": -36.2
+      "code": "MASFN",
+      "company": "Masfen Enerji A.Ş.",
+      "link": "https://halkarz.com/masfen-enerji-a-s/",
+      "start": "2026-07-22",
+      "date_text": "22-23-24 Temmuz 2026",
+      "ipo_price": 45.68,
+      "current_price": 37.44,
+      "return_pct": -18.0
     },
     {
-      "code": "VEYAS",
-      "company": "Türker Vangölü Enerji Yatırım A.Ş.",
-      "link": "https://halkarz.com/turker-vangolu-enerji-yatirim-a-s/",
+      "code": "TKNKA",
+      "company": "Teknika Plast Teknik Kalıp Plastik San. ve Tic. A.Ş.",
+      "link": "https://halkarz.com/teknika-plast-teknik-kalip-plastik-san-ve-tic-a-s/",
       "start": "2026-08-12",
       "date_text": "12-13-14 Ağustos 2026",
-      "ipo_price": 136.0,
-      "current_price": 71.8,
-      "return_pct": -47.2
+      "ipo_price": 85.4,
+      "current_price": 56.7,
+      "return_pct": -33.6
     },
     {
       "code": "QUICK",
@@ -101,8 +81,8 @@
       "start": "2026-07-29",
       "date_text": "29-30-31 Temmuz 2026",
       "ipo_price": 76.6,
-      "current_price": 40.44,
-      "return_pct": -47.2
+      "current_price": 48.5,
+      "return_pct": -36.7
     },
     {
       "code": "ALBTN",
@@ -111,8 +91,18 @@
       "start": "2026-07-22",
       "date_text": "22-23 Temmuz 2026",
       "ipo_price": 38.6,
-      "current_price": 20.1,
-      "return_pct": -47.9
+      "current_price": 23.14,
+      "return_pct": -40.1
+    },
+    {
+      "code": "VEYAS",
+      "company": "Türker Vangölü Enerji Yatırım A.Ş.",
+      "link": "https://halkarz.com/turker-vangolu-enerji-yatirim-a-s/",
+      "start": "2026-08-12",
+      "date_text": "12-13-14 Ağustos 2026",
+      "ipo_price": 136.0,
+      "current_price": 80.45,
+      "return_pct": -40.8
     },
     {
       "code": "KPEKS",
@@ -121,8 +111,18 @@
       "start": "2026-08-12",
       "date_text": "12-13-14 Ağustos 2026",
       "ipo_price": 94.0,
-      "current_price": 47.82,
-      "return_pct": -49.1
+      "current_price": 54.15,
+      "return_pct": -42.4
+    },
+    {
+      "code": "NETGL",
+      "company": "Net Global Endüstriyel Yatırımlar A.Ş.",
+      "link": "https://halkarz.com/net-global-endustriyel-yatirimlar-a-s/",
+      "start": "2026-09-09",
+      "date_text": "9-10-11 Eylül 2026",
+      "ipo_price": 25.52,
+      "current_price": 13.16,
+      "return_pct": -48.4
     },
     {
       "code": "BKRGY",
@@ -131,8 +131,8 @@
       "start": "2026-08-24",
       "date_text": "24-25-26 Ağustos 2026",
       "ipo_price": 12.93,
-      "current_price": 5.2,
-      "return_pct": -59.8
+      "current_price": 5.5,
+      "return_pct": -57.5
     }
   ]
 }
