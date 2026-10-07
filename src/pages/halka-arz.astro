@@ -89,7 +89,7 @@ const days = Array.from({ length: daysInMonth }, (_, idx) => {
               {day.events.length === 0
                 ? <span class="cal-none">—</span>
                 : day.events.map((e) => (
-                    <a class={`cal-ev tone-${e.tone}`} href={e.link} target="_blank" rel="noopener" title={`${e.company} — ${e.date_text}`}>
+                    <a class={`cal-ev tone-${e.tone}`} href={`/halka-arz/${e.slug}/`} title={`${e.company} — ${e.date_text}`}>
                       <span class="cal-ev-name">{e.company}</span>
                       {e.bist_code && <span class="cal-ev-code">{e.bist_code}</span>}
                     </a>
@@ -106,7 +106,7 @@ const days = Array.from({ length: daysInMonth }, (_, idx) => {
       <div class="ha-shead"><h2>Tarih Bekleyenler</h2><span class="ha-shead-count">{pending.length}</span></div>
       <div class="ha-chips">
         {pending.map((i) => (
-          <a class="ha-chip" href={i.link} target="_blank" rel="noopener">
+          <a class="ha-chip" href={`/halka-arz/${i.slug}/`}>
             <span>{i.company}</span>
             {i.bist_code && <span class="ha-chip-code">{i.bist_code}</span>}
           </a>
@@ -121,7 +121,7 @@ const days = Array.from({ length: daysInMonth }, (_, idx) => {
       <ul class="ha-done-list">
         {completed.map((i) => (
           <li>
-            <a href={i.link} target="_blank" rel="noopener">
+            <a href={`/halka-arz/${i.slug}/`}>
               <span class="dl-name">{i.company}</span>
               {i.bist_code && <span class="dl-code">{i.bist_code}</span>}
               <span class="dl-date">{i.date_text}</span>

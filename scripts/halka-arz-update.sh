@@ -28,14 +28,14 @@ python3 "$REPO/scripts/fetch-halka-arz.py" 2>&1 | sed 's/^/  /'
 python3 "$REPO/scripts/ipo-returns.py" 2>&1 | sed 's/^/  /'
 
 # Değişiklik var mı? (hem build verisi hem public kopya)
-if [ -z "$(git status --porcelain data/halka-arz.json public/halka-arz.json data/halka-arz-getiri.json public/halka-arz-getiri.json)" ]; then
+if [ -z "$(git status --porcelain data/halka-arz.json data/halka-arz-sirketler.json public/halka-arz.json data/halka-arz-getiri.json public/halka-arz-getiri.json)" ]; then
   echo "[i] Değişiklik yok — deploy gerekmiyor."
   exit 0
 fi
 
 echo "[*] Değişiklik bulundu, commit + push"
 git_add_commit "halka-arz: takvim verisi güncellendi (otomatik $(date -u '+%F %H:%M UTC'))" \
-  data/halka-arz.json public/halka-arz.json data/halka-arz-getiri.json public/halka-arz-getiri.json \
+  data/halka-arz.json data/halka-arz-sirketler.json public/halka-arz.json data/halka-arz-getiri.json public/halka-arz-getiri.json \
   || { echo "commit başarısız"; exit 0; }
 if git_push_retry main; then
   echo "[+] Push başarılı — Cloudflare deploy tetiklendi"

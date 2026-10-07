@@ -26,6 +26,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STORE = os.path.join(ROOT, "data", "halka-arz.json")
 # Açık sayfanın veri değişimini fark edip kendini yenilemesi için public kopya.
 PUBLIC = os.path.join(ROOT, "public", "halka-arz.json")
+# Şirket sayfaları (/halka-arz/<slug>) için kalıcı arşiv: takvimden düşen arzın
+# sayfası 404 olmasın diye her görülen kayıt son haliyle burada kalır.
+ARCHIVE = os.path.join(ROOT, "data", "halka-arz-sirketler.json")
 
 BASE = "https://halkarz.com"
 FIELDS = "id,slug,link,title,date,modified"
@@ -105,6 +108,71 @@ def parse_detail(html):
             fields[label] = val
     # Tarih <time datetime="..."> içinde de olabilir; metni yeterli.
     return fields
+
+
+def _lines(p_html):
+    """'- a <br>- b <br><small>* kaynak</small>' -> (['a', 'b'], 'kaynak')."""
+    note = ""
+    m = re.search(r"<small>(.*?)</small>", p_html, re.S)
+    if m:
+        note = clean(m.group(1)).lstrip("* ").strip()
+        p_html = p_html[:m.start()] + p_html[m.end():]
+    out = []
+    for part in re.split(r"<br\s*/?>", p_html):
+        t = clean(part).lstrip("-～~ ").strip()
+        # Taslak izahnamede gizli alanlar '***' ile gelir — uydurma yok, atla.
+        if t and "***" not in t:
+            out.append(t)
+    return out, note
+
+
+def parse_summary(html):
+    """'Özet Bilgiler' kutusundan yapısal künye: halka arz şekli, fon kullanımı,
+    satış yöntemi, finansal tablo, fiyat istikrarı, satmama taahhüdü, halka açıklık,
+    iskonto, büyüklük + (tamamlananlarda) dağıtım sonuçları. Yalnız olgusal alanlar;
+    'Şirket Hakkında' serbest metni alınmaz (telif)."""
+    d = {}
+    m = re.search(r'<ul class="aex-in">(.*?)</ul>', html, re.S)
+    block = m.group(1) if m else ""
+    keymap = {
+        "Halka Arz Şekli": "sekil", "Fonun Kullanım Yeri": "fon_kullanim",
+        "Halka Arz Satış Yöntemi": "satis_yontemi", "Tahsisat Grupları": "tahsisat",
+        "Dağıtılan Pay Miktarı": "dagitilan", "Fiyat İstikrarı": "fiyat_istikrari",
+        "Satmama Taahhüdü": "satmama", "Halka Açıklık": "halka_aciklik",
+        "Halka Arz İskontosu": "iskonto", "Halka Arz Büyüklüğü": "buyukluk",
+    }
+    for h5, p in re.findall(r"<li><h5>(.*?)</h5><p>(.*?)</p></li>", block, re.S):
+        label = clean(h5).rstrip("* ").strip()
+        key = keymap.get(label)
+        if not key:
+            continue
+        lines, note = _lines(p)
+        if lines:
+            d[key] = {"items": [l.rstrip(".") for l in lines], "source": note}
+    # Finansal tablo
+    ft = re.search(r'<table class="fs-extra[^"]*">(.*?)</table>', block, re.S)
+    if ft:
+        heads = [clean(x) for x in re.findall(r"<th>(.*?)</th>", ft.group(1), re.S)][1:]
+        rows = []
+        for tr in re.findall(r"<tr>(.*?)</tr>", ft.group(1), re.S)[1:]:
+            cells = [clean(x).lstrip("- ").strip() for x in re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)]
+            if cells and not any("***" in c for c in cells):
+                rows.append({"label": cells[0], "values": cells[1:]})
+        if heads and rows:
+            d["finansal"] = {"periods": heads, "rows": rows}
+    if re.search(r"Katılım Endeksine uygun", block):
+        d["katilim_endeksi"] = True
+    # Dağıtım sonuçları (tamamlanan arzlar)
+    rs = re.search(r'<table class="as-table">(.*?)</table>', html, re.S)
+    if rs:
+        groups = []
+        for tr in re.findall(r"<tr>(.*?)</tr>", rs.group(1), re.S):
+            cells = [clean(x) for x in re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)]
+            if len(cells) == 4 and re.match(r"^[\d.]+$", cells[1] or ""):
+                groups.append({"group": cells[0], "people": cells[1], "lot": cells[2], "pct": cells[3]})
+        if groups:
+            d["sonuclar"] = groups
+    return d
 
 
 def first(fields, *keys):
@@ -192,6 +260,12 @@ def build():
             "distribution": first(f, "Dağıtım Yöntemi"),
             "lot": first(f, "Pay"),
             "broker": first(f, "Aracı Kurum"),
+            "market": first(f, "Pazar"),
+            "first_trade": first(f, "Bist İlk İşlem"),
+            "float_lot": f.get("Fiili Dolaşımdaki Pay", ""),
+            "float_pct": f.get("Fiili Dolaşımdaki Pay Oranı (%)", ""),
+            "updated_src": (re.search(r"Son Güncelleme:\s*([\d.]+ [\d:]+)", clean(html)) or [None, ""])[1],
+            "details": parse_summary(html),
         })
         time.sleep(0.3)
 
@@ -222,6 +296,28 @@ def build():
     }
 
 
+def update_archive(data):
+    """Arşive güncel kayıtları yaz (slug anahtarlı); takvimden düşenleri koru.
+    Arşivdeki eski kaydın durumu tarihe göre yeniden hesaplanır."""
+    try:
+        with open(ARCHIVE, encoding="utf-8") as fh:
+            arch = json.load(fh).get("items", {})
+    except Exception:
+        arch = {}
+    for it in data["items"]:
+        old = arch.get(it["slug"], {})
+        # Ağ/ayrıştırma aksaklığında zengin alanları boşla ezme.
+        if not it.get("details") and old.get("details"):
+            it = {**it, "details": old["details"]}
+        it = {**it, "first_seen": old.get("first_seen") or date.today().isoformat()}
+        arch[it["slug"]] = it
+    for it in arch.values():
+        it["status"] = status_for(it.get("start"), it.get("end"))
+    with open(ARCHIVE, "w", encoding="utf-8") as fh:
+        json.dump({"updated": data["updated"], "source": SOURCE_NAME, "items": arch},
+                  fh, ensure_ascii=False, indent=1)
+
+
 def main():
     os.makedirs(os.path.dirname(STORE), exist_ok=True)
     try:
@@ -243,6 +339,7 @@ def main():
             json.dump(data, fh, ensure_ascii=False, indent=2)
     except Exception as e:
         print(f"UYARI: public kopya yazılamadı: {e}", file=sys.stderr)
+    update_archive(data)
     n = sum(1 for i in data["items"] if i["status"] in ("Yaklaşan", "Devam Ediyor"))
     print(f"[+] {data['count']} kayıt yazıldı ({n} aktif/yaklaşan) -> {STORE}")
     return 0

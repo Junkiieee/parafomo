@@ -1,0 +1,349 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import archive from '../../../data/halka-arz-sirketler.json';
+import returns from '../../../data/halka-arz-getiri.json';
+
+type Block = { items: string[]; source: string };
+type Details = {
+  sekil?: Block; fon_kullanim?: Block; satis_yontemi?: Block; tahsisat?: Block; dagitilan?: Block;
+  fiyat_istikrari?: Block; satmama?: Block; halka_aciklik?: Block; iskonto?: Block; buyukluk?: Block;
+  finansal?: { periods: string[]; rows: { label: string; values: string[] }[] };
+  katilim_endeksi?: boolean;
+  sonuclar?: { group: string; people: string; lot: string; pct: string }[];
+};
+type IPO = {
+  company: string; bist_code: string; slug: string; link: string;
+  date_text: string; start: string | null; end: string | null; status: string;
+  price: string; distribution: string; lot: string; broker: string;
+  market?: string; first_trade?: string; float_lot?: string; float_pct?: string;
+  updated_src?: string; details?: Details;
+};
+type Ret = { code: string; ipo_price: number; current_price: number; return_pct: number };
+
+export function getStaticPaths() {
+  const items = Object.values((archive as any).items ?? {}) as IPO[];
+  const statusOrder: Record<string, number> = { 'Devam Ediyor': 0, 'Yaklaşan': 1, 'Tarih Bekleniyor': 2, 'Tamamlandı': 3 };
+  return items.map((ipo) => {
+    // İç-link ağı: aynı durumdaki diğer arzlar (en fazla 8).
+    const related = items
+      .filter((o) => o.slug !== ipo.slug)
+      .sort((a, b) =>
+        Number(a.status !== ipo.status) - Number(b.status !== ipo.status) ||
+        (statusOrder[a.status] ?? 9) - (statusOrder[b.status] ?? 9) ||
+        (b.start ?? '').localeCompare(a.start ?? ''))
+      .slice(0, 8)
+      .map((o) => ({ slug: o.slug, company: o.company, code: o.bist_code, status: o.status }));
+    return { params: { slug: ipo.slug }, props: { ipo, related } };
+  });
+}
+
+const { ipo, related } = Astro.props as { ipo: IPO; related: { slug: string; company: string; code: string; status: string }[] };
+const d: Details = ipo.details ?? {};
+
+// "Albayrak Hazır Beton San. ve Tic. A.Ş." → "Albayrak Hazır Beton"
+// "(Ankara Sigorta) Ankara Anonim Türk Sigorta Şirketi" → "Ankara Sigorta"
+// "(termo) Termopet Akaryakıt..." → "Termopet Akaryakıt Nakliyat ve Tic." (tek kelimelik etiket atılır)
+const shortName = (raw: string) => {
+  const p = raw.match(/^\((.+?)\)\s*(.*)$/);
+  if (p && /\s/.test(p[1].trim())) return p[1].trim();
+  const n = p ? p[2] : raw;
+  return n.replace(/\s+A\.?\s?Ş\.?$/i, '').replace(/\s+(San\.?|Sanayi|Sanayii)(\s.*)?$/i, '').trim() || n;
+};
+const name = shortName(ipo.company);
+const code = ipo.bist_code;
+const nameCode = code ? `${name} (${code})` : name;
+
+const ret = code ? ((returns as any).items as Ret[]).find((r) => r.code === code) : undefined;
+const avgRet: number = (returns as any).avg_return_pct;
+const fmt = (n: number, dg = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: dg, maximumFractionDigits: dg });
+const pct = (n: number) => (n > 0 ? '+' : '') + n.toLocaleString('tr-TR', { maximumFractionDigits: 1 }) + '%';
+
+// Kişi başı düşen lot: "549.211 ~ 127 Lot (4902 TL)"
+const dag = d.dagitilan?.items?.[0] ?? '';
+const dagM = dag.match(/^([\d.]+)\s*~\s*([\d.]+)\s*Lot(?:\s*\(([\d.,]+)\s*TL\))?/i);
+const participants = dagM?.[1];
+const perPersonLot = dagM ? Number(dagM[2].replace(/\./g, '')) : undefined;
+const perPersonValueNow = ret && perPersonLot ? perPersonLot * ret.current_price : undefined;
+const perPersonCost = ret && perPersonLot ? perPersonLot * ret.ipo_price : undefined;
+
+const statusLabel: Record<string, string> = {
+  'Devam Ediyor': 'Talep toplanıyor',
+  'Yaklaşan': 'Yaklaşan halka arz',
+  'Tarih Bekleniyor': 'Talep tarihi bekleniyor',
+  'Tamamlandı': code ? 'Borsada işlem görüyor' : 'Talep toplama tamamlandı',
+};
+const tone = ipo.status === 'Devam Ediyor' ? 'live' : ipo.status === 'Yaklaşan' ? 'soon' : ipo.status === 'Tamamlandı' ? 'done' : 'wait';
+const one = (b?: Block) => b?.items?.[0]?.replace(/\s*\*\s*/g, ' — ');
+const distClean = ipo.distribution.replace(/\*+/g, '').trim();
+const isDraft = /taslak/i.test(Object.values(d).map((b: any) => b?.source ?? '').join(' '));
+
+const facts = [
+  ['Talep toplama tarihi', ipo.date_text || 'Henüz açıklanmadı'],
+  ['Halka arz fiyatı', ipo.price || 'Henüz açıklanmadı'],
+  ['Satışa sunulan pay', ipo.lot],
+  ['Dağıtım yöntemi', distClean],
+  ['Aracı kurum (lider)', ipo.broker],
+  ['BIST kodu', code],
+  ['Pazar', ipo.market],
+  ['Borsada ilk işlem', ipo.first_trade],
+  ['Halka arz büyüklüğü', one(d.buyukluk)],
+  ['Halka açıklık oranı', one(d.halka_aciklik)],
+  ['Halka arz iskontosu', one(d.iskonto)],
+  ['Fiili dolaşımdaki pay', ipo.float_lot ? `${ipo.float_lot}${ipo.float_pct ? ` (${ipo.float_pct})` : ''}` : ''],
+  ['Katılım endeksine uygun', d.katilim_endeksi ? 'Evet' : ''],
+].filter(([, v]) => v) as [string, string][];
+
+const fon = (d.fon_kullanim?.items ?? []).map((t) => {
+  const m = t.match(/^%\s?([\d,]+)\s+(.*)$/);
+  return m ? { p: Number(m[1].replace(',', '.')), t: m[2] } : { p: 0, t };
+});
+
+// SSS — yalnız veride olan alanlarla.
+const faq: { q: string; a: string }[] = [];
+faq.push({
+  q: `${name} halka arzı ne zaman?`,
+  a: ipo.date_text
+    ? `${name} halka arzı için talep toplama ${ipo.date_text} tarihlerinde ${ipo.status === 'Tamamlandı' ? 'yapıldı' : 'yapılacak'}.${ipo.first_trade ? ` Paylar Borsa İstanbul'da ilk kez ${ipo.first_trade} tarihinde işlem gördü.` : ''}`
+    : `${name} halka arzı için talep toplama tarihi henüz açıklanmadı.${isDraft ? ' Şirket taslak izahname aşamasında; SPK onayıyla birlikte tarih ve fiyat netleşir.' : ''} Bu sayfa tarih açıklandığında otomatik güncellenir.`,
+});
+if (ipo.price) faq.push({ q: `${name} halka arz fiyatı ne kadar?`, a: `${name} halka arz fiyatı ${ipo.price}.${one(d.iskonto) ? ` Fiyat tespit raporuna göre halka arz iskontosu ${one(d.iskonto)}.` : ''}` });
+if (ipo.lot) faq.push({
+  q: `${name} halka arzında kaç lot satılıyor?`,
+  a: `Halka arzda toplam ${ipo.lot} pay satışa sunuluyor; dağıtım yöntemi: ${distClean || 'belirtilmedi'}.${perPersonLot ? ` Talep toplama sonunda ${participants} yatırımcıya kişi başı yaklaşık ${perPersonLot} lot düştü.` : ''}`,
+});
+if (ret) faq.push({
+  q: `${name} halka arzı kaç kazandırdı?`,
+  a: `${code} hissesi ${fmt(ret.ipo_price)} TL halka arz fiyatına göre güncel ${fmt(ret.current_price)} TL fiyatla ${pct(ret.return_pct)} getiride. Aynı dönemde 2026 halka arzlarının ortalaması ${pct(avgRet)}. Geçmiş getiri gelecek getirinin garantisi değildir.`,
+});
+if (ipo.broker) faq.push({ q: `${name} halka arzına hangi aracı kurumdan katılabilirim?`, a: `Halka arzın lider aracı kurumu ${ipo.broker}. Konsorsiyumdaki diğer banka ve aracı kurumlar izahnamede ve KAP duyurusunda listelenir; talep toplama günlerinde bu kurumların mobil uygulamalarından başvurulabilir.` });
+
+const titleBits = [ipo.date_text ? 'Tarih' : 'Ne Zaman', 'Fiyat', 'Lot', ret ? 'Getiri' : 'Detaylar'];
+const title = `${nameCode} Halka Arz: ${titleBits.slice(0, -1).join(', ')} ve ${titleBits.at(-1)}`;
+const description = [
+  `${name} halka arzı`,
+  ipo.date_text ? `talep tarihi ${ipo.date_text}` : 'talep tarihi bekleniyor',
+  ipo.price ? `fiyat ${ipo.price}` : '',
+  ipo.lot ? `${ipo.lot}` : '',
+  distClean ? distClean.toLocaleLowerCase('tr-TR') : '',
+  ret ? `güncel getiri ${pct(ret.return_pct)}` : '',
+].filter(Boolean).join(', ') + '. Fon kullanımı, finansallar ve katılım rehberi.';
+
+const updated = new Date((archive as any).updated).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  breadcrumbs={[
+    { name: 'Ana sayfa', url: '/' },
+    { name: 'Halka Arz Takvimi', url: '/halka-arz/' },
+    { name: `${name} Halka Arz`, url: `/halka-arz/${ipo.slug}/` },
+  ]}
+  faq={faq}
+>
+  <section class="container hs-hero">
+    <nav class="hs-crumbs" aria-label="breadcrumb"><a href="/halka-arz/">Halka Arz Takvimi</a> › <span>{name}</span></nav>
+    <span class={`hs-status tone-${tone}`}>{statusLabel[ipo.status] ?? ipo.status}</span>
+    <h1>{nameCode} Halka Arz</h1>
+    <p class="lede soft">
+      {ipo.company.replace(/^\([^)]*\)\s*/, '')} halka arzının tüm künyesi: {ipo.date_text ? `talep toplama ${ipo.date_text}` : 'talep tarihi henüz açıklanmadı'}{ipo.price ? `, fiyat ${ipo.price}` : ''}{ipo.lot ? `, ${ipo.lot}` : ''}.
+      {ret && <> Borsada halka arz fiyatına göre <strong class={ret.return_pct >= 0 ? 'up' : 'down'}>{pct(ret.return_pct)}</strong>.</>}
+    </p>
+    <p class="hs-upd">Son güncelleme: {updated} · Kaynak: halkarz.com, SPK/KAP izahnamesi{ret ? ', Yahoo Finance' : ''}</p>
+  </section>
+
+  {ret && (
+    <section class="container hs-section">
+      <div class="hs-ret">
+        <div class="hs-ret-cell"><span class="k">Halka arz fiyatı</span><span class="v">{fmt(ret.ipo_price)} TL</span></div>
+        <div class="hs-ret-cell"><span class="k">Güncel fiyat</span><span class="v">{fmt(ret.current_price)} TL</span></div>
+        <div class="hs-ret-cell"><span class="k">Getiri</span><span class={`v ${ret.return_pct >= 0 ? 'up' : 'down'}`}>{pct(ret.return_pct)}</span></div>
+        <div class="hs-ret-cell"><span class="k">2026 halka arz ortalaması</span><span class="v">{pct(avgRet)}</span></div>
+      </div>
+      {perPersonLot && perPersonCost && perPersonValueNow && (
+        <p class="hs-ret-note">
+          Eşit dağıtımda kişi başı <strong>{perPersonLot} lot</strong> düştü: halka arzda {fmt(perPersonCost, 0)} TL ödeyen yatırımcının
+          payı bugün yaklaşık <strong>{fmt(perPersonValueNow, 0)} TL</strong> ediyor
+          ({perPersonValueNow >= perPersonCost ? '+' : '−'}{fmt(Math.abs(perPersonValueNow - perPersonCost), 0)} TL).
+        </p>
+      )}
+      <p class="hs-ret-link"><a href="/halka-arz-getiri/">Tüm 2026 halka arzlarının getiri tablosu →</a></p>
+    </section>
+  )}
+
+  <section class="container hs-section">
+    <h2>Halka arz künyesi</h2>
+    <dl class="hs-facts">
+      {facts.map(([k, v]) => (<div><dt>{k}</dt><dd>{v}</dd></div>))}
+    </dl>
+  </section>
+
+  {(d.sekil || fon.length > 0) && (
+    <section class="container hs-section hs-two">
+      {d.sekil && (
+        <div>
+          <h2>Halka arz şekli</h2>
+          <ul class="hs-list">{d.sekil.items.map((t) => <li>{t}</li>)}</ul>
+          <p class="hs-src">{d.sekil.source}</p>
+          <p class="hs-explain">Sermaye artırımında para şirkete girer; ortak satışında ise mevcut ortaklar paylarını satar ve gelir onlara gider.</p>
+        </div>
+      )}
+      {fon.length > 0 && (
+        <div>
+          <h2>Halka arz geliri nereye harcanacak?</h2>
+          <ul class="hs-bars">
+            {fon.map((f) => (
+              <li>
+                <span class="hs-bar-t">{f.t}</span>
+                {f.p > 0 && <span class="hs-bar"><i style={`width:${Math.min(f.p, 100)}%`}></i><b>%{f.p.toLocaleString('tr-TR')}</b></span>}
+              </li>
+            ))}
+          </ul>
+          <p class="hs-src">{d.fon_kullanim?.source}</p>
+        </div>
+      )}
+    </section>
+  )}
+
+  {d.finansal && (
+    <section class="container hs-section">
+      <h2>{name} finansalları</h2>
+      <div class="hs-table-wrap">
+        <table class="hs-table">
+          <thead><tr><th></th>{d.finansal.periods.map((p) => <th>{p}</th>)}</tr></thead>
+          <tbody>{d.finansal.rows.map((r) => <tr><th>{r.label}</th>{r.values.map((v) => <td>{v}</td>)}</tr>)}</tbody>
+        </table>
+      </div>
+      <p class="hs-src">Kaynak: {isDraft ? 'taslak ' : ''}izahname. Ara dönem (ör. 2026/3) rakamları yıllık değil, o döneme kadar birikimlidir.</p>
+    </section>
+  )}
+
+  {d.sonuclar && (
+    <section class="container hs-section">
+      <h2>Talep toplama sonuçları</h2>
+      <div class="hs-table-wrap">
+        <table class="hs-table">
+          <thead><tr><th>Yatırımcı grubu</th><th>Kişi</th><th>Lot</th><th>Oran</th></tr></thead>
+          <tbody>{d.sonuclar.map((r) => <tr class={r.group === 'Toplam' ? 'tot' : ''}><th>{r.group}</th><td>{r.people}</td><td>{r.lot}</td><td>{r.pct}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  {(d.satis_yontemi || d.satmama || d.fiyat_istikrari) && (
+    <section class="container hs-section">
+      <h2>Satış koşulları</h2>
+      <dl class="hs-facts">
+        {d.satis_yontemi && <div><dt>Satış yöntemi</dt><dd>{d.satis_yontemi.items.join(' · ')}{d.satis_yontemi.source && /T1|T2/.test(d.satis_yontemi.source) ? ` (${d.satis_yontemi.source.replace(/\.$/, '')})` : ''}</dd></div>}
+        {d.tahsisat && <div><dt>Tahsisat grupları</dt><dd>{d.tahsisat.items.join(' · ')}</dd></div>}
+        {d.fiyat_istikrari && <div><dt>Fiyat istikrarı</dt><dd>{d.fiyat_istikrari.items.map((t) => t.replace(/\s*\*\s*/g, ' — ')).join(' · ')}</dd></div>}
+        {d.satmama && <div><dt>Satmama taahhüdü</dt><dd>{d.satmama.items.join(' · ')}</dd></div>}
+      </dl>
+    </section>
+  )}
+
+  <section class="container hs-section hs-guide">
+    <h2>{name} halka arzına nasıl katılınır?</h2>
+    <ol>
+      <li>{ipo.broker ? `${ipo.broker} ya da konsorsiyumdaki bir banka/aracı kurumda` : 'Bir banka ya da aracı kurumda'} yatırım hesabın olmalı.</li>
+      <li>Talep toplama günlerinde{ipo.date_text ? ` (${ipo.date_text})` : ''} mobil uygulamada "Halka Arz" menüsünden {code || name} seçilir.</li>
+      <li>{/eşit/i.test(distClean) ? 'Eşit dağıtımda katılımcı sayısı arttıkça kişi başı düşen lot azalır; yüksek tutarlı talep fazla lot getirmez.' : 'Talep edilecek lot ve tutar girilir; dağıtım yöntemine göre talebin tamamı karşılanmayabilir.'}</li>
+      <li>Dağıtım sonrası karşılanmayan tutar hesaba iade edilir; paylar borsada işlem görmeye başlayınca alınıp satılabilir.</li>
+    </ol>
+    <p class="hs-src">Ayrıntılı rehber: <a href="/halka-arz/">halka arz takvimi</a> · <a href="/halka-arz-getiri/">2026 halka arz getirileri</a></p>
+  </section>
+
+  {related.length > 0 && (
+    <section class="container hs-section">
+      <h2>Diğer halka arzlar</h2>
+      <ul class="hs-rel">
+        {related.map((r) => (
+          <li><a href={`/halka-arz/${r.slug}/`}>{shortName(r.company)}{r.code && <span>{r.code}</span>}</a></li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section class="container hs-note">
+    <p>
+      Künye verileri <a href={ipo.link} target="_blank" rel="noopener nofollow">halkarz.com</a> üzerinden SPK onaylı (ya da taslak)
+      izahnameden derlenir ve günde birkaç kez otomatik güncellenir{ipo.updated_src ? ` (kaynak son güncelleme: ${ipo.updated_src})` : ''}.
+      Yalnızca bilgilendirme amaçlıdır; yatırım tavsiyesi değildir. Kesin koşullar için izahname ve KAP duyurularını esas alın.
+    </p>
+  </section>
+
+  <div class="container"><Newsletter /></div>
+</BaseLayout>
+
+<style>
+  .hs-hero { padding: clamp(1.4rem, 4vw, 2.4rem) 0 0; max-width: 760px; }
+  .hs-crumbs { font-size: var(--step--2); color: var(--text-muted); margin-bottom: 0.7rem; }
+  .hs-crumbs a { color: var(--brand-deep); text-decoration: none; }
+  .hs-status { display: inline-block; font-size: 0.68rem; font-weight: 700; border-radius: 999px; padding: 0.15rem 0.6rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .tone-live { background: var(--brand); color: #fff; }
+  .tone-soon { background: #fbf0d8; color: #8a5a12; }
+  .tone-wait { background: var(--surface); color: var(--text-soft); }
+  .tone-done { background: var(--brand-tint); color: var(--brand-ink); }
+  .hs-hero h1 { font-size: var(--step-2); margin: 0.5rem 0 0.4rem; }
+  .hs-hero .lede { font-size: var(--step-0); line-height: 1.55; margin: 0; }
+  .hs-upd { font-size: var(--step--2); color: var(--text-muted); margin: 0.5rem 0 0; }
+  .up { color: var(--brand-ink); }
+  .down { color: var(--danger); }
+
+  .hs-section { margin-top: clamp(1.4rem, 4vw, 2.3rem); max-width: 860px; }
+  .hs-section h2 { font-size: var(--step-1); margin: 0 0 0.8rem; }
+  .hs-two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+
+  .hs-ret { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); box-shadow: var(--shadow-xs); overflow: hidden; }
+  .hs-ret-cell { padding: 0.8rem 1rem; border-right: 1px solid var(--border-soft); display: flex; flex-direction: column; gap: 0.2rem; }
+  .hs-ret-cell:last-child { border-right: none; }
+  .hs-ret-cell .k { font-size: var(--step--2); color: var(--text-muted); }
+  .hs-ret-cell .v { font-size: var(--step-1); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .hs-ret-note { font-size: var(--step--1); color: var(--text-soft); margin: 0.8rem 0 0; line-height: 1.55; }
+  .hs-ret-link { margin: 0.5rem 0 0; font-size: var(--step--1); }
+  .hs-ret-link a, .hs-src a { color: var(--brand-deep); font-weight: 600; }
+
+  .hs-facts { display: grid; grid-template-columns: repeat(2, 1fr); margin: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg-card); }
+  .hs-facts > div { padding: 0.6rem 1rem; border-bottom: 1px solid var(--border-soft); }
+  .hs-facts > div:nth-child(odd) { border-right: 1px solid var(--border-soft); }
+  .hs-facts dt { font-size: var(--step--2); color: var(--text-muted); }
+  .hs-facts dd { margin: 0.1rem 0 0; font-size: var(--step--1); font-weight: 600; color: var(--text); }
+
+  .hs-list { margin: 0; padding-left: 1.1rem; font-size: var(--step--1); color: var(--text-soft); line-height: 1.6; }
+  .hs-src { font-size: var(--step--2); color: var(--text-muted); margin: 0.5rem 0 0; }
+  .hs-explain { font-size: var(--step--2); color: var(--text-soft); margin: 0.5rem 0 0; line-height: 1.5; }
+  .hs-bars { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.55rem; }
+  .hs-bar-t { display: block; font-size: var(--step--1); color: var(--text-soft); }
+  .hs-bar { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.2rem; }
+  .hs-bar i { display: block; height: 8px; border-radius: 4px; background: var(--grad); min-width: 4px; }
+  .hs-bar b { font-size: var(--step--2); color: var(--brand-ink); }
+
+  .hs-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); }
+  .hs-table { width: 100%; border-collapse: collapse; font-size: var(--step--1); font-variant-numeric: tabular-nums; }
+  .hs-table th, .hs-table td { padding: 0.5rem 0.8rem; text-align: right; border-bottom: 1px solid var(--border-soft); white-space: nowrap; }
+  .hs-table th:first-child { text-align: left; }
+  .hs-table thead th { background: var(--bg-elev); font-size: var(--step--2); color: var(--text-muted); }
+  .hs-table tbody th { font-weight: 600; }
+  .hs-table tr.tot th, .hs-table tr.tot td { font-weight: 700; border-bottom: none; }
+
+  .hs-guide ol { margin: 0; padding-left: 1.2rem; font-size: var(--step--1); color: var(--text-soft); line-height: 1.65; }
+
+  .hs-rel { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .hs-rel a { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid var(--border); border-radius: 999px; padding: 0.3rem 0.75rem; font-size: var(--step--2); color: var(--text-soft); text-decoration: none; background: var(--bg-card); }
+  .hs-rel a:hover { border-color: var(--brand-light); }
+  .hs-rel span { font-size: 0.6rem; font-weight: 700; color: var(--brand-deep); background: var(--brand-tint); border-radius: 999px; padding: 0.05rem 0.4rem; }
+
+  .hs-note { margin-top: clamp(1.4rem, 4vw, 2.3rem); }
+  .hs-note p { font-size: var(--step--2); line-height: 1.6; max-width: 760px; color: var(--text-muted); padding: 0.8rem 1rem; background: var(--bg-elev); border: 1px solid var(--border-soft); border-radius: var(--radius); }
+  .hs-note a { color: var(--brand); font-weight: 600; }
+
+  @media (max-width: 640px) {
+    .hs-two { grid-template-columns: 1fr; }
+    .hs-ret { grid-template-columns: 1fr 1fr; }
+    .hs-ret-cell:nth-child(2) { border-right: none; }
+    .hs-ret-cell:nth-child(-n+2) { border-bottom: 1px solid var(--border-soft); }
+    .hs-facts { grid-template-columns: 1fr; }
+    .hs-facts > div:nth-child(odd) { border-right: none; }
+  }
+</style>
