@@ -889,6 +889,33 @@ def build_sfx_track(cues, total, path):
 
 
 def main():
+    """Render → otomatik görsel kalite kontrolü (scripts/video-qa.py) → sorunlu sahne varsa o sahneler
+    marka kartıyla zorlanarak BİR kez yeniden render. Kontrol devre dışı: --no-qa ya da PARAFOMO_QA=0."""
+    args = parse_args()
+    rc = build(args)
+    if rc != 0 or args.no_qa or os.environ.get("PARAFOMO_QA") == "0":
+        return rc
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "video_qa", os.path.join(os.path.dirname(os.path.abspath(__file__)), "video-qa.py"))
+        qa = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(qa)
+        bad = qa.check(args.slug)
+    except Exception as e:
+        print(f"[qa] kontrol çalışmadı ({str(e)[:100]}) — video olduğu gibi kalıyor")
+        return rc
+    if not bad:
+        return rc
+    print(f"[qa] sorunlu sahne(ler) {sorted(bad)} → marka kartıyla yeniden render")
+    args.card_segments = ",".join(str(i) for i in sorted(set(bad) | set(_cs(args.card_segments))))
+    return build(args)
+
+
+def _cs(v):
+    return [int(x) for x in (v or "").split(",") if x.strip().isdigit()]
+
+
+def parse_args():
     ap = argparse.ArgumentParser()
     ap.add_argument("slug")
     ap.add_argument("--scenario", default=None,
@@ -899,7 +926,13 @@ def main():
     ap.add_argument("--no-music", action="store_true")
     ap.add_argument("--no-sfx", action="store_true", help="cut-synced SFX'i kapat")
     ap.add_argument("--no-broll", action="store_true")
-    args = ap.parse_args()
+    ap.add_argument("--card-segments", default="",
+                    help="Bu sahne indekslerini (0'dan, virgüllü) zorla marka kartıyla üret (QA düzeltmesi)")
+    ap.add_argument("--no-qa", action="store_true", help="render sonrası görsel kalite kontrolünü atla")
+    return ap.parse_args()
+
+
+def build(args):
 
     # Kaynak: bağımsız viral senaryo JSON'u VEYA blog yazısı frontmatter'ı.
     front = ""
@@ -945,6 +978,8 @@ def main():
         shutil.rmtree(p, ignore_errors=True) if os.path.isdir(p) else os.remove(p)
 
     clips, events, tcur, credits, sfx_cues = [], [], 0.0, [], []
+    timeline = []                      # QA için: sahne başına zaman aralığı + istenen görsel
+    force_cards = set(_cs(args.card_segments))
     # v4.3 ikincil hook: ~orta beat'e mid-video pattern-interrupt (punch-in). Yeterli
     # beat varsa (>=4) uygula; hook (0) ve son/CTA beat'i (len-1) hariç, ortadaki beat.
     rehook_idx = (len(segs) // 2) if len(segs) >= 4 else -1
@@ -970,7 +1005,10 @@ def main():
         card_used = False
         visual = seg_visuals[i] if i < len(seg_visuals) else None
         is_manim = bool(visual and visual.get("type") == "manim")
-        if args.no_broll:
+        if i in force_cards and not args.no_broll:
+            broll = concept_card(spoken, kind, clip_dur, brollpath)
+            card_used = broll is not None
+        elif args.no_broll:
             broll = None
         elif is_manim:
             # Manim animasyon sahnesi arka plan olur; kavram kartında rakamı ana öğe yap.
@@ -1082,6 +1120,11 @@ def main():
                 nxt = part[j + 1][1] if j + 1 < n else en
                 kk.append((w, max(1, int(round((nxt - st) * 100)))))
             events.append((cstart, cend, kk, big, ypos))
+        timeline.append({"i": i, "kind": kind, "start": round(tcur, 2), "end": round(tcur + clip_dur, 2),
+                         "spoken": spoken,
+                         "visual": ("marka kartı" if card_used else
+                                    (f"{visual.get('type')}: {visual.get('query') or visual.get('keyword') or visual.get('scene') or ''}"
+                                     if visual else "otomatik stok/kart"))})
         tcur += clip_dur
         print(f"    [{kind:5}] {clip_dur:4.1f}sn  broll={'✓' if broll else '—'}"
               f"  stat={stat or '—':>7}  {spoken[:38]}")
@@ -1167,7 +1210,8 @@ def main():
             "description": desc,
             "tags": meta_tags,
             "file": out, "slug": args.slug,
-            "format": (scenario.get("format", "") if scenario else "")}
+            "format": (scenario.get("format", "") if scenario else ""),
+            "timeline": timeline}
     json.dump(meta, open(os.path.join(OUT_DIR, f"short-{args.slug}.json"), "w",
                          encoding="utf-8"), ensure_ascii=False, indent=2)
     return 0

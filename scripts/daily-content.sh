@@ -79,6 +79,7 @@ echo "[*] GSC fırsat sorguları çekiliyor"
 echo "[*] claude headless çalışıyor (içerik üretimi: $MODEL/$EFFORT, tavan \$$BUDGET)..."
 OUT_JSON="$LOG_DIR/content-last.json"
 [ -f /root/.config/parafomo/claude.env ] && { set -a; . /root/.config/parafomo/claude.env; set +a; }
+HEAD_BEFORE="$(git rev-parse HEAD)"
 claude -p \
   --model "$MODEL" \
   --effort "$EFFORT" \
@@ -122,6 +123,24 @@ echo "    [claude] sonuç: $RESULT"
 git_add_commit "içerik: otomatik günlük güncelleme ($(date -u '+%Y-%m-%d'))" \
   src/content/blog/ public/covers/ 'public/social/*.png' data/ public/ docs/ src/data/ \
   agent/plan/content-queue.md || true
+
+# 3b) Bağımsız DOĞRULAMA (2026-10-07): yazıyı yazan oturum kendi hatasını görmüyor (ör. "fiyat istikrarı
+#     genelde 30 gün" — arza göre değişir; yeni yazı yeni şirket sayfalarına link vermemişti). Ayrı bir
+#     şüpheci editör oturumu rakam/iddiaları veri dosyalarımızla kontrol eder, düzeltir, iç link ekler.
+if [ "$KIND" = "ok" ] && [ "${FACT_CHECK:-1}" = "1" ]; then
+  for POST in $(git diff --name-only --diff-filter=A "$HEAD_BEFORE" HEAD -- src/content/blog/ 2>/dev/null); do
+    echo "[*] doğrulama: $POST"
+    sed "s#{POST}#$POST#g" "$REPO/scripts/fact-check-prompt.md" | claude -p \
+      --model "${FACTCHECK_MODEL:-opus}" --effort medium --max-budget-usd "${FACTCHECK_BUDGET:-2}" \
+      --output-format json --permission-mode acceptEdits \
+      --allowedTools Bash Read Edit Glob Grep \
+      --strict-mcp-config --disable-slash-commands \
+      > "$LOG_DIR/factcheck-last.json" 2>>"$LOG_DIR/content-last.err"
+    "$VPY" -c "import json,sys; d=json.load(open('$LOG_DIR/factcheck-last.json')); print('    [doğrulama]', ('HATA: ' if d.get('is_error') else '') + (d.get('result') or '').strip().splitlines()[-1][:200], '| \$%s' % d.get('total_cost_usd'))" 2>/dev/null \
+      || echo "    [doğrulama] sonuç okunamadı (yazı olduğu gibi yayınlanır)"
+    git_add_commit "doğrulama: $(basename "$POST" .md)" "$POST" || true
+  done
+fi
 
 # 4) Push (Cloudflare deploy'unu tetikler) — SSH deploy key ile şifresiz
 if git log origin/main..HEAD --oneline 2>/dev/null | grep -q .; then

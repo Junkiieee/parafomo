@@ -33,6 +33,7 @@ import fcntl
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 import time
@@ -210,14 +211,22 @@ def _log_usage(tag, model, d, kind):
         pass
 
 
-def _one(prompt, model, effort, timeout, think=True):
+def _one(prompt, model, effort, timeout, think=True, files=None):
     os.makedirs(EMPTY_CWD, exist_ok=True)
     env = claude_env()
     if not think:  # tek cümlelik işlerde "düşünme" ~15x token yakıyor (ölçüm 2026-10-06: 681 → 45)
         env["MAX_THINKING_TOKENS"] = "0"
+    # files: görsel/metin dosyaları boş çalışma dizinine kopyalanır, model yalnız Read aracıyla okur
+    tools = ""
+    if files:
+        for f in files:
+            shutil.copy(f, os.path.join(EMPTY_CWD, os.path.basename(f)))
+        tools = "Read"
     cmd = ["claude", "-p", "--model", model, "--output-format", "json",
-           "--tools", "", "--strict-mcp-config", "--disable-slash-commands",
+           "--tools", tools, "--strict-mcp-config", "--disable-slash-commands",
            "--no-session-persistence", "--setting-sources", ""]
+    if files:
+        cmd += ["--allowedTools", "Read"]
     if effort:
         cmd += ["--effort", effort]
     try:
@@ -239,7 +248,8 @@ def _one(prompt, model, effort, timeout, think=True):
     return d, kind, msg
 
 
-def call(prompt, model="sonnet", effort="low", timeout=300, tries=2, tag="", lock_wait=900, think=True):
+def call(prompt, model="sonnet", effort="low", timeout=300, tries=2, tag="", lock_wait=900, think=True,
+         files=None):
     """→ (ok: bool, text: str, kind: str). ok=False iken text DAİMA boş.
     think=False: genişletilmiş düşünmeyi kapatır (kısa caption/tek cümle işleri için)."""
     until = blocked_until()
@@ -249,7 +259,7 @@ def call(prompt, model="sonnet", effort="low", timeout=300, tries=2, tag="", loc
         with _Lock(LOCK, lock_wait):
             kind, msg = "other", ""
             for attempt in range(1, tries + 1):
-                d, kind, msg = _one(prompt, model, effort, timeout, think)
+                d, kind, msg = _one(prompt, model, effort, timeout, think, files)
                 _log_usage(tag, model, d or {}, kind)
                 if kind == "ok":
                     if read_status().get("state") != "ok":

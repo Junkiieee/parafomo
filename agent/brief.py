@@ -322,6 +322,14 @@ def sec_youtube():
                 f"{k} %{int(v.get('gate_pass_share', 0) * 100)} (n={v.get('n')})" for k, v in g.items()))
     except Exception:
         pass
+    qa_p = os.path.join(ROOT, "logs", "video-qa.jsonl")
+    if os.path.exists(qa_p):
+        cutoff = (TODAY - dt.timedelta(days=7)).isoformat()
+        recs = [json.loads(l) for l in open(qa_p, encoding="utf-8") if l.strip()]
+        recs = [r for r in recs if r.get("ts", "") >= cutoff and not r.get("slug", "").startswith("zz-")]
+        fixed = [(r["slug"], k, v) for r in recs for k, v in (r.get("bad") or {}).items()]
+        out(f"\nVideo kalite kapısı (7g): {len(recs)} kontrol, {len(fixed)} sahne marka kartıyla değiştirildi"
+            + (" — örnekler: " + " · ".join(f"{s[:30]}#{k}: {v[:70]}" for s, k, v in fixed[:4]) if fixed else ""))
     n = 12 if MODE == "weekly" else 8
     out(f"\nSon {n} video:")
     for v in sorted(vids, key=lambda x: x["date"])[-n:]:

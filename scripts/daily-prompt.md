@@ -9,7 +9,12 @@ Sen ParaFOMO finans blogunun günlük içerik editörüsün. Hedef: organik SEO 
    NOT (öğrenme sinyali): Varsa docs/learning-report.md'yi de oku. "En iyi blog sayfaları" listesi hangi KONU/AÇILARIN gerçekten trafik+etkileşim getirdiğini gösterir; konu ve başlık kalıbını bu kanıta yaklaştır (kazanan temaların komşu/derinleşen konularını seç). "Fırsat sorguları" orada da tekrarlanıyorsa öncelik ver. Rapor yoksa/boşsa bu notu atla.
 3) O konu için playbook standardında (900-1600 kelime, H2/H3, en az bir karşılaştırma tablosu, adım listeleri, Özet bölümü, yasal not) kaliteli, özgün Türkçe SEO makalesi yaz. Hedef anahtar kelimeyi title, ilk paragraf, bir H2 ve description'da doğal kullan.
 4) Makaleyi src/content/blog/<uygun-slug>.md olarak oluştur. Frontmatter şablonu playbook'ta. pubDate bugünün tarihi olsun. Doğru category seç. ZORUNLU SEO alanları: `tags` (4-6 alakalı etiket) ve `faq` (3-5 gerçek soru-cevap) MUTLAKA dolu olmalı — boş bırakma. Bunlar Google'da etiket sinyali ve açılır SSS kutusu için kritik.
-5) src/content/blog/ altındaki mevcut yazılara bak; yeni yazıdan ilgili 2-3 eskiye markdown iç link ver (/blog/<slug>).
+5) İÇ LİNK (zorunlu): (a) src/content/blog/ altındaki ilgili 2-3 eski yazıya markdown link ver (/blog/<slug>).
+   (b) Konuyla ilgili VERİ/ARAÇ sayfalarımıza 1-3 bağlamsal link ver — bunlar sitenin en çok trafik alan sayfaları:
+   `ls src/pages` ile mevcutları gör (getiri: /altin-getiri, /dolar-getiri, /bist-getiri, /altin-dolar-borsa;
+   takvim: /ekonomik-takvim, /fed-faiz-takvimi, /tcmb-faiz-takvimi, /enflasyon-takvimi; hesaplayıcılar).
+   Halka arz konusuysa ilgili ŞİRKET sayfalarına `/halka-arz/<slug>/` link ver (sluglar data/halka-arz-sirketler.json).
+   Örnek rakam gerekiyorsa uydurma yerine data/*.json'daki GERÇEK veriyi kullan. Var olmayan sayfaya link verme.
 6) docs/keywords.md'de seçtiğin konuyu [x] yap ve "Yayınlananlar" listesine slug'ıyla ekle.
 7) GÖRSELLER (ikisi de ZORUNLU — yazı görselsiz yayınlanmaz):
    a) `python3 scripts/social-cards.py --missing` → markalı sosyal kart (`public/social/<slug>.png`); yazının og:image'ı olur (link önizlemesi).
