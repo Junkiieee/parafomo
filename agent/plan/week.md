@@ -22,16 +22,16 @@ _Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
   2026-10-28 (10-08: viral DOW_FMT shock×3/myth×2/single×2, backtest viralden çıktı)
 
 ## Görev kuyruğu (günlük koşu en üstteki [ ]'yi alır)
-- [ ] T1 (B261006-2) — **/gumus-getiri sayfası:** `scripts/silver-returns.py` (gold-returns.py kalıbı; Yahoo
+- [x] T1 (B261006-2) — → canlı https://parafomo.com/gumus-getiri/ (10y TL +%5.215 vs altın +%5.026, altın/gümüş oranı 68,8, Dataset şeması); hub'a gümüş sütunu, /altin-getiri'den link, metodoloji, daily-content veri adımı · haftalık koşu 2026-10-08 — **/gumus-getiri sayfası:** `scripts/silver-returns.py` (gold-returns.py kalıbı; Yahoo
   SI=F × USDTRY=X; gram gümüş TL = ons/31.1035 × kur; YTD + 1/3/5/10 yıl TL/USD getirisi; ağ hatasında mevcut
   veriyi koru) → `data/gumus-getiri.json` (+ gerekiyorsa `public/` kopyası) → `src/pages/gumus-getiri.astro`
   (altin-getiri.astro kalıbı; "gümüş mü altın mı" karar bölümü altın verisiyle yan yana) → /altin-dolar-borsa
   hub'ına gümüş satırı + /altin-getiri'den link → `daily-content.sh` veri adımlarına ekle.
   · Kabul: build geçer; `curl -s https://parafomo.com/gumus-getiri/` 200 ve tabloda 10 yıl satırı; hub'da gümüş.
-- [ ] T2 (B261006-2) — **/euro-getiri sayfası** (EURTRY=X; T1 kalıbı; "euro mu dolar mı" karar bölümü
+- [x] T2 (B261006-2) — → canlı https://parafomo.com/euro-getiri/ (euro mu dolar mı tablosu + EUR/USD parite etkisi); hub'a euro, /dolar-getiri'den link · haftalık koşu 2026-10-08 — **/euro-getiri sayfası** (EURTRY=X; T1 kalıbı; "euro mu dolar mı" karar bölümü
   dolar-getiri verisiyle yan yana; /dolar-getiri ↔ /euro-getiri karşılıklı link; hub'a euro satırı; veri
   adımına ekle). · Kabul: canlıda 200 + hub'da euro + /dolar-getiri'de euro linki.
-- [ ] T3 (B261006-2) — **/bitcoin-getiri sayfası** (BTC-USD × USDTRY=X; aynı kalıp; volatilite/düşüş
+- [x] T3 (B261006-2) — → /bitcoin-getiri (10y $ +%11.002, en büyük düşüş −%75,6 2017-12→2019-01, risk kutusu, bitcoin mi altın mı); hub'a bitcoin, bitcoin-nedir yazısından link · haftalık koşu 2026-10-08 — **/bitcoin-getiri sayfası** (BTC-USD × USDTRY=X; aynı kalıp; volatilite/düşüş
   uyarısı + "yatırım tavsiyesi değildir"; YTD + 1/3/5 yıl (10 yıl veri varsa); en büyük düşüş (max drawdown)
   satırı; hub'a bitcoin satırı; /blog/bitcoin-nedir-nasil-alinir'den link). · Kabul: canlıda 200, hub'da bitcoin.
 - [ ] T4 (dağıtım/marka) — **Bülten v1 — kendi altyapımızla (bozuk formu onar).** İzin geldi (10-07). Backend
