@@ -1,0 +1,59 @@
+{
+  "slug": "bilezik-aldin-paranin-bir-kismi-uctu",
+  "title": "Bilezik Aldın, Paranın Bir Kısmı Uçtu",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Takı altınında ödediğin işçilik payı satarken geri dönmez. Yatırım için neyi, neden tercih etmen gerektiğini anlatıyor.",
+  "tags": [
+    "altın",
+    "bilezik",
+    "işçilik payı",
+    "gram altın",
+    "külçe altın",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Bilezik alıp altın yatırımı yaptığını sanıyorsun.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold bracelet jewelry"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bileziği kuyumcudan alırken gramın üstüne işçilik de ödüyorsun; yaklaşık yüzde 10 ila 20 arası olabilir.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bracelet jewelry shop"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama satarken kuyumcu sadece içindeki altını hesaplar; ödediğin işçilik cebine geri dönmez, doğrudan kaybın olur.",
+      "visual": {
+        "type": "object",
+        "query": "jewelry scale weighing gold"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yatırım için gram külçe ya da düşük işçilikli altın al; takıyı sevdiğin için al.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki altını nerede saklamak en ucuza geliyor? Sıradaki videoda var; abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold bracelet jewelry"
+      }
+    }
+  ]
+}
