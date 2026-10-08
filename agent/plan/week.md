@@ -1,97 +1,85 @@
-# Hafta planı — 2026-10-07 → 2026-10-14
-_Kurulum oturumu (v2 başlangıç planı) · 2026-10-06 · ilk haftalık Opus koşusu Perşembe 2026-10-08'de bu planı revize eder._
-<!-- plan-date: 2026-10-06 -->
+# Hafta planı — 2026-10-08 → 2026-10-14
+_Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
+<!-- plan-date: 2026-10-08 -->
 
 ## Durum
-- Kaan hedefi netleştirdi (2026-10-06): **ParaFOMO'yu marka yap ve siteden para kazan — ama ÖNCE TRAFİK.**
-  AdSense trafik oturana kadar YOK (Kaan kararı). Claude Max 5x'e geçildi (günlük koşu da Opus). Tüm onaylar verildi;
-  gereken hesap/API'yi o getirecek (`agent/plan/user-tasks.md`). Marka kitabı: `agent/plan/brand.md`.
-- Sistem 30 Eylül'den beri duraklatılmıştı; v2 ile yeniden başlıyor. Ajansız haftada bile gerçek erişim
-  51/hafta (202640, rekor) — veri sayfası motoru gecikmeli çalışmaya devam ediyor.
-- GSC 28g: 105 tık / 6.433 gös. En çok tıklanan: /altin-getiri (32), /enflasyon-takvimi (10), /dolar-getiri (10).
-  AI asistan 28g'de 20 kullanıcı (~%12). Telegram kanalı 2 üye (dağıtım etkisi ~0).
-- **Bozuk:** her yazının ve ana sayfanın altındaki bülten formu `action="#"` — kimse abone olamıyor (N1).
+- Gerçek erişim (Direct hariç) son 7g **43** (önceki tam hafta 202640: 51, rekor; 4 hafta önce 202637: 41).
+  GSC 7g 36 tık / 1.258 gös · 28g 105 tık / 6.064 gös → **düz platoda** (~40 tık/hafta, ~%0,6 hedef).
+  Motor hâlâ getiri+takvim sayfaları: /altin-getiri 31 tık, /dolar-getiri 14, /enflasyon-takvimi 9 (28g).
+- **Kök neden bulundu:** Google sitemap'i en son **2026-07-03**'te indirmiş. 10-07'de açılan 40 halka arz
+  sayfası "URL is unknown to Google" (0 gös). 10-08'de API ile yeniden gönderildi + `scripts/gsc-sitemap.py`
+  artık günlük öğrenme döngüsünde URL kümesi değişince/7 günde bir otomatik gönderiyor.
+- YouTube 51 abone (düz), 280 video. Ağu+ veride sonuç metriği net: viral **shock_number medyan 500**
+  izlenme (n=11) vs backtest 96 (n=13). 09-30'daki AVD-vekil rebalansı geri alındı (rotasyon aşağıda).
+- Gelir/marka: AdSense kapalı (Kaan kararı, trafik bekleniyor) · bülten formu hâlâ bozuk (0 abone) ·
+  Telegram 2 üye · IG ölçülemiyor.
 
 ## Bahisler
 - **B261006-1 — Halka arz şirket sayfaları** · GSC /halka-arz/* ≥500 gös + ≥15 tık/hafta · 2026-11-03
-- **B261006-2 — Getiri kümesini genişlet** · küme 28g tık ~43 → ≥85 · 2026-11-03
-- **B261006-4 — YouTube video kalite reformu** · yeni videolarda 7g medyan ≥200 izlenme + ≥8 abone/hafta · 2026-10-28
-- ~~B261006-3 AdSense~~ — kapatıldı (Kaan: önce trafik)
+  (sitemap düzeltmesiyle saat 10-08'de yeniden başladı)
+- **B261006-2 — Getiri kümesini genişlet** · küme 28g tık 45 → ≥85 · 2026-11-03 (yeni sayfa yok → T1-T3)
+- **B261006-4 — YouTube video kalite reformu** · 10-07+ videolarda 7g medyan ≥200 izlenme + ≥8 abone/hafta ·
+  2026-10-28 (10-08: viral DOW_FMT shock×3/myth×2/single×2, backtest viralden çıktı)
 
 ## Görev kuyruğu (günlük koşu en üstteki [ ]'yi alır)
-- [x] T1 (B261006-1) — **Halka arz şirket sayfaları: `/halka-arz/<slug>` dinamik rota + ilk yayın.** → 40 sayfa canlı (40/40 200, sitemap 40, /halka-arz'dan 40 iç-link; örn. https://parafomo.com/halka-arz/albayrak-hazir-beton-san-ve-tic-a-s/). fetch-halka-arz.py künyeyi (şekil, fon kullanımı, finansallar, halka açıklık, iskonto, büyüklük, dağıtım sonuçları, kişi başı lot) yapısal çıkarıyor → hiçbir sayfa ince değil, hepsi index; kalıcı arşiv `data/halka-arz-sirketler.json` (takvimden düşen sayfa 404 olmaz). Title şablonu T2'den önden yapıldı · 2026-10-07
-  `src/pages/halka-arz/[slug].astro` (getStaticPaths ← `data/halka-arz.json` items; `halka-arz-getiri.json`
-  ile `bist_code`/şirket adı üzerinden birleştir). Her sayfa: H1 "<Şirket> Halka Arz" + durum, talep
-  tarihleri, fiyat, lot, dağıtım yöntemi, aracı kurum tablosu; borsada işlem görüyorsa halka arz fiyatına
-  göre getiri (+ 2026 halka arz ortalamasıyla kıyas); "nasıl katılınır" kısa rehber; SSS (FAQPage şeması:
-  ne zaman / kaç lot / fiyatı ne / kaç kazandırdı — yalnız veride olan alanlarla); BreadcrumbList;
-  /halka-arz ve /halka-arz-getiri'ye bağlantı; kaynak (halkarz.com) + güncelleme tarihi. /halka-arz
-  listesindeki her şirket adı kendi sayfasına linklensin. İnce içerik riskine dikkat: veride neredeyse hiç
-  alan olmayan arzlar için de sayfa mantıklı mı karar ver (gerekirse `noindex`). Sayfalar
-  `halka-arz-update.sh` 6 saatte bir veri tazeledikçe deploy'la kendiliğinden güncellenir.
-  · Kabul: build geçer; canlıda ≥30 şirket sayfası 200 döner; sitemap'te görünür; /halka-arz'dan linkli.
-- [x] M1 (SEO/marka) — **Güven (E-E-A-T) sayfaları + Organization şeması** → 4 sayfa canlı 200 (/hakkimizda yeniden yazıldı — yapay zekâ desteği dürüstçe yazıldı, /editoryal-politika, /metodoloji, /iletisim), footer'da; tüm sayfalarda Organization JSON-LD (@id, sameAs ×4, publishingPrinciples, contactPoint); yazılarda author+publisher = Organization (önceden "ParaFOMO Ekibi" Person idi) · 2026-10-07 — (finans/YMYL sıralaması için; reklamla ilgisi yok). `/hakkimizda`'yı yeniden yaz
-  (misyon = brand.md konumlandırması; içerik nasıl üretiliyor: veriler kaynaklarından otomatik çekilir,
-  metinler yapay zekâ destekli hazırlanır — DÜRÜST yaz, olmayan insan/uzman denetimini iddia etme);
-  yeni `/editoryal-politika` (kaynak, doğruluk, düzeltme, "yatırım tavsiyesi değildir", ortaklık/reklam
-  ilkesi) ve `/metodoloji` (getiri/takvim/hesaplayıcı formülleri ve veri kaynakları: Yahoo Finance,
-  TCMB, TÜİK, halkarz.com...) ve `/iletisim` (SITE.email + sosyal hesaplar). Footer'a linkler. Tüm sayfalara
-  `Organization` JSON-LD (logo + `sameAs`: X, Instagram, YouTube @parafomo, Telegram). Yazı şemasında
-  publisher = Organization. · Kabul: 4 sayfa canlı 200; footer'da; şema `grep` ile doğrulanır.
-- [ ] N1 (dağıtım) — ⛔ 2026-10-07 BLOKE: ajan `parafomo-api` venv'ini/restart'ı çalıştıramıyor → test protokolü uygulanamaz; Kaan'a izin görevi yazıldı (user-tasks #6). İzin gelince en üste al. — **Bülten v1 — kendi altyapımızla (bozuk formu onar).** Backend'e (`backend/`, portföy
-  protokolü: geçici DB ile test → restart → /health) `POST /newsletter/subscribe` (e-posta + KVKK onayı,
-  IP rate-limit, çift onay: Brevo SMTP ile — portföy şifre sıfırlama maili zaten bu altyapıyı kullanıyor —
-  onay linki), `GET /newsletter/confirm`, `GET /newsletter/unsubscribe` (token), ayrı `newsletter_subscribers`
-  tablosu (mevcut tabloları DEĞİŞTİRME). `src/components/Newsletter.astro` formu bu uca bağlansın (başarı/
-  hata mesajı, `action="#"` kalmasın). Haftalık gönderim betiği ayrı görev (N2). · Kabul: canlıda abone ol →
-  onay maili gelir → onaylayınca DB'de `confirmed`; çık linki çalışır; build geçer.
-- [x] T2 (B261006-1) — **Halka arz sayfalarını SEO ile güçlendir:** → şirket sayfası title/description şablonu ("<Ad> (<KOD>) Halka Arz: Tarih, Fiyat, Lot ve Getiri"), FAQPage+BreadcrumbList; /halka-arz başlığı "Halka Arz Takvimi Ekim 2026: …" (ay otomatik) + "Ekim 2026 Halka Arz Takvimi" H2 + 40 iç-link; ALBTN yazısından şirket sayfasına link · 2026-10-07 — her sayfaya title/description şablonu
-  ("<Şirket> (<KOD>) halka arz: tarih, fiyat, lot ve getiri"); /halka-arz sayfasına "Ekim 2026 halka arz
-  takvimi" bölümü + iç linkler; ALBTN blog yazısından şirket sayfasına bağlantı. · Kabul: meta + şema
-  `grep` ile doğrulanır, canlıda kontrol.
-- [ ] T3 (B261006-2) — **/gumus-getiri sayfası:** `scripts/silver-returns.py` (gold-returns.py kalıbı;
-  Yahoo SI=F × USDTRY=X; gram gümüş TL = ons/31.1035 × kur; YTD + 1/3/5/10 yıl TL/USD getirisi; ağ hatasında
-  mevcut veriyi koru) → `data/gumus-getiri.json` + `public/` kopyası → `src/pages/gumus-getiri.astro`
-  (altin-getiri.astro kalıbı) → /altin-dolar-borsa hub tablosuna gümüş satırı → `daily-content.sh` veri
-  adımlarına ekle. · Kabul: build geçer, canlıda sayfa + hub'da gümüş.
-- [ ] T4 (B261006-2) — **/euro-getiri sayfası** (EURTRY=X; T3 ile aynı kalıp; "euro mu dolar mı" karar
-  bölümü + /dolar-getiri ve hub'a bağlantı). · Kabul: build geçer, canlıda sayfa + hub'da euro.
-- [ ] T5 (AI asistan görünürlüğü) — `public/llms.txt` (site özeti + en değerli veri/araç sayfaları +
-  kaynak/güncelleme notu); getiri ve takvim sayfalarında görünür "Son güncelleme: <tarih> · Kaynak: ..."
-  satırı ve Dataset şeması (yoksa). · Kabul: canlıda /llms.txt 200; 3 sayfada şema doğrulanır.
+- [ ] T1 (B261006-2) — **/gumus-getiri sayfası:** `scripts/silver-returns.py` (gold-returns.py kalıbı; Yahoo
+  SI=F × USDTRY=X; gram gümüş TL = ons/31.1035 × kur; YTD + 1/3/5/10 yıl TL/USD getirisi; ağ hatasında mevcut
+  veriyi koru) → `data/gumus-getiri.json` (+ gerekiyorsa `public/` kopyası) → `src/pages/gumus-getiri.astro`
+  (altin-getiri.astro kalıbı; "gümüş mü altın mı" karar bölümü altın verisiyle yan yana) → /altin-dolar-borsa
+  hub'ına gümüş satırı + /altin-getiri'den link → `daily-content.sh` veri adımlarına ekle.
+  · Kabul: build geçer; `curl -s https://parafomo.com/gumus-getiri/` 200 ve tabloda 10 yıl satırı; hub'da gümüş.
+- [ ] T2 (B261006-2) — **/euro-getiri sayfası** (EURTRY=X; T1 kalıbı; "euro mu dolar mı" karar bölümü
+  dolar-getiri verisiyle yan yana; /dolar-getiri ↔ /euro-getiri karşılıklı link; hub'a euro satırı; veri
+  adımına ekle). · Kabul: canlıda 200 + hub'da euro + /dolar-getiri'de euro linki.
+- [ ] T3 (B261006-2) — **/bitcoin-getiri sayfası** (BTC-USD × USDTRY=X; aynı kalıp; volatilite/düşüş
+  uyarısı + "yatırım tavsiyesi değildir"; YTD + 1/3/5 yıl (10 yıl veri varsa); en büyük düşüş (max drawdown)
+  satırı; hub'a bitcoin satırı; /blog/bitcoin-nedir-nasil-alinir'den link). · Kabul: canlıda 200, hub'da bitcoin.
+- [ ] T4 (dağıtım/marka) — **Bülten v1 — kendi altyapımızla (bozuk formu onar).** İzin geldi (10-07). Backend
+  (`backend/`, protokol: `/root/.venvs/parafomo-api/bin/python` ile geçici DB'de test → `systemctl restart
+  parafomo-api` → `curl -s https://api.parafomo.com/health`): `POST /newsletter/subscribe` (e-posta + KVKK
+  onayı, IP rate-limit, Brevo SMTP ile çift onay maili), `GET /newsletter/confirm`, `GET /newsletter/unsubscribe`
+  (token); YENİ `newsletter_subscribers` tablosu (mevcut tablolara DOKUNMA). `src/components/Newsletter.astro`
+  bu uca bağlansın (başarı/hata mesajı; `action="#"` kalmasın). Gönderim betiği ayrı görev.
+  · Kabul: canlıda abone ol → onay maili gelir → linkle DB'de `confirmed`; çık linki çalışır; build geçer.
+- [ ] T5 (AI asistan görünürlüğü) — `public/llms.txt` (site özeti + en değerli veri/araç sayfaları: getiri
+  kümesi, takvimler, halka arz, hesaplayıcılar + kaynak/güncelleme notu); getiri ve takvim sayfalarında görünür
+  "Son güncelleme: <tarih> · Kaynak: ..." satırı + `Dataset` şeması (yoksa). AI asistan trafiği 28g 20 (~%12).
+  · Kabul: canlıda /llms.txt 200; 3 sayfada `grep -c '"Dataset"'` ≥1.
+- [ ] T6 (B261006-1) — **Halka arz sayfaları keşif kontrolü (10-12 sonrası):** `python scripts/gsc-sitemap.py
+  --status` → indirme tarihi 10-08 sonrası mı? 5 şirket sayfasını brief'teki indeks durumuyla kontrol et. Hâlâ
+  "unknown" ise: /halka-arz-getiri tablosundaki her şirket adını da kendi sayfasına linkle (şu an yalnız
+  /halka-arz linkli) ve ana sayfaya "Yaklaşan halka arzlar" kutusu (ilk 3, şirket sayfasına link) ekle.
+  · Kabul: rapora indirme tarihi + indekslenen sayfa sayısı yazılır; gerekiyorsa linkler canlıda.
 
-## Bakım / ürün / marka
-- [ ] P1 (portföy) — `agent/plan/backlog-portfolio.md`'deki en üstteki açık madde (şu an: İzleme listesi /
-  watchlist — sahip olmadan takip). Backend değişirse protokoldeki restart + /health. · Kabul: build geçer,
-  canlı panelde akış çalışır.
-- [ ] V1 (video) — **Format kararı için kanıt tablosu:** viral videolar (2026-08-01 →) format × izlenme
-  (yayından ≥7 gün sonra) × beğeni/yorum; `data/learning/metrics.jsonl` + `content-ledger.jsonl`'dan
-  python ile çıkar, sonucu bu dosyanın "Notlar" bölümüne yaz. 09-30'daki rotasyon değişikliği (shock/news
-  azaltıldı) izlenme verisiyle tutarlı mı? Karar haftalık koşunun — sen yalnız tabloyu ve 3 satırlık yorumu yaz.
-- [ ] V2 (marka) — **YouTube kanal kimliğini markayla hizala:** kanal adı "ParaFOMO", açıklama brand.md
-  konumlandırması + parafomo.com (UTM'li) + Telegram/Instagram, kanal anahtar kelimeleri. YouTube API
-  (`channels.update` brandingSettings, mevcut OAuth `youtube.force-ssl` ise) ile dene; yetki yetmezse
-  Kaan'a 3 adımlık görev yaz. · Kabul: kanal sayfasında yeni açıklama görünür.
+## Bakım / ürün
+- [ ] P1 (portföy) — `agent/plan/backlog-portfolio.md`'deki en üstteki açık madde (İzleme listesi / watchlist —
+  sahip olmadan takip). Backend değişirse protokoldeki restart + /health. · Kabul: build geçer; canlı panelde
+  izleme listesine ekle/sil akışı çalışır; backlog maddesi [x] + commit.
+- [ ] V1 (video kalitesi) — **shock_number kanca kalitesi + rakam doğrulaması** (format artık haftada 3 gün):
+  `scripts/viral-script.py` shock_number istemine en çok izlenen 3 shock videonun (ör. kira-geliri-yuzde-2
+  500 izl., ledger'dan bul) kanca + ilk 2 cümle kalıbını örnek olarak ekle; senaryo üretiminde shock rakamının
+  bir hesap/kaynak satırı taşımasını zorunlu kıl (yanıltıcı başlık = kırmızı çizgi 4). İzole dene:
+  `--dry-run`/hazırlık modunda 3 senaryo üret, eskisiyle yan yana rapora koy; rakam kaynaksızsa senaryo reddedilsin.
+  · Kabul: 3 örnek senaryo raporda; kaynaksız rakam testi reddediliyor; commit.
+- [ ] V2 (marka) — **YouTube kanal kimliği:** kanal açıklaması brand.md konumlandırması + parafomo.com (UTM'li)
+  + Telegram/Instagram, kanal anahtar kelimeleri. `channels.update` brandingSettings (OAuth `youtube.force-ssl`
+  ise) ile dene; yetki yetmezse Kaan'a 3 adımlık görev yaz. · Kabul: kanal sayfasında yeni açıklama.
 
 ## Kullanıcı girdisi gelince (o gün en üste al)
-- X API ödemesi açılınca → günlük veri kartı + yeni yazı paylaşım betiği (`scripts/post-x.py`), cron önerisi.
-- R2/S3 yedek bilgileri → `/root/.config/parafomo/backup.env` (backup.sh otomatik kullanır; boto3 gerekirse venv'e kur).
+- Müzik klasörü dolarsa (`/root/parafomo-media/music/`) → 1 videoda doğrula, rapora yaz.
+- X API ödemesi açılınca → `scripts/post-x.py` (günlük veri kartı + yeni yazı), `deploy/crontab.txt` önerisi.
+- R2 bilgileri → `/root/.config/parafomo/backup.env` (backup.sh otomatik kullanır).
 
-## Notlar
-- YouTube düzeltmeleri (2026-10-06, B261006-4): yayındaki videolarda alakasız yabancı stok (Filipin pesosu etiketi,
-  zloti, Hollanda bayrağı), simsiyah kare, "2.021" yıl rozeti, statik/İ'siz Manim kartları vardı. Düzeltildi:
-  kültüre özgü stok → rakamlı marka kartı (`content_concept` safe bayrağı); görsel yoksa kart; blog videoları
-  artık senaryonun seçtiği gerçek görselleri (TCMB binası, Fitch logosu) kullanıyor (`shorts_visuals` hiç
-  okunmuyordu); kart v2 (rakam ana öğe, Türkçe büyük harf, üst üçte bir, karartmasız); "yüzde on beş"=%15;
-  senaryo görsel kuralı: Türk kurumu gerçek adıyla, yabancı banknot/etiket/bayrak yasak.
-  Müzik: `/root/parafomo-media/music/` klasörüne parça konunca otomatik kullanılır (Kaan getirecek).
-- Kurulum oturumunda yapıldı (2026-10-06): marka sesi tüm videolarda **Orus** (Edge A/B kapandı);
-  viral videolarda jenerik stok sahneler otomatik **Manim marka kartına** dönüşüyor (`manimify.py --hybrid`;
-  gerçek foto/grafik korunuyor); blog→Short videoları artık IG Reel de oluyor; portföy DB günlük yedek
-  (`scripts/backup.sh` → /root/parafomo-backups); footer'a YouTube + Telegram linkleri.
-- v1 deneyi 2026-09-30-1 (viral format rebalansı, `scripts/viral-daily.sh` DOW_FMT) hâlâ yürürlükte; ilk
-  haftalık koşu V1 tablosuyla karar verecek.
-- Video müziği: render "gerçek müzik yok → geçici pad" diyor — telifsiz müzik kütüphanesi bir video kalitesi
-  görevi olabilir (haftalık koşu değerlendirsin).
+## Notlar (günlük koşu için)
+- **Headless izin tuzağı:** 10-07 koşusunda 13 komut reddedildi — `for`/`until` döngüsü, `x=...` değişken
+  atama, `awk`, `cd /tmp && ...`, heredoc, `bash -n /mutlak/yol`. Döngü/çok adımlı kontrolü tek
+  `python3 -c "..."` ya da repo içi küçük bir `.py` dosyasıyla yap; yolları göreli ver (`bash scripts/...`).
+- Konu kuyruğu yayın tarihine göre sıralı (bkz. content-queue.md); bir gün atlanırsa kuyruk kayar — TCMB
+  yazısı 19-21 Ekim'den ÖNCE yayınlanacak gibi olursa önüne evergreen bir konu ekle.
+- Video rotasyonu 10-08'de değişti; `scripts/learn/winner.py viral.format` bir kazanan döndürürse onu ezer
+  (şu an "berabere"). Shock rakamı mutlaka gerçek/hesaplanabilir olmalı.
 
 ## Biten / iptal (bu hafta)
+- [x] (haftalık koşu) GSC sitemap teşhisi + yeniden gönderim + `scripts/gsc-sitemap.py` günlük otomasyonu · 2026-10-08
+- [x] (haftalık koşu) V1-eski (format kanıt tablosu) haftalık koşuda yapıldı → rotasyon kararı uygulandı · 2026-10-08
+- Geçen haftadan biten: T1 halka arz sayfaları, M1 güven sayfaları, T2 halka arz SEO (10-07).
