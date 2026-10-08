@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import data from '../../data/halka-arz-getiri.json';
+import archive from '../../data/halka-arz-sirketler.json';
 
 type Row = {
   code: string; company: string; link: string;
@@ -10,6 +11,10 @@ type Row = {
 };
 
 const items = (data.items ?? []) as Row[];
+// Şirket künyesi sitede varsa ona linkle (iç-link ağı → Google şirket sayfalarını keşfeder); yoksa kaynağa.
+const ownSlugs = new Set(Object.keys((archive as any).items ?? {}));
+const slugOf = (link: string) => link.replace(/\/+$/, '').split('/').pop() ?? '';
+const hrefOf = (i: Row) => (ownSlugs.has(slugOf(i.link)) ? `/halka-arz/${slugOf(i.link)}/` : i.link);
 const updated = new Date(data.updated).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
 const fmt = (n: number) => n.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const pct = (n: number) => (n > 0 ? '+' : '') + n.toLocaleString('tr-TR', { maximumFractionDigits: 1 }) + '%';
@@ -90,10 +95,17 @@ const faqLd = {
           {items.map((i) => (
             <tr>
               <td class="gr-co">
+                {hrefOf(i).startsWith('/') ? (
+                  <a href={hrefOf(i)}>
+                    <span class="gr-code">{i.code}</span>
+                    <span class="gr-name">{i.company}</span>
+                  </a>
+                ) : (
                 <a href={i.link} target="_blank" rel="noopener">
                   <span class="gr-code">{i.code}</span>
                   <span class="gr-name">{i.company}</span>
                 </a>
+                )}
                 {i.date_text && <span class="gr-date">{i.date_text}</span>}
               </td>
               <td class="r gr-mono">{fmt(i.ipo_price)}</td>

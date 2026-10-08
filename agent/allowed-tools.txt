@@ -25,6 +25,8 @@ Bash(python3 *)
 Bash(/root/.venvs/parafomo/bin/python *)
 Bash(bash scripts/*)
 Bash(bash agent/*)
+# sözdizimi kontrolü (bash -n script.sh)
+Bash(bash -n *)
 
 # okuma / inceleme
 Bash(ls)
@@ -62,7 +64,7 @@ Bash(touch *)
 # ağ (canlı sayfa/API doğrulama)
 Bash(curl *)
 
-# portföy backend'i (test: kendi venv'i ile geçici DB; durum/yeniden başlatma)
+# portföy + bülten backend'i (test: kendi venv'i ile geçici DB; durum/yeniden başlatma)
 Bash(/root/.venvs/parafomo-api/bin/python *)
 Bash(/root/.venvs/parafomo-api/bin/pytest *)
 Bash(systemctl status parafomo-api*)

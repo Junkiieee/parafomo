@@ -37,3 +37,6 @@
 # --- Veri + ölçüm (LLM yok) ---
 15 */6 * * * /root/parafomo/scripts/halka-arz-update.sh >> /root/parafomo/logs/halka-arz.log 2>&1
 45 8 * * * /root/parafomo/scripts/learn/learn-daily.sh >> /root/parafomo/logs/learn.log 2>&1
+
+# Haftalık bülten — pazartesi 08:30 TSİ, onaylı abonelere (ISO hafta kilidi)
+30 5 * * 1 /root/parafomo/scripts/newsletter-send.sh >> /root/parafomo/logs/newsletter.log 2>&1

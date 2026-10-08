@@ -75,9 +75,20 @@ Bugün: ~45-50 gerçek ziyaretçi/hafta (hedefin ~%0,7'si). Her kararın tek sor
 - WebSearch/WebFetch yalnız görev gerçekten gerektiriyorsa ve az sayıda.
 - `agent/state/report.md`'yi her görev bitince güncelle (kesilirsen e-postada o görünür).
 
+## Headless izin kuralları (reddedilen komut = boşa tur; her koşuda 8-13 red görüldü)
+Yalnız `agent/allowed-tools.txt`'deki kalıplar çalışır. Şunlar HER ZAMAN reddedilir — hiç deneme:
+`for`/`until`/`while` döngüsü · `x=$(...)` değişken atama · `awk` · heredoc (`<<EOF`) · `cd /tmp && …`
+· repo dışı yol (`/tmp`, `/root/parafomo-media`, `~/.config`) · `rm`.
+- Canlı sayfa beklemek: `python3 scripts/wait-live.py URL [URL…] [--contains METİN]` (döngü yazma).
+- Çok adımlı kontrol: tek `python3 -c "..."` ya da repo içi küçük `.py` dosyası; yollar göreli.
+- Kaan'dan beklenen girdilerin (müzik, claude.env, backup.env) ve bülten abone sayısının durumu
+  brief'in 12. bölümünde — repo dışını `ls`'leme.
+- Silinmesi gereken geçici dosyayı repo içinde bırakma; `agent/state/` altına yaz (git'e girmez).
+
 ## Sık kullanılan eller (komutlar)
 - Bahis defteri: `python3 agent/bets.py list|add|note|close` (aktif ≤3; `--help`).
 - Sağlık: `python3 agent/health.py` · Bugünün yayın planı: `python3 agent/pubplan.py --all`
+- Bülten: `bash scripts/newsletter-send.sh --dry-run` (önizleme + onaylı abone sayısı; gönderimi cron yapar)
 - Build/deploy: `npm run build` · `bash scripts/deploy-push.sh` (build + kilitli push)
 - Veri: `python3 scripts/fetch-halka-arz.py`, `scripts/ipo-returns.py`, `gold-returns.py`,
   `dollar-returns.py`, `bist-returns.py`, `fetch-economic-calendar.py`, `altin-fiyat.py`, `dxy.py`, `us-tahvil.py`

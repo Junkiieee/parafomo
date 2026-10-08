@@ -15,6 +15,7 @@ Kullanım: /root/.venvs/parafomo/bin/python agent/brief.py --mode daily|weekly
 import datetime as dt
 import importlib.util
 import json
+import time
 import logging
 import os
 import re
@@ -165,10 +166,14 @@ def sec_kpi_snapshot():
     c7, i7 = gsc_window(7)
     c28, i28 = gsc_window(28)
     yt = {}
-    try:
-        _, yt = DASH.yt_section()
-    except Exception:
-        pass
+    for _ in range(2):  # YouTube API ara sıra geçici hata veriyor → KPI'ya null düşmesin
+        try:
+            _, yt = DASH.yt_section()
+        except Exception:
+            yt = {}
+        if yt:
+            break
+        time.sleep(5)
     snap = {"date": TODAY.isoformat(),
             "real_7d": sum(v for k, v in g7.items() if k != "Direct"),
             "direct_7d": g7.get("Direct", 0),
@@ -447,6 +452,31 @@ def sec_content_queue():
         out(l)
 
 
+def sec_user_inputs():
+    """Kaan'dan beklenen girdilerin GERÇEK durumu — ajan repo dışını ls'leyemez (headless izin)."""
+    cfg = os.path.expanduser("~/.config/parafomo")
+    music = os.path.join(os.path.dirname(ROOT), "parafomo-media", "music")
+    n_music = len([f for f in os.listdir(music) if f.lower().endswith((".mp3", ".wav", ".m4a", ".ogg"))]) \
+        if os.path.isdir(music) else 0
+    def has(name):
+        return "VAR ✅" if os.path.exists(os.path.join(cfg, name)) else "yok"
+    out(f"Girdi durumu (otomatik): müzik klasörü {n_music} parça · claude.env {has('claude.env')} · "
+        f"backup.env {has('backup.env')}")
+    try:
+        import sqlite3
+        db = os.path.expanduser("~/parafomo-data/portfolio.db")
+        con = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+        rows = dict(con.execute("SELECT status, COUNT(*) FROM newsletter_subscribers GROUP BY status").fetchall())
+        users = con.execute("SELECT COUNT(*) FROM users").fetchone()[0]
+        con.close()
+        out(f"Bülten aboneleri: onaylı {rows.get('confirmed', 0)} · bekleyen {rows.get('pending', 0)} · "
+            f"çıkan {rows.get('unsubscribed', 0)} · portföy üyeleri {users}")
+    except Exception as e:
+        out(f"Bülten/üye sayısı okunamadı: {type(e).__name__}")
+    out("")
+    cat(os.path.join(PLAN, "user-tasks.md"))
+
+
 def sec_runs():
     p = os.path.join(MEM, "runs.jsonl")
     if not os.path.exists(p):
@@ -508,7 +538,7 @@ def main():
     section("9) Takvim (yaklaşan yüksek/orta etkili olaylar)", sec_calendar)
     section("10) İçerik envanteri", sec_inventory)
     section("11) Blog konu kuyruğu (agent/plan/content-queue.md)", sec_content_queue)
-    section("12) Kullanıcı görevleri (agent/plan/user-tasks.md)", lambda: cat(os.path.join(PLAN, "user-tasks.md")))
+    section("12) Kullanıcı görevleri (agent/plan/user-tasks.md)", sec_user_inputs)
     section("13) Son ajan koşuları + maliyet", sec_runs)
     section("14) Yarım kalan iş", sec_stash)
 

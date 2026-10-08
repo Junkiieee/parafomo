@@ -1,0 +1,44 @@
+# ParaFOMO
+
+> ParaFOMO (parafomo.com), Türk tasarruf sahiplerinin enflasyon karşısında birikimini veriyle korumasına yardım eden Türkçe kişisel finans sitesidir. Altın, gümüş, dolar, euro, BIST 100 ve bitcoin için TL bazında tarihsel getiri tabloları; TCMB, TÜİK enflasyon ve Fed takvimleri; halka arz takvimi ve getiri karnesi; güncel oranlarla hesaplayıcılar sunar. Yatırım tavsiyesi vermez; geçmiş veriyi kaynağıyla gösterir.
+
+Veri sayfaları her iş günü otomatik güncellenir (kaynaklar: Yahoo Finance fiyat serileri, TCMB, TÜİK, Fed, halkarz.com). Her sayfada "son güncelleme" tarihi ve yöntem notu bulunur; ayrıntı: https://parafomo.com/metodoloji/
+
+## Getiri verileri (TL bazında 1/3/5/10 yıl ve yılbaşından beri)
+- [Altın mı dolar mı borsa mı?](https://parafomo.com/altin-dolar-borsa/): altın, gümüş, dolar, euro, BIST 100 ve bitcoin getirilerinin tek tablo karşılaştırması
+- [Gram altın getirisi](https://parafomo.com/altin-getiri/): gram altın TL ve ons altın USD getirisi
+- [Gram gümüş getirisi](https://parafomo.com/gumus-getiri/): gümüş getirisi, gümüş mü altın mı, altın/gümüş oranı
+- [Dolar getirisi](https://parafomo.com/dolar-getiri/): USD/TRY'nin tarihsel getirisi ve enflasyonla karşılaştırma
+- [Euro getirisi](https://parafomo.com/euro-getiri/): EUR/TRY getirisi, euro mu dolar mı, EUR/USD parite etkisi
+- [BIST 100 getirisi](https://parafomo.com/bist-getiri/): BIST 100 endeksinin TL ve USD bazında getirisi
+- [Bitcoin getirisi](https://parafomo.com/bitcoin-getiri/): bitcoin TL/USD getirisi ve en büyük düşüş (max drawdown)
+- [Altın fiyatları](https://parafomo.com/altin-fiyatlari/): güncel gram, çeyrek, yarım, tam altın fiyatları
+
+## Takvimler
+- [TCMB faiz kararı takvimi](https://parafomo.com/tcmb-faiz-takvimi/): 2026 PPK toplantı tarihleri ve saatleri
+- [Enflasyon takvimi](https://parafomo.com/enflasyon-takvimi/): TÜİK TÜFE açıklama tarihleri
+- [Fed faiz takvimi](https://parafomo.com/fed-faiz-takvimi/): 2026 FOMC toplantı tarihleri (TSİ saatleriyle)
+- [Ekonomik takvim](https://parafomo.com/ekonomik-takvim/): Türkiye ve dünya için yüksek etkili veri açıklamaları
+
+## Halka arz
+- [Halka arz takvimi](https://parafomo.com/halka-arz/): yaklaşan ve devam eden halka arzlar; her şirket için künye sayfası (fiyat, lot, dağıtım, aracı kurum, fon kullanımı)
+- [Halka arz getirileri](https://parafomo.com/halka-arz-getiri/): 2026 halka arzlarının halka arz fiyatına göre güncel getirisi
+
+## Hesaplayıcılar (2026 oran ve vergileriyle)
+- [Mevduat faizi hesaplama](https://parafomo.com/mevduat-faizi-hesaplama/): net getiri ve stopaj
+- [Bileşik faiz hesaplama](https://parafomo.com/bilesik-faiz-hesaplama/)
+- [Kredi hesaplama](https://parafomo.com/kredi-hesaplama/): aylık taksit ve toplam faiz
+- [Net maaş hesaplama](https://parafomo.com/net-maas-hesaplama/): brütten nete
+- [Kıdem tazminatı hesaplama](https://parafomo.com/kidem-tazminati-hesaplama/)
+- [Kira artış oranı hesaplama](https://parafomo.com/kira-artis-orani-hesaplama/)
+- [Altın hesaplama](https://parafomo.com/altin-hesaplama/)
+- [Portföy takip](https://parafomo.com/portfoy-takip/): BIST, altın ve gümüş için ücretsiz portföy takibi
+
+## Rehberler
+- [Blog](https://parafomo.com/blog/): yatırım araçları, vergi, BES, enflasyon ve kişisel finans rehberleri
+
+## Hakkında
+- [Hakkımızda](https://parafomo.com/hakkimizda/)
+- [Editoryal politika](https://parafomo.com/editoryal-politika/)
+- [Metodoloji](https://parafomo.com/metodoloji/)
+- [Haftalık bülten](https://parafomo.com/bulten/)
