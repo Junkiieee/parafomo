@@ -4,29 +4,37 @@ import Newsletter from '../components/Newsletter.astro';
 import gold from '../../data/altin-getiri.json';
 import usd from '../../data/dolar-getiri.json';
 import bist from '../../data/bist-getiri.json';
+import silver from '../../data/gumus-getiri.json';
 
-// Üç getiri veri setini tek karşılaştırma tablosunda birleştir (TL bazında).
+// Getiri veri setlerini tek karşılaştırma tablosunda birleştir (TL bazında).
 // Ortak dönemler: YTD + 1/3/5/10 yıl. Her dönemde kazananı işaretle.
-type Row = { label: string; years: number | null; gold: number; usd: number; bist: number };
+// Çekirdek üçlü (altın/dolar/BIST) başlık, kartlar ve SSS'yi belirler; ek varlıklar (gümüş, ...)
+// yalnız tabloya sütun olarak girer — yeni getiri sayfası açınca EXTRA'ya bir satır ekle.
+type Key = 'gold' | 'usd' | 'bist' | 'silver';
+type Asset = { key: Key; name: string; icon: string; href: string; src: any };
+const CORE: Asset[] = [
+  { key: 'gold', name: 'Altın', icon: '🥇', href: '/altin-getiri', src: gold },
+  { key: 'usd', name: 'Dolar', icon: '💵', href: '/dolar-getiri', src: usd },
+  { key: 'bist', name: 'BIST 100', icon: '📊', href: '/bist-getiri', src: bist },
+];
+const EXTRA: Asset[] = [
+  { key: 'silver', name: 'Gümüş', icon: '🥈', href: '/gumus-getiri', src: silver },
+];
+const ALL = [...CORE, ...EXTRA];
+type Row = { label: string; years: number | null; gold: number; usd: number; bist: number; vals: Record<Key, number | null> };
 
 const periodYears = [1, 3, 5, 10];
 const retOf = (src: any, years: number): number | null => {
+  if (years === 0) return src.ytd?.return_tl_pct ?? null;
   const p = (src.periods ?? []).find((x: any) => x.years === years);
   return p ? p.return_tl_pct : null;
 };
 
 const rows: Row[] = [];
-rows.push({
-  label: 'Yıl başından beri',
-  years: 0,
-  gold: gold.ytd.return_tl_pct,
-  usd: usd.ytd.return_tl_pct,
-  bist: bist.ytd.return_tl_pct,
-});
-for (const y of periodYears) {
-  const g = retOf(gold, y), u = retOf(usd, y), b = retOf(bist, y);
-  if (g == null || u == null || b == null) continue;
-  rows.push({ label: `${y} yıl`, years: y, gold: g, usd: u, bist: b });
+for (const y of [0, ...periodYears]) {
+  const vals = Object.fromEntries(ALL.map((a) => [a.key, retOf(a.src, y)])) as Record<Key, number | null>;
+  if (vals.gold == null || vals.usd == null || vals.bist == null) continue;
+  rows.push({ label: y === 0 ? 'Yıl başından beri' : `${y} yıl`, years: y, gold: vals.gold, usd: vals.usd, bist: vals.bist, vals });
 }
 
 const updated = new Date(gold.updated).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -49,11 +57,9 @@ const loser = assets[assets.length - 1];
 const seed = 10000;
 const valueOf = (retPct: number) => seed * (1 + retPct / 100);
 
-// Bir satırın kazananını bul (TL getiri en yüksek)
-const winnerKey = (r: Row): 'gold' | 'usd' | 'bist' => {
-  const m = Math.max(r.gold, r.usd, r.bist);
-  return r.gold === m ? 'gold' : r.usd === m ? 'usd' : 'bist';
-};
+// Bir satırın kazananını bul (TL getiri en yüksek; tablodaki tüm varlıklar arasında)
+const winnerOf = (r: Row): Asset =>
+  ALL.filter((a) => r.vals[a.key] != null).sort((a, b) => (r.vals[b.key] as number) - (r.vals[a.key] as number))[0];
 
 const faqs = [
   {
@@ -112,22 +118,23 @@ const faqLd = {
         <thead>
           <tr>
             <th>Dönem</th>
-            <th class="r">🥇 Altın</th>
-            <th class="r">💵 Dolar</th>
-            <th class="r">📊 BIST 100</th>
+            {ALL.map((a) => <th class="r"><a href={a.href}>{a.icon} {a.name}</a></th>)}
             <th>Kazanan</th>
           </tr>
         </thead>
         <tbody>
           {rows.map((r) => {
-            const wk = winnerKey(r);
+            const w = winnerOf(r);
             return (
               <tr>
                 <td class="gr-co"><span class="gr-name">{r.years === 0 ? r.label : `Son ${r.label}`}</span></td>
-                <td class="r"><span class={`gr-ret tone-${toneOf(r.gold)} ${wk === 'gold' ? 'is-win' : ''}`}>{pct(r.gold)}</span></td>
-                <td class="r"><span class={`gr-ret tone-${toneOf(r.usd)} ${wk === 'usd' ? 'is-win' : ''}`}>{pct(r.usd)}</span></td>
-                <td class="r"><span class={`gr-ret tone-${toneOf(r.bist)} ${wk === 'bist' ? 'is-win' : ''}`}>{pct(r.bist)}</span></td>
-                <td class="gr-win">{wk === 'gold' ? '🥇 Altın' : wk === 'usd' ? '💵 Dolar' : '📊 BIST'}</td>
+                {ALL.map((a) => {
+                  const v = r.vals[a.key];
+                  return v == null
+                    ? <td class="r gr-na">—</td>
+                    : <td class="r"><span class={`gr-ret tone-${toneOf(v)} ${w.key === a.key ? 'is-win' : ''}`}>{pct(v)}</span></td>;
+                })}
+                <td class="gr-win">{w.icon} {w.name}</td>
               </tr>
             );
           })}
@@ -158,8 +165,8 @@ const faqLd = {
     </p>
     <p>
       Her varlığın kendi detaylı getiri dökümü için <a href="/altin-getiri">altın getirisi</a>,
-      <a href="/dolar-getiri">dolar getirisi</a> ve <a href="/bist-getiri">BIST 100 getirisi</a>
-      sayfalarına bakabilirsiniz. Altın mı dolar mı tercihini derinlemesine
+      <a href="/dolar-getiri">dolar getirisi</a>, <a href="/bist-getiri">BIST 100 getirisi</a> ve
+      <a href="/gumus-getiri">gümüş getirisi</a> sayfalarına bakabilirsiniz. Altın mı dolar mı tercihini derinlemesine
       <a href="/blog/altin-mi-dolar-mi">bu yazıda</a>, Türkiye'deki tüm yatırım araçlarını ise
       <a href="/blog/turkiyede-en-iyi-yatirim-araclari-2026">bu rehberde</a> karşılaştırdık.
     </p>
@@ -177,7 +184,7 @@ const faqLd = {
 
   <section class="container gr-note">
     <p>
-      Veri kaynağı: Yahoo Finance (GC=F, USDTRY=X, XU100.IS). Yalnızca bilgilendirme amaçlıdır;
+      Veri kaynağı: Yahoo Finance (GC=F, SI=F, USDTRY=X, XU100.IS). Yalnızca bilgilendirme amaçlıdır;
       <strong>yatırım tavsiyesi değildir</strong>. Geçmiş getiri gelecekteki getirinin garantisi değildir.
     </p>
   </section>
@@ -206,7 +213,10 @@ const faqLd = {
   .gr-h2 { font-size: var(--step-1); margin: 0 0 0.9rem; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
   .gr-count { font-size: 0.66rem; font-weight: 700; color: var(--brand-deep); background: var(--brand-tint); border-radius: 999px; padding: 0.1rem 0.55rem; }
 
-  .gr-tablewrap { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg-card); box-shadow: var(--shadow-xs); }
+  .gr-tablewrap { border: 1px solid var(--border); border-radius: var(--radius); overflow-x: auto; background: var(--bg-card); box-shadow: var(--shadow-xs); }
+  .gr-table thead th a { color: inherit; text-decoration: none; }
+  .gr-table thead th a:hover { color: var(--brand); }
+  .gr-na { color: var(--text-muted); }
   .gr-table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
   .gr-table thead th { text-align: left; font-size: var(--step--2); color: var(--text-muted); font-weight: 600; padding: 0.6rem 0.9rem; background: var(--bg-elev); border-bottom: 1px solid var(--border); }
   .gr-table th.r, .gr-table td.r { text-align: right; }
