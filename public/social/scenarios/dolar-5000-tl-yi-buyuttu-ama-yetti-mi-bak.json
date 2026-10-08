@@ -1,0 +1,117 @@
+{
+  "slug": "dolar-5000-tl-yi-buyuttu-ama-yetti-mi-bak",
+  "title": "Dolar 5000 TL'yi Büyüttü Ama Yetti mi, Bak",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "Geçen yıl 5000 TL'yi dolara çevirseydin bugün yaklaşık 7092 TL olurdu, yani yaklaşık %42 getiri. Bu getirinin gerçekte ne ifade ettiğini üç adımda anlatıyoruz.",
+  "tags": [
+    "dolar",
+    "dolar tl",
+    "getiri",
+    "birikim",
+    "enflasyon",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "Dolar 5000 liranı büyüttü, ama kazandırmadı.",
+      "visual": {
+        "type": "object",
+        "query": "stack of cash wallet full of money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Geçen yıl bu zamanlar 5000 lirayı dolara çevirseydin, bugün yaklaşık 7092 liran olurdu.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yaklaşık yüzde 42 getiri. Ama market arabası, kira ve faturalar aynı sürede bundan hızlı pahalandı.",
+      "visual": {
+        "type": "chart",
+        "query": "getiri grafiği",
+        "chart": {
+          "kind": "line",
+          "label": "Dolar/TL",
+          "unit": "TL",
+          "points": [
+            34.68,
+            35.31,
+            35.85,
+            36.52,
+            38.5,
+            39.21,
+            39.89,
+            40.59,
+            41.1,
+            41.58,
+            42.03,
+            42.49,
+            42.95,
+            43.46,
+            43.96,
+            45.17,
+            45.85,
+            46.64,
+            47.5,
+            48.25,
+            49.01,
+            49.14,
+            49.19
+          ],
+          "x": [
+            "11/24",
+            "12/24",
+            "01/25",
+            "02/25",
+            "03/25",
+            "04/25",
+            "05/25",
+            "06/25",
+            "07/25",
+            "08/25",
+            "09/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "02/26",
+            "03/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26",
+            "09/26",
+            "10/26"
+          ],
+          "amount": 5000,
+          "end_value": 7092,
+          "pct": 42
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yani rakam büyüdü, alım gücün tam korunmadı. Kur tek başına birikimin koruması sayılmaz.",
+      "visual": {
+        "type": "concept",
+        "query": "loss of value"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki aynı parayı altına koysaydın ne olurdu? Abone ol, her gün tek net hesabı 60 saniyede göstereyim.",
+      "visual": {
+        "type": "object",
+        "query": "stack of cash wallet full of money"
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "title": "Dolar 5000 TL'yi Büyüttü Ama Yetti mi, Bak #Shorts",
+  "description": "Geçen yıl 5000 TL'yi dolara çevirseydin bugün yaklaşık 7092 TL olurdu, yani yaklaşık %42 getiri. Bu getirinin gerçekte ne ifade ettiğini üç adımda anlatıyoruz.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #dolar #dolar tl #getiri #birikim #enflasyon",
+  "tags": [
+    "dolar",
+    "dolar tl",
+    "getiri",
+    "birikim",
+    "enflasyon",
+    "yatırım",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-dolar-5000-tl-yi-buyuttu-ama-yetti-mi-bak-m.mp4",
+  "slug": "dolar-5000-tl-yi-buyuttu-ama-yetti-mi-bak-m",
+  "format": "backtest_return",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 4.05,
+      "spoken": "Dolar 5000 liranı büyüttü, ama kazandırmadı.",
+      "visual": "manim: Dolar"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 4.05,
+      "end": 10.83,
+      "spoken": "Geçen yıl bu zamanlar 5000 lirayı dolara çevirseydin, bugün yaklaşık 7092 liran olurdu.",
+      "visual": "manim: Dolar"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 10.83,
+      "end": 18.36,
+      "spoken": "Yaklaşık yüzde 42 getiri. Ama market arabası, kira ve faturalar aynı sürede bundan hızlı pahalandı.",
+      "visual": "manim: backtest"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 18.36,
+      "end": 24.9,
+      "spoken": "Yani rakam büyüdü, alım gücün tam korunmadı. Kur tek başına birikimin koruması sayılmaz.",
+      "visual": "manim: Dolar"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 24.9,
+      "end": 32.0,
+      "spoken": "Peki aynı parayı altına koysaydın ne olurdu? Abone ol, her gün tek net hesabı 60 saniyede göstereyim.",
+      "visual": "marka kartı"
+    }
+  ],
+  "video_id": "zOFe4c2sO3U",
+  "youtube_url": "https://youtube.com/shorts/zOFe4c2sO3U",
+  "ig_reel_id": "18132378634752486",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DeMv1EAiRkq/",
+  "ig_seed_comment_id": "17889544281617637"
+}

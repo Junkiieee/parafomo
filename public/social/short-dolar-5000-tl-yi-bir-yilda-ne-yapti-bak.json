@@ -1,0 +1,70 @@
+{
+  "title": "Dolar 5000 TL'yi Bir Yılda Ne Yaptı, Bak #Shorts",
+  "description": "Geçen yıl 5000 TL'yi dolara çevirseydin bugün yaklaşık 7091 TL olurdu, yani yaklaşık %42 getiri. Bu getirinin enflasyon karşısında ne ifade ettiğini sade biçimde anlatan kısa bir geri-dönük analiz.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #dolar #dolar tl #backtest #getiri #enflasyon",
+  "tags": [
+    "dolar",
+    "dolar tl",
+    "backtest",
+    "getiri",
+    "enflasyon",
+    "birikim",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-dolar-5000-tl-yi-bir-yilda-ne-yapti-bak.mp4",
+  "slug": "dolar-5000-tl-yi-bir-yilda-ne-yapti-bak",
+  "format": "backtest_return",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.98,
+      "spoken": "Dolara çevirdiğin para kazandırdı, ama yetmedi.",
+      "visual": "object: stack of cash wallet full of money"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.98,
+      "end": 10.64,
+      "spoken": "Geçen yıl bu zamanlar 5000 lirayı dolara çevirseydin, bugün yaklaşık 7091 lirası olurdu.",
+      "visual": "object: calculator"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 10.64,
+      "end": 18.05,
+      "spoken": "Yani yaklaşık yüzde 42 getiri. Ama market arabası, kira ve faturalar da aynı sürede zamlandı.",
+      "visual": "chart: getiri grafiği"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 18.05,
+      "end": 24.95,
+      "spoken": "Çıkarım şu: kazanmak tek başına yetmez. Getirini enflasyonun yanında tartmazsan, kazandığını sanırsın.",
+      "visual": "manim: Enflasyon"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 24.95,
+      "end": 32.53,
+      "spoken": "Sıradaki karşılaştırmada altın ile dolar yan yana gelecek. Abone ol, her gün tek net hesabı kısa kısa göstereyim.",
+      "visual": "object: stack of cash wallet full of money"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-07T15:33:29+00:00",
+    "slug": "dolar-5000-tl-yi-bir-yilda-ne-yapti-bak",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "E3Qyr0G9zbU",
+  "youtube_url": "https://youtube.com/shorts/E3Qyr0G9zbU",
+  "ig_reel_id": "17893254240611585",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DeMsNsCD2R7/",
+  "ig_seed_comment_id": "18078304214401964"
+}
