@@ -14,7 +14,7 @@ faq:
   - q: "Altın/gümüş oranı nedir, ne işe yarar?"
     a: "1 ons altını almak için kaç ons gümüş gerektiğini gösterir. Şu an yaklaşık 69,4; verideki ortalama 80,6. Oran düşükken gümüş altına göre görece pahalı, yüksekken görece ucuz sayılır ama tek başına alım-satım sinyali değildir."
   - q: "Gümüş neden altından daha oynak?"
-    a: "Gümüş talebinin yaklaşık yarısı sanayiden (güneş paneli, elektronik) gelir ve piyasası altına göre çok daha küçüktür. Bu yüzden ekonomik büyüme beklentisindeki değişimlere ve spekülatif akımlara daha sert tepki verir."
+    a: "Gümüş talebinin yarısından fazlası sanayiden (güneş paneli, elektronik) gelir ve piyasası altına göre çok daha küçüktür. Bu yüzden ekonomik büyüme beklentisindeki değişimlere ve spekülatif akımlara daha sert tepki verir."
   - q: "Gümüş nasıl alınır?"
     a: "Bankaların dijital gümüş hesabı, gümüş fonları veya fiziki külçe ile alınabilir. Fiziki gümüşte alış-satış farkı ve saklama maliyeti genelde daha yüksektir; işlemden önce banka/kurumun güncel koşullarını kontrol et."
 ---
@@ -59,7 +59,7 @@ Dikkat: Bu rakamlar "doğru günde alıp bugün sattıysan" ne olacağını gös
 
 ## Dolar Bazında Bakınca Ne Değişiyor?
 
-TL bazındaki getirinin büyük kısmı kurdan geliyor. Metalin kendi performansını görmek için ons fiyatına (USD) bakmak gerekir:
+TL bazındaki getirinin büyük kısmı kurdan geliyor (kurun kendi seyri için [dolar getiri sayfamıza](/dolar-getiri) bakabilirsin). Metalin kendi performansını görmek için ons fiyatına (USD) bakmak gerekir:
 
 - **10 yıl:** Ons gümüş +%264,4, ons altın +%254,3 — yine başa baş.
 - **1 yıl:** Ons gümüş +%24,6, ons altın +%3,8 — gümüş açık ara önde.
@@ -71,7 +71,7 @@ Yani TL'nin değer kaybı her iki metali de aynı ölçüde yukarı taşıdı; a
 
 | Özellik | Gümüş | Altın |
 |---|---|---|
-| **Talebin kaynağı** | Yaklaşık yarısı sanayi (güneş paneli, elektronik) | Ağırlıkla yatırım, mücevher ve merkez bankaları |
+| **Talebin kaynağı** | Yarısından fazlası sanayi (güneş paneli, elektronik) | Ağırlıkla yatırım, mücevher ve merkez bankaları |
 | **Oynaklık** | Yüksek | Orta |
 | **Kriz anındaki davranış** | Karışık; resesyon korkusunda düşebilir | Genelde güvenli liman |
 | **Piyasa büyüklüğü / likidite** | Küçük, daha sığ | Çok büyük, derin |
@@ -88,7 +88,7 @@ Jeopolitik gerilim, savaş ya da finansal panik dönemlerinde merkez bankaları 
 
 ### 3. Oynaklık iki yönlü çalışır
 
-Gümüşün yüksek oynaklığı, yükselişte daha çok kazandırır, düşüşte daha çok kaybettirir. 2026'nın ilk dokuz ayı bunun iyi bir örneği: önceki 12 ayda %45,9 kazandıran gram gümüş, yılbaşından bu yana %13,5 değer kaybetti.
+Gümüşün yüksek oynaklığı, yükselişte daha çok kazandırır, düşüşte daha çok kaybettirir. 2026'nın ilk dokuz ayı bunun iyi bir örneği: son 12 ayda hâlâ %45,9 kârda olan gram gümüş, yılbaşından bu yana %13,5 değer kaybetti; yani yılı çok yüksek bir seviyeden açıp sert geri çekildi.
 
 ### 4. Küçük birim, kolay giriş
 
