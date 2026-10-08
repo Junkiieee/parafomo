@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-10-07T08:46:12Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-10-08T08:46:20Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -17,7 +17,7 @@
 ### Shorts motoru (google/edge) — **explore** (yeterli veri yok, rotasyon sürüyor)
 
 
-### Viral format — **explore** (yeterli veri yok, rotasyon sürüyor)
+### Viral format — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
 - `shock_number` — skor 347.337, örnek 7
 - `single_concept` — skor 343.229, örnek 4
@@ -38,7 +38,7 @@
 ## Konu sinyalleri
 
 **En iyi blog sayfaları:**
-- abd-issizlik-verisi-altin-dolar-etkisi — skor 44.07
+- abd-issizlik-verisi-altin-dolar-etkisi — skor 45.07
 - tcmb-ekim-2026-faiz-karari-ppk-beklentiler — skor 19.5
 - abd-faiz-yukseltirse-dolar-ne-olur — skor 11.0
 - abd-eylul-2026-cpi-verisi-fed-dolar-altin — skor 9.9
@@ -47,13 +47,13 @@
 
 **🎯 Fırsat sorguları** (içerik/başlık iyileştir):
 - `albayrak hazır beton hisse` — gös 179, sıra 12.3
+- `"albayrak hazır beton"` — gös 33, sıra 4
 - `abd işsizlik verisi altını nasıl etkiler` — gös 23, sıra 4.7
+- `buyback nedir` — gös 21, sıra 9.8
 - `abd faiz artarsa dolar ne olur` — gös 18, sıra 14.5
+- `dezenflasyon nedir` — gös 17, sıra 18.7
 - `+tcmb faiz kararı 10 eylül 2026 politika faizi` — gös 10, sıra 9.9
 - `%tcmb faiz kararı 10 eylül 2026 politika faizi` — gös 9, sıra 10
-- `abd faiz artırırsa ne olur` — gös 9, sıra 19.8
-- `abd faiz arttırırsa ne olur` — gös 8, sıra 15.2
-- `+tcmb 10 eylül 2026 faiz kararı politika faizi` — gös 7, sıra 10
 
 ## Notlar
 
