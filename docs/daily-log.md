@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-10-08 — Gümüş mü Altın mı? 10 Yılda TL Bazında Hangisi Kazandırdı
+
+**Yayınlanan yazı:** [Gümüş mü Altın mı? 10 Yılda TL Bazında Hangisi Kazandırdı](/blog/gumus-mi-altin-mi-10-yillik-getiri-karsilastirma)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — B261006-2 getiri kümesi, /gumus-getiri eşi)
+
+---
+
 ## 2026-10-07 — Halka Arza Nasıl Katılınır? Eşit Dağıtım ve Lot Hesabı
 
 **Yayınlanan yazı:** [Halka Arza Nasıl Katılınır? Eşit Dağıtım ve Lot Hesabı](/blog/halka-arza-nasil-katilinir-esit-dagitim-lot-hesabi)

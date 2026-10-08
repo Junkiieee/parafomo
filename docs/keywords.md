@@ -93,6 +93,8 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 
 ## Yayınlananlar (otomasyon buraya ekler)
 
+- [x] Gümüş mü Altın mı? 10 Yılda TL Bazında Hangisi Kazandırdı — `gumus-mi-altin-mi-10-yillik-getiri-karsilastirma` (ajan kuyruğu: B261006-2 getiri kümesi, /gumus-getiri eşi; hedef "gümüş mü altın mı" + "gümüş yatırımı mantıklı mı"; data/gumus-getiri.json + altin-getiri.json gerçek verisiyle dönem tablosu + 10.000 TL senaryosu + altın/gümüş oranı; /gumus-getiri + /altin-getiri + /altin-dolar-borsa; 8 Ekim 2026)
+
 - [x] Halka Arza Nasıl Katılınır? Eşit Dağıtım ve Lot Hesabı — `halka-arza-nasil-katilinir-esit-dagitim-lot-hesabi` (ajan kuyruğu: B261006-1 halka arz kümesi rehberi; hedef "halka arza nasıl katılınır" + "halka arz eşit dağıtım nedir"; 5 adım süreç + eşit/oransal karşılaştırma tablosu + lot hesabı örnekleri; /halka-arz + /halka-arz-getiri + ALBTN + halka-arz-nedir-ipo cluster'ı; 7 Ekim 2026)
 
 - [x] TCMB Ekim 2026 Faiz Kararı: PPK 22 Ekim'de Ne Yapacak? — `tcmb-ekim-2026-faiz-karari-ppk-beklentiler` (takvim: 22 Ekim 2026 🔴 TCMB PPK; TÜİK 5 Ekim TÜFE + ABD PCE 30 Eylül + ABD NFP 2 Ekim bağlantısı; 3 senaryo tablosu + mevduat/kredi pratik rehber; tcmb-eylul-2026 + tuik-ekim-2026 + reel-faiz-nedir cluster'ı; 30 Eylül 2026)
