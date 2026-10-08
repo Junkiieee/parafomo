@@ -6,12 +6,13 @@ import usd from '../../data/dolar-getiri.json';
 import bist from '../../data/bist-getiri.json';
 import silver from '../../data/gumus-getiri.json';
 import euro from '../../data/euro-getiri.json';
+import btc from '../../data/bitcoin-getiri.json';
 
 // Getiri veri setlerini tek karşılaştırma tablosunda birleştir (TL bazında).
 // Ortak dönemler: YTD + 1/3/5/10 yıl. Her dönemde kazananı işaretle.
 // Çekirdek üçlü (altın/dolar/BIST) başlık, kartlar ve SSS'yi belirler; ek varlıklar (gümüş, ...)
 // yalnız tabloya sütun olarak girer — yeni getiri sayfası açınca EXTRA'ya bir satır ekle.
-type Key = 'gold' | 'usd' | 'bist' | 'silver' | 'euro';
+type Key = 'gold' | 'usd' | 'bist' | 'silver' | 'euro' | 'btc';
 type Asset = { key: Key; name: string; icon: string; href: string; src: any };
 const CORE: Asset[] = [
   { key: 'gold', name: 'Altın', icon: '🥇', href: '/altin-getiri', src: gold },
@@ -21,6 +22,7 @@ const CORE: Asset[] = [
 const EXTRA: Asset[] = [
   { key: 'silver', name: 'Gümüş', icon: '🥈', href: '/gumus-getiri', src: silver },
   { key: 'euro', name: 'Euro', icon: '💶', href: '/euro-getiri', src: euro },
+  { key: 'btc', name: 'Bitcoin', icon: '₿', href: '/bitcoin-getiri', src: btc },
 ];
 const ALL = [...CORE, ...EXTRA];
 type Row = { label: string; years: number | null; gold: number; usd: number; bist: number; vals: Record<Key, number | null> };
@@ -168,7 +170,9 @@ const faqLd = {
     <p>
       Her varlığın kendi detaylı getiri dökümü için <a href="/altin-getiri">altın getirisi</a>,
       <a href="/dolar-getiri">dolar getirisi</a>, <a href="/bist-getiri">BIST 100 getirisi</a> ve
-      <a href="/gumus-getiri">gümüş getirisi</a> ve <a href="/euro-getiri">euro getirisi</a> sayfalarına bakabilirsiniz. Altın mı dolar mı tercihini derinlemesine
+      <a href="/gumus-getiri">gümüş getirisi</a>, <a href="/euro-getiri">euro getirisi</a> ve
+      <a href="/bitcoin-getiri">bitcoin getirisi</a> sayfalarına bakabilirsiniz (bitcoin çok daha yüksek
+      risklidir; en büyük düşüşleri o sayfada). Altın mı dolar mı tercihini derinlemesine
       <a href="/blog/altin-mi-dolar-mi">bu yazıda</a>, Türkiye'deki tüm yatırım araçlarını ise
       <a href="/blog/turkiyede-en-iyi-yatirim-araclari-2026">bu rehberde</a> karşılaştırdık.
     </p>
@@ -186,7 +190,7 @@ const faqLd = {
 
   <section class="container gr-note">
     <p>
-      Veri kaynağı: Yahoo Finance (GC=F, SI=F, USDTRY=X, EURTRY=X, XU100.IS). Yalnızca bilgilendirme amaçlıdır;
+      Veri kaynağı: Yahoo Finance (GC=F, SI=F, USDTRY=X, EURTRY=X, XU100.IS, BTC-USD). Yalnızca bilgilendirme amaçlıdır;
       <strong>yatırım tavsiyesi değildir</strong>. Geçmiş getiri gelecekteki getirinin garantisi değildir.
     </p>
   </section>

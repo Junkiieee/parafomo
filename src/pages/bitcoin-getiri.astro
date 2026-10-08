@@ -1,0 +1,296 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import data from '../../data/bitcoin-getiri.json';
+import gold from '../../data/altin-getiri.json';
+
+type Period = {
+  label: string; years?: number;
+  btc_tl_then: number; btc_tl_now: number; return_tl_pct: number;
+  btc_usd_then: number; btc_usd_now: number; return_usd_pct: number;
+};
+
+const periods = (data.periods ?? []) as Period[];
+const ytd = data.ytd as Period;
+const all = [ytd, ...periods];
+const goldAll = [gold.ytd, ...(gold.periods ?? [])] as { years?: number; return_tl_pct: number }[];
+const updated = new Date(data.updated).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+const fmt0 = (n: number) => n.toLocaleString('tr-TR', { maximumFractionDigits: 0 });
+const fmt1 = (n: number) => n.toLocaleString('tr-TR', { maximumFractionDigits: 1 });
+const pct = (n: number) => (n > 0 ? '+' : '') + fmt1(n) + '%';
+const toneOf = (n: number) => (n > 0 ? 'up' : n < 0 ? 'down' : 'flat');
+const rowLabel = (p: { label: string; years?: number }) => (p.years ? `Son ${p.label}` : p.label);
+const monthTr = (ym: string) => {
+  const [y, m] = ym.split('-').map(Number);
+  return new Date(Date.UTC(y, m - 1, 1)).toLocaleDateString('tr-TR', { month: 'long', year: 'numeric' });
+};
+
+const longest = periods.find((p) => p.years === 10) ?? periods[periods.length - 1];
+const one = periods.find((p) => p.years === 1);
+const seed = 10000;
+const valueNow = seed * (1 + longest.return_tl_pct / 100);
+
+// Bitcoin mi altın mı — aynı dönemlerde TL getirisi
+const vs = all.map((p) => {
+  const g = goldAll.find((x) => (x.years ?? 0) === (p.years ?? 0));
+  return g ? { label: rowLabel(p), b: p.return_tl_pct, g: g.return_tl_pct } : null;
+}).filter((x): x is { label: string; b: number; g: number } => x !== null);
+const btcWins = vs.filter((r) => r.b > r.g).length;
+
+const ddFrom = monthTr(data.max_drawdown_usd_from);
+const ddTo = monthTr(data.max_drawdown_usd_to);
+
+const faqs = [
+  {
+    q: `Bitcoin son ${longest.years} yılda ne kadar kazandırdı?`,
+    a: `${longest.years} yıl önce 1 bitcoin yaklaşık ${fmt0(longest.btc_usd_then)} dolardı, bugün yaklaşık ${fmt0(longest.btc_usd_now)} dolar: dolar bazında %${fmt0(longest.return_usd_pct)}, TL bazında %${fmt0(longest.return_tl_pct)} getiri. Bu, aynı dönemdeki altın ve dövizin çok üzerinde — ama aynı dönemde zirveden dibe en büyük düşüş %${fmt0(Math.abs(data.max_drawdown_usd_pct))} oldu.`,
+  },
+  {
+    q: 'Bitcoin\'in en büyük düşüşü ne kadardı?',
+    a: `Son ${longest.years} yılın aylık kapanışlarına göre en büyük zirveden-dibe düşüş dolar bazında %${fmt1(data.max_drawdown_usd_pct)} (${ddFrom} → ${ddTo}). Bugün fiyat, aylık kapanış zirvesinin (${fmt0(data.ath_usd_monthly_close)} $) %${fmt1(Math.abs(data.from_ath_usd_pct))} altında. Gün içi düşüşler aylık kapanışlardan daha sert olabilir.`,
+  },
+  {
+    q: 'Bitcoin mi altın mı daha çok kazandırdı?',
+    a: `TL bazında karşılaştırılan ${vs.length} dönemin ${btcWins} tanesinde bitcoin, ${vs.length - btcWins} tanesinde gram altın önde. Uzun vadede bitcoin çok daha yüksek getiri verdi; kısa vadede ise altın daha istikrarlı. İkisi farklı risk profilindedir: altın onlarca yıllık "güvenli liman" geçmişine sahip, bitcoin ise yüksek getiri potansiyeliyle birlikte sert düşüş riski taşır. (Geçmiş getiri gelecek getirinin garantisi değildir.)`,
+  },
+  {
+    q: 'Bu rakamlar kesin mi?',
+    a: 'Göstergedir. BTC-USD ve USD/TRY için Yahoo Finance aylık kapanışları kullanılır; TL fiyatı ikisinin çarpımıdır. Türk kripto borsalarındaki fiyat, makas ve komisyonlar farklı olabilir.',
+  },
+];
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+const datasetLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'Bitcoin TL ve dolar bazında tarihsel getiri ve en büyük düşüş (1, 3, 5, 10 yıl)',
+  description: 'Bitcoin\'in yıl başından beri ve 1/3/5/10 yıllık TL ve USD getirisi, aylık kapanışlarla en büyük zirveden düşüş. Her gün güncellenir.',
+  url: 'https://parafomo.com/bitcoin-getiri/',
+  dateModified: data.updated,
+  isAccessibleForFree: true,
+  creator: { '@id': 'https://parafomo.com/#organization' },
+  distribution: { '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: 'https://parafomo.com/bitcoin-getiri.json' },
+};
+---
+
+<BaseLayout
+  title={`Bitcoin Ne Kadar Kazandırdı? 1, 5, 10 Yıllık Getiri ve En Büyük Düşüşler`}
+  description={`Bitcoin son ${longest.years} yılda dolar bazında %${fmt0(longest.return_usd_pct)} kazandırdı; yol boyunca en büyük düşüş %${fmt0(Math.abs(data.max_drawdown_usd_pct))} oldu. 1, 3, 5, 10 yıllık TL ve dolar getirisi, altınla karşılaştırma — her gün güncel.`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(datasetLd)} />
+
+  <section class="container gr-hero">
+    <span class="eyebrow"><span class="pulse"></span> Özgün veri · Bitcoin getirisi</span>
+    <h1>Bitcoin Ne Kadar Kazandırdı?</h1>
+    <p class="lede soft">
+      Bitcoin'i 1, 3, 5 ve 10 yıl önce alsaydınız bugün elinizde ne olurdu? TL ve dolar bazında getiri,
+      yol boyunca yaşanan en büyük düşüşler ve aynı dönemde altınla karşılaştırma — her gün güncel.
+    </p>
+    <p class="gr-upd">Son güncelleme: {updated} · 1 BTC ≈ {fmt0(data.btc_usd_now)} $ ≈ {fmt0(data.btc_tl_now)} TL · Kaynak: Yahoo Finance</p>
+  </section>
+
+  <section class="container gr-stats">
+    <div class="stat card">
+      <span class={`stat-num ${longest.return_usd_pct >= 0 ? 'up' : 'down'}`}>{pct(longest.return_usd_pct)}</span>
+      <span class="stat-lbl">{longest.years} yıllık getiri (dolar)</span>
+    </div>
+    <div class="stat card">
+      <span class={`stat-num ${(one?.return_tl_pct ?? 0) >= 0 ? 'up' : 'down'}`}>{pct(one?.return_tl_pct ?? 0)}</span>
+      <span class="stat-lbl">Son 1 yıl (TL)</span>
+    </div>
+    <div class="stat card">
+      <span class="stat-num down">{pct(data.max_drawdown_usd_pct)}</span>
+      <span class="stat-lbl">En büyük düşüş ($, {data.max_drawdown_usd_from.slice(0, 4)}→{data.max_drawdown_usd_to.slice(0, 4)})</span>
+    </div>
+    <div class="stat card">
+      <span class={`stat-num ${data.from_ath_usd_pct >= 0 ? 'up' : 'down'}`}>{pct(data.from_ath_usd_pct)}</span>
+      <span class="stat-lbl">Zirveden uzaklık (aylık kapanış)</span>
+    </div>
+  </section>
+
+  <section class="container gr-warn">
+    <p>
+      ⚠️ <strong>Yüksek risk:</strong> Bitcoin son {longest.years} yılda birden çok kez değerinin yarısından
+      fazlasını kaybetti. Aşağıdaki getiriler "doğru zamanda alıp hiç satmadan tutan" yatırımcı içindir;
+      düşüşlerde satan yatırımcının sonucu çok farklıdır. Bu sayfa yatırım tavsiyesi değildir.
+    </p>
+  </section>
+
+  <section class="container gr-section">
+    <h2 class="gr-h2">Bitcoin getiri tablosu <span class="gr-count">BTC</span></h2>
+    <div class="gr-tablewrap">
+      <table class="gr-table">
+        <thead>
+          <tr>
+            <th>Dönem</th>
+            <th class="r">O zaman ($)</th>
+            <th class="r">Bugün ($)</th>
+            <th class="r">Getiri ($)</th>
+            <th class="r">Getiri (TL)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {all.map((p) => (
+            <tr>
+              <td class="gr-co"><span class="gr-name">{rowLabel(p)}</span></td>
+              <td class="r gr-mono">{fmt0(p.btc_usd_then)}</td>
+              <td class="r gr-mono">{fmt0(p.btc_usd_now)}</td>
+              <td class="r"><span class={`gr-ret tone-${toneOf(p.return_usd_pct)}`}>{pct(p.return_usd_pct)}</span></td>
+              <td class="r"><span class={`gr-ret tone-${toneOf(p.return_tl_pct)}`}>{pct(p.return_tl_pct)}</span></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="gr-tnote">
+      BTC TL ≈ BTC-USD × USD/TRY. "Getiri (TL)" bitcoin'in dolar getirisinin üstüne kur artışını da içerir.
+      Aylık kapanışlarla hesaplanır; göstergedir.
+    </p>
+  </section>
+
+  <section class="container gr-section">
+    <h2 class="gr-h2">Bitcoin mi altın mı? <span class="gr-count">TL getirisi yan yana</span></h2>
+    <div class="gr-tablewrap">
+      <table class="gr-table">
+        <thead>
+          <tr>
+            <th>Dönem</th>
+            <th class="r">₿ Bitcoin</th>
+            <th class="r">🥇 Gram altın</th>
+            <th>Önde</th>
+          </tr>
+        </thead>
+        <tbody>
+          {vs.map((r) => (
+            <tr>
+              <td class="gr-co"><span class="gr-name">{r.label}</span></td>
+              <td class="r"><span class={`gr-ret tone-${toneOf(r.b)} ${r.b > r.g ? 'is-win' : ''}`}>{pct(r.b)}</span></td>
+              <td class="r"><span class={`gr-ret tone-${toneOf(r.g)} ${r.g >= r.b ? 'is-win' : ''}`}>{pct(r.g)}</span></td>
+              <td class="gr-win">{r.b > r.g ? '₿ Bitcoin' : '🥇 Altın'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="gr-tnote">
+      Önde olan: bitcoin {btcWins} / {vs.length} dönem, altın {vs.length - btcWins} / {vs.length} dönem.
+      Altın verisi: <a href="/altin-getiri">altın getirisi</a> (aynı kaynak ve yöntem).
+    </p>
+  </section>
+
+  <section class="container gr-body">
+    <h2 class="gr-h2">10.000 TL'yi {longest.years} yıl önce bitcoin'e koysaydınız?</h2>
+    <p>
+      {longest.years} yıl önce 10.000 TL'lik bitcoin bugün yaklaşık <strong>{fmt0(valueNow)} TL</strong>
+      ederdi. Ama bu yolculukta {ddFrom} ile {ddTo} arasında değer dolar bazında
+      <strong>%{fmt1(Math.abs(data.max_drawdown_usd_pct))}</strong> eridi — zirvede alınan 10.000 $'lık bir
+      pozisyon dipte kâğıt üzerinde yaklaşık {fmt0(10000 * (1 + data.max_drawdown_usd_pct / 100))} $'a inmiş olurdu. Uzun vadeli tablonun asıl sorusu "ne kadar kazandırdı"
+      değil, "o düşüşlerde tutabilir miydiniz" sorusudur.
+    </p>
+    <p>
+      Kısa vadede tablo karışık: son 1 yılda bitcoin dolar bazında {pct(one?.return_usd_pct ?? 0)}, TL bazında
+      {' '}{pct(one?.return_tl_pct ?? 0)}; yıl başından beri TL bazında {pct(ytd.return_tl_pct)}. Bitcoin'in
+      fiyatı küresel likidite, faiz beklentisi ve risk iştahıyla güçlü biçimde hareket eder; bu yüzden ABD faiz
+      kararları ve dolar endeksi gibi göstergeler kripto için de önemlidir.
+    </p>
+    <p>
+      Bitcoin'in nasıl çalıştığı ve Türkiye'de nasıl alındığı için <a href="/blog/bitcoin-nedir-nasil-alinir">bitcoin
+      rehberimize</a>, saklama seçenekleri için <a href="/blog/kripto-cuzdan-nedir">kripto cüzdan yazımıza</a>,
+      altın, dolar ve borsayla karşılaştırma için <a href="/altin-dolar-borsa">altın mı dolar mı borsa mı</a>
+      sayfamıza bakabilirsiniz.
+    </p>
+  </section>
+
+  <section class="container gr-faq">
+    <h2 class="gr-h2">Sık sorulan sorular</h2>
+    {faqs.map((f) => (
+      <details class="gr-fq">
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
+  </section>
+
+  <section class="container gr-note">
+    <p>
+      Veri kaynağı: {data.source}. Yöntem: <a href="/metodoloji">metodoloji</a>. Yalnızca bilgilendirme
+      amaçlıdır; <strong>yatırım tavsiyesi değildir</strong>. Kripto varlıklar yüksek risklidir; geçmiş getiri
+      gelecekteki getirinin garantisi değildir.
+    </p>
+  </section>
+
+  <div class="container"><Newsletter /></div>
+</BaseLayout>
+
+<style>
+  .gr-hero { padding: clamp(1.6rem, 4vw, 2.6rem) 0 0; max-width: 720px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 0.45rem; font-size: var(--step--2); font-weight: 600; color: var(--brand); }
+  .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 0 rgba(22,160,133,0.5); animation: pulse 2s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(22,160,133,0.5); } 70% { box-shadow: 0 0 0 6px rgba(22,160,133,0); } 100% { box-shadow: 0 0 0 0 rgba(22,160,133,0); } }
+  .gr-hero h1 { font-size: var(--step-2); margin: 0.6rem 0 0.4rem; }
+  .gr-hero .lede { font-size: var(--step-0); line-height: 1.55; margin: 0; }
+  .gr-upd { font-size: var(--step--2); color: var(--text-muted); margin: 0.5rem 0 0; }
+
+  .gr-stats { margin-top: clamp(1.4rem, 3.5vw, 2.2rem); display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; }
+  .stat { padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.25rem; }
+  .stat-num { font-size: var(--step-2); font-weight: 800; font-variant-numeric: tabular-nums; color: var(--text); line-height: 1.1; }
+  .stat-num.up { color: var(--brand-deep); }
+  .stat-num.down { color: var(--danger); }
+  .stat-lbl { font-size: var(--step--2); color: var(--text-muted); line-height: 1.35; }
+
+  .gr-warn { margin-top: 1rem; }
+  .gr-warn p { font-size: var(--step--1); line-height: 1.55; max-width: 720px; margin: 0; padding: 0.8rem 1rem; background: #fff6e5; border: 1px solid #f3d9a4; border-radius: var(--radius); color: var(--text-soft); }
+
+  .gr-section, .gr-body, .gr-faq { margin-top: clamp(1.8rem, 4vw, 2.8rem); }
+  .gr-h2 { font-size: var(--step-1); margin: 0 0 0.9rem; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+  .gr-count { font-size: 0.66rem; font-weight: 700; color: var(--brand-deep); background: var(--brand-tint); border-radius: 999px; padding: 0.1rem 0.55rem; }
+
+  .gr-tablewrap { border: 1px solid var(--border); border-radius: var(--radius); overflow-x: auto; background: var(--bg-card); box-shadow: var(--shadow-xs); }
+  .gr-table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+  .gr-table thead th { text-align: left; font-size: var(--step--2); color: var(--text-muted); font-weight: 600; padding: 0.6rem 0.9rem; background: var(--bg-elev); border-bottom: 1px solid var(--border); }
+  .gr-table th.r, .gr-table td.r { text-align: right; }
+  .gr-table tbody tr { border-bottom: 1px solid var(--border-soft); }
+  .gr-table tbody tr:last-child { border-bottom: none; }
+  .gr-table td { padding: 0.6rem 0.9rem; vertical-align: middle; }
+  .gr-name { color: var(--text); font-weight: 600; }
+  .gr-mono { font-variant-numeric: tabular-nums; color: var(--text-soft); }
+  .gr-ret { font-weight: 800; font-variant-numeric: tabular-nums; border-radius: 6px; padding: 0.15rem 0.5rem; font-size: var(--step--1); }
+  .gr-ret.tone-up { background: var(--brand-tint); color: var(--brand-deep); }
+  .gr-ret.tone-down { background: #fbe3e6; color: #a32437; }
+  .gr-ret.tone-flat { background: var(--bg-elev); color: var(--text-muted); }
+  .gr-ret.is-win { outline: 2px solid var(--brand); outline-offset: 1px; }
+  .gr-win { font-weight: 700; color: var(--text-soft); white-space: nowrap; }
+  .gr-tnote { font-size: var(--step--2); color: var(--text-muted); line-height: 1.55; margin: 0.7rem 0 0; max-width: 720px; }
+  .gr-tnote a { color: var(--brand); font-weight: 600; }
+
+  .gr-body { max-width: 720px; }
+  .gr-body p { font-size: var(--step-0); line-height: 1.65; color: var(--text-soft); margin: 0 0 0.9rem; }
+  .gr-body a { color: var(--brand); font-weight: 600; }
+
+  .gr-fq { border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); margin-bottom: 0.6rem; max-width: 720px; }
+  .gr-fq summary { cursor: pointer; padding: 0.8rem 1rem; font-weight: 600; font-size: var(--step-0); color: var(--text); }
+  .gr-fq p { padding: 0 1rem 0.9rem; margin: 0; font-size: var(--step--1); line-height: 1.6; color: var(--text-soft); }
+
+  .gr-note { margin-top: clamp(1.6rem, 4vw, 2.6rem); }
+  .gr-note p { font-size: var(--step--2); line-height: 1.6; max-width: 720px; color: var(--text-muted); padding: 0.8rem 1rem; background: var(--bg-elev); border: 1px solid var(--border-soft); border-radius: var(--radius); }
+  .gr-note a { color: var(--brand); }
+
+  @media (max-width: 620px) {
+    .gr-stats { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+
+<script define:vars={{ built: data.updated }}>
+  async function checkUpdate() {
+    try {
+      const r = await fetch('/bitcoin-getiri.json?_=' + Date.now(), { cache: 'no-store' });
+      const d = await r.json();
+      if (d && d.updated && d.updated !== built) location.reload();
+    } catch { /* yoksay */ }
+  }
+  setInterval(() => { if (document.visibilityState === 'visible') checkUpdate(); }, 300000);
+</script>

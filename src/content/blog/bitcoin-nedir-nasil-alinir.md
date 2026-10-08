@@ -66,7 +66,7 @@ Bu soruyu ikiye ayırmak gerekir:
 
 **Teknoloji olarak:** Bitcoin ağı bugüne kadar hacklenmedi; blokzincir oldukça sağlamdır.
 
-**Yatırım olarak:** Bitcoin **son derece volatildir.** Kısa sürede %30–50 düşüşler yaşanabilir. Yani teknoloji güvenli olsa da, fiyatı garanti değildir.
+**Yatırım olarak:** Bitcoin **son derece volatildir.** Kısa sürede %30–50 düşüşler yaşanabilir. Yani teknoloji güvenli olsa da, fiyatı garanti değildir. Bitcoin'in 1, 3, 5 ve 10 yıllık gerçek getirisini ve yaşadığı en büyük düşüşleri her gün güncel olarak [bitcoin getiri sayfamızda](/bitcoin-getiri) görebilirsiniz.
 
 ### Riskleri net görün
 
