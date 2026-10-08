@@ -1,0 +1,59 @@
+{
+  "slug": "sterlin-bir-cumleyle-oynuyor-londra-ya-para-gonderenler-dikk",
+  "title": "Sterlin Bir Cümleyle Oynuyor — Londra'ya Para Gönderenler Dikkat",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Bank of England Başkanı Bailey'in faiz sinyali sterlini nasıl hareket ettiriyor ve sterlin ihtiyacı olan biri parayı nasıl çevirmeli.",
+  "tags": [
+    "Bailey",
+    "Bank of England",
+    "sterlin",
+    "GBP",
+    "faiz",
+    "kur",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Bailey'in tek cümlesi sterlini oynatıyor.",
+      "visual": {
+        "type": "person",
+        "query": "Andrew Bailey"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bailey faiz indirimi sinyali verirse sterlin genelde zayıflar, çünkü tuttuğunda kazandığı getiri azalır.",
+      "visual": {
+        "type": "building",
+        "query": "Bank of England building"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama sert konuşursa sterlin yükselir; Londra'daki öğrencisine para yollayanın faturası bir gecede büyür.",
+      "visual": {
+        "type": "object",
+        "query": "passport and airplane ticket"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Sterlin ihtiyacın varsa parayı tek günde çevirme; konuşma günlerinde kur oynar, parçalara bölmek riski dağıtır.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bir sonraki merkez bankası konuşması kime pahalıya patlayacak? Abone ol, her gün kısa ve net tek bir piyasa analizi getiriyorum.",
+      "visual": {
+        "type": "person",
+        "query": "Andrew Bailey"
+      }
+    }
+  ]
+}
