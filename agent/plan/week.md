@@ -41,7 +41,7 @@ _Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
   (token); YENİ `newsletter_subscribers` tablosu (mevcut tablolara DOKUNMA). `src/components/Newsletter.astro`
   bu uca bağlansın (başarı/hata mesajı; `action="#"` kalmasın). Gönderim betiği ayrı görev.
   · Kabul: canlıda abone ol → onay maili gelir → linkle DB'de `confirmed`; çık linki çalışır; build geçer.
-- [~] T5 (AI asistan görünürlüğü) — → 2026-10-08 RC: https://parafomo.com/llms.txt canlı. KALAN: getiri/takvim sayfalarında görünür "Son güncelleme · Kaynak" satırı + eksik `Dataset` şeması kontrolü. · eski tanım: `public/llms.txt` (site özeti + en değerli veri/araç sayfaları: getiri
+- [ ] T5 (AI asistan görünürlüğü) — → 2026-10-08 RC: https://parafomo.com/llms.txt canlı. KALAN: getiri/takvim sayfalarında görünür "Son güncelleme · Kaynak" satırı + eksik `Dataset` şeması kontrolü. · eski tanım: `public/llms.txt` (site özeti + en değerli veri/araç sayfaları: getiri
   kümesi, takvimler, halka arz, hesaplayıcılar + kaynak/güncelleme notu); getiri ve takvim sayfalarında görünür
   "Son güncelleme: <tarih> · Kaynak: ..." satırı + `Dataset` şeması (yoksa). AI asistan trafiği 28g 20 (~%12).
   · Kabul: canlıda /llms.txt 200; 3 sayfada `grep -c '"Dataset"'` ≥1.
