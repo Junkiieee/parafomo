@@ -55,3 +55,20 @@ def send_password_reset(to: str, reset_url: str) -> bool:
         "ParaFOMO"
     )
     return send_email(to, subject, body)
+
+
+def send_newsletter_confirm(to: str, confirm_url: str, unsubscribe_url: str) -> bool:
+    subject = "ParaFOMO bülteni — aboneliğini onayla"
+    body = (
+        "Merhaba,\n\n"
+        "ParaFOMO haftalık bültenine abone olmak istediğini aldık. "
+        "Onaylamak için aşağıdaki bağlantıya tıkla:\n\n"
+        f"{confirm_url}\n\n"
+        "Her hafta: altın/dolar/borsa getirilerinin kısa özeti, yaklaşan halka arzlar ve "
+        "takvim (TCMB, enflasyon), yeni rehberler. Yatırım tavsiyesi değil; veri.\n\n"
+        "Bu talebi sen yapmadıysan hiçbir şey yapmana gerek yok — onaylamadıkça "
+        "sana bülten gönderilmez.\n\n"
+        f"Abonelikten çıkmak için: {unsubscribe_url}\n\n"
+        "ParaFOMO · parafomo.com"
+    )
+    return send_email(to, subject, body)

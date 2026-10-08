@@ -1,5 +1,5 @@
 ---
-// Newsletter kayıt bloğu. action yayında bir ESP (MailerLite/Buttondown) formuna bağlanacak.
+// Newsletter kayıt bloğu — kendi API'miz (api.parafomo.com/newsletter, çift onay).
 const { compact = false } = Astro.props;
 ---
 <section class:list={['newsletter', { compact }]}>
@@ -9,12 +9,65 @@ const { compact = false } = Astro.props;
       <h2>Haftada bir, paranı büyütecek tek e-posta.</h2>
       <p class="soft">Piyasa özeti, yeni rehberler ve uygulanabilir finans taktikleri. Spam yok, istediğin an çık.</p>
     </div>
-    <form class="nl-form" action="#" method="post" aria-label="Bülten kayıt formu">
-      <input type="email" name="email" required placeholder="E-posta adresin" aria-label="E-posta adresi" />
-      <button type="submit" class="btn btn-primary">Abone Ol</button>
+    <form class="nl-form" data-nl-form method="post" aria-label="Bülten kayıt formu" novalidate>
+      <div class="nl-row">
+        <input type="email" name="email" required autocomplete="email" placeholder="E-posta adresin" aria-label="E-posta adresi" />
+        <button type="submit" class="btn btn-primary">Abone Ol</button>
+      </div>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" class="nl-hp" aria-hidden="true" />
+      <label class="nl-consent">
+        <input type="checkbox" name="consent" required />
+        <span>Bülten almak için e-postamın işlenmesine onay veriyorum (<a href="/gizlilik/">Gizlilik</a>).</span>
+      </label>
+      <p class="nl-msg" role="status" aria-live="polite"></p>
     </form>
   </div>
 </section>
+
+<script>
+  const API = 'https://api.parafomo.com/newsletter/subscribe';
+  document.querySelectorAll<HTMLFormElement>('form[data-nl-form]').forEach((form) => {
+    const msg = form.querySelector<HTMLElement>('.nl-msg')!;
+    const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const show = (text: string, ok: boolean) => {
+      msg.textContent = text;
+      msg.dataset.state = ok ? 'ok' : 'err';
+    };
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const email = String(fd.get('email') || '').trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return show('Geçerli bir e-posta adresi yaz.', false);
+      if (!fd.get('consent')) return show('Devam etmek için onay kutusunu işaretle.', false);
+      btn.disabled = true;
+      show('Gönderiliyor…', true);
+      try {
+        const res = await fetch(API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            consent: true,
+            source: location.pathname,
+            website: String(fd.get('website') || '') || null,
+          }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok) {
+          show(data.message || 'Onay e-postası gönderildi.', true);
+          form.reset();
+        } else {
+          const d = data.detail;
+          show(typeof d === 'string' ? d : 'Geçerli bir e-posta adresi yaz.', false);
+        }
+      } catch {
+        show('Bağlantı kurulamadı. Lütfen biraz sonra tekrar dene.', false);
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  });
+</script>
 
 <style>
   .newsletter {
@@ -37,8 +90,9 @@ const { compact = false } = Astro.props;
   .nl-text { max-width: 46ch; }
   .nl-text h2 { font-size: var(--step-2); margin: 0.6rem 0 0.4rem; }
   .nl-text p { margin: 0; }
-  .nl-form { display: flex; gap: 0.6rem; flex: 1; min-width: 280px; }
-  .nl-form input {
+  .nl-form { display: flex; flex-direction: column; gap: 0.55rem; flex: 1; min-width: 280px; }
+  .nl-row { display: flex; gap: 0.6rem; }
+  .nl-row input {
     flex: 1;
     background: var(--bg);
     border: 1px solid var(--border);
@@ -48,10 +102,16 @@ const { compact = false } = Astro.props;
     font-size: var(--step--1);
     font-family: inherit;
   }
-  .nl-form input:focus { outline: none; border-color: var(--brand); }
+  .nl-row input:focus { outline: none; border-color: var(--brand); }
+  .nl-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .nl-consent { display: flex; gap: 0.5rem; align-items: flex-start; font-size: var(--step--2, 0.8rem); color: var(--text-soft); line-height: 1.4; cursor: pointer; }
+  .nl-consent input { margin-top: 0.2rem; accent-color: var(--brand); }
+  .nl-msg { margin: 0; min-height: 1.2em; font-size: var(--step--1); }
+  .nl-msg[data-state='ok'] { color: var(--brand); }
+  .nl-msg[data-state='err'] { color: var(--danger); }
   .compact { margin: 2.5rem 0; padding: 1.8rem; }
   @media (max-width: 620px) {
-    .nl-form { flex-direction: column; }
-    .nl-form button { width: 100%; justify-content: center; }
+    .nl-row { flex-direction: column; }
+    .nl-row button { width: 100%; justify-content: center; }
   }
 </style>

@@ -104,3 +104,12 @@ class PortfolioSummary(BaseModel):
     total_day_change_pct: float | None = None
     holdings: list[HoldingValued]
     priced_at: datetime
+
+
+# ---- Bülten ----
+class NewsletterSubscribe(BaseModel):
+    email: EmailStr
+    consent: bool
+    source: str | None = Field(default=None, max_length=200)
+    # Bal küpü: insan bunu görmez/doldurmaz; dolu gelirse bot say.
+    website: str | None = Field(default=None, max_length=200)

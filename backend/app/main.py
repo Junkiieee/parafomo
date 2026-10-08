@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .config import get_settings
 from .db import init_db
-from .routers import auth, portfolio, public
+from .routers import auth, newsletter, portfolio, public
 
 _settings = get_settings()
 
@@ -37,6 +37,7 @@ app.add_middleware(
 app.include_router(auth.router)
 app.include_router(portfolio.router)
 app.include_router(public.router)
+app.include_router(newsletter.router)
 
 
 @app.get("/health", tags=["meta"])

@@ -74,3 +74,24 @@ class PasswordResetToken(Base):
     expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     used_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
+
+
+class NewsletterSubscriber(Base):
+    """Bülten abonesi — çift onaylı (pending → confirmed; çıkınca unsubscribed).
+
+    token: onay + çıkış linklerinde kullanılan rastgele, tahmin edilemez anahtar.
+    Hesap verisi değil; yalnız e-posta + onay kaydı (KVKK açık rıza zamanı) tutulur.
+    """
+
+    __tablename__ = "newsletter_subscribers"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    email: Mapped[str] = mapped_column(String(320), unique=True, index=True, nullable=False)
+    status: Mapped[str] = mapped_column(String(16), default="pending", nullable=False)
+    token: Mapped[str] = mapped_column(String(64), unique=True, index=True, nullable=False)
+    source: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    consent_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
+    confirm_sent_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    confirmed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    unsubscribed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)

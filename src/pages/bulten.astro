@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+
+const items = [
+  { t: 'Haftanın getiri karnesi', d: 'Altın, gümüş, dolar, euro, BIST 100 ve bitcoin bu hafta TL bazında ne yaptı — tek tabloda.', href: '/altin-dolar-borsa/' },
+  { t: 'Yaklaşan halka arzlar', d: 'Talep toplama tarihleri, fiyat aralığı ve şirket künyesi; kaçırma.', href: '/halka-arz/' },
+  { t: 'Takvim uyarısı', d: 'TCMB faiz kararı, enflasyon verisi, Fed — olaydan önce "bu senin cebine ne yapar".', href: '/ekonomik-takvim/' },
+  { t: 'Yeni rehber ve araçlar', d: 'Hafta boyunca yayınlanan rehberler ve hesaplayıcılar, tek linkte.', href: '/blog/' },
+];
+---
+
+<BaseLayout
+  title="Ücretsiz Haftalık Finans Bülteni"
+  description="ParaFOMO bülteni: haftada bir e-postayla altın, dolar, borsa getirileri, yaklaşan halka arzlar ve TCMB/enflasyon takvimi. Ücretsiz, spam yok, tek tıkla çık."
+>
+  <section class="container bulten">
+    <p class="nl-status" id="nl-status" hidden></p>
+
+    <span class="eyebrow">Bülten</span>
+    <h1>Haftada bir e-posta: paran bu hafta ne yaptı?</h1>
+    <p class="soft lead">
+      Her pazartesi sabahı, gerçek veriye dayalı kısa bir özet. Tahmin ve "al-sat" tavsiyesi yok;
+      sadece birikimini ilgilendiren rakamlar ve takvim.
+    </p>
+
+    <ul class="nl-items">
+      {items.map((i) => (
+        <li>
+          <a href={i.href}><strong>{i.t}</strong></a>
+          <span class="soft">{i.d}</span>
+        </li>
+      ))}
+    </ul>
+
+    <Newsletter />
+
+    <p class="soft small">
+      Çift onaylı abonelik: e-postandaki linke tıklamadıkça bülten gönderilmez. Her e-postada tek
+      tıkla çıkış linki var. Yalnızca e-posta adresini saklarız — ayrıntı:
+      <a href="/gizlilik/">Gizlilik</a> · <a href="/veri-silme/">Veri silme</a>.
+    </p>
+  </section>
+</BaseLayout>
+
+<script>
+  const MSG: Record<string, [string, string]> = {
+    onaylandi: ['ok', '✅ Aboneliğin onaylandı! İlk bülten pazartesi sabahı gelen kutunda.'],
+    ayrildi: ['info', 'Bülten aboneliğinden çıktın. Fikrini değiştirirsen aşağıdan tekrar abone olabilirsin.'],
+    gecersiz: ['err', 'Bu bağlantı geçersiz ya da süresi dolmuş. Aşağıdan yeniden abone olabilirsin.'],
+  };
+  const durum = new URLSearchParams(location.search).get('durum') || '';
+  const el = document.getElementById('nl-status');
+  if (el && MSG[durum]) {
+    el.dataset.state = MSG[durum][0];
+    el.textContent = MSG[durum][1];
+    el.hidden = false;
+  }
+</script>
+
+<style>
+  .bulten { max-width: 760px; padding-top: 2.5rem; padding-bottom: 1rem; }
+  .bulten h1 { margin: 0.6rem 0 0.8rem; }
+  .lead { font-size: var(--step-1); margin: 0 0 1.8rem; }
+  .nl-items { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.9rem; }
+  .nl-items li { display: grid; gap: 0.2rem; padding-left: 1rem; border-left: 3px solid var(--brand); }
+  .small { font-size: var(--step--1); }
+  .nl-status {
+    margin: 0 0 1.5rem;
+    padding: 0.9rem 1.1rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+  }
+  .nl-status[data-state='ok'] { border-color: var(--brand); }
+  .nl-status[data-state='err'] { border-color: var(--danger); }
+</style>
