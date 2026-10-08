@@ -34,21 +34,21 @@ _Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
 - [x] T3 (B261006-2) — → /bitcoin-getiri (10y $ +%11.002, en büyük düşüş −%75,6 2017-12→2019-01, risk kutusu, bitcoin mi altın mı); hub'a bitcoin, bitcoin-nedir yazısından link · haftalık koşu 2026-10-08 — **/bitcoin-getiri sayfası** (BTC-USD × USDTRY=X; aynı kalıp; volatilite/düşüş
   uyarısı + "yatırım tavsiyesi değildir"; YTD + 1/3/5 yıl (10 yıl veri varsa); en büyük düşüş (max drawdown)
   satırı; hub'a bitcoin satırı; /blog/bitcoin-nedir-nasil-alinir'den link). · Kabul: canlıda 200, hub'da bitcoin.
-- [ ] T4 (dağıtım/marka) — **Bülten v1 — kendi altyapımızla (bozuk formu onar).** İzin geldi (10-07). Backend
+- [x] T4 (dağıtım/marka) — → RC oturumu 2026-10-08: API (`backend/app/routers/newsletter.py`, çift onay, KVKK onayı, bal küpü, rate-limit, RFC 8058 tek-tık çıkış) + form canlı + https://parafomo.com/bulten/ + haftalık gönderim `bash scripts/newsletter-send.sh` (cron pzt 05:30 UTC, `--dry-run` önizleme). Abone sayısı brief §12'de. Sıradaki bülten işi: formu daha görünür yerlere koy (yazı içi, getiri sayfalarının tablosunun hemen altı) — trafik az, dönüşüm noktası önemli. · eski tanım: **Bülten v1 — kendi altyapımızla (bozuk formu onar).** İzin geldi (10-07). Backend
   (`backend/`, protokol: `/root/.venvs/parafomo-api/bin/python` ile geçici DB'de test → `systemctl restart
   parafomo-api` → `curl -s https://api.parafomo.com/health`): `POST /newsletter/subscribe` (e-posta + KVKK
   onayı, IP rate-limit, Brevo SMTP ile çift onay maili), `GET /newsletter/confirm`, `GET /newsletter/unsubscribe`
   (token); YENİ `newsletter_subscribers` tablosu (mevcut tablolara DOKUNMA). `src/components/Newsletter.astro`
   bu uca bağlansın (başarı/hata mesajı; `action="#"` kalmasın). Gönderim betiği ayrı görev.
   · Kabul: canlıda abone ol → onay maili gelir → linkle DB'de `confirmed`; çık linki çalışır; build geçer.
-- [ ] T5 (AI asistan görünürlüğü) — `public/llms.txt` (site özeti + en değerli veri/araç sayfaları: getiri
+- [~] T5 (AI asistan görünürlüğü) — → 2026-10-08 RC: https://parafomo.com/llms.txt canlı. KALAN: getiri/takvim sayfalarında görünür "Son güncelleme · Kaynak" satırı + eksik `Dataset` şeması kontrolü. · eski tanım: `public/llms.txt` (site özeti + en değerli veri/araç sayfaları: getiri
   kümesi, takvimler, halka arz, hesaplayıcılar + kaynak/güncelleme notu); getiri ve takvim sayfalarında görünür
   "Son güncelleme: <tarih> · Kaynak: ..." satırı + `Dataset` şeması (yoksa). AI asistan trafiği 28g 20 (~%12).
   · Kabul: canlıda /llms.txt 200; 3 sayfada `grep -c '"Dataset"'` ≥1.
 - [ ] T6 (B261006-1) — **Halka arz sayfaları keşif kontrolü (10-12 sonrası):** `python scripts/gsc-sitemap.py
   --status` → indirme tarihi 10-08 sonrası mı? 5 şirket sayfasını brief'teki indeks durumuyla kontrol et. Hâlâ
   "unknown" ise: /halka-arz-getiri tablosundaki her şirket adını da kendi sayfasına linkle (şu an yalnız
-  /halka-arz linkli) ve ana sayfaya "Yaklaşan halka arzlar" kutusu (ilk 3, şirket sayfasına link) ekle.
+  /halka-arz linkli) ve ana sayfaya "Yaklaşan halka arzlar" kutusu (→ 2026-10-08 RC: /halka-arz-getiri tablosundaki 12 şirket artık kendi sayfasına linkli — yalnız ana sayfa kutusu kaldı) (ilk 3, şirket sayfasına link) ekle.
   · Kabul: rapora indirme tarihi + indekslenen sayfa sayısı yazılır; gerekiyorsa linkler canlıda.
 
 ## Bakım / ürün
