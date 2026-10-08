@@ -19,7 +19,8 @@ echo "[$(date -u '+%F %T UTC')] Manim-daily (tam-Manim ek video) başladı"
 
 DOY=$(( 10#$(date -u +%j) ))
 # Ana videodan FARKLI konu için format rotasyonunu kaydır (backtest'i öne al — veri grafiği parlar).
-FMT_POOL=(backtest_return comparison shock_number single_concept myth)
+# 2026-10-08: comparison çıktı (Manim medyan 58, viralde elenmişti); shock en iyi kanca → 2 pay.
+FMT_POOL=(backtest_return shock_number myth shock_number single_concept)
 FORMAT="${1:-${FMT_POOL[$(( DOY % ${#FMT_POOL[@]} ))]}}"
 echo "[*] Format: $FORMAT"
 

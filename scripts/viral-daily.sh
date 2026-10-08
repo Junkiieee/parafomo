@@ -121,7 +121,11 @@ if [ -z "$SCEN" ]; then
   #   Views-ağırlıklı öğrenme shock_number'ı #1 seçiyordu; kapı ölçümü onu dağıtım-katili
   #   gösterdi. Bu yüzden gate-geçenlere kaydırıldı; shock 2→1 (kanca baseline), news viral'dan
   #   çıkarıldı (gündem zaten news-daily 06:30 cron'unda yakalanıyor). Exp 2026-09-30-1 izler.
-  declare -A DOW_FMT=([1]=myth [2]=backtest_return [3]=backtest_return [4]=myth [5]=single_concept [6]=single_concept [7]=shock_number)
+  # 2026-10-08 HAFTALIK KARAR (B261006-4) — vekil (AVD kapısı) yerine sonuç metriği: Ağu+ viral
+  #   izlenme (yayından ≥7g): shock_number medyan 500 (n=11) · single 161 (7) · myth 153 (11) ·
+  #   backtest 96 (13) · news 89 (18). Kapıyı geçen backtest en az izlenen → viralden çıktı
+  #   (veri grafiği Manim hattında sürüyor). shock 1→3, myth 2, single 2. Shock rakamı GERÇEK olmalı.
+  declare -A DOW_FMT=([1]=shock_number [2]=myth [3]=single_concept [4]=shock_number [5]=myth [6]=single_concept [7]=shock_number)
   FORMAT="${FORMAT_OVERRIDE:-${DOW_FMT[$(date -u +%u)]}}"
   if [ -z "$FORMAT_OVERRIDE" ]; then
     LEARNED_FMT="$("$VPY" "$REPO/scripts/learn/winner.py" viral.format 2>/dev/null || true)"
