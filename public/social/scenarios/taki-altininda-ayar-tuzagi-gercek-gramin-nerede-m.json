@@ -1,0 +1,74 @@
+{
+  "slug": "taki-altininda-ayar-tuzagi-gercek-gramin-nerede-m",
+  "title": "Takı altınında ayar tuzağı: gerçek gramın nerede",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "14 ayar takının yaklaşık yüzde 41'i altın değil. Etiketteki gram ile cebine giren saf altın arasındaki farkı ve tek satırlık hesabı anlatıyor.",
+  "tags": [
+    "altın",
+    "takı altını",
+    "14 ayar",
+    "22 ayar",
+    "bilezik",
+    "saf altın",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Takı altınının yüzde 41'i altın değil.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "14 ayar demek, 24 parçanın sadece 14'ü altın; kalanı bakır ve gümüş gibi karışım.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama kuyumcu tartıyı brüt gramla yapar; geri satarken çoğunlukla sadece içindeki saf altının değerini alırsın.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Almadan önce ayarı sor: gram çarpı ayar bölü 24, cebindeki gerçek altını verir.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki videoda çeyrek altının gerçek hesabını açıyorum. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "ParaFOMO",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
