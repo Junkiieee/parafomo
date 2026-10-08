@@ -17,6 +17,23 @@ faq:
     a: "Gümüş talebinin yarısından fazlası sanayiden (güneş paneli, elektronik) gelir ve piyasası altına göre çok daha küçüktür. Bu yüzden ekonomik büyüme beklentisindeki değişimlere ve spekülatif akımlara daha sert tepki verir."
   - q: "Gümüş nasıl alınır?"
     a: "Bankaların dijital gümüş hesabı, gümüş fonları veya fiziki külçe ile alınabilir. Fiziki gümüşte alış-satış farkı ve saklama maliyeti genelde daha yüksektir; işlemden önce banka/kurumun güncel koşullarını kontrol et."
+shorts:
+  - "10 bin TL'yi 10 yıl önce gümüşe yatırsan: 525 bin TL"
+  - "On yıl önce gümüşe yatırılan 10.000 TL bugün yaklaşık 525.970 TL ediyor, altında ise 511.330 TL."
+  - "Fark küçük ama yol farklı: gümüş bu yıl yüzde 13,5 düşerken altın neredeyse yatay kaldı."
+  - "Getirinin büyük kısmı TL'nin dolar karşısında değer kaybından geliyor, metalin kendi hareketinden değil."
+  - "Peki sence bundan sonra hangisi kazandıracak? Abone ol, her gün sade yatırım verisi gelsin. Detaylar parafomo.com'da."
+shorts_broll:
+  - "silver bars"
+  - "gold bullion bars"
+  - "stock market chart"
+  - "turkish lira money"
+shorts_visuals:
+  - "object|silver bars"
+  - "object|calculator"
+  - "gold|gold bullion bars"
+  - "place|Central Bank of the Republic of Turkey"
+  - "logo|ParaFOMO logo"
 ---
 
 "Gümüş mü altın mı?" sorusu son bir yılda iyice popülerleşti: gümüş birkaç kez manşetlere çıktı, "fakirin altını" lakabı yeniden konuşuldu. Bu yazıda gümüş mü altın mı sorusunu tahminle değil, **gerçek veriyle** cevaplıyoruz: gram gümüş ve gram altının son 1, 3, 5 ve 10 yıldaki TL getirisini, aynı dönemdeki düşüşlerini ve iki metali birbirinden ayıran riskleri yan yana koyuyoruz.
