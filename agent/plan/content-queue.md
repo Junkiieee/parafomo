@@ -6,8 +6,6 @@
 Sıra = planlanan yayın günü (haftalık koşu 2026-10-08): 08 → 09 → 12 → 13 → 14 → 15 → 16 → 19 Ekim.
 
 ## Kuyruk
-- [ ] **Euro mu dolar mı? TL bazında 10 yıllık getiri karşılaştırması** · hedef: "euro mu dolar mı
-  2026" · neden: B261006-2 (T2 /euro-getiri ile; 10-09) · iç-link: /euro-getiri (yayındaysa), /dolar-getiri
 - [ ] **ABD Ekim 2026 CPI verisi (Eylül enflasyonu): beklenti, Fed'e etkisi, dolar ve altın** · hedef:
   "abd enflasyon verisi ekim 2026", "cpi verisi ne zaman" · neden: CPI açıklaması Ekim ortası — yazmadan önce
   tarihi BLS takviminden/ekonomik takvimden doğrula ve metne kesin tarihi yaz (bilinmiyorsa "Ekim ortası"); 10-12'de
@@ -40,6 +38,8 @@ Sıra = planlanan yayın günü (haftalık koşu 2026-10-08): 08 → 09 → 12 �
   · TÜİK Ekim enflasyonu önizlemesi (31 Ekim-2 Kasım).
 
 ## Yazılanlar
+- [x] **Euro mu dolar mı? TL bazında 10 yıllık getiri karşılaştırması** · hedef: "euro mu dolar mı
+  2026" · neden: B261006-2 (T2 /euro-getiri ile; 10-09) · iç-link: /euro-getiri (yayındaysa), /dolar-getiri → /blog/euro-mi-dolar-mi-10-yillik-getiri-karsilastirma (2026-10-09)
 - [x] **Gümüş mü altın mı? Son 10 yılda TL bazında hangisi kazandırdı** · hedef: "gümüş mü altın mı",
   "gümüş yatırımı mantıklı mı" · neden: B261006-2 getiri kümesi (T1 /gumus-getiri ile birlikte; 10-08) · iç-link:
   /gumus-getiri (yayındaysa), /altin-getiri, /altin-dolar-borsa → /blog/gumus-mi-altin-mi-10-yillik-getiri-karsilastirma (2026-10-08)

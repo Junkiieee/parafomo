@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-10-09 — Euro mu Dolar mı 2026? TL Bazında 10 Yıllık Getiri
+
+**Yayınlanan yazı:** [Euro mu Dolar mı 2026? TL Bazında 10 Yıllık Getiri](/blog/euro-mi-dolar-mi-10-yillik-getiri-karsilastirma)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — B261006-2 getiri kümesi, /euro-getiri eşi)
+
+---
+
 ## 2026-10-08 — Gümüş mü Altın mı? 10 Yılda TL Bazında Hangisi Kazandırdı
 
 **Yayınlanan yazı:** [Gümüş mü Altın mı? 10 Yılda TL Bazında Hangisi Kazandırdı](/blog/gumus-mi-altin-mi-10-yillik-getiri-karsilastirma)
