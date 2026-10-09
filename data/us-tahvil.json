@@ -1,45 +1,45 @@
 {
   "_aciklama": "ABD Hazine tahvil faizleri (getiri eğrisi). Yahoo Finance. Site günlük rebuild'de tazelenir; anlık/kesin işlem değeri değildir, göstergedir.",
   "_kaynak": "Yahoo Finance (CBOE tahvil getiri endeksleri: ^IRX, ^FVX, ^TNX, ^TYX)",
-  "guncellenme": "2026-10-08T09:00:40+03:00",
-  "guncellemeEtiket": "8 Ekim 2026, 09:00",
-  "us10y": 5.277,
-  "us10yChangeBps": 4.0,
-  "spread10y3m": 1.24,
+  "guncellenme": "2026-10-09T09:00:42+03:00",
+  "guncellemeEtiket": "9 Ekim 2026, 09:00",
+  "us10y": 5.231,
+  "us10yChangeBps": -4.6,
+  "spread10y3m": 1.188,
   "inverted": false,
-  "usdtry": 49.2098,
+  "usdtry": 49.3383,
   "tenors": [
     {
       "symbol": "^IRX",
       "label": "3 Aylık (13 hafta)",
       "key": "3A",
-      "yield": 4.037,
-      "changeBps": 5.5,
-      "prev": 3.982
+      "yield": 4.043,
+      "changeBps": 5.0,
+      "prev": 3.993
     },
     {
       "symbol": "^FVX",
       "label": "5 Yıllık",
       "key": "5Y",
-      "yield": 5.021,
-      "changeBps": 1.6,
-      "prev": 5.005
+      "yield": 4.991,
+      "changeBps": -6.4,
+      "prev": 5.055
     },
     {
       "symbol": "^TNX",
       "label": "10 Yıllık",
       "key": "10Y",
-      "yield": 5.277,
-      "changeBps": 4.0,
-      "prev": 5.237
+      "yield": 5.231,
+      "changeBps": -4.6,
+      "prev": 5.277
     },
     {
       "symbol": "^TYX",
       "label": "30 Yıllık",
       "key": "30Y",
-      "yield": 5.661,
-      "changeBps": 5.8,
-      "prev": 5.603
+      "yield": 5.606,
+      "changeBps": -2.4,
+      "prev": 5.63
     }
   ]
 }
