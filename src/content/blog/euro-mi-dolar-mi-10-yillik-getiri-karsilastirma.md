@@ -95,7 +95,7 @@ Getiri farkı tahmin edilemiyorsa, karar için daha sağlam bir ölçüt var: **
 
 | Durum | Doğal olarak uygun olan | Neden |
 |-------|------------------------|-------|
-| Avrupa'da tatil, eğitim, ev ya da harcama planı | Euro | Harcama euro ise euro tutmak kur riskini sıfırlar |
+| Avrupa'da tatil, eğitim, ev ya da harcama planı | Euro | Harcama euro ise euro tutmak kur riskini büyük ölçüde ortadan kaldırır |
 | Dolar bazlı borç, ithalat ya da ABD'de harcama | Dolar | Borç/harcama ile aynı para biriminde kalırsın |
 | Belirli bir harcama hedefi yok, sadece TL'den korunma | Euro + dolar sepeti | Parite dalgalanmasının etkisi yumuşar |
 | Kısa vadede (1 yıldan az) ihtiyaç duyulacak para | Dikkatli ol | Kısa vadede kurlar her iki yönde de sert oynayabilir |
@@ -104,7 +104,7 @@ Türkiye'de birçok kişi dövizi "TL'den kaçış" için tutuyor. Bu amaçla, i
 
 ## Yarı euro yarı dolar: döviz sepeti nasıl çalışır?
 
-Döviz sepeti, birikimin bir kısmını euroda bir kısmını dolarda tutmak demek. Türkiye'de en yaygın kullanılan sepet 0,5 dolar + 0,5 euro'dur.
+Döviz sepeti, birikimin bir kısmını euroda bir kısmını dolarda tutmak demek. Yaygın kullanılan örnek, TCMB'nin de referans aldığı 0,5 dolar + 0,5 euro sepetidir.
 
 Tablodaki verilerle 10.000 TL'yi 10 yıl önce yarı yarıya bölseydin: 5.000 TL euro ≈ 76.300 TL, 5.000 TL dolar ≈ 72.400 TL, toplam ≈ **148.700 TL**. Bu, en iyi senaryonun (yalnız euro, 152.630 TL) biraz altında, en kötü senaryonun (yalnız dolar, 144.710 TL) biraz üstünde.
 
@@ -128,7 +128,7 @@ Tablodaki getiriler "saf kur" getirisidir. Gerçek hayatta sonucu etkileyen birk
 - **Alış-satış makası:** Bankalar dövizi satarken ve alırken farklı kur uygular. Sık al-sat yaparsan bu fark getirini belirgin şekilde eritebilir. Makas kurumdan kuruma ve dövizden dövize değişir; işlemden önce iki kuru da karşılaştır.
 - **Vadeli döviz faizi:** Döviz hesapları genelde çok düşük faiz verir; dolar ve euro faiz oranları da birbirinden farklıdır. Vadeli hesap seçeneklerini [döviz hesabı nedir](/blog/doviz-hesabi-nedir) yazımızda anlattık.
 - **Vergi ve masraflar:** Döviz alımında uygulanan vergi, hesap işletim ücretleri ve EFT/havale masrafları işlem öncesi kontrol edilmeli; güncel koşullar bankadan bankaya ve dönemden döneme değişir.
-- **Fırsat maliyeti:** Dövizde tutulan para TL mevduat, altın veya borsa gibi alternatiflerin getirisinden vazgeçer. Varlıkları karşılaştırmak için [Altın, dolar, borsa karşılaştırma sayfamıza](/altin-dolar-borsa) ve [altın mı dolar mı](/blog/altin-mi-dolar-mi) yazımıza göz atabilirsin.
+- **Fırsat maliyeti:** Dövizde tutulan para TL mevduat ([mevduat faizi hesaplama](/mevduat-faizi-hesaplama) aracımızla kıyaslayabilirsin), altın veya borsa gibi alternatiflerin getirisinden vazgeçer. Varlıkları karşılaştırmak için [Altın, dolar, borsa karşılaştırma sayfamıza](/altin-dolar-borsa) ve [altın mı dolar mı](/blog/altin-mi-dolar-mi) yazımıza göz atabilirsin.
 
 ## Özet
 
