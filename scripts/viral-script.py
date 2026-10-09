@@ -86,6 +86,53 @@ VISUAL_GUIDE = """Görsel tipleri ve "query" kuralı (görsel motoru buna göre 
 YASAK görseller (Türk izleyiciye yabancı/yanıltıcı): YABANCI banknot/para destesi, yabancı market fiyat etiketi, yabancı bayrak/bina; kişi/kurum belirsizse genel "building/people" yerine ilgili Türk kurumunu ya da evrensel nesneyi seç.
 ÖNEMLİ: hook ve konunun ana öznesi gerçek bir kişi/yer/marka ise MUTLAKA person/place/logo kullan (stok değil). Her beat'in görseli o beat'in İÇERİĞİYLE birebir örtüşsün; 5 beat'in en az 2'si somut (person/place/logo/gold/object/chart) olsun."""
 
+# shock_number kazanan kalıbı (izlenme verisi 2026-10-09: kira-getirisi-%3 954, 5.000-ton-altın 935,
+# çeyrek-%10 924 izl. — format medyanı ~500): kanca = günlük birimde TEK rakam; beat 1 = o rakamın
+# izleyicinin yapabileceği HESABI; beat 2 = gizli kesinti/çarpan; beat 3 = cebe sonuç.
+SHOCK_EXAMPLES = """Kazanan kalıp (kelimesi kelimesine kopyalama; YAPIYI al, konuyu tazele):
+  • Kanca: "İstanbul dairesinin kira getirisi yaklaşık yüzde üç."
+    1. cümle: "6 milyon TL daire, ayda 15 bin TL kira — yılda 180 bin TL, yani yüzde 3."
+    2. cümle: "Bakım, vergi, boş kalma dönemi çıkınca net getiri yüzde 1-2'de kalıyor."
+  • Kanca: "Türklerin evinde yaklaşık 5.000 ton altın uyuyor."
+    1. cümle: "Bu rakam, Merkez Bankası'nın resmi altın rezervinin yaklaşık üç katı."
+  • Kanca: "Çeyrek altını bozduğunda yüzde on para uçuyor."
+    1. cümle: "Çeyrek fiyatı gram değil — darphane primi ve işçilikle şişirilmiş bir rakam."
+Ortak DNA: kanca rakamı izleyicinin parasına/evine/altınına dokunur; 1. cümle o rakamın HESABINI
+izleyicinin kafadan doğrulayabileceği sade bir aritmetikle verir; rakam "yaklaşık" ile dürüstçe söylenir.
+RAKAM KAYNAĞI ZORUNLU: kancadaki rakam ya (a) senaryodaki sade bir hesaptan çıkmalı ya da (b) bilinen
+resmi/kurumsal bir kaynağa (TCMB, TÜİK, SGK, GİB, BDDK, Dünya Altın Konseyi, Borsa İstanbul vb.)
+dayanmalı. Emin olmadığın, kaynağını gösteremeyeceğin rakamı KULLANMA — başka bir konu seç."""
+
+SHOCK_SOURCE_FIELD = (',\n "number_source":{"number":"<kancadaki rakam, aynen>","calc":"<rakamın hesabı, '
+                      'ör. 180.000/6.000.000 = %3; hesap yoksa boş>","source":"<kurum/veri adı + dönem, '
+                      'ör. TCMB Konut Fiyat Endeksi Ağu 2026; hesaptan çıkıyorsa \'senaryodaki hesap\'>"}')
+
+# "kaynak" diye geçemeyecek muğlak ifadeler
+_VAGUE_SRC = ("tahmin", "genel bilgi", "yaygın", "bilinen", "uzman", "araştırmalar", "kaynak yok",
+              "internet", "çeşitli", "bilinmiyor", "varsayım")
+
+
+def check_number_source(data):
+    """shock_number senaryosunda rakamın hesap/kaynak satırı var mı? → (ok, neden)."""
+    ns = data.get("number_source")
+    if not isinstance(ns, dict):
+        return False, "number_source alanı yok"
+    num = str(ns.get("number") or "").strip()
+    calc = str(ns.get("calc") or "").strip()
+    src = str(ns.get("source") or "").strip()
+    if not num or not re.search(r"\d|bir|iki|üç|dört|beş|altı|yedi|sekiz|dokuz|on|yüz|bin", num.lower()):
+        return False, "number_source.number boş/rakamsız"
+    has_calc = bool(re.search(r"\d.*[=/×x*÷+\-].*\d", calc))
+    src_l = src.lower()
+    # kurum adı varsa ("Dünya Altın Konseyi tahmini") muğlak kelime tek başına reddettirmez
+    named = re.search(r"\b[A-ZÇĞİÖŞÜ]{3,}\b|Konseyi|Bankası|Kurumu|Borsa|Bakanlığı|Hazine|Yahoo", src)
+    has_src = (len(src) >= 6 and "senaryodaki hesap" not in src_l   # 'hesap' diyorsa calc dolu olmalı
+               and (named or not any(v in src_l for v in _VAGUE_SRC)))
+    if not (has_calc or has_src):
+        return False, f"rakam kaynaksız (calc='{calc[:60]}', source='{src[:60]}')"
+    return True, ""
+
+
 FORMATS = {
     "comparison": {
         "category": "KARŞILAŞTIRMA",
@@ -97,7 +144,7 @@ FORMATS = {
     },
     "shock_number": {
         "category": "ŞOK VERİ",
-        "guide": "Sayı şoku. Hook: çarpıcı TEK istatistik/oran ('Türkiye'de her 100 kişiden 80'i...'). 3 beat: sayının anlamı, sebebi, izleyici için sonucu. Rakamı net telaffuz et (ekranda otomatik rozet çıkar). Görseller içerikle örtüşsün.",
+        "guide": "Sayı şoku. Hook: çarpıcı TEK istatistik/oran ('Türkiye'de her 100 kişiden 80'i...'). 3 beat: sayının anlamı, sebebi, izleyici için sonucu. Rakamı net telaffuz et (ekranda otomatik rozet çıkar). Görseller içerikle örtüşsün.\n" + SHOCK_EXAMPLES,
     },
     "news_reaction": {
         "category": "GÜNCEL",
@@ -174,7 +221,7 @@ SADECE şu JSON'u döndür, başka HİÇBİR şey yazma (markdown, ```, açıkla
   {"kind":"point","spoken":"...","visual":{"type":"...","query":"..."}},
   {"kind":"point","spoken":"...","visual":{"type":"...","query":"..."}},
   {"kind":"cta","spoken":"...","visual":{"type":"...","query":"..."}}
- ]}
+ ]%(extra_field)s}
 """
 
 ALLOWED_TYPES = {"person", "place", "building", "logo", "gold", "object",
@@ -245,6 +292,8 @@ def main():
     ap.add_argument("--range", default="1y")
     ap.add_argument("--model", default="sonnet")
     ap.add_argument("--out-dir", default=SCEN_DIR)
+    ap.add_argument("--dry-run", action="store_true",
+                    help="senaryoyu dosyaya yazma, JSON'u stdout'a bas (izole deneme)")
     args = ap.parse_args()
 
     fmt = FORMATS[args.format]
@@ -298,6 +347,7 @@ def main():
             "avoid_block": avoid_block, "facts_block": facts_block,
             "chart_instruction": chart_instruction, "visual_guide": VISUAL_GUIDE,
             "eyebrow": fmt["category"],
+            "extra_field": SHOCK_SOURCE_FIELD if args.format == "shock_number" else "",
         }
 
     print(f"[*] viral senaryo üretiliyor: format={args.format} topic={args.topic or '(serbest)'} "
@@ -327,6 +377,15 @@ def main():
         d, transient, out = one_shot(build_prompt(extra_avoid))
         if d is not None:
             title = (d.get("title") or "").strip()
+            if args.format == "shock_number":
+                ok_src, why = check_number_source(d)
+                if not ok_src:
+                    # yanıltıcı başlık = platform kırmızı çizgisi → kaynaksız rakam yayınlanmaz
+                    print(f"UYARI: senaryo reddedildi — {why} (deneme {attempt}/{MAX_TRIES})",
+                          file=sys.stderr)
+                    if title:
+                        extra_avoid.append(title)
+                    continue
             dup = most_similar(title, recent_titles + extra_avoid)
             if dup and attempt < MAX_TRIES:
                 print(f"UYARI: '{title}' son videolara çok benziyor (≈ '{dup}') — "
@@ -391,6 +450,15 @@ def main():
                                      if t.strip()] + ["parafomo"])),
         "segments": segs,
     }
+    if data.get("number_source"):
+        ns = data["number_source"]
+        scenario["number_source"] = ns
+        src_line = " · ".join(x for x in (str(ns.get("calc") or "").strip(),
+                                          str(ns.get("source") or "").strip()) if x)
+        scenario["description"] = (scenario["description"] + f"\nKaynak/hesap: {src_line}").strip()
+    if args.dry_run:
+        print(json.dumps(scenario, ensure_ascii=False, indent=2))
+        return 0
     os.makedirs(args.out_dir, exist_ok=True)
     path = os.path.join(args.out_dir, f"{slug}.json")
     json.dump(scenario, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
