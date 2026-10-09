@@ -1,0 +1,59 @@
+{
+  "slug": "evdeki-altin-calinirsa-karsiligi-cikmayabilir",
+  "title": "Evdeki altın çalınırsa karşılığı çıkmayabilir",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Altını evde ya da kiralık kasada tutmak güvenli sanılır, ama sigorta kapsamı çoğu zaman yetersizdir. Fiziki altını korumanın doğru yolları.",
+  "tags": [
+    "altın",
+    "altın saklama",
+    "kiralık kasa",
+    "sigorta",
+    "birikim",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Evdeki altının sigortası yok.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold coins on velvet"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Hırsızlık olursa kayıp senin; çoğu ev sigortası değerli eşyayı sınırlı ödüyor, bazen hiç ödemiyor.",
+      "visual": {
+        "type": "object",
+        "query": "house keys and door lock"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kiralık kasa çözüm gibi görünür ama içindekiler mevduat sigortası kapsamında değil, bankaya güvenmek yetmez.",
+      "visual": {
+        "type": "object",
+        "query": "bank safe deposit box"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Doğrusu: fiziki altını poliçeyle sigortala, ya da saklama derdi istemiyorsan altın fonuna bak.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki altını bozdururken kuyumcu neyi sana söylemiyor? Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold coins on velvet"
+      }
+    }
+  ]
+}
