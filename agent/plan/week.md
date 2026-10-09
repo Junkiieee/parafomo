@@ -41,7 +41,7 @@ _Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
   (token); YENİ `newsletter_subscribers` tablosu (mevcut tablolara DOKUNMA). `src/components/Newsletter.astro`
   bu uca bağlansın (başarı/hata mesajı; `action="#"` kalmasın). Gönderim betiği ayrı görev.
   · Kabul: canlıda abone ol → onay maili gelir → linkle DB'de `confirmed`; çık linki çalışır; build geçer.
-- [ ] T5 (AI asistan görünürlüğü) — → 2026-10-08 RC: https://parafomo.com/llms.txt canlı. KALAN: getiri/takvim sayfalarında görünür "Son güncelleme · Kaynak" satırı + eksik `Dataset` şeması kontrolü. · eski tanım: `public/llms.txt` (site özeti + en değerli veri/araç sayfaları: getiri
+- [x] T5 (AI asistan görünürlüğü) — → 2026-10-09: Dataset şeması + görünür "Son güncelleme · Kaynak" satırı 6 sayfaya eklendi (/altin-getiri, /dolar-getiri, /bist-getiri, /halka-arz-getiri, /halka-arz, /altin-dolar-borsa; gümüş/euro/bitcoin zaten vardı; takvim sayfalarında kaynak satırı zaten vardı) — canlıda doğrulandı, commit d59d0dd · 2026-10-09 — → 2026-10-08 RC: https://parafomo.com/llms.txt canlı. KALAN: getiri/takvim sayfalarında görünür "Son güncelleme · Kaynak" satırı + eksik `Dataset` şeması kontrolü. · eski tanım: `public/llms.txt` (site özeti + en değerli veri/araç sayfaları: getiri
   kümesi, takvimler, halka arz, hesaplayıcılar + kaynak/güncelleme notu); getiri ve takvim sayfalarında görünür
   "Son güncelleme: <tarih> · Kaynak: ..." satırı + `Dataset` şeması (yoksa). AI asistan trafiği 28g 20 (~%12).
   · Kabul: canlıda /llms.txt 200; 3 sayfada `grep -c '"Dataset"'` ≥1.
@@ -52,16 +52,16 @@ _Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
   · Kabul: rapora indirme tarihi + indekslenen sayfa sayısı yazılır; gerekiyorsa linkler canlıda.
 
 ## Bakım / ürün
-- [ ] P1 (portföy) — `agent/plan/backlog-portfolio.md`'deki en üstteki açık madde (İzleme listesi / watchlist —
+- [ ] P1 (portföy) — ⏸ 2026-10-09 günlük koşu atladı: watchlist yeni DB tablosu ister (kırmızı çizgi 6 "şemayı değiştirme" — newsletter tablosu Kaan onayıyla açılmıştı) + ders "trafiksiz ürün cilası kayıt getirmez" (2 üye). Haftalık koşu karar versin. — `agent/plan/backlog-portfolio.md`'deki en üstteki açık madde (İzleme listesi / watchlist —
   sahip olmadan takip). Backend değişirse protokoldeki restart + /health. · Kabul: build geçer; canlı panelde
   izleme listesine ekle/sil akışı çalışır; backlog maddesi [x] + commit.
-- [ ] V1 (video kalitesi) — **shock_number kanca kalitesi + rakam doğrulaması** (format artık haftada 3 gün):
+- [x] V1 (video kalitesi) — → 2026-10-09: viral-script.py shock_number istemine kazanan 3 kanca (kira %3 954 izl., 5.000 ton altın 935, çeyrek %10 924) + zorunlu number_source (rakam/hesap/kaynak); kaynaksız/muğlak rakam reddedilip yeniden üretilir, hesap satırı video açıklamasına eklenir; --dry-run modu; 3 dry-run senaryo raporda, birim testte kaynaksız rakam reddedildi · commit cbc4038 · 2026-10-09 — **shock_number kanca kalitesi + rakam doğrulaması** (format artık haftada 3 gün):
   `scripts/viral-script.py` shock_number istemine en çok izlenen 3 shock videonun (ör. kira-geliri-yuzde-2
   500 izl., ledger'dan bul) kanca + ilk 2 cümle kalıbını örnek olarak ekle; senaryo üretiminde shock rakamının
   bir hesap/kaynak satırı taşımasını zorunlu kıl (yanıltıcı başlık = kırmızı çizgi 4). İzole dene:
   `--dry-run`/hazırlık modunda 3 senaryo üret, eskisiyle yan yana rapora koy; rakam kaynaksızsa senaryo reddedilsin.
   · Kabul: 3 örnek senaryo raporda; kaynaksız rakam testi reddediliyor; commit.
-- [ ] V2 (marka) — **YouTube kanal kimliği:** kanal açıklaması brand.md konumlandırması + parafomo.com (UTM'li)
+- [x] V2 (marka) — → 2026-10-09: token force-ssl kapsamlıymış; channels.update ile kanal açıklaması (brand.md bio + konumlandırma + UTM li parafomo.com linkleri + IG/Telegram + tavsiye-değildir notu) ve anahtar kelimeler yazıldı, API ile doğrulandı · 2026-10-09 — **YouTube kanal kimliği:** kanal açıklaması brand.md konumlandırması + parafomo.com (UTM'li)
   + Telegram/Instagram, kanal anahtar kelimeleri. `channels.update` brandingSettings (OAuth `youtube.force-ssl`
   ise) ile dene; yetki yetmezse Kaan'a 3 adımlık görev yaz. · Kabul: kanal sayfasında yeni açıklama.
 
