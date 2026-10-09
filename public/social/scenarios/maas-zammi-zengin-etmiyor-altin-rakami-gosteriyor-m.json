@@ -1,0 +1,74 @@
+{
+  "slug": "maas-zammi-zengin-etmiyor-altin-rakami-gosteriyor-m",
+  "title": "Maaş zammı zengin etmiyor, altın rakamı gösteriyor",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Maaşın 10 yılda 10 kat artsa bile altın TL bazında yaklaşık 55 kat arttı. Zam gelince birikime ayrılan pay servet farkını yaratıyor.",
+  "tags": [
+    "maaş zammı",
+    "altın",
+    "enflasyon",
+    "birikim",
+    "gram altın",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Zam aldın diye zenginleşmiyorsun.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Maaş on yılda on kat artsa bile, aynı sürede altın TL'de yaklaşık 55 kat arttı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama zam gelince kira, market, fatura da zamlanıyor; maaş büyüyor, artan kısım cebinde kalmıyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çözüm: zam gelir gelmez maaşının küçük bir kısmını her ay düzenli birikime ayır.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki zam gelince ilk hangi hamle yapılır? Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "ParaFOMO",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
