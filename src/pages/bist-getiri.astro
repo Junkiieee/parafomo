@@ -66,12 +66,24 @@ const faqLd = {
   '@type': 'FAQPage',
   mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
+const datasetLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'BIST 100 TL ve dolar bazında tarihsel getiri (1, 3, 5, 10 yıl)',
+  description: 'BIST 100 endeksinin yıl başından beri ve 1/3/5/10 yıllık TL ve USD getirisi. Her gün güncellenir.',
+  url: 'https://parafomo.com/bist-getiri/',
+  dateModified: data.updated,
+  isAccessibleForFree: true,
+  creator: { '@id': 'https://parafomo.com/#organization' },
+  distribution: { '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: 'https://parafomo.com/bist-getiri.json' },
+};
 ---
 
 <BaseLayout
   title={`BIST 100 Ne Kadar Kazandırdı? 1, 5, 10 Yıllık Borsa Getirisi (TL)`}
   description={`BIST 100 son ${ten.years} yılda TL bazında %${fmt0(ten.return_tl_pct)} kazandırdı. Borsanın 1, 3, 5, 10 yıllık getirisi — altın ve dolarla karşılaştırmalı, her gün güncel.`}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(datasetLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
 
   <section class="container gr-hero">
@@ -81,7 +93,7 @@ const faqLd = {
       Borsayı (BIST 100) 1, 3, 5 ve 10 yıl önce alsaydınız bugün TL bazında ne olurdu? Endeksin
       gerçek geçmiş getirisi — altın ve dolarla karşılaştırmalı, tek tabloda, her gün güncel.
     </p>
-    <p class="gr-upd">Son güncelleme: {updated} · BIST 100 ≈ {fmt0(data.bist_now)} puan</p>
+    <p class="gr-upd">Son güncelleme: {updated} · BIST 100 ≈ {fmt0(data.bist_now)} puan · Kaynak: Yahoo Finance (XU100.IS, USDTRY=X)</p>
   </section>
 
   <section class="container gr-stats">

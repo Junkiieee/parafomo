@@ -88,12 +88,23 @@ const faqLd = {
   '@type': 'FAQPage',
   mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
+const datasetLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'Altın, dolar, euro, gümüş, bitcoin ve BIST 100 tarihsel getiri karşılaştırması',
+  description: 'Altın, gümüş, dolar, euro, bitcoin ve BIST 100\'ün TL bazında 1/3/5/10 yıllık getirisi yan yana. Her gün güncellenir.',
+  url: 'https://parafomo.com/altin-dolar-borsa/',
+  dateModified: gold.updated,
+  isAccessibleForFree: true,
+  creator: { '@id': 'https://parafomo.com/#organization' },
+};
 ---
 
 <BaseLayout
   title={`Altın mı, Dolar mı, Borsa mı? 10 Yılın Kazananı (TL Getiri)`}
   description={`Son 10 yılda TL bazında ${winner.name.toLowerCase()} %${fmt0(winner.ret)}, ${assets[1].name.toLowerCase()} %${fmt0(assets[1].ret)}, ${loser.name.toLowerCase()} %${fmt0(loser.ret)} kazandırdı. Altın, dolar ve BIST 100'ün 1, 3, 5, 10 yıllık getirisi tek tabloda — her gün güncel.`}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(datasetLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
 
   <section class="container gr-hero">
@@ -103,7 +114,7 @@ const faqLd = {
       Aynı parayı 1, 3, 5 veya 10 yıl önce altına, dolara ya da borsaya (BIST 100) koysaydınız
       bugün elinizde ne olurdu? Üçünün TL bazında getirisi tek tabloda, kazananı işaretli — her gün güncel.
     </p>
-    <p class="gr-upd">Son güncelleme: {updated}</p>
+    <p class="gr-upd">Son güncelleme: {updated} · Kaynak: Yahoo Finance</p>
   </section>
 
   <section class="container gr-stats">

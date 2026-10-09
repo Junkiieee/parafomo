@@ -42,12 +42,24 @@ const faqLd = {
   '@type': 'FAQPage',
   mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
+const datasetLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: '2026 Borsa İstanbul halka arzlarının güncel getirisi',
+  description: '2026\'da BIST\'te işlem görmeye başlayan halka arzların halka arz fiyatına göre güncel getirisi. Her gün güncellenir.',
+  url: 'https://parafomo.com/halka-arz-getiri/',
+  dateModified: data.updated,
+  isAccessibleForFree: true,
+  creator: { '@id': 'https://parafomo.com/#organization' },
+  distribution: { '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: 'https://parafomo.com/halka-arz-getiri.json' },
+};
 ---
 
 <BaseLayout
   title="2026 Halka Arz Getirileri: Hangi Halka Arz Ne Kazandırdı?"
   description={`2026'da BIST'e gelen ${data.count} halka arzın güncel getirisi tek tabloda. Ortalama %${fmt(data.avg_return_pct)} getiri, %${data.positive_pct}'i kârda. Halka arz fiyatına göre her gün güncellenir.`}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(datasetLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
 
   <section class="container gr-hero">
@@ -57,7 +69,7 @@ const faqLd = {
       Bu yıl Borsa İstanbul'da işlem görmeye başlayan halka arzlar, halka arz fiyatına göre bugün
       ne durumda? Katılsaydınız ne kazanır ya da kaybederdiniz — tek tabloda, her gün güncel.
     </p>
-    <p class="gr-upd">Son güncelleme: {updated}</p>
+    <p class="gr-upd">Son güncelleme: {updated} · Kaynak: halka arz fiyatları halkarz.com, güncel fiyatlar Yahoo Finance</p>
   </section>
 
   <section class="container gr-stats">

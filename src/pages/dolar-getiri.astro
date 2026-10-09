@@ -57,12 +57,24 @@ const faqLd = {
   '@type': 'FAQPage',
   mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
+const datasetLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'Dolar/TL tarihsel getiri (1, 3, 5, 10 yıl)',
+  description: 'Doların TL karşısında yıl başından beri ve 1/3/5/10 yıllık getirisi. Her gün güncellenir.',
+  url: 'https://parafomo.com/dolar-getiri/',
+  dateModified: data.updated,
+  isAccessibleForFree: true,
+  creator: { '@id': 'https://parafomo.com/#organization' },
+  distribution: { '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: 'https://parafomo.com/dolar-getiri.json' },
+};
 ---
 
 <BaseLayout
   title={`Dolar Ne Kadar Kazandırdı? 1, 5, 10 Yıllık Getiri (TL Bazında)`}
   description={`Doları elde tutmak son ${ten.years} yılda TL bazında %${fmt0(ten.return_tl_pct)} kazandırdı. USD/TRY'nin 1, 3, 5, 10 yıllık ve yıl başından beri getirisi tek tabloda — altınla karşılaştırmalı, her gün güncel.`}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(datasetLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
 
   <section class="container gr-hero">
@@ -72,7 +84,7 @@ const faqLd = {
       Doları 1, 3, 5 ve 10 yıl önce alsaydınız bugün TL bazında ne olurdu? USD/TRY'nin gerçek
       geçmiş getirisi — altınla karşılaştırmalı, tek tabloda, her gün güncel.
     </p>
-    <p class="gr-upd">Son güncelleme: {updated} · USD/TRY ≈ {fmt(data.usdtry_now)}</p>
+    <p class="gr-upd">Son güncelleme: {updated} · USD/TRY ≈ {fmt(data.usdtry_now)} · Kaynak: Yahoo Finance (USDTRY=X)</p>
   </section>
 
   <section class="container gr-stats">

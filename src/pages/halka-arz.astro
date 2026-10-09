@@ -54,6 +54,17 @@ const days = Array.from({ length: daysInMonth }, (_, idx) => {
   }));
   return { d, dow: DOW[dow], isWeekend: dow >= 5, key: dk, isToday: dk === todayKey, isPast: dk < todayKey, events: evs };
 });
+const datasetLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'Borsa İstanbul halka arz takvimi (talep tarihleri, fiyat, lot)',
+  description: 'BIST halka arzlarının talep toplama tarihleri, halka arz fiyatı, lot ve aracı kurum bilgileri. Günde 4 kez güncellenir.',
+  url: 'https://parafomo.com/halka-arz/',
+  dateModified: data.updated,
+  isAccessibleForFree: true,
+  creator: { '@id': 'https://parafomo.com/#organization' },
+  distribution: { '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: 'https://parafomo.com/halka-arz.json' },
+};
 ---
 
 <BaseLayout
@@ -61,11 +72,12 @@ const days = Array.from({ length: daysInMonth }, (_, idx) => {
   description={`${monthLabel} BIST halka arz takvimi: talep toplama günleri, tarih bekleyen ${pending.length} şirket ve son tamamlanan arzlar. Her şirketin fiyat, lot, aracı kurum ve getiri künyesi. Günde 4 kez güncellenir.`}
   breadcrumbs={[{ name: 'Ana sayfa', url: '/' }, { name: 'Halka Arz Takvimi', url: '/halka-arz/' }]}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(datasetLd)} />
   <section class="container ha-hero">
     <span class="eyebrow"><span class="pulse"></span> Borsa İstanbul</span>
     <h1>Halka Arz Takvimi</h1>
     <p class="lede soft">{monthLabel} ayının halka arz takvimi. Her gün otomatik güncellenir.</p>
-    <p class="ha-upd">Son güncelleme: {updated}</p>
+    <p class="ha-upd">Son güncelleme: {updated} · Kaynak: halkarz.com</p>
     <p class="ha-cta"><a href="/halka-arz-getiri">📈 2026 halka arzları ne kazandırdı? Güncel getiri tablosunu gör →</a></p>
   </section>
 
