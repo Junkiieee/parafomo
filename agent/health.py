@@ -176,6 +176,9 @@ def stale_data():
         prev = (today.replace(day=1) - dt.timedelta(days=1)).strftime("%Y-%m")
         if t and t["months"][0]["ay"] != prev:
             out.append(f"TÜFE serisi bayat (son {t['months'][0]['ay']} ≠ {prev}) → scripts/tufe-update.py")
+        y = load("yeniden-degerleme.json")
+        if y and y.get("sonAy") != prev:
+            out.append(f"Yİ-ÜFE/YD serisi bayat (son {y.get('sonAy')} ≠ {prev}) → scripts/yeniden-degerleme-update.py")
     for name, label in (("fomc-2026.json", "Fed"), ("tcmb-2026.json", "TCMB")):
         d = load(name)
         if not d:

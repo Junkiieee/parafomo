@@ -63,6 +63,28 @@ _Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
 - [ ] T9 (B261006-1) — **Emekli zammı sayfası iç linkleri:** emeklilik kategorisindeki yazılar
   (bes-bireysel-emeklilik-mantikli-mi, emeklilik-icin-ne-kadar-para) + net-maas/asgari-ucret sayfalarından
   bağlamsal link (footer zaten var; metin içi link ayrıca). · Kabul: ≥4 metin içi link canlıda.
+- [ ] T10 (zam sezonu, RC 10-10) — **/vergi-dilimi-hesaplama sayfası:** 2026 gelir vergisi tarifesi
+  (ücret: %15 ≤190.000 · %20 ≤400.000 · %27 ≤1.500.000 · %35 ≤5.300.000 · %40 üzeri — GİB 332 tebliğiyle
+  DOĞRULA; ücret dışı tarife farkı) + yıllık brüt matrah → dilim/vergi hesaplayıcı + "2027 dilimleri ne
+  olacak" bölümü (yeniden değerleme bağlantısı: data/yeniden-degerleme.json onikiAyOrt tahmini; 'CB farklı
+  belirleyebilir, 2026 artışı ~%20 idi' — emekli-zammi kalıbı). Talep kanıtı: Autocomplete "vergi dilimi
+  hesaplama/nedir/oranları/girmek ne demek" (demand-gaps.json). Footer Hesaplayıcılar'a ekle;
+  /net-maas-hesaplama'dan metin içi link. · Kabul: build + canlıda 200 + FAQPage/Dataset şema + footer linki.
+- [ ] T11 (zam sezonu, RC 10-10) — **/trafik-cezalari-2027 (veya -hesaplama) sayfası:** 2026'da cezalar
+  7574 sayılı Kanun'la yeniden belirlendi — 8-10 YAYGIN cezayı (kırmızı ışık, hız %10-30, emniyet kemeri,
+  cep telefonu, park, muayenesiz) WebSearch ile RESMİ/büyük kaynaktan doğrula (kaynaklar çelişiyor:
+  kırmızı ışık 1.000/3.000/5.000 görüldü — yalnız 2+ kaynağın doğruladığını yaz, çelişeni ATLA) +
+  2027 tahmini sütunu (YD oranı, data/yeniden-degerleme.json) + /yeniden-degerleme-orani'ye link.
+  · Kabul: canlıda 200, her tutarın kaynağı sayfada, çelişkili tutar yok.
+- [ ] T12 (zam sezonu, RC 10-10) — **/pasaport-ehliyet-harci-2027:** 2026 harçları (pasaport 6ay/1/2/3/10 yıl
+  + defter; ehliyet sınıfları; kimlik) WebSearch doğrulamalı tablo + 2027 YD tahmini sütunu + IMEI 54.258 TL
+  satırı. Kaynak çelişirse "yaklaşık" + kaynak linki. /yeniden-degerleme-orani ve /mtv-hesaplama'ya karşılıklı
+  link. · Kabul: canlıda 200 + tablo + şemalar.
+- [ ] T13 (zam sezonu — TARİHLİ, 3 Kasım sonrası) — **YD kesinleşme kontrolü:** 3 Kasım'da Ekim Yİ-ÜFE
+  açıklanınca `python3 scripts/yeniden-degerleme-update.py` sonrası /yeniden-degerleme-orani "hesaben
+  kesinleşti" durumuna geçmiş mi kontrol et (ekimVerisiGeldi=true). Kasım sonunda VUK tebliği çıkınca
+  WebSearch ile oranı doğrula → data/yeniden-degerleme.json `tebligOrani` alanına yaz + `gecmis`e 2027
+  satırı ekle + Aralık'ta MTV/harç CB kararı çıkarsa `uygulanan` doldur. · Kabul: sayfa canlıda doğru durumu gösterir.
 
 ## Bakım / ürün
 - [ ] P1 (portföy) — ⏸ 2026-10-09 günlük koşu atladı: watchlist yeni DB tablosu ister (kırmızı çizgi 6 "şemayı değiştirme" — newsletter tablosu Kaan onayıyla açılmıştı) + ders "trafiksiz ürün cilası kayıt getirmez" (2 üye). Haftalık koşu karar versin. — `agent/plan/backlog-portfolio.md`'deki en üstteki açık madde (İzleme listesi / watchlist —
@@ -84,8 +106,14 @@ _Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
 - R2 bilgileri → `/root/.config/parafomo/backup.env` (backup.sh otomatik kullanır).
 
 ## Notlar (günlük koşu için)
+- **RC 2026-10-10 (2. oturum) — zam sezonu kümesi + talep radarı kuruldu:**
+  `/yeniden-degerleme-orani` + `/mtv-hesaplama` CANLI (veri: `data/yeniden-degerleme.json`, aylık
+  otomatik güncelleme kira-artis-update.sh içinde — Yİ-ÜFE 12 ay ort, Eylül itibarıyla %27,8).
+  Yeni: `scripts/learn/demand_miner.py` (Çrş+Paz, Autocomplete boşlukları) + `data/tr-seasonal-seo.json`
+  mevsimsel takvim → brief §9b "Talep radarı". T10-T13 bu kümenin devamı; Kasım-Ocak zam sezonu
+  yılın en büyük arama dönemi, sayfalar talep zirvesinden ÖNCE canlı olmalı.
 - **RC 2026-10-10 eklenen otomasyonlar** (kontrol: `python3 agent/health.py` → "Veri tazeliği"):
-  kira-artis-update.sh (ayın 3-8'i; kira + TÜFE serisi), policy-decisions.sh (Fed/TCMB karar gecesi),
+  kira-artis-update.sh (ayın 3-8'i; kira + TÜFE serisi + Yİ-ÜFE/YD), policy-decisions.sh (Fed/TCMB karar gecesi),
   indexnow.py (learn-daily). 22 Ekim TCMB ve 28 Ekim Fed sonrası sabah: sayfada karar görünüyor mu kontrol et;
   görünmüyorsa log'a bak (`logs/policy-decisions.log`) ve kaynağı düzelt — rakamı elle tahmin ETME.
 - **Headless izin tuzağı:** 10-07 koşusunda 13 komut reddedildi — `for`/`until` döngüsü, `x=...` değişken

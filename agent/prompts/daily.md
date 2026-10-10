@@ -17,8 +17,8 @@ Planı haftalık koşu yazdı; senin işin onu **uygulamak**. Strateji tartışm
    - Görev artık anlamsızsa (veri değişti, zaten yapılmış): `- [-] ... — iptal: gerekçe` yap, sıradakine geç.
 4. **Sonraki görevler:** önceki görev temiz bittiyse ve bütçe varsa sıradakine geç (gecede en fazla 3 görev).
 5. **Konu kuyruğu:** `agent/plan/content-queue.md`'de bekleyen (`- [ ]`) konu < 3 ise 3-5 konu ekle
-   (kaynak sırası: yaklaşan takvim olayları → GSC fırsat sorguları → aktif bahsin kümesi).
-   Her satır: başlık önerisi · hedef sorgu · neden şimdi (1 cümle) · iç-link hedefi.
+   (kaynak sırası: yaklaşan takvim olayları → talep radarı, brief §9b → GSC fırsat sorguları →
+   aktif bahsin kümesi). Her satır: başlık önerisi · hedef sorgu · neden şimdi (1 cümle) · iç-link hedefi.
 6. **Rapor + commit:** `agent/state/report.md`'yi yaz; plan/kuyruk değişikliklerini commit'le.
 
 ## Yapma

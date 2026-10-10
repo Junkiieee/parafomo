@@ -25,6 +25,10 @@ Ders çıkar ve bu haftanın görev tanımına uygula.
 ## 4. Yeni hafta planı
 - **En fazla 3 aktif bahis.** Her biri: hipotez · dayandığı kanıt · başarı metriği + hedef ·
   değerlendirme tarihi (2-4 hafta) → `bets.py add`.
+- **Talep radarını kullan (brief §9b):** mevsimsel pencerede "SAYFA YOK" olan konu ve Autocomplete'te
+  kapsanmayan sorgu aileleri görev adayıdır. Kural: her yıl tekrar eden sorgunun sayfası talep
+  zirvesinden 3-6 hafta ÖNCE canlı olmalı (Kasım-Ocak zam sezonu yılın en büyük arama dönemi).
+  Tek seferlik merak sorgusu için sayfa açma; aile (5+ varyant) + süreklilik ara.
 - Bahislerden türeyen **5-8 somut görev** — her biri TEK gecede bitecek boyutta, kabul kriteriyle:
   `- [ ] T<n> (B..) — ne yapılacak · Dosyalar: ... · Kabul: canlıda şu görünür / şu komut şunu verir`
 - Kaan'ın kalıcı talepleri için haftada en az: **1 portföy görevi** (`agent/plan/backlog-portfolio.md`)
@@ -34,8 +38,9 @@ Ders çıkar ve bu haftanın görev tanımına uygula.
 
 ## 5. Blog konu kuyruğu
 `agent/plan/content-queue.md`: önümüzdeki 7-10 gün için 5-8 bekleyen konu (Pzt-Cum günde 1 yazı
-yayınlanır). Önce takvim olayları (olaydan 1-3 gün önce yayınlanacak sırayla), sonra GSC fırsatları,
-sonra bahis kümeleri. Kaynak sorgunun gerçekten talep gördüğünü (GSC gösterim/rakip) kontrol et.
+yayınlanır). Önce takvim olayları (olaydan 1-3 gün önce yayınlanacak sırayla), sonra talep radarı
+(brief §9b) + GSC fırsatları, sonra bahis kümeleri. Kaynak sorgunun gerçekten talep gördüğünü
+(GSC gösterim/rakip) kontrol et.
 
 ## 6. Dersleri yeniden yaz
 `agent/memory/learnings.md`: **≤40 madde, tekrar yok**, en güçlü kanıt önce, her maddede kanıt

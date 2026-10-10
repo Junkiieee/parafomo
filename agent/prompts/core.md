@@ -108,7 +108,9 @@ Yalnız `agent/allowed-tools.txt`'deki kalıplar çalışır. Şunlar HER ZAMAN 
 - Bülten: `bash scripts/newsletter-send.sh --dry-run` (önizleme + onaylı abone sayısı; gönderimi cron yapar)
 - Build/deploy: `npm run build` · `bash scripts/deploy-push.sh` (build + kilitli push)
 - Veri: `python3 scripts/fetch-halka-arz.py`, `scripts/ipo-returns.py`, `gold-returns.py`,
-  `dollar-returns.py`, `bist-returns.py`, `fetch-economic-calendar.py`, `altin-fiyat.py`, `dxy.py`, `us-tahvil.py`
+  `dollar-returns.py`, `bist-returns.py`, `fetch-economic-calendar.py`, `altin-fiyat.py`, `dxy.py`,
+  `us-tahvil.py`, `tufe-update.py`, `yeniden-degerleme-update.py` (Yİ-ÜFE + YD oranı),
+  `scripts/learn/demand_miner.py` (Autocomplete talep boşlukları → brief §9b)
 - Sayfa kalıbı: `src/pages/<sayfa>.astro` ← `data/<veri>.json` (örn. altin-getiri.astro ← gold-returns.py).
   Yeni veri betiği eklersen `scripts/daily-content.sh` veri adımlarına (veya halka-arz-update.sh'a) bağla.
 - Ölçüm: `/root/.venvs/parafomo/bin/python scripts/dashboard.py` (GA4+GSC+YT), `scripts/learn/*`

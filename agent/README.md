@@ -41,6 +41,7 @@ eller (deterministik cron'lar, ajan olmadan da çalışır) — deploy/crontab.t
 | `runlog.py` | mod seçimi, koşu kaydı (`memory/runs.jsonl`), sonuç sınıflandırma |
 | `notify.py` | e-posta: `report` (günlük/haftalık) · `alert` (günde 1/tür) |
 | `allowed-tools.txt` | ajanın izinli araç/komut listesi |
+| brief §9b Talep radarı | `data/tr-seasonal-seo.json` (mevsimsel sorgu takvimi) + `scripts/learn/demand_miner.py` (Autocomplete boşlukları, Çrş+Paz) |
 | `plan/week.md` | haftanın bahisleri + görev kuyruğu (günlük koşu en üstteki `[ ]`'yi yapar) |
 | `plan/content-queue.md` | blog konu kuyruğu (`scripts/daily-content.sh` en üsttekini yazar) |
 | `plan/user-tasks.md` | Kaan'a bağlı işler (≤3) |

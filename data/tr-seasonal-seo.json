@@ -1,0 +1,20 @@
+{
+ "_aciklama": "Türkiye finans aramalarının yıllık mevsimsel takvimi. Ajan (brief 'Talep radarı' + haftalık koşu) sayfaları talep zirvesinden 3-6 hafta ÖNCE hazırlar; demand_miner.py bu ayın + gelecek ayın sorgularını tohum olarak kullanır. 'sayfa': sitedeki karşılığı (null = yok, fırsat).",
+ "takvim": [
+  {"ay": 1, "konu": "Emekli zammı kesinleşmesi (Aralık TÜFE)", "sorgular": ["emekli zammı ne kadar oldu", "memur zammı enflasyon farkı", "en düşük emekli maaşı"], "sayfa": "/emekli-zammi-hesaplama", "not": "TÜİK 3 Ocak civarı — yılın en büyük trafik günlerinden"},
+  {"ay": 1, "konu": "MTV 1. taksit + yeni yıl tarifeleri", "sorgular": ["mtv ne kadar", "mtv sorgulama", "mtv taksit ne zaman"], "sayfa": "/mtv-hesaplama", "not": "1-31 Ocak ödeme dönemi"},
+  {"ay": 1, "konu": "Asgari ücret sonrası hesaplamalar", "sorgular": ["asgari ücret net ne kadar", "agi var mı", "işsizlik maaşı ne kadar"], "sayfa": "/asgari-ucret-hesaplama", "not": "kesinleşme sonrası ayın tamamı"},
+  {"ay": 2, "konu": "Kira zammı + şubat enflasyonu", "sorgular": ["şubat kira artış oranı", "kira zammı nasıl hesaplanır"], "sayfa": "/kira-artis-orani-hesaplama", "not": "her ay tekrar eder"},
+  {"ay": 3, "konu": "Gelir vergisi beyannamesi (Mart)", "sorgular": ["kira geliri vergisi", "beyanname ne zaman verilir", "gelir vergisi dilimleri"], "sayfa": null, "not": "yıllık beyanname dönemi 1-31 Mart"},
+  {"ay": 3, "konu": "BIST temettü sezonu", "sorgular": ["temettü veren hisseler", "temettü ne zaman ödenir"], "sayfa": null, "not": "genel kurullar Mart-Mayıs"},
+  {"ay": 4, "konu": "Ramazan/bayram ikramiyesi", "sorgular": ["emekli bayram ikramiyesi ne kadar", "bayram ikramiyesi ne zaman yatar"], "sayfa": null, "not": "tarih bayrama göre kayar — takvimden doğrula"},
+  {"ay": 5, "konu": "Temettü ödemeleri zirvesi", "sorgular": ["temettü takvimi", "hangi hisse ne zaman temettü verecek"], "sayfa": null, "not": ""},
+  {"ay": 6, "konu": "Temmuz emekli/memur zammı tahminleri", "sorgular": ["temmuz emekli zammı ne kadar olacak", "memur zammı temmuz"], "sayfa": "/emekli-zammi-hesaplama", "not": "Haziran ortasından itibaren yükselir"},
+  {"ay": 7, "konu": "Temmuz zamları kesinleşme + MTV 2. taksit", "sorgular": ["emekli zammı kesinleşti mi", "mtv 2. taksit ne zaman", "asgari ücrete ara zam"], "sayfa": "/emekli-zammi-hesaplama", "not": "3 Temmuz TÜFE günü zirve"},
+  {"ay": 8, "konu": "Kira artışı zirvesi (taşınma sezonu)", "sorgular": ["kira artış oranı ağustos", "kiracı hakları zam"], "sayfa": "/kira-artis-orani-hesaplama", "not": "okul öncesi taşınma"},
+  {"ay": 9, "konu": "Okul/eğitim masrafları + kira", "sorgular": ["eğitim kredisi", "okul masrafı bütçe"], "sayfa": null, "not": "ikincil"},
+  {"ay": 10, "konu": "Yeniden değerleme oranı tahmini başlar", "sorgular": ["yeniden değerleme oranı 2027", "mtv 2027 ne kadar olacak", "2027 vergi zamları"], "sayfa": "/yeniden-degerleme-orani", "not": "Ekim Yİ-ÜFE ile Kasım başında kesinleşir — sayfalar EKİM'de hazır olmalı"},
+  {"ay": 11, "konu": "Yeniden değerleme kesinleşme + asgari ücret sezonu açılışı", "sorgular": ["yeniden değerleme oranı açıklandı", "asgari ücret 2027 ne kadar olacak", "asgari ücret komisyonu ne zaman toplanacak"], "sayfa": "/yeniden-degerleme-orani", "not": "3 Kasım Yİ-ÜFE + Kasım sonu tebliğ; asgari ücret haberleri başlar"},
+  {"ay": 12, "konu": "ZAM SEZONU ZİRVESİ: asgari ücret + tüm 2027 tarifeleri", "sorgular": ["asgari ücret 2027", "mtv 2027", "trafik cezaları 2027", "pasaport harcı 2027", "imei kayıt ücreti 2027", "vergi dilimleri 2027", "emekli zammı ocak tahmin"], "sayfa": "/yeniden-degerleme-orani", "not": "yılın en yüksek arama hacmi — tüm 2027 sayfaları Aralık başında güncel ve canlı olmalı"}
+ ]
+}

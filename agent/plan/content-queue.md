@@ -11,6 +11,11 @@ Sıra = planlanan yayın günü (haftalık koşu 2026-10-08): 08 → 09 → 12 �
   tarihi BLS takviminden/ekonomik takvimden doğrula ve metne kesin tarihi yaz (bilinmiyorsa "Ekim ortası"); 10-12'de
   yayın (olaydan 1-3 gün önce); 10 Eylül'deki "ABD Eylül 2026 CPI" yazısıyla çakışmasın diye "Ekim" adlandırması;
   makro açıklayıcılar en iyi blog sayfalarımız · iç-link: /ekonomik-takvim, /fed-faiz-takvimi, /altin-getiri
+- [ ] **2027'de neler zamlanacak? Yeniden değerleme oranı rehberi: MTV, harçlar, cezalar, vergi dilimleri** ·
+  hedef: "2027 zamları", "yeniden değerleme oranı 2027", "2027de neler zamlanacak" · neden: RC 10-10'da
+  /yeniden-degerleme-orani + /mtv-hesaplama canlıya alındı (Eylül Yİ-ÜFE ile tahmin %27,8) — bu yazı kümenin
+  blog girişi, Kasım-Ocak zam sezonuna 3-6 hafta önce pozisyon; rakamları SAYFADAKİ veriden al, uydurma ·
+  iç-link: /yeniden-degerleme-orani, /mtv-hesaplama, /emekli-zammi-hesaplama, /asgari-ucret-hesaplama
 - [ ] **Halka arza katılmak kazandırıyor mu? 2026 halka arzlarının ilk gün, 1 ay ve bugünkü getirisi** · hedef:
   "halka arz kazandırır mı", "halka arza katılmak mantıklı mı", "2026 halka arz getirileri" · neden: B261006-1
   kümesine veri-temelli karar yazısı; `data/halka-arz-getiri.json`'daki GERÇEK rakamlarla (2026 ort. getiri,
@@ -36,6 +41,10 @@ Sıra = planlanan yayın günü (haftalık koşu 2026-10-08): 08 → 09 → 12 �
 ## Sonraki hafta adayları (haftalık koşu sıralar)
 - Fed 28 Ekim FOMC önizlemesi (26-27 Ekim) · Kasım 2026 kira artış oranı tahmini (TÜİK 3 Kasım; 30 Ekim-2 Kasım)
   · TÜİK Ekim enflasyonu önizlemesi (31 Ekim-2 Kasım).
+- **Altın fiyatı ne zaman düşer, ne zaman yükselir?** (evergreen) · Autocomplete'te 10+ varyant kapsanmıyor
+  (demand-gaps.json) · veri-temelli: /altin-getiri serisinden tarihsel düşüş dönemleri tablosu + Fed/reel
+  faiz/jeopolitik faktörleri; kehanet değil mekanizma anlat · iç-link: /altin-getiri, /altin-fiyatlari,
+  /blog/abd-faiz-artarsa-altin-ne-olur.
 
 ## Yazılanlar
 - [x] **Euro mu dolar mı? TL bazında 10 yıllık getiri karşılaştırması** · hedef: "euro mu dolar mı

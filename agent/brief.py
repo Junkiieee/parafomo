@@ -409,6 +409,34 @@ def sec_calendar():
         out("- (önümüzdeki 3 haftada kayıtlı olay yok)")
 
 
+def sec_demand():
+    """Talep radarı: mevsimsel takvim (bu+gelecek ay) + Autocomplete'te kapsanmayan sorgular."""
+    try:
+        d = json.load(open(os.path.join(ROOT, "data", "tr-seasonal-seo.json"), encoding="utf-8"))
+        months = {TODAY.month, TODAY.month % 12 + 1}
+        rows = [t for t in d.get("takvim", []) if t.get("ay") in months]
+        if rows:
+            out("**Mevsimsel pencere (bu ay + gelecek ay) — sayfa talepten 3-6 hafta önce hazır olmalı:**")
+            for t in rows:
+                sayfa = t.get("sayfa") or "⚠ SAYFA YOK"
+                out(f"- Ay {t['ay']}: {t['konu']} → {sayfa} · sorgular: {', '.join(t['sorgular'][:3])}"
+                    + (f" · {t['not']}" if t.get("not") else ""))
+    except Exception as e:
+        out(f"_(mevsimsel takvim okunamadı: {e})_")
+    try:
+        p = os.path.join(ROOT, "data", "learning", "demand-gaps.json")
+        g = json.load(open(p, encoding="utf-8"))
+        age = (TODAY - dt.date.fromisoformat(g["generated_utc"][:10])).days
+        n = 25 if MODE == "weekly" else 12
+        if age <= 10:
+            out(f"\n**Autocomplete'te aranan ama sitede kapsanmayan sorgular (kaba eşleşme, {age}g önce):**")
+            out(" · ".join(g.get("uncovered_top", [])[:n]) or "(yok)")
+            out("_Konu seçerken önce talebi doğrula (GSC gösterimi / rakip sayısı); birden çok öneri aynı"
+                " niyetse TEK güçlü sayfada topla._")
+    except Exception:
+        out("\n_(demand-gaps.json yok — scripts/learn/demand_miner.py üretir)_")
+
+
 def sec_inventory():
     blog = os.path.join(ROOT, "src", "content", "blog")
     posts = []
@@ -536,6 +564,7 @@ def main():
     section("7) Web: arama ve trafik verisi", sec_web)
     section("8) YouTube", sec_youtube)
     section("9) Takvim (yaklaşan yüksek/orta etkili olaylar)", sec_calendar)
+    section("9b) Talep radarı (mevsimsel + Autocomplete boşlukları)", sec_demand)
     section("10) İçerik envanteri", sec_inventory)
     section("11) Blog konu kuyruğu (agent/plan/content-queue.md)", sec_content_queue)
     section("12) Kullanıcı görevleri (agent/plan/user-tasks.md)", sec_user_inputs)
