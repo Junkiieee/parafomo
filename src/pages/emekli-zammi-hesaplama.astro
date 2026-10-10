@@ -1,0 +1,359 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import tufe from '../../data/tufe-aylik.json';
+import tuik from '../../data/tuik-enflasyon-2026.json';
+
+// Ocak 2027 zammı = Temmuz–Aralık 2026 birikimli TÜFE (SSK/Bağ-Kur) ve toplu sözleşme + enflasyon
+// farkı (memur / memur emeklisi). Aylık TÜFE scripts/tufe-update.py ile TCMB tablosundan gelir.
+// Yöntem 2026-10-10'da Temmuz 2026 resmi oranlarıyla doğrulandı (SSK %17,75 · memur %13,51).
+const PERIOD = ['2026-07', '2026-08', '2026-09', '2026-10', '2026-11', '2026-12'];
+const TS_H2_2026 = 7; // 8. Dönem Toplu Sözleşme (Hakem Kurulu, RG 27.08.2025): 2026 2. yarı %7
+const TS_H1_2027 = 5; // 2027 1. yarı %5
+const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+
+type M = { ay: string; yillik: number; aylik: number };
+const byMonth = new Map((tufe.months as M[]).map((m) => [m.ay, m]));
+const monthName = (key: string) => MONTHS[+key.slice(5) - 1];
+
+const releaseOf = (key: string) => {
+  const label = `${monthName(key)} ${key.slice(0, 4)}`;
+  const r = tuik.releases.find((x: { covers: string; date: string }) => x.covers === label);
+  return r ? new Date(r.date + 'T10:00:00+03:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' }) : 'Ocak 2027 başı';
+};
+
+const rows = PERIOD.map((key) => ({ key, name: monthName(key), data: byMonth.get(key), release: releaseOf(key) }));
+const known = rows.filter((r) => r.data);
+const pct = (x: number) => (x * 100).toFixed(2);
+const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+
+const cumKnown = known.reduce((c, r) => c * (1 + r.data!.aylik / 100), 1) - 1; // ör. 0.0556
+const remaining = PERIOD.length - known.length;
+const last3 = (tufe.months as M[]).slice(0, 3);
+const ASSUME = +(last3.reduce((s, m) => s + m.aylik, 0) / last3.length).toFixed(2); // kalan aylar varsayımı (%)
+
+const project = (assume: number) => (1 + cumKnown) * Math.pow(1 + assume / 100, remaining) - 1;
+const memurFrom = (cum6: number) => {
+  const fark = Math.max(0, (1 + cum6) / (1 + TS_H2_2026 / 100) - 1);
+  return { fark, zam: (1 + fark) * (1 + TS_H1_2027 / 100) - 1 };
+};
+const sskProj = project(ASSUME);
+const prevYear = rows.filter((r) => !r.data).map((r) => byMonth.get(`${+r.key.slice(0, 4) - 1}${r.key.slice(4)}`)).every(Boolean)
+  ? rows.filter((r) => !r.data).map((r) => `${r.name} %${nf(byMonth.get(`${+r.key.slice(0, 4) - 1}${r.key.slice(4)}`)!.aylik)}`).join(', ')
+  : '';
+const SCEN = [1.0, 1.5, 2.0].map((x) => ({ x, ssk: project(x), memur: memurFrom(project(x)).zam }));
+const memurProj = memurFrom(sskProj);
+const memurNow = memurFrom(cumKnown);
+const final = remaining === 0;
+
+// Doğrulama satırı: Temmuz 2026 (Ocak–Haziran birikimli) — resmi oranlarla eşleşir
+const h1 = ['2026-01', '2026-02', '2026-03', '2026-04', '2026-05', '2026-06'];
+const sskJul = h1.every((k) => byMonth.has(k)) ? h1.reduce((c, k) => c * (1 + byMonth.get(k)!.aylik / 100), 1) - 1 : null;
+const memurJul = sskJul == null ? null : (1 + Math.max(0, (1 + sskJul) / 1.11 - 1)) * 1.07 - 1;
+
+const D = { pension: 20000 };
+const lastKnown = known[known.length - 1];
+const kesin = `${known.length} aylık kesinleşen enflasyon %${nf(cumKnown * 100)}`;
+
+const faq = [
+  {
+    q: 'Ocak 2027 emekli zammı ne kadar olacak?',
+    a: final
+      ? `SSK ve Bağ-Kur emeklilerinin Ocak 2027 zammı, Temmuz–Aralık 2026 birikimli enflasyonu olan %${nf(cumKnown * 100)} olarak kesinleşti.`
+      : `Kesin oran Aralık 2026 enflasyonu açıklanınca belli olur. Şu ana kadar ${known[0].name}–${lastKnown.name} dönemindeki ${known.length} aylık birikimli enflasyon %${nf(cumKnown * 100)}; kalan ${remaining} ayda aylık enflasyonun son 3 ay ortalaması olan %${nf(ASSUME)} seyretmesi hâlinde SSK ve Bağ-Kur emeklilerinin zammı yaklaşık %${nf(sskProj * 100)} olur. Bu bir tahmindir.`,
+  },
+  {
+    q: `Emekli zammı için kesinleşen ${known.length} aylık enflasyon ne kadar?`,
+    a: `TÜİK verilerine göre ${known.map((r) => `${r.name} %${nf(r.data!.aylik)}`).join(', ')} aylık enflasyonla Temmuz 2026'dan bu yana birikimli enflasyon %${nf(cumKnown * 100)} oldu. Bu oran şimdiden kesinleşmiş zam payıdır; kalan aylar eklendikçe büyür.`,
+  },
+  {
+    q: 'Memur ve memur emeklisi zammı Ocak 2027’de yüzde kaç olacak?',
+    a: `Memur ve memur emeklileri Ocak 2027'de 2027 ilk yarısı toplu sözleşme zammı %${TS_H1_2027} ile 2026 ikinci yarısının enflasyon farkını alır. Enflasyon farkı, Temmuz–Aralık enflasyonu %${TS_H2_2026}'yi aşarsa oluşur. Şu an fark ${memurNow.fark > 0 ? `%${nf(memurNow.fark * 100)}` : 'oluşmadı'}; kalan aylar için %${nf(ASSUME)} aylık varsayımla toplam memur zammı yaklaşık %${nf(memurProj.zam * 100)} olur.`,
+  },
+  {
+    q: 'Emekli zammı nasıl hesaplanır?',
+    a: 'SSK (4/a) ve Bağ-Kur (4/b) emeklilerinin aylıkları her yıl Ocak ve Temmuz’da, önceki altı ayın birikimli TÜFE artışı kadar artırılır. Birikimli oran aylık oranların çarpımıyla bulunur: (1+a1)×(1+a2)×…×(1+a6)−1. Memur ve memur emeklilerinde (4/c) toplu sözleşme zammı ile enflasyon farkı birlikte uygulanır.',
+  },
+  {
+    q: 'Emekli zammı ne zaman kesinleşir?',
+    a: `Ocak 2027 zammı, Aralık 2026 enflasyonunun açıklandığı gün (Ocak 2027'nin ilk iş günleri, saat 10:00) kesinleşir. Sıradaki veri: ${rows.find((r) => !r.data)?.name ?? 'Aralık'} 2026 enflasyonu, ${rows.find((r) => !r.data)?.release ?? 'Ocak 2027 başı'} tarihinde açıklanacak.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Emekli Zammı Hesaplama', url: '/emekli-zammi-hesaplama/' },
+];
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'Ocak 2027 emekli ve memur zammı — Temmuz–Aralık 2026 birikimli enflasyon',
+  description: `Temmuz 2026'dan itibaren aylık TÜFE ve birikimli enflasyon; SSK/Bağ-Kur ve memur Ocak 2027 zam tahmini. ${kesin}.`,
+  url: 'https://parafomo.com/emekli-zammi-hesaplama/',
+  dateModified: tufe.updated,
+  creator: { '@type': 'Organization', name: 'ParaFOMO', url: 'https://parafomo.com/' },
+  isBasedOn: 'https://www.tuik.gov.tr',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+};
+const updatedLabel = new Date(tufe.updated + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  title={`Ocak 2027 Emekli Zammı Hesaplama: SSK, Bağ-Kur, Memur (Kesinleşen %${nf(cumKnown * 100)})`}
+  description={`Ocak 2027 emekli ve memur zammı hesaplama. ${kesin} (${known[0].name}–${lastKnown.name} 2026). Tahmini SSK/Bağ-Kur zammı %${nf(sskProj * 100)}, memur %${nf(memurProj.zam * 100)}. Aylığını gir, yeni maaşını gör.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(dataset)} />
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Ocak 2027</p>
+      <h1>Ocak 2027 Emekli ve Memur Zammı Hesaplama</h1>
+      <p class="lede">
+        SSK ve Bağ-Kur emeklilerinin Ocak zammı, Temmuz–Aralık 2026 enflasyonuna eşittir.
+        Şu ana kadar <strong>{known.length} ayın verisi açıklandı: birikimli %{nf(cumKnown * 100)}</strong>.
+        Aylığınızı girin, kalan aylar için varsayımı değiştirin, yeni maaşınızı görün.
+      </p>
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="kpi-label">Kesinleşen ({known.length}/6 ay)</span>
+        <span class="kpi-val">%{nf(cumKnown * 100)}</span>
+        <span class="kpi-sub">{known[0].name}–{lastKnown.name} 2026 birikimli TÜFE</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">SSK / Bağ-Kur {final ? 'zammı' : 'tahmini'}</span>
+        <span class="kpi-val">%{nf(sskProj * 100)}</span>
+        <span class="kpi-sub">{final ? 'kesinleşti' : `kalan ${remaining} ay %${nf(ASSUME)}/ay varsayımıyla`}</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Memur / memur emeklisi {final ? 'zammı' : 'tahmini'}</span>
+        <span class="kpi-val">%{nf(memurProj.zam * 100)}</span>
+        <span class="kpi-sub">%{TS_H1_2027} toplu sözleşme + %{nf(memurProj.fark * 100)} enflasyon farkı</span>
+      </div>
+    </div>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Emeklilik / çalışma türü</span>
+          <select id="in-type">
+            <option value="ssk">SSK (4/a) veya Bağ-Kur (4/b) emeklisi</option>
+            <option value="memur">Memur veya memur emeklisi (4/c, Emekli Sandığı)</option>
+          </select>
+        </label>
+        <label>
+          <span>Mevcut aylık (₺)</span>
+          <input type="number" id="in-pension" value={D.pension} min="0" step="500" inputmode="numeric" />
+        </label>
+        {!final && (
+          <label>
+            <span>Kalan {remaining} ay için aylık enflasyon varsayımı (%) <em class="hint">— varsayılan: son 3 ay ort.</em></span>
+            <input type="number" id="in-assume" value={ASSUME} min="-5" max="20" step="0.05" inputmode="decimal" />
+          </label>
+        )}
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Ocak 2027 yeni aylık {final ? '' : '(tahmini)'}</span>
+          <span class="result-value" id="out-new">₺{fmt(D.pension * (1 + sskProj))}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Zam oranı</span>
+            <span class="split-val" id="out-rate">%{nf(sskProj * 100)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Aylık artış tutarı</span>
+            <span class="split-val" id="out-diff">₺{fmt(D.pension * sskProj)}</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note">Kesinleşen kısım %{nf(cumKnown * 100)}; gerisi varsayımdır.</p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç bilgilendirme amaçlıdır. Kesin zam oranı Aralık 2026 enflasyonu açıklanınca belli olur.
+      En düşük emekli aylığı ve bayram ikramiyesi gibi tutarlar ayrıca yasal düzenlemeyle belirlenir;
+      bu hesap yalnızca enflasyona bağlı artışı gösterir. Son güncelleme: {updatedLabel} · Kaynak: TÜİK TÜFE (TCMB tablosu).
+    </p>
+
+    <section class="table-block">
+      <h2>Temmuz–Aralık 2026 aylık enflasyon ve birikimli zam</h2>
+      <table class="rate-table">
+        <thead><tr><th>Ay</th><th>Aylık TÜFE</th><th>Birikimli (emekli zammı)</th></tr></thead>
+        <tbody>
+          {rows.map((r, i) => {
+            const cum = rows.slice(0, i + 1).every((x) => x.data)
+              ? rows.slice(0, i + 1).reduce((c, x) => c * (1 + x.data!.aylik / 100), 1) - 1
+              : null;
+            return (
+              <tr class={r.data ? '' : 'pending'}>
+                <td>{r.name} 2026</td>
+                <td>{r.data ? `%${nf(r.data.aylik)}` : `${r.release} açıklanacak`}</td>
+                <td>{cum != null ? `%${nf(cum * 100)}` : '—'}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <p class="table-note">Birikimli oran = aylık oranların bileşik çarpımı. Veri her ay TÜİK açıklamasıyla otomatik güncellenir.</p>
+    </section>
+
+    {!final && (
+      <section class="table-block">
+        <h2>Senaryolar: kalan {remaining} ayda enflasyon ne olursa zam ne olur?</h2>
+        <table class="rate-table">
+          <thead><tr><th>Kalan aylarda aylık TÜFE</th><th>SSK / Bağ-Kur</th><th>Memur / memur emeklisi</th></tr></thead>
+          <tbody>
+            {SCEN.map((c) => (
+              <tr><td>%{nf(c.x)} / ay</td><td>%{nf(c.ssk * 100)}</td><td>%{nf(c.memur * 100)}</td></tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="table-note">Kesinleşen %{nf(cumKnown * 100)} her senaryoda sabittir; fark yalnızca açıklanmamış aylardan gelir. {prevYear && `Karşılaştırma: bir yıl önce aynı aylarda aylık TÜFE ${prevYear}.`}</p>
+      </section>
+    )}
+
+    {sskJul != null && (
+      <section class="table-block">
+        <h2>Geçmiş zam: Temmuz 2026</h2>
+        <table class="rate-table">
+          <thead><tr><th>Grup</th><th>Temmuz 2026 zammı</th><th>Nasıl oluştu?</th></tr></thead>
+          <tbody>
+            <tr><td>SSK / Bağ-Kur</td><td>%{nf(sskJul * 100)}</td><td>Ocak–Haziran 2026 birikimli TÜFE</td></tr>
+            <tr><td>Memur / memur emeklisi</td><td>%{nf(memurJul! * 100)}</td><td>%7 toplu sözleşme + %{nf(((1 + sskJul) / 1.11 - 1) * 100)} enflasyon farkı (%11'i aşan kısım)</td></tr>
+          </tbody>
+        </table>
+      </section>
+    )}
+
+    <section class="prose-block">
+      <h2>SSK ve Bağ-Kur emeklisi zammı nasıl hesaplanır?</h2>
+      <p>
+        4/a (SSK) ve 4/b (Bağ-Kur) emeklilerinin aylıkları her yıl <strong>Ocak ve Temmuz</strong> aylarında,
+        önceki altı ayın <strong>birikimli TÜFE artışı</strong> kadar yükseltilir. Ocak 2027 zammı için
+        Temmuz, Ağustos, Eylül, Ekim, Kasım ve Aralık 2026 aylık enflasyonları bileşik olarak çarpılır.
+        Basit toplama değil çarpım kullanıldığı için sonuç, aylık oranların toplamından biraz yüksektir.
+      </p>
+      <h2>Memur ve memur emeklisi zammı nasıl hesaplanır?</h2>
+      <p>
+        Memur ve Emekli Sandığı (4/c) emeklilerinin zammı iki parçadan oluşur: 8. Dönem Toplu Sözleşme
+        (Hakem Kurulu kararı) ile belirlenen <strong>2027 ilk yarısı için %{TS_H1_2027}</strong> artış ve
+        2026'nın ikinci yarısında enflasyon %{TS_H2_2026}'lik toplu sözleşme artışını aşarsa oluşan
+        <strong> enflasyon farkı</strong>. Toplam zam = (1 + enflasyon farkı) × (1 + %{TS_H1_2027}) − 1.
+      </p>
+      <p class="cta-line">
+        Zammın bağlı olduğu enflasyonun ne zaman açıklanacağı için <a href="/enflasyon-takvimi/">enflasyon takvimi</a>,
+        kira zammı tavanı için <a href="/kira-artis-orani-hesaplama/">kira artış oranı hesaplama</a>,
+        maaşınızın enflasyona karşı durumunu görmek için <a href="/net-maas-hesaplama/">net maaş hesaplama</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ CUM: cumKnown, REMAINING: remaining, ASSUME, TS2: TS_H2_2026, TS1: TS_H1_2027 }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const nf2 = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      function update() {
+        const pension = Math.max(0, +$('in-pension').value || 0);
+        const assume = $('in-assume') ? +$('in-assume').value || 0 : ASSUME;
+        const cum6 = (1 + CUM) * Math.pow(1 + assume / 100, REMAINING) - 1;
+        let rate = cum6, note;
+        if ($('in-type').value === 'memur') {
+          const fark = Math.max(0, (1 + cum6) / (1 + TS2 / 100) - 1);
+          rate = (1 + fark) * (1 + TS1 / 100) - 1;
+          note = `%${TS1} toplu sözleşme + %${nf2.format(fark * 100)} enflasyon farkı (6 aylık enflasyon %${nf2.format(cum6 * 100)}, %${TS2}'yi aşan kısım).`;
+        } else {
+          note = REMAINING > 0
+            ? `Kesinleşen kısım %${nf2.format(CUM * 100)}; kalan ${REMAINING} ay için aylık %${nf2.format(assume)} varsayıldı.`
+            : 'Temmuz–Aralık 2026 enflasyonuyla kesinleşen orandır.';
+        }
+        $('out-new').textContent = '₺' + nf0.format(Math.round(pension * (1 + rate)));
+        $('out-rate').textContent = '%' + nf2.format(rate * 100);
+        $('out-diff').textContent = '₺' + nf0.format(Math.round(pension * rate));
+        $('out-note').textContent = note;
+      }
+      ['in-type', 'in-pension', 'in-assume'].forEach((id) => { const el = $(id); if (el) el.addEventListener('input', update); });
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin: 0 0 1rem; }
+    .kpi { display: flex; flex-direction: column; gap: 0.15rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-xs); }
+    .kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .kpi-val { font-family: var(--font-serif); font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.1rem); font-weight: 700; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .kpi-sub { font-size: 0.78rem; color: var(--text-soft); line-height: 1.35; }
+
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; }
+    .calc-inputs input, .calc-inputs select { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+
+    .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 1rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; }
+    .result-note { font-size: 0.82rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .rate-table tr.pending td { color: var(--text-muted); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 680px) {
+      .kpi-row { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: 1fr; }
+      .rate-table { font-size: 0.85rem; }
+    }
+  </style>
+</BaseLayout>
