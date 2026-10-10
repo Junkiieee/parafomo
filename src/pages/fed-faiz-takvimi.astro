@@ -3,8 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import fomc from '../../data/fomc-2026.json';
 
-type Meeting = { range: string; decisionDate: string; tsiTime: string; dotPlot: boolean };
+type Result = { decision: 'hold' | 'cut' | 'hike'; bp: number; lower: number; upper: number; vote?: string; source: string };
+type Meeting = { range: string; decisionDate: string; tsiTime: string; dotPlot: boolean; result?: Result };
 const meetings = fomc.meetings as Meeting[];
+const meetings2027 = (fomc.meetings2027 ?? []) as Meeting[];
 
 const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 const DOW_TR = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
@@ -27,7 +29,28 @@ const rows = meetings.map((m) => {
   };
 });
 
+const rows2027 = meetings2027.map((m) => {
+  const dt = new Date(m.decisionDate + 'T00:00:00');
+  return { ...m, dowLabel: DOW_TR[dt.getDay()] };
+});
+
 const next = rows.find((r) => !r.isPast);
+const nf = (n: number) => n.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const band = (lo: number, hi: number) => `%${nf(lo)}–${nf(hi)}`;
+// Son açıklanan karar → güncel faiz bandı (karar gecesi scripts/policy-decisions.py doldurur)
+const decided = rows.filter((r) => r.result);
+const last = decided[decided.length - 1];
+const cur = last?.result ?? { lower: fomc.previous.lower, upper: fomc.previous.upper };
+const curBand = band(cur.lower, cur.upper);
+const decisionText = (res: Result) =>
+  res.decision === 'hold'
+    ? `${band(res.lower, res.upper)} bandında sabit`
+    : `${Math.abs(res.bp)} baz puan ${res.decision === 'cut' ? 'indirim' : 'artış'} → ${band(res.lower, res.upper)}`;
+const decisionShort = (res: Result) =>
+  res.decision === 'hold' ? `Sabit · ${band(res.lower, res.upper)}` : `${res.bp > 0 ? '+' : '−'}${Math.abs(res.bp)} bp → ${band(res.lower, res.upper)}`;
+const statusText = (r: (typeof rows)[number]) =>
+  r.isPast ? 'açıklanıyor' : next != null && r.decisionDate === next.decisionDate ? nextCountdownText : `${r.daysUntil} gün`;
+const changes = decided.filter((r) => r.result!.decision !== 'hold');
 const nextCountdownText =
   next == null ? '' : next.daysUntil === 0 ? 'bugün' : next.daysUntil === 1 ? 'yarın' : `${next.daysUntil} gün sonra`;
 
@@ -41,6 +64,26 @@ const faq = [
       ? `2026'daki bir sonraki Fed (FOMC) faiz kararı ${next.dayLabel} günü (${nextCountdownText}), TSİ ${next.tsiTime} civarında açıklanacak. Karar, iki günlük toplantının ikinci günü duyurulur.`
       : '2026 FOMC takvimi tamamlandı. 2027 tarihleri Fed tarafından açıklandığında bu sayfaya eklenecek.',
   },
+  ...(last
+    ? [
+        {
+          q: 'Fed faizi şu an yüzde kaç?',
+          a: `Fed'in politika faizi (federal funds hedef bandı) şu an ${curBand}. Son karar ${last.dayLabel} tarihli FOMC toplantısında alındı: faiz ${decisionText(last.result!)}${last.result!.vote ? ` (oylama ${last.result!.vote})` : ''}.`,
+        },
+        {
+          q: 'Fed son faiz kararı ne oldu?',
+          a: `Fed ${last.dayLabel} tarihli toplantıda faizi ${decisionText(last.result!)} olarak açıkladı. 2026'da şimdiye kadar ${decided.length} karar açıklandı; ${changes.length === 0 ? 'hiçbirinde faiz değişmedi' : changes.map((c) => `${c.dayLabel} (${decisionShort(c.result!)})`).join(', ') + ' dışındaki toplantılarda faiz sabit tutuldu'}.`,
+        },
+      ]
+    : []),
+  ...(rows2027.length
+    ? [
+        {
+          q: 'Fed 2027 toplantı tarihleri ne zaman?',
+          a: `Fed'in 2027 ön takvimine göre FOMC faiz kararları şu tarihlerde açıklanacak: ${rows2027.map((r) => r.range.split('-')[1]).join(', ')}. Dot plot içeren toplantılar Mart, Haziran, Eylül ve Aralık. Tarihler her toplantıda kesinleşir.`,
+        },
+      ]
+    : []),
   {
     q: 'FOMC yılda kaç kez toplanır?',
     a: 'FOMC (Federal Açık Piyasa Komitesi) yılda 8 kez, yaklaşık altı haftada bir toplanır. Her toplantı iki gün sürer ve faiz kararı ikinci günün sonunda açıklanır.',
@@ -67,8 +110,8 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title="Fed Faiz Kararı Takvimi 2026 — FOMC Toplantı Tarihleri ve Saatleri"
-  description="2026 Fed (FOMC) faiz kararı takvimi: tüm toplantı tarihleri, TSİ karar saatleri ve dot plot günleri. Bir sonraki Fed faiz kararına kaç gün kaldığını gör."
+  title={`Fed Faiz Kararı Takvimi 2026-2027: FOMC Tarihleri ve Kararlar (${curBand})`}
+  description={`Fed faizi ${curBand}${last ? ` (son karar ${last.dayLabel}: ${decisionText(last.result!)})` : ''}. 2026 FOMC toplantı tarihleri ve kararları, TSİ saatleri, dot plot günleri ve 2027 Fed takvimi.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
@@ -77,8 +120,16 @@ const jsonLd = {
     <h1>Fed Faiz Kararı Takvimi 2026</h1>
     <p class="lede soft">
       ABD Merkez Bankası'nın (FOMC) 2026 yılındaki tüm faiz kararı tarihleri, Türkiye saatiyle (TSİ)
-      açıklama saatleri ve dot plot günleri — tek sayfada.
+      açıklama saatleri, her toplantının kararı, dot plot günleri ve 2027 takvimi — tek sayfada.
     </p>
+
+    {last && (
+      <div class="fk-rate">
+        <span class="fk-rate-label">Güncel Fed faizi (hedef bant)</span>
+        <span class="fk-rate-num">{curBand}</span>
+        <span class="fk-rate-sub">Son karar {last.dayLabel}: {decisionText(last.result!)}{last.result!.vote && ` · oylama ${last.result!.vote}`}</span>
+      </div>
+    )}
 
     {next && (
       <div class="fk-next">
@@ -98,7 +149,7 @@ const jsonLd = {
 
   <section class="container fk-section">
     <div class="fk-shead">
-      <h2>2026 FOMC Toplantı Tarihleri</h2>
+      <h2>2026 FOMC Toplantı Tarihleri ve Kararları</h2>
       <span class="fk-shead-count">{meetings.length} toplantı</span>
     </div>
 
@@ -118,8 +169,8 @@ const jsonLd = {
           <span class:list={['fk-cell-tag', { on: r.dotPlot }]}>
             {r.dotPlot ? '● Dot plot' : '—'}
           </span>
-          <span class="fk-cell-status">
-            {r.isPast ? 'geçti' : next != null && r.decisionDate === next.decisionDate ? nextCountdownText : `${r.daysUntil} gün`}
+          <span class:list={['fk-cell-status', r.result && `dec-${r.result.decision}`]}>
+            {r.result ? <a href={r.result.source} rel="nofollow noopener" target="_blank">{decisionShort(r.result)}</a> : statusText(r)}
           </span>
         </div>
       ))}
@@ -129,6 +180,29 @@ const jsonLd = {
       TSİ değeri yaz/kış saati farkına göre 21:00 veya 22:00'dir. Kesin saat için Fed'in resmi sitesini kontrol edin.
     </p>
   </section>
+
+  {rows2027.length > 0 && (
+    <section class="container fk-section">
+      <div class="fk-shead">
+        <h2>Fed 2027 Toplantı Takvimi</h2>
+        <span class="fk-shead-count">{rows2027.length} toplantı · ön takvim</span>
+      </div>
+      <div class="fk-table">
+        {rows2027.map((r) => (
+          <div class="fk-row">
+            <span class="fk-cell-date">
+              <strong>{r.range} 2027</strong>
+              <small>{r.dowLabel} kararı</small>
+            </span>
+            <span class="fk-cell-time">TSİ {r.tsiTime}</span>
+            <span class:list={['fk-cell-tag', { on: r.dotPlot }]}>{r.dotPlot ? '● Dot plot' : '—'}</span>
+            <span class="fk-cell-status">—</span>
+          </div>
+        ))}
+      </div>
+      <p class="fk-fine">{fomc.note2027}</p>
+    </section>
+  )}
 
   <section class="container fk-info">
     <h2>Fed Faiz Kararı Nedir, Neden Takip Edilir?</h2>
@@ -222,7 +296,16 @@ const jsonLd = {
     gap: 0.5rem 1rem; padding: 0.7rem 1rem; border-bottom: 1px solid var(--border-soft);
   }
   .fk-row:last-child { border-bottom: none; }
-  .fk-row.past { opacity: 0.5; }
+  .fk-row.past .fk-cell-date, .fk-row.past .fk-cell-time, .fk-row.past .fk-cell-tag { opacity: 0.55; }
+  .fk-cell-status a { color: inherit; text-decoration: none; }
+  .fk-cell-status a:hover { text-decoration: underline; }
+  .fk-cell-status.dec-cut { color: var(--brand-deep); }
+  .fk-cell-status.dec-hike { color: #c0392b; }
+  .fk-cell-status.dec-hold { color: var(--text-soft); }
+  .fk-rate { display: flex; flex-direction: column; gap: 0.15rem; margin: 0 0 0.9rem; padding: 0.8rem 1.1rem; max-width: 460px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-xs); }
+  .fk-rate-label { font-size: var(--step--2); font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .fk-rate-num { font-size: var(--step-3); font-weight: 800; color: var(--text); line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .fk-rate-sub { font-size: var(--step--1); color: var(--text-soft); }
   .fk-row.next { background: var(--brand-tint); border-left: 3px solid var(--brand-deep); }
   .fk-cell-date { display: flex; flex-direction: column; gap: 0.1rem; }
   .fk-cell-date strong { font-size: var(--step-0); color: var(--text); }

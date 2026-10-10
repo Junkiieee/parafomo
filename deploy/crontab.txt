@@ -39,6 +39,8 @@
 45 8 * * * /root/parafomo/scripts/learn/learn-daily.sh >> /root/parafomo/logs/learn.log 2>&1
 # Kira artış oranı (TÜİK ~3'ü 10:00 TSİ) — ayın 3-8'i, oran yoksa çeker; değiştiyse deploy
 20 8,12 3-8 * * /root/parafomo/scripts/kira-artis-update.sh >> /root/parafomo/logs/kira-artis.log 2>&1
+# Fed/TCMB faiz kararı → takvim sayfalarında güncel faiz + karar sütunu (bekleyen yoksa ağa çıkmaz)
+25 11,13,19,21 * * * /root/parafomo/scripts/policy-decisions.sh >> /root/parafomo/logs/policy-decisions.log 2>&1
 
 # Haftalık bülten — pazartesi 08:30 TSİ, onaylı abonelere (ISO hafta kilidi)
 30 5 * * 1 /root/parafomo/scripts/newsletter-send.sh >> /root/parafomo/logs/newsletter.log 2>&1
