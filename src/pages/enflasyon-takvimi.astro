@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import tuik from '../../data/tuik-enflasyon-2026.json';
+import tufe from '../../data/tufe-aylik.json';
 
 type Release = { covers: string; date: string };
 const releases = tuik.releases as Release[];
@@ -34,8 +35,17 @@ const nextCountdownText =
 
 const updated = today.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
 
+// Son açıklanan TÜFE (scripts/tufe-update.py, TCMB tablosu) — "enflasyon yüzde kaç oldu" niyeti
+const lastT = tufe.months[0];
+const lastLabel = `${MONTHS[+lastT.ay.slice(5) - 1]} ${lastT.ay.slice(0, 4)}`;
+const pctTr = (n: number) => n.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
 // FAQ schema — "ne zaman" niyetini hedefler
 const faq = [
+  {
+    q: `${lastLabel} enflasyonu yüzde kaç oldu?`,
+    a: `TÜİK verilerine göre ${lastLabel}'da tüketici fiyatları (TÜFE) aylık %${pctTr(lastT.aylik)}, yıllık %${pctTr(lastT.yillik)} arttı. Bir önceki ay yıllık enflasyon %${pctTr(tufe.months[1].yillik)} idi.`,
+  },
   {
     q: 'Enflasyon (TÜFE) ne zaman açıklanacak?',
     a: next
@@ -72,8 +82,8 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title="Enflasyon Ne Zaman Açıklanacak? 2026 TÜİK TÜFE Takvimi"
-  description="2026 TÜİK enflasyon (TÜFE) açıklama takvimi: her ayın verisi hangi gün ve saat kaçta açıklanacak. Bir sonraki enflasyon verisine kaç gün kaldığını gör."
+  title={`Enflasyon Ne Zaman Açıklanacak? 2026 TÜFE Takvimi (${lastLabel}: %${pctTr(lastT.yillik)})`}
+  description={`${lastLabel} enflasyonu yıllık %${pctTr(lastT.yillik)}, aylık %${pctTr(lastT.aylik)}. 2026 TÜİK enflasyon (TÜFE) açıklama takvimi: her ayın verisi hangi gün ve saat kaçta açıklanacak, sıradakine kaç gün kaldı.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
@@ -84,6 +94,12 @@ const jsonLd = {
       TÜİK'in 2026 yılında her ay TÜFE (enflasyon) verisini hangi gün ve saatte açıkladığı —
       resmi Ulusal Veri Yayımlama Takvimi'nden, tek sayfada geri sayımla.
     </p>
+
+    <div class="fk-rate">
+      <span class="fk-rate-label">Son açıklanan enflasyon · {lastLabel}</span>
+      <span class="fk-rate-num">%{pctTr(lastT.yillik)} <small>yıllık</small></span>
+      <span class="fk-rate-sub">Aylık %{pctTr(lastT.aylik)} · önceki ay yıllık %{pctTr(tufe.months[1].yillik)} · <a href="/emekli-zammi-hesaplama/">emekli zammına etkisi →</a></span>
+    </div>
 
     {next && (
       <div class="fk-next">
@@ -98,7 +114,7 @@ const jsonLd = {
         </div>
       </div>
     )}
-    <p class="fk-upd">Son güncelleme: {updated} · Kaynak: TÜİK Ulusal Veri Yayımlama Takvimi</p>
+    <p class="fk-upd">Son güncelleme: {updated} · Kaynak: TÜİK Ulusal Veri Yayımlama Takvimi · TÜFE değerleri: TÜİK (TCMB tablosu)</p>
   </section>
 
   <section class="container fk-section">
@@ -188,6 +204,12 @@ const jsonLd = {
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(22,160,133,0.5); } 70% { box-shadow: 0 0 0 6px rgba(22,160,133,0); } 100% { box-shadow: 0 0 0 0 rgba(22,160,133,0); } }
   .fk-hero h1 { font-size: var(--step-2); margin: 0.6rem 0 0.4rem; }
   .fk-hero .lede { font-size: var(--step-0); line-height: 1.5; margin: 0 0 0.9rem; }
+  .fk-rate { display: flex; flex-direction: column; gap: 0.15rem; margin: 0 0 0.9rem; padding: 0.8rem 1.1rem; max-width: 460px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-xs); }
+  .fk-rate-label { font-size: var(--step--2); font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .fk-rate-num { font-size: var(--step-3); font-weight: 800; color: var(--text); line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .fk-rate-num small { font-size: var(--step--1); font-weight: 600; color: var(--text-muted); }
+  .fk-rate-sub { font-size: var(--step--1); color: var(--text-soft); }
+  .fk-rate-sub a { color: var(--brand-deep); font-weight: 600; text-decoration: none; }
   .fk-upd { font-size: var(--step--2); color: var(--text-muted); margin: 0.7rem 0 0; }
 
   /* Next-release countdown */
