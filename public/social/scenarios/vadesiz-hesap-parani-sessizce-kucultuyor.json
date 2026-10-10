@@ -1,0 +1,59 @@
+{
+  "slug": "vadesiz-hesap-parani-sessizce-kucultuyor",
+  "title": "Vadesiz hesap paranı sessizce küçültüyor",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Vadesiz hesaptaki paranın rakamı aynı kalırken alım gücü enflasyonla nasıl azalıyor, basit bir kova metaforu ve 100 bin TL örneğiyle anlatılıyor.",
+  "tags": [
+    "vadesiz hesap",
+    "enflasyon",
+    "alım gücü",
+    "birikim",
+    "tasarruf",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Vadesiz hesaptaki paran sessizce eriyor.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Hesap bir kova gibi: rakam aynı kalır, ama içindeki alım gücü delikten akar.",
+      "visual": {
+        "type": "object",
+        "query": "leaking bucket"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama fiyatlar yüzde 30 artarsa, 100 bin lirayla yaklaşık 77 bin liralık sepet alırsın.",
+      "visual": {
+        "type": "object",
+        "query": "shopping cart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çözüm: kovayı kapat. Acil parayı vadesizde tut, kalanını enflasyonu yenen araçlara kaydır.",
+      "visual": {
+        "type": "object",
+        "query": "smartphone banking app"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu deliği en çok hangi hesap büyütüyor? Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    }
+  ]
+}
