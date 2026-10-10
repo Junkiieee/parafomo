@@ -1,0 +1,287 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import yd from '../../data/yeniden-degerleme.json';
+
+// MTV her yıl yeniden değerleme oranı (Ekim Yİ-ÜFE 12 ay ort.) kadar artar; CB farklı oran uygulatabilir
+// (2026: %25,49 yerine %18,95 — Bloomberg HT/RG, 2026-10-10 doğrulandı). Örnek 2026 tutarları kaynaklı.
+const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const monthName = (key: string) => `${MONTHS[+key.slice(5) - 1]} ${key.slice(0, 4)}`;
+const nf = (n: number, d = 1) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+
+const HEDEF = yd.hedefYil; // 2027
+const teblig = yd.tebligOrani as number | null;
+const oran = teblig ?? yd.onikiAyOrt;
+const durum = teblig ? 'teblig' : yd.ekimVerisiGeldi ? 'hesap' : 'tahmin';
+const oranLabel = durum === 'tahmin' ? `≈%${nf(oran)}` : `%${nf(oran, 2)}`;
+const sonAyAdi = monthName(yd.sonAy);
+const carpan = 1 + oran / 100;
+
+// 2026 örnek MTV tutarları (otomobil, 1-3 yaş) — Bloomberg HT (RG tarifesi haberi, Aralık 2025)
+const ORNEK = [
+  { ad: 'En düşük dilim (1300 cc altı)', t2026: 5750 },
+  { ad: 'Renault Clio (örnek)', t2026: 6903 },
+  { ad: 'Fiat Egea (örnek)', t2026: 12028 },
+  { ad: 'Togg T10X (örnek)', t2026: 17505 },
+  { ad: 'En yüksek dilim', t2026: 274415 },
+];
+const D = { mtv: 6903 };
+
+const faq = [
+  {
+    q: `${HEDEF} MTV zammı ne kadar olacak?`,
+    a: durum === 'tahmin'
+      ? `${HEDEF} MTV tutarları, 2026 tutarlarının yeniden değerleme oranı kadar artırılmasıyla belirlenir. Oran, Ekim 2026 Yİ-ÜFE verisiyle kesinleşir; ${sonAyAdi} itibarıyla 12 aylık ortalama artış yaklaşık %${nf(oran)}. Bu oranla en düşük otomobil MTV'si 5.750 TL'den yaklaşık ${fmt(5750 * carpan)} TL'ye çıkar. Cumhurbaşkanı 2026'da olduğu gibi daha düşük bir oran uygulatabilir (2026'da %25,49 yerine %18,95 uygulandı).`
+      : `${HEDEF} MTV artış oranı ${oranLabel} olarak ${durum === 'hesap' ? 'hesaplandı (tebliğ bekleniyor)' : 'kesinleşti'}. En düşük otomobil MTV'si yaklaşık ${fmt(5750 * carpan)} TL olur; Cumhurbaşkanı'nın farklı oran belirleme yetkisi saklıdır.`,
+  },
+  {
+    q: 'MTV ne zaman ödenir? 2027 1. taksit tarihi nedir?',
+    a: `Motorlu Taşıtlar Vergisi her yıl iki eşit taksitte ödenir: 1. taksit 1-31 Ocak, 2. taksit 1-31 Temmuz. 31 Ocak ${HEDEF} Pazar gününe denk geldiği için son ödeme izleyen ilk iş gününe sarkar; ödeme Dijital Vergi Dairesi (dijital.gib.gov.tr), GİB Mobil veya anlaşmalı bankalardan yapılır.`,
+  },
+  {
+    q: 'MTV neye göre hesaplanır?',
+    a: "Otomobillerde (I sayılı tarife) MTV; motor silindir hacmi, araç yaşı ve 2018 sonrası tescilli araçlarda vergisiz liste fiyatı dilimine göre belirlenir. Motosiklet, minibüs, kamyonet gibi araçlar için ayrı tarifeler vardır. Tutarlar her yılın 1 Ocak günü, bir önceki yılın yeniden değerleme oranı (veya Cumhurbaşkanı'nın belirlediği oran) kadar artar.",
+  },
+  {
+    q: '2026 yılında MTV ne kadar arttı?',
+    a: "2026 için yeniden değerleme oranı %25,49 olarak ilan edildi; ancak Cumhurbaşkanı kararıyla MTV'de %18,95 artış uygulandı. Böylece 2026'da en düşük otomobil MTV'si 5.750 TL, en yükseği 274.415 TL oldu.",
+  },
+  {
+    q: 'Aracımın kesin MTV tutarını nereden öğrenirim?',
+    a: "Kesin tutar, plaka ve araç bilgisine göre Dijital Vergi Dairesi'nde (dijital.gib.gov.tr) ve e-Devlet MTV sorgulama ekranında görünür. Bu sayfadaki hesaplayıcı, mevcut 2026 tutarınızdan yola çıkarak 2027 tahminini verir; tarife dilimi değişiklikleri sonucu etkileyebilir.",
+  },
+  {
+    q: 'MTV zamanında ödenmezse ne olur?',
+    a: 'Süresinde ödenmeyen MTV için aylık gecikme zammı işler ve borç ödenmeden araç satışı ile fenni muayene yapılamaz. Biriken borç, taksit dönemlerinde Dijital Vergi Dairesi üzerinden gecikme zammıyla birlikte ödenebilir.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: `MTV ${HEDEF} Hesaplama`, url: '/mtv-hesaplama/' },
+];
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: `MTV ${HEDEF} tahmini — yeniden değerleme oranıyla motorlu taşıtlar vergisi artışı`,
+  description: `2026 MTV örnek tutarları ve ${HEDEF} tahmini (${oranLabel}); ödeme takvimi ve tarife kuralları. Yİ-ÜFE verisiyle her ay otomatik güncellenir.`,
+  url: 'https://parafomo.com/mtv-hesaplama/',
+  dateModified: yd.updated,
+  creator: { '@type': 'Organization', name: 'ParaFOMO', url: 'https://parafomo.com/' },
+  isBasedOn: 'https://www.tuik.gov.tr',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+};
+const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  title={`MTV ${HEDEF} Hesaplama: Motorlu Taşıtlar Vergisi Zammı ${oranLabel}`}
+  description={`MTV ${HEDEF} ne kadar olacak? ${durum === 'tahmin' ? `Tahmini zam ${oranLabel} (${sonAyAdi} Yİ-ÜFE)` : `Zam oranı ${oranLabel}`}. 2026 MTV'nizden ${HEDEF} tutarını hesaplayın; örnek tablo, taksit tarihleri ve tarife kuralları.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(dataset)} />
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · MTV {HEDEF}</p>
+      <h1>MTV {HEDEF} Hesaplama: Araç Vergisi Ne Kadar Olacak?</h1>
+      <p class="lede">
+        {HEDEF} MTV'si, 2026 tutarının <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı</a> kadar
+        artırılmasıyla belirlenir. {sonAyAdi} verisiyle {durum === 'tahmin' ? 'tahmini oran' : 'oran'}:
+        <strong>{oranLabel}</strong>. 2026 MTV'nizi girin, {HEDEF} tahmininizi görün.
+      </p>
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="kpi-label">{HEDEF} zam {durum === 'tahmin' ? 'tahmini' : 'oranı'}</span>
+        <span class="kpi-val">{oranLabel}</span>
+        <span class="kpi-sub">{durum === 'tahmin' ? `kesinleşme: 3 Kasım 2026 (Ekim Yİ-ÜFE)` : durum === 'hesap' ? 'tebliğ Kasım sonunda' : 'Resmî Gazete ile kesin'}</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">2026 zammı</span>
+        <span class="kpi-val">%18,95</span>
+        <span class="kpi-sub">YD oranı %25,49'du; CB kararıyla düşürüldü</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Ödeme dönemleri</span>
+        <span class="kpi-val kpi-date">Ocak · Temmuz</span>
+        <span class="kpi-sub">iki eşit taksit, ayın 1'i - 31'i</span>
+      </div>
+    </div>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>2026 yıllık MTV tutarınız (₺) <em class="hint">— e-Devlet / Dijital Vergi Dairesi'nden bakabilirsiniz</em></span>
+          <input type="number" id="in-mtv" value={D.mtv} min="0" step="50" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Artış oranı (%) <em class="hint">— varsayılan: {durum === 'tahmin' ? 'güncel tahmin' : 'kesinleşen oran'}</em></span>
+          <input type="number" id="in-oran" value={+oran.toFixed(1)} min="0" max="150" step="0.1" inputmode="decimal" />
+        </label>
+        <p class="form-note">2026'da olduğu gibi indirimli artış ihtimali için oranı değiştirip senaryo görebilirsiniz (ör. 2026'da %18,95 uygulandı).</p>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">{HEDEF} tahmini yıllık MTV</span>
+          <span class="result-value" id="out-new">₺{fmt(D.mtv * carpan)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Taksit başına (Ocak / Temmuz)</span>
+            <span class="split-val" id="out-taksit">₺{fmt((D.mtv * carpan) / 2)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">2026'ya göre artış</span>
+            <span class="split-val" id="out-diff">₺{fmt(D.mtv * (carpan - 1))}</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note">Kesin tutar tarife tebliğiyle belli olur; bu bir tahmindir.</p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç bilgilendirme amaçlıdır; kesin {HEDEF} tarifesi Aralık 2026'da Resmî Gazete'de yayımlanır.
+      Son güncelleme: {updatedLabel} · Kaynak: TÜİK Yİ-ÜFE (TCMB tablosu), 2026 tarifesi Resmî Gazete haberleri (Bloomberg HT).
+    </p>
+
+    <section class="table-block">
+      <h2>Örnek 2026 MTV tutarları ve {HEDEF} tahmini</h2>
+      <table class="rate-table">
+        <thead><tr><th>Araç (otomobil, 1-3 yaş)</th><th>2026 MTV</th><th>{HEDEF} tahmini ({oranLabel})</th></tr></thead>
+        <tbody>
+          {ORNEK.map((o) => (
+            <tr>
+              <td>{o.ad}</td>
+              <td>₺{fmt(o.t2026)}</td>
+              <td>≈₺{fmt(o.t2026 * carpan)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Örnek tutarlar 2026 tarifesine dair basın haberlerinden derlenmiştir; model bazlı tutarlar motor hacmi,
+        yaş ve vergisiz liste fiyatına göre değişir. Oran kesinleştikçe bu tablo otomatik güncellenir.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>MTV nasıl belirlenir?</h2>
+      <p>
+        Otomobiller için MTV (I sayılı tarife) üç ölçüte bağlıdır: <strong>motor silindir hacmi</strong>,
+        <strong> araç yaşı</strong> (yaş aldıkça vergi düşer) ve 1 Ocak 2018'den sonra tescil edilen araçlarda
+        <strong> vergisiz liste fiyatı dilimi</strong>. Tutarlar her yıl 1 Ocak'ta, bir önceki Kasım'da ilan edilen
+        <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı</a> kadar artar. Cumhurbaşkanı'nın bu oranı
+        artırma veya indirme yetkisi vardır: 2026'da oran %25,49 yerine %18,95 olarak uygulandı.
+      </p>
+      <h2>{HEDEF} MTV takvimi</h2>
+      <p>
+        <strong>3 Kasım 2026:</strong> Ekim Yİ-ÜFE açıklanır, zam oranı hesaben kesinleşir →
+        <strong> Kasım sonu:</strong> yeniden değerleme tebliği → <strong>Aralık:</strong> varsa Cumhurbaşkanı
+        kararı + MTV tarife tebliği → <strong>1-31 Ocak {HEDEF}:</strong> ilk taksit ödemesi.
+        Oran ve tutarlar netleştikçe bu sayfa otomatik güncellenir.
+      </p>
+      <p class="cta-line">
+        İlgili sayfalar: <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı {HEDEF}</a> ·
+        <a href="/kredi-hesaplama/">taşıt kredisi hesaplama</a> ·
+        <a href="/emekli-zammi-hesaplama/">Ocak {HEDEF} emekli zammı</a> ·
+        <a href="/enflasyon-takvimi/">enflasyon takvimi</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ ORAN: +oran.toFixed(1) }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      function update() {
+        const mtv = Math.max(0, +$('in-mtv').value || 0);
+        const oran = +$('in-oran').value || 0;
+        const yeni = mtv * (1 + oran / 100);
+        $('out-new').textContent = '₺' + nf0.format(Math.round(yeni));
+        $('out-taksit').textContent = '₺' + nf0.format(Math.round(yeni / 2));
+        $('out-diff').textContent = '₺' + nf0.format(Math.round(yeni - mtv));
+      }
+      ['in-mtv', 'in-oran'].forEach((id) => $(id).addEventListener('input', update));
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin: 0 0 1rem; }
+    .kpi { display: flex; flex-direction: column; gap: 0.15rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-xs); }
+    .kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .kpi-val { font-family: var(--font-serif); font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.1rem); font-weight: 700; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .kpi-val.kpi-date { font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem); padding-top: 0.25rem; }
+    .kpi-sub { font-size: 0.78rem; color: var(--text-soft); line-height: 1.35; }
+
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; }
+    .calc-inputs input { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .form-note { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.45; }
+
+    .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 1rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; }
+    .result-note { font-size: 0.82rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 680px) {
+      .kpi-row { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: 1fr; }
+      .rate-table { font-size: 0.85rem; }
+    }
+  </style>
+</BaseLayout>

@@ -119,7 +119,11 @@ const breadcrumbLd =
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {noindex ? (
+      <meta name="robots" content="noindex, nofollow" />
+    ) : (
+      <meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    )}
 
     <!-- Open Graph -->
     <meta property="og:type" content={type} />

@@ -14,9 +14,11 @@ git_sync >/dev/null 2>&1 || echo "UYARI: pull başarısız (devam)"
 python3 "$REPO/scripts/kira-artis-update.py"
 # Aynı gün TÜFE aylık serisi (emekli zammı sayfası) — TCMB tablosu
 python3 "$REPO/scripts/tufe-update.py"
-if [ -z "$(git status --porcelain data/kira-artis-2026.json data/tufe-aylik.json)" ]; then
+# Aynı gün Yİ-ÜFE + yeniden değerleme oranı tahmini (/yeniden-degerleme-orani, /mtv-hesaplama)
+python3 "$REPO/scripts/yeniden-degerleme-update.py"
+if [ -z "$(git status --porcelain data/kira-artis-2026.json data/tufe-aylik.json data/yeniden-degerleme.json)" ]; then
   exit 0
 fi
-git_add_commit "veri: kira artış oranı / TÜFE güncellendi (otomatik $(date -u '+%F'))" data/kira-artis-2026.json data/tufe-aylik.json \
+git_add_commit "veri: kira artış / TÜFE / Yİ-ÜFE-yeniden değerleme güncellendi (otomatik $(date -u '+%F'))" data/kira-artis-2026.json data/tufe-aylik.json data/yeniden-degerleme.json \
   || { echo "commit başarısız"; exit 0; }
 bash "$REPO/scripts/deploy-push.sh"

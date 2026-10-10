@@ -1,0 +1,287 @@
+{
+ "_aciklama": "Yİ-ÜFE yıllık/aylık % değişim + yeniden değerleme oranı. onikiAyOrt = son ay itibarıyla 12 aylık ortalamalara göre değişim (Ekim ayında kesinleşir). tebligOrani: Resmî Gazete tebliğ değeri (elle/ajan doğrulamasıyla yazılır).",
+ "_kaynak": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Enflasyon+Verileri/Uretici+Fiyatlari",
+ "updated": "2026-10-10",
+ "sonAy": "2026-09",
+ "yiufeYillik": 27.38,
+ "yiufeAylik": 2.07,
+ "onikiAyOrt": 27.83,
+ "hedefYil": 2027,
+ "ekimVerisiGeldi": false,
+ "tebligOrani": null,
+ "sonrakiAciklama": "2026-11-03",
+ "gecmis": [
+  {
+   "uygulamaYili": 2026,
+   "oran": 25.49,
+   "uygulanan": 18.95,
+   "not": "VUK Tebliği 585 (RG 27.11.2025) %25,49; MTV, damga vergisi ve harçlarda Cumhurbaşkanı kararıyla %18,95 uygulandı"
+  },
+  {
+   "uygulamaYili": 2025,
+   "oran": 43.93,
+   "uygulanan": null,
+   "not": "VUK Tebliği 574 (Kasım 2024)"
+  },
+  {
+   "uygulamaYili": 2024,
+   "oran": 58.46,
+   "uygulanan": null,
+   "not": "VUK Tebliği 554 (Kasım 2023)"
+  },
+  {
+   "uygulamaYili": 2023,
+   "oran": 122.93,
+   "uygulanan": null,
+   "not": "VUK Tebliği 542 (Kasım 2022)"
+  },
+  {
+   "uygulamaYili": 2022,
+   "oran": 36.2,
+   "uygulanan": null,
+   "not": "VUK Tebliği 533 (Kasım 2021)"
+  }
+ ],
+ "months": [
+  {
+   "ay": "2026-09",
+   "yillik": 27.38,
+   "aylik": 2.07
+  },
+  {
+   "ay": "2026-08",
+   "yillik": 27.95,
+   "aylik": 2.57
+  },
+  {
+   "ay": "2026-07",
+   "yillik": 27.83,
+   "aylik": 1.52
+  },
+  {
+   "ay": "2026-06",
+   "yillik": 28.09,
+   "aylik": 1.8
+  },
+  {
+   "ay": "2026-05",
+   "yillik": 28.93,
+   "aylik": 2.75
+  },
+  {
+   "ay": "2026-04",
+   "yillik": 28.59,
+   "aylik": 3.17
+  },
+  {
+   "ay": "2026-03",
+   "yillik": 28.08,
+   "aylik": 2.3
+  },
+  {
+   "ay": "2026-02",
+   "yillik": 27.56,
+   "aylik": 2.43
+  },
+  {
+   "ay": "2026-01",
+   "yillik": 27.17,
+   "aylik": 2.67
+  },
+  {
+   "ay": "2025-12",
+   "yillik": 27.67,
+   "aylik": 0.75
+  },
+  {
+   "ay": "2025-11",
+   "yillik": 27.23,
+   "aylik": 0.84
+  },
+  {
+   "ay": "2025-10",
+   "yillik": 27.0,
+   "aylik": 1.63
+  },
+  {
+   "ay": "2025-09",
+   "yillik": 26.59,
+   "aylik": 2.52
+  },
+  {
+   "ay": "2025-08",
+   "yillik": 25.16,
+   "aylik": 2.48
+  },
+  {
+   "ay": "2025-07",
+   "yillik": 24.19,
+   "aylik": 1.73
+  },
+  {
+   "ay": "2025-06",
+   "yillik": 24.45,
+   "aylik": 2.46
+  },
+  {
+   "ay": "2025-05",
+   "yillik": 23.13,
+   "aylik": 2.48
+  },
+  {
+   "ay": "2025-04",
+   "yillik": 22.5,
+   "aylik": 2.76
+  },
+  {
+   "ay": "2025-03",
+   "yillik": 23.5,
+   "aylik": 1.88
+  },
+  {
+   "ay": "2025-02",
+   "yillik": 25.21,
+   "aylik": 2.12
+  },
+  {
+   "ay": "2025-01",
+   "yillik": 27.2,
+   "aylik": 3.06
+  },
+  {
+   "ay": "2024-12",
+   "yillik": 28.52,
+   "aylik": 0.4
+  },
+  {
+   "ay": "2024-11",
+   "yillik": 29.47,
+   "aylik": 0.66
+  },
+  {
+   "ay": "2024-10",
+   "yillik": 32.24,
+   "aylik": 1.29
+  },
+  {
+   "ay": "2024-09",
+   "yillik": 33.09,
+   "aylik": 1.37
+  },
+  {
+   "ay": "2024-08",
+   "yillik": 35.75,
+   "aylik": 1.68
+  },
+  {
+   "ay": "2024-07",
+   "yillik": 41.37,
+   "aylik": 1.94
+  },
+  {
+   "ay": "2024-06",
+   "yillik": 50.09,
+   "aylik": 1.38
+  },
+  {
+   "ay": "2024-05",
+   "yillik": 57.68,
+   "aylik": 1.96
+  },
+  {
+   "ay": "2024-04",
+   "yillik": 55.66,
+   "aylik": 3.6
+  },
+  {
+   "ay": "2024-03",
+   "yillik": 51.47,
+   "aylik": 3.29
+  },
+  {
+   "ay": "2024-02",
+   "yillik": 47.29,
+   "aylik": 3.74
+  },
+  {
+   "ay": "2024-01",
+   "yillik": 44.2,
+   "aylik": 4.14
+  },
+  {
+   "ay": "2023-12",
+   "yillik": 44.22,
+   "aylik": 1.14
+  },
+  {
+   "ay": "2023-11",
+   "yillik": 42.25,
+   "aylik": 2.81
+  },
+  {
+   "ay": "2023-10",
+   "yillik": 39.39,
+   "aylik": 1.94
+  },
+  {
+   "ay": "2023-09",
+   "yillik": 47.44,
+   "aylik": 3.4
+  },
+  {
+   "ay": "2023-08",
+   "yillik": 49.41,
+   "aylik": 5.89
+  },
+  {
+   "ay": "2023-07",
+   "yillik": 44.5,
+   "aylik": 8.23
+  },
+  {
+   "ay": "2023-06",
+   "yillik": 40.42,
+   "aylik": 6.5
+  },
+  {
+   "ay": "2023-05",
+   "yillik": 40.76,
+   "aylik": 0.65
+  },
+  {
+   "ay": "2023-04",
+   "yillik": 52.11,
+   "aylik": 0.81
+  },
+  {
+   "ay": "2023-03",
+   "yillik": 62.45,
+   "aylik": 0.44
+  },
+  {
+   "ay": "2023-02",
+   "yillik": 76.61,
+   "aylik": 1.56
+  },
+  {
+   "ay": "2023-01",
+   "yillik": 86.46,
+   "aylik": 4.15
+  },
+  {
+   "ay": "2022-12",
+   "yillik": 97.72,
+   "aylik": -0.24
+  },
+  {
+   "ay": "2022-11",
+   "yillik": 136.02,
+   "aylik": 0.74
+  },
+  {
+   "ay": "2022-10",
+   "yillik": 157.69,
+   "aylik": 7.83
+  }
+ ]
+}

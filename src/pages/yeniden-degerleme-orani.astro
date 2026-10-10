@@ -1,0 +1,340 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import yd from '../../data/yeniden-degerleme.json';
+
+// Yeniden değerleme oranı (VUK mük. 298/B) = Ekim Yİ-ÜFE'sinin 12 aylık ortalamalara göre artışı.
+// data/yeniden-degerleme.json her ay scripts/yeniden-degerleme-update.py ile TCMB tablosundan güncellenir.
+// 2026 taban tutarları 2026-10-10'da kaynaklarla doğrulandı (Bloomberg HT, Resmî Gazete haberleri).
+const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const monthName = (key: string) => `${MONTHS[+key.slice(5) - 1]} ${key.slice(0, 4)}`;
+
+const nf = (n: number, d = 1) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+
+const HEDEF = yd.hedefYil; // ör. 2027
+const teblig = yd.tebligOrani as number | null;
+const oran = teblig ?? yd.onikiAyOrt; // sayfada kullanılan oran (%)
+const kesinHesap = yd.ekimVerisiGeldi; // Ekim verisi geldi → hesaben kesin
+const durum = teblig ? 'teblig' : kesinHesap ? 'hesap' : 'tahmin';
+const oranLabel = durum === 'tahmin' ? `≈%${nf(oran)}` : `%${nf(oran, 2)}`;
+const sonAyAdi = monthName(yd.sonAy);
+const kalanAy = durum === 'tahmin' ? 10 - +yd.sonAy.slice(5) : 0; // Ekim'e kalan veri sayısı
+const carpan = 1 + oran / 100;
+
+const sonraki = new Date(yd.sonrakiAciklama + 'T10:00:00+03:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+const g2026 = yd.gecmis.find((g: { uygulamaYili: number }) => g.uygulamaYili === 2026);
+
+// 2027'de bu oranla artacak kalemler — 2026 tabanları kaynak doğrulamalı
+const ETKI = [
+  { ad: 'Motorlu Taşıtlar Vergisi (MTV)', b2026: 5750, tip: 'En düşük otomobil MTV’si', link: '/mtv-hesaplama/', not: '1-3 yaş, 1300 cc altı' },
+  { ad: 'IMEI kayıt ücreti (yurt dışı telefon)', b2026: 54258, tip: 'Harç tutarı', not: 'Harçlar Kanunu 8 sayılı tarife' },
+  { ad: 'Pasaport harcı (10 yıllık)', b2026: 14761, tip: 'Harç + defter bedeli', not: 'yaklaşık toplam' },
+  { ad: 'Trafik cezaları', b2026: 2500, tip: 'Örnek: emniyet kemeri cezası', not: '2026 tutarları 7574 sayılı Kanun’la belirlendi' },
+  { ad: 'Damga vergisi ve maktu harçlar', b2026: null, tip: 'Tüm maktu tutarlar', not: 'noter, tapu, yargı harçları dâhil' },
+  { ad: 'Gelir vergisi dilimleri', b2026: null, tip: 'Tarife eşikleri', not: 'Cumhurbaşkanı oranı farklı belirleyebiliyor (2026 ilk dilim: 190.000 TL)' },
+  { ad: 'Emlak vergisi değeri', b2026: null, tip: 'Ara yıllarda oranın YARISI kadar', not: `${HEDEF} artışı ≈%${nf(oran / 2)}` },
+];
+
+const faq = [
+  {
+    q: `${HEDEF} yeniden değerleme oranı ne kadar olacak?`,
+    a: durum === 'tahmin'
+      ? `Kesin oran, Ekim ${HEDEF - 1} Yİ-ÜFE verisiyle hesaplanır ve Kasım sonunda Resmî Gazete'de ilan edilir. ${sonAyAdi} verisi itibarıyla 12 aylık ortalama Yİ-ÜFE artışı yaklaşık %${nf(oran)}; kalan ${kalanAy} aylık veri gelmeden bu bir tahmindir. Üretici enflasyonu mevcut seyrinde giderse ${HEDEF} yeniden değerleme oranı %${nf(Math.floor(oran))}-${nf(Math.ceil(oran + 1), 0)} bandında kesinleşir.`
+      : durum === 'hesap'
+        ? `Ekim ${HEDEF - 1} Yİ-ÜFE verisiyle ${HEDEF} yeniden değerleme oranı hesaben %${nf(oran, 2)} olarak kesinleşti. Resmî tebliğ Kasım sonunda Resmî Gazete'de yayımlanır.`
+        : `${HEDEF} yeniden değerleme oranı Resmî Gazete'de yayımlanan tebliğle %${nf(oran, 2)} olarak kesinleşti.`,
+  },
+  {
+    q: `Yeniden değerleme oranı ${HEDEF} ne zaman açıklanacak?`,
+    a: `Oranı belirleyen son veri olan Ekim ${HEDEF - 1} Yİ-ÜFE, ${HEDEF - 1} Kasım ayının ilk günlerinde (sıradaki TÜİK açıklaması: ${sonraki}) yayımlanır; o gün oran hesaben kesinleşir. Hazine ve Maliye Bakanlığı tebliği ise genellikle Kasım'ın son haftasında Resmî Gazete'de çıkar ve 1 Ocak ${HEDEF}'de yürürlüğe girer.`,
+  },
+  {
+    q: 'Yeniden değerleme oranı neleri etkiler?',
+    a: `MTV, trafik cezaları, pasaport-ehliyet-kimlik harçları, IMEI kayıt ücreti, damga vergisi, yargı ve noter harçları, çevre temizlik vergisi gibi maktu vergi ve cezaların tamamı her yıl 1 Ocak'ta bu oran kadar artar. Gelir vergisi dilimleri ve bazı istisna tutarları da bu orana göre güncellenir; ancak Cumhurbaşkanı'nın oranı farklı uygulatma yetkisi vardır.`,
+  },
+  {
+    q: `MTV ${HEDEF} zammı ne kadar olacak?`,
+    a: `${HEDEF} MTV tutarları, ${HEDEF - 1} tutarlarının yeniden değerleme oranı kadar artırılmasıyla bulunur. ${sonAyAdi} itibarıyla ${durum === 'tahmin' ? 'tahmini' : 'kesinleşen'} oran ${oranLabel}: örneğin 2026'da en düşük otomobil MTV'si olan 5.750 TL, ${HEDEF}'de yaklaşık ${fmt(5750 * carpan)} TL olur. Cumhurbaşkanı 2026'da olduğu gibi (%25,49 yerine %18,95) daha düşük bir artış uygulatabilir. Aracınız için hesabı MTV hesaplama sayfamızda yapabilirsiniz.`,
+  },
+  {
+    q: 'Cumhurbaşkanı yeniden değerleme oranını değiştirebilir mi?',
+    a: `Evet. Kanunlar Cumhurbaşkanı'na birçok kalemde oranı artırma veya sıfıra kadar indirme yetkisi verir. Örneğin 2026 için oran %25,49 olarak ilan edildi; ancak MTV, damga vergisi ve harçlarda Cumhurbaşkanı kararıyla %18,95 uygulandı. ${HEDEF} için de benzer bir indirim yapılıp yapılmayacağı tebliğ ve kararlar yayımlanınca belli olur.`,
+  },
+  {
+    q: 'Yeniden değerleme oranı nasıl hesaplanır?',
+    a: `Vergi Usul Kanunu mükerrer 298. maddeye göre oran, Ekim ayı itibarıyla (Kasım'da açıklanan Ekim verisi dâhil) Yurt İçi Üretici Fiyat Endeksi'nin (Yİ-ÜFE) son 12 aylık ortalamasının, önceki 12 aylık ortalamaya göre artışıdır. TÜFE (tüketici enflasyonu) değil, üretici enflasyonu esas alınır; bu yüzden oran manşet enflasyondan farklı çıkabilir.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: `Yeniden Değerleme Oranı ${HEDEF}`, url: '/yeniden-degerleme-orani/' },
+];
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: `Yeniden değerleme oranı ${HEDEF} — Yİ-ÜFE 12 aylık ortalama takibi`,
+  description: `Yİ-ÜFE aylık/yıllık değişim ve 12 aylık ortalama artış; ${HEDEF} yeniden değerleme oranı ${durum === 'tahmin' ? 'tahmini' : 'kesin değeri'} ${oranLabel}. Geçmiş yıl oranları (2022-2026) ve etkilenen vergi-harç kalemleri.`,
+  url: 'https://parafomo.com/yeniden-degerleme-orani/',
+  dateModified: yd.updated,
+  creator: { '@type': 'Organization', name: 'ParaFOMO', url: 'https://parafomo.com/' },
+  isBasedOn: 'https://www.tuik.gov.tr',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+};
+const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+const D = { tutar: 10000 };
+---
+
+<BaseLayout
+  title={`${HEDEF} Yeniden Değerleme Oranı: ${durum === 'tahmin' ? `Tahmin ${oranLabel}` : `${oranLabel} Kesinleşti`} — MTV, Harç ve Cezalar`}
+  description={`${HEDEF} yeniden değerleme oranı ${durum === 'tahmin' ? `tahmini ${oranLabel} (${sonAyAdi} Yİ-ÜFE 12 aylık ortalaması)` : `${oranLabel}`}. MTV, trafik cezası, pasaport-IMEI harçları ${HEDEF}'de ne kadar zamlanacak? Hesaplayıcı + geçmiş oranlar.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(dataset)} />
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Canlı veri · her ay otomatik güncellenir</p>
+      <h1>{HEDEF} Yeniden Değerleme Oranı: MTV, Harç ve Cezalar Ne Kadar Zamlanacak?</h1>
+      <p class="lede">
+        Vergi, harç ve cezaların {HEDEF} zammını belirleyen yeniden değerleme oranı,
+        Ekim {HEDEF - 1} Yİ-ÜFE verisiyle kesinleşir. {sonAyAdi} verisi itibarıyla
+        {durum === 'tahmin' ? 'tahmin' : 'oran'}: <strong>{oranLabel}</strong>.
+      </p>
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="kpi-label">{HEDEF} oranı {durum === 'tahmin' ? '(tahmin)' : ''}</span>
+        <span class="kpi-val">{oranLabel}</span>
+        <span class="kpi-sub">{durum === 'tahmin' ? `${sonAyAdi} itibarıyla Yİ-ÜFE 12 aylık ort. · ${kalanAy} veri kaldı` : durum === 'hesap' ? `Ekim ${HEDEF - 1} verisiyle hesaplandı · tebliğ bekleniyor` : 'Resmî Gazete tebliğiyle kesin'}</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Kesinleşme</span>
+        <span class="kpi-val kpi-date">{durum === 'tahmin' ? `3 Kasım ${HEDEF - 1}` : 'Kesinleşti'}</span>
+        <span class="kpi-sub">{durum === 'tahmin' ? `Ekim Yİ-ÜFE açıklaması · tebliğ Kasım sonu` : `1 Ocak ${HEDEF}'de yürürlükte`}</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">2026 oranı</span>
+        <span class="kpi-val">%{g2026 ? nf(g2026.oran, 2) : '25,49'}</span>
+        <span class="kpi-sub">MTV ve harçlarda %{g2026?.uygulanan ? nf(g2026.uygulanan, 2) : '18,95'} uygulandı (CB kararı)</span>
+      </div>
+    </div>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>2026 tutarı (₺) — vergi, harç veya ceza</span>
+          <input type="number" id="in-tutar" value={D.tutar} min="0" step="100" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Artış oranı (%) <em class="hint">— varsayılan: {durum === 'tahmin' ? 'güncel tahmin' : 'kesinleşen oran'}</em></span>
+          <input type="number" id="in-oran" value={+oran.toFixed(1)} min="0" max="150" step="0.1" inputmode="decimal" />
+        </label>
+        <p class="form-note">İpucu: 2026'da MTV ve harçlara indirimli %18,95 uygulandı. {HEDEF} için de indirim ihtimaline karşı oranı değiştirip senaryo görebilirsiniz.</p>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">{HEDEF} tahmini tutar</span>
+          <span class="result-value" id="out-new">₺{fmt(D.tutar * carpan)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Artış</span>
+            <span class="split-val" id="out-diff">₺{fmt(D.tutar * (carpan - 1))}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Uygulanan oran</span>
+            <span class="split-val" id="out-rate">%{nf(oran)}</span>
+          </div>
+        </div>
+        <p class="result-note">Maktu tutarlar 1 Ocak {HEDEF}'den itibaren geçerli olur.</p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç bilgilendirme amaçlıdır. {durum === 'tahmin' && `Kesin oran Ekim ${HEDEF - 1} Yİ-ÜFE verisiyle hesaplanıp Kasım sonunda Resmî Gazete'de ilan edilir; Cumhurbaşkanı bazı kalemlerde farklı oran uygulatabilir.`}
+      Son güncelleme: {updatedLabel} · Kaynak: TÜİK Yİ-ÜFE (TCMB tablosu), Resmî Gazete tebliğleri.
+    </p>
+
+    <section class="table-block">
+      <h2>{HEDEF}'de yeniden değerleme oranıyla artacak kalemler</h2>
+      <table class="rate-table">
+        <thead><tr><th>Kalem</th><th>2026 değeri</th><th>{HEDEF} {durum === 'tahmin' ? 'tahmini' : 'değeri'}</th></tr></thead>
+        <tbody>
+          {ETKI.map((e) => (
+            <tr>
+              <td>
+                {e.link ? <a href={e.link}>{e.ad}</a> : e.ad}
+                <span class="row-note">{e.tip}{e.not ? ` · ${e.not}` : ''}</span>
+              </td>
+              <td>{e.b2026 ? `₺${fmt(e.b2026)}` : '—'}</td>
+              <td>{e.b2026 ? `≈₺${fmt(e.b2026 * (e.ad.startsWith('Emlak') ? 1 + oran / 200 : carpan))}` : `+${oranLabel}`}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        2026 değerleri haber ve tebliğ kaynaklarından derlenmiştir; {HEDEF} sütunu {oranLabel} ile hesaplanan tahmindir.
+        2026'da olduğu gibi Cumhurbaşkanı kararıyla daha düşük artış uygulanabilir. Araç bazında MTV için:
+        <a href="/mtv-hesaplama/">MTV {HEDEF} hesaplama</a>.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Geçmiş yeniden değerleme oranları</h2>
+      <table class="rate-table">
+        <thead><tr><th>Uygulama yılı</th><th>İlan edilen oran</th><th>Not</th></tr></thead>
+        <tbody>
+          {yd.gecmis.map((g: { uygulamaYili: number; oran: number; uygulanan: number | null; not: string }) => (
+            <tr>
+              <td>{g.uygulamaYili}</td>
+              <td>%{nf(g.oran, 2)}{g.uygulanan ? ` → %${nf(g.uygulanan, 2)} uygulandı` : ''}</td>
+              <td class="cell-note">{g.not}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    <section class="table-block">
+      <h2>Oranı belirleyen veri: Yİ-ÜFE son 12 ay</h2>
+      <table class="rate-table">
+        <thead><tr><th>Ay</th><th>Aylık değişim</th><th>Yıllık değişim</th></tr></thead>
+        <tbody>
+          {yd.months.slice(0, 12).map((m: { ay: string; yillik: number; aylik: number }) => (
+            <tr>
+              <td>{monthName(m.ay)}</td>
+              <td>%{nf(m.aylik, 2)}</td>
+              <td>%{nf(m.yillik, 2)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">Yeniden değerleme oranı = son 12 ayın ortalama endeksinin önceki 12 aya oranı. Veri her ay TÜİK açıklamasıyla otomatik güncellenir; sıradaki açıklama: {sonraki}.</p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Yeniden değerleme oranı nedir, nasıl hesaplanır?</h2>
+      <p>
+        Yeniden değerleme oranı, Vergi Usul Kanunu'nun mükerrer 298. maddesine göre her yıl
+        <strong> Ekim ayı itibarıyla Yİ-ÜFE'nin on iki aylık ortalamalara göre artışı</strong> olarak
+        hesaplanır ve Hazine ve Maliye Bakanlığı tebliğiyle Kasım sonunda Resmî Gazete'de ilan edilir.
+        İlan edilen oran, <strong>ertesi yılın</strong> maktu vergi, harç ve cezalarına 1 Ocak'tan itibaren uygulanır.
+        Tüketici enflasyonu (TÜFE) değil üretici enflasyonu (Yİ-ÜFE) esas alındığı için oran,
+        manşet enflasyondan belirgin şekilde farklı olabilir.
+      </p>
+      <h2>Takvim: {HEDEF} zamları nasıl kesinleşecek?</h2>
+      <p>
+        <strong>3 Kasım {HEDEF - 1}:</strong> TÜİK Ekim Yİ-ÜFE'sini açıklar; oran hesaben kesinleşir →
+        <strong> Kasım sonu:</strong> VUK tebliği Resmî Gazete'de yayımlanır →
+        <strong> Aralık:</strong> MTV, harç gibi kalemlerde Cumhurbaşkanı'nın farklı oran kararları çıkabilir
+        (2026'da %18,95 böyle belirlendi) → <strong>1 Ocak {HEDEF}:</strong> yeni tutarlar yürürlüğe girer.
+        Bu sayfa her adımda otomatik güncellenir.
+      </p>
+      <p class="cta-line">
+        İlgili hesaplayıcılar: <a href="/mtv-hesaplama/">MTV {HEDEF}</a> ·
+        <a href="/emekli-zammi-hesaplama/">Ocak {HEDEF} emekli zammı</a> ·
+        <a href="/kira-artis-orani-hesaplama/">kira artış oranı</a> ·
+        <a href="/asgari-ucret-hesaplama/">asgari ücret</a> ·
+        verinin kaynağı için <a href="/enflasyon-takvimi/">enflasyon takvimi</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ ORAN: +oran.toFixed(1) }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const nf1 = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+      function update() {
+        const tutar = Math.max(0, +$('in-tutar').value || 0);
+        const oran = +$('in-oran').value || 0;
+        $('out-new').textContent = '₺' + nf0.format(Math.round(tutar * (1 + oran / 100)));
+        $('out-diff').textContent = '₺' + nf0.format(Math.round(tutar * oran / 100));
+        $('out-rate').textContent = '%' + nf1.format(oran);
+      }
+      ['in-tutar', 'in-oran'].forEach((id) => $(id).addEventListener('input', update));
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin: 0 0 1rem; }
+    .kpi { display: flex; flex-direction: column; gap: 0.15rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-xs); }
+    .kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .kpi-val { font-family: var(--font-serif); font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.1rem); font-weight: 700; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .kpi-val.kpi-date { font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem); padding-top: 0.25rem; }
+    .kpi-sub { font-size: 0.78rem; color: var(--text-soft); line-height: 1.35; }
+
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; }
+    .calc-inputs input { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .form-note { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.45; }
+
+    .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 1rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; }
+    .result-note { font-size: 0.82rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .row-note { display: block; font-size: 0.78rem; color: var(--text-muted); font-weight: 400; margin-top: 0.15rem; }
+    .cell-note { font-size: 0.82rem; color: var(--text-soft); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 680px) {
+      .kpi-row { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: 1fr; }
+      .rate-table { font-size: 0.85rem; }
+    }
+  </style>
+</BaseLayout>
