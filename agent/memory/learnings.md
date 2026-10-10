@@ -21,6 +21,13 @@ _v1'in 59 deneyi + 2 aylık KPI'ından damıtıldı (2026-10-06); son yeniden ya
 - **Şirket adı sorguları talep görüyor:** "albayrak hazır beton hisse" 179 gös/28g (poz 12) tek blog yazısıyla
   → B261006-1 halka arz şirket sayfalarının dayanağı (40 sayfa 2026-10-07'de açıldı, sonuç 11-03'te).
 
+- **Veri sayfası = cevap + tarih, sadece takvim değil (RC 2026-10-10):** /fed- ve /tcmb-faiz-takvimi yalnız tarih
+  gösteriyordu; "faiz şu an kaç / son karar ne oldu" niyeti cevapsızdı → güncel faiz kutusu + karar sütunu +
+  dinamik başlık eklendi. Yeni veri sayfası açarken: sorgunun SAYISAL cevabı başlıkta ve ilk ekranda olsun.
+- **Ocak/Temmuz emekli-memur zammı** Türkiye'nin her TÜİK günü zirve yapan sorgusu → /emekli-zammi-hesaplama
+  (10-10) tek kanonik sayfa; her ay kendini günceller. Bu konuda YENİ BLOG YAZISI AÇMA (yamyamlaşma) — sayfayı
+  güçlendir. Yöntem Temmuz 2026 resmi oranlarıyla doğrulandı (SSK %17,75, memur %13,51).
+
 ## Kanıtlı çalışmayan (tekrar deneme)
 - **Mevcut sayfayı on-page dürtmek** (iç-link, sinonim, FAQ, tazelik, cannibalization düzeltmesi, exact-match
   yeni yazı) 5-7 günde pozisyon oynatmadı — 6+ teyit (NFP, Fed, endeks fonu, Fed-sinonim, Jackson Hole,
@@ -52,6 +59,16 @@ _v1'in 59 deneyi + 2 aylık KPI'ından damıtıldı (2026-10-06); son yeniden ya
 - Shock rakamı her zaman hesaplanabilir/kaynaklı olmalı (yanıltıcı başlık = platform kırmızı çizgisi).
 
 ## Kısıtlar ve çevre
+- **Veri sessizce bayatlar:** /kira-artis-orani-hesaplama 08-13'te elle girildi, Ekim'de hâlâ "Ağustos"
+  gösteriyordu (talebin zirvesinde). Elle girilen her veri ya otomatik güncelleyici ya da health.py
+  "Veri tazeliği" satırı ister (10-10'dan beri kira/TÜFE/Fed/TCMB kontrol ediliyor). Rakamı YALNIZ birincil
+  kaynaktan yaz (TCMB/Fed/TÜİK/TEDB); haber siteleri çelişebilir (bir site Fed tarihlerini yanlış verdi).
+- **Kanonik URL (10-10 düzeltildi):** 7000+ iç link sonda '/' olmadan yazılıydı → 307 + GSC'de /x ve /x/
+  ayrı satırlar; http/www 200 dönüyordu. Artık build sonrası link normalizasyonu + worker/index.js 301.
+  Yeni sayfa/şablonda linki yine '/' ile yaz; worker'ı kaldırma.
+- **İndeks ≠ sorun, sıralama sorun:** URL denetimi 10-10: 225 URL'nin 178'i indeksli; jenerik evergreen
+  yazılar (pasif gelir, bileşik faiz nedir…) "Crawled – not indexed". Footer artık tüm veri/araç
+  sayfalarına link veriyor (önce 3-4 sayfadan link alıyorlardı). IndexNow (Bing/Yandex) learn-daily'de.
 - **Google sitemap'i 2026-07-03 → 10-08 arası HİÇ yeniden indirmedi;** yeni sayfalar yalnız iç linkle,
   gecikmeli keşfediliyordu (10-07 açılan 40 halka arz sayfası "URL is unknown"). 10-08'den beri
   `scripts/gsc-sitemap.py` (servis hesabı siteFullUser) learn-daily'de URL kümesi değişince/7 günde bir gönderiyor.

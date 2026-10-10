@@ -157,6 +157,36 @@ def http_ok(url, timeout=12):
         return str(e)[:60]
 
 
+def stale_data():
+    """Elle/aylık beslenen veri sayfaları bayatladı mı? (2026-10-10: kira sayfası 2 ay eski kalmıştı.)"""
+    out = []
+    today = dt.date.today()
+    AY = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
+    def load(name):
+        try:
+            return json.load(open(os.path.join(ROOT, "data", name), encoding="utf-8"))
+        except Exception:
+            return None
+    if today.day > 8:  # TÜİK ~3'ü açıklar; 8'inden sonra hâlâ eskiyse sorun
+        k = load("kira-artis-2026.json")
+        want = f"{AY[today.month - 1]} {today.year}"
+        if k and k.get("guncelAy") != want:
+            out.append(f"kira oranı bayat ({k.get('guncelAy')} ≠ {want}) → scripts/kira-artis-update.sh")
+        t = load("tufe-aylik.json")
+        prev = (today.replace(day=1) - dt.timedelta(days=1)).strftime("%Y-%m")
+        if t and t["months"][0]["ay"] != prev:
+            out.append(f"TÜFE serisi bayat (son {t['months'][0]['ay']} ≠ {prev}) → scripts/tufe-update.py")
+    for name, label in (("fomc-2026.json", "Fed"), ("tcmb-2026.json", "TCMB")):
+        d = load(name)
+        if not d:
+            continue
+        for m in d["meetings"]:
+            # karar günü + 1 gün sonra hâlâ result yoksa
+            if (today - dt.date.fromisoformat(m["decisionDate"])).days >= 1 and not m.get("result"):
+                out.append(f"{label} {m['decisionDate']} kararı yazılmadı → scripts/policy-decisions.sh")
+    return out
+
+
 def collect():
     du = shutil.disk_usage("/")
     return {
@@ -169,6 +199,7 @@ def collect():
         "disk_free_gb": round(du.free / 1e9, 1),
         "site": http_ok("https://parafomo.com/"),
         "api": http_ok("https://api.parafomo.com/health"),
+        "stale": stale_data(),
     }
 
 
@@ -192,7 +223,8 @@ def render(h):
     out += ["", f"- **Claude (LLM) durumu:** {llm_txt}",
             f"- **Git:** {git_txt}",
             f"- **Disk:** {disk}",
-            f"- **Canlı site:** {h['site']} · **Portföy API:** {h['api']}"]
+            f"- **Canlı site:** {h['site']} · **Portföy API:** {h['api']}",
+            "- **Veri tazeliği:** " + ("✅ güncel" if not h.get("stale") else "🔴 " + "; ".join(h["stale"]))]
     return "\n".join(out)
 
 
@@ -209,6 +241,7 @@ def problems(h):
         p.append(f"site: {h['site']}")
     if h["api"] != 200:
         p.append(f"api: {h['api']}")
+    p += [f"veri: {x}" for x in h.get("stale", [])]
     return p
 
 

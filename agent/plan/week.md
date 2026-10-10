@@ -51,6 +51,19 @@ _Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
   /halka-arz linkli) ve ana sayfaya "Yaklaşan halka arzlar" kutusu (→ 2026-10-08 RC: /halka-arz-getiri tablosundaki 12 şirket artık kendi sayfasına linkli — yalnız ana sayfa kutusu kaldı) (ilk 3, şirket sayfasına link) ekle.
   · Kabul: rapora indirme tarihi + indekslenen sayfa sayısı yazılır; gerekiyorsa linkler canlıda.
 
+- [ ] T7 (SEO ölçüm, RC 10-10 sonrası) — **Kanonik + footer düzeltmesinin etkisini ölç (10-14 sonrası):**
+  GSC'de son 7g sayfa listesinde sonda '/' olmayan URL satırı kaldı mı (`searchanalytics` page boyutu)?
+  URL denetimi: /emekli-zammi-hesaplama, /bitcoin-getiri, /euro-getiri, /gumus-getiri, /bono-hesaplama
+  durumu ("unknown" → indeksli mi?). 10 halka arz sayfası örneği. · Kabul: rapora sayılar yazılır.
+- [ ] T8 (yeni niyet) — **Asgari ücret 2027 hazırlığı:** /asgari-ucret-hesaplama'ya "2027 asgari ücret ne zaman
+  belli olacak" bölümü (Asgari Ücret Tespit Komisyonu süreci, geçmiş yılların açıklanma tarihleri — YALNIZ
+  doğrulanmış kaynakla; tahmini rakam YAZMA) + SSS; başlıkta 2027'yi öne al. Aralık'ta resmi rakam gelince
+  aynı gün güncelle (kullanıcı görevi değil, ajan WebSearch ile resmi açıklamayı doğrular).
+  · Kabul: build geçer, canlı sayfada 2027 bölümü + FAQPage'de yeni soru.
+- [ ] T9 (B261006-1) — **Emekli zammı sayfası iç linkleri:** emeklilik kategorisindeki yazılar
+  (bes-bireysel-emeklilik-mantikli-mi, emeklilik-icin-ne-kadar-para) + net-maas/asgari-ucret sayfalarından
+  bağlamsal link (footer zaten var; metin içi link ayrıca). · Kabul: ≥4 metin içi link canlıda.
+
 ## Bakım / ürün
 - [ ] P1 (portföy) — ⏸ 2026-10-09 günlük koşu atladı: watchlist yeni DB tablosu ister (kırmızı çizgi 6 "şemayı değiştirme" — newsletter tablosu Kaan onayıyla açılmıştı) + ders "trafiksiz ürün cilası kayıt getirmez" (2 üye). Haftalık koşu karar versin. — `agent/plan/backlog-portfolio.md`'deki en üstteki açık madde (İzleme listesi / watchlist —
   sahip olmadan takip). Backend değişirse protokoldeki restart + /health. · Kabul: build geçer; canlı panelde
@@ -71,6 +84,10 @@ _Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
 - R2 bilgileri → `/root/.config/parafomo/backup.env` (backup.sh otomatik kullanır).
 
 ## Notlar (günlük koşu için)
+- **RC 2026-10-10 eklenen otomasyonlar** (kontrol: `python3 agent/health.py` → "Veri tazeliği"):
+  kira-artis-update.sh (ayın 3-8'i; kira + TÜFE serisi), policy-decisions.sh (Fed/TCMB karar gecesi),
+  indexnow.py (learn-daily). 22 Ekim TCMB ve 28 Ekim Fed sonrası sabah: sayfada karar görünüyor mu kontrol et;
+  görünmüyorsa log'a bak (`logs/policy-decisions.log`) ve kaynağı düzelt — rakamı elle tahmin ETME.
 - **Headless izin tuzağı:** 10-07 koşusunda 13 komut reddedildi — `for`/`until` döngüsü, `x=...` değişken
   atama, `awk`, `cd /tmp && ...`, heredoc, `bash -n /mutlak/yol`. Döngü/çok adımlı kontrolü tek
   `python3 -c "..."` ya da repo içi küçük bir `.py` dosyasıyla yap; yolları göreli ver (`bash scripts/...`).
