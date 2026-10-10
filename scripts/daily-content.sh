@@ -76,6 +76,8 @@ echo "[*] BIST 100 getiri analizi hesaplanıyor"
 python3 "$REPO/scripts/bist-returns.py" 2>&1 | sed 's/^/    [bist-getiri] /' || echo "UYARI: bist getiri güncellenemedi (mevcut korunur, devam)"
 echo "[*] ABD tahvil faizleri (getiri eğrisi) çekiliyor"
 python3 "$REPO/scripts/us-tahvil.py" 2>&1 | sed 's/^/    [ustahvil] /' || echo "UYARI: ABD tahvil faizleri güncellenemedi (mevcut korunur, devam)"
+# OG kartları: canlı rakamlı paylaşım görselleri (değişen stat yoksa dosyaya dokunmaz)
+python3 "$REPO/scripts/og-images.py" 2>&1 | sed 's/^/    /' || echo "UYARI: OG kartları üretilemedi (eskiler kalır)"
 # GSC fırsat sorguları (konu seçimi kaynağı); venv'de google kütüphaneleri var.
 echo "[*] GSC fırsat sorguları çekiliyor"
 "$VPY" "$REPO/scripts/seo-opportunities.py" 2>&1 | sed 's/^/    [seo] /' || echo "UYARI: GSC fırsatları güncellenemedi (motor backlog'a düşer)"

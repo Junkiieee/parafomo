@@ -106,6 +106,12 @@ _Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
 - R2 bilgileri → `/root/.config/parafomo/backup.env` (backup.sh otomatik kullanır).
 
 ## Notlar (günlük koşu için)
+- **RC 2026-10-10 (3. oturum) — takip + OG kartları:** `health.py` artık TÜM veri dosyalarının
+  tazeliğini izliyor (getiri/altin-fiyat/halka-arz/takvim/demand-gaps/OG + Kasım-Aralık YD sezon bekçisi:
+  4 Kasım Ekim verisi, 5 Aralık tebliğ kontrolü — kırmızıysa günlük koşu İLK İŞ düzeltir).
+  `scripts/og-images.py`: 12 sayfaya canlı rakamlı OG kartı (public/og/); daily-content + kira cron'u
+  yeniler; YENİ veri sayfası açarken CARDS'a ekle + `image="/og/<slug>.png"` geç. Hesaplama sayfalarına
+  otomatik WebApplication şeması (BaseLayout). Kira cron penceresi 3-10'a genişledi.
 - **RC 2026-10-10 (2. oturum) — zam sezonu kümesi + talep radarı kuruldu:**
   `/yeniden-degerleme-orani` + `/mtv-hesaplama` CANLI (veri: `data/yeniden-degerleme.json`, aylık
   otomatik güncelleme kira-artis-update.sh içinde — Yİ-ÜFE 12 ay ort, Eylül itibarıyla %27,8).

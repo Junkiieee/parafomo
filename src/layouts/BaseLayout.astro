@@ -107,6 +107,23 @@ const breadcrumbLd =
         })),
       }
     : null;
+
+// Hesaplayıcı sayfaları: ücretsiz finans web uygulaması olarak işaretle (zengin sonuç uygunluğu)
+const calcLd = canonPath.includes('hesaplama')
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'WebApplication',
+      name: title ?? SITE.name,
+      url: canonical,
+      description,
+      applicationCategory: 'FinanceApplication',
+      operatingSystem: 'Web',
+      inLanguage: 'tr-TR',
+      isAccessibleForFree: true,
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'TRY' },
+      provider: { '@type': 'Organization', '@id': ORG_ID, name: SITE.name },
+    }
+  : null;
 ---
 
 <!doctype html>
@@ -168,6 +185,7 @@ const breadcrumbLd =
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     {breadcrumbLd && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />}
     {faqLd && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
+    {calcLd && <script type="application/ld+json" set:html={JSON.stringify(calcLd)} />}
     <Analytics />
   </head>
   <body>

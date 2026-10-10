@@ -179,6 +179,44 @@ def stale_data():
         y = load("yeniden-degerleme.json")
         if y and y.get("sonAy") != prev:
             out.append(f"Yİ-ÜFE/YD serisi bayat (son {y.get('sonAy')} ≠ {prev}) → scripts/yeniden-degerleme-update.py")
+    # Yeniden değerleme sezon bekçisi (Kasım-Aralık): Ekim verisi + tebliğ takibi (week.md T13)
+    y = load("yeniden-degerleme.json")
+    if y:
+        yil = today.year
+        if today >= dt.date(yil, 11, 4) and y.get("sonAy", "") < f"{yil}-10":
+            out.append(f"YD KRİTİK: Ekim {yil} Yİ-ÜFE hâlâ yok (son {y.get('sonAy')}) — oran kesinleşemedi → scripts/yeniden-degerleme-update.py")
+        if today >= dt.date(yil, 12, 5) and not any(g.get("uygulamaYili") == yil + 1 for g in y.get("gecmis", [])):
+            out.append(f"YD KRİTİK: {yil + 1} tebliğ oranı doğrulanıp yazılmadı → WebSearch ile Resmî Gazete tebliğini bul, data/yeniden-degerleme.json tebligOrani + gecmis'e {yil + 1} satırı ekle")
+    # Günlük/sık güncellenen veri dosyaları: 'updated' alanı eşikten eskiyse alarm
+    for name, max_days, fix in (
+        ("altin-getiri.json", 4, "scripts/gold-returns.py"), ("dolar-getiri.json", 4, "scripts/dollar-returns.py"),
+        ("gumus-getiri.json", 4, "scripts/silver-returns.py"), ("euro-getiri.json", 4, "scripts/euro-returns.py"),
+        ("bitcoin-getiri.json", 4, "scripts/bitcoin-returns.py"), ("bist-getiri.json", 4, "scripts/bist-returns.py"),
+        ("altin-fiyat.json", 3, "scripts/altin-fiyat.py"), ("halka-arz.json", 2, "scripts/fetch-halka-arz.py"),
+        ("economic-calendar.json", 9, "scripts/fetch-economic-calendar.py"),
+    ):
+        d = load(name)
+        upd = (d or {}).get("updated", "")[:10]
+        try:
+            age = (today - dt.date.fromisoformat(upd)).days
+        except Exception:
+            continue
+        if age > max_days:
+            out.append(f"{name} bayat ({age} gün; eşik {max_days}) → {fix}")
+    # Talep madencisi + OG kartları üretim kontrolü
+    try:
+        g = json.load(open(os.path.join(ROOT, "data", "learning", "demand-gaps.json"), encoding="utf-8"))
+        age = (today - dt.date.fromisoformat(g["generated_utc"][:10])).days
+        if age > 9:
+            out.append(f"demand-gaps.json bayat ({age} gün) → scripts/learn/demand_miner.py (learn-daily Çrş+Paz)")
+    except Exception:
+        out.append("demand-gaps.json yok → scripts/learn/demand_miner.py")
+    og = os.path.join(ROOT, "public", "og")
+    pngs = [os.path.join(og, f) for f in os.listdir(og)] if os.path.isdir(og) else []
+    if len(pngs) < 10:
+        out.append(f"OG kartları eksik ({len(pngs)} png) → scripts/og-images.py")
+    elif pngs and all((dt.date.today() - dt.date.fromtimestamp(os.path.getmtime(p))).days > 45 for p in pngs):
+        out.append("OG kartları 45+ gündür hiç yenilenmemiş → scripts/og-images.py üretimi kontrol et")
     for name, label in (("fomc-2026.json", "Fed"), ("tcmb-2026.json", "TCMB")):
         d = load(name)
         if not d:

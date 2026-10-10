@@ -37,8 +37,8 @@
 # --- Veri + ölçüm (LLM yok) ---
 15 */6 * * * /root/parafomo/scripts/halka-arz-update.sh >> /root/parafomo/logs/halka-arz.log 2>&1
 45 8 * * * /root/parafomo/scripts/learn/learn-daily.sh >> /root/parafomo/logs/learn.log 2>&1
-# Kira artış oranı (TÜİK ~3'ü 10:00 TSİ) — ayın 3-8'i, oran yoksa çeker; değiştiyse deploy
-20 8,12 3-8 * * /root/parafomo/scripts/kira-artis-update.sh >> /root/parafomo/logs/kira-artis.log 2>&1
+# Kira artış + TÜFE + Yİ-ÜFE/yeniden değerleme + aylık OG kartları (TÜİK ~3'ü 10:00 TSİ) — ayın 3-10'u (gecikme toleransı)
+20 8,12 3-10 * * /root/parafomo/scripts/kira-artis-update.sh >> /root/parafomo/logs/kira-artis.log 2>&1
 # Fed/TCMB faiz kararı → takvim sayfalarında güncel faiz + karar sütunu (bekleyen yoksa ağa çıkmaz)
 25 11,13,19,21 * * * /root/parafomo/scripts/policy-decisions.sh >> /root/parafomo/logs/policy-decisions.log 2>&1
 

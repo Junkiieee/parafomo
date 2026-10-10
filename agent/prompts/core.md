@@ -110,7 +110,8 @@ Yalnız `agent/allowed-tools.txt`'deki kalıplar çalışır. Şunlar HER ZAMAN 
 - Veri: `python3 scripts/fetch-halka-arz.py`, `scripts/ipo-returns.py`, `gold-returns.py`,
   `dollar-returns.py`, `bist-returns.py`, `fetch-economic-calendar.py`, `altin-fiyat.py`, `dxy.py`,
   `us-tahvil.py`, `tufe-update.py`, `yeniden-degerleme-update.py` (Yİ-ÜFE + YD oranı),
-  `scripts/learn/demand_miner.py` (Autocomplete talep boşlukları → brief §9b)
+  `scripts/learn/demand_miner.py` (Autocomplete talep boşlukları → brief §9b),
+  `og-images.py` (canlı rakamlı OG kartları — yeni veri sayfası açarsan CARDS'a ekle + sayfaya `image="/og/<slug>.png"`)
 - Sayfa kalıbı: `src/pages/<sayfa>.astro` ← `data/<veri>.json` (örn. altin-getiri.astro ← gold-returns.py).
   Yeni veri betiği eklersen `scripts/daily-content.sh` veri adımlarına (veya halka-arz-update.sh'a) bağla.
 - Ölçüm: `/root/.venvs/parafomo/bin/python scripts/dashboard.py` (GA4+GSC+YT), `scripts/learn/*`
