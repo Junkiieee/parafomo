@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-10-09T08:46:38Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-10-10T08:46:25Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -19,21 +19,21 @@
 
 ### Viral format — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `shock_number` — skor 347.337, örnek 7
-- `single_concept` — skor 343.467, örnek 4
-- `myth` — skor 212.801, örnek 9
-- `news_reaction` — skor 121.601, örnek 13
-- `backtest_return` — skor 81.237, örnek 5
+- `shock_number` — skor 397.368, örnek 6
+- `single_concept` — skor 274.773, örnek 5
+- `myth` — skor 226.246, örnek 9
+- `news_reaction` — skor 133.392, örnek 12
+- `backtest_return` — skor 81.089, örnek 5
 
 ### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `1` — skor 313.534, örnek 5
 - `2` — skor 299.24, örnek 5
-- `3` — skor 229.255, örnek 6
-- `4` — skor 222.273, örnek 5
-- `5` — skor 151.222, örnek 4
-- `0` — skor 138.138, örnek 4
-- `manual` — skor 111.024, örnek 9
+- `3` — skor 265.25, örnek 5
+- `1` — skor 261.278, örnek 6
+- `4` — skor 222.552, örnek 5
+- `5` — skor 177.972, örnek 4
+- `0` — skor 141.807, örnek 4
+- `manual` — skor 127.305, örnek 8
 
 ## Konu sinyalleri
 
@@ -43,17 +43,17 @@
 - abd-faiz-yukseltirse-dolar-ne-olur — skor 11.0
 - abd-ekim-2026-nfp-istihdam-verisi-fed-dolar-altin — skor 9.38
 - pce-gdp-eylul-2026-fed-kasim-dolar-altin — skor 9.02
-- abd-eylul-2026-cpi-verisi-fed-dolar-altin — skor 7.9
+- abd-faiz-artarsa-altin-ne-olur — skor 7.7
 
 **🎯 Fırsat sorguları** (içerik/başlık iyileştir):
 - `albayrak hazır beton hisse` — gös 179, sıra 12.3
-- `"albayrak hazır beton"` — gös 33, sıra 4
-- `abd faiz artarsa dolar ne olur` — gös 18, sıra 14.5
-- `buyback nedir` — gös 17, sıra 9.6
+- `abd faiz artarsa dolar ne olur` — gös 16, sıra 13.8
 - `dezenflasyon nedir` — gös 15, sıra 16.7
-- `abd faiz artırırsa ne olur` — gös 9, sıra 19.8
+- `buyback nedir` — gös 13, sıra 9.5
+- `ekim ayı enflasyon beklentisi 2026` — gös 8, sıra 12.1
 - `abd faizi yukseltirse dolar ne olur` — gös 7, sıra 19.9
-- `abd faiz arttırırsa ne olur` — gös 6, sıra 17.8
+- `ekim 2026 enflasyon beklentisi` — gös 7, sıra 7.6
+- `abd faiz yükseltirse altın ne olur` — gös 6, sıra 7.3
 
 ## Notlar
 
