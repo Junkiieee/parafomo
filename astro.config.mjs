@@ -39,6 +39,8 @@ export default defineConfig({
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
+      // robots.txt /portfoy/'yu engelliyor; sitemap'te olmaları çelişkili sinyal (GSC 2026-10-10)
+      filter: (page) => !page.includes('/portfoy/'),
       serialize(item) {
         const m = item.url.match(/\/blog\/([^/]+)\/?$/);
         if (m && lastmodBySlug[m[1]]) {

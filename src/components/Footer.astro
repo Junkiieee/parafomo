@@ -1,6 +1,23 @@
 ---
 import { SITE, CATEGORIES } from '../site.config';
 const year = new Date().getFullYear();
+// Site geneli iç link: veri sayfaları ve araçlar her sayfadan link alsın (2026-10-10: çoğu yalnız
+// 3-4 sayfadan link alıyordu, bir kısmı Google'a hiç bilinmiyordu).
+const DATA_LINKS = [
+  ['/altin-getiri/', 'Altın getirisi'], ['/dolar-getiri/', 'Dolar getirisi'], ['/gumus-getiri/', 'Gümüş getirisi'],
+  ['/euro-getiri/', 'Euro getirisi'], ['/bitcoin-getiri/', 'Bitcoin getirisi'], ['/bist-getiri/', 'BIST 100 getirisi'],
+  ['/halka-arz/', 'Halka arz takvimi'], ['/halka-arz-getiri/', 'Halka arz getirileri'],
+  ['/enflasyon-takvimi/', 'Enflasyon takvimi'], ['/tcmb-faiz-takvimi/', 'TCMB faiz kararı'],
+  ['/fed-faiz-takvimi/', 'Fed faiz kararı'], ['/ekonomik-takvim/', 'Ekonomik takvim'],
+];
+const TOOL_LINKS = [
+  ['/emekli-zammi-hesaplama/', 'Emekli zammı hesaplama'], ['/kira-artis-orani-hesaplama/', 'Kira artış oranı'],
+  ['/net-maas-hesaplama/', 'Net maaş hesaplama'], ['/asgari-ucret-hesaplama/', 'Asgari ücret'],
+  ['/kidem-tazminati-hesaplama/', 'Kıdem tazminatı'], ['/issizlik-maasi-hesaplama/', 'İşsizlik maaşı'],
+  ['/kredi-hesaplama/', 'Kredi hesaplama'], ['/mevduat-faizi-hesaplama/', 'Mevduat faizi'],
+  ['/bono-hesaplama/', 'Bono hesaplama'], ['/bilesik-faiz-hesaplama/', 'Bileşik faiz'],
+  ['/kdv-hesaplama/', 'KDV hesaplama'], ['/portfoy-takip/', 'Portföy takip'],
+];
 ---
 
 <footer class="site-footer">
@@ -29,6 +46,16 @@ const year = new Date().getFullYear();
       ))}
     </nav>
 
+    <nav class="footer-col" aria-label="Güncel veri">
+      <h3>Güncel Veri</h3>
+      {DATA_LINKS.map(([href, label]) => <a href={href}>{label}</a>)}
+    </nav>
+
+    <nav class="footer-col" aria-label="Hesaplayıcılar">
+      <h3>Hesaplayıcılar</h3>
+      {TOOL_LINKS.map(([href, label]) => <a href={href}>{label}</a>)}
+    </nav>
+
     <nav class="footer-col" aria-label="Site">
       <h3>Site</h3>
       <a href="/blog">Tüm Yazılar</a>
@@ -36,6 +63,7 @@ const year = new Date().getFullYear();
       <a href="/editoryal-politika/">Editoryal Politika</a>
       <a href="/metodoloji/">Veri ve Metodoloji</a>
       <a href="/iletisim/">İletişim</a>
+      <a href="/bulten/">Haftalık bülten</a>
       <a href="/rss.xml">RSS</a>
     </nav>
   </div>
@@ -57,7 +85,7 @@ const year = new Date().getFullYear();
   }
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
     gap: 2.5rem;
     padding-bottom: 2.5rem;
   }
@@ -65,7 +93,7 @@ const year = new Date().getFullYear();
   .brand-logo { height: 28px; width: auto; display: block; }
   .footer-brand p { max-width: 34ch; font-size: var(--step--1); }
 
-  .socials { display: flex; gap: 0.5rem; margin-top: 1rem; }
+  .socials { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
   .socials a {
     font-size: var(--step--1);
     font-weight: 600;
@@ -76,7 +104,7 @@ const year = new Date().getFullYear();
   }
   .socials a:hover { border-color: var(--brand); color: var(--brand); }
 
-  .footer-col { display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-col { display: flex; flex-direction: column; gap: 0.5rem; }
   .footer-col h3 { font-family: var(--font-sans); font-size: var(--step--1); text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.4rem; }
   .footer-col a { color: var(--text-soft); font-size: var(--step--1); }
   .footer-col a:hover { color: var(--brand); }
@@ -93,6 +121,10 @@ const year = new Date().getFullYear();
   }
   .disclaimer { max-width: 48ch; }
 
+  @media (max-width: 1080px) {
+    .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
+    .footer-brand { grid-column: 1 / -1; }
+  }
   @media (max-width: 760px) {
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .footer-brand { grid-column: 1 / -1; }
