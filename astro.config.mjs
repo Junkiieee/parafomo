@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import trailingSlashLinks from './src/integrations/trailing-slash-links.mjs';
 
 // Yayına alırken bu adresi kendi alan adınla değiştir.
 const SITE = 'https://parafomo.com';
@@ -34,6 +35,7 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     mdx(),
+    trailingSlashLinks(),
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
