@@ -31,6 +31,7 @@ echo "[2/4] Metrikler toplanıyor"
 "$VPY" "$LEARN/seo_targets.py"       || echo "UYARI: seo hedefleri başarısız"
 # Yeni URL varsa (ya da 7 gün geçtiyse) sitemap'i GSC'ye yeniden gönder — Google 07-03→10-08 hiç indirmemişti
 "$VPY" "$REPO/scripts/gsc-sitemap.py" || echo "UYARI: sitemap gönderimi başarısız"
+"$VPY" "$REPO/scripts/indexnow.py" || echo "UYARI: IndexNow gönderimi başarısız"
 
 echo "[3/4] Karar üretiliyor"
 TG=""; [ "${1:-}" = "--telegram" ] && TG="--telegram"
