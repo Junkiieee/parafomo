@@ -1,0 +1,79 @@
+{
+  "slug": "kayip-telafisi-sandigindan-zor-yuzde-50-icin-2-kat-m",
+  "title": "Kayıp telafisi sandığından zor: yüzde 50 için 2 kat",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Yatırımda yüzde 50 kaybı geri almak için yüzde 100 kazanmak gerekir. Sade bir hesapla kaybı küçük tutmanın neden kazanç aramaktan önemli olduğunu anlatıyoruz.\nKaynak/hesap: 100.000 TL -%50 = 50.000 TL; 100.000/50.000 = 2 kat = %100 kazanç. Yüzde 20 düşüş: 80.000 -> 100.000 = %25 · senaryodaki hesap",
+  "tags": [
+    "yatırım",
+    "zarar",
+    "birikim",
+    "finans",
+    "yüzde hesabı",
+    "risk yönetimi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Yüzde 50 kaybeden, yüzde 100 kazanmalı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Risk",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "100 bin lira yarıya inince 50 bin kalır; geri 100 bine çıkmak için ikiye katlamalısın.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Para",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl tuzak şu: yüzde 20 düşüş bile, geri dönmek için yüzde 25 kazanç ister.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Risk",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yani kazanç aramadan önce kaybı sınırla: tek varlığa yığılma, zarar kesme sınırı belirle.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Risk",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki videoda kaybı küçük tutan basit bir kuralı anlatıyorum. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "ParaFOMO",
+        "glyph": "₺"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "Yüzde 50 kaybeden, yüzde 100 kazanmalı",
+    "calc": "100.000 TL -%50 = 50.000 TL; 100.000/50.000 = 2 kat = %100 kazanç. Yüzde 20 düşüş: 80.000 -> 100.000 = %25",
+    "source": "senaryodaki hesap"
+  }
+}
