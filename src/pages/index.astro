@@ -4,6 +4,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
 import Newsletter from '../components/Newsletter.astro';
 import { CATEGORIES, SITE } from '../site.config';
+import ipoArchive from '../../data/halka-arz-sirketler.json';
+import ipoReturns from '../../data/halka-arz-getiri.json';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
@@ -12,6 +14,26 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 const featured = posts.find((p) => p.data.featured) ?? posts[0];
 const rest = posts.filter((p) => p.id !== featured?.id).slice(0, 6);
 const postCount = posts.length;
+
+// Halka arz şirket kutusu: süren/yaklaşan arzlar önce, sonra son tamamlananlar (getirisiyle) ve
+// tarih bekleyenler. Tarih bekleyenler güne göre döner — her şirket sayfası zamanla ana sayfadan link alır.
+type Ipo = { company: string; bist_code: string; slug: string; status: string; start: string | null };
+const ipos = Object.values((ipoArchive as any).items ?? {}) as Ipo[];
+const ipoRet = new Map(((ipoReturns as any).items ?? []).map((r: any) => [r.code, r.return_pct as number]));
+const ipoName = (raw: string) => {
+  const p = raw.match(/^\((.+?)\)\s*(.*)$/);
+  if (p && /\s/.test(p[1].trim())) return p[1].trim();
+  const n = p ? p[2] : raw;
+  return n.replace(/\s+A\.?\s?Ş\.?$/i, '').replace(/\s+(San\.?|Sanayi|Sanayii)(\s.*)?$/i, '').trim() || n;
+};
+const byStart = (a: Ipo, b: Ipo) => (b.start ?? '').localeCompare(a.start ?? '');
+const ipoActive = ipos.filter((o) => o.status === 'Devam Ediyor' || o.status === 'Yaklaşan').sort(byStart);
+const ipoDone = ipos.filter((o) => o.status === 'Tamamlandı').sort(byStart).slice(0, 3);
+const ipoWait = ipos.filter((o) => o.status === 'Tarih Bekleniyor').sort((a, b) => a.slug.localeCompare(b.slug));
+const dayIdx = Math.floor(Date.now() / 86400000);
+const ipoWaitRot = ipoWait.length ? ipoWait.map((_, i) => ipoWait[(i + dayIdx * 3) % ipoWait.length]) : [];
+const ipoBox = [...ipoActive, ...ipoDone, ...ipoWaitRot].slice(0, 6);
+const pctFmt = (n: number) => (n > 0 ? '+' : '') + n.toLocaleString('tr-TR', { maximumFractionDigits: 1 }) + '%';
 ---
 
 <BaseLayout>
@@ -56,6 +78,32 @@ const postCount = posts.length;
         <a href="/blog" class="muted-link">Tümü →</a>
       </div>
       <PostCard post={featured} featured />
+    </section>
+  )}
+
+  <!-- HALKA ARZ ŞİRKETLERİ -->
+  {ipoBox.length > 0 && (
+    <section class="container section">
+      <div class="section-head">
+        <h2>Halka Arz Şirketleri</h2>
+        <a href="/halka-arz" class="muted-link">Takvim →</a>
+      </div>
+      <ul class="ipo-list">
+        {ipoBox.map((o) => {
+          const r = o.bist_code ? ipoRet.get(o.bist_code) : undefined;
+          return (
+            <li>
+              <a href={`/halka-arz/${o.slug}/`} class="ipo-item card">
+                <strong>{ipoName(o.company)}{o.bist_code && <span class="muted"> ({o.bist_code})</span>}</strong>
+                <span class="ipo-meta">
+                  <span class="muted">{typeof r === 'number' ? 'Arz fiyatından bugüne' : o.status}</span>
+                  {typeof r === 'number' && <b class={r >= 0 ? 'up' : 'down'}>{pctFmt(r)}</b>}
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
     </section>
   )}
 
@@ -319,6 +367,12 @@ const postCount = posts.length;
   .cat-card p { font-size: var(--step--1); margin: 0; flex: 1; }
   .cat-go { font-size: var(--step--1); font-weight: 600; color: var(--brand); margin-top: 0.6rem; }
 
+  .ipo-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.8rem; }
+  .ipo-item { display: flex; flex-direction: column; gap: 0.3rem; padding: 0.9rem 1.1rem; color: var(--text); text-decoration: none; }
+  .ipo-item strong { font-size: var(--step--1); line-height: 1.35; }
+  .ipo-meta { display: flex; justify-content: space-between; font-size: var(--step--2); }
+  .ipo-meta .up { color: #16a34a; }
+  .ipo-meta .down { color: #dc2626; }
   .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.1rem; }
   .tool-card { padding: 1.2rem 1.4rem 1.4rem; display: flex; align-items: flex-start; gap: 0.9rem; }
   .tool-icon { font-size: 1.6rem; line-height: 1; flex-shrink: 0; }
