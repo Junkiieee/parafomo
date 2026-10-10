@@ -45,7 +45,7 @@ _Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
   kümesi, takvimler, halka arz, hesaplayıcılar + kaynak/güncelleme notu); getiri ve takvim sayfalarında görünür
   "Son güncelleme: <tarih> · Kaynak: ..." satırı + `Dataset` şeması (yoksa). AI asistan trafiği 28g 20 (~%12).
   · Kabul: canlıda /llms.txt 200; 3 sayfada `grep -c '"Dataset"'` ≥1.
-- [ ] T6 (B261006-1) — **Halka arz sayfaları keşif kontrolü (10-12 sonrası):** `python scripts/gsc-sitemap.py
+- [x] T6 (B261006-1) — → 2026-10-10: sitemap indirme **2026-10-09 08:46** (10-08 sonrası ✓); URL denetimi 6 örnek: 1 indeksli (albayrak, tarama 10-08), 2 "Discovered – not indexed", 3 "unknown". Ana sayfaya "Halka Arz Şirketleri" kutusu canlı (6 şirket sayfasına link; süren/yaklaşan → son 3 tamamlanan + getirisi → tarih bekleyenler günlük döner) commit 3ae1a67. Haftalık koşu indeks sayısını yeniden ölçsün · 2026-10-10 — **Halka arz sayfaları keşif kontrolü (10-12 sonrası):** `python scripts/gsc-sitemap.py
   --status` → indirme tarihi 10-08 sonrası mı? 5 şirket sayfasını brief'teki indeks durumuyla kontrol et. Hâlâ
   "unknown" ise: /halka-arz-getiri tablosundaki her şirket adını da kendi sayfasına linkle (şu an yalnız
   /halka-arz linkli) ve ana sayfaya "Yaklaşan halka arzlar" kutusu (→ 2026-10-08 RC: /halka-arz-getiri tablosundaki 12 şirket artık kendi sayfasına linkli — yalnız ana sayfa kutusu kaldı) (ilk 3, şirket sayfasına link) ekle.
