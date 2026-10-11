@@ -90,7 +90,7 @@ Aşağıdaki tablo 2026 koşullarında üç farklı yaşam standardı için tahm
 
 ## SGK Maaşını Denkleme Dahil Et
 
-Emeklilik planında SGK ya da Bağ-Kur maaşını görmezden gelmek büyük hata olur. SGK maaşı her ay otomatik gelen bir temel gelirdir — bu gelir, ihtiyaç duyduğun toplam birikimdeki yükü hafifletir.
+Emeklilik planında SGK ya da Bağ-Kur maaşını görmezden gelmek büyük hata olur. SGK maaşı her ay otomatik gelen bir temel gelirdir — bu gelir, ihtiyaç duyduğun toplam birikimdeki yükü hafifletir. Üstelik her Ocak ve Temmuz enflasyon farkıyla artırılır; bir sonraki artışın maaşına etkisini [emekli zammı hesaplama](/emekli-zammi-hesaplama/) aracıyla görebilirsin.
 
 **Emeklilik açığı hesabı:**
 

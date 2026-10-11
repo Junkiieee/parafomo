@@ -11,7 +11,7 @@ Bireysel Emeklilik Sistemi (BES), Türkiye'de en çok tartışılan tasarruf ara
 
 ## BES tam olarak nedir?
 
-BES, zorunlu sosyal güvenlik (SGK/emekli maaşı) sisteminin **üzerine** kurduğunuz, gönüllü ve uzun vadeli bir birikim sistemidir. Her ay düzenli katkı payı ödersiniz, bu para çeşitli fonlarda değerlendirilir ve emeklilikte toplu ya da maaş şeklinde geri alırsınız.
+BES, zorunlu sosyal güvenlik (SGK/emekli maaşı — her Ocak ve Temmuz enflasyonla artar, bkz. [emekli zammı hesaplama](/emekli-zammi-hesaplama/)) sisteminin **üzerine** kurduğunuz, gönüllü ve uzun vadeli bir birikim sistemidir. Her ay düzenli katkı payı ödersiniz, bu para çeşitli fonlarda değerlendirilir ve emeklilikte toplu ya da maaş şeklinde geri alırsınız.
 
 En bilinen özelliği: **devlet katkısı.** Yatırdığınız tutara devlet belirli bir oranda (yıllık limitler dahilinde) ek katkı yapar.
 
