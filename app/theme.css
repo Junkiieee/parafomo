@@ -177,3 +177,6 @@ a:hover { text-decoration: underline; }
   text-decoration: none;
 }
 .menu-list button:hover, .menu-list a:hover { background: var(--line-soft); text-decoration: none; }
+
+/* hidden özniteliği her zaman kazanır (display'li sınıflar ezemesin) */
+[hidden] { display: none !important; }

@@ -84,3 +84,4 @@ main { flex: 1; width: 100%; max-width: 860px; margin: 0 auto; padding: 0 16px 4
 }
 .sim-cta h2 { font-size: 1.1rem; margin: 0 0 6px; letter-spacing: -.01em; }
 .sim-cta p { margin: 0; color: var(--ink-2); font-size: .92rem; max-width: 46ch; }
+.share-row { margin-top: 18px; }

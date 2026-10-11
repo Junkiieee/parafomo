@@ -875,7 +875,11 @@ function openDetailDialog(h) {
       drawMini(box, r.points, h);
       const f = r.points[0], l = r.points[r.points.length - 1];
       const chg = (l.p / f.p - 1) * 100;
-      sub.innerHTML = `${trDate(f.t)} – ${trDate(l.t)} · <b class="num ${plClass(chg)}">${signedPct1(chg)}</b>${r.granularity === 'monthly' ? ' <small>(aylık)</small>' : ''}`;
+      const span = f.t.slice(0, 4) !== l.t.slice(0, 4);   // yıl değişiyorsa yılı göster
+      const fmt = iso => span
+        ? new Date((iso.length === 7 ? iso + '-15' : iso) + 'T12:00:00').toLocaleDateString('tr-TR', { month: 'short', year: 'numeric' })
+        : trDate(iso);
+      sub.innerHTML = `${fmt(f.t)} – ${fmt(l.t)} · <b class="num ${plClass(chg)}">${signedPct1(chg)}</b>${r.granularity === 'monthly' ? ' <small>(aylık)</small>' : ''}`;
     } catch {
       box.innerHTML = '<p class="dch-note">Geçmiş veri şu an alınamadı.</p>';
       sub.textContent = '';
@@ -908,16 +912,20 @@ function drawMini(box, points, h) {
     const bi = points.findIndex(p => p.t >= pd);
     if (bi > 0) buyDot = `<circle class="c-buy" cx="${x(bi)}" cy="${y(h.cost_price)}" r="4.5"><title>Alış: ${trDate(h.purchase_date)} · ${money(h.cost_price)}</title></circle>`;
   }
+  // etiket çarpışmalarını önle: maliyet çizgisi min/max'a çok yakınsa o ucu gizle
+  const yc = costIn ? y(h.cost_price) : null;
+  const showMax = yc == null || Math.abs(yc - y(max)) > 14;
+  const showMin = yc == null || Math.abs(yc - y(min)) > 14;
   box.innerHTML = `
     <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Fiyat geçmişi">
       <path class="c-line" d="${line}" vector-effect="non-scaling-stroke"/>
-      ${costIn ? `<line class="c-cost" x1="${L}" x2="${W - R}" y1="${y(h.cost_price)}" y2="${y(h.cost_price)}"/>
-      <text class="yv num" x="${W - 6}" y="${y(h.cost_price) + 4}" text-anchor="end">maliyet</text>` : ''}
+      ${costIn ? `<line class="c-cost" x1="${L}" x2="${W - R}" y1="${yc}" y2="${yc}"/>
+      <text class="yv num" x="${W - 6}" y="${yc + 4}" text-anchor="end">maliyet</text>` : ''}
       ${buyDot}
       <line class="c-cross" x1="0" x2="0" y1="${T}" y2="${H - B}" visibility="hidden"/>
       <circle class="c-dot" r="4" visibility="hidden"/>
-      <text class="yv num" x="${W - 6}" y="${y(max) + 4}" text-anchor="end">${nfc.format(max)}</text>
-      <text class="yv num" x="${W - 6}" y="${y(min) + 4}" text-anchor="end">${nfc.format(min)}</text>
+      ${showMax ? `<text class="yv num" x="${W - 6}" y="${y(max) + 4}" text-anchor="end">${nfc.format(max)}</text>` : ''}
+      ${showMin ? `<text class="yv num" x="${W - 6}" y="${y(min) + 4}" text-anchor="end">${nfc.format(min)}</text>` : ''}
     </svg>
     <div class="c-tip num" hidden></div>`;
   const svg = box.querySelector('svg'), tip = box.querySelector('.c-tip');

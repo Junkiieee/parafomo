@@ -278,3 +278,9 @@ dialog::backdrop { background: rgba(8, 18, 16, .55); }
 .check input { margin-top: 3px; accent-color: var(--brand-deep); }
 .danger-zone { border-top: 1px solid var(--line-soft); margin-top: 20px; padding-top: 14px; }
 .danger-zone p { font-size: .88rem; color: var(--ink-2); }
+
+/* mobilde svg metinleri okunur kalsın (viewBox ölçeklenmesi küçültüyor) */
+@media (max-width: 560px) {
+  .chart svg text.yv, .detail-chart svg text.yv { font-size: 17px; }
+  .wrow .r .cell-main, .wrow .r .cell-sub { white-space: nowrap; }
+}

@@ -116,6 +116,9 @@ function render() {
         </div>`).join('')}
     </div>
     ${sim.tufeFull ? '' : '<p class="chart-cap">Enflasyon karşılaştırması bu dönem için gösterilmiyor: TÜFE serimiz Ekim 2022\'de başlıyor. 1 ve 3 yıllık dönemlerde "enflasyona endeksli" satırını görürsün.</p>'}
+    <p class="share-row"><button class="btn btn-quiet" id="sim-share">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 20 19v-7M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5"/></svg>
+      Sonucu kart olarak paylaş</button></p>
     <section class="sim-chart" aria-label="Birikim eğrisi">
       <div class="chart-head">
         <h2>Ay ay birikim</h2>
@@ -130,7 +133,61 @@ function render() {
     chartAsset = b.dataset.a;
     render();
   }));
+  el.querySelector('#sim-share').addEventListener('click', () => shareCard(sim));
   drawCurve();
+}
+
+/* Paylaşım kartı: soru + ilk 4 satır + marka. */
+async function shareCard(sim) {
+  try { await document.fonts.load('700 100px "IBM Plex Sans"'); await document.fonts.load('500 44px "IBM Plex Sans"'); } catch {}
+  const W = 1080, H = 1350;
+  const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+  const c = cv.getContext('2d');
+  if (!c.roundRect) c.roundRect = function (x, y, w, h) { this.rect(x, y, w, h); return this; };
+  const F = w => `${w} "IBM Plex Sans", sans-serif`;
+  const COLORS = { gold: '#BA851F', xu100: '#0891B2', silver: '#7488D8', usd: '#2BB194', tufe: '#8DA29D', cash: '#556763' };
+  c.fillStyle = '#0C1514'; c.fillRect(0, 0, W, H);
+  c.fillStyle = '#E9F0EE'; c.font = F('700 56px'); c.fillText('parafomo', 80, 126);
+  const wmW = c.measureText('parafomo').width;
+  c.font = F('600 34px'); c.fillStyle = '#4FD8BE'; c.fillText('birikim', 80 + wmW + 26, 122);
+  c.fillStyle = '#E9F0EE'; c.font = F('700 64px');
+  c.fillText(`Ayda ${nf0.format(amount)} ₺, ${years} yıl.`, 80, 260);
+  c.fillStyle = '#8DA29D'; c.font = F('500 42px');
+  c.fillText(`${trAy(sim.start)}'dan beri düzenli alsaydın bugün:`, 80, 322);
+  let ly = 430;
+  const top = sim.rows.slice(0, 5);
+  const maxV = top[0].value;
+  for (const r of top) {
+    c.fillStyle = COLORS[r.key] || '#8DA29D';
+    c.beginPath(); c.roundRect(80, ly - 34, 26, 26, 7); c.fill();
+    c.fillStyle = r.dim ? '#8DA29D' : '#E9F0EE'; c.font = F('600 40px');
+    c.fillText(r.label, 126, ly - 8);
+    c.fillStyle = r.dim ? '#556763' : (COLORS[r.key] || '#4FD8BE');
+    c.beginPath(); c.roundRect(80, ly + 8, (W - 160) * (r.value / maxV), 22, 7); c.fill();
+    c.fillStyle = '#E9F0EE'; c.font = F('700 44px');
+    c.fillText(nf0.format(r.value) + ' ₺', 80, ly + 88);
+    c.fillStyle = r.dim ? '#8DA29D' : (r.pct >= 0 ? '#46C879' : '#F0776A'); c.font = F('600 36px');
+    c.fillText(sp(r.pct), 110 + c.measureText(nf0.format(r.value) + ' ₺').width + 180, ly + 86);
+    ly += 160;
+  }
+  c.strokeStyle = '#233431'; c.lineWidth = 2;
+  c.beginPath(); c.moveTo(80, H - 150); c.lineTo(W - 80, H - 150); c.stroke();
+  c.fillStyle = '#E9F0EE'; c.font = F('600 40px');
+  c.fillText('app.parafomo.com/birikim', 80, H - 84);
+  c.fillStyle = '#8DA29D'; c.font = F('500 32px');
+  c.fillText('Gerçek verilerle dene — ücretsiz, üyeliksiz', 80, H - 36);
+  cv.toBlob(async blob => {
+    if (!blob) return;
+    const file = new File([blob], 'parafomo-birikim.png', { type: 'image/png' });
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      try { await navigator.share({ files: [file], title: 'Birikim Simülatörü — ParaFOMO' }); return; } catch {}
+    }
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = file.name;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }, 'image/png');
 }
 
 function drawCurve() {
