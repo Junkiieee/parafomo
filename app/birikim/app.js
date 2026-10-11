@@ -115,7 +115,7 @@ function render() {
             ${!r.dim && sim.tufeVal ? `<span class="reel" title="Enflasyona endeksli tutara göre">reel ${sp((r.value / sim.tufeVal - 1) * 100)}</span>` : ''}</span>
         </div>`).join('')}
     </div>
-    ${sim.tufeFull ? '' : '<p class="chart-cap">Enflasyon karşılaştırması bu dönem için gösterilmiyor: TÜFE serimiz Ekim 2022\'de başlıyor. 1 ve 3 yıllık dönemlerde "enflasyona endeksli" satırını görürsün.</p>'}
+    ${sim.tufeFull ? '' : `<p class="chart-cap">Enflasyon karşılaştırması bu dönem için gösterilmiyor: TÜFE serimiz ${trAy(tufe[0][0])}'de başlıyor ve bu dönemin tamamını kapsamıyor.</p>`}
     <p class="share-row"><button class="btn btn-quiet" id="sim-share">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 20 19v-7M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5"/></svg>
       Sonucu kart olarak paylaş</button></p>

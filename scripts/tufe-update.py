@@ -33,7 +33,8 @@ def main():
     months = []
     for mm, yy, yearly, monthly in rows:
         months.append({"ay": f"{yy}-{mm}", "yillik": float(yearly), "aylik": float(monthly)})
-    months = sorted({m["ay"]: m for m in months}.values(), key=lambda m: m["ay"], reverse=True)[:48]
+    # 72 ay: portföy reel getirisi ve birikim simülatörünün 5 yıllık penceresini kapsar
+    months = sorted({m["ay"]: m for m in months}.values(), key=lambda m: m["ay"], reverse=True)[:72]
     # makullük: en az 12 ay, ardışık, değerler mantıklı aralıkta
     if len(months) < 12 or any(not (-10 < m["aylik"] < 30 and -10 < m["yillik"] < 200) for m in months):
         print(f"[tufe] UYARI: tablo ayıklanamadı ({len(months)} satır) — yazılmadı")

@@ -1,7 +1,7 @@
 {
  "_aciklama": "TÜİK TÜFE aylık ve yıllık % değişim (2025=100). ay = YYYY-AA, en yeni başta.",
  "_kaynak": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Enflasyon+Verileri/Tuketici+Fiyatlari",
- "updated": "2026-10-10",
+ "updated": "2026-10-11",
  "months": [
   {
    "ay": "2026-09",
@@ -242,6 +242,126 @@
    "ay": "2022-10",
    "yillik": 85.51,
    "aylik": 3.54
+  },
+  {
+   "ay": "2022-09",
+   "yillik": 83.45,
+   "aylik": 3.08
+  },
+  {
+   "ay": "2022-08",
+   "yillik": 80.21,
+   "aylik": 1.46
+  },
+  {
+   "ay": "2022-07",
+   "yillik": 79.6,
+   "aylik": 2.37
+  },
+  {
+   "ay": "2022-06",
+   "yillik": 78.62,
+   "aylik": 4.95
+  },
+  {
+   "ay": "2022-05",
+   "yillik": 73.5,
+   "aylik": 2.98
+  },
+  {
+   "ay": "2022-04",
+   "yillik": 69.97,
+   "aylik": 7.25
+  },
+  {
+   "ay": "2022-03",
+   "yillik": 61.14,
+   "aylik": 5.46
+  },
+  {
+   "ay": "2022-02",
+   "yillik": 54.44,
+   "aylik": 4.81
+  },
+  {
+   "ay": "2022-01",
+   "yillik": 48.69,
+   "aylik": 11.1
+  },
+  {
+   "ay": "2021-12",
+   "yillik": 36.08,
+   "aylik": 13.58
+  },
+  {
+   "ay": "2021-11",
+   "yillik": 21.31,
+   "aylik": 3.51
+  },
+  {
+   "ay": "2021-10",
+   "yillik": 19.89,
+   "aylik": 2.39
+  },
+  {
+   "ay": "2021-09",
+   "yillik": 19.58,
+   "aylik": 1.25
+  },
+  {
+   "ay": "2021-08",
+   "yillik": 19.25,
+   "aylik": 1.12
+  },
+  {
+   "ay": "2021-07",
+   "yillik": 18.95,
+   "aylik": 1.8
+  },
+  {
+   "ay": "2021-06",
+   "yillik": 17.53,
+   "aylik": 1.94
+  },
+  {
+   "ay": "2021-05",
+   "yillik": 16.59,
+   "aylik": 0.89
+  },
+  {
+   "ay": "2021-04",
+   "yillik": 17.14,
+   "aylik": 1.68
+  },
+  {
+   "ay": "2021-03",
+   "yillik": 16.19,
+   "aylik": 1.08
+  },
+  {
+   "ay": "2021-02",
+   "yillik": 15.61,
+   "aylik": 0.91
+  },
+  {
+   "ay": "2021-01",
+   "yillik": 14.97,
+   "aylik": 1.68
+  },
+  {
+   "ay": "2020-12",
+   "yillik": 14.6,
+   "aylik": 1.25
+  },
+  {
+   "ay": "2020-11",
+   "yillik": 14.03,
+   "aylik": 2.3
+  },
+  {
+   "ay": "2020-10",
+   "yillik": 11.89,
+   "aylik": 2.13
   }
  ]
 }

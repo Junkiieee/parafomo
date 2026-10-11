@@ -529,7 +529,7 @@ function renderApp() {
         <span class="sum-item">Bugün<b class="${plClass(s.total_day_change)}">${signedMoney(s.total_day_change)}${s.total_day_change_pct != null ? ' (' + signedPct(s.total_day_change_pct) + ')' : ''}</b></span>
         <span class="sum-item">Toplam kâr/zarar<b class="${plClass(s.total_profit_loss)}">${signedMoney(s.total_profit_loss)} (${signedPct(s.total_profit_loss_pct)})</b></span>
         ${rr && rr.dated
-          ? `<span class="sum-item" title="Maliyetin, alış tarihinden bugüne TÜİK TÜFE ile bugünkü liraya çevrilmiş hâline göre kâr/zarar.${rr.undated ? ' Alış tarihi olmayan ' + rr.undated + ' pozisyon düzeltilmeden katıldı.' : ''}${rr.partial ? ' Çok eski alışlarda seri Ekim 2022 başlangıçlı.' : ''}">Enflasyon sonrası (reel)<b class="${plClass(rr.pl)}">${(rr.undated || rr.partial) ? '≈ ' : ''}${signedMoney(rr.pl)} (${signedPct(rr.pct)})</b></span>`
+          ? `<span class="sum-item" title="Maliyetin, alış tarihinden bugüne TÜİK TÜFE ile bugünkü liraya çevrilmiş hâline göre kâr/zarar.${rr.undated ? ' Alış tarihi olmayan ' + rr.undated + ' pozisyon düzeltilmeden katıldı.' : ''}${rr.partial ? ' Çok eski alışlarda TÜFE serisi ' + (state.tufe[0] ? state.tufe[0][0] : '') + ' başlangıçlı.' : ''}">Enflasyon sonrası (reel)<b class="${plClass(rr.pl)}">${(rr.undated || rr.partial) ? '≈ ' : ''}${signedMoney(rr.pl)} (${signedPct(rr.pct)})</b></span>`
           : `<span class="sum-item" title="Pozisyonlarına alış tarihi eklersen maliyetini TÜFE ile bugüne taşıyıp gerçek (reel) kârını gösteririz.">Enflasyon sonrası (reel)<b class="pl-flat">alış tarihi ekle</b></span>`}
       </div>
       <div class="sum-meta">
