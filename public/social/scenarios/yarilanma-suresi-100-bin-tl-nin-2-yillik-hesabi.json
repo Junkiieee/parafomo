@@ -1,0 +1,64 @@
+{
+  "slug": "yarilanma-suresi-100-bin-tl-nin-2-yillik-hesabi",
+  "title": "Yarılanma süresi: 100 bin TL'nin 2 yıllık hesabı",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Yüzde 40 enflasyon sürerse 100 bin TL'nin satın alma gücü iki yılda yaklaşık 51 bin TL'ye iner. Hesabı kafadan yapıp birikimini enflasyonla kıyaslamanın yolu.\nKaynak/hesap: 1,4 x 1,4 = 1,96; 100.000 / 1,96 ≈ 51.000 TL (varsayım: yıllık enflasyon yüzde 40 sürerse) · senaryodaki hesap",
+  "tags": [
+    "enflasyon",
+    "alım gücü",
+    "birikim",
+    "tasarruf",
+    "yatırım",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Yüzde 40 enflasyonda paran 2 yılda yarılanır.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fiyatlar her yıl 1,4 katına çıkarsa, iki yılda yaklaşık iki katına çıkar.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Hesapta 100 bin yine 100 bin görünür, ama markette yaklaşık 51 bin liralık mal alır.",
+      "visual": {
+        "type": "object",
+        "query": "grocery shopping basket"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Parayı enflasyonun altında getiren yerde bekletme; getiriyi enflasyonla kıyasla, farkı kendin hesapla.",
+      "visual": {
+        "type": "object",
+        "query": "smartphone banking app"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu erimeyi geride bırakan araç hangisiydi? Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "Yüzde 40 enflasyonda paran 2 yılda yarılanır",
+    "calc": "1,4 x 1,4 = 1,96; 100.000 / 1,96 ≈ 51.000 TL (varsayım: yıllık enflasyon yüzde 40 sürerse)",
+    "source": "senaryodaki hesap"
+  }
+}
