@@ -29,6 +29,16 @@ const target = new Date('2027-01-01T00:00:00+03:00');
 const now = new Date();
 const daysToNew = Math.max(0, Math.ceil((target.getTime() - now.getTime()) / 86400000));
 
+// Geçmiş yıllarda yeni asgari ücretin açıklandığı gün (Ocak zammı). Doğrulandı 2026-10-11:
+// NTV 27.12.2023, Milliyet 25.12.2024 ("dün akşam"), Cumhuriyet/Milliyet 22-23.12.2022, EY/CNBC-e 23.12.2025.
+// Tahmini 2027 rakamı YAZILMAZ — Aralık 2026'da resmî açıklama gelince yeni satır eklenir.
+const HISTORY = [
+  { yil: 2026, tarih: '23 Aralık 2025', net: '28.075,50', artis: '%27' },
+  { yil: 2025, tarih: '24 Aralık 2024', net: '22.104', artis: '%30' },
+  { yil: 2024, tarih: '27 Aralık 2023', net: '17.002', artis: '%49' },
+  { yil: 2023, tarih: '22 Aralık 2022', net: '8.506,80', artis: '%54,66' },
+];
+
 // Varsayılan: tam ay (30 gün)
 const D = { days: 30 };
 
@@ -52,7 +62,19 @@ const faq = [
   },
   {
     q: '2027 asgari ücret ne zaman açıklanacak, zam ne zaman gelecek?',
-    a: `2026 için Temmuz'da (yıl ortası) ara zam yapılmadı; hükümet yılda tek zam politikasını sürdürüyor. Yeni asgari ücret, Asgari Ücret Tespit Komisyonu'nun Aralık 2026'daki toplantılarında belirlenecek ve 1 Ocak 2027'de yürürlüğe girecek. Bugünden itibaren buna yaklaşık ${daysToNew} gün var.`,
+    a: `2026 için Temmuz'da (yıl ortası) ara zam yapılmadı; hükümet yılda tek zam politikasını sürdürüyor. Yeni asgari ücret, Asgari Ücret Tespit Komisyonu'nun Aralık 2026'daki toplantılarında belirlenecek ve 1 Ocak 2027'de yürürlüğe girecek. Son dört yılda yeni tutar hep 22-27 Aralık arasında açıklandı (2026 tutarı 23 Aralık 2025'te). Bugünden itibaren yürürlüğe yaklaşık ${daysToNew} gün var.`,
+  },
+  {
+    q: '2027 asgari ücret kaç TL olacak?',
+    a: `2027 asgari ücreti henüz belli değil; resmî bir rakam yok. Tutar, Aralık 2026'da Asgari Ücret Tespit Komisyonu'nda belirlenecek. Basında çıkan rakamlar tahmindir. Geçmiş artışlar referans olabilir: 2026'da %27, 2025'te %30, 2024'te %49. Resmî tutar açıklandığı gün bu sayfa güncellenir.`,
+  },
+  {
+    q: 'Asgari Ücret Tespit Komisyonu nasıl çalışır?',
+    a: `Komisyon 15 üyelidir: işçi, işveren ve hükümet (Çalışma ve Sosyal Güvenlik Bakanlığı) tarafından beşer temsilci. Toplantılar genellikle Aralık'ta 3-4 tur sürer; karar oy çokluğuyla alınır ve Resmî Gazete'de yayımlanarak 1 Ocak'ta yürürlüğe girer. Uzlaşma olmazsa karar işçi tarafının katılımı olmadan da çıkabilir.`,
+  },
+  {
+    q: '2027 asgari ücrete ara zam olacak mı?',
+    a: `Ara zam (Temmuz) resmî bir kural değil, hükümetin kararıdır. 2023'te Temmuz'da ara zam yapıldı (net 11.402 ₺); 2024, 2025 ve 2026'da yapılmadı. 2027 için açıklanmış bir ara zam kararı yok.`,
   },
   {
     q: 'Günlük ve saatlik asgari ücret ne kadar?',
@@ -67,15 +89,15 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="2026 Asgari Ücret Ne Kadar? Net, Brüt ve İşveren Maliyeti Hesaplama"
-  description="2026 asgari ücret: net 28.075,50 ₺, brüt 33.030 ₺. Güncel günlük/saatlik ücret, SGK kesinti dökümü, işveren maliyeti ve eksik günlü (kıst) asgari ücret hesaplama aracı."
+  title="Asgari Ücret 2027 Ne Zaman Belli Olacak? 2026 Net, Brüt Hesaplama"
+  description="2027 asgari ücret Aralık 2026'da belli olacak (son 4 yıl 22-27 Aralık'ta açıklandı). Güncel 2026 asgari ücret: net 28.075,50 ₺, brüt 33.030 ₺; kesinti dökümü, işveren maliyeti ve kıst hesaplama."
   faq={faq}
   breadcrumbs={breadcrumbs}
 >
   <div class="calc-wrap">
     <header class="calc-head">
       <p class="eyebrow">Hesaplayıcı · Maaş & Ücret</p>
-      <h1>2026 Asgari Ücret Ne Kadar?</h1>
+      <h1>2026 Asgari Ücret Ne Kadar? 2027 Ne Zaman Belli Olacak?</h1>
       <p class="lede">
         2026'da asgari ücret <strong>net {fmt(NET)} ₺</strong>, brüt {fmt0(BRUT)} ₺'dir.
         Aşağıda güncel <strong>kesinti dökümünü, işveren maliyetini</strong> ve çalıştığınız
@@ -144,6 +166,27 @@ const breadcrumbs = [
         <span class="cd-num">{daysToNew}</span>
         <span class="cd-label">gün sonra yeni asgari ücret yürürlükte (1 Ocak 2027)</span>
       </div>
+      <p class="table-intro">
+        <strong>Süreç:</strong> Asgari Ücret Tespit Komisyonu işçi, işveren ve hükümetten beşer
+        temsilciyle 15 üyeden oluşur. Toplantılar genellikle Aralık'ın ilk yarısında başlar, 3-4 tur
+        sürer; karar oy çokluğuyla alınır, Resmî Gazete'de yayımlanır ve 1 Ocak'ta yürürlüğe girer.
+        2027 rakamı henüz açıklanmadı — basındaki tutarlar tahmindir; resmî karar gelince bu sayfa
+        aynı gün güncellenir.
+      </p>
+      <table class="rate-table">
+        <thead><tr><th>Yıl</th><th>Açıklandığı gün</th><th>Net asgari ücret</th><th>Artış</th></tr></thead>
+        <tbody>
+          <tr class="current"><td>2027</td><td>Aralık 2026 (bekleniyor)</td><td>—</td><td>—</td></tr>
+          {HISTORY.map((h) => (
+            <tr><td>{h.yil}</td><td>{h.tarih}</td><td>₺{h.net}</td><td>{h.artis}</td></tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Son dört yılda yeni tutar 22-27 Aralık arasında açıklandı. 2023'te ayrıca Temmuz'da ara zam
+        yapıldı (net 11.402 ₺); 2024-2026'da ara zam yok. Kaynak: Çalışma ve Sosyal Güvenlik
+        Bakanlığı açıklamaları ve Resmî Gazete (açıklama tarihleri dönemin haberleriyle doğrulandı).
+      </p>
     </section>
 
     <section class="table-block">
