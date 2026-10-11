@@ -1,0 +1,44 @@
+---
+// Ana site → app.parafomo.com köprüsü. app="portfoy" | "birikim"
+interface Props { app?: 'portfoy' | 'birikim'; campaign?: string }
+const { app = 'portfoy', campaign = 'site' } = Astro.props;
+const COPY = {
+  portfoy: {
+    title: 'Bu rakamları kendi portföyünde canlı izle',
+    desc: 'Altın, hisse ve gümüş pozisyonlarını ekle: değer grafiği, enflasyon sonrası gerçek (reel) getiri, fiyat alarmı. Ücretsiz, reklamsız.',
+    btn: 'Portföyünü kur',
+    url: 'https://app.parafomo.com/portfoy/',
+  },
+  birikim: {
+    title: 'Her ay düzenli alsaydın ne olurdu?',
+    desc: '"Ayda 5.000 TL\'yi altına koysaydım…" sorusunu gerçek 15 yıllık veriyle, enflasyon karşılaştırmalı dene. Üyelik gerekmez.',
+    btn: 'Birikim Simülatörü\'nü aç',
+    url: 'https://app.parafomo.com/birikim/',
+  },
+}[app];
+const href = `${COPY.url}?utm_source=parafomo&utm_medium=cta&utm_campaign=${campaign}`;
+---
+<aside class="app-cta">
+  <div>
+    <p class="ac-title">{COPY.title}</p>
+    <p class="ac-desc">{COPY.desc}</p>
+  </div>
+  <a class="ac-btn" href={href} rel="noopener">{COPY.btn}</a>
+</aside>
+<style>
+  .app-cta {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px 24px; flex-wrap: wrap;
+    border: 1.5px solid var(--brand-2);
+    border-radius: 14px; padding: 18px 20px;
+    background: var(--bg-elev);
+    margin: clamp(1.6rem, 4vw, 2.4rem) 0;
+  }
+  .ac-title { margin: 0 0 4px; font-weight: 700; font-size: 1.05rem; letter-spacing: -.01em; }
+  .ac-desc { margin: 0; color: var(--text-soft); font-size: .92rem; max-width: 52ch; }
+  .ac-btn {
+    flex-shrink: 0; background: var(--brand); color: #fff; text-decoration: none;
+    font-weight: 600; font-size: .95rem; padding: 11px 18px; border-radius: 10px;
+  }
+  .ac-btn:hover { filter: brightness(1.06); text-decoration: none; }
+</style>

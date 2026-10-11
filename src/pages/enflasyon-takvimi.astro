@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
+import AppCTA from '../components/AppCTA.astro';
 import tuik from '../../data/tuik-enflasyon-2026.json';
 import tufe from '../../data/tufe-aylik.json';
 
@@ -195,6 +196,7 @@ const jsonLd = {
     </p>
   </section>
 
+  <div class="container"><AppCTA app="portfoy" campaign="enflasyon-takvimi" /></div>
   <div class="container"><Newsletter /></div>
 </BaseLayout>
 

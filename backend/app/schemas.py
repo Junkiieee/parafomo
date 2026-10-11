@@ -49,7 +49,15 @@ class UserOut(BaseModel):
     id: int
     email: EmailStr
     display_name: str | None
+    monthly_email: bool = True
     created_at: datetime
+
+
+class UserUpdate(BaseModel):
+    """Profil güncelleme — yalnız gönderilen alanlar değişir."""
+
+    display_name: str | None = Field(default=None, max_length=120)
+    monthly_email: bool | None = None
 
 
 # ---- Holdings ----
@@ -122,8 +130,10 @@ class SnapshotOut(BaseModel):
 class AlertCreate(BaseModel):
     asset_type: AssetType
     symbol: str = Field(min_length=1, max_length=32)
+    kind: Literal["price", "day_pct"] = "price"
     direction: Literal["above", "below"]
     threshold: float = Field(gt=0)
+    repeat: bool = False
 
 
 class AlertOut(BaseModel):
@@ -132,11 +142,31 @@ class AlertOut(BaseModel):
     id: int
     asset_type: AssetType
     symbol: str
+    kind: str
     direction: str
     threshold: float
+    repeat: bool
+    armed: bool
     active: bool
     triggered_at: datetime | None
     triggered_price: float | None
+    created_at: datetime
+
+
+# ---- Hedefler ----
+class GoalCreate(BaseModel):
+    kind: Literal["try", "usd", "gold_g"]
+    target: float = Field(gt=0)
+    title: str | None = Field(default=None, max_length=80)
+
+
+class GoalOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    kind: str
+    target: float
+    title: str | None
     created_at: datetime
 
 

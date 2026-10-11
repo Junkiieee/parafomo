@@ -48,3 +48,5 @@
 # Portföy uygulaması (app.parafomo.com/portfoy): gece değer fotoğrafı + fiyat alarmı kontrolü
 50 20 * * * /root/.venvs/parafomo-api/bin/python /root/parafomo/scripts/portfolio-snapshot.py >> /root/parafomo/logs/portfolio-snapshot.log 2>&1
 */15 * * * * /root/.venvs/parafomo-api/bin/python /root/parafomo/scripts/portfolio-alerts.py >> /root/parafomo/logs/portfolio-alerts.log 2>&1
+10 5 2 * * /root/parafomo/scripts/benchmarks-update.sh >> /root/parafomo/logs/benchmarks.log 2>&1
+20 6 1 * * /root/.venvs/parafomo-api/bin/python /root/parafomo/scripts/portfolio-monthly.py >> /root/parafomo/logs/portfolio-monthly.log 2>&1

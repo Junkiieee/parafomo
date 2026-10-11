@@ -41,6 +41,8 @@ class User(Base):
     password_hash: Mapped[str | None] = mapped_column(String(255), nullable=True)
     google_sub: Mapped[str | None] = mapped_column(String(255), unique=True, nullable=True)
     display_name: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    # Ay sonu portföy özeti e-postası (kullanıcı kapatabilir)
+    monthly_email: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
 
     holdings: Mapped[list["Holding"]] = relationship(
@@ -102,12 +104,33 @@ class PriceAlert(Base):
     )
     asset_type: Mapped[AssetType] = mapped_column(Enum(AssetType), nullable=False)
     symbol: Mapped[str] = mapped_column(String(32), nullable=False)
+    # kind: "price" = fiyat eşiği (₺) · "day_pct" = günlük değişim eşiği (%)
+    kind: Mapped[str] = mapped_column(String(10), default="price", nullable=False)
     direction: Mapped[str] = mapped_column(String(5), nullable=False)  # "above" | "below"
     threshold: Mapped[float] = mapped_column(Float, nullable=False)
+    # repeat: tetiklenince kapanmaz; koşul düzelince yeniden kurulur (armed)
+    repeat: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    armed: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
     active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
     triggered_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     # tetiklendiği andaki fiyat (e-postada ve listede gösterilir)
     triggered_price: Mapped[float | None] = mapped_column(Float, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
+
+
+class Goal(Base):
+    """Birikim hedefi: toplam değer TL / USD / gram altın cinsinden eşik."""
+
+    __tablename__ = "goals"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), index=True, nullable=False
+    )
+    # "try" = TL değer · "usd" = dolar karşılığı · "gold_g" = gram altın karşılığı
+    kind: Mapped[str] = mapped_column(String(12), nullable=False)
+    target: Mapped[float] = mapped_column(Float, nullable=False)
+    title: Mapped[str | None] = mapped_column(String(80), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
 
 

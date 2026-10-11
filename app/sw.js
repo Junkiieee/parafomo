@@ -1,11 +1,12 @@
 /* ParaFOMO Uygulamalar — service worker.
    Strateji: ağ-öncelikli (içerik hep taze), ağ yoksa önbellekten; API asla önbelleklenmez
    (zaten farklı origin). Sürümü artırmak eski önbelleği temizler. */
-const VERSION = 'pf-v1';
+const VERSION = 'pf-v3';
 const SHELL = [
   '/', '/lobby.css', '/theme.css',
   '/portfoy/', '/portfoy/app.css', '/portfoy/app.js',
-  '/bist-symbols.json', '/tufe-aylik.json', '/favicon.svg',
+  '/birikim/', '/birikim/app.css', '/birikim/app.js',
+  '/bist-symbols.json', '/tufe-aylik.json', '/benchmarks.json', '/favicon.svg', '/kvkk/',
 ];
 
 self.addEventListener('install', e => {

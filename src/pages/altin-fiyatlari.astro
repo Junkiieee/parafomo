@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
+import AppCTA from '../components/AppCTA.astro';
 import altin from '../../data/altin-fiyat.json';
 
 // Fiyat verisi — data/altin-fiyat.json (scripts/altin-fiyat.py, günlük rebuild'de tazelenir).
@@ -275,4 +276,5 @@ const year = new Date().getFullYear();
       .hide-sm { display: none; }
     }
   </style>
+<div class="container"><AppCTA app="portfoy" campaign="altin-fiyatlari" /></div>
 </BaseLayout>

@@ -135,3 +135,41 @@ def get_price(asset_type: AssetType, symbol: str) -> float | None:
     """Bir varlığın güncel birim fiyatını (TL) döndürür; alınamazsa None."""
     quote = get_quote(asset_type, symbol)
     return quote[0] if quote else None
+
+
+# ---- tarihsel seri (varlık detay grafiği) ----
+_HIST_TTL = 3600
+_HIST_CACHE: dict[str, tuple[float, list[dict]]] = {}
+_HIST_RANGES = {"3mo": "1d", "1y": "1d", "5y": "1wk"}
+
+
+def get_bist_history(ticker: str, rng: str) -> list[dict] | None:
+    """BIST kapanış serisi [{t: 'YYYY-MM-DD', p: fiyat}] — Yahoo, 1 saat cache."""
+    if rng not in _HIST_RANGES:
+        return None
+    ticker = ticker.strip().upper()
+    key = f"hist:{ticker}:{rng}"
+    hit = _HIST_CACHE.get(key)
+    if hit and (time.time() - hit[0]) < _HIST_TTL:
+        return hit[1]
+    url = _YAHOO_URL.format(symbol=ticker) + f"?range={rng}&interval={_HIST_RANGES[rng]}"
+    try:
+        with httpx.Client(timeout=20, headers={"User-Agent": _UA}) as client:
+            r = client.get(url)
+            r.raise_for_status()
+            data = r.json()
+        res = data["chart"]["result"][0]
+        ts = res["timestamp"]
+        closes = res["indicators"]["quote"][0]["close"]
+    except (httpx.HTTPError, ValueError, KeyError, IndexError, TypeError):
+        return None
+    import datetime as _dt
+    points = [
+        {"t": _dt.datetime.fromtimestamp(t, tz=_dt.timezone.utc).strftime("%Y-%m-%d"),
+         "p": round(float(c), 4)}
+        for t, c in zip(ts, closes) if c is not None
+    ]
+    if not points:
+        return None
+    _HIST_CACHE[key] = (time.time(), points)
+    return points

@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -21,6 +21,7 @@ from ..schemas import (
     UserLogin,
     UserOut,
     UserRegister,
+    UserUpdate,
 )
 from ..security import (
     create_access_token,
@@ -155,3 +156,37 @@ def reset_password(body: PasswordResetConfirm, db: Session = Depends(get_db)) ->
 @router.get("/me", response_model=UserOut)
 def me(user: User = Depends(get_current_user)) -> User:
     return user
+
+
+@router.patch("/me", response_model=UserOut)
+def update_me(
+    body: UserUpdate,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> User:
+    fields = body.model_dump(exclude_unset=True)
+    if "display_name" in fields:
+        dn = (fields["display_name"] or "").strip()
+        user.display_name = dn or None
+    if fields.get("monthly_email") is not None:
+        user.monthly_email = fields["monthly_email"]
+    db.commit()
+    db.refresh(user)
+    return user
+
+
+@router.delete(
+    "/me", status_code=status.HTTP_204_NO_CONTENT, response_class=Response
+)
+def delete_me(
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> Response:
+    """Hesabı ve TÜM verilerini kalıcı siler (KVKK silme hakkı).
+
+    Pozisyonlar, değer geçmişi, alarmlar, izleme listesi ve hedefler
+    yabancı anahtar CASCADE ile birlikte silinir. Geri alınamaz.
+    """
+    db.delete(user)
+    db.commit()
+    return Response(status_code=status.HTTP_204_NO_CONTENT)

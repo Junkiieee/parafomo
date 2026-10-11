@@ -213,3 +213,68 @@ dialog::backdrop { background: rgba(8, 18, 16, .55); }
 .watch-empty { color: var(--muted); font-size: .92rem; max-width: 56ch; margin: 6px 0 0; }
 .alerts-done { opacity: .62; }
 .arow .aname small { display: block; color: var(--muted); font-size: .8rem; }
+
+/* ---- hedefler ---- */
+.goals { margin-top: 20px; display: grid; gap: 12px; }
+.goal-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.goal-name { font-size: .92rem; font-weight: 600; }
+.goal-name small { color: var(--muted); font-weight: 500; }
+.goal-pct { font-size: .92rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+.goal-del { border: 0; background: none; color: var(--muted); cursor: pointer; padding: 2px; line-height: 0; border-radius: 4px; }
+.goal-del:hover { color: var(--loss); }
+.goal-bar { height: 8px; border-radius: 4px; background: var(--line-soft); overflow: hidden; margin-top: 6px; }
+.goal-bar span { display: block; height: 100%; background: var(--brand); border-radius: 4px; min-width: 2px; }
+.goal-sub { font-size: .8rem; color: var(--muted); margin-top: 4px; }
+.masked .goal-sub, .masked .goal-name small { filter: blur(7px); }
+.goal-add {
+  border: 1.5px dashed var(--line); background: none; color: var(--ink-2);
+  border-radius: var(--r-control); padding: 10px 14px; cursor: pointer;
+  font: 500 .9rem "IBM Plex Sans", system-ui, sans-serif;
+  display: inline-flex; align-items: center; gap: 8px; text-align: left;
+}
+.goal-add span { color: var(--muted); font-weight: 400; }
+.goal-add:hover { border-color: var(--brand-deep); color: var(--brand-deep); }
+
+/* ---- ne olsaydı ---- */
+.bench { margin-top: 34px; }
+.bench-sub { color: var(--muted); font-size: .9rem; margin: 2px 0 14px; max-width: 60ch; }
+.bench-rows { display: grid; gap: 10px; }
+.bench-row { display: grid; grid-template-columns: minmax(120px, 170px) 1fr 90px; gap: 12px; align-items: center; }
+.bench-label { font-size: .9rem; color: var(--ink-2); }
+.bench-row.me .bench-label { font-weight: 600; color: var(--ink); }
+.bench-track { height: 10px; border-radius: 5px; background: var(--line-soft); overflow: hidden; }
+.bench-fill { display: block; height: 100%; border-radius: 5px; background: var(--muted); opacity: .55; min-width: 2px; }
+.bench-row.me .bench-fill { background: var(--brand-deep); opacity: 1; }
+.bench-row.dim .bench-fill { background: repeating-linear-gradient(45deg, var(--muted) 0 4px, transparent 4px 8px); opacity: .5; }
+.bench-row b { text-align: right; }
+.masked .bench-row b { filter: none; } /* yüzdeler tutar değildir — maskede açık kalır */
+@media (max-width: 560px) {
+  .bench-row { grid-template-columns: 1fr 76px; }
+  .bench-track { grid-column: 1 / -1; order: 3; }
+}
+
+/* ---- dönem çipleri ---- */
+.chart-tools { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.chips { display: inline-flex; gap: 2px; border: 1.5px solid var(--line); border-radius: 8px; padding: 2px; }
+.chips button {
+  border: 0; background: none; color: var(--muted); cursor: pointer;
+  font: 600 .78rem "IBM Plex Sans", system-ui, sans-serif; padding: 4px 10px; border-radius: 6px;
+}
+.chips button[aria-selected="true"] { background: var(--brand-deep); color: var(--brand-deep-ink); }
+
+/* ---- varlık detay kipi ---- */
+.dlg-wide { width: min(96vw, 620px); }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px 16px; margin-bottom: 18px; }
+@media (max-width: 480px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+.stat span { display: block; font-size: .78rem; color: var(--muted); }
+.stat b { font-size: .95rem; font-weight: 600; }
+.detail-chart .chart-head { margin-bottom: 6px; }
+.dch-note { color: var(--muted); font-size: .9rem; padding: 30px 0; text-align: center; }
+.c-cost { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 5 4; }
+.c-buy { fill: var(--a-gold); stroke: var(--surface); stroke-width: 2; }
+
+/* ---- onay kutusu + tehlike bölgesi ---- */
+.check { display: flex; gap: 10px; align-items: flex-start; font-size: .92rem; cursor: pointer; margin: 4px 0; }
+.check input { margin-top: 3px; accent-color: var(--brand-deep); }
+.danger-zone { border-top: 1px solid var(--line-soft); margin-top: 20px; padding-top: 14px; }
+.danger-zone p { font-size: .88rem; color: var(--ink-2); }

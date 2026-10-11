@@ -11,6 +11,7 @@ from ..db import get_db
 from ..deps import get_current_user
 from ..models import (
     AssetType,
+    Goal,
     Holding,
     PortfolioSnapshot,
     PriceAlert,
@@ -21,6 +22,8 @@ from ..prices import get_price, get_quote, get_usd_try
 from ..schemas import (
     AlertCreate,
     AlertOut,
+    GoalCreate,
+    GoalOut,
     HoldingCreate,
     HoldingOut,
     HoldingUpdate,
@@ -311,6 +314,11 @@ def add_alert(
             detail=f"En fazla {_MAX_ACTIVE_ALERTS} aktif alarm kurabilirsin. Önce birini sil.",
         )
     symbol = _normalize_symbol(body.asset_type, body.symbol)
+    if body.kind == "day_pct" and body.threshold > 95:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Günlük değişim eşiği yüzde olarak girilir (ör. 5 = %5).",
+        )
     if get_price(body.asset_type, symbol) is None:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -320,8 +328,10 @@ def add_alert(
         user_id=user.id,
         asset_type=body.asset_type,
         symbol=symbol,
+        kind=body.kind,
         direction=body.direction,
         threshold=body.threshold,
+        repeat=body.repeat,
     )
     db.add(alert)
     db.commit()
@@ -429,5 +439,57 @@ def delete_watch(
     if item is None or item.user_id != user.id:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Kayıt bulunamadı.")
     db.delete(item)
+    db.commit()
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+# ---------- hedefler ----------
+_MAX_GOALS = 3
+
+
+@router.get("/goals", response_model=list[GoalOut])
+def list_goals(
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> list[Goal]:
+    return list(db.scalars(
+        select(Goal).where(Goal.user_id == user.id).order_by(Goal.created_at.asc())
+    ))
+
+
+@router.post("/goals", response_model=GoalOut, status_code=status.HTTP_201_CREATED)
+def add_goal(
+    body: GoalCreate,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> Goal:
+    count = len(list(db.scalars(select(Goal.id).where(Goal.user_id == user.id))))
+    if count >= _MAX_GOALS:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"En fazla {_MAX_GOALS} hedef kurabilirsin. Önce birini sil.",
+        )
+    goal = Goal(user_id=user.id, kind=body.kind, target=body.target,
+                title=(body.title or "").strip() or None)
+    db.add(goal)
+    db.commit()
+    db.refresh(goal)
+    return goal
+
+
+@router.delete(
+    "/goals/{goal_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+    response_class=Response,
+)
+def delete_goal(
+    goal_id: int,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> Response:
+    goal = db.get(Goal, goal_id)
+    if goal is None or goal.user_id != user.id:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Hedef bulunamadı.")
+    db.delete(goal)
     db.commit()
     return Response(status_code=status.HTTP_204_NO_CONTENT)

@@ -11,7 +11,7 @@ from collections import defaultdict, deque
 from fastapi import APIRouter, HTTPException, Query, Request, status
 
 from ..models import AssetType
-from ..prices import get_price
+from ..prices import get_bist_history, get_price
 
 router = APIRouter(prefix="/public", tags=["public"])
 
@@ -48,3 +48,38 @@ def public_price(
         raise HTTPException(status_code=400, detail="Hisse kodu gerekli.")
     price = get_price(asset_type, sym)
     return {"asset_type": asset_type.value, "symbol": sym, "price": price}
+
+
+_BENCHMARKS_PATH = "/root/parafomo/data/benchmarks.json"
+_RANGE_MONTHS = {"3mo": 4, "1y": 13, "5y": 61}
+
+
+@router.get("/history")
+def public_history(
+    request: Request,
+    asset_type: AssetType = Query(...),
+    symbol: str = Query("", max_length=32),
+    range: str = Query("1y", max_length=8),
+) -> dict:
+    """Varlık fiyat geçmişi. BIST: günlük/haftalık (Yahoo); altın/gümüş: aylık (benchmarks)."""
+    _rate_limit(request)
+    if asset_type is AssetType.BIST:
+        sym = symbol.strip().upper()
+        if not sym:
+            raise HTTPException(status_code=400, detail="Hisse kodu gerekli.")
+        points = get_bist_history(sym, range)
+        if points is None:
+            raise HTTPException(status_code=404, detail="Geçmiş veri alınamadı.")
+        return {"asset_type": "bist", "symbol": sym, "granularity": "daily", "points": points}
+    # altın / gümüş → aylık seri (gram TL)
+    import json as _json
+    try:
+        with open(_BENCHMARKS_PATH, encoding="utf-8") as f:
+            months = _json.load(f)["months"]
+    except (OSError, ValueError, KeyError):
+        raise HTTPException(status_code=404, detail="Geçmiş veri alınamadı.")
+    key = "gold" if asset_type is AssetType.GOLD else "silver"
+    n = _RANGE_MONTHS.get(range, 13)
+    points = [{"t": m["ay"], "p": m[key]} for m in months if key in m][-n:]
+    return {"asset_type": asset_type.value, "symbol": key.upper(),
+            "granularity": "monthly", "points": points}

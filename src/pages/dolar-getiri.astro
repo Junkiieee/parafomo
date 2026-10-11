@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
+import AppCTA from '../components/AppCTA.astro';
 import data from '../../data/dolar-getiri.json';
 import gold from '../../data/altin-getiri.json';
 
@@ -193,6 +194,7 @@ const datasetLd = {
     </p>
   </section>
 
+  <div class="container"><AppCTA app="birikim" campaign="dolar-getiri" /></div>
   <div class="container"><Newsletter /></div>
 </BaseLayout>
 
