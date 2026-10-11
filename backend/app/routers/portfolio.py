@@ -9,15 +9,30 @@ from sqlalchemy.orm import Session
 
 from ..db import get_db
 from ..deps import get_current_user
-from ..models import AssetType, Holding, User
-from ..prices import get_price, get_quote
+from ..models import (
+    AssetType,
+    Holding,
+    PortfolioSnapshot,
+    PriceAlert,
+    User,
+    WatchItem,
+)
+from ..prices import get_price, get_quote, get_usd_try
 from ..schemas import (
+    AlertCreate,
+    AlertOut,
     HoldingCreate,
     HoldingOut,
     HoldingUpdate,
     HoldingValued,
     PortfolioSummary,
+    SnapshotOut,
+    WatchCreate,
+    WatchOut,
 )
+
+_MAX_ACTIVE_ALERTS = 20
+_MAX_WATCH_ITEMS = 30
 
 router = APIRouter(prefix="/portfolio", tags=["portfolio"])
 
@@ -206,7 +221,36 @@ def portfolio_summary(
         total_day_change / total_prev_value * 100 if total_prev_value else None
     )
 
+    # Birim çevirileri (dolar / gram altın görünümü için)
+    usd_try = get_usd_try()
+    gold_q = quote_cache.get((AssetType.GOLD, "GOLD")) or get_quote(AssetType.GOLD, "GOLD")
+    gold_try = gold_q[0] if gold_q else None
+
+    # Günün değer fotoğrafı: değer grafiğini besler (gün başına tek satır, tazelenir).
+    # Fiyat kaynakları çöktüyse (total_value=0 ama maliyet var) yanlış dip yazma.
+    if holdings and (total_value > 0 or total_cost == 0):
+        today = datetime.now(timezone.utc).date()
+        try:
+            snap = db.scalar(
+                select(PortfolioSnapshot).where(
+                    PortfolioSnapshot.user_id == user.id, PortfolioSnapshot.day == today
+                )
+            )
+            if snap is None:
+                db.add(PortfolioSnapshot(
+                    user_id=user.id, day=today,
+                    total_value=round(total_value, 2), total_cost=round(total_cost, 2),
+                ))
+            else:
+                snap.total_value = round(total_value, 2)
+                snap.total_cost = round(total_cost, 2)
+            db.commit()
+        except Exception:  # snapshot hiçbir zaman özeti düşürmesin
+            db.rollback()
+
     return PortfolioSummary(
+        usd_try=usd_try,
+        gold_gram_try=gold_try,
         total_cost=round(total_cost, 2),
         total_value=round(total_value, 2),
         total_profit_loss=round(total_pl, 2),
@@ -216,3 +260,174 @@ def portfolio_summary(
         holdings=valued,
         priced_at=datetime.now(timezone.utc),
     )
+
+
+# ---------- değer geçmişi ----------
+@router.get("/history", response_model=list[SnapshotOut])
+def portfolio_history(
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> list[PortfolioSnapshot]:
+    """Günlük portföy değeri serisi (en eski → en yeni, son 400 gün)."""
+    rows = list(
+        db.scalars(
+            select(PortfolioSnapshot)
+            .where(PortfolioSnapshot.user_id == user.id)
+            .order_by(PortfolioSnapshot.day.desc())
+            .limit(400)
+        )
+    )
+    rows.reverse()
+    return rows
+
+
+# ---------- fiyat alarmları ----------
+@router.get("/alerts", response_model=list[AlertOut])
+def list_alerts(
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> list[PriceAlert]:
+    return list(
+        db.scalars(
+            select(PriceAlert)
+            .where(PriceAlert.user_id == user.id)
+            .order_by(PriceAlert.active.desc(), PriceAlert.created_at.desc())
+        )
+    )
+
+
+@router.post("/alerts", response_model=AlertOut, status_code=status.HTTP_201_CREATED)
+def add_alert(
+    body: AlertCreate,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> PriceAlert:
+    active_count = len(list(db.scalars(
+        select(PriceAlert.id).where(PriceAlert.user_id == user.id, PriceAlert.active)
+    )))
+    if active_count >= _MAX_ACTIVE_ALERTS:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"En fazla {_MAX_ACTIVE_ALERTS} aktif alarm kurabilirsin. Önce birini sil.",
+        )
+    symbol = _normalize_symbol(body.asset_type, body.symbol)
+    if get_price(body.asset_type, symbol) is None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Bu varlık için fiyat bulunamadı — sembolü kontrol et.",
+        )
+    alert = PriceAlert(
+        user_id=user.id,
+        asset_type=body.asset_type,
+        symbol=symbol,
+        direction=body.direction,
+        threshold=body.threshold,
+    )
+    db.add(alert)
+    db.commit()
+    db.refresh(alert)
+    return alert
+
+
+@router.delete(
+    "/alerts/{alert_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+    response_class=Response,
+)
+def delete_alert(
+    alert_id: int,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> Response:
+    alert = db.get(PriceAlert, alert_id)
+    if alert is None or alert.user_id != user.id:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Alarm bulunamadı.")
+    db.delete(alert)
+    db.commit()
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+# ---------- izleme listesi ----------
+@router.get("/watchlist", response_model=list[WatchOut])
+def list_watchlist(
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> list[WatchOut]:
+    items = list(
+        db.scalars(
+            select(WatchItem)
+            .where(WatchItem.user_id == user.id)
+            .order_by(WatchItem.created_at.asc())
+        )
+    )
+    out: list[WatchOut] = []
+    quote_cache: dict[tuple[AssetType, str], tuple[float, float | None] | None] = {}
+    for w in items:
+        key = (w.asset_type, w.symbol)
+        if key not in quote_cache:
+            quote_cache[key] = get_quote(w.asset_type, w.symbol)
+        q = quote_cache[key]
+        out.append(WatchOut(
+            id=w.id,
+            asset_type=w.asset_type,
+            symbol=w.symbol,
+            current_price=round(q[0], 4) if q else None,
+            change_pct=round(q[1], 2) if q and q[1] is not None else None,
+        ))
+    return out
+
+
+@router.post("/watchlist", response_model=WatchOut, status_code=status.HTTP_201_CREATED)
+def add_watch(
+    body: WatchCreate,
+    response: Response,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> WatchOut:
+    symbol = _normalize_symbol(body.asset_type, body.symbol)
+    existing = db.scalar(
+        select(WatchItem).where(
+            WatchItem.user_id == user.id,
+            WatchItem.asset_type == body.asset_type,
+            WatchItem.symbol == symbol,
+        )
+    )
+    if existing is None:
+        count = len(list(db.scalars(select(WatchItem.id).where(WatchItem.user_id == user.id))))
+        if count >= _MAX_WATCH_ITEMS:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"İzleme listesi en fazla {_MAX_WATCH_ITEMS} varlık alır.",
+            )
+        existing = WatchItem(user_id=user.id, asset_type=body.asset_type, symbol=symbol)
+        db.add(existing)
+        db.commit()
+        db.refresh(existing)
+    else:
+        response.status_code = status.HTTP_200_OK
+    q = get_quote(existing.asset_type, existing.symbol)
+    return WatchOut(
+        id=existing.id,
+        asset_type=existing.asset_type,
+        symbol=existing.symbol,
+        current_price=round(q[0], 4) if q else None,
+        change_pct=round(q[1], 2) if q and q[1] is not None else None,
+    )
+
+
+@router.delete(
+    "/watchlist/{item_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+    response_class=Response,
+)
+def delete_watch(
+    item_id: int,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> Response:
+    item = db.get(WatchItem, item_id)
+    if item is None or item.user_id != user.id:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Kayıt bulunamadı.")
+    db.delete(item)
+    db.commit()
+    return Response(status_code=status.HTTP_204_NO_CONTENT)

@@ -4,7 +4,17 @@ from __future__ import annotations
 import enum
 from datetime import date, datetime, timezone
 
-from sqlalchemy import Date, DateTime, Enum, Float, ForeignKey, String, func
+from sqlalchemy import (
+    Boolean,
+    Date,
+    DateTime,
+    Enum,
+    Float,
+    ForeignKey,
+    String,
+    UniqueConstraint,
+    func,
+)
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .db import Base
@@ -59,6 +69,63 @@ class Holding(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
 
     user: Mapped["User"] = relationship(back_populates="holdings")
+
+
+class PortfolioSnapshot(Base):
+    """Kullanıcı portföyünün günlük toplam değeri (değer grafiği için).
+
+    Gün başına tek satır: /portfolio/summary çağrısı günün satırını tazeler,
+    gece cron'u (scripts/portfolio-snapshot.py) girmeyen kullanıcılar için alır.
+    """
+
+    __tablename__ = "portfolio_snapshots"
+    __table_args__ = (UniqueConstraint("user_id", "day", name="uq_snapshot_user_day"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), index=True, nullable=False
+    )
+    day: Mapped[date] = mapped_column(Date, nullable=False)  # UTC günü
+    total_value: Mapped[float] = mapped_column(Float, nullable=False)
+    total_cost: Mapped[float] = mapped_column(Float, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
+
+
+class PriceAlert(Base):
+    """Tek seferlik fiyat alarmı: eşik aşılınca e-posta gönderilir ve pasifleşir."""
+
+    __tablename__ = "price_alerts"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), index=True, nullable=False
+    )
+    asset_type: Mapped[AssetType] = mapped_column(Enum(AssetType), nullable=False)
+    symbol: Mapped[str] = mapped_column(String(32), nullable=False)
+    direction: Mapped[str] = mapped_column(String(5), nullable=False)  # "above" | "below"
+    threshold: Mapped[float] = mapped_column(Float, nullable=False)
+    active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
+    triggered_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    # tetiklendiği andaki fiyat (e-postada ve listede gösterilir)
+    triggered_price: Mapped[float | None] = mapped_column(Float, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
+
+
+class WatchItem(Base):
+    """İzleme listesi: sahip olmadan fiyatı takip edilen varlık."""
+
+    __tablename__ = "watch_items"
+    __table_args__ = (
+        UniqueConstraint("user_id", "asset_type", "symbol", name="uq_watch_user_symbol"),
+    )
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), index=True, nullable=False
+    )
+    asset_type: Mapped[AssetType] = mapped_column(Enum(AssetType), nullable=False)
+    symbol: Mapped[str] = mapped_column(String(32), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
 
 
 class PasswordResetToken(Base):

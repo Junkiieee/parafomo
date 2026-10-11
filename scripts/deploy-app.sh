@@ -8,5 +8,6 @@ DEST="/srv/parafomo-app"
 mkdir -p "$DEST"
 rsync -a --delete "$REPO/app/" "$DEST/"
 cp "$REPO/public/bist-symbols.json" "$REPO/public/favicon.svg" "$DEST/"
+cp "$REPO/data/tufe-aylik.json" "$DEST/"   # reel getiri hesabı (aylık TÜFE serisi)
 chmod -R a+rX "$DEST"
 echo "[app] yayınlandı -> $DEST"

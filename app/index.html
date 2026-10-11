@@ -7,6 +7,10 @@
 <meta name="description" content="ParaFOMO'nun ücretsiz finans uygulamaları: portföy takibi ve yolda olan yeni araçlar. Tek hesap, hepsi tarayıcında.">
 <link rel="canonical" href="https://app.parafomo.com/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#0F766E">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0C1514">
 <meta property="og:title" content="ParaFOMO Uygulamalar">
 <meta property="og:description" content="Parana akıl katan uygulamalar. Tek ücretsiz hesap, hepsi tarayıcında.">
 <meta property="og:url" content="https://app.parafomo.com/">
@@ -53,9 +57,11 @@
           <span style="flex:12;background:var(--a-silver)"></span>
         </div>
         <ul class="feats">
-          <li>Canlı fiyatlar (2 dk içinde güncel)</li>
-          <li>Ortalama maliyet otomatik hesaplanır</li>
-          <li>Dağılım, pozisyon payları, CSV dışa aktarma</li>
+          <li>Canlı fiyatlar ve günlük değer grafiği</li>
+          <li>Enflasyondan arındırılmış gerçek (reel) getiri</li>
+          <li>Fiyat alarmı — eşik aşılınca e-posta</li>
+          <li>İzleme listesi, dolar/altın karşılığı, CSV</li>
+          <li>Telefonuna uygulama gibi kurulur</li>
         </ul>
         <span class="btn btn-primary">Portföyü aç</span>
       </a>
@@ -92,6 +98,7 @@
   function g(k) { try { return localStorage.getItem(k); } catch { return null; } }
   function s(k, v) { try { v === null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} }
   if (g('pf_token')) document.getElementById('go-portfolio').hidden = false;
+  if ('serviceWorker' in navigator) { try { navigator.serviceWorker.register('/sw.js'); } catch (e) {} }
   document.getElementById('theme-btn').addEventListener('click', function () {
     var cur = g('pf_theme');
     var next = cur === 'dark' ? 'light' : cur === 'light' ? null : 'dark';

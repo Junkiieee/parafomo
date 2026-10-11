@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from datetime import date, datetime
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
@@ -104,6 +105,53 @@ class PortfolioSummary(BaseModel):
     total_day_change_pct: float | None = None
     holdings: list[HoldingValued]
     priced_at: datetime
+    # Birim çevirileri için güncel kurlar (alınamazsa None)
+    usd_try: float | None = None
+    gold_gram_try: float | None = None
+
+
+class SnapshotOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    day: date
+    total_value: float
+    total_cost: float
+
+
+# ---- Fiyat alarmı ----
+class AlertCreate(BaseModel):
+    asset_type: AssetType
+    symbol: str = Field(min_length=1, max_length=32)
+    direction: Literal["above", "below"]
+    threshold: float = Field(gt=0)
+
+
+class AlertOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    asset_type: AssetType
+    symbol: str
+    direction: str
+    threshold: float
+    active: bool
+    triggered_at: datetime | None
+    triggered_price: float | None
+    created_at: datetime
+
+
+# ---- İzleme listesi ----
+class WatchCreate(BaseModel):
+    asset_type: AssetType
+    symbol: str = Field(min_length=1, max_length=32)
+
+
+class WatchOut(BaseModel):
+    id: int
+    asset_type: AssetType
+    symbol: str
+    current_price: float | None
+    change_pct: float | None
 
 
 # ---- Bülten ----

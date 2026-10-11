@@ -83,6 +83,22 @@ def _gold_silver_quote(asset_type: AssetType) -> tuple[float, float | None] | No
     return quote
 
 
+def get_usd_try() -> float | None:
+    """Güncel USD/TRY satış kuru (Truncgil); alınamazsa None."""
+    cached = _cache_get("usd-try")
+    if cached is not None:
+        return cached[0]
+    try:
+        data = _fetch_truncgil()
+    except (httpx.HTTPError, ValueError):
+        return None
+    price = _num((data.get("USD") or {}).get("Selling"))
+    if price is None:
+        return None
+    _cache_set("usd-try", (price, None))
+    return price
+
+
 def _bist_quote(ticker: str) -> tuple[float, float | None] | None:
     ticker = ticker.strip().upper()
     cache_key = f"bist:{ticker}"
