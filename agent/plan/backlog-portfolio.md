@@ -1,5 +1,12 @@
 # 💼 Portföy Takip — ürün backlog'u
 
+> **2026-10-11 — ÜRÜNÜN YENİ EVİ: app.parafomo.com.** Portföy uygulaması artık ayrı statik SPA:
+> repo `app/` → `bash scripts/deploy-app.sh` → Caddy `/srv/parafomo-app` (api.parafomo.com aynı backend).
+> Ana sitedeki /portfoy-takip SEO sayfası ve /portfoy/panel eski panel DURUYOR; panel üstünde app'e yönlendirme var.
+> Bu backlog'daki UX maddeleri bundan sonra app/ içinde yapılır (Astro panel'e değil).
+
+
+
 > **Durum: CANLI** — `https://api.parafomo.com` (systemd `parafomo-api`) + `/portfoy-takip` (halka açık
 > SEO + üyeliksiz hesaplayıcı) + `/portfoy/panel` (üye paneli) + `/portfoy/sifre-sifirla`.
 > Kaan'ın talebi (2026-09-02): ürün sürekli gelişsin (UX + portföy yönetimi). v2'de haftalık plana
