@@ -3,30 +3,83 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ParaFOMO Portföy</title>
-<meta name="description" content="Ücretsiz portföy takibi: BIST hisselerini, gram altını ve gümüşü tek ekranda canlı fiyatla izle. Kâr/zararını anlık gör.">
+<title>ParaFOMO Uygulamalar</title>
+<meta name="description" content="ParaFOMO'nun ücretsiz finans uygulamaları: portföy takibi ve yolda olan yeni araçlar. Tek hesap, hepsi tarayıcında.">
 <link rel="canonical" href="https://app.parafomo.com/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="ParaFOMO Portföy">
-<meta property="og:description" content="Altının, hissen, gümüşün — tek ekranda, canlı fiyatla.">
+<meta property="og:title" content="ParaFOMO Uygulamalar">
+<meta property="og:description" content="Parana akıl katan uygulamalar. Tek ücretsiz hesap, hepsi tarayıcında.">
 <meta property="og:url" content="https://app.parafomo.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <script>try{var t=localStorage.getItem('pf_theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;}catch(e){}</script>
-<link rel="stylesheet" href="/app.css">
-<script type="module" src="/app.js"></script>
+<link rel="stylesheet" href="/theme.css">
+<link rel="stylesheet" href="/lobby.css">
 </head>
 <body>
 <a class="skip" href="#main">İçeriğe atla</a>
 <div id="app">
   <header class="bar">
-    <a class="wordmark" href="/" aria-label="ParaFOMO Portföy ana ekran">
-      <span class="wm-name">parafomo</span><span class="wm-app">portföy</span>
-    </a>
-    <div class="bar-right" id="bar-right"></div>
+    <span class="wordmark">
+      <span class="wm-name">parafomo</span><span class="wm-app">uygulamalar</span>
+    </span>
+    <div class="bar-right">
+      <a class="btn btn-quiet" id="go-portfolio" href="/portfoy/" hidden>Portföyüne git</a>
+      <button class="btn-icon" id="theme-btn" title="Tema değiştir" aria-label="Tema değiştir">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </div>
   </header>
-  <main id="main"></main>
+
+  <main id="main">
+    <section class="lob-hero">
+      <h1>Parana akıl katan <em>uygulamalar.</em></h1>
+      <p>Tek ücretsiz hesapla hepsine gir; kurulum yok, hepsi tarayıcında çalışır.
+      Burası büyüyen bir raf — yeni araçlar geldikçe bu sayfaya eklenir.</p>
+    </section>
+
+    <section class="apps" aria-label="Uygulamalar">
+      <a class="app-card app-live" href="/portfoy/">
+        <div class="app-head">
+          <h2>Portföy Takibi</h2>
+          <span class="badge-live">Canlı</span>
+        </div>
+        <p>BIST hisselerini, gram altını ve gümüşü tek ekranda izle: güncel değer,
+        bugünkü değişim, alıştan bu yana kâr/zarar.</p>
+        <div class="mini-alloc" aria-hidden="true">
+          <span style="flex:52;background:var(--a-gold)"></span>
+          <span style="flex:36;background:var(--a-bist)"></span>
+          <span style="flex:12;background:var(--a-silver)"></span>
+        </div>
+        <ul class="feats">
+          <li>Canlı fiyatlar (2 dk içinde güncel)</li>
+          <li>Ortalama maliyet otomatik hesaplanır</li>
+          <li>Dağılım, pozisyon payları, CSV dışa aktarma</li>
+        </ul>
+        <span class="btn btn-primary">Portföyü aç</span>
+      </a>
+
+      <div class="soon-rail">
+        <h3>Yolda</h3>
+        <div class="app-soon">
+          <b>Birikim Simülatörü</b>
+          <span>"Ayda 5.000 TL'yi altına koysaydın…" — geçmiş veriyle birikim senaryoları.</span>
+        </div>
+        <div class="app-soon">
+          <b>Kredi Hesaplayıcı</b>
+          <span>İhtiyaç, konut, taşıt: taksit ve toplam maliyeti yan yana karşılaştır.</span>
+        </div>
+        <p class="soon-note">Fikrin mi var? <a href="https://parafomo.com/iletisim/" rel="noopener">Bize yaz</a> — rafı birlikte dolduralım.</p>
+      </div>
+    </section>
+
+    <section class="one-account">
+      <p><strong>Tek hesap, bütün uygulamalar.</strong> Bir kez kayıt ol; bu raftaki her araca
+      aynı hesapla girersin. Verin sana aittir, üçüncü kişilere satılmaz.</p>
+    </section>
+  </main>
+
   <footer class="foot">
     <a href="https://parafomo.com/" rel="noopener">parafomo.com</a>
     <a href="https://parafomo.com/gizlilik/" rel="noopener">Gizlilik</a>
@@ -34,7 +87,19 @@
     <span class="foot-note">Veriler bilgilendirme amaçlıdır, yatırım tavsiyesi değildir.</span>
   </footer>
 </div>
-<div id="toasts" aria-live="polite"></div>
-<noscript><p style="padding:24px;font-family:sans-serif">Bu uygulama JavaScript ile çalışır. Tarayıcında JavaScript'i açıp sayfayı yenile.</p></noscript>
+<script>
+(function () {
+  function g(k) { try { return localStorage.getItem(k); } catch { return null; } }
+  function s(k, v) { try { v === null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} }
+  if (g('pf_token')) document.getElementById('go-portfolio').hidden = false;
+  document.getElementById('theme-btn').addEventListener('click', function () {
+    var cur = g('pf_theme');
+    var next = cur === 'dark' ? 'light' : cur === 'light' ? null : 'dark';
+    s('pf_theme', next);
+    if (next) document.documentElement.dataset.theme = next;
+    else delete document.documentElement.dataset.theme;
+  });
+})();
+</script>
 </body>
 </html>

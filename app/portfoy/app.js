@@ -267,6 +267,7 @@ function renderApp() {
       </button>
       <ul class="menu-list" id="user-menu" hidden>
         <li class="who">${esc(u.display_name || u.email)}</li>
+        <li><a href="/">Tüm uygulamalar</a></li>
         <li><button id="logout-btn">Çıkış yap</button></li>
       </ul>
     </div>`;
@@ -292,9 +293,15 @@ function renderApp() {
   const timeStr = pricedAt ? pricedAt.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' }) : '';
   const [lira, kurus] = nf2.format(s.total_value ?? 0).split(',');
 
+  const masked = safeGet('pf_masked') === '1';
+  main.classList.toggle('masked', masked);
   main.innerHTML = `
     <section class="summary" aria-label="Portföy özeti">
-      <p class="sum-label">Toplam değer</p>
+      <p class="sum-label">Toplam değer
+        <button class="btn-icon" id="mask-btn" aria-pressed="${masked}" title="Tutarları gizle/göster" aria-label="Tutarları gizle/göster">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </p>
       <p class="sum-value num">${lira}<span class="kurus">,${kurus} ₺</span></p>
       <div class="sum-row num">
         <span class="sum-item">Bugün<b class="${plClass(s.total_day_change)}">${signedMoney(s.total_day_change)}${s.total_day_change_pct != null ? ' (' + signedPct(s.total_day_change_pct) + ')' : ''}</b></span>
@@ -312,16 +319,28 @@ function renderApp() {
     <section class="holdings" aria-label="Pozisyonlar">
       <div class="holdings-head">
         <h2>Pozisyonlar</h2>
-        <button class="btn btn-primary" id="add-btn">Pozisyon ekle</button>
+        <div class="tools">
+          <button class="btn-icon" id="csv-btn" title="CSV indir" aria-label="Pozisyonları CSV olarak indir">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+          </button>
+          <button class="btn btn-primary" id="add-btn">Pozisyon ekle</button>
+        </div>
       </div>
       <div class="hhead" aria-hidden="true">
         <span>Varlık</span><span class="r">Adet / gram</span><span class="r">Güncel</span><span class="r">Değer</span><span class="r">Kâr/zarar</span><span></span>
       </div>
-      <div id="hlist">${s.holdings.slice().sort((a, b) => (b.current_value ?? b.cost_value) - (a.current_value ?? a.cost_value)).map(rowHtml).join('')}</div>
+      <div id="hlist">${s.holdings.slice().sort((a, b) => (b.current_value ?? b.cost_value) - (a.current_value ?? a.cost_value)).map(h => rowHtml(h, s.total_value)).join('')}</div>
     </section>`;
 
   main.querySelector('#add-btn').addEventListener('click', () => openHoldingDialog());
   main.querySelector('#refresh-btn').addEventListener('click', () => refreshSummary());
+  main.querySelector('#csv-btn').addEventListener('click', exportCsv);
+  main.querySelector('#mask-btn').addEventListener('click', () => {
+    const now = safeGet('pf_masked') !== '1';
+    safeSet('pf_masked', now ? '1' : null);
+    main.classList.toggle('masked', now);
+    main.querySelector('#mask-btn').setAttribute('aria-pressed', String(now));
+  });
   main.querySelectorAll('.hrow').forEach(r =>
     r.addEventListener('click', () => {
       const h = state.summary.holdings.find(x => x.id === Number(r.dataset.id));
@@ -345,9 +364,10 @@ function allocHtml(s) {
   </div>`;
 }
 
-function rowHtml(h) {
+function rowHtml(h, totalValue) {
   const t = TYPE[h.asset_type];
   const dayStr = h.change_pct != null ? signedPct(h.change_pct) : '';
+  const w = totalValue && h.current_value != null ? h.current_value / totalValue * 100 : null;
   return `
   <button class="hrow num" data-id="${h.id}" title="Düzenlemek için tıkla">
     <span class="asset c-asset">
@@ -356,10 +376,30 @@ function rowHtml(h) {
     </span>
     <span class="r c-qty"><span class="cell-main">${nfq.format(h.quantity)} ${t.unit}</span><span class="cell-sub">maliyet ${money(h.cost_price)}</span></span>
     <span class="r c-price"><span class="cell-main">${money(h.current_price)}</span><span class="cell-sub ${plClass(h.change_pct)}">${dayStr}</span></span>
-    <span class="r c-value"><span class="cell-main">${money(h.current_value)}</span></span>
+    <span class="r c-value"><span class="cell-main">${money(h.current_value)}</span>${w != null ? `<span class="cell-sub" title="Portföydeki payı">pay %${nf0.format(w)}</span>` : ''}</span>
     <span class="r c-pl"><span class="${plClass(h.profit_loss)}">${signedMoney(h.profit_loss)}</span><span class="cell-sub ${plClass(h.profit_loss)}">${h.profit_loss_pct != null ? signedPct(h.profit_loss_pct) : ''}</span></span>
     <span class="edit-ic" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
   </button>`;
+}
+
+function exportCsv() {
+  const s = state.summary;
+  if (!s || !s.holdings.length) return;
+  const head = ['tur', 'sembol', 'ad', 'miktar', 'birim_maliyet', 'guncel_fiyat', 'maliyet_degeri', 'guncel_deger', 'kar_zarar', 'kar_zarar_yuzde', 'gun_degisim_yuzde', 'alis_tarihi', 'not'];
+  const rows = s.holdings.map(h => [
+    TYPE[h.asset_type].label, h.symbol, TYPE[h.asset_type].name(h.symbol),
+    h.quantity, h.cost_price, h.current_price ?? '', h.cost_value, h.current_value ?? '',
+    h.profit_loss ?? '', h.profit_loss_pct ?? '', h.change_pct ?? '',
+    h.purchase_date ?? '', h.note ?? '',
+  ]);
+  const csv = '﻿' + [head, ...rows]
+    .map(r => r.map(v => '"' + String(v).replace(/"/g, '""') + '"').join(';')).join('\r\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+  a.download = 'parafomo-portfoy-' + new Date().toISOString().slice(0, 10) + '.csv';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  toast('Portföy CSV olarak indirildi.');
 }
 
 /* ---------- pozisyon ekle / düzenle ---------- */
