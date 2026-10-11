@@ -55,15 +55,15 @@ _Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
   GSC'de son 7g sayfa listesinde sonda '/' olmayan URL satırı kaldı mı (`searchanalytics` page boyutu)?
   URL denetimi: /emekli-zammi-hesaplama, /bitcoin-getiri, /euro-getiri, /gumus-getiri, /bono-hesaplama
   durumu ("unknown" → indeksli mi?). 10 halka arz sayfası örneği. · Kabul: rapora sayılar yazılır.
-- [ ] T8 (yeni niyet) — **Asgari ücret 2027 hazırlığı:** /asgari-ucret-hesaplama'ya "2027 asgari ücret ne zaman
+- [x] T8 (yeni niyet) — → canlı https://parafomo.com/asgari-ucret-hesaplama/ : başlık "Asgari Ücret 2027 Ne Zaman Belli Olacak?", komisyon süreci + 2023-2026 açıklanma tarihleri tablosu (22/27/24/23 Aralık, WebSearch doğrulamalı; 2027 rakamı yazılmadı) + 3 yeni SSS (kaç TL olacak / komisyon / ara zam) · commit 8f47ae9 · 2026-10-11 — **Asgari ücret 2027 hazırlığı:** /asgari-ucret-hesaplama'ya "2027 asgari ücret ne zaman
   belli olacak" bölümü (Asgari Ücret Tespit Komisyonu süreci, geçmiş yılların açıklanma tarihleri — YALNIZ
   doğrulanmış kaynakla; tahmini rakam YAZMA) + SSS; başlıkta 2027'yi öne al. Aralık'ta resmi rakam gelince
   aynı gün güncelle (kullanıcı görevi değil, ajan WebSearch ile resmi açıklamayı doğrular).
   · Kabul: build geçer, canlı sayfada 2027 bölümü + FAQPage'de yeni soru.
-- [ ] T9 (B261006-1) — **Emekli zammı sayfası iç linkleri:** emeklilik kategorisindeki yazılar
+- [x] T9 (B261006-1) — → 4 metin içi link canlı: bes-bireysel-emeklilik-mantikli-mi, emeklilik-icin-ne-kadar-para, /net-maas-hesaplama, /asgari-ucret-hesaplama → /emekli-zammi-hesaplama/ · commit ce0619d · 2026-10-11 — **Emekli zammı sayfası iç linkleri:** emeklilik kategorisindeki yazılar
   (bes-bireysel-emeklilik-mantikli-mi, emeklilik-icin-ne-kadar-para) + net-maas/asgari-ucret sayfalarından
   bağlamsal link (footer zaten var; metin içi link ayrıca). · Kabul: ≥4 metin içi link canlıda.
-- [ ] T10 (zam sezonu, RC 10-10) — **/vergi-dilimi-hesaplama sayfası:** 2026 gelir vergisi tarifesi
+- [x] T10 (zam sezonu, RC 10-10) — → canlı https://parafomo.com/vergi-dilimi-hesaplama/ (332 Seri No'lu tebliğ doğrulandı; ücret %27 dilimi 1,5M / ücret dışı 1M; hesaplayıcı: marjinal+efektif oran; 2027 iki senaryo ~%20 ve YD oranı, data/yeniden-degerleme.json'dan otomatik; Dataset+FAQPage+WebApplication; footer + net-maaş linki; OG kartı) · commit 6824825 · 2026-10-11 — **/vergi-dilimi-hesaplama sayfası:** 2026 gelir vergisi tarifesi
   (ücret: %15 ≤190.000 · %20 ≤400.000 · %27 ≤1.500.000 · %35 ≤5.300.000 · %40 üzeri — GİB 332 tebliğiyle
   DOĞRULA; ücret dışı tarife farkı) + yıllık brüt matrah → dilim/vergi hesaplayıcı + "2027 dilimleri ne
   olacak" bölümü (yeniden değerleme bağlantısı: data/yeniden-degerleme.json onikiAyOrt tahmini; 'CB farklı
