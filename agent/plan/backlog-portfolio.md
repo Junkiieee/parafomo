@@ -25,7 +25,13 @@
 > 3. Varlık detayına haber/temettü satırı (kaynak araştır) · grafikte 1A/3A chip'leri veri birikince zenginleşir.
 > 4. ✅ İşlem defteri YAPILDI (2026-10-11 v4): transactions tablosu + satış + realize K/Z + birim görünümü
 >    (₺/$/g). Kalan türevler: yıllık realize raporu, satışta FIFO seçeneği (şimdilik ort. maliyet).
-> 5. Premium paket adayları (Kaan ödeme kararı verince): çoklu portföy, sınırsız alarm, aylık PDF rapor.
+> 5. ✅ v5 YAPILDI (2026-10-11): çok-varlık (USD/EUR/BTC/ETH/nakit, CoinGecko+Truncgil), sınıf bazlı
+>    dağılım (fx yeşil #177245/#2F9E6A, kripto magenta #A23B8F/#C95CB0 — validator onaylı), XIRR +
+>    öne çıkanlar satırı, /public/news varlık haberleri (detay kipinde).
+> 6. SIRADAKİLER: çoklu portföy (cüzdanlar; premium bel kemiği — portfolios tablosu + FK migrasyonu,
+>    DİKKATLİ planla) · TEFAS fon desteği (veri kaynağı araştır: tefas.gov.tr) · temettü takvimi
+>    (kaynak araştır) · CSV içe aktarma · onboarding sihirbazı · ETH tarihsel grafik kaynağı.
+> 7. Premium paket adayları (Kaan ödeme kararı verince): çoklu portföy, sınırsız alarm, aylık PDF rapor.
 > Kaan 2026-10-11: "uygulama çok basit olmuş" → satılabilir derinlik öncelik: aday işler sırayla —
 > pozisyon geçmişi/değer grafiği (günlük snapshot tablosu gerekir, şema onayı Kaan'dan), izleme listesi,
 > fiyat alarmı (e-posta), çoklu portföy, hedef/oran analizi. Yeni eklenenler (yapıldı): gizlilik gözü,
