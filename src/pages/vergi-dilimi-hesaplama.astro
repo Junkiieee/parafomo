@@ -1,0 +1,367 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import yd from '../../data/yeniden-degerleme.json';
+
+// 2026 gelir vergisi tarifesi — GVK md.103, 332 Seri No'lu GVK Genel Tebliği (RG 31.12.2025).
+// Doğrulandı 2026-10-11 (Yöntem YMM, TÜRMOB, Alomaliye özetleri birbiriyle tutarlı).
+// Ücret ve ücret dışı tarife yalnız 3. dilimin üst sınırında ayrışır (1.500.000 vs 1.000.000).
+// GÜNCELLEME: Ocak 2027'de yeni tebliğle 2027 tarifesini yaz, 2026'yı "geçmiş" yap.
+const UCRET: [number, number][] = [
+  [190000, 0.15],
+  [400000, 0.2],
+  [1500000, 0.27],
+  [5300000, 0.35],
+  [Infinity, 0.4],
+];
+const DIGER: [number, number][] = [
+  [190000, 0.15],
+  [400000, 0.2],
+  [1000000, 0.27],
+  [5300000, 0.35],
+  [Infinity, 0.4],
+];
+
+function gv(m: number, b: [number, number][]): number {
+  let tax = 0;
+  let prev = 0;
+  for (const [top, rate] of b) {
+    if (m > top) {
+      tax += (top - prev) * rate;
+      prev = top;
+    } else {
+      tax += (m - prev) * rate;
+      return tax;
+    }
+  }
+  return tax;
+}
+
+const fmt = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+const fmt0 = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const pct = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 }).format(n);
+
+// 2027 tahmini: dilimler her yıl yeniden değerleme oranıyla güncellenir, ancak 2026'da
+// tebliğ oranı (%25,49) yerine ilk dilimde ~%20 artış uygulandı (158.000 → 190.000).
+// Bu yüzden iki senaryo gösterilir; hiçbiri resmî değildir.
+const ydRate: number = (yd.tebligOrani ?? yd.onikiAyOrt) as number;
+const ydLabel = yd.tebligOrani
+  ? `tebliğle kesinleşen %${pct(yd.tebligOrani)}`
+  : yd.ekimVerisiGeldi
+    ? `hesaben kesinleşen %${pct(yd.onikiAyOrt)}`
+    : `şu anki tahmin %${pct(yd.onikiAyOrt)} (${yd.sonAy} itibarıyla)`;
+const LOW = 0.2;
+const round1k = (n: number) => Math.round(n / 1000) * 1000;
+const proj = UCRET.slice(0, 4).map(([top], i) => ({
+  i,
+  now: top,
+  yd: round1k(top * (1 + ydRate / 100)),
+  low: round1k(top * (1 + LOW)),
+}));
+const DIGER3 = 1000000;
+
+const SAMPLES = [150000, 300000, 600000, 1200000, 2500000, 6000000];
+const DEFAULT_M = 600000;
+const d0 = gv(DEFAULT_M, UCRET);
+
+const faq = [
+  {
+    q: '2026 gelir vergisi dilimleri nedir?',
+    a: `2026'da ücret gelirleri için: 190.000 ₺'ye kadar %15, 190.001–400.000 ₺ %20, 400.001–1.500.000 ₺ %27, 1.500.001–5.300.000 ₺ %35, 5.300.000 ₺ üzeri %40. Ücret dışı gelirlerde (kira, serbest meslek, ticari kazanç vb.) %27 dilimi 1.000.000 ₺'de biter. Kaynak: 332 Seri No'lu Gelir Vergisi Genel Tebliği.`,
+  },
+  {
+    q: 'Vergi dilimine girmek ne demek?',
+    a: `Yıl başından beri biriken (kümülatif) vergi matrahınız bir dilim sınırını aştığında, yalnız sınırın ÜSTÜNDEKİ kısım yeni orandan vergilenir. Örneğin ücretlinin matrahı 190.000 ₺'yi geçince, 190.000 ₺'nin üstündeki her lira %20'den vergilenir; önceki kısmın vergisi değişmez. Bu yüzden "üst dilime geçince maaşım azalır" düşüncesi yanlıştır — yalnız aylık net, matrah arttıkça kademeli düşer.`,
+  },
+  {
+    q: 'Vergi dilimi nasıl hesaplanır?',
+    a: `Yıllık matrahı dilimlere bölün, her parçayı kendi oranıyla çarpın ve toplayın. Örnek (ücret, ${fmt0(DEFAULT_M)} ₺ matrah): 190.000 × %15 + 210.000 × %20 + ${fmt0(DEFAULT_M - 400000)} × %27 = ${fmt(d0)} ₺. Efektif (ortalama) oran %${pct((d0 / DEFAULT_M) * 100)}. Ücretlilerde ayrıca asgari ücret kadar gelir vergisi istisnası düşülür.`,
+  },
+  {
+    q: '2027 vergi dilimleri ne olacak?',
+    a: `2027 dilimleri henüz açıklanmadı; Aralık 2026 sonunda tebliğle belli olur. Dilim tutarları kural olarak yeniden değerleme oranıyla artırılır (${ydLabel}), ama 2026'da ilk dilim yaklaşık %20 artırıldı (158.000 → 190.000 ₺). Bu iki varsayımla ilk dilim 2027'de yaklaşık ${fmt0(proj[0].low)}–${fmt0(proj[0].yd)} ₺ olabilir; bu bir tahmindir.`,
+  },
+  {
+    q: 'Ücretliler hangi ayda üst dilime geçer?',
+    a: `Aylık vergi matrahı (brüt − %15 SGK/işsizlik) 12 ile çarpılınca 190.000 ₺'yi aşıyorsa yıl içinde %20 dilimine geçersiniz. Örneğin aylık matrahı 25.000 ₺ olan çalışan 8. ayda (kümülatif 200.000 ₺) %20 dilimine girer. Ay ay net maaşınızı <a href="/net-maas-hesaplama/">net maaş hesaplama</a> aracıyla görebilirsiniz.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Vergi Dilimi Hesaplama', url: '/vergi-dilimi-hesaplama/' },
+];
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: '2026 gelir vergisi tarifesi (ücret ve ücret dışı) ve 2027 dilim tahmini',
+  description: `GVK md.103 gelir vergisi dilimleri 2026 (332 Seri No'lu GVK Genel Tebliği) ve yeniden değerleme oranına göre 2027 tahmini senaryoları (${ydLabel}).`,
+  url: 'https://parafomo.com/vergi-dilimi-hesaplama/',
+  dateModified: yd.updated,
+  creator: { '@type': 'Organization', name: 'ParaFOMO', url: 'https://parafomo.com/' },
+  isBasedOn: 'https://www.gib.gov.tr',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+};
+const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  image="/og/vergi-dilimi-hesaplama.png"
+  title="Vergi Dilimi Hesaplama 2026: Gelir Vergisi Dilimleri ve 2027 Tahmini"
+  description="2026 gelir vergisi dilimleri: %15 (190.000 ₺'ye kadar), %20, %27, %35, %40. Yıllık matrahını gir; hangi dilimdesin, ne kadar vergi ödersin, efektif oranın ne? 2027 dilim tahmini."
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(dataset)} />
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Vergi</p>
+      <h1>Vergi Dilimi Hesaplama (2026)</h1>
+      <p class="lede">
+        2026'da gelir vergisi <strong>%15'ten başlar, 190.000 ₺'yi aşan kısım %20</strong>'den
+        vergilenir. Yıllık matrahınızı girin; <strong>hangi dilimde olduğunuzu</strong>, toplam
+        verginizi ve efektif oranınızı görün.
+      </p>
+    </header>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Yıllık vergi matrahı (₺)</span>
+          <input type="number" id="in-m" value={DEFAULT_M} min="0" step="10000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Gelir türü</span>
+          <select id="in-tur">
+            <option value="ucret" selected>Ücret (maaş)</option>
+            <option value="diger">Ücret dışı (kira, serbest meslek, ticari…)</option>
+          </select>
+        </label>
+        <p class="input-hint">
+          Ücretlide matrah ≈ brüt maaş − %15 SGK/işsizlik payı. Asgari ücret istisnası bu araçta
+          düşülmez; aylık net için <a href="/net-maas-hesaplama/">net maaş hesaplama</a>.
+        </p>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Toplam gelir vergisi (yıllık)</span>
+          <span class="result-value" id="out-tax">₺{fmt(d0)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Girdiğiniz dilim (marjinal)</span>
+            <span class="split-val" id="out-marj">%27</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Efektif (ortalama) oran</span>
+            <span class="split-val" id="out-eff">%{pct((d0 / DEFAULT_M) * 100)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Vergi sonrası kalan</span>
+            <span class="split-val" id="out-net">₺{fmt(DEFAULT_M - d0)}</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note">Bir üst dilime kalan: ₺{fmt0(1500000 - DEFAULT_M)}</p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır; vergi/mali tavsiye değildir. 2026 resmî gelir
+      vergisi tarifesi (GVK md.103, 332 Seri No'lu GVK Genel Tebliği) esas alınmıştır. İstisna,
+      indirim ve mahsuplar (asgari ücret istisnası, kira istisnası, götürü gider vb.) hesaba
+      katılmaz. · Son güncelleme: {updatedLabel} · Kaynak: Gelir İdaresi Başkanlığı, Resmî Gazete.
+    </p>
+
+    <section class="table-block">
+      <h2>2026 gelir vergisi dilimleri</h2>
+      <table class="rate-table">
+        <thead><tr><th>Oran</th><th>Ücret gelirleri</th><th>Ücret dışı gelirler</th></tr></thead>
+        <tbody>
+          <tr><td>%15</td><td>190.000 ₺'ye kadar</td><td>190.000 ₺'ye kadar</td></tr>
+          <tr><td>%20</td><td>190.001 – 400.000 ₺</td><td>190.001 – 400.000 ₺</td></tr>
+          <tr><td>%27</td><td>400.001 – 1.500.000 ₺</td><td>400.001 – 1.000.000 ₺</td></tr>
+          <tr><td>%35</td><td>1.500.001 – 5.300.000 ₺</td><td>1.000.001 – 5.300.000 ₺</td></tr>
+          <tr><td>%40</td><td>5.300.000 ₺ üzeri</td><td>5.300.000 ₺ üzeri</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">
+        Kaynak: 332 Seri No'lu Gelir Vergisi Genel Tebliği (Resmî Gazete, 31 Aralık 2025). Ücretli
+        ile ücret dışı tarife yalnız %27 diliminin üst sınırında ayrışır.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Örnek: matraha göre vergi ve efektif oran (ücret, 2026)</h2>
+      <table class="rate-table">
+        <thead><tr><th>Yıllık matrah</th><th>Gelir vergisi</th><th>Efektif oran</th></tr></thead>
+        <tbody>
+          {SAMPLES.map((m) => (
+            <tr><td>₺{fmt0(m)}</td><td>₺{fmt0(gv(m, UCRET))}</td><td>%{pct((gv(m, UCRET) / m) * 100)}</td></tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Efektif oran her zaman girdiğiniz dilimin oranından düşüktür; çünkü yalnız sınırı aşan kısım
+        yüksek orandan vergilenir.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>2027 vergi dilimleri ne olacak? (tahmin)</h2>
+      <p class="table-intro">
+        Dilim tutarları her yıl <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı</a>
+        esas alınarak artırılır ({ydLabel}). Ancak Cumhurbaşkanı/Bakanlık farklı belirleyebilir:
+        2026'da ilk dilim yalnız ~%20 artırıldı (158.000 → 190.000 ₺). Resmî 2027 tarifesi Aralık
+        sonunda tebliğle açıklanır; aşağıdaki rakamlar <strong>resmî değildir</strong>.
+      </p>
+      <table class="rate-table">
+        <thead><tr><th>Oran</th><th>2026 üst sınır (ücret)</th><th>2027 — ~%20 artışla</th><th>2027 — YD oranıyla</th></tr></thead>
+        <tbody>
+          {proj.map((p) => (
+            <tr><td>%{[15, 20, 27, 35][p.i]}</td><td>₺{fmt0(p.now)}</td><td>≈ ₺{fmt0(p.low)}</td><td>≈ ₺{fmt0(p.yd)}</td></tr>
+          ))}
+          <tr><td>%27 (ücret dışı)</td><td>₺{fmt0(DIGER3)}</td><td>≈ ₺{fmt0(round1k(DIGER3 * 1.2))}</td><td>≈ ₺{fmt0(round1k(DIGER3 * (1 + ydRate / 100)))}</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">
+        Tahminler en yakın 1.000 ₺'ye yuvarlandı. Yeniden değerleme oranı Ekim Yİ-ÜFE ile (3 Kasım)
+        hesaben kesinleşir; bu tablo otomatik güncellenir.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Vergi dilimine girmek maaşı düşürür mü?</h2>
+      <p>
+        Hayır. Türkiye'de gelir vergisi <strong>artan oranlı ve dilimlidir</strong>: üst dilime
+        geçtiğinizde yalnız sınırı aşan kısım yüksek orandan vergilenir. Ücretlilerde vergi
+        yıl başından biriken (kümülatif) matraha göre kesildiği için aylık net maaş yılın ikinci
+        yarısında kademeli düşer; ama yıllık toplam gelir hiçbir zaman "dilim yüzünden" azalmaz.
+      </p>
+      <p class="cta-line">
+        İlgili araçlar: aylık net için <a href="/net-maas-hesaplama/">net maaş hesaplama</a>,
+        asgari ücret istisnası için <a href="/asgari-ucret-hesaplama/">asgari ücret</a>, 2027 harç
+        ve vergi artışları için <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı</a> ve
+        <a href="/mtv-hesaplama/">MTV 2027 hesaplama</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p set:html={f.a} />
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const pf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
+      const T = {
+        ucret: [[190000, 0.15], [400000, 0.2], [1500000, 0.27], [5300000, 0.35], [Infinity, 0.4]],
+        diger: [[190000, 0.15], [400000, 0.2], [1000000, 0.27], [5300000, 0.35], [Infinity, 0.4]],
+      };
+
+      function update() {
+        const m = Math.max(0, +$('in-m').value || 0);
+        const b = T[$('in-tur').value] || T.ucret;
+        let tax = 0, prev = 0, marj = b[0][1], next = null;
+        for (const [top, rate] of b) {
+          if (m > top) { tax += (top - prev) * rate; prev = top; }
+          else { tax += (m - prev) * rate; marj = rate; next = top === Infinity ? null : top - m; break; }
+        }
+        $('out-tax').textContent = '₺' + nf.format(tax);
+        $('out-marj').textContent = '%' + Math.round(marj * 100);
+        $('out-eff').textContent = '%' + pf.format(m > 0 ? (tax / m) * 100 : 0);
+        $('out-net').textContent = '₺' + nf.format(m - tax);
+        $('out-note').textContent = next === null
+          ? 'En üst dilimdesiniz (%40).'
+          : 'Bir üst dilime kalan: ₺' + nf0.format(next);
+      }
+
+      $('in-m').addEventListener('input', update);
+      $('in-tur').addEventListener('change', update);
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.7rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input, .calc-inputs select {
+      font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus, .calc-inputs select:focus {
+      outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft);
+    }
+    .input-hint { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 0.9rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.95rem; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; overflow-x: auto; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>

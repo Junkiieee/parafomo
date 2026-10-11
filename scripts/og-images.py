@@ -112,7 +112,14 @@ def halka_arz_card():
             "sub": "süren ve yaklaşan arz · tarih, fiyat, lot"}
 
 
+def vergi_dilimi_card():
+    # 2026 tarifesi sabit (332 Seri No'lu GVK Tebliği); Ocak 2027'de sayfayla birlikte güncelle
+    return {"kicker": "GELİR VERGİSİ DİLİMLERİ 2026", "stat": "%15–40",
+            "sub": "190.000 ₺'ye kadar %15 · dilimini ve vergini hesapla"}
+
+
 CARDS = {
+    "vergi-dilimi-hesaplama": vergi_dilimi_card,
     "yeniden-degerleme-orani": yd_card(
         "YENİDEN DEĞERLEME ORANI {yil}",
         lambda d, k: ("kesinleşti · MTV, harç ve cezaların zam oranı" if k
