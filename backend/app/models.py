@@ -118,6 +118,31 @@ class PriceAlert(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
 
 
+class Transaction(Base):
+    """İşlem defteri: lot lot alım/satım kaydı (append-only).
+
+    holdings tablosu POZİSYON özetidir (güncel miktar + ortalama maliyet);
+    burası tarihçedir. Satışta realized_pl = (satış fiyatı − o anki ortalama
+    maliyet) × miktar olarak hesaplanıp satıra yazılır.
+    """
+
+    __tablename__ = "transactions"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), index=True, nullable=False
+    )
+    asset_type: Mapped[AssetType] = mapped_column(Enum(AssetType), nullable=False)
+    symbol: Mapped[str] = mapped_column(String(32), nullable=False)
+    side: Mapped[str] = mapped_column(String(4), nullable=False)  # "buy" | "sell"
+    quantity: Mapped[float] = mapped_column(Float, nullable=False)
+    price: Mapped[float] = mapped_column(Float, nullable=False)   # birim ₺
+    trade_date: Mapped[date | None] = mapped_column(Date, nullable=True)
+    realized_pl: Mapped[float | None] = mapped_column(Float, nullable=True)  # yalnız satışta
+    note: Mapped[str | None] = mapped_column(String(280), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
+
+
 class Goal(Base):
     """Birikim hedefi: toplam değer TL / USD / gram altın cinsinden eşik."""
 

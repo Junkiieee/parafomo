@@ -284,3 +284,28 @@ dialog::backdrop { background: rgba(8, 18, 16, .55); }
   .chart svg text.yv, .detail-chart svg text.yv { font-size: 17px; }
   .wrow .r .cell-main, .wrow .r .cell-sub { white-space: nowrap; }
 }
+
+/* ---- işlem defteri ---- */
+.txns { margin-top: 34px; }
+.trow {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 2px; border-bottom: 1px solid var(--line-soft);
+}
+.trow .r { margin-left: auto; text-align: right; display: grid; gap: 2px; justify-items: end; }
+.side {
+  font-weight: 700; font-size: .72rem; letter-spacing: .02em;
+  padding: 3px 7px; border-radius: 6px; flex-shrink: 0;
+}
+.side-buy { color: var(--brand-deep); border: 1.5px solid var(--brand); }
+.side-sell { background: var(--brand-deep); color: var(--brand-deep-ink); border: 1.5px solid transparent; }
+.show-all {
+  border: 0; background: none; color: var(--brand-deep); cursor: pointer;
+  font: 600 .88rem "IBM Plex Sans", system-ui, sans-serif; padding: 10px 2px;
+}
+.show-all:hover { text-decoration: underline; }
+.linklike { border: 0; background: none; color: var(--brand-deep); cursor: pointer; font: inherit; padding: 0; }
+.linklike:hover { text-decoration: underline; }
+.masked .trow .aname b, .masked .trow .r { filter: blur(7px); }
+.c-paid { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.unit-chips { vertical-align: 1px; }
+.unit-chips button { padding: 3px 9px; font-size: .74rem; }

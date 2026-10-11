@@ -4,7 +4,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, Response, status
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from ..db import get_db
@@ -15,6 +15,7 @@ from ..models import (
     Holding,
     PortfolioSnapshot,
     PriceAlert,
+    Transaction,
     User,
     WatchItem,
 )
@@ -30,6 +31,8 @@ from ..schemas import (
     HoldingValued,
     PortfolioSummary,
     SnapshotOut,
+    TxnCreate,
+    TxnOut,
     WatchCreate,
     WatchOut,
 )
@@ -80,6 +83,11 @@ def add_holding(
             or body.purchase_date < existing.purchase_date
         ):
             existing.purchase_date = body.purchase_date
+        db.add(Transaction(
+            user_id=user.id, asset_type=body.asset_type, symbol=symbol, side="buy",
+            quantity=body.quantity, price=body.cost_price,
+            trade_date=body.purchase_date, note=body.note,
+        ))
         db.commit()
         db.refresh(existing)
         response.status_code = status.HTTP_200_OK
@@ -95,6 +103,11 @@ def add_holding(
         note=body.note,
     )
     db.add(holding)
+    db.add(Transaction(
+        user_id=user.id, asset_type=body.asset_type, symbol=symbol, side="buy",
+        quantity=body.quantity, price=body.cost_price,
+        trade_date=body.purchase_date, note=body.note,
+    ))
     db.commit()
     db.refresh(holding)
     return holding
@@ -251,7 +264,24 @@ def portfolio_summary(
         except Exception:  # snapshot hiçbir zaman özeti düşürmesin
             db.rollback()
 
+    # Satışlardan realize K/Z (defterden): toplam + içinde bulunduğumuz yıl
+    year_start = datetime.now(timezone.utc).date().replace(month=1, day=1)
+    realized_total = db.scalar(
+        select(func.coalesce(func.sum(Transaction.realized_pl), 0.0)).where(
+            Transaction.user_id == user.id, Transaction.side == "sell"
+        )
+    ) or 0.0
+    realized_year = db.scalar(
+        select(func.coalesce(func.sum(Transaction.realized_pl), 0.0)).where(
+            Transaction.user_id == user.id,
+            Transaction.side == "sell",
+            func.coalesce(Transaction.trade_date, func.date(Transaction.created_at)) >= year_start,
+        )
+    ) or 0.0
+
     return PortfolioSummary(
+        realized_pl_total=round(realized_total, 2),
+        realized_pl_year=round(realized_year, 2),
         usd_try=usd_try,
         gold_gram_try=gold_try,
         total_cost=round(total_cost, 2),
@@ -493,3 +523,94 @@ def delete_goal(
     db.delete(goal)
     db.commit()
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+# ---------- işlem defteri ----------
+@router.get("/transactions", response_model=list[TxnOut])
+def list_transactions(
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> list[Transaction]:
+    """İşlem geçmişi — en yeni başta, son 300 kayıt."""
+    return list(db.scalars(
+        select(Transaction)
+        .where(Transaction.user_id == user.id)
+        .order_by(Transaction.created_at.desc(), Transaction.id.desc())
+        .limit(300)
+    ))
+
+
+@router.post("/transactions", response_model=TxnOut, status_code=status.HTTP_201_CREATED)
+def add_transaction(
+    body: TxnCreate,
+    response: Response,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> Transaction:
+    """Alım ya da satım kaydı.
+
+    Alım: pozisyona birleşir (adet-ağırlıklı ortalama maliyet). Satım: miktar
+    pozisyondan düşülür; realize K/Z = (satış − ortalama maliyet) × miktar.
+    Pozisyon sıfırlanırsa satır silinir, defter kaydı kalır.
+    """
+    symbol = _normalize_symbol(body.asset_type, body.symbol)
+    holding = db.scalar(
+        select(Holding).where(
+            Holding.user_id == user.id,
+            Holding.asset_type == body.asset_type,
+            Holding.symbol == symbol,
+        )
+    )
+
+    if body.side == "buy":
+        if holding is None:
+            holding = Holding(
+                user_id=user.id, asset_type=body.asset_type, symbol=symbol,
+                quantity=body.quantity, cost_price=body.price,
+                purchase_date=body.trade_date, note=body.note,
+            )
+            db.add(holding)
+        else:
+            total = holding.quantity + body.quantity
+            holding.cost_price = round(
+                (holding.quantity * holding.cost_price + body.quantity * body.price) / total, 6
+            )
+            holding.quantity = total
+            if body.trade_date is not None and (
+                holding.purchase_date is None or body.trade_date < holding.purchase_date
+            ):
+                holding.purchase_date = body.trade_date
+        txn = Transaction(
+            user_id=user.id, asset_type=body.asset_type, symbol=symbol, side="buy",
+            quantity=body.quantity, price=body.price,
+            trade_date=body.trade_date, note=body.note,
+        )
+        db.add(txn)
+        db.commit()
+        db.refresh(txn)
+        return txn
+
+    # ---- satış ----
+    if holding is None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Bu varlıkta pozisyonun yok — önce alım ekle.",
+        )
+    if body.quantity > holding.quantity + 1e-9:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Elinde {holding.quantity:g} var; {body.quantity:g} satamazsın.",
+        )
+    realized = round((body.price - holding.cost_price) * body.quantity, 2)
+    holding.quantity = round(holding.quantity - body.quantity, 10)
+    if holding.quantity <= 1e-9:
+        db.delete(holding)   # pozisyon kapandı; ortalama maliyet defterde yaşıyor
+    txn = Transaction(
+        user_id=user.id, asset_type=body.asset_type, symbol=symbol, side="sell",
+        quantity=body.quantity, price=body.price,
+        trade_date=body.trade_date, realized_pl=realized, note=body.note,
+    )
+    db.add(txn)
+    db.commit()
+    db.refresh(txn)
+    return txn

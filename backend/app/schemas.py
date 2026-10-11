@@ -116,6 +116,9 @@ class PortfolioSummary(BaseModel):
     # Birim çevirileri için güncel kurlar (alınamazsa None)
     usd_try: float | None = None
     gold_gram_try: float | None = None
+    # Satışlardan realize edilmiş kâr/zarar (işlem defterinden)
+    realized_pl_total: float = 0.0
+    realized_pl_year: float = 0.0
 
 
 class SnapshotOut(BaseModel):
@@ -150,6 +153,32 @@ class AlertOut(BaseModel):
     active: bool
     triggered_at: datetime | None
     triggered_price: float | None
+    created_at: datetime
+
+
+# ---- İşlemler ----
+class TxnCreate(BaseModel):
+    asset_type: AssetType
+    symbol: str = Field(min_length=1, max_length=32)
+    side: Literal["buy", "sell"]
+    quantity: float = Field(gt=0)
+    price: float = Field(gt=0)
+    trade_date: date | None = None
+    note: str | None = Field(default=None, max_length=280)
+
+
+class TxnOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    asset_type: AssetType
+    symbol: str
+    side: str
+    quantity: float
+    price: float
+    trade_date: date | None
+    realized_pl: float | None
+    note: str | None
     created_at: datetime
 
 

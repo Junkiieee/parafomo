@@ -18,8 +18,9 @@ const GOAL_KIND = {
 };
 
 let state = {
-  user: null, summary: null, history: [], watchlist: [], alerts: [], goals: [],
+  user: null, summary: null, history: [], watchlist: [], alerts: [], goals: [], txns: [],
   tufe: null, bench: null, symbols: [], demo: false, refreshTimer: 0, chartRange: 'all',
+  unit: (safeGet('pf_unit') === 'usd' || safeGet('pf_unit') === 'gold') ? safeGet('pf_unit') : 'try',
 };
 
 /* ---------- yardımcılar ---------- */
@@ -40,6 +41,14 @@ const signedMoney = v => v == null ? '—' : (v > 0 ? '+' : v < 0 ? '−' : '') 
 const signedPct = v => v == null ? '' : (v > 0 ? '+' : v < 0 ? '−' : '') + '%' + nf2.format(Math.abs(v));
 const signedPct1 = v => v == null ? '' : (v > 0 ? '+' : v < 0 ? '−' : '') + '%' + nf1.format(Math.abs(v));
 const plClass = v => v == null || v === 0 ? 'pl-flat' : v > 0 ? 'pl-gain' : 'pl-loss';
+/* Birim görünümü: ₺ / $ / gram altın — tutarları seçili birimde göster. */
+function unitRate(s) {
+  if (state.unit === 'usd' && s.usd_try) return { r: s.usd_try, suf: ' $', nf: nf2 };
+  if (state.unit === 'gold' && s.gold_gram_try) return { r: s.gold_gram_try, suf: ' g', nf: nf1 };
+  return { r: 1, suf: ' ₺', nf: nf2 };
+}
+const fmtU = (v, u) => v == null ? '—' : u.nf.format(v / u.r) + u.suf;
+const signedU = (v, u) => v == null ? '—' : (v > 0 ? '+' : v < 0 ? '−' : '') + u.nf.format(Math.abs(v) / u.r) + u.suf;
 const trDate = iso => new Date((iso.length === 7 ? iso + '-15' : iso) + 'T12:00:00')
   .toLocaleDateString('tr-TR', iso.length === 7 ? { month: 'short', year: 'numeric' } : { day: 'numeric', month: 'short' });
 
@@ -199,7 +208,7 @@ const isDark = () =>
 function logout(announce = true) {
   safeSet(TOKEN_KEY, null);
   state.user = state.summary = null;
-  state.history = []; state.watchlist = []; state.alerts = []; state.goals = []; state.demo = false;
+  state.history = []; state.watchlist = []; state.alerts = []; state.goals = []; state.txns = []; state.demo = false;
   clearInterval(state.refreshTimer);
   renderAuth();
   if (announce) toast('Çıkış yapıldı.');
@@ -246,7 +255,12 @@ function buildDemo() {
     total_day_change, total_day_change_pct: total_day_change / total_value * 100,
     priced_at: new Date().toISOString(),
     usd_try: 49.4, gold_gram_try: 6644.8,
+    realized_pl_total: 2040, realized_pl_year: 2040,
   };
+  state.txns = [
+    { id: -9, asset_type: 'silver', symbol: 'SILVER', side: 'sell', quantity: 50, price: 94, trade_date: '2026-09-18', realized_pl: 2040, note: null },
+    ...DEMO.holdings.map((h, i) => ({ id: -10 - i, asset_type: h.asset_type, symbol: h.symbol, side: 'buy', quantity: h.quantity, price: h.cost_price, trade_date: h.purchase_date, realized_pl: null, note: null })),
+  ];
   const hist = []; let v = total_value;
   for (let i = 0; i < 90; i++) {
     hist.unshift({ day: new Date(Date.now() - i * 864e5).toISOString().slice(0, 10), total_value: Math.round(v), total_cost });
@@ -406,12 +420,14 @@ function mountGoogle() {
 async function enterApp() {
   await Promise.all([loadSymbols(), loadTufe(), loadBench()]);
   try {
-    const [me, summary, history, watchlist, alerts, goals] = await Promise.all([
+    const [me, summary, history, watchlist, alerts, goals, txns] = await Promise.all([
       api('/auth/me'), api('/portfolio/summary'), api('/portfolio/history'),
       api('/portfolio/watchlist'), api('/portfolio/alerts'), api('/portfolio/goals'),
+      api('/portfolio/transactions'),
     ]);
     state.user = me; state.summary = summary; state.history = history || [];
     state.watchlist = watchlist || []; state.alerts = alerts || []; state.goals = goals || [];
+    state.txns = txns || [];
   } catch (ex) {
     if (token()) toast(ex.message, true);
     return renderAuth();
@@ -426,12 +442,14 @@ async function enterApp() {
 async function refreshData(silent) {
   if (state.demo) return;
   try {
-    const [summary, history, watchlist, alerts, goals] = await Promise.all([
+    const [summary, history, watchlist, alerts, goals, txns] = await Promise.all([
       api('/portfolio/summary'), api('/portfolio/history'),
       api('/portfolio/watchlist'), api('/portfolio/alerts'), api('/portfolio/goals'),
+      api('/portfolio/transactions'),
     ]);
     state.summary = summary; state.history = history || [];
     state.watchlist = watchlist || []; state.alerts = alerts || []; state.goals = goals || [];
+    state.txns = txns || [];
     renderApp();
   } catch (ex) { if (!silent) toast(ex.message, true); }
 }
@@ -511,33 +529,41 @@ function renderApp() {
   main.classList.toggle('masked', masked);
   const pricedAt = s.priced_at ? new Date(s.priced_at) : null;
   const timeStr = pricedAt ? pricedAt.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' }) : '';
-  const [lira, kurus] = nf2.format(s.total_value ?? 0).split(',');
+  const U = unitRate(s);
+  const unitLabel = { try: '₺', usd: '$', gold: 'g' };
+  const [lira, kurus] = U.nf.format((s.total_value ?? 0) / U.r).split(',');
   const rr = realReturn(s);
 
   const equiv = [];
-  if (s.usd_try) equiv.push(nf0.format(s.total_value / s.usd_try) + ' $');
-  if (s.gold_gram_try) equiv.push(nf1.format(s.total_value / s.gold_gram_try) + ' gram altın');
+  if (state.unit !== 'try') equiv.push(nf0.format(s.total_value) + ' ₺');
+  if (state.unit !== 'usd' && s.usd_try) equiv.push(nf0.format(s.total_value / s.usd_try) + ' $');
+  if (state.unit !== 'gold' && s.gold_gram_try) equiv.push(nf1.format(s.total_value / s.gold_gram_try) + ' gram altın');
 
   main.innerHTML = demoBanner + `
     <section class="summary" aria-label="Portföy özeti">
       <p class="sum-label">Toplam değer
+        <span class="chips unit-chips" role="tablist" aria-label="Para birimi görünümü">
+          ${['try', 'usd', 'gold'].filter(k => k === 'try' || (k === 'usd' ? s.usd_try : s.gold_gram_try)).map(k =>
+            `<button role="tab" aria-selected="${state.unit === k}" data-unit="${k}" title="${k === 'try' ? 'Türk lirası' : k === 'usd' ? 'Dolar karşılığı' : 'Gram altın karşılığı'}">${unitLabel[k]}</button>`).join('')}
+        </span>
         <button class="btn-icon" id="mask-btn" aria-pressed="${masked}" title="Tutarları gizle/göster" aria-label="Tutarları gizle/göster">${ICONS.eye}</button>
       </p>
-      <p class="sum-value num">${lira}<span class="kurus">,${kurus} ₺</span></p>
+      <p class="sum-value num">${lira}<span class="kurus">${kurus != null ? ',' + kurus : ''}${U.suf}${state.unit === 'gold' ? ' altın' : ''}</span></p>
       ${equiv.length ? `<p class="sum-equiv num">≈ ${equiv.join(' ya da ')}</p>` : ''}
       <div class="sum-row num">
-        <span class="sum-item">Bugün<b class="${plClass(s.total_day_change)}">${signedMoney(s.total_day_change)}${s.total_day_change_pct != null ? ' (' + signedPct(s.total_day_change_pct) + ')' : ''}</b></span>
-        <span class="sum-item">Toplam kâr/zarar<b class="${plClass(s.total_profit_loss)}">${signedMoney(s.total_profit_loss)} (${signedPct(s.total_profit_loss_pct)})</b></span>
+        <span class="sum-item">Bugün<b class="${plClass(s.total_day_change)}">${signedU(s.total_day_change, U)}${s.total_day_change_pct != null ? ' (' + signedPct(s.total_day_change_pct) + ')' : ''}</b></span>
+        <span class="sum-item">Toplam kâr/zarar<b class="${plClass(s.total_profit_loss)}">${signedU(s.total_profit_loss, U)} (${signedPct(s.total_profit_loss_pct)})</b></span>
         ${rr && rr.dated
-          ? `<span class="sum-item" title="Maliyetin, alış tarihinden bugüne TÜİK TÜFE ile bugünkü liraya çevrilmiş hâline göre kâr/zarar.${rr.undated ? ' Alış tarihi olmayan ' + rr.undated + ' pozisyon düzeltilmeden katıldı.' : ''}${rr.partial ? ' Çok eski alışlarda TÜFE serisi ' + (state.tufe[0] ? state.tufe[0][0] : '') + ' başlangıçlı.' : ''}">Enflasyon sonrası (reel)<b class="${plClass(rr.pl)}">${(rr.undated || rr.partial) ? '≈ ' : ''}${signedMoney(rr.pl)} (${signedPct(rr.pct)})</b></span>`
+          ? `<span class="sum-item" title="Maliyetin, alış tarihinden bugüne TÜİK TÜFE ile bugünkü liraya çevrilmiş hâline göre kâr/zarar.${rr.undated ? ' Alış tarihi olmayan ' + rr.undated + ' pozisyon düzeltilmeden katıldı.' : ''}${rr.partial ? ' Çok eski alışlarda TÜFE serisi ' + (state.tufe[0] ? state.tufe[0][0] : '') + ' başlangıçlı.' : ''}">Enflasyon sonrası (reel)<b class="${plClass(rr.pl)}">${(rr.undated || rr.partial) ? '≈ ' : ''}${signedU(rr.pl, U)} (${signedPct(rr.pct)})</b></span>`
           : `<span class="sum-item" title="Pozisyonlarına alış tarihi eklersen maliyetini TÜFE ile bugüne taşıyıp gerçek (reel) kârını gösteririz.">Enflasyon sonrası (reel)<b class="pl-flat">alış tarihi ekle</b></span>`}
+        ${s.realized_pl_total ? `<span class="sum-item" title="Satışlardan realize edilen kâr/zarar (ortalama maliyete göre). Bu yıl: ${signedMoney(s.realized_pl_year)}">Realize (satışlardan)<b class="${plClass(s.realized_pl_total)}">${signedU(s.realized_pl_total, U)}</b></span>` : ''}
       </div>
       <div class="sum-meta">
         <span>Fiyatlar ${timeStr} itibarıyla.</span>
         <button class="btn-icon" id="refresh-btn" title="Fiyatları yenile" aria-label="Fiyatları yenile">${ICONS.refresh}</button>
         <button class="btn-icon" id="share-btn" title="Portföy kartını paylaş (tutarsız, sadece yüzdeler)" aria-label="Portföy kartını paylaş">${ICONS.share}</button>
       </div>
-      ${allocHtml(s)}
+      ${allocHtml(s, U)}
       ${goalsHtml(s)}
     </section>
     ${chartHtml()}
@@ -553,8 +579,9 @@ function renderApp() {
       <div class="hhead" aria-hidden="true">
         <span>Varlık</span><span class="r">Adet / gram</span><span class="r">Güncel</span><span class="r">Değer</span><span class="r">Kâr/zarar</span><span></span>
       </div>
-      <div id="hlist">${s.holdings.slice().sort((a, b) => (b.current_value ?? b.cost_value) - (a.current_value ?? a.cost_value)).map(h => rowHtml(h, s.total_value)).join('')}</div>
+      <div id="hlist">${s.holdings.slice().sort((a, b) => (b.current_value ?? b.cost_value) - (a.current_value ?? a.cost_value)).map(h => rowHtml(h, s.total_value, U)).join('')}</div>
     </section>
+    ${txnsHtml()}
     ${watchHtml()}
     ${alertsHtml()}`;
 
@@ -563,6 +590,11 @@ function renderApp() {
   main.querySelector('#refresh-btn').addEventListener('click', () => state.demo ? toast('Örnek modda fiyatlar temsilî.') : refreshData());
   main.querySelector('#csv-btn').addEventListener('click', exportCsv);
   main.querySelector('#share-btn').addEventListener('click', shareCard);
+  main.querySelectorAll('.unit-chips button').forEach(b => b.addEventListener('click', () => {
+    state.unit = b.dataset.unit;
+    safeSet('pf_unit', state.unit === 'try' ? null : state.unit);
+    renderApp();
+  }));
   main.querySelector('#mask-btn').addEventListener('click', () => {
     const now = safeGet('pf_masked') !== '1';
     safeSet('pf_masked', now ? '1' : null);
@@ -576,6 +608,7 @@ function renderApp() {
     }));
   bindGoals();
   bindChart();
+  bindTxns();
   bindWatch();
   bindAlerts();
 }
@@ -690,13 +723,20 @@ function chartHtml() {
   const hist = filteredHistory();
   if (hist.length < 2) { state.chartRange = 'all'; return chartHtml(); }
   const vs = hist.map(p => p.total_value);
-  const min = Math.min(...vs), max = Math.max(...vs);
+  let min = Math.min(...vs), max = Math.max(...vs);
+  // maliyet çizgisi makul banttaysa eksene dahil et (yoksa görünmez kalır)
+  const cs = hist.map(p => p.total_cost);
+  const cmin = Math.min(...cs), cmax = Math.max(...cs);
+  if (cmin >= min * 0.6 && cmax <= max * 1.4) { min = Math.min(min, cmin); max = Math.max(max, cmax); }
   const span = (max - min) || max * 0.05 || 1;
   const x = i => CH.l + (CH.w - CH.l - CH.r) * (i / (hist.length - 1));
   const y = v => CH.t + (CH.h - CH.t - CH.b) * (1 - (v - min + span * 0.08) / (span * 1.16));
   const pts = vs.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`);
   const line = 'M' + pts.join(' L');
   const area = line + ` L${x(vs.length - 1).toFixed(1)},${CH.h - CH.b} L${x(0).toFixed(1)},${CH.h - CH.b} Z`;
+  // kesikli maliyet çizgisi: yatırdığın toplam (görünür aralığa kırpılmış)
+  const costPath = 'M' + hist.map((p, i) =>
+    `${x(i).toFixed(1)},${Math.min(CH.h - CH.b, Math.max(CH.t, y(p.total_cost))).toFixed(1)}`).join(' L');
   const last = hist[hist.length - 1], first = hist[0];
   const period = last.total_value - first.total_value;
   const chips = all.length > 32 ? `
@@ -707,11 +747,12 @@ function chartHtml() {
   return `<section class="chart" aria-label="Değer grafiği">
     <div class="chart-head">
       <h2>Değer grafiği</h2>
-      <span class="chart-tools">${chips}<span class="chart-sub num">${trDate(first.day)} – ${trDate(last.day)} · <b class="${plClass(period)}">${signedMoney(period)}</b></span></span>
+      <span class="chart-tools">${chips}<span class="chart-sub num">${trDate(first.day)} – ${trDate(last.day)} · <b class="${plClass(period)}">${signedMoney(period)}</b> · <small>kesikli: maliyet</small></span></span>
     </div>
     <div class="chart-box">
       <svg viewBox="0 0 ${CH.w} ${CH.h}" preserveAspectRatio="none" role="img" aria-label="Portföy değerinin günlük seyri">
         <path class="c-area" d="${area}"/>
+        <path class="c-paid" d="${costPath}" vector-effect="non-scaling-stroke"/>
         <path class="c-line" d="${line}" vector-effect="non-scaling-stroke"/>
         <line class="c-cross" x1="0" x2="0" y1="${CH.t}" y2="${CH.h - CH.b}" visibility="hidden"/>
         <circle class="c-dot" r="4.5" visibility="hidden"/>
@@ -735,7 +776,11 @@ function bindChart() {
   const cross = svg.querySelector('.c-cross'), dot = svg.querySelector('.c-dot');
   const hist = filteredHistory();
   const vs = hist.map(p => p.total_value);
-  const min = Math.min(...vs), max = Math.max(...vs);
+  let min = Math.min(...vs), max = Math.max(...vs);
+  // maliyet çizgisi makul banttaysa eksene dahil et (yoksa görünmez kalır)
+  const cs = hist.map(p => p.total_cost);
+  const cmin = Math.min(...cs), cmax = Math.max(...cs);
+  if (cmin >= min * 0.6 && cmax <= max * 1.4) { min = Math.min(min, cmin); max = Math.max(max, cmax); }
   const span = (max - min) || max * 0.05 || 1;
   const xOf = i => CH.l + (CH.w - CH.l - CH.r) * (i / (hist.length - 1));
   const yOf = v => CH.t + (CH.h - CH.t - CH.b) * (1 - (v - min + span * 0.08) / (span * 1.16));
@@ -784,7 +829,7 @@ function benchHtml(s) {
   </section>`;
 }
 
-function allocHtml(s) {
+function allocHtml(s, U) {
   const sums = { bist: 0, gold: 0, silver: 0 };
   for (const h of s.holdings) sums[h.asset_type] += h.current_value ?? h.cost_value ?? 0;
   const total = sums.bist + sums.gold + sums.silver;
@@ -795,12 +840,12 @@ function allocHtml(s) {
       ${order.map(([k]) => `<span class="f-${k}" style="flex:${(sums[k] / total * 1000).toFixed(0)}" title="${TYPE[k].label}: ${money(sums[k])}"></span>`).join('')}
     </div>
     <div class="alloc-legend num">
-      ${order.map(([k, l]) => `<span><span class="dot" style="background:var(--a-${k})"></span>${l} <b>${money(sums[k])}</b><span class="pct">%${nf0.format(sums[k] / total * 100)}</span></span>`).join('')}
+      ${order.map(([k, l]) => `<span><span class="dot" style="background:var(--a-${k})"></span>${l} <b>${fmtU(sums[k], U)}</b><span class="pct">%${nf0.format(sums[k] / total * 100)}</span></span>`).join('')}
     </div>
   </div>`;
 }
 
-function rowHtml(h, totalValue) {
+function rowHtml(h, totalValue, U) {
   const t = TYPE[h.asset_type];
   const dayStr = h.change_pct != null ? signedPct(h.change_pct) : '';
   const w = totalValue && h.current_value != null ? h.current_value / totalValue * 100 : null;
@@ -812,8 +857,8 @@ function rowHtml(h, totalValue) {
     </span>
     <span class="r c-qty"><span class="cell-main">${nfq.format(h.quantity)} ${t.unit}</span><span class="cell-sub">maliyet ${money(h.cost_price)}</span></span>
     <span class="r c-price"><span class="cell-main">${money(h.current_price)}</span><span class="cell-sub ${plClass(h.change_pct)}">${dayStr}</span></span>
-    <span class="r c-value"><span class="cell-main">${money(h.current_value)}</span>${w != null ? `<span class="cell-sub" title="Portföydeki payı">pay %${nf0.format(w)}</span>` : ''}</span>
-    <span class="r c-pl"><span class="${plClass(h.profit_loss)}">${signedMoney(h.profit_loss)}</span><span class="cell-sub ${plClass(h.profit_loss)}">${h.profit_loss_pct != null ? signedPct(h.profit_loss_pct) : ''}</span></span>
+    <span class="r c-value"><span class="cell-main">${fmtU(h.current_value, U)}</span>${w != null ? `<span class="cell-sub" title="Portföydeki payı">pay %${nf0.format(w)}</span>` : ''}</span>
+    <span class="r c-pl"><span class="${plClass(h.profit_loss)}">${signedU(h.profit_loss, U)}</span><span class="cell-sub ${plClass(h.profit_loss)}">${h.profit_loss_pct != null ? signedPct(h.profit_loss_pct) : ''}</span></span>
     <span class="edit-ic" aria-hidden="true">${ICONS.edit}</span>
   </button>`;
 }
@@ -854,6 +899,7 @@ function openDetailDialog(h) {
     <div class="dlg-actions">
       <button type="button" class="btn-icon" id="ddlg-alert" title="Fiyat alarmı kur" aria-label="Fiyat alarmı kur">${ICONS.bell}</button>
       <span class="grow"></span>
+      <button type="button" class="btn btn-quiet" id="ddlg-sell">Sat</button>
       <button type="button" class="btn btn-quiet" id="ddlg-edit">Düzenle</button>
       <button type="button" class="btn btn-primary" id="ddlg-close">Kapat</button>
     </div>`;
@@ -863,6 +909,7 @@ function openDetailDialog(h) {
   dlg.querySelector('#ddlg-x').addEventListener('click', () => dlg.close());
   dlg.querySelector('#ddlg-close').addEventListener('click', () => dlg.close());
   dlg.querySelector('#ddlg-edit').addEventListener('click', () => { dlg.close(); openHoldingDialog(h); });
+  dlg.querySelector('#ddlg-sell').addEventListener('click', () => { dlg.close(); openSellDialog(h); });
   dlg.querySelector('#ddlg-alert').addEventListener('click', () => { dlg.close(); openAlertDialog(h.asset_type, h.symbol, h.current_price); });
 
   async function load() {
@@ -945,6 +992,113 @@ function drawMini(box, points, h) {
   function hide() { cross.setAttribute('visibility', 'hidden'); dot.setAttribute('visibility', 'hidden'); tip.hidden = true; }
   box.addEventListener('pointermove', e => show(e.clientX));
   box.addEventListener('pointerleave', hide);
+}
+
+/* ---------- işlem defteri ---------- */
+let txnsExpanded = false;
+function txnsHtml() {
+  const items = state.txns;
+  if (!items.length) return '';
+  const shown = txnsExpanded ? items : items.slice(0, 8);
+  const row = x => {
+    const t = TYPE[x.asset_type];
+    const d = x.trade_date || (x.created_at ? x.created_at.slice(0, 10) : null);
+    const dStr = d ? (d.slice(0, 4) === String(new Date().getFullYear()) ? trDate(d)
+      : new Date(d + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'short', year: 'numeric' })) : '';
+    return `<div class="trow num">
+      <span class="side side-${x.side}">${x.side === 'buy' ? 'AL' : 'SAT'}</span>
+      <span class="asset"><span class="tick tick-${t.cls}">${esc(t.tick(x.symbol))}</span>
+        <span class="aname"><b>${nfq.format(x.quantity)} ${t.unit} · ${money(x.price)}</b>
+        ${x.note ? `<small>${esc(x.note)}</small>` : ''}</span></span>
+      <span class="r"><span class="cell-sub">${dStr}</span>
+        ${x.realized_pl != null ? `<span class="${plClass(x.realized_pl)}">${signedMoney(x.realized_pl)}</span>` : ''}</span>
+    </div>`;
+  };
+  return `<section class="txns" aria-label="İşlem geçmişi">
+    <div class="holdings-head">
+      <h2>İşlemler</h2>
+      <div class="tools">
+        <button class="btn-icon" id="txn-csv" title="İşlemleri CSV indir" aria-label="İşlemleri CSV olarak indir">${ICONS.csv}</button>
+      </div>
+    </div>
+    ${shown.map(row).join('')}
+    ${items.length > 8 ? `<button class="show-all" id="txn-more">${txnsExpanded ? 'Daha az göster' : `Tümünü göster (${items.length})`}</button>` : ''}
+  </section>`;
+}
+function bindTxns() {
+  document.getElementById('txn-more')?.addEventListener('click', () => { txnsExpanded = !txnsExpanded; renderApp(); });
+  document.getElementById('txn-csv')?.addEventListener('click', () => {
+    const head = ['tarih', 'islem', 'tur', 'sembol', 'miktar', 'birim_fiyat', 'tutar', 'realize_kz', 'not'];
+    const rows = state.txns.map(x => [
+      x.trade_date || (x.created_at || '').slice(0, 10), x.side === 'buy' ? 'ALIM' : 'SATIM',
+      TYPE[x.asset_type].label, x.symbol, x.quantity, x.price,
+      Math.round(x.quantity * x.price * 100) / 100, x.realized_pl ?? '', x.note ?? '',
+    ]);
+    const csv = '﻿' + [head, ...rows]
+      .map(r => r.map(v => '"' + String(v).replace(/"/g, '""') + '"').join(';')).join('\r\n');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    a.download = 'parafomo-islemler-' + new Date().toISOString().slice(0, 10) + '.csv';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+}
+
+/* ---------- satış ---------- */
+function openSellDialog(h) {
+  document.getElementById('sell-dlg')?.remove();
+  const t = TYPE[h.asset_type];
+  const dlg = document.createElement('dialog');
+  dlg.id = 'sell-dlg';
+  dlg.innerHTML = `
+    <div class="dlg-head"><h2>Satış kaydet</h2>
+      <button class="btn-icon" id="sdlg-x" aria-label="Kapat">${ICONS.x}</button></div>
+    <p style="margin:0 0 14px"><span class="tick tick-${t.cls}">${esc(t.tick(h.symbol))}</span>
+      <b style="margin-left:8px">${esc(t.name(h.symbol))}</b>
+      <span class="cell-sub num" style="display:inline;margin-left:8px">elinde ${nfq.format(h.quantity)} ${t.unit}</span></p>
+    <form id="sell-form">
+      <label class="field"><span>Satılan ${t.unit === 'gram' ? 'gram' : 'adet'}
+        — <button type="button" class="linklike" id="sell-all">tümünü sat (${nfq.format(h.quantity)})</button></span>
+        <input name="quantity" type="number" step="any" min="0.0001" max="${h.quantity}" required inputmode="decimal"></label>
+      <label class="field"><span>Satış fiyatı (₺)</span>
+        <input name="price" type="number" step="any" min="0.0001" required inputmode="decimal" value="${h.current_price != null ? Math.round(h.current_price * 100) / 100 : ''}"></label>
+      <p class="price-hint num">Ortalama maliyetin ${money(h.cost_price)} — realize kâr/zarar buna göre hesaplanır.</p>
+      <label class="field"><span>Satış tarihi</span>
+        <input name="trade_date" type="date" max="${new Date().toISOString().slice(0, 10)}" value="${new Date().toISOString().slice(0, 10)}"></label>
+      <label class="field"><span>Not (isteğe bağlı)</span><input name="note" maxlength="280"></label>
+      <p class="form-error" id="sdlg-err" role="alert"></p>
+      <div class="dlg-actions"><span class="grow"></span>
+        <button type="button" class="btn btn-quiet" id="sdlg-cancel">Vazgeç</button>
+        <button type="submit" class="btn btn-primary">Satışı kaydet</button>
+      </div>
+    </form>`;
+  document.body.appendChild(dlg);
+  dlg.showModal();
+  dlg.addEventListener('close', () => dlg.remove());
+  dlg.querySelector('#sdlg-x').addEventListener('click', () => dlg.close());
+  dlg.querySelector('#sdlg-cancel').addEventListener('click', () => dlg.close());
+  dlg.querySelector('#sell-all').addEventListener('click', () => {
+    dlg.querySelector('[name=quantity]').value = h.quantity;
+  });
+  dlg.querySelector('#sell-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    if (state.demo) { dlg.close(); return demoNudge(); }
+    const err = dlg.querySelector('#sdlg-err');
+    const btn = e.target.querySelector('button[type=submit]');
+    btn.disabled = true;
+    try {
+      const txn = await api('/portfolio/transactions', { method: 'POST', body: JSON.stringify({
+        asset_type: h.asset_type, symbol: h.symbol, side: 'sell',
+        quantity: parseFloat(e.target.quantity.value.replace(',', '.')),
+        price: parseFloat(e.target.price.value.replace(',', '.')),
+        trade_date: e.target.trade_date.value || null,
+        note: e.target.note.value.trim() || null,
+      })});
+      dlg.close();
+      toast(`Satış kaydedildi — realize ${signedMoney(txn.realized_pl)}.`);
+      await refreshData();
+    } catch (ex) { err.textContent = ex.message; btn.disabled = false; }
+  });
 }
 
 /* ---------- izleme listesi ---------- */
@@ -1358,8 +1512,9 @@ function openHoldingDialog(existing, preset) {
       <button class="btn-icon" value="cancel" id="dlg-x" aria-label="Kapat">${ICONS.x}</button>
     </div>
     <form id="holding-form">
-      ${isEdit ? `<p style="margin:0 0 14px"><span class="tick tick-${TYPE[existing.asset_type].cls}">${esc(TYPE[existing.asset_type].tick(existing.symbol))}</span>
-        <b style="margin-left:8px">${esc(TYPE[existing.asset_type].name(existing.symbol))}</b></p>` : `
+      ${isEdit ? `<p style="margin:0 0 6px"><span class="tick tick-${TYPE[existing.asset_type].cls}">${esc(TYPE[existing.asset_type].tick(existing.symbol))}</span>
+        <b style="margin-left:8px">${esc(TYPE[existing.asset_type].name(existing.symbol))}</b></p>
+        <p class="cell-sub" style="margin:0 0 14px">Bu düzeltmeler işlem defterine yazılmaz; alım/satım için pozisyon detayını kullan.</p>` : `
       <div class="seg" role="radiogroup" aria-label="Varlık türü">
         ${Object.entries(TYPE).map(([k, t]) => `
           <label><input type="radio" name="asset_type" value="${k}" ${k === presetType ? 'checked' : ''}><span>${t.label}</span></label>`).join('')}
@@ -1465,11 +1620,11 @@ function openHoldingDialog(existing, preset) {
       } else {
         const assetType = form.asset_type.value;
         let symbol = assetType === 'bist' ? resolveSymbol(form) : assetType;
-        await api('/portfolio/holdings', {
+        await api('/portfolio/transactions', {
           method: 'POST',
-          body: JSON.stringify({ asset_type: assetType, symbol, quantity: qty, cost_price: cost, purchase_date: date, note }),
+          body: JSON.stringify({ asset_type: assetType, symbol, side: 'buy', quantity: qty, price: cost, trade_date: date, note }),
         });
-        toast('Pozisyon eklendi. Aynı varlığı tekrar eklersen ortalama maliyet hesaplanır.');
+        toast('Alım deftere işlendi. Aynı varlığı tekrar alırsan ortalama maliyet hesaplanır.');
       }
       dlg.close();
       await refreshData();
