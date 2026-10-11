@@ -1,9 +1,14 @@
 # 💼 Portföy Takip — ürün backlog'u
 
-> **2026-10-11 — ÜRÜNÜN YENİ EVİ: app.parafomo.com.** Portföy uygulaması artık ayrı statik SPA:
-> repo `app/` → `bash scripts/deploy-app.sh` → Caddy `/srv/parafomo-app` (api.parafomo.com aynı backend).
-> Ana sitedeki /portfoy-takip SEO sayfası ve /portfoy/panel eski panel DURUYOR; panel üstünde app'e yönlendirme var.
-> Bu backlog'daki UX maddeleri bundan sonra app/ içinde yapılır (Astro panel'e değil).
+> **2026-10-11 — ÜRÜNÜN YENİ EVİ: app.parafomo.com/portfoy/ (lobi mimarisi).** Kaan uygulamaları
+> SATMAK istiyor; app.parafomo.com/ lobi (uygulama rafı), her uygulama `app/<slug>/` klasöründe.
+> Portföy: `app/portfoy/` → `bash scripts/deploy-app.sh` → Caddy `/srv/parafomo-app`
+> (backend aynı api.parafomo.com). Ortak stil `app/theme.css`. Eski /portfoy/panel duruyor (yönlendirme notlu).
+> Bu backlog'daki UX maddeleri bundan sonra `app/portfoy/` içinde yapılır (Astro panel'e DEĞİL).
+> Kaan 2026-10-11: "uygulama çok basit olmuş" → satılabilir derinlik öncelik: aday işler sırayla —
+> pozisyon geçmişi/değer grafiği (günlük snapshot tablosu gerekir, şema onayı Kaan'dan), izleme listesi,
+> fiyat alarmı (e-posta), çoklu portföy, hedef/oran analizi. Yeni eklenenler (yapıldı): gizlilik gözü,
+> pay %, CSV dışa aktarma.
 
 
 
