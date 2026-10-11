@@ -83,6 +83,51 @@ def _gold_silver_quote(asset_type: AssetType) -> tuple[float, float | None] | No
     return quote
 
 
+def _fx_quote(asset_type: AssetType) -> tuple[float, float | None] | None:
+    """Döviz kuru (USD/EUR satış) — Truncgil, gold ile aynı desen."""
+    key = "USD" if asset_type is AssetType.USD else "EUR"
+    cached = _cache_get("fx:" + key)
+    if cached is not None:
+        return cached
+    try:
+        data = _fetch_truncgil()
+    except (httpx.HTTPError, ValueError):
+        return None
+    entry = data.get(key) or {}
+    price = _num(entry.get("Selling"))
+    if price is None:
+        return None
+    quote = (price, _pct(entry.get("Change")))
+    _cache_set("fx:" + key, quote)
+    return quote
+
+
+_COINGECKO_URL = ("https://api.coingecko.com/api/v3/simple/price"
+                  "?ids=bitcoin,ethereum&vs_currencies=try&include_24hr_change=true")
+
+
+def _crypto_quote(asset_type: AssetType) -> tuple[float, float | None] | None:
+    """BTC/ETH TL fiyatı + 24s değişim — CoinGecko (tek çağrı iki koin, cache ortak)."""
+    coin = "bitcoin" if asset_type is AssetType.BTC else "ethereum"
+    cached = _cache_get("cg:" + coin)
+    if cached is not None:
+        return cached
+    try:
+        with httpx.Client(timeout=20, headers={"User-Agent": _UA}) as client:
+            r = client.get(_COINGECKO_URL)
+            r.raise_for_status()
+            data = r.json()
+    except (httpx.HTTPError, ValueError):
+        return None
+    for cid in ("bitcoin", "ethereum"):
+        entry = data.get(cid) or {}
+        price = entry.get("try")
+        if price is not None:
+            chg = entry.get("try_24h_change")
+            _cache_set("cg:" + cid, (float(price), round(float(chg), 2) if chg is not None else None))
+    return _cache_get("cg:" + coin)
+
+
 def get_usd_try() -> float | None:
     """Güncel USD/TRY satış kuru (Truncgil); alınamazsa None."""
     cached = _cache_get("usd-try")
@@ -128,7 +173,15 @@ def get_quote(asset_type: AssetType, symbol: str) -> tuple[float, float | None] 
     """Güncel (birim fiyat TL, gün içi değişim %) döndürür; alınamazsa None."""
     if asset_type is AssetType.BIST:
         return _bist_quote(symbol)
-    return _gold_silver_quote(asset_type)
+    if asset_type in (AssetType.GOLD, AssetType.SILVER):
+        return _gold_silver_quote(asset_type)
+    if asset_type in (AssetType.USD, AssetType.EUR):
+        return _fx_quote(asset_type)
+    if asset_type in (AssetType.BTC, AssetType.ETH):
+        return _crypto_quote(asset_type)
+    if asset_type is AssetType.CASH:
+        return (1.0, 0.0)
+    return None
 
 
 def get_price(asset_type: AssetType, symbol: str) -> float | None:

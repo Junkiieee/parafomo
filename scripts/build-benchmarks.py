@@ -50,6 +50,10 @@ def main() -> None:
     gc = yahoo_monthly("GC=F")  # ons altın USD
     time.sleep(1)
     si = yahoo_monthly("SI=F")  # ons gümüş USD
+    time.sleep(1)
+    eur = yahoo_monthly("EURTRY=X")
+    time.sleep(1)
+    btc = yahoo_monthly("BTC-USD")
 
     months = sorted(set(usd) & set(gc))
     series = []
@@ -60,6 +64,10 @@ def main() -> None:
             row["xu100"] = round(xu[ym], 2)
         if ym in si:
             row["silver"] = round(si[ym] * usd[ym] / OZ, 2)
+        if ym in eur:
+            row["eur"] = round(eur[ym], 4)
+        if ym in btc:
+            row["btc"] = round(btc[ym] * usd[ym], 2)
         series.append(row)
 
     # mantık bekçisi: seri kısaysa ya da son ay çok eskiyse yazma
@@ -70,8 +78,8 @@ def main() -> None:
         sys.exit("HATA: son ay bir yıldan eski görünüyor — kaynak bozuk olabilir")
 
     doc = {
-        "_aciklama": ("Aylık kapanışlar: usd=USD/TRY, gold=gram altın TL (GC=F×kur÷31,1035), "
-                      "xu100=BIST 100 endeksi. Kaynak: Yahoo Finance chart API."),
+        "_aciklama": ("Aylık kapanışlar: usd=USD/TRY, eur=EUR/TRY, gold/silver=gram TL, "
+                      "xu100=BIST 100, btc=Bitcoin TL. Kaynak: Yahoo Finance chart API."),
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "months": series,
     }

@@ -309,3 +309,31 @@ dialog::backdrop { background: rgba(8, 18, 16, .55); }
 .c-paid { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 5 4; }
 .unit-chips { vertical-align: 1px; }
 .unit-chips button { padding: 3px 9px; font-size: .74rem; }
+
+/* ---- yeni varlık sınıfları ---- */
+.tick-usd, .tick-eur { background: var(--chip-fx); color: var(--a-fx); }
+.tick-btc, .tick-eth { background: var(--chip-crypto); color: var(--a-crypto); }
+.tick-cash { background: var(--chip-cash); color: var(--a-cash); }
+.alloc-bar .f-fx { background: var(--a-fx); }
+.alloc-bar .f-crypto { background: var(--a-crypto); }
+.alloc-bar .f-cash { background: repeating-linear-gradient(45deg, var(--a-cash) 0 4px, var(--line-soft) 4px 8px); }
+.alloc-legend .dot.d-cash { background: repeating-linear-gradient(45deg, var(--a-cash) 0 3px, var(--line-soft) 3px 6px) !important; }
+
+.seg-wrap { flex-wrap: wrap; }
+.seg-wrap label { flex: 1 1 30%; min-width: 86px; }
+
+/* ---- öne çıkanlar ---- */
+.hl { margin: 14px 0 0; font-size: .9rem; color: var(--muted); }
+.hl b { font-weight: 600; margin-left: 4px; }
+.hl-sep { color: var(--line); padding: 0 4px; }
+.masked .hl { filter: none; } /* yüzdeler tutar değil */
+
+/* ---- detay haberleri ---- */
+.dnews { margin: 16px 0 4px; border-top: 1px solid var(--line-soft); padding-top: 12px; }
+.dnews h3 { font-size: .85rem; color: var(--muted); font-weight: 600; margin: 0 0 8px; }
+.dnews a {
+  display: flex; justify-content: space-between; gap: 12px; align-items: baseline;
+  padding: 6px 0; font-size: .9rem; color: var(--ink); text-decoration: none; line-height: 1.4;
+}
+.dnews a:hover { color: var(--brand-deep); }
+.dnews a small { color: var(--muted); flex-shrink: 0; font-size: .76rem; }

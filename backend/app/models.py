@@ -30,6 +30,11 @@ class AssetType(str, enum.Enum):
     BIST = "bist"        # BIST hissesi — symbol = ticker (ör. THYAO), Yahoo <symbol>.IS
     GOLD = "gold"        # Altın (gram, 24 ayar) — Truncgil
     SILVER = "silver"    # Gümüş (gram) — Truncgil
+    USD = "usd"          # Amerikan doları — Truncgil
+    EUR = "eur"          # Euro — Truncgil
+    BTC = "btc"          # Bitcoin (TL) — CoinGecko
+    ETH = "eth"          # Ethereum (TL) — CoinGecko
+    CASH = "cash"        # TL nakit — fiyat sabit 1
 
 
 class User(Base):

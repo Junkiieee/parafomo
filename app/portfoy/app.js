@@ -7,10 +7,20 @@ const TOKEN_KEY = 'pf_token';
 const GOOGLE_CLIENT_ID = '1020605001020-3o64jftksul1tkqj2gov24j7qj4o18f4.apps.googleusercontent.com';
 
 const TYPE = {
-  bist:   { tick: s => s, name: s => symbolName(s), unit: 'adet', cls: 'bist',   label: 'Hisse' },
-  gold:   { tick: () => 'ALTIN',  name: () => 'Gram altın (24 ayar)', unit: 'gram', cls: 'gold',   label: 'Altın' },
-  silver: { tick: () => 'GÜMÜŞ', name: () => 'Gram gümüş',           unit: 'gram', cls: 'silver', label: 'Gümüş' },
+  bist:   { tick: s => s, name: s => symbolName(s), unit: 'adet', q: 'Adet', cls: 'bist',   label: 'Hisse' },
+  gold:   { tick: () => 'ALTIN',  name: () => 'Gram altın (24 ayar)', unit: 'gram', q: 'Gram', cls: 'gold',   label: 'Altın' },
+  silver: { tick: () => 'GÜMÜŞ', name: () => 'Gram gümüş',           unit: 'gram', q: 'Gram', cls: 'silver', label: 'Gümüş' },
+  usd:    { tick: () => 'USD', name: () => 'Amerikan doları', unit: '$',   q: 'Dolar miktarı ($)', cls: 'usd',  label: 'Dolar' },
+  eur:    { tick: () => 'EUR', name: () => 'Euro',            unit: '€',   q: 'Euro miktarı (€)',  cls: 'eur',  label: 'Euro' },
+  btc:    { tick: () => 'BTC', name: () => 'Bitcoin',         unit: 'BTC', q: 'Miktar (BTC)',      cls: 'btc',  label: 'Bitcoin' },
+  eth:    { tick: () => 'ETH', name: () => 'Ethereum',        unit: 'ETH', q: 'Miktar (ETH)',      cls: 'eth',  label: 'Ethereum' },
+  cash:   { tick: () => 'TL',  name: () => 'Nakit (TL)',      unit: '₺',   q: 'Tutar (₺)',         cls: 'cash', label: 'Nakit', fixed: true },
 };
+const ALLOC_CLASS = { bist: 'bist', gold: 'gold', silver: 'silver', usd: 'fx', eur: 'fx', btc: 'crypto', eth: 'crypto', cash: 'cash' };
+const ALLOC_META = [
+  ['gold', 'Altın'], ['bist', 'Hisse'], ['silver', 'Gümüş'],
+  ['fx', 'Döviz'], ['crypto', 'Kripto'], ['cash', 'Nakit'],
+];
 const GOAL_KIND = {
   try:    { label: '₺ değer',          fmt: v => nf0.format(v) + ' ₺' },
   usd:    { label: 'dolar karşılığı',  fmt: v => nf0.format(v) + ' $' },
@@ -228,6 +238,9 @@ const DEMO = {
     { id: -2, asset_type: 'bist',   symbol: 'THYAO', quantity: 40,  cost_price: 246,  purchase_date: '2025-12-15', note: null, current_price: 287.5, change_pct: 0 },
     { id: -3, asset_type: 'bist',   symbol: 'ASELS', quantity: 15,  cost_price: 298,  purchase_date: '2026-07-10', note: null, current_price: 351.2, change_pct: 0 },
     { id: -4, asset_type: 'silver', symbol: 'SILVER', quantity: 200, cost_price: 53.2, purchase_date: '2025-08-18', note: null, current_price: 96.4, change_pct: 0.6 },
+    { id: -5, asset_type: 'usd',  symbol: 'USD',  quantity: 1000,  cost_price: 42.95, purchase_date: '2025-12-28', note: null, current_price: 49.4, change_pct: 0.1 },
+    { id: -6, asset_type: 'btc',  symbol: 'BTC',  quantity: 0.01,  cost_price: 3465000, purchase_date: '2026-04-20', note: null, current_price: 4122800, change_pct: 0.9 },
+    { id: -7, asset_type: 'cash', symbol: 'CASH', quantity: 25000, cost_price: 1, purchase_date: '2026-08-01', note: 'acil durum fonu', current_price: 1, change_pct: 0 },
   ],
   watchlist: [
     { id: -1, asset_type: 'bist', symbol: 'TUPRS', current_price: 184.3, change_pct: 0 },
@@ -563,6 +576,7 @@ function renderApp() {
         <button class="btn-icon" id="refresh-btn" title="Fiyatları yenile" aria-label="Fiyatları yenile">${ICONS.refresh}</button>
         <button class="btn-icon" id="share-btn" title="Portföy kartını paylaş (tutarsız, sadece yüzdeler)" aria-label="Portföy kartını paylaş">${ICONS.share}</button>
       </div>
+      ${highlightsHtml(s, U)}
       ${allocHtml(s, U)}
       ${goalsHtml(s)}
     </section>
@@ -611,6 +625,58 @@ function renderApp() {
   bindTxns();
   bindWatch();
   bindAlerts();
+}
+
+/* ---------- XIRR (para-ağırlıklı yıllık getiri) ---------- */
+function xirr(flows) {
+  if (flows.length < 2) return null;
+  const t0 = flows[0].t, YEAR = 31557600000;
+  const f = r => flows.reduce((a, x) => a + x.v / Math.pow(1 + r, (x.t - t0) / YEAR), 0);
+  let lo = -0.95, hi = 9, flo = f(lo), fhi = f(hi);
+  if (!isFinite(flo) || !isFinite(fhi) || flo * fhi > 0) return null;
+  for (let i = 0; i < 90; i++) {
+    const m = (lo + hi) / 2, fm = f(m);
+    if (flo * fm <= 0) { hi = m; fhi = fm; } else { lo = m; flo = fm; }
+  }
+  return (lo + hi) / 2 * 100;
+}
+function portfolioXirr(s) {
+  if (!state.txns.length || s.total_value == null) return null;
+  const flows = state.txns.map(x => ({
+    t: new Date((x.trade_date || (x.created_at || '').slice(0, 10) || '') + 'T12:00:00').getTime(),
+    v: x.side === 'buy' ? -x.quantity * x.price : x.quantity * x.price,
+  })).filter(x => isFinite(x.t)).sort((a, b) => a.t - b.t);
+  if (!flows.length) return null;
+  if (Date.now() - flows[0].t < 45 * 864e5) return null; // kısa geçmişte yıllıklaştırma yanıltır
+  flows.push({ t: Date.now(), v: s.total_value });
+  return xirr(flows);
+}
+
+/* Öne çıkanlar satırı: 7 günlük değişim · en iyi pozisyon · XIRR. */
+function highlightsHtml(s, U) {
+  const bits = [];
+  const hist = state.history;
+  if (hist.length >= 8) {
+    const last = hist[hist.length - 1];
+    const cutoff = new Date(Date.now() - 7 * 864e5).toISOString().slice(0, 10);
+    const base = [...hist].reverse().find(p => p.day <= cutoff) || hist[0];
+    if (base && base.total_value > 0) {
+      const d = (last.total_value / base.total_value - 1) * 100;
+      bits.push(`Son 7 gün <b class="${plClass(d)}">${signedPct1(d)}</b>`);
+    }
+  }
+  const ranked = s.holdings.filter(h => h.profit_loss_pct != null)
+    .sort((a, b) => b.profit_loss_pct - a.profit_loss_pct);
+  if (ranked.length >= 2) {
+    const best = ranked[0], worst = ranked[ranked.length - 1];
+    bits.push(`En iyi: ${esc(TYPE[best.asset_type].tick(best.symbol))} <b class="pl-gain">${signedPct1(best.profit_loss_pct)}</b>`);
+    if (worst.profit_loss_pct < 0)
+      bits.push(`En zayıf: ${esc(TYPE[worst.asset_type].tick(worst.symbol))} <b class="pl-loss">${signedPct1(worst.profit_loss_pct)}</b>`);
+  }
+  const x = portfolioXirr(s);
+  if (x != null && Math.abs(x) < 500)
+    bits.push(`<span title="Para-ağırlıklı yıllık getiri (XIRR): işlem defterindeki tüm giriş-çıkışlar ve bugünkü değere göre.">Yıllık iç verim <b class="${plClass(x)}">${signedPct1(x)}</b></span>`);
+  return bits.length ? `<p class="hl num">${bits.join('<span class="hl-sep"> · </span>')}</p>` : '';
 }
 
 /* ---------- hedefler ---------- */
@@ -830,24 +896,28 @@ function benchHtml(s) {
 }
 
 function allocHtml(s, U) {
-  const sums = { bist: 0, gold: 0, silver: 0 };
-  for (const h of s.holdings) sums[h.asset_type] += h.current_value ?? h.cost_value ?? 0;
-  const total = sums.bist + sums.gold + sums.silver;
+  const sums = {};
+  for (const h of s.holdings) {
+    const k = ALLOC_CLASS[h.asset_type] || 'bist';
+    sums[k] = (sums[k] || 0) + (h.current_value ?? h.cost_value ?? 0);
+  }
+  const total = Object.values(sums).reduce((a, b) => a + b, 0);
   if (!total) return '';
-  const order = [['gold', 'Altın'], ['bist', 'Hisse'], ['silver', 'Gümüş']].filter(([k]) => sums[k] > 0);
+  const order = ALLOC_META.filter(([k]) => sums[k] > 0);
   return `<div class="alloc">
     <div class="alloc-bar" role="img" aria-label="Dağılım: ${order.map(([k, l]) => l + ' %' + nf0.format(sums[k] / total * 100)).join(', ')}">
-      ${order.map(([k]) => `<span class="f-${k}" style="flex:${(sums[k] / total * 1000).toFixed(0)}" title="${TYPE[k].label}: ${money(sums[k])}"></span>`).join('')}
+      ${order.map(([k, l]) => `<span class="f-${k}" style="flex:${(sums[k] / total * 1000).toFixed(0)}" title="${l}: ${money(sums[k])}"></span>`).join('')}
     </div>
     <div class="alloc-legend num">
-      ${order.map(([k, l]) => `<span><span class="dot" style="background:var(--a-${k})"></span>${l} <b>${fmtU(sums[k], U)}</b><span class="pct">%${nf0.format(sums[k] / total * 100)}</span></span>`).join('')}
+      ${order.map(([k, l]) => `<span><span class="dot d-${k}" style="background:var(--a-${k})"></span>${l} <b>${fmtU(sums[k], U)}</b><span class="pct">%${nf0.format(sums[k] / total * 100)}</span></span>`).join('')}
     </div>
   </div>`;
 }
 
 function rowHtml(h, totalValue, U) {
   const t = TYPE[h.asset_type];
-  const dayStr = h.change_pct != null ? signedPct(h.change_pct) : '';
+  const isCash = h.asset_type === 'cash';
+  const dayStr = !isCash && h.change_pct != null ? signedPct(h.change_pct) : '';
   const w = totalValue && h.current_value != null ? h.current_value / totalValue * 100 : null;
   return `
   <button class="hrow num" data-id="${h.id}" title="Detay ve grafik için tıkla">
@@ -855,10 +925,10 @@ function rowHtml(h, totalValue, U) {
       <span class="tick tick-${t.cls}">${esc(t.tick(h.symbol))}</span>
       <span class="aname"><b>${esc(t.name(h.symbol))}</b>${h.note ? `<small>${esc(h.note)}</small>` : ''}</span>
     </span>
-    <span class="r c-qty"><span class="cell-main">${nfq.format(h.quantity)} ${t.unit}</span><span class="cell-sub">maliyet ${money(h.cost_price)}</span></span>
-    <span class="r c-price"><span class="cell-main">${money(h.current_price)}</span><span class="cell-sub ${plClass(h.change_pct)}">${dayStr}</span></span>
+    <span class="r c-qty"><span class="cell-main">${nfq.format(h.quantity)} ${t.unit}</span>${isCash ? '' : `<span class="cell-sub">maliyet ${money(h.cost_price)}</span>`}</span>
+    <span class="r c-price">${isCash ? '' : `<span class="cell-main">${money(h.current_price)}</span><span class="cell-sub ${plClass(h.change_pct)}">${dayStr}</span>`}</span>
     <span class="r c-value"><span class="cell-main">${fmtU(h.current_value, U)}</span>${w != null ? `<span class="cell-sub" title="Portföydeki payı">pay %${nf0.format(w)}</span>` : ''}</span>
-    <span class="r c-pl"><span class="${plClass(h.profit_loss)}">${signedU(h.profit_loss, U)}</span><span class="cell-sub ${plClass(h.profit_loss)}">${h.profit_loss_pct != null ? signedPct(h.profit_loss_pct) : ''}</span></span>
+    <span class="r c-pl">${isCash ? '<span class="pl-flat">—</span>' : `<span class="${plClass(h.profit_loss)}">${signedU(h.profit_loss, U)}</span><span class="cell-sub ${plClass(h.profit_loss)}">${h.profit_loss_pct != null ? signedPct(h.profit_loss_pct) : ''}</span>`}</span>
     <span class="edit-ic" aria-hidden="true">${ICONS.edit}</span>
   </button>`;
 }
@@ -870,6 +940,7 @@ function openDetailDialog(h) {
   const isBist = h.asset_type === 'bist';
   const ranges = isBist ? [['3mo', '3A'], ['1y', '1Y'], ['5y', '5Y']] : [['1y', '1Y'], ['5y', '5Y']];
   let range = isBist ? '1y' : '5y';
+  const histQ = isBist ? '&symbol=' + encodeURIComponent(h.symbol) : '';
   const dlg = document.createElement('dialog');
   dlg.id = 'detail-dlg';
   dlg.className = 'dlg-wide';
@@ -887,7 +958,7 @@ function openDetailDialog(h) {
       ${stat('Kâr/zarar', signedMoney(h.profit_loss) + (h.profit_loss_pct != null ? ' (' + signedPct(h.profit_loss_pct) + ')' : ''), plClass(h.profit_loss))}
       ${stat('Bugün', h.change_pct != null ? signedPct(h.change_pct) : '—', plClass(h.change_pct))}
     </div>
-    <div class="detail-chart">
+    <div class="detail-chart" ${h.asset_type === 'cash' ? 'hidden' : ''}>
       <div class="chart-head">
         <span class="chart-sub" id="dch-sub">Fiyat geçmişi yükleniyor…</span>
         <span class="chips" role="tablist" aria-label="Dönem">
@@ -896,8 +967,9 @@ function openDetailDialog(h) {
       </div>
       <div class="chart-box" id="dch-box"></div>
     </div>
+    <div class="dnews" id="dnews" hidden></div>
     <div class="dlg-actions">
-      <button type="button" class="btn-icon" id="ddlg-alert" title="Fiyat alarmı kur" aria-label="Fiyat alarmı kur">${ICONS.bell}</button>
+      ${h.asset_type !== 'cash' ? `<button type="button" class="btn-icon" id="ddlg-alert" title="Fiyat alarmı kur" aria-label="Fiyat alarmı kur">${ICONS.bell}</button>` : ''}
       <span class="grow"></span>
       <button type="button" class="btn btn-quiet" id="ddlg-sell">Sat</button>
       <button type="button" class="btn btn-quiet" id="ddlg-edit">Düzenle</button>
@@ -910,14 +982,33 @@ function openDetailDialog(h) {
   dlg.querySelector('#ddlg-close').addEventListener('click', () => dlg.close());
   dlg.querySelector('#ddlg-edit').addEventListener('click', () => { dlg.close(); openHoldingDialog(h); });
   dlg.querySelector('#ddlg-sell').addEventListener('click', () => { dlg.close(); openSellDialog(h); });
-  dlg.querySelector('#ddlg-alert').addEventListener('click', () => { dlg.close(); openAlertDialog(h.asset_type, h.symbol, h.current_price); });
+  dlg.querySelector('#ddlg-alert')?.addEventListener('click', () => { dlg.close(); openAlertDialog(h.asset_type, h.symbol, h.current_price); });
 
+  async function loadNews() {
+    if (h.asset_type === 'cash') return;
+    try {
+      const q = h.asset_type === 'bist'
+        ? '&symbol=' + encodeURIComponent(h.symbol) + '&name=' + encodeURIComponent(TYPE.bist.name(h.symbol))
+        : '';
+      const r = await (await fetch(API_BASE + '/public/news?asset_type=' + h.asset_type + q)).json();
+      if (!r.items || !r.items.length) return;
+      const el = dlg.querySelector('#dnews');
+      el.hidden = false;
+      el.innerHTML = '<h3>İlgili haberler</h3>' + r.items.map(n =>
+        `<a href="${esc(n.u)}" target="_blank" rel="noopener">${esc(n.t)}<small>${esc((n.d || '').slice(5, 16))}</small></a>`).join('');
+    } catch {}
+  }
   async function load() {
     const box = dlg.querySelector('#dch-box'), sub = dlg.querySelector('#dch-sub');
+    if (h.asset_type === 'cash') return;
+    if (h.asset_type === 'eth') {
+      box.innerHTML = '<p class="dch-note">Ethereum fiyat grafiği yakında — canlı fiyat ve alarm çalışıyor.</p>';
+      sub.textContent = '';
+      return;
+    }
     box.innerHTML = '<p class="dch-note">Yükleniyor…</p>';
     try {
-      const q = isBist ? '&symbol=' + encodeURIComponent(h.symbol) : '';
-      const r = await (await fetch(API_BASE + '/public/history?asset_type=' + h.asset_type + q + '&range=' + range)).json();
+      const r = await (await fetch(API_BASE + '/public/history?asset_type=' + h.asset_type + histQ + '&range=' + range)).json();
       if (!r.points || r.points.length < 2) throw 0;
       drawMini(box, r.points, h);
       const f = r.points[0], l = r.points[r.points.length - 1];
@@ -938,6 +1029,7 @@ function openDetailDialog(h) {
     load();
   }));
   load();
+  loadNews();
 }
 
 function drawMini(box, points, h) {
@@ -1051,7 +1143,7 @@ function openSellDialog(h) {
   const dlg = document.createElement('dialog');
   dlg.id = 'sell-dlg';
   dlg.innerHTML = `
-    <div class="dlg-head"><h2>Satış kaydet</h2>
+    <div class="dlg-head"><h2>${t.fixed ? 'Nakit çek' : 'Satış kaydet'}</h2>
       <button class="btn-icon" id="sdlg-x" aria-label="Kapat">${ICONS.x}</button></div>
     <p style="margin:0 0 14px"><span class="tick tick-${t.cls}">${esc(t.tick(h.symbol))}</span>
       <b style="margin-left:8px">${esc(t.name(h.symbol))}</b>
@@ -1060,9 +1152,11 @@ function openSellDialog(h) {
       <label class="field"><span>Satılan ${t.unit === 'gram' ? 'gram' : 'adet'}
         — <button type="button" class="linklike" id="sell-all">tümünü sat (${nfq.format(h.quantity)})</button></span>
         <input name="quantity" type="number" step="any" min="0.0001" max="${h.quantity}" required inputmode="decimal"></label>
-      <label class="field"><span>Satış fiyatı (₺)</span>
-        <input name="price" type="number" step="any" min="0.0001" required inputmode="decimal" value="${h.current_price != null ? Math.round(h.current_price * 100) / 100 : ''}"></label>
-      <p class="price-hint num">Ortalama maliyetin ${money(h.cost_price)} — realize kâr/zarar buna göre hesaplanır.</p>
+      <div ${t.fixed ? 'hidden' : ''}>
+        <label class="field"><span>Satış fiyatı (₺)</span>
+          <input name="price" type="number" step="any" min="0.0001" required inputmode="decimal" value="${t.fixed ? 1 : (h.current_price != null ? Math.round(h.current_price * 100) / 100 : '')}"></label>
+        <p class="price-hint num">Ortalama maliyetin ${money(h.cost_price)} — realize kâr/zarar buna göre hesaplanır.</p>
+      </div>
       <label class="field"><span>Satış tarihi</span>
         <input name="trade_date" type="date" max="${new Date().toISOString().slice(0, 10)}" value="${new Date().toISOString().slice(0, 10)}"></label>
       <label class="field"><span>Not (isteğe bağlı)</span><input name="note" maxlength="280"></label>
@@ -1262,8 +1356,8 @@ function openWatchDialog() {
     <div class="dlg-head"><h2>Varlık izle</h2>
       <button class="btn-icon" id="wdlg-x" aria-label="Kapat">${ICONS.x}</button></div>
     <form id="watch-form">
-      <div class="seg" role="radiogroup" aria-label="Varlık türü">
-        ${Object.entries(TYPE).map(([k, t], i) => `
+      <div class="seg seg-wrap" role="radiogroup" aria-label="Varlık türü">
+        ${Object.entries(TYPE).filter(([k]) => k !== 'cash').map(([k, t], i) => `
           <label><input type="radio" name="asset_type" value="${k}" ${i === 0 ? 'checked' : ''}><span>${t.label}</span></label>`).join('')}
       </div>
       <div id="wsymbol-wrap">
@@ -1455,11 +1549,14 @@ async function shareCard() {
     const d = s.total_day_change_pct;
     c.fillText('Bugün ' + (d >= 0 ? '+' : '−') + '%' + nf2.format(Math.abs(d)), 80, 650);
   }
-  const sums = { bist: 0, gold: 0, silver: 0 };
-  for (const h of s.holdings) sums[h.asset_type] += h.current_value ?? h.cost_value ?? 0;
-  const tot = sums.bist + sums.gold + sums.silver || 1;
-  const COLORS = { bist: '#0891B2', gold: '#BA851F', silver: '#7488D8' };
-  const order = [['gold', 'Altın'], ['bist', 'Hisse'], ['silver', 'Gümüş']].filter(([k]) => sums[k] > 0);
+  const sums = {};
+  for (const h of s.holdings) {
+    const k = ALLOC_CLASS[h.asset_type] || 'bist';
+    sums[k] = (sums[k] || 0) + (h.current_value ?? h.cost_value ?? 0);
+  }
+  const tot = Object.values(sums).reduce((a, b) => a + b, 0) || 1;
+  const COLORS = { bist: '#0891B2', gold: '#BA851F', silver: '#7488D8', fx: '#2F9E6A', crypto: '#C95CB0', cash: '#556763' };
+  const order = ALLOC_META.filter(([k]) => sums[k] > 0);
   let bx = 80; const bw = W - 160, by = 760, bh = 34;
   for (const [k] of order) {
     const w = (sums[k] / tot) * (bw - (order.length - 1) * 6);
@@ -1515,7 +1612,7 @@ function openHoldingDialog(existing, preset) {
       ${isEdit ? `<p style="margin:0 0 6px"><span class="tick tick-${TYPE[existing.asset_type].cls}">${esc(TYPE[existing.asset_type].tick(existing.symbol))}</span>
         <b style="margin-left:8px">${esc(TYPE[existing.asset_type].name(existing.symbol))}</b></p>
         <p class="cell-sub" style="margin:0 0 14px">Bu düzeltmeler işlem defterine yazılmaz; alım/satım için pozisyon detayını kullan.</p>` : `
-      <div class="seg" role="radiogroup" aria-label="Varlık türü">
+      <div class="seg seg-wrap" role="radiogroup" aria-label="Varlık türü">
         ${Object.entries(TYPE).map(([k, t]) => `
           <label><input type="radio" name="asset_type" value="${k}" ${k === presetType ? 'checked' : ''}><span>${t.label}</span></label>`).join('')}
       </div>
@@ -1527,11 +1624,13 @@ function openHoldingDialog(existing, preset) {
           <ul id="sym-list" hidden></ul>
         </label>
       </div>`}
-      <label class="field"><span id="qty-label">${(isEdit ? TYPE[existing.asset_type] : TYPE[presetType]).unit === 'gram' ? 'Gram' : 'Adet'}</span>
+      <label class="field"><span id="qty-label">${(isEdit ? TYPE[existing.asset_type] : TYPE[presetType]).q}</span>
         <input name="quantity" type="number" step="any" min="0.0001" required inputmode="decimal" value="${isEdit ? existing.quantity : ''}"></label>
-      <label class="field"><span>Birim maliyet (₺)</span>
-        <input name="cost_price" type="number" step="any" min="0.0001" required inputmode="decimal" value="${isEdit ? existing.cost_price : ''}"></label>
-      <p class="price-hint" id="price-hint"></p>
+      <div id="cost-wrap" ${!isEdit && TYPE[presetType].fixed ? 'hidden' : ''}>
+        <label class="field"><span>Birim maliyet (₺)</span>
+          <input name="cost_price" type="number" step="any" min="0.0001" required inputmode="decimal" value="${isEdit ? existing.cost_price : (TYPE[presetType].fixed ? 1 : '')}"></label>
+        <p class="price-hint" id="price-hint"></p>
+      </div>
       <label class="field"><span>Alış tarihi (önerilir — reel getiri ve kıyas bununla hesaplanır)</span>
         <input name="purchase_date" type="date" max="${new Date().toISOString().slice(0, 10)}" value="${isEdit && existing.purchase_date ? existing.purchase_date : ''}"></label>
       <label class="field"><span>Not (isteğe bağlı)</span>
@@ -1570,13 +1669,16 @@ function openHoldingDialog(existing, preset) {
   if (!isEdit) {
     const symWrap = dlg.querySelector('#symbol-wrap');
     const qtyLabel = dlg.querySelector('#qty-label');
+    const costWrap = dlg.querySelector('#cost-wrap');
     form.querySelectorAll('input[name=asset_type]').forEach(r => r.addEventListener('change', () => {
       const t = TYPE[r.value];
       symWrap.hidden = r.value !== 'bist';
       form.symbol_q.required = r.value === 'bist';
-      qtyLabel.textContent = t.unit === 'gram' ? 'Gram' : 'Adet';
+      qtyLabel.textContent = t.q;
       hint.textContent = '';
-      if (r.value !== 'bist') showLivePrice(r.value);
+      costWrap.hidden = Boolean(t.fixed);
+      if (t.fixed) form.cost_price.value = 1;
+      else if (r.value !== 'bist') showLivePrice(r.value);
     }));
     wireSymbolSearch(form, dlg.querySelector('#sym-list'), code => showLivePrice('bist', code));
     if (preset) {
