@@ -31,6 +31,7 @@ let state = {
   user: null, summary: null, history: [], watchlist: [], alerts: [], goals: [], txns: [],
   tufe: null, bench: null, symbols: [], demo: false, refreshTimer: 0, chartRange: 'all',
   unit: (safeGet('pf_unit') === 'usd' || safeGet('pf_unit') === 'gold') ? safeGet('pf_unit') : 'try',
+  view: 'ozet', // ozet | varliklar | takip | analiz
 };
 
 /* ---------- yardımcılar ---------- */
@@ -305,7 +306,7 @@ function renderAuth(mode = 'signin') {
   main.innerHTML = `
   <div class="landing">
     <section class="pitch">
-      <h1>Altının, hissen, gümüşün — <em>tek ekranda.</em></h1>
+      <h1>Altının, hissen, gümüşün — tek ekranda.</h1>
       <p>Pozisyonlarını bir kez ekle; canlı fiyatla toplam değerini, değer grafiğini ve
       <strong>enflasyondan arındırılmış gerçek kârını</strong> her açtığında hazır bul.
       "Dolara koysaydım ne olurdu?" kıyası, hedefler, fiyat alarmı ve ay sonu özeti — hepsi ücretsiz.</p>
@@ -317,9 +318,9 @@ function renderAuth(mode = 'signin') {
             <span class="f-gold" style="flex:52"></span><span class="f-bist" style="flex:36"></span><span class="f-silver" style="flex:12"></span>
           </div>
           <div class="alloc-legend">
-            <span><span class="dot" style="background:var(--a-gold)"></span>Altın<span class="pct">%52</span></span>
-            <span><span class="dot" style="background:var(--a-bist)"></span>Hisse<span class="pct">%36</span></span>
-            <span><span class="dot" style="background:var(--a-silver)"></span>Gümüş<span class="pct">%12</span></span>
+            <span><span class="dot s-gold"></span>Altın<span class="pct">%52</span></span>
+            <span><span class="dot s-bist"></span>Hisse<span class="pct">%36</span></span>
+            <span><span class="dot s-silver"></span>Gümüş<span class="pct">%12</span></span>
           </div>
         </div>
       </div>
@@ -489,6 +490,30 @@ const ICONS = {
   target: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>',
 };
 
+/* ---------- gezinme (mobil alt çubuk / masaüstü üst sekmeler) ---------- */
+const NAV = [
+  ['ozet', 'Özet', '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h3l3-8 4 15 3-9h5"/></svg>'],
+  ['varliklar', 'Varlıklar', '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/><path d="M4 11.5v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>'],
+  ['takip', 'Takip', '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>'],
+  ['analiz', 'Analiz', '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 20v-7M10 20V4M15 20v-9M20 20V8"/></svg>'],
+];
+function navHtml() {
+  const tab = ([k, label, ic]) =>
+    `<button class="tab${state.view === k ? ' on' : ''}" data-view="${k}" ${state.view === k ? 'aria-current="page"' : ''}>${ic}<span>${label}</span></button>`;
+  return `<nav class="tabs" aria-label="Bölümler">
+    ${NAV.slice(0, 2).map(tab).join('')}
+    <button class="tab-add" id="nav-add" aria-label="Pozisyon ekle" title="Pozisyon ekle">${ICONS.plus}<span class="ta-label">Pozisyon ekle</span></button>
+    ${NAV.slice(2).map(tab).join('')}
+  </nav>`;
+}
+function miniBarHtml(s, U) {
+  const d = s.total_day_change;
+  return `<div class="minibar num" aria-label="Portföy özeti satırı">
+    <span class="mb-total">${fmtU(s.total_value, U)}</span>
+    ${d != null ? `<span class="${plClass(d)}">${signedU(d, U)} bugün</span>` : ''}
+  </div>`;
+}
+
 function renderApp() {
   const s = state.summary, u = state.user;
   document.title = !state.demo && s.total_value != null && s.holdings.length
@@ -524,7 +549,7 @@ function renderApp() {
       <button class="btn btn-primary" id="demo-signup">Ücretsiz kayıt ol</button>
     </div>` : '';
 
-  if (!s.holdings.length) {
+  if (!s.holdings.length && !state.txns.length && !state.watchlist.length) {
     main.classList.remove('masked');
     main.innerHTML = demoBanner + `
       <div class="empty">
@@ -540,91 +565,181 @@ function renderApp() {
 
   const masked = safeGet('pf_masked') === '1';
   main.classList.toggle('masked', masked);
+  const U = unitRate(s);
+
+  let body;
+  if (state.view === 'varliklar') body = varliklarHtml(s, U);
+  else if (state.view === 'takip') body = watchHtml() + alertsHtml();
+  else if (state.view === 'analiz') body = analizHtml(s, U);
+  else body = ozetHtml(s, U, masked);
+
+  main.innerHTML = demoBanner + (state.view === 'ozet' ? '' : miniBarHtml(s, U)) + body + navHtml();
+
+  // ortak bağlar
+  main.querySelector('#demo-signup')?.addEventListener('click', () => { state.demo = false; renderAuth('signup'); });
+  main.querySelectorAll('.tabs .tab').forEach(b => b.addEventListener('click', () => {
+    if (state.view === b.dataset.view) return;
+    state.view = b.dataset.view;
+    renderApp();
+    window.scrollTo(0, 0);
+  }));
+  main.querySelector('#nav-add')?.addEventListener('click', () => openHoldingDialog());
+  main.querySelector('#add-btn')?.addEventListener('click', () => openHoldingDialog());
+
+  if (state.view === 'ozet') {
+    main.querySelectorAll('.unit-chips button').forEach(b => b.addEventListener('click', () => {
+      state.unit = b.dataset.unit;
+      safeSet('pf_unit', state.unit === 'try' ? null : state.unit);
+      renderApp();
+    }));
+    main.querySelector('#mask-btn')?.addEventListener('click', () => {
+      const now = safeGet('pf_masked') !== '1';
+      safeSet('pf_masked', now ? '1' : null);
+      main.classList.toggle('masked', now);
+      main.querySelector('#mask-btn').setAttribute('aria-pressed', String(now));
+    });
+    main.querySelector('#refresh-btn')?.addEventListener('click', () => state.demo ? toast('Örnek modda fiyatlar temsilî.') : refreshData());
+    main.querySelector('#share-btn')?.addEventListener('click', shareCard);
+    bindChart();
+    bindGoals();
+  } else if (state.view === 'varliklar') {
+    main.querySelector('#csv-btn')?.addEventListener('click', exportCsv);
+    main.querySelectorAll('.hrow').forEach(r =>
+      r.addEventListener('click', () => {
+        const h = state.summary.holdings.find(x => x.id === Number(r.dataset.id));
+        if (h) openDetailDialog(h);
+      }));
+    bindTxns();
+  } else if (state.view === 'takip') {
+    bindWatch();
+    bindAlerts();
+  }
+}
+
+/* ---------- görünümler ---------- */
+function ozetHtml(s, U, masked) {
+  if (!s.holdings.length) {
+    return `<div class="empty">
+      <h2>Portföyün henüz boş</h2>
+      <p>İlk pozisyonunu ekle: bir hissenin adedini, altının gramını ya da dolarını.
+      Gerisini biz hesaplayalım — güncel değer, değer grafiği, enflasyon sonrası gerçek kâr.</p>
+      <button class="btn btn-primary" id="add-btn">Pozisyon ekle</button>
+    </div>`;
+  }
   const pricedAt = s.priced_at ? new Date(s.priced_at) : null;
   const timeStr = pricedAt ? pricedAt.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' }) : '';
-  const U = unitRate(s);
   const unitLabel = { try: '₺', usd: '$', gold: 'g' };
   const [lira, kurus] = U.nf.format((s.total_value ?? 0) / U.r).split(',');
-  const rr = realReturn(s);
-
   const equiv = [];
   if (state.unit !== 'try') equiv.push(nf0.format(s.total_value) + ' ₺');
   if (state.unit !== 'usd' && s.usd_try) equiv.push(nf0.format(s.total_value / s.usd_try) + ' $');
   if (state.unit !== 'gold' && s.gold_gram_try) equiv.push(nf1.format(s.total_value / s.gold_gram_try) + ' gram altın');
-
-  main.innerHTML = demoBanner + `
-    <section class="summary" aria-label="Portföy özeti">
-      <p class="sum-label">Toplam değer
+  return `
+  <section class="hero" aria-label="Portföy özeti">
+    <div class="hero-top">
+      <span class="hero-label">Toplam değer</span>
+      <span class="hero-tools">
         <span class="chips unit-chips" role="tablist" aria-label="Para birimi görünümü">
           ${['try', 'usd', 'gold'].filter(k => k === 'try' || (k === 'usd' ? s.usd_try : s.gold_gram_try)).map(k =>
             `<button role="tab" aria-selected="${state.unit === k}" data-unit="${k}" title="${k === 'try' ? 'Türk lirası' : k === 'usd' ? 'Dolar karşılığı' : 'Gram altın karşılığı'}">${unitLabel[k]}</button>`).join('')}
         </span>
         <button class="btn-icon" id="mask-btn" aria-pressed="${masked}" title="Tutarları gizle/göster" aria-label="Tutarları gizle/göster">${ICONS.eye}</button>
-      </p>
-      <p class="sum-value num">${lira}<span class="kurus">${kurus != null ? ',' + kurus : ''}${U.suf}${state.unit === 'gold' ? ' altın' : ''}</span></p>
-      ${equiv.length ? `<p class="sum-equiv num">≈ ${equiv.join(' ya da ')}</p>` : ''}
-      <div class="sum-row num">
-        <span class="sum-item">Bugün<b class="${plClass(s.total_day_change)}">${signedU(s.total_day_change, U)}${s.total_day_change_pct != null ? ' (' + signedPct(s.total_day_change_pct) + ')' : ''}</b></span>
-        <span class="sum-item">Toplam kâr/zarar<b class="${plClass(s.total_profit_loss)}">${signedU(s.total_profit_loss, U)} (${signedPct(s.total_profit_loss_pct)})</b></span>
-        ${rr && rr.dated
-          ? `<span class="sum-item" title="Maliyetin, alış tarihinden bugüne TÜİK TÜFE ile bugünkü liraya çevrilmiş hâline göre kâr/zarar.${rr.undated ? ' Alış tarihi olmayan ' + rr.undated + ' pozisyon düzeltilmeden katıldı.' : ''}${rr.partial ? ' Çok eski alışlarda TÜFE serisi ' + (state.tufe[0] ? state.tufe[0][0] : '') + ' başlangıçlı.' : ''}">Enflasyon sonrası (reel)<b class="${plClass(rr.pl)}">${(rr.undated || rr.partial) ? '≈ ' : ''}${signedU(rr.pl, U)} (${signedPct(rr.pct)})</b></span>`
-          : `<span class="sum-item" title="Pozisyonlarına alış tarihi eklersen maliyetini TÜFE ile bugüne taşıyıp gerçek (reel) kârını gösteririz.">Enflasyon sonrası (reel)<b class="pl-flat">alış tarihi ekle</b></span>`}
-        ${s.realized_pl_total ? `<span class="sum-item" title="Satışlardan realize edilen kâr/zarar (ortalama maliyete göre). Bu yıl: ${signedMoney(s.realized_pl_year)}">Realize (satışlardan)<b class="${plClass(s.realized_pl_total)}">${signedU(s.realized_pl_total, U)}</b></span>` : ''}
-      </div>
-      <div class="sum-meta">
-        <span>Fiyatlar ${timeStr} itibarıyla.</span>
+      </span>
+    </div>
+    <p class="hero-value num">${lira}<span class="kurus">${kurus != null ? ',' + kurus : ''}</span><span class="suf${state.unit === 'gold' ? ' gold' : ''}">${U.suf}${state.unit === 'gold' ? ' altın' : ''}</span></p>
+    ${equiv.length ? `<p class="hero-equiv num">≈ ${equiv.join(' ya da ')}</p>` : ''}
+    <div class="hero-stats num">
+      <span>Bugün<b class="${plClass(s.total_day_change)}">${signedU(s.total_day_change, U)}${s.total_day_change_pct != null ? ' (' + signedPct(s.total_day_change_pct) + ')' : ''}</b></span>
+      <span>Toplam kâr/zarar<b class="${plClass(s.total_profit_loss)}">${signedU(s.total_profit_loss, U)} (${signedPct(s.total_profit_loss_pct)})</b></span>
+    </div>
+    <div class="hero-meta">
+      <span>Fiyatlar ${timeStr} itibarıyla · reel getiri ve kıyas Analiz'de</span>
+      <span class="hero-mtools">
         <button class="btn-icon" id="refresh-btn" title="Fiyatları yenile" aria-label="Fiyatları yenile">${ICONS.refresh}</button>
         <button class="btn-icon" id="share-btn" title="Portföy kartını paylaş (tutarsız, sadece yüzdeler)" aria-label="Portföy kartını paylaş">${ICONS.share}</button>
-      </div>
-      ${highlightsHtml(s, U)}
-      ${allocHtml(s, U)}
-      ${goalsHtml(s)}
-    </section>
-    ${chartHtml()}
-    ${benchHtml(s)}
+      </span>
+    </div>
+  </section>
+  ${chartHtml()}
+  <section class="alloc-sec" aria-label="Dağılım">
+    <div class="holdings-head"><h2>Dağılım</h2></div>
+    ${allocHtml(s, U)}
+  </section>
+  <section class="goals-sec" aria-label="Hedefler">
+    <div class="holdings-head"><h2>Hedefler</h2></div>
+    ${goalsHtml(s)}
+  </section>`;
+}
+
+function varliklarHtml(s, U) {
+  const pos = s.holdings.length ? `
     <section class="holdings" aria-label="Pozisyonlar">
       <div class="holdings-head">
         <h2>Pozisyonlar</h2>
         <div class="tools">
           <button class="btn-icon" id="csv-btn" title="CSV indir" aria-label="Pozisyonları CSV olarak indir">${ICONS.csv}</button>
-          <button class="btn btn-primary" id="add-btn">Pozisyon ekle</button>
         </div>
       </div>
       <div class="hhead" aria-hidden="true">
         <span>Varlık</span><span class="r">Adet / gram</span><span class="r">Güncel</span><span class="r">Değer</span><span class="r">Kâr/zarar</span><span></span>
       </div>
       <div id="hlist">${s.holdings.slice().sort((a, b) => (b.current_value ?? b.cost_value) - (a.current_value ?? a.cost_value)).map(h => rowHtml(h, s.total_value, U)).join('')}</div>
-    </section>
-    ${txnsHtml()}
-    ${watchHtml()}
-    ${alertsHtml()}`;
+    </section>` : `
+    <div class="empty">
+      <h2>Henüz pozisyon yok</h2>
+      <p>İlk pozisyonunu ekle: bir hissenin adedini, altının gramını ya da dolarını.</p>
+      <button class="btn btn-primary" id="add-btn">Pozisyon ekle</button>
+    </div>`;
+  return pos + txnsHtml();
+}
 
-  main.querySelector('#demo-signup')?.addEventListener('click', () => { state.demo = false; renderAuth('signup'); });
-  main.querySelector('#add-btn').addEventListener('click', () => openHoldingDialog());
-  main.querySelector('#refresh-btn').addEventListener('click', () => state.demo ? toast('Örnek modda fiyatlar temsilî.') : refreshData());
-  main.querySelector('#csv-btn').addEventListener('click', exportCsv);
-  main.querySelector('#share-btn').addEventListener('click', shareCard);
-  main.querySelectorAll('.unit-chips button').forEach(b => b.addEventListener('click', () => {
-    state.unit = b.dataset.unit;
-    safeSet('pf_unit', state.unit === 'try' ? null : state.unit);
-    renderApp();
-  }));
-  main.querySelector('#mask-btn').addEventListener('click', () => {
-    const now = safeGet('pf_masked') !== '1';
-    safeSet('pf_masked', now ? '1' : null);
-    main.classList.toggle('masked', now);
-    main.querySelector('#mask-btn').setAttribute('aria-pressed', String(now));
-  });
-  main.querySelectorAll('.hrow').forEach(r =>
-    r.addEventListener('click', () => {
-      const h = state.summary.holdings.find(x => x.id === Number(r.dataset.id));
-      if (h) openDetailDialog(h);
-    }));
-  bindGoals();
-  bindChart();
-  bindTxns();
-  bindWatch();
-  bindAlerts();
+function analizHtml(s, U) {
+  if (!s.holdings.length) {
+    return `<section class="analiz" aria-label="Analiz">
+      <div class="holdings-head"><h2>Analiz</h2></div>
+      <p class="analiz-empty">Analiz için önce bir pozisyon ekle — reel getiri, yıllık iç verim ve "ne olsaydı" kıyası burada toplanır.</p>
+    </section>`;
+  }
+  const stat = (l, v, cls = '', title = '', m = true) =>
+    `<div class="stat"${title ? ` title="${title}"` : ''}><span>${l}</span><b class="num ${m ? 'm ' : ''}${cls}">${v}</b></div>`;
+  const bits = [];
+  bits.push(stat('Toplam kâr/zarar', `${signedU(s.total_profit_loss, U)} (${signedPct(s.total_profit_loss_pct)})`, plClass(s.total_profit_loss)));
+  const rr = realReturn(s);
+  if (rr && rr.dated) {
+    bits.push(stat('Enflasyon sonrası (reel)', `${(rr.undated || rr.partial) ? '≈ ' : ''}${signedU(rr.pl, U)} (${signedPct(rr.pct)})`, plClass(rr.pl),
+      `Maliyetin, alış tarihinden bugüne TÜİK TÜFE ile bugünkü liraya çevrilmiş hâline göre kâr/zarar.${rr.undated ? ' Alış tarihi olmayan ' + rr.undated + ' pozisyon düzeltilmeden katıldı.' : ''}${rr.partial ? ' Çok eski alışlarda TÜFE serisi ' + (state.tufe[0] ? state.tufe[0][0] : '') + ' başlangıçlı.' : ''}`));
+  } else {
+    bits.push(stat('Enflasyon sonrası (reel)', 'alış tarihi ekle', 'pl-flat',
+      'Pozisyonlarına alış tarihi eklersen maliyetini TÜFE ile bugüne taşıyıp gerçek (reel) kârını gösteririz.', false));
+  }
+  const x = portfolioXirr(s);
+  if (x != null && Math.abs(x) < 500)
+    bits.push(stat('Yıllık iç verim (XIRR)', signedPct1(x), plClass(x),
+      'Para-ağırlıklı yıllık getiri: işlem defterindeki tüm giriş-çıkışlar ve bugünkü değere göre.', false));
+  const hist = state.history;
+  if (hist.length >= 8) {
+    const last = hist[hist.length - 1];
+    const cutoff = new Date(Date.now() - 7 * 864e5).toISOString().slice(0, 10);
+    const base = [...hist].reverse().find(p => p.day <= cutoff) || hist[0];
+    if (base && base.total_value > 0)
+      bits.push(stat('Son 7 gün', signedPct1((last.total_value / base.total_value - 1) * 100), plClass(last.total_value - base.total_value), '', false));
+  }
+  const ranked = s.holdings.filter(h => h.profit_loss_pct != null)
+    .sort((a, b) => b.profit_loss_pct - a.profit_loss_pct);
+  if (ranked.length >= 2) {
+    const best = ranked[0], worst = ranked[ranked.length - 1];
+    bits.push(stat('En iyi pozisyon', `${esc(TYPE[best.asset_type].tick(best.symbol))} ${signedPct1(best.profit_loss_pct)}`, 'pl-gain', '', false));
+    if (worst.profit_loss_pct < 0)
+      bits.push(stat('En zayıf pozisyon', `${esc(TYPE[worst.asset_type].tick(worst.symbol))} ${signedPct1(worst.profit_loss_pct)}`, 'pl-loss', '', false));
+  }
+  if (s.realized_pl_total)
+    bits.push(stat('Realize (satışlardan)', signedU(s.realized_pl_total, U), plClass(s.realized_pl_total),
+      `Satışlardan realize edilen kâr/zarar (ortalama maliyete göre). Bu yıl: ${signedMoney(s.realized_pl_year)}`));
+  return `<section class="analiz" aria-label="Analiz">
+    <div class="holdings-head"><h2>Analiz</h2></div>
+    <div class="a-stats">${bits.join('')}</div>
+    ${benchHtml(s)}
+  </section>`;
 }
 
 /* ---------- XIRR (para-ağırlıklı yıllık getiri) ---------- */
@@ -652,33 +767,6 @@ function portfolioXirr(s) {
   return xirr(flows);
 }
 
-/* Öne çıkanlar satırı: 7 günlük değişim · en iyi pozisyon · XIRR. */
-function highlightsHtml(s, U) {
-  const bits = [];
-  const hist = state.history;
-  if (hist.length >= 8) {
-    const last = hist[hist.length - 1];
-    const cutoff = new Date(Date.now() - 7 * 864e5).toISOString().slice(0, 10);
-    const base = [...hist].reverse().find(p => p.day <= cutoff) || hist[0];
-    if (base && base.total_value > 0) {
-      const d = (last.total_value / base.total_value - 1) * 100;
-      bits.push(`Son 7 gün <b class="${plClass(d)}">${signedPct1(d)}</b>`);
-    }
-  }
-  const ranked = s.holdings.filter(h => h.profit_loss_pct != null)
-    .sort((a, b) => b.profit_loss_pct - a.profit_loss_pct);
-  if (ranked.length >= 2) {
-    const best = ranked[0], worst = ranked[ranked.length - 1];
-    bits.push(`En iyi: ${esc(TYPE[best.asset_type].tick(best.symbol))} <b class="pl-gain">${signedPct1(best.profit_loss_pct)}</b>`);
-    if (worst.profit_loss_pct < 0)
-      bits.push(`En zayıf: ${esc(TYPE[worst.asset_type].tick(worst.symbol))} <b class="pl-loss">${signedPct1(worst.profit_loss_pct)}</b>`);
-  }
-  const x = portfolioXirr(s);
-  if (x != null && Math.abs(x) < 500)
-    bits.push(`<span title="Para-ağırlıklı yıllık getiri (XIRR): işlem defterindeki tüm giriş-çıkışlar ve bugünkü değere göre.">Yıllık iç verim <b class="${plClass(x)}">${signedPct1(x)}</b></span>`);
-  return bits.length ? `<p class="hl num">${bits.join('<span class="hl-sep"> · </span>')}</p>` : '';
-}
-
 /* ---------- hedefler ---------- */
 function goalProgress(g, s) {
   if (!s.total_value) return null;
@@ -690,7 +778,7 @@ function goalProgress(g, s) {
 function goalsHtml(s) {
   const items = state.goals;
   const addBtn = items.length < 3
-    ? `<button class="goal-add" id="goal-add">${ICONS.target} Hedef ${items.length ? 'ekle' : 'koy'} <span>— "100 gram altın" ya da "1 milyon ₺" gibi</span></button>`
+    ? `<button class="goal-add" id="goal-add">${ICONS.target} <b>Hedef ${items.length ? 'ekle' : 'koy'}</b> <span>— "100 gram altın" ya da "1 milyon ₺" gibi</span></button>`
     : '';
   if (!items.length) return `<div class="goals">${addBtn}</div>`;
   return `<div class="goals">

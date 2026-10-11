@@ -1,7 +1,88 @@
-/* ParaFOMO Portföy — uygulamaya özel stiller (jetonlar + taban: /theme.css). */
+/* ParaFOMO Portföy — uygulamaya özel stiller (jetonlar + taban: /theme.css).
+   Tasarım dili: koyu yeşil "kasa" bandı (hero, iki temada da koyu) + sakin açık zemin,
+   IBM Plex Sans Condensed başlık/rakam sesi, altın vurgusu yalnız gram-altın ve hedeflerde.
+   Gezinme: mobilde alt sekme çubuğu, masaüstünde üst sekmeler — aynı DOM. */
+
+:root {
+  --band: #0B2420;
+  --band-ink: #EDF4F1;
+  --band-muted: #9FB8AE;
+  --band-line: #26453C;
+  --band-gain: #58CD91;
+  --band-loss: #F2907F;
+  --gold: #C9983F;
+  --gold-ink: #231803;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --band: #0F211D; --band-line: #223F38; --gold: #D2A54C; }
+}
+:root[data-theme="dark"] { --band: #0F211D; --band-line: #223F38; --gold: #D2A54C; }
 
 #app { min-height: 100svh; display: flex; flex-direction: column; }
-main { flex: 1; width: 100%; max-width: 980px; margin: 0 auto; padding: 0 16px 48px; }
+main { flex: 1; width: 100%; max-width: 980px; margin: 0 auto; padding: 0 16px 108px; }
+
+.cond, h2, .pitch h1, .hero-value, .mb-total {
+  font-family: "IBM Plex Sans Condensed", "IBM Plex Sans", system-ui, sans-serif;
+}
+h2 { font-size: 1.32rem; font-weight: 700; letter-spacing: .005em; margin: 0; }
+
+/* ---- gezinme: mobilde alt çubuk, masaüstünde üst sekmeler ---- */
+.tabs {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+  display: flex; align-items: center; justify-content: space-around;
+  background: var(--surface); border-top: 1px solid var(--line);
+  padding: 5px 8px calc(7px + env(safe-area-inset-bottom));
+}
+.tab {
+  flex: 1; max-width: 120px; display: grid; justify-items: center; gap: 3px;
+  border: 0; background: none; color: var(--muted); cursor: pointer;
+  font: 500 .68rem/1 "IBM Plex Sans", system-ui, sans-serif;
+  padding: 6px 2px 4px; border-radius: 10px;
+}
+.tab svg { width: 21px; height: 21px; }
+.tab.on { color: var(--brand-deep); }
+.tab-add {
+  flex: 0 0 auto; width: 48px; height: 48px; border-radius: 50%;
+  background: var(--brand-deep); color: var(--brand-deep-ink); border: 0;
+  display: grid; place-items: center; cursor: pointer; margin: 0 2px;
+  transform: translateY(-12px); box-shadow: 0 6px 18px rgba(11, 36, 32, .3);
+}
+.tab-add svg { width: 20px; height: 20px; }
+.tab-add .ta-label { display: none; }
+
+@media (min-width: 860px) {
+  main { padding-bottom: 56px; }
+  .tabs {
+    position: static; display: flex; justify-content: flex-start; gap: 2px;
+    background: none; border: 0; max-width: 980px; margin: 2px auto 0; padding: 0 16px;
+    order: -1;
+  }
+  main { display: flex; flex-direction: column; }
+  .tab {
+    flex: 0 0 auto; max-width: none; display: inline-flex; align-items: center; gap: 8px;
+    font: 600 .98rem/1 "IBM Plex Sans Condensed", "IBM Plex Sans", sans-serif;
+    color: var(--muted); padding: 10px 14px 12px; border-radius: 8px 8px 0 0;
+    box-shadow: inset 0 -2px 0 transparent;
+  }
+  .tab:hover { color: var(--ink-2); }
+  .tab.on { color: var(--ink); box-shadow: inset 0 -2px 0 var(--brand-deep); }
+  .tab svg { display: none; }
+  .tab-add {
+    width: auto; height: auto; border-radius: var(--r-control);
+    order: 99; margin-left: auto; transform: none; box-shadow: none;
+    padding: 10px 16px; display: inline-flex; gap: 8px; align-items: center;
+    font: 600 .92rem/1 "IBM Plex Sans", system-ui, sans-serif;
+  }
+  .tab-add .ta-label { display: inline; }
+}
+
+/* ---- mini özet satırı (Özet dışındaki sekmelerde) ---- */
+.minibar {
+  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  padding: 16px 0 0; color: var(--muted); font-size: .9rem;
+}
+.mb-total { font-size: 1.3rem; font-weight: 700; color: var(--ink); }
+.masked .mb-total { filter: blur(8px); }
 
 /* ---- giriş ekranı ---- */
 .landing { display: grid; gap: 36px; padding-top: 28px; }
@@ -9,15 +90,27 @@ main { flex: 1; width: 100%; max-width: 980px; margin: 0 auto; padding: 0 16px 4
   .landing { grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: start; padding-top: 56px; }
 }
 .pitch h1 {
-  font-size: clamp(1.7rem, 4.6vw, 2.5rem); line-height: 1.16;
-  letter-spacing: -.025em; font-weight: 700; margin: 0 0 14px; max-width: 17ch;
+  font-size: clamp(1.9rem, 5vw, 2.9rem); line-height: 1.1;
+  letter-spacing: 0; font-weight: 700; margin: 0 0 14px; max-width: 18ch;
 }
-.pitch h1 em { font-style: normal; color: var(--brand-deep); }
 .pitch p { color: var(--ink-2); max-width: 44ch; margin: 0 0 26px; }
 
-.sample { border: 1px solid var(--line); border-radius: var(--r-sheet); background: var(--surface); padding: 18px 18px 16px; max-width: 420px; }
-.sample-cap { font-size: .82rem; color: var(--muted); margin: 0 0 10px; }
-.sample .total { font-size: 1.7rem; font-weight: 700; letter-spacing: -.02em; }
+.sample {
+  background: var(--band); color: var(--band-ink); border: 0;
+  border-radius: var(--r-sheet); padding: 20px 20px 18px; max-width: 420px;
+}
+.sample-cap { font-size: .82rem; color: var(--band-muted); margin: 0 0 8px; }
+.sample .total {
+  font-family: "IBM Plex Sans Condensed", "IBM Plex Sans", sans-serif;
+  font-size: 2rem; font-weight: 700; letter-spacing: -.01em;
+}
+.sample .pl-gain { color: var(--band-gain); }
+.sample .alloc-legend { color: var(--band-ink); }
+.sample .alloc-legend .pct { color: var(--band-muted); }
+/* koyu bant üstünde koyu-tema varlık renkleri (statik tanıtım kartı) */
+.sample .f-gold, .sample .dot.s-gold { background: #BA851F; }
+.sample .f-bist, .sample .dot.s-bist { background: #0891B2; }
+.sample .f-silver, .sample .dot.s-silver { background: #7488D8; }
 
 .auth-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-sheet); padding: 24px; box-shadow: var(--shadow); }
 .auth-tabs { display: flex; gap: 4px; border: 1.5px solid var(--line); border-radius: var(--r-control); padding: 3px; margin-bottom: 20px; }
@@ -33,48 +126,74 @@ main { flex: 1; width: 100%; max-width: 980px; margin: 0 auto; padding: 0 16px 4
 .auth-foot button { border: 0; background: none; color: var(--brand-deep); cursor: pointer; font: inherit; padding: 0; }
 .auth-foot button:hover { text-decoration: underline; }
 
-/* ---- özet bloğu (kahraman) ---- */
-.summary { padding: 26px 0 8px; }
-.summary .sum-label { color: var(--muted); font-size: .92rem; margin: 0 0 2px; display: flex; align-items: center; gap: 10px; }
-.sum-value {
-  font-size: clamp(2.3rem, 9vw, 3.6rem); font-weight: 700;
-  letter-spacing: -.035em; line-height: 1.05; margin: 0;
+/* ---- kasa bandı (Özet kahramanı) ---- */
+.hero {
+  background: var(--band); color: var(--band-ink);
+  border: 1px solid var(--band-line);
+  border-radius: 18px; padding: 20px 20px 16px; margin-top: 16px;
 }
-.sum-value .kurus { font-size: .5em; font-weight: 600; color: var(--ink-2); }
-.sum-row { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 12px; align-items: baseline; }
-.sum-item { font-size: .95rem; color: var(--muted); }
-.sum-item b { font-weight: 600; margin-left: 6px; }
-.delta-gain { color: var(--gain); }
-.delta-loss { color: var(--loss); }
-.sum-meta { margin-top: 10px; font-size: .82rem; color: var(--muted); display: flex; align-items: center; gap: 10px; }
+@media (min-width: 680px) { .hero { padding: 26px 28px 20px; } }
+.hero-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.hero-label { color: var(--band-muted); font-size: .92rem; }
+.hero-tools { display: flex; align-items: center; gap: 10px; }
+.hero-value {
+  font-size: clamp(2.7rem, 11vw, 4.3rem); font-weight: 700;
+  letter-spacing: -.01em; line-height: 1.02; margin: 8px 0 0;
+}
+.hero-value .kurus { font-size: .45em; font-weight: 600; color: var(--band-muted); }
+.hero-value .suf { font-size: .45em; font-weight: 600; color: var(--band-muted); margin-left: .12em; }
+.hero-value .suf.gold { color: var(--gold); }
+.hero-equiv { margin: 6px 0 0; color: var(--band-muted); font-size: .98rem; }
+.hero-stats { display: flex; flex-wrap: wrap; gap: 6px 24px; margin-top: 14px; }
+.hero-stats > span { font-size: .95rem; color: var(--band-muted); }
+.hero-stats b { font-weight: 600; margin-left: 7px; }
+.hero .pl-gain { color: var(--band-gain); }
+.hero .pl-loss { color: var(--band-loss); }
+.hero .pl-flat { color: var(--band-muted); }
+.hero-meta {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--band-line);
+  font-size: .82rem; color: var(--band-muted);
+}
+.hero-mtools { display: flex; gap: 8px; }
+.hero .btn-icon { border-color: var(--band-line); color: var(--band-muted); }
+.hero .btn-icon:hover { border-color: var(--band-muted); color: var(--band-ink); }
+.hero .chips { border-color: var(--band-line); }
+.hero .chips button { color: var(--band-muted); }
+.hero .chips button[aria-selected="true"] { background: var(--band-ink); color: var(--band); }
+.hero .chips button[aria-selected="true"][data-unit="gold"] { background: var(--gold); color: var(--gold-ink); }
 
 @media (prefers-reduced-motion: no-preference) {
-  .summary { animation: rise .45s ease-out both; }
+  .hero { animation: rise .45s ease-out both; }
   @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
 }
 
 /* gizlilik: tutarları bulanıklaştır (omuz üstünden bakana karşı) */
-.masked .sum-value, .masked .sum-item b, .masked .c-value, .masked .c-pl,
-.masked .alloc-legend b { filter: blur(9px); }
+.masked .hero-value, .masked .hero-equiv, .masked .hero-stats b,
+.masked .c-value, .masked .c-pl, .masked .alloc-legend b { filter: blur(9px); }
+
+/* ---- bölüm ritmi ---- */
+.holdings, .watch, .alerts, .txns, .bench, .alloc-sec, .goals-sec, .analiz { margin-top: 34px; }
+.holdings-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+.holdings-head .tools { display: flex; align-items: center; gap: 8px; }
 
 /* ---- dağılım çubuğu ---- */
-.alloc { margin: 22px 0 6px; }
+.alloc-sec .alloc { margin-top: 10px; }
 .alloc-bar { display: flex; gap: 2px; height: 14px; border-radius: 7px; overflow: hidden; }
 .alloc-bar span { min-width: 3px; }
 .alloc-bar .f-bist { background: var(--a-bist); }
 .alloc-bar .f-gold { background: var(--a-gold); }
 .alloc-bar .f-silver { background: var(--a-silver); }
+.alloc-bar .f-fx { background: var(--a-fx); }
+.alloc-bar .f-crypto { background: var(--a-crypto); }
+.alloc-bar .f-cash { background: repeating-linear-gradient(45deg, var(--a-cash) 0 4px, var(--line-soft) 4px 8px); }
 .alloc-legend { display: flex; flex-wrap: wrap; gap: 6px 24px; margin-top: 10px; font-size: .9rem; }
 .alloc-legend .dot { width: 9px; height: 9px; border-radius: 3px; display: inline-block; margin-right: 7px; vertical-align: 0; }
+.alloc-legend .dot.d-cash { background: repeating-linear-gradient(45deg, var(--a-cash) 0 3px, var(--line-soft) 3px 6px) !important; }
 .alloc-legend b { font-weight: 600; }
 .alloc-legend .pct { color: var(--muted); margin-left: 7px; }
 
 /* ---- pozisyon listesi ---- */
-.holdings { margin-top: 30px; }
-.holdings-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
-.holdings-head h2 { font-size: 1.12rem; font-weight: 700; letter-spacing: -.01em; margin: 0; }
-.holdings-head .tools { display: flex; align-items: center; gap: 8px; }
-
 .hrow {
   display: grid; width: 100%; text-align: left;
   grid-template-columns: minmax(130px, 1.4fr) repeat(4, minmax(86px, 1fr)) 34px;
@@ -92,12 +211,13 @@ main { flex: 1; width: 100%; max-width: 980px; margin: 0 auto; padding: 0 16px 4
 .hrow .edit-ic { color: var(--muted); text-align: right; line-height: 0; }
 
 .asset { display: flex; align-items: center; gap: 10px; min-width: 0; }
-.tick {
-  font-weight: 600; font-size: .82rem; padding: 3px 8px; border-radius: 6px; flex-shrink: 0;
-}
+.tick { font-weight: 600; font-size: .82rem; padding: 3px 8px; border-radius: 6px; flex-shrink: 0; }
 .tick-bist { background: var(--chip-bist); color: var(--a-bist); }
 .tick-gold { background: var(--chip-gold); color: var(--a-gold); }
 .tick-silver { background: var(--chip-silver); color: var(--a-silver); }
+.tick-usd, .tick-eur { background: var(--chip-fx); color: var(--a-fx); }
+.tick-btc, .tick-eth { background: var(--chip-crypto); color: var(--a-crypto); }
+.tick-cash { background: var(--chip-cash); color: var(--a-cash); }
 .asset .aname { min-width: 0; overflow: hidden; }
 .asset .aname b { display: block; font-weight: 600; font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .asset .aname small { color: var(--muted); font-size: .8rem; }
@@ -124,8 +244,9 @@ main { flex: 1; width: 100%; max-width: 980px; margin: 0 auto; padding: 0 16px 4
 
 /* ---- boş durum ---- */
 .empty { text-align: center; padding: 56px 16px; border: 1.5px dashed var(--line); border-radius: var(--r-sheet); margin-top: 26px; }
-.empty h2 { font-size: 1.25rem; margin: 0 0 8px; letter-spacing: -.01em; }
+.empty h2 { margin: 0 0 8px; }
 .empty p { color: var(--muted); max-width: 46ch; margin: 0 auto 20px; }
+.analiz-empty { color: var(--muted); max-width: 56ch; margin: 16px 0 0; }
 
 /* ---- kipler (dialog) ---- */
 dialog {
@@ -134,7 +255,7 @@ dialog {
 }
 dialog::backdrop { background: rgba(8, 18, 16, .55); }
 .dlg-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
-.dlg-head h2 { font-size: 1.15rem; margin: 0; letter-spacing: -.01em; }
+.dlg-head h2 { font-size: 1.2rem; }
 .dlg-actions { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 20px; }
 .dlg-actions .grow { flex: 1; }
 
@@ -147,6 +268,8 @@ dialog::backdrop { background: rgba(8, 18, 16, .55); }
 }
 .seg input:checked + span { background: var(--brand-deep); color: var(--brand-deep-ink); }
 .seg input:focus-visible + span { outline: 2px solid var(--focus); outline-offset: 1px; }
+.seg-wrap { flex-wrap: wrap; }
+.seg-wrap label { flex: 1 1 30%; min-width: 86px; }
 
 .suggest { position: relative; }
 .suggest ul {
@@ -166,20 +289,17 @@ dialog::backdrop { background: rgba(8, 18, 16, .55); }
 .price-hint button { border: 0; background: none; color: var(--brand-deep); cursor: pointer; font: inherit; padding: 0; }
 .price-hint button:hover { text-decoration: underline; }
 
-/* ---- eşdeğerler + demo ---- */
-.sum-equiv { margin: 6px 0 0; color: var(--muted); font-size: 1rem; }
-.masked .sum-equiv { filter: blur(9px); }
-.try-demo { margin: 22px 0 0; }
+/* ---- demo şeridi ---- */
 .demo-banner {
   display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;
   border: 1.5px solid var(--brand); background: var(--chip-bist);
   border-radius: var(--r-control); padding: 12px 16px; margin-top: 18px; font-size: .93rem;
 }
+.try-demo { margin: 22px 0 0; }
 
 /* ---- değer grafiği ---- */
 .chart { margin-top: 26px; }
 .chart-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
-.chart-head h2 { font-size: 1.12rem; font-weight: 700; letter-spacing: -.01em; margin: 0; }
 .chart-sub { font-size: .88rem; color: var(--muted); }
 .chart-box { position: relative; }
 .chart-box svg { display: block; width: 100%; height: auto; touch-action: pan-y; }
@@ -201,9 +321,9 @@ dialog::backdrop { background: rgba(8, 18, 16, .55); }
   padding: 20px; color: var(--muted); font-size: .92rem;
 }
 .chart-empty p { margin: 0; max-width: 56ch; }
+.c-paid { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 5 4; }
 
 /* ---- izleme listesi + alarmlar ---- */
-.watch, .alerts { margin-top: 34px; }
 .wrow, .arow {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
   padding: 11px 2px; border-bottom: 1px solid var(--line-soft);
@@ -215,7 +335,7 @@ dialog::backdrop { background: rgba(8, 18, 16, .55); }
 .arow .aname small { display: block; color: var(--muted); font-size: .8rem; }
 
 /* ---- hedefler ---- */
-.goals { margin-top: 20px; display: grid; gap: 12px; }
+.goals { margin-top: 10px; display: grid; gap: 12px; }
 .goal-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
 .goal-name { font-size: .92rem; font-weight: 600; }
 .goal-name small { color: var(--muted); font-weight: 500; }
@@ -223,7 +343,7 @@ dialog::backdrop { background: rgba(8, 18, 16, .55); }
 .goal-del { border: 0; background: none; color: var(--muted); cursor: pointer; padding: 2px; line-height: 0; border-radius: 4px; }
 .goal-del:hover { color: var(--loss); }
 .goal-bar { height: 8px; border-radius: 4px; background: var(--line-soft); overflow: hidden; margin-top: 6px; }
-.goal-bar span { display: block; height: 100%; background: var(--brand); border-radius: 4px; min-width: 2px; }
+.goal-bar span { display: block; height: 100%; background: var(--gold); border-radius: 4px; min-width: 2px; }
 .goal-sub { font-size: .8rem; color: var(--muted); margin-top: 4px; }
 .masked .goal-sub, .masked .goal-name small { filter: blur(7px); }
 .goal-add {
@@ -232,11 +352,20 @@ dialog::backdrop { background: rgba(8, 18, 16, .55); }
   font: 500 .9rem "IBM Plex Sans", system-ui, sans-serif;
   display: inline-flex; align-items: center; gap: 8px; text-align: left;
 }
+.goal-add b { font-weight: 500; white-space: nowrap; }
 .goal-add span { color: var(--muted); font-weight: 400; }
 .goal-add:hover { border-color: var(--brand-deep); color: var(--brand-deep); }
 
+/* ---- analiz ---- */
+.a-stats {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 16px 20px; margin-top: 18px;
+}
+.a-stats .stat span { display: block; font-size: .8rem; color: var(--muted); margin-bottom: 2px; }
+.a-stats .stat b { font-size: 1.15rem; font-weight: 600; }
+.masked .a-stats .m { filter: blur(8px); }
+
 /* ---- ne olsaydı ---- */
-.bench { margin-top: 34px; }
 .bench-sub { color: var(--muted); font-size: .9rem; margin: 2px 0 14px; max-width: 60ch; }
 .bench-rows { display: grid; gap: 10px; }
 .bench-row { display: grid; grid-template-columns: minmax(120px, 170px) 1fr 90px; gap: 12px; align-items: center; }
@@ -261,6 +390,7 @@ dialog::backdrop { background: rgba(8, 18, 16, .55); }
   font: 600 .78rem "IBM Plex Sans", system-ui, sans-serif; padding: 4px 10px; border-radius: 6px;
 }
 .chips button[aria-selected="true"] { background: var(--brand-deep); color: var(--brand-deep-ink); }
+.unit-chips button { padding: 4px 10px; font-size: .78rem; }
 
 /* ---- varlık detay kipi ---- */
 .dlg-wide { width: min(96vw, 620px); }
@@ -286,7 +416,6 @@ dialog::backdrop { background: rgba(8, 18, 16, .55); }
 }
 
 /* ---- işlem defteri ---- */
-.txns { margin-top: 34px; }
 .trow {
   display: flex; align-items: center; gap: 12px;
   padding: 11px 2px; border-bottom: 1px solid var(--line-soft);
@@ -306,27 +435,6 @@ dialog::backdrop { background: rgba(8, 18, 16, .55); }
 .linklike { border: 0; background: none; color: var(--brand-deep); cursor: pointer; font: inherit; padding: 0; }
 .linklike:hover { text-decoration: underline; }
 .masked .trow .aname b, .masked .trow .r { filter: blur(7px); }
-.c-paid { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 5 4; }
-.unit-chips { vertical-align: 1px; }
-.unit-chips button { padding: 3px 9px; font-size: .74rem; }
-
-/* ---- yeni varlık sınıfları ---- */
-.tick-usd, .tick-eur { background: var(--chip-fx); color: var(--a-fx); }
-.tick-btc, .tick-eth { background: var(--chip-crypto); color: var(--a-crypto); }
-.tick-cash { background: var(--chip-cash); color: var(--a-cash); }
-.alloc-bar .f-fx { background: var(--a-fx); }
-.alloc-bar .f-crypto { background: var(--a-crypto); }
-.alloc-bar .f-cash { background: repeating-linear-gradient(45deg, var(--a-cash) 0 4px, var(--line-soft) 4px 8px); }
-.alloc-legend .dot.d-cash { background: repeating-linear-gradient(45deg, var(--a-cash) 0 3px, var(--line-soft) 3px 6px) !important; }
-
-.seg-wrap { flex-wrap: wrap; }
-.seg-wrap label { flex: 1 1 30%; min-width: 86px; }
-
-/* ---- öne çıkanlar ---- */
-.hl { margin: 14px 0 0; font-size: .9rem; color: var(--muted); }
-.hl b { font-weight: 600; margin-left: 4px; }
-.hl-sep { color: var(--line); padding: 0 4px; }
-.masked .hl { filter: none; } /* yüzdeler tutar değil */
 
 /* ---- detay haberleri ---- */
 .dnews { margin: 16px 0 4px; border-top: 1px solid var(--line-soft); padding-top: 12px; }
