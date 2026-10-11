@@ -5,6 +5,27 @@
 > Portföy: `app/portfoy/` → `bash scripts/deploy-app.sh` → Caddy `/srv/parafomo-app`
 > (backend aynı api.parafomo.com). Ortak stil `app/theme.css`. Eski /portfoy/panel duruyor (yönlendirme notlu).
 > Bu backlog'daki UX maddeleri bundan sonra `app/portfoy/` içinde yapılır (Astro panel'e DEĞİL).
+> **2026-10-11 AKŞAM — v3 "satılabilir ürün" paketi CANLI (commit 5119aae + cila):** değer grafiği
+> (snapshot upsert + gece cron) · reel getiri (TÜFE zinciri) · "Ne olsaydı" kıyası (data/benchmarks.json,
+> 15y boşluksuz, scripts/build-benchmarks.py GÜNLÜK veriden ay kapanışı türetir — aylık mumlar bozuk) ·
+> hedefler · alarm v2 (day_pct + tekrarlayan; cron armed/rearm) · varlık detay grafiği (/public/history) ·
+> hesap ayarları + KVKK silme + /kvkk sayfası · aylık özet maili (users.monthly_email, cron ay başı) ·
+> /birikim DCA simülatörü + paylaşım kartı · GA4 (G-4KNGH3574V) · AppCTA köprüsü (8 veri sayfası + blog).
+>
+> **ARAÇ:** sunucuda headless Chromium var → tasarım değişikliğini EKRAN GÖRÜNTÜSÜYLE denetle:
+> playwright-core + executablePath ~/.cache/ms-playwright/chromium_headless_shell-1148/chrome-linux/headless_shell
+> (--no-sandbox). Örnek betikler RC scratch'ındaydı; desen: newContext({viewport,colorScheme}) → goto →
+> screenshot. Demo moduna #demo-btn ile girilir (giriş gerektirmez).
+>
+> **Sıradaki adaylar (öncelik sırası):**
+> 1. TÜFE serisini (data/tufe-aylik.json) 2021-01'e kadar RESMÎ kaynaktan WebSearch-doğrulamalı genişlet
+>    → 5y+ dönemlerde reel getiri ve simülatör enflasyon satırı açılır (şu an dürüst notla gizli).
+> 2. Birikim paylaşım kartını IG hattına bağla: haftada 1 otomatik "ayda X TL'yi Y'ye koysaydın" kartı
+>    (scripts/ ile canvas yerine PIL'de aynı tasarım) — uygulamaya trafik hunisi.
+> 3. Varlık detayına haber/temettü satırı (kaynak araştır) · grafikte 1A/3A chip'leri veri birikince zenginleşir.
+> 4. İşlem geçmişi (lot lot alım-satım + realize K/Z) — BÜYÜK, ayrı oturumda planla; mevcut holdings'i bozmadan
+>    transactions tablosuyla yan yana kur.
+> 5. Premium paket adayları (Kaan ödeme kararı verince): çoklu portföy, sınırsız alarm, aylık PDF rapor.
 > Kaan 2026-10-11: "uygulama çok basit olmuş" → satılabilir derinlik öncelik: aday işler sırayla —
 > pozisyon geçmişi/değer grafiği (günlük snapshot tablosu gerekir, şema onayı Kaan'dan), izleme listesi,
 > fiyat alarmı (e-posta), çoklu portföy, hedef/oran analizi. Yeni eklenenler (yapıldı): gizlilik gözü,
