@@ -23,8 +23,8 @@
 > 2. Birikim paylaşım kartını IG hattına bağla: haftada 1 otomatik "ayda X TL'yi Y'ye koysaydın" kartı
 >    (scripts/ ile canvas yerine PIL'de aynı tasarım) — uygulamaya trafik hunisi.
 > 3. Varlık detayına haber/temettü satırı (kaynak araştır) · grafikte 1A/3A chip'leri veri birikince zenginleşir.
-> 4. İşlem geçmişi (lot lot alım-satım + realize K/Z) — BÜYÜK, ayrı oturumda planla; mevcut holdings'i bozmadan
->    transactions tablosuyla yan yana kur.
+> 4. ✅ İşlem defteri YAPILDI (2026-10-11 v4): transactions tablosu + satış + realize K/Z + birim görünümü
+>    (₺/$/g). Kalan türevler: yıllık realize raporu, satışta FIFO seçeneği (şimdilik ort. maliyet).
 > 5. Premium paket adayları (Kaan ödeme kararı verince): çoklu portföy, sınırsız alarm, aylık PDF rapor.
 > Kaan 2026-10-11: "uygulama çok basit olmuş" → satılabilir derinlik öncelik: aday işler sırayla —
 > pozisyon geçmişi/değer grafiği (günlük snapshot tablosu gerekir, şema onayı Kaan'dan), izleme listesi,
