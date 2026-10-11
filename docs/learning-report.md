@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-10-10T08:46:25Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-10-11T08:46:28Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -19,21 +19,21 @@
 
 ### Viral format — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `shock_number` — skor 397.368, örnek 6
-- `single_concept` — skor 274.773, örnek 5
-- `myth` — skor 226.246, örnek 9
-- `news_reaction` — skor 133.392, örnek 12
-- `backtest_return` — skor 81.089, örnek 5
+- `shock_number` — skor 397.518, örnek 6
+- `single_concept` — skor 274.973, örnek 5
+- `myth` — skor 267.52, örnek 9
+- `news_reaction` — skor 132.774, örnek 12
+- `backtest_return` — skor 93.777, örnek 4
 
 ### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
 - `2` — skor 299.24, örnek 5
+- `5` — skor 272.215, örnek 4
+- `4` — skor 270.831, örnek 4
 - `3` — skor 265.25, örnek 5
-- `1` — skor 261.278, örnek 6
-- `4` — skor 222.552, örnek 5
-- `5` — skor 177.972, örnek 4
-- `0` — skor 141.807, örnek 4
-- `manual` — skor 127.305, örnek 8
+- `1` — skor 261.445, örnek 6
+- `0` — skor 140.432, örnek 4
+- `manual` — skor 126.379, örnek 8
 
 ## Konu sinyalleri
 
@@ -47,13 +47,13 @@
 
 **🎯 Fırsat sorguları** (içerik/başlık iyileştir):
 - `albayrak hazır beton hisse` — gös 179, sıra 12.3
-- `abd faiz artarsa dolar ne olur` — gös 16, sıra 13.8
+- `abd faiz artarsa dolar ne olur` — gös 17, sıra 14.1
 - `dezenflasyon nedir` — gös 15, sıra 16.7
-- `buyback nedir` — gös 13, sıra 9.5
+- `abd faizi yukseltirse dolar ne olur` — gös 8, sıra 19.1
 - `ekim ayı enflasyon beklentisi 2026` — gös 8, sıra 12.1
-- `abd faizi yukseltirse dolar ne olur` — gös 7, sıra 19.9
 - `ekim 2026 enflasyon beklentisi` — gös 7, sıra 7.6
-- `abd faiz yükseltirse altın ne olur` — gös 6, sıra 7.3
+- `buyback nedir` — gös 6, sıra 9.2
+- `abd faiz artırırsa altın ne olur` — gös 5, sıra 6
 
 ## Notlar
 
