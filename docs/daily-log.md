@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-10-12 — ABD Enflasyon Verisi Ekim 2026: CPI Fed'i Yine Zorlar mı?
+
+**Yayınlanan yazı:** [ABD Enflasyon Verisi Ekim 2026: CPI Fed'i Yine Zorlar mı?](/blog/abd-ekim-2026-cpi-verisi-fed-dolar-altin)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — 14 Ekim ABD CPI, takvimde 🔴 High)
+
+---
+
 ## 2026-10-09 — Euro mu Dolar mı 2026? TL Bazında 10 Yıllık Getiri
 
 **Yayınlanan yazı:** [Euro mu Dolar mı 2026? TL Bazında 10 Yıllık Getiri](/blog/euro-mi-dolar-mi-10-yillik-getiri-karsilastirma)

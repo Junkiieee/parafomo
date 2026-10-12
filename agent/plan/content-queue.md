@@ -6,11 +6,6 @@
 Sıra = planlanan yayın günü (haftalık koşu 2026-10-08): 08 → 09 → 12 → 13 → 14 → 15 → 16 → 19 Ekim.
 
 ## Kuyruk
-- [ ] **ABD Ekim 2026 CPI verisi (Eylül enflasyonu): beklenti, Fed'e etkisi, dolar ve altın** · hedef:
-  "abd enflasyon verisi ekim 2026", "cpi verisi ne zaman" · neden: CPI açıklaması Ekim ortası — yazmadan önce
-  tarihi BLS takviminden/ekonomik takvimden doğrula ve metne kesin tarihi yaz (bilinmiyorsa "Ekim ortası"); 10-12'de
-  yayın (olaydan 1-3 gün önce); 10 Eylül'deki "ABD Eylül 2026 CPI" yazısıyla çakışmasın diye "Ekim" adlandırması;
-  makro açıklayıcılar en iyi blog sayfalarımız · iç-link: /ekonomik-takvim, /fed-faiz-takvimi, /altin-getiri
 - [ ] **2027'de neler zamlanacak? Yeniden değerleme oranı rehberi: MTV, harçlar, cezalar, vergi dilimleri** ·
   hedef: "2027 zamları", "yeniden değerleme oranı 2027", "2027de neler zamlanacak" · neden: RC 10-10'da
   /yeniden-degerleme-orani + /mtv-hesaplama canlıya alındı (Eylül Yİ-ÜFE ile tahmin %27,8) — bu yazı kümenin
@@ -47,6 +42,11 @@ Sıra = planlanan yayın günü (haftalık koşu 2026-10-08): 08 → 09 → 12 �
   /blog/abd-faiz-artarsa-altin-ne-olur.
 
 ## Yazılanlar
+- [x] **ABD Ekim 2026 CPI verisi (Eylül enflasyonu): beklenti, Fed'e etkisi, dolar ve altın** · hedef:
+  "abd enflasyon verisi ekim 2026", "cpi verisi ne zaman" · neden: CPI açıklaması Ekim ortası — yazmadan önce
+  tarihi BLS takviminden/ekonomik takvimden doğrula ve metne kesin tarihi yaz (bilinmiyorsa "Ekim ortası"); 10-12'de
+  yayın (olaydan 1-3 gün önce); 10 Eylül'deki "ABD Eylül 2026 CPI" yazısıyla çakışmasın diye "Ekim" adlandırması;
+  makro açıklayıcılar en iyi blog sayfalarımız · iç-link: /ekonomik-takvim, /fed-faiz-takvimi, /altin-getiri → /blog/abd-ekim-2026-cpi-verisi-fed-dolar-altin (2026-10-12)
 - [x] **Euro mu dolar mı? TL bazında 10 yıllık getiri karşılaştırması** · hedef: "euro mu dolar mı
   2026" · neden: B261006-2 (T2 /euro-getiri ile; 10-09) · iç-link: /euro-getiri (yayındaysa), /dolar-getiri → /blog/euro-mi-dolar-mi-10-yillik-getiri-karsilastirma (2026-10-09)
 - [x] **Gümüş mü altın mı? Son 10 yılda TL bazında hangisi kazandırdı** · hedef: "gümüş mü altın mı",
