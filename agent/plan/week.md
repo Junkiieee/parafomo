@@ -70,13 +70,13 @@ _Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
   belirleyebilir, 2026 artışı ~%20 idi' — emekli-zammi kalıbı). Talep kanıtı: Autocomplete "vergi dilimi
   hesaplama/nedir/oranları/girmek ne demek" (demand-gaps.json). Footer Hesaplayıcılar'a ekle;
   /net-maas-hesaplama'dan metin içi link. · Kabul: build + canlıda 200 + FAQPage/Dataset şema + footer linki.
-- [ ] T11 (zam sezonu, RC 10-10) — **/trafik-cezalari-2027 (veya -hesaplama) sayfası:** 2026'da cezalar
+- [x] T11 (zam sezonu, RC 10-10) — → canlı https://parafomo.com/trafik-cezalari-hesaplama/ (7574 sayılı Kanun RG 27.02.2026 metni + 2 ikincil kaynakla doğrulandı: kırmızı ışık 5.000→6. ihlal 80.000, telefon 5.000/10.000/20.000, kemer 2.500, hız 9 kademe iç/dış 2.000-30.000, alkol 25/50/150 bin, belgesiz 40.000; muayene/park/ceza puanı çelişkili → yok; hız cezası hesaplayıcı + %25 peşin + koşullu 2027 YD sütunu; Dataset/FAQPage/WebApplication; footer + OG + /mtv ve /yeniden-degerleme'den link) · commit b9458bd · 2026-10-12 — **/trafik-cezalari-2027 (veya -hesaplama) sayfası:** 2026'da cezalar
   7574 sayılı Kanun'la yeniden belirlendi — 8-10 YAYGIN cezayı (kırmızı ışık, hız %10-30, emniyet kemeri,
   cep telefonu, park, muayenesiz) WebSearch ile RESMİ/büyük kaynaktan doğrula (kaynaklar çelişiyor:
   kırmızı ışık 1.000/3.000/5.000 görüldü — yalnız 2+ kaynağın doğruladığını yaz, çelişeni ATLA) +
   2027 tahmini sütunu (YD oranı, data/yeniden-degerleme.json) + /yeniden-degerleme-orani'ye link.
   · Kabul: canlıda 200, her tutarın kaynağı sayfada, çelişkili tutar yok.
-- [ ] T12 (zam sezonu, RC 10-10) — **/pasaport-ehliyet-harci-2027:** 2026 harçları (pasaport 6ay/1/2/3/10 yıl
+- [x] T12 (zam sezonu, RC 10-10) — → canlı https://parafomo.com/pasaport-ehliyet-harci/ (pasaport 6ay-10yıl harç + 1.351 defter, B ehliyet 6.754,60+1.690+425=8.869,60, IMEI 54.258, yurt dışı çıkış 1.250, kimlik 220/440; 2+ kaynak; 2026 harç artışı CB kararıyla %18,95 — 57.241 IMEI veren kaynaklar %25,49 ile hesaplamış; A sınıfı çelişkili → yok; süre seçmeli 2027 hesaplayıcı; Dataset+FAQPage; footer+OG; YD/MTV/trafik sayfalarından link) · commit 7927094 · 2026-10-12 — **/pasaport-ehliyet-harci-2027:** 2026 harçları (pasaport 6ay/1/2/3/10 yıl
   + defter; ehliyet sınıfları; kimlik) WebSearch doğrulamalı tablo + 2027 YD tahmini sütunu + IMEI 54.258 TL
   satırı. Kaynak çelişirse "yaklaşık" + kaynak linki. /yeniden-degerleme-orani ve /mtv-hesaplama'ya karşılıklı
   link. · Kabul: canlıda 200 + tablo + şemalar.

@@ -90,3 +90,4 @@ _v1'in 59 deneyi + 2 aylık KPI'ından damıtıldı (2026-10-06); son yeniden ya
 - **Telegram kanalı 2 üye** (2026-10-06): dağıtım değeri ~0. Site bülten formu `action="#"` (2026-10-08 hâlâ;
   kimse abone olamıyor) — T4.
 - Sunucu 2 çekirdek / 3,7 GB RAM / GPU yok: yerel ağır TTS (XTTS) çalışmaz; video render CPU'yu doyurur.
+- **2026'da harçlar YD %25,49 değil CB kararıyla %18,95 arttı** (pasaport 10y 13.410,40, IMEI 54.258 bu oranla tutarlı; 57.241 veren haberler %25,49 ile hesaplamış). Zam sezonu sayfalarında kaynak rakamını bu oranla çapraz kontrol et (2026-10-12).
