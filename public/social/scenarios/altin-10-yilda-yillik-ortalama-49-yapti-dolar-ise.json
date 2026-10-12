@@ -1,0 +1,64 @@
+{
+  "slug": "altin-10-yilda-yillik-ortalama-49-yapti-dolar-ise",
+  "title": "Altın 10 yılda yıllık ortalama %49 yaptı, dolar ise?",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Son 10 yılda altın TL bazında yaklaşık 55 kat, dolar yaklaşık 16 kat arttı. Bileşik hesapla yıllık ortalamalar yaklaşık yüzde 49 ve yüzde 32 ediyor.\nKaynak/hesap: Altın 10 yılda ~%5450 artış = ~55,5 kat; 55,5^(1/10) ≈ 1,49 → yıllık ~%49. Dolar ~%1509 = ~16,1 kat; 16,1^(1/10) ≈ 1,32 → yıllık ~%32. 10.000 TL → ~160 bin (dolar) / ~555 bin (altın). · ParaFOMO güncel veri sayfaları: 10 yıllık TL bazında altın ve dolar getirisi; yıllık ortalama senaryodaki bileşik hesaptan çıkıyor",
+  "tags": [
+    "altın",
+    "dolar",
+    "gram altın",
+    "birikim",
+    "yatırım",
+    "enflasyon",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Altın yılda ortalama yüzde 49 kazandırdı.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "On yılda altın TL'de yaklaşık 55 katına çıktı; bileşik hesapla yılda ortalama yaklaşık yüzde 49.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins stack"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Dolar da yaklaşık 16 kat oldu; 10 bin TL dolarda 160 bin, altında 555 bin.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Geçmiş garanti değil, ama birikimin hepsi tek para biriminde bekliyorsa, bir kısmını altınla dengelemeyi düşün.",
+      "visual": {
+        "type": "object",
+        "query": "wallet"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki videoda bu farkın nereden çıktığını açıyoruz. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "yılda ortalama yüzde 49",
+    "calc": "Altın 10 yılda ~%5450 artış = ~55,5 kat; 55,5^(1/10) ≈ 1,49 → yıllık ~%49. Dolar ~%1509 = ~16,1 kat; 16,1^(1/10) ≈ 1,32 → yıllık ~%32. 10.000 TL → ~160 bin (dolar) / ~555 bin (altın).",
+    "source": "ParaFOMO güncel veri sayfaları: 10 yıllık TL bazında altın ve dolar getirisi; yıllık ortalama senaryodaki bileşik hesaptan çıkıyor"
+  }
+}
