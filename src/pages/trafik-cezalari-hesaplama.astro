@@ -1,0 +1,344 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import yd from '../../data/yeniden-degerleme.json';
+
+// 2026 tutarları: 7574 sayılı Kanun (RG 27.02.2026, sayı 33181) — kanun metni (alomaliye.com) +
+// 2 ikincil kaynakla karşılaştırıldı (2026-10-12). Kaynakların çeliştiği kalemler (muayene, park,
+// ceza puanı) bilerek YOK. 2027 sütunu koşullu: idari para cezaları her yıl YD oranıyla artırılır
+// (Kabahatler K. 17/7); 7574'ün sabit tutarlarına uygulanıp uygulanmayacağı tartışmalı.
+const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const monthName = (key: string) => `${MONTHS[+key.slice(5) - 1]} ${key.slice(0, 4)}`;
+const nf = (n: number, d = 1) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+
+const HEDEF = yd.hedefYil; // 2027
+const teblig = yd.tebligOrani as number | null;
+const oran = teblig ?? yd.onikiAyOrt;
+const durum = teblig ? 'teblig' : yd.ekimVerisiGeldi ? 'hesap' : 'tahmin';
+const oranLabel = durum === 'tahmin' ? `≈%${nf(oran)}` : `%${nf(oran, 2)}`;
+const sonAyAdi = monthName(yd.sonAy);
+const carpan = 1 + oran / 100;
+
+const CEZALAR = [
+  { ad: 'Kırmızı ışık ihlali (1. ihlal)', t: 5000, not: '1 yıl içinde 2.: 10.000 · 3.: 15.000 · 4.: 20.000 · 5.: 30.000 · 6.: 80.000 TL' },
+  { ad: 'Seyir halinde cep telefonu (1. ihlal)', t: 5000, not: '1 yıl içinde 2.: 10.000 TL · 3. ve sonrası: 20.000 TL + 30 gün belge geri alma' },
+  { ad: 'Emniyet kemeri takmama', t: 2500, not: 'sürücü ve yolcuya ayrı ayrı; 1 yılda 4+ ihlalde 30 gün belge geri alma' },
+  { ad: 'Hız aşımı (en düşük kademe)', t: 2000, not: 'yerleşim içi 6-10 km/s, dışı 11-15 km/s aşım; tablo aşağıda' },
+  { ad: 'Hız aşımı (en yüksek kademe)', t: 30000, not: 'yerleşim içi 66+, dışı 71+ km/s aşım; 90 gün belge geri alma' },
+  { ad: 'Alkollü araç kullanma (1. ihlal)', t: 25000, not: '2. ihlal 50.000 TL · 3. ihlal 150.000 TL; ayrıca belge geri alma' },
+  { ad: 'Sürücü belgesiz araç kullanma', t: 40000, not: 'araç sahibine de ayrıca 40.000 TL' },
+];
+
+// Madde 51 — [alt sınır km/s, üst sınır, ceza TL, belge geri alma günü]
+const HIZ_ICI = [[6, 10, 2000, 0], [11, 15, 4000, 0], [16, 20, 6000, 0], [21, 25, 8000, 0], [26, 35, 12000, 0], [36, 45, 15000, 0], [46, 55, 20000, 30], [56, 65, 25000, 60], [66, 999, 30000, 90]];
+const HIZ_DISI = [[11, 15, 2000, 0], [16, 20, 4000, 0], [21, 25, 6000, 0], [26, 30, 8000, 0], [31, 40, 12000, 0], [41, 50, 15000, 0], [51, 60, 20000, 30], [61, 70, 25000, 60], [71, 999, 30000, 90]];
+const aralik = (a: number, b: number) => (b >= 999 ? `${a} km/s ve üzeri` : `${a}-${b} km/s`);
+
+const faq = [
+  {
+    q: '2026 trafik cezaları ne kadar?',
+    a: '27 Şubat 2026\'da yürürlüğe giren 7574 sayılı Kanun\'la trafik cezaları yeniden belirlendi: kırmızı ışık ilk ihlalde 5.000 TL, seyir halinde telefon 5.000 TL, emniyet kemeri 2.500 TL, hız aşımı 2.000-30.000 TL, alkollü araç kullanma ilk ihlalde 25.000 TL, sürücü belgesiz araç kullanma 40.000 TL. Tekrarlanan ihlallerde tutarlar kademeli artar.',
+  },
+  {
+    q: `${HEDEF} trafik cezaları ne kadar olacak?`,
+    a: `İdari para cezaları her yıl başında yeniden değerleme oranıyla artırılır (Kabahatler Kanunu 17/7). ${sonAyAdi} itibarıyla ${HEDEF} oranı ${oranLabel}; bu oran uygulanırsa kırmızı ışık cezası yaklaşık ${fmt(5000 * carpan)} TL, telefon cezası yaklaşık ${fmt(5000 * carpan)} TL olur. Ancak 7574 sayılı Kanun'un doğrudan yazdığı yeni tutarlara 2027'de bu artışın uygulanıp uygulanmayacağı konusunda hukukçular ayrışıyor; kesin tutarlar Ocak ${HEDEF}'de netleşir.`,
+  },
+  {
+    q: 'Hız cezası nasıl hesaplanır?',
+    a: 'Ceza, hız sınırını kaç km/s aştığınıza ve yerleşim yeri içinde mi dışında mı olduğunuza göre kademeden belirlenir. Yerleşim içinde 6-10 km/s aşım 2.000 TL\'den başlar, 66 km/s ve üzeri 30.000 TL\'dir; yerleşim dışında 11-15 km/s aşım 2.000 TL\'den başlar, 71 km/s ve üzeri 30.000 TL\'dir. Yerleşim içinde 46, dışında 51 km/s ve üzeri aşımlarda sürücü belgesi 30-90 gün geri alınır.',
+  },
+  {
+    q: 'Trafik cezası erken ödenirse indirim var mı?',
+    a: 'Genel kural olarak trafik idari para cezası tebliğden itibaren 15 gün içinde ödenirse dörtte bir (%25) indirim uygulanır. Bazı ağır ihlallerde farklı hükümler olabileceği için tebligattaki tutar ve açıklama esas alınmalıdır. Ödeme e-Devlet, GİB veya bankalar üzerinden yapılabilir.',
+  },
+  {
+    q: 'Kırmızı ışık cezası tekrarlanınca ne olur?',
+    a: 'Son ihlalden geriye doğru bir yıl içinde tekrarında ceza artar: 2. ihlal 10.000 TL, 3. ihlal 15.000 TL, 4. ihlal 20.000 TL, 5. ihlal 30.000 TL, 6. ihlal 80.000 TL. 3., 4. ve 5. ihlallerde sürücü belgesi sırasıyla 30, 60 ve 90 gün geri alınır, 6. ihlalde iptal edilir.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Trafik Cezaları Hesaplama', url: '/trafik-cezalari-hesaplama/' },
+];
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: `Trafik cezaları 2026 ve ${HEDEF} tahmini — 7574 sayılı Kanun tutarları`,
+  description: `Kırmızı ışık, telefon, emniyet kemeri, hız, alkol ve belgesiz araç kullanma cezaları (2026) ile yeniden değerleme oranına (${oranLabel}) göre ${HEDEF} tahmini.`,
+  url: 'https://parafomo.com/trafik-cezalari-hesaplama/',
+  dateModified: yd.updated,
+  creator: { '@type': 'Organization', name: 'ParaFOMO', url: 'https://parafomo.com/' },
+  isBasedOn: 'https://www.resmigazete.gov.tr/eskiler/2026/02/20260227-1.htm',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+};
+const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  image="/og/trafik-cezalari-hesaplama.png"
+  title={`Trafik Cezaları 2026-${HEDEF}: Hız Cezası Hesaplama ve Güncel Tablo`}
+  description={`2026 trafik cezaları: kırmızı ışık 5.000 TL, telefon 5.000 TL, kemer 2.500 TL, hız 2.000-30.000 TL. Hız cezanızı hesaplayın; peşin indirim ve ${HEDEF} tahmini (${oranLabel}).`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(dataset)} />
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Trafik cezaları</p>
+      <h1>Trafik Cezaları 2026: Kırmızı Işık 5.000 TL, Hız 2.000-30.000 TL</h1>
+      <p class="lede">
+        27 Şubat 2026'da yürürlüğe giren 7574 sayılı Kanun'la cezalar yeniden belirlendi. Hız cezanızı hesaplayın,
+        15 gün içinde ödeme indirimini ve {HEDEF} için <a href="/yeniden-degerleme-orani/">yeniden değerleme</a>
+        tahminini ({oranLabel}) görün.
+      </p>
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="kpi-label">Kırmızı ışık (1. ihlal)</span>
+        <span class="kpi-val">₺5.000</span>
+        <span class="kpi-sub">1 yılda 6. ihlalde ₺80.000</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Telefon (1. ihlal)</span>
+        <span class="kpi-val">₺5.000</span>
+        <span class="kpi-sub">2. ihlal ₺10.000</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">{HEDEF} YD oranı</span>
+        <span class="kpi-val">{oranLabel}</span>
+        <span class="kpi-sub">{durum === 'tahmin' ? 'tahmin · 3 Kasım\'da kesinleşir' : durum === 'hesap' ? 'hesaben kesin · tebliğ bekleniyor' : 'tebliğle kesin'}</span>
+      </div>
+    </div>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Yol türü</span>
+          <select id="in-yer">
+            <option value="ici">Yerleşim yeri içi</option>
+            <option value="disi">Yerleşim yeri dışı (şehirlerarası)</option>
+          </select>
+        </label>
+        <label>
+          <span>Hız sınırı (km/s)</span>
+          <input type="number" id="in-limit" value="50" min="10" max="200" step="10" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Tespit edilen hız (km/s)</span>
+          <input type="number" id="in-hiz" value="72" min="0" max="300" step="1" inputmode="numeric" />
+        </label>
+        <label class="check">
+          <input type="checkbox" id="in-pesin" checked />
+          <span>15 gün içinde ödeyeceğim (%25 indirim)</span>
+        </label>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Hız cezası (2026)</span>
+          <span class="result-value" id="out-ceza">₺8.000</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Aşım</span>
+            <span class="split-val" id="out-asim">22 km/s</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Ödenecek tutar</span>
+            <span class="split-val" id="out-odeme">₺6.000</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">{HEDEF} tahmini (YD uygulanırsa)</span>
+            <span class="split-val" id="out-2027">—</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note">Sürücü belgesi geri alma yok.</p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç bilgilendirme amaçlıdır; bağlayıcı tutar ceza tutanağında/tebligatta yazandır.
+      Son güncelleme: {updatedLabel} · Kaynak: 7574 sayılı Kanun (Resmî Gazete 27.02.2026, sayı 33181),
+      {HEDEF} oranı için TÜİK Yİ-ÜFE (TCMB tablosu).
+    </p>
+
+    <section class="table-block">
+      <h2>2026 trafik cezaları ve {HEDEF} tahmini</h2>
+      <table class="rate-table">
+        <thead><tr><th>İhlal</th><th>2026</th><th>{HEDEF} tahmini ({oranLabel})</th></tr></thead>
+        <tbody>
+          {CEZALAR.map((c) => (
+            <tr>
+              <td>{c.ad}<span class="row-note">{c.not}</span></td>
+              <td>₺{fmt(c.t)}</td>
+              <td>≈₺{fmt(c.t * carpan)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        {HEDEF} sütunu, yeniden değerleme oranı 7574'ün tutarlarına da uygulanırsa geçerlidir; bazı hukukçular
+        kanunla yeni yazılan tutarların {HEDEF}'de artmayacağı görüşünde. Muayene, park ve ceza puanı gibi
+        kaynakların çeliştiği kalemleri bilerek eklemedik.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Hız cezaları tablosu (Madde 51)</h2>
+      <div class="two-col">
+        <table class="rate-table">
+          <thead><tr><th>Yerleşim içi aşım</th><th>Ceza</th></tr></thead>
+          <tbody>
+            {HIZ_ICI.map(([a, b, t, g]) => (
+              <tr><td>{aralik(a, b)}{g > 0 && <span class="row-note">{g} gün belge geri alma</span>}</td><td>₺{fmt(t)}</td></tr>
+            ))}
+          </tbody>
+        </table>
+        <table class="rate-table">
+          <thead><tr><th>Yerleşim dışı aşım</th><th>Ceza</th></tr></thead>
+          <tbody>
+            {HIZ_DISI.map(([a, b, t, g]) => (
+              <tr><td>{aralik(a, b)}{g > 0 && <span class="row-note">{g} gün belge geri alma</span>}</td><td>₺{fmt(t)}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="prose-block">
+      <h2>2026'da ne değişti?</h2>
+      <p>
+        12 Şubat 2026'da TBMM'de kabul edilen ve 27 Şubat'ta Resmî Gazete'de yayımlanan 7574 sayılı Kanun,
+        Karayolları Trafik Kanunu'ndaki cezaları yeniden değerleme yerine doğrudan yeni tutarlarla belirledi.
+        Hız cezaları aşım miktarına göre 9 kademeye ayrıldı; kırmızı ışık ve telefon ihlallerinde 1 yıl içindeki
+        tekrar sayısına göre artan cezalar geldi. Alkollü araç kullanmada ilk ihlal cezası 25.000 TL'ye çıktı.
+      </p>
+      <h2>{HEDEF}'de cezalar artacak mı?</h2>
+      <p>
+        Kabahatler Kanunu'na göre idari para cezaları her takvim yılı başında, Kasım'da ilan edilen
+        <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı</a> kadar artırılır. {sonAyAdi} verisiyle
+        {HEDEF} oranı {oranLabel}. Bu kuralın 7574'le yeni yazılan tutarlara uygulanıp uygulanmayacağı
+        tartışmalı; oran ve uygulama netleştikçe bu sayfa güncellenir. Aynı oran
+        <a href="/mtv-hesaplama/">MTV {HEDEF}</a> ve harçları da belirler.
+      </p>
+      <p class="cta-line">
+        İlgili sayfalar: <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı {HEDEF}</a> ·
+        <a href="/mtv-hesaplama/">MTV {HEDEF} hesaplama</a> ·
+        <a href="/kredi-hesaplama/">taşıt kredisi hesaplama</a> ·
+        <a href="/vergi-dilimi-hesaplama/">vergi dilimi hesaplama</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ HIZ_ICI, HIZ_DISI, CARPAN: carpan }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const tl = (n) => '₺' + nf0.format(Math.round(n));
+      function update() {
+        const tablo = $('in-yer').value === 'ici' ? HIZ_ICI : HIZ_DISI;
+        const asim = Math.round((+$('in-hiz').value || 0) - (+$('in-limit').value || 0));
+        const k = tablo.find((r) => asim >= r[0] && asim <= r[1]);
+        $('out-asim').textContent = Math.max(0, asim) + ' km/s';
+        if (!k) {
+          $('out-ceza').textContent = '₺0';
+          $('out-odeme').textContent = '₺0';
+          $('out-2027').textContent = '—';
+          $('out-note').textContent = asim > 0
+            ? 'Bu aşım miktarının tabloda ceza karşılığı yok (ilk kademe ' + tablo[0][0] + ' km/s).'
+            : 'Hız sınırı aşılmadı.';
+          return;
+        }
+        const ceza = k[2];
+        $('out-ceza').textContent = tl(ceza);
+        $('out-odeme').textContent = tl($('in-pesin').checked ? ceza * 0.75 : ceza);
+        $('out-2027').textContent = '≈' + tl(ceza * CARPAN);
+        $('out-note').textContent = k[3] > 0 ? 'Ayrıca sürücü belgesi ' + k[3] + ' gün geri alınır.' : 'Sürücü belgesi geri alma yok.';
+      }
+      ['in-yer', 'in-limit', 'in-hiz', 'in-pesin'].forEach((id) => {
+        $(id).addEventListener('input', update);
+        $(id).addEventListener('change', update);
+      });
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin: 0 0 1rem; }
+    .kpi { display: flex; flex-direction: column; gap: 0.15rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-xs); }
+    .kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .kpi-val { font-family: var(--font-serif); font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.1rem); font-weight: 700; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .kpi-sub { font-size: 0.78rem; color: var(--text-soft); line-height: 1.35; }
+
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs label.check { flex-direction: row; align-items: center; gap: 0.5rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input[type='number'], .calc-inputs select { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+
+    .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 1rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; }
+    .result-note { font-size: 0.82rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .rate-table td:not(:first-child) { white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .row-note { display: block; font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem; }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 680px) {
+      .kpi-row { grid-template-columns: 1fr; }
+      .calc-grid, .two-col { grid-template-columns: 1fr; }
+      .rate-table { font-size: 0.85rem; }
+    }
+  </style>
+</BaseLayout>
