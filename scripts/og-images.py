@@ -131,6 +131,9 @@ CARDS = {
         # 7574 sayılı Kanun tutarları (RG 27.02.2026); 2027 artışı netleşince güncelle
         "kicker": "TRAFİK CEZALARI 2026", "stat": "₺5.000",
         "sub": "kırmızı ışık · hız cezanızı hesaplayın (2.000-30.000 ₺)"},
+    "pasaport-ehliyet-harci": yd_card(
+        "PASAPORT · EHLİYET HARCI {yil}",
+        lambda d, k: "2026: 10 yıllık pasaport 14.761 ₺ · harç zammı tahmini"),
     "emekli-zammi-hesaplama": emekli_card,
     "kira-artis-orani-hesaplama": kira_card,
     "enflasyon-takvimi": enflasyon_card,

@@ -1,0 +1,317 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import yd from '../../data/yeniden-degerleme.json';
+
+// 2026 tutarları 2026-10-12'de 2+ kaynakla karşılaştırıldı. Harçlar 2026'da YD oranı %25,49 yerine
+// CB kararıyla %18,95 arttı — pasaport/IMEI/ehliyet tutarları bu oranla tutarlı (57.241 TL IMEI
+// veren kaynaklar %25,49 ile hesaplamış). Değerli kağıt bedelleri (defter, ehliyet kartı, kimlik)
+// Muhasebat Genel Müdürlüğü tebliğiyle ayrı belirlenir. Çelişkili kalemler (A sınıfı harç) YOK.
+const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const monthName = (key: string) => `${MONTHS[+key.slice(5) - 1]} ${key.slice(0, 4)}`;
+const nf = (n: number, d = 1) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const tl2 = (n: number) => n.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+
+const HEDEF = yd.hedefYil; // 2027
+const teblig = yd.tebligOrani as number | null;
+const oran = teblig ?? yd.onikiAyOrt;
+const durum = teblig ? 'teblig' : yd.ekimVerisiGeldi ? 'hesap' : 'tahmin';
+const oranLabel = durum === 'tahmin' ? `≈%${nf(oran)}` : `%${nf(oran, 2)}`;
+const sonAyAdi = monthName(yd.sonAy);
+const carpan = 1 + oran / 100;
+
+const DEFTER = 1351;
+const PASAPORT = [
+  { sure: '6 ay', harc: 2806.5 },
+  { sure: '1 yıl', harc: 4103 },
+  { sure: '2 yıl', harc: 6698.5 },
+  { sure: '3 yıl', harc: 9516 },
+  { sure: '10 yıl', harc: 13410.4 },
+];
+const EHLIYET = { harc: 6754.6, kart: 1690, vakif: 425 };
+const EHLIYET_TOPLAM = EHLIYET.harc + EHLIYET.kart + EHLIYET.vakif;
+const DIGER = [
+  { ad: 'IMEI kayıt ücreti (yurt dışından getirilen telefon)', t: 54258, tip: 'harç' },
+  { ad: 'Yurt dışı çıkış harcı', t: 1250, tip: 'harç' },
+  { ad: 'Kimlik kartı — kayıp nedeniyle', t: 440, tip: 'değerli kağıt' },
+  { ad: 'Kimlik kartı — kanuni süre dışında doğum/değiştirme', t: 220, tip: 'değerli kağıt' },
+];
+const p10 = PASAPORT[4].harc + DEFTER;
+
+const faq = [
+  {
+    q: '2026 pasaport harcı ne kadar?',
+    a: `2026'da pasaport harcı 6 ay için 2.806,50 TL, 1 yıl 4.103 TL, 2 yıl 6.698,50 TL, 3 yıl 9.516 TL, 10 yıl 13.410,40 TL. Buna tüm süreler için 1.351 TL defter bedeli eklenir; 10 yıllık pasaportun toplam maliyeti 14.761,40 TL.`,
+  },
+  {
+    q: `${HEDEF} pasaport harcı ne kadar olacak?`,
+    a: `Harçlar her yıl 1 Ocak'ta yeniden değerleme oranı kadar artar. ${sonAyAdi} itibarıyla ${HEDEF} oranı ${oranLabel}; bu oran uygulanırsa 10 yıllık pasaport harcı yaklaşık ${fmt(13410.4 * carpan)} TL olur. Cumhurbaşkanı farklı oran uygulatabilir: 2026'da oran %25,49 iken harçlar %18,95 artırıldı. Defter bedeli ayrı bir tebliğle belirlenir.`,
+  },
+  {
+    q: '2026 ehliyet harcı ne kadar?',
+    a: 'B sınıfı sürücü belgesi için 2026\'da 6.754,60 TL harç, 1.690 TL sürücü belgesi (kart) bedeli ve 425 TL vakıf payı ödenir; toplam 8.869,60 TL. Sürücü kursu ve sınav ücretleri buna dahil değildir.',
+  },
+  {
+    q: '2026 IMEI kayıt ücreti ne kadar?',
+    a: 'Yurt dışından getirilen cep telefonu için IMEI kayıt harcı 2026\'da 54.258 TL. Bazı kaynaklarda geçen 57.241 TL, %25,49 yeniden değerleme oranıyla hesaplanmış tahmindir; harçlarda Cumhurbaşkanı kararıyla %18,95 artış uygulandı.',
+  },
+  {
+    q: 'Kimlik kartı kaybedilirse ücret ne kadar?',
+    a: '2026\'da kayıp nedeniyle düzenlenen kimlik kartı için 440 TL, kanuni bildirim süresi dışındaki doğum veya değiştirme işlemlerinde 220 TL değerli kağıt bedeli ödenir.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: `Pasaport ve Ehliyet Harcı ${HEDEF}`, url: '/pasaport-ehliyet-harci/' },
+];
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: `Pasaport, ehliyet, IMEI ve kimlik harçları 2026 ve ${HEDEF} tahmini`,
+  description: `2026 pasaport harcı (6 ay-10 yıl), defter bedeli, B sınıfı ehliyet harcı, IMEI kayıt ücreti, yurt dışı çıkış harcı ve kimlik kartı bedeli; yeniden değerleme oranına (${oranLabel}) göre ${HEDEF} tahmini.`,
+  url: 'https://parafomo.com/pasaport-ehliyet-harci/',
+  dateModified: yd.updated,
+  creator: { '@type': 'Organization', name: 'ParaFOMO', url: 'https://parafomo.com/' },
+  isBasedOn: 'https://www.resmigazete.gov.tr',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+};
+const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  image="/og/pasaport-ehliyet-harci.png"
+  title={`Pasaport ve Ehliyet Harcı 2026-${HEDEF}: Güncel Ücretler ve ${HEDEF} Tahmini`}
+  description={`2026 pasaport harcı 10 yıl 13.410,40 TL + 1.351 TL defter; B ehliyet toplam 8.869,60 TL; IMEI 54.258 TL. ${HEDEF}'de ne kadar olacak? Yeniden değerleme tahmini ${oranLabel}.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(dataset)} />
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Harçlar · {HEDEF} zam sezonu</p>
+      <h1>Pasaport ve Ehliyet Harcı 2026: 10 Yıllık Pasaport ₺{tl2(p10)}</h1>
+      <p class="lede">
+        Pasaport, ehliyet, IMEI ve kimlik ücretlerinin 2026 tutarları ve {HEDEF}'de
+        <a href="/yeniden-degerleme-orani/">yeniden değerleme oranıyla</a> ({oranLabel}) ne kadar olacağının tahmini.
+      </p>
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="kpi-label">10 yıllık pasaport</span>
+        <span class="kpi-val">₺{fmt(p10)}</span>
+        <span class="kpi-sub">harç ₺13.410,40 + defter ₺1.351</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">B sınıfı ehliyet</span>
+        <span class="kpi-val">₺{fmt(EHLIYET_TOPLAM)}</span>
+        <span class="kpi-sub">harç + kart + vakıf payı</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">{HEDEF} YD oranı</span>
+        <span class="kpi-val">{oranLabel}</span>
+        <span class="kpi-sub">2026'da harçlar %18,95 arttı</span>
+      </div>
+    </div>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Pasaport süresi</span>
+          <select id="in-sure">
+            {PASAPORT.map((p, i) => <option value={i} selected={i === 4}>{p.sure}</option>)}
+          </select>
+        </label>
+        <label>
+          <span>{HEDEF} artış oranı (%) <em class="hint">— varsayılan: {durum === 'tahmin' ? 'güncel tahmin' : 'kesinleşen oran'}</em></span>
+          <input type="number" id="in-oran" value={+oran.toFixed(1)} min="0" max="150" step="0.1" inputmode="decimal" />
+        </label>
+        <p class="form-note">2026'daki gibi indirimli artış senaryosu için oranı değiştirin (2026: %18,95). Defter bedeli de aynı oranla tahmin edilir.</p>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">{HEDEF} tahmini toplam (harç + defter)</span>
+          <span class="result-value" id="out-new">₺{fmt(p10 * carpan)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">2026 toplam</span>
+            <span class="split-val" id="out-old">₺{tl2(p10)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Fark</span>
+            <span class="split-val" id="out-diff">₺{fmt(p10 * (carpan - 1))}</span>
+          </div>
+        </div>
+        <p class="result-note">Kesin tutarlar Aralık'ta Resmî Gazete'de yayımlanır; bu bir tahmindir.</p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bilgilendirme amaçlıdır; ödeme öncesi tutarı e-Devlet / GİB ekranından kontrol edin.
+      Son güncelleme: {updatedLabel} · Kaynak: 492 sayılı Harçlar Kanunu tarifeleri (2026, CB kararıyla %18,95 artış),
+      Muhasebat Genel Müdürlüğü değerli kağıt bedelleri tebliği (RG 24.12.2025), {HEDEF} oranı için TÜİK Yİ-ÜFE.
+    </p>
+
+    <section class="table-block">
+      <h2>Pasaport harcı 2026 ve {HEDEF} tahmini</h2>
+      <table class="rate-table">
+        <thead><tr><th>Süre</th><th>Harç</th><th>Toplam (+₺1.351 defter)</th><th>{HEDEF} tahmini</th></tr></thead>
+        <tbody>
+          {PASAPORT.map((p) => (
+            <tr>
+              <td>{p.sure}</td>
+              <td>₺{tl2(p.harc)}</td>
+              <td>₺{tl2(p.harc + DEFTER)}</td>
+              <td>≈₺{fmt((p.harc + DEFTER) * carpan)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">Hususi ve hizmet damgalı pasaportlarda harç alınmaz, yalnız defter bedeli ödenir.</p>
+    </section>
+
+    <section class="table-block">
+      <h2>Ehliyet, IMEI ve kimlik ücretleri</h2>
+      <table class="rate-table">
+        <thead><tr><th>Kalem</th><th>2026</th><th>{HEDEF} tahmini ({oranLabel})</th></tr></thead>
+        <tbody>
+          <tr><td>B sınıfı ehliyet harcı</td><td>₺{tl2(EHLIYET.harc)}</td><td>≈₺{fmt(EHLIYET.harc * carpan)}</td></tr>
+          <tr><td>Sürücü belgesi (kart) bedeli</td><td>₺{tl2(EHLIYET.kart)}</td><td>≈₺{fmt(EHLIYET.kart * carpan)}</td></tr>
+          <tr><td>Vakıf payı</td><td>₺{tl2(EHLIYET.vakif)}</td><td>—</td></tr>
+          <tr class="sum"><td>B sınıfı ehliyet toplamı</td><td>₺{tl2(EHLIYET_TOPLAM)}</td><td>≈₺{fmt((EHLIYET.harc + EHLIYET.kart) * carpan + EHLIYET.vakif)}</td></tr>
+          {DIGER.map((d) => (
+            <tr><td>{d.ad}<span class="row-note">{d.tip}</span></td><td>₺{tl2(d.t)}</td><td>≈₺{fmt(d.t * carpan)}</td></tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Vakıf payının {HEDEF} tutarı ayrıca belirlenir. A ve diğer sınıf ehliyet harçlarında kaynaklar
+        çeliştiği için tabloya almadık; kesin tutar e-Devlet harç ekranında görünür.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>{HEDEF}'de harçlar ne kadar artacak?</h2>
+      <p>
+        Harçlar Kanunu'ndaki maktu tutarlar her yıl 1 Ocak'ta, Kasım'da ilan edilen
+        <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı</a> kadar artar. {sonAyAdi} verisiyle
+        {HEDEF} oranı {oranLabel}; oran 3 Kasım 2026'da Ekim Yİ-ÜFE ile hesaben kesinleşir. Cumhurbaşkanı
+        bu oranı değiştirebilir — 2026'da %25,49 yerine %18,95 uygulandı. Değerli kağıt bedelleri
+        (pasaport defteri, ehliyet ve kimlik kartı) Aralık'ta ayrı bir tebliğle belirlenir.
+      </p>
+      <h2>Zam gelmeden yaptırmak avantajlı mı?</h2>
+      <p>
+        Harç, ödeme tarihindeki tarifeye göre alınır. Pasaport veya ehliyet işlemini zaten planlıyorsanız
+        Aralık sonuna kadar ödeme yapmak {HEDEF} artışından etkilenmemeyi sağlar; ödenen harç makbuzunun
+        ne kadar süre geçerli olduğunu başvuru öncesi kontrol edin.
+      </p>
+      <p class="cta-line">
+        İlgili sayfalar: <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı {HEDEF}</a> ·
+        <a href="/mtv-hesaplama/">MTV {HEDEF} hesaplama</a> ·
+        <a href="/trafik-cezalari-hesaplama/">trafik cezaları 2026</a> ·
+        <a href="/vergi-dilimi-hesaplama/">vergi dilimi hesaplama</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ TOPLAM: PASAPORT.map((p) => p.harc + DEFTER) }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const nf2 = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      function update() {
+        const eski = TOPLAM[+$('in-sure').value];
+        const yeni = eski * (1 + (+$('in-oran').value || 0) / 100);
+        $('out-old').textContent = '₺' + nf2.format(eski);
+        $('out-new').textContent = '₺' + nf0.format(Math.round(yeni));
+        $('out-diff').textContent = '₺' + nf0.format(Math.round(yeni - eski));
+      }
+      ['in-sure', 'in-oran'].forEach((id) => {
+        $(id).addEventListener('input', update);
+        $(id).addEventListener('change', update);
+      });
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin: 0 0 1rem; }
+    .kpi { display: flex; flex-direction: column; gap: 0.15rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-xs); }
+    .kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .kpi-val { font-family: var(--font-serif); font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.1rem); font-weight: 700; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .kpi-sub { font-size: 0.78rem; color: var(--text-soft); line-height: 1.35; }
+
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; }
+    .calc-inputs input, .calc-inputs select { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .form-note { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.45; }
+
+    .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 1rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; }
+    .result-note { font-size: 0.82rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .rate-table td:not(:first-child) { white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .rate-table tr.sum td { font-weight: 700; }
+    .row-note { display: block; font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem; }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 680px) {
+      .kpi-row { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: 1fr; }
+      .rate-table { font-size: 0.85rem; }
+    }
+  </style>
+</BaseLayout>
