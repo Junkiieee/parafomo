@@ -29,7 +29,7 @@ faq:
 |-------|-----------|--------------------|
 | CPI m/m (aylık manşet) | Tüm sepetin bir aylık fiyat değişimi | Anlık sürpriz etkisi en yüksek kalem |
 | CPI y/y (yıllık manşet) | Son 12 aylık enflasyon | Haber başlıklarına çıkan rakam |
-| Çekirdek CPI m/m | Gıda ve enerji hariç aylık değişim | Fed'in en çok izlediği "trend" sinyali |
+| Çekirdek CPI m/m | Gıda ve enerji hariç aylık değişim | Piyasanın Fed beklentisi için en çok izlediği "trend" sinyali |
 | Çekirdek CPI y/y | Gıda ve enerji hariç yıllık enflasyon | Kalıcı enflasyon göstergesi |
 
 Bir gün sonra, 15 Ekim'de aynı saatte ABD üretici fiyatları (PPI) ve perakende satışlar da geliyor. Yani 14-15 Ekim, Fed toplantısı öncesi en yoğun veri ikilisi. Güncel saatleri [ekonomik takvim](/ekonomik-takvim) sayfamızdan takip edebilirsin.
@@ -46,9 +46,9 @@ Bir sonraki Fed kararı **28 Ekim 2026, TSİ 21:00**'de açıklanacak (toplantı
 
 ### Bir önceki rapor ne söylemişti?
 
-11 Eylül'de açıklanan Ağustos verisine ilişkin basına yansıyan rakamlara göre manşet CPI yıllık **%3,4** civarında, aylık **%0,4** artmıştı. Çekirdek tarafta yıllık oran daha düşük (yaklaşık %2,4) olsa da aylık artış beklentinin üzerinde, %0,3 seviyesinde gelmişti. Yani tablo "manşet sıcak, çekirdek yavaşlıyor ama aylık momentum tam sönmüş değil" şeklindeydi. Eylül öncesi senaryolarımızı [ABD Eylül 2026 CPI yazımızda](/blog/abd-eylul-2026-cpi-verisi-fed-dolar-altin) ele almıştık.
+11 Eylül'de açıklanan Ağustos verisine ilişkin basına yansıyan rakamlara göre manşet CPI'da hem yıllık hem aylık tarafta ısınma görülmüştü. Çekirdek tarafta yıllık oran manşetin altında kalsa da aylık artış beklentilerin üzerinde gelmişti. Yani tablo "manşet sıcak, çekirdek yavaşlıyor ama aylık momentum tam sönmüş değil" şeklindeydi. Eylül öncesi senaryolarımızı [ABD Eylül 2026 CPI yazımızda](/blog/abd-eylul-2026-cpi-verisi-fed-dolar-altin) ele almıştık.
 
-*Not: Kesin rakamlar için BLS'nin resmi bültenini esas al; burada verilen değerler bilgilendirme amaçlı yaklaşık değerlerdir.*
+*Not: Ağustos verisinin kesin rakamları için BLS'nin resmi bültenini esas al.*
 
 ## Piyasalar Neye Bakacak? Manşet mi, Çekirdek mi?
 
@@ -58,7 +58,7 @@ Bu ayın raporunda üç şeye dikkat etmek işini kolaylaştırır:
 2. **Manşet–çekirdek farkı:** Manşet yüksek, çekirdek düşükse yükseliş büyük ölçüde enerji kaynaklıdır. Fed bu tür geçici etkileri daha az önemser.
 3. **Hizmet ve kira kalemleri:** Konut (shelter) ve hizmet enflasyonu, Fed'in "son mil" sorunu dediği kalıcı kısımdır. Bu kalemlerde hızlanma, manşetten daha önemli bir sinyaldir.
 
-Bazı anlık tahmin modelleri (ör. Cleveland Fed nowcast) manşet yıllık oranın Eylül'de bir miktar daha yükselebileceğine işaret ediyor. Kesin konsensüs açıklamaya kadar güncellenir; o yüzden tek bir rakama değil, **beklentiden sapmanın yönüne** odaklanmak daha sağlıklı.
+Cleveland Fed'in nowcast modeli gibi anlık tahmin araçları veri öncesi beklentiyi şekillendirmekte sık kullanılır; açıklamadan önce bu tahminlere ve piyasa konsensüsüne göz atmak faydalı olur. Kesin konsensüs açıklamaya kadar güncellenir; o yüzden tek bir rakama değil, **beklentiden sapmanın yönüne** odaklanmak daha sağlıklı.
 
 Çekirdek CPI'ın Fed için neden bu kadar belirleyici olduğunu [çekirdek CPI nedir](/blog/cekirdek-cpi-nedir-fed-enflasyon-gostergesi) yazımızda ayrıntılı anlattık.
 
@@ -111,7 +111,7 @@ ABD enflasyon verisi senin portföyüne doğrudan kur ve altın kanalından doku
 
 ## CPI Sonrası TCMB Tarafına Etkisi
 
-Fed'in sıkılaştırma yönüne gitmesi, gelişmekte olan ülke merkez bankalarının hareket alanını daraltır. Sıcak bir ABD CPI'ı ve güçlenen dolar, 22 Ekim'deki TCMB kararında temkinli bir tonu destekleyebilir. Soğuk bir veri ise küresel finansal koşulları gevşeterek TCMB'ye biraz daha alan tanıyabilir. Bu doğrudan bir neden-sonuç ilişkisi değil; ancak küresel faiz ortamı TL varlıkların fiyatlamasında önemli bir arka plan unsuru.
+Fed'in sıkılaştırma yönüne gitmesi, gelişmekte olan ülke merkez bankalarının hareket alanını daraltır. Sıcak bir ABD CPI'ı ve güçlenen dolar, 22 Ekim'deki TCMB kararında temkinli bir tonu destekleyebilir (beklentiler için [TCMB Ekim 2026 faiz kararı](/blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler) yazımıza, toplantı tarihleri için [TCMB faiz takvimi](/tcmb-faiz-takvimi) sayfamıza bakabilirsin). Soğuk bir veri ise küresel finansal koşulları gevşeterek TCMB'ye biraz daha alan tanıyabilir. Bu doğrudan bir neden-sonuç ilişkisi değil; ancak küresel faiz ortamı TL varlıkların fiyatlamasında önemli bir arka plan unsuru.
 
 ## Özet
 
