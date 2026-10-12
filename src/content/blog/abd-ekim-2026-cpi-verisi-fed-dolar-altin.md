@@ -17,6 +17,23 @@ faq:
     a: "Gram altın, ons fiyatı ile dolar/TL kurunun çarpımıdır. Sıcak CPI ons altını baskılarken doları güçlendirebilir; bu iki etki TL bazında kısmen birbirini dengeleyebileceği için gram altındaki hareket ons kadar sert olmayabilir."
   - q: "Çekirdek CPI ile manşet CPI arasındaki fark neden önemli?"
     a: "Manşet CPI gıda ve enerji dahil tüm sepeti ölçer; çekirdek CPI bu oynak kalemleri dışarıda bırakır. Manşet ile çekirdek arasında açık bir fark varsa piyasa, enflasyonun kalıcı mı yoksa enerji kaynaklı geçici mi olduğuna odaklanır."
+shorts:
+  - "Fed faiz artırdı, enflasyon bitti sanıyorsan yanılıyorsun."
+  - "Fed Eylül'de faizi yüzde 3,75-4,00 aralığına çıkardı ama bu işin bittiği anlamına gelmiyor."
+  - "Artış tek seferlik mi, yeni döngü mü? Cevabı 14 Ekim'deki CPI verisi verecek."
+  - "Manşete değil aylık çekirdek CPI'a bak; yüzde 0,4 ve üzeri Fed'in işi bitmedi demek."
+  - "Peki 28 Ekim'de Fed ne yapacak? Abone ol, her veriyi sade anlatıyoruz; takvim parafomo.com'da."
+shorts_broll:
+  - "federal reserve building"
+  - "inflation chart"
+  - "stock market chart"
+  - "calendar economic data"
+shorts_visuals:
+  - "place|Federal Reserve building"
+  - "concept|rising interest rates"
+  - "object|calendar"
+  - "object|calculator"
+  - "object|smartphone banking app"
 ---
 
 **ABD enflasyon verisi Ekim 2026** takvimde net: Eylül ayı tüketici fiyat endeksi (CPI) **14 Ekim Çarşamba, Türkiye saatiyle 15:30'da** açıklanıyor. Fed'in Eylül'de faiz artırmasının ardından gelen ilk enflasyon raporu olduğu için bu kez rakamın önemi her zamankinden büyük; 28 Ekim'deki Fed kararının tonunu büyük ölçüde bu veri belirleyecek. Bu yazıda verinin ne ölçtüğünü, piyasanın neye bakacağını ve dolar, altın ve TL için üç senaryoyu sade bir dille anlatıyoruz.
