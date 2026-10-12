@@ -1,9 +1,29 @@
 {
-  "updated": "2026-10-12T12:15+00:00",
+  "updated": "2026-10-12T18:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 40,
+  "count": 41,
   "items": [
+    {
+      "company": "Divapan Entegre Ağaç Panel Sanayi Tic. A.Ş.",
+      "bist_code": "",
+      "slug": "divapan-entegre-agac-panel-sanayi-tic-a-s",
+      "link": "https://halkarz.com/divapan-entegre-agac-panel-sanayi-tic-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "",
+      "lot": "",
+      "broker": "",
+      "market": "",
+      "first_trade": "",
+      "float_lot": "",
+      "float_pct": "",
+      "updated_src": "12.10.2026 20:19",
+      "details": {}
+    },
     {
       "company": "Pronet Güvenlik Hizmetleri A.Ş.",
       "bist_code": "",
