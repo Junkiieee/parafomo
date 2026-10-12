@@ -1,0 +1,70 @@
+{
+  "title": "Yarılanma süresi: 100 bin TL'nin 2 yıllık hesabı #Shorts",
+  "description": "Yüzde 40 enflasyon sürerse 100 bin TL'nin satın alma gücü iki yılda yaklaşık 51 bin TL'ye iner. Hesabı kafadan yapıp birikimini enflasyonla kıyaslamanın yolu.\nKaynak/hesap: 1,4 x 1,4 = 1,96; 100.000 / 1,96 ≈ 51.000 TL (varsayım: yıllık enflasyon yüzde 40 sürerse) · senaryodaki hesap\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #enflasyon #alım gücü #birikim #tasarruf #yatırım",
+  "tags": [
+    "enflasyon",
+    "alım gücü",
+    "birikim",
+    "tasarruf",
+    "yatırım",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-yarilanma-suresi-100-bin-tl-nin-2-yillik-hesabi.mp4",
+  "slug": "yarilanma-suresi-100-bin-tl-nin-2-yillik-hesabi",
+  "format": "shock_number",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 4.05,
+      "spoken": "Yüzde 40 enflasyonda paran 2 yılda yarılanır.",
+      "visual": "object: piggy bank"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 4.05,
+      "end": 9.85,
+      "spoken": "Fiyatlar her yıl 1,4 katına çıkarsa, iki yılda yaklaşık iki katına çıkar.",
+      "visual": "object: calculator"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 9.85,
+      "end": 15.72,
+      "spoken": "Hesapta 100 bin yine 100 bin görünür, ama markette yaklaşık 51 bin liralık mal alır.",
+      "visual": "object: grocery shopping basket"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 15.72,
+      "end": 23.13,
+      "spoken": "Parayı enflasyonun altında getiren yerde bekletme; getiriyi enflasyonla kıyasla, farkı kendin hesapla.",
+      "visual": "object: smartphone banking app"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 23.13,
+      "end": 29.79,
+      "spoken": "Peki bu erimeyi geride bırakan araç hangisiydi? Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": "object: piggy bank"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-11T10:03:06+00:00",
+    "slug": "yarilanma-suresi-100-bin-tl-nin-2-yillik-hesabi",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "9QuFYzlIhJY",
+  "youtube_url": "https://youtube.com/shorts/9QuFYzlIhJY",
+  "ig_reel_id": "18118679485749367",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DeWZnXikR7r/",
+  "ig_seed_comment_id": "18117989479960571"
+}

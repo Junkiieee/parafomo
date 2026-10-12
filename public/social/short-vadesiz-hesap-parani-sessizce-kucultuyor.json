@@ -1,0 +1,70 @@
+{
+  "title": "Vadesiz hesap paranı sessizce küçültüyor #Shorts",
+  "description": "Vadesiz hesaptaki paranın rakamı aynı kalırken alım gücü enflasyonla nasıl azalıyor, basit bir kova metaforu ve 100 bin TL örneğiyle anlatılıyor.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #vadesiz hesap #enflasyon #alım gücü #birikim #tasarruf",
+  "tags": [
+    "vadesiz hesap",
+    "enflasyon",
+    "alım gücü",
+    "birikim",
+    "tasarruf",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-vadesiz-hesap-parani-sessizce-kucultuyor.mp4",
+  "slug": "vadesiz-hesap-parani-sessizce-kucultuyor",
+  "format": "single_concept",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.86,
+      "spoken": "Vadesiz hesaptaki paran sessizce eriyor.",
+      "visual": "object: piggy bank"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.86,
+      "end": 9.54,
+      "spoken": "Hesap bir kova gibi: rakam aynı kalır, ama içindeki alım gücü delikten akar.",
+      "visual": "object: leaking bucket"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 9.54,
+      "end": 16.15,
+      "spoken": "Ama fiyatlar yüzde 30 artarsa, 100 bin lirayla yaklaşık 77 bin liralık sepet alırsın.",
+      "visual": "object: shopping cart"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 16.15,
+      "end": 23.25,
+      "spoken": "Çözüm: kovayı kapat. Acil parayı vadesizde tut, kalanını enflasyonu yenen araçlara kaydır.",
+      "visual": "object: smartphone banking app"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 23.25,
+      "end": 30.82,
+      "spoken": "Peki bu deliği en çok hangi hesap büyütüyor? Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": "object: piggy bank"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-10T08:03:06+00:00",
+    "slug": "vadesiz-hesap-parani-sessizce-kucultuyor",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "Ww0Rq2Za10o",
+  "youtube_url": "https://youtube.com/shorts/Ww0Rq2Za10o",
+  "ig_reel_id": "18142992295608565",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DeTnDg0jZSh/",
+  "ig_seed_comment_id": "17937841899124401"
+}

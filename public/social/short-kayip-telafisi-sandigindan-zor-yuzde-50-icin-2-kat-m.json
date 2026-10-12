@@ -1,0 +1,68 @@
+{
+  "title": "Kayıp telafisi sandığından zor: yüzde 50 için 2 kat #Shorts",
+  "description": "Yatırımda yüzde 50 kaybı geri almak için yüzde 100 kazanmak gerekir. Sade bir hesapla kaybı küçük tutmanın neden kazanç aramaktan önemli olduğunu anlatıyoruz.\nKaynak/hesap: 100.000 TL -%50 = 50.000 TL; 100.000/50.000 = 2 kat = %100 kazanç. Yüzde 20 düşüş: 80.000 -> 100.000 = %25 · senaryodaki hesap\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #yatırım #zarar #birikim #finans #yüzde hesabı",
+  "tags": [
+    "yatırım",
+    "zarar",
+    "birikim",
+    "finans",
+    "yüzde hesabı",
+    "risk yönetimi",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-kayip-telafisi-sandigindan-zor-yuzde-50-icin-2-kat-m.mp4",
+  "slug": "kayip-telafisi-sandigindan-zor-yuzde-50-icin-2-kat-m",
+  "format": "shock_number",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.93,
+      "spoken": "Yüzde 50 kaybeden, yüzde 100 kazanmalı.",
+      "visual": "manim: Risk"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.93,
+      "end": 9.87,
+      "spoken": "100 bin lira yarıya inince 50 bin kalır; geri 100 bine çıkmak için ikiye katlamalısın.",
+      "visual": "manim: Para"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 9.87,
+      "end": 16.73,
+      "spoken": "Ama asıl tuzak şu: yüzde 20 düşüş bile, geri dönmek için yüzde 25 kazanç ister.",
+      "visual": "manim: Risk"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 16.73,
+      "end": 23.34,
+      "spoken": "Yani kazanç aramadan önce kaybı sınırla: tek varlığa yığılma, zarar kesme sınırı belirle.",
+      "visual": "manim: Risk"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 23.34,
+      "end": 31.28,
+      "spoken": "Sıradaki videoda kaybı küçük tutan basit bir kuralı anlatıyorum. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": "manim: ParaFOMO"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-10T16:02:39+00:00",
+    "slug": "kayip-telafisi-sandigindan-zor-yuzde-50-icin-2-kat-m",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "ig_reel_id": "17949913743319210",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DeUd8mcjwea/",
+  "ig_seed_comment_id": "18313656388304837"
+}

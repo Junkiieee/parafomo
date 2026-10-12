@@ -1,12 +1,12 @@
 # ParaFOMO — Dürüst Ölçüm Panosu
 
-> Üretim: 2026-10-06 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
+> Üretim: 2026-10-10 · `scripts/dashboard.py` · soru: *sistem işe yarıyor mu?*
 
 ## 1) Organik trafik trendi (GA4 — son 8 hafta)
 
 | Hafta | Gerçek erişim (Direct hariç) | Direct (≈sen/bot) | Toplam |
 |---|---|---|---|
-| 202633 | 22 | 14 | 36 |
+| 202633 | 8 | 6 | 14 |
 | 202634 | 32 | 27 | 59 |
 | 202635 | 37 | 24 | 61 |
 | 202636 | 35 | 23 | 58 |
@@ -14,17 +14,16 @@
 | 202638 | 48 | 22 | 70 |
 | 202639 | 36 | 17 | 53 |
 | 202640 | 51 | 11 | 62 |
-| 202641 | 5 | 2 | 7 |
+| 202641 | 22 | 12 | 34 |
 
-**Gerçek erişim trendi:** `▃▅▅▅▆▇▅█▁`  📉 düşüyor
-**Son hafta Direct payı:** %29 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
+**Gerçek erişim trendi:** `▁▄▅▅▆▇▅█▃`  📉 düşüyor
+**Son hafta Direct payı:** %35 (yüksekse trafik gerçek ziyaretçi değil, senin/botların erişimi)
 
 **Gerçek erişim kaynağı (son 4 hafta toplamı):**
-- Organic Search: 105 kullanıcı
-- Organic Social: 17 kullanıcı
-- AI Assistant: 14 kullanıcı
-- Unassigned: 3 kullanıcı
-- Cross-network: 1 kullanıcı
+- Organic Search: 114 kullanıcı
+- Organic Social: 26 kullanıcı
+- AI Assistant: 15 kullanıcı
+- Unassigned: 2 kullanıcı
 
 ## 2) Google arama trendi (GSC — son 8 hafta)
 
@@ -63,15 +62,14 @@
 
 ## 3) YouTube motoru
 
-- **Abone:** 51  ·  **Toplam izlenme:** 59,219  ·  **Video:** 276
-- İzlenme/abone dönüşümü: **0.09%** (izleyen kaç kişi abone/huniye giriyor)
+- **Abone:** 51  ·  **Toplam izlenme:** 60,254  ·  **Video:** 288
+- İzlenme/abone dönüşümü: **0.08%** (izleyen kaç kişi abone/huniye giriyor)
 
 ## 4) 🎯 DÜRÜST HÜKÜM
 
 **Hedef:** 1000 ziyaretçi/gün = 7,000/hafta gerçek erişim.
-**Gerçek durum:** son hafta **5** gerçek ziyaretçi = hedefin **%0.07**'si. Kalan: **6,995** kişi/hafta.
+**Gerçek durum:** son hafta **22** gerçek ziyaretçi = hedefin **%0.31**'si. Kalan: **6,978** kişi/hafta.
 
-**Teşhis:**
-- 💡 YouTube'da 59,219 izlenme var ama siteye ~0 akıyor. En büyük kullanılmayan kaldıraç: YouTube→site hunisi.
+- Belirgin kırmızı bayrak yok; trend ve hedef mesafesine bak.
 
 **Özet:** Öğrenme döngüsü ses/format/slot optimize ediyor ama yukarıdaki darboğaz oralarda değil. Sistemin 'kendi kendine öğrenip uygulaması' için önce ölçülen darboğaza (otorite/dağıtım) yönlendirilmesi gerekir.

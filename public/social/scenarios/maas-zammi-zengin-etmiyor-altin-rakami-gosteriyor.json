@@ -1,0 +1,59 @@
+{
+  "slug": "maas-zammi-zengin-etmiyor-altin-rakami-gosteriyor",
+  "title": "Maaş zammı zengin etmiyor, altın rakamı gösteriyor",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Maaşın 10 yılda 10 kat artsa bile altın TL bazında yaklaşık 55 kat arttı. Zam gelince birikime ayrılan pay servet farkını yaratıyor.",
+  "tags": [
+    "maaş zammı",
+    "altın",
+    "enflasyon",
+    "birikim",
+    "gram altın",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Zam aldın diye zenginleşmiyorsun.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold bars stack"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Maaş on yılda on kat artsa bile, aynı sürede altın TL'de yaklaşık 55 kat arttı.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins and bullion bars"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama zam gelince kira, market, fatura da zamlanıyor; maaş büyüyor, artan kısım cebinde kalmıyor.",
+      "visual": {
+        "type": "object",
+        "query": "receipt paper"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çözüm: zam gelir gelmez maaşının küçük bir kısmını her ay düzenli birikime ayır.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki zam gelince ilk hangi hamle yapılır? Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold bars stack"
+      }
+    }
+  ]
+}
