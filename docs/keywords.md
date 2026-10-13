@@ -92,6 +92,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] ALBTN Nedir? Albayrak Hazır Beton Hisse Senedi Rehberi — `Borsa` — hedef: "albayrak hazır beton" / "albtn"
 
 ## Yayınlananlar (otomasyon buraya ekler)
+- [x] 2027'de Neler Zamlanacak? Yeniden Değerleme Oranı Rehberi — `2027-zamlari-yeniden-degerleme-orani-rehberi` (ajan kuyruğu: "2027 zamları" / "yeniden değerleme oranı 2027"; /yeniden-degerleme-orani + /mtv-hesaplama kümesinin blog girişi; 13 Ekim 2026)
 - [x] ABD Enflasyon Verisi Ekim 2026: CPI Fed'i Yine Zorlar mı? — `abd-ekim-2026-cpi-verisi-fed-dolar-altin` (ajan kuyruğu: 14 Ekim 2026 🔴 ABD CPI/Core CPI (Eylül dönemi); hedef "abd enflasyon verisi ekim 2026" + "cpi verisi ne zaman"; Fed Eylül artışı (%3,75-4,00) sonrası ilk CPI → 28 Ekim FOMC; data/dxy+us-tahvil+altin-fiyat gerçek verisiyle piyasa fotoğrafı + 3 senaryo tablosu; /ekonomik-takvim + /fed-faiz-takvimi + /altin-getiri + /abd-tahvil-faizi + /dolar-endeksi; 12 Ekim 2026)
 
 - [x] Euro mu Dolar mı 2026? TL Bazında 10 Yıllık Getiri — `euro-mi-dolar-mi-10-yillik-getiri-karsilastirma` (ajan kuyruğu: B261006-2 getiri kümesi, /euro-getiri eşi; hedef "euro mu dolar mı 2026"; data/euro-getiri.json gerçek verisiyle dönem tablosu + 10.000 TL senaryosu + EUR/USD parite açıklaması + döviz sepeti; /euro-getiri + /dolar-getiri + /dolar-endeksi + /altin-dolar-borsa; 9 Ekim 2026)

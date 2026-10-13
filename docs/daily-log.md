@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-10-13 — 2027'de Neler Zamlanacak? Yeniden Değerleme Oranı Rehberi
+
+**Yayınlanan yazı:** [2027'de Neler Zamlanacak? Yeniden Değerleme Oranı Rehberi](/blog/2027-zamlari-yeniden-degerleme-orani-rehberi)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — 2027 zam sezonu kümesi)
+
+---
+
 ## 2026-10-12 — ABD Enflasyon Verisi Ekim 2026: CPI Fed'i Yine Zorlar mı?
 
 **Yayınlanan yazı:** [ABD Enflasyon Verisi Ekim 2026: CPI Fed'i Yine Zorlar mı?](/blog/abd-ekim-2026-cpi-verisi-fed-dolar-altin)

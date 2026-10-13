@@ -6,11 +6,6 @@
 Sıra = planlanan yayın günü (haftalık koşu 2026-10-08): 08 → 09 → 12 → 13 → 14 → 15 → 16 → 19 Ekim.
 
 ## Kuyruk
-- [ ] **2027'de neler zamlanacak? Yeniden değerleme oranı rehberi: MTV, harçlar, cezalar, vergi dilimleri** ·
-  hedef: "2027 zamları", "yeniden değerleme oranı 2027", "2027de neler zamlanacak" · neden: RC 10-10'da
-  /yeniden-degerleme-orani + /mtv-hesaplama canlıya alındı (Eylül Yİ-ÜFE ile tahmin %27,8) — bu yazı kümenin
-  blog girişi, Kasım-Ocak zam sezonuna 3-6 hafta önce pozisyon; rakamları SAYFADAKİ veriden al, uydurma ·
-  iç-link: /yeniden-degerleme-orani, /mtv-hesaplama, /emekli-zammi-hesaplama, /asgari-ucret-hesaplama
 - [ ] **Halka arza katılmak kazandırıyor mu? 2026 halka arzlarının ilk gün, 1 ay ve bugünkü getirisi** · hedef:
   "halka arz kazandırır mı", "halka arza katılmak mantıklı mı", "2026 halka arz getirileri" · neden: B261006-1
   kümesine veri-temelli karar yazısı; `data/halka-arz-getiri.json`'daki GERÇEK rakamlarla (2026 ort. getiri,
@@ -42,6 +37,11 @@ Sıra = planlanan yayın günü (haftalık koşu 2026-10-08): 08 → 09 → 12 �
   /blog/abd-faiz-artarsa-altin-ne-olur.
 
 ## Yazılanlar
+- [x] **2027'de neler zamlanacak? Yeniden değerleme oranı rehberi: MTV, harçlar, cezalar, vergi dilimleri** ·
+  hedef: "2027 zamları", "yeniden değerleme oranı 2027", "2027de neler zamlanacak" · neden: RC 10-10'da
+  /yeniden-degerleme-orani + /mtv-hesaplama canlıya alındı (Eylül Yİ-ÜFE ile tahmin %27,8) — bu yazı kümenin
+  blog girişi, Kasım-Ocak zam sezonuna 3-6 hafta önce pozisyon; rakamları SAYFADAKİ veriden al, uydurma ·
+  iç-link: /yeniden-degerleme-orani, /mtv-hesaplama, /emekli-zammi-hesaplama, /asgari-ucret-hesaplama → /blog/2027-zamlari-yeniden-degerleme-orani-rehberi (2026-10-13)
 - [x] **ABD Ekim 2026 CPI verisi (Eylül enflasyonu): beklenti, Fed'e etkisi, dolar ve altın** · hedef:
   "abd enflasyon verisi ekim 2026", "cpi verisi ne zaman" · neden: CPI açıklaması Ekim ortası — yazmadan önce
   tarihi BLS takviminden/ekonomik takvimden doğrula ve metne kesin tarihi yaz (bilinmiyorsa "Ekim ortası"); 10-12'de
