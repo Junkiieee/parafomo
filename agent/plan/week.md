@@ -86,6 +86,8 @@ _Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
   WebSearch ile oranı doğrula → data/yeniden-degerleme.json `tebligOrani` alanına yaz + `gecmis`e 2027
   satırı ekle + Aralık'ta MTV/harç CB kararı çıkarsa `uygulanan` doldur. · Kabul: sayfa canlıda doğru durumu gösterir.
 
+- [x] T4b (bülten dönüşümü) — → bülten formu 8 getiri sayfasında (altın/dolar/BIST/gümüş/euro/bitcoin/halka-arz getiri + /altin-dolar-borsa) tablonun hemen altına taşındı, sayfaya özel başlık "Rakamlar değiştikçe haber verelim"; Newsletter.astro title/text propları · 2026-10-13
+
 ## Bakım / ürün
 - [ ] P1 (portföy) — ⏸ 2026-10-09 günlük koşu atladı: watchlist yeni DB tablosu ister (kırmızı çizgi 6 "şemayı değiştirme" — newsletter tablosu Kaan onayıyla açılmıştı) + ders "trafiksiz ürün cilası kayıt getirmez" (2 üye). Haftalık koşu karar versin. — `agent/plan/backlog-portfolio.md`'deki en üstteki açık madde (İzleme listesi / watchlist —
   sahip olmadan takip). Backend değişirse protokoldeki restart + /health. · Kabul: build geçer; canlı panelde

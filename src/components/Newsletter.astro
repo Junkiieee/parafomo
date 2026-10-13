@@ -1,13 +1,17 @@
 ---
 // Newsletter kayıt bloğu — kendi API'miz (api.parafomo.com/newsletter, çift onay).
-const { compact = false } = Astro.props;
+const {
+  compact = false,
+  title = 'Haftada bir, paranı büyütecek tek e-posta.',
+  text = 'Piyasa özeti, yeni rehberler ve uygulanabilir finans taktikleri. Spam yok, istediğin an çık.',
+} = Astro.props;
 ---
 <section class:list={['newsletter', { compact }]}>
   <div class="nl-inner">
     <div class="nl-text">
       <span class="eyebrow">Ücretsiz Bülten</span>
-      <h2>Haftada bir, paranı büyütecek tek e-posta.</h2>
-      <p class="soft">Piyasa özeti, yeni rehberler ve uygulanabilir finans taktikleri. Spam yok, istediğin an çık.</p>
+      <h2>{title}</h2>
+      <p class="soft">{text}</p>
     </div>
     <form class="nl-form" data-nl-form method="post" aria-label="Bülten kayıt formu" novalidate>
       <div class="nl-row">
