@@ -51,7 +51,10 @@ _Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
   /halka-arz linkli) ve ana sayfaya "Yaklaşan halka arzlar" kutusu (→ 2026-10-08 RC: /halka-arz-getiri tablosundaki 12 şirket artık kendi sayfasına linkli — yalnız ana sayfa kutusu kaldı) (ilk 3, şirket sayfasına link) ekle.
   · Kabul: rapora indirme tarihi + indekslenen sayfa sayısı yazılır; gerekiyorsa linkler canlıda.
 
-- [ ] T7 (SEO ölçüm, RC 10-10 sonrası) — **Kanonik + footer düzeltmesinin etkisini ölç (10-14 sonrası):**
+- [ ] T7 (SEO ölçüm, RC 10-10 sonrası) — ⏩ RC 10-13 ön sonuç: 8 kritik sayfa URL denetiminden geçti, HEPSİ
+  "Submitted and indexed" + kanonik doğru (trafik-cezalari, vergi-dilimi, yeniden-degerleme, pasaport-ehliyet,
+  gumus-getiri, bitcoin-getiri, emekli-zammi, mtv; son tarama 10-10/10-12). Kalan iş: GSC sayfa listesinde
+  sonda '/' olmayan URL kaldı mı + 10 halka arz sayfası örneği. — **Kanonik + footer düzeltmesinin etkisini ölç (10-14 sonrası):**
   GSC'de son 7g sayfa listesinde sonda '/' olmayan URL satırı kaldı mı (`searchanalytics` page boyutu)?
   URL denetimi: /emekli-zammi-hesaplama, /bitcoin-getiri, /euro-getiri, /gumus-getiri, /bono-hesaplama
   durumu ("unknown" → indeksli mi?). 10 halka arz sayfası örneği. · Kabul: rapora sayılar yazılır.
