@@ -111,6 +111,14 @@ _Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
 - R2 bilgileri → `/root/.config/parafomo/backup.env` (backup.sh otomatik kullanır).
 
 ## Notlar (günlük koşu için)
+- **RC 2026-10-13 — site denetimi (hız + teknik SEO + içerik):** Lighthouse mobil 58-72 → /altin-getiri
+  95-98 (LCP 6,0 → 1,5 sn). Fontlar `public/fonts/` (font-display: optional — swap LCP'yi bozuyordu),
+  CSS gömülü, kapaklar `src/integrations/cover-variants.mjs` ile build'de WebP (640/1280; YENİ KAPAK İÇİN
+  EK İŞ YOK), worker önbellek başlıkları. Birleştirme/301 haritası `worker/index.js` REDIRECTS'te —
+  kopya yazı birleştirirsen oraya ekle. GSC 90g: sıra 5-10'da 0 tık alan sayfaların ortak nedeni
+  sorguyu başlıkta karşılamamak ("jackson hole ne zaman", "fed toplantı tarihleri") ve eskimiş olay
+  yazıları → günlük adım 5 (olay sonrası güncelleme). Bülten uçtan uca test edildi (gelen kutusu, 1 onaylı).
+  "ABD faizi" kümesinde 4 yazı kaldı (artarsa-ne-olur hub, altın, dolar, fed-nedir) — yenisini AÇMA, bunları güncelle.
 - **RC 2026-10-10 (3. oturum) — takip + OG kartları:** `health.py` artık TÜM veri dosyalarının
   tazeliğini izliyor (getiri/altin-fiyat/halka-arz/takvim/demand-gaps/OG + Kasım-Aralık YD sezon bekçisi:
   4 Kasım Ekim verisi, 5 Aralık tebliğ kontrolü — kırmızıysa günlük koşu İLK İŞ düzeltir).

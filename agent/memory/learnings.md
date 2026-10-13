@@ -96,3 +96,9 @@ _v1'in 59 deneyi + 2 aylık KPI'ından damıtıldı (2026-10-06); son yeniden ya
   oturumunda bayrak kaldırıldı ve headless testle doğrulandı (pano okundu, $0.003). İzin kapısı zaten
   `--allowedTools`; pano 10-13'te RC oturumunca gerçek durumla eşitlendi. Artık her koşuda panoyu oku/yaz;
   "yüklenemedi" görürsen bayrağın geri gelip gelmediğine bak (2026-10-13).
+- **Hız darboğazı fontlardı, JS değil (2026-10-13 canlı A/B):** /altin-getiri mobil LCP fontlar engelli 0,9 sn,
+  gtag engelli 2,4-2,8 sn, ikisi açık 2,3-4,4 sn. Google Fonts + `swap` → kendi sunucumuz + `optional`. Yeni
+  harici font/üçüncü taraf script ekleme; ölçüm: `npx lighthouse` + Playwright headless_shell (PSI kotası düşük).
+- **Olay önizleme yazıları eskiyince 0 tık alıyor** (TCMB Eylül yazısı sıra 6, 480 gös., 0 tık) ve bir yazıda
+  YANLIŞ tarih bulundu (Jackson Hole 2026: 21-23 değil 27-29 Ağustos). Tarihli iddiayı resmi kaynaktan doğrula;
+  olay geçince sonuç kutusu ekle (günlük adım 5) (2026-10-13).
