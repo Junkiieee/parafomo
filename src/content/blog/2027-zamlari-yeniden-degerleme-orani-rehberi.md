@@ -17,6 +17,23 @@ faq:
     a: "Tahmini oran %27,8 uygulanırsa 2026'da 5.750 TL olan en düşük otomobil MTV'si 2027'de yaklaşık 7.350 TL olur. İndirimli bir oran (ör. %20) uygulanırsa bu tutar yaklaşık 6.900 TL'de kalır."
   - q: "Emekli zammı ve asgari ücret de yeniden değerleme oranına bağlı mı?"
     a: "Hayır. SSK ve Bağ-Kur emekli zammı Temmuz-Aralık TÜFE'sine, memur zammı toplu sözleşmeye, asgari ücret ise Aralık'taki tespit komisyonunun kararına bağlıdır. Yeniden değerleme oranı yalnız maktu vergi, harç ve cezaları belirler."
+shorts:
+  - "2027 zamlarını belirleyen o tek sayı ne?"
+  - "Sabit TL tutarlar enflasyonda buz gibi erir; bu oran onları her yıl yeniden büyütür."
+  - "MTV'den pasaport harcına kadar onlarca kalem, 1 Ocak'ta bu oran kadar otomatik olarak artıyor."
+  - "Eylül verisine göre 2027 oranı yaklaşık yüzde 27,8; kesin rakam Kasım başında netleşecek."
+  - "Peki senin cebinden ne kadar çıkacak? ParaFOMO'ya abone ol, güncel oranı parafomo.com'da kaçırma."
+shorts_broll:
+  - "calculator money"
+  - "turkish lira money"
+  - "passport and car keys"
+  - "calendar new year"
+shorts_visuals:
+  - "object|calculator"
+  - "concept|inflation erosion"
+  - "object|passport"
+  - "object|calendar"
+  - "object|wallet"
 ---
 
 **2027 zamları** denince akla ilk gelen maaşlar olsa da, 1 Ocak'ta cebinden çıkan paranın büyük kısmını belirleyen tek bir sayı var: **yeniden değerleme oranı**. MTV'den pasaport harcına, trafik cezasından IMEI kayıt ücretine kadar onlarca kalem, her yıl bu oran kadar otomatik artar. Bu rehberde 2027'de neyin, ne kadar zamlanabileceğini gerçek 2026 tutarları ve güncel Yİ-ÜFE verisiyle hesaplıyoruz.
