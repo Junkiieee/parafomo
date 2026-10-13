@@ -40,6 +40,10 @@ class Settings(BaseSettings):
     smtp_from: str = "ParaFOMO <no-reply@parafomo.com>"
     smtp_starttls: bool = True
 
+    # ajan@parafomo.com gelen kutusu (routers/inbox.py). Boşsa uç kapalı.
+    inbox_secret: str = ""
+    inbox_dir: str = str(Path.home() / "parafomo-data" / "inbox")
+
     @property
     def cors_origin_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]

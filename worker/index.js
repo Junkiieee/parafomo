@@ -45,6 +45,31 @@ export default {
     }
     return withCache(url.pathname, await env.ASSETS.fetch(request));
   },
+
+  // ajan@parafomo.com → (Email Routing: "Send to a Worker" → parafomo) → sunucudaki gelen kutusu.
+  // INBOX_SECRET dashboard'da worker secret'ı olarak tanımlanır (repo herkese açık, koda yazılmaz).
+  async email(message, env) {
+    if (!env.INBOX_SECRET) {
+      message.setReject('Gelen kutusu yapılandırılmamış');
+      return;
+    }
+    if (message.rawSize > 5 * 1024 * 1024) {
+      message.setReject('Mesaj çok büyük');
+      return;
+    }
+    const raw = await new Response(message.raw).arrayBuffer();
+    const res = await fetch('https://api.parafomo.com/inbox/ingest', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'message/rfc822',
+        'X-Inbox-Secret': env.INBOX_SECRET,
+        'X-Mail-From': message.from,
+        'X-Mail-To': message.to,
+      },
+      body: raw,
+    });
+    if (!res.ok) message.setReject(`Gelen kutusu hatası (${res.status})`);
+  },
 };
 
 // Asset sunumu her şeyi `max-age=0, must-revalidate` ile veriyordu: her sayfa açılışında
