@@ -1,0 +1,59 @@
+{
+  "slug": "altin-zirvedeyken-beklemek-en-pahali-hata",
+  "title": "Altın zirvedeyken beklemek en pahalı hata",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Altında 'zirve, bekleyeyim' diyenlerin neden çoğu zaman daha yüksekten aldığını, 10 yıllık altın verisiyle ve aylık düzenli alımla anlatan kısa bir mit yıkma videosu.",
+  "tags": [
+    "altın",
+    "gram altın",
+    "altın yatırımı",
+    "zirve",
+    "düzenli alım",
+    "birikim",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Altın tepedeyken alınmaz diye bekleyen kaybetti.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold bars stacked"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "On yıl önce 'zirve' diyorlardı. O gün alınan 10 bin lira, bugün yaklaşık 550 bin.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins pile"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl tuzak fiyat değil, bekleme süresi. Düşüşü bekleyen, çoğu zaman daha yüksekten alıyor.",
+      "visual": {
+        "type": "object",
+        "query": "hourglass sand time"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çözüm dip aramak değil. Her ay küçük tutar ayır; zirve de dip de ortalamaya karışır.",
+      "visual": {
+        "type": "object",
+        "query": "calendar with coins"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki dolar için de aynı tuzak var mı? Yarın bakacağız. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold bars stacked"
+      }
+    }
+  ]
+}
