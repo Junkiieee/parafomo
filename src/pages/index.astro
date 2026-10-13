@@ -452,7 +452,9 @@ const pctFmt = (n: number) => (n > 0 ? '+' : '') + n.toLocaleString('tr-TR', { m
     } catch { /* yoksay */ }
   }
 
-  loadTicker();
+  // Üçüncü taraf fiyat istekleri ilk çizimle yarışmasın: sayfa yüklendikten sonra başlar.
+  if (document.readyState === 'complete') loadTicker();
+  else window.addEventListener('load', () => loadTicker(), { once: true });
   // Fiyatları her 60 saniyede bir otomatik tazele (sekme görünürken).
   setInterval(() => {
     if (document.visibilityState === 'visible') loadTicker();
