@@ -8,7 +8,7 @@ readingTime: 8
 featured: false
 faq:
   - q: "2027'de neler zamlanacak?"
-    a: "1 Ocak 2027'de motorlu taşıtlar vergisi (MTV), pasaport-ehliyet-kimlik harçları, IMEI kayıt ücreti, trafik cezaları, damga vergisi, noter ve tapu gibi maktu harçlar yeniden değerleme oranı kadar artar. Gelir vergisi dilimleri ve emlak vergisi değerleri de bu orana bağlı olarak güncellenir."
+    a: "1 Ocak 2027'de motorlu taşıtlar vergisi (MTV), pasaport-ehliyet-kimlik harçları, IMEI kayıt ücreti, damga vergisi, noter ve tapu gibi maktu harçlar yeniden değerleme oranı kadar artar; trafik cezalarında da artış beklenir ama 2026'daki 7574 sayılı Kanun nedeniyle belirsizlik var. Gelir vergisi dilimleri ve emlak vergisi değerleri de bu orana bağlı olarak güncellenir."
   - q: "2027 yeniden değerleme oranı ne kadar olacak?"
     a: "Eylül 2026 Yİ-ÜFE verisi itibarıyla 12 aylık ortalama artış yaklaşık %27,8. Kesin oran, 3 Kasım 2026'da açıklanacak Ekim Yİ-ÜFE verisiyle hesaben belli olur; tebliğ Kasım sonunda Resmî Gazete'de yayımlanır."
   - q: "Cumhurbaşkanı 2027 zam oranını düşürebilir mi?"
@@ -90,7 +90,7 @@ Yurt dışından getirilen telefonlar için ödenen IMEI kayıt harcı da bir ma
 
 ### Trafik cezaları
 
-İdari para cezaları da her yıl yeniden değerleme oranıyla artar. Hız, kemer, park gibi cezaların tamamı aynı oranla güncellenir; güncel tutarlar için [trafik cezaları hesaplama](/trafik-cezalari-hesaplama/) sayfamızı kullanabilirsin.
+İdari para cezaları kural olarak her yıl başında yeniden değerleme oranıyla artırılır (Kabahatler Kanunu 17/7). Ancak trafik cezaları 27 Şubat 2026'da yürürlüğe giren 7574 sayılı Kanun'la doğrudan yeni tutarlarla belirlendi; bu tutarlara 2027'de artış uygulanıp uygulanmayacağı konusunda hukukçular ayrışıyor, tablodaki kemer cezası tahmini bu yüzden belirsizdir. Güncel tutarlar için [trafik cezaları hesaplama](/trafik-cezalari-hesaplama/) sayfamızı kullanabilirsin.
 
 ### Gelir vergisi dilimleri
 
