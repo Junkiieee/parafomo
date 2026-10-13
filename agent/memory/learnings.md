@@ -91,3 +91,8 @@ _v1'in 59 deneyi + 2 aylık KPI'ından damıtıldı (2026-10-06); son yeniden ya
   kimse abone olamıyor) — T4.
 - Sunucu 2 çekirdek / 3,7 GB RAM / GPU yok: yerel ağır TTS (XTTS) çalışmaz; video render CPU'yu doyurur.
 - **2026'da harçlar YD %25,49 değil CB kararıyla %18,95 arttı** (pasaport 10y 13.410,40, IMEI 54.258 bu oranla tutarlı; 57.241 veren haberler %25,49 ile hesaplamış). Zam sezonu sayfalarında kaynak rakamını bu oranla çapraz kontrol et (2026-10-12).
+- **Görev Masası 5 gece okunamadı (10-09→10-13): kök neden `run.sh`'taki `--strict-mcp-config` bayrağıydı** —
+  bayrak claude.ai bağlayıcılarını (Claude Docs) tamamen kapatıyor; ToolSearch araçları bulamıyor. 2026-10-13 RC
+  oturumunda bayrak kaldırıldı ve headless testle doğrulandı (pano okundu, $0.003). İzin kapısı zaten
+  `--allowedTools`; pano 10-13'te RC oturumunca gerçek durumla eşitlendi. Artık her koşuda panoyu oku/yaz;
+  "yüklenemedi" görürsen bayrağın geri gelip gelmediğine bak (2026-10-13).

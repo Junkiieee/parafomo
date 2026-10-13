@@ -104,9 +104,11 @@ BEFORE="$STATE/dirty-before.txt"
 git status --porcelain | sed 's/^...//' | sort > "$BEFORE"
 "$VPY" agent/runlog.py start --mode "$MODE" --model "$MODEL" --effort "$EFFORT"
 OUT="$LOGDIR/run-$STAMP.json"
+# --strict-mcp-config KULLANMA: claude.ai bağlayıcılarını (Claude Docs = Görev Masası) kapatıyor.
+# 10-09..10-13 koşuları bu yüzden panoyu okuyamadı; izin kapısı zaten --allowedTools.
 COMMON=(--model "$MODEL" --effort "$EFFORT" --output-format json
         --permission-mode acceptEdits --allowedTools "${ALLOWED[@]}"
-        --strict-mcp-config --disable-slash-commands)
+        --disable-slash-commands)
 echo "[agent] beyin çalışıyor..."
 claude -p "${COMMON[@]}" --max-budget-usd "$BUDGET" < "$PROMPT" > "$OUT" 2> "$LOGDIR/run-$STAMP.err"
 RES="$("$VPY" agent/runlog.py finish --json "$OUT" --no-log)"
