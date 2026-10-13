@@ -5,6 +5,7 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import trailingSlashLinks from './src/integrations/trailing-slash-links.mjs';
+import coverVariants from './src/integrations/cover-variants.mjs';
 
 // Yayına alırken bu adresi kendi alan adınla değiştir.
 const SITE = 'https://parafomo.com';
@@ -34,6 +35,7 @@ export default defineConfig({
   // Cloudflare statik sunumu sonda '/' zorluyor; canonical/sitemap ile uyum için 'always'.
   trailingSlash: 'always',
   integrations: [
+    coverVariants(),
     mdx(),
     trailingSlashLinks(),
     sitemap({
@@ -59,6 +61,7 @@ export default defineConfig({
     },
   },
   build: {
-    inlineStylesheets: 'auto',
+    // Sayfa başına CSS ~15 KB; ayrı dosya istekleri mobilde render'ı blokluyordu (Lighthouse 2026-10-13).
+    inlineStylesheets: 'always',
   },
 });

@@ -1,12 +1,15 @@
 ---
-title: "Jackson Hole Sempozyumu Nedir? Fed Başkanı Konuşması Piyasaları Nasıl Etkiler?"
-description: "Jackson Hole Sempozyumu nedir, neden bu kadar önemli? Fed başkanının ağustos konuşması dolar, TL, altın ve borsayı nasıl etkiler? Adım adım rehber."
+title: "Jackson Hole Nedir, Ne Zaman Yapılır? Fed Konuşması ve Piyasa Etkisi"
+description: "Jackson Hole Sempozyumu nedir, ne zaman yapılır? 2026'da 27-29 Ağustos'taydı. Fed başkanının konuşması dolar, TL, altın ve borsayı nasıl etkiler?"
 pubDate: 2026-08-21
+updatedDate: 2026-10-13
 category: "Ekonomi"
 tags: ["jackson hole", "fed", "merkez bankası", "faiz", "dolar", "tl", "küresel piyasalar", "para politikası"]
 readingTime: 7
 featured: false
 faq:
+  - q: "Jackson Hole toplantısı ne zaman yapılır?"
+    a: "Her yıl ağustos ayının sonunda, perşembe-cumartesi arasında üç gün sürer. 2026 sempozyumu 27-29 Ağustos'ta yapıldı; Fed Başkanı'nın açılış konuşması cuma günü (28 Ağustos, TSİ 17:00) gerçekleşti. 2027 tarihlerini Kansas City Fed henüz açıklamadı."
   - q: "Jackson Hole Sempozyumu nedir?"
     a: "Jackson Hole Ekonomi Sempozyumu, her yıl ağustos ayının sonunda ABD'nin Wyoming eyaletindeki Jackson Hole kasabasında düzenlenen uluslararası merkez bankacıları, akademisyenler ve politika yapıcıların buluşmasıdır. Kansas City Fed tarafından organize edilir ve küresel para politikasının şekillendiği en prestijli platformlardan biridir."
   - q: "Jackson Hole konuşmaları piyasaları neden bu kadar etkiler?"
@@ -31,11 +34,22 @@ Her yılın ağustos sonunda küresel finans piyasaları tek bir yere odaklanır
 
 Jackson Hole Ekonomi Sempozyumu, her yıl ağustos ayının son haftasında ABD'nin Wyoming eyaletindeki Jackson Lake Lodge'da düzenlenen uluslararası ekonomi konferansıdır. Toplantıyı Kansas City Federal Reserve Bankası organize eder; ancak asıl ağırlığı Fed Genel Merkezi ve diğer büyük merkez bankalarının katılımı verir.
 
-Bu yılın kesin tarihleri, konuşmacı programı ve saatleri için [Jackson Hole 2026 ne zaman yapıldı ve Warsh'ın konuşması ne zaman?](/blog/jackson-hole-2026-ne-zaman-warsh-konusmasi/) yazımıza bakabilirsiniz; bu rehber ise sempozyumun ne olduğuna ve piyasalara etkisine odaklanıyor.
+Ne zaman yapıldığını aşağıdaki tabloda bulabilirsin; bu rehber sempozyumun ne olduğuna ve piyasalara etkisine odaklanıyor.
 
 Sempozyumun resmi adı "Economic Policy Symposium" olsa da basın ve piyasalar onu tutunduğu kasabadan "Jackson Hole" olarak anar. Merkez bankacıları, akademisyenler ve politika yapıcıların bir araya geldiği bu platform; küresel para politikasının resmi olmayan ama son derece etkili bir tartışma zeminidir.
 
 1978'den bu yana her yıl gerçekleştirilen sempozyum, özellikle 1980'lerden itibaren Fed'in politika yönünü sinyallemek için kullandığı kritik bir sahne haline geldi.
+
+## Jackson Hole Ne Zaman Yapılır?
+
+Jackson Hole her yıl **ağustos ayının sonunda**, perşembe günü başlayıp cumartesi biten üç günlük bir program olarak yapılır. Piyasalar için asıl an cuma günü: Fed Başkanı'nın açılış konuşması genellikle ABD saatiyle sabah 10:00'da, yani **TSİ 17:00** civarında başlar.
+
+| Yıl | Tarih | Fed Başkanı konuşması |
+|---|---|---|
+| 2026 | 27-29 Ağustos | 28 Ağustos Cuma — Kevin Warsh |
+| 2027 | Henüz açıklanmadı (beklenti: ağustos sonu) | — |
+
+Tarihleri sempozyumu düzenleyen [Kansas City Fed](https://www.kansascityfed.org/research/jackson-hole-economic-symposium/jackson-hole-faqs/) açıklar. 2026'da konuşmanın ayrıntıları ve piyasa tepkisi için [Jackson Hole 2026 ne zaman yapıldı, Warsh ne dedi?](/blog/jackson-hole-2026-ne-zaman-warsh-konusmasi/) yazımıza bakabilirsin.
 
 ## Fed Başkanı'nın Konuşması Neden Bu Kadar Önemli?
 

@@ -36,7 +36,10 @@ const ipoBox = [...ipoActive, ...ipoDone, ...ipoWaitRot].slice(0, 6);
 const pctFmt = (n: number) => (n > 0 ? '+' : '') + n.toLocaleString('tr-TR', { maximumFractionDigits: 1 }) + '%';
 ---
 
-<BaseLayout>
+<BaseLayout
+  title="ParaFOMO — Altın, Dolar, Borsa Verileri ve Hesaplayıcılar"
+  description="Altın, dolar ve BIST getirileri, Fed-TCMB faiz takvimi, halka arzlar ve ücretsiz finans hesaplayıcıları. Her gün güncellenen veriler, sade Türkçe rehberler."
+>
   <!-- HERO -->
   <section class="hero">
     <div class="container hero-inner">

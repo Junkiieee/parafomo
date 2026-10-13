@@ -11,12 +11,22 @@ const PLAUSIBLE = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
 ---
 {GA && (
   <>
-    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA}`}></script>
     <script is:inline define:vars={{ GA }}>
       window.dataLayer = window.dataLayer || [];
       function gtag(){ dataLayer.push(arguments); }
+      window.gtag = gtag;
       gtag('js', new Date());
       gtag('config', GA);
+      // gtag.js (~150 KB) ana iş parçacığını mobilde ~460 ms bloklıyordu; sayfa yüklendikten sonra
+      // yüklenir. Kuyruktaki çağrılar (dataLayer) kaybolmaz.
+      function loadGtag(){
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA;
+        document.head.appendChild(s);
+      }
+      if (document.readyState === 'complete') setTimeout(loadGtag, 1);
+      else window.addEventListener('load', function(){ setTimeout(loadGtag, 1); }, { once: true });
     </script>
   </>
 )}

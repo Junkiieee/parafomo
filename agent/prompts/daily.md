@@ -16,10 +16,17 @@ Planı haftalık koşu yazdı; senin işin onu **uygulamak**. Strateji tartışm
      kuyrukta bırak.
    - Görev artık anlamsızsa (veri değişti, zaten yapılmış): `- [-] ... — iptal: gerekçe` yap, sıradakine geç.
 4. **Sonraki görevler:** önceki görev temiz bittiyse ve bütçe varsa sıradakine geç (gecede en fazla 3 görev).
-5. **Konu kuyruğu:** `agent/plan/content-queue.md`'de bekleyen (`- [ ]`) konu < 3 ise 3-5 konu ekle
+5. **Olay sonrası güncelleme (her koşu, 1-2 yazı):** Slug'ında `<ay>-2026` geçen önizleme yazılarından
+   olayı GEÇMİŞ ve `updatedDate`'i olmayanları bul (ör. "TCMB Ekim kararı", "Eylül CPI"). Her birine:
+   gerçekleşen sonucu RESMİ kaynaktan doğrula (TCMB/BLS/BEA/ECB/TÜİK — veri dosyasında varsa oradan,
+   ör. `data/tcmb-2026.json`) → başlığa sonucu yaz ("…Açıklandı: Faiz %37'de Sabit") → gövdenin başına
+   `> **Karar/veri açıklandı (tarih):** … ([kaynak](url)) … Sıradaki: [link]` kutusu → ilgili SSS cevabını
+   geçmiş zamana çevir → `updatedDate`. Örnek: `tcmb-eylul-2026-faiz-karari-ppk-beklentiler.md` (10-13).
+   Neden: geçmiş olay yazısı gelecek zamanla kalınca sıra 5-10'da bile 0 tık alıyor (GSC 2026-10-13).
+6. **Konu kuyruğu:** `agent/plan/content-queue.md`'de bekleyen (`- [ ]`) konu < 3 ise 3-5 konu ekle
    (kaynak sırası: yaklaşan takvim olayları → talep radarı, brief §9b → GSC fırsat sorguları →
    aktif bahsin kümesi). Her satır: başlık önerisi · hedef sorgu · neden şimdi (1 cümle) · iç-link hedefi.
-6. **Rapor + commit:** `agent/state/report.md`'yi yaz; plan/kuyruk değişikliklerini commit'le.
+7. **Rapor + commit:** `agent/state/report.md`'yi yaz; plan/kuyruk değişikliklerini commit'le.
 
 ## Yapma
 - Yeni bahis açma, `learnings.md`'yi yeniden yazma (haftalık iş). Kesin yeni bir ders öğrendiysen

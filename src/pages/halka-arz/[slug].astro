@@ -24,15 +24,15 @@ type Ret = { code: string; ipo_price: number; current_price: number; return_pct:
 export function getStaticPaths() {
   const items = Object.values((archive as any).items ?? {}) as IPO[];
   const statusOrder: Record<string, number> = { 'Devam Ediyor': 0, 'Yaklaşan': 1, 'Tarih Bekleniyor': 2, 'Tamamlandı': 3 };
-  return items.map((ipo) => {
-    // İç-link ağı: aynı durumdaki diğer arzlar (en fazla 8).
-    const related = items
+  // İç-link ağı: durum + tarih sırasındaki halkada her sayfa iki yanındaki 4'er komşusuna link verir.
+  // Herkes aynı "ilk 8"e link verdiğinde 21 şirket sayfası tek iç linkle kalıyordu (denetim 2026-10-13).
+  const ring = [...items].sort((a, b) =>
+    (statusOrder[a.status] ?? 9) - (statusOrder[b.status] ?? 9) || (b.start ?? '').localeCompare(a.start ?? ''));
+  const n = ring.length;
+  return ring.map((ipo, i) => {
+    const offsets = [1, -1, 2, -2, 3, -3, 4, -4];
+    const related = [...new Set(offsets.map((o) => ring[(((i + o) % n) + n) % n]))]
       .filter((o) => o.slug !== ipo.slug)
-      .sort((a, b) =>
-        Number(a.status !== ipo.status) - Number(b.status !== ipo.status) ||
-        (statusOrder[a.status] ?? 9) - (statusOrder[b.status] ?? 9) ||
-        (b.start ?? '').localeCompare(a.start ?? ''))
-      .slice(0, 8)
       .map((o) => ({ slug: o.slug, company: o.company, code: o.bist_code, status: o.status }));
     return { params: { slug: ipo.slug }, props: { ipo, related } };
   });

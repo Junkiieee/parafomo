@@ -35,12 +35,18 @@ const {
   faq = [],
 } = Astro.props;
 
-const pageTitle = title ? `${title} — ${SITE.name}` : `${SITE.name} — ${SITE.tagline}`;
+// Google ~60 karakterden sonrasını keser; marka eki yalnız sığıyorsa eklenir (site adı ayrıca WebSite şemasından gelir).
+const TITLE_MAX = 60;
+const brandSuffix = ` — ${SITE.name}`;
+const pageTitle = title
+  ? title.includes(SITE.name) || title.length + brandSuffix.length > TITLE_MAX ? title : `${title}${brandSuffix}`
+  : `${SITE.name} — ${SITE.tagline}`;
 const canonPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const canonical = new URL(canonPath, SITE.url).href;
 const ogImage = new URL(image, SITE.url).href;
 
 const isArticle = type === 'article';
+const isHome = canonPath === '/';
 
 const ORG_ID = `${SITE.url}/#organization`;
 const orgLd = {
@@ -58,10 +64,13 @@ const orgLd = {
   contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: SITE.email, url: new URL('/iletisim/', SITE.url).href, availableLanguage: 'tr' },
 };
 
+const WEBSITE_ID = `${SITE.url}/#website`;
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': isArticle ? 'Article' : 'WebSite',
-  name: pageTitle,
+  '@type': isArticle ? 'Article' : isHome ? 'WebSite' : 'WebPage',
+  ...(isHome && { '@id': WEBSITE_ID, alternateName: 'parafomo.com' }),
+  ...(!isArticle && !isHome && { isPartOf: { '@type': 'WebSite', '@id': WEBSITE_ID, name: SITE.name, url: SITE.url } }),
+  name: isHome ? SITE.name : pageTitle,
   headline: title ?? SITE.name,
   description,
   url: canonical,
@@ -173,13 +182,9 @@ const calcLd = canonPath.includes('hesaplama')
     <link rel="alternate" type="application/rss+xml" title={`${SITE.name} RSS`} href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-latin-ext.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
 
     <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

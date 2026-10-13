@@ -2,11 +2,14 @@
 title: "ABD Faiz Artarsa Ne Olur? Dolar, TL, Altın ve Borsaya Etkisi"
 description: "ABD faiz artarsa dolar, TL, altın ve borsa nasıl etkilenir? Fed faiz artışının adım adım piyasa mekanizması ve Türk yatırımcısı için pratik rehber."
 pubDate: 2026-08-21
+updatedDate: 2026-10-13
 category: "Ekonomi"
 tags: ["abd faiz kararı", "fed faiz artışı", "dolar tl", "altın fiyatı", "amerikan faizi"]
 readingTime: 8
 featured: false
 faq:
+  - q: "Fed faiz indirirse dolar ne olur?"
+    a: "Beklentinin altında bir indirim genellikle doları zayıflatır, altını ve gelişen piyasa varlıklarını (TL, BIST) destekler. İndirim önceden fiyatlandıysa etki sınırlı kalır ya da tersine dönebilir."
   - q: "ABD faizi artarsa dolar güçlenir mi?"
     a: "Genellikle evet. Yüksek faiz, doları daha cazip hale getirdiği için yabancı sermaye ABD'ye akar, dolar endeksi (DXY) yükselir. Ancak piyasa beklentisi faiz artışını zaten fiyatlamışsa, karar sonrası dolar zayıflayabilir."
   - q: "ABD faizi artarsa TL ne olur?"
@@ -94,7 +97,7 @@ Ancak **sektörel farklılıklar** önemlidir:
 
 ### BIST Özelinde Etki
 
-ABD faiz artışı BIST 100'e olumsuz yansır; yabancı sermaye çıkışı ve TL değer kaybı hisse değerlemelerini zorlar. Ancak ihracatçı sektörler (tekstil, savunma, gıda) kurdaki yükselişten görece avantaj sağlar. [ABD faiz kararının altın, dolar ve TL'ye etkisini](/blog/abd-faiz-karari-altin-dolar-tl-etkisi) anlatan rehberimizde bu dinamik daha geniş ele alınıyor.
+ABD faiz artışı BIST 100'e olumsuz yansır; yabancı sermaye çıkışı ve TL değer kaybı hisse değerlemelerini zorlar. Ancak ihracatçı sektörler (tekstil, savunma, gıda) kurdaki yükselişten görece avantaj sağlar. ABD faiz kararının altın, dolar ve TL'ye etkisini anlatan rehberimizde bu dinamik daha geniş ele alınıyor.
 
 ## Üç Senaryo Karşılaştırması
 
@@ -105,6 +108,19 @@ ABD faiz artışı BIST 100'e olumsuz yansır; yabancı sermaye çıkışı ve T
 | **Beklentiden küçük artış / duraklatma** | Zayıflama | Görece rahatlama | Yükseliş | Pozitif tepki |
 
 Tablodaki "beklenti" kriteri kilit: Fed'in kararı önemlidir, ama piyasanın beklentisinden **ne kadar saptığı** daha önemlidir.
+
+## Fed Faiz İndirirse ya da Sabit Tutarsa Ne Olur?
+
+Fed her toplantıda faiz artırmaz; indirim ve "sabit tut" kararlarının da piyasaya etkisi aynı mekanizmayla, ters yönde işler. Fed kararının doları, altını ve TL'yi nasıl etkilediğinin kısa özeti:
+
+| Fed kararı | Dolar (DXY) | Altın | TL | Borsa (BIST/S&P) |
+|---|---|---|---|---|
+| Faiz artışı (beklentinin üzerinde) | ↑ Güçlenir | ↓ Düşer | ↓ Değer kaybeder | ↓ Baskı altında |
+| Faiz indirimi (beklentinin altında) | ↓ Zayıflar | ↑ Yükselir | ↑ Görece nefes alır | ↑ Olumlu etki |
+| Sabit — güvercin sinyal | ↓ Hafif zayıflar | ↑ Hafif yükselir | Nötr–olumlu | ↑ Hafif yükseliş |
+| Sabit — şahin sinyal | ↑ Güçlenir | ↓ Baskı | ↓ Baskı | ↓ Baskı |
+
+Bu ilişkiler kısa vadeli eğilimlerdir; karar önceden fiyatlandıysa ("priced in") tepki tersine dönebilir. Toplantı tarihleri için [Fed faiz kararı takvimine](/fed-faiz-takvimi/) bakabilirsin.
 
 ## Türk Yatırımcısı İçin Pratik Adımlar
 

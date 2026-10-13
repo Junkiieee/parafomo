@@ -209,7 +209,7 @@ const breadcrumbs = [
           // ana para (alt, koyu)
           bars += `<rect x="${x.toFixed(1)}" y="${yCont.toFixed(1)}" width="${barW.toFixed(1)}" height="${hCont.toFixed(1)}" rx="3" fill="#1e6b7f"><title>${r.year}. yıl · ana para ₺${nf.format(Math.round(r.contributed))}</title></rect>`;
           if (n <= 15 || (idx + 1) % Math.ceil(n / 12) === 0 || idx === n - 1) {
-            labels += `<text x="${(x + barW / 2).toFixed(1)}" y="${H - 8}" text-anchor="middle" font-size="11" fill="#79837c">${r.year}</text>`;
+            labels += `<text x="${(x + barW / 2).toFixed(1)}" y="${H - 8}" text-anchor="middle" font-size="11" fill="#66706a">${r.year}</text>`;
           }
         });
         return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Yıllara göre birikim grafiği" preserveAspectRatio="xMidYMid meet">${bars}${labels}</svg>`;

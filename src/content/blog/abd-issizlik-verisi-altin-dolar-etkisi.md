@@ -127,7 +127,7 @@ NFP açıklamasını takip ederken şu adımları izleyebilirsiniz:
 4. **Altında kademeli yaklaşım benimseyin:** Koşullar altın için olumlu görünüyorsa tek seferde değil, birkaç alışla konum alın. [Altın Fonu](/blog/altin-fonu-nedir-gram-altindan-farki) gibi araçlar düşük maliyetle ve kolayca altına erişim sağlar.
 5. **Uzun vadeli perspektifi koruyun:** NFP tek aylık anlık veridir. Uzun vadeli altın tutmak isteyenler için bir ayın verisi stratejik yönü değiştirmez.
 
-[ABD Faiz Kararı Altın, Dolar ve TL'yi Nasıl Etkiler?](/blog/abd-faiz-karari-altin-dolar-tl-etkisi) yazımızda bu zincirin Fed faizi ayağını daha ayrıntılı anlattık.
+[ABD Faiz Kararı Altın, Dolar ve TL'yi Nasıl Etkiler?](/blog/abd-faiz-artarsa-ne-olur/) yazımızda bu zincirin Fed faizi ayağını daha ayrıntılı anlattık.
 
 ## Özet
 

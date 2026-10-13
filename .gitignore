@@ -44,3 +44,6 @@ data/learning/web-queries.json
 # Büyüme Ajanı geçici durum/log (versiyonlanmaz)
 agent/state/
 agent/logs/
+
+# Kapak WebP varyantları — build sırasında src/integrations/cover-variants.mjs üretir
+public/covers/w/

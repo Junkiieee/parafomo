@@ -87,7 +87,7 @@ CME FedWatch verileri, bu yazının kaleme alındığı dönemde Eylül indirimi
 
 ABD verisi açıklandıktan sonraki ilk 15-30 dakika en keskin tepkinin yaşandığı dilim. Bu sürede aceleyle pozisyon almak gerekmez — ilk tepki genellikle abartılı olur ve saatler içinde düzeltilir.
 
-[ABD faiz kararının dolar ve TL'ye etkisini](/blog/abd-faiz-karari-altin-dolar-tl-etkisi) incelerseniz, faiz beklentisi değişimlerinin kur üzerindeki mekanizmasını daha net görürsünüz.
+[ABD faiz kararının dolar ve TL'ye etkisini](/blog/abd-faiz-artarsa-ne-olur/) incelerseniz, faiz beklentisi değişimlerinin kur üzerindeki mekanizmasını daha net görürsünüz.
 
 ### Altın için
 

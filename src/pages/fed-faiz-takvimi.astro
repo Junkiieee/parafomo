@@ -110,7 +110,7 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title={`Fed Faiz Kararı Takvimi 2026-2027: FOMC Tarihleri ve Kararlar (${curBand})`}
+  title={`Fed Toplantı Tarihleri 2026-2027: Faiz Kararı Takvimi (${curBand})`}
   description={`Fed faizi ${curBand}${last ? ` (son karar ${last.dayLabel}: ${decisionText(last.result!)})` : ''}. 2026 FOMC toplantı tarihleri ve kararları, TSİ saatleri, dot plot günleri ve 2027 Fed takvimi.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
@@ -296,7 +296,9 @@ const jsonLd = {
     gap: 0.5rem 1rem; padding: 0.7rem 1rem; border-bottom: 1px solid var(--border-soft);
   }
   .fk-row:last-child { border-bottom: none; }
-  .fk-row.past .fk-cell-date, .fk-row.past .fk-cell-time, .fk-row.past .fk-cell-tag { opacity: 0.55; }
+  /* Geçmiş satırlar opaklıkla değil renkle soluklaşır — opaklık kontrastı WCAG eşiğinin altına itiyordu. */
+  .fk-row.past .fk-cell-date strong, .fk-row.past .fk-cell-time, .fk-row.past .fk-cell-tag,
+  .fk-row.past .fk-cell-tag.on { color: var(--text-muted); font-weight: 600; }
   .fk-cell-status a { color: inherit; text-decoration: none; }
   .fk-cell-status a:hover { text-decoration: underline; }
   .fk-cell-status.dec-cut { color: var(--brand-deep); }

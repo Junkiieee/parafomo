@@ -1,14 +1,15 @@
 ---
-title: "TCMB Eylül 2026 Faiz Kararı: PPK 10 Eylül'de Ne Yapacak?"
-description: "TCMB Para Politikası Kurulu 10 Eylül 2026'da toplanıyor. İndirim mi, sabit mi? 3 senaryo, kredi ve mevduat faizine yansıması, dolar/TL ve BIST etkisi — karar öncesi tam rehber."
+title: "TCMB Eylül 2026 Faiz Kararı Açıklandı: Politika Faizi %37'de Sabit"
+description: "TCMB 10 Eylül 2026'da politika faizini %37'de sabit tuttu (borç verme %40, borçlanma %35,5). Karar öncesi senaryolar, kredi-mevduat ve dolar/TL etkisi; sıradaki PPK 22 Ekim."
 pubDate: 2026-09-06
+updatedDate: 2026-10-13
 category: "Ekonomi"
 tags: ["tcmb faiz kararı", "ppk eylül 2026", "faiz indirimi", "tcmb faiz", "mevduat faizi", "dolar tl kuru"]
 readingTime: 7
 featured: false
 faq:
   - q: "TCMB Eylül 2026 faiz kararı ne zaman açıklanıyor?"
-    a: "TCMB Para Politikası Kurulu (PPK) 10 Eylül 2026 Perşembe günü toplanıyor. Karar TSİ 14:00 civarında açıklanır; toplantı özeti ise yaklaşık 5 iş günü sonra yayımlanır."
+    a: "PPK 10 Eylül 2026 Perşembe günü toplandı ve politika faizini %37'de sabit tuttu. Karar TSİ 14:00'te açıklandı. Sıradaki toplantı 22 Ekim 2026."
   - q: "TCMB faiz indirecek mi Eylül 2026'da?"
     a: "Piyasa beklentisi, dezenflasyon sürecinin devam etmesi ve enflasyonun yıl başından bu yana belirgin biçimde gerilemesi nedeniyle PPK'nın faizi indireceği yönünde. Ancak Eylül başında TL'de görülen kur hareketleri küçük indirim (250-500 baz puan) veya sabit kararını da masaya koyuyor."
   - q: "TCMB faiz kararı mevduat faizini ne zaman etkiler?"
@@ -35,6 +36,8 @@ shorts_visuals:
   - "concept|bank loan mortgage interest rate"
   - "object|turkish lira banknotes"
 ---
+> **Karar açıklandı (10 Eylül 2026):** TCMB politika faizini **%37'de sabit** tuttu; gecelik borç verme faizi %40, borçlanma faizi %35,5 ([TCMB duyurusu](https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2026/DUY2026-38)). Faiz, Ocak'taki 100 baz puanlık indirimden bu yana %37'de. Sıradaki karar için [TCMB Ekim 2026 faiz kararı beklentileri](/blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler/) ve tüm tarihler için [TCMB faiz kararı takvimi](/tcmb-faiz-takvimi/). Aşağıdaki metin karar öncesi yazılmıştır.
+
 
 10 Eylül 2026 Perşembe, Türkiye piyasaları için kritik bir gün. TCMB Para Politikası Kurulu (PPK), enflasyonun yıl boyu nasıl seyrettiğini ve küresel merkez bankalarının ne yaptığını tartıyor. **TCMB Eylül 2026 faiz kararı** öncesinde piyasaların ne beklediğini, üç olası senaryonun kredi, mevduat, kur ve borsayı nasıl etkileyeceğini bu yazıda bulacaksın.
 

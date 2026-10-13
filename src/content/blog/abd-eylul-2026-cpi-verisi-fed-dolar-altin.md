@@ -84,7 +84,7 @@ ABD faiz beklentisiyle DXY arasındaki ilişki mekanik değil, ama güçlü bir 
 
 Altın, faiz beklentisi ve dolar gücüyle ters ilişki içindedir. CPI düşük gelip dolar zayıfladığında altın yükselir; CPI sıcak gelip dolar güçlendiğinde altın baskı altına girer. Ancak bu ilişki kırılabilir: jeopolitik riskin yüksek olduğu dönemlerde altın her iki senaryoda da talep görebilir.
 
-Kısa vadeli CPI tepkisi altın fiyatını etkilese de uzun vadede [ABD faiz artışlarının altına etkisi](/blog/abd-faiz-karari-altin-dolar-tl-etkisi) daha karmaşık bir tablo sunar — reel faiz seviyesi, dolar gücü ve güvenli liman talebi birlikte çalışır.
+Kısa vadeli CPI tepkisi altın fiyatını etkilese de uzun vadede [ABD faiz artışlarının altına etkisi](/blog/abd-faiz-artarsa-ne-olur/) daha karmaşık bir tablo sunar — reel faiz seviyesi, dolar gücü ve güvenli liman talebi birlikte çalışır.
 
 Yarın için pratik eşik: altın ons fiyatı yakın vadeli destek seviyesini kırarsa CPI tepki satışı olabilir. Bu noktaların güncel seyrini sabah takip etmek önemli.
 
