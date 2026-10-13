@@ -1,0 +1,70 @@
+{
+  "title": "Altın 5000 TL'yi 5 Yılda Nereye Taşıdı, Bak #Shorts",
+  "description": "5000 TL'yi yaklaşık 5 yıl önce gram altına koysaydın bugün yaklaşık 45.899 TL olurdu, yani yaklaşık %818 getiri. Nakitte bekleyen paranın neden eridiğini somut rakamla gösteriyoruz.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #gram altın #altın getirisi #birikim #enflasyon #yatırım",
+  "tags": [
+    "gram altın",
+    "altın getirisi",
+    "birikim",
+    "enflasyon",
+    "yatırım",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-altin-5000-tl-yi-5-yilda-nereye-tasidi-bak-m.mp4",
+  "slug": "altin-5000-tl-yi-5-yilda-nereye-tasidi-bak-m",
+  "format": "backtest_return",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 4.05,
+      "spoken": "Çekmecede bekleyen 5000 lira sessizce eriyor.",
+      "visual": "manim: Altın"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 4.05,
+      "end": 11.46,
+      "spoken": "5000 lirayı 5 yıl önce gram altına koysaydın, bugün yaklaşık 45 bin 899 lira olurdu.",
+      "visual": "manim: Altın"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 11.46,
+      "end": 18.43,
+      "spoken": "Ama asıl şok şu: bu yaklaşık yüzde 818 getiri, yani paran neredeyse dokuz katına çıktı.",
+      "visual": "manim: backtest"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 18.43,
+      "end": 25.89,
+      "spoken": "Nakitte bekleyen para erir. Geçmiş garanti değil ama birikimin bir kısmını altında tutmak fark yaratıyor.",
+      "visual": "manim: Altın"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 25.89,
+      "end": 33.58,
+      "spoken": "Peki aynı dönemde dolar ne yaptı, merak ediyorsan abone ol; her gün 60 saniyede tek net rakam getiriyoruz.",
+      "visual": "manim: ParaFOMO"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-12T16:02:24+00:00",
+    "slug": "altin-5000-tl-yi-5-yilda-nereye-tasidi-bak-m",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "UUsTlL3n4TU",
+  "youtube_url": "https://youtube.com/shorts/UUsTlL3n4TU",
+  "ig_reel_id": "18640744024008412",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DeZngBIAlTy/",
+  "ig_seed_comment_id": "18158224396519516"
+}
