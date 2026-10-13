@@ -1,9 +1,29 @@
 {
-  "updated": "2026-10-13T12:15+00:00",
+  "updated": "2026-10-13T18:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 41,
   "items": [
+    {
+      "company": "Hayri Ögelman Madencilik A.Ş.",
+      "bist_code": "",
+      "slug": "hayri-ogelman-madencilik-a-s",
+      "link": "https://halkarz.com/hayri-ogelman-madencilik-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "",
+      "lot": "",
+      "broker": "",
+      "market": "",
+      "first_trade": "",
+      "float_lot": "",
+      "float_pct": "",
+      "updated_src": "13.10.2026 20:27",
+      "details": {}
+    },
     {
       "company": "Divapan Entegre Ağaç Panel Sanayi Tic. A.Ş.",
       "bist_code": "",
@@ -2274,93 +2294,6 @@
                 "872,8 Milyon TL",
                 "712,6 Milyon TL",
                 "241,2 Milyon TL"
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "company": "Türkiye Emlak Katılım Bankası A.Ş.",
-      "bist_code": "",
-      "slug": "turkiye-emlak-katilim-bankasi-a-s",
-      "link": "https://halkarz.com/turkiye-emlak-katilim-bankasi-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "600.000.000 Lot",
-      "broker": "Halk Yatırım Menkul Değerler A.Ş. Garanti Yatırım Menkul Değerler A.Ş. İş Yatırım Menkul Değerler A.Ş.",
-      "market": "Yıldız Pazar",
-      "first_trade": "",
-      "float_lot": "",
-      "float_pct": "",
-      "updated_src": "15.09.2026 09:55",
-      "details": {
-        "sekil": {
-          "items": [
-            "Sermaye Artırımı : 600.000.000 Lot"
-          ],
-          "source": "Taslak İzahname, Sayfa 1."
-        },
-        "fon_kullanim": {
-          "items": [
-            "%50-60 Yatırım finansmanı",
-            "%20-25 İşletme sermayesi",
-            "%20-25 Özkaynağın güçlendirilmesi"
-          ],
-          "source": "Taslak İzahname, Sayfa 330."
-        },
-        "satis_yontemi": {
-          "items": [
-            "Sabit Fiyatla Talep Toplama",
-            "En İyi Gayret Aracılığı"
-          ],
-          "source": ""
-        },
-        "fiyat_istikrari": {
-          "items": [
-            "30 gün. * Brüt halka arz gelirinin %20'si",
-            "(Halk Yatırım Menkul Değerler A.Ş.)"
-          ],
-          "source": "Taslak İzahname, Sayfa 327."
-        },
-        "satmama": {
-          "items": [
-            "1 Yıl, İhraççı",
-            "1 Yıl, Ortaklar"
-          ],
-          "source": "Taslak İzahname, Sayfa 328."
-        },
-        "halka_aciklik": {
-          "items": [
-            "%10,71"
-          ],
-          "source": "Taslak İzahname, Sayfa 304."
-        },
-        "finansal": {
-          "periods": [
-            "2025",
-            "2024",
-            "2023"
-          ],
-          "rows": [
-            {
-              "label": "Hasılat",
-              "values": [
-                "55,1 Milyar TL",
-                "33,6 Milyar TL",
-                "16,6 Milyar TL"
-              ]
-            },
-            {
-              "label": "Net Kâr",
-              "values": [
-                "18,0 Milyar TL",
-                "8,9 Milyar TL",
-                "6,2 Milyar TL"
               ]
             }
           ]

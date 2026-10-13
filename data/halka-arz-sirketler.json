@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T12:15+00:00",
+ "updated": "2026-10-13T18:15+00:00",
  "source": "halkarz.com",
  "items": {
   "pronet-guvenlik-hizmetleri-a-s": {
@@ -4088,6 +4088,27 @@
    "updated_src": "12.10.2026 20:19",
    "details": {},
    "first_seen": "2026-10-12"
+  },
+  "hayri-ogelman-madencilik-a-s": {
+   "company": "Hayri Ögelman Madencilik A.Ş.",
+   "bist_code": "",
+   "slug": "hayri-ogelman-madencilik-a-s",
+   "link": "https://halkarz.com/hayri-ogelman-madencilik-a-s/",
+   "date_text": "",
+   "start": null,
+   "end": null,
+   "status": "Tarih Bekleniyor",
+   "price": "",
+   "distribution": "",
+   "lot": "",
+   "broker": "",
+   "market": "",
+   "first_trade": "",
+   "float_lot": "",
+   "float_pct": "",
+   "updated_src": "13.10.2026 20:27",
+   "details": {},
+   "first_seen": "2026-10-13"
   }
  }
 }
