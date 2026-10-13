@@ -164,7 +164,7 @@ Bir hisseyi değerlendirirken halka arz anı kadar **arz sonrası şirket faaliy
 - **Gayrimenkul/arsa hareketleri:** Şirketin faaliyet alanı yalnızca beton üretimi değil; gayrimenkul geliştirme tarafında arsa alımları gibi adımlar da KAP'a yansıyor. Bu tür özel durum açıklamaları, şirketin büyüme yönü hakkında ipucu verir.
 - **Finansal tablolar:** Halka arz sonrası ilk çeyreklik finansallar, izahnamedeki projeksiyonlarla gerçekleşenin karşılaştırılabildiği ilk somut veridir — takip edilmesi kritik.
 
-Bu gelişmeleri portföyünde tutmak isteyenler için, ALBTN dahil BIST hisselerinin güncel değerini ve kâr/zararını tek ekranda izleyebileceğin ücretsiz [portföy takip aracımızı](/portfoy-takip) kullanabilirsin.
+Bu gelişmeleri portföyünde tutmak isteyenler için, ALBTN dahil BIST hisselerinin güncel değerini ve kâr/zararını tek ekranda izleyebileceğin ücretsiz [portföy takip aracımızı](https://app.parafomo.com/portfoy/) kullanabilirsin.
 
 ---
 

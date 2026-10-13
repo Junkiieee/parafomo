@@ -5,7 +5,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 // Token URL'den (?token=) okunur; yeni şifre API'ye gönderilir. SEO'ya girmez.
 const breadcrumbs = [
   { name: 'Ana Sayfa', url: '/' },
-  { name: 'Portföy Takip', url: '/portfoy-takip' },
+  { name: 'Portföy Takip', url: 'https://app.parafomo.com/portfoy/' },
   { name: 'Şifre Sıfırlama', url: '/portfoy/sifre-sifirla' },
 ];
 ---
@@ -39,7 +39,7 @@ const breadcrumbs = [
         <button type="submit" class="btn-primary" id="submit">Şifreyi güncelle</button>
       </form>
 
-      <p class="switch-line"><a class="link-a" href="/portfoy/panel">← Panele dön</a></p>
+      <p class="switch-line"><a class="link-a" href="https://app.parafomo.com/portfoy/">← Portföye dön</a></p>
     </section>
   </div>
 
@@ -76,7 +76,7 @@ const breadcrumbs = [
           }
           if (data && data.access_token) localStorage.setItem('pf_token', data.access_token);
           ok.textContent = 'Şifren güncellendi. Panele yönlendiriliyorsun…'; ok.hidden = false;
-          setTimeout(function () { location.href = '/portfoy/panel'; }, 1200);
+          setTimeout(function () { location.href = 'https://app.parafomo.com/portfoy/'; }, 1200);
         } catch (ex) {
           err.textContent = ex.message; err.hidden = false;
           btn.disabled = false;

@@ -120,7 +120,7 @@ Yalnız `agent/allowed-tools.txt`'deki kalıplar çalışır. Şunlar HER ZAMAN 
 - Video hattı: `scripts/viral-script.py` (senaryo, formatlar), `viral-daily.sh` (DOW_FMT format rotasyonu),
   `shorts-build-v4.py` (render), `manim_scenes.py`/`manimify.py`, `youtube-upload.py`, `instagram-reel.py`.
   Script'lerden LLM çağrısı yalnız `scripts/lib/llm.py` üzerinden (hata metni asla içerik olmaz).
-- Portföy: `backend/` (FastAPI), `src/pages/portfoy-takip.astro`, `src/pages/portfoy/panel.astro`, `deploy/DEPLOY.md`.
+- Portföy: `backend/` (FastAPI), `app/portfoy/` (SPA, app.parafomo.com; eski /portfoy-takip ve /portfoy/panel → 301), `deploy/DEPLOY.md`.
 
 ## Koşu çıktıları (ZORUNLU)
 - `agent/state/report.md` — e-posta gövdesine girer (KPI, sağlık ve yayın takvimini e-posta zaten

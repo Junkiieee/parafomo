@@ -32,7 +32,7 @@ Veri sayfaları her iş günü otomatik güncellenir (kaynaklar: Yahoo Finance f
 - [Kıdem tazminatı hesaplama](https://parafomo.com/kidem-tazminati-hesaplama/)
 - [Kira artış oranı hesaplama](https://parafomo.com/kira-artis-orani-hesaplama/)
 - [Altın hesaplama](https://parafomo.com/altin-hesaplama/)
-- [Portföy takip](https://parafomo.com/portfoy-takip/): BIST, altın ve gümüş için ücretsiz portföy takibi
+- [Portföy takip](https://app.parafomo.com/portfoy/): BIST, altın ve gümüş için ücretsiz portföy takibi
 
 ## Rehberler
 - [Blog](https://parafomo.com/blog/): yatırım araçları, vergi, BES, enflasyon ve kişisel finans rehberleri

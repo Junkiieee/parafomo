@@ -36,7 +36,7 @@ export const NAV = [
   { label: 'Kripto', href: '/kategori/kripto' },
   { label: 'Kişisel Finans', href: '/kategori/kisisel-finans' },
   { label: 'Halka Arz', href: '/halka-arz' },
-  { label: 'Portföy Takip', href: '/portfoy-takip' },
+  { label: 'Portföy Takip', href: 'https://app.parafomo.com/portfoy/?utm_source=parafomo&utm_medium=nav' },
   { label: 'Ekonomik Takvim', href: '/ekonomik-takvim' },
   { label: 'Faiz Hesaplama', href: '/bilesik-faiz-hesaplama' },
   { label: 'Hakkımızda', href: '/hakkimizda' },

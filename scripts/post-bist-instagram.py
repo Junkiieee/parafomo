@@ -85,7 +85,7 @@ def build_caption(ptype, date_label):
     question = questions[date.today().toordinal() % len(questions)]
     # Kapanış kartı = "portföyünüz nasıldı?" izleyicisi → portföy takip ürününün doğal hunisi.
     # BIST hisse arama + canlı değer + kâr/zarar; ücretsiz, üyeliksiz hesaplayıcı da var.
-    cta = ("💼 BIST portföyünü ücretsiz takip et (kâr/zarar canlı) → parafomo.com/portfoy-takip"
+    cta = ("💼 BIST portföyünü ücretsiz takip et (kâr/zarar canlı) → app.parafomo.com/portfoy"
            if ptype == "kapanis"
            else "📅 Piyasayı hareket ettiren veriler → parafomo.com/ekonomik-takvim")
     body = (f"{head} · {date_label}\n"

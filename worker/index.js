@@ -10,6 +10,9 @@ const CANONICAL_HOST = 'parafomo.com';
 const REDIRECTS = {
   // 2026-10-13: neredeyse birebir kopya, aynı sorgularda birbirini yiyordu (GSC sıra 27-29).
   '/blog/abd-faiz-karari-altin-dolar-tl-etkisi/': '/blog/abd-faiz-artarsa-ne-olur/',
+  // 2026-10-13: eski sitedeki portföy mini-uygulaması kaldırıldı; tek ürün app.parafomo.com.
+  '/portfoy-takip/': 'https://app.parafomo.com/portfoy/',
+  '/portfoy/panel/': 'https://app.parafomo.com/portfoy/',
 };
 
 export default {
@@ -36,6 +39,9 @@ export default {
       moved = true;
     }
     const target = REDIRECTS[url.pathname];
+    if (target?.startsWith('https://')) {
+      return Response.redirect(target + url.search, 301);
+    }
     if (target) {
       url.pathname = target;
       moved = true;
