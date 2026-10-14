@@ -1,6 +1,6 @@
 ---
 title: "Halka Arz Kazandırır mı? 2026 Halka Arzlarının Getirisi"
-description: "Halka arz kazandırır mı? 2026'da işlem görmeye başlayan 12 halka arzın gerçek getirisi: ortalama %-26,4, sadece 3'ü artıda. En iyi, en kötü arzlar ve lot örneği."
+description: "Halka arz kazandırır mı? Temmuz-Eylül 2026'da işlem görmeye başlayan 12 halka arzın gerçek getirisi: ortalama %-26,4, sadece 3'ü artıda. En iyi, en kötü arzlar ve lot örneği."
 pubDate: 2026-10-14
 category: "Borsa"
 tags: ["halka arz kazandırır mı", "2026 halka arz getirileri", "halka arza katılmak mantıklı mı", "halka arz", "BIST", "eşit dağıtım"]
@@ -14,7 +14,7 @@ faq:
   - q: "Halka arza katılmak mantıklı mı?"
     a: "Bu kişisel bir karardır. Veriler, arza katılmanın otomatik kazanç olmadığını; şirketin değerlemesi, fon kullanım yeri ve satmama taahhütleri incelenmeden katılmanın kayıp riski taşıdığını gösteriyor. Eşit dağıtımda düşen lot az olduğu için tutar bazında risk de kazanç da sınırlı kalır."
   - q: "Halka arz hisseleri neden fiyatının altına düşüyor?"
-    a: "Yaygın nedenler arasında yüksek belirlenen arz fiyatı, ilk günlerdeki kâr satışları, genel piyasa düşüşü ve beklentiyi karşılamayan bilançolar sayılabilir. 2026'da BIST 100'ün yıl başından beri %-11,5 gerilemesi de yeni hisseler üzerinde baskı yarattı."
+    a: "Yaygın nedenler arasında yüksek belirlenen arz fiyatı, ilk günlerdeki kâr satışları, genel piyasa düşüşü ve beklentiyi karşılamayan bilançolar sayılabilir. 2026'da BIST 100'ün yıl başından beri %-11,5 gerilemesi de yeni hisseler üzerinde baskı yaratan etkenlerden biri olarak görülebilir."
 ---
 
 **Halka arz kazandırır mı?** Sosyal medyada "her halka arz tavan yapar" algısı yaygın, ama 2026 verisi farklı bir tablo çiziyor. Temmuz-Eylül 2026'da Borsa İstanbul'da işlem görmeye başlayan **12 halka arzın bugünkü ortalama getirisi %-26,4**; yani arz fiyatından alıp bugüne kadar tutan yatırımcı, ortalamada parasının dörtte birini kaybetmiş durumda. Sadece 3 şirket arz fiyatının üzerinde.
@@ -31,7 +31,7 @@ Halka arzın getirisini ölçmenin en basit yolu, **halka arz fiyatı ile bugün
 - **En iyi:** CITAS, yaklaşık %+33
 - **En kötü:** BKRGY, yaklaşık %-58,9
 
-Medyanın ortalamadan bu kadar kötü olması önemli bir ayrıntı: birkaç başarılı arz ortalamayı yukarı çekiyor, ama "tipik" bir arz ciddi değer kaybetmiş. Aynı dönemde BIST 100 endeksi de yıl başından beri yaklaşık %-11,5 gerilediği için piyasa koşulları yeni hisselerin aleyhine çalıştı; yine de halka arzların kaybı endeksin oldukça üzerinde. Endeksin uzun vadeli seyrini [BIST getiri sayfasından](/bist-getiri) takip edebilirsin.
+Medyanın ortalamadan bu kadar kötü olması önemli bir ayrıntı: birkaç başarılı arz ortalamayı yukarı çekiyor, ama "tipik" bir arz ciddi değer kaybetmiş. Aynı dönemde BIST 100 endeksi de yıl başından beri yaklaşık %-11,5 gerilediği için piyasa koşulları yeni hisselerin aleyhine çalıştı; yine de halka arzların ortalama kaybı, endeksin yıl başından bu yana düşüşünün bile oldukça üzerinde. Endeksin uzun vadeli seyrini [BIST getiri sayfasından](/bist-getiri) takip edebilirsin.
 
 ## 2026 Halka Arz Getirileri: 12 Şirketin Tablosu
 
