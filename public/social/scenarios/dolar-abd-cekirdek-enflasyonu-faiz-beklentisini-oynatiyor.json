@@ -1,0 +1,62 @@
+{
+  "slug": "dolar-abd-cekirdek-enflasyonu-faiz-beklentisini-oynatiyor",
+  "title": "Dolar: ABD çekirdek enflasyonu faiz beklentisini oynatıyor",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "ABD'de gıda ve enerji hariç çekirdek enflasyon açıklandığında Fed'in faiz kararı beklentisi değişiyor. Bu da dolar ve euroyu, dolayısıyla TL'deki fiyatları etkiliyor.",
+  "tags": [
+    "core cpi",
+    "enflasyon",
+    "dolar",
+    "euro",
+    "fed",
+    "faiz",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Amerika'nın tek enflasyon rakamı dolar kurunu oynatıyor.",
+      "visual": {
+        "type": "place",
+        "query": "Federal Reserve building"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Buna çekirdek enflasyon deniyor: gıda ve enerji çıkarılıyor, kalıcı fiyat artışı kalıyor. Fed faizi buna bakarak ayarlıyor.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama rakam beklentiden yüksek gelirse faiz indirimi uzar, dolar güçlenir, euro zayıflar. Düşük gelirse tam tersi olur.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Risk",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Senin cebine etkisi şu: dolar sıçrarsa ithal ürün pahalanır. Rakamın açıklanma gününde kura bakmadan döviz alma.",
+      "visual": {
+        "type": "object",
+        "query": "smartphone banking app"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki veri dolara ne yapacak, merak ediyorsan abone ol; her gün tek net analizi sade dille anlatıyorum.",
+      "visual": {
+        "type": "place",
+        "query": "Federal Reserve building"
+      }
+    }
+  ]
+}
