@@ -32,6 +32,8 @@ echo "[2/4] Metrikler toplanıyor"
 # Talep madencisi (Google Autocomplete) — haftada 2 gün yeter (Çrş+Paz; Perşembe haftalık koşuya taze)
 if [ "$(date -u +%u)" = "3" ] || [ "$(date -u +%u)" = "7" ]; then
   python3 "$LEARN/demand_miner.py"   || echo "UYARI: talep madencisi başarısız"
+  # Fırsat motoru: adayların Trends hacmi (önbellek 21g → koşu başına ≤16 istek) → brief §9c
+  "$VPY" "$LEARN/opportunity_finder.py" || echo "UYARI: fırsat motoru başarısız"
 fi
 # Yeni URL varsa (ya da 7 gün geçtiyse) sitemap'i GSC'ye yeniden gönder — Google 07-03→10-08 hiç indirmemişti
 "$VPY" "$REPO/scripts/gsc-sitemap.py" || echo "UYARI: sitemap gönderimi başarısız"

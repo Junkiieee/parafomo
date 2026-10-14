@@ -437,6 +437,35 @@ def sec_demand():
         out("\n_(demand-gaps.json yok — scripts/learn/demand_miner.py üretir)_")
 
 
+def sec_opportunities():
+    """Fırsat listesi: Trends hacmi ("mevduat faizi" = 100) × niyet × mevcut sıra → eylem."""
+    p = os.path.join(ROOT, "data", "learning", "opportunities.json")
+    try:
+        d = json.load(open(p, encoding="utf-8"))
+    except Exception:
+        out("_(opportunities.json yok — /root/.venvs/parafomo/bin/python scripts/learn/opportunity_finder.py)_")
+        return
+    age = (TODAY - dt.date.fromisoformat(d["generated_utc"][:10])).days
+    out(f"_{age}g önce · hacim = Google Trends TR 12 ay ort., '{d.get('anchor')}' = 100 · skor = hacim × niyet ×"
+        " erişilebilirlik. Konu/görev seçiminin ana kaynağı; hacim < 5 → yazı/sayfa açma._")
+    if age > 10:
+        out("⚠ Liste bayat (>10g) — önce scripti çalıştır.")
+    n = 25 if MODE == "weekly" else 12
+    out("\n| skor | eylem | sorgu | hacim (son 4h / zirve) | sayfa | GSC 28g | not |")
+    out("|---|---|---|---|---|---|---|")
+    for r in d.get("firsatlar", [])[:n]:
+        g = r.get("gsc")
+        gs = f"sıra {g['pos']} · {g['clicks']}/{g['impr']}" if g else "—"
+        vek = f" ≈{r['vekil']}" if r.get("vekil") else ""
+        out(f"| {r['skor']} | {r['eylem']} | {r['q']}{vek} | {r['hacim']} ({r.get('son4h') or '—'} / {r.get('zirve') or '—'}) "
+            f"| {r.get('sayfa') or '—'} | {gs} | {r['not']} |")
+    if d.get("koru"):
+        out("\n**İlk sayfadakiler (koru):** " + " · ".join(f"{r['q']} ({r['hacim']})" for r in d["koru"][:8]))
+    if d.get("dusuk_talep"):
+        k = 30 if MODE == "weekly" else 12
+        out("\n**Düşük talep (hacim < 2 — bu sorgulara yazı açma):** " + " · ".join(d["dusuk_talep"][:k]))
+
+
 def sec_inventory():
     blog = os.path.join(ROOT, "src", "content", "blog")
     posts = []
@@ -565,6 +594,7 @@ def main():
     section("8) YouTube", sec_youtube)
     section("9) Takvim (yaklaşan yüksek/orta etkili olaylar)", sec_calendar)
     section("9b) Talep radarı (mevsimsel + Autocomplete boşlukları)", sec_demand)
+    section("9c) FIRSAT LİSTESİ — aranma hacmi ölçülmüş sorgular (konu seçimi buradan)", sec_opportunities)
     section("10) İçerik envanteri", sec_inventory)
     section("11) Blog konu kuyruğu (agent/plan/content-queue.md)", sec_content_queue)
     section("12) Kullanıcı görevleri (agent/plan/user-tasks.md)", sec_user_inputs)

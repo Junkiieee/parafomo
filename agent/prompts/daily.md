@@ -23,9 +23,11 @@ Planı haftalık koşu yazdı; senin işin onu **uygulamak**. Strateji tartışm
    `> **Karar/veri açıklandı (tarih):** … ([kaynak](url)) … Sıradaki: [link]` kutusu → ilgili SSS cevabını
    geçmiş zamana çevir → `updatedDate`. Örnek: `tcmb-eylul-2026-faiz-karari-ppk-beklentiler.md` (10-13).
    Neden: geçmiş olay yazısı gelecek zamanla kalınca sıra 5-10'da bile 0 tık alıyor (GSC 2026-10-13).
-6. **Konu kuyruğu:** `agent/plan/content-queue.md`'de bekleyen (`- [ ]`) konu < 3 ise 3-5 konu ekle
-   (kaynak sırası: yaklaşan takvim olayları → talep radarı, brief §9b → GSC fırsat sorguları →
-   aktif bahsin kümesi). Her satır: başlık önerisi · hedef sorgu · neden şimdi (1 cümle) · iç-link hedefi.
+6. **Konu kuyruğu:** `agent/plan/content-queue.md`'de bekleyen (`- [ ]`) konu < 3 ise 3-5 konu ekle.
+   Kaynak: **brief §9c fırsat listesi** (eylemi `YENI_YAZI`/`YENI_ARAC` olan, hacmi ≥ 5 satırlar) →
+   hacimli takvim olayı (ailesi §9c'de ≥ 5, örn. TCMB faiz kararı) → aktif bahsin kümesi.
+   Hacmi ölçülmemiş ya da < 5 olan sorguya yazı açma (Autocomplete önerisi tek başına talep kanıtı değil).
+   Her satır: başlık önerisi · hedef sorgu (hacim N) · neden şimdi (1 cümle) · iç-link hedefi.
 7. **Rapor + commit:** `agent/state/report.md`'yi yaz; plan/kuyruk değişikliklerini commit'le.
 
 ## Yapma

@@ -25,10 +25,17 @@ Ders çıkar ve bu haftanın görev tanımına uygula.
 ## 4. Yeni hafta planı
 - **En fazla 3 aktif bahis.** Her biri: hipotez · dayandığı kanıt · başarı metriği + hedef ·
   değerlendirme tarihi (2-4 hafta) → `bets.py add`.
-- **Talep radarını kullan (brief §9b):** mevsimsel pencerede "SAYFA YOK" olan konu ve Autocomplete'te
-  kapsanmayan sorgu aileleri görev adayıdır. Kural: her yıl tekrar eden sorgunun sayfası talep
-  zirvesinden 3-6 hafta ÖNCE canlı olmalı (Kasım-Ocak zam sezonu yılın en büyük arama dönemi).
-  Tek seferlik merak sorgusu için sayfa açma; aile (5+ varyant) + süreklilik ara.
+- **Görevler FIRSAT LİSTESİNDEN çıkar (brief §9c — hacmi ölçülmüş sorgular).** Web görevlerinin en az
+  2/3'ü listedeki ilk 15 satırdan gelsin; eylem sütunu ne yapılacağını söyler:
+  `YENIDEN_KUR`/`GUCLENDIR` (sayfa var ama sıralanmıyor — örn. /halka-arz "halka arz takvimi" hacim ~68,
+  sıra ~67) > `YENI_ARAC` (hesaplama/veri sayfası) > `CTR` > `YENI_YAZI`. Görev satırına sorguyu ve
+  hacmini yaz ("· hedef: konut kredisi hesaplama (hacim 170)"). Neden: 2026-10-14 ölçümü — son yazıların
+  hedef sorgularının çoğu Trends'te 0 (jolts/fed-faiz-artarsa-dolar/dolar-mı-altın-mı varyantları);
+  site ayda ~7K gösterim alıyor, her sorguda 1. olsak bile günde ~60 ziyaretçi. Darboğaz konu seçimi.
+- **Talep radarı (brief §9b) zamanlama içindir:** mevsimsel pencere = NE ZAMAN hazır olmalı (talep
+  zirvesinden 3-6 hafta önce; Kasım-Ocak zam sezonu). Autocomplete boşlukları tek başına talep kanıtı
+  DEĞİL — §9c'de hacmi yoksa görev yapma. Hacim < 5 ise sayfa/yazı açma (istisna: 2027 gibi gelecek
+  yıl sorgusu, hacmi geçen yılın eşdeğerinden ölçülür).
 - Bahislerden türeyen **5-8 somut görev** — her biri TEK gecede bitecek boyutta, kabul kriteriyle:
   `- [ ] T<n> (B..) — ne yapılacak · Dosyalar: ... · Kabul: canlıda şu görünür / şu komut şunu verir`
 - Kaan'ın kalıcı talepleri için haftada en az: **1 portföy görevi** (`agent/plan/backlog-portfolio.md`)
@@ -38,9 +45,13 @@ Ders çıkar ve bu haftanın görev tanımına uygula.
 
 ## 5. Blog konu kuyruğu
 `agent/plan/content-queue.md`: önümüzdeki 7-10 gün için 5-8 bekleyen konu (Pzt-Cum günde 1 yazı
-yayınlanır). Önce takvim olayları (olaydan 1-3 gün önce yayınlanacak sırayla), sonra talep radarı
-(brief §9b) + GSC fırsatları, sonra bahis kümeleri. Kaynak sorgunun gerçekten talep gördüğünü
-(GSC gösterim/rakip) kontrol et.
+yayınlanır). **Her konunun hedef sorgusu §9c'de hacim ≥ 5 olmalı** (çapa "mevduat faizi" = 100);
+satıra hacmi yaz. Listede yoksa önce ölç: `/root/.venvs/parafomo/bin/python scripts/learn/opportunity_finder.py`
+(önbellekli; yeni sorguyu `HEAD_TERMS`'e ekleyerek ya da tek seferlik pytrends ile). Takvim olayı
+yazısı ancak ailesinin hacmi varsa (örn. "faiz kararı" ~160 → TCMB PPK evet; ABD JOLTS/PCE/ISM ≈0 → hayır,
+bunlar takvim sayfasında bir satır yeter). Sıra: §9c'den yüksek skorlu yeni yazı → hacimli takvim olayı
+(olaydan 1-3 gün önce) → bahis kümeleri. Mevcut sayfanın konusunu yeni yazıyla bölme (yamyamlaşma) —
+sayfa varsa görev "güçlendir" olur, kuyruk satırı değil.
 
 ## 6. Dersleri yeniden yaz
 `agent/memory/learnings.md`: **≤40 madde, tekrar yok**, en güçlü kanıt önce, her maddede kanıt

@@ -40,6 +40,8 @@ __pycache__/
 data/learning/*.jsonl
 data/learning/winners.json
 data/learning/web-queries.json
+data/learning/opportunities.json
+data/learning/trends-cache.json
 
 # Büyüme Ajanı geçici durum/log (versiyonlanmaz)
 agent/state/

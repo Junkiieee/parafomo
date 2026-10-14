@@ -112,6 +112,8 @@ Yalnız `agent/allowed-tools.txt`'deki kalıplar çalışır. Şunlar HER ZAMAN 
   `dollar-returns.py`, `bist-returns.py`, `fetch-economic-calendar.py`, `altin-fiyat.py`, `dxy.py`,
   `us-tahvil.py`, `tufe-update.py`, `yeniden-degerleme-update.py` (Yİ-ÜFE + YD oranı),
   `scripts/learn/demand_miner.py` (Autocomplete talep boşlukları → brief §9b),
+  `/root/.venvs/parafomo/bin/python scripts/learn/opportunity_finder.py` (Trends hacmi × niyet × mevcut sıra →
+  `data/learning/opportunities.json` → brief §9c; "mevduat faizi" = 100; konu seçiminin ana kaynağı),
   `og-images.py` (canlı rakamlı OG kartları — yeni veri sayfası açarsan CARDS'a ekle + sayfaya `image="/og/<slug>.png"`)
 - Sayfa kalıbı: `src/pages/<sayfa>.astro` ← `data/<veri>.json` (örn. altin-getiri.astro ← gold-returns.py).
   Yeni veri betiği eklersen `scripts/daily-content.sh` veri adımlarına (veya halka-arz-update.sh'a) bağla.

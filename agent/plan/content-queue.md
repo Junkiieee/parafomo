@@ -5,6 +5,11 @@
 <3 kalınca doldurur). Satır biçimi: başlık önerisi · hedef sorgu · neden şimdi · iç-link hedefi.
 Sıra = planlanan yayın günü (haftalık koşu 2026-10-08): 08 → 09 → 12 → 13 → 14 → 15 → 16 → 19 Ekim.
 
+**KURAL (2026-10-14):** her konunun hedef sorgusu brief §9c'de (data/learning/opportunities.json) **hacim ≥ 5**
+olmalı ("mevduat faizi" = 100) ve satırda `(hacim N)` yazmalı. Ölçülmemiş satır yazılmadan önce ölçülür;
+hacim < 5 ise satır iptal edilir. Aşağıdaki bekleyen 3 konu (bitcoin mi altın mı / mevduat mı altın mı /
+stopaj) henüz ÖLÇÜLMEDİ → 10-15 haftalık koşu ölçüp karar verir. TCMB PPK: "faiz kararı" ailesi 160 → geçerli.
+
 ## Kuyruk
 - [ ] **Bitcoin mi altın mı? TL bazında 1, 3 ve 5 yıllık getiri ve en büyük düşüşler** · hedef: "bitcoin mi
   altın mı", "bitcoin mi altın mı daha mantıklı" · neden: B261006-2 (T3 /bitcoin-getiri ile; 10-14); karar niyeti

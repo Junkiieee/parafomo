@@ -29,6 +29,12 @@ _v1'in 59 deneyi + 2 aylık KPI'ından damıtıldı (2026-10-06); son yeniden ya
   güçlendir. Yöntem Temmuz 2026 resmi oranlarıyla doğrulandı (SSK %17,75, memur %13,51).
 
 ## Kanıtlı çalışmayan (tekrar deneme)
+- **Hacmi ölçülmemiş konuya yazı (2026-10-14 Trends ölçümü):** son yazıların hedef sorgularının çoğu Trends'te
+  ≈0 ("jolts ne demek", "abd faiz artarsa dolar ne olur" ailesi, "dolar mı altın mı daha mantıklı", "bono
+  hesaplama" 1). Site ayda ~7K gösterim alıyor; hepsinde 1. olsak bile günde ~60 ziyaretçi. Talep olan yer:
+  konut kredisi hesaplama 170, kira artış oranı 318, halka arz takvimi 68 (biz sıra 67), kıdem tazminatı
+  hesaplama 86 ("mevduat faizi" = 100). Araç sayfalarımız ana sorgularında HİÇ gösterim almıyor. Kural:
+  konu = brief §9c, hacim ≥ 5; ABD makro (JOLTS/PCE/ISM) için yazı açma, takvim satırı yeter.
 - **Mevcut sayfayı on-page dürtmek** (iç-link, sinonim, FAQ, tazelik, cannibalization düzeltmesi, exact-match
   yeni yazı) 5-7 günde pozisyon oynatmadı — 6+ teyit (NFP, Fed, endeks fonu, Fed-sinonim, Jackson Hole,
   abd-faiz-dolar). Darboğaz dış otorite / arama niyeti.
