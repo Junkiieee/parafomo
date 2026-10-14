@@ -1,16 +1,17 @@
 ---
-title: "TÜİK Ekim 2026 Enflasyon Verisi: Beklentiler, Senaryo Analizi ve TCMB'ye Etkisi"
-description: "TÜİK Ekim 2026 TÜFE verisi 5 Ekim'de açıklanıyor. Piyasa beklentileri, üç senaryo analizi ve TCMB 22 Ekim faiz kararına nasıl yansıyacağını öğrenin."
+title: "Eylül 2026 Enflasyonu Açıklandı: Yıllık %29,73, Aylık %1,84 — TCMB'ye Etkisi"
+description: "TÜİK 5 Ekim 2026'da Eylül enflasyonunu açıkladı: yıllık %29,73, aylık %1,84 — beklentinin altında. Senaryolar, TCMB 22 Ekim kararına etkisi ve sıradaki veri."
 pubDate: 2026-09-25
+updatedDate: 2026-10-14
 category: "Ekonomi"
 tags: ["tüik enflasyon", "tüfe verisi", "ekim 2026", "tcmb faiz kararı", "enflasyon beklentisi", "türkiye ekonomisi"]
 readingTime: 7
 featured: false
 faq:
-  - q: "TÜİK Ekim 2026 enflasyon verisi ne zaman açıklanacak?"
-    a: "TÜİK, Ekim 2026 TÜFE (Tüketici Fiyat Endeksi) verisini 5 Ekim 2026 Pazartesi günü saat 10:00'da açıklayacak."
-  - q: "Ekim 2026 enflasyon verisi TCMB faiz kararını nasıl etkiler?"
-    a: "TCMB'nin 22 Ekim'deki PPK toplantısı öncesindeki son kritik veri bu olacak. Enflasyon beklentilerin altında kalırsa faiz indirim baskısı artar; beklentilerin üzerinde çıkarsa TCMB temkinli duruşunu korur."
+  - q: "Eylül 2026 enflasyonu kaç oldu?"
+    a: "TÜİK 5 Ekim 2026 Pazartesi saat 10:00'da açıkladı: TÜFE Eylül'de aylık %1,84, yıllık %29,73 arttı (Ağustos'ta yıllık %31,51). Aylık rakam AA Finans anketindeki %2,18 beklentinin altında kaldı. Sıradaki veri (Ekim 2026 TÜFE) 3 Kasım 2026'da açıklanacak."
+  - q: "Eylül enflasyonu TCMB faiz kararını nasıl etkiler?"
+    a: "TCMB'nin 22 Ekim'deki PPK toplantısı öncesindeki son kritik veri buydu. Enflasyon beklentilerin altında kaldı (aylık %1,84 vs ~%2,2 beklenti); bu, senaryo analizindeki 'sürpriz düşüş' tarafına yakın bir sonuç ve faiz indirimi tartışmasını destekler. Kararı TCMB verecek; bu bir yatırım tavsiyesi değildir."
   - q: "Enflasyon yükselirse altın ve dolar ne olur?"
     a: "Beklenmedik bir enflasyon yükselişi TL'ye baskı yapabilir ve dolar kurunu yukarı iter. Altın ise hem enflasyon koruması hem de TL değer kaybı nedeniyle yukarı yönlü baskı görebilir."
   - q: "Ekim 2026'da hangi ürünlerin fiyatı en çok artıyor?"
@@ -36,7 +37,11 @@ shorts_visuals:
   - "concept|Turkish lira investment portfolio money"
 ---
 
-5 Ekim 2026'da TÜİK, Eylül ayına ait TÜFE rakamlarını açıklayacak — ve bu rakam, Türkiye ekonomisinin önündeki en kritik iki soruya kapı açıyor: Dezenflasyon yolunda mıyız, yoksa enflasyon yeniden ivme kazanıyor mu? Ve bunun TCMB'nin 22 Ekim faiz toplantısında ne anlamı var?
+> **Veri açıklandı (5 Ekim 2026):** TÜİK'e göre TÜFE Eylül 2026'da **aylık %1,84**, **yıllık %29,73** arttı; yıllık enflasyon Ağustos'taki %31,51'den %30'un altına indi. Aylık rakam AA Finans anketi ortalaması %2,18 ve Bloomberg HT medyanı %2,2'nin **altında** kaldı (aşağıdaki Senaryo A'ya yakın). Yİ-ÜFE yıllık %27,38. ([TÜİK](https://data.tuik.gov.tr/Kategori/GetKategori?p=enflasyon-ve-fiyat-106) · [TCMB tüketici fiyatları](https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Enflasyon+Verileri/Tuketici+Fiyatlari))
+>
+> **Sıradaki:** [TCMB 22 Ekim faiz kararı önizlemesi](/blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler/) · Ekim TÜFE 3 Kasım'da — tarihler [enflasyon takviminde](/enflasyon-takvimi/). Aşağıdaki metin veri öncesi yazılan önizlemedir.
+
+5 Ekim 2026'da TÜİK, Eylül ayına ait TÜFE rakamlarını açıkladı — ve bu rakam, Türkiye ekonomisinin önündeki en kritik iki soruya kapı açıyor: Dezenflasyon yolunda mıyız, yoksa enflasyon yeniden ivme kazanıyor mu? Ve bunun TCMB'nin 22 Ekim faiz toplantısında ne anlamı var?
 
 Eğer yatırım yapıyorsanız, mevduatınızı değerlendirmeyi planlıyorsanız ya da sadece satın alma gücünüzün ne olacağını merak ediyorsanız, bu verinin ne anlama geldiğini önceden anlamak size avantaj sağlar.
 
