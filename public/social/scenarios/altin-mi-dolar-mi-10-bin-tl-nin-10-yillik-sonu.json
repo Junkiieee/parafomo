@@ -1,0 +1,59 @@
+{
+  "slug": "altin-mi-dolar-mi-10-bin-tl-nin-10-yillik-sonu",
+  "title": "Altın mı dolar mı: 10 bin TL'nin 10 yıllık sonu",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "TL'de beklemek ters çalışan yürüyen merdivende durmak gibi. 10 bin TL'nin 10 yılda dolar ve altında nereye vardığına yaklaşık rakamlarla bakıyoruz.",
+  "tags": [
+    "altın",
+    "dolar",
+    "enflasyon",
+    "birikim",
+    "yatırım",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Yerinde durmak aslında geriye gitmektir.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold coins stack"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ters çalışan yürüyen merdiven düşün: TL'de bekleyen paran her gün bir basamak iniyor.",
+      "visual": {
+        "type": "object",
+        "query": "escalator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama fark şu: 10 yıl önce 10 bin lirayı dolara çevirsen, bugün yaklaşık 160 bin.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Aynı parayı altına koysaydın yaklaşık 550 bin olurdu. Geçmiş garanti değil, ama beklemenin bedeli belli.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki rakam cüzdanına daha da yakın. Kaçırmamak için abone ol, her gün tek net analiz kısa ve sade geliyor.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold coins stack"
+      }
+    }
+  ]
+}
