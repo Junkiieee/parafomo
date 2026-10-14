@@ -15,6 +15,23 @@ faq:
     a: "Bu kişisel bir karardır. Veriler, arza katılmanın otomatik kazanç olmadığını; şirketin değerlemesi, fon kullanım yeri ve satmama taahhütleri incelenmeden katılmanın kayıp riski taşıdığını gösteriyor. Eşit dağıtımda düşen lot az olduğu için tutar bazında risk de kazanç da sınırlı kalır."
   - q: "Halka arz hisseleri neden fiyatının altına düşüyor?"
     a: "Yaygın nedenler arasında yüksek belirlenen arz fiyatı, ilk günlerdeki kâr satışları, genel piyasa düşüşü ve beklentiyi karşılamayan bilançolar sayılabilir. 2026'da BIST 100'ün yıl başından beri %-11,5 gerilemesi de yeni hisseler üzerinde baskı yaratan etkenlerden biri olarak görülebilir."
+shorts:
+  - "12 halka arzın ortalaması: eksi yüzde 26,4!"
+  - "Temmuz ile Eylül arasında borsaya giren on iki halka arz, ortalamada parasının dörtte birini kaybettirdi."
+  - "Medyan getiri eksi yüzde 42; yani tipik bir arz, yatırımcısına yarıya yakın kaybettirmiş durumda."
+  - "On iki arzdan sadece üçü arz fiyatının üzerinde, en iyisi CITAS yaklaşık yüzde 33 kazandırdı."
+  - "Peki halka arza girmeden önce nelere bakmalı? Abone ol, çünkü her hafta gerçek verileri paylaşıyoruz. Detaylar parafomo.com'da."
+shorts_broll:
+  - "stock market chart falling"
+  - "Istanbul stock exchange"
+  - "investor looking at phone"
+  - "financial graph red"
+shorts_visuals:
+  - "place|Borsa İstanbul"
+  - "object|calculator"
+  - "concept|loss"
+  - "object|smartphone banking app"
+  - "place|Borsa İstanbul"
 ---
 
 **Halka arz kazandırır mı?** Sosyal medyada "her halka arz tavan yapar" algısı yaygın, ama 2026 verisi farklı bir tablo çiziyor. Temmuz-Eylül 2026'da Borsa İstanbul'da işlem görmeye başlayan **12 halka arzın bugünkü ortalama getirisi %-26,4**; yani arz fiyatından alıp bugüne kadar tutan yatırımcı, ortalamada parasının dörtte birini kaybetmiş durumda. Sadece 3 şirket arz fiyatının üzerinde.
