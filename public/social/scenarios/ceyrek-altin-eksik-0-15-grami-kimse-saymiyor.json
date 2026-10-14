@@ -1,0 +1,64 @@
+{
+  "slug": "ceyrek-altin-eksik-0-15-grami-kimse-saymiyor",
+  "title": "Çeyrek altın: eksik 0,15 gramı kimse saymıyor",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Çeyrek altın 1,75 gram çeker ama 22 ayardır, saf altın miktarı yaklaşık 1,6 gramdır. Gram altınla kıyaslarken bu fark hesaba katılmalı.\nKaynak/hesap: 1,75 gram x 0,916 (22 ayar) = yaklaşık 1,6 gram; 1,75 - 1,6 = yaklaşık 0,15 gram fark; 10 çeyrekte yaklaşık 1,5 gram · senaryodaki hesap (çeyrek altın 1,75 gram, 22 ayar standardı)",
+  "tags": [
+    "çeyrek altın",
+    "gram altın",
+    "22 ayar",
+    "altın hesabı",
+    "ParaFOMO",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Çeyreğin içinde yaklaşık 1,6 gram altın var.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold coins"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çeyrek 1,75 gram çekiyor ama 22 ayar. 1,75 çarpı 0,916 eder yaklaşık 1,6 gram saf altın.",
+      "visual": {
+        "type": "object",
+        "query": "jewelry scale weighing gold"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama çeyreği 1,75 gram sanıp gramla kıyaslarsan, her çeyrekte yaklaşık 0,15 gramı yanlış sayarsın.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "On çeyrekte fark yaklaşık 1,5 gram. Kıyaslarken hep saf gram hesabı yap, aynı ölçüyle bak.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins stack"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki hesap cüzdanını daha çok şaşırtacak. Abone ol, her gün 60 saniyede tek net rakam göstereyim.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold coins"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "yaklaşık 1,6 gram",
+    "calc": "1,75 gram x 0,916 (22 ayar) = yaklaşık 1,6 gram; 1,75 - 1,6 = yaklaşık 0,15 gram fark; 10 çeyrekte yaklaşık 1,5 gram",
+    "source": "senaryodaki hesap (çeyrek altın 1,75 gram, 22 ayar standardı)"
+  }
+}

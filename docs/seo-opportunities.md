@@ -1,6 +1,6 @@
 # ParaFOMO — GSC Fırsat Sorguları (içerik motoru için)
 
-> Üretim: 2026-10-13 · Dönem: son 28 gün · Kaynak: `scripts/seo-opportunities.py`
+> Üretim: 2026-10-14 · Dönem: son 28 gün · Kaynak: `scripts/seo-opportunities.py`
 > Kullanım: günlük içerik motoru, takvimde acil olay yoksa buradaki **en üstteki** fırsatı
 > konu seçer (Yayınlananlar'da zaten varsa atla). Liste boşsa keywords.md backlog'una düşer.
 
@@ -16,5 +16,5 @@
 - [ ] `amerika da faiz artarsa dolar ne olur` — gösterim 9, sıra 25.3, tıklama 0
 - [ ] `ekim ayı enflasyon beklentisi 2026` — gösterim 8, sıra 12.1, tıklama 0
 - [ ] `abd faizi yukseltirse dolar ne olur` — gösterim 8, sıra 19.1, tıklama 0
+- [ ] `dövize yatırım` — gösterim 8, sıra 20.2, tıklama 0
 - [ ] `abd faiz artırırsa ne olur` — gösterim 8, sıra 20.9, tıklama 0
-- [ ] `ekim 2026 enflasyon beklentisi` — gösterim 7, sıra 7.6, tıklama 0

@@ -1,0 +1,70 @@
+{
+  "title": "Çeyrek altın: eksik 0,15 gramı kimse saymıyor #Shorts",
+  "description": "Çeyrek altın 1,75 gram çeker ama 22 ayardır, saf altın miktarı yaklaşık 1,6 gramdır. Gram altınla kıyaslarken bu fark hesaba katılmalı.\nKaynak/hesap: 1,75 gram x 0,916 (22 ayar) = yaklaşık 1,6 gram; 1,75 - 1,6 = yaklaşık 0,15 gram fark; 10 çeyrekte yaklaşık 1,5 gram · senaryodaki hesap (çeyrek altın 1,75 gram, 22 ayar standardı)\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #çeyrek altın #gram altın #22 ayar #altın hesabı #ParaFOMO",
+  "tags": [
+    "çeyrek altın",
+    "gram altın",
+    "22 ayar",
+    "altın hesabı",
+    "ParaFOMO",
+    "yatırım",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-ceyrek-altin-eksik-0-15-grami-kimse-saymiyor-m.mp4",
+  "slug": "ceyrek-altin-eksik-0-15-grami-kimse-saymiyor-m",
+  "format": "shock_number",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.81,
+      "spoken": "Çeyreğin içinde yaklaşık 1,6 gram altın var.",
+      "visual": "manim: Altın"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.81,
+      "end": 13.95,
+      "spoken": "Çeyrek 1,75 gram çekiyor ama 22 ayar. 1,75 çarpı 0,916 eder yaklaşık 1,6 gram saf altın.",
+      "visual": "manim: Altın"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 13.95,
+      "end": 22.32,
+      "spoken": "Ama çeyreği 1,75 gram sanıp gramla kıyaslarsan, her çeyrekte yaklaşık 0,15 gramı yanlış sayarsın.",
+      "visual": "manim: Altın"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 22.32,
+      "end": 29.85,
+      "spoken": "On çeyrekte fark yaklaşık 1,5 gram. Kıyaslarken hep saf gram hesabı yap, aynı ölçüyle bak.",
+      "visual": "manim: Altın"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 29.85,
+      "end": 36.58,
+      "spoken": "Sıradaki hesap cüzdanını daha çok şaşırtacak. Abone ol, her gün 60 saniyede tek net rakam göstereyim.",
+      "visual": "manim: ParaFOMO"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-13T16:02:39+00:00",
+    "slug": "ceyrek-altin-eksik-0-15-grami-kimse-saymiyor-m",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "rHpD8Spgrso",
+  "youtube_url": "https://youtube.com/shorts/rHpD8Spgrso",
+  "ig_reel_id": "17944671894359181",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DecMf7LGvav/",
+  "ig_seed_comment_id": "17872853031638783"
+}
