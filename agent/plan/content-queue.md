@@ -6,11 +6,6 @@
 Sıra = planlanan yayın günü (haftalık koşu 2026-10-08): 08 → 09 → 12 → 13 → 14 → 15 → 16 → 19 Ekim.
 
 ## Kuyruk
-- [ ] **Halka arza katılmak kazandırıyor mu? 2026 halka arzlarının ilk gün, 1 ay ve bugünkü getirisi** · hedef:
-  "halka arz kazandırır mı", "halka arza katılmak mantıklı mı", "2026 halka arz getirileri" · neden: B261006-1
-  kümesine veri-temelli karar yazısı; `data/halka-arz-getiri.json`'daki GERÇEK rakamlarla (2026 ort. getiri,
-  en iyi/en kötü 3 arz, kişi başı lot örneği); 10-13 · iç-link: /halka-arz-getiri, /halka-arz, en az 5
-  `/halka-arz/<slug>` şirket sayfası, /blog/halka-arza-nasil-katilinir-esit-dagitim-lot-hesabi
 - [ ] **Bitcoin mi altın mı? TL bazında 1, 3 ve 5 yıllık getiri ve en büyük düşüşler** · hedef: "bitcoin mi
   altın mı", "bitcoin mi altın mı daha mantıklı" · neden: B261006-2 (T3 /bitcoin-getiri ile; 10-14); karar niyeti
   · iç-link: /bitcoin-getiri (yayındaysa), /altin-getiri, /blog/bitcoin-nedir-nasil-alinir
@@ -37,6 +32,11 @@ Sıra = planlanan yayın günü (haftalık koşu 2026-10-08): 08 → 09 → 12 �
   /blog/abd-faiz-artarsa-altin-ne-olur.
 
 ## Yazılanlar
+- [x] **Halka arza katılmak kazandırıyor mu? 2026 halka arzlarının ilk gün, 1 ay ve bugünkü getirisi** · hedef:
+  "halka arz kazandırır mı", "halka arza katılmak mantıklı mı", "2026 halka arz getirileri" · neden: B261006-1
+  kümesine veri-temelli karar yazısı; `data/halka-arz-getiri.json`'daki GERÇEK rakamlarla (2026 ort. getiri,
+  en iyi/en kötü 3 arz, kişi başı lot örneği); 10-13 · iç-link: /halka-arz-getiri, /halka-arz, en az 5
+  `/halka-arz/<slug>` şirket sayfası, /blog/halka-arza-nasil-katilinir-esit-dagitim-lot-hesabi → /blog/halka-arz-kazandirir-mi-2026-halka-arz-getirileri (2026-10-14)
 - [x] **2027'de neler zamlanacak? Yeniden değerleme oranı rehberi: MTV, harçlar, cezalar, vergi dilimleri** ·
   hedef: "2027 zamları", "yeniden değerleme oranı 2027", "2027de neler zamlanacak" · neden: RC 10-10'da
   /yeniden-degerleme-orani + /mtv-hesaplama canlıya alındı (Eylül Yİ-ÜFE ile tahmin %27,8) — bu yazı kümenin

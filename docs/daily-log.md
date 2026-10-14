@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-10-14 — Halka Arz Kazandırır mı? 2026 Halka Arzlarının Getirisi
+
+**Yayınlanan yazı:** [Halka Arz Kazandırır mı? 2026 Halka Arzlarının Getirisi](/blog/halka-arz-kazandirir-mi-2026-halka-arz-getirileri)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — halka arz kümesi B261006-1)
+
+---
+
 ## 2026-10-13 — 2027'de Neler Zamlanacak? Yeniden Değerleme Oranı Rehberi
 
 **Yayınlanan yazı:** [2027'de Neler Zamlanacak? Yeniden Değerleme Oranı Rehberi](/blog/2027-zamlari-yeniden-degerleme-orani-rehberi)

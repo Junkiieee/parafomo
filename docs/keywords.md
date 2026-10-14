@@ -92,6 +92,7 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] ALBTN Nedir? Albayrak Hazır Beton Hisse Senedi Rehberi — `Borsa` — hedef: "albayrak hazır beton" / "albtn"
 
 ## Yayınlananlar (otomasyon buraya ekler)
+- [x] Halka Arz Kazandırır mı? 2026 Halka Arzlarının Getirisi — `halka-arz-kazandirir-mi-2026-halka-arz-getirileri` (ajan kuyruğu: B261006-1 halka arz kümesi karar yazısı; hedef "halka arz kazandırır mı" + "halka arza katılmak mantıklı mı" + "2026 halka arz getirileri"; data/halka-arz-getiri.json gerçek verisi: 12 arz ort. %-26,4, medyan %-42, 3/12 artıda; 12 şirket tablosu + 20 lot portföy hesabı + kontrol listesi; /halka-arz-getiri + /halka-arz + 12 şirket sayfası + /bist-getiri; 14 Ekim 2026)
 - [x] 2027'de Neler Zamlanacak? Yeniden Değerleme Oranı Rehberi — `2027-zamlari-yeniden-degerleme-orani-rehberi` (ajan kuyruğu: "2027 zamları" / "yeniden değerleme oranı 2027"; /yeniden-degerleme-orani + /mtv-hesaplama kümesinin blog girişi; 13 Ekim 2026)
 - [x] ABD Enflasyon Verisi Ekim 2026: CPI Fed'i Yine Zorlar mı? — `abd-ekim-2026-cpi-verisi-fed-dolar-altin` (ajan kuyruğu: 14 Ekim 2026 🔴 ABD CPI/Core CPI (Eylül dönemi); hedef "abd enflasyon verisi ekim 2026" + "cpi verisi ne zaman"; Fed Eylül artışı (%3,75-4,00) sonrası ilk CPI → 28 Ekim FOMC; data/dxy+us-tahvil+altin-fiyat gerçek verisiyle piyasa fotoğrafı + 3 senaryo tablosu; /ekonomik-takvim + /fed-faiz-takvimi + /altin-getiri + /abd-tahvil-faizi + /dolar-endeksi; 12 Ekim 2026)
 
