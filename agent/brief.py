@@ -586,6 +586,8 @@ def main():
             lambda: out(health.render(health.collect())))
     section("4) Bu haftanın planı (agent/plan/week.md)", lambda: cat(os.path.join(PLAN, "week.md"),
                                                                        empty="(plan yok — haftalık koşu oluşturmalı)"))
+    section("4b) GÖREV MASASI — Kaan'ın kararları, notları, istekleri (dashboard.parafomo.com — ÖNCE BUNU UYGULA)",
+            lambda: out(__import__("board").render_brief()))
     section("5) Bahisler (agent/bets.py)", lambda: out(__import__("bets").render(__import__("bets").load(),
                                                                                 show_all=MODE == "weekly")))
     section("5b) Bahis metrikleri (otomatik — GSC, gecikmeli)", sec_bet_metrics)

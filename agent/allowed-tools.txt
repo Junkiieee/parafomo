@@ -12,14 +12,8 @@ Grep
 WebSearch
 WebFetch
 
-# Görev Masası (Claude Docs) — Kaan'ın onay/red kararları burada; ToolSearch araçları yükler
-ToolSearch
-mcp__claude_ai_Claude_Docs__guide
-mcp__claude_ai_Claude_Docs__read
-mcp__claude_ai_Claude_Docs__query
-mcp__claude_ai_Claude_Docs__update
-mcp__claude_ai_Claude_Docs__batch
-mcp__claude_ai_Claude_Docs__create
+# Görev Masası artık dashboard.parafomo.com → `python3 agent/board.py` (yukarıdaki python3 * kapsar).
+# Claude Docs araçları 2026-10-15'te kaldırıldı: headless setup-token claude.ai bağlayıcılarını taşımıyordu.
 
 # git (yardımcılar: bash scripts/lib/... üzerinden değil, doğrudan git; push için git_push_retry tercih)
 Bash(git *)

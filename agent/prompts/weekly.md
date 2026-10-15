@@ -76,10 +76,9 @@ de göz önünde tut (günde kaç şablon video, ne kadar özgün).
 ## 9. Yaz, commit'le
 `agent/plan/week.md`'yi aşağıdaki biçimde baştan yaz; bets/learnings/content-queue/user-tasks ile
 birlikte commit'le (`ajan: hafta planı YYYY-MM-DD`). Zaman ve bütçe kalırsa kuyruğun ilk görevini de yap.
-Ardından **Görev Masası'nı yeni haftaya çevir** (core.md'deki protokol): baştaki özet cümlesini yeni KPI'larla ve
-as-of tarihini bugünle güncelle; "Ajanın kuyruğu" tablosunu yeni week.md görevleriyle baştan yaz (Karar = Onay
-bekliyor, Notun boş; geçen haftadan devreden görevin Karar/Notun'unu koru); "Bu hafta biten"i bu haftanın
-bitenleriyle değiştir; "Senden beklenenler"i user-tasks.md ile eşitle (Kaan'ın Durum seçimlerini koru).
+Görev Masası (dashboard.parafomo.com) yeni week.md'yi ve user-tasks.md'yi kendisi okur — ayrıca yazacağın bir pano
+yok. Tek kural: Kaan'ın kararı görevin **ID + kalın başlığına** bağlıdır; geçen haftadan devreden görevin ID'sini ve
+`**başlığını**` aynen koru, yoksa onay/notu kaybolur. Reddedilen görevi yeni plana taşıma.
 
 ## week.md biçimi
 ```

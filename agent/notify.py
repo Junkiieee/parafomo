@@ -2,8 +2,8 @@
 """
 ParaFOMO Ajanı v2 — E-POSTA (rapor + uyarı). Telegram'a rapor GİTMEZ.
 
-  report [--dry] [--force]   → günün raporu: KPI satırı + ajanın yazdığı bölüm + üretim
-                               sağlığı + bugünün yayın takvimi + kullanıcı görevleri.
+  report [--dry] [--force]   → günün KISA raporu: KPI satırı + ajan özeti + görev/üretim sayıları
+                               + panel linki (dashboard.parafomo.com — tam rapor, görevler, takvim orada).
                                Ajan bu gece çalışamadıysa konu satırı bunu söyler ve ajan
                                bölümü yerine NEDENİ yazılır (eski sistem dünkü raporu yeni
                                tarihle tekrar gönderiyordu — artık rapor dosyası koşudan
@@ -95,6 +95,16 @@ def read(path, default=""):
         return default
 
 
+DASHBOARD = "https://dashboard.parafomo.com"
+
+
+def summary(rep, limit=700):
+    """Raporun başlıktan sonraki ilk paragrafı (ajan oraya özeti yazar) — e-postada yalnız bu gider."""
+    paras = [p.strip() for p in rep.split("\n\n") if p.strip() and not p.lstrip().startswith("#")]
+    text = " ".join((paras[0] if paras else "").split())
+    return text if len(text) <= limit else text[:limit].rsplit(" ", 1)[0] + "…"
+
+
 def kpi_line():
     try:
         k = json.load(open(os.path.join(STATE, "kpi.json"), encoding="utf-8"))
@@ -108,7 +118,6 @@ def kpi_line():
 
 def cmd_report(a):
     import health
-    import pubplan
     st = {}
     try:
         st = json.load(open(os.path.join(STATE, "run-status.json"), encoding="utf-8"))
@@ -138,29 +147,31 @@ def cmd_report(a):
         subject = f"⚠️ ParaFOMO — ajan bu gece çalışamadı ({outcome}) — {today}"
     if probs:
         subject += f" · {len(probs)} sorun"
+    # Kısa özet + panel linki (2026-10-15, Kaan): tam rapor, görevler, takvim ve sağlık tablosu panelde.
     parts = [kpi_line(), ""]
     if rep:
-        parts += [rep, ""]
+        parts += [summary(rep), ""]
     else:
         why = st.get("message") or "bilinmiyor"
-        parts += [f"## Ajan bu gece rapor yazmadı",
-                  f"- Sonuç: **{outcome}** — {why[:400]}",
-                  "- Üretim hatları (videolar, kartlar, veri) ajandan bağımsız çalışmaya devam eder.", ""]
+        parts += [f"Ajan bu gece rapor yazmadı — sonuç: {outcome} — {why[:300]}",
+                  "Üretim hatları (videolar, kartlar, veri) ajandan bağımsız çalışmaya devam eder.", ""]
         if outcome == "auth":
-            parts += ["**Yapman gereken:** sunucuda `claude setup-token` → token'ı "
+            parts += ["Yapman gereken: sunucuda `claude setup-token` → token'ı "
                       "`/root/.config/parafomo/claude.env` içine `CLAUDE_CODE_OAUTH_TOKEN=...` olarak yaz "
                       "(ya da hızlıca `claude` → /login).", ""]
-    parts += ["## Üretim sağlığı", health.render(h), ""]
-    parts += ["## Bugün ne zaman ne çıkıyor", pubplan.render(today), ""]
-    tasks = read(os.path.join(AG, "plan", "user-tasks.md"))
-    if tasks:
-        parts += ["## Senden istenenler", tasks, ""]
-    if st.get("denied"):
-        parts += ["## İzin listesi dışında kalan komutlar (ajan denedi, sistem reddetti)",
-                  "_Gerekliyse agent/allowed-tools.txt'e eklenebilir:_"]
-        parts += [f"- `{c}`" for c in st["denied"][:8]] + [""]
-    parts += [f"— ajan: {st.get('mode', '?')} · {st.get('model', '?')} · maliyet ${st.get('cost', '?')} "
-              f"(API-eşdeğeri) · {st.get('minutes', '?')} dk · {st.get('turns', '?')} tur"]
+    try:
+        import board
+        c = board.counts()
+        parts.append(f"🧑 Senden bekleyen: {c['user_todo']} iş"
+                     + (f" ({c['user_done_unverified']} 'yaptım' doğrulanacak)" if c["user_done_unverified"] else "")
+                     + f" · 🤖 Kuyruk: {c['agent_open']} açık görev"
+                     + (f" · 📨 {c['inbox_new']} isteğin henüz alınmadı" if c["inbox_new"] else ""))
+    except Exception as ex:
+        parts.append(f"(görev sayıları okunamadı: {type(ex).__name__})")
+    parts.append("⚙️ Üretim: " + ("sorunsuz" if not probs else f"{len(probs)} sorun — " + "; ".join(probs[:4])))
+    parts += ["", f"👉 Panel: {DASHBOARD}", "",
+              f"— ajan: {st.get('mode', '?')} · {st.get('model', '?')} · ${st.get('cost', '?')} (API-eşdeğeri) · "
+              f"{st.get('minutes', '?')} dk · {st.get('turns', '?')} tur"]
     if send(subject, "\n".join(parts), a.dry) and not a.dry:
         mark(key)
 

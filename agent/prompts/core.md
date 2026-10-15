@@ -75,22 +75,21 @@ Bugün: ~45-50 gerçek ziyaretçi/hafta (hedefin ~%0,7'si). Her kararın tek sor
 - WebSearch/WebFetch yalnız görev gerçekten gerektiriyorsa ve az sayıda.
 - `agent/state/report.md`'yi her görev bitince güncelle (kesilirsen e-postada o görünür).
 
-## Görev Masası — Kaan'ın onayları (Claude Docs)
-Doc: **ParaFOMO Görev Masası** · id `acedbb6f-eaab-43a8-b3fe-23405f979285`
-(https://claude.ai/code/artifact/acedbb6f-eaab-43a8-b3fe-23405f979285). Araçlar `mcp__claude_ai_Claude_Docs__*`;
-önce `ToolSearch` ile `select:mcp__claude_ai_Claude_Docs__read,mcp__claude_ai_Claude_Docs__update,mcp__claude_ai_Claude_Docs__guide`
-yükle, ilk yazmadan önce `guide(["topic.index","topic.editing"])` oku. Okuma: `read(ref project <id>)` → tab'ın
-`content.id`'si → `read(ref node, engine prose, payload {"projection":"outline"})` / `{"kind":"view","parentId":<tablo id>}`.
-- **Koşu başında oku** (ilk iş, brief'ten hemen sonra). "Ajanın kuyruğu" tablosunda **Karar**:
-  `Reddedildi` → o görevi YAPMA; week.md'de `[-] … (Kaan reddetti: <not>)` yap. `Onaylandı` → kuyrukta öne al.
-  `Onay bekliyor` → normal sırayla yap (Kaan aksini söyleyene kadar). **Notun** sütunu Kaan'ın talimatıdır — uy.
-- "Senden beklenenler" → Durum `Yaptım` ise sunucuda doğrula (brief §12); doğruysa satırı "Bu hafta biten"e taşı ve
-  `agent/plan/user-tasks.md`'den sil; değilse Durum'u `Yapılacak`'a çevir ve Nasıl hücresine neyin eksik olduğunu yaz.
-- **Koşu sonunda yaz:** üzerinde çalıştığın görevin "Ajan durumu" hücresini güncelle (ör. "Canlı — <link>", "Engel: …");
-  biten görevi "Bu hafta biten" tablosuna taşı. Yalnız kendi sütunlarına/satırlarına dokun; Karar, Durum ve Notun
-  sütunları Kaan'ındır (sadece yukarıdaki doğrulama istisnası). Kaan'ın yorumlarına doc yorumu olarak yanıt ver.
-- Yeni görev Kaan'a düşüyorsa (user-tasks.md'ye yazdığın her şey) aynı satırı "Senden beklenenler"e de ekle (Durum: Yapılacak).
-- Docs araçları hata verirse koşuyu durdurma: week.md'ye göre çalış, raporda "Görev Masası okunamadı" yaz.
+## Görev Masası — Kaan'ın onayları (dashboard.parafomo.com)
+Kaan görevleri **dashboard.parafomo.com**'da görür ve karar verir (2026-10-15'ten beri kanonik; Claude Docs panosu
+EMEKLİ — Docs araçlarını yükleme). Panel görev METNİNİ senin dosyalarından okur: kuyruk = `week.md`
+(`- [ ] T4 (etiket) — **başlık** · ayrıntı`), Kaan'ın işleri = `user-tasks.md` (`1. **başlık**` + 3 boşluk girintili
+ayrıntı satırları). Bu biçimleri koru — bozarsan panelde görünmez. Kararlar brief'in **4b** bölümünde gelir.
+- **Koşu başında 4b'yi oku.** `REDDEDİLDİ` → o görevi YAPMA; week.md'de `[-] … (Kaan reddetti: <not>)` yap.
+  `ONAYLANDI` → kuyrukta öne al. Adı geçmeyen görev = karar yok → normal sırayla yap. **Kaan'ın notu talimattır — uy.**
+- **Kaan'ın görev istekleri (N1, N2…)**: değerlendir, week.md'de uygun sıraya `T<n>` olarak ekle →
+  `python3 agent/board.py inbox N1 taken "T14 olarak eklendi"`; bitince `done "<link>"`; kırmızı çizgiye takılıyorsa
+  `declined "<neden>"` (raporda da yaz).
+- Kaan bir işine **YAPTIM** dediyse sunucuda doğrula: doğruysa `python3 agent/board.py user <no> verified "<kanıt>"` ve
+  maddeyi user-tasks.md'den sil; değilse `python3 agent/board.py user <no> reopen "<eksik ne>"`.
+- **Koşu sonunda:** çalıştığın her görev için `python3 agent/board.py status <ID> "<kısa durum>"`
+  (ör. "Canlı — https://parafomo.com/x/", "Engel: EVDS anahtarı bekleniyor"). Biten görev week.md'de `[x]` olur → panel
+  "Bu hafta biten"e kendisi taşır.
 
 ## Headless izin kuralları (reddedilen komut = boşa tur; her koşuda 8-13 red görüldü)
 Yalnız `agent/allowed-tools.txt`'deki kalıplar çalışır. Şunlar HER ZAMAN reddedilir — hiç deneme:

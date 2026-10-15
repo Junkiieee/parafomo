@@ -149,8 +149,14 @@ def build(day, show_all=False):
                 label, bg = "Büyüme ajanı (gece koşusu)", True
             elif "maintenance.sh" in cmd:
                 label, bg = "Bakım (disk/log temizliği)", True
+            elif "portfolio-alerts.py" in cmd:
+                label, bg = "Portföy fiyat alarmı kontrolü (15 dk'da bir)", True
+            elif "portfolio-snapshot.py" in cmd:
+                label, bg = "Portföy gece değer fotoğrafı", True
             else:
-                label, bg = os.path.basename(cmd.split()[0]), True
+                # yorumlayıcı değil, çalışan betiğin adı (eskiden "python" yazıyordu)
+                script = next((w for w in cmd.split() if w.endswith((".py", ".sh"))), cmd.split()[0])
+                label, bg = os.path.basename(script), True
             if bg and not show_all:
                 continue
             rows.append((h, m, label))
@@ -169,8 +175,11 @@ def render(day=None, show_all=False):
         grouped.setdefault(label, []).append((h, m))
     out = ["| UTC | TR | Ne çıkıyor |", "|---|---|---|"]
     for label, times in sorted(grouped.items(), key=lambda kv: kv[1][0]):
-        utc = ", ".join(f"{h:02d}:{m:02d}" for h, m in times)
-        tr = ", ".join(f"{(h + 3) % 24:02d}:{m:02d}" for h, m in times)
+        if len(times) > 8:   # */15 gibi sık işler tabloyu yüzlerce saatle şişirmesin
+            utc = tr = f"gün boyu, {len(times)} kez"
+        else:
+            utc = ", ".join(f"{h:02d}:{m:02d}" for h, m in times)
+            tr = ", ".join(f"{(h + 3) % 24:02d}:{m:02d}" for h, m in times)
         out.append(f"| {utc} | {tr} | {label} |")
     return "\n".join(out)
 

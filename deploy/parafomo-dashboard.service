@@ -1,0 +1,12 @@
+[Unit]
+Description=ParaFOMO Panel (dashboard.parafomo.com) — görev masası + metrik + ajan + üretim
+After=network.target
+
+[Service]
+WorkingDirectory=/root/parafomo
+ExecStart=/root/.venvs/parafomo-api/bin/uvicorn server:app --app-dir /root/parafomo/dashboard --host 127.0.0.1 --port 8792 --workers 1 --no-access-log
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

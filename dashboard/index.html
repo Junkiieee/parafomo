@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ParaFOMO Panel</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B3B36">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<header class="band">
+  <div class="band-in">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor" opacity=".14"/><path d="M8 22 L14 15 L18 18 L24 10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>
+        <div class="brand-name">ParaFOMO Panel</div>
+        <div class="brand-sub" id="stamp">yükleniyor…</div>
+      </div>
+    </div>
+    <div class="band-actions">
+      <button class="icon-btn" id="refresh" title="Yenile" aria-label="Yenile"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="icon-btn" id="theme" title="Tema" aria-label="Temayı değiştir"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></button>
+    </div>
+  </div>
+  <div class="band-in pulse" id="pulse"></div>
+  <nav class="tabs" id="tabs" role="tablist">
+    <button role="tab" data-tab="gorevler" aria-selected="true">Görevler <span class="badge" id="b-gorevler"></span></button>
+    <button role="tab" data-tab="metrik">Metrikler</button>
+    <button role="tab" data-tab="ajan">Ajan</button>
+    <button role="tab" data-tab="uretim">Üretim <span class="badge" id="b-uretim"></span></button>
+  </nav>
+</header>
+<main id="main">
+  <section id="v-gorevler" class="view"></section>
+  <section id="v-metrik" class="view" hidden></section>
+  <section id="v-ajan" class="view" hidden></section>
+  <section id="v-uretim" class="view" hidden></section>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="/app.js"></script>
+</body>
+</html>
