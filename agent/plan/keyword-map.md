@@ -6,6 +6,11 @@ günlük koşu `week.md` kuyruğu bittiğinde buradaki ilk `- [ ]` satırını g
 Bitince satırı `- [x] … → canlı URL · tarih` yap. Yeni araç = Footer TOOL_LINKS + `/hesaplama-araclari/`
 listesi + FAQPage + ilgili 2 sayfadan metin içi link. Resmî rakamı doğrulayamazsan YAZMA.
 
+**ÖNCELİK (Kaan, 2026-10-15): önce alabileceğimiz kadar ORGANİK TIK.** Sıra = kazanılabilirlik:
+uzun kuyruk, mevsimsel ve gelecek yıl (2027) açılı, rakibi zayıf araç/veri sorguları önce; anlık fiyat ve dev baş
+terimler (dolar kuru, gümüş fiyatları — Google kendi kutusunda cevaplar, büyük siteler kilitli) EN SONA.
+Otorite/dış link işleri şimdilik YAPILMAZ (Kaan: "kalsın"). Fırsat listesinde OTORITE çıkan kelimeye yeni sayfa açma.
+
 ## Yapıldı
 - [x] altın kaç gram (1100) → /altin-kac-gram/ (HMB resmî tablo) · 2026-10-15
 - [x] gram altın (4914), çeyrek altın (2310), cumhuriyet altını (454), 22 ayar bilezik (421), ons altın (426),
@@ -30,10 +35,6 @@ listesi + FAQPage + ilgili 2 sayfadan metin içi link. Resmî rakamı doğrulaya
 - [ ] K5 enflasyon oranı (36) + enflasyon hesaplama (21) → **/enflasyon-hesaplama/** — iki tarih arası TÜFE
   değişimi ile "paranın alım gücü" hesaplayıcı; veri: `scripts/tufe-update.py`'nin TÜİK serisi (veri dosyasını
   genişlet, endeks yoksa önce veri betiği). Güncel yıllık/aylık enflasyon kutusu.
-- [ ] K6 dolar kuru (381) + euro kuru (223) + döviz hesaplama (15) → **/doviz-kurlari/** + çevirici — Truncgil
-  (altin-fiyat.py ile aynı kaynak) döviz kalemleri; günlük güncelleme altin-daily'ye bağlanır. Fiyat niyeti → tık
-  az; uzun-kuyruk ("100 dolar kaç TL") tablo satırlarıyla gir.
-- [ ] K7 gümüş fiyatları (212) → **/gumus-fiyatlari/** — gram gümüş/ons gümüş; /gumus-getiri ile link. Kaynak K6 ile aynı.
 - [ ] K8 gelir vergisi hesaplama (50) → **/gelir-vergisi-hesaplama/** — /vergi-dilimi-hesaplama'nın dilim mantığını
   yeniden kullan (ücret dışı gelir: kira, serbest meslek); 2027 dilimleri YD oranıyla tahmin (tahmin de).
 - [ ] K9 ihbar tazminatı (20) + yıllık izin hesaplama (13) → **/ihbar-tazminati-hesaplama/**, **/yillik-izin-hesaplama/**
@@ -54,6 +55,11 @@ listesi + FAQPage + ilgili 2 sayfadan metin içi link. Resmî rakamı doğrulaya
 - [ ] K17 brüt asgari ücret (82) + asgari ücret 2027 net (28) → /asgari-ucret-hesaplama'ya "2027" bölümü — RESMÎ
   karar açıklanınca (Aralık) aynı gün; önceden yalnız senaryo tablosu.
 - [x] K18 mevduat faiz oranları (57) + kredi faiz oranları (55) → /mevduat-faizi-hesaplama/#guncel-oranlar + kredi sayfaları (TCMB EVDS haftalık, otomatik) · 2026-10-15
+- ⤵ SONA ALINDI (10-15, anlık fiyat / dev baş terim — tık getirmesi zor):
+- [ ] K6 dolar kuru (381) + euro kuru (223) + döviz hesaplama (15) → **/doviz-kurlari/** + çevirici — Truncgil
+  (altin-fiyat.py ile aynı kaynak) döviz kalemleri; günlük güncelleme altin-daily'ye bağlanır. Fiyat niyeti → tık
+  az; uzun-kuyruk ("100 dolar kaç TL") tablo satırlarıyla gir.
+- [ ] K7 gümüş fiyatları (212) → **/gumus-fiyatlari/** — gram gümüş/ons gümüş; /gumus-getiri ile link. Kaynak K6 ile aynı.
 
 ## Yeniden kur / otorite (sayfa var, sıralanmıyor) — week.md T6 sınıflandırmasına göre
 - halka arz takvimi (68, sıra 67) → /halka-arz · mevduat faizi hesaplama (58, sıra 57) · işsizlik maaşı hesaplama
