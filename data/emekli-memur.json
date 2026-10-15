@@ -1,0 +1,42 @@
+{
+ "_aciklama": "Memur/emekli resmî tutarları — /memur-zammi-hesaplama, /en-dusuk-emekli-maasi, /bayram-ikramiyesi ortak kaynağı. Her Ocak/Temmuz yeni dönem eklenir (agent/health.py bekçisi uyarır). Rakam ancak ≥2 bağımsız kaynak aynıysa yazılır.",
+ "donem": "2026-07",
+ "dogrulandi": "2026-10-15",
+ "memurKatsayi": {
+  "donem": "1 Temmuz – 31 Aralık 2026",
+  "aylikKatsayi": 1.575512,
+  "tabanAylikKatsayi": 25.794915,
+  "yanOdemeKatsayi": 0.499649,
+  "zamOrani": 13.52,
+  "kaynak": "HMB 5 Sıra No'lu Mali ve Sosyal Haklar Genelgesi (Temmuz 2026) — Yeni Şafak (A. Ünlü), alomaliye.com, kazimceylan.av.tr aynı katsayılar; zam = katsayı oranı (1,575512 / 1,387871 = 1,1352)"
+ },
+ "enDusukMemurEmeklisi": {
+  "tutar": 31527,
+  "onceki": 27772,
+  "baslangic": "2026-07",
+  "kaynak": "Habertürk (Temmuz 2026 zamlı maaşlar), Politikam — 27.772 × 1,1352 = 31.527"
+ },
+ "enDusukEmekliAyligi": {
+  "tutar": 23552,
+  "onceki": 20000,
+  "baslangic": "2026-07",
+  "kaynak": "TBMM'de kabul edilen 'Bazı Kanun ve KHK'lerde Değişiklik' kanunu md. 18, Resmî Gazete Temmuz 2026 (Euronews 24.07.2026, Sözcü); 2026 Temmuz ödeme döneminden itibaren; SSK (4/a) ve Bağ-Kur (4/b)"
+ },
+ "bayramIkramiyesi": {
+  "tutar": 4000,
+  "yil": 2026,
+  "oncekiTutar": 3000,
+  "artisYili": 2025,
+  "kaynak": "Hesapkurdu (2026 Ramazan ve Kurban 4.000 ₺, 2025'te 3.000 → 4.000), Bigpara/Sabah (Kurban 2026 4.000 ₺); dul-yetim hisse oranında (Uzmanpara)"
+ },
+ "bayramlar2027": {
+  "ramazan": { "arefe": "2027-03-08", "baslangic": "2027-03-09", "bitis": "2027-03-11" },
+  "kurban": { "arefe": "2027-05-15", "baslangic": "2027-05-16", "bitis": "2027-05-19" },
+  "kaynak": "Diyanet 2027 dini günler takvimi (Dünya, CNN Türk, Evrensel 24.08.2026 aktarımları)"
+ },
+ "odemeGunleri": {
+  "ssk": [[9, 17], [7, 18], [5, 19], [3, 20], [1, 21], [8, 22], [6, 23], [4, 24], [2, 25], [0, 26]],
+  "bagkur": [[[9, 7, 5], 25], [[3, 1], 26], [[8, 6, 4], 27], [[2, 0], 28]],
+  "kaynak": "SGK takvimi (tahsis numarasının son hanesi) — Temmuz ve Mayıs 2026 haberleri aynı eşleşme"
+ }
+}

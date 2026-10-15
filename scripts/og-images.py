@@ -92,6 +92,35 @@ def emekli_card():
             "sub": f"kesinleşen {n}/6 ay · SSK, Bağ-Kur ve memur hesabı"}
 
 
+def memur_card():
+    # src/data/zam2027.ts ile AYNI mantık: TS 2026-H2 %7, 2027-H1 %5; kalan aylar = son 3 ay ortalaması
+    t = load("tufe-aylik.json")
+    by = {m["ay"]: m["aylik"] for m in t["months"]}
+    keys = ["2026-07", "2026-08", "2026-09", "2026-10", "2026-11", "2026-12"]
+    known = [k for k in keys if k in by]
+    cum = 1.0
+    for k in known:
+        cum *= 1 + by[k] / 100
+    assume = round(sum(m["aylik"] for m in t["months"][:3]) / 3, 2)
+    cum6 = cum * (1 + assume / 100) ** (len(keys) - len(known)) - 1
+    zam = (1 + max(0.0, (1 + cum6) / 1.07 - 1)) * 1.05 - 1
+    kesin = len(known) == len(keys)
+    return {"kicker": "OCAK 2027 MEMUR ZAMMI", "stat": ("%" if kesin else "≈%") + tr_pct(zam * 100, 1),
+            "sub": "toplu sözleşme %5 + enflasyon farkı · maaşını hesapla"}
+
+
+def emekli_memur_card(kind):
+    def fn():
+        d = load("emekli-memur.json")
+        if kind == "taban":
+            return {"kicker": "EN DÜŞÜK EMEKLİ MAAŞI", "stat": "₺" + f"{d['enDusukEmekliAyligi']['tutar']:,}".replace(",", "."),
+                    "sub": "SSK · Bağ-Kur · Ocak 2027 senaryosu ve ödeme günleri"}
+        b = d["bayramIkramiyesi"]
+        return {"kicker": f"BAYRAM İKRAMİYESİ {b['yil']}", "stat": "₺" + f"{b['tutar']:,}".replace(",", "."),
+                "sub": "2027 Ramazan ve Kurban tarihleri · hisseye göre tutar"}
+    return fn
+
+
 def kira_card():
     d = load("kira-artis-2026.json")
     return {"kicker": "KİRA ARTIŞ ORANI", "stat": f"%{tr_pct(d['guncelOran'], 2)}",
@@ -155,6 +184,9 @@ CARDS = {
     "mevduat-faizi-hesaplama": faiz_card(
         "mevduat", "ay3", "MEVDUAT FAİZ ORANI", "basit", "3 aya kadar · TCMB ortalaması · net getiri hesapla"),
     "emekli-zammi-hesaplama": emekli_card,
+    "memur-zammi-hesaplama": memur_card,
+    "en-dusuk-emekli-maasi": emekli_memur_card("taban"),
+    "bayram-ikramiyesi": emekli_memur_card("bayram"),
     "kira-artis-orani-hesaplama": kira_card,
     "enflasyon-takvimi": enflasyon_card,
     "halka-arz": halka_arz_card,

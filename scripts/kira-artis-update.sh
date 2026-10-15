@@ -17,7 +17,7 @@ python3 "$REPO/scripts/tufe-update.py"
 # Aynı gün Yİ-ÜFE + yeniden değerleme oranı tahmini (/yeniden-degerleme-orani, /mtv-hesaplama)
 python3 "$REPO/scripts/yeniden-degerleme-update.py"
 # Aylık kartların OG görselleri (stat değiştiyse yazılır)
-python3 "$REPO/scripts/og-images.py" --only kira-artis-orani-hesaplama,enflasyon-takvimi,emekli-zammi-hesaplama,yeniden-degerleme-orani,mtv-hesaplama || true
+python3 "$REPO/scripts/og-images.py" --only kira-artis-orani-hesaplama,enflasyon-takvimi,emekli-zammi-hesaplama,memur-zammi-hesaplama,yeniden-degerleme-orani,mtv-hesaplama || true
 if [ -z "$(git status --porcelain data/kira-artis-2026.json data/tufe-aylik.json data/yeniden-degerleme.json public/og)" ]; then
   exit 0
 fi

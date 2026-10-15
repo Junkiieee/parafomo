@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import em from '../../data/emekli-memur.json';
+
+const B = em.bayramIkramiyesi;
+const BY = em.bayramlar2027;
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const GUN = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
+const tr = (iso: string, withDay = false) => {
+  const d = new Date(iso + 'T12:00:00Z');
+  return `${d.getUTCDate()} ${AYLAR[d.getUTCMonth()]} ${d.getUTCFullYear()}${withDay ? ' ' + GUN[d.getUTCDay()] : ''}`;
+};
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const HISSE = [100, 75, 50, 25];
+
+// Sıradaki bayram (build günü itibarıyla) — gün sayacı JS'te canlı güncellenir
+const bayramlar = [
+  { ad: 'Ramazan Bayramı', ...BY.ramazan },
+  { ad: 'Kurban Bayramı', ...BY.kurban },
+];
+
+const faq = [
+  {
+    q: '2026 emekli bayram ikramiyesi ne kadar?',
+    a: `${B.yil} yılında hem Ramazan hem Kurban Bayramı'nda emekli bayram ikramiyesi ${fmt(B.tutar)} ₺ olarak ödendi. Tutar ${B.artisYili}'te ${fmt(B.oncekiTutar)} ₺'den ${fmt(B.tutar)} ₺'ye çıkarılmıştı; ${B.yil}'da değişmedi.`,
+  },
+  {
+    q: '2027 bayram ikramiyesi ne kadar olacak?',
+    a: `2027 tutarı henüz açıklanmadı. Tutar kanunla belirlenir; değişiklik yapılmazsa ${fmt(B.tutar)} ₺ olarak ödenmeye devam eder. Yeni tutar açıklandığında bu sayfa güncellenir.`,
+  },
+  {
+    q: '2027 Ramazan ve Kurban Bayramı ne zaman?',
+    a: `Diyanet takvimine göre 2027 Ramazan Bayramı ${tr(BY.ramazan.baslangic, true)} – ${tr(BY.ramazan.bitis, true)} (arefe ${tr(BY.ramazan.arefe)}), Kurban Bayramı ${tr(BY.kurban.baslangic, true)} – ${tr(BY.kurban.bitis, true)} (arefe ${tr(BY.kurban.arefe)}) tarihleri arasında.`,
+  },
+  {
+    q: 'Bayram ikramiyesi ne zaman yatar?',
+    a: 'İkramiye bayramdan önce, genellikle aylıklarla birlikte ya da bayram öncesindeki günlerde SGK tarafından hesaplara yatırılır. Ödeme takvimini SGK ve Çalışma Bakanlığı her bayram öncesi açıklar; kesin günü e-Devlet’te “SGK Günlük Ödeme Sorgulama” ekranından görebilirsiniz.',
+  },
+  {
+    q: 'Dul ve yetim aylığı alanlar ne kadar ikramiye alır?',
+    a: `Ölüm aylığı alanlar ikramiyeyi hisseleri oranında alır: %75 hisseyle ${fmt(B.tutar * 0.75)} ₺, %50 hisseyle ${fmt(B.tutar * 0.5)} ₺, %25 hisseyle ${fmt(B.tutar * 0.25)} ₺.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'En Düşük Emekli Maaşı', url: '/en-dusuk-emekli-maasi/' },
+  { name: 'Bayram İkramiyesi', url: '/bayram-ikramiyesi/' },
+];
+---
+
+<BaseLayout
+  title={`Emekli Bayram İkramiyesi 2026-2027: ${fmt(B.tutar)} TL | 2027 Bayram Tarihleri`}
+  description={`Emekli bayram ikramiyesi ${B.yil}'da ${fmt(B.tutar)} ₺. 2027 Ramazan Bayramı ${tr(BY.ramazan.baslangic)}, Kurban Bayramı ${tr(BY.kurban.baslangic)}'da başlıyor. Dul-yetim hisse oranına göre ikramiye hesaplama ve ödeme bilgisi.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+  image="/og/bayram-ikramiyesi.png"
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Emekli · Bayram İkramiyesi</p>
+      <h1>Emekli Bayram İkramiyesi 2026–2027</h1>
+      <p class="lede">
+        Emekli bayram ikramiyesi {B.yil}'da her bayram için <strong>{fmt(B.tutar)} ₺</strong>. 2027 tutarı henüz
+        açıklanmadı; değişiklik olmazsa aynı tutar ödenir.
+      </p>
+    </header>
+
+    <div class="stats">
+      <div class="stat"><span class="k">{B.yil} bayram ikramiyesi</span><span class="v">₺{fmt(B.tutar)}</span><span class="s">Ramazan ve Kurban · {B.artisYili}'te ₺{fmt(B.oncekiTutar)}'den çıkarıldı</span></div>
+      {bayramlar.map((b) => (
+        <div class="stat"><span class="k">2027 {b.ad}</span><span class="v small">{tr(b.baslangic)}</span><span class="s">bitiş {tr(b.bitis, true)} · <span class="cd" data-date={b.baslangic}></span></span></div>
+      ))}
+    </div>
+
+    <section class="table-block">
+      <h2>Hisse oranına göre bayram ikramiyesi</h2>
+      <div class="calc-grid">
+        <form class="calc-inputs" autocomplete="off">
+          <label>
+            <span>Aylık türü / hisse oranı</span>
+            <select id="in-share">
+              {HISSE.map((h) => <option value={h}>{h === 100 ? 'Emekli (tam aylık)' : `Dul / yetim — %${h} hisse`}</option>)}
+            </select>
+          </label>
+        </form>
+        <div class="calc-results" aria-live="polite">
+          <div class="result-main">
+            <span class="result-label">Bayram başına ikramiye</span>
+            <span class="result-value" id="out-bonus">₺{fmt(B.tutar)}</span>
+          </div>
+          <p class="result-note">Yılda iki bayram: toplam <strong id="out-year">₺{fmt(B.tutar * 2)}</strong></p>
+        </div>
+      </div>
+      <table class="rate-table">
+        <thead><tr><th>Hisse oranı</th><th>Bayram başına</th><th>Yıllık (2 bayram)</th></tr></thead>
+        <tbody>{HISSE.map((h) => <tr><td>%{h}</td><td>₺{fmt(B.tutar * h / 100)}</td><td>₺{fmt(B.tutar * h / 50)}</td></tr>)}</tbody>
+      </table>
+    </section>
+
+    <section class="table-block">
+      <h2>2027 bayram tarihleri</h2>
+      <table class="rate-table">
+        <thead><tr><th>Bayram</th><th>Arefe</th><th>Başlangıç</th><th>Bitiş</th></tr></thead>
+        <tbody>
+          {bayramlar.map((b) => <tr><td>{b.ad}</td><td>{tr(b.arefe, true)}</td><td>{tr(b.baslangic, true)}</td><td>{tr(b.bitis, true)}</td></tr>)}
+        </tbody>
+      </table>
+      <p class="table-note">Kaynak: Diyanet İşleri Başkanlığı 2027 dini günler takvimi. İkramiye bayramdan önceki günlerde ödenir.</p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Kimler bayram ikramiyesi alır?</h2>
+      <p>
+        SGK'dan aylık alan SSK (4/a), Bağ-Kur (4/b) ve Emekli Sandığı (4/c) emeklileri her Ramazan ve Kurban
+        Bayramı öncesinde ikramiye alır. Ölüm aylığı alan dul ve yetimler ikramiyeyi hisseleri oranında alır.
+        İkramiye aylık tutarından bağımsızdır: en düşük aylığı alan emekli de yüksek aylıklı emekli de aynı tutarı alır.
+      </p>
+      <p class="cta-line">
+        Güncel taban aylık ve ödeme günleri → <a href="/en-dusuk-emekli-maasi/">en düşük emekli maaşı</a>.
+        Ocak 2027 zam tahmini → <a href="/emekli-zammi-hesaplama/">emekli zammı hesaplama</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ TUTAR: B.tutar }}>
+    (function () {
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const sel = document.getElementById('in-share');
+      const upd = () => {
+        const v = TUTAR * (+sel.value) / 100;
+        document.getElementById('out-bonus').textContent = '₺' + nf0.format(v);
+        document.getElementById('out-year').textContent = '₺' + nf0.format(v * 2);
+      };
+      sel.addEventListener('input', upd);
+      // bayrama kalan gün (Türkiye saatiyle)
+      document.querySelectorAll('.cd').forEach((el) => {
+        const days = Math.ceil((new Date(el.dataset.date + 'T00:00:00+03:00') - Date.now()) / 86400000);
+        el.textContent = days > 0 ? days + ' gün kaldı' : days === 0 ? 'bugün' : 'geçti';
+      });
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+    .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; }
+    .stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; display: flex; flex-direction: column; gap: 0.2rem; box-shadow: var(--shadow-soft); }
+    .stat .k { font-size: 0.8rem; color: var(--text-soft); font-weight: 600; }
+    .stat .v { font-family: var(--font-serif); font-size: 1.9rem; font-weight: 600; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .stat .v.small { font-size: 1.45rem; }
+    .stat .s { font-size: 0.78rem; color: var(--text-muted); }
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); margin-bottom: 1rem; }
+    .calc-inputs { display: flex; flex-direction: column; justify-content: center; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs select { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 0.6rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; display: block; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-note { font-size: 0.85rem; color: var(--brand-ink); margin: 0; }
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; line-height: 1.5; }
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+    @media (max-width: 680px) { .stats, .calc-grid { grid-template-columns: 1fr; } .rate-table { font-size: 0.85rem; } }
+  </style>
+</BaseLayout>
