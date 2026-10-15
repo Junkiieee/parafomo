@@ -1,0 +1,381 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+
+// Varsayılan senaryo — JS kapalıyken bile sayfa dolu görünsün (SEO + no-JS).
+// Faiz ÖRNEKTİR, güncel piyasa ortalaması değildir (TCMB EVDS bağlanınca otomatik olacak).
+const D = { value: 4000000, down: 1000000, rate: 2.5, months: 120 };
+const LOAN = D.value - D.down;
+
+// Anüite (eşit taksit) formülü: taksit = P·r / (1 − (1+r)^−n)
+function annuity(P: number, ratePct: number, n: number) {
+  const r = ratePct / 100;
+  const pay = r === 0 ? P / n : (P * r) / (1 - Math.pow(1 + r, -n));
+  const total = pay * n;
+  return { pay, total, interest: total - P };
+}
+const base = annuity(LOAN, D.rate, D.months);
+
+const fmt = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const pct = (n: number) => n.toString().replace('.', ',');
+
+// "X milyon TL konut kredisi taksiti" tablosu — build-time (JS faiz değişince yeniler).
+const AMOUNTS = [1000000, 2000000, 3000000, 5000000];
+const TERMS = [60, 120];
+const grid = AMOUNTS.map((a) => ({ a, cells: TERMS.map((m) => annuity(a, D.rate, m).pay) }));
+const two120 = annuity(2000000, D.rate, 120);
+
+const faq = [
+  {
+    q: 'Konut kredisi taksiti nasıl hesaplanır?',
+    a: `Konut kredileri eşit taksitli (anüite) yöntemle ödenir: Taksit = Kredi tutarı × aylık faiz ÷ (1 − (1 + aylık faiz)⁻ⁿ). Örneğin ${fmt(LOAN)} ₺ krediyi aylık %${pct(D.rate)} faizle ${D.months} ay vadede çekerseniz aylık taksit yaklaşık ${fmt(base.pay)} ₺, toplam geri ödeme ${fmt(base.total)} ₺ olur. Konut kredisinde KKDF ve BSMV alınmadığı için bu hesap bankanın taksitine oldukça yakındır.`,
+  },
+  {
+    q: 'Konut kredisinde KKDF ve BSMV var mı?',
+    a: 'Hayır. İhtiyaç ve taşıt kredilerinde faizin üzerine %15 KKDF ve %15 BSMV eklenir; konut kredilerinde bu iki vergi alınmaz. Bu yüzden aynı faiz oranında konut kredisinin efektif maliyeti ihtiyaç kredisinden belirgin biçimde düşüktür.',
+  },
+  {
+    q: 'Konut kredisiyle evin yüzde kaçı finanse edilebilir?',
+    a: 'Azami oranı BDDK belirler. 29 Ocak 2026 tarihli 11364 sayılı Kurul Kararı ile oran konutun ekspertiz değerine ve enerji sınıfına bağlandı; birinci el / ikinci el ayrımı kaldırıldı. 5 milyon TL ve altındaki, enerji sınıfı yüksek konutlarda değerin %90’ına kadar kredi kullanılabiliyor; konut değeri yükseldikçe azami oran düşüyor. Tüketicinin, eşinin veya 18 yaş altı çocuğunun üzerine kayıtlı konut varsa oranlar düşürülerek uygulanıyor. Kendi konutunuz için geçerli oranı bankanızdan teyit edin.',
+  },
+  {
+    q: '2 milyon TL konut kredisinin taksiti ne kadar?',
+    a: `Aylık %${pct(D.rate)} örnek faizle 2.000.000 ₺ konut kredisinin 120 ay vadede aylık taksiti yaklaşık ${fmt(two120.pay)} ₺, toplam geri ödeme ${fmt(two120.total)} ₺ olur. Bankanızın ilan ettiği güncel aylık faizi hesaplayıcıya girerseniz tablo kendiliğinden güncellenir.`,
+  },
+  {
+    q: 'Konut kredisini erken kapatırsam ceza öder miyim?',
+    a: 'Değişken faizli konut kredilerinde erken ödeme tazminatı alınamaz. Sabit faizli konut kredilerinde banka, kalan vade 36 ay veya daha kısaysa erken ödenen tutarın en fazla %1’ini, 36 aydan uzunsa en fazla %2’sini erken ödeme tazminatı olarak isteyebilir (6502 sayılı Tüketicinin Korunması Hakkında Kanun). Kalan faizden kurtulduğunuz için erken kapama çoğu zaman toplam maliyeti düşürür.',
+  },
+  {
+    q: 'Konut kredisi çekerken başka hangi masraflar çıkar?',
+    a: 'Krediye bağlı başlıca kalemler: ekspertiz (değerleme) ücreti, tapuda ipotek tesis masrafı, zorunlu deprem sigortası (DASK), banka istiyorsa konut ve hayat sigortası. Evin alımında ayrıca tapu harcı ödenir: alıcı ve satıcı için ayrı ayrı satış bedelinin binde 20’si (toplam %4). Tutarlar bankaya ve konuta göre değiştiği için teklifteki yıllık maliyet oranına bakın.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Kredi Hesaplama', url: '/kredi-hesaplama/' },
+  { name: 'Konut Kredisi Hesaplama', url: '/konut-kredisi-hesaplama/' },
+];
+---
+
+<BaseLayout
+  title="Konut Kredisi Hesaplama 2026 | Taksit, Peşinat ve Toplam Faiz"
+  description={`Konut kredisi hesaplama: ev fiyatı, peşinat, aylık faiz ve vadeyi girin; aylık taksit, toplam geri ödeme ve ödeme planını görün. 1-5 milyon TL için 60/120 ay taksit tablosu, BDDK kredi/değer oranı ve masraflar.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+  image="/og/konut-kredisi-hesaplama.png"
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Konut Kredisi</p>
+      <h1>Konut Kredisi Hesaplama</h1>
+      <p class="lede">
+        Ev fiyatını, peşinatı, aylık faizi ve vadeyi girin; <strong>aylık taksitinizi, toplam geri
+        ödemeyi ve toplam faizi</strong> anında görün. Konut kredisinde KKDF ve BSMV yoktur;
+        sonuç bankanın taksitine yakındır.
+      </p>
+    </header>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Konut fiyatı (₺)</span>
+          <input type="number" id="in-value" value={D.value} min="0" step="50000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Peşinat (₺)</span>
+          <input type="number" id="in-down" value={D.down} min="0" step="50000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Aylık faiz oranı (%)</span>
+          <input type="number" id="in-rate" value={D.rate} min="0" max="10" step="0.01" inputmode="decimal" />
+        </label>
+        <label>
+          <span>Vade (ay)</span>
+          <input type="number" id="in-months" value={D.months} min="1" max="360" step="1" inputmode="numeric" />
+        </label>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Aylık taksit</span>
+          <span class="result-value" id="out-pay">₺{fmt(base.pay)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Kredi tutarı</span>
+            <span class="split-val" id="out-loan">₺{fmt(LOAN)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Kredi / konut değeri</span>
+            <span class="split-val" id="out-ltv">%{Math.round((LOAN / D.value) * 100)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Toplam geri ödeme</span>
+            <span class="split-val" id="out-total">₺{fmt(base.total)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Toplam faiz</span>
+            <span class="split-val" id="out-interest">₺{fmt(base.interest)}</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note">Varsayılan aylık %{pct(D.rate)} bir örnektir, güncel piyasa ortalaması değildir — bankanızın ilan ettiği aylık faizi girin.</p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır, kredi teklifi veya finansal tavsiye değildir.
+      Gerçek taksit; bankanın akdi faizine, sigorta ve masraflara göre değişir. Kesin ödeme
+      planı için bankanızın resmi teklifini esas alın.
+    </p>
+
+    <section class="table-block">
+      <h2>1, 2, 3 ve 5 milyon TL konut kredisi taksiti</h2>
+      <p class="table-intro">
+        Aylık <strong id="grid-rate">%{pct(D.rate)}</strong> faizle 60 ve 120 ay vadede aylık taksit
+        (yukarıdaki faiz değişince tablo da güncellenir):
+      </p>
+      <table class="rate-table" id="grid-table">
+        <thead><tr><th>Kredi tutarı</th>{TERMS.map((m) => <th>{m} ay taksit</th>)}</tr></thead>
+        <tbody>
+          {grid.map((r) => (
+            <tr>
+              <td>₺{fmt(r.a)}</td>
+              {r.cells.map((c) => <td>₺{fmt(c)}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    <section class="table-block">
+      <h2>Taksitime göre ne kadar konut kredisi çekebilirim?</h2>
+      <p class="table-intro">Ödeyebileceğiniz aylık taksiti girin; aynı faiz ve vadeyle çekebileceğiniz azami kredi:</p>
+      <div class="reverse">
+        <label>
+          <span>Aylık ödeyebileceğim taksit (₺)</span>
+          <input type="number" id="in-afford" value="50000" min="0" step="1000" inputmode="numeric" />
+        </label>
+        <p class="reverse-out">Çekilebilecek kredi: <strong id="out-afford">—</strong></p>
+      </div>
+      <p class="table-note">Bankalar onayda gelirinizi ve mevcut borçlarınızı da değerlendirir; bu hesap yalnız faiz matematiğidir.</p>
+    </section>
+
+    <section class="table-block">
+      <h2>Ödeme planı (amortisman tablosu)</h2>
+      <p class="table-intro">Konut kredisinde ilk yıllarda taksitin büyük kısmı faizdir; borç azaldıkça anapara payı artar:</p>
+      <div class="schedule-scroll">
+        <table class="rate-table" id="schedule-table">
+          <thead><tr><th>Ay</th><th>Taksit</th><th>Anapara</th><th>Faiz</th><th>Kalan borç</th></tr></thead>
+          <tbody id="schedule-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="prose-block">
+      <h2>Konut kredisinde KKDF ve BSMV yok</h2>
+      <p>
+        İhtiyaç ve taşıt kredilerinde faizin üzerine <strong>%15 KKDF</strong> ve <strong>%15 BSMV</strong>
+        eklenir. <strong>Konut kredilerinde bu iki vergi alınmaz.</strong> Bu yüzden konut kredisinde
+        ilan edilen aylık faizle yapılan hesap, bankanın gösterdiği taksite oldukça yakındır. Farkı
+        genelde sigorta primleri ve dosya/ekspertiz masrafları yaratır.
+      </p>
+      <h2>Evin yüzde kaçına kredi çekilebilir? (BDDK kredi/değer oranı)</h2>
+      <p>
+        BDDK’nın <strong>29 Ocak 2026 tarihli 11364 sayılı Kurul Kararı</strong> ile azami kredi/değer
+        oranı konutun <strong>ekspertiz değerine ve enerji sınıfına</strong> bağlandı, birinci el /
+        ikinci el ayrımı kaldırıldı. 5 milyon TL ve altındaki, enerji sınıfı yüksek konutlarda değerin
+        %90’ına kadar kredi kullanılabiliyor; değer yükseldikçe oran kademeli olarak düşüyor. Tüketicinin,
+        eşinin veya 18 yaş altı çocuğunun adına kayıtlı konut varsa oranlar düşürülerek uygulanıyor.
+        Hesaplayıcıdaki “kredi / konut değeri” satırı, peşinatınızın bu sınırlara göre yeterli olup
+        olmadığını kabaca görmenizi sağlar. Kesin oran için:
+        <a href="https://www.bddk.org.tr/Mevzuat/DokumanGetir/1327" rel="nofollow noopener" target="_blank">BDDK karar metni</a>.
+      </p>
+      <h2>Konut kredisi masrafları</h2>
+      <ul>
+        <li><strong>Ekspertiz ücreti:</strong> bankanın konutu değerlendirmesi; kredi tutarını ekspertiz değeri belirler.</li>
+        <li><strong>İpotek tesis masrafı:</strong> tapuda bankanın lehine ipotek kurulması.</li>
+        <li><strong>DASK:</strong> zorunlu deprem sigortası; ayrıca banka konut ve hayat sigortası isteyebilir.</li>
+        <li><strong>Tapu harcı (alım):</strong> alıcı ve satıcı için ayrı ayrı satış bedelinin binde 20’si.</li>
+      </ul>
+      <h2>Vade uzarsa ne olur?</h2>
+      <p>
+        Vadeyi 60 aydan 120 aya çıkarmak taksiti düşürür ama toplam faizi katlar. Yukarıdaki tabloda
+        aynı tutar için iki vadeyi yan yana görebilirsiniz. Yüksek faiz döneminde kısa vade toplam
+        maliyeti ciddi biçimde azaltır. Faizler düştüğünde ise kredi yapılandırma (yeniden finansman)
+        seçeneği gündeme gelir.
+      </p>
+      <p class="cta-line">
+        Kredi faizlerinin yönünü belirleyen kararlar için → <a href="/tcmb-faiz-takvimi/">TCMB faiz takvimi</a>.
+        İhtiyaç veya taşıt kredisi için → <a href="/kredi-hesaplama/">kredi hesaplama</a>.
+        Konutun yanında birikimin ne kazandırdığını görmek için → <a href="/altin-dolar-borsa/">altın, dolar ve borsa getirileri</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const money = (n) => '₺' + nf.format(Math.round(n));
+      const AMOUNTS = [1000000, 2000000, 3000000, 5000000];
+      const TERMS = [60, 120];
+
+      function annuity(P, ratePct, n) {
+        const r = ratePct / 100;
+        const pay = r === 0 ? P / n : (P * r) / (1 - Math.pow(1 + r, -n));
+        const total = pay * n;
+        return { pay, total, interest: total - P };
+      }
+
+      function buildSchedule(P, ratePct, n, pay) {
+        const r = ratePct / 100;
+        const body = $('schedule-body');
+        if (!body) return;
+        let bal = P;
+        const rows = [];
+        const showAll = n <= 18;
+        for (let m = 1; m <= n; m++) {
+          const interest = bal * r;
+          let principal = pay - interest;
+          if (m === n) principal = bal; // son taksitte yuvarlama artığını kapat
+          bal = Math.max(0, bal - principal);
+          const visible = showAll || m <= 6 || m > n - 3;
+          if (visible) {
+            rows.push(
+              `<tr><td>${m}</td><td>${money(pay)}</td><td>${money(principal)}</td><td>${money(interest)}</td><td>${money(bal)}</td></tr>`
+            );
+          } else if (m === 7) {
+            rows.push(`<tr class="ellipsis"><td colspan="5">… ${n - 9} ara taksit …</td></tr>`);
+          }
+        }
+        body.innerHTML = rows.join('');
+      }
+
+      function buildGrid(ratePct) {
+        const tbody = document.querySelector('#grid-table tbody');
+        if (!tbody) return;
+        tbody.innerHTML = AMOUNTS.map((a) =>
+          `<tr><td>${money(a)}</td>${TERMS.map((m) => `<td>${money(annuity(a, ratePct, m).pay)}</td>`).join('')}</tr>`
+        ).join('');
+        $('grid-rate').textContent = '%' + String(ratePct).replace('.', ',');
+      }
+
+      function update() {
+        const V = Math.max(0, +$('in-value').value || 0);
+        const down = Math.min(V, Math.max(0, +$('in-down').value || 0));
+        const P = V - down;
+        const rate = Math.max(0, +$('in-rate').value || 0);
+        const n = Math.max(1, Math.min(360, Math.round(+$('in-months').value || 1)));
+        const a = annuity(P, rate, n);
+        $('out-pay').textContent = money(a.pay);
+        $('out-loan').textContent = money(P);
+        $('out-ltv').textContent = V > 0 ? '%' + Math.round((P / V) * 100) : '—';
+        $('out-total').textContent = money(a.total);
+        $('out-interest').textContent = money(a.interest);
+        buildSchedule(P, rate, n, a.pay);
+        buildGrid(rate);
+        const pay = Math.max(0, +$('in-afford').value || 0);
+        const r = rate / 100;
+        const maxLoan = r === 0 ? pay * n : (pay * (1 - Math.pow(1 + r, -n))) / r;
+        $('out-afford').textContent = money(maxLoan) + ' (' + n + ' ay)';
+      }
+
+      ['in-value', 'in-down', 'in-rate', 'in-months', 'in-afford'].forEach((id) =>
+        $(id).addEventListener('input', update)
+      );
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 2rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 620px; margin: 0 auto; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label, .reverse label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span, .reverse span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input, .reverse input {
+      font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus, .reverse input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 1rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .reverse {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: end;
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem;
+    }
+    .reverse-out { margin: 0; font-size: 1rem; color: var(--text-soft); }
+    .reverse-out strong { display: block; font-size: 1.4rem; color: var(--brand-ink); }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .rate-table tr.ellipsis td { text-align: center; color: var(--text-muted); font-size: 0.82rem; }
+    .schedule-scroll { max-height: 420px; overflow-y: auto; border: 1px solid var(--border); border-radius: var(--radius-sm); }
+    .schedule-scroll table { font-size: 0.88rem; }
+    .schedule-scroll th { position: sticky; top: 0; background: var(--bg-card); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid, .reverse { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>

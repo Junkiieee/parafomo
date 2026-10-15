@@ -134,6 +134,10 @@ CARDS = {
     "pasaport-ehliyet-harci": yd_card(
         "PASAPORT · EHLİYET HARCI {yil}",
         lambda d, k: "2026: 10 yıllık pasaport 14.761 ₺ · harç zammı tahmini"),
+    "konut-kredisi-hesaplama": lambda: {
+        # Statik kart: konut kredisinde KKDF/BSMV yok (faiz verisi EVDS bağlanınca kart rakamlı olabilir)
+        "kicker": "KONUT KREDİSİ HESAPLAMA", "stat": "%0 KKDF",
+        "sub": "taksit, peşinat, 1-5 milyon ₺ taksit tablosu"},
     "emekli-zammi-hesaplama": emekli_card,
     "kira-artis-orani-hesaplama": kira_card,
     "enflasyon-takvimi": enflasyon_card,
