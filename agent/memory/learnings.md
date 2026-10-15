@@ -72,6 +72,9 @@ _v1'in 59 deneyi + 2 aylık KPI'ından damıtıldı (2026-10-06); son yeniden ya
   taşımıyor. Kaan/RC görevi; o zamana kadar week.md kanonik.
 - **Headless izin listesi:** `for`/`until`, `x=$(...)`, `awk`, heredoc, `cd X && …`, repo dışı yol reddedilir.
   Çok adımlı işi `agent/state/*.py` ya da tek `python3 -c` ile yap. Bash'te `$f` gibi değişken genişletme de reddedilir.
+- **Astro derleyici tuzağı (2026-10-15):** frontmatter'da iç içe template literal'den (`${x ? `…` : ''}`) SONRA gelen
+  ASCII apostrof (`2026'da`) frontmatter'ı kapatmayı bozuyor → build "Expected '>' but found 'title'". Türkçe ekleri
+  ’ (U+2019) ile yaz. Tek dosya teşhisi: `node agent/state/astro_check.mjs <dosya>` (gitignore'da; yoksa yeniden yaz).
 - **Trends ölçümü:** `agent/state/measure_topics.py` kalıbı (opportunity_finder önbelleğine yazar); 4'lü
   gruplarda 429 gelebilir → tekrar çalıştır.
 - **Claude kotası:** Max 5x; haftalık kota Çarşamba 22:00 UTC sıfırlanır. daily-content ajanla aynı anda

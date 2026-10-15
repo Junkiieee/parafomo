@@ -28,7 +28,7 @@ YAZMA. Yeni sayfa = Footer "Hesaplayıcılar" linki + `scripts/og-images.py` CAR
 FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan metin içi link. `npm run build` → `bash scripts/deploy-push.sh`
 → `python3 scripts/wait-live.py https://parafomo.com/<slug>/`.
 
-- [ ] T1 (B261015-1) — **/konut-kredisi-hesaplama yeni araç** · hedef: konut kredisi hesaplama (hacim 170), konut
+- [x] T1 (B261015-1) — → canlı https://parafomo.com/konut-kredisi-hesaplama/ (peşinat + kredi/değer, 1/2/3/5M × 60/120 ay tablo, ters hesap "taksitime göre kredi", BDDK 11364 (29.01.2026) metinsel — kaynaklar aralık verdiği için tablo YOK, 6502 md.37 erken ödeme %1/%2, KKDF/BSMV yok; faiz "örnek %2,5" — güncel ortalama bulunamadı, EVDS bekleniyor; footer + /kredi-hesaplama linki + OG) · commit 910ac9d · haftalık koşu 2026-10-15 — **/konut-kredisi-hesaplama yeni araç** · hedef: konut kredisi hesaplama (hacim 170), konut
   kredisi faiz oranları (19,6). İçerik: (a) hesaplayıcı — tutar, vade (ay), aylık faiz → taksit, toplam faiz,
   ödeme planı (mevcut `src/pages/kredi-hesaplama.astro` hesap mantığını yeniden kullan); (b) konut kredisinde
   KKDF/BSMV muafiyeti (resmi kaynakla doğrula); (c) kredi/değer (LTV) oranı sınırları — BDDK'nın GÜNCEL
@@ -38,7 +38,7 @@ FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan me
   ortalama konut kredisi faizi, <tarih>" (WebSearch ile TCMB/EVDS kaynaklı değer; bulamazsan "örnek faiz" de,
   güncel diye sunma). /kredi-hesaplama ↔ /konut-kredisi-hesaplama karşılıklı link.
   · Kabul: build geçer; canlıda 200, tablo + FAQPage; footer + /kredi-hesaplama'da link; OG kartı.
-- [ ] T2 (B261015-1) — **/kidem-tazminati-hesaplama: Ocak 2027 tavan tahmini** · hedef: kıdem tazminatı hesaplama
+- [x] T2 (B261015-1) — → canlı https://parafomo.com/kidem-tazminati-hesaplama/#tavan-2027 (tavan tablosu 2025-H2 53.919,68 / 2026-H1 64.948,77 / 2026-H2 73.729,87 — TÜRMOB+2 kaynak; Ocak 2027 tahmini ≈80.621 ₺ = memur zammı %9,35; yeni `src/data/zam2027.ts` ortak modül (emekli sayfası çıktısı birebir aynı doğrulandı); `data/kidem-tavan.json` + health.py Ocak/Temmuz bekçisi; FAQ + başlık; emekli sayfasından link) · commit 081951d · haftalık koşu 2026-10-15 — **/kidem-tazminati-hesaplama: Ocak 2027 tavan tahmini** · hedef: kıdem tazminatı hesaplama
   (86), kıdem tazminatı tavanı (62; "2026" vekil 35, zirve Ocak 207). Sayfada `TAVAN = 73729.87` sabit kodlu →
   önce bu değeri ve Ocak 2026 tavanını resmi kaynaktan (Hazine ve Maliye/ÇSGB tavan genelgesi veya 2 büyük
   kaynak) doğrula; `data/kidem-tavan.json`'a taşı (dönem, tavan, kaynak). Yeni bölüm "Ocak 2027 kıdem tazminatı
@@ -48,7 +48,7 @@ FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan me
   Başlık: "Kıdem Tazminatı Hesaplama 2026 ve Ocak 2027 Tavan Tahmini". FAQ'ye "2027 kıdem tavanı" sorusu.
   /emekli-zammi-hesaplama'dan bu bölüme metin içi link. · Kabul: canlıda tavan tablosu + 2027 tahmin satırı +
   FAQPage'de yeni soru; build geçer.
-- [ ] T3 (B261015-1) — **/emlak-vergisi-hesaplama yeni araç** · hedef: emlak vergisi (297), emlak vergisi 2026
+- [x] T3 (B261015-1) — → canlı https://parafomo.com/emlak-vergisi-hesaplama/ (oranlar konut 1/2, işyeri 2/4, arsa 3/6, arazi 1/2 binde — 3 kaynak; 7566 s. Kanun geçici 23 "iki kat fazlasını geçemez" metniyle (2x/3x yorumu çelişkili → sayı yazılmadı); 2027-2029 artış = YD oranı (KPMG + hukuk bürosu) → 2027 tahmini data/yeniden-degerleme.json'dan otomatik ≈%27,83; taksit 30 Kasım; emekli/200 m² muafiyeti; DKV eşiği tek kaynak → yazılmadı; footer + OG + YD/MTV sayfalarından link) · commit 3eb40a2 · haftalık koşu 2026-10-15 — **/emlak-vergisi-hesaplama yeni araç** · hedef: emlak vergisi (297), emlak vergisi 2026
   (12), emlak vergisi hesaplama (6,7); 2. taksit son günü Kasım sonu → Kasım ortasına kadar canlı olmalı.
   İçerik: oran tablosu (konut/işyeri/arsa/arazi × büyükşehir/diğer — Emlak Vergisi Kanunu md. 8/18/24 ve 2026
   değişikliği; GİB/RG ile doğrula), 2026 yeniden takdir + artış sınırı kuralları (doğrulanmamışsa yazma),
