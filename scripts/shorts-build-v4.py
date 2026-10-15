@@ -288,7 +288,16 @@ Style: Kar,{ASS_FONT},94,{C_SUNG},{C_UNSUNG},{C_OUTLINE},{C_SHADOW},1,0,0,0,100,
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
     lines = [head]
-    for start, end, chunk, big, ypos in events:
+    # Çakışma yok: her parça, sonraki parça başlamadan biter. Parça sonuna eklenen +0,12 sn kuyruk sonraki
+    # parçanın başlangıcını (= son kelimenin bitişi) aşıyordu → iki satır aynı \pos'ta üst üste basılıyordu
+    # (video-qa 10-07..10-15: 6 videoda "altyazı üst üste binmiş", çoğu CTA karesinde). Bkz. week.md V1.
+    events = sorted(events, key=lambda e: e[0])
+    fixed = []
+    for k, (start, end, chunk, big, ypos) in enumerate(events):
+        if k + 1 < len(events):
+            end = min(end, events[k + 1][0] - 0.02)
+        fixed.append((start, end if end > start else start + 0.05, chunk, big, ypos))
+    for start, end, chunk, big, ypos in fixed:
         ktext = "".join(f"{{\\k{max(1,k)}}}{ass_escape(w)} " for w, k in chunk).strip()
         fs = "\\fs118" if big else ""
         # v4: overshoot "pop" — 84 → 106 → 100 (CapCut tipik enerjik giriş)
