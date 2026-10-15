@@ -13,11 +13,6 @@ düşer" 1,5 · "hazine bonosu" 2,6 · "eurobond nedir" 2,4 → "X mi Y mi" kara
 **TCMB 22 Ekim:** yeni yazı AÇILMAZ — mevcut /blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler güncellenir (week.md T5).
 
 ## Kuyruk
-- [ ] **Stopaj nedir? 2026'da mevduat, fon ve hisse kazancında stopaj oranları** · hedef: "stopaj oranı"
-  (hacim 16), "stopaj nedir" (hacim 14) · neden: evergreen, sitede stopaj yazısı yok; oranları YALNIZ Resmî
-  Gazete/GİB kaynağıyla yaz (mevduat stopajı 2025-2026'da birkaç kez değişti — en güncel CB kararını doğrula,
-  emin olunmayan oranı yazma); tablo: araç → oran → kaynak/tarih · iç-link: /mevduat-faizi-hesaplama,
-  /blog/vergi-avantajli-yatirim-araclari, /blog/yatirim-fonu-nedir-nasil-secilir
 - [ ] **Kredi kartı asgari ödeme tutarı 2026: oran nasıl belirlenir, eksik ödersen ne olur?** · hedef: "kredi
   kartı asgari ödeme" (hacim 30, son 4 hafta 68 — yükseliyor) · neden: hacimli + sitede karşılığı yok; BDDK/TCMB
   asgari ödeme oranlarını (kart limitine göre) ve gecikme/akdi faiz azami oranlarını TCMB'nin güncel duyurusundan
@@ -50,6 +45,11 @@ düşer" 1,5 · "hazine bonosu" 2,6 · "eurobond nedir" 2,4 → "X mi Y mi" kara
 - Repo nedir (7,8), tahvil nedir (6,5) — yazılar ZATEN var; yeni yazı açma.
 
 ## Yazılanlar
+- [x] **Stopaj nedir? 2026'da mevduat, fon ve hisse kazancında stopaj oranları** · hedef: "stopaj oranı"
+  (hacim 16), "stopaj nedir" (hacim 14) · neden: evergreen, sitede stopaj yazısı yok; oranları YALNIZ Resmî
+  Gazete/GİB kaynağıyla yaz (mevduat stopajı 2025-2026'da birkaç kez değişti — en güncel CB kararını doğrula,
+  emin olunmayan oranı yazma); tablo: araç → oran → kaynak/tarih · iç-link: /mevduat-faizi-hesaplama,
+  /blog/vergi-avantajli-yatirim-araclari, /blog/yatirim-fonu-nedir-nasil-secilir → /blog/stopaj-nedir-2026-stopaj-oranlari (2026-10-15)
 - [x] **Halka arza katılmak kazandırıyor mu? 2026 halka arzlarının ilk gün, 1 ay ve bugünkü getirisi** · hedef:
   "halka arz kazandırır mı", "halka arza katılmak mantıklı mı", "2026 halka arz getirileri" · neden: B261006-1
   kümesine veri-temelli karar yazısı; `data/halka-arz-getiri.json`'daki GERÇEK rakamlarla (2026 ort. getiri,

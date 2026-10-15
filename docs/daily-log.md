@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-10-15 — Stopaj Nedir? 2026 Stopaj Oranları: Mevduat, Fon, Hisse
+
+**Yayınlanan yazı:** [Stopaj Nedir? 2026 Stopaj Oranları: Mevduat, Fon, Hisse](/blog/stopaj-nedir-2026-stopaj-oranlari)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — "stopaj oranı" hacim 16 + "stopaj nedir" hacim 14)
+
+---
+
 ## 2026-10-14 — Halka Arz Kazandırır mı? 2026 Halka Arzlarının Getirisi
 
 **Yayınlanan yazı:** [Halka Arz Kazandırır mı? 2026 Halka Arzlarının Getirisi](/blog/halka-arz-kazandirir-mi-2026-halka-arz-getirileri)
