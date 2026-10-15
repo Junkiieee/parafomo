@@ -205,6 +205,8 @@ def main():
             "tags": meta.get("tags", []),
             "categoryId": CATEGORY_EDUCATION,
             "defaultLanguage": "tr",
+            # Ses dili de belirtilsin (V2, 10-15: tüm videolarda boştu) — Shorts dil sınıflaması/otomatik altyazı için
+            "defaultAudioLanguage": "tr",
         },
         "status": {
             "privacyStatus": args.privacy,
