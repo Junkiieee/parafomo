@@ -62,38 +62,38 @@ FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan me
   bağlamı; başlığı "TCMB Faiz Kararı 22 Ekim 2026: Beklenti ve Senaryolar" yap. 23 Ekim sabahı (karar sonrası
   ilk koşu): yazıya sonuç kutusu + /tcmb-faiz-takvimi'de kararın göründüğünü kontrol et (görünmüyorsa
   `logs/policy-decisions.log`). · Kabul: canlı yazıda güncel bölüm; 23 Ekim'den sonra sonuç kutusu.
-- [ ] T5 (B261015-1) — **/ihtiyac-kredisi-hesaplama yeni araç** · hedef: ihtiyaç kredisi hesaplama (48), ihtiyaç
+- [x] T5 (B261015-1) — → canlı https://parafomo.com/ihtiyac-kredisi-hesaplama/ (KKDF %15 GİB + BSMV %15 7345 CK dahil taksit; BDDK 11152 vade uyarısı; 50/100/200 bin tablo; TCMB ihtiyaç faizi varsayılan) + EVDS: /mevduat-faizi-hesaplama oran tablosu, konut/kredi varsayılan faiz TCMB · commit cd0823e · RC oturumu 10-15 — **/ihtiyac-kredisi-hesaplama yeni araç** · hedef: ihtiyaç kredisi hesaplama (48), ihtiyaç
   kredisi faiz oranları (9,4). T1 bileşenini yeniden kullan; fark: KKDF + BSMV taksite dahil (oranları resmi
   kaynakla doğrula), BDDK tutar bazlı azami vade (doğrula), "50/100/200 bin TL × 12/24/36 ay" tablosu.
   /kredi-hesaplama ↔ /konut-kredisi-hesaplama ↔ /ihtiyac-kredisi-hesaplama linkleri. · Kabul: T1 ile aynı.
-- [ ] T6 (sistem — konu seçimi doğruluğu) — **opportunity_finder "OTORITE" eylemi** · `scripts/learn/opportunity_finder.py`
+- [x] T6 (sistem — konu seçimi doğruluğu) — → OTORITE + BEKLE eylemleri; kira/kıdem/kredi/mevduat → OTORITE doğrulandı; eşitlikte birebir sayfa · commit 3848059 · RC 10-15 — **opportunity_finder "OTORITE" eylemi** · `scripts/learn/opportunity_finder.py`
   `decide()`: sayfa var + GSC'de sorgu yok ya da sıra >40 VE sayfanın `<title>`/H1'i sorgunun köklerini zaten
   içeriyorsa → eylem `OTORITE` (not: "başlık eşleşiyor; sıra otorite kilidinde — on-page görev yapma, uzun
   kuyruk/gelecek yıl açısıyla gir"), skor ×0,3. Başlığı build çıktısından (`dist/<slug>/index.html`) ya da
   .astro'dan oku. `agent/brief.py` §9c açıklamasına eylemi ekle. · Kabul: yeniden çalıştırınca kira artış oranı,
   kıdem tazminatı hesaplama, kredi hesaplama, mevduat faizi hesaplama `OTORITE`; commit.
-- [ ] K1 (keyword-map) — **/memur-zammi-hesaplama/** · memur zammı 130 + memur maaşı 115 · ayrıntı: agent/plan/keyword-map.md K1 · Kabul: T1 ile aynı
-- [ ] K2 (keyword-map) — **/en-dusuk-emekli-maasi/** · emekli maaşı 447 + en düşük emekli maaşı 62 · ayrıntı: keyword-map.md K2 · Kabul: T1 ile aynı
-- [ ] K3 (keyword-map) — **/bayram-ikramiyesi/** · 128 · ayrıntı: keyword-map.md K3 · Kabul: T1 ile aynı
+- [x] K1 (keyword-map) — → canlı https://parafomo.com/memur-zammi-hesaplama/ (zam2027 ortak modül, HMB Temmuz katsayıları, senaryo tablosu) · commit f51291a · RC 10-15 — **/memur-zammi-hesaplama/** · memur zammı 130 + memur maaşı 115 · ayrıntı: agent/plan/keyword-map.md K1 · Kabul: T1 ile aynı
+- [x] K2 (keyword-map) — → canlı https://parafomo.com/en-dusuk-emekli-maasi/ (23.552 ₺ taban, memur emeklisi 31.527 ₺, Ocak 2027 hesaplayıcı + ödeme günleri) · commit f51291a · RC 10-15 — **/en-dusuk-emekli-maasi/** · emekli maaşı 447 + en düşük emekli maaşı 62 · ayrıntı: keyword-map.md K2 · Kabul: T1 ile aynı
+- [x] K3 (keyword-map) — → canlı https://parafomo.com/bayram-ikramiyesi/ (4.000 ₺, hisse oranı, 2027 tarihleri Diyanet) · commit f51291a · RC 10-15 — **/bayram-ikramiyesi/** · 128 · ayrıntı: keyword-map.md K3 · Kabul: T1 ile aynı
 - [ ] T13 (zam sezonu — TARİHLİ, 3 Kasım sonrası) — **YD kesinleşme kontrolü:** 3 Kasım'da Ekim Yİ-ÜFE açıklanınca
   `python3 scripts/yeniden-degerleme-update.py` sonrası /yeniden-degerleme-orani "hesaben kesinleşti" (ekimVerisiGeldi=true)
   mi kontrol et. Kasım sonunda VUK tebliğini WebSearch ile doğrula → `tebligOrani` + `gecmis`e 2027 satırı;
   Aralık'ta MTV/harç CB kararı çıkarsa `uygulanan`. · Kabul: sayfa canlıda doğru durumu gösterir.
 
 ## Bakım / ürün
-- [ ] V1 (video kalitesi) — **altyazı çakışması hatası** · video-qa son 7g'de 4 videoda "altyazı üst üste binmiş,
+- [x] V1 (video kalitesi) — → kök neden: parça sonu +0,12 sn kuyruğu sonraki parçayla aynı konumda çakışıyordu; build_ass parçayı sonrakinden önce bitiriyor · önce/sonra: agent/state/v1-test/compare.png · commit 5d4d98f · RC 10-15 · sonraki 3 günün video-qa'sı izlenecek — **altyazı çakışması hatası** · video-qa son 7g'de 4 videoda "altyazı üst üste binmiş,
   okunamıyor" buldu: sterlin-bir-cumleyle-oynuyor (viral/news), bilezik-aldin (viral/myth), evdeki-altin-calinirsa
   (viral/myth), ceyrek-altinda-gizli-prim (daily-short) → iki hattın ORTAK altyazı kodu. Kök nedeni bul
   (`scripts/shorts-build-v4.py` altyazı/ASS üretimi: kelime zamanları çakışınca iki satır aynı anda mı?
   video-qa günlüğünü `grep -ri altyaz` ile bul). Düzelt; izole test: bu senaryolardan birini `agent/state/`
   altına yeniden render et, çakışan saniyeden ffmpeg ile kare çıkarıp bak. · Kabul: düzeltme commit'i + rapora
   önce/sonra kare yolu; sonraki 3 günün video-qa'sında altyazı çakışması bulgusu yok.
-- [ ] V2 (video sağlığı) — **0-5 izlenmeli videoların teşhisi** · vadesiz-hesap-parani-sessizce-kucultuyor
+- [x] V2 (video sağlığı) — → teşhis: 3 video public/processed, MFK değil, kısıt yok, yükleme tek+hatasız → teknik kusur YOK; Shorts akışı 0 izlenme verdi (izlenmenin tamamı arama). 2/3'ünde aynı gün aynı konuda kardeş video akışı almış (dolar 5000 ×2 31 dk arayla → 13 vs 554; takı ayar 7 vs bilezik 242 aynı gün) → ÖNERİ (bahis adayı): aynı konu kümesinden günde en çok 1 yükleme. Hijyen: defaultAudioLanguage=tr eklendi · commit f848c10 · RC 10-15 — **0-5 izlenmeli videoların teşhisi** · vadesiz-hesap-parani-sessizce-kucultuyor
   (10-10 viral, 0 izl.), taki-altininda-ayar-tuzagi (10-08, 5), dolar-5000-tl-yi-bir-yilda-ne-yapti (10-07
   viral, 11): YouTube Data API `videos.list part=status,processingDetails,contentDetails` (privacyStatus,
   uploadStatus, rejectionReason, madeForKids, regionRestriction). Sistematik neden (yükleme/işleme/kısıtlama)
   varsa düzelt ya da raporla. · Kabul: rapora 3 videonun durumu + varsa düzeltme.
-- [ ] P1 (portföy) — **Panelden içeriğe köprü** (backlog maddesi) · `app/portfoy/` SPA: kullanıcının sahip olduğu
+- [x] P1 (portföy) — → canlı https://app.parafomo.com/portfoy/ Analiz → İlgili veri kartları + hisse detayında halka arz linki (UTM) · backlog [x] + Hesap ayarları düzeltildi · commit 7f6b01f · RC 10-15 — **Panelden içeriğe köprü** (backlog maddesi) · `app/portfoy/` SPA: kullanıcının sahip olduğu
   varlık tipine göre "İlgili veri" kartı (altın → /altin-getiri + /altin-hesaplama; BIST hissesi → /bist-getiri +
   halka arz şirket sayfası varsa /halka-arz/<slug>; gümüş → /gumus-getiri), UTM'li link. YALNIZ frontend (backend/DB
   yok). Önce backlog'daki "Hesap ayarları" maddesini kontrol et (`DELETE /auth/me` zaten var) ve backlog'u düzelt.
@@ -102,7 +102,7 @@ FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan me
   + 5 üyeli üründe değer düşük. Trafik/üye artınca yeniden değerlendir.
 
 ## Kullanıcı girdisi gelince (o gün en üste al)
-- **TCMB EVDS anahtarı** gelirse (`/root/.config/parafomo/evds.env` → `EVDS_API_KEY`): `scripts/evds-rates.py` yaz
+- ✅ YAPILDI 10-15 (commit cd0823e, cron Prş+Cum 12:40) — **TCMB EVDS anahtarı** gelirse (`/root/.config/parafomo/evds.env` → `EVDS_API_KEY`): `scripts/evds-rates.py` yaz
   (haftalık TL mevduat + konut/ihtiyaç kredisi ağırlıklı ortalama faiz) → `data/faiz-oranlari.json` → /mevduat-faizi-hesaplama
   "güncel mevduat faiz oranları" kutusu (hedef: mevduat faiz oranları hacim 57, mevduat faizi hesaplama 57,6 p57)
   + T1/T5 sayfalarında varsayılan faiz otomatik; health.py tazelik satırı; daily-content veri adımına bağla.

@@ -18,15 +18,15 @@ listesi + FAQPage + ilgili 2 sayfadan metin içi link. Resmî rakamı doğrulaya
 - [x] kıdem tazminatı tavanı (62) → /kidem-tazminati-hesaplama/#tavan-2027 · ajan 10-15
 
 ## Sıradaki (skor sırası — üstteki önce; zam sezonu Kasım-Ocak, sezonluklar öne alındı)
-- [ ] K1 memur zammı (130) + memur maaşı (115) → **/memur-zammi-hesaplama/** — Ocak 2027 memur zammı =
+- [x] K1 memur zammı (130) + memur maaşı (115) → **/memur-zammi-hesaplama/** (canlı 2026-10-15) — Ocak 2027 memur zammı =
   toplu sözleşme oranı + 6 aylık enflasyon farkı; emekli zammı sayfasının veri/fonksiyonunu kullan (aynı kaynak);
   Temmuz 2026 resmi oranı + Ocak 2027 tahmini (TÜFE güncellendikçe kendini günceller). Sezon: Ocak.
-- [ ] K2 emekli maaşı (447) + en düşük emekli maaşı (62) + emekli maaş hesaplama (23) → **/en-dusuk-emekli-maasi/**
+- [x] K2 emekli maaşı (447) + en düşük emekli maaşı (62) + emekli maaş hesaplama (23) → **/en-dusuk-emekli-maasi/** (canlı 2026-10-15)
   — güncel en düşük tutar (resmî kaynak + tarih), Ocak 2027 tahmini (emekli zammı modülünden), ödeme günleri.
   /emekli-zammi-hesaplama ile karşılıklı link; zam hesabını tekrar etme.
-- [ ] K3 bayram ikramiyesi (128) → **/bayram-ikramiyesi/** — güncel tutar (resmî), ödeme tarihleri, 2027 Ramazan/
+- [x] K3 bayram ikramiyesi (128) → **/bayram-ikramiyesi/** (canlı 2026-10-15) — güncel tutar (resmî), ödeme tarihleri, 2027 Ramazan/
   Kurban tarihleri; tutar değişmediyse "değişmedi" de.
-- [ ] K4 ihtiyaç kredisi hesaplama (48) → week.md T5 (aynı iş — orada yapılınca burayı [x] yap).
+- [x] K4 ihtiyaç kredisi hesaplama (48) → /ihtiyac-kredisi-hesaplama/ · 2026-10-15
 - [ ] K5 enflasyon oranı (36) + enflasyon hesaplama (21) → **/enflasyon-hesaplama/** — iki tarih arası TÜFE
   değişimi ile "paranın alım gücü" hesaplayıcı; veri: `scripts/tufe-update.py`'nin TÜİK serisi (veri dosyasını
   genişlet, endeks yoksa önce veri betiği). Güncel yıllık/aylık enflasyon kutusu.
@@ -53,8 +53,7 @@ listesi + FAQPage + ilgili 2 sayfadan metin içi link. Resmî rakamı doğrulaya
   tapu harcı hesaplama (14), kredi kartı faiz hesaplama (12) → küçük araç/rehberler (önce damga + tapu: zam sezonu).
 - [ ] K17 brüt asgari ücret (82) + asgari ücret 2027 net (28) → /asgari-ucret-hesaplama'ya "2027" bölümü — RESMÎ
   karar açıklanınca (Aralık) aynı gün; önceden yalnız senaryo tablosu.
-- [ ] K18 mevduat faiz oranları (57) + kredi faiz oranları (55) → EVDS anahtarı gelince (user-tasks) haftalık
-  ortalama faiz kutusu (week.md "Kullanıcı girdisi gelince").
+- [x] K18 mevduat faiz oranları (57) + kredi faiz oranları (55) → /mevduat-faizi-hesaplama/#guncel-oranlar + kredi sayfaları (TCMB EVDS haftalık, otomatik) · 2026-10-15
 
 ## Yeniden kur / otorite (sayfa var, sıralanmıyor) — week.md T6 sınıflandırmasına göre
 - halka arz takvimi (68, sıra 67) → /halka-arz · mevduat faizi hesaplama (58, sıra 57) · işsizlik maaşı hesaplama
