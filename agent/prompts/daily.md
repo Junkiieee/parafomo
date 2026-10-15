@@ -16,6 +16,9 @@ Planı haftalık koşu yazdı; senin işin onu **uygulamak**. Strateji tartışm
      kuyrukta bırak.
    - Görev artık anlamsızsa (veri değişti, zaten yapılmış): `- [-] ... — iptal: gerekçe` yap, sıradakine geç.
 4. **Sonraki görevler:** önceki görev temiz bittiyse ve bütçe varsa sıradakine geç (gecede en fazla 3 görev).
+   `week.md` görev kuyruğunda yapılabilir `[ ]` kalmadıysa (ya da kalanlar TARİHLİ ve günü gelmediyse)
+   `agent/plan/keyword-map.md` "Sıradaki" bölümündeki ilk `- [ ]` satırını görev olarak al (aynı kabul ölçütü:
+   canlı + FAQPage + Footer/`/hesaplama-araclari/` linki + resmî kaynak) ve bitince orada `[x]` yap.
 5. **Olay sonrası güncelleme (her koşu, 1-2 yazı):** Slug'ında `<ay>-2026` geçen önizleme yazılarından
    olayı GEÇMİŞ ve `updatedDate`'i olmayanları bul (ör. "TCMB Ekim kararı", "Eylül CPI"). Her birine:
    gerçekleşen sonucu RESMİ kaynaktan doğrula (TCMB/BLS/BEA/ECB/TÜİK — veri dosyasında varsa oradan,

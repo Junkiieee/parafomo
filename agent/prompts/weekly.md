@@ -32,6 +32,9 @@ Ders çıkar ve bu haftanın görev tanımına uygula.
   hacmini yaz ("· hedef: konut kredisi hesaplama (hacim 170)"). Neden: 2026-10-14 ölçümü — son yazıların
   hedef sorgularının çoğu Trends'te 0 (jolts/fed-faiz-artarsa-dolar/dolar-mı-altın-mı varyantları);
   site ayda ~7K gösterim alıyor, her sorguda 1. olsak bile günde ~60 ziyaretçi. Darboğaz konu seçimi.
+- **Anahtar kelime haritası (`agent/plan/keyword-map.md`):** Kaan'ın kalıcı talebi "tüm kelimelerde siteyi
+  güçlendir". Web görevlerini önce bu haritanın "Sıradaki" bölümünden, sezon yakınlığına göre seç; §9c'de
+  yeni hacimli kelime çıkarsa haritaya ekle (tek kanonik sayfa). Bitenleri "Yapıldı"ya taşı.
 - **Talep radarı (brief §9b) zamanlama içindir:** mevsimsel pencere = NE ZAMAN hazır olmalı (talep
   zirvesinden 3-6 hafta önce; Kasım-Ocak zam sezonu). Autocomplete boşlukları tek başına talep kanıtı
   DEĞİL — §9c'de hacmi yoksa görev yapma. Hacim < 5 ise sayfa/yazı açma (istisna: 2027 gibi gelecek

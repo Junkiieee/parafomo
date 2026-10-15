@@ -72,6 +72,9 @@ FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan me
   kuyruk/gelecek yıl açısıyla gir"), skor ×0,3. Başlığı build çıktısından (`dist/<slug>/index.html`) ya da
   .astro'dan oku. `agent/brief.py` §9c açıklamasına eylemi ekle. · Kabul: yeniden çalıştırınca kira artış oranı,
   kıdem tazminatı hesaplama, kredi hesaplama, mevduat faizi hesaplama `OTORITE`; commit.
+- [ ] K1 (keyword-map) — **/memur-zammi-hesaplama/** · memur zammı 130 + memur maaşı 115 · ayrıntı: agent/plan/keyword-map.md K1 · Kabul: T1 ile aynı
+- [ ] K2 (keyword-map) — **/en-dusuk-emekli-maasi/** · emekli maaşı 447 + en düşük emekli maaşı 62 · ayrıntı: keyword-map.md K2 · Kabul: T1 ile aynı
+- [ ] K3 (keyword-map) — **/bayram-ikramiyesi/** · 128 · ayrıntı: keyword-map.md K3 · Kabul: T1 ile aynı
 - [ ] T13 (zam sezonu — TARİHLİ, 3 Kasım sonrası) — **YD kesinleşme kontrolü:** 3 Kasım'da Ekim Yİ-ÜFE açıklanınca
   `python3 scripts/yeniden-degerleme-update.py` sonrası /yeniden-degerleme-orani "hesaben kesinleşti" (ekimVerisiGeldi=true)
   mi kontrol et. Kasım sonunda VUK tebliğini WebSearch ile doğrula → `tebligOrani` + `gecmis`e 2027 satırı;
