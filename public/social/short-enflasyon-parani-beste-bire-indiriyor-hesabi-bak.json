@@ -1,0 +1,70 @@
+{
+  "title": "Enflasyon paranı beşte bire indiriyor, hesabı bak #Shorts",
+  "description": "Yıllık yüzde 40 enflasyon sürerse paranın alım gücü 5 yılda yaklaşık beşte birine düşer. Kafadan yapılabilen sade bir hesapla gösteriyoruz.\nKaynak/hesap: 1,4^5 ≈ 5,4 → 100/5,4 ≈ 19 TL; 1.000.000/5,4 ≈ 185-190 bin TL (yıllık %40 enflasyon varsayımıyla) · senaryodaki hesap\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #enflasyon #alım gücü #birikim #yastık altı #yatırım",
+  "tags": [
+    "enflasyon",
+    "alım gücü",
+    "birikim",
+    "yastık altı",
+    "yatırım",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-enflasyon-parani-beste-bire-indiriyor-hesabi-bak.mp4",
+  "slug": "enflasyon-parani-beste-bire-indiriyor-hesabi-bak",
+  "format": "shock_number",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.81,
+      "spoken": "Yüzde 40 enflasyon paranı beşte bire indirir.",
+      "visual": "object: piggy bank"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.81,
+      "end": 10.16,
+      "spoken": "Mantık basit: her yıl 100 liranın alacağı şey 71 liraya düşer, bu üst üste biner.",
+      "visual": "object: calculator"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 10.16,
+      "end": 16.9,
+      "spoken": "Ama asıl şok şu: iki yılda yarısı gider, beşinci yılda geriye yaklaşık 19 lira kalır.",
+      "visual": "manim: Enflasyon"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 16.9,
+      "end": 23.92,
+      "spoken": "1 milyon TL beş yılda yaklaşık 190 bin TL'lik mal alır; enflasyonu geçen yerde tut.",
+      "visual": "object: wallet"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 23.92,
+      "end": 30.58,
+      "spoken": "Sıradaki hesap bundan da sert çıkacak; abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": "object: piggy bank"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-15T05:02:57+00:00",
+    "slug": "enflasyon-parani-beste-bire-indiriyor-hesabi-bak",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "ZFqKVmrkEiA",
+  "youtube_url": "https://youtube.com/shorts/ZFqKVmrkEiA",
+  "ig_reel_id": "18113748743331363",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DegKbMSirGz/",
+  "ig_seed_comment_id": "18150313378553639"
+}

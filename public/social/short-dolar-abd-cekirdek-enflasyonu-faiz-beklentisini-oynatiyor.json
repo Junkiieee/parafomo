@@ -1,0 +1,70 @@
+{
+  "title": "Dolar: ABD çekirdek enflasyonu faiz beklentisini oynatıyor #Shorts",
+  "description": "ABD'de gıda ve enerji hariç çekirdek enflasyon açıklandığında Fed'in faiz kararı beklentisi değişiyor. Bu da dolar ve euroyu, dolayısıyla TL'deki fiyatları etkiliyor.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #core cpi #enflasyon #dolar #euro #fed",
+  "tags": [
+    "core cpi",
+    "enflasyon",
+    "dolar",
+    "euro",
+    "fed",
+    "faiz",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-dolar-abd-cekirdek-enflasyonu-faiz-beklentisini-oynatiyor.mp4",
+  "slug": "dolar-abd-cekirdek-enflasyonu-faiz-beklentisini-oynatiyor",
+  "format": "news_reaction",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 4.29,
+      "spoken": "Amerika'nın tek enflasyon rakamı dolar kurunu oynatıyor.",
+      "visual": "place: Federal Reserve building"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 4.29,
+      "end": 12.42,
+      "spoken": "Buna çekirdek enflasyon deniyor: gıda ve enerji çıkarılıyor, kalıcı fiyat artışı kalıyor. Fed faizi buna bakarak ayarlıyor.",
+      "visual": "object: calculator"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 12.42,
+      "end": 20.62,
+      "spoken": "Ama rakam beklentiden yüksek gelirse faiz indirimi uzar, dolar güçlenir, euro zayıflar. Düşük gelirse tam tersi olur.",
+      "visual": "manim: Risk"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 20.62,
+      "end": 28.74,
+      "spoken": "Senin cebine etkisi şu: dolar sıçrarsa ithal ürün pahalanır. Rakamın açıklanma gününde kura bakmadan döviz alma.",
+      "visual": "object: smartphone banking app"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 28.74,
+      "end": 35.84,
+      "spoken": "Sıradaki veri dolara ne yapacak, merak ediyorsan abone ol; her gün tek net analizi sade dille anlatıyorum.",
+      "visual": "place: Federal Reserve building"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-14T06:33:23+00:00",
+    "slug": "dolar-abd-cekirdek-enflasyonu-faiz-beklentisini-oynatiyor",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "6wjowwcR9SE",
+  "youtube_url": "https://youtube.com/shorts/6wjowwcR9SE",
+  "ig_reel_id": "18149711785559673",
+  "ig_reel_permalink": "https://www.instagram.com/reel/Dedv9rOFUGc/",
+  "ig_seed_comment_id": "18635877904053671"
+}

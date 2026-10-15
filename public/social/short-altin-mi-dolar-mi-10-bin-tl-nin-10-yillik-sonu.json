@@ -1,0 +1,70 @@
+{
+  "title": "Altın mı dolar mı: 10 bin TL'nin 10 yıllık sonu #Shorts",
+  "description": "TL'de beklemek ters çalışan yürüyen merdivende durmak gibi. 10 bin TL'nin 10 yılda dolar ve altında nereye vardığına yaklaşık rakamlarla bakıyoruz.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #altın #dolar #enflasyon #birikim #yatırım",
+  "tags": [
+    "altın",
+    "dolar",
+    "enflasyon",
+    "birikim",
+    "yatırım",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-altin-mi-dolar-mi-10-bin-tl-nin-10-yillik-sonu.mp4",
+  "slug": "altin-mi-dolar-mi-10-bin-tl-nin-10-yillik-sonu",
+  "format": "single_concept",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.42,
+      "spoken": "Yerinde durmak aslında geriye gitmektir.",
+      "visual": "gold: shiny gold coins stack"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.42,
+      "end": 9.85,
+      "spoken": "Ters çalışan yürüyen merdiven düşün: TL'de bekleyen paran her gün bir basamak iniyor.",
+      "visual": "object: escalator"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 9.85,
+      "end": 15.91,
+      "spoken": "Ama fark şu: 10 yıl önce 10 bin lirayı dolara çevirsen, bugün yaklaşık 160 bin.",
+      "visual": "object: calculator"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 15.91,
+      "end": 23.8,
+      "spoken": "Aynı parayı altına koysaydın yaklaşık 550 bin olurdu. Geçmiş garanti değil, ama beklemenin bedeli belli.",
+      "visual": "gold: gold bullion bars"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 23.8,
+      "end": 31.69,
+      "spoken": "Sıradaki rakam cüzdanına daha da yakın. Kaçırmamak için abone ol, her gün tek net analiz kısa ve sade geliyor.",
+      "visual": "gold: shiny gold coins stack"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-14T18:33:30+00:00",
+    "slug": "altin-mi-dolar-mi-10-bin-tl-nin-10-yillik-sonu",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "SwcLeMrwjHQ",
+  "youtube_url": "https://youtube.com/shorts/SwcLeMrwjHQ",
+  "ig_reel_id": "18136523041648657",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DefCYQSiF-Y/",
+  "ig_seed_comment_id": "18123367481314617"
+}

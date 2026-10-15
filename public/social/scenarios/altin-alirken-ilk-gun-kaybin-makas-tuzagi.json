@@ -1,0 +1,59 @@
+{
+  "slug": "altin-alirken-ilk-gun-kaybin-makas-tuzagi",
+  "title": "Altın alırken ilk gün kaybın: makas tuzağı",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Altının alış ve satış fiyatı arasındaki fark, aldığın an seni küçük bir zarara sokar. Kısa vadeli alıp satanın kârını bu fark yer; makası bilip uzun düşünmek bunu çözer.",
+  "tags": [
+    "altın",
+    "gram altın",
+    "alış satış farkı",
+    "makas",
+    "birikim",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Altını aldığın an zarardasın.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold bars"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çünkü alış ve satış fiyatı farklı. Aynı dakikada alıp satsan, farkı yaklaşık yüzde birkaç kaybedersin.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama tuzak şu: bir hafta tutup satarsan makas kârını yer; yıllarca tutanda fark kaybolur.",
+      "visual": {
+        "type": "concept",
+        "query": "time"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çözüm: altını kısa vadeli işlem gibi görme, alırken makası karşılaştır, en az yıllık düşünerek tut.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki videoda makası kendi paranla nasıl hesaplayacağını göstereceğim. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold bars"
+      }
+    }
+  ]
+}
