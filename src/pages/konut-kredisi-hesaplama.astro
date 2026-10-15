@@ -1,10 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
+import faiz from '../../data/faiz-oranlari.json';
 
-// Varsayılan senaryo — JS kapalıyken bile sayfa dolu görünsün (SEO + no-JS).
-// Faiz ÖRNEKTİR, güncel piyasa ortalaması değildir (TCMB EVDS bağlanınca otomatik olacak).
-const D = { value: 4000000, down: 1000000, rate: 2.5, months: 120 };
+// Varsayılan faiz = TCMB haftalık ağırlıklı ortalama sabit faizli konut kredisi faizi (EVDS TP.KTF12,
+// scripts/evds-rates.py — her hafta otomatik). TCMB yıllık bileşik yayımlar → aylık = (1+E)^(1/12) − 1.
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const trDate = (iso: string) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${AYLAR[m - 1]} ${y}`; };
+const HAFTA = trDate(faiz.hafta);
+const K = faiz.kredi.konut;
+const D = { value: 4000000, down: 1000000, rate: K.aylik, months: 120 };
 const LOAN = D.value - D.down;
 
 // Anüite (eşit taksit) formülü: taksit = P·r / (1 − (1+r)^−n)
@@ -28,6 +33,10 @@ const two120 = annuity(2000000, D.rate, 120);
 
 const faq = [
   {
+    q: 'Konut kredisi faiz oranları ne kadar?',
+    a: `TCMB'nin ${HAFTA} haftası verisine göre bankaların yeni kullandırdığı sabit faizli konut kredilerinde ağırlıklı ortalama faiz yıllık %${pct(K.yillikBilesik)}; bu, aylık yaklaşık %${pct(K.aylik)} faize karşılık gelir. Ortalama tüm bankaların hacimle ağırlıklandırılmış oranıdır; kampanyalı ya da kamu bankası oranları farklı olabilir. Hesaplayıcının varsayılan faizi her hafta bu veriyle otomatik güncellenir.`,
+  },
+  {
     q: 'Konut kredisi taksiti nasıl hesaplanır?',
     a: `Konut kredileri eşit taksitli (anüite) yöntemle ödenir: Taksit = Kredi tutarı × aylık faiz ÷ (1 − (1 + aylık faiz)⁻ⁿ). Örneğin ${fmt(LOAN)} ₺ krediyi aylık %${pct(D.rate)} faizle ${D.months} ay vadede çekerseniz aylık taksit yaklaşık ${fmt(base.pay)} ₺, toplam geri ödeme ${fmt(base.total)} ₺ olur. Konut kredisinde KKDF ve BSMV alınmadığı için bu hesap bankanın taksitine oldukça yakındır.`,
   },
@@ -41,7 +50,7 @@ const faq = [
   },
   {
     q: '2 milyon TL konut kredisinin taksiti ne kadar?',
-    a: `Aylık %${pct(D.rate)} örnek faizle 2.000.000 ₺ konut kredisinin 120 ay vadede aylık taksiti yaklaşık ${fmt(two120.pay)} ₺, toplam geri ödeme ${fmt(two120.total)} ₺ olur. Bankanızın ilan ettiği güncel aylık faizi hesaplayıcıya girerseniz tablo kendiliğinden güncellenir.`,
+    a: `TCMB ortalaması olan aylık %${pct(D.rate)} faizle 2.000.000 ₺ konut kredisinin 120 ay vadede aylık taksiti yaklaşık ${fmt(two120.pay)} ₺, toplam geri ödeme ${fmt(two120.total)} ₺ olur. Bankanızın ilan ettiği aylık faizi hesaplayıcıya girerseniz tablo kendiliğinden güncellenir.`,
   },
   {
     q: 'Konut kredisini erken kapatırsam ceza öder miyim?',
@@ -61,8 +70,8 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="Konut Kredisi Hesaplama 2026 | Taksit, Peşinat ve Toplam Faiz"
-  description={`Konut kredisi hesaplama: ev fiyatı, peşinat, aylık faiz ve vadeyi girin; aylık taksit, toplam geri ödeme ve ödeme planını görün. 1-5 milyon TL için 60/120 ay taksit tablosu, BDDK kredi/değer oranı ve masraflar.`}
+  title="Konut Kredisi Hesaplama 2026 | Güncel Faiz, Taksit ve Peşinat"
+  description={`Konut kredisi hesaplama: güncel ortalama faiz aylık %${pct(K.aylik)} (TCMB, ${HAFTA}). Ev fiyatı, peşinat ve vadeyi girin; taksit, toplam geri ödeme, ödeme planı ve 1-5 milyon TL taksit tablosu.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
   image="/og/konut-kredisi-hesaplama.png"
@@ -121,7 +130,7 @@ const breadcrumbs = [
             <span class="split-val" id="out-interest">₺{fmt(base.interest)}</span>
           </div>
         </div>
-        <p class="result-note" id="out-note">Varsayılan aylık %{pct(D.rate)} bir örnektir, güncel piyasa ortalaması değildir — bankanızın ilan ettiği aylık faizi girin.</p>
+        <p class="result-note" id="out-note">Varsayılan aylık %{pct(D.rate)}: TCMB ortalama konut kredisi faizi ({HAFTA} haftası, yıllık %{pct(K.yillikBilesik)}). Bankanızın ilan ettiği aylık faizi girerek değiştirin.</p>
       </div>
     </div>
 
@@ -209,7 +218,7 @@ const breadcrumbs = [
       </p>
       <p class="cta-line">
         Kredi faizlerinin yönünü belirleyen kararlar için → <a href="/tcmb-faiz-takvimi/">TCMB faiz takvimi</a>.
-        İhtiyaç veya taşıt kredisi için → <a href="/kredi-hesaplama/">kredi hesaplama</a>.
+        İhtiyaç kredisinde KKDF ve BSMV dahil taksit için → <a href="/ihtiyac-kredisi-hesaplama/">ihtiyaç kredisi hesaplama</a>.
         Konutun yanında birikimin ne kazandırdığını görmek için → <a href="/altin-dolar-borsa/">altın, dolar ve borsa getirileri</a>.
       </p>
     </section>

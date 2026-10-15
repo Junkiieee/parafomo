@@ -1,9 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
+import faiz from '../../data/faiz-oranlari.json';
 
-// Varsayılan senaryo — JS kapalıyken bile sayfa dolu görünsün (SEO + no-JS).
-const D = { amount: 100000, rate: 3.5, months: 24 };
+// Varsayılan faiz = TCMB haftalık ağırlıklı ortalama ihtiyaç kredisi faizinin aylık karşılığı (EVDS TP.KTF10,
+// scripts/evds-rates.py — her hafta otomatik). JS kapalıyken de sayfa dolu görünsün (SEO + no-JS).
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const trDate = (iso: string) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${AYLAR[m - 1]} ${y}`; };
+const HAFTA = trDate(faiz.hafta);
+const KR = faiz.kredi;
+const pct = (n: number) => n.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
+const D = { amount: 100000, rate: KR.ihtiyac.aylik, months: 24 };
 
 // Anüite (eşit taksit) formülü: taksit = P·r / (1 − (1+r)^−n)
 function annuity(P: number, ratePct: number, n: number) {
@@ -26,6 +33,10 @@ const compareRows = compareMonths.map((m) => {
 
 const faq = [
   {
+    q: 'Güncel kredi faiz oranları ne kadar?',
+    a: `TCMB'nin ${HAFTA} haftası verisine göre bankaların yeni kullandırdığı kredilerde ağırlıklı ortalama yıllık faiz: ihtiyaç kredisinde %${pct(KR.ihtiyac.yillikBilesik)} (aylık ≈ %${pct(KR.ihtiyac.aylik)}), taşıt kredisinde %${pct(KR.tasit.yillikBilesik)} (aylık ≈ %${pct(KR.tasit.aylik)}), sabit faizli konut kredisinde %${pct(KR.konut.yillikBilesik)} (aylık ≈ %${pct(KR.konut.aylik)}). Hesaplayıcının varsayılan faizi her hafta bu veriyle otomatik güncellenir.`,
+  },
+  {
     q: 'Kredi taksiti nasıl hesaplanır?',
     a: `Bankalar eşit taksitli (anüite) kredide şu formülü kullanır: Taksit = Anapara × aylık faiz ÷ (1 − (1 + aylık faiz)⁻ⁿ). Örneğin ${fmt(D.amount)} ₺ krediyi aylık %${D.rate.toString().replace('.', ',')} faizle ${D.months} ay vadede çekerseniz aylık taksit yaklaşık ${fmt(base.pay)} ₺, toplam geri ödeme ${fmt(base.total)} ₺ olur.`,
   },
@@ -43,7 +54,7 @@ const faq = [
   },
   {
     q: 'Krediyi erken kapatırsam ne olur?',
-    a: 'Erken kapamada yalnızca kalan anaparayı ve işlemiş faizi ödersiniz; ileride işleyecek faizlerden kurtulursunuz. Yasal olarak banka, kalan vadesi 24 aya kadar olan kredilerde en fazla %1, 24 ayı aşanlarda en fazla %2 erken kapama komisyonu alabilir. Yine de erken kapama genelde toplam maliyeti ciddi biçimde düşürür.',
+    a: 'Erken kapamada yalnızca kalan anaparayı ve işlemiş faizi ödersiniz; ileride işleyecek faizlerden kurtulursunuz. İhtiyaç ve taşıt gibi tüketici kredilerinde banka erken ödeme tazminatı alamaz: 6502 sayılı Kanun’un 27. maddesi yalnızca erken ödenen tutara göre faiz ve maliyet indirimi yapılmasını zorunlu tutar. Kalan vadeye göre %1 veya %2 ile sınırlı erken ödeme tazminatı yalnızca sabit faizli konut kredilerinde (md. 37) alınabilir.',
   },
 ];
 
@@ -54,8 +65,9 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="Kredi Hesaplama 2026 | Aylık Taksit ve Toplam Faiz Hesaplama"
-  description="Ücretsiz kredi taksit hesaplama aracı. Kredi tutarı, aylık faiz ve vadeyi girin; aylık taksit, toplam geri ödeme ve toplam faizi anında görün. İhtiyaç ve konut kredisi ödeme planı."
+  title="Kredi Hesaplama 2026 | Güncel Faiz, Aylık Taksit ve Toplam Faiz"
+  description={`Kredi taksit hesaplama: güncel ortalama ihtiyaç kredisi faizi aylık %${pct(KR.ihtiyac.aylik)} (TCMB, ${HAFTA}). Tutar, faiz ve vadeyi girin; aylık taksit, toplam geri ödeme ve ödeme planını görün.`}
+  image="/og/kredi-hesaplama.png"
   faq={faq}
   breadcrumbs={breadcrumbs}
 >
@@ -101,7 +113,7 @@ const breadcrumbs = [
             <span class="split-val" id="out-interest">₺{fmt(base.interest)}</span>
           </div>
         </div>
-        <p class="result-note" id="out-note">Saf anüite hesabı — banka ayrıca KKDF/BSMV vergisi ve masraf ekleyebilir (konut kredisinde bu vergiler alınmaz).</p>
+        <p class="result-note" id="out-note">Varsayılan aylık %{pct(D.rate)}: TCMB ortalama ihtiyaç kredisi faizi ({HAFTA} haftası). Saf anüite hesabıdır — KKDF ve BSMV dahil taksit için <a href="/ihtiyac-kredisi-hesaplama/">ihtiyaç kredisi hesaplama</a>.</p>
       </div>
     </div>
 
@@ -159,7 +171,8 @@ const breadcrumbs = [
         <strong>%15 BSMV</strong> vergisi ekler; bu, efektif faizi (dolayısıyla taksiti ve
         yıllık maliyet oranını) yükseltir. <strong>Konut kredilerinde KKDF ve BSMV alınmaz</strong>,
         bu yüzden konut kredisinde bu araçtaki sonuç bankanınkine daha yakın çıkar (peşinat, kredi/değer
-        oranı ve 1-5 milyon TL taksit tablosu için → <a href="/konut-kredisi-hesaplama/">konut kredisi hesaplama</a>). Bir kredinin
+        oranı ve 1-5 milyon TL taksit tablosu için → <a href="/konut-kredisi-hesaplama/">konut kredisi hesaplama</a>;
+        vergiler dahil gerçek taksit için → <a href="/ihtiyac-kredisi-hesaplama/">ihtiyaç kredisi hesaplama</a>). Bir kredinin
         gerçek pahalılığını karşılaştırırken faiz oranından çok <strong>yıllık maliyet oranını</strong>
         (tüm vergi ve masraflar dahil) dikkate almak gerekir.
       </p>

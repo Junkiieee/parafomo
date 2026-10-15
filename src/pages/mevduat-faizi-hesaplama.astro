@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
+import faiz from '../../data/faiz-oranlari.json';
 
 // 2026 güncel TL mevduat stopaj (gelir vergisi tevkifatı) oranları — vadeye göre.
 // Kaynak: banka resmi tabloları (DenizBank, Yapı Kredi), 9 Temmuz 2025'ten beri geçerli.
@@ -23,8 +24,18 @@ function calc(principal: number, annualRatePct: number, days: number) {
   return { tier, gross, stopaj, net, total, netAnnualYield };
 }
 
+// TCMB haftalık ağırlıklı ortalama TL mevduat faizi (EVDS, scripts/evds-rates.py — her hafta otomatik).
+// TCMB oranı YILLIK BİLEŞİK yayımlar; bankalar BASİT yıllık faiz ilan eder → hesaplayıcıya basit karşılık girer.
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const trDate = (iso: string) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${AYLAR[m - 1]} ${y}`; };
+const HAFTA = trDate(faiz.hafta);
+const M = faiz.mevduat;
+const rateRows = (['ay1', 'ay3', 'ay6', 'yil1', 'yil1plus'] as const).map((k) => ({ k, ...M[k] }));
+const r1 = (n: number) => Math.round(n * 10) / 10;
+
 // Sunucuda varsayılan hesap — JS kapalıyken bile sayfa dolu görünsün (SEO + no-JS).
-const D = { principal: 100000, rate: 45, days: 92 };
+// Varsayılan faiz = TCMB "3 aya kadar" ortalamasının 92 günlük basit karşılığı.
+const D = { principal: 100000, rate: r1(M.ay3.basit), days: 92 };
 const base = calc(D.principal, D.rate, D.days);
 
 const fmt = (n: number) =>
@@ -33,14 +44,19 @@ const fmt0 = (n: number) =>
   new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
 
 // Aynı brüt oran için vadeye göre net etkin getiri (stopaj etkisini izole eden karşılaştırma).
-const compareRate = 45;
+const compareRate = D.rate;
 const compareRows = [
   { label: '6 aya kadar (32 / 92 gün)', stopaj: STOPAJ.short },
   { label: '6 ay – 1 yıl', stopaj: STOPAJ.mid },
   { label: '1 yıldan uzun', stopaj: STOPAJ.long },
 ].map((r) => ({ ...r, netRate: compareRate * (1 - r.stopaj) }));
 
+const pctTR = (n: number) => n.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
 const faq = [
+  {
+    q: 'Güncel mevduat faiz oranları ne kadar?',
+    a: `TCMB'nin ${HAFTA} haftası verisine göre bankaların yeni açılan TL vadeli mevduata ödediği ağırlıklı ortalama faiz, 1 aya kadar vadede yıllık %${pctTR(M.ay1.yillikBilesik)}, 3 aya kadar vadede %${pctTR(M.ay3.yillikBilesik)}, 6 aya kadar vadede %${pctTR(M.ay6.yillikBilesik)} ve 1 yıla kadar vadede %${pctTR(M.yil1.yillikBilesik)}. TCMB bu oranları yıllık bileşik olarak yayımlar; bankaların ilan ettiği basit faiz karşılığı 32 günlük vadede yaklaşık %${pctTR(M.ay1.basit)}, 92 günlük vadede %${pctTR(M.ay3.basit)} eder. Rakamlar her hafta TCMB verisiyle otomatik güncellenir.`,
+  },
   {
     q: 'Mevduat faizi net getirisi nasıl hesaplanır?',
     a: 'Önce brüt faiz getirisi bulunur: Anapara × yıllık faiz oranı × (vade gün / 365). Bu brüt getiriden vadeye göre değişen stopaj (gelir vergisi tevkifatı) düşülür. Kalan tutar cebinize giren net faizdir; anaparaya eklenince vade sonu toplamı elde edilir. ParaFOMO hesaplayıcısı bu adımları güncel 2026 stopaj oranlarıyla otomatik yapar.',
@@ -70,10 +86,11 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="Mevduat Faizi Hesaplama 2026 | Net Getiri ve Stopaj Hesaplayıcı"
-  description="Vadeli mevduat net getirisini anında hesapla: anapara, yıllık faiz ve vadeyi gir; 2026 güncel stopaj oranıyla brüt faiz, kesinti ve eline geçen net tutarı gör."
+  title="Mevduat Faizi Hesaplama 2026 | Güncel Faiz Oranları ve Net Getiri"
+  description={`Güncel mevduat faiz oranları (TCMB, ${HAFTA}): 3 aya kadar vadede ortalama yıllık %${pctTR(M.ay3.yillikBilesik)}. Anapara ve vadeyi gir; 2026 stopajıyla brüt faiz, kesinti ve net getiriyi gör.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
+  image="/og/mevduat-faizi-hesaplama.png"
 >
   <div class="calc-wrap">
     <header class="calc-head">
@@ -130,6 +147,7 @@ const breadcrumbs = [
         <p class="result-note" id="out-note"></p>
       </div>
     </div>
+    <p class="rate-src">Varsayılan faiz: TCMB'nin 3 aya kadar vadeli TL mevduat ortalamasının basit faiz karşılığı (%{pctTR(D.rate)}, {HAFTA} haftası). Bankanızın ilan ettiği oranı girerek değiştirin.</p>
 
     <p class="disclaimer">
       Bu araç yalnızca bilgilendirme amaçlıdır ve yatırım tavsiyesi değildir. Hesap, klasik
@@ -137,6 +155,39 @@ const breadcrumbs = [
       oranlarını esas alır. Bankaların uyguladığı oran, hesaplama günü ve döviz/altın mevduatı
       farklılık gösterebilir. BSMV mevduat faizinde uygulanmaz.
     </p>
+
+    <section class="rates-block" id="guncel-oranlar">
+      <h2>Güncel mevduat faiz oranları (TCMB, {HAFTA})</h2>
+      <p class="table-intro">
+        Bankaların o hafta yeni açılan TL vadeli mevduata ödediği <strong>ağırlıklı ortalama faiz</strong>.
+        TCMB oranı yıllık bileşik yayımlar; bankanın ilanındaki <strong>basit yıllık faiz</strong> karşılığı
+        yanında. Bir satıra dokunun, hesaplayıcı o vade ve faizle dolsun.
+      </p>
+      <div class="table-wrap">
+        <table class="rates-table">
+          <thead>
+            <tr><th>Vade</th><th>TCMB ortalama<br /><small>yıllık bileşik</small></th><th>Basit faiz karşılığı<br /><small>banka ilanı gibi</small></th><th>Önceki haftaya göre</th></tr>
+          </thead>
+          <tbody>
+            {rateRows.map((r) => (
+              <tr data-rate={r1(r.basit)} data-days={r.basitGun} tabindex="0" role="button" aria-label={`${r.etiket} vadeyle hesapla`}>
+                <td>{r.etiket}</td>
+                <td><strong>%{pctTR(r.yillikBilesik)}</strong></td>
+                <td>%{pctTR(r.basit)} <small>({r.basitGun} gün)</small></td>
+                <td class={r.degisim == null ? '' : r.degisim > 0 ? 'up' : r.degisim < 0 ? 'down' : ''}>
+                  {r.degisim == null ? '—' : `${r.degisim > 0 ? '▲' : r.degisim < 0 ? '▼' : ''} ${pctTR(Math.abs(r.degisim))} puan`}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Kaynak: <a href="https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Faiz+Istatistikleri/Haftalik/Mevduat+Faiz+Oranlari/" rel="nofollow noopener" target="_blank">TCMB haftalık mevduat faiz oranları</a>
+        (akım, {HAFTA} haftası) · her hafta otomatik güncellenir. Basit karşılık = ((1 + bileşik)<sup>gün/365</sup> − 1) × 365 / gün.
+        Ortalama, tüm bankaların hacimle ağırlıklandırılmış oranıdır; tek tek bankaların kampanya oranları bunun üstünde ya da altında olabilir.
+      </p>
+    </section>
 
     <section class="prose-block">
       <h2>Vade uzadıkça net getiri neden artıyor?</h2>
@@ -252,6 +303,15 @@ const breadcrumbs = [
       document.querySelectorAll('.preset').forEach((b) => {
         b.addEventListener('click', () => { $('in-days').value = b.dataset.days; update(); });
       });
+      // TCMB oran tablosu: satır → hesaplayıcıyı o vade + basit faizle doldur
+      document.querySelectorAll('.rates-table tbody tr').forEach((tr) => {
+        const use = () => {
+          $('in-rate').value = tr.dataset.rate; $('in-days').value = tr.dataset.days; update();
+          $('calc-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        };
+        tr.addEventListener('click', use);
+        tr.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); use(); } });
+      });
       update();
     })();
   </script>
@@ -306,6 +366,19 @@ const breadcrumbs = [
     .result-note { font-size: 0.82rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
 
     .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+    .rate-src { font-size: 0.82rem; color: var(--text-soft); margin: 0.8rem 0 0; }
+
+    .rates-block { margin-top: 2.5rem; }
+    .rates-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
+    .table-note { font-size: 0.8rem; color: var(--text-muted); margin: 0.7rem 0 0; line-height: 1.5; }
+    .rates-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+    .rates-table th, .rates-table td { text-align: left; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .rates-table thead th { color: var(--text); font-weight: 700; background: var(--surface); font-size: 0.82rem; }
+    .rates-table th small, .rates-table td small { font-weight: 400; color: var(--text-muted); font-size: 0.75rem; }
+    .rates-table tbody tr { cursor: pointer; }
+    .rates-table tbody tr:hover, .rates-table tbody tr:focus { background: var(--brand-tint); outline: none; }
+    .rates-table td.up { color: #1f7a4d; } .rates-table td.down { color: #c0392b; }
 
     .prose-block, .faq-block { margin-top: 2.5rem; }
     .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }

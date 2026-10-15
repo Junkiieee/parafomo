@@ -112,6 +112,15 @@ def halka_arz_card():
             "sub": "süren ve yaklaşan arz · tarih, fiyat, lot"}
 
 
+def faiz_card(group, key, kicker, field, sub):
+    # data/faiz-oranlari.json (scripts/evds-rates.py, haftalık). 1 ondalık: haftada en çok bir PNG değişir.
+    def fn():
+        r = load("faiz-oranlari.json")[group][key]
+        return {"kicker": kicker, "stat": f"%{tr_pct(r[field], 1)}",
+                "sub": ("aylık · " if field == "aylik" else "yıllık · ") + sub}
+    return fn
+
+
 def vergi_dilimi_card():
     # 2026 tarifesi sabit (332 Seri No'lu GVK Tebliği); Ocak 2027'de sayfayla birlikte güncelle
     return {"kicker": "GELİR VERGİSİ DİLİMLERİ 2026", "stat": "%15–40",
@@ -137,10 +146,14 @@ CARDS = {
     "pasaport-ehliyet-harci": yd_card(
         "PASAPORT · EHLİYET HARCI {yil}",
         lambda d, k: "2026: 10 yıllık pasaport 14.761 ₺ · harç zammı tahmini"),
-    "konut-kredisi-hesaplama": lambda: {
-        # Statik kart: konut kredisinde KKDF/BSMV yok (faiz verisi EVDS bağlanınca kart rakamlı olabilir)
-        "kicker": "KONUT KREDİSİ HESAPLAMA", "stat": "%0 KKDF",
-        "sub": "taksit, peşinat, 1-5 milyon ₺ taksit tablosu"},
+    "konut-kredisi-hesaplama": faiz_card(
+        "kredi", "konut", "KONUT KREDİSİ FAİZİ", "aylik", "TCMB ortalaması · taksit ve peşinat hesapla"),
+    "ihtiyac-kredisi-hesaplama": faiz_card(
+        "kredi", "ihtiyac", "İHTİYAÇ KREDİSİ FAİZİ", "aylik", "TCMB ortalaması · KKDF+BSMV dahil taksit"),
+    "kredi-hesaplama": faiz_card(
+        "kredi", "ihtiyac", "KREDİ HESAPLAMA", "aylik", "ihtiyaç kredisi TCMB ortalaması · taksit tablosu"),
+    "mevduat-faizi-hesaplama": faiz_card(
+        "mevduat", "ay3", "MEVDUAT FAİZ ORANI", "basit", "3 aya kadar · TCMB ortalaması · net getiri hesapla"),
     "emekli-zammi-hesaplama": emekli_card,
     "kira-artis-orani-hesaplama": kira_card,
     "enflasyon-takvimi": enflasyon_card,

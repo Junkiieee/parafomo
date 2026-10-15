@@ -193,6 +193,10 @@ def stale_data():
         want = f"{today.year}-{today.month:02d}-01"
         if kt["donemler"][-1]["baslangic"] != want:
             out.append(f"kıdem tavanı bayat (son dönem {kt['donemler'][-1]['baslangic']} ≠ {want}) → WebSearch ile HMB/TÜRMOB tavanını doğrula, data/kidem-tavan.json'a yeni dönem ekle")
+    # TCMB haftalık faizleri (EVDS): son hafta (Cuma) 13 günden eskiyse anahtar/API bozulmuş olabilir
+    fz = load("faiz-oranlari.json")
+    if fz and (today - dt.date.fromisoformat(fz["hafta"])).days > 13:
+        out.append(f"TCMB faiz verisi bayat (son hafta {fz['hafta']}) → bash scripts/evds-update.sh (EVDS anahtarı: ~/.config/parafomo/evds.env)")
     # Günlük/sık güncellenen veri dosyaları: 'updated' alanı eşikten eskiyse alarm
     for name, max_days, fix in (
         ("altin-getiri.json", 4, "scripts/gold-returns.py"), ("dolar-getiri.json", 4, "scripts/dollar-returns.py"),

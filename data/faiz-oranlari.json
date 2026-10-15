@@ -1,0 +1,508 @@
+{
+ "_aciklama": "TCMB haftalık ağırlıklı ortalama TL faizleri (akım). Oranlar YILLIK BİLEŞİK (efektif). kredi.aylik = (1+E)^(1/12)-1; mevduat.basit = gün vadeli basit yıllık eşdeğer.",
+ "_kaynak": {
+  "mevduat": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Faiz+Istatistikleri/Haftalik/Mevduat+Faiz+Oranlari/",
+  "kredi": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Faiz+Istatistikleri/Haftalik/Kredi+Faiz+Oranlari/"
+ },
+ "updated": "2026-10-15",
+ "hafta": "2026-10-09",
+ "oncekiHafta": "2026-10-02",
+ "mevduat": {
+  "ay1": {
+   "etiket": "1 aya kadar",
+   "yillikBilesik": 42.88,
+   "basit": 36.25,
+   "basitGun": 32,
+   "degisim": -0.23,
+   "seri": "TP.TRY.MT01"
+  },
+  "ay3": {
+   "etiket": "3 aya kadar",
+   "yillikBilesik": 43.2,
+   "basit": 37.58,
+   "basitGun": 92,
+   "degisim": -0.59,
+   "seri": "TP.TRY.MT02"
+  },
+  "ay6": {
+   "etiket": "6 aya kadar",
+   "yillikBilesik": 42.23,
+   "basit": 38.49,
+   "basitGun": 181,
+   "degisim": -0.91,
+   "seri": "TP.TRY.MT03"
+  },
+  "yil1": {
+   "etiket": "1 yıla kadar",
+   "yillikBilesik": 41.27,
+   "basit": 41.27,
+   "basitGun": 365,
+   "degisim": 0.99,
+   "seri": "TP.TRY.MT04"
+  },
+  "yil1plus": {
+   "etiket": "1 yıl ve daha uzun",
+   "yillikBilesik": 37.57,
+   "basit": 37.57,
+   "basitGun": 365,
+   "degisim": 3.16,
+   "seri": "TP.TRY.MT05"
+  },
+  "toplam": {
+   "etiket": "Toplam (tüm vadeler)",
+   "yillikBilesik": 42.94,
+   "basit": 37.38,
+   "basitGun": 92,
+   "degisim": -0.36,
+   "seri": "TP.TRY.MT06"
+  }
+ },
+ "kredi": {
+  "ihtiyac": {
+   "etiket": "İhtiyaç kredisi",
+   "yillikBilesik": 62.21,
+   "aylik": 4.11,
+   "degisim": 0.18,
+   "seri": "TP.KTF10"
+  },
+  "tasit": {
+   "etiket": "Taşıt kredisi",
+   "yillikBilesik": 39.77,
+   "aylik": 2.83,
+   "degisim": -5.28,
+   "seri": "TP.KTF11"
+  },
+  "konut": {
+   "etiket": "Konut kredisi (sabit faizli)",
+   "yillikBilesik": 41.66,
+   "aylik": 2.94,
+   "degisim": -0.21,
+   "seri": "TP.KTF12"
+  },
+  "tuketici": {
+   "etiket": "Tüketici kredisi (toplam)",
+   "yillikBilesik": 60.41,
+   "aylik": 4.02,
+   "degisim": 0.12,
+   "seri": "TP.KTFTUK"
+  }
+ },
+ "seri": [
+  {
+   "hafta": "2025-10-17",
+   "mevduat3ay": 50.14,
+   "mevduat1ay": 47.72,
+   "ihtiyac": 62.74,
+   "konut": 37.91,
+   "tasit": 36.3
+  },
+  {
+   "hafta": "2025-10-24",
+   "mevduat3ay": 49.89,
+   "mevduat1ay": 47.15,
+   "ihtiyac": 61.95,
+   "konut": 38.0,
+   "tasit": 35.37
+  },
+  {
+   "hafta": "2025-10-31",
+   "mevduat3ay": 48.13,
+   "mevduat1ay": 46.92,
+   "ihtiyac": 61.52,
+   "konut": 37.75,
+   "tasit": 35.16
+  },
+  {
+   "hafta": "2025-11-07",
+   "mevduat3ay": 48.1,
+   "mevduat1ay": 46.51,
+   "ihtiyac": 62.66,
+   "konut": 37.78,
+   "tasit": 36.62
+  },
+  {
+   "hafta": "2025-11-14",
+   "mevduat3ay": 47.58,
+   "mevduat1ay": 46.35,
+   "ihtiyac": 61.03,
+   "konut": 37.87,
+   "tasit": 35.37
+  },
+  {
+   "hafta": "2025-11-21",
+   "mevduat3ay": 47.91,
+   "mevduat1ay": 46.56,
+   "ihtiyac": 62.92,
+   "konut": 37.7,
+   "tasit": 35.11
+  },
+  {
+   "hafta": "2025-11-28",
+   "mevduat3ay": 47.84,
+   "mevduat1ay": 46.54,
+   "ihtiyac": 62.63,
+   "konut": 37.7,
+   "tasit": 32.69
+  },
+  {
+   "hafta": "2025-12-05",
+   "mevduat3ay": 47.74,
+   "mevduat1ay": 46.57,
+   "ihtiyac": 64.57,
+   "konut": 37.75,
+   "tasit": 34.12
+  },
+  {
+   "hafta": "2025-12-12",
+   "mevduat3ay": 46.92,
+   "mevduat1ay": 45.54,
+   "ihtiyac": 57.89,
+   "konut": 37.63,
+   "tasit": 33.62
+  },
+  {
+   "hafta": "2025-12-19",
+   "mevduat3ay": 46.15,
+   "mevduat1ay": 45.28,
+   "ihtiyac": 56.83,
+   "konut": 37.21,
+   "tasit": 33.24
+  },
+  {
+   "hafta": "2025-12-26",
+   "mevduat3ay": 45.73,
+   "mevduat1ay": 45.24,
+   "ihtiyac": 46.37,
+   "konut": 36.57,
+   "tasit": 31.54
+  },
+  {
+   "hafta": "2026-01-02",
+   "mevduat3ay": 46.09,
+   "mevduat1ay": 45.18,
+   "ihtiyac": 54.48,
+   "konut": 36.38,
+   "tasit": 31.68
+  },
+  {
+   "hafta": "2026-01-09",
+   "mevduat3ay": 45.79,
+   "mevduat1ay": 44.7,
+   "ihtiyac": 63.53,
+   "konut": 36.37,
+   "tasit": 43.05
+  },
+  {
+   "hafta": "2026-01-16",
+   "mevduat3ay": 46.21,
+   "mevduat1ay": 44.49,
+   "ihtiyac": 64.04,
+   "konut": 36.26,
+   "tasit": 37.97
+  },
+  {
+   "hafta": "2026-01-23",
+   "mevduat3ay": 45.09,
+   "mevduat1ay": 43.7,
+   "ihtiyac": 56.37,
+   "konut": 36.25,
+   "tasit": 37.94
+  },
+  {
+   "hafta": "2026-01-30",
+   "mevduat3ay": 44.38,
+   "mevduat1ay": 43.46,
+   "ihtiyac": 60.34,
+   "konut": 35.93,
+   "tasit": 36.17
+  },
+  {
+   "hafta": "2026-02-06",
+   "mevduat3ay": 44.8,
+   "mevduat1ay": 43.72,
+   "ihtiyac": 60.38,
+   "konut": 35.9,
+   "tasit": 37.24
+  },
+  {
+   "hafta": "2026-02-13",
+   "mevduat3ay": 44.65,
+   "mevduat1ay": 43.43,
+   "ihtiyac": 59.67,
+   "konut": 35.28,
+   "tasit": 35.67
+  },
+  {
+   "hafta": "2026-02-20",
+   "mevduat3ay": 44.8,
+   "mevduat1ay": 43.29,
+   "ihtiyac": 59.51,
+   "konut": 34.81,
+   "tasit": 35.48
+  },
+  {
+   "hafta": "2026-02-27",
+   "mevduat3ay": 44.38,
+   "mevduat1ay": 42.97,
+   "ihtiyac": 56.79,
+   "konut": 34.63,
+   "tasit": 39.12
+  },
+  {
+   "hafta": "2026-03-06",
+   "mevduat3ay": 44.82,
+   "mevduat1ay": 44.28,
+   "ihtiyac": 58.96,
+   "konut": 34.17,
+   "tasit": 36.53
+  },
+  {
+   "hafta": "2026-03-13",
+   "mevduat3ay": 45.24,
+   "mevduat1ay": 44.32,
+   "ihtiyac": 58.66,
+   "konut": 34.17,
+   "tasit": 35.65
+  },
+  {
+   "hafta": "2026-03-20",
+   "mevduat3ay": 45.68,
+   "mevduat1ay": 44.64,
+   "ihtiyac": 57.91,
+   "konut": 34.76,
+   "tasit": 35.46
+  },
+  {
+   "hafta": "2026-03-27",
+   "mevduat3ay": 46.59,
+   "mevduat1ay": 45.14,
+   "ihtiyac": 58.99,
+   "konut": 35.52,
+   "tasit": 35.01
+  },
+  {
+   "hafta": "2026-04-03",
+   "mevduat3ay": 48.8,
+   "mevduat1ay": 46.29,
+   "ihtiyac": 60.66,
+   "konut": 35.82,
+   "tasit": 37.58
+  },
+  {
+   "hafta": "2026-04-10",
+   "mevduat3ay": 49.02,
+   "mevduat1ay": 46.12,
+   "ihtiyac": 63.29,
+   "konut": 36.53,
+   "tasit": 43.15
+  },
+  {
+   "hafta": "2026-04-17",
+   "mevduat3ay": 49.09,
+   "mevduat1ay": 46.27,
+   "ihtiyac": 63.07,
+   "konut": 36.84,
+   "tasit": 39.62
+  },
+  {
+   "hafta": "2026-04-24",
+   "mevduat3ay": 48.64,
+   "mevduat1ay": 46.33,
+   "ihtiyac": 62.24,
+   "konut": 37.27,
+   "tasit": 39.44
+  },
+  {
+   "hafta": "2026-05-01",
+   "mevduat3ay": 49.08,
+   "mevduat1ay": 46.67,
+   "ihtiyac": 61.69,
+   "konut": 37.95,
+   "tasit": 39.67
+  },
+  {
+   "hafta": "2026-05-08",
+   "mevduat3ay": 48.85,
+   "mevduat1ay": 46.41,
+   "ihtiyac": 61.55,
+   "konut": 38.06,
+   "tasit": 39.68
+  },
+  {
+   "hafta": "2026-05-15",
+   "mevduat3ay": 48.96,
+   "mevduat1ay": 46.33,
+   "ihtiyac": 61.65,
+   "konut": 38.42,
+   "tasit": 33.07
+  },
+  {
+   "hafta": "2026-05-22",
+   "mevduat3ay": 48.81,
+   "mevduat1ay": 46.49,
+   "ihtiyac": 61.83,
+   "konut": 38.8,
+   "tasit": 33.74
+  },
+  {
+   "hafta": "2026-05-29",
+   "mevduat3ay": 48.5,
+   "mevduat1ay": 46.56,
+   "ihtiyac": 63.61,
+   "konut": 38.9,
+   "tasit": 35.23
+  },
+  {
+   "hafta": "2026-06-05",
+   "mevduat3ay": 49.3,
+   "mevduat1ay": 46.53,
+   "ihtiyac": 64.13,
+   "konut": 39.33,
+   "tasit": 45.87
+  },
+  {
+   "hafta": "2026-06-12",
+   "mevduat3ay": 49.36,
+   "mevduat1ay": 46.48,
+   "ihtiyac": 63.94,
+   "konut": 39.72,
+   "tasit": 49.16
+  },
+  {
+   "hafta": "2026-06-19",
+   "mevduat3ay": 49.5,
+   "mevduat1ay": 46.5,
+   "ihtiyac": 63.8,
+   "konut": 40.73,
+   "tasit": 49.38
+  },
+  {
+   "hafta": "2026-06-26",
+   "mevduat3ay": 49.2,
+   "mevduat1ay": 46.63,
+   "ihtiyac": 62.85,
+   "konut": 41.56,
+   "tasit": 51.85
+  },
+  {
+   "hafta": "2026-07-03",
+   "mevduat3ay": 48.97,
+   "mevduat1ay": 46.49,
+   "ihtiyac": 63.35,
+   "konut": 41.45,
+   "tasit": 49.7
+  },
+  {
+   "hafta": "2026-07-10",
+   "mevduat3ay": 48.27,
+   "mevduat1ay": 46.41,
+   "ihtiyac": 64.29,
+   "konut": 41.4,
+   "tasit": 46.17
+  },
+  {
+   "hafta": "2026-07-17",
+   "mevduat3ay": 47.99,
+   "mevduat1ay": 46.13,
+   "ihtiyac": 64.98,
+   "konut": 41.23,
+   "tasit": 47.26
+  },
+  {
+   "hafta": "2026-07-24",
+   "mevduat3ay": 47.83,
+   "mevduat1ay": 46.53,
+   "ihtiyac": 65.16,
+   "konut": 41.39,
+   "tasit": 43.7
+  },
+  {
+   "hafta": "2026-07-31",
+   "mevduat3ay": 47.7,
+   "mevduat1ay": 46.25,
+   "ihtiyac": 64.93,
+   "konut": 41.84,
+   "tasit": 45.94
+  },
+  {
+   "hafta": "2026-08-07",
+   "mevduat3ay": 47.91,
+   "mevduat1ay": 46.19,
+   "ihtiyac": 65.45,
+   "konut": 42.0,
+   "tasit": 48.68
+  },
+  {
+   "hafta": "2026-08-14",
+   "mevduat3ay": 47.4,
+   "mevduat1ay": 46.04,
+   "ihtiyac": 65.46,
+   "konut": 42.03,
+   "tasit": 47.3
+  },
+  {
+   "hafta": "2026-08-21",
+   "mevduat3ay": 47.14,
+   "mevduat1ay": 46.13,
+   "ihtiyac": 64.2,
+   "konut": 42.04,
+   "tasit": 48.18
+  },
+  {
+   "hafta": "2026-08-28",
+   "mevduat3ay": 44.79,
+   "mevduat1ay": 44.81,
+   "ihtiyac": 60.64,
+   "konut": 41.89,
+   "tasit": 47.99
+  },
+  {
+   "hafta": "2026-09-04",
+   "mevduat3ay": 44.37,
+   "mevduat1ay": 44.48,
+   "ihtiyac": 62.95,
+   "konut": 41.94,
+   "tasit": 37.55
+  },
+  {
+   "hafta": "2026-09-11",
+   "mevduat3ay": 43.9,
+   "mevduat1ay": 43.92,
+   "ihtiyac": 64.14,
+   "konut": 41.93,
+   "tasit": 40.53
+  },
+  {
+   "hafta": "2026-09-18",
+   "mevduat3ay": 44.02,
+   "mevduat1ay": 43.37,
+   "ihtiyac": 63.03,
+   "konut": 41.96,
+   "tasit": 45.54
+  },
+  {
+   "hafta": "2026-09-25",
+   "mevduat3ay": 43.77,
+   "mevduat1ay": 43.2,
+   "ihtiyac": 62.73,
+   "konut": 41.82,
+   "tasit": 47.71
+  },
+  {
+   "hafta": "2026-10-02",
+   "mevduat3ay": 43.79,
+   "mevduat1ay": 43.11,
+   "ihtiyac": 62.03,
+   "konut": 41.87,
+   "tasit": 45.05
+  },
+  {
+   "hafta": "2026-10-09",
+   "mevduat3ay": 43.2,
+   "mevduat1ay": 42.88,
+   "ihtiyac": 62.21,
+   "konut": 41.66,
+   "tasit": 39.77
+  }
+ ]
+}

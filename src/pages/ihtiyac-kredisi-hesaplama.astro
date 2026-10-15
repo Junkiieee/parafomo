@@ -1,0 +1,413 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import faiz from '../../data/faiz-oranlari.json';
+
+// Varsayılan faiz = TCMB haftalık ağırlıklı ortalama ihtiyaç kredisi faizi (EVDS TP.KTF10, scripts/evds-rates.py —
+// her hafta otomatik). TCMB yıllık bileşik yayımlar → aylık = (1+E)^(1/12) − 1.
+// Vergiler (2026-10-15 doğrulandı): KKDF %15 — GİB KKDF oran tablosu (2010/974 BKK, tüketici kredisi);
+// BSMV %15 — 7345 sayılı CK, RG 7.7.2023 (TÜRMOB/TİM duyuruları). Bankalar vergiyi faize ekler:
+// vergili aylık faiz = akdi faiz × (1 + 0,15 + 0,15).
+// BDDK vade sınırı: 13.02.2025 tarihli 11152 sayılı Kurul Kararı (AA + Dünya): ≤125.000 ₺ 36 ay,
+// 125.000–250.000 ₺ 24 ay, >250.000 ₺ 12 ay. Erken ödeme: 6502 s. Kanun md. 27 — tazminat yok, faiz indirimi zorunlu.
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const trDate = (iso: string) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${AYLAR[m - 1]} ${y}`; };
+const HAFTA = trDate(faiz.hafta);
+const KR = faiz.kredi;
+const TAX = { kkdf: 0.15, bsmv: 0.15 };
+const TAXF = 1 + TAX.kkdf + TAX.bsmv;
+const VADE = [
+  { upTo: 125000, months: 36, label: '125.000 ₺ ve altı' },
+  { upTo: 250000, months: 24, label: '125.000 – 250.000 ₺' },
+  { upTo: Infinity, months: 12, label: '250.000 ₺ üzeri' },
+];
+const maxVade = (amount: number) => VADE.find((v) => amount <= v.upTo)!.months;
+
+const D = { amount: 100000, rate: KR.ihtiyac.aylik, months: 36 };
+
+// Eşit taksit (anüite), vergili faizle: taksit = P·i / (1 − (1+i)^−n), i = r × 1,30
+function loan(P: number, ratePct: number, n: number) {
+  const i = (ratePct / 100) * TAXF;
+  const pay = i === 0 ? P / n : (P * i) / (1 - Math.pow(1 + i, -n));
+  const total = pay * n;
+  const cost = total - P;                       // faiz + KKDF + BSMV
+  const interest = cost / TAXF;                 // yalnız faiz
+  return { pay, total, cost, interest, kkdf: interest * TAX.kkdf, bsmv: interest * TAX.bsmv };
+}
+const base = loan(D.amount, D.rate, D.months);
+
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const pct = (n: number) => n.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
+
+// "50/100/200 bin TL ihtiyaç kredisi taksiti" tablosu — BDDK vadesini aşan hücre boş (kredi o vadede verilemez).
+const AMOUNTS = [50000, 100000, 200000];
+const TERMS = [12, 24, 36];
+const grid = AMOUNTS.map((a) => ({ a, cells: TERMS.map((m) => (m <= maxVade(a) ? loan(a, D.rate, m).pay : null)) }));
+const ex100 = loan(100000, D.rate, 36);
+const ex200 = loan(200000, D.rate, 24);
+
+const faq = [
+  {
+    q: 'İhtiyaç kredisi faiz oranları ne kadar?',
+    a: `TCMB'nin ${HAFTA} haftası verisine göre bankaların yeni kullandırdığı ihtiyaç kredilerinde ağırlıklı ortalama faiz yıllık %${pct(KR.ihtiyac.yillikBilesik)}; bu, aylık yaklaşık %${pct(KR.ihtiyac.aylik)} faize karşılık gelir. Ortalama tüm bankaların hacimle ağırlıklandırılmış oranıdır; kampanya ve maaş müşterisi oranları farklı olabilir. Hesaplayıcının varsayılan faizi her hafta bu veriyle otomatik güncellenir.`,
+  },
+  {
+    q: 'İhtiyaç kredisi taksiti nasıl hesaplanır?',
+    a: `Bankalar faizin üzerine %15 KKDF ve %15 BSMV ekler; taksit bu vergili faizle eşit taksit (anüite) formülüyle bulunur: vergili aylık faiz = akdi faiz × 1,30, taksit = kredi × vergili faiz ÷ (1 − (1 + vergili faiz)⁻ⁿ). Aylık %${pct(D.rate)} faizle 100.000 ₺ krediyi 36 ay vadede çekerseniz aylık taksit yaklaşık ${fmt(ex100.pay)} ₺, toplam geri ödeme ${fmt(ex100.total)} ₺ olur.`,
+  },
+  {
+    q: 'İhtiyaç kredisinde KKDF ve BSMV oranı kaç?',
+    a: 'Tüketici kredilerinde KKDF %15 (Gelir İdaresi KKDF oran tablosu), BSMV %15’tir (7 Temmuz 2023 tarihli Resmî Gazete’de yayımlanan 7345 sayılı Cumhurbaşkanı Kararı ile %10’dan %15’e çıktı). İkisi de faiz tutarı üzerinden alınır; yani faizin %30’u kadar ek vergi ödersiniz. Konut kredilerinde bu iki vergi alınmaz.',
+  },
+  {
+    q: 'İhtiyaç kredisi en fazla kaç ay vadeli çekilebilir?',
+    a: 'BDDK’nın 13 Şubat 2025 tarihli 11152 sayılı kararına göre tutarı 125.000 ₺ ve altındaki ihtiyaç kredilerinde azami vade 36 ay, 125.000 ₺ ile 250.000 ₺ arasındakilerde 24 ay, 250.000 ₺ üzerindekilerde 12 aydır. Banka gelirinize ve kredi notunuza göre daha kısa vade önerebilir.',
+  },
+  {
+    q: '200 bin TL ihtiyaç kredisinin taksiti ne kadar?',
+    a: `200.000 ₺ ihtiyaç kredisi BDDK sınırı nedeniyle en fazla 24 ay vadeyle kullanılabilir. Aylık %${pct(D.rate)} faiz, KKDF ve BSMV dahil 24 ay vadede aylık taksit yaklaşık ${fmt(ex200.pay)} ₺, toplam geri ödeme ${fmt(ex200.total)} ₺ olur.`,
+  },
+  {
+    q: 'İhtiyaç kredisini erken kapatırsam ceza öder miyim?',
+    a: 'Hayır. 6502 sayılı Tüketicinin Korunması Hakkında Kanun’un 27. maddesine göre tüketici kredisini kısmen ya da tamamen erken ödeyebilirsiniz; banka erken ödenen tutara göre faiz ve diğer maliyetlerden indirim yapmak zorundadır. Bu maddede erken ödeme tazminatı öngörülmez. %1-%2’lik erken ödeme tazminatı yalnızca sabit faizli konut kredilerinde (md. 37) söz konusudur.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Kredi Hesaplama', url: '/kredi-hesaplama/' },
+  { name: 'İhtiyaç Kredisi Hesaplama', url: '/ihtiyac-kredisi-hesaplama/' },
+];
+---
+
+<BaseLayout
+  title="İhtiyaç Kredisi Hesaplama 2026 | Güncel Faiz, KKDF ve BSMV Dahil Taksit"
+  description={`İhtiyaç kredisi hesaplama: güncel ortalama faiz aylık %${pct(KR.ihtiyac.aylik)} (TCMB, ${HAFTA}). Tutar ve vadeyi girin; KKDF ve BSMV dahil aylık taksit, toplam geri ödeme, BDDK vade sınırı ve 50-200 bin TL taksit tablosu.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+  image="/og/ihtiyac-kredisi-hesaplama.png"
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · İhtiyaç Kredisi</p>
+      <h1>İhtiyaç Kredisi Hesaplama</h1>
+      <p class="lede">
+        Kredi tutarını, aylık faizi ve vadeyi girin; <strong>KKDF ve BSMV dahil aylık taksitinizi</strong>,
+        toplam geri ödemeyi ve ödeyeceğiniz vergiyi görün. BDDK’nın vade sınırını da kontrol eder.
+      </p>
+    </header>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Kredi tutarı (₺)</span>
+          <input type="number" id="in-amount" value={D.amount} min="0" step="5000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Aylık faiz oranı (%) <small>vergiler hariç, bankanın ilanı</small></span>
+          <input type="number" id="in-rate" value={D.rate} min="0" max="15" step="0.01" inputmode="decimal" />
+        </label>
+        <label>
+          <span>Vade (ay)</span>
+          <input type="number" id="in-months" value={D.months} min="1" max="36" step="1" inputmode="numeric" />
+        </label>
+        <div class="preset-row" role="group" aria-label="Hızlı vade seçimi">
+          {[12, 24, 36].map((m) => <button type="button" class="preset" data-months={m}>{m} ay</button>)}
+        </div>
+        <p class="vade-warn" id="out-vade" hidden></p>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Aylık taksit (KKDF + BSMV dahil)</span>
+          <span class="result-value" id="out-pay">₺{fmt(base.pay)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Toplam geri ödeme</span>
+            <span class="split-val" id="out-total">₺{fmt(base.total)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Toplam faiz</span>
+            <span class="split-val" id="out-interest">₺{fmt(base.interest)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">KKDF (%15)</span>
+            <span class="split-val" id="out-kkdf">₺{fmt(base.kkdf)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">BSMV (%15)</span>
+            <span class="split-val" id="out-bsmv">₺{fmt(base.bsmv)}</span>
+          </div>
+          <div class="split-item strong">
+            <span class="split-label">Kredinin toplam maliyeti</span>
+            <span class="split-val" id="out-cost">₺{fmt(base.cost)}</span>
+          </div>
+        </div>
+        <p class="result-note">Varsayılan aylık %{pct(D.rate)}: TCMB ortalama ihtiyaç kredisi faizi ({HAFTA} haftası, yıllık %{pct(KR.ihtiyac.yillikBilesik)}). Bankanızın ilan ettiği aylık faizi girerek değiştirin.</p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır, kredi teklifi veya finansal tavsiye değildir. Hesap, ilan edilen
+      aylık faizin üzerine %15 KKDF ve %15 BSMV ekler; banka ayrıca kredi tahsis ücreti veya sigorta isteyebilir.
+      TCMB ortalamasının vergileri içerip içermediği metaveride belirtilmez; en doğru sonuç için bankanızın ilan
+      ettiği aylık faizi girin ve teklifteki yıllık maliyet oranını esas alın.
+    </p>
+
+    <section class="table-block">
+      <h2>50, 100 ve 200 bin TL ihtiyaç kredisi taksiti</h2>
+      <p class="table-intro">
+        Aylık <strong id="grid-rate">%{pct(D.rate)}</strong> faiz, KKDF ve BSMV dahil aylık taksit (yukarıdaki faiz
+        değişince tablo da güncellenir). Boş hücre: o tutarda BDDK bu vadeye izin vermiyor.
+      </p>
+      <table class="rate-table" id="grid-table">
+        <thead><tr><th>Kredi tutarı</th>{TERMS.map((m) => <th>{m} ay</th>)}</tr></thead>
+        <tbody>
+          {grid.map((r) => (
+            <tr>
+              <td>₺{fmt(r.a)}</td>
+              {r.cells.map((c) => <td>{c == null ? <span class="na">BDDK: en fazla {maxVade(r.a)} ay</span> : `₺${fmt(c)}`}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    <section class="table-block">
+      <h2>Güncel kredi faiz oranları (TCMB, {HAFTA})</h2>
+      <p class="table-intro">Bankaların o hafta kullandırdığı yeni kredilerde ağırlıklı ortalama faiz:</p>
+      <table class="rate-table">
+        <thead><tr><th>Kredi türü</th><th>Yıllık (bileşik)</th><th>Aylık karşılığı</th><th>Önceki haftaya göre</th></tr></thead>
+        <tbody>
+          {(['ihtiyac', 'tasit', 'konut'] as const).map((k) => (
+            <tr>
+              <td>{KR[k].etiket}</td>
+              <td>%{pct(KR[k].yillikBilesik)}</td>
+              <td><strong>%{pct(KR[k].aylik)}</strong></td>
+              <td>{KR[k].degisim == null ? '—' : `${KR[k].degisim! > 0 ? '▲' : KR[k].degisim! < 0 ? '▼' : ''} ${pct(Math.abs(KR[k].degisim!))} puan`}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Kaynak: <a href="https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Faiz+Istatistikleri/Haftalik/Kredi+Faiz+Oranlari/" rel="nofollow noopener" target="_blank">TCMB haftalık kredi faiz oranları</a>
+        (akım, ağırlıklı ortalama) · her hafta otomatik güncellenir. Aylık = (1 + yıllık)<sup>1/12</sup> − 1.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Ödeme planı</h2>
+      <p class="table-intro">Her taksitte önce faiz ve vergisi ödenir; kalanı anaparayı düşürür:</p>
+      <div class="schedule-scroll">
+        <table class="rate-table" id="schedule-table">
+          <thead><tr><th>Ay</th><th>Taksit</th><th>Anapara</th><th>Faiz</th><th>KKDF+BSMV</th><th>Kalan borç</th></tr></thead>
+          <tbody id="schedule-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="prose-block">
+      <h2>KKDF ve BSMV taksiti ne kadar artırır?</h2>
+      <p>
+        İhtiyaç kredisinde bankalar faizin üzerine iki vergi ekler: <strong>%15 KKDF</strong> (Kaynak Kullanımını
+        Destekleme Fonu) ve <strong>%15 BSMV</strong> (Banka ve Sigorta Muameleleri Vergisi). İkisi de faiz tutarı
+        üzerinden hesaplanır, yani ilan edilen aylık %{pct(D.rate)} faiz fiilen <strong>%{pct(Math.round(D.rate * TAXF * 100) / 100)}</strong>
+        olarak işler. Konut kredisinde bu vergiler alınmadığı için aynı faizde konut kredisi belirgin biçimde ucuzdur
+        (→ <a href="/konut-kredisi-hesaplama/">konut kredisi hesaplama</a>).
+      </p>
+      <h2>BDDK ihtiyaç kredisi vade sınırları</h2>
+      <table class="rate-table">
+        <thead><tr><th>Kredi tutarı</th><th>Azami vade</th></tr></thead>
+        <tbody>{VADE.map((v) => <tr><td>{v.label}</td><td>{v.months} ay</td></tr>)}</tbody>
+      </table>
+      <p class="table-note">BDDK’nın 13 Şubat 2025 tarihli ve 11152 sayılı Kurul Kararı.</p>
+      <h2>Erken kapamada ceza var mı?</h2>
+      <p>
+        Yok. 6502 sayılı Kanun’un 27. maddesine göre tüketici kredisini dilediğiniz zaman kısmen veya tamamen
+        kapatabilirsiniz; banka erken ödenen tutara düşen faiz ve maliyetleri indirmek zorundadır. Erken ödeme
+        tazminatı yalnızca sabit faizli konut kredilerinde (md. 37) alınabilir.
+      </p>
+      <h2>Faiz oranına değil yıllık maliyet oranına bakın</h2>
+      <p>
+        İki teklifi karşılaştırırken aylık faiz yerine teklifteki <strong>yıllık maliyet oranını</strong> kıyaslayın:
+        vergiler, tahsis ücreti ve sigorta bu orana dahildir. Düşük faizli ama yüksek masraflı bir teklif toplamda
+        daha pahalıya gelebilir.
+      </p>
+      <p class="cta-line">
+        Vergisiz saf taksit ve vade karşılaştırması için → <a href="/kredi-hesaplama/">kredi hesaplama</a>.
+        Kredi faizlerinin yönünü belirleyen kararlar → <a href="/tcmb-faiz-takvimi/">TCMB faiz takvimi</a>.
+        Parayı bankada tutmanın getirisi → <a href="/mevduat-faizi-hesaplama/">güncel mevduat faiz oranları</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ TAX, VADE: VADE.map((v) => ({ upTo: v.upTo === Infinity ? 1e15 : v.upTo, months: v.months })) }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const money = (n) => '₺' + nf.format(Math.round(n));
+      const TAXF = 1 + TAX.kkdf + TAX.bsmv;
+      const AMOUNTS = [50000, 100000, 200000];
+      const TERMS = [12, 24, 36];
+      const maxVade = (a) => VADE.find((v) => a <= v.upTo).months;
+
+      function loan(P, ratePct, n) {
+        const i = (ratePct / 100) * TAXF;
+        const pay = i === 0 ? P / n : (P * i) / (1 - Math.pow(1 + i, -n));
+        const total = pay * n;
+        const cost = total - P;
+        const interest = cost / TAXF;
+        return { pay, total, cost, interest, kkdf: interest * TAX.kkdf, bsmv: interest * TAX.bsmv, i };
+      }
+
+      function buildSchedule(P, l, n) {
+        const body = $('schedule-body');
+        let bal = P;
+        const rows = [];
+        const showAll = n <= 18;
+        for (let m = 1; m <= n; m++) {
+          const interest = bal * (l.i / TAXF);
+          const tax = interest * (TAXF - 1);
+          let principal = l.pay - interest - tax;
+          if (m === n) principal = bal;
+          bal = Math.max(0, bal - principal);
+          if (showAll || m <= 6 || m > n - 3) {
+            rows.push(`<tr><td>${m}</td><td>${money(l.pay)}</td><td>${money(principal)}</td><td>${money(interest)}</td><td>${money(tax)}</td><td>${money(bal)}</td></tr>`);
+          } else if (m === 7) {
+            rows.push(`<tr class="ellipsis"><td colspan="6">… ${n - 9} ara taksit …</td></tr>`);
+          }
+        }
+        body.innerHTML = rows.join('');
+      }
+
+      function buildGrid(rate) {
+        document.querySelector('#grid-table tbody').innerHTML = AMOUNTS.map((a) =>
+          `<tr><td>${money(a)}</td>${TERMS.map((m) => `<td>${m <= maxVade(a) ? money(loan(a, rate, m).pay) : `<span class="na">BDDK: en fazla ${maxVade(a)} ay</span>`}</td>`).join('')}</tr>`
+        ).join('');
+        $('grid-rate').textContent = '%' + String(rate).replace('.', ',');
+      }
+
+      function update() {
+        const P = Math.max(0, +$('in-amount').value || 0);
+        const rate = Math.max(0, +$('in-rate').value || 0);
+        const n = Math.max(1, Math.min(120, Math.round(+$('in-months').value || 1)));
+        const l = loan(P, rate, n);
+        $('out-pay').textContent = money(l.pay);
+        $('out-total').textContent = money(l.total);
+        $('out-interest').textContent = money(l.interest);
+        $('out-kkdf').textContent = money(l.kkdf);
+        $('out-bsmv').textContent = money(l.bsmv);
+        $('out-cost').textContent = money(l.cost);
+        const mv = maxVade(P), w = $('out-vade');
+        w.hidden = n <= mv;
+        w.textContent = `BDDK sınırı: ${money(P)} ihtiyaç kredisi en fazla ${mv} ay vadeyle kullanılabilir.`;
+        document.querySelectorAll('.preset').forEach((b) => b.classList.toggle('active', +b.dataset.months === n));
+        buildSchedule(P, l, n);
+        buildGrid(rate);
+      }
+
+      ['in-amount', 'in-rate', 'in-months'].forEach((id) => $(id).addEventListener('input', update));
+      document.querySelectorAll('.preset').forEach((b) =>
+        b.addEventListener('click', () => { $('in-months').value = b.dataset.months; update(); })
+      );
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 2rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 620px; margin: 0 auto; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs span small { font-weight: 400; color: var(--text-muted); }
+    .calc-inputs input {
+      font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .preset-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .preset {
+      font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600; cursor: pointer;
+      padding: 0.35rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); color: var(--text-soft);
+    }
+    .preset:hover { border-color: var(--brand-2); }
+    .preset.active { background: var(--brand-2); border-color: var(--brand-2); color: #fff; }
+    .vade-warn { margin: 0; font-size: 0.82rem; font-weight: 600; color: #a15c07; background: #fdf3e1; padding: 0.5rem 0.7rem; border-radius: var(--radius-sm); }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 1rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.5rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-item.strong { border-top: 1px solid var(--border); padding-top: 0.5rem; }
+    .split-item.strong .split-val { color: var(--brand-ink); font-size: 1.05rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .rate-table tr.ellipsis td { text-align: center; color: var(--text-muted); font-size: 0.82rem; }
+    .rate-table .na { font-size: 0.78rem; color: var(--text-muted); }
+    .schedule-scroll { max-height: 420px; overflow: auto; border: 1px solid var(--border); border-radius: var(--radius-sm); }
+    .schedule-scroll table { font-size: 0.86rem; }
+    .schedule-scroll th { position: sticky; top: 0; background: var(--bg-card); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; line-height: 1.5; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+      .schedule-scroll table { font-size: 0.78rem; }
+    }
+  </style>
+</BaseLayout>
