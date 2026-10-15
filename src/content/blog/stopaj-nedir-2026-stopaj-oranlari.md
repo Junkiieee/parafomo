@@ -10,7 +10,7 @@ faq:
   - q: "Stopaj nedir?"
     a: "Stopaj, bir gelir sana ödenmeden önce vergisinin kaynağında kesilmesidir. Banka mevduat faizinden, portföy şirketi fon kazancından, şirket temettüden vergiyi keser ve devlete öder; sen hesabına net tutarı alırsın."
   - q: "2026'da mevduat stopaj oranı ne kadar?"
-    a: "TL mevduatta vadesiz ve 6 aya kadar vadede %17,5, 1 yıla kadar vadede %15, 1 yıldan uzun vadede %10 uygulanıyor. Bu oranlar 11444 sayılı Cumhurbaşkanı Kararı ile 31 Aralık 2026'ya kadar uzatıldı. Döviz mevduatında oran %25'tir."
+    a: "TL mevduatta vadesiz ve 6 aya kadar vadede %17,5, 1 yıla kadar vadede %15, 1 yıldan uzun vadede %10 uygulanıyor. Bu oranlar 11444 sayılı Cumhurbaşkanı Kararı ile 31 Aralık 2026'ya kadar uzatıldı. Döviz mevduatında oran TL'den farklı belirlenir; güncel oranı bankanın vergilendirme tablosundan teyit et."
   - q: "Yatırım fonlarında stopaj oranı kaç?"
     a: "9 Temmuz 2025'ten sonra alınan para piyasası, borçlanma araçları, kıymetli maden, değişken, karma ve serbest fonların çoğunda oran %17,5'tir. TEFAS'ta işlem gören hisse senedi yoğun fonlarda stopaj %0'dır. Oranı fonu aldığın tarih belirler."
   - q: "Hisse senedi satış kârından stopaj kesilir mi?"
@@ -56,7 +56,7 @@ Aşağıdaki tablo, bireysel (gerçek kişi) yatırımcı için en sık karşıl
 | TL mevduat — vadesiz ve 6 aya kadar | **%17,5** | 10041 s. CB Kararı (9 Tem 2025); 11444 s. Karar ile 31.12.2026'ya uzatıldı |
 | TL mevduat — 1 yıla kadar | **%15** | Aynı kararlar |
 | TL mevduat — 1 yıldan uzun | **%10** | Aynı kararlar |
-| Döviz (YP) mevduat | **%25** | Bankaların yayımladığı güncel stopaj tabloları |
+| Döviz (YP) mevduat | Farklı oran (bankadan teyit et) | Bankaların yayımladığı güncel stopaj tabloları |
 | Devlet tahvili, hazine bonosu, kamu kira sertifikası | **%0** | 11444 s. Karar ile 31.12.2026'ya kadar |
 | Para piyasası, borçlanma araçları, kıymetli maden fonları (9.7.2025 sonrası alım) | **%17,5** | 10041 s. CB Kararı |
 | Değişken, karma, eurobond, yabancı, serbest ve döviz fonları (9.7.2025 sonrası alım) | **%17,5** | 10041 s. CB Kararı |
@@ -70,7 +70,7 @@ Kaynaklar: Resmî Gazete 20.06.2026 tarih ve 33286 sayı (11444 s. Karar); Ziraa
 
 ## Mevduat stopajı: vade uzadıkça vergi düşüyor
 
-TL mevduatta stopaj vadeye göre kademeli. Bu, aynı brüt faizde **uzun vadenin net getiriyi artırdığı** anlamına gelir. Yıllık %40 brüt faiz varsayımıyla:
+TL mevduatta stopaj vadeye göre kademeli. Bu, aynı brüt faizde **uzun vadenin net getiriyi artırdığı** anlamına gelir. Yıllık %40 brüt faiz varsayımıyla (mevduat faizlerinin yönünü belirleyen politika faizi kararları için [TCMB faiz takvimine](/tcmb-faiz-takvimi) bakabilirsin):
 
 | Vade | Stopaj | Net etkin faiz (%40 brütte) |
 |---|---|---|
@@ -94,7 +94,7 @@ Fonlarda stopaj, fonu **sattığında** oluşan kazanç üzerinden ve "ilk giren
 
 - **9 Temmuz 2025 ve sonrası** alınan para piyasası, borçlanma araçları, altın/kıymetli maden, değişken, karma, serbest ve eurobond fonlarında oran **%17,5**.
 - **1 Şubat – 8 Temmuz 2025** arasında alınanlarda **%15**, daha önceki dönemlerde %0 ile %10 arasında değişen oranlar geçerli.
-- **Hisse senedi yoğun fonlar** (portföyünün en az %80'i BIST hisselerinden oluşan, TEFAS'ta işlem gören fonlar) **%0**.
+- **Hisse senedi yoğun fonlar** (portföyü mevzuatta belirlenen asgari oranda BIST hisselerinden oluşan, TEFAS'ta işlem gören fonlar; fonun bu statüsü izahnamesinde belirtilir) **%0**.
 - 27 Mart 2026'daki 11107 sayılı kararla **TEFAS'ta işlem görmeyen** hisse senedi yoğun serbest fonlar bu muafiyetten çıkarıldı; bu tarihten sonra alınan paylarda oran %17,5.
 
 ### Örnek: para piyasası fonu
@@ -127,7 +127,7 @@ Vergi açısından avantajlı araçların daha geniş listesi için [vergi avant
 ## Özet
 
 - **Stopaj**, kazancın vergisinin kaynağında, ödeyen kurum tarafından kesilmesidir; anaparadan değil kazançtan alınır.
-- 2026'da TL mevduatta oranlar **%17,5 / %15 / %10** (vadeye göre); bu kademe 31 Aralık 2026'ya kadar uzatıldı. Döviz mevduatında %25.
+- 2026'da TL mevduatta oranlar **%17,5 / %15 / %10** (vadeye göre); bu kademe 31 Aralık 2026'ya kadar uzatıldı. Döviz mevduatında oran farklıdır; bankandan teyit et.
 - Fonların çoğunda **%17,5** (9.7.2025 sonrası alım), TEFAS'taki hisse senedi yoğun fonlarda **%0**; oranı alış tarihi belirler.
 - BIST hisse kazancında **%0**, temettüde **%15**, işyeri kirasında **%20** stopaj uygulanır.
 
