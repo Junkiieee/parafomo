@@ -299,3 +299,18 @@ details.denied code { display: block; margin-top: 6px; white-space: pre-wrap; }
 .more { border: 0; background: none; padding: 4px 0 0; color: var(--brand-deep); font-size: 13px; font-weight: 600; cursor: pointer; }
 .done-list .res { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .done-list li:hover .res { -webkit-line-clamp: unset; }
+
+/* SEO denetimi */
+.seo-top { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr); gap: 10px 16px; padding: 14px 16px; border-bottom: 1px solid var(--line-soft); align-items: end; }
+@media (max-width: 640px) { .seo-top { grid-template-columns: repeat(3, minmax(0, 1fr)); } .seo-ix { grid-column: 1 / -1; } }
+.seo-top .v { font: 600 20px var(--cond); }
+.seo-top .v.bad-t { color: var(--bad); }
+.seo-ix .track { margin-top: 6px; height: 8px; }
+.seo-g { border-bottom: 1px solid var(--line-soft); padding: 10px 16px; }
+.seo-g:last-child { border-bottom: 0; }
+.seo-g summary { display: flex; align-items: center; gap: 10px; cursor: pointer; list-style: none; }
+.seo-g summary::-webkit-details-marker { display: none; }
+.seo-l { flex: 1; font-size: 14px; }
+.seo-n { font: 700 16px var(--cond); }
+.seo-list { list-style: none; margin: 0; padding: 0; font-size: 13px; max-height: 260px; overflow: auto; }
+.seo-list li { padding: 3px 0; overflow-wrap: anywhere; }

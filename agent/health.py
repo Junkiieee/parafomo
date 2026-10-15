@@ -243,6 +243,18 @@ def stale_data():
     return out
 
 
+def seo_status():
+    """scripts/seo-audit.py özeti (panel + sorun listesi)."""
+    try:
+        d = json.load(open(os.path.join(ROOT, "data", "learning", "seo-audit.json"), encoding="utf-8"))
+    except Exception:
+        return None
+    age = (_now() - dt.datetime.fromisoformat(d["generated"])).total_seconds() / 3600
+    return {"counts": d["counts"], "index": d["index"], "pages": d["pages"], "age_h": round(age, 1),
+            "by_code": d.get("by_code", {}), "codes": d.get("codes", {}),
+            "issues": [i for i in d["issues"] if i["sev"] != "BİLGİ"][:200]}
+
+
 def collect():
     du = shutil.disk_usage("/")
     return {
@@ -256,6 +268,7 @@ def collect():
         "site": http_ok("https://parafomo.com/"),
         "api": http_ok("https://api.parafomo.com/health"),
         "stale": stale_data(),
+        "seo": seo_status(),
     }
 
 
@@ -298,6 +311,11 @@ def problems(h):
     if h["api"] != 200:
         p.append(f"api: {h['api']}")
     p += [f"veri: {x}" for x in h.get("stale", [])]
+    seo = h.get("seo")
+    if seo and seo["counts"].get("KRİTİK"):
+        p.append(f"SEO: {seo['counts']['KRİTİK']} kritik sorun")
+    if seo and seo["age_h"] > 72:
+        p.append("SEO denetimi 3 gündür çalışmadı (learn-daily.sh)")
     return p
 
 

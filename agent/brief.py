@@ -472,6 +472,31 @@ def sec_opportunities():
         out("\n**Düşük talep (hacim < 2 — bu sorgulara yazı açma):** " + " · ".join(d["dusuk_talep"][:k]))
 
 
+def sec_seo():
+    p = os.path.join(ROOT, "data", "learning", "seo-audit.json")
+    try:
+        d = json.load(open(p, encoding="utf-8"))
+    except Exception:
+        out("_(seo-audit.json yok — /root/.venvs/parafomo/bin/python scripts/seo-audit.py --google)_")
+        return
+    c, ix = d["counts"], d["index"]
+    age = (dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(d["generated"])).total_seconds() / 3600
+    out(f"_{age:.0f} sa önce · {d['pages']} sayfa · KRİTİK {c['KRİTİK']} · UYARI {c['UYARI']} · BİLGİ {c['BİLGİ']} · "
+        f"Google indeksi {ix['indexed']}/{ix['checked']} bakılan sayfa_")
+    codes = d.get("codes", {})
+    crit = [i for i in d["issues"] if i["sev"] == "KRİTİK"]
+    for i in crit[:20]:
+        out(f"- 🔴 **{codes.get(i['code'], {}).get('label', i['code'])}** — {i['path']} {i['detail']} → {codes.get(i['code'], {}).get('fix', '')}")
+    groups = {}
+    for i in d["issues"]:
+        if i["sev"] == "UYARI":
+            groups.setdefault(i["code"], []).append(i)
+    for code, items in sorted(groups.items(), key=lambda kv: -len(kv[1])):
+        meta = codes.get(code, {})
+        ex = ", ".join(f"{i['path']}" + (f" ({i['detail']})" if i["detail"] else "") for i in items[:4])
+        out(f"- 🟡 {meta.get('label', code)}: **{len(items)}** sayfa — örn. {ex} → {meta.get('fix', '')}")
+
+
 def sec_inventory():
     blog = os.path.join(ROOT, "src", "content", "blog")
     posts = []
@@ -590,6 +615,7 @@ def main():
     section(f"2) Skor kartı — son {WEEKS} ISO hafta", sec_scorecard)
     section("3) Üretim sağlığı (önce bunu oku — kırmızı varsa ilk iş onu düzelt)",
             lambda: out(health.render(health.collect())))
+    section("3b) SEO denetimi (scripts/seo-audit.py — KRİTİK varsa görevden önce düzelt)", sec_seo)
     section("4) Bu haftanın planı (agent/plan/week.md)", lambda: cat(os.path.join(PLAN, "week.md"),
                                                                        empty="(plan yok — haftalık koşu oluşturmalı)"))
     section("4b) GÖREV MASASI — Kaan'ın kararları, notları, istekleri (dashboard.parafomo.com — ÖNCE BUNU UYGULA)",

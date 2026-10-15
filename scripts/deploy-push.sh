@@ -24,6 +24,8 @@ if ! npm run build > "$REPO/logs/deploy-build.log" 2>&1; then
   tail -20 "$REPO/logs/deploy-build.log"
   exit 1
 fi
+# SEO bekçisi: yeni build'de kırık link / yanlış kanonik vb. KRİTİK varsa göster (push'u engellemez)
+python3 "$REPO/scripts/seo-audit.py" 2>/dev/null | sed -n '1,12p' | sed 's/^/[deploy] /' || true
 if git_push_retry main; then
   echo "[deploy] push tamam — Cloudflare 1-3 dk içinde yayınlar ($(git log -1 --format='%h %s'))"
 else

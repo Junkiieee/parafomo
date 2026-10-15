@@ -148,6 +148,7 @@
     if (h.llm.state !== "ok") p.push("Claude");
     if (h.site !== 200) p.push("site"); if (h.api !== 200) p.push("api");
     if (h.disk_pct >= 88) p.push("disk");
+    if (h.seo && h.seo.counts["KRİTİK"]) p.push("SEO");
     return p.concat(h.stale || []);
   }
 
@@ -436,8 +437,40 @@
           <label class="switch meta"><input type="checkbox" id="bg-toggle" ${showBg ? "checked" : ""}> arka plan işleri</label></div>
         <p class="lead">Saatler Türkiye saati; gerçek crontab'dan türetilir.</p>
         <div class="card"><ul class="sched">${li}</ul></div></div>
-    </div>`;
+    </div>
+    ${seoHtml(h.seo)}`;
   }
+  function seoHtml(seo) {
+    if (!seo) return `<div class="sec"><div class="sec-h"><h2>SEO denetimi</h2></div><div class="card"><div class="empty">Henüz çalışmadı — scripts/seo-audit.py</div></div></div>`;
+    const c = seo.counts, ix = seo.index;
+    const pct = ix.checked ? Math.round((ix.indexed / ix.checked) * 100) : 0;
+    const groups = {};
+    for (const i of seo.issues) (groups[i.code] = groups[i.code] || []).push(i);
+    const order = Object.entries(groups).sort((a, b) =>
+      (a[1][0].sev === "KRİTİK" ? 0 : 1) - (b[1][0].sev === "KRİTİK" ? 0 : 1) || b[1].length - a[1].length);
+    const rows = order.map(([code, items]) => {
+      const meta = seo.codes[code] || {};
+      const crit = items[0].sev === "KRİTİK";
+      return `<details class="seo-g ${crit ? "crit" : ""}"><summary>${stPill(crit ? "HATA" : "UYARI", crit ? "Kritik" : "Uyarı")}
+          <span class="seo-l">${esc(meta.label || code)}</span><b class="seo-n">${items.length}</b></summary>
+        <p class="small muted" style="margin:6px 0 8px">Düzeltme: ${esc(meta.fix || "")}</p>
+        <ul class="seo-list">${items.slice(0, 40).map((i) => `<li><a href="https://parafomo.com${esc(i.path)}" target="_blank" rel="noopener">${esc(i.path)}</a> <span class="muted">${esc(i.detail || "")}</span></li>`).join("")}
+        ${items.length > 40 ? `<li class="muted">… ${items.length - 40} sayfa daha</li>` : ""}</ul></details>`;
+    }).join("");
+    return `<div class="sec"><div class="sec-h"><h2>SEO denetimi</h2><span class="meta">${seo.pages} sayfa · ${seo.age_h < 1 ? "az önce" : Math.round(seo.age_h) + " sa önce"} · her gün 11:45 TSİ</span></div>
+      <p class="lead">Ajan kritikleri ertesi gece ilk iş düzeltir; uyarılardan her gece bir kümeyi temizler.</p>
+      <div class="card">
+        <div class="seo-top">
+          <div class="kv"><div class="k">Kritik</div><div class="v ${c["KRİTİK"] ? "bad-t" : ""}">${c["KRİTİK"]}</div></div>
+          <div class="kv"><div class="k">Uyarı</div><div class="v">${c["UYARI"]}</div></div>
+          <div class="kv"><div class="k">Bilgi</div><div class="v">${c["BİLGİ"]}</div></div>
+          <div class="kv seo-ix"><div class="k">Google indeksinde (bakılan sayfalar)</div><div class="v">${ix.indexed} / ${ix.checked} <span class="muted small">· %${pct}</span></div>
+            <div class="track"><i style="width:${pct}%"></i></div></div>
+        </div>
+        ${rows || '<div class="empty">Sorun yok.</div>'}
+      </div></div>`;
+  }
+
   // takvim TSİ gününe göre sıralanır (UTC 21:00+ = ertesi gün 00:00+ TSİ)
   const trMin = (t) => { const [h, m] = t.split(":").map(Number); return ((h + 3) % 24) * 60 + m; };
   const utcToTr = (t) => { const [h, m] = t.split(":").map(Number); return String((h + 3) % 24).padStart(2, "0") + ":" + String(m).padStart(2, "0"); };

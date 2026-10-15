@@ -38,6 +38,8 @@ fi
 # Yeni URL varsa (ya da 7 gün geçtiyse) sitemap'i GSC'ye yeniden gönder — Google 07-03→10-08 hiç indirmemişti
 "$VPY" "$REPO/scripts/gsc-sitemap.py" || echo "UYARI: sitemap gönderimi başarısız"
 "$VPY" "$REPO/scripts/indexnow.py" || echo "UYARI: IndexNow gönderimi başarısız"
+# Sürekli SEO denetimi: dist statik kontrol + Google URL Inspection (günde 60 sayfa, yeni/indekssiz önce)
+"$VPY" "$REPO/scripts/seo-audit.py" --google --budget 60 --quiet || echo "UYARI: SEO denetimi başarısız"
 
 echo "[3/4] Karar üretiliyor"
 TG=""; [ "${1:-}" = "--telegram" ] && TG="--telegram"

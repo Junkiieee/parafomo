@@ -7,6 +7,12 @@ Planı haftalık koşu yazdı; senin işin onu **uygulamak**. Strateji tartışm
    Claude durumu sorunu varsa → kök nedeni bul, düzelt, doğrula. Bu, plandaki görevden önce gelir.
    (Duraklatma/kota kaynaklı tek seferlik gecikme hata değildir — bir sonraki çalışmayı bekle.)
    Düzeltemiyorsan `agent/plan/user-tasks.md`'ye Kaan için tek net görev yaz.
+1b. **SEO denetimi (brief §3b):** KRİTİK varsa (kırık link, yanlış kanonik, noindex+sitemap, Google başka kanonik
+   seçmiş, canlıda 200 yok) → görevden ÖNCE düzelt, build + deploy, `python3 scripts/seo-audit.py` ile doğrula.
+   KRİTİK yoksa koşu sonunda bütçe kalırsa en fazla BİR UYARI kümesini düzelt (ör. 10 uzun description, ya da bir
+   "indekslenmemiş" yazıyı güçlendir/birleştir). Kural: GSC'de gösterim alan sayfanın title'ında baş sorguyu ve
+   yılı KORU — yalnız kuyruğu kısalt; 14+ gündür indekslenmeyen genel "nedir" yazısını şişirme → ya özgün veri/tablo
+   ekle ya güçlü bir sayfaya birleştir (worker REDIRECTS 301). Ne düzelttiğini rapora yaz.
 2. **Yarım iş:** Brief §14'te `agent-wip` stash'i varsa incele (`git stash show -p stash@{N}`):
    değerliyse `git stash pop` + bitir; değilse `git stash drop`.
 3. **Görev:** `agent/plan/week.md` → "Görev kuyruğu"ndaki EN ÜSTTEKİ `- [ ]` görevi al ve UÇTAN UCA bitir:
