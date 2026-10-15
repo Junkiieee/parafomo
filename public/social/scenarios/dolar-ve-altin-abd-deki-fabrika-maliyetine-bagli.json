@@ -1,0 +1,62 @@
+{
+  "slug": "dolar-ve-altin-abd-deki-fabrika-maliyetine-bagli",
+  "title": "Dolar ve altın, ABD'deki fabrika maliyetine bağlı",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Çekirdek ÜFE, ABD'de üreticinin maliyetini ölçer ve fiyatların nereye gideceğine dair ipucu verir. Bu sayı Fed beklentisi, dolar ve altın üzerinden cebe nasıl yansır, sade anlatım.",
+  "tags": [
+    "çekirdek ÜFE",
+    "ABD enflasyonu",
+    "Fed",
+    "dolar",
+    "altın",
+    "faiz beklentisi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "ABD'de fiyat artışı raftan önce fabrikada başlıyor.",
+      "visual": {
+        "type": "place",
+        "query": "Federal Reserve building"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çekirdek ÜFE, üreticinin maliyetini ölçer. Bu maliyet genelde aylar sonra mağaza fiyatına yansır.",
+      "visual": {
+        "type": "object",
+        "query": "factory assembly line"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama sayı beklentiden yüksek gelirse, Fed faizi indirmekten çekinir ve dolar bir anda güçlenebilir.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Dolar",
+        "glyph": "$"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Güçlü dolar altını baskılayabilir, kuru yukarı çeker. İthal ürün alıyorsan bunu faturada görürsün.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bir sonraki veri dolara ne yapacak, merak ediyorsan abone ol; her gün tek net analizi 60 saniyede veriyoruz.",
+      "visual": {
+        "type": "place",
+        "query": "Federal Reserve building"
+      }
+    }
+  ]
+}
