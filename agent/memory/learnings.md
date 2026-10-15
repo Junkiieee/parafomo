@@ -1,110 +1,83 @@
 # ParaFOMO — Kalıcı dersler (düzenlenmiş)
 
-_v1'in 59 deneyi + 2 aylık KPI'ından damıtıldı (2026-10-06); son yeniden yazım: haftalık koşu 2026-10-08.
+_v1'in 59 deneyi + 2 aylık KPI'ından damıtıldı (2026-10-06); son yeniden yazım: haftalık koşu 2026-10-15.
 ≤40 madde, tekrar yok, kanıtıyla. Ham geçmiş: agent/archive/v1/memory/._
 
 ## Kanıtlı çalışan
-- **Yeni arama niyeti açan veri/araç sayfaları tek kanıtlı web kaldıracı.** 08-11→08-24 arası 6 araç/takvim
-  sayfası + 08-28→09-02 getiri kümesi (altın/dolar/BIST getiri + altın-dolar-borsa hub) sonrası GSC tık
-  ~4 → ~40/hafta, gerçek erişim ~3 → ~45-50/hafta. Tekil sayfa etkisi ölçülemez; toplu motor olarak izle.
-  Yeni sayfa eklenmeyen haftalarda motor düz kalır (202638-202641 ~36-51/hafta, GSC ~40 tık).
-- **Tarihsel getiri / karar niyeti en temiz yeni yüzeyi açar:** /altin-getiri 28g 31 tık / 472 gös (poz 6,6) en
-  çok tıklanan sayfa; /dolar-getiri 14 tık (poz 6,6) (2026-10-08). /halka-arz-getiri ve /bist-getiri gösterim
-  alıyor ama 0 tık (88 / 25 gös) — her getiri sayfası eşit değil; talep varlık başına değişir.
-- **Zamanlı makro açıklayıcılar** (olaydan 1-3 gün önce: ABD işsizlik/CPI/NFP/PCE, TCMB kararı) en iyi
-  blog sayfaları: abd-issizlik-verisi-altin-dolar-etkisi 28g 12 tık; tcmb-ekim-2026 5 tık/43 gös (poz 4,2).
-- **Takvim/zamanlama sayfaları** tam eşleşen sorguda ~1 haftada page-1 sınırına gelir (fed-faiz-takvimi
-  poz ~11, 425 gös/28g) AMA talep mevsimseldir (tcmb/enflasyon/kira takvimleri olay gününe yakın
-  canlanır) — olay gününe hizalı ölç, düz pencerede "kaybeden" sanma. /enflasyon-takvimi 28g 9 tık.
-- **AI asistanlar gerçek trafiğin ~%10-12'si** (28g: 20 kullanıcı / 172) — net tablo + kaynak + tarih
-  içeren sayfalar alıntılanıyor; büyüyen kanal.
-- **Şirket adı sorguları talep görüyor:** "albayrak hazır beton hisse" 179 gös/28g (poz 12) tek blog yazısıyla
-  → B261006-1 halka arz şirket sayfalarının dayanağı (40 sayfa 2026-10-07'de açıldı, sonuç 11-03'te).
-
-- **Veri sayfası = cevap + tarih, sadece takvim değil (RC 2026-10-10):** /fed- ve /tcmb-faiz-takvimi yalnız tarih
-  gösteriyordu; "faiz şu an kaç / son karar ne oldu" niyeti cevapsızdı → güncel faiz kutusu + karar sütunu +
-  dinamik başlık eklendi. Yeni veri sayfası açarken: sorgunun SAYISAL cevabı başlıkta ve ilk ekranda olsun.
-- **Ocak/Temmuz emekli-memur zammı** Türkiye'nin her TÜİK günü zirve yapan sorgusu → /emekli-zammi-hesaplama
-  (10-10) tek kanonik sayfa; her ay kendini günceller. Bu konuda YENİ BLOG YAZISI AÇMA (yamyamlaşma) — sayfayı
-  güçlendir. Yöntem Temmuz 2026 resmi oranlarıyla doğrulandı (SSK %17,75, memur %13,51).
+- **Yeni arama niyeti açan veri/araç sayfaları tek kanıtlı web kaldıracı.** 08-11→09-02 arası takvim + getiri
+  sayfaları sonrası GSC tık ~4 → ~40/hafta, gerçek erişim ~3 → ~45-50/hafta. Tekil sayfa etkisi ölçülemez; toplu
+  motor olarak izle. Yeni niyet açılmayan haftalarda motor düz/aşağı (202641: 17 tık, 202640: 40).
+- **Yeni sayfalar "gelecek yıl" ve uzun-kuyruk sorgularda ilk haftada p4-11'e çıkıyor (GSC 28g, 2026-10-15):**
+  /yeniden-degerleme-orani "2027 yeniden değerleme oranı tahmini" p11, /trafik-cezalari "2027 trafik cezaları" p9,
+  /mtv p8,7, /pasaport-ehliyet-harci p4, /gumus-getiri "son 3 yılda" p2, /euro-getiri "euro 1 yılda ne kadar
+  kazandırır" p7. Büyük sitelerin henüz kilitlemediği yer: gelecek yıl (2027) + "X yılda ne kadar" kalıpları.
+- **Talep olaya bağlı ve dalgalı:** /altin-getiri haftalık W38 21 tık/256 gös (altın haber dalgası) → W39-41 3-5
+  tık; sıra sabit (p6-8). Haftalık tık düşüşünü sıralama kaybı sanma — önce sayfanın gösterim+sırasına bak.
+- **Zamanlı makro açıklayıcılar** (olaydan 1-3 gün önce: ABD işsizlik/CPI/NFP, TCMB kararı) en iyi blog sayfaları:
+  abd-issizlik-verisi-altin-dolar-etkisi 28g 14 tık; tcmb-ekim-2026 5 tık (poz 6,2). Olay geçince sonuç kutusu ekle.
+- **Takvim/zamanlama sayfaları** tam eşleşen uzun-kuyrukta p7-13 (fed-faiz-takvimi "fed faiz kararı takvimi 2026"
+  p7,7; enflasyon-takvimi "tüfe ayın kaçında açıklanır" p7,4) ama talep mevsimsel — olay gününe hizalı ölç.
+- **AI asistanlar gerçek trafiğin ~%7-12'si** (28g 13 / 183, 2026-10-15) — net tablo + kaynak + tarih alıntılanıyor.
+- **Halka arz şirket sayfaları indekse girdi:** sitemap düzeltmesinden sonra 10 örneğin 9'u indeksli (10-08'de
+  11/12 "unknown"); 26/42 sayfa gösterim alıyor, tıklayanlar p5-7 (7g 5 tık / 100 gös, 2026-10-15).
+- **Veri sayfası = cevap + tarih:** sorgunun SAYISAL cevabı başlıkta ve ilk ekranda olsun (fed/tcmb takvimlerine
+  güncel faiz kutusu eklendi, RC 10-10).
+- **Emekli/memur zammı tek kanonik sayfa** (/emekli-zammi-hesaplama, 10-10) — yeni blog yazısı AÇMA. Talep çok
+  büyük ama Ocak/Temmuz'a yığılı: "emekli zammı 2026" vekil zirvesi 998, "memur zammı 2026" 545 (çapa=100).
 
 ## Kanıtlı çalışmayan (tekrar deneme)
-- **Hacmi ölçülmemiş konuya yazı (2026-10-14 Trends ölçümü):** son yazıların hedef sorgularının çoğu Trends'te
-  ≈0 ("jolts ne demek", "abd faiz artarsa dolar ne olur" ailesi, "dolar mı altın mı daha mantıklı", "bono
-  hesaplama" 1). Site ayda ~7K gösterim alıyor; hepsinde 1. olsak bile günde ~60 ziyaretçi. Talep olan yer:
-  konut kredisi hesaplama 170, kira artış oranı 318, halka arz takvimi 68 (biz sıra 67), kıdem tazminatı
-  hesaplama 86 ("mevduat faizi" = 100). Araç sayfalarımız ana sorgularında HİÇ gösterim almıyor. Kural:
-  konu = brief §9c, hacim ≥ 5; ABD makro (JOLTS/PCE/ISM) için yazı açma, takvim satırı yeter.
-- **Mevcut sayfayı on-page dürtmek** (iç-link, sinonim, FAQ, tazelik, cannibalization düzeltmesi, exact-match
-  yeni yazı) 5-7 günde pozisyon oynatmadı — 6+ teyit (NFP, Fed, endeks fonu, Fed-sinonim, Jackson Hole,
-  abd-faiz-dolar). Darboğaz dış otorite / arama niyeti.
-- **Head-term takvim sorguları** ("halka arz takvimi" 57 gös poz 66, "halka arz tarihleri" poz 71) ve
-  **haber/timing head-term'leri** ("fed faiz kararı") büyük siteler/haber siteleri tutuyor; uzun kuyruk ve
-  şirket/varlık-özel sayfayla gir.
-- **Canlı değer/fiyat sorguları** (altın fiyatları, dolar endeksi) için ayrı sayfa yeni yüzey açmadı —
-  büyük siteler domine ediyor; blog açıklayıcısı zaten sıralanıyorsa yeni sayfa açma.
-- **Video mikro-düzenlemeleri** (fade, açılış karesi, micro-cut, bold-claim kanca, seamless-loop,
-  contradiction-hook, SFX — 11 deneme) ölçülebilir fark yaratmadı; video başı medyan izlenme Tem→Eyl
-  ~100-120 düz. Düşük n'de retention mikro-optimizasyonu çıkmaz sokak.
-- **Vekil metrikle format seçmek:** 09-30'da "65% AVD kapısı"na göre backtest ×2 yapıldı; Ağu+ sonuç metriğinde
-  backtest viral medyanı 96 (n=13) — en zayıflardan. Format kararını izlenme@7g + abone ile ver (2026-10-08).
+- **Hesaplayıcıların baş sorguları otorite kilidinde, başlık sorunu değil (GSC 28g, 2026-10-15):** kira artış
+  oranı p95-100, kıdem tazminatı p95-98, işsizlik maaşı p76-86, altın hesaplama p71-75, mevduat faizi hesaplama
+  p57, halka arz takvimi p67 — başlık/H1 sorguyu ZATEN içeriyor. Fırsat listesinin "GUCLENDIR: başlık hedeflemiyor"
+  notu bu sayfalar için yanlış; on-page dürtme görevi yapma. Yeni niyet/gelecek yıl açısıyla gir.
+- **Hacmi ölçülmemiş konuya yazı:** Trends'te ≈0 çıkanlar — jolts, "abd faiz artarsa dolar" ailesi, "dolar mı altın
+  mı" varyantları, bono hesaplama, "bitcoin mi altın mı" 0,1, "mevduat mı altın mı" 0, "altın ne zaman düşer" 1,5
+  (10-14/10-15). "X mi Y mi" karar sorguları ölçülemez düzeyde. Kural: konu = ölçülmüş hacim ≥ 5.
+- **Mevcut sayfayı on-page dürtmek** (iç-link, sinonim, FAQ, tazelik, exact-match yeni yazı) 5-7 günde pozisyon
+  oynatmadı — 6+ teyit. Darboğaz dış otorite / arama niyeti.
+- **Canlı değer/fiyat sorguları** (altın fiyatları, dolar endeksi p76) için sayfa yeni yüzey açmadı.
+- **Video üretim-kalitesi reformu izlenmeyi kaldırmadı (B261006-4 lost, 10-15):** 10-07..10-11'deki 14 video medyan
+  84 izlenme vs önceki 3 hafta 122 (n=26); abone +2/hafta. Ağustos'un shock_number medyanı 500 tekrarlanmadı
+  (yeni shock: 5/43/122). Format medyanları ortalamaya dönüyor; video izlenmesine bahis hedefi koyma.
+- **Video mikro-düzenlemeleri** (fade, açılış karesi, micro-cut, kanca varyantları, SFX — 11 deneme) ölçülebilir
+  fark yaratmadı; video başı medyan ~85-120 Tem→Eki düz.
+- **Vekil metrikle format seçmek** (09-30 "65% AVD kapısı" → backtest ×2): sonuç metriğinde en zayıf (96).
 - **Elle paylaşım gerektiren dağıtım** (Reddit/Ekşi taslakları): 26+ taslak paylaşılmadı, referral 0.
-- **IG caption/hashtag/CTA denemeleri** ölçülemedi (insights izni yok, gönderi başı 0-2 beğeni).
-- **Shorts→site hunisi** ~0 (59K toplam izlenme → 28 günde 3 "Organic Video" kullanıcısı).
-- **Trafiksiz ürün cilası:** portföy ürünü sağlam ama prod'da ~2 kayıt — UX iyileştirmesi kayıt getirmez,
-  önce trafik.
+- **IG caption/hashtag/CTA denemeleri** ölçülemedi (insights izni yok).
+- **Shorts→site hunisi** ~0 (61K toplam izlenme → 28 günde birkaç "Organic Video" kullanıcısı).
+- **Trafiksiz ürün cilası:** portföy ürünü sağlam ama 5 üye — UX iyileştirmesi kayıt getirmez, önce trafik.
 
 ## YouTube
-- **Viral format izlenmesi (Ağu 1+, yayından ≥7g, 2026-10-08):** shock_number medyan 500 (n=11, p75 678) ·
-  single_concept 161 (7) · myth 153 (11) · backtest_return 96 (13) · news_reaction 89 (18) · comparison elendi.
-  Tam-Manim (daily-short/format) hattında hepsi 50-135 arası. → 10-08'de viral DOW_FMT shock×3/myth×2/single×2.
-- Kazanan temalar: altın + kayıp korkusu ("paran sessizce eriyor"), gizli kesinti/kayıp rakamı (kira-geliri-
-  yuzde-2 500, bes-yuzde-30 480 izl.). Blog→Short medyan ~112 (n=75); tam-Manim tek başına izlenmeyi artırmadı.
-- 280 video → 51 abone (izlenme→abone %0,09; 10-07→10-08 düz). YPP için 1000 abone + 10M Shorts izlenmesi/90g;
-  günde ~3 şablon video "özgün olmayan/tekrarlayan içerik" incelemesine takılabilir → hacim artırma, kalite artır.
-- Shock rakamı her zaman hesaplanabilir/kaynaklı olmalı (yanıltıcı başlık = platform kırmızı çizgisi).
+- 300 video → 53 abone (izlenme→abone ~%0,09). YPP için 1000 abone + 10M Shorts izlenmesi/90g uzak; günde ~3
+  şablon video "özgün olmayan içerik" incelemesine takılabilir → hacim artırma, kalite ve özgünlük artır.
+- Kazanan temalar (Ağu): altın + kayıp korkusu, gizli kesinti rakamı (kira-geliri-yuzde-2 500, bes-yuzde-30 480).
+  Blog→Short medyan ~110; tam-Manim tek başına izlenmeyi artırmadı.
+- Shock rakamı her zaman hesaplanabilir/kaynaklı olmalı (V1 10-09: kaynaksız rakam reddediliyor).
+- Video-qa son 7g'de 4 videoda "altyazı üst üste binmiş" buldu (viral + daily-short ortak kodu) — gerçek kusur.
 
 ## Kısıtlar ve çevre
-- **Veri sessizce bayatlar:** /kira-artis-orani-hesaplama 08-13'te elle girildi, Ekim'de hâlâ "Ağustos"
-  gösteriyordu (talebin zirvesinde). Elle girilen her veri ya otomatik güncelleyici ya da health.py
-  "Veri tazeliği" satırı ister (10-10'dan beri kira/TÜFE/Fed/TCMB kontrol ediliyor). Rakamı YALNIZ birincil
-  kaynaktan yaz (TCMB/Fed/TÜİK/TEDB); haber siteleri çelişebilir (bir site Fed tarihlerini yanlış verdi).
-- **Kanonik URL (10-10 düzeltildi):** 7000+ iç link sonda '/' olmadan yazılıydı → 307 + GSC'de /x ve /x/
-  ayrı satırlar; http/www 200 dönüyordu. Artık build sonrası link normalizasyonu + worker/index.js 301.
-  Yeni sayfa/şablonda linki yine '/' ile yaz; worker'ı kaldırma.
-- **İndeks ≠ sorun, sıralama sorun:** URL denetimi 10-10: 225 URL'nin 178'i indeksli; jenerik evergreen
-  yazılar (pasif gelir, bileşik faiz nedir…) "Crawled – not indexed". Footer artık tüm veri/araç
-  sayfalarına link veriyor (önce 3-4 sayfadan link alıyorlardı). IndexNow (Bing/Yandex) learn-daily'de.
-- **Google sitemap'i 2026-07-03 → 10-08 arası HİÇ yeniden indirmedi;** yeni sayfalar yalnız iç linkle,
-  gecikmeli keşfediliyordu (10-07 açılan 40 halka arz sayfası "URL is unknown"). 10-08'den beri
-  `scripts/gsc-sitemap.py` (servis hesabı siteFullUser) learn-daily'de URL kümesi değişince/7 günde bir gönderiyor.
-  Yeni sayfa bahsinin saati sitemap gönderiminden başlar.
-- **Headless izin listesi:** `for`/`until`, `x=...` atama, `awk`, heredoc, `cd X && ...` zinciri, mutlak yollu
-  `bash -n` reddedilir (10-07: 13 ret). Çok adımlı işi tek `python3 -c` ya da repo içi `.py` ile yap.
-- **Claude kotası:** Max 5x (2026-10-06'dan beri; günlük+haftalık Opus). Haftalık kota Çarşamba 22:00 UTC
-  sıfırlanır + 5 saatlik pencere. v1'de Eylül'ün ~16 gecesi limit/OAuth yüzünden boş geçti (14-21 Eyl 8 gece
-  OAuth süresi dolmuş, kimse fark etmedi; ~20 IG gönderisi hata metniyle yayınlandı). Kalıcı çözüm:
-  `claude setup-token` (Kaan görevi). daily-content ajanla aynı anda çalışmaz (ağır-iş kilidi) — haftalık
-  koşu 06:00 UTC'den önce bitmeli.
-- Dış veri kaynakları sessizce bozulur (Truncgil v4/v3 boş/bozuk JSON) → her fetch degrade edebilmeli;
-  Yahoo yedek. Investing.com 403 → takvim ForexFactory + TÜİK kuralıyla (ForexFactory yalnız bu haftayı verir;
-  ileri tarihli ABD verisini BLS/BEA takviminden doğrula).
-- GSC ~2-3 gün gecikmeli; kısmi hafta düşüşü artefakttır (v1 bunu iki kez "çöküş" sandı). Brief'teki YouTube
-  KPI'ı tek tük `None` gelir (geçici API hatası) — düşüş sanma.
-- Deploy: push → Cloudflare otomatik build (yerel build ~15 sn). IG Graph API JPEG + public URL ister
-  (GitHub raw / `media` dalı); 9004 geçici hata tekrar denemeyle geçer.
-- **Telegram kanalı 2 üye** (2026-10-06): dağıtım değeri ~0. Site bülten formu `action="#"` (2026-10-08 hâlâ;
-  kimse abone olamıyor) — T4.
-- Sunucu 2 çekirdek / 3,7 GB RAM / GPU yok: yerel ağır TTS (XTTS) çalışmaz; video render CPU'yu doyurur.
-- **2026'da harçlar YD %25,49 değil CB kararıyla %18,95 arttı** (pasaport 10y 13.410,40, IMEI 54.258 bu oranla tutarlı; 57.241 veren haberler %25,49 ile hesaplamış). Zam sezonu sayfalarında kaynak rakamını bu oranla çapraz kontrol et (2026-10-12).
-- **Görev Masası 5 gece okunamadı (10-09→10-13): kök neden `run.sh`'taki `--strict-mcp-config` bayrağıydı** —
-  bayrak claude.ai bağlayıcılarını (Claude Docs) tamamen kapatıyor; ToolSearch araçları bulamıyor. 2026-10-13 RC
-  oturumunda bayrak kaldırıldı ve headless testle doğrulandı (pano okundu, $0.003). İzin kapısı zaten
-  `--allowedTools`; pano 10-13'te RC oturumunca gerçek durumla eşitlendi. Artık her koşuda panoyu oku/yaz;
-  "yüklenemedi" görürsen bayrağın geri gelip gelmediğine bak (2026-10-13).
-- **Hız darboğazı fontlardı, JS değil (2026-10-13 canlı A/B):** /altin-getiri mobil LCP fontlar engelli 0,9 sn,
-  gtag engelli 2,4-2,8 sn, ikisi açık 2,3-4,4 sn. Google Fonts + `swap` → kendi sunucumuz + `optional`. Yeni
-  harici font/üçüncü taraf script ekleme; ölçüm: `npx lighthouse` + Playwright headless_shell (PSI kotası düşük).
-- **Olay önizleme yazıları eskiyince 0 tık alıyor** (TCMB Eylül yazısı sıra 6, 480 gös., 0 tık) ve bir yazıda
-  YANLIŞ tarih bulundu (Jackson Hole 2026: 21-23 değil 27-29 Ağustos). Tarihli iddiayı resmi kaynaktan doğrula;
-  olay geçince sonuç kutusu ekle (günlük adım 5) (2026-10-13).
+- **Veri sessizce bayatlar:** elle girilen her veri ya otomatik güncelleyici ya da health.py tazelik satırı ister.
+  Rakamı YALNIZ birincil kaynaktan yaz (TCMB/Fed/TÜİK/GİB/RG); haber siteleri çelişebilir.
+- **2026'da harçlar YD %25,49 değil CB kararıyla %18,95 arttı** (IMEI 54.258 bununla tutarlı) — zam sezonu
+  sayfalarında kaynak rakamını çapraz kontrol et (2026-10-12).
+- **Kanonik URL:** iç linkler '/' ile; worker/index.js 301'leri ve REDIRECTS haritası kalır (10-10). GSC'de '/'siz
+  satırlar yalnız 10-07..10-09 yazılarının geçiş kalıntısı (10-14).
+- **Sitemap:** Google 07-03 → 10-08 arası indirmedi; artık `scripts/gsc-sitemap.py` learn-daily'de gönderiyor.
+  Yeni sayfa bahsinin saati sitemap gönderiminden başlar. IndexNow (Bing/Yandex) learn-daily'de.
+- **Olay önizleme yazıları eskiyince 0 tık alıyor** ve tarih hataları çıktı (Jackson Hole, NFP yazısında Fed
+  "4-5 Kasım" → doğrusu 27-28 Ekim). Tarihli iddiayı resmi kaynaktan doğrula; olay geçince sonuç kutusu.
+- **Hız:** darboğaz fontlardı (kendi sunucu + optional; 10-13). Yeni harici font/3. taraf script ekleme.
+- **Görev Masası (Claude Docs) headless koşuda yüklenmiyor:** 10-09→10-15 her koşu; `--strict-mcp-config` 10-13'te
+  kaldırıldı ama sorun sürdü. Olası neden: run.sh'ın yüklediği claude.env (setup-token) claude.ai bağlayıcılarını
+  taşımıyor. Kaan/RC görevi; o zamana kadar week.md kanonik.
+- **Headless izin listesi:** `for`/`until`, `x=$(...)`, `awk`, heredoc, `cd X && …`, repo dışı yol reddedilir.
+  Çok adımlı işi `agent/state/*.py` ya da tek `python3 -c` ile yap. Bash'te `$f` gibi değişken genişletme de reddedilir.
+- **Trends ölçümü:** `agent/state/measure_topics.py` kalıbı (opportunity_finder önbelleğine yazar); 4'lü
+  gruplarda 429 gelebilir → tekrar çalıştır.
+- **Claude kotası:** Max 5x; haftalık kota Çarşamba 22:00 UTC sıfırlanır. daily-content ajanla aynı anda
+  çalışmaz — haftalık koşu 06:00 UTC'den önce bitmeli.
+- Dış veri kaynakları sessizce bozulur (Truncgil, Investing 403) → her fetch degrade edebilmeli. TCMB EVDS
+  anahtarı yok (2026-10-15) → kredi/mevduat faiz verisi otomatik değil.
+- GSC ~2-3 gün gecikmeli; kısmi hafta düşüşü artefakttır. YouTube KPI'ı tek tük `None` gelir.
+- **Dağıtım kanalları zayıf:** Telegram 2 üye, bülten 1 onaylı abone (form 10-08'den beri çalışıyor, 8 getiri
+  sayfasında). Sunucu 2 çekirdek / 3,7 GB RAM / GPU yok.

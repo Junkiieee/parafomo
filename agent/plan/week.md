@@ -1,149 +1,127 @@
-# Hafta planı — 2026-10-08 → 2026-10-14
-_Haftalık koşu: 2026-10-08 · model claude-opus-5-5_
-<!-- plan-date: 2026-10-08 -->
+# Hafta planı — 2026-10-15 → 2026-10-21
+_Haftalık koşu: 2026-10-15 · model claude-opus-5-5_
+<!-- plan-date: 2026-10-15 -->
 
 ## Durum
-- Gerçek erişim (Direct hariç) son 7g **43** (önceki tam hafta 202640: 51, rekor; 4 hafta önce 202637: 41).
-  GSC 7g 36 tık / 1.258 gös · 28g 105 tık / 6.064 gös → **düz platoda** (~40 tık/hafta, ~%0,6 hedef).
-  Motor hâlâ getiri+takvim sayfaları: /altin-getiri 31 tık, /dolar-getiri 14, /enflasyon-takvimi 9 (28g).
-- **Kök neden bulundu:** Google sitemap'i en son **2026-07-03**'te indirmiş. 10-07'de açılan 40 halka arz
-  sayfası "URL is unknown to Google" (0 gös). 10-08'de API ile yeniden gönderildi + `scripts/gsc-sitemap.py`
-  artık günlük öğrenme döngüsünde URL kümesi değişince/7 günde bir otomatik gönderiyor.
-- YouTube 51 abone (düz), 280 video. Ağu+ veride sonuç metriği net: viral **shock_number medyan 500**
-  izlenme (n=11) vs backtest 96 (n=13). 09-30'daki AVD-vekil rebalansı geri alındı (rotasyon aşağıda).
-- Gelir/marka: AdSense kapalı (Kaan kararı, trafik bekleniyor) · bülten formu hâlâ bozuk (0 abone) ·
-  Telegram 2 üye · IG ölçülemiyor.
+- Gerçek erişim (Direct hariç) son 7g **57** (28g 183) · son tam hafta 202641: **32** (202640 rekor 51; 4 hafta
+  önce 202637: 41) → plato, hedefin ~%0,8'i. GSC 7g 24 tık / 1.092 gös (202641: 17 tık, 202640: 40). Düşüş
+  sıralama kaybı değil, olay dalgasının sönmesi: /altin-getiri W38 21 tık → W39-41 3-5 tık, sıra p6-8 sabit.
+- **Teşhis (bu koşu, GSC 28g):** hesaplayıcılarımız baş sorgularında p57-100 (kira artış, kıdem, işsizlik, altın
+  hesaplama, mevduat), başlıklar sorguyu zaten içeriyor → otorite kilidi. Yeni sayfalar ise **2027 / gelecek yıl**
+  sorgularında ilk haftada p4-11 (yeniden değerleme p11, trafik cezaları p9, MTV p8,7, harç p4). Kasım-Ocak zam
+  sezonu bu sorguları 5-10x büyütüyor → bu haftanın ağırlığı 2027 kümesi + hacmi ölçülmüş yeni araçlar.
+- Kuyruk konuları Trends'le ölçüldü: "bitcoin mi altın mı" 0,1 ve "mevduat mı altın mı" 0 → iptal; yerine
+  hacimli 6 konu (asgari ödeme 30↑, para piyasası fonu 35↑, altın hesabı 38, kredi yapılandırma 50, damga vergisi 86).
+- YouTube 53 abone (+2/hafta), 300 video; reform sonrası medyan 84 → video bahsi **lost**. Bülten 1 onaylı abone,
+  Telegram 2, AdSense kapalı (Kaan kararı). Görev Masası headless'ta HÂLÂ yüklenmiyor (bkz. user-tasks).
 
 ## Bahisler
-- **B261006-1 — Halka arz şirket sayfaları** · GSC /halka-arz/* ≥500 gös + ≥15 tık/hafta · 2026-11-03
-  (sitemap düzeltmesiyle saat 10-08'de yeniden başladı)
-- **B261006-2 — Getiri kümesini genişlet** · küme 28g tık 45 → ≥85 · 2026-11-03 (yeni sayfa yok → T1-T3)
-- **B261006-4 — YouTube video kalite reformu** · 10-07+ videolarda 7g medyan ≥200 izlenme + ≥8 abone/hafta ·
-  2026-10-28 (10-08: viral DOW_FMT shock×3/myth×2/single×2, backtest viralden çıktı)
+- **B261015-1 — Fırsat motoru: 2027 zam sezonu + hacimli yeni araçlar** · zam/araç kümesi 7g ≥400 gös + ≥10 tık
+  (baz 24 gös / 0 tık) · değerlendirme 2026-11-12
+- **B261006-1 — Halka arz şirket sayfaları** · /halka-arz/* ≥500 gös + ≥15 tık/hafta (şimdi 100 / 5) · 2026-11-03
+- **B261006-2 — Getiri kümesi** · 28g ≥85 tık (şimdi 48, düz) · 2026-11-03 — yeni görev yok, sonucu bekle
+- Kapandı: B261006-4 (YouTube kalite reformu) → **lost** (medyan 84 vs hedef 200).
 
 ## Görev kuyruğu (günlük koşu en üstteki [ ]'yi alır)
-- [x] T1 (B261006-2) — → canlı https://parafomo.com/gumus-getiri/ (10y TL +%5.215 vs altın +%5.026, altın/gümüş oranı 68,8, Dataset şeması); hub'a gümüş sütunu, /altin-getiri'den link, metodoloji, daily-content veri adımı · haftalık koşu 2026-10-08 — **/gumus-getiri sayfası:** `scripts/silver-returns.py` (gold-returns.py kalıbı; Yahoo
-  SI=F × USDTRY=X; gram gümüş TL = ons/31.1035 × kur; YTD + 1/3/5/10 yıl TL/USD getirisi; ağ hatasında mevcut
-  veriyi koru) → `data/gumus-getiri.json` (+ gerekiyorsa `public/` kopyası) → `src/pages/gumus-getiri.astro`
-  (altin-getiri.astro kalıbı; "gümüş mü altın mı" karar bölümü altın verisiyle yan yana) → /altin-dolar-borsa
-  hub'ına gümüş satırı + /altin-getiri'den link → `daily-content.sh` veri adımlarına ekle.
-  · Kabul: build geçer; `curl -s https://parafomo.com/gumus-getiri/` 200 ve tabloda 10 yıl satırı; hub'da gümüş.
-- [x] T2 (B261006-2) — → canlı https://parafomo.com/euro-getiri/ (euro mu dolar mı tablosu + EUR/USD parite etkisi); hub'a euro, /dolar-getiri'den link · haftalık koşu 2026-10-08 — **/euro-getiri sayfası** (EURTRY=X; T1 kalıbı; "euro mu dolar mı" karar bölümü
-  dolar-getiri verisiyle yan yana; /dolar-getiri ↔ /euro-getiri karşılıklı link; hub'a euro satırı; veri
-  adımına ekle). · Kabul: canlıda 200 + hub'da euro + /dolar-getiri'de euro linki.
-- [x] T3 (B261006-2) — → /bitcoin-getiri (10y $ +%11.002, en büyük düşüş −%75,6 2017-12→2019-01, risk kutusu, bitcoin mi altın mı); hub'a bitcoin, bitcoin-nedir yazısından link · haftalık koşu 2026-10-08 — **/bitcoin-getiri sayfası** (BTC-USD × USDTRY=X; aynı kalıp; volatilite/düşüş
-  uyarısı + "yatırım tavsiyesi değildir"; YTD + 1/3/5 yıl (10 yıl veri varsa); en büyük düşüş (max drawdown)
-  satırı; hub'a bitcoin satırı; /blog/bitcoin-nedir-nasil-alinir'den link). · Kabul: canlıda 200, hub'da bitcoin.
-- [x] T4 (dağıtım/marka) — → RC oturumu 2026-10-08: API (`backend/app/routers/newsletter.py`, çift onay, KVKK onayı, bal küpü, rate-limit, RFC 8058 tek-tık çıkış) + form canlı + https://parafomo.com/bulten/ + haftalık gönderim `bash scripts/newsletter-send.sh` (cron pzt 05:30 UTC, `--dry-run` önizleme). Abone sayısı brief §12'de. Sıradaki bülten işi: formu daha görünür yerlere koy (yazı içi, getiri sayfalarının tablosunun hemen altı) — trafik az, dönüşüm noktası önemli. · eski tanım: **Bülten v1 — kendi altyapımızla (bozuk formu onar).** İzin geldi (10-07). Backend
-  (`backend/`, protokol: `/root/.venvs/parafomo-api/bin/python` ile geçici DB'de test → `systemctl restart
-  parafomo-api` → `curl -s https://api.parafomo.com/health`): `POST /newsletter/subscribe` (e-posta + KVKK
-  onayı, IP rate-limit, Brevo SMTP ile çift onay maili), `GET /newsletter/confirm`, `GET /newsletter/unsubscribe`
-  (token); YENİ `newsletter_subscribers` tablosu (mevcut tablolara DOKUNMA). `src/components/Newsletter.astro`
-  bu uca bağlansın (başarı/hata mesajı; `action="#"` kalmasın). Gönderim betiği ayrı görev.
-  · Kabul: canlıda abone ol → onay maili gelir → linkle DB'de `confirmed`; çık linki çalışır; build geçer.
-- [x] T5 (AI asistan görünürlüğü) — → 2026-10-09: Dataset şeması + görünür "Son güncelleme · Kaynak" satırı 6 sayfaya eklendi (/altin-getiri, /dolar-getiri, /bist-getiri, /halka-arz-getiri, /halka-arz, /altin-dolar-borsa; gümüş/euro/bitcoin zaten vardı; takvim sayfalarında kaynak satırı zaten vardı) — canlıda doğrulandı, commit d59d0dd · 2026-10-09 — → 2026-10-08 RC: https://parafomo.com/llms.txt canlı. KALAN: getiri/takvim sayfalarında görünür "Son güncelleme · Kaynak" satırı + eksik `Dataset` şeması kontrolü. · eski tanım: `public/llms.txt` (site özeti + en değerli veri/araç sayfaları: getiri
-  kümesi, takvimler, halka arz, hesaplayıcılar + kaynak/güncelleme notu); getiri ve takvim sayfalarında görünür
-  "Son güncelleme: <tarih> · Kaynak: ..." satırı + `Dataset` şeması (yoksa). AI asistan trafiği 28g 20 (~%12).
-  · Kabul: canlıda /llms.txt 200; 3 sayfada `grep -c '"Dataset"'` ≥1.
-- [x] T6 (B261006-1) — → 2026-10-10: sitemap indirme **2026-10-09 08:46** (10-08 sonrası ✓); URL denetimi 6 örnek: 1 indeksli (albayrak, tarama 10-08), 2 "Discovered – not indexed", 3 "unknown". Ana sayfaya "Halka Arz Şirketleri" kutusu canlı (6 şirket sayfasına link; süren/yaklaşan → son 3 tamamlanan + getirisi → tarih bekleyenler günlük döner) commit 3ae1a67. Haftalık koşu indeks sayısını yeniden ölçsün · 2026-10-10 — **Halka arz sayfaları keşif kontrolü (10-12 sonrası):** `python scripts/gsc-sitemap.py
-  --status` → indirme tarihi 10-08 sonrası mı? 5 şirket sayfasını brief'teki indeks durumuyla kontrol et. Hâlâ
-  "unknown" ise: /halka-arz-getiri tablosundaki her şirket adını da kendi sayfasına linkle (şu an yalnız
-  /halka-arz linkli) ve ana sayfaya "Yaklaşan halka arzlar" kutusu (→ 2026-10-08 RC: /halka-arz-getiri tablosundaki 12 şirket artık kendi sayfasına linkli — yalnız ana sayfa kutusu kaldı) (ilk 3, şirket sayfasına link) ekle.
-  · Kabul: rapora indirme tarihi + indekslenen sayfa sayısı yazılır; gerekiyorsa linkler canlıda.
+Kural: her veri sayfasında rakamı resmi kaynaktan doğrula (WebSearch ≤6/görev); iki kaynak çelişirse o rakamı
+YAZMA. Yeni sayfa = Footer "Hesaplayıcılar" linki + `scripts/og-images.py` CARDS + `image="/og/<slug>.png"` +
+FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan metin içi link. `npm run build` → `bash scripts/deploy-push.sh`
+→ `python3 scripts/wait-live.py https://parafomo.com/<slug>/`.
 
-- [x] T7 (SEO ölçüm, RC 10-10 sonrası) — → 2026-10-14: GSC 7g 113 sayfa satırının 5'i sonda '/' olmadan; hepsi 10-07→10-09 açılan yeni blog yazıları (euro-mi-dolar-mi 19 gös/3 tık, gumus-mi-altin-mi 12, halka-arza-nasil 8) — URL denetiminde Google kanoniği '/'li sürüm, yani geçiş kalıntısı; eski sayfalarda sıfır. 5 kritik sayfa (emekli-zammi, bitcoin/euro/gumus-getiri, bono) indeksli + kanonik doğru. Halka arz 10 örnek: **9 indeksli**, 1 unknown (ankara-anonim-turk-sigorta) (10-08 öncesi 11/12 unknown idi) · 2026-10-14 — ⏩ RC 10-13 ön sonuç: 8 kritik sayfa URL denetiminden geçti, HEPSİ
-  "Submitted and indexed" + kanonik doğru (trafik-cezalari, vergi-dilimi, yeniden-degerleme, pasaport-ehliyet,
-  gumus-getiri, bitcoin-getiri, emekli-zammi, mtv; son tarama 10-10/10-12). Kalan iş: GSC sayfa listesinde
-  sonda '/' olmayan URL kaldı mı + 10 halka arz sayfası örneği. — **Kanonik + footer düzeltmesinin etkisini ölç (10-14 sonrası):**
-  GSC'de son 7g sayfa listesinde sonda '/' olmayan URL satırı kaldı mı (`searchanalytics` page boyutu)?
-  URL denetimi: /emekli-zammi-hesaplama, /bitcoin-getiri, /euro-getiri, /gumus-getiri, /bono-hesaplama
-  durumu ("unknown" → indeksli mi?). 10 halka arz sayfası örneği. · Kabul: rapora sayılar yazılır.
-- [x] T8 (yeni niyet) — → canlı https://parafomo.com/asgari-ucret-hesaplama/ : başlık "Asgari Ücret 2027 Ne Zaman Belli Olacak?", komisyon süreci + 2023-2026 açıklanma tarihleri tablosu (22/27/24/23 Aralık, WebSearch doğrulamalı; 2027 rakamı yazılmadı) + 3 yeni SSS (kaç TL olacak / komisyon / ara zam) · commit 8f47ae9 · 2026-10-11 — **Asgari ücret 2027 hazırlığı:** /asgari-ucret-hesaplama'ya "2027 asgari ücret ne zaman
-  belli olacak" bölümü (Asgari Ücret Tespit Komisyonu süreci, geçmiş yılların açıklanma tarihleri — YALNIZ
-  doğrulanmış kaynakla; tahmini rakam YAZMA) + SSS; başlıkta 2027'yi öne al. Aralık'ta resmi rakam gelince
-  aynı gün güncelle (kullanıcı görevi değil, ajan WebSearch ile resmi açıklamayı doğrular).
-  · Kabul: build geçer, canlı sayfada 2027 bölümü + FAQPage'de yeni soru.
-- [x] T9 (B261006-1) — → 4 metin içi link canlı: bes-bireysel-emeklilik-mantikli-mi, emeklilik-icin-ne-kadar-para, /net-maas-hesaplama, /asgari-ucret-hesaplama → /emekli-zammi-hesaplama/ · commit ce0619d · 2026-10-11 — **Emekli zammı sayfası iç linkleri:** emeklilik kategorisindeki yazılar
-  (bes-bireysel-emeklilik-mantikli-mi, emeklilik-icin-ne-kadar-para) + net-maas/asgari-ucret sayfalarından
-  bağlamsal link (footer zaten var; metin içi link ayrıca). · Kabul: ≥4 metin içi link canlıda.
-- [x] T10 (zam sezonu, RC 10-10) — → canlı https://parafomo.com/vergi-dilimi-hesaplama/ (332 Seri No'lu tebliğ doğrulandı; ücret %27 dilimi 1,5M / ücret dışı 1M; hesaplayıcı: marjinal+efektif oran; 2027 iki senaryo ~%20 ve YD oranı, data/yeniden-degerleme.json'dan otomatik; Dataset+FAQPage+WebApplication; footer + net-maaş linki; OG kartı) · commit 6824825 · 2026-10-11 — **/vergi-dilimi-hesaplama sayfası:** 2026 gelir vergisi tarifesi
-  (ücret: %15 ≤190.000 · %20 ≤400.000 · %27 ≤1.500.000 · %35 ≤5.300.000 · %40 üzeri — GİB 332 tebliğiyle
-  DOĞRULA; ücret dışı tarife farkı) + yıllık brüt matrah → dilim/vergi hesaplayıcı + "2027 dilimleri ne
-  olacak" bölümü (yeniden değerleme bağlantısı: data/yeniden-degerleme.json onikiAyOrt tahmini; 'CB farklı
-  belirleyebilir, 2026 artışı ~%20 idi' — emekli-zammi kalıbı). Talep kanıtı: Autocomplete "vergi dilimi
-  hesaplama/nedir/oranları/girmek ne demek" (demand-gaps.json). Footer Hesaplayıcılar'a ekle;
-  /net-maas-hesaplama'dan metin içi link. · Kabul: build + canlıda 200 + FAQPage/Dataset şema + footer linki.
-- [x] T11 (zam sezonu, RC 10-10) — → canlı https://parafomo.com/trafik-cezalari-hesaplama/ (7574 sayılı Kanun RG 27.02.2026 metni + 2 ikincil kaynakla doğrulandı: kırmızı ışık 5.000→6. ihlal 80.000, telefon 5.000/10.000/20.000, kemer 2.500, hız 9 kademe iç/dış 2.000-30.000, alkol 25/50/150 bin, belgesiz 40.000; muayene/park/ceza puanı çelişkili → yok; hız cezası hesaplayıcı + %25 peşin + koşullu 2027 YD sütunu; Dataset/FAQPage/WebApplication; footer + OG + /mtv ve /yeniden-degerleme'den link) · commit b9458bd · 2026-10-12 — **/trafik-cezalari-2027 (veya -hesaplama) sayfası:** 2026'da cezalar
-  7574 sayılı Kanun'la yeniden belirlendi — 8-10 YAYGIN cezayı (kırmızı ışık, hız %10-30, emniyet kemeri,
-  cep telefonu, park, muayenesiz) WebSearch ile RESMİ/büyük kaynaktan doğrula (kaynaklar çelişiyor:
-  kırmızı ışık 1.000/3.000/5.000 görüldü — yalnız 2+ kaynağın doğruladığını yaz, çelişeni ATLA) +
-  2027 tahmini sütunu (YD oranı, data/yeniden-degerleme.json) + /yeniden-degerleme-orani'ye link.
-  · Kabul: canlıda 200, her tutarın kaynağı sayfada, çelişkili tutar yok.
-- [x] T12 (zam sezonu, RC 10-10) — → canlı https://parafomo.com/pasaport-ehliyet-harci/ (pasaport 6ay-10yıl harç + 1.351 defter, B ehliyet 6.754,60+1.690+425=8.869,60, IMEI 54.258, yurt dışı çıkış 1.250, kimlik 220/440; 2+ kaynak; 2026 harç artışı CB kararıyla %18,95 — 57.241 IMEI veren kaynaklar %25,49 ile hesaplamış; A sınıfı çelişkili → yok; süre seçmeli 2027 hesaplayıcı; Dataset+FAQPage; footer+OG; YD/MTV/trafik sayfalarından link) · commit 7927094 · 2026-10-12 — **/pasaport-ehliyet-harci-2027:** 2026 harçları (pasaport 6ay/1/2/3/10 yıl
-  + defter; ehliyet sınıfları; kimlik) WebSearch doğrulamalı tablo + 2027 YD tahmini sütunu + IMEI 54.258 TL
-  satırı. Kaynak çelişirse "yaklaşık" + kaynak linki. /yeniden-degerleme-orani ve /mtv-hesaplama'ya karşılıklı
-  link. · Kabul: canlıda 200 + tablo + şemalar.
-- [ ] T13 (zam sezonu — TARİHLİ, 3 Kasım sonrası) — **YD kesinleşme kontrolü:** 3 Kasım'da Ekim Yİ-ÜFE
-  açıklanınca `python3 scripts/yeniden-degerleme-update.py` sonrası /yeniden-degerleme-orani "hesaben
-  kesinleşti" durumuna geçmiş mi kontrol et (ekimVerisiGeldi=true). Kasım sonunda VUK tebliği çıkınca
-  WebSearch ile oranı doğrula → data/yeniden-degerleme.json `tebligOrani` alanına yaz + `gecmis`e 2027
-  satırı ekle + Aralık'ta MTV/harç CB kararı çıkarsa `uygulanan` doldur. · Kabul: sayfa canlıda doğru durumu gösterir.
-
-- [x] T4b (bülten dönüşümü) — → bülten formu 8 getiri sayfasında (altın/dolar/BIST/gümüş/euro/bitcoin/halka-arz getiri + /altin-dolar-borsa) tablonun hemen altına taşındı, sayfaya özel başlık "Rakamlar değiştikçe haber verelim"; Newsletter.astro title/text propları · 2026-10-13
+- [ ] T1 (B261015-1) — **/konut-kredisi-hesaplama yeni araç** · hedef: konut kredisi hesaplama (hacim 170), konut
+  kredisi faiz oranları (19,6). İçerik: (a) hesaplayıcı — tutar, vade (ay), aylık faiz → taksit, toplam faiz,
+  ödeme planı (mevcut `src/pages/kredi-hesaplama.astro` hesap mantığını yeniden kullan); (b) konut kredisinde
+  KKDF/BSMV muafiyeti (resmi kaynakla doğrula); (c) kredi/değer (LTV) oranı sınırları — BDDK'nın GÜNCEL
+  düzenlemesi (değişti; doğrulayamazsan bölümü koyma); (d) masraf kalemleri (ekspertiz, ipotek tesis, DASK,
+  konut sigortası — tutar yazma, kalem + açıklama); (e) "2 milyon TL konut kredisi taksiti" tipi tablo: 1M/2M/
+  3M/5M TL × 60/120 ay, sayfada kullanıcı faiz girer, tablo varsayılan faiz için "örnek faiz %X — TCMB haftalık
+  ortalama konut kredisi faizi, <tarih>" (WebSearch ile TCMB/EVDS kaynaklı değer; bulamazsan "örnek faiz" de,
+  güncel diye sunma). /kredi-hesaplama ↔ /konut-kredisi-hesaplama karşılıklı link.
+  · Kabul: build geçer; canlıda 200, tablo + FAQPage; footer + /kredi-hesaplama'da link; OG kartı.
+- [ ] T2 (B261015-1) — **/kidem-tazminati-hesaplama: Ocak 2027 tavan tahmini** · hedef: kıdem tazminatı hesaplama
+  (86), kıdem tazminatı tavanı (62; "2026" vekil 35, zirve Ocak 207). Sayfada `TAVAN = 73729.87` sabit kodlu →
+  önce bu değeri ve Ocak 2026 tavanını resmi kaynaktan (Hazine ve Maliye/ÇSGB tavan genelgesi veya 2 büyük
+  kaynak) doğrula; `data/kidem-tavan.json`'a taşı (dönem, tavan, kaynak). Yeni bölüm "Ocak 2027 kıdem tazminatı
+  tavanı ne kadar olacak?": tavan memur maaş katsayısıyla güncellenir → tahmin = Temmuz 2026 tavanı × (1 + Ocak
+  2027 memur zammı tahmini) — memur zammı tahminini /emekli-zammi-hesaplama'nın kullandığı veri/fonksiyondan al
+  (aynı kaynak; elle yazma), açıkça "tahmin" de; geçmiş dönem tavan tablosu (2024-2026, doğrulananlar).
+  Başlık: "Kıdem Tazminatı Hesaplama 2026 ve Ocak 2027 Tavan Tahmini". FAQ'ye "2027 kıdem tavanı" sorusu.
+  /emekli-zammi-hesaplama'dan bu bölüme metin içi link. · Kabul: canlıda tavan tablosu + 2027 tahmin satırı +
+  FAQPage'de yeni soru; build geçer.
+- [ ] T3 (B261015-1) — **/emlak-vergisi-hesaplama yeni araç** · hedef: emlak vergisi (297), emlak vergisi 2026
+  (12), emlak vergisi hesaplama (6,7); 2. taksit son günü Kasım sonu → Kasım ortasına kadar canlı olmalı.
+  İçerik: oran tablosu (konut/işyeri/arsa/arazi × büyükşehir/diğer — Emlak Vergisi Kanunu md. 8/18/24 ve 2026
+  değişikliği; GİB/RG ile doğrula), 2026 yeniden takdir + artış sınırı kuralları (doğrulanmamışsa yazma),
+  emekli/tek konut muafiyeti koşulları, taksit tarihleri, hesaplayıcı (vergi değeri × oran → yıllık + 2 taksit),
+  "2027'de emlak vergisi ne kadar artar" — kanuni kural (takdir olmayan yıllarda vergi değeri YD oranının yarısı
+  kadar artar mı? DOĞRULA) + `data/yeniden-degerleme.json` ile tahmin. Değerli konut vergisini ayrı satırda
+  kısaca an (hacim düşük 1,8). · Kabul: canlıda 200, oran tablosu her satırında kaynak, hesaplayıcı çalışır, FAQPage.
+- [ ] T4 (faiz kararı ~160) — **TCMB 22 Ekim: mevcut yazıyı güncelle, yeni yazı AÇMA** · TARİHLİ: 20 Ekim veya
+  sonrası (öncesindeyse bir sonraki göreve geç). /blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler'e "Son durum
+  (<tarih>)" bölümü: TCMB Piyasa Katılımcıları Anketi / AA Finans beklenti anketi (kaynaklı) + Eylül TÜFE %29,73
+  bağlamı; başlığı "TCMB Faiz Kararı 22 Ekim 2026: Beklenti ve Senaryolar" yap. 23 Ekim sabahı (karar sonrası
+  ilk koşu): yazıya sonuç kutusu + /tcmb-faiz-takvimi'de kararın göründüğünü kontrol et (görünmüyorsa
+  `logs/policy-decisions.log`). · Kabul: canlı yazıda güncel bölüm; 23 Ekim'den sonra sonuç kutusu.
+- [ ] T5 (B261015-1) — **/ihtiyac-kredisi-hesaplama yeni araç** · hedef: ihtiyaç kredisi hesaplama (48), ihtiyaç
+  kredisi faiz oranları (9,4). T1 bileşenini yeniden kullan; fark: KKDF + BSMV taksite dahil (oranları resmi
+  kaynakla doğrula), BDDK tutar bazlı azami vade (doğrula), "50/100/200 bin TL × 12/24/36 ay" tablosu.
+  /kredi-hesaplama ↔ /konut-kredisi-hesaplama ↔ /ihtiyac-kredisi-hesaplama linkleri. · Kabul: T1 ile aynı.
+- [ ] T6 (sistem — konu seçimi doğruluğu) — **opportunity_finder "OTORITE" eylemi** · `scripts/learn/opportunity_finder.py`
+  `decide()`: sayfa var + GSC'de sorgu yok ya da sıra >40 VE sayfanın `<title>`/H1'i sorgunun köklerini zaten
+  içeriyorsa → eylem `OTORITE` (not: "başlık eşleşiyor; sıra otorite kilidinde — on-page görev yapma, uzun
+  kuyruk/gelecek yıl açısıyla gir"), skor ×0,3. Başlığı build çıktısından (`dist/<slug>/index.html`) ya da
+  .astro'dan oku. `agent/brief.py` §9c açıklamasına eylemi ekle. · Kabul: yeniden çalıştırınca kira artış oranı,
+  kıdem tazminatı hesaplama, kredi hesaplama, mevduat faizi hesaplama `OTORITE`; commit.
+- [ ] T13 (zam sezonu — TARİHLİ, 3 Kasım sonrası) — **YD kesinleşme kontrolü:** 3 Kasım'da Ekim Yİ-ÜFE açıklanınca
+  `python3 scripts/yeniden-degerleme-update.py` sonrası /yeniden-degerleme-orani "hesaben kesinleşti" (ekimVerisiGeldi=true)
+  mi kontrol et. Kasım sonunda VUK tebliğini WebSearch ile doğrula → `tebligOrani` + `gecmis`e 2027 satırı;
+  Aralık'ta MTV/harç CB kararı çıkarsa `uygulanan`. · Kabul: sayfa canlıda doğru durumu gösterir.
 
 ## Bakım / ürün
-- [ ] P1 (portföy) — ⏸ 2026-10-09 günlük koşu atladı: watchlist yeni DB tablosu ister (kırmızı çizgi 6 "şemayı değiştirme" — newsletter tablosu Kaan onayıyla açılmıştı) + ders "trafiksiz ürün cilası kayıt getirmez" (2 üye). Haftalık koşu karar versin. — `agent/plan/backlog-portfolio.md`'deki en üstteki açık madde (İzleme listesi / watchlist —
-  sahip olmadan takip). Backend değişirse protokoldeki restart + /health. · Kabul: build geçer; canlı panelde
-  izleme listesine ekle/sil akışı çalışır; backlog maddesi [x] + commit.
-- [x] V1 (video kalitesi) — → 2026-10-09: viral-script.py shock_number istemine kazanan 3 kanca (kira %3 954 izl., 5.000 ton altın 935, çeyrek %10 924) + zorunlu number_source (rakam/hesap/kaynak); kaynaksız/muğlak rakam reddedilip yeniden üretilir, hesap satırı video açıklamasına eklenir; --dry-run modu; 3 dry-run senaryo raporda, birim testte kaynaksız rakam reddedildi · commit cbc4038 · 2026-10-09 — **shock_number kanca kalitesi + rakam doğrulaması** (format artık haftada 3 gün):
-  `scripts/viral-script.py` shock_number istemine en çok izlenen 3 shock videonun (ör. kira-geliri-yuzde-2
-  500 izl., ledger'dan bul) kanca + ilk 2 cümle kalıbını örnek olarak ekle; senaryo üretiminde shock rakamının
-  bir hesap/kaynak satırı taşımasını zorunlu kıl (yanıltıcı başlık = kırmızı çizgi 4). İzole dene:
-  `--dry-run`/hazırlık modunda 3 senaryo üret, eskisiyle yan yana rapora koy; rakam kaynaksızsa senaryo reddedilsin.
-  · Kabul: 3 örnek senaryo raporda; kaynaksız rakam testi reddediliyor; commit.
-- [x] V2 (marka) — → 2026-10-09: token force-ssl kapsamlıymış; channels.update ile kanal açıklaması (brand.md bio + konumlandırma + UTM li parafomo.com linkleri + IG/Telegram + tavsiye-değildir notu) ve anahtar kelimeler yazıldı, API ile doğrulandı · 2026-10-09 — **YouTube kanal kimliği:** kanal açıklaması brand.md konumlandırması + parafomo.com (UTM'li)
-  + Telegram/Instagram, kanal anahtar kelimeleri. `channels.update` brandingSettings (OAuth `youtube.force-ssl`
-  ise) ile dene; yetki yetmezse Kaan'a 3 adımlık görev yaz. · Kabul: kanal sayfasında yeni açıklama.
+- [ ] V1 (video kalitesi) — **altyazı çakışması hatası** · video-qa son 7g'de 4 videoda "altyazı üst üste binmiş,
+  okunamıyor" buldu: sterlin-bir-cumleyle-oynuyor (viral/news), bilezik-aldin (viral/myth), evdeki-altin-calinirsa
+  (viral/myth), ceyrek-altinda-gizli-prim (daily-short) → iki hattın ORTAK altyazı kodu. Kök nedeni bul
+  (`scripts/shorts-build-v4.py` altyazı/ASS üretimi: kelime zamanları çakışınca iki satır aynı anda mı?
+  video-qa günlüğünü `grep -ri altyaz` ile bul). Düzelt; izole test: bu senaryolardan birini `agent/state/`
+  altına yeniden render et, çakışan saniyeden ffmpeg ile kare çıkarıp bak. · Kabul: düzeltme commit'i + rapora
+  önce/sonra kare yolu; sonraki 3 günün video-qa'sında altyazı çakışması bulgusu yok.
+- [ ] V2 (video sağlığı) — **0-5 izlenmeli videoların teşhisi** · vadesiz-hesap-parani-sessizce-kucultuyor
+  (10-10 viral, 0 izl.), taki-altininda-ayar-tuzagi (10-08, 5), dolar-5000-tl-yi-bir-yilda-ne-yapti (10-07
+  viral, 11): YouTube Data API `videos.list part=status,processingDetails,contentDetails` (privacyStatus,
+  uploadStatus, rejectionReason, madeForKids, regionRestriction). Sistematik neden (yükleme/işleme/kısıtlama)
+  varsa düzelt ya da raporla. · Kabul: rapora 3 videonun durumu + varsa düzeltme.
+- [ ] P1 (portföy) — **Panelden içeriğe köprü** (backlog maddesi) · `app/portfoy/` SPA: kullanıcının sahip olduğu
+  varlık tipine göre "İlgili veri" kartı (altın → /altin-getiri + /altin-hesaplama; BIST hissesi → /bist-getiri +
+  halka arz şirket sayfası varsa /halka-arz/<slug>; gümüş → /gumus-getiri), UTM'li link. YALNIZ frontend (backend/DB
+  yok). Önce backlog'daki "Hesap ayarları" maddesini kontrol et (`DELETE /auth/me` zaten var) ve backlog'u düzelt.
+  · Kabul: `bash scripts/deploy-app.sh` sonrası app.parafomo.com panelinde kart görünür; backlog [x]; commit.
+- [-] P-eski (izleme listesi / watchlist) — park edildi (haftalık koşu 10-15): yeni DB tablosu ister (kırmızı çizgi 6)
+  + 5 üyeli üründe değer düşük. Trafik/üye artınca yeniden değerlendir.
 
 ## Kullanıcı girdisi gelince (o gün en üste al)
-- Müzik klasörü dolarsa (`/root/parafomo-media/music/`) → 1 videoda doğrula, rapora yaz.
-- X API ödemesi açılınca → `scripts/post-x.py` (günlük veri kartı + yeni yazı), `deploy/crontab.txt` önerisi.
+- **TCMB EVDS anahtarı** gelirse (`/root/.config/parafomo/evds.env` → `EVDS_API_KEY`): `scripts/evds-rates.py` yaz
+  (haftalık TL mevduat + konut/ihtiyaç kredisi ağırlıklı ortalama faiz) → `data/faiz-oranlari.json` → /mevduat-faizi-hesaplama
+  "güncel mevduat faiz oranları" kutusu (hedef: mevduat faiz oranları hacim 57, mevduat faizi hesaplama 57,6 p57)
+  + T1/T5 sayfalarında varsayılan faiz otomatik; health.py tazelik satırı; daily-content veri adımına bağla.
 - R2 bilgileri → `/root/.config/parafomo/backup.env` (backup.sh otomatik kullanır).
 
 ## Notlar (günlük koşu için)
-- **RC 2026-10-13 — site denetimi (hız + teknik SEO + içerik):** Lighthouse mobil 58-72 → /altin-getiri
-  95-98 (LCP 6,0 → 1,5 sn). Fontlar `public/fonts/` (font-display: optional — swap LCP'yi bozuyordu),
-  CSS gömülü, kapaklar `src/integrations/cover-variants.mjs` ile build'de WebP (640/1280; YENİ KAPAK İÇİN
-  EK İŞ YOK), worker önbellek başlıkları. Birleştirme/301 haritası `worker/index.js` REDIRECTS'te —
-  kopya yazı birleştirirsen oraya ekle. GSC 90g: sıra 5-10'da 0 tık alan sayfaların ortak nedeni
-  sorguyu başlıkta karşılamamak ("jackson hole ne zaman", "fed toplantı tarihleri") ve eskimiş olay
-  yazıları → günlük adım 5 (olay sonrası güncelleme). Bülten uçtan uca test edildi (gelen kutusu, 1 onaylı).
-  "ABD faizi" kümesinde 4 yazı kaldı (artarsa-ne-olur hub, altın, dolar, fed-nedir) — yenisini AÇMA, bunları güncelle.
-- **RC 2026-10-10 (3. oturum) — takip + OG kartları:** `health.py` artık TÜM veri dosyalarının
-  tazeliğini izliyor (getiri/altin-fiyat/halka-arz/takvim/demand-gaps/OG + Kasım-Aralık YD sezon bekçisi:
-  4 Kasım Ekim verisi, 5 Aralık tebliğ kontrolü — kırmızıysa günlük koşu İLK İŞ düzeltir).
-  `scripts/og-images.py`: 12 sayfaya canlı rakamlı OG kartı (public/og/); daily-content + kira cron'u
-  yeniler; YENİ veri sayfası açarken CARDS'a ekle + `image="/og/<slug>.png"` geç. Hesaplama sayfalarına
-  otomatik WebApplication şeması (BaseLayout). Kira cron penceresi 3-10'a genişledi.
-- **RC 2026-10-10 (2. oturum) — zam sezonu kümesi + talep radarı kuruldu:**
-  `/yeniden-degerleme-orani` + `/mtv-hesaplama` CANLI (veri: `data/yeniden-degerleme.json`, aylık
-  otomatik güncelleme kira-artis-update.sh içinde — Yİ-ÜFE 12 ay ort, Eylül itibarıyla %27,8).
-  Yeni: `scripts/learn/demand_miner.py` (Çrş+Paz, Autocomplete boşlukları) + `data/tr-seasonal-seo.json`
-  mevsimsel takvim → brief §9b "Talep radarı". T10-T13 bu kümenin devamı; Kasım-Ocak zam sezonu
-  yılın en büyük arama dönemi, sayfalar talep zirvesinden ÖNCE canlı olmalı.
-- **RC 2026-10-10 eklenen otomasyonlar** (kontrol: `python3 agent/health.py` → "Veri tazeliği"):
-  kira-artis-update.sh (ayın 3-8'i; kira + TÜFE serisi + Yİ-ÜFE/YD), policy-decisions.sh (Fed/TCMB karar gecesi),
-  indexnow.py (learn-daily). 22 Ekim TCMB ve 28 Ekim Fed sonrası sabah: sayfada karar görünüyor mu kontrol et;
-  görünmüyorsa log'a bak (`logs/policy-decisions.log`) ve kaynağı düzelt — rakamı elle tahmin ETME.
-- **Headless izin tuzağı:** 10-07 koşusunda 13 komut reddedildi — `for`/`until` döngüsü, `x=...` değişken
-  atama, `awk`, `cd /tmp && ...`, heredoc, `bash -n /mutlak/yol`. Döngü/çok adımlı kontrolü tek
-  `python3 -c "..."` ya da repo içi küçük bir `.py` dosyasıyla yap; yolları göreli ver (`bash scripts/...`).
-- Konu kuyruğu yayın tarihine göre sıralı (bkz. content-queue.md); bir gün atlanırsa kuyruk kayar — TCMB
-  yazısı 19-21 Ekim'den ÖNCE yayınlanacak gibi olursa önüne evergreen bir konu ekle.
-- Video rotasyonu 10-08'de değişti; `scripts/learn/winner.py viral.format` bir kazanan döndürürse onu ezer
-  (şu an "berabere"). Shock rakamı mutlaka gerçek/hesaplanabilir olmalı.
+- **Neden bu sıra:** baş sorgularda otorite kilidi var (bkz. learnings); kazanılabilir yer gelecek yıl (2027)
+  sorguları ve sitede karşılığı olmayan hacimli araç niyetleri. Sezon zirvesi Kasım-Ocak → T1-T3 Ekim'de canlı olmalı.
+- **YAPMA:** halka arz takvimi / kira artış / kredi hesaplama baş sorguları için başlık-H1-FAQ dürtmesi (p57-100,
+  başlık zaten eşleşiyor). "X mi Y mi" karşılaştırma yazısı (hacim ≈0). ABD makro (JOLTS/PCE/ISM) yazısı.
+- 22 Ekim TCMB ve 28 Ekim Fed sonrası sabah: takvim sayfalarında karar görünüyor mu kontrol et (policy-decisions.sh);
+  rakamı elle tahmin ETME.
+- Olay sonrası güncelleme bekleyen yazılar (günlük adım 5): abd-eylul-2026-cpi, ecb-eylul-2026,
+  ingiltere-eylul-2026-gdp, pce-gdp-agustos/eylul-2026, abd-ekim-2026-cpi (15 Ekim açıklandı).
+- Görev Masası okunamazsa koşuyu durdurma; week.md kanonik.
+- Headless: döngü/değişken/awk/heredoc yok; çok adımlı iş `agent/state/*.py` ile.
 
 ## Biten / iptal (bu hafta)
-- [x] (haftalık koşu) GSC sitemap teşhisi + yeniden gönderim + `scripts/gsc-sitemap.py` günlük otomasyonu · 2026-10-08
-- [x] (haftalık koşu) V1-eski (format kanıt tablosu) haftalık koşuda yapıldı → rotasyon kararı uygulandı · 2026-10-08
-- Geçen haftadan biten: T1 halka arz sayfaları, M1 güven sayfaları, T2 halka arz SEO (10-07).
+- [x] (haftalık koşu 10-15) Kuyruk konuları Trends ile ölçüldü; 2 hacimsiz konu iptal, 6 hacimli konu eklendi (c9a6540)
+- [x] (haftalık koşu 10-15) GSC sayfa×sorgu teşhisi: hesaplayıcılar otorite kilidinde; 2027 sorgularında p4-11
+- Geçen hafta biten (10-08 → 10-14): T1 /gumus-getiri · T2 /euro-getiri · T3 /bitcoin-getiri · T4 bülten v1 ·
+  T4b bülten formu getiri sayfalarında · T5 Dataset + kaynak satırı · T6 halka arz keşif + ana sayfa kutusu ·
+  T7 kanonik/indeks ölçümü · T8 asgari ücret 2027 · T9 emekli zammı iç linkleri · T10 /vergi-dilimi-hesaplama ·
+  T11 /trafik-cezalari-hesaplama · T12 /pasaport-ehliyet-harci · V1 shock kanca + rakam doğrulama · V2 YouTube
+  kanal kimliği. Bitmeyen: T13 (tarihli), P1 watchlist (park).
