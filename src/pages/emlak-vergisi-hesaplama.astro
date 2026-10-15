@@ -1,0 +1,301 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import yd from '../../data/yeniden-degerleme.json';
+
+// Emlak vergisi = vergi değeri × oran (1319 s. Emlak Vergisi K. md. 8 ve 18; büyükşehirde oranlar 2 kat).
+// Kaynaklar (doğrulama 2026-10-15): oranlar PwC/Hesapkurdu/Faturaport tabloları; 7566 s. Kanun (RG 19.12.2025)
+// geçici 23. madde — KPMG, TÜRMOB, Geçmez Hukuk. 2027-2029: önceki yıl vergi değeri × (1 + yeniden değerleme oranı).
+const RATES = [
+  { key: 'konut', label: 'Konut (mesken)', normal: 1, buyuk: 2 },
+  { key: 'isyeri', label: 'İşyeri ve diğer binalar', normal: 2, buyuk: 4 },
+  { key: 'arsa', label: 'Arsa', normal: 3, buyuk: 6 },
+  { key: 'arazi', label: 'Arazi (tarla)', normal: 1, buyuk: 2 },
+];
+const teblig = yd.tebligOrani as number | null;
+const YD = teblig ?? yd.onikiAyOrt; // %
+const ydKesin = teblig != null;
+const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const sonAyAd = `${MONTHS[+yd.sonAy.slice(5) - 1]} ${yd.sonAy.slice(0, 4)}`;
+
+const D = { value: 3000000, type: 'konut', metro: true };
+const rateOf = (type: string, metro: boolean) => {
+  const r = RATES.find((x) => x.key === type)!;
+  return (metro ? r.buyuk : r.normal) / 1000;
+};
+const tax26 = D.value * rateOf(D.type, D.metro);
+const tax27 = tax26 * (1 + YD / 100);
+
+const fmt = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const ydTxt = `${ydKesin ? '' : '≈'}%${nf(YD)}`;
+
+// Vergi değerine göre büyükşehirde konut emlak vergisi tablosu (build-time)
+const TABLE_VALUES = [1000000, 2000000, 3000000, 5000000, 10000000];
+const table = TABLE_VALUES.map((v) => {
+  const t = v * rateOf('konut', true);
+  return { v, t, half: t / 2, t27: t * (1 + YD / 100) };
+});
+
+const faq = [
+  {
+    q: 'Emlak vergisi nasıl hesaplanır?',
+    a: `Emlak vergisi = taşınmazın emlak vergisi değeri × oran. Oran konutta binde 1, işyerinde binde 2, arsada binde 3, arazide binde 1’dir; büyükşehir belediye sınırlarında bu oranlar iki kat uygulanır (konut binde 2). Örneğin büyükşehirde vergi değeri ${fmt(D.value)} ₺ olan bir konutun yıllık emlak vergisi ${fmt(tax26)} ₺'dir ve iki eşit taksitte ödenir. Vergi değeri piyasa değeri değil, belediyenin bildirdiği değerdir (e-Devlet veya belediye borç sorgusunda görünür).`,
+  },
+  {
+    q: '2027 emlak vergisi ne kadar artacak?',
+    a: `7566 sayılı Kanun'la 2027, 2028 ve 2029 yıllarında vergi değeri, bir önceki yılın vergi değerinin o yıl için ilan edilen yeniden değerleme oranında artırılmasıyla bulunur. 2027 için yeniden değerleme oranı ${ydKesin ? `%${nf(YD)} olarak ilan edildi` : `${sonAyAd} Yİ-ÜFE verisiyle yaklaşık %${nf(YD)} hesaplanıyor; kesin oran Kasım 2026 sonunda Resmî Gazete’de ilan edilecek`}. Oran değişmezse 2026’da ${fmt(tax26)} ₺ emlak vergisi ödeyen bir konut için 2027 vergisi yaklaşık ${fmt(tax27)} ₺ olur. ${ydKesin ? '' : 'Bu bir tahmindir.'}`,
+  },
+  {
+    q: 'Emlak vergisi 2. taksit ne zaman ödenir?',
+    a: 'Emlak vergisi yılda iki eşit taksitte ödenir: birinci taksit Mart–Mayıs, ikinci taksit Kasım ayı içinde. 2026 için ikinci taksitin son günü 30 Kasım 2026’dır. Vergi tek seferde ilk taksit döneminde de ödenebilir. Süresinde ödenmeyen taksite gecikme zammı uygulanır.',
+  },
+  {
+    q: '2026’da emlak vergisi neden bu kadar arttı?',
+    a: '2026 yeniden takdir yılıydı: arsa ve arazi metrekare birim değerleri dört yılda bir yeniden belirlenir ve bazı bölgelerde değerler katlandı. Artışı sınırlamak için 19 Aralık 2025 tarihli 7566 sayılı Kanun’la Emlak Vergisi Kanunu’na geçici 23. madde eklendi: 2026 bina ve arazi vergi değerleri “2025 yılına ait vergi değerlerinin iki kat fazlasını geçemez.” Sınırlama mülkiyet değişse de geçerlidir.',
+  },
+  {
+    q: 'Emekliler emlak vergisi öder mi?',
+    a: 'Geliri yalnızca emekli aylığından ibaret olan ve Türkiye’de brüt 200 metrekareyi aşmayan tek konutu bulunan emekliler, bu konut için emlak vergisinden muaf tutulur. Aynı muafiyet hiç geliri olmayanlar, gaziler, şehit dul ve yetimleri ve en az %40 engelli olanlar için de geçerlidir. Muafiyet kendiliğinden işlemez: belediyeye dilekçe veya e-Devlet üzerinden başvurmak gerekir. Birden fazla taşınmazı olan yararlanamaz.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Emlak Vergisi Hesaplama', url: '/emlak-vergisi-hesaplama/' },
+];
+---
+
+<BaseLayout
+  title="Emlak Vergisi Hesaplama 2026 ve 2027 Tahmini | Oranlar, Taksit Tarihleri"
+  description={`Emlak vergisi hesaplama: vergi değerini girin, konut/işyeri/arsa/arazi ve büyükşehir oranıyla yıllık vergi ve taksitleri görün. 2027 artışı yeniden değerleme oranı kadar (${ydTxt}). 2. taksit son gün 30 Kasım.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+  image="/og/emlak-vergisi-hesaplama.png"
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Vergi</p>
+      <h1>Emlak Vergisi Hesaplama 2026 ve 2027 Tahmini</h1>
+      <p class="lede">
+        Taşınmazın <strong>emlak vergisi değerini</strong> girin; yıllık emlak verginizi, taksit tutarını
+        ve <strong>2027’de ne kadar ödeyeceğinizi</strong> görün. 2. taksitin son günü <strong>30 Kasım 2026</strong>.
+      </p>
+    </header>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Emlak vergisi değeri (₺)</span>
+          <input type="number" id="in-value" value={D.value} min="0" step="10000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Taşınmaz türü</span>
+          <select id="in-type">
+            {RATES.map((r) => <option value={r.key} selected={r.key === D.type}>{r.label}</option>)}
+          </select>
+        </label>
+        <label class="check">
+          <input type="checkbox" id="in-metro" checked={D.metro} />
+          <span>Büyükşehir belediye sınırları içinde</span>
+        </label>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">2026 yıllık emlak vergisi</span>
+          <span class="result-value" id="out-tax">₺{fmt(tax26)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Taksit (Mayıs / Kasım)</span>
+            <span class="split-val" id="out-half">₺{fmt(tax26 / 2)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Uygulanan oran</span>
+            <span class="split-val" id="out-rate">binde {D.metro ? 2 : 1}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">2027 tahmini ({ydTxt} artış)</span>
+            <span class="split-val" id="out-27">₺{fmt(tax27)}</span>
+          </div>
+        </div>
+        <p class="result-note">Vergi değeri piyasa değeri değildir; e-Devlet “Emlak Vergisi Borç Sorgulama” veya belediyenizin tahakkuk belgesinde yazar.</p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır, vergi danışmanlığı değildir. Kesin tutar belediyenizin
+      tahakkukudur; muafiyet, indirim ve değerli konut vergisi bu hesaba dahil değildir.
+    </p>
+
+    <section class="table-block">
+      <h2>Emlak vergisi oranları</h2>
+      <table class="rate-table">
+        <thead><tr><th>Taşınmaz</th><th>Normal belediye</th><th>Büyükşehir</th></tr></thead>
+        <tbody>
+          {RATES.map((r) => (
+            <tr><td>{r.label}</td><td>binde {r.normal}</td><td>binde {r.buyuk}</td></tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">Kaynak: 1319 sayılı Emlak Vergisi Kanunu md. 8 ve 18 (büyükşehir sınırlarında oranlar %100 artırımlı uygulanır).</p>
+    </section>
+
+    <section class="table-block">
+      <h2>Büyükşehirde konut emlak vergisi: 2026 ve 2027 tahmini</h2>
+      <p class="table-intro">Vergi değerine göre yıllık vergi, taksit ve 2027 tahmini ({ydTxt} yeniden değerleme oranıyla):</p>
+      <table class="rate-table">
+        <thead><tr><th>Vergi değeri</th><th>2026 yıllık</th><th>Taksit</th><th>2027 tahmini</th></tr></thead>
+        <tbody>
+          {table.map((r) => (
+            <tr><td>₺{fmt(r.v)}</td><td>₺{fmt(r.t)}</td><td>₺{fmt(r.half)}</td><td>₺{fmt(r.t27)}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    <section class="prose-block">
+      <h2>2027’de emlak vergisi ne kadar artacak?</h2>
+      <p>
+        19 Aralık 2025 tarihli <strong>7566 sayılı Kanun</strong> ile 2027, 2028 ve 2029 yıllarında bina ve arazi
+        vergi değerleri, bir önceki yılın vergi değerinin <strong>o yıl için ilan edilen yeniden değerleme
+        oranında</strong> artırılmasıyla bulunur. Yani 2027 emlak vergisi artışı doğrudan 2027 yeniden değerleme
+        oranına bağlıdır.
+        {ydKesin && <span>Bu oran <strong>%{nf(YD)}</strong> olarak ilan edildi.</span>}
+        {!ydKesin && <span>{sonAyAd} Yİ-ÜFE verisine göre oran yaklaşık <strong>%{nf(YD)}</strong>; Ekim verisiyle
+          (3 Kasım) hesaben kesinleşir, Kasım sonunda Resmî Gazete’de ilan edilir. Rakam güncellendikçe bu sayfa
+          kendiliğinden yenilenir.</span>}
+        Oranın nasıl hesaplandığı için → <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı 2027</a>.
+      </p>
+      <h2>2026 artış sınırı (7566 sayılı Kanun, geçici 23. madde)</h2>
+      <p>
+        2026 yeniden takdir yılıydı ve bazı bölgelerde arsa birim değerleri katlandı. Kanun, 2026 bina ve arazi
+        vergi değerlerinin <strong>“2025 yılına ait vergi değerlerinin iki kat fazlasını geçemez”</strong>
+        olmasını hükme bağladı; sınırlama taşınmaz el değiştirse de geçerlidir ve emlak vergi değerine bağlı
+        diğer vergi ve harçlarda da uygulanır. 2026 vergi değeriniz tahakkuk belgesinde yazan değerdir.
+      </p>
+      <h2>Taksit tarihleri ve gecikme</h2>
+      <ul>
+        <li><strong>1. taksit:</strong> Mart–Mayıs (2026’da son gün 1 Haziran’a kaydı).</li>
+        <li><strong>2. taksit:</strong> Kasım; 2026 için son gün <strong>30 Kasım 2026</strong>.</li>
+        <li>Vergi yıllık tek seferde de ödenebilir; geç ödenen taksite gecikme zammı işler.</li>
+      </ul>
+      <h2>Kimler muaf?</h2>
+      <p>
+        Geliri yalnız emekli aylığı olan, hiç geliri olmayan, gazi, şehit dul ve yetimleri ile en az %40 engelli
+        olanlar; Türkiye’de brüt <strong>200 m²</strong>’yi aşmayan <strong>tek konutları</strong> için emlak
+        vergisinden muaftır. Muafiyet için belediyeye (veya e-Devlet’ten) başvurmak gerekir.
+      </p>
+      <p class="cta-line">
+        2027 zamlarının tamamı için → <a href="/blog/2027-zamlari-yeniden-degerleme-orani-rehberi/">2027’de neler zamlanacak?</a> ·
+        araç vergisi için → <a href="/mtv-hesaplama/">MTV 2027 hesaplama</a> · konut alırken →
+        <a href="/konut-kredisi-hesaplama/">konut kredisi hesaplama</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ RATES, YD }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const money = (n) => '₺' + nf.format(Math.round(n));
+      function update() {
+        const v = Math.max(0, +$('in-value').value || 0);
+        const r = RATES.find((x) => x.key === $('in-type').value) || RATES[0];
+        const permil = $('in-metro').checked ? r.buyuk : r.normal;
+        const t = (v * permil) / 1000;
+        $('out-tax').textContent = money(t);
+        $('out-half').textContent = money(t / 2);
+        $('out-rate').textContent = 'binde ' + permil;
+        $('out-27').textContent = money(t * (1 + YD / 100));
+      }
+      ['in-value', 'in-type', 'in-metro'].forEach((id) => {
+        $(id).addEventListener('input', update);
+        $(id).addEventListener('change', update);
+      });
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 2rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 620px; margin: 0 auto; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs label.check { flex-direction: row; align-items: center; gap: 0.5rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input[type='number'], .calc-inputs select {
+      font-family: var(--font-sans); font-size: 1.1rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .calc-inputs input[type='checkbox'] { width: 1.15rem; height: 1.15rem; accent-color: var(--brand-2); }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 1rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>

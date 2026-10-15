@@ -127,6 +127,9 @@ CARDS = {
     "mtv-hesaplama": yd_card(
         "MTV {yil} ZAM TAHMİNİ",
         lambda d, k: "2026 MTV'nizden 2027 tahmininizi hesaplayın"),
+    "emlak-vergisi-hesaplama": yd_card(
+        "EMLAK VERGİSİ {yil} ARTIŞI",
+        lambda d, k: "vergi değeri × oran · 2. taksit son gün 30 Kasım"),
     "trafik-cezalari-hesaplama": lambda: {
         # 7574 sayılı Kanun tutarları (RG 27.02.2026); 2027 artışı netleşince güncelle
         "kicker": "TRAFİK CEZALARI 2026", "stat": "₺5.000",
