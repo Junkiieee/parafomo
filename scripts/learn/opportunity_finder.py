@@ -25,6 +25,7 @@ import datetime as dt
 import json
 import os
 import re
+import subprocess
 import sys
 import time
 
@@ -172,14 +173,18 @@ def match_page(q, pages):
     st = stems(q)
     if not st:
         return None
-    best, url = 0.0, None
+    best, url, extra = 0.0, None, 99
     for u, ps in pages:
         if not ps:
             continue
         sc = len(st & ps) / len(st)
-        # eşitlikte araç/veri sayfası (blog değil) tercih edilir
-        if sc > best or (sc == best and url and url.startswith("/blog/") and not u.startswith("/blog/")):
-            best, url = sc, u
+        ex = len(ps - st)  # sorguda olmayan kök sayısı: az olan daha tam eşleşme ("kredi hesaplama" → /kredi-hesaplama)
+        # eşitlikte: araç/veri sayfası (blog değil) > sorguya en birebir sayfa
+        better = sc > best or (sc == best and url is not None and (
+            (url.startswith("/blog/") and not u.startswith("/blog/")) or
+            (url.startswith("/blog/") == u.startswith("/blog/") and ex < extra)))
+        if better:
+            best, url, extra = sc, u, ex
     return url if best >= 0.67 else None
 
 
@@ -298,7 +303,74 @@ def competition_factor(q, vol):
     return 1.0
 
 
+_TITLE_CACHE = {}
+
+
+def page_title_stems(page):
+    """Sayfanın <title> + <h1> kökleri — önce build çıktısı (dist/<slug>/index.html), yoksa .astro'daki title=."""
+    if not page:
+        return frozenset()
+    path = re.sub(r"^https?://[^/]+", "", page).strip("/")
+    if path in _TITLE_CACHE:
+        return _TITLE_CACHE[path]
+    text = ""
+    html_f = os.path.join(lib.ROOT, "dist", path, "index.html")
+    astro_f = os.path.join(lib.ROOT, "src", "pages", path + ".astro")
+    try:
+        if os.path.exists(html_f):
+            h = open(html_f, encoding="utf-8").read()
+            text = " ".join(re.findall(r"<title>(.*?)</title>", h, re.S)[:1] + re.findall(r"<h1[^>]*>(.*?)</h1>", h, re.S)[:1])
+        elif os.path.exists(astro_f):
+            a = open(astro_f, encoding="utf-8").read()
+            text = " ".join(re.findall(r'title=[{`"]+([^`"}]+)', a)[:1] + re.findall(r"<h1[^>]*>(.*?)</h1>", a, re.S)[:1])
+    except OSError:
+        pass
+    st = stems(re.sub(r"<[^>]+>|\$\{[^}]*\}", " ", text))
+    _TITLE_CACHE[path] = st
+    return st
+
+
+_AGE_CACHE = {}
+
+
+def page_age_days(page):
+    """Sayfa kaç gündür yayında — dosyanın git'e ilk eklendiği gün (bulunamazsa None)."""
+    path = re.sub(r"^https?://[^/]+", "", page or "").strip("/")
+    if path in _AGE_CACHE:
+        return _AGE_CACHE[path]
+    cands = ([f"src/content/blog/{path[5:]}.md", f"src/content/blog/{path[5:]}.mdx"] if path.startswith("blog/")
+             else [f"src/pages/{path}.astro", f"src/pages/{path}/index.astro", f"src/pages/{path}"])
+    age = None
+    for c in cands:
+        if os.path.exists(os.path.join(lib.ROOT, c)):
+            try:
+                out = subprocess.run(["git", "-C", lib.ROOT, "log", "--diff-filter=A", "--format=%cs", "--", c],
+                                     capture_output=True, text=True, timeout=20).stdout.split()
+                age = (dt.date.today() - dt.date.fromisoformat(out[-1])).days if out else 0  # commit yok = bugün
+            except Exception:
+                age = None
+            break
+    _AGE_CACHE[path] = age
+    return age
+
+
+def otorite(rep, g, page):
+    """Sayfa var + (GSC'de sorgu yok ya da sıra >40) + başlık/H1 sorgunun TÜM köklerini zaten içeriyor
+    → sorun başlık değil site otoritesi (2026-10-15 haftalık teşhis: hesaplayıcılar baş sorgularda p57-100)."""
+    if not page or (g and g["pos"] <= 40):
+        return False
+    q = stems(rep)
+    return bool(q) and q <= page_title_stems(page)
+
+
 def decide(rep, g, page, kind_tool):
+    age = page_age_days(page) if page else None
+    if page and not g and age is not None and age < 28:
+        return "BEKLE", 0.2, f"sayfa {age} gündür yayında — indeks ve sıra oturmadan görev üretme"
+    if otorite(rep, g, page):
+        where = f"sıra {g['pos']}" if g else "bu sorguda gösterim yok"
+        return "OTORITE", 0.3, (f"{where} ama başlık/H1 sorguyu zaten içeriyor → sorun on-page değil, site otoritesi; "
+                                "başlık görevi YAPMA — uzun kuyruk / gelecek yıl (2027) açısıyla ya da iç+dış linkle gir")
     if g:
         pos, impr, clicks = g["pos"], g["impr"], g["clicks"]
         if pos <= 10 and impr >= 30 and clicks / impr < expected_ctr(pos) * 0.5:
@@ -383,14 +455,15 @@ def main():
             "gsc": gm, "sayfa": page, "niyet": why_int, "eylem": action, "not": note, "skor": score,
         })
 
-    scored = sorted([r for r in rows if r["skor"] is not None and r["eylem"] != "KORU"],
+    scored = sorted([r for r in rows if r["skor"] is not None and r["eylem"] not in ("KORU", "BEKLE")],
                     key=lambda r: -r["skor"])
     top = [r for r in scored if (r["hacim"] or 0) >= 5][:30]
     low = sorted([r for r in rows if r["hacim"] is not None and r["hacim"] < 2], key=lambda r: r["q"])
     data = {
         "_aciklama": (f"hacim = Google Trends TR 12 ay ortalaması, '{ANCHOR}' = 100 (göreli; 0 = Trends eşiğinin "
                       "altı, çok az aranıyor). skor = hacim × niyet × erişilebilirlik (mevcut sıra). "
-                      "eylem: CTR/GUCLENDIR/YENIDEN_KUR/YENI_ARAC/YENI_YAZI."),
+                      "eylem: CTR/GUCLENDIR/YENIDEN_KUR/OTORITE/YENI_ARAC/YENI_YAZI. OTORITE = başlık zaten "
+                      "eşleşiyor, sıra otorite kilidinde → on-page görev üretme."),
         "generated_utc": lib.iso(),
         "anchor": ANCHOR,
         "trends_fetched": n,
@@ -398,6 +471,8 @@ def main():
         "firsatlar": top,
         "tum_firsatlar": [r for r in scored if (r["hacim"] or 0) >= 5],   # anahtar kelime haritası (tamamı)
         "koru": sorted([r for r in rows if r["eylem"] == "KORU" and r["hacim"]], key=lambda r: -r["hacim"])[:10],
+        "bekle": sorted([{"q": r["q"], "sayfa": r["sayfa"], "hacim": r["hacim"]} for r in rows if r["eylem"] == "BEKLE"],
+                        key=lambda r: -(r["hacim"] or 0)),
         "dusuk_talep": [r["q"] for r in low][:60],
         "trends_yok": [r["q"] for r in rows if r["hacim"] is None][:40],
     }

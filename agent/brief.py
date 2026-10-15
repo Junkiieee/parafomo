@@ -448,6 +448,10 @@ def sec_opportunities():
     age = (TODAY - dt.date.fromisoformat(d["generated_utc"][:10])).days
     out(f"_{age}g önce · hacim = Google Trends TR 12 ay ort., '{d.get('anchor')}' = 100 · skor = hacim × niyet ×"
         " erişilebilirlik. Konu/görev seçiminin ana kaynağı; hacim < 5 → yazı/sayfa açma._")
+    out("_Eylemler: CTR (ilk sayfa, tık düşük → başlık) · GUCLENDIR (p11-40 → içerik derinleştir) · YENIDEN_KUR · "
+        "**OTORITE** (sayfanın başlığı/H1'i sorguyu ZATEN içeriyor ama sıra >40 ya da gösterim yok → on-page/başlık görevi "
+        "YAPMA; uzun kuyruk, gelecek yıl (2027) açısı veya iç/dış link ile gir) · YENI_ARAC / YENI_YAZI. "
+        "28 günden yeni sayfalar listede yok (BEKLE)._")
     if age > 10:
         out("⚠ Liste bayat (>10g) — önce scripti çalıştır.")
     n = 25 if MODE == "weekly" else 12
@@ -459,6 +463,8 @@ def sec_opportunities():
         vek = f" ≈{r['vekil']}" if r.get("vekil") else ""
         out(f"| {r['skor']} | {r['eylem']} | {r['q']}{vek} | {r['hacim']} ({r.get('son4h') or '—'} / {r.get('zirve') or '—'}) "
             f"| {r.get('sayfa') or '—'} | {gs} | {r['not']} |")
+    if d.get("bekle"):
+        out("\n**Yeni sayfalar — oturmasını bekle (görev üretme):** " + " · ".join(f"{r['q']} → {r['sayfa']}" for r in d["bekle"][:10]))
     if d.get("koru"):
         out("\n**İlk sayfadakiler (koru):** " + " · ".join(f"{r['q']} ({r['hacim']})" for r in d["koru"][:8]))
     if d.get("dusuk_talep"):
