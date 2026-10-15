@@ -28,22 +28,22 @@ const fmt = (n: number) =>
 
 // Gram karşılığı referans tablosu (statik gerçek — "çeyrek altın kaç gram" niyeti)
 const gramTable = [
-  { ad: 'Gram altın', gram: '1 gram', ayar: '24 ayar (995)' },
-  { ad: 'Çeyrek altın', gram: '1,75 gram', ayar: '22 ayar' },
-  { ad: 'Yarım altın', gram: '3,5 gram', ayar: '22 ayar' },
-  { ad: 'Tam (ziynet) altın', gram: '7 gram', ayar: '22 ayar' },
-  { ad: 'Ata / Cumhuriyet altını', gram: '≈7,2 gram', ayar: '22 ayar' },
+  { ad: 'Gram altın', gram: '1 gram', ayar: '24 ayar (995-999)' },
+  { ad: 'Çeyrek altın (ziynet)', gram: '1,754 gram', ayar: '22 ayar' },
+  { ad: 'Yarım altın (ziynet)', gram: '3,508 gram', ayar: '22 ayar' },
+  { ad: 'Tam (ziynet) altın', gram: '7,016 gram', ayar: '22 ayar' },
+  { ad: 'Ata / Cumhuriyet altını (sikke)', gram: '7,216 gram', ayar: '22 ayar' },
   { ad: 'Ons altın', gram: '31,1035 gram', ayar: '24 ayar' },
 ];
 
 const faq = [
   {
     q: 'Çeyrek altın kaç gram, kaç TL eder?',
-    a: `Çeyrek altın 1,75 gram ağırlığında ve 22 ayardır. ${updLabel} itibarıyla bir çeyrek altının bozdurma (alış) değeri yaklaşık ${fmt(items.find((i) => i.key === 'ceyrek-altin')?.alis || 0)} ₺, almak için (satış) yaklaşık ${fmt(items.find((i) => i.key === 'ceyrek-altin')?.satis || 0)} ₺'dir. Fiyatlar gün içinde değişir; yukarıdaki hesaplayıcı en güncel değerle çalışır.`,
+    a: `Çeyrek altın (ziynet) 1,754 gram ağırlığında ve 22 ayardır. ${updLabel} itibarıyla bir çeyrek altının bozdurma (alış) değeri yaklaşık ${fmt(items.find((i) => i.key === 'ceyrek-altin')?.alis || 0)} ₺, almak için (satış) yaklaşık ${fmt(items.find((i) => i.key === 'ceyrek-altin')?.satis || 0)} ₺'dir. Fiyatlar gün içinde değişir; yukarıdaki hesaplayıcı en güncel değerle çalışır.`,
   },
   {
     q: 'Gram altın ile çeyrek altının farkı nedir?',
-    a: 'Gram altın genellikle 24 ayar (saf, 995-999 milyem) ve tam olarak 1 gramdır. Çeyrek, yarım, tam ve ata altınlar ise 22 ayardır (916 milyem) ve içlerinde başka metal karışımı bulunur. Bu yüzden 1,75 gram çeyrek altın, 1,75 gram gram-altından biraz daha ucuzdur; ayrıca ziynet altınlarında darphane/işçilik payı fiyata yansır.',
+    a: 'Gram altın genellikle 24 ayar (saf, 995-999 milyem) ve tam olarak 1 gramdır. Çeyrek, yarım, tam ve ata altınlar ise 22 ayardır (916 milyem) ve içlerinde başka metal karışımı bulunur. Bu yüzden 1,754 gram çeyrek altın, aynı ağırlıktaki gram altından biraz daha ucuzdur; ayrıca ziynet altınlarında darphane/işçilik payı fiyata yansır.',
   },
   {
     q: 'Altınımı bozdurunca elime ne kadar geçer?',
@@ -164,8 +164,8 @@ const breadcrumbs = [
       <h2>Altın değeri nasıl hesaplanır?</h2>
       <p>
         Bir altının TL değeri, <strong>ağırlığı × ayar saflığı × gram altın fiyatı</strong> ile
-        bulunur. Örneğin çeyrek altın 1,75 gram ve 22 ayardır (916 milyem); değeri yaklaşık
-        1,75 × 0,916 × gram-has-altın fiyatına denk gelir. Piyasada çeyrek/tam gibi ziynet altınlarına
+        bulunur. Örneğin çeyrek altın 1,754 gram ve 22 ayardır (916 milyem); değeri yaklaşık
+        1,754 × 0,916 × gram-has-altın fiyatına denk gelir. Piyasada çeyrek/tam gibi ziynet altınlarına
         ayrıca küçük bir <strong>darphane/işçilik payı</strong> eklenir, bu yüzden yukarıdaki tabloda
         gerçek piyasa alış-satış fiyatlarını kullanıyoruz.
       </p>

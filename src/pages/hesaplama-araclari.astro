@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ALTIN_SPECS } from '../data/altin-specs';
+
+// Araç merkezi: tüm hesaplayıcı ve veri sayfaları tek yerde — iç link otoritesini araçlarda toplar.
+// Yeni araç sayfası açınca buraya da ekle (ve Footer TOOL_LINKS'e).
+const GRUPLAR: { baslik: string; araclar: [string, string, string][] }[] = [
+  { baslik: 'Faiz, kredi ve birikim', araclar: [
+    ['/faiz-hesaplama/', 'Faiz hesaplama', 'Basit/bileşik faiz, gün-ay-yıl, net getiri'],
+    ['/mevduat-faizi-hesaplama/', 'Mevduat faizi hesaplama', 'Güncel stopajla net vadeli mevduat getirisi'],
+    ['/kredi-hesaplama/', 'Kredi hesaplama', 'Taksit, toplam faiz ve ödeme planı'],
+    ['/konut-kredisi-hesaplama/', 'Konut kredisi hesaplama', 'Peşinat, kredi/değer oranı, taksit tablosu'],
+    ['/bilesik-faiz-hesaplama/', 'Bileşik faiz hesaplama', 'Düzenli katkıyla uzun vadeli birikim'],
+    ['/bono-hesaplama/', 'Bono hesaplama', 'Hazine bonosu getiri hesabı'],
+    ['/yuzde-hesaplama/', 'Yüzde hesaplama', 'Yüzdesi, yüzde kaç, artış ve indirim'],
+  ] },
+  { baslik: 'Maaş, zam ve tazminat', araclar: [
+    ['/net-maas-hesaplama/', 'Net maaş hesaplama', 'Brütten nete, vergi ve SGK kesintileri'],
+    ['/asgari-ucret-hesaplama/', 'Asgari ücret', 'Net-brüt asgari ücret ve işveren maliyeti'],
+    ['/emekli-zammi-hesaplama/', 'Emekli zammı hesaplama', 'SSK, Bağ-Kur ve memur emeklisi zammı'],
+    ['/kidem-tazminati-hesaplama/', 'Kıdem tazminatı hesaplama', 'Tavan dahil kıdem tazminatı ve 2027 tavan tahmini'],
+    ['/issizlik-maasi-hesaplama/', 'İşsizlik maaşı hesaplama', 'Süre ve aylık ödenek'],
+  ] },
+  { baslik: 'Vergi, harç ve zamlar', araclar: [
+    ['/vergi-dilimi-hesaplama/', 'Vergi dilimi hesaplama', 'Gelir vergisi dilimleri ve kümülatif matrah'],
+    ['/kdv-hesaplama/', 'KDV hesaplama', 'KDV ekle, KDV dahil fiyattan ayır'],
+    ['/emlak-vergisi-hesaplama/', 'Emlak vergisi hesaplama', 'Oranlar, taksitler, 2027 tahmini'],
+    ['/mtv-hesaplama/', 'MTV hesaplama', 'Motorlu taşıtlar vergisi 2027'],
+    ['/yeniden-degerleme-orani/', 'Yeniden değerleme oranı', '2027 harç, ceza ve vergi zammı oranı'],
+    ['/kira-artis-orani-hesaplama/', 'Kira artış oranı', 'Güncel TÜFE 12 aylık ortalamasıyla'],
+    ['/trafik-cezalari-hesaplama/', 'Trafik cezaları', 'Ceza tutarları ve erken ödeme indirimi'],
+    ['/pasaport-ehliyet-harci/', 'Pasaport ve ehliyet harcı', 'Güncel harç tutarları'],
+  ] },
+  { baslik: 'Altın', araclar: [
+    ['/altin-fiyatlari/', 'Altın fiyatları bugün', 'Tüm türlerin alış-satış fiyatı'],
+    ['/altin-hesaplama/', 'Altın hesaplama', 'Elindeki altının toplam değeri'],
+    ['/altin-kac-gram/', 'Altın kaç gram?', 'Resmî sikke/ziynet ağırlık tablosu'],
+    ['/altin-getiri/', 'Altın getirisi', '1-10 yıllık TL getirisi'],
+  ] },
+  { baslik: 'Getiri ve piyasa verisi', araclar: [
+    ['/altin-dolar-borsa/', 'Altın mı, dolar mı, borsa mı?', 'Varlıkların karşılaştırmalı getirisi'],
+    ['/dolar-getiri/', 'Dolar getirisi', 'Dolar/TL tarihsel getiri'],
+    ['/euro-getiri/', 'Euro getirisi', 'Euro/TL tarihsel getiri'],
+    ['/bist-getiri/', 'BIST 100 getirisi', 'Borsa İstanbul tarihsel getiri'],
+    ['/bitcoin-getiri/', 'Bitcoin getirisi', 'TL bazında bitcoin getirisi'],
+    ['/gumus-getiri/', 'Gümüş getirisi', 'TL bazında gümüş getirisi'],
+    ['/halka-arz/', 'Halka arz takvimi', 'Güncel ve yaklaşan halka arzlar'],
+    ['/halka-arz-getiri/', 'Halka arz getirileri', 'Halka arzların ilk gün ve sonrası getirisi'],
+  ] },
+  { baslik: 'Takvimler', araclar: [
+    ['/ekonomik-takvim/', 'Ekonomik takvim', 'Haftanın önemli veri ve kararları'],
+    ['/tcmb-faiz-takvimi/', 'TCMB faiz takvimi', 'PPK tarihleri ve kararlar'],
+    ['/fed-faiz-takvimi/', 'Fed faiz takvimi', 'FOMC tarihleri ve kararlar'],
+    ['/enflasyon-takvimi/', 'Enflasyon takvimi', 'TÜİK enflasyon açıklama tarihleri'],
+  ] },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Hesaplama Araçları', url: '/hesaplama-araclari/' },
+];
+---
+
+<BaseLayout
+  title="Hesaplama Araçları | Faiz, Kredi, Maaş, Vergi ve Altın Hesaplayıcıları"
+  description="ParaFOMO'nun ücretsiz finans hesaplama araçları tek sayfada: faiz, kredi, mevduat, net maaş, kıdem tazminatı, emekli zammı, vergi, KDV, MTV, emlak vergisi, altın ve getiri hesaplayıcıları."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="wrap">
+    <header class="head">
+      <p class="eyebrow">Ücretsiz · Kayıt gerektirmez</p>
+      <h1>Hesaplama Araçları</h1>
+      <p class="lede">Para kararlarında ihtiyaç duyduğun hesaplayıcı ve güncel veri sayfaları — her biri resmî kaynaklı
+        oranlarla ve tarihli.</p>
+    </header>
+
+    {GRUPLAR.map((g) => (
+      <section class="grp">
+        <h2>{g.baslik}</h2>
+        <ul class="grid">
+          {g.araclar.map(([href, ad, ac]) => (
+            <li><a href={href}><strong>{ad}</strong><span>{ac}</span></a></li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    <section class="grp">
+      <h2>Altın türlerine göre fiyat</h2>
+      <p class="chips">
+        {ALTIN_SPECS.map((s) => <a href={`/altin-fiyatlari/${s.slug}/`}>{s.ad}</a>)}
+      </p>
+    </section>
+  </div>
+
+  <style>
+    .wrap { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .head { text-align: center; margin-bottom: 1.8rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+    .grp { margin-top: 2rem; }
+    .grp h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.7rem; }
+    .grid a { display: flex; flex-direction: column; gap: 0.2rem; padding: 0.9rem 1rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); text-decoration: none; color: var(--text); height: 100%; }
+    .grid a:hover { border-color: var(--brand-2); box-shadow: var(--shadow-soft); }
+    .grid span { font-size: 0.85rem; color: var(--text-soft); }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .chips a { padding: 0.4rem 0.8rem; border: 1px solid var(--border); border-radius: 999px; font-size: 0.88rem; text-decoration: none; color: var(--text); background: var(--bg-card); }
+    .chips a:hover { border-color: var(--brand-2); }
+  </style>
+</BaseLayout>

@@ -1,0 +1,248 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import altin from '../../../data/altin-fiyat.json';
+import { ALTIN_SPECS, HMB_KAYNAK, hasGram, type AltinSpec } from '../../data/altin-specs';
+
+// Tür başına fiyat sayfası: /altin-fiyatlari/<slug>/ — "çeyrek altın", "cumhuriyet altını", "22 ayar bilezik"
+// gibi yüksek hacimli tür sorgularının her biri kendi sayfasında cevaplanır (fırsat motoru 2026-10-15).
+// Fiyat: data/altin-fiyat.json (günlük rebuild) · ağırlık/ayar: src/data/altin-specs.ts (HMB resmî tablo).
+export function getStaticPaths() {
+  return ALTIN_SPECS.filter((s) => altin.kalemler.some((k) => k.key === s.key)).map((s) => ({
+    params: { tur: s.slug },
+    props: { spec: s },
+  }));
+}
+
+const { spec } = Astro.props as { spec: AltinSpec };
+type Kalem = { key: string; label: string; gram: number; ayar: string; alis: number | null; satis: number | null };
+const items = altin.kalemler as Kalem[];
+const k = items.find((i) => i.key === spec.key)!;
+const has = items.find((i) => i.key === 'gram-has-altin');
+const usd = spec.grup === 'ons';
+const cur = usd ? '$' : '₺';
+
+const upd = new Date(altin.guncellenme);
+const updLabel = upd.toLocaleDateString('tr-TR', {
+  day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Istanbul',
+});
+const dateLabel = upd.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Istanbul' });
+
+const fmt0 = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const fmt2 = (n: number) => new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+const g3 = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 3 }).format(n);
+
+const alis = k.alis || 0;
+const satis = k.satis || 0;
+const makas = satis > 0 ? ((satis - alis) / satis) * 100 : 0;
+const hasG = hasGram(spec);
+// Has altın karşılığı: içindeki saf altın × has altın alış fiyatı (TL türlerde). Prim = satış / has değeri − 1.
+const hasDeger = !usd && has?.alis ? hasG * has.alis : 0;
+const prim = hasDeger > 0 ? (satis / hasDeger - 1) * 100 : 0;
+const birimAd = spec.birim === 'adet' ? 'adet' : spec.birim === 'gram' ? 'gram' : 'ons';
+const adetSet = spec.birim === 'adet' ? [1, 2, 3, 5, 10, 20] : spec.birim === 'gram' ? [1, 5, 10, 20, 50, 100] : [1, 2, 5, 10];
+
+// Aynı gruptaki ve komşu türler — iç link ağı
+const kardes = ALTIN_SPECS.filter((s) => s.slug !== spec.slug && items.some((i) => i.key === s.key));
+
+const baslikKisa = spec.birim === 'gram' && spec.grup === 'ayar' ? `${spec.ad} Gram Fiyatı` : `${spec.ad} Fiyatı`;
+const title = usd
+  ? `Ons Altın Fiyatı Bugün (${dateLabel}) | Ons Altın Kaç Dolar?`
+  : `${baslikKisa} Bugün (${dateLabel}) | ${spec.ad} Kaç TL${spec.birim === 'adet' ? ', Kaç Gram' : ''}?`;
+const description = usd
+  ? `Ons altın bugün ${fmt2(satis)} $. Ons kaç gram (31,1035 g), TL'ye nasıl çevrilir, gram altınla ilişkisi — ${dateLabel} verisiyle, her gün güncel.`
+  : `${spec.ad} bugün satış ${fmt0(satis)} ₺, alış (bozdurma) ${fmt0(alis)} ₺. ${spec.birim === 'adet' ? `${g3(spec.gram)} gram, ` : ''}${spec.ayar}; içindeki saf altın, işçilik primi ve adet hesaplayıcı — ${dateLabel} verisiyle, her gün güncel.`;
+
+const ziynetSikkeNotu =
+  spec.grup === 'ziynet' || spec.grup === 'sikke'
+    ? 'Cumhuriyet altınları sikke ve ziynet olarak iki grupta basılır. Sikkeler ziynete göre daha küçük çaplı, daha kalın ve daha ağırdır: çeyrek 1,804 / 1,754 g, yarım 3,608 / 3,508 g, birlik 7,216 / 7,016 g (sikke / ziynet). İkisi de 22 ayardır.'
+    : '';
+
+const faq = usd
+  ? [
+      { q: 'Ons altın bugün kaç dolar?', a: `${updLabel} itibarıyla ons altın satış ${fmt2(satis)} $, alış ${fmt2(alis)} $ civarındadır. Ons fiyatı uluslararası piyasada 7/24'e yakın işlem görür ve küresel faiz beklentisi, dolar endeksi ve jeopolitik riskle değişir.` },
+      { q: 'Bir ons altın kaç gramdır?', a: 'Altında kullanılan ons, troy onsudur: 1 ons = 31,1035 gram. Günlük hayattaki ons (28,35 g) ile karıştırılmamalıdır.' },
+      { q: 'Ons altından gram altın fiyatı nasıl hesaplanır?', a: `Gram altın (TL) ≈ Ons fiyatı (USD) × Dolar/TL kuru ÷ 31,1035. Bugünkü has altın gram fiyatı ${has?.alis ? fmt0(has.alis) + ' ₺' : '—'} civarındadır; iç piyasa fiyatı ayrıca yerel arz-talep primini içerir.` },
+    ]
+  : [
+      { q: `${spec.ad} bugün ne kadar, kaç TL?`, a: `${updLabel} itibarıyla ${spec.kisa} satış fiyatı ${fmt0(satis)} ₺, alış (bozdurma) fiyatı ${fmt0(alis)} ₺ civarındadır. Satış, kuyumcunun size sattığı; alış, sizden bozdurarak aldığı fiyattır. Aradaki makas yaklaşık %${fmt2(makas)}.` },
+      ...(spec.birim === 'adet'
+        ? [{ q: `${spec.ad} kaç gram?`, a: `${spec.not} Bu ağırlıklar Hazine ve Maliye Bakanlığı'nın Darphane tablosundaki resmî değerlerdir.` }]
+        : []),
+      { q: `${spec.ad} içinde ne kadar saf altın var?`, a: `${spec.ayar} altın ${spec.milyem} milyemdir; yani ${spec.birim === 'adet' ? `bir ${spec.kisa} (${g3(spec.gram)} g)` : `1 gram ${spec.kisa}`} içinde yaklaşık ${g3(hasG)} gram saf (has) altın bulunur. Bugünkü has altın alış fiyatıyla bu saf altının karşılığı ${hasDeger ? fmt0(hasDeger) + ' ₺' : '—'} eder.` },
+      ...(hasDeger > 0 && spec.grup !== 'kulce'
+        ? [{ q: `${spec.ad} neden içindeki altından pahalı?`, a: `Satış fiyatı içindeki has altın değerinin yaklaşık %${fmt2(prim)} üzerinde. Fark darphane/işçilik payı ve kuyumcu marjından gelir${spec.key === '22-ayar-bilezik' ? '; bilezikte buna ayrıca model işçiliği eklenir ve bozdururken geri alınmaz' : ''}. Bu yüzden kısa vadeli yatırımda gram altın, hediye ve birikimde ziynet/sikke tercih edilir.` }]
+        : []),
+      { q: `${spec.ad} bozdurunca ne kadar alırım?`, a: `Bozdururken alış fiyatı esas alınır: bugün ${spec.birim === 'adet' ? 'adet' : 'gram'} başına yaklaşık ${fmt0(alis)} ₺. Kuyumcular arasında birkaç yüz liralık fark olabilir; ${spec.grup === 'ayar' ? 'takıda ayar damgası ve gram tartısı esas alınır, işçilik geri ödenmez' : 'altının yıpranmamış ve orijinal olması fiyatı etkiler'}.` },
+    ];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Altın Fiyatları', url: '/altin-fiyatlari/' },
+  { name: spec.ad, url: `/altin-fiyatlari/${spec.slug}/` },
+];
+---
+
+<BaseLayout title={title} description={description} faq={faq} breadcrumbs={breadcrumbs}>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Canlı Veri · {spec.ayar}{spec.birim === 'adet' ? ` · ${g3(spec.gram)} gram` : ''}</p>
+      <h1>{baslikKisa} Bugün</h1>
+      <p class="lede">{spec.not}</p>
+    </header>
+
+    <div class="hero">
+      <div class="hero-main">
+        <span class="hero-label">{spec.ad} · Satış{spec.birim === 'gram' ? ' (gram)' : ''}</span>
+        <span class="hero-value">{cur}{usd ? fmt2(satis) : fmt0(satis)}</span>
+        <span class="hero-sub">Alış (bozdurma): {cur}{usd ? fmt2(alis) : fmt0(alis)} · makas %{fmt2(makas)}</span>
+      </div>
+      <dl class="spec">
+        <div><dt>Ağırlık</dt><dd>{g3(spec.gram)} g{spec.birim === 'adet' ? ' / adet' : ''}</dd></div>
+        <div><dt>Ayar</dt><dd>{spec.ayar} · {spec.milyem} milyem</dd></div>
+        <div><dt>Saf altın</dt><dd>{g3(hasG)} g</dd></div>
+        {hasDeger > 0 && <div><dt>Has altın karşılığı</dt><dd>₺{fmt0(hasDeger)}{spec.grup !== 'kulce' && <> · prim %{fmt2(prim)}</>}</dd></div>}
+      </dl>
+    </div>
+    <p class="updated">Son güncelleme: <strong>{updLabel}</strong> · piyasa verisi (gösterge); kesin işlem fiyatı için kuyumcunuza danışın.</p>
+
+    <section class="calc-grid" aria-label={`${spec.ad} hesaplama`}>
+      <label class="calc-in">
+        <span>Kaç {birimAd} {spec.kisa}?</span>
+        <input type="number" id="in-n" value="1" min="0" step={spec.birim === 'adet' ? '1' : '0.1'} inputmode="decimal" />
+      </label>
+      <div class="calc-out" aria-live="polite">
+        <div><span>Almak için (satış)</span><strong id="out-s">{cur}{usd ? fmt2(satis) : fmt0(satis)}</strong></div>
+        <div><span>Bozdurunca (alış)</span><strong id="out-a">{cur}{usd ? fmt2(alis) : fmt0(alis)}</strong></div>
+        <div><span>İçindeki saf altın</span><strong id="out-h">{g3(hasG)} g</strong></div>
+      </div>
+    </section>
+
+    <section class="table-block">
+      <h2>{spec.birim === 'adet' ? `${spec.ad} adet fiyat tablosu` : `${spec.ad} ${birimAd} fiyat tablosu`}</h2>
+      <table class="rate-table">
+        <thead><tr><th>{spec.birim === 'adet' ? 'Adet' : spec.birim === 'gram' ? 'Gram' : 'Ons'}</th><th>Satış</th><th>Alış</th><th class="hide-sm">Saf altın</th></tr></thead>
+        <tbody>
+          {adetSet.map((n) => (
+            <tr>
+              <td>{n}</td>
+              <td>{cur}{usd ? fmt2(n * satis) : fmt0(n * satis)}</td>
+              <td>{cur}{usd ? fmt2(n * alis) : fmt0(n * alis)}</td>
+              <td class="hide-sm">{g3(n * hasG)} g</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    {ziynetSikkeNotu && (
+      <section class="prose-block">
+        <h2>Ziynet mi, sikke mi? Ağırlık farkı</h2>
+        <p>{ziynetSikkeNotu} Tüm türlerin resmî tablosu: <a href="/altin-kac-gram/">altın kaç gram?</a>
+          (Kaynak: <a href={HMB_KAYNAK} rel="nofollow noopener" target="_blank">Hazine ve Maliye Bakanlığı — Sorularla Cumhuriyet Altını</a>)</p>
+      </section>
+    )}
+
+    <section class="table-block">
+      <h2>Diğer altın türleri bugün</h2>
+      <table class="rate-table">
+        <thead><tr><th>Tür</th><th>Satış</th><th>Alış</th><th class="hide-sm">Ağırlık</th></tr></thead>
+        <tbody>
+          {kardes.map((s) => {
+            const x = items.find((i) => i.key === s.key)!;
+            const c = s.grup === 'ons' ? '$' : '₺';
+            return (
+              <tr>
+                <td><a href={`/altin-fiyatlari/${s.slug}/`}>{s.ad}</a></td>
+                <td>{c}{s.grup === 'ons' ? fmt2(x.satis || 0) : fmt0(x.satis || 0)}</td>
+                <td>{c}{s.grup === 'ons' ? fmt2(x.alis || 0) : fmt0(x.alis || 0)}</td>
+                <td class="hide-sm">{g3(s.gram)} g</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <p class="table-note">Tüm türler tek tabloda: <a href="/altin-fiyatlari/">altın fiyatları bugün</a> ·
+        elindeki altının toplam değeri: <a href="/altin-hesaplama/">altın hesaplama</a> ·
+        uzun vadeli performans: <a href="/altin-getiri/">altın getirisi (1-10 yıl)</a>.</p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <p class="disclaimer">Fiyatlar gösterge niteliğindedir ve günde bir kez güncellenir; yatırım tavsiyesi değildir.</p>
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ satis, alis, hasG, usd }}>
+    (function () {
+      const nf = new Intl.NumberFormat('tr-TR', usd ? { minimumFractionDigits: 2, maximumFractionDigits: 2 } : { maximumFractionDigits: 0 });
+      const g3 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 3 });
+      const c = usd ? '$' : '₺';
+      const inp = document.getElementById('in-n');
+      function up() {
+        const n = Math.max(0, +inp.value || 0);
+        document.getElementById('out-s').textContent = c + nf.format(n * satis);
+        document.getElementById('out-a').textContent = c + nf.format(n * alis);
+        document.getElementById('out-h').textContent = g3.format(n * hasG) + ' g';
+      }
+      inp.addEventListener('input', up);
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); }
+    .hero-main { display: flex; flex-direction: column; gap: 0.25rem; justify-content: center; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .hero-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .hero-value { font-family: var(--font-serif); font-size: clamp(2rem, 1.4rem + 2.4vw, 2.9rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .hero-sub { font-size: 0.85rem; color: var(--brand-ink); }
+    .spec { margin: 0; display: grid; gap: 0.55rem; align-content: center; }
+    .spec div { display: grid; grid-template-columns: 1fr auto; gap: 0.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.45rem; }
+    .spec dt { font-size: 0.85rem; color: var(--text-soft); }
+    .spec dd { margin: 0; font-weight: 700; text-align: right; }
+    .updated { font-size: 0.8rem; color: var(--text-muted); margin: 0.8rem 0 0; }
+
+    .calc-grid { margin-top: 1.6rem; display: grid; grid-template-columns: 1fr 1.4fr; gap: 1rem; align-items: center; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.2rem; }
+    .calc-in { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-in span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-in input { font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .calc-in input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .calc-out { display: grid; gap: 0.45rem; }
+    .calc-out div { display: grid; grid-template-columns: 1fr auto; gap: 0.5rem; }
+    .calc-out span { font-size: 0.85rem; color: var(--text-soft); }
+
+    .table-block { margin-top: 2.4rem; }
+    .table-block h2, .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.7rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .table-note { font-size: 0.85rem; color: var(--text-muted); margin: 0.7rem 0 0; line-height: 1.6; }
+    .prose-block, .faq-block { margin-top: 2.4rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 2rem 0; line-height: 1.5; }
+
+    @media (max-width: 640px) {
+      .hero, .calc-grid { grid-template-columns: 1fr; }
+      .hide-sm { display: none; }
+    }
+  </style>
+</BaseLayout>

@@ -55,6 +55,21 @@ HEAD_TERMS = [
     "damga vergisi hesaplama", "kredi kartı asgari ödeme", "bileşik faiz hesaplama", "faiz kararı",
     "yeniden değerleme oranı", "trafik cezası sorgulama", "pasaport harcı", "ehliyet harcı",
     "doğum izni hesaplama", "yıllık izin hesaplama", "kira gelir vergisi", "altın mı dolar mı",
+    # genişletme 2026-10-15 (Kaan: "tüm kelimelerde siteyi güçlendir") — TR finans araç/veri/rehber evreni
+    "kredi kartı faiz hesaplama", "kredi yapılandırma", "kredi notu", "findeks", "erken kapama hesaplama",
+    "kredi faiz oranları", "konut kredisi faiz oranları", "ihtiyaç kredisi faiz oranları", "taşıt kredisi faiz oranları",
+    "mevduat faiz oranları", "en yüksek mevduat faizi", "vadeli mevduat", "repo faizi", "tefas",
+    "para piyasası fonu", "altın fonu", "hisse senedi nasıl alınır", "temettü hesaplama", "lot hesaplama",
+    "bedelsiz sermaye artırımı", "bedelli sermaye artırımı", "halka arz sonuçları", "spk onayı",
+    "döviz hesaplama", "altın kaç gram", "22 ayar bilezik", "cumhuriyet altını", "ons altın",
+    "gümüş fiyatları", "bitcoin kaç tl", "kripto vergi", "stopaj", "stopaj hesaplama",
+    "fazla mesai hesaplama", "agi hesaplama", "brüt asgari ücret", "asgari ücret 2027", "memur maaşı",
+    "emekli maaşı", "bayram ikramiyesi", "en düşük emekli maaşı", "emekli maaş hesaplama", "emeklilik hesaplama",
+    "ne zaman emekli olurum", "sgk prim borcu", "bağkur borcu", "tazminat hesaplama", "kira artışı",
+    "tapu harcı hesaplama", "noter ücreti", "araç muayene ücreti", "değer artış kazancı",
+    "veraset ve intikal vergisi", "kurumlar vergisi", "geçici vergi", "beyanname", "vergi borcu sorgulama",
+    "enflasyon hesaplama", "enflasyon farkı hesaplama", "tüfe", "yi üfe", "reel getiri hesaplama",
+    "faiz hesaplama", "yüzde hesaplama", "dolar endeksi", "abd faiz kararı", "ppk",
 ]
 
 STOP = set("mı mi mu mü ne nasıl kaç kadar için ile ve veya da de bu şu o en çok hangi "
@@ -381,6 +396,7 @@ def main():
         "trends_fetched": n,
         "aday_sayisi": len(rows),
         "firsatlar": top,
+        "tum_firsatlar": [r for r in scored if (r["hacim"] or 0) >= 5],   # anahtar kelime haritası (tamamı)
         "koru": sorted([r for r in rows if r["eylem"] == "KORU" and r["hacim"]], key=lambda r: -r["hacim"])[:10],
         "dusuk_talep": [r["q"] for r in low][:60],
         "trends_yok": [r["q"] for r in rows if r["hacim"] is None][:40],

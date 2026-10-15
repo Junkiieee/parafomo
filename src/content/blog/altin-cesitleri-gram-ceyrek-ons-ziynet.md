@@ -8,15 +8,16 @@ readingTime: 8
 featured: false
 faq:
   - q: "Altın çeşitleri farkı nedir, kısaca nasıl açıklanır?"
-    a: "Gram, çeyrek, yarım ve tam altın aynı saflıktaki (22 ayar) Türk mihraplı altınlardır; sadece ağırlıkları ve buna bağlı fiyatları farklıdır. Ziynet altını 22 ayar olduğu halde işçilik payı içerir, ons ise uluslararası piyasada 24 ayar ham altın fiyatını temsil eder."
+    a: "Gram altın 24 ayar (995) külçe altındır. Çeyrek (1,754 g), yarım (3,508 g), tam (7,016 g) ziynet altınlar ve Cumhuriyet (Ata) altını (7,216 g sikke) ise 22 ayardır; ağırlıkları ve buna bağlı fiyatları farklıdır ve fiyatlarında darphane/işçilik payı bulunur. Ons (31,1035 g) uluslararası piyasada 24 ayar altının dolar fiyatını temsil eder."
   - q: "Yatırım için en mantıklı altın çeşidi hangisidir?"
     a: "Küçük birikim için gram altın veya dijital altın tercih edilir — işçilik kaybı yoktur ve likidite yüksektir. Büyük tutarlarda ons takipli enstrümanlar (altın hesabı, borsa yatırım fonu) en uygun maliyetli seçenektir."
   - q: "Ziynet altını yatırım amaçlı alınır mı?"
     a: "Ziynet altını yatırım için önerilmez; çünkü alırken işçilik ve ayar farkı ödersiniz, satarken bu fark büyük ölçüde geri alınamaz. Yatırım için işçilik içermeyen ons veya gram altın enstrümanları çok daha avantajlıdır."
   - q: "Gram altın ile ons altın arasındaki fark nedir?"
-    a: "Gram altın, yurt içi kuyumcu/banka sistemindeki 22 ayar Türk altınıdır. Ons altın ise 31,1 gram ağırlığında ve 24 ayar saflığında uluslararası benchmark fiyatıdır. Türkiye'deki tüm altın fiyatları temelde bu ons fiyatından türer; kura ve işlem maliyetlerine göre hesaplanır."
+    a: "Gram altın, yurt içi kuyumcu/banka sistemindeki 24 ayar (995) külçe altındır. Ons altın ise 31,1 gram ağırlığında ve 24 ayar saflığında uluslararası benchmark fiyatıdır. Türkiye'deki tüm altın fiyatları temelde bu ons fiyatından türer; kura ve işlem maliyetlerine göre hesaplanır."
   - q: "Altın alırken en çok hangi maliyete dikkat etmeli?"
     a: "Alım-satım arasındaki spread (makas) en kritik maliyet kalemidir. Kuyumcuda bu makas fiziki gram altında %3-8 olabilirken, banka altın hesabı veya borsada işlem gören ETF'lerde %0,1-0,5 düzeyine kadar düşebilir. Uzun vadeli yatırımda bile başlangıçtaki bu fark önemlidir."
+updatedDate: 2026-10-15
 ---
 
 Kuyumcuya girdiğinizde "gram mı alayım, çeyrek mi?" diye sormanız kaçınılmaz. Bir adım ileriye gittiğinizde ons fiyatı, cumhuriyet altını ve dijital altın hesabı da devreye giriyor. **Altın çeşitleri farkı** sadece gramaj meselesi değil; işçilik, saflık derecesi, likidite ve maliyet yapısı da birbirinden ayrışıyor. Bu rehberde her çeşidi tek tek açıklıyor, bir karşılaştırma tablosuyla en mantıklı tercihi gösteriyoruz.
@@ -34,26 +35,26 @@ Uluslararası boyutuyla ise ons altın, tüm bu fiyatların türediği temel gö
 
 ## Gramaj Bazlı Altınlar: Gram, Çeyrek, Yarım, Tam
 
-Türkiye'de "çeyrek altın aldım" demek, belirli bir standart ağırlıkta **22 ayar** altın almak demektir. Bu dört form, aynı saflıkta üretilir; tek fark ağırlıktır.
+Türkiye'de "çeyrek altın aldım" demek, belirli bir standart ağırlıkta **22 ayar** altın almak demektir. Çeyrek, yarım ve tam aynı saflıkta (22 ayar) üretilir, tek fark ağırlıktır; gram altın ise 24 ayar (995) külçedir.
 
 | Çeşit | Ağırlık | Yaygın kullanım |
 |---|---|---|
 | **Gram altın** | 1 gram (ve katları: 2,5 g, 5 g, 10 g…) | Küçük birikim, düzenli alım |
-| **Çeyrek altın** | ~1,75 gram | Hediye, orta birikim |
-| **Yarım altın** | ~3,5 gram | Hediye, orta birikim |
-| **Tam altın** | ~7 gram | Düğün, büyük birikim |
+| **Çeyrek altın** | 1,754 gram (ziynet) | Hediye, orta birikim |
+| **Yarım altın** | 3,508 gram (ziynet) | Hediye, orta birikim |
+| **Tam altın** | 7,016 gram (ziynet) | Düğün, büyük birikim |
 
 **22 ayar**, altının %91,6 saf altından oluştuğu anlamına gelir. Kalan %8,4, bakır veya gümüş gibi alaşımdır; bu durum sikkeye sağlamlık kazandırır. Saflık düştükçe altın içeriği azaldığından aynı gramda daha az değerli metal alırsınız.
 
 ### Kuyumcuda Alım-Satım Makası
 
-Bu altınları kuyumcudan aldığınızda, **ilan edilen fiyatın biraz üzerinden** (alış fiyatı) satın alırsınız; satmak istediğinizde ise daha düşük bir fiyattan (satış fiyatı) elden çıkarırsınız. Bu aradaki farka **spread** ya da makas denir. Kuyumcuda bu makas ortalama %3-8 olabilir; yani 100 TL'lik altın aldığınızda hemen satsanız 92-97 TL alırsınız. Uzun vadeli tutmak bu maliyeti amorti eder, ama kısa vadede olumsuz etkiler.
+Bu altınları kuyumcudan aldığınızda kuyumcunun **satış fiyatından** ödersiniz; bozdurmak istediğinizde ise daha düşük olan **alış fiyatından** elden çıkarırsınız. Bu aradaki farka **spread** ya da makas denir. Kuyumcuda bu makas ortalama %3-8 olabilir; yani 100 TL'lik altın aldığınızda hemen satsanız 92-97 TL alırsınız. Uzun vadeli tutmak bu maliyeti amorti eder, ama kısa vadede olumsuz etkiler.
 
 ## Cumhuriyet Altını Nedir?
 
-Cumhuriyet altını, Türkiye Cumhuriyet Merkez Bankası veya Darphane tarafından basılmış, ön yüzünde **Atatürk portresi** bulunan 22 ayar sikke altınıdır. Ağırlığı tam altınla aynı (~7 gram) ya da çok yakındır.
+Cumhuriyet altını, Darphane tarafından basılan, ön yüzünde **Atatürk portresi** bulunan 22 ayar sikke altındır. Birlik Cumhuriyet sikkesi (halk arasında Ata Lira) **7,216 gram**, ziynet tam altın ise **7,016 gram**dır ([Hazine ve Maliye Bakanlığı](https://ms.hmb.gov.tr/uploads/sites/7/2026/08/Sorularla_Cumhuriyet_Altini-c412193a82fc0317.pdf)). Tüm türlerin resmî ağırlık tablosu: [altın kaç gram?](/altin-kac-gram/)
 
-Fiyatı normal tam altına göre biraz daha yüksek olabilir; çünkü cumhuriyet altınına ek olarak **numismatik (koleksiyon) değeri** atfedilir. Yatırım amaçlı tutmak için cumhuriyet altını ile tam altın arasındaki fark çok belirleyici değildir; ancak bu özel değeri nedeniyle likidite iyi, alıcı bulma kolaydır.
+Fiyatı tam altına göre biraz daha yüksektir; bunun ana nedeni sikkenin **0,2 gram daha ağır** olmasıdır. Yatırım amaçlı tutmak için cumhuriyet altını ile tam altın arasındaki fark çok belirleyici değildir; ancak bu özel değeri nedeniyle likidite iyi, alıcı bulma kolaydır.
 
 ## Ons Altın Nedir?
 
@@ -70,7 +71,7 @@ Bireysel yatırımcı olarak doğrudan "ons altın" almak yerine ons fiyatını 
 
 ## Ziynet Altını Nedir? Yatırımda Kullanılır mı?
 
-Ziynet altını, kuyumcunun **takı olarak ürettiği** altındır. 22 ayar olabilir, bazı modeller 14 ayar (altın oranı %58,5) ya da 18 ayar (%75) da olabilir.
+Resmî tanımda "Cumhuriyet ziynet altını" çeyrek, yarım ve tam altının kendisidir; günlük dilde ise "ziynet" bilezik, kolye gibi **takılar** için de kullanılır. Bu bölümde takı anlamındaki ziynetten söz ediyoruz. 22 ayar olabilir, bazı modeller 14 ayar (altın oranı %58,5) ya da 18 ayar (%75) da olabilir.
 
 Yatırım açısından ziynet altınının en büyük handikabı: **işçilik ücreti.** Bilezik, kolye veya küpe aldığınızda altın gramına ek olarak tasarım, işleme ve ticari kâr ücreti ödersiniz. Bu işçilik payı, genellikle altın değerinin %15-30'u kadar olabilir. Satmak istediğinizde kuyumcu yalnızca içindeki altın değerini öder; işçilik size iade edilmez.
 
@@ -96,8 +97,8 @@ Büyük miktarlar için dijital araçlar çok daha düşük maliyetlidir. Küç�
 
 | Çeşit | Saflık | İşçilik | Likidite | Yatırım için uygunluk |
 |---|---|---|---|---|
-| Gram altın (fiziki) | 22 ayar | Yok | Orta | ✓ İyi |
-| Çeyrek / Yarım / Tam | 22 ayar | Yok | Orta-yüksek | ✓ İyi |
+| Gram altın (fiziki) | 24 ayar | Yok | Orta | ✓ İyi |
+| Çeyrek / Yarım / Tam | 22 ayar | Düşük (darphane payı) | Orta-yüksek | ✓ İyi |
 | Cumhuriyet altını | 22 ayar | Minimal | Yüksek | ✓ İyi |
 | Ziynet altını | 14-22 ayar | Yüksek (%15-30) | Orta | ✗ Dezavantajlı |
 | Külçe altın | 24 ayar | Yok | Orta | ✓ Büyük tutarlar için iyi |
@@ -121,7 +122,7 @@ Altın, portföyünüzün yalnızca bir parçası olmalıdır. Altın ile birlik
 
 ## Özet
 
-- **Gram, çeyrek, yarım ve tam altın** aynı saflıkta (22 ayar), farklı ağırlıklarda Türk altınlarıdır; işçilik içermediğinden yatırım için uygundur.
+- **Gram altın** 24 ayar külçedir; **çeyrek, yarım, tam ve Cumhuriyet altını** 22 ayardır ve yalnızca küçük bir darphane payı içerir — yatırım için uygundur.
 - **Ziynet altını**, işçilik ve ayar farkı nedeniyle saf yatırım aracı olarak dezavantajlıdır; takı amaçlıdır.
 - **Ons altın**, küresel piyasanın referans fiyatıdır; Türkiye'deki gram fiyatı ons + dolar kurundan türer.
 - **Dijital altın** (banka hesabı, ETF), en düşük spread ve en yüksek likidite sunar; büyük tutarlar için fiziki altına kıyasla çok daha avantajlıdır.

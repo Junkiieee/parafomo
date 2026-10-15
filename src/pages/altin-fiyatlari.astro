@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import AppCTA from '../components/AppCTA.astro';
 import altin from '../../data/altin-fiyat.json';
+import { ALTIN_SPECS } from '../data/altin-specs';
+const slugOf = (key: string) => ALTIN_SPECS.find((s) => s.key === key)?.slug;
 
 // Fiyat verisi — data/altin-fiyat.json (scripts/altin-fiyat.py, günlük rebuild'de tazelenir).
 const items = altin.kalemler as {
@@ -30,10 +32,10 @@ const highlights = highlightKeys.map((k) => byKey(k)).filter(Boolean) as typeof 
 
 const gramTable = [
   { ad: 'Gram altın', gram: '1 gram', ayar: '24 ayar (995-999)' },
-  { ad: 'Çeyrek altın', gram: '1,75 gram', ayar: '22 ayar' },
-  { ad: 'Yarım altın', gram: '3,5 gram', ayar: '22 ayar' },
-  { ad: 'Tam (ziynet) altın', gram: '7 gram', ayar: '22 ayar' },
-  { ad: 'Ata / Cumhuriyet altını', gram: '≈7,2 gram', ayar: '22 ayar' },
+  { ad: 'Çeyrek altın (ziynet)', gram: '1,754 gram', ayar: '22 ayar' },
+  { ad: 'Yarım altın (ziynet)', gram: '3,508 gram', ayar: '22 ayar' },
+  { ad: 'Tam (ziynet) altın', gram: '7,016 gram', ayar: '22 ayar' },
+  { ad: 'Ata / Cumhuriyet altını (sikke)', gram: '7,216 gram', ayar: '22 ayar' },
   { ad: 'Ons altın', gram: '31,1035 gram', ayar: '24 ayar' },
 ];
 
@@ -44,7 +46,7 @@ const faq = [
   },
   {
     q: 'Çeyrek altın fiyatı bugün ne kadar?',
-    a: `Çeyrek altın 1,75 gram ve 22 ayardır. ${dateLabel} tarihinde bir çeyrek altının bozdurma (alış) değeri yaklaşık ${fmt(ceyrek?.alis || 0)} ₺, almak için (satış) yaklaşık ${fmt(ceyrek?.satis || 0)} ₺'dir. Çeyrek altına ayrıca küçük bir darphane/işçilik payı eklenir; bu yüzden 1,75 gram gram-altından biraz farklı fiyatlanır.`,
+    a: `Çeyrek altın (ziynet) 1,754 gram ve 22 ayardır. ${dateLabel} tarihinde bir çeyrek altının bozdurma (alış) değeri yaklaşık ${fmt(ceyrek?.alis || 0)} ₺, almak için (satış) yaklaşık ${fmt(ceyrek?.satis || 0)} ₺'dir. Çeyrek altına ayrıca küçük bir darphane/işçilik payı eklenir; bu yüzden 1,754 gram, aynı ağırlıktaki gram altından biraz farklı fiyatlanır.`,
   },
   {
     q: 'Altın fiyatları neden yükselir veya düşer?',
@@ -120,7 +122,7 @@ const year = new Date().getFullYear();
         <tbody>
           {items.filter((i) => i.key !== 'ons').map((i) => (
             <tr>
-              <td>{i.label}</td>
+              <td>{slugOf(i.key) ? <a href={`/altin-fiyatlari/${slugOf(i.key)}/`}>{i.label}</a> : i.label}</td>
               <td>{i.alis ? fmt(i.alis) : '—'}</td>
               <td>{i.satis ? fmt(i.satis) : '—'}</td>
               <td class="hide-sm">{i.ayar}</td>
@@ -128,7 +130,7 @@ const year = new Date().getFullYear();
           ))}
           {ons && (
             <tr class="ons-row">
-              <td>{ons.label} <span class="usd-tag">USD</span></td>
+              <td><a href="/altin-fiyatlari/ons-altin/">{ons.label}</a> <span class="usd-tag">USD</span></td>
               <td>${ons.alis ? fmt(ons.alis) : '—'}</td>
               <td>${ons.satis ? fmt(ons.satis) : '—'}</td>
               <td class="hide-sm">{ons.ayar}</td>
@@ -184,7 +186,7 @@ const year = new Date().getFullYear();
           ))}
         </tbody>
       </table>
-      <p class="table-note">Ziynet altınları (çeyrek/yarım/tam/ata) 22 ayardır; gram ve has altın 24 ayardır.</p>
+      <p class="table-note">Ziynet altınları (çeyrek/yarım/tam/ata) 22 ayardır; gram ve has altın 24 ayardır. Sikke ve ziynet, gremse ve beşlik dahil resmî tablo: <a href="/altin-kac-gram/">altın kaç gram?</a></p>
     </section>
 
     <section class="faq-block">
