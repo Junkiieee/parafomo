@@ -104,6 +104,11 @@ async function loadTufe() {
     state.tufe = (d.months || []).map(m => [m.ay, m.aylik]).reverse(); // eski → yeni
   } catch { state.tufe = []; }
 }
+// BIST kodu → parafomo.com/halka-arz/<slug> (deploy-app.sh data/halka-arz-sirketler.json'dan üretir)
+async function loadIpoMap() {
+  if (state.ipoMap) return;
+  try { state.ipoMap = await (await fetch('/halka-arz-map.json')).json(); } catch { state.ipoMap = {}; }
+}
 async function loadBench() {
   if (state.bench) return;
   try {
@@ -290,7 +295,7 @@ function buildDemo() {
 function startDemo() {
   state.demo = true;
   buildDemo();
-  Promise.all([loadSymbols(), loadTufe(), loadBench()]).then(renderApp);
+  Promise.all([loadSymbols(), loadTufe(), loadBench(), loadIpoMap()]).then(renderApp);
 }
 function demoNudge() {
   toast('Örnek görünümdesin — kendi pozisyonların için ücretsiz kayıt ol.');
@@ -432,7 +437,7 @@ function mountGoogle() {
 
 /* ---------- uygulama ---------- */
 async function enterApp() {
-  await Promise.all([loadSymbols(), loadTufe(), loadBench()]);
+  await Promise.all([loadSymbols(), loadTufe(), loadBench(), loadIpoMap()]);
   try {
     const [me, summary, history, watchlist, alerts, goals, txns] = await Promise.all([
       api('/auth/me'), api('/portfolio/summary'), api('/portfolio/history'),
@@ -693,6 +698,47 @@ function varliklarHtml(s, U) {
   return pos + txnsHtml();
 }
 
+/* ---------- içerik köprüsü: sahip olunan varlığa göre parafomo.com veri sayfaları ---------- */
+const SITE = 'https://parafomo.com';
+const relUrl = (path, campaign = 'ilgili-veri') =>
+  `${SITE}${path}?utm_source=app&utm_medium=portfoy&utm_campaign=${campaign}`;
+const RELATED = {
+  gold:   [['/altin-getiri/', 'Altın getirisi', 'Yıllara göre TL ve dolar bazında getiri'],
+           ['/altin-hesaplama/', 'Altın hesaplama', 'Gram, çeyrek, bilezik bugün kaç TL']],
+  silver: [['/gumus-getiri/', 'Gümüş getirisi', 'Yıllara göre TL bazında getiri']],
+  bist:   [['/bist-getiri/', 'BIST 100 getirisi', 'Endeksin yıllara göre getirisi'],
+           ['/halka-arz/', 'Halka arz takvimi', 'Süren ve yaklaşan arzlar, ilk gün getirileri']],
+  usd:    [['/dolar-getiri/', 'Dolar getirisi', 'Doların yıllara göre TL getirisi']],
+  eur:    [['/euro-getiri/', 'Euro getirisi', 'Euronun yıllara göre TL getirisi']],
+  btc:    [['/bitcoin-getiri/', 'Bitcoin getirisi', 'Yıllara göre TL bazında getiri']],
+  cash:   [['/mevduat-faizi-hesaplama/', 'Güncel mevduat faizleri', 'Nakdin bankada ne kazanır (TCMB, haftalık)']],
+};
+function ipoLink(symbol) {
+  const slug = state.ipoMap && state.ipoMap[symbol];
+  return slug ? [`/halka-arz/${slug}/`, `${symbol} halka arz sayfası`, 'Arz fiyatı, ilk gün ve güncel getiri'] : null;
+}
+function relatedHtml(s) {
+  const types = [...new Set(s.holdings.map(h => h.asset_type))];
+  const cards = [];
+  const seen = new Set();
+  for (const t of types) for (const r of (RELATED[t] || [])) if (!seen.has(r[0])) { seen.add(r[0]); cards.push([t, ...r]); }
+  for (const h of s.holdings.filter(h => h.asset_type === 'bist')) {
+    const r = ipoLink(h.symbol);
+    if (r && !seen.has(r[0])) { seen.add(r[0]); cards.push(['bist', ...r]); }
+  }
+  if (!cards.length) return '';
+  return `<section class="related" aria-label="İlgili veri">
+    <div class="holdings-head"><h2>İlgili veri</h2></div>
+    <p class="bench-sub">Portföyündeki varlıklar için ParaFOMO'daki güncel tablolar ve hesaplayıcılar.</p>
+    <div class="rel-grid">${cards.map(([t, path, title, sub]) => `
+      <a class="rel-card" href="${relUrl(path)}" target="_blank" rel="noopener">
+        <span class="tick tick-${TYPE[t].cls}">${esc(TYPE[t].label)}</span>
+        <b>${esc(title)}</b><span>${esc(sub)}</span>
+      </a>`).join('')}
+    </div>
+  </section>`;
+}
+
 function analizHtml(s, U) {
   if (!s.holdings.length) {
     return `<section class="analiz" aria-label="Analiz">
@@ -739,7 +785,8 @@ function analizHtml(s, U) {
     <div class="holdings-head"><h2>Analiz</h2></div>
     <div class="a-stats">${bits.join('')}</div>
     ${benchHtml(s)}
-  </section>`;
+  </section>
+  ${relatedHtml(s)}`;
 }
 
 /* ---------- XIRR (para-ağırlıklı yıllık getiri) ---------- */
@@ -1056,6 +1103,11 @@ function openDetailDialog(h) {
       <div class="chart-box" id="dch-box"></div>
     </div>
     <div class="dnews" id="dnews" hidden></div>
+    ${(() => {
+      const links = [...(RELATED[h.asset_type] || []).slice(0, 1), ...(isBist && ipoLink(h.symbol) ? [ipoLink(h.symbol)] : [])];
+      return links.length ? `<p class="drel">ParaFOMO'da: ${links.map(([p, t]) =>
+        `<a href="${relUrl(p, 'detay')}" target="_blank" rel="noopener">${esc(t)} →</a>`).join(' · ')}</p>` : '';
+    })()}
     <div class="dlg-actions">
       ${h.asset_type !== 'cash' ? `<button type="button" class="btn-icon" id="ddlg-alert" title="Fiyat alarmı kur" aria-label="Fiyat alarmı kur">${ICONS.bell}</button>` : ''}
       <span class="grow"></span>

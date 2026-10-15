@@ -120,13 +120,13 @@ Kod: `backend/` + `src/pages/portfoy*` + `public/portfoy-*.js`. Dağıtım: `dep
   + TÜM etkileşimli öğelere global `:focus-visible` halkası (klavye kullanıcısı odağı GÖRÜR; fare tıklamasında
   çıkmaz). build ✓ 177, commit 4e975e9, push→Cloudflare. Kalan: ok-tuşu tab-nav, kontrast denetimi.
 - [ ] **Sayı/biçim**: TL/kuruş tutarlılığı, büyük sayılar (Mn/Mr), negatiflerde renk/işaret.
-- [ ] **Hesap ayarları**: şifre değiştir, hesabı sil (KVKK), e-posta doğrulama (opsiyonel).
+- [~] **Hesap ayarları**: ✅ ad + aylık özet (PATCH /auth/me) · ✅ hesabı sil KVKK (DELETE /auth/me + UI onaylı) · şifre değiştirme yalnız e-postalı sıfırlama akışıyla (ayrı uç YOK) · e-posta doğrulama YOK (opsiyonel). (10-15 kontrol edildi)
 
 ### 🟢 Büyüme / SEO (retention → trafik)
 - [ ] **"Portföyümü paylaş"** — anonim snapshot linki/görseli (büyüme kancası, IG/Telegram'a uygun).
 - [ ] **Tanıtım sayfasını derinleştir** (`/portfoy-takip`): örnek portföyler, daha çok SEO içerik,
   iç link (altın/bist/halka-arz sayfalarından ve blog'dan), FAQ genişlet.
-- [ ] **Panelden içeriğe köprü**: ilgili blog/araç önerileri (kullanıcı sahip olduğu varlığa göre).
+- [x] **Panelden içeriğe köprü**: Analiz'de "İlgili veri" kartları (varlık türüne göre parafomo.com getiri/hesaplama sayfaları, UTM utm_source=app&utm_medium=portfoy) + hisse detayında halka arz şirket sayfası (deploy-app.sh halka-arz-map.json üretir) · 2026-10-15
 
 ### 🔵 Sağlamlık / altyapı
 - [ ] **Fiyat kaynağı dayanıklılığı**: Yahoo 429/boş için yedek kaynak + cache süresini akıllı uzat;
