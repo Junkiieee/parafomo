@@ -3,17 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import tufe from '../../data/tufe-aylik.json';
 import tuik from '../../data/tuik-enflasyon-2026.json';
+// Tahmin mantığı (dönem, toplu sözleşme oranları, memur/SSK projeksiyonu) ortak modülde — kıdem tavanı da kullanır.
+import { PERIOD, TS_H2_2026, TS_H1_2027, byMonth, cumKnown, remaining, ASSUME, project, memurFrom, sskProj, memurProj } from '../data/zam2027';
 
-// Ocak 2027 zammı = Temmuz–Aralık 2026 birikimli TÜFE (SSK/Bağ-Kur) ve toplu sözleşme + enflasyon
-// farkı (memur / memur emeklisi). Aylık TÜFE scripts/tufe-update.py ile TCMB tablosundan gelir.
-// Yöntem 2026-10-10'da Temmuz 2026 resmi oranlarıyla doğrulandı (SSK %17,75 · memur %13,51).
-const PERIOD = ['2026-07', '2026-08', '2026-09', '2026-10', '2026-11', '2026-12'];
-const TS_H2_2026 = 7; // 8. Dönem Toplu Sözleşme (Hakem Kurulu, RG 27.08.2025): 2026 2. yarı %7
-const TS_H1_2027 = 5; // 2027 1. yarı %5
 const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 
-type M = { ay: string; yillik: number; aylik: number };
-const byMonth = new Map((tufe.months as M[]).map((m) => [m.ay, m]));
 const monthName = (key: string) => MONTHS[+key.slice(5) - 1];
 
 const releaseOf = (key: string) => {
@@ -28,22 +22,10 @@ const pct = (x: number) => (x * 100).toFixed(2);
 const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
 const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
 
-const cumKnown = known.reduce((c, r) => c * (1 + r.data!.aylik / 100), 1) - 1; // ör. 0.0556
-const remaining = PERIOD.length - known.length;
-const last3 = (tufe.months as M[]).slice(0, 3);
-const ASSUME = +(last3.reduce((s, m) => s + m.aylik, 0) / last3.length).toFixed(2); // kalan aylar varsayımı (%)
-
-const project = (assume: number) => (1 + cumKnown) * Math.pow(1 + assume / 100, remaining) - 1;
-const memurFrom = (cum6: number) => {
-  const fark = Math.max(0, (1 + cum6) / (1 + TS_H2_2026 / 100) - 1);
-  return { fark, zam: (1 + fark) * (1 + TS_H1_2027 / 100) - 1 };
-};
-const sskProj = project(ASSUME);
 const prevYear = rows.filter((r) => !r.data).map((r) => byMonth.get(`${+r.key.slice(0, 4) - 1}${r.key.slice(4)}`)).every(Boolean)
   ? rows.filter((r) => !r.data).map((r) => `${r.name} %${nf(byMonth.get(`${+r.key.slice(0, 4) - 1}${r.key.slice(4)}`)!.aylik)}`).join(', ')
   : '';
 const SCEN = [1.0, 1.5, 2.0].map((x) => ({ x, ssk: project(x), memur: memurFrom(project(x)).zam }));
-const memurProj = memurFrom(sskProj);
 const memurNow = memurFrom(cumKnown);
 const final = remaining === 0;
 
@@ -251,6 +233,7 @@ const updatedLabel = new Date(tufe.updated + 'T12:00:00').toLocaleDateString('tr
       <p class="cta-line">
         Zammın bağlı olduğu enflasyonun ne zaman açıklanacağı için <a href="/enflasyon-takvimi/">enflasyon takvimi</a>,
         kira zammı tavanı için <a href="/kira-artis-orani-hesaplama/">kira artış oranı hesaplama</a>,
+        memur zammıyla birlikte yükselen <a href="/kidem-tazminati-hesaplama/#tavan-2027">Ocak 2027 kıdem tazminatı tavanı tahmini</a>,
         maaşınızın enflasyona karşı durumunu görmek için <a href="/net-maas-hesaplama/">net maaş hesaplama</a>.
         Ocak 2027'de vergi, harç ve cezaların ne kadar zamlanacağı için
         <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı 2027</a> ve

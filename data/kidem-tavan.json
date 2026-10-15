@@ -1,0 +1,8 @@
+{
+  "_aciklama": "Kıdem tazminatı tavanı (1475 s. İş K. md.14; HMB memur katsayı genelgesiyle Ocak/Temmuz). Yalnız 2+ kaynakla doğrulanan dönemler. Yeni dönemi en alta ekle; sayfa son satırı güncel tavan sayar. agent/health.py Ocak/Temmuz 10'undan sonra bayatsa uyarır.",
+  "donemler": [
+    {"donem": "1 Temmuz – 31 Aralık 2025", "baslangic": "2025-07-01", "tavan": 53919.68, "kaynak": "Habertürk, Paraşüt (doğrulama 2026-10-15)"},
+    {"donem": "1 Ocak – 30 Haziran 2026", "baslangic": "2026-01-01", "tavan": 64948.77, "kaynak": "Paraşüt, Muhasebenews, Habertürk (doğrulama 2026-10-15)"},
+    {"donem": "1 Temmuz – 31 Aralık 2026", "baslangic": "2026-07-01", "tavan": 73729.87, "kaynak": "TÜRMOB; HMB katsayı genelgesi 03.07.2026 (Cott Group, Muhasebenews)"}
+  ]
+}

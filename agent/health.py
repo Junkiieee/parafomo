@@ -187,6 +187,12 @@ def stale_data():
             out.append(f"YD KRİTİK: Ekim {yil} Yİ-ÜFE hâlâ yok (son {y.get('sonAy')}) — oran kesinleşemedi → scripts/yeniden-degerleme-update.py")
         if today >= dt.date(yil, 12, 5) and not any(g.get("uygulamaYili") == yil + 1 for g in y.get("gecmis", [])):
             out.append(f"YD KRİTİK: {yil + 1} tebliğ oranı doğrulanıp yazılmadı → WebSearch ile Resmî Gazete tebliğini bul, data/yeniden-degerleme.json tebligOrani + gecmis'e {yil + 1} satırı ekle")
+    # Kıdem tazminatı tavanı Ocak/Temmuz'da değişir; HMB katsayı genelgesi ilk haftada çıkar
+    kt = load("kidem-tavan.json")
+    if kt and today.day > 10 and today.month in (1, 7):
+        want = f"{today.year}-{today.month:02d}-01"
+        if kt["donemler"][-1]["baslangic"] != want:
+            out.append(f"kıdem tavanı bayat (son dönem {kt['donemler'][-1]['baslangic']} ≠ {want}) → WebSearch ile HMB/TÜRMOB tavanını doğrula, data/kidem-tavan.json'a yeni dönem ekle")
     # Günlük/sık güncellenen veri dosyaları: 'updated' alanı eşikten eskiyse alarm
     for name, max_days, fix in (
         ("altin-getiri.json", 4, "scripts/gold-returns.py"), ("dolar-getiri.json", 4, "scripts/dollar-returns.py"),
