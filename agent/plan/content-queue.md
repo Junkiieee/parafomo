@@ -13,11 +13,6 @@ düşer" 1,5 · "hazine bonosu" 2,6 · "eurobond nedir" 2,4 → "X mi Y mi" kara
 **TCMB 22 Ekim:** yeni yazı AÇILMAZ — mevcut /blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler güncellenir (week.md T5).
 
 ## Kuyruk
-- [ ] **Kredi kartı asgari ödeme tutarı 2026: oran nasıl belirlenir, eksik ödersen ne olur?** · hedef: "kredi
-  kartı asgari ödeme" (hacim 30, son 4 hafta 68 — yükseliyor) · neden: hacimli + sitede karşılığı yok; BDDK/TCMB
-  asgari ödeme oranlarını (kart limitine göre) ve gecikme/akdi faiz azami oranlarını TCMB'nin güncel duyurusundan
-  doğrula, tarih yaz; örnek hesap tablosu (20 bin / 50 bin borç) · iç-link: /blog/kredi-karti-borcundan-kurtulma,
-  /kredi-hesaplama, /bilesik-faiz-hesaplama
 - [ ] **Para piyasası fonu nedir? 2026'da getirisi, stopajı ve mevduatla farkı** · hedef: "para piyasası fonu"
   (hacim 35, son 4 hafta 48 — yükseliyor) · neden: faiz yüksekken mevduata alternatif arayan talep; getiri
   rakamı verirsen kaynak (TEFAS/fon raporu) + tarih göster, tek fon önerme, tavsiye değil · iç-link:
@@ -45,6 +40,11 @@ düşer" 1,5 · "hazine bonosu" 2,6 · "eurobond nedir" 2,4 → "X mi Y mi" kara
 - Repo nedir (7,8), tahvil nedir (6,5) — yazılar ZATEN var; yeni yazı açma.
 
 ## Yazılanlar
+- [x] **Kredi kartı asgari ödeme tutarı 2026: oran nasıl belirlenir, eksik ödersen ne olur?** · hedef: "kredi
+  kartı asgari ödeme" (hacim 30, son 4 hafta 68 — yükseliyor) · neden: hacimli + sitede karşılığı yok; BDDK/TCMB
+  asgari ödeme oranlarını (kart limitine göre) ve gecikme/akdi faiz azami oranlarını TCMB'nin güncel duyurusundan
+  doğrula, tarih yaz; örnek hesap tablosu (20 bin / 50 bin borç) · iç-link: /blog/kredi-karti-borcundan-kurtulma,
+  /kredi-hesaplama, /bilesik-faiz-hesaplama → /blog/kredi-karti-asgari-odeme-tutari-2026 (2026-10-16)
 - [x] **Stopaj nedir? 2026'da mevduat, fon ve hisse kazancında stopaj oranları** · hedef: "stopaj oranı"
   (hacim 16), "stopaj nedir" (hacim 14) · neden: evergreen, sitede stopaj yazısı yok; oranları YALNIZ Resmî
   Gazete/GİB kaynağıyla yaz (mevduat stopajı 2025-2026'da birkaç kez değişti — en güncel CB kararını doğrula,

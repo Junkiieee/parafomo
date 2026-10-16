@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-10-16 — Kredi Kartı Asgari Ödeme 2026: Oran, Hesap, Eksik Ödeme
+
+**Yayınlanan yazı:** [Kredi Kartı Asgari Ödeme 2026: Oran, Hesap, Eksik Ödeme](/blog/kredi-karti-asgari-odeme-tutari-2026)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — "kredi kartı asgari ödeme" hacim 30)
+
+---
+
 ## 2026-10-15 — Stopaj Nedir? 2026 Stopaj Oranları: Mevduat, Fon, Hisse
 
 **Yayınlanan yazı:** [Stopaj Nedir? 2026 Stopaj Oranları: Mevduat, Fon, Hisse](/blog/stopaj-nedir-2026-stopaj-oranlari)
