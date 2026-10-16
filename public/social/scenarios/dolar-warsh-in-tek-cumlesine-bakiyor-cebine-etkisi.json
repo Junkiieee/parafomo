@@ -1,0 +1,62 @@
+{
+  "slug": "dolar-warsh-in-tek-cumlesine-bakiyor-cebine-etkisi",
+  "title": "Dolar, Warsh'ın tek cümlesine bakıyor: cebine etkisi",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Fed Başkanı Warsh'ın konuşmaları faiz beklentisi üzerinden dolara yön veriyor. Mekanizma sade anlatılıyor ve dolar alacaklar için pratik bir yöntem veriliyor.",
+  "tags": [
+    "dolar",
+    "fed",
+    "warsh",
+    "faiz",
+    "dolar tl",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Warsh'ın tek cümlesi dolara yön veriyor.",
+      "visual": {
+        "type": "person",
+        "query": "Kevin Warsh"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fed başkanı faiz sinyali verince dolar oynar, çünkü para getirisi yüksek yere akar.",
+      "visual": {
+        "type": "place",
+        "query": "Federal Reserve building"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl mesele ton: indirim ihtimali doları zayıflatır, uzun süre yüksek faiz mesajı güçlendirir.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Dolar",
+        "glyph": "$"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Dolar alacaksan tek konuşmaya göre değil, parçalara bölerek al; panik alım pahalıya patlar.",
+      "visual": {
+        "type": "object",
+        "query": "smartphone banking app"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki Fed toplantısında dolar nereye gider, merak ediyorsan abone ol; her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "person",
+        "query": "Kevin Warsh"
+      }
+    }
+  ]
+}
