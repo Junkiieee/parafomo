@@ -1,14 +1,15 @@
 ---
-title: "ABD Enflasyon Verisi Ekim 2026: CPI Fed'i Yine Zorlar mı?"
-description: "ABD enflasyon verisi (CPI) 14 Ekim 2026'da 15:30'da açıklanıyor. Beklenti, 28 Ekim Fed kararına etkisi ve dolar, altın, TL için 3 senaryo bu rehberde."
+title: "ABD Enflasyon Verisi Ekim 2026 Açıklandı: CPI %3,7, Çekirdek %2,6"
+description: "ABD Eylül CPI 14 Ekim 2026'da açıklandı: aylık %0,6, yıllık %3,7; çekirdek aylık %0,3, yıllık %2,6. 28 Ekim Fed kararına etkisi ve dolar, altın, TL senaryoları."
 pubDate: 2026-10-12
+updatedDate: 2026-10-16
 category: "Ekonomi"
 tags: ["abd enflasyon verisi", "cpi verisi ne zaman", "ekim 2026 cpi", "fed faiz kararı", "dolar altın etkisi", "çekirdek cpi"]
 readingTime: 8
 featured: false
 faq:
-  - q: "ABD Ekim 2026 CPI verisi ne zaman açıklanıyor?"
-    a: "ABD Çalışma İstatistikleri Bürosu (BLS), Eylül 2026 dönemine ait tüketici fiyat endeksini 14 Ekim 2026 Çarşamba günü ABD saatiyle 08:30'da, Türkiye saatiyle 15:30'da yayımlıyor. Manşet ve çekirdek CPI (aylık ve yıllık) aynı anda açıklanır."
+  - q: "ABD Ekim 2026 CPI verisi ne zaman açıklandı, kaç geldi?"
+    a: "ABD Çalışma İstatistikleri Bürosu (BLS), Eylül 2026 dönemine ait tüketici fiyat endeksini 14 Ekim 2026 Çarşamba günü Türkiye saatiyle 15:30'da yayımladı. Manşet CPI aylık %0,6 (mevsimsellikten arındırılmış), yıllık %3,7; çekirdek CPI aylık %0,3, yıllık %2,6 arttı."
   - q: "Ekim'de açıklanan CPI neden 'Eylül enflasyonu' olarak geçiyor?"
     a: "CPI bir önceki ayın fiyat değişimini ölçer. 14 Ekim'de açıklanan rakam Eylül ayını kapsar; bu yüzden haberlerde hem 'Ekim CPI açıklaması' hem 'Eylül enflasyonu' ifadeleri kullanılır."
   - q: "CPI yüksek gelirse Fed 28 Ekim'de faiz artırır mı?"
@@ -35,6 +36,8 @@ shorts_visuals:
   - "object|calculator"
   - "object|smartphone banking app"
 ---
+
+> **Veri açıklandı (14 Ekim 2026):** ABD Eylül CPI aylık **%0,6**, yıllık **%3,7** arttı; gıda ve enerji hariç çekirdek CPI aylık **%0,3**, yıllık **%2,6** ([BLS](https://www.bls.gov/news.release/cpi.nr0.htm)). Manşet ile çekirdek arasındaki açık, artışın büyük bölümünün gıda ve enerji tarafından geldiğini gösteriyor. Aşağıdaki önizleme metni açıklama öncesinde yazıldı. Sıradaki: [Fed 28 Ekim faiz kararı takvimi](/fed-faiz-takvimi/).
 
 **ABD enflasyon verisi Ekim 2026** takvimde net: Eylül ayı tüketici fiyat endeksi (CPI) **14 Ekim Çarşamba, Türkiye saatiyle 15:30'da** açıklanıyor. Fed'in Eylül'de faiz artırmasının ardından gelen ilk enflasyon raporu olduğu için bu kez rakamın önemi her zamankinden büyük; 28 Ekim'deki Fed kararının tonunu büyük ölçüde bu veri belirleyecek. Bu yazıda verinin ne ölçtüğünü, piyasanın neye bakacağını ve dolar, altın ve TL için üç senaryoyu sade bir dille anlatıyoruz.
 
