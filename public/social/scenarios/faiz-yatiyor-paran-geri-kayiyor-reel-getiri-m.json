@@ -1,0 +1,74 @@
+{
+  "slug": "faiz-yatiyor-paran-geri-kayiyor-reel-getiri-m",
+  "title": "Faiz yatıyor, paran geri kayıyor: reel getiri",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Reel getiri kavramı koşu bandı metaforuyla anlatılıyor: faiz enflasyonun altında kalırsa hesaptaki sayı büyür ama alım gücü küçülür. İzleyiciye kendi hesabını yapması için basit bir formül veriliyor.",
+  "tags": [
+    "reel getiri",
+    "faiz",
+    "enflasyon",
+    "alım gücü",
+    "birikim",
+    "mevduat",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "REEL GETİRİ",
+      "spoken": "Paran koşuyor ama bir adım ilerlemiyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Faiz",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Buna reel getiri denir: faiz yüzde kırk, fiyatlar da yüzde kırk artıyorsa, kazancın sıfırdır.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Faiz",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl tuzak şu: faiz yüzde otuz beş, fiyatlar kırk ise, koşarken geriye kayıyorsun.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Faiz",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Hesabına bak: faizden enflasyonu çıkar. Sonuç eksiyse, paran büyümüyor, sadece sayısı büyüyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu bandın dışına nasıl çıkılır? Abone ol, her gün tek net analizi 60 saniyede anlatıyoruz.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "ParaFOMO",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
