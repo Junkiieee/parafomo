@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-16T06:15+00:00",
+ "updated": "2026-10-16T12:15+00:00",
  "source": "halkarz.com",
  "items": {
   "pronet-guvenlik-hizmetleri-a-s": {
@@ -4109,6 +4109,87 @@
    "updated_src": "13.10.2026 20:27",
    "details": {},
    "first_seen": "2026-10-13"
+  },
+  "onen-gida-sanayi-a-s": {
+   "company": "Önen Gıda Sanayi A.Ş.",
+   "bist_code": "",
+   "slug": "onen-gida-sanayi-a-s",
+   "link": "https://halkarz.com/onen-gida-sanayi-a-s/",
+   "date_text": "",
+   "start": null,
+   "end": null,
+   "status": "Tarih Bekleniyor",
+   "price": "",
+   "distribution": "Eşit Dağıtım **",
+   "lot": "120.000.000 Lot",
+   "broker": "Yapı Kredi Yatırım Menkul Değerler A.Ş.",
+   "market": "",
+   "first_trade": "",
+   "float_lot": "",
+   "float_pct": "",
+   "updated_src": "16.10.2026 12:21",
+   "details": {
+    "sekil": {
+     "items": [
+      "Sermaye Artırımı : 30.000.000 Lot",
+      "Ortak Satışı : 90.000.000 Lot (Niyazi Önen Holding A.Ş.)"
+     ],
+     "source": "Taslak İzahname, Sayfa 2."
+    },
+    "fon_kullanim": {
+     "items": [
+      "%20-30 İşletme sermayesi",
+      "%70-80 Yatırımların finansmanı"
+     ],
+     "source": "Taslak İzahname, Sayfa 190."
+    },
+    "satis_yontemi": {
+     "items": [
+      "Sabit Fiyatla Talep Toplama",
+      "En İyi Gayret Aracılığı"
+     ],
+     "source": ""
+    },
+    "satmama": {
+     "items": [
+      "1 Yıl, İhraççı",
+      "1 Yıl, Ortaklar"
+     ],
+     "source": "Taslak İzahname, Sayfa 187."
+    },
+    "halka_aciklik": {
+     "items": [
+      "%42,86"
+     ],
+     "source": "Taslak İzahname, Sayfa 171."
+    },
+    "finansal": {
+     "periods": [
+      "2026/6",
+      "2025",
+      "2024"
+     ],
+     "rows": [
+      {
+       "label": "Hasılat",
+       "values": [
+        "2,8 Milyar TL",
+        "7,7 Milyar TL",
+        "6,2 Milyar TL"
+       ]
+      },
+      {
+       "label": "Brüt Kâr",
+       "values": [
+        "1,3 Milyar TL",
+        "3,6 Milyar TL",
+        "2,4 Milyar TL"
+       ]
+      }
+     ]
+    }
+   },
+   "first_seen": "2026-10-16"
   }
  }
 }

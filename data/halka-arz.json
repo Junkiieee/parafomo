@@ -1,9 +1,89 @@
 {
-  "updated": "2026-10-16T06:15+00:00",
+  "updated": "2026-10-16T12:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 41,
   "items": [
+    {
+      "company": "Önen Gıda Sanayi A.Ş.",
+      "bist_code": "",
+      "slug": "onen-gida-sanayi-a-s",
+      "link": "https://halkarz.com/onen-gida-sanayi-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "120.000.000 Lot",
+      "broker": "Yapı Kredi Yatırım Menkul Değerler A.Ş.",
+      "market": "",
+      "first_trade": "",
+      "float_lot": "",
+      "float_pct": "",
+      "updated_src": "16.10.2026 12:21",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 30.000.000 Lot",
+            "Ortak Satışı : 90.000.000 Lot (Niyazi Önen Holding A.Ş.)"
+          ],
+          "source": "Taslak İzahname, Sayfa 2."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%20-30 İşletme sermayesi",
+            "%70-80 Yatırımların finansmanı"
+          ],
+          "source": "Taslak İzahname, Sayfa 190."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "Taslak İzahname, Sayfa 187."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%42,86"
+          ],
+          "source": "Taslak İzahname, Sayfa 171."
+        },
+        "finansal": {
+          "periods": [
+            "2026/6",
+            "2025",
+            "2024"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "2,8 Milyar TL",
+                "7,7 Milyar TL",
+                "6,2 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "1,3 Milyar TL",
+                "3,6 Milyar TL",
+                "2,4 Milyar TL"
+              ]
+            }
+          ]
+        }
+      }
+    },
     {
       "company": "Hayri Ögelman Madencilik A.Ş.",
       "bist_code": "",
@@ -2205,95 +2285,6 @@
                 "1,2 Milyar TL",
                 "759,5 Milyon TL",
                 "314,6 Milyon TL"
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "company": "Akademi Çevre Entegre Atık Yönetimi Endüstri A.Ş.",
-      "bist_code": "",
-      "slug": "akademi-cevre-entegre-atik-yonetimi-endustri-a-s",
-      "link": "https://halkarz.com/akademi-cevre-entegre-atik-yonetimi-endustri-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "70.000.000 Lot",
-      "broker": "İnfo Yatırım Menkul Değerler A.Ş. Kuveyt Türk Yatırım Menkul Değerler A.Ş.",
-      "market": "Yıldız Pazar",
-      "first_trade": "",
-      "float_lot": "",
-      "float_pct": "",
-      "updated_src": "15.09.2026 09:52",
-      "details": {
-        "sekil": {
-          "items": [
-            "Sermaye Artırımı : 48.800.000 Lot",
-            "Ortak Satışı : 10.600.000 Lot (Uğur Işık)",
-            "Ortak Satışı : 10.600.000 Lot (Ufuk Işık)"
-          ],
-          "source": "Taslak İzahname, Sayfa 1."
-        },
-        "fon_kullanim": {
-          "items": [
-            "%55-70 İşletme sermayesi",
-            "%10-25 Tesis ve makine yatırımları",
-            "%5-15 Yenilenebilir enerji yatırımları",
-            "%5-15 Finansal borçluluk seviyesinin azaltılması"
-          ],
-          "source": "Taslak İzahname, Sayfa 240."
-        },
-        "satis_yontemi": {
-          "items": [
-            "Sabit Fiyatla Talep Toplama",
-            "En İyi Gayret Aracılığı"
-          ],
-          "source": ""
-        },
-        "fiyat_istikrari": {
-          "items": [
-            "Planlanmamaktadır"
-          ],
-          "source": "Taslak İzahname, Sayfa 236."
-        },
-        "satmama": {
-          "items": [
-            "1 Yıl, İhraççı",
-            "1 Yıl, Ortaklar"
-          ],
-          "source": "Taslak İzahname, Sayfa 237."
-        },
-        "halka_aciklik": {
-          "items": [
-            "%28"
-          ],
-          "source": "Taslak İzahname, Sayfa 218."
-        },
-        "finansal": {
-          "periods": [
-            "2025",
-            "2024",
-            "2023"
-          ],
-          "rows": [
-            {
-              "label": "Hasılat",
-              "values": [
-                "2,6 Milyar TL",
-                "2,5 Milyar TL",
-                "2,2 Milyar TL"
-              ]
-            },
-            {
-              "label": "Brüt Kâr",
-              "values": [
-                "872,8 Milyon TL",
-                "712,6 Milyon TL",
-                "241,2 Milyon TL"
               ]
             }
           ]
