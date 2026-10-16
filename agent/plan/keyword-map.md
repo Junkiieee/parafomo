@@ -32,7 +32,7 @@ Otorite/dış link işleri şimdilik YAPILMAZ (Kaan: "kalsın"). Fırsat listesi
 - [x] K3 bayram ikramiyesi (128) → **/bayram-ikramiyesi/** (canlı 2026-10-15) — güncel tutar (resmî), ödeme tarihleri, 2027 Ramazan/
   Kurban tarihleri; tutar değişmediyse "değişmedi" de.
 - [x] K4 ihtiyaç kredisi hesaplama (48) → /ihtiyac-kredisi-hesaplama/ · 2026-10-15
-- [ ] K5 enflasyon oranı (36) + enflasyon hesaplama (21) → **/enflasyon-hesaplama/** — iki tarih arası TÜFE
+- [x] K5 enflasyon oranı (36) + enflasyon hesaplama (21) → **/enflasyon-hesaplama/** (canlı 2026-10-16, commit 97717be) — iki tarih arası TÜFE
   değişimi ile "paranın alım gücü" hesaplayıcı; veri: `scripts/tufe-update.py`'nin TÜİK serisi (veri dosyasını
   genişlet, endeks yoksa önce veri betiği). Güncel yıllık/aylık enflasyon kutusu.
 - [ ] K8 gelir vergisi hesaplama (50) → **/gelir-vergisi-hesaplama/** — /vergi-dilimi-hesaplama'nın dilim mantığını
