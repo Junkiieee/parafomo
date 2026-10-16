@@ -1,0 +1,59 @@
+{
+  "slug": "enflasyon-rakami-senin-degil-kendi-hesabini-yap",
+  "title": "Enflasyon rakamı senin değil, kendi hesabını yap",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Açıklanan enflasyon ortalama bir sepete göre hesaplanır; senin harcama sepetin farklıysa kendi enflasyonun da farklıdır. Birikimin gerçekten korunup korunmadığını market fişiyle nasıl test edeceğini anlatıyor.",
+  "tags": [
+    "enflasyon",
+    "birikim",
+    "kira",
+    "market",
+    "paranın değeri",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Açıklanan enflasyon senin enflasyonun değil.",
+      "visual": {
+        "type": "object",
+        "query": "grocery shopping basket fresh vegetables"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çünkü o rakam ortalama sepet. Senin kira, market ve fatura payın o sepetle birebir tutmaz.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl şok şu: kirada oturuyorsan, kendi enflasyonun açıklanandan yüksek çıkabilir.",
+      "visual": {
+        "type": "object",
+        "query": "house keys"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bir yıl önceki market fişini bugünküyle kıyasla; birikimin o oranın altında kazanıyorsa eriyorsun.",
+      "visual": {
+        "type": "object",
+        "query": "receipt paper"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu farkı kapatan araç hangisi, yarın bakacağız. Abone ol, her gün tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "grocery shopping basket fresh vegetables"
+      }
+    }
+  ]
+}
