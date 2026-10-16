@@ -189,6 +189,7 @@ CARDS = {
     "bayram-ikramiyesi": emekli_memur_card("bayram"),
     "kira-artis-orani-hesaplama": kira_card,
     "enflasyon-takvimi": enflasyon_card,
+    "enflasyon-hesaplama": enflasyon_card,
     "halka-arz": halka_arz_card,
     "altin-getiri": returns_card("altin-getiri.json", "ALTIN"),
     "dolar-getiri": returns_card("dolar-getiri.json", "DOLAR"),

@@ -1,0 +1,257 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import tufe from '../../data/tufe-aylik.json';
+import takvim from '../../data/tuik-enflasyon-2026.json';
+
+// Seri en yeni başta gelir → eskiden yeniye sırala. Aylık % değişimler zincirlenir (2025=100 baz
+// değişikliği zinciri bozmaz; TÜİK yıllık oranlarıyla ±0,02 puan tutarlı).
+const M = [...tufe.months].sort((a, b) => a.ay.localeCompare(b.ay));
+const SON = M[M.length - 1];
+const ILK = M[0];
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const ayAdi = (k: string) => `${AYLAR[+k.slice(5) - 1]} ${k.slice(0, 4)}`;
+const pct = (n: number, d = 2) => new Intl.NumberFormat('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d }).format(n);
+const tl = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const idx = (k: string) => M.findIndex((m) => m.ay === k);
+// başlangıç ayının fiyatlarından bitiş ayının fiyatlarına çarpan
+const carpan = (bas: string, bit: string) => {
+  let f = 1;
+  for (let i = idx(bas) + 1; i <= idx(bit); i++) f *= 1 + M[i].aylik / 100;
+  return f;
+};
+const geri = (k: string, yil: number) => `${+k.slice(0, 4) - yil}${k.slice(4)}`;
+
+// Bugünkü karşılık tablosu: 1-5 yıl önceki 100 ₺
+const yillar = [1, 2, 3, 4, 5].filter((y) => idx(geri(SON.ay, y)) >= 0);
+const karsilik = yillar.map((y) => {
+  const f = carpan(geri(SON.ay, y), SON.ay);
+  return { y, ay: geri(SON.ay, y), f };
+});
+const bes = karsilik[karsilik.length - 1];
+
+// Yıllara göre enflasyon: Aralık yıllık oranı (+ bu yıl yılbaşından beri)
+const takvimYillar = M.filter((m) => m.ay.endsWith('-12')).map((m) => ({ yil: m.ay.slice(0, 4), oran: m.yillik }));
+const buYil = SON.ay.slice(0, 4);
+const ytd = SON.ay.endsWith('-12') ? null : (carpan(`${+buYil - 1}-12`, SON.ay) - 1) * 100;
+const gecenYil = takvimYillar[takvimYillar.length - 1];
+const son12 = M.slice(-12).reverse();
+
+const bugun = new Date().toISOString().slice(0, 10);
+const sonraki = takvim.releases.find((r) => r.date > bugun);
+const trTarih = (iso: string) => {
+  const d = new Date(iso + 'T12:00:00Z');
+  return `${d.getUTCDate()} ${AYLAR[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+};
+
+const faq = [
+  {
+    q: 'Güncel enflasyon oranı kaç?',
+    a: `TÜİK verisine göre ${ayAdi(SON.ay)} itibarıyla yıllık enflasyon (TÜFE) %${pct(SON.yillik)}, aylık enflasyon %${pct(SON.aylik)}.${sonraki ? ` ${sonraki.covers} verisi ${trTarih(sonraki.date)} saat ${takvim.releaseTime}’da açıklanacak.` : ''}`,
+  },
+  {
+    q: `${gecenYil.yil} yılı enflasyonu ne kadar oldu?`,
+    a: `${gecenYil.yil} yılında (Aralık-Aralık) TÜFE %${pct(gecenYil.oran)} arttı.${ytd !== null ? ` ${buYil} yılında ${ayAdi(SON.ay)} sonuna kadar birikimli artış yaklaşık %${pct(ytd)}.` : ''}`,
+  },
+  {
+    q: 'Enflasyon hesaplama nasıl yapılır?',
+    a: 'İki tarih arasındaki enflasyon, bitiş ayının TÜFE endeksinin başlangıç ayının endeksine bölünmesiyle bulunur: (Endeks bitiş ÷ Endeks başlangıç − 1) × 100. Endeks yerine aylık değişimler varsa her ayın (1 + aylık oran) çarpanı birbiriyle çarpılır. Bir tutarın bugünkü karşılığı = tutar × bu çarpan.',
+  },
+  {
+    q: `${bes ? bes.y : 5} yıl önceki 1.000 TL bugün ne eder?`,
+    a: bes
+      ? `${ayAdi(bes.ay)} fiyatlarıyla 1.000 ₺, ${ayAdi(SON.ay)} fiyatlarıyla yaklaşık ${tl(1000 * bes.f)} ₺’ye denk. Yani aynı sepeti almak için ${pct(bes.f, 1)} kat para gerekiyor; o günkü 1.000 ₺’nin alım gücü bugün yaklaşık %${pct((1 - 1 / bes.f) * 100, 1)} eridi.`
+      : 'Hesaplayıcıda başlangıç ve bitiş ayını seçerek görebilirsiniz.',
+  },
+  {
+    q: 'Alım gücü kaybı nasıl hesaplanır?',
+    a: 'Fiyatlar çarpan kadar arttıysa elinizdeki paranın alım gücü 1 − 1 ÷ çarpan oranında azalır. Örneğin fiyatlar 2 katına çıktıysa (enflasyon %100) alım gücü kaybı %50’dir; enflasyon oranı ile alım gücü kaybı aynı şey değildir.',
+  },
+  {
+    q: 'Kira artışında hangi enflasyon kullanılır?',
+    a: 'Konut kirası artışında üst sınır, TÜİK’in açıkladığı TÜFE’nin son 12 aylık ortalamasına göre değişim oranıdır (yıllık oran değil). Güncel oranı kira artış oranı hesaplama sayfasında bulabilirsiniz.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Hesaplama Araçları', url: '/hesaplama-araclari/' },
+  { name: 'Enflasyon Hesaplama', url: '/enflasyon-hesaplama/' },
+];
+---
+
+<BaseLayout
+  title={`Enflasyon Hesaplama 2026: Güncel Oran %${pct(SON.yillik)} | Alım Gücü`}
+  description={`Yıllık enflasyon ${ayAdi(SON.ay)} itibarıyla %${pct(SON.yillik)}. İki tarih arası TÜFE değişimini ve paranın bugünkü karşılığını hesaplayın; TÜİK verisi.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+  image="/og/enflasyon-hesaplama.png"
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Enflasyon · TÜFE</p>
+      <h1>Enflasyon Hesaplama 2026</h1>
+      <p class="lede">
+        Yıllık enflasyon {ayAdi(SON.ay)} itibarıyla <strong>%{pct(SON.yillik)}</strong>, aylık <strong>%{pct(SON.aylik)}</strong>.
+        Aşağıda iki tarih arasındaki fiyat artışını ve paranızın bugünkü karşılığını hesaplayın.
+      </p>
+    </header>
+
+    <div class="stats">
+      <div class="stat"><span class="k">Yıllık enflasyon</span><span class="v">%{pct(SON.yillik)}</span><span class="s">{ayAdi(SON.ay)} · TÜİK TÜFE</span></div>
+      <div class="stat"><span class="k">Aylık enflasyon</span><span class="v">%{pct(SON.aylik)}</span><span class="s">{sonraki ? `${sonraki.covers} verisi: ${trTarih(sonraki.date)}` : ayAdi(SON.ay)}</span></div>
+      {bes && <div class="stat"><span class="k">{bes.y} yıl önceki 1.000 ₺</span><span class="v">₺{tl(1000 * bes.f)}</span><span class="s">{ayAdi(bes.ay)} → {ayAdi(SON.ay)} karşılığı</span></div>}
+    </div>
+
+    <section class="table-block">
+      <h2>Paranın bugünkü değeri hesaplama</h2>
+      <div class="calc-grid">
+        <form class="calc-inputs" autocomplete="off">
+          <label><span>Tutar (₺)</span><input id="in-amt" type="number" inputmode="decimal" min="0" step="any" value="1000" /></label>
+          <label><span>Başlangıç ayı</span>
+            <select id="in-from">{M.map((m) => <option value={m.ay} selected={m.ay === (bes ? bes.ay : ILK.ay)}>{ayAdi(m.ay)}</option>)}</select>
+          </label>
+          <label><span>Bitiş ayı</span>
+            <select id="in-to">{M.map((m) => <option value={m.ay} selected={m.ay === SON.ay}>{ayAdi(m.ay)}</option>)}</select>
+          </label>
+        </form>
+        <div class="calc-results" aria-live="polite">
+          <div class="result-main">
+            <span class="result-label">Bitiş ayındaki karşılığı</span>
+            <span class="result-value" id="out-val">—</span>
+          </div>
+          <p class="result-note">Toplam enflasyon: <strong id="out-inf">—</strong></p>
+          <p class="result-note">Alım gücü kaybı: <strong id="out-loss">—</strong></p>
+          <p class="result-note">Yıllık ortalama: <strong id="out-ann">—</strong></p>
+        </div>
+      </div>
+      <p class="table-note">Hesap, seçilen iki ay arasındaki aylık TÜFE değişimlerinin zincirlenmesiyle yapılır ({ayAdi(ILK.ay)} – {ayAdi(SON.ay)}). Yuvarlama nedeniyle sonuç TÜİK endeks oranından ±0,05 puan sapabilir.</p>
+    </section>
+
+    <section class="table-block">
+      <h2>100 TL’nin bugünkü karşılığı</h2>
+      <table class="rate-table">
+        <thead><tr><th>Başlangıç</th><th>Bugünkü karşılık</th><th>Toplam enflasyon</th><th>Alım gücü kaybı</th></tr></thead>
+        <tbody>
+          {karsilik.map((r) => (
+            <tr><td>{ayAdi(r.ay)} ({r.y} yıl önce)</td><td>₺{pct(100 * r.f)}</td><td>%{pct((r.f - 1) * 100, 1)}</td><td>%{pct((1 - 1 / r.f) * 100, 1)}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    <section class="table-block">
+      <h2>Yıllara göre enflasyon oranı</h2>
+      <table class="rate-table">
+        <thead><tr><th>Yıl</th><th>Yıllık TÜFE (Aralık)</th></tr></thead>
+        <tbody>
+          {ytd !== null && <tr><td>{buYil} (Ocak–{AYLAR[+SON.ay.slice(5) - 1]}, birikimli)</td><td>%{pct(ytd)}</td></tr>}
+          {[...takvimYillar].reverse().map((y) => <tr><td>{y.yil}</td><td>%{pct(y.oran)}</td></tr>)}
+        </tbody>
+      </table>
+    </section>
+
+    <section class="table-block">
+      <h2>Son 12 ay aylık ve yıllık enflasyon</h2>
+      <table class="rate-table">
+        <thead><tr><th>Ay</th><th>Aylık</th><th>Yıllık</th></tr></thead>
+        <tbody>{son12.map((m) => <tr><td>{ayAdi(m.ay)}</td><td>%{pct(m.aylik)}</td><td>%{pct(m.yillik)}</td></tr>)}</tbody>
+      </table>
+      <p class="table-note">
+        Kaynak: TÜİK Tüketici Fiyat Endeksi, <a href={tufe._kaynak} rel="noopener" target="_blank">TCMB tüketici fiyatları tablosu</a>
+        (2025=100). Veri her ay TÜİK açıklamasından sonra otomatik güncellenir · son güncelleme {trTarih(tufe.updated)}.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Enflasyon oranı nasıl hesaplanır?</h2>
+      <p>
+        TÜİK her ay hanelerin tükettiği mal ve hizmetlerden oluşan bir sepetin fiyatını ölçer ve Tüketici Fiyat Endeksi’ni (TÜFE)
+        yayımlar. Yıllık enflasyon, bu ayın endeksinin geçen yılın aynı ayına göre değişimidir; aylık enflasyon bir
+        önceki aya göre değişimdir. İki tarih arasındaki enflasyon ise (bitiş endeksi ÷ başlangıç endeksi − 1) formülüyle
+        bulunur. Ocak 2026’da endeksin baz yılı 2025=100 olarak değiştirildi; aylık değişimler zincirlendiği için
+        bu hesaplayıcı eski ve yeni dönemi birlikte kullanabilir.
+      </p>
+      <p class="cta-line">
+        Kira artışına uygulanan 12 aylık ortalama → <a href="/kira-artis-orani-hesaplama/">kira artış oranı hesaplama</a>.
+        Sonraki TÜFE açıklama tarihleri → <a href="/enflasyon-takvimi/">enflasyon takvimi</a>.
+        Enflasyonun emekli ve memur zammına etkisi → <a href="/emekli-zammi-hesaplama/">emekli zammı hesaplama</a>.
+        Paranız enflasyonu yendi mi? → <a href="/altin-getiri/">altın getirisi</a> · <a href="/mevduat-faizi-hesaplama/">mevduat faizi hesaplama</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ SERI: M.map((m) => [m.ay, m.aylik]) }}>
+    (function () {
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const nf2 = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const keys = SERI.map((s) => s[0]);
+      const amt = document.getElementById('in-amt');
+      const from = document.getElementById('in-from');
+      const to = document.getElementById('in-to');
+      const out = (id, t) => { document.getElementById(id).textContent = t; };
+      const upd = () => {
+        let a = keys.indexOf(from.value), b = keys.indexOf(to.value);
+        const ters = a > b;
+        if (ters) { const t = a; a = b; b = t; }
+        let f = 1;
+        for (let i = a + 1; i <= b; i++) f *= 1 + SERI[i][1] / 100;
+        const v = Math.max(0, +amt.value || 0);
+        const res = ters ? v / f : v * f;
+        out('out-val', '₺' + (res >= 1000 ? nf0.format(res) : nf2.format(res)));
+        out('out-inf', '%' + nf2.format((f - 1) * 100));
+        out('out-loss', '%' + nf2.format((1 - 1 / f) * 100));
+        const ay = b - a;
+        out('out-ann', ay >= 1 ? '%' + nf2.format((Math.pow(f, 12 / ay) - 1) * 100) + ' / yıl' : '—');
+      };
+      [amt, from, to].forEach((el) => el.addEventListener('input', upd));
+      upd();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+    .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; }
+    .stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; display: flex; flex-direction: column; gap: 0.2rem; box-shadow: var(--shadow-soft); }
+    .stat .k { font-size: 0.8rem; color: var(--text-soft); font-weight: 600; }
+    .stat .v { font-family: var(--font-serif); font-size: 1.9rem; font-weight: 600; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .stat .s { font-size: 0.78rem; color: var(--text-muted); }
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); margin-bottom: 1rem; }
+    .calc-inputs { display: flex; flex-direction: column; justify-content: center; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs select, .calc-inputs input { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; box-sizing: border-box; }
+    .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 0.5rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; display: block; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; font-variant-numeric: tabular-nums; }
+    .result-note { font-size: 0.88rem; color: var(--brand-ink); margin: 0; }
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; line-height: 1.5; }
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+    @media (max-width: 680px) { .stats, .calc-grid { grid-template-columns: 1fr; } .rate-table { font-size: 0.85rem; } }
+  </style>
+</BaseLayout>
