@@ -1,0 +1,63 @@
+{
+  "title": "Taksit, enflasyonda peşinden daha ucuz kalıyor #Shorts",
+  "description": "Faizsiz taksit ile peşin fiyat aynıysa, aylık yaklaşık yüzde 2 enflasyonda taksit gerçekte daha hafif bir yük. Sade bir hesapla gösterdik, şartıyla birlikte.\nKaynak/hesap: Aylık enflasyon yaklaşık %2 varsayımı; 12 eşit taksitin ortalama gecikmesi yaklaşık 6 ay; 6 x %2 ≈ %12 (bileşik etkiyle yaklaşık %11-12) · senaryodaki hesap (aylık %2 enflasyon varsayımı, peşin ve taksit fiyatının eşit olması şartı)\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #taksit #enflasyon #peşin #birikim #kişisel finans",
+  "tags": [
+    "taksit",
+    "enflasyon",
+    "peşin",
+    "birikim",
+    "kişisel finans",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-taksit-enflasyonda-pesinden-daha-ucuz-kaliyor-m.mp4",
+  "slug": "taksit-enflasyonda-pesinden-daha-ucuz-kaliyor-m",
+  "format": "shock_number",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 4.72,
+      "spoken": "Faizsiz taksit, peşinden yaklaşık yüzde 12 ucuz.",
+      "visual": "manim: Faiz"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 4.72,
+      "end": 11.34,
+      "spoken": "Aylık enflasyon yaklaşık yüzde 2 olsun; taksitlerin ortalaması 6 ay sonra ödenir.",
+      "visual": "manim: Enflasyon"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 11.34,
+      "end": 18.67,
+      "spoken": "Ama 6 ay çarpı yüzde 2, yaklaşık yüzde 12: taksitlerin gerçek yükü o kadar hafifliyor.",
+      "visual": "manim: Enflasyon"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 18.67,
+      "end": 26.56,
+      "spoken": "Şart: peşin fiyatla taksit fiyatı aynı olsun, parayı vadeli hesapta beklet. Fark varsa hesabı yeniden yap.",
+      "visual": "manim: Mevduat"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 26.56,
+      "end": 33.54,
+      "spoken": "Sıradaki hesap, maaş gününü bile değiştirebilir. Abone ol, her gün tek net hesabı 30 saniyede göstereyim.",
+      "visual": "marka kartı"
+    }
+  ],
+  "video_id": "2euqlrrlJvY",
+  "youtube_url": "https://youtube.com/shorts/2euqlrrlJvY",
+  "ig_reel_id": "18130675907507103",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DehWKuDDFZ9/",
+  "ig_seed_comment_id": "18144944281595204"
+}

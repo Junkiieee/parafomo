@@ -1,0 +1,64 @@
+{
+  "slug": "taksit-enflasyonda-pesinden-daha-ucuz-kaliyor",
+  "title": "Taksit, enflasyonda peşinden daha ucuz kalıyor",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Faizsiz taksit ile peşin fiyat aynıysa, aylık yaklaşık yüzde 2 enflasyonda taksit gerçekte daha hafif bir yük. Sade bir hesapla gösterdik, şartıyla birlikte.\nKaynak/hesap: Aylık enflasyon yaklaşık %2 varsayımı; 12 eşit taksitin ortalama gecikmesi yaklaşık 6 ay; 6 x %2 ≈ %12 (bileşik etkiyle yaklaşık %11-12) · senaryodaki hesap (aylık %2 enflasyon varsayımı, peşin ve taksit fiyatının eşit olması şartı)",
+  "tags": [
+    "taksit",
+    "enflasyon",
+    "peşin",
+    "birikim",
+    "kişisel finans",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Faizsiz taksit, peşinden yaklaşık yüzde 12 ucuz.",
+      "visual": {
+        "type": "object",
+        "query": "wallet full of cash"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Aylık enflasyon yaklaşık yüzde 2 olsun; taksitlerin ortalaması 6 ay sonra ödenir.",
+      "visual": {
+        "type": "object",
+        "query": "smartphone banking app"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama 6 ay çarpı yüzde 2, yaklaşık yüzde 12: taksitlerin gerçek yükü o kadar hafifliyor.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Şart: peşin fiyatla taksit fiyatı aynı olsun, parayı vadeli hesapta beklet. Fark varsa hesabı yeniden yap.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki hesap, maaş gününü bile değiştirebilir. Abone ol, her gün tek net hesabı 30 saniyede göstereyim.",
+      "visual": {
+        "type": "object",
+        "query": "wallet full of cash"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "yüzde 12",
+    "calc": "Aylık enflasyon yaklaşık %2 varsayımı; 12 eşit taksitin ortalama gecikmesi yaklaşık 6 ay; 6 x %2 ≈ %12 (bileşik etkiyle yaklaşık %11-12)",
+    "source": "senaryodaki hesap (aylık %2 enflasyon varsayımı, peşin ve taksit fiyatının eşit olması şartı)"
+  }
+}

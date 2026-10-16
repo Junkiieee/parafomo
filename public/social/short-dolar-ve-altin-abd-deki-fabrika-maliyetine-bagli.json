@@ -1,0 +1,63 @@
+{
+  "title": "Dolar ve altın, ABD'deki fabrika maliyetine bağlı #Shorts",
+  "description": "Çekirdek ÜFE, ABD'de üreticinin maliyetini ölçer ve fiyatların nereye gideceğine dair ipucu verir. Bu sayı Fed beklentisi, dolar ve altın üzerinden cebe nasıl yansır, sade anlatım.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #çekirdek ÜFE #ABD enflasyonu #Fed #dolar #altın",
+  "tags": [
+    "çekirdek ÜFE",
+    "ABD enflasyonu",
+    "Fed",
+    "dolar",
+    "altın",
+    "faiz beklentisi",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-dolar-ve-altin-abd-deki-fabrika-maliyetine-bagli.mp4",
+  "slug": "dolar-ve-altin-abd-deki-fabrika-maliyetine-bagli",
+  "format": "news_reaction",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 4.41,
+      "spoken": "ABD'de fiyat artışı raftan önce fabrikada başlıyor.",
+      "visual": "place: Federal Reserve building"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 4.41,
+      "end": 11.38,
+      "spoken": "Çekirdek ÜFE, üreticinin maliyetini ölçer. Bu maliyet genelde aylar sonra mağaza fiyatına yansır.",
+      "visual": "object: factory assembly line"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 11.38,
+      "end": 18.05,
+      "spoken": "Ama sayı beklentiden yüksek gelirse, Fed faizi indirmekten çekinir ve dolar bir anda güçlenebilir.",
+      "visual": "manim: Dolar"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 18.05,
+      "end": 23.92,
+      "spoken": "Güçlü dolar altını baskılayabilir, kuru yukarı çeker. İthal ürün alıyorsan bunu faturada görürsün.",
+      "visual": "gold: gold bullion bars"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 23.92,
+      "end": 31.33,
+      "spoken": "Bir sonraki veri dolara ne yapacak, merak ediyorsan abone ol; her gün tek net analizi 60 saniyede veriyoruz.",
+      "visual": "marka kartı"
+    }
+  ],
+  "video_id": "SQPK7CLeV2c",
+  "youtube_url": "https://youtube.com/shorts/SQPK7CLeV2c",
+  "ig_reel_id": "18107651072211191",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DegVCCUHSYN/",
+  "ig_seed_comment_id": "18135320890631425"
+}
