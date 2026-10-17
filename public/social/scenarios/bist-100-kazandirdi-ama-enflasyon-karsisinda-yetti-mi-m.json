@@ -1,0 +1,111 @@
+{
+  "slug": "bist-100-kazandirdi-ama-enflasyon-karsisinda-yetti-mi-m",
+  "title": "BIST 100 kazandırdı ama enflasyon karşısında yetti mi",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "Geçen yıl 5000 TL'yi BIST 100'e koysaydın bugün yaklaşık 5378 TL, yani yaklaşık %8 getiri olurdu. Bu kârın alım gücünü korumak için neden tek başına yetmeyebileceğini basit bir hesapla anlatıyor.",
+  "tags": [
+    "BIST100",
+    "borsa",
+    "enflasyon",
+    "getiri",
+    "yatırım",
+    "birikim",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "Borsa sana 378 lira kazandırdı, ama kaybettin.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Risk",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Geçen yıl 5000 lirayı BIST 100'e koysaydın, bugün yaklaşık 5378 lira olurdu; getiri yaklaşık yüzde 8.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Borsa",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama market sepetin bir yılda bundan fazla pahalandıysa, bu artış sadece kâğıt üstünde kalır.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Borsa",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yani 5000 lira yaklaşık 5378 oldu. Kâr var, ama enflasyonu geçmediysen alım gücün büyümedi.",
+      "visual": {
+        "type": "manim",
+        "scene": "backtest",
+        "theme": "dark",
+        "title": "",
+        "chart": {
+          "kind": "line",
+          "label": "BIST 100",
+          "unit": "",
+          "points": [
+            10898.7,
+            11261.5,
+            13838.3,
+            13717.8,
+            12791.0,
+            14442.6,
+            13662.8,
+            14121.8,
+            13458.1,
+            14334.1,
+            11947.2,
+            11721.7,
+            11721.72
+          ],
+          "x": [
+            "10/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "02/26",
+            "03/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26",
+            "09/26",
+            "10/26"
+          ],
+          "amount": 5000,
+          "end_value": 5378,
+          "pct": 8
+        }
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki aynı yıl altın borsayı geçti mi? Yarın hesabı açıyorum; abone ol, her gün tek net hesabı kısa göster.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "ParaFOMO",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
