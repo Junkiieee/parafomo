@@ -158,6 +158,10 @@ def vergi_dilimi_card():
 
 CARDS = {
     "vergi-dilimi-hesaplama": vergi_dilimi_card,
+    "ihbar-tazminati-hesaplama": lambda: {
+        # İş Kanunu md.17 — sabit kural
+        "kicker": "İHBAR TAZMİNATI 2026", "stat": "2–8 hafta",
+        "sub": "kıdeme göre ihbar süresi · brüt ve net tazminatı hesapla"},
     "gelir-vergisi-hesaplama": lambda: {
         # 332 Seri No'lu GVK Tebliği; Ocak 2027'de sayfayla birlikte güncelle
         "kicker": "KİRA GELİR VERGİSİ 2026", "stat": "₺58.000",
