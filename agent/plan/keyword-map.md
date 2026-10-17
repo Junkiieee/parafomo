@@ -35,9 +35,10 @@ Otorite/dış link işleri şimdilik YAPILMAZ (Kaan: "kalsın"). Fırsat listesi
 - [x] K5 enflasyon oranı (36) + enflasyon hesaplama (21) → **/enflasyon-hesaplama/** (canlı 2026-10-16, commit 97717be) — iki tarih arası TÜFE
   değişimi ile "paranın alım gücü" hesaplayıcı; veri: `scripts/tufe-update.py`'nin TÜİK serisi (veri dosyasını
   genişlet, endeks yoksa önce veri betiği). Güncel yıllık/aylık enflasyon kutusu.
-- [ ] K8 gelir vergisi hesaplama (50) → **/gelir-vergisi-hesaplama/** — /vergi-dilimi-hesaplama'nın dilim mantığını
+- [x] K8 gelir vergisi hesaplama (50) → **/gelir-vergisi-hesaplama/** (canlı 2026-10-17, commit c408ccc) — /vergi-dilimi-hesaplama'nın dilim mantığını
   yeniden kullan (ücret dışı gelir: kira, serbest meslek); 2027 dilimleri YD oranıyla tahmin (tahmin de).
-- [ ] K9 ihbar tazminatı (20) + yıllık izin hesaplama (13) → **/ihbar-tazminati-hesaplama/**, **/yillik-izin-hesaplama/**
+- [x] K9a ihbar tazminatı (20) → **/ihbar-tazminati-hesaplama/** (canlı 2026-10-17, commit 3dfff90)
+- [ ] K9b yıllık izin hesaplama (13) → **/yillik-izin-hesaplama/**
   — İş Kanunu md. 17 (2/4/6/8 hafta) ve md. 53 (14/20/26 gün, 18 yaş altı/50 yaş üstü ≥20); kanun metninden doğrula.
 - [ ] K10 taşıt kredisi hesaplama (26) → **/tasit-kredisi-hesaplama/** — T1 bileşeni; BDDK taşıt kredisi vade/tutar
   sınırları (fatura değerine göre) resmî kaynaktan.
