@@ -1,14 +1,15 @@
 ---
-title: "ABD Eylül 2026 CPI Verisi: Fed Faizini Dondurur mu? Dolar ve Altın Etkisi"
-description: "11 Eylül ABD enflasyon verisi (CPI) öncesi 3 senaryo: sıcak, ılık veya soğuk veri dolar, altın ve TL'yi nasıl etkiler? Türk yatırımcı için pratik rehber."
+title: "ABD Eylül 2026 CPI Verisi Açıklandı: Yıllık %3,4, Çekirdek %2,4"
+description: "ABD Ağustos CPI 11 Eylül 2026'da açıklandı: aylık %0,4, yıllık %3,4; çekirdek aylık %0,3, yıllık %2,4. Dolar, altın ve TL için ne anlama geldi?"
+updatedDate: 2026-10-17
 pubDate: 2026-09-10
 category: "Ekonomi"
 tags: ["abd cpi", "abd enflasyon verisi", "dolar altın etkisi", "fed faiz kararı", "eylül 2026 cpi", "tüketici fiyat endeksi"]
 readingTime: 7
 featured: false
 faq:
-  - q: "ABD Eylül 2026 CPI verisi ne zaman açıklanıyor?"
-    a: "11 Eylül 2026 Cuma günü Türkiye saatiyle 15:30'da ABD Çalışma Bakanlığı (BLS) Ağustos 2026 dönemine ait CPI verilerini yayınlayacak. Core CPI m/m, Core CPI y/y, CPI m/m ve CPI y/y aynı anda açıklanır."
+  - q: "ABD Eylül 2026 CPI verisi ne zaman açıklandı, kaç geldi?"
+    a: "ABD Çalışma İstatistikleri Bürosu (BLS), Ağustos 2026 dönemine ait CPI verisini 11 Eylül 2026 Cuma günü Türkiye saatiyle 15:30'da yayımladı. Manşet CPI aylık %0,4 (mevsimsellikten arındırılmış), yıllık %3,4; çekirdek CPI aylık %0,3, yıllık %2,4 arttı. Benzinin aylık %3,9 artışı manşetteki yükselişin üçte birinden fazlasını açıkladı."
   - q: "CPI verisi yüksek gelirse altın ne olur?"
     a: "Yüksek CPI, Fed'in faiz indirmekte daha temkinli olacağı sinyalini güçlendirir. Bu da doları kuvvetlendirir ve faiz getirisi olmayan altın üzerinde baskı oluşturabilir. Ancak kısa vadeli düşüş uzun vadeli enflasyon koruması tezini bozmaz — kriz dönemlerinde altın farklı davranır."
   - q: "ABD enflasyon verisi TL'yi nasıl etkiler?"
@@ -35,6 +36,8 @@ shorts_visuals:
   - "gold|gold bullion bars price drop"
   - "concept|financial news website laptop screen"
 ---
+
+> **Veri açıklandı (11 Eylül 2026):** ABD Ağustos CPI aylık **%0,4**, yıllık **%3,4** arttı (Temmuz'daki %3,4 ile aynı); gıda ve enerji hariç çekirdek CPI aylık **%0,3**, yıllık **%2,4** ([BLS](https://www.bls.gov/news.release/archives/cpi_09112026.htm)). Aylık artışın üçte birinden fazlası benzinden (+%3,9) geldi; çekirdekte yıllık oran geriledi — yani tablo "sıcak manşet, sakin çekirdek" senaryosuna yakın çıktı. Aşağıdaki önizleme metni açıklama öncesinde yazıldı. Sıradaki veri: [ABD Eylül CPI açıklandı (14 Ekim)](/blog/abd-ekim-2026-cpi-verisi-fed-dolar-altin/) · [Fed 28 Ekim faiz kararı takvimi](/fed-faiz-takvimi/).
 
 Yarın, 11 Eylül 2026 Cuma günü Türkiye saatiyle 15:30'da ABD Tüketici Fiyat Endeksi (CPI) açıklanıyor. Fed faiz beklentilerini doğrudan şekillendiren bu veri, piyasalarda dolar, altın ve TL adına belirleyici olacak. Hangi senaryo sizi nasıl etkiler — ve siz ne yapmalısınız?
 
