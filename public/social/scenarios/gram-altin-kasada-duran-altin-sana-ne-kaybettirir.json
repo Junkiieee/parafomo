@@ -1,0 +1,59 @@
+{
+  "slug": "gram-altin-kasada-duran-altin-sana-ne-kaybettirir",
+  "title": "Gram altın: kasada duran altın sana ne kaybettirir",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Altını kasada ya da evde atıl tutmanın fırsat maliyetini, günlük bir metaforla anlatan kısa video. Aynı altın, işleyen bir yatırıma göre nasıl geri kalıyor, sade biçimde gösterilir.",
+  "tags": [
+    "altın",
+    "gram altın",
+    "birikim",
+    "fırsat maliyeti",
+    "enflasyon",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ATIL ALTIN",
+      "spoken": "Çekmecedeki altın sana sessizce zarar yazdırıyor.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold coins and bracelet in jewelry box"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Altın evde dururken kira ödemez, ama tutmanın bedeli vardır. Buna fırsat maliyeti denir, kapalı bir dükkan gibi düşün.",
+      "visual": {
+        "type": "object",
+        "query": "closed shop door with key"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl şok şu: Aynı gram altın, satılıp faizli hesapta ya da fonda değerlendirilseydi, yılda yaklaşık yüzlerce lira ek getiri bırakabilirdi.",
+      "visual": {
+        "type": "object",
+        "query": "calculator and notebook"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çözüm hepsini satmak değil. Bir kısmını ziynet olarak tut, kalanını gram altına çevir. Böylece hem altının hem getirin çalışır.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu altını kaça çevirmek en mantıklısı? Bir sonraki videoda hesaplıyoruz. Abone ol, her gün tek net hesabı 60 saniyede göreceksin.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold coins and bracelet in jewelry box"
+      }
+    }
+  ]
+}
