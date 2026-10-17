@@ -158,6 +158,10 @@ def vergi_dilimi_card():
 
 CARDS = {
     "vergi-dilimi-hesaplama": vergi_dilimi_card,
+    "gelir-vergisi-hesaplama": lambda: {
+        # 332 Seri No'lu GVK Tebliği; Ocak 2027'de sayfayla birlikte güncelle
+        "kicker": "KİRA GELİR VERGİSİ 2026", "stat": "₺58.000",
+        "sub": "konut kira istisnası · %15 götürü gider · beyan Mart 2027"},
     "yeniden-degerleme-orani": yd_card(
         "YENİDEN DEĞERLEME ORANI {yil}",
         lambda d, k: ("kesinleşti · MTV, harç ve cezaların zam oranı" if k

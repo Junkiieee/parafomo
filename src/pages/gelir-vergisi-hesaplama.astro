@@ -1,0 +1,447 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import yd from '../../data/yeniden-degerleme.json';
+
+// Ücret dışı gelirlerin (kira, serbest meslek, ticari kazanç) yıllık beyanname vergisi — 2026 gelirleri,
+// beyan Mart 2027. Tarife: GVK md.103, 332 Seri No'lu GVK Genel Tebliği (RG 31.12.2025) — /vergi-dilimi-hesaplama ile aynı.
+// Konut kira istisnası 2026: 58.000 ₺ (KPMG, PwC, Yöntem YMM tebliğ özetleri tutarlı; 2025: 47.000, 2024: 33.000).
+// İstisna engeli: ücret tarifesinin 3. dilim tutarı (2026: 1.500.000 ₺) — GVK md.21. Tevkifatlı kira/serbest meslek
+// beyan sınırı: tarifenin 2. dilim tutarı (2026: 400.000 ₺) — GVK md.86/1-c. Götürü gider %15 — GVK md.74.
+// Stopaj: işyeri kirası ve serbest meslek %20 — GVK md.94. Doğrulandı 2026-10-17.
+// GÜNCELLEME: Ocak 2027'de 2027 tarifesini/istisnasını yaz (vergi-dilimi-hesaplama ile birlikte).
+const DIGER: [number, number][] = [
+  [190000, 0.15],
+  [400000, 0.2],
+  [1000000, 0.27],
+  [5300000, 0.35],
+  [Infinity, 0.4],
+];
+const ISTISNA = 58000;
+const ISTISNA_GECMIS: [number, number][] = [[2024, 33000], [2025, 47000], [2026, 58000]];
+const ISTISNA_ENGEL = 1500000;
+const BEYAN_SINIRI = 400000;
+const GOTURU = 0.15;
+const STOPAJ = 0.2;
+
+function gv(m: number): number {
+  let tax = 0;
+  let prev = 0;
+  for (const [top, rate] of DIGER) {
+    if (m > top) {
+      tax += (top - prev) * rate;
+      prev = top;
+    } else {
+      return tax + (m - prev) * rate;
+    }
+  }
+  return tax;
+}
+
+const fmt = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+const fmt0 = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const pct = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 }).format(n);
+
+// Konut kirası, götürü gider: istisna düşülür, kalan üzerinden %15 götürü gider (GİB örnekleri).
+const konutVergi = (brut: number) => (brut <= ISTISNA ? 0 : gv((brut - ISTISNA) * (1 - GOTURU)));
+
+// 2027 istisna tahmini: tutar her yıl yeniden değerleme oranıyla artırılır, 1.000 ₺'yi aşmayan kesir
+// atılır (2024→2025: 33.000 × 1,4393 = 47.497 → 47.000; 2025→2026: 47.000 × 1,2549 = 58.980 → 58.000).
+const ydRate: number = (yd.tebligOrani ?? yd.onikiAyOrt) as number;
+const ydLabel = yd.tebligOrani
+  ? `tebliğle kesinleşen %${pct(yd.tebligOrani)}`
+  : yd.ekimVerisiGeldi
+    ? `hesaben kesinleşen %${pct(yd.onikiAyOrt)}`
+    : `şu anki tahmin %${pct(yd.onikiAyOrt)}, ${yd.sonAy} itibarıyla`;
+const istisna2027 = Math.floor((ISTISNA * (1 + ydRate / 100)) / 1000) * 1000;
+
+const KONUT_ORNEK = [60000, 120000, 240000, 360000, 600000];
+const DEFAULT_B = 240000;
+const d0 = konutVergi(DEFAULT_B);
+const d0m = (DEFAULT_B - ISTISNA) * (1 - GOTURU);
+
+const faq = [
+  {
+    q: 'Kira gelir vergisi nasıl hesaplanır? (2026)',
+    a: `Yıllık konut kira gelirinden 58.000 ₺ istisna düşülür; götürü gider yönteminde kalan tutarın %15’i gider sayılır, geriye kalan matraha ücret dışı gelir tarifesi (%15-40) uygulanır. Örnek: yılda ${fmt0(DEFAULT_B)} ₺ kira → (${fmt0(DEFAULT_B)} − 58.000) × 0,85 = ${fmt0(d0m)} ₺ matrah → ${fmt(d0)} ₺ gelir vergisi.`,
+  },
+  {
+    q: '2026 konut kira istisnası ne kadar?',
+    a: `2026’da elde edilen konut kira gelirleri için istisna 58.000 ₺ (2025: 47.000 ₺). Yıllık konut kirası bu tutarın altındaysa beyanname verilmez. Ücret, ticari, serbest meslek vb. gelirlerinin toplamı 1.500.000 ₺’yi aşanlar ve ticari/zirai/mesleki kazancı nedeniyle beyanname verenler istisnadan yararlanamaz. Kaynak: 332 Seri No’lu GVK Genel Tebliği.`,
+  },
+  {
+    q: '2026 kira gelirinin beyannamesi ne zaman verilir?',
+    a: `2026’da elde edilen gelirler için yıllık gelir vergisi beyannamesi 1-31 Mart 2027 tarihleri arasında verilir. Vergi iki eşit taksitte ödenir: 1. taksit Mart 2027 sonu, 2. taksit Temmuz 2027 sonu. Konut kirası için GİB Hazır Beyan Sistemi kullanılabilir.`,
+  },
+  {
+    q: 'İşyeri kira geliri beyan edilir mi?',
+    a: `İşyeri kirasında kiracı %20 stopaj keser. Yıllık brüt işyeri kirası 400.000 ₺’yi (2026, tarifenin 2. dilim tutarı) aşmıyorsa ve beyanı gereken başka geliriniz yoksa beyanname gerekmez; kesilen stopaj nihai vergidir. Aşıyorsa beyan edilir ve kesilen stopaj hesaplanan vergiden mahsup edilir.`,
+  },
+  {
+    q: '2027 konut kira istisnası ne kadar olacak?',
+    a: `İstisna tutarı her yıl yeniden değerleme oranıyla artırılır ve 1.000 ₺’yi aşmayan kesir atılır. ${ydLabel} yeniden değerleme oranıyla 2027 istisnası yaklaşık ${fmt0(istisna2027)} ₺ olur. Bu bir tahmindir; resmî tutar Aralık 2026 sonunda tebliğle açıklanır.`,
+  },
+  {
+    q: 'Götürü gider mi gerçek gider mi seçmeliyim?',
+    a: `Götürü gider belge istemez ve istisna sonrası kiranın %15’ini düşer. Gerçek giderde onarım, sigorta, aidat (mal sahibinin ödediği), amortisman gibi belgeli giderler düşülür ama istisnaya isabet eden kısım indirilemez. Götürü gideri seçen 2 yıl geçmeden gerçek gidere dönemez. Hangisinin avantajlı olduğunu bu araçta iki yöntemi deneyerek görebilirsiniz.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Hesaplama Araçları', url: '/hesaplama-araclari/' },
+  { name: 'Gelir Vergisi Hesaplama', url: '/gelir-vergisi-hesaplama/' },
+];
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: '2026 gelir vergisi: ücret dışı tarife, konut kira istisnası ve 2027 istisna tahmini',
+  description: `GVK md.103 ücret dışı gelir tarifesi 2026, konut kira istisnası (2024-2026) ve yeniden değerleme oranına göre 2027 istisna tahmini (${ydLabel}).`,
+  url: 'https://parafomo.com/gelir-vergisi-hesaplama/',
+  dateModified: yd.updated,
+  creator: { '@type': 'Organization', name: 'ParaFOMO', url: 'https://parafomo.com/' },
+  isBasedOn: 'https://www.gib.gov.tr',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+};
+const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  image="/og/gelir-vergisi-hesaplama.png"
+  title="Gelir Vergisi Hesaplama 2026: Kira, Serbest Meslek, Beyanname"
+  description="Kira, serbest meslek ve ticari kazancın 2026 gelir vergisini hesapla: 58.000 ₺ konut istisnası, %15 götürü gider, stopaj mahsubu. Beyanname Mart 2027."
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(dataset)} />
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Vergi</p>
+      <h1>Gelir Vergisi Hesaplama (2026 gelirleri)</h1>
+      <p class="lede">
+        Kira, serbest meslek ve ticari kazancınızın <strong>Mart 2027’de vereceğiniz beyannamedeki
+        gelir vergisini</strong> hesaplayın. Konut kirasında <strong>58.000 ₺ istisna</strong> ve
+        <strong>%15 götürü gider</strong>, işyeri kirası ve serbest meslekte <strong>%20 stopaj
+        mahsubu</strong> otomatik.
+      </p>
+    </header>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Gelir türü</span>
+          <select id="in-tur">
+            <option value="konut" selected>Konut kira geliri</option>
+            <option value="isyeri">İşyeri kira geliri (stopajlı)</option>
+            <option value="serbest">Serbest meslek kazancı (stopajlı)</option>
+            <option value="ticari">Ticari kazanç (net kâr)</option>
+          </select>
+        </label>
+        <label>
+          <span id="lbl-b">Yıllık brüt kira geliri (₺)</span>
+          <input type="number" id="in-b" value={DEFAULT_B} min="0" step="1000" inputmode="numeric" />
+        </label>
+        <label id="row-yontem">
+          <span>Gider yöntemi</span>
+          <select id="in-yontem">
+            <option value="goturu" selected>Götürü gider (%15)</option>
+            <option value="gercek">Gerçek gider (belgeli)</option>
+          </select>
+        </label>
+        <label id="row-gider" hidden>
+          <span>Belgeli giderler (yıllık, ₺)</span>
+          <input type="number" id="in-g" value="0" min="0" step="1000" inputmode="numeric" />
+        </label>
+        <label class="check" id="row-engel">
+          <input type="checkbox" id="in-engel" />
+          <span>Ticari/serbest meslek kazancım var ya da toplam gelirim 1.500.000 ₺’yi aşıyor (istisna uygulanmaz)</span>
+        </label>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label" id="out-label">Hesaplanan gelir vergisi</span>
+          <span class="result-value" id="out-tax">₺{fmt(d0)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Vergi matrahı</span>
+            <span class="split-val" id="out-m">₺{fmt(d0m)}</span>
+          </div>
+          <div class="split-item" id="row-stopaj" hidden>
+            <span class="split-label">Mahsup edilecek stopaj (%20)</span>
+            <span class="split-val" id="out-stopaj">₺0</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Ödenecek / (iade-mahsup)</span>
+            <span class="split-val" id="out-pay">₺{fmt(d0)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Taksit (Mart + Temmuz 2027)</span>
+            <span class="split-val" id="out-taksit">2 × ₺{fmt(d0 / 2)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Marjinal dilim · efektif oran</span>
+            <span class="split-val" id="out-oran">—</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note"></p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır; vergi/mali tavsiye değildir. 2026 ücret dışı gelir
+      tarifesi (GVK md.103, 332 Seri No’lu GVK Genel Tebliği) esas alınmıştır. Tek gelir türü
+      hesaplanır; birden çok gelir unsuru, ücretin beyana katılması, geçici vergi, indirimler (eğitim,
+      sağlık, bağış) ve damga vergisi hesaba katılmaz. · Son güncelleme: {updatedLabel} · Kaynak: Gelir
+      İdaresi Başkanlığı, Resmî Gazete.
+    </p>
+
+    <section class="table-block">
+      <h2>2026 gelir vergisi tarifesi (ücret dışı gelirler)</h2>
+      <table class="rate-table">
+        <thead><tr><th>Oran</th><th>Matrah aralığı</th><th>Dilim sonuna kadar vergi</th></tr></thead>
+        <tbody>
+          <tr><td>%15</td><td>190.000 ₺’ye kadar</td><td>₺{fmt0(gv(190000))}</td></tr>
+          <tr><td>%20</td><td>190.001 – 400.000 ₺</td><td>₺{fmt0(gv(400000))}</td></tr>
+          <tr><td>%27</td><td>400.001 – 1.000.000 ₺</td><td>₺{fmt0(gv(1000000))}</td></tr>
+          <tr><td>%35</td><td>1.000.001 – 5.300.000 ₺</td><td>₺{fmt0(gv(5300000))}</td></tr>
+          <tr><td>%40</td><td>5.300.000 ₺ üzeri</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">
+        Kaynak: 332 Seri No’lu Gelir Vergisi Genel Tebliği (Resmî Gazete, 31 Aralık 2025). Kira, serbest
+        meslek ve ticari kazançta %27 dilimi 1.000.000 ₺’de biter; ücretliler için 1.500.000 ₺ — ayrıntı:
+        <a href="/vergi-dilimi-hesaplama/">vergi dilimi hesaplama</a>.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Konut kira gelir vergisi tablosu (2026, götürü gider)</h2>
+      <table class="rate-table">
+        <thead><tr><th>Yıllık kira</th><th>Aylık kira</th><th>Matrah</th><th>Gelir vergisi</th><th>Efektif oran</th></tr></thead>
+        <tbody>
+          {KONUT_ORNEK.map((b) => (
+            <tr>
+              <td>₺{fmt0(b)}</td>
+              <td>₺{fmt0(b / 12)}</td>
+              <td>₺{fmt0(Math.max(0, (b - ISTISNA) * (1 - GOTURU)))}</td>
+              <td>{konutVergi(b) === 0 ? 'Beyan yok' : '₺' + fmt0(konutVergi(b))}</td>
+              <td>%{pct((konutVergi(b) / b) * 100)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        58.000 ₺ istisna ve %15 götürü gider uygulanmış, başka beyan edilecek gelir olmadığı varsayılmıştır.
+      </p>
+    </section>
+
+    <section class="table-block" id="istisna-2027">
+      <h2>2027 konut kira istisnası ne kadar olacak? (tahmin)</h2>
+      <p class="table-intro">
+        İstisna tutarı her yıl <a href="/yeniden-degerleme-orani/">yeniden değerleme oranıyla</a>
+        artırılır, 1.000 ₺’yi aşmayan kesir atılır. Geçmiş yıllar bu kurala birebir uyuyor; 2027 satırı
+        bu orana göre hesaplandı ({ydLabel}) ve <strong>resmî değildir</strong>.
+      </p>
+      <table class="rate-table">
+        <thead><tr><th>Gelir yılı</th><th>Konut kira istisnası</th><th>Beyan dönemi</th></tr></thead>
+        <tbody>
+          {ISTISNA_GECMIS.map(([y, v]) => (
+            <tr><td>{y}</td><td>₺{fmt0(v)}</td><td>Mart {y + 1}</td></tr>
+          ))}
+          <tr><td>2027 (tahmin)</td><td>≈ ₺{fmt0(istisna2027)}</td><td>Mart 2028</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">
+        Yeniden değerleme oranı Ekim Yİ-ÜFE ile (3 Kasım) hesaben kesinleşir; tahmin otomatik güncellenir.
+        Resmî 2027 tutarı Aralık sonunda Gelir Vergisi Genel Tebliği ile açıklanır.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Kimler beyanname verir?</h2>
+      <ul>
+        <li><strong>Konut kirası:</strong> yıllık brüt kira 58.000 ₺’yi aşıyorsa (2026). İstisna altında
+          kalan tutar için beyan yok; süresinde beyan etmeyen istisna hakkını kaybeder.</li>
+        <li><strong>İşyeri kirası:</strong> kiracı %20 stopaj keser. Yıllık brüt tutar 400.000 ₺’yi
+          aşarsa beyan edilir; aşmazsa (ve beyanı gereken başka gelir yoksa) stopaj nihai vergidir.</li>
+        <li><strong>Serbest meslek ve ticari kazanç:</strong> tutarından bağımsız her yıl beyan edilir;
+          yıl içinde ödenen geçici vergi ve kesilen stopaj mahsup edilir.</li>
+      </ul>
+      <p class="cta-line">
+        İlgili araçlar: ücret dilimleri için <a href="/vergi-dilimi-hesaplama/">vergi dilimi hesaplama</a>,
+        maaş için <a href="/net-maas-hesaplama/">net maaş hesaplama</a>, kira artışı için
+        <a href="/kira-artis-orani-hesaplama/">kira artış oranı</a>, ev sahipleri için
+        <a href="/emlak-vergisi-hesaplama/">emlak vergisi hesaplama</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p set:html={f.a} />
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ ISTISNA, ISTISNA_ENGEL, BEYAN_SINIRI, GOTURU, STOPAJ }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const pf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
+      const T = [[190000, 0.15], [400000, 0.2], [1000000, 0.27], [5300000, 0.35], [Infinity, 0.4]];
+      const LBL = {
+        konut: 'Yıllık brüt kira geliri (₺)',
+        isyeri: 'Yıllık brüt işyeri kirası (₺, stopaj dahil)',
+        serbest: 'Yıllık brüt serbest meslek hasılatı (₺)',
+        ticari: 'Yıllık hasılat (₺)',
+      };
+
+      function calc(m) {
+        let tax = 0, prev = 0, marj = T[0][1];
+        for (const [top, rate] of T) {
+          if (m > top) { tax += (top - prev) * rate; prev = top; }
+          else { tax += (m - prev) * rate; marj = rate; break; }
+        }
+        return { tax, marj };
+      }
+
+      function update() {
+        const tur = $('in-tur').value;
+        const b = Math.max(0, +$('in-b').value || 0);
+        const kira = tur === 'konut' || tur === 'isyeri';
+        const yontem = kira ? $('in-yontem').value : 'gercek';
+        const g = Math.max(0, +$('in-g').value || 0);
+        const engel = $('in-engel').checked;
+
+        $('lbl-b').textContent = LBL[tur];
+        $('row-yontem').hidden = !kira;
+        $('row-gider').hidden = yontem !== 'gercek';
+        $('row-engel').hidden = tur !== 'konut';
+
+        let note = '';
+        let m;
+        let beyanYok = false;
+        if (tur === 'konut') {
+          const ist = engel ? 0 : Math.min(b, ISTISNA);
+          const kalan = b - ist;
+          if (kalan <= 0) { beyanYok = true; m = 0; note = 'Yıllık konut kirası 58.000 ₺ istisnanın altında: beyanname verilmez.'; }
+          else if (yontem === 'goturu') m = kalan * (1 - GOTURU);
+          // gerçek gider: istisnaya isabet eden gider indirilemez
+          else m = Math.max(0, kalan - (b > 0 ? g * (kalan / b) : 0));
+          if (!beyanYok && ist > 0) note = 'İstisna düşüldü: ' + nf0.format(ist) + ' ₺. Beyan: Mart 2027.';
+          if (!beyanYok && engel) note = 'İstisna uygulanmadı. Beyan: Mart 2027.';
+        } else if (tur === 'isyeri') {
+          m = yontem === 'goturu' ? b * (1 - GOTURU) : Math.max(0, b - g);
+          if (b <= BEYAN_SINIRI) { beyanYok = true; note = 'Brüt işyeri kirası 400.000 ₺’yi aşmıyor: beyanı gereken başka gelir yoksa %20 stopaj nihai vergidir.'; }
+        } else {
+          m = Math.max(0, b - g);
+          note = tur === 'serbest' ? 'Yıl içinde ödenen geçici vergi de ayrıca mahsup edilir.' : 'Yıl içinde ödenen geçici vergi mahsup edilir (hesaba katılmadı).';
+        }
+
+        const r = calc(m);
+        const stop = (tur === 'isyeri' || tur === 'serbest') ? b * STOPAJ : 0;
+        const tax = beyanYok ? 0 : r.tax;
+        const pay = beyanYok ? 0 : tax - stop;
+
+        $('out-label').textContent = beyanYok ? 'Beyanname gerekmez' : 'Hesaplanan gelir vergisi';
+        $('out-tax').textContent = '₺' + nf.format(tax);
+        $('out-m').textContent = '₺' + nf.format(m);
+        $('row-stopaj').hidden = stop === 0;
+        $('out-stopaj').textContent = '₺' + nf.format(stop) + (beyanYok ? ' (nihai)' : '');
+        $('out-pay').textContent = pay >= 0 ? '₺' + nf.format(pay) : '(₺' + nf.format(-pay) + ')';
+        $('out-taksit').textContent = pay > 0 ? '2 × ₺' + nf.format(pay / 2) : '—';
+        $('out-oran').textContent = m > 0 && !beyanYok ? '%' + Math.round(r.marj * 100) + ' · %' + pf.format((tax / b) * 100) : '—';
+        if (!beyanYok && pay < 0) note = 'Kesilen stopaj hesaplanan vergiden fazla: fark diğer vergi borçlarına mahsup edilir ya da iade alınır.';
+        $('out-note').textContent = note;
+      }
+
+      ['in-b', 'in-g'].forEach((id) => $(id).addEventListener('input', update));
+      ['in-tur', 'in-yontem', 'in-engel'].forEach((id) => $(id).addEventListener('change', update));
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.7rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs label[hidden] { display: none; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input, .calc-inputs select {
+      font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus, .calc-inputs select:focus {
+      outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft);
+    }
+    .calc-inputs label.check { flex-direction: row; align-items: flex-start; gap: 0.5rem; }
+    .calc-inputs label.check input { width: auto; margin-top: 0.2rem; }
+    .calc-inputs label.check span { font-weight: 500; font-size: 0.8rem; line-height: 1.4; }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 0.9rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-item[hidden] { display: none; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.95rem; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; overflow-x: auto; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>
