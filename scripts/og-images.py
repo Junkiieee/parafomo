@@ -166,6 +166,10 @@ def vergi_dilimi_card():
 
 
 CARDS = {
+    "veraset-ve-intikal-vergisi-hesaplama": lambda: {
+        # VİVK Genel Tebliği Seri 57 (RG 31.12.2025); Ocak 2027'de güncelle
+        "kicker": "VERASET VE İNTİKAL VERGİSİ 2026", "stat": "₺2.907.136",
+        "sub": "çocuk/eş istisnası · bağışta ₺66.935 · 2027 tahmini"},
     "noter-ucretleri": lambda: {
         # Harçlar K. Tebliğ Seri 98 + Noterlik Ücret Tarifesi 2026; Ocak 2027'de güncelle
         "kicker": "NOTER ÜCRETLERİ 2026", "stat": "₺307,90",

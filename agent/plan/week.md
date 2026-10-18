@@ -131,6 +131,15 @@ FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan me
 - R2 bilgileri → `/root/.config/parafomo/backup.env` (backup.sh otomatik kullanır).
 
 ## Notlar (günlük koşu için)
+- **RC 2026-10-18 (Kaan: "geliştirmelerin hepsini yap") — yapılanlar, TEKRARLAMA/GERİ ALMA:** açıklama günü motoru
+  (live-posts, `sonuc:` kutusu, release-watch, sitemap lastmod) · YD hedef yıl + EVDS endeks (%27,81) · emlak vergisi
+  tam oran düzeltmesi · trafik cezası indirimi 1 AY (KK 17/6; 15 gün = itiraz) + sorgulama bölümü (K13) · asgari ücret
+  veriden (`data/asgari-ucret.json`, 2027 açıklanınca `yeni`) + Aralık haber bekçisi (`scripts/asgari-ucret-watch.py`,
+  cron) · getiri başlıklarında "Son 1 Yılda %X" · TCMB/Fed başlıklarında sıradaki karar günü · ana sayfa "2027 Zam
+  Sezonu" bölümü · blog "Bu konuda hesapla" kutusu (`src/data/tools.ts` tek araç listesi) · YouTube açıklama linkleri
+  '/' ile + yeni araç eşlemesi · alt-ajanlarla yeni sayfalar: noter-ucretleri, arac-muayene-ucreti,
+  damga-vergisi-hesaplama, tapu-harci-hesaplama, tasit-kredisi-hesaplama, veraset-ve-intikal-vergisi-hesaplama
+  (keyword-map K10-K12, K16'da işaretli).
 - **Neden bu sıra:** baş sorgularda otorite kilidi var (bkz. learnings); kazanılabilir yer gelecek yıl (2027)
   sorguları ve sitede karşılığı olmayan hacimli araç niyetleri. Sezon zirvesi Kasım-Ocak → T1-T3 Ekim'de canlı olmalı.
 - **YAPMA:** halka arz takvimi / kira artış / kredi hesaplama baş sorguları için başlık-H1-FAQ dürtmesi (p57-100,

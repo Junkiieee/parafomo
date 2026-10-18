@@ -125,7 +125,7 @@ Sabit tutarlı damga vergisi, noter ve yargı harçları gibi kalemler de aynı 
 
 ### Emlak vergisi
 
-Burada önemli bir değişiklik var: 7566 sayılı Kanun'la (Aralık 2025) Emlak Vergisi Kanunu'nun 29. maddesindeki "yeniden değerleme oranının yarısı nispetinde" ifadesi "yeniden değerleme oranında" olarak değiştirildi. Yani bina ve arazinin vergi değeri, takdir yapılmayan yıllarda artık oranın **yarısı değil tamamı** kadar artıyor; 2027 bu kuralın uygulanacağı ilk yıl. 2027 emlak vergisi bu yüzden **yaklaşık %27,8** artar; Cumhurbaşkanı bu artışı sıfıra kadar indirebilir. Kendi vergini [emlak vergisi hesaplama](/emlak-vergisi-hesaplama/) aracıyla görebilirsin.
+Burada önemli bir değişiklik var: 7566 sayılı Kanun'la (Aralık 2025) Emlak Vergisi Kanunu'nun 29. maddesindeki "yeniden değerleme oranının yarısı nispetinde" ifadesi "yeniden değerleme oranında" olarak değiştirildi. Yani bina ve arazinin vergi değeri, takdir yapılmayan yıllarda artık oranın **yarısı değil tamamı** kadar artıyor; 2027 bu kuralın uygulanacağı ilk yıl. 2027 emlak vergisi bu yüzden **yaklaşık %27,8** artar; Cumhurbaşkanı bu artışı sıfıra kadar indirebilir. Kendi vergini [emlak vergisi hesaplama](/emlak-vergisi-hesaplama/) aracıyla görebilirsin. Miras kalan taşınmazda veraset ve intikal vergisi de bu değer üzerinden hesaplanır; 2026'da çocuk ve eş başına 2.907.136 TL olan miras istisnası da yeniden değerleme oranıyla 2027'de yaklaşık 3.715.610 TL'ye çıkar — hesap için [veraset ve intikal vergisi](/veraset-ve-intikal-vergisi-hesaplama/).
 
 ## Yeniden değerleme oranına bağlı OLMAYAN 2027 zamları
 

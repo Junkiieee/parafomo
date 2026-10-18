@@ -41,6 +41,8 @@ const ETKI = [
   { ad: 'Damga vergisi (maktu)', b2026: 1189.5, tip: 'Örnek: yıllık gelir vergisi beyannamesi', link: '/damga-vergisi-hesaplama/', not: 'üst sınır ve tüm maktu tutarlar', harc: true },
   { ad: 'Maktu harçlar', b2026: 307.9, tip: 'Örnek: vekaletname harcı (imza başına)', link: '/noter-ucretleri/', not: 'noter, tapu, yargı harçları · noterin kendi ücret tarifesi bu orana bağlı değil', harc: true },
   { ad: 'Gelir vergisi dilimleri', b2026: null, tip: 'Tarife eşikleri', not: 'Cumhurbaşkanı oranı farklı belirleyebiliyor (2026 ilk dilim: 190.000 TL)' },
+  // VİVK md.4: istisnalar YD oranının TAMAMIyla artar (2026: 2.316.628 × 1,2549 = 2.907.136 ₺; CB indirimi uygulanmadı)
+  { ad: 'Veraset ve intikal vergisi istisnası', b2026: 2907136, tip: 'Çocuk/eş başına miras istisnası', link: '/veraset-ve-intikal-vergisi-hesaplama/', not: 'bağışta 66.935 ₺ · vergi dilimleri de artar' },
   // 7566 s. Kanun (RG 19.12.2025) EVK md. 29'daki "yarısı nispetinde" ibaresini "oranında" yaptı → artık oranın TAMAMI.
   { ad: 'Emlak vergisi değeri', b2026: null, tip: 'Vergi değeri oranın tamamı kadar artar (EVK md. 29, 7566 s. Kanun)', link: '/emlak-vergisi-hesaplama/', not: 'Cumhurbaşkanı artışı sıfıra kadar indirebilir' },
 ];

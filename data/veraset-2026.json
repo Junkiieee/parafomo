@@ -1,0 +1,42 @@
+{
+ "_aciklama": "7338 sayılı Veraset ve İntikal Vergisi Kanunu: istisna tutarları (md. 4/b, d, e) ve tarife matrah dilim GENİŞLİKLERİ (md. 16; son dilim = toplamın üstü). 'yil' içindeki ölüm/bağışlara uygulanır (beyan tarihi değil). Oranlar % cinsinden. gecmis[].uygulananYd = o yılın tutarlarını üreten yeniden değerleme oranı. 2026 tutarları YD %25,49 (VUK 585) ile üretildi; MTV/harçtaki indirimli %18,95 VİVK'ye uygulanmadı (teblig.uygulanmayanIndirimliOran; o yıl indirim yoksa alanı sil). GÜNCELLEME: Aralık 2026 sonunda 58 Seri No'lu VİVK Genel Tebliği → 2027 tutarlarını yaz (yil: 2027), bu yılı gecmis'e taşı.",
+ "_kaynak": "https://www.resmigazete.gov.tr/eskiler/2025/12/20251231M5-22.pdf",
+ "_kaynakKanun": "https://www.mevzuat.gov.tr/mevzuatmetin/1.3.7338.pdf",
+ "dogrulama": "2026-10-18",
+ "yil": 2026,
+ "teblig": {
+  "seriNo": 57,
+  "rgTarih": "2025-12-31",
+  "rgSayi": "33124 (5. Mükerrer)",
+  "uygulananYd": 25.49,
+  "uygulanmayanIndirimliOran": 18.95
+ },
+ "istisna": {
+  "furuEs": 2907136,
+  "esFuruYok": 5817845,
+  "ivazsiz": 66935,
+  "ikramiye": 66935
+ },
+ "dilimler": [3000000, 7000000, 15000000, 30000000],
+ "oranVeraset": [1, 3, 5, 7, 10],
+ "oranIvazsiz": [10, 15, 20, 25, 30],
+ "oranIkramiye": 20,
+ "gecmis": [
+  {
+   "yil": 2025,
+   "seriNo": 56,
+   "rgTarih": "2024-12-30",
+   "uygulananYd": 43.93,
+   "istisna": { "furuEs": 2316628, "esFuruYok": 4636103, "ivazsiz": 53339, "ikramiye": 53339 },
+   "dilimler": [2400000, 5700000, 12000000, 24000000]
+  },
+  {
+   "yil": 2024,
+   "seriNo": 55,
+   "rgTarih": "2023-12-30",
+   "uygulananYd": 58.46,
+   "istisna": { "furuEs": 1609552, "esFuruYok": 3221082, "ivazsiz": 37059, "ikramiye": 37059 },
+   "dilimler": [1700000, 4000000, 8700000, 17000000]
+  }
+ ]
+}

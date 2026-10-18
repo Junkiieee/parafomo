@@ -21,6 +21,7 @@ Otorite/dış link işleri şimdilik YAPILMAZ (Kaan: "kalsın"). Fırsat listesi
 - [x] konut kredisi hesaplama (170) → /konut-kredisi-hesaplama/ · ajan 10-15
 - [x] emlak vergisi (297) → /emlak-vergisi-hesaplama/ · ajan 10-15
 - [x] kıdem tazminatı tavanı (62) → /kidem-tazminati-hesaplama/#tavan-2027 · ajan 10-15
+- [x] veraset ve intikal vergisi (16, zirve Kasım) → /veraset-ve-intikal-vergisi-hesaplama/ (VİVK Tebliğ 57; GİB 2026 rehber örnekleriyle kuruşu kuruşuna doğrulandı; 2027 tahmini YD ile otomatik) · RC 2026-10-18
 
 ## Sıradaki (skor sırası — üstteki önce; zam sezonu Kasım-Ocak, sezonluklar öne alındı)
 - [x] K1 memur zammı (130) + memur maaşı (115) → **/memur-zammi-hesaplama/** (canlı 2026-10-15) — Ocak 2027 memur zammı =
