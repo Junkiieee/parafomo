@@ -27,6 +27,8 @@ const GRUPLAR_HAM: Grup[] = [
     { href: '/emekli-zammi-hesaplama/', ad: 'Emekli zammı hesaplama', aciklama: 'SSK, Bağ-Kur ve memur emeklisi zammı', k: ['emekli', 'emeklilik', 'ssk', 'bağ-kur'] },
     { href: '/memur-zammi-hesaplama/', ad: 'Memur zammı hesaplama', aciklama: 'Ocak 2027 memur zammı tahmini ve katsayılar', k: ['memur'] },
     { href: '/en-dusuk-emekli-maasi/', ad: 'En düşük emekli maaşı', aciklama: 'Taban aylık, Ocak 2027 senaryosu, ödeme günleri', k: ['emekli maaşı', 'en düşük emekli'] },
+    { href: '/engelli-maasi/', ad: 'Engelli maaşı ve 65 yaş aylığı', aciklama: 'Ocak 2027 tahmini ve 2026 tutarları', k: ['engelli', '65 yaş', 'yaşlılık aylığı'] },
+    { href: '/evde-bakim-maasi/', ad: 'Evde bakım maaşı', aciklama: '2027 tutarı ve hane geliri şartı', k: ['evde bakım'] },
     { href: '/bayram-ikramiyesi/', ad: 'Bayram ikramiyesi', aciklama: 'Emekli ikramiyesi tutarı ve 2027 bayram tarihleri', k: ['bayram ikramiye'] },
     { href: '/kidem-tazminati-hesaplama/', ad: 'Kıdem tazminatı hesaplama', aciklama: 'Tavan dahil kıdem tazminatı ve 2027 tavan tahmini', k: ['kıdem', 'tazminat', 'işten çıkar'] },
     { href: '/ihbar-tazminati-hesaplama/', ad: 'İhbar tazminatı hesaplama', aciklama: '2-8 haftalık ihbar süresi, brüt ve net tutar', k: ['ihbar'] },

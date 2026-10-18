@@ -36,6 +36,7 @@ def site_url_for(slug):
 _TOOL_MAP = [
     # Önce özgül konular (ilk eşleşen kazanır). Yollar '/' ile biter: site kanonik URL'i (301 zinciri yok).
     ("kdv", "/kdv-hesaplama/"),
+    ("evde bakım", "/evde-bakim-maasi/"), ("engelli", "/engelli-maasi/"), ("65 yaş", "/engelli-maasi/"),
     ("emekli", "/emekli-zammi-hesaplama/"), ("memur", "/memur-zammi-hesaplama/"),
     ("bayram ikramiye", "/bayram-ikramiyesi/"),
     ("mtv", "/mtv-hesaplama/"), ("motorlu taşıt", "/mtv-hesaplama/"),

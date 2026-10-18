@@ -64,6 +64,8 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
   { slug: 'noter-ucretleri', ad: 'Noter ücretleri', deger: 'tablo' },
   { slug: 'arac-muayene-ucreti', ad: 'Araç muayene ücreti', deger: 'tablo' },
   { slug: 'veraset-ve-intikal-vergisi-hesaplama', ad: 'Veraset ve intikal vergisi', deger: 'hesapla' },
+  { slug: 'engelli-maasi', ad: 'Engelli maaşı (Ocak)', deger: `≈+%${nf1(memurProj.zam * 100)}` },
+  { slug: 'evde-bakim-maasi', ad: 'Evde bakım maaşı', deger: auYeni ? `₺${Math.round(auNet).toLocaleString('tr-TR')}` : `₺${Math.round(asgari.guncel.net).toLocaleString('tr-TR')}` },
   { slug: 'gelir-vergisi-hesaplama', ad: 'Gelir vergisi (kira)', deger: 'hesapla' },
 ].filter((z) => hasPage(z.slug));
 ---

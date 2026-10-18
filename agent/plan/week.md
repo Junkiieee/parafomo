@@ -101,6 +101,21 @@ FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan me
   veriyi otomatik çeker, sayfa "Belli Oldu" olur) resmî SSK/Bağ-Kur oranını ÇSGB/SGK açıklamasından doğrula; farklıysa
   `data/tufe-aylik.json`'a `"resmiZam": {"2027-01": {"ssk": <oran>}}` ekle (src/data/zam2027.ts bunu esas alır) →
   build → deploy. · Kabul: canlı sayfadaki oran resmî açıklamayla aynı.
+- [ ] T16 (zam sezonu — TARİHLİ, 24 Aralık–10 Ocak) — **Ocak 2027 resmî tarife turu** (RC 10-18 listesi). Aralık sonu
+  Resmî Gazete'de çıkan her tebliği WebSearch/RG ile doğrula, sayfayı 2027 resmî rakamına çevir ("tahmin" → "resmî"),
+  OG kartını (`scripts/og-images.py` sabit kartlar) yenile, build → deploy. Sıra = arama hacmi:
+  1. Asgari ücret: `scripts/asgari-ucret-watch.py` otomatik yazar → doğrula (Kaan'a da mail gider); 1 Ocak'ta yıl devri
+     otomatik. Bağlı sabitler: `net-maas-hesaplama` (MIN_BRUT + 2027 tarife), `issizlik-maasi-hesaplama` (MIN_BRUT).
+  2. GVK 2027 tarifesi (dilimler, kira istisnası) → `vergi-dilimi-hesaplama`, `gelir-vergisi-hesaplama`, `net-maas-hesaplama`.
+  3. MTV 2027 tarifesi + Harçlar Tebliği (CB oranı ≠ YD olabilir → `data/yeniden-degerleme.json` `uygulananOrani`) →
+     `mtv-hesaplama` ORNEK tutarları, `pasaport-ehliyet-harci`, `noter-ucretleri` harçları, `tapu-harci-hesaplama` asgari harç.
+  4. DVK Tebliği Seri 72 → `damga-vergisi-hesaplama` (BAZ_YIL=2027, tutarlar). VİVK Tebliği Seri 58 → `data/veraset-2026.json`
+     2027 değerleri. Noterlik Ücret Tarifesi 2027 (RG ilan) → `noter-ucretleri`. TKGM 2027 fiyat listesi →
+     `data/tapu-harci-2026.json` `gosterge2027`. TÜVTÜRK 2027 tarifesi (1 Ocak) → `arac-muayene-ucreti`.
+  5. Kıdem tavanı (HMB katsayı genelgesi, Ocak ilk hafta) → `data/kidem-tavan.json`; memur katsayıları → `data/emekli-memur.json`;
+     en düşük emekli aylığı + bayram ikramiyesi; trafik cezaları 2027 (YD uygulandı mı?) → `trafik-cezalari-hesaplama`.
+  6. 5 Ocak sonrası: `src/data/zam2027.ts` PERIOD'u 2027-01..06 (Temmuz 2027 zammı) turuna çevir; emekli/memur sayfa metinleri.
+  · Kabul: listedeki her sayfa canlıda 2027 resmî rakamını gösterir; health.py temiz.
 
 ## Bakım / ürün
 - [x] V1 (video kalitesi) — → kök neden: parça sonu +0,12 sn kuyruğu sonraki parçayla aynı konumda çakışıyordu; build_ass parçayı sonrakinden önce bitiriyor · önce/sonra: agent/state/v1-test/compare.png · commit 5d4d98f · RC 10-15 · sonraki 3 günün video-qa'sı izlenecek — **altyazı çakışması hatası** · video-qa son 7g'de 4 videoda "altyazı üst üste binmiş,
