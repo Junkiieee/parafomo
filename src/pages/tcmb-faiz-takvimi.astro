@@ -29,6 +29,8 @@ const rows = meetings.map((m) => {
 });
 
 const next = rows.find((r) => !r.isPast);
+// Başlıkta "ne zaman?" sorusunun cevabı: kararı henüz açıklanmamış ilk toplantı (karar günü sonuç yazılınca bir sonrakine geçer)
+const upcoming = rows.find((r) => !r.isPast && !r.result);
 const nf = (n: number) => n.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
 // Son açıklanan karar → güncel politika faizi (karar günü akşamı scripts/policy-decisions.py doldurur)
 const decided = rows.filter((r) => r.result);
@@ -95,7 +97,9 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title={`TCMB Faiz Kararı 2026: PPK Takvimi ve Kararlar (Politika Faizi %${nf(rate)})`}
+  title={upcoming
+    ? `TCMB Faiz Kararı Ne Zaman? Sıradaki PPK: ${upcoming.dayLabel}, ${upcoming.tsiTime} (Faiz %${nf(rate)})`
+    : `TCMB Faiz Kararı 2026: PPK Takvimi ve Kararlar (Politika Faizi %${nf(rate)})`}
   description={`TCMB politika faizi %${nf(rate)}${last ? ` (son karar ${last.dayLabel}: ${decisionText(last.result!)})` : ''}. 2026 PPK toplantı tarihleri, her toplantının kararı, TSİ açıklama saatleri ve bir sonraki faiz kararına kalan gün.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

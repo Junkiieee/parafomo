@@ -35,6 +35,9 @@ const rows2027 = meetings2027.map((m) => {
 });
 
 const next = rows.find((r) => !r.isPast);
+// Başlıkta sıradaki karar günü (kararı açıklanmamış ilk toplantı; 2026 bitince 2027 takvimi)
+const upcoming = rows.find((r) => !r.isPast && !r.result) ?? rows2027.find((r) => r.decisionDate >= todayKey);
+const upLabel = upcoming ? `${+upcoming.decisionDate.slice(8)} ${MONTHS[+upcoming.decisionDate.slice(5, 7) - 1]}` : '';
 const nf = (n: number) => n.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const band = (lo: number, hi: number) => `%${nf(lo)}–${nf(hi)}`;
 // Son açıklanan karar → güncel faiz bandı (karar gecesi scripts/policy-decisions.py doldurur)
@@ -110,7 +113,9 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title={`Fed Toplantı Tarihleri 2026-2027: Faiz Kararı Takvimi (${curBand})`}
+  title={upcoming
+    ? `Fed Toplantı Tarihleri 2026-2027: Sıradaki Karar ${upLabel} (${curBand})`
+    : `Fed Toplantı Tarihleri 2026-2027: Faiz Kararı Takvimi (${curBand})`}
   description={`Fed faizi ${curBand}${last ? ` (son karar ${last.dayLabel}: ${decisionText(last.result!)})` : ''}. 2026 FOMC toplantı tarihleri ve kararları, TSİ saatleri, dot plot günleri ve 2027 Fed takvimi.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
