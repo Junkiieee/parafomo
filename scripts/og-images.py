@@ -166,6 +166,10 @@ def vergi_dilimi_card():
 
 
 CARDS = {
+    "damga-vergisi-hesaplama": lambda: {
+        # DVK Genel Tebliği Seri 71 (RG 31.12.2025) oranları; Ocak 2027'de sayfayla birlikte güncelle
+        "kicker": "DAMGA VERGİSİ 2026", "stat": "binde 9,48",
+        "sub": "kira binde 1,89 · maaş binde 7,59 · 2027 tutar tahmini"},
     "tasit-kredisi-hesaplama": faiz_card(
         "kredi", "tasit", "TAŞIT KREDİSİ FAİZİ", "aylik", "TCMB ortalaması · peşinat ve BDDK vade sınırı"),
     "vergi-dilimi-hesaplama": vergi_dilimi_card,

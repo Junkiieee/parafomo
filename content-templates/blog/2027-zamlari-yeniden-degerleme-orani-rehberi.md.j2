@@ -203,7 +203,7 @@ Vergi dilimleri kural olarak yeniden değerleme oranıyla artırılır, ama uygu
 
 ### Damga vergisi, noter ve tapu harçları
 
-Sabit tutarlı damga vergisi, noter işlemleri, yargı harçları gibi kalemler de aynı oranla artar. Oranlı (yüzdesel) harçlarda ise oran değişmez; ancak alt-üst sınırlar güncellenir.
+Sabit tutarlı damga vergisi, noter işlemleri, yargı harçları gibi kalemler de aynı oranla artar{% if y.uygulanan is not none %} ({{ H }} için Cumhurbaşkanı kararıyla {{ y.uygulanan|pct(2) }}){% endif %}. Oranlı (yüzdesel) harçlarda ise oran değişmez; ancak alt-üst sınırlar güncellenir. Örneğin 2026'da 1.189,50 TL olan yıllık gelir vergisi beyannamesi damga vergisi {{ H }}'de yaklaşık {{ y.zam(1189.50, 'harc')|tl }} olur; sözleşme, kira ve maaş oranları ile tüm maktu tutarlar için [damga vergisi hesaplama](/damga-vergisi-hesaplama/) sayfamıza bakabilirsin.
 
 ### Emlak vergisi
 

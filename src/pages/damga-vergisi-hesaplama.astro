@@ -1,0 +1,579 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import yd from '../../data/yeniden-degerleme.json';
+
+// Damga vergisi = kağıttaki tutar × nispi oran (binde) ya da maktu (sabit) tutar — 488 s. DVK + ekli (1) sayılı tablo.
+// 2026 oran/tutarları BİRİNCİL kaynaktan okundu (2026-10-18): DVK Genel Tebliği Seri No 71, RG 31.12.2025 sayı 33124
+// (5. mük.) — ek (1) sayılı tablo + üst sınır 29.115.961,10 TL. Maktu tutarlar ve üst sınır 10783 s. CB Kararı ile
+// %25,49 (YD) yerine %18,95 artırıldı. Nüsha kuralı (md. 5) ve kira istisnaları ((2) s. tablo IV-31/32):
+// DVK Genel Tebliği Seri No 60, RG 29.09.2016. 2026’da çıkan 7577 ve 7587 s. Kanunlar DVK’ya dokunmadı.
+// 2027: maktu tutarlar + üst sınır 2026 YD oranında artar (md. 14, mük. 30; 10 kuruşa kadar kesir atılır);
+// Cumhurbaşkanı farklı oran belirleyebilir → data/yeniden-degerleme.json `uygulananOrani`. Nispi oranlar sabit kalır.
+// GÜNCELLEME: Seri No 72 (Aralık 2026 sonu) yayımlanınca BAZ_YIL = 2027 yap, tutarları tebliğden yenile.
+const BAZ_YIL = 2026;
+const UST_SINIR = 29115961.1; // bir kağıttan alınabilecek azami damga vergisi (TL)
+const MIN_BRUT = 33030; // 2026 aylık brüt asgari ücret → damga istisnası 33.030 × binde 7,59 = 250,70 TL
+const MIN_DAMGA = Math.round(MIN_BRUT * 0.759) / 100;
+
+const HEDEF = yd.hedefYil;
+const teblig = yd.tebligOrani as number | null;
+const uygulanan = (yd as { uygulananOrani?: number | null }).uygulananOrani ?? null;
+const oran = uygulanan ?? teblig ?? yd.onikiAyOrt; // maktu damga vergisine uygulanacak artış (%)
+const durum = uygulanan != null || teblig != null ? 'teblig' : yd.ekimVerisiGeldi ? 'hesap' : 'tahmin';
+const showProj = HEDEF === BAZ_YIL + 1; // baz tutarlar yenilenmeden hedef yıl kayarsa tahmini gizle
+
+const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const monthName = (key: string) => `${MONTHS[+key.slice(5) - 1]} ${key.slice(0, 4)}`;
+const sonAyAdi = monthName(yd.sonAy);
+const nf = (n: number, d = 1) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const tl = (n: number) => n.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const oranLabel = durum === 'tahmin' ? `≈%${nf(oran)}` : `%${nf(oran, 2)}`;
+const yaklasik = uygulanan == null ? '≈' : ''; // CB kararı yayımlanana dek gelecek yıl tutarları tahmindir
+const p27 = uygulanan == null ? `${HEDEF} tahmini` : `${HEDEF}`;
+const p27Baslik = uygulanan == null ? `${HEDEF} Tahmini` : `${HEDEF} Tutarları`;
+const sonrakiTarih = new Date(yd.sonrakiAciklama + 'T10:00:00+03:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+// Eylül verisi elimizdeyse sıradaki TÜİK açıklaması Ekim verisidir (oranı kesinleştiren gün).
+const ekimTarih = yd.sonAy === `${HEDEF - 1}-09` ? sonrakiTarih : null;
+const ekimNe = ekimTarih ? ekimTarih + '’da' : 'Kasım başında';
+const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+// Gelecek yıl tutarı: kuruş cinsinden tam sayı aritmetiği, 10 kuruşa kadar kesirler atılır (DVK mük. 30).
+const bp = Math.round(oran * 100);
+const proj = (t: number) => (Math.floor((Math.round(t * 100) * (10000 + bp)) / 100000) * 10) / 100;
+
+// Hesaplayıcı belge türleri — oranlar/tutarlar Tebliğ 71 ekindeki (1) sayılı tablodan.
+type Tip = {
+  key: string; label: string; permil?: number; tl?: number; tl27?: number;
+  mode?: 'tutar' | 'kira' | 'ucret'; inLabel?: string; istisna?: boolean; taraf?: boolean;
+  nusha?: 'tek' | 'her'; beyan?: boolean; not: string;
+};
+const TIP_LISTE: Tip[] = [
+  { key: 'sozlesme', label: 'Sözleşme / taahhütname (bedelli)', permil: 9.48, mode: 'tutar', inLabel: 'Sözleşme bedeli (₺)', taraf: true,
+    not: 'Kaç nüsha imzalanırsa imzalansın nispi vergi tek nüsha üzerinden alınır (DVK md. 5). Vergiyi kağıdı imzalayanlar öder; ödenmezse hepsi müteselsilen sorumludur.' },
+  { key: 'kira', label: 'Kira sözleşmesi (işyeri vb.)', permil: 1.89, mode: 'kira', taraf: true,
+    not: 'Matrah aylık kira değil, sözleşme süresince ödenecek toplam kiradır. Muaf esnaf, muaf serbest meslek erbabı ve basit usul mükelleflerinin işyeri kira sözleşmeleri istisnadır.' },
+  { key: 'konut', label: 'Konut kira sözleşmesi (kiracı gerçek kişi)', permil: 1.89, mode: 'kira', istisna: true, taraf: true,
+    not: 'Kiracısı gerçek kişi olan ve bir işletmeye dahil olmayan konutun kira sözleşmesi, kefalet şerhleriyle birlikte damga vergisinden istisnadır.' },
+  { key: 'arac', label: 'İkinci el araç satış sözleşmesi', permil: 1.89, mode: 'tutar', inLabel: 'Satış bedeli (₺)', taraf: true,
+    not: 'Trafikte tescilli ikinci el araçların satış ve devir sözleşmelerinde oran binde 1,89’dur; tek nüsha vergilenir.' },
+  { key: 'ucret', label: 'Maaş / ücret (aylık brüt)', permil: 7.59, mode: 'ucret', inLabel: 'Aylık brüt ücret (₺)',
+    not: 'Brüt ücretin asgari ücrete kadar olan kısmı istisnadır; aşan kısma binde 7,59 uygulanır. Vergiyi işveren bordrodan keser.' },
+  { key: 'kefalet', label: 'Kefalet, teminat, rehin senedi', permil: 9.48, mode: 'tutar', inLabel: 'Teminat tutarı (₺)',
+    not: 'Kefalet, teminat ve rehin senetlerinde oran binde 9,48’dir; matrah teminat altına alınan tutardır.' },
+  { key: 'ihale', label: 'Kamu ihale kararı', permil: 5.69, mode: 'tutar', inLabel: 'İhale bedeli (₺)',
+    not: 'İhale kararında binde 5,69 uygulanır; ihaleden sonra idareyle imzalanan sözleşme ayrı kağıt olarak binde 9,48’e tabidir.' },
+  { key: 'gvb', label: 'Yıllık gelir vergisi beyannamesi', tl: 1189.5, nusha: 'tek', beyan: true, not: '' },
+  { key: 'kvb', label: 'Kurumlar vergisi beyannamesi', tl: 1605.8, nusha: 'tek', beyan: true, not: '' },
+  { key: 'kdv', label: 'KDV beyannamesi', tl: 791, nusha: 'tek', beyan: true, not: '' },
+  { key: 'muhtasar', label: 'Muhtasar beyanname', tl: 791, nusha: 'tek', beyan: true, not: '' },
+  { key: 'mphb', label: 'Muhtasar ve prim hizmet beyannamesi', tl: 939.7, nusha: 'tek', beyan: true, not: '' },
+  { key: 'bilanco', label: 'Bilanço (resmî daire / banka)', tl: 616.3, nusha: 'her', not: '' },
+  { key: 'gelirtab', label: 'Gelir tablosu / işletme hesabı özeti', tl: 294.2, nusha: 'her', not: '' },
+  { key: 'tahkim', label: 'Tahkimname / sulhname (bedelsiz)', tl: 799.8, nusha: 'her', not: '' },
+];
+const TIPLER: Tip[] = TIP_LISTE.map((t) => (t.tl != null ? { ...t, tl27: proj(t.tl) } : t));
+const NISPI = TIPLER.filter((t) => t.tl == null);
+const MAKTU = TIPLER.filter((t) => t.tl != null);
+
+// Varsayılan hesap (JS kapalıyken de doğru görünsün)
+const D = { type: 'sozlesme', amount: 1000000, rent: 25000, months: 12 };
+const tax0 = Math.round(D.amount * 9.48) / 1000;
+
+// Oran tablosu (nispi)
+const ORANLAR: [string, string, string][] = [
+  ['Sözleşmeler, taahhütnameler, temliknameler', 'binde 9,48', 'Sözleşme bedeli'],
+  ['Kira sözleşmeleri', 'binde 1,89', 'Sözleşme süresince toplam kira'],
+  ['Konut kira sözleşmesi (kiracı gerçek kişi, mesken)', 'istisna', 'Taşınmaz bir işletmeye dahil değilse'],
+  ['Kefalet, teminat ve rehin senetleri', 'binde 9,48', 'Teminat tutarı'],
+  ['İkinci el araç satış ve devir sözleşmeleri', 'binde 1,89', 'Satış bedeli'],
+  ['Tüketici sözleşmeleri (taksitli ve mesafeli satış, abonelik, paket tur, devre tatil)', 'binde 9,48', 'Sözleşme bedeli'],
+  ['Elektrik ve doğal gaz satış sözleşmeleri', 'binde 9,48', 'Sözleşme bedeli'],
+  ['Meclis ve resmî heyet kararları ile hakem kararları (belli parayı içeren)', 'binde 9,48', 'Karardaki tutar'],
+  ['Kamu ihale kararları', 'binde 5,69', 'İhale bedeli'],
+  ['Maaş, ücret, ikramiye, tazminat vb. ödemeler', 'binde 7,59', 'Brüt tutar (ücrette asgari ücret kısmı istisna)'],
+  ['Ödünç para makbuzları ve bu nitelikteki senetler', 'binde 7,59', 'Ödünç alınan tutar'],
+  ['Resmî gayrimenkul satış vaadi, ön ödemeli konut satışı, kat karşılığı inşaat ve yapı denetimi sözleşmeleri', 'binde 0', '—'],
+];
+
+// Maktu tutarlar (2026) — üst sınır dahil
+const MAKTU_TABLO: { ad: string; t: number }[] = [
+  { ad: 'Bir kağıt için azami damga vergisi (üst sınır)', t: UST_SINIR },
+  { ad: 'Yıllık gelir vergisi beyannamesi', t: 1189.5 },
+  { ad: 'Kurumlar vergisi beyannamesi', t: 1605.8 },
+  { ad: 'KDV beyannamesi', t: 791 },
+  { ad: 'Muhtasar beyanname', t: 791 },
+  { ad: 'Muhtasar ve prim hizmet beyannamesi', t: 939.7 },
+  { ad: 'Diğer vergi beyannameleri (damga vergisi hariç)', t: 791 },
+  { ad: 'Gümrük idarelerine verilen beyannameler', t: 1605.8 },
+  { ad: 'Belediye ve il özel idaresi beyannameleri', t: 588.8 },
+  { ad: 'SGK sigorta prim bildirgeleri', t: 588.8 },
+  { ad: 'Bilanço (resmî daire ve bankalara verilen)', t: 616.3 },
+  { ad: 'Gelir tablosu', t: 294.2 },
+  { ad: 'İşletme hesabı özeti', t: 294.2 },
+  { ad: 'Tahkimname, sulhname, belli parayı içermeyen kararlar', t: 799.8 },
+  { ad: 'Turizm işletmesi–acente kontenjan sözleşmeleri', t: 4500.1 },
+];
+
+const oranCumle =
+  durum === 'tahmin'
+    ? `${sonAyAdi} Yİ-ÜFE verisiyle bu oran yaklaşık %${nf(oran)}; kesin oran Ekim verisiyle ${ekimNe} hesaben belli olur, tebliğ Kasım sonunda yayımlanır.`
+    : durum === 'hesap'
+      ? `Ekim ${HEDEF - 1} verisiyle oran hesaben %${nf(oran, 2)} olarak belli oldu; resmî tebliğ Kasım sonunda yayımlanır.`
+      : uygulanan != null
+        ? `Damga vergisinde uygulanacak oran Cumhurbaşkanı kararıyla %${nf(oran, 2)} olarak belirlendi.`
+        : `Yeniden değerleme oranı %${nf(oran, 2)} olarak ilan edildi; Cumhurbaşkanı kararı henüz yayımlanmadı.`;
+
+const faq = [
+  {
+    q: 'Damga vergisi nasıl hesaplanır?',
+    a: `Damga vergisi iki şekilde alınır. Nispi vergide kağıtta yazılı tutar oranla çarpılır: sözleşme, taahhütname ve kefalette binde 9,48, kira sözleşmesinde binde 1,89, maaş ve ücret ödemelerinde binde 7,59. Örneğin 1.000.000 ₺’lik bir sözleşmenin damga vergisi 1.000.000 × 0,00948 = 9.480 ₺’dir. Maktu vergide ise tutar sabittir: ${BAZ_YIL}’da yıllık gelir vergisi beyannamesi için 1.189,50 ₺, KDV beyannamesi için 791 ₺ ödenir. Bir kağıttan alınabilecek damga vergisi ${BAZ_YIL}’da en fazla ${tl(UST_SINIR)} ₺’dir.`,
+  },
+  {
+    q: 'Kira sözleşmesi damga vergisi ne kadar, kim öder?',
+    a: `Kira sözleşmelerinde damga vergisi, sözleşme süresince ödenecek toplam kiranın binde 1,89’udur. Aylık 25.000 ₺ kiralı 1 yıllık bir işyeri sözleşmesinde vergi 300.000 × 0,00189 = 567 ₺, 2 yıllıkta 1.134 ₺ olur; nüsha sayısı sonucu değiştirmez. Kiracısı gerçek kişi olan ve bir işletmeye dahil olmayan konutların kira sözleşmeleri ise kefalet şerhleriyle birlikte damga vergisinden istisnadır. Vergiyi sözleşmeyi imzalayanlar öder; taraflar paylaşımı kendi aralarında kararlaştırabilir, ancak vergi ödenmezse imzalayanların hepsi müteselsilen sorumludur.`,
+  },
+  {
+    q: 'Maaştan ne kadar damga vergisi kesilir?',
+    a: `Maaş, ücret, ikramiye ve tazminat gibi ödemelerde damga vergisi binde 7,59’dur ve işveren tarafından bordrodan kesilir. 2022’den beri brüt ücretin asgari ücrete isabet eden kısmı istisnadır; ${BAZ_YIL}’da bu istisna aylık ${tl(MIN_DAMGA)} ₺’dir (33.030 × 0,00759). Örneğin brüt 50.000 ₺ maaştan (50.000 − 33.030) × 0,00759 = 128,80 ₺ damga vergisi kesilir; asgari ücretliden hiç kesilmez.`,
+  },
+  {
+    q: `${HEDEF}’de damga vergisi ne kadar artacak?`,
+    a: showProj
+      ? `Nispi oranlar (binde 9,48, 1,89, 7,59) her yıl kendiliğinden değişmez. Beyanname tutarları gibi maktu vergiler ve bir kağıt için üst sınır ise 1 Ocak ${HEDEF}’de yeniden değerleme oranında artar. ${oranCumle} Bu oranla yıllık gelir vergisi beyannamesinin damga vergisi 1.189,50 ₺’den ${yaklasik}${tl(proj(1189.5))} ₺’ye, KDV beyannamesininki 791 ₺’den ${yaklasik}${tl(proj(791))} ₺’ye çıkar. ${uygulanan != null ? 'Benzer şekilde 2026’da da' : 'Cumhurbaşkanı farklı oran belirleyebilir: 2026’da'} yeniden değerleme oranı %25,49 olmasına rağmen damga vergisi tutarları %18,95 artırılmıştı.`
+      : `Nispi oranlar her yıl kendiliğinden değişmez; maktu tutarlar ve üst sınır ise her yıl 1 Ocak’ta yeniden değerleme oranında (ya da Cumhurbaşkanı’nın belirlediği oranda) artar. Güncel tutarlar Aralık sonunda Resmî Gazete’de yayımlanan damga vergisi genel tebliğiyle ilan edilir.`,
+  },
+  {
+    q: 'Sözleşme birden fazla nüsha imzalanırsa damga vergisi artar mı?',
+    a: 'Oranla (nispi) hesaplanan kağıtlarda artmaz: 9 Ağustos 2016’dan beri sözleşme kaç nüsha düzenlenirse düzenlensin vergi yalnızca bir nüsha üzerinden alınır. Maktu vergiye tabi kağıtlarda ise her nüsha ayrı ayrı vergilenir; örneğin üç nüsha sulhname için 3 × 799,80 = 2.399,40 ₺ ödenir. Beyannamelerde yalnızca bir nüsha vergiye tabidir.',
+  },
+  {
+    q: 'Damga vergisi ne zaman ve nasıl ödenir?',
+    a: 'Gelir veya kurumlar vergisi mükellefi olmayan kişiler, kağıdın vergisini düzenlendiği tarihi izleyen 15 gün içinde vergi dairesine damga vergisi beyannamesiyle bildirip aynı süre içinde öder. Sürekli damga vergisi mükellefiyeti olan kurum ve işletmeler, bir ay içinde düzenledikleri kağıtların vergisini ertesi ay verdikleri beyannameyle öder. Maaşlardaki damga vergisi ise işveren tarafından bordrodan kesilip beyan edilir.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Damga Vergisi Hesaplama', url: '/damga-vergisi-hesaplama/' },
+];
+---
+
+<BaseLayout
+  title={`Damga Vergisi Hesaplama ${BAZ_YIL}: Oranlar, Kira, ${showProj ? `${HEDEF} Tutarları` : 'Beyanname'}`}
+  description={`Damga vergisi hesaplama ${BAZ_YIL}: sözleşme binde 9,48, kira binde 1,89, maaş binde 7,59. Beyanname tutarları, üst sınır${showProj ? ` ve ${HEDEF} artışı (${oranLabel})` : ''} tek sayfada.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+  image="/og/damga-vergisi-hesaplama.png"
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Vergi</p>
+      <h1>Damga Vergisi Hesaplama {BAZ_YIL}{showProj && <> ve {p27Baslik}</>}</h1>
+      <p class="lede">
+        Belge türünü seçip tutarı girin; sözleşme, kira, maaş ve beyannamelerin <strong>{BAZ_YIL} damga vergisini</strong>
+        {showProj && <> ve maktu tutarların <strong>{HEDEF}’de ne kadar olacağını</strong></>} görün. Kiracısı gerçek kişi
+        olan konut kira sözleşmeleri, ev bir işletmeye dahil değilse vergiden istisnadır.
+      </p>
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="kpi-label">Sözleşmeler</span>
+        <span class="kpi-val">binde 9,48</span>
+        <span class="kpi-sub">bedel üzerinden · tek nüsha vergilenir</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Kira sözleşmesi</span>
+        <span class="kpi-val">binde 1,89</span>
+        <span class="kpi-sub">toplam kira üzerinden · konut kirasında istisna var</span>
+      </div>
+      {showProj ? (
+        <div class="kpi">
+          <span class="kpi-label">{HEDEF} maktu artış{uygulanan == null && ' (tahmini)'}</span>
+          <span class="kpi-val">{oranLabel}</span>
+          <span class="kpi-sub">
+            {durum === 'tahmin' ? `kesinleşme: ${ekimTarih ?? 'Kasım başı'} (Ekim Yİ-ÜFE)` : durum === 'hesap' ? 'tebliğ Kasım sonunda; CB farklı oran belirleyebilir' : uygulanan != null ? 'Cumhurbaşkanı kararıyla kesin' : 'Cumhurbaşkanı kararı bekleniyor'}
+          </span>
+        </div>
+      ) : (
+        <div class="kpi">
+          <span class="kpi-label">Üst sınır {BAZ_YIL}</span>
+          <span class="kpi-val kpi-small">₺{tl(UST_SINIR)}</span>
+          <span class="kpi-sub">bir kağıttan alınabilecek en yüksek vergi</span>
+        </div>
+      )}
+    </div>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Belge türü</span>
+          <select id="in-type">
+            <optgroup label="Oranla hesaplanan kağıtlar (nispi)">
+              {NISPI.map((t) => <option value={t.key} selected={t.key === D.type}>{t.label}</option>)}
+            </optgroup>
+            <optgroup label="Sabit tutarlı kağıtlar (maktu)">
+              {MAKTU.map((t) => <option value={t.key}>{t.label}</option>)}
+            </optgroup>
+          </select>
+        </label>
+        <label id="row-amount">
+          <span id="lbl-amount">Sözleşme bedeli (₺)</span>
+          <input type="number" id="in-amount" value={D.amount} min="0" step="1000" inputmode="decimal" />
+        </label>
+        <div class="row2" id="row-kira" hidden>
+          <label>
+            <span>Aylık kira (₺)</span>
+            <input type="number" id="in-rent" value={D.rent} min="0" step="500" inputmode="decimal" />
+          </label>
+          <label>
+            <span>Süre (ay)</span>
+            <input type="number" id="in-months" value={D.months} min="1" max="600" step="1" inputmode="numeric" />
+          </label>
+        </div>
+        <label id="row-nusha" hidden>
+          <span>Nüsha sayısı</span>
+          <input type="number" id="in-nusha" value="1" min="1" max="50" step="1" inputmode="numeric" />
+        </label>
+        <label class="check" id="row-istisna" hidden>
+          <input type="checkbox" id="in-istisna" checked />
+          <span>Asgari ücret istisnasını uygula ({BAZ_YIL}: aylık {tl(MIN_DAMGA)} ₺)</span>
+        </label>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Ödenecek damga vergisi</span>
+          <span class="result-value" id="out-tax">₺{tl(tax0)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Oran / tutar</span>
+            <span class="split-val" id="out-rate">binde 9,48</span>
+          </div>
+          <div class="split-item" id="row-base">
+            <span class="split-label">Matrah</span>
+            <span class="split-val" id="out-base">₺{tl(D.amount)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Nüsha</span>
+            <span class="split-val" id="out-nusha">tek nüsha vergilenir</span>
+          </div>
+          <div class="split-item" id="row-split">
+            <span class="split-label">İki taraf eşit öderse, kişi başı</span>
+            <span class="split-val" id="out-split">₺{tl(tax0 / 2)}</span>
+          </div>
+          {showProj && (
+            <div class="split-item">
+              <span class="split-label">{p27}</span>
+              <span class="split-val" id="out-27">oran aynı kalır</span>
+            </div>
+          )}
+        </div>
+        <p class="result-note" id="out-note">{TIPLER[0].not}</p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç bilgilendirme amaçlıdır, vergi danışmanlığı değildir. Aynı kağıtta birden fazla işlem (ör. kefil
+      imzası) varsa ya da bir istisnadan yararlanıp yararlanmadığınızdan emin değilseniz mali müşavirinize danışın.
+    </p>
+
+    <section class="table-block">
+      <h2>{BAZ_YIL} damga vergisi oranları</h2>
+      <p class="table-intro">Kağıtta yazılı tutar üzerinden binde oranla hesaplanan (nispi) başlıca kağıtlar:</p>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead><tr><th>Kağıt</th><th>Oran</th><th>Matrah</th></tr></thead>
+          <tbody>
+            {ORANLAR.map(([ad, o, m]) => (
+              <tr><td>{ad}</td><td class="nowrap">{o}</td><td>{m}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Kaynak: 488 sayılı Damga Vergisi Kanunu’na ekli (1) sayılı tablo ({BAZ_YIL} metni Damga Vergisi Kanunu
+        Genel Tebliği Seri No: 71 ekinde). Konut ve muaf esnaf/basit usul işyeri kira istisnaları: (2) sayılı tablo IV-31 ve IV-32.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>{BAZ_YIL} maktu damga vergisi tutarları{showProj && <> ve {p27}</>}</h2>
+      <p class="table-intro">
+        Tutarı sabit (maktu) kağıtlar ve bir kağıttan alınabilecek en yüksek vergi.
+        {showProj && <>{p27} sütunu {oranLabel} artışla, kanundaki yuvarlama kuralıyla (10 kuruşa kadar kesirler atılır) hesaplanmıştır.</>}
+      </p>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead>
+            <tr><th>Kağıt</th><th class="num">{BAZ_YIL}</th>{showProj && <th class="num">{p27} ({oranLabel})</th>}</tr>
+          </thead>
+          <tbody>
+            {MAKTU_TABLO.map((r) => (
+              <tr>
+                <td>{r.ad}</td>
+                <td class="num">₺{tl(r.t)}</td>
+                {showProj && <td class="num">{yaklasik}₺{tl(proj(r.t))}</td>}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        {BAZ_YIL} tutarları 1 Ocak {BAZ_YIL}’dan geçerlidir. Beyannamelerin yalnız bir nüshası vergilenir; beyanname verme
+        süresi içinde düzeltme amacıyla verilen vergi beyannamelerinden damga vergisi alınmaz.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Damga vergisi nasıl hesaplanır?</h2>
+      <p>
+        Damga vergisi, Damga Vergisi Kanunu’na ekli (1) sayılı tabloda sayılan kağıtlardan alınır ve iki türlüdür.
+        <strong>Nispi</strong> vergide kağıttaki tutar binde oranla çarpılır: 1.000.000 ₺’lik bir sözleşme için
+        1.000.000 × 0,00948 = <strong>9.480 ₺</strong>. <strong>Maktu</strong> vergide tutar sabittir; beyannameler,
+        bilanço ve gelir tablosu bu gruptadır. Nispi vergide bir kağıttan alınabilecek en yüksek tutar (üst sınır)
+        {BAZ_YIL} için <strong>₺{tl(UST_SINIR)}</strong>; binde 9,48’lik bir sözleşmede bu sınıra yaklaşık 3,07 milyar ₺’lik
+        bedelde ulaşılır.
+      </p>
+
+      <h2>Kira sözleşmesi damga vergisi</h2>
+      <p>
+        Kira sözleşmelerinde oran <strong>binde 1,89</strong>’dur ve matrah aylık kira değil, sözleşme süresince
+        ödenecek <strong>toplam kiradır</strong>. Aylık 25.000 ₺ kiralı 1 yıllık bir işyeri sözleşmesinde vergi
+        300.000 × 0,00189 = <strong>567 ₺</strong>; aynı sözleşme 2 yıllıksa 1.134 ₺ olur.
+      </p>
+      <ul>
+        <li><strong>Konut kirası istisnası:</strong> Kiracısı gerçek kişi olan, mesken olarak kullanılan ve bir işletmeye
+          dahil olmayan taşınmazların kira sözleşmeleri damga vergisinden istisnadır. 9 Ağustos 2016’dan beri bu
+          sözleşmelerdeki kefalet şerhleri ve teminatlar da istisna kapsamındadır.</li>
+        <li><strong>İşyeri istisnası:</strong> Gelir vergisinden muaf esnaf, muaf serbest meslek erbabı ve basit usulde
+          vergilendirilenlerin işyeri olarak kiraladığı, işletmeye dahil olmayan taşınmazların kira sözleşmeleri de istisnadır.</li>
+        <li><strong>Kefil:</strong> İstisna dışındaki bir kira sözleşmesine kefil imzası eklenirse kefalet de
+          binde 9,48 oranlı damga vergisine konu olabilir.</li>
+      </ul>
+      <p>
+        Yeni dönem kirasını bulmak için → <a href="/kira-artis-orani-hesaplama/">kira artış oranı hesaplama</a>.
+        Sözleşmeyi noterde yaptıracaksanız → <a href="/noter-ucretleri/">noter ücretleri</a>.
+      </p>
+
+      <h2>Maaş ve ücretlerde damga vergisi</h2>
+      <p>
+        Maaş, ücret, ikramiye, harcırah ve tazminat gibi hizmet karşılığı ödemelerde oran <strong>binde 7,59</strong>’dur;
+        vergiyi işveren bordrodan keser. 2022’den beri brüt ücretin asgari ücrete isabet eden kısmı istisnadır:
+        {BAZ_YIL}’da bu istisna aylık <strong>{tl(MIN_DAMGA)} ₺</strong> (brüt asgari ücret 33.030 ₺ × binde 7,59).
+        Brüt 50.000 ₺ maaştan (50.000 − 33.030) × 0,00759 = <strong>128,80 ₺</strong> damga vergisi kesilir. Tüm
+        kesintilerle net maaşınız için → <a href="/net-maas-hesaplama/">net maaş hesaplama</a>.
+      </p>
+
+      <h2>Kaç nüsha vergilenir, kim öder, ne zaman?</h2>
+      <ul>
+        <li><strong>Nispi vergide tek nüsha:</strong> 9 Ağustos 2016’dan beri sözleşme kaç nüsha imzalanırsa imzalansın
+          vergi yalnızca bir nüsha üzerinden alınır.</li>
+        <li><strong>Maktu vergide her nüsha:</strong> Her nüsha ayrı ayrı vergilenir (3 nüsha sulhname = 3 × 799,80 =
+          2.399,40 ₺). Beyannamelerde ise yalnız bir nüsha vergiye tabidir.</li>
+        <li><strong>Kim öder:</strong> Vergiyi kağıdı imzalayanlar öder; birden fazla imza varsa hepsi vergi ve cezanın
+          tamamından müteselsilen sorumludur.</li>
+        <li><strong>Süre:</strong> Gelir veya kurumlar vergisi mükellefi olmayanlar, kağıdın düzenlendiği tarihi izleyen
+          15 gün içinde damga vergisi beyannamesiyle beyan edip öder; sürekli mükellefiyeti olan kurum ve işletmeler
+          ertesi ay verdikleri beyannameyle öder.</li>
+      </ul>
+
+      {showProj && (
+        <>
+          <h2>{HEDEF}’de damga vergisi ne kadar artacak?</h2>
+          <p>
+            Nispi oranlar (binde 9,48, 1,89, 7,59) her yıl kendiliğinden değişmez; bir kira veya satış sözleşmesinin
+            vergisi ancak bedel değişirse değişir. Beyanname tutarları gibi <strong>maktu vergiler</strong> ve bir kağıt
+            için <strong>üst sınır</strong> ise 1 Ocak {HEDEF}’de, Kasım {HEDEF - 1}’da {durum === 'teblig' ? 'ilan edilen' : 'ilan edilecek'}
+            <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı</a> kadar artar. {oranCumle}
+          </p>
+          <p>
+            {uygulanan == null && 'Cumhurbaşkanı bu oranı farklı belirleyebilir: '}2026’da yeniden değerleme oranı %25,49
+            olmasına rağmen 10783 sayılı Cumhurbaşkanı Kararı ile damga vergisi tutarları ve üst sınır <strong>%18,95</strong>
+            artırılmıştı. {oranLabel} artışla
+            {HEDEF}’de üst sınır {yaklasik}₺{tl(proj(UST_SINIR))}, yıllık gelir vergisi beyannamesinin damga vergisi
+            {yaklasik}₺{tl(proj(1189.5))} olur. Oran verisi güncellendikçe bu sayfa kendiliğinden yenilenir.
+          </p>
+        </>
+      )}
+
+      <p class="cta-line">
+        {HEDEF} zamlarının tamamı için → <a href="/blog/2027-zamlari-yeniden-degerleme-orani-rehberi/">2027’de neler zamlanacak?</a> ·
+        beyanname hesabı için → <a href="/gelir-vergisi-hesaplama/">gelir vergisi hesaplama</a> ·
+        ev alırken → <a href="/tapu-harci-hesaplama/">tapu harcı hesaplama</a> ·
+        tüm araçlar → <a href="/hesaplama-araclari/">hesaplama araçları</a>.
+      </p>
+
+      <p class="source-note">
+        Kaynak: 488 sayılı Damga Vergisi Kanunu (md. 3, 5, 14, 22, mükerrer 30) ve ekli (1)–(2) sayılı tablolar.
+        {BAZ_YIL} oran ve tutarları ile üst sınır:
+        <a href="https://www.resmigazete.gov.tr/eskiler/2025/12/20251231M5-25.pdf" rel="nofollow noopener" target="_blank">Damga
+        Vergisi Kanunu Genel Tebliği (Seri No: 71)</a>, Resmî Gazete 31.12.2025, sayı 33124 (5. mükerrer); %18,95 artış
+        10783 sayılı Cumhurbaşkanı Kararı ile. Nüsha kuralı ve kira istisnaları:
+        <a href="https://www.resmigazete.gov.tr/eskiler/2016/09/20160929-7.htm" rel="nofollow noopener" target="_blank">Damga
+        Vergisi Kanunu Genel Tebliği (Seri No: 60)</a>, Resmî Gazete 29.09.2016. {HEDEF} tahmini: TÜİK Yİ-ÜFE (TCMB EVDS)
+        verisiyle ParaFOMO hesabı · oran verisi: {updatedLabel}.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ TIPLER, UST_SINIR, MIN_BRUT, YAK: yaklasik }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf2 = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const money = (n) => '₺' + nf2.format(n);
+      const r2 = (n) => Math.round(n * 100) / 100;
+      const binde = (p) => 'binde ' + String(p).replace('.', ',');
+      const num = (id) => Math.max(0, +$(id).value || 0);
+      const show = (id, on) => { const el = $(id); if (el) el.hidden = !on; };
+      function update() {
+        const t = TIPLER.find((x) => x.key === $('in-type').value) || TIPLER[0];
+        const maktu = t.tl != null;
+        show('row-amount', t.mode === 'tutar' || t.mode === 'ucret');
+        show('row-kira', t.mode === 'kira');
+        show('row-nusha', maktu && t.nusha === 'her');
+        show('row-istisna', t.mode === 'ucret');
+        show('row-split', !!t.taraf);
+        show('row-base', !maktu);
+        if (t.inLabel) $('lbl-amount').textContent = t.inLabel;
+        let tax = 0;
+        let note = t.not;
+        const p27 = $('out-27');
+        if (maktu) {
+          const n = t.nusha === 'her' ? Math.max(1, Math.floor(num('in-nusha')) || 1) : 1;
+          tax = r2(t.tl * n);
+          $('out-rate').textContent = 'maktu ' + money(t.tl);
+          $('out-nusha').textContent = t.nusha === 'her' ? n + ' × ' + money(t.tl) : 'yalnız 1 nüsha vergilenir';
+          note = t.beyan
+            ? 'Beyannamelerin yalnız bir nüshası vergilenir; süresi içinde verilen düzeltme beyannamelerinden alınmaz.'
+            : 'Maktu vergide her nüsha ayrı ayrı vergilenir; tutar kağıttaki bedelden bağımsızdır.';
+          if (p27) p27.textContent = YAK + money(r2(t.tl27 * n));
+        } else {
+          const base = t.mode === 'kira' ? num('in-rent') * Math.floor(num('in-months')) : num('in-amount');
+          let raw = (base * t.permil) / 1000;
+          if (t.mode === 'ucret' && $('in-istisna').checked) raw = (Math.max(0, base - MIN_BRUT) * t.permil) / 1000;
+          let capped = false;
+          if (raw > UST_SINIR) { raw = UST_SINIR; capped = true; }
+          const normal = r2(raw);
+          tax = t.istisna ? 0 : normal;
+          $('out-rate').textContent = t.istisna ? 'istisna' : binde(t.permil);
+          $('out-base').textContent = money(base);
+          $('out-nusha').textContent = t.istisna ? '—' : t.mode === 'ucret' ? 'her ödemede' : 'tek nüsha vergilenir';
+          if (t.istisna) note += ' Şart sağlanmazsa (ör. konut şirkete aitse ya da kiracı şirketse) vergi binde 1,89: ' + money(normal) + '.';
+          if (capped && !t.istisna) note += ' Üst sınır (' + money(UST_SINIR) + ') uygulandı.';
+          if (p27) p27.textContent = t.mode === 'ucret' ? 'oran aynı, istisna yeni asgari ücretle' : 'oran aynı kalır';
+        }
+        $('out-tax').textContent = money(tax);
+        $('out-split').textContent = money(r2(tax / 2));
+        $('out-note').textContent = note;
+      }
+      $('calc-form').addEventListener('submit', (e) => e.preventDefault());
+      ['in-type', 'in-amount', 'in-rent', 'in-months', 'in-nusha', 'in-istisna'].forEach((id) => {
+        $(id).addEventListener('input', update);
+        $(id).addEventListener('change', update);
+      });
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-wrap [hidden] { display: none !important; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin: 0 0 1rem; }
+    .kpi { display: flex; flex-direction: column; gap: 0.15rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-xs); }
+    .kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .kpi-val { font-family: var(--font-serif); font-size: clamp(1.5rem, 1.25rem + 1.1vw, 2rem); font-weight: 700; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .kpi-val.kpi-small { font-size: clamp(1.1rem, 1rem + 0.6vw, 1.35rem); padding-top: 0.25rem; }
+    .kpi-sub { font-size: 0.78rem; color: var(--text-soft); line-height: 1.35; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; min-width: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; }
+    .calc-inputs label.check { flex-direction: row; align-items: center; gap: 0.5rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input[type='number'], .calc-inputs select {
+      font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%; min-width: 0;
+    }
+    .calc-inputs select { font-size: 0.98rem; }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .calc-inputs input[type='checkbox'] { width: 1.15rem; height: 1.15rem; flex: none; accent-color: var(--brand-2); }
+    .row2 { display: grid; grid-template-columns: 3fr 2fr; gap: 0.7rem; }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 1rem; min-width: 0;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; overflow-wrap: anywhere; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.95rem; text-align: right; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; line-height: 1.45; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .rate-table td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .rate-table th.num { text-align: right; }
+    .rate-table .nowrap { white-space: nowrap; font-weight: 600; }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; line-height: 1.5; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block li { margin-bottom: 0.35rem; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+    .prose-block .source-note { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; margin-top: 1.2rem; }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 680px) {
+      .kpi-row { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: 1fr; padding: 1.1rem; }
+      .rate-table { font-size: 0.84rem; }
+      .rate-table th, .rate-table td { padding: 0.5rem 0.35rem; }
+    }
+  </style>
+</BaseLayout>
