@@ -3,8 +3,8 @@
 Kaynak: `data/learning/opportunities.json` → `tum_firsatlar` (Trends TR 12 ay, "mevduat faizi" = 100).
 Her kelime TEK kanonik sayfaya bağlanır (yamyamlaşma yok). Haftalık koşu bu dosyadan görev üretir;
 günlük koşu `week.md` kuyruğu bittiğinde buradaki ilk `- [ ]` satırını görev olarak alır (gecede ≤3).
-Bitince satırı `- [x] … → canlı URL · tarih` yap. Yeni araç = Footer TOOL_LINKS + `/hesaplama-araclari/`
-listesi + FAQPage + ilgili 2 sayfadan metin içi link. Resmî rakamı doğrulayamazsan YAZMA.
+Bitince satırı `- [x] … → canlı URL · tarih` yap. Yeni araç = `src/data/tools.ts` (araç merkezi + blog yazılarının
+"Bu konuda hesapla" kutusu oradan beslenir; anahtar kelime `k` ekle) + Footer TOOL_LINKS + FAQPage + ilgili 2 sayfadan metin içi link. Resmî rakamı doğrulayamazsan YAZMA.
 
 **ÖNCELİK (Kaan, 2026-10-15): önce alabileceğimiz kadar ORGANİK TIK.** Sıra = kazanılabilirlik:
 uzun kuyruk, mevsimsel ve gelecek yıl (2027) açılı, rakibi zayıf araç/veri sorguları önce; anlık fiyat ve dev baş

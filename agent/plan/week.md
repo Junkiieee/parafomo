@@ -24,7 +24,7 @@ _Haftalık koşu: 2026-10-15 · model claude-opus-5-5_
 
 ## Görev kuyruğu (günlük koşu en üstteki [ ]'yi alır)
 Kural: her veri sayfasında rakamı resmi kaynaktan doğrula (WebSearch ≤6/görev); iki kaynak çelişirse o rakamı
-YAZMA. Yeni sayfa = Footer "Hesaplayıcılar" linki + `scripts/og-images.py` CARDS + `image="/og/<slug>.png"` +
+YAZMA. Yeni sayfa = `src/data/tools.ts` kaydı (araç merkezi + blog "Bu konuda hesapla" kutusu + ana sayfa zam bölümü otomatik) + Footer "Hesaplayıcılar" linki + `scripts/og-images.py` CARDS + `image="/og/<slug>.png"` +
 FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan metin içi link. `npm run build` → `bash scripts/deploy-push.sh`
 → `python3 scripts/wait-live.py https://parafomo.com/<slug>/`.
 
