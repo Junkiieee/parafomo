@@ -7,6 +7,7 @@ import Newsletter from '../components/Newsletter.astro';
 import AppCTA from '../components/AppCTA.astro';
 import PostCard from '../components/PostCard.astro';
 import EventResult from '../components/EventResult.astro';
+import RelatedTools from '../components/RelatedTools.astro';
 import { eventResult, fillTitle } from '../data/event-result';
 import { categorySlug, SITE } from '../site.config';
 
@@ -98,6 +99,8 @@ const breadcrumbs = [
 
       <div class="prose post-content">
         <slot />
+
+        <RelatedTools title={rawTitle} tags={tags} category={category} body={post.body} />
 
         {faq && faq.length > 0 && (
           <section class="faq" aria-labelledby="faq-baslik">

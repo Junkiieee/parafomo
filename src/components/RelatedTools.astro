@@ -1,0 +1,29 @@
+---
+// Blog yazısı sonunda "Bu konuda hesapla": konuya en yakın ≤3 araç (src/data/tools.ts → relatedTools).
+// Neden: 145 yazının çoğu araç sayfalarına link vermiyordu; araçlar sitenin ana SEO kaldıracı (iç link gücü).
+import { relatedTools } from '../data/tools';
+export interface Props { title: string; tags?: string[]; category?: string; body?: string }
+const tools = relatedTools(Astro.props);
+---
+{tools.length > 0 && (
+  <aside class="rt" aria-label="İlgili hesaplama araçları">
+    <p class="rt-title">Bu konuda hesapla</p>
+    <div class="rt-grid">
+      {tools.map((t) => (
+        <a class="rt-item" href={t.href}>
+          <span class="rt-ad">{t.ad} →</span>
+          <span class="rt-desc">{t.aciklama}</span>
+        </a>
+      ))}
+    </div>
+  </aside>
+)}
+<style>
+  .rt { margin: 2rem 0 1.5rem; padding: 1rem 1.1rem 1.1rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-elev); }
+  .rt-title { margin: 0 0 0.65rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--brand-deep); }
+  .rt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.6rem; }
+  .rt-item { display: flex; flex-direction: column; gap: 0.2rem; padding: 0.7rem 0.85rem; border-radius: var(--radius-sm); background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; }
+  .rt-item:hover { border-color: var(--brand-2); }
+  .rt-ad { font-weight: 600; color: var(--brand-ink); font-size: 0.95rem; }
+  .rt-desc { font-size: 0.82rem; color: var(--text-soft); line-height: 1.4; }
+</style>

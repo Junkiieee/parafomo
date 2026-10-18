@@ -3,65 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { ALTIN_SPECS } from '../data/altin-specs';
 
 // Araç merkezi: tüm hesaplayıcı ve veri sayfaları tek yerde — iç link otoritesini araçlarda toplar.
-// Yeni araç sayfası açınca buraya da ekle (ve Footer TOOL_LINKS'e).
-const GRUPLAR: { baslik: string; araclar: [string, string, string][] }[] = [
-  { baslik: 'Faiz, kredi ve birikim', araclar: [
-    ['/faiz-hesaplama/', 'Faiz hesaplama', 'Basit/bileşik faiz, gün-ay-yıl, net getiri'],
-    ['/mevduat-faizi-hesaplama/', 'Mevduat faizi hesaplama', 'Güncel stopajla net vadeli mevduat getirisi'],
-    ['/kredi-hesaplama/', 'Kredi hesaplama', 'Taksit, toplam faiz ve ödeme planı'],
-    ['/konut-kredisi-hesaplama/', 'Konut kredisi hesaplama', 'Peşinat, kredi/değer oranı, taksit tablosu'],
-    ['/ihtiyac-kredisi-hesaplama/', 'İhtiyaç kredisi hesaplama', 'KKDF ve BSMV dahil taksit, BDDK vade sınırı'],
-    ['/bilesik-faiz-hesaplama/', 'Bileşik faiz hesaplama', 'Düzenli katkıyla uzun vadeli birikim'],
-    ['/bono-hesaplama/', 'Bono hesaplama', 'Hazine bonosu getiri hesabı'],
-    ['/yuzde-hesaplama/', 'Yüzde hesaplama', 'Yüzdesi, yüzde kaç, artış ve indirim'],
-  ] },
-  { baslik: 'Maaş, zam ve tazminat', araclar: [
-    ['/net-maas-hesaplama/', 'Net maaş hesaplama', 'Brütten nete, vergi ve SGK kesintileri'],
-    ['/asgari-ucret-hesaplama/', 'Asgari ücret', 'Net-brüt asgari ücret ve işveren maliyeti'],
-    ['/emekli-zammi-hesaplama/', 'Emekli zammı hesaplama', 'SSK, Bağ-Kur ve memur emeklisi zammı'],
-    ['/memur-zammi-hesaplama/', 'Memur zammı hesaplama', 'Ocak 2027 memur zammı tahmini ve katsayılar'],
-    ['/en-dusuk-emekli-maasi/', 'En düşük emekli maaşı', 'Taban aylık, Ocak 2027 senaryosu, ödeme günleri'],
-    ['/bayram-ikramiyesi/', 'Bayram ikramiyesi', 'Emekli ikramiyesi tutarı ve 2027 bayram tarihleri'],
-    ['/kidem-tazminati-hesaplama/', 'Kıdem tazminatı hesaplama', 'Tavan dahil kıdem tazminatı ve 2027 tavan tahmini'],
-    ['/ihbar-tazminati-hesaplama/', 'İhbar tazminatı hesaplama', '2-8 haftalık ihbar süresi, brüt ve net tutar'],
-    ['/yillik-izin-hesaplama/', 'Yıllık izin hesaplama', '14/20/26 gün hak ve kullanılmayan izin ücreti'],
-    ['/issizlik-maasi-hesaplama/', 'İşsizlik maaşı hesaplama', 'Süre ve aylık ödenek'],
-  ] },
-  { baslik: 'Vergi, harç ve zamlar', araclar: [
-    ['/vergi-dilimi-hesaplama/', 'Vergi dilimi hesaplama', 'Gelir vergisi dilimleri ve kümülatif matrah'],
-    ['/gelir-vergisi-hesaplama/', 'Gelir vergisi hesaplama', 'Kira, serbest meslek ve ticari kazanç beyannamesi'],
-    ['/kdv-hesaplama/', 'KDV hesaplama', 'KDV ekle, KDV dahil fiyattan ayır'],
-    ['/emlak-vergisi-hesaplama/', 'Emlak vergisi hesaplama', 'Oranlar, taksitler, 2027 tahmini'],
-    ['/mtv-hesaplama/', 'MTV hesaplama', 'Motorlu taşıtlar vergisi 2027'],
-    ['/yeniden-degerleme-orani/', 'Yeniden değerleme oranı', '2027 harç, ceza ve vergi zammı oranı'],
-    ['/kira-artis-orani-hesaplama/', 'Kira artış oranı', 'Güncel TÜFE 12 aylık ortalamasıyla'],
-    ['/enflasyon-hesaplama/', 'Enflasyon hesaplama', 'İki tarih arası TÜFE ve paranın bugünkü değeri'],
-    ['/trafik-cezalari-hesaplama/', 'Trafik cezaları', 'Ceza tutarları ve erken ödeme indirimi'],
-    ['/pasaport-ehliyet-harci/', 'Pasaport ve ehliyet harcı', 'Güncel harç tutarları'],
-  ] },
-  { baslik: 'Altın', araclar: [
-    ['/altin-fiyatlari/', 'Altın fiyatları bugün', 'Tüm türlerin alış-satış fiyatı'],
-    ['/altin-hesaplama/', 'Altın hesaplama', 'Elindeki altının toplam değeri'],
-    ['/altin-kac-gram/', 'Altın kaç gram?', 'Resmî sikke/ziynet ağırlık tablosu'],
-    ['/altin-getiri/', 'Altın getirisi', '1-10 yıllık TL getirisi'],
-  ] },
-  { baslik: 'Getiri ve piyasa verisi', araclar: [
-    ['/altin-dolar-borsa/', 'Altın mı, dolar mı, borsa mı?', 'Varlıkların karşılaştırmalı getirisi'],
-    ['/dolar-getiri/', 'Dolar getirisi', 'Dolar/TL tarihsel getiri'],
-    ['/euro-getiri/', 'Euro getirisi', 'Euro/TL tarihsel getiri'],
-    ['/bist-getiri/', 'BIST 100 getirisi', 'Borsa İstanbul tarihsel getiri'],
-    ['/bitcoin-getiri/', 'Bitcoin getirisi', 'TL bazında bitcoin getirisi'],
-    ['/gumus-getiri/', 'Gümüş getirisi', 'TL bazında gümüş getirisi'],
-    ['/halka-arz/', 'Halka arz takvimi', 'Güncel ve yaklaşan halka arzlar'],
-    ['/halka-arz-getiri/', 'Halka arz getirileri', 'Halka arzların ilk gün ve sonrası getirisi'],
-  ] },
-  { baslik: 'Takvimler', araclar: [
-    ['/ekonomik-takvim/', 'Ekonomik takvim', 'Haftanın önemli veri ve kararları'],
-    ['/tcmb-faiz-takvimi/', 'TCMB faiz takvimi', 'PPK tarihleri ve kararlar'],
-    ['/fed-faiz-takvimi/', 'Fed faiz takvimi', 'FOMC tarihleri ve kararlar'],
-    ['/enflasyon-takvimi/', 'Enflasyon takvimi', 'TÜİK enflasyon açıklama tarihleri'],
-  ] },
-];
+// Liste TEK kaynaktan: src/data/tools.ts (blog yazılarının "Bu konuda hesapla" kutusu da oradan beslenir).
+import { GRUPLAR as G2 } from '../data/tools';
+const GRUPLAR: { baslik: string; araclar: [string, string, string][] }[] = G2.map((g) => ({
+  baslik: g.baslik,
+  araclar: g.araclar.map((t) => [t.href, t.ad, t.aciklama] as [string, string, string]),
+}));
 
 const breadcrumbs = [
   { name: 'Ana Sayfa', url: '/' },
