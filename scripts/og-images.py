@@ -150,6 +150,15 @@ def faiz_card(group, key, kicker, field, sub):
     return fn
 
 
+def asgari_card():
+    # data/asgari-ucret.json — yeni yıl açıklanınca (scripts/asgari-ucret-watch.py) kart da yeni yıla döner
+    d = load("asgari-ucret.json")
+    y = d.get("yeni") or d["guncel"]
+    net = f"{y['net']:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+    sub = "açıklandı · 1 Ocak'ta yürürlükte · brütü hesapla" if d.get("yeni") else "net · brüt, kesinti, işveren maliyeti hesapla"
+    return {"kicker": f"ASGARİ ÜCRET {y['yil']}", "stat": f"₺{net}", "sub": sub}
+
+
 def vergi_dilimi_card():
     # 2026 tarifesi sabit (332 Seri No'lu GVK Tebliği); Ocak 2027'de sayfayla birlikte güncelle
     return {"kicker": "GELİR VERGİSİ DİLİMLERİ 2026", "stat": "%15–40",
@@ -200,6 +209,7 @@ CARDS = {
     "en-dusuk-emekli-maasi": emekli_memur_card("taban"),
     "bayram-ikramiyesi": emekli_memur_card("bayram"),
     "kira-artis-orani-hesaplama": kira_card,
+    "asgari-ucret-hesaplama": asgari_card,
     "enflasyon-takvimi": enflasyon_card,
     "enflasyon-hesaplama": enflasyon_card,
     "halka-arz": halka_arz_card,

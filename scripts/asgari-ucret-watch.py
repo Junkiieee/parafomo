@@ -127,7 +127,8 @@ def deploy(msg, subject, body, dry):
     if dry:
         print(f"[asgari] (dry) commit+deploy: {msg}")
         return
-    subprocess.call(["bash", "-c", '. scripts/lib/gitsync.sh && git_sync >/dev/null 2>&1; git_add_commit "$1" data/asgari-ucret.json',
+    subprocess.call(["python3", "scripts/og-images.py", "--only", "asgari-ucret-hesaplama"], cwd=REPO)
+    subprocess.call(["bash", "-c", '. scripts/lib/gitsync.sh && git_sync >/dev/null 2>&1; git_add_commit "$1" data/asgari-ucret.json public/og/asgari-ucret-hesaplama.png',
                      "_", msg], cwd=REPO)
     if sh("bash scripts/deploy-push.sh") == 0:
         sh('python3 scripts/wait-live.py "https://parafomo.com/asgari-ucret-hesaplama/" --timeout 600 && '
