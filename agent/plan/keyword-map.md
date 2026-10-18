@@ -38,7 +38,7 @@ Otorite/dış link işleri şimdilik YAPILMAZ (Kaan: "kalsın"). Fırsat listesi
 - [x] K8 gelir vergisi hesaplama (50) → **/gelir-vergisi-hesaplama/** (canlı 2026-10-17, commit c408ccc) — /vergi-dilimi-hesaplama'nın dilim mantığını
   yeniden kullan (ücret dışı gelir: kira, serbest meslek); 2027 dilimleri YD oranıyla tahmin (tahmin de).
 - [x] K9a ihbar tazminatı (20) → **/ihbar-tazminati-hesaplama/** (canlı 2026-10-17, commit 3dfff90)
-- [ ] K9b yıllık izin hesaplama (13) → **/yillik-izin-hesaplama/**
+- [x] K9b yıllık izin hesaplama (13) → **/yillik-izin-hesaplama/** (canlı 2026-10-18, commit 4fefcf1 — md.53 + yaş kuralı, birikmiş izin + izin ücreti)
   — İş Kanunu md. 17 (2/4/6/8 hafta) ve md. 53 (14/20/26 gün, 18 yaş altı/50 yaş üstü ≥20); kanun metninden doğrula.
 - [ ] K10 taşıt kredisi hesaplama (26) → **/tasit-kredisi-hesaplama/** — T1 bileşeni; BDDK taşıt kredisi vade/tutar
   sınırları (fatura değerine göre) resmî kaynaktan.

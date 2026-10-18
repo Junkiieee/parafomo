@@ -1,14 +1,15 @@
 ---
-title: "ECB Eylül 2026 Faiz Kararı: Euro, Dolar ve TL'ye Etkisi"
-description: "10 Eylül 2026 ECB faiz kararı euro, dolar ve TL'yi nasıl etkiler? TCMB ile aynı gün: 3 senaryo tablosu ve Türk yatırımcısı için pratik rehber."
+title: "ECB Eylül 2026 Faiz Kararı Açıklandı: Faiz %2,50'ye Yükseldi"
+description: "ECB 10 Eylül 2026'da beklenen indirim yerine faizi 25 baz puan artırdı: mevduat faizi %2,50. Kararın euro, dolar ve TL etkisi, karar öncesi senaryolar."
 pubDate: 2026-09-07
+updatedDate: 2026-10-18
 category: "Ekonomi"
 tags: ["ecb faiz kararı", "ecb eylül 2026", "euro tl kuru", "avrupa merkez bankası", "dolar tl", "faiz kararı"]
 readingTime: 7
 featured: false
 faq:
   - q: "ECB Eylül 2026 faiz kararı ne zaman açıklanır?"
-    a: "ECB Yönetim Konseyi 10 Eylül 2026 Perşembe günü toplanıyor. Karar saat 12:15'te açıklanacak; ardından saat 12:45'te ECB Başkanı basın toplantısı yapılacak."
+    a: "ECB Yönetim Konseyi 10 Eylül 2026 Perşembe günü toplandı ve üç politika faizini 25 baz puan artırdı: mevduat faizi %2,50, ana refinansman %2,65, marjinal borç verme %2,90 (16 Eylül'den geçerli). Karar 12:15'te açıklandı, ardından basın toplantısı yapıldı."
   - q: "ECB faiz indirirse TL nasıl etkilenir?"
     a: "ECB faiz indirirse euro değer kaybeder, dolar güçlenebilir. Güçlü dolar gelişmekte olan ülke kurlarını baskılar — TL bu döngüde olumsuz etkilenebilir. Ancak piyasanın kararı önceden fiyatlamış olması tepkiyi sınırlayabilir."
   - q: "10 Eylül'de hem TCMB hem ECB karar veriyor, bu ne anlama gelir?"
@@ -35,6 +36,8 @@ shorts_visuals:
   - "concept|central bank interest rate hold decision screen"
   - "concept|financial portfolio analysis investment"
 ---
+
+> **Karar açıklandı (10 Eylül 2026):** ECB, bu yazıdaki konsensüs senaryosunun (25 bp indirim) aksine **faizi 25 baz puan artırdı** — mevduat faizi %2,25 → **%2,50**, ana refinansman %2,65, marjinal borç verme %2,90 ([ECB karar metni](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.en.html)). Gerekçe: Orta Doğu kaynaklı enerji şoku ve personel projeksiyonlarında enflasyonun uzun süre hedefin üzerinde kalması; Ağustos euro bölgesi enflasyonu %3,2. ECB faiz yolu taahhüdü vermedi, "toplantı toplantı, veriye bağlı" karar verecek. Aşağıdaki senaryo tablosu karar öncesi yazıldı ve artışı öngörmüyordu. Aynı gün TCMB faizi %37'de sabit tuttu: [TCMB Eylül kararı](/blog/tcmb-eylul-2026-faiz-karari-ppk-beklentiler/). Sıradaki: [TCMB 22 Ekim kararı](/blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler/) · [Fed faiz takvimi](/fed-faiz-takvimi/).
 
 10 Eylül 2026 Perşembe, Türk yatırımcılar için sıradan bir borsa günü değil. Aynı takvim sayfasında iki büyük merkez bankası faiz kararı açıklıyor: TCMB öğleden önce PPK kararını verirken, saat 12:15'te Frankfurt'ta ECB Yönetim Konseyi'nin kararı da piyasalara düşüyor. Bu eş zamanlılık euro, dolar ve TL'yi aynı anda sarsabilir. Her senaryo ne anlama gelir, portföyünü nasıl konumlandırmalısın?
 
