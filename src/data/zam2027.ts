@@ -12,7 +12,12 @@ type M = { ay: string; yillik: number; aylik: number };
 export const byMonth = new Map((tufe.months as M[]).map((m) => [m.ay, m]));
 
 export const knownKeys = PERIOD.filter((k) => byMonth.has(k));
-export const cumKnown = knownKeys.reduce((c, k) => c * (1 + byMonth.get(k)!.aylik / 100), 1) - 1; // ör. 0.0556
+const cumHesap = knownKeys.reduce((c, k) => c * (1 + byMonth.get(k)!.aylik / 100), 1) - 1; // ör. 0.0556
+// Resmî oran girildiyse (SGK/ÇSGB açıklaması) o esas: data/tufe-aylik.json → resmiZam["2027-01"] = { ssk: 12.34 } (%)
+// Neden: aylık %'lerin bileşiği resmî rakamdan 0,01 puan sapabilir (Temmuz 2026: bileşik %17,75 = resmî; 2025=100
+// endeksiyle %17,76). 5 Ocak'ta resmî oran açıklanınca ajan bu alanı yazar → başlık/tablolar resmî rakamı gösterir.
+const resmi = ((tufe as { resmiZam?: Record<string, { ssk?: number }> }).resmiZam ?? {})['2027-01'];
+export const cumKnown = knownKeys.length === PERIOD.length && resmi?.ssk != null ? resmi.ssk / 100 : cumHesap;
 export const remaining = PERIOD.length - knownKeys.length;
 const last3 = (tufe.months as M[]).slice(0, 3);
 export const ASSUME = +(last3.reduce((s, m) => s + m.aylik, 0) / last3.length).toFixed(2); // kalan aylar varsayımı (%)

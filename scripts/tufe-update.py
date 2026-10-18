@@ -49,6 +49,10 @@ def main():
         "updated": dt.date.today().isoformat(),
         "months": months,
     }
+    # El/ajan alanları korunur (ör. resmiZam: SGK'nın açıkladığı resmî zam oranı — src/data/zam2027.ts)
+    for k, v in old.items():
+        if k not in data and not k.startswith("_"):
+            data[k] = v
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
         f.write("\n")

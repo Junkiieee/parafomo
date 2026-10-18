@@ -94,12 +94,13 @@ FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan me
   takvimi:** `data/tuik-enflasyon-2027.json` oluştur (2026 dosyasıyla aynı şema; en az "Aralık 2026" → Ocak 2027
   açıklama günü). release-watch.py, emekli/memur sayfaları ve sonuç kutusu takvim dosyalarını glob'la okur; dosya yoksa
   ayın 3-6'sına bakılır (çalışır ama tarih metni eksik kalır). · Kabul: `python3 scripts/release-watch.py --dry --today <gün>` doğru günü söyler.
-- [ ] T15 (zam sezonu — 20 Aralık'a kadar) — **Ocak 2027 emekli zammı hassasiyeti:** /emekli-zammi-hesaplama
-  birikimli enflasyonu aylık % değişimleri bileşikleyerek hesaplıyor (Tem-Eyl 2026: %5,56). TÜFE 2025=100 endeksi
-  EVDS'de var (`TP.TUKFIY2025.GENEL`): endeksten I(Eyl)/I(Haz)−1 = %5,57. Temmuz 2026 resmî SSK zammı %17,75 iken
-  endeks yöntemi %17,76, aylık yöntem %17,75 verdi → resmî hesap muhtemelen yuvarlanmamış endeks. SGK/ÇSGB'nin
-  Ocak zammını nasıl ilan ettiğini (TÜİK "6 aylık değişim" tablosu mu?) 2-3 kaynakla doğrula; gerekirse
-  `data/tufe-aylik.json`'a endeks ekleyip `src/data/zam2027.ts`'i ona göre güncelle. · Kabul: yöntem kararı + kanıt rapora; 5 Ocak'ta rakam resmî açıklamayla aynı.
+- [ ] T15 (zam sezonu — 5 Ocak 2027, açıklama günü) — **Ocak 2027 emekli zammı resmî rakam kontrolü:** /emekli-zammi-hesaplama
+  ve /memur-zammi-hesaplama birikimli enflasyonu aylık % değişimleri bileşikleyerek hesaplıyor. RC 10-18 araştırması:
+  Temmuz 2026 resmî SSK zammı %17,75 = aylık bileşik %17,75 (EVDS 2025=100 endeksiyle %17,76 — endeks 2 ondalık,
+  yuvarlama sapması) → yöntem doğru, yine de 0,01 sapma riski var. 5 Ocak'ta Aralık TÜFE açıklanınca (release-watch
+  veriyi otomatik çeker, sayfa "Belli Oldu" olur) resmî SSK/Bağ-Kur oranını ÇSGB/SGK açıklamasından doğrula; farklıysa
+  `data/tufe-aylik.json`'a `"resmiZam": {"2027-01": {"ssk": <oran>}}` ekle (src/data/zam2027.ts bunu esas alır) →
+  build → deploy. · Kabul: canlı sayfadaki oran resmî açıklamayla aynı.
 
 ## Bakım / ürün
 - [x] V1 (video kalitesi) — → kök neden: parça sonu +0,12 sn kuyruğu sonraki parçayla aynı konumda çakışıyordu; build_ass parçayı sonrakinden önce bitiriyor · önce/sonra: agent/state/v1-test/compare.png · commit 5d4d98f · RC 10-15 · sonraki 3 günün video-qa'sı izlenecek — **altyazı çakışması hatası** · video-qa son 7g'de 4 videoda "altyazı üst üste binmiş,
