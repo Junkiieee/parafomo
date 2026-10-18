@@ -1,0 +1,64 @@
+{
+  "slug": "aylik-yuzde-2-kucuk-gorunur-maasini-yilda-eritir",
+  "title": "Aylık yüzde 2 küçük görünür, maaşını yılda eritir",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Aylık yüzde 2 enflasyon bileşik etkiyle yılda yaklaşık yüzde 27 eder. Zammını bu sayıyla kıyaslamanın basit yolu.\nKaynak/hesap: 1,02^12 = 1,268 → yaklaşık %27; 100 TL → yaklaşık 127 TL; 1,24 / 1,268 ≈ 0,978 → yaklaşık %2 alım gücü kaybı · senaryodaki hesap",
+  "tags": [
+    "enflasyon",
+    "maaş zammı",
+    "alım gücü",
+    "bileşik etki",
+    "birikim",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Aylık yüzde 2, yılda yüzde 27 eder.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank with coins"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fiyatlar üst üste biniyor: 100 liralık market sepeti bir yılda yaklaşık 127 lira oluyor.",
+      "visual": {
+        "type": "object",
+        "query": "grocery basket with vegetables"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Maaşına yüzde 24 zam gelse bile market sepetin karşısında yaklaşık yüzde 2 geride kalıyorsun.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Zam gelince aylık enflasyonu on iki ay üst üste çarp; zam o sayının altındaysa fakirleşiyorsun.",
+      "visual": {
+        "type": "object",
+        "query": "salary payslip paper"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki hesap seni daha da şaşırtabilir. Abone ol, her gün 60 saniyede tek net rakamı sade hesapla göstereyim.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank with coins"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "Aylık yüzde 2, yılda yüzde 27",
+    "calc": "1,02^12 = 1,268 → yaklaşık %27; 100 TL → yaklaşık 127 TL; 1,24 / 1,268 ≈ 0,978 → yaklaşık %2 alım gücü kaybı",
+    "source": "senaryodaki hesap"
+  }
+}
