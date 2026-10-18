@@ -25,15 +25,12 @@ düşer" 1,5 · "hazine bonosu" 2,6 · "eurobond nedir" 2,4 → "X mi Y mi" kara
   (hacim 50) · neden: hacimli, sitede yok; BDDK düzenlemesini (azami vade, faiz) YALNIZ resmi kaynaktan yaz;
   haber sitelerinde çelişen "yeni yapılandırma paketi" iddialarını yazma · iç-link: /kredi-hesaplama,
   /blog/kredi-karti-borcundan-kurtulma, asgari ödeme yazısı (yayındaysa)
-- [ ] **Damga vergisi 2026: oranlar, maktu tutarlar ve 2027'de ne kadar artacak?** · hedef: "damga vergisi"
-  (hacim 86) · neden: zam sezonu kümesi — maktu tutarlar her yıl yeniden değerleme oranıyla artar; 2026 oran/
-  tutarlarını GİB'den doğrula, 2027 tahmini data/yeniden-degerleme.json'dan (tahmin olduğunu yaz) · iç-link:
-  /yeniden-degerleme-orani, /blog/2027-zamlari-yeniden-degerleme-orani-rehberi, /vergi-dilimi-hesaplama
 - [ ] **Findeks kredi notu nedir, nasıl yükselir? Not aralıkları ve kredi onayına etkisi** · hedef: "findeks
   kredi notu" (hacim 12,5) · neden: kredi kümesi (konut/ihtiyaç kredisi araçlarıyla birlikte); not aralıklarını
   KKB'nin kendi sayfasından al · iç-link: /kredi-hesaplama, /konut-kredisi-hesaplama (yayındaysa)
 
-## Sonraki hafta adayları (haftalık koşu sıralar — hacmi ölç)
+## Sonraki hafta adayları
+- (10-18) "Damga vergisi 2026" yazısı kuyruktan ÇIKARILDI → kanonik sayfa /damga-vergisi-hesaplama/ (araç, YD ile kendini günceller; RC). Aynı sorguya yazı açma. (haftalık koşu sıralar — hacmi ölç)
 - Kasım 2026 kira artış oranı (TÜİK 3 Kasım) → yazı DEĞİL, /kira-artis-orani-hesaplama otomatik güncellenir.
 - ÖTV (hacim 308) dev baş terim — yalnız uzun kuyruk varyantı ölçülürse ("araç ötv hesaplama"?).
 - BES devlet katkısı (hacim 14, zirve Ocak) — mevcut bes yazısını güçlendir, yeni yazı açma.
