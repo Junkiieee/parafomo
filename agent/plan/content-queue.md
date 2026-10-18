@@ -29,7 +29,20 @@ düşer" 1,5 · "hazine bonosu" 2,6 · "eurobond nedir" 2,4 → "X mi Y mi" kara
   kredi notu" (hacim 12,5) · neden: kredi kümesi (konut/ihtiyaç kredisi araçlarıyla birlikte); not aralıklarını
   KKB'nin kendi sayfasından al · iç-link: /kredi-hesaplama, /konut-kredisi-hesaplama (yayındaysa)
 
+- [ ] **TEFAS nedir, fon nasıl alınır? 2026'da TEFAS'tan yatırım fonu alma rehberi** · hedef: "tefas" (hacim 160,
+  zirve 409 Eylül) + "fon getirileri" (14) · neden: hacimli, sitede karşılığı yok (keyword-map K14); adım adım alım
+  (banka/aracı kurum), valör/saat kuralları, stopaj (stopaj yazısına link), fon türleri tablosu; getiri rakamı
+  verirsen TEFAS'tan tarihli; tek fon önerme · iç-link: /blog/yatirim-fonu-nedir-nasil-secilir,
+  /blog/stopaj-nedir-2026-stopaj-oranlari, para piyasası fonu yazısı (yayındaysa), /mevduat-faizi-hesaplama
+
 ## Sonraki hafta adayları
+- **TARİHLİ (30 Ekim–2 Kasım arası yayınla; haftalık koşu 10-22 kuyruğa doğru güne koysun):** "Ekim 2026 enflasyonu
+  3 Kasım'da açıklanıyor: beklenti, kira artış oranı, emekli zammı ve 2027 yeniden değerleme oranına etkisi" ·
+  hedef: "enflasyon ne zaman" (hacim 22,5, zirve 242) + "tüfe" ailesi · frontmatter'a `sonuc: "tufe:2026-10"` +
+  `sonucBaslik: "Ekim 2026 Enflasyonu Açıklandı: Aylık %{aylik}, Yıllık %{yillik}"` (3 Kasım 10:00'da kutu + başlık
+  otomatik). Beklenti rakamı YALNIZ TCMB Piyasa Katılımcıları Anketi / AA Finans anketinden, tarihli. 3 Kasım'ın
+  "büyük gün" merkezi: /kira-artis-orani-hesaplama, /emekli-zammi-hesaplama, /memur-zammi-hesaplama,
+  /yeniden-degerleme-orani, /mtv-hesaplama, /blog/2027-zamlari-yeniden-degerleme-orani-rehberi linkleri.
 - (10-18) "Damga vergisi 2026" yazısı kuyruktan ÇIKARILDI → kanonik sayfa /damga-vergisi-hesaplama/ (araç, YD ile kendini günceller; RC). Aynı sorguya yazı açma. (haftalık koşu sıralar — hacmi ölç)
 - Kasım 2026 kira artış oranı (TÜİK 3 Kasım) → yazı DEĞİL, /kira-artis-orani-hesaplama otomatik güncellenir.
 - ÖTV (hacim 308) dev baş terim — yalnız uzun kuyruk varyantı ölçülürse ("araç ötv hesaplama"?).

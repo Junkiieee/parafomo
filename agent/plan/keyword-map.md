@@ -48,7 +48,7 @@ Otorite/dış link işleri şimdilik YAPILMAZ (Kaan: "kalsın"). Fırsat listesi
   cezası; her Ocak YD oranıyla güncellenir.
 - [ ] K13 trafik cezası sorgulama (62) — ⏳ RC 2026-10-18 YAPIYOR (paralel alt-ajan; günlük koşu ATLA) → /trafik-cezalari-hesaplama'ya "sorgulama ve ödeme" bölümü (e-Devlet/
   GİB adımları) — yeni sayfa açma.
-- [ ] K14 tefas (160) + fon getirileri (14) → blog "TEFAS nedir, fon nasıl alınır" (kaynak: TEFAS/SPK).
+- [ ] K14 tefas (160) + fon getirileri (14) → blog "TEFAS nedir, fon nasıl alınır" (kaynak: TEFAS/SPK). → content-queue'ya eklendi (RC 10-18); yazınca [x]
 - [ ] K15 beyanname (246) + geçici vergi (46) + kira gelir vergisi (36) → beyanname rehberi + kira geliri beyanı
   yazısı (Mart sezonu: Şubat ortasına kadar canlı).
 - [ ] K16 kurumlar vergisi (53) [damga vergisi + tapu harcı → ⏳ RC 2026-10-18 YAPIYOR; kalanlar açık], değer artış kazancı (25), bağkur borcu (24), damga vergisi hesaplama (15),
