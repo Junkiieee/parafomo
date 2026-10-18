@@ -1,0 +1,683 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import faiz from '../../data/faiz-oranlari.json';
+
+// Varsayılan faiz = TCMB haftalık ağırlıklı ortalama taşıt kredisi faizi (EVDS TP.KTF11, scripts/evds-rates.py —
+// her hafta otomatik). TCMB yıllık bileşik yayımlar → aylık = (1+E)^(1/12) − 1 (kredi.tasit.aylik).
+// Vergiler (2026-10-18 doğrulandı): taşıt kredisi tüketici kredisidir → KKDF %15 (GİB KKDF oran tablosu, 2010/974 BKK),
+// BSMV %15 (7345 sayılı CK, RG 7.7.2023); ICBC Turkey taşıt kredisi ürün bilgi formu (22.04.2026) aynı iki oranı yazar.
+// Taksit matematiği /ihtiyac-kredisi-hesaplama ile birebir aynı: vergili aylık faiz = akdi faiz × (1 + 0,15 + 0,15).
+// BDDK sınırları (bddk.org.tr "Resmî Gazetede yayımlanmayan Kurul kararları" listesi 2026-10-18 kontrol edildi;
+// 11158'den sonra yeni taşıt kararı yok):
+//  • Genel — 21.02.2022 tarihli 10099 sayılı Kurul Kararı: nihai fatura değeri ≤400 bin %70/48 ay, ≤800 bin %50/36,
+//    ≤1,2 mn %30/24, ≤2 mn %20/12, üzeri %0. Garanti BBVA, İş Bankası (2026) ve Akbank (2025) aynı tabloyu uygular.
+//  • Yerli elektrikli — 06.03.2025 tarihli 11158 sayılı Kurul Kararı: yalnız 5520 s. KVK geçici 12. md. kapsamındaki
+//    mükelleflerin ürettiği elektrikli taşıtlar (Togg): ≤2,5 mn %70/48, ≤5 mn %50/36, ≤6,5 mn %30/24, ≤7,5 mn %20/12, üzeri %0.
+//  • Kredi/değer oranı binek araç taşıt kredilerine uygulanır (taşıt teminatlı krediler hariç). İkinci elde değer = kasko
+//    değeri (Bankaların Kredi İşlemlerine İlişkin Yönetmelik md. 12/2, RG 21.12.2023); bankalar vade kademesini de buna göre uygular.
+// Ücretler: TCMB 2020/7 sayılı Tebliğ md. 10 — tahsis ücreti ≤ anaparanın binde 5'i; rehin/ekspertizde yalnız üçüncü kişi ücreti.
+// 6502 sayılı Kanun: md. 24 cayma 14 gün · md. 25 sabit faiz · md. 27 erken ödeme (tazminat yok) · md. 29 sigorta.
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const trDate = (iso: string) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${AYLAR[m - 1]} ${y}`; };
+const HAFTA = trDate(faiz.hafta);
+const KR = faiz.kredi;
+const T = KR.tasit;
+const TAX = { kkdf: 0.15, bsmv: 0.15 };
+const TAXF = 1 + TAX.kkdf + TAX.bsmv;
+
+type Kademe = { upTo: number; ltv: number; months: number; label: string };
+const KURAL: Record<'genel' | 'yerli', Kademe[]> = {
+  genel: [
+    { upTo: 400000, ltv: 0.7, months: 48, label: '400.000 ₺ ve altı' },
+    { upTo: 800000, ltv: 0.5, months: 36, label: '400.000 – 800.000 ₺' },
+    { upTo: 1200000, ltv: 0.3, months: 24, label: '800.000 – 1.200.000 ₺' },
+    { upTo: 2000000, ltv: 0.2, months: 12, label: '1.200.000 – 2.000.000 ₺' },
+    { upTo: Infinity, ltv: 0, months: 0, label: '2.000.000 ₺ üzeri' },
+  ],
+  yerli: [
+    { upTo: 2500000, ltv: 0.7, months: 48, label: '2.500.000 ₺ ve altı' },
+    { upTo: 5000000, ltv: 0.5, months: 36, label: '2.500.000 – 5.000.000 ₺' },
+    { upTo: 6500000, ltv: 0.3, months: 24, label: '5.000.000 – 6.500.000 ₺' },
+    { upTo: 7500000, ltv: 0.2, months: 12, label: '6.500.000 – 7.500.000 ₺' },
+    { upTo: Infinity, ltv: 0, months: 0, label: '7.500.000 ₺ üzeri' },
+  ],
+};
+const kademe = (k: Kademe[], value: number) => k.find((x) => value <= x.upTo)!;
+// Bir kredi tutarı, BDDK oranlarına uyan en elverişli araç değeriyle en fazla kaç ay vadeli olabilir (0 = hiç olamaz)?
+const vadeTavani = (k: Kademe[], amount: number) =>
+  k.reduce((m, x) => (x.ltv > 0 && amount <= x.ltv * x.upTo + 0.5 ? Math.max(m, x.months) : m), 0);
+const enYuksekKredi = (k: Kademe[]) => Math.max(...k.filter((x) => x.ltv > 0).map((x) => Math.round(x.ltv * x.upTo)));
+const MAX_G = enYuksekKredi(KURAL.genel);
+const MAX_Y = enYuksekKredi(KURAL.yerli);
+
+const D = { value: 800000, down: 400000, rate: T.aylik, months: 36 };
+const LOAN = D.value - D.down;
+
+// Eşit taksit (anüite), vergili faizle: taksit = P·i / (1 − (1+i)^−n), i = r × 1,30 (ihtiyaç kredisi sayfasıyla aynı)
+function loan(P: number, ratePct: number, n: number) {
+  const i = (ratePct / 100) * TAXF;
+  const pay = i === 0 ? P / n : (P * i) / (1 - Math.pow(1 + i, -n));
+  const total = pay * n;
+  const cost = total - P;                       // faiz + KKDF + BSMV
+  const interest = cost / TAXF;                 // yalnız faiz
+  return { pay, total, cost, interest, kkdf: interest * TAX.kkdf, bsmv: interest * TAX.bsmv };
+}
+const base = loan(LOAN, D.rate, D.months);
+const baseK = kademe(KURAL.genel, D.value);
+
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const pct = (n: number) => n.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
+
+// Taksit tabloları — BDDK'nın hiçbir araç değerinde izin vermediği vade hücresi boş kalır.
+const TERMS = [12, 24, 36, 48];
+const AMOUNTS_G = [100000, 200000, 300000, 400000];
+const AMOUNTS_Y = [500000, 1000000, 2000000];
+const gridRows = (k: Kademe[], amounts: number[]) =>
+  amounts.map((a) => {
+    const cap = vadeTavani(k, a);
+    return { a, cap, cells: TERMS.map((m) => (m <= cap ? loan(a, D.rate, m).pay : null)) };
+  });
+const gridG = gridRows(KURAL.genel, AMOUNTS_G);
+const gridY = gridRows(KURAL.yerli, AMOUNTS_Y);
+const ex400 = loan(400000, D.rate, 36);
+
+// Son 52 haftanın en düşük / en yüksek taşıt kredisi ortalaması (aynı veri dosyasından)
+const S = faiz.seri.filter((x) => typeof x.tasit === 'number');
+const lo = S.reduce((a, b) => (b.tasit < a.tasit ? b : a));
+const hi = S.reduce((a, b) => (b.tasit > a.tasit ? b : a));
+
+const SRC = {
+  bddkGenel: 'https://www.bddk.org.tr/Mevzuat/DokumanGetir/1099',
+  bddkYerli: 'https://www.bddk.org.tr/Mevzuat/DokumanGetir/1278',
+  krediYon: 'https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=40520&MevzuatTur=7&MevzuatTertip=5',
+  k6502: 'https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6502&MevzuatTur=1&MevzuatTertip=5',
+  ucretTeblig: 'https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=34343&MevzuatTur=9&MevzuatTertip=5',
+  gibKkdf: 'https://cdn.gib.gov.tr/api/gibportal-file/file/getFileResources?objectKey=arsiv%2Fyardim-kaynaklar%2Fyararli-bilgiler%2Fkkdf-oranlari.pdf',
+  tcmb: 'https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Faiz+Istatistikleri/Haftalik/Kredi+Faiz+Oranlari/',
+};
+
+const faq = [
+  {
+    q: 'Taşıt kredisi faiz oranları ne kadar?',
+    a: `TCMB’nin ${HAFTA} haftası verisine göre bankaların yeni kullandırdığı taşıt kredilerinde ağırlıklı ortalama faiz yıllık %${pct(T.yillikBilesik)}; bu, aylık yaklaşık %${pct(T.aylik)} faize karşılık gelir. Ortalama, tüm bankaların hacimle ağırlıklandırılmış oranıdır ve haftadan haftaya belirgin değişebilir (son ${S.length} haftada yıllık %${pct(lo.tasit)} ile %${pct(hi.tasit)} arasında). Kampanyalı ve bankaya özel oranlar farklı olabilir; hesaplayıcının varsayılan faizi her hafta bu veriyle otomatik güncellenir.`,
+  },
+  {
+    q: 'Taşıt kredisi taksiti nasıl hesaplanır?',
+    a: `Taşıt kredisi bir tüketici kredisidir; bankalar faizin üzerine %15 KKDF ve %15 BSMV ekler. Taksit bu vergili faizle eşit taksit (anüite) formülüyle bulunur: vergili aylık faiz = akdi faiz × 1,30; taksit = kredi × vergili faiz ÷ (1 − (1 + vergili faiz)⁻ⁿ). Aylık %${pct(D.rate)} faizle 400.000 ₺ krediyi 36 ay vadede kullanırsanız aylık taksit yaklaşık ${fmt(ex400.pay)} ₺, toplam geri ödeme ${fmt(ex400.total)} ₺ olur.`,
+  },
+  {
+    q: 'Taşıt kredisiyle aracın yüzde kaçı finanse edilebilir?',
+    a: `Azami oranı BDDK belirler ve oran aracın nihai fatura değerine (ikinci elde kasko değerine) göre kademelidir: 400.000 ₺ ve altında %70, 400.000–800.000 ₺ arası %50, 800.000–1.200.000 ₺ arası %30, 1.200.000–2.000.000 ₺ arası %20; değeri 2.000.000 ₺ üzerindeki binek araçlara taşıt kredisi kullandırılamaz (21 Şubat 2022 tarihli ve 10099 sayılı Kurul Kararı). Bu yüzden genel kurallarla bir binek araç için çekilebilecek taşıt kredisi en fazla ${fmt(MAX_G)} ₺ olur. Yerli üretim elektrikli otomobillerde (ör. Togg) aynı oranlar 2,5 / 5 / 6,5 / 7,5 milyon ₺ kademelerine göre uygulanır (6 Mart 2025 tarihli ve 11158 sayılı Kurul Kararı).`,
+  },
+  {
+    q: 'Taşıt kredisi en fazla kaç ay vadeli çekilebilir?',
+    a: 'Azami vade kredi tutarına değil aracın değerine (sıfırda nihai fatura, ikinci elde kasko değeri) bağlıdır: 400.000 ₺ ve altındaki araçlarda 48 ay, 400.000–800.000 ₺ arasında 36 ay, 800.000–1.200.000 ₺ arasında 24 ay, 1.200.000–2.000.000 ₺ arasında 12 ay. Yerli üretim elektrikli otomobillerde aynı vadeler 2,5 milyon, 5 milyon, 6,5 milyon ve 7,5 milyon ₺ kademelerine göre uygulanır. Banka gelirinize ve kredi notunuza göre daha kısa vade önerebilir.',
+  },
+  {
+    q: 'İkinci el araç kredisi nasıl hesaplanır?',
+    a: 'İkinci el binek araçlarda BDDK oranları satış fiyatına değil aracın kasko değerine uygulanır (Bankaların Kredi İşlemlerine İlişkin Yönetmelik md. 12); kademeler sıfır araçlarla aynıdır. Örneğin kasko değeri 800.000 ₺ olan araca en fazla 400.000 ₺ kredi, en fazla 36 ay vadeyle kullanılabilir. Satış fiyatı kasko değerinden yüksekse aradaki fark peşinata eklenir. Bankalar ayrıca araç yaşına üst sınır koyar ve ekspertiz isteyebilir.',
+  },
+  {
+    q: 'Taşıt kredisini erken kapatırsam ceza öder miyim?',
+    a: 'Hayır. 6502 sayılı Tüketicinin Korunması Hakkında Kanun’un 27. maddesine göre tüketici kredisini kısmen ya da tamamen erken ödeyebilirsiniz; banka erken ödenen tutara göre faiz ve diğer maliyetlerden indirim yapmak zorundadır. Bu maddede erken ödeme tazminatı öngörülmez; %1–2’lik tazminat yalnızca sabit faizli konut kredilerinde (md. 37) söz konusudur. Borç kapandığında araç üzerindeki rehin kaldırılır.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Kredi Hesaplama', url: '/kredi-hesaplama/' },
+  { name: 'Taşıt Kredisi Hesaplama', url: '/tasit-kredisi-hesaplama/' },
+];
+---
+
+<BaseLayout
+  title="Taşıt Kredisi Hesaplama 2026 | Güncel Faiz, Peşinat ve Vade Sınırı"
+  description={`Taşıt kredisi hesaplama: TCMB ortalama faizi aylık %${pct(T.aylik)} (${HAFTA}). Sıfır ve ikinci el araçta KKDF-BSMV dahil taksit, peşinat ve BDDK vade sınırı.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+  image="/og/tasit-kredisi-hesaplama.png"
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Taşıt Kredisi</p>
+      <h1>Taşıt Kredisi Hesaplama</h1>
+      <p class="lede">
+        Araç fiyatını, peşinatı, aylık faizi ve vadeyi girin; <strong>KKDF ve BSMV dahil aylık taksitinizi</strong>,
+        toplam geri ödemeyi ve ödeme planını görün. Sıfır ve ikinci el araç kredisinde BDDK’nın kredi oranı ve
+        vade sınırlarını da kontrol eder.
+      </p>
+    </header>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Araç fiyatı (₺) <small>sıfırda nihai fatura tutarı</small></span>
+          <input type="number" id="in-value" value={D.value} min="0" step="10000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>İkinci elde kasko değeri (₺) <small>sıfır araçta boş bırakın</small></span>
+          <input type="number" id="in-kasko" min="0" step="10000" inputmode="numeric" placeholder="Sıfır araç" />
+        </label>
+        <label>
+          <span>Peşinat (₺)</span>
+          <input type="number" id="in-down" value={D.down} min="0" step="10000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Aylık faiz oranı (%) <small>vergiler hariç, bankanın ilanı</small></span>
+          <input type="number" id="in-rate" value={D.rate} min="0" max="15" step="0.01" inputmode="decimal" />
+        </label>
+        <label>
+          <span>Vade (ay)</span>
+          <input type="number" id="in-months" value={D.months} min="1" max="48" step="1" inputmode="numeric" />
+        </label>
+        <div class="preset-row" role="group" aria-label="Hızlı vade seçimi">
+          {TERMS.map((m) => <button type="button" class="preset" data-months={m}>{m} ay</button>)}
+        </div>
+        <fieldset class="mode-toggle">
+          <legend>BDDK kademesi</legend>
+          <label class="radio">
+            <input type="radio" name="kural" value="genel" checked />
+            <span>Genel: benzinli, dizel, hibrit, ithal elektrikli</span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="kural" value="yerli" />
+            <span>Yerli üretim elektrikli (ör. Togg)</span>
+          </label>
+        </fieldset>
+        <p class="vade-warn" id="out-warn" hidden></p>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Aylık taksit (KKDF + BSMV dahil)</span>
+          <span class="result-value" id="out-pay">₺{fmt(base.pay)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Kredi tutarı</span>
+            <span class="split-val" id="out-loan">₺{fmt(LOAN)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Kredi / araç değeri</span>
+            <span class="split-val" id="out-ltv">%{pct((LOAN / D.value) * 100)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Toplam geri ödeme</span>
+            <span class="split-val" id="out-total">₺{fmt(base.total)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Toplam faiz</span>
+            <span class="split-val" id="out-interest">₺{fmt(base.interest)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">KKDF (%15)</span>
+            <span class="split-val" id="out-kkdf">₺{fmt(base.kkdf)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">BSMV (%15)</span>
+            <span class="split-val" id="out-bsmv">₺{fmt(base.bsmv)}</span>
+          </div>
+          <div class="split-item strong">
+            <span class="split-label">Kredinin toplam maliyeti</span>
+            <span class="split-val" id="out-cost">₺{fmt(base.cost)}</span>
+          </div>
+        </div>
+        <p class="limit-line" id="out-limit">Bu araç için BDDK sınırı: en fazla ₺{fmt(baseK.ltv * D.value)} kredi (%{Math.round(baseK.ltv * 100)}), en fazla {baseK.months} ay vade.</p>
+        <p class="result-note">Varsayılan aylık %{pct(D.rate)}: TCMB ortalama taşıt kredisi faizi ({HAFTA} haftası, yıllık %{pct(T.yillikBilesik)}). Bankanızın ilan ettiği aylık faizi girerek değiştirin.</p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır, kredi teklifi veya finansal tavsiye değildir. Hesap, ilan edilen
+      aylık faizin üzerine %15 KKDF ve %15 BSMV ekler; banka ayrıca kredi tahsis ücreti, rehin masrafı ve kasko
+      gibi kalemler isteyebilir. TCMB ortalamasının vergileri içerip içermediği metaveride belirtilmez; en doğru
+      sonuç için bankanızın ilan ettiği aylık faizi girin ve sözleşme öncesi bilgi formundaki toplam maliyeti esas
+      alın. BDDK kontrolü yasal üst sınırları gösterir; bankanın kendi kredi politikası daha sıkı olabilir.
+    </p>
+
+    <section class="table-block" id="bddk-sinirlari">
+      <h2>Taşıt kredisi BDDK sınırları: aracın yüzde kaçına kredi çıkar?</h2>
+      <p class="table-intro">
+        Kredi tutarı ve vade, aracın <strong>nihai fatura değerine</strong> (ikinci elde <strong>kasko değerine</strong>)
+        göre sınırlanır. Tablolar, tüketicilere binek araç alımı için kullandırılan taşıt kredilerine aittir
+        (taşıt teminatlı krediler hariç).
+      </p>
+      <h3>Genel kural: benzinli, dizel, hibrit ve ithal elektrikli araçlar</h3>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead><tr><th>Araç değeri</th><th>Azami kredi oranı</th><th>Azami vade</th><th>Kademe tavanında en fazla kredi</th></tr></thead>
+          <tbody>
+            {KURAL.genel.map((k) => (
+              <tr>
+                <td>{k.label}</td>
+                <td>%{Math.round(k.ltv * 100)}</td>
+                <td>{k.months ? `${k.months} ay` : '—'}</td>
+                <td>{k.ltv ? `₺${fmt(k.ltv * k.upTo)}` : 'Kredi kullandırılamaz'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        BDDK’nın 21 Şubat 2022 tarihli ve 10099 sayılı Kurul Kararı
+        (<a href={SRC.bddkGenel} rel="nofollow noopener" target="_blank">karar metni</a>). Bu sınırlarla bir binek
+        araç için kullanılabilecek taşıt kredisi en fazla <strong>{fmt(MAX_G)} ₺</strong> olur (800.000 ₺ değerindeki
+        araçta %50 ya da 2.000.000 ₺ değerindeki araçta %20).
+      </p>
+
+      <h3>Yerli üretim elektrikli otomobiller (ör. Togg)</h3>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead><tr><th>Araç değeri</th><th>Azami kredi oranı</th><th>Azami vade</th><th>Kademe tavanında en fazla kredi</th></tr></thead>
+          <tbody>
+            {KURAL.yerli.map((k) => (
+              <tr>
+                <td>{k.label}</td>
+                <td>%{Math.round(k.ltv * 100)}</td>
+                <td>{k.months ? `${k.months} ay` : '—'}</td>
+                <td>{k.ltv ? `₺${fmt(k.ltv * k.upTo)}` : 'Kredi kullandırılamaz'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        BDDK’nın 6 Mart 2025 tarihli ve 11158 sayılı Kurul Kararı
+        (<a href={SRC.bddkYerli} rel="nofollow noopener" target="_blank">karar metni</a>). Yalnızca 5520 sayılı Kurumlar
+        Vergisi Kanunu’nun geçici 12. maddesi kapsamındaki, yani proje bazlı teşvikle Türkiye’de geliştirdiği elektrikli
+        taşıtı Türkiye’de üreten şirketlerin araçlarına uygulanır. İthal elektrikliler ve hibritler genel kurala tabidir.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>100 bin – 2 milyon TL taşıt kredisi taksiti</h2>
+      <p class="table-intro">
+        Aylık <strong class="grid-rate">%{pct(D.rate)}</strong> faiz, KKDF ve BSMV dahil aylık taksit (yukarıdaki faiz
+        değişince tablolar da güncellenir). Vade sınırı aracın değerine bağlıdır; “BDDK: en fazla … ay” yazan hücrede
+        o tutar, BDDK oranlarına uyan hiçbir araç değerinde o vadeyle kullanılamaz.
+      </p>
+      <h3>Genel kural</h3>
+      <div class="table-scroll">
+        <table class="rate-table wide" id="grid-g">
+          <thead><tr><th>Kredi tutarı</th>{TERMS.map((m) => <th>{m} ay</th>)}</tr></thead>
+          <tbody>
+            {gridG.map((r) => (
+              <tr>
+                <td>₺{fmt(r.a)}</td>
+                {r.cells.map((c) => <td>{c == null ? <span class="na">BDDK: en fazla {r.cap} ay</span> : `₺${fmt(c)}`}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <h3>Yerli üretim elektrikli (ör. Togg)</h3>
+      <p class="table-intro">Genel kuralla bir binek araç için {fmt(MAX_G)} ₺ üzerinde taşıt kredisi kullanılamaz; 500 bin ve 1 milyon TL gibi tutarlar yalnızca bu kapsamdaki araçlarda mümkündür (en fazla {fmt(MAX_Y)} ₺).</p>
+      <div class="table-scroll">
+        <table class="rate-table wide" id="grid-y">
+          <thead><tr><th>Kredi tutarı</th>{TERMS.map((m) => <th>{m} ay</th>)}</tr></thead>
+          <tbody>
+            {gridY.map((r) => (
+              <tr>
+                <td>₺{fmt(r.a)}</td>
+                {r.cells.map((c) => <td>{c == null ? <span class="na">BDDK: en fazla {r.cap} ay</span> : `₺${fmt(c)}`}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="table-block">
+      <h2>Güncel taşıt kredisi faiz oranları (TCMB, {HAFTA})</h2>
+      <p class="table-intro">Bankaların o hafta kullandırdığı yeni kredilerde ağırlıklı ortalama faiz:</p>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead><tr><th>Kredi türü</th><th>Yıllık (bileşik)</th><th>Aylık karşılığı</th><th>Önceki haftaya göre</th></tr></thead>
+          <tbody>
+            {(['tasit', 'ihtiyac', 'konut'] as const).map((k) => (
+              <tr class={k === 'tasit' ? 'hl' : undefined}>
+                <td>{KR[k].etiket}</td>
+                <td>%{pct(KR[k].yillikBilesik)}</td>
+                <td><strong>%{pct(KR[k].aylik)}</strong></td>
+                <td>{KR[k].degisim == null ? '—' : `${KR[k].degisim! > 0 ? '▲' : KR[k].degisim! < 0 ? '▼' : ''} ${pct(Math.abs(KR[k].degisim!))} puan`}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Son {S.length} haftada taşıt kredisi ortalaması yıllık %{pct(lo.tasit)} ({trDate(lo.hafta)}) ile
+        %{pct(hi.tasit)} ({trDate(hi.hafta)}) arasında değişti. Kaynak:
+        <a href={SRC.tcmb} rel="nofollow noopener" target="_blank">TCMB haftalık kredi faiz oranları</a>
+        (akım, ağırlıklı ortalama) · her hafta otomatik güncellenir. Aylık = (1 + yıllık)<sup>1/12</sup> − 1.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Ödeme planı</h2>
+      <p class="table-intro">Her taksitte önce faiz ve vergisi ödenir; kalanı anaparayı düşürür:</p>
+      <div class="schedule-scroll">
+        <table class="rate-table" id="schedule-table">
+          <thead><tr><th>Ay</th><th>Taksit</th><th>Anapara</th><th>Faiz</th><th>KKDF+BSMV</th><th>Kalan borç</th></tr></thead>
+          <tbody id="schedule-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="prose-block">
+      <h2>Sıfır ve ikinci el araç kredisi arasındaki fark</h2>
+      <p>BDDK kademeleri ikisinde de aynıdır; fark, oranın hangi değere uygulandığındadır:</p>
+      <ul>
+        <li><strong>Sıfır araç kredisi:</strong> kredi oranı ve vade, aracın nihai fatura değerine göre belirlenir.</li>
+        <li>
+          <strong>İkinci el araç kredisi:</strong> satış fiyatı değil aracın <strong>kasko değeri</strong> esas alınır
+          (<a href={SRC.krediYon} rel="nofollow noopener" target="_blank">Bankaların Kredi İşlemlerine İlişkin Yönetmelik</a>
+          md. 12). Kasko değeri, Türkiye Sigorta Birliği’nin marka, model ve model yılına göre her ay yayımladığı
+          listedeki tutardır. Satış fiyatı kasko değerinden yüksekse aradaki fark peşinata eklenir; hesaplayıcıdaki
+          kasko değeri alanı bunu hesaba katar.
+        </li>
+        <li>
+          <strong>Banka koşulları:</strong> bankalar ikinci el araçta araç yaşına üst sınır koyar (bazı bankalarda 10 yaş)
+          ve ekspertiz isteyebilir; koşullar bankadan bankaya değişir.
+        </li>
+      </ul>
+
+      <h2>Taşıt kredisinde KKDF ve BSMV</h2>
+      <p>
+        Taşıt kredisi bir tüketici kredisidir; bankalar faizin üzerine <strong>%15 KKDF</strong> (Kaynak Kullanımını
+        Destekleme Fonu) ve <strong>%15 BSMV</strong> (Banka ve Sigorta Muameleleri Vergisi) ekler. İkisi de faiz tutarı
+        üzerinden hesaplanır; yani ilan edilen aylık %{pct(D.rate)} faiz fiilen
+        <strong>%{pct(Math.round(D.rate * TAXF * 100) / 100)}</strong> olarak işler. Hesaplayıcı ve tablolar bu vergili
+        faizle çalışır; yöntem <a href="/ihtiyac-kredisi-hesaplama/">ihtiyaç kredisi hesaplama</a> aracımızla aynıdır.
+      </p>
+
+      <h2>Taşıt kredisi masrafları</h2>
+      <ul>
+        <li>
+          <strong>Kredi tahsis ücreti (dosya masrafı):</strong> kullandırılan anaparanın en fazla binde 5’i olabilir;
+          bunun dışında istihbarat, işlem fişi, ödeme planı değişikliği gibi adlarla ayrıca ücret alınamaz
+          (<a href={SRC.ucretTeblig} rel="nofollow noopener" target="_blank">TCMB 2020/7 sayılı Tebliğ</a> md. 10).
+        </li>
+        <li>
+          <strong>Rehin ve ekspertiz:</strong> araç, kredi bitene kadar bankaya rehinlidir. Rehin tesisi ve ekspertiz
+          için banka yalnızca üçüncü kişilere (ör. noter) ödenen ücreti yansıtabilir (aynı Tebliğ md. 10).
+        </li>
+        <li>
+          <strong>Kasko:</strong> bankalar genellikle aracın kredi süresince kaskolu olmasını ve poliçede bankanın
+          dain-i mürtehin (rehin alacaklısı) olarak yer almasını ister. Poliçeyi dilediğiniz sigorta şirketinden
+          yaptırabilirsiniz; banka, sizin seçtiğiniz şirketten sağlanan teminatı kabul etmek zorundadır
+          (6502 sayılı Kanun md. 29).
+        </li>
+        <li>
+          <strong>Bankadan sigorta:</strong> krediye bağlı bir sigortayı (ör. hayat sigortası) banka ancak açık
+          talebinizle yaptırabilir ve bu sigortayı içermeyen bir kredi teklifi de sunmak zorundadır (md. 29).
+        </li>
+        <li><strong>Reddedilen başvuru:</strong> kamu kurumlarına veya üçüncü kişilere ödenenler dışında ücret alınamaz (Tebliğ md. 10).</li>
+      </ul>
+      <p>
+        Teklifleri yalnız aylık faize göre değil, sözleşme öncesi bilgi formundaki efektif yıllık faiz ve toplam
+        maliyete göre karşılaştırın. Aracın yıllık giderlerini de bütçeye katın:
+        <a href="/mtv-hesaplama/">MTV hesaplama</a> · <a href="/arac-muayene-ucreti/">araç muayene ücreti</a>.
+      </p>
+
+      <h2>Erken kapama ve cayma hakkı</h2>
+      <p>
+        Taşıt kredisini dilediğiniz zaman kısmen veya tamamen kapatabilirsiniz:
+        <a href={SRC.k6502} rel="nofollow noopener" target="_blank">6502 sayılı Kanun</a>’un 27. maddesine göre banka
+        erken ödenen tutara düşen faiz ve diğer maliyetleri indirmek zorundadır. Tüketici kredisinde erken ödeme
+        tazminatı öngörülmez; %1–2’lik tazminat yalnızca sabit faizli konut kredilerinde (md. 37) alınabilir. Borç
+        kapanınca araç üzerindeki rehin kaldırılır.
+      </p>
+      <p>
+        Faiz oranı vade boyunca sabittir ve tüketici aleyhine değiştirilemez (md. 25). Krediden vazgeçerseniz 14 gün
+        içinde gerekçe göstermeden ve cezasız cayabilirsiniz; krediyi kullandıysanız anaparayı ve işlemiş faizi cayma
+        bildiriminden sonra en geç 30 gün içinde geri ödersiniz (md. 24).
+      </p>
+      <p class="cta-line">
+        Vergisiz saf taksit ve vade karşılaştırması için → <a href="/kredi-hesaplama/">kredi hesaplama</a>.
+        Nakit ihtiyacı için → <a href="/ihtiyac-kredisi-hesaplama/">ihtiyaç kredisi hesaplama</a>.
+        Ev alacaksanız → <a href="/konut-kredisi-hesaplama/">konut kredisi hesaplama</a>.
+        Tüm araçlar → <a href="/hesaplama-araclari/">hesaplama araçları</a>.
+      </p>
+      <p class="table-note source-note">
+        <strong>Kaynaklar:</strong>
+        <a href={SRC.bddkGenel} rel="nofollow noopener" target="_blank">BDDK 10099 sayılı Kurul Kararı</a> (genel sınırlar) ·
+        <a href={SRC.bddkYerli} rel="nofollow noopener" target="_blank">BDDK 11158 sayılı Kurul Kararı</a> (yerli elektrikli) ·
+        <a href={SRC.krediYon} rel="nofollow noopener" target="_blank">Bankaların Kredi İşlemlerine İlişkin Yönetmelik</a> md. 12 ·
+        <a href={SRC.gibKkdf} rel="nofollow noopener" target="_blank">GİB KKDF oranları</a> (tüketici kredisi %15) ·
+        7345 sayılı Cumhurbaşkanı Kararı, Resmî Gazete 7 Temmuz 2023 (BSMV %15) ·
+        <a href={SRC.k6502} rel="nofollow noopener" target="_blank">6502 sayılı Kanun</a> md. 24, 25, 27, 29 ·
+        <a href={SRC.ucretTeblig} rel="nofollow noopener" target="_blank">TCMB 2020/7 sayılı Tebliğ</a> md. 10 ·
+        <a href={SRC.tcmb} rel="nofollow noopener" target="_blank">TCMB haftalık kredi faizleri</a>.
+        Mevzuat kontrolü: 18 Ekim 2026.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script
+    is:inline
+    define:vars={{
+      TAX,
+      TERMS,
+      AMOUNTS_G,
+      AMOUNTS_Y,
+      KURAL: {
+        genel: KURAL.genel.map((k) => ({ upTo: k.upTo === Infinity ? 1e15 : k.upTo, ltv: k.ltv, months: k.months })),
+        yerli: KURAL.yerli.map((k) => ({ upTo: k.upTo === Infinity ? 1e15 : k.upTo, ltv: k.ltv, months: k.months })),
+      },
+    }}
+  >
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const money = (n) => '₺' + nf.format(Math.round(n));
+      const pct = (n) => n.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
+      const TAXF = 1 + TAX.kkdf + TAX.bsmv;
+      const kademe = (k, v) => k.find((x) => v <= x.upTo);
+      const vadeTavani = (k, a) => k.reduce((m, x) => (x.ltv > 0 && a <= x.ltv * x.upTo + 0.5 ? Math.max(m, x.months) : m), 0);
+
+      function loan(P, ratePct, n) {
+        const i = (ratePct / 100) * TAXF;
+        const pay = i === 0 ? P / n : (P * i) / (1 - Math.pow(1 + i, -n));
+        const total = pay * n;
+        const cost = total - P;
+        const interest = cost / TAXF;
+        return { pay, total, cost, interest, kkdf: interest * TAX.kkdf, bsmv: interest * TAX.bsmv, i };
+      }
+
+      function buildSchedule(P, l, n) {
+        const body = $('schedule-body');
+        let bal = P;
+        const rows = [];
+        const showAll = n <= 18;
+        for (let m = 1; m <= n; m++) {
+          const interest = bal * (l.i / TAXF);
+          const tax = interest * (TAXF - 1);
+          let principal = l.pay - interest - tax;
+          if (m === n) principal = bal;
+          bal = Math.max(0, bal - principal);
+          if (showAll || m <= 6 || m > n - 3) {
+            rows.push(`<tr><td>${m}</td><td>${money(l.pay)}</td><td>${money(principal)}</td><td>${money(interest)}</td><td>${money(tax)}</td><td>${money(bal)}</td></tr>`);
+          } else if (m === 7) {
+            rows.push(`<tr class="ellipsis"><td colspan="6">… ${n - 9} ara taksit …</td></tr>`);
+          }
+        }
+        body.innerHTML = rows.join('');
+      }
+
+      function buildGrid(id, k, amounts, rate) {
+        document.querySelector('#' + id + ' tbody').innerHTML = amounts.map((a) => {
+          const cap = vadeTavani(k, a);
+          return `<tr><td>${money(a)}</td>${TERMS.map((m) => `<td>${m <= cap ? money(loan(a, rate, m).pay) : `<span class="na">BDDK: en fazla ${cap} ay</span>`}</td>`).join('')}</tr>`;
+        }).join('');
+      }
+
+      function update() {
+        const V = Math.max(0, +$('in-value').value || 0);
+        const kasko = Math.max(0, +$('in-kasko').value || 0);
+        const BV = kasko > 0 ? kasko : V;                 // BDDK’nın esas aldığı değer
+        const down = Math.min(V, Math.max(0, +$('in-down').value || 0));
+        const P = V - down;
+        const rate = Math.max(0, +$('in-rate').value || 0);
+        const n = Math.max(1, Math.min(120, Math.round(+$('in-months').value || 1)));
+        const sel = document.querySelector('input[name="kural"]:checked');
+        const K = KURAL[sel ? sel.value : 'genel'];
+        const l = loan(P, rate, n);
+        $('out-pay').textContent = money(l.pay);
+        $('out-loan').textContent = money(P);
+        $('out-ltv').textContent = BV > 0 ? '%' + pct((P / BV) * 100) : '—';
+        $('out-total').textContent = money(l.total);
+        $('out-interest').textContent = money(l.interest);
+        $('out-kkdf').textContent = money(l.kkdf);
+        $('out-bsmv').textContent = money(l.bsmv);
+        $('out-cost').textContent = money(l.cost);
+
+        const k = kademe(K, BV);
+        const maxLoan = k.ltv * BV;
+        const aracTanim = kasko > 0 ? `kasko değeri ${money(BV)} olan araçta` : `${money(BV)} değerindeki araçta`;
+        const msgs = [];
+        if (k.ltv === 0) {
+          msgs.push(`BDDK sınırı: değeri ${money(K[K.length - 2].upTo)} üzerindeki araçlara taşıt kredisi kullandırılamaz.`);
+        } else {
+          if (P > maxLoan + 0.5) msgs.push(`BDDK sınırı: ${aracTanim} kredi en fazla %${Math.round(k.ltv * 100)} (${money(maxLoan)}) olabilir; peşinat en az ${money(V - maxLoan)} olmalı.`);
+          if (n > k.months) msgs.push(`BDDK sınırı: bu değerdeki araçta vade en fazla ${k.months} ay.`);
+        }
+        const w = $('out-warn');
+        w.hidden = msgs.length === 0;
+        w.textContent = msgs.join('\n');
+        $('out-limit').textContent = BV === 0
+          ? 'BDDK sınırını görmek için araç fiyatını girin.'
+          : k.ltv === 0
+            ? 'BDDK: bu değerdeki araca taşıt kredisi kullandırılamaz.'
+            : `Bu araç için BDDK sınırı: en fazla ${money(maxLoan)} kredi (%${Math.round(k.ltv * 100)}), en fazla ${k.months} ay vade.`;
+
+        document.querySelectorAll('.preset').forEach((b) => b.classList.toggle('active', +b.dataset.months === n));
+        buildSchedule(P, l, n);
+        buildGrid('grid-g', KURAL.genel, AMOUNTS_G, rate);
+        buildGrid('grid-y', KURAL.yerli, AMOUNTS_Y, rate);
+        document.querySelectorAll('.grid-rate').forEach((e) => { e.textContent = '%' + pct(rate); });
+      }
+
+      ['in-value', 'in-kasko', 'in-down', 'in-rate', 'in-months'].forEach((id) => $(id).addEventListener('input', update));
+      document.querySelectorAll('input[name="kural"]').forEach((r) => r.addEventListener('change', update));
+      document.querySelectorAll('.preset').forEach((b) =>
+        b.addEventListener('click', () => { $('in-months').value = b.dataset.months; update(); })
+      );
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 2rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 620px; margin: 0 auto; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs span small { font-weight: 400; color: var(--text-muted); }
+    .calc-inputs input {
+      font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input::placeholder { color: var(--text-muted); font-weight: 400; }
+    .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .preset-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .preset {
+      font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600; cursor: pointer;
+      padding: 0.35rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); color: var(--text-soft);
+    }
+    .preset:hover { border-color: var(--brand-2); }
+    .preset.active { background: var(--brand-2); border-color: var(--brand-2); color: #fff; }
+    .mode-toggle { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.7rem 0.8rem; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+    .mode-toggle legend { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); padding: 0 0.3rem; }
+    .calc-inputs .radio { flex-direction: row; align-items: flex-start; gap: 0.5rem; cursor: pointer; }
+    .calc-inputs .radio input { width: auto; margin-top: 0.2rem; accent-color: var(--brand-2); }
+    .calc-inputs .radio span { font-weight: 500; }
+    .vade-warn { margin: 0; font-size: 0.82rem; font-weight: 600; color: #a15c07; background: #fdf3e1; padding: 0.5rem 0.7rem; border-radius: var(--radius-sm); white-space: pre-line; }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 1rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.5rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-item.strong { border-top: 1px solid var(--border); padding-top: 0.5rem; }
+    .split-item.strong .split-val { color: var(--brand-ink); font-size: 1.05rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; }
+    .limit-line { margin: 0; font-size: 0.82rem; font-weight: 600; color: var(--text); background: var(--bg-card); padding: 0.5rem 0.7rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-block h3 { font-size: var(--step-1); margin: 1.4rem 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .table-scroll > .rate-table.wide { min-width: 440px; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+    /* Hücreler JS ile yeniden yazılıyor (innerHTML → data-astro-cid yok): hücre kuralları :global, tablo sınıfı kapsamlı */
+    .rate-table :global(th), .rate-table :global(td) { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table :global(th) { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .rate-table tr.hl td { background: var(--brand-tint); }
+    .rate-table :global(tr.ellipsis td) { text-align: center; color: var(--text-muted); font-size: 0.82rem; }
+    .rate-table :global(.na) { font-size: 0.78rem; color: var(--text-muted); }
+    .schedule-scroll { max-height: 420px; overflow: auto; border: 1px solid var(--border); border-radius: var(--radius-sm); }
+    .schedule-scroll table { font-size: 0.86rem; min-width: 480px; }
+    .schedule-scroll th { position: sticky; top: 0; background: var(--bg-card); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; line-height: 1.5; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block li { margin-bottom: 0.4rem; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+    .prose-block .source-note { color: var(--text-muted); line-height: 1.6; }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; padding: 1rem; }
+      .rate-table { font-size: 0.84rem; }
+      .rate-table :global(th), .rate-table :global(td) { padding: 0.5rem 0.35rem; }
+      .rate-table :global(th) { font-size: 0.7rem; letter-spacing: 0.02em; }
+      .schedule-scroll table { font-size: 0.78rem; }
+    }
+  </style>
+</BaseLayout>

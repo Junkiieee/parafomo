@@ -362,9 +362,9 @@ const breadcrumbs = [
     .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
     .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
     .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
-    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
-    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
-    .rate-table tr.ellipsis td { text-align: center; color: var(--text-muted); font-size: 0.82rem; }
+    .rate-table :global(th), .rate-table :global(td) { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table :global(th) { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .rate-table :global(tr.ellipsis td) { text-align: center; color: var(--text-muted); font-size: 0.82rem; }
     .schedule-scroll { max-height: 420px; overflow-y: auto; border: 1px solid var(--border); border-radius: var(--radius-sm); }
     .schedule-scroll table { font-size: 0.88rem; }
     .schedule-scroll th { position: sticky; top: 0; background: var(--bg-card); }

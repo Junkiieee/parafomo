@@ -166,6 +166,8 @@ def vergi_dilimi_card():
 
 
 CARDS = {
+    "tasit-kredisi-hesaplama": faiz_card(
+        "kredi", "tasit", "TAŞIT KREDİSİ FAİZİ", "aylik", "TCMB ortalaması · peşinat ve BDDK vade sınırı"),
     "vergi-dilimi-hesaplama": vergi_dilimi_card,
     "ihbar-tazminati-hesaplama": lambda: {
         # İş Kanunu md.17 — sabit kural

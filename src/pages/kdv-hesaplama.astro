@@ -337,9 +337,9 @@ const breadcrumbs = [
     .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
     .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
     .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
-    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
-    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
-    .rate-table tr.current td { font-weight: 700; color: var(--brand-ink); }
+    .rate-table :global(th), .rate-table :global(td) { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table :global(th) { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .rate-table :global(tr.current td) { font-weight: 700; color: var(--brand-ink); }
     .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
 
     .prose-block, .faq-block { margin-top: 2.5rem; }
