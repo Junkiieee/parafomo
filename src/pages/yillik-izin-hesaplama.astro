@@ -1,0 +1,361 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+
+// Yıllık ücretli izin: 4857 sayılı İş Kanunu md.53 (14/20/26 gün; 18 ve daha küçük / 50 ve daha
+// yukarı yaştakilere en az 20 gün; yer altı işlerinde +4 gün), md.56 (bölünme, hafta tatili ve
+// genel tatil izne sayılmaz, 4 güne kadar ücretsiz yol izni), md.59 (kullanılmayan izin ücreti).
+// Kullanılmayan izin ücreti ücret niteliğindedir: SGK işçi payı %14 + işsizlik %1, gelir vergisi
+// (dilime göre) ve binde 7,59 damga vergisi kesilir.
+const DAMGA = 0.00759;
+const SGK = 0.15;
+const KADEMELER = [
+  { ad: '1 – 5 yıl (5 dahil)', gun: 14 },
+  { ad: '5 – 15 yıl arası', gun: 20 },
+  { ad: '15 yıl ve üzeri', gun: 26 },
+];
+
+const fmt = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+const fmt0 = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+
+// k. hizmet yılı için hak (k ≥ 1), o yılki yaş ile
+const yillikHak = (k: number, yas: number, yeralti: boolean) => {
+  let g = k <= 5 ? 14 : k < 15 ? 20 : 26;
+  if ((yas <= 18 || yas >= 50) && g < 20) g = 20;
+  return g + (yeralti ? 4 : 0);
+};
+const ucret = (aylik: number, gun: number, gvOran: number) => {
+  const brut = (aylik / 30) * gun;
+  const sgk = brut * SGK;
+  const gv = (brut - sgk) * gvOran;
+  const dv = brut * DAMGA;
+  return { brut, sgk, gv, dv, net: brut - sgk - gv - dv };
+};
+
+const DEFAULT_W = 50000;
+const D_YIL = 6;
+const D_YAS = 35;
+const d0Hak = yillikHak(D_YIL, D_YAS, false);
+const d0Kalan = 10;
+const d0 = ucret(DEFAULT_W, d0Kalan, 0.15);
+const UCRETLER = [33030, 50000, 75000, 100000];
+const GUNLER = [5, 10, 14, 20, 26];
+
+const faq = [
+  {
+    q: 'Yıllık izin kaç gün? (2026)',
+    a: 'İş Kanunu md.53’e göre hizmet süresi 1 yıldan 5 yıla kadar (5 yıl dahil) olan işçiye 14 gün, 5 yıldan fazla 15 yıldan az olana 20 gün, 15 yıl (dahil) ve daha fazla olana 26 gün yıllık ücretli izin verilir. Yer altı işlerinde çalışanlara bu süreler 4’er gün artırılarak uygulanır. Süreler asgaridir; iş veya toplu sözleşmeyle artırılabilir.',
+  },
+  {
+    q: '50 yaş üstü ve 18 yaş altı işçinin yıllık izni kaç gün?',
+    a: '18 ve daha küçük yaştaki işçiler ile 50 ve daha yukarı yaştaki işçilere verilecek yıllık ücretli izin 20 günden az olamaz. Örneğin 3 yıllık kıdemi olan 52 yaşındaki işçi 14 değil 20 gün izin hakkı kazanır; 15 yılı dolduran işçinin hakkı ise yaşından bağımsız 26 gündür.',
+  },
+  {
+    q: 'Yıllık izin hakkı ne zaman başlar?',
+    a: 'Yıllık ücretli izne hak kazanmak için işe başlanan günden itibaren, deneme süresi de dahil, en az 1 yıl çalışmış olmak gerekir. İlk yılı dolduran işçi 14 günlük hakkı kazanır; sonraki her hizmet yılında yeni hak doğar. Kullanılmayan izin silinmez, sonraki yıllara devreder.',
+  },
+  {
+    q: 'Yıllık izinde cumartesi ve pazar sayılır mı?',
+    a: 'İş Kanunu md.56’ya göre izin süresine rastlayan ulusal bayram, hafta tatili (genellikle pazar) ve genel tatil günleri izin süresinden sayılmaz. Cumartesi işyerinde çalışma günüyse izin gününden sayılır; haftada 5 gün çalışılan ve cumartesi çalışılmayan işyerlerinde uygulama iş sözleşmesine ve Yargıtay içtihadına göre değişebilir.',
+  },
+  {
+    q: 'Yıllık izin bölünebilir mi?',
+    a: 'Evet. Yıllık izin işveren tarafından bölünemez; ancak tarafların anlaşmasıyla bir bölümü 10 günden az olmamak üzere en çok üç parçaya bölünebilir. İznini işyerinin bulunduğu yer dışında geçirecek işçi isterse, gidiş-dönüş için toplam 4 güne kadar ücretsiz yol izni verilmesi zorunludur.',
+  },
+  {
+    q: 'Kullanılmayan yıllık izin ücreti nasıl hesaplanır?',
+    a: `İş sözleşmesi herhangi bir nedenle sona erdiğinde, hak kazanılıp kullanılmayan izin günlerinin ücreti son brüt ücret üzerinden ödenir (md.59): günlük brüt (aylık ÷ 30) × kalan gün. Örnek: ${fmt0(DEFAULT_W)} ₺ brüt ücretle ${d0Kalan} gün için ${fmt(d0.brut)} ₺ brüt. Bu ödeme ücret sayıldığından SGK işçi payı, gelir vergisi ve damga vergisi kesilir. Alacağın zamanaşımı sözleşmenin bittiği tarihten itibaren 5 yıldır.`,
+  },
+  {
+    q: 'İstifa eden işçi kullanmadığı izin ücretini alır mı?',
+    a: 'Evet. Md.59 sözleşmenin “herhangi bir nedenle” sona ermesinden söz eder; istifa, emeklilik, işveren feshi ya da haklı nedenle fesih fark etmez. Kullanılmayan izin ücreti kıdem ve ihbar tazminatından ayrı bir alacaktır.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Hesaplama Araçları', url: '/hesaplama-araclari/' },
+  { name: 'Yıllık İzin Hesaplama', url: '/yillik-izin-hesaplama/' },
+];
+---
+
+<BaseLayout
+  image="/og/yillik-izin-hesaplama.png"
+  title="Yıllık İzin Hesaplama 2026: Kaç Gün, Kullanılmayan İzin Ücreti"
+  description="Yıllık izin hesaplama 2026: kıdeme göre 14, 20 veya 26 gün (İş Kanunu md.53), 50 yaş üstü en az 20 gün. Birikmiş izni ve kullanılmayan izin ücretini hesapla."
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Çalışan hakları</p>
+      <h1>Yıllık İzin Hesaplama (2026)</h1>
+      <p class="lede">
+        Kıdeminize göre yıllık izniniz <strong>14, 20 veya 26 gündür</strong>; 18 yaş ve altı ile 50 yaş
+        ve üstünde en az 20 gün. Kıdem ve yaşınızı girin; <strong>bu yılki hakkınızı, birikmiş izin
+        gününüzü ve kullanılmayan izin ücretini</strong> görün.
+      </p>
+    </header>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Bu işyerindeki kıdem (tam yıl)</span>
+          <input type="number" id="in-y" value={D_YIL} min="0" max="50" step="1" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Bugünkü yaşınız</span>
+          <input type="number" id="in-a" value={D_YAS} min="14" max="80" step="1" inputmode="numeric" />
+        </label>
+        <label class="check">
+          <input type="checkbox" id="in-u" />
+          <span>Yer altı işinde çalışıyorum (+4 gün)</span>
+        </label>
+        <label>
+          <span>Şimdiye kadar kullandığınız toplam izin (gün)</span>
+          <input type="number" id="in-k" value="0" min="0" step="1" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Aylık brüt ücret (₺) — izin ücreti için</span>
+          <input type="number" id="in-w" value={DEFAULT_W} min="0" step="1000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Gelir vergisi dilimi</span>
+          <select id="in-gv">
+            <option value="0.15" selected>%15</option>
+            <option value="0.20">%20</option>
+            <option value="0.27">%27</option>
+            <option value="0.35">%35</option>
+            <option value="0.40">%40</option>
+          </select>
+        </label>
+        <p class="input-hint">
+          Birikmiş hak, her hizmet yılının o yılki yaşınıza göre hakkı toplanarak bulunur. Dilim için
+          <a href="/vergi-dilimi-hesaplama/">vergi dilimi hesaplama</a>.
+        </p>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Bu yılki yıllık izin hakkınız</span>
+          <span class="result-value" id="out-hak">{d0Hak} gün</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Toplam kazanılan izin (tüm yıllar)</span>
+            <span class="split-val" id="out-top">—</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Kalan (kullanılmayan) izin</span>
+            <span class="split-val" id="out-kal">—</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Kullanılmayan izin ücreti (brüt)</span>
+            <span class="split-val" id="out-brut">—</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">SGK + işsizlik (%15)</span>
+            <span class="split-val" id="out-sgk">—</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Gelir + damga vergisi</span>
+            <span class="split-val" id="out-vg">—</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label"><strong>Net izin ücreti (yaklaşık)</strong></span>
+            <span class="split-val" id="out-net">—</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note"></p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır; hukuki tavsiye değildir. Yasal asgari süreler (4857
+      sayılı İş Kanunu md.53) esas alınmıştır; sözleşmenizde daha uzun süre varsa o geçerlidir. İzin
+      ücretinin gelir vergisi seçtiğiniz dilimin tek oranıyla, SGK kesintisi tavan uygulanmadan yaklaşık
+      hesaplanır. · Kaynak: 4857 sayılı İş Kanunu (mevzuat.gov.tr).
+    </p>
+
+    <section class="table-block">
+      <h2>Yıllık izin süreleri tablosu (İş Kanunu md.53)</h2>
+      <table class="rate-table">
+        <thead><tr><th>Hizmet süresi</th><th>Yıllık izin</th><th>≤18 / ≥50 yaş</th><th>Yer altı işi</th></tr></thead>
+        <tbody>
+          {KADEMELER.map((k) => (
+            <tr><td>{k.ad}</td><td>{k.gun} gün</td><td>{Math.max(20, k.gun)} gün</td><td>{k.gun + 4} gün</td></tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Kaynak: <a href="https://www.mevzuat.gov.tr/mevzuatmetin/1.5.4857.pdf" rel="noopener">4857 sayılı
+        İş Kanunu md.53</a>. Hak için deneme süresi dahil en az 1 yıl çalışmış olmak gerekir. Süreler
+        asgaridir, sözleşmeyle artırılabilir.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Kullanılmayan izin ücreti tablosu (brüt, 2026)</h2>
+      <table class="rate-table">
+        <thead><tr><th>Brüt ücret</th>{GUNLER.map((g) => <th>{g} gün</th>)}</tr></thead>
+        <tbody>
+          {UCRETLER.map((w) => (
+            <tr>
+              <td>₺{fmt0(w)}</td>
+              {GUNLER.map((g) => <td>₺{fmt0(ucret(w, g, 0).brut)}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        33.030 ₺ = 2026 brüt asgari ücret. Formül: aylık brüt ÷ 30 × gün (md.59, son ücret üzerinden).
+        Neti bulmak için SGK işçi payı, gelir vergisi ve binde 7,59 damga vergisi düşülür.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Yıllık izin kuralları: bölünme, tatiller, yol izni</h2>
+      <p>
+        <strong>Tatiller sayılmaz:</strong> izne denk gelen hafta tatili, ulusal bayram ve genel tatil
+        günleri izin süresinden düşülmez (md.56). Ramazan veya Kurban Bayramı’nı kapsayan 14 günlük izin
+        bu yüzden takvimde daha uzun sürer.
+      </p>
+      <p>
+        <strong>Bölünme:</strong> izin kural olarak toplu kullanılır; tarafların anlaşmasıyla bir bölümü
+        10 günden az olmamak üzere en çok üçe bölünebilir. <strong>Yol izni:</strong> iznini işyerinin
+        bulunduğu yer dışında geçirecek işçiye, talep ederse, gidiş-dönüş için toplam 4 güne kadar ücretsiz
+        yol izni verilir. <strong>Vazgeçilemez:</strong> yıllık izin hakkından vazgeçilemez; izin yerine
+        ücret ödenmesi yalnız sözleşme sona erdiğinde mümkündür.
+      </p>
+      <p class="cta-line">
+        İşten ayrılırken diğer alacaklar: <a href="/kidem-tazminati-hesaplama/">kıdem tazminatı
+        hesaplama</a>, <a href="/ihbar-tazminati-hesaplama/">ihbar tazminatı hesaplama</a>,
+        <a href="/issizlik-maasi-hesaplama/">işsizlik maaşı hesaplama</a>,
+        <a href="/net-maas-hesaplama/">net maaş hesaplama</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p set:html={f.a} />
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ DAMGA, SGK }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      function hak(k, yas, u) {
+        let g = k <= 5 ? 14 : k < 15 ? 20 : 26;
+        if ((yas <= 18 || yas >= 50) && g < 20) g = 20;
+        return g + (u ? 4 : 0);
+      }
+      function update() {
+        const y = Math.max(0, Math.floor(+$('in-y').value || 0));
+        const a = Math.max(0, Math.floor(+$('in-a').value || 0));
+        const u = $('in-u').checked;
+        const kul = Math.max(0, +$('in-k').value || 0);
+        const w = Math.max(0, +$('in-w').value || 0);
+        const r = +$('in-gv').value;
+        let top = 0;
+        for (let k = 1; k <= y; k++) top += hak(k, a - (y - k), u);
+        const buYil = y >= 1 ? hak(y, a, u) : 0;
+        const kal = Math.max(0, top - kul);
+        const brut = (w / 30) * kal;
+        const sgk = brut * SGK;
+        const vg = (brut - sgk) * r + brut * DAMGA;
+        $('out-hak').textContent = y >= 1 ? buYil + ' gün' : 'Henüz yok';
+        $('out-top').textContent = top + ' gün';
+        $('out-kal').textContent = kal + ' gün';
+        $('out-brut').textContent = '₺' + nf.format(brut);
+        $('out-sgk').textContent = '₺' + nf.format(sgk);
+        $('out-vg').textContent = '₺' + nf.format(vg);
+        $('out-net').textContent = '₺' + nf.format(brut - sgk - vg);
+        $('out-note').textContent = y >= 1
+          ? y + '. hizmet yılı · ' + kal + ' gün × günlük brüt ₺' + nf.format(w / 30)
+          : 'İzin hakkı deneme süresi dahil 1 yılı doldurunca başlar.';
+      }
+      ['in-y', 'in-a', 'in-k', 'in-w'].forEach((id) => $(id).addEventListener('input', update));
+      ['in-u', 'in-gv'].forEach((id) => $(id).addEventListener('change', update));
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.7rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs label.check { flex-direction: row; align-items: center; gap: 0.5rem; }
+    .calc-inputs label.check input { width: auto; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input, .calc-inputs select {
+      font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus, .calc-inputs select:focus {
+      outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft);
+    }
+    .input-hint { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 0.9rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.95rem; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; overflow-x: auto; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>

@@ -162,6 +162,10 @@ CARDS = {
         # İş Kanunu md.17 — sabit kural
         "kicker": "İHBAR TAZMİNATI 2026", "stat": "2–8 hafta",
         "sub": "kıdeme göre ihbar süresi · brüt ve net tazminatı hesapla"},
+    "yillik-izin-hesaplama": lambda: {
+        # İş Kanunu md.53 — sabit kural
+        "kicker": "YILLIK İZİN 2026", "stat": "14 · 20 · 26 gün",
+        "sub": "kıdeme göre izin hakkı · kullanılmayan izin ücretini hesapla"},
     "gelir-vergisi-hesaplama": lambda: {
         # 332 Seri No'lu GVK Tebliği; Ocak 2027'de sayfayla birlikte güncelle
         "kicker": "KİRA GELİR VERGİSİ 2026", "stat": "₺58.000",
