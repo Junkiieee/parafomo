@@ -1,6 +1,15 @@
 # Kaan'dan beklenenler (haftalık koşu 2026-10-15)
 
-_Şu an senden beklenen iş yok. EVDS anahtarı 2026-10-15'te doğrulandı (`~/.config/parafomo/evds.env`)._
+1. **3 Kasım (Salı) öğleden sonra — Google'a "yeniden tara" de (5 dakika)**
+   TÜİK Ekim verisi 10:00'da açıklanınca sitedeki 2027 yeniden değerleme sayfaları otomatik "Belli Oldu: %X" olur,
+   ama Google bu sayfaları ~10 günde bir tarıyor. Search Console → üstteki "URL denetimi" kutusu → aşağıdaki her
+   adresi yapıştır → "Dizine eklenmesini iste": parafomo.com/yeniden-degerleme-orani/ ·
+   parafomo.com/blog/2027-zamlari-yeniden-degerleme-orani-rehberi/ · parafomo.com/mtv-hesaplama/ ·
+   parafomo.com/emlak-vergisi-hesaplama/ · parafomo.com/kira-artis-orani-hesaplama/. (Aynısı 5 Ocak'ta emekli/memur
+   zammı sayfaları için de değerli olacak.) Neden: yılın en büyük arama dalgası o gün; Google eski "tahmin"i
+   gösterirse tık kaçar.
+
+_EVDS anahtarı 2026-10-15'te doğrulandı (`~/.config/parafomo/evds.env`)._
 _Görev Masası (2026-10-15, Kaan kararı): Claude Docs panosu emekli → **dashboard.parafomo.com** kanonik; kararlar
 `agent/board.py` ile yerel dosyadan okunur (bağlayıcı gerekmez). Eski "pano okunamıyor" görevi bununla kapandı._
 
