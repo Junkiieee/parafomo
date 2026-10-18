@@ -248,6 +248,17 @@ def stale_data():
                 out.append("canlı yazı veriden geride: " + line.replace("[live-posts] ", "") + " → python3 scripts/live-posts.py")
     except Exception as e:
         out.append(f"live-posts --check çalışmadı: {e}")
+    # Yıl sonu: son toplantı geçtiyse gelecek yılın takvimi eklenmiş olmalı (takvim sayfası "sıradaki karar"ı gösteremez)
+    for name, label, extra in (("tcmb-2026.json", "TCMB", None), ("fomc-2026.json", "Fed", "meetings2027")):
+        dd = load(name)
+        if not dd:
+            continue
+        dates = [m["decisionDate"] for m in dd.get("meetings", [])] + [m["decisionDate"] for m in dd.get(extra, [])] if extra else \
+            [m["decisionDate"] for m in dd.get("meetings", [])]
+        nxt = os.path.exists(os.path.join(ROOT, "data", name.replace("2026", str(today.year + 1))))
+        if dates and max(dates) < today.isoformat() and not nxt:
+            out.append(f"{label} {today.year + 1} toplantı takvimi yok (son toplantı {max(dates)} geçti) → resmî takvimi "
+                       f"WebSearch ile doğrula, data/{name.replace('2026', str(today.year + 1))} ekle ve sayfayı ona bağla")
     for name, label in (("fomc-2026.json", "Fed"), ("tcmb-2026.json", "TCMB")):
         d = load(name)
         if not d:
