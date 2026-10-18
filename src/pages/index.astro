@@ -1,11 +1,17 @@
 ---
 import { getCollection } from 'astro:content';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
 import Newsletter from '../components/Newsletter.astro';
 import { CATEGORIES, SITE } from '../site.config';
 import ipoArchive from '../../data/halka-arz-sirketler.json';
 import ipoReturns from '../../data/halka-arz-getiri.json';
+import yd from '../../data/yeniden-degerleme.json';
+import asgari from '../../data/asgari-ucret.json';
+import kira from '../../data/kira-artis-2026.json';
+import { cumKnown, remaining, sskProj, memurProj } from '../data/zam2027';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
@@ -34,6 +40,32 @@ const dayIdx = Math.floor(Date.now() / 86400000);
 const ipoWaitRot = ipoWait.length ? ipoWait.map((_, i) => ipoWait[(i + dayIdx * 3) % ipoWait.length]) : [];
 const ipoBox = [...ipoActive, ...ipoDone, ...ipoWaitRot].slice(0, 6);
 const pctFmt = (n: number) => (n > 0 ? '+' : '') + n.toLocaleString('tr-TR', { maximumFractionDigits: 1 }) + '%';
+
+// 2027 zam sezonu kutusu (Kasım-Ocak en büyük finans arama dönemi): ana sayfanın iç link gücünü zam araçlarına verir.
+// Rakamlar veri dosyalarından; sayfa dosyası olmayan bağlantı gösterilmez (yeni araçlar eklendikçe kendiliğinden çıkar).
+const hasPage = (slug: string) => existsSync(join(process.cwd(), 'src', 'pages', `${slug}.astro`));
+const nf1 = (n: number, d = 1) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const ydOran = (yd.tebligOrani ?? yd.onikiAyOrt) as number;
+const ydKesin = yd.tebligOrani != null || yd.ekimVerisiGeldi;
+const auYeni = (asgari as any).yeni;
+const auNet = (auYeni ?? asgari.guncel).net as number;
+const ZAM: { slug: string; ad: string; deger: string }[] = [
+  { slug: 'yeniden-degerleme-orani', ad: `Yeniden değerleme ${yd.hedefYil}`, deger: `${ydKesin ? '' : '≈'}%${nf1(ydOran, ydKesin ? 2 : 1)}` },
+  { slug: 'emekli-zammi-hesaplama', ad: 'Emekli zammı (Ocak)', deger: remaining === 0 ? `%${nf1(cumKnown * 100, 2)}` : `≈%${nf1(sskProj * 100)}` },
+  { slug: 'memur-zammi-hesaplama', ad: 'Memur zammı (Ocak)', deger: `${remaining === 0 ? '' : '≈'}%${nf1(memurProj.zam * 100, remaining === 0 ? 2 : 1)}` },
+  { slug: 'asgari-ucret-hesaplama', ad: auYeni ? `Asgari ücret ${auYeni.yil}` : 'Asgari ücret 2027', deger: auYeni ? `₺${Math.round(auNet).toLocaleString('tr-TR')}` : 'Aralık’ta' },
+  { slug: 'mtv-hesaplama', ad: `MTV ${yd.hedefYil}`, deger: 'hesapla' },
+  { slug: 'emlak-vergisi-hesaplama', ad: `Emlak vergisi ${yd.hedefYil}`, deger: `${ydKesin ? '' : '≈'}+%${nf1(ydOran)}` },
+  { slug: 'kira-artis-orani-hesaplama', ad: `Kira artışı (${(kira as any).guncelAy})`, deger: `%${nf1((kira as any).guncelOran, 2)}` },
+  { slug: 'pasaport-ehliyet-harci', ad: 'Pasaport ve ehliyet harcı', deger: 'tablo' },
+  { slug: 'trafik-cezalari-hesaplama', ad: 'Trafik cezaları', deger: 'hesapla' },
+  { slug: 'damga-vergisi-hesaplama', ad: 'Damga vergisi', deger: 'hesapla' },
+  { slug: 'tapu-harci-hesaplama', ad: 'Tapu harcı', deger: 'hesapla' },
+  { slug: 'noter-ucretleri', ad: 'Noter ücretleri', deger: 'tablo' },
+  { slug: 'arac-muayene-ucreti', ad: 'Araç muayene ücreti', deger: 'tablo' },
+  { slug: 'veraset-ve-intikal-vergisi-hesaplama', ad: 'Veraset ve intikal vergisi', deger: 'hesapla' },
+  { slug: 'gelir-vergisi-hesaplama', ad: 'Gelir vergisi (kira)', deger: 'hesapla' },
+].filter((z) => hasPage(z.slug));
 ---
 
 <BaseLayout
@@ -119,6 +151,22 @@ const pctFmt = (n: number) => (n > 0 ? '+' : '') + n.toLocaleString('tr-TR', { m
           <h3>{c.name}</h3>
           <p class="soft">{c.desc}</p>
           <span class="cat-go">Keşfet →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- 2027 ZAM SEZONU -->
+  <section class="container section zam-section">
+    <div class="section-head">
+      <h2>2027 Zam Sezonu</h2>
+      <a href="/blog/2027-zamlari-yeniden-degerleme-orani-rehberi/" class="muted-link">2027'de neler zamlanacak? →</a>
+    </div>
+    <div class="zam-grid">
+      {ZAM.map((z) => (
+        <a href={`/${z.slug}/`} class="zam-item card">
+          <span class="zam-ad">{z.ad}</span>
+          <span class="zam-deger">{z.deger}</span>
         </a>
       ))}
     </div>
@@ -385,6 +433,10 @@ const pctFmt = (n: number) => (n > 0 ? '+' : '') + n.toLocaleString('tr-TR', { m
   .ipo-meta .up { color: #16a34a; }
   .ipo-meta .down { color: #dc2626; }
   .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.1rem; }
+  .zam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.6rem; }
+  .zam-item { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.75rem 0.95rem; text-decoration: none; }
+  .zam-ad { font-size: var(--step--1); color: var(--text-soft); font-weight: 600; line-height: 1.3; }
+  .zam-deger { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600; color: var(--brand-ink); }
   .tool-card { padding: 1.2rem 1.4rem 1.4rem; display: flex; align-items: flex-start; gap: 0.9rem; }
   .tool-icon { font-size: 1.6rem; line-height: 1; flex-shrink: 0; }
   .tool-card h3 { font-size: var(--step-0); margin: 0 0 0.25rem; color: var(--text); }
