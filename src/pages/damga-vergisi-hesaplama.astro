@@ -2,6 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import yd from '../../data/yeniden-degerleme.json';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+// Noter sayfası paralel geliştiriliyordu: dosyası yoksa link verilmez (kırık link olmasın)
+const hasNoter = existsSync(join(process.cwd(), 'src', 'pages', 'noter-ucretleri.astro'));
 
 // Damga vergisi = kağıttaki tutar × nispi oran (binde) ya da maktu (sabit) tutar — 488 s. DVK + ekli (1) sayılı tablo.
 // 2026 oran/tutarları BİRİNCİL kaynaktan okundu (2026-10-18): DVK Genel Tebliği Seri No 71, RG 31.12.2025 sayı 33124
@@ -355,7 +359,7 @@ const breadcrumbs = [
       </ul>
       <p>
         Yeni dönem kirasını bulmak için → <a href="/kira-artis-orani-hesaplama/">kira artış oranı hesaplama</a>.
-        Sözleşmeyi noterde yaptıracaksanız → <a href="/noter-ucretleri/">noter ücretleri</a>.
+        {hasNoter && <>Sözleşmeyi noterde yaptıracaksanız → <a href="/noter-ucretleri/">noter ücretleri</a>.</>}
       </p>
 
       <h2>Maaş ve ücretlerde damga vergisi</h2>

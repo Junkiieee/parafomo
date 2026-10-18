@@ -166,6 +166,14 @@ def vergi_dilimi_card():
 
 
 CARDS = {
+    "tapu-harci-hesaplama": lambda: {
+        # Harçlar K. (4) s. tarife binde 20+20; TKGM 2026 döner sermaye; Ocak 2027'de güncelle
+        "kicker": "TAPU HARCI 2026", "stat": "%2 + %2",
+        "sub": "alıcı ve satıcı ayrı · döner sermaye 2.227 ₺ × katsayı"},
+    "arac-muayene-ucreti": lambda: {
+        # TÜVTÜRK 2026 tarifesi (KTK md.35, YD oranıyla); Ocak 2027'de sayfayla birlikte güncelle
+        "kicker": "ARAÇ MUAYENE ÜCRETİ 2026", "stat": "₺3.288",
+        "sub": "otomobil · gecikme %5/ay · 2027 tahminini hesapla"},
     "damga-vergisi-hesaplama": lambda: {
         # DVK Genel Tebliği Seri 71 (RG 31.12.2025) oranları; Ocak 2027'de sayfayla birlikte güncelle
         "kicker": "DAMGA VERGİSİ 2026", "stat": "binde 9,48",

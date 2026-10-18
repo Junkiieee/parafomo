@@ -43,14 +43,12 @@ Otorite/dış link işleri şimdilik YAPILMAZ (Kaan: "kalsın"). Fırsat listesi
 - [x] K10 taşıt kredisi hesaplama (26) → **/tasit-kredisi-hesaplama/** (canlı 2026-10-18, RC alt-ajan; BDDK 10099 genel + 11158 yerli elektrikli sınırları, KKDF/BSMV %15, TCMB haftalık faiz otomatik)
 - [ ] K11 noter ücreti (76) — ⏳ RC 2026-10-18 YAPIYOR (paralel alt-ajan; günlük koşu ATLA) → **/noter-ucretleri/** — Noterlik Ücret Tarifesi (Resmî Gazete) — araç satış, vekaletname,
   onay; her Ocak yeni tarife → sezon notu.
-- [ ] K12 araç muayene ücreti (46) — ⏳ RC 2026-10-18 YAPIYOR (paralel alt-ajan; günlük koşu ATLA) → **/arac-muayene-ucreti/** — TÜVTÜRK resmî tarife (araç tipine göre), gecikme
-  cezası; her Ocak YD oranıyla güncellenir.
-- [ ] K13 trafik cezası sorgulama (62) — ⏳ RC 2026-10-18 YAPIYOR (paralel alt-ajan; günlük koşu ATLA) → /trafik-cezalari-hesaplama'ya "sorgulama ve ödeme" bölümü (e-Devlet/
-  GİB adımları) — yeni sayfa açma.
+- [x] K12 araç muayene ücreti (46) → **/arac-muayene-ucreti/** (canlı 2026-10-18, RC alt-ajan; TÜVTÜRK 2026 tarifesi KTK md.35 formülüyle birebir doğrulandı, gecikme %5/ay, 2027 tahmini YD ile otomatik)
+- [x] K13 trafik cezası sorgulama (62) → /trafik-cezalari-hesaplama/#sorgulama bölümü (canlı 2026-10-18, RC; ayrıca indirim süresi 1 AY düzeltildi — KK 17/6)
 - [ ] K14 tefas (160) + fon getirileri (14) → blog "TEFAS nedir, fon nasıl alınır" (kaynak: TEFAS/SPK). → content-queue'ya eklendi (RC 10-18); yazınca [x]
 - [ ] K15 beyanname (246) + geçici vergi (46) + kira gelir vergisi (36) → beyanname rehberi + kira geliri beyanı
   yazısı (Mart sezonu: Şubat ortasına kadar canlı).
-- [ ] K16 kurumlar vergisi (53) [damga vergisi + tapu harcı → ⏳ RC 2026-10-18 YAPIYOR; kalanlar açık], değer artış kazancı (25), bağkur borcu (24), damga vergisi hesaplama (15),
+- [ ] K16 kurumlar vergisi (53) [damga vergisi → ✅ /damga-vergisi-hesaplama/ canlı 2026-10-18 · tapu harcı → ✅ /tapu-harci-hesaplama/ canlı 2026-10-18; kalanlar açık], değer artış kazancı (25), bağkur borcu (24), damga vergisi hesaplama (15),
   tapu harcı hesaplama (14), kredi kartı faiz hesaplama (12) → küçük araç/rehberler (önce damga + tapu: zam sezonu).
 - [ ] K17 brüt asgari ücret (82) — ⏳ RC 2026-10-18 YAPIYOR (paralel alt-ajan; günlük koşu ATLA) + asgari ücret 2027 net (28) → /asgari-ucret-hesaplama'ya "2027" bölümü — RESMÎ
   karar açıklanınca (Aralık) aynı gün; önceden yalnız senaryo tablosu.

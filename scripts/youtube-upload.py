@@ -26,7 +26,7 @@ def site_url_for(slug):
     HUNİ: her Short izleyicisini siteye çeker + bağlamsal backlink üretir."""
     if os.path.exists(os.path.join(BLOG_DIR, f"{slug}.md")):
         return f"https://parafomo.com/blog/{slug}/"
-    return "https://parafomo.com"
+    return "https://parafomo.com/"
 
 
 # Konu → İLGİLİ ARAÇ SAYFASI eşlemesi (huni iyileştirme). Blog olmayan viral Short'un
@@ -34,33 +34,57 @@ def site_url_for(slug):
 # değerli bir sayfaya iner (jenerik ana sayfadan daha iyi landing). Retention'ı ve hashtag
 # arama bloğunu ETKİLEMEZ — ayrı funnel/UTM yüzeyi.
 _TOOL_MAP = [
-    ("kdv", "/kdv-hesaplama"),
-    ("altın", "/altin-hesaplama"), ("altin", "/altin-hesaplama"), ("gram", "/altin-hesaplama"),
-    ("asgari", "/asgari-ucret-hesaplama"),
-    ("işsizlik", "/issizlik-maasi-hesaplama"), ("issizlik", "/issizlik-maasi-hesaplama"),
-    ("işsizlik ödeneği", "/issizlik-maasi-hesaplama"), ("işten çıkar", "/issizlik-maasi-hesaplama"),
-    ("net maaş", "/net-maas-hesaplama"), ("net maas", "/net-maas-hesaplama"),
-    ("maaş", "/net-maas-hesaplama"), ("maas", "/net-maas-hesaplama"),
-    ("kıdem", "/kidem-tazminati-hesaplama"), ("kidem", "/kidem-tazminati-hesaplama"),
-    ("tazminat", "/kidem-tazminati-hesaplama"),
-    ("kira", "/kira-artis-orani-hesaplama"),
-    ("kredi", "/kredi-hesaplama"), ("taksit", "/kredi-hesaplama"),
-    ("bileşik", "/bilesik-faiz-hesaplama"), ("bilesik", "/bilesik-faiz-hesaplama"),
-    ("mevduat", "/mevduat-faizi-hesaplama"),
-    ("enflasyon", "/enflasyon-takvimi"), ("tüfe", "/enflasyon-takvimi"), ("tufe", "/enflasyon-takvimi"),
-    ("tcmb", "/tcmb-faiz-takvimi"),
-    ("fed", "/fed-faiz-takvimi"), ("fomc", "/fed-faiz-takvimi"),
-    ("halka arz", "/halka-arz"), ("ipo", "/halka-arz"),
+    # Önce özgül konular (ilk eşleşen kazanır). Yollar '/' ile biter: site kanonik URL'i (301 zinciri yok).
+    ("kdv", "/kdv-hesaplama/"),
+    ("emekli", "/emekli-zammi-hesaplama/"), ("memur", "/memur-zammi-hesaplama/"),
+    ("bayram ikramiye", "/bayram-ikramiyesi/"),
+    ("mtv", "/mtv-hesaplama/"), ("motorlu taşıt", "/mtv-hesaplama/"),
+    ("emlak vergisi", "/emlak-vergisi-hesaplama/"), ("tapu", "/tapu-harci-hesaplama/"),
+    ("yeniden değerleme", "/yeniden-degerleme-orani/"), ("zam oranı", "/yeniden-degerleme-orani/"),
+    ("pasaport", "/pasaport-ehliyet-harci/"), ("ehliyet", "/pasaport-ehliyet-harci/"), ("harç", "/pasaport-ehliyet-harci/"),
+    ("trafik ceza", "/trafik-cezalari-hesaplama/"), ("muayene", "/arac-muayene-ucreti/"),
+    ("damga vergisi", "/damga-vergisi-hesaplama/"), ("noter", "/noter-ucretleri/"),
+    ("gelir vergisi", "/gelir-vergisi-hesaplama/"), ("vergi dilim", "/vergi-dilimi-hesaplama/"),
+    ("konut kredi", "/konut-kredisi-hesaplama/"), ("ev kredi", "/konut-kredisi-hesaplama/"),
+    ("ihtiyaç kredi", "/ihtiyac-kredisi-hesaplama/"), ("taşıt kredi", "/tasit-kredisi-hesaplama/"),
+    ("araç kredi", "/tasit-kredisi-hesaplama/"),
+    ("bilezik", "/altin-fiyatlari/22-ayar-bilezik/"), ("çeyrek", "/altin-fiyatlari/ceyrek-altin/"),
+    ("cumhuriyet altın", "/altin-fiyatlari/cumhuriyet-altini/"), ("altın kaç gram", "/altin-kac-gram/"),
+    ("altın", "/altin-hesaplama/"), ("altin", "/altin-hesaplama/"), ("gram", "/altin-hesaplama/"),
+    ("gümüş", "/gumus-getiri/"), ("gumus", "/gumus-getiri/"),
+    ("asgari", "/asgari-ucret-hesaplama/"),
+    ("işsizlik", "/issizlik-maasi-hesaplama/"), ("issizlik", "/issizlik-maasi-hesaplama/"),
+    ("işsizlik ödeneği", "/issizlik-maasi-hesaplama/"), ("işten çıkar", "/issizlik-maasi-hesaplama/"),
+    ("ihbar", "/ihbar-tazminati-hesaplama/"), ("yıllık izin", "/yillik-izin-hesaplama/"),
+    ("net maaş", "/net-maas-hesaplama/"), ("net maas", "/net-maas-hesaplama/"),
+    ("maaş", "/net-maas-hesaplama/"), ("maas", "/net-maas-hesaplama/"),
+    ("kıdem", "/kidem-tazminati-hesaplama/"), ("kidem", "/kidem-tazminati-hesaplama/"),
+    ("tazminat", "/kidem-tazminati-hesaplama/"),
+    ("kira", "/kira-artis-orani-hesaplama/"),
+    ("kredi", "/kredi-hesaplama/"), ("taksit", "/kredi-hesaplama/"),
+    ("bileşik", "/bilesik-faiz-hesaplama/"), ("bilesik", "/bilesik-faiz-hesaplama/"),
+    ("mevduat", "/mevduat-faizi-hesaplama/"),
+    ("enflasyon", "/enflasyon-hesaplama/"), ("tüfe", "/enflasyon-hesaplama/"), ("tufe", "/enflasyon-hesaplama/"),
+    ("eriyor", "/enflasyon-hesaplama/"), ("alım gücü", "/enflasyon-hesaplama/"),
+    ("tcmb", "/tcmb-faiz-takvimi/"),
+    ("fed", "/fed-faiz-takvimi/"), ("fomc", "/fed-faiz-takvimi/"),
+    ("halka arz", "/halka-arz/"), ("ipo", "/halka-arz/"),
+    ("dolar", "/dolar-getiri/"), ("euro", "/euro-getiri/"), ("bitcoin", "/bitcoin-getiri/"),
+    ("borsa", "/bist-getiri/"), ("bist", "/bist-getiri/"),
 ]
 
 
 def tool_url_for(slug, title=""):
-    """Blog olmayan Short için konuya en uygun araç sayfası URL'i (yoksa ana sayfa)."""
+    """Blog olmayan Short için konuya en uygun araç sayfası URL'i (yoksa araç merkezi).
+    Sayfa dosyası henüz yoksa (yeni araç geliştiriliyor) o eşleşme atlanır → açıklamada 404 link olmaz."""
     hay = f"{slug} {title}".lower()
+    pages = os.path.join(os.path.dirname(BLOG_DIR), "..", "pages")
     for kw, path in _TOOL_MAP:
         if kw in hay:
-            return f"https://parafomo.com{path}"
-    return "https://parafomo.com/ekonomik-takvim"
+            first = path.strip("/").split("/")[0]  # dinamik rotalar (altin-fiyatlari/[tur]) için ilk parça yeterli
+            if os.path.exists(os.path.join(pages, f"{first}.astro")) or os.path.isdir(os.path.join(pages, first)):
+                return f"https://parafomo.com{path}"
+    return "https://parafomo.com/hesaplama-araclari/"
 
 
 def with_utm(url):

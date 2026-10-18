@@ -1,0 +1,550 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import yd from '../../data/yeniden-degerleme.json';
+import T from '../../data/tapu-harci-2026.json';
+
+// Tapu harcı (satış) = matrah × binde 20, alıcı ve satıcı için AYRI AYRI — 492 s. Harçlar K. (4) s. tarife I-20/a.
+// Matrah: beyan edilen bedel, emlak vergisi değerinden az olamaz (HK md. 63; 7566 s. K. md. 8 ile tarife ifadesi de böyle, yürürlük 19.12.2025).
+// Döner sermaye 2026: gösterge 2.227 TL × tapu müdürlüğünün yöresel katsayısı (0,30-3,00) — TKGM 2026 Yılı Fiyat Listesi, 6083 s. K. md. 8/3.
+// Tarife tutarları her yıl önceki yılın yeniden değerleme oranıyla artar: 2026 = 1.774,50 × 1,2549 → 2.227. Doğrulama: 2026-10-18 (kaynaklar data/tapu-harci-2026.json).
+const HARC = T.harc.satisBindeTarafBasina / 1000;
+const ASGARI = T.harc.asgariNispiHarc;
+const G = T.donerSermaye.gosterge;
+const ILAVE = T.donerSermaye.ilaveGosterge;
+const YAB = T.donerSermaye.yabanciEk;
+const KMIN = T.donerSermaye.katsayiMin;
+const KMAX = T.donerSermaye.katsayiMax;
+const G25 = T.donerSermaye.onceki.gosterge;
+const SRC = T.kaynaklar;
+
+const teblig = yd.tebligOrani as number | null;
+const YD = teblig ?? yd.onikiAyOrt; // %
+const durum = teblig != null ? 'teblig' : yd.ekimVerisiGeldi ? 'hesap' : 'tahmin';
+const g27Resmi = (T as { gosterge2027?: number | null }).gosterge2027 ?? null;
+const G27 = g27Resmi ?? Math.round(G * (1 + YD / 100));
+const lbl27 = g27Resmi != null ? 'resmî' : durum === 'tahmin' ? 'tahmini' : durum === 'hesap' ? 'hesaplanan' : 'beklenen';
+
+const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const sonAyAd = `${MONTHS[+yd.sonAy.slice(5) - 1]} ${yd.sonAy.slice(0, 4)}`;
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const ydTxt = `${durum === 'tahmin' ? '≈' : ''}%${nf(YD)}`;
+const ydDurumTxt =
+  durum === 'teblig'
+    ? `%${nf(YD)} olarak ilan edildi`
+    : durum === 'hesap'
+      ? `Ekim Yİ-ÜFE verisiyle %${nf(YD)} olarak hesaplandı; tebliğ Kasım sonunda yayımlanır`
+      : `${sonAyAd} Yİ-ÜFE verisine göre yaklaşık %${nf(YD)}; Ekim verisi Kasım başında açıklanınca hesaben kesinleşir`;
+
+// Hesap yardımcıları (tarife: 10 TL’ye kadar matrah kesirleri dikkate alınmaz; nispi harcın en azı 346,10 TL)
+const harcOf = (base: number) => (base > 0 ? Math.max(ASGARI, Math.floor(base / 10) * 10 * HARC) : 0);
+const islem = (k: number, g = G) => Math.round(k * g);
+
+const D = { price: 3000000, k: KMAX };
+const h3 = harcOf(D.price);
+const dsMax = islem(KMAX);
+const dsMin = islem(KMIN);
+const ds1 = islem(1);
+const ds27Max = islem(KMAX, G27);
+const tot3Max = 2 * h3 + dsMax;
+const tot3One = 2 * h3 + ds1;
+const tot3Kredi = 2 * h3 + 2 * dsMax;
+
+const K_TABLE = [0.3, 0.5, 1, 1.5, 2, 2.5, 3].map((k) => ({ k, ds: islem(k), ds2: 2 * islem(k), ds27: islem(k, G27) }));
+const PRICE_TABLE = [1000000, 2000000, 3000000, 5000000, 10000000].map((v) => {
+  const h = harcOf(v);
+  return { v, h, th: 2 * h, tot: 2 * h + dsMax };
+});
+
+// Emlak vergisi değeri 2027: önceki yıl değeri × (1 + YD) — EVK md. 29 (7566 s. K. ile “yarısı” → tamamı); bin liraya kadar kesirler atılır.
+const EVD26 = 2000000;
+const EVD27 = Math.floor((EVD26 * (1 + YD / 100)) / 1000) * 1000;
+const minH26 = harcOf(EVD26);
+const minH27 = harcOf(EVD27);
+
+const g27Cumle =
+  g27Resmi != null
+    ? `TKGM’nin ilan ettiği 2027 tarifesinde gösterge ${fmt(G27)} TL’dir (2026: ${fmt(G)} TL).`
+    : durum === 'tahmin'
+      ? `2027 için oran ${sonAyAd} verisiyle yaklaşık %${nf(YD)} olduğundan gösterge tahminen ${fmt(G27)} TL olur (2026: ${fmt(G)} TL).`
+      : `%${nf(YD)} oranıyla 2027 göstergesi ${fmt(G27)} TL olur (2026: ${fmt(G)} TL); kesin tutarı TKGM ilan eder.`;
+// Düzyazıda oran cümlesi ayrıca geçtiği için kısa sürüm
+const g27Kisa =
+  g27Resmi != null
+    ? `TKGM’nin ilan ettiği 2027 tarifesinde gösterge ${fmt(G27)} TL’dir.`
+    : durum === 'tahmin'
+      ? `Bu oranla 2027 göstergesi tahminen ${fmt(G27)} TL olur.`
+      : `Bu oranla 2027 göstergesi ${fmt(G27)} TL olur; kesin tutarı TKGM ilan eder.`;
+
+const faq = [
+  {
+    q: 'Tapu harcı 2026’da ne kadar, nasıl hesaplanır?',
+    a: `Satışta tapu harcı, tapuda beyan edilen satış bedelinin alıcı için binde 20’si (%2), satıcı için binde 20’sidir (%2); toplam yük %4’tür. Beyan edilen bedel taşınmazın emlak vergisi değerinden az olamaz; azsa harç vergi değeri üzerinden hesaplanır. Harca ek olarak Tapu ve Kadastro Genel Müdürlüğü döner sermaye ücreti ödenir: 2026’da ${fmt(G)} TL × tapu müdürlüğünün yöresel katsayısı.`,
+  },
+  {
+    q: '3.000.000 TL’lik bir evin tapu masrafı ne kadar?',
+    a: `3.000.000 TL’lik satışta alıcı ${fmt(h3)} TL, satıcı ${fmt(h3)} TL tapu harcı öder; toplam harç ${fmt(2 * h3)} TL’dir. Buna döner sermaye eklenir: yöresel katsayısı 3,00 olan bir ilçede ${fmt(dsMax)} TL (toplam ${fmt(tot3Max)} TL), katsayısı 1,00 olan bir ilçede ${fmt(ds1)} TL (toplam ${fmt(tot3One)} TL). Ev konut kredisiyle alınıyorsa banka ipoteği harçtan muaftır, ancak ipotek için ikinci bir döner sermaye işlem ücreti ödenir; katsayı 3,00 ise toplam ${fmt(tot3Kredi)} TL olur.`,
+  },
+  {
+    q: 'Tapu harcını kim öder, tamamını alıcı ödeyebilir mi?',
+    a: 'Kanuna göre alıcı ve satıcı binde 20’lik paylarını ayrı ayrı öder. Taraflar harcın tamamını alıcının (ya da satıcının) karşılamasını aralarında kararlaştırabilir; ancak Vergi Usul Kanunu’nun 8. maddesi gereği vergi sorumluluğuna ilişkin özel anlaşmalar vergi dairesini bağlamaz. Yani vergi idaresi karşısında her taraf kendi payından sorumlu kalır.',
+  },
+  {
+    q: 'Döner sermaye ücreti 2026’da ne kadar?',
+    a: `TKGM’nin 2026 tarifesinde satışın işlem ücreti, ${fmt(G)} TL’lik gösterge ile taşınmazın bağlı olduğu tapu müdürlüğünün yöresel katsayısının çarpımıdır. Katsayı Bakanlıkça 0,30 ile 3,00 arasında belirlendiği için tek bir daire veya taşınmazın satışında ücret ${fmt(dsMin)} TL ile ${fmt(dsMax)} TL arasındadır ve KDV dahildir. Satışla birlikte ipotek kurulursa iki işlem ücreti alınır; taraflardan biri yabancıysa her taşınmaz için ayrıca ${fmt(YAB)} TL eklenir.`,
+  },
+  {
+    q: '2027’de tapu harcı artacak mı?',
+    a: `Oran artmıyor: satıştaki binde 20’lik tapu harcı kanunla belirlenir ve yeniden değerleme oranıyla otomatik değişmez; aynı bedelle yapılan bir satışın harcı 2027’de de aynıdır. Değişecek olanlar sabit tutarlar ve alt sınırdır. Döner sermaye tutarları her yıl yeniden değerleme oranı kadar artar: ${g27Cumle} Emlak vergisi değerleri de 7566 sayılı Kanun’la artık oranın tamamı kadar yükseldiği için tapu harcının asgari matrahı 2027’de artar.${durum === 'tahmin' ? ' Bu rakamlar tahminidir; oran Kasım 2026’da kesinleşir.' : ''}`,
+  },
+  {
+    q: 'Tapuda düşük bedel göstermenin cezası nedir?',
+    a: 'Beyan edilen bedelin gerçeği yansıtmadığı veya emlak vergisi değerinin altında kaldığı sonradan tespit edilirse aradaki farkın harcı ikmalen ya da re’sen tarh edilir. Bu farka uygulanan vergi ziyaı cezası, 7566 sayılı Kanun’la 19 Aralık 2025’ten itibaren %25’ten “bir kat”a çıkarıldı. Ayrıca konut kredisi için düzenlenen değerleme raporları 22 Mayıs 2026’dan beri düzenlendikleri gün TKGM’ye elektronik olarak gönderiliyor.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Tapu Harcı Hesaplama', url: '/tapu-harci-hesaplama/' },
+];
+const dogrulamaLabel = new Date(T.dogrulama + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  title="Tapu Harcı Hesaplama 2026 | Tapu Masrafı, Döner Sermaye, 2027"
+  description={`Tapu harcı hesaplama 2026: alıcı ve satıcı ayrı ayrı %2 öder; döner sermaye ${fmt(G)} TL × yöresel katsayı. 3 milyonluk evin tapu masrafı ve 2027’de değişenler.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+  image="/og/tapu-harci-hesaplama.png"
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Tapu</p>
+      <h1>Tapu Harcı Hesaplama 2026: Tapu Masrafı ve Döner Sermaye</h1>
+      <p class="lede">
+        Satış bedelini girin; alıcının ve satıcının ödeyeceği <strong>tapu harcını</strong>, TKGM
+        <strong>döner sermaye ücretini</strong> ve toplam tapu masrafını görün. <strong>2027’de neyin
+        değişeceği</strong> de aşağıda.
+      </p>
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="kpi-label">Tapu harcı (satış)</span>
+        <span class="kpi-val">%2 + %2</span>
+        <span class="kpi-sub">alıcı ve satıcı için ayrı ayrı binde 20</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Döner sermaye 2026</span>
+        <span class="kpi-val">{fmt(G)} ₺</span>
+        <span class="kpi-sub">× tapu müdürlüğünün yöresel katsayısı (0,30–3,00)</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">2027 göstergesi ({lbl27})</span>
+        <span class="kpi-val">{g27Resmi == null && durum === 'tahmin' ? '≈' : ''}{fmt(G27)} ₺</span>
+        <span class="kpi-sub">{g27Resmi != null ? 'TKGM 2027 tarifesi' : `yeniden değerleme oranı ${ydTxt} ile`}</span>
+      </div>
+    </div>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Satış bedeli (₺) <em class="hint">— tapuda beyan edilecek tutar</em></span>
+          <input type="number" id="in-price" value={D.price} min="0" step="10000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Emlak vergisi değeri (₺) <em class="hint">— isteğe bağlı; satış bedeli bunun altında olamaz</em></span>
+          <input type="number" id="in-evd" min="0" step="10000" inputmode="numeric" placeholder="Bilmiyorsanız boş bırakın" />
+        </label>
+        <label>
+          <span>Harcı kim ödüyor?</span>
+          <select id="in-who">
+            <option value="ayri" selected>Her taraf kendi payını (kanuni durum)</option>
+            <option value="alici">Tamamını alıcı (taraflar böyle anlaştıysa)</option>
+            <option value="satici">Tamamını satıcı (taraflar böyle anlaştıysa)</option>
+          </select>
+        </label>
+        <label>
+          <span>Yöresel katsayı <em class="hint">— 0,30–3,00; bilmiyorsanız üst sınır 3,00 kalsın</em></span>
+          <input type="number" id="in-k" value={D.k} min={KMIN} max={KMAX} step="0.05" inputmode="decimal" />
+        </label>
+        <label class="check">
+          <input type="checkbox" id="in-kredi" />
+          <span>Konut kredisiyle alıyorum (satışla birlikte banka ipoteği)</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" id="in-yab" />
+          <span>Taraflardan biri yabancı uyruklu</span>
+        </label>
+        <p class="form-note">
+          Katsayı her tapu müdürlüğü için Bakanlıkça belirlenir; güncel liste TKGM’nin
+          <a href={SRC.tkgmFiyatListesi} target="_blank" rel="noopener">Fiyat Listesi Yöresel Katsayılar</a> sayfasındadır.
+          Standart bir satışta döner sermaye, 3,00 katsayıyla bulunan tutarı aşmaz.
+        </p>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Toplam tapu masrafı (2026)</span>
+          <span class="result-value" id="out-total">₺{fmt(tot3Max)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Alıcının ödeyeceği harç</span>
+            <span class="split-val" id="out-alici">₺{fmt(h3)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Satıcının ödeyeceği harç</span>
+            <span class="split-val" id="out-satici">₺{fmt(h3)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Döner sermaye (TKGM)</span>
+            <span class="split-val" id="out-ds">₺{fmt(dsMax)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Harç matrahı</span>
+            <span class="split-val" id="out-base">₺{fmt(D.price)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">2027’de döner sermaye ({lbl27})</span>
+            <span class="split-val" id="out-ds27">₺{fmt(ds27Max)}</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note">Döner sermayeye KDV dahildir ve işlemi talep edenden alınır.</p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç bilgilendirme amaçlıdır, vergi danışmanlığı değildir. Kesin tutarı tapu müdürlüğü işlem sırasında
+      hesaplar. Özel kanunlardaki harç istisnaları, bağış ve miras işlemleri, emlakçı komisyonu ve sigorta giderleri
+      bu hesaba dahil değildir. Son doğrulama: {dogrulamaLabel}.
+    </p>
+
+    <section class="table-block">
+      <h2>2026 tapu harcı ve döner sermaye kalemleri</h2>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead><tr><th>Kalem</th><th>2026</th><th>Dayanak</th></tr></thead>
+          <tbody>
+            <tr><td>Satış harcı — alıcı</td><td>binde 20 (%2)</td><td>Harçlar K. (4) s. tarife I-20/a</td></tr>
+            <tr><td>Satış harcı — satıcı</td><td>binde 20 (%2)</td><td>Harçlar K. (4) s. tarife I-20/a</td></tr>
+            <tr><td>İpotek harcı</td><td>borç tutarının binde 4,55’i</td><td>(4) s. tarife I-7/a</td></tr>
+            <tr><td>Konut kredisi (konut finansmanı) ipoteği</td><td>harçtan müstesna</td><td>Harçlar K. md. 59/o</td></tr>
+            <tr><td>Nispi harcın en az tutarı</td><td>₺{nf(ASGARI)}</td><td>(4) s. tarife</td></tr>
+            <tr><td>Döner sermaye — satış (bir daire veya taşınmaz)</td><td>₺{fmt(G)} × yöresel katsayı</td><td>TKGM tarifesi 1.1</td></tr>
+            <tr><td>Satış ve ipotek aynı talepte</td><td>iki işlem ücreti</td><td>TKGM tarifesi 1.3.1</td></tr>
+            <tr><td>Aynı talepte her ilave taşınmaz (kat mülkiyetsiz)</td><td>₺{fmt(ILAVE)} × yöresel katsayı</td><td>TKGM tarifesi 1.1.2.2</td></tr>
+            <tr><td>Yabancı taraf ek ücreti</td><td>₺{fmt(YAB)} (taşınmaz veya bağımsız bölüm başına)</td><td>TKGM tarifesi 1.11</td></tr>
+            <tr><td>Yetki alanı dışı tapu işlemi</td><td>işlem ücretinin 2 katı</td><td>TKGM tarifesi 1.6</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Döner sermaye ücretlerine KDV dahildir. Kat irtifaklı veya kat mülkiyetli bağımsız bölümlerde her bölüm
+        için ayrı bir işlem ücreti alınır; 307 TL’lik ilave gösterge tek bir dairenin satışına eklenmez.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Yöresel katsayıya göre döner sermaye: 2026 ve 2027{g27Resmi == null && durum === 'tahmin' ? ' tahmini' : ''}</h2>
+      <p class="table-intro">
+        Tek bir daire veya taşınmazın satışında TKGM’ye ödenen döner sermaye ücreti
+        ({g27Resmi != null ? '2027 sütunu TKGM’nin 2027 tarifesine göre' : `2027 sütunu yeniden değerleme oranı ${ydTxt} ile`}):
+      </p>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead><tr><th>Yöresel katsayı</th><th>2026 satış</th><th>2026 satış + konut kredisi ipoteği</th><th>2027 satış ({lbl27})</th></tr></thead>
+          <tbody>
+            {K_TABLE.map((r) => (
+              <tr><td>{nf(r.k)}</td><td>₺{fmt(r.ds)}</td><td>₺{fmt(r.ds2)}</td><td>{g27Resmi == null && durum === 'tahmin' ? '≈' : ''}₺{fmt(r.ds27)}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Hesaplamada küsuratlar yuvarlanır; tapu müdürlüğünün tahsil ettiği tutar kuruş düzeyinde farklı olabilir.
+        Katsayı aralığı 6083 sayılı Kanun’un 8. maddesinden; ilçenizin katsayısı TKGM listesindedir.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Satış bedeline göre 2026 tapu masrafı</h2>
+      <div class="table-scroll">
+        <table class="rate-table wide">
+          <thead><tr><th>Satış bedeli</th><th>Alıcı harcı</th><th>Satıcı harcı</th><th>Toplam harç</th><th>Toplam masraf*</th></tr></thead>
+          <tbody>
+            {PRICE_TABLE.map((r) => (
+              <tr><td>₺{fmt(r.v)}</td><td>₺{fmt(r.h)}</td><td>₺{fmt(r.h)}</td><td>₺{fmt(r.th)}</td><td>₺{fmt(r.tot)}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        *Toplam masraf, döner sermaye üst sınır katsayı 3,00 ile ({fmt(dsMax)} TL) hesaplanmıştır; katsayısı
+        1,00 olan bir ilçede {fmt(dsMax - ds1)} TL daha düşüktür. Beyan edilen bedelin emlak vergisi değerinin
+        altında olmadığı varsayılmıştır.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Tapu harcı nasıl hesaplanır?</h2>
+      <p>
+        Satışta tapu harcı, tapuda beyan edilen satış bedeli üzerinden <strong>alıcı için binde 20, satıcı için
+        binde 20</strong> olarak ayrı ayrı alınır; iki tarafın toplam yükü satış bedelinin %4’üdür (492 sayılı
+        Harçlar Kanunu, (4) sayılı tarife I-20/a). Oran sabit bir yüzdedir: harç, yalnızca matraha bağlıdır.
+      </p>
+      <p>
+        <strong>Matrah kuralı:</strong> Beyan edilen bedel, taşınmazın <strong>emlak vergisi değerinden az
+        olamaz</strong> (Harçlar Kanunu md. 63). Beyan vergi değerinin altında kalırsa harç vergi değeri üzerinden
+        hesaplanır. 19 Aralık 2025’te yürürlüğe giren 7566 sayılı Kanun, tarifedeki ifadeyi de bu kurala uydurdu:
+        matrah, “emlak vergisi değerinden az olmamak üzere beyan edilen devir ve iktisap bedeli”dir. Kat irtifaklı
+        (henüz kat mülkiyetine geçmemiş) konutlarda da harç bedelin tamamı üzerinden alınır; 10 TL’ye kadar olan
+        matrah kesirleri dikkate alınmaz.
+      </p>
+      <p>
+        <strong>2026’ya özel durum:</strong> 2026 yeniden takdir yılıydı. 7566 sayılı Kanun’la yeniden düzenlenen
+        Emlak Vergisi Kanunu’nun geçici 23. maddesi, 2026 bina ve arazi vergi değerlerinin “2025 yılına ait vergi
+        değerlerinin iki kat fazlasını geçemez” olmasını hükme bağladı ve bu sınırın emlak vergi değerine bağlı
+        <strong>harçlarda da</strong> uygulanacağını açıkça yazdı. Yani 2026’da tapu harcının alt sınırı, bu
+        sınırla belirlenen vergi değeridir. Vergi değerinizi hesaplamak için →
+        <a href="/emlak-vergisi-hesaplama/">emlak vergisi hesaplama</a>.
+      </p>
+
+      <h2>Döner sermaye ücreti 2026</h2>
+      <p>
+        Harçtan ayrı olarak Tapu ve Kadastro Genel Müdürlüğü (TKGM) her işlem için döner sermaye ücreti alır.
+        2026 tarifesinde satışın işlem ücreti, <strong>{fmt(G)} TL’lik göstergenin</strong> taşınmazın bağlı
+        olduğu tapu müdürlüğünün <strong>yöresel katsayısıyla</strong> çarpımıdır. Katsayıyı il ve ilçeler için
+        Çevre, Şehircilik ve İklim Değişikliği Bakanlığı 0,30 ile 3,00 arasında belirler; bu yüzden tek bir dairenin
+        satışında ücret {fmt(dsMin)} TL ile {fmt(dsMax)} TL arasında değişir. Ücrete KDV dahildir ve tarifeye göre
+        işlemi talep eden kişiden alınır.
+      </p>
+      <p>
+        Sık yapılan bir hata: {fmt(ILAVE)} TL’lik “ilave gösterge” her satışa eklenmez. Yalnızca aynı talepte
+        birden fazla (kat mülkiyetsiz) taşınmaz varsa her ilave taşınmaz için uygulanır. Kat mülkiyetli veya kat
+        irtifaklı bağımsız bölümlerde her bölüm için ayrı bir işlem ücreti ödenir.
+      </p>
+
+      <h2>Tapu harcını kim öder?</h2>
+      <p>
+        Kanun harcı iki tarafa ayrı ayrı yükler: alıcı kendi binde 20’sinin, satıcı kendi binde 20’sinin
+        mükellefidir. Taraflar masrafın tamamını alıcının (ya da satıcının) karşılamasını kararlaştırabilir;
+        hesaplayıcıdaki “Harcı kim ödüyor?” seçeneği bu dağılımı gösterir. Ancak Vergi Usul Kanunu’nun 8. maddesine
+        göre vergi sorumluluğuna ilişkin <strong>özel sözleşmeler vergi dairesini bağlamaz</strong>: aranızdaki
+        anlaşma ne olursa olsun, vergi idaresi karşısında her taraf kendi payından sorumludur.
+      </p>
+
+      <h2>Konut kredisiyle alımda tapu masrafı</h2>
+      <p>
+        Bankanın konut kredisi için kurduğu ipotek, konut finansmanı kapsamında olduğundan <strong>ipotek
+        harcından müstesnadır</strong> (Harçlar Kanunu md. 59/o); konut finansmanı dışındaki ipoteklerde harç,
+        borç tutarının binde 4,55’idir. Döner sermaye ise alınır: satış ve ipotek aynı talepte yapıldığında
+        <strong>iki işlem ücreti</strong> ödenir (katsayısı 3,00 olan bir ilçede {fmt(2 * dsMax)} TL). Ayrıca
+        22 Mayıs 2026’dan beri bankaların konut kredisi için yaptırdığı değerleme raporları, düzenlendikleri gün
+        TKGM’ye elektronik olarak gönderiliyor (Tapu Kanunu ek madde 4). Aylık taksit ve toplam geri ödeme için →
+        <a href="/konut-kredisi-hesaplama/">konut kredisi hesaplama</a>.
+      </p>
+
+      <h2>Tapuda düşük bedel göstermenin cezası</h2>
+      <p>
+        Harç ödendikten sonra beyan edilen bedelin gerçeği yansıtmadığı veya emlak vergisi değerinin altında
+        kaldığı tespit edilirse, aradaki farkın harcı ikmalen ya da re’sen tarh edilir. 7566 sayılı Kanun’la bu
+        farka uygulanan vergi ziyaı cezası <strong>19 Aralık 2025’ten itibaren %25’ten “bir kat”a</strong>
+        çıkarıldı (Harçlar Kanunu md. 63). Yani eksik ödenen her 100 TL harç için 100 TL de ceza doğar.
+      </p>
+
+      <h2 id="tapu-harci-2027">2027’de tapu harcı değişecek mi?</h2>
+      <p>
+        <strong>Oran:</strong> Satıştaki binde 20’lik oran kanunla belirlenir; yeniden değerleme oranıyla
+        otomatik artmaz. Cumhurbaşkanı’nın kanunun tanıdığı sınırlar içinde oranı değiştirme yetkisi vardır
+        (2017 ve 2018’de konut ve işyeri satışlarında dönemsel olarak binde 15’e indirilmişti); bugün yürürlükte
+        böyle bir indirim yoktur. Aynı bedelle yapılan bir satışın harcı 2027’de de aynıdır.
+      </p>
+      <p>
+        <strong>Döner sermaye:</strong> 6083 sayılı Kanun’a göre tarifedeki gösterge ve ücretler her yıl, bir
+        önceki yıl için ilan edilen yeniden değerleme oranında artırılır ve TKGM tarafından ilan edilir. 2026
+        göstergesi de böyle bulundu: 2025’te 1 Mayıs’tan itibaren uygulanan {nf(G25)} TL × 1,2549 ≈ {fmt(G)} TL.
+        2027’ye uygulanacak yeniden değerleme oranı {ydDurumTxt}. {g27Kisa} Bu durumda katsayısı 3,00 olan bir
+        ilçede tek satışın döner sermayesi {g27Resmi == null && durum === 'tahmin' ? 'yaklaşık ' : ''}{fmt(ds27Max)} TL olur.
+        Cumhurbaşkanı tarifedeki tutarları yarısına kadar indirebilir veya üç katına kadar artırabilir; 2025’te
+        tutarlar 1 Mayıs’tan geçerli olmak üzere Cumhurbaşkanı kararıyla yeniden belirlenmişti.
+      </p>
+      <p>
+        <strong>Asgari matrah:</strong> 7566 sayılı Kanun, Emlak Vergisi Kanunu md. 29’daki “yeniden değerleme
+        oranının yarısı” ifadesini “yeniden değerleme oranında” olarak değiştirdi. Böylece 2027’de emlak vergisi
+        değerleri yeniden değerleme oranının <strong>tamamı</strong> kadar artacak (Cumhurbaşkanı bu artışı sıfıra
+        kadar indirebilir). Tapu harcının alt sınırı vergi değeri olduğundan 2027’de asgari matrah da yükselir:
+        2026 vergi değeri {fmt(EVD26)} TL olan bir konutun 2027 değeri {durum === 'tahmin' ? 'yaklaşık ' : ''}{fmt(EVD27)} TL
+        olur; taraf başına en düşük harç {fmt(minH26)} TL’den {durum === 'tahmin' ? 'yaklaşık ' : ''}{fmt(minH27)} TL’ye çıkar.
+        Oranın nasıl hesaplandığı için → <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı 2027</a>.
+      </p>
+      <p class="cta-line">
+        2027 zamlarının tamamı için → <a href="/blog/2027-zamlari-yeniden-degerleme-orani-rehberi/">2027’de neler
+        zamlanacak?</a> · vergi değeri ve 2027 emlak vergisi → <a href="/emlak-vergisi-hesaplama/">emlak vergisi
+        hesaplama</a> · sözleşme masrafları → <a href="/damga-vergisi-hesaplama/">damga vergisi hesaplama</a> ·
+        tüm araçlar → <a href="/hesaplama-araclari/">hesaplama araçları</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <section class="source-block">
+      <h2>Kaynak</h2>
+      <ul>
+        <li><a href={SRC.harclarKanunu} target="_blank" rel="noopener">492 sayılı Harçlar Kanunu</a> — md. 58, 59/o, 63 ve (4) sayılı tarife I-7, I-20/a (7566 sayılı Kanun değişiklikleri işlenmiş metin, mevzuat.gov.tr)</li>
+        <li><a href={SRC.tkgmFiyatListesi} target="_blank" rel="noopener">TKGM 2026 Yılı Fiyat Listesi</a> — (I) Sayılı Tarife Cetveli: gösterge {fmt(G)} TL, ilave gösterge {fmt(ILAVE)} TL, yabancı ek ücreti {fmt(YAB)} TL</li>
+        <li><a href={SRC.kanun6083} target="_blank" rel="noopener">6083 sayılı Kanun</a> — md. 8/3 (yöresel katsayı 0,30–3,00; yıllık yeniden değerleme artışı)</li>
+        <li><a href={SRC.emlakVergisiKanunu} target="_blank" rel="noopener">1319 sayılı Emlak Vergisi Kanunu</a> — md. 29 ve geçici 23</li>
+        <li><a href={SRC.tapuKanunu} target="_blank" rel="noopener">2644 sayılı Tapu Kanunu</a> — ek madde 4 (7579 sayılı Kanun, yürürlük 22 Mayıs 2026)</li>
+        <li><a href={SRC.vergiUsulKanunu} target="_blank" rel="noopener">213 sayılı Vergi Usul Kanunu</a> — md. 8</li>
+      </ul>
+      <p class="table-note">Yeniden değerleme oranı verisi: TÜİK Yİ-ÜFE (TCMB EVDS), son güncelleme {yd.updated.split('-').reverse().join('.')}.</p>
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ C: { oran: HARC, asgari: ASGARI, g: G, g27: G27, yab: YAB, kMin: KMIN, kMax: KMAX } }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const money = (n) => '₺' + nf.format(Math.round(n));
+      const harcOf = (b) => (b > 0 ? Math.max(C.asgari, Math.floor(b / 10) * 10 * C.oran) : 0);
+      function update() {
+        const price = Math.max(0, +$('in-price').value || 0);
+        const evd = Math.max(0, +$('in-evd').value || 0);
+        const kRaw = parseFloat(String($('in-k').value).replace(',', '.'));
+        const k = kRaw > 0 ? Math.min(C.kMax, Math.max(C.kMin, kRaw)) : C.kMax;
+        const kClamped = kRaw > 0 && k !== kRaw;
+        const who = $('in-who').value;
+        const kredi = $('in-kredi').checked;
+        const yab = $('in-yab').checked;
+        const base = Math.max(price, evd);
+        const h = harcOf(base);
+        let a = h;
+        let s = h;
+        if (who === 'alici') { a = 2 * h; s = 0; }
+        else if (who === 'satici') { a = 0; s = 2 * h; }
+        const n = base > 0 ? (kredi ? 2 : 1) : 0;
+        const y = base > 0 && yab ? 1 : 0;
+        const ds = Math.round(k * C.g) * n + y * C.yab;
+        const ds27 = Math.round(k * C.g27) * n + y * Math.round((C.yab * C.g27) / C.g);
+        $('out-total').textContent = money(2 * h + ds);
+        $('out-alici').textContent = money(a);
+        $('out-satici').textContent = money(s);
+        $('out-ds').textContent = money(ds);
+        $('out-base').textContent = money(Math.floor(base / 10) * 10);
+        $('out-ds27').textContent = money(ds27);
+        const notes = [];
+        if (kClamped) notes.push('Yöresel katsayı yasal aralık olan 0,30–3,00’e çekildi (' + k.toFixed(2).replace('.', ',') + ').');
+        if (evd > price) notes.push('Satış bedeli emlak vergisi değerinin altında; harç vergi değeri üzerinden hesaplandı.');
+        if (who !== 'ayri') notes.push('Bu paylaşım taraflar arasındaki anlaşmadır; vergi dairesi karşısında her taraf kendi binde 20’sinden sorumludur (VUK md. 8).');
+        if (kredi) notes.push('Konut kredisi ipoteği harçtan muaftır; ipotek için ikinci bir döner sermaye işlem ücreti eklendi.');
+        if (!notes.length) notes.push('Döner sermayeye KDV dahildir ve işlemi talep edenden alınır.');
+        $('out-note').textContent = notes.join(' ');
+      }
+      ['in-price', 'in-evd', 'in-k', 'in-who', 'in-kredi', 'in-yab'].forEach((id) => {
+        $(id).addEventListener('input', update);
+        $(id).addEventListener('change', update);
+      });
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 2rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 620px; margin: 0 auto; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin: 0 0 1rem; }
+    .kpi { display: flex; flex-direction: column; gap: 0.15rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-xs); }
+    .kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .kpi-val { font-family: var(--font-serif); font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.1rem); font-weight: 700; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .kpi-sub { font-size: 0.78rem; color: var(--text-soft); line-height: 1.35; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; min-width: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs label.check { flex-direction: row; align-items: center; gap: 0.5rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; }
+    .calc-inputs input[type='number'], .calc-inputs select {
+      font-family: var(--font-sans); font-size: 1.1rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%; min-width: 0;
+    }
+    .calc-inputs select { font-size: 0.98rem; }
+    .calc-inputs input::placeholder { font-weight: 500; font-size: 0.9rem; color: var(--text-muted); }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .calc-inputs input[type='checkbox'] { width: 1.15rem; height: 1.15rem; flex: none; accent-color: var(--brand-2); }
+    .form-note { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.45; }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 1rem; min-width: 0;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; font-variant-numeric: tabular-nums; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table.wide { min-width: 520px; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table td { font-variant-numeric: tabular-nums; }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; line-height: 1.5; }
+
+    .prose-block, .faq-block, .source-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2, .source-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    .source-block ul { margin: 0; padding-left: 1.1rem; }
+    .source-block li { font-size: 0.85rem; color: var(--text-soft); line-height: 1.6; margin-bottom: 0.3rem; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+      .kpi-row { grid-template-columns: 1fr; }
+      .rate-table { font-size: 0.85rem; }
+      .rate-table th, .rate-table td { padding: 0.5rem 0.35rem; }
+      .rate-table th { font-size: 0.7rem; letter-spacing: 0.02em; }
+    }
+  </style>
+</BaseLayout>

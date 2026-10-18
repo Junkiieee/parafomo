@@ -1,0 +1,560 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import yd from '../../data/yeniden-degerleme.json';
+
+// Araç muayene ücreti = KTK (2918) md. 35: üç grup, KDV hariç tutar her 1 Ocak’ta VUK yeniden değerleme
+// oranıyla artar, lira altı kesir atılır, üstüne %20 KDV. Gecikme: geçen her ay (kesri tam ay) ücretin %5’i,
+// üst sınır yok. MTV/harçtaki CB indirimi (2026: %18,95) muayeneye uygulanmadı → oran = tebligOrani ?? onikiAyOrt.
+// Doğrulama (2026-10-18): KTK metni mevzuat.gov.tr (7574 md. 34-35’e dokunmadı, RG 27.02.2026 metni);
+// Yönetmelik RG 6.1.2021/31356 md. 6, 8, 14, 18; TÜVTÜRK fiyat listesi arşivi 2024-2025 (Wayback) + SSS;
+// 2026 tutarları CNBC-e 6.1.2026 + Allianz (Ağu 2026) ve 2025 × 1,2549 hesabıyla birebir aynı.
+// Ocak 2027: kh26 → yeni yılın KDV hariç ücreti; EGZOZ ve MUAYENESIZ_CEZA da güncellenmeli.
+const GRUPLAR = [
+  { key: 'otomobil', ad: 'Otomobil, minibüs, kamyonet', not: 'özel amaçlı taşıt, arazi taşıtı, römork ve yarı römork da bu grupta', kisa: 'Otomobil, kamyonet, minibüs', kh24: 1518, kh25: 2184, kh26: 2740, egzoz: true },
+  { key: 'agir', ad: 'Otobüs, kamyon, çekici, tanker', not: 'ağır vasıtalar', kisa: 'Otobüs, kamyon, çekici, tanker', kh24: 2052, kh25: 2953, kh26: 3705, egzoz: true },
+  { key: 'hafif', ad: 'Motosiklet, motorlu bisiklet, traktör', not: 'traktör römorklu veya römorksuz', kisa: 'Motosiklet, traktör', kh24: 773, kh25: 1112, kh26: 1395, egzoz: false },
+];
+const EGZOZ = 460; // 2026 egzoz emisyon ölçümü (2025: 368, 2024: 256 — TÜVTÜRK, KDV dahil)
+const MUAYENESIZ_CEZA = 2719; // KTK md. 34: 235 TL taban (7148, 2018) × her yıl YD → 2025: 2.167, 2026: 2.719
+const GECIKME = 0.05;
+
+const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const monthName = (key: string) => `${MONTHS[+key.slice(5) - 1]} ${key.slice(0, 4)}`;
+const nf = (n: number, d = 1) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const tl = (n: number) => {
+  const r = Math.round(n * 100) / 100;
+  return '₺' + r.toLocaleString('tr-TR', { minimumFractionDigits: Number.isInteger(r) ? 0 : 2, maximumFractionDigits: 2 });
+};
+// Düz metin/SSS için "1.674 TL" biçimi: ek "TL"ye gelir ("TL’dir"), sayının okunuşuna göre değişmez.
+const tlT = (n: number) => tl(n).slice(1) + ' TL';
+const dahil = (kh: number) => Math.round(kh * 120) / 100; // %20 KDV dahil
+
+const HEDEF = yd.hedefYil; // 2027
+const teblig = yd.tebligOrani as number | null;
+const oran = teblig ?? yd.onikiAyOrt;
+const durum = teblig ? 'teblig' : yd.ekimVerisiGeldi ? 'hesap' : 'tahmin';
+const tahminMi = durum === 'tahmin';
+const oranLabel = tahminMi ? `≈%${nf(oran, 1)}` : `%${nf(oran, 2)}`;
+const est = tahminMi ? 'tahmini' : 'hesaplanan';
+const estHead = tahminMi ? 'tahmini' : 'ücreti'; // tablo başlığı/description: "2027 tahmini" → "2027 ücreti"
+const approx = tahminMi ? '≈' : '';
+const carpan = 1 + oran / 100;
+const sonAyAdi = monthName(yd.sonAy);
+const sonraki = (yd as { sonrakiAciklama?: string }).sonrakiAciklama;
+const sonrakiAd = sonraki
+  ? new Date(sonraki + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' })
+  : 'Kasım başı';
+const ydOf = (yil: number) => yd.gecmis.find((g) => g.uygulamaYili === yil)?.oran ?? null;
+const yd26 = ydOf(2026) ?? 25.49;
+
+const rows = GRUPLAR.map((g) => {
+  const kh27 = Math.floor(g.kh26 * carpan + 1e-9);
+  return { ...g, u24: dahil(g.kh24), u25: dahil(g.kh25), u26: dahil(g.kh26), kh27, u27: dahil(kh27) };
+});
+const byKey = (k: string) => rows.find((r) => r.key === k)!;
+const oto = byKey('otomobil');
+const agir = byKey('agir');
+const hafif = byKey('hafif');
+const ceza27 = Math.floor(MUAYENESIZ_CEZA * carpan + 1e-9);
+
+const GECIKME_AYLAR = [1, 2, 3, 6, 12, 24];
+const gecikmeTablo = GECIKME_AYLAR.map((ay) => ({
+  ay,
+  hafif: hafif.u26 * GECIKME * ay,
+  oto: oto.u26 * GECIKME * ay,
+  agir: agir.u26 * GECIKME * ay,
+}));
+const oto3 = oto.u26 * GECIKME * 3;
+const artis26 = (oto.u26 / oto.u25 - 1) * 100;
+const artis25 = (oto.u25 / oto.u24 - 1) * 100;
+
+const D = { grup: 'otomobil', ay: 0, egzoz: true };
+
+const ydCumle =
+  durum === 'teblig'
+    ? `${HEDEF} için yeniden değerleme oranı %${nf(oran, 2)} olarak ilan edildi.`
+    : durum === 'hesap'
+      ? `Ekim Yİ-ÜFE verisiyle ${HEDEF} oranı %${nf(oran, 2)} olarak hesaplandı; Kasım sonunda Resmî Gazete’de ilan edilecek.`
+      : `${sonAyAdi} Yİ-ÜFE verisine göre ${HEDEF} oranı yaklaşık %${nf(oran, 1)}; oran, ${sonrakiAd} tarihinde açıklanacak Ekim verisiyle kesinleşir ve Kasım sonunda Resmî Gazete’de ilan edilir.`;
+
+const faq = [
+  {
+    q: '2026 araç muayene ücreti ne kadar?',
+    a: `2026’da KDV dahil araç muayene ücreti otomobil, minibüs, kamyonet, arazi taşıtı, römork ve yarı römork için ${tlT(oto.u26)}; otobüs, kamyon, çekici ve tanker için ${tlT(agir.u26)}; motosiklet, motorlu bisiklet ve traktör için ${tlT(hafif.u26)}’dir. Benzinli, dizel ve LPG’li araçlarda zorunlu olan egzoz emisyon ölçümü için ayrıca ${tlT(EGZOZ)} ödenir; elektrikli ve hibrit araçlar, motosikletler ve traktörler egzoz ölçümünden muaftır. Muayene ve egzoz ölçümü istasyonda aynı gün yaptırılırsa benzinli bir otomobil için toplam ${tlT(oto.u26 + EGZOZ)} ödenir.`,
+  },
+  {
+    q: 'Araç muayene gecikme cezası nasıl hesaplanır?',
+    a: `Karayolları Trafik Kanunu’nun 35. maddesine göre muayene süresi geçen her ay için muayene ücreti %5 fazlasıyla tahsil edilir ve ay kesirleri tam ay sayılır: muayene bir gün bile gecikse bir aylık gecikme bedeli ödenir. Kanunda üst sınır yoktur. 2026’da otomobil grubu için aylık gecikme bedeli ${tlT(oto.u26 * GECIKME)}’dir; muayenesi 3 ay geciken bir otomobil ${tlT(oto.u26)} + ${tlT(oto3)} = ${tlT(oto.u26 + oto3)} öder (egzoz ölçümü hariç). Gecikme bedeli muayene günündeki ücret üzerinden hesaplanır ve tamamı Hazine’ye aktarılır.`,
+  },
+  {
+    q: `${HEDEF} araç muayene ücreti ne kadar olacak?`,
+    a: `Muayene ücretleri her yıl 1 Ocak’ta, bir önceki yılın Kasım ayında ilan edilen yeniden değerleme oranı kadar artar (KTK md. 35). ${ydCumle} Bu oranla ${HEDEF}’de otomobil grubunun muayene ücreti ${approx}${tlT(oto.u27)}, otobüs ve kamyon grubunun ${approx}${tlT(agir.u27)}, motosiklet ve traktör grubunun ${approx}${tlT(hafif.u27)} olur. ${tahminMi ? 'Bu bir tahmindir. ' : ''}15 Ağustos 2027’den itibaren istasyonları TÜVTÜRK yerine TURKA işletecek; ücret işleticiye göre değil kanuna göre belirlendiği için devir tek başına tarifeyi değiştirmez.`,
+  },
+  {
+    q: 'Muayenesiz araç kullanmanın cezası ne kadar?',
+    a: `Muayenesi yapılmamış araçla trafiğe çıkılırsa araç sahibine 2026’da ${tlT(MUAYENESIZ_CEZA)} idari para cezası verilir ve muayeneyi yaptırması için süre tanınır (KTK md. 34). Bu süre sonunda muayene yaptırılmadan ya da “emniyetsiz” raporlu araçla yeniden trafiğe çıkılırsa daha yüksek ceza uygulanır, araç trafikten men edilerek en yakın muayene istasyonuna gönderilir. Bu trafik cezası, istasyonda ödenen gecikme bedelinden ayrıdır. Şubat 2026’daki 7574 sayılı Kanun bu maddeyi değiştirmedi; ceza ${HEDEF}’de de yeniden değerleme oranıyla artar (${est}: ${approx}${tlT(ceza27)}).`,
+  },
+  {
+    q: 'Muayeneden kalırsam tekrar ücret öder miyim?',
+    a: 'İlk tekrarda ödemezsiniz. “Ağır kusur” veya “emniyetsiz” sonucu alan araç, muayene tarihinden itibaren bir ay içinde bir defaya mahsus ücretsiz muayene tekrarına girebilir; tekrar, aynı araç grubuna hizmet veren başka bir istasyonda da yapılabilir. Bir ay geçerse, tekrar hakkı kullanılmışsa veya araçta tadilat yapılmışsa muayene ücreti tam olarak yeniden alınır. Egzoz ölçümünden kalan araç da bir ay içinde aynı istasyonda bir kez ücretsiz ölçüm tekrarı yaptırabilir.',
+  },
+  {
+    q: 'Araç muayenesi kaç yılda bir yapılır?',
+    a: 'Hususi ve resmî otomobiller (arazi taşıtları dahil) ile motosikletler ilk 3 yaşın sonunda, ardından 2 yılda bir muayene edilir. Lastik tekerlekli traktörler ilk 3 yaşta, sonra 3 yılda bir muayeneye girer. Taksi gibi ticari otomobiller, kamyonet, minibüs, otobüs, kamyon gibi diğer tüm motorlu araçlar ile römork ve yarı römorklar ise ilk 1 yaşın sonunda ve sonra her yıl muayene edilir (Araç Muayene Yönetmeliği md. 14).',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Araç Muayene Ücreti 2026', url: '/arac-muayene-ucreti/' },
+];
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: `Araç muayene ücretleri 2026 ve ${HEDEF} tahmini`,
+  description: `Araç gruplarına göre 2026 muayene ücretleri (KDV dahil), %5 aylık gecikme bedeli tablosu, egzoz emisyon ölçüm ücreti ve yeniden değerleme oranına (${oranLabel}) göre ${HEDEF} ${est} ücretler.`,
+  url: 'https://parafomo.com/arac-muayene-ucreti/',
+  dateModified: yd.updated,
+  creator: { '@type': 'Organization', name: 'ParaFOMO', url: 'https://parafomo.com/' },
+  isBasedOn: 'https://www.mevzuat.gov.tr/mevzuatmetin/1.5.2918.pdf',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+};
+const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const CALC = rows.map((r) => ({ key: r.key, kh26: r.kh26, egzoz: r.egzoz }));
+---
+
+<BaseLayout
+  title={`Araç Muayene Ücreti 2026: Gecikme Cezası ve ${HEDEF} Tahmini`}
+  description={`Araç muayene ücreti 2026: otomobil ${nf(oto.u26, 0)} TL, otobüs-kamyon ${nf(agir.u26, 0)} TL, motosiklet ${nf(hafif.u26, 0)} TL. Gecikme cezası (%5/ay), egzoz ücreti ve ${HEDEF} ${tahminMi ? 'tahmini' : 'ücretleri'}.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+  image="/og/arac-muayene-ucreti.png"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(dataset)} />
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Araç</p>
+      <h1>Araç Muayene Ücreti 2026 ve {HEDEF} Tahmini</h1>
+      <p class="lede">
+        2026’da otomobil muayenesi <strong>{tl(oto.u26)}</strong> (KDV dahil). Araç grubunu ve muayenenin kaç ay
+        geciktiğini seçin; gecikme bedeli ve egzoz ölçümüyle birlikte ödeyeceğiniz tutarı ve
+        <strong>{HEDEF}’de muayenenin ne kadar olacağını</strong> görün.
+      </p>
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="kpi-label">Otomobil muayenesi 2026</span>
+        <span class="kpi-val">{tl(oto.u26)}</span>
+        <span class="kpi-sub">KDV dahil · egzoz ölçümü +{tl(EGZOZ)}</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Gecikme bedeli</span>
+        <span class="kpi-val">%5 / ay</span>
+        <span class="kpi-sub">ay kesri tam ay · kanunda üst sınır yok</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">{HEDEF} otomobil ({est})</span>
+        <span class="kpi-val">{approx}{tl(oto.u27)}</span>
+        <span class="kpi-sub">yeniden değerleme {oranLabel}{tahminMi ? ` · kesinleşme ${sonrakiAd}` : durum === 'hesap' ? ' · tebliğ Kasım sonunda' : ' · Resmî Gazete'}</span>
+      </div>
+    </div>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Araç grubu (resmî tarife)</span>
+          <select id="in-grup">
+            {rows.map((r) => <option value={r.key} selected={r.key === D.grup}>{r.kisa}</option>)}
+          </select>
+          <em class="hint">Arazi taşıtı, özel amaçlı taşıt, römork ve yarı römork otomobil grubunda; motorlu bisiklet
+            motosiklet grubunda.</em>
+        </label>
+        <label>
+          <span>Gecikme süresi (ay) <em class="hint">— 0 = zamanında; 1 gün gecikme bile 1 ay sayılır</em></span>
+          <input type="number" id="in-ay" value={D.ay} min="0" max="240" step="1" inputmode="numeric" />
+        </label>
+        <label class="check">
+          <input type="checkbox" id="in-egzoz" checked={D.egzoz} />
+          <span>Egzoz emisyon ölçümü de yapılacak (+{tl(EGZOZ)})</span>
+        </label>
+        <p class="form-note">
+          Egzoz ölçümü benzinli, dizel ve LPG’li araçlarda zorunludur ve muayene istasyonunda yaptırılabilir;
+          elektrikli ve hibrit araçlar, motosiklet ve traktörler muaftır.
+        </p>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">2026’da ödeyeceğiniz toplam</span>
+          <span class="result-value" id="out-toplam">{tl(oto.u26 + EGZOZ)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Muayene ücreti (KDV dahil)</span>
+            <span class="split-val" id="out-ucret">{tl(oto.u26)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label" id="lbl-gecikme">Gecikme bedeli (zamanında)</span>
+            <span class="split-val" id="out-gecikme">{tl(0)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Egzoz emisyon ölçümü</span>
+            <span class="split-val" id="out-egzoz">{tl(EGZOZ)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label" id="lbl-27">{HEDEF} {est} muayene ücreti</span>
+            <span class="split-val" id="out-27">{approx}{tl(oto.u27)}</span>
+          </div>
+        </div>
+        <p class="result-note">Gecikme bedeli yalnızca muayene ücreti üzerinden hesaplanır. {HEDEF} tutarına egzoz ücreti dahil değildir.</p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç bilgilendirme amaçlıdır. Kesin tutarı muayene istasyonu tahsil eder; kartla ödemede ödeme hizmeti
+      sağlayıcısı ayrıca hizmet bedeli ekler. {HEDEF} tutarları yeniden değerleme oranına göre {est} değerlerdir;
+      yeni tarife 1 Ocak {HEDEF}’de yürürlüğe girer. Son güncelleme: {updatedLabel}.
+    </p>
+
+    <section class="table-block">
+      <h2>2026 araç muayene ücretleri ve {HEDEF} {estHead}</h2>
+      <p class="table-intro">
+        Ücretler Karayolları Trafik Kanunu’nun 35. maddesindeki üç araç grubuna göre alınır. Kanundaki tutar KDV
+        hariçtir; istasyonda %20 KDV eklenmiş hâli ödenir.
+      </p>
+      <div class="table-wrap">
+        <table class="rate-table">
+          <thead><tr><th>Araç grubu</th><th>KDV hariç</th><th>2026 (KDV dahil)</th><th>{HEDEF} {estHead}</th></tr></thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr>
+                <td>{r.ad}<span class="row-note">{r.not}</span></td>
+                <td>{tl(r.kh26)}</td>
+                <td><strong>{tl(r.u26)}</strong></td>
+                <td>{approx}{tl(r.u27)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        {HEDEF} sütunu: KDV hariç 2026 ücreti × (1 + yeniden değerleme oranı {oranLabel}), lira altı kesirler
+        atılarak, üzerine %20 KDV. Oran kesinleştikçe tablo kendiliğinden güncellenir.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Muayene gecikme cezası tablosu (2026)</h2>
+      <p class="table-intro">
+        Gecikme bedeli = muayene ücreti × %5 × geciken ay sayısı. Ödenecek toplam, muayene ücreti ile gecikme
+        bedelinin (ve varsa egzoz ölçümünün) toplamıdır.
+      </p>
+      <div class="table-wrap">
+        <table class="rate-table">
+          <thead><tr><th>Gecikme</th><th>Motosiklet, traktör</th><th>Otomobil grubu</th><th>Otobüs, kamyon</th></tr></thead>
+          <tbody>
+            {gecikmeTablo.map((g) => (
+              <tr>
+                <td>{g.ay} ay</td>
+                <td>{tl(g.hafif)}</td>
+                <td>{tl(g.oto)}</td>
+                <td>{tl(g.agir)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Örnek: muayenesi 3 ay geciken otomobil {tl(oto.u26)} + {tl(oto3)} = <strong>{tl(oto.u26 + oto3)}</strong> öder
+        (egzoz ölçümü hariç). Gecikme, muayenenin yapıldığı günkü ücret üzerinden hesaplanır.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Egzoz emisyon ölçümü, muayene tekrarı ve diğer ücretler</h2>
+      <div class="table-wrap">
+        <table class="rate-table">
+          <thead><tr><th>Hizmet</th><th>2026 ücreti</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Egzoz emisyon ölçümü<span class="row-note">benzinli, dizel ve LPG’li araçlar; 2025’te 368 TL’ydi</span></td>
+              <td>{tl(EGZOZ)}</td>
+            </tr>
+            <tr>
+              <td>Muayene tekrarı (1 ay içinde, ilk tekrar)<span class="row-note">ağır kusur veya emniyetsiz sonucundan sonra; süre geçerse tam ücret</span></td>
+              <td>Ücretsiz</td>
+            </tr>
+            <tr>
+              <td>Egzoz ölçüm tekrarı (1 ay içinde)<span class="row-note">aynı istasyonda, bir defa</span></td>
+              <td>Ücretsiz</td>
+            </tr>
+            <tr>
+              <td>Özel muayene (kaza, tadilat sonrası)<span class="row-note">varsa gecikme bedeli de alınır</span></td>
+              <td>Tam muayene ücreti</td>
+            </tr>
+            <tr>
+              <td>Yola elverişlilik muayenesi<span class="row-note">muayeneyle birlikte ücretin %25’i, tek başına %50’si</span></td>
+              <td>{tl(oto.u26 * 0.25)} / {tl(oto.u26 * 0.5)}<span class="row-note">otobüs-kamyon: {tl(agir.u26 * 0.25)} / {tl(agir.u26 * 0.5)}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Kaynak: Araç Muayene Yönetmeliği md. 6, 8 ve 18 (RG 6.1.2021); egzoz ücreti Çevre, Şehircilik ve İklim
+        Değişikliği Bakanlığınca belirlenir.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Araç muayene ücreti nasıl belirleniyor?</h2>
+      <p>
+        Muayene ücretini istasyonu işleten şirket değil, 2918 sayılı <strong>Karayolları Trafik Kanunu’nun 35.
+        maddesi</strong> belirler. Kanun üç araç grubu için ücret koyar ve bu ücretlerin “her takvim yılı başından
+        geçerli olmak üzere” Vergi Usul Kanunu uyarınca ilan edilen <strong>yeniden değerleme oranında</strong>
+        artırılmasını öngörür. Hesaplanan tutarın lira altı kesirleri atılır, üzerine KDV eklenir. Cumhurbaşkanı,
+        ücretleri beş yılda bir %20’ye kadar artırmaya veya azaltmaya yetkilidir.
+      </p>
+      <p>
+        2026’da MTV, harç ve damga vergisinde yeniden değerleme oranı yerine Cumhurbaşkanı kararıyla %18,95
+        uygulanmıştı; muayene ücretleri ise kanundaki kural gereği <strong>tam oranla (%{nf(yd26, 2)})</strong> arttı.
+        Karşılaştırma için: 2021’de otomobil muayenesi 372,88 TL’ydi.
+      </p>
+      <div class="table-wrap">
+        <table class="rate-table">
+          <thead><tr><th>Yıl</th><th>Otomobil grubu</th><th>Otobüs, kamyon</th><th>Motosiklet, traktör</th></tr></thead>
+          <tbody>
+            <tr><td>2024</td><td>{tl(oto.u24)}</td><td>{tl(agir.u24)}</td><td>{tl(hafif.u24)}</td></tr>
+            <tr><td>2025<span class="row-note">+%{nf(artis25, 1)}</span></td><td>{tl(oto.u25)}</td><td>{tl(agir.u25)}</td><td>{tl(hafif.u25)}</td></tr>
+            <tr><td>2026<span class="row-note">+%{nf(artis26, 1)}</span></td><td>{tl(oto.u26)}</td><td>{tl(agir.u26)}</td><td>{tl(hafif.u26)}</td></tr>
+            <tr><td>{HEDEF}<span class="row-note">{est} · {oranLabel}</span></td><td>{approx}{tl(oto.u27)}</td><td>{approx}{tl(agir.u27)}</td><td>{approx}{tl(hafif.u27)}</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Yıl altındaki yüzde, otomobil grubundaki artıştır ve o yılın yeniden değerleme oranına eşittir (2025:
+        %{nf(ydOf(2025) ?? 43.93, 2)}, 2026: %{nf(yd26, 2)}); küçük farklar kanundaki yuvarlamadan gelir. 2024–2025
+        tutarları TÜVTÜRK fiyat listesinden.
+      </p>
+
+      <h2>{HEDEF}’de araç muayene ücreti ne olacak?</h2>
+      <p>
+        {HEDEF} ücretleri, 2026 ücretlerinin {HEDEF} yeniden değerleme oranı kadar artırılmasıyla bulunur.
+        {ydCumle} Bu oranla otomobil muayenesi {approx}{tl(oto.u27)}, otobüs-kamyon grubu {approx}{tl(agir.u27)},
+        motosiklet-traktör grubu {approx}{tl(hafif.u27)} olur. Oranın nasıl hesaplandığı için →
+        <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı {HEDEF}</a>.
+      </p>
+      <p>
+        <strong>TÜVTÜRK’ten TURKA’ya geçiş:</strong> TÜVTÜRK’ün 15 Ağustos 2007’de başlayan 20 yıllık imtiyaz süresi
+        14 Ağustos 2027’de doluyor. 2027–2047 dönemi için yapılan özelleştirme ihalesini MOI Ortak Girişim Grubu
+        kazandı; imtiyaz sözleşmesi 30 Temmuz 2026’da imzalandı ve hizmet <strong>15 Ağustos 2027’den itibaren
+        TURKA</strong> markasıyla verilecek. Ulaştırma ve Altyapı Bakanı Abdulkadir Uraloğlu, yeni dönemde 352 istasyon
+        olacağını ve kartla ödemede komisyon sorununun ortadan kalkacağını açıkladı. Muayene ücreti işleticiye göre
+        değil kanuna göre belirlendiği için devir, kanunda değişiklik yapılmadıkça tarifeyi tek başına değiştirmez.
+      </p>
+
+      <h2>Araç muayenesi kaç yılda bir yapılır?</h2>
+      <div class="table-wrap">
+        <table class="rate-table">
+          <thead><tr><th>Araç</th><th>İlk muayene</th><th>Sonra</th></tr></thead>
+          <tbody>
+            <tr><td>Hususi ve resmî otomobil<span class="row-note">M1G sınıfı arazi taşıtları dahil</span></td><td>3 yaş sonunda</td><td>2 yılda bir</td></tr>
+            <tr><td>Motosiklet, motorlu bisiklet<span class="row-note">iki veya üç tekerlekli araçlar</span></td><td>3 yaş sonunda</td><td>2 yılda bir</td></tr>
+            <tr><td>Lastik tekerlekli traktör</td><td>3 yaş sonunda</td><td>3 yılda bir</td></tr>
+            <tr><td>Diğer tüm motorlu araçlar<span class="row-note">taksi gibi ticari otomobiller, kamyonet, minibüs, otobüs, kamyon, çekici</span></td><td>1 yaş sonunda</td><td>Her yıl</td></tr>
+            <tr><td>Römork ve yarı römork</td><td>1 yaş sonunda</td><td>Her yıl</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Kaynak: Araç Muayene Yönetmeliği md. 14. Yeni araçta süre uygunluk belgesi tarihinden, sonra son onaylı
+        muayeneden işler. Geçerlilik tarihinizi e-Devlet’teki muayene raporundan veya TÜVTÜRK’ün sorgulama ekranından
+        görebilirsiniz.
+      </p>
+
+      <h2>Muayenesiz araç kullanmanın cezası</h2>
+      <p>
+        Muayenesi yapılmamış araçla trafiğe çıkılırsa araç sahibine <strong>{tl(MUAYENESIZ_CEZA)}</strong> (2026)
+        idari para cezası verilir ve muayene için süre tanınır (KTK md. 34). Bu süre sonunda muayene yaptırılmadan
+        ya da “emniyetsiz” raporlu araçla yeniden trafiğe çıkılırsa daha yüksek ceza uygulanır ve araç trafikten men
+        edilir. Şubat 2026’da birçok trafik cezasını yeniden yazan 7574 sayılı Kanun bu maddeye dokunmadı; tutar her
+        yıl yeniden değerleme oranıyla artar ({HEDEF} {est}: {approx}{tl(ceza27)}). Diğer cezalar için →
+        <a href="/trafik-cezalari-hesaplama/">trafik cezaları hesaplama</a>.
+      </p>
+
+      <h2>Muayeneye giderken nelere dikkat etmeli?</h2>
+      <ul>
+        <li><strong>Belgeler:</strong> ruhsat (satıştan sonra noterin verdiği geçici tescil belgesi de olur) ve kimlik.
+          Araç size ait değilse vekâlet kurallarına uyun.</li>
+        <li><strong>Trafik sigortası:</strong> geçerli zorunlu trafik sigortası olmayan araç muayeneye alınmaz.</li>
+        <li><strong>Borç sorgusu:</strong> muayeneden önce vergi borcu, trafik para cezası ve köprü-otoyol geçiş
+          ihlali borcu sorgulanır; borç çıkarsa muayene yapılmaz. Taksitlendirilip ödenen vergi engel değildir.
+          Ocak ve Temmuz’da, ayın son gününden önce yapılan muayenede o dönemin <a href="/mtv-hesaplama/">MTV</a>
+          taksiti borç sayılmaz.</li>
+        <li><strong>Ödeme:</strong> randevu ücretsizdir. Ücret istasyonda nakit veya kartla tek seferde ödenir;
+          taksit yapılmaz.</li>
+      </ul>
+
+      <p class="cta-line">
+        {HEDEF} zamlarının tamamı için → <a href="/blog/2027-zamlari-yeniden-degerleme-orani-rehberi/">{HEDEF}’de neler zamlanacak?</a> ·
+        araç vergisi → <a href="/mtv-hesaplama/">MTV {HEDEF} hesaplama</a> · araç alacaklar →
+        <a href="/tasit-kredisi-hesaplama/">taşıt kredisi hesaplama</a> · tüm hesaplayıcılar →
+        <a href="/hesaplama-araclari/">hesaplama araçları</a>.
+      </p>
+      <p class="source-note">
+        Kaynak: 2918 sayılı Karayolları Trafik Kanunu md. 34–35 (mevzuat.gov.tr); Araç Muayene İstasyonlarının
+        Açılması, İşletilmesi ve Araç Muayenesi Hakkında Yönetmelik (RG 6.1.2021, sayı 31356); TÜVTÜRK fiyat listesi
+        ve sıkça sorulan sorular (2024–2025); 2026 tarifesi basına yansıyan TÜVTÜRK tutarları (CNBC-e, 6 Ocak 2026)
+        ile kanundaki hesap kuralından doğrulandı; yeniden değerleme oranları VUK tebliğleri; TURKA devri Habertürk
+        (24 Şubat 2025), Diken (21 Mayıs 2025) ve CNBC-e (30 Temmuz 2026) haberleri.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ GR: CALC, CARPAN: carpan, EGZOZ, ORAN_YAKLASIK: approx, EST: est, HEDEF }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const tl = (n) => {
+        const r = Math.round(n * 100) / 100;
+        return '₺' + r.toLocaleString('tr-TR', { minimumFractionDigits: Number.isInteger(r) ? 0 : 2, maximumFractionDigits: 2 });
+      };
+      const dahil = (kh) => Math.round(kh * 120) / 100;
+      const egz = $('in-egzoz');
+      let egzTercih = egz.checked; // motosiklet/traktörden dönünce kullanıcının seçimi geri gelsin
+      function update() {
+        const g = GR.find((x) => x.key === $('in-grup').value) || GR[0];
+        // KTK md. 35: ay kesirleri tam ay sayılır
+        let ay = Math.ceil((+$('in-ay').value || 0) - 1e-9);
+        ay = ay > 0 ? Math.min(ay, 240) : 0; // -0 ve negatif girişler 0 olur
+        egz.disabled = !g.egzoz;
+        egz.checked = g.egzoz ? egzTercih : false;
+        const ucret = dahil(g.kh26);
+        const gecikme = ucret * 0.05 * ay;
+        const egzoz = egz.checked ? EGZOZ : 0;
+        const ucret27 = dahil(Math.floor(g.kh26 * CARPAN + 1e-9));
+        const gec27 = ucret27 * 0.05 * ay;
+        $('out-toplam').textContent = tl(ucret + gecikme + egzoz);
+        $('out-ucret').textContent = tl(ucret);
+        $('lbl-gecikme').textContent = ay > 0 ? 'Gecikme bedeli (' + ay + ' ay × %5)' : 'Gecikme bedeli (zamanında)';
+        $('out-gecikme').textContent = tl(gecikme);
+        $('out-egzoz').textContent = egz.checked ? tl(EGZOZ) : g.egzoz ? 'yapılmayacak' : 'muaf';
+        $('lbl-27').textContent = HEDEF + ' ' + EST + ' muayene ücreti' + (ay > 0 ? ' + ' + ay + ' ay gecikme' : '');
+        $('out-27').textContent = ORAN_YAKLASIK + tl(ucret27 + gec27);
+      }
+      ['in-grup', 'in-ay'].forEach((id) => {
+        $(id).addEventListener('input', update);
+        $(id).addEventListener('change', update);
+      });
+      egz.addEventListener('change', () => {
+        if (!egz.disabled) egzTercih = egz.checked;
+        update();
+      });
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin: 0 0 1rem; }
+    .kpi { display: flex; flex-direction: column; gap: 0.15rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-xs); }
+    .kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .kpi-val { font-family: var(--font-serif); font-size: clamp(1.5rem, 1.25rem + 1.1vw, 2rem); font-weight: 700; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .kpi-sub { font-size: 0.78rem; color: var(--text-soft); line-height: 1.35; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs label.check { flex-direction: row; align-items: center; gap: 0.5rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; }
+    .calc-inputs input[type='number'], .calc-inputs select {
+      font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .calc-inputs input[type='checkbox'] { width: 1.15rem; height: 1.15rem; flex: none; accent-color: var(--brand-2); }
+    .calc-inputs input[type='checkbox']:disabled + span { opacity: 0.55; }
+    .form-note { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.45; }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 1rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; font-variant-numeric: tabular-nums; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; font-variant-numeric: tabular-nums; text-align: right; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0.4rem 0 0; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .row-note { display: block; font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem; line-height: 1.35; }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; line-height: 1.5; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .prose-block ul { padding-left: 1.2rem; }
+    .prose-block li { margin-bottom: 0.4rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+    .prose-block p.source-note { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 680px) {
+      .kpi-row { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: 1fr; padding: 1.1rem; }
+      .rate-table { font-size: 0.85rem; }
+      .rate-table th, .rate-table td { padding: 0.5rem 0.4rem; }
+    }
+    @media (max-width: 400px) {
+      .rate-table { font-size: 0.8rem; }
+      .rate-table th { font-size: 0.66rem; letter-spacing: 0.02em; }
+      .rate-table th, .rate-table td { padding: 0.45rem 0.28rem; }
+    }
+  </style>
+</BaseLayout>

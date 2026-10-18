@@ -1,0 +1,35 @@
+{
+ "_aciklama": "Tapu harcı + TKGM döner sermaye sabitleri (2026). Oranlar 492 s. Harçlar Kanunu (4) s. tarifeden; döner sermaye tutarları TKGM 2026 Yılı Fiyat Listesi'nden ((I) s. tarife cetveli, 6083 s. Kanun). Döner sermaye her yıl bir önceki yılın yeniden değerleme oranıyla artar (6083 md. 8/3); TKGM yeni yılın tarifesini ilan edince gosterge2027 doldurulursa sayfa tahmin yerine resmî tutarı gösterir. Yöresel katsayı listesi tapu müdürlüğü bazında Bakanlıkça 0,30-3,00 arasında belirlenir; güncel liste doğrulanamadığı için ilçe katsayısı YAZILMAZ.",
+ "dogrulama": "2026-10-18",
+ "yil": 2026,
+ "harc": {
+  "satisBindeTarafBasina": 20,
+  "kanuniBinde": 10,
+  "ipotekBinde": 4.55,
+  "asgariNispiHarc": 346.10,
+  "matrahKesirTL": 10
+ },
+ "donerSermaye": {
+  "gosterge": 2227,
+  "ilaveGosterge": 307,
+  "yabanciEk": 20868,
+  "katsayiMin": 0.30,
+  "katsayiMax": 3.00,
+  "onceki": {
+   "donem": "1 Mayıs - 31 Aralık 2025",
+   "gosterge": 1774.50,
+   "ilaveGosterge": 244.50,
+   "yabanciEk": 16629,
+   "kaynak": "9775 sayılı Cumhurbaşkanı Kararı (RG 1.5.2025), 6083 s. Kanun tarife dipnotu"
+  }
+ },
+ "gosterge2027": null,
+ "kaynaklar": {
+  "harclarKanunu": "https://www.mevzuat.gov.tr/mevzuatmetin/1.5.492.pdf",
+  "tkgmFiyatListesi": "https://www.tkgm.gov.tr/doner-sermaye-isletme-mudurlugu/mevzuat/fiyat-listesi-yoresel-katsayilar",
+  "kanun6083": "https://www.mevzuat.gov.tr/mevzuatmetin/1.5.6083.pdf",
+  "emlakVergisiKanunu": "https://www.mevzuat.gov.tr/mevzuatmetin/1.5.1319.pdf",
+  "tapuKanunu": "https://www.mevzuat.gov.tr/mevzuatmetin/1.3.2644.pdf",
+  "vergiUsulKanunu": "https://www.mevzuat.gov.tr/mevzuatmetin/1.4.213.pdf"
+ }
+}
