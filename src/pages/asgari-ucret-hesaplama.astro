@@ -13,9 +13,20 @@ const bp = (pct: number) => Math.round(pct * 100);                 // %21,75 →
 const KESINTI_BP = bp(R.sgkIsci) + bp(R.issizlikIsci);             // %15 → 1500
 const kurus = (tl: number) => Math.round(tl * 100);
 const oranla = (tl: number, bpOran: number) => Math.round((kurus(tl) * bpOran) / 10000) / 100;
+// Bordro gibi: net = brüt − yuvarla(brüt×%14) − yuvarla(brüt×%1) (2025: 26.005,50 → 22.104,67; tek çarpımla 1 kuruş sapıyordu)
+const netOf = (brut: number) => Math.round(kurus(brut) - kurus(oranla(brut, bp(R.sgkIsci))) - kurus(oranla(brut, bp(R.issizlikIsci)))) / 100;
+// Yalnız net açıklandıysa: net'i veren brütlerden en "yuvarlağı" (tam TL > ,50 > diğer)
+const brutOf = (net: number) => {
+  const c0 = Math.round((kurus(net) * 10000) / (10000 - KESINTI_BP));
+  const adaylar = [];
+  for (let k = c0 - 10; k <= c0 + 10; k++) if (netOf(k / 100) === net) adaylar.push(k);
+  const skor = (k: number) => (k % 100 === 0 ? 0 : k % 50 === 0 ? 1 : 2);
+  adaylar.sort((a, b) => skor(a) - skor(b) || Math.abs(a - c0) - Math.abs(b - c0));
+  return (adaylar[0] ?? c0) / 100;
+};
 const tamamla = (y: Yil) => {
-  const brut = y.brut ?? Math.round((kurus(y.net as number) * 10000) / (10000 - KESINTI_BP)) / 100;
-  const net = y.net ?? oranla(brut, 10000 - KESINTI_BP);
+  const brut = y.brut ?? brutOf(y.net as number);
+  const net = y.net ?? netOf(brut);
   return { yil: y.yil, brut, net, aciklanma: y.aciklanma };
 };
 const G = tamamla(au.guncel as Yil);                 // yürürlükteki yıl
