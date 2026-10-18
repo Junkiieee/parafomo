@@ -51,3 +51,6 @@ agent/logs/
 
 # Kapak WebP varyantları — build sırasında src/integrations/cover-variants.mjs üretir
 public/covers/w/
+
+# Claude Code alt-ajan çalışma kopyaları (geçici)
+.claude/worktrees/
