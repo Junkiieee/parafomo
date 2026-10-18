@@ -41,8 +41,7 @@ Otorite/dış link işleri şimdilik YAPILMAZ (Kaan: "kalsın"). Fırsat listesi
 - [x] K9b yıllık izin hesaplama (13) → **/yillik-izin-hesaplama/** (canlı 2026-10-18, commit 4fefcf1 — md.53 + yaş kuralı, birikmiş izin + izin ücreti)
   — İş Kanunu md. 17 (2/4/6/8 hafta) ve md. 53 (14/20/26 gün, 18 yaş altı/50 yaş üstü ≥20); kanun metninden doğrula.
 - [x] K10 taşıt kredisi hesaplama (26) → **/tasit-kredisi-hesaplama/** (canlı 2026-10-18, RC alt-ajan; BDDK 10099 genel + 11158 yerli elektrikli sınırları, KKDF/BSMV %15, TCMB haftalık faiz otomatik)
-- [ ] K11 noter ücreti (76) — ⏳ RC 2026-10-18 YAPIYOR (paralel alt-ajan; günlük koşu ATLA) → **/noter-ucretleri/** — Noterlik Ücret Tarifesi (Resmî Gazete) — araç satış, vekaletname,
-  onay; her Ocak yeni tarife → sezon notu.
+- [x] K11 noter ücreti (76) → **/noter-ucretleri/** (canlı 2026-10-18, RC alt-ajan; Noterlik Ücret Tarifesi 2026 RG 30.12.2025 + Harçlar Tebliğ 98; tarife YD'ye BAĞLI DEĞİL (+%75/+%47/+%32) → 2027 tahmini yalnız harçlar için)
 - [x] K12 araç muayene ücreti (46) → **/arac-muayene-ucreti/** (canlı 2026-10-18, RC alt-ajan; TÜVTÜRK 2026 tarifesi KTK md.35 formülüyle birebir doğrulandı, gecikme %5/ay, 2027 tahmini YD ile otomatik)
 - [x] K13 trafik cezası sorgulama (62) → /trafik-cezalari-hesaplama/#sorgulama bölümü (canlı 2026-10-18, RC; ayrıca indirim süresi 1 AY düzeltildi — KK 17/6)
 - [ ] K14 tefas (160) + fon getirileri (14) → blog "TEFAS nedir, fon nasıl alınır" (kaynak: TEFAS/SPK). → content-queue'ya eklendi (RC 10-18); yazınca [x]

@@ -1,0 +1,634 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import yd from '../../data/yeniden-degerleme.json';
+
+// Noter ücretleri 2026 — tüm tutarlar birincil kaynaktan (doğrulama 2026-10-18):
+// • 2026 Yılı Noterlik Ücret Tarifesi: RG 30.12.2025/33123 (Çeşitli İlanlar, Adalet Bakanlığı), 01.01.2026’dan
+//   itibaren. 11. madde (yol ödeneği) RG 26.08.2026/33352 ile yeniden yazıldı; tutarlar değişmedi.
+// • Önceki tarifeler: 2025 → RG 27.12.2024/32765 · 2024 → RG 06.04.2024/32512 · 2023 → RG 08.03.2023/32126.
+// • Harçlar: 492 s. Harçlar Kanunu (2) sayılı tarife; 2026 tutarları Harçlar Kanunu Genel Tebliği (Seri No: 98),
+//   RG 31.12.2025/33124 (5. Mük.). 2025 tutarları CB Kararı 10783 ile %18,95 artırıldı. Araç satış harcı
+//   (binde 2, en az 1.000 TL) 7566 s. Kanun md. 7 ile 1.1.2026’da yürürlüğe girdi.
+// • Değerli kağıt: Muhasebat GM Genel Tebliği (Sıra No: 97), RG 24.12.2025/33117.
+// • Damga vergisi: DVK Genel Tebliği (Seri No: 71), RG 31.12.2025/33124 (5. Mük.). Kira + kefil oranları ve
+//   vekaletname değerli kağıt kuralı: Adalet Bakanlığı Teftiş Kurulu noterlik denetim rehberi (2021).
+// • Araç satışı: 2918 s. KTK md. 20/1-d (sözleşmeler damga vergisi ve değerli kağıt bedelinden istisna; tarife
+//   yerine maktu ücret); harç muafiyetini 7566 s. K. md. 13 kaldırdı. HK md. 43: taşıt değeri kasko değerinden
+//   düşük gösterilemez; kirada matrah sözleşme süresince ödenecek kira toplamı.
+// • KDV %20: CB Kararı 7346 (RG 7.7.2023); değerli kağıt teslimi KDV K. md. 17/4-g ile istisna.
+// Noterlik ücret tarifesi yeniden değerleme oranını İZLEMİYOR (2024 +%75, 2025 +%47, 2026 +%32) → 2027 tahmini
+// yalnız harçlar için verilir (HK mük. 138: maktu harçlar ve alt/üst sınırlar her yıl YD oranında artar).
+const BAZ = 2026;
+const DOGRULAMA = '2026-10-18';
+
+const TARIFE = { asgari: 58.82, oran: 0.3, yazi: 80.68, cevirme: 667.67, vasiyet: 2661.62 };
+const TARIFE_TABLO = [
+  { ad: 'Asgari noter ücreti (işlem başına)', y25: 44.56, y26: 58.82 },
+  { ad: 'Yazı ücreti (sayfa başına)', y25: 61.12, y26: 80.68 },
+  { ad: 'Karşılaştırma ücreti (sayfa başına)', y25: 61.12, y26: 80.68 },
+  { ad: 'Çevirme ücreti (sayfa başına)', y25: 505.81, y26: 667.67, not: '10 satır veya daha kısa sayfada yarısı' },
+  { ad: 'Vasiyetname ve vakıf senedi düzenleme ücreti', y25: 2016.38, y26: 2661.62 },
+  { ad: 'Harçtan muaf işlemlerde imza başına ücret', y25: 51.2, y26: 67.58 },
+  { ad: 'Emanet saklama ücreti (yıllık)', y25: 141.18, y26: 186.36 },
+  { ad: 'Tescil ücreti (işlem başına)', y25: 19.1, y26: 25.21 },
+  { ad: 'Bildirim yazı ücreti (yazı başına)', y25: 19.1, y26: 25.21 },
+  { ad: 'Yol ödeneği (daire dışı iş, günlük)', y25: 242.12, y26: 319.6 },
+  { ad: 'Elektronik tespit (ilk 1 MB)', y25: 27.27, y26: 36 },
+];
+const HARC = {
+  vekalet: 307.9, // (2) II-3 vekaletnamelerde beher imza
+  imza: 233.8, // (2) II-1 belli meblağ içermeyen kağıtlarda beher imza
+  ihtar: 411.6, // (2) II-2 muhataba tebliğ edilecek beher nüsha
+  suret: 37.8, // (2) II-5-a beher sayfa
+  tercume: 104, // (2) II-5-b beher sayfa
+  sabit: 1526.2, // (2) II-11 mirasçılık belgesi, ölüme bağlı tasarruf vb.
+  nispiBinde: 1.13, // (2) I-1 beher imza
+  nispiMin: 1526.2,
+  nispiMax: 786596.8,
+  aracBinde: 2, // (2) I-5 (7566 s. K.)
+  aracMin: 1000,
+  defterIsletme: 587.4,
+  defterBilanco: 732,
+  muhur: 187.4,
+};
+const DK = { noter: 149, beyanname: 149, vekalet: 298, ruhsat: 1511 };
+const DV = { kira: 1.89, kiraAdi: 11.37, kiraMut: 9.48, mukavele: 9.48, ust: 29115961.1 }; // binde; üst sınır TL
+const KDV = 20;
+const ucret = (harc: number) => Math.max(TARIFE.asgari, harc * TARIFE.oran);
+
+const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const tl = (n: number) => nf(n, 2);
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const pct = (yeni: number, eski: number) => Math.round((yeni / eski - 1) * 100);
+
+// Geçmiş tarifeler (Resmî Gazete metinlerinden) — artış = yazı ücretindeki değişim (tüm kalemler aynı oranda arttı)
+type Gecmis = { uygulamaYili: number; oran: number; uygulanan: number | null };
+const GECMIS = [
+  { yil: 2023, rg: '8 Mart 2023', yazi: 23.76, asgari: 17.32 },
+  { yil: 2024, rg: '6 Nisan 2024', yazi: 41.58, asgari: 30.31 },
+  { yil: 2025, rg: '27 Aralık 2024', yazi: 61.12, asgari: 44.56 },
+  { yil: 2026, rg: '30 Aralık 2025', yazi: 80.68, asgari: 58.82 },
+].map((g, i, arr) => ({
+  ...g,
+  artis: i > 0 ? pct(g.yazi, arr[i - 1].yazi) : null,
+  yd: (yd.gecmis as Gecmis[]).find((x) => x.uygulamaYili === g.yil) ?? null,
+}));
+const artislar = GECMIS.slice(1).map((g) => `%${g.artis}`);
+const sonUc = `${artislar.slice(0, -1).join(', ')} ve ${artislar[artislar.length - 1]}`;
+const tarifeArtis = pct(TARIFE_TABLO[0].y26, TARIFE_TABLO[0].y25); // 2025→2026: tüm kalemler %32
+
+// 2027 harç tahmini: Cumhurbaşkanı kararı (uygulananOrani) > VUK tebliği > 12 aylık ortalama Yİ-ÜFE
+const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const sonAyAdi = `${MONTHS[+yd.sonAy.slice(5) - 1]} ${yd.sonAy.slice(0, 4)}`;
+const HEDEF = yd.hedefYil;
+const teblig = yd.tebligOrani as number | null;
+const uygulanan = (yd as { uygulananOrani?: number | null }).uygulananOrani ?? null;
+const oran = uygulanan ?? teblig ?? yd.onikiAyOrt;
+const durum = uygulanan || teblig ? 'teblig' : yd.ekimVerisiGeldi ? 'hesap' : 'tahmin';
+const oranLabel = durum === 'tahmin' ? `≈%${nf(oran, 1)}` : `%${nf(oran, 2)}`;
+const carpan = 1 + oran / 100;
+const tahminGecerli = HEDEF === BAZ + 1; // taban tutarlar 2026; veri dosyası ileri yıla geçerse tahmin gizlenir
+const durumMetni = uygulanan
+  ? `harçlara Cumhurbaşkanı kararıyla uygulanacak oran %${nf(uygulanan, 2)}`
+  : durum === 'teblig'
+    ? `yeniden değerleme oranı Resmî Gazete’de %${nf(oran, 2)} olarak ilan edildi`
+    : durum === 'hesap'
+      ? `Ekim Yİ-ÜFE verisiyle oran hesaben %${nf(oran, 2)} olarak kesinleşti (tebliğ Kasım sonunda)`
+      : `${sonAyAdi} Yİ-ÜFE verisine göre oran yaklaşık %${nf(oran, 1)} (tahmin; Ekim verisiyle kesinleşir)`;
+
+const TAHMIN = [
+  { ad: 'Vekaletname harcı (imza başına)', t: HARC.vekalet },
+  { ad: 'İmza onayı harcı (imza başına)', t: HARC.imza },
+  { ad: 'İhtarname harcı (muhatap başına)', t: HARC.ihtar },
+  { ad: 'Mirasçılık belgesi ve vasiyetname harcı', t: HARC.sabit },
+  { ad: 'Para içeren sözleşmede asgari harç', t: HARC.nispiMin },
+  { ad: 'Araç satış harcının alt sınırı', t: HARC.aracMin },
+];
+
+// Hesaplayıcı varsayılanı (sunucuda da aynı sonuç basılır)
+const D = { bedel: 1000000, kira: 20000, sure: 12 };
+const aracHarc = Math.max(HARC.aracMin, (D.bedel * HARC.aracBinde) / 1000);
+const kiraToplam = D.kira * D.sure;
+const kiraHarc = Math.min(HARC.nispiMax, Math.max(HARC.nispiMin, (kiraToplam * HARC.nispiBinde * 2) / 1000));
+const kiraDamga = (kiraToplam * DV.kira) / 1000;
+
+const faq = [
+  {
+    q: '2026 noter ücretleri ne kadar?',
+    a: `Noterde ödenen tutar işleme göre değişir; harç, noter ücreti, yazı ücreti, değerli kağıt bedeli, varsa damga vergisi ve KDV’den oluşur. 2026’da noter ücreti harcın %30’udur ve bir işlemde ${tl(TARIFE.asgari)} TL’den az olamaz; yazı ücreti sayfa başına ${tl(TARIFE.yazi)} TL’dir. Harç vekaletnamede imza başına ${tl(HARC.vekalet)} TL, imza onayında ${tl(HARC.imza)} TL, ihtarnamede muhatap başına ${tl(HARC.ihtar)} TL, mirasçılık belgesinde ${tl(HARC.sabit)} TL’dir. Tutarlar 30 Aralık 2025 tarihli Resmî Gazete’de yayımlanan 2026 Yılı Noterlik Ücret Tarifesi ile Harçlar Kanunu tarifelerine dayanır.`,
+  },
+  {
+    q: 'Araç satışında noter masrafı ne kadar?',
+    a: `1 Ocak 2026’dan itibaren ikinci el araç satışında satış bedelinin binde 2’si oranında harç alınır ve bu tutar ${fmt(HARC.aracMin)} TL’den az olamaz; örneğin ${fmt(D.bedel)} TL’lik araçta harç ${fmt(aracHarc)} TL’dir. Bedel, aracın kasko değerinden düşük gösterilemez. Alıcı ikinci el ticaret yetki belgesi olan bir galeriyse harç alınmaz. Satış sözleşmesinden damga vergisi alınmaz; yeni ruhsat için ${fmt(DK.ruhsat)} TL tescil belgesi bedeli ödenir. Noter bu işlemde ücret tarifesi yerine Karayolları Trafik Kanunu’nun 20/d maddesindeki maktu ücreti alır.`,
+  },
+  {
+    q: 'Vekaletname ücreti 2026’da ne kadar?',
+    a: `Vekaletnamede harç, vekalet veren kişi başına ${tl(HARC.vekalet)} TL; noter ücreti bunun %30’u olan ${tl(HARC.vekalet * TARIFE.oran)} TL’dir. Buna ${fmt(DK.vekalet)} TL vekaletname değerli kağıdı, noterde kalan nüsha ile size verilen asıl ve örneklerin her sayfası için ${tl(TARIFE.yazi)} TL yazı ücreti ve noterin ücretlerine %${KDV} KDV eklenir; damga vergisi alınmaz. Genel, özel veya avukat vekaletnamesi olması harcı değiştirmez; toplamı sayfa, nüsha ve vekalet veren sayısı belirler.`,
+  },
+  {
+    q: `${BAZ + 1}’de noter ücretleri ne kadar artacak?`,
+    a: tahminGecerli
+      ? `Harçlar 1 Ocak ${BAZ + 1}’de yeniden değerleme oranında artar; ${durumMetni}. Bu oranla vekaletname harcı yaklaşık ${fmt(HARC.vekalet * carpan)} TL, mirasçılık belgesi harcı yaklaşık ${fmt(HARC.sabit * carpan)} TL olur${durum === 'tahmin' ? ' (tahmin)' : ''}. Cumhurbaşkanı farklı oran belirleyebilir: 2026’da %25,49 yerine %18,95 uygulandı. Noterin kendi ücret tarifesi ise bu orana bağlı değildir; son üç tarifede artış ${sonUc} oldu. Son iki tarife Aralık sonunda Resmî Gazete’de yayımlandı.`
+      : `Harçlar her yıl 1 Ocak’ta yeniden değerleme oranında artar; Cumhurbaşkanı farklı oran belirleyebilir. Noterin kendi ücret tarifesi bu orana bağlı değildir; son üç tarifede artış ${sonUc} oldu.`,
+  },
+  {
+    q: 'Noter ücretlerine KDV dahil mi?',
+    a: `Hayır, KDV ayrıca eklenir. %${KDV} KDV, noterin kendi ücretleri (noter ücreti, yazı ücreti gibi) üzerinden hesaplanır. Harç ve damga vergisi devlete ödenen vergilerdir, KDV eklenmez; değerli kağıt bedeli de KDV’den istisnadır.`,
+  },
+  {
+    q: 'Kira sözleşmesini noterde onaylatmak ne kadar tutar?',
+    a: `Kira sözleşmesinde harç, sözleşme süresince ödenecek toplam kiranın binde 1,13’ü kadar her imza için alınır ve tüm imzalar için ${tl(HARC.nispiMin)} TL’den az olamaz. Noter ücreti harcın %30’udur (en az ${tl(ucret(HARC.nispiMin))} TL). Damga vergisi toplam kiranın binde 1,89’u; adi kefil varsa binde 11,37, müteselsil kefil varsa binde 9,48’dir. Örneğin aylık ${fmt(D.kira)} TL, ${D.sure} aylık kefilsiz sözleşmede harç ${tl(kiraHarc)} TL, noter ücreti ${tl(ucret(kiraHarc))} TL, damga vergisi ${tl(kiraDamga)} TL’dir; yazı ücreti, değerli kağıt ve KDV ayrıca eklenir.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Noter Ücretleri 2026', url: '/noter-ucretleri/' },
+];
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: `Noter ücretleri 2026: harç, noter ücreti, değerli kağıt ve ${BAZ + 1} harç tahmini`,
+  description: `2026 Noterlik Ücret Tarifesi (2025 karşılaştırmalı), Harçlar Kanunu (2) sayılı tarife noter harçları, noter değerli kağıt bedelleri, araç satış harcı ve kira sözleşmesi damga vergisi; ${BAZ + 1} harç tahmini ${oranLabel}.`,
+  url: 'https://parafomo.com/noter-ucretleri/',
+  dateModified: yd.updated > DOGRULAMA ? yd.updated : DOGRULAMA,
+  creator: { '@type': 'Organization', name: 'ParaFOMO', url: 'https://parafomo.com/' },
+  isBasedOn: 'https://www.resmigazete.gov.tr',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+};
+const dogrulamaLabel = new Date(DOGRULAMA + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  title={`Noter Ücretleri 2026 ve ${BAZ + 1}: Araç Satışı, Vekaletname Harcı`}
+  description={`Noter ücretleri 2026: vekaletname harcı imza başına 307,90 TL, araç satışında binde 2 harç (en az 1.000 TL), yazı ücreti 80,68 TL. ${BAZ + 1} harç tahmini.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+  image="/og/noter-ucretleri.png"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(dataset)} />
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Harç ve ücretler · {BAZ + 1} zam sezonu</p>
+      <h1>Noter Ücretleri 2026: Araç Satışı, Vekaletname ve Diğer İşlemler</h1>
+      <p class="lede">
+        Notere ödenen tutar; devlete giden <strong>harç</strong>, noterin <strong>ücreti</strong>, yazı ücreti,
+        değerli kağıt, varsa damga vergisi ve KDV’den oluşur. 2026 tutarlarının tamamı Resmî Gazete’den;
+        {BAZ + 1} için harç tahmini aşağıda.
+      </p>
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="kpi-label">Vekaletname harcı</span>
+        <span class="kpi-val">₺{tl(HARC.vekalet)}</span>
+        <span class="kpi-sub">vekalet veren kişi başına · 2026</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Araç satış harcı</span>
+        <span class="kpi-val">Binde 2</span>
+        <span class="kpi-sub">en az ₺{fmt(HARC.aracMin)} · 1 Ocak 2026’dan beri</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">{BAZ + 1} harç artışı {durum === 'tahmin' ? '(tahmin)' : ''}</span>
+        <span class="kpi-val">{tahminGecerli ? oranLabel : '—'}</span>
+        <span class="kpi-sub">noterin ücret tarifesi bu orana bağlı değil</span>
+      </div>
+    </div>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>İşlem</span>
+          <select id="in-tip">
+            <option value="arac" selected>İkinci el araç satışı</option>
+            <option value="kira">Kira sözleşmesi (noter onaylı)</option>
+          </select>
+        </label>
+        <div class="grp" id="grp-arac">
+          <label>
+            <span>Satış bedeli (₺)</span>
+            <input type="number" id="in-bedel" value={D.bedel} min="0" step="10000" inputmode="numeric" />
+          </label>
+          <label>
+            <span>Kasko değeri (₺) <em class="hint">— biliyorsanız</em></span>
+            <input type="number" id="in-kasko" placeholder="0" min="0" step="10000" inputmode="numeric" />
+          </label>
+          <label class="check">
+            <input type="checkbox" id="in-galeri" />
+            <span>Alıcı, ikinci el ticaret yetki belgesi olan galeri</span>
+          </label>
+        </div>
+        <div class="grp" id="grp-kira" hidden>
+          <label>
+            <span>Aylık kira (₺)</span>
+            <input type="number" id="in-kira" value={D.kira} min="0" step="500" inputmode="numeric" />
+          </label>
+          <label>
+            <span>Sözleşme süresi (ay)</span>
+            <input type="number" id="in-sure" value={D.sure} min="1" max="120" step="1" inputmode="numeric" />
+          </label>
+          <label>
+            <span>Kefil</span>
+            <select id="in-kefil">
+              <option value="yok" selected>Kefil yok</option>
+              <option value="adi">Adi kefil</option>
+              <option value="mut">Müteselsil kefil / müşterek borçlu</option>
+            </select>
+          </label>
+        </div>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Harç (devlete ödenen)</span>
+          <span class="result-value" id="out-harc">₺{tl(aracHarc)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Noter ücreti</span>
+            <span class="split-val" id="out-ucret">Maktu (KTK 20/d)</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Damga vergisi</span>
+            <span class="split-val" id="out-damga">Yok (istisna)</span>
+          </div>
+          <div class="split-item" id="row-ruhsat">
+            <span class="split-label">Ruhsat (tescil belgesi) bedeli</span>
+            <span class="split-val">₺{tl(DK.ruhsat)}</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note">
+          Harç, kasko değerinden düşük olmayan bedelin binde 2’si; noter ayrıca kanundaki maktu ücreti alır.
+        </p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Hesaplayıcı yalnız değere bağlı kalemleri gösterir, toplam ücret değildir: yazı ücreti (sayfa başına
+      ₺{tl(TARIFE.yazi)}), değerli kağıt bedeli ve noterin ücretlerine eklenen %{KDV} KDV belgenin sayfa ve nüsha
+      sayısına göre değişir. Kesin tutar noter makbuzundaki dökümdür. Tutarlar {dogrulamaLabel}’de Resmî Gazete
+      metinleriyle kontrol edildi.
+    </p>
+
+    <section class="table-block">
+      <h2>2026 noter ücretleri: işlem bazında harç ve ücretler</h2>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead><tr><th>İşlem</th><th>Harç (2026)</th><th>Noter ücreti ve diğer kalemler</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Vekaletname</strong><span class="row-note">genel, özel, avukat, tapu</span></td>
+              <td>₺{tl(HARC.vekalet)}<span class="row-note">vekalet veren kişi başına</span></td>
+              <td>Noter ücreti kişi başına ₺{tl(HARC.vekalet * TARIFE.oran)} · vekaletname değerli kağıdı ₺{fmt(DK.vekalet)} · yazı ücreti · KDV<span class="row-note">Damga vergisi alınmaz.</span></td>
+            </tr>
+            <tr>
+              <td><strong>İkinci el araç satışı</strong></td>
+              <td>Bedelin binde 2’si<span class="row-note">en az ₺{fmt(HARC.aracMin)}; galeriye satışta alınmaz</span></td>
+              <td>Ruhsat (tescil belgesi) bedeli ₺{fmt(DK.ruhsat)} · noterin maktu ücreti (KTK md. 20/d)<span class="row-note">Damga vergisi alınmaz; bedel kasko değerinden düşük gösterilemez.</span></td>
+            </tr>
+            <tr>
+              <td><strong>İmza onayı</strong><span class="row-note">imza beyannamesi, muvafakatname vb.</span></td>
+              <td>₺{tl(HARC.imza)}<span class="row-note">imza başına (belge para tutarı içermiyorsa)</span></td>
+              <td>Noter ücreti imza başına ₺{tl(HARC.imza * TARIFE.oran)} · yazı veya karşılaştırma ücreti · varsa değerli kağıt · KDV</td>
+            </tr>
+            <tr>
+              <td><strong>İhtarname</strong></td>
+              <td>₺{tl(HARC.ihtar)}<span class="row-note">tebliğ edilecek muhatap (nüsha) başına</span></td>
+              <td>Noter ücreti nüsha başına ₺{tl(HARC.ihtar * TARIFE.oran)} · yazı ücreti · tebligat gideri · KDV</td>
+            </tr>
+            <tr>
+              <td><strong>Kira sözleşmesi onayı</strong></td>
+              <td>Toplam kiranın binde 1,13’ü × imza<span class="row-note">tüm imzalar için en az ₺{tl(HARC.nispiMin)}</span></td>
+              <td>Noter ücreti harcın %30’u (en az ₺{tl(ucret(HARC.nispiMin))}) · damga vergisi toplam kiranın binde 1,89’u · yazı ücreti · KDV<span class="row-note">Adi kefilde damga binde 11,37, müteselsil kefilde binde 9,48.</span></td>
+            </tr>
+            <tr>
+              <td><strong>Suret (fotokopi) onayı</strong></td>
+              <td>₺{tl(HARC.suret)}<span class="row-note">sayfa başına</span></td>
+              <td>Sayfa başına ₺{tl(TARIFE.yazi)} yazı veya karşılaştırma ücreti · noter ücreti en az ₺{tl(TARIFE.asgari)} · KDV</td>
+            </tr>
+            <tr>
+              <td><strong>Tercüme onayı</strong></td>
+              <td>₺{tl(HARC.tercume)}<span class="row-note">sayfa başına</span></td>
+              <td>Noter ücreti en az ₺{tl(TARIFE.asgari)} · KDV<span class="row-note">Çeviriyi noter yaptırırsa sayfa başına ₺{tl(TARIFE.cevirme)} çevirme ücreti.</span></td>
+            </tr>
+            <tr>
+              <td><strong>Mirasçılık belgesi</strong><span class="row-note">veraset belgesi</span></td>
+              <td>₺{tl(HARC.sabit)}</td>
+              <td>Noter ücreti ₺{tl(HARC.sabit * TARIFE.oran)} · yazı ücreti · KDV<span class="row-note">Değerli kağıt ve damga vergisi alınmaz.</span></td>
+            </tr>
+            <tr>
+              <td><strong>Vasiyetname</strong><span class="row-note">düzenleme şeklinde</span></td>
+              <td>₺{tl(HARC.sabit)}<span class="row-note">belli bir tutar içermiyorsa</span></td>
+              <td>Noter ücreti yerine ₺{tl(TARIFE.vasiyet)} düzenleme ücreti (hangisi yüksekse) · KDV</td>
+            </tr>
+            <tr>
+              <td><strong>Defter tasdiki</strong><span class="row-note">defter başına</span></td>
+              <td>₺{tl(HARC.defterIsletme)}<span class="row-note">işletme defteri; bilanço ve serbest meslek defteri ₺{tl(HARC.defterBilanco)}</span></td>
+              <td>Açılışta sayfa mühürleme harcı 100 sayfaya kadar ₺{tl(HARC.muhur)} · noterin ücretleri ayrıca</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Harçlar 492 sayılı Harçlar Kanunu’na bağlı (2) sayılı tarifeden (2026 tutarları, Seri No: 98 Genel Tebliğ);
+        noter ücreti harcın %30’u olup bir işlemde ₺{tl(TARIFE.asgari)}’den az olamaz. Harçlar 2026’da %25,49’luk
+        yeniden değerleme oranı yerine Cumhurbaşkanı kararıyla %18,95 artırıldı.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Notere ödenen toplam tutar nelerden oluşur?</h2>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead><tr><th>Kalem</th><th>2026</th><th>Açıklama</th></tr></thead>
+          <tbody>
+            <tr><td>Harç</td><td>İşleme göre</td><td>Devlete ödenir; tutarlar yukarıdaki tabloda.</td></tr>
+            <tr><td>Noter ücreti</td><td>Harcın %30’u<span class="row-note">en az ₺{tl(TARIFE.asgari)}</span></td><td>Noterin ücreti (Noterlik Ücret Tarifesi md. 1).</td></tr>
+            <tr><td>Yazı ücreti</td><td>₺{tl(TARIFE.yazi)}<span class="row-note">sayfa başına</span></td><td>Noterin yazdığı belgenin dairede kalan nüshası ile size verilen asıl ve örneklerinin her sayfası için.</td></tr>
+            <tr><td>Değerli kağıt</td><td>₺{fmt(DK.noter)} / ₺{fmt(DK.vekalet)}</td><td>Noter kağıdı ve beyanname ₺{fmt(DK.noter)}; vekaletname, protesto ve re’sen senet ₺{fmt(DK.vekalet)}.</td></tr>
+            <tr><td>Damga vergisi</td><td>Belgeye göre</td><td>Kira sözleşmesinde binde 1,89; belli para içeren sözleşmelerde genel oran binde 9,48. Vekaletname, mirasçılık belgesi ve araç satışında alınmaz.</td></tr>
+            <tr><td>KDV</td><td>%{KDV}</td><td>Yalnız noterin ücretlerine eklenir; harç, damga vergisi ve değerli kağıda eklenmez.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Değerli kağıt bedelleri Muhasebat Genel Müdürlüğü Genel Tebliği (Sıra No: 97), damga vergisi oranları Damga
+        Vergisi Kanunu Genel Tebliği (Seri No: 71) ile belirlendi. Damga vergisi oranları ve hesabı için →
+        <a href="/damga-vergisi-hesaplama/">damga vergisi hesaplama</a>.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>2026 Noterlik Ücret Tarifesi: noterin kendi ücretleri</h2>
+      <p class="table-intro">Tarifedeki bütün kalemler 2025’e göre <strong>%{tarifeArtis}</strong> artırıldı.</p>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead><tr><th>Kalem</th><th>2025</th><th>2026</th></tr></thead>
+          <tbody>
+            {TARIFE_TABLO.map((r) => (
+              <tr>
+                <td>{r.ad}{r.not && <span class="row-note">{r.not}</span>}</td>
+                <td class="num">₺{tl(r.y25)}</td>
+                <td class="num"><strong>₺{tl(r.y26)}</strong></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        2026 tarifesi 30 Aralık 2025, 2025 tarifesi 27 Aralık 2024 tarihli Resmî Gazete’de yayımlandı. Tarifenin yol
+        ödeneği maddesi 26 Ağustos 2026’da yeniden düzenlendi; tutarlar değişmedi. Güncel metin:
+        <a href="https://higm.adalet.gov.tr/Home/SayfaDetay/ucret-tarifeleri" rel="nofollow noopener" target="_blank">Adalet Bakanlığı ücret tarifeleri</a>.
+      </p>
+    </section>
+
+    {tahminGecerli && (
+      <section class="table-block">
+        <h2>{BAZ + 1} noter harçları ne kadar olacak? {durum === 'tahmin' ? '(tahmin)' : ''}</h2>
+        <p class="table-intro">
+          Harçlar ve harçların alt-üst sınırları her yıl 1 Ocak’ta yeniden değerleme oranında artar (Harçlar Kanunu
+          mükerrer 138. madde). Şu an {durumMetni}. Oranlı kısımlar (binde 2, binde 1,13) kendiliğinden değişmez.
+        </p>
+        <div class="table-scroll">
+          <table class="rate-table">
+            <thead><tr><th>Harç</th><th>2026</th><th>{BAZ + 1} {durum === 'tahmin' ? 'tahmini' : ''} ({oranLabel})</th></tr></thead>
+            <tbody>
+              {TAHMIN.map((r) => (
+                <tr>
+                  <td>{r.ad}</td>
+                  <td class="num">₺{tl(r.t)}</td>
+                  <td class="num">≈₺{fmt(r.t * carpan)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">
+          Cumhurbaşkanı harçlarda farklı oran belirleyebilir: 2026’da %25,49 yerine %18,95 uygulandı. Noter ücreti
+          harcın %30’u olduğundan harçlar artınca oransal noter ücreti de aynı oranda artar.
+        </p>
+      </section>
+    )}
+
+    <section class="prose-block">
+      <h2>Noterlik ücret tarifesi yeniden değerleme oranını izliyor mu?</h2>
+      <p>
+        Hayır. Harçlar kanun gereği yeniden değerleme oranına bağlıdır; ama noterin kendi ücretleri (asgari noter
+        ücreti, yazı, çevirme ve düzenleme ücretleri) Adalet Bakanlığı’nın her yıl ayrıca yayımladığı tarifeyle
+        belirlenir ve bir formüle bağlı değildir. Son üç tarifede bütün kalemler aynı oranda artırıldı:
+        <strong>{sonUc}</strong>. Üç yılda da artış, o yılın yeniden değerleme oranının üzerinde kaldı. Bu yüzden
+        {BAZ + 1} tarifesi için rakam tahmini vermiyoruz; yeni tarife yayımlanana kadar 2026 tutarları uygulanır.
+      </p>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead><tr><th>Tarife</th><th>Yazı ücreti</th><th>Tarife artışı</th><th>Yeniden değerleme oranı</th></tr></thead>
+          <tbody>
+            {GECMIS.map((g) => (
+              <tr>
+                <td><strong>{g.yil}</strong><span class="row-note">RG {g.rg}</span></td>
+                <td class="num">₺{tl(g.yazi)}</td>
+                <td class="num">{g.artis != null ? `+%${g.artis}` : '—'}</td>
+                <td>{g.artis != null && g.yd ? `%${nf(g.yd.oran, 2)}` : '—'}{g.artis != null && g.yd?.uygulanan ? <span class="row-note">harçlarda %{nf(g.yd.uygulanan, 2)} uygulandı</span> : null}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Araç satışında noter masrafı 2026</h2>
+      <p>
+        2025’e kadar araç satışları harçtan muaftı. 7566 sayılı Kanun’la <strong>1 Ocak 2026’dan itibaren</strong> araçların
+        ilk tescilinde ve ikinci el satışlarında, satış bedelinin <strong>binde 2’si</strong> oranında harç alınıyor; harç
+        {fmt(HARC.aracMin)} TL’den az olamaz. Bu yüzden 500.000 TL’ye kadar bedelli satışlarda harç {fmt(HARC.aracMin)} TL,
+        {fmt(D.bedel)} TL’lik araçta {fmt(aracHarc)} TL olur. Harçlar Kanunu’nun 43. maddesine göre sözleşmeye yazılan
+        bedel aracın kasko değerinden düşük gösterilemez; kasko değeri daha yüksekse harç onun üzerinden hesaplanır.
+        Alıcı ikinci el motorlu kara taşıtı ticareti yetki belgesi olan bir galeriyse harç alınmaz.
+      </p>
+      <p>
+        Satış sözleşmesi damga vergisinden istisnadır. Yeni malik adına düzenlenecek ruhsat (tescil belgesi) için
+        {fmt(DK.ruhsat)} TL değerli kağıt bedelini noter tahsil eder. Noter bu işlemde ücret tarifesindeki oransal ücreti
+        değil, Karayolları Trafik Kanunu’nun 20/d maddesindeki <strong>maktu ücreti</strong> alır; kanun bu ücretin her yıl
+        yeniden değerleme oranında artırılmasını öngörür.
+      </p>
+
+      <h2>Vekaletname ücreti 2026</h2>
+      <p>
+        Vekaletnamede harç, vekalet veren her kişi için <strong>{tl(HARC.vekalet)} TL</strong>; noter ücreti bunun %30’u,
+        yani kişi başına {tl(HARC.vekalet * TARIFE.oran)} TL. Belge {fmt(DK.vekalet)} TL’lik vekaletname değerli kağıdına
+        yazılır (iki yaprağı aşan vekaletnamelerde sonraki her yaprak için noter kağıdı bedeli alınır). Noter, belgenin
+        dairede kalan nüshası ile size verilen asıl ve örneklerinin her sayfası için {tl(TARIFE.yazi)} TL yazı ücreti
+        alır; noter ücreti ve yazı ücretine %{KDV} KDV eklenir. Vekaletnameden damga vergisi alınmaz. Genel, özel,
+        avukat ya da tapu vekaletnamesi olması harcı değiştirmez; toplamı sayfa, nüsha ve vekalet veren sayısı belirler.
+      </p>
+      <p class="cta-line">
+        {BAZ + 1} zamlarının tamamı için → <a href="/blog/2027-zamlari-yeniden-degerleme-orani-rehberi/">2027’de neler zamlanacak?</a> ·
+        oranın takibi → <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı {BAZ + 1}</a> ·
+        araç sahipleri için → <a href="/mtv-hesaplama/">MTV {BAZ + 1} hesaplama</a> ·
+        sözleşmeler için → <a href="/damga-vergisi-hesaplama/">damga vergisi hesaplama</a> ·
+        diğer harçlar → <a href="/pasaport-ehliyet-harci/">pasaport ve ehliyet harcı</a> ·
+        tüm araçlar → <a href="/hesaplama-araclari/">hesaplama araçları</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <p class="sources">
+      <strong>Kaynak:</strong> 2026 Yılı Noterlik Ücret Tarifesi (Adalet Bakanlığı, RG 30.12.2025, sayı 33123; değişiklik
+      RG 26.08.2026, sayı 33352) · önceki tarifeler RG 08.03.2023/32126, 06.04.2024/32512, 27.12.2024/32765 ·
+      Harçlar Kanunu Genel Tebliği Seri No: 98 ve Damga Vergisi Kanunu Genel Tebliği Seri No: 71 (RG 31.12.2025,
+      sayı 33124 5. mükerrer) · Muhasebat Genel Müdürlüğü Genel Tebliği Sıra No: 97 Değerli Kağıtlar (RG 24.12.2025,
+      sayı 33117) · 7566 sayılı Kanun md. 7 ve 13 (RG 19.12.2025) · 2918 sayılı Karayolları Trafik Kanunu md. 20/d ·
+      492 sayılı Harçlar Kanunu md. 43, 44 ve mükerrer 138 · KDV oranı: Cumhurbaşkanı Kararı 7346 (RG 07.07.2023) ·
+      kira ve vekaletname uygulaması: Adalet Bakanlığı Teftiş Kurulu noterlik denetim rehberi · yeniden değerleme
+      oranı: TÜİK Yİ-ÜFE ve VUK Genel Tebliği Sıra No: 585.
+    </p>
+
+    <Newsletter />
+  </div>
+
+  <script
+    is:inline
+    define:vars={{
+      C: {
+        aracBinde: HARC.aracBinde,
+        aracMin: HARC.aracMin,
+        nispiBinde: HARC.nispiBinde,
+        nispiMin: HARC.nispiMin,
+        nispiMax: HARC.nispiMax,
+        asgari: TARIFE.asgari,
+        oran: TARIFE.oran,
+        dvKira: DV.kira,
+        dvAdi: DV.kiraAdi,
+        dvMut: DV.kiraMut,
+        dvUst: DV.ust,
+      },
+    }}
+  >
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf2 = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const tl = (n) => '₺' + nf2.format(Math.round(n * 100) / 100);
+      function update() {
+        const tip = $('in-tip').value;
+        const arac = tip === 'arac';
+        const galeri = $('in-galeri').checked;
+        $('grp-arac').hidden = !arac;
+        $('grp-kira').hidden = arac;
+        $('row-ruhsat').hidden = !arac || galeri;
+        if (arac) {
+          const bedel = Math.max(0, +$('in-bedel').value || 0);
+          const kasko = Math.max(0, +$('in-kasko').value || 0);
+          const harc = galeri ? 0 : Math.max(C.aracMin, (Math.max(bedel, kasko) * C.aracBinde) / 1000);
+          $('out-harc').textContent = tl(harc);
+          $('out-ucret').textContent = 'Maktu (KTK 20/d)';
+          $('out-damga').textContent = 'Yok (istisna)';
+          $('out-note').textContent = galeri
+            ? 'İkinci el ticaret yetki belgesi olan galeriye yapılan satışta binde 2 harç alınmaz; noterin ücreti ve diğer kalemler makbuzda yer alır.'
+            : kasko > bedel
+              ? 'Kasko değeri satış bedelinden yüksek olduğu için harç kasko değeri üzerinden hesaplandı.'
+              : 'Harç, kasko değerinden düşük olmayan bedelin binde 2’si; noter ayrıca kanundaki maktu ücreti alır.';
+        } else {
+          const toplam = Math.max(0, +$('in-kira').value || 0) * Math.max(1, Math.round(+$('in-sure').value || 1));
+          const kefil = $('in-kefil').value;
+          const imza = kefil === 'yok' ? 2 : 3;
+          const harc = Math.min(C.nispiMax, Math.max(C.nispiMin, (toplam * C.nispiBinde * imza) / 1000));
+          const binde = kefil === 'adi' ? C.dvAdi : kefil === 'mut' ? C.dvMut : C.dvKira;
+          $('out-harc').textContent = tl(harc);
+          $('out-ucret').textContent = tl(Math.max(C.asgari, harc * C.oran));
+          $('out-damga').textContent = tl(Math.min(C.dvUst, (toplam * binde) / 1000));
+          $('out-note').textContent =
+            'Toplam kira ' + tl(toplam) + ' · ' + imza + ' imza. Yazı ücreti, değerli kağıt ve noterin ücretlerine %20 KDV ayrıca eklenir.';
+        }
+      }
+      ['in-tip', 'in-bedel', 'in-kasko', 'in-galeri', 'in-kira', 'in-sure', 'in-kefil'].forEach((id) => {
+        $(id).addEventListener('input', update);
+        $(id).addEventListener('change', update);
+      });
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin: 0 0 1rem; }
+    .kpi { display: flex; flex-direction: column; gap: 0.15rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-xs); }
+    .kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .kpi-val { font-family: var(--font-serif); font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.1rem); font-weight: 700; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .kpi-sub { font-size: 0.78rem; color: var(--text-soft); line-height: 1.35; }
+
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs .grp { display: flex; flex-direction: column; gap: 0.9rem; }
+    .calc-inputs [hidden] { display: none !important; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs label.check { flex-direction: row; align-items: center; gap: 0.5rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; }
+    .calc-inputs input[type='number'], .calc-inputs select { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .calc-inputs input[type='checkbox'] { width: 1.15rem; height: 1.15rem; flex: none; accent-color: var(--brand-2); }
+
+    .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 1rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; font-variant-numeric: tabular-nums; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-item[hidden] { display: none; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; text-align: right; font-variant-numeric: tabular-nums; }
+    .result-note { font-size: 0.82rem; color: var(--brand-ink); margin: 0; font-weight: 500; line-height: 1.45; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.55; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; overflow-wrap: break-word; }
+    .rate-table th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .rate-table td.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .row-note { display: block; font-size: 0.78rem; color: var(--text-muted); font-weight: 400; margin-top: 0.15rem; }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; line-height: 1.5; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .prose-block .table-scroll { margin: 0.4rem 0 0.6rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    .sources { font-size: 0.78rem; color: var(--text-muted); line-height: 1.55; margin: 2rem 0 0; }
+
+    @media (max-width: 680px) {
+      .kpi-row { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: 1fr; padding: 1.1rem; }
+      .rate-table { font-size: 0.85rem; }
+      .rate-table th, .rate-table td { padding: 0.55rem 0.35rem; }
+    }
+  </style>
+</BaseLayout>

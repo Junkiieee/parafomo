@@ -52,6 +52,7 @@ const YD = ['yeniden-degerleme.json'];
 const TUFE = ['tufe-aylik.json'];
 const FAIZ = ['faiz-oranlari.json'];
 const DATA_PAGES = {
+  'noter-ucretleri': YD,
   'tapu-harci-hesaplama': YD,
   'arac-muayene-ucreti': YD,
   'damga-vergisi-hesaplama': YD,

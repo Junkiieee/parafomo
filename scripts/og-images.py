@@ -166,6 +166,10 @@ def vergi_dilimi_card():
 
 
 CARDS = {
+    "noter-ucretleri": lambda: {
+        # Harçlar K. Tebliğ Seri 98 + Noterlik Ücret Tarifesi 2026; Ocak 2027'de güncelle
+        "kicker": "NOTER ÜCRETLERİ 2026", "stat": "₺307,90",
+        "sub": "vekaletname harcı (imza başına) · araç satışında binde 2"},
     "tapu-harci-hesaplama": lambda: {
         # Harçlar K. (4) s. tarife binde 20+20; TKGM 2026 döner sermaye; Ocak 2027'de güncelle
         "kicker": "TAPU HARCI 2026", "stat": "%2 + %2",
