@@ -29,6 +29,7 @@ const GRUPLAR_HAM: Grup[] = [
     { href: '/en-dusuk-emekli-maasi/', ad: 'En düşük emekli maaşı', aciklama: 'Taban aylık, Ocak 2027 senaryosu, ödeme günleri', k: ['emekli maaşı', 'en düşük emekli'] },
     { href: '/engelli-maasi/', ad: 'Engelli maaşı ve 65 yaş aylığı', aciklama: 'Ocak 2027 tahmini ve 2026 tutarları', k: ['engelli', '65 yaş', 'yaşlılık aylığı'] },
     { href: '/evde-bakim-maasi/', ad: 'Evde bakım maaşı', aciklama: '2027 tutarı ve hane geliri şartı', k: ['evde bakım'] },
+    { href: '/dogum-yardimi/', ad: 'Doğum yardımı', aciklama: '2026 tutarları, şartlar ve başvuru', k: ['doğum yardımı', 'doğum', 'çocuk'] },
     { href: '/bayram-ikramiyesi/', ad: 'Bayram ikramiyesi', aciklama: 'Emekli ikramiyesi tutarı ve 2027 bayram tarihleri', k: ['bayram ikramiye'] },
     { href: '/kidem-tazminati-hesaplama/', ad: 'Kıdem tazminatı hesaplama', aciklama: 'Tavan dahil kıdem tazminatı ve 2027 tavan tahmini', k: ['kıdem', 'tazminat', 'işten çıkar'] },
     { href: '/ihbar-tazminati-hesaplama/', ad: 'İhbar tazminatı hesaplama', aciklama: '2-8 haftalık ihbar süresi, brüt ve net tutar', k: ['ihbar'] },
@@ -38,6 +39,7 @@ const GRUPLAR_HAM: Grup[] = [
   { baslik: 'Vergi, harç ve zamlar', araclar: [
     { href: '/vergi-dilimi-hesaplama/', ad: 'Vergi dilimi hesaplama', aciklama: 'Gelir vergisi dilimleri ve kümülatif matrah', k: ['vergi dilim', 'gelir vergisi'] },
     { href: '/gelir-vergisi-hesaplama/', ad: 'Gelir vergisi hesaplama', aciklama: 'Kira, serbest meslek ve ticari kazanç beyannamesi', k: ['gelir vergisi', 'kira geliri', 'beyanname', 'vergi'] },
+    { href: '/vergi-borcu-sorgulama/', ad: 'Vergi borcu sorgulama', aciklama: 'Adım adım sorgulama, gecikme zammı hesabı', k: ['vergi borcu', 'gecikme zammı', 'borç sorgula'] },
     { href: '/kdv-hesaplama/', ad: 'KDV hesaplama', aciklama: 'KDV ekle, KDV dahil fiyattan ayır', k: ['kdv'] },
     { href: '/damga-vergisi-hesaplama/', ad: 'Damga vergisi hesaplama', aciklama: 'Oranlar, maktu tutarlar, 2027 tahmini', k: ['damga vergisi'] },
     { href: '/emlak-vergisi-hesaplama/', ad: 'Emlak vergisi hesaplama', aciklama: 'Oranlar, taksitler, 2027 tahmini', k: ['emlak vergisi', 'emlak', 'gayrimenkul', 'konut'] },

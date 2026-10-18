@@ -61,7 +61,8 @@ Otorite/dış link işleri şimdilik YAPILMAZ (Kaan: "kalsın"). Fırsat listesi
 
 - [ ] K19 engelli maaşı (73,6, zirve Ocak 245) + 65 yaş aylığı (12,8) → **/engelli-maasi/** — ⏳ RC 2026-10-18 YAPIYOR (alt-ajan; günlük koşu ATLA). 2022 s. Kanun gösterge × memur katsayısı; Ocak 2027 tahmini zam2027.ts memurProj'tan otomatik.
 - [ ] K20 evde bakım maaşı (33,9, zirve Ocak 157) → **/evde-bakim-maasi/** — ⏳ RC 2026-10-18 YAPIYOR. Net asgari ücrete bağlı; data/asgari-ucret.json `yeni` gelince otomatik.
-- [ ] K21 adaylar (ölçüldü 10-18): doğum yardımı (54), çocuk parası (27,5), vergi borcu sorgulama (32,6), sgk prim borcu (10,4), bağkur primi (15, zirve Aralık), ötv hesaplama (9,2), gss primi (5,2, zirve Kasım).
+- [ ] K21 doğum yardımı (54, zirve Eylül 2026) → **/dogum-yardimi/** — ⏳ RC 2026-10-18 YAPIYOR. · vergi borcu sorgulama (32,6) + sgk prim borcu (10,4) → **/vergi-borcu-sorgulama/** (gecikme zammı hesabı) — ⏳ RC YAPIYOR.
+- [ ] K22 adaylar (ölçüldü 10-18): çocuk parası (27,5, zirve Ocak), bağkur primi (15, zirve Aralık), ötv hesaplama (9,2), gss primi (5,2, zirve Kasım).
 
 ## Yeniden kur / otorite (sayfa var, sıralanmıyor) — week.md T6 sınıflandırmasına göre
 - halka arz takvimi (68, sıra 67) → /halka-arz · mevduat faizi hesaplama (58, sıra 57) · işsizlik maaşı hesaplama
