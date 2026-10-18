@@ -74,11 +74,14 @@ const datasetLd = {
   creator: { '@id': 'https://parafomo.com/#organization' },
   distribution: { '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: 'https://parafomo.com/bitcoin-getiri.json' },
 };
+// Başlıkta cevap: son 1 yılın TL getirisi (her gün veriyle tazelenir; GSC sorguları "son 1 yılda ne kadar kazandırdı")
+const _p1 = ((data as any).periods ?? []).find((p: any) => p.years === 1);
+const Y1 = _p1 ? `${_p1.return_tl_pct >= 0 ? '%' : '−%'}${Math.round(Math.abs(_p1.return_tl_pct)).toLocaleString('tr-TR')}` : '';
 ---
 
 <BaseLayout
   image="/og/bitcoin-getiri.png"
-  title={`Bitcoin Ne Kadar Kazandırdı? 1, 5, 10 Yıllık Getiri ve En Büyük Düşüşler`}
+  title={`Bitcoin Ne Kadar Kazandırdı? ${Y1 ? `Son 1 Yılda ${Y1} — ` : ''}1, 5, 10 Yıllık Getiri (TL)`}
   description={`Bitcoin son ${longest.years} yılda dolar bazında %${fmt0(longest.return_usd_pct)} kazandırdı; yol boyunca en büyük düşüş %${fmt0(Math.abs(data.max_drawdown_usd_pct))} oldu. 1, 3, 5, 10 yıllık TL ve dolar getirisi, altınla karşılaştırma — her gün güncel.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />

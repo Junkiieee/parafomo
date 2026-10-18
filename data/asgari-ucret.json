@@ -1,0 +1,15 @@
+{
+ "_aciklama": "Asgari ücret — /asgari-ucret-hesaplama tek kaynağı. guncel = yürürlükteki yıl; yeni = Aralık'ta açıklanan gelecek yıl (null → henüz açıklanmadı). Yeni tutar açıklanınca: yeni = {yil, brut, net, aciklanma (YYYY-MM-DD), kaynak: [≥2 URL]} yaz (brut veya net yeterli; diğeri brut×0,85 ile hesaplanır — asgari ücret 2022'den beri gelir ve damga vergisinden istisna, kesinti yalnız SGK %14 + işsizlik %1). 1 Ocak'ta yeni → guncel'e taşınır, eski guncel gecmis'e eklenir.",
+ "_kaynak": "Resmî Gazete / ÇSGB (2026 tutarları: Alomaliye, EY, ÇSGB — doğrulandı 2026-08); işveren oranları 2026: SGK işveren %21,75 + işsizlik işveren %2 = 40.874,63 ₺ (Kolay İK, Hesapkurdu, Av. Kazım Ceylan — doğrulandı 2026-10-18)",
+ "updated": "2026-10-18",
+ "guncel": {"yil": 2026, "brut": 33030.00, "net": 28075.50, "aciklanma": "2025-12-23"},
+ "yeni": null,
+ "oranlar": {"sgkIsci": 14, "issizlikIsci": 1, "sgkIsveren": 21.75, "issizlikIsveren": 2, "tesvikImalat": 5, "tesvikDiger": 2, "yil": 2026},
+ "destek": {"yil": 2026, "tutar": 1270},
+ "gecmis": [
+  {"yil": 2026, "tarih": "23 Aralık 2025", "net": 28075.50, "artis": 27},
+  {"yil": 2025, "tarih": "24 Aralık 2024", "net": 22104.00, "artis": 30},
+  {"yil": 2024, "tarih": "27 Aralık 2023", "net": 17002.00, "artis": 49},
+  {"yil": 2023, "tarih": "22 Aralık 2022", "net": 8506.80, "artis": 54.66}
+ ]
+}

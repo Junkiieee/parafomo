@@ -50,7 +50,23 @@ const faq = [
   },
   {
     q: 'Trafik cezası erken ödenirse indirim var mı?',
-    a: 'Genel kural olarak trafik idari para cezası tebliğden itibaren 15 gün içinde ödenirse dörtte bir (%25) indirim uygulanır. Bazı ağır ihlallerde farklı hükümler olabileceği için tebligattaki tutar ve açıklama esas alınmalıdır. Ödeme e-Devlet, GİB veya bankalar üzerinden yapılabilir.',
+    a: 'Evet. Trafik cezasının ödeme süresi tutanağın tebliğinden itibaren 1 aydır (Karayolları Trafik Kanunu md. 115) ve bu süre içinde ödenen cezadan %25 indirim yapılır (Kabahatler Kanunu md. 17/6; 7417 sayılı Kanun’la 5 Temmuz 2022’den beri). Sık karıştırılan 15 gün, ödeme değil itiraz süresidir. Ödeme yapmak itiraz hakkını ortadan kaldırmaz.',
+  },
+  {
+    q: 'Trafik cezası nasıl sorgulanır ve ödenir?',
+    a: 'Araç ve sürücüye yazılan cezalar e-Devlet’te Emniyet Genel Müdürlüğü’nün trafik cezası sorgulama hizmetinden plaka ya da T.C. kimlik numarasıyla görülür. Ödeme vergi dairelerine, muhasebe birimlerine ve Gelir İdaresi’nin yetkilendirdiği bankalar ile PTT’ye yapılabilir; internetten GİB Dijital Vergi Dairesi, e-Devlet ve banka uygulamaları kullanılır.',
+  },
+  {
+    q: 'Trafik cezası geç ödenirse ne olur?',
+    a: 'Bir ay içinde ödenmeyen cezaya her ay için %5 gecikme faizi eklenir; ay kesirleri tam ay sayılır ve toplam tutar cezanın iki katını geçemez. Süresinde ödenmeyen ceza 6183 sayılı Kanun’a göre vergi dairesince takibe alınır (Karayolları Trafik Kanunu md. 115).',
+  },
+  {
+    q: 'Trafik cezasına itiraz süresi kaç gün?',
+    a: 'İdari para cezasına, tebliğ tarihinden itibaren en geç 15 gün içinde sulh ceza hâkimliğine başvurarak itiraz edilebilir; bu süre geçerse ceza kesinleşir (Kabahatler Kanunu md. 27). İtiraz ederken cezayı indirimli ödemek mümkündür, ödeme itiraz hakkını etkilemez.',
+  },
+  {
+    q: '100 ceza puanı dolarsa ehliyete ne olur?',
+    a: 'Son bir yıl içinde 100 ceza puanını dolduran sürücünün belgesi 2 ay geri alınır ve eğitime gönderilir. Aynı yıl içinde ikinci kez 100 puanı dolduranın belgesi 4 ay geri alınır ve psiko-teknik değerlendirme ile psikiyatri muayenesi istenir; bir yıl içinde üç kez dolduranın belgesi süresiz iptal edilir (Karayolları Trafik Kanunu md. 118).',
   },
   {
     q: 'Kırmızı ışık cezası tekrarlanınca ne olur?',
@@ -91,7 +107,7 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
       <h1>Trafik Cezaları 2026: Kırmızı Işık 5.000 TL, Hız 2.000-30.000 TL</h1>
       <p class="lede">
         27 Şubat 2026'da yürürlüğe giren 7574 sayılı Kanun'la cezalar yeniden belirlendi. Hız cezanızı hesaplayın,
-        15 gün içinde ödeme indirimini ve {HEDEF} için <a href="/yeniden-degerleme-orani/">yeniden değerleme</a>
+        1 ay içinde ödeme indirimini ve {HEDEF} için <a href="/yeniden-degerleme-orani/">yeniden değerleme</a>
         tahminini ({oranLabel}) görün.
       </p>
     </header>
@@ -133,7 +149,7 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
         </label>
         <label class="check">
           <input type="checkbox" id="in-pesin" checked />
-          <span>15 gün içinde ödeyeceğim (%25 indirim)</span>
+          <span>1 ay içinde ödeyeceğim (%25 indirim)</span>
         </label>
       </form>
 
@@ -217,6 +233,19 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
         Hız cezaları aşım miktarına göre 9 kademeye ayrıldı; kırmızı ışık ve telefon ihlallerinde 1 yıl içindeki
         tekrar sayısına göre artan cezalar geldi. Alkollü araç kullanmada ilk ihlal cezası 25.000 TL'ye çıktı.
       </p>
+      <h2 id="sorgulama">Trafik cezası sorgulama ve ödeme</h2>
+      <ul>
+        <li><strong>Sorgulama:</strong> e-Devlet’te Emniyet Genel Müdürlüğü’nün trafik cezası sorgulama hizmeti, araca
+          (plaka) ve sürücüye (T.C. kimlik no) yazılan cezaları gösterir. Plakaya kesilen ceza araç sahibine tebliğ edilir.</li>
+        <li><strong>Ödeme:</strong> vergi daireleri, muhasebe birimleri, Gelir İdaresi’nin yetkilendirdiği bankalar ve PTT;
+          internetten GİB Dijital Vergi Dairesi, e-Devlet veya banka uygulaması.</li>
+        <li><strong>İndirim:</strong> ödeme süresi tebliğden itibaren <strong>1 ay</strong>; bu sürede ödenen cezadan
+          <strong>%25 indirim</strong> yapılır (Kabahatler Kanunu 17/6, 2022’den beri). Yukarıdaki hesaplayıcı bu indirimi uygular.</li>
+        <li><strong>Gecikme:</strong> süresinde ödenmezse her ay <strong>%5</strong> eklenir, toplam cezanın iki katını geçemez.</li>
+        <li><strong>İtiraz:</strong> tebliğden itibaren <strong>15 gün</strong> içinde sulh ceza hâkimliğine; ödeme itiraz hakkını etkilemez.</li>
+        <li><strong>Ceza puanı:</strong> bir yılda 100 puan dolarsa ehliyet 2 ay geri alınır; aynı yıl ikinci kez 4 ay, üçüncü kez süresiz iptal.</li>
+      </ul>
+      <p class="table-note">Kaynak: 2918 sayılı Karayolları Trafik Kanunu md. 115-118 ve 5326 sayılı Kabahatler Kanunu md. 17, 27 (mevzuat.gov.tr güncel metin, 7574 sayılı Kanun değişiklikleri dâhil).</p>
       <h2>{HEDEF}'de cezalar artacak mı?</h2>
       <p>
         Kabahatler Kanunu'na göre idari para cezaları her takvim yılı başında, Kasım'da ilan edilen

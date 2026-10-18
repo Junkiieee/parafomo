@@ -78,11 +78,14 @@ const datasetLd = {
   creator: { '@id': 'https://parafomo.com/#organization' },
   distribution: { '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: 'https://parafomo.com/gumus-getiri.json' },
 };
+// Başlıkta cevap: son 1 yılın TL getirisi (her gün veriyle tazelenir; GSC sorguları "son 1 yılda ne kadar kazandırdı")
+const _p1 = ((data as any).periods ?? []).find((p: any) => p.years === 1);
+const Y1 = _p1 ? `${_p1.return_tl_pct >= 0 ? '%' : '−%'}${Math.round(Math.abs(_p1.return_tl_pct)).toLocaleString('tr-TR')}` : '';
 ---
 
 <BaseLayout
   image="/og/gumus-getiri.png"
-  title={`Gümüş Ne Kadar Kazandırdı? 1, 5, 10 Yıllık Getiri ve Gümüş mü Altın mı`}
+  title={`Gümüş Ne Kadar Kazandırdı? ${Y1 ? `Son 1 Yılda ${Y1} — ` : ''}1, 5, 10 Yıllık Getiri`}
   description={`Gram gümüş son ${ten.years} yılda TL bazında %${fmt0(ten.return_tl_pct)}, dolar bazında %${fmt0(ten.return_usd_pct)} kazandırdı. Gümüşün 1, 3, 5, 10 yıllık getirisi, altınla karşılaştırma ve altın/gümüş oranı — her gün güncel.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />

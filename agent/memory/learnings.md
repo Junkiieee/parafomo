@@ -56,6 +56,11 @@ _v1'in 59 deneyi + 2 aylık KPI'ından damıtıldı (2026-10-06); son yeniden ya
 - Video-qa son 7g'de 4 videoda "altyazı üst üste binmiş" buldu (viral + daily-short ortak kodu) — gerçek kusur.
 
 ## Kısıtlar ve çevre
+- **Trafik cezası indirimi 1 AY (15 gün değil):** KTK md.115 ödeme süresi 1 ay + Kabahatler K. 17/6 (7417 s. Kanun,
+  5.7.2022) "ödeme süresi içinde ödenirse %25 indirim". 15 gün = itiraz süresi (KK md.27). Haber/blog sitelerinin
+  çoğu eski "15 gün" bilgisini tekrarlıyor — /trafik-cezalari-hesaplama bu yüzden yanlıştı (RC 10-18 düzeltildi).
+  Ders: hukuki süre/oranı kanunun mevzuat.gov.tr GÜNCEL metninden doğrula (pypdf ile PDF'ten oku), haberden değil.
+- **Emlak vergisi değeri 2027'de YD oranının TAMAMI kadar artar** (7566 s. Kanun EVK md.29 "yarısı" ibaresini kaldırdı).
 - **Veri sessizce bayatlar:** elle girilen her veri ya otomatik güncelleyici ya da health.py tazelik satırı ister.
   Rakamı YALNIZ birincil kaynaktan yaz (TCMB/Fed/TÜİK/GİB/RG); haber siteleri çelişebilir.
 - **2026'da harçlar YD %25,49 değil CB kararıyla %18,95 arttı** (IMEI 54.258 bununla tutarlı) — zam sezonu
