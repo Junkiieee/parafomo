@@ -6,6 +6,9 @@ category: "Ekonomi"
 tags: ["tcmb faiz kararı", "ppk ekim 2026", "faiz indirimi", "tcmb faiz", "mevduat faizi", "türkiye enflasyonu"]
 readingTime: 7
 featured: false
+# Karar açıklanınca (policy-decisions.sh) yazının üstünde otomatik sonuç kutusu + bu başlık:
+sonuc: "tcmb:2026-10-22"
+sonucBaslik: "TCMB Ekim 2026 Faiz Kararı Açıklandı: Politika Faizi %{oran} ({karar})"
 faq:
   - q: "TCMB Ekim 2026 faiz kararı ne zaman açıklanıyor?"
     a: "TCMB Para Politikası Kurulu (PPK) 22 Ekim 2026 Perşembe günü toplanıyor. Karar TSİ 14:00 civarında açıklanır; toplantı özeti ise yaklaşık 5 iş günü sonra yayımlanır."

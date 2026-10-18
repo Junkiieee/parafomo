@@ -59,9 +59,12 @@ FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan me
 - [ ] T4 (faiz kararı ~160) — **TCMB 22 Ekim: mevcut yazıyı güncelle, yeni yazı AÇMA** · TARİHLİ: 20 Ekim veya
   sonrası (öncesindeyse bir sonraki göreve geç). /blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler'e "Son durum
   (<tarih>)" bölümü: TCMB Piyasa Katılımcıları Anketi / AA Finans beklenti anketi (kaynaklı) + Eylül TÜFE %29,73
-  bağlamı; başlığı "TCMB Faiz Kararı 22 Ekim 2026: Beklenti ve Senaryolar" yap. 23 Ekim sabahı (karar sonrası
-  ilk koşu): yazıya sonuç kutusu + /tcmb-faiz-takvimi'de kararın göründüğünü kontrol et (görünmüyorsa
-  `logs/policy-decisions.log`). · Kabul: canlı yazıda güncel bölüm; 23 Ekim'den sonra sonuç kutusu.
+  bağlamı; başlığı "TCMB Faiz Kararı 22 Ekim 2026: Beklenti ve Senaryolar" yap. SONUÇ KUTUSU ARTIK OTOMATİK (RC 10-18): yazıda
+  `sonuc: "tcmb:2026-10-22"` + `sonucBaslik` var → karar 22 Ekim 11:25 UTC'de data/tcmb-2026.json'a yazılınca deploy'la
+  kutu + "Açıklandı: Politika Faizi %X" başlığı kendiliğinden gelir; ELLE KUTU EKLEME, karar sonrası başlığı
+  elle değiştirme (sonucBaslik devreye girer; karar öncesi başlık değişikliği serbest). 23 Ekim sabahı: kutunun canlıda "Karar açıklandı" gösterdiğini + /tcmb-faiz-takvimi'ni
+  kontrol et (görünmüyorsa `logs/policy-decisions.log`); SSS'yi geçmiş zamana çevir, `updatedDate`. · Kabul:
+  canlı yazıda güncel bölüm; 23 Ekim'den sonra otomatik kutu "açıklandı" durumunda.
 - [x] T5 (B261015-1) — → canlı https://parafomo.com/ihtiyac-kredisi-hesaplama/ (KKDF %15 GİB + BSMV %15 7345 CK dahil taksit; BDDK 11152 vade uyarısı; 50/100/200 bin tablo; TCMB ihtiyaç faizi varsayılan) + EVDS: /mevduat-faizi-hesaplama oran tablosu, konut/kredi varsayılan faiz TCMB · commit cd0823e · RC oturumu 10-15 — **/ihtiyac-kredisi-hesaplama yeni araç** · hedef: ihtiyaç kredisi hesaplama (48), ihtiyaç
   kredisi faiz oranları (9,4). T1 bileşenini yeniden kullan; fark: KKDF + BSMV taksite dahil (oranları resmi
   kaynakla doğrula), BDDK tutar bazlı azami vade (doğrula), "50/100/200 bin TL × 12/24/36 ay" tablosu.
@@ -78,10 +81,25 @@ FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan me
 - [x] K5 (keyword-map) — → canlı https://parafomo.com/enflasyon-hesaplama/ (iki tarih arası TÜFE + paranın bugünkü değeri, 1-5 yıl ve yıllık tablolar, TÜİK/TCMB serisinden otomatik; footer + hub + kira/enflasyon-takvimi linkleri + OG) · commit 97717be · 2026-10-16 — **/enflasyon-hesaplama/** · enflasyon oranı 36 + enflasyon hesaplama 21
 - [x] K8 (keyword-map) — → canlı https://parafomo.com/gelir-vergisi-hesaplama/ (kira 58.000 ₺ istisna + götürü/gerçek gider, işyeri/serbest meslek %20 stopaj mahsubu, 400.000 ₺ beyan sınırı, 2027 istisna tahmini YD oranıyla otomatik ≈74.000 ₺; footer + hub + vergi-dilimi/kira-artış linkleri + OG) · commit c408ccc · 2026-10-17 — **/gelir-vergisi-hesaplama/** · gelir vergisi hesaplama 50
 - [x] K9a (keyword-map) — → canlı https://parafomo.com/ihbar-tazminati-hesaplama/ (İş Kanunu md.17 2/4/6/8 hafta, brüt + gelir vergisi dilimi + binde 7,59 damga → net, ücret×süre tablosu; footer + hub + kıdem/işsizlik linkleri + OG) · commit 3dfff90 · 2026-10-17 — **/ihbar-tazminati-hesaplama/** · ihbar tazminatı 20. Kalan K9b /yillik-izin-hesaplama keyword-map'te
-- [ ] T13 (zam sezonu — TARİHLİ, 3 Kasım sonrası) — **YD kesinleşme kontrolü:** 3 Kasım'da Ekim Yİ-ÜFE açıklanınca
-  `python3 scripts/yeniden-degerleme-update.py` sonrası /yeniden-degerleme-orani "hesaben kesinleşti" (ekimVerisiGeldi=true)
-  mi kontrol et. Kasım sonunda VUK tebliğini WebSearch ile doğrula → `tebligOrani` + `gecmis`e 2027 satırı;
-  Aralık'ta MTV/harç CB kararı çıkarsa `uygulanan`. · Kabul: sayfa canlıda doğru durumu gösterir.
+- [ ] T13 (zam sezonu — TARİHLİ, 3 Kasım sonrası) — **YD kesinleşme kontrolü:** 3 Kasım'da release-watch.py
+  (10 dk'da bir, 07:00-10:50 UTC) Ekim Yİ-ÜFE gelir gelmez /yeniden-degerleme-orani, /mtv-hesaplama vb. ve CANLI
+  yazı /blog/2027-zamlari-yeniden-degerleme-orani-rehberi'yi otomatik "Belli Oldu: %X" yapar (RC 10-18; oran EVDS
+  endeksinden TÜİK yöntemiyle — 3 Kasım sabahı TÜİK bülteninin "12 aylık ortalamalara göre" Yİ-ÜFE rakamıyla
+  karşılaştır; fark varsa data/yeniden-degerleme.json onikiAyOrt'u bültendeki değere düzelt + `python3 scripts/live-posts.py`
+  + deploy). Kasım sonu: VUK tebliğini WebSearch ile doğrula → `tebligOrani` alanına yaz (gecmis'e ELLE satır
+  EKLEME; tur Haziran 2027'de kapanınca otomatik arşivlenir). Aralık: MTV/harç/damga için CB kararı çıkarsa →
+  `uygulananOrani` (MTV, pasaport-harç sayfaları ve canlı yazı bu oranı kullanır). Her yazımdan sonra
+  `python3 scripts/live-posts.py` → commit → `bash scripts/deploy-push.sh`. · Kabul: sayfalar canlıda doğru durumu gösterir.
+- [ ] T14 (zam sezonu — TARİHLİ, TÜİK 2027 takvimi yayımlanınca; genelde Ocak'ın ilk günleri) — **TÜİK 2027
+  takvimi:** `data/tuik-enflasyon-2027.json` oluştur (2026 dosyasıyla aynı şema; en az "Aralık 2026" → Ocak 2027
+  açıklama günü). release-watch.py, emekli/memur sayfaları ve sonuç kutusu takvim dosyalarını glob'la okur; dosya yoksa
+  ayın 3-6'sına bakılır (çalışır ama tarih metni eksik kalır). · Kabul: `python3 scripts/release-watch.py --dry --today <gün>` doğru günü söyler.
+- [ ] T15 (zam sezonu — 20 Aralık'a kadar) — **Ocak 2027 emekli zammı hassasiyeti:** /emekli-zammi-hesaplama
+  birikimli enflasyonu aylık % değişimleri bileşikleyerek hesaplıyor (Tem-Eyl 2026: %5,56). TÜFE 2025=100 endeksi
+  EVDS'de var (`TP.TUKFIY2025.GENEL`): endeksten I(Eyl)/I(Haz)−1 = %5,57. Temmuz 2026 resmî SSK zammı %17,75 iken
+  endeks yöntemi %17,76, aylık yöntem %17,75 verdi → resmî hesap muhtemelen yuvarlanmamış endeks. SGK/ÇSGB'nin
+  Ocak zammını nasıl ilan ettiğini (TÜİK "6 aylık değişim" tablosu mu?) 2-3 kaynakla doğrula; gerekirse
+  `data/tufe-aylik.json`'a endeks ekleyip `src/data/zam2027.ts`'i ona göre güncelle. · Kabul: yöntem kararı + kanıt rapora; 5 Ocak'ta rakam resmî açıklamayla aynı.
 
 ## Bakım / ürün
 - [x] V1 (video kalitesi) — → kök neden: parça sonu +0,12 sn kuyruğu sonraki parçayla aynı konumda çakışıyordu; build_ass parçayı sonrakinden önce bitiriyor · önce/sonra: agent/state/v1-test/compare.png · commit 5d4d98f · RC 10-15 · sonraki 3 günün video-qa'sı izlenecek — **altyazı çakışması hatası** · video-qa son 7g'de 4 videoda "altyazı üst üste binmiş,

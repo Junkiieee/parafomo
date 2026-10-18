@@ -6,10 +6,18 @@ import FormatDate from '../components/FormatDate.astro';
 import Newsletter from '../components/Newsletter.astro';
 import AppCTA from '../components/AppCTA.astro';
 import PostCard from '../components/PostCard.astro';
+import EventResult from '../components/EventResult.astro';
+import { eventResult, fillTitle } from '../data/event-result';
 import { categorySlug, SITE } from '../site.config';
 
 const { post, headings = [], related = [] } = Astro.props;
-const { title, description, pubDate, updatedDate, category, tags, author, readingTime, cover, faq } = post.data;
+const { title: rawTitle, description, pubDate, updatedDate, category, tags, author, readingTime, cover, faq, sonuc, sonucBaslik } = post.data;
+// Olay önizleme yazısı: veri açıklanınca otomatik sonuç kutusu (+ istenirse "Açıklandı" başlığı, güncellenme tarihi)
+const ev = eventResult(sonuc);
+const title = (ev?.done && fillTitle(sonucBaslik, ev.vars)) || rawTitle;
+const baseModified = updatedDate ?? pubDate;
+const evModified = ev?.done ? new Date(ev.date + 'T12:00:00Z') : null;
+const modified = evModified && evModified > baseModified ? evModified : baseModified;
 const url = new URL(`/blog/${post.id}`, SITE.url).href;
 // og:image: önce frontmatter cover, yoksa yazıya özel sosyal kart (varsa), yoksa genel.
 const socialCard = `/social/${post.id}.png`;
@@ -33,7 +41,7 @@ const breadcrumbs = [
   image={ogImage}
   type="article"
   publishedTime={pubDate.toISOString()}
-  modifiedTime={(updatedDate ?? pubDate).toISOString()}
+  modifiedTime={modified.toISOString()}
   author={author}
   section={category}
   tags={tags}
@@ -56,6 +64,8 @@ const breadcrumbs = [
         <span>{author}</span>
       </div>
     </header>
+
+    {ev && <EventResult ev={ev} />}
 
     {hasCover && (
       <figure class="post-hero">

@@ -24,6 +24,11 @@ const blog = defineCollection({
     cover: z.string().optional(),
     // Sıkça Sorulan Sorular — verilirse sayfada görünür SSS bölümü + FAQPage schema üretilir.
     faq: z.array(z.object({ q: z.string(), a: z.string() })).optional(),
+    // Olay önizlemesi: "tcmb:YYYY-MM-DD" | "fed:YYYY-MM-DD" | "tufe:YYYY-MM" → veri açıklanınca otomatik sonuç kutusu
+    // (src/data/event-result.ts). sonucBaslik: açıklanınca kullanılacak başlık; yer tutucular {oran} {onceki} {bp}
+    // {karar} (tcmb) · {bant} {bp} {karar} (fed) · {ay} {aylik} {yillik} (tufe).
+    sonuc: z.string().regex(/^(tcmb|fed):\d{4}-\d{2}-\d{2}$|^tufe:\d{4}-\d{2}$/).optional(),
+    sonucBaslik: z.string().optional(),
     // YouTube Shorts senaryosu (kalıcı kayıt): [0]=kanca, ortadakiler=vuruşlar, [-1]=CTA.
     // scripts/shorts-script.py üretir; scripts/shorts-build.py kullanır. Sayfada gösterilmez.
     shorts: z.array(z.string()).optional(),

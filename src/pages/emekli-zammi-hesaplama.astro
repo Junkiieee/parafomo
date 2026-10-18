@@ -84,8 +84,12 @@ const updatedLabel = new Date(tufe.updated + 'T12:00:00').toLocaleDateString('tr
 
 <BaseLayout
   image="/og/emekli-zammi-hesaplama.png"
-  title={`Ocak 2027 Emekli Zammı Hesaplama: SSK, Bağ-Kur, Memur (Kesinleşen %${nf(cumKnown * 100)})`}
-  description={`Ocak 2027 emekli ve memur zammı hesaplama. ${kesin} (${known[0].name}–${lastKnown.name} 2026). Tahmini SSK/Bağ-Kur zammı %${nf(sskProj * 100)}, memur %${nf(memurProj.zam * 100)}. Aylığını gir, yeni maaşını gör.`}
+  title={final
+    ? `Ocak 2027 Emekli Zammı Belli Oldu: SSK ve Bağ-Kur %${nf(cumKnown * 100)}, Memur %${nf(memurProj.zam * 100)}`
+    : `Ocak 2027 Emekli Zammı Hesaplama: SSK, Bağ-Kur, Memur (Kesinleşen %${nf(cumKnown * 100)})`}
+  description={final
+    ? `Ocak 2027 emekli zammı kesinleşti: SSK ve Bağ-Kur emeklisine %${nf(cumKnown * 100)} (Temmuz–Aralık 2026 enflasyonu), memur ve memur emeklisine %${nf(memurProj.zam * 100)}. Aylığını gir, yeni maaşını gör.`
+    : `Ocak 2027 emekli ve memur zammı hesaplama. ${kesin} (${known[0].name}–${lastKnown.name} 2026). Tahmini SSK/Bağ-Kur zammı %${nf(sskProj * 100)}, memur %${nf(memurProj.zam * 100)}. Aylığını gir, yeni maaşını gör.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
 >

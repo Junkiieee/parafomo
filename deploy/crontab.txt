@@ -39,6 +39,9 @@
 45 8 * * * /root/parafomo/scripts/learn/learn-daily.sh >> /root/parafomo/logs/learn.log 2>&1
 # Kira artış + TÜFE + Yİ-ÜFE/yeniden değerleme + aylık OG kartları (TÜİK ~3'ü 10:00 TSİ) — ayın 3-10'u (gecikme toleransı)
 20 8,12 3-10 * * /root/parafomo/scripts/kira-artis-update.sh >> /root/parafomo/logs/kira-artis.log 2>&1
+# Açıklama günü bekçisi: TÜİK günü (takvim; yoksa ayın 3-6'sı) veri gelene kadar 10 dk'da bir kira-artis-update.sh
+# (diğer günler ve veri geldikten sonra ağa çıkmadan biter) — 3 Kasım YD oranı, 3 Aralık, Ocak emekli zammı
+*/10 7-10 * * * /usr/bin/python3 /root/parafomo/scripts/release-watch.py >> /root/parafomo/logs/kira-artis.log 2>&1
 # TCMB haftalık mevduat/kredi faizleri (EVDS) → hesaplayıcı varsayılan faizleri + mevduat oran kutusu
 40 12 * * 4,5 /root/parafomo/scripts/evds-update.sh >> /root/parafomo/logs/evds.log 2>&1
 # Fed/TCMB faiz kararı → takvim sayfalarında güncel faiz + karar sütunu (bekleyen yoksa ağa çıkmaz)

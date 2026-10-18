@@ -1,0 +1,68 @@
+---
+// Olay önizleme yazısının üstündeki otomatik sonuç kutusu — mantık: src/data/event-result.ts
+import type { EventResult } from '../data/event-result';
+export interface Props { ev: EventResult }
+const { ev } = Astro.props;
+---
+
+<aside class:list={['ev', ev.done ? 'ev-done' : 'ev-wait']} aria-label={ev.done ? 'Açıklanan sonuç' : 'Beklenen açıklama'}>
+  <p class="ev-kicker"><span class="ev-dot" aria-hidden="true"></span>{ev.kicker}</p>
+  <p class="ev-head">{ev.headline}</p>
+  {ev.details.map((d) => <p class="ev-detail">{d}</p>)}
+  <p class="ev-links">
+    {ev.links.map((l, i) => (
+      <>
+        {i > 0 && <span aria-hidden="true"> · </span>}
+        {l.external
+          ? <a href={l.href} rel="nofollow noopener" target="_blank">{l.label}</a>
+          : <a href={l.href}>{l.label}</a>}
+      </>
+    ))}
+  </p>
+  {ev.done && <p class="ev-note">Bu kutu veri açıklandığında otomatik güncellendi; aşağıdaki metin açıklama öncesi yazılan önizlemedir.</p>}
+</aside>
+
+<style>
+  .ev {
+    margin: 1.25rem 0 1.5rem;
+    padding: 1rem 1.15rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--bg-elev);
+  }
+  .ev-done {
+    border-color: color-mix(in srgb, var(--brand-2) 45%, var(--border));
+    background: var(--brand-tint);
+  }
+  .ev-kicker {
+    margin: 0 0 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .ev-done .ev-kicker { color: var(--brand-ink); }
+  .ev-dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: var(--text-muted);
+    flex: none;
+  }
+  .ev-done .ev-dot { background: var(--brand); }
+  .ev-head {
+    margin: 0;
+    font-size: 1.08rem;
+    font-weight: 600;
+    line-height: 1.45;
+    color: var(--text);
+  }
+  .ev-wait .ev-head { font-weight: 500; color: var(--text-soft); font-size: 1rem; }
+  .ev-detail { margin: 0.35rem 0 0; color: var(--text-soft); }
+  .ev-links { margin: 0.6rem 0 0; font-size: 0.92rem; }
+  .ev-note { margin: 0.6rem 0 0; font-size: 0.82rem; color: var(--text-muted); }
+</style>

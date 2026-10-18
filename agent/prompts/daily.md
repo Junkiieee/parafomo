@@ -26,11 +26,15 @@ Planı haftalık koşu yazdı; senin işin onu **uygulamak**. Strateji tartışm
    `agent/plan/keyword-map.md` "Sıradaki" bölümündeki ilk `- [ ]` satırını görev olarak al (aynı kabul ölçütü:
    canlı + FAQPage + Footer/`/hesaplama-araclari/` linki + resmî kaynak) ve bitince orada `[x]` yap.
 5. **Olay sonrası güncelleme (her koşu, 1-2 yazı):** Slug'ında `<ay>-2026` geçen önizleme yazılarından
-   olayı GEÇMİŞ ve `updatedDate`'i olmayanları bul (ör. "TCMB Ekim kararı", "Eylül CPI"). Her birine:
-   gerçekleşen sonucu RESMİ kaynaktan doğrula (TCMB/BLS/BEA/ECB/TÜİK — veri dosyasında varsa oradan,
-   ör. `data/tcmb-2026.json`) → başlığa sonucu yaz ("…Açıklandı: Faiz %37'de Sabit") → gövdenin başına
-   `> **Karar/veri açıklandı (tarih):** … ([kaynak](url)) … Sıradaki: [link]` kutusu → ilgili SSS cevabını
-   geçmiş zamana çevir → `updatedDate`. Örnek: `tcmb-eylul-2026-faiz-karari-ppk-beklentiler.md` (10-13).
+   olayı GEÇMİŞ ve `updatedDate`'i olmayanları bul (ör. "TCMB Ekim kararı", "Eylül CPI").
+   - Frontmatter'ında `sonuc:` VARSA (TCMB/Fed/TÜFE): sonuç kutusu, başlık (`sonucBaslik`) ve dateModified karar
+     günü OTOMATİK geldi — canlı sayfada kutunun "açıklandı" gösterdiğini doğrula (göstermiyorsa `data/tcmb-2026.json`
+     / `fomc-2026.json` / `tufe-aylik.json`'da sonuç var mı bak, yoksa `logs/policy-decisions.log`). Sen yalnız SSS
+     cevaplarını geçmiş zamana çevir, "Sıradaki: [link]" cümlesi ekle, `updatedDate` ver. Elle kutu EKLEME.
+   - `sonuc:` YOKSA ve olay TCMB/Fed/TÜİK TÜFE ise: `sonuc:` (+ `sonucBaslik`) ekle (kutu otomatik gelir).
+   - Diğer olaylar (BLS CPI/NFP, ECB, BEA…): gerçekleşen sonucu RESMİ kaynaktan doğrula → başlığa sonucu yaz →
+     gövdenin başına `> **Karar/veri açıklandı (tarih):** … ([kaynak](url)) … Sıradaki: [link]` kutusu → SSS'yi
+     geçmiş zamana çevir → `updatedDate`. Örnek: `ecb-eylul-2026-faiz-karari-euro-tl-etkisi.md` (10-18).
    Neden: geçmiş olay yazısı gelecek zamanla kalınca sıra 5-10'da bile 0 tık alıyor (GSC 2026-10-13).
 6. **Konu kuyruğu:** `agent/plan/content-queue.md`'de bekleyen (`- [ ]`) konu < 3 ise 3-5 konu ekle.
    Kaynak: **brief §9c fırsat listesi** (eylemi `YENI_YAZI`/`YENI_ARAC` olan, hacmi ≥ 5 satırlar) →

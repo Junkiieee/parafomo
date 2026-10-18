@@ -12,8 +12,10 @@ const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigit
 
 const HEDEF = yd.hedefYil; // 2027
 const teblig = yd.tebligOrani as number | null;
-const oran = teblig ?? yd.onikiAyOrt;
-const durum = teblig ? 'teblig' : yd.ekimVerisiGeldi ? 'hesap' : 'tahmin';
+// MTV/harç/damga vergisinde Cumhurbaşkanı kararı (2026: %25,49 yerine %18,95) varsa o oran geçerlidir.
+const uygulanan = (yd as { uygulananOrani?: number | null }).uygulananOrani ?? null;
+const oran = uygulanan ?? teblig ?? yd.onikiAyOrt;
+const durum = uygulanan || teblig ? 'teblig' : yd.ekimVerisiGeldi ? 'hesap' : 'tahmin';
 const oranLabel = durum === 'tahmin' ? `≈%${nf(oran)}` : `%${nf(oran, 2)}`;
 const sonAyAdi = monthName(yd.sonAy);
 const carpan = 1 + oran / 100;
@@ -89,9 +91,13 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
       <p class="eyebrow">Hesaplayıcı · MTV {HEDEF}</p>
       <h1>MTV {HEDEF} Hesaplama: Araç Vergisi Ne Kadar Olacak?</h1>
       <p class="lede">
-        {HEDEF} MTV'si, 2026 tutarının <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı</a> kadar
-        artırılmasıyla belirlenir. {sonAyAdi} verisiyle {durum === 'tahmin' ? 'tahmini oran' : 'oran'}:
-        <strong>{oranLabel}</strong>. 2026 MTV'nizi girin, {HEDEF} tahmininizi görün.
+        {uygulanan
+          ? <>{HEDEF} MTV'si, Cumhurbaşkanı kararıyla 2026 tutarının <strong>{oranLabel}</strong> artırılmasıyla belirlendi
+            (<a href="/yeniden-degerleme-orani/">yeniden değerleme oranı</a> %{nf(teblig ?? yd.onikiAyOrt, 2)}).</>
+          : <>{HEDEF} MTV'si, 2026 tutarının <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı</a> kadar
+            artırılmasıyla belirlenir. {sonAyAdi} verisiyle {durum === 'tahmin' ? 'tahmini oran' : 'oran'}:
+            <strong>{oranLabel}</strong>.</>}
+        2026 MTV'nizi girin, {HEDEF} tutarınızı görün.
       </p>
     </header>
 

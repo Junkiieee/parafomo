@@ -12,6 +12,7 @@ Kullanım: python3 scripts/kira-artis-update.py      # bu ayın oranı yoksa çe
 Ağ/ayıklama hatasında mevcut JSON'a dokunmaz, 0 döner.
 """
 import datetime as dt
+import glob
 import html
 import json
 import os
@@ -39,12 +40,15 @@ def fetch_rate(yil, ay_idx):
 
 
 def next_release(today):
-    try:
-        for r in json.load(open(TUIK))["releases"]:
-            if r["date"] > today.isoformat():
-                return r["date"]
-    except Exception:
-        pass
+    dates = []
+    for p in glob.glob(os.path.join(REPO, "data", "tuik-enflasyon-*.json")):
+        try:
+            dates += [r["date"] for r in json.load(open(p, encoding="utf-8"))["releases"]]
+        except Exception:
+            pass
+    for d in sorted(dates):
+        if d > today.isoformat():
+            return d
     y, m = (today.year + 1, 1) if today.month == 12 else (today.year, today.month + 1)
     return f"{y}-{m:02d}-03"  # TÜİK genelde ~3'ü; takvim dosyası yoksa tahmin
 
@@ -70,6 +74,7 @@ def main():
         return 0
     data["guncelAy"] = label
     data["guncelOran"] = rate
+    data["updated"] = today.isoformat()  # sitemap lastmod (astro.config DATA_PAGES)
     data["sonrakiAciklama"] = next_release(today)
     data["gecmis"] = [{"ay": label, "oran": rate}] + [g for g in data.get("gecmis", []) if g["ay"] != label]
     with open(DATA, "w", encoding="utf-8") as f:

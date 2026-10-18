@@ -15,8 +15,10 @@ const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigit
 
 const HEDEF = yd.hedefYil; // 2027
 const teblig = yd.tebligOrani as number | null;
-const oran = teblig ?? yd.onikiAyOrt;
-const durum = teblig ? 'teblig' : yd.ekimVerisiGeldi ? 'hesap' : 'tahmin';
+// MTV/harç/damga vergisinde Cumhurbaşkanı kararı (2026: %25,49 yerine %18,95) varsa o oran geçerlidir.
+const uygulanan = (yd as { uygulananOrani?: number | null }).uygulananOrani ?? null;
+const oran = uygulanan ?? teblig ?? yd.onikiAyOrt;
+const durum = uygulanan || teblig ? 'teblig' : yd.ekimVerisiGeldi ? 'hesap' : 'tahmin';
 const oranLabel = durum === 'tahmin' ? `≈%${nf(oran)}` : `%${nf(oran, 2)}`;
 const sonAyAdi = monthName(yd.sonAy);
 const carpan = 1 + oran / 100;
@@ -95,7 +97,9 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
       <h1>Pasaport ve Ehliyet Harcı 2026: 10 Yıllık Pasaport ₺{tl2(p10)}</h1>
       <p class="lede">
         Pasaport, ehliyet, IMEI ve kimlik ücretlerinin 2026 tutarları ve {HEDEF}'de
-        <a href="/yeniden-degerleme-orani/">yeniden değerleme oranıyla</a> ({oranLabel}) ne kadar olacağının tahmini.
+        {uygulanan
+          ? <>Cumhurbaşkanı kararındaki artış oranıyla ({oranLabel}) ne kadar olacağı.</>
+          : <><a href="/yeniden-degerleme-orani/">yeniden değerleme oranıyla</a> ({oranLabel}) ne kadar olacağının tahmini.</>}
       </p>
     </header>
 

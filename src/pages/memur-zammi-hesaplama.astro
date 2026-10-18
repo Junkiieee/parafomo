@@ -53,8 +53,12 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title={`Memur Zammı Hesaplama Ocak 2027: Tahmini %${nf(zam * 100)} ve Yeni Maaş`}
-  description={`Ocak 2027 memur zammı tahmini %${nf(zam * 100)} (toplu sözleşme %${TS_H1_2027} + enflasyon farkı %${nf(memurProj.fark * 100)}). Maaşını gir, Ocak 2027 maaşını gör. Temmuz 2026 katsayıları ve en düşük memur emeklisi aylığı.`}
+  title={final
+    ? `Ocak 2027 Memur Zammı Belli Oldu: %${nf(zam * 100)} — Yeni Maaş Hesaplama`
+    : `Memur Zammı Hesaplama Ocak 2027: Tahmini %${nf(zam * 100)} ve Yeni Maaş`}
+  description={final
+    ? `Ocak 2027 memur zammı kesinleşti: %${nf(zam * 100)} (toplu sözleşme %${TS_H1_2027} + enflasyon farkı %${nf(memurProj.fark * 100)}). Maaşını gir, Ocak 2027 maaşını gör; memur emeklisi aylığı da aynı oranda artar.`
+    : `Ocak 2027 memur zammı tahmini %${nf(zam * 100)} (toplu sözleşme %${TS_H1_2027} + enflasyon farkı %${nf(memurProj.fark * 100)}). Maaşını gir, Ocak 2027 maaşını gör. Temmuz 2026 katsayıları ve en düşük memur emeklisi aylığı.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
   image="/og/memur-zammi-hesaplama.png"

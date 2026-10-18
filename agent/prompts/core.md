@@ -114,6 +114,16 @@ Yalnız `agent/allowed-tools.txt`'deki kalıplar çalışır. Şunlar HER ZAMAN 
   `/root/.venvs/parafomo/bin/python scripts/learn/opportunity_finder.py` (Trends hacmi × niyet × mevcut sıra →
   `data/learning/opportunities.json` → brief §9c; "mevduat faizi" = 100; konu seçiminin ana kaynağı),
   `og-images.py` (canlı rakamlı OG kartları — yeni veri sayfası açarsan CARDS'a ekle + sayfaya `image="/og/<slug>.png"`)
+- **Canlı blog yazıları:** başında `# OTOMATİK ÜRETİLİR` olan `src/content/blog/*.md` DOĞRUDAN düzenlenmez —
+  şablonu `content-templates/blog/<slug>.md.j2` (Jinja2, bağlam: `scripts/live-posts.py` build_context) düzenle,
+  sonra `python3 scripts/live-posts.py` (elle düzenlenmiş dosyayı ezmez, UYARI verir; devralma `--adopt <slug>`).
+  Rakamı `data/*.json`'dan gelen yeni zam/veri yazısı = şablon olarak yaz. Veri hatları (kira-artis-update.sh) bunu çağırır.
+- **Olay önizleme yazısı (TCMB/Fed kararı, TÜİK TÜFE):** frontmatter'a `sonuc: "tcmb:YYYY-MM-DD"` | `"fed:YYYY-MM-DD"` |
+  `"tufe:YYYY-MM"` (+ istersen `sonucBaslik: "... %{oran} ({karar})"`) yaz → karar açıklanınca yazının üstünde
+  otomatik sonuç kutusu + başlık + dateModified (`src/data/event-result.ts`). ELLE sonuç kutusu EKLEME (çift olur).
+- **TÜİK günü:** `python3 scripts/release-watch.py --dry [--today YYYY-MM-DD]` (cron 10 dk'da bir; veri gelince
+  kira-artis-update.sh → canlı yazılar → deploy → IndexNow + GSC sitemap). YD verisi: `tebligOrani` (VUK tebliği,
+  Kasım sonu) ve `uygulananOrani` (MTV/harç/damga CB kararı, Aralık) alanlarını SEN yazarsın → `live-posts.py` + deploy.
 - Sayfa kalıbı: `src/pages/<sayfa>.astro` ← `data/<veri>.json` (örn. altin-getiri.astro ← gold-returns.py).
   Yeni veri betiği eklersen `scripts/daily-content.sh` veri adımlarına (veya halka-arz-update.sh'a) bağla.
 - Ölçüm: `/root/.venvs/parafomo/bin/python scripts/dashboard.py` (GA4+GSC+YT), `scripts/learn/*`

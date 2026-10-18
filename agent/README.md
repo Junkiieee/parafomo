@@ -42,6 +42,9 @@ eller (deterministik cron'lar, ajan olmadan da çalışır) — deploy/crontab.t
 | `notify.py` | e-posta: `report` (günlük/haftalık) · `alert` (günde 1/tür) |
 | `allowed-tools.txt` | ajanın izinli araç/komut listesi |
 | brief §9b Talep radarı | `data/tr-seasonal-seo.json` (mevsimsel sorgu takvimi) + `scripts/learn/demand_miner.py` (Autocomplete boşlukları, Çrş+Paz) |
+| `scripts/live-posts.py` | canlı blog yazıları: `content-templates/blog/*.md.j2` + `data/*.json` → `src/content/blog/*.md` (tahmin → kesinleşti → tebliğ; elle düzenlemeyi ezmez) |
+| `scripts/release-watch.py` | TÜİK açıklama günü bekçisi (cron 10 dk'da bir 07-10 UTC) → veri gelince `kira-artis-update.sh` → canlı yazılar → deploy → IndexNow + GSC sitemap |
+| `src/data/event-result.ts` | olay önizleme yazısı frontmatter `sonuc:` (tcmb/fed/tufe) → karar açıklanınca otomatik sonuç kutusu + `sonucBaslik` |
 | `plan/week.md` | haftanın bahisleri + görev kuyruğu (günlük koşu en üstteki `[ ]`'yi yapar) |
 | `plan/content-queue.md` | blog konu kuyruğu (`scripts/daily-content.sh` en üsttekini yazar) |
 | `plan/user-tasks.md` | Kaan'a bağlı işler (≤3) |

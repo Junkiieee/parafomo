@@ -31,7 +31,8 @@ ERR_RE = re.compile(r"HATA|Traceback|hit your|Failed to authenticate|ÜRETİLEME
 # ad, log, başarı deseni, beklenen azami yaş (saat; None = olaya bağlı), not
 PIPELINES = [
     ("Viral Short (YouTube+IG)", "viral.log", r"\] Tamamlandı: \S+ @", 30, "günlük 1 slot"),
-    ("Blog→Short (YouTube)", "shorts.log", r"bu çalıştırmada [1-9]\d* Shorts yayınlandı", 30, "11:00 UTC"),
+    # "Kuyruk boş" = Shorts'a çevrilecek yeni yazı yok (hafta sonu blog yok) → hata değil (2026-10-18 yanlış alarm)
+    ("Blog→Short (YouTube)", "shorts.log", r"bu çalıştırmada [1-9]\d* Shorts yayınlandı|Kuyruk boş — işlenecek yeni yazı yok", 30, "11:00 UTC"),
     ("Manim Short (YouTube+IG)", "manim-daily.log", r"Manim-daily tamam:", 30, "16:00 UTC"),
     ("Gündem Short", "news.log", r"gündem videosu üretildi", None, "yalnız yüksek-etkili olay günü"),
     ("Blog yazısı", "cron.log", r"\] Tamamlandı$", 80, "Pzt-Cum"),
@@ -177,16 +178,19 @@ def stale_data():
         if t and t["months"][0]["ay"] != prev:
             out.append(f"TÜFE serisi bayat (son {t['months'][0]['ay']} ≠ {prev}) → scripts/tufe-update.py")
         y = load("yeniden-degerleme.json")
-        if y and y.get("sonAy") != prev:
-            out.append(f"Yİ-ÜFE/YD serisi bayat (son {y.get('sonAy')} ≠ {prev}) → scripts/yeniden-degerleme-update.py")
+        son = (y or {}).get("veriSonAy") or (y or {}).get("sonAy")
+        if y and son != prev:
+            out.append(f"Yİ-ÜFE/YD serisi bayat (son {son} ≠ {prev}) → scripts/yeniden-degerleme-update.py")
     # Yeniden değerleme sezon bekçisi (Kasım-Aralık): Ekim verisi + tebliğ takibi (week.md T13)
     y = load("yeniden-degerleme.json")
     if y:
         yil = today.year
         if today >= dt.date(yil, 11, 4) and y.get("sonAy", "") < f"{yil}-10":
             out.append(f"YD KRİTİK: Ekim {yil} Yİ-ÜFE hâlâ yok (son {y.get('sonAy')}) — oran kesinleşemedi → scripts/yeniden-degerleme-update.py")
-        if today >= dt.date(yil, 12, 5) and not any(g.get("uygulamaYili") == yil + 1 for g in y.get("gecmis", [])):
-            out.append(f"YD KRİTİK: {yil + 1} tebliğ oranı doğrulanıp yazılmadı → WebSearch ile Resmî Gazete tebliğini bul, data/yeniden-degerleme.json tebligOrani + gecmis'e {yil + 1} satırı ekle")
+        teblig_ok = (y.get("hedefYil") == yil + 1 and y.get("tebligOrani")) or \
+            any(g.get("uygulamaYili") == yil + 1 for g in y.get("gecmis", []))
+        if today >= dt.date(yil, 12, 5) and not teblig_ok:
+            out.append(f"YD KRİTİK: {yil + 1} tebliğ oranı doğrulanıp yazılmadı → WebSearch ile Resmî Gazete tebliğini bul, data/yeniden-degerleme.json tebligOrani alanına yaz, sonra python3 scripts/live-posts.py")
     # Kıdem tazminatı tavanı Ocak/Temmuz'da değişir; HMB katsayı genelgesi ilk haftada çıkar
     kt = load("kidem-tavan.json")
     if kt and today.day > 10 and today.month in (1, 7):
@@ -232,6 +236,18 @@ def stale_data():
         out.append(f"OG kartları eksik ({len(pngs)} png) → scripts/og-images.py")
     elif pngs and all((dt.date.today() - dt.date.fromtimestamp(os.path.getmtime(p))).days > 45 for p in pngs):
         out.append("OG kartları 45+ gündür hiç yenilenmemiş → scripts/og-images.py üretimi kontrol et")
+    # Canlı blog yazıları (content-templates/blog → scripts/live-posts.py): elle düzenleme veri güncellemesini durdurur
+    try:
+        import subprocess
+        r = subprocess.run(["python3", os.path.join(ROOT, "scripts", "live-posts.py"), "--check"],
+                           capture_output=True, text=True, timeout=60)
+        for line in r.stdout.splitlines():
+            if "UYARI" in line:
+                out.append("canlı yazı: " + line.replace("[live-posts] UYARI: ", "")[:220])
+            elif "GÜNCELLENECEK" in line:
+                out.append("canlı yazı veriden geride: " + line.replace("[live-posts] ", "") + " → python3 scripts/live-posts.py")
+    except Exception as e:
+        out.append(f"live-posts --check çalışmadı: {e}")
     for name, label in (("fomc-2026.json", "Fed"), ("tcmb-2026.json", "TCMB")):
         d = load(name)
         if not d:

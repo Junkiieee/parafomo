@@ -21,19 +21,24 @@ const oranLabel = durum === 'tahmin' ? `≈%${nf(oran)}` : `%${nf(oran, 2)}`;
 const sonAyAdi = monthName(yd.sonAy);
 const kalanAy = durum === 'tahmin' ? 10 - +yd.sonAy.slice(5) : 0; // Ekim'e kalan veri sayısı
 const carpan = 1 + oran / 100;
+// MTV, harç ve damga vergisinde Cumhurbaşkanı farklı oran uygulatabilir (2026: %25,49 yerine %18,95).
+// Karar Aralık'ta çıkınca ajan data/yeniden-degerleme.json → uygulananOrani alanına yazar.
+const uygulanan = (yd as { uygulananOrani?: number | null }).uygulananOrani ?? null;
+const harcCarpan = 1 + (uygulanan ?? oran) / 100;
 
 const sonraki = new Date(yd.sonrakiAciklama + 'T10:00:00+03:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
 const g2026 = yd.gecmis.find((g: { uygulamaYili: number }) => g.uygulamaYili === 2026);
 
 // 2027'de bu oranla artacak kalemler — 2026 tabanları kaynak doğrulamalı
 const ETKI = [
-  { ad: 'Motorlu Taşıtlar Vergisi (MTV)', b2026: 5750, tip: 'En düşük otomobil MTV’si', link: '/mtv-hesaplama/', not: '1-3 yaş, 1300 cc altı' },
-  { ad: 'IMEI kayıt ücreti (yurt dışı telefon)', b2026: 54258, tip: 'Harç tutarı', not: 'Harçlar Kanunu 8 sayılı tarife' },
-  { ad: 'Pasaport harcı (10 yıllık)', b2026: 14761, tip: 'Harç + defter bedeli', not: 'yaklaşık toplam' },
-  { ad: 'Trafik cezaları', b2026: 2500, tip: 'Örnek: emniyet kemeri cezası', not: '2026 tutarları 7574 sayılı Kanun’la belirlendi' },
+  { ad: 'Motorlu Taşıtlar Vergisi (MTV)', b2026: 5750, tip: 'En düşük otomobil MTV’si', link: '/mtv-hesaplama/', not: '1-3 yaş, 1300 cc altı', harc: true },
+  { ad: 'IMEI kayıt ücreti (yurt dışı telefon)', b2026: 54258, tip: 'Harç tutarı', not: 'Harçlar Kanunu 8 sayılı tarife', harc: true },
+  { ad: 'Pasaport harcı (10 yıllık)', b2026: 14761, tip: 'Harç + defter bedeli', link: '/pasaport-ehliyet-harci/', not: 'yaklaşık toplam', harc: true },
+  { ad: 'Trafik cezaları', b2026: 2500, tip: 'Örnek: emniyet kemeri cezası', link: '/trafik-cezalari-hesaplama/', not: '2026 tutarları 7574 sayılı Kanun’la belirlendi' },
   { ad: 'Damga vergisi ve maktu harçlar', b2026: null, tip: 'Tüm maktu tutarlar', not: 'noter, tapu, yargı harçları dâhil' },
   { ad: 'Gelir vergisi dilimleri', b2026: null, tip: 'Tarife eşikleri', not: 'Cumhurbaşkanı oranı farklı belirleyebiliyor (2026 ilk dilim: 190.000 TL)' },
-  { ad: 'Emlak vergisi değeri', b2026: null, tip: 'Ara yıllarda oranın YARISI kadar', not: `${HEDEF} artışı ≈%${nf(oran / 2)}` },
+  // 7566 s. Kanun (RG 19.12.2025) EVK md. 29'daki "yarısı nispetinde" ibaresini "oranında" yaptı → artık oranın TAMAMI.
+  { ad: 'Emlak vergisi değeri', b2026: null, tip: 'Vergi değeri oranın tamamı kadar artar (EVK md. 29, 7566 s. Kanun)', link: '/emlak-vergisi-hesaplama/', not: 'Cumhurbaşkanı artışı sıfıra kadar indirebilir' },
 ];
 
 const faq = [
@@ -55,7 +60,9 @@ const faq = [
   },
   {
     q: `MTV ${HEDEF} zammı ne kadar olacak?`,
-    a: `${HEDEF} MTV tutarları, ${HEDEF - 1} tutarlarının yeniden değerleme oranı kadar artırılmasıyla bulunur. ${sonAyAdi} itibarıyla ${durum === 'tahmin' ? 'tahmini' : 'kesinleşen'} oran ${oranLabel}: örneğin 2026'da en düşük otomobil MTV'si olan 5.750 TL, ${HEDEF}'de yaklaşık ${fmt(5750 * carpan)} TL olur. Cumhurbaşkanı 2026'da olduğu gibi (%25,49 yerine %18,95) daha düşük bir artış uygulatabilir. Aracınız için hesabı MTV hesaplama sayfamızda yapabilirsiniz.`,
+    a: uygulanan
+      ? `${HEDEF} MTV tutarları, Cumhurbaşkanı kararıyla ${HEDEF - 1} tutarlarının %${nf(uygulanan, 2)} artırılmasıyla belirlendi (yeniden değerleme oranı ${oranLabel}). Örneğin 2026'da en düşük otomobil MTV'si olan 5.750 TL, ${HEDEF}'de yaklaşık ${fmt(5750 * harcCarpan)} TL oldu. Aracınız için hesabı MTV hesaplama sayfamızda yapabilirsiniz.`
+      : `${HEDEF} MTV tutarları, ${HEDEF - 1} tutarlarının yeniden değerleme oranı kadar artırılmasıyla bulunur. ${sonAyAdi} itibarıyla ${durum === 'tahmin' ? 'tahmini' : 'kesinleşen'} oran ${oranLabel}: örneğin 2026'da en düşük otomobil MTV'si olan 5.750 TL, ${HEDEF}'de yaklaşık ${fmt(5750 * carpan)} TL olur. Cumhurbaşkanı 2026'da olduğu gibi (%25,49 yerine %18,95) daha düşük bir artış uygulatabilir. Aracınız için hesabı MTV hesaplama sayfamızda yapabilirsiniz.`,
   },
   {
     q: 'Cumhurbaşkanı yeniden değerleme oranını değiştirebilir mi?',
@@ -173,14 +180,16 @@ const D = { tutar: 10000 };
                 <span class="row-note">{e.tip}{e.not ? ` · ${e.not}` : ''}</span>
               </td>
               <td>{e.b2026 ? `₺${fmt(e.b2026)}` : '—'}</td>
-              <td>{e.b2026 ? `≈₺${fmt(e.b2026 * (e.ad.startsWith('Emlak') ? 1 + oran / 200 : carpan))}` : `+${oranLabel}`}</td>
+              <td>{e.b2026 ? `≈₺${fmt(e.b2026 * (e.harc ? harcCarpan : carpan))}` : `+${oranLabel}`}</td>
             </tr>
           ))}
         </tbody>
       </table>
       <p class="table-note">
-        2026 değerleri haber ve tebliğ kaynaklarından derlenmiştir; {HEDEF} sütunu {oranLabel} ile hesaplanan tahmindir.
-        2026'da olduğu gibi Cumhurbaşkanı kararıyla daha düşük artış uygulanabilir. Araç bazında MTV için:
+        2026 değerleri haber ve tebliğ kaynaklarından derlenmiştir; {HEDEF} sütunu {uygulanan
+          ? `MTV ve harç satırlarında Cumhurbaşkanı kararındaki %${nf(uygulanan, 2)}, diğerlerinde ${oranLabel} ile hesaplandı.`
+          : `${oranLabel} ile hesaplanan ${durum === 'tahmin' ? 'tahmindir' : 'yaklaşık tutardır'}. 2026'da olduğu gibi Cumhurbaşkanı kararıyla daha düşük artış uygulanabilir.`}
+        Araç bazında MTV için:
         <a href="/mtv-hesaplama/">MTV {HEDEF} hesaplama</a>.
       </p>
     </section>
