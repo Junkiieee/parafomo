@@ -1,0 +1,611 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import em from '../../data/emekli-memur.json';
+import au from '../../data/asgari-ucret.json';
+import sa from '../../data/sosyal-aylik-2026.json';
+// Ocak 2027 memur zammı tahmini /memur-zammi-hesaplama ile ORTAK modülde (aynı TÜFE, aynı varsayım).
+import { memurProj, remaining, knownKeys } from '../data/zam2027';
+
+// 2022 sayılı Kanun aylıkları (yaşlı/65 yaş, engelli, 18 yaş altı engelli yakını). Kural ve güncelleme adımları
+// data/sosyal-aylik-2026.json → _aciklama. Özet: aylık = Y(G × K) + Y(%5 × Y(G × K)), Y = kuruşa yarım-yukarı.
+// G: 65 yaş 4.387 (Kanun md. 1); %70+ 5.253, %40–69 ve engelli yakını 3.502 (Bütçe Kanunu K cetveli md. 4 —
+// Kanun md. 2’deki 4.860 / 3.240 yerine; Yönetmelik md. 9/5). %5: 5454 s. K. md. 1(e) ek ödemesi.
+// Doğrulama 2026-10-18: K = 1,575512 ile 7.257,36 / 8.689,97 / 5.793,31 (ASHB broşürü) birebir; tek adımda
+// ×1,05 yapmak %40–69’da 5.793,32 verip 1 kuruş sapıyor. Hesap tamsayı kuruşla yapılır (kayan nokta hatası yok).
+
+type Tur = 'engelli' | 'agirEngelli' | 'yasli' | 'engelliYakini';
+const TURLER: { key: Tur; label: string }[] = [
+  { key: 'engelli', label: 'Engelli aylığı (%40–69)' },
+  { key: 'agirEngelli', label: 'Engelli aylığı (%70 ve üzeri)' },
+  { key: 'yasli', label: '65 yaş (yaşlı) aylığı' },
+  { key: 'engelliYakini', label: '18 yaş altı engelli yakını aylığı' },
+];
+type Butce = { durum: string; ad: string; agirEngelli: number; engelli: number; kaynak: string };
+const BUTCE = sa.butce as Record<string, Butce>;
+const butceYil = (yil: number): Butce => BUTCE[String(yil)] ?? BUTCE[Object.keys(BUTCE).sort().at(-1) as string];
+const gostergeler = (yil: number): Record<Tur, number> => {
+  const b = butceYil(yil);
+  return { yasli: sa.kanun.yasli, agirEngelli: b.agirEngelli, engelli: b.engelli, engelliYakini: b.engelli };
+};
+const K6 = (k: number) => Math.round(k * 1e6); // katsayı, milyonda bir (tamsayı)
+const EK = sa.ekOdeme.oran; // %5
+type Kalem = { g: number; taban: number; ek: number; toplam: number }; // kuruş
+const hesapla = (yil: number, k6: number): Record<Tur, Kalem> => {
+  const G = gostergeler(yil);
+  const out = {} as Record<Tur, Kalem>;
+  for (const { key } of TURLER) {
+    const taban = Math.floor((G[key] * k6 + 5000) / 10000); // Y(G × K)
+    const ek = Math.floor((taban * EK + 50) / 100); // Y(%5 × taban)
+    out[key] = { g: G[key], taban, ek, toplam: taban + ek };
+  }
+  return out;
+};
+const kurusMap = (o: Record<string, unknown>) =>
+  Object.fromEntries(TURLER.map(({ key }) => [key, Math.round((o[key] as number) * 100)])) as Record<Tur, number>;
+
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const donemAd = (d: string) => (+d.slice(5, 7) <= 6 ? `Ocak–Haziran ${d.slice(0, 4)}` : `Temmuz–Aralık ${d.slice(0, 4)}`);
+const ayAd = (d: string) => `${AYLAR[+d.slice(5, 7) - 1]} ${d.slice(0, 4)}`;
+const tl2 = (k: number) => (k / 100).toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const tl0 = (k: number) => Math.round(k / 100).toLocaleString('tr-TR');
+const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+
+// --- Dönem durumu ---------------------------------------------------------------------------------------------
+// tahmin / kesin-zam: katsayı hâlâ Temmuz 2026’nınki → resmî tutar + Ocak 2027 tahmini (zam2027).
+// katsayi: emekli-memur.json’a yeni dönem katsayısı girdi → yeni tutarlar formülle (ASHB duyurusu beklenirken).
+// resmi: yeni dönem ASHB tutarları sosyal-aylik-2026.json → resmi’ye işlendi (eski dönem onceki’de).
+const R = sa.resmi;
+const kNow = em.memurKatsayi.aylikKatsayi;
+const resmiDonem = K6(kNow) === K6(R.katsayi);
+const final = remaining === 0;
+const zam = memurProj.zam;
+const mod: 'tahmin' | 'kesin-zam' | 'katsayi' | 'resmi' = !resmiDonem
+  ? 'katsayi'
+  : R.donem === '2026-07'
+    ? final ? 'kesin-zam' : 'tahmin'
+    : 'resmi';
+const tahminModu = mod === 'tahmin' || mod === 'kesin-zam';
+const RESMI = kurusMap(R);
+const curYil = +(resmiDonem ? R.donem : em.donem).slice(0, 4);
+const CUR = hesapla(curYil, K6(kNow)); // yürürlükteki katsayıyla kalem kalem (nasıl hesaplanır tablosu)
+if (resmiDonem) {
+  for (const { key } of TURLER) {
+    if (CUR[key].toplam !== RESMI[key]) {
+      console.warn(`[engelli-maasi] ${key}: formül ${CUR[key].toplam} ≠ resmî ${RESMI[key]} kuruş → data/sosyal-aylik-2026.json’u kontrol et`);
+    }
+  }
+}
+const k27 = Math.round(K6(kNow) * (1 + zam)); // tahmini Ocak 2027 katsayısı (milyonda bir)
+const PROJ = hesapla(2027, k27);
+// ESKI = zam öncesi dönem (resmî), YENI = zam sonrası dönem
+const ESKI: Record<Tur, number> = mod === 'resmi' ? kurusMap(sa.onceki) : RESMI;
+const eskiDonem = mod === 'resmi' ? sa.onceki.donem : R.donem;
+const yeniDonem = tahminModu ? '2027-01' : mod === 'katsayi' ? em.donem : R.donem;
+const YENI: Record<Tur, number> = tahminModu
+  ? (Object.fromEntries(TURLER.map(({ key }) => [key, PROJ[key].toplam])) as Record<Tur, number>)
+  : mod === 'katsayi'
+    ? (Object.fromEntries(TURLER.map(({ key }) => [key, CUR[key].toplam])) as Record<Tur, number>)
+    : RESMI;
+const yeniKesin = !tahminModu; // kuruşu kuruşuna mı?
+const eskiAd = donemAd(eskiDonem);
+const yeniAy = ayAd(yeniDonem); // ör. "Ocak 2027"
+const yeniEtiket = mod === 'tahmin' ? 'tahmini' : mod === 'kesin-zam' ? 'kesinleşen zamla' : mod === 'katsayi' ? 'HMB katsayısıyla' : 'resmî';
+const yeniTxt = (t: Tur) => (yeniKesin ? `₺${tl2(YENI[t])}` : `≈ ₺${tl0(YENI[t])}`);
+const yeniLira = (t: Tur) => (yeniKesin ? tl2(YENI[t]) : `yaklaşık ${tl0(YENI[t])}`);
+const sonAy = knownKeys.length ? AYLAR[+knownKeys[knownKeys.length - 1].slice(5) - 1] : 'Temmuz';
+const zamTxt = `%${nf(zam * 100)}`;
+const B27 = butceYil(2027);
+const KANUN = sa.kanun as Record<string, number>; // kanundaki göstergeler (tabloda "kanunda …" notu)
+
+// --- Gelir sınırı: net asgari ücretin 1/3’ü (Kanun md. 1 ve 2). 2026: 28.075,50 / 3 = 9.358,50 (ASHB broşürü) ---
+type AU = { yil: number; brut?: number | null; net?: number | null };
+const netOf = (brut: number) => {
+  const k = Math.round(brut * 100);
+  return (k - Math.round((k * 14) / 100) - Math.round(k / 100)) / 100; // SGK %14 + işsizlik %1
+};
+const auNet = (y: AU) => y.net ?? netOf(y.brut as number);
+const SINIR = Math.round((au.guncel.net / 3) * 100); // kuruş
+const SINIR_YIL = au.guncel.yil;
+const yeniAU = au.yeni as AU | null;
+const SINIR_YENI = yeniAU && (yeniAU.net || yeniAU.brut) ? Math.round((auNet(yeniAU) / 3) * 100) : null;
+const IKI_UC = Math.round(((au.guncel.net * 2) / 3) * 100);
+if (SINIR_YIL === 2026 && SINIR !== Math.round(R.gelirSiniri * 100)) {
+  console.warn(`[engelli-maasi] gelir sınırı ${SINIR} ≠ ASHB ${R.gelirSiniri * 100} kuruş`);
+}
+
+// Yıl ekleri: 2026’da / 2027’de, 2026’dan / 2027’den (son rakamın okunuşuna göre; 0 → onlar basamağı)
+const YIL_DA: Record<string, string> = { 1: '’de', 2: '’de', 3: '’te', 4: '’te', 5: '’te', 6: '’da', 7: '’de', 8: '’de', 9: '’da' };
+const ONLAR_DA: Record<string, string> = { 1: '’da', 2: '’de', 3: '’da', 4: '’ta', 5: '’de', 6: '’ta', 7: '’de', 8: '’de', 9: '’da' };
+const yilDa = (y: number | string) => {
+  const s = String(y);
+  return `${s}${s.endsWith('0') ? ONLAR_DA[s.at(-2) as string] : YIL_DA[s.at(-1) as string]}`;
+};
+const yilDan = (y: number | string) => yilDa(y).replace(/’([dt])([ae])$/, '’$1$2n');
+// "5 Ocak’ta", "5 Ağustos’ta" — bulunma eki ay adına göre
+const BULUNMA = ['’ta', '’ta', '’ta', '’da', '’ta', '’da', '’da', '’ta', '’de', '’de', '’da', '’ta'];
+const odemeGun = (iso: string) => `${+iso.slice(8, 10)} ${AYLAR[+iso.slice(5, 7) - 1]}${BULUNMA[+iso.slice(5, 7) - 1]}`;
+
+const faq = [
+  {
+    q: 'Ocak 2027’de engelli maaşı ne kadar olacak?',
+    a:
+      mod === 'tahmin'
+        ? `Engelli aylıkları Ocak’ta memur aylık zammı oranında artar. Temmuz–${sonAy} enflasyonuyla Ocak 2027 memur zammı tahmini ${zamTxt}; bu oranla %40–69 engelli aylığı ${tl2(ESKI.engelli)} liradan ${yeniLira('engelli')} liraya, %70 ve üzeri engelli aylığı ${tl2(ESKI.agirEngelli)} liradan ${yeniLira('agirEngelli')} liraya çıkar. Kesin tutar, Aralık enflasyonu açıklanıp Hazine ve Maliye Bakanlığı Ocak katsayısını genelgeyle duyurunca belli olur.`
+        : mod === 'kesin-zam'
+          ? `Ocak 2027 memur zammı ${zamTxt} olarak kesinleşti; engelli aylıkları da bu oranda artar. %40–69 engelli aylığı ${tl2(ESKI.engelli)} liradan ${yeniLira('engelli')} liraya, %70 ve üzeri engelli aylığı ${tl2(ESKI.agirEngelli)} liradan ${yeniLira('agirEngelli')} liraya çıkar. Kuruşu kuruşuna tutar, Hazine ve Maliye Bakanlığı’nın Ocak başında genelgeyle açıklayacağı memur aylık katsayısıyla hesaplanır.`
+          : `${yeniAy} itibarıyla %40–69 engelli aylığı ${yeniLira('engelli')} lira, %70 ve üzeri engelli aylığı ${yeniLira('agirEngelli')} lira (${eskiAd}: ${tl2(ESKI.engelli)} ve ${tl2(ESKI.agirEngelli)} lira). Tutarlar ${mod === 'katsayi' ? 'Hazine ve Maliye Bakanlığı’nın yeni memur aylık katsayısıyla, Bakanlığın uyguladığı yöntemle hesaplandı' : 'Aile ve Sosyal Hizmetler Bakanlığı’nın açıkladığı tutarlardır'}.`,
+  },
+  {
+    q: '65 yaş aylığı 2027’de ne kadar olacak?',
+    a: tahminModu
+      ? `65 yaş aylığı (yaşlı aylığı) ${eskiAd} döneminde aylık ${tl2(ESKI.yasli)} lira. Ocak 2027’de memur zammı oranında artar; ${mod === 'tahmin' ? 'tahmini' : 'kesinleşen'} ${zamTxt} zamla ${yeniLira('yasli')} liraya çıkar. 2026’da Ocak artışı Şubat ödemesine yansımıştı; Ocak 2027 artışının da Şubat ödemesiyle hesaplara geçmesi beklenir.`
+      : `65 yaş aylığı ${yeniAy} itibarıyla ${yeniLira('yasli')} lira (${eskiAd}: ${tl2(ESKI.yasli)} lira). Aylık her Ocak ve Temmuz’da memur aylık zammı oranında artar.`,
+  },
+  {
+    q: '%70 engelli maaşı ne kadar?',
+    a: `%70 ve üzeri engelli olanlara (başkasının yardımı olmadan hayatını sürdüremeyecek derecede engelli olduğu sağlık kurulu raporuyla belgelenenlere) bağlanan engelli aylığı ${eskiAd} döneminde aylık ${tl2(ESKI.agirEngelli)} lira; %40–69 engellilerde ${tl2(ESKI.engelli)} lira. ${yeniAy} için ${yeniEtiket} tutar %70 ve üzeri engellilerde ${yeniLira('agirEngelli')}, %40–69 engellilerde ${yeniLira('engelli')} lira.`,
+  },
+  {
+    q: 'Engelli maaşı almanın şartları nelerdir?',
+    a: `18 yaşını doldurmuş, en az %40 engelli olduğunu sağlık kurulu raporuyla belgeleyen Türk vatandaşları başvurabilir. Herhangi bir sosyal güvenlik kurumundan gelir veya aylık almamak, zorunlu sigortalı bir işte çalışmamak ve nafaka bağlanmamış olmak gerekir. Hanede kişi başına düşen aylık gelir net asgari ücretin üçte birinden (${yilDa(SINIR_YIL)} ${tl2(SINIR)} lira) az olmalıdır. %40–69 engellilerde ayrıca talebine rağmen İŞKUR tarafından işe yerleştirilememiş olmak aranır. Başvuru ikamet edilen yerdeki Sosyal Yardımlaşma ve Dayanışma Vakfı’na ya da e-Devlet üzerinden yapılır.`,
+  },
+  {
+    q: 'Engelli maaşı ile evde bakım maaşı aynı şey mi?',
+    a: `Hayır. Engelli aylığı 2022 sayılı Kanun’la engelli kişinin kendisine (18 yaş altı çocuklarda bakımını üstlenen yakınına) bağlanır. Evde bakım yardımı ise bakıma muhtaç engellinin evde bakımı için 2828 sayılı Kanun’un ek 7. maddesiyle yapılan ayrı bir ödemedir: tutarı 10.000 gösterge ile memur aylık katsayısının çarpımıdır, gelir sınırı da farklıdır (hane kişi başı gelirin net asgari ücretin üçte ikisinden az olması). Şartlar ve tutar için evde bakım maaşı sayfamıza bakabilirsiniz.`,
+  },
+  {
+    q: 'Engelli maaşı ve 65 yaş aylığı ne zaman yatar?',
+    a: `Aylıklar her ay peşin ödenir. Aile ve Sosyal Hizmetler Bakanlığı ödemeleri ayın ilk günlerinde hesaplara yatırmaya başlar; örneğin Ocak 2026 ödemesi ${odemeGun(sa.odeme.ocak2026)}, Ağustos 2026 ödemesi ${odemeGun(sa.odeme.agustos2026)} başladı. Ocak ve Temmuz’daki katsayı artışı sonraki ayın ödemesine yansır: Temmuz 2026 farkı Ağustos aylıklarıyla birlikte ödendi.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Hesaplama Araçları', url: '/hesaplama-araclari/' },
+  { name: 'Engelli Maaşı ve 65 Yaş Aylığı', url: '/engelli-maasi/' },
+];
+
+const title =
+  mod === 'tahmin'
+    ? 'Engelli Maaşı ve 65 Yaş Aylığı Ocak 2027: Ne Kadar Olacak? (2026 Tutarları)'
+    : mod === 'kesin-zam'
+      ? 'Engelli Maaşı ve 65 Yaş Aylığı Ocak 2027: Kesinleşen Zamla Yeni Tutarlar'
+      : `Engelli Maaşı ve 65 Yaş Aylığı ${yeniAy}: Zamlı Tutarlar`;
+const h1 = tahminModu ? 'Engelli Maaşı ve 65 Yaş Aylığı (Ocak 2027)' : `Engelli Maaşı ve 65 Yaş Aylığı ${yeniAy}`;
+const descUzun = tahminModu
+  ? `Engelli maaşı ${eskiAd}: %40–69 ₺${tl2(ESKI.engelli)}, %70+ ₺${tl2(ESKI.agirEngelli)}; 65 yaş aylığı ₺${tl2(ESKI.yasli)}. Ocak 2027 ${yeniEtiket} tutarlar, hesaplama ve gelir şartı.`
+  : `Engelli maaşı ${yeniAy}: %40–69 ₺${tl2(YENI.engelli)}, %70+ ₺${tl2(YENI.agirEngelli)}; 65 yaş aylığı ₺${tl2(YENI.yasli)}. Hesaplama yöntemi, gelir şartı ve ödeme günleri.`;
+const description = descUzun.length <= 158 ? descUzun : descUzun.replace(/, hesaplama.*$|\. Hesaplama.*$/, '.');
+
+const guncel = sa.dogrulama > em.dogrulandi ? sa.dogrulama : em.dogrulandi;
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'Engelli aylığı, 65 yaş aylığı ve engelli yakını aylığı tutarları (2022 sayılı Kanun)',
+  description: `2022 sayılı Kanun aylıklarının ${eskiAd} resmî tutarları, gösterge ve katsayıya göre hesaplanışı ve ${yeniAy} ${yeniEtiket} tutarları.`,
+  url: 'https://parafomo.com/engelli-maasi/',
+  dateModified: guncel,
+  creator: { '@type': 'Organization', name: 'ParaFOMO', url: 'https://parafomo.com/' },
+  isBasedOn: [R.kaynak, sa.kanun.kaynak, butceYil(curYil).kaynak],
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+};
+const updatedLabel = new Date(guncel + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+// Hesaplayıcıya giden veri (kuruş)
+const AYLIK = Object.fromEntries(TURLER.map(({ key }) => [key, { simdi: tahminModu ? ESKI[key] : YENI[key], yeni: YENI[key] }]));
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+  image="/og/engelli-maasi.png"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(dataset)} />
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Sosyal Yardım · 2022 Sayılı Kanun Aylıkları</p>
+      <h1>{h1}</h1>
+      {tahminModu ? (
+        <p class="lede">
+          Engelli aylığı %40–69 engellilerde <strong>₺{tl2(ESKI.engelli)}</strong>, %70 ve üzeri engellilerde
+          <strong> ₺{tl2(ESKI.agirEngelli)}</strong>; 65 yaş aylığı <strong>₺{tl2(ESKI.yasli)}</strong> ({eskiAd}, Aile ve
+          Sosyal Hizmetler Bakanlığı). Ocak 2027’de memur zammı kadar artacak: {mod === 'tahmin' ? 'tahmini' : 'kesinleşen'} zam
+          <strong> {zamTxt}</strong>.
+        </p>
+      ) : (
+        <p class="lede">
+          {yeniAy} itibarıyla engelli aylığı %40–69 engellilerde <strong>₺{tl2(YENI.engelli)}</strong>, %70 ve üzeri
+          engellilerde <strong>₺{tl2(YENI.agirEngelli)}</strong>; 65 yaş aylığı <strong>₺{tl2(YENI.yasli)}</strong>
+          ({mod === 'katsayi' ? 'yeni memur aylık katsayısıyla hesaplandı' : 'Bakanlığın açıkladığı tutarlar'}).
+        </p>
+      )}
+    </header>
+
+    <div class="kpi-row">
+      {TURLER.map(({ key, label }) => (
+        <div class="kpi">
+          <span class="kpi-label">{label}</span>
+          <span class="kpi-val">₺{tl2(tahminModu ? ESKI[key] : YENI[key])}</span>
+          <span class="kpi-sub">
+            {tahminModu ? `${eskiAd} · Ocak 2027 ${yeniEtiket}: ${yeniTxt(key)}` : `${yilDan(yeniAy)} itibaren · önce ₺${tl2(ESKI[key])}`}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <section class="table-block" id="ocak-2027">
+      <h2>{tahminModu ? 'Ocak 2027’de engelli maaşı ve 65 yaş aylığı ne kadar olacak?' : `${yeniAy} zamlı tutarlar`}</h2>
+      <p class="table-intro">
+        {mod === 'tahmin' && (
+          <>
+            Aylıklar her Ocak ve Temmuz’da <strong>memur aylık zammı</strong> oranında artar. Ocak 2027 memur zammı
+            Temmuz–{sonAy} enflasyonu ve kalan {remaining} ay için varsayımla <a href="/memur-zammi-hesaplama/">tahmini
+            {zamTxt}</a>; tablo bu oranla hesaplandı.
+          </>
+        )}
+        {mod === 'kesin-zam' && (
+          <>
+            Ocak 2027 memur zammı <a href="/memur-zammi-hesaplama/">{zamTxt} olarak kesinleşti</a>; tablo kesinleşen zam
+            oranıyla hesaplandı. Resmî katsayıyı Hazine ve Maliye Bakanlığı Ocak başında genelgeyle açıklar, tutarlar
+            kuruş düzeyinde ona göre netleşir.
+          </>
+        )}
+        {mod === 'katsayi' && (
+          <>
+            {yeniAy} tutarları Hazine ve Maliye Bakanlığı’nın yeni memur aylık katsayısıyla
+            ({nf(kNow, 6)}), Bakanlığın uyguladığı yöntemle hesaplandı. Aile ve Sosyal Hizmetler Bakanlığı tutarları
+            ayrıca duyurur.
+          </>
+        )}
+        {mod === 'resmi' && <>Tutarlar Aile ve Sosyal Hizmetler Bakanlığı’nın açıkladığı rakamlardır.</>}
+      </p>
+      <div class="table-scroll">
+        <table class="rate-table wide">
+          <thead>
+            <tr><th>Aylık türü</th><th>{eskiAd}</th><th>{yeniAy} ({yeniEtiket})</th><th>Aylık artış</th></tr>
+          </thead>
+          <tbody>
+            {TURLER.map(({ key, label }) => (
+              <tr>
+                <td>{label}</td>
+                <td>₺{tl2(ESKI[key])}</td>
+                <td><strong>{yeniTxt(key)}</strong></td>
+                <td>+₺{tl0(YENI[key] - ESKI[key])}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        {tahminModu
+          ? `${eskiAd} tutarları Aile ve Sosyal Hizmetler Bakanlığı’nın resmî rakamlarıdır. Ocak 2027 sütunu, engelli göstergelerini aynen koruyan ${B27.durum === 'teklif' ? '2027 Bütçe Kanunu Teklifi' : '2027 Bütçe Kanunu'} (5.253 ve 3.502) ve aşağıdaki hesaplama yöntemiyle bulundu.`
+          : `Yöntem ve göstergeler aşağıda; ${eskiAd} sütunu Bakanlığın resmî rakamlarıdır.`}
+      </p>
+    </section>
+
+    <section class="table-block" id="gelir-sarti">
+      <h2>Gelir şartını kontrol et: bu aylığı alabilir misiniz?</h2>
+      <p class="table-intro">
+        Bu aylıklar, kişi başına düşen aylık geliri <strong>net asgari ücretin üçte birinin</strong> altında kalanlara
+        bağlanır ({yilDa(SINIR_YIL)} <strong>₺{tl2(SINIR)}</strong>{SINIR_YENI !== null && <>, {yilDa(SINIR_YIL + 1)} ₺{tl2(SINIR_YENI)}</>}).
+        65 yaş aylığında yalnız sizin ve eşinizin gelirine, engelli aylıklarında hanenin tamamına bakılır.
+      </p>
+      <div class="calc-grid">
+        <form class="calc-inputs" autocomplete="off" onsubmit="return false">
+          <label>
+            <span>Aylık türü</span>
+            <select id="in-tur">
+              {TURLER.map(({ key, label }) => <option value={key}>{label}</option>)}
+            </select>
+          </label>
+          <label>
+            <span id="lbl-gelir">Hanenin toplam aylık net geliri (₺)</span>
+            <input type="number" id="in-gelir" value="20000" min="0" step="500" inputmode="numeric" />
+          </label>
+          <label id="wrap-kisi">
+            <span>Hanede yaşayan kişi sayısı</span>
+            <input type="number" id="in-kisi" value="3" min="1" max="20" step="1" inputmode="numeric" />
+          </label>
+          <label id="wrap-es" hidden>
+            <span>Medeni durum</span>
+            <select id="in-es">
+              <option value="2">Evli</option>
+              <option value="1">Bekâr, dul veya boşanmış</option>
+            </select>
+          </label>
+          <p class="hint">Maaş, emekli aylığı, kira, faiz gibi düzenli gelirlerin tamamını net tutar olarak toplayın.</p>
+        </form>
+        <div class="calc-results" aria-live="polite">
+          <div class="result-main">
+            <span class="result-label">Kişi başı aylık gelir</span>
+            <span class="result-value" id="out-kb">—</span>
+          </div>
+          <div class="result-split">
+            <div class="split-item"><span class="split-label">Gelir sınırı ({SINIR_YIL})</span><span class="split-val">₺{tl2(SINIR)}</span></div>
+            <div class="split-item"><span class="split-label">Aylık tutar ({tahminModu ? eskiAd : yeniAy})</span><span class="split-val" id="out-aylik">—</span></div>
+            {tahminModu && (
+              <div class="split-item"><span class="split-label">Ocak 2027 ({yeniEtiket})</span><span class="split-val" id="out-yeni">—</span></div>
+            )}
+          </div>
+          <p class="result-note" id="out-note"></p>
+        </div>
+      </div>
+      <p class="disclaimer">
+        Ön kontroldür, karar yerine geçmez. Sosyal Yardımlaşma ve Dayanışma Vakfı sosyal inceleme yapar; mal varlığı
+        ve elde edilebilecek gelir de değerlendirilir. Herhangi bir sosyal güvenlik kurumundan gelir veya aylık
+        alanlara, zorunlu sigortalı çalışanlara ve nafaka bağlanmış ya da bağlanabilecek olanlara aylık bağlanmaz.
+      </p>
+    </section>
+
+    <section class="table-block" id="nasil-hesaplanir">
+      <h2>Engelli maaşı ve 65 yaş aylığı nasıl hesaplanır?</h2>
+      <p class="table-intro">
+        Kanun aylığı <strong>gösterge rakamı × memur aylık katsayısı</strong> olarak tanımlar. Ödenen tutar iki noktada
+        bu çarpımdan ayrılır: engelli göstergeleri her yıl bütçe kanunuyla yükseltilir ve bütün aylıklara %{EK} ek ödeme
+        eklenir. Tablo, {resmiDonem ? donemAd(R.donem) : yeniAy} katsayısıyla ({nf(kNow, 6)}):
+      </p>
+      <div class="table-scroll">
+        <table class="rate-table wide">
+          <thead>
+            <tr><th>Aylık</th><th>Gösterge</th><th>Gösterge × katsayı</th><th>%{EK} ek ödeme</th><th>Aylık tutar</th></tr>
+          </thead>
+          <tbody>
+            {TURLER.map(({ key, label }) => (
+              <tr>
+                <td>{label}</td>
+                <td>
+                  {CUR[key].g.toLocaleString('tr-TR')}
+                  {CUR[key].g !== KANUN[key] && <span class="muted"> (kanunda {KANUN[key].toLocaleString('tr-TR')})</span>}
+                </td>
+                <td>₺{tl2(CUR[key].taban)}</td>
+                <td>₺{tl2(CUR[key].ek)}</td>
+                <td><strong>₺{tl2(CUR[key].toplam)}</strong></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="prose-block tight">
+        <ul>
+          <li>
+            <strong>Göstergeler:</strong> 65 yaş aylığında 4.387 (2022 sayılı Kanun md. 1). Engelli aylıklarında Kanun’un
+            2. maddesindeki 4.860 ve 3.240, {butceYil(curYil).ad.replace(/ \(.*?\)/, '')} ile %70 ve üzeri için
+            {' '}{butceYil(curYil).agirEngelli.toLocaleString('tr-TR')}, %40–69 ve 18 yaş altı engelli yakını için
+            {' '}{butceYil(curYil).engelli.toLocaleString('tr-TR')} olarak uygulanıyor.
+          </li>
+          <li><strong>Ek ödeme:</strong> 5454 sayılı Kanun’un 1. maddesi gereği aylığa %{EK} ek ödeme eklenir.</li>
+          <li>
+            <strong>Yuvarlama:</strong> Önce gösterge × katsayı kuruşa yuvarlanır, sonra bunun %{EK}’i ayrıca yuvarlanıp
+            eklenir. Bu yöntem Bakanlığın açıkladığı {donemAd(R.donem)} tutarlarını kuruşu kuruşuna veriyor.
+          </li>
+        </ul>
+        <p>
+          Yalnızca kanundaki göstergeyle hesaplarsanız (örneğin 3.240 × {nf(kNow, 6)} = {tl2(Math.floor((3240 * K6(kNow) + 5000) / 10000))} lira)
+          gerçek ödemenin altında kalırsınız. Katsayı her Ocak ve Temmuz’da memur zammı oranında yükseldiği için aylıklar
+          da aynı oranda artar.
+        </p>
+      </div>
+    </section>
+
+    <section class="prose-block">
+      <h2>Kimler alabilir?</h2>
+      <ul>
+        <li>
+          <strong>65 yaş aylığı:</strong> 65 yaşını doldurmuş Türk vatandaşları. Sizin ve eşinizin gelirleri toplamından
+          kişi başına düşen tutar net asgari ücretin üçte birinden az olmalı. 65 yaşın hesabında doğum tarihine yapılan
+          düzeltmeler dikkate alınmaz.
+        </li>
+        <li>
+          <strong>Engelli aylığı (%70 ve üzeri):</strong> 18 yaşını doldurmuş, en az %70 engelli olduğunu ve başkasının
+          yardımı olmadan hayatını sürdüremeyeceğini sağlık kurulu raporuyla belgeleyenler.
+        </li>
+        <li>
+          <strong>Engelli aylığı (%40–69):</strong> 18 yaşını doldurmuş, %40–69 engelli olduğunu raporla belgeleyen ve
+          talebine rağmen İŞKUR tarafından işe yerleştirilememiş olanlar.
+        </li>
+        <li>
+          <strong>18 yaş altı engelli yakını aylığı:</strong> en az %40 engelli (çocuklar için raporda özel gereksinim düzeyi
+          en az “hafif” olan) 18 yaşından küçük yakınının bakımını fiilen üstlenen Türk vatandaşları. Çocuğa bakmakla
+          yükümlü yakını sosyal güvenlik kurumundan aylık alıyor ya da sigortalı çalışıyorsa bu aylık bağlanmaz.
+        </li>
+      </ul>
+      <p>
+        Engelli aylıklarında hanede kişi başına düşen gelir net asgari ücretin üçte birinden az olmalıdır. Bütün aylık
+        türlerinde herhangi bir sosyal güvenlik kurumundan gelir veya aylık almamak, zorunlu sigortalı bir işte
+        çalışmamak ve nafaka bağlanmamış olmak gerekir. Başvuru, ikamet edilen il veya ilçedeki Sosyal Yardımlaşma ve
+        Dayanışma Vakfı’na ya da e-Devlet üzerinden yapılır; aylık, başvuruyu izleyen aybaşından itibaren başlar.
+      </p>
+      <p>
+        65 yaşından önce bağlanan engelli aylığı 65 yaşından sonra da aynı şekilde ödenir. 65 yaş aylığı alan biri ağır
+        engelli olduğunu raporla belgelerse daha yüksek olan %70 ve üzeri engelli aylığına geçirilir; iki aylık birlikte
+        alınmaz. Bu aylıklar her türlü vergiden muaftır.
+      </p>
+
+      <h2>Ne zaman yatar?</h2>
+      <p>
+        Aylıklar her ay peşin ödenir. Aile ve Sosyal Hizmetler Bakanlığı ödemeleri ayın ilk günlerinde hesaplara
+        yatırmaya başlar: Ocak 2026 ödemesi {odemeGun(sa.odeme.ocak2026)}, Ağustos 2026 ödemesi
+        {' '}{odemeGun(sa.odeme.agustos2026)} başladı. Katsayı artışı bir sonraki ayın ödemesine yansır; 2026’da Ocak
+        artışı Şubat’ta hesaplara geçti, Temmuz farkı da Ağustos aylıklarıyla birlikte ödendi.
+      </p>
+
+      {tahminModu && (
+        <>
+          <h2>Ocak 2027’de ne olacak?</h2>
+          <p>
+            Memurlar Ocak 2027’de toplu sözleşmedeki %5 zam ile 2026 ikinci yarısının enflasyon farkını alacak; bu
+            aylıklar da aynı oranda artar. {mod === 'tahmin'
+              ? `Şu anki tahmin ${zamTxt}. Kesin oran Aralık enflasyonu açıklanınca belli olur.`
+              : `Zam oranı ${zamTxt} olarak kesinleşti.`} Hazine ve Maliye Bakanlığı yeni katsayıyı Ocak başında
+            genelgeyle açıklar; engelli göstergeleri {B27.durum === 'teklif' ? '2027 Bütçe Kanunu Teklifi’nde' : '2027 Bütçe Kanunu’nda'}
+            {' '}de 5.253 ve 3.502 olarak korunuyor. 2026’daki uygulamaya göre artışın Şubat 2027 ödemesine, Ocak farkıyla
+            birlikte yansıması beklenir.
+          </p>
+        </>
+      )}
+
+      <h2>Engelli maaşıyla karıştırılanlar</h2>
+      <ul>
+        <li>
+          <strong>Evde bakım maaşı:</strong> Bakıma muhtaç engellinin evde bakımı için yapılan ayrı bir sosyal yardımdır
+          (2828 sayılı Kanun ek md. 7). Tutarı 10.000 gösterge ile memur aylık katsayısının çarpımıdır; gelir sınırı hane
+          kişi başı gelirin net asgari ücretin üçte ikisinden (₺{tl2(IKI_UC)}) az olmasıdır. Ayrıntı →
+          <a href="/evde-bakim-maasi/">evde bakım maaşı</a>.
+        </li>
+        <li>
+          <strong>Malulen emeklilik:</strong> Prim ödeyerek çalışmış ve çalışma gücünü kaybetmiş sigortalılara SGK’nın
+          bağladığı malullük aylığıdır; tutarı prim geçmişine göre hesaplanır ve SSK ile Bağ-Kur’da emekli aylıklarıyla
+          aynı oranda artar. Ocak zammı → <a href="/emekli-zammi-hesaplama/">emekli zammı hesaplama</a>, taban aylık →
+          <a href="/en-dusuk-emekli-maasi/">en düşük emekli maaşı</a>.
+        </li>
+      </ul>
+      <p class="cta-line">
+        Zam oranının ayrıntısı → <a href="/memur-zammi-hesaplama/">memur zammı hesaplama</a> · gelir sınırının dayanağı
+        → <a href="/asgari-ucret-hesaplama/">asgari ücret hesaplama</a> · tüm araçlar →
+        <a href="/hesaplama-araclari/">hesaplama araçları</a>.
+      </p>
+    </section>
+
+    <section class="sources">
+      <h2>Kaynaklar</h2>
+      <ul>
+        <li><a href={sa.kanun.kaynak} rel="noopener">2022 sayılı Kanun</a>, güncel metin (mevzuat.gov.tr; md. 1, 2, 3 ve 6: göstergeler, şartlar, başlangıç, vergi muafiyeti).</li>
+        <li>
+          <a href={BUTCE['2026'].kaynak} rel="noopener">2026 Yılı Merkezi Yönetim Bütçe Kanunu, K cetveli</a> md. 4
+          (engelli göstergeleri 5.253 ve 3.502); <a href={B27.kaynak} rel="noopener">{B27.durum === 'teklif' ? '2027 Bütçe Kanunu Teklifi' : '2027 Bütçe Kanunu'}</a>
+          {' '}K cetveli md. 4 (aynı göstergeler, 2027).
+        </li>
+        <li><a href={sa.ekOdeme.kaynak} rel="noopener">5454 sayılı Kanun</a> md. 1 (2022 sayılı Kanun aylıklarına ek ödeme).</li>
+        <li>
+          <a href={sa.yonetmelik} rel="noopener">65 Yaşını Doldurmuş Muhtaç, Güçsüz ve Kimsesiz Türk Vatandaşları ile Engelli
+          ve Muhtaç Türk Vatandaşlarına Aylık Bağlanması Hakkında Yönetmelik</a> md. 2 ve 9 (engel oranları, aylık ödeme,
+          bütçe göstergesi kuralı; <a href={sa.yonetmelik2014} rel="noopener">RG 25.03.2014 değişikliği</a>).
+        </li>
+        <li>
+          <a href={R.kaynak} rel="noopener">{R.kaynakAd}</a>: {donemAd(R.donem)} tutarları ve gelir sınırı (₺{tl2(Math.round(R.gelirSiniri * 100))}).
+          Bakanlık duyuruları: <a href={sa.onceki.kaynak} rel="noopener">Ocak 2026 artışı</a>,
+          {' '}<a href={sa.odeme.ocak2026Kaynak} rel="noopener">Ocak 2026 ödemesi</a>,
+          {' '}<a href={sa.odeme.agustos2026Kaynak} rel="noopener">Ağustos 2026 ödemesi ve Temmuz farkı</a>.
+        </li>
+        <li>
+          Memur aylık katsayısı: Hazine ve Maliye Bakanlığı Mali ve Sosyal Haklar Genelgesi (ayrıntı →
+          <a href="/memur-zammi-hesaplama/">memur zammı hesaplama</a>). Evde bakım yardımı:
+          {' '}<a href={sa.evdeBakimKanun} rel="noopener">2828 sayılı Kanun</a> ek md. 7. Son doğrulama: {updatedLabel}.
+        </li>
+      </ul>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ AYLIK, SINIR, YENI_KESIN: yeniKesin }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const f2 = (k) => (k / 100).toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const f0 = (k) => Math.round(k / 100).toLocaleString('tr-TR');
+      function update() {
+        const tur = $('in-tur').value;
+        const yasli = tur === 'yasli';
+        $('wrap-kisi').hidden = yasli;
+        $('wrap-es').hidden = !yasli;
+        $('lbl-gelir').textContent = yasli ? 'Sizin ve eşinizin toplam aylık net geliri (₺)' : 'Hanenin toplam aylık net geliri (₺)';
+        const gelir = Math.max(0, +$('in-gelir').value || 0);
+        const kisi = yasli ? +$('in-es').value : Math.max(1, Math.round(+$('in-kisi').value || 1));
+        const kb = Math.round((gelir * 100) / kisi);
+        const ok = kb < SINIR;
+        $('out-kb').textContent = '₺' + f2(kb);
+        $('out-aylik').textContent = '₺' + f2(AYLIK[tur].simdi);
+        const y = $('out-yeni');
+        if (y) y.textContent = YENI_KESIN ? '₺' + f2(AYLIK[tur].yeni) : '≈ ₺' + f0(AYLIK[tur].yeni);
+        const note = $('out-note');
+        note.textContent = ok
+          ? 'Kişi başı geliriniz sınırın altında: gelir şartını karşılıyor görünüyorsunuz. Diğer şartlara ve Vakfın incelemesine bakılır.'
+          : 'Kişi başı geliriniz sınırın ' + (kb === SINIR ? 'tam üzerinde' : '₺' + f2(kb - SINIR) + ' üzerinde') + '; bu durumda aylık bağlanmaz.';
+        note.classList.toggle('ok', ok);
+        note.classList.toggle('no', !ok);
+      }
+      ['in-tur', 'in-gelir', 'in-kisi', 'in-es'].forEach((id) => {
+        $(id).addEventListener('input', update);
+        $(id).addEventListener('change', update);
+      });
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 660px; margin: 0 auto; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem; margin: 0 0 1rem; }
+    .kpi { display: flex; flex-direction: column; gap: 0.15rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-xs); }
+    .kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .kpi-val { font-family: var(--font-serif); font-size: clamp(1.45rem, 1.2rem + 1vw, 1.9rem); font-weight: 700; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .kpi-sub { font-size: 0.78rem; color: var(--text-soft); line-height: 1.35; }
+
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.8rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs label[hidden] { display: none; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input, .calc-inputs select { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .hint { font-size: 0.76rem; color: var(--text-muted); margin: 0; line-height: 1.4; }
+    .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 0.9rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; font-variant-numeric: tabular-nums; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.95rem; text-align: right; font-variant-numeric: tabular-nums; }
+    .result-note { font-size: 0.82rem; margin: 0; font-weight: 600; line-height: 1.45; color: var(--brand-ink); }
+    .result-note.no { color: var(--text); }
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 0.9rem 0 0; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.55; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table.wide { min-width: 520px; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .rate-table td { font-variant-numeric: tabular-nums; }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .muted { color: var(--text-muted); font-size: 0.8rem; }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; line-height: 1.5; }
+
+    .prose-block, .faq-block, .sources { margin-top: 2.5rem; }
+    .prose-block.tight { margin-top: 1rem; }
+    .prose-block h2, .faq-block h2, .sources h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block li { margin-bottom: 0.35rem; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+    .sources ul { margin: 0; padding-left: 1.1rem; }
+    .sources li { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.3rem; }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 680px) {
+      .kpi-row { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: 1fr; padding: 1.1rem; }
+      .rate-table { font-size: 0.86rem; }
+    }
+  </style>
+</BaseLayout>

@@ -202,6 +202,11 @@ def stale_data():
     if em and today.month in (1, 7) and today.day > 15 and em.get("donem") != f"{today.year}-{today.month:02d}":
         out.append(f"memur katsayıları / en düşük emekli aylığı bayat (dönem {em.get('donem')}) → WebSearch ile HMB genelgesi + "
                    "SGK tutarlarını ≥2 kaynakla doğrula, data/emekli-memur.json'u güncelle (/memur-zammi-hesaplama, /en-dusuk-emekli-maasi)")
+    # Sosyal aylıklar (/engelli-maasi): memur katsayısı yeni döneme geçtiyse ASHB resmî tutarları da girilmeli
+    sa = load("sosyal-aylik-2026.json")
+    if em and sa and em.get("donem") and sa.get("resmi", {}).get("donem") and em["donem"] > sa["resmi"]["donem"]:
+        out.append(f"sosyal aylıklar bayat: memur katsayısı {em['donem']} ama ASHB resmî tutarlar {sa['resmi']['donem']} → "
+                   "ASHB duyurusundan 65 yaş/engelli aylıklarını doğrula, data/sosyal-aylik-2026.json resmi bloğunu güncelle")
     # TCMB haftalık faizleri (EVDS): son hafta (Cuma) 13 günden eskiyse anahtar/API bozulmuş olabilir
     fz = load("faiz-oranlari.json")
     if fz and (today - dt.date.fromisoformat(fz["hafta"])).days > 13:

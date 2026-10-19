@@ -1,0 +1,60 @@
+{
+ "_aciklama": "2022 sayılı Kanun aylıkları (65 yaş/yaşlı aylığı, engelli aylığı, 18 yaş altı engelli yakını aylığı) — /engelli-maasi tek kaynağı. KURAL (ASHB broşürünü kuruşu kuruşuna, 2023-01/2023-07/2025-07/2026-01 ASHB duyurularını lirası lirasına veriyor): aylık = Y(gösterge × memur aylık katsayısı) + Y(%5 × Y(gösterge × katsayı)); Y = kuruşa yuvarlama (yarım yukarı). %5 = 5454 s. K. md. 1(e) ek ödemesi. Göstergeler: 65 yaş 4.387 (2022 s. K. md. 1, bütçede değişmiyor); md. 2'deki 4.860 (%70+) ve 3.240 (%40-69 ve engelli yakını) her yıl bütçe kanunu K cetveli md. 4 ile (5.253) ve (3.502) uygulanır (Yönetmelik md. 9/5). Katsayı data/emekli-memur.json'dan gelir: katsayı resmi.katsayi ile aynıyken sayfa resmî tutarları gösterir (formülle aynı olmazsa build uyarır), katsayı değişince yeni dönem tutarlarını formülle kendisi hesaplar. GÜNCELLEME: (1) Aralık sonunda 2027 Bütçe Kanunu RG'de yayımlanınca butce.2027.durum = 'kanun' yap, ad/kaynak alanlarını RG'ye çevir, göstergeler değiştiyse yaz. (2) Ocak'ta HMB katsayısı emekli-memur.json'a girince ASHB Şubat duyurusunu (aile.gov.tr) bekle; tutarlar formülle aynıysa resmi bloğunu yeni dönemle değiştir (donem, katsayi, 4 tutar, gelirSiniri, kaynak), eski resmi bloğunu onceki'ye taşı. (3) Her Ocak butce'ye yeni yılın K cetveli girdisini ekle.",
+ "dogrulama": "2026-10-18",
+ "kanun": {
+  "yasli": 4387,
+  "agirEngelli": 4860,
+  "engelli": 3240,
+  "engelliYakini": 3240,
+  "kaynak": "https://www.mevzuat.gov.tr/mevzuatmetin/1.5.2022.pdf"
+ },
+ "butce": {
+  "2026": {
+   "durum": "kanun",
+   "ad": "2026 Yılı Merkezi Yönetim Bütçe Kanunu (7567 sayılı, RG 31.12.2025/33124 Mükerrer), K cetveli md. 4",
+   "agirEngelli": 5253,
+   "engelli": 3502,
+   "kaynak": "https://www.sbb.gov.tr/wp-content/uploads/2025/12/10-K-Cetveli_2026Butcesi.pdf"
+  },
+  "2027": {
+   "durum": "teklif",
+   "ad": "2027 Yılı Merkezi Yönetim Bütçe Kanunu Teklifi (TBMM'ye 16.10.2026'da sunuldu), K cetveli md. 4",
+   "agirEngelli": 5253,
+   "engelli": 3502,
+   "kaynak": "https://www.sbb.gov.tr/wp-content/uploads/2026/10/2027-MYB-KanunuTeklifi.pdf"
+  }
+ },
+ "ekOdeme": {
+  "oran": 5,
+  "kaynak": "https://www.mevzuat.gov.tr/mevzuatmetin/1.5.5454.pdf"
+ },
+ "resmi": {
+  "donem": "2026-07",
+  "katsayi": 1.575512,
+  "yasli": 7257.36,
+  "agirEngelli": 8689.97,
+  "engelli": 5793.31,
+  "engelliYakini": 5793.31,
+  "gelirSiniri": 9358.50,
+  "kaynak": "https://www.aile.gov.tr/media/342466/yasli-14-07.pdf",
+  "kaynakAd": "ASHB, Yaşlılara ve Engellilere Yönelik Sosyal Yardımlar broşürü (Temmuz 2026)"
+ },
+ "onceki": {
+  "donem": "2026-01",
+  "yasli": 6393,
+  "agirEngelli": 7655,
+  "engelli": 5103,
+  "engelliYakini": 5103,
+  "not": "ASHB 8 Ocak 2026 duyurusu, tam lira (formül: 6.393,02 / 7.655,01 / 5.103,34)",
+  "kaynak": "https://www.aile.gov.tr/haberler/bakanimiz-goktas-sosyal-yardim-programlarinin-aylik-odemelerindeki-artisi-acikladi/"
+ },
+ "odeme": {
+  "ocak2026": "2026-01-05",
+  "ocak2026Kaynak": "https://www.aile.gov.tr/haberler/ocak-ayina-iliskin-yasli-ayligi-ve-engelli-ayliklari-hesaplara-yatirilmaya-baslandi/",
+  "agustos2026": "2026-08-05",
+  "agustos2026Kaynak": "https://www.aile.gov.tr/haberler/agustos-ayi-yasli-ve-engelli-ayliklari-artisli-sekilde-hesaplara-yatirilmaya-baslandi/"
+ },
+ "yonetmelik": "https://aile.gov.tr/eyhgm/mevzuat/ulusal-mevzuat/yonetmelikler/65-yasini-doldurmus-muhtac-gucsuz-ve-kimsesiz-turk-vatandaslari-ile-engelli-ve-muhtac-turk-vatandaslarina-aylik-baglanmasi-hakkinda-yonetmelik/",
+ "yonetmelik2014": "https://www.resmigazete.gov.tr/eskiler/2014/03/20140325-1.htm",
+ "evdeBakimKanun": "https://www.mevzuat.gov.tr/mevzuatmetin/1.5.2828.pdf"
+}
