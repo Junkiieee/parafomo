@@ -171,6 +171,7 @@ FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan me
 - Headless: döngü/değişken/awk/heredoc yok; çok adımlı iş `agent/state/*.py` ile.
 
 ## Biten / iptal (bu hafta)
+- [x] (günlük 10-19, keyword-map K16/K22) /bagkur-primi-hesaplama → canlı https://parafomo.com/bagkur-primi-hesaplama/ (%35,75 / indirimli %30,75, en düşük 10.156,73 ₺; 2 kaynakla kuruşu kuruşuna; GSS tutarları kaynaklar çeliştiği için YAZILMADI) · commit c59d0f2
 - [x] (haftalık koşu 10-15) Kuyruk konuları Trends ile ölçüldü; 2 hacimsiz konu iptal, 6 hacimli konu eklendi (c9a6540)
 - [x] (haftalık koşu 10-15) GSC sayfa×sorgu teşhisi: hesaplayıcılar otorite kilidinde; 2027 sorgularında p4-11
 - Geçen hafta biten (10-08 → 10-14): T1 /gumus-getiri · T2 /euro-getiri · T3 /bitcoin-getiri · T4 bülten v1 ·
