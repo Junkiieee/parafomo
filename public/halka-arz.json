@@ -1,9 +1,177 @@
 {
-  "updated": "2026-10-19T06:15+00:00",
+  "updated": "2026-10-19T12:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 41,
+  "count": 42,
   "items": [
+    {
+      "company": "İnternet Tekstil Sanayii ve Tic. A.Ş.",
+      "bist_code": "",
+      "slug": "internet-tekstil-sanayii-ve-tic-a-s",
+      "link": "https://halkarz.com/internet-tekstil-sanayii-ve-tic-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "85.000.000 Lot",
+      "broker": "Vakıf Yatırım Menkul Değerler A.Ş.",
+      "market": "",
+      "first_trade": "",
+      "float_lot": "",
+      "float_pct": "",
+      "updated_src": "19.10.2026 12:35",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 55.250.000 Lot",
+            "Ortak Satışı : 29.750.000 Lot"
+          ],
+          "source": "Taslak İzahname, Sayfa 2."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%45-55 Marka, üretim, lojistik ve dijital altyapı yatırımları",
+            "%35-40 İşletme sermayesi",
+            "%5-20 Enerji verimliliği ve sürdürülebilirlik yatırımları"
+          ],
+          "source": "Taslak İzahname, Sayfa 258."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "Planlanmamaktadır"
+          ],
+          "source": "Taslak İzahname, Sayfa 254."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "Taslak İzahname, Sayfa 256."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%27,85"
+          ],
+          "source": "Taslak İzahname, Sayfa 236."
+        },
+        "finansal": {
+          "periods": [
+            "2026/6",
+            "2025",
+            "2024"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "1,0 Milyar TL",
+                "2,1 Milyar TL",
+                "2,0 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "462,5 Milyon TL",
+                "815,7 Milyon TL",
+                "686,5 Milyon TL"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "company": "Hayri Ögelman Madencilik A.Ş.",
+      "bist_code": "",
+      "slug": "hayri-ogelman-madencilik-a-s",
+      "link": "https://halkarz.com/hayri-ogelman-madencilik-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "375.000.000 Lot",
+      "broker": "Vakıf Yatırım Menkul Değerler A.Ş.",
+      "market": "",
+      "first_trade": "",
+      "float_lot": "",
+      "float_pct": "",
+      "updated_src": "19.10.2026 10:27",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 250.000.000 Lot",
+            "Ortak Satışı : 125.000.000 Lot"
+          ],
+          "source": "Taslak İzahname, Sayfa 1."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%60 Ferrokrom üretim tesisi yatırımının finansmanı",
+            "%20 Şirket ve/veya maden ruhsat/Lisanslarının alımı",
+            "%20 İşletme sermayesi"
+          ],
+          "source": "Taslak İzahname, Sayfa 229."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "Taslak İzahname, Sayfa 226."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%30"
+          ],
+          "source": "Taslak İzahname, Sayfa 200."
+        },
+        "finansal": {
+          "periods": [
+            "2026/6",
+            "2025",
+            "2024"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "1,5 Milyar TL",
+                "2,3 Milyar TL",
+                "3,5 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "519,3 Milyon TL",
+                "522,6 Milyon TL",
+                "1,3 Milyar TL"
+              ]
+            }
+          ]
+        }
+      }
+    },
     {
       "company": "Önen Gıda Sanayi A.Ş.",
       "bist_code": "",
@@ -83,26 +251,6 @@
           ]
         }
       }
-    },
-    {
-      "company": "Hayri Ögelman Madencilik A.Ş.",
-      "bist_code": "",
-      "slug": "hayri-ogelman-madencilik-a-s",
-      "link": "https://halkarz.com/hayri-ogelman-madencilik-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "",
-      "distribution": "",
-      "lot": "",
-      "broker": "",
-      "market": "",
-      "first_trade": "",
-      "float_lot": "",
-      "float_pct": "",
-      "updated_src": "13.10.2026 20:27",
-      "details": {}
     },
     {
       "company": "Divapan Entegre Ağaç Panel Sanayi Tic. A.Ş.",
