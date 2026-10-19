@@ -60,8 +60,8 @@ Otorite/dış link işleri şimdilik YAPILMAZ (Kaan: "kalsın"). Fırsat listesi
 - [ ] K7 gümüş fiyatları (212) → **/gumus-fiyatlari/** — gram gümüş/ons gümüş; /gumus-getiri ile link. Kaynak K6 ile aynı.
 
 - [ ] K19 engelli maaşı (73,6, zirve Ocak 245) + 65 yaş aylığı (12,8) → **/engelli-maasi/** — ⏳ RC 2026-10-18 YAPIYOR (alt-ajan; günlük koşu ATLA). 2022 s. Kanun gösterge × memur katsayısı; Ocak 2027 tahmini zam2027.ts memurProj'tan otomatik.
-- [ ] K20 evde bakım maaşı (33,9, zirve Ocak 157) → **/evde-bakim-maasi/** — ⏳ RC 2026-10-18 YAPIYOR. Net asgari ücrete bağlı; data/asgari-ucret.json `yeni` gelince otomatik.
-- [ ] K21 doğum yardımı (54, zirve Eylül 2026) → **/dogum-yardimi/** — ⏳ RC 2026-10-18 YAPIYOR. · vergi borcu sorgulama (32,6) + sgk prim borcu (10,4) → **/vergi-borcu-sorgulama/** (gecikme zammı hesabı) — ⏳ RC YAPIYOR.
+- [x] K20 evde bakım maaşı (33,9, zirve Ocak 157) → **/evde-bakim-maasi/** (canlı 2026-10-19, RC alt-ajan). DİKKAT: tutar net asgari ücrete DEĞİL, 10.000 gösterge × memur aylık katsayısına bağlı (2828 ek md.7); net asgari ücret yalnız gelir sınırı (2/3). Ocak tahmini zam2027 memurProj'tan otomatik.
+- [x] K21a doğum yardımı (54) → **/dogum-yardimi/** (canlı 2026-10-19; 633 KHK ek md.4 / 7546 s.K.: 5.000 ₺ tek sefer, 1.500 / 5.000 ₺ aylık × 60 ay; otomatik artış YOK — CB YD'yi aşmamak üzere artırabilir). · vergi borcu sorgulama (32,6) + sgk prim borcu (10,4) → **/vergi-borcu-sorgulama/** (gecikme zammı hesabı) — ⏳ RC YAPIYOR.
 - [ ] K22 adaylar (ölçüldü 10-18): çocuk parası (27,5, zirve Ocak), bağkur primi (15, zirve Aralık), ötv hesaplama (9,2), gss primi (5,2, zirve Kasım).
 
 ## Yeniden kur / otorite (sayfa var, sıralanmıyor) — week.md T6 sınıflandırmasına göre

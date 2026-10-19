@@ -92,6 +92,30 @@ def emekli_card():
             "sub": f"kesinleşen {n}/6 ay · SSK, Bağ-Kur ve memur hesabı"}
 
 
+def memur_zam():
+    """src/data/zam2027.ts ile AYNI mantık → (zam oranı, kesin mi)."""
+    t = load("tufe-aylik.json")
+    by = {m["ay"]: m["aylik"] for m in t["months"]}
+    keys = ["2026-07", "2026-08", "2026-09", "2026-10", "2026-11", "2026-12"]
+    known = [k for k in keys if k in by]
+    cum = 1.0
+    for k in known:
+        cum *= 1 + by[k] / 100
+    assume = round(sum(m["aylik"] for m in t["months"][:3]) / 3, 2)
+    cum6 = cum * (1 + assume / 100) ** (len(keys) - len(known)) - 1
+    return (1 + max(0.0, (1 + cum6) / 1.07 - 1)) * 1.05 - 1, len(known) == len(keys)
+
+
+def evde_bakim_card():
+    # 2828 s.K. ek md.7: 10.000 gösterge × memur aylık katsayısı; Ocak 2027 = katsayı × (1 + memur zammı)
+    k = load("emekli-memur.json")["memurKatsayi"]["aylikKatsayi"]
+    zam, kesin = memur_zam()
+    simdi, ocak = 10000 * k, 10000 * k * (1 + zam)
+    tl = lambda x: f"{round(x):,}".replace(",", ".")
+    return {"kicker": "EVDE BAKIM MAAŞI OCAK 2027", "stat": ("₺" if kesin else "≈₺") + tl(ocak),
+            "sub": f"şu an ₺{tl(simdi)} · 10.000 gösterge × memur katsayısı"}
+
+
 def memur_card():
     # src/data/zam2027.ts ile AYNI mantık: TS 2026-H2 %7, 2027-H1 %5; kalan aylar = son 3 ay ortalaması
     t = load("tufe-aylik.json")
@@ -166,6 +190,10 @@ def vergi_dilimi_card():
 
 
 CARDS = {
+    "dogum-yardimi": lambda: {
+        # 633 s. KHK ek md.4 (7546 s.K.); tutar CB kararıyla değişirse güncelle
+        "kicker": "DOĞUM YARDIMI 2026", "stat": "₺5.000",
+        "sub": "2. çocuk 1.500 ₺/ay · 3. ve sonraki 5.000 ₺/ay · 60 ay"},
     "veraset-ve-intikal-vergisi-hesaplama": lambda: {
         # VİVK Genel Tebliği Seri 57 (RG 31.12.2025); Ocak 2027'de güncelle
         "kicker": "VERASET VE İNTİKAL VERGİSİ 2026", "stat": "₺2.907.136",
@@ -227,6 +255,7 @@ CARDS = {
     "mevduat-faizi-hesaplama": faiz_card(
         "mevduat", "ay3", "MEVDUAT FAİZ ORANI", "basit", "3 aya kadar · TCMB ortalaması · net getiri hesapla"),
     "emekli-zammi-hesaplama": emekli_card,
+    "evde-bakim-maasi": evde_bakim_card,
     "memur-zammi-hesaplama": memur_card,
     "en-dusuk-emekli-maasi": emekli_memur_card("taban"),
     "bayram-ikramiyesi": emekli_memur_card("bayram"),

@@ -1,0 +1,638 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { existsSync as __exists } from 'node:fs';
+import { join as __join } from 'node:path';
+// Engelli maaşı sayfası paralel geliştiriliyordu: dosyası yoksa link verilmez
+const hasEngelli = __exists(__join(process.cwd(), 'src', 'pages', 'engelli-maasi.astro'));
+import Newsletter from '../components/Newsletter.astro';
+import au from '../../data/asgari-ucret.json';
+import em from '../../data/emekli-memur.json';
+// Ocak zammı tahmini /memur-zammi-hesaplama ile ORTAK modülde (aynı TÜFE, aynı varsayım) — burada tekrar hesaplanmaz.
+import { PERIOD, TS_H2_2026, TS_H1_2027, byMonth, knownKeys, cumKnown, remaining, ASSUME, project, memurFrom, memurProj } from '../data/zam2027';
+
+// Evde bakım yardımı ("evde bakım maaşı") — doğrulama 2026-10-18:
+// • TUTAR = (10.000) gösterge × memur aylık katsayısı: 2828 s. Sosyal Hizmetler K. ek md. 7/2 (mevzuat.gov.tr metni,
+//   7593 s. Kanun’a kadar işlenmiş) + Evde Bakım Yardımı Yönetmeliği md. 5/1 (RG 26.05.2023/32202; değ. RG 16.01.2026/33139).
+//   Asgari ücrete BAĞLI DEĞİL: asgari ücret yalnız gelir şartında (hane içi kişi başı gelir < net asgari ücretin 2/3’ü) kullanılır.
+// • Katsayı data/emekli-memur.json’dan (HMB genelgesi, her Ocak/Temmuz). Formül Bakanlığın açıkladığı tutarlarla birebir:
+//   1,012556 → 10.125 · 1,170211 → 11.702 (ASHB 15.08.2025) · 1,387871 → 13.878 (ASHB 15.02.2026). Temmuz 2026: 1,575512 →
+//   15.755,12 (Endeks24 06.07.2026 Bakanlık açıklaması "15 bin 755"; ASHB 16.07.2026 duyurusundaki "15 bin 775" formülle uyuşmuyor).
+// • Gelir sınırı data/asgari-ucret.json’dan: guncel.net × 2/3; Aralık’ta `yeni` dolunca 1 Ocak’tan geçerli yeni sınır da gösterilir.
+type Yil = { yil: number; brut?: number | null; net?: number | null; aciklanma?: string };
+
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const ayAdi = (k: string) => AYLAR[+k.slice(5) - 1];
+const ayYil = (k: string) => `${ayAdi(k)} ${k.slice(0, 4)}`;
+const donemAd = (k: string) => (+k.slice(5) <= 6 ? `Ocak–Haziran ${k.slice(0, 4)}` : `Temmuz–Aralık ${k.slice(0, 4)}`);
+const aralik = (keys: string[]) => (keys.length === 0 ? '' : keys.length === 1 ? ayAdi(keys[0]) : `${ayAdi(keys[0])}–${ayAdi(keys[keys.length - 1])}`);
+const sonrakiAy = (k: string) => {
+  const y = +k.slice(0, 4), m = +k.slice(5);
+  return m === 12 ? `${y + 1}-01` : `${y}-${String(m + 1).padStart(2, '0')}`;
+};
+const gun = (iso?: string) => {
+  if (!iso) return '';
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${d} ${AYLAR[m - 1]} ${y}`;
+};
+const fmt0 = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const fmt2 = (n: number) => new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const kurus = (tl: number) => Math.round(tl * 100);
+
+// ── Yardım tutarı (memur aylık katsayısı) ─────────────────────────────────────────────
+const K = em.memurKatsayi;
+const DONEM = em.donem;                                   // '2026-07' → Temmuz–Aralık 2026 katsayısı
+const DONEM_YIL = +DONEM.slice(0, 4);
+const tutarOf = (k: number) => Math.round(10000 * k * 100) / 100;
+const TUTAR = tutarOf(K.aylikKatsayi);                    // 15.755,12
+
+// Geçmiş katsayılar (HMB genelgeleri; alomaliye / Av. Kazım Ceylan tabloları). İlk satır yalnız artış hesabının tabanı.
+const GECMIS = [
+  { donem: '2024-07', k: 0.907796 },
+  { donem: '2025-01', k: 1.012556 },
+  { donem: '2025-07', k: 1.170211 },
+  { donem: '2026-01', k: 1.387871 },
+  { donem: '2026-07', k: 1.575512 },
+];
+const seri = [...GECMIS.filter((g) => g.donem < DONEM), { donem: DONEM, k: K.aylikKatsayi }]
+  .map((g, i, a) => ({ donem: g.donem, k: g.k, tutar: tutarOf(g.k), artis: i > 0 ? g.k / a[i - 1].k - 1 : null }))
+  .slice(1);
+const ONCEKI = seri.length > 1 ? seri[seri.length - 2] : null;
+const TARIHCE = [...seri].reverse();
+
+// Bir sonraki dönem tahmini: zam modülü yürürlükteki katsayıdan sonraki zammı hesaplıyorsa (PERIOD[0] === DONEM).
+const TAHMIN_VAR = PERIOD[0] === DONEM;
+const HEDEF = sonrakiAy(PERIOD[PERIOD.length - 1]);      // '2027-01'
+const HEDEF_AD = ayYil(HEDEF);                            // 'Ocak 2027'
+const HEDEF_YIL = +HEDEF.slice(0, 4);
+const OCAK_HEDEF = TAHMIN_VAR && HEDEF.endsWith('-01');
+const KESIN_ZAM = remaining === 0;                         // 6 ayın enflasyonu açıklandı → oran kesin, genelge bekleniyor
+const ZAM = memurProj.zam;
+const TUTAR_HEDEF = TAHMIN_VAR ? Math.round(TUTAR * (1 + ZAM) * 100) / 100 : 0;
+const KAT_HEDEF = K.aylikKatsayi * (1 + ZAM);
+const PERIOD_AD = `${aralik(PERIOD)} ${PERIOD[0].slice(0, 4)}`;   // 'Temmuz–Aralık 2026' (enflasyon farkı dönemi)
+const BILINEN_AD = aralik(knownKeys);                      // 'Temmuz–Eylül'
+const KALAN = PERIOD.filter((k) => !byMonth.has(k));
+const KALAN_AD = aralik(KALAN);                           // 'Ekim–Aralık'
+const BILINEN_METIN = knownKeys.length ? `${BILINEN_AD} ${knownKeys[0].slice(0, 4)} enflasyonu %${nf(cumKnown * 100)} olarak kesinleşti; ` : '';
+const SCEN = TAHMIN_VAR && !KESIN_ZAM
+  ? [...new Set([ASSUME, 1, 1.5, 2])].sort((a, b) => a - b).map((x) => {
+      const m = memurFrom(project(x));
+      return { x, zam: m.zam, tutar: TUTAR * (1 + m.zam), son3: x === ASSUME };
+    })
+  : [];
+
+// ── Gelir şartı (net asgari ücretin 2/3’ü) ────────────────────────────────────────────
+const R = au.oranlar;
+// /asgari-ucret-hesaplama ile aynı: net = brüt − yuvarla(brüt×%14) − yuvarla(brüt×%1) (yalnız brüt açıklandıysa)
+const netOf = (brut: number) => (kurus(brut) - Math.round((kurus(brut) * R.sgkIsci) / 100) - Math.round((kurus(brut) * R.issizlikIsci) / 100)) / 100;
+const netYil = (y: Yil) => (y.net ?? netOf(y.brut as number)) as number;
+const G = { yil: au.guncel.yil, net: netYil(au.guncel as Yil) };
+const Y = au.yeni ? { yil: (au.yeni as Yil).yil, net: netYil(au.yeni as Yil), aciklanma: (au.yeni as Yil).aciklanma } : null;
+const sinirKb = (net: number) => Math.round((kurus(net) * 2) / 3) / 100;          // kişi başı (bu tutarın ALTINDA olmalı)
+const sinirHane = (net: number, n: number) => Math.round((kurus(net) * 2 * n) / 3) / 100;
+const SINIR = sinirKb(G.net);                             // 2026: 18.717,00
+const SINIR_Y = Y ? sinirKb(Y.net) : 0;
+const SINIR_2022 = Math.round(kurus(G.net) / 3) / 100;    // 2022 s. Kanun engelli aylığı: net asgari ücretin 1/3’ü
+const HANE = [1, 2, 3, 4, 5, 6].map((n) => ({ n, g: sinirHane(G.net, n), y: Y ? sinirHane(Y.net, n) : 0 }));
+// Aralık açıklamasından önce (Eylül–Aralık build’lerinde) gelecek yılın sınırı için senaryo — tahmin değil.
+const BUILD_AY = new Date().getMonth() + 1;
+const SINIR_SENARYO = !Y && BUILD_AY >= 9
+  ? [15, 20, 25, 30, 35].map((r) => {
+      const net = G.net * (1 + r / 100);
+      return { r, net, kb: (net * 2) / 3, h4: (net * 2 * 4) / 3 };
+    })
+  : [];
+
+// Uygunluk testi (varsayılan değerler — istemci betiğiyle aynı mantık, kuruş cinsinden kesin karşılaştırma)
+const D = { gelir: 45000, kisi: 3, engelli: 1 };
+const kisiSay = (kisi: number, engelli: number) => kisi + Math.max(0, Math.min(engelli, kisi) - 1);
+const testEt = (net: number, gelir: number, n: number, yil: number) => {
+  const ok = kurus(gelir) * 3 < kurus(net) * 2 * n;
+  const kb = gelir / n, s = (kurus(net) * 2) / 3 / 100;
+  const d = Math.abs(s - kb), ds = d < 1 ? `₺${fmt2(d)}` : `₺${fmt0(d)}`;
+  return { ok, t: ok ? `Kişi başı gelir, ${yil} sınırının ${ds} altında.` : kb > s ? `Kişi başı gelir, ${yil} sınırını ${ds} aşıyor.` : `Kişi başı gelir ${yil} sınırına eşit; altında kalmalı.` };
+};
+const D_N = kisiSay(D.kisi, D.engelli);
+const D_G = testEt(G.net, D.gelir, D_N, G.yil);
+const D_Y = Y ? testEt(Y.net, D.gelir, D_N, Y.yil) : null;
+
+// ── Başlık ve SSS (duruma göre) ───────────────────────────────────────────────────────
+let title: string, h1: string, description: string;
+const sinirMetin = Y ? `${Y.yil} gelir sınırı kişi başı ${fmt0(SINIR_Y)} TL` : `Gelir sınırı kişi başı ${fmt0(SINIR)} TL`;
+if (OCAK_HEDEF && !KESIN_ZAM) {
+  title = `Evde Bakım Maaşı ${HEDEF_YIL} Ne Kadar Olacak? Tahmini ${fmt0(TUTAR_HEDEF)} TL | ${DONEM_YIL} Tutarı ve Şartlar`;
+  h1 = `Evde Bakım Maaşı ${HEDEF_YIL}: Ne Kadar Olacak?`;
+  description = `Evde bakım maaşı ${donemAd(DONEM)} döneminde ${fmt0(TUTAR)} TL; ${HEDEF_AD} tahmini ${fmt0(TUTAR_HEDEF)} TL. ${sinirMetin}: uygunluk testi, şartlar, başvuru.`;
+} else if (OCAK_HEDEF) {
+  title = `Evde Bakım Maaşı ${HEDEF_YIL}: ${fmt0(TUTAR_HEDEF)} TL Oluyor | Şartlar ve Gelir Sınırı`;
+  h1 = `Evde Bakım Maaşı ${HEDEF_YIL}: ${fmt0(TUTAR_HEDEF)} TL Oluyor`;
+  description = `Evde bakım maaşı ${HEDEF_AD} itibarıyla ${fmt0(TUTAR_HEDEF)} TL (memur zammı %${nf(ZAM * 100)}). ${sinirMetin}: uygunluk testi, şartlar, başvuru.`;
+} else {
+  title = `Evde Bakım Maaşı ${DONEM_YIL}: ${fmt2(TUTAR)} TL | Şartlar ve Gelir Sınırı`;
+  h1 = `Evde Bakım Maaşı ${DONEM_YIL}: ${fmt2(TUTAR)} TL`;
+  description = `Evde bakım maaşı ${donemAd(DONEM)} döneminde ${fmt2(TUTAR)} TL (10.000 × memur katsayısı). ${sinirMetin}: uygunluk testi, şartlar, başvuru.`;
+}
+
+const faq = [
+  OCAK_HEDEF
+    ? {
+        q: `Evde bakım maaşı ${HEDEF_YIL} yılında ne kadar olacak?`,
+        a: KESIN_ZAM
+          ? `Evde bakım maaşı memur maaş katsayısına bağlıdır. ${HEDEF_AD} memur zammı %${nf(ZAM * 100)} olarak kesinleşti; aylık tutar ${fmt2(TUTAR)} TL’den yaklaşık ${fmt0(TUTAR_HEDEF)} TL’ye çıkar. Kuruşu kesin tutar, Hazine ve Maliye Bakanlığı’nın Ocak katsayı genelgesiyle belli olur.`
+          : `Evde bakım maaşı memur maaş katsayısına bağlıdır ve ${HEDEF_AD} itibarıyla memur zammı oranında artar. ${BILINEN_METIN}${KALAN_AD} için aylık %${nf(ASSUME)} (son 3 ay ortalaması) varsayımıyla memur zammı yaklaşık %${nf(ZAM * 100)}, evde bakım maaşı yaklaşık ${fmt0(TUTAR_HEDEF)} TL olur (bugün ${fmt2(TUTAR)} TL). Bu bir tahmindir; kesin tutar Aralık enflasyonu açıklanıp Ocak katsayısı ilan edilince belli olur.`,
+      }
+    : {
+        q: `Evde bakım maaşı ${DONEM_YIL} yılında ne kadar?`,
+        a: `${donemAd(DONEM)} döneminde evde bakım maaşı aylık ${fmt2(TUTAR)} TL’dir: 10.000 gösterge × memur aylık katsayısı (${nf(K.aylikKatsayi, 6)}).${ONCEKI ? ` Bir önceki dönemde ${fmt2(ONCEKI.tutar)} TL idi.` : ''} Tutar her Ocak ve Temmuz’da memur zammı oranında artar.`,
+      },
+  {
+    q: 'Evde bakım maaşı hane geliri şartı nedir?',
+    a: `Hanede yaşayan herkesin aylık net geliri toplanıp hane nüfusuna bölünür; kişi başı tutar net asgari ücretin 2/3’ünden az olmalıdır. ${G.yil} yılında net asgari ücret ${fmt2(G.net)} TL olduğu için sınır kişi başı ${fmt2(SINIR)} TL; örneğin 4 kişilik bir hanenin toplam aylık geliri ${fmt2(sinirHane(G.net, 4))} TL’nin altında kalmalıdır.${Y ? ` ${Y.yil} asgari ücretiyle sınır 1 Ocak ${Y.yil} itibarıyla kişi başı ${fmt2(SINIR_Y)} TL olur.` : ''} Hanedeki ikinci ve sonraki her bakıma muhtaç engelli iki kişi sayılır; bayram ikramiyesi, öğrenim kredisi, doğum yardımı ve staj ücreti gelire katılmaz.`,
+  },
+  {
+    q: 'Evde bakım maaşı ne zaman yatar?',
+    a: 'Aile ve Sosyal Hizmetler Bakanlığı, evde bakım yardımının her ayın 15’inde hak sahiplerinin hesaplarına yatırıldığını açıklıyor. Ocak ve Temmuz’daki katsayı artışları bir sonraki ayın ödemesine yansır: 2026’da Ocak artışı Şubat’ta, Temmuz artışı Ağustos’ta hesaplara geçti. Ödemenizi e-Devlet’teki “Engelli Evde Bakım Ödeme Bilgileri Sorgulama” hizmetinden görebilirsiniz.',
+  },
+  {
+    q: 'Evde bakım maaşı için hangi sağlık raporu gerekir?',
+    a: 'Erişkinlerde sağlık kurulu raporunda “tam bağımlı” ibaresi, çocuklarda “Çok ileri düzeyde ÖGV”, “Belirgin ÖGV” ve “Özel koşul gereksinimi var (ÖKGV)” ibareli ÇÖZGER raporu aranır; esas alınan, Sağlık Bakanlığı sisteminde kayıtlı son tarihli rapordur. Rapor tek başına yetmez: Bakanlığın heyeti evi ziyaret ederek kişinin günlük işlerini başkasının yardımı olmadan sürdüremediğini bakım raporuyla tespit etmelidir.',
+  },
+  {
+    q: 'Evde bakım maaşına nereden ve nasıl başvurulur?',
+    a: 'Engellinin nüfusa kayıtlı olduğu yerdeki Aile ve Sosyal Hizmetler İl Müdürlüğü’ne veya Sosyal Hizmet Merkezi’ne başvurulur; Yönetmelik başvurunun e-Devlet üzerinden de alınabileceğini öngörür. Başvuruyu engelli kişi, bakım vermek isteyen yakını, bir akrabası veya vasisi yapabilir; belgeler başvurudan itibaren 30 gün içinde tamamlanır. Yardıma Bakanlık sistemindeki onay tarihinden itibaren hak kazanılır; ret kararına tebliğden itibaren 30 gün içinde itiraz edilebilir.',
+  },
+  {
+    q: 'Evde bakım maaşı ile engelli maaşı aynı şey mi?',
+    a: `Hayır. Evde bakım yardımı 2828 sayılı Kanun’a dayanır, engelliye bakan yakına ödenir ve gelir sınırı net asgari ücretin 2/3’üdür. Engelli aylığı ise 2022 sayılı Kanun’a göre 18 yaşını doldurmuş engellinin kendisine (18 yaşından küçük engellilerde bakımını üstlenen yakınına) bağlanır, başvurusu Sosyal Yardımlaşma ve Dayanışma Vakfı’na yapılır ve gelir sınırı net asgari ücretin 1/3’üdür (${G.yil} yılında kişi başı ${fmt2(SINIR_2022)} TL).`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Hesaplama Araçları', url: '/hesaplama-araclari/' },
+  { name: 'Evde Bakım Maaşı', url: '/evde-bakim-maasi/' },
+];
+---
+
+<BaseLayout title={title} description={description} faq={faq} breadcrumbs={breadcrumbs} image="/og/evde-bakim-maasi.png">
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Sosyal Yardım · Güncel Tutar</p>
+      <h1>{h1}</h1>
+      <p class="lede">
+        {OCAK_HEDEF && !KESIN_ZAM && (
+          <>Evde bakım maaşı (resmî adıyla <strong>evde bakım yardımı</strong>) {donemAd(DONEM)} döneminde aylık
+          <strong>{fmt2(TUTAR)} TL</strong>. Tutar memur maaş katsayısına bağlı olduğu için {HEDEF_AD} itibarıyla memur
+          zammı kadar artacak; bugünkü enflasyon verisiyle tahmin <strong>≈ {fmt0(TUTAR_HEDEF)} TL</strong>.</>
+        )}
+        {OCAK_HEDEF && KESIN_ZAM && (
+          <>{HEDEF_AD} memur zammı %{nf(ZAM * 100)} olarak kesinleşti; evde bakım maaşı {fmt2(TUTAR)} TL’den yaklaşık
+          <strong>{fmt0(TUTAR_HEDEF)} TL</strong>’ye çıkıyor. Kuruşu kesin tutar Hazine ve Maliye Bakanlığı’nın katsayı
+          genelgesiyle belli olur.</>
+        )}
+        {!OCAK_HEDEF && (
+          <>Evde bakım maaşı (resmî adıyla <strong>evde bakım yardımı</strong>) {donemAd(DONEM)} döneminde aylık
+          <strong>{fmt2(TUTAR)} TL</strong>: 10.000 gösterge × memur aylık katsayısı ({nf(K.aylikKatsayi, 6)}).</>
+        )}
+        {' '}Hanenizin gelir şartını aşağıda sınayın.
+      </p>
+    </header>
+
+    {Y && (
+      <p class="notice">
+        <strong>{Y.yil} asgari ücreti açıklandı</strong>{Y.aciklanma ? ` (${gun(Y.aciklanma)})` : ''}: net {fmt2(Y.net)} TL.
+        Evde bakım gelir sınırı 1 Ocak {Y.yil} itibarıyla kişi başı <strong>{fmt2(SINIR_Y)} TL</strong> olur. Yardımın
+        tutarı asgari ücrete değil memur katsayısına bağlı olduğundan bu karardan etkilenmez.
+      </p>
+    )}
+
+    <div class="stats">
+      <div class="stat">
+        <span class="k">Evde bakım maaşı (aylık)</span>
+        <span class="v">₺{fmt2(TUTAR)}</span>
+        <span class="s">{donemAd(DONEM)} · 10.000 × {nf(K.aylikKatsayi, 6)}</span>
+      </div>
+      {TAHMIN_VAR ? (
+        <div class="stat">
+          <span class="k">{HEDEF_AD} {KESIN_ZAM ? '(kesinleşen zamla)' : 'tahmini'}</span>
+          <span class="v">≈ ₺{fmt0(TUTAR_HEDEF)}</span>
+          <span class="s">memur zammı {KESIN_ZAM ? '' : '≈'}%{nf(ZAM * 100)} ile{KESIN_ZAM ? '' : ' · tahmin'}</span>
+        </div>
+      ) : ONCEKI && (
+        <div class="stat">
+          <span class="k">Önceki dönem</span>
+          <span class="v">₺{fmt2(ONCEKI.tutar)}</span>
+          <span class="s">{donemAd(ONCEKI.donem)}</span>
+        </div>
+      )}
+      <div class="stat">
+        <span class="k">{Y ? `${Y.yil} gelir sınırı (kişi başı)` : 'Gelir sınırı (kişi başı)'}</span>
+        <span class="v">₺{fmt0(Y ? SINIR_Y : SINIR)}</span>
+        <span class="s">{Y ? `1 Ocak ${Y.yil} itibarıyla · ${G.yil}: ₺${fmt0(SINIR)}` : `${G.yil} · net asgari ücretin 2/3’ü`}</span>
+      </div>
+    </div>
+
+    {TAHMIN_VAR && (
+      <section class="table-block" id="tahmin">
+        <h2>{HEDEF_AD} evde bakım maaşı ne kadar olacak?</h2>
+        {!KESIN_ZAM ? (
+          <p class="table-intro">
+            Evde bakım maaşı her Ocak ve Temmuz’da memur maaş zammıyla aynı oranda artar. {HEDEF_AD} memur zammı,
+            8. Dönem Toplu Sözleşme’deki %{TS_H1_2027} zam ile {PERIOD_AD} enflasyonunun %{TS_H2_2026} toplu sözleşme
+            zammını aşan kısmının (enflasyon farkı) bileşiğidir.
+            {knownKeys.length > 0 && <>{BILINEN_AD} enflasyonu <strong>%{nf(cumKnown * 100)}</strong> olarak kesinleşti; </>}
+            {KALAN_AD} için aylık %{nf(ASSUME)} (son 3 ayın ortalaması) varsayılırsa memur zammı yaklaşık
+            <strong>%{nf(ZAM * 100)}</strong>, evde bakım maaşı yaklaşık <strong>{fmt0(TUTAR_HEDEF)} TL</strong> olur.
+          </p>
+        ) : (
+          <p class="table-intro">
+            {PERIOD_AD} enflasyonu açıklandı ve {HEDEF_AD} memur zammı <strong>%{nf(ZAM * 100)}</strong> olarak kesinleşti
+            (toplu sözleşme %{TS_H1_2027} + enflasyon farkı %{nf(memurProj.fark * 100)}). Evde bakım maaşı {fmt2(TUTAR)} TL’den
+            yaklaşık <strong>{fmt0(TUTAR_HEDEF)} TL</strong>’ye çıkar. Katsayı altı haneye yuvarlandığı için genelgedeki kesin
+            tutar birkaç kuruş farklı olabilir.
+          </p>
+        )}
+        {SCEN.length > 0 && (
+          <div class="table-scroll">
+            <table class="rate-table">
+              <thead><tr><th>{KALAN_AD} aylık enflasyon</th><th>{HEDEF_AD} memur zammı</th><th>{HEDEF_AD} evde bakım maaşı</th></tr></thead>
+              <tbody>
+                {SCEN.map((s) => (
+                  <tr class={s.son3 ? 'current' : ''}>
+                    <td>%{nf(s.x)}{s.son3 ? ' (son 3 ay ort.)' : ''}</td>
+                    <td>%{nf(s.zam * 100)}</td>
+                    <td>₺{fmt0(s.tutar)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+        <p class="table-note">
+          Tahmin, <a href="/memur-zammi-hesaplama/">memur zammı hesaplama</a> sayfasıyla aynı veri ve yöntemle yapılır (TÜİK aylık
+          TÜFE + toplu sözleşme oranları); yeni enflasyon verisi geldikçe kendiliğinden güncellenir. Kesin tutar, Aralık enflasyonu
+          açıklanıp Hazine ve Maliye Bakanlığı Ocak katsayısını genelgeyle ilan edince belli olur. 2026 uygulamasına göre Ocak artışı
+          Şubat ödemesiyle hesaplara yansır.
+        </p>
+      </section>
+    )}
+
+    <section class="table-block" id="gelir-sarti">
+      <h2>Evde bakım maaşı gelir şartı: haneniz uygun mu?</h2>
+      <p class="table-intro">
+        Hanede yaşayan herkesin aylık net geliri toplanır ve hane nüfusuna bölünür; kişi başı tutar <strong>net asgari ücretin
+        2/3’ünden az</strong> olmalıdır. {G.yil} yılında sınır kişi başı <strong>{fmt2(SINIR)} TL</strong>
+        ({fmt2(G.net)} × 2/3).
+      </p>
+      <div class="calc-grid">
+        <form class="calc-inputs" autocomplete="off">
+          <label>
+            <span>Hanenin toplam aylık net geliri (₺)</span>
+            <input type="number" id="in-gelir" value={D.gelir} min="0" step="500" inputmode="numeric" />
+          </label>
+          <label>
+            <span>Hanede yaşayan kişi sayısı (engelli dahil)</span>
+            <input type="number" id="in-kisi" value={D.kisi} min="1" max="20" step="1" inputmode="numeric" />
+          </label>
+          <label>
+            <span>Hanedeki bakıma muhtaç engelli sayısı</span>
+            <input type="number" id="in-engelli" value={D.engelli} min="1" max="10" step="1" inputmode="numeric" />
+          </label>
+          <p class="hint">Maaş, emekli aylığı, kira, nafaka gibi tüm gelirleri toplayın. Bayram ikramiyesi, öğrenim kredisi, doğum yardımı ve staj ücreti dahil edilmez.</p>
+        </form>
+        <div class="calc-results" aria-live="polite">
+          <div class="result-main">
+            <span class="result-label">Kişi başı aylık gelir</span>
+            <span class="result-value" id="out-kb">₺{fmt0(D.gelir / D_N)}</span>
+          </div>
+          <div class="verdicts">
+            <p class="verdict"><span id="v-g-b" class={`badge ${D_G.ok ? 'ok' : 'no'}`}>{D_G.ok ? 'Uygun' : 'Uygun değil'}</span><span id="v-g-t">{D_G.t}</span></p>
+            {Y && D_Y && (
+              <p class="verdict"><span id="v-y-b" class={`badge ${D_Y.ok ? 'ok' : 'no'}`}>{D_Y.ok ? 'Uygun' : 'Uygun değil'}</span><span id="v-y-t">1 Ocak {Y.yil} itibarıyla: {D_Y.t}</span></p>
+            )}
+          </div>
+          <div class="result-split">
+            <div class="split-item"><span class="split-label">{G.yil} sınırı (kişi başı)</span><span class="split-val">₺{fmt2(SINIR)}</span></div>
+            {Y && <div class="split-item"><span class="split-label">{Y.yil} sınırı (kişi başı)</span><span class="split-val">₺{fmt2(SINIR_Y)}</span></div>}
+            <div class="split-item"><span class="split-label">Hesaba giren kişi sayısı</span><span class="split-val" id="out-n">{D_N}</span></div>
+            <div class="split-item"><span class="split-label">Hane geliri bunun altında olmalı ({G.yil})</span><span class="split-val" id="out-max">₺{fmt2(sinirHane(G.net, D_N))}</span></div>
+          </div>
+          <p class="result-note" id="out-note">Kesin karar heyetin hane ziyareti ve bakım raporuyla verilir; ikinci konut, araç ve mevduat gibi varlıklar da gelir sayılır.</p>
+        </div>
+      </div>
+
+      <h3>Hane büyüklüğüne göre gelir sınırı</h3>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead><tr><th>Hanede</th><th>{G.yil}: aylık hane geliri bunun altında olmalı</th>{Y && <th>{Y.yil} (1 Ocak’tan)</th>}</tr></thead>
+          <tbody>
+            {HANE.map((h) => (
+              <tr><td>{h.n} kişi</td><td>₺{fmt2(h.g)}</td>{Y && <td>₺{fmt2(h.y)}</td>}</tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Hanedeki ikinci ve sonraki her bakıma muhtaç engelli iki kişi sayılır: iki engelli çocuğun yaşadığı 4 kişilik hane
+        5 kişi üzerinden hesaplanır. Sınır asgari ücretle birlikte her Ocak değişir;
+        <a href="/asgari-ucret-hesaplama/">asgari ücret {Y ? Y.yil : G.yil + 1}</a> sayfası yeni tutarı açıklandığı gün gösterir.
+      </p>
+
+      {SINIR_SENARYO.length > 0 && (
+        <>
+          <h3>{G.yil + 1} gelir sınırı senaryoları (tahmin değil)</h3>
+          <p class="table-intro">
+            Yeni asgari ücret Aralık’ta açıklanınca sınır 1 Ocak’tan itibaren değişir. Tablo, “net asgari ücret şu oranda artarsa
+            sınır ne olur” hesabıdır; resmî rakam açıklandığı gün yerini kesin sınıra bırakır.
+          </p>
+          <div class="table-scroll">
+            <table class="rate-table">
+              <thead><tr><th>Net asgari ücret artışı</th><th>Net asgari ücret</th><th>Kişi başı sınır</th><th>4 kişilik hane</th></tr></thead>
+              <tbody>
+                {SINIR_SENARYO.map((x) => (
+                  <tr><td>%{x.r}</td><td>₺{fmt0(x.net)}</td><td>₺{fmt0(x.kb)}</td><td>₺{fmt0(x.h4)}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+    </section>
+
+    <section class="table-block" id="hesaplama">
+      <h2>Evde bakım maaşı nasıl hesaplanır?</h2>
+      <p class="table-intro">
+        Tutar Kanun’da formüle bağlıdır (2828 sayılı Kanun ek madde 7; Evde Bakım Yardımı Yönetmeliği madde 5):
+        <strong>10.000 gösterge × memur aylık katsayısı</strong>. Yardım her ay engelliye bakan yakına (bakım verene) ödenir.
+        Katsayı her Ocak ve Temmuz’da memur zammı oranında güncellendiği için yardım da yılda iki kez artar.
+        <strong>Asgari ücret tutarı belirlemez</strong>, yalnızca gelir şartında kullanılır. Bakanlık verisine göre Temmuz 2026
+        itibarıyla yaklaşık 516 bin kişi evde bakım yardımı alıyor.
+      </p>
+      <p class="formula">10.000 × {nf(K.aylikKatsayi, 6)} = <strong>{fmt2(TUTAR)} TL</strong> <span>({donemAd(DONEM)})</span></p>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead><tr><th>Dönem</th><th>Memur aylık katsayısı</th><th>Evde bakım maaşı</th><th>Artış</th></tr></thead>
+          <tbody>
+            {TAHMIN_VAR && (
+              <tr class="tahmin"><td>{donemAd(HEDEF)} ({KESIN_ZAM ? 'kesinleşen zamla' : 'tahmin'})</td><td>≈ {nf(KAT_HEDEF, 6)}</td><td>≈ ₺{fmt0(TUTAR_HEDEF)}</td><td>≈ %{nf(ZAM * 100)}</td></tr>
+            )}
+            {TARIHCE.map((r, i) => (
+              <tr class={i === 0 ? 'current' : ''}>
+                <td>{donemAd(r.donem)}</td><td>{nf(r.k, 6)}</td><td>₺{fmt2(r.tutar)}</td><td>{r.artis != null ? `%${nf(r.artis * 100)}` : '—'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Katsayılar Hazine ve Maliye Bakanlığı’nın Ocak ve Temmuz genelgelerinden. Bakanlığın açıkladığı dönem tutarları
+        (10.125, 11.702 ve 13.878 TL) bu formülle birebir aynıdır.
+        {DONEM === '2026-07' && ' Bakanlığın 16 Temmuz 2026 duyurusunda Temmuz tutarı “15 bin 775 lira” diye geçse de formül 10.000 × 1,575512 = 15.755,12 TL verir; hesabınıza yatan kesin tutarı e-Devlet’te görebilirsiniz.'}
+      </p>
+    </section>
+
+    <section class="prose-block" id="sartlar">
+      <h2>Evde bakım maaşı şartları</h2>
+      <ul>
+        <li>
+          <strong>Bakıma muhtaç engelli:</strong> Erişkinlerde sağlık kurulu raporunda “tam bağımlı” ibaresi (Kanun’daki
+          ifadesiyle ağır engellilik); çocuklarda “Çok ileri düzeyde ÖGV”, “Belirgin ÖGV” ve “Özel koşul gereksinimi var
+          (ÖKGV)” ibareli ÇÖZGER raporu. Esas alınan, Sağlık Bakanlığı sisteminde kayıtlı son tarihli rapordur.
+        </li>
+        <li>
+          <strong>Heyet tespiti:</strong> Bakanlığın değerlendirme heyeti evi ziyaret eder ve kişinin günlük hayatın olağan
+          işlerini başkasının yardımı olmadan sürdüremediğini bakım raporuyla tespit eder. Rapor tek başına yetmez.
+        </li>
+        <li>
+          <strong>Gelir şartı:</strong> Hane içinde kişi başı aylık gelir net asgari ücretin 2/3’ünden az olmalı
+          ({G.yil} yılında {fmt2(SINIR)} TL).
+        </li>
+        <li>
+          <strong>Bakım veren:</strong> 18 yaşını doldurmuş bir akraba ya da vasi. Akraba tanımı geniştir: eş, çocuk, anne-baba,
+          kardeş, torun; amca, hala, dayı, teyze ve çocukları; eşin anne-babası ve kardeşleri gibi. Engelliyle aynı adreste
+          oturmak esastır; uygun yakın yoksa ve heyet uygun bulursa gün içinde kolayca gidip gelebilecek mesafedeki bir akraba
+          da bakım verebilir.
+        </li>
+        <li>
+          <strong>Bakılabilecek kişi sayısı:</strong> Bir bakım veren kardeşlere sayı sınırı olmadan, kardeş olmayanlarda en
+          fazla iki engelliye bakım verebilir.
+        </li>
+      </ul>
+      <h3>Ocak 2026’da neler değişti?</h3>
+      <p>16 Ocak 2026 tarihli Resmî Gazete’de (sayı 33139) yayımlanan yönetmelik değişikliğiyle:</p>
+      <ul>
+        <li>Binek araç kuralı yeniden yazıldı: tek araçta değerin ÖTV Kanunu’ndaki (md. 7/2) parasal sınırı aşan kısmının
+          120’de biri aylık gelir sayılıyor; birden fazla araçta en değerli araca bu kural, diğer araçlara kasko veya rayiç
+          bedelin 120’de biri uygulanıyor.</li>
+        <li>Öğrenim kredisi, doğum yardımı ve mesleki eğitim staj ücretleri hane gelirine katılmıyor.</li>
+        <li>Hanedeki ikinci ve sonraki her bakıma muhtaç engelli, yardım alsın ya da almasın iki kişi sayılıyor.</li>
+        <li>Yardım alan engelli başka bir engelliye bakım veremiyor; bakım veren de ayrıca engelli olarak bu yardımı alamıyor.</li>
+        <li>Koruyucu aile veya sosyal ve ekonomik destek (SED) hizmetinden yararlanan çocuk evde bakım yardımı alamıyor.</li>
+        <li>Başka ile taşınınca durdurulan yardım, 90 gün içinde nakil istenmezse sonlandırılıyor. Kontrolde kişinin kendi
+          işlerini görebildiği tespit edilirse yardım heyet kararıyla kesiliyor; bu karara 30 gün içinde itiraz edilebiliyor.</li>
+      </ul>
+
+      <h2>Hane geliri nasıl hesaplanır?</h2>
+      <p>
+        Hane, adres kayıt sistemine göre aynı konutta birlikte yaşayan kişilerden oluşur; il dışında okuyan çocuklar da sayılır.
+        Hesaba hanedekilerin maaş, ücret, emekli aylığı, nafaka, kira ve tarımsal destek gibi tüm gelirleri girer. Kiraya
+        verilmemiş ikinci konut ve dükkânlar için rayiç bedelin 120’de biri, arsa ve tarla için 240’ta biri, banka mevduatı
+        için aylık faiz getirisinin iki katı aylık gelir sayılır. <strong>Bayram ikramiyesi</strong> Kanun gereği hesaba katılmaz.
+      </p>
+
+      <h2>Başvuru, belgeler ve süreç</h2>
+      <ul>
+        <li><strong>Nereye:</strong> Engellinin nüfusa kayıtlı olduğu yerdeki Aile ve Sosyal Hizmetler İl Müdürlüğü veya
+          Sosyal Hizmet Merkezi. Yönetmeliğe göre başvuru e-Devlet üzerinden de alınabilir.</li>
+        <li><strong>Kim başvurur:</strong> Engelli kişinin kendisi, bakım vermek isteyen kişi, bir akrabası veya vasisi.</li>
+        <li><strong>Belgeler (30 gün içinde):</strong> T.C. kimlik numarası (yabancılarda oturma izni ve yabancı kimlik numarası),
+          sağlık kurulu raporu, hanede yaşayanların gelir ve varlık beyanı, açık rıza formu; kısıtlanması gereken yetişkin
+          engelliler için mahkemenin vasi atama kararı; gerekirse boşanma ve öğrenim belgeleri.</li>
+        <li><strong>Süreç:</strong> Heyet evi ziyaret edip bakım raporunu hazırlar, il müdürlüğü onaylar, bakım veren taahhüt
+          formunu imzalar. Yardıma başvuru tarihinden değil, Bakanlık sistemindeki onay tarihinden itibaren hak kazanılır.</li>
+        <li><strong>Ret ve itiraz:</strong> Olumsuz karar 30 gün içinde yazılı bildirilir; tebliğden itibaren 30 gün içinde
+          itiraz edilebilir ve dosyaya bakmamış ikinci bir heyetin kararı kesindir.</li>
+        <li><strong>Sonrası:</strong> Heyet yılda en az bir kez kontrol ziyareti yapar. Gelir artışı gibi yardımı kesecek
+          durumlar 1 ay içinde bildirilmelidir; yersiz ödemeler yasal faiziyle geri alınır.</li>
+      </ul>
+
+      <h2>Evde bakım maaşı ne zaman yatar, nasıl sorgulanır?</h2>
+      <p>
+        Aile ve Sosyal Hizmetler Bakanlığı, evde bakım yardımının <strong>her ayın 15’inde</strong> hak sahiplerinin hesaplarına
+        yatırıldığını açıklıyor. Ocak ve Temmuz’daki katsayı artışları bir sonraki ayın ödemesine yansır: 2026’da Ocak artışı
+        Şubat’ta, Temmuz artışı Ağustos’ta hesaplara geçti. Ödemelerinizi e-Devlet’teki
+        <a href="https://www.turkiye.gov.tr/ashb-engelli-evde-bakim-odeme-sorgu" target="_blank" rel="noopener">Engelli Evde
+        Bakım Ödeme Bilgileri Sorgulama</a> hizmetinden görebilirsiniz. Yönetmelik gereği evde bakım yardımı ödemeleri
+        <strong>haczedilemez</strong>, devredilemez.
+      </p>
+
+      <h2>Evde bakım maaşı ile engelli maaşı arasındaki fark</h2>
+      <p>
+        İkisi sıkça karıştırılır ama farklı kanunlara dayanan ayrı ödemelerdir. Engelli aylığının güncel tutarları için
+        → {hasEngelli ? <a href="/engelli-maasi/">engelli maaşı</a> : 'engelli maaşı'}.
+      </p>
+      <div class="table-scroll">
+        <table class="rate-table compare">
+          <thead><tr><th>Konu</th><th>Evde bakım yardımı</th><th>Engelli aylığı</th></tr></thead>
+          <tbody>
+            <tr><td>Dayanak</td><td>2828 sayılı Kanun ek md. 7</td><td>2022 sayılı Kanun md. 2</td></tr>
+            <tr><td>Kime ödenir</td><td>Engelliye bakan yakına (bakım veren)</td><td>18 yaşını doldurmuş engellinin kendisine; 18 yaş altında bakımını üstlenen yakınına</td></tr>
+            <tr><td>Sağlık şartı</td><td>“Tam bağımlı” / ÇÖZGER ibareleri + heyetin bakım raporu</td><td>Sağlık kurulu raporuyla engellilik</td></tr>
+            <tr><td>Gelir sınırı ({G.yil}, kişi başı)</td><td>Net asgari ücretin 2/3’ü: ₺{fmt2(SINIR)}</td><td>Net asgari ücretin 1/3’ü: ₺{fmt2(SINIR_2022)}</td></tr>
+            <tr><td>Başvuru</td><td>ASHB il müdürlüğü, Sosyal Hizmet Merkezi, e-Devlet</td><td>Sosyal Yardımlaşma ve Dayanışma Vakfı</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="cta-line">
+        Gelir sınırını belirleyen asgari ücret ve 2027 senaryoları → <a href="/asgari-ucret-hesaplama/">asgari ücret hesaplama</a> ·
+        katsayıyı belirleyen Ocak zammı → <a href="/memur-zammi-hesaplama/">memur zammı hesaplama</a> ·
+        SSK ve Bağ-Kur emeklileri için → <a href="/emekli-zammi-hesaplama/">emekli zammı hesaplama</a> ve
+        <a href="/en-dusuk-emekli-maasi/">en düşük emekli maaşı</a> · tüm araçlar →
+        <a href="/hesaplama-araclari/">hesaplama araçları</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
+    </section>
+
+    <section class="source-block">
+      <h2>Kaynak</h2>
+      <ul>
+        <li><a href="https://www.mevzuat.gov.tr/mevzuatmetin/1.5.2828.pdf" target="_blank" rel="noopener">2828 sayılı Sosyal Hizmetler Kanunu</a> — md. 3/d (bakıma ihtiyacı olan engelli) ve ek md. 7 (gelir ölçütü, 10.000 gösterge, bayram ikramiyesi istisnası); mevzuat.gov.tr güncel metni</li>
+        <li><a href="https://aile.gov.tr/eyhgm/mevzuat/ulusal-mevzuat/yonetmelikler/evde-bakim-yardimi-yonetmeligi-1/" target="_blank" rel="noopener">Evde Bakım Yardımı Yönetmeliği</a> — RG 26.05.2023/32202, değişiklik RG 16.01.2026/33139 (md. 4, 5, 6, 7, 10, 13, 14, 15, 16, 18, 20)</li>
+        <li><a href="https://www.mevzuat.gov.tr/mevzuatmetin/1.5.2022.pdf" target="_blank" rel="noopener">2022 sayılı Kanun</a> — md. 2 ve 3 (engelli aylığı, 1/3 gelir ölçütü, SYDV başvurusu)</li>
+        <li>Memur aylık katsayıları: Hazine ve Maliye Bakanlığı Mali ve Sosyal Haklar genelgeleri ({donemAd(DONEM)}: {nf(K.aylikKatsayi, 6)}); net asgari ücret {G.yil}: {fmt2(G.net)} TL (Asgari Ücret Tespit Komisyonu kararı, Resmî Gazete)</li>
+        <li>Aile ve Sosyal Hizmetler Bakanlığı duyuruları: <a href="https://aile.gov.tr/eyhgm/haberler/evde-bakim-yardimi-odemeleri-hak-sahiplerinin-hesaplarina-artisli-sekilde-yatirilmaya-baslandi/" target="_blank" rel="noopener">15.08.2025</a> (her ayın 15’inde ödeme; 10.125 → 11.702 TL) ve <a href="https://aile.gov.tr/haberler/evde-bakim-yardimi-hesaplara-yatirildi/" target="_blank" rel="noopener">16.07.2026</a> (Ocak–Temmuz 2026: 13.878 TL; 516 bin hak sahibi)</li>
+      </ul>
+      <p class="table-note">Bu sayfa bilgilendirme amaçlıdır; hak sahipliğine Bakanlığın heyeti karar verir. Rakamlar Ekim 2026’da resmî metinlerden kontrol edildi; tahminler TÜİK verisiyle her güncellemede yeniden hesaplanır.</p>
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ NG: kurus(G.net), NY: Y ? kurus(Y.net) : 0, GY: G.yil, YY: Y ? Y.yil : 0 }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const nf2 = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const tl0 = (n) => '₺' + nf0.format(Math.round(n));
+      const tl2 = (n) => '₺' + nf2.format(n);
+      const int = (id, min, max) => Math.max(min, Math.min(max, Math.round(+$(id).value || 0)));
+      function test(netK, gelir, n, yil) {
+        const ok = Math.round(gelir * 100) * 3 < netK * 2 * n;
+        const kb = gelir / n, s = (netK * 2) / 3 / 100, d = Math.abs(s - kb);
+        const ds = d < 1 ? tl2(d) : tl0(d);
+        const t = ok ? 'Kişi başı gelir, ' + yil + ' sınırının ' + ds + ' altında.'
+          : kb > s ? 'Kişi başı gelir, ' + yil + ' sınırını ' + ds + ' aşıyor.'
+          : 'Kişi başı gelir ' + yil + ' sınırına eşit; altında kalmalı.';
+        return { ok, t };
+      }
+      function show(p, r, onEk) {
+        const b = $(p + '-b'), t = $(p + '-t');
+        if (!b || !t) return;
+        b.textContent = r.ok ? 'Uygun' : 'Uygun değil';
+        b.className = 'badge ' + (r.ok ? 'ok' : 'no');
+        t.textContent = onEk + r.t;
+      }
+      function update() {
+        const gelir = Math.max(0, +$('in-gelir').value || 0);
+        const kisi = int('in-kisi', 1, 50);
+        const engelli = int('in-engelli', 1, 20);
+        const n = kisi + Math.max(0, Math.min(engelli, kisi) - 1);
+        $('out-kb').textContent = tl0(gelir / n);
+        $('out-n').textContent = String(n);
+        $('out-max').textContent = tl2(Math.round((NG * 2 * n) / 3) / 100);
+        show('v-g', test(NG, gelir, n, GY), '');
+        if (YY) show('v-y', test(NY, gelir, n, YY), '1 Ocak ' + YY + ' itibarıyla: ');
+        $('out-note').textContent = engelli > 1
+          ? 'Hanedeki her ek bakıma muhtaç engelli iki kişi sayıldığı için hesap ' + n + ' kişi üzerinden yapıldı. Kesin karar heyetin bakım raporuyla verilir.'
+          : 'Kesin karar heyetin hane ziyareti ve bakım raporuyla verilir; ikinci konut, araç ve mevduat gibi varlıklar da gelir sayılır.';
+      }
+      ['in-gelir', 'in-kisi', 'in-engelli'].forEach((id) => $(id).addEventListener('input', update));
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 660px; margin: 0 auto; }
+    .notice { background: var(--brand-tint); border-left: 3px solid var(--brand-2); border-radius: var(--radius-sm); padding: 0.85rem 1rem; font-size: 0.92rem; color: var(--text-soft); line-height: 1.55; margin: 0 0 1.2rem; }
+    .notice strong { color: var(--brand-ink); }
+
+    .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; }
+    .stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; display: flex; flex-direction: column; gap: 0.2rem; box-shadow: var(--shadow-soft); }
+    .stat .k { font-size: 0.8rem; color: var(--text-soft); font-weight: 600; }
+    .stat .v { font-family: var(--font-serif); font-size: 1.75rem; font-weight: 600; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .stat .s { font-size: 0.78rem; color: var(--text-muted); }
+
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .hint { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.45; }
+    .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 0.9rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; font-variant-numeric: tabular-nums; }
+    .verdicts { display: flex; flex-direction: column; gap: 0.45rem; }
+    .verdict { display: flex; align-items: baseline; gap: 0.5rem; margin: 0; font-size: 0.86rem; color: var(--text-soft); line-height: 1.45; }
+    .badge { flex: none; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.18rem 0.55rem; border-radius: 999px; color: #fff; }
+    .badge.ok { background: var(--brand); }
+    .badge.no { background: var(--danger); }
+    .result-split { display: flex; flex-direction: column; gap: 0.5rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; line-height: 1.45; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.7rem; }
+    .table-block h3 { font-size: 1.05rem; margin: 1.8rem 0 0.6rem; }
+    .table-intro { font-size: 0.92rem; color: var(--text-soft); margin: 0 0 0.9rem; line-height: 1.6; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .rate-table th { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .rate-table tr.current td { font-weight: 700; color: var(--brand-ink); }
+    .rate-table tr.tahmin td { color: var(--text-muted); font-style: italic; }
+    .rate-table.compare td:first-child { font-weight: 600; color: var(--text); white-space: nowrap; }
+    .rate-table.compare td { min-width: 9rem; }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.8rem 0 0; line-height: 1.55; }
+    .formula { background: var(--surface); border-radius: var(--radius-sm); padding: 0.8rem 1rem; margin: 0 0 1rem; font-size: 1.02rem; color: var(--text); text-align: center; font-variant-numeric: tabular-nums; }
+    .formula strong { color: var(--brand-ink); }
+    .formula span { display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 0.15rem; }
+
+    .prose-block, .faq-block, .source-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2, .source-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block h2:not(:first-child) { margin-top: 2rem; }
+    .prose-block h3 { font-size: 1.05rem; margin: 1.5rem 0 0.5rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block ul { padding-left: 1.2rem; }
+    .prose-block li { margin-bottom: 0.45rem; }
+    .prose-block .table-scroll { margin: 0.6rem 0 1.2rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+    .source-block ul { margin: 0; padding-left: 1.1rem; }
+    .source-block li { font-size: 0.85rem; color: var(--text-soft); line-height: 1.6; margin-bottom: 0.35rem; }
+
+    @media (max-width: 680px) {
+      .stats, .calc-grid { grid-template-columns: 1fr; }
+      .rate-table { font-size: 0.86rem; }
+    }
+  </style>
+</BaseLayout>

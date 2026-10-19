@@ -1,0 +1,36 @@
+{
+ "_aciklama": "Aile ve Sosyal Hizmetler Bakanlığı doğum yardımı (633 sayılı KHK ek md. 4; 7546 s. K. md. 14 ile 27/3/2025’te değişti, RG 30.03.2025/32857) ve Doğum Yardımı Yönetmeliği (CB Kararı 9721, RG 10.04.2025/32866). 1/1/2025 ve sonrası canlı doğumlar. Tutarlar KANUNDA SABİT; otomatik endeks YOK — Cumhurbaşkanı 'VUK yeniden değerleme oranını geçmemek üzere' artırmaya yetkili (zorunlu değil; 2026’da kullanılmadı, ASHB 30.09.2026 açıklaması tutarları aynen teyit ediyor). GÜNCELLEME: (1) CB kararıyla tutar artarsa 'tutar' alanını ve 'yil'ı güncelle, eski tutarı 'gecmis'e ekle, 'artirildi' alanını doldur; (2) her ay ASHB 'X ayı doğum yardımı ödemeleri hesaplara yatırıldı' haberindeki tarihi 'odemeler'e ekle (aile.gov.tr/haberler); (3) Ocak’ta SGK emzirme ödeneği tutarını güncelle.",
+ "_kaynakKanun": "https://www.mevzuat.gov.tr/MevzuatMetin/4.5.633.pdf",
+ "_kaynakKanunRG": "https://www.resmigazete.gov.tr/eskiler/2025/03/20250330-1.htm",
+ "_kaynakYonetmelik": "https://www.mevzuat.gov.tr/MevzuatMetin/21.5.9721.pdf",
+ "_kaynakSss": "https://www.aile.gov.tr/sss/sosyal-yardimlar-genel-mudurlugu/yeni-dogum-yardimi/",
+ "_kaynakOdeme": "https://www.aile.gov.tr/haberler/eylul-ayi-dogum-yardimi-odemeleri-hesaplara-yatirildi/",
+ "_kaynakBasvuru": "https://www.turkiye.gov.tr/ashb-dogum-yardimi-8663",
+ "_kaynakEmzirme": "https://www.sgk.gov.tr/Content/Post/5a130212-a95b-4346-a85f-522ac508347e/Emzirme-Odenegi-2026-01-09-02-11-47",
+ "dogrulama": "2026-10-18",
+ "yil": 2026,
+ "kapsamBaslangic": "2025-01-01",
+ "tutar": { "ilk": 5000, "ikinciAylik": 1500, "ucuncuAylik": 5000 },
+ "artirildi": null,
+ "azamiAy": 60,
+ "ilkCocukBasvuruAy": 12,
+ "sonucGun": 15,
+ "itirazGun": 30,
+ "cekilmeyenIadeAy": 6,
+ "eski": { "ilk": 300, "ikinci": 400, "ucuncu": 600, "basvuruSonTarih": "2025-06-01" },
+ "odemeler": [
+  { "ay": "2026-03", "tarih": "2026-03-30" },
+  { "ay": "2026-04", "tarih": "2026-04-29" },
+  { "ay": "2026-05", "tarih": "2026-05-22", "not": "Kurban Bayramı öncesi" },
+  { "ay": "2026-06", "tarih": "2026-06-26" },
+  { "ay": "2026-07", "tarih": "2026-07-29" },
+  { "ay": "2026-08", "tarih": "2026-08-28" },
+  { "ay": "2026-09", "tarih": "2026-09-30" }
+ ],
+ "istatistik": { "tarih": "2026-09-30", "cocuk": 1355110, "duzenli": 788573, "anne": 1320760, "milyarTL": 27.6, "ikizVeUzeri": 31493 },
+ "emzirme": { "yil": 2026, "tutar": 1621, "onceki": 1238, "primGun": 120 },
+ "izin": { "kanun": "7578", "rgTarih": "2026-05-01", "analikHafta": 24, "dogumSonrasiHafta": 16, "babalikGun": 10 },
+ "gecmis": [
+  { "yil": 2025, "tutar": { "ilk": 5000, "ikinciAylik": 1500, "ucuncuAylik": 5000 }, "not": "7546 s. Kanun (RG 30.03.2025); 1/1/2025 doğumlarından geçerli" }
+ ]
+}

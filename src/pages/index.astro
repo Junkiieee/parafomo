@@ -11,6 +11,7 @@ import ipoReturns from '../../data/halka-arz-getiri.json';
 import yd from '../../data/yeniden-degerleme.json';
 import asgari from '../../data/asgari-ucret.json';
 import kira from '../../data/kira-artis-2026.json';
+import em from '../../data/emekli-memur.json';
 import { cumKnown, remaining, sskProj, memurProj } from '../data/zam2027';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
@@ -65,7 +66,8 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
   { slug: 'arac-muayene-ucreti', ad: 'Araç muayene ücreti', deger: 'tablo' },
   { slug: 'veraset-ve-intikal-vergisi-hesaplama', ad: 'Veraset ve intikal vergisi', deger: 'hesapla' },
   { slug: 'engelli-maasi', ad: 'Engelli maaşı (Ocak)', deger: `≈+%${nf1(memurProj.zam * 100)}` },
-  { slug: 'evde-bakim-maasi', ad: 'Evde bakım maaşı', deger: auYeni ? `₺${Math.round(auNet).toLocaleString('tr-TR')}` : `₺${Math.round(asgari.guncel.net).toLocaleString('tr-TR')}` },
+  // 2828 s.K. ek md.7: 10.000 gösterge × memur aylık katsayısı → Ocak 2027 = × (1 + memur zammı)
+  { slug: 'evde-bakim-maasi', ad: 'Evde bakım maaşı (Ocak)', deger: `${remaining === 0 ? '' : '≈'}₺${Math.round(10000 * em.memurKatsayi.aylikKatsayi * (1 + memurProj.zam)).toLocaleString('tr-TR')}` },
   { slug: 'gelir-vergisi-hesaplama', ad: 'Gelir vergisi (kira)', deger: 'hesapla' },
 ].filter((z) => hasPage(z.slug));
 ---

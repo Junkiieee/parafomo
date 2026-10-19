@@ -1,0 +1,686 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { existsSync as __exists } from 'node:fs';
+import { join as __join } from 'node:path';
+const hasEngelli = __exists(__join(process.cwd(), 'src', 'pages', 'engelli-maasi.astro'));
+import Newsletter from '../components/Newsletter.astro';
+import yd from '../../data/yeniden-degerleme.json';
+import dy from '../../data/dogum-yardimi-2026.json';
+
+// Doğum yardımı — 633 sayılı KHK ek md. 4 (7546 s. K. md. 14 ile değişik, RG 30.03.2025/32857) ve Doğum Yardımı
+// Yönetmeliği (CB Kararı 9721, RG 10.04.2025/32866); mevzuat.gov.tr güncel metinleri 2026-10-18’de okundu.
+// Yönetmelik: md. 5 şartlar, md. 6 başvuru süresi (ilk çocuk 12 ay, diğerleri 5 yaş), md. 7 (15 gün), md. 8 çocuk
+// sırası, md. 9 (başvuru ayından itibaren ödenir; tutarlar), md. 10 itiraz (30 gün), md. 11 kesilme / 6 ay çekilmeme /
+// 60. ay dahil sonlandırma. Ödeme günü: ASHB SSS (“onay tarihini takip eden ayın son haftası”, Halkbank) + aylık duyurular.
+// TUTARLAR KANUNDA SABİT: otomatik endeks yok. Cumhurbaşkanı VUK yeniden değerleme oranını GEÇMEMEK üzere artırabilir
+// (zorunlu değil; 2026’da kullanılmadı — ASHB 30.09.2026 duyurusu tutarları aynen veriyor). Bu yüzden gelecek yıl için
+// tahmin değil yalnızca yasal TAVAN gösterilir: tutar × (1 + (tebligOrani ?? onikiAyOrt)), kuruşa aşağı.
+// Takvim hesabı: doğum ayı çocuğun 1. ayı sayılır → son hak ayı = doğum ayı + 59 (en fazla 60 ödeme, “60 ay” ile uyumlu).
+
+const Y: number = dy.yil;
+const HEDEF = Y + 1;
+const T = dy.tutar;
+const MAXAY: number = dy.azamiAy;
+const ILKAY: number = dy.ilkCocukBasvuruAy;
+const max2 = T.ikinciAylik * MAXAY;
+const max3 = T.ucuncuAylik * MAXAY;
+
+// Gelecek yıl tavanı (yalnızca üst sınır)
+const tavanVar = yd.hedefYil === HEDEF;
+const teblig = yd.tebligOrani as number | null;
+const oran: number = teblig ?? yd.onikiAyOrt;
+const durum: 'teblig' | 'hesap' | 'tahmin' = teblig ? 'teblig' : yd.ekimVerisiGeldi ? 'hesap' : 'tahmin';
+const bp = Math.round(oran * 100);
+const tavanla = (v: number) => Math.floor((v * (10000 + bp)) / 100) / 100; // kuruşa aşağı: oranı aşmaz
+const TV = { ilk: tavanla(T.ilk), ikinci: tavanla(T.ikinciAylik), ucuncu: tavanla(T.ucuncuAylik) };
+const ydBuYil = (yd.gecmis as { uygulamaYili: number; oran: number }[]).find((g) => g.uygulamaYili === Y)?.oran;
+const approx = durum === 'tahmin' ? '≈' : '';
+
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const GUN = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const fmt2 = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+const nf2 = (n: number) => n.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const tl = (n: number) => `${fmt(n)} TL`;
+const trTarih = (iso: string, gun = false) => {
+  const d = new Date(iso + 'T12:00:00Z');
+  return `${d.getUTCDate()} ${AYLAR[d.getUTCMonth()]} ${d.getUTCFullYear()}${gun ? ' ' + GUN[d.getUTCDay()] : ''}`;
+};
+const ayAdi = (k: string) => `${AYLAR[+k.slice(5, 7) - 1]} ${k.slice(0, 4)}`;
+const idxAd = (i: number) => `${AYLAR[i % 12]} ${Math.floor(i / 12)}`;
+const oranTxt = (durum === 'tahmin' ? '≈%' : '%') + nf2(oran);
+const sonAyAdi = ayAdi(yd.sonAy);
+const sa = (yd as { sonrakiAciklama?: string }).sonrakiAciklama;
+const sonrakiTxt = sa ? `${+sa.slice(8, 10)} ${AYLAR[+sa.slice(5, 7) - 1]}` : 'Kasım başında';
+const oranAciklama =
+  durum === 'tahmin'
+    ? `${sonAyAdi} verisiyle tahmini ${oranTxt}; oran ${sonrakiTxt} günü netleşir`
+    : durum === 'hesap'
+      ? `kesinleşen ${oranTxt}; VUK tebliği Kasım sonunda`
+      : `VUK tebliğindeki ${oranTxt}`;
+
+// Ödeme tarihleri (ASHB aylık duyuruları)
+type Odeme = { ay: string; tarih: string; not?: string };
+const OD = dy.odemeler as Odeme[];
+const sonOdeme = OD[OD.length - 1];
+const gunler = OD.map((o) => +o.tarih.slice(8, 10));
+const minGun = Math.min(...gunler);
+const maxGun = Math.max(...gunler);
+const ST = dy.istatistik;
+const EM = dy.emzirme;
+const IZ = dy.izin;
+const ES = dy.eski;
+const dogrulamaTxt = trTarih(dy.dogrulama);
+
+// Hesaplayıcı varsayılanı: bugün doğan ikinci çocuk, doğum ayında başvuru (JS tarayıcıda bugüne göre yeniden hesaplar)
+const pad = (n: number) => String(n).padStart(2, '0');
+const trSimdi = new Date(Date.now() + 3 * 3600 * 1000);
+const BUGUN = `${trSimdi.getUTCFullYear()}-${pad(trSimdi.getUTCMonth() + 1)}-${pad(trSimdi.getUTCDate())}`;
+const bugunIdx = trSimdi.getUTCFullYear() * 12 + trSimdi.getUTCMonth();
+const sonIdx0 = bugunIdx + MAXAY - 1;
+const yil0: [number, number][] = [];
+for (let i = bugunIdx; i <= sonIdx0; i++) {
+  const yy = Math.floor(i / 12);
+  const r = yil0.find((x) => x[0] === yy);
+  if (r) r[1]++;
+  else yil0.push([yy, 1]);
+}
+
+const faq = [
+  {
+    q: `Doğum yardımı ne kadar ${Y}?`,
+    a: `${Y}’da doğum yardımı, 1 Ocak 2025 ve sonrasında doğan çocuklar için ilk çocukta tek seferlik ${tl(T.ilk)}, ikinci çocukta aylık ${tl(T.ikinciAylik)}, üçüncü ve sonraki her çocukta aylık ${tl(T.ucuncuAylik)}. Aylık ödemeler başvuru ayından çocuk 5 yaşını tamamlayana kadar, en fazla ${MAXAY} ay sürer; doğum ayında başvurulursa ikinci çocukta toplam ${tl(max2)}, üçüncü ve sonraki çocukta ${tl(max3)} eder. Tutarlar 2025’teki düzenlemeden bu yana değişmedi.`,
+  },
+  {
+    q: 'Doğum yardımı ne zaman yatar?',
+    a: `Başvuru onaylandıktan sonra ilk ödeme, onay tarihini izleyen ayın son haftasında yapılır; aylık ödemeler de her ayın son haftasında Halkbank aracılığıyla hesaba geçer. ${Y}’da ödemeler ayın ${minGun}. ile ${maxGun}. günleri arasında yatırıldı; son olarak ${ayAdi(sonOdeme.ay)} ödemesi ${trTarih(sonOdeme.tarih, true)} günü yattı. Ödemenin yatıp yatmadığını e-Devlet’te ve “İlk Öğretmenim Ailem” uygulamasında görebilirsiniz.`,
+  },
+  {
+    q: 'İkinci çocuk doğum yardımı ne kadar?',
+    a: `İkinci çocuk için başvurunun yapıldığı aydan itibaren çocuk 5 yaşını tamamlayana kadar (60. ay dahil) her ay ${tl(T.ikinciAylik)} ödenir. Doğduğu ay başvurursanız ${MAXAY} ödemeyle toplam ${tl(max2)} alırsınız; geç kalınan her ay bir aylık ödeme kaybı demektir. Sıra annenin daha önce canlı doğurduğu çocuklara göre belirlenir: ilk çocuğunuz 2025’ten önce doğduysa yeni bebeğiniz ikinci çocuk sayılır.`,
+  },
+  {
+    q: 'Doğum yardımı başvurusu nasıl yapılır?',
+    a: `Bebeğin nüfus kaydı tamamlandıktan sonra e-Devlet’te Aile ve Sosyal Hizmetler Bakanlığı’nın “Doğum Yardımı Başvuru” hizmetinden ya da “İlk Öğretmenim Ailem” mobil uygulamasından başvurulur. Anne Türk vatandaşıysa başvuruyu anne ya da anne adına baba yapar; anne yabancı uyrukluysa veya vefat etmişse Türk vatandaşı baba ya da çocuğun kanuni temsilcisi başvurur. Başvuru en geç ${dy.sonucGun} gün içinde sonuçlanır. Süre ilk çocukta doğumdan sonraki ${ILKAY} ay, diğer çocuklarda 5 yaşın dolmasına kadardır. e-Devlet kullanamayanlar il müdürlüklerinden ve sosyal hizmet merkezlerinden destek alabilir.`,
+  },
+  {
+    q: 'Doğum yardımı şartları neler, gelir sınırı var mı?',
+    a: 'Çocuğun 1 Ocak 2025 veya sonrasında canlı doğmuş olması, anne ya da babanın (veya ikisinin) Türk vatandaşı olması, Türkiye’de ikamet edilmesi ve usulüne uygun başvuru yapılması gerekir; çocuk başvuru tarihinde sağ ve Türk vatandaşı olmalıdır. Gelir sınırı, muhtaçlık, çalışma ya da SGK prim şartı yoktur; resmî nikâh da aranmaz. Yardım vergi ve kesintiye tabi değildir, borç için haczedilemez. 2025’ten önce doğan çocuklar için bu yardım ödenmez.',
+  },
+  ...(tavanVar
+    ? [
+        {
+          q: `${HEDEF}’de doğum yardımı artacak mı?`,
+          a: `Şimdilik bir artış kararı yok. Tutarlar kanunda sabit yazılıdır ve kendiliğinden artmaz; Cumhurbaşkanı bunları yeniden değerleme oranını geçmemek üzere artırmaya yetkilidir ama bu zorunlu değildir: ${Y}’da yetki kullanılmadı. ${HEDEF} için oranın tamamı uygulanırsa (${oranAciklama}) üst sınır ilk çocukta ${approx}${fmt2(TV.ilk)} TL, ikinci çocukta aylık ${approx}${fmt2(TV.ikinci)} TL, üçüncü ve sonraki çocukta aylık ${approx}${fmt2(TV.ucuncu)} TL olur. Bu bir tahmin değil, yasal tavandır.`,
+        },
+      ]
+    : []),
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Hesaplama Araçları', url: '/hesaplama-araclari/' },
+  { name: `Doğum Yardımı ${Y}`, url: '/dogum-yardimi/' },
+];
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: `Doğum yardımı tutarları ve ödeme tarihleri ${Y}`,
+  description: `Aile ve Sosyal Hizmetler Bakanlığı doğum yardımı: çocuk sırasına göre tutarlar (ilk çocuk ${tl(T.ilk)} tek seferlik, ikinci çocuk aylık ${tl(T.ikinciAylik)}, üçüncü ve sonraki aylık ${tl(T.ucuncuAylik)}), en fazla ${MAXAY} aylık süre, ${Y} aylık ödeme tarihleri ve yeniden değerleme oranına göre ${HEDEF} yasal artış tavanı.`,
+  url: 'https://parafomo.com/dogum-yardimi/',
+  dateModified: dy.dogrulama,
+  creator: { '@type': 'Organization', name: 'ParaFOMO', url: 'https://parafomo.com/' },
+  isBasedOn: 'https://www.mevzuat.gov.tr/MevzuatMetin/21.5.9721.pdf',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+};
+---
+
+<BaseLayout
+  title={`Doğum Yardımı ${Y} Ne Kadar? Ne Zaman Yatar, Hesaplama`}
+  description={`Doğum yardımı ${Y}: ilk çocuğa ${tl(T.ilk)}, ikinci çocuğa aylık ${tl(T.ikinciAylik)}, üçüncüye aylık ${tl(T.ucuncuAylik)} (${MAXAY} ay). Ne zaman yatar, şartlar, başvuru, hesaplama.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+  image="/og/dogum-yardimi.png"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(dataset)} />
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Aile · Sosyal Destek</p>
+      <h1>Doğum Yardımı {Y}: Ne Kadar, Ne Zaman Yatar?</h1>
+      <p class="lede">
+        1 Ocak 2025 ve sonrasında doğan çocuklar için Aile ve Sosyal Hizmetler Bakanlığı ilk çocukta
+        <strong>tek seferlik {tl(T.ilk)}</strong>, ikinci çocukta <strong>aylık {tl(T.ikinciAylik)}</strong>, üçüncü ve
+        sonraki çocuklarda <strong>aylık {tl(T.ucuncuAylik)}</strong> öder. Aylık ödemeler çocuk 5 yaşını tamamlayana
+        kadar, en fazla {MAXAY} ay sürer.
+      </p>
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="kpi-label">1. çocuk</span>
+        <span class="kpi-val">{tl(T.ilk)}</span>
+        <span class="kpi-sub">tek seferlik · doğumdan sonraki {ILKAY} ay içinde başvuru</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">2. çocuk</span>
+        <span class="kpi-val">{tl(T.ikinciAylik)}<small>/ay</small></span>
+        <span class="kpi-sub">{MAXAY} aya kadar · en fazla {tl(max2)}</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">3. ve sonraki çocuk</span>
+        <span class="kpi-val">{tl(T.ucuncuAylik)}<small>/ay</small></span>
+        <span class="kpi-sub">{MAXAY} aya kadar · en fazla {tl(max3)}</span>
+      </div>
+    </div>
+
+    <section class="table-block" id="hesaplama">
+      <h2>Doğum yardımı hesaplama</h2>
+      <p class="table-intro">
+        Çocuğun sırasını, doğum tarihini ve başvuru tarihini girin; alacağınız toplam yardımı ve ödeme takvimini görün.
+        Bebek henüz doğmadıysa beklenen doğum tarihini yazabilirsiniz.
+      </p>
+      <div class="calc-grid">
+        <form class="calc-inputs" autocomplete="off" onsubmit="return false">
+          <label>
+            <span>Bebek kaçıncı çocuğunuz?</span>
+            <select id="in-sira">
+              <option value="1">1. çocuk (ilk çocuk)</option>
+              <option value="2" selected>2. çocuk</option>
+              <option value="3">3. veya sonraki çocuk</option>
+            </select>
+            <em class="hint">Annenin daha önce canlı doğurduğu tüm çocuklar sayılır; 2025’ten önce doğanlar da.</em>
+          </label>
+          <label>
+            <span>Doğum tarihi (veya beklenen)</span>
+            <input type="date" id="in-dogum" value={BUGUN} min={dy.kapsamBaslangic} required />
+          </label>
+          <label>
+            <span>Başvuru tarihi</span>
+            <input type="date" id="in-basvuru" value={BUGUN} min={dy.kapsamBaslangic} required />
+            <em class="hint">Başvuru nüfus kaydından sonra yapılabilir. Aylık yardım başvuru ayından başlar: geç kalınan
+              her ay bir ödeme kaybıdır.</em>
+          </label>
+        </form>
+
+        <div class="calc-results" aria-live="polite">
+          <div class="result-main">
+            <span class="result-label">Toplam doğum yardımı</span>
+            <span class="result-value" id="out-toplam">{tl(max2)}</span>
+          </div>
+          <div class="result-split">
+            <div class="split-item">
+              <span class="split-label">Ödeme şekli</span>
+              <span class="split-val" id="out-sekil">Aylık {tl(T.ikinciAylik)}</span>
+            </div>
+            <div class="split-item">
+              <span class="split-label">Ödeme sayısı</span>
+              <span class="split-val" id="out-sayi">{MAXAY} ay</span>
+            </div>
+            <div class="split-item">
+              <span class="split-label" id="lbl-bas">Hak başlangıcı (başvuru ayı)</span>
+              <span class="split-val" id="out-bas">{idxAd(bugunIdx)}</span>
+            </div>
+            <div class="split-item">
+              <span class="split-label" id="lbl-son">Son ödeme ayı (çocuğun 60. ayı)</span>
+              <span class="split-val" id="out-son">{idxAd(sonIdx0)}</span>
+            </div>
+            <div class="split-item">
+              <span class="split-label">İlk yatış (onay aynı ay çıkarsa)</span>
+              <span class="split-val" id="out-ilk">{idxAd(bugunIdx + 1)} son haftası</span>
+            </div>
+          </div>
+          <p class="result-note" id="out-note">
+            Başvuru için son tarih: çocuğun 5 yaşını doldurduğu gün. Doğum ayında başvurduğunuz için {MAXAY} ödemenin
+            tamamını alırsınız.
+          </p>
+        </div>
+      </div>
+
+      <div id="yil-wrap">
+        <h3>Yıllara göre hak edilen tutar</h3>
+        <div class="table-wrap">
+          <table class="rate-table">
+            <thead><tr><th>Yıl</th><th>Ay sayısı</th><th>Tutar</th></tr></thead>
+            <tbody id="out-yil">
+              {yil0.map(([yy, n]) => <tr><td>{yy}</td><td>{n} ay</td><td>{tl(n * T.ikinciAylik)}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="disclaimer">
+        Hesap, doğum ayını çocuğun 1. ayı sayar ve Bakanlık’ın yayımladığı kuralları uygular (yardım başvuru ayından
+        itibaren, 60. ay dahil). Kesin hak sahipliğini ve ödeme planını e-Devlet ile “İlk Öğretmenim Ailem” uygulaması
+        gösterir. Son kontrol: {dogrulamaTxt}.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Doğum yardımı tutarları {Y}</h2>
+      <p class="table-intro">
+        Tutarlar 633 sayılı Kanun Hükmünde Kararname’nin ek 4. maddesinde ve Doğum Yardımı Yönetmeliği’nde yazılıdır;
+        2025’ten bu yana değişmedi. Ödeme vergi ve kesintiye tabi değildir, haczedilemez.
+      </p>
+      <div class="table-wrap">
+        <table class="rate-table">
+          <thead><tr><th>Çocuk sırası</th><th>{Y} tutarı</th><th>Süre</th><th>En fazla toplam</th><th>Başvuru süresi</th></tr></thead>
+          <tbody>
+            <tr><td>1. çocuk</td><td><strong>{tl(T.ilk)}</strong><span class="row-note">tek seferlik</span></td><td>—</td><td>{tl(T.ilk)}</td><td>Doğumdan sonraki {ILKAY} ay</td></tr>
+            <tr><td>2. çocuk</td><td><strong>{tl(T.ikinciAylik)}</strong><span class="row-note">her ay</span></td><td>Başvuru ayından 60. aya kadar</td><td>{tl(max2)}</td><td>5 yaşını doldurana kadar</td></tr>
+            <tr><td>3. ve sonraki</td><td><strong>{tl(T.ucuncuAylik)}</strong><span class="row-note">her ay, her çocuk için</span></td><td>Başvuru ayından 60. aya kadar</td><td>{tl(max3)}</td><td>5 yaşını doldurana kadar</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        “En fazla toplam” doğum ayında başvuru içindir. İkiz ve üçüzlerde her bebek için ayrı başvuru yapılır, sıra
+        nüfus kayıt sırasına göre belirlenir: 2025’ten önce doğmuş bir çocuğu olan anne ikiz doğurursa bebeklerden biri
+        ikinci, diğeri üçüncü çocuk sayılır ve aylık toplam {tl(T.ikinciAylik + T.ucuncuAylik)} ödenir.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Doğum yardımı ne zaman yatar? {Y} ödeme tarihleri</h2>
+      <p class="table-intro">
+        Başvuru onaylanınca ilk ödeme, onay tarihini izleyen ayın son haftasında yapılır. Aylık ödemeler her ayın son
+        haftasında Halkbank aracılığıyla annenin hesabına yatar; Bakanlık her ayın ödeme gününü ayrıca duyurur.
+      </p>
+      <div class="table-wrap">
+        <table class="rate-table">
+          <thead><tr><th>Ödeme dönemi</th><th>Hesaplara yattığı gün</th></tr></thead>
+          <tbody>
+            {[...OD].reverse().map((o) => (
+              <tr><td>{ayAdi(o.ay)}</td><td>{trTarih(o.tarih, true)}{o.not && <span class="row-note">{o.not}</span>}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Kaynak: Aile ve Sosyal Hizmetler Bakanlığı aylık ödeme duyuruları. {Y}’da ödemeler ayın {minGun}. ile {maxGun}.
+        günleri arasında yattı. Hesaba geçen tutar 6 ay boyunca hiç çekilmezse Bakanlık’a iade edilir: ilk çocuk
+        ödemesi için çocuk 12. ayını doldurmadan yeniden başvurulabilir; aylık yardım kesilir ve yeni başvuruyla başvuru
+        ayından itibaren yeniden başlar.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Doğum yardımını kim öder, kimler alabilir?</h2>
+      <p>
+        Doğum yardımını SGK değil, <strong>Aile ve Sosyal Hizmetler Bakanlığı</strong> öder. Kaynak genel bütçeden
+        Sosyal Yardımlaşma ve Dayanışmayı Teşvik Fonu’na aktarılır ve yardım muhtaçlık şartı aranmadan bu fondan
+        ödenir. Hak sahibi kural olarak annedir; anne yabancı uyrukluysa, vefat etmişse, Türkiye’de oturmuyorsa ya da
+        velayet tek başına babadaysa yardım Türk vatandaşı babaya ödenir. Bakanlık’ın 30 Eylül {Y} açıklamasına göre
+        bugüne kadar {fmt(ST.cocuk)} çocuk yardımdan yararlandı, {fmt(ST.duzenli)} çocuk için her ay düzenli ödeme
+        yapılıyor ve {fmt(ST.anne)} anneye toplam {nf2(ST.milyarTL).replace(/,?0+$/, '')} milyar TL ödendi.
+      </p>
+      <p>Yönetmeliğe göre şu şartların birlikte sağlanması yeterlidir:</p>
+      <ul>
+        <li>Çocuğun <strong>1 Ocak 2025 veya sonrasında canlı doğmuş</strong> olması; çocuk başvuru tarihinde sağ ve Türk vatandaşı olmalı.</li>
+        <li><strong>Annenin, babanın ya da ikisinin de Türk vatandaşı</strong> olması (çifte vatandaşlar da yararlanır).</li>
+        <li>Hak sahibinin ve çocuğun <strong>Türkiye’de ikamet etmesi</strong>; nüfus kayıtlarında geçerli bir Türkiye adresi bulunmalı.</li>
+        <li>e-Devlet ya da Bakanlık’ın belirlediği kanallardan <strong>usulüne uygun başvuru</strong> yapılması.</li>
+      </ul>
+      <p>
+        Gelir sınırı, çalışma ya da SGK prim şartı yoktur; yönetmelikte aşı veya sağlık kontrolü şartı da yer almaz.
+        Resmî nikâh aranmaz. Mavi kart sahipleri Türk vatandaşı olmadıkları için başvuramaz, ancak Türk vatandaşı olan
+        diğer ebeveyn şartları sağlıyorsa o başvurabilir.
+      </p>
+
+      <h2>Çocuk sırası nasıl belirlenir?</h2>
+      <p>
+        Tutarı belirleyen, annenin daha önce sağ olarak doğurduğu çocuk sayısıdır. <strong>2025’ten önce doğan
+        çocuklar da sayılır</strong>; nüfusa kaydedildikten sonra vefat eden çocuklar da sıraya dahildir. Türk vatandaşı
+        olmayan annenin Türk vatandaşı babadan olmayan çocukları sayılmaz. Evlat edinilen çocuklarda sıra evlat edinme
+        tarihine göre belirlenir. Kurumunuzdan ya da toplu iş sözleşmesiyle ayrıca doğum yardımı aldıysanız bu tutar
+        Bakanlık’ın yardımından düşülmez.
+      </p>
+
+      <h2>Doğum yardımı başvurusu adım adım</h2>
+      <ol>
+        <li>Bebeğin nüfus kaydının tamamlanmasını bekleyin; başvuru ancak bundan sonra açılır.</li>
+        <li>
+          e-Devlet’te <a href="https://www.turkiye.gov.tr/ashb-dogum-yardimi-8663" rel="noopener">Aile ve Sosyal
+          Hizmetler Bakanlığı · Doğum Yardımı Başvuru</a> hizmetine girin ya da “İlk Öğretmenim Ailem” mobil
+          uygulamasını kullanın.
+        </li>
+        <li>Anne, baba, bebek ve varsa diğer çocukların T.C. kimlik numaralarını girip doğruluk beyanını onaylayın.</li>
+        <li>
+          Başvuru en geç {dy.sonucGun} gün içinde sonuçlanır. Ret gerekçesi e-Devlet’te görünür; itiraz da sistem
+          üzerinden yapılır ve {dy.itirazGun} gün içinde il müdürlüğünce sonuçlandırılır.
+        </li>
+        <li>Onaydan sonra ilk ödeme, onayı izleyen ayın son haftasında Halkbank’a yatar.</li>
+      </ol>
+      <p>
+        Süreler: ilk çocukta doğumdan sonraki {ILKAY} ay, ikinci ve sonraki çocuklarda çocuk 5 yaşını doldurana kadar.
+        Anne yabancı uyrukluysa başvuruyu yapan baba, istenen belgeleri 15 gün içinde il müdürlüğüne teslim eder.
+        e-Devlet kullanamayanlar Aile ve Sosyal Hizmetler il müdürlüklerinden ve sosyal hizmet merkezlerinden destek
+        alabilir. Çocuğun vefatı, yurt dışına taşınma, vatandaşlıktan çıkma ya da çocuğun kurum bakımına alınması
+        hâlinde yardım izleyen aydan kesilir; bu durumları 1 ay içinde bildirmek gerekir.
+      </p>
+
+      <h2>2025’te ne değişti, {Y}’da ne var?</h2>
+      <p>
+        2024 sonuna kadar doğan çocuklar için doğum yardımı tek seferlikti: ilk çocukta {tl(ES.ilk)}, ikincide
+        {tl(ES.ikinci)}, üçüncü ve sonrakilerde {tl(ES.ucuncu)}. Mart 2025’te 7546 sayılı Kanun ile 633 sayılı KHK’nin
+        ek 4. maddesi değişti ve 1 Ocak 2025’ten itibaren doğan çocuklar için bugünkü sistem kuruldu; uygulama esasları
+        10 Nisan 2025’te yayımlanan Doğum Yardımı Yönetmeliği ile belirlendi. 2025 öncesi doğan çocuklar için eski
+        tutarlara başvuru süresi {trTarih(ES.basvuruSonTarih)} tarihinde doldu.
+      </p>
+      <p>
+        {Y}’da tutarlar değişmedi. Doğumla ilgili asıl değişiklik izin sürelerinde oldu: {IZ.kanun} sayılı Kanun’la
+        (Resmî Gazete {trTarih(IZ.rgTarih)}) doğum sonrası analık izni 8 haftadan {IZ.dogumSonrasiHafta} haftaya çıktı,
+        toplam süre {IZ.analikHafta} hafta oldu; özel sektörde babalık izni 5 günden {IZ.babalikGun} güne uzadı. Bu
+        düzenleme doğum yardımı tutarlarını etkilemedi.
+      </p>
+    </section>
+
+    {tavanVar && (
+      <section class="table-block" id="tavan">
+        <h2>{HEDEF}’de doğum yardımı artacak mı?</h2>
+        <p class="table-intro">
+          Tutarlar kendiliğinden artmaz. Kanun, Cumhurbaşkanı’na tutarları <a href="/yeniden-degerleme-orani/">yeniden
+          değerleme oranını</a> geçmemek üzere artırma yetkisi veriyor; artış zorunlu değil.
+          {ydBuYil ? ` ${Y} için ilan edilen %${nf2(ydBuYil)} oran kullanılmadı, tutarlar 2025’teki gibi kaldı.` : ` ${Y}’da bu yetki kullanılmadı.`}
+          Aşağıdaki sütun bir tahmin değil, {HEDEF} için mümkün olan <strong>en yüksek</strong> tutardır ({oranAciklama}).
+        </p>
+        <div class="table-wrap">
+          <table class="rate-table">
+            <thead><tr><th>Çocuk sırası</th><th>{Y} tutarı</th><th>{HEDEF} yasal tavanı</th></tr></thead>
+            <tbody>
+              <tr><td>1. çocuk (tek seferlik)</td><td>{tl(T.ilk)}</td><td>{approx}{fmt2(TV.ilk)} TL</td></tr>
+              <tr><td>2. çocuk (aylık)</td><td>{tl(T.ikinciAylik)}</td><td>{approx}{fmt2(TV.ikinci)} TL</td></tr>
+              <tr><td>3. ve sonraki (aylık)</td><td>{tl(T.ucuncuAylik)}</td><td>{approx}{fmt2(TV.ucuncu)} TL</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">
+          Artış kararı çıkarsa Resmî Gazete’de Cumhurbaşkanı kararı olarak yayımlanır; bu sayfa o gün güncellenir.
+          Karar çıkmazsa {HEDEF}’de de {tl(T.ilk)} / {tl(T.ikinciAylik)} / {tl(T.ucuncuAylik)} ödenmeye devam eder.
+        </p>
+      </section>
+    )}
+
+    <section class="table-block">
+      <h2>Doğum yardımıyla karıştırılan ödemeler</h2>
+      <p class="table-intro">
+        “Doğum parası” denince üç ayrı ödeme kastedilebilir. Doğum yardımı çalışma şartı olmadan herkese ödenir; diğer
+        ikisi SGK’lı çalışanlara özgüdür ve doğum yardımıyla birlikte alınabilir.
+      </p>
+      <div class="table-wrap">
+        <table class="rate-table">
+          <thead><tr><th>Ödeme</th><th>Kim öder</th><th>{Y} tutarı</th><th>Şart</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Doğum yardımı</strong></td>
+              <td>Aile ve Sosyal Hizmetler Bakanlığı</td>
+              <td>{tl(T.ilk)} tek sefer · aylık {tl(T.ikinciAylik)} / {tl(T.ucuncuAylik)}</td>
+              <td>Türk vatandaşlığı ve Türkiye’de ikamet; prim şartı yok</td>
+            </tr>
+            <tr>
+              <td><strong>Emzirme ödeneği</strong><span class="row-note">“süt parası”</span></td>
+              <td>SGK</td>
+              <td>{tl(EM.tutar)} (her çocuk için bir kez; 2025’te {tl(EM.onceki)})</td>
+              <td>Doğumdan önceki 1 yılda en az {EM.primGun} gün prim (4/a, 4/b); dilekçesiz, otomatik ödenir</td>
+            </tr>
+            <tr>
+              <td><strong>Analık ödeneği</strong><span class="row-note">“doğum izni / rapor parası”</span></td>
+              <td>SGK</td>
+              <td>Günlük kazanca göre hesaplanır</td>
+              <td>Doğumdan önceki 1 yılda en az 90 gün prim; doğumdan önce 8, sonra {IZ.dogumSonrasiHafta} hafta çalışılmayan günler için</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Devlet memurlarına 657 sayılı Kanun’un 207. maddesiyle ayrıca ödenen “doğum yardımı ödeneği” 2015’te 6637
+        sayılı Kanun’la kaldırıldı; memurlar da bu sayfadaki doğum yardımına e-Devlet’ten başvurur. Kamu görevlilerine
+        (4/c) SGK emzirme ödeneği ödenmez; memur annelerin analık izni süresince maaşı kurumunca ödenmeye devam eder.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <p class="cta-line">
+        Aile bütçesi için → <a href="/asgari-ucret-hesaplama/">asgari ücret hesaplama</a> ·
+        <a href="/memur-zammi-hesaplama/">memur zammı hesaplama</a> · Bakanlık’ın diğer aylık ödemeleri →
+        {hasEngelli ? <a href="/engelli-maasi/">engelli maaşı</a> : 'engelli maaşı'} ve <a href="/evde-bakim-maasi/">evde bakım maaşı</a> ·
+        {HEDEF} artış tavanının dayanağı → <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı</a> · tüm
+        hesaplayıcılar → <a href="/hesaplama-araclari/">hesaplama araçları</a>.
+      </p>
+      <p class="source-note">
+        Kaynak: 633 sayılı KHK ek madde 4 ve geçici madde 12
+        (<a href="https://www.mevzuat.gov.tr/MevzuatMetin/4.5.633.pdf" rel="noopener">mevzuat.gov.tr</a>; 7546 sayılı
+        Kanun md. 14–15, <a href="https://www.resmigazete.gov.tr/eskiler/2025/03/20250330-1.htm" rel="noopener">RG
+        30.03.2025, sayı 32857</a>); Doğum Yardımı Yönetmeliği, Cumhurbaşkanı Kararı 9721
+        (<a href="https://www.mevzuat.gov.tr/MevzuatMetin/21.5.9721.pdf" rel="noopener">RG 10.04.2025, sayı 32866</a>);
+        Aile ve Sosyal Hizmetler Bakanlığı
+        <a href="https://www.aile.gov.tr/sss/sosyal-yardimlar-genel-mudurlugu/yeni-dogum-yardimi/" rel="noopener">“Yeni
+        Doğum Yardımı” sıkça sorulan sorular</a> ve Mart–Eylül {Y} aylık ödeme duyuruları
+        (<a href="https://www.aile.gov.tr/haberler/eylul-ayi-dogum-yardimi-odemeleri-hesaplara-yatirildi/" rel="noopener">30
+        Eylül {Y}</a>); SGK
+        <a href="https://www.sgk.gov.tr/Content/Post/5a130212-a95b-4346-a85f-522ac508347e/Emzirme-Odenegi-2026-01-09-02-11-47" rel="noopener">Emzirme
+        Ödeneği</a> sayfası; 657, 4857 ve 5510 sayılı kanunların {IZ.kanun} sayılı Kanun değişikliklerini içeren güncel
+        metinleri (mevzuat.gov.tr). Son kontrol: {dogrulamaTxt}.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script
+    is:inline
+    define:vars={{
+      D: { ilk: T.ilk, ikinci: T.ikinciAylik, ucuncu: T.ucuncuAylik, max: MAXAY, ilkAy: ILKAY, kapsam: dy.kapsamBaslangic, ssr: BUGUN },
+    }}
+  >
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const AY = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const tl = (n) => nf0.format(n) + ' TL';
+      const idxAd = (i) => AY[i % 12] + ' ' + Math.floor(i / 12);
+      const tarihAd = (d) => d.getDate() + ' ' + AY[d.getMonth()] + ' ' + d.getFullYear();
+      const pad = (n) => String(n).padStart(2, '0');
+      const iso = (d) => d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+      const parse = (v) => {
+        const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || '');
+        return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null;
+      };
+      const inSira = $('in-sira');
+      const inDogum = $('in-dogum');
+      const inBas = $('in-basvuru');
+      const set = (id, v) => { $(id).textContent = v; };
+
+      // Sayfa derlendiği günün tarihi duruyorsa (form geri yüklenmediyse) bugüne çek
+      if (inDogum.value === D.ssr && inBas.value === D.ssr) {
+        const t = iso(new Date());
+        inDogum.value = t;
+        inBas.value = t;
+      }
+
+      function bos(msg) {
+        set('out-toplam', '0 TL');
+        set('out-sekil', '—');
+        set('out-sayi', '—');
+        set('out-bas', '—');
+        set('out-son', '—');
+        set('out-ilk', '—');
+        set('out-note', msg);
+        $('yil-wrap').hidden = true;
+      }
+
+      function update() {
+        const sira = inSira.value;
+        const ilkMi = sira === '1';
+        $('lbl-bas').textContent = ilkMi ? 'Başvuru ayı' : 'Hak başlangıcı (başvuru ayı)';
+        $('lbl-son').textContent = ilkMi ? 'Son başvuru tarihi' : 'Son ödeme ayı (çocuğun 60. ayı)';
+        const b = parse(inDogum.value);
+        if (!b) return bos('Doğum tarihini girin.');
+        if (inDogum.value < D.kapsam) {
+          return bos('1 Ocak 2025’ten önce doğan çocuklar için bu doğum yardımı ödenmez; eski sistemde başvuru süresi 1 Haziran 2025’te doldu.');
+        }
+        let a = parse(inBas.value);
+        let erken = false;
+        if (!a || a < b) { a = b; erken = !!parse(inBas.value); }
+        const bIdx = b.getFullYear() * 12 + b.getMonth();
+        const aIdx = a.getFullYear() * 12 + a.getMonth();
+        const not = [];
+        if (erken) not.push('Başvuru doğumdan önce yapılamaz; hesap doğum tarihine göre yapıldı.');
+
+        if (ilkMi) {
+          const son = new Date(b.getFullYear(), b.getMonth() + D.ilkAy, b.getDate());
+          $('yil-wrap').hidden = true;
+          if (a > son) {
+            set('out-toplam', '0 TL');
+            set('out-sekil', 'Tek seferlik ' + tl(D.ilk));
+            set('out-sayi', '—');
+            set('out-bas', idxAd(aIdx));
+            set('out-son', tarihAd(son));
+            set('out-ilk', '—');
+            not.push('İlk çocuk için başvuru süresi doğumdan sonraki ' + D.ilkAy + ' aydır; bu tarihte süre dolmuş olur.');
+          } else {
+            set('out-toplam', tl(D.ilk));
+            set('out-sekil', 'Tek seferlik');
+            set('out-sayi', '1 ödeme');
+            set('out-bas', idxAd(aIdx));
+            set('out-son', tarihAd(son));
+            set('out-ilk', idxAd(aIdx + 1) + ' son haftası');
+            not.push('İlk çocuk için ' + tl(D.ilk) + ' bir kez ödenir. Para 6 ay içinde çekilmezse iade edilir; çocuk 12. ayını doldurmadan yeniden başvurulabilir.');
+          }
+          set('out-note', not.join(' '));
+          return;
+        }
+
+        const aylik = sira === '2' ? D.ikinci : D.ucuncu;
+        const sonIdx = bIdx + D.max - 1;
+        const besYas = new Date(b.getFullYear() + 5, b.getMonth(), b.getDate());
+        const n = a < besYas ? Math.max(0, Math.min(D.max, sonIdx - aIdx + 1)) : 0;
+        set('out-toplam', tl(n * aylik));
+        set('out-sekil', 'Aylık ' + tl(aylik));
+        set('out-sayi', n + ' ay');
+        set('out-bas', n ? idxAd(aIdx) : '—');
+        set('out-son', idxAd(sonIdx));
+        set('out-ilk', n ? idxAd(aIdx + 1) + ' son haftası' : '—');
+        if (!n) {
+          not.push('Çocuk 5 yaşını doldurduğu için (son başvuru ' + tarihAd(besYas) + ' öncesi) bu tarihte ödeme alınamaz.');
+        } else if (n === D.max) {
+          not.push('Doğum ayında başvurduğunuz için ' + D.max + ' ödemenin tamamını alırsınız. Son başvuru: ' + tarihAd(besYas) + ' (5. yaş günü) öncesi.');
+        } else {
+          const kayip = D.max - n;
+          not.push('Başvuru doğumdan ' + kayip + ' ay sonra yapıldığı için ' + kayip + ' aylık ödeme (' + tl(kayip * aylik) + ') kaybedilir; yardım geçmişe dönük ödenmez.');
+        }
+        set('out-note', not.join(' '));
+
+        const satir = [];
+        for (let i = aIdx; n && i <= sonIdx; i++) {
+          const y = Math.floor(i / 12);
+          const r = satir.find((s) => s[0] === y);
+          if (r) r[1]++;
+          else satir.push([y, 1]);
+        }
+        $('out-yil').innerHTML = satir.map((s) => '<tr><td>' + s[0] + '</td><td>' + s[1] + ' ay</td><td>' + tl(s[1] * aylik) + '</td></tr>').join('');
+        $('yil-wrap').hidden = !n;
+      }
+
+      [inSira, inDogum, inBas].forEach((el) => el.addEventListener('input', update));
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 660px; margin: 0 auto; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin: 0 0 1rem; }
+    .kpi { display: flex; flex-direction: column; gap: 0.15rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-xs); }
+    .kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .kpi-val { font-family: var(--font-serif); font-size: clamp(1.5rem, 1.25rem + 1.1vw, 2rem); font-weight: 700; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .kpi-val small { font-size: 0.55em; font-weight: 600; color: var(--text-soft); margin-left: 0.1rem; }
+    .kpi-sub { font-size: 0.78rem; color: var(--text-soft); line-height: 1.35; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; line-height: 1.4; }
+    .calc-inputs input, .calc-inputs select {
+      font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%; min-height: 2.75rem;
+    }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 1rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; font-variant-numeric: tabular-nums; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; font-variant-numeric: tabular-nums; text-align: right; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; line-height: 1.45; }
+
+    #yil-wrap h3 { font-size: 1rem; margin: 1.4rem 0 0.4rem; }
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1rem 0 0; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.55; }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0.4rem 0 0; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+    .rate-table :global(th), .rate-table :global(td) { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .rate-table :global(th) { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .row-note { display: block; font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem; line-height: 1.35; }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; line-height: 1.5; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .prose-block ul, .prose-block ol { padding-left: 1.2rem; }
+    .prose-block li { margin-bottom: 0.4rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+    .prose-block p.source-note { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 680px) {
+      .kpi-row { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: 1fr; padding: 1.1rem; }
+      .rate-table { font-size: 0.85rem; }
+      .rate-table :global(th), .rate-table :global(td) { padding: 0.5rem 0.4rem; }
+    }
+    @media (max-width: 400px) {
+      .rate-table { font-size: 0.8rem; }
+      .rate-table :global(th) { font-size: 0.66rem; letter-spacing: 0.02em; }
+      .rate-table :global(th), .rate-table :global(td) { padding: 0.45rem 0.28rem; }
+    }
+  </style>
+</BaseLayout>
