@@ -1,0 +1,64 @@
+{
+  "slug": "altin-dugun-takisi-10-yilda-neye-donustu-hesap-burada",
+  "title": "Altın düğün takısı 10 yılda neye dönüştü, hesap burada",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "10 yıl önce düğünde takılan 10 bin liralık altının bugünkü karşılığı yaklaşık 550 bin lira. Takıyı harcamanın bedeli ve bozdurmadan önce bakılacak noktalar. Geçmiş getiri gelecek için garanti değildir.\nKaynak/hesap: 10 yılda altın TL bazında yaklaşık %5450 artış => ~55,5 kat; 10.000 x 55 ≈ 550.000 TL · ParaFOMO güncel altın/dolar veri sayfası, son 10 yıllık TL getiri karşılaştırması",
+  "tags": [
+    "altın",
+    "düğün takısı",
+    "gram altın",
+    "birikim",
+    "enflasyon",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Düğün altını 10 yılda yaklaşık 55 kat.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bracelet jewelry"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Hesap sade: 10 yıl önce 10 bin liralık altın, bugün yaklaşık 550 bin lira.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama çoğu aile altını harcadı; o 10 bin lira bugün çok az şey alıyor.",
+      "visual": {
+        "type": "object",
+        "query": "wallet"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Düğün altınını acil değilse bozdurma; gram olarak sakla, alış-satış farkını da hesaba kat.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki hesap, çekmecedeki başka bir şeyin değerini gösterecek. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bracelet jewelry"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "yaklaşık 55 kat",
+    "calc": "10 yılda altın TL bazında yaklaşık %5450 artış => ~55,5 kat; 10.000 x 55 ≈ 550.000 TL",
+    "source": "ParaFOMO güncel altın/dolar veri sayfası, son 10 yıllık TL getiri karşılaştırması"
+  }
+}
