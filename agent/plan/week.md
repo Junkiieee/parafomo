@@ -112,7 +112,10 @@ FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan me
   4. DVK Tebliği Seri 72 → `damga-vergisi-hesaplama` (BAZ_YIL=2027, tutarlar). VİVK Tebliği Seri 58 → `data/veraset-2026.json`
      2027 değerleri. Noterlik Ücret Tarifesi 2027 (RG ilan) → `noter-ucretleri`. TKGM 2027 fiyat listesi →
      `data/tapu-harci-2026.json` `gosterge2027`. TÜVTÜRK 2027 tarifesi (1 Ocak) → `arac-muayene-ucreti`.
-  5. Kıdem tavanı (HMB katsayı genelgesi, Ocak ilk hafta) → `data/kidem-tavan.json`; memur katsayıları → `data/emekli-memur.json`;
+  5. Kıdem tavanı (HMB katsayı genelgesi, Ocak ilk hafta) → `data/kidem-tavan.json`; memur katsayıları → `data/emekli-memur.json`
+     (yeni katsayıyla /evde-bakim-maasi ve /engelli-maasi kendiliğinden döner; ASHB'nin Ocak duyurusundaki resmî 65 yaş/engelli
+     tutarlarını `data/sosyal-aylik-2026.json` resmi bloğuna yaz — health.py uyarır; 2027 bütçe K cetveli kanunlaşınca butce.2027.durum="kanun");
+     doğum yardımı tutarı CB kararıyla artırılırsa `data/dogum-yardimi-2026.json`;
      en düşük emekli aylığı + bayram ikramiyesi; trafik cezaları 2027 (YD uygulandı mı?) → `trafik-cezalari-hesaplama`.
   6. 5 Ocak sonrası: `src/data/zam2027.ts` PERIOD'u 2027-01..06 (Temmuz 2027 zammı) turuna çevir; emekli/memur sayfa metinleri.
   · Kabul: listedeki her sayfa canlıda 2027 resmî rakamını gösterir; health.py temiz.
@@ -154,7 +157,8 @@ FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan me
   Sezonu" bölümü · blog "Bu konuda hesapla" kutusu (`src/data/tools.ts` tek araç listesi) · YouTube açıklama linkleri
   '/' ile + yeni araç eşlemesi · alt-ajanlarla yeni sayfalar: noter-ucretleri, arac-muayene-ucreti,
   damga-vergisi-hesaplama, tapu-harci-hesaplama, tasit-kredisi-hesaplama, veraset-ve-intikal-vergisi-hesaplama
-  (keyword-map K10-K12, K16'da işaretli).
+  (keyword-map K10-K12, K16'da işaretli) + 10-19: /engelli-maasi, /evde-bakim-maasi, /dogum-yardimi (K19-K21; sosyal aylıklar
+  memur katsayısı × gösterge — asgari ücrete bağlı DEĞİL), /vergi-borcu-sorgulama yolda.
 - **Neden bu sıra:** baş sorgularda otorite kilidi var (bkz. learnings); kazanılabilir yer gelecek yıl (2027)
   sorguları ve sitede karşılığı olmayan hacimli araç niyetleri. Sezon zirvesi Kasım-Ocak → T1-T3 Ekim'de canlı olmalı.
 - **YAPMA:** halka arz takvimi / kira artış / kredi hesaplama baş sorguları için başlık-H1-FAQ dürtmesi (p57-100,
