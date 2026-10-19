@@ -10,7 +10,7 @@ faq:
   - q: "Para piyasası fonu nedir?"
     a: "Para piyasası fonu, birikimi vadesi çok kısa ve likiditesi yüksek araçlara (ters repo, kısa vadeli hazine bonosu, mevduat, Takasbank para piyasası işlemleri gibi) yatıran ve SPK denetimindeki yatırım fonudur. Riski fon türleri arasında en düşük olanlardandır; getirisi büyük ölçüde kısa vadeli TL faizlerini izler."
   - q: "Para piyasası fonunda stopaj ne kadar?"
-    a: "9 Temmuz 2025 ve sonrasında alınan para piyasası fonu paylarında, satışta oluşan kazançtan %17,5 stopaj kesilir. Stopaj yalnızca fonu sattığında ve sadece kazanç kısmı üzerinden hesaplanır; kesinti nihai vergidir, ayrıca beyan gerekmez."
+    a: "9 Temmuz 2025 ve sonrasında alınan para piyasası fonu paylarında, satışta oluşan kazançtan %17,5 stopaj kesilir. Stopaj yalnızca fonu sattığında ve sadece kazanç kısmı üzerinden hesaplanır; tam mükellef bireyler için kesinti genellikle nihai vergidir, ayrıca beyan gerekmez."
   - q: "Para piyasası fonu mu mevduat mı daha mantıklı?"
     a: "Tek doğru cevap yok. Mevduat vade sonu getirisini baştan bilmeni ve TMSF güvencesini sağlar; para piyasası fonu ise vade bağlamadan her gün getiri işletir ve istediğin iş günü nakde dönebilir, ama getirisi garanti değildir ve TMSF kapsamında değildir. Paranın ne zaman lazım olacağı seçimi belirler."
   - q: "Para piyasası fonu zarar ettirir mi?"
@@ -52,7 +52,7 @@ Fona para yatırdığında **katılma payı** alırsın. Fonun getirisi her gün
 PPF'nin getiri kaynağı kısa vadeli TL faizleridir. Bu yüzden getirisi büyük ölçüde **TCMB politika faizini ve piyasadaki bir gecelik faizleri** takip eder.
 
 - **Politika faizi:** TCMB politika faizi 2026'nın Mart–Eylül toplantılarında **%37**'de sabit kaldı (Ocak'ta %38'den %37'ye indirilmişti). Bir sonraki karar 22 Ekim 2026'da; tarihleri [TCMB faiz takvimi](/tcmb-faiz-takvimi) sayfasından izleyebilirsin.
-- **Mevduat faizleri:** TCMB verisine göre 9 Ekim 2026 haftasında 1 aya kadar vadeli TL mevduatın ağırlıklı ortalama faizi yıllık basit **%36,25**, 3 aya kadar vadede **%37,58** oldu.
+- **Mevduat faizleri:** TCMB verisine göre 9 Ekim 2026 haftasında 1 aya kadar vadeli TL mevduatın ağırlıklı ortalama faizi yıllık bileşik %42,88 oldu; bu, 32 günlük vade için yıllık basit **%36,25**'e denk geliyor. 3 aya kadar vadede basit eşdeğer **%37,58** (bileşik %43,20).
 - **Fonun giderleri:** Yönetim ücreti ve diğer masraflar her gün fon fiyatından düşülür. Aynı piyasa koşulunda iki PPF arasındaki getiri farkının önemli kısmı bu giderden gelir.
 
 Faiz indirimi gelirse ne olur? Fonun vadesi çok kısa olduğu için yeni düşük faizler portföye **birkaç gün–birkaç hafta içinde** yansır; getirin kademeli olarak düşer. Mevduatta ise vade sonuna kadar sabitlediğin faizi alırsın. Faiz kararının birikimine etkisini [TCMB faiz kararı paranı nasıl etkiler](/blog/tcmb-faiz-karari-nasil-etkiler) yazısında anlattık.
@@ -86,11 +86,11 @@ Kaynak: 10041 sayılı Cumhurbaşkanı Kararı. Oranı satış tarihi değil, **
 | Getiri | Değişken, garanti değil | Vade başında sabit | Değişken, PPF'ye göre daha oynak |
 | Erken çıkış | Kayıpsız (birikmiş getiriyle) | Çoğu bankada faiz yanar | Kayıpsız ama fiyat dalgalanabilir |
 | Stopaj (2026) | %17,5 (satışta) | %17,5 / %15 / %10 (vadeye göre) | %17,5 (satışta) |
-| Güvence | TMSF yok; varlıklar Takasbank'ta saklanır | TMSF güvencesi (limit dahilinde) | TMSF yok |
+| Güvence | TMSF yok; varlıklar saklayıcıda, kurucudan ayrı tutulur | TMSF güvencesi (limit dahilinde) | TMSF yok |
 | Nakde dönüş | Genelde T+1 | Vade sonunda anında | Genelde T+1 veya T+2 |
 | Risk düzeyi (TEFAS 1-7) | Genelde 1-2 | — | Genelde 2-3 |
 
-Fon varlıkları, fonu yöneten portföy şirketinin kendi malvarlığından ayrı tutulur ve Takasbank/MKK nezdinde saklanır. Bu, şirket batsa bile fon varlıklarının yatırımcıya ait kalması demektir; ama fonun portföyündeki araçların değer kaybı riskine karşı bir güvence değildir. Mevduat güvencesinin nasıl işlediğini [TMSF nedir](/blog/tmsf-nedir-mevduat-guvencesi) yazısında bulabilirsin.
+Fon varlıkları, fonu yöneten portföy şirketinin kendi malvarlığından ayrı tutulur ve portföy saklayıcısı nezdinde (Takasbank/MKK kayıtlarıyla) saklanır. Bu, şirket batsa bile fon varlıklarının yatırımcıya ait kalması demektir; ama fonun portföyündeki araçların değer kaybı riskine karşı bir güvence değildir. Mevduat güvencesinin nasıl işlediğini [TMSF nedir](/blog/tmsf-nedir-mevduat-guvencesi) yazısında bulabilirsin.
 
 ## Örnek hesap: 100.000 TL, para lazım olursa ne olur?
 
@@ -113,7 +113,7 @@ PPF'nin asıl avantajı burada ortaya çıkar: **ne zaman lazım olacağını bi
 
 ### Enflasyona karşı durum
 
-TÜİK verisine göre Eylül 2026'da aylık enflasyon **%1,84**, yıllık **%29,73** oldu. Yukarıdaki 32 günlük net getiri (%2,62) aylık enflasyonun biraz üzerinde kalıyor; yani reel getiri pozitif ama ince. Faiz indirimleri hızlanırsa bu fark daralabilir. Hesabın mantığını [reel faiz nedir](/blog/reel-faiz-nedir) yazısında anlattık.
+TÜİK verisine göre Eylül 2026'da aylık enflasyon **%1,84**, yıllık **%29,73** oldu (sonraki açıklama tarihleri [enflasyon takvimi](/enflasyon-takvimi) sayfasında). Yukarıdaki 32 günlük net getiri (%2,62) aylık enflasyonun biraz üzerinde kalıyor; yani reel getiri pozitif ama ince. Faiz indirimleri hızlanırsa bu fark daralabilir. Hesabın mantığını [reel faiz nedir](/blog/reel-faiz-nedir) yazısında anlattık.
 
 ## Para piyasası fonu kimler için uygun?
 
