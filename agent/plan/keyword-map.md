@@ -61,7 +61,7 @@ Otorite/dış link işleri şimdilik YAPILMAZ (Kaan: "kalsın"). Fırsat listesi
 
 - [x] K19 engelli maaşı (73,6, zirve Ocak 245) + 65 yaş aylığı (12,8) → **/engelli-maasi/** (canlı 2026-10-19, RC alt-ajan). Formül: bütçe K cetveli göstergesi (5.253 / 3.502; 65 yaş 4.387) × memur katsayısı + %5 ek ödeme (5454 md.1/e) — ASHB Temmuz 2026 broşürüyle kuruşu kuruşuna; Ocak 2027 tahmini otomatik. Ocak'ta data/sosyal-aylik-2026.json resmi bloğu güncellenmeli (health.py uyarır).
 - [x] K20 evde bakım maaşı (33,9, zirve Ocak 157) → **/evde-bakim-maasi/** (canlı 2026-10-19, RC alt-ajan). DİKKAT: tutar net asgari ücrete DEĞİL, 10.000 gösterge × memur aylık katsayısına bağlı (2828 ek md.7); net asgari ücret yalnız gelir sınırı (2/3). Ocak tahmini zam2027 memurProj'tan otomatik.
-- [x] K21a doğum yardımı (54) → **/dogum-yardimi/** (canlı 2026-10-19; 633 KHK ek md.4 / 7546 s.K.: 5.000 ₺ tek sefer, 1.500 / 5.000 ₺ aylık × 60 ay; otomatik artış YOK — CB YD'yi aşmamak üzere artırabilir). · vergi borcu sorgulama (32,6) + sgk prim borcu (10,4) → **/vergi-borcu-sorgulama/** (gecikme zammı hesabı) — ⏳ RC YAPIYOR.
+- [x] K21a doğum yardımı (54) → **/dogum-yardimi/** (canlı 2026-10-19; 633 KHK ek md.4 / 7546 s.K.: 5.000 ₺ tek sefer, 1.500 / 5.000 ₺ aylık × 60 ay; otomatik artış YOK — CB YD'yi aşmamak üzere artırabilir). · vergi borcu sorgulama (32,6) + sgk prim borcu (10,4) → **/vergi-borcu-sorgulama/** canlı 2026-10-19 (gecikme zammı %3,7 — CB 10556, RG 13.11.2025; hesaplayıcı GİB resmî aracıyla 31/31 kuruşu kuruşuna; tecil 72 ay).
 - [ ] K22 adaylar (ölçüldü 10-18): çocuk parası (27,5, zirve Ocak), bağkur primi (15, zirve Aralık), ötv hesaplama (9,2), gss primi (5,2, zirve Kasım).
 
 ## Yeniden kur / otorite (sayfa var, sıralanmıyor) — week.md T6 sınıflandırmasına göre

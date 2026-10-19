@@ -204,6 +204,10 @@ def vergi_dilimi_card():
 
 
 CARDS = {
+    "vergi-borcu-sorgulama": lambda: {
+        # CB Kararı 10556 (RG 13.11.2025) %3,7; oran değişirse güncelle
+        "kicker": "VERGİ BORCU SORGULAMA", "stat": "%3,7",
+        "sub": "aylık gecikme zammı · e-Devlet ve GİB adımları"},
     "dogum-yardimi": lambda: {
         # 633 s. KHK ek md.4 (7546 s.K.); tutar CB kararıyla değişirse güncelle
         "kicker": "DOĞUM YARDIMI 2026", "stat": "₺5.000",

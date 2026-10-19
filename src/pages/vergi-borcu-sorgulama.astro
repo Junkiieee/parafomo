@@ -1,0 +1,590 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+
+// Kaynaklar (doğrulama 2026-10-18/19):
+// - Oranlar: GİB "Gecikme Zammı Oranları" tablosu (cdn.gib.gov.tr, 13.11.2025) + Tahsilat Genel Tebliği Seri:A Sıra No:1
+//   tablosu (mevzuat.gov.tr); 10556 sayılı CK (RG 13.11.2025, sayı 33076) → 13.11.2025'ten itibaren aylık %3,7.
+// - Hesap kuralları: 6183 md. 51 + Seri:A Sıra No:1 (III. Gecikme Zammı): tam ay aylık, ay kesri günlük; vade günü hariç,
+//   ödeme günü dahil; günlük oran = aylık/30, 6. ondalığa yukarı; 30 günlük kesir = 1 ay; ay içinde oran değişirse o aya
+//   eski oran, günlük kısımda yürürlük günü dahil yeni oran; asgari 1 TL.
+// - Hesaplayıcı, GİB Dijital Vergi Dairesi "Gecikme Zammı ve Faizi Hesaplama" aracıyla 31 vakada (ay sonu vadeler, artık
+//   yıl, oran değişikliği sınırları, 2006-2026) kuruşu kuruşuna aynı sonucu verdi (2026-10-19).
+// - Tecil: 6183 md. 48 (7582 s. K., RG 4.6.2026: 72 ay, teminatsız 1 milyon TL; 11414 s. CK, RG 13.6.2026: 10 milyon TL);
+//   tecil faizi yıllık %39 (Seri:C Sıra No:9, RG 13.11.2025); Seri:B Sıra No:20 (RG 16.6.2026): %29, son başvuru 31.8.2026.
+const RATES: [string, number, string][] = [
+  // [yürürlük tarihi, aylık oran × 100, dayanak]
+  ['2006-04-21', 250, '2006/10302 sayılı BKK'],
+  ['2009-11-19', 195, '2009/15565 sayılı BKK'],
+  ['2010-10-19', 140, '2010/965 sayılı BKK'],
+  ['2018-09-05', 200, '62 sayılı CK'],
+  ['2019-07-01', 250, '1266 sayılı CK'],
+  ['2019-10-02', 200, '1592 sayılı CK'],
+  ['2019-12-30', 160, '1947 sayılı CK'],
+  ['2022-07-21', 250, '5801 sayılı CK'],
+  ['2023-11-14', 350, '7782 sayılı CK'],
+  ['2024-05-21', 450, '8484 sayılı CK'],
+  ['2025-11-13', 370, '10556 sayılı CK'],
+];
+const RATE_PAIRS = RATES.map(([d, h]) => [d, h]);
+const MIN_DATE = RATES[0][0];
+
+const DAY = 864e5;
+const toDay = (s: string) => {
+  const [y, m, d] = s.split('-').map(Number);
+  return Date.UTC(y, m - 1, d) / DAY;
+};
+const R = RATES.map(([d, h]) => ({ day: toDay(d), h }));
+const rateOn = (day: number) => {
+  let h = R[0].h;
+  for (const x of R) if (x.day <= day) h = x.h;
+  return h;
+};
+const dailyMicro = (h: number) => Math.floor((h * 10 + 2) / 3); // aylık/30, 6. haneye yukarı (milyonda)
+const dim = (y: number, m0: number) => new Date(Date.UTC(y, m0 + 1, 0)).getUTCDate();
+function calc(amount: number, vade: string, odeme: string) {
+  const [vy, vm, vd] = vade.split('-').map(Number);
+  const V = toDay(vade);
+  const P = toDay(odeme);
+  const eom = vd === dim(vy, vm - 1);
+  const monthEnd = (k: number) => {
+    const t = vm - 1 + k;
+    const y = vy + Math.floor(t / 12);
+    const m0 = ((t % 12) + 12) % 12;
+    const n = dim(y, m0);
+    return Date.UTC(y, m0, eom ? n : Math.min(vd, n)) / DAY;
+  };
+  let months = 0, days = 0, frac = 0;
+  if (P > V) {
+    let prev = V;
+    for (let k = 1; monthEnd(k) <= P; k++) {
+      frac += rateOn(prev) / 10000;
+      months++;
+      prev = monthEnd(k);
+    }
+    let d = prev + 1;
+    while (d <= P) {
+      const h = rateOn(d);
+      let n = 0;
+      while (d <= P && rateOn(d) === h) { n++; d++; }
+      if (n === 30) { frac += h / 10000; months++; } else { frac += (n * dailyMicro(h)) / 1e6; days += n; }
+    }
+  }
+  return { months, days, frac, zam: Math.round(amount * frac * 100 + 1e-7) / 100 };
+}
+
+const CUR = RATES[RATES.length - 1][1] / 100; // 3,7
+const CUR_DAILY = dailyMicro(RATES[RATES.length - 1][1]) / 1e6; // 0,001234
+const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const tl = (n: number) => `₺${nf(n)}`;
+const pct = (h: number) => `%${(h / 100).toLocaleString('tr-TR', { maximumFractionDigits: 2 })}`;
+const trDate = (s: string) => s.split('-').reverse().join('.');
+const prevDay = (s: string) => new Date((toDay(s) - 1) * DAY).toISOString().slice(0, 10);
+const sure = (m: number, g: number) => [m ? `${m} ay` : '', g || !m ? `${g} gün` : ''].filter(Boolean).join(' ');
+
+// Örnek (GİB aracıyla doğrulandı): 10.000 TL, vade 31.07.2026, ödeme 05.10.2026 → 801,70 TL
+const EX = calc(10000, '2026-07-31', '2026-10-05');
+// Hesaplayıcının ilk değerleri: ödeme tarihi = derleme günü (Türkiye saati); tarayıcıda bugüne güncellenir.
+const D = { amount: 10000, vade: '2026-07-31', odeme: new Date(Date.now() + 3 * 3600e3).toISOString().slice(0, 10) };
+const d0 = calc(D.amount, D.vade, D.odeme);
+
+// Oran değişmezse 10.000 TL borcun gecikme zammı (31.07.2026 vadeli)
+const SURE_ROWS = [
+  ['10 gün', '2026-08-10'],
+  ['1 ay', '2026-08-31'],
+  ['3 ay', '2026-10-31'],
+  ['6 ay', '2027-01-31'],
+  ['1 yıl', '2027-07-31'],
+].map(([label, odeme]) => ({ label, zam: calc(10000, '2026-07-31', odeme).zam }));
+
+const RATE_ROWS = RATES.map(([from, h, dayanak], i) => ({
+  donem: i === RATES.length - 1 ? `${trDate(from)} ve sonrası` : `${trDate(from)} – ${trDate(prevDay(RATES[i + 1][0]))}`,
+  oran: pct(h),
+  dayanak,
+})).reverse();
+
+const faq = [
+  {
+    q: 'Vergi borcu nasıl sorgulanır?',
+    a: 'e-Devlet’e girip Gelir İdaresi Başkanlığı’nın “Vergi Borcu Sorgulama ve Ödeme” hizmetini açın ya da Dijital Vergi Dairesi’nde (dijital.gib.gov.tr) “Ödeme ve Borç İşlemleri > Borç Ödeme ve Detay” ekranına bakın. Araca ait MTV ve trafik cezası borcu için Dijital Vergi Dairesi’nin şifre gerektirmeyen “Hızlı Ödemeler > MTV ve Trafik Para Cezası Ödeme” ekranı da kullanılabilir. Emlak vergisi belediye alacağıdır, belediyeden sorgulanır.',
+  },
+  {
+    q: '2026’da gecikme zammı oranı ne kadar?',
+    a: `Aylık %${nf(CUR, 1)}. Oran, 13 Kasım 2025 tarihli Resmî Gazete’de yayımlanan 10556 sayılı Cumhurbaşkanı Kararı’yla %4,5’ten %3,7’ye indirildi ve o günden beri uygulanıyor. Ay kesirleri günlük hesaplanır; günlük oran ${nf(CUR_DAILY, 6)}’tür. Örneğin 31 Temmuz 2026 vadeli 10.000 TL’lik borç 5 Ekim 2026’da ödenirse gecikme zammı ${nf(EX.zam)} TL olur.`,
+  },
+  {
+    q: 'Gecikme zammı ile gecikme faizi arasındaki fark nedir?',
+    a: 'Gecikme zammı, tahakkuk etmiş bir borç vadesinde ödenmediğinde vadeden ödeme gününe kadar işler (6183 sayılı Kanun md. 51) ve ay kesirleri günlük hesaplanır. Gecikme faizi ise sonradan (ikmalen, re’sen veya idarece) tarh edilen vergide, verginin normal vadesinden tahakkuk tarihine kadar geçen süre için alınır (Vergi Usul Kanunu md. 112). Oranı gecikme zammıyla aynıdır (aylık %3,7), ancak ay kesirleri hesaba katılmaz.',
+  },
+  {
+    q: '2026’da vergi borcu yapılandırması var mı?',
+    a: 'Ekim 2026 itibarıyla başvurusu açık genel bir vergi borcu yapılandırma kanunu yok; son kapsamlı yapılandırma 2023’teki 7440 sayılı Kanun’du. 2026’da 7582 sayılı Kanun’la tecil (taksitlendirme) süresinin üst sınırı 72 aya çıktı ve 10 milyon TL’ye kadar tecillerde teminat aranmıyor. Yıllık %29 faizli özel tecil imkânının son başvuru günü 31 Ağustos 2026’ydı; sonraki tecil başvurularına genel oran olan yıllık %39 tecil faizi uygulanır.',
+  },
+  {
+    q: 'MTV borcu olan araç satılabilir mi, muayeneye girebilir mi?',
+    a: 'Satılamaz: noterler, satış ve devirden önce araca ait ödenmemiş MTV, gecikme zammı, gecikme faizi ve cezaların ödendiğini gösteren belgeyi istemek zorundadır. Vergisi ödenmemiş araç fenni muayeneye de giremez; borç 6183 sayılı Kanun’un 48. maddesine göre taksitlendirilmiş ve taksitler aksatılmıyorsa muayene yapılabilir (197 sayılı MTV Kanunu md. 13). Satış için taksitlendirilen borcun da tamamen ödenmesi gerekir.',
+  },
+  {
+    q: 'Vergi borcu olan yurt dışına çıkabilir mi?',
+    a: 'Vergi borcuna bağlı yurt dışı çıkış yasağı hükümleri kaldırıldı: Pasaport Kanunu’ndaki vergi borçlularına pasaport verilmemesine ilişkin ibare 2008’de (5766 sayılı Kanun), 6183 sayılı Kanun’a eklenen yurt dışı çıkış tahdidi (md. 36/A) de 2011’de (6111 sayılı Kanun) yürürlükten kaldırıldı. Mahkemelerin verdiği yurt dışı çıkış yasakları ise bundan bağımsızdır.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Vergi Borcu Sorgulama', url: '/vergi-borcu-sorgulama/' },
+];
+---
+
+<BaseLayout
+  title="Vergi Borcu Sorgulama 2026: e-Devlet, GİB ve Gecikme Zammı"
+  description={`Vergi borcu sorgulama adım adım: e-Devlet ve Dijital Vergi Dairesi. Gecikme zammı aylık %${nf(CUR, 1)}; borcu ve tarihleri girin, gecikme zammını hesaplayın.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+  image="/og/vergi-borcu-sorgulama.png"
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Rehber · Hesaplayıcı · Vergi</p>
+      <h1>Vergi Borcu Sorgulama ve Gecikme Zammı Hesaplama 2026</h1>
+      <p class="lede">
+        Vergi dairesine borcunuz olup olmadığını e-Devlet’ten veya Dijital Vergi Dairesi’nden birkaç adımda öğrenin.
+        Geciken borcun <strong>aylık %{nf(CUR, 1)}</strong> gecikme zammını aşağıda, GİB’in hesaplama yöntemiyle bulun.
+      </p>
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="kpi-label">Aylık gecikme zammı</span>
+        <span class="kpi-val">%{nf(CUR, 1)}</span>
+        <span class="kpi-sub">13 Kasım 2025’ten beri (önceki %4,5)</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Günlük oran (ay kesri)</span>
+        <span class="kpi-val">{nf(CUR_DAILY, 6)}</span>
+        <span class="kpi-sub">aylık oran ÷ 30, yukarı yuvarlanır</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Tecil faizi</span>
+        <span class="kpi-val">%39</span>
+        <span class="kpi-sub">yıllık · vergi borcu taksitlendirilirse</span>
+      </div>
+    </div>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Borç tutarı — vergi aslı (₺)</span>
+          <input type="number" id="in-amt" value={D.amount} min="0" step="100" inputmode="decimal" />
+        </label>
+        <label>
+          <span>Vade (son ödeme günü)</span>
+          <input type="date" id="in-vade" value={D.vade} min={MIN_DATE} max="2100-12-31" />
+        </label>
+        <label>
+          <span>Ödeme tarihi</span>
+          <input type="date" id="in-odeme" value={D.odeme} min={MIN_DATE} max="2100-12-31" />
+        </label>
+        <p class="hint">Vade, borcun son ödeme günüdür (ör. 2026 MTV 2. taksiti için 31 Temmuz 2026).</p>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Gecikme zammı</span>
+          <span class="result-value" id="out-zam">{tl(d0.zam)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Toplam ödenecek</span>
+            <span class="split-val" id="out-total">{tl(D.amount + d0.zam)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Gecikme süresi</span>
+            <span class="split-val" id="out-sure">{sure(d0.months, d0.days)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Uygulanan toplam oran</span>
+            <span class="split-val" id="out-oran">%{nf(d0.frac * 100)}</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note">Tam aylar aylık, kalan günler günlük oranla; dönem içindeki oran değişiklikleri dahil.</p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç bilgilendirme amaçlıdır. Hesap 6183 sayılı Kanun md. 51 ve Tahsilat Genel Tebliği (Seri: A Sıra No: 1)
+      kurallarıyla yapılır; sonuçlar GİB Dijital Vergi Dairesi’nin “Gecikme Zammı ve Faizi Hesaplama” aracıyla
+      karşılaştırılarak test edildi. Kesin tutar vergi dairesi kayıtlarındakidir. 21 Nisan 2006’dan önceki vadeler
+      hesaplanmaz; ileri bir ödeme tarihinde bugünkü oranın değişmeyeceği varsayılır.
+    </p>
+
+    <section class="prose-block">
+      <h2 id="sorgulama">Vergi borcu nasıl sorgulanır? (adım adım)</h2>
+      <h3>e-Devlet ile</h3>
+      <ol>
+        <li>turkiye.gov.tr’ye e-Devlet şifresi, mobil imza, elektronik imza, T.C. kimlik kartı veya internet bankacılığı ile giriş yapın.</li>
+        <li>Gelir İdaresi Başkanlığı’nın <a href="https://www.turkiye.gov.tr/gib-vergi-borcu-sorgu" rel="nofollow noopener" target="_blank">“Vergi Borcu Sorgulama ve Ödeme”</a> hizmetini açın (şirketler için “Tüzel Kişi” sürümü var).</li>
+        <li>Vergi dairesine kayıtlı borçlarınızı görüntüleyin; ödemeyi aynı hizmetten yapabilirsiniz.</li>
+      </ol>
+      <h3>Dijital Vergi Dairesi ile</h3>
+      <ol>
+        <li><a href="https://dijital.gib.gov.tr/" rel="nofollow noopener" target="_blank">dijital.gib.gov.tr</a> adresinde “Kullanıcı Girişi”nden oturum açın (e-Devlet üzerinden de girilebilir).</li>
+        <li>“Ödeme ve Borç İşlemleri” menüsünden “Borç Ödeme ve Detay” ekranını açın.</li>
+        <li>Borçları seçip anlaşmalı bankaların kredi kartı, banka kartı veya banka hesabıyla ödeyin. MTV ve trafik cezası GİB Mobil uygulamasından da ödenebilir.</li>
+      </ol>
+      <h3>Şifresiz: MTV ve trafik cezası</h3>
+      <p>
+        Dijital Vergi Dairesi’nin <strong>Hızlı Ödemeler</strong> bölümü şifre istemez. Buradaki “MTV ve Trafik Para Cezası
+        Ödeme” ekranında araca ait MTV ve trafik cezası borcu sorgulanıp ödenebilir; tapu, pasaport ve sürücü belgesi harçları
+        ile idari ve adli para cezaları için de ayrı hızlı ödeme ekranları vardır.
+      </p>
+      <h3>Hangi borçlar görünür?</h3>
+      <ul>
+        <li>Vergi dairesince takip edilen borçlar: gelir vergisi, KDV, MTV gibi vergiler, vergi cezaları ve bunlara bağlı gecikme zammı ile gecikme faizi.</li>
+        <li>Vergi dairelerince tahsil edilen trafik idari para cezaları ve otoyol-köprü geçiş ihlali alacakları gibi kamu alacakları. Trafik cezasının tutanak ayrıntısı Emniyet’in e-Devlet hizmetindedir → <a href="/trafik-cezalari-hesaplama/#sorgulama">trafik cezası sorgulama ve ödeme</a>.</li>
+        <li><strong>Emlak vergisi ayrı:</strong> vergi dairesine değil belediyeye ödenir; borcu belediyenizden veya belediyenin e-Devlet hizmetinden sorgulanır → <a href="/emlak-vergisi-hesaplama/">emlak vergisi hesaplama</a>.</li>
+      </ul>
+
+      <h2>Vergi borcu nereden ödenir?</h2>
+      <ul>
+        <li><strong>İnternet:</strong> Dijital Vergi Dairesi ve GİB Mobil üzerinden anlaşmalı bankaların kredi kartı, banka kartı veya banka hesabıyla; e-Devlet’teki “Vergi Borcu Sorgulama ve Ödeme” hizmetinden.</li>
+        <li><strong>Banka:</strong> anlaşmalı bankaların şubeleri ile internet, mobil ve telefon bankacılığı.</li>
+        <li><strong>PTT ve vergi dairesi:</strong> PTT işyerleri ve tüm vergi daireleri.</li>
+        <li><strong>Taksit:</strong> vergi dairesi nezdindeki resmî taksit yolu tecildir (6183 md. 48) → <a href="#yapilandirma">aşağıda</a>.</li>
+      </ul>
+    </section>
+
+    <section class="table-block">
+      <h2>Gecikme zammı oranları (6183 md. 51)</h2>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead><tr><th>Uygulama dönemi</th><th>Aylık oran</th><th>Dayanak</th></tr></thead>
+          <tbody>
+            {RATE_ROWS.map((r) => (
+              <tr><td>{r.donem}</td><td>{r.oran}</td><td>{r.dayanak}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Kaynak: GİB “Gecikme Zammı Oranları” tablosu ve Tahsilat Genel Tebliği (Seri: A Sıra No: 1). Güncel oran 13.11.2025
+        tarihli ve 33076 sayılı Resmî Gazete’de yayımlanan 10556 sayılı Cumhurbaşkanı Kararı’yla belirlendi. BKK: Bakanlar
+        Kurulu Kararı, CK: Cumhurbaşkanı Kararı.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Gecikme zammı nasıl hesaplanır?</h2>
+      <ul>
+        <li><strong>Süre:</strong> vade günü sayılmaz, ödeme günü sayılır.</li>
+        <li><strong>Tam aylar</strong> aylık oranla (bugün %{nf(CUR, 1)}), <strong>kalan günler</strong> günlük oranla hesaplanır.
+          Günlük oran, aylık oranın 30’a bölünüp 6. ondalık haneye yukarı yuvarlanmasıyla bulunur: 3,7 / 100 / 30 = 0,0012333… → {nf(CUR_DAILY, 6)}.</li>
+        <li><strong>Ay sayımı:</strong> ay, vadeyi izleyen gün başlar ve sonraki ayın vade gününde biter; vade ayın son günüyse
+          ay sonlarında biter. Vadesi 31 Temmuz olan borçta 1–31 Ağustos ve 1–30 Eylül birer tam aydır. 30 günlük ay kesri tam ay sayılır.</li>
+        <li><strong>Oran değişirse:</strong> bir tam ay içinde oran değiştiyse o aya eski oran uygulanır; kalan günlerde
+          değişikliğin yürürlük günü dahil yeni oran işler.</li>
+        <li><strong>Asgari tutar:</strong> gecikme zammı 1 TL’den az olamaz.</li>
+        <li><strong>Cezalar:</strong> vergi ziyaı cezasına aynı oranda, mahkemelerin verdiği ceza niteliğindeki alacaklara yarı
+          oranda uygulanır; bunların dışındaki cezalara (ör. usulsüzlük cezası, trafik idari para cezası) gecikme zammı uygulanmaz.
+          Trafik cezasının kendi gecikme kuralı için → <a href="/trafik-cezalari-hesaplama/">trafik cezaları</a>.</li>
+      </ul>
+      <p class="example">
+        <strong>Örnek:</strong> 31 Temmuz 2026 vadeli 10.000 TL’lik borç 5 Ekim 2026’da ödenirse: 2 tam ay × %{nf(CUR, 1)} = 740,00 TL;
+        1–5 Ekim için 5 gün × {nf(CUR_DAILY, 6)} × 10.000 = 61,70 TL. Gecikme zammı <strong>{nf(EX.zam)} TL</strong>, toplam borç
+        {nf(10000 + EX.zam)} TL.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>10.000 TL vergi borcunda gecikme zammı</h2>
+      <p class="table-intro">31 Temmuz 2026 vadeli borç, vadeden sonra geçen süreye göre (aylık %{nf(CUR, 1)} değişmezse):</p>
+      <table class="rate-table">
+        <thead><tr><th>Gecikme süresi</th><th>Gecikme zammı</th><th>Toplam borç</th></tr></thead>
+        <tbody>
+          {SURE_ROWS.map((r) => (
+            <tr><td>{r.label}</td><td>{tl(r.zam)}</td><td>{tl(10000 + r.zam)}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    <section class="table-block">
+      <h2>Gecikme zammı, gecikme faizi, pişmanlık zammı ve tecil faizi</h2>
+      <div class="table-scroll">
+        <table class="rate-table wide">
+          <thead><tr><th>Tür</th><th>Ne zaman uygulanır?</th><th>Oran (Ekim 2026)</th><th>Ay kesri</th></tr></thead>
+          <tbody>
+            <tr><td>Gecikme zammı<span class="row-note">6183 md. 51</span></td><td>Tahakkuk etmiş borç vadesinde ödenmezse, vadeden ödemeye kadar</td><td>aylık %{nf(CUR, 1)}</td><td>günlük hesaplanır</td></tr>
+            <tr><td>Gecikme faizi<span class="row-note">VUK md. 112</span></td><td>Sonradan (ikmalen, re’sen, idarece) tarh edilen vergide, normal vadeden tahakkuka kadar</td><td>gecikme zammı oranında</td><td>dikkate alınmaz</td></tr>
+            <tr><td>Pişmanlık zammı<span class="row-note">VUK md. 371</span></td><td>Pişmanlıkla bildirilen, ödeme süresi geçmiş vergide</td><td>gecikme zammı oranında</td><td>kesir tam ay sayılır</td></tr>
+            <tr><td>Tecil faizi<span class="row-note">6183 md. 48</span></td><td>Vergi dairesince taksitlendirilen (tecil edilen) borçta</td><td>yıllık %39</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Tecil faizi oranı: Tahsilat Genel Tebliği (Seri: C Sıra No: 9), 13.11.2025’ten itibaren.</p>
+    </section>
+
+    <section class="prose-block">
+      <h2 id="borcu-yoktur">Borcu yoktur yazısı nasıl alınır?</h2>
+      <p>
+        e-Devlet’te Gelir İdaresi Başkanlığı’nın <a href="https://www.turkiye.gov.tr/gib-intvrg-borcuyokturyazisi" rel="nofollow noopener" target="_blank">“Borcu Yoktur Yazısı Talep Girişi”</a>
+        ve <a href="https://www.turkiye.gov.tr/gib-borc-durum-yazisi-talep-girisi-gercek-kisi" rel="nofollow noopener" target="_blank">“Borç Durum Yazısı Talep Girişi”</a>
+        hizmetleri bulunur (şirketler için tüzel kişi sürümleri ayrı). Borç durum yazısı, Dijital Vergi Dairesi’ndeki
+        “Mükellefiyet Yazısı / Borç Durum Yazısı Doğrulama” ekranından doğrulanabilir.
+      </p>
+      <p>
+        <strong>Kim ister?</strong> 6183 sayılı Kanun md. 22/A ve Tahsilat Genel Tebliği’ne göre kamu kurumları 5.000 TL’yi
+        aşan şu ödemelerden önce “vadesi geçmiş borcu yoktur” belgesi arar: mal-hizmet alımı ve yapım işi hakedişleri; devlet
+        yardımı, teşvik ve destek ödemeleri; kamu idarelerinin mahkeme veya icra kararıyla yaptığı ödemeler. Vadesi geçmiş borç
+        toplamı 5.000 TL’yi aşmıyorsa borç yok sayılır; şartlarına uygun ödenen tecilli borç da vadesi geçmiş borç sayılmaz.
+        Belge, düzenlendiği tarihten itibaren 15 gün geçerlidir.
+      </p>
+
+      <h2>Vergi borcu ödenmezse ne olur?</h2>
+      <ul>
+        <li><strong>Gecikme zammı işler:</strong> her ay %{nf(CUR, 1)}; bir yılda %{nf(CUR * 12, 1)}.</li>
+        <li><strong>Ödeme emri ve haciz:</strong> vadesinde ödenmeyen borç için 15 gün içinde ödeme veya mal bildirimi isteyen
+          ödeme emri tebliğ edilir (6183 md. 55); borç teminatın paraya çevrilmesi, haciz veya iflas yoluyla cebren tahsil
+          edilir (md. 54). Uygulanan e-hacizler e-Devlet’te “e-haciz Banka” ve “e-haciz Araç” hizmetlerinden görülür.</li>
+        <li><strong>MTV borcu:</strong> noterler satış ve devirden önce araca ait ödenmemiş MTV, gecikme zammı ve cezaların
+          ödendiğini gösteren belgeyi ister; vergisi ödenmemiş veya taksitlendirilmemiş araç fenni muayeneye giremez
+          (197 sayılı Kanun md. 13) → <a href="/mtv-hesaplama/">MTV hesaplama</a>.</li>
+        <li><strong>Trafik cezası:</strong> vadesi geçmiş trafik idari para cezası varken araç muayenesi yaptırılamaz.</li>
+        <li><strong>Yurt dışı çıkış:</strong> vergi borcuna bağlı yasak hükümleri kaldırıldı. Pasaport Kanunu’ndaki vergi
+          borçlularına ilişkin ibare 2008’de (5766 sayılı Kanun), 6183’teki yurt dışı çıkış tahdidi (md. 36/A) 2011’de (6111
+          sayılı Kanun) yürürlükten kaldırıldı. Mahkemelerin koyduğu yasaklar ayrıdır.</li>
+      </ul>
+
+      <h2 id="yapilandirma">2026’da vergi borcu yapılandırması var mı? Tecil ve taksit</h2>
+      <p>
+        Ekim 2026 itibarıyla başvurusu açık genel bir vergi borcu yapılandırma kanunu yok. Son kapsamlı düzenleme,
+        12 Mart 2023 tarihli Resmî Gazete’de yayımlanan 7440 sayılı yapılandırma kanunuydu. 2026’da af yerine taksit imkânı
+        genişletildi:
+      </p>
+      <ul>
+        <li><strong>72 aya kadar tecil:</strong> 7582 sayılı Kanun (RG 4 Haziran 2026) ile 6183 md. 48’deki azami tecil süresi 36
+          aydan 72 aya çıktı. Teminatsız tecil sınırı kanunla 1 milyon TL oldu, 11414 sayılı Cumhurbaşkanı Kararı (RG 13 Haziran 2026)
+          ile 10 milyon TL’ye yükseltildi; bu tutarı aşan kısmın yarısı kadar teminat istenir.</li>
+        <li><strong>%29 faizli özel tecil (süresi doldu):</strong> Tahsilat Genel Tebliği Seri: B Sıra No: 20 (RG 16 Haziran 2026),
+          5 Haziran 2026’ya kadar vadesi gelen borçlara yıllık %29 tecil faiziyle 12 ila 72 eşit taksit imkânı tanıdı. Son başvuru
+          günü 31 Ağustos 2026’ydı; süresinde yapılmayan başvurular genel hükümlere göre değerlendirilir.</li>
+        <li><strong>Bugün tecil:</strong> borcu vadesinde ödemek sizi “çok zor duruma” düşürecekse vergi dairesinden yazılı olarak
+          tecil isteyebilirsiniz (Dijital Vergi Dairesi → Ödeme ve Borç İşlemleri → Taksitlendirme/Tecil Talebi Dilekçesi).
+          Genel tecil faizi yıllık %39’dur; taksit sayısını tecile yetkili idare borçlunun mali durumuna göre belirler, kanuni
+          üst sınır 72 aydır. Gecikme zammı
+          tecil talep tarihine kadar (bu tarih hariç) hesaplanır, sonra taksitlere tecil faizi işler.</li>
+      </ul>
+
+      <h2 id="sgk">SGK prim borcu sorgulama</h2>
+      <p>
+        SGK borçları vergi dairesinde değil SGK’da izlenir. e-Devlet’te Bağ-Kur’lular için <a href="https://www.turkiye.gov.tr/4b-borc-durumu" rel="nofollow noopener" target="_blank">“4B Borç Durumu”</a>,
+        genel sağlık sigortası için <a href="https://www.turkiye.gov.tr/sgk-gss-borc-dokumu" rel="nofollow noopener" target="_blank">“Genel Sağlık Sigortası Tescil ve Prim Borcu Sorgulama”</a>,
+        icradaki borçlar için “SGK İcra Takibindeki Borçlar ve Uygulanan Elektronik Hacizler”, işverenler için “İşyeri Kaydı /
+        Borcu Yoktur Belgesi Sorgulama” hizmetleri var; kartla ödeme SGK’nın “Kart ile Prim Ödeme Uygulaması”ndan yapılır.
+        SGK alacaklarında gecikme 5510 sayılı Kanun md. 89’a göre ayrı hesaplanır (ilk üç ay aylık %3 gecikme cezası ve
+        Hazine’nin açıkladığı iç borçlanma faizine dayalı gecikme zammı). Bu sayfadaki hesaplayıcı yalnızca vergi dairesi
+        borçları içindir.
+      </p>
+
+      <p class="cta-line">
+        Araç vergisi için → <a href="/mtv-hesaplama/">MTV hesaplama</a> · trafik cezası tutarları için →
+        <a href="/trafik-cezalari-hesaplama/">trafik cezaları hesaplama</a> · belediye vergisi için →
+        <a href="/emlak-vergisi-hesaplama/">emlak vergisi hesaplama</a> · yıllık beyan için →
+        <a href="/gelir-vergisi-hesaplama/">gelir vergisi hesaplama</a> · tüm araçlar →
+        <a href="/hesaplama-araclari/">hesaplama araçları</a>.
+      </p>
+      <p class="table-note">
+        Kaynak (doğrulama 19 Ekim 2026): <a href="https://www.mevzuat.gov.tr/mevzuatmetin/1.3.6183.pdf" rel="noopener">6183 sayılı Kanun</a>
+        md. 22/A, 36/A, 37, 48, 51, 52, 54, 55; <a href="https://www.mevzuat.gov.tr/mevzuatmetin/1.4.213.pdf" rel="noopener">213 sayılı VUK</a>
+        md. 112 ve 371; Tahsilat Genel Tebliği Seri: A Sıra No: 1, Seri: C Sıra No: 9 ve Seri: B Sıra No: 20; 10556 ve 11414 sayılı
+        Cumhurbaşkanı Kararları; 7582 sayılı Kanun; 197 sayılı MTV Kanunu md. 13; 5682 sayılı Pasaport Kanunu md. 22; 5510 sayılı
+        Kanun md. 89; GİB “Gecikme Zammı Oranları” tablosu ve Motorlu Taşıtlar Vergisi ve Trafik İdari Para Cezası Rehberi;
+        e-Devlet GİB ve SGK hizmet listeleri. Sonuçları GİB’in
+        <a href="https://dijital.gib.gov.tr/hesaplamalar/GecikmeZamVeFaizHesaplama" rel="nofollow noopener" target="_blank">Gecikme Zammı ve Faizi Hesaplama</a>
+        aracıyla karşılaştırabilirsiniz.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ RATES: RATE_PAIRS, MIN_DATE }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const DAY = 864e5;
+      const toDay = (s) => {
+        const p = s.split('-').map(Number);
+        return Date.UTC(p[0], p[1] - 1, p[2]) / DAY;
+      };
+      const R = RATES.map((r) => ({ day: toDay(r[0]), h: r[1] }));
+      const rateOn = (day) => {
+        let h = R[0].h;
+        for (const x of R) if (x.day <= day) h = x.h;
+        return h;
+      };
+      const dailyMicro = (h) => Math.floor((h * 10 + 2) / 3);
+      const dim = (y, m0) => new Date(Date.UTC(y, m0 + 1, 0)).getUTCDate();
+      function calc(amount, vade, odeme) {
+        const v = vade.split('-').map(Number);
+        const V = toDay(vade);
+        const P = toDay(odeme);
+        const eom = v[2] === dim(v[0], v[1] - 1);
+        const monthEnd = (k) => {
+          const t = v[1] - 1 + k;
+          const y = v[0] + Math.floor(t / 12);
+          const m0 = ((t % 12) + 12) % 12;
+          const n = dim(y, m0);
+          return Date.UTC(y, m0, eom ? n : Math.min(v[2], n)) / DAY;
+        };
+        let months = 0, days = 0, frac = 0;
+        const used = new Set();
+        if (P > V) {
+          let prev = V;
+          for (let k = 1; monthEnd(k) <= P; k++) {
+            const h = rateOn(prev);
+            frac += h / 10000;
+            used.add(h);
+            months++;
+            prev = monthEnd(k);
+          }
+          let d = prev + 1;
+          while (d <= P) {
+            const h = rateOn(d);
+            let n = 0;
+            while (d <= P && rateOn(d) === h) { n++; d++; }
+            used.add(h);
+            if (n === 30) { frac += h / 10000; months++; } else { frac += (n * dailyMicro(h)) / 1e6; days += n; }
+          }
+        }
+        return { months, days, frac, used: used.size, zam: Math.round(amount * frac * 100 + 1e-7) / 100 };
+      }
+      const nf2 = (n) => n.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const tl = (n) => '₺' + nf2(n);
+      const sure = (m, g) => [m ? m + ' ay' : '', g || !m ? g + ' gün' : ''].filter(Boolean).join(' ');
+      const now = new Date();
+      const today = new Date(now.getTime() - now.getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
+      const odemeIn = $('in-odeme');
+      if (odemeIn.value === odemeIn.defaultValue) odemeIn.value = today;
+      const re = /^\d{4}-\d{2}-\d{2}$/;
+      function update() {
+        const amt = Math.max(0, +$('in-amt').value || 0);
+        const vade = $('in-vade').value;
+        const odeme = odemeIn.value;
+        const note = $('out-note');
+        if (!re.test(vade) || !re.test(odeme) || vade > '2100-12-31' || odeme > '2100-12-31') {
+          ['out-zam', 'out-total', 'out-sure', 'out-oran'].forEach((id) => { $(id).textContent = '—'; });
+          note.textContent = 'Vade ve ödeme tarihini girin.';
+          return;
+        }
+        if (vade < MIN_DATE) {
+          ['out-zam', 'out-total', 'out-sure', 'out-oran'].forEach((id) => { $(id).textContent = '—'; });
+          note.textContent = 'Hesaplayıcı 21.04.2006 ve sonrası vadeler içindir.';
+          return;
+        }
+        const r = calc(amt, vade, odeme);
+        let zam = r.zam;
+        const notes = [];
+        if (odeme <= vade) notes.push('Ödeme vade günü veya öncesinde: gecikme zammı işlemez.');
+        else {
+          if (zam > 0 && zam < 1) { notes.push('Hesaplanan ' + nf2(zam) + ' TL; kanuni asgari gecikme zammı 1 TL’dir.'); zam = 1; }
+          if (r.used > 1) notes.push('Dönemde oran değişikliği var; her dönem kendi oranıyla hesaplandı.');
+          if (odeme > today) notes.push('İleri tarih: bugünkü oranın değişmeyeceği varsayıldı.');
+          if (!notes.length) notes.push('Tam aylar aylık, kalan günler günlük oranla hesaplandı.');
+        }
+        $('out-zam').textContent = tl(zam);
+        $('out-total').textContent = tl(amt + zam);
+        $('out-sure').textContent = sure(r.months, r.days);
+        $('out-oran').textContent = '%' + nf2(r.frac * 100);
+        note.textContent = notes.join(' ');
+      }
+      ['in-amt', 'in-vade', 'in-odeme'].forEach((id) => {
+        $(id).addEventListener('input', update);
+        $(id).addEventListener('change', update);
+      });
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin: 0 0 1rem; }
+    .kpi { display: flex; flex-direction: column; gap: 0.15rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-xs); }
+    .kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .kpi-val { font-family: var(--font-serif); font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.1rem); font-weight: 700; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .kpi-sub { font-size: 0.78rem; color: var(--text-soft); line-height: 1.35; }
+
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; min-width: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input[type='number'], .calc-inputs input[type='date'] {
+      font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%; min-width: 0; box-sizing: border-box; min-height: 2.75rem;
+    }
+    .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .calc-inputs .hint { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.45; }
+
+    .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 1rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; min-width: 0; }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; font-variant-numeric: tabular-nums; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; font-variant-numeric: tabular-nums; }
+    .result-note { font-size: 0.82rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table.wide { min-width: 560px; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .rate-table td { font-variant-numeric: tabular-nums; }
+    .row-note { display: block; font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem; }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; line-height: 1.55; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .prose-block h3 { font-size: var(--step-1); margin: 1.2rem 0 0.4rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block ol, .prose-block ul { padding-left: 1.3rem; }
+    .prose-block li { margin-bottom: 0.35rem; }
+    .example { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 680px) {
+      .kpi-row { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: 1fr; padding: 1.1rem; }
+      .rate-table { font-size: 0.85rem; }
+    }
+  </style>
+</BaseLayout>

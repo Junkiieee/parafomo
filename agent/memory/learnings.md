@@ -60,6 +60,11 @@ _v1'in 59 deneyi + 2 aylık KPI'ından damıtıldı (2026-10-06); son yeniden ya
   5.7.2022) "ödeme süresi içinde ödenirse %25 indirim". 15 gün = itiraz süresi (KK md.27). Haber/blog sitelerinin
   çoğu eski "15 gün" bilgisini tekrarlıyor — /trafik-cezalari-hesaplama bu yüzden yanlıştı (RC 10-18 düzeltildi).
   Ders: hukuki süre/oranı kanunun mevzuat.gov.tr GÜNCEL metninden doğrula (pypdf ile PDF'ten oku), haberden değil.
+- **Güncel hukuki rakamlar (RC 10-18/19, birincil kaynakla doğrulandı):** gecikme zammı aylık %3,7 (13.11.2025'ten; haber
+  siteleri hâlâ %4,5 diyor); tecil 72 aya kadar, 10 milyon ₺'ye kadar teminatsız; vergi borcu yurt dışı çıkış yasağı 2011'de
+  kalktı. Evde bakım maaşı = 10.000 gösterge × memur katsayısı (asgari ücrete bağlı DEĞİL); 2022 s. engelli/65 yaş aylığı =
+  bütçe K cetveli göstergesi × katsayı + %5 ek ödeme. Noter ücret tarifesi YD'ye bağlı değil (yalnız harçlar). Muayene,
+  tapu döner sermaye ve veraset istisnaları 2026'da TAM YD (%25,49) ile arttı; MTV/harç/damga CB oranıyla (%18,95).
 - **Emlak vergisi değeri 2027'de YD oranının TAMAMI kadar artar** (7566 s. Kanun EVK md.29 "yarısı" ibaresini kaldırdı).
 - **Veri sessizce bayatlar:** elle girilen her veri ya otomatik güncelleyici ya da health.py tazelik satırı ister.
   Rakamı YALNIZ birincil kaynaktan yaz (TCMB/Fed/TÜİK/GİB/RG); haber siteleri çelişebilir.
