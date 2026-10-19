@@ -1,0 +1,411 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import au from '../../data/asgari-ucret.json';
+import bk from '../../data/bagkur-prim-2026.json';
+
+// Bağ-Kur (5510 s.K. 4/1-b) primi. Prim = prime esas kazanç (PEK) × oran; PEK alt sınırı = brüt asgari ücret,
+// üst sınırı = alt sınır × 9 (5510 md. 82). Oran: MYÖ %21 (7566 s.K. md. 23, 1 Ocak 2026’dan) + GSS %12,5 +
+// kısa vadeli sigorta %2,25 = %35,75; primini süresinde ödeyen, borcu olmayan sigortalıda Hazine 5 puanı karşılar
+// (5510 md. 81/ı) → %30,75. 2026 tutarları alomaliye.com ve tahanci.av.tr tablolarıyla kuruşu kuruşuna aynı.
+// Gelecek yıl: asgari ücret açıklanınca (au.yeni) resmî; önce yalnız senaryo tablosu.
+
+const Y: number = bk.yil;
+const HEDEF = Y + 1;
+const O = bk.oranlar;
+const ORAN = O.myo + O.gss + O.kisaVade; // 35,75
+const ORAN_IND = ORAN - O.hazineIndirimi; // 30,75
+const ALT: number = au.guncel.brut;
+const UST = ALT * bk.tavanKat;
+const r2 = (n: number) => Math.round(n * 100 + 1e-6) / 100;
+const prim = (pek: number, oran: number) => r2((pek * oran) / 100);
+const P = {
+  alt: prim(ALT, ORAN),
+  altInd: prim(ALT, ORAN_IND),
+  ust: prim(UST, ORAN),
+  ustInd: prim(UST, ORAN_IND),
+};
+const fmt2 = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const pc = (n: number) => '%' + n.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
+const tl2 = (n: number) => `${fmt2(n)} ₺`;
+
+// Basamak tablosu: alt sınırdan üst sınıra yaygın seçilen PEK seviyeleri (asgari ücretin katları)
+const KATLAR = [1, 1.5, 2, 3, 4, 5, 6, 7, 8, 9];
+
+// Gelecek yıl: asgari ücret açıklandıysa resmî, değilse senaryo
+type Yeni = { yil: number; brut?: number; net?: number; aciklanma?: string } | null;
+const yeni = au.yeni as Yeni;
+const yeniBrut = yeni && yeni.yil === HEDEF ? (yeni.brut ?? (yeni.net ? r2(yeni.net / 0.85) : null)) : null;
+const SENARYO = [20, 25, 30].map((a) => {
+  const b = r2(ALT * (1 + a / 100));
+  return { artis: a, brut: b, alt: prim(b, ORAN), altInd: prim(b, ORAN_IND) };
+});
+
+const dogrulama = (() => {
+  const AY = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+  const d = new Date(bk.dogrulama + 'T12:00:00Z');
+  return `${d.getUTCDate()} ${AY[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+})();
+
+const gelecekCevap = yeniBrut
+  ? `${HEDEF} brüt asgari ücreti ${tl2(yeniBrut)} olarak açıklandı. Prim oranları değişmezse ${HEDEF}’de en düşük Bağ-Kur primi indirimle ${tl2(prim(yeniBrut, ORAN_IND))}, indirimsiz ${tl2(prim(yeniBrut, ORAN))} olur.`
+  : `${HEDEF} asgari ücreti Aralık’ta açıklanınca belli olur; en düşük Bağ-Kur primi brüt asgari ücretin ${pc(ORAN_IND)}’i (indirimli) olduğu için asgari ücret ne kadar artarsa prim de o kadar artar. Örneğin asgari ücret %25 artarsa en düşük prim indirimle yaklaşık ${tl2(SENARYO[1].altInd)}, indirimsiz ${tl2(SENARYO[1].alt)} olur. Bu bir senaryodur, tahmin değildir.`;
+
+const faq = [
+  {
+    q: `Bağ-Kur primi ne kadar ${Y}?`,
+    a: `${Y}’da en düşük Bağ-Kur (4/b) primi aylık ${tl2(P.altInd)}. Bu tutar, primini zamanında ödeyen ve borcu olmayanlar için geçerli ${pc(ORAN_IND)} oranla hesaplanır. 5 puanlık Hazine indirimi alamayanlar en az ${tl2(P.alt)} öder (${pc(ORAN)}). Prim, seçilen prime esas kazanca göre artar; en yüksek prim indirimle ${tl2(P.ustInd)}, indirimsiz ${tl2(P.ust)}.`,
+  },
+  {
+    q: 'Bağ-Kur primi nasıl hesaplanır?',
+    a: `Prim = prime esas kazanç × prim oranı. Prime esas kazanç en az brüt asgari ücret (${tl2(ALT)}), en fazla bunun ${bk.tavanKat} katı (${tl2(UST)}) olabilir. Oran ${pc(ORAN)}: malullük-yaşlılık-ölüm sigortası ${pc(O.myo)}, genel sağlık sigortası ${pc(O.gss)}, kısa vadeli sigorta kolları ${pc(O.kisaVade)}. Primini süresinde ödeyen ve borcu olmayan sigortalıda ${pc(O.hazineIndirimi)}’lik kısmı Hazine karşılar, oran ${pc(ORAN_IND)}’e iner.`,
+  },
+  {
+    q: `${Y}’da Bağ-Kur prim oranı neden arttı?`,
+    a: `7566 sayılı Kanun’un 23. maddesiyle malullük, yaşlılık ve ölüm sigortası prim oranı 1 Ocak ${Y}’dan itibaren %20’den %21’e çıktı. Böylece toplam Bağ-Kur prim oranı %34,75’ten %35,75’e, 5 puan indirimli oran %29,75’ten %30,75’e yükseldi.`,
+  },
+  {
+    q: 'Bağ-Kur 5 puan indirimi kimlere uygulanır?',
+    a: 'Primlerini yasal süresinde ödeyen ve prim, gecikme cezası ya da gecikme zammı borcu bulunmayan 4/b zorunlu sigortalılara uygulanır. İsteğe bağlı sigortalılar ve muhtarlar bu indirimden yararlanamaz. Borç oluşursa indirim kaybedilir; borç kapatılınca sonraki aylarda yeniden uygulanır.',
+  },
+  {
+    q: 'Bağ-Kur borcu nasıl sorgulanır, borç olursa ne olur?',
+    a: 'Bağ-Kur borcu e-Devlet’te SGK’nın “4B Borç Durumu” hizmetinden görülür ve aynı ekrandan ya da anlaşmalı bankalardan ödenir. Süresinde ödenmeyen prime 5510 sayılı Kanun’un 89. maddesine göre gecikme cezası ve gecikme zammı eklenir, 5 puanlık indirim kaybedilir. 60 günden fazla prim borcu olan sigortalı ve bakmakla yükümlü olduğu kişiler acil durumlar ve bazı istisnalar dışında genel sağlık sigortasından yararlanamaz; borcu ödenmeyen aylar emeklilikte hizmet olarak sayılmaz.',
+  },
+  {
+    q: `${HEDEF}’de Bağ-Kur primi ne kadar olacak?`,
+    a: gelecekCevap,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Hesaplama Araçları', url: '/hesaplama-araclari/' },
+  { name: `Bağ-Kur Primi ${Y}`, url: '/bagkur-primi-hesaplama/' },
+];
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: `Bağ-Kur (4/b) prim tutarları ${Y}`,
+  description: `5510 sayılı Kanun 4/1-b sigortalıları için ${Y} prime esas kazanç alt (${tl2(ALT)}) ve üst (${tl2(UST)}) sınırları, prim oranları (${pc(ORAN)}; 5 puan indirimle ${pc(ORAN_IND)}) ve aylık prim tutarları.`,
+  url: 'https://parafomo.com/bagkur-primi-hesaplama/',
+  dateModified: bk.dogrulama,
+  creator: { '@type': 'Organization', name: 'ParaFOMO', url: 'https://parafomo.com/' },
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+};
+---
+
+<BaseLayout
+  title={`Bağ-Kur Primi ${Y} Ne Kadar? En Düşük ${fmt2(P.altInd)} ₺, Hesaplama`}
+  description={`Bağ-Kur primi ${Y}: en düşük ${tl2(P.altInd)} (5 puan indirimli, ${pc(ORAN_IND)}), indirimsiz ${tl2(P.alt)}, en yüksek ${tl2(P.ustInd)}. Hesaplama, oranlar, ${HEDEF} senaryosu.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+  image="/og/bagkur-primi-hesaplama.png"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(dataset)} />
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">SGK · Bağ-Kur (4/b)</p>
+      <h1>Bağ-Kur Primi {Y}: Ne Kadar, Nasıl Hesaplanır?</h1>
+      <p class="lede">
+        Esnaf, şirket ortağı ve serbest çalışanların ödediği Bağ-Kur primi {Y}’da en az
+        <strong>aylık {tl2(P.altInd)}</strong> (primini zamanında ödeyenler, {pc(ORAN_IND)}). İndirim alamayanlar
+        <strong>{tl2(P.alt)}</strong> öder. Prime esas kazancınızı seçin, aylık ve yıllık priminizi hesaplayın.
+      </p>
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="kpi-label">En düşük prim (indirimli)</span>
+        <span class="kpi-val">{tl2(P.altInd)}<small>/ay</small></span>
+        <span class="kpi-sub">{pc(ORAN_IND)} · brüt asgari ücret üzerinden</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">En düşük prim (indirimsiz)</span>
+        <span class="kpi-val">{tl2(P.alt)}<small>/ay</small></span>
+        <span class="kpi-sub">{pc(ORAN)} · borcu olan / geç ödeyen</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">En yüksek prim (indirimli)</span>
+        <span class="kpi-val">{tl2(P.ustInd)}<small>/ay</small></span>
+        <span class="kpi-sub">tavan {tl2(UST)} · indirimsiz {tl2(P.ust)}</span>
+      </div>
+    </div>
+
+    <section class="table-block" id="hesaplama">
+      <h2>Bağ-Kur primi hesaplama</h2>
+      <p class="table-intro">
+        Prime esas kazancı en az {tl2(ALT)}, en fazla {tl2(UST)} olarak seçebilirsiniz. Yüksek kazanç seçmek primi
+        artırır, ileride bağlanacak emekli aylığını da yükseltir.
+      </p>
+      <div class="calc-grid">
+        <form class="calc-inputs" autocomplete="off" onsubmit="return false">
+          <label>
+            <span>Aylık prime esas kazanç (₺)</span>
+            <input type="number" id="in-pek" value={ALT.toFixed(2)} min={ALT} max={UST} step="0.01" inputmode="decimal" />
+            <em class="hint">Alt sınır brüt asgari ücret ({tl2(ALT)}), üst sınır {bk.tavanKat} katı ({tl2(UST)}).</em>
+          </label>
+          <label>
+            <span>Prim gün sayısı</span>
+            <input type="number" id="in-gun" value="30" min="1" max="30" step="1" inputmode="numeric" />
+            <em class="hint">Tam ay = 30 gün. Ay içinde başlayan veya kapanan işlerde gün sayısını girin.</em>
+          </label>
+          <label>
+            <span>5 puan Hazine indirimi</span>
+            <select id="in-ind">
+              <option value="1" selected>Var — primi süresinde ödüyorum, borcum yok</option>
+              <option value="0">Yok — borcum var / geç ödüyorum</option>
+            </select>
+          </label>
+        </form>
+
+        <div class="calc-results" aria-live="polite">
+          <div class="result-main">
+            <span class="result-label">Aylık Bağ-Kur primi</span>
+            <span class="result-value" id="out-prim">{tl2(P.altInd)}</span>
+          </div>
+          <div class="result-split">
+            <div class="split-item"><span class="split-label">Yıllık (12 ay)</span><span class="split-val" id="out-yil">{tl2(P.altInd * 12)}</span></div>
+            <div class="split-item"><span class="split-label">Malullük-yaşlılık-ölüm ({pc(O.myo)})</span><span class="split-val" id="out-myo">{tl2(prim(ALT, O.myo))}</span></div>
+            <div class="split-item"><span class="split-label">Genel sağlık sigortası ({pc(O.gss)})</span><span class="split-val" id="out-gss">{tl2(prim(ALT, O.gss))}</span></div>
+            <div class="split-item"><span class="split-label">Kısa vadeli sigorta ({pc(O.kisaVade)})</span><span class="split-val" id="out-kv">{tl2(prim(ALT, O.kisaVade))}</span></div>
+            <div class="split-item"><span class="split-label">Hazine indirimi</span><span class="split-val" id="out-ind">−{tl2(prim(ALT, O.hazineIndirimi))}</span></div>
+          </div>
+          <p class="result-note" id="out-note">Primi süresinde ödediğiniz sürece her ay {tl2(prim(ALT, O.hazineIndirimi))} indirim alırsınız.</p>
+        </div>
+      </div>
+      <p class="disclaimer">
+        Hesap, 5510 sayılı Kanun’un {Y} oranlarını kullanır; kuruş yuvarlaması SGK tahakkukundan birkaç kuruş farklı
+        olabilir. Kesin tutarı ve son ödeme gününü e-Devlet’te “4B Borç Durumu” ekranı gösterir. Son kontrol: {dogrulama}.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Prime esas kazanca göre Bağ-Kur primi {Y}</h2>
+      <p class="table-intro">
+        Brüt asgari ücretin katlarına göre aylık prim. Çoğu esnaf alt sınırdan öder; emekli aylığını yükseltmek
+        isteyenler daha yüksek kazanç seçebilir.
+      </p>
+      <div class="table-wrap">
+        <table class="rate-table">
+          <thead><tr><th>Prime esas kazanç</th><th>İndirimli ({pc(ORAN_IND)})</th><th>İndirimsiz ({pc(ORAN)})</th><th>Yıllık (indirimli)</th></tr></thead>
+          <tbody>
+            {KATLAR.map((k) => {
+              const pek = r2(ALT * k);
+              return (
+                <tr>
+                  <td>{tl2(pek)}<span class="row-note">{k === 1 ? 'alt sınır (asgari ücret)' : k === bk.tavanKat ? 'üst sınır' : `asgari ücretin ${k.toLocaleString('tr-TR')} katı`}</span></td>
+                  <td><strong>{tl2(prim(pek, ORAN_IND))}</strong></td>
+                  <td>{tl2(prim(pek, ORAN))}</td>
+                  <td>{tl2(prim(pek, ORAN_IND) * 12)}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="table-block">
+      <h2>Bağ-Kur prim oranları {Y}</h2>
+      <p class="table-intro">
+        {bk.degisiklik.replace("'", '’')}. Genel sağlık sigortası primi Bağ-Kur primine dahildir; Bağ-Kur’lu ayrıca GSS
+        primi ödemez.
+      </p>
+      <div class="table-wrap">
+        <table class="rate-table">
+          <thead><tr><th>Sigorta kolu</th><th>Oran</th><th>Alt sınırda tutar</th></tr></thead>
+          <tbody>
+            <tr><td>Malullük, yaşlılık ve ölüm</td><td>{pc(O.myo)}</td><td>{tl2(prim(ALT, O.myo))}</td></tr>
+            <tr><td>Genel sağlık sigortası</td><td>{pc(O.gss)}</td><td>{tl2(prim(ALT, O.gss))}</td></tr>
+            <tr><td>Kısa vadeli sigorta kolları</td><td>{pc(O.kisaVade)}</td><td>{tl2(prim(ALT, O.kisaVade))}</td></tr>
+            <tr><td><strong>Toplam</strong></td><td><strong>{pc(ORAN)}</strong></td><td><strong>{tl2(P.alt)}</strong></td></tr>
+            <tr><td>Hazine indirimi (süresinde ödeyen)</td><td>−{pc(O.hazineIndirimi)}</td><td>−{tl2(prim(ALT, O.hazineIndirimi))}</td></tr>
+            <tr><td><strong>İndirimli toplam</strong></td><td><strong>{pc(ORAN_IND)}</strong></td><td><strong>{tl2(P.altInd)}</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="table-block" id="bagkur-primi-2027">
+      <h2>{HEDEF} Bağ-Kur primi ne kadar olacak?</h2>
+      {yeniBrut ? (
+        <p class="table-intro">
+          {HEDEF} brüt asgari ücreti <strong>{tl2(yeniBrut)}</strong> olarak açıklandı. Oranlar değişmezse {HEDEF}’de en
+          düşük Bağ-Kur primi indirimle <strong>{tl2(prim(yeniBrut, ORAN_IND))}</strong>, indirimsiz
+          <strong>{tl2(prim(yeniBrut, ORAN))}</strong> olur; tavan {tl2(yeniBrut * bk.tavanKat)}.
+        </p>
+      ) : (
+        <>
+          <p class="table-intro">
+            Alt sınır brüt asgari ücret olduğu için {HEDEF} primi, Aralık’ta açıklanacak {HEDEF} asgari ücretine bağlı.
+            Aşağıdaki tablo farklı artış oranlarında ({Y} oranlarıyla) en düşük primi gösterir; tahmin değil, senaryodur.
+            Asgari ücret açıklandığı gün bu bölüm resmî rakamla güncellenir.
+          </p>
+          <div class="table-wrap">
+            <table class="rate-table">
+              <thead><tr><th>Asgari ücret artışı</th><th>{HEDEF} brüt asgari ücret</th><th>En düşük prim (indirimli)</th><th>İndirimsiz</th></tr></thead>
+              <tbody>
+                {SENARYO.map((s) => <tr><td>%{s.artis}</td><td>{tl2(s.brut)}</td><td><strong>{tl2(s.altInd)}</strong></td><td>{tl2(s.alt)}</td></tr>)}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+    </section>
+
+    <section class="prose-block">
+      <h2>Bağ-Kur borcu: sorgulama ve sonuçları</h2>
+      <ul>
+        <li>Borç, e-Devlet’te SGK’nın <a href="https://www.turkiye.gov.tr/4b-borc-durumu" rel="nofollow noopener" target="_blank">“4B Borç Durumu”</a> hizmetinden görülür; ödeme aynı ekrandan ya da anlaşmalı bankalardan yapılır.</li>
+        <li>Süresinde ödenmeyen prime 5510 sayılı Kanun’un 89. maddesine göre gecikme cezası ve gecikme zammı eklenir; 5 puanlık indirim (aylık en az {tl2(prim(ALT, O.hazineIndirimi))}) kaybedilir.</li>
+        <li>60 günden fazla prim borcu olan sigortalı ve bakmakla yükümlü olduğu kişiler, acil haller ve bazı istisnalar dışında genel sağlık sigortasından yararlanamaz.</li>
+        <li>Primi ödenmeyen aylar emeklilikte hizmet süresine sayılmaz; emeklilik başvurusundan önce borç kapatılmalıdır.</li>
+      </ul>
+      <p class="cta-line">
+        Vergi ve SGK borçlarının tümü → <a href="/vergi-borcu-sorgulama/">vergi borcu sorgulama</a> · çalışanın
+        SGK kesintisi → <a href="/net-maas-hesaplama/">net maaş hesaplama</a> · prim tabanı →
+        <a href="/asgari-ucret-hesaplama/">asgari ücret hesaplama</a> · Bağ-Kur emeklisi zammı →
+        <a href="/emekli-zammi-hesaplama/">emekli zammı hesaplama</a> · tüm hesaplayıcılar →
+        <a href="/hesaplama-araclari/">hesaplama araçları</a>.
+      </p>
+      <p class="source-note">
+        Kaynak: 5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu md. 81, 82, 89
+        (<a href="https://www.mevzuat.gov.tr/mevzuatmetin/1.5.5510.pdf" rel="noopener">mevzuat.gov.tr</a>); 7566 sayılı
+        Kanun md. 23; {Y} prim tabloları:
+        <a href={bk.kaynak[0]} rel="noopener">Alo Maliye</a>, <a href={bk.kaynak[1]} rel="noopener">Tahancı Hukuk</a>
+        (tutarlar kuruşu kuruşuna eşleşti); brüt asgari ücret {tl2(ALT)} (Resmî Gazete). Son kontrol: {dogrulama}.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+    <Newsletter />
+  </div>
+  <script
+    is:inline
+    define:vars={{ D: { alt: ALT, ust: UST, myo: O.myo, gss: O.gss, kv: O.kisaVade, ind: O.hazineIndirimi } }}
+  >
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf2 = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const tl = (n) => nf2.format(n) + ' ₺';
+      const r2 = (n) => Math.round(n * 100 + 1e-6) / 100;
+      const set = (id, v) => { $(id).textContent = v; };
+      function update() {
+        let pek = parseFloat(String($('in-pek').value).replace(',', '.'));
+        const not = [];
+        if (!isFinite(pek) || pek < D.alt) { pek = D.alt; not.push('Prime esas kazanç alt sınırın altında olamaz; hesap alt sınırla yapıldı.'); }
+        if (pek > D.ust) { pek = D.ust; not.push('Üst sınır aşıldı; hesap üst sınırla yapıldı.'); }
+        let gun = parseInt($('in-gun').value, 10);
+        if (!isFinite(gun) || gun < 1) gun = 1;
+        if (gun > 30) gun = 30;
+        const baz = (pek / 30) * gun;
+        const indVar = $('in-ind').value === '1';
+        const myo = r2(baz * D.myo / 100), gss = r2(baz * D.gss / 100), kv = r2(baz * D.kv / 100);
+        const ind = indVar ? r2(baz * D.ind / 100) : 0;
+        const top = r2(baz * (D.myo + D.gss + D.kv - (indVar ? D.ind : 0)) / 100);
+        set('out-prim', tl(top));
+        set('out-yil', gun === 30 ? tl(top * 12) : '—');
+        set('out-myo', tl(myo));
+        set('out-gss', tl(gss));
+        set('out-kv', tl(kv));
+        set('out-ind', indVar ? '−' + tl(ind) : '0,00 ₺');
+        not.push(indVar
+          ? 'Primi süresinde ödediğiniz sürece her ay ' + tl(ind) + ' indirim alırsınız.'
+          : 'İndirimle ödeseydiniz bu ay ' + tl(r2(baz * D.ind / 100)) + ' daha az öderdiniz.');
+        set('out-note', not.join(' '));
+      }
+      ['in-pek', 'in-gun', 'in-ind'].forEach((id) => { $(id).addEventListener('input', update); $(id).addEventListener('change', update); });
+      update();
+    })();
+  </script>
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 660px; margin: 0 auto; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin: 0 0 1rem; }
+    .kpi { display: flex; flex-direction: column; gap: 0.15rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-xs); }
+    .kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .kpi-val { font-family: var(--font-serif); font-size: clamp(1.35rem, 1.15rem + 1vw, 1.8rem); font-weight: 700; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .kpi-val small { font-size: 0.55em; font-weight: 600; color: var(--text-soft); margin-left: 0.1rem; }
+    .kpi-sub { font-size: 0.78rem; color: var(--text-soft); line-height: 1.35; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; line-height: 1.4; }
+    .calc-inputs input, .calc-inputs select {
+      font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%; min-height: 2.75rem;
+    }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 1rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; font-variant-numeric: tabular-nums; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; font-variant-numeric: tabular-nums; text-align: right; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; line-height: 1.45; }
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1rem 0 0; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.55; }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0.4rem 0 0; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+    .rate-table :global(th), .rate-table :global(td) { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .rate-table :global(th) { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .row-note { display: block; font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem; line-height: 1.35; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block ul { padding-left: 1.2rem; }
+    .prose-block li { margin-bottom: 0.4rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+    .prose-block p.source-note { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 680px) {
+      .kpi-row { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: 1fr; padding: 1.1rem; }
+      .rate-table { font-size: 0.85rem; }
+      .rate-table :global(th), .rate-table :global(td) { padding: 0.5rem 0.4rem; }
+    }
+  </style>
+</BaseLayout>

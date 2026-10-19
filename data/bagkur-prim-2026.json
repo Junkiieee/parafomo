@@ -1,0 +1,13 @@
+{
+ "_aciklama": "Bağ-Kur (5510 s.K. 4/1-b) prim oranları — /bagkur-primi-hesaplama tek kaynağı. Prime esas kazanç (PEK) alt sınırı = brüt asgari ücret (data/asgari-ucret.json), üst sınırı = alt sınır × tavanKat. Oran değişirse (kanun) burayı güncelle; Ocak'ta yıl alanını ve dogrulama tarihini yenile.",
+ "yil": 2026,
+ "dogrulama": "2026-10-19",
+ "oranlar": {"myo": 21.0, "gss": 12.5, "kisaVade": 2.25, "hazineIndirimi": 5.0},
+ "tavanKat": 9,
+ "degisiklik": "MYÖ prim oranı 7566 sayılı Kanun md. 23 ile 1 Ocak 2026'dan itibaren %20'den %21'e çıktı",
+ "kontrol": {"altTesviksiz": 11808.23, "altIndirimli": 10156.73, "ustTesviksiz": 106274.03, "ustIndirimli": 91410.53},
+ "kaynak": [
+  "https://www.alomaliye.com/2026/08/18/4-b-bag-kur-5-puan-prim-indirimi-2026/",
+  "https://www.tahanci.av.tr/bagkur-primi-ne-kadar/"
+ ]
+}

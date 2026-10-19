@@ -204,6 +204,10 @@ def vergi_dilimi_card():
 
 
 CARDS = {
+    "bagkur-primi-hesaplama": lambda: {
+        # data/bagkur-prim-2026.json + brüt asgari ücret; Ocak 2027'de güncelle
+        "kicker": "BAĞ-KUR PRİMİ 2026", "stat": "₺10.156,73",
+        "sub": "en düşük aylık prim (%30,75) · indirimsiz 11.808,23 ₺"},
     "vergi-borcu-sorgulama": lambda: {
         # CB Kararı 10556 (RG 13.11.2025) %3,7; oran değişirse güncelle
         "kicker": "VERGİ BORCU SORGULAMA", "stat": "%3,7",
