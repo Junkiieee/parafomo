@@ -13,10 +13,10 @@ düşer" 1,5 · "hazine bonosu" 2,6 · "eurobond nedir" 2,4 → "X mi Y mi" kara
 **TCMB 22 Ekim:** yeni yazı AÇILMAZ — mevcut /blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler güncellenir (week.md T5).
 
 ## Kuyruk
-- [ ] **Para piyasası fonu nedir? 2026'da getirisi, stopajı ve mevduatla farkı** · hedef: "para piyasası fonu"
+- [x] **Para piyasası fonu nedir? 2026'da getirisi, stopajı ve mevduatla farkı** · hedef: "para piyasası fonu"
   (hacim 35, son 4 hafta 48 — yükseliyor) · neden: faiz yüksekken mevduata alternatif arayan talep; getiri
   rakamı verirsen kaynak (TEFAS/fon raporu) + tarih göster, tek fon önerme, tavsiye değil · iç-link:
-  /blog/yatirim-fonu-nedir-nasil-secilir, /mevduat-faizi-hesaplama, stopaj yazısı (yayındaysa)
+  /blog/yatirim-fonu-nedir-nasil-secilir, /mevduat-faizi-hesaplama, stopaj yazısı (yayındaysa) → /blog/para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki (2026-10-19)
 - [ ] **Altın hesabı nedir, mantıklı mı? Altın hesabı, fiziki altın ve altın fonu karşılaştırması** · hedef:
   "altın hesabı" (hacim 38) · neden: altın kümesi en güçlü kümemiz; makas, vergi, saklama, banka riski tablosu;
   altin-fonu yazısıyla çakışmasın (o yazı FON, bu yazı HESAP) · iç-link: /altin-getiri, /altin-hesaplama,

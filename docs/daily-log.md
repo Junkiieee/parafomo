@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-10-19 — Para Piyasası Fonu Nedir? 2026 Getiri, Stopaj ve Mevduat
+
+**Yayınlanan yazı:** [Para Piyasası Fonu Nedir? 2026 Getiri, Stopaj ve Mevduat](/blog/para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — "para piyasası fonu" hacim 35)
+
+---
+
 ## 2026-10-16 — Kredi Kartı Asgari Ödeme 2026: Oran, Hesap, Eksik Ödeme
 
 **Yayınlanan yazı:** [Kredi Kartı Asgari Ödeme 2026: Oran, Hesap, Eksik Ödeme](/blog/kredi-karti-asgari-odeme-tutari-2026)
