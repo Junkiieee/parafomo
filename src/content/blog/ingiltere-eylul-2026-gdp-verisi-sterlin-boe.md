@@ -1,6 +1,7 @@
 ---
-title: "İngiltere Eylül 2026 GDP Verisi: Büyüme Yavaşlar mı? Sterlin, BOE ve TL'ye Etkisi"
-description: "11 Eylül 2026 İngiltere aylık GDP (m/m) verisi bugün açıklanıyor. Büyüme beklentileri, BOE faiz yolu ve sterlinin TL'ye yansıması: 3 senaryo rehberi."
+title: "İngiltere GDP Verisi Açıklandı (11 Eylül 2026): Temmuz'da %0,4 Büyüme — Sterlin, BOE, TL"
+description: "ONS 11 Eylül 2026: İngiltere ekonomisi Temmuz'da aylık %0,4 büyüdü (Haziran %0,3), 3 aylık %0,4. Güçlü büyüme senaryosu gerçekleşti; BOE faiz yolu ve sterlinin TL'ye yansıması."
+updatedDate: 2026-10-19
 pubDate: 2026-09-11
 category: "Ekonomi"
 tags: ["ingiltere gdp", "sterlin", "BOE", "büyüme verisi", "bank of england", "küresel ekonomi"]
@@ -8,14 +9,14 @@ readingTime: 7
 featured: false
 faq:
   - q: "İngiltere Eylül 2026 GDP verisi ne zaman açıklandı?"
-    a: "11 Eylül 2026 sabahı Londra saatiyle 07:00'de (TSİ 09:00) ONS (Office for National Statistics) tarafından yayımlandı. Veri, Ağustos 2026 dönemi için aylık (m/m) büyüme oranını gösteriyor."
-  - q: "GDP verisi zayıf gelirse sterlin ne yapar?"
+    a: "11 Eylül 2026 sabahı Londra saatiyle 07:00'de (TSİ 09:00) ONS (Office for National Statistics) tarafından yayımlandı. Veri Temmuz 2026 dönemini kapsıyor: aylık GDP %0,4 arttı (Haziran %0,3, Mayıs %0); üç aylık büyüme %0,4 oldu."
+  - q: "GDP verisi zayıf gelseydi sterlin ne yapardı?"
     a: "Beklentinin altında büyüme, Bank of England'ın faiz indirimi için zemin hazırladığı yorumunu güçlendirir. Bu durumda sterlin genellikle baskı altına girer; GBP/USD düşer, GBP/TRY dengesi sterlinin aleyhine kayar."
   - q: "İngiltere büyümesi Türk yatırımcısını nasıl etkiler?"
     a: "Doğrudan TL etkisi sınırlıdır. Ancak zayıf UK büyümesi küresel risk iştahını kırabilir, dolar endeksini (DXY) yukarı itebilir ve gelişmekte olan piyasalardan sermaye çıkışını tetikleyebilir; bu da TL'yi dolaylı yoldan baskılar."
   - q: "BOE bu veriyi faiz kararında nasıl kullanır?"
     a: "Bank of England, faiz kararlarında büyümeyi, enflasyonu ve işgücü verilerini birlikte değerlendirir. Zayıf GDP serisi BOE'nin faiz indirim hızını artırma baskısını yükseltir; güçlü büyüme ise temkinli tutumu destekler."
-  - q: "Bugün hem İngiltere GDP hem ABD CPI açıklanıyor. Hangi veri daha önemli?"
+  - q: "11 Eylül'de hem İngiltere GDP hem ABD CPI açıklandı. Hangi veri daha önemliydi?"
     a: "ABD CPI piyasaların birincil odağıdır; Fed yön sinyali doğrudan dolardan tüm varlık sınıflarına yayılır. İngiltere GDP ise sterlin ve Avrupa risk iştahı için belirleyici olup piyasada ikincil veri konumundadır."
 shorts:
   - "İngiltere büyüme verisi TL'yi neden etkiler ki?"
@@ -36,7 +37,9 @@ shorts_visuals:
   - "concept|financial news website mobile screen"
 ---
 
-Bugün, 11 Eylül 2026, küresel piyasalar için çifte veri günü: Sabahın erken saatinde **İngiltere'nin aylık büyüme verisi (GDP m/m)** açıklandı; öğleden sonra ise tüm gözler ABD CPI'ya çevrili. İki veri de 🔴 High etki taşıyor — ancak Türk yatırımcısı için bunların ne anlama geldiğini, hangisinin daha baskın olduğunu ve portföyünüze nasıl yansıyabileceğini adım adım anlatalım.
+> **Veri açıklandı (11 Eylül 2026):** ONS'a göre İngiltere ekonomisi **Temmuz 2026'da aylık %0,4 büyüdü** (Haziran %0,3, Mayıs %0); hizmetler %0,4, üretim %0,2, inşaat %0,1 katkı verdi. Temmuz'a kadar üç aylık büyüme %0,4 — üst üste sekizinci çeyreklik artış ([ONS bülteni](https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/july2026)). Yazıdaki **Senaryo A (güçlü büyüme)** gerçekleşti. Sıradaki büyük veri ve kararlar: [ekonomik takvim](/ekonomik-takvim/) · [Fed faiz takvimi](/fed-faiz-takvimi/).
+
+_Aşağıdaki metin veriden önce yazıldı._ Bugün, 11 Eylül 2026, küresel piyasalar için çifte veri günü: Sabahın erken saatinde **İngiltere'nin aylık büyüme verisi (GDP m/m)** açıklandı; öğleden sonra ise tüm gözler ABD CPI'ya çevrili. İki veri de 🔴 High etki taşıyor — ancak Türk yatırımcısı için bunların ne anlama geldiğini, hangisinin daha baskın olduğunu ve portföyünüze nasıl yansıyabileceğini adım adım anlatalım.
 
 ## İngiltere Aylık GDP Verisi: Eylül 2026 Bağlamı
 
