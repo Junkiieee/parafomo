@@ -1,60 +1,60 @@
 {
-  "updated": "2026-10-16T06:00+00:00",
+  "updated": "2026-10-19T06:00+00:00",
   "source": "Yahoo Finance (GC=F ons altın, USDTRY=X kur); gram = ons/31.1035 × USDTRY",
-  "gram_tl_now": 6675.5,
-  "oz_usd_now": 4192.8,
+  "gram_tl_now": 6698.94,
+  "oz_usd_now": 4205.3,
   "ytd": {
     "label": "Yıl başından beri",
     "gram_tl_then": 6629.44,
-    "gram_tl_now": 6675.5,
-    "return_tl_pct": 0.7,
+    "gram_tl_now": 6698.94,
+    "return_tl_pct": 1.0,
     "oz_usd_then": 4745.1,
-    "oz_usd_now": 4192.8,
-    "return_usd_pct": -11.6
+    "oz_usd_now": 4205.3,
+    "return_usd_pct": -11.4
   },
   "periods": [
     {
       "label": "1 yıl",
       "years": 1,
-      "gram_tl_then": 5400.04,
-      "gram_tl_now": 6675.5,
-      "return_tl_pct": 23.6,
-      "oz_usd_then": 3996.5,
-      "oz_usd_now": 4192.8,
-      "return_usd_pct": 4.9
+      "gram_tl_then": 5812.96,
+      "gram_tl_now": 6698.94,
+      "return_tl_pct": 15.2,
+      "oz_usd_then": 4254.9,
+      "oz_usd_now": 4205.3,
+      "return_usd_pct": -1.2
     },
     {
       "label": "3 yıl",
       "years": 3,
       "gram_tl_then": 1896.39,
-      "gram_tl_now": 6675.5,
-      "return_tl_pct": 252.0,
+      "gram_tl_now": 6698.94,
+      "return_tl_pct": 253.2,
       "oz_usd_then": 2038.1,
-      "oz_usd_now": 4192.8,
-      "return_usd_pct": 105.7
+      "oz_usd_now": 4205.3,
+      "return_usd_pct": 106.3
     },
     {
       "label": "5 yıl",
       "years": 5,
-      "gram_tl_then": 546.3,
-      "gram_tl_now": 6675.5,
-      "return_tl_pct": 1121.9,
-      "oz_usd_then": 1783.9,
-      "oz_usd_now": 4192.8,
-      "return_usd_pct": 135.0
+      "gram_tl_then": 724.13,
+      "gram_tl_now": 6698.94,
+      "return_tl_pct": 825.1,
+      "oz_usd_then": 1773.6,
+      "oz_usd_now": 4205.3,
+      "return_usd_pct": 137.1
     },
     {
       "label": "10 yıl",
       "years": 10,
       "gram_tl_then": 128.34,
-      "gram_tl_now": 6675.5,
-      "return_tl_pct": 5101.5,
+      "gram_tl_now": 6698.94,
+      "return_tl_pct": 5119.8,
       "oz_usd_then": 1170.8,
-      "oz_usd_now": 4192.8,
-      "return_usd_pct": 258.1
+      "oz_usd_now": 4205.3,
+      "return_usd_pct": 259.2
     }
   ],
   "headline_years": 10,
-  "headline_return_tl_pct": 5101.5,
-  "headline_return_usd_pct": 258.1
+  "headline_return_tl_pct": 5119.8,
+  "headline_return_usd_pct": 259.2
 }

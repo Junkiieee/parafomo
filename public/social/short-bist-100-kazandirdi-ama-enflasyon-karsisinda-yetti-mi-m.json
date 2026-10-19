@@ -1,0 +1,70 @@
+{
+  "title": "BIST 100 kazandırdı ama enflasyon karşısında yetti mi #Shorts",
+  "description": "Geçen yıl 5000 TL'yi BIST 100'e koysaydın bugün yaklaşık 5378 TL, yani yaklaşık %8 getiri olurdu. Bu kârın alım gücünü korumak için neden tek başına yetmeyebileceğini basit bir hesapla anlatıyor.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #BIST100 #borsa #enflasyon #getiri #yatırım",
+  "tags": [
+    "BIST100",
+    "borsa",
+    "enflasyon",
+    "getiri",
+    "yatırım",
+    "birikim",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-bist-100-kazandirdi-ama-enflasyon-karsisinda-yetti-mi-m.mp4",
+  "slug": "bist-100-kazandirdi-ama-enflasyon-karsisinda-yetti-mi-m",
+  "format": "backtest_return",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 4.72,
+      "spoken": "Borsa sana 378 lira kazandırdı, ama kaybettin.",
+      "visual": "manim: Risk"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 4.72,
+      "end": 13.88,
+      "spoken": "Geçen yıl 5000 lirayı BIST 100'e koysaydın, bugün yaklaşık 5378 lira olurdu; getiri yaklaşık yüzde 8.",
+      "visual": "manim: Borsa"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 13.88,
+      "end": 20.42,
+      "spoken": "Ama market sepetin bir yılda bundan fazla pahalandıysa, bu artış sadece kâğıt üstünde kalır.",
+      "visual": "manim: Borsa"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 20.42,
+      "end": 28.36,
+      "spoken": "Yani 5000 lira yaklaşık 5378 oldu. Kâr var, ama enflasyonu geçmediysen alım gücün büyümedi.",
+      "visual": "manim: backtest"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 28.36,
+      "end": 36.25,
+      "spoken": "Peki aynı yıl altın borsayı geçti mi? Yarın hesabı açıyorum; abone ol, her gün tek net hesabı kısa göster.",
+      "visual": "manim: ParaFOMO"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-17T16:02:32+00:00",
+    "slug": "bist-100-kazandirdi-ama-enflasyon-karsisinda-yetti-mi-m",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "JMJO8VyksKA",
+  "youtube_url": "https://youtube.com/shorts/JMJO8VyksKA",
+  "ig_reel_id": "18077575175558848",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DemffQbjnGL/",
+  "ig_seed_comment_id": "18178485952448034"
+}

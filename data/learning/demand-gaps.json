@@ -1,16 +1,16 @@
 {
  "_aciklama": "Google Autocomplete (tr) önerileri; covered = site slug'larıyla kaba eşleşme. Kapsanmayanlar = potansiyel yeni sayfa/yazı konusu — talebi GSC/rakiple doğrula.",
- "generated_utc": "2026-10-14T08:46:13Z",
+ "generated_utc": "2026-10-18T08:46:30Z",
  "uncovered_top": [
   "asgari ücret 2027 ara zam olacak mı",
   "asgari ücret 2027 kaç tl olacak",
+  "altın fiyatı ne zaman yükselir",
   "altın fiyatı ne zaman yükselecek",
   "altın fiyatı ne zaman düşecek",
   "altın fiyatı ne zaman düşer",
   "altın fiyatı ne zaman artar",
   "altın fiyatı ne zaman artacak",
   "altın fiyatı ne zaman çıkar",
-  "altın fiyatı ne zaman yükselir",
   "altın fiyatı ne zaman yüksel",
   "altın fiyatı ne zaman",
   "altın fiyatı ne zaman çıkacak",
@@ -119,6 +119,10 @@
    "seed": "altın fiyatı ne zaman",
    "suggestions": [
     {
+     "q": "altın fiyatı ne zaman yükselir",
+     "covered": false
+    },
+    {
      "q": "altın fiyatı ne zaman yükselecek",
      "covered": false
     },
@@ -143,10 +147,6 @@
      "covered": false
     },
     {
-     "q": "altın fiyatı ne zaman yükselir",
-     "covered": false
-    },
-    {
      "q": "altın fiyatı ne zaman yüksel",
      "covered": false
     },
@@ -164,12 +164,12 @@
    "seed": "dolar mı altın mı",
    "suggestions": [
     {
-     "q": "dolar mı altın mı alınmalı",
-     "covered": true
-    },
-    {
      "q": "dolar mı altın mı almalı son dakika",
      "covered": false
+    },
+    {
+     "q": "dolar mı altın mı alınmalı",
+     "covered": true
     },
     {
      "q": "dolar mı altın mı almak mantıklı",
@@ -205,11 +205,11 @@
    "seed": "mevduat faizi",
    "suggestions": [
     {
-     "q": "mevduat faizi",
+     "q": "mevduat faizi hesaplama",
      "covered": true
     },
     {
-     "q": "mevduat faizi hesaplama",
+     "q": "mevduat faizi",
      "covered": true
     },
     {
@@ -327,11 +327,11 @@
      "covered": false
     },
     {
-     "q": "emekli zammı 2027",
+     "q": "emekli zammı ne kadar olacak",
      "covered": true
     },
     {
-     "q": "emekli zammı ne kadar olacak",
+     "q": "emekli zammı belli oldu mu",
      "covered": true
     }
    ]
@@ -348,11 +348,11 @@
      "covered": true
     },
     {
-     "q": "asgari ücret 2027 net",
+     "q": "asgari ücret 2027 de ne kadar olacak",
      "covered": true
     },
     {
-     "q": "asgari ücret 2027 de ne kadar olur",
+     "q": "asgari ücret 2027 net",
      "covered": true
     },
     {
@@ -397,10 +397,6 @@
      "covered": true
     },
     {
-     "q": "kira artış oranı ekim 2026",
-     "covered": true
-    },
-    {
      "q": "kira artış oranı eylül 2026",
      "covered": true
     },
@@ -422,6 +418,10 @@
     },
     {
      "q": "kira artış oranı tefe tüfe",
+     "covered": true
+    },
+    {
+     "q": "kira artış oranı ne kadar",
      "covered": true
     }
    ]
@@ -528,10 +528,6 @@
      "covered": true
     },
     {
-     "q": "yeniden değerleme oranı 2027",
-     "covered": true
-    },
-    {
      "q": "yeniden değerleme hesaplama",
      "covered": true
     },
@@ -558,6 +554,10 @@
     {
      "q": "yeniden değerleme muhasebe kaydı",
      "covered": false
+    },
+    {
+     "q": "yeniden değerleme oranı nasıl hesaplanır",
+     "covered": true
     }
    ]
   },
@@ -676,15 +676,15 @@
      "covered": true
     },
     {
+     "q": "kıdem tazminatı tavanı 2026",
+     "covered": true
+    },
+    {
      "q": "kıdem tazminatı",
      "covered": true
     },
     {
      "q": "kıdem tazminatı hesaplama 2026",
-     "covered": true
-    },
-    {
-     "q": "kıdem tazminatı tavanı 2026",
      "covered": true
     },
     {
@@ -721,15 +721,15 @@
      "covered": true
     },
     {
-     "q": "temettü nedir",
-     "covered": true
-    },
-    {
      "q": "temettü hisseleri",
      "covered": true
     },
     {
      "q": "temettü veren hisseler",
+     "covered": false
+    },
+    {
+     "q": "temettü ne demek",
      "covered": false
     },
     {
@@ -766,11 +766,11 @@
      "covered": false
     },
     {
-     "q": "borsa gündem",
+     "q": "borsa kaçta açılıyor",
      "covered": false
     },
     {
-     "q": "borsa kaçta açılıyor",
+     "q": "borsa canlı",
      "covered": false
     },
     {
@@ -790,12 +790,12 @@
      "covered": false
     },
     {
-     "q": "borsa neden düşüyor",
-     "covered": true
+     "q": "borsa gündem",
+     "covered": false
     },
     {
-     "q": "borsa restaurant",
-     "covered": false
+     "q": "borsa neden düşüyor",
+     "covered": true
     }
    ]
   }

@@ -1,6 +1,6 @@
 # Ekonomik Takvim (otomatik)
 
-> Son güncelleme: 2026-10-16 · `scripts/fetch-economic-calendar.py` tarafından üretilir. ELLE DÜZENLEME.
+> Son güncelleme: 2026-10-19 · `scripts/fetch-economic-calendar.py` tarafından üretilir. ELLE DÜZENLEME.
 > Kaynaklar: Investing.com (TR + küresel, birincil), TCMB (faiz kararı), yedek: ForexFactory + TÜİK kuralı.
 
 İçerik üreticisi için: yaklaşan **🔴 High** etkili bir TR/küresel olay 1-3 gün içindeyse,
@@ -10,8 +10,7 @@ o olayın `hook`'una göre bir **explainer** yazısını sıraya al (omurga ever
 
 | Tarih | Gün | Saat | Bölge | Etki | Olay | İçerik fırsatı |
 |-------|-----|------|-------|------|------|----------------|
-| 2026-10-16 | Cuma | 2:00am | 🇬🇧 | 🔴 High | BOE Gov Bailey Speaks |  |
-| 2026-10-16 | Cuma | 3:30am | 🇺🇸 | 🔴 High | Fed Chairman Warsh Speaks |  |
+| 2026-10-21 | Çarşamba | 6:00am | 🇬🇧 | 🔴 High | CPI y/y | Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi. |
 | 2026-10-22 | Perşembe |  | 🇹🇷 | 🔴 High | TCMB faiz kararı (PPK) | Faiz kararı explainer'ı. |
 | 2026-10-30 | Cuma |  | 🇹🇷 | 🟡 Med | TCMB PPK toplantı özeti | Karar gerekçesi yorumu. |
 | 2026-11-03 | Salı | 10:00 | 🇹🇷 | 🔴 High | TÜİK enflasyon (TÜFE) verisi | Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı. |

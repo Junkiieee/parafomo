@@ -1,0 +1,70 @@
+{
+  "title": "Enflasyon rakamı senin değil, kendi hesabını yap #Shorts",
+  "description": "Açıklanan enflasyon ortalama bir sepete göre hesaplanır; senin harcama sepetin farklıysa kendi enflasyonun da farklıdır. Birikimin gerçekten korunup korunmadığını market fişiyle nasıl test edeceğini anlatıyor.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #enflasyon #birikim #kira #market #paranın değeri",
+  "tags": [
+    "enflasyon",
+    "birikim",
+    "kira",
+    "market",
+    "paranın değeri",
+    "yatırım",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-enflasyon-rakami-senin-degil-kendi-hesabini-yap.mp4",
+  "slug": "enflasyon-rakami-senin-degil-kendi-hesabini-yap",
+  "format": "myth",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.69,
+      "spoken": "Açıklanan enflasyon senin enflasyonun değil.",
+      "visual": "object: grocery shopping basket fresh vegetables"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.69,
+      "end": 11.34,
+      "spoken": "Çünkü o rakam ortalama sepet. Senin kira, market ve fatura payın o sepetle birebir tutmaz.",
+      "visual": "object: calculator"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 11.34,
+      "end": 18.19,
+      "spoken": "Ama asıl şok şu: kirada oturuyorsan, kendi enflasyonun açıklanandan yüksek çıkabilir.",
+      "visual": "object: house keys"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 18.19,
+      "end": 24.93,
+      "spoken": "Bir yıl önceki market fişini bugünküyle kıyasla; birikimin o oranın altında kazanıyorsa eriyorsun.",
+      "visual": "object: receipt paper"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 24.93,
+      "end": 31.11,
+      "spoken": "Peki bu farkı kapatan araç hangisi, yarın bakacağız. Abone ol, her gün tek net analiz.",
+      "visual": "object: grocery shopping basket fresh vegetables"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-16T08:03:18+00:00",
+    "slug": "enflasyon-rakami-senin-degil-kendi-hesabini-yap",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "hRSqWoC2jA4",
+  "youtube_url": "https://youtube.com/shorts/hRSqWoC2jA4",
+  "ig_reel_id": "17866087173679336",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DejD2l8FQgo/",
+  "ig_seed_comment_id": "18081239972343085"
+}

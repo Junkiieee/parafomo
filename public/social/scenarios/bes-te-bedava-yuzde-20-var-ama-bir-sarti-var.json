@@ -1,0 +1,64 @@
+{
+  "slug": "bes-te-bedava-yuzde-20-var-ama-bir-sarti-var",
+  "title": "BES'te bedava yüzde 20 var ama bir şartı var",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "BES'te devlet katkısı, yatırdığın paranın yüzde 20'si kadar. Tam hak için 56 yaş ve 10 yıl şartı olduğunu, erken çıkışın maliyetini ve nasıl başlanacağını sade bir hesapla anlatır.\nKaynak/hesap: 1.000/5.000 = %20; 12 ay x 1.000 = 12.000 TL · BES Kanunu devlet katkısı oranı (katkı payının %20'si), Emeklilik Gözetim Merkezi/Hazine ve Maliye Bakanlığı düzenlemesi; senaryodaki hesap",
+  "tags": [
+    "BES",
+    "bireysel emeklilik",
+    "devlet katkısı",
+    "birikim",
+    "enflasyon",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Devlet her 100 lirana 20 lira ekliyor.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank with coins"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ayda 5.000 lira BES'e yatır, devlet 1.000 lira ekler; yılda 12.000 lira, yani yüzde 20.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama bu para hemen senin değil: tam hak için 56 yaş ve 10 yıl dolmalı.",
+      "visual": {
+        "type": "object",
+        "query": "hourglass"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çözüm: 10 yıl dokunmayacağın tutarla başla, fon giderini sor; bedava yüzde 20 sende kalır.",
+      "visual": {
+        "type": "object",
+        "query": "contract document and pen"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki videoda maaşından kaç lirayı fark etmeden kaybettiğini göstereceğim; abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank with coins"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "yüzde 20",
+    "calc": "1.000/5.000 = %20; 12 ay x 1.000 = 12.000 TL",
+    "source": "BES Kanunu devlet katkısı oranı (katkı payının %20'si), Emeklilik Gözetim Merkezi/Hazine ve Maliye Bakanlığı düzenlemesi; senaryodaki hesap"
+  }
+}

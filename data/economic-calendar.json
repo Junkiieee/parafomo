@@ -1,89 +1,8 @@
 {
-  "updated": "2026-10-16",
+  "updated": "2026-10-19",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-10-14",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core CPI m/m",
-      "source": "forexfactory",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-10-14",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core CPI y/y",
-      "source": "forexfactory",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-10-14",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "CPI m/m",
-      "source": "forexfactory",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-10-14",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "CPI y/y",
-      "source": "forexfactory",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-10-15",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core PPI m/m",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-10-15",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core Retail Sales m/m",
-      "source": "forexfactory",
-      "hook": "Perakende satışlar — tüketim ve büyüme sinyali."
-    },
-    {
-      "date": "2026-10-15",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "PPI m/m",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-10-15",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Retail Sales m/m",
-      "source": "forexfactory",
-      "hook": "Perakende satışlar — tüketim ve büyüme sinyali."
-    },
-    {
-      "date": "2026-10-15",
-      "time": "6:00am",
-      "region": "GBP",
-      "impact": "High",
-      "title": "GDP m/m",
-      "source": "forexfactory",
-      "hook": "Büyüme verisi — küresel görünüm."
-    },
     {
       "date": "2026-10-16",
       "time": "2:00am",
@@ -101,6 +20,15 @@
       "title": "Fed Chairman Warsh Speaks",
       "source": "forexfactory",
       "hook": ""
+    },
+    {
+      "date": "2026-10-21",
+      "time": "6:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "CPI y/y",
+      "source": "forexfactory",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
     },
     {
       "date": "2026-10-22",

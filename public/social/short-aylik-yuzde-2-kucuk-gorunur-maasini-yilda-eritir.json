@@ -1,0 +1,63 @@
+{
+  "title": "Aylık yüzde 2 küçük görünür, maaşını yılda eritir #Shorts",
+  "description": "Aylık yüzde 2 enflasyon bileşik etkiyle yılda yaklaşık yüzde 27 eder. Zammını bu sayıyla kıyaslamanın basit yolu.\nKaynak/hesap: 1,02^12 = 1,268 → yaklaşık %27; 100 TL → yaklaşık 127 TL; 1,24 / 1,268 ≈ 0,978 → yaklaşık %2 alım gücü kaybı · senaryodaki hesap\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #enflasyon #maaş zammı #alım gücü #bileşik etki #birikim",
+  "tags": [
+    "enflasyon",
+    "maaş zammı",
+    "alım gücü",
+    "bileşik etki",
+    "birikim",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-aylik-yuzde-2-kucuk-gorunur-maasini-yilda-eritir.mp4",
+  "slug": "aylik-yuzde-2-kucuk-gorunur-maasini-yilda-eritir",
+  "format": "shock_number",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 4.05,
+      "spoken": "Aylık yüzde 2, yılda yüzde 27 eder.",
+      "visual": "object: piggy bank with coins"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 4.05,
+      "end": 10.28,
+      "spoken": "Fiyatlar üst üste biniyor: 100 liralık market sepeti bir yılda yaklaşık 127 lira oluyor.",
+      "visual": "object: grocery basket with vegetables"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 10.28,
+      "end": 16.94,
+      "spoken": "Maaşına yüzde 24 zam gelse bile market sepetin karşısında yaklaşık yüzde 2 geride kalıyorsun.",
+      "visual": "object: calculator"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 16.94,
+      "end": 23.92,
+      "spoken": "Zam gelince aylık enflasyonu on iki ay üst üste çarp; zam o sayının altındaysa fakirleşiyorsun.",
+      "visual": "marka kartı"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 23.92,
+      "end": 31.69,
+      "spoken": "Sıradaki hesap seni daha da şaşırtabilir. Abone ol, her gün 60 saniyede tek net rakamı sade hesapla göstereyim.",
+      "visual": "object: piggy bank with coins"
+    }
+  ],
+  "video_id": "7S2o6X3IV30",
+  "youtube_url": "https://youtube.com/shorts/7S2o6X3IV30",
+  "ig_reel_id": "17996467262838307",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DeowEHrjRJK/",
+  "ig_seed_comment_id": "18235362973320986"
+}

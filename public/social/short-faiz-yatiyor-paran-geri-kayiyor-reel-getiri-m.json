@@ -1,0 +1,70 @@
+{
+  "title": "Faiz yatıyor, paran geri kayıyor: reel getiri #Shorts",
+  "description": "Reel getiri kavramı koşu bandı metaforuyla anlatılıyor: faiz enflasyonun altında kalırsa hesaptaki sayı büyür ama alım gücü küçülür. İzleyiciye kendi hesabını yapması için basit bir formül veriliyor.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #reel getiri #faiz #enflasyon #alım gücü #birikim",
+  "tags": [
+    "reel getiri",
+    "faiz",
+    "enflasyon",
+    "alım gücü",
+    "birikim",
+    "mevduat",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-faiz-yatiyor-paran-geri-kayiyor-reel-getiri-m.mp4",
+  "slug": "faiz-yatiyor-paran-geri-kayiyor-reel-getiri-m",
+  "format": "single_concept",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.5,
+      "spoken": "Paran koşuyor ama bir adım ilerlemiyor.",
+      "visual": "manim: Faiz"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.5,
+      "end": 10.64,
+      "spoken": "Buna reel getiri denir: faiz yüzde kırk, fiyatlar da yüzde kırk artıyorsa, kazancın sıfırdır.",
+      "visual": "manim: Faiz"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 10.64,
+      "end": 17.5,
+      "spoken": "Ama asıl tuzak şu: faiz yüzde otuz beş, fiyatlar kırk ise, koşarken geriye kayıyorsun.",
+      "visual": "manim: Faiz"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 17.5,
+      "end": 24.4,
+      "spoken": "Hesabına bak: faizden enflasyonu çıkar. Sonuç eksiyse, paran büyümüyor, sadece sayısı büyüyor.",
+      "visual": "manim: Enflasyon"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 24.4,
+      "end": 31.06,
+      "spoken": "Peki bu bandın dışına nasıl çıkılır? Abone ol, her gün tek net analizi 60 saniyede anlatıyoruz.",
+      "visual": "manim: ParaFOMO"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-16T16:02:31+00:00",
+    "slug": "faiz-yatiyor-paran-geri-kayiyor-reel-getiri-m",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "7_CvfPlS7jk",
+  "youtube_url": "https://youtube.com/shorts/7_CvfPlS7jk",
+  "ig_reel_id": "18097503302403971",
+  "ig_reel_permalink": "https://www.instagram.com/reel/Dej6sQIAU3n/",
+  "ig_seed_comment_id": "18127310527934985"
+}
