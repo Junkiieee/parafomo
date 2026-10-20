@@ -56,7 +56,7 @@ FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan me
   "2027'de emlak vergisi ne kadar artar" — kanuni kural (takdir olmayan yıllarda vergi değeri YD oranının yarısı
   kadar artar mı? DOĞRULA) + `data/yeniden-degerleme.json` ile tahmin. Değerli konut vergisini ayrı satırda
   kısaca an (hacim düşük 1,8). · Kabul: canlıda 200, oran tablosu her satırında kaynak, hesaplayıcı çalışır, FAQPage.
-- [ ] T4 (faiz kararı ~160) — **TCMB 22 Ekim: mevcut yazıyı güncelle, yeni yazı AÇMA** · TARİHLİ: 20 Ekim veya
+- [x] T4 (faiz kararı ~160) — → canlı https://parafomo.com/blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler/ ("Son durum (20 Ekim)": TCMB Piyasa Katılımcıları Anketi %36 + AA Finans 19/20 ekonomist 100 bp → medyan %36, yıl sonu %35; Eylül TÜFE %29,73; başlık "TCMB Faiz Kararı 22 Ekim 2026: Beklenti ve Senaryolar"). DÜZELTME: yazı faizi "~%22-25" ve "250-500 bp konsensüs" diyordu, Fitch BB+ kaynaksızdı → 2026 karar tablosu data/tcmb-2026.json'dan (%37 sabit), senaryolar 100/150-200 bp/sabit; FAQ + shorts düzeltildi · commit 161671a · 2026-10-20. Kalan kontrol → T4b — **TCMB 22 Ekim: mevcut yazıyı güncelle, yeni yazı AÇMA** · TARİHLİ: 20 Ekim veya
   sonrası (öncesindeyse bir sonraki göreve geç). /blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler'e "Son durum
   (<tarih>)" bölümü: TCMB Piyasa Katılımcıları Anketi / AA Finans beklenti anketi (kaynaklı) + Eylül TÜFE %29,73
   bağlamı; başlığı "TCMB Faiz Kararı 22 Ekim 2026: Beklenti ve Senaryolar" yap. SONUÇ KUTUSU ARTIK OTOMATİK (RC 10-18): yazıda
@@ -65,6 +65,10 @@ FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan me
   elle değiştirme (sonucBaslik devreye girer; karar öncesi başlık değişikliği serbest). 23 Ekim sabahı: kutunun canlıda "Karar açıklandı" gösterdiğini + /tcmb-faiz-takvimi'ni
   kontrol et (görünmüyorsa `logs/policy-decisions.log`); SSS'yi geçmiş zamana çevir, `updatedDate`. · Kabul:
   canlı yazıda güncel bölüm; 23 Ekim'den sonra otomatik kutu "açıklandı" durumunda.
+- [ ] T4b (faiz kararı — TARİHLİ, 23 Ekim sabahı) — **TCMB kararı sonrası kontrol** · /blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler/
+  üstünde otomatik sonuç kutusu "açıklandı" + sonucBaslik görünüyor mu, /tcmb-faiz-takvimi kararı gösteriyor mu (yoksa
+  `logs/policy-decisions.log`); SSS'yi geçmiş zamana çevir ("Ekim 2026'da TCMB faiz indirecek mi?" → gerçekleşen karar),
+  "Son durum" bölümünü "Karar öncesi beklenti" olarak yeniden adlandır, `updatedDate`. ELLE kutu ekleme. · Kabul: canlıda kutu + geçmiş zaman SSS.
 - [x] T5 (B261015-1) — → canlı https://parafomo.com/ihtiyac-kredisi-hesaplama/ (KKDF %15 GİB + BSMV %15 7345 CK dahil taksit; BDDK 11152 vade uyarısı; 50/100/200 bin tablo; TCMB ihtiyaç faizi varsayılan) + EVDS: /mevduat-faizi-hesaplama oran tablosu, konut/kredi varsayılan faiz TCMB · commit cd0823e · RC oturumu 10-15 — **/ihtiyac-kredisi-hesaplama yeni araç** · hedef: ihtiyaç kredisi hesaplama (48), ihtiyaç
   kredisi faiz oranları (9,4). T1 bileşenini yeniden kullan; fark: KKDF + BSMV taksite dahil (oranları resmi
   kaynakla doğrula), BDDK tutar bazlı azami vade (doğrula), "50/100/200 bin TL × 12/24/36 ay" tablosu.
@@ -171,6 +175,8 @@ FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan me
 - Headless: döngü/değişken/awk/heredoc yok; çok adımlı iş `agent/state/*.py` ile.
 
 ## Biten / iptal (bu hafta)
+- [x] (günlük 10-20, keyword-map K16) /kurumlar-vergisi-hesaplama → canlı https://parafomo.com/kurumlar-vergisi-hesaplama/ (genel %25, finans %30, ihracat %20, halka arz %23, asgari KV %10 kontrolü, 2026 üretim 1 puan / 2027 üretim %12,5 — 7582 s.K.; beyan son günü kaynaklar çeliştiği için yazılmadı) · commit 5232ae5
+- [x] (günlük 10-20, adım 5) /blog/pce-gdp-eylul-2026-fed-kasim-dolar-altin → sonuç kutusu (BEA: Ağustos çekirdek PCE %0,2 / %3,0; Q2 GDP %2,2), yanlış "Fed Kasım" → 28 Ekim · commit 760236f
 - [x] (günlük 10-19, keyword-map K16/K22) /bagkur-primi-hesaplama → canlı https://parafomo.com/bagkur-primi-hesaplama/ (%35,75 / indirimli %30,75, en düşük 10.156,73 ₺; 2 kaynakla kuruşu kuruşuna; GSS tutarları kaynaklar çeliştiği için YAZILMADI) · commit c59d0f2
 - [x] (haftalık koşu 10-15) Kuyruk konuları Trends ile ölçüldü; 2 hacimsiz konu iptal, 6 hacimli konu eklendi (c9a6540)
 - [x] (haftalık koşu 10-15) GSC sayfa×sorgu teşhisi: hesaplayıcılar otorite kilidinde; 2027 sorgularında p4-11
