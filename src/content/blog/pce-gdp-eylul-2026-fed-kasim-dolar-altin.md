@@ -1,28 +1,29 @@
 ---
-title: "ABD Eylül 2026 PCE ve Final GDP: Fed Kasım'da Ne Yapar? Dolar ve Altın Etkisi"
-description: "30 Eylül'de açıklanan ABD çekirdek PCE ve Q2 Final GDP verisi Fed Kasım kararını belirliyor. Türk yatırımcısı için dolar, altın ve TL etkisi senaryolarla."
+title: "ABD PCE ve GDP Açıklandı (30 Eylül 2026): Çekirdek PCE %3,0, Büyüme %2,2 — Fed 28 Ekim"
+description: "BEA 30 Eylül 2026: Ağustos çekirdek PCE aylık %0,2, yıllık %3,0; Q2 büyümesi kesin hesapta %2,2'ye revize. Fed 28 Ekim kararı, dolar, altın ve TL etkisi."
 pubDate: 2026-09-28
+updatedDate: 2026-10-20
 category: "Ekonomi"
 tags: ["pce verisi", "abd büyüme verisi", "fed faiz kararı", "dolar tl", "altın fiyatı", "q2 gdp 2026"]
 readingTime: 8
 featured: false
 faq:
-  - q: "30 Eylül PCE ve Final GDP verisi ne zaman açıklanıyor?"
-    a: "30 Eylül 2026 Çarşamba günü saat 15:30 Türkiye saatiyle (12:30 ET) açıklanıyor. Çekirdek PCE fiyat endeksi ve Q2 büyüme verisinin kesin (Final) hesabı aynı anda yayımlanıyor."
+  - q: "30 Eylül 2026 PCE ve GDP verisi ne çıktı?"
+    a: "BEA 30 Eylül 2026'da açıkladı: Ağustos PCE fiyat endeksi aylık %0,3, yıllık %3,4; çekirdek PCE aylık %0,2, yıllık %3,0. ABD ikinci çeyrek büyümesi kesin (3.) tahminde yıllıklandırılmış %2,2'ye revize edildi (önceki tahmin %1,5)."
   - q: "Final GDP ile Prelim GDP arasındaki fark nedir?"
     a: "Prelim GDP ikinci tahmindir ve kısmen eksik veriyle hesaplanır. Final GDP ise tüm kaynak verilerin tamamlandığı kesin hesaplamadır; büyüme rakamını en güvenilir şekilde yansıtır ve ciddi revizyonlar içerebilir."
   - q: "PCE verisi yüksek çıkarsa altın ne olur?"
     a: "Yüksek PCE, Fed'in faiz indirimi için henüz erken olduğu sinyalini verir; dolar güçlenir, altın ons fiyatı baskı altına girer. Ancak TL de eş zamanlı değer kaybederse gram altındaki TL bazlı etki sınırlı kalabilir."
-  - q: "Bu veri Fed'in Kasım 2026 kararını nasıl etkiler?"
-    a: "30 Eylül PCE ve Final GDP, Fed'in Kasım FOMC toplantısı öncesinde gelen kritik çift veridir. İkisi birlikte enflasyon-büyüme dengesini ortaya koyduğu için faiz yolunu doğrudan şekillendirir."
+  - q: "Bu veri Fed'in 28 Ekim 2026 kararını nasıl etkiler?"
+    a: "Fed'in bir sonraki FOMC kararı 28 Ekim 2026'da. Çekirdek PCE'nin yıllık %3,0 ile %2 hedefinin belirgin üzerinde kalması ve büyümenin %2,2'ye yukarı revize edilmesi, Fed'in indirim için acele etmesini gerektirmeyen bir tablo çizdi."
   - q: "Türkiye'deki yatırımcı için bu veri neden önemli?"
-    a: "ABD verileri dolar endeksini (DXY) hareket ettirdiğinde hem kur hem de altın TL bazında etkilenir. Üstelik 22 Ekim'de TCMB PPK toplantısı var; Fed beklentilerindeki değişim TCMB'nin hareket alanını da dolaylı biçimde etkiler."
+    a: "ABD verileri dolar endeksini (DXY) hareket ettirdiğinde hem kur hem de altın TL bazında etkilenir. Üstelik 22 Ekim'de TCMB PPK toplantısı var; Fed beklentilerindeki değişim TCMB'nin hareket alanını da dolaylı biçimde etkiliyor."
 shorts:
   - "30 Eylül iki rakam Fed'i köşeye sıkıştırır mı?"
   - "PCE, Fed'in resmi enflasyon ölçütü; hedef yıllık yüzde iki seviyesi."
   - "Final GDP en güvenilir büyüme rakamı, piyasa bunu son kez fiyatlar."
   - "PCE yüksek gelirse dolar güçlenir, altın baskı altına girer, TL zayıflar."
-  - "Kasım'da Fed ne yapar? Senaryo tablosunun tamamı parafomo.com'da; abone ol, kritik verileri ilk sen öğren."
+  - "28 Ekim'de Fed ne yapar? Senaryo tablosunun tamamı parafomo.com'da; abone ol, kritik verileri ilk sen öğren."
 shorts_broll:
   - "US Federal Reserve interest rate decision"
   - "core PCE inflation data chart"
@@ -36,15 +37,17 @@ shorts_visuals:
   - "concept|financial news alert smartphone investor"
 ---
 
-30 Eylül 2026 Çarşamba günü Türkiye saati 15:30'da iki kritik ABD ekonomi verisi eş zamanlı açıklanıyor: **çekirdek PCE fiyat endeksi** ve **Q2 büyüme verisinin kesin (Final) hesabı**. Bu çift açıklama, Fed'in Kasım FOMC toplantısında faiz konusunda ne yapacağını belirleyecek en ağırlıklı veri noktası. Türk yatırımcısı için dolar, altın ve TL senaryo tablosu aşağıda.
+> **Veri açıklandı (30 Eylül 2026):** Ağustos **çekirdek PCE aylık %0,2, yıllık %3,0**; manşet PCE aylık %0,3, yıllık %3,4 ([BEA](https://www.bea.gov/news/2026/personal-income-and-outlays-august-2026)). ABD **Q2 büyümesi kesin tahminde %2,2'ye** yukarı revize edildi (önceki tahmin %1,5; [BEA](https://www.bea.gov/news/2026/gdp-third-estimate-industries-corporate-profits-state-gdp-and-state-personal-income-2nd)). Tablo "yüksek PCE + güçlü büyüme" senaryosuna yakın: enflasyon %2 hedefinin belirgin üzerinde, ekonomi beklenenden güçlü. Sıradaki: [Fed 28 Ekim kararı ve takvim](/fed-faiz-takvimi/) · [ABD Ekim 2026 CPI verisi](/blog/abd-ekim-2026-cpi-verisi-fed-dolar-altin/).
+
+30 Eylül 2026 Çarşamba günü Türkiye saati 15:30'da iki kritik ABD ekonomi verisi eş zamanlı açıklandı: **çekirdek PCE fiyat endeksi** (Ağustos) ve **Q2 büyüme verisinin kesin (3.) tahmini**. Bu çift açıklama, Fed'in 28 Ekim FOMC toplantısı öncesindeki en ağırlıklı veri noktalarından biri. Aşağıda açıklama öncesi hazırladığımız dolar, altın ve TL senaryo tablosu duruyor.
 
 ## ABD Eylül 2026 PCE Verisi Neden Kritik?
 
 Çekirdek PCE (Core Personal Consumption Expenditures) fiyat endeksi, **Fed'in resmi enflasyon hedeflemesinde kullandığı birincil gösterge**. Gıda ve enerji fiyatları dışlanarak hesaplanır; böylece geçici fiyat dalgalanmalarından arındırılmış bir enflasyon tablosu ortaya çıkar. Manşet CPI'dan farkı şudur: PCE, tüketicinin alışkanlıklarındaki kaymayı da yansıtmak için düzenli olarak revize edilen bir sepet metodolojisi kullanır.
 
-Fed'in resmi hedefi PCE'nin **yıllık bazda %2 seviyesinde** seyretmesi. Süregelen baskı, faiz indiriminin erteleneceği mesajını pekiştirir. Düşen PCE ise dezenflasyon sürecinin devam ettiğini teyit eder ve Kasım'da indirim yolunu açar.
+Fed'in resmi hedefi PCE'nin **yıllık bazda %2 seviyesinde** seyretmesi. Süregelen baskı, faiz indiriminin erteleneceği mesajını pekiştirir. Düşen PCE ise dezenflasyon sürecinin devam ettiğini teyit eder ve indirim yolunu açar.
 
-Eylül 2026 için piyasa beklentisi aylık bazda yaklaşık **%0.2 artış**. Bu düzeyin belirgin şekilde üzerinde gelen bir baskılı PCE, Fed'i temkinli tutarken; beklentinin altında kalacak bir veri Kasım kararı öncesinde güvercin (dovish) beklentileri güçlendirir.
+Açıklama öncesi piyasa beklentisi aylık bazda yaklaşık **%0.2 artış**. Bu düzeyin belirgin şekilde üzerinde gelen bir baskılı PCE, Fed'i temkinli tutarken; beklentinin altında kalacak bir veri Fed kararı öncesinde güvercin (dovish) beklentileri güçlendirir.
 
 PCE'nin nasıl hesaplandığı ve Fed politikasıyla ilişkisi hakkında daha kapsamlı bir açıklama için [PCE nedir: Fed'in enflasyon göstergesi](/blog/pce-nedir-fed-enflasyon-gostergesi) yazısına bakabilirsiniz.
 
@@ -66,11 +69,11 @@ PCE ve GDP teknik olarak birbirine bağlı göstergeler. PCE, GDP hesaplamasın�
 
 Fed açısından kritik olan nokta ise şu: **iki veri tek başlarına değil, kombinasyonlarıyla yorumlanır.** Yüksek PCE, yüksek büyüme ile birleşirse stagflasyon riski öne çıkar ve faiz sabit tutulur. Düşük PCE, zayıf büyümeyle birleşirse faiz indirimi tartışılmaz hâle gelir. Ters yönlü kombinasyonlar ise piyasada yoruma açık bir belirsizlik ve oynaklık yaratır.
 
-Bu yüzden 30 Eylül, tek bir veri gününden çok **Fed'in Kasım kararı için son büyük ipucu günü** işlevi görüyor.
+Bu yüzden 30 Eylül, tek bir veri gününden çok **Fed'in 28 Ekim kararı için büyük ipucu günü** işlevi gördü.
 
 ## Senaryo Tablosu: 30 Eylül'de Ne Çıkarsa Ne Olur?
 
-| Çekirdek PCE | Final GDP | Fed Kasım Beklentisi | Dolar (DXY) | Altın | TL |
+| Çekirdek PCE | Final GDP | Fed 28 Ekim Beklentisi | Dolar (DXY) | Altın | TL |
 |---|---|---|---|---|---|
 | Yüksek (> beklenti) | Güçlü | Faiz sabit, indirim ertelenir | Güçlenir ↑ | Baskı altında ↓ | Zayıflar ↓ |
 | Yüksek | Zayıf | Stagflasyon kaygısı artar | Dalgalanır ~ | Yükselir ↑ | Oynaklık |
@@ -79,11 +82,11 @@ Bu yüzden 30 Eylül, tek bir veri gününden çok **Fed'in Kasım kararı için
 
 Tablodaki en sert piyasa tepkisi, açıklama sonrasındaki **ilk 15-30 dakika** içinde yaşanır. Tarihe bakıldığında aşırı ilk tepkinin saatler içinde kısmen geri döndüğü görülür; anlık hamlelerden önce büyük resmi okumak daha sağlıklıdır.
 
-## Fed Kasım 2026 Kararına Etkisi
+## Fed 28 Ekim 2026 Kararına Etkisi
 
-Fed'in bir sonraki FOMC toplantısı Kasım 2026'da gerçekleşecek. 30 Eylül verileri, bu toplantıya kadar kamuoyuyla paylaşılacak en ağırlıklı enflasyon-büyüme çiftini oluşturuyor. Aradaki tek büyük veri olan **Ekim işgücü raporu (2 Ekim NFP)** da Kasım beklentileri üzerinde belirleyici olacak.
+Fed'in bir sonraki FOMC kararı **28 Ekim 2026**'da açıklanacak. 30 Eylül verileri bu toplantı öncesindeki en ağırlıklı enflasyon-büyüme çiftlerinden biri; ardından gelen Eylül istihdam raporu ([NFP](/blog/abd-ekim-2026-nfp-istihdam-verisi-fed-dolar-altin/)) ve [Eylül CPI](/blog/abd-ekim-2026-cpi-verisi-fed-dolar-altin/) da tabloyu tamamladı.
 
-Piyasanın mevcut fiyatlaması: PCE beklentiye yakın veya altında çıkarsa ve Final GDP Prelim'i teyit ederse ya da yukarı revize ederse, Kasım indirim ihtimali anlamlı biçimde güçlenebilir. Tersine, PCE sürpriz yaparsa Kasım fiyatlaması hızla değişir.
+Piyasanın mevcut fiyatlaması: PCE beklentiye yakın veya altında çıkarsa ve Final GDP Prelim'i teyit ederse ya da yukarı revize ederse, Ekim indirim ihtimali güçlenebilirdi. Gerçekleşen tablo (çekirdek PCE %3,0, büyüme %2,2) ise Fed'e acele ettirmeyen bir görünüm çizdi.
 
 [2026 Fed toplantı takvimini](/blog/2026-fed-toplanti-tarihleri) takip ediyorsanız bu açıklamanın Fed'in hareket alanını doğrudan etkilediğini bilirsiniz.
 
@@ -113,7 +116,7 @@ Ons altının dolar endeksiyle ters hareket ettiğini unutma. PCE düşük çık
 
 ## Veriyi Gerçek Zamanlı Nasıl Takip Edersiniz?
 
-**Tarih ve saat:** 30 Eylül 2026, Çarşamba — 15:30 Türkiye saati (12:30 ET)
+**Açıklandı:** 30 Eylül 2026, Çarşamba — 15:30 Türkiye saati (12:30 ET)
 
 **Kaynaklar:**
 - BEA resmi sitesi: bea.gov (anlık yayın)
@@ -122,13 +125,13 @@ Ons altının dolar endeksiyle ters hareket ettiğini unutma. PCE düşük çık
 
 **Neye dikkat edin:** Açıklanan rakamı piyasa *beklentisiyle* karşılaştırın. Sürprizin büyüklüğü, yönü belirler. "Beklentiye uygun" bir veri genellikle sınırlı tepkiye yol açar; asıl oynaklık sürpriz verilerde gelir.
 
-Ardından takip gündemde: **2 Ekim Cuma** ABD tarım dışı istihdam (NFP), ortalama saatlik kazançlar ve işsizlik oranı aynı anda açıklanıyor. Bu iki veri kümesinin birlikte mesajı, Fed'in Kasım yolunu büyük ölçüde kilitleyecek.
+Sıradaki: Fed kararı 28 Ekim 2026 — tarih ve geçmiş kararlar için [Fed faiz takvimi](/fed-faiz-takvimi/).
 
 ## Özet
 
-- 30 Eylül'de ABD çekirdek PCE ve Q2 Final GDP eş zamanlı açıklanıyor; bu çift veri Fed'in Kasım 2026 faiz kararı için belirleyici nitelik taşıyor.
-- Final GDP, Prelim'in kesin revizyonudur; Ağustos Prelim'inden önemli sapma yaşanırsa piyasa tepkisi sert olabilir.
-- PCE düşük + GDP güçlü kombinasyonu Kasım indirimi ihtimalini artırır: dolar zayıflar, altın yükselir.
+- 30 Eylül'de açıklandı: Ağustos çekirdek PCE aylık %0,2 / yıllık %3,0; Q2 büyümesi kesin tahminde %2,2 (önceki %1,5).
+- Final GDP, Prelim'in kesin revizyonudur; bu kez 0,7 puan yukarı revize edildi.
+- PCE düşük + GDP güçlü kombinasyonu indirim ihtimalini artırır: dolar zayıflar, altın yükselir.
 - PCE yüksek + GDP güçlü çıkarsa faiz indirim beklentisi geriler, dolar güçlenir, TL baskılanabilir.
 - TCMB 22 Ekim PPK toplantısı nedeniyle Fed beklentilerindeki değişim Türkiye faiz yolunu da dolaylı olarak etkiliyor.
 
