@@ -17,10 +17,10 @@ düşer" 1,5 · "hazine bonosu" 2,6 · "eurobond nedir" 2,4 → "X mi Y mi" kara
   (hacim 35, son 4 hafta 48 — yükseliyor) · neden: faiz yüksekken mevduata alternatif arayan talep; getiri
   rakamı verirsen kaynak (TEFAS/fon raporu) + tarih göster, tek fon önerme, tavsiye değil · iç-link:
   /blog/yatirim-fonu-nedir-nasil-secilir, /mevduat-faizi-hesaplama, stopaj yazısı (yayındaysa) → /blog/para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki (2026-10-19)
-- [ ] **Altın hesabı nedir, mantıklı mı? Altın hesabı, fiziki altın ve altın fonu karşılaştırması** · hedef:
+- [x] **Altın hesabı nedir, mantıklı mı? Altın hesabı, fiziki altın ve altın fonu karşılaştırması** · hedef:
   "altın hesabı" (hacim 38) · neden: altın kümesi en güçlü kümemiz; makas, vergi, saklama, banka riski tablosu;
   altin-fonu yazısıyla çakışmasın (o yazı FON, bu yazı HESAP) · iç-link: /altin-getiri, /altin-hesaplama,
-  /blog/altin-fonu-nedir-gram-altindan-farki
+  /blog/altin-fonu-nedir-gram-altindan-farki → /blog/altin-hesabi-nedir-mantikli-mi-fiziki-altin-fon-karsilastirma (2026-10-20)
 - [ ] **Kredi yapılandırma 2026: kredi kartı ve kredi borcu nasıl yapılandırılır?** · hedef: "kredi yapılandırma"
   (hacim 50) · neden: hacimli, sitede yok; BDDK düzenlemesini (azami vade, faiz) YALNIZ resmi kaynaktan yaz;
   haber sitelerinde çelişen "yeni yapılandırma paketi" iddialarını yazma · iç-link: /kredi-hesaplama,

@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-10-20 — Altın Hesabı Nedir, Mantıklı mı? Fiziki Altın ve Fonla Kıyas
+
+**Yayınlanan yazı:** [Altın Hesabı Nedir, Mantıklı mı? Fiziki Altın ve Fonla Kıyas](/blog/altin-hesabi-nedir-mantikli-mi-fiziki-altin-fon-karsilastirma)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — "altın hesabı" hacim 38)
+
+---
+
 ## 2026-10-19 — Para Piyasası Fonu Nedir? 2026 Getiri, Stopaj ve Mevduat
 
 **Yayınlanan yazı:** [Para Piyasası Fonu Nedir? 2026 Getiri, Stopaj ve Mevduat](/blog/para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki)
