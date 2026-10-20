@@ -40,6 +40,7 @@ const GRUPLAR_HAM: Grup[] = [
   { baslik: 'Vergi, harç ve zamlar', araclar: [
     { href: '/vergi-dilimi-hesaplama/', ad: 'Vergi dilimi hesaplama', aciklama: 'Gelir vergisi dilimleri ve kümülatif matrah', k: ['vergi dilim', 'gelir vergisi'] },
     { href: '/gelir-vergisi-hesaplama/', ad: 'Gelir vergisi hesaplama', aciklama: 'Kira, serbest meslek ve ticari kazanç beyannamesi', k: ['gelir vergisi', 'kira geliri', 'beyanname', 'vergi'] },
+    { href: '/kurumlar-vergisi-hesaplama/', ad: 'Kurumlar vergisi hesaplama', aciklama: 'Oran %25, asgari vergi %10, 2027 üretimde %12,5', k: ['kurumlar vergisi', 'şirket', 'asgari kurumlar'] },
     { href: '/vergi-borcu-sorgulama/', ad: 'Vergi borcu sorgulama', aciklama: 'Adım adım sorgulama, gecikme zammı hesabı', k: ['vergi borcu', 'gecikme zammı', 'borç sorgula'] },
     { href: '/kdv-hesaplama/', ad: 'KDV hesaplama', aciklama: 'KDV ekle, KDV dahil fiyattan ayır', k: ['kdv'] },
     { href: '/damga-vergisi-hesaplama/', ad: 'Damga vergisi hesaplama', aciklama: 'Oranlar, maktu tutarlar, 2027 tahmini', k: ['damga vergisi'] },

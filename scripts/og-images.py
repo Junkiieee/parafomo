@@ -247,6 +247,10 @@ CARDS = {
         # İş Kanunu md.53 — sabit kural
         "kicker": "YILLIK İZİN 2026", "stat": "14 · 20 · 26 gün",
         "sub": "kıdeme göre izin hakkı · kullanılmayan izin ücretini hesapla"},
+    "kurumlar-vergisi-hesaplama": lambda: {
+        # KVK md.32 / 32/C — kanun oranı; değişirse sayfayla birlikte güncelle
+        "kicker": "KURUMLAR VERGİSİ 2026", "stat": "%25",
+        "sub": "finans %30 · ihracat %20 · asgari vergi %10 · 2027 üretim %12,5"},
     "gelir-vergisi-hesaplama": lambda: {
         # 332 Seri No'lu GVK Tebliği; Ocak 2027'de sayfayla birlikte güncelle
         "kicker": "KİRA GELİR VERGİSİ 2026", "stat": "₺58.000",

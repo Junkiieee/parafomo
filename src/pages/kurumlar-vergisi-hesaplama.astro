@@ -1,0 +1,389 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+
+// Kurumlar vergisi — 5520 s. KVK md.32 ve 32/C, mevzuat.gov.tr güncel metninden okundu (2026-10-20):
+// md.32/1 genel %25; bankalar, 6361 s. finansal kiralama/faktoring/finansman, ödeme/e-para kuruluşları, yetkili
+// müesseseler, varlık yönetim, sermaye piyasası kurumları, sigorta/reasürans, emeklilik şirketleri %30.
+// md.32/6 ilk kez en az %20 halka arz → 5 hesap dönemi 2 puan indirim (finans şirketleri hariç).
+// md.32/7 münhasıran ihracat kazancı 5 puan indirim.
+// md.32/8 (7582 s.K., RG 04.06.2026 ile değişik) sanayi sicil belgeli ve fiilen üretim yapan kurumların
+// münhasıran üretim + zirai üretim kazancı %12,5 — 2027 ve izleyen dönem kazançlarına; 7. fıkra ihracat indirimi
+// bu kazanca ayrıca uygulanmaz. 2026 kazançlarında eski metin: 1 puan indirim (birden çok kaynak tutarlı).
+// md.32/C yurt içi asgari KV: indirim/istisna öncesi kurum kazancının %10’u; yeni kurumlar ilk 3 dönem muaf.
+// md.14/3 beyan: dönemin kapandığı ayı izleyen 4. ay · md.21 ödeme: beyan ayının sonuna kadar.
+const GENEL = 25;
+const FINANS = 30;
+const IHRACAT_INDIRIM = 5;
+const URETIM_INDIRIM_2026 = 1;
+const URETIM_ORAN_2027 = 12.5;
+const HALKA_ARZ_INDIRIM = 2;
+const ASGARI = 10;
+
+const fmt = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+const fmt0 = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const pct = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 }).format(n);
+
+const ORNEK = [1000000, 5000000, 10000000, 50000000];
+const DEFAULT_K = 5000000;
+
+const faq = [
+  {
+    q: 'Kurumlar vergisi oranı 2026’da yüzde kaç?',
+    a: `Genel oran %25. Bankalar, finansal kiralama, faktoring ve finansman şirketleri, ödeme ve elektronik para kuruluşları, sermaye piyasası kurumları, sigorta, reasürans ve emeklilik şirketleri için %30 (KVK md.32/1). Münhasıran ihracat kazancına 5 puan indirimli %20 uygulanır.`,
+  },
+  {
+    q: 'Kurumlar vergisi nasıl hesaplanır?',
+    a: `Ticari bilanço kârına kanunen kabul edilmeyen giderler (KKEG) eklenir; geçmiş yıl zararları, istisnalar ve indirimler düşülür. Kalan matraha oran uygulanır. Örnek: ${fmt0(DEFAULT_K)} ₺ matrah × %25 = ${fmt0(DEFAULT_K * 0.25)} ₺ kurumlar vergisi. Yıl içinde ödenen geçici vergi bu tutardan mahsup edilir.`,
+  },
+  {
+    q: 'Asgari kurumlar vergisi nedir?',
+    a: `2025’ten itibaren hesaplanan kurumlar vergisi, indirim ve istisnalar düşülmeden önceki kurum kazancının %10’undan az olamaz (KVK md.32/C, 7524 s. Kanun). Bazı istisna ve indirimler (ör. Ar-Ge ve tasarım indirimi, teknokent ve serbest bölge kazançları, Türk Uluslararası Gemi Sicili) asgari vergi hesabında da düşülebilir. Yeni kurulan kurumlar ilk üç hesap döneminde asgari vergiden muaftır.`,
+  },
+  {
+    q: '2027’de üretim yapan şirketlerin kurumlar vergisi kaç olacak?',
+    a: `7582 sayılı Kanunla (Resmî Gazete 4 Haziran 2026) sanayi sicil belgesine sahip ve fiilen üretim yapan kurumların münhasıran üretimden elde ettiği kazanç ile zirai üretim kazancı için oran 2027 ve sonraki dönem kazançlarında %12,5. Oran yalnız üretim faaliyetine isabet eden kazanca uygulanır; ticaret, hizmet veya kira kazancı %25’te kalır. 2026 kazançlarında üretim indirimi 1 puandır (%24).`,
+  },
+  {
+    q: 'Kurumlar vergisi beyannamesi ne zaman verilir?',
+    a: `Beyanname hesap döneminin kapandığı ayı izleyen dördüncü ayda verilir; takvim yılını hesap dönemi olarak kullanan kurumlar için Nisan (2026 kazancı → Nisan 2027). Vergi, beyannamenin verildiği ayın sonuna kadar ödenir (KVK md.14 ve 21). Kesin son gün için GİB vergi takvimine bakın; süre uzatımı ilan edilebilir.`,
+  },
+  {
+    q: 'Halka arz olan şirkete kurumlar vergisi indirimi var mı?',
+    a: `Evet. Paylarının en az %20’sini ilk kez Borsa İstanbul’da halka arz eden kurumlar, halka arzın yapıldığı dönemden başlayarak beş hesap dönemi boyunca 2 puan indirimli oranla (%23) vergilendirilir. Bankalar ve diğer finans kuruluşları bu indirimden yararlanamaz (KVK md.32/6). Yeni halka arzlar: <a href="/halka-arz/">halka arz takvimi</a>.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Hesaplama Araçları', url: '/hesaplama-araclari/' },
+  { name: 'Kurumlar Vergisi Hesaplama', url: '/kurumlar-vergisi-hesaplama/' },
+];
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'Kurumlar vergisi oranları 2026-2027 (KVK md.32, 32/C)',
+  description: 'Genel %25, finans kuruluşları %30, ihracat 5 puan indirim, halka arz 2 puan indirim, yurt içi asgari kurumlar vergisi %10, 2027 üretim kazancı %12,5.',
+  url: 'https://parafomo.com/kurumlar-vergisi-hesaplama/',
+  dateModified: '2026-10-20',
+  creator: { '@type': 'Organization', name: 'ParaFOMO', url: 'https://parafomo.com/' },
+  isBasedOn: 'https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5520&MevzuatTur=1&MevzuatTertip=5',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+};
+---
+
+<BaseLayout
+  image="/og/kurumlar-vergisi-hesaplama.png"
+  title="Kurumlar Vergisi Hesaplama 2026: Oran %25, Asgari Vergi, 2027"
+  description="Kurumlar vergisi 2026: genel %25, finans %30, ihracat %20. Matrahı gir, asgari kurumlar vergisi (%10) kontrolüyle ödenecek vergiyi hesapla; 2027 üretimde %12,5."
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(dataset)} />
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Vergi</p>
+      <h1>Kurumlar Vergisi Hesaplama 2026</h1>
+      <p class="lede">
+        Kurumlar vergisi oranı <strong>%25</strong> (bankalar ve finans kuruluşları <strong>%30</strong>,
+        ihracat kazancı <strong>%20</strong>). Kârınızı girin; KKEG, istisnalar, ihracat/üretim indirimi ve
+        <strong>%10 asgari kurumlar vergisi</strong> kontrolüyle ödenecek vergiyi görün.
+      </p>
+    </header>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Kazanç yılı</span>
+          <select id="in-yil">
+            <option value="2026" selected>2026 kazancı (beyan Nisan 2027)</option>
+            <option value="2027">2027 kazancı (beyan Nisan 2028)</option>
+          </select>
+        </label>
+        <label>
+          <span>Kurum türü</span>
+          <select id="in-tur">
+            <option value="genel" selected>Genel (%25)</option>
+            <option value="finans">Banka / finans / sigorta (%30)</option>
+          </select>
+        </label>
+        <label>
+          <span>Ticari bilanço kârı (₺)</span>
+          <input type="number" id="in-k" value={DEFAULT_K} step="10000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Kanunen kabul edilmeyen giderler — KKEG (₺)</span>
+          <input type="number" id="in-kkeg" value="0" min="0" step="1000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Geçmiş yıl zararları + istisnalar + indirimler (₺)</span>
+          <input type="number" id="in-ist" value="0" min="0" step="1000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Bunlardan asgari vergide de düşülebilen (Ar-Ge, teknokent, serbest bölge…) (₺)</span>
+          <input type="number" id="in-asg" value="0" min="0" step="1000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Matrahın ihracat kazancı payı (%)</span>
+          <input type="number" id="in-ihr" value="0" min="0" max="100" step="5" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Matrahın sanayi sicilli üretim kazancı payı (%)</span>
+          <input type="number" id="in-ur" value="0" min="0" max="100" step="5" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Yıl içinde ödenen geçici vergi (₺)</span>
+          <input type="number" id="in-gec" value="0" min="0" step="1000" inputmode="numeric" />
+        </label>
+        <label class="check" id="row-ha">
+          <input type="checkbox" id="in-ha" />
+          <span>İlk kez en az %20 halka arz edildi (5 dönem 2 puan indirim)</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" id="in-yeni" />
+          <span>Yeni kuruldu — ilk 3 hesap dönemi (asgari vergiden muaf)</span>
+        </label>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Ödenecek kurumlar vergisi</span>
+          <span class="result-value" id="out-tax">₺{fmt(DEFAULT_K * GENEL / 100)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Kurumlar vergisi matrahı</span>
+            <span class="split-val" id="out-m">₺{fmt(DEFAULT_K)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Hesaplanan vergi (md.32)</span>
+            <span class="split-val" id="out-h">₺{fmt(DEFAULT_K * GENEL / 100)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Asgari kurumlar vergisi (%10)</span>
+            <span class="split-val" id="out-a">₺{fmt(DEFAULT_K * ASGARI / 100)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Geçici vergi mahsubu</span>
+            <span class="split-val" id="out-g">₺0,00</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Efektif oran (matraha göre)</span>
+            <span class="split-val" id="out-oran">%25</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note"></p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır; vergi/mali müşavirlik hizmeti yerine geçmez. Oranlar 5520
+      sayılı Kurumlar Vergisi Kanunu md.32 ve 32/C’nin güncel metnine göre; asgari vergi tabanı = ticari kâr
+      + KKEG − asgari vergide de düşülebilen istisna/indirimler olarak sadeleştirilmiştir (geçmiş yıl zararı
+      bu tabandan düşülmez). İhracat/üretim payı matrahın yüzdesi olarak girilir. · Kontrol tarihi: 20 Ekim
+      2026 · Kaynak: <a href="https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5520&MevzuatTur=1&MevzuatTertip=5" rel="noopener">mevzuat.gov.tr — 5520 s. KVK</a>, Gelir İdaresi Başkanlığı.
+    </p>
+
+    <section class="table-block">
+      <h2>Kurumlar vergisi oranları 2026</h2>
+      <table class="rate-table">
+        <thead><tr><th>Kurum / kazanç</th><th>Oran</th><th>Dayanak</th></tr></thead>
+        <tbody>
+          <tr><td>Genel oran (A.Ş., Ltd. Şti., kooperatif vb.)</td><td>%{GENEL}</td><td>KVK md.32/1</td></tr>
+          <tr><td>Bankalar, finansal kiralama, faktoring, finansman, ödeme ve e-para kuruluşları, varlık yönetim, sermaye piyasası kurumları, sigorta, reasürans, emeklilik şirketleri</td><td>%{FINANS}</td><td>KVK md.32/1</td></tr>
+          <tr><td>Münhasıran ihracat kazancı</td><td>%{GENEL - IHRACAT_INDIRIM} (5 puan indirim)</td><td>KVK md.32/7</td></tr>
+          <tr><td>Sanayi sicilli üretim kazancı (2026 kazançları)</td><td>%{GENEL - URETIM_INDIRIM_2026} (1 puan indirim)</td><td>KVK md.32/8 (eski metin)</td></tr>
+          <tr><td>Sanayi sicilli üretim + zirai üretim kazancı (2027 ve sonrası)</td><td>%{pct(URETIM_ORAN_2027)}</td><td>KVK md.32/8 (7582 s.K.)</td></tr>
+          <tr><td>İlk kez ≥%20 halka arz (5 hesap dönemi)</td><td>%{GENEL - HALKA_ARZ_INDIRIM} (2 puan indirim)</td><td>KVK md.32/6</td></tr>
+          <tr><td>Yurt içi asgari kurumlar vergisi</td><td>Kazancın en az %{ASGARI}’u</td><td>KVK md.32/C</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">
+        İhracat ve üretim indirimleri, md.32’deki diğer indirimlerden sonra uygulanır (md.32/9). Kurum geçici
+        vergisi de aynı oranlarla hesaplanır ve yıllık vergiden mahsup edilir.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Kurumlar vergisi tablosu: matraha göre ödenecek vergi</h2>
+      <table class="rate-table">
+        <thead><tr><th>Matrah</th><th>Genel (%25)</th><th>Finans (%30)</th><th>Tamamı ihracat (%20)</th><th>Asgari vergi (%10)</th></tr></thead>
+        <tbody>
+          {ORNEK.map((m) => (
+            <tr>
+              <td>₺{fmt0(m)}</td>
+              <td>₺{fmt0(m * GENEL / 100)}</td>
+              <td>₺{fmt0(m * FINANS / 100)}</td>
+              <td>₺{fmt0(m * (GENEL - IHRACAT_INDIRIM) / 100)}</td>
+              <td>₺{fmt0(m * ASGARI / 100)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        İstisna ve indirim olmadığı varsayılmıştır (matrah = kâr + KKEG). İstisnası yüksek kurumlarda ödenecek
+        vergi asgari vergi satırının altına inemez.
+      </p>
+    </section>
+
+    <section class="prose-block" id="uretim-2027">
+      <h2>2027’de üretim kazancına %12,5 kurumlar vergisi</h2>
+      <p>
+        4 Haziran 2026 tarihli Resmî Gazete’de yayımlanan 7582 sayılı Kanun, KVK md.32’nin sekizinci fıkrasını
+        değiştirdi: <strong>sanayi sicil belgesine sahip ve fiilen üretim yapan</strong> kurumların münhasıran
+        üretim faaliyetinden elde ettiği kazanç ile <strong>zirai üretim kazancı</strong>, 2027 ve sonraki
+        dönem kazançlarında <strong>%12,5</strong> oranıyla vergilenir.
+      </p>
+      <ul>
+        <li>Oran yalnız üretime isabet eden kazanca uygulanır; aynı şirketin ticaret, hizmet veya kira kazancı %25’te kalır.</li>
+        <li>Üretim kazancına ihracat için ayrıca 5 puan indirim uygulanmaz.</li>
+        <li>2026 kazançlarında (Nisan 2027 beyannamesi) üretim indirimi hâlâ 1 puandır.</li>
+        <li>Uygulama esasları GİB tebliğiyle belirlenir; tebliğ taslağıyla kanun metni arasındaki yorum farkları için mali müşavirinize danışın.</li>
+      </ul>
+      <p class="cta-line">
+        İlgili araçlar: şahıs şirketleri için <a href="/gelir-vergisi-hesaplama/">gelir vergisi hesaplama</a>,
+        ücret dilimleri için <a href="/vergi-dilimi-hesaplama/">vergi dilimi hesaplama</a>, sözleşmeler için
+        <a href="/damga-vergisi-hesaplama/">damga vergisi hesaplama</a>, KDV için
+        <a href="/kdv-hesaplama/">KDV hesaplama</a>, ödenmemiş borçlar için
+        <a href="/vergi-borcu-sorgulama/">vergi borcu sorgulama</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p set:html={f.a} />
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ GENEL, FINANS, IHRACAT_INDIRIM, URETIM_INDIRIM_2026, URETIM_ORAN_2027, HALKA_ARZ_INDIRIM, ASGARI }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const pf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
+      const num = (id) => Math.max(0, +$(id).value || 0);
+      const share = (id) => Math.min(100, num(id)) / 100;
+
+      function update() {
+        const yil = $('in-yil').value;
+        const finans = $('in-tur').value === 'finans';
+        $('row-ha').hidden = finans;
+        const kar = +$('in-k').value || 0;
+        const kkeg = num('in-kkeg');
+        const ist = num('in-ist');
+        const asg = Math.min(num('in-asg'), ist);
+        let ihr = share('in-ihr');
+        let ur = share('in-ur');
+        if (ihr + ur > 1) ur = 1 - ihr;
+        const ha = !finans && $('in-ha').checked;
+        const yeni = $('in-yeni').checked;
+        const gec = num('in-gec');
+
+        const m = Math.max(0, kar + kkeg - ist);
+        const r = (finans ? FINANS : GENEL) - (ha ? HALKA_ARZ_INDIRIM : 0);
+        const rUr = yil === '2027' ? URETIM_ORAN_2027 : r - URETIM_INDIRIM_2026;
+        const h = m * (ihr * (r - IHRACAT_INDIRIM) + ur * rUr + (1 - ihr - ur) * r) / 100;
+        const aTaban = Math.max(0, kar + kkeg - asg);
+        const a = yeni ? 0 : aTaban * ASGARI / 100;
+        const vergi = Math.max(h, a);
+        const pay = vergi - gec;
+
+        $('out-m').textContent = '₺' + nf.format(m);
+        $('out-h').textContent = '₺' + nf.format(h);
+        $('out-a').textContent = yeni ? 'muaf' : '₺' + nf.format(a);
+        $('out-g').textContent = '₺' + nf.format(gec);
+        $('out-tax').textContent = pay >= 0 ? '₺' + nf.format(pay) : '(₺' + nf.format(-pay) + ' iade/mahsup)';
+        $('out-oran').textContent = m > 0 ? '%' + pf.format((vergi / m) * 100) : '—';
+        let note = 'Beyan: ' + (yil === '2027' ? 'Nisan 2028' : 'Nisan 2027') + ', ödeme beyan ayının sonuna kadar.';
+        if (a > h) note = 'Asgari kurumlar vergisi devrede: hesaplanan vergi kazancın %10’unun altında kaldı, fark (₺' + nf.format(a - h) + ') ödenir. ' + note;
+        if (kar < 0) note = 'Zarar: kurumlar vergisi çıkmaz; zarar 5 yıl içinde sonraki kârlardan mahsup edilebilir.';
+        if (pay < 0) note += ' Geçici vergi fazlası mahsup edilir ya da iade alınabilir.';
+        $('out-note').textContent = note;
+      }
+
+      ['in-k', 'in-kkeg', 'in-ist', 'in-asg', 'in-ihr', 'in-ur', 'in-gec'].forEach((id) => $(id).addEventListener('input', update));
+      ['in-yil', 'in-tur', 'in-ha', 'in-yeni'].forEach((id) => $(id).addEventListener('change', update));
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.7rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs label[hidden] { display: none; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input, .calc-inputs select {
+      font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus, .calc-inputs select:focus {
+      outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft);
+    }
+    .calc-inputs label.check { flex-direction: row; align-items: flex-start; gap: 0.5rem; }
+    .calc-inputs label.check input { width: auto; margin-top: 0.2rem; }
+    .calc-inputs label.check span { font-weight: 500; font-size: 0.8rem; line-height: 1.4; }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 0.9rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.95rem; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; overflow-x: auto; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>
