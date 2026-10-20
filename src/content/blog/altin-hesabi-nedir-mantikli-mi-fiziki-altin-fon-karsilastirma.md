@@ -17,6 +17,23 @@ faq:
     a: "Tek doğru cevap yok. Altın hesabı küçük tutarlarla alım, düşük makas ve saklama derdi olmaması açısından pratiktir; fiziki altın ise bankadan bağımsız sahiplik sağlar ama işçilik ve kuyumcu makası daha yüksektir. Amacın ve vade belirleyicidir."
   - q: "Altın hesabındaki altını fiziki olarak çekebilir miyim?"
     a: "Bazı bankalar belirli şubelerde, belirli gramajlarda (genelde 1 gramın katları, külçe) fiziki teslimat yapar ve bunun için ayrıca ücret alabilir. Her banka sunmaz; hesabı açmadan önce sorman gerekir."
+shorts:
+  - "Altın hesabı aslında elinde altın olmadan nasıl çalışır?"
+  - "Bankaya TL yatırırsın, banka altın alıp hesabına gram olarak yazar; elinde sadece bakiye olur."
+  - "Küçük başlarsın: bazı bankalarda 0,01 gramdan alım yapılır, ama alımda binde 2 BSMV ödersin."
+  - "Fiziki altında hırsızlık riski sende; hesapta ise TMSF güvencesi var, fakat bankaya bağımlı kalırsın."
+  - "Peki altın fonu bu işte daha mı avantajlı? Abone ol, hepsini sade anlatıyoruz; detaylar parafomo.com'da."
+shorts_broll:
+  - "gold bullion bars"
+  - "piggy bank coins"
+  - "smartphone banking app"
+  - "gold coins close up"
+shorts_visuals:
+  - "gold|gold bullion bars"
+  - "object|piggy bank"
+  - "object|calculator"
+  - "object|safe deposit box"
+  - "gold|gold coins"
 ---
 
 Kuyumcuya gitmeden, evde altın saklamadan altın biriktirmek istiyorsan bankanın sunduğu **altın hesabı** ilk karşına çıkan seçenek olur. Peki altın hesabı nedir, gerçekten mantıklı mı, yoksa fiziki altın ya da altın fonu daha mı avantajlı? Bu rehberde üç yolu makas, vergi, güvence, saklama ve likidite açısından yan yana koyuyor; hangi durumda hangisinin öne çıktığını rakamlarla gösteriyoruz.
