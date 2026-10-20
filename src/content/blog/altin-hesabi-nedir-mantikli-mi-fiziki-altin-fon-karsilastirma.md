@@ -27,10 +27,10 @@ Altın hesabının resmi adı **kıymetli maden depo hesabıdır**. Bankaya TL y
 
 Bilmen gereken birkaç temel özellik:
 
-- **Birim gramdır.** Çoğu banka 0,01 gram gibi küçük kesirlerle alım yapmana izin verir; yani 500 TL ile bile başlayabilirsin.
+- **Birim gramdır.** Birçok banka 0,01 gram gibi küçük kesirlerle alım yapmana izin verir; yani 500 TL ile bile başlayabilirsin.
 - **Fiyat 24 ayar (has) altına göredir.** Çeyrek, cumhuriyet gibi ziynet altınlarının işçilik primi hesaba yansımaz.
 - **Vadesiz ya da vadeli olabilir.** Vadesiz altın hesabında getiri yalnızca altın fiyatından gelir. Bazı bankalar vadeli altın hesabında gram cinsinden küçük bir getiri de öder; bu getiri stopaja tabidir.
-- **Altın günü / altın toplama hesapları** da genellikle bu altyapıyı kullanır: evdeki fiziki altını bankaya teslim edip hesabına gram olarak yazdırabilirsin.
+- **Altın toplama (altın kabul) hizmetleri** de genellikle bu altyapıyı kullanır: bunu sunan bankalarda evdeki fiziki altını ayar kontrolünden sonra teslim edip hesabına gram olarak yazdırabilirsin.
 
 Altın türlerinin (gram, çeyrek, ons, ziynet) farkını [altın çeşitleri rehberimizde](/blog/altin-cesitleri-gram-ceyrek-ons-ziynet) ayrıntılı anlattık.
 
@@ -41,7 +41,7 @@ Altın türlerinin (gram, çeyrek, ons, ziynet) farkını [altın çeşitleri re
 | Kriter | Altın hesabı | Fiziki altın (gram/çeyrek) | Altın fonu (TEFAS / BYF) |
 |---|---|---|---|
 | Ne almış olursun? | Bankada gram cinsinden alacak | Elinde fiziki altın | Altına yatırım yapan fonun payı |
-| Minimum tutar | Çok düşük (0,01 gr'dan) | 1 gram / 1 çeyrek | 1 pay (çok düşük) |
+| Minimum tutar | Çok düşük (0,01 gr'dan) | Genelde 0,5–1 gram / 1 çeyrek | 1 pay (çok düşük) |
 | Alış-satış makası | Düşük–orta (bankaya göre) | Orta–yüksek (ziynette işçilik dahil) | Çok düşük (BYF) / yok (TEFAS fonu) |
 | Alımda vergi | Binde 2 BSMV (Mart 2025'ten beri) | Yok | Yok |
 | Yıllık maliyet | Genelde yok | Saklama (kasa kirası) varsa | Yönetim ücreti |
@@ -60,7 +60,7 @@ Altın hesabının görünmeyen iki maliyeti vardır: **alış-satış makası**
 
 Banka altını sana satış fiyatından satar, senden alış fiyatından alır. Aradaki fark, sen hiçbir şey yapmadan ödediğin ilk maliyettir. Bankalar arasında bu fark belirgin şekilde değişir; özellikle **akşam, hafta sonu ve tatillerde** piyasa kapalıyken makas genişler.
 
-Karşılaştırma için piyasa verisine bakalım. 20 Ekim 2026 sabahı serbest piyasada gram altın alış 6.566 TL, satış 6.567 TL'ydi (makas binde 1'in altında). Aynı anda çeyrek altın alış 10.563 TL, satış 10.805 TL idi — yani çeyrekte makas yaklaşık **%2,3**. Bankaların altın hesabı makası çoğunlukla bu ikisinin arasında kalır; işlem yapmadan önce bankanın alış ve satış fiyatını yan yana görmen yeterli. Güncel fiyatları [altın fiyatları](/altin-fiyatlari) sayfasından izleyebilirsin.
+Karşılaştırma için piyasa verisine bakalım. 20 Ekim 2026 sabahı serbest piyasada gram altın alış 6.566 TL, satış 6.567 TL'ydi (makas binde 1'in altında). Aynı anda çeyrek altın alış 10.563 TL, satış 10.805 TL idi — yani çeyrekte makas yaklaşık **%2,3**. Bankaların altın hesabı makası genellikle serbest piyasa gram makasından geniştir ve bankaya, saate göre belirgin şekilde değişir; işlem yapmadan önce bankanın alış ve satış fiyatını yan yana görmen yeterli. Güncel fiyatları [altın fiyatları](/altin-fiyatlari) sayfasından izleyebilirsin.
 
 ### BSMV (binde 2)
 
@@ -95,7 +95,7 @@ Yani altın hesabında kâra geçmek için altının yaklaşık %1–1,5 yüksel
 2. **Mesai dışı makas:** Gece veya hafta sonu yapılan işlemlerde fark açılır; acil satış pahalıya gelebilir.
 3. **BSMV:** Her alımda binde 2 maliyet.
 4. **Fiziki çekim sınırlı:** Her banka altını fiziki olarak vermez; verenler de belirli gramajlar ve ücretle verir.
-5. **Faiz getirisi yok (vadesizde):** Altın fiyatı yatay giderse hesap bir şey kazandırmaz; para TL mevduatta olsaydı faiz işlerdi.
+5. **Faiz getirisi yok (vadesizde):** Altın fiyatı yatay giderse hesap bir şey kazandırmaz; para TL mevduatta olsaydı faiz işlerdi — alternatif getiriyi [mevduat faizi hesaplama](/mevduat-faizi-hesaplama) aracıyla kıyaslayabilirsin.
 
 ## Altın Fiyatı Ne Kadar Değişiyor? Gerçek Getiri Verisi
 
