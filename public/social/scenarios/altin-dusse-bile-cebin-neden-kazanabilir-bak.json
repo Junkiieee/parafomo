@@ -1,0 +1,59 @@
+{
+  "slug": "altin-dusse-bile-cebin-neden-kazanabilir-bak",
+  "title": "Altın düşse bile cebin neden kazanabilir, bak",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Gram altın hem dünya ons fiyatına hem dolar kuruna bağlı. Son 10 yılda TL bazında altın dolardan çok daha fazla kazandırdı; kısa vadeli dalgalanma uzun vadeyi değiştirmiyor.",
+  "tags": [
+    "altın",
+    "gram altın",
+    "dolar",
+    "ons",
+    "enflasyon",
+    "birikim",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Altın düşerse sen de kaybedersin.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold bars stacked"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gram altın iki şeye bağlı: dünyadaki ons fiyatına ve dolar kuruna. Biri düşerken diğeri taşıyabilir.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins on scale"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama son 10 yılda altın TL'de yaklaşık yüzde 5450, dolar yaklaşık yüzde 1509 kazandırdı.",
+      "visual": {
+        "type": "object",
+        "query": "rising line chart on screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kısa vadede oynar, bu normal. Düzenli ve uzun tutan kazanır; her ay küçük parça al.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins in hand"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki videoda ons ile kurun altını nasıl oynattığını açıyorum. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold bars stacked"
+      }
+    }
+  ]
+}
