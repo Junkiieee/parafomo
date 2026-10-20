@@ -1,8 +1,8 @@
 {
-  "updated": "2026-10-19T06:00+00:00",
+  "updated": "2026-10-20T06:00+00:00",
   "source": "Yahoo Finance (BTC-USD, USDTRY=X; aylık kapanış); BTC TL = BTC-USD × USDTRY",
-  "btc_tl_now": 4095881.48,
-  "btc_usd_now": 82666.42,
+  "btc_tl_now": 4045532.2,
+  "btc_usd_now": 81607.41,
   "max_drawdown_usd_pct": -75.6,
   "max_drawdown_usd_from": "2017-12",
   "max_drawdown_usd_to": "2019-01",
@@ -10,59 +10,59 @@
   "max_drawdown_tl_from": "2017-12",
   "max_drawdown_tl_to": "2019-01",
   "ath_usd_monthly_close": 115758.2,
-  "from_ath_usd_pct": -28.6,
+  "from_ath_usd_pct": -29.5,
   "ytd": {
     "label": "Yıl başından beri",
     "btc_tl_then": 3416488.59,
-    "btc_tl_now": 4095881.48,
-    "return_tl_pct": 19.9,
+    "btc_tl_now": 4045532.2,
+    "return_tl_pct": 18.4,
     "btc_usd_then": 78621.12,
-    "btc_usd_now": 82666.42,
-    "return_usd_pct": 5.1
+    "btc_usd_now": 81607.41,
+    "return_usd_pct": 3.8
   },
   "periods": [
     {
       "label": "1 yıl",
       "btc_tl_then": 3841125.52,
-      "btc_tl_now": 4095881.48,
-      "return_tl_pct": 6.6,
+      "btc_tl_now": 4045532.2,
+      "return_tl_pct": 5.3,
       "btc_usd_then": 90394.31,
-      "btc_usd_now": 82666.42,
-      "return_usd_pct": -8.5,
+      "btc_usd_now": 81607.41,
+      "return_usd_pct": -9.7,
       "years": 1
     },
     {
       "label": "3 yıl",
       "btc_tl_then": 1091441.56,
-      "btc_tl_now": 4095881.48,
-      "return_tl_pct": 275.3,
+      "btc_tl_now": 4045532.2,
+      "return_tl_pct": 270.7,
       "btc_usd_then": 37712.75,
-      "btc_usd_now": 82666.42,
-      "return_usd_pct": 119.2,
+      "btc_usd_now": 81607.41,
+      "return_usd_pct": 116.4,
       "years": 3
     },
     {
       "label": "5 yıl",
       "btc_tl_then": 723911.92,
-      "btc_tl_now": 4095881.48,
-      "return_tl_pct": 465.8,
+      "btc_tl_now": 4045532.2,
+      "return_tl_pct": 458.8,
       "btc_usd_then": 57005.43,
-      "btc_usd_now": 82666.42,
-      "return_usd_pct": 45.0,
+      "btc_usd_now": 81607.41,
+      "return_usd_pct": 43.2,
       "years": 5
     },
     {
       "label": "10 yıl",
       "btc_tl_then": 2542.36,
-      "btc_tl_now": 4095881.48,
-      "return_tl_pct": 161005.6,
+      "btc_tl_now": 4045532.2,
+      "return_tl_pct": 159025.1,
       "btc_usd_then": 745.69,
-      "btc_usd_now": 82666.42,
-      "return_usd_pct": 10985.9,
+      "btc_usd_now": 81607.41,
+      "return_usd_pct": 10843.9,
       "years": 10
     }
   ],
   "headline_years": 10,
-  "headline_return_tl_pct": 161005.6,
-  "headline_return_usd_pct": 10985.9
+  "headline_return_tl_pct": 159025.1,
+  "headline_return_usd_pct": 10843.9
 }

@@ -1,0 +1,59 @@
+{
+  "slug": "altin-az-parayla-baslamak-beklemekten-ucuz",
+  "title": "Altın: az parayla başlamak, beklemekten ucuz",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Küçük birikimin yatırıma yetmediği inancını yıkıyoruz: altını gram gram almak mümkün, beklemenin de bir bedeli var. Son 10 yılın altın verisiyle düzenli birikim fikri.",
+  "tags": [
+    "altın",
+    "gram altın",
+    "birikim",
+    "enflasyon",
+    "yatırım",
+    "küçük birikim",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Küçük birikim yatırıma yetmez, sanıyorsun.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold coins stack"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çünkü altını bölerek alabilirsin: gram gram, maaşından her ay küçük bir pay ayırarak başlarsın.",
+      "visual": {
+        "type": "gold",
+        "query": "small gold bar gram"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama bekleyince kazanmıyorsun: altın 10 yılda TL'de yaklaşık yüzde 5450 arttı, boşta duran para eridi.",
+      "visual": {
+        "type": "chart",
+        "query": "gold price rising chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Her ay sabit, küçük bir tutar belirle, düzenli gram al. Geçmiş garanti değil; düzen tereddüdü bitirir.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki bu düzeni 10 yıl sürdürsen cebine ne kalırdı? Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold coins stack"
+      }
+    }
+  ]
+}

@@ -1,26 +1,8 @@
 {
-  "updated": "2026-10-19",
+  "updated": "2026-10-20",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-10-16",
-      "time": "2:00am",
-      "region": "GBP",
-      "impact": "High",
-      "title": "BOE Gov Bailey Speaks",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-10-16",
-      "time": "3:30am",
-      "region": "USD",
-      "impact": "High",
-      "title": "Fed Chairman Warsh Speaks",
-      "source": "forexfactory",
-      "hook": ""
-    },
     {
       "date": "2026-10-21",
       "time": "6:00am",
