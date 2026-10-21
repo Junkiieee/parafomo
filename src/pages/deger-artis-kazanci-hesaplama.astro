@@ -1,0 +1,473 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import endeks from '../../data/yiufe-endeks.json';
+import yd from '../../data/yeniden-degerleme.json';
+
+// Değer artışı kazancı (GVK mük. md.80-81) — mevzuat.gov.tr GVK güncel metninden doğrulandı 2026-10-21:
+// - mük.80/6: gayrimenkul iktisaptan itibaren 5 yıl içinde elden çıkarılırsa (ivazsız iktisap hariç) kazanç vergilenir.
+// - mük.80/1: tam mükellef kurum hisseleri 2 yıldan fazla elde tutulursa hariç; mük.80/4 ortaklık hakları/hisseleri.
+// - mük.80 3. fıkra: menkul kıymet hariç yıllık istisna 150.000 ₺ (2026, 332 Seri No’lu GVK Genel Tebliği, RG 31.12.2025).
+// - mük.81: maliyet, elden çıkarıldığı ay hariç toptan eşya (bugün Yİ-ÜFE) endeksindeki artışla endekslenir; artış ≥%10 şart.
+//   Uygulama (GİB): iktisap ayından önceki ay endeksi → elden çıkarma ayından önceki ay endeksi.
+// Tarife: ücret dışı gelir tarifesi 2026 (gelir-vergisi-hesaplama ile aynı). GÜNCELLEME: Ocak 2027’de istisna + tarife.
+const DIGER: [number, number][] = [
+  [190000, 0.15],
+  [400000, 0.2],
+  [1000000, 0.27],
+  [5300000, 0.35],
+  [Infinity, 0.4],
+];
+const ISTISNA = 150000;
+const SERI: Record<string, number> = endeks.seri;
+const SON_AY: string = endeks.sonAy;
+
+function gv(m: number): number {
+  let tax = 0;
+  let prev = 0;
+  for (const [top, rate] of DIGER) {
+    if (m > top) {
+      tax += (top - prev) * rate;
+      prev = top;
+    } else {
+      return tax + (m - prev) * rate;
+    }
+  }
+  return tax;
+}
+
+const fmt0 = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const pct = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 }).format(n);
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const ayAdi = (k: string) => `${AYLAR[+k.slice(5) - 1]} ${k.slice(0, 4)}`;
+const oncekiAy = (k: string) => {
+  const y = +k.slice(0, 4);
+  const m = +k.slice(5);
+  return m === 1 ? `${y - 1}-12` : `${y}-${String(m - 1).padStart(2, '0')}`;
+};
+
+// Bugün satış: satış ayından önceki ayın endeksi = elimizdeki son ay (SON_AY). Satış ayı = SON_AY + 1.
+const sonY = +SON_AY.slice(0, 4);
+const sonM = +SON_AY.slice(5);
+const SATIS_AY = sonM === 12 ? `${sonY + 1}-01` : `${sonY}-${String(sonM + 1).padStart(2, '0')}`;
+const katsayi = (alisAy: string) => SERI[SON_AY] / SERI[oncekiAy(alisAy)];
+
+// Katsayı tablosu: son 5 yılın her Ocak/Temmuz alışı (5 yıl kuralı içindeki konutlar).
+const BES_YIL_ONCE = `${+SATIS_AY.slice(0, 4) - 5}${SATIS_AY.slice(4)}`;
+const TABLO: string[] = [];
+for (let y = sonY - 5; y <= sonY; y++) {
+  for (const m of ['01', '07']) {
+    const k = `${y}-${m}`;
+    if (k < SATIS_AY && SERI[oncekiAy(k)] && k > BES_YIL_ONCE) TABLO.push(k);
+  }
+}
+TABLO.reverse();
+
+// Örnek: 3 yıl önce 2.000.000 ₺’ye alınan konut bugün 6.000.000 ₺’ye satılıyor (satıcı tapu harcı %2 gider).
+const ORN_ALIS_AY = `${+SATIS_AY.slice(0, 4) - 3}${SATIS_AY.slice(4)}`;
+const ORN_K = katsayi(ORN_ALIS_AY);
+const ORN_MALIYET = 2000000 * (ORN_K >= 1.1 ? ORN_K : 1);
+const ORN_SATIS = 6000000;
+const ORN_GIDER = ORN_SATIS * 0.02;
+const ORN_KAZANC = ORN_SATIS - ORN_MALIYET - ORN_GIDER;
+const ORN_MATRAH = Math.max(0, ORN_KAZANC - ISTISNA);
+const ORN_VERGI = gv(ORN_MATRAH);
+
+// 2027 istisna tahmini: tutar her yıl yeniden değerleme oranıyla güncellenir (2025: 120.000 → 2026: 150.000;
+// 120.000 × 1,2549 = 150.588). Tebliğde yuvarlanır — "yaklaşık" de.
+const ydRate: number = (yd.tebligOrani ?? yd.onikiAyOrt) as number;
+const ydLabel = yd.tebligOrani
+  ? `tebliğle kesinleşen %${pct(yd.tebligOrani)}`
+  : yd.ekimVerisiGeldi
+    ? `hesaben kesinleşen %${pct(yd.onikiAyOrt)}`
+    : `şu anki tahmin %${pct(yd.onikiAyOrt)}`;
+const istisna2027 = Math.floor((ISTISNA * (1 + ydRate / 100)) / 1000) * 1000;
+
+const faq = [
+  {
+    q: 'Değer artış kazancı nasıl hesaplanır? (2026)',
+    a: `Satış bedelinden; Yİ-ÜFE ile endekslenmiş alış bedeli ve satıcının ödediği tapu harcı, komisyon gibi giderler düşülür. Kalan kazançtan 2026 için 150.000 ₺ istisna indirilir, matraha gelir vergisi tarifesi (%15-40) uygulanır. Örnek: ${ayAdi(ORN_ALIS_AY)}’da 2.000.000 ₺’ye alınıp bugün 6.000.000 ₺’ye satılan konutta endeksli maliyet ${fmt0(ORN_MALIYET)} ₺, kazanç ${fmt0(ORN_KAZANC)} ₺, vergi ≈ ${fmt0(ORN_VERGI)} ₺.`,
+  },
+  {
+    q: 'Ev satarken 5 yıl kuralı nedir?',
+    a: `Gelir Vergisi Kanunu mük. md.80/6’ya göre konut, arsa, işyeri gibi gayrimenkuller iktisap tarihinden (kural olarak tapu tescil tarihi) itibaren 5 yıl içinde satılırsa kazanç değer artışı kazancı sayılır ve beyan edilir. 5 yıl dolduktan sonra yapılan satışta vergi yoktur. Miras veya bağışla (ivazsız) edinilen gayrimenkulün satışında süreye bakılmaksızın değer artışı kazancı doğmaz.`,
+  },
+  {
+    q: '2026 değer artış kazancı istisnası ne kadar?',
+    a: `2026’da elde edilen değer artışı kazançlarında istisna 150.000 ₺’dir (332 Seri No’lu GVK Genel Tebliği; 2025: 120.000 ₺). İstisna satış başına değil, takvim yılı başına bir kez uygulanır. Menkul kıymet ve sermaye piyasası araçlarının (ör. A.Ş. hisse senedi) satış kazancına istisna uygulanmaz.`,
+  },
+  {
+    q: 'Alış bedeli hangi endeksle güncellenir?',
+    a: `Alış bedeli Yİ-ÜFE (yurt içi üretici fiyat endeksi) ile güncellenir: alış ayından önceki ayın endeksi ile satış ayından önceki ayın endeksi arasındaki artış %10 veya üzerindeyse maliyet bu oranda artırılır (GVK mük. md.81). Artış %10’un altındaysa endeksleme yapılmaz.`,
+  },
+  {
+    q: 'Değer artış kazancı beyannamesi ne zaman verilir?',
+    a: `2026’da yapılan satışın kazancı 1-31 Mart 2027’de yıllık gelir vergisi beyannamesiyle bildirilir. Vergi iki taksitte ödenir: Mart 2027 ve Temmuz 2027 sonu. Kazanç 150.000 ₺ istisnanın altında kalıyorsa beyan gerekmez.`,
+  },
+  {
+    q: '2027 değer artış kazancı istisnası ne kadar olacak?',
+    a: `İstisna her yıl yeniden değerleme oranıyla güncellenir. ${ydLabel} oranla 2027 istisnası yaklaşık ${fmt0(istisna2027)} ₺ olur; resmî tutar Aralık 2026 sonunda tebliğle açıklanır ve yuvarlanabilir. Bu bir tahmindir.`,
+  },
+  {
+    q: 'Borsadaki hisseyi satınca değer artış kazancı beyan edilir mi?',
+    a: `Hayır. Borsa İstanbul’da işlem gören hisselerin alım-satım kazancı banka/aracı kurum stopajıyla (hisse senedinde %0) vergilendirilir ve beyan edilmez (GVK geçici md.67). Bu araç borsa dışı A.Ş. hisseleri, limited şirket payları ve gayrimenkul içindir.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Hesaplama Araçları', url: '/hesaplama-araclari/' },
+  { name: 'Değer Artış Kazancı Hesaplama', url: '/deger-artis-kazanci-hesaplama/' },
+];
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'Değer artış kazancı Yİ-ÜFE endeksleme katsayıları ve 2026 istisnası',
+  description: `Gayrimenkul ve ortaklık payı satışında alış bedelinin Yİ-ÜFE endeksleme katsayıları (${ayAdi(SATIS_AY)} satışı için), 2026 istisnası 150.000 ₺ ve 2027 tahmini.`,
+  url: 'https://parafomo.com/deger-artis-kazanci-hesaplama/',
+  dateModified: endeks.updated,
+  creator: { '@type': 'Organization', name: 'ParaFOMO', url: 'https://parafomo.com/' },
+  isBasedOn: ['https://www.mevzuat.gov.tr/MevzuatMetin/1.4.193.pdf', 'https://evds3.tcmb.gov.tr'],
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+};
+const updatedLabel = new Date(endeks.updated + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+const varsayilanAlis = `${ORN_ALIS_AY}-15`;
+const varsayilanSatis = `${SATIS_AY}-15`;
+---
+
+<BaseLayout
+  image="/og/deger-artis-kazanci-hesaplama.png"
+  title="Değer Artış Kazancı Hesaplama 2026: Ev Satışı, 5 Yıl, Yİ-ÜFE"
+  description="Ev veya arsa satışında değer artış kazancı vergisini hesapla: Yİ-ÜFE endeksli maliyet, 150.000 ₺ istisna (2026), 5 yıl kuralı. Beyan Mart 2027."
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(dataset)} />
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Vergi</p>
+      <h1>Değer Artış Kazancı Hesaplama (2026)</h1>
+      <p class="lede">
+        Ev, arsa ya da şirket payı satışında <strong>ödeyeceğiniz değer artış kazancı vergisini</strong>
+        hesaplayın. Alış bedeli <strong>Yİ-ÜFE ile otomatik endekslenir</strong>, 2026 istisnası
+        <strong>150.000 ₺</strong> düşülür, <strong>5 yıl kuralı</strong> kontrol edilir.
+      </p>
+    </header>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Satılan varlık</span>
+          <select id="in-tur">
+            <option value="gm" selected>Gayrimenkul (konut, arsa, işyeri)</option>
+            <option value="ltd">Limited şirket payı / ortaklık hakkı</option>
+            <option value="as">Borsa dışı A.Ş. hissesi</option>
+          </select>
+        </label>
+        <label>
+          <span>Alış (tapu) tarihi</span>
+          <input type="date" id="in-ad" value={varsayilanAlis} min="2005-02-01" />
+        </label>
+        <label>
+          <span>Alış bedeli (₺)</span>
+          <input type="number" id="in-a" value="2000000" min="0" step="10000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Satış tarihi</span>
+          <input type="date" id="in-sd" value={varsayilanSatis} />
+        </label>
+        <label>
+          <span>Satış bedeli (₺)</span>
+          <input type="number" id="in-s" value="6000000" min="0" step="10000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Satış giderleri (satıcı tapu harcı, komisyon — ₺)</span>
+          <input type="number" id="in-g" value="120000" min="0" step="1000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Aynı yıl beyan edeceğiniz diğer gelir matrahı (kira vb., ₺)</span>
+          <input type="number" id="in-o" value="0" min="0" step="10000" inputmode="numeric" />
+        </label>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label" id="out-label">Değer artış kazancı vergisi</span>
+          <span class="result-value" id="out-tax">₺{fmt0(ORN_VERGI)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Yİ-ÜFE artışı (endeks katsayısı)</span>
+            <span class="split-val" id="out-k">—</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Endeksli alış bedeli</span>
+            <span class="split-val" id="out-m">₺{fmt0(ORN_MALIYET)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Kazanç</span>
+            <span class="split-val" id="out-kz">₺{fmt0(ORN_KAZANC)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">İstisna · vergi matrahı</span>
+            <span class="split-val" id="out-mt">₺{fmt0(ORN_MATRAH)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Taksit (Mart + Temmuz)</span>
+            <span class="split-val" id="out-taksit">2 × ₺{fmt0(ORN_VERGI / 2)}</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note"></p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır; vergi/mali tavsiye değildir. GVK mük. md.80-81 ve 2026 ücret
+      dışı gelir tarifesi (332 Seri No’lu GVK Genel Tebliği) esas alınmıştır; 2026 dışındaki satış yıllarında
+      da 2026 tarifesi ve istisnası kullanılır. Yİ-ÜFE endeksi TCMB EVDS’ten otomatik güncellenir (son veri:
+      {ayAdi(SON_AY)}). · Son güncelleme: {updatedLabel}
+    </p>
+
+    <section class="table-block" id="endeks-tablosu">
+      <h2>Yİ-ÜFE endeksleme katsayıları ({ayAdi(SATIS_AY)} satışı)</h2>
+      <p class="table-intro">
+        {ayAdi(SATIS_AY)}’da satılan bir gayrimenkulün alış bedeli, alış ayına göre aşağıdaki katsayıyla
+        çarpılır (alıştan önceki ay endeksi → {ayAdi(SON_AY)} endeksi {pct(SERI[SON_AY])}). Artış %10’un altında
+        kalırsa endeksleme yapılmaz.
+      </p>
+      <table class="rate-table">
+        <thead><tr><th>Alış ayı</th><th>Baz endeks</th><th>Katsayı</th><th>1.000.000 ₺ alış → endeksli maliyet</th></tr></thead>
+        <tbody>
+          {TABLO.map((k) => (
+            <tr>
+              <td>{ayAdi(k)}</td>
+              <td>{pct(SERI[oncekiAy(k)])}</td>
+              <td>{katsayi(k) >= 1.1 ? pct(katsayi(k)) : `${pct(katsayi(k))} (endeks yok)`}</td>
+              <td>₺{fmt0(1000000 * (katsayi(k) >= 1.1 ? katsayi(k) : 1))}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Kaynak: TÜİK Yİ-ÜFE (2003=100), TCMB EVDS TP.TUFE1YI.T1. Her ay yeni endeks açıklanınca tablo kendiliğinden
+        güncellenir.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Örnek: 3 yıl önce alınan konutun satışı</h2>
+      <table class="rate-table">
+        <tbody>
+          <tr><td>Alış ({ayAdi(ORN_ALIS_AY)})</td><td>₺2.000.000</td></tr>
+          <tr><td>Satış ({ayAdi(SATIS_AY)})</td><td>₺{fmt0(ORN_SATIS)}</td></tr>
+          <tr><td>Yİ-ÜFE katsayısı</td><td>{pct(ORN_K)}</td></tr>
+          <tr><td>Endeksli alış bedeli</td><td>₺{fmt0(ORN_MALIYET)}</td></tr>
+          <tr><td>Satıcı tapu harcı (%2)</td><td>₺{fmt0(ORN_GIDER)}</td></tr>
+          <tr><td>Değer artış kazancı</td><td>₺{fmt0(ORN_KAZANC)}</td></tr>
+          <tr><td>İstisna (2026)</td><td>₺150.000</td></tr>
+          <tr><td>Vergi matrahı</td><td>₺{fmt0(ORN_MATRAH)}</td></tr>
+          <tr><td><strong>Gelir vergisi</strong></td><td><strong>₺{fmt0(ORN_VERGI)}</strong></td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">
+        Endeksleme olmasa kazanç {fmt0(ORN_SATIS - 2000000 - ORN_GIDER)} ₺ olurdu; Yİ-ÜFE endekslemesi enflasyon
+        kısmını vergiden çıkarır. Yİ-ÜFE bu üç yılda %{pct((ORN_K - 1) * 100)} arttığı için aynı konut
+        yaklaşık {fmt0((ORN_MALIYET + ISTISNA) / 0.98)} ₺’ye kadar satılsaydı (tapu harcı ve istisna düşülünce) hiç vergi
+        doğmazdı — 3 yılda fiyatı ikiye katlanan ev bile vergi açısından kazanç saymayabilir. Başka beyan edilecek gelir olmadığı varsayılmıştır.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Değer artış kazancı kimlere doğar?</h2>
+      <ul>
+        <li><strong>Gayrimenkul:</strong> alıştan itibaren 5 yıl içinde satılan konut, arsa, işyeri
+          (GVK mük. md.80/6). 5 yıl dolduysa vergi yok. Miras/bağışla edinilende vergi yok.</li>
+        <li><strong>Limited şirket payı / ortaklık hakkı:</strong> süre şartı yok; elde tutma süresinden bağımsız
+          vergilenir, 150.000 ₺ istisna uygulanır (mük. md.80/4).</li>
+        <li><strong>Borsa dışı A.Ş. hissesi:</strong> 2 yıldan fazla elde tutulduysa vergi yok; 2 yıl içinde
+          satılırsa vergilenir ama menkul kıymet olduğu için 150.000 ₺ istisna uygulanmaz (mük. md.80/1).</li>
+        <li><strong>Borsa İstanbul hisseleri ve fonlar:</strong> beyan yok — stopajla vergilenir (geçici md.67).</li>
+      </ul>
+      <p>
+        Alış bedeline, alışta ödediğiniz tapu harcı (alıcı payı %2) eklenebilir; satıştaki satıcı tapu harcı ve
+        emlak komisyonu gider olarak düşülür. Tapu masrafını <a href="/tapu-harci-hesaplama/">tapu harcı
+        hesaplama</a> aracıyla bulabilirsiniz.
+      </p>
+      <p class="cta-line">
+        İlgili araçlar: kira geliri beyanı için <a href="/gelir-vergisi-hesaplama/">gelir vergisi hesaplama</a>,
+        dilimler için <a href="/vergi-dilimi-hesaplama/">vergi dilimi hesaplama</a>, miras kalan mülk için
+        <a href="/veraset-ve-intikal-vergisi-hesaplama/">veraset ve intikal vergisi</a>, ev sahipleri için
+        <a href="/emlak-vergisi-hesaplama/">emlak vergisi hesaplama</a>, endeksin kaynağı
+        <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı</a>.
+      </p>
+    </section>
+
+    <section class="table-block" id="istisna-2027">
+      <h2>2027 değer artış kazancı istisnası (tahmin)</h2>
+      <table class="rate-table">
+        <thead><tr><th>Satış yılı</th><th>İstisna</th><th>Beyan dönemi</th></tr></thead>
+        <tbody>
+          <tr><td>2025</td><td>₺120.000</td><td>Mart 2026</td></tr>
+          <tr><td>2026</td><td>₺150.000</td><td>Mart 2027</td></tr>
+          <tr><td>2027 (tahmin)</td><td>≈ ₺{fmt0(istisna2027)}</td><td>Mart 2028</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">
+        2027 satırı yeniden değerleme oranıyla hesaplandı ({ydLabel}) ve resmî değildir; tutar Aralık sonunda
+        Gelir Vergisi Genel Tebliği ile açıklanır.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p set:html={f.a} />
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ ISTISNA, SERI, SON_AY }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const pf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 4 });
+      const T = [[190000, 0.15], [400000, 0.2], [1000000, 0.27], [5300000, 0.35], [Infinity, 0.4]];
+      const tl = (n) => '₺' + nf0.format(Math.round(n));
+
+      function gv(m) {
+        let tax = 0, prev = 0;
+        for (const [top, rate] of T) {
+          if (m > top) { tax += (top - prev) * rate; prev = top; }
+          else return tax + (m - prev) * rate;
+        }
+        return tax;
+      }
+      const onceki = (d) => {
+        const y = d.getFullYear(), m = d.getMonth();
+        return m === 0 ? (y - 1) + '-12' : y + '-' + String(m).padStart(2, '0');
+      };
+
+      function update() {
+        const tur = $('in-tur').value;
+        const ad = new Date($('in-ad').value + 'T12:00:00');
+        const sd = new Date($('in-sd').value + 'T12:00:00');
+        const a = Math.max(0, +$('in-a').value || 0);
+        const s = Math.max(0, +$('in-s').value || 0);
+        const g = Math.max(0, +$('in-g').value || 0);
+        const o = Math.max(0, +$('in-o').value || 0);
+        let note = '';
+        if (isNaN(ad) || isNaN(sd) || sd <= ad) {
+          $('out-note').textContent = 'Satış tarihi alış tarihinden sonra olmalı.';
+          return;
+        }
+        const sinir = new Date(ad);
+        if (tur === 'gm') sinir.setFullYear(sinir.getFullYear() + 5);
+        if (tur === 'as') sinir.setFullYear(sinir.getFullYear() + 2);
+        const muaf = tur !== 'ltd' && sd > sinir;
+
+        let ka = onceki(ad), ks = onceki(sd), eksik = false;
+        if (ks > SON_AY) { ks = SON_AY; eksik = true; }
+        const k = SERI[ka] && SERI[ks] ? SERI[ks] / SERI[ka] : null;
+        const endeksli = k && k >= 1.1 ? a * k : a;
+        const kazanc = s - endeksli - g;
+        const ist = tur === 'as' ? 0 : ISTISNA;
+        const matrah = Math.max(0, kazanc - ist);
+        const vergi = muaf ? 0 : gv(o + matrah) - gv(o);
+
+        $('out-k').textContent = k ? '%' + pf.format((k - 1) * 100).replace(/(,\d\d)\d+/, '$1') + ' · ' + pf.format(k) + (k < 1.1 ? ' (<%10, endeks yok)' : '') : 'endeks verisi yok';
+        $('out-m').textContent = tl(endeksli);
+        $('out-kz').textContent = kazanc > 0 ? tl(kazanc) : 'Kazanç yok (' + tl(kazanc) + ')';
+        $('out-mt').textContent = (ist ? tl(ist) : 'istisna yok') + ' · ' + tl(muaf ? 0 : matrah);
+        $('out-label').textContent = muaf ? 'Vergi yok' : (vergi > 0 ? 'Değer artış kazancı vergisi' : 'Beyanname gerekmez');
+        $('out-tax').textContent = tl(vergi);
+        $('out-taksit').textContent = vergi > 0 ? '2 × ' + tl(vergi / 2) : '—';
+
+        const by = sd.getFullYear() + 1;
+        if (muaf) note = tur === 'gm' ? 'Alıştan itibaren 5 yıl dolmuş: değer artış kazancı vergisi yok (GVK mük. md.80/6).' : '2 yıldan fazla elde tutulan A.Ş. hissesi: vergi yok (mük. md.80/1).';
+        else if (vergi > 0) note = 'Beyan: 1-31 Mart ' + by + ', yıllık gelir vergisi beyannamesiyle.';
+        else if (kazanc > 0) note = 'Kazanç istisnanın altında: beyan gerekmez.';
+        if (eksik) note += ' Satış ayından önceki ayın endeksi henüz açıklanmadı; son açıklanan ' + SON_AY + ' endeksi kullanıldı.';
+        if (!SERI[ka]) note += ' Alış ayı endeksi verimizde yok (2005 öncesi): endekslemesiz hesaplandı.';
+        if (sd.getFullYear() !== 2026) note += ' 2026 istisnası ve tarifesi kullanıldı.';
+        $('out-note').textContent = note.trim();
+      }
+
+      ['in-a', 'in-s', 'in-g', 'in-o', 'in-ad', 'in-sd'].forEach((id) => $(id).addEventListener('input', update));
+      $('in-tur').addEventListener('change', update);
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.7rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input, .calc-inputs select {
+      font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus, .calc-inputs select:focus {
+      outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft);
+    }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 0.9rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.95rem; text-align: right; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; overflow-x: auto; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.5; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>

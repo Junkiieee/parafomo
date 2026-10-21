@@ -35,6 +35,7 @@ import urllib.request
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(REPO, "data", "yeniden-degerleme.json")
+ENDEKS_OUT = os.path.join(REPO, "data", "yiufe-endeks.json")  # değer artışı endekslemesi (/deger-artis-kazanci-hesaplama)
 TUIK_CALS = os.path.join(REPO, "data", "tuik-enflasyon-*.json")
 URL = ("https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/"
        "Enflasyon+Verileri/Uretici+Fiyatlari")
@@ -142,6 +143,25 @@ def hedef_for(son_ay):
     return yil + 1 if ay_no >= 6 else yil
 
 
+def write_endeks(levels):
+    """Yİ-ÜFE endeks seviyeleri (2003=100) — GVK mük. md.81 endekslemesi için. Yalnız değişince yazar."""
+    if len(levels) < 120:
+        return
+    seri = {k: round(levels[k], 2) for k in sorted(levels)}
+    old = {}
+    if os.path.exists(ENDEKS_OUT):
+        old = json.load(open(ENDEKS_OUT, encoding="utf-8"))
+    if old.get("seri") == seri:
+        return
+    with open(ENDEKS_OUT, "w", encoding="utf-8") as f:
+        json.dump({"_aciklama": "Yİ-ÜFE aylık endeks (2003=100), TCMB EVDS TP.TUFE1YI.T1. Değer artışı kazancında maliyet, "
+                   "iktisap ayından önceki ay ile satış ayından önceki ay arasındaki artış %10+ ise endekslenir.",
+                   "_kaynak": f"{EVDS} {EVDS_SERIES}", "updated": dt.date.today().isoformat(),
+                   "sonAy": max(seri), "seri": seri}, f, ensure_ascii=False, indent=0)
+        f.write("\n")
+    print(f"[yd] endeks yazıldı: {min(seri)}..{max(seri)} ({len(seri)} ay)")
+
+
 def main():
     try:
         table = fetch_tcmb_table()
@@ -154,10 +174,11 @@ def main():
             print(f"[yd] UYARI: TCMB tablosunda şüpheli değerler {bad[:3]} — tablo kullanılmadı")
             table = {}
     try:
-        levels = fetch_evds_levels(dt.date.today().year - 4)
+        levels = fetch_evds_levels(2005)
     except Exception as e:
         print(f"[yd] UYARI: EVDS çekilemedi: {e}")
         levels = {}
+    write_endeks(levels)
     if not table and not levels:
         print("[yd] UYARI: iki kaynak da yok — yazılmadı")
         return 0

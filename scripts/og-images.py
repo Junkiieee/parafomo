@@ -247,6 +247,10 @@ CARDS = {
         # İş Kanunu md.53 — sabit kural
         "kicker": "YILLIK İZİN 2026", "stat": "14 · 20 · 26 gün",
         "sub": "kıdeme göre izin hakkı · kullanılmayan izin ücretini hesapla"},
+    "deger-artis-kazanci-hesaplama": lambda: {
+        # GVK mük. md.80-81 + 332 Seri No'lu Tebliğ; Ocak 2027'de istisnayı sayfayla birlikte güncelle
+        "kicker": "DEĞER ARTIŞ KAZANCI 2026", "stat": "₺150.000",
+        "sub": "yıllık istisna · 5 yıl kuralı · Yİ-ÜFE endeksli maliyet"},
     "kurumlar-vergisi-hesaplama": lambda: {
         # KVK md.32 / 32/C — kanun oranı; değişirse sayfayla birlikte güncelle
         "kicker": "KURUMLAR VERGİSİ 2026", "stat": "%25",
