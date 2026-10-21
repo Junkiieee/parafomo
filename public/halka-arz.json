@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-21T12:15+00:00",
+  "updated": "2026-10-21T18:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 42,
@@ -2456,7 +2456,7 @@
       "first_trade": "17 Eylül 2026",
       "float_lot": "83.195.069 Lot",
       "float_pct": "%26.62",
-      "updated_src": "18.09.2026 11:42",
+      "updated_src": "21.10.2026 16:56",
       "details": {
         "sekil": {
           "items": [
@@ -3849,11 +3849,11 @@
       "distribution": "Eşit Dağıtım",
       "lot": "70.000.000 Lot",
       "broker": "Tacirler Yatırım Menkul Değerler A.Ş.",
-      "market": "Yıldız Pazar",
+      "market": "Ana Pazar",
       "first_trade": "29 Temmuz 2026",
-      "float_lot": "59.034.340 Lot",
-      "float_pct": "%23.61",
-      "updated_src": "15.09.2026 10:46",
+      "float_lot": "61.427.709 Lot",
+      "float_pct": "%24.57",
+      "updated_src": "21.10.2026 16:48",
       "details": {
         "sekil": {
           "items": [
