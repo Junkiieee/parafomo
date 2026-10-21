@@ -1,13 +1,13 @@
 {
-  "updated": "2026-10-20T06:00+00:00",
+  "updated": "2026-10-21T06:00+00:00",
   "source": "Yahoo Finance (EURTRY=X ve USDTRY=X kur, aylık kapanış); EUR/USD = EURTRY ÷ USDTRY",
-  "eurtry_now": 55.701,
-  "usdtry_now": 49.575,
-  "eurusd_now": 1.1236,
+  "eurtry_now": 55.7083,
+  "usdtry_now": 49.5976,
+  "eurusd_now": 1.1232,
   "ytd": {
     "label": "Yıl başından beri",
     "eurtry_then": 51.9435,
-    "eurtry_now": 55.701,
+    "eurtry_now": 55.7083,
     "return_tl_pct": 7.2,
     "usdtry_then": 43.4551,
     "usd_return_tl_pct": 14.1,
@@ -18,7 +18,7 @@
     {
       "label": "1 yıl",
       "eurtry_then": 49.0763,
-      "eurtry_now": 55.701,
+      "eurtry_now": 55.7083,
       "return_tl_pct": 13.5,
       "usdtry_then": 42.493,
       "usd_return_tl_pct": 16.7,
@@ -29,10 +29,10 @@
     {
       "label": "3 yıl",
       "eurtry_then": 31.7557,
-      "eurtry_now": 55.701,
+      "eurtry_now": 55.7083,
       "return_tl_pct": 75.4,
       "usdtry_then": 28.9409,
-      "usd_return_tl_pct": 71.3,
+      "usd_return_tl_pct": 71.4,
       "eurusd_then": 1.0973,
       "eurusd_change_pct": 2.4,
       "years": 3
@@ -40,26 +40,26 @@
     {
       "label": "5 yıl",
       "eurtry_then": 14.347,
-      "eurtry_now": 55.701,
-      "return_tl_pct": 288.2,
+      "eurtry_now": 55.7083,
+      "return_tl_pct": 288.3,
       "usdtry_then": 12.699,
-      "usd_return_tl_pct": 290.4,
+      "usd_return_tl_pct": 290.6,
       "eurusd_then": 1.1298,
-      "eurusd_change_pct": -0.5,
+      "eurusd_change_pct": -0.6,
       "years": 5
     },
     {
       "label": "10 yıl",
       "eurtry_then": 3.6299,
-      "eurtry_now": 55.701,
-      "return_tl_pct": 1434.5,
+      "eurtry_now": 55.7083,
+      "return_tl_pct": 1434.7,
       "usdtry_then": 3.4094,
-      "usd_return_tl_pct": 1354.1,
+      "usd_return_tl_pct": 1354.7,
       "eurusd_then": 1.0647,
       "eurusd_change_pct": 5.5,
       "years": 10
     }
   ],
   "headline_years": 10,
-  "headline_return_tl_pct": 1434.5
+  "headline_return_tl_pct": 1434.7
 }

@@ -1,0 +1,64 @@
+{
+  "slug": "dolar-mi-tuttun-10-yilda-kacan-para-sasirtacak",
+  "title": "Dolar mı tuttun? 10 yılda kaçan para şaşırtacak",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "10 yıl önce 10 bin lirayı dolara çevirenle altına koyanın arasındaki fark yaklaşık 390 bin TL. Dolar parayı korudu ama altının yaptığı kadar büyütmedi.\nKaynak/hesap: 10.000 TL × ~16,1 (dolar, ~%1509) ≈ 160.000 TL; 10.000 TL × ~55,5 (altın, ~%5450) ≈ 550.000 TL; 550.000 − 160.000 = 390.000 TL · ParaFOMO güncel veri sayfaları, son 10 yıl TL bazlı altın ve dolar getirisi (Eki 2026); senaryodaki hesap",
+  "tags": [
+    "altın",
+    "dolar",
+    "birikim",
+    "yatırım",
+    "fırsat maliyeti",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Dolarda beklemek yaklaşık 390 bin TL kaçırttı.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Aynı 10 bin lira 10 yılda dolarda yaklaşık 160 bin, altında yaklaşık 550 bin oldu; fark bu.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bars"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama burada zarar yok; dolar parayı korudu, sadece altının yaptığını yapamadı. Görünmeyen kayıp bu.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Geçmiş getiri geleceği garantilemez; yine de tek varlıkta beklemeden birikimini dağıtmayı düşün.",
+      "visual": {
+        "type": "concept",
+        "query": "diversification"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki hesap, maaşının 10 yıl önce kaç gram altın aldığını gösteriyor. Abone ol, her gün tek net analiz gelsin.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "yaklaşık 390 bin TL",
+    "calc": "10.000 TL × ~16,1 (dolar, ~%1509) ≈ 160.000 TL; 10.000 TL × ~55,5 (altın, ~%5450) ≈ 550.000 TL; 550.000 − 160.000 = 390.000 TL",
+    "source": "ParaFOMO güncel veri sayfaları, son 10 yıl TL bazlı altın ve dolar getirisi (Eki 2026); senaryodaki hesap"
+  }
+}

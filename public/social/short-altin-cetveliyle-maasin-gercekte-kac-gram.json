@@ -1,0 +1,70 @@
+{
+  "title": "Altın cetveliyle maaşın gerçekte kaç gram? #Shorts",
+  "description": "Lirayı lastik, altını daha dengeli bir cetvele benzeten bir metaforla maaş, kira ve birikimi gram cinsinden ölçmeyi anlatır. 10 yıl öncesiyle gram bazında kıyas yapmayı öğretir.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #altın #maaş #enflasyon #gram altın #birikim",
+  "tags": [
+    "altın",
+    "maaş",
+    "enflasyon",
+    "gram altın",
+    "birikim",
+    "reel değer",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-altin-cetveliyle-maasin-gercekte-kac-gram.mp4",
+  "slug": "altin-cetveliyle-maasin-gercekte-kac-gram",
+  "format": "single_concept",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.5,
+      "spoken": "Maaşın artıyor ama aslında küçülüyor.",
+      "visual": "gold: gold coins stack shining"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.5,
+      "end": 9.37,
+      "spoken": "Çünkü lira lastik bir cetvel gibi; her yıl uzuyor, sen ölçtüğünü büyük sanıyorsun.",
+      "visual": "object: tape measure"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 9.37,
+      "end": 16.34,
+      "spoken": "Altın ise daha dengeli bir cetvel; maaşını gramla ölçünce zam çoğu zaman sandığın kadar görünmez.",
+      "visual": "gold: gold bullion bars"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 16.34,
+      "end": 22.77,
+      "spoken": "Bu akşam kirayı, maaşı ve birikimini gram cinsinden yaz; 10 yıl öncesiyle yan yana koy.",
+      "visual": "object: calculator and notebook"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 22.77,
+      "end": 31.14,
+      "spoken": "Gramla ölçünce hangi harcama en çok şişmiş, yarın göstereceğim. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": "gold: gold coins stack shining"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-21T05:03:10+00:00",
+    "slug": "altin-cetveliyle-maasin-gercekte-kac-gram",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "g2-Op_8IgR8",
+  "youtube_url": "https://youtube.com/shorts/g2-Op_8IgR8",
+  "ig_reel_id": "17913833937551593",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DevnNsUjugH/",
+  "ig_seed_comment_id": "18116131651818320"
+}

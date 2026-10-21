@@ -1,0 +1,70 @@
+{
+  "title": "Altın düşse bile cebin neden kazanabilir, bak #Shorts",
+  "description": "Gram altın hem dünya ons fiyatına hem dolar kuruna bağlı. Son 10 yılda TL bazında altın dolardan çok daha fazla kazandırdı; kısa vadeli dalgalanma uzun vadeyi değiştirmiyor.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #altın #gram altın #dolar #ons #enflasyon",
+  "tags": [
+    "altın",
+    "gram altın",
+    "dolar",
+    "ons",
+    "enflasyon",
+    "birikim",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-altin-dusse-bile-cebin-neden-kazanabilir-bak.mp4",
+  "slug": "altin-dusse-bile-cebin-neden-kazanabilir-bak",
+  "format": "myth",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.3,
+      "spoken": "Altın düşerse sen de kaybedersin.",
+      "visual": "gold: shiny gold bars stacked"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.3,
+      "end": 11.0,
+      "spoken": "Gram altın iki şeye bağlı: dünyadaki ons fiyatına ve dolar kuruna. Biri düşerken diğeri taşıyabilir.",
+      "visual": "gold: gold coins on scale"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 11.0,
+      "end": 19.37,
+      "spoken": "Ama son 10 yılda altın TL'de yaklaşık yüzde 5450, dolar yaklaşık yüzde 1509 kazandırdı.",
+      "visual": "object: rising line chart on screen"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 19.37,
+      "end": 25.84,
+      "spoken": "Kısa vadede oynar, bu normal. Düzenli ve uzun tutan kazanır; her ay küçük parça al.",
+      "visual": "gold: gold coins in hand"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 25.84,
+      "end": 34.04,
+      "spoken": "Sıradaki videoda ons ile kurun altını nasıl oynattığını açıyorum. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": "gold: shiny gold bars stacked"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-20T18:33:25+00:00",
+    "slug": "altin-dusse-bile-cebin-neden-kazanabilir-bak",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "ljm2mqQvzc4",
+  "youtube_url": "https://youtube.com/shorts/ljm2mqQvzc4",
+  "ig_reel_id": "18000584880033038",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DeufJrZgv53/",
+  "ig_seed_comment_id": "18088602422269422"
+}
