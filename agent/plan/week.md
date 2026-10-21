@@ -175,6 +175,9 @@ FAQPage (WebApplication şeması BaseLayout'tan otomatik) + ilgili 2 sayfadan me
 - Headless: döngü/değişken/awk/heredoc yok; çok adımlı iş `agent/state/*.py` ile.
 
 ## Biten / iptal (bu hafta)
+- [x] (günlük 10-21, keyword-map K16) /deger-artis-kazanci-hesaplama → canlı https://parafomo.com/deger-artis-kazanci-hesaplama/ (GVK mük.80-81 mevzuat.gov.tr metninden: 5 yıl, 150.000 ₺ istisna 2026, Yİ-ÜFE %10 eşiği; endeks EVDS → data/yiufe-endeks.json, yeniden-degerleme-update.py her çalışmada yazar; katsayı tablosu + 2027 istisna tahmini) · commit 0877a56
+- [x] (günlük 10-21, adım 5) /blog/pce-gdp-agustos-2026-fed-eylul-dolar-altin → sonuç kutusu (BEA: Temmuz çekirdek PCE %0,2/%3,3; Q2 2. tahmin %1,5; Fed 16 Eylül +25 bp) · commit fb15422
+- [x] (günlük 10-21, SEO uyarı) /altin-fiyatlari/* 11 sayfada title ≤68 karakter · commit 8a2a0a6
 - [x] (günlük 10-20, keyword-map K16) /kurumlar-vergisi-hesaplama → canlı https://parafomo.com/kurumlar-vergisi-hesaplama/ (genel %25, finans %30, ihracat %20, halka arz %23, asgari KV %10 kontrolü, 2026 üretim 1 puan / 2027 üretim %12,5 — 7582 s.K.; beyan son günü kaynaklar çeliştiği için yazılmadı) · commit 5232ae5
 - [x] (günlük 10-20, adım 5) /blog/pce-gdp-eylul-2026-fed-kasim-dolar-altin → sonuç kutusu (BEA: Ağustos çekirdek PCE %0,2 / %3,0; Q2 GDP %2,2), yanlış "Fed Kasım" → 28 Ekim · commit 760236f
 - [x] (günlük 10-19, keyword-map K16/K22) /bagkur-primi-hesaplama → canlı https://parafomo.com/bagkur-primi-hesaplama/ (%35,75 / indirimli %30,75, en düşük 10.156,73 ₺; 2 kaynakla kuruşu kuruşuna; GSS tutarları kaynaklar çeliştiği için YAZILMADI) · commit c59d0f2
