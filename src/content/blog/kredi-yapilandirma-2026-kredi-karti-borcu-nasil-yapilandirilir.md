@@ -48,7 +48,7 @@ Yapılandırmanın ne olmadığını bilmek de önemli:
 
 2026'nın resmi çerçevesi, BDDK'nın **29 Ocak 2026 tarihli ve 11366 sayılı** kararıdır. Kararın öne çıkan noktaları:
 
-- **Kapsam:** Karar tarihinden önce kullandırılmış, ödemeleri geciken bireysel ihtiyaç kredileri, kredili mevduat hesapları (KMH) ve dönem borcu tam ödenmemiş bireysel kredi kartı borçları.
+- **Kapsam:** Karar tarihinden önce kullandırılmış, ödemeleri geciken bireysel ihtiyaç kredileri ve dönem borcu tam ödenmemiş bireysel kredi kartı borçları; daha önce yapılandırılmış borçlar da kapsama alındı. Yapılandırılan kartın limiti, borcun en az yarısı ödenene kadar artırılamıyor.
 - **Vade:** Yapılandırma tarihindeki borç bakiyesi üzerinden **en fazla 48 ay**.
 - **İlave kredi yok:** Yapılandırma sırasında borçluya yeni para kullandırılmaz; mevcut borç yeniden vadelendirilir.
 - **Başvuru süresi:** Borçlunun **karar tarihinden itibaren 3 ay içinde** bankasına talepte bulunması gerekiyordu. Bu pencere **Nisan 2026 sonunda kapandı.**
