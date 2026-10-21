@@ -1,18 +1,19 @@
 ---
-title: "26 Ağustos PCE + Büyüme Verisi: Fed Eylül'de Ne Yapar? Dolar ve Altın Etkisi"
-description: "26 Ağustos'ta açıklanan ABD çekirdek PCE ve Q2 GDP verisi Fed'in Eylül faiz kararını şekillendiriyor. Türk yatırımcısı dolar, TL ve altına etkisini nasıl okumalı?"
+title: "ABD PCE ve GDP Açıklandı (26 Ağustos 2026): Çekirdek PCE %3,3, Büyüme %1,5 — Fed Eylül'de Artırdı"
+description: "BEA 26 Ağustos 2026: Temmuz çekirdek PCE aylık %0,2, yıllık %3,3; Q2 büyümesi %1,5. Fed 16 Eylül'de faizi 25 bp artırdı. Dolar, altın ve TL etkisi."
 pubDate: 2026-08-24
+updatedDate: 2026-10-21
 category: "Ekonomi"
 tags: ["pce verisi", "abd büyüme verisi", "fed faiz kararı", "dolar tl", "altın fiyatı", "merkez bankası"]
 readingTime: 7
 featured: false
 faq:
-  - q: "26 Ağustos PCE verisi ne zaman açıklanıyor?"
-    a: "26 Ağustos 2026 Çarşamba günü saat 15:30 Türkiye saatiyle (12:30 ET) açıklanıyor. Aynı saatte Q2 GDP ön tahmini (Prelim GDP) da yayımlanıyor."
+  - q: "26 Ağustos 2026 PCE ve GDP verisi ne çıktı?"
+    a: "BEA 26 Ağustos 2026'da açıkladı: Temmuz PCE fiyat endeksi aylık %0,2, yıllık %3,7; çekirdek PCE aylık %0,2, yıllık %3,3. ABD ikinci çeyrek büyümesi ikinci tahminde yıllıklandırılmış %1,5 ile öncü tahminle aynı kaldı."
   - q: "PCE verisi yüksek çıkarsa dolar ne olur?"
     a: "Beklentilerin üzerinde bir PCE verisi, Fed'in faiz indirmeyeceği mesajı olarak okunur; dolar güçlenir, altın baskı altına girer, TL üzerinde aşağı yönlü baskı oluşabilir."
-  - q: "Fed Eylül 2026 toplantısında faiz indirir mi?"
-    a: "Kesin tahmin yapmak mümkün değil. 26 Ağustos PCE ve GDP verileri, piyasanın Eylül faiz beklentisini en çok etkileyecek göstergeler olduğu için bu açıklamalar kritik öneme sahip."
+  - q: "Fed Eylül 2026 toplantısında ne yaptı?"
+    a: "Fed 16 Eylül 2026'da faizi indirmedi, 25 baz puan artırarak %3,75-4,00 aralığına çıkardı (oylama 12-0). Çekirdek PCE'nin %3'ün üzerinde kalması bu kararın arka planındaydı. Sıradaki karar 28 Ekim 2026."
   - q: "GDP verisi neden PCE ile aynı anda açıklanıyor?"
     a: "BEA (ABD Ekonomik Analiz Bürosu), GSYİH ve kişisel tüketim harcamaları verilerini aynı yayın döngüsünde hesaplar. PCE, GDP bileşenlerinden türetildiği için iki veri teknik olarak birbirine bağlıdır."
   - q: "Bu veri Türkiye'deki altın ve dolar hesabını nasıl etkiler?"
@@ -36,7 +37,9 @@ shorts_visuals:
   - "concept|financial analysis investment trading screen"
 ---
 
-Bu çarşamba (26 Ağustos 2026) piyasaların en çok beklediği iki veri aynı anda açıklanıyor: **ABD çekirdek PCE fiyat endeksi** ve **Q2 büyüme verisi (Prelim GDP)**. Tek başına her biri piyasaları sarsabilecek güçte; ikisinin aynı saatte gelmesi Fed'in Eylül kararına dair sinyal değerini iki katına çıkarıyor. Türk yatırımcısı için ne anlama geldiğini adım adım inceleyelim.
+> **Veri açıklandı (26 Ağustos 2026):** Temmuz PCE fiyat endeksi aylık %0,2, yıllık %3,7; **çekirdek PCE aylık %0,2, yıllık %3,3**. Q2 büyümesi ikinci tahminde **%1,5** (öncü tahminle aynı) ([BEA PCE](https://www.bea.gov/news/2026/personal-income-and-outlays-july-2026), [BEA GDP](https://www.bea.gov/news/2026/gdp-second-estimate-and-corporate-profits-2nd-quarter-2026)). Enflasyon hedefin belirgin üzerinde kaldı; **Fed 16 Eylül'de faizi indirmek yerine 25 bp artırarak %3,75-4,00'a çıkardı** ([Fed](https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm)). Sıradaki: [30 Eylül PCE ve kesin GDP sonucu](/blog/pce-gdp-eylul-2026-fed-kasim-dolar-altin/) · Fed 28 Ekim kararı için [Fed faiz takvimi](/fed-faiz-takvimi/).
+
+_Aşağıdaki metin veri öncesi yazılmıştır._ 26 Ağustos 2026'da piyasaların en çok beklediği iki veri aynı anda açıklandı: **ABD çekirdek PCE fiyat endeksi** ve **Q2 büyüme verisi (Prelim GDP)**. Tek başına her biri piyasaları sarsabilecek güçte; ikisinin aynı saatte gelmesi Fed'in Eylül kararına dair sinyal değerini iki katına çıkarıyor. Türk yatırımcısı için ne anlama geldiğini adım adım inceleyelim.
 
 ## PCE Nedir, Neden Bu Kadar Önemli?
 
