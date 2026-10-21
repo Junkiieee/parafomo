@@ -1,0 +1,59 @@
+{
+  "slug": "dolar-ve-euro-yonu-londra-daki-rakama-bagli",
+  "title": "Dolar ve euro yönü, Londra'daki rakama bağlı",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "İngiltere enflasyon verisi, faiz beklentisi üzerinden sterlini, doları ve euroyu nasıl oynatır; döviz alacaklar için sade bir özet.",
+  "tags": [
+    "enflasyon",
+    "İngiltere",
+    "sterlin",
+    "dolar",
+    "euro",
+    "faiz",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "İngiltere'nin enflasyon rakamı doları da oynatıyor.",
+      "visual": {
+        "type": "place",
+        "query": "Bank of England building"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Rakam yüksek gelirse faiz indirimi uzar, sterlin güçlenir; düşük gelirse indirim yaklaşır, sterlin zayıflar.",
+      "visual": {
+        "type": "object",
+        "query": "stock market chart on screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama etki orada kalmıyor: yatırımcı parayı faizi yüksek yerde tutar, dolar ve euro da kıpırdar.",
+      "visual": {
+        "type": "place",
+        "query": "Federal Reserve building"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Dolar ya da euro alacaksan rakam saatinde acele etme; fiyat sert oynayabilir, ertesi günü izle.",
+      "visual": {
+        "type": "object",
+        "query": "smartphone banking app"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Yarın hangi veri kuru kıpırdatacak, merak ediyorsan abone ol; her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "place",
+        "query": "Bank of England building"
+      }
+    }
+  ]
+}
