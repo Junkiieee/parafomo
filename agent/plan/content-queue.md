@@ -21,10 +21,10 @@ düşer" 1,5 · "hazine bonosu" 2,6 · "eurobond nedir" 2,4 → "X mi Y mi" kara
   "altın hesabı" (hacim 38) · neden: altın kümesi en güçlü kümemiz; makas, vergi, saklama, banka riski tablosu;
   altin-fonu yazısıyla çakışmasın (o yazı FON, bu yazı HESAP) · iç-link: /altin-getiri, /altin-hesaplama,
   /blog/altin-fonu-nedir-gram-altindan-farki → /blog/altin-hesabi-nedir-mantikli-mi-fiziki-altin-fon-karsilastirma (2026-10-20)
-- [ ] **Kredi yapılandırma 2026: kredi kartı ve kredi borcu nasıl yapılandırılır?** · hedef: "kredi yapılandırma"
+- [x] **Kredi yapılandırma 2026: kredi kartı ve kredi borcu nasıl yapılandırılır?** · hedef: "kredi yapılandırma"
   (hacim 50) · neden: hacimli, sitede yok; BDDK düzenlemesini (azami vade, faiz) YALNIZ resmi kaynaktan yaz;
   haber sitelerinde çelişen "yeni yapılandırma paketi" iddialarını yazma · iç-link: /kredi-hesaplama,
-  /blog/kredi-karti-borcundan-kurtulma, asgari ödeme yazısı (yayındaysa)
+  /blog/kredi-karti-borcundan-kurtulma, asgari ödeme yazısı (yayındaysa) → /blog/kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir (2026-10-21)
 - [ ] **Findeks kredi notu nedir, nasıl yükselir? Not aralıkları ve kredi onayına etkisi** · hedef: "findeks
   kredi notu" (hacim 12,5) · neden: kredi kümesi (konut/ihtiyaç kredisi araçlarıyla birlikte); not aralıklarını
   KKB'nin kendi sayfasından al · iç-link: /kredi-hesaplama, /konut-kredisi-hesaplama (yayındaysa)

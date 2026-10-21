@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-10-21 — Kredi Yapılandırma 2026: Kart ve Kredi Borcu Nasıl Yapılandırılır?
+
+**Yayınlanan yazı:** [Kredi Yapılandırma 2026: Kart ve Kredi Borcu Nasıl Yapılandırılır?](/blog/kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — "kredi yapılandırma" hacim 50)
+
+---
+
 ## 2026-10-20 — Altın Hesabı Nedir, Mantıklı mı? Fiziki Altın ve Fonla Kıyas
 
 **Yayınlanan yazı:** [Altın Hesabı Nedir, Mantıklı mı? Fiziki Altın ve Fonla Kıyas](/blog/altin-hesabi-nedir-mantikli-mi-fiziki-altin-fon-karsilastirma)
