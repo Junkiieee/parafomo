@@ -46,9 +46,12 @@ const adetSet = spec.birim === 'adet' ? [1, 2, 3, 5, 10, 20] : spec.birim === 'g
 const kardes = ALTIN_SPECS.filter((s) => s.slug !== spec.slug && items.some((i) => i.key === s.key));
 
 const baslikKisa = spec.birim === 'gram' && spec.grup === 'ayar' ? `${spec.ad} Gram Fiyatı` : `${spec.ad} Fiyatı`;
-const title = usd
-  ? `Ons Altın Fiyatı Bugün (${dateLabel}) | Ons Altın Kaç Dolar?`
-  : `${baslikKisa} Bugün (${dateLabel}) | ${spec.ad} Kaç TL${spec.birim === 'adet' ? ', Kaç Gram' : ''}?`;
+// Google ~70 karakterde keser: baş sorgu + tarih sabit, kuyruk sığdığı kadar (seo-audit title_long).
+const titleBase = `${usd ? 'Ons Altın Fiyatı' : baslikKisa} Bugün (${dateLabel})`;
+const titleKuyruk = usd
+  ? ['Ons Altın Kaç Dolar?', 'Kaç Dolar?']
+  : [`${spec.ad} Kaç TL${spec.birim === 'adet' ? ', Kaç Gram' : ''}?`, `${spec.ad} Kaç TL?`, 'Kaç TL?'];
+const title = titleKuyruk.map((k) => `${titleBase} | ${k}`).find((t) => t.length <= 68) ?? titleBase;
 const description = usd
   ? `Ons altın bugün ${fmt2(satis)} $. Ons kaç gram (31,1035 g), TL'ye nasıl çevrilir, gram altınla ilişkisi — ${dateLabel} verisiyle, her gün güncel.`
   : `${spec.ad} bugün satış ${fmt0(satis)} ₺, alış (bozdurma) ${fmt0(alis)} ₺. ${spec.birim === 'adet' ? `${g3(spec.gram)} gram, ` : ''}${spec.ayar}; içindeki saf altın, işçilik primi ve adet hesaplayıcı — ${dateLabel} verisiyle, her gün güncel.`;
