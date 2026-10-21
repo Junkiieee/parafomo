@@ -1,0 +1,59 @@
+{
+  "slug": "altin-cetveliyle-maasin-gercekte-kac-gram",
+  "title": "Altın cetveliyle maaşın gerçekte kaç gram?",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Lirayı lastik, altını daha dengeli bir cetvele benzeten bir metaforla maaş, kira ve birikimi gram cinsinden ölçmeyi anlatır. 10 yıl öncesiyle gram bazında kıyas yapmayı öğretir.",
+  "tags": [
+    "altın",
+    "maaş",
+    "enflasyon",
+    "gram altın",
+    "birikim",
+    "reel değer",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Maaşın artıyor ama aslında küçülüyor.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins stack shining"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çünkü lira lastik bir cetvel gibi; her yıl uzuyor, sen ölçtüğünü büyük sanıyorsun.",
+      "visual": {
+        "type": "object",
+        "query": "tape measure"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Altın ise daha dengeli bir cetvel; maaşını gramla ölçünce zam çoğu zaman sandığın kadar görünmez.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu akşam kirayı, maaşı ve birikimini gram cinsinden yaz; 10 yıl öncesiyle yan yana koy.",
+      "visual": {
+        "type": "object",
+        "query": "calculator and notebook"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Gramla ölçünce hangi harcama en çok şişmiş, yarın göstereceğim. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins stack shining"
+      }
+    }
+  ]
+}
