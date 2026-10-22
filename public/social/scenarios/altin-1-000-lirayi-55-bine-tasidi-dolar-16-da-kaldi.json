@@ -1,0 +1,64 @@
+{
+  "slug": "altin-1-000-lirayi-55-bine-tasidi-dolar-16-da-kaldi",
+  "title": "Altın 1.000 lirayı 55 bine taşıdı, dolar 16'da kaldı",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "10 yıl önce altına ve dolara konan 1.000 TL'nin bugünkü karşılığı yan yana: altın yaklaşık 55 bin TL, dolar yaklaşık 16 bin TL.\nKaynak/hesap: Altın ~%5450 artış → 1.000 x 55,5 ≈ 55.500 TL; dolar ~%1509 artış → 1.000 x 16,09 ≈ 16.090 TL; 55.500/16.090 ≈ 3,5 kat · ParaFOMO güncel veri sayfaları: 10 yıllık altın (TL bazında) ve dolar/TL getirisi, Ekim 2026",
+  "tags": [
+    "altın",
+    "dolar",
+    "birikim",
+    "10 yıllık getiri",
+    "enflasyon",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "1.000 liralık altın 10 yılda 55 bin.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Altın 10 yılda yaklaşık yüzde 5450 arttı; 1.000 lira, yaklaşık 55 bin lira eder.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama aynı parayı dolara çevirseydin, yüzde 1509 artışla yaklaşık 16 bin lirada kalırdı.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Geçmiş garanti değil ama fark yaklaşık 3,5 kat; birikimini tek araca bağlamadan karar ver.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki hesap daha da şaşırtıcı. Abone ol, her gün tek net rakamı 30 saniyede anlatalım.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "1.000 liralık altın 10 yılda 55 bin",
+    "calc": "Altın ~%5450 artış → 1.000 x 55,5 ≈ 55.500 TL; dolar ~%1509 artış → 1.000 x 16,09 ≈ 16.090 TL; 55.500/16.090 ≈ 3,5 kat",
+    "source": "ParaFOMO güncel veri sayfaları: 10 yıllık altın (TL bazında) ve dolar/TL getirisi, Ekim 2026"
+  }
+}
