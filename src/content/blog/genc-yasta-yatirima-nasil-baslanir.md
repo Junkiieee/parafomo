@@ -2,6 +2,7 @@
 title: "Genç Yaşta Yatırım: 20'li Yaşlarda Nasıl Başlanır?"
 description: "Genç yaşta yatırıma başlamak için ne kadar para gerekir? Hangi araçlar uygun? Borsadan BES'e adım adım 20'li yaşlarda yatırım rehberi."
 pubDate: 2026-07-15
+updatedDate: 2026-10-22
 category: "Yatırım"
 tags: ["genç yatırım", "yatırıma başlangıç", "gençler için yatırım", "uzun vadeli yatırım", "bileşik faiz", "borsa"]
 readingTime: 8
@@ -16,7 +17,7 @@ faq:
   - q: "Genç yaşta yatırımda en büyük hata nedir?"
     a: "Acil durum fonu oluşturmadan yatırıma girmek ve kısa vadeli düşünerek panikte satmak. Genç yatırımcının en büyük avantajı zamandır; bunu kısa vadeli alım-satımla heba etmek sık yapılan hatanın başında gelir."
   - q: "BES gençler için mantıklı mı?"
-    a: "BES, devlet katkısı (%25'e kadar) sayesinde gençler için cazip bir araçtır. Uzun vadeli birikim hedefi olanlar, küçük aylık katkılarla ciddi bir emeklilik fonu oluşturabilir. Detaylar için BES rehberimizi incelemenizi öneririz."
+    a: "BES, devlet katkısı (2026'dan itibaren %20) sayesinde gençler için cazip bir araçtır. Uzun vadeli birikim hedefi olanlar, küçük aylık katkılarla ciddi bir emeklilik fonu oluşturabilir. Detaylar için BES rehberimizi incelemenizi öneririz."
 ---
 
 20'li yaşlarda finans konuşmaları genellikle "şimdi çok az param var, ileride düşünürüm" cümlesiyle biter. Oysa **genç yaşta yatırım** tam da bu dönemde başlatıldığında en güçlüdür — çünkü elinizde paranın yerini tutacak tek şey vardır: **zaman.** Bu rehberde 20'li ve 30'lu yaşlarda nasıl başlanacağını, hangi araçların uygun olduğunu ve kaçınılması gereken hataları adım adım ele alıyoruz.
@@ -75,7 +76,7 @@ Hangi araç kime göre uygun? Aşağıdaki tablo genel bir çerçeve sunar:
 
 ### BES: Devlet Katkısı ile Emeklilik Fonu
 
-Bireysel Emeklilik Sistemi'nde devlet, ödediğiniz primin **%25'ini katkı olarak** hesabınıza ekler. 18 yaşında BES'e başlayıp aylık 500 TL ödeyen biri, 60 yaşına geldiğinde bu katkı ve bileşik getiriyle ciddi bir emeklilik fonu oluşturabilir. Erken çıkılırsa cezai kesinti uygulanır; bu nedenle uzun vadeli bir taahhüt olarak değerlendirilmeli.
+Bireysel Emeklilik Sistemi'nde devlet, ödediğiniz katkı payının **%20'sini devlet katkısı olarak** (yıllık limitler dahilinde) hesabınıza ekler; oran 1 Ocak 2026'da %30'dan %20'ye indirildi. 18 yaşında BES'e başlayıp aylık 500 TL ödeyen biri, 60 yaşına geldiğinde bu katkı ve bileşik getiriyle ciddi bir emeklilik fonu oluşturabilir. Erken çıkılırsa cezai kesinti uygulanır; bu nedenle uzun vadeli bir taahhüt olarak değerlendirilmeli.
 
 ### Bireysel Hisse: Araştırmayı Sevenler İçin
 
@@ -113,7 +114,7 @@ Genç yaşta yatırımın amacı hızlı zenginleşmek değil, **zamanı en iyi 
 - **En büyük avantajınız zamandır:** Bileşik getiri onlarca yıl boyunca çalışır; 20'li yaşlarda başlamak 40'lı yaşlara kıyasla dramatik fark yaratır.
 - **Sırası önemli:** Önce acil durum fonu, sonra borç kapatma, ardından yatırım.
 - **Endeks fonu iyi bir başlangıç:** Çeşitlendirme, düşük maliyet ve basitlik sunar; araştırma gerektirmez.
-- **BES'i erken değerlendirin:** Devlet katkısı (%25) ve uzun vadeli birikim avantajı gençler için çok değerlidir.
+- **BES'i erken değerlendirin:** Devlet katkısı (%20) ve uzun vadeli birikim avantajı gençler için çok değerlidir.
 - **Düzenlilik, tutardan önemlidir:** Her ay küçük bir tutar yatırmak, zamanlama yapmaya çalışmaktan çok daha güçlüdür.
 
 Daha ileri adımlar için [borsaya nasıl başlanır rehberimizi](/blog/borsaya-nasil-baslanir/) ve [DCA stratejisini](/blog/dca-nedir-maliyet-ortalamasi/) incelemenizi tavsiye ederiz.

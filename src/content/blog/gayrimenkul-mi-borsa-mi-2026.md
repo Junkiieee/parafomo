@@ -2,6 +2,7 @@
 title: "Gayrimenkul mi Borsa mı? 2026'da Hangi Yatırım Daha Mantıklı?"
 description: "Gayrimenkul mi borsa mı sorusunun 2026 Türkiye cevabı: getiri, likidite, vergi ve risk karşılaştırması; GYO alternatifi ve yatırımcı profili rehberi."
 pubDate: 2026-09-05
+updatedDate: 2026-10-22
 category: "Yatırım"
 tags: ["gayrimenkul", "borsa", "yatırım", "BIST", "konut yatırımı", "GYO"]
 readingTime: 8
@@ -16,7 +17,7 @@ faq:
   - q: "Borsaya yatırım yapmak için ne kadar sermaye gerekir?"
     a: "BIST'te tek hisse veya BYF (borsa yatırım fonu) ile birkaç yüz TL ile başlanabilir. Gayrimenkulde ise peşinat bile büyük şehirlerde yüzbinleri buluyor. Küçük sermayeli yatırımcı için borsa veya GYO daha erişilebilir başlangıç noktasıdır."
   - q: "Gayrimenkul mi borsa mı sorusunda vergi farkı ne?"
-    a: "Borsada yerli bireysel yatırımcılar için hisse senedi alım-satım kârı genellikle stopaj muafiyetinden yararlanır (1 yıl elde tutma koşulu); temettüde ise %15 stopaj uygulanır. Gayrimenkulde tapu harcı, emlak vergisi ve kira geliri vergisi (yıllık) söz konusu. İkisi arasındaki vergi avantajı profile ve tutma süresine göre değişir."
+    a: "Borsada yerli bireysel yatırımcılar için Borsa İstanbul'daki hisse senedi alım-satım kârında stopaj oranı %0'dır ve elde tutma süresi şartı yoktur; temettüde ise %15 stopaj uygulanır. Gayrimenkulde tapu harcı, emlak vergisi ve kira geliri vergisi (yıllık) söz konusu. İkisi arasındaki vergi avantajı profile ve tutma süresine göre değişir."
 shorts:
   - "Hangisi daha kazandırır: ev mi, borsa mı?"
   - "Büyük şehirde kira getirisi yalnızca yüzde iki-dört arası; yönetim giderleri düşünce daha da erir."
@@ -54,7 +55,7 @@ Bu ayrım önemli çünkü "konut mu hisse senedi mi?" ve "gayrimenkul mi borsa 
 | Likidite | Düşük (aylar sürer) | Yüksek (saniyeler) |
 | Pasif gelir | Kira (sürekli, sabit) | Temettü (değişken, yıllık) |
 | Enflasyon koruması | Güçlü (tarihsel) | Değişken (şirket bazlı) |
-| Vergi yükü | Tapu + emlak + kira vergisi | Hisse: muafiyet avantajı |
+| Vergi yükü | Tapu + emlak + kira vergisi | Hisse alım-satım kazancında %0 stopaj; temettüde %15 ([stopaj oranları](/blog/stopaj-nedir-2026-stopaj-oranlari/)) |
 | Yönetim zahmeti | Yüksek (kiracı, bakım) | Düşük (pasif BYF ile) |
 | Kaldıraç imkânı | Konut kredisi | Marjin (riskli) |
 | Çeşitlendirme | Düşük (tek mülk) | Yüksek (BYF ile geniş) |

@@ -27,8 +27,9 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   </div>
 
   <div class="container">
-    <div class="post-grid">
-      {posts.map((p) => <PostCard post={p} />)}
+    <h2 class="sr-only">Yazılar</h2>
+      <div class="post-grid">
+      {posts.map((p, i) => <PostCard post={p} eager={i === 0} />)}
     </div>
   </div>
 </BaseLayout>

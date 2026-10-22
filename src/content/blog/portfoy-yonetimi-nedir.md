@@ -2,6 +2,7 @@
 title: "Portföy Yönetimi Nedir? Nasıl Yapılır? Adım Adım Rehber"
 description: "Portföy yönetimi nedir, nasıl yapılır? Aktif-pasif yönetim farkı, varlık dağılımı, rebalancing ve Türkiye'ye özel pratik adımlar tek rehberde."
 pubDate: 2026-07-31
+updatedDate: 2026-10-22
 category: "Yatırım"
 tags: ["portföy yönetimi", "varlık dağılımı", "yatırım stratejisi", "rebalancing", "portföy oluşturma"]
 readingTime: 8
@@ -151,7 +152,7 @@ Portföy yönetiminde gözden kaçan en kritik konu maliyetlerdir:
 
 - **Komisyon:** Her alım-satım işleminde ödenen tutar birikir. Sık işlem yapmak masrafı artırır.
 - **Fon yönetim ücreti:** Aktif fonlar yıllık %1,5-3 ücret alır; 20 yıllık vadede bu oran portföyden onlarca bin TL keser.
-- **Stopaj vergisi:** Tahvil, fon, mevduat gibi araçlarda %10 stopaj uygulanır; uzun vadeli hisse kazançları stopajdan muaf olabilir.
+- **Stopaj vergisi:** TL mevduatta vadeye göre %17,5 / %15 / %10, fonların çoğunda %17,5 stopaj uygulanır; devlet tahvili, hisse senedi yoğun fonlar ve BIST hisse alım-satım kazancında ise bireysel yatırımcı için oran %0'dır (ayrıntılar: [2026 stopaj oranları](/blog/stopaj-nedir-2026-stopaj-oranlari/)).
 
 Düşük maliyetle geniş çeşitlendirme istiyorsan endeks fonu veya ETF en uygun araçtır. Yönetim ücretleri genellikle %0,1-0,5 arasındadır.
 

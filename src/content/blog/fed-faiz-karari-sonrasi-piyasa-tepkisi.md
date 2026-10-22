@@ -2,7 +2,7 @@
 title: "Fed Faiz Kararı Sonrası Piyasalar Nasıl Tepki Verir? 48 Saat Rehberi"
 description: "Fed faiz kararı açıklandıktan sonra dolar, BIST ve altın nasıl hareket eder? Türk yatırımcı için 48 saatlik piyasa tepkisi rehberi ve ne yapmalısın."
 pubDate: 2026-08-08
-updatedDate: 2026-08-08
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["fed faiz kararı", "fed kararı sonrası", "piyasa tepkisi", "dolar tl", "fomc", "fed kararı yatırımcı"]
 readingTime: 8
@@ -43,7 +43,7 @@ Bu rehberde Fed kararından sonraki **48 saati** adım adım inceleyecek, hangi 
 
 ## Fed Kararı Açıklandığında İlk 5 Dakika Ne Olur?
 
-Fed faiz kararı toplantı gününün ikinci günü **Türkiye saatiyle 21:00–22:00 arasında** yayımlanır. Karar tek cümlelik bir açıklamayla gelir: faiz sabit mi kaldı, artırıldı mı, indirildi mi?
+Fed faiz kararı toplantının ikinci günü ABD Doğu saatiyle 14:00'te, yani **Türkiye saatiyle 21:00'de (ABD kış saati döneminde 22:00'de)** yayımlanır. Karar tek cümlelik bir açıklamayla gelir: faiz sabit mi kaldı, artırıldı mı, indirildi mi?
 
 Algoritmik işlem sistemleri bu metni milisaniyeler içinde okur. Karar beklentilerle örtüşüyorsa tepki küçük kalır; sürpriz gelirse anlık dalgalanma sert olabilir.
 
@@ -127,9 +127,9 @@ Karar bir döngünün anlık görüntüsüdür. Bir önceki karardan bu yana gel
 Adım adım ne yapmalısın:
 
 1. **Karardan 1 hafta önce:** CME FedWatch'tan piyasanın ne beklediğini öğren (%kaç artırım, %kaç sabit).
-2. **Karar günü 21:00'dan önce:** Piyasalarda ani hareket varsa kaldıraçlı pozisyonları hafiflet.
+2. **Karar günü 21:00'den önce (kış saatinde 22:00):** Piyasalarda ani hareket varsa kaldıraçlı pozisyonları hafiflet.
 3. **Karar açıklandığında:** Faiz kararını oku, beklentiyle karşılaştır.
-4. **Basın toplantısı sırasında (21:30–22:30):** Başkan'ın tonunu takip et; "güvercin mi, şahin mi?"
+4. **Basın toplantısı sırasında (TSİ 21:30'dan itibaren; kış saatinde 22:30):** Başkan'ın tonunu takip et; "güvercin mi, şahin mi?"
 5. **Karardan 24 saat sonra:** Piyasanın oturmasını bekle, analistlerin yorumlarını oku.
 6. **Karardan 48 saat sonra:** Kalıcı etki mi, tersine dönüş mü netleşmiştir; varsa portföyü ayarla.
 

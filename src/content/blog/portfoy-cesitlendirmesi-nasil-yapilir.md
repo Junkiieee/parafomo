@@ -2,6 +2,7 @@
 title: "Portföy Çeşitlendirmesi Nasıl Yapılır? Yatırım Riskini Azaltma Rehberi"
 description: "Portföy çeşitlendirmesi nasıl yapılır? Hisse senedi, tahvil, altın ve fonları dengeleyerek riskinizi azaltın. Türkiye'ye özel pratik adımlar ve karşılaştırma tablosu."
 pubDate: 2026-07-29
+updatedDate: 2026-10-22
 category: "Yatırım"
 tags: ["portföy çeşitlendirmesi", "risk yönetimi", "varlık dağılımı", "portföy yönetimi", "yatırım stratejisi"]
 readingTime: 8
@@ -109,15 +110,15 @@ Tüm parayı tek seferde piyasaya sürmek yerine her ay sabit miktarda alım yap
 
 | Araç | Getiri Potansiyeli | Risk | Likidite | Min. Tutar | Vergi |
 |------|-------------------|------|----------|------------|-------|
-| BIST hisseleri | Yüksek | Yüksek | Yüksek | ~100 TL | %0 (1 yıl üstü) |
-| Devlet tahvili | Orta | Düşük | Orta | ~1.000 TL | %10 stopaj |
-| Gram altın (fisik) | Orta | Orta | Orta | ~Piyasa fiyatı | Değer artışında yok |
-| Altın fonu | Orta | Orta | Yüksek | ~1 TL | %10 stopaj |
+| BIST hisseleri | Yüksek | Yüksek | Yüksek | ~100 TL | Alım-satım kazancında %0 (süre şartı yok); temettüde %15 |
+| Devlet tahvili | Orta | Düşük | Orta | ~1.000 TL | %0 stopaj (31.12.2026'ya kadar) |
+| Gram altın (fiziki) | Orta | Orta | Orta | ~Piyasa fiyatı | Stopaj yok |
+| Altın fonu | Orta | Orta | Yüksek | ~1 TL | %17,5 stopaj (9.7.2025 sonrası alım) |
 | Döviz (USD/EUR) | TL bazlı orta | Orta | Yüksek | ~1 TL | %0 (gerçekleşene) |
-| Endeks fonu / ETF | Orta-Yüksek | Orta | Yüksek | ~1 TL | %10 stopaj |
-| Eurobond | Orta | Orta | Düşük | ~100.000 TL | %0 (itfa) |
+| Endeks fonu / ETF | Orta-Yüksek | Orta | Yüksek | ~1 TL | Hisse senedi yoğun fonda %0; diğerlerinde %17,5 |
+| Eurobond | Orta | Orta | Düşük | ~100.000 TL | Kuponda %0 stopaj; beyan sınırı aşılırsa beyan |
 
-[Yatırım fonu nedir, nasıl seçilir](/blog/yatirim-fonu-nedir-nasil-secilir) yazımızda fon seçiminde dikkat edilmesi gereken kriterleri bulabilirsin.
+Vergi sütunu bireysel yatırımcı içindir; oranların dayanakları için [2026 stopaj oranları rehberimize](/blog/stopaj-nedir-2026-stopaj-oranlari/) bakabilirsin. [Yatırım fonu nedir, nasıl seçilir](/blog/yatirim-fonu-nedir-nasil-secilir) yazımızda fon seçiminde dikkat edilmesi gereken kriterleri bulabilirsin.
 
 ## Çeşitlendirmenin Yaygın Hataları
 

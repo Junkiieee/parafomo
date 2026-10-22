@@ -16,8 +16,9 @@ interface Props {
     };
   };
   featured?: boolean;
+  eager?: boolean; // liste sayfalarında ilk kart: LCP görseli tembel yüklenmesin
 }
-const { post, featured = false } = Astro.props;
+const { post, featured = false, eager = false } = Astro.props;
 const { title, description, pubDate, category, readingTime } = post.data;
 const href = `/blog/${post.id}`;
 const coverSrc = `/covers/${post.id}.jpg`;
@@ -36,7 +37,7 @@ const hasWebp = hasCover && existsSync(join(process.cwd(), 'public', 'covers', '
             sizes={featured ? '(max-width: 760px) 100vw, 46vw' : '(max-width: 760px) 100vw, 360px'}
           />
         )}
-        <img src={coverSrc} alt="" loading="lazy" decoding="async" width="640" height="360" />
+        <img src={coverSrc} alt="" loading={eager ? "eager" : "lazy"} fetchpriority={eager ? "high" : undefined} decoding="async" width="640" height="360" />
       </picture>
     )}
     <span class="cover-cat">{category}</span>

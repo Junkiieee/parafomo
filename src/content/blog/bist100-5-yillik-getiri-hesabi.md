@@ -1,6 +1,7 @@
 ---
 title: "5.000 TL'yi 5 Yıl Borsaya Koysan Ne Olurdu? BIST 100 Gerçek Hesabı"
-description: "2021'de BIST 100'e yatırılan 5.000 TL 2026'da yaklaşık 45.711 TL oldu. Dolar, altın ve mevduat ile karşılaştırmalı gerçek hesap — pasif yatırım gerçekten işe yarıyor mu?"
+description: "Ekim 2021'de BIST 100'e yatırılan 5.000 TL, 22 Ekim 2026 verisiyle yaklaşık 38.000 TL (%661 nominal). Enflasyon, dolar ve altınla karşılaştırmalı gerçek hesap."
+updatedDate: 2026-10-22
 pubDate: 2026-08-04
 category: "Yatırım"
 tags: ["bist 100 getiri", "borsa uzun vadeli", "pasif yatırım", "bist 100 performans", "endeks yatırımı", "bileşik faiz borsa"]
@@ -8,15 +9,15 @@ readingTime: 6
 featured: true
 faq:
   - q: "BIST 100'e 5 yıl yatırım yapsaydım ne olurdu?"
-    a: "2021 başında BIST 100'e yatırılan 5.000 TL, 2026 itibarıyla yaklaşık 45.711 TL'ye ulaştı — yani 814% nominal getiri. Bununla birlikte bu dönemde enflasyon da yüksek seyrettiğinden reel (enflasyondan arındırılmış) kazancı ayrıca hesaplamak gerekir."
+    a: "22 Ekim 2026 verisiyle BIST 100 son 5 yılda 1.522 puandan 11.577 puana çıktı (%660,7 nominal, temettü hariç). Ekim 2021'de yatırılan 5.000 TL yaklaşık 38.000 TL'ye ulaştı. Ancak aynı dönemde TÜFE kümülatif yaklaşık %665 arttığı için reel getiri sıfıra yakın (yaklaşık −%0,6)."
   - q: "Borsada uzun vadeli yatırım mı, aktif al-sat mı daha kazançlı?"
     a: "Araştırmalar çoğu bireysel yatırımcının aktif al-satla endeksi geçemediğini ortaya koyuyor. BIST 100 gibi geniş endekse uzun vadeli 'al ve tut' stratejisi, yüksek işlem maliyeti ve duygusal karar hataları olmadan endeks getirisini yakalamanızı sağlar."
   - q: "Endeks fonu ile BIST 100'e nasıl yatırım yapılır?"
     a: "Türkiye'de BIST 30 veya BIST 100 izleyen ETF'ler (borsa yatırım fonları) ve endeks fonları mevcuttur. Bunlara aracı kurum veya banka üzerinden hesap açarak yatırım yapabilirsiniz. Minimum tutar çok düşüktür; bazılarında tek bir lot yeterlidir."
   - q: "5 yılda dolar daha mı fazla kazandırdı?"
-    a: "Bu dönemde BIST 100 nominal olarak dolardan daha yüksek getiri sağladı. Ancak enflasyon ve kur değişimini dikkate aldığınızda tablo değişebilir; karşılaştırmayı her zaman enflasyona göre düzeltilmiş (reel) getiri üzerinden yapın."
+    a: "Hayır. Son 5 yılda dolar/TL 9,53'ten 49,58'e çıktı (%420,6); BIST 100 ise %660,7 kazandırdı (22 Ekim 2026 verisi). Yani BIST 100 dolardan daha yüksek getiri sağladı; ama dolar enflasyonun gerisinde kalırken (reel yaklaşık −%32) BIST 100 ancak enflasyon kadar getiri sağladı. Gram altın aynı dönemde %1.111 ile ikisini de geçti."
 shorts:
-  - "5.000 TL'yi 5 yıl hiç dokunmadan borsada bıraksaydın 45 binin üzerine çıkardı."
+  - "5.000 TL'yi 5 yıl hiç dokunmadan borsada bıraksaydın yaklaşık 38 bin lira olurdu."
   - "Aktif al-sat mı, yoksa hareketsiz beklemek mi? Rakamlar şaşırtıcı bir cevap veriyor."
   - "Borsa uzun vadede çalışır — ama bunu bilerek ve çeşitlendirerek yapanlar için."
   - "Endeks fonu, tek tek hisse seçmeden bu getiriyi yakalamanın en ucuz yolu."
@@ -28,50 +29,48 @@ shorts_broll:
   - "passive investing growth concept"
 ---
 
-2021'de 5.000 TL'niz vardı. Haberlere baktınız, borsa çok oynaklı görünüyordu, döviz dalgalanıyordu — ve "şimdi değil" dediniz. Peki ya o parayı BIST 100 endeks fonuna yatırıp **hiç bakmasaydınız?** 2026'ya gelindiğinde **yaklaşık 45.711 TL** olurdu. Aktif al-satla bu rakamı geçebilir miydiniz? Muhtemelen hayır.
+> **22 Ekim 2026 verisiyle güncellendi.** Rakamlar [BIST getiri](/bist-getiri/), [dolar getiri](/dolar-getiri/) ve [altın getiri](/altin-getiri/) sayfalarımızdaki 5 yıllık verilerden (aylık kapanış, Yahoo Finance) ve TÜİK aylık TÜFE serisinden hesaplanmıştır. Bu yazının ilk sürümündeki "~%814" getiri ve "2021 kuru ~8,5 → 2026 ~40 TL" gibi rakamlar güncel veriyle uyuşmadığı için düzeltildi.
+
+Ekim 2021'de 5.000 TL'niz vardı. Haberlere baktınız, borsa çok oynaklı görünüyordu, döviz dalgalanıyordu — ve "şimdi değil" dediniz. Peki ya o parayı BIST 100 endeksine yatırıp **hiç bakmasaydınız?** 22 Ekim 2026'ya gelindiğinde **yaklaşık 38.000 TL** olurdu. Kulağa harika geliyor — ama enflasyonu hesaba kattığınızda tablo değişiyor.
 
 ## Hesabın Özeti
 
-**Senaryo:** 2021 başında 5.000 TL → BIST 100 endeks fonu (temettüler dahil, komisyon kabaca hesaba katılmış)
+**Senaryo:** Ekim 2021'de 5.000 TL → BIST 100 endeksi (fiyat endeksi; temettüler ve komisyon hariç)
 
-**Sonuç (2026 itibarıyla):** ~45.711 TL → **Yaklaşık 814% nominal getiri**
+**Sonuç (22 Ekim 2026):** BIST 100 1.522 → 11.577 puan; 5.000 TL → **~38.030 TL** → **%660,7 nominal getiri**
 
-> Bu hesap yaklaşık BIST 100 endeksi performansına dayanmaktadır. Gerçek ETF/fon getirileri yönetim ücreti ve takip hatasına göre küçük farklılık gösterebilir.
-
-Bu kadar basit. Beş yıl boyunca haberlere bakmanıza, satış paniklerine kapılmanıza, "şimdi alayım mı" hesabı yapmanıza gerek yoktu.
+> Bu hesap BIST 100 fiyat endeksine dayanır. Endeks fonu/ETF getirileri yönetim ücreti, takip hatası ve temettülerin yeniden yatırılmasına göre farklılık gösterebilir. Güncel rakamlar her gün [BIST getiri](/bist-getiri/) sayfamızda.
 
 ## Neden Bu Kadar Yüksek?
 
 BIST 100'ün bu süredeki güçlü nominal performansının arkasında birkaç etken var:
 
 1. **Enflasyon katkısı:** Türkiye'de yüksek enflasyon dönemi, nominal hisse fiyatlarını yukarı taşıdı. Şirketlerin satış ve kâr rakamları TL cinsinden şişti.
-2. **Küresel risk iştahı:** 2021-2024 arasında dönemsel olarak yükselen risk iştahı gelişen piyasalara sermaye çekti.
+2. **Kur etkisi:** TL'nin dolar karşısında değer kaybı, döviz geliri olan şirketlerin TL değerini artırdı.
 3. **Sektör çeşitliliği:** BIST 100, bankacılık, enerji, perakende ve ihracata yönelik sektörlerin tamamını kapsıyor; kaybeden sektörleri kazananlar telafi etti.
 
 ## Ama Reel Getiri Ne Oldu?
 
-Nominal rakam etkileyici. Ancak aynı dönemde **enflasyon da yüksekti.** Reel (enflasyondan arındırılmış) getiriyi hesaplamak için TÜFE'yi çıkarmak gerekir.
+Nominal rakam etkileyici. Ancak aynı dönemde **enflasyon da çok yüksekti.** TÜİK aylık TÜFE serisine göre Ekim 2021 – Eylül 2026 arasındaki 60 ayda fiyatlar kümülatif yaklaşık **%665** arttı (fiyat seviyesi ~7,65 katına çıktı). Bu durumda:
 
-**Kaba reel getiri:** TÜİK verilerine göre 2021-2025 arasında kümülatif TÜFE yaklaşık %500-600 bandında seyretti. Bu durumda:
+- Nominal getiri: %660,7 (7,61 kat)
+- Enflasyon: ~%665 (7,65 kat)
+- **Reel getiri: ≈ −%0,6** (7,61 ÷ 7,65 − 1) — yani BIST 100 beş yılda satın alma gücünü ancak korudu.
 
-- Nominal getiri: ~814%
-- Enflasyon etkisi: ~500-600%
-- **Reel getiri: Sıfıra yakın ya da pozitif bantta** — ama satın alma gücünü büyük ölçüde korudu.
-
-> **Önemli not:** Aynı dönemde TL mevduatta kalan para enflasyonun çok altında kaldı; altın ise yüksek reel getiri sağladı. Her varlığın reel getirisini kendi içinde değerlendirin.
+Başka bir deyişle, 5.000 TL'nin bugünkü alım gücü karşılığı yaklaşık 38.270 TL; BIST 100'deki para ise ~38.030 TL. Kendi tutarınızla hesaplamak için [enflasyon hesaplama](/enflasyon-hesaplama/) aracını kullanabilirsiniz.
 
 ## Karşılaştırma: Kim Daha Fazla Kazandırdı?
 
-| Varlık | 2021 Başı → 2026 | Yaklaşık Nominal Getiri | Not |
-|--------|-----------------|------------------------|-----|
-| BIST 100 (endeks fonu) | 5.000 → ~45.711 TL | ~%814 | Temettüler dahil |
-| Dolar (USD) | 5.000 → ~23.000 TL* | ~%360 | 2021 kuru ~8.5 → 2026 ~40 TL |
-| Altın (gram) | 5.000 → ~74.000 TL* | ~%1.380 | 2021 ~420 TL/gr → 2026 ~6.200 TL |
-| Mevduat (TL, ort.) | 5.000 → ~12.000 TL* | ~%140 | Ortalama mevduat faizi baz alındı |
+| Varlık | 5 yıl önce → 22 Ekim 2026 | 5.000 TL ne oldu? | Nominal getiri | Reel getiri (TÜFE'ye göre) |
+|--------|-----------------|------------------------|-----|-----|
+| BIST 100 | 1.522 → 11.577 puan | ~38.030 TL | %660,7 | ≈ −%0,6 |
+| Dolar (USD/TRY) | 9,53 → 49,58 TL | ~26.030 TL | %420,6 | ≈ −%32 |
+| Gram altın | 546 → 6.616 TL | ~60.550 TL | %1.111 | ≈ +%58 |
+| TÜFE (karşılaştırma) | — | ~38.270 TL | ~%665 | 0 |
 
-*Yaklaşık değerler; gerçek rakamlar giriş/çıkış zamanına göre değişir.*
+*Kaynak: [BIST getiri](/bist-getiri/), [dolar getiri](/dolar-getiri/), [altın getiri](/altin-getiri/) (Yahoo Finance aylık kapanış, 22 Ekim 2026); TÜFE: TÜİK (Ekim 2021–Eylül 2026). Gerçek rakamlar giriş/çıkış gününe göre değişir. TL mevduatın getirisi dönem içindeki faiz değişimlerine ve vade yenileme zamanlarına bağlı olduğundan tabloya alınmadı.*
 
-**Sürpriz:** Altın bu dönemde hem TL hem de BIST 100'ü geride bıraktı. BIST 100 ise dolar ve mevduatı nominal olarak açık ara geçti.
+**Sonuç:** Gram altın bu dönemde hem BIST 100'ü hem doları açık ara geride bıraktı. BIST 100 dolardan belirgin şekilde fazla kazandırdı, ama enflasyonu ancak yakalayabildi; dolar ise enflasyonun gerisinde kaldı.
 
 ## "Aktif Yapmak Daha Fazla Kazandırmaz mıydı?"
 

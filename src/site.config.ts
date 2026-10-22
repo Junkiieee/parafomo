@@ -29,16 +29,15 @@ export const GOOGLE_CLIENT_ID =
   '1020605001020-3o64jftksul1tkqj2gov24j7qj4o18f4.apps.googleusercontent.com';
 
 export const NAV = [
+  // Denetim 2026-10-22: araç merkezi ve altın fiyatları menüde yoktu; kategori linkleri /blog filtresinde duruyor.
   { label: 'Anasayfa', href: '/' },
   { label: 'Yazılar', href: '/blog' },
-  { label: 'Yatırım', href: '/kategori/yatirim' },
-  { label: 'Borsa', href: '/kategori/borsa' },
-  { label: 'Kripto', href: '/kategori/kripto' },
-  { label: 'Kişisel Finans', href: '/kategori/kisisel-finans' },
+  { label: 'Altın Fiyatları', href: '/altin-fiyatlari/' },
+  { label: 'Hesaplama Araçları', href: '/hesaplama-araclari/' },
   { label: 'Halka Arz', href: '/halka-arz' },
-  { label: 'Portföy Takip', href: 'https://app.parafomo.com/portfoy/?utm_source=parafomo&utm_medium=nav' },
   { label: 'Ekonomik Takvim', href: '/ekonomik-takvim' },
-  { label: 'Faiz Hesaplama', href: '/bilesik-faiz-hesaplama' },
+  { label: 'Faiz Hesaplama', href: '/faiz-hesaplama/' },
+  { label: 'Portföy Takip', href: 'https://app.parafomo.com/portfoy/?utm_source=parafomo&utm_medium=nav' },
   { label: 'Hakkımızda', href: '/hakkimizda' },
 ];
 

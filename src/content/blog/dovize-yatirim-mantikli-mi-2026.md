@@ -2,6 +2,7 @@
 title: "Dövize Yatırım Mantıklı mı? 2026'da Döviz Hesabının Artıları ve Eksileri"
 description: "Döviz hesabı açmak mantıklı mı? Dövize yatırım kime uygun, kime değil? 2026 koşullarında artıları, eksileri, alternatifleri ve portföydeki yeri."
 pubDate: 2026-08-18
+updatedDate: 2026-10-22
 category: "Yatırım"
 tags: ["dövize yatırım", "döviz hesabı", "kur riski", "döviz yatırımı", "enflasyona karşı korunma", "portföy çeşitlendirmesi"]
 readingTime: 8
@@ -82,8 +83,8 @@ Dövize yatırım yaparken yalnızca banka hesabı kullanmak zorunda değilsiniz
 |---|---|---|---|---|
 | **Vadesiz Döviz Hesabı** | Anlık | Kur artışı | Kur farkı koşullu | 1 dolar |
 | **Vadeli Döviz Hesabı** | Vade sonunda | Kur artışı + faiz | Stopaj uygulanır | Genelde 100 dolar+ |
-| **Döviz Fonu (TEFAS)** | Her iş günü | Kur + portföy getirisi | Fon üzerinden | ~10 TL |
-| **Eurobond / Döviz Tahvili** | İkincil piyasa | Faiz (kupon) + kur | Stopaj uygulanır | Genelde 1.000 dolar |
+| **Döviz Fonu (TEFAS)** | Her iş günü | Kur + portföy getirisi | Satış kazancından %17,5 stopaj (9.7.2025 sonrası alım) | ~10 TL |
+| **Eurobond / Döviz Tahvili** | İkincil piyasa | Faiz (kupon) + kur | Hazine eurobondu kuponunda %0 stopaj; beyan sınırı aşılırsa beyan ([stopaj oranları](/blog/stopaj-nedir-2026-stopaj-oranlari/)) | Genelde 1.000 dolar |
 | **Dolar/Euro ETF** | Borsa saatleri | Kur artışı | Hisse gibi | ~10 TL |
 
 > **Pratik kural:** Likidite önceliğinizse vadesiz hesap veya döviz ETF; sabit döviz faizi istiyorsanız vadeli hesap veya eurobond; düşük maliyetle esnek dövize maruz kalmak istiyorsanız döviz fonu tercih edilebilir. ([Eurobond hakkında daha fazlası](/blog/eurobond-nedir/))

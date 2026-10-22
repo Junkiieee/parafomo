@@ -10,6 +10,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <a href="/" class="btn btn-primary">Anasayfa</a>
       <a href="/blog" class="btn btn-ghost">Yazılara Göz At</a>
     </div>
+    <p class="soft nf-pop-title">En çok kullanılanlar</p>
+    <ul class="nf-pop">
+      <li><a href="/hesaplama-araclari/">Tüm hesaplama araçları</a></li>
+      <li><a href="/altin-fiyatlari/">Altın fiyatları</a></li>
+      <li><a href="/net-maas-hesaplama/">Net maaş hesaplama</a></li>
+      <li><a href="/kredi-hesaplama/">Kredi hesaplama</a></li>
+      <li><a href="/emekli-zammi-hesaplama/">Emekli zammı</a></li>
+      <li><a href="/kira-artis-orani-hesaplama/">Kira artış oranı</a></li>
+      <li><a href="/altin-getiri/">Altın getirisi</a></li>
+      <li><a href="/halka-arz/">Halka arz takvimi</a></li>
+      <li><a href="/ekonomik-takvim/">Ekonomik takvim</a></li>
+    </ul>
   </section>
 </BaseLayout>
 <style>
@@ -18,4 +30,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .nf h1 { font-size: var(--step-2); margin: 0.5rem 0; }
   .nf p { max-width: 40ch; margin: 0 auto 1.6rem; }
   .nf-cta { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+  .nf-pop-title { margin: 2.2rem auto .6rem; font-weight: 600; }
+  .nf-pop { list-style: none; padding: 0; margin: 0 auto; display: flex; flex-wrap: wrap; gap: .5rem .9rem; justify-content: center; max-width: 640px; }
+  .nf-pop a { text-decoration: underline; text-underline-offset: 2px; }
 </style>

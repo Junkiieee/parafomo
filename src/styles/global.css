@@ -268,3 +268,26 @@ blockquote {
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ---------- Denetim 2026-10-22: erişilebilirlik / mobil düzeltmeleri ---------- */
+/* [hidden] alanlar `display:flex` kurallarıyla görünür kalıyordu (KDV "özel oran", bono "alış fiyatı"). */
+[hidden] { display: none !important; }
+/* Atlama linki klavye odağında görünür olsun. */
+.sr-only:focus, .sr-only:focus-visible {
+  position: fixed; top: .5rem; left: .5rem; z-index: 1000;
+  width: auto; height: auto; margin: 0; padding: .5rem .8rem;
+  clip: auto; overflow: visible; white-space: normal;
+  background: var(--bg-card, #fff); color: var(--brand-deep); border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.2);
+}
+/* Metin içi linkler yalnız renkle ayrılıyordu (kontrast 1,37:1). */
+.prose-block a, .table-note a, .sources a, .calc-wrap p a, .calc-wrap li a, .post-content p a, .post-content li a {
+  text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px;
+}
+/* Aktif seçim butonları: beyaz yazı + --brand-2 = 2,69:1 → --brand (4,9:1). */
+.preset.active, .mode.active, .preset[aria-pressed="true"], .mode[aria-pressed="true"] {
+  background: var(--brand) !important; border-color: var(--brand) !important; color: #fff !important;
+}
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+/* Getiri tabloları mobilde son sütunu kesiyordu: yatay kaydırma. */
+.gr-tablewrap { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }

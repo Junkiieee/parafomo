@@ -9,7 +9,7 @@ readingTime: 8
 featured: false
 faq:
   - q: "Fed faiz kararı ne zaman açıklanır?"
-    a: "FOMC yılda 8 kez toplanır ve her toplantının sonunda faiz kararı açıklanır. Karar genellikle toplantının ikinci günü Türkiye saatiyle gece 21:00–22:00 arasında yayımlanır; ardından Fed Başkanı basın toplantısı yapar."
+    a: "FOMC yılda 8 kez toplanır ve her toplantının sonunda faiz kararı açıklanır. Karar toplantının ikinci günü ABD Doğu saatiyle 14:00'te yayımlanır; bu Türkiye saatiyle ABD yaz saati döneminde 21:00'e, kış saati döneminde 22:00'ye denk gelir; ardından Fed Başkanı basın toplantısı yapar."
   - q: "Fed faiz artırırsa TL ne olur?"
     a: "Fed faiz artırınca dolar küresel olarak değer kazanır; yatırımcılar gelişmekte olan ülkelerden (Türkiye dahil) para çekip dolar varlıklarına yönelir. Bu durum TL üzerinde değer kaybı baskısı oluşturur ve Dolar/TL kurunu yukarı iter."
   - q: "Fed faiz indirirse dolar ne olur?"
@@ -111,8 +111,8 @@ FOMC yılda 8 kez toplanır. 2026'da Eylül toplantısı da geride kaldı; yıl 
 
 | Toplantı | Tarih | Karar Açıklama (Türkiye Saati) |
 |----------|-------|-------------------------------|
-| Ekim 2026 | 27–28 Ekim 2026 | 28 Ekim, ~21:00 TSİ |
-| Aralık 2026 | 8–9 Aralık 2026 | 9 Aralık, ~22:00 TSİ · dot plot |
+| Ekim 2026 | 27–28 Ekim 2026 | 28 Ekim, 21:00 TSİ |
+| Aralık 2026 | 8–9 Aralık 2026 | 9 Aralık, 22:00 TSİ (ABD kış saati) · dot plot |
 
 > **Canlı takvim:** Sıradaki Fed kararına kaç gün kaldığını, tüm 2026 tarihlerini ve TSİ saatlerini [Fed Faiz Kararı Takvimi 2026](/fed-faiz-takvimi) sayfasından güncel takip edebilirsin. Kesin saatler için Fed'in resmi sitesini (federalreserve.gov) ve [Ekonomik Takvim](/ekonomik-takvim) sayfamızı da kontrol et.
 

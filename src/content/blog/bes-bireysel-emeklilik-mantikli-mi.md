@@ -2,18 +2,19 @@
 title: "BES (Bireysel Emeklilik) Mantıklı mı? Avantajları ve Tuzakları"
 description: "Devlet katkılı BES gerçekten kazandırıyor mu? Bireysel emeklilik sisteminin avantajlarını, kesintilerini ve kimler için mantıklı olduğunu tarafsızca değerlendirdik."
 pubDate: 2026-06-09
+updatedDate: 2026-10-22
 category: "Emeklilik"
 tags: ["BES", "emeklilik", "uzun vade", "tasarruf"]
 readingTime: 8
 ---
 
-Bireysel Emeklilik Sistemi (BES), Türkiye'de en çok tartışılan tasarruf araçlarından biri. "Devlet %30 katkı veriyor" cazip geliyor ama kesintiler, fon performansı ve uzun vade taahhüdü kafa karıştırıyor. Bu yazıda BES'i abartısız, artı ve eksileriyle değerlendiriyoruz.
+Bireysel Emeklilik Sistemi (BES), Türkiye'de en çok tartışılan tasarruf araçlarından biri. "Devlet katkı veriyor" cazip geliyor (oran 1 Ocak 2026'dan itibaren %20) ama kesintiler, fon performansı ve uzun vade taahhüdü kafa karıştırıyor. Bu yazıda BES'i abartısız, artı ve eksileriyle değerlendiriyoruz.
 
 ## BES tam olarak nedir?
 
 BES, zorunlu sosyal güvenlik (SGK/emekli maaşı — her Ocak ve Temmuz enflasyonla artar, bkz. [emekli zammı hesaplama](/emekli-zammi-hesaplama/)) sisteminin **üzerine** kurduğunuz, gönüllü ve uzun vadeli bir birikim sistemidir. Her ay düzenli katkı payı ödersiniz, bu para çeşitli fonlarda değerlendirilir ve emeklilikte toplu ya da maaş şeklinde geri alırsınız.
 
-En bilinen özelliği: **devlet katkısı.** Yatırdığınız tutara devlet belirli bir oranda (yıllık limitler dahilinde) ek katkı yapar.
+En bilinen özelliği: **devlet katkısı.** Yatırdığınız tutara devlet yıllık limitler dahilinde ek katkı yapar. 7 Ocak 2026 tarihli Resmî Gazete'de yayımlanan Cumhurbaşkanı Kararı ile bu oran 1 Ocak 2026'dan geçerli olmak üzere %30'dan **%20'ye** indirildi; yani yatırdığınız her 1.000 TL'ye 200 TL devlet katkısı eklenir.
 
 ## BES'in avantajları
 

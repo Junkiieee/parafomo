@@ -181,7 +181,7 @@ const nextTREvent = nextTR?.events.find(e => e.region === 'TR');
                 <span class="ev-flag">{REGION_FLAG[ev.region] ?? '🌍'}</span>
                 <div class="ev-body">
                   <span class="ev-title">{ev.title}</span>
-                  {ev.hook && <span class="ev-hook">{ev.hook}</span>}
+                  {ev.hook && (ev.source === 'forexfactory' || ev.source === 'fed') && <span class="ev-hook">{ev.hook}</span>}
                 </div>
                 {ev.time && <span class="ev-time">{ev.time}</span>}
               </li>
@@ -268,7 +268,7 @@ const nextTREvent = nextTR?.events.find(e => e.region === 'TR');
 
 <style>
   /* ---------- Hero ---------- */
-  .ec-hero { padding: clamp(1.6rem, 4vw, 2.6rem) 0 0; max-width: 720px; }
+  .ec-hero { padding-top: clamp(1.6rem, 4vw, 2.6rem); max-width: 720px; }
   .eyebrow { display: inline-flex; align-items: center; gap: 0.45rem; font-size: var(--step--2); font-weight: 600; color: var(--brand); }
   .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 0 rgba(22,160,133,0.5); animation: pulse 2s infinite; }
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(22,160,133,0.5); } 70% { box-shadow: 0 0 0 6px rgba(22,160,133,0); } 100% { box-shadow: 0 0 0 0 rgba(22,160,133,0); } }

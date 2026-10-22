@@ -1,14 +1,14 @@
 ---
 title: "İngiltere GDP Verisi Açıklandı (11 Eylül 2026): Temmuz'da %0,4 Büyüme — Sterlin, BOE, TL"
 description: "ONS 11 Eylül 2026: İngiltere ekonomisi Temmuz'da aylık %0,4 büyüdü (Haziran %0,3), 3 aylık %0,4. Güçlü büyüme senaryosu gerçekleşti; BOE faiz yolu ve sterlinin TL'ye yansıması."
-updatedDate: 2026-10-19
+updatedDate: 2026-10-22
 pubDate: 2026-09-11
 category: "Ekonomi"
 tags: ["ingiltere gdp", "sterlin", "BOE", "büyüme verisi", "bank of england", "küresel ekonomi"]
 readingTime: 7
 featured: false
 faq:
-  - q: "İngiltere Eylül 2026 GDP verisi ne zaman açıklandı?"
+  - q: "İngiltere Temmuz 2026 GDP verisi (11 Eylül) ne zaman açıklandı?"
     a: "11 Eylül 2026 sabahı Londra saatiyle 07:00'de (TSİ 09:00) ONS (Office for National Statistics) tarafından yayımlandı. Veri Temmuz 2026 dönemini kapsıyor: aylık GDP %0,4 arttı (Haziran %0,3, Mayıs %0); üç aylık büyüme %0,4 oldu."
   - q: "GDP verisi zayıf gelseydi sterlin ne yapardı?"
     a: "Beklentinin altında büyüme, Bank of England'ın faiz indirimi için zemin hazırladığı yorumunu güçlendirir. Bu durumda sterlin genellikle baskı altına girer; GBP/USD düşer, GBP/TRY dengesi sterlinin aleyhine kayar."
@@ -37,28 +37,27 @@ shorts_visuals:
   - "concept|financial news website mobile screen"
 ---
 
-> **Veri açıklandı (11 Eylül 2026):** ONS'a göre İngiltere ekonomisi **Temmuz 2026'da aylık %0,4 büyüdü** (Haziran %0,3, Mayıs %0); hizmetler %0,4, üretim %0,2, inşaat %0,1 katkı verdi. Temmuz'a kadar üç aylık büyüme %0,4 — üst üste sekizinci çeyreklik artış ([ONS bülteni](https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/july2026)). Yazıdaki **Senaryo A (güçlü büyüme)** gerçekleşti. Sıradaki büyük veri ve kararlar: [ekonomik takvim](/ekonomik-takvim/) · [Fed faiz takvimi](/fed-faiz-takvimi/).
+> **Veri açıklandı (11 Eylül 2026):** ONS'a göre İngiltere ekonomisi **Temmuz 2026'da aylık %0,4 büyüdü** (Haziran %0,3, Mayıs %0); hizmetler %0,4, üretim %0,2, inşaat %0,1 katkı verdi. Temmuz'a kadar üç aylık büyüme %0,4 — üst üste sekizinci üç aylık (3m/3m) artış. Ekonomistler yatay (~%0) bekliyordu; sterlin sınırlı tepkiyle %0,1 yükselerek ~1,352 dolara çıktı ([ONS bülteni](https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/july2026)). Yazıdaki **Senaryo A (güçlü büyüme)** gerçekleşti. BOE ise 17 Eylül'de Bank Rate'i 6–3 oyla **%3,75'te sabit** tuttu; üç üye %4'e artırım istedi ([BOE](https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026)). Sıradaki büyük veri ve kararlar: [ekonomik takvim](/ekonomik-takvim/) · [Fed faiz takvimi](/fed-faiz-takvimi/).
 
 _Aşağıdaki metin veriden önce yazıldı._ Bugün, 11 Eylül 2026, küresel piyasalar için çifte veri günü: Sabahın erken saatinde **İngiltere'nin aylık büyüme verisi (GDP m/m)** açıklandı; öğleden sonra ise tüm gözler ABD CPI'ya çevrili. İki veri de 🔴 High etki taşıyor — ancak Türk yatırımcısı için bunların ne anlama geldiğini, hangisinin daha baskın olduğunu ve portföyünüze nasıl yansıyabileceğini adım adım anlatalım.
 
-## İngiltere Aylık GDP Verisi: Eylül 2026 Bağlamı
+## İngiltere Aylık GDP Verisi: Temmuz 2026 Verisi (11 Eylül) Bağlamı
 
-İngiltere, dünyada aylık GDP (m/m) hesaplayan ender ülkelerden biridir. ONS (Office for National Statistics) her ay önceki aya ait büyüme oranını yayımlar; bu da piyasalara çeyreklik veriden çok daha erken bir nabız tutma fırsatı verir.
+İngiltere, dünyada aylık GDP (m/m) hesaplayan ender ülkelerden biridir. ONS (Office for National Statistics) her ay yaklaşık altı hafta önceki aya ait büyüme oranını yayımlar; 11 Eylül'de açıklanan rakam **Temmuz 2026** dönemini kapsıyor. Bu da piyasalara çeyreklik veriden çok daha erken bir nabız tutma fırsatı verir.
 
-2026 yılına girerken UK ekonomisi **"ılımlı toparlanma"** sürecindeydi. Bank of England, 2024 sonundan itibaren başladığı faiz indirimi döngüsünü dikkatli bir tempoda sürdürdü. Politika faizi %4 civarına gerilemiş, ancak hem enflasyonun yapışkanlığı hem de küresel belirsizlik BOE'yi aceleci davranmaktan alıkoyuyordu.
+Bank of England (BOE) politika faizini (Bank Rate) en son Aralık 2025'te 25 baz puan indirerek %3,75'e çekmişti ve 2026 boyunca bu seviyede tuttu. Enerji kaynaklı enflasyon yükselişi nedeniyle tartışma, indirimden çok faizin sabit kalıp kalmayacağı ya da artırılıp artırılmayacağı üzerine kaymıştı.
 
-Eylül 2026 verisi (yani Ağustos dönemine ait aylık GDP), İngiliz ekonomisinin yılın ikinci yarısında ivme kazanıp kazanmadığını test ediyor. Piyasa konsensüsü **+%0,1 aylık büyüme** bekliyordu; bu, ne aşırı güçlü ne de alarm veren "nötr bölge" olarak değerlendiriliyor.
+## Piyasa Beklentileri ve Gerçekleşen
 
-## Piyasa Beklentileri ve Önceki Veri
+| Gösterge | Önceki Veri | Konsensüs | Gerçekleşen (11 Eylül) |
+|---|---|---|---|
+| GDP m/m (Temmuz 2026) | +%0,3 (Haziran) | ~%0,0 (yatay) | **+%0,4** |
+| GDP 3 aylık (3m/3m) | +%0,4 (Haziran'a kadar) | — | **+%0,4** |
+| Hizmetler m/m | — | — | +%0,4 |
+| Üretim m/m | — | — | +%0,2 |
+| İnşaat m/m | — | — | +%0,1 |
 
-| Gösterge | Önceki Veri | Konsensüs Beklenti |
-|---|---|---|
-| GDP m/m (Ağustos 2026) | +%0,0 (sabit) | +%0,1 |
-| GDP 3 aylık kümülatif | +%0,3 | +%0,3 |
-| Hizmetler sektörü m/m | +%0,1 | +%0,1 |
-| Üretim sektörü m/m | -%0,1 | +%0,1 |
-
-Temmuz döneminde GDP aylık bazda değişmemişti; bu durum piyasalara "UK ekonomisi tökezliyor mu?" sorusunu sordurdu. Ağustos verisinin bunu tersine çevirmesi, ya da onaylaması bugün netleşecek.
+*Kaynak: [ONS, GDP monthly estimate, UK: July 2026](https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/july2026); konsensüs: piyasa haberleri ([Global Banking & Finance / Reuters, 11 Eylül 2026](https://www.globalbankingandfinance.com/pound-climbs-uk-growth-beats-expectations/)). Mayıs 2026'da aylık büyüme %0 idi.*
 
 ## 3 Senaryo: GDP Verisi Piyasaları Nasıl Etkiler?
 
@@ -66,17 +65,17 @@ Temmuz döneminde GDP aylık bazda değişmemişti; bu durum piyasalara "UK ekon
 
 Beklentinin belirgin üzerinde gelen bir veri, **sterlini güçlendirir**. GBP/USD yukarı çıkar, GBP/TRY sterlinin lehine hareket edebilir. BOE'nin faiz indirimine erken gitmeyeceği algısı güçlenir. Küresel risk iştahına kısa vadede destek verebilir.
 
-### Senaryo B — Beklentiye Paralel (+%0,1)
+### Senaryo B — Beklentiye Paralel (~%0 / +%0,1)
 
 Piyasanın zaten fiyatladığı tablo. Büyük hareket beklenmez; sterlin nötr seyrini korur. BOE'nin mevcut faiz indirim temposu devam eder. Piyasanın asıl odağı öğleden sonraki **ABD CPI**'ya kayar.
 
-### Senaryo C — Zayıf Büyüme (≤%0 veya negatif)
+### Senaryo C — Zayıf Büyüme (negatif)
 
 **En sert reaksiyon bu senaryoda gelir.** Küresel büyüme endişeleri derinleşir; sterlin değer kaybeder, Avrupa hisseleri gerilir. BOE'nin faiz indirimine hız katacağı beklentisi artar. Gelişmekte olan piyasalara —Türkiye dahil— olumsuz yansıma riski var.
 
 ## Sterlin (GBP) Üzerindeki Olası Etki
 
-Sterlin, 2026 yılı boyunca dolar ve euro arasında hassas bir denge üzerinde ilerledi. GBP/USD kursu 1.27–1.33 bandında hareket etti; GBP/TRY ise Türkiye'nin kur dinamikleriyle birlikte yüksek seyretti.
+Veri günü GBP/USD 1,35 civarındaydı; güçlü veriye rağmen sterlinin tepkisi sınırlı kaldı (%0,1 yükselişle ~1,352). GBP/TRY ise Türkiye'nin kur dinamikleriyle birlikte yüksek seyretti.
 
 Bugün güçlü GDP gelirse → GBP/USD yukarı yönlü baskılanır, sterlin kısa vadeli değer kazanır.
 Zayıf GDP gelirse → GBP/USD aşağı çekilir; ancak asıl boyutu ABD CPI verisine bağlıdır.
@@ -87,10 +86,10 @@ Türk yatırımcısı için GBP/TRY'nin doğrudan önemi sınırlıdır — anca
 
 Bank of England, 2026 Eylül toplantısına hazırlanırken büyüme ve enflasyon dengesini dikkatle ölçüyor. Bugünkü GDP verisi bu denkleme nasıl girer?
 
-- **Güçlü veri** → BOE'nin "temkinli kal" söylemi güçlenir. Eylül ya da Kasım indirimi ötelenebilir.
-- **Zayıf veri** → BOE bir sonraki toplantıda daha agresif indirim tartışabilir. Piyasa fiyatlaması öne çekilir.
+- **Güçlü veri** → BOE'nin "temkinli kal" söylemi güçlenir; faiz indirimi gündemden uzaklaşır.
+- **Zayıf veri** → BOE'nin faizi artırma ihtimali zayıflar, indirim tartışması yeniden açılabilir.
 
-Tekil veri belirleyici değildir; BOE her zaman bütünsel tabloyu değerlendiriyor. Ancak ardışık zayıf veriler (Temmuz sabit + Ağustos negatif) BOE'yi daha hızlı hareket etmeye zorlayabilir.
+Tekil veri belirleyici değildir; BOE her zaman bütünsel tabloyu değerlendiriyor. Nitekim 17 Eylül toplantısında belirleyici olan büyüme değil enflasyondu: Ağustos'ta yıllık %3,1'e çıkan TÜFE nedeniyle BOE faizi %3,75'te tuttu, üç üye artırım yönünde oy kullandı. Sıradaki BOE kararı 5 Kasım 2026.
 
 Daha fazla bilgi için: [Bank of England faiz kararı ve sterline etkisi →](/blog/boe-faiz-karari-nedir-etkisi)
 
@@ -102,7 +101,7 @@ Daha fazla bilgi için: [Bank of England faiz kararı ve sterline etkisi →](/b
 
 **2. Dolar endeksi (DXY) kanalı:** UK zayıflıyorsa, dolar güçlü görünür. Dolar endeksinin yükselmesi TL'ye baskı getirir. [Dolar endeksinin TL'ye etkisini inceleyin →](/blog/dolar-endeksi-dxy-nedir)
 
-**3. Çifte veri günü yoğunluğu:** Bugün hem UK GDP hem ABD CPI açıklanıyor. ABD CPI, piyasanın öncelikli odağı olacak. UK verisi sabah erken oynaklık yarattıysa bile asıl fiyatlama öğleden sonra gerçekleşecek. [Bugünün ABD CPI analizini okuyun →](/blog/abd-eylul-2026-cpi-verisi-fed-dolar-altin)
+**3. Çifte veri günü yoğunluğu:** Bugün hem UK GDP hem ABD CPI açıklanıyor. ABD CPI, piyasanın öncelikli odağı olacak. UK verisi sabah erken oynaklık yarattıysa bile asıl fiyatlama öğleden sonra gerçekleşecek. [Bugünün ABD Ağustos CPI analizini okuyun →](/blog/abd-eylul-2026-cpi-verisi-fed-dolar-altin/)
 
 ## Bugün Dikkat Edilmesi Gereken Nokta: Çifte Veri Riski
 
@@ -114,7 +113,7 @@ Kur ve küresel para politikası bağlamını daha ayrıntılı anlamak için: [
 
 ## Özet
 
-- **İngiltere aylık GDP (m/m)** verisi 11 Eylül 2026 sabahı açıklandı; piyasa konsensüsü +%0,1 idi.
+- **İngiltere aylık GDP (m/m)** verisi 11 Eylül 2026 sabahı açıklandı: Temmuz'da **+%0,4** (beklenti ~%0, Haziran +%0,3); 3 aylık büyüme %0,4.
 - Güçlü veri sterlini destekler, BOE'nin temkinli tutumunu pekiştirir.
 - Zayıf veri sterline baskı getirir, BOE'nin faiz indirimini hızlandırabileceği beklentisini artırır.
 - Türk yatırımcısı için etki dolaylıdır: küresel risk iştahı → DXY → TL kanalı.

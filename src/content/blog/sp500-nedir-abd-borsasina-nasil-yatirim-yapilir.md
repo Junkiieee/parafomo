@@ -2,6 +2,7 @@
 title: "S&P 500 Nedir? ABD Borsasına Türkiye'den Nasıl Yatırım Yapılır?"
 description: "S&P 500 endeksinin ne olduğunu, Dow Jones ve NASDAQ'tan farkını ve Türkiye'den adım adım nasıl yatırım yapabileceğinizi öğrenin. Fon ile ETF karşılaştırması dahil."
 pubDate: 2026-08-23
+updatedDate: 2026-10-22
 category: "Yatırım"
 tags: ["s&p 500", "etf", "abd borsası", "endeks yatırımı", "uluslararası yatırım", "borsa"]
 readingTime: 8
@@ -145,7 +146,7 @@ Hangi yolun sizin için daha uygun olduğunu belirlemek için şu tabloyu kullan
 | Erişim | Çok kolay, banka uygulaması | Hesap açılışı gerekli (1–3 gün) |
 | Yönetim maliyeti | %0.5–2 yıllık | %0.03–0.09 yıllık |
 | TL ile alım | Evet | Hayır (USD gerekli) |
-| Vergi | Fon stopajı %15 | Yıllık beyan gerekebilir |
+| Vergi | Fon stopajı %17,5 (9.7.2025 sonrası alım; [stopaj oranları](/blog/stopaj-nedir-2026-stopaj-oranlari/)) | Yıllık beyan gerekebilir |
 | Minimum tutar | Çok düşük | ETF fiyatı kadar (~$500+) |
 | Likidite | Gün sonu | Anlık (borsa saatlerinde) |
 

@@ -2,6 +2,7 @@
 title: "Vergi Avantajlı Yatırım Araçları: Türkiye'de Yasal Vergi Tasarrufu"
 description: "Türkiye'de vergi avantajlı yatırım araçları neler? BES'ten hisse senedine, devlet tahvilinden yatırım fonlarına stopaj farkları ve kimler için uygun olduğu rehberi."
 pubDate: 2026-07-23
+updatedDate: 2026-10-22
 category: "Yatırım"
 tags: ["vergi avantajlı yatırım", "BES", "stopaj", "devlet tahvili", "hisse senedi", "vergi tasarrufu", "yatırım"]
 readingTime: 8
@@ -12,9 +13,9 @@ faq:
   - q: "BES'teki vergi avantajı nasıl işler?"
     a: "Devlet, ödediğiniz katkı payının belirli bir oranını (devlet katkısı olarak) hesabınıza ekler. Emeklilikte çekimde uygulanan stopaj, birçok alternatife kıyasla düşük tutulur. Bu iki katmanlı avantaj, BES'i uzun vadeli yatırımcı için cazip kılar."
   - q: "Hisse senedi alım satımında vergi ne kadar?"
-    a: "Borsa İstanbul'da (BIST) işlem gören hisse senetleri için bireysel yatırımcılar, alım-satım kazancı üzerinde düşük oranlı stopaj öder. Temettü (kâr payı) geliri ise stopaja tabidir. Güncel oranlar için GİB ve aracı kurumunuzu kontrol edin."
+    a: "Borsa İstanbul'da (BIST) işlem gören hisse senetlerinin alım-satım kazancında bireysel yatırımcı için stopaj oranı %0'dır. Temettü (kâr payı) gelirinden ise %15 stopaj kesilir. Güncel oranlar için GİB ve aracı kurumunuzu kontrol edin."
   - q: "Devlet tahvili yatırımı vergi açısından avantajlı mı?"
-    a: "TL cinsinden devlet iç borçlanma senetleri bireysel yatırımcılar için belirli oranlarda stopaja tabidir; ancak bu oran özel sektör enstrümanlarına kıyasla rekabetçi olabilir. Enflasyona endeksli tahviller vergi hesaplamasında farklı formüller içerebilir."
+    a: "Evet. TL cinsinden devlet tahvili ve hazine bonosu faiz gelirinde bireysel yatırımcı için stopaj oranı %0'dır; 11444 sayılı Cumhurbaşkanı Kararı ile bu uygulama 31 Aralık 2026'ya kadar uzatıldı. TL mevduatta ise vadeye göre %17,5, %15 veya %10 stopaj kesilir."
   - q: "Yatırım fonlarında vergi nasıl hesaplanır?"
     a: "Yatırım fonu kazançları için uygulanan stopaj oranı, fonun türüne (hisse ağırlıklı mı, sabit getirili mi) ve yatırımcı profiline göre değişir. Fondan çıkışta stopaj otomatik kesilir; ayrı beyan gerekmez. Güncel oranları aracı kurumunuzdan teyit edin."
 shorts:
@@ -55,7 +56,7 @@ Türkiye'deki en köklü vergi avantajlı yatırım aracı BES'tir (Bireysel Eme
 
 ### 1. Devlet katkısı
 
-Ödediğiniz katkı payı üzerine devlet, yıllık belirli bir üst limite kadar **%25 oranında** devlet katkısı ekler. Bu, yatırdığınız ilk günden paranıza "prim" yapan, piyasadan bağımsız bir kazanım kaynağıdır — hiçbir finansal araç size bu kadar garantili bir başlangıç bonusu vermez.
+Ödediğiniz katkı payı üzerine devlet, yıllık belirli bir üst limite kadar **%20 oranında** devlet katkısı ekler (oran 1 Ocak 2026'da %30'dan %20'ye indirildi). Bu, yatırdığınız ilk günden paranıza "prim" yapan, piyasadan bağımsız bir kazanım kaynağıdır — hiçbir finansal araç size bu kadar garantili bir başlangıç bonusu vermez.
 
 ### 2. Emeklilikte düşük stopaj
 
@@ -67,7 +68,7 @@ BES'in tüm artı ve eksileri için [BES mantıklı mı rehberimizi](/blog/bes-b
 
 ## Hisse Senedi (BIST): En Düşük Sermaye Kazancı Vergisi
 
-Borsa İstanbul'da (BIST) işlem gören hisse senetleri, **bireysel yatırımcılar** için özel bir konumda bulunur. Hisse alım-satımından elde edilen kazanç üzerindeki stopaj, mevduat veya tahvil faizine kıyasla tarihsel olarak çok daha düşük tutulmuştur.
+Borsa İstanbul'da (BIST) işlem gören hisse senetleri, **bireysel yatırımcılar** için özel bir konumda bulunur. Hisse alım-satımından elde edilen kazançta bireysel yatırımcı için stopaj oranı **%0**'dır ve bu kazanç beyan edilmez (GVK geçici 67. madde). Tüm oranlar için [2026 stopaj oranları rehberimize](/blog/stopaj-nedir-2026-stopaj-oranlari/) bakabilirsiniz.
 
 **Temettü gelirinde** ise ayrı bir stopaj uygulanır. Temettü miktarının yarısı belirli koşullarda gelir vergisi matrahına dahil edilmeyebilir; ancak bu istisna sınırları ve oranlar değişkendir.
 
@@ -75,7 +76,7 @@ Borsa İstanbul'da (BIST) işlem gören hisse senetleri, **bireysel yatırımcı
 
 ## Devlet İç Borçlanma Senetleri (DİBS): Rekabetçi Stopaj
 
-Hazine tahvilleri ve devlet bonoları, özel sektör borçlanma araçlarına kıyasla genellikle **daha düşük stopaj oranıyla** vergilendirilir. Bireysel yatırımcılar için TL cinsinden devlet iç borçlanma senetlerinde stopaj, diğer faiz gelirlerine göre avantaj yaratabilir.
+Bireysel yatırımcılar için TL cinsinden devlet tahvili ve hazine bonosu faiz gelirinde stopaj oranı **%0**'dır; 11444 sayılı Cumhurbaşkanı Kararı ile bu uygulama 31 Aralık 2026'ya kadar uzatıldı. TL mevduatta vadeye göre %17,5 / %15 / %10 kesildiği düşünülürse bu, belirgin bir avantajdır.
 
 Enflasyona endeksli tahviller (TÜFE'ye bağlı) ayrı bir vergi formülüne tabidir; bu araçların vergi matrahı hesaplaması daha karmaşık olduğundan dikkatli inceleme gerekir.
 
@@ -83,8 +84,8 @@ Enflasyona endeksli tahviller (TÜFE'ye bağlı) ayrı bir vergi formülüne tab
 
 [Yatırım fonları](/blog/yatirim-fonu-nedir-nasil-secilir/), tek tek menkul kıymet almak yerine profesyonel yönetimli çeşitlendirilmiş bir portföye katılmayı sağlar. Vergi açısından da fon türüne göre farklı muameleye tabidir:
 
-- **Hisse senedi ağırlıklı fonlar:** Portföyünün belirli bir oranını hisse senedine yatıran fonlar, daha düşük stopaj oranından yararlanabilir.
-- **Para piyasası ve tahvil fonları:** Daha likit ama genellikle daha yüksek oranlı stopaj.
+- **Hisse senedi yoğun fonlar:** TEFAS'ta işlem gören hisse senedi yoğun fonlarda stopaj oranı %0'dır.
+- **Para piyasası, borçlanma araçları ve diğer fonlar:** 9 Temmuz 2025 ve sonrasında alınan paylarda çoğunlukla %17,5 stopaj uygulanır.
 
 Fondan çıkarken stopaj otomatik kesilir; ayrı bir beyan yapmanız gerekmez. Bu pratik avantaj, küçük yatırımcılar için hesap yükünü ortadan kaldırır.
 
@@ -93,7 +94,7 @@ Fondan çıkarken stopaj otomatik kesilir; ayrı bir beyan yapmanız gerekmez. B
 Altın, Türkiye'de tarihsel olarak **enflasyon ve kur riskine karşı** başvurulan bir yatırım aracıdır. Vergi boyutunda ise alım şekli önemli fark yaratır:
 
 - **Fiziksel altın (külçe/sikke):** Küçük miktarda tutanlar için vergi yükümlülüğü düşük olabilir; ancak yıllık değer artış kazancı belli eşikleri aşarsa beyan yükümlülüğü doğabilir.
-- **Bankada altın hesabı:** Faiz ve alım-satım kazancı stopaja tabidir; fiziksel altından farklı değerlendirilebilir.
+- **Bankada altın hesabı:** Fiyat farkından doğan kazanca stopaj uygulanmaz; vadeli altın hesabında ödenen getiri ise stopaja tabidir. Fiziki teslimatsız alımlarda binde 2 BSMV kesilir.
 
 Büyük tutarlarda altın alım satımı yapmayı planlıyorsanız mali müşavirden görüş almanız önerilir.
 
@@ -102,8 +103,8 @@ Büyük tutarlarda altın alım satımı yapmayı planlıyorsanız mali müşavi
 | Yatırım Aracı | Ana Vergi Avantajı | Likidite | Uygun Vade |
 |---|---|---|---|
 | BES | Devlet katkısı + düşük emeklilik stopajı | Düşük (uzun vadeli taahhüt) | 10+ yıl |
-| BIST Hisse Senedi | Düşük sermaye kazancı stopajı | Yüksek (borsa günü) | Orta/Uzun |
-| Devlet Tahvili (DİBS) | Rekabetçi stopaj oranı | Orta (ikincil piyasa) | 1–10 yıl |
+| BIST Hisse Senedi | Alım-satım kazancında %0 stopaj | Yüksek (borsa günü) | Orta/Uzun |
+| Devlet Tahvili (DİBS) | %0 stopaj (31.12.2026'ya kadar) | Orta (ikincil piyasa) | 1–10 yıl |
 | Hisse Ağırlıklı Yatırım Fonu | Düşük stopaj oranı, pratik beyan | Yüksek (TEFAS günü) | Orta/Uzun |
 | Para Piyasası Fonu | Otomatik stopaj, pratiklik | Çok yüksek | Kısa |
 | Fiziksel Altın | Küçük miktarda vergi avantajı | Orta | Orta/Uzun |

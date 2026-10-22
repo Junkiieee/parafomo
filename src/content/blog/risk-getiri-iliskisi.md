@@ -1,5 +1,5 @@
 ---
-title: "Risk ve Getiri İlişkisi: Portföyünü Nasıl Dengelirsin?"
+title: "Risk ve Getiri İlişkisi: Portföyünü Nasıl Dengelersin?"
 description: "Risk ve getiri ilişkisi nedir, portföy dengeleme nasıl yapılır? Volatilite, çeşitlendirme ve kişisel risk toleransını öğren; yatırımında doğru dengeyi bul."
 pubDate: 2026-07-10
 category: "Yatırım"

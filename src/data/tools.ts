@@ -12,13 +12,13 @@ export type Grup = { baslik: string; araclar: Tool[] };
 const GRUPLAR_HAM: Grup[] = [
   { baslik: 'Faiz, kredi ve birikim', araclar: [
     { href: '/faiz-hesaplama/', ad: 'Faiz hesaplama', aciklama: 'Basit/bileşik faiz, gün-ay-yıl, net getiri', k: ['faiz hesap', 'basit faiz'] },
-    { href: '/mevduat-faizi-hesaplama/', ad: 'Mevduat faizi hesaplama', aciklama: 'Güncel stopajla net vadeli mevduat getirisi', k: ['mevduat', 'vadeli', 'stopaj', 'faiz getirisi', 'para piyasası', 'eurobond fonu'] },
+    { href: '/mevduat-faizi-hesaplama/', ad: 'Mevduat faizi hesaplama', aciklama: 'Güncel stopajla net vadeli mevduat getirisi', k: ['mevduat', 'vadeli', 'stopaj', 'faiz getirisi', 'para piyasası', 'eurobond fonu', 'tmsf', 'repo', 'reel faiz'] },
     { href: '/kredi-hesaplama/', ad: 'Kredi hesaplama', aciklama: 'Taksit, toplam faiz ve ödeme planı', k: ['kredi', 'taksit', 'borç', 'yapılandırma', 'kredi kartı'] },
     { href: '/konut-kredisi-hesaplama/', ad: 'Konut kredisi hesaplama', aciklama: 'Peşinat, kredi/değer oranı, taksit tablosu', k: ['konut kredisi', 'ev kredisi', 'konut', 'gayrimenkul'] },
     { href: '/ihtiyac-kredisi-hesaplama/', ad: 'İhtiyaç kredisi hesaplama', aciklama: 'KKDF ve BSMV dahil taksit, BDDK vade sınırı', k: ['ihtiyaç kredisi', 'tüketici kredisi'] },
     { href: '/tasit-kredisi-hesaplama/', ad: 'Taşıt kredisi hesaplama', aciklama: 'Araç kredisi taksiti, BDDK sınırları', k: ['taşıt kredisi', 'araç kredisi', 'otomobil'] },
     { href: '/bilesik-faiz-hesaplama/', ad: 'Bileşik faiz hesaplama', aciklama: 'Düzenli katkıyla uzun vadeli birikim', k: ['bileşik', 'birikim', 'tasarruf', 'pasif gelir', 'emeklilik', 'bes', 'dca', 'uzun vade'] },
-    { href: '/bono-hesaplama/', ad: 'Bono hesaplama', aciklama: 'Hazine bonosu getiri hesabı', k: ['bono', 'tahvil', 'sabit getiri', 'hazine'] },
+    { href: '/bono-hesaplama/', ad: 'Bono hesaplama', aciklama: 'Hazine bonosu getiri hesabı', k: ['bono', 'tahvil', 'sabit getiri', 'hazine', 'dibs', 'eurobond'] },
     { href: '/yuzde-hesaplama/', ad: 'Yüzde hesaplama', aciklama: 'Yüzdesi, yüzde kaç, artış ve indirim', k: ['yüzde'] },
   ] },
   { baslik: 'Maaş, zam ve tazminat', araclar: [
@@ -117,6 +117,7 @@ export function relatedTools(o: { title: string; tags?: string[]; category?: str
     if (s > 0) skor.set(t.href, s);
   }
   const sec = [...skor.entries()].sort((a, b) => b[1] - a[1]).map(([h]) => h);
-  for (const h of KATEGORI[o.category ?? ''] ?? []) if (!sec.includes(h) && !body.includes(h.replace(/\/$/, ''))) sec.push(h);
+  // Kategori yedeği yalnız hiç eşleşme yoksa: aksi halde kredi kartı yazısına "net maaş" gibi alakasız araç düşüyordu (denetim 2026-10-22).
+  if (sec.length === 0) for (const h of KATEGORI[o.category ?? ''] ?? []) if (!body.includes(h.replace(/\/$/, ''))) sec.push(h);
   return sec.slice(0, n).map((h) => TOOLS.find((t) => t.href === h)).filter((t): t is Tool => !!t);
 }

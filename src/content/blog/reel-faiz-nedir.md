@@ -2,6 +2,7 @@
 title: "Reel Faiz Nedir? Enflasyona Göre Gerçek Getirinizi Hesaplayın"
 description: "Reel faiz nedir ve neden önemlidir? Mevduat, tahvil ve repo için gerçek getirinizi adım adım nasıl hesaplayacağınızı Türkiye bağlamında açıklıyoruz."
 pubDate: 2026-08-09
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["reel faiz", "enflasyon", "nominal faiz", "mevduat", "yatırım", "TCMB", "faiz"]
 readingTime: 7
@@ -12,13 +13,13 @@ faq:
   - q: "Reel faiz negatif olursa ne anlama gelir?"
     a: "Negatif reel faiz, enflasyonun nominal faizden yüksek olduğu anlamına gelir. Bu durumda birikimlerinizin TL değeri artsa da satın alma gücü azalır; yani kâğıt üzerinde kazanırken gerçekte kaybedersiniz."
   - q: "Türkiye'de reel faiz nasıl hesaplanır?"
-    a: "Bankadan öğrendiğiniz net (stopaj sonrası) faiz oranından TÜİK'in açıkladığı son 12 aylık TÜFE rakamını çıkarın. Örneğin net %32 mevduat faizi ve %44 enflasyonda reel faiz −%12'dir."
+    a: "Bankadan öğrendiğiniz net (stopaj sonrası) faiz oranından TÜİK'in açıkladığı son 12 aylık TÜFE rakamını çıkarın. Ekim 2026 itibarıyla örnek: 3 aya kadar vadeli TL mevduatta ortalama brüt faiz yaklaşık %37,6 (TCMB haftalık ortalama), %17,5 stopaj sonrası net yaklaşık %31,0; Eylül 2026 yıllık TÜFE %29,73 olduğuna göre net reel faiz yaklaşık +%1,3'tür (Fisher yöntemiyle +%1,0)."
   - q: "TÜFE'ye endeksli tahvil neden reel faize karşı koruma sağlar?"
     a: "Bu tahvillerde anapara her yıl TÜFE oranında güncellenir; üzerine ek bir reel getiri eklenir. Yüksek enflasyon dönemlerinde satın alma gücünüzü büyük ölçüde koruyan nadir araçlardan biridir."
   - q: "TCMB politika faizi ile reel faiz arasında ne ilişki var?"
-    a: "TCMB politika faizi piyasa faizlerinin tabanını belirler. Politika faizi enflasyonun üzerine çıktığında reel faiz pozitife döner ve TL mevduat cazip hale gelir; altında kaldığında reel faiz negatiftir."
+    a: "TCMB politika faizi piyasa faizlerinin tabanını belirler. Politika faizi enflasyonun üzerine çıktığında reel faiz pozitife döner ve TL mevduat cazip hale gelir; altında kaldığında reel faiz negatiftir. Ekim 2026 itibarıyla politika faizi %37, yıllık TÜFE %29,73; yani reel politika faizi yaklaşık +%5,6 (Fisher)."
 shorts:
-  - "Bankanız size %38 faiz veriyor ama enflasyon %44'se aslında kaybediyorsunuz."
+  - "Bankanız yüzde otuz yedi buçuk faiz veriyor, enflasyon yüzde yirmi dokuz buçuk; ama stopajdan sonra gerçek kazancınız yüzde bir civarında."
   - "Gerçek getiri 'nominal faiz eksi enflasyon'dur; bu fark negatifse birikimlerinizin alım gücü eriyor."
   - "Türkiye'de reel faizi hesaplamak için net faizden TÜFE'yi çıkarmanız yeterli."
   - "TÜFE'ye endeksli tahvil, yüksek enflasyon döneminde satın alma gücünü korumak için en güçlü araçlardan biri."
@@ -36,7 +37,7 @@ shorts_visuals:
   - "concept|investment portfolio diversification protection"
 ---
 
-Bankanız size yüzde otuz sekiz faiz ödüyor ama yıllık enflasyon yüzde kırk dördü aşıyorsa, birikimlerinizin TL değeri artsa da satın alma gücünüz her yıl geriliyor. Bu durumu görünür kılan kavram **reel faiz**tir — ve onu anlamadan yatırım kararı vermek, fiyat etiketine bakmadan alışveriş yapmak gibidir.
+Bankanız size yüzde otuz yedi buçuk faiz ödüyor, yıllık enflasyon yüzde otuzun hemen altında. Kâğıt üzerinde fark büyük görünüyor; ama stopaj kesildikten sonra satın alma gücünüzdeki gerçek artış yalnızca yüzde bir civarında. Bu durumu görünür kılan kavram **reel faiz**tir — ve onu anlamadan yatırım kararı vermek, fiyat etiketine bakmadan alışveriş yapmak gibidir.
 
 Bu rehberde reel faizin ne olduğunu, neden Türkiye'de bu kadar önem taşıdığını ve kendi yatırım araçlarınızın gerçek getirisini adım adım nasıl hesaplayacağınızı öğreneceksiniz.
 
@@ -56,16 +57,18 @@ Reel faiz, nominal (yani bankada ya da piyasada ilan edilen) faiz oranından enf
 
 Günlük hesaplamalar için basit fark yeterlidir. Büyük enflasyon-faiz farkları varsa Fisher denklemi daha doğru sonuç verir.
 
-### Somut Örnek
+### Somut Örnek (Ekim 2026 itibarıyla)
 
-- Vadeli mevduat nominal faizi: **%38**
-- Yıllık TÜFE enflasyonu: **%44**
+- 3 aya kadar vadeli TL mevduat ortalama brüt faizi: **%37,58** (basit yıllık)
+- Yıllık TÜFE enflasyonu (Eylül 2026): **%29,73**
 
-**Basit yöntem:** %38 − %44 = **−%6 reel faiz**
+**Basit yöntem:** %37,58 − %29,73 = **+%7,85 brüt reel faiz**
 
-**Fisher yöntemi:** (1,38 ÷ 1,44) − 1 = **−%4,2 reel faiz**
+**Fisher yöntemi:** (1,3758 ÷ 1,2973) − 1 = **+%6,05 brüt reel faiz**
 
-Her iki hesaplamada da sonuç aynı: paranızın alım gücü erimektedir. Yüzde altı ila dokuz arasında değişen bir kayıp söz konusudur.
+Brüt bazda reel faiz pozitif; ancak aşağıda göreceğimiz gibi stopaj sonrası bu fark büyük ölçüde eriyor. Büyük enflasyon-faiz farklarında iki yöntem arasındaki sapma da büyür; bu yüzden Fisher sonucu daha güvenilirdir.
+
+*Kaynak: TÜFE: TÜİK Eylül 2026 (yıllık %29,73); mevduat: TCMB haftalık ağırlıklı ortalama TL mevduat faizleri, 9 Ekim 2026 haftası (3 aya kadar basit yıllık eşdeğer %37,58, 1 aya kadar %36,25); politika faizi: TCMB, %37. Kendi rakamlarınızla hesaplamak için [enflasyon hesaplama](/enflasyon-hesaplama/) ve [mevduat faizi hesaplama](/mevduat-faizi-hesaplama/) araçlarını kullanabilirsiniz.*
 
 ## Türkiye'de Reel Faiz Neden Bu Kadar Önemli?
 
@@ -75,42 +78,45 @@ Türkiye son yıllarda çift haneli enflasyonla yaşamayı öğrendi. Bu ortamda
 
 ## Yatırım Araçlarına Göre Reel Getiri Karşılaştırması
 
-Aşağıdaki tablo, farklı araçların nominal ve reel getiri hesaplamasını karşılaştırmalı göstermektedir. Rakamlar kavramı açıklamak için örnek değerlerdir; güncel oranları ilgili kurumların web sitelerinden doğrulayın.
+Aşağıdaki tablo, **Ekim 2026 itibarıyla** farklı araçların nominal ve reel getirisini Eylül 2026 yıllık TÜFE'si (%29,73) ile karşılaştırır. Mevduat ve politika faizi satırları ileriye dönük (bugünkü oranla bir yıl), dolar, gram altın ve BIST 100 satırları ise geçmiş 1 yılın gerçekleşen getirisidir; geçmiş getiri geleceğin garantisi değildir.
 
-| Yatırım Aracı | Tahmini Nominal Getiri (yıllık) | Varsayılan Enflasyon | Tahmini Reel Getiri |
+| Yatırım Aracı | Nominal Getiri (yıllık) | Enflasyon (TÜFE) | Reel Getiri (Fisher) |
 |---|---|---|---|
-| TL Vadeli Mevduat (1 ay) | %38 | %44 | **−%6** |
-| Devlet Tahvili (2 yıl, sabit) | %40 | %44 | **−%4** |
-| Repo | %36 | %44 | **−%8** |
-| TÜFE'ye Endeksli Tahvil | TÜFE + %2 | %44 | **+%2** |
-| USD Mevduat (kur dahil) | %4 + kur değişimi | %44 (TL bazlı) | Değişken |
-| BIST 100 Hisse Senedi | Piyasaya göre | %44 | Değişken |
-| Eurobond (TL dönüşüm bazında) | Kur + yabancı faiz | %44 | Değişken |
+| TCMB politika faizi | %37 | %29,73 | **+%5,6** |
+| TL Vadeli Mevduat (1 aya kadar, brüt) | %36,25 | %29,73 | **+%5,0** |
+| TL Vadeli Mevduat (3 aya kadar, brüt) | %37,58 | %29,73 | **+%6,1** |
+| TL Vadeli Mevduat (3 aya kadar, %17,5 stopaj sonrası net) | ~%31,0 | %29,73 | **+%1,0** |
+| TÜFE'ye Endeksli Tahvil | TÜFE + reel kupon | %29,73 | ≈ reel kupon |
+| Dolar (USD/TRY, son 1 yıl) | +%18,0 | %29,73 | **−%9,0** |
+| Gram altın (son 1 yıl) | +%22,5 | %29,73 | **−%5,6** |
+| BIST 100 (son 1 yıl, temettü hariç) | +%5,5 | %29,73 | **−%18,7** |
 
-> **Not:** Bu tablo gerçek zamanlı verileri yansıtmamaktadır. Mevduat oranları için BDDK Finansal Veriler portalını, tahvil faizleri için Hazine ve Maliye Bakanlığı'nın ihale sonuçlarını inceleyin.
+> **Kaynak:** TÜFE: TÜİK (Eylül 2026); mevduat: TCMB haftalık ağırlıklı ortalama faizler (9 Ekim 2026 haftası, basit yıllık eşdeğer); politika faizi: TCMB; dolar, altın ve BIST 100: 22 Ekim 2026 verisiyle [dolar getiri](/dolar-getiri/), [altın getiri](/altin-getiri/) ve [BIST getiri](/bist-getiri/) sayfalarımız. Bankanızın sunduğu oran ortalamadan farklı olabilir; tahvil faizleri için Hazine ihale sonuçlarına bakın.
 
 ## Reel Getirinizi Adım Adım Hesaplama
 
 ### 1. Adım: Net Nominal Faizi Bulun
 
-Brüt faizden vergiyi düşün. TL vadeli mevduatta stopaj vergisi yüzde on beştir.
+Brüt faizden vergiyi düşün. TL mevduatta stopaj oranı vadeye göre değişir: 31 Aralık 2026'ya kadar geçerli oranlarla vadesiz ve 6 aya kadar vadeli hesaplarda **%17,5**, 1 yıla kadar vadelilerde **%15**, 1 yıldan uzun vadelilerde **%10** ([11444 sayılı Cumhurbaşkanı Kararı, Resmî Gazete 20 Haziran 2026](https://www.yontemymm.com.tr/mali-aciklamalar/2026-041-tl-mevduat-hesaplarinda-uygulanan-stopaj-oranlarinin-suresi-uzatildi)).
 
-**Örnek:**
-- Brüt faiz: %38
-- Stopaj: 38 × 0,15 = 5,7 puan
-- **Net nominal faiz: %32,3**
+**Örnek (3 aya kadar vade, Ekim 2026 ortalaması):**
+- Brüt faiz: %37,58
+- Stopaj: 37,58 × 0,175 ≈ 6,58 puan
+- **Net nominal faiz: ≈ %31,0**
+
+Vade sonunda anapara ve faizi aynı oranla yeniden yatırırsanız yıllık efektif getiri bunun biraz üzerine çıkar; [mevduat faizi hesaplama](/mevduat-faizi-hesaplama/) aracıyla kendi vadenize göre net getiriyi görebilirsiniz.
 
 ### 2. Adım: Güncel Enflasyonu Öğrenin
 
-TÜİK'in açıkladığı en güncel 12 aylık TÜFE rakamını kullanın. [Enflasyon verisinin nasıl okunduğunu](/blog/tufe-sepeti-nedir-enflasyon-nasil-hesaplanir/) ayrı bir rehberde ele aldık.
+TÜİK'in açıkladığı en güncel 12 aylık TÜFE rakamını kullanın. Ekim 2026 itibarıyla en son açıklanan veri Eylül 2026: **yıllık %29,73**, aylık %1,84. Paranızın belirli bir dönemde ne kadar değer kaybettiğini [enflasyon hesaplama](/enflasyon-hesaplama/) aracıyla görebilirsiniz. [Enflasyon verisinin nasıl okunduğunu](/blog/tufe-sepeti-nedir-enflasyon-nasil-hesaplanir/) ayrı bir rehberde ele aldık.
 
 ### 3. Adım: Farkı Alın
 
 Net Nominal Faiz − Enflasyon = **Net Reel Faiz**
 
-Örneğimizde: %32,3 − %44 = **−%11,7**
+Örneğimizde: %31,0 − %29,73 = **+%1,3** (Fisher: 1,310 ÷ 1,2973 − 1 ≈ **+%1,0**)
 
-Yani tasarrufunuzun alım gücü vergi sonrasında yılda yaklaşık yüzde on iki gerilemektedir. Kağıt üzerinde kazanıyor, gerçekte kaybediyorsunuz.
+Yani brüt bazda +%6'lık reel faiz, vergi sonrasında yılda yaklaşık yüzde bire iniyor. Enflasyon bir sonraki ayda beklenenden yüksek gelirse ya da bankanız ortalamanın altında faiz veriyorsa net reel getiri kolayca negatife dönebilir.
 
 ### 4. Adım: Diğer Araçlarla Karşılaştırın
 

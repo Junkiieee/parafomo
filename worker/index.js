@@ -103,10 +103,18 @@ function cachePolicy(path) {
   if (/\.(?:webp|jpe?g|png|svg|ico|avif)$/.test(path)) return IMAGE;
   return null;
 }
+// Temel güvenlik başlıkları (denetim 2026-10-22: hiçbir sayfada yoktu). CSP bilinçli olarak yok —
+// inline script/stil ve gtag'i kırmamak için ayrı, test edilmiş bir adım gerektirir.
+const SECURITY_HEADERS = {
+  'Strict-Transport-Security': 'max-age=31536000',
+  'X-Content-Type-Options': 'nosniff',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'X-Frame-Options': 'SAMEORIGIN',
+};
 function withCache(path, res) {
   const policy = res.status === 200 ? cachePolicy(path) : null;
-  if (!policy) return res;
   const out = new Response(res.body, res);
-  out.headers.set('Cache-Control', policy);
+  if (policy) out.headers.set('Cache-Control', policy);
+  for (const [k, v] of Object.entries(SECURITY_HEADERS)) out.headers.set(k, v);
   return out;
 }

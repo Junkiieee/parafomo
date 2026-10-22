@@ -2,7 +2,7 @@
 title: "Mevduat Faizi Nedir? Vadeli Mevduat Nasıl Açılır ve Kazanç Hesabı"
 description: "Mevduat faizi nedir, vadeli mevduat nasıl açılır, kazanç nasıl hesaplanır? TMSF güvencesi, stopaj ve TL faizi hakkında bilmeniz gereken her şey."
 pubDate: 2026-07-30
-updatedDate: 2026-08-21
+updatedDate: 2026-10-22
 category: "Kişisel Finans"
 tags: ["mevduat faizi", "vadeli mevduat", "banka faizi", "TL mevduat", "tasarruf", "TMSF"]
 readingTime: 7
@@ -13,16 +13,16 @@ faq:
   - q: "Vadeli mevduat vadesinden önce bozulabilir mi?"
     a: "Evet, çoğu banka vadeden önce çözüme izin verir; ancak bu durumda genellikle düşük bir vadesiz faiz oranı uygulanır ya da birikmiş faizin bir kısmı kesilir."
   - q: "Mevduat faizinden vergi kesilir mi?"
-    a: "Evet. Türkiye'de TL mevduat faizinden yüzde 15, döviz veya altın cinsinden mevduatlarda yüzde 0-15 arasında stopaj vergisi kesilir. Net kazancınızı hesaplarken bu kesintileri göz önünde bulundurun."
+    a: "Evet. 2026'da TL mevduat faizinden vadeye göre stopaj kesilir: 6 aya kadar yüzde 17,5, 1 yıla kadar yüzde 15, 1 yıldan uzun vadede yüzde 10. Döviz ve altın mevduatında oranlar TL'den farklıdır; güncel oranı bankanın vergilendirme tablosundan teyit edin."
   - q: "En yüksek mevduat faizini hangi banka verir?"
     a: "Oranlar sürekli değişir. BDDK'nın Mevduat Faiz Oranları sayfasından veya bankaların mobil uygulamalarından güncel karşılaştırma yapabilirsiniz. Katılım bankalarının kâr payı oranları da alternatif olarak incelenebilir."
   - q: "TMSF güvencesi ne kadardır?"
-    a: "Tasarruf Mevduatı Sigorta Fonu (TMSF), her banka için kişi başı 750.000 TL'ye kadar olan mevduatı güvence altına alır. Bu tutarın üzerindeki miktarlar güvence kapsamı dışındadır."
+    a: "Tasarruf Mevduatı Sigorta Fonu (TMSF), 2026 yılında her banka için kişi başı 1.200.000 TL'ye kadar olan mevduatı güvence altına alır. Bu tutarın üzerindeki miktarlar güvence kapsamı dışındadır."
 shorts:
   - "Bankadaki paran senin için çalışmıyor."
   - "Vadesiz hesaptaki para neredeyse sıfır faiz kazanır; gerçek getiri için parayı vadeli hesaba taşıman şart."
   - "TCMB politika faizi yükselince bankalar da mevduat oranlarını artırır; doğru zamanda vadeli açmak kazancını doğrudan etkiler."
-  - "Brüt faiz gelirinden yüzde on beş stopaj kesilir; elde ettiğini sandığın getirinin beşte biri devlete gider."
+  - "Altı aya kadar vadede brüt faizin yüzde on yedi buçuğu stopaj olarak kesilir; getirinin yaklaşık altıda biri sana hiç gelmez."
   - "Peki hangi banka en yüksek oranı sunuyor ve nasıl karşılaştırırsın? Cevap için kanala abone ol, güncel finans rehberleri için parafomo.com'u ziyaret et."
 shorts_broll:
   - "bank teller counter customer"
@@ -92,12 +92,12 @@ Brüt kazançtan vadeye göre değişen stopaj düşülünce net kazanç kalır.
 
 ### Örnek Hesaplamalar (Varsayımsal %40 Yıllık Faiz)
 
-| Anapara | Yıllık Faiz | Vade | Brüt Kazanç | Stopaj (%15) | Net Kazanç |
+| Anapara | Yıllık Faiz | Vade | Brüt Kazanç | Stopaj | Net Kazanç |
 |---------|-------------|------|-------------|--------------|------------|
-| 10.000 TL | %40 | 1 ay (30 gün) | 328 TL | 49 TL | 279 TL |
-| 50.000 TL | %40 | 3 ay (90 gün) | 4.932 TL | 740 TL | 4.192 TL |
-| 100.000 TL | %42 | 6 ay (180 gün) | 20.712 TL | 3.107 TL | 17.605 TL |
-| 200.000 TL | %42 | 12 ay | 84.000 TL | 12.600 TL | 71.400 TL |
+| 10.000 TL | %40 | 1 ay (30 gün) | 329 TL | 58 TL (%17,5) | 271 TL |
+| 50.000 TL | %40 | 3 ay (90 gün) | 4.932 TL | 863 TL (%17,5) | 4.069 TL |
+| 100.000 TL | %42 | 6 ay (180 gün) | 20.712 TL | 3.625 TL (%17,5) | 17.087 TL |
+| 200.000 TL | %42 | 12 ay | 84.000 TL | 12.600 TL (%15) | 71.400 TL |
 
 > Tablodaki rakamlar, yalnızca hesaplama mantığını göstermek için varsayımsal oranlarla hazırlanmıştır. Güncel oranlar için bankanızla görüşün.
 
@@ -108,16 +108,15 @@ Türkiye'de mevduat faizi geliri stopaj vergisine tabidir. TL mevduatta oran **v
 - **TL mevduat — 6 aya kadar:** %17,5 stopaj
 - **TL mevduat — 6 ay ile 1 yıl arası:** %15 stopaj
 - **TL mevduat — 1 yıldan uzun:** %10 stopaj (uzun vade daha az vergi)
-- **Döviz mevduatı:** Vadeye göre daha yüksek oran
-- **Altın mevduatı:** %15
+- **Döviz ve altın mevduatı:** TL'den farklı oranlar uygulanır; güncel oranı bankanın vergilendirme tablosundan teyit edin
 
-Stopaj doğrudan banka tarafından kesilip vergi dairesine aktarılır; elinize her zaman net tutar geçer. Ücretli çalışanlar için ayrıca yıllık beyanname verilmesi gerekmez.
+Stopaj doğrudan banka tarafından kesilip vergi dairesine aktarılır; elinize her zaman net tutar geçer. Mevduat faizinde kesilen stopaj genellikle nihai vergidir, ayrıca beyanname gerekmez. Tüm araçların güncel oranlarını [2026 stopaj oranları rehberimizde](/blog/stopaj-nedir-2026-stopaj-oranlari/) tek tabloda topladık.
 
 ## TMSF Güvencesi: Birikiminiz Ne Kadar Güvende?
 
-Tasarruf Mevduatı Sigorta Fonu (TMSF), herhangi bir bankanın iflas etmesi durumunda kişi başına **750.000 TL'ye kadar** olan mevduatı güvence altına alır. Bu tutarın üzerinde kalan miktar güvence kapsamı dışındadır.
+Tasarruf Mevduatı Sigorta Fonu (TMSF), herhangi bir bankanın iflas etmesi durumunda her bankada kişi başına **1.200.000 TL'ye kadar** (2026) olan mevduatı güvence altına alır. Bu tutarın üzerinde kalan miktar güvence kapsamı dışındadır.
 
-**Pratik öneri:** Birikiminiz 750.000 TL'nin üzerindeyse farklı bankalara böleştirerek her biri için 750.000 TL altında mevduat tutun. Bu sayede tüm birikimleriniz güvence kapsamına girer.
+**Pratik öneri:** Birikiminiz 1.200.000 TL'nin üzerindeyse farklı bankalara bölüştürerek her birinde 1.200.000 TL'nin altında mevduat tutun. Bu sayede tüm birikimleriniz güvence kapsamına girer.
 
 ## Vadeli Mevduat ile Diğer Yatırım Araçlarının Karşılaştırması
 
@@ -160,8 +159,8 @@ Vadeyi beklemeden hesabı çözerseniz çoğu banka düşük "vadesiz" faiz uygu
 
 - **Mevduat faizi**, paranızı bankada belirli bir süre tutmanız karşılığında kazandığınız getiridir; vadeli hesaplar çok daha yüksek faiz sunar.
 - **Vadeli mevduat açmak** 5 adımda tamamlanır: banka karşılaştırması, hesap açma, para yatırma, vade seçimi ve otomatik yenileme kararı.
-- **Net kazancınızı** hesaplarken %15 stopaj vergisini düşmeyi unutmayın; brüt rakamlar yanıltıcı olabilir.
-- **TMSF güvencesi** kişi başı 750.000 TL'ye kadar geçerlidir; büyük birikimler için bankalara böleştirin.
+- **Net kazancınızı** hesaplarken vadeye göre %17,5 / %15 / %10 stopajı düşmeyi unutmayın; brüt rakamlar yanıltıcı olabilir.
+- **TMSF güvencesi** her bankada kişi başı 1.200.000 TL'ye kadar geçerlidir; büyük birikimleri bankalara bölüştürün.
 - Yüksek nominal faiz tek başına yetmez: **reel getiriyi** (nominal faiz eksi enflasyon) hesaplayarak paranızın gerçekten büyüyüp büyümediğini takip edin.
 
 ---

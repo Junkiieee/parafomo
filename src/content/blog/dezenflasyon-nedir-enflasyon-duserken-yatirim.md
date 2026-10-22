@@ -67,7 +67,7 @@ Gıda ve enerji fiyatları çok oynak olduğu için merkez bankaları "çekirdek
 
 ## Türkiye'de Dezenflasyon Süreci
 
-TCMB, 2023 ortasında politika faizini hızla artırmaya başladı ve bu sıkılaştırma politikasını 2024-2025 boyunca sürdürdü. Sonuç: yıllık TÜFE, zirve seviyelerinden belirgin biçimte geriledi.
+TCMB, 2023 ortasında politika faizini hızla artırmaya başladı ve bu sıkılaştırma politikasını 2024-2025 boyunca sürdürdü. Sonuç: yıllık TÜFE, zirve seviyelerinden belirgin biçimde geriledi.
 
 Eylül 2026 itibarıyla enflasyon düşüş trendinde ancak henüz tek haneli hedefin oldukça üzerinde. TCMB'nin yol haritasını anlamak için [TCMB faiz kararlarının nasıl işlediğini](/blog/tcmb-faiz-karari-nasil-etkiler) inceleyebilirsin.
 

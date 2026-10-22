@@ -2,6 +2,7 @@
 title: "Tahvil Nedir? Devlet Tahvili ve Hazine Bonosunda Yatırım Rehberi"
 description: "Tahvil nedir, hazine bonosu ile farkı nedir, Türkiye'de nasıl alınır? Avantajlar, riskler ve portföyüne nasıl katacağını öğren."
 pubDate: 2026-07-27
+updatedDate: 2026-10-22
 category: "Yatırım"
 tags: ["tahvil", "hazine bonosu", "devlet tahvili", "sabit getiri", "yatırım", "faiz"]
 readingTime: 7
@@ -16,7 +17,7 @@ faq:
   - q: "Tahvil nasıl satın alınır?"
     a: "Türkiye'de devlet tahvillerini banka şubeleri, internet bankacılığı veya aracı kurumlar üzerinden satın alabilirsin. Halka arzlarda Hazine ihalelerine bireysel katılım da mümkündür."
   - q: "Tahvilden elde edilen gelir vergiye tabi midir?"
-    a: "Evet. Devlet iç borçlanma senetlerinden elde edilen faiz geliri %10 oranında stopaja tabidir. Özel sektör tahvillerinde oran farklılık gösterebilir."
+    a: "Devlet tahvili ve hazine bonosu (DİBS) faiz gelirinde gerçek kişiler için stopaj oranı %0'dır; 11444 sayılı Cumhurbaşkanı Kararı ile bu uygulama 31 Aralık 2026'ya kadar uzatıldı. Özel sektör tahvillerinde oran farklılık gösterebilir."
 shorts:
   - "Devlete borç verip düzenli gelir almak mümkün mü?"
   - "Tahvil tam olarak bu: devlete ya da büyük şirkete para veriyorsun, onlar da sana düzenli faiz ödüyor."
@@ -95,7 +96,7 @@ Dolar ya da Euro cinsinden ihraç edilen uzun vadeli devlet tahvilleridir. Kur r
 | Devlet tahvilinde Hazine güvencesi | Enflasyon faizi aşarsa reel kayıp oluşabilir |
 | Vade sonunda anapara iadesi | Erken satışta piyasa fiyatından işlem yapılır |
 | Portföy çeşitlendirmesi sağlar | Piyasa faizi yükselince tahvil değeri düşer |
-| DİBS'te %10 stopaj (düşük vergi) | Özel sektör tahvillerinde şirket riski var |
+| DİBS'te bireysel yatırımcıya %0 stopaj (31.12.2026'ya kadar) | Özel sektör tahvillerinde şirket riski var |
 
 ## Tahvil Nasıl Satın Alınır?
 
@@ -117,10 +118,10 @@ Türkiye'de tahvil almanın birkaç yolu vardır:
 |--------|---------------------|--------------|---------|
 | Para Birimi | TL | TL | USD / EUR |
 | Vade | 6 ay – 10 yıl | 1 ay – 1 yıl | 5 – 30 yıl |
-| Garanti | T.C. Hazinesi | TMSF (750 bin TL'ye kadar) | T.C. Hazinesi (döviz) |
+| Garanti | T.C. Hazinesi | TMSF (2026: 1,2 milyon TL'ye kadar) | T.C. Hazinesi (döviz) |
 | Likidite | İkincil piyasada satılabilir | Erken bozma cezalı olabilir | İkincil piyasada satılabilir |
 | Enflasyon Koruması | TÜFE endekslide var | Yok | Dolar bazlı |
-| Stopaj | %10 | %0–15 (vadeye göre) | %0 |
+| Stopaj (bireysel) | %0 (31.12.2026'ya kadar) | %17,5 / %15 / %10 (vadeye göre) | %0 (beyan sınırı aşılırsa beyan) |
 | Uygun Profil | Orta–uzun vadeli TL yatırımcısı | Kısa vadeli, güvenli | Döviz bazlı uzun vade |
 
 ## Tahvil Kimlere Uygun?
@@ -148,7 +149,7 @@ Devlet tahvillerini ikincil piyasada satmak mümkündür, fakat o günkü faiz o
 
 ### Vergi Durumu
 
-Devlet iç borçlanma senetlerinden elde edilen faiz %10 stopaja tabidir; bu, mevduat faizinin üzerindeki vade dilimlerine kıyasla avantajlı olabilir. [Vergi avantajlı yatırım araçları](/blog/vergi-avantajli-yatirim-araclari/) yazımızda diğer vergi dostu seçenekleri karşılaştırdık.
+Devlet iç borçlanma senetlerinden (DİBS) bireysel yatırımcının elde ettiği faiz gelirinde stopaj oranı %0'dır ve 11444 sayılı Cumhurbaşkanı Kararı ile bu uygulama 31 Aralık 2026'ya kadar uzatıldı. TL mevduatta ise vadeye göre %17,5, %15 veya %10 stopaj kesildiğinden DİBS vergi açısından avantajlıdır. Tüm oranları [2026 stopaj oranları rehberimizde](/blog/stopaj-nedir-2026-stopaj-oranlari/) bulabilirsiniz. [Vergi avantajlı yatırım araçları](/blog/vergi-avantajli-yatirim-araclari/) yazımızda diğer vergi dostu seçenekleri karşılaştırdık.
 
 ---
 
@@ -157,7 +158,7 @@ Devlet iç borçlanma senetlerinden elde edilen faiz %10 stopaja tabidir; bu, me
 - **Tahvil**, devlet veya şirketlerin ihraç ettiği borç senedidir; düzenli kupon faizi ve vade sonunda anapara iadesi sunar.
 - **Hazine bonosu** 1 yıldan kısa, **devlet tahvili** 1 yıldan uzun vadelidir; ikisi de Türkiye Hazinesi güvencesi altındadır.
 - TÜFE endeksli tahviller enflasyona karşı koruma sağlar; özel sektör tahvilleri daha yüksek risk karşılığında daha yüksek getiri sunar.
-- Banka ya da aracı kurum yatırım hesabı üzerinden kolayca satın alınabilir; DİBS'te stopaj %10'dur.
+- Banka ya da aracı kurum yatırım hesabı üzerinden kolayca satın alınabilir; DİBS'te bireysel yatırımcı için stopaj %0'dır (31.12.2026'ya kadar).
 - Tahvil; mevduat ile hisse senedi arasında risk-getiri dengesi arayan ve portföyünü çeşitlendirmek isteyen yatırımcılara uygundur.
 
 ---

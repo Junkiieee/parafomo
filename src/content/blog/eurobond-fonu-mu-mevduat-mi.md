@@ -2,6 +2,7 @@
 title: "Eurobond Fonu mu Mevduat mı? Hangisi Daha Mantıklı?"
 description: "Eurobond fonu mu mevduat mı sorusunun cevabı: getiri, risk, vergi ve likidite karşılaştırmasıyla hangi araç birikimini daha iyi değerlendirir?"
 pubDate: 2026-07-22
+updatedDate: 2026-10-22
 category: "Yatırım"
 tags: ["eurobond fonu", "mevduat", "döviz yatırımı", "yatırım fonu", "TEFAS", "sabit getiri"]
 readingTime: 7
@@ -10,13 +11,13 @@ faq:
   - q: "Eurobond fonu ile direkt eurobond aynı şey mi?"
     a: "Hayır. Direkt eurobond aldığında devlet ya da şirkete doğrudan borç verirsin; kupon ödemeleri ve anaparalar belirli tarihlerde hesabına gelir. Eurobond fonu ise TEFAS'ta işlem gören bir yatırım fonudur — fon yöneticisi birden fazla eurobond'u havuzda tutar, sen fon katılma payı satın alırsın; günlük fiyat değişimi olur ve minimum tutar çok daha düşük olabilir."
   - q: "Eurobond fonu mevduattan daha riskli midir?"
-    a: "Evet, genel olarak daha riskli. Mevduat BDDK güvencesi kapsamındadır ve belirli limite kadar anapara koruması sunar. Eurobond fonlarında anapara garantisi yoktur; faiz oranlarındaki değişim fon değerini etkiler. Ancak iyi çeşitlendirilmiş kısa vadeli eurobond fonları, uzun vadeli direkt eurobond'a göre faiz riskini daha iyi yönetebilir."
+    a: "Evet, genel olarak daha riskli. Mevduat TMSF sigortası kapsamındadır; 2026'da her bankada kişi başı 1.200.000 TL'ye kadar anapara koruması sunar. Eurobond fonlarında anapara garantisi yoktur; faiz oranlarındaki değişim fon değerini etkiler. Ancak iyi çeşitlendirilmiş kısa vadeli eurobond fonları, uzun vadeli direkt eurobond'a göre faiz riskini daha iyi yönetebilir."
   - q: "TL eurobond fonu döviz mevduata alternatif olabilir mi?"
     a: "TL cinsinden işlem gören ama portföyünde döviz cinsinden eurobond bulunduran fonlar kur riski içerir. Döviz mevduatının yerini tutmaz çünkü birikimin TL'ye dönüştürülmeden yönetilmesi için döviz cinsinden fon gerekir. Döviz koruma amaçlıysan döviz bazlı eurobond fonlarını veya direkt eurobond'u araştır."
   - q: "Eurobond fonunun minimum yatırım tutarı nedir?"
     a: "TEFAS üzerinden işlem gören eurobond fonlarında minimum tutar genellikle 10-100 TL gibi çok düşük seviyelerde başlar. Bu, direkt eurobond almanın gerektirdiği 1.000 dolar eşiğine kıyasla çok büyük bir erişim kolaylığı sağlar."
   - q: "Eurobond fonu ile mevduatın vergisi aynı mı?"
-    a: "Hayır, farklı. Eurobond fonlarında fon bünyesinde stopaj uygulanır ve bireyler için ek vergi beyan zorunluluğu genellikle yoktur; fon yöneticisi vergiyi içeride halleder. Mevduat faizinde ise banka stopajı keser. Döviz mevduatta kur farkı kazancı da ayrıca değerlendirilebilir. Güncel vergi detayı için mali müşavire danış."
+    a: "Hayır, farklı. 9 Temmuz 2025 ve sonrasında alınan eurobond fonu paylarında, fonu sattığınızda oluşan kazançtan %17,5 stopaj kesilir; bu kesinti genellikle nihai vergidir, ayrıca beyan gerekmez. TL mevduat faizinde ise banka vadeye göre %17,5, %15 veya %10 stopaj keser. Döviz mevduatta kur farkı kazancı da ayrıca değerlendirilebilir. Güncel vergi detayı için mali müşavire danış."
 shorts:
   - "Döviz mevduatın 'güvenli' — ama yılda 200 dolar yanıyor."
   - "Bankalar döviz mevduatına piyasadan düşük faiz verdiği için eurobond'a kıyasla her yıl ciddi para kaybediyorsun."
@@ -58,7 +59,7 @@ Mevduat, bankaya belirli bir vade ve faiz karşılığında para yatırmaktır. 
 
 - **TL vadeli mevduat:** Enflasyona yakın ya da hafif üstü getiri; kısa vadeli nakit park noktası.
 - **Döviz mevduat (DTH):** Dolar veya euro cinsinden; banka yabancı para mevduatına faiz öder.
-- **BDDK güvencesi:** Her banka için belirlenen limite kadar (2026 itibarıyla kişi başı 150.000 TL + döviz muadili) devlet güvencesi vardır.
+- **TMSF güvencesi:** 2026'da her bankada kişi başı 1.200.000 TL'ye kadar mevduat sigorta kapsamındadır; limit aynı bankadaki TL, döviz ve altın mevduatının toplamına uygulanır. Ayrıntılar için [TMSF rehberimize](/blog/tmsf-nedir-mevduat-guvencesi) bakabilirsin.
 
 Mevduatın en büyük avantajı: anapara koruması ve yüksek likidite. Vadeli hesabı kırmak prim kaybına yol açsa da para günler içinde hesabına döner.
 
@@ -67,12 +68,12 @@ Mevduatın en büyük avantajı: anapara koruması ve yüksek likidite. Vadeli h
 | Kriter | Eurobond Fonu | TL Mevduat | Döviz Mevduat |
 |--------|--------------|-----------|--------------|
 | **Getiri potansiyeli** | Yüksek (eurobond kuponuna bağlı) | Orta | Düşük–orta |
-| **Anapara güvencesi** | Yok | BDDK limiti dahilinde | BDDK limiti dahilinde |
+| **Anapara güvencesi** | Yok | TMSF (2026: kişi başı 1,2 milyon TL'ye kadar) | TMSF (aynı limit, TL ile toplam) |
 | **Likidite** | Yüksek (TEFAS, iş günü sonu) | Orta (vadeli kırmak prim kaybı) | Orta |
 | **Minimum tutar** | 10–100 TL | 100–1.000 TL (bankaya göre) | 100 USD/EUR |
 | **Kur riski** | Var (TL fon) / Yok (döviz fon) | Yok | Yok |
 | **Faiz riski** | Var (fon fiyatı değişebilir) | Yok (vade dolunca sabit) | Yok |
-| **Vergi** | Fon içinde stopaj | Banka stopajı | Banka stopajı + kur farkı |
+| **Vergi** | Satış kazancından %17,5 stopaj | Vadeye göre %17,5 / %15 / %10 stopaj | Banka stopajı (TL'den farklı oran) + kur farkı |
 | **SPK/BDDK denetimi** | SPK (yatırım fonu) | BDDK (banka) | BDDK (banka) |
 | **Erişim kolaylığı** | Tüm bankalar/TEFAS | Her banka | Her banka (döviz şartlı) |
 
@@ -126,12 +127,12 @@ Yüksek getiri potansiyeli cazip görünse de göz ardı edilmemesi gereken risk
 
 | Kalem | Eurobond Fonu | TL Mevduat | Döviz Mevduat |
 |-------|--------------|-----------|--------------|
-| Gelir vergisi | Fon içinde stopaj | Banka stopajı | Banka stopajı |
-| Kur farkı vergisi | TL fonlarda var | Yok | Yasal mevzuata göre değişir |
+| Stopaj | Satış kazancından %17,5 (9.7.2025 sonrası alım) | Vadeye göre %17,5 / %15 / %10 | Bankanın döviz mevduatı oranı |
+| Kur farkı | Fon fiyatına yansır, stopaj matrahına dahil | Yok | Yasal mevzuata göre değişir |
 | Yönetim ücreti | Var (yıllık %0,1–1,5) | Yok | Yok |
 | İşlem komisyonu | Çoğu kurumda yok | Yok | Yok |
 
-Vergi avantajı açısından eurobond fonları bazen mevduata kıyasla daha elverişli olabilir — ama bu kural değil, istisnadır. Güncel mevzuat için mali müşavire danışmak gerekir.
+Stopaj açısından 9 Temmuz 2025 sonrası alınan eurobond fonu, 6 aya kadar vadeli TL mevduatla aynı orana (%17,5) tabidir; 1 yıldan uzun vadeli TL mevduatta ise oran %10'a iner. Tüm oranları [2026 stopaj oranları rehberimizde](/blog/stopaj-nedir-2026-stopaj-oranlari/) karşılaştırabilirsin; kişisel durumun için mali müşavire danışmak gerekir.
 
 ## Eurobond Fonu ve Mevduatı Birlikte Kullanmak
 
@@ -148,7 +149,7 @@ Bu yapı, hem güvenlik hem büyüme dengesini kurar ve ani nakit ihtiyacında t
 ## Özet
 
 - **Eurobond fonu mu mevduat mı** sorusunun cevabı önce vadeye, sonra risk toleransına bağlıdır.
-- Mevduat: BDDK güvenceli, likit, anapara korumalı; getiri daha düşük.
+- Mevduat: TMSF güvenceli (2026: kişi başı 1,2 milyon TL'ye kadar), likit, anapara korumalı; getiri daha düşük.
 - Eurobond fonu: Daha yüksek getiri potansiyeli, fakat anapara güvencesi yok; kısa vadede değer düşebilir.
 - Minimum 1.000 dolar eşiği olmadan eurobond piyasasına girebilmek için fon tercih edilebilir.
 - Acil rezerv için mevduat; uzun vadeli birikim için eurobond fonu düşünülebilir.

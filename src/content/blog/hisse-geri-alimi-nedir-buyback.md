@@ -2,6 +2,7 @@
 title: "Hisse Geri Alımı (Buyback) Nedir? Şirket Neden Kendi Hissesini Satın Alır?"
 description: "Hisse geri alımı nedir, şirket neden kendi hissesini satın alır? EPS, hisse fiyatı ve temettüye etkisini, BIST örneklerini ve yatırım sinyalini öğren."
 pubDate: 2026-08-25
+updatedDate: 2026-10-22
 category: "Borsa"
 tags: ["hisse geri alımı", "buyback", "hisse senedi", "borsa", "temettü", "eps", "bist", "yatırım stratejisi"]
 readingTime: 8
@@ -14,7 +15,7 @@ faq:
   - q: "Hisse geri alımı hisse fiyatını nasıl etkiler?"
     a: "Piyasadaki hisse arzı azaldığı için kalan hisselerin pay başına kârı (EPS) yükselir. Bu matematiksel artış F/K oranını görece düşürür ve hisseyi daha ucuz gösterir; kısa vadede fiyat baskısı genellikle yukarı yönlüdür."
   - q: "Buyback mı temettü mü yatırımcıya daha iyi?"
-    a: "Temettü nakit ödeme yapar, buyback ise hissenin değerini artırmayı hedefler. Vergi açısından Türkiye'de temettü stopaja tabidir; buyback'te yatırımcı hissesini satmadıkça vergi yükümlülüğü doğmaz. Her ikisinin de avantajı farklıdır."
+    a: "Temettü nakit ödeme yapar, buyback ise hissenin değerini artırmayı hedefler. Vergi açısından Türkiye'de temettü stopaja tabidir; buyback'te yatırımcı hissesini satmadıkça vergi yükümlülüğü doğmaz; Borsa İstanbul'da satarsa da bireysel yatırımcının alım-satım kazancında stopaj oranı %0'dır. Her ikisinin de avantajı farklıdır."
   - q: "BIST'te hisse geri alımı nasıl takip edilir?"
     a: "Borsa İstanbul'da geri alım programları, şirketin Kamuyu Aydınlatma Platformu (KAP) bildirimleriyle duyurulur. KAP'ta şirketi arap, 'Geri Alım' kategorisindeki bildirimleri incele. Geri alım sınırı, süresi ve tamamlanma oranı burada yer alır."
 shorts:
@@ -91,7 +92,7 @@ Geri alım duyuruları ortalama **%2–4** fiyat artışı tetikler (akademik ar
 | Kriter | Hisse Geri Alımı | Temettü |
 |---|---|---|
 | **Nakit gelir** | Hisse satmadan yok | Düzenli nakit akışı |
-| **Vergi (Türkiye)** | Hisseyi satınca gelir vergisi | Dağıtımda %15 stopaj |
+| **Vergi (Türkiye, bireysel)** | BIST'te satış kazancında %0 stopaj | Dağıtımda %15 stopaj |
 | **Esneklik** | Şirket programı durdurabilir | Kesilebilir ama sinyali kötü |
 | **EPS etkisi** | Olumlu (hisse azalır) | Yok (kâr dağıtılır, kalmaz) |
 | **Hisse fiyat etkisi** | Genellikle olumlu | Kısa vadede temettü kadar düşer |
@@ -153,7 +154,7 @@ Buyback her koşulda iyi değildir. Yatırımcının görmezden gelemeyeceği ri
 
 - **Hisse geri alımı (buyback)**, şirketin kendi hisselerini piyasadan satın almasıdır; piyasadaki hisse sayısı azalır.
 - Geri alım EPS'i artırır, F/K'yı düşürür ve genellikle kısa vadede hisse fiyatına destek olur.
-- Temettüye göre vergi avantajı sunabilir (Türkiye'de stopaj yok, satışa kadar vergi yok); ancak nakit gelir vermez.
+- Temettüye göre vergi avantajı sunabilir (bireysel yatırımcının BIST hisse satış kazancında stopaj %0, temettüde %15; bkz. [2026 stopaj oranları](/blog/stopaj-nedir-2026-stopaj-oranlari/)); ancak nakit gelir vermez.
 - BIST'te KAP bildirimleriyle takip edilebilir; programın aktif ve borçla değil nakitle finanse edildiğine bakılmalıdır.
 - Borç yüklü, düşük nakit akışlı veya hisse zirvesindeyken yapılan buyback'ler iyi sinyal değildir — temel analizle birlikte değerlendir.
 

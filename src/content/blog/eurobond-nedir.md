@@ -2,6 +2,7 @@
 title: "Eurobond Nedir? Türkiye'den Dolar Faizi Almanın Yolu"
 description: "Eurobond nedir, nasıl alınır, kimler için uygundur? Getiri, risk, vergi ve dolar mevduat karşılaştırmasıyla kapsamlı rehber."
 pubDate: 2026-06-27
+updatedDate: 2026-10-22
 category: "Yatırım"
 tags: ["eurobond", "dolar yatırımı", "sabit getiri", "hazine tahvili", "döviz", "tahvil"]
 readingTime: 8
@@ -14,7 +15,7 @@ faq:
   - q: "Eurobond'u vadesi dolmadan satabilir miyim?"
     a: "Evet, eurobondlar ikincil piyasada bankanız veya aracı kurumunuz üzerinden satılabilir. Ancak likidite hisse senetleri kadar yüksek değildir; faiz oranlarındaki değişimler piyasa fiyatını etkiler ve ihraç fiyatının altında satmak zorunda kalabilirsiniz."
   - q: "Eurobond'dan vergi kesilir mi?"
-    a: "Türkiye'de yerleşik bireyler için Hazine eurobond kupon gelirinden yüzde 10 stopaj vergisi kesilir. İkincil piyasada gerçekleşen sermaye kazancında uygulama ihraç tarihine ve elde tutma süresine göre farklılaşabilir; güncel mevzuat için mali müşavirle görüşün."
+    a: "Hazine eurobondlarının kupon gelirinden stopaj kesilmez (oran %0). Ancak Türkiye'de yerleşik bireyler, yıllık kupon geliri (diğer bazı menkul sermaye iratlarıyla birlikte) beyan sınırını aşarsa gelirin tamamını yıllık beyannameyle beyan etmek zorundadır. İkincil piyasada satıştan doğan kazancın vergilendirmesi ihraç tarihine göre farklılaşır; güncel mevzuat için mali müşavirle görüşün."
   - q: "Eurobond mu dolar mevduat mı daha iyi?"
     a: "Eurobond tipik olarak dolar mevduattan 1-3 puan daha yüksek faiz sunar; ancak ikincil piyasada fiyatı dalgalanabilir ve anında nakde çevirmek zordur. Kısa vadeli nakit tutacaksanız mevduat daha güvenli; 2-3 yıl veya daha uzun süre bekleyebilecekseniz eurobond avantajlı olabilir."
 shorts:
@@ -56,7 +57,7 @@ Büyük bankalar (İş Bankası, Garanti, Yapı Kredi) ve holdingler de eurobond
 
 ## Eurobond Nasıl Alınır? Adım Adım
 
-1. **Aracı kur seç:** Türk bankaları (İş Bankası, Garanti, Ziraat, Vakıfbank) ve büyük aracı kurumlar eurobond alım-satımına aracılık eder.
+1. **Aracı kurum seç:** Türk bankaları (İş Bankası, Garanti, Ziraat, Vakıfbank) ve büyük aracı kurumlar eurobond alım-satımına aracılık eder.
 2. **Döviz hesabı aç:** Eurobond işlemi için dolar veya euro hesabı gerekir. TL ile de alım yapabilirsin; banka o günkü kurdan çevirir.
 3. **İhraçta mı, ikincil piyasada mı?** Hazine yılda birkaç kez yeni eurobond ihraç eder. Bu dönemlerde doğrudan satın alabilirsin; diğer zamanlarda ikincil piyasada mevcut eurobondları alırsın.
 4. **Fiyat teklifi al:** Vade, kupon oranı ve güncel fiyatı öğren. Spread'i (alış-satış farkı) farklı kurumlar arasında karşılaştır.
@@ -71,7 +72,7 @@ Büyük bankalar (İş Bankası, Garanti, Yapı Kredi) ve holdingler de eurobond
 | **Likidite** | Orta | Yüksek | Yüksek |
 | **Minimum tutar** | ~1.000 USD | Çok düşük | Çok düşük |
 | **Piyasa fiyat riski** | Var (faize bağlı) | Yok | Yok (kur dalgalanması hariç) |
-| **Vergi (gelir)** | %10 stopaj (kupon) | %10-15 stopaj | — |
+| **Vergi (gelir)** | %0 stopaj (kupon); sınır aşılırsa beyan | Faizden stopaj (oran bankadan teyit) | — |
 | **Kâr garantisi** | Sadece vadeye tutunca | Vadeye tutunca | Hayır |
 
 ## Kimler İçin Uygun?
@@ -95,7 +96,7 @@ Bu iki araç sık karıştırılır. Özet tablo:
 | Kriter | Eurobond | Dolar Mevduat |
 |---|---|---|
 | Yasal dayanak | Tahvil sözleşmesi (borç senedi) | Mevduat sözleşmesi |
-| Güvence | İhraççının kredi notu | BDDK güvencesi (alt limite kadar) |
+| Güvence | İhraççının kredi notu | TMSF güvencesi (2026: her bankada kişi başı 1,2 milyon TL'ye kadar) |
 | Getiri | Yüksek, sabit kupon | Düşük-orta, vadeye göre değişken |
 | Likidite | İkincil piyasada kısıtlı | Vadeli hesapta düşük, vadesizde yüksek |
 | Fiyat riski | Var | Yok |
@@ -106,8 +107,8 @@ Kısa vadeli ihtiyaç için mevduat daha güvenli. 5 yıl veya üzeri için euro
 
 ## Vergi ve Maliyetler
 
-- **Kupon geliri:** Türkiye'de yerleşik bireyler için yüzde 10 stopaj vergisi aracı kurum tarafından otomatik kesilir.
-- **Sermaye kazancı:** İkincil piyasada gerçekleşen alım-satım kârı için ihraç tarihi ve elde tutma süresine bağlı farklı uygulamalar vardır; güncel mevzuatı takip et.
+- **Kupon geliri:** Hazine eurobondlarının kupon ödemelerinden stopaj kesilmez (oran %0). Türkiye'de yerleşik bireyler için yıllık kupon geliri beyan sınırını aşarsa gelirin tamamı yıllık beyannameyle beyan edilir; sınırın altındaysa beyan gerekmez. Diğer araçların oranlarını [2026 stopaj oranları rehberimizde](/blog/stopaj-nedir-2026-stopaj-oranlari/) bulabilirsin.
+- **Sermaye kazancı:** İkincil piyasada gerçekleşen alım-satım kârının vergilendirmesi eurobondun ihraç tarihine göre farklılaşır ve beyan gerektirebilir; güncel mevzuatı takip et.
 - **Komisyon ve spread:** Bankalar ve aracı kurumlar alış-satış fiyatları arasına kâr marjı ekler. İşlem öncesinde birden fazla kurumdan fiyat teklifi almak makul olur.
 
 ## Portföyde Eurobond'a Nasıl Yer Açarsın?
@@ -126,7 +127,7 @@ Eurobond tek başına bir portföy stratejisi değil, tamamlayıcı bir unsurdur
 - **Getiri:** Dolar mevduatından genellikle daha yüksek; kupon 6 ayda bir ödenir, anapara vade sonunda geri gelir.
 - **Kimler için:** Uzun vadeli birikimi olan, dövizde sabit getiri isteyen, kısa vadede paraya ihtiyaç duymayan yatırımcılar.
 - **Nasıl alınır:** Türk bankaları ve büyük aracı kurumlar üzerinden, minimum ~1.000 USD ile.
-- **Vergi:** Kupon üzerinden yüzde 10 stopaj; ikincil piyasa kazancı için mevzuatı takip et.
+- **Vergi:** Kupondan stopaj kesilmez (%0); beyan sınırı aşılırsa beyan gerekir. İkincil piyasa kazancı için mevzuatı takip et.
 
 ---
 

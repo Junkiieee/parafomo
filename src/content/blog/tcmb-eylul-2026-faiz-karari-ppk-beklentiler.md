@@ -2,7 +2,7 @@
 title: "TCMB Eylül 2026 Faiz Kararı Açıklandı: Politika Faizi %37'de Sabit"
 description: "TCMB 10 Eylül 2026'da politika faizini %37'de sabit tuttu (borç verme %40, borçlanma %35,5). Karar öncesi senaryolar, kredi-mevduat ve dolar/TL etkisi; sıradaki PPK 22 Ekim."
 pubDate: 2026-09-06
-updatedDate: 2026-10-13
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["tcmb faiz kararı", "ppk eylül 2026", "faiz indirimi", "tcmb faiz", "mevduat faizi", "dolar tl kuru"]
 readingTime: 7
@@ -11,7 +11,7 @@ faq:
   - q: "TCMB Eylül 2026 faiz kararı ne zaman açıklanıyor?"
     a: "PPK 10 Eylül 2026 Perşembe günü toplandı ve politika faizini %37'de sabit tuttu. Karar TSİ 14:00'te açıklandı. Sıradaki toplantı 22 Ekim 2026."
   - q: "TCMB faiz indirecek mi Eylül 2026'da?"
-    a: "Piyasa beklentisi, dezenflasyon sürecinin devam etmesi ve enflasyonun yıl başından bu yana belirgin biçimde gerilemesi nedeniyle PPK'nın faizi indireceği yönünde. Ancak Eylül başında TL'de görülen kur hareketleri küçük indirim (250-500 baz puan) veya sabit kararını da masaya koyuyor."
+    a: "Hayır. PPK 10 Eylül 2026'da politika faizini %37'de sabit tuttu. Karar beklentiyle uyumluydu: AA Finans anketinde 25 ekonomistin 24'ü sabit karar, biri 100 baz puan indirim bekliyordu. Faiz, Ocak 2026'daki 100 baz puanlık indirimden (%38→%37) bu yana %37'de."
   - q: "TCMB faiz kararı mevduat faizini ne zaman etkiler?"
     a: "TCMB kararının ardından bankalar genellikle 24-72 saat içinde mevduat faiz oranlarını günceller. Mevcut vadeli hesabınız karardan etkilenmez; etki vade yenilemesinde ya da yeni açılan hesapta görülür."
   - q: "Faiz indirimi dolar/TL kurunu nasıl etkiler?"
@@ -19,10 +19,10 @@ faq:
   - q: "TCMB faiz kararı borsayı etkiler mi?"
     a: "Faiz indirimi BIST'e olumlu etki yapar: risksiz mevduat getirisi düşer, para hisse senedine yönelir. Özellikle bankacılık ve inşaat hisseleri karar öncesi ve sonrasında hareketlenir. Beklenti içinde kalan bir indirim genellikle sınırlı tepkiyle geçiştirilir."
 shorts:
-  - "TCMB faizi yüzde elliden yirmi beşe indirdi!"
-  - "2024 sonunda yüzde elli olan politika faizi, iki yılda yaklaşık yüzde yirmi beşe geriledi."
+  - "TCMB faizi yine yüzde otuz yedide tuttu!"
+  - "Ocak ayındaki yüz baz puanlık indirimden beri politika faizi yüzde otuz yedide sabit."
   - "10 Eylül'de PPK toplanıyor; bu karar kredi faizlerini, mevduat getirilerini ve kuru doğrudan etkiliyor."
-  - "Büyük indirim gelirse konut faizleri düşer ama bankadaki yüksek getirili mevduatlar hızla erir."
+  - "Sabit karar, mevduat faizlerinin yüksek kalması, kredi faizlerinin de hızla düşmemesi demek."
   - "Peki PPK 10 Eylül'de ne yapacak? Tüm senaryolar parafomo.com'da — kanala abone ol, kararı kaçırma."
 shorts_broll:
   - "interest rate cut decision"
@@ -41,22 +41,23 @@ shorts_visuals:
 
 10 Eylül 2026 Perşembe, Türkiye piyasaları için kritik bir gün. TCMB Para Politikası Kurulu (PPK), enflasyonun yıl boyu nasıl seyrettiğini ve küresel merkez bankalarının ne yaptığını tartıyor. **TCMB Eylül 2026 faiz kararı** öncesinde piyasaların ne beklediğini, üç olası senaryonun kredi, mevduat, kur ve borsayı nasıl etkileyeceğini bu yazıda bulacaksın.
 
-## 2026'da TCMB Faiz Yolculuğu: Neredeyiz?
+## 2026'da TCMB Faiz Kararları: Neredeyiz?
 
-TCMB, 2024 yılı sonunda %50 ile zirveye çıktıktan sonra 2025'te enflasyonun belirgin şekilde gerilemesiyle birlikte faiz indirim döngüsüne başladı. 2026 boyunca PPK her toplantıda kademeli adımlarla politika faizini düşürdü; böylece piyasalar hem TL varlıklarına güveni korudu hem de kredi faizleri kademeli olarak normalleşmeye başladı.
+TCMB 2025'i %38 politika faiziyle kapattı. 2026'nın ilk toplantısında (22 Ocak) faizi 100 baz puan indirerek %37'ye çekti; sonraki tüm toplantılarda faizi **%37'de sabit** tuttu. Gecelik borç verme faizi %40, borçlanma faizi %35,5 olarak korunuyor.
 
-Eylül 2026 PPK toplantısında politika faizinin hangi seviyeden başladığı ve hedeflenen güzergah şu şekilde özetlenebilir:
+| PPK toplantısı | Karar | Politika faizi |
+|----------------|-------|----------------|
+| 2025 sonu | — | %38 |
+| 22 Ocak 2026 | 100 baz puan indirim | %37 |
+| 12 Mart 2026 | Sabit | %37 |
+| 22 Nisan 2026 | Sabit | %37 |
+| 11 Haziran 2026 | Sabit | %37 |
+| 23 Temmuz 2026 | Sabit | %37 |
+| **10 Eylül 2026** | **Sabit** | **%37** |
 
-| Dönem | Politika Faizi (yaklaşık) | Ana Etken |
-|-------|--------------------------|-----------|
-| Aralık 2024 | %50 | Enflasyon zirve sonrası ilk fren |
-| Mart 2025 | %45 | Dezenflasyon başladı |
-| Haziran 2025 | ~%40 | Mütevazı indirim dönemi |
-| Ocak 2026 | ~%32 | Güven pekişti, hız arttı |
-| Temmuz 2026 | ~%27,5 | PPK: enflasyon izliyor |
-| **Eylül 2026 öncesi** | **~%25–27** | Piyasa beklentisi |
+> **Kaynak:** TCMB basın duyuruları ([Ocak](https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2026/DUY2026-01), [Temmuz](https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2026/DUY2026-28), [Eylül](https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2026/DUY2026-38)). Tüm kararlar: [TCMB faiz kararı takvimi](/tcmb-faiz-takvimi/).
 
-> **Not:** Tablodaki rakamlar yazı tarihi itibarıyla piyasa beklentileri ve TCMB iletişimine dayanmaktadır; kesin faiz seviyesi için TCMB.gov.tr'yi takip edin.
+Karar öncesi beklenti de sabit kalma yönündeydi: AA Finans'ın 25 ekonomistle yaptığı ankette 24 ekonomist faizin %37'de sabit kalacağını, biri 100 baz puan indirimle %36'yı öngördü; yıl sonu politika faizi beklentisinin medyanı %35'ti ([Forbes Türkiye / AA Finans, 4 Eylül 2026](https://www.forbes.com.tr/haberler/aa-finans-in-ppk-beklenti-anketi-sonuclandi)). Yıllık TÜFE Ağustos 2026'da %31,51 olarak açıklanmıştı (TÜİK).
 
 ---
 
@@ -75,9 +76,11 @@ Toplantı öncesinde masaya yatırılan dört temel veri kümesi şunlar:
 
 ## 3 Senaryo ve Piyasalara Etkisi
 
-### Senaryo A — Büyük İndirim (500 baz puan +)
+> **Not:** Aşağıdaki üç senaryo karar öncesinde yazıldı. **Gerçekleşen: Senaryo C (sabit, %37).** İndirim senaryoları (A ve B) gerçekleşmedi.
 
-**Olasılık:** Düşük–Orta
+### Senaryo A — Büyük İndirim (500 baz puan +) — *gerçekleşmedi*
+
+**Olasılık (karar öncesi):** Düşük
 
 PPK'nın sürpriz büyük bir indirim yapması beklenti dışı olur. Enflasyonun hedef patikada seyretmesi ve kur baskısının hafiflemesi durumunda gündeme gelebilir.
 
@@ -89,11 +92,11 @@ PPK'nın sürpriz büyük bir indirim yapması beklenti dışı olur. Enflasyonu
 
 ---
 
-### Senaryo B — Beklenti Dahilinde Küçük İndirim (250–500 baz puan)
+### Senaryo B — Küçük İndirim (100–250 baz puan) — *gerçekleşmedi*
 
-**Olasılık:** Yüksek (konsensüs)
+**Olasılık (karar öncesi):** Düşük (ankette yalnızca 1 ekonomist 100 baz puan indirim bekliyordu)
 
-PPK'nın dezenflasyon trendini takip ettiğini sinyallediği, ancak temkinli adım attığı senaryodur. Piyasaların "zaten bekliyordu" tepkisi verdiği, volatilitenin sınırlı kaldığı konsensüs sahneye bu senaryo karşılık gelir.
+PPK'nın dezenflasyon trendini takip ettiğini sinyallediği, ancak temkinli adım attığı senaryodur.
 
 **Etkisi:**
 - **Kredi:** Kademeli normalleşme devam eder; ani düşüş bekleme.
@@ -103,9 +106,9 @@ PPK'nın dezenflasyon trendini takip ettiğini sinyallediği, ancak temkinli ad�
 
 ---
 
-### Senaryo C — Sabit / Sürpriz Poz
+### Senaryo C — Sabit — ✅ *gerçekleşti (10 Eylül: %37)*
 
-**Olasılık:** Düşük–Orta
+**Olasılık (karar öncesi):** Yüksek (konsensüs: 25 ekonomistin 24'ü)
 
 Kur baskısının belirgin olması, enflasyonun beklentinin üzerinde gelmesi ya da küresel riskler PPK'yı frene bastırabilir.
 
@@ -118,8 +121,8 @@ Kur baskısının belirgin olması, enflasyonun beklentinin üzerinde gelmesi ya
 | Senaryo | Kredi | Mevduat | Dolar/TL | BIST |
 |---------|-------|---------|----------|------|
 | A — Büyük İndirim | ↓ Hızla düşer | ↓ Hızla düşer | ↑ Yükselme riski | ↑ Kısa coşku |
-| B — Küçük İndirim | ↓ Kademeli | ↓ Kademeli | → Sınırlı | → Nötr/hafif + |
-| C — Sabit | → Değişmez | → Korunur | ↓ Kısa destek | ↓ Temkinli satış |
+| B — Küçük İndirim (100–250 bp) | ↓ Kademeli | ↓ Kademeli | → Sınırlı | → Nötr/hafif + |
+| **C — Sabit (gerçekleşti)** | → Değişmez | → Korunur | ↓ Kısa destek | ↓ Temkinli satış |
 
 ---
 
@@ -150,10 +153,10 @@ Vadeli mevduat hesabı sahipleri için kritik bilgi:
 Kur hareketini belirleyen üç katman var:
 
 1. **Faiz farkı (carry):** TCMB faizi ne kadar yüksekse, TL mevduat o kadar cazip. İndirim bu cazibeyi azaltır.
-2. **Beklenti fiyatlaması:** Piyasa zaten "konsensüs indirimi" fiyatlamışsa, karar günü kur tepkisi sınırlı kalır.
+2. **Beklenti fiyatlaması:** Piyasa kararı zaten fiyatlamışsa (Eylül'de konsensüs sabit karardı), karar günü kur tepkisi sınırlı kalır.
 3. **Küresel faktörler:** Fed'in tutumu, DXY (dolar endeksi) ve risk iştahı TCMB'den bağımsız biçimde TL'yi etkiler.
 
-Sonuç: Konsensüs dahilinde gelen bir indirim kurda büyük oynaklık yaratmaz. Sürpriz büyük indirim veya beklenmedik sabit karar, 24 saatlik kur oynaklığını artırabilir.
+Sonuç: Konsensüs dahilinde gelen bir karar kurda büyük oynaklık yaratmaz; sürpriz bir indirim ise 24 saatlik kur oynaklığını artırabilir.
 
 ---
 
@@ -187,9 +190,9 @@ Faiz kararı öncesi ve sonrası borsada tipik davranış kalıpları:
 
 ## Özet
 
-- TCMB Para Politikası Kurulu **10 Eylül 2026 Perşembe** günü toplanıyor; karar TSİ 14:00'da açıklanacak.
-- Konsensüs görüşü **250–500 baz puanlık küçük indirim** yönünde; ancak Ağustos enflasyonu ve kur hareketi tabloyu değiştirebilir.
-- Beklenti dahilindeki indirim **kredi ve mevduat faizlerini kademeli** değiştirir; kur ve borsada sınırlı volatilite yaratır.
+- TCMB Para Politikası Kurulu **10 Eylül 2026 Perşembe** günü toplandı ve politika faizini **%37'de sabit** tuttu (borç verme %40, borçlanma %35,5).
+- Karar konsensüsle uyumluydu: AA Finans anketinde 25 ekonomistin 24'ü sabit karar bekliyordu. Faiz, Ocak 2026'daki 100 baz puanlık indirimden bu yana %37'de.
+- Sabit karar **mevduat faizlerinin yüksek kalmasını**, kredi faizlerinde ise hızlı bir düşüş olmamasını destekler; sıradaki PPK 22 Ekim 2026.
 - Vadeli mevduat vade yenileyecekler için **kararı izlemek**, konut kredisi planlayanlar için ise **kararın ardından 1-2 hafta gözlemlemek** mantıklı.
 - PPK kararı kadar metnin tonu önemli: gelecek toplantılara ne sinyali veriyor?
 

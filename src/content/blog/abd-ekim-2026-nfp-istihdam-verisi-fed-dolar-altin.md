@@ -1,15 +1,15 @@
 ---
-title: "ABD Ekim 2026 İstihdam Verisi Açıklandı: NFP +29 Bin, İşsizlik %4,2 — Fed 28 Ekim'de Ne Yapar?"
-description: "2 Ekim 2026 ABD NFP verisi açıklandı: +29 bin istihdam (beklenti ~85-90 bin), işsizlik %4,2, saatlik kazanç yıllık %3,0. Fed 28 Ekim kararı, dolar ve altın için ne anlama geliyor?"
+title: "ABD Eylül İstihdam Verisi (2 Ekim 2026): NFP +29 Bin, İşsizlik %4,2 — Fed 28 Ekim'de Ne Yapar?"
+description: "ABD Eylül NFP verisi 2 Ekim 2026'da açıklandı: +29 bin istihdam (beklenti ~85-90 bin), işsizlik %4,2, saatlik kazanç yıllık %3,0. Fed 28 Ekim kararı, dolar ve altın için ne anlama geliyor?"
 pubDate: 2026-09-29
-updatedDate: 2026-10-14
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["ABD istihdam verisi", "NFP", "Fed faiz kararı", "dolar altın etkisi", "non-farm payroll", "Fed Ekim 2026"]
 readingTime: 7
 featured: false
 faq:
-  - q: "2 Ekim 2026 NFP verisi kaç geldi?"
-    a: "BLS 2 Ekim 2026'da (TSİ 15:30) açıkladı: tarım dışı istihdam Eylül'de +29 bin arttı (beklenti ~85-90 bin), işsizlik oranı %4,1'den %4,2'ye çıktı, ortalama saatlik kazanç aylık %0,1, yıllık %3,0. Temmuz ve Ağustos toplam 60 bin aşağı revize edildi."
+  - q: "2 Ekim 2026'da açıklanan Eylül NFP verisi kaç geldi?"
+    a: "BLS 2 Ekim 2026'da (TSİ 15:30) açıkladı: tarım dışı istihdam Eylül'de +29 bin arttı (beklenti ~85-90 bin), işsizlik oranı %4,1'den %4,2'ye çıktı, ortalama saatlik kazanç aylık %0,1, yıllık %3,0. Temmuz ve Ağustos toplam 60 bin aşağı revize edildi. Ekim başında açıklanan rapor Eylül ayını kapsar."
   - q: "Güçlü NFP verisi altını nasıl etkiler?"
     a: "Beklentinin üzerinde bir NFP verisi Fed'in faizi daha uzun süre yüksek tutacağı sinyali verir. Bu durumda dolar güçlenir, reel faiz yükselir ve altın genellikle kısa vadede baskı altına girer."
   - q: "Zayıf NFP verisi çıkarsa dolar ne olur?"
@@ -39,9 +39,9 @@ shorts_visuals:
 
 > **Veri açıklandı (2 Ekim 2026):** ABD Çalışma Bakanlığı (BLS) verisine göre tarım dışı istihdam Eylül'de **+29 bin** arttı (beklenti ~85-90 bin), işsizlik oranı **%4,2**'ye yükseldi (Ağustos %4,1), ortalama saatlik kazanç aylık %0,1 / yıllık %3,0. Temmuz ve Ağustos toplam 60 bin aşağı revize edildi. Sonuç aşağıdaki "zayıf istihdam" senaryosuna yakın: tahvil faizleri düştü, Fed'in yeni faiz artırımı ihtimali zayıfladı. ([BLS Employment Situation](https://www.bls.gov/news.release/empsit.nr0.htm))
 >
-> **Düzeltme:** Bu yazının ilk sürümünde Fed toplantısı 4–5 Kasım yazıyordu; doğru tarih **27–28 Ekim 2026** ([Fed takvimi](https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm)). Fed Eylül'de faizi %3,75–4,00'e **artırmıştı**. **Sıradaki:** [Fed faiz takvimi ve son karar](/fed-faiz-takvimi/) · [ABD Ekim CPI verisi](/blog/abd-ekim-2026-cpi-verisi-fed-dolar-altin/). Aşağıdaki metin veri öncesi yazılan önizlemedir.
+> **Düzeltme:** Bu yazının ilk sürümünde Fed toplantısı 4–5 Kasım yazıyordu; doğru tarih **27–28 Ekim 2026** ([Fed takvimi](https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm)). Fed Eylül'de faizi %3,75–4,00'e **artırmıştı**. **Sıradaki:** [Fed faiz takvimi ve son karar](/fed-faiz-takvimi/) · [ABD Eylül CPI verisi (14 Ekim)](/blog/abd-ekim-2026-cpi-verisi-fed-dolar-altin/). Aşağıdaki metin veri öncesi yazılan önizlemedir.
 
-2 Ekim 2026 Cuma günü üç kritik ABD verisi aynı anda piyasalara düştü: **tarım dışı istihdam (NFP)**, **işsizlik oranı** ve **ortalama saatlik kazançlar**. Üçü birden Fed'in 27–28 Ekim 2026 toplantısında faiz kararını şekillendirecek son büyük veri bloğu sayılıyor. Dolar, altın ve dolaylı olarak TL için yön kısa sürede netleşecek.
+2 Ekim 2026 Cuma günü üç kritik ABD verisi aynı anda piyasalara düştü: **tarım dışı istihdam (NFP)**, **işsizlik oranı** ve **ortalama saatlik kazançlar**. Üçü birden Fed'in 27–28 Ekim 2026 toplantısında faiz kararını şekillendirecek en büyük veri bloklarından biri sayılıyor. Dolar, altın ve dolaylı olarak TL için yön kısa sürede netleşecek.
 
 Bu yazıda verilerin ne anlama geldiğini, piyasanın ne beklediğini ve her senaryo için ne yapabileceğinizi açıklıyoruz.
 
@@ -63,11 +63,11 @@ Ayrıntılı evergreen bilgi için şu yazılara bakabilirsiniz: [NFP nedir ve n
 
 | Gösterge | Önceki Değer | Piyasa Beklentisi | Kritik Eşik |
 |----------|-------------|-------------------|-------------|
-| NFP (bin kişi) | ~150K | ~155–170K | <100K zayıf / >220K güçlü |
-| İşsizlik Oranı | ~4,1% | ~4,1% | >4,3% zayıf / <3,9% güçlü |
+| NFP (bin kişi) | 162K (Ağustos, ilk açıklama; sonra 133K'ye revize) | ~85–90K | <100K zayıf / >220K güçlü |
+| İşsizlik Oranı | %4,1 | %4,1 | >4,3% zayıf / <3,9% güçlü |
 | Saatlik Kazançlar m/m | 0,3% | 0,3% | >0,4% enflasyonist uyarı |
 
-*Not: Beklentiler piyasa konsensüsüne dayanır; açıklama öncesi güncellenebilir. Gerçek değer için Bloomberg veya Reuters'ı takip edin.*
+*Not: Beklentiler piyasa konsensüsüne dayanır (FactSet medyanı 90 bin, Dow Jones anketi ~84 bin). Gerçekleşen: NFP +29 bin, işsizlik %4,2 ([BLS](https://www.bls.gov/news.release/empsit.nr0.htm), [FactSet](https://insight.factset.com/total-nonfarm-payrolls-for-september-2026-are-projected-to-rise-by-90000)).*
 
 ## Üç Senaryo: Piyasa Nasıl Tepki Verebilir?
 
@@ -79,7 +79,7 @@ Ayrıntılı evergreen bilgi için şu yazılara bakabilirsiniz: [NFP nedir ve n
 **Altın:** Baskı altında → reel faiz yükseliş senaryosu  
 **TL:** Dolar güçlenirse kur baskısı artar
 
-### Senaryo 2 — Beklenti Karşılayan Veri (NFP ~150–175K, İşsizlik sabit)
+### Senaryo 2 — Beklenti Karşılayan Veri (NFP beklenti civarında, İşsizlik sabit)
 
 En az oynaklık yaratacak senaryo. Piyasalar mevcut faiz beklentisini korur; dolar ve altın mevcut seviyelerini büyük ölçüde sürdürür. Sonraki hareket için CPI ve PPI gibi enflasyon verilerine odaklanılır.
 
@@ -105,7 +105,7 @@ En az oynaklık yaratacak senaryo. Piyasalar mevcut faiz beklentisini korur; dol
 
 ## Fed 28 Ekim 2026 Kararına Giden Yol
 
-Fed'in 27–28 Ekim 2026 FOMC toplantısı için elimizdeki veriler artık neredeyse tamamlanmış durumda. Eylül CPI, PCE ve son olarak 2 Ekim istihdam raporu Fed'in elindeki tablonun son parçalarını tamamlayacak.
+Fed'in 27–28 Ekim 2026 FOMC toplantısı için elimizdeki veriler artık neredeyse tamamlanmış durumda. Ağustos PCE, 2 Ekim istihdam raporu ve 14 Ekim'de açıklanacak Eylül CPI, Fed'in elindeki tablonun son parçalarını tamamlayacak.
 
 **CME FedWatch aracı** yatırımcılara Fed'in indirim veya tutma ihtimalini piyasa fiyatlamasına göre gösterir. 2 Ekim verisi açıklandıktan sonra bu oran hızla güncellenecek — altın ve dolar için anlık yön buradan okunabilir.
 
@@ -134,7 +134,7 @@ Bu ilişkiyi gösteren geçmiş veri analizi için [ABD işsizlik verisi altın�
 - **2 Ekim 2026** ABD NFP, işsizlik ve saatlik kazançlar aynı anda açıklanıyor — her üçü de 🔴 Yüksek etkili.
 - Güçlü veri Fed indirimini öteler, dolar güçlenir, altın baskı altına girer. Zayıf veri tersi dinamiği tetikler.
 - Beklentilerin karşılandığı senaryoda büyük hareket beklenmez; odak CPI/PPI'a kayar.
-- Fed'in 28 Ekim kararı için son kritik makro veri bloğu bu; CME FedWatch'ı açıklama sonrasında takip edin.
+- Fed'in 28 Ekim kararı öncesi en kritik makro veri bloklarından biri bu (ardından 14 Ekim'de Eylül CPI geliyor); CME FedWatch'ı açıklama sonrasında takip edin.
 - TL yatırımcıları için TCMB 22 Ekim PPK ve TÜİK 5 Ekim TÜFE verileri de göz önünde bulundurulmalı.
 
 ---

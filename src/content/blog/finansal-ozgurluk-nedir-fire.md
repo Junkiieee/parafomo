@@ -2,6 +2,7 @@
 title: "Finansal Özgürlük Nedir? FIRE Hareketi ile Erken Emekliliğe Ulaşma Rehberi"
 description: "Finansal özgürlük nasıl elde edilir? FIRE hareketinin matematiğini, tasarruf oranı tablolarını ve Türkiye bağlamında adım adım uygulamasını açıklıyoruz."
 pubDate: 2026-07-13
+updatedDate: 2026-10-22
 category: "Yatırım"
 tags: ["finansal özgürlük", "FIRE hareketi", "erken emeklilik", "tasarruf oranı", "yatırım", "pasif gelir", "bağımsızlık"]
 readingTime: 8
@@ -102,7 +103,7 @@ Finansal özgürlük hesabının temeli gerçek giderlerinizi bilmektir. 3 aylı
 TL mevduatı tek başına FIRE için yeterli değildir; enflasyon reel getiriyi siler. Türkiye'de FIRE yatırımcılarının genellikle tercih ettiği araçlar:
 
 - **Global hisse endeks fonları / ETF'leri:** Düşük maliyet, geniş çeşitlendirme, uzun vadeli bileşik büyüme
-- **BES (Bireysel Emeklilik Sistemi):** Devlet katkısı (%30) vergi avantajı yaratır; uzun vadeli portföy için değerlendirilmeli
+- **BES (Bireysel Emeklilik Sistemi):** Devlet katkısı (2026'dan itibaren %20) ek getiri sağlar; uzun vadeli portföy için değerlendirilmeli
 - **Temettü hisseleri:** Portföy büyüdükçe düzenli nakit akışı sağlar
 - **Döviz bazlı varlıklar (Eurobond, döviz endeksli fon):** TL enflasyonuna karşı koruma
 
@@ -126,7 +127,7 @@ Hedef varlık dağılımınızdan sapıldığında dengeye getirin (rebalancing)
 
 ### Fırsatlar
 
-**BES devlet katkısı:** %30 devlet katkısı, yatırılan her 1.000 TL'ye karşılık 300 TL bedava para demektir. Bu avantajı görmezden gelmek maliyetlidir.
+**BES devlet katkısı:** 1 Ocak 2026'dan itibaren %20 olan devlet katkısı, yatırılan her 1.000 TL'ye karşılık 200 TL ek katkı demektir (yıllık limitler dahilinde). Bu avantajı görmezden gelmek maliyetlidir.
 
 **Pasif gelir çeşitliliği:** Türkiye'de kira getirisi, tarihsel olarak enflasyonla paralel gitmektedir. Gayrimenkul pasif gelir portföyünde güçlü bir yer tutabilir. Daha geniş pasif gelir seçenekleri için [Pasif Gelir Fikirleri: Gerçekçi 10 Yol](/blog/pasif-gelir-fikirleri/) yazımıza bakabilirsiniz.
 

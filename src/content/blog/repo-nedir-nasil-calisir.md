@@ -2,6 +2,7 @@
 title: "Repo Nedir? Nasıl Çalışır ve Yatırım Aracı Olarak Değer Var mı?"
 description: "Repo nedir, nasıl çalışır? Türkiye'de repo yatırımı, faiz oranları, mevduatla karşılaştırma ve vergi avantajları bu rehberde."
 pubDate: 2026-07-31
+updatedDate: 2026-10-22
 category: "Yatırım"
 tags: ["repo nedir", "repo yatırımı", "kısa vadeli yatırım", "para piyasası", "ters repo", "repo faizi"]
 readingTime: 7
@@ -12,7 +13,7 @@ faq:
   - q: "Repo ile mevduat arasındaki temel fark nedir?"
     a: "Mevduat TMSF güvencesiyle daha uzun vadeli; repo ise genellikle 1-7 gün vadeli ve gecelik piyasa faizine bağlı. Likidite açısından repo daha esnektir."
   - q: "Repo gelirlerinde vergi ne kadar?"
-    a: "Türkiye'de repo gelirleri %15 stopaj vergisine tabidir. Bu oran mevduatla aynıdır; vergi otomatik olarak kesilir, ayrıca beyan gerekmez."
+    a: "Türkiye'de repo gelirleri %15 stopaj vergisine tabidir. TL mevduatta ise oran vadeye göre %17,5, %15 veya %10'dur. Vergi otomatik olarak kesilir, ayrıca beyan gerekmez."
   - q: "Ters repo nedir?"
     a: "Ters repo, repo işleminin karşı tarafıdır. Yatırımcı açısından bakıldığında yaptığın işlem aslında ters repodur: sen bankaya nakit verirsin, banka sana teminat olarak menkul kıymet bırakır."
   - q: "Repo'ya minimum ne kadar parayla başlanabilir?"
@@ -87,10 +88,10 @@ Repo işlemi için ayrı bir hesap açmanıza gerek yok; mevcut banka hesabını
 |---|---|---|---|
 | Vade | 1–7 gün (çoğunlukla) | 1 ay – 2 yıl | 3 ay – 30 yıl |
 | Faiz türü | Değişken (piyasa faizine bağlı) | Sabit (vade boyunca) | Kupon (sabit veya değişken) |
-| TMSF güvencesi | Yok | Var (200.000 TL'ye kadar) | Yok (devlet garantili) |
+| TMSF güvencesi | Yok | Var (2026: 1.200.000 TL'ye kadar) | Yok (devlet garantili) |
 | Likidite | Çok yüksek | Orta (erken çıkışta ceza) | Yüksek (ikincil piyasada) |
 | Risk düzeyi | Çok düşük | Çok düşük | Düşük–Orta |
-| Vergi | %15 stopaj | %15 stopaj | %0 (2 yıl sonrası) veya %10/15 |
+| Vergi | %15 stopaj | %17,5 / %15 / %10 stopaj (vadeye göre) | %0 stopaj (gerçek kişiler, 31.12.2026'ya kadar) |
 | Minimum tutar | 100–1.000 TL | 500–1.000 TL | 1.000 TL |
 
 [Vadeli mevduatı](/blog/mevduat-faizi-nedir-vadeli-mevduat) daha uzun süre bağlayabiliyorsanız ve sabit faiz istiyorsanız tercih edin. [Devlet tahvilini](/blog/tahvil-nedir-devlet-tahvili-hazine-bonosu) ise 6+ ay ufuklu bir yatırım için değerlendirin. Repo ise kısa vadeli park etme ve esneklik gerektiren durumlar için idealdir.
@@ -119,7 +120,7 @@ Repo işlemi için ayrı bir hesap açmanıza gerek yok; mevcut banka hesabını
 
 ## Vergi Durumu
 
-Repo gelirlerinden **%15 stopaj vergisi** kesilir. Bu işlem banka tarafından otomatik yapılır; ayrıca beyan etmeniz gerekmez. Net getiriyi hesaplarken brüt faizi 0,85 ile çarpın.
+Repo gelirlerinden **%15 stopaj vergisi** kesilir. Bu işlem banka tarafından otomatik yapılır; ayrıca beyan etmeniz gerekmez. Net getiriyi hesaplarken brüt faizi 0,85 ile çarpın. Mevduat, fon ve devlet tahvilindeki güncel oranlarla karşılaştırmak için [2026 stopaj oranları rehberimize](/blog/stopaj-nedir-2026-stopaj-oranlari/) bakabilirsiniz.
 
 Örnek: %45 brüt yıllık → %38,25 net yıllık (enflasyon ve kur etkisi ayrı hesaplanmalı).
 

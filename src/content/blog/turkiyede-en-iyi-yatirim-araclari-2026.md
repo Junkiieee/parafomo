@@ -2,6 +2,7 @@
 title: "Türkiye'de En İyi Yatırım Araçları 2026: Hangisi Sana Uygun?"
 description: "Türkiye'de en iyi yatırım araçları hangileri? 2026'da mevduat, altın, hisse, ETF, kripto ve BES'i karşılaştır; risk profiline göre doğru seçimi yap."
 pubDate: 2026-08-01
+updatedDate: 2026-10-22
 category: "Yatırım"
 tags: ["en iyi yatırım araçları", "yatırım 2026", "Türkiye yatırım", "yatırım rehberi", "hangi yatırım aracı"]
 readingTime: 9
@@ -54,14 +55,14 @@ Yüksek enflasyon, güçlü döviz baskısı ve BIST'in yüksek oynaklığı 202
 | Gram Altın | Düşük–Orta | Dolar+enflasyon etkisi | Yüksek | ~₺200 |
 | Döviz (USD/EUR) | Orta | TL değer kaybıyla bağlantılı | Yüksek | ~₺50 |
 | Devlet Tahvili | Düşük | Faiz + enflasyon primi | Orta | ~₺100 |
-| BES | Düşük–Orta | Piyasa + %30 devlet katkısı | Düşük (uzun vade) | ~₺50/ay |
+| BES | Düşük–Orta | Piyasa + %20 devlet katkısı | Düşük (uzun vade) | ~₺50/ay |
 | BIST Hisse Senedi | Yüksek | Piyasaya göre değişken | Yüksek | ~₺10 |
 | Endeks Fonu / ETF | Orta–Yüksek | Endeks getirisine bağlı | Yüksek | ~₺10 |
 | Kripto Para | Çok Yüksek | Belirsiz / çok değişken | Yüksek | ~₺50 |
 
 ## Vadeli Mevduat — Güvenli Başlangıç Noktası
 
-Vadeli mevduat, paranı belirli bir süre (1–3–6–12 ay) bankada tutman karşılığında sabit faiz almanı sağlar. TMSF güvencesi (500.000 TL'ye kadar) sayesinde ana para riski yok denecek kadar düşüktür.
+Vadeli mevduat, paranı belirli bir süre (1–3–6–12 ay) bankada tutman karşılığında sabit faiz almanı sağlar. TMSF güvencesi (2026'da her bankada kişi başı 1.200.000 TL'ye kadar) sayesinde ana para riski yok denecek kadar düşüktür.
 
 **Ne zaman tercih edilir?**
 - Kısa vadede (1–6 ay) ihtiyaç duyabileceğin bir para varsa.
@@ -130,15 +131,15 @@ Devlet tahvili, Hazine'ye borç verip belli bir faiz kazanmaktır. Devlet güven
 
 ## BES — Vergi Avantajlı Emeklilik Yatırımı
 
-Bireysel Emeklilik Sistemi (BES), devletin %30 katkı (katılımcının yaptığı katkı payının %30'u devletten) sunduğu, uzun vadeli birikim için tasarlanmış bir araçtır. Bu katkı, başka hiçbir yatırım aracında bulunmaz.
+Bireysel Emeklilik Sistemi (BES), devletin %20 katkı (katılımcının yaptığı katkı payının %20'si devletten; oran 1 Ocak 2026'da %30'dan %20'ye indirildi) sunduğu, uzun vadeli birikim için tasarlanmış bir araçtır. Bu katkı, başka hiçbir yatırım aracında bulunmaz.
 
 **BES'in güçlü yanları:**
-- Her 100 TL'ye 30 TL devlet katkısı (yıllık limitler dahilinde).
+- Her 100 TL'ye 20 TL devlet katkısı (yıllık limitler dahilinde).
 - Fonlar portföye göre değişebilir: tahvil, hisse, altın karışımı seçilebilir.
 - Uzun vadeli vergi ertelemesi avantajı.
 
 **Dikkat edilecek noktalar:**
-- 10 yıl ve 56 yaş dolmadan çıkarsan devlet katkısını kaybedersin.
+- 10 yıl ve 56 yaş dolmadan çıkarsan devlet katkısının tamamına hak kazanamazsın; hak ediş süreye göre kademelidir.
 - Yönetim ücretleri fona göre değişir; düşük maliyetli fonları tercih et.
 
 [BES mantıklı mı? Vergi katkısı ve uzun vadeli getiri hesabı →](/blog/bes-bireysel-emeklilik-mantikli-mi)
@@ -177,7 +178,7 @@ Tek bir "en iyi" yatırım aracı yoktur. Doğru seçim risk toleransına ve zam
 ## Özet
 
 - **Güvenlik öncelikliyse:** Vadeli mevduat ve devlet tahvili; enflasyona karşı altın ekle.
-- **Uzun vade söz konusuysa:** BES'in %30 devlet katkısını mutlaka değerlendir.
+- **Uzun vade söz konusuysa:** BES'in %20 devlet katkısını mutlaka değerlendir.
 - **Piyasa getirisi istiyorsan ama aktif takipten kaçınıyorsan:** Endeks fonu ve ETF en pratik seçenek.
 - **Tek araçta değil, birkaç araçta birden tut:** Çeşitlendirme, en büyük risk azaltıcıdır.
 - **Her yatırım kararından önce:** Reel getiriyi hesapla; enflasyonun altında kalan her getiri, satın alma gücü kaybı demektir.

@@ -54,6 +54,8 @@ const days = Array.from({ length: daysInMonth }, (_, idx) => {
   }));
   return { d, dow: DOW[dow], isWeekend: dow >= 5, key: dk, isToday: dk === todayKey, isPast: dk < todayKey, events: evs };
 });
+// Boş ayda 31 satırlık '—' listesi mobilde ~1.300 px kaydırma yiyordu (denetim 2026-10-22).
+const monthEmpty = days.every((d) => d.events.length === 0);
 const datasetLd = {
   '@context': 'https://schema.org',
   '@type': 'Dataset',
@@ -91,6 +93,9 @@ const datasetLd = {
 
     <div class="cal-month">
       <h2 class="cal-month-title">{monthLabel} Halka Arz Takvimi</h2>
+      {monthEmpty ? (
+        <p class="cal-empty soft">{MONTHS[m0]} ayında takvimde talep toplama yok. Tarih bekleyen ve tamamlanan arzlar aşağıda.</p>
+      ) : (
       <ul class="cal-list">
         {days.map((day) => (
           <li class:list={['cal-row', { today: day.isToday, past: day.isPast, weekend: day.isWeekend, empty: day.events.length === 0 }]}>
@@ -112,6 +117,7 @@ const datasetLd = {
           </li>
         ))}
       </ul>
+      )}
     </div>
   </section>
 
@@ -160,7 +166,7 @@ const datasetLd = {
 
 <style>
   /* ---------- Hero ---------- */
-  .ha-hero { padding: clamp(1.6rem, 4vw, 2.6rem) 0 0; max-width: 720px; }
+  .ha-hero { padding-top: clamp(1.6rem, 4vw, 2.6rem); max-width: 720px; }
   .eyebrow { display: inline-flex; align-items: center; gap: 0.45rem; font-size: var(--step--2); font-weight: 600; color: var(--brand); }
   .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 0 rgba(22,160,133,0.5); animation: pulse 2s infinite; }
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(22,160,133,0.5); } 70% { box-shadow: 0 0 0 6px rgba(22,160,133,0); } 100% { box-shadow: 0 0 0 0 rgba(22,160,133,0); } }

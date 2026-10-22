@@ -2,6 +2,7 @@
 title: "Konut Yatırımı mı Hisse Senedi mi? Hangisi Daha Mantıklı?"
 description: "Konut yatırımı mı hisse senedi mi? Getiri, risk, likidite ve vergi karşılaştırmasıyla Türkiye'ye özel rehber; doğru kararı vermek için bilmen gereken her şey."
 pubDate: 2026-07-29
+updatedDate: 2026-10-22
 category: "Yatırım"
 tags: ["konut yatırımı", "hisse senedi", "gayrimenkul yatırımı", "yatırım karşılaştırması", "emlak yatırımı"]
 readingTime: 8
@@ -94,7 +95,7 @@ Türkiye, gayrimenkule olan kültürel bağlılığıyla öne çıkan bir piyasa
 | Yönetim yükü | Yüksek (kiracı, bakım) | Düşük (endeks seçilirse) |
 | Çeşitlendirme | Düşük (tek mülk) | Yüksek (endeksle binlerce şirket) |
 | Kaldıraç imkânı | Var (konut kredisi) | Sınırlı (kredili işlem riskli) |
-| Vergi avantajı (Türkiye) | 5 yıl sonra satışta stopaj yok | 1 yıl üzeri kazançta %0 stopaj |
+| Vergi avantajı (Türkiye) | 5 yıldan uzun elde tutulursa satış kazancı vergiden muaf | BIST alım-satım kazancında %0 stopaj (süre şartı yok); temettüde %15 ([stopaj oranları](/blog/stopaj-nedir-2026-stopaj-oranlari/)) |
 | Enflasyon koruması | Orta-iyi (bölgeye göre) | Uzun vadede iyi |
 | Uzun vadeli getiri potansiyeli | Orta (net kira + değer artışı) | Yüksek (uzun vadede piyasa büyümesi) |
 | Somutluk | Fiziksel, görünür | Dijital kayıt |

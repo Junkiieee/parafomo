@@ -72,8 +72,9 @@ const catTools = (CAT_TOOLS[cat.slug] ?? [])
 
   <div class="container">
     {catPosts.length > 0 ? (
+      <h2 class="sr-only">Yazılar</h2>
       <div class="post-grid">
-        {catPosts.map((p) => <PostCard post={p} />)}
+        {catPosts.map((p, i) => <PostCard post={p} eager={i === 0} />)}
       </div>
     ) : (
       <p class="empty soft">Bu kategoride henüz yazı yok. Çok yakında!</p>

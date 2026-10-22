@@ -2,6 +2,7 @@
 title: "Altın Fonu Nedir? Gram Altından Farkı ve Yatırım Rehberi 2026"
 description: "Altın fonu nedir, gram altından farkı ne? BYF, yatırım fonu ve dijital altın karşılaştırması; maliyet, vergi ve likidite rehberi 2026."
 pubDate: 2026-08-03
+updatedDate: 2026-10-22
 category: "Yatırım"
 tags: ["altın fonu", "gram altın", "dijital altın", "yatırım fonu", "BYF", "altın yatırımı", "altın ETF"]
 readingTime: 7
@@ -12,7 +13,7 @@ faq:
   - q: "Altın fonunun gram altından farkı nedir?"
     a: "Gram altında fiziki altın alır ve depolarsınız — hırsızlık riski ve yüksek kuyumcu makası söz konusudur. Altın fonunda ise dijital formda yatırım yaparsınız; depolama derdi ve yüksek spread yoktur, ancak yıllık küçük bir yönetim ücreti düşülür."
   - q: "Altın fonundan elde edilen gelir vergiye tabi midir?"
-    a: "Türkiye'de yatırım fonu gelirleri stopaja tabidir; mevcut düzenlemede fon gelirleri için stopaj oranı avantajlı seviyelerdedir. Vergi mevzuatı değişebildiğinden güncel durumu aracı kurumunuzdan teyit etmenizi öneririz."
+    a: "Evet. 9 Temmuz 2025 ve sonrasında alınan altın (kıymetli maden) fonu paylarında, satışta oluşan kazançtan %17,5 stopaj kesilir; oranı fonu aldığınız tarih belirler. Kesilen stopaj genellikle nihai vergidir, ayrıca beyan gerekmez. Vergi mevzuatı değişebildiğinden güncel durumu aracı kurumunuzdan teyit edin."
   - q: "Türkiye'de altın fonu nasıl alınır?"
     a: "Borsa Yatırım Fonu (BYF) için hisse alır gibi borsada işlem yaparsınız. Klasik altın yatırım fonları için bankanızın veya TEFAS platformunun fon ekranını kullanabilirsiniz; minimum tutar çoğunlukla çok düşüktür."
   - q: "Altın fonu riski nedir?"
@@ -62,7 +63,7 @@ Altın türleri arasındaki ince farklar için [Altın Çeşitleri: Gram, Çeyre
 | Fiziki teslim | Hayır | Evet | Bazı bankalarda |
 | Hırsızlık / kayıp riski | Yok | Var | Çok düşük |
 | Anlık takip | Borsa ekranından | Manuel | Uygulama üzerinden |
-| Vergi durumu | Fon stopajı | Elden satışta beyan | Kuruma göre değişir |
+| Vergi durumu | Kazançtan %17,5 stopaj (9.7.2025 sonrası alım) | Kazançtan stopaj kesilmez | Fiyat farkına stopaj yok; alımda binde 2 BSMV |
 
 **Temel çıkarım:** Fiziki altın "somut güvence" hissi verir; ancak yüksek spread, depolama riski ve kuyumcuya bağımlılık ciddi dezavantajdır. Altın fonu veya dijital gram altın, özellikle küçük tutarlar ve uzun vadeli birikim için çok daha maliyet-etkin bir seçenek sunar.
 
@@ -70,9 +71,9 @@ Altın türleri arasındaki ince farklar için [Altın Çeşitleri: Gram, Çeyre
 
 Vergi, bu karşılaştırmada sıklıkla göz ardı edilen bir boyuttur. Türkiye'de:
 
-- **Yatırım fonu gelirleri** stopaj kesintisine tabidir; mevcut düzenlemede bu oran bireysel yatırımcı için avantajlı seviyelerdedir ve beyanname gerektirmeyebilir.
-- **Fiziki altın** satışında elde edilen kazanç, belirli tutarın üzerinde gelir vergisi beyanına konu olabilir.
-- **Dijital gram altın** (banka altın hesabı), kuruma bağlı olarak farklı vergi uygulamalarına tabi tutulabilir.
+- **Altın fonları:** 9 Temmuz 2025 ve sonrasında alınan kıymetli maden fonu paylarında satış kazancından **%17,5** stopaj kesilir; daha önce alınan paylarda alış tarihine göre daha düşük oranlar geçerlidir. Kesilen stopaj genellikle nihai vergidir, ayrıca beyan gerekmez. Ayrıntılar için [2026 stopaj oranları rehberimize](/blog/stopaj-nedir-2026-stopaj-oranlari/) bakabilirsiniz.
+- **Fiziki altın:** Bireysel yatırımcının kuyumcuda alıp sattığı altının kazancından stopaj kesilmez. Alım-satım düzenli ve ticari nitelik kazanırsa vergilendirme gündeme gelebilir.
+- **Dijital gram altın** (banka altın hesabı): Fiyat farkından doğan kazanca stopaj uygulanmaz; ancak fiziki teslimat olmadan yapılan alımlarda alım tutarı üzerinden binde 2 BSMV kesilir. Vadeli altın hesabında ödenen getiri ise stopaja tabidir.
 
 Vergi mevzuatı değişebildiği için kararınızı vermeden önce güncel durumu aracı kurumunuzdan veya bir mali müşavirden teyit etmeniz önerilir.
 

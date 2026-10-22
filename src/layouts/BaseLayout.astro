@@ -13,6 +13,7 @@ interface Props {
   publishedTime?: string;
   modifiedTime?: string;
   noindex?: boolean;
+  noAnalytics?: boolean; // ör. şifre sıfırlama: URL'deki token GA'ya gitmesin
   author?: string;
   section?: string;
   tags?: string[];
@@ -28,6 +29,7 @@ const {
   publishedTime,
   modifiedTime,
   noindex = false,
+  noAnalytics = false,
   author,
   section,
   tags = [],
@@ -190,7 +192,7 @@ const calcLd = canonPath.includes('hesaplama')
     {breadcrumbLd && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />}
     {faqLd && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
     {calcLd && <script type="application/ld+json" set:html={JSON.stringify(calcLd)} />}
-    <Analytics />
+    {!noAnalytics && <Analytics />}
   </head>
   <body>
     <a href="#main" class="sr-only">İçeriğe geç</a>

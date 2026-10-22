@@ -1,14 +1,14 @@
 ---
-title: "ABD Enflasyon Verisi Ekim 2026 Açıklandı: CPI %3,7, Çekirdek %2,6"
+title: "ABD Eylül CPI Verisi (14 Ekim 2026): Yıllık %3,7, Çekirdek %2,6"
 description: "ABD Eylül CPI 14 Ekim 2026'da açıklandı: aylık %0,6, yıllık %3,7; çekirdek aylık %0,3, yıllık %2,6. 28 Ekim Fed kararına etkisi ve dolar, altın, TL senaryoları."
 pubDate: 2026-10-12
-updatedDate: 2026-10-16
+updatedDate: 2026-10-22
 category: "Ekonomi"
-tags: ["abd enflasyon verisi", "cpi verisi ne zaman", "ekim 2026 cpi", "fed faiz kararı", "dolar altın etkisi", "çekirdek cpi"]
+tags: ["abd enflasyon verisi", "cpi verisi ne zaman", "eylül 2026 cpi", "ekim 2026 cpi", "fed faiz kararı", "dolar altın etkisi", "çekirdek cpi"]
 readingTime: 8
 featured: false
 faq:
-  - q: "ABD Ekim 2026 CPI verisi ne zaman açıklandı, kaç geldi?"
+  - q: "ABD Eylül 2026 CPI verisi (14 Ekim) ne zaman açıklandı, kaç geldi?"
     a: "ABD Çalışma İstatistikleri Bürosu (BLS), Eylül 2026 dönemine ait tüketici fiyat endeksini 14 Ekim 2026 Çarşamba günü Türkiye saatiyle 15:30'da yayımladı. Manşet CPI aylık %0,6 (mevsimsellikten arındırılmış), yıllık %3,7; çekirdek CPI aylık %0,3, yıllık %2,6 arttı."
   - q: "Ekim'de açıklanan CPI neden 'Eylül enflasyonu' olarak geçiyor?"
     a: "CPI bir önceki ayın fiyat değişimini ölçer. 14 Ekim'de açıklanan rakam Eylül ayını kapsar; bu yüzden haberlerde hem 'Ekim CPI açıklaması' hem 'Eylül enflasyonu' ifadeleri kullanılır."
@@ -66,9 +66,7 @@ Bir sonraki Fed kararı **28 Ekim 2026, TSİ 21:00**'de açıklanacak (toplantı
 
 ### Bir önceki rapor ne söylemişti?
 
-11 Eylül'de açıklanan Ağustos verisine ilişkin basına yansıyan rakamlara göre manşet CPI'da hem yıllık hem aylık tarafta ısınma görülmüştü. Çekirdek tarafta yıllık oran manşetin altında kalsa da aylık artış beklentilerin üzerinde gelmişti. Yani tablo "manşet sıcak, çekirdek yavaşlıyor ama aylık momentum tam sönmüş değil" şeklindeydi. Eylül öncesi senaryolarımızı [ABD Eylül 2026 CPI yazımızda](/blog/abd-eylul-2026-cpi-verisi-fed-dolar-altin) ele almıştık.
-
-*Not: Ağustos verisinin kesin rakamları için BLS'nin resmi bültenini esas al.*
+11 Eylül'de açıklanan Ağustos verisinde manşet CPI aylık %0,4, yıllık %3,4 (Temmuz'la aynı) arttı; benzin aylık %3,9 yükseldi. Çekirdek CPI ise aylık %0,3 (beklenti ~%0,2), yıllık %2,4 (Temmuz %2,5) geldi ([BLS](https://www.bls.gov/news.release/archives/cpi_09112026.htm)). Yani tablo "manşet sıcak, çekirdek yıllıkta yavaşlıyor ama aylık momentum tam sönmüş değil" şeklindeydi. Ayrıntılar: [ABD Ağustos CPI verisi (11 Eylül)](/blog/abd-eylul-2026-cpi-verisi-fed-dolar-altin/).
 
 ## Piyasalar Neye Bakacak? Manşet mi, Çekirdek mi?
 
