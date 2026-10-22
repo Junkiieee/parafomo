@@ -15,9 +15,9 @@ ABD CPI, ABD NFP) önizlemeleri — GSC'de tık getirdiği kanıtlı (28g 31 tı
 beyannamesi" 2,8 (zirve Mart 32 → Şubat'ta yeniden ölç) · "aile destek programı" 1,5.
 
 ## Kuyruk
-- [ ] **Findeks kredi notu nedir, nasıl yükselir? Not aralıkları ve kredi onayına etkisi** · hedef: "findeks
+- [x] **Findeks kredi notu nedir, nasıl yükselir? Not aralıkları ve kredi onayına etkisi** · hedef: "findeks
   kredi notu" (hacim 12,5) + "findeks" (124) · neden: kredi kümesi (konut/ihtiyaç/taşıt kredisi araçlarıyla); not
-  aralıklarını KKB'nin kendi sayfasından al · iç-link: /kredi-hesaplama, /konut-kredisi-hesaplama, /ihtiyac-kredisi-hesaplama
+  aralıklarını KKB'nin kendi sayfasından al · iç-link: /kredi-hesaplama, /konut-kredisi-hesaplama, /ihtiyac-kredisi-hesaplama → /blog/findeks-kredi-notu-nedir-nasil-yukselir (2026-10-22)
 - [ ] **TEFAS nedir, fon nasıl alınır? 2026'da TEFAS'tan yatırım fonu alma rehberi** · hedef: "tefas" (hacim 160,
   zirve 409 Eylül) + "fon getirileri" (14) · neden: hacimli, sitede karşılığı yok (keyword-map K14); adım adım alım
   (banka/aracı kurum), valör/saat kuralları, stopaj (stopaj yazısına link), fon türleri tablosu; getiri rakamı

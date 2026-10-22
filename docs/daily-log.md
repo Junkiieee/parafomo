@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-10-22 — Findeks Kredi Notu Nedir, Nasıl Yükselir? Not Aralıkları 2026
+
+**Yayınlanan yazı:** [Findeks Kredi Notu Nedir, Nasıl Yükselir? Not Aralıkları 2026](/blog/findeks-kredi-notu-nedir-nasil-yukselir)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — "findeks kredi notu" hacim 12,5 + "findeks" 124)
+
+---
+
 ## 2026-10-21 — Kredi Yapılandırma 2026: Kart ve Kredi Borcu Nasıl Yapılandırılır?
 
 **Yayınlanan yazı:** [Kredi Yapılandırma 2026: Kart ve Kredi Borcu Nasıl Yapılandırılır?](/blog/kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir)
