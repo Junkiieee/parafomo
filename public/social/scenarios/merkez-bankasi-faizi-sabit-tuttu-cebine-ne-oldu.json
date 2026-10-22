@@ -1,0 +1,59 @@
+{
+  "slug": "merkez-bankasi-faizi-sabit-tuttu-cebine-ne-oldu",
+  "title": "Merkez Bankası faizi sabit tuttu, cebine ne oldu",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "TCMB'nin PPK faiz kararı mevduat, kredi ve dolar üzerinden cebine nasıl dokunuyor, sade bir dille anlatılıyor.",
+  "tags": [
+    "TCMB",
+    "PPK",
+    "faiz kararı",
+    "politika faizi",
+    "mevduat faizi",
+    "kredi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Merkez Bankası faizi açıkladı, cebine hemen dokunuyor.",
+      "visual": {
+        "type": "place",
+        "query": "Central Bank of the Republic of Turkey"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "PPK'nın belirlediği politika faizi, bankaların birbirine borç verme maliyetidir. Mevduat ve kredi faizin bunun etrafında şekillenir.",
+      "visual": {
+        "type": "place",
+        "query": "Central Bank of the Republic of Turkey"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama kararın yönü tek başına yetmez. Faiz enflasyonun altında kalırsa, hesaptaki 100 bin liran yine de değer kaybeder.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yani faiz yükselince krediye ödediğin taksit büyür, düşünce mevduat getirisi küçülür. Bakacağın rakam faizden enflasyonu çıkarınca kalandır.",
+      "visual": {
+        "type": "object",
+        "query": "smartphone banking app"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki karar paranı nasıl etkileyecek, merak ediyorsan abone ol; her gün 60 saniyede tek net analiz burada.",
+      "visual": {
+        "type": "place",
+        "query": "Central Bank of the Republic of Turkey"
+      }
+    }
+  ]
+}
