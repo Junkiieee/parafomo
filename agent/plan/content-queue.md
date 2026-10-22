@@ -3,16 +3,69 @@
 `scripts/daily-content.sh` (Pzt-Cum 06:00 UTC) "Kuyruk" bölümündeki EN ÜSTTEKİ `- [ ]` satırı yazar ve
 `- [x] ... → /blog/<slug> (tarih)` yapar. Kuyruğu ajan yönetir (haftalık koşu yeniden sıralar, günlük koşu
 <3 kalınca doldurur). Satır biçimi: başlık önerisi · hedef sorgu (hacim) · neden şimdi · iç-link hedefi.
-Sıra = planlanan yayın günü (haftalık koşu 2026-10-15): 15 → 16 → 19 → 20 → 21 → 22 → 23 Ekim.
+Sıra = planlanan yayın günü (haftalık koşu 2026-10-22): 22 → 23 → 26 → 27 → 28 → 29 → 30 Ekim → 2 Kasım.
+**Tarihli satır** (📅) o gün yayınlanmalı: günlük koşu (03:00 UTC) sıranın kaydığını görürse o satırı EN ÜSTE taşır.
 
 **KURAL (2026-10-14):** her konunun hedef sorgusu Trends'te **hacim ≥ 5** olmalı ("mevduat faizi" = 100) ve
-satırda `(hacim N)` yazmalı. Ölçüm: `agent/state/measure_topics.py` kalıbı ya da `opportunity_finder.py`
-(önbellek `data/learning/`). Hacim < 5 → satır açılmaz.
-**Ölçülüp İPTAL edilenler (10-15):** "bitcoin mi altın mı" 0,1 · "mevduat mı altın mı" 0 · "altın ne zaman
-düşer" 1,5 · "hazine bonosu" 2,6 · "eurobond nedir" 2,4 → "X mi Y mi" karar sorguları Trends'te ölçülemez düzeyde.
-**TCMB 22 Ekim:** yeni yazı AÇILMAZ — mevcut /blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler güncellenir (week.md T5).
+satırda `(hacim N)` yazmalı. Ölçüm: `agent/state/measure_topics.py` (QS listesini değiştir) ya da `opportunity_finder.py`
+(önbellek `data/learning/`). Hacim < 5 → satır açılmaz. **İstisna (10-22):** izinli olay ailesi (TCMB, Fed, TÜİK TÜFE,
+ABD CPI, ABD NFP) önizlemeleri — GSC'de tık getirdiği kanıtlı (28g 31 tık). JOLTS/PCE/ISM/GDP hayır.
+**Ölçülüp İPTAL edilenler:** "bitcoin mi altın mı" 0,1 · "mevduat mı altın mı" 0 · "altın ne zaman düşer" 1,5 ·
+"hazine bonosu" 2,6 · "eurobond nedir" 2,4 · "geçici vergi hesaplama" 0,7 · "gss primi 2026" 0,5 · "kira geliri
+beyannamesi" 2,8 (zirve Mart 32 → Şubat'ta yeniden ölç) · "aile destek programı" 1,5.
 
 ## Kuyruk
+- [ ] **Findeks kredi notu nedir, nasıl yükselir? Not aralıkları ve kredi onayına etkisi** · hedef: "findeks
+  kredi notu" (hacim 12,5) + "findeks" (124) · neden: kredi kümesi (konut/ihtiyaç/taşıt kredisi araçlarıyla); not
+  aralıklarını KKB'nin kendi sayfasından al · iç-link: /kredi-hesaplama, /konut-kredisi-hesaplama, /ihtiyac-kredisi-hesaplama
+- [ ] **TEFAS nedir, fon nasıl alınır? 2026'da TEFAS'tan yatırım fonu alma rehberi** · hedef: "tefas" (hacim 160,
+  zirve 409 Eylül) + "fon getirileri" (14) · neden: hacimli, sitede karşılığı yok (keyword-map K14); adım adım alım
+  (banka/aracı kurum), valör/saat kuralları, stopaj (stopaj yazısına link), fon türleri tablosu; getiri rakamı
+  verirsen TEFAS'tan tarihli; tek fon önerme · iç-link: /blog/yatirim-fonu-nedir-nasil-secilir,
+  /blog/stopaj-nedir-2026-stopaj-oranlari, /blog/para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki, /mevduat-faizi-hesaplama
+- [ ] 📅 26 Ekim **Fed Faiz Kararı 28 Ekim 2026: Beklenti, Senaryolar ve Dolar/Altın Etkisi** · slug:
+  `fed-faiz-karari-28-ekim-2026-beklentiler` · hedef: "fed faiz kararı" (hacim 80,9, zirve 656 Eylül) · frontmatter:
+  `sonuc: "fed:2026-10-28"` + `sonucBaslik: "Fed 28 Ekim Kararı Açıklandı: Faiz {karar}, Bant %{bant}"`
+  (Fed yer tutucuları: bant, bp, karar — `src/data/event-result.ts`) · Mevcut faiz aralığı ve 16 Eylül kararı `data/fomc-2026.json`'dan; piyasa
+  beklentisi YALNIZ CME FedWatch / Reuters anketi, tarihli; karar saati TSİ 21:00 · iç-link: /fed-faiz-takvimi,
+  /blog/fed-faiz-karari-ne-olur-beklentiler, /blog/fed-faiz-karari-sonrasi-piyasa-tepkisi, /dolar-getiri, /altin-getiri
+- [ ] **Geçici vergi nedir? 2026 geçici vergi dönemleri, oranı ve beyan tarihleri** · hedef: "geçici vergi" (hacim
+  46,1, zirve Şubat 161) · neden: 3. dönem (Temmuz-Eylül) beyanı Kasım'da — son günü GİB'den doğrula (dönemi izleyen 2.
+  ayın 17'si kuralı); oranlar KV %25 / GV tarifesi; mahsup ve iade; 2026'da kaldırılma/değişiklik haberi varsa YALNIZ
+  RG/GİB'le · iç-link: /kurumlar-vergisi-hesaplama, /gelir-vergisi-hesaplama, /vergi-dilimi-hesaplama
+- [ ] **SGK hizmet dökümü nasıl alınır ve nasıl okunur? e-Devlet adım adım (2026)** · hedef: "sgk hizmet dökümü"
+  (hacim 30,1) · neden: hacimli how-to, sitede yok; belge sütunlarının anlamı (prim günü, işyeri, eksik gün kodları —
+  kodları SGK'nın resmi listesinden), barkodlu belge, emeklilik için ne işe yarar. /emeklilik-hesaplama (week T18) canlıysa
+  oraya bağla, hesaplamayı yazıda TEKRARLAMA · iç-link: /emeklilik-hesaplama (yayındaysa), /bagkur-primi-hesaplama,
+  /en-dusuk-emekli-maasi
+- [ ] **Ek gösterge nedir? 2026 memur ek gösterge tablosu, 3600 ek gösterge ve maaşa etkisi** · hedef: "ek gösterge"
+  (hacim 43,7) · neden: memur kümesi (/memur-zammi-hesaplama) — 657 DMK ek gösterge cetveli ve 3600 ek gösterge
+  düzenlemesini (7417 s.K.) mevzuat.gov.tr'den; tutar örneği verirsen güncel katsayıyla (`data/emekli-memur.json`) ·
+  iç-link: /memur-zammi-hesaplama, /en-dusuk-emekli-maasi, /emekli-zammi-hesaplama
+- [ ] **Katılım hesabı nedir? Kâr payı nasıl hesaplanır, mevduattan farkı ve stopajı** · hedef: "katılım hesabı"
+  (hacim 6,9) · neden: mevduat kümesi tamamlayıcı; kâr payı oranı örneği verirsen bankanın kendi sayfasından tarihli,
+  TKBB/BDDK kaynaklı; tek banka önerme · iç-link: /mevduat-faizi-hesaplama, /blog/stopaj-nedir-2026-stopaj-oranlari,
+  /blog/para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki
+- [ ] 📅 2 Kasım **Ekim 2026 Enflasyonu 3 Kasım'da Açıklanıyor: Beklenti, Kira Artışı, Emekli Zammı ve 2027 Zamlarına
+  Etkisi** · slug: `ekim-2026-enflasyon-beklentisi-3-kasim` · hedef: "enflasyon beklentisi" (hacim 45,6) + "ekim ayı
+  enflasyon" (6,9, zirve Kasım 143) + "enflasyon ne zaman" (22,5) · frontmatter `sonuc: "tufe:2026-10"` +
+  `sonucBaslik: "Ekim 2026 Enflasyonu Açıklandı: Aylık %{aylik}, Yıllık %{yillik}"`. Beklenti rakamı YALNIZ TCMB
+  Piyasa Katılımcıları Anketi / AA Finans anketinden, tarihli. 3 Kasım "büyük gün" merkezi: /kira-artis-orani-hesaplama,
+  /emekli-zammi-hesaplama, /memur-zammi-hesaplama, /yeniden-degerleme-orani, /mtv-hesaplama,
+  /blog/2027-zamlari-yeniden-degerleme-orani-rehberi, /enflasyon-hesaplama linkleri.
+
+## Sonraki hafta adayları
+- 📅 ABD NFP (Ekim verisi) ve ABD CPI (Ekim verisi) önizlemeleri — tarihleri BLS takviminden; olaydan 1-2 gün önce.
+- Kredi kartı faiz hesaplama → yazı DEĞİL, araç (week T20).
+- Emekli promosyonu → yazı DEĞİL, veri sayfası (week T17). Emeklilik yaşı → araç (week T18).
+- Çocuk parası (27,5) → /dogum-yardimi kapsıyor; yazı açma (tools.ts'e anahtar kelime).
+- (10-18) "Damga vergisi 2026" → kanonik /damga-vergisi-hesaplama/. Aynı sorguya yazı açma.
+- Kasım 2026 kira artış oranı (TÜİK 3 Kasım) → yazı DEĞİL, /kira-artis-orani-hesaplama otomatik güncellenir.
+- ÖTV (hacim 308) dev baş terim — "ötv hesaplama" 9,2 (zirve Aralık) → araç adayı (Kasım sonu).
+- BES devlet katkısı (hacim 14, zirve Ocak) — mevcut bes yazısını güçlendir, yeni yazı açma.
+- Beyanname (246) + kira geliri beyanı — Şubat sezonu; Ocak'ta ölç ve yaz.
+
+## Yazılanlar
 - [x] **Para piyasası fonu nedir? 2026'da getirisi, stopajı ve mevduatla farkı** · hedef: "para piyasası fonu"
   (hacim 35, son 4 hafta 48 — yükseliyor) · neden: faiz yüksekken mevduata alternatif arayan talep; getiri
   rakamı verirsen kaynak (TEFAS/fon raporu) + tarih göster, tek fon önerme, tavsiye değil · iç-link:
@@ -25,31 +78,6 @@ düşer" 1,5 · "hazine bonosu" 2,6 · "eurobond nedir" 2,4 → "X mi Y mi" kara
   (hacim 50) · neden: hacimli, sitede yok; BDDK düzenlemesini (azami vade, faiz) YALNIZ resmi kaynaktan yaz;
   haber sitelerinde çelişen "yeni yapılandırma paketi" iddialarını yazma · iç-link: /kredi-hesaplama,
   /blog/kredi-karti-borcundan-kurtulma, asgari ödeme yazısı (yayındaysa) → /blog/kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir (2026-10-21)
-- [ ] **Findeks kredi notu nedir, nasıl yükselir? Not aralıkları ve kredi onayına etkisi** · hedef: "findeks
-  kredi notu" (hacim 12,5) · neden: kredi kümesi (konut/ihtiyaç kredisi araçlarıyla birlikte); not aralıklarını
-  KKB'nin kendi sayfasından al · iç-link: /kredi-hesaplama, /konut-kredisi-hesaplama (yayındaysa)
-
-- [ ] **TEFAS nedir, fon nasıl alınır? 2026'da TEFAS'tan yatırım fonu alma rehberi** · hedef: "tefas" (hacim 160,
-  zirve 409 Eylül) + "fon getirileri" (14) · neden: hacimli, sitede karşılığı yok (keyword-map K14); adım adım alım
-  (banka/aracı kurum), valör/saat kuralları, stopaj (stopaj yazısına link), fon türleri tablosu; getiri rakamı
-  verirsen TEFAS'tan tarihli; tek fon önerme · iç-link: /blog/yatirim-fonu-nedir-nasil-secilir,
-  /blog/stopaj-nedir-2026-stopaj-oranlari, para piyasası fonu yazısı (yayındaysa), /mevduat-faizi-hesaplama
-
-## Sonraki hafta adayları
-- **TARİHLİ (30 Ekim–2 Kasım arası yayınla; haftalık koşu 10-22 kuyruğa doğru güne koysun):** "Ekim 2026 enflasyonu
-  3 Kasım'da açıklanıyor: beklenti, kira artış oranı, emekli zammı ve 2027 yeniden değerleme oranına etkisi" ·
-  hedef: "enflasyon ne zaman" (hacim 22,5, zirve 242) + "tüfe" ailesi · frontmatter'a `sonuc: "tufe:2026-10"` +
-  `sonucBaslik: "Ekim 2026 Enflasyonu Açıklandı: Aylık %{aylik}, Yıllık %{yillik}"` (3 Kasım 10:00'da kutu + başlık
-  otomatik). Beklenti rakamı YALNIZ TCMB Piyasa Katılımcıları Anketi / AA Finans anketinden, tarihli. 3 Kasım'ın
-  "büyük gün" merkezi: /kira-artis-orani-hesaplama, /emekli-zammi-hesaplama, /memur-zammi-hesaplama,
-  /yeniden-degerleme-orani, /mtv-hesaplama, /blog/2027-zamlari-yeniden-degerleme-orani-rehberi linkleri.
-- (10-18) "Damga vergisi 2026" yazısı kuyruktan ÇIKARILDI → kanonik sayfa /damga-vergisi-hesaplama/ (araç, YD ile kendini günceller; RC). Aynı sorguya yazı açma. (haftalık koşu sıralar — hacmi ölç)
-- Kasım 2026 kira artış oranı (TÜİK 3 Kasım) → yazı DEĞİL, /kira-artis-orani-hesaplama otomatik güncellenir.
-- ÖTV (hacim 308) dev baş terim — yalnız uzun kuyruk varyantı ölçülürse ("araç ötv hesaplama"?).
-- BES devlet katkısı (hacim 14, zirve Ocak) — mevcut bes yazısını güçlendir, yeni yazı açma.
-- Repo nedir (7,8), tahvil nedir (6,5) — yazılar ZATEN var; yeni yazı açma.
-
-## Yazılanlar
 - [x] **Kredi kartı asgari ödeme tutarı 2026: oran nasıl belirlenir, eksik ödersen ne olur?** · hedef: "kredi
   kartı asgari ödeme" (hacim 30, son 4 hafta 68 — yükseliyor) · neden: hacimli + sitede karşılığı yok; BDDK/TCMB
   asgari ödeme oranlarını (kart limitine göre) ve gecikme/akdi faiz azami oranlarını TCMB'nin güncel duyurusundan
