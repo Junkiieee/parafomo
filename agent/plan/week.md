@@ -122,12 +122,7 @@ Yeni sayfa = `src/data/tools.ts` kaydı (k: anahtar kelimeler) + Footer TOOL_LIN
   üret, log'a yaz — üretimi durdurma). Kaynak: youtube-upload kayıtları/`public/social/` bugünkü dosyalar. İzole test:
   `--dry` ile bugünün durumunda seçilen kümeyi yazdır. · Kabul: commit + rapora dry-run çıktısı; 7 gün sonra haftalık
   koşu aynı gün aynı kümeden 2+ video sayısını sayar (baz: 10-15→10-21).
-- [ ] P2 (portföy) — **app.parafomo.com veri tazeliği** · app'in `tufe-aylik.json` ve `benchmarks.json`'u yalnız
-  `scripts/deploy-app.sh` ile kopyalanıyor (benchmarks-update.sh ayın 2'si) → canlı app verisi 2026-10-11 tarihli; TÜFE
-  ayın 3-5'inde gelir, app bir ay geç görür. `scripts/kira-artis-update.sh` sonunda `data/tufe-aylik.json` değiştiyse
-  `bash scripts/deploy-app.sh` çağır (cron değişmez). Ayrıca health.py'a "app veri yaşı" satırı (canlı
-  https://app.parafomo.com/tufe-aylik.json `updated` ≠ repo → UYARI). Şimdi bir kez `bash scripts/deploy-app.sh`.
-  · Kabul: `curl -s https://app.parafomo.com/tufe-aylik.json` updated = repo; commit; backlog-portfolio.md'ye not.
+- [x] P2 (portföy) — → kira-artis-update.sh TÜFE değişince `deploy-app.sh` çağırıyor + health.py "app TÜFE kopyası eski" bekçisi; app yeniden dağıtıldı (TÜFE 2026-09 güncel — sorun gecikme mekanizmasıydı: app ayın 2'sinde, TÜFE ayın 3'ünde → ~1 ay) · haftalık koşu 10-22 — **app.parafomo.com veri tazeliği** · Kabul: commit; backlog-portfolio.md notu.
 
 ## Kullanıcı girdisi gelince (o gün en üste al)
 - R2 bilgileri → `/root/.config/parafomo/backup.env` (backup.sh otomatik kullanır).

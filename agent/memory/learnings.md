@@ -60,7 +60,8 @@ _v1'in 59 deneyi + 2,5 aylık KPI'ından damıtıldı; son yeniden yazım: hafta
   %25,49; noter tarifesi YD'ye bağlı değil. Evde bakım = 10.000 gösterge × memur katsayısı; engelli/65 yaş = K cetveli
   göstergesi × katsayı + %5. Zam sezonu sayfalarında kaynak rakamını çapraz kontrol et.
 - **Veri sessizce bayatlar:** elle girilen her veri otomatik güncelleyici ya da health.py tazelik satırı ister.
-  app.parafomo.com veri dosyaları (tufe-aylik, benchmarks) yalnız deploy-app.sh ile kopyalanıyor → 10-11'den beri eski (P2).
+  app.parafomo.com veri kopyaları deploy-app.sh ile gider: TÜFE ayın 3'ünde gelir ama app ayın 2'sinde yenileniyordu
+  (~1 ay gecikme) → kira-artis-update.sh artık deploy-app.sh çağırır + health.py bekçisi (P2, 10-22).
 - **Fırsat motoru dinamik alt sayfaları görmüyor:** /altin-fiyatlari/<tür> var ama §9c "22 ayar bilezik", "çeyrek altın"
   için YENI_YAZI/blog eşlemesi veriyor; "memur maaşı" → /memur-zammi-hesaplama'yı bulamıyor (10-22, T19 düzeltir).
 - **Canlı blog yazıları** (`# OTOMATİK ÜRETİLİR`) şablondan düzenlenir (`content-templates/blog/*.j2` + live-posts.py).

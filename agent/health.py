@@ -207,6 +207,14 @@ def stale_data():
     if em and sa and em.get("donem") and sa.get("resmi", {}).get("donem") and em["donem"] > sa["resmi"]["donem"]:
         out.append(f"sosyal aylıklar bayat: memur katsayısı {em['donem']} ama ASHB resmî tutarlar {sa['resmi']['donem']} → "
                    "ASHB duyurusundan 65 yaş/engelli aylıklarını doğrula, data/sosyal-aylik-2026.json resmi bloğunu güncelle")
+    # app.parafomo.com kendi veri kopyasını okur (deploy-app.sh); repo TÜFE'si ilerideyse app reel getirisi eskide kalır
+    try:
+        app_t = json.load(open("/srv/parafomo-app/tufe-aylik.json", encoding="utf-8"))
+        rt = load("tufe-aylik.json")
+        if rt and app_t["months"][0]["ay"] != rt["months"][0]["ay"]:
+            out.append(f"app TÜFE kopyası eski ({app_t['months'][0]['ay']} ≠ {rt['months'][0]['ay']}) → bash scripts/deploy-app.sh")
+    except Exception:
+        pass
     # TCMB haftalık faizleri (EVDS): son hafta (Cuma) 13 günden eskiyse anahtar/API bozulmuş olabilir
     fz = load("faiz-oranlari.json")
     if fz and (today - dt.date.fromisoformat(fz["hafta"])).days > 13:

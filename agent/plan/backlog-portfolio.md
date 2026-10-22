@@ -17,6 +17,9 @@
 > (--no-sandbox). Örnek betikler RC scratch'ındaydı; desen: newContext({viewport,colorScheme}) → goto →
 > screenshot. Demo moduna #demo-btn ile girilir (giriş gerektirmez).
 >
+> **2026-10-22:** app veri kopyası (tufe-aylik) artık TÜFE güncellemesiyle aynı gün dağıtılıyor (kira-artis-update.sh → deploy-app.sh); health.py bekçisi.
+> TÜFE serisi 2020-10'a kadar uzandı (72 ay) → aday 1'in 5y reel getiri kısmı açılabilir mi kontrol et.
+>
 > **Sıradaki adaylar (öncelik sırası):**
 > 1. TÜFE serisini (data/tufe-aylik.json) 2021-01'e kadar RESMÎ kaynaktan WebSearch-doğrulamalı genişlet
 >    → 5y+ dönemlerde reel getiri ve simülatör enflasyon satırı açılır (şu an dürüst notla gizli).

@@ -36,6 +36,8 @@ fi
 # shellcheck disable=SC2086
 git_add_commit "veri: kira artış / TÜFE / Yİ-ÜFE-yeniden değerleme güncellendi (otomatik $(date -u '+%F %H:%M UTC'))" $PATHS \
   || { echo "commit başarısız"; exit 0; }
+# app.parafomo.com (portföy reel getiri + /birikim) TÜFE'yi kendi kopyasından okur — yeni ay gelince oraya da dağıt
+bash "$REPO/scripts/deploy-app.sh" || echo "UYARI: app veri dağıtımı başarısız"
 if bash "$REPO/scripts/deploy-push.sh"; then
   # Cloudflare 1-3 dk'da yayınlar; yeni sitemap (bugünkü lastmod) canlıya çıkınca arama motorlarına haber ver
   if python3 "$REPO/scripts/wait-live.py" "https://parafomo.com/sitemap-0.xml" --contains "<lastmod>$(date -u '+%F')" --timeout 600; then
