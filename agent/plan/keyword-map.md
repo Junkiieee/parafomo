@@ -64,7 +64,7 @@ Otorite/dış link işleri şimdilik YAPILMAZ (Kaan: "kalsın"). Fırsat listesi
 - [x] K21a doğum yardımı (54) → **/dogum-yardimi/** (canlı 2026-10-19; 633 KHK ek md.4 / 7546 s.K.: 5.000 ₺ tek sefer, 1.500 / 5.000 ₺ aylık × 60 ay; otomatik artış YOK — CB YD'yi aşmamak üzere artırabilir). · vergi borcu sorgulama (32,6) + sgk prim borcu (10,4) → **/vergi-borcu-sorgulama/** canlı 2026-10-19 (gecikme zammı %3,7 — CB 10556, RG 13.11.2025; hesaplayıcı GİB resmî aracıyla 31/31 kuruşu kuruşuna; tecil 72 ay).
 - [ ] K22 adaylar (ölçüldü 10-18): çocuk parası (27,5, zirve Ocak), ~~bağkur primi (15, zirve Aralık)~~ → ✅ /bagkur-primi-hesaplama/ canlı 2026-10-19, ötv hesaplama (9,2), gss primi (5,2, zirve Kasım).
 
-- [ ] K23 emekli promosyon (178,6, son 4h 156) → **/emekli-promosyonu/** veri sayfası (banka resmi sayfaları) — week T17 (haftalık 10-22).
+- [x] K23 emekli promosyon (178,6, son 4h 156) → **/emekli-promosyonu/** canlı 2026-10-22 (8 banka resmi sayfa; commit 51017c3)
 - [ ] K24 emeklilik yaşı (25,5) + emeklilik hesaplama (23,7) + ne zaman emekli olurum (14,3) → **/emeklilik-hesaplama/** — week T18;
   sgk hizmet dökümü (30,1) → blog (content-queue) + araçta bölüm.
 - [ ] K25 kredi kartı faiz hesaplama (11,6) + kredi kartı faiz oranı (7,7) → **/kredi-karti-faiz-hesaplama/** — week T20.

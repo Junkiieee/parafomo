@@ -33,7 +33,7 @@ Yeni sayfa = `src/data/tools.ts` kaydı (k: anahtar kelimeler) + Footer TOOL_LIN
   `logs/policy-decisions.log`); SSS'yi geçmiş zamana çevir ("Ekim 2026'da TCMB faiz indirecek mi?" → gerçekleşen karar),
   "Son durum" bölümünü "Karar öncesi beklenti" olarak yeniden adlandır, `updatedDate`. ELLE kutu ekleme. Sıradaki PPK
   tarihini data/tcmb-2026.json'dan yazıya ekle. · Kabul: canlıda kutu + geçmiş zaman SSS.
-- [ ] T17 (B261015-1) — **/emekli-promosyonu yeni veri sayfası** · hedef: emekli promosyon (hacim 178,6, son 4h 156 —
+- [x] T17 (B261015-1) — → canlı https://parafomo.com/emekli-promosyonu/ (8 banka resmi sayfadan: QNB, ING, Yapı Kredi, Garanti BBVA, Akbank, DenizBank, Ziraat, Halkbank; VakıfBank + İş Bankası nakit tutarı resmi sayfada yok → yazılmadı; maaşa göre hesaplayıcı, kıst iade, health.py bekçisi — Akbank/Garanti/YKB kampanyaları 31 Ekim biter → 1 Kasım health uyarısıyla yeniden kontrol) · commit 51017c3 · haftalık koşu 10-22 — **/emekli-promosyonu yeni veri sayfası** · hedef: emekli promosyon (hacim 178,6, son 4h 156 —
   sitede karşılığı yok, §9c'deki en büyük boş niyet). İçerik: (a) banka banka tablo — banka · promosyon tutarı (maaş
   aralığına göre kademeler) · ek kampanya şartı (otomatik ödeme/kart harcaması) · taahhüt süresi · kaynak linki · kontrol
   tarihi. YALNIZ bankanın KENDİ resmi kampanya sayfasında yazan rakam (WebFetch/WebSearch ≤12; haber sitesi rakamı
