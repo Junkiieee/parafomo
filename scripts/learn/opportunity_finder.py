@@ -71,6 +71,9 @@ HEAD_TERMS = [
     "veraset ve intikal vergisi", "kurumlar vergisi", "geçici vergi", "beyanname", "vergi borcu sorgulama",
     "enflasyon hesaplama", "enflasyon farkı hesaplama", "tüfe", "yi üfe", "reel getiri hesaplama",
     "faiz hesaplama", "yüzde hesaplama", "dolar endeksi", "abd faiz kararı", "ppk",
+    # genişletme 2026-10-22 (haftalık koşu Trends ölçümü)
+    "emekli promosyon", "fed faiz kararı", "enflasyon beklentisi", "ek gösterge", "sgk hizmet dökümü",
+    "emeklilik yaşı", "katılım hesabı", "kredi kartı faiz oranı", "çocuk parası",
 ]
 
 STOP = set("mı mi mu mü ne nasıl kaç kadar için ile ve veya da de bu şu o en çok hangi "
@@ -138,6 +141,26 @@ def autocomplete_queries():
     return qs
 
 
+SUBPAGE_SKIP = {"halka-arz"}
+# Kökü sayfa slug'ında geçmeyen ama kanonik sayfası belli sorgular (2026-10-22: "memur maaşı" YENI_YAZI görünüyordu).
+# Sayfa henüz yoksa sorgu "sitede yok" sayılır (YENI_ARAC/YENI_YAZI).
+SYNONYMS = {
+    "emeklilik hesaplama": "/emeklilik-hesaplama",
+    "katılım hesabı": "/blog/katilim-hesabi-nedir",
+    "ek gösterge": "/blog/ek-gosterge-nedir",
+    "memur maaşı": "/memur-zammi-hesaplama",
+    "trafik cezası sorgulama": "/trafik-cezalari-hesaplama",
+    "çocuk parası": "/dogum-yardimi",
+    "sgk prim borcu": "/vergi-borcu-sorgulama",
+    "bağkur borcu": "/bagkur-primi-hesaplama",
+    "emekli maaşı": "/en-dusuk-emekli-maasi",
+    "emekli promosyon": "/emekli-promosyonu",
+    "ne zaman emekli olurum": "/emeklilik-hesaplama",
+    "emeklilik yaşı": "/emeklilik-hesaplama",
+    "sgk hizmet dökümü": "/emeklilik-hesaplama",
+}
+
+
 def seasonal_queries(today):
     try:
         d = json.load(open(SEASONAL, encoding="utf-8"))
@@ -161,6 +184,12 @@ def site_pages():
             pages.append(("/" + f[:-6], stems(f[:-6].replace("-", " "))))
         elif os.path.isdir(os.path.join(pdir, f)) and f not in ("blog", "kategori", "portfoy"):
             pages.append(("/" + f, stems(f.replace("-", " "))))
+            # dinamik route alt sayfaları (/altin-fiyatlari/ceyrek-altin) — build çıktısından; halka arz şirket adları gürültü
+            ddir = os.path.join(lib.ROOT, "dist", f)
+            if f not in SUBPAGE_SKIP and os.path.isdir(ddir):
+                for sub in sorted(os.listdir(ddir)):
+                    if os.path.isfile(os.path.join(ddir, sub, "index.html")):
+                        pages.append((f"/{f}/{sub}", stems(sub.replace("-", " "))))
     if os.path.isdir(lib.BLOG):
         for f in os.listdir(lib.BLOG):
             if f.endswith((".md", ".mdx")):
@@ -437,7 +466,12 @@ def main():
             gm = {"impr": impr, "clicks": sum(x["clicks"] for x in gv),
                   "pos": round(sum(x["pos"] * x["impr"] for x in gv) / max(impr, 1), 1),
                   "page": max(gv, key=lambda x: x["impr"])["page"]}
-        page = (gm or {}).get("page") or seasonal.get(rep) or match_page(rep, pages)
+        page = (gm or {}).get("page") or seasonal.get(rep)
+        if not page and rep in SYNONYMS:
+            # kanonik sayfa tanımlı: varsa o, yoksa "sitede yok" (kök eşlemesi yanıltıyor: katılım → katılınır)
+            page = SYNONYMS[rep] if any(u == SYNONYMS[rep] for u, _ in pages) else None
+        elif not page:
+            page = match_page(rep, pages)
         f_int, why_int = intent_factor(rep)
         action, reach, note = decide(rep, gm, page, f_int != 1.0)
         vol = 100.0 if rep == ANCHOR else (tr["idx"] if tr else None)
