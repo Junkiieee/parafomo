@@ -1,17 +1,17 @@
 {
-  "updated": "2026-10-22T06:15+00:00",
+  "updated": "2026-10-22T12:15+00:00",
   "source": "Halka arz fiyatı: halkarz.com · Güncel fiyat: Yahoo Finance (BIST)",
   "count": 12,
-  "avg_return_pct": -35.7,
+  "avg_return_pct": -36.5,
   "positive_count": 1,
   "positive_pct": 8,
   "best": {
     "code": "CITAS",
-    "return_pct": 20.2
+    "return_pct": 27.3
   },
   "worst": {
     "code": "TKNKA",
-    "return_pct": -64.8
+    "return_pct": -67.0
   },
   "items": [
     {
@@ -21,8 +21,8 @@
       "start": "2026-08-10",
       "date_text": "10-11-12 Ağustos 2026",
       "ipo_price": 73.7,
-      "current_price": 88.6,
-      "return_pct": 20.2
+      "current_price": 93.8,
+      "return_pct": 27.3
     },
     {
       "code": "METEN",
@@ -31,8 +31,8 @@
       "start": "2026-07-20",
       "date_text": "20-21-22 Temmuz 2026",
       "ipo_price": 20.0,
-      "current_price": 19.94,
-      "return_pct": -0.3
+      "current_price": 19.7,
+      "return_pct": -1.5
     },
     {
       "code": "KARCL",
@@ -41,8 +41,8 @@
       "start": "2026-07-22",
       "date_text": "22-23-24 Temmuz 2026",
       "ipo_price": 35.0,
-      "current_price": 33.5,
-      "return_pct": -4.3
+      "current_price": 30.94,
+      "return_pct": -11.6
     },
     {
       "code": "INTET",
@@ -51,8 +51,8 @@
       "start": "2026-08-26",
       "date_text": "26-27 Ağustos 2026",
       "ipo_price": 53.6,
-      "current_price": 44.76,
-      "return_pct": -16.5
+      "current_price": 44.12,
+      "return_pct": -17.7
     },
     {
       "code": "MASFN",
@@ -61,8 +61,8 @@
       "start": "2026-07-22",
       "date_text": "22-23-24 Temmuz 2026",
       "ipo_price": 45.68,
-      "current_price": 31.46,
-      "return_pct": -31.1
+      "current_price": 31.1,
+      "return_pct": -31.9
     },
     {
       "code": "QUICK",
@@ -71,8 +71,8 @@
       "start": "2026-07-29",
       "date_text": "29-30-31 Temmuz 2026",
       "ipo_price": 76.6,
-      "current_price": 39.12,
-      "return_pct": -48.9
+      "current_price": 40.0,
+      "return_pct": -47.8
     },
     {
       "code": "KPEKS",
@@ -81,8 +81,8 @@
       "start": "2026-08-12",
       "date_text": "12-13-14 Ağustos 2026",
       "ipo_price": 94.0,
-      "current_price": 46.92,
-      "return_pct": -50.1
+      "current_price": 46.84,
+      "return_pct": -50.2
     },
     {
       "code": "ALBTN",
@@ -91,8 +91,8 @@
       "start": "2026-07-22",
       "date_text": "22-23 Temmuz 2026",
       "ipo_price": 38.6,
-      "current_price": 19.04,
-      "return_pct": -50.7
+      "current_price": 18.18,
+      "return_pct": -52.9
     },
     {
       "code": "VEYAS",
@@ -101,8 +101,8 @@
       "start": "2026-08-12",
       "date_text": "12-13-14 Ağustos 2026",
       "ipo_price": 136.0,
-      "current_price": 58.5,
-      "return_pct": -57.0
+      "current_price": 58.05,
+      "return_pct": -57.3
     },
     {
       "code": "NETGL",
@@ -111,8 +111,8 @@
       "start": "2026-09-09",
       "date_text": "9-10-11 Eylül 2026",
       "ipo_price": 25.52,
-      "current_price": 10.12,
-      "return_pct": -60.3
+      "current_price": 9.71,
+      "return_pct": -62.0
     },
     {
       "code": "BKRGY",
@@ -121,8 +121,8 @@
       "start": "2026-08-24",
       "date_text": "24-25-26 Ağustos 2026",
       "ipo_price": 12.93,
-      "current_price": 4.57,
-      "return_pct": -64.7
+      "current_price": 4.45,
+      "return_pct": -65.6
     },
     {
       "code": "TKNKA",
@@ -131,8 +131,8 @@
       "start": "2026-08-12",
       "date_text": "12-13-14 Ağustos 2026",
       "ipo_price": 85.4,
-      "current_price": 30.1,
-      "return_pct": -64.8
+      "current_price": 28.22,
+      "return_pct": -67.0
     }
   ]
 }
