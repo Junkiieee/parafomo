@@ -159,6 +159,13 @@ def emekli_memur_card(kind):
     return fn
 
 
+def emekli_promosyon_card():
+    d = load("emekli-promosyon.json")
+    best = max(d["bankalar"], key=lambda b: b["nakit"][3] or 0)
+    return {"kicker": "EMEKLİ PROMOSYONU", "stat": "₺" + f"{best['nakit'][3]:,}".replace(",", "."),
+            "sub": f"en yüksek koşulsuz nakit · {len(d['bankalar'])} bankanın resmi tutarları"}
+
+
 def kira_card():
     d = load("kira-artis-2026.json")
     return {"kicker": "KİRA ARTIŞ ORANI", "stat": f"%{tr_pct(d['guncelOran'], 2)}",
@@ -290,6 +297,7 @@ CARDS = {
     "memur-zammi-hesaplama": memur_card,
     "en-dusuk-emekli-maasi": emekli_memur_card("taban"),
     "bayram-ikramiyesi": emekli_memur_card("bayram"),
+    "emekli-promosyonu": emekli_promosyon_card,
     "kira-artis-orani-hesaplama": kira_card,
     "asgari-ucret-hesaplama": asgari_card,
     "enflasyon-takvimi": enflasyon_card,

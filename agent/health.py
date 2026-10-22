@@ -207,6 +207,15 @@ def stale_data():
     if em and sa and em.get("donem") and sa.get("resmi", {}).get("donem") and em["donem"] > sa["resmi"]["donem"]:
         out.append(f"sosyal aylıklar bayat: memur katsayısı {em['donem']} ama ASHB resmî tutarlar {sa['resmi']['donem']} → "
                    "ASHB duyurusundan 65 yaş/engelli aylıklarını doğrula, data/sosyal-aylik-2026.json resmi bloğunu güncelle")
+    # Emekli promosyonu (/emekli-promosyonu): bankaların kampanyaları ay sonunda biter; resmi sayfadan yeniden kontrol
+    ep = load("emekli-promosyon.json")
+    if ep:
+        biten = [b["banka"] for b in ep["bankalar"] if b.get("bitis") and b["bitis"] < today.isoformat()]
+        eski = (today - dt.date.fromisoformat(ep["kontrol"])).days
+        if biten or eski > 30:
+            out.append(f"emekli promosyonu kontrol bekliyor (son kontrol {ep['kontrol']}, {eski} gün; süresi dolan: "
+                       f"{', '.join(biten) or 'yok'}) → bankaların resmi sayfalarını WebFetch ile oku, data/emekli-promosyon.json "
+                       "tutar/bitis/kontrol alanlarını güncelle (haber sitesi rakamı YAZMA)")
     # app.parafomo.com kendi veri kopyasını okur (deploy-app.sh); repo TÜFE'si ilerideyse app reel getirisi eskide kalır
     try:
         app_t = json.load(open("/srv/parafomo-app/tufe-aylik.json", encoding="utf-8"))

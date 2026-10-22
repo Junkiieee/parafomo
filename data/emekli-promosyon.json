@@ -1,0 +1,104 @@
+{
+  "_aciklama": "Emekli maaş promosyonu — YALNIZ bankanın kendi resmi sayfasında yazan tutarlar. Dilimler: aylık 0-9.999 / 10.000-14.999 / 15.000-19.999 / 20.000+ TL. nakit = koşulsuz nakit promosyon (3 yıllık taahhüt karşılığı peşin); ek = koşullu ek ödüllerin dilim başına en yüksek toplamı (fatura talimatı, kart harcaması, ürün). null = o dilimde resmi sayfada tutar yok. Kampanya bitince ya da 30 günde bir health.py uyarır → bankanın sayfasını yeniden kontrol et, 'kontrol' tarihini güncelle. Resmi sayfada bulunamayan banka (2026-10-22: VakıfBank, İş Bankası nakit tutarı) YAZILMAZ.",
+  "kontrol": "2026-10-22",
+  "dilimler": ["0 – 9.999 ₺", "10.000 – 14.999 ₺", "15.000 – 19.999 ₺", "20.000 ₺ ve üzeri"],
+  "dilimAlt": [0, 10000, 15000, 20000],
+  "bankalar": [
+    {
+      "banka": "QNB",
+      "tur": "özel",
+      "nakit": [8500, 13500, 16500, 20000],
+      "ek": null,
+      "baslangic": "2026-04-22",
+      "bitis": null,
+      "maas": "aylık net maaş",
+      "not": "Standart promosyon için ürün koşulu yok; birden fazla aylık toplanır.",
+      "url": "https://www.qnb.com.tr/emekli-bankaciligi",
+      "kontrol": "2026-10-22"
+    },
+    {
+      "banka": "Yapı Kredi",
+      "tur": "özel",
+      "nakit": [6250, 10000, 12500, 15000],
+      "ek": [9000, 11000, 13000, 15000],
+      "baslangic": "2025-09-19",
+      "bitis": "2026-10-31",
+      "maas": "aylık net maaş",
+      "not": "Ek ödül: 2 fatura talimatı, 1.000 ₺ kredi kartı harcaması, mobil aktiflik (2.000 ₺), mobilden yeni müşteri (3.000 ₺) — 60 gün içinde.",
+      "url": "https://www.yapikredi.com.tr/bireysel-bankacilik/odemeler-ve-hizmetler/sgk-emekli-maas-promosyonu",
+      "kontrol": "2026-10-22"
+    },
+    {
+      "banka": "ING",
+      "tur": "özel",
+      "nakit": [6250, 10000, 12500, 15000],
+      "ek": [10000, 12500, 15500, 17000],
+      "baslangic": null,
+      "bitis": null,
+      "maas": "aylık net maaş",
+      "not": "Ek ödül: fatura talimatı, Turuncu Hesap, ihtiyaç kredisi, banka kartı harcama iadesi, ING Mobil'den yeni müşteri.",
+      "url": "https://www.ing.com.tr/tr/sizin-icin/odemeler/emekli-maas-odemeleri",
+      "kontrol": "2026-10-22"
+    },
+    {
+      "banka": "Garanti BBVA",
+      "tur": "özel",
+      "nakit": [6250, 10000, 12500, 15000],
+      "ek": [10000, 10000, 10000, 10000],
+      "baslangic": "2026-10-01",
+      "bitis": "2026-10-31",
+      "maas": "emekli maaşı",
+      "not": "Ek bonus: kartla 2.000 ₺ harcama (6.000), Avans Hesap (2.000), sigorta ürünü (2.000) — toplam en fazla 10.000 ₺; kart ve hesap en az 1 yıl açık kalmalı.",
+      "url": "https://www.garantibbva.com.tr/odemeler-ve-hizmetler/emekli-maas-odemeleri",
+      "kontrol": "2026-10-22"
+    },
+    {
+      "banka": "Akbank",
+      "tur": "özel",
+      "nakit": [6250, 10000, 12500, 15000],
+      "ek": null,
+      "baslangic": "2026-10-01",
+      "bitis": "2026-10-31",
+      "maas": "net gelir/aylık",
+      "not": "SGK promosyonu (5.000-12.000 ₺) + Akbank ek promosyonu birlikte. Eylül-Ekim chip-para kampanyası 16 Ekim'de bitti.",
+      "url": "https://www.akbank.com/hizmetler/sgk-emekli-maas-odemeleri",
+      "kontrol": "2026-10-22"
+    },
+    {
+      "banka": "DenizBank",
+      "tur": "özel",
+      "nakit": [5000, 8000, 10000, 12000],
+      "ek": [15000, 16000, 17000, 18000],
+      "baslangic": "2026-06-11",
+      "bitis": "2026-12-31",
+      "maas": "maaş tutarı",
+      "not": "Yeni hesap açanlar ve taahhüdü kampanya döneminde biten mevcut emekliler. Ek ödül: KMH (2.000), 2 fatura talimatı (5.000-8.000), her ay kredi kartı harcaması (8.000).",
+      "url": "https://www.denizbank.com/kendim-icin/emekli-bankaciligi/ayricalik/emeklilere-tl-nakit-hediye",
+      "kontrol": "2026-10-22"
+    },
+    {
+      "banka": "Ziraat Bankası",
+      "tur": "kamu",
+      "nakit": [5000, 8000, 10000, 12000],
+      "ek": null,
+      "baslangic": null,
+      "bitis": null,
+      "maas": "aracılık edilen tüm aylıkların 1 aylık toplamı",
+      "not": "Ürün koşulu yok; haciz/nafaka kesintisi düşülür.",
+      "url": "https://www.ziraatbank.com.tr/tr/bireysel/hizmetler/emekli-maas-odemeleri/emekli-maas-promosyon-odemesi",
+      "kontrol": "2026-10-22"
+    },
+    {
+      "banka": "Halkbank",
+      "tur": "kamu",
+      "nakit": [null, 8000, 10000, 12000],
+      "ek": null,
+      "baslangic": null,
+      "bitis": null,
+      "maas": "brüt maaş",
+      "not": "10.000 ₺ altında yalnız SGK'dan ölüm aylığı alan hak sahiplerine başvuruyla 5.000 ₺. Ürün koşulu yok.",
+      "url": "https://www.halkbank.com.tr/tr/bireysel/emekli-bankaciligi/size-ozel/emekli-promosyon-odemeleri",
+      "kontrol": "2026-10-22"
+    }
+  ]
+}
