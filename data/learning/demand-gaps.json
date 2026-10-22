@@ -1,6 +1,6 @@
 {
  "_aciklama": "Google Autocomplete (tr) önerileri; covered = site slug'larıyla kaba eşleşme. Kapsanmayanlar = potansiyel yeni sayfa/yazı konusu — talebi GSC/rakiple doğrula.",
- "generated_utc": "2026-10-18T08:46:30Z",
+ "generated_utc": "2026-10-21T08:46:09Z",
  "uncovered_top": [
   "asgari ücret 2027 ara zam olacak mı",
   "asgari ücret 2027 kaç tl olacak",
@@ -14,9 +14,9 @@
   "altın fiyatı ne zaman yüksel",
   "altın fiyatı ne zaman",
   "altın fiyatı ne zaman çıkacak",
-  "dolar mı altın mı almalı son dakika",
   "dolar mı altın mı almak mantıklı",
   "dolar mı altın mı daha karlı",
+  "dolar mı altın mı almalı son dakika",
   "dolar mı altın mı euro mu hangi yatırım daha karlı",
   "dolar mı altın mı daha mantıklı",
   "mevduat faizi en yüksek banka",
@@ -29,19 +29,19 @@
   "vergi dilimi nasıl hesaplanır",
   "vergi dilimine göre maaş hesaplama",
   "2027 mtv fiyatları",
+  "2027 mtv vmas",
   "mtv music 2027",
   "2027 mtv music awards",
-  "2027 mtv vmas",
   "mtv awards 2027",
   "mtv movie awards 2027",
   "2027 mtv video music awards",
   "mtv malta 2027",
-  "yeniden değerleme muhasebe kaydı",
   "faiz kararı ne zaman açıklanacak",
   "faiz kararı saat kaçta",
   "faiz kararı ne zaman saat kaçta",
   "enflasyon ne zaman açıklanıyor",
-  "enflasyon ne zaman açıklanır"
+  "enflasyon ne zaman açıklanır",
+  "enflasyon ne zaman düşecek"
  ],
  "seeds": [
   {
@@ -164,10 +164,6 @@
    "seed": "dolar mı altın mı",
    "suggestions": [
     {
-     "q": "dolar mı altın mı almalı son dakika",
-     "covered": false
-    },
-    {
      "q": "dolar mı altın mı alınmalı",
      "covered": true
     },
@@ -192,6 +188,10 @@
      "covered": true
     },
     {
+     "q": "dolar mı altın mı almalı son dakika",
+     "covered": false
+    },
+    {
      "q": "dolar mı altın mı euro mu hangi yatırım daha karlı",
      "covered": false
     },
@@ -205,11 +205,11 @@
    "seed": "mevduat faizi",
    "suggestions": [
     {
-     "q": "mevduat faizi hesaplama",
+     "q": "mevduat faizi",
      "covered": true
     },
     {
-     "q": "mevduat faizi",
+     "q": "mevduat faizi hesaplama",
      "covered": true
     },
     {
@@ -299,11 +299,19 @@
      "covered": true
     },
     {
+     "q": "emekli zammı ne kadar",
+     "covered": true
+    },
+    {
      "q": "emekli zammı ne zaman yatacak",
      "covered": false
     },
     {
      "q": "emekli zammı ne zaman",
+     "covered": true
+    },
+    {
+     "q": "emekli zammı 2027",
      "covered": true
     },
     {
@@ -325,14 +333,6 @@
     {
      "q": "emekli zammı son dakika",
      "covered": false
-    },
-    {
-     "q": "emekli zammı ne kadar olacak",
-     "covered": true
-    },
-    {
-     "q": "emekli zammı belli oldu mu",
-     "covered": true
     }
    ]
   },
@@ -344,11 +344,15 @@
      "covered": true
     },
     {
+     "q": "asgari ücret 2027 de ne kadar olacak",
+     "covered": true
+    },
+    {
      "q": "asgari ücret 2027 tahmini",
      "covered": true
     },
     {
-     "q": "asgari ücret 2027 de ne kadar olacak",
+     "q": "asgari ücret 2027 ne kadar",
      "covered": true
     },
     {
@@ -357,10 +361,6 @@
     },
     {
      "q": "asgari ücret 2027 de ne olur",
-     "covered": true
-    },
-    {
-     "q": "asgari ücret 2027 ne kadar",
      "covered": true
     },
     {
@@ -487,15 +487,15 @@
      "covered": false
     },
     {
+     "q": "2027 mtv vmas",
+     "covered": false
+    },
+    {
      "q": "mtv music 2027",
      "covered": false
     },
     {
      "q": "2027 mtv music awards",
-     "covered": false
-    },
-    {
-     "q": "2027 mtv vmas",
      "covered": false
     },
     {
@@ -524,6 +524,14 @@
      "covered": true
     },
     {
+     "q": "yeniden değerleme oranı 2027",
+     "covered": true
+    },
+    {
+     "q": "yeniden değerleme",
+     "covered": true
+    },
+    {
      "q": "yeniden değerleme oranı",
      "covered": true
     },
@@ -532,7 +540,7 @@
      "covered": true
     },
     {
-     "q": "yeniden değerleme",
+     "q": "yeniden değerleme oranı 2026 3 dönem",
      "covered": true
     },
     {
@@ -549,14 +557,6 @@
     },
     {
      "q": "yeniden değerleme oranı 2026 hesaplama",
-     "covered": true
-    },
-    {
-     "q": "yeniden değerleme muhasebe kaydı",
-     "covered": false
-    },
-    {
-     "q": "yeniden değerleme oranı nasıl hesaplanır",
      "covered": true
     }
    ]
@@ -577,19 +577,15 @@
      "covered": false
     },
     {
-     "q": "faiz kararı ne oldu",
-     "covered": true
-    },
-    {
-     "q": "faiz kararı ne zaman 2026",
-     "covered": true
-    },
-    {
      "q": "faiz kararı 2026",
      "covered": true
     },
     {
      "q": "faiz kararı ne olur",
+     "covered": true
+    },
+    {
+     "q": "faiz kararı tahminleri",
      "covered": true
     },
     {
@@ -603,6 +599,10 @@
     {
      "q": "faiz kararı ne zaman saat kaçta",
      "covered": false
+    },
+    {
+     "q": "faiz kararı beklentisi",
+     "covered": true
     }
    ]
   },
@@ -717,7 +717,7 @@
      "covered": true
     },
     {
-     "q": "temettü takvimi",
+     "q": "temettü nedir",
      "covered": true
     },
     {
@@ -725,11 +725,11 @@
      "covered": true
     },
     {
-     "q": "temettü veren hisseler",
-     "covered": false
+     "q": "temettü takvimi",
+     "covered": true
     },
     {
-     "q": "temettü ne demek",
+     "q": "temettü veren hisseler",
      "covered": false
     },
     {
@@ -766,11 +766,15 @@
      "covered": false
     },
     {
-     "q": "borsa kaçta açılıyor",
+     "q": "borsa gündem",
      "covered": false
     },
     {
      "q": "borsa canlı",
+     "covered": false
+    },
+    {
+     "q": "borsa kaçta açılıyor",
      "covered": false
     },
     {
@@ -787,10 +791,6 @@
     },
     {
      "q": "borsa haram mı",
-     "covered": false
-    },
-    {
-     "q": "borsa gündem",
      "covered": false
     },
     {

@@ -1,0 +1,63 @@
+{
+  "title": "Dolar ve euro yönü, Londra'daki rakama bağlı #Shorts",
+  "description": "İngiltere enflasyon verisi, faiz beklentisi üzerinden sterlini, doları ve euroyu nasıl oynatır; döviz alacaklar için sade bir özet.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #enflasyon #İngiltere #sterlin #dolar #euro",
+  "tags": [
+    "enflasyon",
+    "İngiltere",
+    "sterlin",
+    "dolar",
+    "euro",
+    "faiz",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-dolar-ve-euro-yonu-londra-daki-rakama-bagli.mp4",
+  "slug": "dolar-ve-euro-yonu-londra-daki-rakama-bagli",
+  "format": "news_reaction",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.93,
+      "spoken": "İngiltere'nin enflasyon rakamı doları da oynatıyor.",
+      "visual": "place: Bank of England building"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.93,
+      "end": 12.18,
+      "spoken": "Rakam yüksek gelirse faiz indirimi uzar, sterlin güçlenir; düşük gelirse indirim yaklaşır, sterlin zayıflar.",
+      "visual": "object: stock market chart on screen"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 12.18,
+      "end": 19.58,
+      "spoken": "Ama etki orada kalmıyor: yatırımcı parayı faizi yüksek yerde tutar, dolar ve euro da kıpırdar.",
+      "visual": "marka kartı"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 19.58,
+      "end": 26.61,
+      "spoken": "Dolar ya da euro alacaksan rakam saatinde acele etme; fiyat sert oynayabilir, ertesi günü izle.",
+      "visual": "object: smartphone banking app"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 26.61,
+      "end": 33.75,
+      "spoken": "Yarın hangi veri kuru kıpırdatacak, merak ediyorsan abone ol; her gün 60 saniyede tek net analiz.",
+      "visual": "place: Bank of England building"
+    }
+  ],
+  "video_id": "asm-HFdkBdE",
+  "youtube_url": "https://youtube.com/shorts/asm-HFdkBdE",
+  "ig_reel_id": "18115323140027735",
+  "ig_reel_permalink": "https://www.instagram.com/reel/Devx7rZjXOV/",
+  "ig_seed_comment_id": "17972239677176852"
+}

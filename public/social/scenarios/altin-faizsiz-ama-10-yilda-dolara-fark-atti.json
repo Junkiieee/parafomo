@@ -1,0 +1,59 @@
+{
+  "slug": "altin-faizsiz-ama-10-yilda-dolara-fark-atti",
+  "title": "Altın faizsiz ama 10 yılda dolara fark attı",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Altın faiz ya da kira getirmez, ama TL bazında son 10 yılda dolardan yaklaşık 3,6 kat fazla kazandırdı. Geçmiş getiri gelecek için garanti değildir; yatırım tavsiyesi değildir.",
+  "tags": [
+    "altın",
+    "dolar",
+    "gram altın",
+    "birikim",
+    "enflasyon",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Altın faiz vermez, yine de kazandırır.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold bars stacked"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Altın bir ev gibi: kira getirmez, ama değeri TL karşısında yıllar içinde büyür.",
+      "visual": {
+        "type": "object",
+        "query": "house keys"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama rakam şaşırtıyor: son 10 yılda altın TL'de dolardan yaklaşık 3,6 kat fazla kazandırdı.",
+      "visual": {
+        "type": "chart",
+        "query": "rising line chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yani faiz yok diye dışlama; aylık küçük bir tutarla başla, değeri zaman büyütsün.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sırada altını kasada tutmanın gizli bedeli var. Abone ol, her gün tek net analiz.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold bars stacked"
+      }
+    }
+  ]
+}
