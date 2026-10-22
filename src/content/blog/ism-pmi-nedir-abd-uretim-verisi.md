@@ -1,7 +1,8 @@
 ---
 title: "ISM PMI Nedir? ABD Üretim Verisi Dolar ve TL'yi Nasıl Etkiler?"
-description: "ISM PMI nedir, 50 eşiği ne anlama gelir, bugünkü veri dolar, altın ve TL'yi nasıl etkiler? Tablo ve örneklerle açıkladık."
+description: "ISM PMI nedir, 50 eşiği ne anlama gelir? ABD imalat verisi doları, altını ve TL'yi nasıl etkiler, ne zaman açıklanır? Tablo ve örneklerle açıkladık."
 pubDate: 2026-07-01
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["ISM", "PMI", "ABD ekonomisi", "dolar", "risk iştahı", "üretim endeksi"]
 readingTime: 7
@@ -16,7 +17,7 @@ faq:
   - q: "ISM Manufacturing PMI Türkiye'yi nasıl etkiler?"
     a: "ABD üretimi güçlenirse küresel talep artar, risk iştahı yükselir; bu gelişmekte olan piyasalara sermaye çeker, TL ve BIST olumlu etkilenebilir. Zayıf PMI ise küresel riskten kaçışa neden olur, dolar güçlenir, TL baskı altına girebilir."
   - q: "ISM PMI ne zaman açıklanır?"
-    a: "ISM Manufacturing PMI her ayın ilk iş gününde, Türkiye saatiyle 17:00'de yayınlanır. Temmuz 2026 verisi (Haziran ayına ait) 1 Temmuz 2026'da açıklanacak."
+    a: "ISM Manufacturing PMI, bir önceki aya ait olarak her ayın ilk iş gününde ABD saatiyle 10:00'da yayınlanır. Bu Türkiye saatiyle ABD yaz saati döneminde 17:00'ye, kış döneminde 18:00'e denk gelir. Yaklaşan tarihler ParaFOMO ekonomik takviminde yer alır."
 shorts:
   - "Bu tek sayı tüm piyasaları nasıl sallar?"
   - "ISM PMI, ABD'deki yüzlerce fabrika yöneticisine sorulan anketin birleştirilmesiyle elde edilen, ekonomiyi özetleyen kritik bir göstergedir."
@@ -30,7 +31,7 @@ shorts_broll:
   - "Turkish lira currency exchange rate"
 ---
 
-Bugün saat 17:00'de (Türkiye saati) açıklanacak ISM Manufacturing PMI verisi küresel piyasaları sarsabilecek kritik bir gösterge. **ISM PMI nedir**, bu tek sayı nasıl bu kadar güçlü bir piyasa hareketi yaratır ve Türk yatırımcısını nasıl etkiler? Tüm detayları aşağıda bulacaksınız.
+Her ayın ilk iş gününde açıklanan ISM Manufacturing PMI verisi, küresel piyasaları sarsabilecek kritik bir göstergedir. **ISM PMI nedir**, bu tek sayı nasıl bu kadar güçlü bir piyasa hareketi yaratır ve Türk yatırımcısını nasıl etkiler? Tüm detayları aşağıda bulacaksınız.
 
 ## ISM PMI Nedir? Temel Tanım
 
@@ -64,11 +65,13 @@ ISM Manufacturing PMI beş alt endeksten oluşur; her biri farklı bir anlatı t
 
 | Alt Endeks | Ağırlık | Ne Anlatır? |
 |---|---|---|
-| **Yeni Siparişler** | %30 | Gelecek üretim talebinin öncü sinyali |
-| **Üretim** | %25 | Mevcut fabrika çıktısı |
+| **Yeni Siparişler** | %20 | Gelecek üretim talebinin öncü sinyali |
+| **Üretim** | %20 | Mevcut fabrika çıktısı |
 | **İstihdam** | %20 | Sektördeki işe alım/çıkarma eğilimi |
-| **Tedarikçi Teslimatı** | %15 | Zincir sıkışıklığı (yavaşlarsa =talep var) |
-| **Stoklar** | %10 | Envanter birikimi veya erimesi |
+| **Tedarikçi Teslimatı** | %20 | Zincir sıkışıklığı (yavaşlarsa =talep var) |
+| **Stoklar** | %20 | Envanter birikimi veya erimesi |
+
+Manşet PMI, bu beş alt endeksin eşit ağırlıklı ortalamasıdır.
 
 Yeni siparişler alt endeksi en güçlü öncü göstergedir: bugün sipariş veriyorsunuz, 1-3 ay sonra üretim ve istihdam bunu yansıtıyor.
 
@@ -82,9 +85,9 @@ Piyasada birden fazla PMI var: S&P Global da ayrı bir PMI hesaplar. Aralarında
 | **Örneklem** | ~400 üretim şirketi yöneticisi | ~800 şirket yöneticisi |
 | **Kapsam** | Sadece ABD | Küresel karşılaştırmaya uygun |
 | **Piyasa etkisi** | Daha yüksek piyasa hareketi | Öncü tahmin gibi kullanılır |
-| **Açıklama saati (TR)** | 17:00 | 16:45 |
+| **Açıklama saati (TSİ)** | 17:00 (ABD kış saatinde 18:00) | 16:45 (ABD kış saatinde 17:45) |
 
-Piyasa oyuncularının büyük çoğunluğu ISM PMI'a daha fazla ağırlık verir. 17:00'deki asıl okuma, 16:45'teki S&P versiyonunu büyük ölçüde gölgede bırakır.
+Piyasa oyuncularının büyük çoğunluğu ISM PMI'a daha fazla ağırlık verir. ISM'in asıl okuması, 15 dakika önce gelen S&P versiyonunu büyük ölçüde gölgede bırakır.
 
 ## Veri Nasıl Yorumlanır? Dolar, Altın ve TL Üzerindeki Etkisi
 
@@ -117,18 +120,18 @@ ISM PMI'ın piyasalara etkisi hem doğrudan hem dolaylıdır.
 
 Tablodaki yönler genel eğilimdir; tek başına PMI değil, Fed yorumu ve diğer verilerle birlikte anlamlı hale gelir.
 
-## Bugünkü Veri: 1 Temmuz 2026 Saat 17:00
+## Açıklama Günü: Hangi Eşiklere Bakılır?
 
-Haziran 2026 ISM Manufacturing PMI verisi bugün 17:00'de açıklanacak. Piyasanın gözetlediği eşikler:
+ISM Manufacturing PMI, her ayın ilk iş gününde Türkiye saatiyle 17:00'de (ABD kış saati döneminde 18:00) açıklanır; yaklaşan tarihleri [ekonomik takvim](/ekonomik-takvim/) sayfasından takip edebilirsiniz. Piyasanın gözettiği eşikler:
 
 - **55 ve üzeri:** Güçlü büyüme → dolar güçlenme baskısı, risk iştahı yükselir
 - **50–55 arası:** Ilımlı genişleme → büyük piyasa hareketi beklenmez
 - **48–50 arası:** Eşik altına yakın → kaygı artar, Fed beklentileri öne çıkar
 - **48 altı:** Belirgin daralma → risk-off mod, dolar güçlenir, altın yükselir
 
-**Dikkat:** Bugün aynı saatte ISM Manufacturing Prices verisi de açıklanıyor. Bu, üretim maliyetlerini ölçer — enflasyon baskısını anlatan bir gösterge. Hem PMI hem fiyat bileşeni beklenti üzerinde gelirse Fed'in faiz indirimi yolu daralır; bu dolar için güçlendirici sinyal.
+**Dikkat:** Aynı raporda ISM Manufacturing Prices verisi de açıklanır. Bu, üretim maliyetlerini ölçer — enflasyon baskısını anlatan bir gösterge. Hem PMI hem fiyat bileşeni beklenti üzerinde gelirse Fed'in faiz indirimi yolu daralır; bu dolar için güçlendirici sinyal.
 
-Veri öncesinde ne yapılmaz: tek bir veri açıklamasına dayanarak spekülatif pozisyon almak risklini artırır. Veriyi beklemek ve piyasanın nasıl sindirdiğini 15-30 dakika gözlemlemek daha sağlıklı bir yaklaşım.
+Veri öncesinde ne yapılmaz: tek bir veri açıklamasına dayanarak spekülatif pozisyon almak riskinizi artırır. Veriyi beklemek ve piyasanın nasıl sindirdiğini 15-30 dakika gözlemlemek daha sağlıklı bir yaklaşım.
 
 ## ISM PMI Tarihsel Örüntüsü
 
@@ -148,8 +151,8 @@ Bu örüntü önemli: PMI birkaç ay üst üste 50 altında kalırsa, Fed faiz i
 
 1. **Döviz pozisyonunuz varsa:** ISM PMI güçlü gelirse dolar güçlenebilir; kur hedgelerinizi gözden geçirin
 2. **BIST hisseleri:** Zayıf PMI + Fed faiz indirimi beklentisi kombinasyonu BIST için potansiyel olarak olumlu; ancak kısa vadeli oynaklık kaçınılmaz
-3. **Altın:** PMI sonrası ilk 1-2 saati gözlemleyin; yönü 17:30'a kadar görmek mümkün olabilir
-4. **Uzun vadeli bakış:** Tek bir PMI verisi portföy stratejisini değiştirmez — [bileşik getiri mantığıyla](/blog/bilesik-faiz-nedir) düzenli yatırım yapıyorsanız bugün sakin kalın
+3. **Altın:** PMI sonrası ilk 1-2 saati gözlemleyin; yön çoğu zaman ilk yarım saatte belirginleşmeye başlar
+4. **Uzun vadeli bakış:** Tek bir PMI verisi portföy stratejisini değiştirmez — [bileşik getiri mantığıyla](/bilesik-faiz-hesaplama/) düzenli yatırım yapıyorsanız veri günlerinde sakin kalın
 
 Döviz ve ABD verilerinin ilişkisini daha geniş çerçevede anlamak için [NFP (Tarım Dışı İstihdam) rehberimize](/blog/nfp-nedir-abd-tarim-disi-istihdam) ve [Fed'in enflasyon göstergesi PCE yazımıza](/blog/pce-nedir-fed-enflasyon-gostergesi) da bakabilirsiniz. Bu üç veri — PMI, NFP, PCE — birlikte ABD ekonomisinin sağlığını çok daha net gösterir.
 
@@ -157,7 +160,7 @@ Döviz ve ABD verilerinin ilişkisini daha geniş çerçevede anlamak için [NFP
 
 - **ISM Manufacturing PMI**, ABD üretim sektörü yöneticilerinin aktivite anketidir; 50 üzeri büyüme, 50 altı daralma demektir.
 - **50 eşiği** piyasaların en çok izlediği kritik çizgidir; yönü ve beklentiden sapması belirleyicidir.
-- **Bugün 17:00'de** Haziran verisi açıklanacak; beraberinde ISM Manufacturing Prices de gelecek — her ikisi birden dolar, altın ve TL üzerinde etki yaratabilir.
+- Veri **her ayın ilk iş günü TSİ 17:00'de** (ABD kış saatinde 18:00) açıklanır; beraberinde ISM Manufacturing Prices de gelir — her ikisi birden dolar, altın ve TL üzerinde etki yaratabilir.
 - **Beklentilerin üzerinde** gelen PMI dolar güçlenir, TL/USD kuru yükselme baskısı altına girebilir.
 - **50 altı** veri resesyon korkusunu besler, Fed faiz indirimi beklentisini öne çeker — dolar zayıflar, altın yükselir.
 - **Tek veri kararı değiştirmez:** Uzun vadeli yatırım planınız varsa bunu koruyun, kısa vadeli dalgalanmaya kapılmayın.

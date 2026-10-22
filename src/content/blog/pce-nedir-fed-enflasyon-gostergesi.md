@@ -1,7 +1,8 @@
 ---
 title: "PCE Nedir? Fed'in Enflasyon Göstergesi Dolar'ı Nasıl Etkiler?"
-description: "PCE nedir, neden Fed CPI yerine bunu izler ve 25 Haziran verisi dolar, altın, TL'yi nasıl etkiler? Karşılaştırma tablosuyla açıkladık."
+description: "PCE nedir, Fed neden CPI yerine bunu izler? Çekirdek PCE verisi doları, altını ve TL'yi nasıl etkiler, ne zaman açıklanır? Tablolarla açıkladık."
 pubDate: 2026-06-22
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["PCE", "Fed", "enflasyon", "dolar", "ABD ekonomisi", "faiz"]
 readingTime: 7
@@ -16,7 +17,7 @@ faq:
   - q: "Türkiye'deki yatırımcı PCE verisini neden takip etmeli?"
     a: "ABD'nin faiz kararları küresel risk iştahını belirler. Dolar güçlenirse TL değer kaybeder, altın fiyatı baskılanabilir. Fed faiz indirimine başlarsa gelişmekte olan ülkelere sermaye akışı artar — BIST100 ve TL bundan olumlu etkilenebilir."
   - q: "PCE verisi ne zaman açıklanır?"
-    a: "PCE verisi ABD Ticaret Bakanlığı tarafından her ayın sonunda açıklanır. Mayıs 2026 verisi 25 Haziran 2026 Perşembe günü saat 15:30 Türkiye saatiyle yayınlanacak."
+    a: "PCE verisi, ABD Ticaret Bakanlığı'na bağlı BEA tarafından genellikle her ayın son haftasında, bir önceki ayı kapsayacak şekilde ABD saatiyle 08:30'da açıklanır. Bu Türkiye saatiyle ABD yaz saati döneminde 15:30'a, kış döneminde 16:30'a denk gelir. Yaklaşan tarihler ParaFOMO ekonomik takviminde yer alır."
 shorts:
   - "Bu tek veri dolar kurunu alt üst edebilir."
   - "PCE, Fed'in tercih ettiği enflasyon göstergesi; yüzde iki hedefiyle fiyat istikrarını bu veriyle takip ediyor."
@@ -30,7 +31,7 @@ shorts_broll:
   - "currency exchange rate board"
 ---
 
-25 Haziran'da piyasaları hareketlendirecek kritik bir veri geliyor: Fed'in favori enflasyon göstergesi PCE raporu. Bu sayı, dolar yönünü, küresel faiz beklentilerini ve dolaylı yoldan TL'yi şekillendirecek. **PCE nedir** ve sizi nasıl etkiler? Adım adım açıklıyoruz.
+Her ay sonuna doğru piyasaları hareketlendiren kritik bir veri gelir: Fed'in favori enflasyon göstergesi PCE raporu. Bu sayı, dolar yönünü, küresel faiz beklentilerini ve dolaylı yoldan TL'yi şekillendirir. **PCE nedir** ve sizi nasıl etkiler? Adım adım açıklıyoruz.
 
 ## PCE Nedir? Kısaca Tanım
 
@@ -71,7 +72,7 @@ Core PCE, gıda ve enerji fiyatlarını dışarıda bırakır. Bu iki kategori o
 
 Fed, "enflasyon gerçekten yapısal mı?" sorusunu yanıtlamak için çekirdek PCE'ye bakar. Enerji fiyatları bir ay yüzde yirmi yükselip sonraki ay geri inerse bunu kalıcı tehdit saymaz; ama çekirdek enflasyon ay ay artıyorsa faiz artırımı sinyali verir.
 
-**25 Haziran'da açıklanacak olan işte bu çekirdek PCE (Core PCE MoM ve YoY) verisidir.**
+**Piyasaların her açıklamada ilk baktığı rakam da işte bu çekirdek PCE (Core PCE MoM ve YoY) verisidir.**
 
 ## PCE Verisi Dolar Kurunu Nasıl Etkiler?
 
@@ -109,19 +110,20 @@ PCE sonuçları doğrudan Fed faiz beklentilerini ve dolayısıyla dolar kurunu 
 
 **Portföy stratejisi:** Tek bir veriyle kısa vadeli alım-satım yapmak yerine [uzun vadeli enflasyon koruması stratejilerini](/blog/enflasyondan-nasil-korunur) güçlü tutmak daha sağlıklı yaklaşımdır.
 
-## 25 Haziran Verisinde Ne İzlenmeli?
+## PCE Açıklama Gününde Ne İzlenmeli?
 
-- **Tarih:** 25 Haziran 2026, Perşembe
-- **Saat:** 15:30 Türkiye saati
-- **Açıklanacak:** Core PCE MoM, Core PCE YoY + aynı gün GDP Q1 revizyonu da geliyor
+- **Tarih:** Genellikle her ayın son haftası (bir önceki ayın verisi)
+- **Saat:** ABD saatiyle 08:30 — Türkiye saatiyle 15:30 (ABD kış saati döneminde 16:30)
+- **Açıklanan:** Genel ve Core PCE (MoM ve YoY), kişisel gelir ve harcama verileriyle birlikte
 
-Dikkat edilecek eşikler:
+Kesin tarihleri [ekonomik takvim](/ekonomik-takvim/) sayfasından, verinin etkileyeceği toplantıları [Fed faiz takvimi](/fed-faiz-takvimi/) sayfasından takip edebilirsiniz. Açıklama günü dikkat edilecekler:
 
-- **Core PCE YoY > %2,8:** Sürpriz artış → dolar güçlenme baskısı, risk varlıkları geri çekilebilir
-- **Core PCE YoY < %2,4:** Belirgin yavaşlama → faiz indirimi beklentileri canlanır
-- **%2,5–2,7 arası:** Beklentilere paralel → büyük hareket için Fed'in tonuna bakılır
+- **Core PCE YoY konsensüsün belirgin üzerinde:** Sürpriz artış → dolar güçlenme baskısı, risk varlıkları geri çekilebilir
+- **Core PCE YoY konsensüsün belirgin altında:** Belirgin yavaşlama → faiz indirimi beklentileri canlanır
+- **Beklentilere paralel:** Büyük hareket için Fed'in tonuna ve önceki ay revizyonlarına bakılır
+- **%2 hedefine mesafe:** Çekirdek PCE'nin Fed'in yüzde iki hedefinden ne kadar uzak olduğu, faiz indirimlerinin hızını belirleyen ana etkendir
 
-**Pratik ipucu:** Veri öncesinde spekülatif pozisyon almak yerine veriyi beklemek ve piyasanın nasıl sindirdiğini gözlemlemek daha temkinli bir yaklaşımdır. Süregelen bir enflasyon koruması planınız varsa (altın, döviz, [endeks fonu](/blog/endeks-fonu-nedir)), tek bir veri açıklaması stratejinizi değiştirmenizi gerektirmez.
+**Pratik ipucu:** Veri öncesinde spekülatif pozisyon almak yerine veriyi beklemek ve piyasanın nasıl sindirdiğini gözlemlemek daha temkinli bir yaklaşımdır. Süregelen bir enflasyon koruması planınız varsa (altın, döviz, [endeks fonu](/blog/etf-nedir-borsa-yatirim-fonu/)), tek bir veri açıklaması stratejinizi değiştirmenizi gerektirmez.
 
 ## Haber Akışını Sağlıklı Okumak İçin Çerçeve
 
@@ -138,7 +140,7 @@ Bu dört soruya cevabınız varsa manşetlerin yarattığı panikten bağımsız
 
 - **PCE**, ABD'de kişisel tüketim harcamalarını ölçen enflasyon endeksidir; Fed'in yüzde iki hedefi bu göstergeye dayanır.
 - **Core PCE** (çekirdek), oynak gıda ve enerji harcamalarını dışarıda tutar; Fed kalıcı enflasyon trendini buradan okur.
-- **25 Haziran 2026**'da Mayıs ayı Core PCE verisi açıklanacak; beklentilerin üzeri dolar'ı güçlendirir ve TL/altın üzerinde baskı yaratabilir.
+- PCE verisi genellikle her ayın son haftasında açıklanır; beklentilerin üzerinde gelen çekirdek PCE doları güçlendirir ve TL/altın üzerinde baskı yaratabilir.
 - **Türk yatırımcı** için PCE, dolaylı yoldan kur, altın ve BIST100 üzerinde etki yaratır.
 - Uzun vadeli yatırım stratejisini tek bir veri açıklamasına göre değiştirmek doğru değildir; temel planınızı koruyun.
 

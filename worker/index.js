@@ -13,6 +13,21 @@ const REDIRECTS = {
   // 2026-10-13: eski sitedeki portföy mini-uygulaması kaldırıldı; tek ürün app.parafomo.com.
   '/portfoy-takip/': 'https://app.parafomo.com/portfoy/',
   '/portfoy/panel/': 'https://app.parafomo.com/portfoy/',
+  // 2026-10-22: GSC yamyamlaşma temizliği — aynı arama niyeti için tek URL; içerik kalan yazıya birleştirildi.
+  '/blog/abd-faiz-yukseltirse-dolar-ne-olur/': '/blog/abd-faiz-artarsa-ne-olur/',
+  '/blog/abd-faiz-artarsa-altin-ne-olur/': '/blog/abd-faiz-artarsa-ne-olur/',
+  '/blog/2026-fed-toplanti-tarihleri/': '/fed-faiz-takvimi/',
+  '/blog/jackson-hole-2026-ne-zaman-warsh-konusmasi/': '/blog/jackson-hole-sempozyumu-nedir/',
+  '/blog/altin-cesitleri-farki/': '/blog/altin-cesitleri-gram-ceyrek-ons-ziynet/',
+  '/blog/etf-nasil-alinir/': '/blog/etf-nedir-borsa-yatirim-fonu/',
+  '/blog/endeks-fonu-nedir/': '/blog/etf-nedir-borsa-yatirim-fonu/',
+  '/blog/boj-faiz-karari-nedir-etkisi/': '/blog/boj-nedir-japonya-merkez-bankasi/',
+  '/blog/bilesik-faiz-nedir/': '/bilesik-faiz-hesaplama/',
+  '/blog/abd-cpi-enflasyon-verisi-nedir/': '/blog/cekirdek-cpi-nedir-fed-enflasyon-gostergesi/',
+  '/blog/ecb-eylul-2026-faiz-karari-euro-tl-etkisi/': '/blog/ecb-faiz-karari-nedir-etkisi/',
+  '/blog/kredi-karti-borcundan-kurtulma/': '/blog/borc-kapatma-yontemi-kartopu-cig/',
+  '/blog/tufe-enflasyon-verisi-nasil-okunur/': '/blog/tufe-sepeti-nedir-enflasyon-nasil-hesaplanir/',
+  '/blog/temettu-hisseleri-pasif-gelir/': '/blog/temettu-verimi-nedir/',
 };
 
 export default {

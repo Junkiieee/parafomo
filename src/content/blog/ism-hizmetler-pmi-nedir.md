@@ -1,7 +1,8 @@
 ---
 title: "ISM Hizmetler PMI Nedir? ABD Servis Sektörü Verisi Dolar ve TL'yi Nasıl Etkiler?"
-description: "ISM Non-Manufacturing (Hizmetler) PMI nedir, 6 Temmuz'da ne açıklanacak ve veri dolar, altın, TL'yi nasıl etkiler? Türk yatırımcı için kapsamlı rehber."
+description: "ISM Hizmetler (Non-Manufacturing) PMI nedir, nasıl okunur? ABD servis sektörü verisi doları, altını ve TL'yi nasıl etkiler? Türk yatırımcı için rehber."
 pubDate: 2026-07-04
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["ISM hizmetler PMI", "ISM Non-Manufacturing PMI", "ABD servis sektörü", "dolar TL etkisi", "ekonomik gösterge", "PMI nedir"]
 readingTime: 8
@@ -12,7 +13,7 @@ faq:
   - q: "ISM Hizmetler PMI ile ISM İmalat PMI arasındaki fark nedir?"
     a: "İmalat PMI fabrikalar ve üretim tesislerini ölçerken, Hizmetler PMI bankacılık, perakende, restoran, sağlık ve lojistik gibi servis sektörlerini ölçer. Hizmetler PMI ekonominin daha büyük dilimini kapsar ve çoğu analist tarafından daha kapsayıcı gösterge olarak değerlendirilir."
   - q: "ISM Hizmetler PMI ne zaman açıklanır?"
-    a: "Her ayın üçüncü iş günü civarı, Türkiye saatiyle 17:00'de açıklanır. Temmuz 2026 verisi (Haziran ayına ait) 6 Temmuz 2026 Pazartesi günü saat 17:00'de yayınlanacak."
+    a: "Bir önceki aya ait veri, her ayın üçüncü iş günü civarında ABD saatiyle 10:00'da açıklanır. Bu Türkiye saatiyle ABD yaz saati döneminde 17:00'ye, kış döneminde 18:00'e denk gelir. Yaklaşan tarihler ParaFOMO ekonomik takviminde yer alır."
   - q: "50 eşiğinin altına düşerse ne olur?"
     a: "PMI 50'nin altına indiğinde hizmetler sektörünün daraldığı sinyali verilir. ABD ekonomisinin büyük çoğunluğu hizmetlerden oluştuğu için bu durum resesyon endişesini imalat PMI'ına kıyasla çok daha hızlı tetikler."
   - q: "ISM Hizmetler PMI Türkiye'yi nasıl etkiler?"
@@ -30,7 +31,7 @@ shorts_broll:
   - "business survey economic activity office workers"
 ---
 
-Pazartesi günü saat 17:00'de açıklanacak **ISM Hizmetler PMI** (Non-Manufacturing PMI) verisi, küresel piyasaların radar ekranında kırmızı bir noktayla işaretli. Ama çoğu yatırımcı bu göstergeyi kardeşi ISM İmalat PMI'ı ile karıştırıyor ya da neden bu kadar önemli olduğunu tam kavrayamıyor. Oysa ABD ekonomisinin yaklaşık **%70'ini hizmet sektörü** oluşturuyor — bu veri, milyonlarca çalışanın, tüketicinin ve işletmenin nabzını tek bir sayıda özetliyor.
+Her ayın ilk günlerinde açıklanan **ISM Hizmetler PMI** (Non-Manufacturing PMI) verisi, küresel piyasaların radar ekranında kırmızı bir noktayla işaretlidir. Ama çoğu yatırımcı bu göstergeyi kardeşi ISM İmalat PMI'ı ile karıştırıyor ya da neden bu kadar önemli olduğunu tam kavrayamıyor. Oysa ABD ekonomisinin yaklaşık **%70'ini hizmet sektörü** oluşturuyor — bu veri, milyonlarca çalışanın, tüketicinin ve işletmenin nabzını tek bir sayıda özetliyor.
 
 ## ISM Hizmetler PMI Nedir?
 
@@ -92,11 +93,11 @@ Kısacası: imalat PMI büyük başlık oluşturur ama hizmetler PMI ABD ekonomi
 
 Detaylı karşılaştırma için [ISM İmalat PMI rehberimize](/blog/ism-pmi-nedir-abd-uretim-verisi) bakabilirsiniz.
 
-## 6 Temmuz Verisi: Piyasalar Ne Bekliyor?
+## Açıklama Günü: Piyasalar Neye Bakar?
 
-Haziran 2026 ISM Non-Manufacturing PMI verisi **6 Temmuz Pazartesi, saat 17:00**'de açıklanacak. Aynı saatte ISM Non-Manufacturing Prices (hizmetler sektörü fiyat bileşeni) de yayımlanacak — bu kombinasyon hem büyüme hem enflasyon sinyali taşıdığından piyasalar için çift ateşli bir açıklama olacak.
+ISM Hizmetler PMI, bir önceki aya ait olarak her ayın üçüncü iş günü civarında **Türkiye saatiyle 17:00'de** (ABD kış saati döneminde 18:00) açıklanır. Aynı raporda ISM Services Prices (hizmetler sektörü fiyat bileşeni) de yayımlanır — bu kombinasyon hem büyüme hem enflasyon sinyali taşıdığından piyasalar için çift ateşli bir açıklamadır. Yaklaşan açıklama tarihlerini [ekonomik takvim](/ekonomik-takvim/) sayfasından takip edebilirsiniz.
 
-Piyasanın gözlemleyeceği olası senaryolar:
+Piyasanın gözlemlediği olası senaryolar:
 
 ### Senaryo 1: PMI Güçlü Gelir (53+)
 - Hizmetler sektörü hâlâ canlanıyor → ekonomi resesyona girmiyor
@@ -107,7 +108,7 @@ Piyasanın gözlemleyeceği olası senaryolar:
 ### Senaryo 2: PMI 50 Civarı (49–51)
 - Belirsizlik artar, büyük bir piyasa hareketi beklenmez
 - Fed beklentileri için belirleyici olmaz
-- Gözler 8 Temmuz'daki FOMC tutanaklarına kayar
+- Gözler bir sonraki büyük veriye ya da [FOMC tutanaklarına](/blog/fomc-toplanti-tutanaklari-nedir) kayar
 
 ### Senaryo 3: PMI Zayıf Gelir (48 altı)
 - Hizmetler sektörü de daralıyor → resesyon riski ciddi hale gelir
@@ -139,9 +140,9 @@ ABD ekonomisi güçlüyse küresel risk iştahı artar; gelişmekte olan piyasal
 ### 3. Altın Kanalı
 Altın yatırımı yapıyorsanız şunu hatırlayın: dolar güçlenirse hem gram hem ons altın kısa vadede baskı altına girebilir. PMI zayıf gelirse tam tersi olabilir. [Altın mı dolar mı tartışması](/blog/altin-mi-dolar-mi) için detaylı karşılaştırma yazımıza bakabilirsiniz.
 
-**Ne yapmamalısınız:** Açıklama saatinden önce spekülatif pozisyon almak. Verinin ilk 5-10 dakikası genellikle "refleks hareketi" yaratır ve geri alınır. Piyasanın veriyi nasıl sindireldiğini 15-30 dakika izlemek daha sağlıklı bir yaklaşım.
+**Ne yapmamalısınız:** Açıklama saatinden önce spekülatif pozisyon almak. Verinin ilk 5-10 dakikası genellikle "refleks hareketi" yaratır ve geri alınır. Piyasanın veriyi nasıl sindirdiğini 15-30 dakika izlemek daha sağlıklı bir yaklaşım.
 
-**Uzun vadeli yatırımcıysanız:** Bu veri sizin için operasyonel değil, enformasyonel değer taşır. Ekonominin nereye gittiğini anlamak için aylık PMI serisini takip edin; ama [uzun vadeli bileşik getiri stratejinizi](/blog/bilesik-faiz-nedir) tek bir haber üzerine revize etmeyin.
+**Uzun vadeli yatırımcıysanız:** Bu veri sizin için operasyonel değil, enformasyonel değer taşır. Ekonominin nereye gittiğini anlamak için aylık PMI serisini takip edin; ama [uzun vadeli bileşik getiri stratejinizi](/bilesik-faiz-hesaplama/) tek bir haber üzerine revize etmeyin.
 
 ## Özet
 
@@ -149,7 +150,7 @@ Altın yatırımı yapıyorsanız şunu hatırlayın: dolar güçlenirse hem gra
 - **50 eşiği** temel kural: üzeri genişleme, altı daralma; trend tek okumadan daha anlamlıdır.
 - **Dört bileşen** izlenir: İş Aktivitesi, Yeni Siparişler, İstihdam, Tedarikçi Teslimatı — Yeni Siparişler en öncü göstergedir.
 - **İmalat PMI'ından** daha kapsayıcıdır; ABD 2022-2023'te imalat daralmasına rağmen resesyona girmedi çünkü hizmetler dirençliydi.
-- **6 Temmuz saat 17:00**: Güçlü veri dolara destek verir, TL baskı altına girebilir; zayıf veri Fed faiz indirimi beklentisini güçlendirir.
+- **Açıklama (her ayın ~3. iş günü, TSİ 17:00; ABD kış saatinde 18:00)**: Güçlü veri dolara destek verir, TL baskı altına girebilir; zayıf veri Fed faiz indirimi beklentisini güçlendirir.
 - **Türk yatırımcı** için döviz, borsa ve altın kanallarından etki yaratır; ancak tek veri uzun vadeli planı değiştirmez.
 
 ---

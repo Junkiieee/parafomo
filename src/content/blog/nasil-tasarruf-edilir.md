@@ -114,7 +114,7 @@ Kira artı ulaşım giderleri toplamı, gelirin %35'ini geçmemeli. Şehrin bira
 
 ### 14. Kredi kartı borcunu önce kapatın
 
-Kredi kartı faizi çoğu tasarruf aracının getirisinden çok daha yüksektir. Yatırım yapmadan önce yüksek faizli borcu kapatmak, negatif getirili bir pozisyonu kapatmak anlamına gelir. Konu hakkında ayrıntılı rehber: [Kredi Kartı Borcundan Nasıl Kurtulunur?](/blog/kredi-karti-borcundan-kurtulma).
+Kredi kartı faizi çoğu tasarruf aracının getirisinden çok daha yüksektir. Yatırım yapmadan önce yüksek faizli borcu kapatmak, negatif getirili bir pozisyonu kapatmak anlamına gelir. Konu hakkında ayrıntılı rehber: [Kredi Kartı Borcundan Nasıl Kurtulunur?](/blog/borc-kapatma-yontemi-kartopu-cig/).
 
 ### 15. Harcama takip uygulaması kullanın
 
@@ -138,7 +138,7 @@ Sigorta yenileme, okul ücreti, yıllık aidat: bunları takvime ekleyin. Sürpr
 
 ### 20. Birikiminizi enflasyona karşı çalıştırın
 
-Tasarruf hesabında bekleyen para, enflasyonla yavaşça erir. Acil durum fonunun üzerindeki birikim için enflasyonun üzerinde getiri sağlayan araçları değerlendirin. Yeni başlayanlar için en düşük maliyetli ve en az uğraş isteyen seçeneklerin başında piyasanın tamamını tek alımda takip eden fonlar gelir — [endeks fonu nedir](/blog/endeks-fonu-nedir) ve Türkiye'den nasıl alınır sorusunu adım adım burada yanıtladım. Bileşik getirinin neden bu kadar güçlü olduğunu burada anlattım: [Bileşik Faiz Nedir ve Neden Bu Kadar Güçlü?](/blog/bilesik-faiz-nedir).
+Tasarruf hesabında bekleyen para, enflasyonla yavaşça erir. Acil durum fonunun üzerindeki birikim için enflasyonun üzerinde getiri sağlayan araçları değerlendirin. Yeni başlayanlar için en düşük maliyetli ve en az uğraş isteyen seçeneklerin başında piyasanın tamamını tek alımda takip eden fonlar gelir — [endeks fonu nedir](/blog/etf-nedir-borsa-yatirim-fonu/) ve Türkiye'den nasıl alınır sorusunu adım adım burada yanıtladım. Bileşik getirinin ne kadar güçlü olduğunu [bileşik faiz hesaplama](/bilesik-faiz-hesaplama/) aracımızla kendi rakamlarınızla görebilirsiniz.
 
 ## Tasarruf Hedefi Nasıl Belirlenir?
 

@@ -47,7 +47,7 @@ const kardes = ALTIN_SPECS.filter((s) => s.slug !== spec.slug && items.some((i) 
 
 const baslikKisa = spec.birim === 'gram' && spec.grup === 'ayar' ? `${spec.ad} Gram Fiyatı` : `${spec.ad} Fiyatı`;
 // Google ~70 karakterde keser: baş sorgu + tarih sabit, kuyruk sığdığı kadar (seo-audit title_long).
-const titleBase = `${usd ? 'Ons Altın Fiyatı' : baslikKisa} Bugün (${dateLabel})`;
+const titleBase = `${usd ? 'Ons Altın Fiyatı' : baslikKisa} Bugün`; // tarih başlıkta bayatlıyordu (Google eski kopyayı "15 Ekim" diye gösteriyordu)
 const titleKuyruk = usd
   ? ['Ons Altın Kaç Dolar?', 'Kaç Dolar?']
   : [`${spec.ad} Kaç TL${spec.birim === 'adet' ? ', Kaç Gram' : ''}?`, `${spec.ad} Kaç TL?`, 'Kaç TL?'];

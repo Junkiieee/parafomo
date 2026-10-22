@@ -1,8 +1,8 @@
 {
-  "updated": "2026-10-22T12:15+00:00",
+  "updated": "2026-10-22T13:17+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
-  "count": 42,
+  "count": 70,
   "items": [
     {
       "company": "İnternet Tekstil Sanayii ve Tic. A.Ş.",
@@ -4117,6 +4117,3814 @@
             "group": "Toplam",
             "people": "961.387",
             "lot": "135.579.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Şa-Ra Enerji İnşaat Tic. ve San. A.Ş.",
+      "bist_code": "SARAE",
+      "slug": "sa-ra-enerji-insaat-tic-ve-san-a-s",
+      "link": "https://halkarz.com/sa-ra-enerji-insaat-tic-ve-san-a-s/",
+      "date_text": "8-9-10 Temmuz 2026",
+      "start": "2026-07-08",
+      "end": "2026-07-10",
+      "status": "Tamamlandı",
+      "price": "70,00 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "89.000.000 Lot",
+      "broker": "Tera Yatırım Menkul Değerler A.Ş.",
+      "market": "Yıldız Pazar",
+      "first_trade": "17 Temmuz 2026",
+      "float_lot": "88.994.319 Lot",
+      "float_pct": "%20.02",
+      "updated_src": "15.09.2026 10:49",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 44.500.000 Lot",
+            "Ortak Satışı : 35.600.000 Lot (Şadi Türk)",
+            "Ortak Satışı : 8.900.000 (Hilkat Mor)"
+          ],
+          "source": "SPK Bülteni, 2026/43."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%15 Yatırım harcamaları",
+            "%55 İşletme sermayesi",
+            "%30 Finansal borç ödemesi"
+          ],
+          "source": "İzahname, Sayfa 296."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "tahsisat": {
+          "items": [
+            "33.820.000 Lot (%38) Yurt İçi Bireysel Yatırımcı",
+            "1.780.000 Lot (%2) Şirket Çalışanları",
+            "8.900.000 Lot (%10) Yüksek Başvurulu Yatırımcı",
+            "22.250.000 Lot (%25) Yurt İçi Kurumsal Yatırımcı",
+            "22.250.000 Lot (%25) Yurt Dışı Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 282."
+        },
+        "dagitilan": {
+          "items": [
+            "728.823 katılım ~ 45 Lot (3150 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "Planlanmamaktadır"
+          ],
+          "source": "İzahname, Sayfa 293."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 294."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%20,02"
+          ],
+          "source": "İzahname, Sayfa 240."
+        },
+        "iskonto": {
+          "items": [
+            "%20"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 84."
+        },
+        "buyukluk": {
+          "items": [
+            "6,2 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2026/3",
+            "2025",
+            "2024"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "3,3 Milyar TL",
+                "7,0 Milyar TL",
+                "14,3 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "904,9 Milyon TL",
+                "1,9 Milyar TL",
+                "3,4 Milyar TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "728.823",
+            "lot": "33.820.000",
+            "pct": "%38"
+          },
+          {
+            "group": "Yüksek Başvurulu",
+            "people": "344",
+            "lot": "8.900.000",
+            "pct": "%10"
+          },
+          {
+            "group": "Şirket Çalışanları",
+            "people": "263",
+            "lot": "1.780.000",
+            "pct": "%2"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "115",
+            "lot": "22.250.000",
+            "pct": "%25"
+          },
+          {
+            "group": "Yurt Dışı Kurumsal",
+            "people": "15",
+            "lot": "22.250.000",
+            "pct": "%25"
+          },
+          {
+            "group": "Toplam",
+            "people": "729.560",
+            "lot": "89.000.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Saat ve Saat San. ve Tic. A.Ş.",
+      "bist_code": "SSAAT",
+      "slug": "saat-ve-saat-san-ve-tic-a-s",
+      "link": "https://halkarz.com/saat-ve-saat-san-ve-tic-a-s/",
+      "date_text": "6-7-8 Temmuz 2026",
+      "start": "2026-07-06",
+      "end": "2026-07-08",
+      "status": "Tamamlandı",
+      "price": "56,00 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "66.944.955 Lot",
+      "broker": "Garanti Yatırım Menkul Kıymetler A.Ş. Halk Yatırım Menkul Değerler A.Ş.",
+      "market": "Yıldız Pazar",
+      "first_trade": "16 Temmuz 2026",
+      "float_lot": "66.939.748 Lot",
+      "float_pct": "%10,13",
+      "updated_src": "15.09.2026 10:51",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 40.166.973 Lot",
+            "Ortak Satışı : 26.777.982 Lot",
+            "Ek Ortak Satışı : 13.388.991 Lot"
+          ],
+          "source": "SPK Bülteni, 2026/43."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%20 Finansal borçların ödenmesi",
+            "%80 İşletme sermayesi"
+          ],
+          "source": "İzahname, Sayfa 351."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "tahsisat": {
+          "items": [
+            "40.166.973 Lot (%60) Yurt İçi Bireysel Yatırımcı",
+            "26.777.982 Lot (%40) Yurt İçi Kurumsal Yatırımcı",
+            "Ek satış için herhangi bir sınırlama yoktur"
+          ],
+          "source": "İzahname, Sayfa 333."
+        },
+        "dagitilan": {
+          "items": [
+            "693.013 katılım ~ 58 Lot (3248 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün. * Brüt halka arz gelirinin %20'si",
+            "(Halk Yatırım Menkul Değerler A.Ş.)"
+          ],
+          "source": "İzahname, Sayfa 345."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 348."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%12,3"
+          ],
+          "source": "İzahname, Sayfa 293."
+        },
+        "iskonto": {
+          "items": [
+            "%37,01"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 81."
+        },
+        "buyukluk": {
+          "items": [
+            "4,5 Milyar TL. (Ek satış dahil)"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2026/3",
+            "2025",
+            "2024"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "3,3 Milyar TL",
+                "13,0 Milyar TL",
+                "11,5 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "1,9 Milyar TL",
+                "7,7 Milyar TL",
+                "6,7 Milyar TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "693.013",
+            "lot": "40.166.973",
+            "pct": "%60"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "125",
+            "lot": "26.777.982",
+            "pct": "%40"
+          },
+          {
+            "group": "Toplam",
+            "people": "693.138",
+            "lot": "66.944.955",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "İsvea Seramik ve Banyo Ürünleri Sanayi A.Ş.",
+      "bist_code": "ISVEA",
+      "slug": "isvea-seramik-ve-banyo-urunleri-sanayi-a-s",
+      "link": "https://halkarz.com/isvea-seramik-ve-banyo-urunleri-sanayi-a-s/",
+      "date_text": "1-2-3 Temmuz 2026",
+      "start": "2026-07-01",
+      "end": "2026-07-03",
+      "status": "Tamamlandı",
+      "price": "20,90 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "67.000.000 Lot",
+      "broker": "Halk Yatırım Menkul Değerler A.Ş. Ahlatcı Yatırım Menkul Değerler A.Ş.",
+      "market": "Ana Pazar",
+      "first_trade": "10 Temmuz 2026",
+      "float_lot": "66.693.325 Lot",
+      "float_pct": "%23.92",
+      "updated_src": "15.09.2026 10:53",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 60.000.000 Lot",
+            "Ortak Satışı : 7.000.000 Lot"
+          ],
+          "source": "SPK Bülteni, 2026/41."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%10-15 Öztüketime yönelik yenilenebilir enerji yatırımları",
+            "%20-30 Makine ve ekipman yatırımları",
+            "%10-15 Kiralama yoluyla elde edilen makine ve teçhizatların satın alma yatırımları",
+            "%15-25 Finansal borçluluğun azaltılması",
+            "%15-25 İşletme sermayesi"
+          ],
+          "source": "İzahname, Sayfa 271."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "tahsisat": {
+          "items": [
+            "40.200.000 Lot (%60) Yurt İçi Bireysel Yatırımcı",
+            "26.800.000 Lot (%40) Yurt İçi Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 252."
+        },
+        "dagitilan": {
+          "items": [
+            "901.425 katılım ~ 45 Lot (940 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün. * Brüt halka arz gelirinin %20'si",
+            "(Halk Yatırım Menkul Değerler A.Ş.)"
+          ],
+          "source": "İzahname, Sayfa 266."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 267."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%23,93"
+          ],
+          "source": "İzahname, Sayfa 222."
+        },
+        "iskonto": {
+          "items": [
+            "%27,03"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 66."
+        },
+        "buyukluk": {
+          "items": [
+            "1,4 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2026/3",
+            "2025",
+            "2024"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "584,2 Milyon TL",
+                "2,3 Milyar TL",
+                "2,7 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "158,7 Milyon TL",
+                "830,8 Milyon TL",
+                "890,6 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "901.425",
+            "lot": "40.200.000",
+            "pct": "%60"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "184",
+            "lot": "26.800.000",
+            "pct": "%40"
+          },
+          {
+            "group": "Toplam",
+            "people": "901.609",
+            "lot": "67.000.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "(Intercity) Ekim Turizm Tic. ve San. A.Ş.",
+      "bist_code": "EKIM",
+      "slug": "ekim-turizm-tic-ve-san-a-s",
+      "link": "https://halkarz.com/ekim-turizm-tic-ve-san-a-s/",
+      "date_text": "1-2-3 Temmuz 2026",
+      "start": "2026-07-01",
+      "end": "2026-07-03",
+      "status": "Tamamlandı",
+      "price": "30,26 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "162.000.000 Lot",
+      "broker": "Ak Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş.",
+      "market": "Yıldız Pazar",
+      "first_trade": "9 Temmuz 2026",
+      "float_lot": "161.989.489 Lot",
+      "float_pct": "%19.46",
+      "updated_src": "15.09.2026 10:55",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 132.00.000 Lot",
+            "Ortak Satışı : 30.000.000 Lot (Ali Vural Ak)"
+          ],
+          "source": "SPK Bülteni, 2026/41."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%100 Kiralamada kullanılacak kara araçlarının satın alınması"
+          ],
+          "source": "İzahname, Sayfa 300."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "tahsisat": {
+          "items": [
+            "113.400.000 Lot (%70) Yurt İçi Bireysel Yatırımcı",
+            "32.400.000 Lot (%20) Yurt İçi Kurumsal Yatırımcı",
+            "16.200.000 Lot (%10) Yüksek Başvurulu Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 280."
+        },
+        "dagitilan": {
+          "items": [
+            "706.837 katılım ~ 122 Lot (3691 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "15 gün"
+          ],
+          "source": "İzahname, Sayfa 295."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 296."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%19,47"
+          ],
+          "source": "İzahname, Sayfa 238."
+        },
+        "iskonto": {
+          "items": [
+            "%20"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 64."
+        },
+        "buyukluk": {
+          "items": [
+            "4,9 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2026/3",
+            "2025",
+            "2024"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "2,9 Milyar TL",
+                "15,3 Milyar TL",
+                "15,9 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "799,0 Milyon TL",
+                "959,6 Milyon TL",
+                "881,2 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "706.837",
+            "lot": "85.677.956",
+            "pct": "%52,89"
+          },
+          {
+            "group": "Yüksek Başvurulu",
+            "people": "923",
+            "lot": "43.922.044",
+            "pct": "%27,11"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "91",
+            "lot": "32.400.000",
+            "pct": "%20"
+          },
+          {
+            "group": "Toplam",
+            "people": "707.851",
+            "lot": "162.000.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Golda Gıda San. ve Tic. A.Ş.",
+      "bist_code": "GOLDA",
+      "slug": "golda-gida-san-ve-tic-a-s",
+      "link": "https://halkarz.com/golda-gida-san-ve-tic-a-s/",
+      "date_text": "1-2 Temmuz 2026",
+      "start": "2026-07-01",
+      "end": "2026-07-02",
+      "status": "Tamamlandı",
+      "price": "9,20 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "87.499.998 Lot",
+      "broker": "Gedik Yatırım Menkul Değerler A.Ş. Misyon Yatırım Bankası A.Ş.",
+      "market": "Ana Pazar",
+      "first_trade": "8 Temmuz 2026",
+      "float_lot": "87.489.584 Lot",
+      "float_pct": "%34,99",
+      "updated_src": "15.09.2026 10:58",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 50.000.000 Lot",
+            "Ortak Satışı : 37.499.998 Lot (Bera Holding A.Ş.)"
+          ],
+          "source": "SPK Bülteni, 2026/41."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%50-60 Kapasite artışı, modernizasyon",
+            "%40-50 İşletme sermayesi"
+          ],
+          "source": "İzahname, Sayfa 243."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Borsa'da Satış - Sabit Fiyatla Talep Toplama"
+          ],
+          "source": "T1-T2 Uygun."
+        },
+        "tahsisat": {
+          "items": [
+            "Yoktur"
+          ],
+          "source": "Tamamen Eşit Dağıtım."
+        },
+        "dagitilan": {
+          "items": [
+            "749.674 katılım ~ 117 Lot (1076 TL)"
+          ],
+          "source": "Tamamen Eşit Dağıtım."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün. * Brüt halka arz gelirinin %20'si",
+            "(Gedik Yatırım Menkul Değerler A.Ş.)"
+          ],
+          "source": "İzahname, Sayfa 241."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 242."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%35"
+          ],
+          "source": "İzahname, Sayfa 229."
+        },
+        "iskonto": {
+          "items": [
+            "%30,7"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 70."
+        },
+        "buyukluk": {
+          "items": [
+            "804 Milyon TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2026/3",
+            "2025",
+            "2024"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "685,4 Milyon TL",
+                "2,5 Milyar TL",
+                "2,9 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "90,9 Milyon TL",
+                "362,6 Milyon TL",
+                "411,8 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "748.056",
+            "lot": "87.313.096",
+            "pct": "%99,78"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "25",
+            "lot": "2.745",
+            "pct": "%0"
+          },
+          {
+            "group": "Yurt Dışı Bireysel",
+            "people": "1.593",
+            "lot": "184.157",
+            "pct": "%0,21"
+          },
+          {
+            "group": "Toplam",
+            "people": "749.674",
+            "lot": "87.499.998",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "(Orzax) Orzaks İlaç ve Kimya San. Tic. A.Ş.",
+      "bist_code": "ORZAX",
+      "slug": "orzaks-ilac-ve-kimya-san-tic-a-s",
+      "link": "https://halkarz.com/orzaks-ilac-ve-kimya-san-tic-a-s/",
+      "date_text": "29-30 Haziran, 1 Temmuz 2026",
+      "start": "2026-06-29",
+      "end": "2026-07-01",
+      "status": "Tamamlandı",
+      "price": "69,00 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "52.500.000 Lot",
+      "broker": "İnfo Yatırım Menkul Değerler A.Ş.",
+      "market": "Yıldız Pazar",
+      "first_trade": "7 Temmuz 2026",
+      "float_lot": "48.734.373 Lot",
+      "float_pct": "%14,39",
+      "updated_src": "15.09.2026 11:04",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 31.500.000 Lot",
+            "Ortak Satışı : 21.000.000 Lot (Yunus Emre Alimoğlu)"
+          ],
+          "source": "SPK Bülteni, 2026/41."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%50 Devam eden ve yeni yatırımların finasmanında",
+            "%30 Finansal borç anapara ve faiz ödemelerinde",
+            "%20 İşletme sermayesi"
+          ],
+          "source": "İzahname, Sayfa 285."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "tahsisat": {
+          "items": [
+            "29.925.000 Lot (%57) Yurt İçi Bireysel Yatırımcı",
+            "1.575.000 Lot (%3) Şirket Çalışanları",
+            "15.750.000 Lot (%30) Yurt İçi Kurumsal Yatırımcı",
+            "5.250.000 Lot (%10) Yurt Dışı Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 269."
+        },
+        "dagitilan": {
+          "items": [
+            "973.805 katılım ~ 30 Lot (2070 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "Planlanmamaktadır"
+          ],
+          "source": "İzahname, Sayfa 281."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 282."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%15,51"
+          ],
+          "source": "İzahname, Sayfa 236."
+        },
+        "iskonto": {
+          "items": [
+            "%20"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 55."
+        },
+        "buyukluk": {
+          "items": [
+            "3,6 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2026/3",
+            "2025",
+            "2024"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "2,6 Milyar TL",
+                "7,3 Milyar TL",
+                "5,7 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "1,7 Milyar TL",
+                "4,7 Milyar TL",
+                "3,7 Milyar TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "973.805",
+            "lot": "29.925.000",
+            "pct": "%57"
+          },
+          {
+            "group": "Şirket Çalışanları",
+            "people": "555",
+            "lot": "1.575.000",
+            "pct": "%3"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "230",
+            "lot": "15.750.000",
+            "pct": "%30"
+          },
+          {
+            "group": "Yurt Dışı Kurumsal",
+            "people": "7",
+            "lot": "5.250.000",
+            "pct": "%10"
+          },
+          {
+            "group": "Toplam",
+            "people": "974.597",
+            "lot": "52.500.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Soho Giyim ve Enerji A.Ş.",
+      "bist_code": "SOHOE",
+      "slug": "soho-giyim-ve-enerji-a-s",
+      "link": "https://halkarz.com/soho-giyim-ve-enerji-a-s/",
+      "date_text": "30 Haziran, 1 Temmuz 2026",
+      "start": "2026-06-30",
+      "end": "2026-07-01",
+      "status": "Tamamlandı",
+      "price": "15,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "100.000.000 Lot",
+      "broker": "İntegral Yatırım Menkul Değerler A.Ş.",
+      "market": "Ana Pazar",
+      "first_trade": "6 Temmuz 2026",
+      "float_lot": "99.992.209 Lot",
+      "float_pct": "%32,59",
+      "updated_src": "15.09.2026 11:02",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 100.000.000 Lot"
+          ],
+          "source": "SPK Bülteni, 2026/41."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%30 Mağazalaşma yatırımları",
+            "%10 Markalaşma yatırımları",
+            "%60 Kreasyon Yatırımları"
+          ],
+          "source": "İzahname, Sayfa 208."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Borsa'da Satış - Sabit Fiyatla Talep Toplama"
+          ],
+          "source": "T1-T2 Uygun."
+        },
+        "tahsisat": {
+          "items": [
+            "Yoktur"
+          ],
+          "source": "Tamamen Eşit Dağıtım."
+        },
+        "dagitilan": {
+          "items": [
+            "660.121 katılım ~ 152 Lot (2280 TL)"
+          ],
+          "source": ""
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün. * Brüt halka arz gelirinin %10'u"
+          ],
+          "source": "İzahname, Sayfa 206."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 207."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%32,60"
+          ],
+          "source": "İzahname, Sayfa 195."
+        },
+        "iskonto": {
+          "items": [
+            "%37"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 64."
+        },
+        "buyukluk": {
+          "items": [
+            "1,5 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2026/3",
+            "2025",
+            "2024"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "709,6 Milyon TL",
+                "3,0 Milyar TL",
+                "2,6 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "274,0 Milyon TL",
+                "988,6 Milyon TL",
+                "532,8 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "658.589",
+            "lot": "97.065.314",
+            "pct": "%97,07"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "86",
+            "lot": "2.703.552",
+            "pct": "%2,70"
+          },
+          {
+            "group": "Yurt Dışı Bireysel",
+            "people": "1.446",
+            "lot": "231.134",
+            "pct": "%0,23"
+          },
+          {
+            "group": "Toplam",
+            "people": "660.121",
+            "lot": "100.000.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Beta Enerji ve Teknoloji A.Ş.",
+      "bist_code": "BETAE",
+      "slug": "beta-enerji-ve-teknoloji-a-s",
+      "link": "https://halkarz.com/beta-enerji-ve-teknoloji-a-s/",
+      "date_text": "23-24-25 Haziran 2026",
+      "start": "2026-06-23",
+      "end": "2026-06-25",
+      "status": "Tamamlandı",
+      "price": "40,00 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "60.750.000 Lot",
+      "broker": "Türkiye Sınai Kalkınma Bankası A.Ş. Ziraat Yatırım Menkul Değerler A.Ş. Yatırım Finansman Menkul Değerler A.Ş.",
+      "market": "Yıldız Pazar",
+      "first_trade": "1 Temmuz 2026",
+      "float_lot": "60.743.376 Lot",
+      "float_pct": "%14.99",
+      "updated_src": "16.09.2026 17:45",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 55.000.000 Lot",
+            "Ortak Satışı : 5.750.000 Lot"
+          ],
+          "source": "SPK Bülteni, 2026/36."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%45 Büyüme yatırımlarının finansmanı",
+            "%55 İşletme sermayesi"
+          ],
+          "source": "İzahname, Sayfa 476."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "tahsisat": {
+          "items": [
+            "30.375.000 Lot (%50) Yurt İçi Bireysel Yatırımcı",
+            "6.075.000 Lot (%10) Yüksek Başvurulu Yatırımcı",
+            "607.500 Lot (%1) Şirket Çalışanları",
+            "23.692.500 Lot (%39) Yurt İçi Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 459."
+        },
+        "dagitilan": {
+          "items": [
+            "1.103.933 katılım ~ 28 Lot (1120 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün",
+            "(Yatırım Finansman Menkul Değerler A.Ş.)"
+          ],
+          "source": "İzahname, Sayfa 470."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 472."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%15"
+          ],
+          "source": "İzahname, Sayfa 410."
+        },
+        "iskonto": {
+          "items": [
+            "%20,45"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 79."
+        },
+        "buyukluk": {
+          "items": [
+            "2,4 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2026/3",
+            "2025",
+            "2024"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "704,0 Milyon TL",
+                "4,6 Milyar TL",
+                "4,3 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "158,0 Milyon TL",
+                "1,5 Milyar TL",
+                "1,5 Milyar TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "1.103.933",
+            "lot": "30.375.000",
+            "pct": "%50"
+          },
+          {
+            "group": "Yüksek Başvurulu",
+            "people": "20.394",
+            "lot": "6.075.000",
+            "pct": "%10"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "267",
+            "lot": "23.692.500",
+            "pct": "%39"
+          },
+          {
+            "group": "Şirket Çalışanları",
+            "people": "359",
+            "lot": "607.500",
+            "pct": "%1"
+          },
+          {
+            "group": "Toplam",
+            "people": "1.124.953",
+            "lot": "60.750.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Ekinciler Demir ve Çelik Sanayi A.Ş.",
+      "bist_code": "EKDMR",
+      "slug": "ekinciler-demir-ve-celik-sanayi-a-s",
+      "link": "https://halkarz.com/ekinciler-demir-ve-celik-sanayi-a-s/",
+      "date_text": "13-14-15 Mayıs 2026",
+      "start": "2026-05-13",
+      "end": "2026-05-15",
+      "status": "Tamamlandı",
+      "price": "45,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "52.000.000 Lot",
+      "broker": "A1 Capital Yatırım Menkul Değerler A.Ş.",
+      "market": "Yıldız Pazar",
+      "first_trade": "22 Mayıs 2026",
+      "float_lot": "51.997.749 Lot",
+      "float_pct": "%16,24",
+      "updated_src": "16.09.2026 17:47",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 40.000.000 Lot",
+            "Ortak Satışı : 3.339.977 Lot (Ekinciler Holding A.Ş.)",
+            "Ortak Satışı : 1.236.793 Lot (Faruk Ekinci)",
+            "Ortak Satışı : 1.236.793 Lot (Namık Kemal Ekinci)",
+            "Ortak Satışı : 1.236.793 Lot (Haluk Ekinci)",
+            "Ortak Satışı : 1.236.793 Lot (Tarık Ekinci)",
+            "Ortak Satışı : 1.236.793 Lot (Neziha Ekinci)",
+            "Ortak Satışı : 1.236.793 Lot (Sıdıka Baytan)",
+            "Ortak Satışı : 412.264 Lot (İlker Eker)",
+            "Ortak Satışı : 412.264 Lot (İlkay Eker)",
+            "Ortak Satışı : 412.264 Lot (Soner Eker)",
+            "Ortak Satışı : 2.473 Lot (Recep Ekinci)"
+          ],
+          "source": "SPK Bülteni, 2026/29."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%25 Yenilenebilir enerji yatırımları",
+            "%40 Hammadde tedariki ve işletme sermayesi finansmanı",
+            "%25 Yeşil çelik haddehane modernizayonu ve mevcut üretim tesislerinin kapasite artışı yatırımları",
+            "%10 Kütük kaynatma sistemi yatırımı"
+          ],
+          "source": "İzahname, Sayfa 253."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "tahsisat": {
+          "items": [
+            "20.800.000 Lot (%40) Yurt İçi Bireysel Yatırımcı",
+            "5.200.000 Lot (%10) Yüksek Başvurulu Yatırımcı",
+            "15.600.000 Lot (%30) Yurt İçi Kurumsal Yatırımcı",
+            "10.400.000 Lot (%20) Yurt Dışı Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 236."
+        },
+        "dagitilan": {
+          "items": [
+            "791713 katılım ~ 26 Lot (1170 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "Planlanmamaktadır"
+          ],
+          "source": "İzahname, Sayfa 247."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 249."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%16,25"
+          ],
+          "source": "İzahname, Sayfa 196."
+        },
+        "iskonto": {
+          "items": [
+            "%37,72"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 68."
+        },
+        "buyukluk": {
+          "items": [
+            "2,3 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "20,8 Milyar TL",
+                "16,8 Milyar TL",
+                "11,0 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "1,5 Milyar TL",
+                "1,4 Milyar TL",
+                "754,9 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "791.713",
+            "lot": "20.800.000",
+            "pct": "%40"
+          },
+          {
+            "group": "Yüksek Başvurulu",
+            "people": "4.685",
+            "lot": "5.200.000",
+            "pct": "%10"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "139",
+            "lot": "15.600.000",
+            "pct": "%30"
+          },
+          {
+            "group": "Yurt Dışı Kurumsal",
+            "people": "5",
+            "lot": "10.400.000",
+            "pct": "%20"
+          },
+          {
+            "group": "Toplam",
+            "people": "796.542",
+            "lot": "52.000.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Enpara Bank A.Ş.",
+      "bist_code": "ENPRA",
+      "slug": "enpara-bank-a-s",
+      "link": "https://halkarz.com/enpara-bank-a-s/",
+      "date_text": "7 Nisan 2026 (Kısmi Bölünme)",
+      "start": "2026-04-07",
+      "end": "2026-04-07",
+      "status": "Tamamlandı",
+      "price": "",
+      "distribution": "",
+      "lot": "",
+      "broker": "",
+      "market": "Piyasa Öncesi İşlem Platformu",
+      "first_trade": "7 Nisan 2026",
+      "float_lot": "",
+      "float_pct": "",
+      "updated_src": "16.09.2026 17:48",
+      "details": {}
+    },
+    {
+      "company": "Ağaoğlu Avrasya Gayrimenkul Yatırım Ortaklığı A.Ş.",
+      "bist_code": "AAGYO",
+      "slug": "agaoglu-avrasya-gayrimenkul-yatirim-ortakligi-a-s",
+      "link": "https://halkarz.com/agaoglu-avrasya-gayrimenkul-yatirim-ortakligi-a-s/",
+      "date_text": "1-2-3 Nisan 2026",
+      "start": "2026-04-01",
+      "end": "2026-04-03",
+      "status": "Tamamlandı",
+      "price": "21,10 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "176.000.000 Lot",
+      "broker": "İnfo Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş.",
+      "market": "Yıldız Pazar",
+      "first_trade": "9 Nisan 2026",
+      "float_lot": "168.137.160 Lot",
+      "float_pct": "%23.98",
+      "updated_src": "21.10.2026 16:45",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 105.652.000 Lot",
+            "Ortak Satışı : 70.348.000 Lot (Ali İbrahimağaoğlu)"
+          ],
+          "source": "SPK Bülteni, 2026/18."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%10-15 İşletme sermayesi",
+            "%15-20 Finansal borçların ödenmesi",
+            "%65-70 Yeni gayrimenkullere, gayrimenkule dayalı haklara, gayrimenkul yatırım fonlarına ve/veya gayrimenkul projelerine yapılacak yatırımların finansmanı"
+          ],
+          "source": "İzahname, Sayfa 231."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "tahsisat": {
+          "items": [
+            "110.880.000 Lot (%63) Yurt İçi Bireysel Yatırımcı",
+            "3.520.000 Lot (%2) Şirket Çalışanları",
+            "44.000.000 Lot (%25) Yurt İçi Kurumsal Yatırımcı",
+            "17.600.000 Lot (%10) Yurt Dışı Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 210."
+        },
+        "dagitilan": {
+          "items": [
+            "917.000 katılım ~ 121 Lot (2553 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "Planlanmamaktadır"
+          ],
+          "source": "İzahname, Sayfa 227."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 228."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%25,11"
+          ],
+          "source": "İzahname, Sayfa 176."
+        },
+        "iskonto": {
+          "items": [
+            "%20"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 55."
+        },
+        "buyukluk": {
+          "items": [
+            "3,7 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "1,3 Milyar TL",
+                "686,4 Milyon TL",
+                "6,0 Milyon TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "831,1 Milyon TL",
+                "443,0 Milyon TL",
+                "6,0 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "917.000",
+            "lot": "110.880.000",
+            "pct": "%63"
+          },
+          {
+            "group": "Şirket Çalışanları",
+            "people": "173",
+            "lot": "3.520.000",
+            "pct": "%2"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "227",
+            "lot": "44.000.000",
+            "pct": "%25"
+          },
+          {
+            "group": "Yurt Dışı Kurumsal",
+            "people": "13",
+            "lot": "17.600.000",
+            "pct": "%10"
+          },
+          {
+            "group": "Toplam",
+            "people": "917.413",
+            "lot": "176.000.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "(MetropolCard) Metropal Kurumsal Hizmetler A.Ş.",
+      "bist_code": "MCARD",
+      "slug": "metropal-kurumsal-hizmetler-a-s",
+      "link": "https://halkarz.com/metropal-kurumsal-hizmetler-a-s/",
+      "date_text": "2-3-4 Mart 2026",
+      "start": "2026-03-02",
+      "end": "2026-03-04",
+      "status": "Tamamlandı",
+      "price": "80,00 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "18.900.000 Lot",
+      "broker": "Tera Yatırım Menkul Değerler A.Ş.",
+      "market": "Ana Pazar",
+      "first_trade": "11 Mart 2026",
+      "float_lot": "18.898.620 Lot",
+      "float_pct": "%20,40",
+      "updated_src": "16.09.2026 17:51",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 12.600.000 Lot",
+            "Ortak Satışı : 2.835.000 Lot (Hak Teknoloji Yatırım A.Ş.)",
+            "Ortak Satışı : 2.457.000 Lot (Bilgesan Elektrik Taahhüt İmalat ve Sanayi A.Ş.)",
+            "Ortak Satışı : 630.000 Lot (Önder Akıncı)",
+            "Ortak Satışı : 252.000 Lot (Recep Aktaş)",
+            "Ortak Satışı : 126.000 Lot (Ayşe Aylin Sözen)"
+          ],
+          "source": "SPK Bülteni, 2026/10."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%25 Şirkete ait filo araçlarının yenilenmesi ve filonun genişletilmesi",
+            "%15 Ar-Ge yatırımları",
+            "%30 Yurt içi ve yurt dışı şirket kurulumu / ortaklıklar",
+            "%30 İşletme sermayesi ve Şirket'in operasyonel faaliyetlerinin finansmanı"
+          ],
+          "source": "İzahname, Sayfa 219."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "tahsisat": {
+          "items": [
+            "9.072.000 Lot (%48) Yurt İçi Bireysel Yatırımcı",
+            "1.890.000 Lot (%10) Yüksek Başvurulu Yatırımcı",
+            "378.000 Lot (%2) Şirket Çalışanları",
+            "3.780.000 Lot (%20) Yurt İçi Kurumsal Yatırımcı",
+            "3.780.000 Lot (%20) Yurt Dışı Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 208."
+        },
+        "dagitilan": {
+          "items": [
+            "964.747 katılım ~ 9 Lot (720 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "Planlanmamaktadır"
+          ],
+          "source": "İzahname, Sayfa 216."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 218."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%20,41"
+          ],
+          "source": "İzahname, Sayfa 169."
+        },
+        "iskonto": {
+          "items": [
+            "%20"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 44."
+        },
+        "buyukluk": {
+          "items": [
+            "1,5 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025/9",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "1,6 Milyar TL",
+                "2,0 Milyar TL",
+                "1,2 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "495,4 Milyon TL",
+                "679,8 Milyon TL",
+                "380,2 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "964.747",
+            "lot": "9.072.000",
+            "pct": "%48"
+          },
+          {
+            "group": "Yüksek Başvurulu",
+            "people": "322",
+            "lot": "1.890.000",
+            "pct": "%10"
+          },
+          {
+            "group": "Şirket Çalışanları",
+            "people": "90",
+            "lot": "178.864",
+            "pct": "%0,95"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "166",
+            "lot": "3.780.000",
+            "pct": "%20"
+          },
+          {
+            "group": "Yurt Dışı Kurumsal",
+            "people": "11",
+            "lot": "3.979.136",
+            "pct": "%21,05"
+          },
+          {
+            "group": "Toplam",
+            "people": "965.336",
+            "lot": "18.900.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Luxera Gayrimenkul Yatırım Ortaklığı A.Ş.",
+      "bist_code": "LXGYO",
+      "slug": "luxera-gayrimenkul-yatirim-ortakligi-a-s",
+      "link": "https://halkarz.com/luxera-gayrimenkul-yatirim-ortakligi-a-s/",
+      "date_text": "2-3-4 Mart 2026",
+      "start": "2026-03-02",
+      "end": "2026-03-04",
+      "status": "Tamamlandı",
+      "price": "12,05 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "120.000.000 Lot",
+      "broker": "Tera Yatırım Menkul Değerler A.Ş.",
+      "market": "Ana Pazar",
+      "first_trade": "10 Mart 2026",
+      "float_lot": "119.992.654 Lot",
+      "float_pct": "%36,36",
+      "updated_src": "16.09.2026 17:53",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 90.000.000 Lot",
+            "Ortak Satışı : 8.500.000 Lot (Ramazan Taş)",
+            "Ortak Satışı : 8.500.000 Lot (Emad Ragab)",
+            "Ortak Satışı : 8.500.000 Lot (Cemal Süleyman)",
+            "Ortak Satışı : 4.500.000 Lot (Ali Khalil)"
+          ],
+          "source": "SPK Bülteni, 2026/9."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%100-85 Proje maliyetlerinin finansmanı",
+            "%0-15 İşletme sermayesi"
+          ],
+          "source": "İzahname, Sayfa 212."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "tahsisat": {
+          "items": [
+            "48.000.000 Lot (%40) Yurt İçi Bireysel Yatırımcı",
+            "12.000.000 Lot (%10) Yüksek Başvurulu Yatırımcı",
+            "30.000.000 Lot (%25) Yurt İçi Kurumsal Yatırımcı",
+            "30.000.000 Lot (%25) Yurt Dışı Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 198."
+        },
+        "dagitilan": {
+          "items": [
+            "887.852 katılım ~ 54 Lot (675 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün. * Brüt halka arz gelirinin %20'si"
+          ],
+          "source": "İzahname, Sayfa 208."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 210."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%36,36"
+          ],
+          "source": "İzahname, Sayfa 161."
+        },
+        "iskonto": {
+          "items": [
+            "%20"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 45."
+        },
+        "buyukluk": {
+          "items": [
+            "1,4 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025/9",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "148,8 Milyon TL",
+                "1,9 Milyar TL",
+                "7,5 Milyon TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "115,2 Milyon TL",
+                "122,0 Milyon TL",
+                "4,2 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "887.852",
+            "lot": "48.000.000",
+            "pct": "%40"
+          },
+          {
+            "group": "Yüksek Başvurulu",
+            "people": "2.179",
+            "lot": "12.000.000",
+            "pct": "%10"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "131",
+            "lot": "30.000.000",
+            "pct": "%25"
+          },
+          {
+            "group": "Yurt Dışı Kurumsal",
+            "people": "11",
+            "lot": "30.000.000",
+            "pct": "%25"
+          },
+          {
+            "group": "Toplam",
+            "people": "890.173",
+            "lot": "120.000.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Gentaş Kimya San. ve Tic. Pazarlama A.Ş.",
+      "bist_code": "GENKM",
+      "slug": "gentas-kimya-san-ve-tic-pazarlama-a-s",
+      "link": "https://halkarz.com/gentas-kimya-san-ve-tic-pazarlama-a-s/",
+      "date_text": "2-3 Mart 2026",
+      "start": "2026-03-02",
+      "end": "2026-03-03",
+      "status": "Tamamlandı",
+      "price": "11,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "124.845.000 Lot",
+      "broker": "Deniz Yatırım Menkul Kıymetler A.Ş.",
+      "market": "Ana Pazar",
+      "first_trade": "6 Mart 2026",
+      "float_lot": "124.840.142 Lot",
+      "float_pct": "%20,49",
+      "updated_src": "16.09.2026 17:55",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 84.000.000 Lot",
+            "Ortak Satışı : 4.095.000 Lot (Gentaş Dekoratif Yüzeyler San. ve Tic. A.Ş.)",
+            "Ortak Satışı : 1.050.000 Lot (Tahsin Kahraman)",
+            "Ortak Satışı : 5.250.000 Lot (Orhan Kahraman)",
+            "Ortak Satışı : 1.312.500 Lot (Abdurrahman Kahraman)",
+            "Ortak Satışı : 10.500.000 Lot (Didem Aydın)",
+            "Ortak Satışı : 2.625.000 Lot (Sezai Kahraman)",
+            "Ortak Satışı : 2.625.000 Lot (Ahmet Fikret Kansız)",
+            "Ortak Satışı : 2.625.000 Lot (Ersin Tınaz)",
+            "Ortak Satışı : 2.625.000 Lot (Muhammet Sargın)",
+            "Ortak Satışı : 2.625.000 Lot (Remzi Demir)",
+            "Ortak Satışı : 2.625.000 Lot (Seyit Ahmet Aydın)",
+            "Ortak Satışı : 1.050.000 Lot (Selim Kahraman)",
+            "Ortak Satışı : 525.000 Lot (Asuman Halıcı)",
+            "Ortak Satışı : 1.312.500 Lot (Nebahat Memiş)"
+          ],
+          "source": "SPK Bülteni, 2026/10."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%45-55 İşletme sermayesi",
+            "%15-25 Yeni pazarlara erişilmesi",
+            "%15-25 Finansal borçluluğun azaltılması",
+            "%5-15 Ürün araştırma ve geliştirmeleri"
+          ],
+          "source": "İzahname, Sayfa 194."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Borsa'da Satış - Sabit Fiyatla Talep Toplama"
+          ],
+          "source": "T1-T2 Uygun."
+        },
+        "tahsisat": {
+          "items": [
+            "Yoktur"
+          ],
+          "source": "Tamamen Eşit Dağıtım."
+        },
+        "dagitilan": {
+          "items": [
+            "805.312 katılım ~ 155 Lot (1705 TL)"
+          ],
+          "source": ""
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "15 gün. * Brüt halka arz gelirinin %20'si"
+          ],
+          "source": "İzahname, Sayfa 189."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 191."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%20,5"
+          ],
+          "source": "İzahname, Sayfa 178."
+        },
+        "iskonto": {
+          "items": [
+            "%29,5"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 56."
+        },
+        "buyukluk": {
+          "items": [
+            "1,3 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025/9",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "3,2 Milyar TL",
+                "4,7 Milyar TL",
+                "5,4 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "733,1 Milyon TL",
+                "922,3 Milyon TL",
+                "1,0 Milyar TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "803.626",
+            "lot": "124.592.752",
+            "pct": "%99,79"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "13",
+            "lot": "1.611",
+            "pct": "%0,00"
+          },
+          {
+            "group": "Yurt Dışı Bireysel",
+            "people": "1.673",
+            "lot": "250.637",
+            "pct": "%0,20"
+          },
+          {
+            "group": "Toplam",
+            "people": "805.312",
+            "lot": "124.845.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Savur Gayrimenkul Yatırım Ortaklığı A.Ş.",
+      "bist_code": "SVGYO",
+      "slug": "savur-gayrimenkul-yatirim-ortakligi-a-s",
+      "link": "https://halkarz.com/savur-gayrimenkul-yatirim-ortakligi-a-s/",
+      "date_text": "26-27 Şubat, 2 Mart 2026",
+      "start": "2026-02-26",
+      "end": "2026-03-02",
+      "status": "Tamamlandı",
+      "price": "3,64 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "295.400.000 Lot",
+      "broker": "Tera Yatırım Menkul Değerler A.Ş.",
+      "market": "Ana Pazar",
+      "first_trade": "6 Mart 2026",
+      "float_lot": "268.891.927 Lot",
+      "float_pct": "%24,82",
+      "updated_src": "16.09.2026 17:56",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 208.400.000 Lot",
+            "Ortak Satışı : 43.500.000 Lot (Mehmet Ali Yıldıran)",
+            "Ortak Satışı : 43.500.000 Lot (Mehmet Sami Yıldıran)"
+          ],
+          "source": "SPK Bülteni, 2026/9."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%25-40 Kandilli Projesi'nin maliyetlerinin finansmanı",
+            "%60-75 Yeni gayrimenkul yatırımları",
+            "%0-15 İşletme sermayesi"
+          ],
+          "source": "Taslak İzahname, Sayfa 216."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "tahsisat": {
+          "items": [
+            "118.160.000 Lot (%40) Yurt İçi Bireysel Yatırımcı",
+            "29.540.000 Lot (%10) Yüksek Başvurulu Yatırımcı",
+            "73.850.000 Lot (%25) Yurt İçi Kurumsal Yatırımcı",
+            "73.850.000 Lot (%25) Yurt Dışı Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 200."
+        },
+        "dagitilan": {
+          "items": [
+            "701.103 katılım ~ 168 Lot (611 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "Planlanmamaktadır"
+          ],
+          "source": "İzahname, Sayfa 212."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 214."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%27,28"
+          ],
+          "source": "İzahname, Sayfa 160."
+        },
+        "iskonto": {
+          "items": [
+            "%20"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 50."
+        },
+        "buyukluk": {
+          "items": [
+            "1,1 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025/9",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "61,3 Milyon TL",
+                "78,0 Milyon TL",
+                "18,2 Milyon TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "61,3 Milyon TL",
+                "78,0 Milyon TL",
+                "18,2 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "701.103",
+            "lot": "118.160.000",
+            "pct": "%40"
+          },
+          {
+            "group": "Yüksek Başvurulu",
+            "people": "187",
+            "lot": "29.540.000",
+            "pct": "%10"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "128",
+            "lot": "73.850.000",
+            "pct": "%25"
+          },
+          {
+            "group": "Yurt Dışı Kurumsal",
+            "people": "11",
+            "lot": "73.850.000",
+            "pct": "%25"
+          },
+          {
+            "group": "Toplam",
+            "people": "701.429",
+            "lot": "295.400.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Empa Elektronik San. ve Tic. A.Ş.",
+      "bist_code": "EMPAE",
+      "slug": "empa-elektronik-san-ve-tic-a-s",
+      "link": "https://halkarz.com/empa-elektronik-san-ve-tic-a-s/",
+      "date_text": "19-20 Şubat 2026",
+      "start": "2026-02-19",
+      "end": "2026-02-20",
+      "status": "Tamamlandı",
+      "price": "22,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "38.000.000 Lot",
+      "broker": "Halk Yatırım Menkul Değerler A.Ş.",
+      "market": "Ana Pazar",
+      "first_trade": "26 Şubat 2026",
+      "float_lot": "37.997.385 Lot",
+      "float_pct": "%22,35",
+      "updated_src": "16.09.2026 17:58",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 29.000.000 Lot",
+            "Ortak Satışı : 3.864.000 Lot (Vural Akman)",
+            "Ortak Satışı : 2.030.000 Lot (Mehmet Oktay Horsanalı)",
+            "Ortak Satışı : 762.000 Lot (Dursun Gedikoğlu)",
+            "Ortak Satışı : 642.000 Lot (Tülay Akman)",
+            "Ortak Satışı : 540.000 Lot (Berna Baran Şen)",
+            "Ortak Satışı : 450.000 Lot (Fügen Akman)",
+            "Ortak Satışı : 356.000 Lot (Gökhan Şevket Akman)",
+            "Ortak Satışı : 356.000 Lot (Nilüfer Akman Meriç)"
+          ],
+          "source": "SPK Bülteni, 2026/8."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%40 Teknolojideki yeni alanlarda yatırım ve Ar-Ge faaliyetlerinin çeşitlendirilmesi",
+            "%15 Bölgesel satış pazarlama ağı ve lojistik yatırımı",
+            "%30 İşletme sermayesi",
+            "%15 Finansal borç ödemesi"
+          ],
+          "source": "İzahname, Sayfa 241."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "tahsisat": {
+          "items": [
+            "22.800.000 Lot (%60) Yurt İçi Bireysel Yatırımcı",
+            "15.200.000 Lot (%40) Yurt İçi Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 225."
+        },
+        "dagitilan": {
+          "items": [
+            "1.134.244 katılım ~ 21 Lot (462 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün. * Brüt halka arz gelirinin %20'si"
+          ],
+          "source": "İzahname, Sayfa 237."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 237."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%22,35"
+          ],
+          "source": "İzahname, Sayfa 196."
+        },
+        "buyukluk": {
+          "items": [
+            "836 Milyon TL"
+          ],
+          "source": ""
+        },
+        "iskonto": {
+          "items": [
+            "%36,01"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 64."
+        },
+        "finansal": {
+          "periods": [
+            "2025/9",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "2,4 Milyar TL",
+                "3,3 Milyar TL",
+                "4,8 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "527,0 Milyon TL",
+                "688,2 Milyon TL",
+                "996,3 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "1.134.244",
+            "lot": "22.800.000",
+            "pct": "%60"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "293",
+            "lot": "15.200.000",
+            "pct": "%40"
+          },
+          {
+            "group": "Toplam",
+            "people": "1.134.537",
+            "lot": "38.000.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Ata Turizm İşletmecilik Taşımacılık Madencilik Kuyumculuk San. ve Dış Ticaret A.Ş.",
+      "bist_code": "ATATR",
+      "slug": "ata-turizm-isletmecilik-tasimacilik-madencilik-kuyumculuk-san-ve-dis-ticaret-a-s",
+      "link": "https://halkarz.com/ata-turizm-isletmecilik-tasimacilik-madencilik-kuyumculuk-san-ve-dis-ticaret-a-s/",
+      "date_text": "11-12-13 Şubat 2026",
+      "start": "2026-02-11",
+      "end": "2026-02-13",
+      "status": "Tamamlandı",
+      "price": "11,20 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "280.000.000 Lot",
+      "broker": "Tera Yatırım Menkul Değerler A.Ş.",
+      "market": "Yıldız Pazar",
+      "first_trade": "19 Şubat 2026",
+      "float_lot": "279.977.505 Lot",
+      "float_pct": "%34.87",
+      "updated_src": "21.10.2026 17:25",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 240.000.000 Lot",
+            "Ortak Satışı : 40.000.000 Lot (Tan Turizm Havayolu Taşımacılık Bilgisayar Elektronik San. ve Dış Ticaret A.Ş.)"
+          ],
+          "source": "SPK Bülteni, 2026/6."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%80-90 Kiracı sıfatıyla sürdürdüğü taşınmazların satın alımı",
+            "%10 Otel ve restoranların renovasyonu",
+            "%5-10 Taş ocağı kapasite artırımı",
+            "%5-10 İşletme sermayesi"
+          ],
+          "source": "İzahname, Sayfa 231."
+        },
+        "tahsisat": {
+          "items": [
+            "112.000.000 Lot (%40) Yurt İçi Bireysel Yatırımcı",
+            "28.000.000 Lot (%10) Yüksek Başvurulu Yatırımcı",
+            "112.000.000 Lot (%40) Yurt İçi Kurumsal Yatırımcı",
+            "28.000.000 Lot (%10) Yurt Dışı Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 219."
+        },
+        "dagitilan": {
+          "items": [
+            "622.600 katılım ~ 180 Lot (2016 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün. * Brüt halka arz gelirinin %10'u"
+          ],
+          "source": "İzahname, Sayfa 228."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 230."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%34,9"
+          ],
+          "source": "İzahname, Sayfa 184."
+        },
+        "iskonto": {
+          "items": [
+            "%38,45"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 75."
+        },
+        "buyukluk": {
+          "items": [
+            "3,1 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025/9",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "1,8 Milyar TL",
+                "2,4 Milyar TL",
+                "1,7 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "845,9 Milyon TL",
+                "1,1 Milyar TL",
+                "852,8 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "622.600",
+            "lot": "112.000.000",
+            "pct": "%40"
+          },
+          {
+            "group": "Yüksek Başvurulu",
+            "people": "4.379",
+            "lot": "28.000.000",
+            "pct": "%10"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "156",
+            "lot": "112.000.000",
+            "pct": "%40"
+          },
+          {
+            "group": "Yurt Dışı Kurumsal",
+            "people": "7",
+            "lot": "28.000.000",
+            "pct": "%10"
+          },
+          {
+            "group": "Toplam",
+            "people": "627.142",
+            "lot": "280.000.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Best Brands Grup Enerji Yatırım A.Ş.",
+      "bist_code": "BESTE",
+      "slug": "best-brands-grup-enerji-yatirim-a-s",
+      "link": "https://halkarz.com/best-brands-grup-enerji-yatirim-a-s/",
+      "date_text": "5-6 Şubat 2026",
+      "start": "2026-02-05",
+      "end": "2026-02-06",
+      "status": "Tamamlandı",
+      "price": "14,70 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "54.578.570 Lot",
+      "broker": "Global Menkul Değerler A.Ş.",
+      "market": "Ana Pazar",
+      "first_trade": "11 Şubat 2026",
+      "float_lot": "54.573.341 Lot",
+      "float_pct": "%28,99",
+      "updated_src": "16.09.2026 18:04",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 38.205.000 Lot",
+            "Ortak Satışı : 16.373.570 Lot (Sürkit Holding A.Ş.)"
+          ],
+          "source": "SPK Bülteni, 2025/5."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%100 Yeni yatırım yapılması"
+          ],
+          "source": "İzahname, Sayfa 223."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Borsa'da Satış - Sabit Fiyatla Talep Toplama"
+          ],
+          "source": "T1-T2 Uygun."
+        },
+        "tahsisat": {
+          "items": [
+            "Yoktur"
+          ],
+          "source": "Tamamen Eşit Dağıtım."
+        },
+        "dagitilan": {
+          "items": [
+            "796.578 katılım ~ 68 Lot (999 TL)"
+          ],
+          "source": "Tamamen Eşit Dağıtım."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün"
+          ],
+          "source": "İzahname, Sayfa 219."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 221."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%29"
+          ],
+          "source": "İzahname, Sayfa 209."
+        },
+        "iskonto": {
+          "items": [
+            "%22,88"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 56."
+        },
+        "buyukluk": {
+          "items": [
+            "802 Milyon TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025/9",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "346,5 Milyon TL",
+                "345,4 Milyon TL",
+                "287,5 Milyon TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "100,0 Milyon TL",
+                "88,0 Milyon TL",
+                "99,1 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "795.046",
+            "lot": "54.474.372",
+            "pct": "%99,81"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "15",
+            "lot": "1.065",
+            "pct": "%0,00"
+          },
+          {
+            "group": "Yurt Dışı Bireysel",
+            "people": "1.517",
+            "lot": "103.133",
+            "pct": "%0,19"
+          },
+          {
+            "group": "Toplam",
+            "people": "796.578",
+            "lot": "54.578.570",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Akhan Un Fabrikası ve Tarım Ürünleri Gıda Sanayi Tic. A.Ş.",
+      "bist_code": "AKHAN",
+      "slug": "akhan-un-fabrikasi-ve-tarim-urunleri-gida-sanayi-tic-a-s",
+      "link": "https://halkarz.com/akhan-un-fabrikasi-ve-tarim-urunleri-gida-sanayi-tic-a-s/",
+      "date_text": "28-29-30 Ocak 2026",
+      "start": "2026-01-28",
+      "end": "2026-01-30",
+      "status": "Tamamlandı",
+      "price": "21,50 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "54.700.000 Lot",
+      "broker": "Halk Yatırım Menkul Değerler A.Ş.",
+      "market": "Ana Pazar",
+      "first_trade": "6 Şubat 2026",
+      "float_lot": "54.692.125 Lot",
+      "float_pct": "%20",
+      "updated_src": "16.09.2026 18:05",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 54.700.000 Lot"
+          ],
+          "source": "SPK Bülteni, 2026/4."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%45 İşletme sermayesi",
+            "%40 Finansal borçların kapatılması",
+            "%15 Makarna fabrikası ile ilgili finansal kiralama ödemeleri"
+          ],
+          "source": "İzahname, Sayfa 217."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "tahsisat": {
+          "items": [
+            "32.820.000 Lot (%60) Yurt İçi Bireysel Yatırımcı",
+            "21.880.000 Lot (%40) Yurt İçi Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 200."
+        },
+        "dagitilan": {
+          "items": [
+            "959.086 katılım ~ 34 Lot (731 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün. * Brüt halka arz gelirinin %20'si"
+          ],
+          "source": "İzahname, Sayfa 213."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 215."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%20,01"
+          ],
+          "source": "İzahname, Sayfa 169."
+        },
+        "iskonto": {
+          "items": [
+            "%36,30"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 89."
+        },
+        "buyukluk": {
+          "items": [
+            "1,1 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025/9",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "4,6 Milyar TL",
+                "5,6 Milyar TL",
+                "6,5 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "715,1 Milyon TL",
+                "796,9 Milyon TL",
+                "817,9 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "959.086",
+            "lot": "32.820.000",
+            "pct": "%60"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "289",
+            "lot": "21.880.000",
+            "pct": "%40"
+          },
+          {
+            "group": "Toplam",
+            "people": "959.375",
+            "lot": "54.700.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Netcad Yazılım A.Ş.",
+      "bist_code": "NETCD",
+      "slug": "netcad-yazilim-a-s",
+      "link": "https://halkarz.com/netcad-yazilim-a-s/",
+      "date_text": "28-29-30 Ocak 2026",
+      "start": "2026-01-28",
+      "end": "2026-01-30",
+      "status": "Tamamlandı",
+      "price": "46,00 TL",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "40.000.000 Lot",
+      "broker": "İnfo Yatırım Menkul Değerler A.Ş.",
+      "market": "Ana Pazar",
+      "first_trade": "5 Şubat 2026",
+      "float_lot": "39.992.521 Lot",
+      "float_pct": "%29.19",
+      "updated_src": "16.09.2026 18:07",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 12.000.000 Lot",
+            "Ortak Satışı : 24.500.000 Lot (Eurocad Sarl.)",
+            "Ortak Satışı : 3.500.000 Lot (Evon Yapı Proje İnş. Mühendislik Bilgisayar San. ve Tic. A.Ş.)"
+          ],
+          "source": "SPK Bülteni, 2026/4."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%75-85 Arge yatırımları, işletme sermayesi",
+            "%5-10 Pazar faaliyetlerinin artırılmasında",
+            "%10-15 Şirket büyümesini destekleyen fiziki ve teknolojik yatırımlar"
+          ],
+          "source": "İzahname, Sayfa 261."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "tahsisat": {
+          "items": [
+            "24.000.000 Lot (%60) Yurt İçi Bireysel Yatırımcı",
+            "12.000.000 Lot (%30) Yurt İçi Kurumsal Yatırımcı",
+            "4.000.000 Lot (%10) Yurt Dışı Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 246."
+        },
+        "dagitilan": {
+          "items": [
+            "994.717 katılım ~ 24 Lot (1104 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "Planlanmamaktadır"
+          ],
+          "source": "İzahname, Sayfa 257."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 257."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%29,20"
+          ],
+          "source": "İzahname, Sayfa 213."
+        },
+        "iskonto": {
+          "items": [
+            "%26,3"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 46."
+        },
+        "buyukluk": {
+          "items": [
+            "1,9 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025/9",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "899,9 Milyon TL",
+                "1,1 Milyar TL",
+                "887,8 Milyon TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "835,7 Milyon TL",
+                "1,0 Milyar TL",
+                "795,7 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "994.717",
+            "lot": "24.000.000",
+            "pct": "%60"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "270",
+            "lot": "12.000.000",
+            "pct": "%30"
+          },
+          {
+            "group": "Yurt Dışı Kurumsal",
+            "people": "11",
+            "lot": "4.000.000",
+            "pct": "%10"
+          },
+          {
+            "group": "Toplam",
+            "people": "994.998",
+            "lot": "40.000.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Üçay Mühendislik Enerji ve İklimlendirme Teknolojileri A.Ş.",
+      "bist_code": "UCAYM",
+      "slug": "ucay-muhendislik-enerji-ve-iklimlendirme-teknolojileri-a-s",
+      "link": "https://halkarz.com/ucay-muhendislik-enerji-ve-iklimlendirme-teknolojileri-a-s/",
+      "date_text": "14-15-16 Ocak 2026",
+      "start": "2026-01-14",
+      "end": "2026-01-16",
+      "status": "Tamamlandı",
+      "price": "18,00 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "60.000.000 Lot",
+      "broker": "Kuveyt Türk Yatırım Menkul Değerler A.Ş.",
+      "market": "Ana Pazar",
+      "first_trade": "22 Ocak 2026",
+      "float_lot": "59.994.983 Lot",
+      "float_pct": "%26.66",
+      "updated_src": "16.09.2026 18:09",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 50.000.000 Lot",
+            "Ortak Satışı : 5.000.000 Lot (Ayhan Karacabey)",
+            "Ortak Satışı : 5.000.000 Lot (Mustafa Bozkurt)"
+          ],
+          "source": "SPK Bülteni, 2026/1."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%40-50 Lisanssız ya da Lisanslı güneş enerjisi santrali (GES) kurulumu ya da satın alınması",
+            "%10-15 Şube Aağının genişletilmesi",
+            "%30-40 Operasyonel giderlerin azaltılması, sürdürülebilirlik yatırımları",
+            "%5-10 Elektrikli araç şarj istasyonu ağları kurulumu"
+          ],
+          "source": "İzahname, Sayfa 294."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "tahsisat": {
+          "items": [
+            "42.000.000 Lot (%70) Yurt İçi Bireysel Yatırımcı",
+            "6.000.000 Lot (%10) Yüksek Başvurulu Yatırımcı",
+            "12.000.000 Lot (%20) Yurt İçi Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 283."
+        },
+        "dagitilan": {
+          "items": [
+            "785.446 katılım ~ 54 Lot (972 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün. * Brüt halka arz gelirinin %50'si"
+          ],
+          "source": "İzahname, Sayfa 290."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 291."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%26,67"
+          ],
+          "source": "İzahname, Sayfa 239."
+        },
+        "iskonto": {
+          "items": [
+            "%46,3"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 123."
+        },
+        "buyukluk": {
+          "items": [
+            "1,1 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025/9",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "1,9 Milyar TL",
+                "3,7 Milyar TL",
+                "3,9 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "455,5 Milyon TL",
+                "983,8 Milyon TL",
+                "1,0 Milyar TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "785.446",
+            "lot": "42.000.000",
+            "pct": "%70"
+          },
+          {
+            "group": "Yüksek Başvurulu",
+            "people": "11.017",
+            "lot": "6.000.000",
+            "pct": "%10"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "257",
+            "lot": "12.000.000",
+            "pct": "%20"
+          },
+          {
+            "group": "Toplam",
+            "people": "796.720",
+            "lot": "60.000.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Formül Plastik ve Metal Sanayi A.Ş.",
+      "bist_code": "FRMPL",
+      "slug": "formul-plastik-ve-metal-sanayi-a-s",
+      "link": "https://halkarz.com/formul-plastik-ve-metal-sanayi-a-s/",
+      "date_text": "7-8-9 Ocak 2026",
+      "start": "2026-01-07",
+      "end": "2026-01-09",
+      "status": "Tamamlandı",
+      "price": "30,24 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "40.000.000 Lot",
+      "broker": "İntegral Yatırım Menkul Değerler A.Ş. Ziraat Yatırım Menkul Değerler A.Ş.",
+      "market": "Ana Pazar",
+      "first_trade": "15 Ocak 2026",
+      "float_lot": "39.966.462 Lot",
+      "float_pct": "%24.97",
+      "updated_src": "16.09.2026 18:14",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 30.000.000 Lot",
+            "Ortak Satışı : 10.000.000 Lot (Haydar Şahin)"
+          ],
+          "source": "SPK Bülteni, 2025/67."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%75 Yatırımlar",
+            "%25 İşletme sermayesi"
+          ],
+          "source": "İzahname, Sayfa 246."
+        },
+        "tahsisat": {
+          "items": [
+            "26.000.000 Lot (%65) Yurt İçi Bireysel Yatırımcı",
+            "4.000.000 Lot (%10) Yüksek Başvurulu Yatırımcı",
+            "10.000.000 Lot (%25) Yurt İçi Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 232."
+        },
+        "dagitilan": {
+          "items": [
+            "679.834 katılım ~ 39 Lot (1179 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün. * Brüt halka arz gelirinin %10'u",
+            "(İntegral Yatırım Menkul Değerler A.Ş.)"
+          ],
+          "source": "İzahname, Sayfa 242."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 244."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%25"
+          ],
+          "source": "İzahname, Sayfa 194."
+        },
+        "iskonto": {
+          "items": [
+            "%28,98"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 63."
+        },
+        "buyukluk": {
+          "items": [
+            "1,2 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025/9",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "2,4 Milyar TL",
+                "3,5 Milyar TL",
+                "3,5 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "664,0 Milyon TL",
+                "924,8 Milyon TL",
+                "1,1 Milyar TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "679.834",
+            "lot": "26.000.000",
+            "pct": "%65"
+          },
+          {
+            "group": "Yüksek Başvurulu",
+            "people": "8.588",
+            "lot": "4.000.000",
+            "pct": "%10"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "142",
+            "lot": "10.000.000",
+            "pct": "%25"
+          },
+          {
+            "group": "Toplam",
+            "people": "688.564",
+            "lot": "40.000.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Z Gayrimenkul Yatırım Ortaklığı A.Ş.",
+      "bist_code": "ZGYO",
+      "slug": "z-gayrimenkul-yatirim-ortakligi-a-s",
+      "link": "https://halkarz.com/z-gayrimenkul-yatirim-ortakligi-a-s/",
+      "date_text": "7-8-9 Ocak 2026",
+      "start": "2026-01-07",
+      "end": "2026-01-09",
+      "status": "Tamamlandı",
+      "price": "9,77 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "84.500.000 Lot",
+      "broker": "Vakıf Yatırım Menkul Değerler A.Ş.",
+      "market": "Ana Pazar",
+      "first_trade": "16 Ocak 2026",
+      "float_lot": "49.557.604 Lot",
+      "float_pct": "%23.54",
+      "updated_src": "16.09.2026 18:15",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 42.250.000 Lot",
+            "Ortak Satışı : 42.250.000 Lot (Ahmet Kerem Eren)"
+          ],
+          "source": "SPK Bülteni, 2025/67."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%20-30 Portföydeki arsalar üzerinde gayrimenkul projesi geliştirme yatırımları ve gayrimenkule dayalı hak kapsamındaki proje yatırımları",
+            "%25-35 Lagun diplomatik site projesi yatırımları",
+            "%25-35 Finansal yükümlülük ödemesi",
+            "%10-20 İşletme sermayesi"
+          ],
+          "source": "İzahname, Sayfa 269."
+        },
+        "tahsisat": {
+          "items": [
+            "42.250.000 Lot (%50) Yurt İçi Bireysel Yatırımcı",
+            "42.250.000 Lot (%50) Yurt İçi Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 255."
+        },
+        "dagitilan": {
+          "items": [
+            "431.279 katılım ~ 98 Lot (957 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "Planlanmamaktadır"
+          ],
+          "source": "İzahname, Sayfa 266."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 267."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%40,1"
+          ],
+          "source": "İzahname, Sayfa 223."
+        },
+        "iskonto": {
+          "items": [
+            "%27"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 65."
+        },
+        "buyukluk": {
+          "items": [
+            "825 Milyon TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025/9",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "8,2 Milyon TL",
+                "5,8 Milyon TL",
+                "3,8 Milyon TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "8,2 Milyon TL",
+                "5,8 Milyon TL",
+                "2,0 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "431.279",
+            "lot": "42.250.000",
+            "pct": "%50"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "101",
+            "lot": "42.250.000",
+            "pct": "%50"
+          },
+          {
+            "group": "Toplam",
+            "people": "431.380",
+            "lot": "84.500.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Meysu Gıda San. ve Tic. A.Ş.",
+      "bist_code": "MEYSU",
+      "slug": "meysu-gida-san-ve-tic-a-s",
+      "link": "https://halkarz.com/meysu-gida-san-ve-tic-a-s/",
+      "date_text": "5-6-7 Ocak 2026",
+      "start": "2026-01-05",
+      "end": "2026-01-07",
+      "status": "Tamamlandı",
+      "price": "7,50 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "175.000.000 Lot",
+      "broker": "Alnus Yatırım Menkul Değerler A.Ş. Tera Yatırım Menkul Değerler A.Ş.",
+      "market": "Ana Pazar",
+      "first_trade": "13 Ocak 2026",
+      "float_lot": "174.985.731 Lot",
+      "float_pct": "%20.11",
+      "updated_src": "16.09.2026 18:18",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 120.000.000 Lot",
+            "Ortak Satışı : 55.000.000 Lot (Gülsan Gıda San. Tic. A.Ş.)"
+          ],
+          "source": "SPK Bülteni, 2025/66."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%40-50 Kapasite ve verimlilik artışına yönelik yatırım",
+            "%50-60 İşletme sermayesi"
+          ],
+          "source": "İzahname, Sayfa 302."
+        },
+        "tahsisat": {
+          "items": [
+            "17.500.000 Lot (%10) Yüksek Başvurulu Yatırımcı",
+            "78.750.000 Lot (%45) Yurt İçi Bireysel Yatırımcı",
+            "78.750.000 Lot (%45) Yurt İçi Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 288."
+        },
+        "dagitilan": {
+          "items": [
+            "646.385 katılım ~ 122 Lot (915 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün",
+            "(Alnus Yatırım Menkul Değerler A.Ş.)"
+          ],
+          "source": "İzahname, Sayfa 299."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 300."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%20,11"
+          ],
+          "source": "İzahname, Sayfa 254."
+        },
+        "iskonto": {
+          "items": [
+            "%29"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 76."
+        },
+        "buyukluk": {
+          "items": [
+            "1,3 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025/9",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "2,8 Milyar TL",
+                "3,4 Milyar TL",
+                "3,3 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "862,4 Milyon TL",
+                "1,0 Milyar TL",
+                "948,3 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "646.385",
+            "lot": "78.750.000",
+            "pct": "%45"
+          },
+          {
+            "group": "Yüksek Başvurulu",
+            "people": "1.407",
+            "lot": "17.500.000",
+            "pct": "%10"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "208",
+            "lot": "78.750.000",
+            "pct": "%45"
+          },
+          {
+            "group": "Toplam",
+            "people": "648.003",
+            "lot": "175.000.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Arf Bio Yenilenebilir Enerji Üretim A.Ş.",
+      "bist_code": "ARFYE",
+      "slug": "arf-bio-yenilenebilir-enerji-uretim-a-s",
+      "link": "https://halkarz.com/arf-bio-yenilenebilir-enerji-uretim-a-s/",
+      "date_text": "25-26 Aralık 2025",
+      "start": "2025-12-25",
+      "end": "2025-12-26",
+      "status": "Tamamlandı",
+      "price": "19,50 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "47.000.000 Lot",
+      "broker": "A1 Capital Yatırım Menkul Değerler A.Ş. Bulls Yatırım Menkul Değerler A.Ş.",
+      "market": "Ana Pazar",
+      "first_trade": "5 Ocak 2026",
+      "float_lot": "46.996.489 Lot",
+      "float_pct": "%25.70",
+      "updated_src": "03.04.2026 12:23",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 35.500.000 Lot",
+            "Ortak Satışı : 11.500.000 Lot (Re-Pie Portföy Yönetimi A.Ş. Arf Girişim Sermayesi Yatırım Fonu)"
+          ],
+          "source": "SPK Bülteni, 2025/63."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%55 Hammadde tedariki ve işletme sermayesi finansmanı",
+            "%15 Mikro alg yatırımının finansmanı",
+            "%30 Finansal ve cari borç ödemeleri"
+          ],
+          "source": "İzahname, Sayfa 276."
+        },
+        "tahsisat": {
+          "items": [
+            "23.500.000 Lot (%50) Yurt İçi Bireysel Yatırımcı",
+            "23.500.000 Lot (%50) Yurt İçi Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 259."
+        },
+        "dagitilan": {
+          "items": [
+            "508.244 katılım ~ 47 Lot (916 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "Planlanmamaktadır"
+          ],
+          "source": "İzahname, Sayfa 271."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 273."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%25,71"
+          ],
+          "source": "İzahname, Sayfa 223."
+        },
+        "iskonto": {
+          "items": [
+            "%37,9"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 119."
+        },
+        "buyukluk": {
+          "items": [
+            "1 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025/9",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "152,4 Milyon TL",
+                "143,6 Milyon TL",
+                "272,8 Milyon TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "1,8 Milyon TL",
+                "47,8 Milyon TL",
+                "134,5 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "508.244",
+            "lot": "23.500.000",
+            "pct": "%50"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "157",
+            "lot": "23.500.000",
+            "pct": "%50"
+          },
+          {
+            "group": "Toplam",
+            "people": "508.401",
+            "lot": "47.000.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Zeray Gayrimenkul Yatırım Ortaklığı A.Ş.",
+      "bist_code": "ZERGY",
+      "slug": "zeray-gayrimenkul-yatirim-ortakligi-a-s",
+      "link": "https://halkarz.com/zeray-gayrimenkul-yatirim-ortakligi-a-s/",
+      "date_text": "10-11-12 Aralık 2025",
+      "start": "2025-12-10",
+      "end": "2025-12-12",
+      "status": "Tamamlandı",
+      "price": "13,00 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "156.800.000 Lot",
+      "broker": "Ziraat Yatırım Menkul Kıymetler A.Ş. İntegral Yatırım Menkul Değerler A.Ş.",
+      "market": "Yıldız Pazar",
+      "first_trade": "18 Aralık 2025",
+      "float_lot": "116.683.040 Lot",
+      "float_pct": "%18.03",
+      "updated_src": "03.04.2026 14:50",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 116.000.000 Lot",
+            "Ortak Satışı : 40.800.000 Lot (Zekeriya Zeray)"
+          ],
+          "source": "SPK Bülteni, 2025/61."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%20-30 Yeni projelerin finansmanı",
+            "%65-75 Yüklenici firmalara hakediş ödemeleri",
+            "%0-10 Finansal borçların ödenmesi",
+            "%0-5 İşletme sermayesi"
+          ],
+          "source": "İzahname, Sayfa 289."
+        },
+        "tahsisat": {
+          "items": [
+            "78.400.000 Lot (%50) Yurt İçi Bireysel Yatırımcı",
+            "78.400.000 Lot (%50) Yurt İçi Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 271."
+        },
+        "dagitilan": {
+          "items": [
+            "348.179 katılım ~ 226 Lot (2938 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "15 gün",
+            "(İntegral Yatırım Menkul Değerler A.Ş.)"
+          ],
+          "source": "İzahname, Sayfa 283."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 285."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%25,05"
+          ],
+          "source": "İzahname, Sayfa 237."
+        },
+        "iskonto": {
+          "items": [
+            "%20.07"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 57."
+        },
+        "buyukluk": {
+          "items": [
+            "2 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025/9",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "255,9 Milyon TL",
+                "2,4 Milyar TL",
+                ""
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "130,7 Milyon TL",
+                "61,5 Milyon TL",
+                ""
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "348.179",
+            "lot": "78.400.000",
+            "pct": "%50"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "150",
+            "lot": "78.400.000",
+            "pct": "%50"
+          },
+          {
+            "group": "Toplam",
+            "people": "348.329",
+            "lot": "156.800.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Pasifik Holding A.Ş.",
+      "bist_code": "PAHOL",
+      "slug": "pasifik-holding-a-s",
+      "link": "https://halkarz.com/pasifik-holding-a-s/",
+      "date_text": "12-13-14 Kasım 2025",
+      "start": "2025-11-12",
+      "end": "2025-11-14",
+      "status": "Tamamlandı",
+      "price": "1,50 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "4.000.000.000 Lot",
+      "broker": "Halk Yatırım Menkul Değerler A.Ş. İntegral Yatırım Menkul Değerler A.Ş.",
+      "market": "Yıldız Pazar",
+      "first_trade": "21 Kasım 2025",
+      "float_lot": "3.999.734.166 Lot",
+      "float_pct": "%19.99",
+      "updated_src": "03.04.2026 11:19",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 2.000.000.000 Lot",
+            "Ortak Satışı : 666.666.668 Lot (Fatih Erdoğan)",
+            "Ortak Satışı : 666.666.666 Lot (Mehmet Erdoğan)",
+            "Ortak Satışı : 666.666.666 Lot (Abdulkerim Fırat’)"
+          ],
+          "source": "SPK Bülteni, 2025/57."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%80 Yatırımlar",
+            "%10 Finansal borçların ödenmesi",
+            "%10 İşletme sermayesi"
+          ],
+          "source": "İzahname, Sayfa 462."
+        },
+        "tahsisat": {
+          "items": [
+            "1.600.000.000 Lot (%40) Yurt İçi Bireysel Yatırımcı",
+            "400.000.000 Lot (%10) Yüksek Başvurulu Yatırımcı",
+            "2.000.000.000 Lot (%50) Yurt İçi Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 448."
+        },
+        "dagitilan": {
+          "items": [
+            "649.369 katılım ~ 2464 Lot (3696 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün",
+            "* (Ortak Payları) Halka arz gelirinin %100'ü",
+            "* (Sermaye Artırımı) Brüt halka arz gelirinin %20'si",
+            "* İlave olarak brüt halka arz gelirinin %10'u",
+            "(Halk Yatırım Menkul Değerler A.Ş.)"
+          ],
+          "source": "İzahname, Sayfa 458."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 460."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%20"
+          ],
+          "source": "İzahname, Sayfa 415."
+        },
+        "iskonto": {
+          "items": [
+            "%25"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 45."
+        },
+        "buyukluk": {
+          "items": [
+            "6 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025/6",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "1,9 Milyar TL",
+                "1,2 Milyar TL",
+                "700,0 Milyon TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "1,9 Milyar TL",
+                "564,4 Milyon TL",
+                "41,2 Milyon TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "649.369",
+            "lot": "1.600.000.000",
+            "pct": "%40"
+          },
+          {
+            "group": "Yüksek Başvurulu",
+            "people": "9.496",
+            "lot": "400.000.000",
+            "pct": "%10"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "156",
+            "lot": "2.000.000.000",
+            "pct": "%50"
+          },
+          {
+            "group": "Toplam",
+            "people": "659.021",
+            "lot": "4.000.000.000",
+            "pct": "%100"
+          }
+        ]
+      }
+    },
+    {
+      "company": "Vakıf Faktoring A.Ş.",
+      "bist_code": "VAKFA",
+      "slug": "vakif-faktoring-a-s",
+      "link": "https://halkarz.com/vakif-faktoring-a-s/",
+      "date_text": "12-13-14 Kasım 2025",
+      "start": "2025-11-12",
+      "end": "2025-11-14",
+      "status": "Tamamlandı",
+      "price": "14,20 TL",
+      "distribution": "Eşit Dağıtım",
+      "lot": "225.000.000 Lot",
+      "broker": "Vakıf Yatırım Menkul Değerler A.Ş.",
+      "market": "Yıldız Pazar",
+      "first_trade": "20 Kasım 2025",
+      "float_lot": "224.987.172 Lot",
+      "float_pct": "%24.99",
+      "updated_src": "23.11.2025 15:50",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 50.000.000 Lot",
+            "Ortak Satışı : 107.834.821 Lot (Türkiye Vakıflar Bankası T.A.O.)",
+            "Ortak Satışı : 21.629.465 Lot (Vakıfbank Personeli Özel Sosyal Güvenlik Hizmetleri Vakfı)",
+            "Ortak Satışı : 32.254.464 Lot (Vakıf Finansal Kiralama A.Ş.)",
+            "Ortak Satışı : 13.281.250 Lot (Vakıf Pazarlama San. ve Tic. A.Ş.)"
+          ],
+          "source": "SPK Bülteni, 2025/57."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%100 Faktoring işlemlerinin finansmanı"
+          ],
+          "source": "İzahname, Sayfa 239."
+        },
+        "tahsisat": {
+          "items": [
+            "135.000.000 Lot (%60) Yurt İçi Bireysel Yatırımcı",
+            "90.000.000 Lot (%40) Yurt İçi Kurumsal Yatırımcı"
+          ],
+          "source": "İzahname, Sayfa 219."
+        },
+        "dagitilan": {
+          "items": [
+            "684.223 katılım ~ 198 Lot (2811 TL)"
+          ],
+          "source": "Bireysel Yatırımcı Grubu."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün. * Brüt halka arz gelirinin %10'u"
+          ],
+          "source": "İzahname, Sayfa 234."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "İzahname, Sayfa 236."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%25"
+          ],
+          "source": "İzahname, Sayfa 183."
+        },
+        "iskonto": {
+          "items": [
+            "%20"
+          ],
+          "source": "Fiyat Tespit Raporu, Sayfa 49."
+        },
+        "buyukluk": {
+          "items": [
+            "3,2 Milyar TL"
+          ],
+          "source": ""
+        },
+        "finansal": {
+          "periods": [
+            "2025/6",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "4,9 Milyar TL",
+                "12,8 Milyar TL",
+                "8,6 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "1,3 Milyar TL",
+                "2,3 Milyar TL",
+                "2,1 Milyar TL"
+              ]
+            }
+          ]
+        },
+        "katilim_endeksi": true,
+        "sonuclar": [
+          {
+            "group": "Yurt İçi Bireysel",
+            "people": "684.223",
+            "lot": "135.000.000",
+            "pct": "%60"
+          },
+          {
+            "group": "Yurt İçi Kurumsal",
+            "people": "106",
+            "lot": "90.000.000",
+            "pct": "%40"
+          },
+          {
+            "group": "Toplam",
+            "people": "684.329",
+            "lot": "225.000.000",
             "pct": "%100"
           }
         ]

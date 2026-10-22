@@ -112,7 +112,7 @@ Tablodan çıkan ders açık: 12 aydan 48 aya geçmek aylık taksiti yaklaşık 
 4. **Erken kapatırsam ne olur?** Kalan faizden indirim yapıldığını teyit et.
 5. **Borcu doğuran alışkanlık değişti mi?** Harcama düzeni aynı kalırsa yapılandırma yalnızca bir sonraki borç dalgasını erteler.
 
-Yapılandırma sonrası borcu kalıcı olarak eritmek için [kartopu ve çığ yöntemlerini](/blog/borc-kapatma-yontemi-kartopu-cig) birlikte kullanmak işe yarar; genel yol haritası için [kredi kartı borcundan kurtulma planına](/blog/kredi-karti-borcundan-kurtulma) da bakabilirsin.
+Yapılandırma sonrası borcu kalıcı olarak eritmek için [kartopu ve çığ yöntemlerini](/blog/borc-kapatma-yontemi-kartopu-cig/) birlikte kullanmak işe yarar; aynı rehberde kredi kartı borcundan kurtulmanın genel yol haritasını da bulabilirsin.
 
 ## Özet
 

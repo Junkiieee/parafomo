@@ -42,7 +42,7 @@ shorts_visuals:
 
 Temettü takvimi, bir şirketin kar dağıtım sürecindeki kritik tarihleri sıralayan programdır. Şirket, yıl sonu veya ara dönem mali sonuçlarını açıkladıktan sonra yönetim kurulu temettü teklifi hazırlar; bu teklif genel kurulda onaylanır ve ardından belirli tarihlere göre ödeme yapılır.
 
-Türkiye'de temettü dağıtım süreci, **KAP (Kamuoyu Aydınlatma Platformu)** üzerinden şeffaf biçimde takip edilebilir. Halka açık şirketler, dağıtılacak temettü miktarını ve tarihleri kamuya açıklamak zorundadır. Temettü nedir ve nasıl çalışır sorusunu daha ayrıntılı ele almak istiyorsanız, [Temettü Hisseleri ile Pasif Gelir](/blog/temettu-hisseleri-pasif-gelir/) yazısına göz atabilirsiniz.
+Türkiye'de temettü dağıtım süreci, **KAP (Kamuoyu Aydınlatma Platformu)** üzerinden şeffaf biçimde takip edilebilir. Halka açık şirketler, dağıtılacak temettü miktarını ve tarihleri kamuya açıklamak zorundadır. Temettü nedir ve nasıl çalışır sorusunu daha ayrıntılı ele almak istiyorsanız, [Temettü Hisseleri ile Pasif Gelir](/blog/temettu-verimi-nedir/) yazısına göz atabilirsiniz.
 
 ## BIST'te temettü sürecinin 4 kritik tarihi
 
@@ -90,7 +90,7 @@ Takvimi okuduktan sonra bir sonraki adım, o temettünün size gerçekten değip
 
 Türkiye'de gerçek kişilerin aldığı temettü gelirlerine **%15 stopaj vergisi** uygulanır (2026 itibarıyla). Yani 3 TL brüt temettü, 0,45 TL vergi kesintisi sonrası **2,55 TL net** olarak hesabınıza geçer. Getiri hesaplarınızı mutlaka net tutar üzerinden yapın; aksi hâlde beklentiniz yanıltıcı olabilir.
 
-Temettü yatırımı hakkında daha kapsamlı bir değerlendirme için [Temettü Hisseleri ile Pasif Gelir](/blog/temettu-hisseleri-pasif-gelir/) yazısına göz atabilirsiniz.
+Temettü yatırımı hakkında daha kapsamlı bir değerlendirme için [Temettü Hisseleri ile Pasif Gelir](/blog/temettu-verimi-nedir/) yazısına göz atabilirsiniz.
 
 ## Temettü takvimini nereden takip edersin?
 

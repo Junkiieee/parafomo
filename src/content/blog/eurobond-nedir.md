@@ -86,7 +86,7 @@ Eurobond şu profildeki yatırımcılara daha iyi hizmet eder:
 **Eurobond şunlara uygun değil:**
 - Kısa vadede paraya ihtiyaç duyacak olanlara (ikincil piyasada zarara uğrayabilirsin).
 - Türkiye'nin kredi riskine maruz kalmak istemeyenlere.
-- Çok küçük birikimlerle başlayanlara; bu durumda [endeks fonu veya yatırım fonu](/blog/endeks-fonu-nedir) çok daha esnek başlangıç noktasıdır.
+- Çok küçük birikimlerle başlayanlara; bu durumda [endeks fonu veya yatırım fonu](/blog/etf-nedir-borsa-yatirim-fonu/) çok daha esnek başlangıç noktasıdır.
 
 ## Eurobond ile Dolar Mevduat Arasındaki Temel Fark
 

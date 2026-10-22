@@ -107,7 +107,7 @@ Interactive Brokers, Saxo Bank gibi yabancı platformlara hesap açarak Nasdaq 1
 - **QQQ (Invesco QQQ Trust):** En köklü ve likit Nasdaq 100 ETF'i; yıllık yönetim ücreti %0.20.
 - **QQQM (Invesco Nasdaq 100 ETF):** Uzun vadeli bireysel yatırımcılar için optimize edilmiş; %0.15 ücret.
 
-[ETF nasıl alınır](/blog/etf-nasil-alinir/) rehberimiz, bu platformlarda hesap açma ve ilk alım emri girme adımlarını ayrıntılı açıklamaktadır.
+[ETF nasıl alınır](/blog/etf-nedir-borsa-yatirim-fonu/) rehberimiz, bu platformlarda hesap açma ve ilk alım emri girme adımlarını ayrıntılı açıklamaktadır.
 
 ### Adım Adım: Uluslararası ETF Yoluyla Nasdaq 100 Yatırımı
 

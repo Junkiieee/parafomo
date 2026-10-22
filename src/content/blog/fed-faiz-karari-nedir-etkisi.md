@@ -1,8 +1,8 @@
 ---
-title: "Fed Faiz Kararı Nedir? 2026 FOMC Takvimi ve Türkiye'ye Etkisi"
-description: "Fed faiz kararı nedir, FOMC 2026 toplantı tarihleri ve Türkiye'deki yatırımcıyı nasıl etkiler? Dolar/TL, BIST ve mevduata yansımaları sade bir dille."
+title: "Fed Faiz Kararı Nedir? Dolar, Altın ve Türkiye'ye Etkisi"
+description: "Fed faiz kararı nedir, FOMC nasıl karar verir ve Türkiye'deki yatırımcıyı nasıl etkiler? Dolar/TL, BIST ve mevduata yansımaları sade bir dille."
 pubDate: 2026-08-04
-updatedDate: 2026-08-10
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["fed faiz kararı", "abd merkez bankası", "faiz politikası", "dolar tl", "fomc", "fed kararı 2026"]
 readingTime: 8
@@ -107,11 +107,10 @@ TCMB, Fed'den bağımsız karar alır; ancak kur baskısı altındayken Fed'in y
 
 ## 2026 FOMC Toplantı Takvimi — Kalan Tarihler
 
-FOMC yılda 8 kez toplanır. 2026'da Temmuz toplantısı tamamlandı; yıl içinde kalan üç toplantı Türkiye piyasaları için kritik izlenme noktaları:
+FOMC yılda 8 kez toplanır. 2026'da Eylül toplantısı da geride kaldı; yıl içinde kalan iki toplantı Türkiye piyasaları için kritik izlenme noktaları:
 
 | Toplantı | Tarih | Karar Açıklama (Türkiye Saati) |
 |----------|-------|-------------------------------|
-| Eylül 2026 | 15–16 Eylül 2026 | 16 Eylül, ~21:00 TSİ · dot plot |
 | Ekim 2026 | 27–28 Ekim 2026 | 28 Ekim, ~21:00 TSİ |
 | Aralık 2026 | 8–9 Aralık 2026 | 9 Aralık, ~22:00 TSİ · dot plot |
 

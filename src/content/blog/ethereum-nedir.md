@@ -120,7 +120,7 @@ Bitcoin'den farklı olarak ETH'yi yalnızca tutmak zorunda değilsiniz:
 | DeFi borç verme | Protokollere likidite sağlama | Değişken faiz | Akıllı sözleşme açığı |
 | Katman 2 stake | L2 ağlarına ETH yatırma | Farklı protokol getirisi | Protokol riski |
 
-Getiri seçeneklerini değerlendirirken [bileşik getiri mantığını](/blog/bilesik-faiz-nedir) hatırlatmak gerekir: küçük yüzdeler bile yıllar içinde büyük fark yaratır.
+Getiri seçeneklerini değerlendirirken [bileşik getiri mantığını](/bilesik-faiz-hesaplama/) hatırlatmak gerekir: küçük yüzdeler bile yıllar içinde büyük fark yaratır.
 
 ## Portföyde ETH'ye Kaç Yer Ayırmalı?
 

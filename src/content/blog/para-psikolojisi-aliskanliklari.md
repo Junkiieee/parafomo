@@ -56,7 +56,7 @@ Bu yanlılıkları bilerek tasarlanmış alışkanlıklar, onları otomatik olar
 
 Maaş gelir gelmez belirli bir oranı — ideal olarak %10-20 — otomatik olarak ayrı bir hesaba aktarın. Kalan ile geçinin. Tersini yaparsanız (önce harcayıp kalanı biriktirirsem) birikim çoğunlukla sıfır kalır.
 
-[Bileşik faiz hesabına](/blog/bilesik-faiz-nedir/) bakıldığında bu alışkanlığın 20-30 yıl boyunca ne anlama geldiği çarpıcı hale gelir.
+[Bileşik faiz hesabına](/bilesik-faiz-hesaplama/) bakıldığında bu alışkanlığın 20-30 yıl boyunca ne anlama geldiği çarpıcı hale gelir.
 
 ### 2. Bütçe Değil, Harcama Farkındalığı
 

@@ -102,7 +102,7 @@ Hisse senedi, bir şirketin ortağı olmak demektir. Kâr paylaşımı (temettü
 
 Uzun vadeli yatırım yapmak istiyorsan ve piyasayı sürekli takip etmek için zamanın yoksa **endeks fonu seni piyasaya bağlar ve aktif seçim stresinden kurtarır.**
 
-[Endeks fonunun nasıl çalıştığını ve nasıl alınacağını öğren →](/blog/endeks-fonu-nedir)
+[Endeks fonunun nasıl çalıştığını ve nasıl alınacağını öğren →](/blog/etf-nedir-borsa-yatirim-fonu/)
 
 ## ETF (Borsa Yatırım Fonu) — Kolay ve Esnek Çeşitlendirme
 

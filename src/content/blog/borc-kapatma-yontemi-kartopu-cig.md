@@ -1,10 +1,11 @@
 ---
-title: "Borç Kapatma Yöntemi: Kartopu mu Çığ mı Seçmelisin?"
-description: "Birden fazla borcu olan herkesin bilmesi gereken iki borç kapatma yöntemi: kartopu ve çığ. Hangisi daha fazla faiz tasarrufu sağlar, sayısal örneklerle karşılaştırma."
+title: "Borç Kapatma Yöntemi: Kartopu mu Çığ mı? Kredi Kartı Borcundan Kurtulma Planı"
+description: "Kredi kartı ve kredi borcundan kurtulmak için iki yöntem: kartopu ve çığ. Hangisi daha fazla faiz tasarrufu sağlar, minimum ödeme tuzağı ve adım adım borç kapatma planı."
 pubDate: 2026-07-14
+updatedDate: 2026-10-22
 category: "Kişisel Finans"
-tags: ["borç kapatma yöntemi", "kartopu yöntemi", "çığ yöntemi", "borç ödeme planı", "kişisel finans", "borç yönetimi"]
-readingTime: 6
+tags: ["borç kapatma yöntemi", "kartopu yöntemi", "çığ yöntemi", "borç ödeme planı", "kişisel finans", "borç yönetimi", "kredi kartı borcu", "borçtan kurtulma"]
+readingTime: 8
 featured: false
 faq:
   - q: "Borç kapatma yöntemi olarak kartopu mu çığ mı daha iyidir?"
@@ -17,9 +18,21 @@ faq:
     a: "Genelde evet. Konut kredisi faizi genellikle kredi kartı veya ihtiyaç kredisinden düşüktür; yüksek faizli borçları önce kapatmak toplam maliyeti belirgin biçimde düşürür."
   - q: "Borç kapatma sürecinde ek ödeme yapmanın önemi nedir?"
     a: "Büyük. Aylık bütçenin üzerine eklenen her 500 TL, uzun vadede binlerce TL faiz tasarrufu ve aylarca kısalan borç süresi anlamına gelir."
+  - q: "Minimum ödeme yaparak kredi kartı borcu biter mi?"
+    a: "Çok yavaş biter ve çok daha fazla faiz ödersin. Minimum ödeme büyük ölçüde faizi karşılar, anaparayı neredeyse eritmez; 50.000 TL'lik bir borcu yalnızca minimum ödemeyle kapatmak yıllar sürebilir ve faiz olarak anapara kadar ek ödeme yapabilirsin. Her zaman minimumun üzerinde öde."
+  - q: "Kredi kartı borcunu kapatmak için kredi çekmeli miyim?"
+    a: "Faizi belirgin şekilde düşük bir ihtiyaç kredisi, yüksek faizli kart borcunu konsolide etmek için mantıklı olabilir. Ancak borcu taşıdıktan sonra kartları tekrar kullanmamayı taahhüt etmelisin; aksi hâlde iki kat borç birikir."
+  - q: "Borcu kapattıktan sonra kredi kartını iptal etmeli miyim?"
+    a: "Zorunlu değil. Limiti düşürmek veya fiziksel kartı kesmek çoğu zaman yeterlidir. Hesabı kapatmak kısa vadede kredi notunu olumsuz etkileyebilir; sıfırlanan kartı aktif ama kullanılmaz hâlde tutmak daha iyi bir seçenektir."
 ---
 
-Birden fazla borcun altında kalmak hem maddi hem psikolojik bir yük. Asıl sorun genellikle ödeme gücü değil, *hangi borcu önce kapatacağını bilmemek*. İki kanıtlanmış **borç kapatma yöntemi** — kartopu ve çığ — bu karmaşayı sistematik bir plana dönüştürür.
+Birden fazla borcun — özellikle kredi kartı borcunun — altında kalmak hem maddi hem psikolojik bir yük. Asıl sorun genellikle ödeme gücü değil, *hangi borcu önce kapatacağını bilmemek*. İki kanıtlanmış **borç kapatma yöntemi** — kartopu ve çığ — bu karmaşayı sistematik bir plana dönüştürür.
+
+## Kredi Kartı Borcu Neden Bu Kadar Tehlikeli?
+
+Kredi kartı faizi bileşik çalışır: ödenmemiş bakiye üzerine her ay yeni faiz işler, bu faiz de bir sonraki ay bakiyeye eklenir. Türkiye'deki kart faizleri yıllık bazda %50-100 bandına çıkabiliyor; bu, 50.000 TL'lik bir borcun yılda 25.000-50.000 TL faiz üretebileceği anlamına gelir.
+
+**Minimum ödeme tuzağı:** Bankalar minimum ödemeyi genellikle borcun küçük bir yüzdesi olarak belirler. Bu tutar ağırlıklı olarak faizi karşılar, anaparayı neredeyse hiç eritmez. Yalnızca minimum ödemeyle devam edersen borçtan çıkmak yıllar alır. Bu yüzden kart borcu, aşağıdaki yöntemlerin hangisini seçersen seç, sıralamada genellikle en öne yerleşir.
 
 ## Neden Sırasız Ödeme Seni Yavaşlatır?
 
@@ -125,7 +138,7 @@ Borç öderken [acil durum fonunu](/blog/acil-durum-fonu-nedir/) sıfırlamak ca
 
 **2. Faiz müzakeresi yap:** Özellikle kredi kartlarında bankanı ara ve faiz indirimi iste. Uzun süreli müşteriler için zaman zaman işe yarar.
 
-**3. Borç konsolidasyonu değerlendir:** Yüksek faizli birden fazla borç varsa düşük faizli bir ihtiyaç kredisiyle birleştirmek toplam maliyeti düşürebilir. Dikkat: konsolidasyon sonrası eski kartları kapatmadan kullanmak başlangıca dönmendir. [Kredi kartı borç yönetimi](/blog/kredi-karti-borcundan-kurtulma/) yazısında bu stratejiyi detaylıca ele aldık.
+**3. Borç konsolidasyonu değerlendir:** Yüksek faizli birden fazla borç varsa düşük faizli bir ihtiyaç kredisiyle birleştirmek toplam maliyeti düşürebilir. Dikkat: konsolidasyon sonrası eski kartları kapatmadan kullanmak başlangıca dönmendir. Örneğin kart faizi %80-100 bandındayken bir ihtiyaç kredisi %40-50 faiz sunuyorsa borcu taşımak mantıklı olabilir; ama taşıdıktan sonra fiziksel kartları kesmeyi ya da limitleri düşürmeyi düşün.
 
 **4. Gereksiz abonelikleri geçici kes:** Streaming, spor salonu, premium uygulamalar — bunları 3-6 ay askıya al. Aylık kurtarılan 300-500 TL bile borç kapatma süresini haftalarca kısaltır.
 
@@ -133,13 +146,29 @@ Borç öderken [acil durum fonunu](/blog/acil-durum-fonu-nedir/) sıfırlamak ca
 
 En küçük borcun çok küçük ve hızla kapanabilecekse önce onu bitir (kartopu gibi); sonra kalan borçları faiz sırasıyla devam et (çığ gibi). Bu yaklaşım erken bir "kazanım" hissi yaratırken sonrasını matematiksel olarak optimize eder.
 
+## Yeni Borç Oluşturmamak İçin 5 Kural
+
+Borçtan çıkmak sorunu tek başına çözmez; tekrara düşmemek çözer.
+
+1. **Kart limitini gerçek gelirinin altına çek:** Yüksek limit, zihinsel bir güvenlik yanılgısı yaratır.
+2. **Günlük alışverişi nakit ya da banka kartıyla yap:** Kredi kartını acil durumlar için tut, günlük harcama için değil.
+3. **Tam ödeme alışkanlığı edin:** Her ay hesap kesiminde bakiyenin tamamını öde; böylece faize hiç girmezsin.
+4. **Plansız alışverişe 48 saat kuralı uygula:** İstediğin ürünü sepete ekle, iki gün bekle. Çoğu zaman istek geçer.
+5. **Aylık harcama sınırı belirle:** Kartı limite göre değil, bütçene göre kullan.
+
+## Borç Bittikten Sonra: Sıradaki Adım
+
+Son borç kapandığında aylık ödeme kapasiten serbest kalır. Bu parayı harcamaya kaydırmak yerine önce acil durum fonunu 3 aylık gidere tamamla, ardından düzenli birikim ve yatırıma yönlendir. Küçük ama düzenli tutarların uzun vadede ne kadar büyüyebileceğini [bileşik faiz hesaplama aracıyla](/bilesik-faiz-hesaplama/) görebilirsin.
+
 ## Özet
 
+- Kredi kartı borcu bileşik faiz nedeniyle beklenenden pahalıya patlar; minimum ödeme tuzağından kaç.
 - Birden fazla borca eşit ödeme yapmak faizi eritir, anaparayı değil — sistematik bir **borç kapatma yöntemi** şart.
 - **Kartopu:** küçük borçları önce bitirip motivasyon kazanmak isteyenler için; toplam faiz maliyeti biraz daha yüksek.
 - **Çığ:** yüksek faizli borçları önce kapatarak en az faiz ödeyenler için; matematiksel optimum.
 - Hangi yöntemi seçersen seç, ekstra ödemeyi tek hedefe yönlendir ve bir borç kapandığında tutarı bir sonrakine aktar.
 - Ek gelir, abonelik kesimi ve faiz müzakeresi süreci önemli ölçüde hızlandırır.
+- Borçtan çıktıktan sonra tam ödeme alışkanlığı ve düşük kart limitiyle tekrara düşmekten kaçın.
 
 ---
 

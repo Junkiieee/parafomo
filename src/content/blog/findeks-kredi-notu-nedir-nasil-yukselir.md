@@ -148,7 +148,7 @@ Borç sarmalına girdiysen not kendiliğinden düzelmez; önce nakit akışını
 4. Faizi en yüksek borçtan başlayarak ara ödeme yap.
 5. Findeks notunu 2-3 ayda bir kontrol ederek ilerlemeyi izle.
 
-Bu sürecin ayrıntılı yol haritası için [kredi kartı borcundan kurtulma rehberi](/blog/kredi-karti-borcundan-kurtulma) yazısına göz atabilirsin.
+Bu sürecin ayrıntılı yol haritası için [kredi kartı borcundan kurtulma rehberi](/blog/borc-kapatma-yontemi-kartopu-cig/) yazısına göz atabilirsin.
 
 ## Özet
 

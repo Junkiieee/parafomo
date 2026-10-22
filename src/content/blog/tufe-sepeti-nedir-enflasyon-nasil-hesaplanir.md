@@ -1,10 +1,11 @@
 ---
-title: "TÜFE Sepeti Nedir? Enflasyon Nasıl Hesaplanır ve Sizi Gerçekten Yansıtıyor mu?"
-description: "Enflasyon sepeti nedir, TÜFE nasıl hesaplanır ve neden kişisel enflasyonunuz resmi rakamdan farklı? 2026 TÜFE verisi öncesi bilmeniz gerekenler."
+title: "TÜFE Sepeti Nedir? Enflasyon Nasıl Hesaplanır, TÜİK Verisi Nasıl Okunur?"
+description: "Enflasyon sepeti nedir, TÜFE nasıl hesaplanır, TÜİK verisinde aylık, yıllık ve çekirdek enflasyon nasıl okunur? Kişisel enflasyonunuz neden farklı ve alım gücünüze etkisi."
 pubDate: 2026-08-02
+updatedDate: 2026-10-22
 category: "Ekonomi"
-tags: ["enflasyon", "TÜFE", "enflasyon sepeti", "TÜİK", "alım gücü", "ekonomi"]
-readingTime: 7
+tags: ["enflasyon", "TÜFE", "enflasyon sepeti", "TÜİK", "alım gücü", "ekonomi", "tüfe nedir", "tüik enflasyon", "enflasyon verisi"]
+readingTime: 9
 featured: false
 faq:
   - q: "TÜFE sepeti nedir ve kaç kalemden oluşur?"
@@ -12,7 +13,11 @@ faq:
   - q: "Resmi enflasyon ile hissettiğim enflasyon neden farklı?"
     a: "TÜİK, geniş bir nüfusun ortalama harcamasını temsil eden sabit bir sepet kullanır. Eğer siz ortalamadan fazla kira, gıda veya yakıt harcıyorsanız kişisel enflasyonunuz resmi TÜFE'den yüksek çıkabilir. Bu matematiksel bir yanılsama değil, demografik farklılığın sonucudur."
   - q: "TÜFE verisi ne zaman açıklanır?"
-    a: "TÜİK, TÜFE verisini her ayın genellikle ilk üç iş günü içinde saat 10:00'da açıklar. 2026 Temmuz enflasyon verisi 3 Ağustos 2026'da açıklanacak."
+    a: "TÜİK, bir önceki aya ait TÜFE verisini her ayın genellikle ilk üç iş günü içinde saat 10:00'da açıklar. Sıradaki açıklama tarihlerini ParaFOMO'nun enflasyon takvimi sayfasından takip edebilirsiniz."
+  - q: "Aylık ve yıllık enflasyon arasındaki fark nedir?"
+    a: "Aylık enflasyon bir önceki aya göre fiyat artışını gösterir ve kısa vadeli trendi okumak için kullanılır. Yıllık enflasyon ise bir yıl öncesinin aynı ayına göre toplam artışı gösterir; alım gücüne toplam etkiyi anlamak için esas alınan rakam budur."
+  - q: "Yüksek TÜFE maaşıma nasıl yansır?"
+    a: "Maaşınız enflasyonun altında artıyorsa reel ücretiniz düşüyor demektir. Örneğin yıllık enflasyon yüzde kırk iken maaşınız yüzde otuz arttıysa fiilen yaklaşık yüzde yedi daha az satın alabiliyorsunuz. Reel değişim = (1 + nominal artış) / (1 + enflasyon) − 1 formülüyle hesaplanır."
   - q: "Yüksek TÜFE çıkarsa dolar ve altın ne olur?"
     a: "Beklenenden yüksek TÜFE, TL'nin reel değerinin eridiğine işaret ettiği için yatırımcılar genellikle dolar ve altına yönelir. Aynı zamanda TCMB'nin faiz indirme kapsamı daralır, bu da mevduat faizlerini göreceli olarak canlı tutar."
   - q: "TÜFE ile ÜFE arasındaki fark nedir?"
@@ -36,9 +41,9 @@ shorts_visuals:
   - "concept|youtube subscribe notification bell"
 ---
 
-Yarın sabah saat 10:00'da TÜİK aylık enflasyon verisini açıklıyor. Ekonomi haberlerinde "TÜFE yüzde X oldu" cümlesini duyduğunuzda ne anlama geldiğini gerçekten biliyor musunuz? Peki neden bazen resmi enflasyon rakamı size gerçekçi gelmiyor?
+TÜİK her ayın başında, saat 10:00'da bir önceki aya ait enflasyon verisini açıklıyor. Ekonomi haberlerinde "TÜFE yüzde X oldu" cümlesini duyduğunuzda ne anlama geldiğini gerçekten biliyor musunuz? Peki neden bazen resmi enflasyon rakamı size gerçekçi gelmiyor?
 
-Bu yazıda **enflasyon sepeti nedir**, TÜFE nasıl hesaplanır ve kişisel enflasyonunuzun neden farklı çıkabileceğini adım adım açıklıyorum.
+Bu yazıda **enflasyon sepeti nedir**, TÜFE nasıl hesaplanır, açıklanan veri nasıl okunur ve kişisel enflasyonunuzun neden farklı çıkabileceğini adım adım açıklıyorum. (Sıradaki verinin ne zaman açıklanacağını görmek için: [enflasyon açıklama takvimi](/enflasyon-takvimi/).)
 
 ## TÜFE Nedir? Kısaca Tanım
 
@@ -79,6 +84,31 @@ Araştırma sonuçlarına göre Türk hanelerinin harcama payları belirlenir ve
 4. **Aylık değişim:** Geçen aya kıyasla endeks kaç puan yükseldi? Bu oran aylık enflasyonu verir.
 5. **Yıllık değişim:** Aynı ayın geçen yıl değerine kıyasla endeks kaç puan yükseldi? Bu oran yıllık enflasyonu verir; piyasaların ve medyanın en çok takip ettiği rakam budur.
 
+## TÜİK Enflasyon Verisi Nasıl Okunur? Aylık, Yıllık ve Çekirdek
+
+Her ay TÜİK birden fazla rakam açıklar ve bunların anlamı birbirinden ayrışır:
+
+| Gösterge | Ne Karşılaştırır? | Ne İşe Yarar? |
+|---|---|---|
+| **Aylık enflasyon** | Bu ay vs. geçen ay | Kısa vadeli fiyat trendi |
+| **Yıllık enflasyon** | Bu ay vs. geçen yılın aynı ayı | Alım gücüne toplam etki |
+| **Çekirdek enflasyon** | Gıda ve enerji gibi oynak kalemler hariç sepet | Yapısal, kalıcı enflasyon göstergesi |
+
+Medyada manşete çıkan **yıllık TÜFE**'dir. "Enflasyon yüzde kırk" denildiğinde, fiyatların bir yıl öncesine göre ortalama yüzde kırk arttığı kastedilir.
+
+**Aylık TÜFE** ise mevsimsel dalgalanmaları yansıtır: kış aylarında enerji fiyatları yükselir, yaz aylarında yaş sebze-meyve ucuzlar. Bu yüzden tek bir aylık rakamdan kalıcı trend çıkarmak yanıltıcı olabilir.
+
+**Çekirdek enflasyon**, TCMB'nin en yakından izlediği göstergelerdendir. Gıda ve enerji fiyatları oynak olduğundan merkez bankası, fiyat artışının "yapısal" mı yoksa "geçici" mi olduğuna çekirdek veriden bakar.
+
+Ayrıca "enflasyon düştü" haberi, fiyatların ucuzladığı değil, fiyat artış **hızının yavaşladığı** anlamına gelir; bu farkı gözden kaçırmak kolaydır.
+
+### Veri Açıklandığında Bakılacak 4 Soru
+
+1. **Aylık enflasyon beklentinin altında mı, üstünde mi?** Açıklama öncesi oluşan piyasa konsensüsüyle karşılaştırın.
+2. **Çekirdek enflasyon ne diyor?** Kalıcı bileşenin yönünü gösterir.
+3. **Hangi kalem öne çıktı?** Gıda mı, konut mu, ulaştırma mı? Enflasyonun kaynağını anlatır.
+4. **Trend ne yönde?** Tek ay yanıltabilir; son üç ila altı aylık seyre bakmak daha güvenilir bir yorum sağlar.
+
 ## Resmi TÜFE ile Hissettiğiniz Enflasyon Neden Farklı?
 
 Bu soruyu muhtemelen siz de kendinize sordunuz: "Enflasyon yüzde 40 diyorlar ama benim hesabım çok daha yüksek çıkıyor."
@@ -97,6 +127,14 @@ Gıda sepetteki en büyük kalem. Ama meyve-sebze gibi taze ürünlerin fiyatı 
 
 TÜFE varsayımsal olarak sabit miktarda alışveriş yapıldığını kabul eder. Gerçekte ise insanlar pahalı ürün yerine ucuz alternatife geçebilir. Ama bazı giderler (ilaç, elektrik, kira) esnek değildir — o harcamalar artmaya devam eder ve sizi çok daha sert etkiler.
 
+## Yüksek TÜFE Alım Gücünüzü Nasıl Eritir?
+
+Somut bir örnek: Geçen yıl 100 TL'ye aldığınız alışveriş sepeti, yıllık enflasyon yüzde kırk ise bu yıl **140 TL** tutar. Maaşınız aynı dönemde yüzde otuz arttıysa:
+
+> Reel ücret değişimi ≈ (1,30 / 1,40) − 1 = **−%7,1**
+
+Kağıt üzerinde yüzde otuz zam almış olursunuz, ama gerçekte yaklaşık yüzde yedi daha az satın alabilirsiniz. Birikimlerde de durum aynı: mevduat yüzde kırk getirirken enflasyon yüzde elli ise reel getiriniz yaklaşık **eksi yüzde yedi** olur. Bu "sessiz gelir kesintisinin" farkında olmak, tasarruf ve yatırım planını bilinçli kurmanın ilk adımıdır.
+
 ## TÜFE Yüksek Gelirse Ne Anlama Gelir?
 
 Beklenenden **yüksek** bir TÜFE verisi piyasalarda şu etkileri yaratır:
@@ -107,6 +145,16 @@ Beklenenden **yüksek** bir TÜFE verisi piyasalarda şu etkileri yaratır:
 - **Borsa:** Reel faiz negatifleşirse hisse senetleri cazip hale gelebilir; ancak kısa vadede belirsizlik baskı yaratır.
 
 Beklenenden **düşük** bir TÜFE ise tam tersi: faiz indirim beklentisi güçlenir, piyasalar rahatlar.
+
+Bu ilişkinin merkezinde TCMB'nin politika faizi vardır. Enflasyon yüksek seyrederse TCMB faizi yüksek tutmak zorunda kalır; aksi hâlde TL değer kaybeder ve ithalat yoluyla enflasyon daha da hızlanır:
+
+| Enflasyon Sonucu | TCMB'nin Olası Tutumu | Piyasa Etkisi |
+|---|---|---|
+| Beklentinin üzerinde | Faiz indirimini erteler | TL baskı altında, borsa oynak |
+| Beklentiye paralel | Mevcut politikayı korur | Sınırlı hareket |
+| Beklentinin altında | Faiz indirim yolunu açar | TL rahatlar, borsa olumlu |
+
+Bu tablo tek başına okunmamalı: Fed ve diğer büyük merkez bankalarının belirlediği küresel faiz ortamı da TCMB'nin elini daraltır ya da güçlendirir. **Pratik öneri:** Veri açıklanır açıklanmaz alım-satım yapmak yerine piyasanın veriyi nasıl sindirdiğini birkaç saat izlemek ve sistematik planınıza bağlı kalmak, tek bir açıklamaya tepki vermekten çoğu zaman daha sağlıklıdır.
 
 ## Kişisel Enflasyon Hesabınızı Nasıl Yaparsınız?
 
@@ -130,7 +178,9 @@ Eğer mevduatınızı değerlendiriyorsanız TCMB'nin faiz kararları doğrudan 
 - **TÜFE sepeti**, Türk hanelerinin ortalama harcama alışkanlıklarına göre ağırlıklandırılmış yaklaşık 400 kalemden oluşur; gıda en büyük pay olan ~%24,5 ile ilk sıradadır.
 - Enflasyon, bu sabit sepetteki fiyat değişiminin ağırlıklı ortalamasıdır; aylık ve yıllık bazda hesaplanır.
 - Kişisel enflasyonunuz resmi TÜFE'den farklı çıkabilir — bu tamamen beklenen bir durumdur; kira, gıda veya akaryakıt ağırlığınız ortalamanın üzerindeyse enflasyonu daha sert hissedersiniz.
-- Yarın açıklanacak Ağustos verisi piyasalar için önemli bir yön göstergesi olacak; beklenenden yüksek gelirse dolar ve altın baskı görebilir, düşük gelirse faiz indirim beklentisi güçlenir.
+- Açıklanan veride aylık, yıllık ve çekirdek rakamı birlikte okuyun; yıllık TÜFE alım gücüne toplam etkiyi, çekirdek enflasyon kalıcı eğilimi gösterir.
+- Maaşınız veya birikiminizin getirisi enflasyonun altında kalıyorsa reel olarak kaybediyorsunuz demektir.
+- Her aylık veri piyasalar için önemli bir yön göstergesidir: beklenenden yüksek gelirse dolar ve altına talep artabilir, düşük gelirse faiz indirim beklentisi güçlenir.
 
 ---
 

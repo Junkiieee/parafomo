@@ -133,7 +133,7 @@ e-Devlet üzerinden SGK'nın "Emeklilik Bilgisi" ekranından güncel tahmini maa
 
 ### Adım 5: Bugünden başlayarak aylık ne yatırman gerektiğini hesapla
 
-Emekliliğe kalan yıl sayısını ve gerçekçi bir yıllık reel getiri oranını (%5–7 gerçekçi uzun vade) kullanarak aylık katkı tutarını bulabilirsin. Bileşik getirinin buradaki gücünü anlamak için [Bileşik Getiri Nedir ve Neden Bu Kadar Güçlü?](/blog/bilesik-faiz-nedir/) yazımıza göz atabilirsin.
+Emekliliğe kalan yıl sayısını ve gerçekçi bir yıllık reel getiri oranını (%5–7 gerçekçi uzun vade) kullanarak aylık katkı tutarını bulabilirsin. Bileşik getirinin buradaki gücünü kendi rakamlarınla görmek için [bileşik faiz hesaplama](/bilesik-faiz-hesaplama/) aracımızı kullanabilirsin.
 
 ## Emeklilik Planında Göz Ardı Edilen 4 Risk
 

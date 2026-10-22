@@ -2,6 +2,7 @@
 title: "Merkez Bankası Nedir? Faiz Kararı Nasıl Alınır ve Piyasalara Etkisi"
 description: "Merkez bankası nedir, ne iş yapar? Fed, TCMB, ECB ve BOE'nin faiz kararlarını nasıl aldığını, bu kararların dolar, TL ve borsayı nasıl etkilediğini öğren."
 pubDate: 2026-07-28
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["merkez bankası", "faiz kararı", "Fed", "TCMB", "para politikası", "enflasyon"]
 readingTime: 7
@@ -10,7 +11,7 @@ faq:
   - q: "Merkez bankası nedir ve ne iş yapar?"
     a: "Merkez bankası, bir ülkenin para politikasını yöneten, faiz oranlarını belirleyen ve para arzını kontrol eden kurumdur. Temel amacı fiyat istikrarını (düşük enflasyon) sağlamak ve ekonomiyi dengede tutmaktır."
   - q: "Faiz kararı nasıl alınır, tek kişi mi karar verir?"
-    a: "Hayır, faiz kararları kurullar tarafından oylamayla alınır. Fed'de FOMC (12 üye), BOE'de MPC (9 üye), TCMB'de PPK (Para Politikası Kurulu) bu kararları verir. Toplantılar genellikle 6-8 haftada bir yapılır."
+    a: "Hayır, faiz kararları kurullar tarafından alınır. Fed'de FOMC (12 üye), BOE'de MPC (9 üye), TCMB'de PPK (Para Politikası Kurulu) bu kararları verir. Bu bankaların her biri yılda 8 kez, yani yaklaşık 6 haftada bir toplanır."
   - q: "Merkez bankası faizi artırınca ne olur?"
     a: "Faiz artınca kredi maliyeti yükselir, tüketim ve yatırım yavaşlar, enflasyon baskılanmaya çalışılır. Borsalar genellikle baskı altına girer, döviz kuru ise faiz artıran ülkenin para birimi lehine güçlenebilir."
   - q: "TCMB ile Fed arasındaki fark nedir?"
@@ -36,7 +37,7 @@ shorts_visuals:
   - "concept|personal finance savings money growth wallet"
 ---
 
-Bu hafta küresel piyasalar üç büyük merkez bankasının kararını bekliyor: Fed (ABD), BOE (İngiltere) ve BOJ (Japonya). Peki bu kurumlar kimdir, faiz kararını nasıl alır ve bu kararlar senin cebini nasıl etkiler?
+Fed (ABD), ECB (Euro Bölgesi), BOE (İngiltere), BOJ (Japonya) ve TCMB'nin faiz kararları, küresel piyasaların en çok izlenen olayları arasındadır. Peki bu kurumlar kimdir, faiz kararını nasıl alır ve bu kararlar senin cebini nasıl etkiler?
 
 **Merkez bankası**, bir ülkenin para politikasını yöneten, faiz oranlarını belirleyen ve para biriminin değerini koruyan resmi kurumdur. Bankaların bankası olarak da tanımlanan bu kurumlar, ticari bankalara borç verir, ekonomideki para miktarını ayarlar ve finansal sistemi denetler.
 
@@ -59,7 +60,7 @@ Merkez bankalarının temel üç görevi vardır:
 | **Fed** | ABD | 1913 | FOMC (12 üye) | Yılda 8 kez |
 | **ECB** | Euro Bölgesi | 1998 | Yönetim Konseyi | Yılda 8 kez |
 | **BOE** | İngiltere | 1694 | MPC (9 üye) | Yılda 8 kez |
-| **TCMB** | Türkiye | 1931 | PPK | Yılda 8-12 kez |
+| **TCMB** | Türkiye | 1931 | PPK | Yılda 8 kez |
 | **BOJ** | Japonya | 1882 | Politika Kurulu | Yılda 8 kez |
 
 Fed özellikle önemlidir: dolar dünya rezerv para birimi olduğundan, Fed'in her kararı küresel piyasaları doğrudan etkiler. Gelişmekte olan ülkeler (Türkiye dahil) Fed kararlarından para birimlerinin değeri, sermaye akışları ve borçlanma maliyetleri üzerinden etkilenir.
@@ -73,7 +74,7 @@ Toplantıdan haftalar önce ekonomistler verileri inceler: enflasyon (CPI, PCE),
 
 ### 2. Komite Toplantısı
 - **Fed (FOMC):** 12 üyeli komite, yılda 8 kez Washington'da toplanır. İki gün süren toplantının ilk günü tartışma, ikinci günü karar ve açıklama yapılır.
-- **TCMB (PPK):** Para Politikası Kurulu aylık toplanır. Kararlar oy çokluğuyla alınır, azınlık oyları tutanaklara yansır.
+- **TCMB (PPK):** Para Politikası Kurulu yılda 8 kez toplanır. Karar, toplantı günü Türkiye saatiyle 14:00'te açıklanır; gerekçeleri içeren toplantı özeti birkaç gün sonra yayımlanır.
 - **BOE (MPC):** 9 üyeli komite; Banka Başkanı, başkan yardımcıları ve dışarıdan atanan bağımsız üyelerden oluşur.
 
 ### 3. Karar ve İletişim
@@ -115,19 +116,20 @@ Piyasaların en çok değer verdiği unsurlardan biri merkez bankası **bağıms
 
 Fed, ECB ve BOE uzun süredir kurumsallaşmış bağımsızlıklarıyla öne çıkar. Türkiye, merkez bankası bağımsızlığı konusundaki tutumunu 2021 yılından itibaren piyasalara daha güçlü sinyaller vererek yeniden tesis etmeye çalışmaktadır.
 
-## Bu Haftanın Takvimi
+## Yoğun Merkez Bankası Haftaları
 
-2026'nın en yoğun merkez bankası haftasındayız:
+Büyük merkez bankalarının toplantıları zaman zaman aynı haftaya denk gelir; Fed, BOE ve BOJ kararlarının art arda açıklandığı haftalar piyasalarda oynaklığın en yüksek olduğu dönemler arasındadır. Böyle haftalarda kararları tek tek değil, birlikte okumak gerekir:
 
-- **29 Temmuz:** Fed faiz kararı (FOMC) — piyasalar sabit tutulmasını bekliyor
-- **30 Temmuz:** BOE faiz kararı — İngiltere'de faiz tartışması sürüyor. [BOE kararının sterlin ve TL'ye etkisi](/blog/boe-faiz-karari-nedir-etkisi)
-- **31 Temmuz:** BOJ faiz kararı — Japonya'da sıkılaşma sinyalleri devam ediyor. [BOJ kararının Japon yeni ve küresel piyasalara etkisi](/blog/boj-faiz-karari-nedir-etkisi)
+- **Fed:** Küresel dolar likiditesini ve gelişen piyasalara sermaye akışını belirler. Yaklaşan toplantılar için [Fed faiz takvimi](/fed-faiz-takvimi/).
+- **BOE:** Sterlin ve Avrupa faiz ortamı üzerinden etkiler. [BOE kararının sterlin ve TL'ye etkisi](/blog/boe-faiz-karari-nedir-etkisi)
+- **BOJ:** Yen ve küresel "carry trade" pozisyonları üzerinden etkiler. [BOJ kararının Japon yeni ve küresel piyasalara etkisi](/blog/boj-nedir-japonya-merkez-bankasi/)
+- **TCMB:** Türkiye'de kredi ve mevduat faizlerinin tabanını belirler. Yaklaşan PPK tarihleri için [TCMB faiz takvimi](/tcmb-faiz-takvimi/).
 
-Bu üç kararın birlikte oluşturduğu tablo, küresel faiz ortamı hakkında net bir sinyal verecek.
+Kararların aynı yöne işaret etmesi küresel faiz ortamı hakkında net bir sinyal verir; ayrışmaları ise kurlarda sert hareketlere yol açabilir.
 
 ## Merkez Bankası Kararlarını Nasıl Takip Edersin?
 
-1. **Ekonomik takvim:** Investing.com TR'nin ekonomik takvim sayfası tüm merkez bankası kararlarını tarih ve saat olarak listeler.
+1. **Ekonomik takvim:** ParaFOMO [ekonomik takvim](/ekonomik-takvim/) sayfası ve Investing.com gibi platformlar merkez bankası kararlarını tarih ve saat olarak listeler.
 2. **Resmi siteler:** tcmb.gov.tr, federalreserve.gov, ecb.europa.eu, bankofengland.co.uk
 3. **Beklenti takibi:** "FedWatch Tool" (CME Group) piyasanın Fed kararına ne ihtimal verdiğini gerçek zamanlı gösterir.
 4. **Açıklama metnini oku:** Sadece kararı değil, beraberindeki açıklamayı oku — asıl piyasa hareketi çoğunlukla detaylardaki nüanslarda saklıdır.
@@ -139,7 +141,7 @@ Bu üç kararın birlikte oluşturduğu tablo, küresel faiz ortamı hakkında n
 - Merkez bankaları faiz belirleyerek enflasyon ve büyümeyi dengeler; tek kişi değil, kurullar karar verir.
 - Fed küresel rezerv para biriminin sahibi olduğundan tüm dünyayı etkiler; TL, Türkiye hisse senetleri ve kredi maliyetleri bu kararlardan payını alır.
 - TCMB Türkiye ekonomisini yönetirken, Fed/ECB/BOE kararlarını da gözetmek zorundadır.
-- Bu hafta Fed, BOE ve BOJ kararları art arda geliyor — piyasaların seyrini bu kararlar belirleyecek.
+- Fed, BOE ve BOJ kararlarının aynı haftaya denk geldiği dönemlerde kararları birlikte okumak, piyasaların yönünü anlamak için kritiktir.
 - Faiz kararlarını takip etmek için ekonomik takvimler ve merkez bankalarının resmi basın açıklamaları en güvenilir kaynaklardır.
 
 ---

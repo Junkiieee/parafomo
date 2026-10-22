@@ -71,7 +71,7 @@ Türkiye'de BIST 100'e yatırım yapmanın üç temel yolu vardır. Her birinin 
 
 ### 2. BIST 100 ETF'si (Borsa Yatırım Fonu)
 
-ETF'ler, gün içinde borsada hisse gibi alınıp satılan fon paylarıdır. BIST 100 endeksini takip eden ETF'ler aracı kurum platformlarında kolayca aranabilir. Anlık fiyatla işlem yapabildiğiniz için düzenli alım (DCA) stratejileri için de uygundur. Yönetim ücreti genellikle yatırım fonlarına göre daha düşüktür. [Endeks fonu ve ETF arasındaki farkı detaylı incelemek için bu rehbere bakabilirsiniz.](/blog/endeks-fonu-nedir/)
+ETF'ler, gün içinde borsada hisse gibi alınıp satılan fon paylarıdır. BIST 100 endeksini takip eden ETF'ler aracı kurum platformlarında kolayca aranabilir. Anlık fiyatla işlem yapabildiğiniz için düzenli alım (DCA) stratejileri için de uygundur. Yönetim ücreti genellikle yatırım fonlarına göre daha düşüktür. [Endeks fonu ve ETF arasındaki farkı detaylı incelemek için bu rehbere bakabilirsiniz.](/blog/etf-nedir-borsa-yatirim-fonu/)
 
 ### 3. Endeks Yatırım Fonu
 

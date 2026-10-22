@@ -42,7 +42,7 @@ const faq = [
   },
   {
     q: 'Aylık faiz mi yıllık faiz mi girmeliyim?',
-    a: 'Bu araç aylık faiz oranıyla çalışır, çünkü Türkiye’de tüketici ve konut kredisi faizleri genelde aylık olarak ilan edilir. Elinizde yıllık oran varsa kabaca 12’ye bölerek aylık orana çevirebilirsiniz (ör. yıllık %42 ≈ aylık %3,5). Bankanın ilan ettiği aylık akdi faiz oranını girmeniz en doğru sonucu verir.',
+    a: 'Bu araç aylık faiz oranıyla çalışır, çünkü Türkiye’de tüketici ve konut kredisi faizleri genelde aylık olarak ilan edilir. Elinizdeki yıllık oran basit (akdi) faizse 12’ye bölerek aylığa çevirebilirsiniz (yıllık %42 → aylık %3,5). Yıllık bileşik oran ya da yıllık maliyet oranı (TCMB istatistikleri gibi) ise aylık oran (1 + yıllık)^(1/12) − 1 formülüyle bulunur: yıllık %62 bileşik ≈ aylık %4,1. Bankanın ilan ettiği aylık akdi faiz oranını girmeniz en doğru sonucu verir.',
   },
   {
     q: 'Hesaplanan taksit neden bankanınkinden biraz farklı çıkıyor?',
@@ -186,7 +186,6 @@ const breadcrumbs = [
         Araç alacaksanız peşinat ve BDDK vade sınırını da gösteren → <a href="/tasit-kredisi-hesaplama/">taşıt kredisi hesaplama</a>;
         ev için → <a href="/konut-kredisi-hesaplama/">konut kredisi hesaplama</a>.
         Faizin paranızı zaman içinde nasıl büyüttüğünü (veya erittiğini) anlamak için →
-        <a href="/blog/bilesik-faiz-nedir">Bileşik faiz nedir?</a> ve
         <a href="/bilesik-faiz-hesaplama">bileşik faiz hesaplama</a> aracımıza,
         faizlerin yönünü belirleyen <a href="/tcmb-faiz-takvimi">TCMB faiz takvimi</a>ne göz atın.
       </p>

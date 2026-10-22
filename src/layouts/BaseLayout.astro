@@ -199,5 +199,33 @@ const calcLd = canonPath.includes('hesaplama')
       <slot />
     </main>
     <Footer />
+    <script is:inline>
+      // Türkçe sayı girişi: type="number" alanlar "250.000" → 250, "1250,50" → 125050 okunuyordu
+      // (denetim 2026-10-22). Alanları metne çevirip .value okumasını normalize ediyoruz:
+      // "1.250.000,50" → "1250000.50". Binlik nokta kuralı yalnız tamsayı adımlı (step ≥ 1)
+      // tutar alanlarında uygulanır; oran alanlarında (step 0.01) "37.5" ondalık kalır.
+      (function () {
+        var d = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value');
+        function norm(s, intStep) {
+          var t = String(s).trim().replace(/[\s ₺%]/g, '');
+          if (!t) return t;
+          if (t.indexOf(',') >= 0) t = t.replace(/\./g, '').replace(',', '.');
+          else if (intStep && /^-?\d{1,3}(\.\d{3})+$/.test(t)) t = t.replace(/\./g, '');
+          return t;
+        }
+        document.querySelectorAll('input[type="number"]').forEach(function (el) {
+          var st = parseFloat(el.getAttribute('step'));
+          var intStep = !(st > 0 && st < 1);
+          if (!el.getAttribute('inputmode')) el.setAttribute('inputmode', 'decimal');
+          el.setAttribute('type', 'text');
+          el.setAttribute('autocomplete', 'off');
+          Object.defineProperty(el, 'value', {
+            configurable: true,
+            get: function () { return norm(d.get.call(this), intStep); },
+            set: function (v) { d.set.call(this, v); },
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

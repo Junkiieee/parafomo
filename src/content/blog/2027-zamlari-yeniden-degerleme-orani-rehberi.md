@@ -57,7 +57,7 @@ Hesaplama şöyle işler:
 3. Aradaki yüzde artış, ertesi yılın yeniden değerleme oranıdır.
 4. Hazine ve Maliye Bakanlığı oranı Kasım sonunda tebliğle Resmî Gazete'de ilan eder; tutarlar **1 Ocak'ta** yürürlüğe girer.
 
-Dikkat: Esas alınan veri **tüketici enflasyonu (TÜFE) değil, üretici enflasyonu (Yİ-ÜFE)**. Bu yüzden oran, manşette okuduğun enflasyondan farklı çıkabilir. TÜFE ile Yİ-ÜFE farkını merak ediyorsan [TÜFE verisi nasıl okunur](/blog/tufe-enflasyon-verisi-nasil-okunur) yazımıza göz atabilirsin.
+Dikkat: Esas alınan veri **tüketici enflasyonu (TÜFE) değil, üretici enflasyonu (Yİ-ÜFE)**. Bu yüzden oran, manşette okuduğun enflasyondan farklı çıkabilir. TÜFE ile Yİ-ÜFE farkını merak ediyorsan [TÜFE verisi nasıl okunur](/blog/tufe-sepeti-nedir-enflasyon-nasil-hesaplanir/) yazımıza göz atabilirsin.
 
 ## 2027 yeniden değerleme oranı tahmini: Şu an nerede?
 

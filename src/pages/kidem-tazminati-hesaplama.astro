@@ -20,7 +20,8 @@ const D = { wage: 40000, years: 5, months: 0 };
 
 function severance(wageGross: number, years: number, months: number) {
   const base = Math.min(wageGross, TAVAN); // tavanla sınırlı
-  const totalYears = years + months / 12;
+  // 1475 s.K. md.14: en az 1 tam yıl kıdem şart; 1 yıldan azda tazminat doğmaz.
+  const totalYears = years >= 1 ? years + months / 12 : 0;
   const gross = base * totalYears;
   const stamp = gross * DAMGA;
   return { base, gross, stamp, net: gross - stamp, capped: wageGross > TAVAN };
@@ -64,7 +65,7 @@ const faq = [
   },
   {
     q: 'Hangi durumlarda kıdem tazminatı hak edilir?',
-    a: 'Kıdem tazminatı için önce en az 1 yıl çalışmış olmak gerekir. İşveren tarafından haklı neden olmadan çıkarılma, işçinin haklı nedenle istifası (ödenmeyen ücret, mobbing vb.), askerlik, emeklilik, evlilik (kadın işçi için evlilikten sonraki 1 yıl içinde) ve erkek işçinin evlenmesi gibi haller tazminat hakkı doğurur. Kendi isteğiyle (haklı neden olmadan) istifa eden işçi kıdem tazminatı alamaz.',
+    a: 'Kıdem tazminatı için önce en az 1 yıl çalışmış olmak gerekir. İşveren tarafından haklı neden olmadan çıkarılma, işçinin haklı nedenle istifası (ödenmeyen ücret, mobbing vb.), askerlik, emeklilik, evlilik (kadın işçi için evlilikten sonraki 1 yıl içinde) gibi haller tazminat hakkı doğurur. Kendi isteğiyle (haklı neden olmadan) istifa eden işçi kıdem tazminatı alamaz.',
   },
   {
     q: 'İhbar tazminatı kıdem tazminatından farklı mı?',
@@ -279,7 +280,7 @@ const breadcrumbs = [
 
       function severance(wageGross, years, months) {
         const base = Math.min(wageGross, TAVAN);
-        const totalYears = years + months / 12;
+        const totalYears = years >= 1 ? years + months / 12 : 0;
         const gross = base * totalYears;
         const stamp = gross * DAMGA;
         return { base, gross, stamp, net: gross - stamp, capped: wageGross > TAVAN };
@@ -307,7 +308,9 @@ const breadcrumbs = [
         $('out-gross').textContent = money(s.gross);
         $('out-stamp').textContent = '−' + money(s.stamp);
         const totalY = (years + months / 12).toLocaleString('tr-TR', { maximumFractionDigits: 2 });
-        $('out-note').textContent = s.capped
+        $('out-note').textContent = years < 1
+          ? '1 yıldan az kıdemde kıdem tazminatı doğmaz (1475 s.K. md.14).'
+          : s.capped
           ? `Ücretiniz tavanın üzerinde: her yıl ${money(TAVAN)} tavan üzerinden hesaplandı.`
           : `Hesap: ${money(s.base)} × ${totalY} yıl.`;
         const cw = $('cmp-wage');

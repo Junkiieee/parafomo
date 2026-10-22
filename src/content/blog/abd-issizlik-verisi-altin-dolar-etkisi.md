@@ -1,22 +1,23 @@
 ---
 title: "ABD İşsizlik Verisi Altını ve Doları Nasıl Etkiler? NFP Sonrası Rehberi"
-description: "ABD işsizlik verisi altını nasıl etkiler? NFP ve işsizlik oranı açıklandığında altın, dolar ve TL'de ne olur? Eylül 2026 senaryo tablosu ve Türk yatırımcısı rehberi."
+description: "ABD işsizlik verisi altını nasıl etkiler? NFP ve işsizlik oranı açıklandığında altın, dolar ve TL'de ne olur? Senaryo tablosu ve Türk yatırımcı rehberi."
 pubDate: 2026-09-04
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["abd işsizlik verisi", "nfp", "altın fiyatı", "dolar tl", "fed faiz", "yatırım rehberi"]
 readingTime: 7
 featured: false
 faq:
   - q: "ABD işsizlik verisi altını nasıl etkiler?"
-    a: "Beklenenden yüksek işsizlik genellikle altını yükseltir: zayıf ekonomi → Fed faiz indirme baskısı → dolar geriler → fırsaltsız varlık olan altın cazibe kazanır. Beklenti altı (iyi) işsizlik ise tersi etkiyle altını baskılar."
+    a: "Beklenenden yüksek işsizlik genellikle altını yükseltir: zayıf ekonomi → Fed faiz indirme baskısı → dolar geriler → faiz getirisi olmayan altın cazibe kazanır. Beklenti altı (iyi) işsizlik ise tersi etkiyle altını baskılar."
   - q: "NFP verisi açıklandığında dolar ne olur?"
     a: "Güçlü NFP dolara destek verir çünkü Fed'in faizi yüksek tutacağı algısı güçlenir. Zayıf NFP'de dolar değer kaybeder, DXY endeksi geriler."
   - q: "ABD tarım dışı istihdam verisi TL'yi etkiler mi?"
     a: "Dolaylı olarak etkiler. Güçlü NFP → dolar güçlenir → TL ve gelişen piyasa dövizleri üzerinde baskı. Zayıf NFP → dolar zayıflar → TL ve gelişen piyasalar nefes alır."
   - q: "NFP sonrası altın alınır mı?"
     a: "Veri zayıf çıkıp dolar gerileyen ortamda altın kısa vadeli hareket edebilir; ancak kalıcı yön birkaç günde netleşir. Kaldıraçsız ve kademeli alım tercih edilmeli."
-  - q: "Eylül 2026 NFP verisi ne zaman açıklandı?"
-    a: "Ağustos 2026 dönemi için NFP, saatlik kazançlar ve işsizlik oranı 4 Eylül 2026 tarihinde saat 15:30 Türkiye saatiyle (12:30 ET) açıklandı. Bir sonraki NFP Ekim başında gelecek."
+  - q: "NFP verisi ne zaman açıklanır?"
+    a: "NFP, ortalama saatlik kazançlar ve işsizlik oranı genellikle her ayın ilk Cuma günü, bir önceki ayı kapsayacak şekilde ABD saatiyle 08:30'da açıklanır. Bu Türkiye saatiyle ABD yaz saati döneminde 15:30'a, kış döneminde 16:30'a denk gelir. Yaklaşan tarihler ParaFOMO ekonomik takviminde yer alır."
 shorts:
   - "İşsizlik verisi neden altın fiyatını değiştiriyor?"
   - "ABD her ay ilk Cuma bir rapor açıklıyor ve bu rapor altın fiyatını doğrudan belirliyor."
@@ -36,9 +37,9 @@ shorts_visuals:
   - "building|Türkiye Cumhuriyet Merkez Bankası"
 ---
 
-Her ayın ilk Cuma günü, küresel piyasalar nefesini tutar. ABD Tarım Dışı İstihdam Raporu — yani NFP —, Fed'in para politikası kararlarını şekillendiren en kritik veri paketi olma özelliğini korur. 4 Eylül 2026'da açıklanan bu ay raporuna özellikle dikkat etmek gerekiyor: **ABD işsizlik verisi altını nasıl etkiler?** sorusu, altın portföyü olan her Türk yatırımcısını doğrudan ilgilendiriyor.
+Her ayın ilk Cuma günü, küresel piyasalar nefesini tutar. ABD Tarım Dışı İstihdam Raporu — yani NFP —, Fed'in para politikası kararlarını şekillendiren en kritik veri paketi olma özelliğini korur. **ABD işsizlik verisi altını nasıl etkiler?** sorusu bu yüzden altın portföyü olan her Türk yatırımcısını doğrudan ilgilendiriyor.
 
-Bu yazıda mekanizmayı adım adım açıklıyor, güçlü/zayıf veri senaryolarını tabloya döküyor ve 10 Eylül TCMB kararıyla bağlantısını kuruyoruz.
+Bu yazıda mekanizmayı adım adım açıklıyor, güçlü/zayıf veri senaryolarını tabloya döküyor ve TCMB faiz kararlarıyla bağlantısını kuruyoruz.
 
 ## NFP Paketi Nedir? Üç Veri, Tek Rapor
 
@@ -66,7 +67,7 @@ ABD işsizlik verisi altını etkileyen mekanizma, birbirini izleyen dört halka
 1. İşsizlik beklenenden düşük çıkar → ekonomi sağlam gidiyor sinyali
 2. Fed'in "higher for longer" faiz tutumunu sürdüreceği algısı güçlenir
 3. Dolar değer kazanır
-4. Fırsaltsız (non-yielding) varlık olan altının rekabet gücü azalır → **altın baskı altında**
+4. Faiz getirisi olmayan (non-yielding) bir varlık olarak altının rekabet gücü azalır → **altın baskı altında**
 
 Buradaki kilit kavram "non-yielding asset"tir. Altın faiz veya temettü ödemez. Faizler yükseldikçe tahvil ve mevduat daha cazip hale gelir; altın görece çekiciliğini yitirir. Faizlerin düşeceği beklentisi güçlenince bu denklem tersine döner.
 
@@ -74,7 +75,7 @@ Buradaki kilit kavram "non-yielding asset"tir. Altın faiz veya temettü ödemez
 
 ## Güçlü ve Zayıf Veri Senaryoları
 
-Bugünün raporunu okurken bu tabloyu referans alabilirsiniz:
+Her ayın raporunu okurken bu tabloyu referans alabilirsiniz:
 
 | Veri Sonucu | Altın (XAU) | Dolar (DXY) | TL / Gelişen Piyasalar | BIST 100 |
 |---|---|---|---|---|
@@ -107,21 +108,21 @@ Türk yatırımcısı için etki dolaylı ama gerçek ve hızlıdır:
 
 BIST 100 bu senaryolarda özellikle dolar cinsinden değerleme etkisiyle hareket eder; ihracat ağırlıklı şirketler güçlü dolar ortamında gelir avantajı yaşayabilir. [ABD İşsizlik Oranı Nedir? NFP Verisi Fed Faizini ve TL'yi Nasıl Etkiler?](/blog/abd-issizlik-orani-nedir-nfp-etkisi) yazımızda bu mekanizmayı daha geniş ele aldık.
 
-## 10 Eylül TCMB Faiz Kararı Bağlantısı
+## TCMB Faiz Kararı Bağlantısı
 
-Bugünkü ABD verisi ile önümüzdeki hafta gerçekleşecek TCMB Para Politikası Kurulu (PPK) toplantısı arasında dolaylı ama önemli bir bağ var:
+ABD istihdam verisi ile bir sonraki TCMB Para Politikası Kurulu (PPK) toplantısı arasında dolaylı ama önemli bir bağ vardır. Yaklaşan PPK tarihlerini [TCMB faiz takvimi](/tcmb-faiz-takvimi/) sayfasından izleyebilirsiniz:
 
 **Zayıf ABD verisi senaryosunda:** Fed faiz indirme beklentisi güçlenir → dolar zayıflar → TL üzerindeki dış baskı hafifler → TCMB'nin faiz indirme hamlesi için dış denge tarafından "ekstra alan" açılabilir.
 
 **Güçlü ABD verisi senaryosunda:** Dolar güçlenir → TL baskılanır → TCMB'nin temkinli duruşunu sürdürmesi için dışsal baskı artar.
 
-Kısa vadeli yatırım kararlarınızı bugünkü ABD verisi ve 10 Eylül TCMB kararını birlikte değerlendirerek şekillendirmeniz, tek bir veriye odaklanmaktan çok daha bütünsel bir tablo sunar. TCMB faiz kararının kişisel finansınıza yansımaları için [TCMB Faiz Kararı Paranı Nasıl Etkiler?](/blog/tcmb-faiz-karari-nasil-etkiler) yazımıza bakabilirsiniz.
+Kısa vadeli yatırım kararlarınızı ABD istihdam verisini ve yaklaşan TCMB kararını birlikte değerlendirerek şekillendirmeniz, tek bir veriye odaklanmaktan çok daha bütünsel bir tablo sunar. TCMB faiz kararının kişisel finansınıza yansımaları için [TCMB Faiz Kararı Paranı Nasıl Etkiler?](/blog/tcmb-faiz-karari-nasil-etkiler) yazımıza bakabilirsiniz.
 
 ## Türk Yatırımcısı İçin Pratik Adımlar
 
 NFP açıklamasını takip ederken şu adımları izleyebilirsiniz:
 
-1. **Açıklama saatini not edin:** 15:30 Türkiye saati. Bu saati "alarm saati" yapın; açıklama öncesi büyük pozisyon almak mantıklı değil.
+1. **Açıklama saatini not edin:** 15:30 Türkiye saati (ABD kış saati döneminde 16:30). Tarihleri [ekonomik takvim](/ekonomik-takvim/) sayfasından kontrol edin. Bu saati "alarm saati" yapın; açıklama öncesi büyük pozisyon almak mantıklı değil.
 2. **Beklentiyle kıyaslayın:** Rakamın mutlak değeri değil, "beklentiden sapma" miktarı hareket üretir. Küçük fark → küçük tepki; büyük fark → sert hareket.
 3. **İlk 30 dakikayı gözlemleyin:** Anlık tepki her zaman kalıcı değildir. DXY ve altının nereye yerleştiğini takip edin.
 4. **Altında kademeli yaklaşım benimseyin:** Koşullar altın için olumlu görünüyorsa tek seferde değil, birkaç alışla konum alın. [Altın Fonu](/blog/altin-fonu-nedir-gram-altindan-farki) gibi araçlar düşük maliyetle ve kolayca altına erişim sağlar.
@@ -134,7 +135,7 @@ NFP açıklamasını takip ederken şu adımları izleyebilirsiniz:
 - **ABD işsizlik verisi altını etkiler** çünkü işsizlik oranı → Fed faiz beklentisi → dolar → altın fiyatı zincirini tetikler; ters korelasyon mekanizması devreye girer.
 - Zayıf istihdam raporu (yüksek işsizlik) genellikle altını destekler; güçlü rapor altını baskılar. "Karışık veri" senaryolarında kısa vadeli belirsizlik yaşanabilir.
 - TL ve BIST de dolaylı olarak etkilenir; dolar güçlendikçe gelişen piyasalar baskı altına girer.
-- 10 Eylül TCMB kararı yaklaşırken bugünkü veri, hem dış denge koşulları hem de faiz yönü için önemli sinyal üretir.
+- TCMB faiz kararı öncesinde açıklanan ABD istihdam verisi, hem dış denge koşulları hem de faiz yönü için önemli sinyal üretir.
 - Veriyi izleyin, ilk anlık tepkiye kapılmadan birkaç saat bekleyin ve her koşulda kademeli hareket edin.
 
 ---

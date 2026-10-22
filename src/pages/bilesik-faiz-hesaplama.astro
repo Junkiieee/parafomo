@@ -6,7 +6,7 @@ import Newsletter from '../components/Newsletter.astro';
 const D = { principal: 10000, monthly: 2500, rate: 30, years: 10 };
 
 function project(principal: number, monthly: number, ratePct: number, years: number) {
-  const i = ratePct / 100 / 12;
+  const i = Math.pow(1 + ratePct / 100, 1 / 12) - 1; // yıllık efektif getiri → aylık bileşik
   const rows: { year: number; balance: number; contributed: number; earnings: number }[] = [];
   let balance = principal;
   let contributed = principal;
@@ -28,7 +28,7 @@ const fmt = (n: number) =>
 const faq = [
   {
     q: 'Bileşik faiz nasıl hesaplanır?',
-    a: 'Bileşik faiz formülü FV = P × (1 + i)^n şeklindedir. P başlangıç tutarı, i dönemsel faiz/getiri oranı (yıllık oranın dönem sayısına bölünmüş hali), n toplam dönem sayısıdır. Düzenli ek yatırım varsa buna bir de anüite (yıllık ödeme) terimi eklenir. ParaFOMO hesaplayıcısı bu iki bileşeni birlikte, aylık bazda hesaplar.',
+    a: 'Bileşik faiz formülü FV = P × (1 + i)^n şeklindedir. P başlangıç tutarı, i dönemsel faiz/getiri oranı (bu araçta girdiğiniz yıllık efektif getiri aylığa (1 + r)^(1/12) − 1 ile çevrilir; böylece yıllık %30 girildiğinde 1 yılda tam %30 büyüme görürsünüz), n toplam dönem sayısıdır. Düzenli ek yatırım varsa buna bir de anüite (yıllık ödeme) terimi eklenir. ParaFOMO hesaplayıcısı bu iki bileşeni birlikte, aylık bazda hesaplar.',
   },
   {
     q: 'Aylık düzenli yatırımın bileşik getiriye etkisi ne kadar?',
@@ -82,7 +82,7 @@ const breadcrumbs = [
           <input type="number" id="in-monthly" value={D.monthly} min="0" step="500" inputmode="numeric" />
         </label>
         <label>
-          <span>Yıllık getiri (%)</span>
+          <span>Yıllık getiri (%, efektif)</span>
           <input type="number" id="in-rate" value={D.rate} min="0" max="200" step="1" inputmode="decimal" />
         </label>
         <label>
@@ -93,7 +93,7 @@ const breadcrumbs = [
 
       <div class="calc-results" aria-live="polite">
         <div class="result-main">
-          <span class="result-label">{D.years} yıl sonra toplam birikim</span>
+          <span class="result-label"><span id="out-years">{D.years}</span> yıl sonra toplam birikim</span>
           <span class="result-value" id="out-final">₺{fmt(base.final.balance)}</span>
         </div>
         <div class="result-split">
@@ -144,11 +144,9 @@ const breadcrumbs = [
         <li><strong>Düzenliliğin gücünü test edin:</strong> Aylık ek yatırımı artırıp süreyi uzattığınızda kazanç kaleminin nasıl patladığını görün. Erken başlamak, çok para yatırmaktan daha etkilidir.</li>
       </ul>
       <p class="cta-line">
-        Bileşik faizin arkasındaki mantığı gerçek örneklerle derinlemesine okumak için
-        → <a href="/blog/bilesik-faiz-nedir">Bileşik Faiz Nedir ve Neden Bu Kadar Güçlü?</a>
-        yazımıza göz atın. Düzenli yatırım stratejisi için
+        Düzenli yatırım stratejisi için
         <a href="/blog/dca-nedir-maliyet-ortalamasi">maliyet ortalaması (DCA)</a> ve
-        <a href="/blog/endeks-fonu-nedir">endeks fonu</a> rehberlerimiz tamamlayıcıdır.
+        <a href="/blog/etf-nedir-borsa-yatirim-fonu/">endeks fonu</a> rehberlerimiz tamamlayıcıdır.
         Eline toplu bir para geçtiyse (ör. <a href="/kidem-tazminati-hesaplama">kıdem tazminatı</a>),
         bu araçla nasıl büyüteceğini görebilirsin. Sabit getiriyle karşılaştırmak istersen
         <a href="/bono-hesaplama">hazine bonosu getiri hesaplama</a> aracıyla vade sonu getirini de görebilirsin.
@@ -175,7 +173,7 @@ const breadcrumbs = [
       const inputs = ['in-principal', 'in-monthly', 'in-rate', 'in-years'].map($);
 
       function project(principal, monthly, ratePct, years) {
-        const i = ratePct / 100 / 12;
+        const i = Math.pow(1 + ratePct / 100, 1 / 12) - 1; // yıllık efektif getiri → aylık bileşik
         const rows = [];
         let balance = principal;
         let contributed = principal;
@@ -183,7 +181,7 @@ const breadcrumbs = [
         for (let m = 1; m <= months; m++) {
           balance = balance * (1 + i) + monthly;
           contributed += monthly;
-          if (m % 12 === 0) rows.push({ year: m / 12, balance, contributed, earnings: balance - contributed });
+          if (m % 12 === 0 || m === months) rows.push({ year: Math.round((m / 12) * 10) / 10, balance, contributed, earnings: balance - contributed });
         }
         if (rows.length === 0) rows.push({ year: years, balance, contributed, earnings: balance - contributed });
         return rows;
@@ -223,11 +221,12 @@ const breadcrumbs = [
         const rows = project(principal, monthly, rate, years);
         const last = rows[rows.length - 1];
         $('out-final').textContent = '₺' + nf.format(Math.round(last.balance));
+        $('out-years').textContent = years.toLocaleString('tr-TR', { maximumFractionDigits: 1 });
         $('out-contributed').textContent = '₺' + nf.format(Math.round(last.contributed));
         $('out-earnings').textContent = '₺' + nf.format(Math.round(last.earnings));
         const mult = last.contributed > 0 ? (last.balance / last.contributed) : 0;
         const earnShare = last.balance > 0 ? Math.round((last.earnings / last.balance) * 100) : 0;
-        $('out-note').textContent = `Yatırdığın her ₺1, ${mult.toFixed(2)}₺'ye dönüştü. Toplam birikimin %${earnShare}'i bileşik getiriden geldi.`;
+        $('out-note').textContent = `Yatırdığın her 1 ₺, ${mult.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ₺ oldu. Toplam birikimin yüzde ${earnShare} kadarı bileşik getiriden geldi.`;
         $('chart').innerHTML = drawChart(rows);
       }
 

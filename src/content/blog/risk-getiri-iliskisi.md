@@ -134,9 +134,9 @@ Bu yüzden **2 yıl içinde kullanman gereken para için yüksek riskli araç se
 
 Risk toleransını belirledin, portföy konseptini anladın — peki hangi araçları kullanacaksın? Bu konularda daha fazla bilgi için:
 
-- [Endeks fonu nedir, nasıl alınır?](/blog/endeks-fonu-nedir) — Geniş piyasaya düşük maliyetle maruz kalmanın en pratik yolu.
+- [Endeks fonu nedir, nasıl alınır?](/blog/etf-nedir-borsa-yatirim-fonu/) — Geniş piyasaya düşük maliyetle maruz kalmanın en pratik yolu.
 - [Dolar Maliyet Ortalaması (DCA) stratejisi nedir?](/blog/dca-nedir-maliyet-ortalamasi) — Piyasa zamanlaması yapmadan düzenli yatırımla riski dağıtma yöntemi.
-- [Bileşik getiri nedir ve neden bu kadar güçlü?](/blog/bilesik-faiz-nedir) — Uzun vadeli yatırımın matematiği ve neden erken başlamak kritik.
+- [Bileşik faiz hesaplama](/bilesik-faiz-hesaplama/) — Uzun vadeli yatırımın matematiğini ve erken başlamanın neden kritik olduğunu kendi rakamlarınla gör.
 
 ## Özet
 

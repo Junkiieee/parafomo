@@ -1,7 +1,8 @@
 ---
 title: "AB Enflasyonu (CPI) Nedir? Euro Bölgesi Verisi Türkiye'yi Nasıl Etkiler"
-description: "AB enflasyonu nedir, nasıl okunur ve euro bölgesi CPI verisi Türk yatırımcıyı nasıl etkiler? 1 Temmuz açıklanacak veri öncesi pratik rehber."
+description: "AB enflasyonu (CPI) nedir, nasıl okunur? Euro Bölgesi enflasyon verisi ECB faizini, EUR/TRY kurunu ve Türk yatırımcıyı nasıl etkiler? Pratik rehber."
 pubDate: 2026-06-28
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["ab enflasyonu", "cpi nedir", "euro bölgesi", "enflasyon verisi", "ecb faiz", "döviz"]
 readingTime: 7
@@ -14,12 +15,12 @@ faq:
   - q: "ECB faiz artışı TL'ye nasıl yansır?"
     a: "ECB faiz artırdığında euro güçlenir. EUR/TRY yükselir: ithal ürünler (akaryakıt, elektronik, gıda) Türkiye'de pahalanır, bu da yerel enflasyonu besler. TCMB buna karşılık faizini ayarlamak zorunda kalabilir."
   - q: "CPI verisi ne zaman açıklanır, nerede takip edilir?"
-    a: "Euro Bölgesi yıllık CPI her ayın başında Eurostat tarafından yayınlanır; 1 Temmuz 2026'daki veri Haziran enflasyon rakamını içerecek. Eurostat'ın resmi sitesi veya Investing.com'dan anlık takip edilebilir."
+    a: "Eurostat, bir önceki ayın Euro Bölgesi enflasyonuna ilişkin öncü (flash) tahmini genellikle ay sonunda ya da yeni ayın ilk iş gününde Brüksel saatiyle 11:00'de yayınlar (Türkiye saatiyle yazın 12:00, kışın 13:00); kesin veri yaklaşık iki hafta sonra gelir. Eurostat'ın resmi sitesinden veya ParaFOMO ekonomik takviminden takip edilebilir."
   - q: "Bu veri yatırımcı için ne anlama gelir?"
     a: "CPI beklentinin üzerinde gelirse ECB faiz artışı beklentisi güçlenir → euro değer kazanır, EUR/TRY artar, Türk borsası ve TL üzerinde baskı oluşabilir. Beklentinin altında gelirse euro zayıflar, risklerin bir kısmı azalır."
 ---
 
-1 Temmuz 2026'da saat 12:00'da açıklanacak **AB (Euro Bölgesi) CPI verisi**, sadece Avrupalı yatırımcıları değil, Türkiye'deki tasarruf sahiplerini de doğrudan etkiliyor. Bu verinin ne anlama geldiğini, nasıl okunduğunu ve cebine nasıl yansıyabileceğini adım adım açıklıyorum.
+Her ay Eurostat tarafından açıklanan **AB (Euro Bölgesi) CPI verisi**, sadece Avrupalı yatırımcıları değil, Türkiye'deki tasarruf sahiplerini de doğrudan etkiliyor. Bu verinin ne anlama geldiğini, nasıl okunduğunu ve cebine nasıl yansıyabileceğini adım adım açıklıyorum.
 
 ## AB Enflasyonu (CPI) Nedir?
 
@@ -68,10 +69,12 @@ Benzer bir mekanizma [Fed'in PCE enflasyon verisi](/blog/pce-nedir-fed-enflasyon
 
 Paradoks burada: euro güçlü olduğunda Türkiye'nin Avrupa'ya ihraç ettiği ürünler euroluk bedellerinde görece ucuzlayabilir, yani Türk ihracatçı için rekabet avantajı oluşur. Ancak enflasyon yüksek seyreden bir ortamda Avrupalı tüketicinin satın alma gücü düşerse Türk mallarına olan talep de gerileme riskindedir.
 
-## 1 Temmuz 2026 Verisi: Ne Bekleniyor?
+## Veri Ne Zaman Açıklanır, Neye Bakılır?
 
-Piyasaların odağında iki şey var:
-- **Euro Bölgesi TÜFE (yıllık, Haziran):** Önceki veri ile karşılaştırma.
+Eurostat, Euro Bölgesi enflasyonunun öncü (flash) tahminini genellikle ay sonunda ya da yeni ayın ilk iş gününde Brüksel saatiyle 11:00'de yayınlar; bu Türkiye saatiyle yaz aylarında 12:00'ye, kış aylarında 13:00'e denk gelir. Kesin veri yaklaşık iki hafta sonra açıklanır. Yaklaşan açıklama tarihlerini [ekonomik takvim](/ekonomik-takvim/) sayfamızdan izleyebilirsin.
+
+Her açıklamada piyasaların odağında iki şey olur:
+- **Euro Bölgesi TÜFE (yıllık):** Önceki ayın verisi ve piyasa beklentisiyle karşılaştırma.
 - **Çekirdek TÜFE:** Enerji ve gıda dışı enflasyon — daha kalıcı bileşen.
 
 Verinin beklentinin **üzerinde** gelmesi euronun güçlenmesine, EUR/TRY'nin yükselmesine ve Türk piyasalarında volatiliteye yol açabilir. **Altında** gelmesi kısa vadeli rahatlamayı beraberinde getirir.
@@ -106,7 +109,7 @@ GDP verisi hakkında detaylı okuma için [GDP nedir, piyasaları nasıl etkiler
 - **AB CPI**, Euro Bölgesi'ndeki genel fiyat artışını ölçen temel enflasyon göstergesidir; ECB faiz kararlarının merkezindedir.
 - **Veri beklentinin üzerinde gelirse:** ECB faizi yüksek tutabilir ya da artırabilir → euro güçlenir → EUR/TRY yükselir → Türkiye'de ithalat enflasyonu artar.
 - **Veri beklentinin altında gelirse:** ECB faiz indirimi beklentisi güçlenir → euro zayıflar → kısa vadeli rahatlama.
-- 1 Temmuz 2026 verisini, birkaç gün sonra açıklanacak olan TÜİK TÜFE verisiyle birlikte değerlendirmek daha sağlıklı bir tablo ortaya koyacak.
+- Euro Bölgesi verisini, birkaç gün sonra (ayın 3'ünde) açıklanan TÜİK TÜFE verisiyle birlikte değerlendirmek daha sağlıklı bir tablo ortaya koyar.
 - Tek bir veri açıklamasına göre büyük portföy değişikliği yapmak yerine, çeşitlendirilmiş bir döviz dengesini korumak uzun vadede daha sağlıklıdır.
 
 ---

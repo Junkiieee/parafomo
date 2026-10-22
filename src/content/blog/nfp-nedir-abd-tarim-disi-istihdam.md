@@ -2,14 +2,14 @@
 title: "ABD Tarım Dışı İstihdam (NFP) Nedir? Dolar ve TL'yi Nasıl Etkiler?"
 description: "NFP nedir, ne zaman açıklanır, beklentinin üzerinde veya altında gelirse ne olur? ABD tarım dışı istihdam verisinin dolar, altın ve TL üzerindeki etkisini öğren."
 pubDate: 2026-06-29
-updatedDate: 2026-08-05
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["NFP nedir", "tarım dışı istihdam", "ABD istihdam verisi", "dolar TL etkisi", "Fed faiz kararı", "ekonomik gösterge"]
 readingTime: 7
 featured: false
 faq:
   - q: "NFP nedir?"
-    a: "NFP (Nonfarm Payrolls / Tarım Dışı İstihdam), ABD'de tarım sektörü dışındaki işyerlerinde bir önceki aya göre kaç yeni pozisyonun eklendiğini ölçen aylık istihdam raporudur. Her ayın ilk Cuması saat 15:30 Türkiye saatiyle açıklanır."
+    a: "NFP (Nonfarm Payrolls / Tarım Dışı İstihdam), ABD'de tarım sektörü dışındaki işyerlerinde bir önceki aya göre kaç yeni pozisyonun eklendiğini ölçen aylık istihdam raporudur. Genellikle her ayın ilk Cuması ABD saatiyle 08:30'da açıklanır; bu Türkiye saatiyle ABD yaz saati döneminde 15:30'a, kış döneminde 16:30'a denk gelir."
   - q: "NFP Türkiye'yi nasıl etkiler?"
     a: "NFP güçlü gelirse dolar değer kazanır; bu TL üzerinde baskı oluşturur ve döviz kurunu yükseltebilir. Zayıf NFP ise dolara satış getirir, TL ve BIST nispi olarak destek bulabilir."
   - q: "NFP beklentinin üzerinde gelirse ne olur?"
@@ -22,7 +22,7 @@ faq:
 
 Her ayın ilk Cuması, küresel piyasalar tek bir veriye odaklanır: **ABD Tarım Dışı İstihdam (NFP)**. Bu sayı açıklandığında dolar dakikalar içinde yüzde birkaç hareket edebilir; altın, hisse senetleri ve gelişmekte olan ülke paraları ardından sarsılır. TL de bu dalgadan payını alır.
 
-Sıradaki veri **7 Ağustos 2026 Cuma günü saat 15:30'da (Türkiye saati)** açıklanacak Temmuz ayı NFP raporu. Piyasalar bu veriye girerken NFP'nin tam olarak ne ölçtüğünü, nasıl okunacağını ve Türkiye'yi nasıl etkileyebileceğini bilmek, tepkisel kararlar yerine bilinçli bir tutum geliştirmenizi sağlar. Aynı gün açıklanan [ABD işsizlik oranı](/blog/abd-issizlik-orani-nedir-nfp-etkisi) verisiyle birlikte okuduğunuzda tablo çok daha net oluşur.
+Rapor genellikle her ayın ilk Cuma günü, bir önceki ayı kapsayacak şekilde açıklanır; sıradaki açıklama tarihini [ekonomik takvim](/ekonomik-takvim/) sayfasından görebilirsiniz. Veri öncesinde NFP'nin tam olarak ne ölçtüğünü, nasıl okunacağını ve Türkiye'yi nasıl etkileyebileceğini bilmek, tepkisel kararlar yerine bilinçli bir tutum geliştirmenizi sağlar. Aynı gün açıklanan [ABD işsizlik oranı](/blog/abd-issizlik-orani-nedir-nfp-etkisi) verisiyle birlikte okuduğunuzda tablo çok daha net oluşur.
 
 ## ABD Tarım Dışı İstihdam (NFP) Nedir?
 
@@ -82,7 +82,7 @@ Açıklanan rakamın kendisi tek başına anlam taşımaz. Asıl belirleyici ola
 
 *Güçlü istihdam = iyi ekonomi olumlu ama aynı zamanda = yüksek faiz riski olumsuz; iki etki birbirini dengeler.
 
-*Not: Bu tablo tarihsel eğilimi özetler. Piyasalar aynı gün gelen başka verilerden de etkilenir; örneğin [AB enflasyon (CPI) verisi](/blog/ab-enflasyonu-cpi-nedir-turkiye-etkisi) da 1 Temmuz'da açıklanarak tabloya farklı bir değişken katabilir.*
+*Not: Bu tablo tarihsel eğilimi özetler. Piyasalar aynı gün gelen başka verilerden de etkilenir; örneğin aynı hafta açıklanan [AB enflasyon (CPI) verisi](/blog/ab-enflasyonu-cpi-nedir-turkiye-etkisi) tabloya farklı bir değişken katabilir.*
 
 ## NFP Türkiye'yi Nasıl Etkiler?
 
@@ -105,10 +105,10 @@ Altın ve döviz arasındaki bu ilişkiyi daha ayrıntılı anlamak isteyenler i
 
 ## NFP Takvimi ve Takip Kaynakları
 
-- **Yayın sıklığı:** Aylık (her ayın ilk Cuması)
-- **Yayın saati:** 08:30 EST = **15:30 Türkiye saati**
+- **Yayın sıklığı:** Aylık (genellikle her ayın ilk Cuması)
+- **Yayın saati:** ABD saatiyle 08:30 = **15:30 Türkiye saati** (ABD kış saati döneminde 16:30)
 - **Resmi kaynak:** BLS.gov (U.S. Bureau of Labor Statistics)
-- **Pratik takip:** [ParaFOMO Ekonomik Takvim](/ekonomik-takvim) sayfasında NFP dahil tüm kritik veri günlerini önceden görebilirsiniz.
+- **Pratik takip:** [ParaFOMO Ekonomik Takvim](/ekonomik-takvim/) sayfasında NFP dahil tüm kritik veri günlerini önceden görebilirsiniz.
 
 Aynı raporda ayrıca şunlar da açıklanır:
 - **[İşsizlik oranı (Unemployment Rate)](/blog/abd-issizlik-orani-nedir-nfp-etkisi)** — iş arayan ama bulamayanların işgücüne oranı; NFP ile birlikte Fed'in yön tayininde belirleyici.
@@ -124,11 +124,11 @@ NFP günleri volatilite artar. Pratik tutum için:
 1. **İlk 15 dakikayı izle, içine girme:** Veri açıklandıktan sonra ilk birkaç dakika aşırı tepki (fakeout) sık yaşanır. Piyasa dengelenmeden pozisyon değiştirmek çoğunlukla zararlı olur.
 2. **Tek veriyi değil trendi oku:** Üç-dört ay üst üste zayıf NFP geliyorsa bu anlamlı; tek aylık sapma gürültü olabilir.
 3. **Beklentileri veri öncesinde öğren:** Investing.com gibi sitelerde konsensüs tahminler yayınlanır. Bu tahmini bilmeden tepkiyi yorumlayamazsın.
-4. **Uzun vadeli pozisyonuna dokunma:** Düzenli birikime dayalı yatırım planını NFP sürprizine göre bozmak, genellikle uzun vadeli getiriyi düşürür. [Bileşik getiri](/blog/bilesik-faiz-nedir) mantığıyla çalışan portföyler, tek veri olaylarından değil aylarca-yıllarca süren tutarlılıktan güç alır.
+4. **Uzun vadeli pozisyonuna dokunma:** Düzenli birikime dayalı yatırım planını NFP sürprizine göre bozmak, genellikle uzun vadeli getiriyi düşürür. [Bileşik getiri](/bilesik-faiz-hesaplama/) mantığıyla çalışan portföyler, tek veri olaylarından değil aylarca-yıllarca süren tutarlılıktan güç alır.
 
 ## Özet
 
-- **NFP nedir:** ABD'de tarım dışı aylık istihdam değişimi; her ayın ilk Cuması 15:30'da açıklanır.
+- **NFP nedir:** ABD'de tarım dışı aylık istihdam değişimi; genellikle her ayın ilk Cuması TSİ 15:30'da (ABD kış saatinde 16:30) açıklanır.
 - **Neden önemli:** Fed faiz kararlarını doğrudan etkiler; bu dolar, altın ve TL'yi anında hareket ettirebilir.
 - **Nasıl okunur:** Ham rakam değil beklentiye göre sapma önemlidir; önceki ay revizyonunu da kontrol et.
 - **Türkiye etkisi:** Güçlü NFP → dolar güçlenir → TL baskı altında; zayıf NFP → tam tersi eğilim.

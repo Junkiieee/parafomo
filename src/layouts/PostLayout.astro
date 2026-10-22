@@ -56,6 +56,9 @@ const breadcrumbs = [
       <div class="post-meta">
         <a href={`/kategori/${categorySlug(category)}`} class="chip">{category}</a>
         <FormatDate date={pubDate} />
+        {modified.toISOString().slice(0, 10) > pubDate.toISOString().slice(0, 10) && (
+          <span> · Güncellendi: <FormatDate date={modified} /></span>
+        )}
         {readingTime && <span class="muted">· {readingTime} dk okuma</span>}
       </div>
       <h1>{title}</h1>

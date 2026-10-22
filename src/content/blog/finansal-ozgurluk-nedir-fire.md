@@ -85,7 +85,7 @@ Finansal özgürlüğe ulaşma süresini belirleyen tek en büyük değişken, g
 
 Bu tablo şunu gösteriyor: tasarruf oranını %20'den %50'ye çıkarmak, emeklilik süresini 20 yıl kısaltıyor. Maaş zammı değil, harcama alışkanlıkları belirleyici.
 
-Bileşik büyümenin bu süreçteki rolü kritiktir; paranızın nasıl katlanarak arttığını anlamak için [Bileşik Getiri Nedir ve Neden Bu Kadar Güçlü?](/blog/bilesik-faiz-nedir/) yazımıza bakabilirsiniz.
+Bileşik büyümenin bu süreçteki rolü kritiktir; paranızın nasıl katlanarak arttığını [bileşik faiz hesaplama](/bilesik-faiz-hesaplama/) aracımızla kendi rakamlarınızla görebilirsiniz.
 
 ## Finansal Özgürlüğe Adım Adım Nasıl Ulaşılır?
 
@@ -106,7 +106,7 @@ TL mevduatı tek başına FIRE için yeterli değildir; enflasyon reel getiriyi 
 - **Temettü hisseleri:** Portföy büyüdükçe düzenli nakit akışı sağlar
 - **Döviz bazlı varlıklar (Eurobond, döviz endeksli fon):** TL enflasyonuna karşı koruma
 
-Düşük maliyetli endeks fonlarının FIRE stratejisindeki merkezi rolü için [Endeks Fonu Nedir, Nasıl Alınır?](/blog/endeks-fonu-nedir/) yazımıza bakabilirsiniz.
+Düşük maliyetli endeks fonlarının FIRE stratejisindeki merkezi rolü için [Endeks Fonu Nedir, Nasıl Alınır?](/blog/etf-nedir-borsa-yatirim-fonu/) yazımıza bakabilirsiniz.
 
 ### Adım 4: DCA ile düzenli yatırım yapın
 

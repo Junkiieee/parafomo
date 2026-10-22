@@ -98,7 +98,7 @@ Geri alım duyuruları ortalama **%2–4** fiyat artışı tetikler (akademik ar
 | **Yatırımcı profili** | Büyüme/değer yatırımcısı | Gelir yatırımcısı |
 | **Şirket sinyali** | "Hisse ucuz" mesajı | "Nakit güçlü" mesajı |
 
-**Pratik not:** Temettü tüketimine odaklananlar için [temettü hisseleri ve pasif gelir rehberi](/blog/temettu-hisseleri-pasif-gelir/) ayrı bir başlangıç noktasıdır. Buyback ise hissedarlık yüzdeni artırdığı için portföyünü büyütmek isteyenlere uygundur.
+**Pratik not:** Temettü tüketimine odaklananlar için [temettü hisseleri ve pasif gelir rehberi](/blog/temettu-verimi-nedir/) ayrı bir başlangıç noktasıdır. Buyback ise hissedarlık yüzdeni artırdığı için portföyünü büyütmek isteyenlere uygundur.
 
 ## BIST'te Hisse Geri Alımı: Türkiye Özelindeki Kurallar
 

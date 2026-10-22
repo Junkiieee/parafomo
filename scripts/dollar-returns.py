@@ -43,6 +43,17 @@ def yahoo_series(sym, rng="10y", interval="1mo"):
     for t, c in zip(ts, closes):
         if c is not None and c > 0:
             out.append((t, float(c)))
+    if interval == "1mo":
+        # Yahoo aylık mumu AYIN BAŞI zaman damgasıyla (TR 00:00) ama AY SONU kapanışıyla gelir.
+        # Damgayı ay sonuna taşı; yoksa "yıl başı" araması Ocak sonu kapanışını buluyordu
+        # (YTD/1-10 yıl getirileri ~1 ay kayıktı — denetim 2026-10-22).
+        now_ts = int(dt.datetime.now(dt.timezone.utc).timestamp())
+        rekeyed = []
+        for t, c in out:
+            d = dt.datetime.fromtimestamp(t + 12 * 3600, dt.timezone.utc)
+            nxt = dt.datetime(d.year + (d.month == 12), d.month % 12 + 1, 1, tzinfo=dt.timezone.utc)
+            rekeyed.append((min(int(nxt.timestamp()) - 1, now_ts), c))
+        out = rekeyed
     return out
 
 

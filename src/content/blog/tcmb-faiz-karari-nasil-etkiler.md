@@ -2,14 +2,14 @@
 title: "TCMB Faiz Kararı Paranı Nasıl Etkiler? Kredi, Mevduat ve Dövize Yansımaları"
 description: "TCMB faiz kararı öncesinde bilmen gerekenler: artış, indirim veya sabit kararının kredi, mevduat, dolar kuru ve borsayı nasıl etkilediğini 3 senaryo tablosuyla anlatıyoruz."
 pubDate: 2026-07-19
-updatedDate: 2026-08-11
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["tcmb faiz kararı", "ppk kararı", "faiz artışı etkisi", "mevduat faizi", "dolar kuru", "merkez bankası"]
 readingTime: 7
 featured: false
 faq:
   - q: "TCMB faiz kararı ne zaman açıklanıyor?"
-    a: "TCMB Para Politikası Kurulu (PPK) 2026'da 8 kez toplanır (Ağustos hariç). Faiz kararı toplantı günü TSİ 14:00 civarında açıklanır, toplantı özeti ise ~5 iş günü sonra yayımlanır. Tüm 2026 tarihleri ve sonraki karara geri sayım için TCMB Faiz Kararı Takvimi 2026 sayfasına bakabilirsin."
+    a: "TCMB Para Politikası Kurulu (PPK) yılda 8 kez toplanır; tarihler yılbaşında ilan edilir. Faiz kararı toplantı günü TSİ 14:00'te açıklanır, toplantı özeti ise ~5 iş günü sonra yayımlanır. Yılın tüm tarihleri ve sonraki karara geri sayım için ParaFOMO TCMB faiz takvimi sayfasına bakabilirsin."
   - q: "Faiz artınca mevduatım ne olur?"
     a: "Faiz artışı sonrası bankalar mevduat faizini yükseltir; ancak mevcut vadeli hesabınız vadeye kadar aynı oranla çalışmaya devam eder. Vade yenileme yapacaksanız karar sonrasını beklemek avantajlı olabilir."
   - q: "Faiz kararı dolar kurunu nasıl etkiler?"
@@ -37,22 +37,22 @@ shorts_visuals:
   - "concept|subscribe notification social media phone screen"
 ---
 
-TCMB faiz kararı her ay Türkiye'nin ekonomi gündeminin en ağır taşlarından biri. **23 Temmuz 2026 Perşembe günü Para Politikası Kurulu (PPK) toplanacak** ve alınan karar, kredi maliyetlerinden dolar kuruna, mevduat getirisinden Borsa İstanbul'a kadar geniş bir alanda yansıma yaratacak. Bu kararı pasif izlemek yerine anlayarak hazırlanmak, senin için doğrudan parasal fark yaratabilir.
+TCMB faiz kararı, Türkiye'nin ekonomi gündeminin en ağır taşlarından biri. Para Politikası Kurulu (PPK) yılda sekiz kez toplanır ve her toplantıda alınan karar, kredi maliyetlerinden dolar kuruna, mevduat getirisinden Borsa İstanbul'a kadar geniş bir alanda yansıma yaratır. Bu kararı pasif izlemek yerine anlayarak hazırlanmak, senin için doğrudan parasal fark yaratabilir.
 
 ## TCMB Faiz Kararı Nedir?
 
-Türkiye Cumhuriyet Merkez Bankası'nın **Para Politikası Kurulu (PPK)**, her ay belirlenen takvimde toplanarak politika faizini (haftalık repo faizini) belirler. Bu faiz, bankaların merkez bankasından ve birbirinden kısa vadeli borçlanma maliyetini doğrudan belirler.
+Türkiye Cumhuriyet Merkez Bankası'nın **Para Politikası Kurulu (PPK)**, yılbaşında ilan edilen takvime göre yılda sekiz kez toplanarak politika faizini (bir hafta vadeli repo faizini) belirler. Bu faiz, bankaların merkez bankasından ve birbirinden kısa vadeli borçlanma maliyetini doğrudan belirler.
 
 Zincir şu şekilde işler: PPK karar verir → ticari bankalar kredi ve mevduat faizlerini ayarlar → seninle temas eden her finansal işlem değişir.
 
-Temmuz 2026 öncesinde TCMB, yüksek enflasyonla mücadele kapsamında sıkı para politikasını sürdürüyor. Piyasaların büyük çoğunluğu bu toplantıda faizin sabit tutulmasını bekliyor. Ancak hangi yönde sürpriz yaşansa etkisi anlık ve sert olabilir.
+Her toplantı öncesinde piyasalar analist anketleri üzerinden bir beklenti oluşturur. Beklentiyle örtüşen karar sınırlı tepki yaratırken, hangi yönde olursa olsun sürpriz bir kararın etkisi anlık ve sert olabilir. Son kararı ve sıradaki toplantı tarihini [TCMB faiz takvimi](/tcmb-faiz-takvimi/) sayfasından görebilirsin.
 
 ## 3 Senaryo: Artış, İndirim, Sabit
 
 | Karar | Kredi Faizleri | Mevduat Getirisi | Dolar/TL Kuru | BIST |
 |-------|---------------|------------------|---------------|------|
 | **Faiz artışı** | Yükselir, kredi pahalılaşır | Yükselir, cazip | TL güçlenebilir, kur düşebilir | Baskı altında |
-| **Faiz indirimi** | Düşer, kredi ucuzlar | Düşer, cazsizleşir | TL değer kaybedebilir | Canlanma olabilir |
+| **Faiz indirimi** | Düşer, kredi ucuzlar | Düşer, cazibesi azalır | TL değer kaybedebilir | Canlanma olabilir |
 | **Sabit (beklendiği gibi)** | Değişmez | Değişmez | Sınırlı hareket | Tepki sınırlı |
 
 > Teorik mekanizma budur. Güven ortamı ve küresel koşullar bu dinamiği bozabilir — özellikle Türkiye özelinde döviz kuru, salt faize bağlı hareket etmeyebilir.
@@ -62,7 +62,7 @@ Temmuz 2026 öncesinde TCMB, yüksek enflasyonla mücadele kapsamında sıkı pa
 Konut, taşıt veya ihtiyaç kredisi kullananlar TCMB kararından doğrudan etkilenir. Detaylar:
 
 **Faiz artarsa:**
-- Bankaların merkez bankasına ödedeceği maliyet yükselir; yeni açılacak kredilerin faizi artar.
+- Bankaların merkez bankasına ödeyeceği maliyet yükselir; yeni açılacak kredilerin faizi artar.
 - Sabit faizli mevcut krediler etkilenmez; değişken faizli sözleşmeler yeniden fiyatlanır.
 - Kredi çekmeyi düşünüyorsan, karar öncesinde harekete geçmek maliyeti kilitleyebilir.
 
@@ -133,15 +133,15 @@ Faiz kararı, uzun vadeli portföy stratejini değil kısa vadeli nakit akışı
 
 ## Karar Takvimini Nasıl Takip Edilir?
 
-TCMB PPK toplantı tarihleri yılın başında açıklanır. 2026'da 8 toplantı yapılır (Ağustos hariç); faiz kararı toplantı günü TSİ 14:00 civarında, toplantı özeti ise karardan ~5 iş günü sonra yayımlanır.
+TCMB PPK toplantı tarihleri yılın başında açıklanır. Yılda 8 toplantı yapılır; faiz kararı toplantı günü TSİ 14:00'te, toplantı özeti ise karardan ~5 iş günü sonra yayımlanır.
 
-Bir sonraki karara kaç gün kaldığını ve 2026'nın tüm PPK tarihlerini tek sayfada geri sayımlı görmek için: **[TCMB Faiz Kararı Takvimi 2026](/tcmb-faiz-takvimi)**. Küresel tarafı birlikte izlemek istersen [Fed faiz kararı takvimi](/fed-faiz-takvimi) da yardımcı olur.
+Bir sonraki karara kaç gün kaldığını ve yılın tüm PPK tarihlerini tek sayfada geri sayımlı görmek için: **[TCMB faiz takvimi](/tcmb-faiz-takvimi/)**. Küresel tarafı birlikte izlemek istersen [Fed faiz takvimi](/fed-faiz-takvimi/) ve [ekonomik takvim](/ekonomik-takvim/) da yardımcı olur.
 
 Resmi kaynak: TCMB web sitesi (tcmb.gov.tr).
 
 ## Özet
 
-- TCMB PPK, 23 Temmuz'da politika faizini belirleyecek; piyasalar büyük ölçüde sabit beklentisi içinde.
+- TCMB PPK yılda 8 kez toplanarak politika faizini belirler; karar toplantı günü TSİ 14:00'te açıklanır.
 - **Faiz artarsa:** kredi pahalılaşır, mevduat cazip hale gelir, TL potansiyel güçlü, BIST baskılı.
 - **Faiz düşerse:** kredi ucuzlar, mevduat cazibesi azalır, TL değer kaybı riski artar, BIST canlanabilir.
 - Kredi planı olanlar karar öncesinde pozisyon alabilir; mevduatta vade zamanlaması getiriyi doğrudan etkiler.

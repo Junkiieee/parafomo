@@ -1,14 +1,15 @@
 ---
 title: "İngiltere CPI Nedir? Enflasyon Verisi ve Sterlinin Türk Yatırımcısına Etkisi"
-description: "İngiltere CPI enflasyon verisi nedir, nasıl okunur? 22 Temmuz 2026 açıklaması öncesi sterlinin değerine ve Türk yatırımcısının portföyüne etkisini adım adım açıklıyoruz."
+description: "İngiltere CPI enflasyon verisi nedir, nasıl okunur? Verinin sterline, Bank of England faizine ve Türk yatırımcının portföyüne etkisini açıklıyoruz."
 pubDate: 2026-07-21
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["ingiltere cpi", "enflasyon verisi", "sterlin", "bank of england", "döviz", "küresel ekonomi"]
 readingTime: 7
 featured: false
 faq:
   - q: "İngiltere CPI ne zaman açıklanır?"
-    a: "Her ay İngiltere Ulusal İstatistik Ofisi (ONS) tarafından açıklanır. Veri, genellikle ilgili aydan 6-7 hafta sonra yayımlanır; açıklama saati Londra saatiyle 07:00'dir (TSİ 09:00)."
+    a: "Her ay İngiltere Ulusal İstatistik Ofisi (ONS) tarafından açıklanır. Veri, genellikle ilgili ayın bitiminden yaklaşık üç hafta sonra, çoğunlukla ayın ortasındaki bir Çarşamba günü yayımlanır. Açıklama saati Londra saatiyle 07:00'dir (Türkiye saatiyle yazın 09:00, kışın 10:00)."
   - q: "Yüksek İngiltere CPI sterlini nasıl etkiler?"
     a: "Beklentinin üzerinde gelen CPI, Bank of England'ın faiz artırabileceği sinyalini güçlendirir; bu da çoğunlukla sterlini değer kazandırır. Ancak kalıcı yüksek enflasyon ekonomik durgunluk riskini artırarak sterlini zamanla baskılayabilir."
   - q: "İngiltere enflasyon verisi Türk yatırımcısını nasıl etkiler?"
@@ -36,7 +37,7 @@ shorts_visuals:
   - "concept|financial news website laptop screen"
 ---
 
-22 Temmuz 2026'da İngiltere'nin Haziran ayı CPI enflasyon verisi açıklanıyor. Peki bu rakam neden küresel piyasaları bu kadar heyecanlandırıyor, sterline nasıl yansıyor ve Türk yatırımcısı bu veriden ne anlamalı? **İngiltere CPI nedir** sorusunu ve pratik etkilerini adım adım ele alıyorum.
+İngiltere'nin aylık CPI enflasyon verisi, her açıklandığında sterlin başta olmak üzere küresel piyasalarda hareket yaratır. Peki bu rakam neden piyasaları bu kadar heyecanlandırıyor, sterline nasıl yansıyor ve Türk yatırımcısı bu veriden ne anlamalı? **İngiltere CPI nedir** sorusunu ve pratik etkilerini adım adım ele alıyorum.
 
 ## İngiltere CPI Nedir?
 
@@ -102,10 +103,10 @@ Küresel faiz ortamı sıkılaştıkça yabancı yatırımcılar BIST'ten de ç�
 
 ## İngiltere CPI Nasıl Takip Edilir? Adım Adım
 
-Yarın sabah veriyi takip etmek istiyorsan şu adımları izle:
+Veriyi açıklama günü takip etmek istiyorsan şu adımları izle (yaklaşan tarihler için [ekonomik takvim](/ekonomik-takvim/) sayfasına bakabilirsin):
 
-1. **Saati not et:** ONS açıklaması Londra saatiyle 07:00, Türkiye saatiyle 09:00'da.
-2. **Beklentiyi öğren:** Açıklama öncesi piyasa konsensüsünü yatırım platformlarından ya da Investing.com'dan kontrol et (bu yazı yazılırken beklenti yüzde 3,3-3,4 bandındaydı).
+1. **Saati not et:** ONS açıklaması Londra saatiyle 07:00'de yapılır; bu Türkiye saatiyle yaz aylarında 09:00'a, kış aylarında 10:00'a denk gelir.
+2. **Beklentiyi öğren:** Açıklama öncesi piyasa konsensüsünü yatırım platformlarından ya da Investing.com'dan kontrol et.
 3. **Gerçek rakamla karşılaştır:** Fark neyse, sterlin ilk 5-10 dakikada buna göre tepki verir.
 4. **Çekirdek CPI'a bak:** Manşet enflasyon yanıltıcı olabilir (mevsimsel enerji fiyatı dalgalanmaları). Çekirdek veri BoE için daha belirleyicidir.
 5. **GBP/USD paritesini izle:** Sterlinin dolara karşı tepkisi, küresel faiz beklentisini en hızlı yansıtan göstergedir.
@@ -125,7 +126,7 @@ Yarın sabah veriyi takip etmek istiyorsan şu adımları izle:
 
 İngiltere CPI'ının merkez bankası faiz kararıyla neden bu kadar iç içe olduğunu anlamak için faizin ne olduğunu bilmek gerekir. [Faiz Nedir? Ekonomiyi, Borsayı ve Dolar'ı Nasıl Etkiler?](/blog/faiz-nedir-ekonomiyi-nasil-etkiler) yazısı bu temeli güçlü biçimde aktarıyor.
 
-Benzer şekilde, ABD enflasyon verisinin küresel piyasalara etkisini merak ediyorsan [ABD CPI (Enflasyon) Verisi Nedir?](/blog/abd-cpi-enflasyon-verisi-nedir) yazısı tam konuyu ele alıyor.
+Benzer şekilde, ABD enflasyon verisinin küresel piyasalara etkisini merak ediyorsan [ABD CPI (Enflasyon) Verisi Nedir?](/blog/cekirdek-cpi-nedir-fed-enflasyon-gostergesi/) yazısı tam konuyu ele alıyor.
 
 ## Özet
 

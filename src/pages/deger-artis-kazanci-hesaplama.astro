@@ -364,6 +364,7 @@ const varsayilanSatis = `${SATIS_AY}-15`;
         let note = '';
         if (isNaN(ad) || isNaN(sd) || sd <= ad) {
           $('out-note').textContent = 'Satış tarihi alış tarihinden sonra olmalı.';
+          ['out-k', 'out-kz', 'out-m', 'out-mt', 'out-taksit', 'out-tax'].forEach((id) => { const el = $(id); if (el) el.textContent = '—'; });
           return;
         }
         const sinir = new Date(ad);

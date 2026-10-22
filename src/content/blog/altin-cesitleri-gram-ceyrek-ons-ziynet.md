@@ -4,7 +4,7 @@ description: "Altın çeşitleri farkı rehberi: gram, çeyrek, yarım, tam, cum
 pubDate: 2026-07-18
 category: "Yatırım"
 tags: ["altın", "gram altın", "çeyrek altın", "ons altın", "yatırım", "altın çeşitleri"]
-readingTime: 8
+readingTime: 9
 featured: false
 faq:
   - q: "Altın çeşitleri farkı nedir, kısaca nasıl açıklanır?"
@@ -17,7 +17,13 @@ faq:
     a: "Gram altın, yurt içi kuyumcu/banka sistemindeki 24 ayar (995) külçe altındır. Ons altın ise 31,1 gram ağırlığında ve 24 ayar saflığında uluslararası benchmark fiyatıdır. Türkiye'deki tüm altın fiyatları temelde bu ons fiyatından türer; kura ve işlem maliyetlerine göre hesaplanır."
   - q: "Altın alırken en çok hangi maliyete dikkat etmeli?"
     a: "Alım-satım arasındaki spread (makas) en kritik maliyet kalemidir. Kuyumcuda bu makas fiziki gram altında %3-8 olabilirken, banka altın hesabı veya borsada işlem gören ETF'lerde %0,1-0,5 düzeyine kadar düşebilir. Uzun vadeli yatırımda bile başlangıçtaki bu fark önemlidir."
-updatedDate: 2026-10-15
+  - q: "Altının ayarı ne demek, 14 ayar ile 22 ayar farkı nedir?"
+    a: "Ayar, 1.000 birim içindeki saf altın miktarını gösterir (milyem). 24 ayar neredeyse saf altındır (995-999,9), 22 ayar 916 (%91,6), 18 ayar 750 (%75), 14 ayar ise 585 (%58,5) saflıktadır. Çeyrek, yarım, tam ve Cumhuriyet altını 22 ayar; takılarda ise sıklıkla 14 ve 18 ayar kullanılır."
+  - q: "Gram altın mı çeyrek altın mı daha iyi yatırım?"
+    a: "İkisi de yatırıma uygundur. Gram altın (özellikle banka hesabındaki dijital gram) küçük ve düzenli alımlar için daha esnektir ve makası düşüktür. Çeyrek altın fiziki tutmak isteyenler için likit bir seçenektir ama fiyatında küçük bir darphane payı bulunur ve kuyumcu makası dijital altına göre daha geniştir."
+  - q: "Ons altın Türkiye'de nasıl alınır?"
+    a: "Bireysel yatırımcı doğrudan fiziki ons almak yerine ons fiyatına bağlı araçları kullanır: banka altın hesabı, Borsa İstanbul Kıymetli Madenler Piyasası'na erişim sunan aracı kurumlar, altın fonları ve borsada işlem gören altın ETF'leri."
+updatedDate: 2026-10-22
 ---
 
 Kuyumcuya girdiğinizde "gram mı alayım, çeyrek mi?" diye sormanız kaçınılmaz. Bir adım ileriye gittiğinizde ons fiyatı, cumhuriyet altını ve dijital altın hesabı da devreye giriyor. **Altın çeşitleri farkı** sadece gramaj meselesi değil; işçilik, saflık derecesi, likidite ve maliyet yapısı da birbirinden ayrışıyor. Bu rehberde her çeşidi tek tek açıklıyor, bir karşılaştırma tablosuyla en mantıklı tercihi gösteriyoruz.
@@ -67,7 +73,23 @@ Bu nedenle gram altın fiyatı hem küresel ons fiyatındaki hem de dolar kurund
 
 Bireysel yatırımcı olarak doğrudan "ons altın" almak yerine ons fiyatını takip eden araçlar kullanılır:
 - Altın hesabı (gram cinsinden ama ons fiyatına bağlı)
+- Borsa İstanbul Kıymetli Madenler Piyasası (aracı kurum üzerinden erişilir)
 - Borsada işlem gören altın ETF'leri veya altın fonu
+
+Ons fiyatı küresel arz-talebin yanında dolar kurundan da etkilendiği için [döviz kurunun nasıl belirlendiğini](/blog/doviz-kuru-nasil-belirlenir/) bilmek altın yatırımcısı için de önemlidir.
+
+## Altının Ayarı Ne Demek? 14, 18, 22 ve 24 Ayar Farkı
+
+Ayar, altının saflık derecesidir ve kuyumcuda genellikle **milyem** (1.000 birim içindeki saf altın miktarı) olarak damgalanır. Aynı gramdaki iki üründen ayarı düşük olanın içinde daha az saf altın vardır; bu yüzden fiyat karşılaştırması mutlaka ayar üzerinden yapılmalıdır.
+
+| Ayar | Milyem damgası | Saf altın oranı | Nerede görülür? |
+|---|---|---|---|
+| 24 ayar | 995 – 999,9 | %99,5+ | Gram/külçe altın, altın hesabı |
+| 22 ayar | 916 | %91,6 | Çeyrek, yarım, tam, Cumhuriyet altını, bilezik |
+| 18 ayar | 750 | %75 | Pırlantalı takılar, kolye |
+| 14 ayar | 585 | %58,5 | Günlük takı, küpe, yüzük |
+
+Pratik kural: 14 ayar bir takının 10 gramı, içerdiği saf altın açısından yaklaşık 6,4 gram 22 ayar altına eşittir. Bozdururken kuyumcunun ödediği tutar da bu saf altın içeriği üzerinden hesaplanır.
 
 ## Ziynet Altını Nedir? Yatırımda Kullanılır mı?
 
@@ -104,12 +126,21 @@ Büyük miktarlar için dijital araçlar çok daha düşük maliyetlidir. Küç�
 | Külçe altın | 24 ayar | Yok | Orta | ✓ Büyük tutarlar için iyi |
 | Altın hesabı / ETF | Ons bazlı | Neredeyse yok | Çok yüksek | ✓✓ En düşük maliyetli |
 
+## Hangi Altın Türü Hangi Bütçeye Uygun?
+
+Doğru çeşit büyük ölçüde ayırabileceğiniz tutara ve fiziki altın isteyip istemediğinize bağlıdır:
+
+- **Küçük bütçe (birkaç yüz – birkaç bin TL):** Banka ya da aracı kurum uygulamasındaki dijital gram altın en mantıklı başlangıçtır; işçilik yoktur, makas düşüktür ve birkaç dakikada alınır.
+- **Orta bütçe:** Fiziki altın isteyenler için çeyrek ve yarım altın likit seçeneklerdir; her kuyumcuda kolayca bozdurulur. Fiziki tutma zorunluluğu yoksa dijital gram altın maliyet açısından yine öndedir.
+- **Büyük bütçe:** Tam/Cumhuriyet altını, külçe veya ons bazlı araçlar (altın hesabı, altın fonu, ETF) değerlendirilebilir. Tutar büyüdükçe makas farkı TL bazında belirginleştiği için banka ve borsa kanalları genellikle daha avantajlıdır.
+- **Kaçınılması gereken senaryo:** "Yatırım için ziynet aldım." Takı, işçilik kaybını peşin ödeten bir araçtır.
+
 ## Altın Alırken Dikkat Edilmesi Gerekenler
 
 Yanlış kanal ve forma para yatırmak başlangıçta ciddi kayba yol açabilir. Şu adımları izleyin:
 
 1. **Amacınızı belirleyin:** Takı mı, kısa vadeli birikim mi, uzun vadeli yatırım mı?
-2. **Saflığı kontrol edin:** Kuyumcudan alırken mağaza ayar damgasına ve faturaya bakın.
+2. **Saflığı kontrol edin:** Kuyumcudan alırken ayar (milyem) damgasına ve faturaya bakın; fiziki külçe alıyorsanız Darphane veya sertifikalı rafineri belgesi isteyin.
 3. **Spread'i karşılaştırın:** Bankalar, aracı kurumlar ve kuyumcular arasında alış-satış makaslarını kıyaslayın.
 4. **Ziynet'ten uzak durun (yatırım için):** İşçilik içeren ürün almaktan kaçının.
 5. **Dijital alıyorsanız kurumun güvenilirliğini araştırın:** Banka veya SPK lisanslı aracı kurum tercih edin.
@@ -118,7 +149,7 @@ Yanlış kanal ve forma para yatırmak başlangıçta ciddi kayba yol açabilir.
 
 ## İç Bağlantılar: Altın Yatırımını Genişletin
 
-Altın, portföyünüzün yalnızca bir parçası olmalıdır. Altın ile birlikte dolar arasında nasıl denge kuracağınızı öğrenmek için [Altın mı Dolar mı? Türkiye'de Hangisi Daha Mantıklı?](/blog/altin-mi-dolar-mi) yazımıza bakabilirsiniz. Enflasyona karşı altının yanı sıra başka koruma yöntemlerini keşfetmek için [Enflasyondan Nasıl Korunulur?](/blog/enflasyondan-nasil-korunur) rehberimizi inceleyin. Birikimlerinizi düzenli aralıklarla yatırıma yönlendirmenin gücünü anlamak içinse [Bileşik Getiri Nedir?](/blog/bilesik-faiz-nedir) yazısı iyi bir başlangıç noktasıdır.
+Altın, portföyünüzün yalnızca bir parçası olmalıdır. Altın ile birlikte dolar arasında nasıl denge kuracağınızı öğrenmek için [Altın mı Dolar mı? Türkiye'de Hangisi Daha Mantıklı?](/blog/altin-mi-dolar-mi/) yazımıza bakabilirsiniz. Enflasyona karşı altının yanı sıra başka koruma yöntemlerini keşfetmek için [Enflasyondan Nasıl Korunulur?](/blog/enflasyondan-nasil-korunur/) rehberimizi inceleyin. Birikimlerinizi düzenli aralıklarla yatırıma yönlendirmenin uzun vadede ne fark yarattığını görmek içinse [bileşik faiz hesaplama](/bilesik-faiz-hesaplama/) aracını kullanabilirsiniz. Farklı yatırım araçlarının risk-getiri dengesini değerlendirmek için [risk ve getiri ilişkisi](/blog/risk-getiri-iliskisi/) rehberimize göz atın.
 
 ## Özet
 

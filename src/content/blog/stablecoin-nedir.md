@@ -163,7 +163,7 @@ Stablecoin Bitcoin veya Ethereum gibi büyüme potansiyeli taşıyan bir varlık
 
 Dikkat: Stablecoin'i "dolar hesabı" gibi düşünmek büyük yanılgıya yol açabilir. Dolar mevduatı TMSF güvencesindedir; stablecoin bu güvence kapsamında değildir.
 
-[Enflasyona karşı korunma yöntemlerini](/blog/enflasyondan-nasil-korunur) araştırıyorsanız: stablecoin gerçek bir araç olmakla birlikte TL enflasyonuna karşı tek savunma hattı yapılmamalıdır; altın, döviz mevduatı ve [endeks fonları](/blog/endeks-fonu-nedir) ile çeşitlendirme daha sağlam bir strateji sunar.
+[Enflasyona karşı korunma yöntemlerini](/blog/enflasyondan-nasil-korunur) araştırıyorsanız: stablecoin gerçek bir araç olmakla birlikte TL enflasyonuna karşı tek savunma hattı yapılmamalıdır; altın, döviz mevduatı ve [endeks fonları](/blog/etf-nedir-borsa-yatirim-fonu/) ile çeşitlendirme daha sağlam bir strateji sunar.
 
 Kripto yatırımına ilk kez adım atıyorsanız [Ethereum nedir rehberimiz](/blog/ethereum-nedir) size blokzincir ekosistemini daha geniş bir perspektiften anlatacaktır.
 

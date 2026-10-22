@@ -2,6 +2,7 @@
 title: "Fed Faiz Kararı Ne Olur? Piyasa Beklentilerini Okuma Rehberi"
 description: "Fed faiz kararı ne olur sorusunu CME FedWatch, dot plot ve öne çıkan ekonomik verilerle yanıtlıyoruz. Türk yatırımcısı için beklenti okuma rehberi."
 pubDate: 2026-08-05
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["fed faiz kararı", "cme fedwatch", "dot plot", "para politikası", "fed beklentisi", "dolar"]
 readingTime: 8
@@ -16,7 +17,7 @@ faq:
   - q: "Hangi veriler Fed kararını en çok etkiler?"
     a: "NFP (tarım dışı istihdam), işsizlik oranı, CPI ve PCE (çekirdek enflasyon) Fed'in en çok baktığı dört veri noktasıdır."
   - q: "Fed kararı ne zaman açıklanır?"
-    a: "Fed, yılda 8 kez FOMC toplantısı yapar. Kararlar Türkiye saatiyle genellikle gece 21:00'de açıklanır; ardından Fed Başkanı basın toplantısı düzenler."
+    a: "Fed, yılda 8 kez FOMC toplantısı yapar. Kararlar toplantının ikinci günü ABD saatiyle 14:00'te açıklanır; bu Türkiye saatiyle ABD yaz saati döneminde 21:00'e, kış döneminde 22:00'ye denk gelir. Yarım saat sonra Fed Başkanı basın toplantısı düzenler. Yaklaşan tarihler ParaFOMO Fed faiz takvimi sayfasında yer alır."
 shorts:
   - "Fed kararını %70 olasılık belirliyor, peki nasıl?"
   - "CME FedWatch aracı, Fed faiz vadeli sözleşmelerinden hesaplanan olasılıkları göstererek piyasanın kolektif beklentisini tek ekranda özetliyor."
@@ -71,7 +72,7 @@ Fed'in çift mandatı var: maksimum istihdam ve fiyat istikrarı. Bu iki hedefe 
 |------|-------------------|----------------|------------|
 | NFP (Tarım Dışı İstihdam) | Ayda bir (ilk Cuma) | İstihdam mandası | [NFP nedir?](/blog/nfp-nedir-abd-tarim-disi-istihdam) |
 | İşsizlik Oranı | Ayda bir (NFP ile beraber) | İstihdam mandası | [İşsizlik oranı etkisi](/blog/abd-issizlik-orani-nedir-nfp-etkisi) |
-| CPI (Tüketici Enflasyonu) | Ayda bir | Fiyat istikrarı | [ABD CPI nedir?](/blog/abd-cpi-enflasyon-verisi-nedir) |
+| CPI (Tüketici Enflasyonu) | Ayda bir | Fiyat istikrarı | [ABD CPI nedir?](/blog/cekirdek-cpi-nedir-fed-enflasyon-gostergesi/) |
 | Core PCE | Ayda bir | Fed'in tercih ettiği enflasyon | [PCE nedir?](/blog/pce-nedir-fed-enflasyon-gostergesi) |
 
 **Pratik kural:** İşsizlik düşük + enflasyon yüksekse Fed sıkılaştırma (artış/sabit) yolunda, işsizlik yüksek + enflasyon düşükse gevşeme (indirim) yolunda daha güçlü bir gerekçeye sahip olur.
@@ -103,12 +104,12 @@ Farklı Fed kararlarının Türk yatırımcısına nasıl yansıdığını anlam
 
 Tablodaki kritik mesaj: **Beklenti dahilindeki kararlar genellikle piyasayı hareket ettirmez.** Asıl sarsıntı, piyasanın fiyatlamadığı sürprizlerde yaşanır. Bu yüzden CME FedWatch'taki olasılıkları, veri açıklamalarından önce not etmek önemlidir.
 
-## 7 Ağustos NFP Verisi: Beklentiyi Nasıl Okuyalım?
+## Veri Günlerinde Beklentiyi Nasıl Okuyalım?
 
-7 Ağustos 2026'da ABD'nin aylık tarım dışı istihdam (NFP), işsizlik oranı ve ortalama saatlik kazanç verisi açıklanacak. Bu üçlü, Fed'in Eylül toplantısına giden süreçteki en kritik veri noktası olacak.
+ABD'nin aylık tarım dışı istihdam (NFP), işsizlik oranı ve ortalama saatlik kazanç verisi genellikle her ayın ilk Cuma günü açıklanır. Bu üçlü, bir sonraki FOMC toplantısına giden süreçteki en kritik veri noktalarından biridir. Yaklaşan toplantıları [Fed faiz takvimi](/fed-faiz-takvimi/), veri tarihlerini [ekonomik takvim](/ekonomik-takvim/) sayfasından izleyebilirsin.
 
 **Nasıl değerlendirilebilir:**
-1. Açıklamadan önce FedWatch'ta Eylül indirim olasılığını not et.
+1. Açıklamadan önce FedWatch'ta bir sonraki toplantı için indirim/artış olasılığını not et.
 2. Veriler açıklandıktan sonra olasılığın nasıl değiştiğine bak.
 3. Fed başkanının sonraki konuşmalarındaki dil değişikliğini izle.
 
@@ -119,7 +120,7 @@ Tablodaki kritik mesaj: **Beklenti dahilindeki kararlar genellikle piyasayı har
 Fed beklentilerini takip etmek için karmaşık araçlara ihtiyacın yok. Şu üç alışkanlık yeterli:
 
 1. **Her ayın ilk Cuma'sı** NFP verisi öncesinde FedWatch olasılığını not et. Veri sonrasında karşılaştır.
-2. **Her FOMC toplantısından bir gün sonra** açıklanan kararla birlikte Fed başkanının kullandığı anahtar ifadeleri oku.
+2. **Her FOMC kararının ardından** açıklanan metinle birlikte Fed başkanının basın toplantısında kullandığı anahtar ifadeleri oku.
 3. **Her çeyrekte** yayımlanan dot plot medyanını bir öncekiyle karşılaştır; yukarı mı kaydı, aşağı mı?
 
 Bu üç adım, Fed döngüsünü takip eden bir yatırımcının temel veri akışını oluşturur.

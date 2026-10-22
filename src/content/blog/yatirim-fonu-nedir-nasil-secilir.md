@@ -63,13 +63,13 @@ Doğrudan varlık değil, başka yatırım fonlarının katılma paylarını sat
 | Uzun vadeli performans | Çoğu aktif fon endeks getirisinin gerisinde kalır | Endeks getirisine eşit |
 | Kimler için uygun | Niş alanlara veya aktif stratejiye inananlar | Basit, düşük maliyetli büyüme hedefleyenler |
 
-Pasif endeks fonları hakkında daha fazla bilgi almak istiyorsanız [endeks fonu nedir rehberimiz](/blog/endeks-fonu-nedir/) ETF ile yatırım fonu arasındaki temel farkları da kapsıyor.
+Pasif endeks fonları hakkında daha fazla bilgi almak istiyorsanız [endeks fonu nedir rehberimiz](/blog/etf-nedir-borsa-yatirim-fonu/) ETF ile yatırım fonu arasındaki temel farkları da kapsıyor.
 
 ## Yatırım Fonu Seçerken Nelere Bakmalısınız?
 
 ### 1. Yönetim Ücreti (Toplam Gider Oranı — TGO)
 
-Yatırım fonunun yıllık olarak portföyden kestiği ücrettir. TEFAS'ta "Toplam Gider Oranı" başlığı altında görebilirsiniz. %0,50 ile %2,50 arasındaki bir fark, 20 yıllık sürede bileşik hesapta servetinizin önemli bir bölümünü etkiler. [Bileşik faizin uzun vadedeki dramatik etkisini](/blog/bilesik-faiz-nedir/) daha önce anlattık; küçük maliyet farklarının bileşik büyüme üzerindeki etkisi şaşırtıcı boyutlara ulaşabilir.
+Yatırım fonunun yıllık olarak portföyden kestiği ücrettir. TEFAS'ta "Toplam Gider Oranı" başlığı altında görebilirsiniz. %0,50 ile %2,50 arasındaki bir fark, 20 yıllık sürede bileşik hesapta servetinizin önemli bir bölümünü etkiler. Bileşik faizin uzun vadedeki dramatik etkisini [bileşik faiz hesaplama](/bilesik-faiz-hesaplama/) aracımızla görebilirsiniz; küçük maliyet farklarının bileşik büyüme üzerindeki etkisi şaşırtıcı boyutlara ulaşabilir.
 
 ### 2. Risk Sınıflandırması (1–7)
 

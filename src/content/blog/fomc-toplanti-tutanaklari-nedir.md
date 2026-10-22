@@ -1,14 +1,15 @@
 ---
 title: "FOMC Toplantı Tutanakları Nedir? Fed Kararları TL'yi Nasıl Etkiler?"
-description: "FOMC toplantı tutanakları, Fed'in faiz tartışmalarını gösteren kritik belgedir. 8 Temmuz açıklaması öncesi dolar/TL kuru ve BIST üzerindeki etkisini öğrenin."
+description: "FOMC toplantı tutanakları nedir, ne zaman açıklanır? Fed'in faiz tartışmalarını gösteren bu belgenin dolar/TL kuru ve BIST üzerindeki etkisini öğrenin."
 pubDate: 2026-07-05
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["FOMC", "Fed faiz kararı", "dolar TL", "para politikası", "küresel ekonomi", "faiz"]
 readingTime: 7
 featured: false
 faq:
   - q: "FOMC toplantı tutanakları ne zaman açıklanır?"
-    a: "Her FOMC toplantısından yaklaşık 3 hafta sonra açıklanır. 8 Temmuz 2026'da yayımlanacak tutanaklar, Haziran 2026 toplantısına aittir."
+    a: "Her FOMC toplantısından üç hafta sonra, ABD saatiyle 14:00'te yayımlanır. Bu Türkiye saatiyle ABD yaz saati döneminde 21:00'e, kış döneminde 22:00'ye denk gelir. Yaklaşan toplantı tarihleri ParaFOMO Fed faiz takvimi sayfasında yer alır."
   - q: "FOMC kararları TL'yi neden etkiler?"
     a: "Fed faiz artırırsa dolar değer kazanır; yükselen dolar, TL başta olmak üzere gelişmekte olan ülke kurlarını baskılar. Türkiye'nin yüksek dış borcu bu etkiyi derinleştirir."
   - q: "FOMC toplantıları yılda kaç kez yapılır?"
@@ -30,7 +31,7 @@ shorts_broll:
   - "emerging market stock chart volatility"
 ---
 
-8 Temmuz 2026 akşamı Türkiye saatiyle 21:00'de piyasalar bir belge için nefesini tutacak: Fed'in son toplantısının perde arkasını gösteren **FOMC toplantı tutanakları**. Dolar kurunu, TL'yi, BIST'i ve hatta altını etkileyebilecek bu doküman tam olarak nedir, neden bu kadar önemlidir?
+Her Fed toplantısından üç hafta sonra piyasalar bir belge için nefesini tutar: Fed'in son toplantısının perde arkasını gösteren **FOMC toplantı tutanakları**. Dolar kurunu, TL'yi, BIST'i ve hatta altını etkileyebilecek bu doküman tam olarak nedir, neden bu kadar önemlidir?
 
 ## FOMC Nedir?
 
@@ -44,13 +45,13 @@ FOMC kararı toplantı günü açıklanır; tutanaklar ise 3 hafta sonra gelir. 
 
 | | Faiz Kararı | Toplantı Tutanakları |
 |---|---|---|
-| **Açıklanma zamanı** | Toplantı günü, saat 21:00 TR | Toplantıdan ~3 hafta sonra |
+| **Açıklanma zamanı** | Toplantının 2. günü, 21:00 TSİ (ABD kış saatinde 22:00) | Toplantıdan 3 hafta sonra, aynı saatte |
 | **Ne içerir?** | Kısa açıklama + yeni faiz rakamı | Üye yorumları, tartışmalar, oylamalar |
 | **Piyasa etkisi** | Ani ve sert | Daha analitik, yorum gerektirir |
 | **Temel sorusu** | Karar ne oldu? | Komite ne düşünüyor, sıradaki adım ne? |
 | **Uzunluk** | 1-2 sayfa | 15-25 sayfa |
 
-8 Temmuz'da açıklanacak tutanaklar **Haziran 2026 toplantısına** aittir. Piyasalar o toplantıda faizin değişmediğini zaten biliyor; şimdi merak edilen, üyelerin "bir sonraki hamlede ne yapacağız?" sorusuna ne cevap verdiği.
+Tutanaklar yayımlandığında piyasalar o toplantıda alınan kararı zaten bilir; merak edilen, üyelerin "bir sonraki hamlede ne yapacağız?" sorusuna ne cevap verdiğidir.
 
 ## Piyasalar Tutanaklarda Nelere Bakıyor?
 
@@ -61,7 +62,7 @@ Analistlerin tutanaklarda aradığı 5 sinyal:
 1. **Bir sonraki toplantıda faiz değişir mi?** Üyelerin büyük çoğunluğu "bekleme" mi dedi, yoksa "indirime hazırız" mı?
 2. **Enflasyon değerlendirmesi:** Fed, enflasyonun kalıcı olarak düştüğüne ikna oldu mu? [PCE enflasyon verisi](/blog/pce-nedir-fed-enflasyon-gostergesi) bu kararı doğrudan besler.
 3. **İşgücü piyasası:** [NFP (tarım dışı istihdam)](/blog/nfp-nedir-abd-tarim-disi-istihdam) rakamları ve işsizlik oranı tartışmada ne kadar yer tuttu?
-4. **Büyüme endişesi:** [GDP büyüme verisi](/blog/gdp-gsyih-nedir-nasil-yorumlanir) yavaşlama sinyali veriyor muysa Fed ne diyor?
+4. **Büyüme endişesi:** [GDP büyüme verisi](/blog/gdp-gsyih-nedir-nasil-yorumlanir) yavaşlama sinyali veriyorsa Fed ne diyor?
 5. **Azınlık oyları:** Farklı oy kullanan üye var mıydı, argümanı ne?
 
 ## FOMC Kararları TL ve BIST'i Nasıl Etkiler?
@@ -84,9 +85,9 @@ Türkiye, [Fed faiz kararlarına](/blog/fed-faiz-karari-nedir-etkisi) doğrudan 
 
 Türkiye'nin toplam dış borç yükü yüksek olduğundan bu etki, birçok ülkeye kıyasla daha derin hissedilir. Üstelik TCMB'nin kendi faiz kararları da dolaylı olarak Fed'in tutumunu izler; Fed sıkılaştırmaya devam ediyorken TCMB'nin faiz indirmesi kurun üzerinde ek baskı yaratır.
 
-## 8 Temmuz Tutanakları: Ne İzlemeli?
+## Tutanaklar Açıklandığında Ne İzlemeli?
 
-Haziran toplantısında Fed faizi sabit tutmuştu. Tutanaklarda şu noktalar kritik olacak:
+Her tutanak yayımında şu noktalar kritiktir:
 
 - **"Veri odaklı" söylemi ne kadar güçlü?** Üyeler hâlâ her toplantıyı ayrı mı değerlendiriyor, yoksa yönlendirici bir takvim mi belirginleşiyor?
 - **Enflasyon yeterince soğudu mu?** Son PCE ve CPI verileri Fed'i tatmin etti mi?
@@ -102,7 +103,7 @@ Tutanaklar açıklandığında piyasalarda anlık dalgalanma normaldir. Uzun vad
 2. **Döviz pozisyonunu gözden geçir.** Fed şahin görünüyorsa TL mevduat ve tahvilindeki reel getiriyi değerlendir.
 3. **Hisse sepetini çeşitlendir.** Dolar güçlenince BIST'teki ihracatçı şirketler (tekstil, çelik, otomotiv yan sanayi) avantajlı konuma geçer; ithalatçı şirketler maliyet baskısı yaşar.
 4. **Altını radarında tut.** Dolar zayıflarsa altın genellikle yükselir; [altın mı dolar mı yazımızda](/blog/altin-mi-dolar-mi) bu ilişkiyi ayrıntılı anlattık.
-5. **FOMC takvimini takip et.** Yılda 8 toplantı var; özellikle Mart, Haziran, Eylül ve Aralık toplantıları piyasalar tarafından en çok beklenen günlerdir.
+5. **FOMC takvimini takip et.** Yılda 8 toplantı var; özellikle güncel ekonomik projeksiyonların ve dot plot'un yayımlandığı Mart, Haziran, Eylül ve Aralık toplantıları piyasalar tarafından en çok beklenen günlerdir. Yaklaşan toplantılar ve tutanak tarihleri için [Fed faiz takvimi](/fed-faiz-takvimi/) ve [ekonomik takvim](/ekonomik-takvim/) sayfalarına göz atabilirsin.
 
 ## Küresel Veri Takviminde FOMC'un Yeri
 

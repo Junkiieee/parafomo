@@ -62,13 +62,13 @@ Her yolu aynı çerçevede değerlendirmek için şu dört soruyu sormak işe ya
 
 Türkiye'de BIST'te işlem gören şirketler yılda bir veya iki kez kâr payı dağıtır. Hisseyi alırsınız, şirket büyüdükçe hem hisse değeriniz artar hem de temettü geliri elde edersiniz. Anahtarı, sürdürülebilir temettü geçmişi olan şirketleri seçmek ve temettüleri yeniden yatırarak kartopu etkisi yaratmaktır.
 
-Temettü yatırımının tüm detayları için: [Temettü Hisseleri ile Pasif Gelir: Nasıl Çalışır, Mantıklı mı?](/blog/temettu-hisseleri-pasif-gelir/)
+Temettü yatırımının tüm detayları için: [Temettü Hisseleri ile Pasif Gelir: Nasıl Çalışır, Mantıklı mı?](/blog/temettu-verimi-nedir/)
 
 ### 2. Endeks fonları ve ETF'ler
 
 Endeks fonu ya da ETF almak, tek bir işlemde onlarca şirkete ortak olmak anlamına gelir. BIST 100 ETF'leri veya global hisse ETF'leri uzun vadede bileşik büyüme sunar. Aktif hisse seçimi gerektirmez; düşük yönetim ücreti ile piyasa ortalamasını yakalarsınız. Anında nakit akışı yerine uzun vadeli sermaye büyümesi hedeflenir.
 
-Adım adım nasıl alacağınızı öğrenmek için: [Endeks Fonu Nedir, Nasıl Alınır? Türkiye Rehberi](/blog/endeks-fonu-nedir/)
+Adım adım nasıl alacağınızı öğrenmek için: [Endeks Fonu Nedir, Nasıl Alınır? Türkiye Rehberi](/blog/etf-nedir-borsa-yatirim-fonu/)
 
 ### 3. Kira geliri
 
@@ -131,7 +131,7 @@ Tek bir pasif gelir kaynağı kırılgandır. Temettü kesilebilir, platform kap
 
 Özellikle yatırım gelirlerinde, elde edilen kazancı harcamak yerine yeniden yatırıma döndürmek "kartopu etkisi" yaratır. Küçük meblağlar bile zaman içinde önemli büyüklüklere ulaşabilir.
 
-Bileşik getirinin uzun vadeli gücünü anlamak için: [Bileşik Getiri Nedir ve Neden Bu Kadar Güçlü?](/blog/bilesik-faiz-nedir/)
+Bileşik getirinin uzun vadeli gücünü kendi rakamlarınla görmek için: [Bileşik Faiz Hesaplama aracı](/bilesik-faiz-hesaplama/)
 
 ## Pasif geliri hayata geçirmek için adım adım
 

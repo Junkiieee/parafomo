@@ -24,8 +24,8 @@ const fmt = (n: number) =>
 
 // Güncel KDV oranları (2026) — 10 Temmuz 2023'ten beri geçerli (standart %18→%20, indirimli %8→%10).
 const rates = [
-  { rate: 20, label: 'Genel (standart) oran', ex: 'Elektronik, giyim, mobilya, beyaz eşya, çoğu hizmet, akaryakıt' },
-  { rate: 10, label: 'İndirimli oran', ex: 'Gıda (bazı), tekstil ürünleri, lokanta/yeme-içme, konaklama, ilaç' },
+  { rate: 20, label: 'Genel (standart) oran', ex: 'Elektronik, beyaz eşya, otomobil, akaryakıt, temizlik ürünleri, çoğu hizmet' },
+  { rate: 10, label: 'İndirimli oran', ex: 'Giyim ve ayakkabı, mobilya, bazı gıdalar, lokanta/yeme-içme, konaklama, ilaç' },
   { rate: 1, label: 'Süper indirimli oran', ex: 'Temel gıda (ekmek, un, süt, sebze-meyve), gazete-dergi, cenaze hizmeti' },
 ];
 
@@ -40,7 +40,7 @@ const faq = [
   },
   {
     q: '2026’da KDV oranları kaç?',
-    a: 'Türkiye’de üç KDV oranı uygulanır: genel (standart) oran %20, indirimli oran %10 ve süper indirimli oran %1. Bu oranlar 10 Temmuz 2023’ten bu yana geçerlidir (öncesinde %18 / %8 / %1 idi). Elektronik, giyim, mobilya ve çoğu hizmet %20; birçok gıda, lokanta ve konaklama %10; ekmek, un, süt gibi temel gıdalar ise %1 grubundadır.',
+    a: 'Türkiye’de üç KDV oranı uygulanır: genel (standart) oran %20, indirimli oran %10 ve süper indirimli oran %1. Bu oranlar 10 Temmuz 2023’ten bu yana geçerlidir (öncesinde %18 / %8 / %1 idi). Elektronik, beyaz eşya, akaryakıt ve çoğu hizmet %20; giyim, ayakkabı, mobilya, birçok gıda, lokanta ve konaklama %10 (2007/13033 sayılı Karar, (II) sayılı liste); ekmek, un, süt gibi temel gıdalar ise %1 grubundadır.',
   },
   {
     q: 'Matrah ne demek?',
@@ -186,7 +186,7 @@ const breadcrumbs = [
         indirir; yalnızca aradaki farkı devlete öder. Bu yüzden KDV işletme için genelde bir
         maliyet değil, aracılık edilen bir vergidir. Vergiyi nihayetinde <strong>nihai
         tüketici</strong> öder — fiyatın içinde. KDV’nin alım gücünü nasıl etkilediğini merak
-        ediyorsanız, fiyat artışlarını ölçen <a href="/blog/tufe-enflasyon-verisi-nasil-okunur">TÜFE
+        ediyorsanız, fiyat artışlarını ölçen <a href="/blog/tufe-sepeti-nedir-enflasyon-nasil-hesaplanir/">TÜFE
         enflasyon verisi</a>ne ve <a href="/enflasyon-takvimi">enflasyon takvimi</a>ne göz atın.
       </p>
       <p class="cta-line">

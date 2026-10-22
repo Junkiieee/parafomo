@@ -54,7 +54,7 @@ shorts_visuals:
 
 Bir gün sonra, 15 Ekim'de aynı saatte ABD üretici fiyatları (PPI) ve perakende satışlar da geliyor. Yani 14-15 Ekim, Fed toplantısı öncesi en yoğun veri ikilisi. Güncel saatleri [ekonomik takvim](/ekonomik-takvim) sayfamızdan takip edebilirsin.
 
-CPI'ın nasıl hesaplandığını ve sepette neler olduğunu merak ediyorsan önce [ABD CPI enflasyon verisi nedir](/blog/abd-cpi-enflasyon-verisi-nedir) rehberimize göz atabilirsin.
+CPI'ın nasıl hesaplandığını ve sepette neler olduğunu merak ediyorsan önce [ABD CPI enflasyon verisi nedir](/blog/cekirdek-cpi-nedir-fed-enflasyon-gostergesi/) rehberimize göz atabilirsin.
 
 ## Neden Bu Sefer Daha Kritik? Fed Eylül'de Faiz Artırdı
 
@@ -117,7 +117,7 @@ En olası ve en az oynaklık yaratan senaryo. Fed'in "veriye bağlıyız" söyle
 
 Çekirdek tarafta belirgin yavaşlama görülürse Eylül artışının "tek seferlik" olduğu yorumu güçlenir. Tahvil faizleri ve dolar geriler, altın destek bulur. Gelişmekte olan piyasa para birimleri, TL dahil, kısa süreli nefes alabilir.
 
-Faiz beklentisi ile altın arasındaki mekanizmayı [ABD faiz artarsa altın ne olur](/blog/abd-faiz-artarsa-altin-ne-olur) yazımızda adım adım açıkladık.
+Faiz beklentisi ile altın arasındaki mekanizmayı [ABD faiz artarsa altın ne olur](/blog/abd-faiz-artarsa-ne-olur/) yazımızda adım adım açıkladık.
 
 ## Türk Yatırımcısı İçin Pratik Kontrol Listesi
 

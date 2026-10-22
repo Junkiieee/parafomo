@@ -80,7 +80,7 @@ Tabloyu nasıl okuyacaksınız? İki verinin aynı yönde gitmesi (ikisi de köt
 
 Eylül 2026 FOMC toplantısı, bu verilerin açıklandığı 26 Ağustos'tan yalnızca birkaç hafta sonra. Fed'in "veri bağımlı" tutumu göz önüne alındığında PCE ve GDP bu döngünün en belirleyici iki girişi.
 
-[2026 Fed toplantı takvimini](/blog/2026-fed-toplanti-tarihleri) takip ediyorsanız şunu bilin: PCE'nin %2.5-2.6 civarında, GDP'nin ise %2.0'nin üzerinde seyretmesi durumunda piyasanın Eylül indirimi beklentisi ertelenebilir.
+[2026 Fed toplantı takvimini](/fed-faiz-takvimi/) takip ediyorsanız şunu bilin: PCE'nin %2.5-2.6 civarında, GDP'nin ise %2.0'nin üzerinde seyretmesi durumunda piyasanın Eylül indirimi beklentisi ertelenebilir.
 
 CME FedWatch verileri, bu yazının kaleme alındığı dönemde Eylül indirimini olası bir seçenek olarak fiyatlamakta. Gelecek PCE/GDP kombini bu beklentiyi güçlendirebilir ya da tamamen ortadan kaldırabilir.
 

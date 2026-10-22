@@ -62,7 +62,7 @@ Piyasa sert düştüğünde korku devreye girer, yükseldiğinde açgözlülük.
 
 ### 3. Bileşik büyümeyle sinerji kurar
 
-DCA ve [bileşik faiz](/blog/bilesik-faiz-nedir) el ele çalışır. Her ay alınan birimler zamanla büyür, büyüyen portföy üzerine yeni alımlar eklenir. Vade uzadıkça bu etki katlanarak artar. 25 yaşında aylık 500 TL ile başlayan biri, 35 yaşında başlayana göre 65 yaşında yaklaşık 2,8 kat daha büyük portföy oluşturabilir — daha fazla para değil, sadece daha erken başlamak.
+DCA ve [bileşik faiz](/bilesik-faiz-hesaplama/) el ele çalışır. Her ay alınan birimler zamanla büyür, büyüyen portföy üzerine yeni alımlar eklenir. Vade uzadıkça bu etki katlanarak artar. 25 yaşında aylık 500 TL ile başlayan biri, 35 yaşında başlayana göre 65 yaşında yaklaşık 2,8 kat daha büyük portföy oluşturabilir — daha fazla para değil, sadece daha erken başlamak.
 
 ## DCA ile Toplu Yatırım Karşılaştırması
 
@@ -96,7 +96,7 @@ Türkiye'de enflasyonun yüksek seyretti dönemlerde nakit tutmak, alım gücün
 
 ### Enflasyona karşı reel getiri
 
-Türkiye'de nominal getiri yüksek görünse de asıl önemli olan enflasyonu geçmektir. DCA uygulanan [endeks fonu](/blog/endeks-fonu-nedir) ya da altın, uzun vadede genellikle mevduat faizinin reel getiri performansını aşmıştır. Bu konuda daha kapsamlı bir değerlendirme için [Enflasyondan Nasıl Korunulur?](/blog/enflasyondan-nasil-korunur) yazımıza bakabilirsiniz.
+Türkiye'de nominal getiri yüksek görünse de asıl önemli olan enflasyonu geçmektir. DCA uygulanan [endeks fonu](/blog/etf-nedir-borsa-yatirim-fonu/) ya da altın, uzun vadede genellikle mevduat faizinin reel getiri performansını aşmıştır. Bu konuda daha kapsamlı bir değerlendirme için [Enflasyondan Nasıl Korunulur?](/blog/enflasyondan-nasil-korunur) yazımıza bakabilirsiniz.
 
 ## DCA Nasıl Uygulanır? Adım Adım
 
@@ -125,7 +125,7 @@ DCA her derde deva değil. Şu durumları aklınızda tutun:
 
 ## DCA ile Temettü Yatırımı Birleştirme
 
-Temettü ödeyen hisselere DCA uygulandığında çift motor devreye girer: düzenli alımların maliyet avantajı + gelen temettülerin yeniden yatırıma eklenmesiyle bileşik büyüme hızlanır. [Temettü hisseleriyle pasif gelir](/blog/temettu-hisseleri-pasif-gelir) yazımızda bu yaklaşımı daha ayrıntılı ele aldık.
+Temettü ödeyen hisselere DCA uygulandığında çift motor devreye girer: düzenli alımların maliyet avantajı + gelen temettülerin yeniden yatırıma eklenmesiyle bileşik büyüme hızlanır. [Temettü hisseleriyle pasif gelir](/blog/temettu-verimi-nedir/) yazımızda bu yaklaşımı daha ayrıntılı ele aldık.
 
 ## Özet
 

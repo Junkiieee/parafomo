@@ -120,7 +120,7 @@ Risk profilini ve yatırım ufkunu belirledikten sonra tablodaki gibi başlangı
 ### Adım 3: Araçları Seç
 
 Her varlık sınıfı için uygun araç seç:
-- Hisse senedi: Bireysel hisseler veya [endeks fonu / ETF](/blog/endeks-fonu-nedir)
+- Hisse senedi: Bireysel hisseler veya [endeks fonu / ETF](/blog/etf-nedir-borsa-yatirim-fonu/)
 - Tahvil/bono: Hazine bonosu (bireysel ya da fon aracılığıyla)
 - Altın: Gram altın, altın fonu veya altın ETF
 - Döviz: Döviz hesabı veya döviz cinsinden yatırım fonu

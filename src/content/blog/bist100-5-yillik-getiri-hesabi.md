@@ -91,13 +91,13 @@ Türkiye'de BIST 100 endeksine pasif yatırımın iki ana yolu:
 - BIST'te işlem gören ETF'ler hisse gibi alınıp satılabilir
 - Düşük yönetim ücreti (%0.05–0.45)
 - Anlık fiyat, gün içinde işlem imkânı
-- [ETF nasıl alınır?](/blog/etf-nasil-alinir) yazımıza bakın
+- [ETF nasıl alınır?](/blog/etf-nedir-borsa-yatirim-fonu/#etf-nasıl-alınır-adım-adım-rehber) yazımıza bakın
 
 **2. Endeks Fonu**
 - Banka veya aracı kurum üzerinden günlük fiyatla alınır
 - Minimum miktar çok düşük (bazılarında 100 TL'den başlar)
 - Otomatik yeniden yatırım seçeneği sunanlar var
-- [Endeks fonu nedir?](/blog/endeks-fonu-nedir) yazımıza bakın
+- [Endeks fonu nedir?](/blog/etf-nedir-borsa-yatirim-fonu/#endeks-fonu-nedir-etf-ile-farkı) yazımıza bakın
 
 ## Çıkarımlar
 

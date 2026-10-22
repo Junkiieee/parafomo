@@ -12,10 +12,10 @@ const items = altin.kalemler as {
 }[];
 
 const upd = new Date(altin.guncellenme);
-const updLabel = upd.toLocaleDateString('tr-TR', {
+const updLabel = upd.toLocaleDateString('tr-TR', { timeZone: 'Europe/Istanbul',
   day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit',
 });
-const dateLabel = upd.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+const dateLabel = upd.toLocaleDateString('tr-TR', { timeZone: 'Europe/Istanbul', day: 'numeric', month: 'long', year: 'numeric' });
 
 const fmt = (n: number) =>
   new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));

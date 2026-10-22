@@ -126,7 +126,7 @@ Güçlü dolar gelişen piyasalara sermaye çıkışını hızlandırır. BIST �
 - Ayda iki kez yayımlanır: **ön veri** (2. Cuma) ve **kesin veri** (son Cuma). Piyasalar ön veriye daha şiddetli tepki verir.
 - **Enflasyon beklentisi alt verisi** özellikle Fed faiz kararlarına yakın dönemlerde kritik önem taşır.
 - Güçlü endeks → dolar güçlenebilir, TL baskı altına girebilir; zayıf endeks → Fed faiz indirimi beklentisini canlandırır.
-- Bu veriyi [CPI](/blog/abd-cpi-enflasyon-verisi-nedir/), [PCE](/blog/pce-nedir-fed-enflasyon-gostergesi/) ve [NFP](/blog/nfp-nedir-abd-tarim-disi-istihdam/) gibi diğer göstergelerle birlikte okumak, tek başına değerlendirmekten çok daha sağlıklı bir tablo çıkarır.
+- Bu veriyi [CPI](/blog/cekirdek-cpi-nedir-fed-enflasyon-gostergesi/), [PCE](/blog/pce-nedir-fed-enflasyon-gostergesi/) ve [NFP](/blog/nfp-nedir-abd-tarim-disi-istihdam/) gibi diğer göstergelerle birlikte okumak, tek başına değerlendirmekten çok daha sağlıklı bir tablo çıkarır.
 
 ---
 

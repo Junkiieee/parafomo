@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
+import bagkur from '../../data/bagkur-prim-2026.json';
 
 // 2026 net/brüt maaş hesaplama — resmî parametreler.
 // Kaynak: 193 s. GVK md.103 ücret tarifesi (01.01.2026), Alomaliye/MuhasebeTR ile doğrulandı 2026-08.
@@ -10,7 +11,9 @@ import Newsletter from '../components/Newsletter.astro';
 // GÜNCELLEME: Ocak 2027'de yeni asgari ücret + yeni tarife dilimleriyle güncelle.
 const MIN_BRUT = 33030.0; // 2026 aylık brüt asgari ücret
 const MIN_MATRAH = 28075.5; // asgari ücret gelir vergisi matrahı (brüt − %15 SGK/işsizlik)
-const SGK_TAVAN = MIN_BRUT * 7.5; // 2026 SGK/işsizlik prime esas kazanç tavanı = 247.725 ₺
+// PEK üst sınırı = brüt asgari ücret × tavanKat (2026: 9 kat = 297.270 ₺; 7566 s.K., SGK Genelgesi 2026/2).
+// Çarpan Bağ-Kur sayfasıyla TEK kaynaktan (data/bagkur-prim-2026.json) okunur.
+const SGK_TAVAN = MIN_BRUT * ((bagkur as any).tavanKat ?? 9);
 const DAMGA_ORAN = 0.00759; // binde 7,59
 const MIN_DAMGA = MIN_BRUT * DAMGA_ORAN; // asgari ücret damga istisnası
 

@@ -47,7 +47,7 @@ ABD Merkez Bankası Fed, faiz kararlarını iki hedef çerçevesinde alır: fiya
 
 CPI beklentinin üzerinde geldiğinde "faiz indirim takvimi ertelenebilir" sinyali piyasalara yayılır. Beklentinin altında kalırsa tersi: Fed daha güvercin bir yola girebilir, faiz indirim spekülasyonu artar. Gelişmekte olan piyasalar — Türkiye dahil — bu kanaldan doğrudan etkilenir. Veri yalnızca ABD'yi değil, dolar üzerinden bağlantılı tüm ekonomileri hareketlendirir.
 
-[ABD enflasyon verisinin neden bu kadar önemli olduğunu ve genel CPI/core CPI farkını](/blog/abd-cpi-enflasyon-verisi-nedir) ayrıntılı anlattık.
+[ABD enflasyon verisinin neden bu kadar önemli olduğunu ve genel CPI/core CPI farkını](/blog/cekirdek-cpi-nedir-fed-enflasyon-gostergesi/) ayrıntılı anlattık.
 
 ## Eylül 2026 Bağlamı: Fed Nerede Duruyor?
 

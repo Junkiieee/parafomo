@@ -3,12 +3,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import data from '../../data/economic-calendar.json';
 import fixed from '../../data/tr-fixed-events.json';
+import fomc from '../../data/fomc-2026.json';
 
 type CalEvent = {
   date: string; time?: string; region: string; impact: string; title: string; hook?: string; source?: string;
 };
 
-const allEvents: CalEvent[] = data.events as CalEvent[];
+// ForexFactory saatleri GMT ve İngilizce ("6:00am") → TSİ (UTC+3) "09:00".
+const ffToTsi = (t?: string) => {
+  const m = (t ?? '').match(/^(\d{1,2}):(\d{2})(am|pm)$/i);
+  if (!m) return t;
+  let h = (+m[1] % 12) + (m[3].toLowerCase() === 'pm' ? 12 : 0) + 3;
+  if (h >= 24) h -= 24;
+  return `${String(h).padStart(2, '0')}:${m[2]}`;
+};
+const FF_TR: Record<string, string> = {
+  'CPI y/y': 'Enflasyon (TÜFE, yıllık)', 'CPI m/m': 'Enflasyon (TÜFE, aylık)', 'Core CPI m/m': 'Çekirdek enflasyon (aylık)',
+  'Non-Farm Employment Change': 'Tarım dışı istihdam (NFP)', 'Unemployment Rate': 'İşsizlik oranı',
+  'Federal Funds Rate': 'Fed faiz kararı', 'Main Refinancing Rate': 'ECB faiz kararı', 'Official Bank Rate': 'BoE faiz kararı',
+  'Advance GDP q/q': 'GSYİH (öncü, çeyreklik)', 'GDP q/q': 'GSYİH (çeyreklik)', 'Retail Sales m/m': 'Perakende satışlar (aylık)',
+  'Core PCE Price Index m/m': 'Çekirdek PCE (aylık)', 'ISM Manufacturing PMI': 'ISM imalat PMI', 'ISM Services PMI': 'ISM hizmet PMI',
+};
+const ffEvents = (data.events as CalEvent[]).map((e) =>
+  e.source === 'forexfactory' ? { ...e, time: ffToTsi(e.time), title: FF_TR[e.title] ?? e.title } : e,
+);
+// Fed kararları: Investing kaynağı engellendiğinden (403) takvimde hiç görünmüyordu (denetim 2026-10-22).
+const fedEvents: CalEvent[] = [...((fomc as any).meetings ?? []), ...((fomc as any).meetings2027 ?? [])]
+  .filter((m: any) => m.decisionDate && m.decisionDate >= new Date(Date.now() - 45 * 864e5).toISOString().slice(0, 10))
+  .map((m: any) => ({
+    date: m.decisionDate, time: m.tsiTime ?? '', region: 'USD', impact: 'High', title: 'Fed faiz kararı (FOMC)',
+    hook: 'Dolar, altın ve borsa için yılın en önemli kararlarından.', source: 'fed',
+  }));
+const isFedDup = (e: CalEvent) => e.region === 'USD' && /fed|fomc|federal funds/i.test(e.title);
+const allEvents: CalEvent[] = [
+  ...ffEvents.filter((e) => !(isFedDup(e) && fedEvents.some((f) => f.date === e.date))),
+  ...fedEvents,
+];
 const fixedEvents: CalEvent[] = (fixed.events as CalEvent[]) ?? [];
 
 // Merge: fixed events that aren't already in allEvents by date+title

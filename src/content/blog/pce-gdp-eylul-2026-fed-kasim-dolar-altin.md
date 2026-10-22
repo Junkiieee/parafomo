@@ -88,7 +88,7 @@ Fed'in bir sonraki FOMC kararı **28 Ekim 2026**'da açıklanacak. 30 Eylül ver
 
 Piyasanın mevcut fiyatlaması: PCE beklentiye yakın veya altında çıkarsa ve Final GDP Prelim'i teyit ederse ya da yukarı revize ederse, Ekim indirim ihtimali güçlenebilirdi. Gerçekleşen tablo (çekirdek PCE %3,0, büyüme %2,2) ise Fed'e acele ettirmeyen bir görünüm çizdi.
 
-[2026 Fed toplantı takvimini](/blog/2026-fed-toplanti-tarihleri) takip ediyorsanız bu açıklamanın Fed'in hareket alanını doğrudan etkilediğini bilirsiniz.
+[2026 Fed toplantı takvimini](/fed-faiz-takvimi/) takip ediyorsanız bu açıklamanın Fed'in hareket alanını doğrudan etkilediğini bilirsiniz.
 
 ## Türkiye Bağlamı: TCMB ve Kur Üzerindeki Yansıma
 
@@ -96,7 +96,7 @@ Piyasanın mevcut fiyatlaması: PCE beklentiye yakın veya altında çıkarsa ve
 
 - **Güçlü dolar → TL baskısı:** Dolar endeksi yükselirse TL üzerinde değer kaybı baskısı oluşur ve TCMB "kur cephesi" nedeniyle daha temkinli davranmak zorunda kalabilir.
 - **Zayıf dolar → TL rahatlama:** Dolar zayıflarsa TCMB dezenflasyon yolundaki indirim adımlarını sürdürmek için daha geniş bir hareket alanı bulur.
-- **Altın TL bazında:** DXY ve TL'nin ters yönlü hareket etmesi durumunda gram altın beklenmedik bir yön izleyebilir. [ABD faiz artışının altın üzerindeki etkisini](/blog/abd-faiz-artarsa-altin-ne-olur) anlatan yazıda bu mekanizma ayrıntılı ele alınmaktadır.
+- **Altın TL bazında:** DXY ve TL'nin ters yönlü hareket etmesi durumunda gram altın beklenmedik bir yön izleyebilir. [ABD faiz artışının altın üzerindeki etkisini](/blog/abd-faiz-artarsa-ne-olur/) anlatan yazıda bu mekanizma ayrıntılı ele alınmaktadır.
 
 ## Türk Yatırımcısı 30 Eylül'ü Nasıl Okumalı?
 

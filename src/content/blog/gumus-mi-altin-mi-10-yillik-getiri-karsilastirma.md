@@ -101,7 +101,7 @@ Altın büyük ölçüde "değer saklama" aracı olarak alınırken, gümüş ta
 
 ### 2. Kriz anında altın daha güvenilir
 
-Jeopolitik gerilim, savaş ya da finansal panik dönemlerinde merkez bankaları ve büyük fonlar altına yönelir. Gümüş bu dönemlerde altını takip etse de aynı "sığınak" talebini görmez. Altının bu davranışını [ABD faizi artarsa altın ne olur](/blog/abd-faiz-artarsa-altin-ne-olur) yazımızda da ele aldık.
+Jeopolitik gerilim, savaş ya da finansal panik dönemlerinde merkez bankaları ve büyük fonlar altına yönelir. Gümüş bu dönemlerde altını takip etse de aynı "sığınak" talebini görmez. Altının bu davranışını [ABD faizi artarsa altın ne olur](/blog/abd-faiz-artarsa-ne-olur/) yazımızda da ele aldık.
 
 ### 3. Oynaklık iki yönlü çalışır
 

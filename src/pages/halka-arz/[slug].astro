@@ -61,7 +61,8 @@ const pct = (n: number) => (n > 0 ? '+' : '') + n.toLocaleString('tr-TR', { maxi
 
 // Kişi başı düşen lot: "549.211 ~ 127 Lot (4902 TL)"
 const dag = d.dagitilan?.items?.[0] ?? '';
-const dagM = dag.match(/^([\d.]+)\s*~\s*([\d.]+)\s*Lot(?:\s*\(([\d.,]+)\s*TL\))?/i);
+// Kaynak biçimi değişti: "517.764 Katılım ~ 24 Lot (2256 TL)" — aradaki kelime isteğe bağlı.
+const dagM = dag.match(/^([\d.]+)\s*(?:[^\d~]*?)\s*~\s*([\d.]+)\s*Lot(?:\s*\(([\d.,]+)\s*TL\))?/i);
 const participants = dagM?.[1];
 const perPersonLot = dagM ? Number(dagM[2].replace(/\./g, '')) : undefined;
 const perPersonValueNow = ret && perPersonLot ? perPersonLot * ret.current_price : undefined;
@@ -99,11 +100,16 @@ const fon = (d.fon_kullanim?.items ?? []).map((t) => {
   return m ? { p: Number(m[1].replace(',', '.')), t: m[2] } : { p: 0, t };
 });
 
+// date_text bazen tarih değil durum olabiliyor ("Ertelendi", "İptal").
+const dateOk = !!ipo.date_text && /\d/.test(ipo.date_text);
+
 // SSS — yalnız veride olan alanlarla.
 const faq: { q: string; a: string }[] = [];
 faq.push({
   q: `${name} halka arzı ne zaman?`,
-  a: ipo.date_text
+  a: ipo.date_text && !dateOk
+    ? `${name} halka arzının talep toplama süreci şu an: ${ipo.date_text}. Yeni tarih açıklandığında bu sayfa otomatik güncellenir.`
+    : dateOk
     ? `${name} halka arzı için talep toplama ${ipo.date_text} tarihlerinde ${ipo.status === 'Tamamlandı' ? 'yapıldı' : 'yapılacak'}.${ipo.first_trade ? ` Paylar Borsa İstanbul'da ilk kez ${ipo.first_trade} tarihinde işlem gördü.` : ''}`
     : `${name} halka arzı için talep toplama tarihi henüz açıklanmadı.${isDraft ? ' Şirket taslak izahname aşamasında; SPK onayıyla birlikte tarih ve fiyat netleşir.' : ''} Bu sayfa tarih açıklandığında otomatik güncellenir.`,
 });
@@ -118,11 +124,11 @@ if (ret) faq.push({
 });
 if (ipo.broker) faq.push({ q: `${name} halka arzına hangi aracı kurumdan katılabilirim?`, a: `Halka arzın lider aracı kurumu ${ipo.broker}. Konsorsiyumdaki diğer banka ve aracı kurumlar izahnamede ve KAP duyurusunda listelenir; talep toplama günlerinde bu kurumların mobil uygulamalarından başvurulabilir.` });
 
-const titleBits = [ipo.date_text ? 'Tarih' : 'Ne Zaman', 'Fiyat', 'Lot', ret ? 'Getiri' : 'Detaylar'];
+const titleBits = [dateOk ? 'Tarih' : 'Ne Zaman', 'Fiyat', 'Lot', ret ? 'Getiri' : 'Detaylar'];
 const title = `${nameCode} Halka Arz: ${titleBits.slice(0, -1).join(', ')} ve ${titleBits.at(-1)}`;
 const description = [
   `${name} halka arzı`,
-  ipo.date_text ? `talep tarihi ${ipo.date_text}` : 'talep tarihi bekleniyor',
+  dateOk ? `talep tarihi ${ipo.date_text}` : ipo.date_text ? `talep süreci: ${ipo.date_text.toLocaleLowerCase('tr-TR')}` : 'talep tarihi bekleniyor',
   ipo.price ? `fiyat ${ipo.price}` : '',
   ipo.lot ? `${ipo.lot}` : '',
   distClean ? distClean.toLocaleLowerCase('tr-TR') : '',
@@ -147,7 +153,7 @@ const updated = new Date((archive as any).updated).toLocaleDateString('tr-TR', {
     <span class={`hs-status tone-${tone}`}>{statusLabel[ipo.status] ?? ipo.status}</span>
     <h1>{nameCode} Halka Arz</h1>
     <p class="lede soft">
-      {ipo.company.replace(/^\([^)]*\)\s*/, '')} halka arzının tüm künyesi: {ipo.date_text ? `talep toplama ${ipo.date_text}` : 'talep tarihi henüz açıklanmadı'}{ipo.price ? `, fiyat ${ipo.price}` : ''}{ipo.lot ? `, ${ipo.lot}` : ''}.
+      {ipo.company.replace(/^\([^)]*\)\s*/, '')} halka arzının tüm künyesi: {dateOk ? `talep toplama ${ipo.date_text}` : ipo.date_text ? `talep süreci: ${ipo.date_text.toLocaleLowerCase('tr-TR')}` : 'talep tarihi henüz açıklanmadı'}{ipo.price ? `, fiyat ${ipo.price}` : ''}{ipo.lot ? `, ${ipo.lot}` : ''}.
       {ret && <> Borsada halka arz fiyatına göre <strong class={ret.return_pct >= 0 ? 'up' : 'down'}>{pct(ret.return_pct)}</strong>.</>}
     </p>
     <p class="hs-upd">Son güncelleme: {updated} · Kaynak: halkarz.com, SPK/KAP izahnamesi{ret ? ', Yahoo Finance' : ''}</p>
@@ -273,10 +279,24 @@ const updated = new Date((archive as any).updated).toLocaleDateString('tr-TR', {
     </p>
   </section>
 
+  {faq.length > 0 && (
+    <section class="container hs-section hs-faq">
+      <h2>{name} halka arzı hakkında sık sorulanlar</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+  )}
   <div class="container"><Newsletter /></div>
 </BaseLayout>
 
 <style>
+  .hs-faq details { border-top: 1px solid var(--line, #e5e7eb); padding: .7rem 0; }
+  .hs-faq summary { cursor: pointer; font-weight: 600; }
+  .hs-faq p { margin: .5rem 0 0; }
   .hs-hero { padding: clamp(1.4rem, 4vw, 2.4rem) 0 0; max-width: 760px; }
   .hs-crumbs { font-size: var(--step--2); color: var(--text-muted); margin-bottom: 0.7rem; }
   .hs-crumbs a { color: var(--brand-deep); text-decoration: none; }

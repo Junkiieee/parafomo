@@ -3,6 +3,26 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import { CATEGORIES, categorySlug } from '../../site.config';
+import { GRUPLAR } from '../../data/tools';
+
+// Kategori sayfaları araçlara hiç link vermiyordu (ör. Emeklilik: 2 yazı, 0 araç — denetim 2026-10-22).
+const CAT_TOOLS: Record<string, string[]> = {
+  yatirim: ['/altin-getiri/', '/bist-getiri/', '/dolar-getiri/', '/altin-dolar-borsa/', '/bilesik-faiz-hesaplama/', '/halka-arz-getiri/'],
+  borsa: ['/bist-getiri/', '/halka-arz/', '/halka-arz-getiri/', '/altin-dolar-borsa/'],
+  kripto: ['/bitcoin-getiri/', '/altin-dolar-borsa/', '/yuzde-hesaplama/'],
+  'kisisel-finans': ['/net-maas-hesaplama/', '/kredi-hesaplama/', '/ihtiyac-kredisi-hesaplama/', '/mevduat-faizi-hesaplama/', '/kdv-hesaplama/', '/enflasyon-hesaplama/'],
+  ekonomi: ['/enflasyon-hesaplama/', '/enflasyon-takvimi/', '/tcmb-faiz-takvimi/', '/fed-faiz-takvimi/', '/ekonomik-takvim/', '/dolar-endeksi/'],
+  emeklilik: ['/emekli-zammi-hesaplama/', '/en-dusuk-emekli-maasi/', '/memur-zammi-hesaplama/', '/bayram-ikramiyesi/', '/emekli-promosyonu/', '/kidem-tazminati-hesaplama/', '/bilesik-faiz-hesaplama/'],
+};
+const ALL_TOOLS = GRUPLAR.flatMap((g) => g.araclar);
+const EXTRA: Record<string, { ad: string; aciklama: string }> = {
+  '/enflasyon-takvimi/': { ad: 'Enflasyon takvimi', aciklama: 'TÜFE açıklama tarihleri ve son veriler' },
+  '/tcmb-faiz-takvimi/': { ad: 'TCMB faiz takvimi', aciklama: 'PPK tarihleri ve kararlar' },
+  '/fed-faiz-takvimi/': { ad: 'Fed faiz takvimi', aciklama: 'FOMC tarihleri ve kararlar' },
+  '/ekonomik-takvim/': { ad: 'Ekonomik takvim', aciklama: 'Haftanın kritik verileri' },
+  '/dolar-endeksi/': { ad: 'Dolar endeksi (DXY)', aciklama: 'Güncel DXY ve bileşenleri' },
+  '/halka-arz/': { ad: 'Halka arz takvimi', aciklama: 'Yaklaşan ve tamamlanan arzlar' },
+};
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -15,6 +35,12 @@ export async function getStaticPaths() {
 }
 
 const { cat, catPosts } = Astro.props;
+const catTools = (CAT_TOOLS[cat.slug] ?? [])
+  .map((href) => {
+    const t = ALL_TOOLS.find((x) => x.href === href);
+    return t ? { href, ad: t.ad, aciklama: t.aciklama } : EXTRA[href] ? { href, ...EXTRA[href] } : null;
+  })
+  .filter(Boolean) as { href: string; ad: string; aciklama: string }[];
 ---
 
 <BaseLayout
@@ -33,6 +59,17 @@ const { cat, catPosts } = Astro.props;
     </div>
   </div>
 
+  {catTools.length > 0 && (
+    <div class="container cat-tools">
+      <h2>{cat.name} araçları ve verileri</h2>
+      <div class="cat-tools-grid">
+        {catTools.map((t) => (
+          <a class="cat-tool" href={t.href}><strong>{t.ad} →</strong><span>{t.aciklama}</span></a>
+        ))}
+      </div>
+    </div>
+  )}
+
   <div class="container">
     {catPosts.length > 0 ? (
       <div class="post-grid">
@@ -45,6 +82,13 @@ const { cat, catPosts } = Astro.props;
 </BaseLayout>
 
 <style>
+  .cat-tools { margin: 0 auto 2rem; }
+  .cat-tools h2 { font-size: var(--step-1); margin: 0 0 .8rem; }
+  .cat-tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .6rem; }
+  .cat-tool { display: flex; flex-direction: column; gap: .2rem; padding: .75rem .9rem; border: 1px solid var(--border-soft); border-radius: var(--radius-sm); background: var(--bg-card); text-decoration: none; }
+  .cat-tool:hover { border-color: var(--brand-2); }
+  .cat-tool strong { color: var(--brand-ink); font-size: .95rem; }
+  .cat-tool span { color: var(--text-soft); font-size: .82rem; }
   .page-head { padding-top: 3rem; text-align: center; }
   .page-head h1 { font-size: var(--step-3); margin: 0.6rem 0; }
   .page-head .lede { font-size: var(--step-1); max-width: 52ch; margin: 0 auto 1.6rem; }

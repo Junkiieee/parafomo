@@ -90,7 +90,7 @@ Kredi kartı faizinin üst sınırını TCMB belirler ve tavan **dönem borcunun
 
 Bunların üzerine bireysel kredi kartı faizinde **%15 KKDF ve %15 BSMV** eklenir. Yani 100 TL faizin cebinden çıkan karşılığı 130 TL'dir. %3,25'lik aylık faizin vergiyle efektif maliyeti yaklaşık %4,23'e, %3,75'lik faizinki yaklaşık %4,88'e çıkar.
 
-Aylık %4'ün yıllığa çevrildiğinde ne kadar büyüdüğünü görmek için [bileşik faiz nedir](/blog/bilesik-faiz-nedir) yazımıza ya da [bileşik faiz hesaplama](/bilesik-faiz-hesaplama) aracına bakabilirsin: aylık %4,23, bileşik olarak yılda %60'ın üzerine denk gelir.
+Aylık %4'ün yıllığa çevrildiğinde ne kadar büyüdüğünü görmek için [bileşik faiz hesaplama](/bilesik-faiz-hesaplama/) aracına bakabilirsin: aylık %4,23, bileşik olarak yılda %60'ın üzerine denk gelir.
 
 ## Örnek hesap: 20 bin ve 50 bin TL borçta asgari ödemenin bedeli
 
@@ -129,7 +129,7 @@ Asgari tutarın altında ödeme ya da hiç ödememe, faizden fazlasına mal olur
 2. **Asgarinin üzerinde öde:** Asgariden fazla ödenen her lira, doğrudan aylık %4'ün üzerinde maliyetten kurtulmak demek.
 3. **En pahalı borçtan başla:** Birden fazla kartın varsa nakit çekim borcunu (en yüksek faiz) önce kapat. Yöntem için [borç kapatma: kartopu ve çığ yöntemi](/blog/borc-kapatma-yontemi-kartopu-cig) yazımıza bak.
 4. **Borç transferini hesapla:** Daha düşük faizli bir ihtiyaç kredisiyle kart borcunu kapatmak bazen ucuz olabilir; ama kredinin masraf ve vergileriyle birlikte toplam maliyetini [ihtiyaç kredisi hesaplama](/ihtiyac-kredisi-hesaplama) aracıyla karşılaştır.
-5. **Bütçeyi yeniden kur:** Kart borcunun kökü çoğunlukla bütçe açığıdır. [Kredi kartı borcundan kurtulma](/blog/kredi-karti-borcundan-kurtulma) ve [50/30/20 bütçe yöntemi](/blog/butce-nasil-yapilir-50-30-20) yazıları bu adım için yol haritası sunuyor.
+5. **Bütçeyi yeniden kur:** Kart borcunun kökü çoğunlukla bütçe açığıdır. [Kredi kartı borcundan kurtulma](/blog/borc-kapatma-yontemi-kartopu-cig/) ve [50/30/20 bütçe yöntemi](/blog/butce-nasil-yapilir-50-30-20) yazıları bu adım için yol haritası sunuyor.
 
 ## Özet
 

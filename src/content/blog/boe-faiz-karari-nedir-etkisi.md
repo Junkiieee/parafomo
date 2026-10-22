@@ -1,14 +1,15 @@
 ---
 title: "BOE Faiz Kararı Nedir? Bank of England Kararı Sterlin ve TL'ye Etkisi"
-description: "BOE faiz kararı nedir, nasıl alınır ve 30 Temmuz 2026 kararı sterlin, dolar, TL kuru ile BIST'i nasıl etkiler? Türk yatırımcı için tam rehber."
+description: "BOE faiz kararı nedir, MPC nasıl karar alır? Bank of England kararı sterlin, dolar, TL kuru ve BIST'i nasıl etkiler? Türk yatırımcı için tam rehber."
 pubDate: 2026-07-26
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["boe faiz kararı", "bank of england nedir", "sterlin kuru", "İngiltere merkez bankası", "faiz etkisi", "küresel ekonomi"]
 readingTime: 8
 featured: false
 faq:
   - q: "BOE faiz kararı ne zaman açıklanır?"
-    a: "BOE Para Politikası Komitesi (MPC) yılda 8 kez toplanır. 30 Temmuz 2026'daki toplantıda saat 11:00'de (Londra saati) faiz kararı açıklanacak; ardından para politikası raporu ve basın toplantısı düzenlenecek."
+    a: "BOE Para Politikası Komitesi (MPC) yılda 8 kez toplanır; kararlar genellikle Perşembe günü Birleşik Krallık saatiyle 12:00'de açıklanır (Türkiye saatiyle yaz aylarında 14:00, kış aylarında 15:00). Para Politikası Raporu'nun yayımlandığı toplantılarda kararın ardından basın toplantısı düzenlenir. Yaklaşan tarihler ParaFOMO ekonomik takviminde yer alır."
   - q: "BOE faiz kararı TL'yi nasıl etkiler?"
     a: "BOE faiz artırırsa sterlin güçlenir, dolar görece zayıflar; bu gelişmekte olan piyasalara sermaye akışını artırabilir ve TL üzerindeki baskıyı hafifletebilir. Faiz düşürürse sterlin değer kaybeder, dolar güçlenir ve TL üzerinde satış baskısı oluşabilir."
   - q: "BOE ile Fed arasındaki faiz farkı ne anlama gelir?"
@@ -36,7 +37,7 @@ shorts_visuals:
   - "concept|financial news subscribe notification bell"
 ---
 
-30 Temmuz 2026'da Bank of England (BOE), yılın en kritik Para Politikası Komitesi (MPC) toplantılarından birini yapacak. Fed'in faiz kararını aynı haftada açıklaması piyasaları zaten gergin tutuyorken BOE kararı da sterlin, dolar ve dolaylı yoldan TL üzerinde belirleyici bir etki yaratabilir. Peki BOE nedir, nasıl karar alır ve bu karar seni nasıl etkiler?
+Bank of England (BOE) yılda sekiz kez Para Politikası Komitesi (MPC) toplantısı yapar ve her kararı sterlin, dolar ve dolaylı yoldan TL üzerinde belirleyici bir etki yaratabilir. Özellikle Fed kararıyla aynı haftaya denk gelen toplantılarda piyasalar daha da hassaslaşır. Peki BOE nedir, nasıl karar alır ve bu karar seni nasıl etkiler?
 
 ## Bank of England (BOE) Nedir?
 
@@ -100,24 +101,26 @@ Sterlin güçlendiğinde Türkiye'nin İngiltere'ye ihracatı (tekstil, makine, 
 | **BOE** | Birleşik Krallık | Sterlin (GBP) | Yılda 8 kez | %2 enflasyon hedefi |
 | **Fed** | ABD | Dolar (USD) | Yılda 8 kez | Çift hedef: enflasyon + istihdam |
 | **ECB** | Euro Bölgesi | Euro (EUR) | 6 haftada bir | %2 enflasyon hedefi |
-| **TCMB** | Türkiye | TL (TRY) | Ayda bir | Enflasyon + fiyat istikrarı |
+| **TCMB** | Türkiye | TL (TRY) | Yılda 8 kez | Enflasyon + fiyat istikrarı |
 
 Dolar küresel rezerv para birimi olduğundan Fed kararları en geniş etkiyi yaratır. ECB ise Türkiye'nin en büyük ticaret ortağı olması nedeniyle doğrudan etki açısından öne çıkar. BOE ise küresel ölçekte dördüncü büyük rezerv para birimi olan sterlini yönetir ve özellikle GBP/USD paritesi üzerinden küresel dolar güçlüğüne katkıda bulunur.
 
-Fed'in 29 Temmuz kararının ne anlama geldiğini anlamak için [Fed Faiz Kararı Nedir? ABD Merkez Bankası Faizi TL ve Borsayı Nasıl Etkiler?](/blog/fed-faiz-karari-nedir-etkisi) yazısına, ECB kararları için ise [ECB Faiz Kararı Nedir?](/blog/ecb-faiz-karari-nedir-etkisi) rehberine bakabilirsin.
+Fed kararlarının nasıl okunduğunu anlamak için [Fed Faiz Kararı Nedir? ABD Merkez Bankası Faizi TL ve Borsayı Nasıl Etkiler?](/blog/fed-faiz-karari-nedir-etkisi) yazısına, ECB kararları için ise [ECB Faiz Kararı Nedir?](/blog/ecb-faiz-karari-nedir-etkisi) rehberine bakabilirsin.
 
-## 30 Temmuz 2026 BOE Kararında Piyasalar Ne İzliyor?
+## BOE Kararında Piyasalar Ne İzler?
 
-BOE kararını yorumlamak için yatırımcıların takip ettiği göstergeler şunlar:
+BOE kararını yorumlamak için yatırımcıların takip ettiği göstergeler şunlardır:
 
 - **İngiltere TÜFE (CPI):** İngiliz enflasyonu %2 hedefin üzerinde kaldıkça BOE faiz indiriminde temkinli kalır. Son verilerdeki seyir komiteyi ne yönde etkilediği basın toplantısında netleşir.
 - **Ücret artışları:** Birleşik Krallık'ta ücret artışının canlı seyretmesi "ikincil enflasyon" riskini canlı tutar ve faiz indirimini geciktirebilir.
 - **Büyüme verileri:** İngiltere ekonomisindeki yavaşlama sinyalleri faiz indirimini öne çekebilir.
 - **MPC oylama dağılımı:** Kararın yanı sıra kaç üyenin indirim, kaçının sabit oyu kullandığı, ileriki toplantılar için sinyal taşır. 5-4 gibi bölünmüş bir oy, piyasanın "bir sonraki adımı" fiyatlamasını etkiler.
 
-**30 Temmuz 2026 takvimi (Londra saati):**
-- **11:00** — Official Bank Rate, Para Politikası Raporu ve MPC oylama dağılımı açıklanır.
-- **11:30** — BOE Başkanı basın toplantısı başlar.
+**Karar günü akışı:**
+- **12:00 (Londra saati; Türkiye saatiyle yazın 14:00, kışın 15:00)** — Official Bank Rate, MPC oylama dağılımı ve toplantı tutanağı açıklanır; raporlu toplantılarda Para Politikası Raporu da aynı anda yayımlanır.
+- **Ardından** — Raporlu toplantılarda BOE Başkanı basın toplantısı düzenler.
+
+Yaklaşan BOE toplantı tarihlerini [ekonomik takvim](/ekonomik-takvim/) sayfasından, aynı dönemdeki Fed kararlarını [Fed faiz takvimi](/fed-faiz-takvimi/) sayfasından izleyebilirsin.
 
 ## Sterlin/Dolar Paritesi ve Türk Yatırımcı
 
@@ -132,14 +135,14 @@ Merkez bankası kararlarını kısa vadeli spekülasyon aracı olarak kullanmak 
 1. **Karar öncesi büyük pozisyon almaktan kaçın.** Piyasalar beklentiyi çoğunlukla önceden fiyatlar. "Faiz düşürür, sterlin düşer" düşüncesiyle erken alınan döviz pozisyonu, beklenti daha önce fiyatlandıysa zarar verebilir.
 2. **Volatilite penceresine dikkat et.** Karar açıklandıktan sonraki 30 dakika fiyatlar sert ve karmaşık salınır. Bu süreci izleyici olarak geçirmek genellikle daha sağlıklıdır.
 3. **Uzun vadeli varlık dağılımını küçük kararlarla bozma.** BOE kararları bir veri noktasıdır, strateji değişikliği için yeterli tek neden değildir.
-4. **Fed + BOE haftasını birlikte değerlendir.** 29 Temmuz'daki Fed ve 30 Temmuz'daki BOE kararları aynı haftaya sıkışmış durumda. Bu iki kararın yönü aynıysa (örneğin her ikisi de sabit ya da her ikisi de indirim) piyasa tepkisi ölçülü olabilir; biri diğerinden ayrışırsa dolar/sterlin paritesinde sert hareket gelme ihtimali artar.
+4. **Fed ve BOE kararlarını birlikte değerlendir.** İki banka zaman zaman aynı hafta karar açıklar. Bu iki kararın yönü aynıysa (örneğin her ikisi de sabit ya da her ikisi de indirim) piyasa tepkisi ölçülü olabilir; biri diğerinden ayrışırsa dolar/sterlin paritesinde sert hareket gelme ihtimali artar.
 
 ## Özet
 
 - BOE (Bank of England), Birleşik Krallık'ın merkez bankasıdır ve 9 üyeli Para Politikası Komitesi (MPC) aracılığıyla faiz kararlarını alır.
-- 30 Temmuz 2026'da saat 11:00'de (Londra) faiz kararı ve Para Politikası Raporu açıklanacak; 11:30'da basın toplantısı başlayacak.
+- MPC yılda 8 kez toplanır; kararlar Londra saatiyle 12:00'de (Türkiye saatiyle yazın 14:00, kışın 15:00) açıklanır.
 - BOE faiz artırırsa sterlin güçlenir, dolar görece zayıflar; bu ortam TL üzerindeki baskıyı hafifletebilir. Faiz indirimleri ise dolar güçlenerek TL'ye dolaylı satış baskısı getirebilir.
-- 30 Temmuz'daki BOE kararı, 29 Temmuz'daki Fed kararıyla aynı haftaya denk geliyor — her iki sonucu birlikte değerlendirmek gerekiyor.
+- BOE kararı Fed kararıyla aynı haftaya denk geldiğinde iki sonucu birlikte değerlendirmek gerekir.
 - Kısa vadeli spekülasyondan kaçın; BOE kararlarını portföy kararlarında bir girdi olarak değerlendir, belirleyici tek etken olarak değil.
 
 ---

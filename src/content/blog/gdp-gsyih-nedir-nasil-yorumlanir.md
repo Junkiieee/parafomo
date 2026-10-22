@@ -1,7 +1,8 @@
 ---
 title: "GDP (GSYİH) Nedir? Büyüme Verisi Piyasaları Nasıl Etkiler?"
-description: "GSYİH nedir, GDP nasıl hesaplanır ve ABD büyüme verisi dolar, altın, BIST'i nasıl etkiler? 25 Haziran Q1 GDP açıklaması öncesi kapsamlı rehber."
+description: "GSYİH nedir, GDP nasıl hesaplanır ve nasıl yorumlanır? ABD büyüme verisi doları, altını, TL'yi ve BIST'i nasıl etkiler? Kapsamlı rehber."
 pubDate: 2026-06-23
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["GSYİH", "GDP", "büyüme verisi", "ABD ekonomisi", "dolar", "makroekonomi"]
 readingTime: 8
@@ -16,7 +17,7 @@ faq:
   - q: "QoQ ve YoY büyüme arasındaki fark nedir?"
     a: "QoQ (Quarter over Quarter), büyümeyi önceki çeyrekle kıyaslar; kısa vadeli ivmeyi gösterir. YoY (Year over Year) ise aynı çeyreği bir önceki yılın aynı çeyreğiyle karşılaştırır; mevsimsel etkilerden arındırılmış daha sağlıklı bir resim sunar."
   - q: "GDP verisi ne zaman ve nasıl açıklanır?"
-    a: "ABD'de GDP her çeyrek için üç kez açıklanır: öncü (advance), ikinci tahmin (second estimate) ve nihai (final). ABD Q1 2026 ikinci tahmini 25 Haziran 2026 Perşembe saat 15:30 Türkiye saatiyle yayınlanacak."
+    a: "ABD'de GDP her çeyrek için üç kez açıklanır: öncü (advance), ikinci tahmin (second estimate) ve nihai (final). Veriler ABD saatiyle 08:30'da yayınlanır; bu Türkiye saatiyle ABD yaz saati döneminde 15:30'a, kış döneminde 16:30'a denk gelir. Yaklaşan tarihler ParaFOMO ekonomik takviminde yer alır."
 shorts:
   - "ABD'nin büyüme verisi dolar kurunu nasıl uçurur?"
   - "GDP, bir ülkedeki fabrikalardan harcamalara, yatırımlara kadar tüm ekonomik aktiviteyi tek rakamda özetler."
@@ -30,7 +31,7 @@ shorts_broll:
   - "emerging markets stock trading floor"
 ---
 
-25 Haziran Perşembe günü saat 15:30'da piyasaları doğrudan etkileyen iki kritik ABD verisi açıklanacak: PCE enflasyon raporu ve **Q1 2026 GDP büyüme verisi**. **GSYİH nedir** ve bu sayı neden Türkiye'deki dolar, altın ve borsa yatırımcısını da yakından ilgilendiriyor? Tüm detaylarıyla anlattık.
+ABD'nin çeyreklik **GDP büyüme verisi**, piyasaları doğrudan etkileyen en kritik makro verilerden biridir. **GSYİH nedir** ve bu sayı neden Türkiye'deki dolar, altın ve borsa yatırımcısını da yakından ilgilendiriyor? Tüm detaylarıyla anlattık.
 
 ## GDP ve GSYİH Nedir? Temel Tanım
 
@@ -73,7 +74,7 @@ ABD Ticaret Bakanlığı'na bağlı Ekonomik Analiz Bürosu (BEA), her çeyrek i
 2. **İkinci Tahmin (Second Estimate):** ~8 hafta sonra. Daha tam verilerle revize edilmiş.
 3. **Nihai Veri (Final):** ~12 hafta sonra. En kesin rakamdır.
 
-**25 Haziran 2026'da açıklanacak olan, Q1 2026 ikinci tahminidir.** Öncü tahminden sapma yoksa piyasa tepkisi sınırlı kalır; büyük revizyon olursa şaşırtıcı hareket yaratabilir.
+İkinci ve nihai tahminlerde öncü tahminden belirgin sapma yoksa piyasa tepkisi sınırlı kalır; büyük revizyon olursa şaşırtıcı hareket yaratabilir. Tüm açıklamalar ABD saatiyle 08:30'da (Türkiye saatiyle 15:30; ABD kış saati döneminde 16:30) yapılır. Yaklaşan tarihleri [ekonomik takvim](/ekonomik-takvim/) sayfasından izleyebilirsiniz.
 
 ## ABD Büyüme Verisi Türkiye'yi Nasıl Etkiler?
 
@@ -98,7 +99,7 @@ ABD Ticaret Bakanlığı'na bağlı Ekonomik Analiz Bürosu (BEA), her çeyrek i
 
 "Resesyon" kelimesini sık duyarsınız ama teknik tanımı nettir: **ardışık iki çeyrekte negatif GDP büyümesi.** 
 
-ABD'nin Q4 2025 büyümesi pozitifti. Q1 2026 verisi negatif gelirse bu tek başına resesyon değil, ama yatırımcılar için büyük alarm zili çalar. Piyasalar "iki çeyrek mi olur?" sorusunu fiyatlamaya başlar.
+Pozitif bir çeyreğin ardından gelen tek bir negatif çeyrek tek başına resesyon değildir, ama yatırımcılar için büyük alarm zili çalar. Piyasalar "iki çeyrek mi olur?" sorusunu fiyatlamaya başlar.
 
 Tarihsel olarak resesyon dönemlerinde:
 - ABD hisse senetleri ortalama %30–40 düşmüş.
@@ -107,7 +108,7 @@ Tarihsel olarak resesyon dönemlerinde:
 
 ## GDP'yi PCE ve Diğer Göstergelerle Birlikte Okumak
 
-GDP tek başına yeterli değil. 25 Haziran'da aynı anda açıklanacak olan [PCE (Fed'in enflasyon göstergesi)](/blog/pce-nedir-fed-enflasyon-gostergesi) bu yüzden kritik:
+GDP tek başına yeterli değil. Genellikle aynı hafta içinde, zaman zaman aynı gün açıklanan [PCE (Fed'in enflasyon göstergesi)](/blog/pce-nedir-fed-enflasyon-gostergesi) bu yüzden kritik:
 
 - **Güçlü GDP + Yüksek PCE** → Fed için çok zor bir denklem. Ekonomi büyüyor ama enflasyon da yüksek. Faiz indirimi masada değil.
 - **Zayıf GDP + Düşük PCE** → Fed için faiz indirme yolu açılır. Risk iştahı artar.
@@ -132,8 +133,8 @@ GDP açıklaması piyasalarda ani dalgalanma yaratabilir. Bu anlık tepkiler ço
 **2. Küresel makroyu takip et, ama Türkiye özelini unutma.**  
 ABD büyüme verisi önemli ama TL ve BIST'i belirleyen tek etken değil. [Dolar mı altın mı tutmalısınız](/blog/altin-mi-dolar-mi) sorusu da bu küresel iklimden bağımsız düşünülemez.
 
-**3. 25 Haziran 15:30'ı takvime not al.**  
-Özellikle dövize açık yatırımın varsa o saatte işlem yapmaktan kaçın. Piyasada volatilite artışı olağandır.
+**3. Açıklama günlerini takvime not al.**  
+GDP tarihlerini [ekonomik takvim](/ekonomik-takvim/) sayfasından takip et. Özellikle dövize açık yatırımın varsa açıklama saatinde işlem yapmaktan kaçın. Piyasada volatilite artışı olağandır.
 
 ---
 
@@ -141,7 +142,7 @@ ABD büyüme verisi önemli ama TL ve BIST'i belirleyen tek etken değil. [Dolar
 
 - **GSYİH (GDP)**, bir ülkenin toplam ekonomik üretimini ölçer ve büyüme, daralma ya da resesyon sinyali verir.
 - ABD GDP verisi, Fed'in faiz kararlarını şekillendirdiğinden dolar, altın ve TL üzerinde doğrudan etkisi vardır.
-- **25 Haziran 2026 saat 15:30'da** Q1 ABD büyüme verisi (ikinci tahmin) açıklanacak; aynı anda PCE enflasyon raporu da gelecek — ikisini birlikte değerlendirmek daha sağlıklı yorum sunar.
+- ABD GDP verisi her çeyrek için üç aşamada (öncü, ikinci, nihai) açıklanır; PCE enflasyon raporuyla birlikte değerlendirmek daha sağlıklı yorum sunar.
 - Güçlü GDP dolar lehine, zayıf GDP gelişen piyasalar lehine etki yapar; resesyon senaryosu altın talebi artırabilir.
 - Tek bir makro veriye göre portföy değiştirmek genellikle hatalı bir stratejidir.
 

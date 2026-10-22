@@ -97,6 +97,14 @@ def main():
         print("UYARI: hiç getiri hesaplanamadı; mevcut depo korunuyor.", file=sys.stderr)
         return 0 if os.path.exists(STORE) else 1
 
+    # İstatistik yalnız İÇİNDE BULUNULAN YILIN arzlarından (sayfa "2026 halka arzları" diyor).
+    # Yıl başında henüz tamamlanan arz yoksa bir önceki yıla düşülür.
+    year = int(time.strftime("%Y", time.gmtime()))
+    for y in (year, year - 1):
+        yr_rows = [r for r in rows if str(r.get("start") or "").startswith(str(y))]
+        if yr_rows:
+            rows, year = yr_rows, y
+            break
     rows.sort(key=lambda r: -r["return_pct"])
     n = len(rows)
     avg = round(sum(r["return_pct"] for r in rows) / n, 1)
@@ -107,6 +115,7 @@ def main():
     out = {
         "updated": time.strftime("%Y-%m-%dT%H:%M+00:00", time.gmtime()),
         "source": "Halka arz fiyatı: halkarz.com · Güncel fiyat: Yahoo Finance (BIST)",
+        "year": year,
         "count": n,
         "avg_return_pct": avg,
         "positive_count": pos,

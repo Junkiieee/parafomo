@@ -39,7 +39,7 @@ UA = "Mozilla/5.0 (compatible; ParaFOMO/1.0; +https://parafomo.com)"
 SOURCE_NAME = "halkarz.com"
 
 # Geçmiş halka arzlardan kaç tanesini takvimde tutalım (en yeni tamamlananlar).
-KEEP_COMPLETED = 12
+KEEP_COMPLETED = 40  # yılın tüm tamamlanan arzları istatistiğe girsin (12 ile yalnız son 12 sayılıyordu; denetim 2026-10-22)
 
 TR_MONTHS = {
     "ocak": 1, "şubat": 2, "subat": 2, "mart": 3, "nisan": 4,

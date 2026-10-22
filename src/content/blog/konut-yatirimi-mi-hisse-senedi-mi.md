@@ -114,7 +114,7 @@ Bu kalemler düşüldüğünde Türkiye'de konut net kira getirisinin genellikle
 
 Hisse senetlerinde ise getiri seçilen şirkete ve döneme göre çok büyük sapmalar gösterir. Endeks bazında bakıldığında BIST 100, bazı dönemlerde dolar bazında ciddi kayıplar yaşamış; bazı dönemlerde ise yüksek reel getiri sunmuştur.
 
-Uzun vadeli bileşik getirinin gücünü anlamak için [bileşik getiri nedir](/blog/bilesik-faiz-nedir) yazımıza bakabilirsin; bu konu konut vs hisse karşılaştırmasını köklü biçimde değiştirebilir.
+Uzun vadeli bileşik getirinin gücünü [bileşik faiz hesaplama](/bilesik-faiz-hesaplama/) aracımızla kendi rakamlarınla görebilirsin; bu konu konut vs hisse karşılaştırmasını köklü biçimde değiştirebilir.
 
 ## Hangi Yatırımcı İçin Hangi Araç?
 

@@ -1,7 +1,8 @@
 ---
 title: "PPI Nedir? Üretici Fiyat Endeksi ve Fed Faizine Etkisi"
-description: "PPI (Üretici Fiyat Endeksi) nedir, CPI'dan farkı ne ve 13 Ağustos 2026 verisi Fed faizini nasıl etkiler? Türk yatırımcısı için sade rehber."
+description: "PPI (Üretici Fiyat Endeksi) nedir, CPI'dan farkı ne, ne zaman açıklanır? ABD üretici enflasyonu Fed faizini, doları ve TL'yi nasıl etkiler? Sade rehber."
 pubDate: 2026-08-11
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["PPI", "üretici fiyat endeksi", "fed faiz kararı", "abd enflasyon verisi", "dolar kuru", "enflasyon"]
 readingTime: 7
@@ -15,6 +16,8 @@ faq:
     a: "Fed enflasyon hedefi için hem CPI hem PCE hem de PPI takip eder. PPI beklenenden yüksek gelirse üretici maliyetlerinin tüketiciye yansıyacağı sinyali verir; bu Fed'in faizi daha uzun süre yüksek tutmasına ya da artırmasına zemin hazırlayabilir."
   - q: "ABD PPI verisi Türk yatırımcısını nasıl etkiler?"
     a: "Güçlü (yüksek) PPI → dolar güçlenir, dolar/TL yükselir, altın ve BIST'e baskı oluşabilir. Zayıf (düşük) PPI → Fed faiz indirimi beklentisini besler, dolar zayıflar, altın ve gelişen piyasa varlıkları nefes alır."
+  - q: "ABD PPI verisi ne zaman açıklanır?"
+    a: "PPI, BLS tarafından her ayın ortasında, genellikle CPI verisinden bir gün önce ya da sonra, ABD saatiyle 08:30'da açıklanır. Bu Türkiye saatiyle ABD yaz saati döneminde 15:30'a, kış döneminde 16:30'a denk gelir. Yaklaşan tarihler ParaFOMO ekonomik takviminde yer alır."
   - q: "Core PPI ile genel PPI farkı nedir?"
     a: "Core PPI (Çekirdek PPI), enerji ve gıda fiyatlarını dışarıda bırakır. Bu iki kalem çok oynak olduğundan Fed, yapısal enflasyon trendini okumak için çekirdek PPI'ya daha fazla ağırlık verir."
 shorts:
@@ -36,7 +39,7 @@ shorts_visuals:
   - "concept|stock market gold trading screen"
 ---
 
-13 Ağustos 2026'da açıklanacak **ABD Üretici Fiyat Endeksi (PPI)** verisi, piyasaların bu hafta en yakından takip edeceği ikinci büyük açıklama. CPI'ın hemen ardından gelen bu veri, dolar, altın ve borsa yönünü doğrudan etkiliyor. PPI nedir, nasıl okunur ve Türk yatırımcısı olarak neden önemser?
+Her ayın ortasında açıklanan **ABD Üretici Fiyat Endeksi (PPI)** verisi, CPI ile birlikte piyasaların en yakından takip ettiği enflasyon açıklamalarından biridir. CPI ile aynı hafta gelen bu veri, dolar, altın ve borsa yönünü doğrudan etkiler. PPI nedir, nasıl okunur ve Türk yatırımcısı olarak neden önemser?
 
 ## PPI Nedir? Kısaca Tanım
 
@@ -78,9 +81,9 @@ Piyasayı asıl hareket ettiren, verinin açıklanan **beklentiye göre konumu**
 - **Beklentinin üzerinde PPI** → enflasyon ısınıyor → Fed daha sıkı duracak → dolar güçlenir, tahvil faizleri yükselir, riskli varlıklar geriler
 - **Beklentinin altında PPI** → maliyet baskısı yatışıyor → Fed faiz indirebilir → dolar zayıflar, hisse senetleri ve altın nefes alır
 
-## 13 Ağustos 2026 Verisi: Ne Bekleniyor?
+## PPI Ne Zaman Açıklanır, CPI ile Nasıl Okunur?
 
-13 Ağustos Perşembe günü Türkiye saati ile **15:30'da** açıklanacak. Aynı hafta 12 Ağustos'ta CPI verisi de geldiği için bu iki açıklama birlikte okunmalı:
+PPI, her ayın ortasında Türkiye saatiyle **15:30'da** (ABD kış saati döneminde 16:30) açıklanır ve genellikle CPI ile aynı haftaya, çoğu zaman bir gün arayla denk gelir. Kesin tarihleri [ekonomik takvim](/ekonomik-takvim/) sayfasından takip edebilirsin. Bu iki açıklama birlikte okunmalı:
 
 - CPI + PPI **ikisi de yüksek** → Fed faiz indirimi masadan kalkar, dolar ciddi güçlenir
 - CPI yüksek ama PPI düşük → Tüketici enflasyonu geçici olabilir, maliyet baskısı yumuşuyor
@@ -105,7 +108,7 @@ Yüksek PPI → ABD 10 yıllık tahvil faizi yükselir → gelişen piyasa tahvi
 1. **Beklenti rakamını öğren** — Açıklamadan önce konsensüs tahminini not al (Reuters, Bloomberg Ekonomik Takvim).
 2. **Veriyi bekle, tahmine göre karar verme** — Konsensüs zaten fiyatlara yansımış olur; sürpriz kısmı önemlidir.
 3. **İlk reaksiyona atlama** — İlk 15-30 dakika oynak olabilir; gerçek yön genellikle bir saat içinde netleşir.
-4. **CPI ile birlikte oku** — Bu hafta PPI'ı bir gün önceki CPI verisiyle birleştir. İkisi de aynı yönde mi? O zaman sinyal daha güçlü.
+4. **CPI ile birlikte oku** — PPI'ı aynı hafta açıklanan CPI verisiyle birleştir. İkisi de aynı yönde mi? O zaman sinyal daha güçlü.
 5. **Pozisyonunu gözden geçir, panikle değiştirme** — Uzun vadeli yatırımcılar için tek bir veri açıklaması portföy stratejisini değiştirmez; ancak kısa vadeli döviz/altın pozisyonların varsa riski yönet.
 
 ## PPI'ı Türkiye Bağlamında Düşün
@@ -122,7 +125,7 @@ Bu yüzden **PPI verisi sadece ABD meselesi değil, Türk yatırımcısının da
 - **PPI**, üreticilerin sattığı fiyatları ölçer; CPI'ı 1-3 ay önceden haber verir.
 - **Core PPI m/m** piyasaların en çok takip ettiği alt başlıktır.
 - Yüksek PPI → dolar güçlenir, altına baskı, BIST'e dışarıdan satış; düşük PPI → tam tersi.
-- 13 Ağustos PPI verisini, 12 Ağustos CPI ile birlikte oku — ikisinin yönü hem Fed beklentilerini hem de dolar/TL seyrini şekillendirir.
+- PPI verisini aynı hafta açıklanan CPI ile birlikte oku — ikisinin yönü hem Fed beklentilerini hem de dolar/TL seyrini şekillendirir.
 - Tek bir veri açıklamasına göre ani portföy kararı verme; trendi izle.
 
 ---

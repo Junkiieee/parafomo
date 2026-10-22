@@ -122,7 +122,7 @@ Endekse doğrudan yatırım yapılamaz; bunun için endeksi izleyen **ETF'lere**
 ### Türkiye'den Erişim Yolları
 
 1. **Yurt dışı aracı kurum hesabı:** Interactive Brokers, Degiro gibi platformlar üzerinden EEM veya VWO satın alınabilir (kur riski + vergi yükümlülükleri dikkate alınmalıdır).
-2. **Tefas üzerinden yurt içi fonlar:** Bazı portföy yönetim şirketleri MSCI EM'i izleyen uluslararası yatırım fonları sunar. Bunları Tefas.gov.tr'den filtreleyerek bulabilirsin. ETF nasıl alınır konusunda [adım adım rehberimize](/blog/etf-nasil-alinir) bakabilirsin.
+2. **Tefas üzerinden yurt içi fonlar:** Bazı portföy yönetim şirketleri MSCI EM'i izleyen uluslararası yatırım fonları sunar. Bunları Tefas.gov.tr'den filtreleyerek bulabilirsin. ETF nasıl alınır konusunda [adım adım rehberimize](/blog/etf-nedir-borsa-yatirim-fonu/) bakabilirsin.
 3. **Mevcut BİST yatırımın:** Türk hisselerine yatırım yapmak zaten dolaylı olarak bu endekse maruz kalmak anlamına gelir; ama tek ülke konsantrasyonu taşır.
 
 ## Adım Adım: Yatırım Karar Çerçevesi

@@ -4,6 +4,11 @@ const year = new Date().getFullYear();
 // Site geneli iç link: veri sayfaları ve araçlar her sayfadan link alsın (2026-10-10: çoğu yalnız
 // 3-4 sayfadan link alıyordu, bir kısmı Google'a hiç bilinmiyordu).
 const DATA_LINKS = [
+  // Altın kümesi footer'da yoktu; gram altın sayfası Google'a hiç bilinmiyordu (denetim 2026-10-22).
+  ['/altin-fiyatlari/', 'Altın fiyatları'], ['/altin-fiyatlari/gram-altin/', 'Gram altın fiyatı'],
+  ['/altin-fiyatlari/ceyrek-altin/', 'Çeyrek altın fiyatı'], ['/altin-fiyatlari/22-ayar-bilezik/', '22 ayar bilezik fiyatı'],
+  ['/altin-fiyatlari/cumhuriyet-altini/', 'Cumhuriyet altını fiyatı'], ['/altin-hesaplama/', 'Altın hesaplama'],
+  ['/dolar-endeksi/', 'Dolar endeksi (DXY)'], ['/abd-tahvil-faizi/', 'ABD tahvil faizi'], ['/altin-dolar-borsa/', 'Altın mı dolar mı borsa mı'],
   ['/altin-getiri/', 'Altın getirisi'], ['/dolar-getiri/', 'Dolar getirisi'], ['/gumus-getiri/', 'Gümüş getirisi'],
   ['/euro-getiri/', 'Euro getirisi'], ['/bitcoin-getiri/', 'Bitcoin getirisi'], ['/bist-getiri/', 'BIST 100 getirisi'],
   ['/halka-arz/', 'Halka arz takvimi'], ['/halka-arz-getiri/', 'Halka arz getirileri'],

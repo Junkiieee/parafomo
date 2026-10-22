@@ -38,9 +38,19 @@ def yahoo(symbol):
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 ParaFOMO"})
         with urllib.request.urlopen(req, timeout=15) as r:
             d = json.loads(r.read().decode("utf-8", "ignore"))
-        m = d["chart"]["result"][0]["meta"]
+        res = d["chart"]["result"][0]
+        m = res["meta"]
         price = m.get("regularMarketPrice")
-        prev = m.get("chartPreviousClose") or m.get("previousClose")
+        # chartPreviousClose = 5 günlük pencereden ÖNCEKİ kapanış (haftalık değişim verir; denetim
+        # 2026-10-22). Önceki seans kapanışı: son günlük mum bugünkü seanssa bir öncekisi.
+        bars = [(t, c) for t, c in zip(res.get("timestamp") or [], res["indicators"]["quote"][0].get("close") or []) if c]
+        prev = None
+        if bars:
+            day = lambda t: (t + (m.get("gmtoffset") or 0)) // 86400
+            last_t = m.get("regularMarketTime") or bars[-1][0]
+            older = [c for t, c in bars if day(t) < day(last_t)]
+            prev = older[-1] if older else None
+        prev = prev or m.get("previousClose") or m.get("chartPreviousClose")
         return price, prev
     except Exception:
         return None, None

@@ -1,10 +1,11 @@
 ---
-title: "BOJ Nedir? Japonya Merkez Bankası Araçları ve Küresel Piyasalara Etkisi"
-description: "BOJ (Bank of Japan) nedir, nasıl çalışır? Sıfır faiz, YCC, QQE ve 2024 normalleşmesini Türk yatırımcısı için sade dille anlattık."
+title: "BOJ Nedir? Japonya Merkez Bankası Faiz Kararı ve Küresel Piyasalara Etkisi"
+description: "BOJ (Bank of Japan) nedir, faiz kararı nasıl alınır? Sıfır faiz, YCC, QQE, 2024 normalleşmesi ve Yen carry trade üzerinden TL ile BIST'e etkisi sade dille."
 pubDate: 2026-08-14
+updatedDate: 2026-10-22
 category: "Ekonomi"
-tags: ["boj nedir", "japonya merkez bankası", "ycc nedir", "merkez bankası araçları", "japonya ekonomisi", "küresel faiz politikası"]
-readingTime: 8
+tags: ["boj nedir", "boj faiz kararı", "japonya merkez bankası", "yen carry trade", "ycc nedir", "merkez bankası araçları", "japonya ekonomisi", "küresel faiz politikası"]
+readingTime: 10
 featured: false
 faq:
   - q: "BOJ ne demek, açılımı nedir?"
@@ -17,6 +18,12 @@ faq:
     a: "2024'te Japonya'da enflasyon beklentilerin üzerine çıktı, ücret artışları güçlendi ve deflasyon riski fiilen geride kaldı. BOJ, onlarca yıl süren aşırı gevşek politikadan normalleşmek için Mart 2024'te negatif faize son verdi, Temmuz 2024'te ise faizi artırdı."
   - q: "BOJ kararları Türk yatırımcısını neden etkiler?"
     a: "BOJ kararları Yen carry trade üzerinden Türkiye'yi etkiler: BOJ faiz artırınca Yen'de borçlanan yatırımcılar gelişen piyasalardaki pozisyonlarını kapatır, bu TL üzerinde baskı ve BIST'te satış dalgası yaratabilir. Küresel risk iştahını da doğrudan yönlendirir."
+  - q: "BOJ ne zaman faiz kararı açıklar?"
+    a: "Bank of Japan (BOJ), Para Politikası Kurulu toplantılarını yılda yaklaşık 8 kez yapar. Her toplantı 1-2 gün sürer ve karar toplantının son gününde, Türkiye saatiyle genellikle sabahın erken saatlerinde (02:00–05:00 arası) açıklanır; ardından BOJ başkanı basın toplantısı düzenler."
+  - q: "Yen carry trade nedir, nasıl işler?"
+    a: "Carry trade, düşük faizli ülkede borçlanıp (Yen gibi) yüksek faizli ülkede yatırım yapma stratejisidir. Japonya faizleri düşük tutunca milyarlarca dolarlık Yen borçlanılarak Türkiye, Brezilya gibi ülkelerin varlıklarına yatırım yapıldı. BOJ faiz artırınca bu işlemler tersine döner: Yen güçlenir, gelişen piyasalardan para çıkar."
+  - q: "BOJ ile Fed faiz politikası arasındaki temel fark nedir?"
+    a: "Fed enflasyonu kontrol etmek için faizi hem artırır hem düşürür; BOJ ise onlarca yıl süren deflasyonla mücadele için faizi aşırı düşük tuttu. 2024'ten itibaren BOJ deflasyondan çıkış süreciyle faizleri yükseltmeye başladı — iki büyük merkez bankasının yollarının ayrıldığı tarihi bir dönüm noktasıydı."
 shorts:
   - "Japonya bizi etkilemez sanıyorsun — yanılıyorsun."
   - "2024'te BOJ tek bir faiz kararıyla Nasdaq'ı yüzde üç düşürdü, BIST de sallandı."
@@ -50,7 +57,15 @@ Japonya'nın Türkiye ile ticaret hacmi sınırlıdır. Peki Japonya'nın para p
 - Döviz müdahalelerine destek verir.
 - Fiyat istikrarını ve finansal sistemi istikrarlı tutmayı hedefler.
 
-BOJ, yılda yaklaşık **8 kez** Para Politikası Kurulu toplantısı düzenler. Kararlar Türkiye saatiyle sabahın erken saatlerinde (02:00–05:00 arası) açıklanır ve küresel piyasalarda anında fiyatlanır.
+## BOJ Faiz Kararı Nasıl Alınır?
+
+BOJ'un Para Politikası Kurulu yılda yaklaşık **8 kez** toplanır. Toplantılar genellikle 1-2 gün sürer; karar toplantının son gününde, Türkiye saatiyle **sabahın erken saatlerinde** (02:00–05:00 arası) açıklanır ve küresel piyasalarda anında fiyatlanır. Ardından BOJ başkanı bir basın toplantısı yapar — bu toplantıdaki "şahin" ya da "güvercin" ton, bir sonraki adıma dair en güçlü sinyaldir.
+
+Bir BOJ kararı karşısında piyasanın fiyatladığı üç temel senaryo vardır:
+
+- **Sabit tutma:** BOJ küresel belirsizliği bekleyerek politikasını korur; kısa vadeli piyasa tepkisi sınırlı kalır.
+- **Artırım:** Japonya'da enflasyon beklentileri aşıyorsa küçük bir artış gelebilir; Yen güçlenir, carry trade baskı altına girer.
+- **Sinyalizasyon:** Karar değişmese bile "ilerleyen dönemde artırım yolundayız" mesajı piyasayı oynatabilir.
 
 ## Japonya'nın Para Tarihi: Kayıp On Yıllar
 
@@ -58,7 +73,7 @@ BOJ'un günümüzdeki politikalarını anlamak için 1990'lı yıllara dönmek g
 
 Japonya, 1980'lerde hızlı büyüme ve varlık fiyatı enflasyonunu aynı anda yaşadı. 1990'da balon patladı: hem hisse senetleri hem gayrimenkul fiyatları dramatik biçimde çöktü. Bankalar batık kredilerle boğuştu, şirketler yatırımlarını durdurdu, tüketiciler harcamaktan kaçındı.
 
-Bu süreç **deflasyon sarmalına** dönüştü. Fiyatlar düşünce tüketiciler "beklesem daha ucuz alırım" diye harcamayı erteledi; ertelenen harcama talebi düşürdü, bu da fiyatları daha da gerilettti. Japonya "kayıp on yıllar" denilen kronik düşük büyüme dönemine girdi.
+Bu süreç **deflasyon sarmalına** dönüştü. Fiyatlar düşünce tüketiciler "beklesem daha ucuz alırım" diye harcamayı erteledi; ertelenen harcama talebi düşürdü, bu da fiyatları daha da geriletti. Japonya "kayıp on yıllar" denilen kronik düşük büyüme dönemine girdi.
 
 BOJ'un bu duruma yanıtı net ve tutarlıydı: **faizleri mümkün olduğunca aşağıya çekmek.**
 
@@ -120,7 +135,29 @@ BOJ'un etkisi iki ana kanal üzerinden işler:
 
 **Yen Carry Trade Kanalı:** Sıfır faizli Yen'de borçlanıp yüksek getirili varlıklara yatırım yapmak, on yıllar içinde trilyonlarca dolarlık küresel bir pozisyona dönüştü. BOJ faiz artırınca bu pozisyonlar kapatılır: Yen güçlenir, gelişen piyasalardan sermaye çekilir. [Carry trade mekanizması](/blog/carry-trade-nedir) hakkında daha fazla bilgi için ilgili yazıya bakabilirsin.
 
+BOJ'un tutumuna göre carry trade'in nasıl davrandığı şöyle özetlenebilir:
+
+| Senaryo | Yen Carry Trade | Piyasa Etkisi |
+|---------|-----------------|---------------|
+| BOJ faizi düşük tutar | Yen borçlanmak ucuz → para gelişen piyasalara akar | TL, BIST, gelişen piyasalar pozitif |
+| BOJ faiz artırır | Yen borçlanmak pahalılaşır → pozisyonlar kapatılır | Yen güçlenir, gelişen piyasalar negatif |
+| Ani/sürpriz artış | Acele pozisyon kapatma (unwinding) | Küresel satış dalgası, volatilite patlar |
+| Kademeli, önceden sinyal verilmiş artış | Piyasa önceden fiyatlar | Etki yumuşar, dalgalanma azalır |
+
+Temmuz 2024'teki küresel satış dalgası, tablonun üçüncü satırının canlı örneğiydi: sürpriz artırım carry trade pozisyonlarını aniden bozdu.
+
 **Risk İştahı Kanalı:** BOJ sıkılaşması "küresel likidite azalıyor" mesajı verir. Yatırımcılar risk-off moduna geçer: hisse senetleri satılır, güvenli liman varlıkları (altın, ABD tahvili, Yen) alınır. Bu ortamda gelişen piyasa para birimleri değer kaybeder.
+
+## BOJ Kararı TL'yi ve BIST'i Nasıl Etkiler?
+
+Türkiye ile Japonya arasındaki ticaret hacmi sınırlı olduğu için **doğrudan bağlantı** zayıftır. Ama **dolaylı kanallar** son derece güçlüdür:
+
+1. **Risk iştahı:** BOJ faiz artırınca küresel yatırımcılar risk-off moduna geçer, gelişen piyasaları terk edip güvenli limanlara (Yen, dolar, altın) sığınır. TL satılır, BIST düşer.
+2. **Dolar likiditesi:** BOJ artırımı küresel dolar likiditesini azaltır. Dolar göreli olarak güçlenirse Türkiye'nin döviz borç yükü ağırlaşır, cari açığın finansmanı zorlaşır.
+3. **Küresel büyüme:** Japonya dünyanın en büyük ekonomilerinden biridir. Para politikasını sıkılaştırması küresel büyüme beklentilerini ve emtia talebini baskılar; bu da Türkiye'nin ihracat gelirlerine yansıyabilir.
+4. **Yabancı yatırımcı:** BIST'te işlem yapan yabancı kurumların bir kısmı pozisyonlarını Yen ile finanse ediyorsa, BOJ artırımı onları Türk hisselerini satmaya zorlar.
+
+Fed ile Türkiye arasındaki ilişkiyi daha ayrıntılı anlamak için [Fed Faiz Kararı Nedir?](/blog/fed-faiz-karari-nedir-etkisi), Avrupa tarafı için [ECB Faiz Kararı Nedir?](/blog/ecb-faiz-karari-nedir-etkisi) yazılarına bakabilirsin.
 
 ## Türk Yatırımcısı İçin BOJ Gündemini Nasıl Takip Ederim?
 
@@ -135,14 +172,21 @@ BOJ kararı öncesinde ve sonrasında şu göstergeler sana sinyal verir:
 
 BOJ toplantı tarihlerini takip etmek için Investing.com TR veya Foreks Haber ekonomik takvimlerini kullanabilirsin.
 
-Yen carry trade krizinin [verim eğrisi](/blog/verim-egrisi-nedir-resesyon-isareti) ile ilişkisini anlamak da BOJ kararlarını yorumlamayı kolaylaştırır.
+Yen carry trade krizinin [verim eğrisi](/blog/verim-egrisi-nedir-resesyon-isareti) ile ilişkisini anlamak da BOJ kararlarını yorumlamayı kolaylaştırır. Dolar/Yen ilişkisinin temeli için [Döviz kuru nasıl belirlenir?](/blog/doviz-kuru-nasil-belirlenir) yazısına göz atabilirsin.
+
+### Pratik değerlendirme
+
+1. **Panik yapma:** BOJ kararı TL'yi doğrudan değil, dolaylı yoldan etkiler; her karar seni doğrudan vurmaz.
+2. **Çeşitlendir:** Portföyünde yalnızca TL varlığı varsa küresel şoklar daha sert hissedilir. Biraz altın ve döviz pozisyonu tampon görevi görür.
+3. **Zamanlamaya çalışma:** Piyasayı zamanlamak profesyonellerin bile çoğu zaman başaramadığı bir iştir. Kararı izle ama dürtüsel alım-satım yapma.
 
 ## Özet
 
 - **BOJ**, Japonya'nın 1882'de kurulan merkez bankasıdır; Fed, ECB, BOE ile birlikte dünyanın en etkili 4 merkez bankasından biridir.
 - **Sıfır ve negatif faiz politikası** deflasyonla mücadele için 2016-2024 arasında uygulandı; YCC (getiri eğrisi kontrolü) ve QQE ile desteklendi.
-- **2024 normalleşmesi** tarihi bir kırılmadır: negatif fairin sonu ve kademeli artışlar, küresel carry trade pozisyonlarını sarstı.
-- **Türk yatırımcısını** doğrudan değil carry trade ve risk iştahı kanallarıyla etkiler: BOJ sıkılaşması → Yen güçlenir → gelişen piyasalardan sermaye çıkar → TL/BIST baskı altına girer.
+- **2024 normalleşmesi** tarihi bir kırılmadır: negatif faizin sonu ve kademeli artışlar, küresel carry trade pozisyonlarını sarstı.
+- **BOJ faiz kararı** yılda yaklaşık 8 kez, Türkiye saatiyle sabaha karşı açıklanır; sürpriz artırımlar kademeli olanlardan çok daha sarsıcıdır.
+- **Türk yatırımcısını** doğrudan değil carry trade, risk iştahı, dolar likiditesi ve yabancı yatırımcı kanallarıyla etkiler: BOJ sıkılaşması → Yen güçlenir → gelişen piyasalardan sermaye çıkar → TL/BIST baskı altına girer.
 - BOJ takibi için USD/JPY, VIX ve 10 yıllık Japon tahvil faizini izlemek yeterlidir.
 
 ---

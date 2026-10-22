@@ -306,7 +306,7 @@ const dataset = {
         $('out-oran').textContent = m > 0 ? '%' + pf.format((vergi / m) * 100) : '—';
         let note = 'Beyan: ' + (yil === '2027' ? 'Nisan 2028' : 'Nisan 2027') + ', ödeme beyan ayının sonuna kadar.';
         if (a > h) note = 'Asgari kurumlar vergisi devrede: hesaplanan vergi kazancın %10’unun altında kaldı, fark (₺' + nf.format(a - h) + ') ödenir. ' + note;
-        if (kar < 0) note = 'Zarar: kurumlar vergisi çıkmaz; zarar 5 yıl içinde sonraki kârlardan mahsup edilebilir.';
+        if (m <= 0) note = 'Mali zarar: kurumlar vergisi çıkmaz; zarar 5 yıl içinde sonraki kârlardan mahsup edilebilir.';
         if (pay < 0) note += ' Geçici vergi fazlası mahsup edilir ya da iade alınabilir.';
         $('out-note').textContent = note;
       }

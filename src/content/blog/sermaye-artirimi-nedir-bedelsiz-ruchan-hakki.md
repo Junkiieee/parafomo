@@ -141,7 +141,7 @@ Bir şirket bedelli sermaye artırımı duyurduğunda karar vermeden önce şu s
 - **Aracı kurum uygulamaları:** Rüçhan süresi başladığında çoğu kurum SMS, bildirim veya e-posta gönderir. Bildirimleri kapatma!
 - **Şirketin yatırımcı ilişkileri sayfası:** Büyük şirketler karar öncesi ve sonrası sunumlar yayınlar.
 
-Bilanço kalemlerini yorumlarken ve şirketin nakit ihtiyacını sorgularken, temettü politikasını bilmek de faydalıdır. Bu konuda [temettü hisseleri ve pasif gelir](/blog/temettu-hisseleri-pasif-gelir/) yazımıza göz atabilirsin.
+Bilanço kalemlerini yorumlarken ve şirketin nakit ihtiyacını sorgularken, temettü politikasını bilmek de faydalıdır. Bu konuda [temettü hisseleri ve pasif gelir](/blog/temettu-verimi-nedir/) yazımıza göz atabilirsin.
 
 ## Özet
 

@@ -137,7 +137,7 @@ Bu konuları daha ayrıntılı incelemek isteyenler için [hisse senedi nasıl s
 5. **Büyüme beklentisini değerlendirin.** Sektörün önümüzdeki 2-3 yılı nasıl görünüyor? Şirketin kendisi büyüme hedefi açıkladı mı?
 6. **Risk limitinizi belirleyin.** Değer yatırımı sabır ister; F/K ucuz görünse de piyasanın farkına varması zaman alabilir.
 
-Pasif gelir hedefleyenler için temettü verimi yüksek, makul F/K'lı hisseler ayrıca değerlendirilmelidir. [Temettü hisseleri rehberimize](/blog/temettu-hisseleri-pasif-gelir) göz atabilirsiniz.
+Pasif gelir hedefleyenler için temettü verimi yüksek, makul F/K'lı hisseler ayrıca değerlendirilmelidir. [Temettü hisseleri rehberimize](/blog/temettu-verimi-nedir/) göz atabilirsiniz.
 
 ## F/K Oranı ile BIST'te Değer Arama: Gerçekçi Beklentiler
 

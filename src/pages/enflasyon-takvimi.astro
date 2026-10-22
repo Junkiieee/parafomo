@@ -21,8 +21,12 @@ const rows = releases.map((r) => {
   const dt = new Date(r.date + 'T00:00:00');
   const isPast = r.date < todayKey;
   const daysUntil = Math.round((dt.getTime() - today.getTime()) / 86400000);
+  const [mName, yr] = r.covers.split(' ');
+  const ayKey = `${yr}-${pad(MONTHS.indexOf(mName) + 1)}`;
+  const val = (tufe.months as { ay: string; yillik: number; aylik: number }[]).find((m) => m.ay === ayKey);
   return {
     ...r,
+    val,
     isPast,
     daysUntil,
     dowLabel: DOW_TR[dt.getDay()],
@@ -134,7 +138,7 @@ const jsonLd = {
           </span>
           <span class="fk-cell-time">TSİ {releaseTime}</span>
           <span class="fk-cell-status">
-            {r.isPast ? 'açıklandı' : next != null && r.date === next.date ? nextCountdownText : `${r.daysUntil} gün`}
+            {r.isPast ? (r.val ? `aylık %${pctTr(r.val.aylik)} · yıllık %${pctTr(r.val.yillik)}` : 'açıklandı') : next != null && r.date === next.date ? nextCountdownText : `${r.daysUntil} gün`}
           </span>
         </div>
       ))}
@@ -167,7 +171,7 @@ const jsonLd = {
       kur yönü için daha sağlıklı bir çerçeve verir.
     </p>
     <div class="fk-links">
-      <a href="/blog/tufe-enflasyon-verisi-nasil-okunur">TÜİK Enflasyon Verisi Nasıl Okunur? →</a>
+      <a href="/blog/tufe-sepeti-nedir-enflasyon-nasil-hesaplanir/">TÜİK Enflasyon Verisi Nasıl Okunur? →</a>
       <a href="/blog/tufe-sepeti-nedir-enflasyon-nasil-hesaplanir">TÜFE Sepeti Nedir? Enflasyon Nasıl Hesaplanır? →</a>
       <a href="/blog/enflasyondan-nasil-korunur">Enflasyondan Korunmak İçin Para Nereye Yatırılır? →</a>
       <a href="/blog/reel-faiz-nedir">Reel Faiz Nedir? Enflasyona Göre Gerçek Getiri →</a>

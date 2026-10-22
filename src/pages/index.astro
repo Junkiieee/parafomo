@@ -12,6 +12,9 @@ import yd from '../../data/yeniden-degerleme.json';
 import asgari from '../../data/asgari-ucret.json';
 import kira from '../../data/kira-artis-2026.json';
 import em from '../../data/emekli-memur.json';
+import altinFiyat from '../../data/altin-fiyat.json';
+import dxyData from '../../data/dxy.json';
+import bistGetiri from '../../data/bist-getiri.json';
 import { cumKnown, remaining, sskProj, memurProj } from '../data/zam2027';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
@@ -38,6 +41,16 @@ const ipoActive = ipos.filter((o) => o.status === 'Devam Ediyor' || o.status ===
 const ipoDone = ipos.filter((o) => o.status === 'Tamamlandı').sort(byStart).slice(0, 3);
 const ipoWait = ipos.filter((o) => o.status === 'Tarih Bekleniyor').sort((a, b) => a.slug.localeCompare(b.slug));
 const dayIdx = Math.floor(Date.now() / 86400000);
+// Fiyat kutusu: build anındaki değerler HTML'e basılır (Googlebot + canlı kaynak çökerse ziyaretçi '—' görmesin).
+const trNum = (n: number | null | undefined, d = 0) =>
+  n == null || Number.isNaN(n) ? '—' : n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const gramSat = ((altinFiyat as any).kalemler ?? []).find((k: any) => k.key === 'gram-altin')?.satis;
+const tickInit = {
+  bist: trNum((bistGetiri as any).bist_now, 0),
+  gold: gramSat ? '₺' + trNum(gramSat, 0) : '—',
+  usd: (dxyData as any).usdtry ? '₺' + trNum((dxyData as any).usdtry, 2) : '—',
+  stamp: new Date((altinFiyat as any).guncellenme).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Istanbul' }),
+};
 const ipoWaitRot = ipoWait.length ? ipoWait.map((_, i) => ipoWait[(i + dayIdx * 3) % ipoWait.length]) : [];
 const ipoBox = [...ipoActive, ...ipoDone, ...ipoWaitRot].slice(0, 6);
 const pctFmt = (n: number) => (n > 0 ? '+' : '') + n.toLocaleString('tr-TR', { maximumFractionDigits: 1 }) + '%';
@@ -99,11 +112,11 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
       </div>
       <div class="hero-visual">
         <div class="ticker-card" id="ticker">
-          <div class="tc-row" data-row="bist"><span>BIST 100</span><span class="tc-val"><b data-val>—</b><i class="chg" data-chg></i></span></div>
+          <div class="tc-row" data-row="bist"><span>BIST 100</span><span class="tc-val"><b data-val>{tickInit.bist}</b><i class="chg" data-chg></i></span></div>
           <div class="tc-row" data-row="btc"><span>Bitcoin</span><span class="tc-val"><b data-val>—</b><i class="chg" data-chg></i></span></div>
-          <div class="tc-row" data-row="gold"><span>Gram Altın</span><span class="tc-val"><b data-val>—</b><i class="chg" data-chg></i></span></div>
-          <div class="tc-row" data-row="usd"><span>Dolar/TL</span><span class="tc-val"><b data-val>—</b><i class="chg" data-chg></i></span></div>
-          <div class="tc-foot"><span class="muted">Son 24 saat değişimi</span><span data-updated class="muted"></span></div>
+          <div class="tc-row" data-row="gold"><span><a href="/altin-fiyatlari/gram-altin/" style="color:inherit">Gram Altın</a></span><span class="tc-val"><b data-val>{tickInit.gold}</b><i class="chg" data-chg></i></span></div>
+          <div class="tc-row" data-row="usd"><span><a href="/dolar-getiri/" style="color:inherit">Dolar/TL</a></span><span class="tc-val"><b data-val>{tickInit.usd}</b><i class="chg" data-chg></i></span></div>
+          <div class="tc-foot"><span class="muted">Son 24 saat değişimi</span><span data-updated class="muted">{tickInit.stamp} TSİ</span></div>
         </div>
       </div>
     </div>
@@ -489,17 +502,38 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
     return m ? parseFloat(m[1]) : null;
   }
 
+  // Truncgil v3: değerler Türkçe biçimli metin ("6.523,07", "%-1,15").
+  const trParse = (v: unknown): number | null => {
+    if (typeof v !== 'string') return null;
+    const n = parseFloat(v.replace('%', '').replace(/\./g, '').replace(',', '.'));
+    return Number.isNaN(n) ? null : n;
+  };
+
   async function loadTicker() {
+    let gotTl = false;
     try {
       const res = await fetch('https://finans.truncgil.com/v4/today.json');
       const text = await res.text();
+      const usd = pick(text, 'USD', 'Selling');
       setRow('bist', pick(text, 'XU100', 'Selling'), pick(text, 'XU100', 'Change'), '', 0);
       setRow('gold', pick(text, 'GRA', 'Selling'), pick(text, 'GRA', 'Change'), '₺', 0);
-      setRow('usd', pick(text, 'USD', 'Selling'), pick(text, 'USD', 'Change'), '₺', 2);
+      setRow('usd', usd, pick(text, 'USD', 'Change'), '₺', 2);
       const upd = document.querySelector('[data-updated]');
       const dm = text.match(/"Update_Date"\s*:\s*"([^"]+)"/);
-      if (upd && dm) upd.textContent = 'Güncel: ' + dm[1].slice(11, 16);
-    } catch { /* canlı veri alınamadıysa placeholder kalır */ }
+      if (upd && dm && usd != null) upd.textContent = 'Güncel: ' + dm[1].slice(11, 16);
+      gotTl = usd != null;
+    } catch { /* v4 kesik/boş dönebiliyor → v3'e düş */ }
+
+    if (!gotTl) {
+      try {
+        const res = await fetch('https://finans.truncgil.com/v3/today.json');
+        const d = await res.json();
+        setRow('gold', trParse(d['gram-altin']?.Selling), trParse(d['gram-altin']?.Change), '₺', 0);
+        setRow('usd', trParse(d.USD?.Selling), trParse(d.USD?.Change), '₺', 2);
+        const upd = document.querySelector('[data-updated]');
+        if (upd && typeof d.Update_Date === 'string') upd.textContent = 'Güncel: ' + d.Update_Date.slice(11, 16);
+      } catch { /* build anındaki değerler kalır */ }
+    }
 
     try {
       const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true');

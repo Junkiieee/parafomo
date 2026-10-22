@@ -36,7 +36,7 @@ Somut örnek: Her ay 500 TL yatırıp yıllık %12 reel getiri elde ettiğinizi 
 
 *Tablo tahmini ve eğitim amaçlıdır; gerçek getiriler değişkenlik gösterir.*
 
-20'li yaşlarda başlamak, 40'lı yaşlarda başlamaktan **yaklaşık 12 kat daha fazla** birikim anlamına geliyor — üstelik daha az para yatırarak. Zaman, gençlerin elindeki en büyük finansal varlıktır. Bunu anlamak, [bileşik faizin gücünü](/blog/bilesik-faiz-nedir/) gerçekten kavramakla başlar.
+20'li yaşlarda başlamak, 40'lı yaşlarda başlamaktan **yaklaşık 12 kat daha fazla** birikim anlamına geliyor — üstelik daha az para yatırarak. Zaman, gençlerin elindeki en büyük finansal varlıktır. Bunu anlamak, [bileşik faizin gücünü](/bilesik-faiz-hesaplama/) gerçekten kavramakla başlar.
 
 ## Yatırıma Başlamadan Önce: 3 Temel Adım
 
@@ -71,7 +71,7 @@ Hangi araç kime göre uygun? Aşağıdaki tablo genel bir çerçeve sunar:
 
 ### Endeks Fonu: Yeni Başlayanın En Güvenli Başlangıcı
 
-[Endeks fonu](/blog/endeks-fonu-nedir/), piyasayı taklit eden, düşük maliyetli bir yatırım aracıdır. BIST 100 endeks fonu, Türk borsasındaki 100 büyük şirketin performansını yansıtır. Tek hisseyi seçmeye gerek kalmaz, otomatik çeşitlendirme sağlar ve komisyonlar düşüktür. Yeni başlayanlar için genellikle en makul giriş noktasıdır.
+[Endeks fonu](/blog/etf-nedir-borsa-yatirim-fonu/), piyasayı taklit eden, düşük maliyetli bir yatırım aracıdır. BIST 100 endeks fonu, Türk borsasındaki 100 büyük şirketin performansını yansıtır. Tek hisseyi seçmeye gerek kalmaz, otomatik çeşitlendirme sağlar ve komisyonlar düşüktür. Yeni başlayanlar için genellikle en makul giriş noktasıdır.
 
 ### BES: Devlet Katkısı ile Emeklilik Fonu
 

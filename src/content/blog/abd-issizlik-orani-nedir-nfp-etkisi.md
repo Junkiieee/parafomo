@@ -1,14 +1,15 @@
 ---
 title: "ABD İşsizlik Oranı Nedir? NFP Verisi Fed Faizini ve TL'yi Nasıl Etkiler?"
-description: "ABD işsizlik oranı nedir, nasıl hesaplanır? 7 Ağustos NFP verisi Fed faiz kararını ve dolayısıyla dolar/TL kurunu nasıl şekillendirir? Türk yatırımcı rehberi."
+description: "ABD işsizlik oranı nedir, nasıl hesaplanır? NFP verisi Fed faiz kararını ve dolayısıyla dolar/TL kurunu nasıl şekillendirir? Türk yatırımcı rehberi."
 pubDate: 2026-08-04
+updatedDate: 2026-10-22
 category: "Ekonomi"
 tags: ["abd işsizlik oranı", "nfp", "fed faiz kararı", "dolar tl", "istihdam verisi", "abd ekonomisi"]
 readingTime: 7
 featured: false
 faq:
   - q: "ABD işsizlik oranı ne zaman açıklanır?"
-    a: "Her ayın ilk Cuma günü, aynı anda NFP (Tarım Dışı İstihdam) ve Ortalama Saatlik Kazanç verileriyle birlikte saat 15:30 Türkiye saatiyle açıklanır."
+    a: "Genellikle her ayın ilk Cuma günü, NFP (Tarım Dışı İstihdam) ve Ortalama Saatlik Kazanç verileriyle aynı anda, ABD saatiyle 08:30'da açıklanır. Bu Türkiye saatiyle ABD yaz saati döneminde (Mart–Kasım) 15:30'a, kış döneminde 16:30'a denk gelir."
   - q: "İşsizlik oranı yükselirse dolar ne yapar?"
     a: "İşsizlik beklenenden yüksek gelirse piyasalar bunu Fed'in faiz indireceğine işaret olarak okur; bu genellikle dolar zayıflaması anlamına gelir. Ancak ani ve sert yükselmeler 'kötü haber = kötü haber' şeklinde riskten kaçışla dolara yükseliş getirebilir."
   - q: "NFP ile işsizlik oranı aynı şey mi?"
@@ -36,7 +37,7 @@ shorts_visuals:
   - "concept|financial news analysis laptop screen"
 ---
 
-**7 Ağustos 2026 Cuma günü saat 15:30'da** piyasaların en yakından izlediği veri paketi açıklanacak: ABD Tarım Dışı İstihdam (NFP), İşsizlik Oranı ve Ortalama Saatlik Kazanç. Bu üç rakam, Fed'in bir sonraki faiz kararını şekillendirecek; bu da dolar, altın ve evet — TL üzerinde doğrudan iz bırakacak.
+Genellikle her ayın ilk Cuma günü piyasaların en yakından izlediği veri paketi açıklanır: ABD Tarım Dışı İstihdam (NFP), İşsizlik Oranı ve Ortalama Saatlik Kazanç. Bu üç rakam, Fed'in bir sonraki faiz kararını şekillendirir; bu da dolar, altın ve evet — TL üzerinde doğrudan iz bırakır.
 
 ABD işsizlik oranı pek çok Türk yatırımcı için "uzak bir Amerikan meselesi" gibi görünür. Aslında tam tersi: bu rakam, portföyündeki dolar varlığından ev almak için düşündüğün kredi faizine kadar pek çok şeyi etkiler.
 
@@ -97,16 +98,18 @@ Dolar güçlendiğinde TL zayıflar. Bu; ithal mallara yansır, enflasyon baskı
 Yabancı kurumsal yatırımcılar Türkiye gibi gelişen piyasalara olan iştahlarını küresel risk algısına göre ayarlar. Fed "faiz düşürmez" beklentisi yükseldikçe gelişen piyasalardan para çekilir; BIST bundan payını alır.
 
 **Altın üzerindeki etki:**
-Dolar ile altın ters orantılı hareket eder. Dolar güçlü → altın ucuzlar. Gram altın tutanlar için Ağustos 7 verisi dolaylı ama önemli bir sinyal.
+Dolar ile altın ters orantılı hareket eder. Dolar güçlü → altın ucuzlar. Gram altın tutanlar için her ayın istihdam verisi dolaylı ama önemli bir sinyaldir.
 
 **Sabit getirili yatırımlar:**
 Tahvil ve mevduatta faiz beklentileri, ABD 10 yıllık tahvil faizini takip eder. ABD tahvil faizi yükselirse Türk yatırımcıların da elindeki TL varlıkların beklenen getirisi görece düşük kalır.
 
-## 7 Ağustos Verisini Nasıl Takip Etmeli?
+## İstihdam Verisini Nasıl Takip Etmeli?
+
+Yaklaşan açıklama tarihlerini [ekonomik takvim](/ekonomik-takvim/) sayfasından, verinin etkileyeceği toplantıları ise [Fed faiz takvimi](/fed-faiz-takvimi/) sayfasından takip edebilirsiniz. Açıklama günü tipik akış şöyledir:
 
 | Saat | Olay |
 |------|------|
-| 15:30 (Türkiye) | ABD Ortalama Saatlik Kazanç, NFP, İşsizlik Oranı aynı anda açıklanır |
+| 15:30 (Türkiye; ABD kış saatinde 16:30) | ABD Ortalama Saatlik Kazanç, NFP, İşsizlik Oranı aynı anda açıklanır |
 | İlk 5-10 dakika | Ani volatilite — dolar, altın, majör endeksler tepki verir |
 | 30-60 dakika sonra | Piyasa sindirim aşaması; ilk hareket genellikle revize edilir |
 
@@ -114,10 +117,10 @@ Tahvil ve mevduatta faiz beklentileri, ABD 10 yıllık tahvil faizini takip eder
 
 ## Özet
 
-- **ABD işsizlik oranı**, iş arayan ama bulamayanların oranıdır; her ayın ilk Cuması açıklanır.
+- **ABD işsizlik oranı**, iş arayan ama bulamayanların oranıdır; genellikle her ayın ilk Cuması açıklanır.
 - **NFP ve işsizlik birlikte** değerlendirilir; biri kaç iş eklendiğini, diğeri kaçının işsiz kaldığını gösterir.
 - **Zayıf veri** → Fed faiz indirebilir → dolar zayıflar → TL görece rahatlar; **güçlü veri** → dolar güçlenir → TL baskı altına girer.
-- **7 Ağustos 15:30'daki** açıklamayı takip edin; ancak kaldıraçsız yatırımcı için anlık oynaklık değil, uzun vadeli faiz beklentisi önemlidir.
+- Her ayın istihdam açıklamasını takip edin; ancak kaldıraçsız yatırımcı için anlık oynaklık değil, uzun vadeli faiz beklentisi önemlidir.
 - Bu veriyi [Fed faiz kararı](/blog/fed-faiz-karari-nedir-etkisi) bağlamında yorumlayın; tek başına bir ay verisi nadiren kalıcı trend yaratır.
 
 ---

@@ -75,7 +75,7 @@ Faiz ve borsa arasında genellikle **ters korelasyon** vardır:
 - **Faiz yükselir → Borsa baskı altında:** Risksiz mevduat/tahvil cazip hale gelir, hisse talebini azaltır. Şirketlerin finansman maliyeti artar, kâr marjları daralır.
 - **Faiz düşer → Borsa potansiyel artışı:** Mevduat getirisi azalır, yatırımcı hisse ve diğer riskli varlıklara yönelir. Şirketler ucuz finansmanla yatırım yapabilir.
 
-Ancak bu kural değişmez değildir. Faiz inse de ekonomi resesyona girerse borsa düşmeye devam edebilir. [Endeks fonları](/blog/endeks-fonu-nedir) ile bu dalgalanmayı düşük maliyetle takip edebilirsin.
+Ancak bu kural değişmez değildir. Faiz inse de ekonomi resesyona girerse borsa düşmeye devam edebilir. [Endeks fonları](/blog/etf-nedir-borsa-yatirim-fonu/) ile bu dalgalanmayı düşük maliyetle takip edebilirsin.
 
 ### Dolar Kuru (TL/USD)
 
@@ -131,7 +131,7 @@ Faiz döngüsüne göre varlık dağılımını yeniden düşünmek mantıklıd�
 
 **Düşük faiz ortamında:**
 - Uzun vadeli tahvil lock-in fırsatı
-- Hisse senedi ve [bileşik faiz gücünü](/blog/bilesik-faiz-nedir) kullan
+- Hisse senedi ve [bileşik faiz gücünü](/bilesik-faiz-hesaplama/) kullan
 - [Dolar maliyet ortalaması](/blog/dca-nedir-maliyet-ortalamasi) ile düzenli yatırım
 
 **Her ortamda:**

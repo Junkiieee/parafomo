@@ -130,6 +130,7 @@ const breadcrumbs = [
             <span class="split-val" id="out-interest">₺{fmt(base.interest)}</span>
           </div>
         </div>
+        <p class="result-note" id="out-bddk"></p>
         <p class="result-note" id="out-note">Varsayılan aylık %{pct(D.rate)}: TCMB ortalama konut kredisi faizi ({HAFTA} haftası, yıllık %{pct(K.yillikBilesik)}). Bankanızın ilan ettiği aylık faizi girerek değiştirin.</p>
       </div>
     </div>
@@ -198,6 +199,9 @@ const breadcrumbs = [
         ikinci el ayrımı kaldırıldı. 5 milyon TL ve altındaki, enerji sınıfı yüksek konutlarda değerin
         %90’ına kadar kredi kullanılabiliyor; değer yükseldikçe oran kademeli olarak düşüyor. Tüketicinin,
         eşinin veya 18 yaş altı çocuğunun adına kayıtlı konut varsa oranlar düşürülerek uygulanıyor.
+        Enerji sınıfı A-B konutlarda azami oranlar: <strong>5 milyon TL’ye kadar %90, 5-7 milyon %80,
+        7-10 milyon %70, 10-20 milyon %50, 20 milyon TL üzeri %40</strong> (C sınıfında ve diğerlerinde
+        kademeli olarak daha düşük).
         Hesaplayıcıdaki “kredi / konut değeri” satırı, peşinatınızın bu sınırlara göre yeterli olup
         olmadığını kabaca görmenizi sağlar. Kesin oran için:
         <a href="https://www.bddk.org.tr/Mevzuat/DokumanGetir/1327" rel="nofollow noopener" target="_blank">BDDK karar metni</a>.
@@ -296,6 +300,12 @@ const breadcrumbs = [
         $('out-pay').textContent = money(a.pay);
         $('out-loan').textContent = money(P);
         $('out-ltv').textContent = V > 0 ? '%' + Math.round((P / V) * 100) : '—';
+        // BDDK 11364 (29.01.2026) azami kredi/değer — enerji sınıfı A-B (en yüksek oran). C ve altında 10-20 puan düşük.
+        const cap = V <= 5e6 ? 90 : V <= 7e6 ? 80 : V <= 10e6 ? 70 : V <= 20e6 ? 50 : 40;
+        const minDown = V * (1 - cap / 100);
+        $('out-bddk').textContent = V > 0 && P / V > cap / 100 + 1e-9
+          ? `⚠ BDDK sınırı aşılıyor: ${money(V)} değerindeki konutta en fazla %${cap} kredi (enerji sınıfı A-B) kullanılabilir. Asgari peşinat ${money(minDown)}.`
+          : V > 0 ? `BDDK sınırı: bu değerde en fazla %${cap} kredi (enerji sınıfı A-B; C sınıfında daha düşük).` : '';
         $('out-total').textContent = money(a.total);
         $('out-interest').textContent = money(a.interest);
         buildSchedule(P, rate, n, a.pay);

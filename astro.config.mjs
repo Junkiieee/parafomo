@@ -38,12 +38,15 @@ const readJson = (f) => {
 };
 const asDate = (v) => {
   const d = new Date(String(v).length === 10 ? `${v}T12:00:00Z` : v);
-  return isNaN(d) ? null : d;
+  if (isNaN(d)) return null;
+  // Yalnız-tarih değerler 12:00Z'ye çevriliyordu → build sabahsa lastmod gelecekte kalıyordu (denetim 2026-10-22).
+  return d.getTime() > Date.now() ? new Date() : d;
 };
 const updatedOf = (f) => {
   const d = readJson(f);
   if (!d) return null;
   if (d.updated) return asDate(d.updated);
+  if (d.guncellenme) return asDate(d.guncellenme);
   // TCMB/Fed takvimi: açıklanmış son kararın günü
   const ms = [...(d.meetings ?? []), ...(d.meetings2027 ?? [])].filter((m) => m.result).map((m) => m.decisionDate).sort();
   return ms.length ? asDate(`${ms.at(-1)}T20:00:00Z`) : null;
@@ -69,7 +72,9 @@ const DATA_PAGES = {
   'mevduat-faizi-hesaplama': FAIZ, 'konut-kredisi-hesaplama': FAIZ, 'ihtiyac-kredisi-hesaplama': FAIZ, 'kredi-hesaplama': FAIZ,
   'altin-getiri': ['altin-getiri.json'], 'dolar-getiri': ['dolar-getiri.json'], 'euro-getiri': ['euro-getiri.json'],
   'bist-getiri': ['bist-getiri.json'], 'gumus-getiri': ['gumus-getiri.json'], 'bitcoin-getiri': ['bitcoin-getiri.json'],
-  'altin-dolar-borsa': ['benchmarks.json'], 'halka-arz': ['halka-arz.json'], 'halka-arz-getiri': ['halka-arz-getiri.json'],
+  'altin-dolar-borsa': ['altin-getiri.json', 'dolar-getiri.json', 'bist-getiri.json', 'euro-getiri.json', 'gumus-getiri.json', 'bitcoin-getiri.json'],
+  'altin-fiyatlari': ['altin-fiyat.json'], 'altin-hesaplama': ['altin-fiyat.json'], 'altin-kac-gram': ['altin-fiyat.json'],
+  'dolar-endeksi': ['dxy.json'], 'abd-tahvil-faizi': ['us-tahvil.json'], 'halka-arz': ['halka-arz.json'], 'halka-arz-getiri': ['halka-arz-getiri.json'],
   'tcmb-faiz-takvimi': ['tcmb-2026.json'], 'fed-faiz-takvimi': ['fomc-2026.json'], 'ekonomik-takvim': ['economic-calendar.json'],
 };
 const lastmodByPage = {};
@@ -128,6 +133,11 @@ export default defineConfig({
           item.lastmod = lastmodBySlug[m[1]];
           item.changefreq = 'monthly';
           item.priority = 0.8;
+        }
+        // İç içe altın sayfaları (/altin-fiyatlari/<tür>/) hiç lastmod almıyordu.
+        if (/\/altin-fiyatlari\/[^/]+\/?$/.test(item.url) && lastmodByPage['altin-fiyatlari']) {
+          item.lastmod = lastmodByPage['altin-fiyatlari'];
+          item.changefreq = 'daily';
         }
         const pg = item.url.match(/^https?:\/\/[^/]+\/([^/]+)\/?$/);
         if (pg && lastmodByPage[pg[1]]) {

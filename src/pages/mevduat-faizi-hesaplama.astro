@@ -9,7 +9,7 @@ import faiz from '../../data/faiz-oranlari.json';
 const STOPAJ = { short: 0.175, mid: 0.15, long: 0.10 };
 
 function tierForDays(days: number) {
-  if (days <= 180) return { rate: STOPAJ.short, label: '6 aya kadar' };
+  if (days <= 184) return { rate: STOPAJ.short, label: '6 aya kadar' }; // 6 aylık vade (181-184 gün) dahil
   if (days <= 365) return { rate: STOPAJ.mid, label: '6 ay – 1 yıl' };
   return { rate: STOPAJ.long, label: '1 yıldan uzun' };
 }
@@ -267,7 +267,7 @@ const breadcrumbs = [
       const nf2 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
 
       function tierForDays(days) {
-        if (days <= 180) return { rate: STOPAJ.short, label: '6 aya kadar' };
+        if (days <= 184) return { rate: STOPAJ.short, label: '6 aya kadar' }; // 6 aylık vade (181-184 gün) dahil
         if (days <= 365) return { rate: STOPAJ.mid, label: '6 ay – 1 yıl' };
         return { rate: STOPAJ.long, label: '1 yıldan uzun' };
       }

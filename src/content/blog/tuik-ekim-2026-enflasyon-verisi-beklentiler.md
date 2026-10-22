@@ -54,7 +54,7 @@ Veri içeriği:
 - **Yıllık enflasyon (yıllık TÜFE):** 12 aylık birikimli değişim — piyasaların en çok izlediği rakam
 - **Alt grup bazlı veri:** Gıda, konut, ulaşım, eğitim gibi kategoriler ayrıca açıklanır
 
-TÜİK verisi açıklandıktan dakikalar içinde hem kurlar hem de piyasalar tepki verir. Nasıl okuyacağınızı öğrenmek için [TÜİK Enflasyon Verisi Nasıl Okunur?](/blog/tufe-enflasyon-verisi-nasil-okunur) yazımıza göz atabilirsiniz.
+TÜİK verisi açıklandıktan dakikalar içinde hem kurlar hem de piyasalar tepki verir. Nasıl okuyacağınızı öğrenmek için [TÜİK Enflasyon Verisi Nasıl Okunur?](/blog/tufe-sepeti-nedir-enflasyon-nasil-hesaplanir/) yazımıza göz atabilirsiniz.
 
 ## Eylül Öncesi Manzara: Türkiye Dezenflasyon Yolunda mı?
 

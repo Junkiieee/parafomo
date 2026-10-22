@@ -105,7 +105,7 @@ Repo işlemi için ayrı bir hesap açmanıza gerek yok; mevcut banka hesabını
 
 **4. Otomatik yenileme:** Çoğu banka vade bitiminde repo'yu otomatik yeniler; nakit bekletmeden getiri üretmeye devam eder.
 
-**5. Bileşik etki:** Her gün dönen repo, [bileşik faiz etkisiyle](/blog/bilesik-faiz-nedir) uzun vadede kayda değer bir büyüme sağlar.
+**5. Bileşik etki:** Her gün dönen repo, [bileşik faiz etkisiyle](/bilesik-faiz-hesaplama/) uzun vadede kayda değer bir büyüme sağlar.
 
 ## Repo Yatırımının Riskleri ve Sınırlılıkları
 

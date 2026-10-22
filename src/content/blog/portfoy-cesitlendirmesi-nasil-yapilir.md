@@ -91,7 +91,7 @@ Sadece BIST'e yatırım yapmak Türkiye'ye özgü riskleri (döviz, enflasyon, j
 - **Eurobond veya yabancı tahvil** (döviz cinsinden sabit getiri)
 - **Global hisse senedi endeks fonları** — tek bir fon ile ABD, Avrupa, Asya'ya ortak olursun
 
-[Endeks fonu nedir ve nasıl alınır](/blog/endeks-fonu-nedir) yazımızda bu araçları detaylıca anlattık.
+[Endeks fonu nedir ve nasıl alınır](/blog/etf-nedir-borsa-yatirim-fonu/) yazımızda bu araçları detaylıca anlattık.
 
 ### 4. Sektör ve şirket çeşitlendirmesi
 

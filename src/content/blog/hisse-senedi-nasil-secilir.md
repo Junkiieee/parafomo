@@ -117,7 +117,7 @@ Temel analiz güçlüdür, ama bazı sınırlılıkları vardır:
 - **Portföyü gereğinden fazla ya da az çeşitlendirmek:** 2–3 hisse yetersiz risk dağılımı, 30+ hisse takip edilemez bir yük. 10–15 hisse makul bir çerçevedir.
 - **Mali tabloları hiç okumamak:** Sosyal medya ya da "fısıltı" tavsiyesiyle alınan hisseler çoğunlukla kötü sonuç verir.
 
-Temettü ödeyen şirketlere odaklanmayı düşünüyorsanız, [Temettü Hisseleri ile Pasif Gelir](/blog/temettu-hisseleri-pasif-gelir) yazımız ayrıntılı bir çerçeve sunuyor: hangi şirketlerin temettü verdiğini ve verimi nasıl değerlendireceğinizi anlattık.
+Temettü ödeyen şirketlere odaklanmayı düşünüyorsanız, [Temettü Hisseleri ile Pasif Gelir](/blog/temettu-verimi-nedir/) yazımız ayrıntılı bir çerçeve sunuyor: hangi şirketlerin temettü verdiğini ve verimi nasıl değerlendireceğinizi anlattık.
 
 ## Özet
 

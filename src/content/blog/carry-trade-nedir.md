@@ -98,7 +98,7 @@ Carry trade kalabalık hale geldiğinde — yani milyarlarca dolarlık pozisyon 
 
 **Ağustos 2024 olayı** bu dinamiğin ders kitabı örneğidir: BOJ beklenmedik bir faiz artışı yapınca JPY hızla değer kazandı, JPY carry pozisyonları çözülmeye başladı ve hem ABD borsası hem de gelişmekte olan piyasalar tek bir haftada sert düzeltme yaşadı.
 
-BOJ'un bu politika değişikliğinin arka planını merak ediyorsan [BOJ faiz kararı yazımıza](/blog/boj-faiz-karari-nedir-etkisi) bakabilirsin. Carry'nin bağlı olduğu küresel faiz yapısını anlamak için de [verim eğrisi ve resesyon sinyalleri](/blog/verim-egrisi-nedir-resesyon-isareti) rehberi iyi bir tamamlayıcıdır.
+BOJ'un bu politika değişikliğinin arka planını merak ediyorsan [BOJ faiz kararı yazımıza](/blog/boj-nedir-japonya-merkez-bankasi/) bakabilirsin. Carry'nin bağlı olduğu küresel faiz yapısını anlamak için de [verim eğrisi ve resesyon sinyalleri](/blog/verim-egrisi-nedir-resesyon-isareti) rehberi iyi bir tamamlayıcıdır.
 
 ## Türkiye ve TL Bağlamında Carry Trade
 

@@ -1,10 +1,11 @@
 ---
-title: "Temettü Verimi (Dividend Yield) Nedir? Yüksek Temettü Hisseleri Nasıl Seçilir?"
-description: "Temettü verimi (dividend yield) nedir, nasıl hesaplanır? Yüksek verimli BIST hisselerini seçmek için kullanılan ölçütler, tuzaklar ve pratik filtreleme adımları."
+title: "Temettü Verimi Nedir? Temettü Hisseleriyle Pasif Gelir ve Hisse Seçimi"
+description: "Temettü verimi (dividend yield) nedir, nasıl hesaplanır? Temettü hisseleriyle pasif gelir nasıl kurulur, kartopu etkisi, BIST'te hisse seçim ölçütleri ve tuzaklar."
 pubDate: 2026-08-30
+updatedDate: 2026-10-22
 category: "Borsa"
-tags: ["temettü verimi", "dividend yield", "hisse senedi", "borsa", "temettü", "bist", "yatırım stratejisi", "pasif gelir"]
-readingTime: 8
+tags: ["temettü verimi", "dividend yield", "hisse senedi", "borsa", "temettü", "bist", "yatırım stratejisi", "pasif gelir", "temettü hisseleri"]
+readingTime: 10
 featured: false
 faq:
   - q: "Temettü verimi (dividend yield) nedir?"
@@ -17,6 +18,10 @@ faq:
     a: "Payout ratio, şirketin kârının ne kadarını temettü olarak dağıttığını gösterir. Yüzde 60 payout ratio, kârın yüzde 60'ının hissedarlara aktarıldığı anlamına gelir. Yüzde 100'ün üzerindeki payout ratio temettünün sürdürülemez olduğuna işaret eder."
   - q: "Temettü verimi ile mevduat faizi nasıl karşılaştırılır?"
     a: "Mevduat garantilidir, hisse değildir. Ancak uzun vadede enflasyona karşı korunmak için yalnızca faiz yetmeyebilir. Sürdürülebilir temettü ödeyen şirketler hem nakit gelir hem de sermaye kazancı sunabilir; her ikisini risk toleransınıza göre değerlendirin."
+  - q: "Temettü hisseleriyle pasif gelir elde etmek mümkün mü?"
+    a: "Mümkün, ama büyük sermaye veya uzun zaman ister. Örneğin %5 temettü verimli bir portföyden ayda 5.000 TL (yılda 60.000 TL) brüt gelir için kabaca 1,2 milyon TL'lik portföy gerekir. Küçük başlayıp düzenli ekleme yapmak ve temettüleri yeniden yatırmak bu yolu kısaltır."
+  - q: "Temettüleri yeniden yatırmak neden önemli?"
+    a: "Alınan temettülerle yeni hisse almak, bir sonraki dönemde daha fazla temettü getiren daha fazla pay demektir. Bu kartopu etkisi ilk yıllarda yavaş, 10-20 yıllık vadede ise belirgin şekilde hızlanır."
 shorts:
   - "Temettü verimi nedir biliyor musun?"
   - "Formül basit: yıllık temettü bölü hisse fiyatı çarpı yüz."
@@ -33,6 +38,13 @@ shorts_broll:
 ---
 
 Portföyünden düzenli nakit akışı almak istiyorsunuz — ama hangi hisse gerçekten "iyi" ödüyor? **Temettü verimi (dividend yield)**, bu sorunun en hızlı yanıtını veren göstergedir. Tek başına yeterli değildir; ancak doğru yorumlandığında yatırım kararlarınızı kökten değiştirebilir.
+
+## Temettü Nedir?
+
+Temettü, bir şirketin elde ettiği kârın bir kısmını ortaklarına (hissedarlara) nakit ya da bedelsiz pay olarak dağıtmasıdır. Temettü ödeyen bir şirketin hissesine sahipseniz, hiçbir şey satmadan, yalnızca hisseyi elinizde tuttuğunuz için gelir elde edersiniz. Böylece iki yoldan kazanırsınız:
+
+1. **Temettü geliri:** Düzenli nakit ödeme.
+2. **Sermaye kazancı:** Hisse fiyatının zaman içinde artması.
 
 ## Temettü Verimi Nedir?
 
@@ -126,6 +138,38 @@ Sistematik bir süzgeç uygulamanız riski azaltır:
 
 [GYO nedir?](/blog/gyo-nedir-gayrimenkul-yatirim-ortakligi/) yazımızda gayrimenkul yatırım ortaklıklarının yüksek temettü verimine nasıl ulaştığını ayrıntılı anlattık.
 
+## Temettü Hisseleriyle Pasif Gelir: Kartopu Etkisi
+
+Temettü yatırımının asıl gücü, **temettüleri yeniden yatırmaktır.** Aldığınız temettülerle yeni hisse alırsınız; bu hisseler de bir sonraki dönemde temettü üretir ve portföy kartopu gibi büyür. Düzenli temettü ödeyen ve temettüleri tekrar yatırılan bir portföy, 10-20 yıllık vadede yalnızca fiyat artışına güvenen bir portföyden çok daha fazla pay biriktirebilir; çünkü bileşik getiri zaman uzadıkça katlanarak çalışır.
+
+### Gerçekçi Beklenti: Ne Kadar Sermaye Gerekir?
+
+Dürüst olmak gerekirse temettüden anlamlı bir pasif gelir elde etmek **büyük sermaye veya uzun zaman** ister:
+
+| Hedef Aylık Brüt Gelir | Yıllık Temettü | Gerekli Portföy (%5 verimle) |
+|---|---|---|
+| 1.000 TL | 12.000 TL | ~240.000 TL |
+| 5.000 TL | 60.000 TL | ~1,2 milyon TL |
+| 10.000 TL | 120.000 TL | ~2,4 milyon TL |
+
+*Hesap basitleştirilmiştir; stopaj ve hisse fiyatı değişimleri dahil değildir.*
+
+Bu yüzden temettü yatırımı bir "hızlı zenginleşme" aracı değil, **uzun vadeli servet ve gelir inşası** aracıdır. Küçük başlayıp düzenli ekleme yaparak ve temettüleri yeniden yatırarak bu portföyü zamanla kurabilirsiniz.
+
+### Temettü Yatırımı Kimin İçin Mantıklı?
+
+**Uygun:**
+- Uzun vadeli (10 yıl ve üzeri) düşünen yatırımcılar
+- Düzenli, öngörülebilir nakit akışı isteyenler
+- Fiyat dalgalanmalarına karşı sakin kalabilenler
+- Emekliliğe yönelik pasif gelir kurmak isteyenler
+
+**Daha az uygun:**
+- Kısa sürede yüksek getiri arayanlar
+- Çok küçük sermayeyle "hemen pasif gelir" bekleyenler (kartopu zaman ister)
+
+**Dikkat edilmesi gerekenler:** Temettü gelirleri stopaja tabidir, net getirinizi buna göre hesaplayın. Tek bir "yüksek temettü" hissesine yığılmak yerine farklı şirket ve sektörlere yayılın. Kartopu etkisi ilk yıllarda yavaştır; erken pes etmeyin.
+
 ## Temettü Verimi mi, Hisse Geri Alımı mı?
 
 Şirketler hissedarlara değer aktarmanın iki yolunu seçer: temettü ödemek ya da kendi hisselerini geri almak (buyback). Her ikisi de "fazla nakdimiz var, sizi önemsiyoruz" mesajıdır; ancak mekanizmaları ve vergi yükleri farklıdır. Türkiye'de temettü geliri stopaj vergisine tabidir; buyback'te ise yatırımcı hissesini satmadıkça vergi yükümlülüğü doğmaz. Detaylı karşılaştırma için [hisse geri alımı (buyback) nedir?](/blog/hisse-geri-alimi-nedir-buyback/) yazımıza bakabilirsiniz.
@@ -139,6 +183,7 @@ Temettü ödeyen hisselerden oluşan bir portföy kurmayı planlıyorsanız teme
 - **Payout ratio** %80'in altındaysa temettünün sürdürülebilir olma ihtimali daha yüksektir.
 - F/K, P/D ve bilanço sağlığıyla birlikte değerlendirildiğinde temettü verimi güçlü bir hisse seçim aracına dönüşür.
 - BIST'te GYO ve holdingler tarihsel olarak daha yüksek temettü verimi sunar.
+- Temettüden pasif gelir uzun vadeli bir oyundur: temettüleri yeniden yatırın, çeşitlendirin ve sabırlı olun.
 
 ---
 
