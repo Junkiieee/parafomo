@@ -36,7 +36,7 @@ shorts_broll:
 
 ## Findeks kredi notu nedir?
 
-Findeks, Türkiye'deki bankaların ve finans kuruluşlarının ortak kurduğu **Kredi Kayıt Bürosu (KKB)** tarafından bireylere sunulan finansal platformun adıdır. Bankalar; kredi kartı, ihtiyaç kredisi, konut ve taşıt kredisi, kredili mevduat hesabı (KMH) gibi ürünlerdeki limit, borç ve ödeme bilgilerini KKB'ye bildirir. KKB bu verilerden bir **kredi notu** üretir.
+Findeks, Türkiye'deki bankaların ortaklığıyla kurulan **Kredi Kayıt Bürosu (KKB)** tarafından bireylere sunulan finansal platformun adıdır. Bankalar; kredi kartı, ihtiyaç kredisi, konut ve taşıt kredisi, kredili mevduat hesabı (KMH) gibi ürünlerdeki limit, borç ve ödeme bilgilerini KKB'ye bildirir. KKB bu verilerden bir **kredi notu** üretir.
 
 Bu not, bankaya şu soruyu cevaplamaya yardım eder: "Bu kişiye borç verirsem geri ödeme ihtimali ne?" Notun yüksek olması düşük risk, düşük olması yüksek risk anlamına gelir. Findeks'e göre skala 1 ile 1900 arasındadır; 1 en riskli, 1900 en az riskli puandır.
 
@@ -44,11 +44,11 @@ Bir karışıklığı baştan giderelim: Haberlerde gördüğün "Türkiye'nin k
 
 ## Findeks kredi notu aralıkları: Notun hangi sınıfta?
 
-Findeks, notları beş risk sınıfına ayırır. Aşağıdaki aralıklar Findeks'in kendi risk raporu sayfasındaki sınıflamadır:
+Findeks, notları beş risk sınıfına ayırır. Aşağıdaki aralıklar Findeks'in güncel sınıflamasıdır (Findeks isimleri ve sınırları zaman zaman güncelleyebilir; eski kaynaklarda "En Riskli – En İyi" gibi farklı etiketler görebilirsin):
 
 | Not aralığı | Findeks sınıfı | Bankalar gözünde genel anlamı |
 |---|---|---|
-| 1 – 969 | Kritik | Kredi verilmesi zorlaşır; çoğu başvuru reddedilir |
+| 1 – 969 | Kritik | Kredi verilmesi zorlaşır; başvuruların olumlu sonuçlanması güçtür |
 | 970 – 1149 | Gelişime Açık | Kredi alma ihtimali düşüktür |
 | 1150 – 1469 | Dengeli | Bankaya göre değişir; limit/tutar sınırlı kalabilir |
 | 1470 – 1719 | Güvenli | Düşük risk; başvurular çoğunlukla olumlu değerlendirilir |
@@ -75,7 +75,7 @@ Notunu öğrenmek için şu adımları izleyebilirsin:
 
 1. **findeks.com** adresine gir ya da Findeks mobil uygulamasını indir.
 2. T.C. kimlik numaran ve cep telefonunla üye ol; kimlik doğrulama adımlarını tamamla.
-3. "Kredi Notu" ürününü seç. Bu hizmet ücretlidir; güncel ücret Findeks'in fiyat listesinde yer alır.
+3. "Kredi Notu" ürününü seç. Bu hizmet normalde ücretlidir; Findeks dönem dönem ücretsiz sorgu kampanyaları da düzenler. Güncel ücret ve kampanyalar Findeks'in sitesinde yer alır.
 4. Raporda notunun yanında risk sınıfını, notu etkileyen başlıca faktörleri ve geçmişe göre değişimini görürsün.
 
 Daha ayrıntılı bir döküm istiyorsan **Risk Raporu** ürünü; tüm kredi ve kartlarını, limitlerini, borçlarını ve gecikme kayıtlarını banka bazında listeler. Raporda tanımadığın bir hesap ya da hatalı gecikme kaydı görürsen ilgili bankaya itiraz edebilirsin; düzeltmeyi bankanın KKB'ye bildirmesi gerekir.
@@ -104,7 +104,7 @@ Notun %18'i "kredi kullanım yoğunluğu"ndan geliyor. 50.000 TL limitli kartın
 
 ### 4. Kredi başvurularını yaymayı bırak
 
-"Biri onaylar" diye aynı hafta beş bankaya başvurmak, her başvuru sorgu olarak kaydedildiği için notu aşağı çekebilir. Önce tek bir bankada şansını dene; ret alırsan sebebini öğren ve beklemeye geç.
+"Biri onaylar" diye aynı hafta beş bankaya başvurmak, bankalar gözünde "krediye sıkışmış" sinyali verir ve yeni kredili ürün açılışlarıyla birlikte notu aşağı çekebilir. Önce tek bir bankada şansını dene; ret alırsan sebebini öğren ve beklemeye geç.
 
 ### 5. Eski ve sorunsuz kartlarını hemen kapatma
 
@@ -120,7 +120,7 @@ Kredi kullanmamış biri "iyi" değil "bilinmeyen" müşteridir; bu yüzden notu
 |---|---|
 | Ekstreyi birkaç gün geciktirmek | Gecikme kaydı oluşur; tekrarlanırsa "ödeme alışkanlığı" bileşeni bozulur |
 | Kartı sürekli limite dayalı kullanmak | Kredi kullanım yoğunluğu yükselir |
-| Kısa sürede çok sayıda başvuru | Her başvuru sorgu kaydı bırakır |
+| Kısa sürede çok sayıda başvuru | Başvurular ve açılan yeni ürünler kredi arayışı sinyali verir |
 | Başkasına kefil olup takip etmemek | Asıl borçlu ödemezse kayıt senin raporuna da yansır |
 | Borcu yapılandırmak yerine takibe düşürmek | Yasal takip notu en ağır biçimde etkiler |
 
