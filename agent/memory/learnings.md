@@ -62,8 +62,8 @@ _v1'in 59 deneyi + 2,5 aylık KPI'ından damıtıldı; son yeniden yazım: hafta
 - **Veri sessizce bayatlar:** elle girilen her veri otomatik güncelleyici ya da health.py tazelik satırı ister.
   app.parafomo.com veri kopyaları deploy-app.sh ile gider: TÜFE ayın 3'ünde gelir ama app ayın 2'sinde yenileniyordu
   (~1 ay gecikme) → kira-artis-update.sh artık deploy-app.sh çağırır + health.py bekçisi (P2, 10-22).
-- **Fırsat motoru dinamik alt sayfaları görmüyor:** /altin-fiyatlari/<tür> var ama §9c "22 ayar bilezik", "çeyrek altın"
-  için YENI_YAZI/blog eşlemesi veriyor; "memur maaşı" → /memur-zammi-hesaplama'yı bulamıyor (10-22, T19 düzeltir).
+- **Fırsat motoru kök eşlemesi yanıltabilir** ("katılım hesabı" → "halka arza nasıl katılınır"; alt sayfalar görünmüyordu).
+  T19 (10-22) düzeltti: dinamik alt sayfalar dist/'ten, kanonik sayfası belli sorgu `SYNONYMS` haritasına eklenir.
 - **Canlı blog yazıları** (`# OTOMATİK ÜRETİLİR`) şablondan düzenlenir (`content-templates/blog/*.j2` + live-posts.py).
 - **Kanonik URL:** iç linkler '/' ile; worker/index.js 301'leri ve REDIRECTS haritası kalır.
 - **Sitemap:** Google 07-03 → 10-08 arası indirmedi; artık `scripts/gsc-sitemap.py` learn-daily'de gönderiyor.

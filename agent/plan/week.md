@@ -56,7 +56,9 @@ Yeni sayfa = `src/data/tools.ts` kaydı (k: anahtar kelimeler) + Footer TOOL_LIN
   statüyü (ör. 4/b farkları) hesaplayıcıdan çıkar, "e-Devlet'ten kontrol edin" de. 3 örnek profili SGK/resmî broşür
   örneğiyle karşılaştır, sonucu rapora yaz. Bölüm: "SGK hizmet dökümü nasıl alınır" (e-Devlet adımları, belge okuma).
   · Kabul: build geçer; canlıda 3 örnek profil doğru tarih verir; FAQPage; /en-dusuk-emekli-maasi + /bagkur-primi-hesaplama link.
-- [ ] T19 (sistem — konu seçimi doğruluğu) — **opportunity_finder: alt sayfalar + yeni ölçülen sorgular** ·
+- [x] T19 (sistem — konu seçimi doğruluğu) — → 22 ayar bilezik/çeyrek altın → /altin-fiyatlari/* (OTORITE), memur maaşı/emekli
+  promosyon → doğru sayfa (BEKLE), katılım hesabı/emeklilik hesaplama yanlış eşlemeden kurtuldu; SYNONYMS haritası + 9 yeni
+  HEAD_TERMS · commit e595556 · haftalık koşu 10-22 — **opportunity_finder: alt sayfalar + yeni ölçülen sorgular** ·
   `scripts/learn/opportunity_finder.py` sayfa listesi yalnız `src/pages/*.astro` + blog; dinamik route alt sayfalarını
   (`/altin-fiyatlari/<tür>`, `/halka-arz/<slug>` HARİÇ tut — şirket adları gürültü) `dist/**/index.html` ya da sitemap'ten
   ekle. Sonuç: "22 ayar bilezik" → /altin-fiyatlari/22-ayar-bilezik, "çeyrek altın" → /altin-fiyatlari/ceyrek-altin,
