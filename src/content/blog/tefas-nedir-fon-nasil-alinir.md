@@ -75,7 +75,7 @@ Serbest fonlar da TEFAS'ta listelenebilir, ancak çoğu yalnızca **nitelikli ya
 
 "Fon getirileri" ekranı TEFAS'ın en çok bakılan bölümüdür ama en çok yanlış okunan da odur. Dikkat etmen gerekenler:
 
-- **Getiriler geçmiştir.** TEFAS 1 ay, 3 ay, 1 yıl, 3 yıl ve 5 yıllık getirileri gösterir. Geçen yılın birincisi bu yıl sonuncu olabilir.
+- **Getiriler geçmiştir.** TEFAS 1 ay, 3 ay, 6 ay, yılbaşından bugüne, 1 yıl, 3 yıl ve 5 yıl gibi dönemler için getirileri gösterir. Geçen yılın birincisi bu yıl sonuncu olabilir.
 - **Enflasyonla kıyasla.** Yıllık %40 getiri, aynı dönemde enflasyon %33 ise reel olarak çok daha mütevazı bir kazançtır. [Enflasyon hesaplama](/enflasyon-hesaplama) aracıyla reel getiriyi kendin bulabilirsin.
 - **Doğru şeyle kıyasla.** Hisse fonunu BIST 100'le, altın fonunu gram altınla karşılaştır. Endeksin ve gram altının yıllara göre getirisini [BIST getiri](/bist-getiri) ve [altın getiri](/altin-getiri) sayfalarımızda görebilirsin.
 - **Getiriler giderler düşülmüş hâldedir ama stopaj düşülmemiştir.** Ekrandaki oran net fon fiyatı değişimidir; sen satınca kazancından stopaj kesilebilir.
