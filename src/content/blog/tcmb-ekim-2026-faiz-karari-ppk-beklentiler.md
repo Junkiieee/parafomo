@@ -1,8 +1,8 @@
 ---
 title: "TCMB Faiz Kararı 22 Ekim 2026: Beklenti ve Senaryolar"
-description: "TCMB PPK 22 Ekim 2026'da toplanıyor. Politika faizi %37; TCMB anketi ve AA Finans'ta medyan beklenti %36 (100 baz puan indirim). Senaryolar, mevduat ve krediye etkisi."
+description: "TCMB 22 Ekim 2026'da politika faizini 100 baz puan indirerek %37'den %36'ya düşürdü. Karar, beklentiyle kıyas, mevduat ve krediye etkisi, sıradaki PPK 10 Aralık."
 pubDate: 2026-09-30
-updatedDate: 2026-10-20
+updatedDate: 2026-10-23
 category: "Ekonomi"
 tags: ["tcmb faiz kararı", "ppk ekim 2026", "faiz indirimi", "tcmb faiz", "mevduat faizi", "türkiye enflasyonu"]
 readingTime: 7
@@ -11,16 +11,16 @@ featured: false
 sonuc: "tcmb:2026-10-22"
 sonucBaslik: "TCMB Ekim 2026 Faiz Kararı Açıklandı: Politika Faizi %{oran} ({karar})"
 faq:
-  - q: "TCMB Ekim 2026 faiz kararı ne zaman açıklanıyor?"
-    a: "TCMB Para Politikası Kurulu (PPK) 22 Ekim 2026 Perşembe günü toplanıyor. Karar TSİ 14:00'te tcmb.gov.tr'de açıklanır; toplantı özeti 30 Ekim'de yayımlanır."
-  - q: "Ekim 2026'da TCMB faiz indirecek mi?"
-    a: "Piyasa beklentisi indirim yönünde. TCMB'nin Ekim 2026 Piyasa Katılımcıları Anketi'nde 22 Ekim için politika faizi beklentisi %36; AA Finans anketinde 20 ekonomistten 19'u 100, biri 200 baz puan indirim bekliyor. Politika faizi Ocak'tan beri %37'de sabit."
+  - q: "TCMB Ekim 2026 faiz kararı ne zaman açıklandı?"
+    a: "TCMB Para Politikası Kurulu (PPK) kararı 22 Ekim 2026 Perşembe TSİ 14:00'te açıklandı (basın duyurusu 2026-45). Toplantı özeti 30 Ekim'de yayımlanır; sıradaki PPK toplantısı 10 Aralık 2026."
+  - q: "TCMB Ekim 2026'da faiz indirdi mi?"
+    a: "Evet. TCMB 22 Ekim 2026'da politika faizini 100 baz puan indirerek %37'den %36'ya düşürdü. Karar beklentiyle aynı çıktı: TCMB Piyasa Katılımcıları Anketi'nde medyan %36, AA Finans anketinde 20 ekonomistten 19'u 100 baz puan indirim bekliyordu. Faiz Ocak'tan beri %37'de sabitti."
   - q: "TCMB politika faizi şu an kaç?"
-    a: "Bir hafta vadeli repo (politika) faizi %37. TCMB Ocak 2026'da faizi %38'den %37'ye indirdi; Mart, Nisan, Haziran, Temmuz ve Eylül toplantılarında sabit tuttu. Gecelik borç verme faizi %40, borçlanma faizi %35,5."
+    a: "22 Ekim 2026 kararından sonra bir hafta vadeli repo (politika) faizi %36. Gecelik borç verme faizi %40'tan %39'a, borçlanma faizi %35,5'ten %34,5'e indirildi. 2026'da TCMB Ocak'ta %38'den %37'ye indirmiş, Mart-Eylül arasındaki beş toplantıda sabit tutmuştu."
   - q: "TCMB faiz kararı mevduat faizini ne zaman etkiler?"
     a: "Kararın ardından bankalar genellikle 24–72 saat içinde mevduat faiz oranlarını günceller. Mevcut vadeli hesabınız karardan etkilenmez; etki yeni açılan hesapta veya vade yenilemesinde görülür."
   - q: "Yıl sonu politika faizi beklentisi ne?"
-    a: "TCMB Ekim anketinde ve AA Finans anketinde yıl sonu politika faizi beklentisinin medyanı %35. TCMB anketine göre 12 ay sonrası için beklenti %29,01."
+    a: "Karar öncesi TCMB Ekim anketinde ve AA Finans anketinde yıl sonu politika faizi beklentisinin medyanı %35. TCMB anketine göre 12 ay sonrası için beklenti %29,01. Yıl sonuna kalan tek toplantı 10 Aralık 2026 PPK'sı."
 shorts:
   - "TCMB politika faizini Ocak'tan beri yüzde otuz yedide tutuyor."
   - "Piyasa 22 Ekim'de yüz baz puanlık indirimle yüzde otuz altıyı bekliyor."
@@ -39,9 +39,11 @@ shorts_visuals:
   - "concept|bank savings deposit money counter"
 ---
 
-22 Ekim 2026 Perşembe, TCMB Para Politikası Kurulu'nun (PPK) yılın yedinci toplantı günü. Politika faizi Ocak'tan beri **%37**'de sabit; piyasanın ortak beklentisi bu kez **100 baz puan indirimle %36**. Bu yazıda beklenti anketlerini, kararı şekillendiren verileri ve mevduatınıza, kredinize yansıyacak üç senaryoyu anlatıyoruz. Toplantı takvimi ve geçmiş kararlar için: [TCMB faiz takvimi](/tcmb-faiz-takvimi/).
+TCMB Para Politikası Kurulu (PPK), yılın yedinci toplantısında (22 Ekim 2026) politika faizini **100 baz puan indirerek %37'den %36'ya** düşürdü. Gecelik borç verme faizi %39'a, borçlanma faizi %34,5'e indi. Karar, piyasanın ortak beklentisiyle birebir aynı çıktı. Aşağıda karar öncesi beklentileri, kararı şekillendiren verileri ve mevduatınıza, kredinize etkisini bulabilirsiniz. Sıradaki PPK toplantısı **10 Aralık 2026**. Takvim ve geçmiş kararlar: [TCMB faiz takvimi](/tcmb-faiz-takvimi/).
 
-## Son durum (20 Ekim 2026): Piyasa ne bekliyor?
+> Kaynak: [TCMB basın duyurusu 2026-45](https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2026/DUY2026-45).
+
+## Karar öncesi beklenti (20 Ekim 2026)
 
 | Kaynak | 22 Ekim beklentisi | Yıl sonu beklentisi |
 |---|---|---|
@@ -64,11 +66,12 @@ shorts_visuals:
 | 11 Haziran 2026 | Sabit | %37 |
 | 23 Temmuz 2026 | Sabit | %37 |
 | 10 Eylül 2026 | Sabit | %37 |
-| **22 Ekim 2026** | **Beklenti: 100 bp indirim** | **Beklenti: %36** |
+| **22 Ekim 2026** | **100 bp indirim** | **%36** |
+| 10 Aralık 2026 | Sıradaki toplantı | — |
 
-> Kaynak: TCMB basın duyuruları. Bir sonraki toplantı 10 Aralık 2026. Eylül kararının ayrıntısı: [TCMB Eylül 2026 Faiz Kararı](/blog/tcmb-eylul-2026-faiz-karari-ppk-beklentiler/).
+> Kaynak: TCMB basın duyuruları. Eylül kararının ayrıntısı: [TCMB Eylül 2026 Faiz Kararı](/blog/tcmb-eylul-2026-faiz-karari-ppk-beklentiler/).
 
-TCMB beş toplantıdır faizi sabit tutuyor; enflasyon %30'un altına inmeden indirime dönmedi. Bu yüzden 22 Ekim, yılın ilk indirimden sonraki ikinci adımı olup olmayacağı açısından kritik.
+TCMB beş toplantı boyunca faizi sabit tuttu; yıllık enflasyon %30'un altına inince indirime döndü. 22 Ekim kararı, Ocak'taki indirimden sonra yılın ikinci adımı oldu.
 
 ---
 
@@ -92,9 +95,11 @@ Toplantı öncesinde kurda sert oynaklık olursa PPK adımını küçültebilir 
 
 ---
 
-## 3 senaryo ve piyasalara etkisi
+## Karar öncesi 3 senaryo ve piyasalara etkisi
 
-### Senaryo A — 100 baz puan indirim (%36)
+Gerçekleşen karar **Senaryo A** oldu. Diğer iki senaryo karşılaştırma için duruyor.
+
+### Senaryo A — 100 baz puan indirim (%36) ✅ gerçekleşti
 
 **Konum:** Piyasa uzlaşısı (iki ankette de medyan).
 
@@ -143,8 +148,8 @@ Enflasyondaki düşüşü hızlandırılmış gevşeme sinyali olarak okuyan bir
 
 ## Mevduat sahipleri için pratik adımlar
 
-1. **Vadeniz 22 Ekim'den önce mi dolacak?** Kararı bekleyin; karar sonrasındaki ilk 24–48 saatte bankaların revize oranlarını karşılaştırın. Net getiriyi [mevduat faizi hesaplama](/mevduat-faizi-hesaplama/) aracıyla görün.
-2. **Uzun vade kilitleyecekseniz:** İndirim bekleniyorsa karar öncesi kilitlemek avantaj sağlayabilir; ancak sabit karar ihtimalini de hesaba katın.
+1. **Vadeniz yenileniyorsa:** Karar sonrasındaki günlerde bankaların revize oranlarını karşılaştırın; indirim yeni hesaplara kademeli yansır. Net getiriyi [mevduat faizi hesaplama](/mevduat-faizi-hesaplama/) aracıyla görün.
+2. **Uzun vade kilitleyecekseniz:** Yıl sonu faiz beklentisi %35; oranlar daha da gerilemeden önce vade uzunluğunu kendi nakit ihtiyacınıza göre değerlendirin.
 3. **Reel getiriyi kontrol edin:** Nominal oran yanıltıcı olabilir; [reel faiz](/blog/reel-faiz-nedir/) enflasyonun altında kalıyorsa paranız erir.
 4. **Çeşitlendirin:** Alternatifler için [Türkiye'de En İyi Yatırım Araçları 2026](/blog/turkiyede-en-iyi-yatirim-araclari-2026/).
 
@@ -152,18 +157,16 @@ Enflasyondaki düşüşü hızlandırılmış gevşeme sinyali olarak okuyan bir
 
 ## Kredi planlayanlar için zamanlama
 
-1. **22 Ekim öncesi:** Birden fazla bankadan ön teklif alın.
-2. **Karar günü:** Hemen harekete geçmeyin — bankalar fiyatı 24–72 saatte günceller.
-3. **Karar sonrası 1 hafta:** Revize teklifleri yeniden isteyin; taksiti [konut kredisi hesaplama](/konut-kredisi-hesaplama/) veya [ihtiyaç kredisi hesaplama](/ihtiyac-kredisi-hesaplama/) ile karşılaştırın.
+1. **Karar sonrası ilk günler:** Bankalar fiyatı genellikle 24–72 saatte günceller; birden fazla bankadan teklif alın.
+2. **Karar sonrası 1 hafta:** Revize teklifleri yeniden isteyin; taksiti [konut kredisi hesaplama](/konut-kredisi-hesaplama/) veya [ihtiyaç kredisi hesaplama](/ihtiyac-kredisi-hesaplama/) ile karşılaştırın.
 
 ---
 
 ## Özet
 
-- **Toplantı:** 22 Ekim 2026 Perşembe, TSİ 14:00.
-- **Mevcut faiz:** %37 (Ocak'tan beri sabit).
-- **Beklenti:** 100 baz puan indirimle %36 (TCMB anketi + AA Finans); yıl sonu %35.
+- **Karar (22 Ekim 2026):** 100 baz puan indirim, politika faizi %37 → **%36**; gecelik borç verme %39, borçlanma %34,5.
+- **Beklentiyle kıyas:** Uzlaşıyla aynı (TCMB anketi + AA Finans medyanı %36); yıl sonu beklentisi %35.
 - **Dayanak:** Eylül yıllık TÜFE %29,73 — %30'un altına indi.
-- **Sıradaki:** 28 Ekim Fed kararı, 30 Ekim PPK özeti, 3 Kasım Ekim TÜFE, 10 Aralık PPK.
+- **Sıradaki:** 28 Ekim Fed kararı, 30 Ekim PPK özeti, 3 Kasım Ekim TÜFE ([önizleme](/blog/tuik-ekim-2026-enflasyon-verisi-beklentiler/)), **10 Aralık PPK**.
 
 > **Yasal uyarı:** Bu yazı yalnızca bilgilendirme amaçlıdır; yatırım tavsiyesi değildir. Yatırım kararlarınız için lisanslı bir finansal danışmana başvurun.

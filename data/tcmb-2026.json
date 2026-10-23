@@ -91,7 +91,17 @@
     {
       "range": "22 Ekim",
       "decisionDate": "2026-10-22",
-      "tsiTime": "14:00"
+      "tsiTime": "14:00",
+      "result": {
+        "decision": "cut",
+        "bp": -100,
+        "rate": 36.0,
+        "prev": 37.0,
+        "no": "2026-45",
+        "lending": 39.0,
+        "borrowing": 34.5,
+        "source": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2026/DUY2026-45"
+      }
     },
     {
       "range": "10 Aralık",
