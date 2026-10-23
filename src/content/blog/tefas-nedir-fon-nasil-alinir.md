@@ -17,6 +17,23 @@ faq:
     a: "Fonlar ileri fiyatla işlem görür: talimat anında fiyat bilinmez. Para piyasası fonlarında alım ve satım genellikle aynı gün ya da ertesi gün sonuçlanırken hisse senedi fonlarında satış tutarı genellikle T+2, yabancı ve döviz fonlarında T+3 veya daha uzun sürede hesaba geçer."
   - q: "TEFAS'ta fon alırken komisyon ödenir mi?"
     a: "Çoğu banka ve aracı kurum TEFAS fon alım-satımında ayrı komisyon almaz. Asıl maliyet fonun yıllık yönetim ücreti ve diğer giderleridir; bunlar fon fiyatına günlük olarak yansır ve toplam gider oranı olarak açıklanır."
+shorts:
+  - "Arkadaşın \"TEFAS'tan fon aldım\" dedi, bu ne demek?"
+  - "TEFAS, Türkiye'deki yatırım fonlarını tek çatı altında toplayan, fon alışverişi yapılan dijital bir pazar yeri gibidir."
+  - "Bankan hangisi olursa olsun, kendi uygulamandan neredeyse her portföy şirketinin fonunu alabilirsin, eskisi gibi duvar yok."
+  - "Fon fiyatı gün sonunda hesaplandığı için talimatı 13:30'dan önce vermelisin, yoksa işlemin sonraki iş gününe kalır."
+  - "Peki fon seçerken hangi bilgiye bakmalısın? Abone ol, parafomo.com'da adım adım rehber seni bekliyor."
+shorts_broll:
+  - "stock market chart"
+  - "smartphone banking app"
+  - "investment fund"
+  - "turkish lira money"
+shorts_visuals:
+  - "place|Borsa İstanbul"
+  - "object|smartphone banking app"
+  - "building|Borsa İstanbul"
+  - "object|wall clock"
+  - "logo|ParaFOMO logo"
 ---
 
 Bir arkadaşın "TEFAS'tan fon aldım" dediğinde neyin kastedildiğini merak ettiysen doğru yerdesin. **TEFAS nedir** sorusunun kısa cevabı: Türkiye'deki yatırım fonlarını tek bir pazar yerinde toplayan, bankan hangisi olursa olsun neredeyse her fonu almanı sağlayan elektronik platform. Bu rehberde TEFAS'ın nasıl çalıştığını, **TEFAS'tan fon nasıl alınır** adım adım, 13:30 kuralını, valör sürelerini, fon türlerini ve vergiyi tek yerde topladık.
