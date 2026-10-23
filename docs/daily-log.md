@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-10-23 — TEFAS Nedir, Fon Nasıl Alınır? 2026 Adım Adım Rehber
+
+**Yayınlanan yazı:** [TEFAS Nedir, Fon Nasıl Alınır? 2026 Adım Adım Rehber](/blog/tefas-nedir-fon-nasil-alinir)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — "tefas" hacim 160 + "fon getirileri" 14)
+
+---
+
 ## 2026-10-22 — Findeks Kredi Notu Nedir, Nasıl Yükselir? Not Aralıkları 2026
 
 **Yayınlanan yazı:** [Findeks Kredi Notu Nedir, Nasıl Yükselir? Not Aralıkları 2026](/blog/findeks-kredi-notu-nedir-nasil-yukselir)
