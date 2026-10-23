@@ -1,0 +1,467 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+
+// Emeklilik (yaşlılık aylığı) şartları — kaynaklar (mevzuat.gov.tr 5510 güncel metni, 2026-10-23 okundu):
+// • 08.09.1999 ve öncesi (EYT): 5510 geçici 95 (7438 s.K.) → 506 geçici 81(B)'deki yaş DIŞINDAKİ şartlar.
+//   4/a tablosu: SGK Genelgesi 2023/13 (sigortalılık süresi kadın 20 / erkek 25 yıl; prim 5000–5975 gün).
+//   4/b (1479 geç.10) ve 4/c (5434 geç.205) tabloları burada hesaplanmaz → e-Devlet.
+// • 09.09.1999–30.04.2008: 5510 geçici 9 — 4/a: K58/E60 + 7000 gün YA DA K58/E60 + 25 yıl + 4500 gün;
+//   4/b: K58/E60 + 25 tam yıl prim YA DA K60/E62 + 15 tam yıl; 4/c: K58/E60 + 25 tam yıl YA DA 61 yaş + 15 tam yıl.
+// • 01.05.2008 sonrası: 5510 md.28 — K58/E60 + 9000 gün (4/a için 7200); yaş 2036'dan itibaren kademeli 65'e,
+//   yaş haddi PRİM ŞARTININ DOLDUĞU tarihte geçerli olana göre; alternatif: yaş + 3 (en çok 65) + 5400 gün.
+// 1 tam yıl prim = 360 gün.
+
+// SGK Genelgesi 2023/13 tablosu: [giriş tarihi bitişi (dahil), prim günü]
+const EYT_KADIN: [string, number][] = [
+  ['1984-05-23', 5000], ['1985-05-23', 5000], ['1986-05-23', 5075], ['1987-05-23', 5150], ['1988-05-23', 5225],
+  ['1989-05-23', 5300], ['1990-05-23', 5375], ['1991-05-23', 5450], ['1992-05-23', 5525], ['1993-05-23', 5600],
+  ['1994-05-23', 5675], ['1995-05-23', 5750], ['1996-05-23', 5825], ['1997-05-23', 5900], ['1999-09-08', 5975],
+];
+const EYT_ERKEK: [string, number][] = [
+  ['1980-11-23', 5000], ['1982-05-23', 5075], ['1983-11-23', 5150], ['1985-05-23', 5225], ['1986-11-23', 5300],
+  ['1988-05-23', 5375], ['1989-11-23', 5450], ['1991-05-23', 5525], ['1992-11-23', 5600], ['1994-05-23', 5675],
+  ['1995-11-23', 5750], ['1997-05-23', 5825], ['1998-11-23', 5900], ['1999-09-08', 5975],
+];
+// 5510 md.28/2-b: [yıl başı, kadın, erkek]
+const YAS_2008: [number, number, number][] = [
+  [0, 58, 60], [2036, 59, 61], [2038, 60, 62], [2040, 61, 63], [2042, 62, 64], [2044, 63, 65], [2046, 64, 65], [2048, 65, 65],
+];
+
+const RULES = { EYT_KADIN, EYT_ERKEK, YAS_2008 };
+
+// Sunucu tarafı örnek profiller (aynı mantık istemcide de var)
+type P = { dogum: string; kadin: boolean; giris: string; statu: '4a' | '4b' | '4c'; prim: number; bugun: string };
+const D = (s: string) => new Date(s + 'T00:00:00Z');
+const addY = (d: Date, y: number) => new Date(Date.UTC(d.getUTCFullYear() + y, d.getUTCMonth(), d.getUTCDate()));
+const addD = (d: Date, n: number) => new Date(d.getTime() + Math.ceil(n) * 86400000);
+const maxD = (...a: Date[]) => new Date(Math.max(...a.map((x) => x.getTime())));
+const fmtD = (d: Date) =>
+  new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(d);
+const primTarihi = (bugun: Date, prim: number, gerek: number) =>
+  prim >= gerek ? new Date(0) : addD(bugun, ((gerek - prim) * 365.25) / 360);
+const yasHaddi = (t: Date, kadin: boolean) => {
+  let r = YAS_2008[0];
+  for (const row of YAS_2008) if (t.getUTCFullYear() >= row[0]) r = row;
+  return kadin ? r[1] : r[2];
+};
+function hesapla(p: P) {
+  const bugun = D(p.bugun), dg = D(p.dogum), gr = D(p.giris);
+  if (p.giris <= '1999-09-08') {
+    const tab = p.kadin ? EYT_KADIN : EYT_ERKEK;
+    const gun = (tab.find((r) => p.giris <= r[0]) || tab[tab.length - 1])[1];
+    const yil = p.kadin ? 20 : 25;
+    return { tarih: maxD(addY(gr, yil), primTarihi(bugun, p.prim, gun), D('2023-03-03')), sart: `yaş şartı yok · ${yil} yıl sigortalılık · ${gun} gün` };
+  }
+  if (p.giris <= '2008-04-30') {
+    const yas = p.kadin ? 58 : 60;
+    const a = maxD(addY(dg, yas), primTarihi(bugun, p.prim, 7000));
+    const b = maxD(addY(dg, yas), addY(gr, 25), primTarihi(bugun, p.prim, 4500));
+    return a <= b
+      ? { tarih: a, sart: `${yas} yaş · 7000 gün` }
+      : { tarih: b, sart: `${yas} yaş · 25 yıl sigortalılık · 4500 gün` };
+  }
+  const gerek = p.statu === '4a' ? 7200 : 9000;
+  const pt = primTarihi(bugun, p.prim, gerek);
+  const yas = yasHaddi(pt, p.kadin);
+  return { tarih: maxD(addY(dg, yas), pt), sart: `${yas} yaş · ${gerek} gün`, pt, yas };
+}
+
+const BUGUN = '2026-10-23';
+const ORNEKLER = [
+  { ad: 'Kadın, SSK, ilk giriş 8 Haziran 1998, 5975 gün (SGK Genelgesi 2023/13 örneği)', p: { dogum: '1980-01-01', kadin: true, giris: '1998-06-08', statu: '4a', prim: 5975, bugun: BUGUN } as P },
+  { ad: 'Erkek, SSK, doğum 1 Ocak 1975, ilk giriş 1 Mart 2003, 7000 gün dolu', p: { dogum: '1975-01-01', kadin: false, giris: '2003-03-01', statu: '4a', prim: 7000, bugun: BUGUN } as P },
+  { ad: 'Kadın, SSK, doğum 1 Ocak 1992, ilk giriş 2010, 2000 gün, çalışmaya devam', p: { dogum: '1992-01-01', kadin: true, giris: '2010-09-01', statu: '4a', prim: 2000, bugun: BUGUN } as P },
+].map((o) => ({ ...o, r: hesapla(o.p) }));
+
+const faq = [
+  {
+    q: 'Ne zaman emekli olurum? (2026)',
+    a: 'Emeklilik tarihi üç bilgiye bağlıdır: ilk sigorta giriş tarihi, prim gün sayısı ve yaş. 8 Eylül 1999 ve öncesinde sigortalı olanlarda (EYT) yaş şartı yoktur; 9 Eylül 1999–30 Nisan 2008 arası girenlerde kadın 58, erkek 60 yaş ve 7000 gün; 1 Mayıs 2008 ve sonrası girenlerde kadın 58, erkek 60 yaş ve SSK’lılar için 7200, Bağ-Kur ve memurlar için 9000 gün gerekir. Kesin tarihi e-Devlet’teki hizmet dökümünüz belirler.',
+  },
+  {
+    q: 'Emeklilik yaşı kaç? (kadın / erkek)',
+    a: '1999–2008 arası ilk kez sigortalı olanlarda kadın 58, erkek 60. 2008 sonrası girenlerde de kadın 58, erkek 60’tır; ancak prim gün şartını 2036 ve sonrasında dolduranlar için yaş kademeli olarak artar ve 2048’den itibaren herkes için 65 olur (5510 sayılı Kanun md.28). Belirleyici olan doğum yılı değil, prim gününüzün dolduğu yıldır.',
+  },
+  {
+    q: 'EYT’lilerin emeklilik şartı nedir?',
+    a: '8 Eylül 1999 ve öncesinde ilk kez sigortalı olanlar 3 Mart 2023’ten itibaren yaş şartı aranmadan emekli olabilir (7438 sayılı Kanun). SSK’lı (4/a) kadınlar için 20 yıl, erkekler için 25 yıl sigortalılık süresi ve ilk giriş tarihine göre 5000 ile 5975 arasında prim günü gerekir. Bağ-Kur ve memurlarda süre ve prim tablosu farklıdır; e-Devlet’ten kontrol edin.',
+  },
+  {
+    q: '7200 gün mü 9000 gün mü?',
+    a: '1 Mayıs 2008 ve sonrasında ilk kez sigortalı olan SSK’lılar (4/a, hizmet akdiyle çalışanlar) 7200 gün; Bağ-Kur’lular (4/b) ve memurlar (4/c) 9000 gün prim ödemelidir. 1999–2008 arası giren SSK’lılarda şart 7000 gündür (ya da 25 yıl sigortalılık + 4500 gün).',
+  },
+  {
+    q: 'Prim günü dolmadan yaşım doldu, ne olur?',
+    a: '2008 sonrası girenler, yaş haddine 3 yıl eklenmiş yaşta (en çok 65) ve en az 5400 gün primle yaşlılık aylığı alabilir. 1999–2008 arası giren SSK’lılar ise 25 yıl sigortalılık ve 4500 günle yaş şartını beklerler. Aylık tutarı prim gün sayısına göre daha düşük olur.',
+  },
+  {
+    q: 'SGK hizmet dökümü nasıl alınır?',
+    a: 'e-Devlet’e (turkiye.gov.tr) giriş yapın, arama kutusuna “SGK Tescil ve Hizmet Dökümü” yazın ve hizmeti açın. Ekranda ilk işe giriş tarihiniz, işyerleri ve dönem dönem prim günleriniz listelenir; “Barkodlu Belge Oluştur” ile resmî PDF alabilirsiniz. Toplam prim gün sayınızı bu hesaplayıcıya girebilirsiniz.',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Hesaplama Araçları', url: '/hesaplama-araclari/' },
+  { name: 'Emeklilik Hesaplama', url: '/emeklilik-hesaplama/' },
+];
+---
+
+<BaseLayout
+  image="/og/emeklilik-hesaplama.png"
+  title="Emeklilik Hesaplama 2026: Ne Zaman Emekli Olurum? Yaş ve Prim"
+  description="Emeklilik hesaplama 2026: ilk sigorta girişi, prim günü ve doğum tarihine göre emeklilik yaşı ve tarihi. EYT, 1999-2008 ve 2008 sonrası; SSK 7200, Bağ-Kur 9000 gün."
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Emeklilik</p>
+      <h1>Emeklilik Hesaplama: Ne Zaman Emekli Olurum? (2026)</h1>
+      <p class="lede">
+        İlk sigorta giriş tarihiniz, prim gün sayınız ve doğum tarihinizi girin; <strong>emeklilik yaşınızı,
+        gereken prim gününü ve tahmini emeklilik tarihinizi</strong> görün. Kurallar 5510 sayılı Kanun’un
+        güncel metninden alınmıştır.
+      </p>
+    </header>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Doğum tarihi</span>
+          <input type="date" id="in-dg" value="1985-01-01" />
+        </label>
+        <label>
+          <span>Cinsiyet</span>
+          <select id="in-c"><option value="k">Kadın</option><option value="e" selected>Erkek</option></select>
+        </label>
+        <label>
+          <span>İlk sigorta giriş tarihi</span>
+          <input type="date" id="in-gr" value="2005-06-01" />
+        </label>
+        <label>
+          <span>Statü</span>
+          <select id="in-s">
+            <option value="4a" selected>4/a — SSK (hizmet akdiyle çalışan)</option>
+            <option value="4b">4/b — Bağ-Kur (esnaf, şirket ortağı)</option>
+            <option value="4c">4/c — Memur (Emekli Sandığı)</option>
+          </select>
+        </label>
+        <label>
+          <span>Bugüne kadarki toplam prim günü</span>
+          <input type="number" id="in-p" value="4500" min="0" max="20000" step="1" inputmode="numeric" />
+        </label>
+        <label class="check">
+          <input type="checkbox" id="in-d" checked />
+          <span>Kesintisiz çalışmaya devam edeceğim (yılda 360 gün)</span>
+        </label>
+        <p class="input-hint">
+          Prim gününüzü ve ilk giriş tarihinizi e-Devlet’teki <a href="#hizmet-dokumu">SGK hizmet dökümünden</a>
+          alın. Askerlik/doğum borçlanması yaptıysanız borçlandığınız günleri de ekleyin.
+        </p>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Tahmini emeklilik tarihi</span>
+          <span class="result-value" id="out-t">—</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item"><span class="split-label">Kapsam</span><span class="split-val" id="out-k">—</span></div>
+          <div class="split-item"><span class="split-label">Emeklilik yaşı</span><span class="split-val" id="out-y">—</span></div>
+          <div class="split-item"><span class="split-label">Gereken prim günü</span><span class="split-val" id="out-g">—</span></div>
+          <div class="split-item"><span class="split-label">Prim şartının dolduğu tarih</span><span class="split-val" id="out-pt">—</span></div>
+          <div class="split-item"><span class="split-label">Emeklilikteki yaşınız</span><span class="split-val" id="out-ey">—</span></div>
+        </div>
+        <p class="result-note" id="out-note"></p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır; SGK’nın resmî tahsis kararı yerine geçmez. Fiilî hizmet zammı,
+      engellilik, maden işçiliği, borçlanmalar ve birden fazla statüde çalışma (son 7 yıl kuralı) hesaba katılmaz.
+      Kesin sonuç için e-Devlet’teki “Hizmet Dökümü” ve “Emeklilik Hesaplama” hizmetlerine bakın. · Kaynak:
+      <a href="https://www.mevzuat.gov.tr/MevzuatMetin/1.5.5510.pdf" rel="noopener">5510 sayılı Kanun</a> md.28,
+      geçici 9, geçici 95; SGK Genelgesi 2023/13. Kontrol: 23 Ekim 2026.
+    </p>
+
+    <section class="table-block">
+      <h2>Emeklilik şartları: 3 dönem</h2>
+      <table class="rate-table">
+        <thead><tr><th>İlk giriş</th><th>Statü</th><th>Yaş</th><th>Prim / süre</th></tr></thead>
+        <tbody>
+          <tr><td>8.9.1999 ve öncesi (EYT)</td><td>4/a SSK</td><td>Yaş şartı yok</td><td>Kadın 20 yıl, erkek 25 yıl sigortalılık + 5000–5975 gün</td></tr>
+          <tr><td>9.9.1999 – 30.4.2008</td><td>4/a SSK</td><td>Kadın 58, erkek 60</td><td>7000 gün ya da 25 yıl sigortalılık + 4500 gün</td></tr>
+          <tr><td>9.9.1999 – 30.4.2008</td><td>4/b Bağ-Kur</td><td>K 58 / E 60 · ya da K 60 / E 62</td><td>25 tam yıl (9000 gün) · ya da 15 tam yıl (5400 gün)</td></tr>
+          <tr><td>9.9.1999 – 30.4.2008</td><td>4/c Memur</td><td>K 58 / E 60 · ya da 61</td><td>25 tam yıl (9000 gün) · ya da 15 tam yıl (5400 gün)</td></tr>
+          <tr><td>1.5.2008 ve sonrası</td><td>4/a SSK</td><td>K 58 / E 60 (2036’dan itibaren kademeli 65)</td><td>7200 gün</td></tr>
+          <tr><td>1.5.2008 ve sonrası</td><td>4/b · 4/c</td><td>K 58 / E 60 (2036’dan itibaren kademeli 65)</td><td>9000 gün</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">
+        Kaynak: 5510 sayılı Kanun geçici 9 ve md.28 (mevzuat.gov.tr). 1999–2008 Bağ-Kur ve memur için ikinci
+        seçenek (15 tam yıl) kanunda “kısmi yaşlılık aylığı” olarak geçer; aylık tutarı daha düşüktür.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>EYT prim günü tablosu (8 Eylül 1999 ve öncesi, SSK)</h2>
+      <table class="rate-table">
+        <thead><tr><th>Kadın — bu tarihe kadar giriş</th><th>Prim günü</th><th>Erkek — bu tarihe kadar giriş</th><th>Prim günü</th></tr></thead>
+        <tbody>
+          {EYT_KADIN.map((r, i) => (
+            <tr>
+              <td>{fmtD(D(r[0]))}</td><td>{r[1]}</td>
+              <td>{EYT_ERKEK[i] ? fmtD(D(EYT_ERKEK[i][0])) : '—'}</td><td>{EYT_ERKEK[i] ? EYT_ERKEK[i][1] : ''}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Sigortalılık süresi: kadın 20 yıl, erkek 25 yıl. Kaynak: 506 s.K. geçici 81(B), 5510 s.K. geçici 95 (7438
+        s.K., 3 Mart 2023), SGK Genelgesi 2023/13 tablosu. Bağ-Kur ve memurların EYT tablosu farklıdır; bu hesaplayıcı
+        onları hesaplamaz.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>2008 sonrası emeklilik yaşı tablosu (5510 md.28)</h2>
+      <table class="rate-table">
+        <thead><tr><th>Prim gün şartının dolduğu yıl</th><th>Kadın</th><th>Erkek</th></tr></thead>
+        <tbody>
+          {YAS_2008.map((r, i) => (
+            <tr>
+              <td>{r[0] === 0 ? '2035 ve öncesi' : YAS_2008[i + 1] ? `${r[0]}–${YAS_2008[i + 1][0] - 1}` : `${r[0]} ve sonrası`}</td>
+              <td>{r[1]}</td><td>{r[2]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Yaş haddi doğum yılınıza göre değil, prim gün şartını doldurduğunuz tarihte geçerli olana göre belirlenir.
+        Prim günü yetmeyenler yaş haddine 3 yıl eklenmiş yaşta (en çok 65) 5400 günle aylık alabilir.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Örnek hesaplar</h2>
+      <table class="rate-table">
+        <thead><tr><th>Profil</th><th>Şart</th><th>Emeklilik tarihi</th></tr></thead>
+        <tbody>
+          {ORNEKLER.map((o) => (
+            <tr><td>{o.ad}</td><td>{o.r.sart}</td><td>{fmtD(o.r.tarih)}</td></tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Üçüncü örnekte 7200 gün {ORNEKLER[2].r.pt?.getUTCFullYear()} yılında dolar; o yıl geçerli yaş haddi {ORNEKLER[2].r.yas} olduğu için emeklilik yaşı 58 değil {ORNEKLER[2].r.yas}’dir. Tablo ilk sütundaki tarihe kadar (dahil) girişleri gösterir.
+      </p>
+    </section>
+
+    <section class="prose-block" id="hizmet-dokumu">
+      <h2>SGK hizmet dökümü nasıl alınır ve okunur?</h2>
+      <p>
+        <strong>1.</strong> <a href="https://www.turkiye.gov.tr" rel="noopener">turkiye.gov.tr</a>’ye e-Devlet şifresi
+        ya da e-imza ile girin. <strong>2.</strong> Arama kutusuna “SGK Tescil ve Hizmet Dökümü” yazın ve hizmeti açın.
+        <strong>3.</strong> Ekranda ilk işe giriş tarihiniz, statünüz (4/a, 4/b, 4/c), çalıştığınız işyerleri ve her
+        dönem için prim gün sayıları listelenir. <strong>4.</strong> Resmî belge gerekiyorsa “Barkodlu Belge Oluştur”
+        ile PDF indirin.
+      </p>
+      <p>
+        <strong>Okurken dikkat:</strong> “İlk işe giriş tarihi” sizin hangi döneme (EYT, 1999–2008, 2008 sonrası)
+        girdiğinizi belirler. Toplam prim gününü hesaplayıcıya girin; askerlik veya doğum borçlanması yaptıysanız
+        ödenen günler dökümde ayrıca görünür. Farklı statülerde çalıştıysanız aylık, son 7 yıldaki fiilî hizmetin
+        çoğunun geçtiği statüye göre bağlanır.
+      </p>
+      <p class="cta-line">
+        Emeklilikte ne alırım: <a href="/en-dusuk-emekli-maasi/">en düşük emekli maaşı</a>,
+        <a href="/emekli-zammi-hesaplama/">emekli zammı hesaplama</a>,
+        <a href="/emekli-promosyonu/">emekli promosyonu</a>. Esnafsanız:
+        <a href="/bagkur-primi-hesaplama/">Bağ-Kur primi hesaplama</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p set:html={f.a} />
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ RULES }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const D = (s) => new Date(s + 'T00:00:00Z');
+      const addY = (d, y) => new Date(Date.UTC(d.getUTCFullYear() + y, d.getUTCMonth(), d.getUTCDate()));
+      const addD = (d, n) => new Date(d.getTime() + Math.ceil(n) * 86400000);
+      const maxD = (...a) => new Date(Math.max(...a.map((x) => x.getTime())));
+      const fd = (d) => new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(d);
+      const n = new Date();
+      const bugun = new Date(Date.UTC(n.getFullYear(), n.getMonth(), n.getDate()));
+      const yasOf = (dg, t) => {
+        let y = t.getUTCFullYear() - dg.getUTCFullYear();
+        if (t.getUTCMonth() < dg.getUTCMonth() || (t.getUTCMonth() === dg.getUTCMonth() && t.getUTCDate() < dg.getUTCDate())) y--;
+        return y;
+      };
+      function yasHaddi(t, kadin) {
+        let r = RULES.YAS_2008[0];
+        for (const row of RULES.YAS_2008) if (t.getUTCFullYear() >= row[0]) r = row;
+        return kadin ? r[1] : r[2];
+      }
+      function update() {
+        const dgS = $('in-dg').value, grS = $('in-gr').value;
+        const kadin = $('in-c').value === 'k', st = $('in-s').value;
+        const prim = Math.max(0, Math.floor(+$('in-p').value || 0)), devam = $('in-d').checked;
+        const set = (o) => Object.entries(o).forEach(([k, v]) => ($(k).textContent = v));
+        if (!dgS || !grS) return;
+        const dg = D(dgS), gr = D(grS);
+        const pt = (g) => (prim >= g ? new Date(0) : devam ? addD(bugun, ((g - prim) * 365.25) / 360) : null);
+        let kapsam, yasT, gerek, ptar, tarih, not = '';
+        if (grS <= '1999-09-08') {
+          kapsam = 'EYT (8.9.1999 ve öncesi)';
+          if (st !== '4a') {
+            set({ 'out-t': 'e-Devlet’ten kontrol edin', 'out-k': kapsam, 'out-y': 'Yaş şartı yok', 'out-g': '—', 'out-pt': '—', 'out-ey': '—',
+              'out-note': 'EYT’li Bağ-Kur (1479 geç.10) ve memur (5434 geç.205) için hizmet yılı tablosu farklıdır; bu araç yalnız SSK’lıları hesaplar.' });
+            return;
+          }
+          const tab = kadin ? RULES.EYT_KADIN : RULES.EYT_ERKEK;
+          gerek = (tab.find((r) => grS <= r[0]) || tab[tab.length - 1])[1];
+          const yil = kadin ? 20 : 25;
+          yasT = 'Yaş şartı yok';
+          ptar = pt(gerek);
+          tarih = ptar && maxD(addY(gr, yil), ptar, D('2023-03-03'));
+          not = `${yil} yıl sigortalılık süresi ${fd(addY(gr, yil))} tarihinde dolar.`;
+        } else if (grS <= '2008-04-30') {
+          kapsam = '9.9.1999 – 30.4.2008';
+          const y1 = kadin ? 58 : 60;
+          if (st === '4a') {
+            const p1 = pt(7000), p2 = pt(4500);
+            const a = p1 && maxD(addY(dg, y1), p1);
+            const b = p2 && maxD(addY(dg, y1), addY(gr, 25), p2);
+            if (a && (!b || a <= b)) { gerek = 7000; ptar = p1; tarih = a; }
+            else { gerek = 4500; ptar = p2; tarih = b; not = '25 yıl sigortalılık + 4500 gün yolu daha erken.'; }
+            yasT = y1;
+          } else {
+            const y2 = st === '4b' ? (kadin ? 60 : 62) : 61;
+            const p1 = pt(9000), p2 = pt(5400);
+            const a = p1 && maxD(addY(dg, y1), p1);
+            const b = p2 && maxD(addY(dg, y2), p2);
+            if (a && (!b || a <= b)) { gerek = 9000; ptar = p1; tarih = a; yasT = y1; }
+            else { gerek = 5400; ptar = p2; tarih = b; yasT = y2; not = '15 tam yıl yolu: kısmi yaşlılık aylığı (tutar daha düşük).'; }
+          }
+        } else {
+          kapsam = '1.5.2008 ve sonrası';
+          gerek = st === '4a' ? 7200 : 9000;
+          ptar = pt(gerek);
+          if (ptar) {
+            yasT = yasHaddi(ptar, kadin);
+            tarih = maxD(addY(dg, yasT), ptar);
+          } else {
+            yasT = Math.min(65, yasHaddi(bugun, kadin) + 3);
+          }
+          const p54 = pt(5400);
+          if (p54) {
+            const y3 = Math.min(65, yasHaddi(p54, kadin) + 3);
+            const t3 = maxD(addY(dg, y3), p54);
+            if (!tarih) { tarih = t3; gerek = 5400; ptar = p54; yasT = y3; not = 'Prim günü yetmiyor: yaş + 3 yıl ve 5400 gün yolu (5510 md.28).'; }
+            else not = `Alternatif: ${y3} yaş + 5400 gün ile ${fd(t3)} (daha düşük aylık).`;
+          }
+        }
+        if (!tarih) {
+          set({ 'out-t': 'Prim şartı dolmuyor', 'out-k': kapsam, 'out-y': String(yasT), 'out-g': gerek + ' gün', 'out-pt': '—', 'out-ey': '—',
+            'out-note': 'Çalışmaya devam etmezseniz gereken prim günü dolmaz. Kutuyu işaretleyin ya da borçlanma seçeneklerine bakın.' });
+          return;
+        }
+        const hazir = tarih <= bugun;
+        set({
+          'out-t': hazir ? 'Şartlar ' + fd(tarih) + ' tarihinde doldu' : fd(tarih),
+          'out-k': kapsam + ' · ' + st.replace('4', '4/'),
+          'out-y': typeof yasT === 'number' ? yasT + ' yaş' : yasT,
+          'out-g': gerek + ' gün (eksik ' + Math.max(0, gerek - prim) + ')',
+          'out-pt': prim >= gerek ? 'Doldu' : fd(ptar),
+          'out-ey': yasOf(dg, tarih) + ' yaş',
+          'out-note': (hazir ? 'Tüm şartlar dolmuş görünüyor; e-Devlet’ten tahsis talebinde bulunabilirsiniz. ' : '') + not,
+        });
+      }
+      ['in-dg', 'in-gr', 'in-p'].forEach((id) => $(id).addEventListener('input', update));
+      ['in-c', 'in-s', 'in-d'].forEach((id) => $(id).addEventListener('change', update));
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.7rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs label.check { flex-direction: row; align-items: center; gap: 0.5rem; }
+    .calc-inputs label.check input { width: auto; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input, .calc-inputs select {
+      font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus, .calc-inputs select:focus {
+      outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft);
+    }
+    .input-hint { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 0.9rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.3rem); font-weight: 600; color: var(--brand-ink); line-height: 1.1; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.92rem; text-align: right; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; overflow-x: auto; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>

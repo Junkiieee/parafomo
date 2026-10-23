@@ -211,6 +211,10 @@ def vergi_dilimi_card():
 
 
 CARDS = {
+    "emeklilik-hesaplama": lambda: {
+        # 5510 md.28 / geçici 9 / geçici 95 (EYT); kanun değişirse güncelle
+        "kicker": "NE ZAMAN EMEKLİ OLURUM?", "stat": "7200 gün",
+        "sub": "2008 sonrası SSK · Bağ-Kur/memur 9000 gün · EYT yaşsız"},
     "bagkur-primi-hesaplama": lambda: {
         # data/bagkur-prim-2026.json + brüt asgari ücret; Ocak 2027'de güncelle
         "kicker": "BAĞ-KUR PRİMİ 2026", "stat": "₺10.156,73",
