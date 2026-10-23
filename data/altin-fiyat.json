@@ -1,96 +1,96 @@
 {
   "_aciklama": "Güncel altın fiyatları (Truncgil v3). Site günlük rebuild'de tazelenir; anlık/kesin işlem fiyatı değildir, göstergedir.",
-  "_kaynak": "finans.truncgil.com v3",
-  "guncellenme": "2026-10-22T09:00:40+03:00",
-  "guncellemeEtiket": "22 October 2026, 09:00",
+  "_kaynak": "Yahoo (GC=F×USDTRY) — Truncgil erişilemedi, son snapshot ölçeklendi",
+  "guncellenme": "2026-10-23T09:00:44+03:00",
+  "guncellemeEtiket": "23 October 2026, 09:00",
   "kalemler": [
     {
       "key": "gram-altin",
       "label": "Gram Altın",
       "gram": 1.0,
       "ayar": "24 (995)",
-      "alis": 6525.25,
-      "satis": 6526.25
+      "alis": 6455.01,
+      "satis": 6456.0
     },
     {
       "key": "gram-has-altin",
       "label": "Has Altın (24 ayar)",
       "gram": 1.0,
       "ayar": "24 (999)",
-      "alis": 6492.62,
-      "satis": 6493.62
+      "alis": 6422.73,
+      "satis": 6423.72
     },
     {
       "key": "ceyrek-altin",
       "label": "Çeyrek Altın",
       "gram": 1.75,
       "ayar": "22",
-      "alis": 10520.69,
-      "satis": 10761.15
+      "alis": 10407.44,
+      "satis": 10645.31
     },
     {
       "key": "yarim-altin",
       "label": "Yarım Altın",
       "gram": 3.5,
       "ayar": "22",
-      "alis": 20975.62,
-      "satis": 21522.3
+      "alis": 20749.82,
+      "satis": 21290.62
     },
     {
       "key": "tam-altin",
       "label": "Tam (Ziynet) Altın",
       "gram": 7.0,
       "ayar": "22",
-      "alis": 42082.75,
-      "satis": 42912.97
+      "alis": 41629.74,
+      "satis": 42451.03
     },
     {
       "key": "ata-altin",
       "label": "Ata Altın",
       "gram": 7.2,
       "ayar": "22",
-      "alis": 43397.83,
-      "satis": 44492.59
+      "alis": 42930.67,
+      "satis": 44013.64
     },
     {
       "key": "cumhuriyet-altini",
       "label": "Cumhuriyet Altını",
       "gram": 7.2,
       "ayar": "22",
-      "alis": 43613.0,
-      "satis": 44274.0
+      "alis": 43143.52,
+      "satis": 43797.41
     },
     {
       "key": "22-ayar-bilezik",
       "label": "22 Ayar Bilezik (gr)",
       "gram": 1.0,
       "ayar": "22",
-      "alis": 5996.79,
-      "satis": 6002.55
+      "alis": 5932.24,
+      "satis": 5937.93
     },
     {
       "key": "18-ayar-altin",
       "label": "18 Ayar Altın (gr)",
       "gram": 1.0,
       "ayar": "18",
-      "alis": 4800.06,
-      "satis": 4804.67
+      "alis": 4748.39,
+      "satis": 4752.95
     },
     {
       "key": "14-ayar-altin",
       "label": "14 Ayar Altın (gr)",
       "gram": 1.0,
       "ayar": "14",
-      "alis": 3747.99,
-      "satis": 3751.59
+      "alis": 3707.64,
+      "satis": 3711.21
     },
     {
       "key": "ons",
       "label": "Ons Altın (USD)",
       "gram": 31.1035,
       "ayar": "24",
-      "alis": 4089.6,
-      "satis": 4090.23
+      "alis": 4045.58,
+      "satis": 4046.2
     }
   ]
 }
