@@ -88,7 +88,7 @@ Kredi kartı faizinin üst sınırını TCMB belirler ve tavan **dönem borcunun
 - **Akdi faiz:** Asgari tutarı ödediysen, kalan borca uygulanır.
 - **Gecikme faizi:** Asgari tutarı ödemediysen, asgari tutarın **ödenmeyen kısmına** uygulanır; borcun geri kalanına yine akdi faiz işler.
 
-Bunların üzerine bireysel kredi kartı faizinde **%15 KKDF ve %15 BSMV** eklenir. Yani 100 TL faizin cebinden çıkan karşılığı 130 TL'dir. %3,25'lik aylık faizin vergiyle efektif maliyeti yaklaşık %4,23'e, %3,75'lik faizinki yaklaşık %4,88'e çıkar.
+Bunların üzerine bireysel kredi kartı faizinde **%15 KKDF ve %15 BSMV** eklenir. Yani 100 TL faizin cebinden çıkan karşılığı 130 TL'dir. %3,25'lik aylık faizin vergiyle efektif maliyeti yaklaşık %4,23'e, %3,75'lik faizinki yaklaşık %4,88'e çıkar. Kendi borcunla faizi ve borcun kaç ayda biteceğini [kredi kartı faiz hesaplama](/kredi-karti-faiz-hesaplama/) aracında, TCMB'nin güncel azami oranlarıyla görebilirsin.
 
 Aylık %4'ün yıllığa çevrildiğinde ne kadar büyüdüğünü görmek için [bileşik faiz nedir](/blog/bilesik-faiz-nedir) yazımıza ya da [bileşik faiz hesaplama](/bilesik-faiz-hesaplama) aracına bakabilirsin: aylık %4,23, bileşik olarak yılda %60'ın üzerine denk gelir.
 

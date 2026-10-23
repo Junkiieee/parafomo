@@ -37,6 +37,7 @@ const GRUPLAR_HAM: Grup[] = [
     { href: '/ihbar-tazminati-hesaplama/', ad: 'İhbar tazminatı hesaplama', aciklama: '2-8 haftalık ihbar süresi, brüt ve net tutar', k: ['ihbar'] },
     { href: '/yillik-izin-hesaplama/', ad: 'Yıllık izin hesaplama', aciklama: '14/20/26 gün hak ve kullanılmayan izin ücreti', k: ['yıllık izin', 'izin'] },
     { href: '/issizlik-maasi-hesaplama/', ad: 'İşsizlik maaşı hesaplama', aciklama: 'Süre ve aylık ödenek', k: ['işsizlik maaşı', 'işsizlik ödeneği'] },
+    { href: '/kredi-karti-faiz-hesaplama/', ad: 'Kredi kartı faiz hesaplama', aciklama: 'TCMB azami faiz, asgari ödeme, borç kaç ayda biter', k: ['kredi kartı', 'asgari ödeme', 'kart borcu', 'akdi faiz', 'gecikme faizi'] },
     { href: '/bagkur-primi-hesaplama/', ad: 'Bağ-Kur primi hesaplama', aciklama: '2026 en düşük/en yüksek prim, 5 puan indirimi', k: ['bağ-kur primi', 'bağkur', 'esnaf', 'prim borcu', 'sgk prim'] },
   ] },
   { baslik: 'Vergi, harç ve zamlar', araclar: [

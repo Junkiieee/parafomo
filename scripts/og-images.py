@@ -195,6 +195,13 @@ def faiz_card(group, key, kicker, field, sub):
     return fn
 
 
+def kk_faiz_card():
+    # data/kredi-karti-faiz.json (scripts/kredi-karti-faiz.py, TCMB aylık azami oranlar)
+    d = load("kredi-karti-faiz.json")
+    return {"kicker": f"KREDİ KARTI FAİZİ · {ay_adi(d['gecerli'][:7]).replace('i', 'İ').upper()}", "stat": f"%{tr_pct(d['tl'][0]['akdi'], 2)}",
+            "sub": f"aylık azami akdi · gecikme %{tr_pct(d['tl'][0]['gecikme'], 2)} · +%15 KKDF +%15 BSMV"}
+
+
 def asgari_card():
     # data/asgari-ucret.json — yeni yıl açıklanınca (scripts/asgari-ucret-watch.py) kart da yeni yıla döner
     d = load("asgari-ucret.json")
@@ -211,6 +218,7 @@ def vergi_dilimi_card():
 
 
 CARDS = {
+    "kredi-karti-faiz-hesaplama": kk_faiz_card,
     "emeklilik-hesaplama": lambda: {
         # 5510 md.28 / geçici 9 / geçici 95 (EYT); kanun değişirse güncelle
         "kicker": "NE ZAMAN EMEKLİ OLURUM?", "stat": "7200 gün",

@@ -1,0 +1,334 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import kk from '../../data/kredi-karti-faiz.json';
+
+// Kredi kartı faizi: TCMB'nin aylık azami akdi/gecikme oranları (data/kredi-karti-faiz.json ←
+// scripts/kredi-karti-faiz.py, evds-update.sh Prş+Cum). Oran DÖNEM BORCUNA göre kademeli; asgari ödeme
+// oranı KART LİMİTİNE göre (BDDK 11581, 1.10.2026: ≤100.000 TL %20, üzeri %40). Bireysel kartta faize
+// %15 KKDF + %15 BSMV eklenir. Asgari tutarın ödenmeyen kısmına gecikme, kalan borca akdi faiz işler.
+const VERGI = 0.3;
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const AY = `${AYLAR[+kk.gecerli.slice(5, 7) - 1]} ${kk.gecerli.slice(0, 4)}`;
+const KONTROL = new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(kk.kontrol + 'T00:00:00Z'));
+const T = kk.tl;
+const A = kk.asgari;
+
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+const fmt0 = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const pct = (n: number) => '%' + new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+const kademe = (b: number) => (b < T[0].ust! ? T[0] : b <= T[1].ust! ? T[1] : T[2]);
+// sabit aylık ödemeyle borç kaç ayda biter (yeni harcama yok)
+function bitis(b: number, m: number) {
+  let bal = b, faiz = 0, ay = 0;
+  while (bal > 0.005 && ay < 600) {
+    const odeme = Math.min(m, bal);
+    const f = (bal - odeme) * (kademe(bal).akdi / 100) * (1 + VERGI);
+    if (bal - odeme + f >= bal) return null;
+    faiz += f; bal = bal - odeme + f; ay++;
+  }
+  return ay >= 600 ? null : { ay, faiz };
+}
+const ORNEK_B = 50000;
+const ORNEK_M = [2500, 5000, 10000, 20000].map((m) => ({ m, r: bitis(ORNEK_B, m) }));
+const efektif = (r: number) => r * (1 + VERGI);
+
+const faq = [
+  {
+    q: `Kredi kartı faiz oranı ${AY}’da kaç?`,
+    a: `TCMB’nin ${AY} için belirlediği azami aylık akdi faiz: dönem borcu 30.000 TL altında ${pct(T[0].akdi)}, 30.000–180.000 TL arasında ${pct(T[1].akdi)}, 180.000 TL üzerinde ${pct(T[2].akdi)}. Gecikme faizi sırasıyla ${pct(T[0].gecikme)}, ${pct(T[1].gecikme)}, ${pct(T[2].gecikme)}. Nakit çekimde akdi ${pct(kk.nakit.akdi)}. Bankalar bu oranların altında kalmak şartıyla kendi oranını belirler.`,
+  },
+  {
+    q: 'Kredi kartı faizine vergi ekleniyor mu?',
+    a: `Evet. Bireysel kredi kartlarında faiz tutarının üzerine %15 KKDF ve %15 BSMV eklenir; 100 TL faizin cebinizden çıkan karşılığı 130 TL olur. Bu yüzden ${pct(T[0].akdi)} aylık akdi faizin vergili maliyeti yaklaşık ${pct(efektif(T[0].akdi))}’tür.`,
+  },
+  {
+    q: 'Asgari ödeme yaparsam faiz işler mi?',
+    a: 'Evet. Asgari tutarı ödediğinizde gecikme faizi işlemez ama dönem borcunun kalan kısmına akdi (alışveriş) faizi ve vergileri uygulanır. Faiz ödememenin tek yolu dönem borcunun tamamını son ödeme tarihine kadar ödemektir.',
+  },
+  {
+    q: 'Asgari ödeme tutarı nasıl hesaplanır?',
+    a: `BDDK’nın 1 Ekim 2026 tarihli kararına göre kart limiti ${fmt0(A.esik)} TL ve altındaysa asgari ödeme dönem borcunun %${A.alt}’si, limit bunun üzerindeyse %${A.ust}’ıdır. Oranı limit, tutarı dönem borcu belirler. Ayrıntı: kredi kartı asgari ödeme rehberi.`,
+  },
+  {
+    q: 'Asgari ödemenin altında ödersem ne olur?',
+    a: 'Asgari tutarın ödenmeyen kısmına gecikme faizi, borcun geri kalanına akdi faiz işler (ikisine de KKDF ve BSMV eklenir). Gecikme kredi kayıt bürosuna bildirilir ve kredi notunu düşürür; bir takvim yılında üç kez asgari ödeme yapılmazsa borç kapanana kadar nakit kullanım ve limit artışı durdurulur.',
+  },
+  {
+    q: 'Kredi kartı borcu kaç ayda biter?',
+    a: `Yeni harcama yapmadığınızı varsayarsak ${fmt0(ORNEK_B)} TL borç aylık ${fmt0(ORNEK_M[1].m)} TL ödemeyle ${ORNEK_M[1].r ? ORNEK_M[1].r.ay + ' ayda biter ve yaklaşık ' + fmt0(ORNEK_M[1].r.faiz) + ' TL faiz+vergi ödenir' : 'bitmez'}; aylık ${fmt0(ORNEK_M[2].m)} TL ile ${ORNEK_M[2].r ? ORNEK_M[2].r.ay + ' ay ve ' + fmt0(ORNEK_M[2].r.faiz) + ' TL' : '—'}. Kendi rakamlarınızı yukarıdaki hesaplayıcıya girin.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Hesaplama Araçları', url: '/hesaplama-araclari/' },
+  { name: 'Kredi Kartı Faiz Hesaplama', url: '/kredi-karti-faiz-hesaplama/' },
+];
+---
+
+<BaseLayout
+  image="/og/kredi-karti-faiz-hesaplama.png"
+  title={`Kredi Kartı Faiz Hesaplama ${kk.gecerli.slice(0, 4)}: Güncel Faiz Oranı (${AYLAR[+kk.gecerli.slice(5, 7) - 1]})`}
+  description={`Kredi kartı faiz hesaplama: TCMB ${AY} azami akdi faiz ${pct(T[0].akdi)}–${pct(T[2].akdi)}, gecikme ${pct(T[0].gecikme)}–${pct(T[2].gecikme)}. KKDF+BSMV dahil faiz, asgari ödeme ve borcun kaç ayda biteceği.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Kredi kartı</p>
+      <h1>Kredi Kartı Faiz Hesaplama ({AY})</h1>
+      <p class="lede">
+        TCMB’nin {AY} azami oranlarıyla: dönem borcunuzu ve ödeyeceğiniz tutarı girin; <strong>işleyecek faizi
+        (KKDF+BSMV dahil), asgari ödeme tutarını ve borcun kaç ayda biteceğini</strong> görün.
+      </p>
+    </header>
+
+    <div class="rate-box">
+      <div><span>30.000 TL altı</span><strong>{pct(T[0].akdi)}</strong><small>gecikme {pct(T[0].gecikme)}</small></div>
+      <div><span>30.000–180.000 TL</span><strong>{pct(T[1].akdi)}</strong><small>gecikme {pct(T[1].gecikme)}</small></div>
+      <div><span>180.000 TL üzeri</span><strong>{pct(T[2].akdi)}</strong><small>gecikme {pct(T[2].gecikme)}</small></div>
+    </div>
+    <p class="rate-cap">Aylık azami akdi faiz, dönem borcuna göre · TCMB, {AY} · vergiler hariç</p>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Dönem borcu (₺)</span>
+          <input type="number" id="in-b" value="50000" min="0" step="500" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Kart limiti (₺)</span>
+          <input type="number" id="in-l" value="80000" min="0" step="5000" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Bu ay ödeyeceğiniz tutar (₺) — boş bırakırsanız asgari</span>
+          <input type="number" id="in-p" value="" min="0" step="500" inputmode="numeric" placeholder="asgari tutar" />
+        </label>
+        <label>
+          <span>Sonraki aylarda sabit aylık ödeme (₺)</span>
+          <input type="number" id="in-m" value="5000" min="0" step="500" inputmode="numeric" />
+        </label>
+        <p class="input-hint">
+          Yeni harcama yapılmadığı varsayılır. Nakit avans/KMH için akdi {pct(kk.nakit.akdi)} uygulanır; bu araç
+          alışveriş borcunu hesaplar.
+        </p>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Bu ay işleyecek faiz (KKDF+BSMV dahil)</span>
+          <span class="result-value" id="out-f">—</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item"><span class="split-label">Asgari ödeme</span><span class="split-val" id="out-a">—</span></div>
+          <div class="split-item"><span class="split-label">Uygulanan akdi faiz</span><span class="split-val" id="out-r">—</span></div>
+          <div class="split-item"><span class="split-label">Faiz + gecikme faizi</span><span class="split-val" id="out-fz">—</span></div>
+          <div class="split-item"><span class="split-label">KKDF + BSMV (%30)</span><span class="split-val" id="out-v">—</span></div>
+          <div class="split-item"><span class="split-label">Sonraki ekstre (yaklaşık)</span><span class="split-val" id="out-n">—</span></div>
+          <div class="split-item"><span class="split-label"><strong>Borç kaç ayda biter</strong></span><span class="split-val" id="out-ay">—</span></div>
+        </div>
+        <p class="result-note" id="out-note"></p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu araç yalnızca bilgilendirme amaçlıdır. Oranlar TCMB’nin ilan ettiği azami (tavan) oranlardır; bankanız
+      daha düşük oran uygulayabilir. Faiz aylık ve basit hesaplanır, gün sayısı farkları yok sayılır. Kaynak:
+      <a href={kk.kaynak} rel="noopener">TCMB — Kredi Kartı İşlemlerinde Uygulanacak Azami Faiz Oranları</a>
+      ({AY}) · asgari ödeme: {A.kaynak} · Son kontrol: {KONTROL}.
+    </p>
+
+    <section class="table-block">
+      <h2>Kredi kartı azami faiz oranları ({AY})</h2>
+      <table class="rate-table">
+        <thead><tr><th>İşlem / dönem borcu</th><th>Akdi faiz (aylık)</th><th>Gecikme faizi (aylık)</th><th>Akdi + vergi</th></tr></thead>
+        <tbody>
+          <tr><td>TL — 30.000 TL altında</td><td>{pct(T[0].akdi)}</td><td>{pct(T[0].gecikme)}</td><td>{pct(efektif(T[0].akdi))}</td></tr>
+          <tr><td>TL — 30.000–180.000 TL arasında</td><td>{pct(T[1].akdi)}</td><td>{pct(T[1].gecikme)}</td><td>{pct(efektif(T[1].akdi))}</td></tr>
+          <tr><td>TL — 180.000 TL üzerinde (ve kurumsal kartlar)</td><td>{pct(T[2].akdi)}</td><td>{pct(T[2].gecikme)}</td><td>{pct(efektif(T[2].akdi))}</td></tr>
+          <tr><td>Nakit çekim / kredili mevduat hesabı</td><td>{pct(kk.nakit.akdi)}</td><td>{pct(kk.nakit.gecikme)}</td><td>{pct(efektif(kk.nakit.akdi))}</td></tr>
+          <tr><td>Yabancı para işlemler</td><td>{pct(kk.yp.akdi)}</td><td>{pct(kk.yp.gecikme)}</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">
+        Kaynak: TCMB, 2020/16 sayılı Tebliğ kapsamında ilan edilen tablo; referans oran {pct(kk.referans)} (kredi kartı
+        borcu yapılandırmasında aylık faiz bu oranı aşamaz). “Akdi + vergi” = akdi faiz × 1,30 (KKDF %15 + BSMV %15).
+        TCMB tabloyu her ay başında yeniler; sayfa otomatik güncellenir.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>{fmt0(ORNEK_B)} TL kart borcu kaç ayda biter?</h2>
+      <table class="rate-table">
+        <thead><tr><th>Aylık ödeme</th><th>Süre</th><th>Toplam faiz + vergi</th></tr></thead>
+        <tbody>
+          {ORNEK_M.map((o) => (
+            <tr><td>₺{fmt0(o.m)}</td><td>{o.r ? `${o.r.ay} ay` : 'Bitmez'}</td><td>{o.r ? `₺${fmt0(o.r.faiz)}` : '—'}</td></tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Yeni harcama yok, her ay kalan borca o ayki kademenin azami akdi faizi + %30 vergi işler. Limit
+        {fmt0(A.esik)} TL ve altındaysa {fmt0(ORNEK_B)} TL borcun asgarisi ₺{fmt0(ORNEK_B * A.alt / 100)}’dir.
+      </p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Kredi kartı faizi nasıl işler?</h2>
+      <p>
+        <strong>Tam ödeme:</strong> dönem borcunun tamamını son ödeme tarihine kadar öderseniz faiz işlemez.
+        <strong>Asgari ve üzeri ödeme:</strong> kalan borca akdi faiz işler. <strong>Asgarinin altında ödeme:</strong>
+        asgari tutarın ödenmeyen kısmına gecikme faizi, geri kalanına akdi faiz işler. Her durumda faize %15 KKDF ve
+        %15 BSMV eklenir ve tutar bir sonraki ekstreye yansır.
+      </p>
+      <p>
+        <strong>Hangi oran?</strong> Kademe, kart limitinize değil dönem borcunuza göre belirlenir: 30.000 TL altı borçta
+        en düşük oran uygulanır. Asgari ödeme oranı ise limite bağlıdır (limit {fmt0(A.esik)} TL ve altı %{A.alt},
+        üzeri %{A.ust}). Borcu kapatmakta zorlanıyorsanız bankanız referans oranı aşmayan faizle yapılandırma sunabilir.
+      </p>
+      <p class="cta-line">
+        Ayrıntılı rehberler: <a href="/blog/kredi-karti-asgari-odeme-tutari-2026/">kredi kartı asgari ödeme tutarı
+        2026</a> · <a href="/blog/kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir/">kredi kartı borcu
+        yapılandırma</a> · kart borcunu krediyle kapatmayı düşünüyorsanız <a href="/ihtiyac-kredisi-hesaplama/">ihtiyaç
+        kredisi hesaplama</a> · kredi notu için <a href="/blog/findeks-kredi-notu-nedir-nasil-yukselir/">Findeks
+        rehberi</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p set:html={f.a} />
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ T, A, VERGI }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const tl = (n) => '₺' + nf.format(n);
+      const kademe = (b) => (b < T[0].ust ? T[0] : b <= T[1].ust ? T[1] : T[2]);
+      function bitis(b, m) {
+        let bal = b, faiz = 0, ay = 0;
+        while (bal > 0.005 && ay < 600) {
+          const odeme = Math.min(m, bal);
+          const f = (bal - odeme) * (kademe(bal).akdi / 100) * (1 + VERGI);
+          if (bal - odeme + f >= bal) return null;
+          faiz += f; bal = bal - odeme + f; ay++;
+        }
+        return ay >= 600 ? null : { ay, faiz };
+      }
+      function update() {
+        const b = Math.max(0, +$('in-b').value || 0);
+        const l = Math.max(0, +$('in-l').value || 0);
+        const k = kademe(b);
+        const asg = b * (l <= A.esik ? A.alt : A.ust) / 100;
+        const pRaw = $('in-p').value;
+        const p = pRaw === '' ? asg : Math.max(0, +pRaw || 0);
+        let fz = 0, note = '';
+        if (p >= b) note = 'Dönem borcunun tamamı ödeniyor: faiz işlemez.';
+        else if (p >= asg) { fz = (b - p) * k.akdi / 100; note = 'Kalan ' + tl(b - p) + ' borca aylık %' + nf.format(k.akdi) + ' akdi faiz işler.'; }
+        else {
+          fz = (asg - p) * k.gecikme / 100 + (b - asg) * k.akdi / 100;
+          note = 'Asgarinin altında: ödenmeyen ' + tl(asg - p) + ' için gecikme faizi (%' + nf.format(k.gecikme) + '), kalan ' + tl(b - asg) + ' için akdi faiz. Gecikme kredi notunu düşürür.';
+        }
+        const v = fz * VERGI;
+        $('out-f').textContent = tl(fz + v);
+        $('out-a').textContent = tl(asg) + ' (%' + (l <= A.esik ? A.alt : A.ust) + ')';
+        $('out-r').textContent = '%' + nf.format(k.akdi) + ' aylık';
+        $('out-fz').textContent = tl(fz);
+        $('out-v').textContent = tl(v);
+        $('out-n').textContent = tl(Math.max(0, b - Math.min(p, b) + fz + v));
+        const m = Math.max(0, +$('in-m').value || 0);
+        const r = p >= b ? { ay: 0, faiz: 0 } : bitis(b, m);
+        $('out-ay').textContent = b === 0 ? '—' : p >= b ? 'Bu ay kapanır' : r ? r.ay + ' ay · faiz ' + tl(r.faiz) : 'Bitmez';
+        $('out-note').textContent = note + (r || b === 0 ? '' : ' Aylık ödeme faizi karşılamıyor; borç büyür.');
+      }
+      ['in-b', 'in-l', 'in-p', 'in-m'].forEach((id) => $(id).addEventListener('input', update));
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .rate-box { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 0 0 0.4rem; }
+    .rate-box div {
+      display: flex; flex-direction: column; align-items: center; gap: 0.15rem; padding: 0.8rem 0.5rem;
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+    }
+    .rate-box span { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; }
+    .rate-box strong { font-family: var(--font-serif); font-size: 1.7rem; color: var(--brand-ink); }
+    .rate-box small { font-size: 0.75rem; color: var(--text-soft); }
+    .rate-cap { text-align: center; font-size: 0.78rem; color: var(--text-muted); margin: 0 0 1.4rem; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.7rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input {
+      font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .input-hint { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 0.9rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.92rem; text-align: right; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; overflow-x: auto; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+      .rate-box strong { font-size: 1.3rem; }
+    }
+  </style>
+</BaseLayout>
