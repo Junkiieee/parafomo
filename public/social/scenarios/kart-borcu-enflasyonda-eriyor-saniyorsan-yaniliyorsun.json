@@ -1,0 +1,62 @@
+{
+  "slug": "kart-borcu-enflasyonda-eriyor-saniyorsan-yaniliyorsun",
+  "title": "Kart borcu enflasyonda eriyor sanıyorsan yanılıyorsun",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Asgari ödemenin neden rahatlatmadığını, kart faizinin enflasyondan hızlı büyüdüğünü ve cebini korumak için önce neyi kapatman gerektiğini anlatan kısa bir mit yıkma videosu.",
+  "tags": [
+    "kredi kartı",
+    "asgari ödeme",
+    "enflasyon",
+    "borç",
+    "faiz",
+    "tasarruf",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Asgari ödeme seni rahatlatmıyor, batırıyor.",
+      "visual": {
+        "type": "object",
+        "query": "credit card shopping bags"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Asgari ödeyince borcun kalanına her ay faiz işler, üstelik bu faiz mevduatın verdiğinden çok yüksek.",
+      "visual": {
+        "type": "object",
+        "query": "credit card and calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama enflasyon borcu eritir sanma; kart faizi enflasyondan hızlı koşar, borç eriyen değil büyür.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Önce kart borcunu kapat, ekstreyi tam öde. Birikimin getirisi kart faizini yakalayamaz.",
+      "visual": {
+        "type": "object",
+        "query": "receipt paper"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki hesap taksitli krediler; abone ol, her gün 60 saniyede tek net analiz seni bekliyor.",
+      "visual": {
+        "type": "object",
+        "query": "credit card shopping bags"
+      }
+    }
+  ]
+}
