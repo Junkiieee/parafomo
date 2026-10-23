@@ -65,9 +65,9 @@ Otorite/dış link işleri şimdilik YAPILMAZ (Kaan: "kalsın"). Fırsat listesi
 - [ ] K22 adaylar (ölçüldü 10-18): çocuk parası (27,5, zirve Ocak), ~~bağkur primi (15, zirve Aralık)~~ → ✅ /bagkur-primi-hesaplama/ canlı 2026-10-19, ötv hesaplama (9,2), gss primi (5,2, zirve Kasım).
 
 - [x] K23 emekli promosyon (178,6, son 4h 156) → **/emekli-promosyonu/** canlı 2026-10-22 (8 banka resmi sayfa; commit 51017c3)
-- [ ] K24 emeklilik yaşı (25,5) + emeklilik hesaplama (23,7) + ne zaman emekli olurum (14,3) → **/emeklilik-hesaplama/** — week T18;
+- [x] K24 (canlı 2026-10-23, be49331) emeklilik yaşı (25,5) + emeklilik hesaplama (23,7) + ne zaman emekli olurum (14,3) → **/emeklilik-hesaplama/** — week T18;
   sgk hizmet dökümü (30,1) → blog (content-queue) + araçta bölüm.
-- [ ] K25 kredi kartı faiz hesaplama (11,6) + kredi kartı faiz oranı (7,7) → **/kredi-karti-faiz-hesaplama/** — week T20.
+- [x] K25 (canlı 2026-10-23, 40f2d70) kredi kartı faiz hesaplama (11,6) + kredi kartı faiz oranı (7,7) → **/kredi-karti-faiz-hesaplama/** — week T20.
 - [ ] K26 ek gösterge (43,7) → blog (content-queue, memur kümesi) · geçici vergi (46,1) → blog (content-queue; Kasım beyanı) ·
   fed faiz kararı (80,9) + enflasyon beklentisi (45,6) → olay önizleme yazıları (B261022-1).
 - Ölçüldü, sayfa AÇMA (10-22): geçici vergi hesaplama 0,7 · gss primi 2026 0,5 · aile destek programı 1,5 · kira geliri
