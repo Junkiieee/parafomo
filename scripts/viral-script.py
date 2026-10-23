@@ -148,7 +148,7 @@ FORMATS = {
     },
     "news_reaction": {
         "category": "GÜNCEL",
-        "guide": "Güncel olay/kişiye tepki. Hook: olayı/kişiyi söyle ve finansal soruyu sor. 3 beat: olayın piyasaya/altına/dolara/borsaya etkisini sade anlat. Spekülasyon değil, mekanizma. Hook görseli ana kişi/kurum (person/place/logo) OLMALI.",
+        "guide": "Güncel olay/kişiye tepki. Hook: olayı/kişiyi söyle ve finansal soruyu sor. 3 beat: olayın piyasaya/altına/dolara/borsaya etkisini sade anlat. Spekülasyon değil, mekanizma. Olayın SONUCUNU (faizi artırdı/indirdi/sabit tuttu, açıklanan rakam) başlıkta ve metinde ASLA iddia etme — video açıklamadan önce yayınlanıyor; 'karar bugün', 'hangi yönde çıkarsa cebine ne olur' çerçevesi kullan. Hook görseli ana kişi/kurum (person/place/logo) OLMALI.",
     },
     "single_concept": {
         "category": "KAVRAM",
@@ -419,6 +419,14 @@ def main():
                   file=sys.stderr); return 1
     if not data.get("title"):
         print("HATA: title yok", file=sys.stderr); return 1
+    # Gündem videosu karar/veri AÇIKLANMADAN önce üretilir (news-daily sabah) → sonucu iddia eden
+    # başlık/metin uydurmadır (2026-10-22: TCMB %36'ya indirdi, başlık "faizi sabit tuttu" dedi).
+    if args.format == "news_reaction":
+        outcome = re.compile(r"sabit (tuttu|bıraktı)|(indirdi|düşürdü|artırdı|arttırdı|yükseltti)\b", re.I)
+        hit = [t for t in [data["title"]] + [s["spoken"] for s in segs] if outcome.search(t)]
+        if hit:
+            print(f"HATA: news_reaction sonucu iddia ediyor (olay henüz açıklanmamış olabilir): {hit[0][:120]}",
+                  file=sys.stderr); return 1
 
     # gerçek veri grafiğini chart-tipli beat'e iliştir (claude koymadıysa son point'e zorla)
     if chart_payload:
