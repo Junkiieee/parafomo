@@ -39,6 +39,7 @@ const GRUPLAR_HAM: Grup[] = [
     { href: '/issizlik-maasi-hesaplama/', ad: 'İşsizlik maaşı hesaplama', aciklama: 'Süre ve aylık ödenek', k: ['işsizlik maaşı', 'işsizlik ödeneği'] },
     { href: '/kredi-karti-faiz-hesaplama/', ad: 'Kredi kartı faiz hesaplama', aciklama: 'TCMB azami faiz, asgari ödeme, borç kaç ayda biter', k: ['kredi kartı', 'asgari ödeme', 'kart borcu', 'akdi faiz', 'gecikme faizi'] },
     { href: '/bagkur-primi-hesaplama/', ad: 'Bağ-Kur primi hesaplama', aciklama: '2026 en düşük/en yüksek prim, 5 puan indirimi', k: ['bağ-kur primi', 'bağkur', 'esnaf', 'prim borcu', 'sgk prim'] },
+    { href: '/gss-primi-hesaplama/', ad: 'GSS primi hesaplama', aciklama: '2026 aylık prim, gelir testi sınırı', k: ['gss', 'genel sağlık sigortası', 'gelir testi', 'sağlık sigortası primi'] },
   ] },
   { baslik: 'Vergi, harç ve zamlar', araclar: [
     { href: '/vergi-dilimi-hesaplama/', ad: 'Vergi dilimi hesaplama', aciklama: 'Gelir vergisi dilimleri ve kümülatif matrah', k: ['vergi dilim', 'gelir vergisi'] },

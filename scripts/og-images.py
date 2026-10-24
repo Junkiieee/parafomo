@@ -227,6 +227,10 @@ CARDS = {
         # data/bagkur-prim-2026.json + brüt asgari ücret; Ocak 2027'de güncelle
         "kicker": "BAĞ-KUR PRİMİ 2026", "stat": "₺10.156,73",
         "sub": "en düşük aylık prim (%30,75) · indirimsiz 11.808,23 ₺"},
+    "gss-primi-hesaplama": lambda: {
+        # data/gss-prim-2026.json (CB K. 10602 %6) × brüt asgari ücret; Ocak 2027'de güncelle
+        "kicker": "GSS PRİMİ 2026", "stat": "₺1.981,80",
+        "sub": "aylık prim (%6) · kişi başı gelir 11.010 ₺ altıysa devlet öder"},
     "vergi-borcu-sorgulama": lambda: {
         # CB Kararı 10556 (RG 13.11.2025) %3,7; oran değişirse güncelle
         "kicker": "VERGİ BORCU SORGULAMA", "stat": "%3,7",

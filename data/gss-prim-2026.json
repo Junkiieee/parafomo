@@ -1,0 +1,16 @@
+{
+  "_aciklama": "Genel sağlık sigortası (GSS) primi — /gss-primi-hesaplama kaynağı. 5510 s.K. md. 60/1-g kapsamındakiler (başka güvencesi olmayan, gelir testinde kişi başı geliri brüt asgari ücretin 1/3'ünden az çıkmayan vatandaşlar): prime esas kazanç = PEK alt sınırı × 30 = brüt asgari ücret (md. 82, 6824 s.K. ile tek kademe); oran kanunda %3 (md. 81/1-f), Cumhurbaşkanı Kararı 10602 (RG 21.11.2025, sayı 33084) ile 1 Aralık 2025'ten %6. Brüt asgari ücret data/asgari-ucret.json'dan okunur → Ocak'ta tutar kendiliğinden döner; oran değişirse burada güncelle.",
+  "oran": 6,
+  "kanunOrani": 3,
+  "karar": { "no": 10602, "rg": "2025-11-21", "rgSayi": 33084, "yururluk": "2025-12-01" },
+  "gecmis": [
+    { "donem": "2025 (Ocak–Kasım)", "brut": 26005.5, "oran": 3, "prim": 780.17 },
+    { "donem": "Aralık 2025", "brut": 26005.5, "oran": 6, "prim": 1560.33 }
+  ],
+  "kaynak": [
+    "https://www.mevzuat.gov.tr/mevzuatmetin/1.5.5510.pdf",
+    "https://www.bloomberght.com/genel-saglik-sigortasi-primi-artirildi-3762007",
+    "https://cottgroup.com/tr/mevzuat/item/genel-saglik-sigortasi-gss-prim-orani-6-ya-cikarildi"
+  ],
+  "dogrulama": "2026-10-24"
+}
