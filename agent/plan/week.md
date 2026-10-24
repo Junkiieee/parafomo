@@ -116,7 +116,7 @@ Yeni sayfa = `src/data/tools.ts` kaydı (k: anahtar kelimeler) + Footer TOOL_LIN
   · Kabul: listedeki her sayfa canlıda 2027 resmî rakamını gösterir; health.py temiz.
 
 ## Bakım / ürün
-- [ ] V3 (video kalitesi/özgünlük) — **Günlük konu kümesi kapısı** · V2 bulgusu (10-15): aynı gün aynı konudan iki video
+- [x] V3 (video kalitesi/özgünlük) — → viral-script.py kapısı: bugün (UTC) üretilen short-*/senaryo dosyaları + bugünkü blog kuyruğu konusundan ana varlık kümesi (8 küme) → prompt'a "bu kümelerin dışından seç" + üretilen başlık dolu kümeye düşerse yeniden dene (son denemede log + üretime devam; --topic ve veri formatları muaf). Viral 00:30'da yalnız blog konusunu görür, Manim 16:00 tüm günü görür. Dry: `--clusters --today 2026-10-21` → altın ×3 dosya, 10-20 altın ×2 yakalandı · commit c72838b · 2026-10-24 — **Günlük konu kümesi kapısı** · V2 bulgusu (10-15): aynı gün aynı konudan iki video
   → biri akışı alıyor, diğeri 0-13 izlenme; son günlerde altın 3 hatta aynı gün (10-21: altin-cetveli viral + altin-faizsiz
   Manim; 10-20: altin-dusse viral + altin-hesabi daily). `scripts/viral-script.py` konu seçimine kapı: bugün (UTC) diğer
   hatların yüklediği/planladığı videoların başlık+slug'ından ana varlık kümesini çıkar (altın/dolar/euro/borsa/kripto/
