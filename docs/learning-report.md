@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-10-23T08:53:38Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-10-24T08:52:22Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -19,34 +19,33 @@
 
 ### Viral format — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `single_concept` — skor 302.029, örnek 6
-- `shock_number` — skor 215.081, örnek 9
-- `myth` — skor 160.07, örnek 8
-- `news_reaction` — skor 124.961, örnek 12
+- `single_concept` — skor 306.872, örnek 6
+- `shock_number` — skor 229.97, örnek 9
+- `myth` — skor 151.395, örnek 9
+- `news_reaction` — skor 139.377, örnek 12
 - `backtest_return` — skor 110.85, örnek 3
 
-### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
+### Viral yayın slotu — **explore** (yeterli veri yok, rotasyon sürüyor)
 
-- `1` — skor 270.391, örnek 6
-- `0` — skor 252.633, örnek 4
+- `1` — skor 292.724, örnek 6
+- `0` — skor 259.073, örnek 4
 - `3` — skor 250.297, örnek 5
 - `5` — skor 187.155, örnek 4
+- `manual` — skor 135.955, örnek 10
 - `4` — skor 122.069, örnek 4
-- `manual` — skor 118.656, örnek 10
-- `2` — skor 110.544, örnek 5
+- `2` — skor 106.337, örnek 6
 
 ## Konu sinyalleri
 
 **En iyi blog sayfaları:**
-- euro-mi-dolar-mi-10-yillik-getiri-karsilastirma — skor 63.88
+- euro-mi-dolar-mi-10-yillik-getiri-karsilastirma — skor 68.88
 - abd-ekim-2026-cpi-verisi-fed-dolar-altin — skor 51.0
+- abd-faiz-artarsa-altin-ne-olur — skor 31.33
 - tcmb-ekim-2026-faiz-karari-ppk-beklentiler — skor 20.52
-- abd-faiz-artarsa-altin-ne-olur — skor 16.33
-- abd-faiz-yukseltirse-dolar-ne-olur — skor 11.0
-- gumus-mi-altin-mi-10-yillik-getiri-karsilastirma — skor 10.47
+- gumus-mi-altin-mi-10-yillik-getiri-karsilastirma — skor 17.1
+- 2027-zamlari-yeniden-degerleme-orani-rehberi — skor 14.5
 
 **🎯 Fırsat sorguları** (içerik/başlık iyileştir):
-- `albayrak hazır beton hisse` — gös 65, sıra 12.6
 - `abd faiz artarsa dolar ne olur` — gös 21, sıra 12.6
 - `2027 yeniden değerleme oranı tahmini` — gös 13, sıra 7.9
 - `abd faizi yukseltirse dolar ne olur` — gös 10, sıra 14.4
