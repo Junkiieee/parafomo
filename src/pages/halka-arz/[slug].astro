@@ -120,14 +120,19 @@ if (ipo.broker) faq.push({ q: `${name} halka arzına hangi aracı kurumdan katı
 
 const titleBits = [ipo.date_text ? 'Tarih' : 'Ne Zaman', 'Fiyat', 'Lot', ret ? 'Getiri' : 'Detaylar'];
 const title = `${nameCode} Halka Arz: ${titleBits.slice(0, -1).join(', ')} ve ${titleBits.at(-1)}`;
-const description = [
+// Önem sırasıyla; 160 karakteri aşarsa sondan kırp (Google ~160’ta keser).
+const descParts = [
   `${name} halka arzı`,
   ipo.date_text ? `talep tarihi ${ipo.date_text}` : 'talep tarihi bekleniyor',
   ipo.price ? `fiyat ${ipo.price}` : '',
+  ret ? `güncel getiri ${pct(ret.return_pct)}` : '',
   ipo.lot ? `${ipo.lot}` : '',
   distClean ? distClean.toLocaleLowerCase('tr-TR') : '',
-  ret ? `güncel getiri ${pct(ret.return_pct)}` : '',
-].filter(Boolean).join(', ') + '. Fon kullanımı, finansallar ve katılım rehberi.';
+].filter(Boolean);
+const DESC_TAIL = '. Fon kullanımı, finansallar ve katılım rehberi.';
+while (descParts.length > 2 && descParts.join(', ').length + DESC_TAIL.length > 160) descParts.pop();
+const descCore = descParts.join(', ');
+const description = descCore.length + DESC_TAIL.length <= 160 ? descCore + DESC_TAIL : descCore + '.';
 
 const updated = new Date((archive as any).updated).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
