@@ -1,0 +1,44 @@
+{
+  "_aciklama": "Binek otomobil (87.03) ÖTV oranları ve matrah grupları. Oran matrahın TAMAMINA uygulanır (dilimli değil). Kaynak: 10115 sayılı CB Kararı eki (RG 24.07.2025, 32965) — taranmış PDF elle okundu, orgtr.org konsolide (II) sayılı liste ile birebir. Asgari maktu vergi: 7590 s.K. md.14 (RG 31.07.2026, 33326) ile ÖTV K. md.12/1; her yıl bir önceki yılın VUK yeniden değerleme oranıyla artar, 100 TL'yi aşmayan kesirler atılır. Matrah sınırları CB kararıyla değişir → değişince bu dosyayı güncelle.",
+  "dogrulama": "2026-10-25",
+  "karar": {
+    "no": 10115,
+    "tarih": "2025-07-23",
+    "rg": "2025-07-24",
+    "rgSayi": 32965,
+    "url": "https://www.resmigazete.gov.tr/eskiler/2025/07/20250724-5.pdf"
+  },
+  "asgariMaktu": {
+    "genel": 100000,
+    "L": 30000,
+    "yil": 2026,
+    "yururluk": "2026-07-31",
+    "kanun": "7590 sayılı Kanun md. 14",
+    "rgSayi": 33326,
+    "url": "https://www.resmigazete.gov.tr/eskiler/2026/07/20260731-2.htm"
+  },
+  "kdv": 20,
+  "konsolide": "https://orgtr.org/?p=21754",
+  "gruplar": [
+    { "id": "m1400", "ad": "Benzinli / dizel / hibrit — motor 1400 cm³’e kadar", "kisa": "1400 cm³’e kadar",
+      "dilimler": [ { "ust": 650000, "oran": 70 }, { "ust": 900000, "oran": 75 }, { "ust": 1100000, "oran": 80 }, { "ust": null, "oran": 90 } ] },
+    { "id": "m1600", "ad": "Benzinli / dizel / hibrit — 1400-1600 cm³", "kisa": "1400-1600 cm³",
+      "dilimler": [ { "ust": 850000, "oran": 75 }, { "ust": 1100000, "oran": 80 }, { "ust": 1650000, "oran": 90 }, { "ust": null, "oran": 100 } ] },
+    { "id": "h1800", "ad": "Hibrit 1600-1800 cm³ (elektrik motoru 50 kW’ın üstünde)", "kisa": "Hibrit 1600-1800 cm³, e-motor >50 kW",
+      "dilimler": [ { "ust": 1250000, "oran": 70 }, { "ust": null, "oran": 80 } ] },
+    { "id": "m2000", "ad": "1600-2000 cm³ (diğer)", "kisa": "1600-2000 cm³",
+      "dilimler": [ { "ust": 1650000, "oran": 150 }, { "ust": null, "oran": 170 } ] },
+    { "id": "h2500", "ad": "Hibrit 2000-2500 cm³ (elektrik motoru 100 kW’ın üstünde)", "kisa": "Hibrit 2000-2500 cm³, e-motor >100 kW",
+      "dilimler": [ { "ust": 1650000, "oran": 150 }, { "ust": null, "oran": 170 } ] },
+    { "id": "m2000u", "ad": "2000 cm³ üstü (diğer)", "kisa": "2000 cm³ üstü",
+      "dilimler": [ { "ust": null, "oran": 220 } ] },
+    { "id": "phev1600", "ad": "Şarj edilebilir hibrit (PHEV) — 1600 cm³’e kadar", "kisa": "PHEV 1600 cm³’e kadar",
+      "dilimler": [ { "ust": 1350000, "oran": 45 }, { "ust": null, "oran": 75 } ] },
+    { "id": "phev1800", "ad": "Şarj edilebilir hibrit (PHEV) — 1600-1800 cm³", "kisa": "PHEV 1600-1800 cm³",
+      "dilimler": [ { "ust": 1350000, "oran": 85 } ] },
+    { "id": "ev160", "ad": "Tam elektrikli — motor gücü 160 kW’a kadar", "kisa": "Elektrikli ≤160 kW",
+      "dilimler": [ { "ust": 1650000, "oran": 25 }, { "ust": null, "oran": 55 } ] },
+    { "id": "ev160u", "ad": "Tam elektrikli — motor gücü 160 kW üstü", "kisa": "Elektrikli >160 kW",
+      "dilimler": [ { "ust": 1650000, "oran": 65 }, { "ust": null, "oran": 75 } ] }
+  ]
+}

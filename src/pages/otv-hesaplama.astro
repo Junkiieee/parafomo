@@ -1,0 +1,398 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import o from '../../data/otv-arac.json';
+import yd from '../../data/yeniden-degerleme.json';
+
+// Binek otomobil ÖTV’si — 4760 s.K. (II) sayılı liste 87.03. Oran ve matrah grupları 10115 sayılı CB Kararı
+// (RG 24.07.2025); oran matrahın TAMAMINA uygulanır, dilim sınırını 1 ₺ aşan araç bütün tutar üzerinden üst oranı öder.
+// Asgari maktu vergi 7590 s.K. md.14 (RG 31.07.2026): hesaplanan ÖTV 100.000 ₺’den az olamaz; her yıl önceki yılın
+// yeniden değerleme oranıyla artar (100 ₺’yi aşmayan kesir atılır). KDV matrahına ÖTV dahildir (KDV K. md.24/c).
+
+type Dilim = { ust: number | null; oran: number };
+type Grup = { id: string; ad: string; kisa: string; dilimler: Dilim[] };
+const GRUPLAR = o.gruplar as Grup[];
+const MAKTU: number = o.asgariMaktu.genel;
+const KDV: number = o.kdv;
+const Y: number = o.asgariMaktu.yil;
+const HEDEF = Y + 1;
+
+const fmt0 = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(n);
+const tl0 = (n: number) => `${fmt0(n)} ₺`;
+const pc = (n: number) => '%' + n.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
+
+const otvTutar = (m: number, r: number) => Math.max((m * r) / 100, MAKTU);
+const fiyat = (m: number, r: number) => (m + otvTutar(m, r)) * (1 + KDV / 100);
+
+// "Hangi fiyata kadar hangi oran" tablosu — dilim sınırındaki azami anahtar teslim fiyat (ÖTV + KDV dahil)
+const SINIRLAR = GRUPLAR.map((g) => {
+  let alt = 0;
+  const satirlar = g.dilimler.map((d) => {
+    const s = { alt, ust: d.ust, oran: d.oran, maxFiyat: d.ust ? Math.round(fiyat(d.ust, d.oran)) : null };
+    alt = d.ust ?? alt;
+    return s;
+  });
+  return { ...g, satirlar };
+});
+
+// 2027 asgari maktu ÖTV: 100.000 ₺ × (1 + YD) — Ekim Yİ-ÜFE gelene kadar tahmin
+const teblig = (yd as { tebligOrani?: number | null }).tebligOrani ?? null;
+const ydOran: number = teblig ?? yd.onikiAyOrt;
+const ydKesin = teblig != null || yd.ekimVerisiGeldi;
+const MAKTU_HEDEF = Math.floor((MAKTU * (1 + ydOran / 100)) / 100) * 100;
+const ydLabel = ydKesin ? `yeniden değerleme oranı ${pc(ydOran)}` : `yeniden değerleme oranı tahmini ${pc(ydOran)}, Eylül verisiyle`;
+
+const AY = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const tarih = (s: string) => {
+  const d = new Date(s + 'T12:00:00Z');
+  return `${d.getUTCDate()} ${AY[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+};
+const dogrulama = tarih(o.dogrulama);
+
+// Örnek: 1400 cm³’e kadar, vergisiz 800.000 ₺
+const ORNEK_M = 800000;
+const ORNEK_R = 75;
+const ORNEK_OTV = otvTutar(ORNEK_M, ORNEK_R);
+const ORNEK_KDV = ((ORNEK_M + ORNEK_OTV) * KDV) / 100;
+const ORNEK_F = ORNEK_M + ORNEK_OTV + ORNEK_KDV;
+const s1400 = SINIRLAR[0].satirlar;
+const ev = SINIRLAR.find((g) => g.id === 'ev160')!.satirlar;
+
+const faq = [
+  {
+    q: `Araç ÖTV’si nasıl hesaplanır? (${Y})`,
+    a: `ÖTV, aracın vergisiz satış fiyatı (ÖTV matrahı) × motor hacmi ve matrah grubuna göre belirlenen oranla hesaplanır; oran matrahın tamamına uygulanır. Sonra ÖTV dahil tutara %${KDV} KDV eklenir. Örnek: 1400 cm³’e kadar motorlu, vergisiz fiyatı ${tl0(ORNEK_M)} olan araçta oran %${ORNEK_R}: ÖTV ${tl0(ORNEK_OTV)}, KDV ${tl0(ORNEK_KDV)}, anahtar teslim fiyat ${tl0(ORNEK_F)}. Hesaplanan ÖTV ${tl0(MAKTU)}’den az olamaz.`,
+  },
+  {
+    q: `${Y} araç ÖTV oranları ne kadar?`,
+    a: `1400 cm³’e kadar motorlu otomobillerde matrah 650.000 ₺’ye kadar %70, 900.000 ₺’ye kadar %75, 1.100.000 ₺’ye kadar %80, üstü %90. 1400-1600 cm³’te %75-100, 1600-2000 cm³’te %150-170, 2000 cm³ üstünde %220. Tam elektriklide 160 kW’a kadar %25-55, üstünde %65-75. Oranlar 23 Temmuz 2025 tarihli 10115 sayılı Cumhurbaşkanı Kararı ile belirlendi ve ${dogrulama} itibarıyla yürürlükte.`,
+  },
+  {
+    q: `Elektrikli araç ÖTV oranı ${Y}’da kaç?`,
+    a: `Sadece elektrik motorlu otomobillerde motor gücü 160 kW’a kadar olanlarda ÖTV matrahı 1.650.000 ₺’ye kadar %25, üstünde %55; 160 kW’ı geçenlerde 1.650.000 ₺’ye kadar %65, üstünde %75. %25 dilimindeki bir elektrikli aracın anahtar teslim fiyatı en fazla yaklaşık ${tl0(ev[0].maxFiyat!)} olabilir.`,
+  },
+  {
+    q: '100.000 TL asgari ÖTV nedir?',
+    a: `31 Temmuz 2026’da yürürlüğe giren 7590 sayılı Kanun ile otomobillerde (87.03) oranla hesaplanan ÖTV ${tl0(MAKTU)}’den az olamaz; L sınıfı araçlarda alt sınır ${tl0(o.asgariMaktu.L)}. İçten yanmalı L sınıfı, elektrik motoru 4 kW’ın altındaki L sınıfı ve T sınıfı araçlar hariçtir. Örneğin %25 oranlı bir elektrikli araçta matrah 400.000 ₺’nin altındaysa ÖTV yine ${tl0(MAKTU)} olur.`,
+  },
+  {
+    q: 'ÖTV dilim sınırını aşınca ne olur?',
+    a: `ÖTV gelir vergisi gibi dilimli değildir: matrah sınırı 1 ₺ bile aşılırsa üst oran matrahın tamamına uygulanır. 1400 cm³’e kadar bir araçta matrah 650.000 ₺ iken anahtar teslim fiyat ${tl0(s1400[0].maxFiyat!)}; 650.001 ₺ olunca oran %75’e çıkar ve fiyat yaklaşık ${tl0(Math.round(fiyat(650001, 75)))} olur. Bu yüzden markalar fiyatlarını dilim sınırının hemen altında tutar.`,
+  },
+  {
+    q: `${HEDEF}’de araç ÖTV’si değişecek mi?`,
+    a: `Matrah sınırları ve oranlar otomatik artmaz; Cumhurbaşkanı kararıyla değişir. ${HEDEF} için yeni bir karar yayımlanmadı. Asgari maktu ÖTV ise kanun gereği her yıl yeniden değerleme oranıyla artar: ${ydLabel} ile ${HEDEF} alt sınırı yaklaşık ${tl0(MAKTU_HEDEF)} olur${ydKesin ? '' : ' (tahmin; oran 3 Kasım’da Ekim Yİ-ÜFE ile kesinleşir)'}. Cumhurbaşkanı bu tutarı 10 katına kadar artırabilir veya sıfıra kadar indirebilir.`,
+  },
+  {
+    q: 'ÖTV’ye KDV uygulanır mı?',
+    a: `Evet. KDV matrahına ÖTV dahildir (KDV Kanunu md. 24/c). Yani KDV, vergisiz fiyat + ÖTV toplamı üzerinden %${KDV} hesaplanır. Bu nedenle %80 ÖTV’li bir araçta toplam vergi yükü vergisiz fiyatın %${fmt0((1.8 * 1.2 - 1) * 100)}’ine ulaşır.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Hesaplama Araçları', url: '/hesaplama-araclari/' },
+  { name: `ÖTV Hesaplama ${Y}`, url: '/otv-hesaplama/' },
+];
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: `Binek otomobil ÖTV oranları ve matrah sınırları ${Y}`,
+  description: `4760 sayılı ÖTV Kanunu (II) sayılı liste 87.03: 10115 sayılı Cumhurbaşkanı Kararı ile motor hacmi ve matrah grubuna göre ÖTV oranları, dilim sınırındaki azami anahtar teslim fiyatlar ve 7590 sayılı Kanun ile ${tl0(MAKTU)} asgari maktu ÖTV.`,
+  url: 'https://parafomo.com/otv-hesaplama/',
+  dateModified: o.dogrulama,
+  creator: { '@type': 'Organization', name: 'ParaFOMO', url: 'https://parafomo.com/' },
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+};
+---
+
+<BaseLayout
+  title={`ÖTV Hesaplama ${Y}: Araç ÖTV Oranları ve Matrah Sınırları`}
+  description={`Araç ÖTV hesaplama ${Y}: 1400 cm³’e kadar %70-90, elektrikli %25-75, asgari ÖTV ${tl0(MAKTU)}. Anahtar teslim fiyattan ÖTV ve KDV’yi hesapla.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+  image="/og/otv-hesaplama.png"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(dataset)} />
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Vergi · Özel tüketim vergisi</p>
+      <h1>ÖTV Hesaplama {Y}: Araç ÖTV’si Ne Kadar?</h1>
+      <p class="lede">
+        Otomobilin anahtar teslim ya da vergisiz fiyatını girin; motor grubuna göre <strong>ÖTV oranını, ÖTV ve KDV
+        tutarını</strong> görün. Oranlar 10115 sayılı Cumhurbaşkanı Kararı’ndan, <strong>{tl0(MAKTU)} asgari ÖTV</strong>
+        7590 sayılı Kanun’dan.
+      </p>
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="kpi-label">1400 cm³’e kadar</span>
+        <span class="kpi-val">%70-90</span>
+        <span class="kpi-sub">%70 dilimi anahtar teslim ≈ {tl0(s1400[0].maxFiyat!)}’ye kadar</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Elektrikli (≤160 kW)</span>
+        <span class="kpi-val">%25 / %55</span>
+        <span class="kpi-sub">%25 dilimi anahtar teslim ≈ {tl0(ev[0].maxFiyat!)}’ye kadar</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Asgari ÖTV</span>
+        <span class="kpi-val">{tl0(MAKTU)}</span>
+        <span class="kpi-sub">31 Temmuz 2026’dan beri · {HEDEF} ≈ {tl0(MAKTU_HEDEF)}{ydKesin ? '' : ' (tahmin)'}</span>
+      </div>
+    </div>
+
+    <section class="table-block" id="hesaplama">
+      <h2>Araç ÖTV hesaplama</h2>
+      <div class="calc-grid">
+        <form class="calc-inputs" autocomplete="off" onsubmit="return false">
+          <label>
+            <span>Araç grubu</span>
+            <select id="in-grup">
+              {GRUPLAR.map((g, i) => <option value={g.id} selected={i === 0}>{g.ad}</option>)}
+            </select>
+          </label>
+          <label>
+            <span>Girdiğiniz fiyat</span>
+            <select id="in-mod">
+              <option value="anahtar" selected>Anahtar teslim fiyat (ÖTV + KDV dahil)</option>
+              <option value="matrah">Vergisiz fiyat (ÖTV matrahı)</option>
+            </select>
+          </label>
+          <label>
+            <span>Tutar (₺)</span>
+            <input type="number" id="in-tutar" value="1800000" min="0" step="1000" inputmode="decimal" />
+            <em class="hint">Plaka, tescil ve noter masrafları hariç liste fiyatı.</em>
+          </label>
+        </form>
+
+        <div class="calc-results" aria-live="polite">
+          <div class="result-main">
+            <span class="result-label">ÖTV tutarı</span>
+            <span class="result-value" id="out-otv">—</span>
+          </div>
+          <div class="result-split">
+            <div class="split-item"><span class="split-label">ÖTV oranı</span><span class="split-val" id="out-oran">—</span></div>
+            <div class="split-item"><span class="split-label">Vergisiz fiyat (matrah)</span><span class="split-val" id="out-m">—</span></div>
+            <div class="split-item"><span class="split-label">KDV (%{KDV})</span><span class="split-val" id="out-kdv">—</span></div>
+            <div class="split-item"><span class="split-label">Anahtar teslim fiyat</span><span class="split-val" id="out-f">—</span></div>
+            <div class="split-item"><span class="split-label">Fiyattaki toplam vergi payı</span><span class="split-val" id="out-pay">—</span></div>
+          </div>
+          <p class="result-note" id="out-note"></p>
+        </div>
+      </div>
+      <p class="disclaimer">
+        Hesap {o.karar.no} sayılı Cumhurbaşkanı Kararı’ndaki oranları, {tl0(MAKTU)} asgari ÖTV’yi ve %{KDV} KDV’yi
+        uygular. Aracın hangi gruba girdiği ruhsat/uygunluk belgesindeki motor hacmi, elektrik motor gücü ve (şarj
+        edilebilir hibritte) emisyon-menzil değerlerine göre belirlenir; kesin ÖTV satış faturasında yazar.
+        Son kontrol: {dogrulama}.
+      </p>
+    </section>
+
+    <section class="table-block" id="otv-oranlari">
+      <h2>{Y} araç ÖTV oranları ve hangi fiyata kadar geçerli olduğu</h2>
+      <p class="table-intro">
+        Son sütun, o dilimde kalabilecek en yüksek anahtar teslim fiyattır (matrah sınırı × (1 + ÖTV) × 1,{KDV}).
+        Fiyat bu tutarı geçerse araç bir üst orana düşer. Oran matrahın tamamına uygulanır.
+      </p>
+      <div class="table-wrap">
+        <table class="rate-table">
+          <thead><tr><th>Araç grubu</th><th>ÖTV matrahı</th><th>Oran</th><th>Azami anahtar teslim</th></tr></thead>
+          <tbody>
+            {SINIRLAR.map((g) => g.satirlar.map((s, i) => (
+              <tr>
+                <td>{i === 0 ? <strong>{g.kisa}</strong> : ''}</td>
+                <td>{s.ust ? (s.alt ? `${tl0(s.alt)} – ${tl0(s.ust)}` : `${tl0(s.ust)}’ye kadar`) : s.alt ? `${tl0(s.alt)} üstü` : 'Tüm matrahlar'}</td>
+                <td>%{s.oran}</td>
+                <td>{s.maxFiyat ? tl0(s.maxFiyat) : '—'}</td>
+              </tr>
+            )))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-intro">
+        Şarj edilebilir hibrit (PHEV) satırları yalnız ağırlıklı birleşik CO₂ emisyonu 25 g/km’nin altında ve elektrikle
+        menzili 70 km ve üzerinde olan araçlar içindir. 1600-1800 cm³ PHEV’de karar yalnız 1.350.000 ₺’ye kadar matrah için
+        oran belirler; bunun üstünde araç motor hacmi grubunun oranına tabidir.
+      </p>
+    </section>
+
+    <section class="prose-block" id="otv-2027">
+      <h2>{HEDEF}’de araç ÖTV’si ne olacak?</h2>
+      <ul>
+        <li><strong>Matrah sınırları ve oranlar:</strong> otomatik artmaz. Son değişiklik 24 Temmuz 2025’te yapıldı;
+          {HEDEF} için yeni karar yayımlanmadı. Karar çıkarsa bu sayfa aynı gün güncellenir.</li>
+        <li><strong>Asgari ÖTV:</strong> kanun gereği her yıl bir önceki yılın yeniden değerleme oranıyla artar. {ydLabel}
+          ile {HEDEF} alt sınırı <strong>{tl0(MAKTU_HEDEF)}</strong>{ydKesin ? '' : ' (tahmin)'}. Cumhurbaşkanı bu
+          tutarı 10 katına kadar artırabilir, sıfıra kadar indirebilir veya matrah grubuna göre farklılaştırabilir.</li>
+        <li><strong>Etkisi:</strong> asgari ÖTV yalnız ucuz araçlarda bağlayıcıdır (ör. %25 oranlı elektriklide matrah
+          {tl0(MAKTU / 0.25)} altı). Çoğu araçta ÖTV’yi oran belirler.</li>
+      </ul>
+      <p class="cta-line">
+        Aldıktan sonra ödenecek yıllık vergi → <a href="/mtv-hesaplama/">MTV hesaplama {HEDEF}</a> · araç kredisi taksiti
+        ve BDDK sınırları → <a href="/tasit-kredisi-hesaplama/">taşıt kredisi hesaplama</a> · muayene →
+        <a href="/arac-muayene-ucreti/">araç muayene ücreti</a> · tüm hesaplayıcılar →
+        <a href="/hesaplama-araclari/">hesaplama araçları</a>.
+      </p>
+      <p class="source-note">
+        Kaynak: 4760 sayılı Özel Tüketim Vergisi Kanunu (II) sayılı liste; {o.karar.no} sayılı Cumhurbaşkanı Kararı
+        (<a href={o.karar.url} rel="noopener">Resmî Gazete {tarih(o.karar.rg)}, sayı {o.karar.rgSayi}</a>);
+        {o.asgariMaktu.kanun} (<a href={o.asgariMaktu.url} rel="noopener">Resmî Gazete {tarih(o.asgariMaktu.yururluk)},
+        sayı {o.asgariMaktu.rgSayi}</a>); güncel liste karşılaştırması <a href={o.konsolide} rel="noopener">ORGTR (II) sayılı
+        liste</a>. Son kontrol: {dogrulama}.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+    <Newsletter />
+  </div>
+  <script is:inline define:vars={{ D: { gruplar: GRUPLAR, maktu: MAKTU, kdv: KDV } }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const tl = (n) => nf0.format(Math.round(n)) + ' ₺';
+      const k = 1 + D.kdv / 100;
+      const otvOf = (m, r) => Math.max((m * r) / 100, D.maktu);
+      // dilim listesi: [{alt, ust, oran}]
+      const dilimler = (g) => { let alt = 0; return g.dilimler.map((d) => { const s = { alt, ust: d.ust == null ? Infinity : d.ust, oran: d.oran }; alt = s.ust; return s; }); };
+      function fromMatrah(ds, m) { return ds.find((d) => m > d.alt - 1e-9 && m <= d.ust) || null; }
+      function fromFiyat(ds, p) {
+        const net = p / k; // matrah + ÖTV
+        for (const d of ds) {
+          let m = net / (1 + d.oran / 100);
+          if ((m * d.oran) / 100 < D.maktu) m = net - D.maktu;
+          if (m > d.alt && m <= d.ust) return { d, m };
+        }
+        return null;
+      }
+      function update() {
+        const g = D.gruplar.find((x) => x.id === $('in-grup').value) || D.gruplar[0];
+        const ds = dilimler(g);
+        const mod = $('in-mod').value;
+        let v = parseFloat(String($('in-tutar').value).replace(',', '.'));
+        if (!isFinite(v) || v < 0) v = 0;
+        let d, m, note = '';
+        if (mod === 'matrah') { m = v; d = fromMatrah(ds, m); }
+        else {
+          const r = fromFiyat(ds, v);
+          if (r) { d = r.d; m = r.m; }
+          else {
+            // fiyat iki dilim arasındaki sıçrama bölgesinde: alt dilimin azami fiyatına göre göster
+            const alt = [...ds].reverse().find((x) => isFinite(x.ust) && (x.ust + otvOf(x.ust, x.oran)) * k < v);
+            note = 'Bu fiyat iki ÖTV dilimi arasındaki boşlukta kalıyor: alt dilimde en fazla ' + (alt ? tl((alt.ust + otvOf(alt.ust, alt.oran)) * k) : '—') + ' olabilir, üst dilime geçen araç bundan belirgin pahalıdır. Fiyatı kontrol edin.';
+            d = null; m = 0;
+          }
+        }
+        if (!d) {
+          ['out-otv', 'out-oran', 'out-m', 'out-kdv', 'out-f', 'out-pay'].forEach((id) => { $(id).textContent = '—'; });
+          $('out-note').textContent = note || 'Bu matrah için seçilen grupta oran tanımlı değil (PHEV 1600-1800 cm³’te 1.350.000 ₺ üstü): araç motor hacmi grubunun oranına tabidir.';
+          return;
+        }
+        const otv = otvOf(m, d.oran);
+        const kdv = ((m + otv) * D.kdv) / 100;
+        const f = m + otv + kdv;
+        $('out-otv').textContent = tl(otv);
+        $('out-oran').textContent = '%' + d.oran;
+        $('out-m').textContent = tl(m);
+        $('out-kdv').textContent = tl(kdv);
+        $('out-f').textContent = tl(f);
+        $('out-pay').textContent = f > 0 ? '%' + nf0.format(((otv + kdv) / f) * 100) : '—';
+        const parts = [];
+        if ((m * d.oran) / 100 < D.maktu) parts.push('Oranla hesaplanan ÖTV ' + tl((m * d.oran) / 100) + ': asgari ÖTV ' + tl(D.maktu) + ' uygulandı.');
+        if (isFinite(d.ust)) {
+          const next = ds[ds.indexOf(d) + 1];
+          const sinirF = (d.ust + otvOf(d.ust, d.oran)) * k;
+          if (next) parts.push('Bu dilimde anahtar teslim fiyat en fazla ' + tl(sinirF) + ' olabilir; matrah ' + (d.ust - m < 1 ? '1 ₺ bile' : tl(d.ust - m)) + ' artarsa oran %' + next.oran + '’e çıkar ve tüm tutara uygulanır.');
+        }
+        $('out-note').textContent = parts.join(' ');
+      }
+      ['in-grup', 'in-mod', 'in-tutar'].forEach((id) => { $(id).addEventListener('input', update); $(id).addEventListener('change', update); });
+      update();
+    })();
+  </script>
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 660px; margin: 0 auto; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin: 0 0 1rem; }
+    .kpi { display: flex; flex-direction: column; gap: 0.15rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-xs); }
+    .kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .kpi-val { font-family: var(--font-serif); font-size: clamp(1.35rem, 1.15rem + 1vw, 1.8rem); font-weight: 700; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .kpi-sub { font-size: 0.78rem; color: var(--text-soft); line-height: 1.35; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; line-height: 1.4; }
+    .calc-inputs input, .calc-inputs select {
+      font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%; min-height: 2.75rem;
+    }
+    .calc-inputs select { font-size: 0.95rem; }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 1rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; font-variant-numeric: tabular-nums; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; font-variant-numeric: tabular-nums; text-align: right; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; line-height: 1.45; }
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1rem 0 0; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.55; }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0.4rem 0 0.8rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+    .rate-table :global(th), .rate-table :global(td) { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .rate-table :global(th) { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block ul { padding-left: 1.2rem; }
+    .prose-block li { margin-bottom: 0.4rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+    .prose-block p.source-note { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.65; margin: 0.6rem 0 0; }
+
+    @media (max-width: 720px) {
+      .kpi-row { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>

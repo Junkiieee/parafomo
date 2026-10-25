@@ -53,6 +53,7 @@ const GRUPLAR_HAM: Grup[] = [
     { href: '/tapu-harci-hesaplama/', ad: 'Tapu harcı hesaplama', aciklama: 'Alıcı-satıcı harcı ve döner sermaye', k: ['tapu', 'ev al', 'konut al', 'gayrimenkul'] },
     { href: '/veraset-ve-intikal-vergisi-hesaplama/', ad: 'Veraset ve intikal vergisi', aciklama: 'Miras ve bağışta istisna, dilim, vergi', k: ['veraset', 'miras', 'intikal', 'bağış'] },
     { href: '/mtv-hesaplama/', ad: 'MTV hesaplama', aciklama: 'Motorlu taşıtlar vergisi 2027', k: ['mtv', 'motorlu taşıt', 'araç vergisi', 'otomobil'] },
+    { href: '/otv-hesaplama/', ad: 'ÖTV hesaplama', aciklama: 'Araç ÖTV oranları, matrah sınırları', k: ['ötv', 'özel tüketim', 'araç al', 'otomobil', 'elektrikli araç'] },
     { href: '/arac-muayene-ucreti/', ad: 'Araç muayene ücreti', aciklama: 'TÜVTÜRK ücretleri ve gecikme hesabı', k: ['muayene', 'tüvtürk'] },
     { href: '/noter-ucretleri/', ad: 'Noter ücretleri', aciklama: 'Araç satış, vekaletname ve onay ücretleri', k: ['noter', 'vekaletname'] },
     { href: '/yeniden-degerleme-orani/', ad: 'Yeniden değerleme oranı', aciklama: '2027 harç, ceza ve vergi zammı oranı', k: ['yeniden değerleme', '2027 zam', 'harç', 'zamlar'] },

@@ -227,6 +227,10 @@ CARDS = {
         # data/bagkur-prim-2026.json + brüt asgari ücret; Ocak 2027'de güncelle
         "kicker": "BAĞ-KUR PRİMİ 2026", "stat": "₺10.156,73",
         "sub": "en düşük aylık prim (%30,75) · indirimsiz 11.808,23 ₺"},
+    "otv-hesaplama": lambda: {
+        # data/otv-arac.json (CB K. 10115 + 7590 s.K. asgari ÖTV); karar değişirse güncelle
+        "kicker": "ARAÇ ÖTV HESAPLAMA 2026", "stat": "%25-220",
+        "sub": "1400 cm³'e kadar %70-90 · elektrikli %25-75 · asgari ÖTV 100.000 ₺"},
     "gss-primi-hesaplama": lambda: {
         # data/gss-prim-2026.json (CB K. 10602 %6) × brüt asgari ücret; Ocak 2027'de güncelle
         "kicker": "GSS PRİMİ 2026", "stat": "₺1.981,80",
