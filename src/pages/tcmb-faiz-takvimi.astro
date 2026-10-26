@@ -100,7 +100,7 @@ const jsonLd = {
   title={upcoming
     ? `TCMB Faiz Kararı Ne Zaman? Sıradaki PPK: ${upcoming.dayLabel}, ${upcoming.tsiTime} (Faiz %${nf(rate)})`
     : `TCMB Faiz Kararı 2026: PPK Takvimi ve Kararlar (Politika Faizi %${nf(rate)})`}
-  description={`TCMB politika faizi %${nf(rate)}${last ? ` (son karar ${last.dayLabel}: ${decisionText(last.result!)})` : ''}. 2026 PPK toplantı tarihleri, her toplantının kararı, TSİ açıklama saatleri ve bir sonraki faiz kararına kalan gün.`}
+  description={`TCMB politika faizi %${nf(rate)}${last ? ` (son karar ${last.dayLabel}: ${decisionText(last.result!)})` : ''}. 2026 PPK tarihleri, tüm kararlar, açıklama saati ve sıradaki karara kalan gün.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
