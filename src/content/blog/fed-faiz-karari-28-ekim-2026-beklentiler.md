@@ -107,9 +107,9 @@ Karar öncesi tablo (26 Ekim 2026, 09:00 itibarıyla gösterge veriler):
 | Dolar/TL | 49,76 |
 | Gram altın (satış) | ≈6.443 TL |
 
-10 yıllık ABD tahvil faizinin %5 civarında olması, piyasanın "yüksek faiz uzun süre kalır" senaryosunu ciddi ölçüde fiyatladığını gösteriyor. Güncel eğriyi [ABD tahvil faizi](/abd-tahvil-faizi) sayfasından, dolardaki uzun vadeli seyri [dolar getiri](/dolar-getiri) sayfasından, altının TL bazındaki performansını ise [altın getiri](/altin-getiri) sayfasından izleyebilirsin.
+10 yıllık ABD tahvil faizinin %5 civarında olması, piyasanın "yüksek faiz uzun süre kalır" senaryosunu ciddi ölçüde fiyatladığını gösteriyor. Güncel eğriyi [ABD tahvil faizi](/abd-tahvil-faizi) sayfasından, DXY ve bileşenlerini [dolar endeksi](/dolar-endeksi) sayfasından, dolardaki uzun vadeli seyri [dolar getiri](/dolar-getiri) sayfasından, altının TL bazındaki performansını ise [altın getiri](/altin-getiri) sayfasından izleyebilirsin.
 
-**TL tarafında önemli nokta:** TCMB 22 Ekim'de politika faizini 100 baz puan indirerek **%36**'ya çekti. Fed sıkı dururken TCMB'nin gevşemesi, iki ülke arasındaki faiz farkını daraltır. Bu fark carry trade (yüksek faizli TL'ye giren yabancı sermaye) iştahını etkilediği için Fed'in şahin bir mesajı TL üzerinde ek baskı yaratabilir.
+**TL tarafında önemli nokta:** TCMB 22 Ekim'de politika faizini 100 baz puan indirerek **%36**'ya çekti ([TCMB faiz takvimi](/tcmb-faiz-takvimi)). Fed sıkı dururken TCMB'nin gevşemesi, iki ülke arasındaki faiz farkını daraltır. Bu fark carry trade (yüksek faizli TL'ye giren yabancı sermaye) iştahını etkilediği için Fed'in şahin bir mesajı TL üzerinde ek baskı yaratabilir.
 
 ## Karar akşamı adım adım ne yapmalı?
 
