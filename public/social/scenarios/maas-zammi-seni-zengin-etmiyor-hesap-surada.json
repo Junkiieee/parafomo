@@ -1,0 +1,64 @@
+{
+  "slug": "maas-zammi-seni-zengin-etmiyor-hesap-surada",
+  "title": "Maaş zammı seni zengin etmiyor, hesap şurada",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Maaşa gelen yüzde 30 zam, enflasyon yüzde 40 ise alım gücünü yaklaşık yüzde 7 düşürür. Zam oranını enflasyona bölerek gerçek kazancını kendin hesapla.\nKaynak/hesap: 1,30 / 1,40 = 0,929 → alım gücü yaklaşık %7 düşer (senaryo: zam %30, enflasyon %40; 50.000 TL × 1,30 = 65.000 TL, 50.000 TL × 1,40 = 70.000 TL) · senaryodaki hesap",
+  "tags": [
+    "maaş zammı",
+    "enflasyon",
+    "alım gücü",
+    "reel gelir",
+    "kişisel finans",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Yüzde 30 zam aldın, yine de fakirleştin.",
+      "visual": {
+        "type": "object",
+        "query": "full wallet"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Maaş 50 binden 65 bine çıktı, ama 50 binlik market sepeti 70 bin oldu.",
+      "visual": {
+        "type": "object",
+        "query": "receipt paper"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama rakam büyüyünce kayıp hissedilmiyor; oysa alım gücün yaklaşık yüzde 7 düştü.",
+      "visual": {
+        "type": "concept",
+        "query": "loss"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Zam oranını enflasyona böl; sonuç birden küçükse gerilemişsin. Pazarlığa enflasyonun üstünü yazarak git.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sepetin gerçekte ne kadar pahalandı, onu da göstereceğim. Abone ol, her gün tek net hesabı kısa kısa al.",
+      "visual": {
+        "type": "object",
+        "query": "full wallet"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "yüzde 30 zam",
+    "calc": "1,30 / 1,40 = 0,929 → alım gücü yaklaşık %7 düşer (senaryo: zam %30, enflasyon %40; 50.000 TL × 1,30 = 65.000 TL, 50.000 TL × 1,40 = 70.000 TL)",
+    "source": "senaryodaki hesap"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "slug": "paranin-yariya-dusme-suresi-tek-bolmeyle-cikiyor",
+  "title": "Paranın yarıya düşme süresi tek bölmeyle çıkıyor",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "72 kuralıyla enflasyonun fiyatları kaç yılda ikiye katladığını kafadan hesaplıyoruz. Yüzde 36 yıllık enflasyon örneğiyle, getirisiz bekleyen paranın alım gücü nasıl yarıya iniyor, gösteriyoruz.\nKaynak/hesap: 72 / 36 = 2 yıl (72 kuralı, yaklaşık); kontrol: 1,36 x 1,36 = 1,85 kat · senaryodaki hesap (varsayımsal yıllık yüzde 36 enflasyon, 72 kuralı)",
+  "tags": [
+    "enflasyon",
+    "72 kuralı",
+    "alım gücü",
+    "birikim",
+    "faiz",
+    "reel getiri",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Yüzde 36'da fiyatlar 2 yılda ikiye katlanır.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Hesap kolay: 72'yi enflasyona böl. 36'ya bölünce iki yıl çıkıyor, fiyatlar o sürede katlanıyor.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl mesele şu: bugün 100 liralık market sepeti iki yıl sonra yaklaşık 200 lira.",
+      "visual": {
+        "type": "object",
+        "query": "grocery shopping basket"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Getirisiz bekleyen paran iki yılda alım gücünün yarısını kaybeder. 72'yi kendi getirine böl, sonucu gör.",
+      "visual": {
+        "type": "concept",
+        "query": "time and loss"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki hesap, maaşının neden yetmediğini gösteriyor. Abone ol, her gün 60 saniyede tek net hesap.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "Yüzde 36 enflasyonda fiyatlar 2 yılda ikiye katlanır",
+    "calc": "72 / 36 = 2 yıl (72 kuralı, yaklaşık); kontrol: 1,36 x 1,36 = 1,85 kat",
+    "source": "senaryodaki hesap (varsayımsal yıllık yüzde 36 enflasyon, 72 kuralı)"
+  }
+}

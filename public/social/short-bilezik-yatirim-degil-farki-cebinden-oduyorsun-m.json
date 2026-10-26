@@ -1,0 +1,70 @@
+{
+  "title": "Bilezik yatırım değil, farkı cebinden ödüyorsun #Shorts",
+  "description": "22 ayar bilezikte ödediğin paranın bir kısmı işçilik ve kuyumcu payı. Bozdururken bu pay geri gelmiyor; yatırım için gram altın ya da külçe daha mantıklı.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #altın #bilezik #işçilik payı #gram altın #külçe altın",
+  "tags": [
+    "altın",
+    "bilezik",
+    "işçilik payı",
+    "gram altın",
+    "külçe altın",
+    "birikim",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-bilezik-yatirim-degil-farki-cebinden-oduyorsun-m.mp4",
+  "slug": "bilezik-yatirim-degil-farki-cebinden-oduyorsun-m",
+  "format": "myth",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.69,
+      "spoken": "Bilezik aldın, yatırım yaptığını sanıyorsun.",
+      "visual": "manim: Para"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.69,
+      "end": 9.32,
+      "spoken": "Çünkü bilezikte ödediğin paranın bir kısmı altın değil, işçilik ve kuyumcunun payı.",
+      "visual": "manim: Altın"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 9.32,
+      "end": 15.67,
+      "spoken": "Ama bozdurmaya gidince kuyumcu sadece altının değerini öder, işçilik payı sana geri dönmez.",
+      "visual": "manim: Altın"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 15.67,
+      "end": 21.98,
+      "spoken": "Yatırımsa gram ya da külçe al, bilezik süstür. İkisini karıştırırsan farkı cebinden ödersin.",
+      "visual": "manim: Altın"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 21.98,
+      "end": 29.07,
+      "spoken": "Sırada kuyumcunun pek anlatmadığı bir hesap var. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": "manim: ParaFOMO"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-24T16:02:10+00:00",
+    "slug": "bilezik-yatirim-degil-farki-cebinden-oduyorsun-m",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "aXHV5i0XHOg",
+  "youtube_url": "https://youtube.com/shorts/aXHV5i0XHOg",
+  "ig_reel_id": "17910143733485457",
+  "ig_reel_permalink": "https://www.instagram.com/reel/De4hAuwiHcJ/",
+  "ig_seed_comment_id": "17891632029617438"
+}

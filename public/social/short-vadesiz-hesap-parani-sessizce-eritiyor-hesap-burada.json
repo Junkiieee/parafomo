@@ -1,0 +1,63 @@
+{
+  "title": "Vadesiz hesap paranı sessizce eritiyor, hesap burada #Shorts",
+  "description": "Vadesiz hesaptaki para, bakiye aynı görünse bile alım gücünü kaybeder. Delik kova metaforu ve 100 bin TL örneğiyle, birikimi korumanın basit yolu.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #vadesiz hesap #enflasyon #alım gücü #birikim #altın",
+  "tags": [
+    "vadesiz hesap",
+    "enflasyon",
+    "alım gücü",
+    "birikim",
+    "altın",
+    "tasarruf",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-vadesiz-hesap-parani-sessizce-eritiyor-hesap-burada.mp4",
+  "slug": "vadesiz-hesap-parani-sessizce-eritiyor-hesap-burada",
+  "format": "single_concept",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 4.22,
+      "spoken": "Vadesiz hesaptaki paran sessizce akıp gidiyor.",
+      "visual": "object: piggy bank"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 4.22,
+      "end": 10.45,
+      "spoken": "Vadesiz hesap delik bir kova gibi: içindeki sayı aynı kalır, ama alabildiğin şey azalır.",
+      "visual": "manim: Mevduat"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 10.45,
+      "end": 17.78,
+      "spoken": "Ama bakiye 100 bin yazar. Fiyatlar yüzde 30 artarsa, alım gücün yaklaşık 77 bine iner.",
+      "visual": "object: calculator"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 17.78,
+      "end": 23.46,
+      "spoken": "Bir aylık gideri vadesizde tut, kalanı enflasyona karşı çalışan bir araca taşı.",
+      "visual": "marka kartı"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 23.46,
+      "end": 30.32,
+      "spoken": "Sıradaki hesap maaşını bile şaşırtabilir. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": "object: piggy bank"
+    }
+  ],
+  "video_id": "nU9qYUVBYuc",
+  "youtube_url": "https://youtube.com/shorts/nU9qYUVBYuc",
+  "ig_reel_id": "17973026706174218",
+  "ig_reel_permalink": "https://www.instagram.com/reel/De4M6VJCHpc/",
+  "ig_seed_comment_id": "18340434313258889"
+}
