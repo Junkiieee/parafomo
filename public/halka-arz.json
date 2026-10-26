@@ -1,9 +1,94 @@
 {
-  "updated": "2026-10-26T12:15+00:00",
+  "updated": "2026-10-26T18:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 42,
   "items": [
+    {
+      "company": "Flo Mağazacılık ve Pazarlama A.Ş.",
+      "bist_code": "",
+      "slug": "flo-magazacilik-ve-pazarlama-a-s",
+      "link": "https://halkarz.com/flo-magazacilik-ve-pazarlama-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "510.000.000 Lot",
+      "broker": "İş Yatırım Menkul Değerler A.Ş. Halk Yatırım Menkul Değerler A.Ş.",
+      "market": "Yıldız Pazar",
+      "first_trade": "",
+      "float_lot": "",
+      "float_pct": "",
+      "updated_src": "26.10.2026 15:20",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 510.000.000 Lot"
+          ],
+          "source": "Taslak İzahname, Sayfa 1."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%45-55 Yurt içi ve yurt dışı mağaza açılışları, mevcut mağaza ağı modernizasyonu ve teknolojileri yatırımları",
+            "%45-55 İşletme sermayesi"
+          ],
+          "source": "Taslak İzahname, Sayfa 406."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "(İş Yatırım Menkul Değerler A.Ş.)"
+          ],
+          "source": "Taslak İzahname, Sayfa 354."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "Taslak İzahname, Sayfa 356."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%15,9"
+          ],
+          "source": "Taslak İzahname, Sayfa 333."
+        },
+        "finansal": {
+          "periods": [
+            "2026/6",
+            "2025",
+            "2024"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "31,4 Milyar TL",
+                "79,8 Milyar TL",
+                "95,9 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "12,4 Milyar TL",
+                "28,6 Milyar TL",
+                "39,1 Milyar TL"
+              ]
+            }
+          ]
+        }
+      }
+    },
     {
       "company": "İnternet Tekstil Sanayii ve Tic. A.Ş.",
       "bist_code": "",
@@ -2346,93 +2431,6 @@
                 "37,5 Milyon TL",
                 "90,2 Milyon TL",
                 "228,5 Milyon TL"
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "company": "Aycan Entegre Gıda A.Ş.",
-      "bist_code": "",
-      "slug": "aycan-entegre-gida-a-s",
-      "link": "https://halkarz.com/aycan-entegre-gida-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "50.000.000 Lot",
-      "broker": "İnfo Yatırım Menkul Değerler A.Ş.",
-      "market": "Ana Pazar",
-      "first_trade": "",
-      "float_lot": "",
-      "float_pct": "",
-      "updated_src": "15.09.2026 09:50",
-      "details": {
-        "sekil": {
-          "items": [
-            "Sermaye Artırımı : 50.000.000 Lot"
-          ],
-          "source": "Taslak İzahname, Sayfa 1."
-        },
-        "fon_kullanim": {
-          "items": [
-            "%25 Entegre tesis yatırımı",
-            "%35 Finansal borç anapara ve faiz ödemeleri",
-            "%35 İşletme sermayesi",
-            "%5 Çatı üzeri güneş enerjisi santrali (GES) yatırımı"
-          ],
-          "source": "Taslak İzahname, Sayfa 202."
-        },
-        "satis_yontemi": {
-          "items": [
-            "Sabit Fiyatla Talep Toplama",
-            "En İyi Gayret Aracılığı"
-          ],
-          "source": ""
-        },
-        "fiyat_istikrari": {
-          "items": [
-            "Planlanmamaktadır"
-          ],
-          "source": "Taslak İzahname, Sayfa 199."
-        },
-        "satmama": {
-          "items": [
-            "1 Yıl, İhraççı",
-            "1 Yıl, Ortaklar"
-          ],
-          "source": "Taslak İzahname, Sayfa 200."
-        },
-        "halka_aciklik": {
-          "items": [
-            "%20"
-          ],
-          "source": "Taslak İzahname, Sayfa 179."
-        },
-        "finansal": {
-          "periods": [
-            "2025",
-            "2024",
-            "2023"
-          ],
-          "rows": [
-            {
-              "label": "Hasılat",
-              "values": [
-                "7,8 Milyar TL",
-                "6,9 Milyar TL",
-                "4,3 Milyar TL"
-              ]
-            },
-            {
-              "label": "Brüt Kâr",
-              "values": [
-                "1,2 Milyar TL",
-                "759,5 Milyon TL",
-                "314,6 Milyon TL"
               ]
             }
           ]

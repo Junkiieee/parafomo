@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26T12:15+00:00",
+ "updated": "2026-10-26T18:15+00:00",
  "source": "halkarz.com",
  "items": {
   "pronet-guvenlik-hizmetleri-a-s": {
@@ -4339,6 +4339,92 @@
     }
    },
    "first_seen": "2026-10-19"
+  },
+  "flo-magazacilik-ve-pazarlama-a-s": {
+   "company": "Flo Mağazacılık ve Pazarlama A.Ş.",
+   "bist_code": "",
+   "slug": "flo-magazacilik-ve-pazarlama-a-s",
+   "link": "https://halkarz.com/flo-magazacilik-ve-pazarlama-a-s/",
+   "date_text": "",
+   "start": null,
+   "end": null,
+   "status": "Tarih Bekleniyor",
+   "price": "",
+   "distribution": "Eşit Dağıtım **",
+   "lot": "510.000.000 Lot",
+   "broker": "İş Yatırım Menkul Değerler A.Ş. Halk Yatırım Menkul Değerler A.Ş.",
+   "market": "Yıldız Pazar",
+   "first_trade": "",
+   "float_lot": "",
+   "float_pct": "",
+   "updated_src": "26.10.2026 15:20",
+   "details": {
+    "sekil": {
+     "items": [
+      "Sermaye Artırımı : 510.000.000 Lot"
+     ],
+     "source": "Taslak İzahname, Sayfa 1."
+    },
+    "fon_kullanim": {
+     "items": [
+      "%45-55 Yurt içi ve yurt dışı mağaza açılışları, mevcut mağaza ağı modernizasyonu ve teknolojileri yatırımları",
+      "%45-55 İşletme sermayesi"
+     ],
+     "source": "Taslak İzahname, Sayfa 406."
+    },
+    "satis_yontemi": {
+     "items": [
+      "Sabit Fiyatla Talep Toplama",
+      "En İyi Gayret Aracılığı"
+     ],
+     "source": ""
+    },
+    "fiyat_istikrari": {
+     "items": [
+      "(İş Yatırım Menkul Değerler A.Ş.)"
+     ],
+     "source": "Taslak İzahname, Sayfa 354."
+    },
+    "satmama": {
+     "items": [
+      "1 Yıl, İhraççı",
+      "1 Yıl, Ortaklar"
+     ],
+     "source": "Taslak İzahname, Sayfa 356."
+    },
+    "halka_aciklik": {
+     "items": [
+      "%15,9"
+     ],
+     "source": "Taslak İzahname, Sayfa 333."
+    },
+    "finansal": {
+     "periods": [
+      "2026/6",
+      "2025",
+      "2024"
+     ],
+     "rows": [
+      {
+       "label": "Hasılat",
+       "values": [
+        "31,4 Milyar TL",
+        "79,8 Milyar TL",
+        "95,9 Milyar TL"
+       ]
+      },
+      {
+       "label": "Brüt Kâr",
+       "values": [
+        "12,4 Milyar TL",
+        "28,6 Milyar TL",
+        "39,1 Milyar TL"
+       ]
+      }
+     ]
+    }
+   },
+   "first_seen": "2026-10-26"
   }
  }
 }
