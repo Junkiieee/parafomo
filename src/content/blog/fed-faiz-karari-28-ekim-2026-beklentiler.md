@@ -19,6 +19,23 @@ faq:
     a: "Sabit karar büyük ölçüde fiyatlandığı için asıl etkiyi açıklama metni ve basın toplantısındaki ton belirler. Aralık'ta artış sinyali güçlü verilirse dolar güçlenip altın baskılanabilir; sinyal yumuşarsa tersi görülebilir."
   - q: "Fed kararı Türkiye'yi nasıl etkiler?"
     a: "Fed'in faizi yüksek tutması ya da artırması gelişmekte olan ülkelerden sermaye çıkışı riskini artırır, dolar/TL ve Türkiye risk primi üzerinde baskı yaratabilir. TCMB 22 Ekim'de faizi %36'ya indirdiği için iki merkez bankası arasındaki faiz farkı da yakından izleniyor."
+shorts:
+  - "Beklenti 85 bindi, gelen sadece 29 bin!"
+  - "Eylül'de ABD'de tarım dışı istihdam yalnızca 29 bin arttı ve işsizlik yüzde 4,2'ye çıktı."
+  - "Ama enflasyon yapışkan: Fed'in tercih ettiği çekirdek PCE yüzde 3, hedef ise yüzde 2."
+  - "Yani 28 Ekim'de faiz yüzde 3,75-4,00'de sabit kalabilir; asıl mesele Aralık için artış sinyali."
+  - "Warsh Aralık için kapıyı açacak mı? Abone ol, karar anında ilk sen öğren; parafomo.com'da hepsi var."
+shorts_broll:
+  - "federal reserve building"
+  - "stock market chart"
+  - "unemployment line"
+  - "interest rate graph"
+shorts_visuals:
+  - "place|Federal Reserve building"
+  - "concept|unemployment"
+  - "object|receipt paper"
+  - "person|Kevin Warsh"
+  - "object|smartphone banking app"
 ---
 
 **Fed faiz kararı** bu hafta piyasaların tek gündemi: ABD Merkez Bankası (Fed) 28 Ekim 2026 Çarşamba günü Türkiye saatiyle 21:00'de yeni kararını açıklayacak. Eylül'de faizi beklenmedik biçimde artıran Fed'in şimdi "dur mu, devam mı" diyeceği; dolar, altın, borsa ve TL için yılın son çeyreğinin yönünü belirleyecek. Bu yazıda kararın saatini, piyasa beklentisini, olası üç senaryoyu ve her birinin senin portföyüne olası etkisini sade bir dille anlatıyoruz.
