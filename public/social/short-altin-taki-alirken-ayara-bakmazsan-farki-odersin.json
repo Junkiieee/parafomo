@@ -1,0 +1,70 @@
+{
+  "title": "Altın takı alırken ayara bakmazsan farkı ödersin #Shorts",
+  "description": "14 ayar takının yaklaşık yüzde 42'si altın değil. Basit bir hesapla takı ile yatırım altını arasındaki farkı gösteriyor.\nKaynak/hesap: 14/24 = %58,3 saf altın; 100 - 58,3 = %41,7 ≈ %42 diğer metal (10 gramda 10x14/24 ≈ 5,8 gram altın) · senaryodaki hesap (ayar = 24 üzerinden saf altın oranı)\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #altın #14 ayar #takı altını #işçilik #gram altın\n\nGörseller: Gold rings and other jewelry, Aidonia, AM of Nemea, 201947.jpg — Zde (CC BY-SA 4.0)",
+  "tags": [
+    "altın",
+    "14 ayar",
+    "takı altını",
+    "işçilik",
+    "gram altın",
+    "yatırım",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-altin-taki-alirken-ayara-bakmazsan-farki-odersin.mp4",
+  "slug": "altin-taki-alirken-ayara-bakmazsan-farki-odersin",
+  "format": "shock_number",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 4.1,
+      "spoken": "14 ayar takının yüzde 42'si altın değil.",
+      "visual": "gold: shiny gold necklace jewelry"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 4.1,
+      "end": 12.9,
+      "spoken": "14 ayar demek, 24 parçanın 14'ü altın. 10 gramlık yüzükte yaklaşık 5,8 gram altın var.",
+      "visual": "gold: gold ring jewelry"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 12.9,
+      "end": 18.96,
+      "spoken": "Ama vitrinde gramın üstüne işçilik de biniyor; geri satarken o işçilik cebine dönmüyor.",
+      "visual": "object: receipt paper"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 18.96,
+      "end": 25.43,
+      "spoken": "Yatırım için 24 ayar gram ya da külçe al; takıyı süs olarak, ayarına bakarak seç.",
+      "visual": "gold: gold bullion bars"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 25.43,
+      "end": 32.29,
+      "spoken": "Sırada işçilik farkının tam hesabı var. Abone ol, her gün tek net hesabı kısa kısa anlatıyorum.",
+      "visual": "gold: shiny gold necklace jewelry"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-26T18:33:31+00:00",
+    "slug": "altin-taki-alirken-ayara-bakmazsan-farki-odersin",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "l5ufQhvzlls",
+  "youtube_url": "https://youtube.com/shorts/l5ufQhvzlls",
+  "ig_reel_id": "18119509412471292",
+  "ig_reel_permalink": "https://www.instagram.com/reel/De98BmJApFF/",
+  "ig_seed_comment_id": "18115921283040988"
+}

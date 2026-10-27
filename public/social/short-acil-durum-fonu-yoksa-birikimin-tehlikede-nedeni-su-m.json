@@ -1,0 +1,70 @@
+{
+  "title": "Acil durum fonu yoksa birikimin tehlikede, nedeni şu #Shorts",
+  "description": "Acil durum fonunu yedek lastik metaforuyla anlatan kısa video: beklenmedik gider çıkınca yatırımı zararına bozmamak için aylık giderin yaklaşık üç katını ayrı tutmak.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #acil durum fonu #birikim #kişisel finans #yatırım #tasarruf",
+  "tags": [
+    "acil durum fonu",
+    "birikim",
+    "kişisel finans",
+    "yatırım",
+    "tasarruf",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-acil-durum-fonu-yoksa-birikimin-tehlikede-nedeni-su-m.mp4",
+  "slug": "acil-durum-fonu-yoksa-birikimin-tehlikede-nedeni-su-m",
+  "format": "single_concept",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.54,
+      "spoken": "Acil durum fonun yoksa zengin değilsin.",
+      "visual": "manim: Tasarruf"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.54,
+      "end": 9.9,
+      "spoken": "Araba yedek lastiksiz de gider, ta ki patlayana kadar; acil durum fonu da o lastik.",
+      "visual": "manim: Tasarruf"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 9.9,
+      "end": 16.56,
+      "spoken": "Ama çoğu kişi yatırım yapar, sonra bozulan çamaşır makinesi için hisselerini zararına satar.",
+      "visual": "manim: Risk"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 16.56,
+      "end": 23.78,
+      "spoken": "Çözüm: aylık giderinin yaklaşık üç katını ayrı, kolay çekilen bir hesapta tut, yatırıma sonra geç.",
+      "visual": "manim: Mevduat"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 23.78,
+      "end": 30.2,
+      "spoken": "Sırada bu fonu nereye koyacağın var. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": "manim: ParaFOMO"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-26T16:02:22+00:00",
+    "slug": "acil-durum-fonu-yoksa-birikimin-tehlikede-nedeni-su-m",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "cBiVyIe_aC8",
+  "youtube_url": "https://youtube.com/shorts/cBiVyIe_aC8",
+  "ig_reel_id": "18119113265068301",
+  "ig_reel_permalink": "https://www.instagram.com/reel/De9qoQalXa4/",
+  "ig_seed_comment_id": "18076005836767428"
+}
