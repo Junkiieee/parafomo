@@ -118,8 +118,22 @@ if (ret) faq.push({
 });
 if (ipo.broker) faq.push({ q: `${name} halka arzına hangi aracı kurumdan katılabilirim?`, a: `Halka arzın lider aracı kurumu ${ipo.broker}. Konsorsiyumdaki diğer banka ve aracı kurumlar izahnamede ve KAP duyurusunda listelenir; talep toplama günlerinde bu kurumların mobil uygulamalarından başvurulabilir.` });
 
-const titleBits = [ipo.date_text ? 'Tarih' : 'Ne Zaman', 'Fiyat', 'Lot', ret ? 'Getiri' : 'Detaylar'];
-const title = `${nameCode} Halka Arz: ${titleBits.slice(0, -1).join(', ')} ve ${titleBits.at(-1)}`;
+// Google ~70 karakterde keser: önce kuyruk kısalır (Lot → Detaylar), şirket adı + "Halka Arz" en son kısalır.
+const when = ipo.date_text ? 'Tarih' : 'Ne Zaman';
+const mkTitle = (n: string, bits: string[]) => `${n} Halka Arz: ${bits.slice(0, -1).join(', ')} ve ${bits.at(-1)}`;
+const bitSets = ret
+  ? [[when, 'Fiyat', 'Lot', 'Getiri'], [when, 'Fiyat', 'Getiri'], [when, 'Getiri']]
+  : [[when, 'Fiyat', 'Lot', 'Detaylar'], [when, 'Fiyat', 'Lot'], [when, 'Fiyat']];
+let title = bitSets.map((b) => mkTitle(nameCode, b)).find((t) => t.length <= 70) ?? '';
+if (!title) {
+  const words = name.split(' ');
+  for (let k = words.length - 1; k >= 2 && !title; k--) {
+    const n = words.slice(0, k).join(' ').replace(/\s+(ve|Tic\.?|San\.?)$/i, '');
+    const t = mkTitle(code ? `${n} (${code})` : n, bitSets.at(-1)!);
+    if (t.length <= 70) title = t;
+  }
+  title ||= mkTitle(nameCode, bitSets.at(-1)!);
+}
 // Önem sırasıyla; 160 karakteri aşarsa sondan kırp (Google ~160’ta keser).
 const descParts = [
   `${name} halka arzı`,
