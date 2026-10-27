@@ -125,3 +125,57 @@ export function relatedTools(o: { title: string; tags?: string[]; category?: str
   if (sec.length === 0) for (const h of KATEGORI[o.category ?? ''] ?? []) if (!body.includes(h.replace(/\/$/, ''))) sec.push(h);
   return sec.slice(0, n).map((h) => TOOLS.find((t) => t.href === h)).filter((t): t is Tool => !!t);
 }
+
+// Olay yazıları (tarihli önizleme/sonuç) rehber sayılmaz: birkaç hafta sonra eskir.
+const AY = '(ocak|subat|mart|nisan|mayis|haziran|temmuz|agustos|eylul|ekim|kasim|aralik)';
+const OLAY_SLUG = new RegExp(`${AY}-20\\d\\d|\\d{1,2}-${AY}|20\\d\\d-${AY}`);
+
+export type GuidePost = { id: string; data: { title: string; tags: string[]; draft?: boolean; sonuc?: string; pubDate: Date } };
+
+// Elle seçilmiş rehberler: otomatik eşleşmenin kaçırdığı/yanıldığı sayfalar ("şirket" → Russell 2000,
+// "brüt" → döviz rezervleri). Listesi olan sayfada yalnız bunlar gösterilir (otomatik ekleme yok).
+const REHBER: Record<string, string[]> = {
+  '/bist-getiri/': ['borsaya-nasil-baslanir', 'hisse-senedi-nasil-secilir', 'fk-orani-nedir'],
+  '/bilesik-faiz-hesaplama/': ['dca-nedir-maliyet-ortalamasi', 'pasif-gelir-fikirleri', 'finansal-ozgurluk-nedir-fire'],
+  '/faiz-hesaplama/': ['faiz-nedir-ekonomiyi-nasil-etkiler', 'reel-faiz-nedir', 'mevduat-faizi-nedir-vadeli-mevduat'],
+  '/mevduat-faizi-hesaplama/': ['mevduat-faizi-nedir-vadeli-mevduat', 'acil-durum-fonu-nedir', 'para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki'],
+  '/kredi-hesaplama/': ['findeks-kredi-notu-nedir-nasil-yukselir', 'borc-kapatma-yontemi-kartopu-cig', 'kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir'],
+  '/ihtiyac-kredisi-hesaplama/': ['findeks-kredi-notu-nedir-nasil-yukselir', 'kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir', 'borc-kapatma-yontemi-kartopu-cig'],
+  '/kurumlar-vergisi-hesaplama/': ['gecici-vergi-nedir-2026-donemleri-orani-beyan-tarihleri', 'stopaj-nedir-2026-stopaj-oranlari'],
+  '/net-maas-hesaplama/': ['butce-nasil-yapilir-50-30-20', 'nasil-tasarruf-edilir', 'acil-durum-fonu-nedir'],
+  '/fed-faiz-takvimi/': ['fed-faiz-karari-nedir-etkisi', 'fomc-toplanti-tutanaklari-nedir', 'pce-nedir-fed-enflasyon-gostergesi'],
+  '/tcmb-faiz-takvimi/': ['tcmb-faiz-karari-nasil-etkiler', 'merkez-bankasi-nedir-faiz-karari', 'faiz-nedir-ekonomiyi-nasil-etkiler'],
+  '/ekonomik-takvim/': ['gdp-gsyih-nedir-nasil-yorumlanir', 'nfp-nedir-abd-tarim-disi-istihdam', 'pce-nedir-fed-enflasyon-gostergesi'],
+  '/altin-fiyatlari/': ['altin-cesitleri-gram-ceyrek-ons-ziynet', 'altin-hesabi-nedir-mantikli-mi-fiziki-altin-fon-karsilastirma', 'gumus-mi-altin-mi-10-yillik-getiri-karsilastirma'],
+};
+
+/**
+ * Araç sayfası için en alakalı ≤n kalıcı rehber yazı: relatedTools'un tersi (aynı `k` anahtar kelimeleri).
+ * Neden: rehber yazılar neredeyse yalnız başka yazılardan link alıyordu; Google'ın sıraladığı araç/veri
+ * sayfalarından link almadıkları için 15'i "tarandı, dizine eklenmedi"de kaldı (GSC URL denetimi 2026-10-27).
+ */
+export function relatedGuides(href: string, posts: GuidePost[], n = 3): GuidePost[] {
+  const tool = TOOLS.find((t) => t.href === href);
+  if (!tool) return [];
+  if (REHBER[href]) {
+    return REHBER[href]
+      .map((id) => posts.find((p) => p.id === id && !p.data.draft))
+      .filter((p): p is GuidePost => !!p)
+      .slice(0, n);
+  }
+  const puan: [GuidePost, number][] = [];
+  for (const p of posts) {
+    if (p.data.draft || p.data.sonuc || OLAY_SLUG.test(p.id)) continue;
+    const title = lower(p.data.title);
+    const tags = p.data.tags.map(lower);
+    let s = 0;
+    for (const kw of tool.k) {
+      if (tags.some((tg) => tg.includes(kw))) s += 3;
+      if (title.includes(kw)) s += 2;
+    }
+    if (s >= 3) puan.push([p, s]);
+  }
+  // Eşit puanda eski (yerleşik) yazı önce: link seti her yeni yazıda değişmesin.
+  puan.sort((a, b) => b[1] - a[1] || a[0].data.pubDate.getTime() - b[0].data.pubDate.getTime());
+  return puan.slice(0, n).map(([p]) => p);
+}

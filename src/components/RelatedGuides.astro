@@ -1,0 +1,26 @@
+---
+// Araç/veri sayfası sonunda "Konuyu öğren": konuya en yakın ≤3 kalıcı rehber (src/data/tools.ts → relatedGuides).
+// BaseLayout her sayfada çağırır; araç listesinde (TOOLS) olmayan sayfada hiçbir şey basmaz.
+import { getCollection } from 'astro:content';
+import { relatedGuides, TOOLS } from '../data/tools';
+export interface Props { path: string }
+const { path } = Astro.props;
+const guides = TOOLS.some((t) => t.href === path) ? relatedGuides(path, await getCollection('blog')) : [];
+---
+{guides.length > 0 && (
+  <aside class="container rg" aria-label="İlgili rehberler">
+    <p class="rg-title">Konuyu öğren</p>
+    <ul class="rg-list">
+      {guides.map((g) => (
+        <li><a href={`/blog/${g.id}/`}>{g.data.title}</a></li>
+      ))}
+    </ul>
+  </aside>
+)}
+<style>
+  .rg { margin-top: 2rem; margin-bottom: 2rem; }
+  .rg-title { margin: 0 0 0.6rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--brand-deep); }
+  .rg-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.5rem; }
+  .rg-list a { display: block; padding: 0.7rem 0.9rem; border: 1px solid var(--border-soft); border-radius: var(--radius-sm); background: var(--bg-card); color: var(--brand-ink); font-weight: 600; font-size: 0.95rem; text-decoration: none; line-height: 1.4; }
+  .rg-list a:hover { border-color: var(--brand-2); }
+</style>

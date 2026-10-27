@@ -1,5 +1,5 @@
 ---
-title: "JOLTS İş İlanları Nedir? İşgücü Açığı ve Fed'e Sinyali"
+title: "JOLTS (Job Openings) Nedir? İş İlanları Verisi ve Fed'e Sinyali"
 description: "JOLTS nedir, iş ilanları verisi nasıl okunur? ABD işgücü açığı Fed faiz kararını ve TL'yi nasıl etkiler? Türk yatırımcı için kapsamlı rehber."
 pubDate: 2026-08-12
 category: "Ekonomi"

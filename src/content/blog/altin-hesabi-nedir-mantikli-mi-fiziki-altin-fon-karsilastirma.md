@@ -2,6 +2,7 @@
 title: "Altın Hesabı Nedir, Mantıklı mı? Fiziki Altın ve Fonla Kıyas"
 description: "Altın hesabı nedir, mantıklı mı? Makas, BSMV, TMSF güvencesi, saklama ve vergi açısından altın hesabı, fiziki altın ve altın fonu karşılaştırması 2026."
 pubDate: 2026-10-20
+updatedDate: 2026-10-27
 category: "Yatırım"
 tags: ["altın hesabı", "gram altın", "altın fonu", "fiziki altın", "altın yatırımı", "TMSF"]
 readingTime: 8
@@ -116,16 +117,16 @@ Yani altın hesabında kâra geçmek için altının yaklaşık %1–1,5 yüksel
 
 ## Altın Fiyatı Ne Kadar Değişiyor? Gerçek Getiri Verisi
 
-Hangi yolu seçersen seç, sonucu belirleyen asıl şey altın fiyatıdır. [Altın getiri](/altin-getiri) sayfamızdaki 20 Ekim 2026 verisine göre gram altının TL bazında getirisi:
+Hangi yolu seçersen seç, sonucu belirleyen asıl şey altın fiyatıdır. [Altın getiri](/altin-getiri) sayfamızdaki 20 Ekim 2026 verisine göre gram altının TL bazında getirisi (başlangıç değerleri 27 Ekim 2026'da ay sonu kapanışlarıyla düzeltildi):
 
 | Dönem | Başlangıç (gram, TL) | Getiri (TL bazında) |
 |---|---|---|
-| Yıl başından beri | 6.629 | −%0,4 |
-| 1 yıl | 5.813 | +%13,6 |
-| 3 yıl | 1.896 | +%248,3 |
-| 5 yıl | 724 | +%812,1 |
+| Yıl başından beri | 5.995 | +%10,1 |
+| 1 yıl | 5.400 | +%22,3 |
+| 3 yıl | 1.695 | +%289,4 |
+| 5 yıl | 546 | +%1.108,6 |
 
-Bu tablo iki şeyi gösteriyor: Uzun vadede altın TL'nin değer kaybına karşı güçlü bir koruma sağlamış; ama kısa vadede (2026 yılı içinde olduğu gibi) yatay hatta eksi seyredebiliyor. Aynı dönemde ons altın dolar bazında yıl başından beri %12,7 geriledi. Kısa vadeli ihtiyaç için ayrılan parayı altına bağlamak bu yüzden risklidir. Altını dolar ve borsayla kıyaslamak istersen [altın mı dolar mı](/blog/altin-mi-dolar-mi) yazısına göz at.
+Bu tablo iki şeyi gösteriyor: Uzun vadede altın TL'nin değer kaybına karşı güçlü bir koruma sağlamış; ama kısa vadede yönü ons fiyatı ile kur birlikte belirliyor: 2026'da ons altın dolar bazında yıl başından beri %4,6 geriledi; gram altının TL bazındaki %10,1'lik kazancı tamamen kurdaki yükselişten geldi. Kısa vadeli ihtiyaç için ayrılan parayı altına bağlamak bu yüzden risklidir. Altını dolar ve borsayla kıyaslamak istersen [altın mı dolar mı](/blog/altin-mi-dolar-mi) yazısına göz at.
 
 *Geçmiş getiri gelecekteki getirinin garantisi değildir.*
 

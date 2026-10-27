@@ -2,6 +2,7 @@
 title: "Euro mu Dolar mı 2026? TL Bazında 10 Yıllık Getiri"
 description: "Euro mu dolar mı 2026? Euro ve doların 1, 3, 5 ve 10 yıllık TL getirisini gerçek kur verisiyle karşılaştırdık; EUR/USD paritesi, sepet ve riskler."
 pubDate: 2026-10-09
+updatedDate: 2026-10-27
 category: "Yatırım"
 tags: ["euro", "dolar", "döviz", "euro mu dolar mı", "EUR/USD paritesi", "döviz sepeti"]
 readingTime: 8
@@ -10,7 +11,7 @@ faq:
   - q: "Son 10 yılda euro mu dolar mı daha çok kazandırdı?"
     a: "9 Ekim 2026 verisine göre euro 10 yılda TL karşısında yaklaşık %1.426, dolar %1.347 değer kazandı. Fark, aynı dönemde EUR/USD paritesinin 1,065'ten 1,123'e çıkmasından kaynaklanıyor."
   - q: "2026'da euro mu dolar mı daha çok kazandırdı?"
-    a: "Yıl başından 9 Ekim 2026'ya kadar dolar TL karşısında %13,5, euro %6,7 yükseldi. Çünkü bu dönemde EUR/USD paritesi 1,195'ten 1,123'e geriledi, yani euro dolara karşı değer kaybetti."
+    a: "Yıl başından 9 Ekim 2026'ya kadar dolar TL karşısında %14,9, euro %9,5 yükseldi. Çünkü bu dönemde EUR/USD paritesi 1,178'den 1,123'e geriledi, yani euro dolara karşı değer kaybetti."
   - q: "Euro ile dolar arasındaki getiri farkını ne belirler?"
     a: "TL'nin genel değer kaybı iki dövizi de birlikte yukarı taşır; aradaki farkı belirleyen şey EUR/USD paritesidir. Parite yükselirse euro, düşerse dolar TL bazında daha çok kazandırır."
   - q: "Euro ve doları birlikte tutmak mantıklı mı?"
@@ -42,14 +43,14 @@ Kısa cevap şu: **uzun vadede ikisi arasındaki fark, TL'nin değer kaybının 
 
 ## Euro mu dolar mı 2026: TL bazında getiri tablosu
 
-Tablodaki rakamlar Yahoo Finance aylık kapanış kurlarından (EURTRY ve USDTRY) hesaplandı, son güncelleme 9 Ekim 2026. Güncel değerleri her gün yenilenen [Euro getiri sayfamızda](/euro-getiri) ve [Dolar getiri sayfamızda](/dolar-getiri) görebilirsin.
+Tablodaki rakamlar Yahoo Finance aylık kapanış kurlarından (EURTRY ve USDTRY) hesaplandı, son güncelleme 9 Ekim 2026. Dönem başlangıç fiyatları 27 Ekim 2026'da düzeltildi: önceki sürümde aylık kapanışlar bir ay kayıktı (yıl başı değeri Ocak sonu kapanışıydı). Güncel değerleri her gün yenilenen [Euro getiri sayfamızda](/euro-getiri) ve [Dolar getiri sayfamızda](/dolar-getiri) görebilirsin.
 
 | Dönem | Euro (TL getirisi) | Dolar (TL getirisi) | EUR/USD değişimi | Kazanan |
 |-------|-------------------|---------------------|------------------|---------|
-| Yıl başından beri | %6,7 | %13,5 | %-6,1 | Dolar |
-| 1 yıl | %14,1 | %17,4 | %-2,8 | Dolar |
-| 3 yıl | %84,7 | %74,6 | %+5,8 | Euro |
-| 5 yıl | %397,9 | %418,0 | %-3,9 | Dolar |
+| Yıl başından beri | %9,5 | %14,9 | %-4,7 | Dolar |
+| 1 yıl | %13,5 | %18,7 | %-4,3 | Dolar |
+| 3 yıl | %91,3 | %79,7 | %+6,5 | Euro |
+| 5 yıl | %435,7 | %453,4 | %-3,2 | Dolar |
 | 10 yıl | %1.426,3 | %1.347,1 | %+5,5 | Euro |
 
 Şu anki kurlar: 1 euro ≈ 55,41 TL, 1 dolar ≈ 49,34 TL, EUR/USD ≈ 1,123.
@@ -62,9 +63,9 @@ Rakamları daha elle tutulur yapalım. Her dönemin başında 10.000 TL'lik euro
 
 | Dönem | Euroya yatırılan 10.000 TL bugün | Dolara yatırılan 10.000 TL bugün | Fark |
 |-------|-------------------------------|-------------------------------|------|
-| 1 yıl | ≈ 11.410 TL | ≈ 11.740 TL | Dolar +330 TL |
-| 3 yıl | ≈ 18.470 TL | ≈ 17.460 TL | Euro +1.010 TL |
-| 5 yıl | ≈ 49.790 TL | ≈ 51.800 TL | Dolar +2.010 TL |
+| 1 yıl | ≈ 11.350 TL | ≈ 11.870 TL | Dolar +520 TL |
+| 3 yıl | ≈ 19.130 TL | ≈ 17.970 TL | Euro +1.160 TL |
+| 5 yıl | ≈ 53.570 TL | ≈ 55.340 TL | Dolar +1.770 TL |
 | 10 yıl | ≈ 152.630 TL | ≈ 144.710 TL | Euro +7.920 TL |
 
 10 yıllık örnekte iki döviz de paranı yaklaşık 15 katına çıkarmış; yıllık bileşik olarak euro ≈ %31,3, dolar ≈ %30,6 TL getirisi demek. Yani 10 yılda **getirinin %95'inden fazlası TL'nin değer kaybından** geliyor; euro ile dolar arasındaki fark bu büyük resmin yanında küçük bir ayrıntı.
@@ -78,7 +79,7 @@ TL hem euroya hem dolara karşı değer kaybettiğinde iki döviz de TL bazında
 - **EUR/USD yükselirse** (euro dolara karşı güçlenirse) → euro TL bazında daha çok kazandırır.
 - **EUR/USD düşerse** (dolar euroya karşı güçlenirse) → dolar TL bazında daha çok kazandırır.
 
-2026'da tam olarak ikinci senaryo yaşandı: parite yıl başındaki 1,195'ten 1,123'e indi (%-6,1). Bu yüzden aynı dönemde dolar TL karşısında %13,5 kazandırırken euro %6,7'de kaldı.
+2026'da tam olarak ikinci senaryo yaşandı: parite yıl başındaki 1,178'den 1,123'e indi (%-4,7). Bu yüzden aynı dönemde dolar TL karşısında %14,9 kazandırırken euro %9,5'te kaldı.
 
 ### Pariteyi ne hareket ettirir?
 
@@ -132,7 +133,7 @@ Tablodaki getiriler "saf kur" getirisidir. Gerçek hayatta sonucu etkileyen birk
 
 ## Özet
 
-- **10 yılda euro, 5 yılda ve 2026'da dolar önde:** Euro 10 yılda TL karşısında %1.426, dolar %1.347 kazandırdı; 2026'da ise dolar %13,5, euro %6,7.
+- **10 yılda euro, 5 yılda ve 2026'da dolar önde:** Euro 10 yılda TL karşısında %1.426, dolar %1.347 kazandırdı; 2026'da ise dolar %14,9, euro %9,5.
 - **Getirinin neredeyse tamamı TL'nin değer kaybından geliyor;** euro ile dolar arasındaki fark bunun yanında küçük.
 - **Kazananı EUR/USD paritesi belirliyor** ve bu parite önceden güvenilir şekilde tahmin edilemiyor.
 - **Karar için en sağlam ölçüt, gelecekteki harcamanın para birimi;** hedef yoksa euro + dolar sepeti parite riskini dağıtır.

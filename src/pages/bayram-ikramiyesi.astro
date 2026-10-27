@@ -51,8 +51,12 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title={`Emekli Bayram İkramiyesi 2026-2027: ${fmt(B.tutar)} TL | 2027 Bayram Tarihleri`}
-  description={`Emekli bayram ikramiyesi ${B.yil}'da ${fmt(B.tutar)} ₺. 2027 Ramazan Bayramı ${tr(BY.ramazan.baslangic)}, Kurban Bayramı ${tr(BY.kurban.baslangic)}'da başlıyor. Dul-yetim hisse oranına göre ikramiye hesaplama ve ödeme bilgisi.`}
+  title={B.yil >= 2027
+    ? `Emekli Bayram İkramiyesi ${B.yil}: ${fmt(B.tutar)} TL | Bayram Tarihleri`
+    : `Emekli Bayram İkramiyesi 2027 Ne Kadar? ${B.yil} Tutarı ${fmt(B.tutar)} TL`}
+  description={B.yil >= 2027
+    ? `Emekli bayram ikramiyesi ${B.yil} yılında ${fmt(B.tutar)} ₺. 2027 Ramazan Bayramı ${tr(BY.ramazan.baslangic)}, Kurban Bayramı ${tr(BY.kurban.baslangic)}. Dul-yetim hisse hesabı ve ödeme bilgisi.`
+    : `2027 emekli bayram ikramiyesi henüz açıklanmadı; kanun değişmezse ${fmt(B.tutar)} ₺ ödenir. 2027 Ramazan Bayramı ${tr(BY.ramazan.baslangic)}, Kurban Bayramı ${tr(BY.kurban.baslangic)}.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
   image="/og/bayram-ikramiyesi.png"

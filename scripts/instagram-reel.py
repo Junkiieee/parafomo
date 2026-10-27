@@ -143,7 +143,7 @@ def host_video(mp4, name):
 
 def site_link(slug):
     if os.path.exists(os.path.join(BLOG_DIR, f"{slug}.md")):
-        return f"parafomo.com/blog/{slug}"
+        return f"parafomo.com/blog/{slug}/"
     return "parafomo.com"
 
 

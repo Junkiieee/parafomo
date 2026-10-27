@@ -1,7 +1,8 @@
 ---
-title: "Gümüş mü Altın mı? 10 Yılda TL Bazında Hangisi Kazandırdı"
-description: "Gümüş mü altın mı? Gram gümüş ve gram altının 1, 3, 5 ve 10 yıllık TL getirisini gerçek veriyle karşılaştırdık; oynaklık, altın/gümüş oranı ve riskler."
+title: "Gümüş mü Altın mı Daha Çok Kazandırdı? 10 Yıllık TL Getiri"
+description: "Gümüş mü altın mı daha çok kazandırdı? 10 yılda TL bazında başa baş, 1 yılda gümüş, 2026'da altın önde. Gram gümüş ve altının 1-10 yıllık getirisi."
 pubDate: 2026-10-08
+updatedDate: 2026-10-27
 category: "Yatırım"
 tags: ["gümüş", "altın", "gümüş yatırımı", "altın gümüş oranı", "emtia", "enflasyon"]
 readingTime: 8
@@ -10,7 +11,7 @@ faq:
   - q: "Son 10 yılda gümüş mü altın mı daha çok kazandırdı?"
     a: "8 Ekim 2026 verisine göre gram gümüş 10 yılda TL bazında yaklaşık %5.160, gram altın %5.013 kazandırdı. Fark küçük; gümüş bu getiriyi çok daha sert iniş çıkışlarla elde etti."
   - q: "Gümüş yatırımı mantıklı mı?"
-    a: "Gümüş uzun vadede TL'ye karşı güçlü koruma sağladı ama altından belirgin şekilde daha oynak. 2026'nın başından bu yana gram gümüş %13,5 düşerken gram altın yalnızca %1 geriledi. Kısa vadede düşüşe dayanamayacak birikim için riskli olabilir."
+    a: "Gümüş uzun vadede TL'ye karşı güçlü koruma sağladı ama altından belirgin şekilde daha oynak. 2026'nın başından bu yana gram gümüş %2,3 düşerken gram altın %9,5 yükseldi. Kısa vadede düşüşe dayanamayacak birikim için riskli olabilir."
   - q: "Altın/gümüş oranı nedir, ne işe yarar?"
     a: "1 ons altını almak için kaç ons gümüş gerektiğini gösterir. Şu an yaklaşık 69,4; verideki ortalama 80,6. Oran düşükken gümüş altına göre görece pahalı, yüksekken görece ucuz sayılır ama tek başına alım-satım sinyali değildir."
   - q: "Gümüş neden altından daha oynak?"
@@ -38,7 +39,7 @@ shorts_visuals:
 
 "Gümüş mü altın mı?" sorusu son bir yılda iyice popülerleşti: gümüş birkaç kez manşetlere çıktı, "fakirin altını" lakabı yeniden konuşuldu. Bu yazıda gümüş mü altın mı sorusunu tahminle değil, **gerçek veriyle** cevaplıyoruz: gram gümüş ve gram altının son 1, 3, 5 ve 10 yıldaki TL getirisini, aynı dönemdeki düşüşlerini ve iki metali birbirinden ayıran riskleri yan yana koyuyoruz.
 
-> Veriler 8 Ekim 2026 tarihli olup Yahoo Finance ons fiyatları ve USD/TRY kurundan hesaplanmıştır (gram = ons ÷ 31,1035 × kur). Güncel rakamlar için [gram gümüş getiri sayfamıza](/gumus-getiri) ve [gram altın getiri sayfamıza](/altin-getiri) bakabilirsin.
+> Veriler 8 Ekim 2026 tarihli olup Yahoo Finance ons fiyatları ve USD/TRY kurundan hesaplanmıştır (gram = ons ÷ 31,1035 × kur). Dönem başlangıç fiyatları 27 Ekim 2026'da düzeltildi: önceki sürümde aylık kapanışlar bir ay kayıktı (yıl başı değeri Ocak sonu kapanışıydı). Güncel rakamlar için [gram gümüş getiri sayfamıza](/gumus-getiri) ve [gram altın getiri sayfamıza](/altin-getiri) bakabilirsin.
 
 ## Kısa Cevap: 10 Yılda Neredeyse Başa Baş, Ama Yol Çok Farklı
 
@@ -48,17 +49,17 @@ On yıllık resimde iki metal TL bazında birbirine çok yakın bitirdi: gümü�
 
 | Dönem | Gram gümüş (TL) | Gram gümüş getirisi | Gram altın (TL) | Gram altın getirisi | Kazanan |
 |---|---|---|---|---|---|
-| Yıl başından beri | 109,38 → 94,59 | **-%13,5** | 6.629 → 6.562 | **-%1,0** | Altın |
-| 1 yıl | 64,85 → 94,59 | **+%45,9** | 5.400 → 6.562 | **+%21,5** | Gümüş |
-| 3 yıl | 22,98 → 94,59 | **+%311,6** | 1.852 → 6.562 | **+%254,4** | Gümüş |
-| 5 yıl | 7,33 → 94,59 | **+%1.189,9** | 546 → 6.562 | **+%1.101,2** | Gümüş |
+| Yıl başından beri | 96,85 → 94,59 | **-%2,3** | 5.995 → 6.562 | **+%9,5** | Altın |
+| 1 yıl | 61,83 → 94,59 | **+%53,0** | 5.177 → 6.562 | **+%26,7** | Gümüş |
+| 3 yıl | 19,63 → 94,59 | **+%381,9** | 1.647 → 6.562 | **+%298,3** | Gümüş |
+| 5 yıl | 6,31 → 94,59 | **+%1.398,4** | 504 → 6.562 | **+%1.202,9** | Gümüş |
 | 10 yıl | 1,80 → 94,59 | **+%5.159,7** | 128 → 6.562 | **+%5.013,3** | Gümüş (kıl payı) |
 
 Tablodan çıkan üç gözlem:
 
 1. **Uzun vadede ikisi de TL'yi ezdi.** 10 yılda iki metal de TL bazında 50 katın üzerine çıktı; bunun büyük kısmı TL'nin dolara karşı değer kaybından geliyor.
-2. **Gümüşün üstünlüğü dönemlere göre değişiyor.** 1 yılda gümüş altının iki katından fazla kazandırdı; 10 yılda fark sadece ~146 puan.
-3. **Düşüşte gümüş daha sert.** 2026 başından beri gümüş %13,5 kaybederken altın neredeyse yatay kaldı.
+2. **Gümüşün üstünlüğü dönemlere göre değişiyor.** 1 yılda gümüş altının neredeyse iki katı kazandırdı; 10 yılda fark sadece ~146 puan.
+3. **Bu yıl yönler ayrıştı.** 2026 başından beri gümüş %2,3 kaybederken altın %9,5 kazandı.
 
 ## 10.000 TL Yatırsaydın Bugün Ne Olurdu?
 
@@ -66,10 +67,10 @@ Aynı tutarı farklı tarihlerde iki metale yatırmış olsaydın (alış-satı�
 
 | Başlangıç | Gümüşe 10.000 TL | Altına 10.000 TL | Fark |
 |---|---|---|---|
-| Yıl başı (Ocak 2026) | ~8.650 TL | ~9.900 TL | Altın +1.250 TL |
-| 1 yıl önce | ~14.590 TL | ~12.150 TL | Gümüş +2.440 TL |
-| 3 yıl önce | ~41.160 TL | ~35.440 TL | Gümüş +5.720 TL |
-| 5 yıl önce | ~128.990 TL | ~120.120 TL | Gümüş +8.870 TL |
+| Yıl başı (31 Aralık 2025) | ~9.770 TL | ~10.950 TL | Altın +1.180 TL |
+| 1 yıl önce | ~15.300 TL | ~12.670 TL | Gümüş +2.630 TL |
+| 3 yıl önce | ~48.190 TL | ~39.830 TL | Gümüş +8.360 TL |
+| 5 yıl önce | ~149.840 TL | ~130.290 TL | Gümüş +19.550 TL |
 | 10 yıl önce | ~525.970 TL | ~511.330 TL | Gümüş +14.640 TL |
 
 Dikkat: Bu rakamlar "doğru günde alıp bugün sattıysan" ne olacağını gösterir. Gerçek hayatta fiziki gümüşte alış-satış farkı altından genellikle daha geniştir; bu da gümüşün kâğıt üstündeki küçük avantajını kolayca silebilir.
@@ -79,8 +80,8 @@ Dikkat: Bu rakamlar "doğru günde alıp bugün sattıysan" ne olacağını gös
 TL bazındaki getirinin büyük kısmı kurdan geliyor (kurun kendi seyri için [dolar getiri sayfamıza](/dolar-getiri) bakabilirsin). Metalin kendi performansını görmek için ons fiyatına (USD) bakmak gerekir:
 
 - **10 yıl:** Ons gümüş +%264,4, ons altın +%254,3 — yine başa baş.
-- **1 yıl:** Ons gümüş +%24,6, ons altın +%3,8 — gümüş açık ara önde.
-- **Yıl başından beri:** Ons gümüş -%23,6, ons altın -%12,6 — gümüş daha çok düşmüş.
+- **1 yıl:** Ons gümüş +%29,3, ons altın +%7,1 — gümüş açık ara önde.
+- **Yıl başından beri:** Ons gümüş -%14,7, ons altın -%4,4 — gümüş daha çok düşmüş.
 
 Yani TL'nin değer kaybı her iki metali de aynı ölçüde yukarı taşıdı; aradaki farkı yaratan, metallerin dolar bazındaki kendi hareketi. Dolar, altın ve borsayı birlikte görmek için [altın, dolar ve borsa karşılaştırma sayfamıza](/altin-dolar-borsa) göz atabilirsin.
 
@@ -105,7 +106,7 @@ Jeopolitik gerilim, savaş ya da finansal panik dönemlerinde merkez bankaları 
 
 ### 3. Oynaklık iki yönlü çalışır
 
-Gümüşün yüksek oynaklığı, yükselişte daha çok kazandırır, düşüşte daha çok kaybettirir. 2026'nın ilk dokuz ayı bunun iyi bir örneği: son 12 ayda hâlâ %45,9 kârda olan gram gümüş, yılbaşından bu yana %13,5 değer kaybetti; yani yılı çok yüksek bir seviyeden açıp sert geri çekildi.
+Gümüşün yüksek oynaklığı, yükselişte daha çok kazandırır, düşüşte daha çok kaybettirir. 2026'nın ilk dokuz ayı bunun iyi bir örneği: son 12 ayda %53,0 kârda olan gram gümüş, yılbaşından bu yana %2,3 geride; dolar bazında ons gümüş aynı dönemde %14,7 düştü (ons altında düşüş %4,4).
 
 ### 4. Küçük birim, kolay giriş
 
@@ -155,7 +156,7 @@ Altının farklı türlerini (gram, çeyrek, ons) merak ediyorsan [altın çeşi
 ## Özet
 
 - **10 yılda başa baş:** Gram gümüş TL bazında %5.160, gram altın %5.013 kazandırdı; fark küçük.
-- **Kısa vadede gümüş çok daha oynak:** Son 1 yılda gümüş %45,9 ile öndeyken, 2026 başından beri %13,5 düşüşle altının (-%1) gerisinde.
+- **Kısa vadede gümüş çok daha oynak:** Son 1 yılda gümüş %53,0 ile öndeyken, 2026 başından beri %2,3 düşüşle altının (+%9,5) gerisinde.
 - **Altın/gümüş oranı 69,4:** Ortalamanın (80,6) altında; gümüş altına göre görece pahalılaşmış durumda, ama bu tek başına sinyal değil.
 - **Karar vadene bağlı:** Koruma odaklı ve kısa vadeli birikimde altın daha istikrarlı; uzun vadeli ve risk toleransı yüksek yatırımcı için gümüş portföyde küçük bir pay olarak değerlendirilebilir.
 
