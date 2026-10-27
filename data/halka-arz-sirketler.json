@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-27T12:15+00:00",
+ "updated": "2026-10-27T18:15+00:00",
  "source": "halkarz.com",
  "items": {
   "pronet-guvenlik-hizmetleri-a-s": {
@@ -4425,6 +4425,98 @@
     }
    },
    "first_seen": "2026-10-26"
+  },
+  "dervisoglu-bakliyat-a-s": {
+   "company": "Dervişoğlu Bakliyat A.Ş.",
+   "bist_code": "",
+   "slug": "dervisoglu-bakliyat-a-s",
+   "link": "https://halkarz.com/dervisoglu-bakliyat-a-s/",
+   "date_text": "",
+   "start": null,
+   "end": null,
+   "status": "Tarih Bekleniyor",
+   "price": "",
+   "distribution": "Eşit Dağıtım **",
+   "lot": "183.750.000 Lot",
+   "broker": "Global Menkul Değerler A.Ş.",
+   "market": "",
+   "first_trade": "",
+   "float_lot": "",
+   "float_pct": "",
+   "updated_src": "27.10.2026 16:06",
+   "details": {
+    "sekil": {
+     "items": [
+      "Sermaye Artırımı : 135.000.000 Lot",
+      "Ortak Satışı : 48.750.000 Lot"
+     ],
+     "source": "Taslak İzahname, Sayfa 1."
+    },
+    "fon_kullanim": {
+     "items": [
+      "%50-60 Yeni tesis yatırımı ile GES yatırımı",
+      "%40-50 İşletme sermayesi"
+     ],
+     "source": "Taslak İzahname, Sayfa 201."
+    },
+    "satis_yontemi": {
+     "items": [
+      "Borsa'da Satış - Sabit Fiyatla Talep Toplama"
+     ],
+     "source": "T1-T2 Uygun."
+    },
+    "tahsisat": {
+     "items": [
+      "Yoktur"
+     ],
+     "source": "Tamamen Eşit Dağıtım."
+    },
+    "fiyat_istikrari": {
+     "items": [
+      "30 gün"
+     ],
+     "source": "Taslak İzahname, Sayfa 198."
+    },
+    "satmama": {
+     "items": [
+      "1 Yıl, İhraççı",
+      "1 Yıl, Ortaklar"
+     ],
+     "source": "Taslak İzahname, Sayfa 199."
+    },
+    "halka_aciklik": {
+     "items": [
+      "%25"
+     ],
+     "source": "Taslak İzahname, Sayfa 189."
+    },
+    "finansal": {
+     "periods": [
+      "2026/6",
+      "2025",
+      "2024"
+     ],
+     "rows": [
+      {
+       "label": "Hasılat",
+       "values": [
+        "4,0 Milyar TL",
+        "5,9 Milyar TL",
+        "3,8 Milyar TL"
+       ]
+      },
+      {
+       "label": "Brüt Kâr",
+       "values": [
+        "603,1 Milyon TL",
+        "612,0 Milyon TL",
+        "470,4 Milyon TL"
+       ]
+      }
+     ]
+    }
+   },
+   "first_seen": "2026-10-27"
   }
  }
 }

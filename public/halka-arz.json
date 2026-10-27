@@ -1,9 +1,100 @@
 {
-  "updated": "2026-10-27T12:15+00:00",
+  "updated": "2026-10-27T18:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 42,
   "items": [
+    {
+      "company": "Dervişoğlu Bakliyat A.Ş.",
+      "bist_code": "",
+      "slug": "dervisoglu-bakliyat-a-s",
+      "link": "https://halkarz.com/dervisoglu-bakliyat-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "183.750.000 Lot",
+      "broker": "Global Menkul Değerler A.Ş.",
+      "market": "",
+      "first_trade": "",
+      "float_lot": "",
+      "float_pct": "",
+      "updated_src": "27.10.2026 16:06",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 135.000.000 Lot",
+            "Ortak Satışı : 48.750.000 Lot"
+          ],
+          "source": "Taslak İzahname, Sayfa 1."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%50-60 Yeni tesis yatırımı ile GES yatırımı",
+            "%40-50 İşletme sermayesi"
+          ],
+          "source": "Taslak İzahname, Sayfa 201."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Borsa'da Satış - Sabit Fiyatla Talep Toplama"
+          ],
+          "source": "T1-T2 Uygun."
+        },
+        "tahsisat": {
+          "items": [
+            "Yoktur"
+          ],
+          "source": "Tamamen Eşit Dağıtım."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün"
+          ],
+          "source": "Taslak İzahname, Sayfa 198."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "Taslak İzahname, Sayfa 199."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%25"
+          ],
+          "source": "Taslak İzahname, Sayfa 189."
+        },
+        "finansal": {
+          "periods": [
+            "2026/6",
+            "2025",
+            "2024"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "4,0 Milyar TL",
+                "5,9 Milyar TL",
+                "3,8 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "603,1 Milyon TL",
+                "612,0 Milyon TL",
+                "470,4 Milyon TL"
+              ]
+            }
+          ]
+        }
+      }
+    },
     {
       "company": "Flo Mağazacılık ve Pazarlama A.Ş.",
       "bist_code": "",
@@ -2339,98 +2430,6 @@
                 "13,9 Milyar TL",
                 "18,2 Milyar TL",
                 "21,3 Milyar TL"
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "company": "İdç Liman İşletmeleri A.Ş.",
-      "bist_code": "",
-      "slug": "idc-liman-isletmeleri-a-s",
-      "link": "https://halkarz.com/idc-liman-isletmeleri-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "40.000.000 Lot",
-      "broker": "Bulls Yatırım Menkul Değerler A.Ş.",
-      "market": "",
-      "first_trade": "",
-      "float_lot": "",
-      "float_pct": "",
-      "updated_src": "15.09.2026 09:47",
-      "details": {
-        "sekil": {
-          "items": [
-            "Sermaye Artırımı : 10.000.000 Lot",
-            "Ortak Satışı : 30.000.000 Lot (İzmir Demir Çelik Sanayi A.Ş.)",
-            "Ek Ortak Satışı : 8.000.000 Lot (İzmir Demir Çelik Sanayi A.Ş.)"
-          ],
-          "source": "Taslak İzahname, Sayfa 1."
-        },
-        "fon_kullanim": {
-          "items": [
-            "%100 İşletme sermayesi"
-          ],
-          "source": "Taslak İzahname, Sayfa 214."
-        },
-        "satis_yontemi": {
-          "items": [
-            "Sabit Fiyatla Talep Toplama",
-            "En İyi Gayret Aracılığı"
-          ],
-          "source": ""
-        },
-        "tahsisat": {
-          "items": [
-            "Ek satış için herhangi bir sınırlama yoktur"
-          ],
-          "source": "Taslak İzahname, Sayfa 203."
-        },
-        "fiyat_istikrari": {
-          "items": [
-            "30 gün. * Brüt halka arz gelirinin %20'si"
-          ],
-          "source": "Taslak İzahname, Sayfa 208."
-        },
-        "satmama": {
-          "items": [
-            "1 Yıl, İhraççı",
-            "1 Yıl, Ortaklar"
-          ],
-          "source": "Taslak İzahname, Sayfa 210."
-        },
-        "halka_aciklik": {
-          "items": [
-            "%25"
-          ],
-          "source": "Taslak İzahname, Sayfa 190."
-        },
-        "finansal": {
-          "periods": [
-            "2025",
-            "2024",
-            "2023"
-          ],
-          "rows": [
-            {
-              "label": "Hasılat",
-              "values": [
-                "2,9 Milyar TL",
-                "882,6 Milyon TL",
-                "1,0 Milyar TL"
-              ]
-            },
-            {
-              "label": "Brüt Kâr",
-              "values": [
-                "37,5 Milyon TL",
-                "90,2 Milyon TL",
-                "228,5 Milyon TL"
               ]
             }
           ]
