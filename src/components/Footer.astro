@@ -90,6 +90,14 @@ const TOOL_LINKS = [
     <p class="muted disclaimer">
       Bu sitedeki içerikler yalnızca bilgilendirme amaçlıdır, yatırım tavsiyesi değildir.
     </p>
+    <p class="muted legal-note">
+      <strong>Yasal uyarı:</strong> Burada yer alan yatırım bilgi, yorum ve tavsiyeleri yatırım danışmanlığı kapsamında
+      değildir. Yatırım danışmanlığı hizmeti; aracı kurumlar, portföy yönetim şirketleri, mevduat kabul etmeyen bankalar
+      ile müşteri arasında imzalanacak yatırım danışmanlığı sözleşmesi çerçevesinde sunulmaktadır. Burada yer alan yorum
+      ve tavsiyeler, yorum ve tavsiyede bulunanların kişisel görüşlerine dayanmaktadır. Bu görüşler mali durumunuz ile risk
+      ve getiri tercihlerinize uygun olmayabilir. Bu nedenle, sadece burada yer alan bilgilere dayanılarak yatırım kararı
+      verilmesi beklentilerinize uygun sonuçlar doğurmayabilir.
+    </p>
   </div>
 </footer>
 
@@ -137,6 +145,7 @@ const TOOL_LINKS = [
     font-size: var(--step--1);
   }
   .disclaimer { max-width: 48ch; }
+  .legal-note { flex-basis: 100%; margin: 0; font-size: 0.78rem; line-height: 1.55; }
 
   @media (max-width: 1080px) {
     .footer-grid { grid-template-columns: 1fr 1fr 1fr; }

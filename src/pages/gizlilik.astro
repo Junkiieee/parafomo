@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../site.config';
 
-const updated = '25 Haziran 2026';
+const updated = '27 Ekim 2026';
 ---
 
 <BaseLayout
@@ -20,17 +20,25 @@ const updated = '25 Haziran 2026';
       toplandığını, nasıl kullanıldığını ve haklarınızı açıklar.
     </p>
 
+    <h2>Veri sorumlusu</h2>
+    <p>
+      6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında veri sorumlusu:
+      <strong>{SITE.owner}</strong> (ParaFOMO'nun kurucusu ve yayın sorumlusu). Başvuru ve sorular için:
+      <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+    </p>
+
     <h2>Topladığımız veriler</h2>
     <p>
-      {SITE.name} bir içerik (blog) sitesidir. Üyelik veya hesap oluşturmanızı gerektirmez.
+      {SITE.name} bir içerik (blog) sitesidir; okumak için üyelik gerekmez. İsteğe bağlı portföy takip uygulamasının
+      (app.parafomo.com) verileri için <a href="https://app.parafomo.com/kvkk/">uygulamanın gizlilik metni</a> geçerlidir.
       Aşağıdaki sınırlı verileri işleriz:
     </p>
     <ul>
       <li>
-        <strong>Anonim kullanım istatistikleri:</strong> Sayfa görüntülemeleri, ziyaret edilen
+        <strong>Kullanım istatistikleri:</strong> Sayfa görüntülemeleri, ziyaret edilen
         sayfalar, yaklaşık coğrafi konum (ülke/şehir), tarayıcı ve cihaz türü gibi
         toplulaştırılmış veriler. Bu veriler analiz araçları (ör. Google Analytics, Google
-        Search Console) aracılığıyla, sizi kişisel olarak tanımlamadan toplanır.
+        Search Console) aracılığıyla, çerezlerle ve adınız ya da e-postanız gibi kimlik bilgileri olmadan toplanır.
       </li>
       <li>
         <strong>Bülten e-postası (isteğe bağlı):</strong> Bültenimize abone olursanız yalnızca
@@ -61,7 +69,9 @@ const updated = '25 Haziran 2026';
     <p>
       Toplanan veriler yalnızca içeriğimizi iyileştirmek, site performansını ölçmek ve
       (abone olduysanız) bülten göndermek için kullanılır. Verilerinizi satmayız veya
-      üçüncü taraflarla pazarlama amacıyla paylaşmayız.
+      üçüncü taraflarla pazarlama amacıyla paylaşmayız. Teknik hizmet sağlayıcılarımız: barındırma ve ağ
+      (Cloudflare), ölçüm (Google Analytics), bülten gönderimi (Brevo); bülten aboneliği kendi sunucumuzda
+      (Hetzner, Almanya) saklanır. Bu sağlayıcıların sunucuları yurt dışında bulunabilir.
     </p>
 
     <h2>Haklarınız</h2>

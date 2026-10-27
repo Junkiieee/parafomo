@@ -11,6 +11,8 @@ export const SITE = {
   locale: 'tr_TR',
   lang: 'tr',
   author: 'ParaFOMO',
+  // Kurucu ve yayın sorumlusu: Hakkımızda, KVKK veri sorumlusu, iletişim ve Organization.founder şeması.
+  owner: 'Kaan Özdemir',
   email: 'info@parafomo.com',
   twitter: '@parafomo',
   // Yayına alırken doğru kullanıcı adlarıyla güncelle.

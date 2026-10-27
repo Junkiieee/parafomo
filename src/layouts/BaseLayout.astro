@@ -64,6 +64,7 @@ const orgLd = {
   logo: { '@type': 'ImageObject', url: new URL('/favicon-512.png', SITE.url).href, width: 512, height: 512 },
   sameAs: Object.values(SITE.social).filter(Boolean),
   publishingPrinciples: new URL('/editoryal-politika/', SITE.url).href,
+  founder: { '@type': 'Person', name: SITE.owner, url: new URL('/hakkimizda/#kim-yonetiyor', SITE.url).href },
   contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: SITE.email, url: new URL('/iletisim/', SITE.url).href, availableLanguage: 'tr' },
 };
 

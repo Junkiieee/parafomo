@@ -17,7 +17,7 @@ const blog = defineCollection({
       'Emeklilik',
     ]),
     tags: z.array(z.string()).default([]),
-    author: z.string().default('ParaFOMO Ekibi'),
+    author: z.string().default('ParaFOMO Editörlüğü'),
     readingTime: z.number().optional(),
     draft: z.boolean().default(false),
     featured: z.boolean().default(false),
