@@ -46,13 +46,15 @@ beyannamesi" 2,8 (zirve Mart 32 → Şubat'ta yeniden ölç) · "aile destek pro
   (hacim 6,9) · neden: mevduat kümesi tamamlayıcı; kâr payı oranı örneği verirsen bankanın kendi sayfasından tarihli,
   TKBB/BDDK kaynaklı; tek banka önerme · iç-link: /mevduat-faizi-hesaplama, /blog/stopaj-nedir-2026-stopaj-oranlari,
   /blog/para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki
-- [ ] 📅 2 Kasım **Ekim 2026 Enflasyonu 3 Kasım'da Açıklanıyor: Beklenti, Kira Artışı, Emekli Zammı ve 2027 Zamlarına
+- [ ] 📅 30 Ekim **Ekim 2026 Enflasyonu 3 Kasım'da Açıklanıyor: Beklenti, Kira Artışı, Emekli Zammı ve 2027 Zamlarına
   Etkisi** · slug: `ekim-2026-enflasyon-beklentisi-3-kasim` · hedef: "enflasyon beklentisi" (hacim 45,6) + "ekim ayı
   enflasyon" (6,9, zirve Kasım 143) + "enflasyon ne zaman" (22,5) · frontmatter `sonuc: "tufe:2026-10"` +
   `sonucBaslik: "Ekim 2026 Enflasyonu Açıklandı: Aylık %{aylik}, Yıllık %{yillik}"`. Beklenti rakamı YALNIZ TCMB
   Piyasa Katılımcıları Anketi / AA Finans anketinden, tarihli. 3 Kasım "büyük gün" merkezi: /kira-artis-orani-hesaplama,
   /emekli-zammi-hesaplama, /memur-zammi-hesaplama, /yeniden-degerleme-orani, /mtv-hesaplama,
-  /blog/2027-zamlari-yeniden-degerleme-orani-rehberi, /enflasyon-hesaplama linkleri.
+  /blog/2027-zamlari-yeniden-degerleme-orani-rehberi, /enflasyon-hesaplama linkleri. **Erken yayın (RC 2026-10-27):** "ekim ayı enflasyon
+  beklentisi" aramaları şimdiden geliyor (GSC p13,8, yanlış yazıya); Google'ın dizine alması için olaydan ≥3 gün önce.
+  AA Finans anketi sonradan çıkarsa 2 Kasım günlük koşusu yazıdaki beklenti rakamını güncellesin.
 
 ## Sonraki hafta adayları
 - 📅 ABD NFP (Ekim verisi) ve ABD CPI (Ekim verisi) önizlemeleri — tarihleri BLS takviminden; olaydan 1-2 gün önce.
