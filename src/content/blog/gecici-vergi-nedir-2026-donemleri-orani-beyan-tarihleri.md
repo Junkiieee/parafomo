@@ -105,7 +105,7 @@ Dönemde zarar varsa da beyanname **verilir**; sadece ödeme çıkmaz. Beyanname
 
 ### 2026'da enflasyon düzeltmesi var mı?
 
-7566 sayılı Kanunla 2025, 2026 ve 2027 hesap dönemlerinde (geçici vergi dönemleri dahil) mali tabloların enflasyon düzeltmesine tabi tutulmaması düzenlendi. Münhasıran işlenmiş altın ve gümüş alım-satımı ve imalatı yapanlar bu düzenlemenin dışında tutuldu. Faaliyetin bu kapsama giriyorsa uygulamayı mali müşavirinle netleştir.
+7571 sayılı Kanunla VUK'a eklenen geçici 37. maddeyle 2025, 2026 ve 2027 hesap dönemlerinde (geçici vergi dönemleri dahil) mali tabloların enflasyon düzeltmesine tabi tutulmaması düzenlendi. Münhasıran işlenmiş altın ve gümüş alım-satımı ve imalatı yapanlar bu düzenlemenin dışında tutuldu. Faaliyetin bu kapsama giriyorsa uygulamayı mali müşavirinle netleştir.
 
 ## Mahsup, iade ve yanılma payı
 
