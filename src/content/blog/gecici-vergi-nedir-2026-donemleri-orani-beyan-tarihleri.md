@@ -17,6 +17,23 @@ faq:
     a: "Evet. 2021'de 7338 sayılı Kanunla kaldırılan dördüncü dönem, 19 Aralık 2025 tarihli Resmî Gazete'de yayımlanan 7566 sayılı Kanunla 2025 yılından itibaren yeniden getirildi. 2026'nın Ekim-Aralık dönemi beyannamesi 17 Şubat 2027'ye kadar verilecek."
   - q: "Ödenen geçici vergi yıllık vergiden fazla olursa ne olur?"
     a: "Yıl içinde ödenen geçici vergi, yıllık beyannamede hesaplanan vergiden mahsup edilir. Mahsup edilemeyen kısım, beyanname verme süresinin bitiminden itibaren bir yıl içinde talep edilirse nakden iade edilir veya başka vergi borçlarına mahsup edilebilir."
+shorts:
+  - "Devlet vergiyi neden yıl bitmeden alıyor?"
+  - "Geçici vergi ek vergi değil, yıl sonu vergini üç ayda bir peşin ödemendir."
+  - "Yıl içinde ödediğin her lira, yıllık vergiden düşülür; fazlaysa iade alırsın."
+  - "Şirketin, şahıs işletmen ya da serbest meslek işin varsa en yakın son gün 17 Kasım."
+  - "Peki oranlar sana ne kadar yazıyor? Abone ol, vergi takvimini kaçırma. Detaylar parafomo.com'da."
+shorts_broll:
+  - "tax payment calculator"
+  - "accountant desk paperwork"
+  - "calendar deadline"
+  - "small business owner laptop"
+shorts_visuals:
+  - "object|piggy bank"
+  - "object|calculator"
+  - "object|receipt paper"
+  - "object|wall calendar"
+  - "logo|ParaFOMO logo"
 ---
 
 **Geçici vergi**, yıl sonunda ödenecek gelir veya kurumlar vergisinin yıl içinde, üç ayda bir peşin olarak ödenmesidir. Şirketin, şahıs işletmen ya da serbest meslek faaliyetin varsa, 2026'da dört kez geçici vergi beyannamesi vereceksin; en yakın son gün **17 Kasım 2026**. Bu rehberde geçici vergi dönemlerini, oranını, nasıl hesaplandığını ve yıl sonunda nasıl mahsup edildiğini sade bir dille anlatıyoruz.
