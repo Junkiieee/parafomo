@@ -29,10 +29,10 @@ beyannamesi" 2,8 (zirve Mart 32 → Şubat'ta yeniden ölç) · "aile destek pro
   (Fed yer tutucuları: bant, bp, karar — `src/data/event-result.ts`) · Mevcut faiz aralığı ve 16 Eylül kararı `data/fomc-2026.json`'dan; piyasa
   beklentisi YALNIZ CME FedWatch / Reuters anketi, tarihli; karar saati TSİ 21:00 · iç-link: /fed-faiz-takvimi,
   /blog/fed-faiz-karari-ne-olur-beklentiler, /blog/fed-faiz-karari-sonrasi-piyasa-tepkisi, /dolar-getiri, /altin-getiri → /blog/fed-faiz-karari-28-ekim-2026-beklentiler (2026-10-26)
-- [ ] **Geçici vergi nedir? 2026 geçici vergi dönemleri, oranı ve beyan tarihleri** · hedef: "geçici vergi" (hacim
+- [x] **Geçici vergi nedir? 2026 geçici vergi dönemleri, oranı ve beyan tarihleri** · hedef: "geçici vergi" (hacim
   46,1, zirve Şubat 161) · neden: 3. dönem (Temmuz-Eylül) beyanı Kasım'da — son günü GİB'den doğrula (dönemi izleyen 2.
   ayın 17'si kuralı); oranlar KV %25 / GV tarifesi; mahsup ve iade; 2026'da kaldırılma/değişiklik haberi varsa YALNIZ
-  RG/GİB'le · iç-link: /kurumlar-vergisi-hesaplama, /gelir-vergisi-hesaplama, /vergi-dilimi-hesaplama
+  RG/GİB'le · iç-link: /kurumlar-vergisi-hesaplama, /gelir-vergisi-hesaplama, /vergi-dilimi-hesaplama → /blog/gecici-vergi-nedir-2026-donemleri-orani-beyan-tarihleri (2026-10-27)
 - [ ] **SGK hizmet dökümü nasıl alınır ve nasıl okunur? e-Devlet adım adım (2026)** · hedef: "sgk hizmet dökümü"
   (hacim 30,1) · neden: hacimli how-to, sitede yok; belge sütunlarının anlamı (prim günü, işyeri, eksik gün kodları —
   kodları SGK'nın resmi listesinden), barkodlu belge, emeklilik için ne işe yarar. /emeklilik-hesaplama (week T18) canlıysa
