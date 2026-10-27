@@ -69,7 +69,8 @@ Yeni sayfa = `src/data/tools.ts` kaydı (k: anahtar kelimeler) + Footer TOOL_LIN
   parası. Önbellekten oku (yeniden çekme). · Kabul: yeniden çalıştırınca 22 ayar bilezik / çeyrek altın YENI_YAZI değil;
   emekli promosyon listede (T17 canlıysa BEKLE); commit.
 - [ ] T21 (B261022-1 — TARİHLİ, 29 Ekim sabahı) — **Fed 28 Ekim sonrası kontrol** · 26 Ekim'de daily-content'in yazdığı
-  Fed önizleme yazısında (`fed-faiz-karari-28-ekim-2026-…`) `sonuc: "fed:2026-10-28"` var mı (yoksa 27 Ekim'de ekle);
+  Fed önizleme yazısında (`fed-faiz-karari-28-ekim-2026-…`) `sonuc: "fed:2026-10-28"` var mı (yoksa 27 Ekim'de ekle — ✅ 27 Ekim
+  kontrol edildi: `sonuc` + `sonucBaslik` ({karar}/{bant}) yazıda var);
   29 Ekim: kutu "açıklandı" + /fed-faiz-takvimi kararı gösteriyor mu (yoksa `logs/policy-decisions.log`); SSS geçmiş
   zamana, `updatedDate`. Rakamı elle tahmin ETME. · Kabul: canlıda kutu + /fed-faiz-takvimi güncel.
 - [ ] T13 (zam sezonu — TARİHLİ, 3 Kasım sonrası · Kaan ONAYLADI) — **YD kesinleşme kontrolü:** 3 Kasım'da release-watch.py
