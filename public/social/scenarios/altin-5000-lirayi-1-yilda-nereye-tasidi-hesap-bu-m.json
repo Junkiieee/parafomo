@@ -1,0 +1,105 @@
+{
+  "slug": "altin-5000-lirayi-1-yilda-nereye-tasidi-hesap-bu-m",
+  "title": "Altın 5000 lirayı 1 yılda nereye taşıdı, hesap bu",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "Geçen yıl 5000 TL'yi gram altına koysaydın bugün yaklaşık 5612 TL olurdu, yani yaklaşık %12. Bir yıllık getirinin market sepeti karşısında ne ifade ettiği ve uzun vadeli bakışın farkı.",
+  "tags": [
+    "gram altın",
+    "altın getirisi",
+    "geriye dönük getiri",
+    "birikim",
+    "enflasyon",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "5000 lira bir yılda 612 lira kazandı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Geçen yıl 5000 liranı gram altına koysaydın, bugün yaklaşık 5612 lira olurdu.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yaklaşık yüzde 12 getiri bu. Ama market sepetin bundan fazla pahalandıysa, kazancın kâğıt üstünde kalır.",
+      "visual": {
+        "type": "manim",
+        "scene": "backtest",
+        "theme": "slate",
+        "title": "",
+        "chart": {
+          "kind": "line",
+          "label": "Gram Altın",
+          "unit": "TL",
+          "points": [
+            5812.96,
+            5994.79,
+            6629.44,
+            6824.62,
+            6887.35,
+            6167.61,
+            6370.67,
+            7061.26,
+            6690.13,
+            6524.04
+          ],
+          "x": [
+            "11/25",
+            "12/25",
+            "01/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26",
+            "09/26",
+            "10/26"
+          ],
+          "amount": 5000,
+          "end_value": 5612,
+          "pct": 12
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Altına bir yıllık değil uzun vadeli bak; son 10 yılda yaklaşık yüzde 5450 kazandırdı.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Altın",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki hesapta bir yıllık sınavı kimin geçtiğini göreceksin. Abone ol, her gün tek net rakamı sadeleştireyim.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "ParaFOMO",
+        "glyph": "₺"
+      }
+    }
+  ]
+}

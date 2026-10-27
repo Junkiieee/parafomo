@@ -1,0 +1,62 @@
+{
+  "slug": "ev-yatirimi-sandigin-kadar-kazandirmiyor-olabilir",
+  "title": "Ev yatırımı sandığın kadar kazandırmıyor olabilir",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Ev almak güvenli yatırım sayılır ama tapu masrafı, aidat ve düşük kira getirisi kazancı eritebilir. Evi mevduatla kıyaslamadan almayın.",
+  "tags": [
+    "ev yatırımı",
+    "kira getirisi",
+    "mevduat",
+    "birikim",
+    "tapu masrafı",
+    "yatırım mitleri",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Ev almak seni otomatik zengin etmez.",
+      "visual": {
+        "type": "object",
+        "query": "house keys"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çünkü evin getirisi sadece değerinden gelmez; tapu masrafı, aidat ve boş kalan aylar kazancı yer.",
+      "visual": {
+        "type": "object",
+        "query": "receipt paper"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama sürpriz şu: yıllık kira, evin değerinin çoğu zaman yaklaşık yüzde 5'i kadar kalıyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ev alacaksan kirayı mevduatla kıyasla, masrafları hesapla; bütün birikimi tek eve bağlama.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sırada evin gerçek getirisini hesaplamak var; abone ol, her gün 60 saniyede tek net analiz gelsin.",
+      "visual": {
+        "type": "object",
+        "query": "house keys"
+      }
+    }
+  ]
+}

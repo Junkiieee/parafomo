@@ -18,21 +18,21 @@ beyannamesi" 2,8 (zirve Mart 32 → Şubat'ta yeniden ölç) · "aile destek pro
 - [x] **Findeks kredi notu nedir, nasıl yükselir? Not aralıkları ve kredi onayına etkisi** · hedef: "findeks
   kredi notu" (hacim 12,5) + "findeks" (124) · neden: kredi kümesi (konut/ihtiyaç/taşıt kredisi araçlarıyla); not
   aralıklarını KKB'nin kendi sayfasından al · iç-link: /kredi-hesaplama, /konut-kredisi-hesaplama, /ihtiyac-kredisi-hesaplama → /blog/findeks-kredi-notu-nedir-nasil-yukselir (2026-10-22)
-- [ ] **TEFAS nedir, fon nasıl alınır? 2026'da TEFAS'tan yatırım fonu alma rehberi** · hedef: "tefas" (hacim 160,
+- [x] **TEFAS nedir, fon nasıl alınır? 2026'da TEFAS'tan yatırım fonu alma rehberi** · hedef: "tefas" (hacim 160,
   zirve 409 Eylül) + "fon getirileri" (14) · neden: hacimli, sitede karşılığı yok (keyword-map K14); adım adım alım
   (banka/aracı kurum), valör/saat kuralları, stopaj (stopaj yazısına link), fon türleri tablosu; getiri rakamı
   verirsen TEFAS'tan tarihli; tek fon önerme · iç-link: /blog/yatirim-fonu-nedir-nasil-secilir,
-  /blog/stopaj-nedir-2026-stopaj-oranlari, /blog/para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki, /mevduat-faizi-hesaplama
-- [ ] 📅 26 Ekim **Fed Faiz Kararı 28 Ekim 2026: Beklenti, Senaryolar ve Dolar/Altın Etkisi** · slug:
+  /blog/stopaj-nedir-2026-stopaj-oranlari, /blog/para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki, /mevduat-faizi-hesaplama → /blog/tefas-nedir-fon-nasil-alinir (2026-10-23)
+- [x] 📅 26 Ekim **Fed Faiz Kararı 28 Ekim 2026: Beklenti, Senaryolar ve Dolar/Altın Etkisi** · slug:
   `fed-faiz-karari-28-ekim-2026-beklentiler` · hedef: "fed faiz kararı" (hacim 80,9, zirve 656 Eylül) · frontmatter:
   `sonuc: "fed:2026-10-28"` + `sonucBaslik: "Fed 28 Ekim Kararı Açıklandı: Faiz {karar}, Bant %{bant}"`
   (Fed yer tutucuları: bant, bp, karar — `src/data/event-result.ts`) · Mevcut faiz aralığı ve 16 Eylül kararı `data/fomc-2026.json`'dan; piyasa
   beklentisi YALNIZ CME FedWatch / Reuters anketi, tarihli; karar saati TSİ 21:00 · iç-link: /fed-faiz-takvimi,
-  /blog/fed-faiz-karari-ne-olur-beklentiler, /blog/fed-faiz-karari-sonrasi-piyasa-tepkisi, /dolar-getiri, /altin-getiri
-- [ ] **Geçici vergi nedir? 2026 geçici vergi dönemleri, oranı ve beyan tarihleri** · hedef: "geçici vergi" (hacim
+  /blog/fed-faiz-karari-ne-olur-beklentiler, /blog/fed-faiz-karari-sonrasi-piyasa-tepkisi, /dolar-getiri, /altin-getiri → /blog/fed-faiz-karari-28-ekim-2026-beklentiler (2026-10-26)
+- [x] **Geçici vergi nedir? 2026 geçici vergi dönemleri, oranı ve beyan tarihleri** · hedef: "geçici vergi" (hacim
   46,1, zirve Şubat 161) · neden: 3. dönem (Temmuz-Eylül) beyanı Kasım'da — son günü GİB'den doğrula (dönemi izleyen 2.
   ayın 17'si kuralı); oranlar KV %25 / GV tarifesi; mahsup ve iade; 2026'da kaldırılma/değişiklik haberi varsa YALNIZ
-  RG/GİB'le · iç-link: /kurumlar-vergisi-hesaplama, /gelir-vergisi-hesaplama, /vergi-dilimi-hesaplama
+  RG/GİB'le · iç-link: /kurumlar-vergisi-hesaplama, /gelir-vergisi-hesaplama, /vergi-dilimi-hesaplama → /blog/gecici-vergi-nedir-2026-donemleri-orani-beyan-tarihleri (2026-10-27)
 - [ ] **SGK hizmet dökümü nasıl alınır ve nasıl okunur? e-Devlet adım adım (2026)** · hedef: "sgk hizmet dökümü"
   (hacim 30,1) · neden: hacimli how-to, sitede yok; belge sütunlarının anlamı (prim günü, işyeri, eksik gün kodları —
   kodları SGK'nın resmi listesinden), barkodlu belge, emeklilik için ne işe yarar. /emeklilik-hesaplama (week T18) canlıysa

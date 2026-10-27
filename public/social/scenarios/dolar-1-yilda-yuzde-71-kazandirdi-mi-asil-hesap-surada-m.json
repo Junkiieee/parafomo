@@ -1,0 +1,153 @@
+{
+  "slug": "dolar-1-yilda-yuzde-71-kazandirdi-mi-asil-hesap-surada-m",
+  "title": "Dolar 1 yılda yüzde 71 kazandırdı mı? Asıl hesap şurada",
+  "category": "GETİRİ",
+  "format": "backtest_return",
+  "description": "5000 TL'yi geçen yıl dolara çevirseydin bugün yaklaşık 8573 TL olurdu, yani yaklaşık yüzde 71 getiri. Peki bu getiri gerçekten paranı korudu mu, hesabı adım adım gösteriyoruz.",
+  "tags": [
+    "dolar",
+    "dolar tl",
+    "getiri",
+    "enflasyon",
+    "birikim",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GETİRİ",
+      "spoken": "5000 lirayı dolara çevirenin cebi büyümedi, sadece yetişti.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Dolar",
+        "glyph": "$"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Geçen yıl bu zamanlar 5000 lirayı dolara çevirseydin, bugün yaklaşık 8573 lira olurdu.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Dolar",
+        "glyph": "$"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yani yaklaşık yüzde 71 getiri. Ama market sepeti, kira ve fatura da bu sürede pahalandı.",
+      "visual": {
+        "type": "manim",
+        "scene": "backtest",
+        "theme": "light",
+        "title": "",
+        "chart": {
+          "kind": "line",
+          "label": "Dolar/TL",
+          "unit": "TL",
+          "points": [
+            28.94,
+            29.52,
+            30.36,
+            31.21,
+            32.37,
+            32.24,
+            32.73,
+            33.1,
+            34.08,
+            34.15,
+            34.28,
+            34.68,
+            35.31,
+            35.85,
+            36.52,
+            38.5,
+            39.21,
+            39.89,
+            40.59,
+            41.1,
+            41.58,
+            42.03,
+            42.49,
+            42.95,
+            43.46,
+            43.96,
+            45.17,
+            45.85,
+            46.64,
+            47.5,
+            48.25,
+            49.01,
+            49.58,
+            49.62
+          ],
+          "x": [
+            "11/23",
+            "12/23",
+            "01/24",
+            "02/24",
+            "03/24",
+            "04/24",
+            "05/24",
+            "06/24",
+            "07/24",
+            "08/24",
+            "09/24",
+            "11/24",
+            "12/24",
+            "01/25",
+            "02/25",
+            "03/25",
+            "04/25",
+            "05/25",
+            "06/25",
+            "07/25",
+            "08/25",
+            "09/25",
+            "11/25",
+            "12/25",
+            "01/26",
+            "02/26",
+            "03/26",
+            "04/26",
+            "05/26",
+            "06/26",
+            "07/26",
+            "08/26",
+            "09/26",
+            "10/26"
+          ],
+          "amount": 5000,
+          "end_value": 8573,
+          "pct": 71
+        }
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Sonuç net: dolar paranı korumaya yardım etti ama seni zengin etmedi. Kendi sepetinle kıyasla.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "Dolar",
+        "glyph": "$"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki aynı 5000 lira altında ne olurdu? Abone ol, her gün tek net hesabı kısa kısa gör.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "light",
+        "keyword": "ParaFOMO",
+        "glyph": "₺"
+      }
+    }
+  ]
+}

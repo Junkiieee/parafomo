@@ -1,0 +1,67 @@
+{
+  "slug": "zarar-edince-geri-donmek-neden-bu-kadar-zor",
+  "title": "Zarar edince geri dönmek neden bu kadar zor?",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Yüzde 50 kayıptan çıkmak için yüzde 50 değil yüzde 100 kazanç gerekir. Basit bir hesapla kaybın neden daha pahalı olduğunu gösteriyoruz.\nKaynak/hesap: 100.000 TL x 0,5 = 50.000 TL; 50.000 x 2 = 100.000 TL (+%100). 50.000 x 1,5 = 75.000 TL · senaryodaki hesap",
+  "tags": [
+    "yatırım",
+    "kayıp",
+    "hesap",
+    "borsa",
+    "altın",
+    "birikim",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Yüzde 50 kaybeden, yüzde 50 kazanıp kurtulamaz.",
+      "visual": {
+        "type": "object",
+        "query": "rising green stock chart on screen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "100 bin lira yarıya inip 50 bin olursa, geri dönmek için yüzde 100 kazanmalısın.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama yüzde 50 kazanırsan sadece 75 bine çıkarsın; çünkü yüzde 50, küçülmüş paranın üstüne işler.",
+      "visual": {
+        "type": "object",
+        "query": "wallet"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu yüzden büyük kayıp riskini sınırla; derin düşüşten çıkmak, düşmemekten her zaman daha zordur.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Risk",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki videoda kaybı küçük tutan basit bir kuralı açıyorum. Abone ol, her gün tek net hesap.",
+      "visual": {
+        "type": "object",
+        "query": "rising green stock chart on screen"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "Yüzde 50 kayıptan çıkmak için yüzde 100 kazanç gerekir",
+    "calc": "100.000 TL x 0,5 = 50.000 TL; 50.000 x 2 = 100.000 TL (+%100). 50.000 x 1,5 = 75.000 TL",
+    "source": "senaryodaki hesap"
+  }
+}

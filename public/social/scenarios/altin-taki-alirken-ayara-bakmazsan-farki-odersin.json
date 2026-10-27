@@ -1,0 +1,64 @@
+{
+  "slug": "altin-taki-alirken-ayara-bakmazsan-farki-odersin",
+  "title": "Altın takı alırken ayara bakmazsan farkı ödersin",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "14 ayar takının yaklaşık yüzde 42'si altın değil. Basit bir hesapla takı ile yatırım altını arasındaki farkı gösteriyor.\nKaynak/hesap: 14/24 = %58,3 saf altın; 100 - 58,3 = %41,7 ≈ %42 diğer metal (10 gramda 10x14/24 ≈ 5,8 gram altın) · senaryodaki hesap (ayar = 24 üzerinden saf altın oranı)",
+  "tags": [
+    "altın",
+    "14 ayar",
+    "takı altını",
+    "işçilik",
+    "gram altın",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "14 ayar takının yüzde 42'si altın değil.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold necklace jewelry"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "14 ayar demek, 24 parçanın 14'ü altın. 10 gramlık yüzükte yaklaşık 5,8 gram altın var.",
+      "visual": {
+        "type": "gold",
+        "query": "gold ring jewelry"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama vitrinde gramın üstüne işçilik de biniyor; geri satarken o işçilik cebine dönmüyor.",
+      "visual": {
+        "type": "object",
+        "query": "receipt paper"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yatırım için 24 ayar gram ya da külçe al; takıyı süs olarak, ayarına bakarak seç.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sırada işçilik farkının tam hesabı var. Abone ol, her gün tek net hesabı kısa kısa anlatıyorum.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold necklace jewelry"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "14 ayar takının yüzde 42'si altın değil",
+    "calc": "14/24 = %58,3 saf altın; 100 - 58,3 = %41,7 ≈ %42 diğer metal (10 gramda 10x14/24 ≈ 5,8 gram altın)",
+    "source": "senaryodaki hesap (ayar = 24 üzerinden saf altın oranı)"
+  }
+}

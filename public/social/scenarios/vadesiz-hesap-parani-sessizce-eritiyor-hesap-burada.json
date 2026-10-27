@@ -1,0 +1,62 @@
+{
+  "slug": "vadesiz-hesap-parani-sessizce-eritiyor-hesap-burada",
+  "title": "Vadesiz hesap paranı sessizce eritiyor, hesap burada",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Vadesiz hesaptaki para, bakiye aynı görünse bile alım gücünü kaybeder. Delik kova metaforu ve 100 bin TL örneğiyle, birikimi korumanın basit yolu.",
+  "tags": [
+    "vadesiz hesap",
+    "enflasyon",
+    "alım gücü",
+    "birikim",
+    "altın",
+    "tasarruf",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Vadesiz hesaptaki paran sessizce akıp gidiyor.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Vadesiz hesap delik bir kova gibi: içindeki sayı aynı kalır, ama alabildiğin şey azalır.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Mevduat",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama bakiye 100 bin yazar. Fiyatlar yüzde 30 artarsa, alım gücün yaklaşık 77 bine iner.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bir aylık gideri vadesizde tut, kalanı enflasyona karşı çalışan bir araca taşı.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki hesap maaşını bile şaşırtabilir. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    }
+  ]
+}

@@ -1,6 +1,14 @@
 # Kaan'dan beklenenler (haftalık koşu 2026-10-22 — tek iş, tarihli; yeni hesap/API ihtiyacı yok)
 
-1. **3 Kasım (Salı) öğleden sonra — Google'a "yeniden tara" de (5 dakika)**
+1. **ŞİMDİ (1 dakika) — yanlış başlıklı Short'u düzelt**
+   22 Ekim sabahı karar açıklanmadan üretilen gündem videosunun başlığı "Merkez Bankası faizi sabit tuttu, cebine ne oldu"
+   ama TCMB faizi %37'den %36'ya İNDİRDİ (video anlatımı tarafsız, yalnız başlık yanlış). YouTube Studio → İçerik →
+   https://youtube.com/shorts/ju3eIYBRa7M → Başlık: "Merkez Bankası faiz kararı cebine nasıl dokunuyor #Shorts" → Kaydet.
+   Instagram Reel (https://www.instagram.com/reel/DeyWcNigded/) açıklamasında aynı ifade varsa "Düzenle" ile aynı başlığı yaz.
+   Neden: yanıltıcı başlık YouTube politikasına aykırı; ajanın YouTube yetkisi yalnız yükleme (başlığı API'den değiştiremiyor).
+   Kök neden kapatıldı: gündem videoları artık sonucu iddia eden başlıkla üretilemez.
+
+2. **3 Kasım (Salı) öğleden sonra — Google'a "yeniden tara" de (5 dakika)**
    TÜİK Ekim verisi 10:00'da açıklanınca sitedeki 2027 yeniden değerleme sayfaları otomatik "Belli Oldu: %X" olur,
    ama Google bu sayfaları ~10 günde bir tarıyor. Search Console → üstteki "URL denetimi" kutusu → aşağıdaki her
    adresi yapıştır → "Dizine eklenmesini iste": parafomo.com/yeniden-degerleme-orani/ ·

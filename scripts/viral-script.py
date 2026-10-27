@@ -28,6 +28,7 @@ import json
 import time
 import argparse
 import subprocess
+import datetime
 import unicodedata
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "lib"))
@@ -148,7 +149,7 @@ FORMATS = {
     },
     "news_reaction": {
         "category": "GÜNCEL",
-        "guide": "Güncel olay/kişiye tepki. Hook: olayı/kişiyi söyle ve finansal soruyu sor. 3 beat: olayın piyasaya/altına/dolara/borsaya etkisini sade anlat. Spekülasyon değil, mekanizma. Hook görseli ana kişi/kurum (person/place/logo) OLMALI.",
+        "guide": "Güncel olay/kişiye tepki. Hook: olayı/kişiyi söyle ve finansal soruyu sor. 3 beat: olayın piyasaya/altına/dolara/borsaya etkisini sade anlat. Spekülasyon değil, mekanizma. Olayın SONUCUNU (faizi artırdı/indirdi/sabit tuttu, açıklanan rakam) başlıkta ve metinde ASLA iddia etme — video açıklamadan önce yayınlanıyor; 'karar bugün', 'hangi yönde çıkarsa cebine ne olur' çerçevesi kullan. Hook görseli ana kişi/kurum (person/place/logo) OLMALI.",
     },
     "single_concept": {
         "category": "KAVRAM",
@@ -281,6 +282,95 @@ def most_similar(title, recent, thresh=0.5):
     return best if best_j >= thresh else ""
 
 
+# Günlük konu kümesi kapısı (V3, 2026-10-24): aynı gün aynı kümeden iki video → biri akışı alıyor,
+# diğeri 0-13 izlenme (V2: dolar 5000 ×2 → 13 vs 554; 10-21 altın ×3). Kök = ascii-katlanmış kelime öneki.
+CLUSTERS = {
+    "altın": ("altin", "gram", "ceyrek", "cumhuriyet", "ziynet", "bilezik", "ons", "gumus"),
+    "döviz": ("dolar", "euro", "doviz", "sterlin"),
+    "borsa": ("borsa", "bist", "hisse", "halka", "temettu", "tefas", "fon"),
+    "kripto": ("kripto", "bitcoin", "btc", "ethereum"),
+    "faiz": ("faiz", "mevduat", "tcmb", "merkez", "fed", "ppk", "vadesiz", "vadeli"),
+    "kredi": ("kredi", "kart", "borc", "findeks", "taksit"),
+    "vergi": ("vergi", "kdv", "stopaj", "harc", "mtv", "beyanname"),
+    "maaş": ("emekli", "maas", "zam", "memur", "asgari", "kidem", "sgk"),
+}
+_TR_MONTHS = {"ocak": 1, "subat": 2, "mart": 3, "nisan": 4, "mayis": 5, "haziran": 6, "temmuz": 7,
+              "agustos": 8, "eylul": 9, "ekim": 10, "kasim": 11, "aralik": 12}
+
+
+def _fold(s):
+    return s.lower().translate(str.maketrans("çğıöşüâî", "cgiosuai"))
+
+
+def clusters_of(text):
+    """Metindeki kümeler, ilk geçiş sırasıyla (ilki = ana varlık)."""
+    out = []
+    for w in re.findall(r"[a-z0-9]+", _fold(text)):
+        for c, roots in CLUSTERS.items():
+            if c not in out and any(w.startswith(r) for r in roots):
+                out.append(c)
+    return out
+
+
+def main_cluster(text):
+    cs = clusters_of(text)
+    return cs[0] if cs else ""
+
+
+def _planned_blog_topic(today):
+    """Bugün daily-content'in yazacağı (→ Blog→Short 11:00) kuyruk konusu; tarihi gelmemiş 📅 satır atlanır."""
+    try:
+        lines = open(os.path.join(ROOT, "agent", "plan", "content-queue.md"), encoding="utf-8").read().splitlines()
+    except Exception:
+        return ""
+    if today.weekday() >= 5:  # blog yazısı Pzt-Cum
+        return ""
+    for ln in lines:
+        if not ln.startswith("- [ ]"):
+            continue
+        m = re.search(r"📅\s*(\d{1,2})\s+(\w+)", ln)
+        if m:
+            mon = _TR_MONTHS.get(_fold(m.group(2)))
+            if mon and (mon, int(m.group(1))) > (today.month, today.day):
+                continue
+        t = re.search(r"\*\*(.+?)\*\*", ln)
+        return t.group(1) if t else ln[5:120]
+    return ""
+
+
+def todays_clusters(today=None):
+    """Bugün (UTC) diğer hatların ürettiği/planladığı videoların konu kümeleri → {küme: [kaynak, ...]}."""
+    today = today or datetime.datetime.now(datetime.timezone.utc).date()
+    social = os.path.join(ROOT, "public", "social")
+    items = []
+    for d in (social, os.path.join(social, "scenarios")):
+        try:
+            names = os.listdir(d)
+        except FileNotFoundError:
+            continue
+        for f in names:
+            p = os.path.join(d, f)
+            if not f.endswith(".json") or (d == social and not f.startswith("short-")):
+                continue
+            if datetime.datetime.fromtimestamp(os.path.getmtime(p), datetime.timezone.utc).date() != today:
+                continue
+            try:
+                title = json.load(open(p, encoding="utf-8")).get("title") or ""
+            except Exception:
+                title = ""
+            items.append((f[:-5].removeprefix("short-"), title or f[:-5].replace("-", " ")))
+    real_today = datetime.datetime.now(datetime.timezone.utc).date()
+    blog = _planned_blog_topic(today) if today == real_today else ""  # kuyruk yalnız bugünü bilir
+    if blog:
+        items.append(("blog-kuyruğu: " + blog[:60], blog))
+    out = {}
+    for src, text in items:
+        c = main_cluster(text)
+        if c and src not in out.setdefault(c, []):
+            out[c].append(src)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--format", required=True, choices=list(FORMATS))
@@ -294,7 +384,15 @@ def main():
     ap.add_argument("--out-dir", default=SCEN_DIR)
     ap.add_argument("--dry-run", action="store_true",
                     help="senaryoyu dosyaya yazma, JSON'u stdout'a bas (izole deneme)")
+    ap.add_argument("--clusters", action="store_true",
+                    help="LLM çağırmadan bugünün dolu konu kümelerini yazdır (kapı testi)")
+    ap.add_argument("--today", default="", help="--clusters için gün (YYYY-MM-DD, varsayılan bugün UTC)")
     args = ap.parse_args()
+
+    busy = todays_clusters(datetime.date.fromisoformat(args.today) if args.today else None)
+    if args.clusters:
+        print(json.dumps(busy, ensure_ascii=False, indent=1))
+        return 0
 
     fmt = FORMATS[args.format]
     # KAZANAN DNA (2026-08 izlenme analizi): en çok izlenen 8 videonun HEPSİ altın
@@ -342,6 +440,11 @@ def main():
                 "farklı ve TAZE bir konu/açı seç:\n" + lst + "\n\n")
         else:
             avoid_block = ""
+        if busy and not args.topic:
+            avoid_block += (
+                "BUGÜN kanalın diğer videoları şu konu kümelerini zaten işliyor: "
+                + ", ".join(sorted(busy)) + ". Aynı gün aynı kümeden ikinci video akışta "
+                "birbirini yiyor — bu kümelerin DIŞINDAN bir konu seç.\n\n")
         return PROMPT % {
             "fmt_name": args.format, "fmt_guide": fmt["guide"], "topic_line": topic_line,
             "avoid_block": avoid_block, "facts_block": facts_block,
@@ -392,6 +495,14 @@ def main():
                       f"yeni konu isteniyor (deneme {attempt}/{MAX_TRIES})", file=sys.stderr)
                 extra_avoid.append(title)
                 continue
+            clash = main_cluster(title + " " + str((d.get("segments") or [{}])[0].get("spoken", "")))
+            if clash in busy and not args.topic and args.format not in DATA_FORMATS:
+                if attempt < MAX_TRIES:
+                    print(f"UYARI: '{title}' bugünkü dolu kümeye düşüyor ({clash}: {busy[clash][0]}) — "
+                          f"farklı küme isteniyor (deneme {attempt}/{MAX_TRIES})", file=sys.stderr)
+                    extra_avoid.append(title)
+                    continue
+                print(f"UYARI: küme çakışması kaldı ({clash}) — üretim sürüyor", file=sys.stderr)
             data = d
             break
         if attempt < MAX_TRIES and transient:
@@ -419,6 +530,14 @@ def main():
                   file=sys.stderr); return 1
     if not data.get("title"):
         print("HATA: title yok", file=sys.stderr); return 1
+    # Gündem videosu karar/veri AÇIKLANMADAN önce üretilir (news-daily sabah) → sonucu iddia eden
+    # başlık/metin uydurmadır (2026-10-22: TCMB %36'ya indirdi, başlık "faizi sabit tuttu" dedi).
+    if args.format == "news_reaction":
+        outcome = re.compile(r"sabit (tuttu|bıraktı)|(indirdi|düşürdü|artırdı|arttırdı|yükseltti)\b", re.I)
+        hit = [t for t in [data["title"]] + [s["spoken"] for s in segs] if outcome.search(t)]
+        if hit:
+            print(f"HATA: news_reaction sonucu iddia ediyor (olay henüz açıklanmamış olabilir): {hit[0][:120]}",
+                  file=sys.stderr); return 1
 
     # gerçek veri grafiğini chart-tipli beat'e iliştir (claude koymadıysa son point'e zorla)
     if chart_payload:

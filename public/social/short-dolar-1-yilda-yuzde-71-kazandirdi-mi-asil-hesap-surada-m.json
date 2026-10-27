@@ -1,0 +1,70 @@
+{
+  "title": "Dolar 1 yılda yüzde 71 kazandırdı mı? Asıl hesap şurada #Shorts",
+  "description": "5000 TL'yi geçen yıl dolara çevirseydin bugün yaklaşık 8573 TL olurdu, yani yaklaşık yüzde 71 getiri. Peki bu getiri gerçekten paranı korudu mu, hesabı adım adım gösteriyoruz.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #dolar #dolar tl #getiri #enflasyon #birikim",
+  "tags": [
+    "dolar",
+    "dolar tl",
+    "getiri",
+    "enflasyon",
+    "birikim",
+    "yatırım",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-dolar-1-yilda-yuzde-71-kazandirdi-mi-asil-hesap-surada-m.mp4",
+  "slug": "dolar-1-yilda-yuzde-71-kazandirdi-mi-asil-hesap-surada-m",
+  "format": "backtest_return",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 4.84,
+      "spoken": "5000 lirayı dolara çevirenin cebi büyümedi, sadece yetişti.",
+      "visual": "manim: Dolar"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 4.84,
+      "end": 11.82,
+      "spoken": "Geçen yıl bu zamanlar 5000 lirayı dolara çevirseydin, bugün yaklaşık 8573 lira olurdu.",
+      "visual": "manim: Dolar"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 11.82,
+      "end": 18.91,
+      "spoken": "Yani yaklaşık yüzde 71 getiri. Ama market sepeti, kira ve fatura da bu sürede pahalandı.",
+      "visual": "manim: backtest"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 18.91,
+      "end": 26.13,
+      "spoken": "Sonuç net: dolar paranı korumaya yardım etti ama seni zengin etmedi. Kendi sepetinle kıyasla.",
+      "visual": "manim: Dolar"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 26.13,
+      "end": 33.54,
+      "spoken": "Peki aynı 5000 lira altında ne olurdu? Abone ol, her gün tek net hesabı kısa kısa gör.",
+      "visual": "manim: ParaFOMO"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-22T16:02:24+00:00",
+    "slug": "dolar-1-yilda-yuzde-71-kazandirdi-mi-asil-hesap-surada-m",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "0GkWBn4dXZY",
+  "youtube_url": "https://youtube.com/shorts/0GkWBn4dXZY",
+  "ig_reel_id": "18093311375193340",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DezXdmOkzhE/",
+  "ig_seed_comment_id": "18080575403429404"
+}

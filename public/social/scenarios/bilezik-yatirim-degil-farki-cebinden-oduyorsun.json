@@ -1,0 +1,59 @@
+{
+  "slug": "bilezik-yatirim-degil-farki-cebinden-oduyorsun",
+  "title": "Bilezik yatırım değil, farkı cebinden ödüyorsun",
+  "category": "MİT",
+  "format": "myth",
+  "description": "22 ayar bilezikte ödediğin paranın bir kısmı işçilik ve kuyumcu payı. Bozdururken bu pay geri gelmiyor; yatırım için gram altın ya da külçe daha mantıklı.",
+  "tags": [
+    "altın",
+    "bilezik",
+    "işçilik payı",
+    "gram altın",
+    "külçe altın",
+    "birikim",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Bilezik aldın, yatırım yaptığını sanıyorsun.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bracelet jewelry"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çünkü bilezikte ödediğin paranın bir kısmı altın değil, işçilik ve kuyumcunun payı.",
+      "visual": {
+        "type": "object",
+        "query": "jewelry weighing scale"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama bozdurmaya gidince kuyumcu sadece altının değerini öder, işçilik payı sana geri dönmez.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yatırımsa gram ya da külçe al, bilezik süstür. İkisini karıştırırsan farkı cebinden ödersin.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sırada kuyumcunun pek anlatmadığı bir hesap var. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bracelet jewelry"
+      }
+    }
+  ]
+}

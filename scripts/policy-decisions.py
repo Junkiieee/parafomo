@@ -86,8 +86,9 @@ def tcmb_result(date, year, start_no, prev_rate):
         i = t.find("Para Politikası Kurulu (Kurul)")
         para = t[i:i + 600]
         q = "[’']"
-        ch = re.search(rf"yüzde ([\d,]+){q}(?:d|t)en yüzde ([\d,]+){q}(?:y|)e (indirilmesine|yükseltilmesine|artırılmasına)", para)
-        hold = re.search(rf"yüzde ([\d,]+){q}(?:d|t)e sabit tutulmasına", para)
+        # ünlü uyumu: 37’den/40’tan → 36’ya/37’ye/40’a/35,5’e
+        ch = re.search(rf"yüzde ([\d,]+){q}[dt][ae]n yüzde ([\d,]+){q}y?[ae] (indirilmesine|yükseltilmesine|artırılmasına)", para)
+        hold = re.search(rf"yüzde ([\d,]+){q}[dt][ae] sabit tutulmasına", para)
         if ch:
             prev, rate = tr_num(ch.group(1)), tr_num(ch.group(2))
             kind = "cut" if ch.group(3) == "indirilmesine" else "hike"

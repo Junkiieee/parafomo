@@ -1,0 +1,70 @@
+{
+  "title": "Ev yatırımı sandığın kadar kazandırmıyor olabilir #Shorts",
+  "description": "Ev almak güvenli yatırım sayılır ama tapu masrafı, aidat ve düşük kira getirisi kazancı eritebilir. Evi mevduatla kıyaslamadan almayın.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #ev yatırımı #kira getirisi #mevduat #birikim #tapu masrafı",
+  "tags": [
+    "ev yatırımı",
+    "kira getirisi",
+    "mevduat",
+    "birikim",
+    "tapu masrafı",
+    "yatırım mitleri",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-ev-yatirimi-sandigin-kadar-kazandirmiyor-olabilir.mp4",
+  "slug": "ev-yatirimi-sandigin-kadar-kazandirmiyor-olabilir",
+  "format": "myth",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.14,
+      "spoken": "Ev almak seni otomatik zengin etmez.",
+      "visual": "object: house keys"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.14,
+      "end": 9.75,
+      "spoken": "Çünkü evin getirisi sadece değerinden gelmez; tapu masrafı, aidat ve boş kalan aylar kazancı yer.",
+      "visual": "object: receipt paper"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 9.75,
+      "end": 16.54,
+      "spoken": "Ama sürpriz şu: yıllık kira, evin değerinin çoğu zaman yaklaşık yüzde 5'i kadar kalıyor.",
+      "visual": "manim: Enflasyon"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 16.54,
+      "end": 23.51,
+      "spoken": "Ev alacaksan kirayı mevduatla kıyasla, masrafları hesapla; bütün birikimi tek eve bağlama.",
+      "visual": "object: calculator"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 23.51,
+      "end": 30.61,
+      "spoken": "Sırada evin gerçek getirisini hesaplamak var; abone ol, her gün 60 saniyede tek net analiz gelsin.",
+      "visual": "object: house keys"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-27T05:02:54+00:00",
+    "slug": "ev-yatirimi-sandigin-kadar-kazandirmiyor-olabilir",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "yJAvRvgQyIc",
+  "youtube_url": "https://youtube.com/shorts/yJAvRvgQyIc",
+  "ig_reel_id": "18122607034919752",
+  "ig_reel_permalink": "https://www.instagram.com/reel/De_D9PyE1GV/",
+  "ig_seed_comment_id": "18169705135465273"
+}

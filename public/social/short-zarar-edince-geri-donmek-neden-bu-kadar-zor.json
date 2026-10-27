@@ -1,0 +1,70 @@
+{
+  "title": "Zarar edince geri dönmek neden bu kadar zor? #Shorts",
+  "description": "Yüzde 50 kayıptan çıkmak için yüzde 50 değil yüzde 100 kazanç gerekir. Basit bir hesapla kaybın neden daha pahalı olduğunu gösteriyoruz.\nKaynak/hesap: 100.000 TL x 0,5 = 50.000 TL; 50.000 x 2 = 100.000 TL (+%100). 50.000 x 1,5 = 75.000 TL · senaryodaki hesap\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #yatırım #kayıp #hesap #borsa #altın",
+  "tags": [
+    "yatırım",
+    "kayıp",
+    "hesap",
+    "borsa",
+    "altın",
+    "birikim",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-zarar-edince-geri-donmek-neden-bu-kadar-zor.mp4",
+  "slug": "zarar-edince-geri-donmek-neden-bu-kadar-zor",
+  "format": "shock_number",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 4.41,
+      "spoken": "Yüzde 50 kaybeden, yüzde 50 kazanıp kurtulamaz.",
+      "visual": "object: rising green stock chart on screen"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 4.41,
+      "end": 9.92,
+      "spoken": "100 bin lira yarıya inip 50 bin olursa, geri dönmek için yüzde 100 kazanmalısın.",
+      "visual": "object: calculator"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 9.92,
+      "end": 17.74,
+      "spoken": "Ama yüzde 50 kazanırsan sadece 75 bine çıkarsın; çünkü yüzde 50, küçülmüş paranın üstüne işler.",
+      "visual": "object: wallet"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 17.74,
+      "end": 24.64,
+      "spoken": "Bu yüzden büyük kayıp riskini sınırla; derin düşüşten çıkmak, düşmemekten her zaman daha zordur.",
+      "visual": "manim: Risk"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 24.64,
+      "end": 30.82,
+      "spoken": "Sıradaki videoda kaybı küçük tutan basit bir kuralı açıyorum. Abone ol, her gün tek net hesap.",
+      "visual": "object: rising green stock chart on screen"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-25T15:32:47+00:00",
+    "slug": "zarar-edince-geri-donmek-neden-bu-kadar-zor",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "DZGv3N7s5_4",
+  "youtube_url": "https://youtube.com/shorts/DZGv3N7s5_4",
+  "ig_reel_id": "17879370543632677",
+  "ig_reel_permalink": "https://www.instagram.com/reel/De7CdC9jGW8/",
+  "ig_seed_comment_id": "17920928730244709"
+}

@@ -1,0 +1,70 @@
+{
+  "title": "Maaş zammı seni zengin etmiyor, hesap şurada #Shorts",
+  "description": "Maaşa gelen yüzde 30 zam, enflasyon yüzde 40 ise alım gücünü yaklaşık yüzde 7 düşürür. Zam oranını enflasyona bölerek gerçek kazancını kendin hesapla.\nKaynak/hesap: 1,30 / 1,40 = 0,929 → alım gücü yaklaşık %7 düşer (senaryo: zam %30, enflasyon %40; 50.000 TL × 1,30 = 65.000 TL, 50.000 TL × 1,40 = 70.000 TL) · senaryodaki hesap\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #maaş zammı #enflasyon #alım gücü #reel gelir #kişisel finans",
+  "tags": [
+    "maaş zammı",
+    "enflasyon",
+    "alım gücü",
+    "reel gelir",
+    "kişisel finans",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-maas-zammi-seni-zengin-etmiyor-hesap-surada-m.mp4",
+  "slug": "maas-zammi-seni-zengin-etmiyor-hesap-surada-m",
+  "format": "shock_number",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.62,
+      "spoken": "Yüzde 30 zam aldın, yine de fakirleştin.",
+      "visual": "manim: Enflasyon"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.62,
+      "end": 9.8,
+      "spoken": "Maaş 50 binden 65 bine çıktı, ama 50 binlik market sepeti 70 bin oldu.",
+      "visual": "manim: Maaş"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 9.8,
+      "end": 16.42,
+      "spoken": "Ama rakam büyüyünce kayıp hissedilmiyor; oysa alım gücün yaklaşık yüzde 7 düştü.",
+      "visual": "manim: Risk"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 16.42,
+      "end": 24.18,
+      "spoken": "Zam oranını enflasyona böl; sonuç birden küçükse gerilemişsin. Pazarlığa enflasyonun üstünü yazarak git.",
+      "visual": "manim: Enflasyon"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 24.18,
+      "end": 31.4,
+      "spoken": "Sepetin gerçekte ne kadar pahalandı, onu da göstereceğim. Abone ol, her gün tek net hesabı kısa kısa al.",
+      "visual": "manim: ParaFOMO"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-23T16:02:23+00:00",
+    "slug": "maas-zammi-seni-zengin-etmiyor-hesap-surada-m",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "qYT8OU8Baek",
+  "youtube_url": "https://youtube.com/shorts/qYT8OU8Baek",
+  "ig_reel_id": "18115491152615779",
+  "ig_reel_permalink": "https://www.instagram.com/reel/De18PjtDVFv/",
+  "ig_seed_comment_id": "18106481102251290"
+}

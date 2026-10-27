@@ -195,6 +195,13 @@ def faiz_card(group, key, kicker, field, sub):
     return fn
 
 
+def kk_faiz_card():
+    # data/kredi-karti-faiz.json (scripts/kredi-karti-faiz.py, TCMB aylık azami oranlar)
+    d = load("kredi-karti-faiz.json")
+    return {"kicker": f"KREDİ KARTI FAİZİ · {ay_adi(d['gecerli'][:7]).replace('i', 'İ').upper()}", "stat": f"%{tr_pct(d['tl'][0]['akdi'], 2)}",
+            "sub": f"aylık azami akdi · gecikme %{tr_pct(d['tl'][0]['gecikme'], 2)} · +%15 KKDF +%15 BSMV"}
+
+
 def asgari_card():
     # data/asgari-ucret.json — yeni yıl açıklanınca (scripts/asgari-ucret-watch.py) kart da yeni yıla döner
     d = load("asgari-ucret.json")
@@ -211,10 +218,23 @@ def vergi_dilimi_card():
 
 
 CARDS = {
+    "kredi-karti-faiz-hesaplama": kk_faiz_card,
+    "emeklilik-hesaplama": lambda: {
+        # 5510 md.28 / geçici 9 / geçici 95 (EYT); kanun değişirse güncelle
+        "kicker": "NE ZAMAN EMEKLİ OLURUM?", "stat": "7200 gün",
+        "sub": "2008 sonrası SSK · Bağ-Kur/memur 9000 gün · EYT yaşsız"},
     "bagkur-primi-hesaplama": lambda: {
         # data/bagkur-prim-2026.json + brüt asgari ücret; Ocak 2027'de güncelle
         "kicker": "BAĞ-KUR PRİMİ 2026", "stat": "₺10.156,73",
         "sub": "en düşük aylık prim (%30,75) · indirimsiz 11.808,23 ₺"},
+    "otv-hesaplama": lambda: {
+        # data/otv-arac.json (CB K. 10115 + 7590 s.K. asgari ÖTV); karar değişirse güncelle
+        "kicker": "ARAÇ ÖTV HESAPLAMA 2026", "stat": "%25-220",
+        "sub": "1400 cm³'e kadar %70-90 · elektrikli %25-75 · asgari ÖTV 100.000 ₺"},
+    "gss-primi-hesaplama": lambda: {
+        # data/gss-prim-2026.json (CB K. 10602 %6) × brüt asgari ücret; Ocak 2027'de güncelle
+        "kicker": "GSS PRİMİ 2026", "stat": "₺1.981,80",
+        "sub": "aylık prim (%6) · kişi başı gelir 11.010 ₺ altıysa devlet öder"},
     "vergi-borcu-sorgulama": lambda: {
         # CB Kararı 10556 (RG 13.11.2025) %3,7; oran değişirse güncelle
         "kicker": "VERGİ BORCU SORGULAMA", "stat": "%3,7",

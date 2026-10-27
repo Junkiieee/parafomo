@@ -106,7 +106,7 @@ Tablodan çıkan ders açık: 12 aydan 48 aya geçmek aylık taksiti yaklaşık 
 
 ## Yapılandırmadan önce sorman gereken 5 soru
 
-1. **Asgari ödemeyi gerçekten karşılayamıyor muyum?** Sadece asgariyi ödeyebiliyorsan bile kartın akdi faiz oranı, yapılandırma faizinden düşük olabilir. Asgari ödemenin bedelini [kredi kartı asgari ödeme rehberinde](/blog/kredi-karti-asgari-odeme-tutari-2026) hesapladık.
+1. **Asgari ödemeyi gerçekten karşılayamıyor muyum?** Sadece asgariyi ödeyebiliyorsan bile kartın akdi faiz oranı, yapılandırma faizinden düşük olabilir. Asgari ödemenin bedelini [kredi kartı asgari ödeme rehberinde](/blog/kredi-karti-asgari-odeme-tutari-2026) hesapladık; kartın güncel azami faizini ve borcun kaç ayda biteceğini [kredi kartı faiz hesaplama](/kredi-karti-faiz-hesaplama/) aracıyla karşılaştır.
 2. **Toplam geri ödeme ne kadar?** Aylık taksite değil, toplam rakama bak.
 3. **Kartıma ne olacak?** Limitin düşürülüp düşürülmeyeceğini ya da kartın kapanıp kapanmayacağını yazılı sor.
 4. **Erken kapatırsam ne olur?** Kalan faizden indirim yapıldığını teyit et.

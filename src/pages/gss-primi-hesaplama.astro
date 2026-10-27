@@ -1,0 +1,346 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import au from '../../data/asgari-ucret.json';
+import g from '../../data/gss-prim-2026.json';
+
+// Genel sağlık sigortası (GSS) primi — 5510 s.K. md. 60/1-g (başka güvencesi olmayan vatandaş). Prime esas kazanç =
+// PEK alt sınırı × 30 = brüt asgari ücret (md. 82, 6824 s.K. 2017’den beri tek kademe). Oran: kanunda %3 (md. 81/1-f),
+// CB Kararı 10602 (RG 21.11.2025) ile 1 Aralık 2025’ten %6. Gelir testinde kişi başı aylık gelir brüt asgari ücretin
+// 1/3’ünden azsa md. 60/1-c-1 → prim devletten. Brüt asgari ücret data/asgari-ucret.json → Ocak’ta kendiliğinden döner.
+
+const Y: number = au.guncel.yil;
+const HEDEF = Y + 1;
+const BRUT: number = au.guncel.brut;
+const ORAN: number = g.oran;
+const r2 = (n: number) => Math.round(n * 100 + 1e-6) / 100;
+const PRIM = r2((BRUT * ORAN) / 100);
+const ESIK = r2(BRUT / 3);
+const fmt2 = (n: number) =>
+  new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+const pc = (n: number) => '%' + n.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
+const tl2 = (n: number) => `${fmt2(n)} ₺`;
+
+type Yeni = { yil: number; brut?: number; net?: number } | null;
+const yeni = au.yeni as Yeni;
+const yeniBrut = yeni && yeni.yil === HEDEF ? (yeni.brut ?? (yeni.net ? r2(yeni.net / 0.85) : null)) : null;
+const SENARYO = [20, 25, 30].map((a) => {
+  const b = r2(BRUT * (1 + a / 100));
+  return { artis: a, brut: b, prim: r2((b * ORAN) / 100), esik: r2(b / 3) };
+});
+
+const AY = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const tarih = (s: string) => {
+  const d = new Date(s + 'T12:00:00Z');
+  return `${d.getUTCDate()} ${AY[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+};
+const dogrulama = tarih(g.dogrulama);
+
+const gelecekCevap = yeniBrut
+  ? `${HEDEF} brüt asgari ücreti ${tl2(yeniBrut)} olarak açıklandı. Oran ${pc(ORAN)} kalırsa ${HEDEF}’de aylık GSS primi ${tl2(r2((yeniBrut * ORAN) / 100))} olur; devletin ödediği gelir sınırı kişi başı ${tl2(r2(yeniBrut / 3))}’ye çıkar.`
+  : `GSS primi brüt asgari ücrete bağlı olduğu için ${HEDEF} tutarı Aralık’ta açıklanacak asgari ücretle belli olur. Oran ${pc(ORAN)} kalırsa asgari ücret %25 artarsa aylık prim yaklaşık ${tl2(SENARYO[1].prim)}, %30 artarsa ${tl2(SENARYO[2].prim)} olur. Bu bir senaryodur, tahmin değildir.`;
+
+const faq = [
+  {
+    q: `GSS primi ne kadar ${Y}?`,
+    a: `${Y}’da genel sağlık sigortası (GSS) primi aylık ${tl2(PRIM)}. Tutar, brüt asgari ücretin (${tl2(BRUT)}) ${pc(ORAN)}’sıdır. Oran 1 Aralık 2025’te Cumhurbaşkanı Kararı ile %3’ten %6’ya çıktı; Ocak ${Y}’da asgari ücret artınca prim de arttı. Yıllık tutar ${tl2(PRIM * 12)}.`,
+  },
+  {
+    q: 'GSS primini kimler öder?',
+    a: 'Çalışmayan, emekli olmayan, SGK’lı bir yakınının (eş, anne-baba) bakmakla yükümlü olduğu kişi sayılmayan ve başka bir güvencesi bulunmayan Türk vatandaşları (5510 sayılı Kanun md. 60/1-g). Gelir testinde aile içi kişi başı geliri brüt asgari ücretin üçte birinden az çıkanların primini devlet öder.',
+  },
+  {
+    q: `GSS primini devlet kimin için öder (${Y} gelir sınırı)?`,
+    a: `Gelir testinde aile içindeki kişi başı aylık gelir brüt asgari ücretin üçte birinden azsa, yani ${Y}’da ${tl2(ESIK)}’den azsa prim devlet tarafından ödenir. Ayrıca 18 yaşından küçük çocuklar ile liseden mezun olup 20, yükseköğrenimden mezun olup 25 yaşını doldurmamış gençler mezuniyetten sonraki 2 yıl boyunca gelir testi yapılmadan bu kapsamda sayılır.`,
+  },
+  {
+    q: 'Gelir testi nedir, nereye başvurulur?',
+    a: 'Gelir testi, aile içindeki kişi başı gelirin hesaplandığı başvurudur; ikamet edilen yerdeki Sosyal Yardımlaşma ve Dayanışma Vakfı’na yapılır. SGK’nın tescil bildiriminden itibaren 1 ay içinde başvurup geliri üçte bir sınırının altında çıkanların bu sürede ödediği primler faizsiz iade ya da mahsup edilir (5510 md. 82). Geç başvuranlar için başvuruya kadar oluşan borç kalır.',
+  },
+  {
+    q: 'GSS prim oranı neden %6 oldu?',
+    a: '5510 sayılı Kanun’un 81. maddesi bu gruptaki GSS oranını %3 olarak belirler ve Cumhurbaşkanına oranı %12’ye kadar artırma yetkisi verir. 21 Kasım 2025 tarihli Resmî Gazete’de yayımlanan 10602 sayılı Cumhurbaşkanı Kararı ile oran 1 Aralık 2025’ten itibaren %6 oldu; aylık prim 780,17 ₺’den 1.560,33 ₺’ye çıktı.',
+  },
+  {
+    q: `${HEDEF}’de GSS primi ne kadar olacak?`,
+    a: gelecekCevap,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Hesaplama Araçları', url: '/hesaplama-araclari/' },
+  { name: `GSS Primi ${Y}`, url: '/gss-primi-hesaplama/' },
+];
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: `Genel sağlık sigortası (GSS) primi ${Y}`,
+  description: `5510 sayılı Kanun md. 60/1-g kapsamındaki genel sağlık sigortalıları için ${Y} aylık prim (${tl2(PRIM)}), prim oranı (${pc(ORAN)}), prime esas kazanç (brüt asgari ücret ${tl2(BRUT)}) ve devletin ödediği gelir sınırı (${tl2(ESIK)}).`,
+  url: 'https://parafomo.com/gss-primi-hesaplama/',
+  dateModified: g.dogrulama,
+  creator: { '@type': 'Organization', name: 'ParaFOMO', url: 'https://parafomo.com/' },
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+};
+---
+
+<BaseLayout
+  title={`GSS Primi ${Y} Ne Kadar? Aylık ${fmt2(PRIM)} ₺, Gelir Testi`}
+  description={`GSS primi ${Y}: aylık ${tl2(PRIM)} (brüt asgari ücretin ${pc(ORAN)}’sı). Kişi başı geliri ${tl2(ESIK)} altındaysa devlet öder. Hesaplama ve ${HEDEF} senaryosu.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+  image="/og/gss-primi-hesaplama.png"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(dataset)} />
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">SGK · Genel sağlık sigortası</p>
+      <h1>GSS Primi {Y}: Ne Kadar, Kim Öder?</h1>
+      <p class="lede">
+        Başka bir güvencesi olmayan vatandaşların ödediği genel sağlık sigortası primi {Y}’da
+        <strong>aylık {tl2(PRIM)}</strong>. Aile içi kişi başı geliriniz <strong>{tl2(ESIK)}</strong>’den azsa
+        primi devlet öder. Hanenizin gelirini girin, prim ödeyip ödemeyeceğinizi görün.
+      </p>
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="kpi-label">Aylık GSS primi</span>
+        <span class="kpi-val">{tl2(PRIM)}<small>/ay</small></span>
+        <span class="kpi-sub">{pc(ORAN)} × brüt asgari ücret</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Devletin ödediği sınır</span>
+        <span class="kpi-val">{tl2(ESIK)}</span>
+        <span class="kpi-sub">kişi başı aylık gelir (asgari ücretin 1/3’ü)</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Yıllık prim</span>
+        <span class="kpi-val">{tl2(PRIM * 12)}</span>
+        <span class="kpi-sub">12 ay · oran 1 Aralık 2025’ten {pc(ORAN)}</span>
+      </div>
+    </div>
+
+    <section class="table-block" id="hesaplama">
+      <h2>GSS primi hesaplama (gelir testi)</h2>
+      <p class="table-intro">
+        Gelir testi, hanede yaşayan eş, çocuk ve birlikte yaşanan anne-babanın gelirlerini toplar ve kişi sayısına
+        böler. Aşağıdaki hesap kanunun eşiğini uygular; resmî sonucu Sosyal Yardımlaşma ve Dayanışma Vakfı belirler.
+      </p>
+      <div class="calc-grid">
+        <form class="calc-inputs" autocomplete="off" onsubmit="return false">
+          <label>
+            <span>Hanenin toplam aylık geliri (₺)</span>
+            <input type="number" id="in-gelir" value="20000" min="0" step="100" inputmode="decimal" />
+            <em class="hint">Maaş, emekli aylığı, kira, faiz gibi tüm düzenli gelirler.</em>
+          </label>
+          <label>
+            <span>Hanedeki kişi sayısı</span>
+            <input type="number" id="in-kisi" value="3" min="1" max="20" step="1" inputmode="numeric" />
+          </label>
+          <label>
+            <span>Borç hesabı için ay sayısı</span>
+            <input type="number" id="in-ay" value="12" min="1" max="120" step="1" inputmode="numeric" />
+            <em class="hint">Ödenmemiş ay sayısı; gecikme cezası ve zammı hariç ana prim.</em>
+          </label>
+        </form>
+
+        <div class="calc-results" aria-live="polite">
+          <div class="result-main">
+            <span class="result-label">Aylık ödeyeceğiniz GSS primi</span>
+            <span class="result-value" id="out-prim">0,00 ₺</span>
+          </div>
+          <div class="result-split">
+            <div class="split-item"><span class="split-label">Kişi başı aylık gelir</span><span class="split-val" id="out-kb">—</span></div>
+            <div class="split-item"><span class="split-label">Devletin ödediği sınır</span><span class="split-val">{tl2(ESIK)}</span></div>
+            <div class="split-item"><span class="split-label">Seçilen ay için ana prim</span><span class="split-val" id="out-borc">—</span></div>
+          </div>
+          <p class="result-note" id="out-note"></p>
+        </div>
+      </div>
+      <p class="disclaimer">
+        Hesap {Y} brüt asgari ücreti ({tl2(BRUT)}) ve {pc(ORAN)} oranını kullanır. Gelir testinde taşınır-taşınmaz mal
+        ve harcamalar da dikkate alınabilir; kesin sonuç vakfın tespitidir. Borç ve son ödeme günü e-Devlet’te SGK
+        “Genel Sağlık Sigortası Tescil ve Prim Borcu Sorgulama” hizmetindedir. Son kontrol: {dogrulama}.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>GSS primi yıllara göre</h2>
+      <p class="table-intro">Prime esas kazanç brüt asgari ücrettir; oran Aralık 2025’te iki katına çıktı.</p>
+      <div class="table-wrap">
+        <table class="rate-table">
+          <thead><tr><th>Dönem</th><th>Brüt asgari ücret</th><th>Oran</th><th>Aylık prim</th></tr></thead>
+          <tbody>
+            {g.gecmis.map((s) => <tr><td>{s.donem}</td><td>{tl2(s.brut)}</td><td>{pc(s.oran)}</td><td>{tl2(s.prim)}</td></tr>)}
+            <tr><td><strong>{Y}</strong></td><td>{tl2(BRUT)}</td><td>{pc(ORAN)}</td><td><strong>{tl2(PRIM)}</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="table-block" id="gss-primi-2027">
+      <h2>{HEDEF} GSS primi ne kadar olacak?</h2>
+      {yeniBrut ? (
+        <p class="table-intro">
+          {HEDEF} brüt asgari ücreti <strong>{tl2(yeniBrut)}</strong> olarak açıklandı. Oran {pc(ORAN)} kalırsa
+          {HEDEF}’de aylık GSS primi <strong>{tl2(r2((yeniBrut * ORAN) / 100))}</strong>, devletin ödediği gelir sınırı
+          kişi başı {tl2(r2(yeniBrut / 3))} olur.
+        </p>
+      ) : (
+        <>
+          <p class="table-intro">
+            {HEDEF} primi Aralık’ta açıklanacak asgari ücrete bağlı. Tablo farklı artış oranlarında ({pc(ORAN)} oranıyla)
+            aylık primi ve gelir sınırını gösterir; tahmin değil, senaryodur. Asgari ücret açıklandığı gün bu bölüm
+            resmî rakamla güncellenir.
+          </p>
+          <div class="table-wrap">
+            <table class="rate-table">
+              <thead><tr><th>Asgari ücret artışı</th><th>{HEDEF} brüt asgari ücret</th><th>Aylık GSS primi</th><th>Devletin ödediği sınır</th></tr></thead>
+              <tbody>
+                {SENARYO.map((s) => <tr><td>%{s.artis}</td><td>{tl2(s.brut)}</td><td><strong>{tl2(s.prim)}</strong></td><td>{tl2(s.esik)}</td></tr>)}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+    </section>
+
+    <section class="prose-block">
+      <h2>GSS primi kimleri kapsar, kimleri kapsamaz?</h2>
+      <ul>
+        <li><strong>Öder:</strong> çalışmayan, emekli olmayan, SGK’lı bir yakınının bakmakla yükümlü olduğu kişi sayılmayan ve başka ülkede sağlık sigortası olmayan vatandaşlar (5510 md. 60/1-g).</li>
+        <li><strong>Devlet öder:</strong> gelir testinde kişi başı aylık geliri {tl2(ESIK)}’den az çıkanlar; 18 yaşından küçük çocuklar; liseden mezun olup 20, yükseköğrenimden mezun olup 25 yaşını geçmeyenler mezuniyetten sonra 2 yıl (5510 md. 60/1-c-1).</li>
+        <li><strong>Ayrıca ödemez:</strong> SSK’lı (4/a), Bağ-Kur’lu (4/b) veya memur (4/c) çalışanlar ve emekliler — GSS primi kendi primlerinin içindedir. Bağ-Kur’lu esnafın primi için <a href="/bagkur-primi-hesaplama/">Bağ-Kur primi hesaplama</a>.</li>
+        <li><strong>Süre:</strong> SGK tescil bildiriminden itibaren 1 ay içinde gelir testine başvurup sınırın altında çıkanların bu sürede ödediği primler faizsiz iade edilir. Geç başvuruda başvuruya kadar biriken borç kalır.</li>
+        <li><strong>Borç:</strong> ödenmeyen primler e-Devlet’te SGK “Genel Sağlık Sigortası Tescil ve Prim Borcu Sorgulama” hizmetinde görülür; gecikme cezası ve zammı eklenir (5510 md. 89). Tüm kamu borçları için <a href="/vergi-borcu-sorgulama/">vergi ve SGK borcu sorgulama</a>.</li>
+      </ul>
+      <p class="cta-line">
+        Prim tabanı → <a href="/asgari-ucret-hesaplama/">asgari ücret hesaplama</a> · emeklilik şartları →
+        <a href="/emeklilik-hesaplama/">emeklilik hesaplama</a> · çalışanın SGK kesintisi →
+        <a href="/net-maas-hesaplama/">net maaş hesaplama</a> · tüm hesaplayıcılar →
+        <a href="/hesaplama-araclari/">hesaplama araçları</a>.
+      </p>
+      <p class="source-note">
+        Kaynak: 5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu md. 60, 81, 82, 89
+        (<a href={g.kaynak[0]} rel="noopener">mevzuat.gov.tr</a>); {g.karar.no} sayılı Cumhurbaşkanı Kararı
+        (Resmî Gazete {tarih(g.karar.rg)}, sayı {g.karar.rgSayi}; yürürlük {tarih(g.karar.yururluk)} —
+        <a href={g.kaynak[1]} rel="noopener">Bloomberg HT</a>, <a href={g.kaynak[2]} rel="noopener">Cott Group</a>);
+        brüt asgari ücret {tl2(BRUT)} (Resmî Gazete). Son kontrol: {dogrulama}.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+    <Newsletter />
+  </div>
+  <script is:inline define:vars={{ D: { prim: PRIM, esik: ESIK } }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf2 = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const tl = (n) => nf2.format(n) + ' ₺';
+      const r2 = (n) => Math.round(n * 100 + 1e-6) / 100;
+      function update() {
+        let gelir = parseFloat(String($('in-gelir').value).replace(',', '.'));
+        if (!isFinite(gelir) || gelir < 0) gelir = 0;
+        let kisi = parseInt($('in-kisi').value, 10);
+        if (!isFinite(kisi) || kisi < 1) kisi = 1;
+        let ay = parseInt($('in-ay').value, 10);
+        if (!isFinite(ay) || ay < 1) ay = 1;
+        const kb = r2(gelir / kisi);
+        const devlet = kb < D.esik;
+        $('out-kb').textContent = tl(kb);
+        $('out-prim').textContent = devlet ? '0,00 ₺' : tl(D.prim);
+        $('out-borc').textContent = devlet ? '0,00 ₺' : tl(r2(D.prim * ay));
+        $('out-note').textContent = devlet
+          ? 'Kişi başı geliriniz sınırın altında: gelir testi yaptırırsanız priminiz devlet tarafından ödenir. Test yaptırmazsanız prim tahakkuk eder.'
+          : 'Kişi başı geliriniz sınırın ' + tl(r2(kb - D.esik)) + ' üzerinde: aylık ' + tl(D.prim) + ' prim ödersiniz (SGK’lı bir yakınınızın bakmakla yükümlü olduğu kişi değilseniz).';
+      }
+      ['in-gelir', 'in-kisi', 'in-ay'].forEach((id) => { $(id).addEventListener('input', update); });
+      update();
+    })();
+  </script>
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem;
+      font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem;
+    }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 660px; margin: 0 auto; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin: 0 0 1rem; }
+    .kpi { display: flex; flex-direction: column; gap: 0.15rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-xs); }
+    .kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .kpi-val { font-family: var(--font-serif); font-size: clamp(1.35rem, 1.15rem + 1vw, 1.8rem); font-weight: 700; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .kpi-val small { font-size: 0.55em; font-weight: 600; color: var(--text-soft); margin-left: 0.1rem; }
+    .kpi-sub { font-size: 0.78rem; color: var(--text-soft); line-height: 1.35; }
+
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft);
+    }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; line-height: 1.4; }
+    .calc-inputs input {
+      font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%; min-height: 2.75rem;
+    }
+    .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+
+    .calc-results {
+      display: flex; flex-direction: column; justify-content: center; gap: 1rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; font-variant-numeric: tabular-nums; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; font-variant-numeric: tabular-nums; text-align: right; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; line-height: 1.45; }
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1rem 0 0; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.55; }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0.4rem 0 0; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+    .rate-table :global(th), .rate-table :global(td) { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .rate-table :global(th) { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block ul { padding-left: 1.2rem; }
+    .prose-block li { margin-bottom: 0.4rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+    .prose-block p.source-note { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.65; margin: 0.6rem 0 0; }
+
+    @media (max-width: 720px) {
+      .kpi-row { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>

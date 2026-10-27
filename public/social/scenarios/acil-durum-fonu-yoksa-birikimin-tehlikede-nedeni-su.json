@@ -1,0 +1,59 @@
+{
+  "slug": "acil-durum-fonu-yoksa-birikimin-tehlikede-nedeni-su",
+  "title": "Acil durum fonu yoksa birikimin tehlikede, nedeni şu",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Acil durum fonunu yedek lastik metaforuyla anlatan kısa video: beklenmedik gider çıkınca yatırımı zararına bozmamak için aylık giderin yaklaşık üç katını ayrı tutmak.",
+  "tags": [
+    "acil durum fonu",
+    "birikim",
+    "kişisel finans",
+    "yatırım",
+    "tasarruf",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Acil durum fonun yoksa zengin değilsin.",
+      "visual": {
+        "type": "object",
+        "query": "full leather wallet"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Araba yedek lastiksiz de gider, ta ki patlayana kadar; acil durum fonu da o lastik.",
+      "visual": {
+        "type": "object",
+        "query": "spare tire car"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama çoğu kişi yatırım yapar, sonra bozulan çamaşır makinesi için hisselerini zararına satar.",
+      "visual": {
+        "type": "object",
+        "query": "washing machine"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çözüm: aylık giderinin yaklaşık üç katını ayrı, kolay çekilen bir hesapta tut, yatırıma sonra geç.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sırada bu fonu nereye koyacağın var. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "full leather wallet"
+      }
+    }
+  ]
+}

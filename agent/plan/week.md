@@ -28,7 +28,7 @@ Yeni sayfa = `src/data/tools.ts` kaydı (k: anahtar kelimeler) + Footer TOOL_LIN
 `image="/og/<slug>.png"` + FAQPage + ilgili 2 sayfadan metin içi link → `npm run build` → `bash scripts/deploy-push.sh`
 → `python3 scripts/wait-live.py https://parafomo.com/<slug>/` → keyword-map'e `[x]`.
 
-- [ ] T4b (B261022-1 — TARİHLİ, 23 Ekim sabahı) — **TCMB kararı sonrası kontrol** · /blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler/
+- [x] T4b (B261022-1 — TARİHLİ, 23 Ekim sabahı) — → karar %37→%36 (−100 bp) policy-decisions.py ünlü uyumu hatası yüzünden yazılamamıştı (’ya eki) → regex düzeltildi, tcmb-2026.json güncel; yazı geçmiş zamana, SSS güncel, Sıradaki 10 Aralık; canlıda kutu “Açıklandı: %36 (indirim)” · commit 6c96d2b · 2026-10-23 — **TCMB kararı sonrası kontrol** · /blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler/
   üstünde otomatik sonuç kutusu "açıklandı" + sonucBaslik görünüyor mu, /tcmb-faiz-takvimi kararı gösteriyor mu (yoksa
   `logs/policy-decisions.log`); SSS'yi geçmiş zamana çevir ("Ekim 2026'da TCMB faiz indirecek mi?" → gerçekleşen karar),
   "Son durum" bölümünü "Karar öncesi beklenti" olarak yeniden adlandır, `updatedDate`. ELLE kutu ekleme. Sıradaki PPK
@@ -46,7 +46,7 @@ Yeni sayfa = `src/data/tools.ts` kaydı (k: anahtar kelimeler) + Footer TOOL_LIN
   (kontrol > 30 gün → UYARI). Başlık: "Emekli Promosyonu 2026: Banka Banka Güncel Tutarlar (<ay>)". /en-dusuk-emekli-maasi
   ve /emekli-zammi-hesaplama'dan metin içi link. Tavsiye dili yok ("en iyi banka" deme; "en yüksek tutar" tablo sırası).
   · Kabul: canlıda 200; her satırda kaynak linki + kontrol tarihi; hesaplayıcı çalışır; FAQPage; health.py satırı.
-- [ ] T18 (B261015-1) — **/emeklilik-hesaplama yeni araç (ne zaman emekli olurum)** · hedef: emeklilik yaşı (25,5) +
+- [x] T18 (B261015-1) — → canlı https://parafomo.com/emeklilik-hesaplama/ (5510 md.28/geç.9/geç.95 mevzuat.gov.tr PDF + SGK Genelgesi 2023/13 EYT tablosu; 4/a üç dönem tam, 4/b-4/c 1999 sonrası; EYT Bağ-Kur/memur tablosu doğrulanamadı → “e-Devlet’ten kontrol edin”; 3 örnek profil sayfada, genelge örneği (kadın 8.6.1998 → 20 yıl+5975 gün) tutuyor; 8 senaryo node testi; FAQPage + hizmet dökümü bölümü; Footer/tools.ts/OG + /en-dusuk-emekli-maasi ve /bagkur-primi-hesaplama linki) · commit be49331 · 2026-10-23 — **/emeklilik-hesaplama yeni araç (ne zaman emekli olurum)** · hedef: emeklilik yaşı (25,5) +
   emeklilik hesaplama (23,7) + ne zaman emekli olurum (14,3) + sgk hizmet dökümü (30,1 — nasıl alınır bölümü).
   Girdi: doğum tarihi, cinsiyet, ilk sigorta girişi, statü (4/a SSK, 4/b Bağ-Kur, 4/c memur), prim günü. Çıktı: yaş +
   prim günü + sigortalılık süresi şartı ve tahmini emeklilik tarihi. Kurallar: 08.09.1999 öncesi (EYT — 7438 s.K. ile yaş
@@ -69,7 +69,8 @@ Yeni sayfa = `src/data/tools.ts` kaydı (k: anahtar kelimeler) + Footer TOOL_LIN
   parası. Önbellekten oku (yeniden çekme). · Kabul: yeniden çalıştırınca 22 ayar bilezik / çeyrek altın YENI_YAZI değil;
   emekli promosyon listede (T17 canlıysa BEKLE); commit.
 - [ ] T21 (B261022-1 — TARİHLİ, 29 Ekim sabahı) — **Fed 28 Ekim sonrası kontrol** · 26 Ekim'de daily-content'in yazdığı
-  Fed önizleme yazısında (`fed-faiz-karari-28-ekim-2026-…`) `sonuc: "fed:2026-10-28"` var mı (yoksa 27 Ekim'de ekle);
+  Fed önizleme yazısında (`fed-faiz-karari-28-ekim-2026-…`) `sonuc: "fed:2026-10-28"` var mı (yoksa 27 Ekim'de ekle — ✅ 27 Ekim
+  kontrol edildi: `sonuc` + `sonucBaslik` ({karar}/{bant}) yazıda var);
   29 Ekim: kutu "açıklandı" + /fed-faiz-takvimi kararı gösteriyor mu (yoksa `logs/policy-decisions.log`); SSS geçmiş
   zamana, `updatedDate`. Rakamı elle tahmin ETME. · Kabul: canlıda kutu + /fed-faiz-takvimi güncel.
 - [ ] T13 (zam sezonu — TARİHLİ, 3 Kasım sonrası · Kaan ONAYLADI) — **YD kesinleşme kontrolü:** 3 Kasım'da release-watch.py
@@ -83,7 +84,7 @@ Yeni sayfa = `src/data/tools.ts` kaydı (k: anahtar kelimeler) + Footer TOOL_LIN
   2027'de kapanınca otomatik arşivlenir). Aralık: MTV/harç/damga için CB kararı çıkarsa → `uygulananOrani` (MTV,
   pasaport-harç sayfaları ve canlı yazı bu oranı kullanır). Her yazımdan sonra `python3 scripts/live-posts.py` → commit →
   `bash scripts/deploy-push.sh`. · Kabul: sayfalar canlıda doğru durumu gösterir.
-- [ ] T20 (keyword-map) — **/kredi-karti-faiz-hesaplama yeni araç** · hedef: kredi kartı faiz hesaplama (11,6) + kredi
+- [x] T20 (keyword-map) — → canlı https://parafomo.com/kredi-karti-faiz-hesaplama/ (TCMB azami oran tablosu Ekim 2026: <30 bin %3,25/%3,55 · 30-180 bin %3,75/%4,05 · >180 bin %4,25/%4,55; scripts/kredi-karti-faiz.py TCMB sayfasından okur, evds-update.sh Prş+Cum çağırır → aylık otomatik; asgari %20/%40 eşik 100 bin BDDK 11581; KKDF+BSMV; borç kaç ayda biter; FAQPage; iki blog yazısından link; OG kartı veriden) · commit 40f2d70 · 2026-10-23 — **/kredi-karti-faiz-hesaplama yeni araç** · hedef: kredi kartı faiz hesaplama (11,6) + kredi
   kartı faiz oranı (7,7). TCMB'nin GÜNCEL azami akdi/gecikme faiz oranları (TCMB duyurusu, tarihli; EVDS'te varsa veriden),
   borç × ay → faiz + KKDF %15 + BSMV %15, asgari ödeme yapılırsa borç kaç ayda biter tablosu. /blog/kredi-karti-asgari-
   odeme-tutari-2026 ve /blog/kredi-yapilandirma-2026-… yazılarından link. · Kabul: T17 ile aynı (veri dosyası + kaynak).
@@ -116,7 +117,7 @@ Yeni sayfa = `src/data/tools.ts` kaydı (k: anahtar kelimeler) + Footer TOOL_LIN
   · Kabul: listedeki her sayfa canlıda 2027 resmî rakamını gösterir; health.py temiz.
 
 ## Bakım / ürün
-- [ ] V3 (video kalitesi/özgünlük) — **Günlük konu kümesi kapısı** · V2 bulgusu (10-15): aynı gün aynı konudan iki video
+- [x] V3 (video kalitesi/özgünlük) — → viral-script.py kapısı: bugün (UTC) üretilen short-*/senaryo dosyaları + bugünkü blog kuyruğu konusundan ana varlık kümesi (8 küme) → prompt'a "bu kümelerin dışından seç" + üretilen başlık dolu kümeye düşerse yeniden dene (son denemede log + üretime devam; --topic ve veri formatları muaf). Viral 00:30'da yalnız blog konusunu görür, Manim 16:00 tüm günü görür. Dry: `--clusters --today 2026-10-21` → altın ×3 dosya, 10-20 altın ×2 yakalandı · commit c72838b · 2026-10-24 — **Günlük konu kümesi kapısı** · V2 bulgusu (10-15): aynı gün aynı konudan iki video
   → biri akışı alıyor, diğeri 0-13 izlenme; son günlerde altın 3 hatta aynı gün (10-21: altin-cetveli viral + altin-faizsiz
   Manim; 10-20: altin-dusse viral + altin-hesabi daily). `scripts/viral-script.py` konu seçimine kapı: bugün (UTC) diğer
   hatların yüklediği/planladığı videoların başlık+slug'ından ana varlık kümesini çıkar (altın/dolar/euro/borsa/kripto/

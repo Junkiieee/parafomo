@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-22T13:17+00:00",
+ "updated": "2026-10-27T21:06+00:00",
  "source": "halkarz.com",
  "items": {
   "pronet-guvenlik-hizmetleri-a-s": {
@@ -4340,6 +4340,184 @@
    },
    "first_seen": "2026-10-19"
   },
+  "flo-magazacilik-ve-pazarlama-a-s": {
+   "company": "Flo Mağazacılık ve Pazarlama A.Ş.",
+   "bist_code": "",
+   "slug": "flo-magazacilik-ve-pazarlama-a-s",
+   "link": "https://halkarz.com/flo-magazacilik-ve-pazarlama-a-s/",
+   "date_text": "",
+   "start": null,
+   "end": null,
+   "status": "Tarih Bekleniyor",
+   "price": "",
+   "distribution": "Eşit Dağıtım **",
+   "lot": "510.000.000 Lot",
+   "broker": "İş Yatırım Menkul Değerler A.Ş. Halk Yatırım Menkul Değerler A.Ş.",
+   "market": "Yıldız Pazar",
+   "first_trade": "",
+   "float_lot": "",
+   "float_pct": "",
+   "updated_src": "26.10.2026 15:20",
+   "details": {
+    "sekil": {
+     "items": [
+      "Sermaye Artırımı : 510.000.000 Lot"
+     ],
+     "source": "Taslak İzahname, Sayfa 1."
+    },
+    "fon_kullanim": {
+     "items": [
+      "%45-55 Yurt içi ve yurt dışı mağaza açılışları, mevcut mağaza ağı modernizasyonu ve teknolojileri yatırımları",
+      "%45-55 İşletme sermayesi"
+     ],
+     "source": "Taslak İzahname, Sayfa 406."
+    },
+    "satis_yontemi": {
+     "items": [
+      "Sabit Fiyatla Talep Toplama",
+      "En İyi Gayret Aracılığı"
+     ],
+     "source": ""
+    },
+    "fiyat_istikrari": {
+     "items": [
+      "(İş Yatırım Menkul Değerler A.Ş.)"
+     ],
+     "source": "Taslak İzahname, Sayfa 354."
+    },
+    "satmama": {
+     "items": [
+      "1 Yıl, İhraççı",
+      "1 Yıl, Ortaklar"
+     ],
+     "source": "Taslak İzahname, Sayfa 356."
+    },
+    "halka_aciklik": {
+     "items": [
+      "%15,9"
+     ],
+     "source": "Taslak İzahname, Sayfa 333."
+    },
+    "finansal": {
+     "periods": [
+      "2026/6",
+      "2025",
+      "2024"
+     ],
+     "rows": [
+      {
+       "label": "Hasılat",
+       "values": [
+        "31,4 Milyar TL",
+        "79,8 Milyar TL",
+        "95,9 Milyar TL"
+       ]
+      },
+      {
+       "label": "Brüt Kâr",
+       "values": [
+        "12,4 Milyar TL",
+        "28,6 Milyar TL",
+        "39,1 Milyar TL"
+       ]
+      }
+     ]
+    }
+   },
+   "first_seen": "2026-10-26"
+  },
+  "dervisoglu-bakliyat-a-s": {
+   "company": "Dervişoğlu Bakliyat A.Ş.",
+   "bist_code": "",
+   "slug": "dervisoglu-bakliyat-a-s",
+   "link": "https://halkarz.com/dervisoglu-bakliyat-a-s/",
+   "date_text": "",
+   "start": null,
+   "end": null,
+   "status": "Tarih Bekleniyor",
+   "price": "",
+   "distribution": "Eşit Dağıtım **",
+   "lot": "183.750.000 Lot",
+   "broker": "Global Menkul Değerler A.Ş.",
+   "market": "",
+   "first_trade": "",
+   "float_lot": "",
+   "float_pct": "",
+   "updated_src": "27.10.2026 16:06",
+   "details": {
+    "sekil": {
+     "items": [
+      "Sermaye Artırımı : 135.000.000 Lot",
+      "Ortak Satışı : 48.750.000 Lot"
+     ],
+     "source": "Taslak İzahname, Sayfa 1."
+    },
+    "fon_kullanim": {
+     "items": [
+      "%50-60 Yeni tesis yatırımı ile GES yatırımı",
+      "%40-50 İşletme sermayesi"
+     ],
+     "source": "Taslak İzahname, Sayfa 201."
+    },
+    "satis_yontemi": {
+     "items": [
+      "Borsa'da Satış - Sabit Fiyatla Talep Toplama"
+     ],
+     "source": "T1-T2 Uygun."
+    },
+    "tahsisat": {
+     "items": [
+      "Yoktur"
+     ],
+     "source": "Tamamen Eşit Dağıtım."
+    },
+    "fiyat_istikrari": {
+     "items": [
+      "30 gün"
+     ],
+     "source": "Taslak İzahname, Sayfa 198."
+    },
+    "satmama": {
+     "items": [
+      "1 Yıl, İhraççı",
+      "1 Yıl, Ortaklar"
+     ],
+     "source": "Taslak İzahname, Sayfa 199."
+    },
+    "halka_aciklik": {
+     "items": [
+      "%25"
+     ],
+     "source": "Taslak İzahname, Sayfa 189."
+    },
+    "finansal": {
+     "periods": [
+      "2026/6",
+      "2025",
+      "2024"
+     ],
+     "rows": [
+      {
+       "label": "Hasılat",
+       "values": [
+        "4,0 Milyar TL",
+        "5,9 Milyar TL",
+        "3,8 Milyar TL"
+       ]
+      },
+      {
+       "label": "Brüt Kâr",
+       "values": [
+        "603,1 Milyon TL",
+        "612,0 Milyon TL",
+        "470,4 Milyon TL"
+       ]
+      }
+     ]
+    }
+   },
+   "first_seen": "2026-10-27"
+  },
   "sa-ra-enerji-insaat-tic-ve-san-a-s": {
    "company": "Şa-Ra Enerji İnşaat Tic. ve San. A.Ş.",
    "bist_code": "SARAE",
@@ -4494,7 +4672,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "saat-ve-saat-san-ve-tic-a-s": {
    "company": "Saat ve Saat San. ve Tic. A.Ş.",
@@ -4630,7 +4808,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "isvea-seramik-ve-banyo-urunleri-sanayi-a-s": {
    "company": "İsvea Seramik ve Banyo Ürünleri Sanayi A.Ş.",
@@ -4767,7 +4945,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "ekim-turizm-tic-ve-san-a-s": {
    "company": "(Intercity) Ekim Turizm Tic. ve San. A.Ş.",
@@ -4906,7 +5084,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "golda-gida-san-ve-tic-a-s": {
    "company": "Golda Gıda San. ve Tic. A.Ş.",
@@ -5044,7 +5222,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "orzaks-ilac-ve-kimya-san-tic-a-s": {
    "company": "(Orzax) Orzaks İlaç ve Kimya San. Tic. A.Ş.",
@@ -5192,7 +5370,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "soho-giyim-ve-enerji-a-s": {
    "company": "Soho Giyim ve Enerji A.Ş.",
@@ -5329,7 +5507,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "beta-enerji-ve-teknoloji-a-s": {
    "company": "Beta Enerji ve Teknoloji A.Ş.",
@@ -5477,7 +5655,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "ekinciler-demir-ve-celik-sanayi-a-s": {
    "company": "Ekinciler Demir ve Çelik Sanayi A.Ş.",
@@ -5636,7 +5814,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "enpara-bank-a-s": {
    "company": "Enpara Bank A.Ş.",
@@ -5657,7 +5835,7 @@
    "float_pct": "",
    "updated_src": "16.09.2026 17:48",
    "details": {},
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "agaoglu-avrasya-gayrimenkul-yatirim-ortakligi-a-s": {
    "company": "Ağaoğlu Avrasya Gayrimenkul Yatırım Ortaklığı A.Ş.",
@@ -5805,7 +5983,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "metropal-kurumsal-hizmetler-a-s": {
    "company": "(MetropolCard) Metropal Kurumsal Hizmetler A.Ş.",
@@ -5965,7 +6143,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "luxera-gayrimenkul-yatirim-ortakligi-a-s": {
    "company": "Luxera Gayrimenkul Yatırım Ortaklığı A.Ş.",
@@ -6115,7 +6293,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "gentas-kimya-san-ve-tic-pazarlama-a-s": {
    "company": "Gentaş Kimya San. ve Tic. Pazarlama A.Ş.",
@@ -6267,7 +6445,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "savur-gayrimenkul-yatirim-ortakligi-a-s": {
    "company": "Savur Gayrimenkul Yatırım Ortaklığı A.Ş.",
@@ -6416,7 +6594,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "empa-elektronik-san-ve-tic-a-s": {
    "company": "Empa Elektronik San. ve Tic. A.Ş.",
@@ -6558,7 +6736,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "ata-turizm-isletmecilik-tasimacilik-madencilik-kuyumculuk-san-ve-dis-ticaret-a-s": {
    "company": "Ata Turizm İşletmecilik Taşımacılık Madencilik Kuyumculuk San. ve Dış Ticaret A.Ş.",
@@ -6700,7 +6878,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "best-brands-grup-enerji-yatirim-a-s": {
    "company": "Best Brands Grup Enerji Yatırım A.Ş.",
@@ -6836,7 +7014,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "akhan-un-fabrikasi-ve-tarim-urunleri-gida-sanayi-tic-a-s": {
    "company": "Akhan Un Fabrikası ve Tarım Ürünleri Gıda Sanayi Tic. A.Ş.",
@@ -6969,7 +7147,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "netcad-yazilim-a-s": {
    "company": "Netcad Yazılım A.Ş.",
@@ -7111,7 +7289,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "ucay-muhendislik-enerji-ve-iklimlendirme-teknolojileri-a-s": {
    "company": "Üçay Mühendislik Enerji ve İklimlendirme Teknolojileri A.Ş.",
@@ -7254,7 +7432,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "formul-plastik-ve-metal-sanayi-a-s": {
    "company": "Formül Plastik ve Metal Sanayi A.Ş.",
@@ -7388,7 +7566,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "z-gayrimenkul-yatirim-ortakligi-a-s": {
    "company": "Z Gayrimenkul Yatırım Ortaklığı A.Ş.",
@@ -7516,7 +7694,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "meysu-gida-san-ve-tic-a-s": {
    "company": "Meysu Gıda San. ve Tic. A.Ş.",
@@ -7650,7 +7828,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "arf-bio-yenilenebilir-enerji-uretim-a-s": {
    "company": "Arf Bio Yenilenebilir Enerji Üretim A.Ş.",
@@ -7777,7 +7955,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "zeray-gayrimenkul-yatirim-ortakligi-a-s": {
    "company": "Zeray Gayrimenkul Yatırım Ortaklığı A.Ş.",
@@ -7906,7 +8084,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "pasifik-holding-a-s": {
    "company": "Pasifik Holding A.Ş.",
@@ -8046,7 +8224,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   },
   "vakif-faktoring-a-s": {
    "company": "Vakıf Faktoring A.Ş.",
@@ -8174,7 +8352,7 @@
      }
     ]
    },
-   "first_seen": "2026-10-22"
+   "first_seen": "2026-10-27"
   }
  }
 }

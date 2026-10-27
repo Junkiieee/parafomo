@@ -4,6 +4,27 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-10-27 — Geçici Vergi Nedir? 2026 Dönemleri, Oranı ve Beyan Tarihleri
+
+**Yayınlanan yazı:** [Geçici Vergi Nedir? 2026 Dönemleri, Oranı ve Beyan Tarihleri](/blog/gecici-vergi-nedir-2026-donemleri-orani-beyan-tarihleri)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — "geçici vergi" hacim 46,1; 3. dönem son günü 17 Kasım 2026)
+
+---
+
+## 2026-10-26 — Fed Faiz Kararı 28 Ekim 2026: Beklenti, Senaryolar ve Etkisi
+
+**Yayınlanan yazı:** [Fed Faiz Kararı 28 Ekim 2026: Beklenti, Senaryolar ve Etkisi](/blog/fed-faiz-karari-28-ekim-2026-beklentiler)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md 📅 26 Ekim satırı — "fed faiz kararı" hacim 80,9; takvimdeki 28 Ekim 🔴 FOMC ile örtüşüyor)
+
+---
+
+## 2026-10-23 — TEFAS Nedir, Fon Nasıl Alınır? 2026 Adım Adım Rehber
+
+**Yayınlanan yazı:** [TEFAS Nedir, Fon Nasıl Alınır? 2026 Adım Adım Rehber](/blog/tefas-nedir-fon-nasil-alinir)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — "tefas" hacim 160 + "fon getirileri" 14)
+
+---
+
 ## 2026-10-22 — Findeks Kredi Notu Nedir, Nasıl Yükselir? Not Aralıkları 2026
 
 **Yayınlanan yazı:** [Findeks Kredi Notu Nedir, Nasıl Yükselir? Not Aralıkları 2026](/blog/findeks-kredi-notu-nedir-nasil-yukselir)

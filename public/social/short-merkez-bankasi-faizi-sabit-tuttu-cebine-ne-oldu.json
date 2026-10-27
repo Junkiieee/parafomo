@@ -1,0 +1,70 @@
+{
+  "title": "Merkez Bankası faizi sabit tuttu, cebine ne oldu #Shorts",
+  "description": "TCMB'nin PPK faiz kararı mevduat, kredi ve dolar üzerinden cebine nasıl dokunuyor, sade bir dille anlatılıyor.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #TCMB #PPK #faiz kararı #politika faizi #mevduat faizi",
+  "tags": [
+    "TCMB",
+    "PPK",
+    "faiz kararı",
+    "politika faizi",
+    "mevduat faizi",
+    "kredi",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-merkez-bankasi-faizi-sabit-tuttu-cebine-ne-oldu.mp4",
+  "slug": "merkez-bankasi-faizi-sabit-tuttu-cebine-ne-oldu",
+  "format": "news_reaction",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 4.65,
+      "spoken": "Merkez Bankası faizi açıkladı, cebine hemen dokunuyor.",
+      "visual": "place: Central Bank of the Republic of Turkey"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 4.65,
+      "end": 13.64,
+      "spoken": "PPK'nın belirlediği politika faizi, bankaların birbirine borç verme maliyetidir. Mevduat ve kredi faizin bunun etrafında şekillenir.",
+      "visual": "place: Central Bank of the Republic of Turkey"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 13.64,
+      "end": 22.13,
+      "spoken": "Ama kararın yönü tek başına yetmez. Faiz enflasyonun altında kalırsa, hesaptaki 100 bin liran yine de değer kaybeder.",
+      "visual": "object: calculator"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 22.13,
+      "end": 31.53,
+      "spoken": "Yani faiz yükselince krediye ödediğin taksit büyür, düşünce mevduat getirisi küçülür. Bakacağın rakam faizden enflasyonu çıkarınca kalandır.",
+      "visual": "object: smartphone banking app"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 31.53,
+      "end": 39.06,
+      "spoken": "Sıradaki karar paranı nasıl etkileyecek, merak ediyorsan abone ol; her gün 60 saniyede tek net analiz burada.",
+      "visual": "place: Central Bank of the Republic of Turkey"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-22T06:34:18+00:00",
+    "slug": "merkez-bankasi-faizi-sabit-tuttu-cebine-ne-oldu",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "ju3eIYBRa7M",
+  "youtube_url": "https://youtube.com/shorts/ju3eIYBRa7M",
+  "ig_reel_id": "17946873468359043",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DeyWcNigded/",
+  "ig_seed_comment_id": "18117388633997738"
+}
