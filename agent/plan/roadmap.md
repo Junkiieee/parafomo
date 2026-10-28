@@ -21,8 +21,9 @@ sıralar, yeni fikir ekler (açık madde ≤ 25). Biçim: `- [ ] R<n> (kanal) �
 - [x] R0a (YouTube/olay) — **Olay sonucu Short motoru** → `scripts/event-short.py`: TÜİK/TCMB/Fed/asgari ücret resmî
   rakamı gelince "açıklandı" videosu (zorunlu rakam başlıkta yoksa video çıkmaz); durum `logs/event-shorts.json`,
   sağlık §3 "Dağıtım" satırı. İlk canlı: Fed 28 Ekim (policy-decisions 19:25 UTC), TÜİK 3 Kasım.
-- [x] R0b (web) — **Paylaş çubuğu + Discover/News hazırlığı** → WhatsApp/Telegram/FB/X/kopyala (UTM `utm_campaign=share`),
-  Article şemasında 1600×900 kapak fotoğrafı, olay yazılarında NewsArticle, `/news-sitemap.xml`.
+- [x] R0b (web) — **Paylaş çubuğu + Discover/News hazırlığı** → WhatsApp/Telegram/FB/X/kopyala (UTM `utm_campaign=share`,
+  GA4 `share` olayı; 147 araç/veri sayfası + her yazıda 2 çubuk), Article şemasında 1600×900 kapak fotoğrafı, olay
+  yazılarında NewsArticle, `/news-sitemap.xml` (robots.txt + GSC'ye gönderildi 10-28) · commit 41f42d3.
 - [x] R0c (Facebook) — **Facebook Reels + link paylaşımı** → `scripts/facebook-reel.py`, `scripts/facebook-post.py`
   (izin gelene kadar sessiz atlar; `logs/fb-status.json`). Kaan'ın Meta izni bekleniyor (user-tasks).
 - [x] R0d (ajan) — **Kendi kendini besleyen kuyruk + kanal metrikleri** → bu dosya, brief §1b (YouTube arama payı,
@@ -88,6 +89,12 @@ sıralar, yeni fikir ekler (açık madde ≤ 25). Biçim: `- [ ] R<n> (kanal) �
   YouTube Shorts'tan büyük kısa video kitlesi. Content Posting API: Kaan TikTok hesabı + geliştirici uygulaması açar,
   denetim (audit) onayına kadar videolar yalnız "özel" yüklenir. Onay gelirse ajan `scripts/tiktok-upload.py` yazar
   (facebook-reel.py kalıbı: izin yoksa sessiz atla). Ban riski: aynı videoyu birebir 3 platforma basmak serbest, spam değil.
+- [ ] R20 (web/mobil) — **Mobil taşmaları düzelt** · tarayıcı testi (RC 10-28, 360 px): geniş tablolu bazı yazılar
+  yatay taşıyor (ör. fed-faiz-karari-28-ekim-2026-beklentiler 495 px genişliğinde render oluyor); bülten formu 320 px'te
+  7 px taşıyor. Ziyaretçinin %65'i mobil (GSC) ve Google mobil kullanılabilirliğe bakıyor. Tabloları `overflow-x:auto`
+  sarmalayıcıya al (yazı şablonu/PostLayout düzeyinde, tek tek değil). Ayrıca WebApplication şeması URL'inde "hesaplama"
+  geçen HER sayfaya basılıyor (araç merkezi /hesaplama-araclari/ ve ileride slug'ında 'hesaplama' geçen blog yazıları
+  dahil) → yalnız gerçek hesaplayıcılara (tools.ts) daralt. Kabul: 360 px'te yatay kaydırma yok; şema yalnız araçlarda.
 - [ ] R19 (bakım — TARİHLİ, 2027-01-21'den önce) — **Meta Graph API v21 → güncel sürüm** · v21.0 desteği 21 Ocak 2027'de
   bitiyor (sonra Meta çağrıları en eski açık sürüme yönlendirir — davranış değişebilir). `grep -rn "v21.0" scripts/` →
   instagram-*.py, post-*-instagram.py, facebook-*.py, metrics_instagram.py tek seferde güncel sürüme; birer --dry ile dene.
