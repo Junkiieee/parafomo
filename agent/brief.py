@@ -213,6 +213,238 @@ def sec_kpi_snapshot():
 
 
 
+# ------------------------------------------------------------------ 1b) kanal + dağıtım
+def _kpi_merge(fields):
+    """Bugünün KPI satırına kanal metriklerini ekle (kpi.json + kpi-daily.jsonl)."""
+    if not fields:
+        return
+    KPI.update(fields)
+    try:
+        json.dump(KPI, open(os.path.join(STATE, "kpi.json"), "w", encoding="utf-8"), ensure_ascii=False)
+    except Exception:
+        pass
+    hist = os.path.join(MEM, "kpi-daily.jsonl")
+    if not os.path.exists(hist):
+        return
+    rows = [json.loads(l) for l in open(hist, encoding="utf-8") if l.strip()]
+    for r in rows:
+        if r.get("date") == TODAY.isoformat():
+            r.update(fields)
+    with open(hist, "w", encoding="utf-8") as f:
+        for r in rows:
+            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+
+
+def _meta_env():
+    env = {}
+    try:
+        for ln in open(os.path.expanduser("~/.config/parafomo/instagram.env"), encoding="utf-8"):
+            if "=" in ln and not ln.lstrip().startswith("#"):
+                k, v = ln.strip().split("=", 1)
+                env[k.strip()] = v.strip().strip('"').strip("'")
+    except Exception:
+        pass
+    return env
+
+
+def sec_channels():
+    """Darboğazı doğru kanalda görmek için (RC 2026-10-28): YouTube arama payı + abone dönüşümü, IG/FB takipçi,
+    Discover/News, Google'ın gizlediği uzun-kuyruk sorgu payı, geri dönen ziyaretçi, paylaşım butonu trafiği,
+    olay sonucu Short'ları. Tümü kpi-daily.jsonl'a da yazılır (haftalık koşu trendi görür)."""
+    import urllib.parse
+    import urllib.request
+    y = TODAY - dt.timedelta(days=1)
+    s28 = TODAY - dt.timedelta(days=28)
+    f, lines = {}, []
+    # YouTube (28g) — trafik kaynağı + abone dönüşümü
+    try:
+        sys.path.insert(0, os.path.join(ROOT, "scripts", "learn"))
+        import lib as _lib
+        from googleapiclient.discovery import build
+        yc = _lib.youtube_credentials(["https://www.googleapis.com/auth/youtube.readonly",
+                                       "https://www.googleapis.com/auth/yt-analytics.readonly"])
+        ya = build("youtubeAnalytics", "v2", credentials=yc, cache_discovery=False)
+
+        def q(**kw):
+            return ya.reports().query(ids="channel==MINE", startDate=s28.isoformat(), endDate=y.isoformat(),
+                                      **kw).execute().get("rows") or []
+        tot = q(metrics="views,subscribersGained,subscribersLost")
+        src = {r[0]: r[1] for r in q(metrics="views", dimensions="insightTrafficSourceType")}
+        v, sg, sl = (tot[0] if tot else [0, 0, 0])
+        allv = sum(src.values()) or 1
+        f.update({"yt_views_28d": int(v), "yt_subs_gained_28d": int(sg),
+                  "yt_subs_per_1k": round(sg / max(v, 1) * 1000, 2),
+                  "yt_search_share": round(src.get("YT_SEARCH", 0) / allv * 100, 1),
+                  "yt_shorts_feed_share": round(src.get("SHORTS", 0) / allv * 100, 1)})
+        lines.append(f"- **YouTube (28g):** {int(v):,} izlenme · +{int(sg)} / −{int(sl)} abone → "
+                     f"**{f['yt_subs_per_1k']} abone / 1000 izlenme** · kaynak: Shorts akışı %{f['yt_shorts_feed_share']}"
+                     f" · **YouTube araması %{f['yt_search_share']}** · dış link %{round(src.get('EXT_URL', 0) / allv * 100, 1)}")
+    except Exception as e:
+        lines.append(f"- YouTube kanal metrikleri alınamadı: {type(e).__name__}")
+    # Instagram + Facebook takipçi
+    env = _meta_env()
+    tok = env.get("IG_PAGE_TOKEN")
+
+    def graph(obj, fields):
+        u = f"https://graph.facebook.com/v21.0/{obj}?" + urllib.parse.urlencode({"fields": fields, "access_token": tok})
+        return json.load(urllib.request.urlopen(u, timeout=20))
+    meta = []
+    try:
+        ig = graph(env["IG_BUSINESS_ACCOUNT_ID"], "followers_count,media_count")
+        f.update({"ig_followers": ig.get("followers_count"), "ig_media": ig.get("media_count")})
+        meta.append(f"Instagram {ig.get('followers_count')} takipçi / {ig.get('media_count')} gönderi")
+    except Exception as e:
+        meta.append(f"Instagram okunamadı ({type(e).__name__})")
+    try:
+        fb = graph(env["IG_PAGE_ID"], "followers_count,fan_count")
+        f["fb_followers"] = fb.get("followers_count")
+        st = {}
+        try:
+            st = json.load(open(os.path.join(ROOT, "logs", "fb-status.json"), encoding="utf-8"))
+        except Exception:
+            pass
+        perm = "paylaşım AÇIK" if st.get("ok") else "paylaşım izni YOK (pages_manage_posts — Kaan görevi)"
+        meta.append(f"Facebook sayfası {fb.get('followers_count')} takipçi · {perm}")
+    except Exception as e:
+        meta.append(f"Facebook okunamadı ({type(e).__name__})")
+    lines.append("- **Sosyal:** " + " · ".join(meta))
+    # GSC: Discover / Google News / gizli uzun-kuyruk payı (28g)
+    try:
+        _, _, sc = clients()
+        site = DASH.GSC_SITE
+
+        def gq(body):
+            body = {"startDate": s28.isoformat(), "endDate": y.isoformat(), **body}
+            return sc.searchanalytics().query(siteUrl=site, body=body).execute().get("rows", [])
+        disc = gq({"type": "discover"})
+        news = gq({"type": "googleNews"})
+        web = gq({"type": "web"})
+        withq = gq({"type": "web", "dimensions": ["query"], "rowLimit": 25000})
+        tc = sum(r["clicks"] for r in web)
+        qc = sum(r["clicks"] for r in withq)
+        di = int(sum(r["impressions"] for r in disc)); dc = int(sum(r["clicks"] for r in disc))
+        ni = int(sum(r["impressions"] for r in news))
+        f.update({"discover_impr_28d": di, "discover_clicks_28d": dc, "gnews_impr_28d": ni,
+                  "gsc_hidden_click_share": round((tc - qc) / max(tc, 1) * 100, 1)})
+        lines.append(f"- **Google yüzeyleri (28g):** Discover {di} gös / {dc} tık · Google News {ni} gös · "
+                     f"tıkların **%{f['gsc_hidden_click_share']}**'i Google'ın gizlediği nadir (uzun-kuyruk) sorgulardan "
+                     f"→ büyüme baş sorgudan değil, sayfa × uzun-kuyruk yüzeyinden geliyor")
+    except Exception as e:
+        lines.append(f"- GSC yüzey metrikleri alınamadı: {type(e).__name__}")
+    # GA4: geri dönen ziyaretçi + sosyal kaynak + paylaş butonu
+    try:
+        nv = {r[0][0]: int(r[1][0]) for r in ga_report(["newVsReturning"], s28, y)}
+        soc = sorted(((r[0][0], int(r[1][0])) for r in ga_report(["sessionSource"], s28, y,
+                      dim_filter=("sessionDefaultChannelGroup", "Organic Social"))), key=lambda x: -x[1])
+        sh = sorted(((r[0][0], int(r[1][0])) for r in ga_report(["sessionSource"], s28, y,
+                     dim_filter=("sessionCampaignName", "share"))), key=lambda x: -x[1])
+        f.update({"returning_28d": nv.get("returning", 0), "share_visits_28d": sum(v for _, v in sh)})
+        lines.append(f"- **Sadakat + paylaşım (28g):** geri dönen {nv.get('returning', 0)} / yeni {nv.get('new', 0)} · "
+                     f"Organic Social kaynakları: " + (", ".join(f"{k} {v}" for k, v in soc[:5]) or "yok")
+                     + " · paylaş butonundan gelen: " + (", ".join(f"{k} {v}" for k, v in sh[:5]) or "henüz yok"))
+    except Exception as e:
+        lines.append(f"- GA4 sadakat/sosyal alınamadı: {type(e).__name__}")
+    # Olay sonucu Short'ları
+    try:
+        st = json.load(open(os.path.join(ROOT, "logs", "event-shorts.json"), encoding="utf-8"))
+        last = sorted(st.items(), key=lambda kv: kv[1].get("ts", ""))[-4:]
+        lines.append("- **Olay sonucu Short'ları** (scripts/event-short.py): " + " · ".join(
+            f"{k} {v.get('status')}" + (f" {v.get('youtube_url')}" if v.get("youtube_url") else "") for k, v in last))
+    except Exception:
+        lines.append("- **Olay sonucu Short'ları** (scripts/event-short.py): henüz yok — ilk olay: Fed 28 Ekim / TÜİK 3 Kasım")
+    _kpi_merge(f)
+    out("\n".join(lines))
+
+
+# ------------------------------------------------------------------ 4) plan (sıkıştırılmış) + yol haritası
+TR_AY = {a: i + 1 for i, a in enumerate(["ocak", "şubat", "mart", "nisan", "mayıs", "haziran", "temmuz",
+                                         "ağustos", "eylül", "ekim", "kasım", "aralık"])}
+
+
+def _due_date(label):
+    """'(B.. — TARİHLİ, 29 Ekim sabahı)' → date; tarih yoksa None. Yıl: geçmiş ay ise gelecek yıl."""
+    m = re.search(r"(\d{1,2})\s+(Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)(?:\s+(\d{4}))?",
+                  label)
+    if not m:
+        return None
+    d, mo = int(m.group(1)), TR_AY[m.group(2).lower()]
+    yr = int(m.group(3)) if m.group(3) else (TODAY.year + 1 if mo < TODAY.month - 2 else TODAY.year)
+    try:
+        return dt.date(yr, mo, d)
+    except ValueError:
+        return None
+
+
+def sec_week():
+    """week.md — biten görevlerin uzun metni tek satıra iner (brief'in ~%20'si eski görev metniydi);
+    üstte kuyruk derinliği: yapılabilir görev yoksa ajan roadmap.md'den iş çeker (boş koşu yok)."""
+    p = os.path.join(PLAN, "week.md")
+    if not os.path.exists(p):
+        out("(plan yok — haftalık koşu oluşturmalı)")
+        return
+    lines = open(p, encoding="utf-8").read().rstrip().splitlines()
+    # görev blokları: "- [ ] ..." satırı + ardından gelen girintili devam satırları
+    blocks, i = [], 0
+    while i < len(lines):
+        ln = lines[i]
+        m = re.match(r"^- \[([ xX-])\] (.*)$", ln)
+        if not m:
+            blocks.append(("text", ln, [])); i += 1
+            continue
+        cont = []
+        i += 1
+        while i < len(lines) and lines[i].startswith("  ") and not re.match(r"^- \[", lines[i]):
+            cont.append(lines[i]); i += 1
+        blocks.append((m.group(1), ln, cont))
+    res, open_now, open_later, open_unknown = [], [], [], []
+    for state, ln, cont in blocks:
+        if state == "text":
+            res.append(ln)
+            continue
+        body = ln[6:] + " " + " ".join(c.strip() for c in cont)
+        tid = (re.match(r"([A-Z][A-Za-z]*-?[A-Za-z0-9]*\d[A-Za-z0-9]*)", body) or [None])[0]
+        if state in "xX-":
+            title = (re.search(r"\*\*(.+?)\*\*", body) or [None, ""])[1]
+            result = body.split("→", 1)[1].strip() if "→" in body else ""
+            result = re.split(r"\s+·\s+commit|\s+—\s+\*\*", result)[0][:150]
+            res.append(f"- [{state}] {tid or ''} — **{title}**" + (f" → {result}" if result else ""))
+            continue
+        paren = (re.match(r"[A-Z][\w-]*\s*\(([^)]*)\)", body) or [None, ""])[1]
+        day_month = re.search(r"\d{1,2}\s+(Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)", paren)
+        dated = "TARİHLİ" in paren or bool(day_month)
+        due = _due_date(paren) if dated else None
+        if not dated or (due and due <= TODAY):
+            open_now.append(tid or body[:30])
+        elif due:
+            open_later.append(f"{tid} ({due:%d.%m})")
+        else:
+            open_unknown.append(tid or body[:30])
+        res.append(ln)
+        res.extend(cont)
+    head = (f"**Kuyruk derinliği:** bugün yapılabilir {len(open_now)} görev ({', '.join(open_now) or '—'}) · "
+            f"tarihi gelmemiş {len(open_later)} ({', '.join(open_later) or '—'})"
+            + (f" · koşullu {len(open_unknown)} ({', '.join(open_unknown)})" if open_unknown else ""))
+    if not open_now:
+        head += ("\n**⚠️ KUYRUK BOŞ → boş koşu YAPMA:** `agent/plan/roadmap.md` (§4c) içinden en üstteki uygun açık maddeyi "
+                 "`T<n>` olarak week.md kuyruğuna ekle ve uçtan uca yap (daily.md adım 4).")
+    out(head + "\n")
+    out("\n".join(res))
+
+
+def sec_roadmap():
+    p = os.path.join(PLAN, "roadmap.md")
+    if not os.path.exists(p):
+        out("(roadmap.md yok)")
+        return
+    lines = open(p, encoding="utf-8").read().splitlines()
+    todo = [l for l in lines if re.match(r"^- \[ \] ", l)]
+    done = [l for l in lines if re.match(r"^- \[[xX-]\] ", l)]
+    out(f"{len(todo)} açık · {len(done)} kapalı madde. Açık maddeler (öncelik sırası; ayrıntı dosyada):")
+    for l in todo[:14]:
+        t = re.sub(r"\s+", " ", l)
+        out(t[:230] + ("…" if len(t) > 230 else ""))
+
+
 # ------------------------------------------------------------------ bahis metrikleri
 def _path(url):
     return url.replace("https://parafomo.com", "").replace("http://parafomo.com", "") or "/"
@@ -576,6 +808,10 @@ def sec_runs():
         out(f"- {r.get('started', '')[:16]} {r.get('mode')} {r.get('model')} → **{r.get('outcome')}** · "
             f"${r.get('cost', '?')} · {r.get('turns', '?')} tur · {r.get('minutes', '?')} dk"
             + (f" · {r.get('message', '')[:100]}" if r.get("outcome") != "success" else ""))
+    recent = [r for r in rows if r.get("started", "") >= (TODAY - dt.timedelta(days=7)).isoformat()]
+    idle = [r for r in recent if r.get("mode") == "daily" and float(r.get("minutes") or 0) <= 5]
+    if idle:
+        out(f"- ⚠️ Son 7 günde {len(idle)} günlük koşu ≤5 dk sürdü (kuyruk boş kaldı) — boş koşu yerine roadmap.md'den iş çek")
     if MODE == "weekly":
         week = [r for r in rows if r.get("started", "") >= (TODAY - dt.timedelta(days=7)).isoformat()]
         tot = sum(float(r.get("cost") or 0) for r in week)
@@ -612,14 +848,15 @@ def main():
     out(f"# ParaFOMO Brief — {TODAY} · mod: {MODE}")
     out("_Token'sız üretildi (agent/brief.py). Bu belge senin bağlamın; ham dosyaları ayrıca tarama._\n")
     section("1) KPI (kayan pencere — kısmi hafta artefaktı yok)", sec_kpi_snapshot)
+    section("1b) Kanallar + dağıtım (darboğaz hangi kanalda? — haftalık skor kartına da gir)", sec_channels)
     section(f"2) Skor kartı — son {WEEKS} ISO hafta", sec_scorecard)
     section("3) Üretim sağlığı (önce bunu oku — kırmızı varsa ilk iş onu düzelt)",
             lambda: out(health.render(health.collect())))
     section("3b) SEO denetimi (scripts/seo-audit.py — KRİTİK varsa görevden önce düzelt)", sec_seo)
-    section("4) Bu haftanın planı (agent/plan/week.md)", lambda: cat(os.path.join(PLAN, "week.md"),
-                                                                       empty="(plan yok — haftalık koşu oluşturmalı)"))
+    section("4) Bu haftanın planı (agent/plan/week.md — biten görevler tek satır)", sec_week)
     section("4b) GÖREV MASASI — Kaan'ın kararları, notları, istekleri (dashboard.parafomo.com — ÖNCE BUNU UYGULA)",
             lambda: out(__import__("board").render_brief()))
+    section("4c) Yol haritası (agent/plan/roadmap.md) — kuyruk boşsa iş BURADAN", sec_roadmap)
     section("5) Bahisler (agent/bets.py)", lambda: out(__import__("bets").render(__import__("bets").load(),
                                                                                 show_all=MODE == "weekly")))
     section("5b) Bahis metrikleri (otomatik — GSC, gecikmeli)", sec_bet_metrics)

@@ -7,6 +7,8 @@ Planı haftalık koşu yazdı; senin işin onu **uygulamak**. Strateji tartışm
    Claude durumu sorunu varsa → kök nedeni bul, düzelt, doğrula. Bu, plandaki görevden önce gelir.
    (Duraklatma/kota kaynaklı tek seferlik gecikme hata değildir — bir sonraki çalışmayı bekle.)
    Düzeltemiyorsan `agent/plan/user-tasks.md`'ye Kaan için tek net görev yaz.
+   §3 "Dağıtım" satırında olay sonucu Short'u 🔴 (failed) ise → roadmap R1 rutini (log'dan kök neden, düzelt, olay
+   ≤36 sa tazeyse `python3 scripts/event-short.py` ile yeniden üret).
 1b. **SEO denetimi (brief §3b):** KRİTİK varsa (kırık link, yanlış kanonik, noindex+sitemap, Google başka kanonik
    seçmiş, canlıda 200 yok) → görevden ÖNCE düzelt, build + deploy, `python3 scripts/seo-audit.py` ile doğrula.
    KRİTİK yoksa koşu sonunda bütçe kalırsa en fazla BİR UYARI kümesini düzelt (ör. 10 uzun description, ya da bir
@@ -22,9 +24,16 @@ Planı haftalık koşu yazdı; senin işin onu **uygulamak**. Strateji tartışm
      kuyrukta bırak.
    - Görev artık anlamsızsa (veri değişti, zaten yapılmış): `- [-] ... — iptal: gerekçe` yap, sıradakine geç.
 4. **Sonraki görevler:** önceki görev temiz bittiyse ve bütçe varsa sıradakine geç (gecede en fazla 3 görev).
-   `week.md` görev kuyruğunda yapılabilir `[ ]` kalmadıysa (ya da kalanlar TARİHLİ ve günü gelmediyse)
-   `agent/plan/keyword-map.md` "Sıradaki" bölümündeki ilk `- [ ]` satırını görev olarak al (aynı kabul ölçütü:
-   canlı + FAQPage + Footer/`/hesaplama-araclari/` linki + resmî kaynak) ve bitince orada `[x]` yap.
+   **Boş koşu YOK** (10-26→10-28 koşuları 3-10 dk sürdü, kuyruk boştu): brief §4 "Kuyruk derinliği" bugün yapılabilir
+   görev 0 diyorsa (kalanlar TARİHLİ ve günü gelmemiş) sırayla:
+   (a) **`agent/plan/roadmap.md`** (brief §4c): en üstteki, ön koşulu sağlanmış, `(Kaan kararı)`/`(Kaan, …)` OLMAYAN
+       açık maddeyi seç → week.md "Görev kuyruğu"na `- [ ] T<n> (R<k>) — **<başlık>** · <ne> · Kabul: …` olarak ekle →
+       uçtan uca yap → week.md'de `[x]`, roadmap'te `- [x] R<k> … → sonuç (link/sayı) · YYYY-MM-DD`. Madde tek gecelik
+       değilse ilk anlamlı parçayı bitir + yayınla, kalanını roadmap'te açık bırak (ne kaldığını yaz).
+   (b) roadmap'te uygun madde yoksa `agent/plan/keyword-map.md` "Sıradaki" bölümünün ilk `- [ ]` satırı (aynı kabul
+       ölçütü: canlı + FAQPage + Footer/`/hesaplama-araclari/` linki + resmî kaynak) → bitince orada `[x]`.
+   **Kanal dengesi:** son 3 günlük koşunun hiçbirinde YouTube/sosyal işi yapılmadıysa (a)'da önce YouTube/sosyal
+   maddesini seç (R3/R4/R9/R10/R13…). Kaan'ın hedefi web + YouTube + Instagram (+ Facebook) birlikte büyüsün.
 5. **Olay sonrası güncelleme (her koşu, 1-2 yazı):** Slug'ında `<ay>-2026` geçen önizleme yazılarından
    olayı GEÇMİŞ ve `updatedDate`'i olmayanları bul (ör. "TCMB Ekim kararı", "Eylül CPI").
    - Frontmatter'ında `sonuc:` VARSA (TCMB/Fed/TÜFE): sonuç kutusu, başlık (`sonucBaslik`) ve dateModified karar
@@ -46,7 +55,8 @@ Planı haftalık koşu yazdı; senin işin onu **uygulamak**. Strateji tartışm
 ## Yapma
 - Yeni bahis açma, `learnings.md`'yi yeniden yazma (haftalık iş). Kesin yeni bir ders öğrendiysen
   sona TEK madde ekleyebilirsin (tarih + kanıt).
-- Plan dışı kozmetik iş (hashtag döndürme, başlık rötuşu, IG caption denemesi) — kanıtlanmış düşük kaldıraç.
+- Plan/roadmap dışı kozmetik iş (hashtag döndürme, rastgele başlık rötuşu, IG caption denemesi) — kanıtlanmış düşük
+  kaldıraç. (Roadmap R3/R7 ölçümlü başlık turlarıdır — onlar serbest.)
 - Mikro-deney açma; "ölçeceğim" diye iş bölme.
 
 ## report.md biçimi (≤25 satır)

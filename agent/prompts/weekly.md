@@ -8,6 +8,9 @@ Brief §1-2: gerçek organik ziyaretçi (7g/28g), GSC tık/gösterim, organik gi
 trafiği, YouTube abone/izlenme/video medyanı. Geçen hafta ve 4 hafta öncesiyle kıyasla.
 **Gelir ve marka da skor kartında:** AdSense durumu/geliri, bülten abone sayısı, sosyal hesap büyümesi
 (Kaan'ın hedefi: marka + siteden para). Bahis metrikleri brief §5b'de otomatik hesaplanır.
+**Kanal skor kartı (brief §1b, kpi-daily.jsonl'da trend):** YouTube abone/1000 izlenme ve YouTube araması payı ·
+IG/FB takipçi · Discover/Google News gösterimi · paylaş butonundan gelen ziyaret · geri dönen ziyaretçi · olay sonucu
+Short'ları (yayınlandı mı, izlenme). Ayrıca §13'teki **boş koşu** sayısı (≤5 dk günlük koşu = kuyruk boştu).
 - Kısmi haftayı tam haftayla, GSC'nin son 2-3 gününü (gecikmeli) gerçek düşüşle karıştırma.
 - Hareketi somut nedene bağla (hangi sayfa/olay/yayın). Bağlayamıyorsan "gürültü" de, uydurma.
 
@@ -39,12 +42,23 @@ Ders çıkar ve bu haftanın görev tanımına uygula.
   zirvesinden 3-6 hafta önce; Kasım-Ocak zam sezonu). Autocomplete boşlukları tek başına talep kanıtı
   DEĞİL — §9c'de hacmi yoksa görev yapma. Hacim < 5 ise sayfa/yazı açma (istisna: 2027 gibi gelecek
   yıl sorgusu, hacmi geçen yılın eşdeğerinden ölçülür).
-- Bahislerden türeyen **5-8 somut görev** — her biri TEK gecede bitecek boyutta, kabul kriteriyle:
-  `- [ ] T<n> (B..) — ne yapılacak · Dosyalar: ... · Kabul: canlıda şu görünür / şu komut şunu verir`
+- Bahislerden ve yol haritasından türeyen **8-12 somut görev** — her biri TEK gecede bitecek boyutta, kabul
+  kriteriyle; **en az 4'ü TARİHSİZ** olsun (günlük koşu hafta ortasında boşta kalmasın — 10-26→10-28 üç koşu boş geçti):
+  `- [ ] T<n> (B.. | R..) — ne yapılacak · Dosyalar: ... · Kabul: canlıda şu görünür / şu komut şunu verir`
+- **Kanal dengesi (Kaan: web + YouTube + Instagram birlikte büyüsün):** haftada en az **2 YouTube/sosyal büyüme
+  görevi** (paketleme, YouTube arama başlıkları, seri/playlist, abone dönüşümü, FB/IG dağıtımı — roadmap R3/R4/R9/R10/R13)
+  — "video izlenmesine bahis koyma" dersi geçerli, ama dağıtım/paketleme işi bahis değil bakımdır.
+- **Olay günleri:** bu haftanın olayları için (brief §9) olay sonrası doğrulama görevini (roadmap R1) TARİHLİ koy;
+  sonuç videosu `scripts/event-short.py` ile otomatik çıkar, sen yalnız doğrula/düzelt.
 - Kaan'ın kalıcı talepleri için haftada en az: **1 portföy görevi** (`agent/plan/backlog-portfolio.md`)
   ve **1 video kalitesi görevi** (araştır → izole dene → işe yarıyorsa üretime al). Bunlar bahis değilse
   "Bakım/ürün" başlığı altında dur.
 - Sıralama: kaldıraç × başarı olasılığı. En üstteki görev en değerlisi olsun.
+
+## 4b. Yol haritası (`agent/plan/roadmap.md`)
+Kalıcı fikir havuzu — günlük koşu kuyruk boşalınca buradan çeker. Her hafta: biteni `[x]` (sonuç + tarih), anlamsızı
+`[-]` yap; kanıtla yeniden sırala (kaldıraç × olasılık); yeni fikir ekle (açık ≤ 25). `(Kaan kararı)` maddesi için
+Kaan'a user-tasks.md'de tek soru sor (bir kez; yanıt yoksa 2 hafta sonra kaldır). Teşhis bölümünü yeni veriyle güncelle.
 
 ## 5. Blog konu kuyruğu
 `agent/plan/content-queue.md`: önümüzdeki 7-10 gün için 5-8 bekleyen konu (Pzt-Cum günde 1 yazı

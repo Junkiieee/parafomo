@@ -304,6 +304,23 @@ def seo_status():
             "issues": [i for i in d["issues"] if i["sev"] != "BİLGİ"][:200]}
 
 
+def distribution_status():
+    """Olay sonucu Short'ları (scripts/event-short.py) + Facebook yayın izni (scripts/facebook-*.py)."""
+    out = {}
+    try:
+        st = json.load(open(os.path.join(LOGS, "event-shorts.json"), encoding="utf-8"))
+        if st:
+            k, v = max(st.items(), key=lambda kv: kv[1].get("ts", ""))
+            out["event"] = {"key": k, **v}
+    except Exception:
+        pass
+    try:
+        out["fb"] = json.load(open(os.path.join(LOGS, "fb-status.json"), encoding="utf-8"))
+    except Exception:
+        pass
+    return out
+
+
 def collect():
     du = shutil.disk_usage("/")
     return {
@@ -318,6 +335,7 @@ def collect():
         "api": http_ok("https://api.parafomo.com/health"),
         "stale": stale_data(),
         "seo": seo_status(),
+        "dist": distribution_status(),
     }
 
 
@@ -343,6 +361,14 @@ def render(h):
             f"- **Disk:** {disk}",
             f"- **Canlı site:** {h['site']} · **Portföy API:** {h['api']}",
             "- **Veri tazeliği:** " + ("✅ güncel" if not h.get("stale") else "🔴 " + "; ".join(h["stale"]))]
+    d = h.get("dist") or {}
+    ev, fb = d.get("event"), d.get("fb")
+    ev_txt = "henüz yok" if not ev else (
+        f"{ev['key']} → " + ("✅ " + (ev.get("youtube_url") or "yayında") if ev.get("status") == "done"
+                             else f"🔴 {ev.get('status')} (deneme {ev.get('attempts')}) — `logs/event-short.log`"))
+    fb_txt = "⚪ hiç çalışmadı" if not fb else ("✅ paylaşıyor" if fb.get("ok") else
+                                                  f"⏸ {str(fb.get('reason') or '')[:90]}")
+    out.append(f"- **Dağıtım:** olay sonucu Short'u: {ev_txt} · Facebook: {fb_txt}")
     return "\n".join(out)
 
 
@@ -360,6 +386,9 @@ def problems(h):
     if h["api"] != 200:
         p.append(f"api: {h['api']}")
     p += [f"veri: {x}" for x in h.get("stale", [])]
+    ev = (h.get("dist") or {}).get("event")
+    if ev and ev.get("status") == "failed":
+        p.append(f"olay Short'u başarısız: {ev['key']} (logs/event-short.log)")
     seo = h.get("seo")
     if seo and seo["counts"].get("KRİTİK"):
         p.append(f"SEO: {seo['counts']['KRİTİK']} kritik sorun")

@@ -20,6 +20,8 @@ _v1'in 59 deneyi + 2,5 aylık KPI'ından damıtıldı; son yeniden yazım: hafta
 - **Talep olaya bağlı ve dalgalı:** /altin-getiri W38 21 tık → W39-41 3-5 tık, sıra sabit p6-8. Haftalık tık düşüşünü
   sıralama kaybı sanma — önce sayfanın gösterim+sırasına bak.
 - **AI asistanlar gerçek trafiğin ~%7** (28g 13 / 196, 10-22) — net tablo + kaynak + tarih alıntılanıyor.
+- **Google tıklarının ~%95'i gizli uzun-kuyruk sorgulardan** (GSC 28g, RC 10-28: 131 tık, sorgusu görünen satırlarda 6;
+  gösterimlerin %69'u p51+). GSC sorgu tablosu tıkları açıklamaz → sayfa bazında ölç; büyüme = sayfa × uzun-kuyruk + olay günü.
 - **Veri sayfası = cevap + tarih:** sorgunun SAYISAL cevabı başlıkta ve ilk ekranda (takvim sayfalarında güncel faiz kutusu).
 - **Emekli/memur zammı tek kanonik sayfa** (/emekli-zammi-hesaplama, /memur-zammi-hesaplama) — yeni blog yazısı AÇMA.
   Talep Ocak/Temmuz'a yığılı: "emekli zammı 2027" vekil zirvesi 998, "emekli maaşı" zirve 2912 (Ocak), asgari ücret 4684 (Aralık).
@@ -48,6 +50,9 @@ _v1'in 59 deneyi + 2,5 aylık KPI'ından damıtıldı; son yeniden yazım: hafta
 - **Trafiksiz ürün cilası:** portföy 5 üye — UX iyileştirmesi kayıt getirmez; ürün işi bakım düzeyinde.
 
 ## YouTube
+- **İzlenmenin %21'i YouTube ARAMASINDAN** (28g 10-28: Shorts akışı %78, arama %21, dış link %0,1); kitle %68 35-54 yaş,
+  %11 Almanya. En iyi günler olay günleri (TCMB 22 Ekim 1.346 izl/gün; Fed önizleme 826). Abone dönüşümü %0,07
+  (8.650 izl → 6 abone) — asıl darboğaz dönüşüm. Olay sonucu videosu artık otomatik (scripts/event-short.py, RC 10-28).
 - 321 video → 53 abone (~%0,08). YPP uzak; günde ~3 şablon video "özgün olmayan içerik" riskini taşır → hacim artırma.
 - Aynı gün aynı konu kümesinden iki video: biri akışı alıyor, diğeri 0-13 izlenme (V2, 10-15: dolar 5000 ×2 → 13 vs 554).
 - Kazanan temalar (Ağu): altın + kayıp korkusu, gizli kesinti rakamı. Shock rakamı her zaman kaynaklı/hesaplanabilir olmalı.
@@ -80,4 +85,7 @@ _v1'in 59 deneyi + 2,5 aylık KPI'ından damıtıldı; son yeniden yazım: hafta
   haftalık koşu 06:00 UTC'den önce bitmeli.
 - Dış veri kaynakları sessizce bozulur (Truncgil, Investing 403) → her fetch degrade edebilmeli. EVDS anahtarı VAR (10-15).
 - GSC ~2-3 gün gecikmeli; 7g pencere son günleri eksik — kısmi hafta düşüşü artefakttır.
-- **Dağıtım kanalları zayıf:** Telegram 2 üye, bülten 1 onaylı abone, YouTube 53 abone. Sunucu 2 çekirdek / 3,7 GB RAM.
+- **Dağıtım kanalları zayıf:** Telegram 2 üye, bülten 1 onaylı abone, YouTube 59 abone, IG 21 takipçi / 465 gönderi,
+  Facebook sayfası 0 (ama GA4'te facebook.com'dan 28g 46 ziyaretçi — paylaşımlar; FB yayını Meta izni bekliyor).
+  Geri dönen ziyaretçi 28g 14 / 415 (sadakat ~0). Sunucu 2 çekirdek / 3,7 GB RAM.
+- **Video render tek seferde bir tane** (RC 10-28): tüm hatlar /tmp/shorts_frames kullanır; shorts-build-v4.py kilitli.
