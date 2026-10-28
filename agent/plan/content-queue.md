@@ -33,11 +33,11 @@ beyannamesi" 2,8 (zirve Mart 32 → Şubat'ta yeniden ölç) · "aile destek pro
   46,1, zirve Şubat 161) · neden: 3. dönem (Temmuz-Eylül) beyanı Kasım'da — son günü GİB'den doğrula (dönemi izleyen 2.
   ayın 17'si kuralı); oranlar KV %25 / GV tarifesi; mahsup ve iade; 2026'da kaldırılma/değişiklik haberi varsa YALNIZ
   RG/GİB'le · iç-link: /kurumlar-vergisi-hesaplama, /gelir-vergisi-hesaplama, /vergi-dilimi-hesaplama → /blog/gecici-vergi-nedir-2026-donemleri-orani-beyan-tarihleri (2026-10-27)
-- [ ] **SGK hizmet dökümü nasıl alınır ve nasıl okunur? e-Devlet adım adım (2026)** · hedef: "sgk hizmet dökümü"
+- [x] **SGK hizmet dökümü nasıl alınır ve nasıl okunur? e-Devlet adım adım (2026)** · hedef: "sgk hizmet dökümü"
   (hacim 30,1) · neden: hacimli how-to, sitede yok; belge sütunlarının anlamı (prim günü, işyeri, eksik gün kodları —
   kodları SGK'nın resmi listesinden), barkodlu belge, emeklilik için ne işe yarar. /emeklilik-hesaplama (week T18) canlıysa
   oraya bağla, hesaplamayı yazıda TEKRARLAMA · iç-link: /emeklilik-hesaplama (yayındaysa), /bagkur-primi-hesaplama,
-  /en-dusuk-emekli-maasi
+  /en-dusuk-emekli-maasi → /blog/sgk-hizmet-dokumu-nasil-alinir-nasil-okunur (2026-10-28)
 - [ ] **Ek gösterge nedir? 2026 memur ek gösterge tablosu, 3600 ek gösterge ve maaşa etkisi** · hedef: "ek gösterge"
   (hacim 43,7) · neden: memur kümesi (/memur-zammi-hesaplama) — 657 DMK ek gösterge cetveli ve 3600 ek gösterge
   düzenlemesini (7417 s.K.) mevzuat.gov.tr'den; tutar örneği verirsen güncel katsayıyla (`data/emekli-memur.json`) ·

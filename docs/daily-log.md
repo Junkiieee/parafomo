@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-10-28 — SGK Hizmet Dökümü Nasıl Alınır ve Okunur? e-Devlet 2026
+
+**Yayınlanan yazı:** [SGK Hizmet Dökümü Nasıl Alınır ve Okunur? e-Devlet 2026](/blog/sgk-hizmet-dokumu-nasil-alinir-nasil-okunur)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — "sgk hizmet dökümü" hacim 30,1)
+
+---
+
 ## 2026-10-27 — Geçici Vergi Nedir? 2026 Dönemleri, Oranı ve Beyan Tarihleri
 
 **Yayınlanan yazı:** [Geçici Vergi Nedir? 2026 Dönemleri, Oranı ve Beyan Tarihleri](/blog/gecici-vergi-nedir-2026-donemleri-orani-beyan-tarihleri)
