@@ -42,6 +42,8 @@ NEEDED = [
     "pages_show_list",
     "pages_read_engagement",
     "pages_manage_posts",            # FB sayfası: Reel + link gönderisi
+    "pages_manage_engagement",       # FB yorumlarına yanıt (topluluk sinyali)
+    "read_insights",                 # FB sayfa/Reel metrikleri (ölçüm)
     "business_management",
 ]
 # Bunlar yoksa token KAYDEDİLMEZ (mevcut IG yayın hattı bozulmasın).
@@ -50,6 +52,8 @@ REQUIRED = ["instagram_basic", "instagram_content_publish", "pages_show_list", "
 DESIRED = {
     "instagram_manage_insights": "IG reach/kaydetme/paylaşma metrikleri",
     "pages_manage_posts": "Facebook Reel + link paylaşımı (facebook-reel.py / facebook-post.py)",
+    "read_insights": "Facebook sayfa/Reel erişim metrikleri",
+    "pages_manage_engagement": "Facebook yorumlarına yanıt",
 }
 
 

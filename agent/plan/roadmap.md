@@ -88,5 +88,10 @@ sıralar, yeni fikir ekler (açık madde ≤ 25). Biçim: `- [ ] R<n> (kanal) �
   YouTube Shorts'tan büyük kısa video kitlesi. Content Posting API: Kaan TikTok hesabı + geliştirici uygulaması açar,
   denetim (audit) onayına kadar videolar yalnız "özel" yüklenir. Onay gelirse ajan `scripts/tiktok-upload.py` yazar
   (facebook-reel.py kalıbı: izin yoksa sessiz atla). Ban riski: aynı videoyu birebir 3 platforma basmak serbest, spam değil.
+- [ ] R19 (bakım — TARİHLİ, 2027-01-21'den önce) — **Meta Graph API v21 → güncel sürüm** · v21.0 desteği 21 Ocak 2027'de
+  bitiyor (sonra Meta çağrıları en eski açık sürüme yönlendirir — davranış değişebilir). `grep -rn "v21.0" scripts/` →
+  instagram-*.py, post-*-instagram.py, facebook-*.py, metrics_instagram.py tek seferde güncel sürüme; birer --dry ile dene.
+  Kabul: tüm Meta betikleri yeni sürümde, IG yayını + FB dry-run sorunsuz. (Facebook ayrıca: Meta bazı sayfalarda ayda 2
+  organik link gönderisi sınırı test ediyor — FB link gönderileri reddedilirse linki yoruma taşı.)
 - [ ] R17 (Kaan, 2 dk) — **Yandex Webmaster** · Türkiye'de ~%5 arama payı; IndexNow zaten Yandex'e de gidiyor, site
   doğrulaması Kaan'ın hesabıyla. Düşük öncelik.

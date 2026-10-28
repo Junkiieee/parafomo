@@ -215,6 +215,8 @@ if "$VPY" "$REPO/scripts/instagram-reel.py" "$SLUG" 2>&1 | sed 's/^/    [reel] /
 else
   echo "UYARI: IG Reel atlandı/başarısız (devam)"
 fi
+# Facebook Reel (izin yoksa tek satır uyarıyla atlar — scripts/facebook-reel.py; durum logs/fb-status.json)
+"$VPY" "$REPO/scripts/facebook-reel.py" "$SLUG" 2>&1 | sed 's/^/    /' || true
 
 echo "[*] Telegram'a gönderiliyor..."
 VID="$REPO/public/social/short-$SLUG.mp4"

@@ -167,6 +167,8 @@ fi
 if [ "$KIND" = "ok" ]; then
   echo "[*] Telegram'a gönderiliyor"
   "$REPO/scripts/post-telegram.sh" || echo "UYARI: Telegram gönderimi başarısız (devam)"
+  # Facebook sayfasına link gönderisi (linkler FB'de tıklanabilir; izin yoksa tek satırla atlar)
+  "$VPY" "$REPO/scripts/facebook-post.py" --latest 2>&1 | sed 's/^/    /' || true
   echo "[$(date -u '+%Y-%m-%d %H:%M:%S UTC')] Tamamlandı"
 else
   echo "[$(date -u '+%Y-%m-%d %H:%M:%S UTC')] İçerik ÜRETİLEMEDİ ($KIND) — yarın tekrar"

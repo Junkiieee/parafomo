@@ -85,6 +85,8 @@ process_one() {
   echo "[*] Instagram Reel yayınlanıyor..."
   "$VPY" "$REPO/scripts/instagram-reel.py" "$slug" 2>&1 | sed 's/^/    [reel] /' \
     || echo "UYARI: IG Reel atlandı/başarısız (devam)"
+  # Facebook Reel (izin yoksa tek satır uyarıyla atlar — scripts/facebook-reel.py; durum logs/fb-status.json)
+  "$VPY" "$REPO/scripts/facebook-reel.py" "$slug" 2>&1 | sed 's/^/    /' || true
 
   # Telegram önizleme
   echo "[*] Telegram'a gönderiliyor..."

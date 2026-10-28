@@ -66,6 +66,8 @@ IG_REEL=""
 if "$VPY" "$REPO/scripts/instagram-reel.py" "$SLUG" 2>&1 | sed 's/^/    [reel] /'; then
   IG_REEL="$("$VPY" -c "import json;print(json.load(open('public/social/short-$SLUG.json')).get('ig_reel_permalink',''))" 2>/dev/null || true)"
 else echo "UYARI: IG Reel atlandı"; fi
+# Facebook Reel (izin yoksa tek satır uyarıyla atlar — scripts/facebook-reel.py; durum logs/fb-status.json)
+"$VPY" "$REPO/scripts/facebook-reel.py" "$SLUG" 2>&1 | sed 's/^/    /' || true
 
 VID="$REPO/public/social/short-$SLUG.mp4"
 CAP="🎬 Tam-Manim Shorts [$FORMAT]%0A%0A${YT_URL:+▶️ $YT_URL%0A}${IG_REEL:+📸 $IG_REEL%0A}🔊 ${VOICE##*-}%0A%0A#parafomo"
