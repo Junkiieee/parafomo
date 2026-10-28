@@ -113,7 +113,11 @@ def kpi_line():
     return (f"📊 Gerçek ziyaretçi (7g): {k.get('real_7d')} (hedef 7000 → %{(k.get('real_7d') or 0) / 70:.1f}) · "
             f"Google: {k.get('gsc_clicks_7d')} tık / {k.get('gsc_impr_7d')} gösterim (7g) · "
             f"AI asistan (28g): {k.get('ai_assistant_28d')} · "
-            f"YouTube: {k.get('yt_subs')} abone, {k.get('yt_views') or 0:,} izlenme, {k.get('yt_videos')} video")
+            f"YouTube: {k.get('yt_subs')} abone, {k.get('yt_views') or 0:,} izlenme, {k.get('yt_videos')} video"
+            + (f" · 1000 izlenmede {k.get('yt_subs_per_1k')} abone, aramadan %{k.get('yt_search_share')} (28g)"
+               if k.get("yt_subs_per_1k") is not None else "")
+            + (f" · IG {k.get('ig_followers')} / FB {k.get('fb_followers')} takipçi" if k.get("ig_followers") is not None else "")
+            + (f" · Discover {k.get('discover_impr_28d')} gös. (28g)" if k.get("discover_impr_28d") else ""))
 
 
 def cmd_report(a):
