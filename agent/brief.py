@@ -284,6 +284,11 @@ def sec_channels():
         if terms:
             lines.append("- **YouTube'da bizi bulduran aramalar (28g, izlenme)** — video konusu/başlığı bu kalıplardan: "
                          + " · ".join(f"{t[0]} {int(t[1])}" for t in terms))
+            try:  # gece viral senaryo üreticisi (viral-script.py) konu seçerken okur
+                json.dump({"generated": TODAY.isoformat(), "terms": [[t[0], int(t[1])] for t in terms]},
+                          open(os.path.join(LEARN, "yt-search-terms.json"), "w", encoding="utf-8"), ensure_ascii=False)
+            except Exception:
+                pass
     except Exception as e:
         lines.append(f"- YouTube kanal metrikleri alınamadı: {type(e).__name__}")
     # Instagram + Facebook takipçi

@@ -280,6 +280,24 @@ def _tokens(s):
     return {w for w in re.findall(r"[a-z0-9]+", s) if len(w) > 2 and w not in _STOP}
 
 
+def search_hint(fmt):
+    """YouTube araması kanal izlenmesinin ~%21'i (RC 10-28). agent/brief.py her sabah bizi bulduran arama terimlerini
+    data/learning/yt-search-terms.json'a yazar; konu serbestken üretici bu kalıplara yaslanabilsin. Dosya yoksa boş."""
+    try:
+        d = json.load(open(os.path.join(ROOT, "data", "learning", "yt-search-terms.json"), encoding="utf-8"))
+        terms = [t[0] for t in d.get("terms", [])][:12]
+    except Exception:
+        return ""
+    if not terms:
+        return ""
+    strong = fmt == "single_concept"
+    return ("\nYOUTUBE ARAMASI: kanala gelen izlenmenin ~%21'i aramadan. Son 28 günde bizi bulduran aramalar: "
+            + ", ".join(terms) + ". " + ("Bu formatta konuyu MÜMKÜNSE bu aramalardan birinin AYNI niyetinden seç "
+            "(ör. 'X nedir' → X'i tek kavramla anlat) ve aranan ifadeyi başlığın İLK 40 karakterine koy."
+            if strong else "Konu bu aramalardan birinin niyetine uyuyorsa aranan ifadeyi başlığın ilk 40 karakterine koy; "
+            "uymuyorsa zorlama — tema ekseni öncelikli."))
+
+
 def has_number(text, num):
     """Metinde rakam var mı? '2,55' ↔ 2.55 / %2,55 / yüzde 2,55; binlikli '28.075' ↔ 28075 de kabul."""
     n = (num or "").strip().lstrip("%").strip()
@@ -446,7 +464,8 @@ def main():
         "çevirseydin bugün ~160 bin TL, ama altına koysaydın ~550 bin TL' gibi somut "
         "kur-vs-altın kıyasları izleyiciyi çarpar. Sıkıcı 'X nedir' tanımından KAÇIN.")
     topic_line = (f"KONU (bu konuyu işle): {args.topic}" if args.topic
-                  else "KONU: Türk yatırımcısının ilgisini çekecek TAZE bir konuyu SEN seç.\n" + WINNING_THEMES)
+                  else "KONU: Türk yatırımcısının ilgisini çekecek TAZE bir konuyu SEN seç.\n" + WINNING_THEMES
+                  + search_hint(args.format))
 
     # Veri formatları: gerçek geçmiş veriyi çek, prompt'a göm, grafiği hazırla
     facts_block, chart_instruction, chart_payload = "", "", None
