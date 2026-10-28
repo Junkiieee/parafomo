@@ -108,6 +108,7 @@ def state():
         "agent": run_info(),
         "health": cached("health", 120, health.collect),
         "schedule": cached("schedule", 600, schedule),
+        "roadmap": read(os.path.join(AG, "plan", "roadmap.md")),
     }
 
 

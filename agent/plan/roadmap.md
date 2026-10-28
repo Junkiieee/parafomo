@@ -64,9 +64,11 @@ sıralar, yeni fikir ekler (açık madde ≤ 25). Biçim: `- [ ] R<n> (kanal) �
   Kabul: veriyle karar (≥10 ziyaret/hafta → genişlet; 0 → bırak).
 - [ ] R9 (Facebook) — **İzin gelince ilk hafta** · `logs/fb-status.json` ok:true olunca 7 gün: GA4 facebook kaynağı + sayfa
   takipçisi (§1b). Reels erişim veriyorsa blog link paylaşımı + olay Short'ları FB'de sürer; vermiyorsa ders yaz.
-- [ ] R10 (Instagram) — **Kart bombardımanını azalt** · günde ~10 düşük etkileşimli kart (halka arz 4×, SPK 3×, altın,
-  BIST 2×), 465 gönderi → 21 takipçi. Öneri: halka arz 4→2, SPK 3→1, Reels'e ağırlık. Cron'u sen yazamazsın →
-  `deploy/crontab.txt` değişikliği + Kaan'a tek satırlık görev. (insights izni gelirse önce ölç.)
+- [ ] R10 (Instagram) — **Akışı Reels'e çevir** · ölçüm (RC 10-28, son 8 gün): günde 6-7 gönderi = 3-4 Reel (ort. 1
+  beğeni+yorum) + 2 BIST kartı + 1 altın kartı (ikisi de 0 etkileşim); halka arz/SPK kartları koşullu, son günlerde çıkmadı.
+  465 gönderi → 21 takipçi. Öneri: BIST açılış+kapanış kartı → Story'ye (akışa değil), altın kartı haftada 3; Reels
+  açıklamasında ilk satır = arama kalıbı (IG araması). Cron'u sen yazamazsın → `deploy/crontab.txt` + Kaan'a tek satırlık
+  görev; script tarafı (feed yerine story) senin. (insights izni gelirse önce ölç.)
 - [ ] R11 (sadakat) — **"Rakam açıklanınca haber ver" alarmı** · geri dönen ziyaretçi ~0. Bülten formunu zam sezonu
   sayfalarında "Emekli zammı/asgari ücret açıklanınca e-posta" olarak sun; olay motoru (event-short) tetiklendiğinde
   abonelere kısa mail (newsletter altyapısı + Brevo var). Kabul: form + otomatik mail + abone sayısı §12'de.

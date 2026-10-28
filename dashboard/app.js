@@ -272,6 +272,12 @@
       ["gsc_impr_7d", "Google gösterimi · 7g"], ["ai_assistant_28d", "AI asistan ziyaretçisi · 28g"],
       ["yt_subs", "YouTube abone"], ["yt_views", "YouTube toplam izlenme"],
     ];
+    // Kanal metrikleri (brief §1b, 2026-10-28'den itibaren): darboğaz hangi kanalda?
+    const chTiles = [
+      ["yt_subs_per_1k", "YouTube abone / 1000 izlenme · 28g"], ["yt_search_share", "YouTube izlenmesi aramadan · %"],
+      ["ig_followers", "Instagram takipçi"], ["fb_followers", "Facebook takipçi"],
+      ["discover_impr_28d", "Google Discover gösterimi · 28g"], ["share_visits_28d", "Paylaş butonundan ziyaret · 28g"],
+    ];
     const bets = S.bets.map((b) => {
       const left = b.review ? Math.round((new Date(b.review + "T00:00:00Z") - Date.now()) / 86400000) : null;
       const due = left == null ? "" : left < 0 ? `<span class="due over">değerlendirme ${-left} gün gecikti</span>` :
@@ -291,6 +297,8 @@
         <div class="hero-foot"><span>Hedefin %${pct.toLocaleString(TR, { maximumFractionDigits: 1 })}'i</span><span>28 günde ${num(k.real_28d)} · ${k.date ? dshort(k.date) : ""}</span></div>
       </div></div>
       <div class="sec"><div class="tiles">${tiles.map(([key, lbl]) => `<div class="card tile"><div class="tile-lbl">${lbl}</div><div class="tile-num">${num(k[key])}</div>${delta(key)}</div>`).join("")}</div></div>
+      <div class="sec"><div class="sec-h"><h2>Kanallar ve dağıtım</h2><span class="meta">YouTube dönüşümü · sosyal · Discover · paylaşım</span></div>
+        <div class="tiles">${chTiles.map(([key, lbl]) => `<div class="card tile"><div class="tile-lbl">${lbl}</div><div class="tile-num">${num(k[key])}</div>${delta(key)}</div>`).join("")}</div></div>
       <div class="sec"><div class="sec-h"><h2>Trend</h2><span class="meta">${S.kpi.length} gün · kayan pencereler</span></div>
         <div class="charts">
           ${chartCard("real_7d", "Gerçek ziyaretçi", "7 günlük kayan toplam")}
@@ -309,7 +317,7 @@
     drawCharts();
   }
   function kpiTable() {
-    const cols = [["date", "Tarih"], ["real_7d", "Ziyaretçi 7g"], ["organic_search_7d", "Organik 7g"], ["gsc_clicks_7d", "GSC tık 7g"], ["gsc_impr_7d", "GSC gös. 7g"], ["yt_subs", "YT abone"], ["yt_views", "YT izlenme"]];
+    const cols = [["date", "Tarih"], ["real_7d", "Ziyaretçi 7g"], ["organic_search_7d", "Organik 7g"], ["gsc_clicks_7d", "GSC tık 7g"], ["gsc_impr_7d", "GSC gös. 7g"], ["yt_subs", "YT abone"], ["yt_views", "YT izlenme"], ["yt_subs_per_1k", "YT abone/1000"], ["ig_followers", "IG takipçi"], ["fb_followers", "FB takipçi"]];
     return `<table class="data"><thead><tr>${cols.map(([, l], i) => `<th class="${i ? "n" : ""}">${l}</th>`).join("")}</tr></thead><tbody>${
       S.kpi.slice().reverse().map((r) => `<tr>${cols.map(([c], i) => `<td class="${i ? "n" : ""}">${i ? num(r[c]) : dshort(r[c])}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
   }
@@ -388,6 +396,8 @@
           <div class="report md">${fresh ? md(A.report) : md(st.message || "Rapor yok.")}</div>
           ${(st.denied || []).length ? `<details class="denied"><summary>İzin listesi dışında kalan ${st.denied.length} komut</summary>${st.denied.map((d) => `<code>${esc(d)}</code>`).join("")}</details>` : ""}
         </div></div>
+      <div class="sec"><div class="sec-h"><h2>Yol haritası</h2><span class="meta">ajanın kalıcı fikir havuzu · kuyruk boşalınca buradan iş çeker</span></div>
+        <div class="card pad"><details><summary>Teşhis, yapılanlar ve ${((S.roadmap || "").match(/^- \[ \]/gm) || []).length} açık madde</summary><div class="md">${md(S.roadmap || "Yol haritası yok.")}</div></details></div></div>
       <div class="sec"><div class="sec-h"><h2>Koşu geçmişi</h2><span class="meta">son ${A.runs.length} · 7 günde ${week.length} koşu</span></div>
         <div class="card"><div class="scroll"><table class="data"><thead><tr><th>Başladı (TSİ)</th><th>Mod</th><th>Sonuç</th><th class="n">Süre</th><th class="n">Tur</th><th class="n">Maliyet</th><th>Özet</th></tr></thead><tbody>${rows}</tbody></table></div></div></div>`;
   }
