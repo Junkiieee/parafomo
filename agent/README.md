@@ -46,6 +46,10 @@ eller (deterministik cron'lar, ajan olmadan da çalışır) — deploy/crontab.t
 | `scripts/release-watch.py` | TÜİK açıklama günü bekçisi (cron 10 dk'da bir 07-10 UTC) → veri gelince `kira-artis-update.sh` → canlı yazılar → deploy → IndexNow + GSC sitemap |
 | `src/data/event-result.ts` | olay önizleme yazısı frontmatter `sonuc:` (tcmb/fed/tufe) → karar açıklanınca otomatik sonuç kutusu + `sonucBaslik` |
 | `plan/week.md` | haftanın bahisleri + görev kuyruğu (günlük koşu en üstteki `[ ]`'yi yapar) |
+| `plan/roadmap.md` | **kalıcı fikir havuzu** (R1…; RC 2026-10-28): week.md'de bugün yapılabilir görev yoksa günlük koşu buradan çeker — boş koşu yok; haftalık koşu sıralar/kapatır. Panelde Ajan sekmesinde |
+| `scripts/event-short.py` | **olay sonucu Short'u**: TÜİK/TCMB/Fed/asgari ücret resmî rakamı gelince "açıklandı" videosu (viral-daily.sh `--format event_result --facts --must --link`; zorunlu rakam başlıkta yoksa video çıkmaz). Tetik: policy-decisions.sh, kira-artis-update.sh, learn-daily.sh, asgari-ucret-watch.py. Durum `logs/event-shorts.json` (tazelik = verinin ilk görüldüğü an; ilk kurulumda mevcutlar `skip`), sağlık §3 "Dağıtım" |
+| `scripts/facebook-reel.py` · `facebook-post.py` | Facebook sayfasına Reel (tüm video hatlarında IG'den sonra) + blog link gönderisi (daily-content). `pages_manage_posts` yoksa tek satırla atlar → `scripts/instagram-reauth.py scopes/exchange`. Durum `logs/fb-status.json` |
+| brief §1b · §4 · §4c | kanal metrikleri (YouTube arama payı + bizi bulduran aramalar + abone/1000, IG/FB, Discover/News, gizli sorgu payı, paylaş trafiği → `kpi-daily.jsonl`) · kuyruk derinliği + "KUYRUK BOŞ" uyarısı · roadmap |
 | `plan/content-queue.md` | blog konu kuyruğu (`scripts/daily-content.sh` en üsttekini yazar) |
 | `plan/user-tasks.md` | Kaan'a bağlı işler (≤3) |
 | `plan/backlog-portfolio.md` | portföy ürünü backlog'u |
