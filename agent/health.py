@@ -309,8 +309,9 @@ def distribution_status():
     out = {}
     try:
         st = json.load(open(os.path.join(LOGS, "event-shorts.json"), encoding="utf-8"))
-        if st:
-            k, v = max(st.items(), key=lambda kv: kv[1].get("ts", ""))
+        ev = {k: v for k, v in st.items() if not k.startswith("_") and v.get("status") != "skip"}
+        if ev:
+            k, v = max(ev.items(), key=lambda kv: kv[1].get("ts", ""))
             out["event"] = {"key": k, **v}
     except Exception:
         pass

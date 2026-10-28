@@ -357,7 +357,10 @@ def sec_channels():
     # Olay sonucu Short'ları
     try:
         st = json.load(open(os.path.join(ROOT, "logs", "event-shorts.json"), encoding="utf-8"))
-        last = sorted(st.items(), key=lambda kv: kv[1].get("ts", ""))[-4:]
+        last = sorted(((k, v) for k, v in st.items() if not k.startswith("_") and v.get("status") != "skip"),
+                      key=lambda kv: kv[1].get("ts", ""))[-4:]
+        if not last:
+            raise ValueError("kayıt yok")
         lines.append("- **Olay sonucu Short'ları** (scripts/event-short.py): " + " · ".join(
             f"{k} {v.get('status')}" + (f" {v.get('youtube_url')}" if v.get("youtube_url") else "") for k, v in last))
     except Exception:

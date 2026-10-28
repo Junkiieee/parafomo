@@ -248,16 +248,27 @@ def candidates(now, st, ignore_state=False):
             print(f"[event-short] {det.__name__} okunamadı: {type(ex).__name__}: {str(ex)[:120]}")
             continue
         found += r if isinstance(r, list) else ([r] if r else [])
+    # Tazelik = takvim saati ile verinin İLK görüldüğü anın geç olanı. Neden: TÜİK takviminde tarih yoksa (ör. Aralık
+    # verisi Ocak'ta) ayın 3'ü varsayılır; açıklama 5'inde gelirse olay "36 saatten eski" sayılıp en büyük video
+    # (Ocak emekli zammı) kaçardı. İlk kurulumda (durum dosyası boş) o an var olan olaylar video OLMAZ (geriye dönük yok).
+    seen = st.setdefault("_seen", {})
+    boot = not seen and not [k for k in st if not k.startswith("_")]
     out = []
     for e in found:
-        age_h = (now - e["when"]).total_seconds() / 3600
+        first = seen.get(e["key"])
+        if first is None:
+            first = seen[e["key"]] = now.isoformat(timespec="seconds")
+            if boot:
+                st[e["key"]] = {"status": "skip", "ts": first, "note": "ilk kurulumda zaten vardı"}
+        eff = max(e["when"], dt.datetime.fromisoformat(first))
+        age_h = (now - eff).total_seconds() / 3600
         rec = st.get(e["key"], {})
         e["age_h"] = age_h
         if ignore_state:
             out.append(e); continue
         if age_h < 0 or age_h > FRESH_H:
             continue
-        if rec.get("status") == "done" or rec.get("attempts", 0) >= MAX_ATTEMPTS:
+        if rec.get("status") in ("done", "skip") or rec.get("attempts", 0) >= MAX_ATTEMPTS:
             continue
         if e["pending"] and age_h < e.get("wait_h", 0):
             print(f"[event-short] {e['key']}: bekleniyor ({', '.join(e['pending'])} henüz gelmedi, {age_h:.1f} sa)")
@@ -275,7 +286,13 @@ def run(e, st, now):
     rec["ts"] = now.isoformat(timespec="seconds")
     save_state(st)
     print(f"[event-short] {e['key']} → video üretiliyor: {e['topic']} | zorunlu: {e['must']} | link {e['link']}")
-    p = subprocess.run(cmd, cwd=REPO, capture_output=True, text=True, timeout=2400)
+    try:
+        p = subprocess.run(cmd, cwd=REPO, capture_output=True, text=True, timeout=2400)
+    except subprocess.TimeoutExpired:
+        rec.update({"status": "failed", "error": "viral-daily.sh 40 dk'da bitmedi (zaman aşımı)"})
+        save_state(st)
+        print(f"[event-short] {e['key']}: ZAMAN AŞIMI (deneme {rec['attempts']}/{MAX_ATTEMPTS})")
+        return 2
     tail = (p.stdout or "")[-1500:]
     print(tail)
     if p.returncode != 0:
@@ -289,6 +306,11 @@ def run(e, st, now):
     for ln in tail.splitlines():
         if "Tamamlandı:" in ln and "→" in ln:
             url = ln.rsplit("→", 1)[1].strip()
+    if not url:   # hat bitti ama YouTube'a yüklenmedi (kota/ağ) → başarı sayma, bir kez daha denensin
+        rec.update({"status": "failed", "error": "YouTube URL yok — yükleme başarısız olabilir (logs/event-short.log)"})
+        save_state(st)
+        print(f"[event-short] {e['key']}: YouTube'a yüklenmedi (deneme {rec['attempts']}/{MAX_ATTEMPTS})")
+        return 2
     rec.update({"status": "done", "youtube_url": url, "topic": e["topic"]})
     rec.pop("error", None)
     save_state(st)
@@ -309,7 +331,10 @@ def main(argv):
         print("[event-short] başka bir event-short çalışıyor — çıkış")
         return 0
     st = load_state()
+    before = json.dumps(st, sort_keys=True)
     cands = candidates(now, st, ignore_state="--all" in argv)
+    if not dry and json.dumps(st, sort_keys=True) != before:
+        save_state(st)
     if dry:
         if not cands:
             print("[event-short] üretilecek taze olay yok")
@@ -323,7 +348,7 @@ def main(argv):
         print(f"[event-short] {cands[0]['key']} hazır ama saat {now:%H:%M} UTC — sabaha bırakıldı")
         return 0
     # iki olay videosu arası ≥ GAP_H: aynı gün art arda iki video birbirinin akış dağıtımını yiyor (V2, 10-15)
-    last = max((v.get("ts", "") for v in st.values() if v.get("status") == "done"), default="")
+    last = max((v.get("ts", "") for k, v in st.items() if not k.startswith("_") and v.get("status") == "done"), default="")
     if last:
         gap = (now - dt.datetime.fromisoformat(last)).total_seconds() / 3600
         if gap < GAP_H:
