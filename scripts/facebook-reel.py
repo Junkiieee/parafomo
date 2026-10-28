@@ -362,8 +362,13 @@ def build_description(meta, slug, root):
     post = published_post(root, slug)
     has_blog = post is not None
     url = site_url(slug, "reel", has_blog)
+    link = (meta.get("link") or "").strip()   # olay sonucu Short'u → ilgili hesaplama sayfası (event-short.py)
+    if link and not has_blog:
+        base = link if link.startswith("http") else f"{SITE}/{link.lstrip('/')}"
+        url = f"{base}{'&' if '?' in base else '?'}{UTM.format(campaign='reel')}"
+    lead = "Tamamı" if has_blog else ("Kendi rakamını hesapla" if link else "Daha fazlası")
     parts = [title, ctx, f"💬 {pick_question(slug, title, meta.get('format'))}",
-             f"{'Tamamı' if has_blog else 'Daha fazlası'}: {url}",
+             f"{lead}: {url}",
              pick_hashtags(meta, slug, title, (post or {}).get("tags"))]
     return "\n\n".join(p for p in parts if p), url, has_blog
 
