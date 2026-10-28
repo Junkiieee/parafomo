@@ -84,5 +84,9 @@ sıralar, yeni fikir ekler (açık madde ≤ 25). Biçim: `- [ ] R<n> (kanal) �
   backlink (baş sorgulardaki otorite kilidinin tek kalıcı çözümü). Kaan 10-15'te "dış link planı şimdilik yok" dedi.
 - [ ] R16 (Kaan kararı) — **Açık veri sayfası** · CSV/JSON (TÜFE/kira oranı/altın-dolar getirisi/halka arz getirileri
   tarihçesi) — gazeteci/blogcu atıfı. R15 ile aynı karar.
+- [ ] R18 (Kaan kararı) — **TikTok'a aynı dikey videolar** · her gün zaten 2-4 dikey video üretiyoruz; TikTok Türkiye'de
+  YouTube Shorts'tan büyük kısa video kitlesi. Content Posting API: Kaan TikTok hesabı + geliştirici uygulaması açar,
+  denetim (audit) onayına kadar videolar yalnız "özel" yüklenir. Onay gelirse ajan `scripts/tiktok-upload.py` yazar
+  (facebook-reel.py kalıbı: izin yoksa sessiz atla). Ban riski: aynı videoyu birebir 3 platforma basmak serbest, spam değil.
 - [ ] R17 (Kaan, 2 dk) — **Yandex Webmaster** · Türkiye'de ~%5 arama payı; IndexNow zaten Yandex'e de gidiyor, site
   doğrulaması Kaan'ın hesabıyla. Düşük öncelik.

@@ -10,10 +10,11 @@ REPO="/root/parafomo"
 . "$REPO/scripts/lib/gitsync.sh"
 cd "$REPO" || exit 1
 out=$(python3 "$REPO/scripts/policy-decisions.py" 2>&1); echo "[$(date -u '+%F %T UTC')] $out"
-# Olay sonucu Short'u (resmî rakamla "açıklandı" videosu) — taze karar yoksa ağa/LLM'e çıkmadan biter
-setsid nohup python3 "$REPO/scripts/event-short.py" >> "$REPO/logs/event-short.log" 2>&1 < /dev/null &
-case "$out" in *GÜNCELLENDİ*) ;; *) exit 0 ;; esac
+# Olay sonucu Short'u (resmî rakamla "açıklandı" videosu): karar yeni yazıldıysa commit+deploy'dan SONRA,
+# değilse yine de bak (önceki çalışmada ertelenen/başarısız taze olay) — taze olay yoksa ağa/LLM'e çıkmadan biter.
+case "$out" in *GÜNCELLENDİ*) ;; *) setsid nohup python3 "$REPO/scripts/event-short.py" >> "$REPO/logs/event-short.log" 2>&1 < /dev/null & exit 0 ;; esac
 git_sync >/dev/null 2>&1 || echo "UYARI: pull başarısız (devam)"
 git_add_commit "veri: faiz kararı eklendi (otomatik $(date -u '+%F %H:%M UTC'))" data/fomc-2026.json data/tcmb-2026.json \
   || { echo "commit başarısız"; exit 0; }
 bash "$REPO/scripts/deploy-push.sh"
+setsid nohup python3 "$REPO/scripts/event-short.py" >> "$REPO/logs/event-short.log" 2>&1 < /dev/null &
