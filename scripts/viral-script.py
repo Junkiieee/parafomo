@@ -287,6 +287,8 @@ def has_number(text, num):
         return True
     alts = {n, n.replace(",", "."), n.replace(".", ",")}
     alts |= {a.replace(".", "") for a in list(alts) if re.fullmatch(r"\d{1,3}(\.\d{3})+", a)}
+    # ondalıktaki sondaki sıfır: '28,90' ↔ '28,9' · '36,00' ↔ '36'
+    alts |= {re.sub(r"[,.]$", "", re.sub(r"0+$", "", a)) for a in list(alts) if re.search(r"[,.]\d*0$", a)}
     for a in alts:
         if re.search(r"(?<![\d.,])" + re.escape(a) + r"(?![\d])", text or ""):
             return True

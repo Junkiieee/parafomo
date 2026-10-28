@@ -29,16 +29,16 @@ import subprocess
 import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA = os.path.join(REPO, "data")
+DATA = os.environ.get("EVENT_SHORT_DATA") or os.path.join(REPO, "data")       # test: sahte veri klasörü
 LOGS = os.path.join(REPO, "logs")
-STATE = os.path.join(LOGS, "event-shorts.json")
+STATE = os.environ.get("EVENT_SHORT_STATE") or os.path.join(LOGS, "event-shorts.json")
 LOCK = os.path.join(LOGS, "event-short.lock")
 AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos",
          "Eylül", "Ekim", "Kasım", "Aralık"]
 FRESH_H = 36            # olaydan bu kadar saat sonrasına kadar video anlamlı
 WINDOW_UTC = (5, 21)    # 08:00–24:00 TSİ arası üret; dışında sabaha bırak
 MAX_ATTEMPTS = 2        # aynı olay için en fazla 2 deneme (LLM/render hatası)
-TUIK_WAIT_H = 6         # TÜİK günü: ayın ana rakamı (Kasım'da YD oranı) gelmediyse en fazla bu kadar bekle
+GAP_H = 3               # iki olay videosu arası en az bu kadar saat
 
 
 def tr(x, nd=2):
@@ -91,9 +91,11 @@ def utc(d, hh, mm=0):
 
 # ------------------------------------------------------------------ olay dedektörleri
 def ev_tuik(now):
+    """TÜİK günü → 1-2 olay: her ay 'enflasyon + kira tavanı'; Ekim verisinde ayrıca '<yıl> yeniden değerleme
+    oranı', Haziran/Aralık verisinde ayrıca 'emekli zammı' (yılın en büyük iki sorgusu ayrı video hak ediyor)."""
     tufe = load("tufe-aylik.json").get("months") or []
     if len(tufe) < 2:
-        return None
+        return []
     m0, m1 = tufe[0], tufe[1]
     y, mo = map(int, m0["ay"].split("-"))
     covers = f"{AYLAR[mo - 1]} {y}"
@@ -106,33 +108,36 @@ def ev_tuik(now):
         rel = dt.date(y + (mo == 12), 1 if mo == 12 else mo + 1, 3)
     when = utc(rel, 7)   # 10:00 TSİ
     app = f"{AYLAR[rel.month - 1]} {rel.year}"   # kira tavanı uygulama ayıyla anılır
-    facts = [f"TÜİK {covers} enflasyonu ({rel:%d.%m.%Y} açıklandı): TÜFE aylık %{tr(m0['aylik'])}, "
-             f"yıllık %{tr(m0['yillik'])}. Bir önceki ay ({AYLAR[(mo - 2) % 12]}) yıllık enflasyon %{tr(m1['yillik'])} idi."]
-    musts, link, headline = [tr(m0["yillik"])], "/enflasyon-hesaplama/", ""
-    pending = []
-    # kira tavanı (12 aylık TÜFE ortalaması) — veri o ay için güncellendiyse
+    tufe_line = (f"TÜİK {covers} enflasyonu ({rel:%d.%m.%Y} açıklandı): TÜFE aylık %{tr(m0['aylik'])}, "
+                 f"yıllık %{tr(m0['yillik'])}. Bir önceki ay ({AYLAR[(mo - 2) % 12]}) yıllık enflasyon %{tr(m1['yillik'])} idi.")
+    base = {"key": f"tuik:{m0['ay']}", "when": when, "prio": 1, "facts": [tufe_line], "must": [tr(m0["yillik"])],
+            "link": "/enflasyon-hesaplama/", "topic": f"{covers} enflasyonu açıklandı", "pending": [], "wait_h": 2}
+    kira_ok = False
     for p in sorted(glob.glob(os.path.join(DATA, "kira-artis-*.json")), reverse=True):
         k = load(os.path.basename(p))
         if k.get("guncelAy") == app and k.get("guncelOran") is not None:
-            facts.append(f"Kira artış tavanı ({app} döneminde yenilenen sözleşmeler, 12 aylık TÜFE ortalaması): "
-                         f"%{tr(k['guncelOran'])}.")
-            link = "/kira-artis-orani-hesaplama/"
-            headline = headline or f"kira artış oranı {app}"
+            base["facts"].append(f"Kira artış tavanı ({app} döneminde yenilenen sözleşmeler, 12 aylık TÜFE ortalaması): "
+                                 f"%{tr(k['guncelOran'])}.")
+            base["must"].append(tr(k["guncelOran"]))
+            base["link"] = "/kira-artis-orani-hesaplama/"
+            base["topic"] += f" — {app} kira artış oranı belli oldu"
+            kira_ok = True
             break
-    # Ekim verisi → yeniden değerleme oranı kesinleşir (Kasım'ın en büyük sorgusu)
-    if mo == 10:
+    if not kira_ok:
+        base["pending"].append("kira tavanı")   # en fazla 2 saat bekle, sonra kirasız çık
+    evs = [base]
+    if mo == 10:   # Ekim verisi → yeniden değerleme oranı kesinleşir (Kasım'ın en büyük sorgusu)
         yd = load("yeniden-degerleme.json")
+        hy = yd.get("hedefYil") or y + 1
+        e = {"key": f"yd:{hy}", "when": when, "prio": 0, "link": "/yeniden-degerleme-orani/", "pending": [],
+             "wait_h": 6, "topic": f"{hy} yeniden değerleme oranı belli oldu (MTV, harç ve ceza zammı)"}
         if yd.get("sonAy") == m0["ay"] and yd.get("onikiAyOrt") is not None:
-            hy = yd.get("hedefYil")
-            facts.append(f"{hy} yeniden değerleme oranı kesinleşti: %{tr(yd['onikiAyOrt'])} (Yİ-ÜFE 12 aylık ortalama). "
-                         f"MTV, harçlar ve birçok vergi/ceza tutarı {hy} yılında bu orana göre artar; Cumhurbaşkanı MTV ve "
-                         f"harçlarda daha düşük bir oran belirleyebilir.")
-            musts.insert(0, tr(yd["onikiAyOrt"]))
-            link, headline = "/yeniden-degerleme-orani/", f"{hy} yeniden değerleme oranı"
-        else:
-            pending.append("yeniden değerleme oranı")
-    # Haziran/Aralık verisi → SSK/Bağ-Kur emekli zammı (6 aylık TÜFE farkı)
-    if mo in (6, 12):
+            e["facts"] = [f"{hy} yeniden değerleme oranı kesinleşti: %{tr(yd['onikiAyOrt'])} (TÜİK Yİ-ÜFE 12 aylık ortalama, "
+                          f"{rel:%d.%m.%Y}). MTV, harçlar ve birçok vergi/ceza tutarı {hy} yılında bu orana göre artar; "
+                          f"Cumhurbaşkanı MTV ve harçlarda daha düşük bir oran belirleyebilir.", tufe_line]
+            e["must"] = [tr(yd["onikiAyOrt"])]
+            evs.append(e)
+    if mo in (6, 12):   # Haziran/Aralık verisi → SSK/Bağ-Kur emekli zammı (6 aylık TÜFE farkı)
         want = [f"{y}-{x:02d}" for x in range(mo - 5, mo + 1)]
         by = {r["ay"]: r for r in tufe}
         if all(a in by for a in want):
@@ -140,12 +145,12 @@ def ev_tuik(now):
             for a in want:
                 cum *= 1 + float(by[a]["aylik"]) / 100
             zy, zm = (y + 1, "Ocak") if mo == 12 else (y, "Temmuz")
-            facts.append(f"SSK ve Bağ-Kur emeklilerinin {zm} {zy} zammı (son 6 ayın enflasyon farkı): %{tr((cum - 1) * 100)}.")
-            musts.insert(0, tr((cum - 1) * 100))
-            link, headline = "/emekli-zammi-hesaplama/", f"emekli zammı {zm} {zy}"
-    topic = f"{covers} enflasyonu açıklandı" + (f" — {headline} belli oldu" if headline else "")
-    return {"key": f"tuik:{m0['ay']}", "when": when, "topic": topic, "facts": facts, "must": musts[:2],
-            "link": link, "pending": pending, "wait_h": TUIK_WAIT_H}
+            evs.append({"key": f"emekli:{zy}-{zm}", "when": when, "prio": 0, "link": "/emekli-zammi-hesaplama/",
+                        "pending": [], "topic": f"SSK ve Bağ-Kur emekli zammı {zm} {zy} belli oldu",
+                        "facts": [f"SSK ve Bağ-Kur emeklilerinin {zm} {zy} zammı (son 6 ayın enflasyon farkı, TÜİK "
+                                  f"{rel:%d.%m.%Y}): %{tr((cum - 1) * 100)}.", tufe_line],
+                        "must": [tr((cum - 1) * 100)]})
+    return evs
 
 
 def _next_range(ms, after):
@@ -235,15 +240,16 @@ def save_state(st):
 
 
 def candidates(now, st, ignore_state=False):
-    out = []
+    found = []
     for det in DETECTORS:
         try:
-            e = det(now)
+            r = det(now)
         except Exception as ex:
             print(f"[event-short] {det.__name__} okunamadı: {type(ex).__name__}: {str(ex)[:120]}")
             continue
-        if not e:
-            continue
+        found += r if isinstance(r, list) else ([r] if r else [])
+    out = []
+    for e in found:
         age_h = (now - e["when"]).total_seconds() / 3600
         rec = st.get(e["key"], {})
         e["age_h"] = age_h
@@ -257,7 +263,7 @@ def candidates(now, st, ignore_state=False):
             print(f"[event-short] {e['key']}: bekleniyor ({', '.join(e['pending'])} henüz gelmedi, {age_h:.1f} sa)")
             continue
         out.append(e)
-    return sorted(out, key=lambda e: e["when"])
+    return sorted(out, key=lambda e: (e["when"], e.get("prio", 1)))
 
 
 def run(e, st):
@@ -316,6 +322,13 @@ def main(argv):
     if not (WINDOW_UTC[0] <= now.hour < WINDOW_UTC[1]):
         print(f"[event-short] {cands[0]['key']} hazır ama saat {now:%H:%M} UTC — sabaha bırakıldı")
         return 0
+    # iki olay videosu arası ≥ GAP_H: aynı gün art arda iki video birbirinin akış dağıtımını yiyor (V2, 10-15)
+    last = max((v.get("ts", "") for v in st.values() if v.get("status") == "done"), default="")
+    if last:
+        gap = (now - dt.datetime.fromisoformat(last)).total_seconds() / 3600
+        if gap < GAP_H:
+            print(f"[event-short] {cands[0]['key']} hazır ama son olay videosu {gap:.1f} sa önce — {GAP_H} sa aralık bekleniyor")
+            return 0
     return run(cands[0], st)
 
 
