@@ -279,6 +279,11 @@ def sec_channels():
         lines.append(f"- **YouTube (28g):** {int(v):,} izlenme · +{int(sg)} / −{int(sl)} abone → "
                      f"**{f['yt_subs_per_1k']} abone / 1000 izlenme** · kaynak: Shorts akışı %{f['yt_shorts_feed_share']}"
                      f" · **YouTube araması %{f['yt_search_share']}** · dış link %{round(src.get('EXT_URL', 0) / allv * 100, 1)}")
+        terms = q(metrics="views", dimensions="insightTrafficSourceDetail",
+                  filters="insightTrafficSourceType==YT_SEARCH", sort="-views", maxResults=15)
+        if terms:
+            lines.append("- **YouTube'da bizi bulduran aramalar (28g, izlenme)** — video konusu/başlığı bu kalıplardan: "
+                         + " · ".join(f"{t[0]} {int(t[1])}" for t in terms))
     except Exception as e:
         lines.append(f"- YouTube kanal metrikleri alınamadı: {type(e).__name__}")
     # Instagram + Facebook takipçi
