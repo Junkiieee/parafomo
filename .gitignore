@@ -44,6 +44,7 @@ data/learning/opportunities.json
 data/learning/trends-cache.json
 data/learning/seo-audit.json
 data/learning/seo-index.json
+data/learning/yt-search-terms.json
 
 # Büyüme Ajanı geçici durum/log (versiyonlanmaz)
 agent/state/
