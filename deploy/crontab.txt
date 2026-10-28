@@ -14,6 +14,8 @@
 
 # --- Sabah: blog (ajanın konu kuyruğundan) + blog→Short hazırlığı + gündem ---
 0 6 * * 1-5 /root/parafomo/scripts/daily-content.sh >> /root/parafomo/logs/cron.log 2>&1
+# Gün içi fiyat tazeleme (altın/DXY/tahvil; değişiklik varsa commit+push → deploy). Cumartesi Kapalıçarşı açık.
+30 8,10,12,14,16 * * 1-6 /root/parafomo/scripts/prices-refresh.sh >> /root/parafomo/logs/prices.log 2>&1
 30 6 * * * /root/parafomo/scripts/news-daily.sh >> /root/parafomo/logs/news.log 2>&1
 45 7 * * * /root/parafomo/scripts/shorts-daily.sh --prepare >> /root/parafomo/logs/shorts.log 2>&1
 

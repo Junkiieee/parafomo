@@ -1,12 +1,15 @@
-# Kaan'dan beklenenler (haftalık koşu 2026-10-22 — tek iş, tarihli; yeni hesap/API ihtiyacı yok)
+# Kaan'dan beklenenler (güncelleme 2026-10-28 — 2 kısa iş + 1 tarihli; yeni hesap/API ihtiyacı yok)
 
-1. **ŞİMDİ (1 dakika) — yanlış başlıklı Short'u düzelt**
-   22 Ekim sabahı karar açıklanmadan üretilen gündem videosunun başlığı "Merkez Bankası faizi sabit tuttu, cebine ne oldu"
-   ama TCMB faizi %37'den %36'ya İNDİRDİ (video anlatımı tarafsız, yalnız başlık yanlış). YouTube Studio → İçerik →
-   https://youtube.com/shorts/ju3eIYBRa7M → Başlık: "Merkez Bankası faiz kararı cebine nasıl dokunuyor #Shorts" → Kaydet.
-   Instagram Reel (https://www.instagram.com/reel/DeyWcNigded/) açıklamasında aynı ifade varsa "Düzenle" ile aynı başlığı yaz.
-   Neden: yanıltıcı başlık YouTube politikasına aykırı; ajanın YouTube yetkisi yalnız yükleme (başlığı API'den değiştiremiyor).
-   Kök neden kapatıldı: gündem videoları artık sonucu iddia eden başlıkla üretilemez.
+1. **ŞİMDİ (30 saniye) — Instagram Reel açıklamasının ilk satırını düzelt**
+   YouTube başlığı 2026-10-28'de API'den düzeltildi (ju3eIYBRa7M → "Merkez Bankası faiz kararı cebine nasıl dokunuyor").
+   Instagram API açıklama düzenlemeyi desteklemiyor (#3 Unknown method) → elle: https://www.instagram.com/reel/DeyWcNigded/
+   → ⋯ → Düzenle → ilk satır "Merkez Bankası faizi sabit tuttu, cebine ne oldu" yerine
+   "Merkez Bankası faiz kararı cebine nasıl dokunuyor" → Bitti. (TCMB faizi %37→%36 indirdi; "sabit tuttu" yanlış.)
+
+1b. **ŞİMDİ (10 saniye) — gün içi fiyat tazeleme cron'unu kur**
+   `scripts/prices-refresh.sh` + `deploy/crontab.txt` satırı hazır (altın/DXY/tahvil Pzt-Cmt 5 kez tazelenir; hafta sonu
+   Cuma fiyatı kalmaz). Otomatik izin denetimi crontab yazmayı engelledi → Claude Code'a şunu yaz:
+   `! crontab /root/parafomo/deploy/crontab.txt`
 
 2. **3 Kasım (Salı) öğleden sonra — Google'a "yeniden tara" de (5 dakika)**
    TÜİK Ekim verisi 10:00'da açıklanınca sitedeki 2027 yeniden değerleme sayfaları otomatik "Belli Oldu: %X" olur,
