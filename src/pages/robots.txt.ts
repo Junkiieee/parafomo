@@ -6,6 +6,7 @@ Allow: /
 Disallow: /portfoy/
 
 Sitemap: ${new URL('sitemap-index.xml', SITE.url).href}
+Sitemap: ${new URL('news-sitemap.xml', SITE.url).href}
 `;
 
 export const GET: APIRoute = () =>

@@ -1,0 +1,117 @@
+---
+// Paylaş çubuğu — WhatsApp önde (aile gruplarında zam/hesap sonucu paylaşımı), sonra Telegram, Facebook, X, kopyala.
+// Paylaşılan her adres UTM taşır (utm_medium=social → GA4 "Organic Social"); tıklama ayrıca GA4 "share" olayı.
+// Düz <a> paylaşım linkleri (JS’siz çalışır); yalnız kopyalama küçük bir betik ister.
+// Kullanım: PostLayout (yazı başı compact + yazı sonu full), BaseLayout (araç sayfaları, full).
+// İkonlar: Simple Icons (CC0) + kendi zincir ikonu; sayfada bir kez <symbol> olarak basılır, çubuklar <use> ile çağırır.
+import { SITE } from '../site.config';
+
+interface Props {
+  title: string;
+  variant?: 'compact' | 'full';
+  label?: string; // full: görünen başlık; ikisinde de grubun erişilebilir adı
+  ctx: string; // GA4 share olayının content_type’ı: post_top | post_end | tool
+  sprite?: boolean; // ikon sembolleri — sayfadaki İLK çubukta true olmalı
+  url?: string; // varsayılan: sayfanın kanonik adresi (BaseLayout ile aynı kural)
+}
+
+const { title, variant = 'full', label = 'Paylaş', ctx, sprite = true } = Astro.props;
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.pathname + '/';
+const url = Astro.props.url ?? new URL(path, SITE.url).href;
+const full = variant === 'full';
+const u = (src: string) => url + '?utm_source=' + src + '&utm_medium=social&utm_campaign=share';
+const enc = encodeURIComponent;
+const links = [
+  { id: 'telegram', icon: '#sb-tg', name: 'Telegram’da paylaş', href: 'https://t.me/share/url?url=' + enc(u('telegram')) + '&text=' + enc(title) },
+  { id: 'facebook', icon: '#sb-fb', name: 'Facebook’ta paylaş', href: 'https://www.facebook.com/sharer/sharer.php?u=' + enc(u('facebook')) },
+  { id: 'x', icon: '#sb-x', name: 'X’te paylaş', href: 'https://x.com/intent/post?text=' + enc(title) + '&url=' + enc(u('x')) },
+];
+---
+
+<div class:list={['sb', full ? 'sb-f' : 'sb-c']} role="group" aria-label={label} data-ctx={ctx}>
+  {sprite && (
+    <svg hidden><symbol id="sb-wa" viewBox="0 0 24 24"><path d="m17.5 14.4-2-1q-.4-.1-.7.2l-1 1.1q-.2.3-.6.1-.6 0-2.4-1.5l-1.7-2q-.1-.4.2-.6l.4-.6.3-.5v-.5L9 7q-.3-.7-.6-.5h-.6a1 1 0 0 0-.8.4c-.2.3-1 1-1 2.5 0 1.4 1 2.8 1.2 3s2.1 3.2 5.1 4.5l1.7.6a4 4 0 0 0 1.9.2c.5-.1 1.7-.8 2-1.5q.3-1 .1-1.4zM12 21.8a10 10 0 0 1-5-1.4l-.3-.2-3.8 1 1-3.7-.2-.3a10 10 0 0 1-1.5-5.3 9.9 9.9 0 0 1 16.8-7 10 10 0 0 1 3 7 10 10 0 0 1-10 9.9m8.5-18.3A12 12 0 0 0 12 0 12 12 0 0 0 1.7 17.8L.1 24l6.3-1.7a12 12 0 0 0 5.6 1.5 12 12 0 0 0 12-11.9 12 12 0 0 0-3.5-8.4" /></symbol><symbol id="sb-tg" viewBox="0 0 24 24"><path fill="#229ED9" d="M0 12a12 12 0 1 0 24 0 12 12 0 1 0-24 0m17-4.8.4.2.1.3v.5c-.1 1.9-.9 6.5-1.3 8.6q-.3 1.3-.8 1.2-1 0-2-.9l-2.6-1.8c-1.2-.8-.4-1.2.3-1.9l3.3-3.2V10H14q-.2 0-5.1 3.3-.8.5-1.3.5-.8-.1-1.9-.5-1.2-.2-1.3-.8 0-.3 1-.6z" /></symbol><symbol id="sb-fb" viewBox="0 0 24 24"><path fill="#1877F2" d="M9.1 23.7v-8H6.6V12h2.5v-1.5q-.1-6 5.9-6h1.4l1.2.3V8h-1.4q-1 0-1.7.3l-.7.6q-.3.6-.3 1.7V12h3.9l-.4 2.1-.3 1.6h-3.2V24a12 12 0 1 0-4.4-.3" /></symbol><symbol id="sb-x" viewBox="0 0 24 24"><path d="M18.9 1.2h3.7l-8 9.1L24 22.8h-7.4l-5.8-7.5-6.6 7.5H.5L9 13 0 1.2h7.6L12.8 8Zm-1.3 19.4h2L6.5 3.2H4.3Z" /></symbol><symbol id="sb-ln" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M10 13.5a4.6 4.6 0 0 0 6.6.4l3-3a4.6 4.6 0 0 0-6.5-6.5l-1.5 1.5M14 10.5a4.6 4.6 0 0 0-6.6-.4l-3 3a4.6 4.6 0 0 0 6.5 6.5l1.5-1.5" /></symbol></svg>
+  )}
+  {full && <p class="sb-t">{label}</p>}
+  <a class="sb-wa" href={'https://wa.me/?text=' + enc(title + '\n' + u('whatsapp'))} target="_blank" rel="nofollow noopener" data-sb="whatsapp" aria-label={full ? undefined : 'WhatsApp’ta paylaş'}><svg aria-hidden="true"><use href="#sb-wa" /></svg>{full ? 'WhatsApp’ta paylaş' : 'WhatsApp'}</a>
+  {links.map((l) => (
+    <a class="sb-i" href={l.href} target="_blank" rel="nofollow noopener" data-sb={l.id} aria-label={l.name}><svg aria-hidden="true"><use href={l.icon} /></svg></a>
+  ))}
+  <button type="button" class:list={[!full && 'sb-i']} data-sb="copy" data-url={u('copy')} aria-label={full ? undefined : 'Bağlantıyı kopyala'}><svg aria-hidden="true"><use href="#sb-ln" /></svg>{full && 'Bağlantıyı kopyala'}</button>
+  <span class="sb-msg" role="status"></span>
+</div>
+
+<script>
+  // GA4 "share" olayı (paylaşım niyeti; gelen ziyareti UTM ölçer) + "Bağlantıyı kopyala".
+  // Clipboard API yoksa/reddederse execCommand, o da olmazsa prompt — hiçbir yolda hata fırlatmaz.
+  document.addEventListener('click', (e) => {
+    const t = e.target as Element;
+    const b = (t && t.closest && t.closest('[data-sb]')) as HTMLElement | null;
+    if (!b) return;
+    const bar = b.parentElement as HTMLElement;
+    const method = b.dataset.sb;
+    try {
+      (window as any).gtag('event', 'share', { method, content_type: bar.dataset.ctx });
+    } catch {}
+    if (method !== 'copy') return;
+    const url = b.dataset.url || location.href;
+    const msg = bar.querySelector('.sb-msg') as HTMLElement;
+    const ok = () => {
+      msg.textContent = 'Bağlantı kopyalandı';
+      setTimeout(() => (msg.textContent = ''), 2500);
+    };
+    const legacy = () => {
+      let done = false;
+      const ta = document.createElement('textarea');
+      ta.value = url;
+      ta.readOnly = true;
+      ta.style.cssText = 'position:fixed;top:0;opacity:0';
+      document.body.append(ta);
+      try {
+        ta.select();
+        done = document.execCommand('copy');
+      } catch {}
+      ta.remove(); // execCommand fırlatsa da görünmez alan sayfada kalmasın (dokunmaları yutardı)
+      b.focus();
+      if (done) ok();
+      else {
+        try {
+          prompt('Bağlantıyı kopyalayın:', url);
+        } catch {}
+      }
+    };
+    try {
+      navigator.clipboard.writeText(url).then(ok, legacy);
+    } catch {
+      legacy();
+    }
+  });
+</script>
+
+<style is:global>
+  /* Global + sb- önekli: scoped stil her öğeye data-astro-cid ekleyip HTML’i şişirirdi. Butonlar her ekranda 44 px (dokunma hedefi). */
+  .sb { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+  .sb-c { justify-content: center; margin-top: 1rem; }
+  .sb-f { margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid var(--border-soft); }
+  /* Araç sayfası sarmalayıcısı (.container): .container düzenli sayfalarda onlarla hizalı; ortalı 820 px
+     hesaplayıcı düzeninde ona hizalanır ve sarmalayıcının 4rem alt boşluğuna biraz yaslanır. */
+  .sb-tool { margin-bottom: 2.5rem; }
+  .sb-tool > .sb { margin-top: 0; }
+  main:has(> .calc-wrap, > .gp-wrap, > .wrap) > .sb-tool { max-width: 820px; margin-top: -2rem; padding-inline: 1.1rem; }
+  .sb-t { flex: 1 0 100%; margin: 0; font: 700 0.8rem/1.6 var(--font-sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--brand-deep); }
+  .sb a, .sb button {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; height: 44px; padding: 0 0.85rem;
+    border: 1px solid var(--border); border-radius: 99px; background: var(--bg-card); color: var(--text);
+    font: 600 var(--step--1)/1 var(--font-sans); white-space: nowrap; cursor: pointer;
+  }
+  .sb a:hover, .sb button:hover { border-color: var(--brand-2); }
+  .sb .sb-i { width: 44px; padding: 0; }
+  .sb svg { width: 18px; height: 18px; flex: none; fill: currentColor; }
+  .sb .sb-wa { background: #1d8348; border-color: #1d8348; color: #fff; }
+  .sb-msg { position: absolute; top: 100%; left: 50%; transform: translate(-50%, 0.4rem); z-index: 5; border-radius: 6px; background: var(--text); color: var(--bg); font: 600 0.78rem/1.2 var(--font-sans); white-space: nowrap; pointer-events: none; }
+  .sb-msg:not(:empty) { padding: 0.35rem 0.7rem; }
+  @media (max-width: 480px) {
+    .sb-f .sb-wa { flex: 1 0 100%; }
+    .sb-f button { flex: 1 0 auto; }
+  }
+</style>

@@ -5,6 +5,9 @@ Neden: Google sitemap-index'i 2026-07-03'ten 2026-10-08'e kadar hiç yeniden ind
 açılan 40 halka arz sayfası "URL is unknown to Google" kaldı. Yeni sayfa açan her hat
 (blog, halka arz arşivi, veri sayfaları) deploy ettikten sonra bu betik Google'ı dürter.
 
+Google News site haritası (news-sitemap.xml, son 48 saatin yazıları) ana harita gönderildiğinde
+onunla birlikte gönderilir; değişiklik tespiti yalnız ana haritanın URL kümesine bakar.
+
 Kullanım:  python scripts/gsc-sitemap.py            # gerekirse gönder
            python scripts/gsc-sitemap.py --status   # yalnız durumu yaz
            python scripts/gsc-sitemap.py --force    # koşulsuz gönder
@@ -22,6 +25,7 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KEY = os.path.expanduser("~/.config/parafomo/ga-sa.json")  # dashboard.py ile aynı servis hesabı
 SITE = "sc-domain:parafomo.com"
 FEED = "https://parafomo.com/sitemap-index.xml"
+NEWS_FEED = "https://parafomo.com/news-sitemap.xml"
 STATE = os.path.join(REPO, "logs", "gsc-sitemap-state.json")
 MAX_AGE_DAYS = 7
 
@@ -77,6 +81,12 @@ def main():
     except Exception as e:
         print(f"[gsc-sitemap] UYARI: gönderim başarısız: {type(e).__name__}: {str(e)[:200]}")
         return 0
+    # Haber haritası: ana haritanın yanında; başarısızlığı ana gönderimi/durumu etkilemez.
+    try:
+        sc.sitemaps().submit(siteUrl=SITE, feedpath=NEWS_FEED).execute()
+        print(f"[gsc-sitemap] haber haritası gönderildi · {NEWS_FEED}")
+    except Exception as e:
+        print(f"[gsc-sitemap] UYARI: haber haritası gönderilemedi: {type(e).__name__}: {str(e)[:200]}")
     new = sorted(set(urls) - set(state.get("urls", [])))
     os.makedirs(os.path.dirname(STATE), exist_ok=True)
     json.dump({"digest": digest, "submitted_utc": now.isoformat(), "urls": urls}, open(STATE, "w"))

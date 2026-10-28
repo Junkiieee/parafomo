@@ -4,12 +4,19 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
 import RelatedGuides from '../components/RelatedGuides.astro';
+import ShareBar from '../components/ShareBar.astro';
+import { TOOLS } from '../data/tools';
 import '../styles/global.css';
 
 interface Props {
   title?: string;
   description?: string;
   image?: string;
+  // Yazı hero fotoğrafı (≥1200 px): Article.image dizisinin başına girer (Google Discover büyük görsel ister).
+  // og:image/twitter:image değişmez — sohbet önizlemesinde metinli sosyal kart daha iyi.
+  heroImage?: { src: string; width: number; height: number };
+  news?: boolean; // olay/haber yazısı → NewsArticle
+  share?: boolean | string; // araç paylaş çubuğu: verilmezse otomatik, false = gizle, metin = başlık
   type?: 'website' | 'article';
   publishedTime?: string;
   modifiedTime?: string;
@@ -26,6 +33,9 @@ const {
   title,
   description = SITE.description,
   image = '/og-default.png',
+  heroImage,
+  news = false,
+  share,
   type = 'website',
   publishedTime,
   modifiedTime,
@@ -71,14 +81,17 @@ const orgLd = {
 const WEBSITE_ID = `${SITE.url}/#website`;
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': isArticle ? 'Article' : isHome ? 'WebSite' : 'WebPage',
+  '@type': isArticle ? (news ? 'NewsArticle' : 'Article') : isHome ? 'WebSite' : 'WebPage',
   ...(isHome && { '@id': WEBSITE_ID, alternateName: 'parafomo.com' }),
   ...(!isArticle && !isHome && { isPartOf: { '@type': 'WebSite', '@id': WEBSITE_ID, name: SITE.name, url: SITE.url } }),
   name: isHome ? SITE.name : pageTitle,
   headline: title ?? SITE.name,
   description,
   url: canonical,
-  image: ogImage,
+  image:
+    isArticle && heroImage
+      ? [{ '@type': 'ImageObject', url: new URL(heroImage.src, SITE.url).href, width: heroImage.width, height: heroImage.height }, ogImage]
+      : ogImage,
   inLanguage: 'tr-TR',
   ...(isArticle && { mainEntityOfPage: { '@type': 'WebPage', '@id': canonical } }),
   ...(isArticle && {
@@ -137,6 +150,13 @@ const calcLd = canonPath.includes('hesaplama')
       provider: { '@type': 'Organization', '@id': ORG_ID, name: SITE.name },
     }
   : null;
+
+// Araç/veri sayfası sonunda paylaş çubuğu (WhatsApp önde): araç listesi (src/data/tools.ts) sayfaları + alt
+// sayfaları (/altin-fiyatlari/<tür>/, /halka-arz/<şirket>/) + WebApplication şemalı hesaplayıcılar; araç merkezi hariç.
+const autoShare =
+  !isArticle && canonPath !== '/hesaplama-araclari/' && (calcLd !== null || TOOLS.some((t) => canonPath.startsWith(t.href)));
+const showShare = share === undefined ? autoShare : share !== false;
+const shareLabel = typeof share === 'string' ? share : calcLd ? 'Bu hesaplayıcıyı paylaş' : 'Bu sayfayı paylaş';
 ---
 
 <!doctype html>
@@ -201,6 +221,11 @@ const calcLd = canonPath.includes('hesaplama')
     <Header />
     <main id="main">
       <slot />
+      {showShare && (
+        <div class="container sb-tool">
+          <ShareBar title={title ?? SITE.name} label={shareLabel} ctx="tool" url={canonical} />
+        </div>
+      )}
       <RelatedGuides path={canonPath} />
     </main>
     <Footer />

@@ -8,8 +8,9 @@ import AppCTA from '../components/AppCTA.astro';
 import PostCard from '../components/PostCard.astro';
 import EventResult from '../components/EventResult.astro';
 import RelatedTools from '../components/RelatedTools.astro';
+import ShareBar from '../components/ShareBar.astro';
 import { eventResult, fillTitle } from '../data/event-result';
-import { categorySlug, SITE } from '../site.config';
+import { categorySlug } from '../site.config';
 
 const { post, headings = [], related = [] } = Astro.props;
 const { title: rawTitle, description, pubDate, updatedDate, category, tags, author, readingTime, cover, faq, sonuc, sonucBaslik } = post.data;
@@ -19,7 +20,8 @@ const title = (ev?.done && fillTitle(sonucBaslik, ev.vars)) || rawTitle;
 const baseModified = updatedDate ?? pubDate;
 const evModified = ev?.done ? new Date(ev.date + 'T12:00:00Z') : null;
 const modified = evModified && evModified > baseModified ? evModified : baseModified;
-const url = new URL(`/blog/${post.id}`, SITE.url).href;
+// Olay/haber yazısı (şemada NewsArticle): sonuç kutulu önizleme ya da slug’ında "ay-yıl" geçen (…-ekim-2026-…) yazı.
+const isNews = !!sonuc || /(?:^|-)(ocak|subat|mart|nisan|mayis|haziran|temmuz|agustos|eylul|ekim|kasim|aralik)-20\d\d(?:-|$)/.test(post.id);
 // og:image: önce frontmatter cover, yoksa yazıya özel sosyal kart (varsa), yoksa genel.
 const socialCard = `/social/${post.id}.png`;
 const hasCard = existsSync(join(process.cwd(), 'public', 'social', `${post.id}.png`));
@@ -40,6 +42,8 @@ const breadcrumbs = [
   title={title}
   description={description}
   image={ogImage}
+  heroImage={hasCover ? { src: coverSrc, width: 1600, height: 900 } : undefined}
+  news={isNews}
   type="article"
   publishedTime={pubDate.toISOString()}
   modifiedTime={modified.toISOString()}
@@ -67,6 +71,7 @@ const breadcrumbs = [
         <span class="avatar" aria-hidden="true">{author.charAt(0)}</span>
         <a href="/hakkimizda/#kim-yonetiyor">{author}</a>
       </div>
+      <ShareBar title={title} variant="compact" ctx="post_top" />
     </header>
 
     {ev && <EventResult ev={ev} />}
@@ -123,12 +128,7 @@ const breadcrumbs = [
           </div>
         )}
 
-        <div class="share">
-          <span class="muted">Paylaş:</span>
-          <a href={`https://x.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`} target="_blank" rel="noopener">X</a>
-          <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`} target="_blank" rel="noopener">LinkedIn</a>
-          <a href={`https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`} target="_blank" rel="noopener">WhatsApp</a>
-        </div>
+        <ShareBar title={title} label="Bu yazıyı paylaş" ctx="post_end" sprite={false} />
       </div>
     </div>
 
@@ -234,8 +234,6 @@ const breadcrumbs = [
   .faq-item p { margin: 0 0 1rem; color: var(--text-soft); font-size: var(--step-0); }
 
   .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2.5rem; }
-  .share { display: flex; align-items: center; gap: 0.9rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-soft); font-size: var(--step--1); }
-  .share a { font-weight: 600; }
 
   .related { max-width: var(--maxw); margin: 3rem auto 0; }
   .related h2 { font-size: var(--step-2); margin-bottom: 1.4rem; }
