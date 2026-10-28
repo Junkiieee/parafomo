@@ -87,7 +87,15 @@
       "range": "27-28 Ekim",
       "decisionDate": "2026-10-28",
       "tsiTime": "21:00",
-      "dotPlot": false
+      "dotPlot": false,
+      "result": {
+        "decision": "hold",
+        "bp": 0,
+        "lower": 3.75,
+        "upper": 4.0,
+        "vote": "10–2",
+        "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm"
+      }
     },
     {
       "range": "8-9 Aralık",
