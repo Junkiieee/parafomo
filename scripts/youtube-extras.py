@@ -34,14 +34,23 @@ PLAYLIST_TITLES = {
     "news_reaction": "Piyasa Gündemi",
     "single_concept": "60 Saniyede Kavram",
     "backtest_return": "Geri Dönük Getiri",
+    # olay sonucu (scripts/event-short.py) — seri kimliği: "rakam açıklanınca ilk burada" (abone vaadi)
+    "event_result": "Açıklandı: Faiz, Enflasyon ve Zamlar",
 }
 DEFAULT_PL = "ParaFOMO Shorts"
 
 BLOG_DIR = os.path.join(ROOT, "src", "content", "blog")
 
 
-def funnel_comment(slug):
-    """Sabit yorum: blog shortsa YAZIYA, viralse ana sayfaya link (huni + backlink)."""
+def funnel_comment(slug, meta=None):
+    """Sabit yorum: blog shortsa YAZIYA, viralse ana sayfaya link (huni + backlink).
+    Olay sonucu videosu (meta.link): ilgili hesaplama sayfası + seri vaadi (abone dönüşümü %0,07 — RC 10-28)."""
+    link = (meta or {}).get("link")
+    if link:
+        url = link if link.startswith("http") else "https://parafomo.com/" + link.lstrip("/")
+        return (f"🧮 Kendi rakamını hesapla (ücretsiz): {url}\n\n"
+                "🔔 Faiz kararı, enflasyon, kira ve emekli zammı açıklanır açıklanmaz rakamı ilk burada gör — "
+                "ABONE OL, bildirimi aç.")
     if os.path.exists(os.path.join(BLOG_DIR, f"{slug}.md")):
         url = f"https://parafomo.com/blog/{slug}/"
         return (f"📖 Bu videonun tam yazısı (ücretsiz rehber):\n👉 {url}\n\n"
@@ -147,7 +156,7 @@ def main():
     # 2) abone CTA yorumu
     if not args.no_comment:
         try:
-            post_comment(yt, video_id, funnel_comment(args.slug))
+            post_comment(yt, video_id, funnel_comment(args.slug, meta))
             print("[+] Abone CTA yorumu atıldı (sabitlemeyi Studio'dan yapabilirsin)", file=sys.stderr)
         except Exception as e:
             print(f"[i] Yorum atılamadı: {str(e)[:120]}", file=sys.stderr)
