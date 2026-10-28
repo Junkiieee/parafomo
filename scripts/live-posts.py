@@ -249,6 +249,12 @@ def main(argv):
                       f"Değişikliği content-templates/blog/{name} şablonuna taşı, sonra --adopt {slug}")
                 continue
         if cur is not None and normalize(new) == normalize(cur):
+            if slug == adopt and not check:
+                # şablon elle düzenlemeyle eşitlendi → dosyaya dokunmadan devral
+                state[slug] = {"hash": digest(cur), "uretim": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+                               "sablon": f"content-templates/blog/{name}"}
+                changed_state = True
+                print(f"[live-posts] DEVRALINDI {slug} (içerik aynı)")
             if check:
                 print(f"[live-posts] {slug}: güncel")
             continue
