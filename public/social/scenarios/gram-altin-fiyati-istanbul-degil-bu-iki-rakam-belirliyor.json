@@ -1,0 +1,62 @@
+{
+  "slug": "gram-altin-fiyati-istanbul-degil-bu-iki-rakam-belirliyor",
+  "title": "Gram altın fiyatı: İstanbul değil bu iki rakam belirliyor",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Gram altının fiyatı, ons fiyatı ile dolar kurunun çarpımından çıkar. İki ayaklı masa metaforuyla altının TL fiyatının neden hem onsa hem dolara bağlı olduğunu anlatıyoruz.",
+  "tags": [
+    "altın",
+    "gram altın",
+    "ons altın",
+    "dolar",
+    "yatırım",
+    "finans",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Gram altının fiyatını İstanbul belirlemiyor.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Dünyada altın ons ile satılır; bir ons yaklaşık 31 gram eder, fiyat dolarla Londra'da oluşur.",
+      "visual": {
+        "type": "object",
+        "query": "world globe"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama formül şaşırtıcı: ons fiyatını dolar kuruyla çarpıp 31'e bölersen, gram altın çıkar.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gram altın iki ayaklı masa: ons düşse de dolar çıkarsa TL fiyatı yükselebilir.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Risk",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sırada ons fiyatını tek bakışta okumak var; abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    }
+  ]
+}
