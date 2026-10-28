@@ -17,6 +17,23 @@ faq:
     a: "Önce işverenle görüşüp eksik bildirimin düzeltilmesini iste. Sonuç alamazsan ALO 170 veya SGK il müdürlüğüne başvurabilir, çalıştığını belgeleyen bordro, banka maaş dökümü gibi kanıtları saklamalısın. Hizmet tespiti davası için hizmetin geçtiği yılın sonundan itibaren 5 yıllık süre olduğunu unutma."
   - q: "Hizmet dökümünde 4A, 4B ve 4C ne anlama gelir?"
     a: "4/a hizmet akdiyle çalışanları (eski SSK), 4/b kendi adına bağımsız çalışanları (eski Bağ-Kur), 4/c ise kamu görevlilerini (eski Emekli Sandığı) ifade eder. Dökümde hangi statüde ne kadar prim günün olduğu ayrı ayrı görünür."
+shorts:
+  - "SGK'da senin adına tutulan gizli defteri gördün mü?"
+  - "Hizmet dökümü, ilk günden bugüne hangi işyerinde kaç gün prim yattığını gösteren resmi defterindir."
+  - "e-Devlet'te hizmet dökümü yazıp barkodlu belgeyi ücretsiz alırsın; eksik ay ya da düşük bildirilen maaş görünür."
+  - "Emeklilik, işsizlik maaşı ve borçlanma kararlarında önce bu belgeye bakılır; tanımadığın işyeri varsa SGK'ya bildir."
+  - "Peki primlerin eksiksiz yatıyor mu? Kontrol etmeden geçme, abone ol, her hafta emeklilik ipuçları parafomo.com'da."
+shorts_broll:
+  - "retirement planning"
+  - "person using smartphone"
+  - "paperwork documents desk"
+  - "senior couple retirement"
+shorts_visuals:
+  - "object|notebook ledger"
+  - "object|smartphone banking app"
+  - "object|barcode document"
+  - "object|calculator"
+  - "logo|ParaFOMO logo"
 ---
 
 **SGK hizmet dökümü**, sigortalı olduğun ilk günden bugüne hangi işyerinde, hangi ay, kaç gün ve hangi kazanç üzerinden prim ödendiğini gösteren resmi kayıttır. Emekliliğe ne kadar kaldığını hesaplamak, işverenin primini eksiksiz yatırıp yatırmadığını kontrol etmek ya da bir başvuruda çalışma geçmişini belgelemek için ilk bakacağın belge budur. Bu rehberde hizmet dökümünü e-Devlet'ten nasıl alacağını ve en önemlisi **nasıl okuyacağını** adım adım anlatıyoruz.
