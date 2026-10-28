@@ -266,13 +266,13 @@ def candidates(now, st, ignore_state=False):
     return sorted(out, key=lambda e: (e["when"], e.get("prio", 1)))
 
 
-def run(e, st):
+def run(e, st, now):
     facts = " ".join(e["facts"])
     cmd = ["bash", os.path.join(REPO, "scripts", "viral-daily.sh"), "--format", "event_result",
            "--topic", e["topic"], "--facts", facts, "--must", "|".join(e["must"]), "--link", e["link"]]
     rec = st.setdefault(e["key"], {})
     rec["attempts"] = rec.get("attempts", 0) + 1
-    rec["ts"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    rec["ts"] = now.isoformat(timespec="seconds")
     save_state(st)
     print(f"[event-short] {e['key']} → video üretiliyor: {e['topic']} | zorunlu: {e['must']} | link {e['link']}")
     p = subprocess.run(cmd, cwd=REPO, capture_output=True, text=True, timeout=2400)
@@ -329,7 +329,7 @@ def main(argv):
         if gap < GAP_H:
             print(f"[event-short] {cands[0]['key']} hazır ama son olay videosu {gap:.1f} sa önce — {GAP_H} sa aralık bekleniyor")
             return 0
-    return run(cands[0], st)
+    return run(cands[0], st, now)
 
 
 if __name__ == "__main__":
