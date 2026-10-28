@@ -53,8 +53,8 @@ const titleKuyruk = usd
   : [`${spec.ad} Kaç TL${spec.birim === 'adet' ? ', Kaç Gram' : ''}?`, `${spec.ad} Kaç TL?`, 'Kaç TL?'];
 const title = titleKuyruk.map((k) => `${titleBase} | ${k}`).find((t) => t.length <= 68) ?? titleBase;
 const description = usd
-  ? `Ons altın bugün ${fmt2(satis)} $. Ons kaç gram (31,1035 g), TL'ye nasıl çevrilir, gram altınla ilişkisi — ${dateLabel} verisiyle, her gün güncel.`
-  : `${spec.ad} bugün satış ${fmt0(satis)} ₺, alış (bozdurma) ${fmt0(alis)} ₺. ${spec.birim === 'adet' ? `${g3(spec.gram)} gram, ` : ''}${spec.ayar}; içindeki saf altın, işçilik primi ve adet hesaplayıcı — ${dateLabel} verisiyle, her gün güncel.`;
+  ? `Ons altın bugün ${fmt2(satis)} $ (${dateLabel}). Ons kaç gram (31,1035 g), TL'ye nasıl çevrilir, gram altınla ilişkisi.`
+  : `${spec.ad} bugün satış ${fmt0(satis)} ₺, alış (bozdurma) ${fmt0(alis)} ₺ (${dateLabel}). ${spec.birim === 'adet' ? `${g3(spec.gram)} gram, ` : ''}${spec.ayar}; saf altın değeri, işçilik primi ve adet hesaplayıcı.`;
 
 const ziynetSikkeNotu =
   spec.grup === 'ziynet' || spec.grup === 'sikke'
