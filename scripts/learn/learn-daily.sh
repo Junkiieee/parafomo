@@ -41,6 +41,9 @@ fi
 # Sürekli SEO denetimi: dist statik kontrol + Google URL Inspection (günde 60 sayfa, yeni/indekssiz önce)
 "$VPY" "$REPO/scripts/seo-audit.py" --google --budget 60 --quiet || echo "UYARI: SEO denetimi başarısız"
 
+# Olay sonucu Short'u güvenlik ağı: gece ertelenen ya da hata alan taze olay (≤36 sa) sabah üretilir
+setsid nohup python3 "$REPO/scripts/event-short.py" >> "$REPO/logs/event-short.log" 2>&1 < /dev/null &
+
 echo "[3/4] Karar üretiliyor"
 TG=""; [ "${1:-}" = "--telegram" ] && TG="--telegram"
 "$VPY" "$LEARN/decide.py" $TG || echo "UYARI: karar üretimi başarısız"

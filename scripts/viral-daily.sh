@@ -35,7 +35,8 @@ cd "$REPO" || { echo "HATA: repo yok"; exit 1; }
 set -a; . "$REPO/.env"; set +a
 
 # Argümanlar: --prepare | --publish | --at N | --format X | --topic "..."
-MODE="full"; SLOT_AT=""; FORMAT_OVERRIDE=""; TOPIC=""
+#   Olay sonucu (scripts/event-short.py): --format event_result --facts "<resmî rakamlar>" --must "a|b" --link /yol/
+MODE="full"; SLOT_AT=""; FORMAT_OVERRIDE=""; TOPIC=""; FACTS=""; MUST=""; LINK=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --prepare) MODE="prepare"; shift ;;
@@ -43,6 +44,9 @@ while [ $# -gt 0 ]; do
     --at)      SLOT_AT="$2"; shift 2 ;;
     --format)  FORMAT_OVERRIDE="$2"; shift 2 ;;
     --topic)   TOPIC="$2"; shift 2 ;;
+    --facts)   FACTS="$2"; shift 2 ;;
+    --must)    MUST="$2"; shift 2 ;;
+    --link)    LINK="$2"; shift 2 ;;
     *)         echo "UYARI: bilinmeyen arg '$1'"; shift ;;
   esac
 done
@@ -153,7 +157,9 @@ PY
   echo "[*] Ses: $VOICE"
 
   # Senaryo üret (stdout son satırı = json yolu)
-  SCEN="$("$VPY" "$REPO/scripts/viral-script.py" --format "$FORMAT" ${TOPIC:+--topic "$TOPIC"} ${EXTRA_ARGS[@]+"${EXTRA_ARGS[@]}"} | tail -1)"
+  SCEN="$("$VPY" "$REPO/scripts/viral-script.py" --format "$FORMAT" ${TOPIC:+--topic "$TOPIC"} \
+    ${FACTS:+--facts "$FACTS"} ${MUST:+--must "$MUST"} ${LINK:+--link "$LINK"} \
+    ${EXTRA_ARGS[@]+"${EXTRA_ARGS[@]}"} | tail -1)"
   if [ -z "$SCEN" ] || [ ! -f "$SCEN" ]; then
     echo "HATA: senaryo üretilemedi (format=$FORMAT)"; exit 2
   fi

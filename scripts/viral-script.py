@@ -151,6 +151,20 @@ FORMATS = {
         "category": "GÜNCEL",
         "guide": "Güncel olay/kişiye tepki. Hook: olayı/kişiyi söyle ve finansal soruyu sor. 3 beat: olayın piyasaya/altına/dolara/borsaya etkisini sade anlat. Spekülasyon değil, mekanizma. Olayın SONUCUNU (faizi artırdı/indirdi/sabit tuttu, açıklanan rakam) başlıkta ve metinde ASLA iddia etme — video açıklamadan önce yayınlanıyor; 'karar bugün', 'hangi yönde çıkarsa cebine ne olur' çerçevesi kullan. Hook görseli ana kişi/kurum (person/place/logo) OLMALI.",
     },
+    # Olay SONRASI (resmî rakam elde): scripts/event-short.py çağırır, --facts + --must ile.
+    # news_reaction'ın tersine sonucu SÖYLER — ama yalnız KESİN VERİLER bloğundaki rakamla.
+    "event_result": {
+        "category": "AÇIKLANDI",
+        "guide": "Resmî sonuç AÇIKLANDI — izleyici bunu YouTube'da arıyor ('… açıklandı', '… belli oldu'). "
+                 "Hook: sonucu ve EN ÖNEMLİ rakamı doğrudan söyle (soru değil, düz cümle: 'Ekim enflasyonu yüzde 2,5 çıktı.'). "
+                 "3 beat: (1) rakamın anlamı + bir önceki dönemle kıyas, (2) izleyicinin cebine etkisi (kira, maaş, "
+                 "kredi, MTV, emekli zammı — KESİN VERİLER'de ne varsa), (3) sıradaki tarih/izleyicinin yapacağı şey. "
+                 "YALNIZ 'KESİN VERİLER' bloğundaki rakamları kullan; yeni rakam, tahmin, yuvarlama YOK; ondalıkta "
+                 "virgül kullan. title: insanların YouTube'da aradığı kalıp — kurum/olay adı (TCMB, Fed, TÜİK, asgari ücret, "
+                 "emekli zammı) + ay/yıl + 'açıklandı/belli oldu' + ana rakam; bu kelimeler İLK 40 karakterde (ör. 'TCMB Ekim "
+                 "faiz kararı açıklandı: %36', 'Ekim enflasyonu açıklandı: yıllık %32,1', '2027 asgari ücret belli oldu: "
+                 "net 33.500 TL'). Hook görseli kurum (TÜİK/TCMB/Fed binası ya da logosu: place/logo/building).",
+    },
     "single_concept": {
         "category": "KAVRAM",
         "guide": "Tek kavram + metafor. Hook: kavramı merak uyandıran biçimde sor ('Eurobond aslında ne?'). 3 beat: kavramı GÜNLÜK bir metaforla tek tek aç, jargon yok. Görseller kavramı somutlaştırsın (object/concept).",
@@ -266,6 +280,19 @@ def _tokens(s):
     return {w for w in re.findall(r"[a-z0-9]+", s) if len(w) > 2 and w not in _STOP}
 
 
+def has_number(text, num):
+    """Metinde rakam var mı? '2,55' ↔ 2.55 / %2,55 / yüzde 2,55; binlikli '28.075' ↔ 28075 de kabul."""
+    n = (num or "").strip().lstrip("%").strip()
+    if not n:
+        return True
+    alts = {n, n.replace(",", "."), n.replace(".", ",")}
+    alts |= {a.replace(".", "") for a in list(alts) if re.fullmatch(r"\d{1,3}(\.\d{3})+", a)}
+    for a in alts:
+        if re.search(r"(?<![\d.,])" + re.escape(a) + r"(?![\d])", text or ""):
+            return True
+    return False
+
+
 def most_similar(title, recent, thresh=0.5):
     """title son başlıklardan birine yeterince benziyorsa o başlığı döndür (Jaccard)."""
     a = _tokens(title)
@@ -375,6 +402,12 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--format", required=True, choices=list(FORMATS))
     ap.add_argument("--topic", default="")
+    ap.add_argument("--facts", default="",
+                    help="event_result: resmî rakamlar (prompt'a KESİN VERİLER olarak girer)")
+    ap.add_argument("--must", default="",
+                    help="event_result: başlık+metinde MUTLAKA geçmesi gereken rakamlar, '|' ile (ör. '2,55|32,87')")
+    ap.add_argument("--link", default="",
+                    help="huni linki (ör. /kira-artis-orani-hesaplama/) — YouTube açıklamasına gider")
     ap.add_argument("--slug", default="")
     ap.add_argument("--instrument", default="gold", choices=["gold", "usd", "bist"],
                     help="backtest_return için enstrüman")
@@ -425,12 +458,32 @@ def main():
                 'Diğer beat\'lerde normal görsel (gold/concept/person) kullan.')
         except Exception as e:
             print(f"UYARI: piyasa verisi alınamadı ({str(e)[:70]}) — grafiksiz devam", file=sys.stderr)
+    musts = [m.strip() for m in args.must.split("|") if m.strip()]
+    if args.facts:
+        facts_block += ("KESİN VERİLER (resmî kaynak, açıklandı — YALNIZ bunları kullan; başka rakam uydurma, "
+                        "yuvarlama yapma, ondalıkta virgül kullan):\n" + args.facts.strip() + "\n"
+                        + (f"Başlıkta VE metinde şu rakam(lar) birebir geçmeli: {', '.join(musts)}\n" if musts else ""))
+    if args.format == "event_result" and not args.facts:
+        print("HATA: event_result --facts ister (resmî rakam olmadan sonuç videosu üretilmez)", file=sys.stderr)
+        return 1
 
     # Tekrar önleme: son üretilen başlıkları prompt'a "bunları TEKRARLAMA" olarak göm.
     recent_titles = load_recent_titles(args.out_dir)
+    retry_notes = []   # event_result: reddedilen denemenin eksik rakamları (sonraki prompt'a)
 
     def build_prompt(extra_avoid=()):
         titles = list(dict.fromkeys(recent_titles + list(extra_avoid)))
+        if args.format == "event_result":
+            # Konu olayın kendisi: "son videoları tekrarlama" listesi burada ters teper (sabah önizlemesi
+            # aynı olayı işledi diye sonuç videosu konusunu değiştirmemeli). Ret nedeni varsa onu söyle.
+            note = (("ÖNCEKİ DENEME REDDEDİLDİ — zorunlu rakam eksikti: " + "; ".join(retry_notes) + "\n\n")
+                    if retry_notes else "")
+            return PROMPT % {
+                "fmt_name": args.format, "fmt_guide": fmt["guide"], "topic_line": topic_line,
+                "avoid_block": note, "facts_block": facts_block,
+                "chart_instruction": chart_instruction, "visual_guide": VISUAL_GUIDE,
+                "eyebrow": fmt["category"], "extra_field": "",
+            }
         if titles:
             lst = "\n".join(f"- {t}" for t in titles[:45])
             avoid_block = (
@@ -480,6 +533,19 @@ def main():
         d, transient, out = one_shot(build_prompt(extra_avoid))
         if d is not None:
             title = (d.get("title") or "").strip()
+            if args.format == "event_result":
+                # Yanlış/eksik rakamlı "açıklandı" videosu = yanıltıcı içerik → yayınlanmaz.
+                alltext = title + " " + " ".join(str(s.get("spoken", "")) for s in (d.get("segments") or []))
+                miss = [m for m in musts if not has_number(alltext, m)]
+                if musts and not has_number(title, musts[0]):
+                    miss.insert(0, f"{musts[0]} (başlıkta)")
+                if miss:
+                    print(f"UYARI: sonuç senaryosu zorunlu rakam(lar)ı içermiyor: {miss} "
+                          f"(deneme {attempt}/{MAX_TRIES})", file=sys.stderr)
+                    retry_notes.append(", ".join(miss))
+                    continue
+                data = d
+                break
             if args.format == "shock_number":
                 ok_src, why = check_number_source(d)
                 if not ok_src:
@@ -569,6 +635,8 @@ def main():
                                      if t.strip()] + ["parafomo"])),
         "segments": segs,
     }
+    if args.link:
+        scenario["link"] = args.link
     if data.get("number_source"):
         ns = data["number_source"]
         scenario["number_source"] = ns

@@ -137,12 +137,16 @@ def topic_hashtags(slug, title=""):
     return " ".join(tags[:9])
 
 
-def with_funnel(description, slug, title=""):
-    """Açıklamaya siteye yönlendiren altbilgi + abone CTA + konu hashtag'leri ekle (huni)."""
-    base = site_url_for(slug)
+def with_funnel(description, slug, title="", link=""):
+    """Açıklamaya siteye yönlendiren altbilgi + abone CTA + konu hashtag'leri ekle (huni).
+    link: senaryonun açık huni hedefi (olay sonucu → /kira-artis-orani-hesaplama/ gibi) — varsa öncelikli."""
+    if link:
+        base = link if link.startswith("http") else "https://parafomo.com" + ("/" + link.lstrip("/"))
+    else:
+        base = site_url_for(slug)
     is_article = "parafomo.com/blog/" in base
     # Blog değilse: jenerik ana sayfa yerine konuya uygun interaktif araç sayfası (daha iyi landing + huni).
-    if not is_article:
+    if not is_article and not link:
         base = tool_url_for(slug, title)
     url = with_utm(base)
     is_tool = "/hesaplama" in base or "-takvimi" in base or "/halka-arz" in base
@@ -227,7 +231,7 @@ def main():
     body = {
         "snippet": {
             "title": meta["title"][:100],
-            "description": with_funnel(meta["description"], args.slug, meta.get("title", "")),
+            "description": with_funnel(meta["description"], args.slug, meta.get("title", ""), meta.get("link", "")),
             "tags": meta.get("tags", []),
             "categoryId": CATEGORY_EDUCATION,
             "defaultLanguage": "tr",

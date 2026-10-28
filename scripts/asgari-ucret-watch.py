@@ -241,6 +241,10 @@ def main(argv):
             "(ya da doğru net/brütü yaz).")
     deploy(f"veri: {hedef} asgari ücret açıklandı — net {net} TL (otomatik, {len(hosts)} kaynak)",
            f"Asgari ücret {hedef}: net {net:,.2f} TL yayınlandı (doğrula)", body, dry)
+    if not dry:  # resmî rakamla "asgari ücret belli oldu" Short'u (arka planda; kendi kilidi var)
+        subprocess.Popen(["python3", os.path.join(REPO, "scripts", "event-short.py")],
+                         stdout=open(os.path.join(REPO, "logs", "event-short.log"), "a"),
+                         stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL, start_new_session=True)
     return 0
 
 

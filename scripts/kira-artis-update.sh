@@ -22,6 +22,8 @@ python3 "$REPO/scripts/yeniden-degerleme-update.py"
 python3 "$REPO/scripts/og-images.py" --only kira-artis-orani-hesaplama,enflasyon-takvimi,emekli-zammi-hesaplama,memur-zammi-hesaplama,yeniden-degerleme-orani,mtv-hesaplama || true
 # Rakamları bu verilerden gelen blog yazıları (content-templates/blog/*.md.j2) — elle düzenlenmişse ezmez, uyarır
 python3 "$REPO/scripts/live-posts.py" || true
+# TÜİK günü sonuç Short'u (enflasyon + kira tavanı; Kasım'da yeniden değerleme, Ocak/Temmuz'da emekli zammı)
+setsid nohup python3 "$REPO/scripts/event-short.py" >> "$REPO/logs/event-short.log" 2>&1 < /dev/null &
 # Yalnız şablondan üretilen yazılar commit'lenir (başka hattın yarım yazısı karışmasın)
 LIVE=""
 for t in "$REPO"/content-templates/blog/*.md.j2; do

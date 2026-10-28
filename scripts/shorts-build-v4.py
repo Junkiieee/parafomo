@@ -897,10 +897,36 @@ def build_sfx_track(cues, total, path):
         return None
 
 
+_LOCK_FH = None
+
+
+def _render_lock(max_wait=1800):
+    """Tek seferde tek render: tüm hatlar (viral/blog/Manim/olay sonucu) aynı TMP klasörünü kullanıyor ve
+    build() onu başta temizliyor → iki render aynı anda koşarsa birbirinin karelerini siler. Kilit
+    (süreç bitince kendiliğinden açılır) sırayla çalıştırır; 30 dk'dan uzun beklerse kilitsiz devam eder."""
+    global _LOCK_FH
+    import fcntl
+    import time as _t
+    _LOCK_FH = open(TMP.rstrip("/") + ".lock", "w")
+    t0 = _t.time()
+    while True:
+        try:
+            fcntl.flock(_LOCK_FH, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            return
+        except BlockingIOError:
+            if _t.time() - t0 > max_wait:
+                print("[lock] başka bir render 30 dk'dır sürüyor — kilitsiz devam")
+                return
+            if int(_t.time() - t0) % 60 < 10:
+                print("[lock] başka bir render sürüyor — bekleniyor")
+            _t.sleep(10)
+
+
 def main():
     """Render → otomatik görsel kalite kontrolü (scripts/video-qa.py) → sorunlu sahne varsa o sahneler
     marka kartıyla zorlanarak BİR kez yeniden render. Kontrol devre dışı: --no-qa ya da PARAFOMO_QA=0."""
     args = parse_args()
+    _render_lock()
     rc = build(args)
     if rc != 0 or args.no_qa or os.environ.get("PARAFOMO_QA") == "0":
         return rc
@@ -1221,6 +1247,8 @@ def build(args):
             "file": out, "slug": args.slug,
             "format": (scenario.get("format", "") if scenario else ""),
             "timeline": timeline}
+    if scenario and scenario.get("link"):
+        meta["link"] = scenario["link"]   # huni linki (olay sonucu → ilgili araç sayfası)
     json.dump(meta, open(os.path.join(OUT_DIR, f"short-{args.slug}.json"), "w",
                          encoding="utf-8"), ensure_ascii=False, indent=2)
     return 0
