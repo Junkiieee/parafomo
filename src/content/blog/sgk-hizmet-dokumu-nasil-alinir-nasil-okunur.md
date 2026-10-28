@@ -29,7 +29,7 @@ En sık kullanıldığı durumlar:
 
 - **Emeklilik planı:** Toplam prim günün ve ilk sigorta giriş tarihin emeklilik şartlarını belirler.
 - **İşveren kontrolü:** Maaşın gerçekte yatandan düşük bildiriliyorsa ya da bazı aylar hiç bildirilmemişse bunu ancak dökümde görürsün.
-- **İşsizlik maaşı:** İşsizlik ödeneği için son 3 yılda en az 600 gün prim ve fesihten önceki son 120 günde kesintisiz çalışma şartı aranır; bunu dökümden kontrol edersin.
+- **İşsizlik maaşı:** İşsizlik ödeneği için son 3 yılda en az 600 gün prim ve fesihten önceki son 120 günde kesintisiz çalışma şartı aranır; bunu dökümden kontrol edip tutarı [işsizlik maaşı hesaplama](/issizlik-maasi-hesaplama) aracıyla görebilirsin.
 - **Başvurular:** İş başvurusu, vize, kredi ve bazı kamu başvurularında çalışma geçmişini kanıtlamak için istenir.
 - **Borçlanma kararları:** Askerlik veya doğum borçlanmasının emeklilik tarihini ne kadar öne çekeceğini görmek için başlangıç noktasıdır.
 
@@ -70,7 +70,7 @@ Dökümü ilk açtığında çok sayıda kısaltma görürsün. Aşağıdaki tab
 
 ### Prim günü ve prime esas kazanç
 
-Her ay en fazla **30 gün** prim bildirilir; ay 31 de çekse 28 de çekse tam çalışılan ay 30 gün sayılır. Prime esas kazanç (PEK) ise brüt ücretin ve prime tabi ek ödemelerin toplamıdır. PEK'in asgari ücretin altında görünmesi mümkün değildir (kısmi çalışma hariç), ama asgari ücretten yüksek maaş alırken dökümde sürekli asgari ücret görüyorsan, maaşın bir kısmı **kayıt dışı** ödeniyor olabilir. Bu durum ileride emekli maaşını doğrudan düşürür.
+Her ay en fazla **30 gün** prim bildirilir; ay 31 de çekse 28 de çekse tam çalışılan ay 30 gün sayılır. Prime esas kazanç (PEK) ise brüt ücretin ve prime tabi ek ödemelerin toplamıdır. Günlük PEK, asgari ücretin günlük tutarının altında bildirilemez; eksik gün veya kısmi çalışma olan aylarda aylık toplam doğal olarak daha düşük görünür. Ama asgari ücretten yüksek maaş alırken dökümde sürekli asgari ücret görüyorsan, maaşın bir kısmı **kayıt dışı** ödeniyor olabilir. Bu durum ileride emekli maaşını doğrudan düşürür.
 
 ## Eksik gün kodları ne anlama gelir?
 
