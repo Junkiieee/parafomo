@@ -1,26 +1,27 @@
 #!/usr/bin/env python3
 """
-ParaFOMO — Instagram/Meta token yenileme (instagram_manage_insights ekler).
+ParaFOMO — Meta token yenileme: TEK yeniden yetkilendirme iki kapıyı birden açar.
 
-Mevcut IG_PAGE_TOKEN'da insights izni yok → reach/kaydetme/paylaşma metrikleri
-alınamıyor (#10). Bu betik, YENİ ve insights içeren bir uzun-ömürlü SAYFA token'ı
-üretir. google_auth_oauthlib GEREKMEZ; saf urllib.
+  • instagram_manage_insights → IG reach/kaydetme/paylaşma metrikleri (öğrenme döngüsü)
+  • pages_manage_posts        → Facebook sayfasına Reel + link paylaşımı
+                                 (scripts/facebook-reel.py · scripts/facebook-post.py)
+Mevcut IG yayın izinleri korunur. Saf urllib; google_auth_oauthlib GEREKMEZ.
 
 2 adımlı manuel akış (headless sunucu için):
 
-  1) Gerekli izin listesini + yönergeyi gör:
+  1) İzin listesi + yönerge (mevcut token'da olanlar ✓ işaretli):
        python3 scripts/instagram-reauth.py scopes
 
   2) developers.facebook.com → Tools → Graph API Explorer'da (uygulaman seçili)
-     "Generate Access Token" ile o izinleri onayla; çıkan KISA ömürlü USER token'ı
-     kopyala, sonra:
+     "Generate Access Token" ile izinleri onayla (sayfa seçiminde Parafomo'yu seç);
+     çıkan KISA ömürlü USER token'ı kopyala, sonra:
        python3 scripts/instagram-reauth.py exchange "<KISA_USER_TOKEN>"
-     → betik: uzun-ömürlü user token'a çevirir → sayfa token'ını çeker →
-       insights iznini DOĞRULAR → instagram.env'i günceller (eskisi .bak'a).
+     → uzun-ömürlü user token → sayfa token'ı → izinleri DOĞRULAR → instagram.env
+       güncellenir (eskisi .bak'a). Zorunlu izinlerden biri eksikse ya da istenenlerin
+       (insights / pages_manage_posts) hiçbiri yoksa KAYDETMEZ.
 
-NOT: instagram_manage_insights, Business tipi uygulamada uygulamanın
-admin/developer/tester'ı VE varlık sahibi olan hesap için App Review olmadan
-(Development modda) verilebilir. ParaFOMO hesabı bu koşulu sağlıyor.
+NOT: Bu izinler Business tipi uygulamada, uygulamanın admin/developer/tester'ı VE varlık
+sahibi olan hesap için App Review olmadan verilebilir. ParaFOMO hesabı bu koşulu sağlıyor.
 """
 import os
 import sys
@@ -32,16 +33,24 @@ import urllib.error
 ENV = os.path.expanduser("~/.config/parafomo/instagram.env")
 GRAPH = "https://graph.facebook.com/v21.0"
 
-# content_publish + comments + insights hepsi bir arada → mevcut yayın hattı da çalışmaya devam eder
+# content_publish + comments + insights + FB sayfa paylaşımı → mevcut yayın hattı da çalışmaya devam eder
 NEEDED = [
     "instagram_basic",
-    "instagram_manage_insights",     # ← asıl eklenen
+    "instagram_manage_insights",     # IG metrikleri
     "instagram_manage_comments",
     "instagram_content_publish",
     "pages_show_list",
     "pages_read_engagement",
+    "pages_manage_posts",            # FB sayfası: Reel + link gönderisi
     "business_management",
 ]
+# Bunlar yoksa token KAYDEDİLMEZ (mevcut IG yayın hattı bozulmasın).
+REQUIRED = ["instagram_basic", "instagram_content_publish", "pages_show_list", "pages_read_engagement"]
+# Yeniden yetkilendirmenin amacı; en az biri gelmeli, yoksa yeni token bir şey kazandırmaz.
+DESIRED = {
+    "instagram_manage_insights": "IG reach/kaydetme/paylaşma metrikleri",
+    "pages_manage_posts": "Facebook Reel + link paylaşımı (facebook-reel.py / facebook-post.py)",
+}
 
 
 def load_env():
@@ -59,16 +68,34 @@ def _get(url):
         return json.load(urllib.request.urlopen(url, timeout=30))
     except urllib.error.HTTPError as e:
         return {"__error__": e.read().decode()[:400]}
+    except Exception as e:
+        return {"__error__": f"ağ hatası: {type(e).__name__}"}
+
+
+def token_scopes(token, app_id, app_secret):
+    """debug_token → geçerli token'ın izin listesi; okunamazsa None. (Token yazdırılmaz.)"""
+    if not (token and app_id and app_secret):
+        return None
+    dbg = _get(f"{GRAPH}/debug_token?" + urllib.parse.urlencode({
+        "input_token": token, "access_token": f"{app_id}|{app_secret}"}))
+    data = dbg.get("data") or {}
+    if "__error__" in dbg or not data:
+        return None
+    return list(data.get("scopes") or []) if data.get("is_valid") else []
 
 
 def cmd_scopes():
     env = load_env()
+    cur = token_scopes(env.get("IG_PAGE_TOKEN"), env.get("IG_APP_ID"), env.get("IG_APP_SECRET"))
     print("\n1) Aç: https://developers.facebook.com/tools/explorer/")
     print(f"2) Sağ üstte uygulamanı seç (App ID {env.get('IG_APP_ID','?')}).")
     print("3) 'Generate Access Token' / 'Get User Access Token' → şu izinleri İŞARETLE:\n")
     for s in NEEDED:
-        print(f"     - {s}")
-    print("\n4) Onayla (Instagram hesabıyla giriş). Çıkan KISA ömürlü token'ı kopyala, sonra:")
+        mark = "" if cur is None else ("  ✓ mevcut token'da var" if s in cur else "  ← mevcut token'da YOK")
+        print(f"     - {s}{mark}")
+    print("\n4) Onayla (Facebook/Instagram hesabıyla giriş). Sayfa seçim ekranında Parafomo")
+    print("   sayfasını ve @parafomo IG hesabını SEÇİLİ bırak (izinler seçili varlıklara verilir).")
+    print("   Çıkan KISA ömürlü token'ı kopyala, sonra:")
     print('     python3 scripts/instagram-reauth.py exchange "<KISA_USER_TOKEN>"\n')
 
 
@@ -95,21 +122,42 @@ def cmd_exchange(short_token):
         print(f"HATA: sayfa listesi alınamadı: {pg.get('__error__', pg)}")
         return 1
     pages = pg["data"]
-    page = next((p for p in pages if p["id"] == want_page), pages[0])
+    page = next((p for p in pages if p["id"] == want_page), None) if want_page else pages[0]
+    if page is None:   # eskiden sessizce ilk sayfaya düşüyordu → yanlış sayfanın token'ı kaydedilebilirdi
+        print("HATA: IG_PAGE_ID sayfası bu token'ın sayfa listesinde yok — KAYDEDİLMEDİ.")
+        print("      İzin ekranındaki sayfa seçiminde Parafomo sayfasını işaretle.")
+        print(f"      Gelen sayfalar: {', '.join(p.get('name', '?') for p in pages)}")
+        return 1
     page_token = page["access_token"]
     print(f"[2/4] Sayfa token'ı alındı: {page['name']} ({page['id']}).")
 
-    # 3) insights iznini DOĞRULA
-    dbg = _get(f"{GRAPH}/debug_token?" + urllib.parse.urlencode({
-        "input_token": page_token, "access_token": f"{app_id}|{app_secret}"}))
-    scopes = dbg.get("data", {}).get("scopes", [])
-    if "instagram_manage_insights" not in scopes:
-        print("HATA: yeni token'da da instagram_manage_insights YOK.")
-        print("      Graph API Explorer'da bu izni İŞARETLEDİĞİNDEN emin ol; varsa")
-        print("      uygulama App Review / Development-mode varlık sahipliğini kontrol et.")
-        print(f"      Gelen izinler: {', '.join(scopes)}")
+    # 3) izinleri DOĞRULA: zorunlular tam + istenenlerden en az biri
+    scopes = token_scopes(page_token, app_id, app_secret)
+    if scopes is None:
+        print("HATA: yeni token doğrulanamadı (debug_token) — KAYDEDİLMEDİ.")
         return 1
-    print("[3/4] Doğrulandı: instagram_manage_insights VAR.")
+    miss_req = [s for s in REQUIRED if s not in scopes]
+    gained = [s for s in DESIRED if s in scopes]
+    if miss_req or not gained:
+        if miss_req:
+            print(f"HATA: zorunlu izin(ler) YOK: {', '.join(miss_req)} — KAYDEDİLMEDİ "
+                  "(mevcut IG yayın hattı bozulmasın).")
+        else:
+            print(f"HATA: istenen izinlerin hiçbiri yok ({', '.join(DESIRED)}) — KAYDEDİLMEDİ "
+                  "(yeni token bir şey kazandırmaz).")
+        print("      Graph API Explorer'da izinleri İŞARETLEDİĞİNDEN ve sayfayı seçtiğinden emin ol;")
+        print("      gerekirse uygulama rolünü / Development-mode varlık sahipliğini kontrol et.")
+        print(f"      Gelen izinler: {', '.join(scopes) or '(yok / token geçersiz)'}")
+        return 1
+    print("[3/4] Doğrulandı: zorunlu izinler tam. İstenen izinler:")
+    for s, use in DESIRED.items():
+        print(f"      {'✓ VAR ' if s in scopes else '✗ YOK '} {s} — {use}")
+    old = token_scopes(env.get("IG_PAGE_TOKEN"), app_id, app_secret)
+    lost = sorted(set(old or []) - set(scopes))
+    if lost:
+        print(f"      Not: eski token'da olup yenisinde olmayan izinler: {', '.join(lost)}")
+        if "instagram_manage_comments" in lost:
+            print("      UYARI: instagram_manage_comments yok → IG Reel ilk-yorum tohumu atlanır.")
 
     # 4) instagram.env güncelle (yedekle)
     lines = open(ENV, encoding="utf-8").read().splitlines()
@@ -122,9 +170,17 @@ def cmd_exchange(short_token):
     if not seen:
         out.append(f"IG_PAGE_TOKEN={page_token}")
     os.replace(ENV, ENV + ".bak")
-    open(ENV, "w", encoding="utf-8").write("\n".join(out) + "\n")
+    fd = os.open(ENV, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)   # sır dosyası: yalnız sahibi okur
+    with os.fdopen(fd, "w", encoding="utf-8") as fh:
+        fh.write("\n".join(out) + "\n")
     print(f"[4/4] instagram.env güncellendi (eski → {ENV}.bak).")
-    print("      Artık metrics_instagram.py reach/kaydetme/paylaşma çekebilir.")
+    if "instagram_manage_insights" in scopes:
+        print("      Artık metrics_instagram.py reach/kaydetme/paylaşma çekebilir.")
+    if "pages_manage_posts" in scopes:
+        print("      Artık facebook-reel.py / facebook-post.py sayfaya paylaşır (hat değişikliği gerekmez).")
+    missing = [s for s in DESIRED if s not in scopes]
+    if missing:
+        print(f"      Eksik kalan: {', '.join(missing)} → aynı akışla tekrar yetkilendirip ekleyebilirsin.")
     return 0
 
 
