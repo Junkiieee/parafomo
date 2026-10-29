@@ -1,0 +1,59 @@
+{
+  "slug": "buyume-rakami-bugun-cikiyor-cebin-neden-etkilenir",
+  "title": "Büyüme rakamı bugün çıkıyor, cebin neden etkilenir",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Advance GDP verisi açıklanmadan önce, büyüme rakamının dolar, altın ve borsa üzerinden cebe nasıl yansıdığını sade bir dille anlatan kısa analiz.",
+  "tags": [
+    "GDP",
+    "büyüme verisi",
+    "dolar",
+    "altın",
+    "borsa",
+    "küresel ekonomi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Bugün açıklanan tek rakam dolarını da altınını da oynatır.",
+      "visual": {
+        "type": "building",
+        "query": "Bureau of Economic Analysis building"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu rakam ABD'nin çeyrekte ne kadar büyüdüğü. Güçlü büyüme dolara para çeker, zayıfı ise faiz indirimi beklentisini artırır.",
+      "visual": {
+        "type": "place",
+        "query": "Federal Reserve building"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama burada bir tuzak var: güçlü büyüme iyi haber gibi durur, faiz yüksek kalacak diye altın ve borsa baskı görebilir.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yani rakam hangi yönde çıkarsa çıksın, dolar kuru ve altın fiyatı değişir. Maaşını döviz ya da altınla kıyaslıyorsan, bugünün haberine bak.",
+      "visual": {
+        "type": "object",
+        "query": "smartphone banking app"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Rakam çıktıktan sonra piyasa nasıl tepki verecek, yarın bakacağız. Abone ol, her gün 60 saniyede tek net analiz cebine gelsin.",
+      "visual": {
+        "type": "building",
+        "query": "Bureau of Economic Analysis building"
+      }
+    }
+  ]
+}
