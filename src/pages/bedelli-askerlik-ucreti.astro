@@ -1,0 +1,346 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import em from '../../data/emekli-memur.json';
+import eur from '../../data/euro-getiri.json';
+// Ocak zammı tahmini /memur-zammi-hesaplama ile ORTAK modülde (aynı TÜFE, aynı varsayım) — burada tekrar hesaplanmaz.
+import { PERIOD, TS_H1_2027, knownKeys, cumKnown, remaining, ASSUME, memurProj } from '../data/zam2027';
+
+// Bedelli askerlik ücreti — doğrulama 2026-10-29 (haftalık ajan koşusu, T25):
+// • TUTAR = 300.000 gösterge × ödemenin yapıldığı gün geçerli memur aylık katsayısı: 7179 s. Askeralma Kanunu md. 9/1
+//   (mevzuat.gov.tr güncel metni; “240.000” ibaresi 2/4/2026 tarihli 7577 s. Kanun md. 12 ile “300.000” oldu).
+// • Ek bedel (yoklama kaçağı / saklı / bakaya): her ay için 3.500 gösterge × katsayı; 1-30 gün bir ay (md. 9/7).
+// • Dövizle askerlik: md. 39 — aynı TL tutarın TCMB döviz alış kuruyla avro karşılığı (sabit avro tutarı YOK).
+// • Kontrol: 300.000 × 1,575512 = 472.653,60 TL (MSB açıklaması, Temmuz 2026 — Uzmanpara/Habertürk “472 bin 653 lira 60
+//   kuruş”); 300.000 × 1,387871 = 416.361,30 TL (Habertürk, Temmuz öncesi yürürlükteki tutar) — ikisi de birebir.
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const ayAdi = (k: string) => AYLAR[+k.slice(5) - 1];
+const ayYil = (k: string) => `${ayAdi(k)} ${k.slice(0, 4)}`;
+const donemAd = (k: string) => (+k.slice(5) <= 6 ? `Ocak–Haziran ${k.slice(0, 4)}` : `Temmuz–Aralık ${k.slice(0, 4)}`);
+const aralik = (keys: string[]) => (keys.length === 0 ? '' : keys.length === 1 ? ayAdi(keys[0]) : `${ayAdi(keys[0])}–${ayAdi(keys[keys.length - 1])}`);
+const sonrakiAy = (k: string) => {
+  const y = +k.slice(0, 4), m = +k.slice(5);
+  return m === 12 ? `${y + 1}-01` : `${y}-${String(m + 1).padStart(2, '0')}`;
+};
+const fmt0 = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const fmt2 = (n: number) => new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const gun = (iso: string) => {
+  const [y, m, d] = iso.slice(0, 10).split('-').map(Number);
+  return `${d} ${AYLAR[m - 1]} ${y}`;
+};
+
+const GOSTERGE = 300000;
+const EK_GOSTERGE = 3500;
+const K = em.memurKatsayi;
+const DONEM = em.donem;                                    // '2026-07'
+const DONEM_YIL = +DONEM.slice(0, 4);
+const bedel = (k: number, g = GOSTERGE) => Math.round(g * k * 100) / 100;
+const TUTAR = bedel(K.aylikKatsayi);                       // 472.653,60
+const EK_AY = bedel(K.aylikKatsayi, EK_GOSTERGE);          // 5.514,29
+
+// Geçmiş katsayılar (HMB genelgeleri). 7577 s. Kanun’dan önce gösterge 240.000’di.
+const GECMIS = [
+  { donem: '2025-01', k: 1.012556, g: 240000, not: '' },
+  { donem: '2025-07', k: 1.170211, g: 240000, not: '' },
+  { donem: '2026-01', k: 1.387871, g: 240000, not: '7577 s. Kanun öncesi (240.000 gösterge)' },
+  { donem: '2026-01', k: 1.387871, g: 300000, not: '7577 s. Kanun sonrası (300.000 gösterge)' },
+];
+const TARIHCE = [
+  ...GECMIS.filter((g) => g.donem < DONEM || (g.donem === DONEM && g.g !== GOSTERGE)),
+  { donem: DONEM, k: K.aylikKatsayi, g: GOSTERGE, not: 'yürürlükte' },
+].map((r) => ({ ...r, tutar: bedel(r.k, r.g) })).reverse();
+
+// Bir sonraki dönem tahmini (zam modülü yürürlükteki katsayıdan sonraki zammı hesaplıyorsa).
+const TAHMIN_VAR = PERIOD[0] === DONEM;
+const HEDEF = sonrakiAy(PERIOD[PERIOD.length - 1]);       // '2027-01'
+const HEDEF_AD = ayYil(HEDEF);
+const HEDEF_YIL = +HEDEF.slice(0, 4);
+const KESIN_ZAM = remaining === 0;
+const ZAM = memurProj.zam;
+const TUTAR_HEDEF = TAHMIN_VAR ? Math.round(TUTAR * (1 + ZAM) * 100) / 100 : 0;
+const FARK = TUTAR_HEDEF - TUTAR;
+const KALAN_AD = aralik(PERIOD.filter((k) => !knownKeys.includes(k)));
+const BILINEN_AD = aralik(knownKeys);
+
+// Dövizle askerlik — avro karşılığı yalnız gösterge amaçlı (piyasa kuru; resmî tutar ödeme günü TCMB döviz alış kuruyla).
+const EURTRY = eur.eurtry_now;
+const EUR_TARIH = gun(eur.updated);
+const AVRO = TUTAR / EURTRY;
+
+const title = TAHMIN_VAR
+  ? `Bedelli Askerlik Ücreti ${DONEM_YIL}: ${fmt2(TUTAR)} TL, ${HEDEF_AD} ≈ ${fmt0(TUTAR_HEDEF)} TL`
+  : `Bedelli Askerlik Ücreti ${DONEM_YIL}: ${fmt2(TUTAR)} TL | Hesaplama ve Dövizle Askerlik`;
+const h1 = `Bedelli Askerlik Ücreti ${DONEM_YIL}: ${fmt2(TUTAR)} TL`;
+const description = TAHMIN_VAR
+  ? `Bedelli askerlik ücreti ${donemAd(DONEM)} döneminde ${fmt2(TUTAR)} TL (300.000 × memur katsayısı). ${HEDEF_AD} tahmini ${fmt0(TUTAR_HEDEF)} TL; ek bedel ve dövizle askerlik hesabı.`
+  : `Bedelli askerlik ücreti ${donemAd(DONEM)} döneminde ${fmt2(TUTAR)} TL (300.000 × memur katsayısı). Yoklama kaçağı ek bedeli ve dövizle askerlik hesabı.`;
+
+const faq = [
+  {
+    q: `Bedelli askerlik ücreti ${DONEM_YIL} ne kadar?`,
+    a: `${donemAd(DONEM)} döneminde bedelli askerlik ücreti ${fmt2(TUTAR)} TL’dir: 7179 sayılı Askeralma Kanunu’nun 9. maddesine göre 300.000 gösterge rakamı ödemenin yapıldığı gün geçerli memur aylık katsayısıyla (${nf(K.aylikKatsayi, 6)}) çarpılır. Tutar her Ocak ve Temmuz’da memur maaş katsayısıyla birlikte değişir.`,
+  },
+  TAHMIN_VAR
+    ? {
+        q: `${HEDEF_AD} bedelli askerlik ücreti ne kadar olacak?`,
+        a: KESIN_ZAM
+          ? `${HEDEF_AD} memur zammı %${nf(ZAM * 100)} olarak kesinleşti; bedelli askerlik ücreti ${fmt2(TUTAR)} TL’den yaklaşık ${fmt0(TUTAR_HEDEF)} TL’ye çıkar. Kuruşu kesin tutar Hazine ve Maliye Bakanlığı’nın Ocak katsayı genelgesiyle belli olur.`
+          : `Bedelli ücreti memur maaş katsayısına bağlı olduğu için ${HEDEF_AD} itibarıyla memur zammı kadar artar. ${BILINEN_AD ? `${BILINEN_AD} enflasyonu %${nf(cumKnown * 100)} olarak kesinleşti; ` : ''}${KALAN_AD} için aylık %${nf(ASSUME)} varsayımıyla memur zammı yaklaşık %${nf(ZAM * 100)}, bedelli askerlik ücreti yaklaşık ${fmt0(TUTAR_HEDEF)} TL olur. Bu bir tahmindir; kesin tutar Ocak katsayısı ilan edilince belli olur.`,
+      }
+    : null,
+  {
+    q: 'Bedelli ücreti hangi tarihteki katsayıyla hesaplanır?',
+    a: 'Kanun “ödemenin yapıldığı gün geçerli olan memur aylık katsayısı” der. Yani başvuru tarihi değil ödeme günü belirleyicidir: 31 Aralık’a kadar yapılan ödeme Temmuz–Aralık katsayısıyla, 1 Ocak ve sonrasında yapılan ödeme yeni Ocak katsayısıyla hesaplanır. Ödeme, Bakanlığın belirlediği sürede peşin yapılır.',
+  },
+  {
+    q: 'Yoklama kaçağı veya bakaya olanlar bedelli için ne kadar ek ödeme yapar?',
+    a: `Yoklama kaçağı, saklı veya bakaya kalınan her ay için ayrıca 3.500 gösterge × memur aylık katsayısı kadar ek bedel alınır; ${donemAd(DONEM)} döneminde bu ayda ${fmt2(EK_AY)} TL eder. 1–30 gün bir ay sayılır; geçerli mazeretli süreler hesaba girmez. Ek bedel, temel bedele eklenir.`,
+  },
+  {
+    q: 'Dövizle askerlik ücreti kaç euro?',
+    a: `Dövizle askerlikte sabit bir avro tutarı yoktur: bedelli tutarı (${fmt2(TUTAR)} TL) ödeme günü TCMB’nin döviz alış kuruna göre avroya çevrilir. ${EUR_TARIH} piyasa kuruyla (1 € ≈ ${nf(EURTRY)} TL) bu yaklaşık ${fmt0(AVRO)} € eder. Yararlanmak için yabancı ülkede çalışma izniyle en az üç yıl fiilen çalışma ve Bakanlığın uzaktan eğitimini alma şartı vardır (Askeralma Kanunu md. 39).`,
+  },
+  {
+    q: 'Bedelli askerlikte eğitim süresi ne kadar?',
+    a: 'Bedeli peşin ödeyen ve bir aylık temel askerlik eğitimini tamamlayan yükümlü, askerlik hizmetini yerine getirmiş sayılır. İstekli sayısı Bakanlığın belirlediği sayıdan fazlaysa yararlanacaklar kurayla seçilir; seçildikten sonra vazgeçene yeni hak verilmez.',
+  },
+].filter(Boolean) as { q: string; a: string }[];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Hesaplama Araçları', url: '/hesaplama-araclari/' },
+  { name: 'Bedelli Askerlik Ücreti', url: '/bedelli-askerlik-ucreti/' },
+];
+---
+
+<BaseLayout title={title} description={description} faq={faq} breadcrumbs={breadcrumbs} image="/og/bedelli-askerlik-ucreti.png">
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Devlet Ücreti · Güncel Tutar</p>
+      <h1>{h1}</h1>
+      <p class="lede">
+        Bedelli askerlik ücreti {donemAd(DONEM)} döneminde <strong>{fmt2(TUTAR)} TL</strong>: 300.000 gösterge × memur aylık
+        katsayısı ({nf(K.aylikKatsayi, 6)}).
+        {TAHMIN_VAR && <> Katsayı {HEDEF_AD}’da memur zammıyla artacağı için ödeme o tarihten sonra yapılırsa tutar
+        {KESIN_ZAM ? '' : ' tahminen'} <strong>≈ {fmt0(TUTAR_HEDEF)} TL</strong> olur.</>}
+      </p>
+    </header>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="k">Bedelli askerlik ücreti</span>
+        <span class="v">₺{fmt2(TUTAR)}</span>
+        <span class="s">{donemAd(DONEM)} · 300.000 × {nf(K.aylikKatsayi, 6)}</span>
+      </div>
+      {TAHMIN_VAR && (
+        <div class="stat">
+          <span class="k">{HEDEF_AD} {KESIN_ZAM ? '(kesinleşen zamla)' : 'tahmini'}</span>
+          <span class="v">≈ ₺{fmt0(TUTAR_HEDEF)}</span>
+          <span class="s">memur zammı {KESIN_ZAM ? '' : '≈'}%{nf(ZAM * 100)} · +₺{fmt0(FARK)}</span>
+        </div>
+      )}
+      <div class="stat">
+        <span class="k">Dövizle askerlik (yaklaşık)</span>
+        <span class="v">≈ €{fmt0(AVRO)}</span>
+        <span class="s">{EUR_TARIH} kuru · resmîsi ödeme günü TCMB alış kuru</span>
+      </div>
+    </div>
+
+    <section class="table-block" id="hesaplama">
+      <h2>Bedelli askerlik ücreti hesaplama (ek bedel dahil)</h2>
+      <p class="table-intro">
+        Yoklama kaçağı, saklı ya da bakaya kaldıysanız her ay için ek bedel eklenir (3.500 × katsayı). Ödemeyi hangi
+        dönemde yapacağınızı ve kaçak/bakaya ay sayısını seçin.
+      </p>
+      <div class="calc-grid">
+        <form class="calc-inputs" onsubmit="return false">
+          <label>
+            <span>Ödeme dönemi</span>
+            <select id="bd-donem">
+              <option value={K.aylikKatsayi} selected>{donemAd(DONEM)} (katsayı {nf(K.aylikKatsayi, 6)})</option>
+              {TAHMIN_VAR && <option value={K.aylikKatsayi * (1 + ZAM)}>{HEDEF_AD} sonrası ({KESIN_ZAM ? 'kesinleşen zam' : 'tahmin'})</option>}
+            </select>
+          </label>
+          <label>
+            <span>Yoklama kaçağı / saklı / bakaya ay sayısı</span>
+            <input id="bd-ay" type="number" min="0" max="240" step="1" value="0" inputmode="numeric" />
+          </label>
+          <p class="hint">1–30 gün bir ay sayılır; geçerli mazeretli süreler hariç. Kaçak/bakaya değilseniz 0 bırakın.</p>
+        </form>
+        <div class="calc-results" aria-live="polite">
+          <div class="result-main">
+            <span class="result-label">Ödenecek toplam</span>
+            <span class="result-value" id="bd-toplam">₺{fmt2(TUTAR)}</span>
+          </div>
+          <div class="result-split">
+            <div class="split-item"><span class="split-label">Temel bedel (300.000 ×)</span><span class="split-val" id="bd-temel">₺{fmt2(TUTAR)}</span></div>
+            <div class="split-item"><span class="split-label">Ek bedel</span><span class="split-val" id="bd-ek">₺0,00</span></div>
+            <div class="split-item"><span class="split-label">Avro karşılığı (yaklaşık)</span><span class="split-val" id="bd-eur">€{fmt0(AVRO)}</span></div>
+          </div>
+          <p class="result-note">Avro yalnız fikir verir; dövizle askerlik başvurusunda tutar ödeme günü TCMB döviz alış kuruyla bulunur.</p>
+        </div>
+      </div>
+    </section>
+
+    {TAHMIN_VAR && (
+      <section class="table-block" id="tahmin">
+        <h2>{HEDEF_AD} bedelli askerlik ücreti ne kadar olacak?</h2>
+        <p class="table-intro">
+          Bedelli ücreti memur aylık katsayısına bağlıdır; katsayı her Ocak ve Temmuz’da memur maaş zammı oranında artar.
+          {HEDEF_AD} memur zammı, 8. Dönem Toplu Sözleşme’deki %{TS_H1_2027} zam ile enflasyon farkının bileşiğidir.
+          {BILINEN_AD && <> {BILINEN_AD} enflasyonu <strong>%{nf(cumKnown * 100)}</strong> olarak kesinleşti;</>}
+          {!KESIN_ZAM && <> {KALAN_AD} için aylık %{nf(ASSUME)} (son 3 ay ortalaması) varsayılırsa</>} memur zammı
+          {KESIN_ZAM ? '' : ' yaklaşık'} <strong>%{nf(ZAM * 100)}</strong>, bedelli askerlik ücreti
+          <strong>≈ {fmt0(TUTAR_HEDEF)} TL</strong> olur — bugünkünden yaklaşık {fmt0(FARK)} TL fazla. Hesap
+          <a href="/memur-zammi-hesaplama/">memur zammı hesaplama</a> ile aynı modülden gelir ve her TÜİK verisiyle
+          kendiliğinden güncellenir.
+        </p>
+      </section>
+    )}
+
+    <section class="table-block" id="tarihce">
+      <h2>Bedelli askerlik ücreti tarihçesi</h2>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead><tr><th>Dönem</th><th>Gösterge</th><th>Memur katsayısı</th><th>Bedel</th></tr></thead>
+          <tbody>
+            {TARIHCE.map((r, i) => (
+              <tr class={i === 0 ? 'current' : ''}>
+                <td>{donemAd(r.donem)}{r.not && r.not !== 'yürürlükte' ? ` — ${r.not}` : ''}</td>
+                <td>{fmt0(r.g)}</td>
+                <td>{nf(r.k, 6)}</td>
+                <td>₺{fmt2(r.tutar)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Tutarlar kanundaki formülle (gösterge × katsayı) hesaplanmıştır. 7577 sayılı Kanun (2 Nisan 2026) göstergeyi 240.000’den
+        300.000’e çıkardı. Temmuz 2026 tutarı (472.653,60 TL) Millî Savunma Bakanlığı’nın açıkladığı rakamla birebir aynıdır.
+      </p>
+    </section>
+
+    <section class="prose-block" id="sartlar">
+      <h2>Bedelli askerlik şartları ve süreç</h2>
+      <ul>
+        <li><strong>Kimler başvurabilir:</strong> istekli ve askerliğe elverişli yükümlüler. Bakanlık her dönem yararlanacak
+        sayıyı belirler; başvuru bu sayıyı aşarsa kura çekilir.</li>
+        <li><strong>Ödeme:</strong> bedel, silahaltına alınmadan önce Bakanlığın belirlediği sürede <strong>peşin</strong>
+        ödenir. Yoklama kaçağı, saklı veya bakaya olup başvurduktan sonra iki ay içinde ödemeyenler yararlanamaz.</li>
+        <li><strong>Eğitim:</strong> bir aylık temel askerlik eğitimini tamamlayan, askerlik hizmetini yerine getirmiş sayılır.</li>
+        <li><strong>Yararlanamayanlar:</strong> fiilî askerlik hizmetine başlamış olanlar; seçim öncesi vazgeçenler. Sevke
+        katılmayıp bakaya kalanlar kapsam dışına çıkarılır ve talepleri hâlinde ödedikleri iade edilir.</li>
+        <li><strong>Dövizle askerlik:</strong> yurt dışında çalışma izniyle en az üç yıl fiilen çalışan (ya da çok vatandaşlı,
+        yurt dışında doğup süresiz ikamet izniyle en az üç yıl yurt dışında bulunan) yükümlüler, Bakanlığın uzaktan eğitimini
+        alıp bedelli tutarının avro karşılığını peşin öderse askerliğini yapmış sayılır (md. 39).</li>
+      </ul>
+      <p class="cta-line">
+        Bedelli tutarı memur maaş zammına bağlı: Ocak zammını <a href="/memur-zammi-hesaplama/">memur zammı hesaplama</a>
+        sayfasında izleyebilirsiniz. Aynı katsayıya bağlı diğer ödemeler: <a href="/evde-bakim-maasi/">evde bakım maaşı</a>,
+        <a href="/engelli-maasi/">engelli maaşı</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
+    </section>
+
+    <section class="source-block">
+      <h2>Kaynak</h2>
+      <ul>
+        <li><a href="https://www.mevzuat.gov.tr/mevzuatmetin/1.5.7179.pdf" target="_blank" rel="noopener">7179 sayılı Askeralma Kanunu</a> — md. 9 (bedelli askerlik: 300.000 gösterge, ek bedel 3.500 gösterge/ay, kura, yararlanamayanlar) ve md. 39 (dövizle askerlik); mevzuat.gov.tr güncel metni, 7577 sayılı Kanun değişikliği işlenmiş</li>
+        <li>Memur aylık katsayıları: Hazine ve Maliye Bakanlığı Mali ve Sosyal Haklar genelgeleri ({donemAd(DONEM)}: {nf(K.aylikKatsayi, 6)})</li>
+        <li>Temmuz 2026 tutarı (472.653,60 TL): Millî Savunma Bakanlığı açıklaması (basında aktarıldığı biçimiyle); formülle birebir</li>
+        <li>Avro kuru: piyasa kuru ({EUR_TARIH}, EUR/TRY {nf(EURTRY, 4)}) — yalnız fikir verir; resmî karşılık ödeme günü TCMB döviz alış kuruyla</li>
+      </ul>
+      <p class="table-note">Bu sayfa bilgilendirme amaçlıdır; başvuru ve ödeme işlemleri e-Devlet / askerlik şubesi üzerinden yapılır. Rakamlar Ekim 2026’da resmî metinlerden kontrol edildi; tahmin TÜİK verisiyle her güncellemede yeniden hesaplanır.</p>
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ EKG: EK_GOSTERGE, G: GOSTERGE, EUR: EURTRY }}>
+    (function () {
+      var sel = document.getElementById('bd-donem'), ay = document.getElementById('bd-ay');
+      var f2 = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      var f0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      function r2(x) { return Math.round(x * 100) / 100; }
+      function calc() {
+        var k = parseFloat(sel.value) || 0;
+        var n = Math.max(0, Math.min(240, Math.floor(parseFloat(ay.value) || 0)));
+        var temel = r2(G * k), ek = r2(r2(EKG * k) * n), top = r2(temel + ek);
+        document.getElementById('bd-temel').textContent = '₺' + f2.format(temel);
+        document.getElementById('bd-ek').textContent = '₺' + f2.format(ek);
+        document.getElementById('bd-toplam').textContent = '₺' + f2.format(top);
+        document.getElementById('bd-eur').textContent = '€' + f0.format(top / EUR);
+      }
+      sel.addEventListener('change', calc);
+      ay.addEventListener('input', calc);
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 660px; margin: 0 auto; }
+
+    .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; }
+    .stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; display: flex; flex-direction: column; gap: 0.2rem; box-shadow: var(--shadow-soft); }
+    .stat .k { font-size: 0.8rem; color: var(--text-soft); font-weight: 600; }
+    .stat .v { font-family: var(--font-serif); font-size: 1.75rem; font-weight: 600; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .stat .s { font-size: 0.78rem; color: var(--text-muted); }
+
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input, .calc-inputs select { font-family: var(--font-sans); font-size: 1rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; max-width: 100%; }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .hint { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.45; }
+    .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 0.9rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; font-variant-numeric: tabular-nums; }
+    .result-split { display: flex; flex-direction: column; gap: 0.5rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; line-height: 1.45; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.7rem; }
+    .table-intro { font-size: 0.92rem; color: var(--text-soft); margin: 0 0 0.9rem; line-height: 1.6; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .rate-table th { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .rate-table tr.current td { font-weight: 700; color: var(--brand-ink); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.8rem 0 0; line-height: 1.55; }
+
+    .prose-block, .faq-block, .source-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2, .source-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block ul { padding-left: 1.2rem; }
+    .prose-block li { margin-bottom: 0.45rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+    .source-block ul { margin: 0; padding-left: 1.1rem; }
+    .source-block li { font-size: 0.85rem; color: var(--text-soft); line-height: 1.6; margin-bottom: 0.35rem; }
+
+    @media (max-width: 680px) {
+      .stats, .calc-grid { grid-template-columns: 1fr; }
+      .rate-table { font-size: 0.86rem; }
+    }
+  </style>
+</BaseLayout>

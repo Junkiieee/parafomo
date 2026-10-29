@@ -116,6 +116,15 @@ def evde_bakim_card():
             "sub": f"şu an ₺{tl(simdi)} · 10.000 gösterge × memur katsayısı"}
 
 
+def bedelli_card():
+    # 7179 s.K. md.9: 300.000 gösterge × ödeme günü memur aylık katsayısı (7577 s.K. 2026 ile 240.000 → 300.000)
+    k = load("emekli-memur.json")["memurKatsayi"]["aylikKatsayi"]
+    zam, kesin = memur_zam()
+    tl = lambda x: f"{round(x):,}".replace(",", ".")
+    return {"kicker": "BEDELLİ ASKERLİK ÜCRETİ", "stat": "₺" + tl(300000 * k),
+            "sub": f"Ocak 2027 {'' if kesin else '≈'}₺{tl(300000 * k * (1 + zam))} · 300.000 × memur katsayısı"}
+
+
 def engelli_card():
     # 2022 s.K. aylıkları: bütçe K cetveli göstergesi × memur aylık katsayısı + %5 ek ödeme (5454 md.1/e); ASHB ile kuruşu kuruşuna
     d = load("sosyal-aylik-2026.json")
@@ -313,6 +322,7 @@ CARDS = {
         "mevduat", "ay3", "MEVDUAT FAİZ ORANI", "basit", "3 aya kadar · TCMB ortalaması · net getiri hesapla"),
     "emekli-zammi-hesaplama": emekli_card,
     "evde-bakim-maasi": evde_bakim_card,
+    "bedelli-askerlik-ucreti": bedelli_card,
     "engelli-maasi": engelli_card,
     "memur-zammi-hesaplama": memur_card,
     "en-dusuk-emekli-maasi": emekli_memur_card("taban"),
