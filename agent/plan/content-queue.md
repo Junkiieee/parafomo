@@ -3,7 +3,7 @@
 `scripts/daily-content.sh` (Pzt-Cum 06:00 UTC) "Kuyruk" bölümündeki EN ÜSTTEKİ `- [ ]` satırı yazar ve
 `- [x] ... → /blog/<slug> (tarih)` yapar. Kuyruğu ajan yönetir (haftalık koşu yeniden sıralar, günlük koşu
 <3 kalınca doldurur). Satır biçimi: başlık önerisi · hedef sorgu (hacim) · neden şimdi · iç-link hedefi.
-Sıra = planlanan yayın günü (haftalık koşu 2026-10-22): 22 → 23 → 26 → 27 → 28 → 29 → 30 Ekim → 2 Kasım.
+Sıra = planlanan yayın günü (haftalık koşu 2026-10-29): 29 Ekim ek gösterge → 30 Ekim 📅 enflasyon önizleme → 2 Kasım katılım hesabı → 3 Kasım evlilik kredisi → 4 Kasım 📅 NFP → 5 Kasım SED → 9 Kasım 📅 CPI (6 Kasım boşluğunu günlük koşu hacmi ≥5 bir konuyla doldurur).
 **Tarihli satır** (📅) o gün yayınlanmalı: günlük koşu (03:00 UTC) sıranın kaydığını görürse o satırı EN ÜSTE taşır.
 
 **KURAL (2026-10-14):** her konunun hedef sorgusu Trends'te **hacim ≥ 5** olmalı ("mevduat faizi" = 100) ve
@@ -42,10 +42,6 @@ beyannamesi" 2,8 (zirve Mart 32 → Şubat'ta yeniden ölç) · "aile destek pro
   (hacim 43,7) · neden: memur kümesi (/memur-zammi-hesaplama) — 657 DMK ek gösterge cetveli ve 3600 ek gösterge
   düzenlemesini (7417 s.K.) mevzuat.gov.tr'den; tutar örneği verirsen güncel katsayıyla (`data/emekli-memur.json`) ·
   iç-link: /memur-zammi-hesaplama, /en-dusuk-emekli-maasi, /emekli-zammi-hesaplama
-- [ ] **Katılım hesabı nedir? Kâr payı nasıl hesaplanır, mevduattan farkı ve stopajı** · hedef: "katılım hesabı"
-  (hacim 6,9) · neden: mevduat kümesi tamamlayıcı; kâr payı oranı örneği verirsen bankanın kendi sayfasından tarihli,
-  TKBB/BDDK kaynaklı; tek banka önerme · iç-link: /mevduat-faizi-hesaplama, /blog/stopaj-nedir-2026-stopaj-oranlari,
-  /blog/para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki
 - [ ] 📅 30 Ekim **Ekim 2026 Enflasyonu 3 Kasım'da Açıklanıyor: Beklenti, Kira Artışı, Emekli Zammı ve 2027 Zamlarına
   Etkisi** · slug: `ekim-2026-enflasyon-beklentisi-3-kasim` · hedef: "enflasyon beklentisi" (hacim 45,6) + "ekim ayı
   enflasyon" (6,9, zirve Kasım 143) + "enflasyon ne zaman" (22,5) · frontmatter `sonuc: "tufe:2026-10"` +
@@ -55,9 +51,32 @@ beyannamesi" 2,8 (zirve Mart 32 → Şubat'ta yeniden ölç) · "aile destek pro
   /blog/2027-zamlari-yeniden-degerleme-orani-rehberi, /enflasyon-hesaplama linkleri. **Erken yayın (RC 2026-10-27):** "ekim ayı enflasyon
   beklentisi" aramaları şimdiden geliyor (GSC p13,8, yanlış yazıya); Google'ın dizine alması için olaydan ≥3 gün önce.
   AA Finans anketi sonradan çıkarsa 2 Kasım günlük koşusu yazıdaki beklenti rakamını güncellesin.
+- [ ] **Katılım hesabı nedir? Kâr payı nasıl hesaplanır, mevduattan farkı ve stopajı** · hedef: "katılım hesabı"
+  (hacim 6,9) · neden: mevduat kümesi tamamlayıcı; kâr payı oranı örneği verirsen bankanın kendi sayfasından tarihli,
+  TKBB/BDDK kaynaklı; tek banka önerme · iç-link: /mevduat-faizi-hesaplama, /blog/stopaj-nedir-2026-stopaj-oranlari,
+  /blog/para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki
+- [ ] **Evlilik kredisi 2026: kimler alabilir, tutarı ne kadar, geri ödeme nasıl?** · hedef: "evlilik kredisi"
+  (hacim 38,1, zirve Mayıs 126) · neden: sosyal haklar kümesi (B261029-1). Tutar, yaş/gelir şartı, geri ödeme süresi ve
+  çocuk doğunca ertelenen/silinen kısım YALNIZ Aile ve Sosyal Hizmetler Bakanlığı / Aile ve Gençlik Fonu resmî sayfasından,
+  tarihli · iç-link: /dogum-yardimi, /ihtiyac-kredisi-hesaplama, /kredi-hesaplama
+- [ ] 📅 4 Kasım **ABD Ekim İstihdam Verisi (NFP) 6 Kasım'da: Beklenti, Fed, Dolar ve Altın Etkisi** · slug:
+  `abd-kasim-2026-nfp-istihdam-verisi-fed-dolar-altin` (ekim-2026-nfp adı Eylül verisi için kullanıldı) · hedef: izinli olay
+  ailesi (ABD NFP — GSC'de tık kanıtlı; nfp yazısı 28g 3 tık / 34 gös) · tarih: 6 Kasım Cuma 15:30 TSİ (iki takvim aynı;
+  BLS'den doğrula) · beklenti rakamı YALNIZ tarihli konsensüs (Reuters/Bloomberg anketi), önceki ay BLS'den · Fed 28 Ekim
+  kararı (%3,75–4,00 sabit) `data/fomc-2026.json`'dan · iç-link: /fed-faiz-takvimi, /ekonomik-takvim,
+  /blog/abd-issizlik-verisi-altin-dolar-etkisi, /dolar-getiri, /altin-getiri
+- [ ] **SED yardımı nedir? Sosyal ekonomik destek 2026 tutarı, şartları ve başvurusu** · hedef: "sed yardımı" (hacim 12,4,
+  zirve Ocak 58) · neden: sosyal haklar kümesi (B261029-1); tutar ve gelir şartı YALNIZ ASHB resmî kaynağından, tarihli;
+  emin olunmayan tutarı yazma · iç-link: /engelli-maasi, /evde-bakim-maasi, /dogum-yardimi
+- [ ] 📅 9 Kasım **ABD Ekim Enflasyonu (CPI) 10 Kasım'da: Beklenti, Fed Aralık Kararı, Dolar ve Altın** · slug:
+  `abd-kasim-2026-cpi-verisi-fed-dolar-altin` · hedef: izinli olay ailesi (ABD CPI — abd-ekim-2026-cpi 28g 7 tık / 126 gös) ·
+  tarih: 10 Kasım (TEK kaynak — 6 Kasım günlük koşusu BLS takviminden doğrulasın, farklıysa 📅 tarihini kaydırsın) ·
+  beklenti YALNIZ tarihli konsensüs · iç-link: /fed-faiz-takvimi, /blog/abd-ekim-2026-cpi-verisi-fed-dolar-altin, /altin-getiri
 
 ## Sonraki hafta adayları
-- 📅 ABD NFP (Ekim verisi) ve ABD CPI (Ekim verisi) önizlemeleri — tarihleri BLS takviminden; olaydan 1-2 gün önce.
+- (10-29) KYK burs (122), bedelli askerlik (111), doğum izni (97), dul/yetim (31+19), askerlik borçlanması (30) → yazı
+  DEĞİL, araç/veri sayfası (week T24-T31).
+- 📅 Aralık: TÜİK Kasım TÜFE (3 Aralık) önizleme 1 Aralık · Fed 9 Aralık önizleme 7 Aralık · TCMB 10 Aralık önizleme 8 Aralık.
 - Kredi kartı faiz hesaplama → yazı DEĞİL, araç (week T20).
 - Emekli promosyonu → yazı DEĞİL, veri sayfası (week T17). Emeklilik yaşı → araç (week T18).
 - Çocuk parası (27,5) → /dogum-yardimi kapsıyor; yazı açma (tools.ts'e anahtar kelime).

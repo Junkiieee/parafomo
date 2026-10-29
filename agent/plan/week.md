@@ -1,78 +1,48 @@
-# Hafta planı — 2026-10-22 → 2026-10-28
-_Haftalık koşu: 2026-10-22 · model claude-opus-5-5_
-<!-- plan-date: 2026-10-22 -->
+# Hafta planı — 2026-10-29 → 2026-11-04
+_Haftalık koşu: 2026-10-29 · model claude-opus-5-5_
+<!-- plan-date: 2026-10-29 -->
 
 ## Durum
-- Gerçek erişim (Direct hariç) son 7g **59** (28g 196) · son tam hafta 202642: **64** — 9 haftanın en iyisi (202641: 32,
-  4 hafta önce 202638: 48). GSC 202642: 43 tık / 2.130 gös (202641: 17 / 973) — gösterim 2x. Kaynak: olay yazıları
-  (TCMB 22 Ekim, ABD CPI/NFP) + halka arz sayfaları (7g 8 tık / 197 gös, 2x) + 2027 zamları yazısı (116 gös/7g).
-  Hâlâ hedefin ~%0,9'u.
-- Geçen hafta 20+ yeni araç sayfası açıldı, hepsi 1-6 günde indekslendi; baş sorgularda p60-99 (otorite kilidi
-  yeni sayfalarda da aynı), 2027 varyantlarında p6-11. Sezon (Kasım-Ocak) başlamadan tık beklenmez; ilk test 3 Kasım.
-- **Ders:** olay önizleme yazıları 28g 31 tık — blog tıklarının yarısı. Yeni bahis B261022-1. Getiri bahsi **lost**.
-- **§9c'nin ilk 15 satırı tükendi:** 12'si OTORITE, kalan 3'ü eşleme hatası (22 ayar bilezik/çeyrek altın sayfası var,
-  borsa istanbul/bist 100 gürültü). Bu yüzden görevler bu koşuda Trends ile YENİ ölçülen sorgulardan:
-  emekli promosyon **178,6**, fed faiz kararı 80,9, enflasyon beklentisi 45,6, geçici vergi 46,1, ek gösterge 43,7,
-  sgk hizmet dökümü 30,1, emeklilik yaşı 25,5, emeklilik hesaplama 23,7. T19 motoru düzeltir.
-- YouTube 53 abone (+0/7g), +1.886 izlenme/7g, W42 video medyanı 72. Bülten 1, Telegram 2, AdSense kapalı (Kaan kararı).
+- Gerçek erişim (Direct hariç) son 7g **76** (geçen haftaki koşuda 59) · son tam hafta 202643: **81** — 9 haftanın en iyisi
+  (202642: 64, 4 hafta önce 202639: 36). 28g 228 (196). Hedefin %1,1'i.
+- GSC 202643: **40 tık / 4.196 gösterim** (202642: 43 / 2.130). Gösterim 2 katına çıktı ama tık yerinde saydı. Artış
+  derin sıralardan geldi, tık getirmiyor: /tasit-kredisi 419 gösterim p85, altın alt sayfaları +500 p83-91, kredi kartı faiz p81.
+  Tıklar iki yerden geliyor. Biri **sosyal ödeme sayfaları** (doğum yardımı 4 tık p8,4 · evde bakım 4 p15,6 · engelli 2 p22,
+  açılış 10-19). Diğeri eski kazananlar (euro-mı-dolar-mı 5, altın-getiri 3). Bundan yeni bahis çıktı: **B261029-1**.
+- Halka arz bahsi **lost** (7g 194 gösterim / 4 tık, iki haftadır düz). Sayfalar otomatik akmaya devam ediyor.
+  Fed 28 Ekim sonuç kutusu 19:25 UTC'de kendiliğinden geldi, sonuç Short'u yayında. **T21 bitti.**
+- YouTube **60 abone (+7/7g, en iyi hafta)** · +7.016 izlenme/7g (önceki +1.886) · 1000 izlenme başına abone 0,69'dan 0,8'e.
+  En çok izlenen üç videonun ikisi aranan konuların blog→Short'u: Fed önizleme 1.159, geçici vergi 1.019 (altın takı 936).
+  Viral formatlar 11-192 izlenme. IG 21 / FB 0 (Meta izni bekleniyor) · bülten 1 · AdSense kapalı (Kaan kararı).
+- **Otopsi:** geçen haftanın 4 tarihsiz görevi 10-23'te bitti. 10-26→10-28 koşuları 3-10 dk sürdü, kuyruk boştu.
+  Bu yüzden bu hafta **9 tarihsiz görev** var. §9c'nin ilk 15 satırı yine OTORITE ya da eşleme gürültüsü
+  (borsa istanbul/bist 100/"evet" → yanlış sayfa). Bu yüzden web görevleri bu koşuda Trends'le yeni ölçülen sorgulardan seçildi:
+  KYK burs 122 (son 4 hafta 459) · bedelli askerlik 111 · doğum izni 97 · emekli maaşı 2027 98 (zirve 852) · dul maaşı 31 +
+  yetim aylığı 19 · askerlik borçlanması 30.
 
 ## Bahisler
-- **B261022-1 — Olay takvimi motoru** · olay önizleme/sonuç yazıları 28g ≥60 tık + ≥900 gös (baz 31 / 506) · değerlendirme 2026-11-19
-- **B261015-1 — Fırsat motoru: 2027 zam sezonu + hacimli araçlar** · 7g ≥400 gös + ≥10 tık (şimdi 226 / 1) · değerlendirme 2026-11-12
-- **B261006-1 — Halka arz şirket sayfaları** · /halka-arz/* 7g ≥500 gös + ≥15 tık (şimdi 197 / 8) · değerlendirme 2026-11-03
-- Kapandı: B261006-2 (getiri kümesi) → **lost** (28g 33 tık, baz 42, hedef 85).
+- **B261029-1 — Sosyal haklar kümesi (devlet ödemesi/SGK hak tutarı sayfaları)** · 7g ≥25 tık + ≥700 gös (baz 9 / 240) · değerlendirme 2026-11-26
+- **B261022-1 — Olay takvimi motoru** · olay yazıları 28g ≥60 tık + ≥900 gös (şimdi 31 / 463) · değerlendirme 2026-11-19
+- **B261015-1 — Fırsat motoru: 2027 zam sezonu + hacimli araçlar** · 7g ≥400 gös + ≥10 tık (şimdi 167 / 1) · değerlendirme 2026-11-12
+- Kapandı: B261006-1 (halka arz şirket sayfaları) → **lost** (7g 194 gös / 4 tık, hedef 500/15; iki hafta düz).
 
 ## Görev kuyruğu (günlük koşu en üstteki [ ]'yi alır)
-Kural: TARİHLİ görevin günü geldiyse önce o. Veri sayfasında rakamı resmi kaynaktan doğrula; iki kaynak çelişirse YAZMA.
-Yeni sayfa = `src/data/tools.ts` kaydı (k: anahtar kelimeler) + Footer TOOL_LINKS + `scripts/og-images.py` CARDS +
-`image="/og/<slug>.png"` + FAQPage + ilgili 2 sayfadan metin içi link → `npm run build` → `bash scripts/deploy-push.sh`
-→ `python3 scripts/wait-live.py https://parafomo.com/<slug>/` → keyword-map'e `[x]`.
+Kural: TARİHLİ görevin günü geldiyse ÖNCE o; yoksa en üstteki tarihsiz [ ]. Gecede 1-2 görev bitir; 5 dk'da biten koşu = hata.
+Resmî rakamı birincil kaynaktan (mevzuat.gov.tr, RG, SGK, ASHB, GSB, MSB) doğrula. İki kaynak çelişirse o rakamı YAZMA,
+"resmî duyuruyu kontrol edin" de.
+**Yeni sayfa kontrol listesi:** `src/data/tools.ts` kaydı (k: anahtar kelimeler) + Footer TOOL_LINKS + `scripts/og-images.py`
+CARDS + `image="/og/<slug>.png"` + FAQPage + ilgili 2 sayfadan metin içi link → `npm run build` →
+`bash scripts/deploy-push.sh` → `python3 scripts/wait-live.py https://parafomo.com/<slug>/` → keyword-map'e `[x]`. Rakam
+`data/*.json`'a kaynak URL + tarih ile girer. Memur katsayısına bağlı tutarlar `data/emekli-memur.json`'dan okunur, sayfaya
+sabit yazılmaz. Ocak 2027 tahmini `src/data/zam2027.ts`'ten gelir (evde-bakim-maasi kalıbı).
 
-- [x] T4b (B261022-1 — TARİHLİ, 23 Ekim sabahı) — → karar %37→%36 (−100 bp) policy-decisions.py ünlü uyumu hatası yüzünden yazılamamıştı (’ya eki) → regex düzeltildi, tcmb-2026.json güncel; yazı geçmiş zamana, SSS güncel, Sıradaki 10 Aralık; canlıda kutu “Açıklandı: %36 (indirim)” · commit 6c96d2b · 2026-10-23 — **TCMB kararı sonrası kontrol** · /blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler/
-  üstünde otomatik sonuç kutusu "açıklandı" + sonucBaslik görünüyor mu, /tcmb-faiz-takvimi kararı gösteriyor mu (yoksa
-  `logs/policy-decisions.log`); SSS'yi geçmiş zamana çevir ("Ekim 2026'da TCMB faiz indirecek mi?" → gerçekleşen karar),
-  "Son durum" bölümünü "Karar öncesi beklenti" olarak yeniden adlandır, `updatedDate`. ELLE kutu ekleme. Sıradaki PPK
-  tarihini data/tcmb-2026.json'dan yazıya ekle. · Kabul: canlıda kutu + geçmiş zaman SSS.
-- [x] T17 (B261015-1) — → canlı https://parafomo.com/emekli-promosyonu/ (8 banka resmi sayfadan: QNB, ING, Yapı Kredi, Garanti BBVA, Akbank, DenizBank, Ziraat, Halkbank; VakıfBank + İş Bankası nakit tutarı resmi sayfada yok → yazılmadı; maaşa göre hesaplayıcı, kıst iade, health.py bekçisi — Akbank/Garanti/YKB kampanyaları 31 Ekim biter → 1 Kasım health uyarısıyla yeniden kontrol) · commit 51017c3 · haftalık koşu 10-22 — **/emekli-promosyonu yeni veri sayfası** · hedef: emekli promosyon (hacim 178,6, son 4h 156 —
-  sitede karşılığı yok, §9c'deki en büyük boş niyet). İçerik: (a) banka banka tablo — banka · promosyon tutarı (maaş
-  aralığına göre kademeler) · ek kampanya şartı (otomatik ödeme/kart harcaması) · taahhüt süresi · kaynak linki · kontrol
-  tarihi. YALNIZ bankanın KENDİ resmi kampanya sayfasında yazan rakam (WebFetch/WebSearch ≤12; haber sitesi rakamı
-  YAZILMAZ). Kamu (Ziraat, Halkbank, VakıfBank) + büyük özel (İş, Garanti BBVA, Akbank, Yapı Kredi, QNB, DenizBank, ING,
-  TEB, Enpara) — en az 6 banka doğrulanmazsa doğrulananlarla yayınla, eksiği yazma. Rakamı `data/emekli-promosyon.json`'a
-  (banka, kademeler, şartlar, url, kontrol) yaz; sayfa oradan okur. (b) "Maaşına göre promosyon" mini hesaplayıcı:
-  maaş gir → bankaların o kademedeki tutarı sıralı. (c) Promosyon nasıl alınır / banka değiştirme (taşıma) adımları,
-  iade şartı (taahhüt bozulursa kısmi iade) — bankanın sözleşme metninden; genel kuralı doğrulayamazsan "bankaya göre
-  değişir" de. (d) Ocak 2027 notu: zam sonrası bankalar kademeleri günceller → sayfa tarihli. health.py'a tazelik satırı
-  (kontrol > 30 gün → UYARI). Başlık: "Emekli Promosyonu 2026: Banka Banka Güncel Tutarlar (<ay>)". /en-dusuk-emekli-maasi
-  ve /emekli-zammi-hesaplama'dan metin içi link. Tavsiye dili yok ("en iyi banka" deme; "en yüksek tutar" tablo sırası).
-  · Kabul: canlıda 200; her satırda kaynak linki + kontrol tarihi; hesaplayıcı çalışır; FAQPage; health.py satırı.
-- [x] T18 (B261015-1) — → canlı https://parafomo.com/emeklilik-hesaplama/ (5510 md.28/geç.9/geç.95 mevzuat.gov.tr PDF + SGK Genelgesi 2023/13 EYT tablosu; 4/a üç dönem tam, 4/b-4/c 1999 sonrası; EYT Bağ-Kur/memur tablosu doğrulanamadı → “e-Devlet’ten kontrol edin”; 3 örnek profil sayfada, genelge örneği (kadın 8.6.1998 → 20 yıl+5975 gün) tutuyor; 8 senaryo node testi; FAQPage + hizmet dökümü bölümü; Footer/tools.ts/OG + /en-dusuk-emekli-maasi ve /bagkur-primi-hesaplama linki) · commit be49331 · 2026-10-23 — **/emeklilik-hesaplama yeni araç (ne zaman emekli olurum)** · hedef: emeklilik yaşı (25,5) +
-  emeklilik hesaplama (23,7) + ne zaman emekli olurum (14,3) + sgk hizmet dökümü (30,1 — nasıl alınır bölümü).
-  Girdi: doğum tarihi, cinsiyet, ilk sigorta girişi, statü (4/a SSK, 4/b Bağ-Kur, 4/c memur), prim günü. Çıktı: yaş +
-  prim günü + sigortalılık süresi şartı ve tahmini emeklilik tarihi. Kurallar: 08.09.1999 öncesi (EYT — 7438 s.K. ile yaş
-  şartı kalktı; kademeli prim günü tablosu 506 geçici 81), 08.09.1999–30.04.2008 (5510 geçici md. kadın 58/erkek 60,
-  7000 gün; 25 yıl + 4500 gün seçeneği), 01.05.2008 sonrası (prim günü 7200'e kademeli, yaş 2036'dan itibaren 65'e
-  kademeli — 5510 md.28 tablosu). TÜM tabloları mevzuat.gov.tr 5510 güncel metninden (pypdf) al; doğrulayamadığın
-  statüyü (ör. 4/b farkları) hesaplayıcıdan çıkar, "e-Devlet'ten kontrol edin" de. 3 örnek profili SGK/resmî broşür
-  örneğiyle karşılaştır, sonucu rapora yaz. Bölüm: "SGK hizmet dökümü nasıl alınır" (e-Devlet adımları, belge okuma).
-  · Kabul: build geçer; canlıda 3 örnek profil doğru tarih verir; FAQPage; /en-dusuk-emekli-maasi + /bagkur-primi-hesaplama link.
-- [x] T19 (sistem — konu seçimi doğruluğu) — → 22 ayar bilezik/çeyrek altın → /altin-fiyatlari/* (OTORITE), memur maaşı/emekli
-  promosyon → doğru sayfa (BEKLE), katılım hesabı/emeklilik hesaplama yanlış eşlemeden kurtuldu; SYNONYMS haritası + 9 yeni
-  HEAD_TERMS · commit e595556 · haftalık koşu 10-22 — **opportunity_finder: alt sayfalar + yeni ölçülen sorgular** ·
-  `scripts/learn/opportunity_finder.py` sayfa listesi yalnız `src/pages/*.astro` + blog; dinamik route alt sayfalarını
-  (`/altin-fiyatlari/<tür>`, `/halka-arz/<slug>` HARİÇ tut — şirket adları gürültü) `dist/**/index.html` ya da sitemap'ten
-  ekle. Sonuç: "22 ayar bilezik" → /altin-fiyatlari/22-ayar-bilezik, "çeyrek altın" → /altin-fiyatlari/ceyrek-altin,
-  "cumhuriyet altını" zaten doğru. Eşanlam haritası (küçük dict): "memur maaşı" → /memur-zammi-hesaplama, "trafik cezası
-  sorgulama" → /trafik-cezalari-hesaplama, "çocuk parası" → /dogum-yardimi, "sgk prim borcu" → /vergi-borcu-sorgulama.
-  HEAD_TERMS'e bu koşuda ölçülenleri ekle: emekli promosyon, fed faiz kararı, enflasyon beklentisi, geçici vergi, ek
-  gösterge, sgk hizmet dökümü, emeklilik yaşı, emeklilik hesaplama, katılım hesabı, kredi kartı faiz hesaplama, çocuk
-  parası. Önbellekten oku (yeniden çekme). · Kabul: yeniden çalıştırınca 22 ayar bilezik / çeyrek altın YENI_YAZI değil;
-  emekli promosyon listede (T17 canlıysa BEKLE); commit.
-- [ ] T21 (B261022-1 — TARİHLİ, 29 Ekim sabahı) — **Fed 28 Ekim sonrası kontrol** · 26 Ekim'de daily-content'in yazdığı
-  Fed önizleme yazısında (`fed-faiz-karari-28-ekim-2026-…`) `sonuc: "fed:2026-10-28"` var mı (yoksa 27 Ekim'de ekle — ✅ 27 Ekim
-  kontrol edildi: `sonuc` + `sonucBaslik` ({karar}/{bant}) yazıda var);
-  29 Ekim: kutu "açıklandı" + /fed-faiz-takvimi kararı gösteriyor mu (yoksa `logs/policy-decisions.log`); SSS geçmiş
-  zamana, `updatedDate`. Rakamı elle tahmin ETME. · Kabul: canlıda kutu + /fed-faiz-takvimi güncel.
+- [x] T21 (B261022-1) — **Fed 28 Ekim sonrası kontrol** → policy-decisions 19:25 UTC: sabit, bant %3,75–4,00, oy 10–2
+  (kaynak federalreserve.gov monetary20261028a). Canlıda başlık "Fed 28 Ekim Kararı Açıklandı (sabit): Faiz Bandı %3,75–4,00".
+  /fed-faiz-takvimi "Sıradaki Karar 9 Aralık". Sonuç Short'u https://youtube.com/shorts/Ow7VUplxNY0 · haftalık koşu 2026-10-29.
+- [ ] T23 (B261029-1 — TARİHLİ, 1 Kasım) — **Emekli promosyonu tablosunu yenile** · Akbank, Garanti BBVA ve Yapı Kredi
+  kampanyaları 31 Ekim'de bitiyor; health.py 1 Kasım'da uyarır. Her bankanın kendi kampanya sayfasından yeni tutarı ve
+  bitiş tarihini al → `data/emekli-promosyon.json`. Kampanya yenilenmediyse satırı "kampanya sona erdi" yap, tutar uydurma.
+  Build → deploy. · Kabul: https://parafomo.com/emekli-promosyonu/ güncel tarihleri gösteriyor ve health.py temiz.
 - [ ] T13 (zam sezonu — TARİHLİ, 3 Kasım sonrası · Kaan ONAYLADI) — **YD kesinleşme kontrolü:** 3 Kasım'da release-watch.py
   (10 dk'da bir, 07:00-10:50 UTC) Ekim Yİ-ÜFE gelir gelmez /yeniden-degerleme-orani, /mtv-hesaplama vb. ve CANLI
   yazı /blog/2027-zamlari-yeniden-degerleme-orani-rehberi'yi otomatik "Belli Oldu: %X" yapar (RC 10-18; oran EVDS
@@ -84,10 +54,67 @@ Yeni sayfa = `src/data/tools.ts` kaydı (k: anahtar kelimeler) + Footer TOOL_LIN
   2027'de kapanınca otomatik arşivlenir). Aralık: MTV/harç/damga için CB kararı çıkarsa → `uygulananOrani` (MTV,
   pasaport-harç sayfaları ve canlı yazı bu oranı kullanır). Her yazımdan sonra `python3 scripts/live-posts.py` → commit →
   `bash scripts/deploy-push.sh`. · Kabul: sayfalar canlıda doğru durumu gösterir.
-- [x] T20 (keyword-map) — → canlı https://parafomo.com/kredi-karti-faiz-hesaplama/ (TCMB azami oran tablosu Ekim 2026: <30 bin %3,25/%3,55 · 30-180 bin %3,75/%4,05 · >180 bin %4,25/%4,55; scripts/kredi-karti-faiz.py TCMB sayfasından okur, evds-update.sh Prş+Cum çağırır → aylık otomatik; asgari %20/%40 eşik 100 bin BDDK 11581; KKDF+BSMV; borç kaç ayda biter; FAQPage; iki blog yazısından link; OG kartı veriden) · commit 40f2d70 · 2026-10-23 — **/kredi-karti-faiz-hesaplama yeni araç** · hedef: kredi kartı faiz hesaplama (11,6) + kredi
-  kartı faiz oranı (7,7). TCMB'nin GÜNCEL azami akdi/gecikme faiz oranları (TCMB duyurusu, tarihli; EVDS'te varsa veriden),
-  borç × ay → faiz + KKDF %15 + BSMV %15, asgari ödeme yapılırsa borç kaç ayda biter tablosu. /blog/kredi-karti-asgari-
-  odeme-tutari-2026 ve /blog/kredi-yapilandirma-2026-… yazılarından link. · Kabul: T17 ile aynı (veri dosyası + kaynak).
+- [ ] T22 (B261022-1 | R1 — TARİHLİ, 4 Kasım, T13'ten hemen sonra) — **TÜİK 3 Kasım olay günü doğrulaması** · (1)
+  `logs/event-shorts.json`'da `tuik:2026-10` `done` mı, iki video da (enflasyon+kira / yeniden değerleme) açılıyor mu?
+  `failed` ise kök nedeni `logs/event-short.log`'dan bul. Olay ≤36 saatlikse `python3 scripts/event-short.py` ile yeniden üret.
+  (2) /blog/ekim-2026-enflasyon-beklentisi-3-kasim'da sonuç kutusu "Açıklandı" + başlık doğru mu? SSS'yi geçmiş zamana
+  çevir, `updatedDate` ekle. (3) /kira-artis-orani-hesaplama, /emekli-zammi-hesaplama ve /memur-zammi-hesaplama Ekim TÜFE'sini
+  gösteriyor mu? (4) app.parafomo.com TÜFE kopyası güncel mi (health.py)? · Kabul: dört madde canlıda doğru, ya da
+  sorunun nedeni raporda.
+- [ ] T24 (B261029-1) — **/kyk-burs-miktari yeni veri sayfası (KYK burs/kredi tutarı + geri ödeme)** · hedef: kyk burs
+  (hacim 122, son 4 hafta 459 — zirve ŞU AN, Ekim). 2026-2027 öğretim yılı burs/öğrenim kredisi tutarlarını (önlisans/lisans,
+  yüksek lisans, doktora) YALNIZ GSB/KYK resmî duyurusundan al (gsb.gov.tr, kygm.gsb.gov.tr). Ödeme günü, başvuru/sonuç
+  takvimi ve "burs mu kredi mi" farkını ekle. Hesaplayıcı: aylık tutar × ay → toplam borç; geri ödeme taksiti (mezuniyetten
+  2 yıl sonra, taksit sayısı = kredi alınan ay sayısı; TÜFE/ÜFE güncellemesinin güncel kuralını 5102 s.K.'dan doğrula). 2026-2027
+  tutarı henüz açıklanmadıysa sayfayı 2025-2026 resmî tutarla, "yeni dönem tutarı açıklanınca güncellenir" notuyla aç.
+  health.py'ye tazelik satırı ekle. · Kabul: sayfa canlı, tutarın kaynağı ve tarihi sayfada; FAQPage var.
+- [ ] T25 (B261029-1) — **/bedelli-askerlik-ucreti yeni veri sayfası** · hedef: bedelli askerlik ücreti (hacim 111, zirve
+  Mart 427; tutar Ocak ve Temmuz'da memur katsayısıyla değişir). Formülü 7179 s. Askeralma Kanunu md.10'dan al
+  (mevzuat.gov.tr; gösterge × memur aylık katsayısı). `data/emekli-memur.json` katsayısıyla hesapla. Temmuz 2026 tutarını
+  MSB/ASAL duyurusuyla çapraz kontrol et. Ocak 2027 tahmini zam2027 memur projeksiyonundan, "tahmin" etiketiyle. Ek bölümler:
+  dövizle askerlik (tutar kanundan), taksit/ödeme yeri. Yaş/şart bilgisi yalnız kanundan. /evde-bakim-maasi ve
+  /memur-zammi-hesaplama'dan link. · Kabul: sayfa canlı, hesaplanan tutar resmî duyuruyla kuruşu kuruşuna aynı.
+- [ ] T26 (R3 — YouTube) — **YouTube arama başlık turu (20 video)** · izlenmenin %19-21'i YouTube aramasından. Bu hafta
+  aranan konuların blog→Short'u öne çıktı (Fed önizleme 1.159, geçici vergi 1.019). Yeni betik
+  `scripts/youtube-retitle.py --dry` yaz (`agent/state/yt_retitle.py` kalıbı). Betik son 60 günün en çok izlenen 20
+  videosunu alır, `data/learning/yt-search-terms.json` + brief §1b arama kalıplarına bakarak yeni başlık önerir: konu + yıl/ay
+  ilk 40 karakterde, abartısız, videonun söylediğiyle birebir. Öneri listesini report.md'ye koy, sonra uygula: `videos.update`
+  part=snippet; categoryId, tags ve description geri gönderilir. Uygulamadan önce `yt_search_share` bazını
+  `agent/memory/yt-retitle-2026-11.json`'a kaydet. · Kabul: 20 video güncel + baz dosyası commit'li; haftalık koşu 11-12'de kıyaslar.
+- [ ] T27 (B261015-1 | R2) — **"Emekli maaşım ne kadar olacak?" tutar tablosu** · hedef: emekli maaşı 2027 (hacim 98,
+  zirve Ocak 852) + "X TL emekli maaşı ne kadar olacak" uzun kuyruğu. Yeni sayfa AÇMA: /emekli-zammi-hesaplama'ya
+  `#tutar-tablosu` bölümü ekle. En düşük aylık + 15/18/20/25/30/35/40/50 bin TL maaşlar için Ocak 2027 tahmini (SSK ve
+  Bağ-Kur ayrı). Rakamlar `src/data/zam2027.ts`'ten üretilir, elle sayı yok. Aynı bileşenle /memur-zammi-hesaplama'ya
+  memur maaşı 2027 (41) tablosu ekle. FAQPage'e 2 soru. · Kabul: iki sayfada tablo canlı; TÜFE güncellenince tablo kendiliğinden değişiyor.
+- [ ] T28 (B261029-1) — **/askerlik-borclanmasi-hesaplama yeni araç** · hedef: askerlik borçlanması (hacim 30, zirve
+  Aralık 75). Formül 5510 md.41: gün × prime esas günlük kazanç (alt sınır = günlük brüt asgari ücret, üst sınır 9 katı) ×
+  %32 (4/a; 4/b ve 4/c oranlarını kanundan doğrula). Doğum borçlanmasını aynı sayfada ayrı bölüm yap (çocuk başı 720 gün,
+  en fazla 3 çocuk; şartlar kanundan). Asgari ücret `data/asgari-ucret.json`'dan. Bilgi notu: Ocak'ta asgari ücret artınca
+  borçlanma tutarı da artar (tavsiye dili yok). /emeklilik-hesaplama ve /blog/sgk-hizmet-dokumu-nasil-alinir-nasil-okunur'dan
+  link. · Kabul: canlı; 3 örnek hesap SGK'nın kendi örneği ya da formülle tutarlı.
+- [ ] T29 (R4 — YouTube) — **Konu oynatma listeleri + abone vaadi** · 1000 izlenme başına abone 0,8. Format listeleri
+  var, ama aranabilir konu listeleri yok. `scripts/youtube-extras.py`'ye başlık/etiket anahtar kelimesine göre konu listeleri ekle:
+  "Zam Sezonu 2027: Emekli, Memur, Asgari Ücret" · "Faiz Kararları: TCMB ve Fed" · "Altın: Fiyat, Ayar, Getiri" ·
+  "Vergi ve Harçlar 2027". Video hem format hem konu listesine girer. Son 60 günü tek seferlik geri doldur (`--backfill`,
+  kota: insert başına 50 birim, günlük 10.000; gerekirse iki güne böl). Konu listesine giren yeni videoların sabit yorumu:
+  "Rakam açıklanınca ilk burada — abone ol" + ilgili araç linki (funnel_comment). · Kabul: 4 liste kanalda görünür ve
+  dolu; yeni videolar otomatik ekleniyor (log).
+- [ ] T30 (B261029-1) — **/dul-yetim-maasi-hesaplama yeni araç** · hedef: dul maaşı (hacim 31, zirve Ocak 129) + yetim
+  aylığı (19, zirve Ocak 73). Hak sahibi oranları 5510 md.34'ten: eş %50, çocuk yoksa ve eş çalışmıyorsa %75, çocuk %25,
+  ana-baba %25, toplam ≤%100 ve indirim kuralı. Bağlanma şartları md.32-33'ten. Girdi: ölenin aylığı + hak sahipleri →
+  kişi başı tutar. Ocak 2027 zam tahmini emekli zammı modülünden. En düşük aylık tamamlamasının nasıl bölüşüldüğünü SGK'dan
+  doğrula; doğrulayamazsan yazma. · Kabul: canlı; kanundaki 2 örnek senaryo doğru hesaplanıyor.
+- [ ] T31 (B261029-1) — **/dogum-izni-hesaplama yeni araç** · hedef: doğum izni (hacim 97, zirve Nisan 393). İzin süresini
+  GÜNCEL metinden al: İş Kanunu md.74 + 657 DMK md.104. 2025-2026 süre değişikliği var mı, mevzuat.gov.tr güncel metninden
+  kontrol et, haber sitesinden alma. Tahmini doğum tarihi → izin başlangıcı/bitişi; çoğul gebelik ve erken doğum kuralları;
+  babalık izni (işçi/memur); süt izni. Analık ödeneği 5510 md.18: günlük kazancın 2/3'ü × gün. /dogum-yardimi ile karşılıklı
+  link. · Kabul: canlı; tarih hesabı 3 senaryoda kanunla tutarlı.
+- [ ] T32 (R10 — Instagram) — **BIST kartlarını akıştan Story'ye al** · IG'de günde 6-7 gönderi var; BIST/altın kartlarına
+  etkileşim 0, Reels ortalaması 1. 465 gönderiye 21 takipçi. BIST açılış+kapanış kartı betiğine `--story` modu ekle
+  (`scripts/post-*-instagram.py`; bist kapanış story'si zaten var: commit 0dd12b8 kalıbı). Altın kartını haftada 3 güne indir.
+  Cron değişikliğini `deploy/crontab.txt`'e yaz. Kaan'ın user-tasks #1'deki `crontab deploy/crontab.txt` komutu bunu da kurar;
+  ayrı görev açma. Her betiği `--dry` ile dene. · Kabul: crontab.txt diff + dry çıktısı raporda; script commit'li.
+
 - [ ] T14 (zam sezonu — TARİHLİ, TÜİK 2027 takvimi yayımlanınca; genelde Ocak'ın ilk günleri) — **TÜİK 2027
   takvimi:** `data/tuik-enflasyon-2027.json` oluştur (2026 dosyasıyla aynı şema; en az "Aralık 2026" → Ocak 2027
   açıklama günü). release-watch.py, emekli/memur sayfaları ve sonuç kutusu takvim dosyalarını glob'la okur; dosya yoksa
@@ -117,40 +144,48 @@ Yeni sayfa = `src/data/tools.ts` kaydı (k: anahtar kelimeler) + Footer TOOL_LIN
   · Kabul: listedeki her sayfa canlıda 2027 resmî rakamını gösterir; health.py temiz.
 
 ## Bakım / ürün
-- [x] V3 (video kalitesi/özgünlük) — → viral-script.py kapısı: bugün (UTC) üretilen short-*/senaryo dosyaları + bugünkü blog kuyruğu konusundan ana varlık kümesi (8 küme) → prompt'a "bu kümelerin dışından seç" + üretilen başlık dolu kümeye düşerse yeniden dene (son denemede log + üretime devam; --topic ve veri formatları muaf). Viral 00:30'da yalnız blog konusunu görür, Manim 16:00 tüm günü görür. Dry: `--clusters --today 2026-10-21` → altın ×3 dosya, 10-20 altın ×2 yakalandı · commit c72838b · 2026-10-24 — **Günlük konu kümesi kapısı** · V2 bulgusu (10-15): aynı gün aynı konudan iki video
-  → biri akışı alıyor, diğeri 0-13 izlenme; son günlerde altın 3 hatta aynı gün (10-21: altin-cetveli viral + altin-faizsiz
-  Manim; 10-20: altin-dusse viral + altin-hesabi daily). `scripts/viral-script.py` konu seçimine kapı: bugün (UTC) diğer
-  hatların yüklediği/planladığı videoların başlık+slug'ından ana varlık kümesini çıkar (altın/dolar/euro/borsa/kripto/
-  faiz/kredi/vergi/emekli — küçük anahtar sözlük) ve viral senaryo aynı kümeye düşüyorsa farklı kümeden konu seç (yoksa
-  üret, log'a yaz — üretimi durdurma). Kaynak: youtube-upload kayıtları/`public/social/` bugünkü dosyalar. İzole test:
-  `--dry` ile bugünün durumunda seçilen kümeyi yazdır. · Kabul: commit + rapora dry-run çıktısı; 7 gün sonra haftalık
-  koşu aynı gün aynı kümeden 2+ video sayısını sayar (baz: 10-15→10-21).
-- [x] P2 (portföy) — → kira-artis-update.sh TÜFE değişince `deploy-app.sh` çağırıyor + health.py "app TÜFE kopyası eski" bekçisi; app yeniden dağıtıldı (TÜFE 2026-09 güncel — sorun gecikme mekanizmasıydı: app ayın 2'sinde, TÜFE ayın 3'ünde → ~1 ay) · haftalık koşu 10-22 — **app.parafomo.com veri tazeliği** · Kabul: commit; backlog-portfolio.md notu.
+- [ ] V4 (video kalitesi | R13) — **Olay günü ve aynı küme kapısı: viral slotu atla** · 28 Ekim'de Fed sonuç Short'u
+  ile aynı gün çıkan viral "fed faizi TL'yi…" videosu 11 izlenme aldı, gram altın videosu 16. Aynı gün aynı küme
+  birbirini yiyor (V2 dersi). Ayrıca kanalda şablon video hacmi YPP'deki "özgün olmayan içerik" riskini büyütüyor.
+  Yapılacak: `viral-daily.sh`/`viral-script.py`'de bugün `logs/event-shorts.json`'da `done` olay varsa ya da gündem Short'u
+  çıktıysa viral slotunu atla (log'a "olay günü — atlandı" yaz). Önce izole dene: son 14 günü simüle et, kaç slotun
+  atlanacağını rapora yaz. · Kabul: `--dry` simülasyonu + kapı commit'li; ertesi olay günü (3 Kasım) log'da "atlandı" görünür.
+- [ ] P3 (portföy) — **Fiyat kaynağı dayanıklılığı** (backlog-portfolio.md) · Yahoo 429 ya da boş yanıt verirse yedek
+  kaynağa geç (altın için mevcut `data/altin-fiyat.json`). Son iyi fiyatı cache'te tut, süresini akıllıca uzat. Toplu fiyatı
+  tek tek değil batch çek. Veritabanı şeması DEĞİŞMEZ. Değişiklikten sonra `systemctl restart parafomo-api` +
+  `curl -s https://api.parafomo.com/health`. · Kabul: 429 simülasyonunda özet uç noktası fiyat döndürüyor; backlog'da [x].
+- [ ] M1 (web/mobil | R20) — **Mobil yatay taşmalar + WebApplication şeması** · ziyaretçinin %65'i mobil. 360 px'te
+  geniş tablolar taşıyor (ör. fed-faiz-karari-28-ekim-2026-beklentiler 495 px). Yazı tablolarını PostLayout düzeyinde
+  `overflow-x:auto` sarmalayıcıya al. Bülten formu 320 px'te 7 px taşıyor, düzelt. WebApplication şemasını yalnız
+  tools.ts'deki gerçek araçlara bas. · Kabul: 360 px'te yatay kaydırma yok (tarayıcı testi ya da CSS kanıtı); şema yalnız araçlarda.
+- [ ] S1 (sistem) — **Fırsat motoru eşleme gürültüsü** · §9c'de sitede karşılığı OLAN sorgular hâlâ YENI_* çıkıyor:
+  brüt asgari ücret → /asgari-ucret-hesaplama · kıdem tazminatı tavanı → /kidem-tazminati-hesaplama · mevduat faiz oranları →
+  /mevduat-faizi-hesaplama · enflasyon oranı → /enflasyon-hesaplama · emekli maaş hesaplama → /en-dusuk-emekli-maasi ·
+  brütten nete maaş hesaplama → /net-maas-hesaplama · faiz kararı ne zaman → /tcmb-faiz-takvimi. Bunları `SYNONYMS`'e ekle.
+  "borsa istanbul", "bist 100", "borsa gündem" ve "evet" sorguları en-iyi-yatırım/halka-arz yazısına yanlış bağlanıyor; bunları
+  hariç tut. Bu koşuda ölçülen yeni sorguları `HEAD_TERMS`'e ekle (kyk burs, bedelli askerlik ücreti, doğum izni, dul maaşı,
+  askerlik borçlanması, emekli maaşı 2027). · Kabul: §9c ilk 15 satırında yanlış eşleme yok.
 
 ## Kullanıcı girdisi gelince (o gün en üste al)
-- R2 bilgileri → `/root/.config/parafomo/backup.env` (backup.sh otomatik kullanır).
+- Meta izni gelirse (`logs/fb-status.json` ok:true) → roadmap R9 ilk hafta ölçümü.
+- Kaan R14/R15 kararını verirse → roadmap'te ilgili maddeyi aç/kapat.
 
 ## Notlar (günlük koşu için)
-- **Blog kuyruğu tarihlidir** (content-queue.md): 26 Ekim Fed önizleme, 2 Kasım Ekim enflasyonu önizleme. Bir gün
-  aksarsa günlük koşu (03:00 UTC, daily-content'ten önce) o günün tarihli konusunu kuyruğun EN ÜSTÜNE taşısın.
-  Olay yazısı slug'ı bahis desenine uymalı: `fed-faiz-karari-28-ekim-2026-…`, `ekim-2026-enflasyon-beklentisi-…`.
-- **Sonraki olaylar (B261022-1, haftalık koşu 10-29 kuyruğa koyar):** ABD NFP (Ekim verisi, BLS takviminden doğrula —
-  genelde Kasım'ın ilk Cuma'sı) ve ABD CPI (Ekim verisi, BLS) önizlemeleri — Trends ≈0 ama GSC'de tık getiriyor.
-  JOLTS/PCE/ISM/GDP önizlemesi YAZMA.
-- **Neden bu sıra:** baş sorgularda otorite kilidi (yeni sayfalarda da p60-99); kazanılabilir yer gelecek yıl (2027),
-  sitede karşılığı olmayan hacimli niyet (emekli promosyon 178,6) ve olay günü yazıları.
-- **YAPMA:** baş sorgular için başlık-H1-FAQ dürtmesi · "X mi Y mi" yazısı · yeni getiri sayfası (B261006-2 lost) ·
-  JOLTS/PCE/ISM yazısı · elle sonuç kutusu (sonuc: frontmatter otomatik).
-- **RC 2026-10-18/19 altyapısı — TEKRARLAMA/GERİ ALMA:** açıklama günü motoru (live-posts, `sonuc:` kutusu, release-watch,
-  sitemap lastmod) · asgari ücret veriden + Aralık bekçisi · ana sayfa "2027 Zam Sezonu" · blog "Bu konuda hesapla"
-  kutusu (`src/data/tools.ts`) · K10-K21 araç sayfaları.
-- Olay sonrası güncelleme bekleyen yazılar: abd-ekim-2026-cpi (açıklandı — sonuç kutusu var mı kontrol et).
+- **Blog kuyruğu tarihli** (content-queue.md): 30 Ekim Ekim enflasyonu önizlemesi · 4 Kasım ABD NFP önizlemesi (NFP 6 Kasım
+  Cuma 15:30 TSİ, iki takvim aynı) · 9 Kasım ABD CPI önizlemesi (CPI 10 Kasım; tek kaynak, BLS'den doğrula). Bir gün
+  aksarsa günlük koşu o günün tarihli satırını EN ÜSTE taşısın. Slug'lar bahis desenine uymalı: `abd-ekim-2026-nfp-…` YOK
+  (Ekim NFP adı zaten kullanıldı) → `abd-kasim-2026-nfp-istihdam-verisi-…` ve `abd-kasim-2026-cpi-verisi-…`.
+- **Neden bu sıra:** baş sorgular otorite kilidinde (yeni araçlar da p60-99). Kazanılan yerler üç tane: sosyal ödeme sayfaları
+  (p8-22, tık var), 2027 varyantları (p6-11) ve olay günü yazıları. Video tarafında aranan konuların blog→Short'u.
+- **YAPMA:** baş sorgu için başlık/H1/FAQ dürtmesi · "X mi Y mi" yazısı · yeni getiri sayfası · yeni halka arz emeği
+  (B261006-1 lost; sayfalar otomatik) · JOLTS/PCE/ISM/GDP yazısı · elle sonuç kutusu.
+- **RC 2026-10-18/19/28 altyapısı — TEKRARLAMA:** açıklama günü motoru, olay sonucu Short'u, paylaş çubuğu, News sitemap,
+  Facebook yayıncıları, render kilidi, roadmap.md.
+- Kuyruk biterse: `agent/plan/roadmap.md` en üstteki uygun madde (R5 Discover, R6 ince yazılar, R11 alarm, R12 llms.txt).
 - Headless: döngü/değişken/awk/heredoc yok; çok adımlı iş `agent/state/*.py` ile.
 
 ## Biten / iptal (bu hafta)
-- Geçen hafta biten (10-15 → 10-21): T1 /konut-kredisi-hesaplama · T2 kıdem 2027 tavan · T3 /emlak-vergisi-hesaplama ·
-  T4 TCMB yazısı güncellendi (yanlış faiz düzeltildi) · T5 /ihtiyac-kredisi-hesaplama + EVDS faizleri · T6 OTORITE eylemi ·
-  K1 memur zammı · K2 en düşük emekli maaşı · K3 bayram ikramiyesi · K5 enflasyon hesaplama · K8 gelir vergisi ·
-  K9a ihbar · K9b yıllık izin · K10-K13, K16, K19-K21 (RC) · kurumlar vergisi · bağ-kur primi · değer artış kazancı ·
-  altın alt sayfa title'ları · PCE sonuç kutuları · V1 altyazı çakışması (6 gün temiz) · V2 0-izlenme teşhisi ·
-  P1 panel→içerik köprüsü. Bitmeyen: T4b (tarihli 23 Ekim), T13-T16 (tarihli).
+- Geçen hafta biten (10-22 → 10-28): T4b TCMB kararı (−100 bp, regex düzeltmesi) · T17 /emekli-promosyonu · T18
+  /emeklilik-hesaplama · T19 fırsat motoru alt sayfa eşlemesi · T20 /kredi-karti-faiz-hesaplama · V3 günlük konu kümesi
+  kapısı · P2 app veri tazeliği · ek: /gss-primi-hesaplama, /otv-hesaplama, halka arz başlıkları ≤70 · RC 10-28: olay sonucu
+  Short motoru, paylaş çubuğu + News sitemap, FB yayıncıları, roadmap. Bu koşuda: T21 Fed kontrolü.

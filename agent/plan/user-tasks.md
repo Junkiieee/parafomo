@@ -27,7 +27,7 @@
    adresi yapıştır → "Dizine eklenmesini iste": parafomo.com/yeniden-degerleme-orani/ ·
    parafomo.com/blog/2027-zamlari-yeniden-degerleme-orani-rehberi/ · parafomo.com/mtv-hesaplama/ ·
    parafomo.com/emlak-vergisi-hesaplama/ · parafomo.com/kira-artis-orani-hesaplama/ ·
-   parafomo.com/blog/ekim-2026-enflasyon-beklentisi-3-kasim/ (2 Kasım'da yayınlanacak önizleme). (Aynısı 5 Ocak'ta emekli/memur
+   parafomo.com/blog/ekim-2026-enflasyon-beklentisi-3-kasim/ (30 Ekim'de yayınlanacak önizleme). (Aynısı 5 Ocak'ta emekli/memur
    zammı sayfaları için de değerli olacak.) Neden: yılın en büyük arama dalgası o gün; Google eski "tahmin"i
    gösterirse tık kaçar.
 
