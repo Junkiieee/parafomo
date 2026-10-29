@@ -68,7 +68,11 @@ sabit yazılmaz. Ocak 2027 tahmini `src/data/zam2027.ts`'ten gelir (evde-bakim-m
   2 yıl sonra, taksit sayısı = kredi alınan ay sayısı; TÜFE/ÜFE güncellemesinin güncel kuralını 5102 s.K.'dan doğrula). 2026-2027
   tutarı henüz açıklanmadıysa sayfayı 2025-2026 resmî tutarla, "yeni dönem tutarı açıklanınca güncellenir" notuyla aç.
   health.py'ye tazelik satırı ekle. · Kabul: sayfa canlı, tutarın kaynağı ve tarihi sayfada; FAQPage var.
-- [ ] T25 (B261029-1) — **/bedelli-askerlik-ucreti yeni veri sayfası** · hedef: bedelli askerlik ücreti (hacim 111, zirve
+- [x] T25 (B261029-1) — **/bedelli-askerlik-ucreti yeni veri sayfası** → canlı https://parafomo.com/bedelli-askerlik-ucreti/
+  (7179 md.9 mevzuat.gov.tr metni: 300.000 gösterge × ödeme günü katsayısı — 7577 s.K. ile 240.000'den; 300.000 × 1,575512 =
+  472.653,60 TL MSB ile birebir; ek bedel 3.500 gösterge/ay hesaplayıcısı; dövizle askerlik md.39 = aynı TL'nin avro karşılığı,
+  sabit 5.000 € YOK; Ocak 2027 ≈ 516.829 TL zam2027'den; OG kartı, tools.ts, Footer, memur-zammı + evde-bakım linkleri) · commit
+  f54b955 · haftalık koşu 2026-10-29 · hedef: bedelli askerlik ücreti (hacim 111, zirve
   Mart 427; tutar Ocak ve Temmuz'da memur katsayısıyla değişir). Formülü 7179 s. Askeralma Kanunu md.10'dan al
   (mevzuat.gov.tr; gösterge × memur aylık katsayısı). `data/emekli-memur.json` katsayısıyla hesapla. Temmuz 2026 tutarını
   MSB/ASAL duyurusuyla çapraz kontrol et. Ocak 2027 tahmini zam2027 memur projeksiyonundan, "tahmin" etiketiyle. Ek bölümler:
@@ -188,4 +192,6 @@ sabit yazılmaz. Ocak 2027 tahmini `src/data/zam2027.ts`'ten gelir (evde-bakim-m
 - Geçen hafta biten (10-22 → 10-28): T4b TCMB kararı (−100 bp, regex düzeltmesi) · T17 /emekli-promosyonu · T18
   /emeklilik-hesaplama · T19 fırsat motoru alt sayfa eşlemesi · T20 /kredi-karti-faiz-hesaplama · V3 günlük konu kümesi
   kapısı · P2 app veri tazeliği · ek: /gss-primi-hesaplama, /otv-hesaplama, halka arz başlıkları ≤70 · RC 10-28: olay sonucu
-  Short motoru, paylaş çubuğu + News sitemap, FB yayıncıları, roadmap. Bu koşuda: T21 Fed kontrolü.
+  Short motoru, paylaş çubuğu + News sitemap, FB yayıncıları, roadmap. Bu koşuda: T21 Fed kontrolü · T25 /bedelli-askerlik-ucreti.
+- T24 notu (10-29): KYK 2026-2027 tutarı resmî olarak bulunamadı (haberler çelişkili: "4.000/8.000/12.000 TL Ocak 2026'dan beri",
+  "2027 tutarı yıl sonuna doğru"). Günlük koşu yalnız gsb.gov.tr / kygm duyurusuyla yazsın.
