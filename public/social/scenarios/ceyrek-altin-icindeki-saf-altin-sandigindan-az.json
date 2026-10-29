@@ -1,0 +1,64 @@
+{
+  "slug": "ceyrek-altin-icindeki-saf-altin-sandigindan-az",
+  "title": "Çeyrek altın: içindeki saf altın sandığından az",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Çeyrek altın 1,75 gram tartılır ama 22 ayar olduğu için saf altın miktarı yaklaşık 1,6 gramdır. İşçilik ve prim farkını bilerek yatırım kararı vermek için sade bir hesap.\nKaynak/hesap: 1,75 x 22 / 24 = yaklaşık 1,60 gram saf altın · senaryodaki hesap (çeyrek altın yaklaşık 1,75 gram, 22 ayar / 916 milyem)",
+  "tags": [
+    "çeyrek altın",
+    "altın",
+    "gram altın",
+    "22 ayar",
+    "işçilik",
+    "altın yatırımı",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Çeyrek altının içinde 1,6 gram altın var.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold coins"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çeyrek 1,75 gram tartılır ama 22 ayardır. Bir, yirmi ikiyle çarp, yirmi dörde böl: saf altın yaklaşık 1,6 gram.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama çeyrek, saf altın fiyatına satılmaz; işçilik ve prim eklenir, o fark bozdururken sana geri dönmez.",
+      "visual": {
+        "type": "gold",
+        "query": "gold coins on jeweler scale"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yatırım amacın varsa işçiliği en düşük olanı seç: külçe ya da gram altın.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Elindeki altının gerçek değerini merak ediyorsan sıradaki hesap sana yeter. Abone ol, her gün tek net analizi 60 saniyede ver.",
+      "visual": {
+        "type": "gold",
+        "query": "shiny gold coins"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "1,6 gram",
+    "calc": "1,75 x 22 / 24 = yaklaşık 1,60 gram saf altın",
+    "source": "senaryodaki hesap (çeyrek altın yaklaşık 1,75 gram, 22 ayar / 916 milyem)"
+  }
+}
