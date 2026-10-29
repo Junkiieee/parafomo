@@ -38,10 +38,10 @@ beyannamesi" 2,8 (zirve Mart 32 → Şubat'ta yeniden ölç) · "aile destek pro
   kodları SGK'nın resmi listesinden), barkodlu belge, emeklilik için ne işe yarar. /emeklilik-hesaplama (week T18) canlıysa
   oraya bağla, hesaplamayı yazıda TEKRARLAMA · iç-link: /emeklilik-hesaplama (yayındaysa), /bagkur-primi-hesaplama,
   /en-dusuk-emekli-maasi → /blog/sgk-hizmet-dokumu-nasil-alinir-nasil-okunur (2026-10-28)
-- [ ] **Ek gösterge nedir? 2026 memur ek gösterge tablosu, 3600 ek gösterge ve maaşa etkisi** · hedef: "ek gösterge"
+- [x] **Ek gösterge nedir? 2026 memur ek gösterge tablosu, 3600 ek gösterge ve maaşa etkisi** · hedef: "ek gösterge"
   (hacim 43,7) · neden: memur kümesi (/memur-zammi-hesaplama) — 657 DMK ek gösterge cetveli ve 3600 ek gösterge
   düzenlemesini (7417 s.K.) mevzuat.gov.tr'den; tutar örneği verirsen güncel katsayıyla (`data/emekli-memur.json`) ·
-  iç-link: /memur-zammi-hesaplama, /en-dusuk-emekli-maasi, /emekli-zammi-hesaplama
+  iç-link: /memur-zammi-hesaplama, /en-dusuk-emekli-maasi, /emekli-zammi-hesaplama → /blog/ek-gosterge-nedir-3600-ek-gosterge-memur-maasi (2026-10-29)
 - [ ] 📅 30 Ekim **Ekim 2026 Enflasyonu 3 Kasım'da Açıklanıyor: Beklenti, Kira Artışı, Emekli Zammı ve 2027 Zamlarına
   Etkisi** · slug: `ekim-2026-enflasyon-beklentisi-3-kasim` · hedef: "enflasyon beklentisi" (hacim 45,6) + "ekim ayı
   enflasyon" (6,9, zirve Kasım 143) + "enflasyon ne zaman" (22,5) · frontmatter `sonuc: "tufe:2026-10"` +

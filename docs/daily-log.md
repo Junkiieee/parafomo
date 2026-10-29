@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-10-29 — Ek Gösterge Nedir? 3600 Ek Gösterge ve Memur Maaşına Etkisi
+
+**Yayınlanan yazı:** [Ek Gösterge Nedir? 3600 Ek Gösterge ve Memur Maaşına Etkisi](/blog/ek-gosterge-nedir-3600-ek-gosterge-memur-maasi)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — "ek gösterge" hacim 43,7)
+
+---
+
 ## 2026-10-28 — SGK Hizmet Dökümü Nasıl Alınır ve Okunur? e-Devlet 2026
 
 **Yayınlanan yazı:** [SGK Hizmet Dökümü Nasıl Alınır ve Okunur? e-Devlet 2026](/blog/sgk-hizmet-dokumu-nasil-alinir-nasil-okunur)
