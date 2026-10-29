@@ -1,0 +1,70 @@
+{
+  "title": "Fed faizi TL'ni ve borsayı bu yoldan vuruyor #Shorts",
+  "description": "Fed faiz kararı bugün açıklanıyor. Dolar faizinin dolar kuru, yabancı yatırımcı ve borsa üzerinden TL'ye nasıl yansıdığını sade bir dille anlatıyoruz.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #Fed #faiz kararı #dolar #borsa #TL",
+  "tags": [
+    "Fed",
+    "faiz kararı",
+    "dolar",
+    "borsa",
+    "TL",
+    "BIST 100",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-fed-faizi-tl-ni-ve-borsayi-bu-yoldan-vuruyor.mp4",
+  "slug": "fed-faizi-tl-ni-ve-borsayi-bu-yoldan-vuruyor",
+  "format": "news_reaction",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 4.48,
+      "spoken": "Fed'in kararı Amerika'da çıkıyor, faturası cebine geliyor.",
+      "visual": "place: Federal Reserve building"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 4.48,
+      "end": 12.85,
+      "spoken": "Amerikan faizi yükselince dünyadaki para dolara akar. Yabancı yatırımcı Türkiye'den çıkınca dolar pahalanır, TL zayıflar.",
+      "visual": "object: US dollar exchange rate board"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 12.85,
+      "end": 21.89,
+      "spoken": "Ama ters yön de var: Fed faiz indirimi sinyali verirse, yabancı para borsaya döner. Karar bugün, hangi yönde çıkarsa etkisi bu.",
+      "visual": "place: Borsa İstanbul"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 21.89,
+      "end": 30.02,
+      "spoken": "Sonuç şu: maaşını TL tutuyorsan kur riski senin. Kararı değil, birikimindeki dolar ve altın payını kontrol et.",
+      "visual": "gold: gold bullion bars"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 30.02,
+      "end": 37.47,
+      "spoken": "Karardan sonra piyasa nereye döner, merak ediyorsan abone ol; her gün 60 saniyede tek net analiz.",
+      "visual": "place: Federal Reserve building"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-28T06:34:04+00:00",
+    "slug": "fed-faizi-tl-ni-ve-borsayi-bu-yoldan-vuruyor",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "J9OoYoMsK7w",
+  "youtube_url": "https://youtube.com/shorts/J9OoYoMsK7w",
+  "ig_reel_id": "17913005499502480",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DfBzLmtAIcg/",
+  "ig_seed_comment_id": "18142069888618625"
+}

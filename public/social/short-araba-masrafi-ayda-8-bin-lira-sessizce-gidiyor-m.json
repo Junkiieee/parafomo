@@ -1,0 +1,70 @@
+{
+  "title": "Araba masrafı: ayda 8 bin lira sessizce gidiyor #Shorts",
+  "description": "1 milyon TL'lik bir aracın yıllık yaklaşık yüzde 10 değer kaybı ayda yaklaşık 8 bin TL eder. Sigorta, bakım ve yakıt bunun üstüne biner.\nKaynak/hesap: 1.000.000 TL x yaklaşık %10 = 100.000 TL/yıl; 100.000 / 12 ≈ 8.300 TL/ay · senaryodaki hesap (yıllık yaklaşık yüzde 10 değer kaybı varsayımı)\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #araba maliyeti #değer kaybı #kasko #birikim #kişisel finans",
+  "tags": [
+    "araba maliyeti",
+    "değer kaybı",
+    "kasko",
+    "birikim",
+    "kişisel finans",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-araba-masrafi-ayda-8-bin-lira-sessizce-gidiyor-m.mp4",
+  "slug": "araba-masrafi-ayda-8-bin-lira-sessizce-gidiyor-m",
+  "format": "shock_number",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.98,
+      "spoken": "Garajdaki araban ayda yaklaşık 8 bin lira yiyor.",
+      "visual": "manim: Para"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.98,
+      "end": 11.38,
+      "spoken": "1 milyon TL'lik araç yılda yaklaşık yüzde 10 eriyor: 100 bin TL, ayda 8 bin.",
+      "visual": "manim: Para"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 11.38,
+      "end": 18.12,
+      "spoken": "Ama bu sadece değer kaybı; sigorta, kasko, bakım ve yakıt hiç hesaba girmedi bile.",
+      "visual": "manim: Risk"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 18.12,
+      "end": 24.47,
+      "spoken": "Araba almadan önce fiyata değil, aylık toplam maliyete bak; cebinden çıkan asıl o.",
+      "visual": "manim: Para"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 24.47,
+      "end": 32.29,
+      "spoken": "Bir sonraki hesapta hangi alışkanlığın cebini yediğini göstereceğim. Abone ol, her gün tek net hesap seni bekliyor.",
+      "visual": "manim: ParaFOMO"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-28T16:02:31+00:00",
+    "slug": "araba-masrafi-ayda-8-bin-lira-sessizce-gidiyor-m",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "b71TOqT0WAk",
+  "youtube_url": "https://youtube.com/shorts/b71TOqT0WAk",
+  "ig_reel_id": "18089026193299097",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DfC0OqPiDUi/",
+  "ig_seed_comment_id": "18120663277750558"
+}

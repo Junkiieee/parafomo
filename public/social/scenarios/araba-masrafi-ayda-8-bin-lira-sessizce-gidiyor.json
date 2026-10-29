@@ -1,0 +1,64 @@
+{
+  "slug": "araba-masrafi-ayda-8-bin-lira-sessizce-gidiyor",
+  "title": "Araba masrafı: ayda 8 bin lira sessizce gidiyor",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "1 milyon TL'lik bir aracın yıllık yaklaşık yüzde 10 değer kaybı ayda yaklaşık 8 bin TL eder. Sigorta, bakım ve yakıt bunun üstüne biner.\nKaynak/hesap: 1.000.000 TL x yaklaşık %10 = 100.000 TL/yıl; 100.000 / 12 ≈ 8.300 TL/ay · senaryodaki hesap (yıllık yaklaşık yüzde 10 değer kaybı varsayımı)",
+  "tags": [
+    "araba maliyeti",
+    "değer kaybı",
+    "kasko",
+    "birikim",
+    "kişisel finans",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Garajdaki araban ayda yaklaşık 8 bin lira yiyor.",
+      "visual": {
+        "type": "object",
+        "query": "shiny new car in showroom"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "1 milyon TL'lik araç yılda yaklaşık yüzde 10 eriyor: 100 bin TL, ayda 8 bin.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama bu sadece değer kaybı; sigorta, kasko, bakım ve yakıt hiç hesaba girmedi bile.",
+      "visual": {
+        "type": "object",
+        "query": "car insurance policy paper and keys"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Araba almadan önce fiyata değil, aylık toplam maliyete bak; cebinden çıkan asıl o.",
+      "visual": {
+        "type": "object",
+        "query": "car keys and wallet"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bir sonraki hesapta hangi alışkanlığın cebini yediğini göstereceğim. Abone ol, her gün tek net hesap seni bekliyor.",
+      "visual": {
+        "type": "object",
+        "query": "shiny new car in showroom"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "ayda yaklaşık 8 bin lira",
+    "calc": "1.000.000 TL x yaklaşık %10 = 100.000 TL/yıl; 100.000 / 12 ≈ 8.300 TL/ay",
+    "source": "senaryodaki hesap (yıllık yaklaşık yüzde 10 değer kaybı varsayımı)"
+  }
+}

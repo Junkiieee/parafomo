@@ -1,0 +1,71 @@
+{
+  "title": "Fed faiz kararı açıklandı: %3,75–%4 sabit #Shorts",
+  "description": "Fed 27-28 Ekim 2026 toplantısında politika faizini %3,75–%4 aralığında sabit tuttu. Sıradaki toplantı 8-9 Aralık 2026.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #Fed #Fed faiz kararı #FOMC #faiz kararı açıklandı #Ekim 2026",
+  "tags": [
+    "Fed",
+    "Fed faiz kararı",
+    "FOMC",
+    "faiz kararı açıklandı",
+    "Ekim 2026",
+    "dolar",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-fed-faiz-karari-aciklandi-3-75-4-sabit.mp4",
+  "slug": "fed-faiz-karari-aciklandi-3-75-4-sabit",
+  "format": "event_result",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 5.01,
+      "spoken": "Fed faizi yüzde 3,75–4'te sabit tuttu.",
+      "visual": "place: Federal Reserve building"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 5.01,
+      "end": 13.57,
+      "spoken": "Fed faiz aralığı yüzde 3,75–4 oldu; önceki toplantıdaki aralıkla aynı, yani değişiklik yok.",
+      "visual": "object: calculator"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 13.57,
+      "end": 20.23,
+      "spoken": "Ama faiz indirimi gelmedi; dolar tutan ya da kredi bekleyen için ucuz para şimdilik ertelendi.",
+      "visual": "object: house keys"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 20.23,
+      "end": 28.48,
+      "spoken": "Sıradaki Fed toplantısı 8-9 Aralık 2026'da; tarihi not al, bir sonraki karar paranı yine etkileyebilir.",
+      "visual": "object: desk calendar"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 28.48,
+      "end": 35.62,
+      "spoken": "Aralıkta Fed ne yapacak, birlikte takip edelim. Abone ol, her karar sonrası sade ve net özeti kaçırma.",
+      "visual": "place: Federal Reserve building"
+    }
+  ],
+  "link": "/fed-faiz-takvimi/",
+  "qa": {
+    "ts": "2026-10-28T19:29:06+00:00",
+    "slug": "fed-faiz-karari-aciklandi-3-75-4-sabit",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "Ow7VUplxNY0",
+  "youtube_url": "https://youtube.com/shorts/Ow7VUplxNY0",
+  "ig_reel_id": "18169568974465124",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DfDL4LzD4B5/",
+  "ig_seed_comment_id": "17909096346568834"
+}

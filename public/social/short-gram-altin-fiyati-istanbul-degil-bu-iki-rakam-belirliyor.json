@@ -1,0 +1,70 @@
+{
+  "title": "Gram altın fiyatı: İstanbul değil bu iki rakam belirliyor #Shorts",
+  "description": "Gram altının fiyatı, ons fiyatı ile dolar kurunun çarpımından çıkar. İki ayaklı masa metaforuyla altının TL fiyatının neden hem onsa hem dolara bağlı olduğunu anlatıyoruz.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #altın #gram altın #ons altın #dolar #yatırım",
+  "tags": [
+    "altın",
+    "gram altın",
+    "ons altın",
+    "dolar",
+    "yatırım",
+    "finans",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-gram-altin-fiyati-istanbul-degil-bu-iki-rakam-belirliyor.mp4",
+  "slug": "gram-altin-fiyati-istanbul-degil-bu-iki-rakam-belirliyor",
+  "format": "single_concept",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.62,
+      "spoken": "Gram altının fiyatını İstanbul belirlemiyor.",
+      "visual": "gold: gold bullion bars"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.62,
+      "end": 10.47,
+      "spoken": "Dünyada altın ons ile satılır; bir ons yaklaşık 31 gram eder, fiyat dolarla Londra'da oluşur.",
+      "visual": "object: world globe"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 10.47,
+      "end": 17.69,
+      "spoken": "Ama formül şaşırtıcı: ons fiyatını dolar kuruyla çarpıp 31'e bölersen, gram altın çıkar.",
+      "visual": "object: calculator"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 17.69,
+      "end": 23.56,
+      "spoken": "Gram altın iki ayaklı masa: ons düşse de dolar çıkarsa TL fiyatı yükselebilir.",
+      "visual": "manim: Risk"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 23.56,
+      "end": 30.03,
+      "spoken": "Sırada ons fiyatını tek bakışta okumak var; abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": "gold: gold bullion bars"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-28T08:03:05+00:00",
+    "slug": "gram-altin-fiyati-istanbul-degil-bu-iki-rakam-belirliyor",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "TNENVHQ7wRw",
+  "youtube_url": "https://youtube.com/shorts/TNENVHQ7wRw",
+  "ig_reel_id": "17968158048206400",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DfB9XhQjC_i/",
+  "ig_seed_comment_id": "17943908286361488"
+}
