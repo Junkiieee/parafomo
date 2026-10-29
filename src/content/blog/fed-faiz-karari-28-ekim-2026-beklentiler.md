@@ -1,7 +1,8 @@
 ---
 title: "Fed Faiz Kararı 28 Ekim 2026: Beklenti, Senaryolar ve Etkisi"
-description: "Fed faiz kararı 28 Ekim 2026 TSİ 21:00'de: piyasa sabit bekliyor, artış ihtimali masada. Senaryolar, dolar, altın, borsa ve TL'ye olası etkisi tek yazıda."
+description: "Fed 28 Ekim 2026'da faizi %3,75-4,00 bandında sabit tuttu (oy 10-2). Kararın beklentiyle kıyası, dolar, altın, borsa ve TL'ye etkisi; sıradaki karar 9 Aralık."
 pubDate: 2026-10-26
+updatedDate: 2026-10-29
 category: "Ekonomi"
 tags: ["fed faiz kararı", "fed ekim 2026", "fomc", "dolar altın etkisi", "cme fedwatch", "warsh"]
 readingTime: 8
@@ -9,12 +10,12 @@ featured: false
 sonuc: "fed:2026-10-28"
 sonucBaslik: "Fed 28 Ekim Kararı Açıklandı ({karar}): Faiz Bandı {bant}"
 faq:
-  - q: "Fed faiz kararı ne zaman açıklanacak?"
-    a: "FOMC toplantısı 27-28 Ekim 2026'da yapılıyor; karar 28 Ekim Çarşamba ABD saatiyle 14:00'te, Türkiye saatiyle 21:00'de açıklanır. Fed Başkanı Kevin Warsh'ın basın toplantısı TSİ 21:30'da başlar."
+  - q: "Fed 28 Ekim'de faiz kararını ne yaptı?"
+    a: "FOMC 27-28 Ekim 2026 toplantısında politika faizini %3,75-4,00 bandında sabit tuttu; karar 10'a karşı 2 oyla alındı ve 28 Ekim TSİ 21:00'de açıklandı (kaynak: federalreserve.gov). Sıradaki Fed kararı 9 Aralık 2026'da."
   - q: "Fed'in şu anki faiz oranı kaç?"
-    a: "Fed, 16 Eylül 2026'da oybirliğiyle faizi 25 baz puan artırarak politika faizi bandını %3,75-4,00'e çıkardı. Yılın ilk yarısında bant %3,50-3,75'te sabit kalmıştı."
-  - q: "Piyasa 28 Ekim'de ne bekliyor?"
-    a: "Ana senaryo faizin sabit tutulması. CME FedWatch'a dayanan haberlere göre 14 Ekim'deki CPI verisinin ardından 25 baz puanlık artış olasılığı yaklaşık %25'ti; Warsh'ın 16 Ekim'deki konuşmasından sonra bu oran Reuters'ın aktardığına göre %15'in altına indi. Olasılıklar karar gününe kadar değişebilir."
+    a: "Politika faizi bandı %3,75-4,00. Fed bu seviyeye 16 Eylül 2026'da oybirliğiyle 25 baz puan artırarak çıkmış, 28 Ekim'de sabit bırakmıştı. Yılın ilk yarısında bant %3,50-3,75'teydi."
+  - q: "Karar piyasa beklentisine uygun muydu?"
+    a: "Evet. Karar öncesi ana senaryo faizin sabit tutulmasıydı: CME FedWatch'a dayanan haberlere göre 14 Ekim'deki CPI verisinin ardından 25 baz puanlık artış olasılığı yaklaşık %25'ti, Warsh'ın 16 Ekim'deki konuşmasından sonra Reuters'ın aktardığına göre %15'in altına inmişti."
   - q: "Fed faizi sabit tutarsa dolar ve altın ne olur?"
     a: "Sabit karar büyük ölçüde fiyatlandığı için asıl etkiyi açıklama metni ve basın toplantısındaki ton belirler. Aralık'ta artış sinyali güçlü verilirse dolar güçlenip altın baskılanabilir; sinyal yumuşarsa tersi görülebilir."
   - q: "Fed kararı Türkiye'yi nasıl etkiler?"
