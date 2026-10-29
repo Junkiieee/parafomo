@@ -1,0 +1,74 @@
+{
+  "slug": "taksit-faizsiz-degil-farki-sen-oduyorsun-m",
+  "title": "Taksit faizsiz değil, farkı sen ödüyorsun",
+  "category": "MİT",
+  "format": "myth",
+  "description": "'Faizsiz taksit' kampanyalarında faiz fiyata gizlenir. Peşin ve taksitli fiyat farkını faize çevirerek hangisinin ucuz olduğunu görmenin yolu.",
+  "tags": [
+    "taksit",
+    "faizsiz taksit",
+    "kredi kartı",
+    "tasarruf",
+    "kişisel finans",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Faizsiz taksit diye bir şey yok.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Faiz",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Örneğin mağaza faizi fiyata gizliyor: peşin 30 bin liralık telefon, altı taksitte 36 bin oluyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Faiz",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama peşin fiyat sorarsan çoğu zaman indirim çıkar; taksitin bedelini, farkı sen ödersin.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çıkarım: alırken iki fiyatı da iste, farkı aylık faize çevir, yüksekse peşin al.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "Faiz",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bir sonraki videoda kartındaki başka bir gizli maliyeti açıyorum; abone ol, her gün tek net hesap göreceksin.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "dark",
+        "keyword": "ParaFOMO",
+        "glyph": "₺"
+      }
+    }
+  ]
+}
