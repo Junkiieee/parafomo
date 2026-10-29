@@ -10,7 +10,7 @@ faq:
   - q: "Ek gösterge nedir?"
     a: "Ek gösterge, 657 sayılı Devlet Memurları Kanunu'na göre memurun derece göstergesine ek olarak kadro unvanı ve derecesine bağlı verilen puandır. Aylık katsayıyla çarpılarak brüt maaşa eklenir; ayrıca 5434 kapsamındaki memurların emekli aylığında ve emekli ikramiyesinde hesaba girer."
   - q: "3600 ek gösterge kimlere verildi?"
-    a: "7417 sayılı Kanun (RG 5 Temmuz 2022, mali hükümler 15 Ocak 2023) ile polis, din görevlisi, hemşire gibi birinci derece kadrolarda olan pek çok unvanın ek göstergesi 3600'e çıkarıldı; öğretmenler 3600'e daha önce Öğretmenlik Meslek Kanunu ile ulaşmıştı. Kesin kapsam unvana göre değişir, kurumunun personel birimine sorman en sağlıklısı."
+    a: "7417 sayılı Kanun (RG 5 Temmuz 2022, mali hükümler 15 Ocak 2023) ile polis, din görevlisi, hemşire gibi birinci derece kadrolarda olan pek çok unvanın ek göstergesi 3600'e çıkarıldı; öğretmenler de birinci derecede 3600 kapsamındaki başlıca gruplar arasında. Kesin kapsam unvana göre değişir, kurumunun personel birimine sorman en sağlıklısı."
   - q: "3600 ek gösterge maaşa kaç TL ekler?"
     a: "Ek gösterge aylığı = ek gösterge × aylık katsayıdır. 1 Temmuz–31 Aralık 2026 aylık katsayısı 1,575512 olduğundan 3600 ek gösterge brüt 5.671,84 TL eder. Net etki vergi ve kesintilere göre daha düşüktür."
   - q: "Ek gösterge emekli maaşını etkiler mi?"
@@ -89,7 +89,7 @@ Katsayı her Ocak ve Temmuz'da memur zammı oranında güncellendiği için ek g
 Kanunla öne çıkan değişiklikler:
 
 1. **Polis, din görevlisi ve hemşire** gibi birinci derece kadrolardaki pek çok unvanın ek göstergesi **3600**'e çıkarıldı.
-2. Öğretmenler 3600'e daha önce **Öğretmenlik Meslek Kanunu** ile ulaşmıştı.
+2. **Öğretmenler** de birinci derecede 3600 kapsamındaki başlıca gruplar arasında; kariyer basamaklarına bağlı ek gösterge farkları ayrıca **Öğretmenlik Meslek Kanunu** ile düzenlendi.
 3. Bazı uzman kadroları ile ilçe müdürü, şube müdürü gibi yönetici unvanlarının ek göstergesi de 3600'e yükseltildi.
 4. Diğer memurların ek göstergeleri genel olarak **yaklaşık 600 puan** artırıldı.
 5. Daha önce ek göstergesi olmayan **Yardımcı Hizmetler Sınıfı** personeline 600 ek gösterge verildi.
@@ -108,7 +108,7 @@ Ek göstergenin asıl değeri emeklilikte görünür. Ama etkisi, memuriyete **n
 |---|---|---|
 | Emekli aylığı hesabı | Gösterge + ek gösterge × katsayı esaslı | Prime esas kazançlar ortalaması |
 | Ek göstergenin etkisi | **Doğrudan ve güçlü** | Dolaylı (prime esas kazanç üzerinden) |
-| İlave aylık oranı | Ek gösterge basamağına göre artar (5434 ek md. 70) | Uygulanmaz |
+| İlave aylık oranı | Ek gösterge basamağına göre artar (5434 kapsamında) | Uygulanmaz |
 | Emekli ikramiyesi | Ek gösterge hesaba girer | Ek gösterge hesaba girer |
 
 **Pratik sonuç:** 2008 öncesi başlayan bir memur için 600 puanlık bir artış bile bir üst ilave aylık basamağına geçirirse emekli maaşına belirgin yansır. 2008 sonrası başlayanlarda ise ek gösterge artışı daha çok çalışırken alınan maaşı ve ikramiyeyi etkiler.
@@ -128,7 +128,7 @@ Kamu görevlilerine (4/c) emeklilikte ödenen ikramiye, **her tam hizmet yılı 
 ## Ek Gösterge Hakkında Sık Yapılan Hatalar
 
 - **Puanı TL sanmak:** Bordrodaki "3600" para değil puandır; TL karşılığı katsayıya bağlıdır.
-- **Netle brütü karıştırmak:** Yukarıdaki tutarların hepsi brüttür; ele geçen artış vergi dilimine göre azalır.
+- **Netle brütü karıştırmak:** Yukarıdaki tutarların hepsi brüttür; ele geçen artış vergi dilimine göre azalır ([net maaş hesaplama](/net-maas-hesaplama) ile brütten nete geçebilirsin).
 - **Herkesin 3600 aldığını sanmak:** Kanun her unvanı 3600'e taşımadı; çoğu memurda artış 600 puan civarında kaldı.
 - **Emekli aylığı etkisini herkes için aynı sanmak:** 2008 sonrası başlayanlarda etki çok daha sınırlıdır.
 - **Hizmet kaydını kontrol etmemek:** Emeklilik öncesi derece/kademe ve hizmet sürelerini [SGK hizmet dökümü](/blog/sgk-hizmet-dokumu-nasil-alinir-nasil-okunur) üzerinden kontrol etmek ikramiye hesabındaki sürprizleri azaltır.
