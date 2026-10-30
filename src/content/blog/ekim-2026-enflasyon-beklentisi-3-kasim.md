@@ -73,9 +73,9 @@ Aşağıdaki tablo, Ekim'in farklı aylık rakamlarında yıllık enflasyonun, K
 | Ekim aylık TÜFE | Yıllık TÜFE (yaklaşık) | Kasım kira tavanı (12 ay ort.) | Emekli zammı birikimi (Tem-Eki) |
 |---|---|---|---|
 | %1,50 | %28,4 | %31,12 | %7,14 |
-| %2,00 | %29,0 | %31,18 | %7,67 |
-| **%2,11 (beklenti)** | **%29,2** | **%31,19** | **%7,79** |
-| %2,50 | %29,7 | %31,23 | %8,20 |
+| %2,00 | %29,0 | %31,17 | %7,67 |
+| **%2,11 (beklenti)** | **%29,2** | **%31,18** | **%7,79** |
+| %2,50 | %29,7 | %31,22 | %8,20 |
 | %3,00 | %30,3 | %31,28 | %8,73 |
 
 Tablodan çıkan iki sonuç var:
@@ -101,7 +101,7 @@ Memurlar için 2026'nın ikinci yarısında toplu sözleşme zammı **%7**. Alt�
 
 ### 2027 zamları: Harç, MTV ve yeniden değerleme oranı
 
-3 Kasım'da TÜFE'yle birlikte **Yİ-ÜFE** de açıklanır. Vergi Usul Kanunu'na göre **yeniden değerleme oranı**, Ekim ayı Yİ-ÜFE'sinin bir önceki yılın Ekim ayına göre değişimidir. MTV, harçlar, trafik cezaları, pasaport ve ehliyet harçları gibi pek çok maktu tutar 2027'de bu oranla artar.
+3 Kasım'da TÜFE'yle birlikte **Yİ-ÜFE** de açıklanır. Vergi Usul Kanunu'na göre **yeniden değerleme oranı**, Ekim ayı Yİ-ÜFE'sinin bir önceki yılın Ekim ayına göre değişimidir. MTV, harçlar, [trafik cezaları](/trafik-cezalari-hesaplama), pasaport ve ehliyet harçları gibi pek çok maktu tutar 2027'de bu oranla artar.
 
 - Eylül 2026 itibarıyla Yİ-ÜFE yıllık **%27,38**.
 - Ekim 2025'te Yİ-ÜFE aylık %1,63 artmıştı; Ekim 2026'nın aylık Yİ-ÜFE'si bunun altında kalırsa yeniden değerleme oranı %27,38'in altına iner.
@@ -110,7 +110,7 @@ Oran açıklandığı anda [yeniden değerleme oranı](/yeniden-degerleme-orani)
 
 ## Veri TCMB ve piyasalar için ne anlama geliyor?
 
-TCMB 22 Ekim'de politika faizini **%37'den %36'ya** indirdi ([TCMB Ekim kararı](/blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler)). Sıradaki PPK toplantısı **10 Aralık**; anket katılımcıları o toplantıda 100 baz puanlık bir indirim daha (%35) bekliyor. Ekim verisi, Aralık kararı öncesindeki iki enflasyon verisinden ilki. Genel olarak:
+TCMB 22 Ekim'de politika faizini **%37'den %36'ya** indirdi ([TCMB Ekim kararı](/blog/tcmb-ekim-2026-faiz-karari-ppk-beklentiler)). Sıradaki PPK toplantısı **10 Aralık** ([TCMB faiz takvimi](/tcmb-faiz-takvimi)); anket katılımcıları o toplantıda 100 baz puanlık bir indirim daha (%35) bekliyor. Ekim verisi, Aralık kararı öncesindeki iki enflasyon verisinden ilki. Genel olarak:
 
 - **Beklentinin altında bir rakam** (ör. aylık %1,8): Faiz indirimi beklentisini güçlendirir. Mevduat faizlerinin daha hızlı gerilemesi gündeme gelebilir.
 - **Beklentiye yakın bir rakam** (%2,0-2,2): Mevcut indirim patikası korunur, piyasa tepkisi sınırlı kalır.
