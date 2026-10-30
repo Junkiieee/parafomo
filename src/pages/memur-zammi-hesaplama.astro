@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
+import ZamTutarTablosu from '../components/ZamTutarTablosu.astro';
 import em from '../../data/emekli-memur.json';
 // Tahmin mantığı /emekli-zammi-hesaplama ile ORTAK modülde (aynı TÜFE, aynı varsayım — iki sayfa hep aynı sonucu verir).
 import { PERIOD, TS_H2_2026, TS_H1_2027, byMonth, knownKeys, cumKnown, remaining, ASSUME, project, memurFrom, memurProj } from '../data/zam2027';
@@ -19,6 +20,9 @@ const known = knownKeys.map((k) => ({ k, name: monthName(k), aylik: byMonth.get(
 const SCEN = [1.0, 1.5, 2.0].map((x) => ({ x, ...memurFrom(project(x)) }));
 
 const D = { salary: 60000 };
+// “X TL memur maaşı ne kadar olacak?” tablosu (T27): oran zam2027.ts’ten, en düşük memur emeklisi aylığı data/emekli-memur.json’dan
+const TUTARLAR = [45000, 50000, 55000, 60000, 70000, 80000, 100000];
+const MEMUR_EMEKLI_TABAN = em.enDusukMemurEmeklisi.tutar;
 const kat27 = { aylik: K.aylikKatsayi * (1 + zam), taban: K.tabanAylikKatsayi * (1 + zam), yan: K.yanOdemeKatsayi * (1 + zam) };
 
 const faq = [
@@ -43,6 +47,14 @@ const faq = [
   {
     q: 'Memur maaş katsayıları Ocak 2027’de ne olur?',
     a: `Katsayılar zam oranında artırılır. %${nf(zam * 100)} tahmini zamla aylık katsayı yaklaşık ${nf(kat27.aylik, 6)}, taban aylık katsayısı ${nf(kat27.taban, 6)} olur. Kesin katsayıları Hazine ve Maliye Bakanlığı Ocak 2027'nin ilk günlerinde genelgeyle açıklar.`,
+  },
+  {
+    q: `60 bin TL memur maaşı Ocak 2027’de ne kadar olacak?`,
+    a: `Ocak 2027 memur zammı ${final ? '' : 'yaklaşık '}%${nf(zam * 100)} ise 60.000 TL net maaş ${final ? '' : 'yaklaşık '}${fmt(60000 * (1 + zam))} TL’ye, 50.000 TL maaş ${fmt(50000 * (1 + zam))} TL’ye, 80.000 TL maaş ${fmt(80000 * (1 + zam))} TL’ye çıkar. Vergi dilimi ve ek ödemeler kişiye göre değiştiği için gerçek bordro birkaç yüz lira farklı olabilir.`,
+  },
+  {
+    q: 'En düşük memur emeklisi aylığı Ocak 2027’de ne kadar olacak?',
+    a: `En düşük memur emeklisi aylığı şu an ${fmt(MEMUR_EMEKLI_TABAN)} TL. Memur emeklileri memurlarla aynı oranda zam alır; Ocak 2027’de ${final ? '' : 'yaklaşık '}%${nf(zam * 100)} zamla ${final ? '' : 'yaklaşık '}${fmt(MEMUR_EMEKLI_TABAN * (1 + zam))} TL olur.`,
   },
 ];
 
@@ -151,6 +163,16 @@ const breadcrumbs = [
         Ocak 2027 sütunu tahmini zam oranıyla hesaplanmıştır; kesin katsayılar Ocak başında açıklanır.
       </p>
     </section>
+
+    <ZamTutarTablosu
+      baslik="Memur maaşım ne kadar olacak? Ocak 2027 tutar tablosu"
+      giris={`Memur ve memur emeklileri Ocak 2027’de ${final ? '' : 'yaklaşık '}%${nf(zam * 100)} zam alır (%${TS_H1_2027} toplu sözleşme + enflasyon farkı). Maaşınıza en yakın satıra bakın ya da yukarıdaki hesaplayıcıya tam tutarı girin.`}
+      satirlar={[{ ad: 'En düşük memur emeklisi', tutar: MEMUR_EMEKLI_TABAN }, ...TUTARLAR.map((t) => ({ tutar: t }))]}
+      oran={zam}
+      kesin={final}
+      hedef="Ocak 2027"
+      not="Tablo net maaşa aynı oranı uygular; vergi dilimi geçişi ve kişiye özel ek ödemeler bordroyu biraz değiştirebilir."
+    />
 
     <section class="prose-block">
       <h2>Memur zammı nasıl hesaplanır?</h2>

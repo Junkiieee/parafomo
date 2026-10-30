@@ -1,0 +1,41 @@
+---
+// "Maaşım ne kadar olacak?" tutar tablosu (roadmap R2 / week T27). Oran zam2027.ts'ten gelir — rakam elle yazılmaz;
+// TÜFE güncellenince tablo kendiliğinden değişir.
+interface Satir { ad?: string; tutar: number }
+interface Props { id?: string; baslik: string; giris: string; satirlar: Satir[]; oran: number; kesin: boolean; hedef: string; not?: string }
+const { id = 'tutar-tablosu', baslik, giris, satirlar, oran, kesin, hedef, not } = Astro.props;
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const nf = (n: number) => n.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+---
+<section class="table-block zam-tutar" id={id}>
+  <h2>{baslik}</h2>
+  <p class="table-intro">{giris}</p>
+  <div class="table-scroll">
+    <table class="rate-table">
+      <thead><tr><th>Bugünkü aylık</th><th>{hedef} {kesin ? '' : '(tahmini)'}</th><th>Artış</th></tr></thead>
+      <tbody>
+        {satirlar.map((s) => (
+          <tr>
+            <td>{s.ad ? `${s.ad}: ` : ''}₺{fmt(s.tutar)}</td>
+            <td>{kesin ? '' : '≈ '}₺{fmt(s.tutar * (1 + oran))}</td>
+            <td>+₺{fmt(s.tutar * oran)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="table-note">Hesap: aylık × (1 + %{nf(oran * 100)}){kesin ? '' : ' — oran kalan aylar için varsayıma dayanır, her TÜİK açıklamasıyla yeniden hesaplanır'}. {not}</p>
+</section>
+
+<style>
+  .table-block { margin-top: 2.5rem; }
+  .table-block h2 { font-size: var(--step-2); margin: 0 0 0.7rem; }
+  .table-intro { font-size: 0.92rem; color: var(--text-soft); margin: 0 0 0.9rem; line-height: 1.6; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+  .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .rate-table th { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+  .rate-table td:nth-child(2) { font-weight: 700; color: var(--brand-ink); }
+  .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.8rem 0 0; line-height: 1.55; }
+  @media (max-width: 680px) { .rate-table { font-size: 0.86rem; } }
+</style>

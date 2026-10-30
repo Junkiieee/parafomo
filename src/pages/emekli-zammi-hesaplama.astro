@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
+import ZamTutarTablosu from '../components/ZamTutarTablosu.astro';
+import em from '../../data/emekli-memur.json';
 import tufe from '../../data/tufe-aylik.json';
 import tuik from '../../data/tuik-enflasyon-2026.json';
 // Tahmin mantığı (dönem, toplu sözleşme oranları, memur/SSK projeksiyonu) ortak modülde — kıdem tavanı da kullanır.
@@ -35,6 +37,10 @@ const sskJul = h1.every((k) => byMonth.has(k)) ? h1.reduce((c, k) => c * (1 + by
 const memurJul = sskJul == null ? null : (1 + Math.max(0, (1 + sskJul) / 1.11 - 1)) * 1.07 - 1;
 
 const D = { pension: 20000 };
+// “X TL emekli maaşı ne kadar olacak?” tablosu (T27): oran zam2027.ts’ten, taban data/emekli-memur.json’dan
+const TABAN = em.enDusukEmekliAyligi.tutar;
+const TUTARLAR = [15000, 18000, 20000, 25000, 30000, 35000, 40000, 50000];
+const ZAM_SSK = final ? cumKnown : sskProj;
 const lastKnown = known[known.length - 1];
 const kesin = `${known.length} aylık kesinleşen enflasyon %${nf(cumKnown * 100)}`;
 
@@ -60,6 +66,14 @@ const faq = [
   {
     q: 'Emekli zammı ne zaman kesinleşir?',
     a: `Ocak 2027 zammı, Aralık 2026 enflasyonunun açıklandığı gün (Ocak 2027'nin ilk iş günleri, saat 10:00) kesinleşir. Sıradaki veri: ${rows.find((r) => !r.data)?.name ?? 'Aralık'} 2026 enflasyonu, ${rows.find((r) => !r.data)?.release ?? 'Ocak 2027 başı'} tarihinde açıklanacak.`,
+  },
+  {
+    q: `20 bin TL emekli maaşı Ocak 2027’de ne kadar olacak?`,
+    a: `SSK ve Bağ-Kur emeklisinin 20.000 TL aylığı Ocak 2027’de ${final ? '' : 'yaklaşık '}%${nf(ZAM_SSK * 100)} zamla ${final ? '' : 'yaklaşık '}${fmt(20000 * (1 + ZAM_SSK))} TL olur; 30.000 TL aylık ${fmt(30000 * (1 + ZAM_SSK))} TL’ye, 40.000 TL aylık ${fmt(40000 * (1 + ZAM_SSK))} TL’ye çıkar.${final ? '' : ' Kesin tutar Aralık 2026 enflasyonu açıklanınca belli olur.'}`,
+  },
+  {
+    q: 'En düşük emekli aylığı alanlar Ocak 2027’de ne kadar alacak?',
+    a: `En düşük emekli aylığı şu an ${fmt(TABAN)} TL. Zam, tamamlama öncesi bağlanan aylığa uygulanır; zamlı aylık bu tutarın altında kalırsa fark tamamlanır. Ocak 2027’de en düşük aylığın kaç lira olacağı ayrıca yasal düzenlemeyle belirlenir; zam oranı kadar artırılırsa yaklaşık ${fmt(TABAN * (1 + ZAM_SSK))} TL olur.`,
   },
 ];
 
@@ -205,6 +219,16 @@ const updatedLabel = new Date(tufe.updated + 'T12:00:00').toLocaleDateString('tr
         <p class="table-note">Kesinleşen %{nf(cumKnown * 100)} her senaryoda sabittir; fark yalnızca açıklanmamış aylardan gelir. {prevYear && `Karşılaştırma: bir yıl önce aynı aylarda aylık TÜFE ${prevYear}.`}</p>
       </section>
     )}
+
+    <ZamTutarTablosu
+      baslik="Emekli maaşım ne kadar olacak? Ocak 2027 tutar tablosu"
+      giris={`SSK (4/a) ve Bağ-Kur (4/b) emeklileri aynı oranı alır: Ocak 2027’de aylıklar ${final ? '' : 'yaklaşık '}%${nf(ZAM_SSK * 100)} artar. Kendi aylığınıza en yakın satıra bakın ya da yukarıdaki hesaplayıcıya tam tutarı girin.`}
+      satirlar={[{ ad: 'En düşük aylık', tutar: TABAN }, ...TUTARLAR.map((t) => ({ tutar: t }))]}
+      oran={ZAM_SSK}
+      kesin={final}
+      hedef="Ocak 2027"
+      not={`En düşük aylık satırı yalnız zam oranı uygulanırsa geçerlidir; yeni taban tutarı yasayla belirlenir. Aylığı ${fmt(TABAN)} TL’nin altında kalan emekliye fark tamamlanır.`}
+    />
 
     {sskJul != null && (
       <section class="table-block">
