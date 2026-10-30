@@ -43,7 +43,7 @@ sıralar, yeni fikir ekler (açık madde ≤ 25). Biçim: `- [ ] R<n> (kanal) �
   olay hâlâ tazeyse (≤36 sa) `python3 scripts/event-short.py` ile yeniden üret. Takvim: Fed 28 Ekim → 29 Ekim koşusu ·
   TÜİK 3 Kasım → 4 Kasım · TÜİK 3 Aralık · Fed 9 Aralık · TCMB 10 Aralık · asgari ücret (Aralık sonu) · TÜİK 5 Ocak.
   Kabul: her olayın videosu yayında ya da nedeni raporda.
-- [ ] R2 (zam sezonu · → week T27, 10-29) — **"Maaşım ne kadar olacak?" tutar tabloları** · Ocak'ta "X TL emekli maaşı ne kadar olacak"
+- [x] R2 (zam sezonu · → week T27, 10-29) → iki sayfada #tutar-tablosu canlı · 2026-10-30 — — **"Maaşım ne kadar olacak?" tutar tabloları** · Ocak'ta "X TL emekli maaşı ne kadar olacak"
   türü uzun-kuyruk patlar; tıkların ~%95'i zaten uzun-kuyruktan. /emekli-zammi-hesaplama'ya (yeni sayfa DEĞİL) tutar
   tablosu bölümü: en düşük aylık + 15/20/25/30/40 bin TL… için Ocak 2027 tahmini (5 Ocak'ta kesin) — rakamlar
   `src/data/zam2027.ts`/veriden; aynısı /asgari-ucret-hesaplama için net/brüt/işveren maliyeti tablosu (Aralık'ta

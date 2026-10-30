@@ -85,7 +85,7 @@ sabit yazılmaz. Ocak 2027 tahmini `src/data/zam2027.ts`'ten gelir (evde-bakim-m
   ilk 40 karakterde, abartısız, videonun söylediğiyle birebir. Öneri listesini report.md'ye koy, sonra uygula: `videos.update`
   part=snippet; categoryId, tags ve description geri gönderilir. Uygulamadan önce `yt_search_share` bazını
   `agent/memory/yt-retitle-2026-11.json`'a kaydet. · Kabul: 20 video güncel + baz dosyası commit'li; haftalık koşu 11-12'de kıyaslar.
-- [ ] T27 (B261015-1 | R2) — **"Emekli maaşım ne kadar olacak?" tutar tablosu** · hedef: emekli maaşı 2027 (hacim 98,
+- [x] T27 (B261015-1 | R2) — **"Emekli maaşım ne kadar olacak?" tutar tablosu** → canlı https://parafomo.com/emekli-zammi-hesaplama/#tutar-tablosu + /memur-zammi-hesaplama/#tutar-tablosu (ZamTutarTablosu bileşeni, oran zam2027.ts; 20 bin → ≈22.286, 60 bin memur → ≈65.608; +4 SSS) · 2026-10-30 — · hedef: emekli maaşı 2027 (hacim 98,
   zirve Ocak 852) + "X TL emekli maaşı ne kadar olacak" uzun kuyruğu. Yeni sayfa AÇMA: /emekli-zammi-hesaplama'ya
   `#tutar-tablosu` bölümü ekle. En düşük aylık + 15/18/20/25/30/35/40/50 bin TL maaşlar için Ocak 2027 tahmini (SSK ve
   Bağ-Kur ayrı). Rakamlar `src/data/zam2027.ts`'ten üretilir, elle sayı yok. Aynı bileşenle /memur-zammi-hesaplama'ya
