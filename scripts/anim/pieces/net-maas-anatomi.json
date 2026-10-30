@@ -1,0 +1,34 @@
+{
+  "slug": "anim-net-maas-anatomi",
+  "title": "75 bin brüt maaşın anatomisi: Ocak'ta 58.080, Ağustos'ta 51.834",
+  "style": "isometric",
+  "scene": "net-maas-anatomi.js",
+  "link": "/net-maas-hesaplama",
+  "source_note": "src/pages/net-maas-hesaplama.astro netMaas(75000, ay) — 2026 tarifesi, asgari ücret istisnası düşülmüş",
+  "data": {
+    "brut": 75000,
+    "layers": [
+      {"key": "sgk",  "name": "SGK · %14",        "v": 10500.00, "col": "#3D8BD9", "fill": "#12223A"},
+      {"key": "iss",  "name": "İŞSİZLİK · %1",      "v": 750.00,   "col": "#9B86F0", "fill": "#1E1A33"},
+      {"key": "gv",   "name": "GELİR VERGİSİ",          "v": 5351.18,  "col": "#FF7A30", "fill": "#3A1E10"},
+      {"key": "dmg",  "name": "DAMGA VERGİSİ",          "v": 318.55,   "col": "#B8BEC0", "fill": "#22282B"},
+      {"key": "net",  "name": "NET · OCAK",         "v": 58080.27, "col": "#2BB194", "fill": "#12302A"}
+    ],
+    "months": ["OCA", "ŞUB", "MAR", "NİS", "MAY", "HAZ", "TEM", "AĞU", "EYL", "EKİ", "KAS", "ARA"],
+    "net_by_month": [58080.27, 58080.27, 58017.77, 54892.77, 54892.77, 54892.77, 51981.70, 51834.05, 51834.05, 51834.05, 51834.05, 51834.05]
+  },
+  "lines": [
+    {"id": "hook",  "say": "Brüt maaşın yetmiş beş bin lira. Ama eline geçen bu değil.", "cap": "Brüt maaşın 75 bin lira. Ama eline geçen bu değil."},
+    {"id": "split", "say": "Hadi maaşını parçalarına ayıralım.", "cap": "Hadi maaşını parçalarına ayıralım.", "after": 0.5},
+    {"id": "sgk",   "say": "Yüzde on dört SGK primi: on bin beş yüz lira.", "cap": "%14 SGK primi: 10.500 lira."},
+    {"id": "iss",   "say": "Yüzde bir işsizlik sigortası: yedi yüz elli.", "cap": "%1 işsizlik sigortası: 750."},
+    {"id": "gv",    "say": "Gelir vergisi: beş bin üç yüz elli bir.", "cap": "Gelir vergisi: 5.351."},
+    {"id": "dmg",   "say": "Damga vergisi: üç yüz on dokuz.", "cap": "Damga vergisi: 319."},
+    {"id": "net",   "say": "Ocak'ta eline geçen: elli sekiz bin seksen lira.", "cap": "Ocak'ta eline geçen: 58.080 lira.", "after": 0.6},
+    {"id": "turn",  "say": "Ama maaşın aynı kalsa bile, netin aynı kalmıyor.", "cap": "Ama maaşın aynı kalsa bile, netin aynı kalmıyor."},
+    {"id": "apr",   "say": "Vergi yıl boyunca birikerek hesaplanır. Nisan'da dilim yüzde yirmiye çıkar: net elli dört bin sekiz yüz doksan üç.", "cap": "Vergi yıl boyunca birikerek hesaplanır. Nisan'da dilim %20'ye çıkar: net 54.893."},
+    {"id": "aug",   "say": "Temmuz'da yüzde yirmi yediye. Ağustos'tan itibaren eline elli bir bin sekiz yüz otuz dört lira geçer.", "cap": "Temmuz'da %27'ye. Ağustos'tan itibaren eline 51.834 lira geçer."},
+    {"id": "diff",  "say": "Aynı maaş, ayda altı bin iki yüz kırk altı lira daha az.", "cap": "Aynı maaş, ayda 6.246 lira daha az.", "after": 0.6},
+    {"id": "cta",   "say": "Kendi maaşının anatomisini parafomo nokta komda gör. Abone ol, rakamları kaçırma.", "cap": "Kendi maaşının anatomisini parafomo.com'da gör. Abone ol!"}
+  ]
+}
