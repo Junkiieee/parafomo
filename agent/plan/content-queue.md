@@ -42,7 +42,7 @@ beyannamesi" 2,8 (zirve Mart 32 → Şubat'ta yeniden ölç) · "aile destek pro
   (hacim 43,7) · neden: memur kümesi (/memur-zammi-hesaplama) — 657 DMK ek gösterge cetveli ve 3600 ek gösterge
   düzenlemesini (7417 s.K.) mevzuat.gov.tr'den; tutar örneği verirsen güncel katsayıyla (`data/emekli-memur.json`) ·
   iç-link: /memur-zammi-hesaplama, /en-dusuk-emekli-maasi, /emekli-zammi-hesaplama → /blog/ek-gosterge-nedir-3600-ek-gosterge-memur-maasi (2026-10-29)
-- [ ] 📅 30 Ekim **Ekim 2026 Enflasyonu 3 Kasım'da Açıklanıyor: Beklenti, Kira Artışı, Emekli Zammı ve 2027 Zamlarına
+- [x] 📅 30 Ekim **Ekim 2026 Enflasyonu 3 Kasım'da Açıklanıyor: Beklenti, Kira Artışı, Emekli Zammı ve 2027 Zamlarına
   Etkisi** · slug: `ekim-2026-enflasyon-beklentisi-3-kasim` · hedef: "enflasyon beklentisi" (hacim 45,6) + "ekim ayı
   enflasyon" (6,9, zirve Kasım 143) + "enflasyon ne zaman" (22,5) · frontmatter `sonuc: "tufe:2026-10"` +
   `sonucBaslik: "Ekim 2026 Enflasyonu Açıklandı: Aylık %{aylik}, Yıllık %{yillik}"`. Beklenti rakamı YALNIZ TCMB
@@ -50,7 +50,7 @@ beyannamesi" 2,8 (zirve Mart 32 → Şubat'ta yeniden ölç) · "aile destek pro
   /emekli-zammi-hesaplama, /memur-zammi-hesaplama, /yeniden-degerleme-orani, /mtv-hesaplama,
   /blog/2027-zamlari-yeniden-degerleme-orani-rehberi, /enflasyon-hesaplama linkleri. **Erken yayın (RC 2026-10-27):** "ekim ayı enflasyon
   beklentisi" aramaları şimdiden geliyor (GSC p13,8, yanlış yazıya); Google'ın dizine alması için olaydan ≥3 gün önce.
-  AA Finans anketi sonradan çıkarsa 2 Kasım günlük koşusu yazıdaki beklenti rakamını güncellesin.
+  AA Finans anketi sonradan çıkarsa 2 Kasım günlük koşusu yazıdaki beklenti rakamını güncellesin. → /blog/ekim-2026-enflasyon-beklentisi-3-kasim (2026-10-30)
 - [ ] **Katılım hesabı nedir? Kâr payı nasıl hesaplanır, mevduattan farkı ve stopajı** · hedef: "katılım hesabı"
   (hacim 6,9) · neden: mevduat kümesi tamamlayıcı; kâr payı oranı örneği verirsen bankanın kendi sayfasından tarihli,
   TKBB/BDDK kaynaklı; tek banka önerme · iç-link: /mevduat-faizi-hesaplama, /blog/stopaj-nedir-2026-stopaj-oranlari,

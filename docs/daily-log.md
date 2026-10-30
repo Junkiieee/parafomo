@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-10-30 — Ekim 2026 Enflasyon Beklentisi: 3 Kasım'da Ne Açıklanacak?
+
+**Yayınlanan yazı:** [Ekim 2026 Enflasyon Beklentisi: 3 Kasım'da Ne Açıklanacak?](/blog/ekim-2026-enflasyon-beklentisi-3-kasim)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst 📅 satır — TÜİK 3 Kasım önizlemesi, "enflasyon beklentisi" hacim 45,6)
+
+---
+
 ## 2026-10-29 — Ek Gösterge Nedir? 3600 Ek Gösterge ve Memur Maaşına Etkisi
 
 **Yayınlanan yazı:** [Ek Gösterge Nedir? 3600 Ek Gösterge ve Memur Maaşına Etkisi](/blog/ek-gosterge-nedir-3600-ek-gosterge-memur-maasi)
