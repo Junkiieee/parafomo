@@ -26,7 +26,7 @@ göre seç; eski motora (shorts-build-v4) yalnız yeni motor çökerse yedek ola
 ## Teknik sıra (V = video işi)
 - [ ] V1 (Kaan kararı) — kaplama dönüşü seçimi → `scripts/anim/skins.json` (şimdilik yalnız iso).
 - [ ] V2 (Kaan kararı) — ses zinciri A/B (EQ + de-esser + kompresör) → evet ise anim_build anlatımına ekle.
-- [ ] V3 — Instagram Reels günlük üst sınır 2 (instagram-reel.py; fazlası yalnız YouTube/FB).
+- [x] V3 (2026-10-30) — Instagram Reels günlük üst sınır 2 (instagram-reel.py; fazlası yalnız YouTube/FB).
 - [ ] V4 — Dalio kitini otomatik hatta bağla: LLM sahne planı → karakterli sahne şablonları (alışveriş, para yağmuru,
   kuyruk, fiyat etiketi, grafik, banka, ev, maaş bordrosu). Kabul: bir senaryodan insansız elle müdahalesiz Short.
 - [ ] V5 — uzun video 16:9: lf_ hattının görsel katmanı anim + Dalio'ya taşınır; "Ekonomi Makinesi #1: Enflasyon" 8-10 dk.
