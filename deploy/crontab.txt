@@ -8,33 +8,33 @@
 # Tüm LLM çağrıları scripts/lib/llm.py kapısından geçer (kota/oturum durumu: logs/llm-status.json).
 
 # --- Gece: LLM hazırlık + ajan ---
-30 0 * * * /root/parafomo/scripts/viral-daily.sh --prepare >> /root/parafomo/logs/viral.log 2>&1
-0 3 * * * /root/parafomo/agent/run.sh auto >> /root/parafomo/logs/agent.log 2>&1
+# DURDU 2026-10-30 (Kaan: hiçbir şey yayınlanmasın, 31 Ekim tek tek karar): 30 0 * * * /root/parafomo/scripts/viral-daily.sh --prepare >> /root/parafomo/logs/viral.log 2>&1
+# DURDU 2026-10-30 (Kaan: hiçbir şey yayınlanmasın, 31 Ekim tek tek karar): 0 3 * * * /root/parafomo/agent/run.sh auto >> /root/parafomo/logs/agent.log 2>&1
 30 4 * * * /root/parafomo/scripts/maintenance.sh >> /root/parafomo/logs/maintenance.log 2>&1
 
 # --- Sabah: blog (ajanın konu kuyruğundan) + blog→Short hazırlığı + gündem ---
-0 6 * * 1-5 /root/parafomo/scripts/daily-content.sh >> /root/parafomo/logs/cron.log 2>&1
+# DURDU 2026-10-30 (Kaan: hiçbir şey yayınlanmasın, 31 Ekim tek tek karar): 0 6 * * 1-5 /root/parafomo/scripts/daily-content.sh >> /root/parafomo/logs/cron.log 2>&1
 # Gün içi fiyat tazeleme (altın/DXY/tahvil; değişiklik varsa commit+push → deploy). Cumartesi Kapalıçarşı açık.
 30 8,10,12,14,16 * * 1-6 /root/parafomo/scripts/prices-refresh.sh >> /root/parafomo/logs/prices.log 2>&1
-30 6 * * * /root/parafomo/scripts/news-daily.sh >> /root/parafomo/logs/news.log 2>&1
-45 7 * * * /root/parafomo/scripts/shorts-daily.sh --prepare >> /root/parafomo/logs/shorts.log 2>&1
+# DURDU 2026-10-30 (Kaan: hiçbir şey yayınlanmasın, 31 Ekim tek tek karar): 30 6 * * * /root/parafomo/scripts/news-daily.sh >> /root/parafomo/logs/news.log 2>&1
+# DURDU 2026-10-30 (Kaan: hiçbir şey yayınlanmasın, 31 Ekim tek tek karar): 45 7 * * * /root/parafomo/scripts/shorts-daily.sh --prepare >> /root/parafomo/logs/shorts.log 2>&1
 
 # --- YouTube Shorts + IG Reels yayını (viral: 6 aday saatten yalnız günün slotu yayınlar) ---
-0 5 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 0 >> /root/parafomo/logs/viral.log 2>&1
-0 8 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 1 >> /root/parafomo/logs/viral.log 2>&1
-0 10 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 2 >> /root/parafomo/logs/viral.log 2>&1
-0 13 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 3 >> /root/parafomo/logs/viral.log 2>&1
-30 15 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 4 >> /root/parafomo/logs/viral.log 2>&1
-30 18 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 5 >> /root/parafomo/logs/viral.log 2>&1
-0 11 * * * /root/parafomo/scripts/shorts-daily.sh --publish >> /root/parafomo/logs/shorts.log 2>&1
-0 16 * * * /root/parafomo/scripts/manim-daily.sh >> /root/parafomo/logs/manim-daily.log 2>&1
+# DURDU 2026-10-30 (Kaan: hiçbir şey yayınlanmasın, 31 Ekim tek tek karar): 0 5 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 0 >> /root/parafomo/logs/viral.log 2>&1
+# DURDU 2026-10-30 (Kaan: hiçbir şey yayınlanmasın, 31 Ekim tek tek karar): 0 8 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 1 >> /root/parafomo/logs/viral.log 2>&1
+# DURDU 2026-10-30 (Kaan: hiçbir şey yayınlanmasın, 31 Ekim tek tek karar): 0 10 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 2 >> /root/parafomo/logs/viral.log 2>&1
+# DURDU 2026-10-30 (Kaan: hiçbir şey yayınlanmasın, 31 Ekim tek tek karar): 0 13 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 3 >> /root/parafomo/logs/viral.log 2>&1
+# DURDU 2026-10-30 (Kaan: hiçbir şey yayınlanmasın, 31 Ekim tek tek karar): 30 15 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 4 >> /root/parafomo/logs/viral.log 2>&1
+# DURDU 2026-10-30 (Kaan: hiçbir şey yayınlanmasın, 31 Ekim tek tek karar): 30 18 * * * /root/parafomo/scripts/viral-daily.sh --publish --at 5 >> /root/parafomo/logs/viral.log 2>&1
+# DURDU 2026-10-30 (Kaan: hiçbir şey yayınlanmasın, 31 Ekim tek tek karar): 0 11 * * * /root/parafomo/scripts/shorts-daily.sh --publish >> /root/parafomo/logs/shorts.log 2>&1
+# DURDU 2026-10-30 (Kaan: hiçbir şey yayınlanmasın, 31 Ekim tek tek karar): 0 16 * * * /root/parafomo/scripts/manim-daily.sh >> /root/parafomo/logs/manim-daily.log 2>&1
 
 # --- Instagram kartları (LLM yalnız tek cümlelik yorum; yoksa şablon) ---
 # KAPALI 2026-10-30 (Kaan: eski stil IG görsel postları durdu, yeni stil Reels): 0 6 * * * /root/parafomo/scripts/altin-daily.sh >> /root/parafomo/logs/altin-ig.log 2>&1
 # KAPALI 2026-10-30 (Kaan: eski stil IG görsel postları durdu, yeni stil Reels): 15 7 * * 1-5 /root/parafomo/scripts/bist-daily.sh acilis >> /root/parafomo/logs/bist.log 2>&1
 # KAPALI 2026-10-30 (Kaan: eski stil IG görsel postları durdu, yeni stil Reels): 20 15 * * 1-5 /root/parafomo/scripts/bist-daily.sh kapanis >> /root/parafomo/logs/bist.log 2>&1
 # KAPALI 2026-10-30 (Kaan: eski stil IG görsel postları durdu, yeni stil Reels): 45 6,9,12,15 * * * /root/parafomo/scripts/halka-arz-ig.sh >> /root/parafomo/logs/halka-arz-ig.log 2>&1
-30 7,11,15 * * * /root/parafomo/scripts/spk-onay-ig.sh >> /root/parafomo/logs/spk-onay.log 2>&1
+# DURDU 2026-10-30 (Kaan: hiçbir şey yayınlanmasın, 31 Ekim tek tek karar): 30 7,11,15 * * * /root/parafomo/scripts/spk-onay-ig.sh >> /root/parafomo/logs/spk-onay.log 2>&1
 
 # --- Veri + ölçüm (LLM yok) ---
 15 */6 * * * /root/parafomo/scripts/halka-arz-update.sh >> /root/parafomo/logs/halka-arz.log 2>&1
@@ -53,7 +53,7 @@
 25 11,13,19,21 * * * /root/parafomo/scripts/policy-decisions.sh >> /root/parafomo/logs/policy-decisions.log 2>&1
 
 # Haftalık bülten — pazartesi 08:30 TSİ, onaylı abonelere (ISO hafta kilidi)
-30 5 * * 1 /root/parafomo/scripts/newsletter-send.sh >> /root/parafomo/logs/newsletter.log 2>&1
+# DURDU 2026-10-30 (Kaan: hiçbir şey yayınlanmasın, 31 Ekim tek tek karar): 30 5 * * 1 /root/parafomo/scripts/newsletter-send.sh >> /root/parafomo/logs/newsletter.log 2>&1
 
 # Portföy uygulaması (app.parafomo.com/portfoy): gece değer fotoğrafı + fiyat alarmı kontrolü
 50 20 * * * /root/.venvs/parafomo-api/bin/python /root/parafomo/scripts/portfolio-snapshot.py >> /root/parafomo/logs/portfolio-snapshot.log 2>&1
