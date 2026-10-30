@@ -105,9 +105,11 @@ const W = {W}, H = {H}, FPS = {FPS}, CX = 470, ISO_DARK = true, SKIN_NAME = {jso
 const TL = {json.dumps(tl, ensure_ascii=False)};
 """
     style = spec.get("style", "isometric")
+    kits = "\n".join(js(os.path.join(HERE, "kits", k + ".js")) for k in spec.get("kits", []))
     html = f"""<!doctype html><html><head><meta charset="utf-8"><style>
 @font-face {{ font-family: Anton; src: url('file://{FONTS}/Anton-Regular.ttf'); }}
 @font-face {{ font-family: Oswald; src: url('file://{FONTS}/Oswald.ttf'); font-weight: 200 700; }}
+@font-face {{ font-family: Amatic; src: url('file://{FONTS}/AmaticSC-Bold.ttf'); font-weight: 700; }}
 html,body {{ margin:0; background:#000; }}
 </style></head><body><canvas id="c" width="{W}" height="{H}"></canvas>
 <span style="font-family:Anton;position:absolute;opacity:0">₺0</span><span style="font-family:Oswald;position:absolute;opacity:0">a</span>
@@ -118,6 +120,7 @@ html,body {{ margin:0; background:#000; }}
 {js(os.path.join(HERE, 'brand.js'))}
 {js(os.path.join(HERE, 'scenes.js'))}
 {js(os.path.join(HERE, 'skins.js'))}
+{kits}
 {js(os.path.join(HERE, 'pieces', spec['scene']))}
 const CANVAS = document.getElementById('c'), MAIN = CANVAS.getContext('2d');
 const LAYER = document.createElement('canvas'); LAYER.width = W; LAYER.height = H; const LCTX = LAYER.getContext('2d');
@@ -131,7 +134,7 @@ window.renderFrame = (f, png) => {{
   if (typeof drawOverlay === 'function') drawOverlay();                                    // altyazı (net)
   return CANVAS.toDataURL(png ? 'image/png' : 'image/jpeg', 0.93).split(',')[1];
 }};
-Promise.all([document.fonts.load('60px Anton'), document.fonts.load('600 60px Oswald')]).then(() => {{ window.ANIM_READY = true; }});
+Promise.all([document.fonts.load('60px Anton'), document.fonts.load('600 60px Oswald'), document.fonts.load('700 60px Amatic')]).then(() => {{ window.ANIM_READY = true; }});
 </script></body></html>"""
     open(path, "w", encoding="utf-8").write(html)
 

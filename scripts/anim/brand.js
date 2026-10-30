@@ -43,7 +43,7 @@ function captions(y = 1488) {
   let acc = 0, wi = 0; for (let i = 0; i < words.length; i++) { if (u >= acc) wi = i; acc += lens[i]; }
   if (l.words && l.words.length === words.length) { wi = 0; for (let i = 0; i < words.length; i++) if (TT >= l.words[i] - 0.04) wi = i; }   // gerçek kelime zamanı
   const g0 = Math.floor(wi / 3) * 3, grp = words.slice(g0, g0 + 3);
-  ctx.save(); ctx.font = `600 64px ${OSW}`; ctx.textBaseline = 'alphabetic';
+  ctx.save(); ctx.font = BR.capFont || `600 64px ${OSW}`; ctx.textBaseline = 'alphabetic';
   const sp = 18, ws = grp.map((w) => ctx.measureText(w.toLocaleUpperCase('tr-TR')).width);
   const tw = ws.reduce((a, b) => a + b, 0) + sp * (grp.length - 1), k = Math.min(1, 860 / tw);
   ctx.translate(470, y); ctx.scale(k, k); ctx.translate(-470, -y);   // geniş parça güvenli alana sığsın

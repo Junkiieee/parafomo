@@ -1,0 +1,48 @@
+{
+ "slug": "anim-ekonomi-makinesi-enflasyon",
+ "title": "Ekonomi makinesi: Enflasyon nasıl olur? (60 saniyede)",
+ "style": "isometric",
+ "skin": "iso",
+ "kits": [
+  "dalio"
+ ],
+ "scene": "dalio-enflasyon.js",
+ "data": {},
+ "lines": [
+  {
+   "id": "hook",
+   "say": "Ekmek neden her yıl pahalanıyor? Cevap, ekonomi makinesinde.",
+   "cap": "Ekmek neden her yıl pahalanıyor? Cevap, ekonomi makinesinde."
+  },
+  {
+   "id": "trade",
+   "say": "Ekonomi aslında alışverişlerden oluşur. Ali fırıncıya 10 lira verir, karşılığında ekmeği alır.",
+   "cap": "Ekonomi aslında alışverişlerden oluşur. Ali fırıncıya 10 lira verir, karşılığında ekmeği alır."
+  },
+  {
+   "id": "money",
+   "say": "Şimdi herkesin cebine daha çok para girdiğini düşün: kredi kolaylaşır, piyasaya para dolar.",
+   "cap": "Şimdi herkesin cebine daha çok para girdiğini düşün: kredi kolaylaşır, piyasaya para dolar."
+  },
+  {
+   "id": "same",
+   "say": "Ama fırında hâlâ aynı sayıda ekmek var.",
+   "cap": "Ama fırında hâlâ aynı sayıda ekmek var."
+  },
+  {
+   "id": "price",
+   "say": "Daha çok para, aynı ekmeğin peşine düşünce fiyat yükselir: 10 lira, 15 lira olur.",
+   "cap": "Daha çok para, aynı ekmeğin peşine düşünce fiyat yükselir: 10 lira, 15 lira olur."
+  },
+  {
+   "id": "chart",
+   "say": "İşte enflasyon budur: para, maldan daha hızlı artınca fiyatlar yükselir.",
+   "cap": "İşte enflasyon budur: para, maldan daha hızlı artınca fiyatlar yükselir."
+  },
+  {
+   "id": "cta",
+   "say": "Paranı enflasyona karşı korumanın yollarını parafomo.com'da anlattık. Abone ol.",
+   "cap": "Paranı enflasyona karşı korumanın yollarını parafomo.com'da anlattık. Abone ol."
+  }
+ ]
+}
