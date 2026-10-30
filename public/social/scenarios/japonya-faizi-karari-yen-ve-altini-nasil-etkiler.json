@@ -1,0 +1,62 @@
+{
+  "slug": "japonya-faizi-karari-yen-ve-altini-nasil-etkiler",
+  "title": "Japonya faizi kararı yen ve altını nasıl etkiler",
+  "category": "GÜNCEL",
+  "format": "news_reaction",
+  "description": "Japonya Merkez Bankası faiz kararı bugün. Yen, dolar ve altın üzerindeki etkisi, kararın hangi yönde çıkacağına göre cebini nasıl etkiler, sade anlatım.",
+  "tags": [
+    "BOJ",
+    "Japonya Merkez Bankası",
+    "yen",
+    "faiz kararı",
+    "altın",
+    "dolar",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "GÜNCEL",
+      "spoken": "Japonya'nın faiz kararı bugün, cebine kadar uzanıyor.",
+      "visual": {
+        "type": "place",
+        "query": "Bank of Japan headquarters Tokyo"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Japonya'da faiz yıllarca sıfıra yakındı, yatırımcılar ucuz yen borçlanıp bu parayla dünyada daha yüksek getirili varlık aldı.",
+      "visual": {
+        "type": "logo",
+        "query": "Bank of Japan logo"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama karar yönünü değiştirirse yen güçlenir, borçlar geri ödenmek için satış yapılır ve borsalar sert sallanabilir.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Borsa",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Bu satış dalgası dolara, borsaya ve altına dokunur. Kararı değil, bu zinciri izle; dalgalanmada panik kararı verme.",
+      "visual": {
+        "type": "gold",
+        "query": "gold bullion bars"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Karar sonrası piyasa ne yapacak, yarın bakacağız. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "place",
+        "query": "Bank of Japan headquarters Tokyo"
+      }
+    }
+  ]
+}
