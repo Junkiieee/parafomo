@@ -1,0 +1,59 @@
+{
+  "slug": "dolar-alirken-ilk-gun-kaybediyorsun-fark-burada",
+  "title": "Dolar alırken ilk gün kaybediyorsun, fark burada",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Dolar alıp satarken banka ve döviz bürosunun alış-satış farkı (makas) cebinden ne kadar götürür ve bunu nasıl azaltırsın.",
+  "tags": [
+    "dolar",
+    "döviz makası",
+    "alış satış farkı",
+    "tasarruf",
+    "kayıp korkusu",
+    "yatırım",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Dolar alırsan ilk gün zarardasın.",
+      "visual": {
+        "type": "object",
+        "query": "smartphone currency exchange app rising chart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çünkü doları sana sattığı fiyat, senden aldığı fiyattan yüksek. Bu farka makas deniyor.",
+      "visual": {
+        "type": "object",
+        "query": "smartphone banking app"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Makas yüzde 1 olsa bile 100 bin liralık dolar, aynı gün yaklaşık bin lira kaybettirir.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Sık al-sat yapma, makasları karşılaştır, uzun tut. Maliyet bir kez ödenir, bekledikçe yükü hafifler.",
+      "visual": {
+        "type": "object",
+        "query": "wallet"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki hesap daha da can yakacak. Abone ol, her gün tek net analizi 60 saniyede al.",
+      "visual": {
+        "type": "object",
+        "query": "smartphone currency exchange app rising chart"
+      }
+    }
+  ]
+}
