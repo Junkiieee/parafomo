@@ -19,6 +19,23 @@ faq:
     a: "Kasım'da yenilenen kiralar için tavan, 3 Kasım'da açıklanacak 12 aylık TÜFE ortalamasıdır. Ekim'de aylık %2,11 gerçekleşirse ortalama yaklaşık %31,2 olur; Ekim'deki tavan %31,49'du."
   - q: "Ekim enflasyonu emekli zammını nasıl etkiler?"
     a: "Ocak 2027 SSK ve Bağ-Kur zammı Temmuz-Aralık 2026 birikimli enflasyonla belirlenir. Üç aylık birikim %5,56; Ekim'de %2,11 gelirse dört aylık birikim yaklaşık %7,79'a çıkar. Kesin zam oranı 5 Ocak 2027'de belli olur."
+shorts:
+  - "Enflasyon düştü diye fiyatların ucuzladığını sanıyorsun ama..."
+  - "Yıllık enflasyon düşse bile fiyatlar düşmez, sadece artış hızı yavaşlar, bu yüzden manşete aldanma."
+  - "Ekim'de aylık beklenti yüzde 2,11, geçen yılın yüksek ekim rakamı yıllık oranı aşağı çekebilir."
+  - "Bu tek rakam Kasım kira artışını ve Ocak'taki emekli ile memur zammını doğrudan etkiliyor."
+  - "Peki 3 Kasım'da rakam beklentiyi aşarsa ne olur? Abone ol, cebini etkileyen verileri kaçırma. parafomo.com"
+shorts_broll:
+  - "turkish lira money"
+  - "inflation chart"
+  - "calculator prices"
+  - "stock market chart"
+shorts_visuals:
+  - "object|receipt paper"
+  - "concept|slowing price increase"
+  - "object|calculator"
+  - "object|house keys"
+  - "building|Borsa İstanbul"
 ---
 
 **Ekim 2026 enflasyon beklentisi** aylık %2,11. TÜİK bu veriyi **3 Kasım 2026 Salı saat 10:00'da** açıklayacak ve bu tek rakam Kasım'da yenilenen kira sözleşmelerini, Ocak 2027 emekli ve memur zammını, hatta 2027'deki harç ve vergi artışlarını etkileyecek. Bu yazıda piyasanın ne beklediğini, olası senaryoları ve rakam açıklandığında cebine nasıl yansıyacağını tablolarla anlatıyoruz.
