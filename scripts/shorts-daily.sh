@@ -51,8 +51,12 @@ process_one() {
   # PREPARE: sadece senaryoyu üret (Claude) + commit; render/upload YOK, state İLERLEMEZ.
   if [ "$MODE" = "prepare" ]; then
     "$VPY" "$REPO/scripts/shorts-script.py" "$slug" || { echo "UYARI: senaryo üretilemedi ($slug)"; return 2; }
-    if [ -n "$(git status --porcelain src/content/blog/)" ]; then
-      git_add_commit "shorts: $slug senaryosu hazırlandı (gece, otomatik)" src/content/blog/ || true
+    # izometrik animasyon sahne planı (LLM gece burada; gündüz render sıfır token)
+    "$VPY" "$REPO/scripts/anim/anim_short.py" --blog "$slug" --convert-only >/dev/null \
+      || echo "UYARI: animasyon sahne planı üretilemedi (render'da tekrar denenecek)"
+    if [ -n "$(git status --porcelain src/content/blog/ public/social/scenarios/)" ]; then
+      git_add_commit "shorts: $slug senaryosu hazırlandı (gece, otomatik)" src/content/blog/ \
+        "public/social/scenarios/blog-$slug.json" "public/social/scenarios/$slug.anim.json" || true
       git_push_retry main
     fi
     echo "[prepare] $slug senaryosu hazır — gündüz publish edilecek."
@@ -68,8 +72,13 @@ process_one() {
   echo "[*] Video üretiliyor..."
   local voice_flag="--voice"
   [ "$engine" = "edge" ] && voice_flag="--edge-voice"
-  if ! "$VPY" "$REPO/scripts/shorts-build-v4.py" "$slug" --engine "$engine" "$voice_flag" "$voice"; then
-    echo "HATA: video üretilemedi ($slug) — atlanıyor"; return 2
+  if "$VPY" "$REPO/scripts/anim/anim_short.py" --blog "$slug"; then
+    echo "[+] Video: izometrik animasyon motoru"
+  else
+    echo "UYARI: animasyon motoru başarısız — eski motora düşülüyor"
+    if ! "$VPY" "$REPO/scripts/shorts-build-v4.py" "$slug" --engine "$engine" "$voice_flag" "$voice"; then
+      echo "HATA: video üretilemedi ($slug) — atlanıyor"; return 2
+    fi
   fi
 
   # YouTube'a PUBLIC yükle

@@ -28,10 +28,10 @@ function txt(str, x, y, font, color, o = {}) {
 
 // üst bant: küçük marka etiketi + büyük başlık (yay ile gelir)
 function brandHeader(title, t0, o = {}) {
-  const a = clamp(spring(TT, t0, { k: 140, damp: 0.8 }));
+  const a = clamp(spring(TT, t0, { k: 140, damp: 0.8 })) * (o.al ?? 1);
   if (a <= 0.001) return;
-  txt('PARAFOMO · 2026 RAKAMLARIYLA', 70, 268, `500 26px ${DMONO}`, BR.brand, { al: a, ls: 2 });
-  txt(title, 70, 352 + (1 - a) * 24, `76px ${ANTON}`, BR.white, { al: a });
+  txt(o.eyebrow || 'PARAFOMO · 2026 RAKAMLARIYLA', 70, 268, `500 26px ${DMONO}`, BR.brand, { al: a, ls: 2 });
+  txt(title, 70, 352 + (1 - a) * 24, typeof fitFont === 'function' ? fitFont(title, 880, 76, ANTON) : `76px ${ANTON}`, BR.white, { al: a });
   if (o.sub) txt(o.sub, 72, 402, `400 34px ${OSW}`, BR.muted, { al: a });
 }
 
@@ -58,19 +58,20 @@ function captions(y = 1488) {
   ctx.restore();
 }
 
-// kapanış: site + ABONE OL (kırmızı, üçgenli)
-function ctaCard(t0) {
-  const a = clamp(spring(TT, t0, { k: 120, damp: 0.75 }));
+// kapanış: site + ABONE OL (kırmızı, üçgenli). o: { l1, l2, sub, al, t (yerel zaman; yoksa TT - t0) }
+function ctaCard(t0, o = {}) {
+  const lt = o.t ?? (TT - t0), A = o.al ?? 1;
+  const a = clamp(lt <= 0 ? 0 : spring(lt, 0, { k: 120, damp: 0.75 })) * A;
   if (a <= 0.001) return;
   ctx.save(); ctx.globalAlpha = a * 0.82; ctx.fillStyle = BR.bg; ctx.fillRect(0, 0, W, H); ctx.restore();
-  const y = 760 + (1 - a) * 40;
-  txt('KENDİ MAAŞININ', 470, y, `64px ${ANTON}`, BR.white, { align: 'center', al: a });
-  txt('ANATOMİSİNİ GÖR', 470, y + 84, `64px ${ANTON}`, BR.white, { align: 'center', al: a });
+  const y = 760 + (1 - a) * 40, l1 = (o.l1 || 'KENDİ MAAŞININ').toLocaleUpperCase('tr-TR'), l2 = (o.l2 || 'ANATOMİSİNİ GÖR').toLocaleUpperCase('tr-TR');
+  txt(l1, 470, y, fitFont(l1, 860, 64, ANTON), BR.white, { align: 'center', al: a });
+  txt(l2, 470, y + 84, fitFont(l2, 860, 64, ANTON), BR.white, { align: 'center', al: a });
   txt('parafomo.com', 470, y + 200, `86px ${ANTON}`, BR.gold, { align: 'center', al: a });
-  txt('NET MAAŞ HESAPLAMA · ÜCRETSİZ', 470, y + 256, `500 28px ${DMONO}`, BR.muted, { align: 'center', al: a, ls: 1 });
-  const b = clamp(spring(TT, t0 + 0.6, { k: 200, damp: 0.45 }));
+  txt((o.sub || 'NET MAAŞ HESAPLAMA · ÜCRETSİZ').toLocaleUpperCase('tr-TR'), 470, y + 256, fitFont((o.sub || 'NET MAAŞ HESAPLAMA · ÜCRETSİZ').toLocaleUpperCase('tr-TR'), 860, 28, DMONO, 500), BR.muted, { align: 'center', al: a, ls: 1 });
+  const b = clamp(lt <= 0.6 ? 0 : spring(lt, 0.6, { k: 200, damp: 0.45 }));
   if (b > 0.001) {
-    ctx.save(); ctx.translate(470, y + 400); ctx.scale(b, b);
+    ctx.save(); ctx.globalAlpha = A; ctx.translate(470, y + 400); ctx.scale(b, b);
     ctx.fillStyle = BR.red; ctx.beginPath(); ctx.roundRect(-210, -58, 420, 116, 20); ctx.fill();
     ctx.fillStyle = BR.white; ctx.beginPath(); ctx.moveTo(-150, -24); ctx.lineTo(-150, 24); ctx.lineTo(-110, 0); ctx.closePath(); ctx.fill();
     ctx.font = `56px ${ANTON}`; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText('ABONE OL', -86, 4);

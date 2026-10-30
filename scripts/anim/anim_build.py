@@ -27,6 +27,7 @@ MUSIC_VOL = 0.12
 OUT_DIR = os.path.join(ROOT, "public", "social", "anim")
 WORK = "/root/.cache/parafomo/anim"
 LOCK = "/tmp/shorts_frames.lock"
+SFX = os.path.join(ROOT, "assets", "sfx", "whoosh.wav")
 VENDOR = os.path.join(HERE, "vendor", "animate")
 FONTS = os.path.join(ROOT, "assets", "fonts")
 
@@ -61,6 +62,7 @@ html,body {{ margin:0; background:#000; }}
 {js(os.path.join(VENDOR, 'core.js'))}
 {js(os.path.join(VENDOR, style + '.js'))}
 {js(os.path.join(HERE, 'brand.js'))}
+{js(os.path.join(HERE, 'scenes.js'))}
 {js(os.path.join(HERE, 'pieces', spec['scene']))}
 const CANVAS = document.getElementById('c');
 ctx = CANVAS.getContext('2d');
@@ -98,13 +100,17 @@ def music_track(slug):
     return os.path.join(MUSIC_DIR, tracks[int(hashlib.sha1(slug.encode()).hexdigest(), 16) % len(tracks)])
 
 
-def audio(lines, dur, slug, out):
+def audio(lines, dur, slug, out, whooshes=()):
     inputs, chains = [], []
     for i, l in enumerate(lines):
         inputs += ["-i", l["mp3"]]
         ms = int(l["t0"] * 1000)
         chains.append(f"[{i}:a]aresample=48000,aformat=channel_layouts=stereo,adelay={ms}|{ms}[v{i}]")
-    n = len(lines)
+    for j, t in enumerate(whooshes if os.path.exists(SFX) else ()):
+        inputs += ["-i", SFX]
+        ms = max(0, int((t - 0.12) * 1000))
+        chains.append(f"[{len(lines) + j}:a]aresample=48000,aformat=channel_layouts=stereo,volume=0.35,adelay={ms}|{ms}[v{len(lines) + j}]")
+    n = len(chains)
     mix = "".join(f"[v{i}]" for i in range(n))
     track = music_track(slug)
     g = (";".join(chains) + f";{mix}amix=inputs={n}:normalize=0,apad,atrim=0:{dur},asplit=2[n1][n2];"
@@ -143,13 +149,33 @@ def main():
         cmd = ["flock", LOCK] + cmd
     subprocess.run(cmd, check=True)
     wav = os.path.join(wd, "mix.wav")
-    track = audio(lines, dur, slug, wav)
+    scenes = spec.get("data", {}).get("scenes") or []
+    t0s = {l["id"]: l["t0"] for l in lines}
+    whooshes = [t0s[sc["line"]] - 0.15 for sc in scenes[1:] if sc.get("line") in t0s]
+    track = audio(lines, dur, slug, wav, whooshes)
     out = os.path.join(OUT_DIR, f"{slug}.mp4")
+    if spec.get("short"):   # günlük hat: eski motorla aynı yer (Telegram/IG/FB adımları buradan okur)
+        out = os.path.join(ROOT, "public", "social", f"short-{slug}.mp4")
     run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", vid, "-i", wav, "-map", "0:v", "-map", "1:a",
          "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", out])
     meta = {"slug": slug, "title": spec["title"], "file": out, "duration": dur, "music": track,
             "link": spec.get("link"), "lines": [{k: v for k, v in l.items() if k != "mp3"} for l in lines]}
     json.dump(meta, open(os.path.join(OUT_DIR, f"{slug}.meta.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    if spec.get("short"):   # mevcut yükleyiciler (youtube-upload / instagram-reel / facebook-reel) bu metayı okur
+        tags = spec.get("tags", [])
+        tagline = " ".join("#" + t.replace(" ", "") for t in tags[:5]) or "#finans #yatırım"
+        site = "https://parafomo.com" + spec["link"] if spec.get("link") else "https://parafomo.com"
+        sm = {"title": spec["title"][:90] + " #Shorts",
+              "description": f"{spec.get('description', '')}\n\nDaha fazlası: {site}\n\n#Shorts {tagline}",
+              "tags": tags, "file": out, "slug": slug, "format": spec.get("format", ""), "engine": "anim",
+              "timeline": meta["lines"]}
+        if spec.get("link"):
+            sm["link"] = spec["link"]
+        sp = os.path.join(ROOT, "public", "social", f"short-{slug}.json")
+        if os.path.exists(sp):   # önceki yayın kimlikleri (video_id, ig_reel_id…) korunur
+            old = json.load(open(sp, encoding="utf-8"))
+            sm = {**old, **sm}
+        json.dump(sm, open(sp, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print(f"[anim] ✅ {out} ({dur:.1f} sn, render {time.time() - t0:.0f} sn, müzik: {track})")
     return 0
 

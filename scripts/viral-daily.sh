@@ -167,10 +167,14 @@ PY
   echo "[+] Senaryo: $SCEN (slug=$SLUG)"
   # Marka görsel kimliği: jenerik stok sahneleri → Manim marka kartı (gerçek foto/grafik kalır)
   "$VPY" "$REPO/scripts/manimify.py" "$SCEN" --hybrid >/dev/null || echo "UYARI: karma Manim dönüşümü başarısız (stokla devam)"
+  # 2026-10-30 Kaan: görsel dil = izometrik kodla-animasyon (scripts/anim). Sahne planı LLM'le burada (gece) çıkar;
+  # gündüz render sıfır token. Plan çıkmazsa render'da bir kez daha denenir, o da olmazsa eski motor.
+  "$VPY" "$REPO/scripts/anim/anim_short.py" --scenario "$SCEN" --convert-only >/dev/null \
+    || echo "UYARI: animasyon sahne planı üretilemedi (render'da tekrar denenecek)"
 
   # Senaryo dosyasını commit+push (kayıt)
   if [ -f "public/social/scenarios/$SLUG.json" ]; then
-    git_add_commit "viral-shorts: $SLUG senaryosu ($FORMAT, otomatik)" "public/social/scenarios/$SLUG.json" || true
+    git_add_commit "viral-shorts: $SLUG senaryosu ($FORMAT, otomatik)" "public/social/scenarios/$SLUG.json" "public/social/scenarios/$SLUG.anim.json" || true
     git_push_retry main
   fi
 fi
@@ -192,8 +196,13 @@ fi
 # RENDER + YAYIN (publish/full) — sıfır token.
 # ============================================================================
 echo "[*] Video üretiliyor..."
-if ! "$VPY" "$REPO/scripts/shorts-build-v4.py" "$SLUG" --scenario "$SCEN" --engine google --voice "$VOICE"; then
-  echo "HATA: video üretilemedi ($SLUG)"; exit 2
+if "$VPY" "$REPO/scripts/anim/anim_short.py" --scenario "$SCEN"; then
+  echo "[+] Video: izometrik animasyon motoru"
+else
+  echo "UYARI: animasyon motoru başarısız — eski motora düşülüyor"
+  if ! "$VPY" "$REPO/scripts/shorts-build-v4.py" "$SLUG" --scenario "$SCEN" --engine google --voice "$VOICE"; then
+    echo "HATA: video üretilemedi ($SLUG)"; exit 2
+  fi
 fi
 
 echo "[*] YouTube'a yükleniyor (public)..."

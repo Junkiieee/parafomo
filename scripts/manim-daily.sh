@@ -50,8 +50,10 @@ SCEN_M="$("$VPY" "$REPO/scripts/manimify.py" "$SCEN" | tail -1)"
 SLUG="$("$VPY" -c "import json;print(json.load(open('$SCEN_M'))['slug'])")"
 echo "[+] Tam-Manim senaryo: $SLUG"
 
-# 3) Build (Manim sahneleri + TTS + altyazı)
-if ! "$VPY" "$REPO/scripts/shorts-build-v4.py" "$SLUG" --scenario "$SCEN_M" --engine google --voice "$VOICE"; then
+# 3) Build — 2026-10-30: izometrik animasyon motoru (scripts/anim); başarısızsa tam-Manim eski motor
+if "$VPY" "$REPO/scripts/anim/anim_short.py" --scenario "$SCEN"; then
+  echo "[+] Video: izometrik animasyon motoru"
+elif ! "$VPY" "$REPO/scripts/shorts-build-v4.py" "$SLUG" --scenario "$SCEN_M" --engine google --voice "$VOICE"; then
   echo "HATA: video üretilemedi ($SLUG)"; exit 2
 fi
 
@@ -77,7 +79,7 @@ curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendVideo" \
 
 # 5) Senaryoyu kaydet
 if [ -f "public/social/scenarios/$SLUG.json" ]; then
-  git_add_commit "manim-shorts: $SLUG (tam-Manim, otomatik)" "public/social/scenarios/$SLUG.json" || true
+  git_add_commit "manim-shorts: $SLUG (otomatik)" "public/social/scenarios/$SLUG.json" "public/social/scenarios/$SLUG.anim.json" || true
   git_push_retry main
 fi
 echo "[$(date -u '+%F %T UTC')] Manim-daily tamam: $SLUG ${YT_URL:+→ $YT_URL}"
