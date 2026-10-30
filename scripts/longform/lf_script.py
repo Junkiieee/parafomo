@@ -34,6 +34,7 @@ KINDS = {
     "bullets": '{"kind":"bullets","title":"…","items":["≤8 kelime", "…"]}  (≤4 madde)',
     "timeline": '{"kind":"timeline","title":"…","items":[{"date":"3 Kasım","text":"≤6 kelime","hot":true}]}  (≤5)',
     "quote": '{"kind":"quote","text":"kanun/resmî metinden kısa alıntı","source":"Kanun adı md. X"}',
+    "layers": '{"kind":"layers","title":"X\'in anatomisi","total_label":"…","total":"40.874,63 TL","items":[{"label":"Net maaş","value":28075.5,"text":"28.075,50 TL","note":"cebine giren","hot":true}]}  (patlatılmış görünüm: bir bütünü katmanlarına ayırır; 3-6 katman, value SAYI, toplam = katmanların toplamı; en güçlü görsel — bir tutarın içinde ne olduğunu göstermek için kullan)',
     "cta": '{"kind":"cta","headline":"≤6 kelime","url":"parafomo.com/…","sub":"Link açıklamada"}',
 }
 

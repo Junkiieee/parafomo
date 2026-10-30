@@ -36,6 +36,7 @@ ANTON = os.path.join(FONT_DIR, "Anton-Regular.ttf")
 OSWALD = os.path.join(FONT_DIR, "Oswald.ttf")
 SANS = "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"
 SANS_B = "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"
+MONO = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
 VOICE = "tr-TR-Chirp3-HD-Orus"
 RATE = 1.08          # uzun-formda Shorts'tan (1.15) biraz sakin

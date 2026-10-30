@@ -11,7 +11,7 @@ import re
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
-from lf_common import (ANTON, BG, BG2, BRAND, DEEP, FPS, GOLD, H, LIGHT, LINE, MUTED, OSWALD,
+from lf_common import (ANTON, MONO, BG, BG2, BRAND, DEEP, FPS, GOLD, H, LIGHT, LINE, MUTED, OSWALD,
                        PANEL, RED, SANS_B, W, WHITE, tr_num)
 
 M = 140  # yatay kenar boşluğu
@@ -433,9 +433,78 @@ def s_cta(img, d, sp, t, dur):
         text_at(d, (tx, by + bh_ // 2), lbl, f, WHITE, pb, anchor="mm")
 
 
+
+def s_layers(img, d, sp, t, dur):
+    """'Patlatılmış görünüm' (exploded view): bir bütünü katmanlarına ayırır — izometrik levhalar
+    açılarak ayrışır, her katmanın yanında numaralı etiket + değer. Kalınlık değerle orantılı.
+    sp: {"title","total_label","total","items":[{"label","value"(sayı),"text","note","hot"}]} (üstten alta)"""
+    items = sp.get("items", [])[:6]
+    if not items:
+        return
+    if sp.get("title"):
+        f = fit(d, tr_upper(sp["title"]), lambda s_: osw(s_, "Bold"), W - 2 * M, 60)
+        text_at(d, (M, 120), tr_upper(sp["title"]), f, WHITE, prog(t, 0, 0.4))
+    if sp.get("total"):
+        text_at(d, (M, 200), sp.get("total_label", ""), osw(36, "Regular"), MUTED, prog(t, 0.1, 0.4))
+        text_at(d, (M, 300), sp["total"], anton(76), GOLD, prog(t, 0.1, 0.4), anchor="lm")
+    vals = [_num(it.get("value")) for it in items]
+    tot = sum(vals) or 1
+    cx, wslab, dslab = 640, 500, 240            # levha merkezi, genişlik, derinlik (izometrik)
+    stack_h = 240                               # toplam kalınlık (değere orantılı paylaşılır)
+    spread = prog(t, 0.5, 1.1)                  # 0: kapalı blok → 1: açılmış katmanlar
+    gap = 6 + 54 * spread
+    y = 430
+    slabs = []
+    for i, it in enumerate(items):
+        th = max(14, stack_h * vals[i] / tot)
+        slabs.append((i, it, y, th))
+        y += th + gap
+    # alttan üste çiz: üstteki levha alttakini örter
+    for i, it, y, th in reversed(slabs):
+        hot = bool(it.get("hot"))
+        base = (255, 122, 48) if hot else [BRAND, DEEP, (54, 92, 104), (70, 84, 92), (60, 70, 78), (50, 58, 64)][i % 6]
+        a = prog(t, 0.05 * i, 0.4)
+        x0 = cx - wslab // 2
+        top = [(x0, y), (x0 + wslab // 2, y - dslab * 0.25), (x0 + wslab, y), (x0 + wslab // 2, y + dslab * 0.25)]
+        left = [top[0], top[3], (top[3][0], top[3][1] + th), (top[0][0], top[0][1] + th)]
+        right = [top[3], top[2], (top[2][0], top[2][1] + th), (top[3][0], top[3][1] + th)]
+        d.polygon(left, fill=mix(BG, tuple(int(c * 0.62) for c in base), a))
+        d.polygon(right, fill=mix(BG, tuple(int(c * 0.80) for c in base), a))
+        d.polygon(top, fill=mix(BG, base, a), outline=mix(BG, tuple(min(255, c + 40) for c in base), a))
+    # etiketler + kılavuz çizgiler (levhaların sağ köşesinden); etiketler birbirine binmesin
+    prev = -999
+    for i, it, y, th in slabs:
+        ly_slab = y + th / 2
+        ly_lbl = max(ly_slab, prev + 96)
+        prev = ly_lbl
+        pl = prog(t, 0.9 + i * 0.18, 0.45)
+        if pl <= 0:
+            continue
+        hot = bool(it.get("hot"))
+        ly = ly_lbl
+        lx0 = cx + wslab // 2 + 10
+        lx1 = 1180
+        bend = lx0 + 60
+        pts = [(lx0, ly_slab), (bend, ly_slab), (bend + abs(ly - ly_slab) * 0.6, ly), (lx1, ly)]
+        segs = [(pts[k], pts[k + 1]) for k in range(3)]
+        seg_len = [math.dist(a_, b_) for a_, b_ in segs]
+        remain = sum(seg_len) * pl
+        for (a_, b_), L_ in zip(segs, seg_len):
+            if remain <= 0:
+                break
+            f_ = min(1, remain / L_) if L_ else 1
+            d.line([a_, (a_[0] + (b_[0] - a_[0]) * f_, a_[1] + (b_[1] - a_[1]) * f_)], fill=mix(BG, MUTED, pl), width=2)
+            remain -= L_
+        d.ellipse([lx0 - 6, ly_slab - 6, lx0 + 6, ly_slab + 6], fill=mix(BG, WHITE, pl))
+        text_at(d, (lx1 + 20, ly - 22), f"{i + 1:02d}", osw(34, "Bold"), (255, 122, 48) if hot else BRAND, pl,
+                anchor="lm")
+        text_at(d, (lx1 + 80, ly - 22), it.get("label", ""), osw(44, "Bold"), WHITE, pl, anchor="lm")
+        sub = str(it.get("text", "")) + (" · " + it["note"] if it.get("note") else "")
+        text_at(d, (lx1 + 80, ly + 26), sub, font(MONO, 30), GOLD if hot else MUTED, pl, anchor="lm")
+
 SCENES = {"title": s_title, "chapter": s_chapter, "bigstat": s_bigstat, "compare": s_compare,
           "table": s_table, "bars": s_bars, "steps": s_steps, "bullets": s_bullets,
-          "timeline": s_timeline, "quote": s_quote, "cta": s_cta}
+          "timeline": s_timeline, "quote": s_quote, "cta": s_cta, "layers": s_layers}
 def anim_end(sp, dur):
     k = sp.get("kind")
     if k in ("steps", "bullets", "timeline"):
@@ -447,6 +516,8 @@ def anim_end(sp, dur):
         return dur + 1  # abone düğmesi sürekli nabız atıyor
     if k in ("bigstat", "compare"):
         return 1.7
+    if k == "layers":
+        return 0.9 + len(sp.get("items", [])) * 0.18 + 0.5
     if k == "bars":
         return 0.2 + len(sp.get("items", [])) * 0.09 + 0.8
     return 1.0
