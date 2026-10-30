@@ -31,6 +31,7 @@ docs/analytics-report.md
 
 # Shorts videoları (büyük ikili dosyalar — senaryo .json'ları repoda tutulur, mp4'ler değil)
 public/social/*.mp4
+public/social/longform/*.mp4
 
 # python cache
 __pycache__/
