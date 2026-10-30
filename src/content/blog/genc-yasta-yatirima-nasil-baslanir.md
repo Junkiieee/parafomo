@@ -53,7 +53,7 @@ En az 3 aylık zorunlu giderinizi likit bir hesapta tutmadan yatırıma başlama
 
 ### 3. Yüksek Faizli Borçları Kapatın
 
-Kredi kartı borcunuzun yıllık faizi, borsadan beklediğiniz getirinin genellikle üzerindedir. Önce bu borçları temizleyin. Düşük faizli, uzun vadeli borçlar (öğrenci kredisi gibi) farklı değerlendirilebilir.
+Kredi kartı borcunuzun yıllık faizi, borsadan beklediğiniz getirinin genellikle üzerindedir. Önce bu borçları temizleyin. Düşük faizli, uzun vadeli borçlar (öğrenci kredisi gibi) farklı değerlendirilebilir: KYK öğrenim kredisi borcu enflasyonla büyümez, aldığınız kadar ödenir ([KYK burs ve kredi miktarı, geri ödeme hesabı](/kyk-burs-miktari/)).
 
 ## Gençler İçin Yatırım Araçları: Karşılaştırma
 

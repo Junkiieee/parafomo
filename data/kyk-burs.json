@@ -1,0 +1,45 @@
+{
+  "_not": "GSB/KYK burs ve öğrenim kredisi aylık tutarları (burs ve kredi aynı tutar; ön lisans = lisans). Yalnız gsb.gov.tr duyurusundan yazılır; her Ocak yeni tutar açıklanır (health.py uyarır).",
+  "yil": 2026,
+  "kontrol": "2026-10-30",
+  "tutarlar": [
+    {
+      "yil": 2026,
+      "baslangic": "2026-01",
+      "lisans": 4000,
+      "yuksekLisans": 8000,
+      "doktora": 12000,
+      "artis": 33,
+      "kaynak": "https://gsb.gov.tr/tr/haber-detay/295278-yukseltilen-gsb-burskredileri-6-ocakta-odenmeye-baslanacak",
+      "kaynakTarih": "2026-01-05"
+    },
+    {
+      "yil": 2025,
+      "baslangic": "2025-01",
+      "lisans": 3000,
+      "yuksekLisans": 6000,
+      "doktora": 9000,
+      "artis": 50,
+      "kaynak": "https://www.gsb.gov.tr/tr/haber-detay/280979-cumhurbaskani-erdogandan-ogrencilere-burs-ve-ogrenim-kredisi-mujdesi",
+      "kaynakTarih": "2024-12-09"
+    },
+    {
+      "yil": 2024,
+      "baslangic": "2024-01",
+      "lisans": 2000,
+      "yuksekLisans": 4000,
+      "doktora": 6000,
+      "artis": null,
+      "kaynak": "https://www.gsb.gov.tr/tr/haber-detay/280979-cumhurbaskani-erdogandan-ogrencilere-burs-ve-ogrenim-kredisi-mujdesi",
+      "kaynakTarih": "2024-12-09"
+    }
+  ],
+  "odemeGunu": "Ayın 6’sı ile 10’u arasında, T.C. kimlik numarasının son hanesine göre (GSB, 5 Ocak 2026 duyurusu)",
+  "geriOdeme": {
+    "kanun": "351 sayılı Kanun md. 16-17 (7420 s.K. ile 3/11/2022 değişik)",
+    "kaynak": "https://www.mevzuat.gov.tr/MevzuatMetin/1.4.351.pdf",
+    "baslangicYil": 2,
+    "ertelemeIlaveOrani": 10,
+    "ertelemeMaks": 3
+  }
+}

@@ -1,0 +1,309 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import kyk from '../../data/kyk-burs.json';
+
+// KYK burs / öğrenim kredisi tutarları — doğrulama 2026-10-30 (günlük ajan koşusu, T24):
+// • 2026: lisans 4.000, yüksek lisans 8.000, doktora 12.000 TL (%33 artış; ödemeler 6 Ocak 2026’dan itibaren) — GSB haberi 295278.
+// • 2025: 3.000 / 6.000 / 9.000 TL (önceki 2.000 / 4.000 / 6.000; %50 artış) — GSB haberi 280979 (9 Aralık 2024).
+// • Geri ödeme: 351 s.K. md. 16 (7420 s.K. ile 3/11/2022 değişik) — borç = verilen miktar kadar (TÜFE/ÜFE güncellemesi yok);
+//   ilişik kesildikten 2 yıl sonra başlar, kredi alınan süre kadar aylık taksit. Erteleme: SGK’dan çalışmadığı teyit edilirse,
+//   ilk yıl ilavesiz, sonraki her yıl verilen miktara %10 (TÜFE %10’dan azsa TÜFE) ilave; en fazla 3 kez. Askerlikte ilavesiz.
+//   md. 17: süresinde ödenmeyen taksite 6183 s.K. md. 51 gecikme zammı.
+const T = kyk.tutarlar;
+const G = T[0];
+const YIL = G.yil;
+const GO = kyk.geriOdeme;
+const fmt0 = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const gun = (iso: string) => {
+  const [y, m, d] = iso.slice(0, 10).split('-').map(Number);
+  return `${d} ${AYLAR[m - 1]} ${y}`;
+};
+const ORNEK_AY = [12, 24, 36, 48];
+
+const title = `KYK Burs Miktarı ${YIL}: Lisans ${fmt0(G.lisans)} TL, YL ${fmt0(G.yuksekLisans)} TL`;
+const h1 = `KYK Burs ve Kredi Miktarı ${YIL}: Lisans ${fmt0(G.lisans)} TL`;
+const description = `KYK bursu ve öğrenim kredisi ${YIL}’da aylık lisans ${fmt0(G.lisans)} TL, yüksek lisans ${fmt0(G.yuksekLisans)} TL, doktora ${fmt0(G.doktora)} TL (GSB). Kredi borcu ve geri ödeme taksiti hesaplama.`;
+
+const faq = [
+  {
+    q: `KYK bursu ${YIL}’da ne kadar?`,
+    a: `Gençlik ve Spor Bakanlığı’nın açıklamasına göre ${YIL} yılında burs ve öğrenim kredisi aylık tutarı ön lisans ve lisans öğrencileri için ${fmt0(G.lisans)} TL, yüksek lisans için ${fmt0(G.yuksekLisans)} TL, doktora için ${fmt0(G.doktora)} TL’dir. Tutarlar bir önceki yıla göre %${G.artis} artırıldı; yeni tutarlar Ocak ${YIL}’dan itibaren ödeniyor.`,
+  },
+  {
+    q: 'KYK bursu ile öğrenim kredisi arasındaki fark nedir?',
+    a: 'Aylık tutar aynıdır. Burs karşılıksızdır, geri ödenmez. Öğrenim kredisi ise borçtur: mezuniyetten (ya da okulla ilişiğin kesilmesinden) iki yıl sonra, kredi alınan ay sayısı kadar aylık taksitle geri ödenir. Kredi borcu 2022’deki kanun değişikliğinden beri TÜFE/ÜFE ile güncellenmez; ne kadar aldıysanız o kadar ödersiniz.',
+  },
+  {
+    q: 'KYK kredi borcu ne zaman ve nasıl ödenir?',
+    a: `351 sayılı Kanun’un 16. maddesine göre geri ödeme okulla ilişiğin kesildiği tarihten ${GO.baslangicYil} yıl sonra başlar ve kredi alınan süre kadar aylık dönemlerle yapılır. Örneğin 48 ay boyunca ${fmt0(G.lisans)} TL kredi alan bir öğrencinin borcu ${fmt0(48 * G.lisans)} TL’dir ve 48 ayda ödenir. Süresinde ödenmeyen taksite 6183 sayılı Kanun’a göre gecikme zammı uygulanır.`,
+  },
+  {
+    q: 'KYK kredi borcu ertelenebilir mi?',
+    a: `Evet. Çalışmadığı SGK kayıtlarından teyit edilen borçlu erteleme isteyebilir: ilk yıl borca ilave yapılmaz, sonraki her yıl için verilen miktara %${GO.ertelemeIlaveOrani} (o yıl TÜFE %${GO.ertelemeIlaveOrani}’dan düşükse TÜFE oranı) eklenir. Erteleme en fazla ${GO.ertelemeMaks} kez yapılabilir. Ödeme askerlik dönemine denk gelirse borç, ilave yapılmadan askerlik bitimine kadar ertelenir.`,
+  },
+  {
+    q: 'KYK bursu ayın kaçında yatar?',
+    a: `${kyk.odemeGunu}. Ödemeyi e-Devlet’teki “KYK Öğrenim/Katkı Kredisi ve Burs Sorgulama” ekranından kontrol edebilirsiniz.`,
+  },
+  {
+    q: `KYK bursu ${YIL + 1}’de ne kadar olacak?`,
+    a: `${YIL + 1} tutarı henüz açıklanmadı. Son yıllarda yeni tutar Ocak başında Cumhurbaşkanlığı Kabine Toplantısı sonrasında duyuruldu (2025’te %50, ${YIL}’da %${G.artis} artış). Açıklama yapılınca bu sayfa resmî rakamla güncellenir.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Hesaplama Araçları', url: '/hesaplama-araclari/' },
+  { name: 'KYK Burs Miktarı', url: '/kyk-burs-miktari/' },
+];
+---
+
+<BaseLayout title={title} description={description} faq={faq} breadcrumbs={breadcrumbs} image="/og/kyk-burs-miktari.png">
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Öğrenci Desteği · Resmî Tutar</p>
+      <h1>{h1}</h1>
+      <p class="lede">
+        KYK bursu ve öğrenim kredisi {YIL}’da aylık <strong>{fmt0(G.lisans)} TL</strong> (ön lisans/lisans),
+        <strong>{fmt0(G.yuksekLisans)} TL</strong> (yüksek lisans) ve <strong>{fmt0(G.doktora)} TL</strong> (doktora).
+        Tutarlar Ocak {YIL}’da %{G.artis} artırıldı. Kredi alıyorsanız aşağıda toplam borcunuzu ve geri ödeme takviminizi hesaplayın.
+      </p>
+    </header>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="k">Ön lisans / lisans</span>
+        <span class="v">₺{fmt0(G.lisans)}</span>
+        <span class="s">aylık · burs = kredi</span>
+      </div>
+      <div class="stat">
+        <span class="k">Yüksek lisans</span>
+        <span class="v">₺{fmt0(G.yuksekLisans)}</span>
+        <span class="s">aylık · {YIL}</span>
+      </div>
+      <div class="stat">
+        <span class="k">Doktora</span>
+        <span class="v">₺{fmt0(G.doktora)}</span>
+        <span class="s">aylık · {YIL}</span>
+      </div>
+    </div>
+
+    <section class="table-block" id="hesaplama">
+      <h2>KYK kredi borcu ve geri ödeme hesaplama</h2>
+      <p class="table-intro">
+        Öğrenim kredisi borcu, aldığınız toplam tutar kadardır (enflasyonla güncellenmez). Geri ödeme mezuniyetten
+        {GO.baslangicYil} yıl sonra başlar ve kredi aldığınız ay sayısı kadar sürer. Farklı yıllarda farklı tutar aldıysanız
+        “ortalama aylık tutar”ı girin ya da gerçek borcunuzu e-Devlet’ten görün.
+      </p>
+      <div class="calc-grid">
+        <form class="calc-inputs" onsubmit="return false">
+          <label>
+            <span>Öğrenim düzeyi</span>
+            <select id="ky-duzey">
+              <option value={G.lisans} selected>Ön lisans / lisans ({fmt0(G.lisans)} TL)</option>
+              <option value={G.yuksekLisans}>Yüksek lisans ({fmt0(G.yuksekLisans)} TL)</option>
+              <option value={G.doktora}>Doktora ({fmt0(G.doktora)} TL)</option>
+            </select>
+          </label>
+          <label>
+            <span>Ortalama aylık kredi tutarı (TL)</span>
+            <input id="ky-tutar" type="number" min="0" max="100000" step="100" value={G.lisans} inputmode="numeric" />
+          </label>
+          <label>
+            <span>Kredi alınan ay sayısı</span>
+            <input id="ky-ay" type="number" min="1" max="240" step="1" value="48" inputmode="numeric" />
+          </label>
+          <label>
+            <span>Mezuniyet / ilişik kesilme tarihi</span>
+            <input id="ky-mezun" type="month" value="2027-06" />
+          </label>
+          <label>
+            <span>Erteleme (yıl, en fazla {GO.ertelemeMaks})</span>
+            <input id="ky-ert" type="number" min="0" max={GO.ertelemeMaks} step="1" value="0" inputmode="numeric" />
+          </label>
+        </form>
+        <div class="calc-results" aria-live="polite">
+          <div class="result-main">
+            <span class="result-label">Toplam kredi borcu</span>
+            <span class="result-value" id="ky-borc">₺{fmt0(48 * G.lisans)}</span>
+          </div>
+          <div class="result-split">
+            <div class="split-item"><span class="split-label">Aylık taksit</span><span class="split-val" id="ky-taksit">₺{fmt0(G.lisans)}</span></div>
+            <div class="split-item"><span class="split-label">Taksit sayısı</span><span class="split-val" id="ky-n">48</span></div>
+            <div class="split-item"><span class="split-label">İlk taksit</span><span class="split-val" id="ky-bas">Haziran 2029</span></div>
+            <div class="split-item"><span class="split-label">Son taksit</span><span class="split-val" id="ky-son">Mayıs 2033</span></div>
+            <div class="split-item"><span class="split-label">Erteleme ilavesi (yaklaşık)</span><span class="split-val" id="ky-ilave">₺0</span></div>
+          </div>
+          <p class="result-note">Erteleme ilavesi kanundaki kuralla yaklaşık hesaplanır (ilk yıl 0, sonraki her yıl %{GO.ertelemeIlaveOrani}). Kesin borç ve taksit tarihleri için e-Devlet “KYK Öğrenim/Katkı Kredisi Geri Ödeme Sorgulama”.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="table-block" id="ornek">
+      <h2>{YIL} tutarıyla örnek kredi borçları</h2>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead><tr><th>Kredi alınan süre</th><th>Lisans</th><th>Yüksek lisans</th><th>Doktora</th></tr></thead>
+          <tbody>
+            {ORNEK_AY.map((n) => (
+              <tr>
+                <td>{n} ay</td>
+                <td>₺{fmt0(n * G.lisans)}</td>
+                <td>₺{fmt0(n * G.yuksekLisans)}</td>
+                <td>₺{fmt0(n * G.doktora)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Borç = alınan ay × aylık tutar; geri ödemede aynı sayıda aylık taksite bölünür. Önceki yıllarda daha düşük tutar aldıysanız borcunuz bunun altındadır.</p>
+    </section>
+
+    <section class="table-block" id="tarihce">
+      <h2>KYK burs ve kredi miktarı yıllara göre</h2>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead><tr><th>Yıl</th><th>Lisans</th><th>Yüksek lisans</th><th>Doktora</th><th>Artış</th></tr></thead>
+          <tbody>
+            {T.map((r, i) => (
+              <tr class={i === 0 ? 'current' : ''}>
+                <td>{r.yil}</td>
+                <td>₺{fmt0(r.lisans)}</td>
+                <td>₺{fmt0(r.yuksekLisans)}</td>
+                <td>₺{fmt0(r.doktora)}</td>
+                <td>{r.artis ? `%${r.artis}` : '—'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Kaynak: Gençlik ve Spor Bakanlığı duyuruları ({gun(T[0].kaynakTarih)} ve {gun(T[1].kaynakTarih)}). Ön lisans öğrencileri lisans tutarını alır.</p>
+    </section>
+
+    <section class="prose-block" id="kurallar">
+      <h2>Burs mu kredi mi? Bilmeniz gerekenler</h2>
+      <ul>
+        <li><strong>Burs</strong> karşılıksızdır; <strong>öğrenim kredisi</strong> geri ödenir. İkisinin aylık tutarı aynıdır.</li>
+        <li><strong>Borç enflasyonla büyümez:</strong> 2022’deki değişiklikle (7420 s.K.) borç “öğrenim kredisi olarak verilen miktar kadar”dır.</li>
+        <li><strong>Geri ödeme:</strong> mezuniyet, kendi isteğiyle bırakma ya da okuldan çıkarılmadan {GO.baslangicYil} yıl sonra başlar; kredi alınan süre kadar aylık taksit.</li>
+        <li><strong>Erteleme:</strong> çalışmadığınız SGK’dan teyit edilirse en fazla {GO.ertelemeMaks} kez; ilk yıl ilavesiz, sonraki yıllarda %{GO.ertelemeIlaveOrani} ilave. Askerlik döneminde ilavesiz erteleme.</li>
+        <li><strong>Gecikme:</strong> süresinde ödenmeyen taksite 6183 sayılı Kanun md. 51’e göre gecikme zammı işler; son taksit vadesine kadar ödenmeyen tutar vergi dairesine bildirilir.</li>
+        <li><strong>Silinen borç:</strong> öğrenimi sırasında ya da sonrasında ölenlerin ve %90 ve üzeri engelli olduğu sağlık kuruluyla tespit edilenlerin kalan borcu silinir.</li>
+        <li><strong>Katkı kredisi</strong> (harç/öğrenim ücreti için) borcunun geri ödemesi de aynı kurallara tabidir.</li>
+      </ul>
+      <p class="cta-line">
+        Mezun olup çalışmaya başlayınca taksiti bütçenize oturtmak için <a href="/net-maas-hesaplama/">net maaş hesaplama</a>
+        ve <a href="/asgari-ucret-hesaplama/">asgari ücret</a> sayfalarına bakın. Askerlik dönemi için:
+        <a href="/bedelli-askerlik-ucreti/">bedelli askerlik ücreti</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
+    </section>
+
+    <section class="source-block">
+      <h2>Kaynak</h2>
+      <ul>
+        <li><a href={T[0].kaynak} target="_blank" rel="noopener">GSB: Yükseltilen burs/krediler 6 Ocak’ta ödenmeye başlanacak</a> ({gun(T[0].kaynakTarih)}) — {YIL} tutarları, %{G.artis} artış, ödeme günleri</li>
+        <li><a href={T[1].kaynak} target="_blank" rel="noopener">GSB: Öğrencilere burs ve öğrenim kredisi müjdesi</a> ({gun(T[1].kaynakTarih)}) — 2025 tutarları ve önceki tutarlar</li>
+        <li><a href={GO.kaynak} target="_blank" rel="noopener">351 sayılı Yüksek Öğrenim Kredi ve Yurtlar Kurumu Kanunu</a> — md. 16 (geri ödeme, erteleme) ve md. 17 (gecikme zammı, terkin); mevzuat.gov.tr güncel metni</li>
+        <li>Kişisel borç ve ödeme bilgisi: <a href="https://www.turkiye.gov.tr/kyk-ogrenim-katki-kredisi-geri-odeme-sorgulama" target="_blank" rel="noopener">e-Devlet KYK geri ödeme sorgulama</a></li>
+      </ul>
+      <p class="table-note">Bu sayfa bilgilendirme amaçlıdır. Rakamlar {gun(kyk.kontrol)} tarihinde resmî kaynaklardan kontrol edildi; yeni dönem tutarı açıklanınca güncellenir.</p>
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ ILAVE: GO.ertelemeIlaveOrani / 100, BAS: GO.baslangicYil }}>
+    (function () {
+      var AY = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+      var duz = document.getElementById('ky-duzey'), tut = document.getElementById('ky-tutar'), ay = document.getElementById('ky-ay');
+      var mez = document.getElementById('ky-mezun'), ert = document.getElementById('ky-ert');
+      var f0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      function ad(i) { return AY[((i % 12) + 12) % 12] + ' ' + Math.floor(i / 12); }
+      function calc() {
+        var t = Math.max(0, parseFloat(tut.value) || 0);
+        var n = Math.max(1, Math.min(240, Math.floor(parseFloat(ay.value) || 1)));
+        var e = Math.max(0, Math.min(3, Math.floor(parseFloat(ert.value) || 0)));
+        var borc = t * n, ilave = borc * ILAVE * Math.max(0, e - 1), top = borc + ilave;
+        document.getElementById('ky-borc').textContent = '₺' + f0.format(top);
+        document.getElementById('ky-taksit').textContent = '₺' + f0.format(top / n);
+        document.getElementById('ky-n').textContent = n;
+        document.getElementById('ky-ilave').textContent = '₺' + f0.format(ilave);
+        var p = (mez.value || '2027-06').split('-');
+        var i0 = (+p[0] + BAS + e) * 12 + (+p[1] - 1);
+        document.getElementById('ky-bas').textContent = ad(i0);
+        document.getElementById('ky-son').textContent = ad(i0 + n - 1);
+      }
+      duz.addEventListener('change', function () { tut.value = duz.value; calc(); });
+      [tut, ay, mez, ert].forEach(function (el) { el.addEventListener('input', calc); });
+      calc();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 660px; margin: 0 auto; }
+
+    .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; }
+    .stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; display: flex; flex-direction: column; gap: 0.2rem; box-shadow: var(--shadow-soft); }
+    .stat .k { font-size: 0.8rem; color: var(--text-soft); font-weight: 600; }
+    .stat .v { font-family: var(--font-serif); font-size: 1.75rem; font-weight: 600; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .stat .s { font-size: 0.78rem; color: var(--text-muted); }
+
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input, .calc-inputs select { font-family: var(--font-sans); font-size: 1rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; max-width: 100%; }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 0.9rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; font-variant-numeric: tabular-nums; }
+    .result-split { display: flex; flex-direction: column; gap: 0.5rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; line-height: 1.45; }
+
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.7rem; }
+    .table-intro { font-size: 0.92rem; color: var(--text-soft); margin: 0 0 0.9rem; line-height: 1.6; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .rate-table th { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .rate-table tr.current td { font-weight: 700; color: var(--brand-ink); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.8rem 0 0; line-height: 1.55; }
+
+    .prose-block, .faq-block, .source-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2, .source-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p, .prose-block li { color: var(--text-soft); line-height: 1.7; }
+    .prose-block ul { padding-left: 1.2rem; }
+    .prose-block li { margin-bottom: 0.45rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+    .source-block ul { margin: 0; padding-left: 1.1rem; }
+    .source-block li { font-size: 0.85rem; color: var(--text-soft); line-height: 1.6; margin-bottom: 0.35rem; }
+
+    @media (max-width: 680px) {
+      .stats, .calc-grid { grid-template-columns: 1fr; }
+      .rate-table { font-size: 0.86rem; }
+    }
+  </style>
+</BaseLayout>

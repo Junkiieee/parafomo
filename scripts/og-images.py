@@ -125,6 +125,14 @@ def bedelli_card():
             "sub": f"Ocak 2027 {'' if kesin else '≈'}₺{tl(300000 * k * (1 + zam))} · 300.000 × memur katsayısı"}
 
 
+def kyk_card():
+    # GSB duyurusu (data/kyk-burs.json): burs = öğrenim kredisi aylık tutarı
+    g = load("kyk-burs.json")["tutarlar"][0]
+    tl = lambda x: f"{round(x):,}".replace(",", ".")
+    return {"kicker": f"KYK BURS MİKTARI {g['yil']}", "stat": "₺" + tl(g["lisans"]),
+            "sub": f"lisans · yüksek lisans ₺{tl(g['yuksekLisans'])} · doktora ₺{tl(g['doktora'])}"}
+
+
 def engelli_card():
     # 2022 s.K. aylıkları: bütçe K cetveli göstergesi × memur aylık katsayısı + %5 ek ödeme (5454 md.1/e); ASHB ile kuruşu kuruşuna
     d = load("sosyal-aylik-2026.json")
@@ -323,6 +331,7 @@ CARDS = {
     "emekli-zammi-hesaplama": emekli_card,
     "evde-bakim-maasi": evde_bakim_card,
     "bedelli-askerlik-ucreti": bedelli_card,
+    "kyk-burs-miktari": kyk_card,
     "engelli-maasi": engelli_card,
     "memur-zammi-hesaplama": memur_card,
     "en-dusuk-emekli-maasi": emekli_memur_card("taban"),

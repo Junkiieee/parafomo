@@ -216,6 +216,11 @@ def stale_data():
             out.append(f"emekli promosyonu kontrol bekliyor (son kontrol {ep['kontrol']}, {eski} gün; süresi dolan: "
                        f"{', '.join(biten) or 'yok'}) → bankaların resmi sayfalarını WebFetch ile oku, data/emekli-promosyon.json "
                        "tutar/bitis/kontrol alanlarını güncelle (haber sitesi rakamı YAZMA)")
+    # KYK burs/kredi (/kyk-burs-miktari): yeni yıl tutarı Ocak başında açıklanır (Kabine sonrası, GSB duyurusu)
+    ky = load("kyk-burs.json")
+    if ky and today.month == 1 and today.day > 10 and ky.get("yil") != today.year:
+        out.append(f"KYK burs tutarı bayat (yıl {ky.get('yil')}) → gsb.gov.tr duyurusundan {today.year} lisans/YL/doktora "
+                   "tutarını al, data/kyk-burs.json tutarlar başına ekle + yil/kontrol (haber sitesi rakamı YAZMA)")
     # app.parafomo.com kendi veri kopyasını okur (deploy-app.sh); repo TÜFE'si ilerideyse app reel getirisi eskide kalır
     try:
         app_t = json.load(open("/srv/parafomo-app/tufe-aylik.json", encoding="utf-8"))
@@ -224,9 +229,10 @@ def stale_data():
             out.append(f"app TÜFE kopyası eski ({app_t['months'][0]['ay']} ≠ {rt['months'][0]['ay']}) → bash scripts/deploy-app.sh")
     except Exception:
         pass
-    # TCMB haftalık faizleri (EVDS): son hafta (Cuma) 13 günden eskiyse anahtar/API bozulmuş olabilir
+    # TCMB haftalık faizleri (EVDS): hafta (Cuma) bir sonraki Cuma ~12:40 UTC cron'unda gelir → Cuma sabahı normal yaş 14 gün;
+    # 15 günden eskiyse anahtar/API bozulmuş olabilir
     fz = load("faiz-oranlari.json")
-    if fz and (today - dt.date.fromisoformat(fz["hafta"])).days > 13:
+    if fz and (today - dt.date.fromisoformat(fz["hafta"])).days > 15:
         out.append(f"TCMB faiz verisi bayat (son hafta {fz['hafta']}) → bash scripts/evds-update.sh (EVDS anahtarı: ~/.config/parafomo/evds.env)")
     # Günlük/sık güncellenen veri dosyaları: 'updated' alanı eşikten eskiyse alarm
     for name, max_days, fix in (

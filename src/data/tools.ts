@@ -30,6 +30,7 @@ const GRUPLAR_HAM: Grup[] = [
     { href: '/engelli-maasi/', ad: 'Engelli maaşı ve 65 yaş aylığı', aciklama: 'Ocak 2027 tahmini ve 2026 tutarları', k: ['engelli', '65 yaş', 'yaşlılık aylığı'] },
     { href: '/evde-bakim-maasi/', ad: 'Evde bakım maaşı', aciklama: '2027 tutarı ve hane geliri şartı', k: ['evde bakım'] },
     { href: '/bedelli-askerlik-ucreti/', ad: 'Bedelli askerlik ücreti', aciklama: 'Güncel bedel, Ocak 2027 tahmini, dövizle askerlik', k: ['bedelli', 'askerlik', 'dövizle askerlik', 'yoklama kaçağı', 'bakaya'] },
+    { href: '/kyk-burs-miktari/', ad: 'KYK burs miktarı', aciklama: 'Burs/kredi tutarı ve kredi geri ödeme hesabı', k: ['kyk', 'burs', 'öğrenim kredisi', 'katkı kredisi', 'öğrenci'] },
     { href: '/dogum-yardimi/', ad: 'Doğum yardımı', aciklama: '2026 tutarları, şartlar ve başvuru', k: ['doğum yardımı', 'doğum', 'çocuk', 'çocuk parası'] },
     { href: '/emeklilik-hesaplama/', ad: 'Emeklilik hesaplama', aciklama: 'Ne zaman emekli olurum: yaş, prim günü, tarih', k: ['emeklilik', 'emekli olma', 'eyt', 'prim günü', 'hizmet dökümü', 'emeklilik yaşı', 'yaşlılık aylığı'] },
     { href: '/emekli-promosyonu/', ad: 'Emekli promosyonu', aciklama: 'Banka banka güncel promosyon tutarları', k: ['promosyon', 'maaş taşıma', 'emekli maaşı taşı'] },
