@@ -1,0 +1,79 @@
+{
+  "slug": "market-sepetin-5-yilda-3-7-katina-cikabilir-m",
+  "title": "Market sepetin 5 yılda 3,7 katına çıkabilir",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Yıllık yüzde 30 enflasyon varsayımıyla 1.000 liralık market sepeti beş yılda yaklaşık 3.700 liraya çıkıyor. Kenarda duran paranın alım gücü de aynı oranda düşüyor.\nKaynak/hesap: 1.000 x 1,3^5 = 3.713 TL (yaklaşık 3.700); 1.000 / 3,71 = yaklaşık 270 TL alım gücü. Yıllık yüzde 30 enflasyon varsayımıyla. · senaryodaki hesap",
+  "tags": [
+    "enflasyon",
+    "alım gücü",
+    "birikim",
+    "market sepeti",
+    "tasarruf",
+    "kişisel finans",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Bugün 1.000 liralık market, beş yılda 3.700 lira.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Para",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yıllık yüzde 30 enflasyonda sepet her yıl 1,3 ile çarpılıyor; beş yılda 3.700 lirayı buluyor.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama kenarda duran 1.000 lira, beş yılda yalnızca 270 liralık sepet alır.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Para",
+        "glyph": "₺"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Birikimi en az enflasyon kadar getiren araca koy; kendi sepetinin fiyatını her ay not et.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "Enflasyon",
+        "glyph": "%"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sence kendi sepetin hangi ayda en çok şişiyor? Bir sonraki videoda bakacağız; abone ol, her gün tek net hesap göndereceğiz.",
+      "visual": {
+        "type": "manim",
+        "scene": "concept",
+        "theme": "slate",
+        "keyword": "ParaFOMO",
+        "glyph": "₺"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "1.000 liralık market, beş yılda 3.700 lira",
+    "calc": "1.000 x 1,3^5 = 3.713 TL (yaklaşık 3.700); 1.000 / 3,71 = yaklaşık 270 TL alım gücü. Yıllık yüzde 30 enflasyon varsayımıyla.",
+    "source": "senaryodaki hesap"
+  }
+}
