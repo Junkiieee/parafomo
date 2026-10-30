@@ -61,7 +61,7 @@ sabit yazılmaz. Ocak 2027 tahmini `src/data/zam2027.ts`'ten gelir (evde-bakim-m
   çevir, `updatedDate` ekle. (3) /kira-artis-orani-hesaplama, /emekli-zammi-hesaplama ve /memur-zammi-hesaplama Ekim TÜFE'sini
   gösteriyor mu? (4) app.parafomo.com TÜFE kopyası güncel mi (health.py)? · Kabul: dört madde canlıda doğru, ya da
   sorunun nedeni raporda.
-- [ ] T24 (B261029-1) — **/kyk-burs-miktari yeni veri sayfası (KYK burs/kredi tutarı + geri ödeme)** · hedef: kyk burs
+- [x] T24 (B261029-1) — **/kyk-burs-miktari yeni veri sayfası (KYK burs/kredi tutarı + geri ödeme)** → canlı https://parafomo.com/kyk-burs-miktari/ (GSB 05.01.2026: 4.000/8.000/12.000 TL; tarihçe 2024-26; 351 s.K. md.16 geri ödeme+erteleme hesaplayıcısı; health Ocak tazeliği) · 2026-10-30 · hedef: kyk burs
   (hacim 122, son 4 hafta 459 — zirve ŞU AN, Ekim). 2026-2027 öğretim yılı burs/öğrenim kredisi tutarlarını (önlisans/lisans,
   yüksek lisans, doktora) YALNIZ GSB/KYK resmî duyurusundan al (gsb.gov.tr, kygm.gsb.gov.tr). Ödeme günü, başvuru/sonuç
   takvimi ve "burs mu kredi mi" farkını ekle. Hesaplayıcı: aylık tutar × ay → toplam borç; geri ödeme taksiti (mezuniyetten
@@ -78,7 +78,7 @@ sabit yazılmaz. Ocak 2027 tahmini `src/data/zam2027.ts`'ten gelir (evde-bakim-m
   MSB/ASAL duyurusuyla çapraz kontrol et. Ocak 2027 tahmini zam2027 memur projeksiyonundan, "tahmin" etiketiyle. Ek bölümler:
   dövizle askerlik (tutar kanundan), taksit/ödeme yeri. Yaş/şart bilgisi yalnız kanundan. /evde-bakim-maasi ve
   /memur-zammi-hesaplama'dan link. · Kabul: sayfa canlı, hesaplanan tutar resmî duyuruyla kuruşu kuruşuna aynı.
-- [ ] T26 (R3 — YouTube) — **YouTube arama başlık turu (20 video)** · izlenmenin %19-21'i YouTube aramasından. Bu hafta
+- [x] T26 (R3 — YouTube) — **YouTube arama başlık turu (20 video)** → 20/20 güncellendi (scripts/youtube-retitle.py --dry/--apply), baz agent/memory/yt-retitle-2026-11.json (YT araması 28g %18,8); yanlış TMSF limitli asQhzroHVUM (400 bin, gerçek 1,2 mn) gizliye alındı · 2026-10-30 — · izlenmenin %19-21'i YouTube aramasından. Bu hafta
   aranan konuların blog→Short'u öne çıktı (Fed önizleme 1.159, geçici vergi 1.019). Yeni betik
   `scripts/youtube-retitle.py --dry` yaz (`agent/state/yt_retitle.py` kalıbı). Betik son 60 günün en çok izlenen 20
   videosunu alır, `data/learning/yt-search-terms.json` + brief §1b arama kalıplarına bakarak yeni başlık önerir: konu + yıl/ay

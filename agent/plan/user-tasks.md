@@ -38,6 +38,11 @@
    eklerse kaynak linki = doğal backlink; Google'daki baş sorgulardaki (p60-99) otorite kilidinin kalıcı çözümü. 15 Ekim'de
    "dış link planı şimdilik yok" demiştin. Panelde ya da bana "a evet / b hayır" gibi yazman yeterli.
 
+6. **ŞİMDİ (30 saniye) — yanlış bilgili 1 Instagram Reel'ini sil**
+   26 Eylül'de çıkan "400 Bin TL Üstü Bankada Sigorta Yok" Reel'i eski TMSF limitini söylüyor; 2026 limiti banka başına
+   kişi başı 1.200.000 TL (tmsf.org.tr). YouTube'daki kopyasını 2026-10-30'da gizliye aldım; Instagram API silmeye izin
+   vermiyor → instagram.com/parafomo → o Reel → ⋯ → Sil.
+
 _EVDS anahtarı 2026-10-15'te doğrulandı (`~/.config/parafomo/evds.env`)._
 _Görev Masası (2026-10-15, Kaan kararı): Claude Docs panosu emekli → **dashboard.parafomo.com** kanonik; kararlar
 `agent/board.py` ile yerel dosyadan okunur (bağlayıcı gerekmez). Eski "pano okunamıyor" görevi bununla kapandı._

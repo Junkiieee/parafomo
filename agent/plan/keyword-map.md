@@ -72,7 +72,7 @@ Otorite/dış link işleri şimdilik YAPILMAZ (Kaan: "kalsın"). Fırsat listesi
 - [x] K26 (hepsi content-queue’da, 10-25 kontrol) ek gösterge (43,7) → blog (content-queue, memur kümesi) · geçici vergi (46,1) → blog (content-queue; Kasım beyanı) ·
   fed faiz kararı (80,9) + enflasyon beklentisi (45,6) → olay önizleme yazıları (B261022-1).
 - [ ] K27 (10-29, B261029-1 sosyal haklar kümesi — sosyal ödeme sayfaları p8-22, finans araçları p60-99) → week T24-T31:
-  kyk burs (121,7, son 4h 459, zirve Ekim) → **/kyk-burs-miktari/** (T24) · bedelli askerlik ücreti (111, zirve Mart) →
+  kyk burs (121,7, son 4h 459, zirve Ekim) → **/kyk-burs-miktari/** (T24 ✅ canlı 10-30) · bedelli askerlik ücreti (111, zirve Mart) →
   ✅ **/bedelli-askerlik-ucreti/** canlı 2026-10-29 (f54b955) · askerlik borçlanması (30,3, zirve Aralık) + doğum borçlanması → **/askerlik-borclanmasi-hesaplama/**
   (T28) · dul maaşı (30,7) + yetim aylığı (19, zirve Ocak) → **/dul-yetim-maasi-hesaplama/** (T30) · doğum izni (97, zirve Nisan)
   → **/dogum-izni-hesaplama/** (T31) · emekli maaşı 2027 (98, zirve Ocak 852) + memur maaşı 2027 (41) → /emekli-zammi-hesaplama

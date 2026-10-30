@@ -85,3 +85,6 @@ _v1'in 59 deneyi + 2,5 aylık KPI'ından damıtıldı; son yeniden yazım: hafta
 - **Dağıtım kanalları zayıf:** Telegram 2, bülten 1 onaylı abone, YouTube 60, IG 21 takipçi / 469 gönderi, Facebook
   sayfası 0 (GA4'te facebook.com'dan 28g 46 ziyaretçi; FB yayını Meta izni bekliyor). Geri dönen 28g 14 / 418.
 - **Video render tek seferde bir tane** (RC 10-28): tüm hatlar /tmp/shorts_frames kullanır; shorts-build-v4.py kilitli.
+- **Yıllık güncellenen limit/tutar videoda bayatlar (10-30):** 26 Eylül viral Short'u TMSF sigorta limitini 400 bin TL dedi; 2026
+  limiti 1,2 mn TL (tmsf.org.tr) → YouTube'da gizliye alındı. Senaryoda yasal limit/tutar varsa yalnız data/*.json ya da resmî
+  kaynaktan, yılıyla.

@@ -48,7 +48,7 @@ sıralar, yeni fikir ekler (açık madde ≤ 25). Biçim: `- [ ] R<n> (kanal) �
   tablosu bölümü: en düşük aylık + 15/20/25/30/40 bin TL… için Ocak 2027 tahmini (5 Ocak'ta kesin) — rakamlar
   `src/data/zam2027.ts`/veriden; aynısı /asgari-ucret-hesaplama için net/brüt/işveren maliyeti tablosu (Aralık'ta
   açıklanınca otomatik). Şişirme yok, tek sayfa + çapa linkler. Kabul: canlı, veriden üretilir, FAQPage güncel.
-- [ ] R3 (YouTube · → week T26, 10-29) — **Arama odaklı başlık turu** · izlenmenin %21'i YouTube aramasından. Son 60 günün en çok izlenen 20
+- [x] R3 (YouTube · → week T26, 10-29) → 20 video yeniden başlıklandı, baz yt-retitle-2026-11.json; kıyas haftalık 11-12 · 2026-10-30 — — **Arama odaklı başlık turu** · izlenmenin %21'i YouTube aramasından. Son 60 günün en çok izlenen 20
   videosunun başlık/açıklamasını aranan kalıba çek (konu + yıl/ay ilk 40 karakterde; yanıltıcı değil). Token
   `youtube.force-ssl` içeriyor → `videos.update part=snippet` (categoryId + tags + description geri gönder). Önce
   `scripts/youtube-retitle.py --dry` yaz, öneri listesini rapora koy, sonra uygula. Kabul: 20 video güncel + baz
