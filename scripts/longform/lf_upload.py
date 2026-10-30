@@ -113,7 +113,15 @@ def publish(a):
     try:
         ex.PLAYLIST_TITLES["longform"] = PLAYLIST
         pid, title = ex.ensure_playlist(yt, "longform")
-        ex.add_to_playlist(yt, pid, vid)
+        for i in range(3):  # yeni açılan listede ilk ekleme 409 "aborted" verebiliyor
+            try:
+                ex.add_to_playlist(yt, pid, vid)
+                break
+            except Exception:
+                if i == 2:
+                    raise
+                import time
+                time.sleep(10)
         print(f"[lf-up] oynatma listesi: {title}")
     except Exception as e:
         print(f"[lf-up] oynatma listesi atlandı: {str(e)[:160]}")
