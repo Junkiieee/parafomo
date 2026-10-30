@@ -4,10 +4,13 @@
 //  İkonlar: isoIcon(name, s, t) — altın, para, ev, araba, banka, takvim, grafik, yüzde, kart, kumbara.
 //  Kural: rakamlar yalnız veri alanından gelir (dönüştürücü sayı kapısından geçirir), sahne rakam uydurmaz.
 // =====================================================================
-const PALC = ['#3D8BD9', '#9B86F0', '#FF7A30', '#B8BEC0', '#E3C14D', '#E05A8A'];
-const TINT = { '#3D8BD9': '#12223A', '#9B86F0': '#1E1A33', '#FF7A30': '#3A1E10', '#B8BEC0': '#22282B', '#E3C14D': '#3A3010',
-  '#E05A8A': '#3A1424', '#2BB194': '#12302A', '#FFC94D': '#3A2E10', '#63D491': '#14321F' };
-const tint = (c) => TINT[c] || PAL.face;
+// renkler kaplamaya (skins.js) göre değişir: sahneler sabit hex değil COL/tint/GOLDC kullanır
+let COL = { blue: '#3D8BD9', purple: '#9B86F0', orange: '#FF7A30', orangeL: '#FF9A5A', grey: '#B8BEC0', yellow: '#E3C14D',
+  pink: '#E05A8A', dark: '#0B0F11', cardText: '#C9C2F0', goldDim: '#8A6A20' };
+const palc = (i) => [COL.blue, COL.purple, COL.orange, COL.grey, COL.yellow, COL.pink][i % 6];
+let TINT = { '#3D8BD9': '#12223A', '#9B86F0': '#1E1A33', '#FF7A30': '#3A1E10', '#B8BEC0': '#22282B', '#E3C14D': '#3A3010',
+  '#E05A8A': '#3A1424', '#2BB194': '#12302A', '#FFC94D': '#3A2E10', '#63D491': '#14321F', '#E3120B': '#5A1410' };
+let tint = (c) => TINT[c] || PAL.face;
 
 // ---- sayı biçimi: value sayı, unit '₺' | '%' | '$' | '€' | 'x' | '' (+ isteğe bağlı suffix: "bin", "milyon")
 function fmtNum(v, dec) {
@@ -15,7 +18,8 @@ function fmtNum(v, dec) {
   return v.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
 }
 function fmtVal(v, unit, o = {}) {
-  const n = fmtNum(v, o.dec), sx = o.suffix ? ' ' + o.suffix : '';
+  const money = unit === '₺' || unit === '$' || unit === '€';
+  const n = fmtNum(money && Math.abs(v) >= 100 ? Math.round(v) : v, money && Math.abs(v) >= 100 ? 0 : o.dec), sx = o.suffix ? ' ' + o.suffix : '';
   if (unit === '₺' || unit === '$' || unit === '€') return unit + n + sx;
   if (unit === '%') return '%' + n;
   if (unit === 'x') return n + 'x';
@@ -52,7 +56,7 @@ function richBlock(str, cx, y, maxW, size, lh, al = 1) {
 // =====================================================================
 //  İzometrik ikonlar (merkez: dünya orijini; s ölçek; t yerel zaman → yaylı giriş)
 // =====================================================================
-const GOLDC = '#FFC94D', GOLDF = '#3A2E10';
+let GOLDC = '#FFC94D', GOLDF = '#3A2E10';
 const drop = (t, t0, hgt = 260) => (1 - spring(t, t0, { k: 150, damp: 0.6 })) * hgt;
 const ICONS = {
   coins(s, t) {
@@ -63,13 +67,13 @@ const ICONS = {
   },
   gold(s, t) {
     const bar = (x, y, z, t0) => { if (t < t0) return; const dz = drop(t, t0, 220); isoBox(x, y, z + dz, 150 * s, 66 * s, 34 * s, { r: 6 * s, seg: 3, edge: GOLDC, fill: GOLDF, creaseC: GOLDC });
-      const fp = faceOf([x + 30 * s, y + 14 * s, z + dz + 34 * s], [1, 0, 0], [0, 1, 0]); faceRR(fp, 0, 0, 90 * s, 38 * s, 6 * s, { stroke: '#8A6A20' }); };
+      const fp = faceOf([x + 30 * s, y + 14 * s, z + dz + 34 * s], [1, 0, 0], [0, 1, 0]); faceRR(fp, 0, 0, 90 * s, 38 * s, 6 * s, { stroke: COL.goldDim }); };
     bar(-160 * s, -40 * s, 0, 0.0); bar(-160 * s, 40 * s, 0, 0.08); bar(10 * s, -40 * s, 0, 0.16); bar(10 * s, 40 * s, 0, 0.24);
     bar(-75 * s, -0 * s, 36 * s, 0.4); bar(-75 * s, 72 * s, 36 * s, 0.48); bar(-30 * s, 30 * s, 72 * s, 0.62);
   },
   cash(s, t) {
     for (let k = 0; k < 6; k++) { const t0 = k * 0.07; if (t < t0) continue; const z = k * 12 * s + drop(t, t0, 200), rot = (k % 2 ? 8 : -6) * s;
-      isoBox(-120 * s + rot, -60 * s - rot, z, 240 * s, 120 * s, 10 * s, { r: 6 * s, seg: 2, edge: BR.brand, fill: '#12302A', creaseC: BR.brand }); }
+      isoBox(-120 * s + rot, -60 * s - rot, z, 240 * s, 120 * s, 10 * s, { r: 6 * s, seg: 2, edge: BR.brand, fill: tint(BR.brand), creaseC: BR.brand }); }
     if (t > 0.5) { const z = 72 * s, fp = faceOf([-120 * s + 8 * s, -60 * s + 8 * s, z], [1, 0, 0], [0, 1, 0]);
       faceRR(fp, 10 * s, 10 * s, 204 * s, 84 * s, 8 * s, { stroke: BR.brand }); isoText(fp, '₺', 96 * s, 76 * s, 60 * s, { color: BR.light, font: ANTON }); }
   },
@@ -88,15 +92,15 @@ const ICONS = {
     polyPath([P(x0 + W0 + 10 * s, y0 - 10 * s, zt), P(x0 + W0 + 10 * s, y0 + W0 + 10 * s, zt), P(x0 + W0 + 10 * s, y0 + W0 / 2, rz)], true);
     ctx.fillStyle = PAL.face; ctx.fill(); hair(BR.edge); ctx.stroke();
     polyPath([P(x0 - 10 * s, y0 + W0 / 2, rz), P(x0 + W0 + 10 * s, y0 + W0 / 2, rz), P(x0 + W0 + 10 * s, y0 + W0 + 10 * s, zt), P(x0 - 10 * s, y0 + W0 + 10 * s, zt)], true);
-    ctx.fillStyle = '#3A1E10'; ctx.fill(); hair('#FF7A30'); ctx.stroke();
+    ctx.fillStyle = tint(COL.orange); ctx.fill(); hair(COL.orange); ctx.stroke();
   },
   car(s, t) {
     const dz = drop(t, 0, 240), x0 = -150 * s, y0 = -60 * s;
     isoPlates(x0 - 40 * s, y0 - 40 * s, -14 * s, 380 * s, 200 * s, [{ h: 10 * s, r: 20 * s }]);
-    isoBox(x0, y0, dz + 26 * s, 300 * s, 120 * s, 56 * s, { r: 24 * s, edge: '#3D8BD9', fill: '#12223A', creaseC: '#3D8BD9' });
-    if (t > 0.25) isoBox(x0 + 80 * s, y0 + 8 * s, dz + 82 * s + drop(t, 0.25, 120), 140 * s, 104 * s, 46 * s, { r: 20 * s, edge: '#3D8BD9', fill: '#12223A', creaseC: '#3D8BD9' });
+    isoBox(x0, y0, dz + 26 * s, 300 * s, 120 * s, 56 * s, { r: 24 * s, edge: COL.blue, fill: tint(COL.blue), creaseC: COL.blue });
+    if (t > 0.25) isoBox(x0 + 80 * s, y0 + 8 * s, dz + 82 * s + drop(t, 0.25, 120), 140 * s, 104 * s, 46 * s, { r: 20 * s, edge: COL.blue, fill: tint(COL.blue), creaseC: COL.blue });
     const side = faceOf([x0, y0 + 120 * s + 1, dz + 40 * s], [1, 0, 0], [0, 0, -1]);
-    for (const u of [62, 238]) faceEll(side, u * s, 14 * s, 30 * s, 30 * s, { fill: '#0B0F11', stroke: BR.edge });
+    for (const u of [62, 238]) faceEll(side, u * s, 14 * s, 30 * s, 30 * s, { fill: COL.dark, stroke: BR.edge });
     for (const u of [62, 238]) faceEll(side, u * s, 14 * s, 11 * s, 11 * s, { stroke: BR.edge });
   },
   bank(s, t) {
@@ -114,36 +118,36 @@ const ICONS = {
     isoPlates(x0 - 40 * s, -40 * s, -14 * s, 300 * s, 140 * s, [{ h: 10 * s, r: 20 * s }]);
     const S = isoPanelY(x0, 0, dz, 220 * s, 240 * s, 24 * s, { r: 16 * s, edge: BR.edge });
     const fp = faceOf([x0, 24 * s, dz + 240 * s], [1, 0, 0], [0, 0, -1]);
-    faceRR(fp, 0, 0, 220 * s, 50 * s, 12 * s, { fill: '#5A1410', stroke: BR.red });
+    faceRR(fp, 0, 0, 220 * s, 50 * s, 12 * s, { fill: tint(BR.red), stroke: BR.red });
     for (const u of [50, 170]) faceEll(fp, u * s, 0, 8 * s, 8 * s, { fill: PAL.face, stroke: BR.edge });
     for (let r = 0; r < 4; r++) for (let c = 0; c < 5; c++) { const on = r === 2 && c === 3 && t > 0.6;
-      faceRR(fp, 16 * s + c * 40 * s, 66 * s + r * 42 * s, 30 * s, 30 * s, 5 * s, on ? { fill: '#12302A', stroke: BR.brand } : { stroke: PAL.inner }); }
+      faceRR(fp, 16 * s + c * 40 * s, 66 * s + r * 42 * s, 30 * s, 30 * s, 5 * s, on ? { fill: tint(BR.brand), stroke: BR.brand } : { stroke: PAL.inner }); }
   },
   chart(s, t) {
     isoPlates(-170 * s, -80 * s, -14 * s, 360 * s, 180 * s, [{ h: 10 * s, r: 20 * s }]);
     [70, 130, 210].forEach((h, i) => { const k = spring(t, 0.1 + i * 0.12, { k: 140, damp: 0.6 }); if (k <= 0.01) return;
-      isoBox(-130 * s + i * 100 * s, -40 * s, 0, 64 * s, 64 * s, h * s * k, { r: 6 * s, edge: i === 2 ? BR.brand : BR.edge, fill: i === 2 ? '#12302A' : PAL.face, creaseC: i === 2 ? BR.brand : PAL.inner }); });
+      isoBox(-130 * s + i * 100 * s, -40 * s, 0, 64 * s, 64 * s, h * s * k, { r: 6 * s, edge: i === 2 ? BR.brand : BR.edge, fill: i === 2 ? tint(BR.brand) : PAL.face, creaseC: i === 2 ? BR.brand : PAL.inner }); });
     const a = clamp((t - 0.5) / 0.5); if (a > 0) { const P3 = [[-150, 60, 90], [-20, 60, 150], [60, 60, 140], [150, 60, 300]].map((p) => [p[0] * s, p[1] * s, p[2] * s]);
       const n = 1 + a * (P3.length - 1), Q = P3.slice(0, Math.floor(n)); const f = n - Math.floor(n); if (f > 0 && Math.floor(n) < P3.length) { const p0 = P3[Math.floor(n) - 1], p1 = P3[Math.floor(n)]; Q.push(vadd(p0, vsc(vsub(p1, p0), f))); }
       line3(Q, GOLDC, 5); }
   },
   percent(s, t) {
     const dz = drop(t, 0, 220);
-    isoCyl(0, 0, dz, 130 * s, 40 * s, { edge: '#FF7A30', fill: '#3A1E10' });
-    const fp = faceOf([-90 * s, -40 * s, dz + 40 * s], [1, 0, 0], [0, 1, 0]); isoText(fp, '%', 30 * s, 110 * s, 150 * s, { color: '#FF7A30', font: ANTON });
+    isoCyl(0, 0, dz, 130 * s, 40 * s, { edge: COL.orange, fill: tint(COL.orange) });
+    const fp = faceOf([-90 * s, -40 * s, dz + 40 * s], [1, 0, 0], [0, 1, 0]); isoText(fp, '%', 30 * s, 110 * s, 150 * s, { color: COL.orange, font: ANTON });
   },
   card(s, t) {
     const dz = drop(t, 0, 220);
-    isoBox(-150 * s, -95 * s, dz, 300 * s, 190 * s, 10 * s, { r: 18 * s, edge: '#9B86F0', fill: '#1E1A33', creaseC: '#9B86F0' });
+    isoBox(-150 * s, -95 * s, dz, 300 * s, 190 * s, 10 * s, { r: 18 * s, edge: COL.purple, fill: tint(COL.purple), creaseC: COL.purple });
     const fp = faceOf([-150 * s, -95 * s, dz + 10 * s], [1, 0, 0], [0, 1, 0]);
     faceRR(fp, 30 * s, 50 * s, 56 * s, 44 * s, 6 * s, { fill: GOLDF, stroke: GOLDC });
-    isoText(fp, '•••• 2026', 30 * s, 150 * s, 30 * s, { color: '#C9C2F0' });
+    isoText(fp, '•••• 2026', 30 * s, 150 * s, 30 * s, { color: COL.cardText });
   },
   piggy(s, t) {   // kumbara: yuvarlak gövde + bozuk para yarığı + düşen bozuk para
     const dz = drop(t, 0, 220);
     isoPlates(-150 * s, -110 * s, -14 * s, 300 * s, 220 * s, [{ h: 10 * s, r: 20 * s }]);
-    isoBox(-120 * s, -80 * s, dz + 10 * s, 240 * s, 160 * s, 150 * s, { r: 70 * s, seg: 8, edge: '#E05A8A', fill: '#3A1424', creaseC: '#E05A8A' });
-    const top = faceOf([-120 * s, -80 * s, dz + 160 * s], [1, 0, 0], [0, 1, 0]); faceRR(top, 90 * s, 70 * s, 60 * s, 12 * s, 6 * s, { fill: '#0B0F11', stroke: '#E05A8A' });
+    isoBox(-120 * s, -80 * s, dz + 10 * s, 240 * s, 160 * s, 150 * s, { r: 70 * s, seg: 8, edge: COL.pink, fill: tint(COL.pink), creaseC: COL.pink });
+    const top = faceOf([-120 * s, -80 * s, dz + 160 * s], [1, 0, 0], [0, 1, 0]); faceRR(top, 90 * s, 70 * s, 60 * s, 12 * s, 6 * s, { fill: COL.dark, stroke: COL.pink });
     const c = 1 - clamp((t - 0.5) / 0.6); if (t > 0.5 && c > 0) isoCyl(0, -4 * s, dz + 160 * s + c * 160 * s, 34 * s, 8 * s, { edge: GOLDC, fill: GOLDF });
   },
 };
@@ -181,7 +185,7 @@ SC.layers = (d, t, al) => {
   const KZ = 300 / tot, FW = 230, GAP = 40, open = spring(t, 0.7, { k: 70, damp: 0.7 });
   setIso({ ox: 390, oy: 1080, u: 1 });
   isoPlates(-30, -30, -18, FW + 60, FW + 60, [{ h: 10, r: 30 }]);
-  const cols = parts.map((p, i) => (p.hl ? BR.brand : PALC[i % PALC.length]));
+  const cols = parts.map((p, i) => (p.hl ? BR.brand : palc(i)));
   let z = drop(t, 0, 400); const slots = [];
   for (let i = parts.length - 1; i >= 0; i--) {   // alttan üste: son parça en altta
     const p = parts[i], h = Math.max(9, p.value * KZ), shown = t > 0.9 + i * 0.35;
@@ -216,7 +220,7 @@ SC.bars = (d, t, al) => {
   isoPlates(-30, -30, -16, span + 60, CW + 60, [{ h: 10, r: 24 }]);
   it.forEach((x, i) => {
     const k = spring(t, 0.15 + i * 0.12, { k: 130, damp: 0.62 }); if (k <= 0.005) return;
-    const hl = d.hl === i, c = hl ? BR.brand : (d.hl == null && i === n - 1 ? BR.brand : PALC[0]), h = Math.max(8, Math.abs(x.value) / mx * MH) * k;
+    const hl = d.hl === i, c = hl ? BR.brand : (d.hl == null && i === n - 1 ? BR.brand : palc(0)), h = Math.max(8, Math.abs(x.value) / mx * MH) * k;
     isoBox(i * P, 0, 0, CW, CW, h, { r: 8, seg: 3, edge: c, fill: tint(c), creaseC: c });
     const p = iso(i * P + CW / 2, 0, h + 10), a = clamp((k - 0.3) / 0.7);
     const fs = n <= 3 ? 64 : n <= 5 ? 46 : 38;
@@ -232,7 +236,7 @@ SC.compare = (d, t, al) => {
   const mx = Math.max(Math.abs(d.a.value), Math.abs(d.b.value)) || 1, MH = 360, CW = 160;
   setIso({ ox: 330, oy: 1060, u: 1 });
   isoPlates(-40, -330, -16, CW + 80, 330 + CW + 40, [{ h: 10, r: 26 }]);
-  const cols = [[d.b, BR.brand, -300, 0.45], [d.a, '#FF7A30', 0, 0.15]];   // çizim sırası: arkadaki (b) önce
+  const cols = [[d.b, BR.brand, -300, 0.45], [d.a, COL.orange, 0, 0.15]];   // çizim sırası: arkadaki (b) önce
   const tops = [];
   for (const [x, c, Y, t0] of cols) {
     const k = spring(t, t0, { k: 110, damp: 0.62 }); if (k <= 0.005) { tops.push(null); continue; }
@@ -243,7 +247,7 @@ SC.compare = (d, t, al) => {
   for (const o of tops) {
     if (!o) continue;
     const v = fmtVal(o.x.value, d.unit, { suffix: d.suffix }), lb = (o.x.label || '').toLocaleUpperCase('tr-TR');
-    txt(v, o.p[0], o.p[1] - 40, fitFont(v, 300, 76, ANTON), o.c === BR.brand ? BR.light : '#FF9A5A', { align: 'center', al: o.a * al });
+    txt(v, o.p[0], o.p[1] - 40, fitFont(v, 300, 76, ANTON), o.c === BR.brand ? BR.light : COL.orangeL, { align: 'center', al: o.a * al });
     txt(lb, o.p[0], o.p[1] - 122, fitFont(lb, 300, 30, DMONO, 500), BR.muted, { align: 'center', al: o.a * al });
   }
   if (d.note) { const a = clamp(spring(t, 1.0, { k: 160, damp: 0.5 }));
@@ -255,7 +259,7 @@ SC.compare = (d, t, al) => {
 // 3 adım merdiveni + altında numaralı liste: { items:[str, str, str] }
 SC.steps = (d, t, al) => {
   ctx.save(); ctx.globalAlpha = al;
-  const it = d.items.slice(0, 3), cols = [BR.edge, '#3D8BD9', BR.brand];
+  const it = d.items.slice(0, 3), cols = [BR.edge, COL.blue, BR.brand];
   setIso({ ox: 300, oy: 960, u: 1 });
   isoPlates(-30, -330, -16, 210, 510, [{ h: 10, r: 24 }]);
   for (let i = it.length - 1; i >= 0; i--) {   // arkadan öne (büyük -y arkada)

@@ -9,9 +9,11 @@ render (nice 19, ionice idle, Shorts kilidi) → anlatım + müzik (konuşmada k
 --still: yalnız o saniyelerin karelerini PNG çıkarır (tasarım kontrolü, ses/render yok).
 """
 import argparse
+import difflib
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -32,12 +34,64 @@ VENDOR = os.path.join(HERE, "vendor", "animate")
 FONTS = os.path.join(ROOT, "assets", "fonts")
 
 
+_wm = None
+
+
+def _norm(w):
+    return re.sub(r"[^0-9a-zçğıöşüâî]", "", w.replace("İ", "i").replace("I", "ı").lower())
+
+
+def word_times(mp3, cap):
+    """Altyazı kelimelerinin sesteki gerçek zamanları (faster-whisper + difflib hizalama, önbellekli).
+    Eşleşmeyen kelimeler komşuları arasında enterpole edilir. Başarısızsa None (oransal zamanlamaya düşülür)."""
+    cache = mp3 + "." + hashlib.sha1(cap.encode()).hexdigest()[:8] + ".words.json"
+    if os.path.exists(cache):
+        return json.load(open(cache))
+    try:
+        global _wm
+        if _wm is None:
+            from faster_whisper import WhisperModel
+            _wm = WhisperModel("base", device="cpu", compute_type="int8", cpu_threads=1)
+        segs, _ = _wm.transcribe(mp3, language="tr", word_timestamps=True, initial_prompt=cap)
+        ww = [(w.word.strip(), w.start, w.end) for sg in segs for w in sg.words]
+    except Exception as e:
+        print(f"[anim] kelime zamanı alınamadı ({e}) — oransal", file=sys.stderr)
+        return None
+    words = cap.split()
+    if not ww or not words:
+        return None
+    a, bb = [_norm(w) for w in words], [_norm(w) for w, _, _ in ww]
+    tm = [None] * len(words)
+    for tag, i1, i2, j1, j2 in difflib.SequenceMatcher(None, a, bb, autojunk=False).get_opcodes():
+        if tag == "equal":
+            for k in range(i2 - i1):
+                tm[i1 + k] = [ww[j1 + k][1], ww[j1 + k][2]]
+        elif tag == "replace" and i2 > i1 and j2 > j1:   # ör. "75" ↔ "yetmiş beş": bloğu orantılı böl
+            t0, t1 = ww[j1][1], ww[j2 - 1][2]
+            n = i2 - i1
+            for k in range(n):
+                tm[i1 + k] = [t0 + (t1 - t0) * k / n, t0 + (t1 - t0) * (k + 1) / n]
+    end = ww[-1][2]
+    for i in range(len(tm)):   # boşlukları komşulardan doldur
+        if tm[i] is None:
+            prev = tm[i - 1][1] if i > 0 and tm[i - 1] else 0.0
+            nxt = next((tm[j][0] for j in range(i + 1, len(tm)) if tm[j]), end)
+            tm[i] = [prev, max(prev, nxt)]
+    out = [{"w": w, "t0": round(x[0], 3), "t1": round(x[1], 3)} for w, x in zip(words, tm)]
+    json.dump(out, open(cache, "w"))
+    return out
+
+
 def timeline(spec):
     t, lines = LEAD, []
     for ln in spec["lines"]:
         mp3 = tts(ln["say"], rate=RATE)
         d = duration(mp3)
-        lines.append({"id": ln["id"], "t0": round(t, 3), "t1": round(t + d, 3), "cap": ln["cap"], "mp3": mp3})
+        item = {"id": ln["id"], "t0": round(t, 3), "t1": round(t + d, 3), "cap": ln["cap"], "mp3": mp3}
+        wt = word_times(mp3, ln["cap"])
+        if wt:
+            item["words"] = [round(t + w["t0"], 3) for w in wt]   # kelime başlangıçları (mutlak sn)
+        lines.append(item)
         t += d + ln.get("after", GAP)
     return lines, round(t - GAP + TAIL, 3)
 
@@ -47,7 +101,7 @@ def page(spec, lines, dur, path):
           "data": spec["data"]}
     js = lambda p: open(p, encoding="utf-8").read()  # noqa: E731
     head = f"""
-const W = {W}, H = {H}, FPS = {FPS}, CX = 470, ISO_DARK = true;
+const W = {W}, H = {H}, FPS = {FPS}, CX = 470, ISO_DARK = true, SKIN_NAME = {json.dumps(spec.get("skin", "iso"))};
 const TL = {json.dumps(tl, ensure_ascii=False)};
 """
     style = spec.get("style", "isometric")
@@ -63,14 +117,18 @@ html,body {{ margin:0; background:#000; }}
 {js(os.path.join(VENDOR, style + '.js'))}
 {js(os.path.join(HERE, 'brand.js'))}
 {js(os.path.join(HERE, 'scenes.js'))}
+{js(os.path.join(HERE, 'skins.js'))}
 {js(os.path.join(HERE, 'pieces', spec['scene']))}
-const CANVAS = document.getElementById('c');
-ctx = CANVAS.getContext('2d');
+const CANVAS = document.getElementById('c'), MAIN = CANVAS.getContext('2d');
+const LAYER = document.createElement('canvas'); LAYER.width = W; LAYER.height = H; const LCTX = LAYER.getContext('2d');
 window.renderFrame = (f, png) => {{
-  F = f; B = Math.floor(f / 2); TT = f / FPS; E0 = 0; DEFER = [];
-  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  F = f; B = Math.floor(f / 2); TT = f / FPS; E0 = 0;
+  ctx = MAIN; ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; SKIN.bg();          // zemin
+  ctx = LCTX; ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, W, H); DEFER = [];  // sahne katmanı
   drawPiece();
   screen(); for (const d of DEFER) d(); DEFER = null;
+  ctx = MAIN; ctx.setTransform(1, 0, 0, 1, 0, 0); SKIN.post(LAYER);                       // kaplama efekti
+  if (typeof drawOverlay === 'function') drawOverlay();                                    // altyazı (net)
   return CANVAS.toDataURL(png ? 'image/png' : 'image/jpeg', 0.93).split(',')[1];
 }};
 Promise.all([document.fonts.load('60px Anton'), document.fonts.load('600 60px Oswald')]).then(() => {{ window.ANIM_READY = true; }});
@@ -123,7 +181,20 @@ def audio(lines, dur, slug, out, whooshes=()):
     return os.path.basename(track)
 
 
+LOAD_MAX, LOAD_WAIT = 2.5, 20 * 60
+
+
+def wait_for_quiet():
+    """Sunucu meşgulse (1 dk yük > 2,5 — 2 çekirdek) en çok 20 dk bekle; diğer işler önce gelsin."""
+    t0 = time.time()
+    while os.getloadavg()[0] > LOAD_MAX and time.time() - t0 < LOAD_WAIT:
+        if int(time.time() - t0) % 300 < 30:
+            print(f"[anim] sunucu meşgul (yük {os.getloadavg()[0]:.1f}) — bekleniyor", flush=True)
+        time.sleep(30)
+
+
 def main():
+    os.nice(19)   # TTS/whisper/render: hepsi en düşük öncelik (alt süreçler devralır)
     ap = argparse.ArgumentParser()
     ap.add_argument("spec")
     ap.add_argument("--still", default="")
@@ -141,6 +212,7 @@ def main():
     if a.still:
         stills(html, [float(x) for x in a.still.split(",")], os.path.join(wd, "still-"))
         return 0
+    wait_for_quiet()
     t0 = time.time()
     frames = int(round(dur * FPS))
     vid = os.path.join(wd, "video.mp4")

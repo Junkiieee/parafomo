@@ -4,7 +4,7 @@
 // Sayfa window.renderFrame(f) sunmalı; her kare JPEG olarak ffmpeg'e borulanır (diske PNG yazılmaz).
 // Sunucuyu yormamak için çağıran taraf `nice -n 19 ionice -c3` ve /tmp/shorts_frames.lock kullanır.
 import { createRequire } from 'node:module';
-import { spawn } from 'node:child_process';
+import { spawn, execSync } from 'node:child_process';
 import { pathToFileURL } from 'node:url';
 
 const require = createRequire(import.meta.url);
@@ -19,15 +19,29 @@ const ff = spawn('ffmpeg', ['-y', '-hide_banner', '-loglevel', 'error', '-f', 'i
   { stdio: ['pipe', 'inherit', 'inherit'] });
 
 const browser = await chromium.launch({ args: ['--disable-gpu', '--renderer-process-limit=1'] });
+// Chromium alt işlemlerinin önceliğini kendisi yükseltiyor (nice -8 görüldü) → hepsini 19'a zorla:
+// sunucudaki diğer işler (API, diğer projeler) her zaman önce CPU alsın.
+function renice() {
+  try {
+    const all = [process.pid];   // bu node süreci → altındaki tüm Chromium süreçleri
+    for (let i = 0; i < all.length; i++) {
+      try { all.push(...execSync(`pgrep -P ${all[i]}`).toString().split(/\s+/).filter(Boolean).map(Number)); } catch {}
+    }
+    execSync(`renice -n 19 -p ${all.join(' ')}`, { stdio: 'ignore' });
+  } catch {}
+}
+renice();
 try {
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
   page.on('pageerror', (e) => { console.error('[anim] sayfa hatası:', e.message); process.exitCode = 1; });
   await page.goto(pathToFileURL(page_).href);
   await page.waitForFunction(() => window.ANIM_READY === true, null, { timeout: 30000 });
+  renice();
   const t0 = Date.now();
   for (let f = 0; f < frames; f++) {
     const b64 = await page.evaluate((i) => window.renderFrame(i), f);
     if (!ff.stdin.write(Buffer.from(b64, 'base64'))) await new Promise((r) => ff.stdin.once('drain', r));
+    if (f % 30 === 0) renice();
     if (f % 150 === 0) console.log(`[anim] kare ${f}/${frames} (${((Date.now() - t0) / 1000).toFixed(0)} sn)`);
   }
 } finally {

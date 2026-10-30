@@ -202,6 +202,12 @@ def main():
              "lines": lines}
     if scn.get("link"):
         piece["link"] = scn["link"]
+    try:   # kaplama dönüşü (scripts/anim/skins.json): gün sırasıyla
+        import datetime
+        rot = json.load(open(os.path.join(HERE, "skins.json"), encoding="utf-8")).get("rotation") or ["iso"]
+        piece["skin"] = rot[datetime.date.today().toordinal() % len(rot)]
+    except Exception:
+        piece["skin"] = "iso"
     dst = os.path.join(os.path.dirname(os.path.abspath(a.scenario)), f"{scn['slug']}.anim.json")
     json.dump(piece, open(dst, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print("[anim-scn] " + " · ".join(s["type"] for s in out["scenes"]), file=sys.stderr)

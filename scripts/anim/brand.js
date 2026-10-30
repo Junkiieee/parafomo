@@ -41,6 +41,7 @@ function captions(y = 1488) {
   const words = l.cap.split(/\s+/), lens = words.map((w) => w.length + 1), tot = lens.reduce((a, b) => a + b, 0);
   const u = clamp((TT - l.t0) / Math.max(0.1, l.t1 - l.t0)) * tot;
   let acc = 0, wi = 0; for (let i = 0; i < words.length; i++) { if (u >= acc) wi = i; acc += lens[i]; }
+  if (l.words && l.words.length === words.length) { wi = 0; for (let i = 0; i < words.length; i++) if (TT >= l.words[i] - 0.04) wi = i; }   // gerçek kelime zamanı
   const g0 = Math.floor(wi / 3) * 3, grp = words.slice(g0, g0 + 3);
   ctx.save(); ctx.font = `600 64px ${OSW}`; ctx.textBaseline = 'alphabetic';
   const sp = 18, ws = grp.map((w) => ctx.measureText(w.toLocaleUpperCase('tr-TR')).width);
@@ -49,10 +50,10 @@ function captions(y = 1488) {
   let x = 470 - tw / 2;
   grp.forEach((w, i) => {
     const up = w.toLocaleUpperCase('tr-TR'), on = g0 + i === wi;
-    if (on) { ctx.fillStyle = BR.gold; ctx.beginPath(); ctx.roundRect(x - 10, y - 62, ws[i] + 20, 80, 10); ctx.fill(); }
-    ctx.lineWidth = 8; ctx.strokeStyle = 'rgba(0,0,0,0.55)'; ctx.lineJoin = 'round';
+    if (on) { ctx.fillStyle = BR.capHi || '#FFC94D'; ctx.beginPath(); ctx.roundRect(x - 10, y - 62, ws[i] + 20, 80, 10); ctx.fill(); }
+    ctx.lineWidth = 8; ctx.strokeStyle = BR.capStroke || 'rgba(0,0,0,0.55)'; ctx.lineJoin = 'round';
     if (!on) ctx.strokeText(up, x, y);
-    ctx.fillStyle = on ? '#111' : BR.white; ctx.fillText(up, x, y);
+    ctx.fillStyle = on ? '#111' : (BR.capText || BR.white); ctx.fillText(up, x, y);
     x += ws[i] + sp;
   });
   ctx.restore();
