@@ -272,6 +272,19 @@ def main():
     else:
         caption = build_caption(meta, args.slug)
 
+    # Günlük üst sınır (2026-10-30, video-yon.md V3): IG'de günde 5-7 gönderi erişimi 0-3'e düşürüyordu → TR günü
+    # içinde en çok IG_REELS_PER_DAY (vars. 2) Reel. Fazlası yalnız YouTube/FB'de kalır (çıkış 0: hattı bozmaz).
+    cap = int(env.get("IG_REELS_PER_DAY") or os.environ.get("IG_REELS_PER_DAY") or 2)
+    lst = graph_get(f"{ig}/media", {"fields": "timestamp,media_product_type", "limit": "15", "access_token": tok})
+    import datetime as _dt
+    tr_today = (_dt.datetime.now(_dt.timezone.utc) + _dt.timedelta(hours=3)).date()
+    def _tr_day(ts):
+        return (_dt.datetime.strptime(ts[:19], "%Y-%m-%dT%H:%M:%S") + _dt.timedelta(hours=3)).date()
+    today_n = sum(1 for m in lst.get("data", []) if m.get("media_product_type") == "REELS" and _tr_day(m["timestamp"]) == tr_today)
+    if today_n >= cap and not args.no_publish:
+        print(f"[i] IG günlük Reel sınırı dolu ({today_n}/{cap}) — bu video yalnız YouTube/FB'de. Atlandı.")
+        return 0
+
     print(f"[*] Video barındırılıyor (media dalı)...")
     video_url = host_video(mp4, f"{args.slug}.mp4")
     print(f"[+] URL: {video_url}")
