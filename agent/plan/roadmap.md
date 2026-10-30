@@ -6,6 +6,10 @@ sürdü, kuyruk boştu). Haftalık koşu her hafta bu listeyi gözden geçirir: 
 sıralar, yeni fikir ekler (açık madde ≤ 25). Biçim: `- [ ] R<n> (kanal) — **başlık** · neden · ne · Kabul: …`.
 `(Kaan kararı)` etiketli madde Kaan onaylamadan yapılmaz — onay/ret `user-tasks.md` ya da panelden gelir.
 
+## ⚠️ YENİ VİDEO YÖNÜ (Kaan kararı 2026-10-30) — video işleri önce `agent/plan/video-yon.md`
+Görsel dil kodla-animasyona geçti (izometrik veri animasyonu + el çizimi "Ekonomi Makinesi" serisi). R10/R13 bu dosyadaki
+V3/V-hacim kararıyla güncellendi; R14 (uzun video) → V5 olarak devam. Eski IG görsel kart cron'ları kapalı.
+
 ## Teşhis güncellemesi (haftalık koşu 2026-10-29)
 - W43 gerçek erişim 81 (9 haftanın en iyisi). GSC gösterimi 2x (4.196) ama tık 40'ta kaldı: artış p80+ sıralardan.
   Tıklar sosyal ödeme sayfalarından geliyor (doğum yardımı/evde bakım/engelli p8-22) → yeni küme B261029-1 (week T24-T31).

@@ -30,10 +30,10 @@
 0 16 * * * /root/parafomo/scripts/manim-daily.sh >> /root/parafomo/logs/manim-daily.log 2>&1
 
 # --- Instagram kartları (LLM yalnız tek cümlelik yorum; yoksa şablon) ---
-0 6 * * * /root/parafomo/scripts/altin-daily.sh >> /root/parafomo/logs/altin-ig.log 2>&1
-15 7 * * 1-5 /root/parafomo/scripts/bist-daily.sh acilis >> /root/parafomo/logs/bist.log 2>&1
-20 15 * * 1-5 /root/parafomo/scripts/bist-daily.sh kapanis >> /root/parafomo/logs/bist.log 2>&1
-45 6,9,12,15 * * * /root/parafomo/scripts/halka-arz-ig.sh >> /root/parafomo/logs/halka-arz-ig.log 2>&1
+# KAPALI 2026-10-30 (Kaan: eski stil IG görsel postları durdu, yeni stil Reels): 0 6 * * * /root/parafomo/scripts/altin-daily.sh >> /root/parafomo/logs/altin-ig.log 2>&1
+# KAPALI 2026-10-30 (Kaan: eski stil IG görsel postları durdu, yeni stil Reels): 15 7 * * 1-5 /root/parafomo/scripts/bist-daily.sh acilis >> /root/parafomo/logs/bist.log 2>&1
+# KAPALI 2026-10-30 (Kaan: eski stil IG görsel postları durdu, yeni stil Reels): 20 15 * * 1-5 /root/parafomo/scripts/bist-daily.sh kapanis >> /root/parafomo/logs/bist.log 2>&1
+# KAPALI 2026-10-30 (Kaan: eski stil IG görsel postları durdu, yeni stil Reels): 45 6,9,12,15 * * * /root/parafomo/scripts/halka-arz-ig.sh >> /root/parafomo/logs/halka-arz-ig.log 2>&1
 30 7,11,15 * * * /root/parafomo/scripts/spk-onay-ig.sh >> /root/parafomo/logs/spk-onay.log 2>&1
 
 # --- Veri + ölçüm (LLM yok) ---
