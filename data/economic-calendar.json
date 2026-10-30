@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-29",
+  "updated": "2026-10-30",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
@@ -95,7 +95,7 @@
     },
     {
       "date": "2026-10-30",
-      "time": "2:30am",
+      "time": "3:02am",
       "region": "JPY",
       "impact": "High",
       "title": "BOJ Policy Rate",
@@ -104,7 +104,7 @@
     },
     {
       "date": "2026-10-30",
-      "time": "2:30am",
+      "time": "3:02am",
       "region": "JPY",
       "impact": "High",
       "title": "Monetary Policy Statement",
@@ -113,7 +113,7 @@
     },
     {
       "date": "2026-10-30",
-      "time": "2:31am",
+      "time": "3:02am",
       "region": "JPY",
       "impact": "High",
       "title": "BOJ Outlook Report",

@@ -1,0 +1,70 @@
+{
+  "title": "Büyüme rakamı bugün çıkıyor, cebin neden etkilenir #Shorts",
+  "description": "Advance GDP verisi açıklanmadan önce, büyüme rakamının dolar, altın ve borsa üzerinden cebe nasıl yansıdığını sade bir dille anlatan kısa analiz.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #GDP #büyüme verisi #dolar #altın #borsa",
+  "tags": [
+    "GDP",
+    "büyüme verisi",
+    "dolar",
+    "altın",
+    "borsa",
+    "küresel ekonomi",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-buyume-rakami-bugun-cikiyor-cebin-neden-etkilenir.mp4",
+  "slug": "buyume-rakami-bugun-cikiyor-cebin-neden-etkilenir",
+  "format": "news_reaction",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 4.6,
+      "spoken": "Bugün açıklanan tek rakam dolarını da altınını da oynatır.",
+      "visual": "building: Bureau of Economic Analysis building"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 4.6,
+      "end": 13.64,
+      "spoken": "Bu rakam ABD'nin çeyrekte ne kadar büyüdüğü. Güçlü büyüme dolara para çeker, zayıfı ise faiz indirimi beklentisini artırır.",
+      "visual": "place: Federal Reserve building"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 13.64,
+      "end": 21.65,
+      "spoken": "Ama burada bir tuzak var: güçlü büyüme iyi haber gibi durur, faiz yüksek kalacak diye altın ve borsa baskı görebilir.",
+      "visual": "gold: gold bullion bars"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 21.65,
+      "end": 30.09,
+      "spoken": "Yani rakam hangi yönde çıkarsa çıksın, dolar kuru ve altın fiyatı değişir. Maaşını döviz ya da altınla kıyaslıyorsan, bugünün haberine bak.",
+      "visual": "object: smartphone banking app"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 30.09,
+      "end": 38.89,
+      "spoken": "Rakam çıktıktan sonra piyasa nasıl tepki verecek, yarın bakacağız. Abone ol, her gün 60 saniyede tek net analiz cebine gelsin.",
+      "visual": "building: Bureau of Economic Analysis building"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-29T06:37:07+00:00",
+    "slug": "buyume-rakami-bugun-cikiyor-cebin-neden-etkilenir",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "fLTt0nwOiX8",
+  "youtube_url": "https://youtube.com/shorts/fLTt0nwOiX8",
+  "ig_reel_id": "18093578852208305",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DfEYV9rE6X4/",
+  "ig_seed_comment_id": "18139871374619819"
+}

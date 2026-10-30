@@ -1,24 +1,24 @@
 {
   "_aciklama": "Güncel altın fiyatları (Truncgil v3). Site günlük rebuild'de tazelenir; anlık/kesin işlem fiyatı değildir, göstergedir.",
   "_kaynak": "finans.truncgil.com v3",
-  "guncellenme": "2026-10-29T09:00:36+03:00",
-  "guncellemeEtiket": "29 October 2026, 09:00",
+  "guncellenme": "2026-10-30T09:00:38+03:00",
+  "guncellemeEtiket": "30 October 2026, 09:00",
   "kalemler": [
     {
       "key": "gram-altin",
       "label": "Gram Altın",
       "gram": 1.0,
       "ayar": "24 (995)",
-      "alis": 6447.69,
-      "satis": 6448.57
+      "alis": 6409.06,
+      "satis": 6410.09
     },
     {
       "key": "gram-has-altin",
       "label": "Has Altın (24 ayar)",
       "gram": 1.0,
       "ayar": "24 (999)",
-      "alis": 6415.45,
-      "satis": 6416.33
+      "alis": 6377.02,
+      "satis": 6378.04
     },
     {
       "key": "ceyrek-altin",
@@ -89,8 +89,8 @@
       "label": "Ons Altın (USD)",
       "gram": 31.1035,
       "ayar": "24",
-      "alis": 4024.2,
-      "satis": 4024.75
+      "alis": 3991.06,
+      "satis": 3991.7
     }
   ]
 }
