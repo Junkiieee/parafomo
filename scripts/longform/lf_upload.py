@@ -129,7 +129,16 @@ def publish(a):
     return 0
 
 
+VENV_PY = "/root/.venvs/parafomo/bin/python"
+
+
 def main():
+    try:
+        import googleapiclient  # noqa: F401
+    except ImportError:  # sistem python'u → Google kütüphaneleri proje venv'inde
+        if os.path.exists(VENV_PY) and sys.executable != VENV_PY:
+            os.execv(VENV_PY, [VENV_PY] + sys.argv)
+        raise
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     u = sub.add_parser("upload")

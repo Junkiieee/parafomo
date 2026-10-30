@@ -1,0 +1,643 @@
+{
+  "title": "2027 Yeniden Değerleme Oranı Tahmini %27,8: MTV ve Harçlar",
+  "description": "2027 yeniden değerleme oranı, Eylül 2026 Yİ-ÜFE verisine göre tahminen %27,81. Bu videoda MTV, pasaport ve ehliyet harcı, IMEI kayıt ücreti, emlak vergisi ve gelir vergisi dilimlerinin 2027'de ne kadar olabileceğini 2026 tutarları üzerinden kalem kalem görüyorsun. Örneğin en düşük otomobil MTV'si 5.750 TL'den yaklaşık 7.349 TL'ye çıkabilir.\n\nRakamlar resmî Yİ-ÜFE verisine ve 2026'da uygulanan resmî tutarlara dayanır. Oran henüz tahmin. Kesin oran 3 Kasım'da açıklanacak Ekim verisiyle netleşecek. Cumhurbaşkanı kararıyla bazı kalemlerde indirimli oran uygulanabilir. Bu video bilgilendirme amaçlıdır.",
+  "tags": [
+    "2027 yeniden değerleme oranı",
+    "yeniden değerleme oranı 2027",
+    "2027 MTV",
+    "MTV 2027 ne kadar",
+    "2027 zamları",
+    "emlak vergisi 2027",
+    "pasaport harcı 2027",
+    "ehliyet harcı 2027",
+    "IMEI kayıt ücreti 2027",
+    "gelir vergisi dilimleri 2027",
+    "Yİ-ÜFE"
+  ],
+  "thumbnail": {
+    "top": "En ucuz araba",
+    "big": "7.349 TL",
+    "bottom": "Ocak'ta"
+  },
+  "chapters": [
+    {
+      "title": "Zamların tek sayısı",
+      "beats": [
+        {
+          "say": "1 Ocak 2027'de motorlu taşıtlar vergisi, yani MTV, pasaport ve ehliyet harcı, hatta emlak vergisi birlikte artacak. Hepsini tek bir sayı belirliyor: yeniden değerleme oranı.",
+          "show": {
+            "kind": "title",
+            "badge": "TAHMİN",
+            "headline": "2027 zamlarını belirleyen tek sayı",
+            "sub": "MTV, harç, emlak vergisi: hepsi 1 Ocak'ta"
+          }
+        },
+        {
+          "say": "Eylül verisine göre bu oranın tahmini yüzde 27,81. Altını çiziyorum, bu bir tahmin. Kesin oran 3 Kasım'da belli olacak.",
+          "show": {
+            "kind": "bigstat",
+            "label": "2027 oranı, Eylül tahmini",
+            "value": "%27,81",
+            "note": "Kesin oran 3 Kasım'da Ekim verisiyle netleşir",
+            "badge": "TAHMİN"
+          }
+        },
+        {
+          "say": "Tahmin tutarsa, 2026'da 5.750 lira olan en düşük otomobil MTV'si yaklaşık 7.349 liraya çıkıyor. Ama bu tutarı aşağı çekebilecek bir karar ihtimali de var.",
+          "show": {
+            "kind": "compare",
+            "label": "En düşük otomobil MTV'si",
+            "before_label": "2026",
+            "before": "5.750 TL",
+            "after_label": "2027 tahmini",
+            "after": "≈7.349 TL",
+            "note": "İndirim kararı çıkarsa daha düşük kalabilir"
+          }
+        },
+        {
+          "say": "Pasaporttan telefona, evinin vergisinden maaş dilimine kadar hepsine kalem kalem bakacağız. Ama önce şu soru: bu oran nereden çıkıyor?",
+          "show": {
+            "kind": "bullets",
+            "title": "Bu videoda",
+            "items": [
+              "MTV ve indirim ihtimali",
+              "Pasaport, ehliyet, IMEI harcı",
+              "Emlak vergisinde kural değişti",
+              "Gelir vergisi dilimi ve Ocak öncesi"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Oran nasıl hesaplanır",
+      "beats": [
+        {
+          "say": "Yeniden değerleme oranı, Vergi Usul Kanunu'nun mükerrer 298. maddesine göre hesaplanan bir enflasyon düzeltme katsayısı. Amacı, kanunda lira olarak yazılı sabit tutarların enflasyonla erimesini önlemek.",
+          "show": {
+            "kind": "chapter"
+          }
+        },
+        {
+          "say": "Hesapta Yurt İçi Üretici Fiyat Endeksi, yani üretici enflasyonu kullanılıyor. Ekim verisi gelince son 12 ayın ortalaması önceki 12 ayın ortalamasıyla karşılaştırılıyor. Aradaki artış ertesi yılın oranı oluyor.",
+          "show": {
+            "kind": "steps",
+            "title": "Oran böyle hesaplanır",
+            "lines": [
+              "Ekim Yİ-ÜFE verisi gelir",
+              "Son 12 ayın ortalama endeksi",
+              "÷ önceki 12 ayın ortalaması",
+              "= ertesi yılın oranı"
+            ]
+          }
+        },
+        {
+          "say": "Dikkat, esas alınan tüketici enflasyonu değil, üretici enflasyonu. Bu yüzden oran, manşette okuduğun enflasyondan farklı çıkabilir.",
+          "show": {
+            "kind": "compare",
+            "label": "Hangi enflasyon?",
+            "before_label": "Manşette okuduğun",
+            "before": "TÜFE",
+            "after_label": "Oranı belirleyen",
+            "after": "Yİ-ÜFE"
+          }
+        },
+        {
+          "say": "Son aylarda yıllık üretici enflasyonu Mayıs'taki yüzde 28,93'ten Eylül'de yüzde 27,38'e geriledi. Eylül itibarıyla 12 aylık ortalamalara göre artış ise yüzde 27,81.",
+          "show": {
+            "kind": "bars",
+            "title": "Yıllık Yİ-ÜFE, 2026",
+            "items": [
+              {
+                "label": "Mayıs",
+                "value": 28.93,
+                "text": "%28,93"
+              },
+              {
+                "label": "Haziran",
+                "value": 28.09,
+                "text": "%28,09"
+              },
+              {
+                "label": "Temmuz",
+                "value": 27.83,
+                "text": "%27,83"
+              },
+              {
+                "label": "Ağustos",
+                "value": 27.95,
+                "text": "%27,95"
+              },
+              {
+                "label": "Eylül",
+                "value": 27.38,
+                "text": "%27,38"
+              }
+            ],
+            "highlight": "Eylül"
+          }
+        },
+        {
+          "say": "Geriye yalnız Ekim verisi kaldı ve tek bir ayın ortalamayı oynatma gücü sınırlı. Bu yüzden oranın yüzde 27 ile 29 bandında kesinleşmesi güçlü ihtimal. Ama bu hâlâ bir tahmin.",
+          "show": {
+            "kind": "bigstat",
+            "label": "Olası kesinleşme bandı",
+            "value": "%27-29",
+            "note": "Güçlü ihtimal, ama hâlâ tahmin",
+            "badge": "TAHMİN"
+          }
+        },
+        {
+          "say": "Geçmişe bakınca oran 2023'te yüzde 122,93 ile rekor kırdı, 2026'da yüzde 25,49'a indi. 2027 tahmini bunun biraz üzerinde. Yani üretici fiyatlarındaki yavaşlama duraksadı.",
+          "show": {
+            "kind": "bars",
+            "title": "İlan edilen yeniden değerleme oranı",
+            "items": [
+              {
+                "label": "2022",
+                "value": 36.2,
+                "text": "%36,20"
+              },
+              {
+                "label": "2023",
+                "value": 122.93,
+                "text": "%122,93"
+              },
+              {
+                "label": "2024",
+                "value": 58.46,
+                "text": "%58,46"
+              },
+              {
+                "label": "2025",
+                "value": 43.93,
+                "text": "%43,93"
+              },
+              {
+                "label": "2026",
+                "value": 25.49,
+                "text": "%25,49"
+              },
+              {
+                "label": "2027",
+                "value": 27.8,
+                "text": "≈%27,8 tahmin"
+              }
+            ],
+            "highlight": "2027"
+          }
+        },
+        {
+          "say": "Bir şeyi de netleştirelim. Emekli zammı, memur zammı ve asgari ücret bu orana bağlı değil. Bu oran yalnız sabit vergi, harç ve cezaları belirliyor.",
+          "show": {
+            "kind": "table",
+            "title": "Bu orana bağlı olmayanlar",
+            "cols": [
+              "Kalem",
+              "Neye bağlı?"
+            ],
+            "rows": [
+              [
+                "SSK/Bağ-Kur emekli zammı",
+                "Temmuz-Aralık 2026 birikimli TÜFE"
+              ],
+              [
+                "Memur zammı",
+                "Toplu sözleşme + enflasyon farkı"
+              ],
+              [
+                "Asgari ücret",
+                "Asgari Ücret Tespit Komisyonu"
+              ]
+            ],
+            "note": "Yeniden değerleme oranı yalnız maktu vergi, harç ve cezalar"
+          }
+        },
+        {
+          "say": "Takvim şöyle: 3 Kasım'da Ekim verisi gelir, oran netleşir. Kasım sonunda tebliğ Resmî Gazete'de çıkar, 1 Ocak 2027'de yeni tutarlar başlar. Ama Aralık'ta araya bir karar girebilir. Geçen yıl tam da bu oldu.",
+          "show": {
+            "kind": "timeline",
+            "title": "2027 oranının takvimi",
+            "items": [
+              {
+                "date": "3 Kasım",
+                "text": "Ekim Yİ-ÜFE, oran netleşir",
+                "hot": true
+              },
+              {
+                "date": "Kasım sonu",
+                "text": "Tebliğ Resmî Gazete'de"
+              },
+              {
+                "date": "Aralık",
+                "text": "Olası indirimli oran kararları"
+              },
+              {
+                "date": "1 Ocak 2027",
+                "text": "Yeni tutarlar yürürlükte"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "MTV ne kadar olacak",
+      "beats": [
+        {
+          "say": "MTV, zam sezonunun en çok merak edilen kalemi. Ve burada oran her zaman olduğu gibi uygulanmıyor.",
+          "show": {
+            "kind": "chapter"
+          }
+        },
+        {
+          "say": "2026'da oran yüzde 25,49 ilan edildi. Ama MTV, harç ve damga vergisinde Cumhurbaşkanı kararıyla yüzde 18,95 artış uygulandı.",
+          "show": {
+            "kind": "compare",
+            "label": "2026'da oran ve uygulanan",
+            "before_label": "İlan edilen oran",
+            "before": "%25,49",
+            "after_label": "MTV'de uygulanan",
+            "after": "%18,95",
+            "note": "Cumhurbaşkanı kararıyla"
+          }
+        },
+        {
+          "say": "İndirim gelmezse hesap basit. 2026'da 5.750 lira olan en düşük otomobil MTV'si, tahmini yüzde 27,8 artışla yaklaşık 7.349 lira olur.",
+          "show": {
+            "kind": "steps",
+            "title": "En düşük otomobil MTV'si",
+            "lines": [
+              "1-3 yaş, 1300 cc altı",
+              "2026 tutarı: 5.750 TL",
+              "+ tahmini artış ≈%27,8",
+              "= ≈7.349 TL"
+            ]
+          }
+        },
+        {
+          "say": "Örnek araçlarda da tablo benzer. Fiat Egea'nın 12.028 liralık MTV'si yaklaşık 15.372 liraya, Togg T10X'in 17.505 liralık MTV'si yaklaşık 22.373 liraya çıkıyor.",
+          "show": {
+            "kind": "table",
+            "title": "Örnek araçlarda MTV",
+            "cols": [
+              "Araç",
+              "2026",
+              "2027 tahmini"
+            ],
+            "rows": [
+              [
+                "En düşük otomobil",
+                "5.750 TL",
+                "≈7.349 TL"
+              ],
+              [
+                "Fiat Egea",
+                "12.028 TL",
+                "≈15.372 TL"
+              ],
+              [
+                "Togg T10X",
+                "17.505 TL",
+                "≈22.373 TL"
+              ]
+            ],
+            "note": "Tahmini oran ≈%27,8; kesin tutar Resmî Gazete'de"
+          }
+        },
+        {
+          "say": "Peki geçen yılki gibi indirim gelirse? Örneğin yüzde 20 uygulanırsa en düşük MTV yaklaşık 6.900 lirada kalır. Bu karar Aralık'ta belli olacak.",
+          "show": {
+            "kind": "compare",
+            "label": "İndirimli senaryo, en düşük MTV",
+            "before_label": "≈%27,8 ile",
+            "before": "≈7.349 TL",
+            "after_label": "%20 ile",
+            "after": "≈6.900 TL",
+            "note": "Karar Aralık'ta Resmî Gazete'de"
+          }
+        },
+        {
+          "say": "MTV iki taksitte ödenir, Ocak ve Temmuz. Yani artış ilk olarak Ocak taksitinde cebine yansır. Ama zam yalnız arabada değil. Çekmecendeki pasaport da sırada.",
+          "show": {
+            "kind": "timeline",
+            "title": "MTV taksitleri",
+            "items": [
+              {
+                "date": "Ocak",
+                "text": "Artış ilk bu taksitte",
+                "hot": true
+              },
+              {
+                "date": "Temmuz",
+                "text": "İkinci taksit"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Pasaport, ehliyet, IMEI",
+      "beats": [
+        {
+          "say": "Harçlar Kanunu'ndaki tüm sabit tutarlar da aynı oranla güncellenir. Pasaport, ehliyet ve telefon kaydı tam bu gruptadır.",
+          "show": {
+            "kind": "chapter"
+          }
+        },
+        {
+          "say": "Tahmini oranla 10 yıllık pasaport harcı 13.410 liradan yaklaşık 17.139 liraya, B sınıfı ehliyet harcı 6.755 liradan yaklaşık 8.633 liraya çıkıyor.",
+          "show": {
+            "kind": "table",
+            "title": "Pasaport ve ehliyet harcı",
+            "cols": [
+              "Harç",
+              "2026",
+              "2027 tahmini"
+            ],
+            "rows": [
+              [
+                "10 yıllık pasaport, defter hariç",
+                "13.410 TL",
+                "≈17.139 TL"
+              ],
+              [
+                "B sınıfı ehliyet",
+                "6.755 TL",
+                "≈8.633 TL"
+              ]
+            ],
+            "note": "Tahmini oran ≈%27,8 ile"
+          }
+        },
+        {
+          "say": "Bir uyarı. 2026'da 10 yıllık pasaportun toplam maliyeti, 1.351 liralık defter bedeliyle 14.761 lira idi. Defter bedeli ayrı belirlendiği için toplam maliyet tahminden biraz sapabilir.",
+          "show": {
+            "kind": "bigstat",
+            "label": "2026 pasaport toplam maliyeti",
+            "value": "14.761 TL",
+            "note": "1.351 TL defter bedeli dahil; defter ayrı belirlenir"
+          }
+        },
+        {
+          "say": "Yurt dışından getirdiğin telefon için ödenen IMEI kayıt harcı, yani cihazın kimlik numarasını kaydettirme ücreti de sabit bir harç. 2026'da 54.258 lira. Tahmini oranla yaklaşık 69.347 liraya çıkabilir.",
+          "show": {
+            "kind": "compare",
+            "label": "IMEI kayıt ücreti",
+            "before_label": "2026",
+            "before": "54.258 TL",
+            "after_label": "2027 tahmini",
+            "after": "≈69.347 TL"
+          }
+        },
+        {
+          "say": "Trafik cezalarında durum farklı. Cezalar 27 Şubat 2026'da yürürlüğe giren 7574 sayılı Kanun'la doğrudan yeni tutarlarla belirlendi. 2027'de artış olup olmayacağında hukukçular ayrışıyor.",
+          "show": {
+            "kind": "bullets",
+            "title": "Trafik cezasında belirsizlik",
+            "items": [
+              "7574 sayılı Kanun, 27 Şubat 2026",
+              "Cezalar doğrudan yeni tutarla belirlendi",
+              "2027 artışında hukukçular ayrışıyor"
+            ]
+          }
+        },
+        {
+          "say": "Örneğin 2.500 liralık emniyet kemeri cezası, tahmini oranla yaklaşık 3.195 lira olur. Ama bu kesin değil. Asıl sürpriz ise evinin vergisinde.",
+          "show": {
+            "kind": "bigstat",
+            "label": "Emniyet kemeri cezası, 2026",
+            "value": "2.500 TL",
+            "note": "2027 tahmini ≈3.195 TL; artış belirsiz",
+            "badge": "BELİRSİZ"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Emlak vergisi sürprizi",
+      "beats": [
+        {
+          "say": "Emlak vergisinde önemli bir değişiklik var. Aralık 2025'te çıkan 7566 sayılı Kanun'la Emlak Vergisi Kanunu'nun 29. maddesi değişti.",
+          "show": {
+            "kind": "chapter"
+          }
+        },
+        {
+          "say": "Maddedeki, oranın yarısı nispetinde ifadesi kaldırıldı. Yerine yalnızca, yeniden değerleme oranında yazıldı.",
+          "show": {
+            "kind": "quote",
+            "text": "“…yeniden değerleme oranının yarısı nispetinde…” yerine “…yeniden değerleme oranında…”",
+            "source": "Emlak Vergisi Kanunu md. 29, 7566 sayılı Kanun ile değişik"
+          }
+        },
+        {
+          "say": "Yani bina ve arazinin vergi değeri, takdir yapılmayan yıllarda artık oranın yarısı kadar değil, tamamı kadar artıyor. 2027, bu kuralın uygulanacağı ilk yıl.",
+          "show": {
+            "kind": "compare",
+            "label": "Vergi değeri artışı",
+            "before_label": "Eski kural",
+            "before": "Oranın yarısı",
+            "after_label": "7566 sayılı Kanun",
+            "after": "Oranın tamamı"
+          }
+        },
+        {
+          "say": "Bu yüzden 2027 emlak vergisi yaklaşık yüzde 27,8 artar. Tek fren yine Cumhurbaşkanı, bu artışı sıfıra kadar indirebilir.",
+          "show": {
+            "kind": "bigstat",
+            "label": "2027 emlak vergisi artışı",
+            "value": "≈%27,8",
+            "note": "Cumhurbaşkanı sıfıra kadar indirebilir",
+            "badge": "TAHMİN"
+          }
+        },
+        {
+          "say": "Miras tarafı da etkileniyor. 2026'da çocuk ve eş başına 2.907.136 lira olan miras istisnası, 2027'de yaklaşık 3.715.610 liraya çıkar. Peki maaşından kesilen vergi? Orada ters yönde bir risk var.",
+          "show": {
+            "kind": "compare",
+            "label": "Miras istisnası, çocuk ve eş başına",
+            "before_label": "2026",
+            "before": "2.907.136 TL",
+            "after_label": "2027 tahmini",
+            "after": "≈3.715.610 TL"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Gelir vergisi dilimi",
+      "beats": [
+        {
+          "say": "Gelir vergisi dilimleri de kural olarak bu oranla artırılır. Ama uygulama farklı olabiliyor.",
+          "show": {
+            "kind": "chapter"
+          }
+        },
+        {
+          "say": "2026'da ilk dilim 158.000 liradan 190.000 liraya, yani yaklaşık yüzde 20 yükseltildi. İlan edilen yüzde 25,49'un altında kaldı.",
+          "show": {
+            "kind": "compare",
+            "label": "Gelir vergisi ilk dilim sınırı",
+            "before_label": "2025",
+            "before": "158.000 TL",
+            "after_label": "2026",
+            "after": "190.000 TL",
+            "note": "Artış yaklaşık %20"
+          }
+        },
+        {
+          "say": "2027'de tahmini oran uygulanırsa ilk dilim sınırı yaklaşık 242.800 lira olur. Yüzde 20 gibi indirimli bir artışta ise yaklaşık 228.000 lirada kalır.",
+          "show": {
+            "kind": "table",
+            "title": "2027 ilk dilim sınırı",
+            "cols": [
+              "Senaryo",
+              "İlk dilim sınırı"
+            ],
+            "rows": [
+              [
+                "2026",
+                "190.000 TL"
+              ],
+              [
+                "2027, ≈%27,8",
+                "≈242.800 TL"
+              ],
+              [
+                "2027, %20",
+                "≈228.000 TL"
+              ]
+            ],
+            "note": "Tahmin; kesin dilimler ayrıca açıklanır"
+          }
+        },
+        {
+          "say": "Dilimler yavaş artarsa maaşın reel olarak aynı kalsa bile üst dilime daha erken girersin. Buna vergi dilimi sürüklenmesi deniyor. Peki Ocak gelmeden sen ne yapabilirsin?",
+          "show": {
+            "kind": "bullets",
+            "title": "Vergi dilimi sürüklenmesi",
+            "items": [
+              "Dilimler yavaş artar",
+              "Maaş reel olarak aynı kalır",
+              "Üst dilime daha erken girersin"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Ocak'tan önce ne yapmalı",
+      "beats": [
+        {
+          "say": "Ocak gelmeden yapabileceğin birkaç basit şey var.",
+          "show": {
+            "kind": "chapter"
+          }
+        },
+        {
+          "say": "Birincisi, bütçene zam kalemlerini ekle. MTV, sigorta ve harç gibi Ocak ödemelerini 2026 tutarının yaklaşık 1,28 katı olarak planla.",
+          "show": {
+            "kind": "bigstat",
+            "label": "Ocak ödemeleri için çarpan",
+            "value": "≈1,28 kat",
+            "note": "2026 tutarı üzerinden, tahmini orana göre"
+          }
+        },
+        {
+          "say": "İkincisi, ertelenebilir işlemleri öne çek. Pasaport yenileme, IMEI kaydı ya da ehliyet harcını 31 Aralık'tan önce yaparsan 2026 tarifesinden ödersin.",
+          "show": {
+            "kind": "bullets",
+            "title": "31 Aralık'tan önce",
+            "items": [
+              "Pasaport yenileme",
+              "IMEI kaydı",
+              "Ehliyet harcı",
+              "2026 tarifesinden ödersin"
+            ]
+          }
+        },
+        {
+          "say": "Üçüncüsü, 3 Kasım'ı takip et. Oran o gün netleşir. Dördüncüsü, Aralık'taki indirim kararlarını bekle ve kesin tutarı Resmî Gazete'den doğrula.",
+          "show": {
+            "kind": "timeline",
+            "title": "Takip edeceğin tarihler",
+            "items": [
+              {
+                "date": "3 Kasım",
+                "text": "Oran netleşir",
+                "hot": true
+              },
+              {
+                "date": "Aralık",
+                "text": "İndirim kararlarını izle, doğrula"
+              }
+            ]
+          }
+        },
+        {
+          "say": "Beşincisi, ücretliysen 2027 dilimleri açıklanınca aylık netinin hangi ayda düşeceğini hesapla. Son olarak hepsini tek bakışta toparlayalım.",
+          "show": {
+            "kind": "steps",
+            "title": "Ücretliysen",
+            "lines": [
+              "2027 dilimleri açıklanır",
+              "Kendi maaşına uygula",
+              "= netin hangi ayda düşer, gör"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Özet",
+      "beats": [
+        {
+          "say": "Kısaca, Eylül verisine göre 2027 yeniden değerleme oranı tahmini yaklaşık yüzde 27,8. Kesin oran 3 Kasım'da hesaben, Kasım sonunda tebliğle belli olacak.",
+          "show": {
+            "kind": "chapter"
+          }
+        },
+        {
+          "say": "MTV, harçlar ve emlak vergisi bu orana bağlı. Cumhurbaşkanı bazı kalemlerde daha düşük oran uygulatabilir. Emlak vergisinde artık oranın tamamı geçerli. Emekli zammı, memur zammı ve asgari ücret ise bu orana bağlı değil.",
+          "show": {
+            "kind": "bullets",
+            "title": "Akılda kalsın",
+            "items": [
+              "MTV, harç, emlak vergisi bu orana bağlı",
+              "Bazı kalemlerde indirim kararı gelebilir",
+              "Emlak vergisinde artık oranın tamamı",
+              "Emekli, memur, asgari ücret bağlı değil"
+            ]
+          }
+        },
+        {
+          "say": "Bu video bilgilendirme amaçlıdır, yatırım veya vergi tavsiyesi değildir. Tutarlar tahmindir. Kesin değerler Resmî Gazete'de yayımlanan tebliğ ve kararlarla belirlenir.",
+          "show": {
+            "kind": "bullets",
+            "title": "Yasal not",
+            "items": [
+              "Bilgilendirme amaçlıdır",
+              "Yatırım veya vergi tavsiyesi değildir",
+              "Tutarlar tahmindir",
+              "Kesin değer Resmî Gazete'de belirlenir"
+            ]
+          }
+        },
+        {
+          "say": "Kendi aracının MTV'sini parafomo.com'daki MTV hesaplama aracında, güncel oranı da yeniden değerleme oranı sayfasında görebilirsin. Linkler açıklamada. 3 Kasım'da kesin oran gelince kaçırmamak için abone ol.",
+          "show": {
+            "kind": "cta",
+            "headline": "Kendi MTV'ni hesapla",
+            "url": "parafomo.com/mtv-hesaplama",
+            "sub": "Link açıklamada"
+          }
+        }
+      ]
+    }
+  ],
+  "slug": "lf-2027-zamlari-pilot",
+  "link": "/yeniden-degerleme-orani/",
+  "source": "/blog/2027-zamlari-yeniden-degerleme-orani-rehberi/"
+}
