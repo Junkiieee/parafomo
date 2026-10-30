@@ -2,7 +2,7 @@
 """
 ParaFOMO — YouTube Shorts yükleyici.
 
-shorts-build.py'nin ürettiği public/social/short-<slug>.json metasını okur ve
+shorts-build-v4.py'nin ürettiği public/social/short-<slug>.json metasını okur ve
 videoyu YouTube'a yükler. OAuth refresh-token ~/.config/parafomo/youtube_oauth.json'da.
 
 Kullanım:
@@ -220,7 +220,7 @@ def main():
 
     meta_path = os.path.join(OUT_DIR, f"short-{args.slug}.json")
     if not os.path.exists(meta_path):
-        print(f"HATA: meta yok: {meta_path} (önce shorts-build.py çalıştır)"); return 1
+        print(f"HATA: meta yok: {meta_path} (önce shorts-build-v4.py çalıştır)"); return 1
     meta = json.load(open(meta_path, encoding="utf-8"))
     video = meta["file"]
     if not os.path.exists(video):

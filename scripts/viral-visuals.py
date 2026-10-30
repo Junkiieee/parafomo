@@ -32,6 +32,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = "/root/.cache/parafomo/viral-visuals"
 UA = "ParaFOMO/1.0 (https://parafomo.com; mailto:contact@parafomo.com)"
 
+# Grafik fontu: video hattının (shorts-build-v4 SANS_B / ASS altyazı / Manim) kalın sans'ı ile aynı.
+SANS_B = "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"
+
 W, H = 1296, 2304   # make_clip'in beklediği B-roll boyutu (sonra 1080x1920'ye crop'lanır)
 FPS = 30
 
@@ -163,8 +166,62 @@ def wikimedia_image(query, out_img, want_portrait=True):
 
 # ---------------------------------------------------------------- Pexels (stok)
 
-def pexels_video(query, out_mp4):
-    """Dikey stok video indirir (cache'li). Döner: dict veya None."""
+# Stok klip tekrarını önleme: son kullanılan klip kimlikleri (MRU). Aynı sorgu artık her videoda
+# aynı klibi getirmez; aday listesinden son STOCK_RECENT_N kullanımda olmayan ilk klip seçilir.
+STOCK_RECENT = os.path.join(os.path.dirname(CACHE), "stock-recent.json")
+STOCK_RECENT_N = 60   # ≈ son 12 video (video başına ~5 stok sahne)
+
+
+def _recent_load():
+    try:
+        v = json.load(open(STOCK_RECENT, encoding="utf-8"))
+        return [str(x) for x in v][-STOCK_RECENT_N:] if isinstance(v, list) else []
+    except Exception:
+        return []
+
+
+def _recent_mark(clip_id):
+    try:
+        lst = [x for x in _recent_load() if x != clip_id] + [clip_id]
+        os.makedirs(os.path.dirname(STOCK_RECENT), exist_ok=True)
+        tmp = f"{STOCK_RECENT}.{os.getpid()}.tmp"
+        json.dump(lst[-STOCK_RECENT_N:], open(tmp, "w", encoding="utf-8"))
+        os.replace(tmp, STOCK_RECENT)
+    except Exception as e:
+        print(f"[i] stok geçmişi yazılamadı: {str(e)[:60]}")
+
+
+def _pick_fresh(cands, recent):
+    """cands: kaliteye göre sıralı [(clip_id, url)]. Son kullanılmayan ilk aday; hepsi yakın
+    zamanda kullanıldıysa en ESKİ kullanılanı (MRU listesinde en baştaki) döndürür."""
+    if not cands:
+        return None
+    rset = set(recent)
+    for c in cands:
+        if c[0] not in rset:
+            return c
+    order = {cid: i for i, cid in enumerate(recent)}
+    return min(cands, key=lambda c: order.get(c[0], -1))
+
+
+def _fetch_clip(clip_id, url, out_mp4, cache_dir):
+    """Klibi klip-kimliğiyle anahtarlı cache'ten verir; yoksa indirip cache'e yazar."""
+    target = out_mp4
+    if cache_dir:
+        os.makedirs(cache_dir, exist_ok=True)
+        target = os.path.join(cache_dir, f"stock_{_slug(clip_id)}.mp4")
+    if not (os.path.exists(target) and os.path.getsize(target) > 10000):
+        part = f"{target}.{os.getpid()}.part"
+        dreq = urllib.request.Request(url, headers={"User-Agent": UA})
+        with urllib.request.urlopen(dreq, timeout=60) as r, open(part, "wb") as o:
+            o.write(r.read())
+        os.replace(part, target)
+    if target != out_mp4:
+        subprocess.run(["cp", target, out_mp4], check=True)
+
+
+def pexels_video(query, out_mp4, recent=(), cache_dir=None):
+    """Dikey stok video indirir (klip-kimliğiyle cache'li, son kullanılanları atlar). Döner: dict veya None."""
     key = os.environ.get("PEXELS_API_KEY")
     if not key:
         return None
@@ -176,28 +233,34 @@ def pexels_video(query, out_mp4):
         vids = data.get("videos", [])
         if not vids:
             return None
-        best = None
-        for v in vids:
-            for f in v["video_files"]:
+        cands = []   # (skor, sıra, clip_id, link) — skor: 1920'ye yakın dikey dosya
+        for rank, v in enumerate(vids):
+            files = v.get("video_files") or []
+            best = None
+            for f in files:
                 h, w = f.get("height") or 0, f.get("width") or 0
                 if h >= w and 1080 <= h <= 2200:
                     score = abs(h - 1920)
                     if best is None or score < best[0]:
                         best = (score, f["link"])
-        if not best:
-            f = max(vids[0]["video_files"], key=lambda f: f.get("height", 0))
-            best = (0, f["link"])
-        dreq = urllib.request.Request(best[1], headers={"User-Agent": UA})
-        with urllib.request.urlopen(dreq, timeout=60) as r, open(out_mp4, "wb") as o:
-            o.write(r.read())
+            if not best and files:
+                f = max(files, key=lambda f: f.get("height") or 0)
+                best = (10_000, f["link"])
+            if best:
+                cands.append((best[0], rank, f"pexels_{v.get('id', rank)}", best[1]))
+        cands.sort()
+        pick = _pick_fresh([(c[2], c[3]) for c in cands], recent)
+        if not pick:
+            return None
+        _fetch_clip(pick[0], pick[1], out_mp4, cache_dir)
         return {"source": "Pexels", "license": "Pexels License", "need_attribution": False,
-                "credit": f"Pexels — {query}"}
+                "credit": f"Pexels — {query}", "clip_id": pick[0]}
     except Exception as e:
         print(f"[i] Pexels '{query}' alınamadı: {str(e)[:70]}")
         return None
 
 
-def pixabay_video(query, out_mp4):
+def pixabay_video(query, out_mp4, recent=(), cache_dir=None):
     """Pixabay'dan dikey (yoksa yatay, crop'lanır) stok video indirir. Döner: dict/None.
     Pexels'in yanında ikinci ücretsiz kaynak → daha çok çeşit/kalite seçeneği."""
     key = os.environ.get("PIXABAY_API_KEY")
@@ -211,39 +274,45 @@ def pixabay_video(query, out_mp4):
         hits = data.get("hits", [])
         if not hits:
             return None
-        # dikeyi tercih et (h>=w); yoksa en iyi çözünürlüğü al (make_clip zaten crop eder)
-        best = None  # (dikey_mi, yükseklik, url)
-        for h in hits:
+        # klip başına en iyi boyut; dikeyi tercih et (h>=w), sonra çözünürlük (make_clip zaten crop eder)
+        cands = []  # (dikey_mi, yükseklik, -sıra, clip_id, url)
+        for rank, h in enumerate(hits):
+            best = None
             for size in ("large", "medium", "small"):
                 f = (h.get("videos") or {}).get(size) or {}
                 lnk, ht, wd = f.get("url"), f.get("height") or 0, f.get("width") or 0
                 if not lnk:
                     continue
-                vertical = ht >= wd
-                cand = (vertical, ht, lnk)
-                if best is None or (cand[0], cand[1]) > (best[0], best[1]):
+                cand = (ht >= wd, ht, lnk)
+                if best is None or cand[:2] > best[:2]:
                     best = cand
-        if not best:
+            if best:
+                cands.append((best[0], best[1], -rank, f"pixabay_{h.get('id', rank)}", best[2]))
+        cands.sort(reverse=True)
+        pick = _pick_fresh([(c[3], c[4]) for c in cands], recent)
+        if not pick:
             return None
-        dreq = urllib.request.Request(best[2], headers={"User-Agent": UA})
-        with urllib.request.urlopen(dreq, timeout=60) as r, open(out_mp4, "wb") as o:
-            o.write(r.read())
+        _fetch_clip(pick[0], pick[1], out_mp4, cache_dir)
         return {"source": "Pixabay", "license": "Pixabay License", "need_attribution": False,
-                "credit": f"Pixabay — {query}"}
+                "credit": f"Pixabay — {query}", "clip_id": pick[0]}
     except Exception as e:
         print(f"[i] Pixabay '{query}' alınamadı: {str(e)[:70]}")
         return None
 
 
-def stock_video(query, out_mp4):
+def stock_video(query, out_mp4, cache_dir=None):
     """Pexels + Pixabay'ı BERABER kullanır: sorguya göre rotasyonla birinden başlar,
-    boş dönerse diğerine düşer → iki kütüphanenin çeşitliliği + dayanıklılık."""
+    boş dönerse diğerine düşer → iki kütüphanenin çeşitliliği + dayanıklılık.
+    Son kullanılan klipler atlanır (STOCK_RECENT); cache klip kimliğiyle anahtarlıdır."""
     order = [pexels_video, pixabay_video]
     if abs(hash(query)) % 2:
         order.reverse()
+    recent = _recent_load()
     for fn in order:
-        r = fn(query, out_mp4)
+        r = fn(query, out_mp4, recent=recent, cache_dir=cache_dir)
         if r and os.path.exists(out_mp4) and os.path.getsize(out_mp4) > 10000:
+            if r.get("clip_id"):
+                _recent_mark(r["clip_id"])
             return r
     return None
 
@@ -272,9 +341,11 @@ def render_chart(payload, out_img):
     # kalın sans yükle (video ile tutarlı)
     try:
         font_manager.fontManager.addfont(SANS_B)
-        plt.rcParams["font.family"] = font_manager.FontProperties(fname=SANS_B).get_name()
-    except Exception:
-        pass
+        # Liberation Sans'ta ₺ (U+20BA) yok → glif bazlı yedek DejaVu Sans (matplotlib ≥3.6)
+        plt.rcParams["font.family"] = [font_manager.FontProperties(fname=SANS_B).get_name(),
+                                       "DejaVu Sans"]
+    except Exception as e:
+        print(f"[i] grafik fontu yüklenemedi ({str(e)[:60]}) → varsayılan font")
 
     dpi = 200
     fig = plt.figure(figsize=(W / dpi, H / dpi), dpi=dpi)
@@ -409,11 +480,31 @@ def resolve(spec, dur, out_mp4, cache_dir=CACHE):
     #    fotoğrafı getiriyordu → doğrudan stok videoya.
     if typ in ENTITY_TYPES and typ not in {"object", "thing"}:
         img = os.path.join(cache_dir, f"wm_{_slug(query)}.jpg")
+        meta = img + ".json"   # atıf/lisans yan dosyası (cache'ten yeniden kullanımda CC-BY atfı kaybolmasın)
+        cached = os.path.exists(img) and os.path.getsize(img) > 8000
         attr = None
-        if os.path.exists(img) and os.path.getsize(img) > 8000:
-            attr = {"source": "Wikimedia Commons", "need_attribution": False, "credit": query}
-        else:
-            attr = wikimedia_image(query, img, want_portrait=(typ in {"person", "logo"}))
+        if cached and os.path.exists(meta):
+            try:
+                attr = json.load(open(meta, encoding="utf-8"))
+            except Exception:
+                attr = None
+        if not attr:
+            # cache yok ya da eski (lisans bilgisi kaydedilmemiş) → yeniden çöz; eski dosyayı ancak başarıda değiştir
+            part = f"{img}.{os.getpid()}.part"
+            attr = wikimedia_image(query, part, want_portrait=(typ in {"person", "logo"}))
+            if attr:
+                os.replace(part, img)
+                try:
+                    json.dump(attr, open(meta, "w", encoding="utf-8"), ensure_ascii=False)
+                except Exception as e:
+                    print(f"[i] atıf yan dosyası yazılamadı: {str(e)[:60]}")
+            else:
+                if os.path.exists(part):
+                    os.remove(part)
+                if cached:
+                    # lisansı bilinmeyen eski cache: emin değilsek ATIF VER (güvenli taraf)
+                    attr = {"source": "Wikimedia Commons", "need_attribution": True,
+                            "credit": f"{query} — Wikimedia Commons"}
         if attr:
             still_to_broll(img, dur, out_mp4)
             return out_mp4, attr
@@ -425,14 +516,15 @@ def resolve(spec, dur, out_mp4, cache_dir=CACHE):
         print(f"[i] Wikimedia '{query}' yok → Pexels'e düşülüyor")
 
     # 2) Soyut/sahne (veya entity fallback) → Pexels + Pixabay stok video (beraber)
-    cache_vid = os.path.join(cache_dir, f"px_{_slug(query)}.mp4")
-    if os.path.exists(cache_vid) and os.path.getsize(cache_vid) > 10000:
-        subprocess.run(["cp", cache_vid, out_mp4], check=True)
-        return out_mp4, {"source": "stock", "need_attribution": False, "credit": query}
-    attr = stock_video(query, cache_vid)
-    if attr and os.path.exists(cache_vid):
-        subprocess.run(["cp", cache_vid, out_mp4], check=True)
+    #    Cache klip kimliğiyle anahtarlı + son kullanılan klipler atlanır (aynı sorgu ≠ aynı klip).
+    attr = stock_video(query, out_mp4, cache_dir=cache_dir)
+    if attr:
         return out_mp4, attr
+    # API'ye ulaşılamadıysa eski sorgu-anahtarlı cache (varsa) son çare
+    legacy = os.path.join(cache_dir, f"px_{_slug(query)}.mp4")
+    if os.path.exists(legacy) and os.path.getsize(legacy) > 10000:
+        subprocess.run(["cp", legacy, out_mp4], check=True)
+        return out_mp4, {"source": "stock", "need_attribution": False, "credit": query}
     return None, None
 
 

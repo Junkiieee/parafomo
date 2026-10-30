@@ -10,7 +10,7 @@ SAHNELER (--scene): backtest · compare · bigstat
 GÜVENLİ BÖLGE: üstte eyebrow (~230px), altta altyazı (~1400px) → içerik dikey merkeze toplanır.
 
 Örnekler:
-  python scripts/manim_scenes.py --scene backtest --theme slate --dur 6 --start 10000 --end 47850 --title "..." --out x.mp4
+  python scripts/manim_scenes.py --scene backtest --theme slate --dur 6 --start 10000 --end 47850 --points "4643,5189,5762,6164" --title "..." --out x.mp4
   python scripts/manim_scenes.py --scene compare --theme light --dur 7 --items "Altın:378,Borsa:210,Dolar:145,Mevduat:64" --title "5 yılda kim kazandırdı?" --out x.mp4
   python scripts/manim_scenes.py --scene bigstat --theme slate --dur 5 --end 80 --label "her 100 kişiden" --sub "birikimini altında tutuyor" --out x.mp4
 """
@@ -23,6 +23,7 @@ ap.add_argument("--theme", default="slate", choices=["slate", "dark", "light"])
 ap.add_argument("--dur", type=float, default=6.0)
 ap.add_argument("--start", type=float, default=10000)
 ap.add_argument("--end", type=float, default=47850)
+ap.add_argument("--points", default="")  # backtest: GERÇEK seri (virgüllü fiyatlar); yoksa düz şematik çizgi
 ap.add_argument("--items", default="")   # compare: "Etiket:deger,Etiket:deger,..."
 ap.add_argument("--title", default="")
 ap.add_argument("--sub", default="")
@@ -78,6 +79,26 @@ def fit(mobj, maxw=8.0):
     return mobj
 
 
+def backtest_series(start, end, points_csv, max_pts=40):
+    """Eğri değerleri: GERÇEK fiyat serisi verildiyse portföy değerine ölçeklenir
+    (start * p_i / p_0) ve uzunsa eşit aralıkla seyreltilir (ilk+son korunur).
+    Seri yoksa start→end DÜZ şematik çizgi (uydurma dalgalanma YOK)."""
+    pts = []
+    for tok in (points_csv or "").split(","):
+        try:
+            v = float(tok)
+        except ValueError:
+            continue
+        if v > 0:
+            pts.append(v)
+    if len(pts) < 2 or not start:
+        return [start, end]
+    if len(pts) > max_pts:
+        step = (len(pts) - 1) / (max_pts - 1)
+        pts = [pts[round(i * step)] for i in range(max_pts)]
+    return [start * p / pts[0] for p in pts]
+
+
 class BacktestScene(Scene):
     def construct(self):
         start, end = A.start, A.end
@@ -89,9 +110,10 @@ class BacktestScene(Scene):
             t = fit(Text(A.title, font=FONT, weight=BOLD, color=T["ink"]).scale(0.62), 8.2)
             t.move_to([0, 5.3, 0])
             self.play(FadeIn(t, shift=DOWN * 0.25), run_time=0.9)
-        vals = [start, start*1.28, start*1.9, start*2.6, start*3.3, end]
+        vals = backtest_series(start, end, A.points)
         n = len(vals)
-        ax = Axes(x_range=[0, n-1, 1], y_range=[0, end*1.08, end/4],
+        ytop = max(vals) * 1.08
+        ax = Axes(x_range=[0, n-1, 1], y_range=[0, ytop, ytop/4],
                   x_length=6.4, y_length=5.2,
                   axis_config={"color": T["axis"], "stroke_width": 2, "include_ticks": False},
                   tips=False).move_to([0, 1.0, 0])

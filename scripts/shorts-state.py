@@ -10,7 +10,7 @@ olarak günde 1'e iner. Her işte FARKLI ses (VOICES listesinde sırayla döner)
 
 A/B: her işte MOTOR da sırayla döner (ENGINES: google → edge → ...). Hangi motor
 daha çok tutarsa ona geçilir; üretilen videonun .json'una "voice": "<motor>:<ses>"
-yazılır (shorts-build.py).
+yazılır (shorts-build-v4.py).
 
 Komutlar:
   next [newest|oldest]   → "<slug>\t<voice>\t<engine>"  (işlenecek yazı yoksa boş)

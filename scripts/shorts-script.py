@@ -60,7 +60,7 @@ def pick_angle(slug, title, category):
 
 
 # En çok izlenen videoların görsel yöntemi: her beat'e İÇERİKLE EŞLEŞEN görsel
-# ({type,query}) → jenerik stok yerine somut/gerçek imge. Bu vocab shorts-build.py'nin
+# ({type,query}) → jenerik stok yerine somut/gerçek imge. Bu vocab shorts-build-v4.py'nin
 # (viral-visuals.py) çözdüğü tiplerle birebir aynıdır; "chart" hariç (blog hattında
 # gerçek veri yok → grafik üretilemez, çıkarıldı).
 ALLOWED_TYPES = {"person", "place", "building", "logo", "gold", "object", "concept", "scene"}

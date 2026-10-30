@@ -3,7 +3,7 @@
 ParaFOMO — Viral Shorts senaryo üreticisi (6 format, blog'dan bağımsız).
 
 Bir FORMAT + opsiyonel KONU alır, `claude -p` ile viral odaklı bir senaryo
-üretir ve shorts-build.py'nin --scenario modunun beklediği JSON'u yazar:
+üretir ve shorts-build-v4.py'nin --scenario modunun beklediği JSON'u yazar:
   public/social/scenarios/<slug>.json
 Her beat, görsel motoruna ({type, query}) bir görsel isteği taşır → senaryo
 ile ekrandaki görsel ÖRTÜŞÜR (Trump → gerçek Trump fotoğrafı, altın → külçe).

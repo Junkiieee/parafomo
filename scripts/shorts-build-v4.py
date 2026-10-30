@@ -10,7 +10,7 @@ v3 yenilikleri:
   - SES: Google Cloud TTS Chirp3-HD (edge fallback). --engine / --voice.
   - MÜZİK: bed + sidechain ducking (yoksa otomatik yumuşak pad).
 
-Kullanım: python3 scripts/shorts-build.py <slug> [--engine google] [--voice tr-TR-Chirp3-HD-Kore]
+Kullanım: python3 scripts/shorts-build-v4.py <slug> [--engine google] [--voice tr-TR-Chirp3-HD-Orus]
 Çıktı:    public/social/short-<slug>.mp4 (+ .json)
 """
 import os
@@ -60,7 +60,7 @@ FONTSDIR = "/usr/share/fonts/truetype/liberation"
 ASS_FONT = "Liberation Sans"
 
 EDGE_VOICE = "tr-TR-EmelNeural"
-GOOGLE_VOICE = "tr-TR-Chirp3-HD-Kore"
+GOOGLE_VOICE = "tr-TR-Chirp3-HD-Orus"  # marka sesi (yedek: Schedar); Kore/Despina/Leda/Aoede/Puck YASAK
 GOOGLE_RATE = 1.15  # daha hızlı/enerjik anlatım (donuk tonu canlandırmak için ↑ 2026-06-25)
 EDGE_RATE = "+15%"
 LEAD = 0.45
@@ -181,15 +181,28 @@ def synth_edge(text, out_mp3, voice):
 
 
 def make_synth(engine, gvoice, evoice):
-    if engine in ("auto", "google"):
+    """Her build'de "Merhaba." deneme çağrısı yapılmaz (boşa TTS isteği). auto: Google İLK gerçek
+    çağrıda başarısız olursa bu süreç boyunca edge'e geçilir; Google bir kez çalıştıktan sonra
+    hata olursa yükseltilir (aynı videoda iki farklı ses karışmasın — eski probe davranışıyla aynı)."""
+    if engine not in ("auto", "google"):
+        return (lambda t, o: synth_edge(t, o, evoice)), f"edge:{evoice}"
+    state = {"mode": None}   # None=henüz denenmedi, "google", "edge"
+
+    def synth(text, out_mp3):
+        if state["mode"] == "edge":
+            return synth_edge(text, out_mp3, evoice)
         try:
-            synth_google("Merhaba.", "/tmp/_probe.mp3", gvoice)
-            return (lambda t, o: synth_google(t, o, gvoice)), f"google:{gvoice}"
+            synth_google(text, out_mp3, gvoice)
+            state["mode"] = "google"
         except Exception as e:
-            if engine == "google":
+            if engine == "google" or state["mode"] == "google":
                 raise
-            print(f"[i] Google TTS yok ({str(e)[:80]}) → edge")
-    return (lambda t, o: synth_edge(t, o, evoice)), f"edge:{evoice}"
+            print(f"[i] Google TTS yok ({str(e)[:80]}) → edge:{evoice}")
+            state["mode"] = "edge"
+            synth_edge(text, out_mp3, evoice)
+
+    label = f"google:{gvoice}" + (" (hata olursa edge)" if engine == "auto" else "")
+    return synth, label
 
 
 def duration(path):
@@ -386,13 +399,16 @@ def pick_music(slug):
 
 def pexels_broll(query, out_path):
     """Sorgu için Pexels+Pixabay'dan (beraber) dikey stok video (cache'li). Başarısızsa None.
-    İki kaynağı vv.stock_video rotasyonla kullanır → daha çok çeşit + dayanıklılık."""
+    İki kaynağı vv.stock_video rotasyonla kullanır → daha çok çeşit + dayanıklılık.
+    Cache klip kimliğiyle anahtarlı; son kullanılan klipler atlanır (aynı sorgu ≠ hep aynı klip)."""
     os.makedirs(BROLL_CACHE, exist_ok=True)
-    cache = os.path.join(BROLL_CACHE, re.sub(r'\W+', '_', query) + ".mp4")
-    if os.path.exists(cache) and os.path.getsize(cache) > 10000:
-        return cache
-    if vv.stock_video(query, cache) and os.path.exists(cache) and os.path.getsize(cache) > 10000:
-        return cache
+    if vv.stock_video(query, out_path, cache_dir=BROLL_CACHE) and os.path.exists(out_path) \
+            and os.path.getsize(out_path) > 10000:
+        return out_path
+    # API'ye ulaşılamadıysa eski sorgu-anahtarlı cache (varsa) son çare
+    legacy = os.path.join(BROLL_CACHE, re.sub(r'\W+', '_', query) + ".mp4")
+    if os.path.exists(legacy) and os.path.getsize(legacy) > 10000:
+        return legacy
     return None
 
 
@@ -705,6 +721,10 @@ def manim_scene(visual, dur, out_path):
             if not start or not end or start <= 0 or abs(end - start) < 1:
                 return None
             cmd += ["--start", f"{start:.0f}", "--end", f"{end:.0f}"]
+            # GERÇEK fiyat serisi → eğri (manim_scenes ölçekler/seyreltir); yoksa düz şematik çizgi
+            pts = [p for p in (_num(x) for x in (chart.get("points") or [])) if p and p > 0]
+            if len(pts) >= 2:
+                cmd += ["--points", ",".join(f"{p:.10g}" for p in pts)]
         if scene == "bigstat" and _num(visual.get("end")) is not None:
             cmd += ["--end", f"{_num(visual.get('end')):.0f}"]
         # düz metin/veri parametreleri (sahneye göre kullanılır; boşları geçme)
@@ -1197,11 +1217,15 @@ def build(args):
 
     out = os.path.join(OUT_DIR, f"short-{args.slug}.mp4")
     sub = f"subtitles={assf}:fontsdir={FONTSDIR}"
+    # Yayın loudness'ı: son mix'e tek geçişli EBU R128 normalizasyonu (Shorts/Reels hedefi -14 LUFS).
+    # Ducking/amix zinciri aynı kalır; loudnorm yalnız en sondaki [a] çıkışına eklenir.
+    # loudnorm iç örnekleme 192 kHz'e çıkar → aresample ile 44.1 kHz'e geri.
+    LN = "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=44100"
     if music and sfx:
         # ses + ducking'li müzik yatağı + cut-synced SFX (3'lü amix); SFX düşük ses, ducking'e girmez.
         fc = (f"[0:v]{sub}[v];[1:a]volume=0.13[bed];"
               f"[bed][0:a]sidechaincompress=threshold=0.03:ratio=10:attack=15:release=350[d];"
-              f"[0:a][d][2:a]amix=inputs=3:duration=first:dropout_transition=0[a]")
+              f"[0:a][d][2:a]amix=inputs=3:duration=first:dropout_transition=0,{LN}[a]")
         subprocess.run(["ffmpeg", "-y", "-i", joined, "-stream_loop", "-1", "-i", music, "-i", sfx,
                         "-filter_complex", fc, "-map", "[v]", "-map", "[a]", "-c:v", "libx264",
                         "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k",
@@ -1209,20 +1233,21 @@ def build(args):
     elif music:
         fc = (f"[0:v]{sub}[v];[1:a]volume=0.13[bed];"
               f"[bed][0:a]sidechaincompress=threshold=0.03:ratio=10:attack=15:release=350[d];"
-              f"[0:a][d]amix=inputs=2:duration=first:dropout_transition=0[a]")
+              f"[0:a][d]amix=inputs=2:duration=first:dropout_transition=0,{LN}[a]")
         subprocess.run(["ffmpeg", "-y", "-i", joined, "-stream_loop", "-1", "-i", music,
                         "-filter_complex", fc, "-map", "[v]", "-map", "[a]", "-c:v", "libx264",
                         "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k",
                         "-movflags", "+faststart", "-shortest", out], check=True, capture_output=True)
     elif sfx:
-        fc = f"[0:v]{sub}[v];[0:a][1:a]amix=inputs=2:duration=first:dropout_transition=0[a]"
+        fc = f"[0:v]{sub}[v];[0:a][1:a]amix=inputs=2:duration=first:dropout_transition=0,{LN}[a]"
         subprocess.run(["ffmpeg", "-y", "-i", joined, "-i", sfx,
                         "-filter_complex", fc, "-map", "[v]", "-map", "[a]", "-c:v", "libx264",
                         "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k",
                         "-movflags", "+faststart", "-shortest", out], check=True, capture_output=True)
     else:
-        subprocess.run(["ffmpeg", "-y", "-i", joined, "-vf", sub, "-c:v", "libx264",
-                        "-pix_fmt", "yuv420p", "-c:a", "copy", "-movflags", "+faststart", out],
+        subprocess.run(["ffmpeg", "-y", "-i", joined, "-vf", sub, "-af", LN, "-c:v", "libx264",
+                        "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k",
+                        "-movflags", "+faststart", out],
                        check=True, capture_output=True)
     if sfx:
         print(f"    [sfx  ] {len(sfx_cues)} cue (impact×{sum(1 for _,k in sfx_cues if k=='impact')}"

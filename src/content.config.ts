@@ -30,7 +30,7 @@ const blog = defineCollection({
     sonuc: z.string().regex(/^(tcmb|fed):\d{4}-\d{2}-\d{2}$|^tufe:\d{4}-\d{2}$/).optional(),
     sonucBaslik: z.string().optional(),
     // YouTube Shorts senaryosu (kalıcı kayıt): [0]=kanca, ortadakiler=vuruşlar, [-1]=CTA.
-    // scripts/shorts-script.py üretir; scripts/shorts-build.py kullanır. Sayfada gösterilmez.
+    // scripts/shorts-script.py üretir; scripts/shorts-build-v4.py kullanır. Sayfada gösterilmez.
     shorts: z.array(z.string()).optional(),
     shorts_broll: z.array(z.string()).optional(),
   }),
