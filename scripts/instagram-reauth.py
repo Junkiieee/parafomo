@@ -45,6 +45,7 @@ NEEDED = [
     "pages_manage_engagement",       # FB yorumlarına yanıt (topluluk sinyali)
     "read_insights",                 # FB sayfa/Reel metrikleri (ölçüm)
     "business_management",
+    "instagram_manage_contents",     # IG gönderi silme (kanal temizliği, 2026-10-31)
 ]
 # Bunlar yoksa token KAYDEDİLMEZ (mevcut IG yayın hattı bozulmasın).
 REQUIRED = ["instagram_basic", "instagram_content_publish", "pages_show_list", "pages_read_engagement"]
@@ -54,6 +55,7 @@ DESIRED = {
     "pages_manage_posts": "Facebook Reel + link paylaşımı (facebook-reel.py / facebook-post.py)",
     "read_insights": "Facebook sayfa/Reel erişim metrikleri",
     "pages_manage_engagement": "Facebook yorumlarına yanıt",
+    "instagram_manage_contents": "IG gönderi silme (kanal temizliği)",
 }
 
 
