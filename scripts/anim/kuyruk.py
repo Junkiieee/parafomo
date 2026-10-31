@@ -35,6 +35,9 @@ SCEN_DIR = os.path.join(ROOT, "public", "social", "scenarios")
 #   (`begen` / `begenme`) → karne izlenme verisinin yanında Kaan'ın oyunu da gösterir.
 TEKNIKLER = ["iso"]
 STILLER = ["iso", "paper", "riso", "blueprint", "cutpaper", "ink", "pixel", "sketch"]
+# Kaan 2026-10-31 katalog oyu: "izometrik kesik kağıt ile ekonomi defterini beğendim" → her gece 1. video FAVORİ
+# kaplamayla, 2. video kalan kaplamalardan sırayla (keşif; Kaan'ın oyuyla elenir/eklenir).
+FAVORI = ["cutpaper"]
 SES = "tr-TR-Chirp3-HD-Orus"
 FORMATLAR = ["shock_number", "myth", "single_concept"]
 
@@ -93,12 +96,14 @@ def teknik_of(it):
     return it.get("teknik") or ("defter" if it.get("style") == "defter" else "klasik" if it.get("style") == "klasik" else "iso")
 
 
-def pick_style(q, taken):
-    sayac = {s: 0 for s in STILLER}
+def pick_style(q, taken, k=0):
+    if k == 0 and FAVORI:
+        return FAVORI[(len([1 for it in q["items"] if it.get("style") in FAVORI])) % len(FAVORI)]
+    sayac = {s: 0 for s in STILLER if s not in FAVORI}
     for it in q["items"]:
         if it.get("style") in sayac and it["status"] != "reddedildi":
             sayac[it["style"]] += 1
-    aday = sorted(STILLER, key=lambda s: (s in taken, sayac[s], STILLER.index(s)))
+    aday = sorted(sayac, key=lambda s: (s in taken, sayac[s], STILLER.index(s)))
     return aday[0]
 
 
@@ -115,7 +120,7 @@ def uret(a):
     for k in range(a.adet):
         topic, w = pick_topic(q, day)
         teknik = TEKNIKLER[(day.toordinal() + k) % len(TEKNIKLER)]   # her gece biri iso biri klasik, sıra günlük döner
-        style = pick_style(q, taken) if teknik == "iso" else "klasik"
+        style = pick_style(q, taken, k) if teknik == "iso" else "klasik"
         fmt = FORMATLAR[(day.toordinal() * a.adet + k) % len(FORMATLAR)]
         print(f"[üret] {k+1}/{a.adet} konu: {topic[:80]} | format {fmt} | teknik {teknik} | stil {style}")
         if a.dry:   # kaydetmeden: sıradaki konu/stil nasıl dağılırdı
