@@ -1,0 +1,22 @@
+{
+ "slug": "anim-ekonomi-defteri-3-indirim",
+ "title": "%30 indirim gerçek mi? Önce zam, sonra indirim | Ekonomi Defteri #3",
+ "description": "Ekonomi Defteri'nin üçüncü sayfası: 11.11'den iki hafta önce 1.000 ₺'lik kulaklık 1.500 ₺'ye çıkıyor, 11.11'de %30 indirimle 1.050 ₺ oluyor. İndirimli fiyat aslında iki hafta öncesinden %5 pahalı, çünkü yüzdeler aynı tabana uygulanmaz. Tutarlar örnektir.",
+ "tags": ["11.11 indirim", "sahte indirim", "indirim gerçek mi", "11.11", "alışveriş", "ekonomi defteri", "parafomo"],
+ "style": "isometric",
+ "skin": "iso",
+ "kits": ["defter"],
+ "scene": "defter-indirim.js",
+ "short": true,
+ "format": "ekonomi_defteri",
+ "data": {},
+ "lines": [
+  {"id": "hook", "say": "Yüzde 30 indirim gerçek mi? Ekonomi Defteri, üçüncü sayfa.", "cap": "%30 indirim gerçek mi? Ekonomi Defteri, üçüncü sayfa."},
+  {"id": "price", "say": "Mert'in gözündeki kulaklık bin lira. On bir on birden iki hafta önce fiyatı bin beş yüz liraya çıkıyor.", "cap": "Mert'in gözündeki kulaklık 1.000 lira. 11.11'den iki hafta önce fiyatı 1.500 liraya çıkıyor."},
+  {"id": "sale", "say": "On bir on bir geldi, etikette kocaman: yüzde 30 indirim! Yeni fiyat bin elli lira.", "cap": "11.11 geldi, etikette kocaman: %30 indirim! Yeni fiyat 1.050 lira."},
+  {"id": "compare", "say": "Ama iki hafta önce bin liraydı. Yani indirimli fiyat aslında yüzde 5 daha pahalı.", "cap": "Ama iki hafta önce 1.000 liraydı. Yani indirimli fiyat aslında %5 daha pahalı."},
+  {"id": "rule", "say": "Çünkü yüzdeler aynı tabana uygulanmaz: zam bin liraya, indirim bin beş yüz liraya.", "cap": "Çünkü yüzdeler aynı tabana uygulanmaz: zam 1.000 liraya, indirim 1.500 liraya."},
+  {"id": "tip", "say": "Alışverişten önce fiyat geçmişine bak, beğendiğin ürünün ekran görüntüsünü al.", "cap": "Alışverişten önce fiyat geçmişine bak, beğendiğin ürünün ekran görüntüsünü al."},
+  {"id": "cta", "say": "Defterin sonraki sayfası için abone ol.", "cap": "Defterin sonraki sayfası için abone ol."}
+ ]
+}

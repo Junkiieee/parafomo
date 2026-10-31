@@ -93,6 +93,16 @@ function paper(o = {}) {
 // başlık kartı: ParaFOMO yeşili zemin + krem el çizimi çift çerçeve (lacivert süslü çerçeve DEĞİL)
 function titleCard(title, sub, o = {}) {
   fillAll(DF.cover);
+  if (W > H) {   // 16:9 uzun video: tek satır seri adı, altında bölüm başlığı
+    dRect(60, 60, W - 120, H - 120, 18, { c: DF.cream, w: 4, seed: 81 }); dRect(82, 82, W - 164, H - 164, 14, { c: 'rgba(255,246,223,0.5)', w: 2.5, seed: 82 });
+    dText('EKONOMİ DEFTERİ', W / 2, 300, 150, { c: DF.cream });
+    dLine(W / 2 - 330, 350, W / 2 + 330, 350, { c: DF.yellow, w: 5, seed: 83 });
+    if (o.no) dText(o.noText ?? `#${o.no}`, W / 2, 430, 64, { c: DF.yellow, weight: 600 });
+    if (title) hiText(title, W / 2, 640, o.tsize ?? 120, { c: '#fff', hc: 'rgba(255,201,77,0.85)', prog: o.prog ?? 1 });
+    if (sub) dText(sub, W / 2, 760, 64, { c: 'rgba(255,255,255,0.85)', weight: 500 });
+    dText('ParaFOMO', W / 2, 950, 54, { c: 'rgba(255,246,223,0.75)', weight: 600 });
+    return;
+  }
   dRect(70, 230, W - 140, 1300, 18, { c: DF.cream, w: 4, seed: 81 }); dRect(92, 252, W - 184, 1256, 14, { c: 'rgba(255,246,223,0.5)', w: 2.5, seed: 82 });
   dText('EKONOMİ', 540, 720, 170, { c: DF.cream }); dText('DEFTERİ', 540, 880, 170, { c: DF.cream });
   dLine(330, 930, 750, 930, { c: DF.yellow, w: 5, seed: 83 });
@@ -103,6 +113,11 @@ function titleCard(title, sub, o = {}) {
 }
 // sayfa başlığı: el yazısı + altında fosfor
 function pageTitle(str, o = {}) {
+  if (W > H) {   // 16:9: sol üst köşe başlık, sağ üstte seri etiketi
+    hiText(str, o.x ?? 120, o.y ?? 150, o.size ?? 88, { prog: o.prog ?? 1, hc: o.hc, seed: 7, align: 'left' });
+    if (o.no) dText(o.tag ?? `Ekonomi Defteri #${o.no}`, W - 80, 90, 42, { c: DF.penSoft, align: 'right', weight: 500 });
+    return;
+  }
   hiText(str, o.x ?? 560, o.y ?? 300, o.size ?? 100, { prog: o.prog ?? 1, hc: o.hc, seed: 7 });
   if (o.no) dText(`Ekonomi Defteri #${o.no}`, W - 70, 150, 44, { c: DF.penSoft, align: 'right', weight: 500 });
 }

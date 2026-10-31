@@ -45,9 +45,9 @@ function captions(y = 1488) {
   const g0 = Math.floor(wi / 3) * 3, grp = words.slice(g0, g0 + 3);
   ctx.save(); ctx.font = BR.capFont || `600 64px ${OSW}`; ctx.textBaseline = 'alphabetic';
   const sp = 18, ws = grp.map((w) => ctx.measureText(w.toLocaleUpperCase('tr-TR')).width);
-  const tw = ws.reduce((a, b) => a + b, 0) + sp * (grp.length - 1), k = Math.min(1, 860 / tw);
-  ctx.translate(470, y); ctx.scale(k, k); ctx.translate(-470, -y);   // geniş parça güvenli alana sığsın
-  let x = 470 - tw / 2;
+  const tw = ws.reduce((a, b) => a + b, 0) + sp * (grp.length - 1), k = Math.min(1, CAPW / tw);
+  ctx.translate(CAPX, y); ctx.scale(k, k); ctx.translate(-CAPX, -y);   // geniş parça güvenli alana sığsın
+  let x = CAPX - tw / 2;
   grp.forEach((w, i) => {
     const up = w.toLocaleUpperCase('tr-TR'), on = g0 + i === wi;
     if (on) { ctx.fillStyle = BR.capHi || '#FFC94D'; ctx.beginPath(); ctx.roundRect(x - 10, y - 62, ws[i] + 20, 80, 10); ctx.fill(); }

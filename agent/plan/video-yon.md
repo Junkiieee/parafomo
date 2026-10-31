@@ -13,11 +13,20 @@ göre seç; eski motora (shorts-build-v4) yalnız yeni motor çökerse yedek ola
    kapüşonlu, gözlüklü), Türkiye mekânları (simitçi), fosforlu kalem vurgusu, Caveat el yazısı, ParaFOMO yeşili başlık kartı.
    "Ekonomi Makinesi" adı ve lacivert süslü çerçeve KULLANILMAZ. İlk bölüm: `pieces/defter-enflasyon` (Short, 37 sn).
    Eski `kits/dalio.js` + `pieces/dalio-enflasyon` emekli (yayınlanmadı).
-   **Yayın: her Cuma 1 bölüm** (Kaan 2026-10-31 "süper olmuş devam böyle"). Bölüm elle yazılır (`pieces/defter-*.js/json`,
+   **Yayın: haftada 2 Short — Salı + Cuma 13:00** (Kaan 2026-10-31 "iki shorta çıkaralım"). Bölüm elle yazılır (`pieces/defter-*.js/json`,
    `"short": true, "format": "ekonomi_defteri"`), sonra `kuyruk.py ekle <slug> --title … --tarih <Cuma> --onayla`
    (tarihli onay: o günden önce çıkmaz; YT "Ekonomi Defteri" listesi + meta `comment` ile bölüm yorumu).
-   #1 Enflasyon (simit) → 6 Kas · #2 Taksit mi peşin mi (11.11 haftası) → 13 Kas · sonraki adaylar: bileşik enflasyon,
-   vergi dilimi (Aralık maaşı), faiz nedir (TCMB/Fed haftası). Rakamlar "örnek" etiketli, güncel veri iddiası yok.
+   #1 Enflasyon (simit) → Sal 3 Kas (TÜFE günü) · #2 Taksit → Cum 6 Kas · #3 Önce zam sonra indirim (11.11 arifesi) → Sal 10 Kas
+   (Kaan onayı bekliyor) · #4 Cum 13 Kas: "Faiz nedir" (Pazar uzun bölümün habercisi). Sonraki adaylar: vergi dilimi (Aralık
+   maaşı), kredi kartı asgari ödeme, bileşik enflasyon. Rakamlar "örnek" etiketli, güncel veri iddiası yok.
+   **Uzun bölüm (16:9) — her Pazar 12:00 TSİ** (Kaan 2026-10-31 "seoya uygun ekonomi defteri tarzında haftada 1 gün").
+   Aynı motor: spec'e `"aspect": "16:9"` + satırlara `"chapter"` → `public/social/longform/<slug>.mp4` + meta (bölümler,
+   SRT, kapak = parçanın `drawThumb()`'ı). Kit 16:9'da titleCard/pageTitle yatay düzene geçer. Yükleme Kaan izleyip
+   onaylayınca: `ONAYLI_YAYIN=1 lf_upload.py upload <slug> --at <Pazar 09:00Z>` (gizli + zamanlanmış) → yayında
+   `lf_upload.py publish <slug>` ("Ekonomi Defteri" listesi + bölüm yorumu). SEO: başlık ≤60 krk aranan soru
+   ("Enflasyon Nedir…"), `lf_package.py` kapak/başlık denetimi, açıklamada anahtar kelimeler + araç linki + rehber linki,
+   Türkçe SRT. Uzun #1 Enflasyon nedir (5:45, 11 bölüm) → Paz 8 Kas · #2 Faiz nedir → Paz 15 Kas · sonra kredi/borç,
+   dolar kuru, maaşın anatomisi, emekli zammı hesabı (Ocak'tan önce), kira artışı, altın.
 
 ## Yayın düzeni (2026-10-31 Kaan onayı)
 - **Takvim:** `agent/plan/icerik-takvimi.json` — 2 Kas → 10 Oca, 10 hafta zam sezonu (yeniden değerleme, 11.11, vergi dilimi,
@@ -46,7 +55,7 @@ göre seç; eski motora (shorts-build-v4) yalnız yeni motor çökerse yedek ola
 
 ## Kanallar
 - **YouTube Shorts:** günde 2 güçlü video (3-4 değil). Öncelik: olay günleri (`event-short.py`) > blog konusu > viral format.
-- **YouTube uzun:** haftada 1 "Ekonomi Defteri" bölümü, 8-10 dk (orta reklam), aynı bölümden 2-3 Short kesit.
+- **YouTube uzun:** her Pazar 1 "Ekonomi Defteri" uzun bölümü (16:9, 6-10 dk; 8 dk üstü orta reklam açar).
   Konu sırası: enflasyon → faiz nasıl çalışır → kredi/borç döngüsü → dolar kuru neden yükselir → maaşın anatomisi
   (vergi/SGK) → emekli zammı nasıl hesaplanır (Ocak dalgasından önce) → kira artış oranı → altın neden değerli.
 - **Instagram:** eski görsel gönderiler DURDU (altin-daily / bist-daily ×2 / halka-arz-ig cron'ları 2026-10-30 KAPALI).
@@ -61,7 +70,7 @@ göre seç; eski motora (shorts-build-v4) yalnız yeni motor çökerse yedek ola
 - [x] V3 (2026-10-30) — Instagram Reels günlük üst sınır 2 (instagram-reel.py; fazlası yalnız YouTube/FB).
 - [ ] V4 — defter kitini (karakterli) otomatik hatta bağla, sonra deneye 6. stil olarak girer: LLM sahne planı → karakterli sahne şablonları (alışveriş, para yağmuru,
   kuyruk, fiyat etiketi, grafik, banka, ev, maaş bordrosu). Kabul: bir senaryodan insansız elle müdahalesiz Short.
-- [ ] V5 — uzun video 16:9: lf_ hattının görsel katmanı anim + defter kitine taşınır; "Ekonomi Defteri #1: Enflasyon" 8-10 dk.
+- [x] V5 (2026-10-31) — uzun video 16:9 anim motorunda (aspect 16:9 + chapter + SRT + kapak); ilk bölüm Enflasyon nedir.
 - [ ] V6 — ölçüm: meta `engine: anim` etiketi; 14 gün sonra yeni/eski kıyas (izlenme, ort. izlenme %, abone/1000 izlenme).
   Hedef: abone/1000 izlenme ≥ 2 (şu an ~0,8).
 - [ ] V7 — HyperFrames blok testi (data-chart, milestone-reveal; sunucu boştayken, yük korumasıyla).

@@ -18,9 +18,10 @@ function patTile(key, w, h, draw) {   // tekrarlı desen (opak: gizli-çizgi iş
 let _grain = null;
 function grainCanvas(alpha = 0.06, dark = '#000') {   // tohumlu kâğıt dokusu (bir kez üretilir)
   if (_grain) return _grain;
-  const c = document.createElement('canvas'); c.width = 540; c.height = 960; const g = c.getContext('2d'); const r = mulberry32(7);
-  for (let i = 0; i < 26000; i++) { g.globalAlpha = r() * alpha; g.fillStyle = r() < 0.5 ? dark : '#fff'; g.fillRect(r() * 540, r() * 960, 1 + r() * 1.5, 1 + r() * 1.5); }
-  for (let i = 0; i < 260; i++) { g.globalAlpha = alpha * 0.8; g.strokeStyle = dark; g.lineWidth = 0.6; g.beginPath(); const x = r() * 540, y = r() * 960; g.moveTo(x, y); g.lineTo(x + (r() - 0.5) * 30, y + (r() - 0.5) * 8); g.stroke(); }
+  const gw = W / 2, gh = H / 2;   // yarım çözünürlük doku (dikey 540x960, yatay 960x540 — esneme yok)
+  const c = document.createElement('canvas'); c.width = gw; c.height = gh; const g = c.getContext('2d'); const r = mulberry32(7);
+  for (let i = 0; i < 26000; i++) { g.globalAlpha = r() * alpha; g.fillStyle = r() < 0.5 ? dark : '#fff'; g.fillRect(r() * gw, r() * gh, 1 + r() * 1.5, 1 + r() * 1.5); }
+  for (let i = 0; i < 260; i++) { g.globalAlpha = alpha * 0.8; g.strokeStyle = dark; g.lineWidth = 0.6; g.beginPath(); const x = r() * gw, y = r() * gh; g.moveTo(x, y); g.lineTo(x + (r() - 0.5) * 30, y + (r() - 0.5) * 8); g.stroke(); }
   return (_grain = c);
 }
 function overlayGrain(op = 'multiply', a = 1) { ctx.save(); ctx.globalCompositeOperation = op; ctx.globalAlpha = a; ctx.drawImage(grainCanvas(), 0, 0, W, H); ctx.restore(); }

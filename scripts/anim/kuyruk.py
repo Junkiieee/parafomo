@@ -172,6 +172,9 @@ def onayla(a):
             if a.tarih:
                 it["yayin_tarihi"] = a.tarih
             print("onaylandı:", it["no"], it["slug"], a.tarih or "")
+        elif it["status"] == "onaylandi" and a.tarih:   # onaylı bölümün yayın gününü kaydır
+            it["yayin_tarihi"] = a.tarih
+            print("tarih değişti:", it["no"], it["slug"], a.tarih)
     save(q); return 0
 
 

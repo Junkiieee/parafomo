@@ -1,0 +1,305 @@
+{
+ "slug": "lf-ekonomi-defteri-1-enflasyon-nedir",
+ "aspect": "16:9",
+ "title": "Enflasyon Nedir, Neden Olur? 6 Dakikada Simitle Anlatım",
+ "description": "Enflasyon nedir, neden olur, TÜİK enflasyonu nasıl hesaplar ve enflasyon kimi vurur? Ekonomi Defteri'nin ilk uzun bölümünde simit örneğiyle baştan sona anlatıyoruz: TÜFE sepeti ve ağırlıklar, yıllık enflasyon nasıl okunur, talep-maliyet-beklenti enflasyonu, alım gücü kaybı, bileşik enflasyon (aylık %3 = yıllık ≈%42,6), reel getiri hesabı (1,40 / 1,30 − 1 ≈ %7,7) ve enflasyondan korunmanın dört ilkesi.\n\nVideodaki maaş, fiyat ve faiz tutarları örnektir. Gerçek veri: TÜİK, Ekim 2022 yıllık TÜFE %85,51.",
+ "tags": [
+  "enflasyon nedir",
+  "enflasyon neden olur",
+  "enflasyon nasıl hesaplanır",
+  "TÜFE nedir",
+  "TÜİK enflasyon",
+  "reel getiri",
+  "bileşik enflasyon",
+  "alım gücü",
+  "enflasyondan korunma",
+  "ekonomi defteri",
+  "ekonomi nedir basit anlatım",
+  "parafomo"
+ ],
+ "skin": "iso",
+ "kits": [
+  "defter"
+ ],
+ "scene": "defter-uzun-enflasyon.js",
+ "format": "ekonomi_defteri",
+ "series": "Ekonomi Defteri",
+ "episode": "uzun-1",
+ "link": "/enflasyon-hesaplama/",
+ "source": "/blog/tufe-sepeti-nedir-enflasyon-nasil-hesaplanir/",
+ "data": {},
+ "lines": [
+  {
+   "id": "hook",
+   "say": "Geçen yıl 10 lira olan simit bu yıl 15 lira. Simit aynı simit; değişen, paranın değeri. Ekonomi Defteri'nde bugün enflasyonu baştan sona anlatıyoruz.",
+   "cap": "Geçen yıl 10 lira olan simit bu yıl 15 lira. Simit aynı simit; değişen, paranın değeri. Ekonomi Defteri'nde bugün enflasyonu baştan sona anlatıyoruz.",
+   "chapter": "Simit neden pahalanıyor?"
+  },
+  {
+   "id": "plan",
+   "say": "Enflasyon nedir, nasıl ölçülür, neden olur, kimi vurur ve ondan nasıl korunulur? Hepsi bu sayfada, örneklerle.",
+   "cap": "Enflasyon nedir, nasıl ölçülür, neden olur, kimi vurur ve ondan nasıl korunulur? Hepsi bu sayfada, örneklerle."
+  },
+  {
+   "id": "def1",
+   "say": "Enflasyon, fiyatların genel düzeyinin sürekli artmasıdır.",
+   "cap": "Enflasyon, fiyatların genel düzeyinin sürekli artmasıdır.",
+   "chapter": "Enflasyon nedir?"
+  },
+  {
+   "id": "def2",
+   "say": "Burada iki kelime önemli: genel ve sürekli. Sadece domatesin pahalanması enflasyon değildir; market, kira, ulaşım hepsi birlikte artıyorsa enflasyondur.",
+   "cap": "Burada iki kelime önemli: genel ve sürekli. Sadece domatesin pahalanması enflasyon değildir; market, kira, ulaşım hepsi birlikte artıyorsa enflasyondur."
+  },
+  {
+   "id": "def3",
+   "say": "Bir kere zam gelip duruyorsa o da enflasyon değildir; fiyatlar ay be ay tırmanmaya devam ediyorsa enflasyondur.",
+   "cap": "Bir kere zam gelip duruyorsa o da enflasyon değildir; fiyatlar ay be ay tırmanmaya devam ediyorsa enflasyondur."
+  },
+  {
+   "id": "def4",
+   "say": "Kısacası enflasyon, aynı parayla her ay biraz daha az şey alabilmek demektir.",
+   "cap": "Kısacası enflasyon, aynı parayla her ay biraz daha az şey alabilmek demektir."
+  },
+  {
+   "id": "m1",
+   "say": "Peki enflasyonu kim ölçüyor? Türkiye'de bu işi TÜİK yapıyor.",
+   "cap": "Peki enflasyonu kim ölçüyor? Türkiye'de bu işi TÜİK yapıyor.",
+   "chapter": "TÜİK enflasyonu nasıl ölçer?"
+  },
+  {
+   "id": "m2",
+   "say": "TÜİK, hanelerin aldığı yüzlerce ürün ve hizmetten bir sepet kurar: ekmek, kira, elektrik, akaryakıt, giyim, ilaç.",
+   "cap": "TÜİK, hanelerin aldığı yüzlerce ürün ve hizmetten bir sepet kurar: ekmek, kira, elektrik, akaryakıt, giyim, ilaç."
+  },
+  {
+   "id": "m3",
+   "say": "Her kalemin bir ağırlığı vardır. Gıdaya ve konuta ayırdığımız pay büyük olduğu için bu kalemler endeksi daha çok etkiler.",
+   "cap": "Her kalemin bir ağırlığı vardır. Gıdaya ve konuta ayırdığımız pay büyük olduğu için bu kalemler endeksi daha çok etkiler."
+  },
+  {
+   "id": "m4",
+   "say": "Her ay sepetin fiyatı yeniden hesaplanır. Geçen yılın aynı ayına göre değişim, yıllık enflasyon olarak açıklanır.",
+   "cap": "Her ay sepetin fiyatı yeniden hesaplanır. Geçen yılın aynı ayına göre değişim, yıllık enflasyon olarak açıklanır."
+  },
+  {
+   "id": "m5",
+   "say": "Türkiye'de yıllık enflasyon Ekim 2022'de yüzde 85,5 ile son 24 yılın zirvesini gördü.",
+   "cap": "Türkiye'de yıllık enflasyon Ekim 2022'de %85,5 ile son 24 yılın zirvesini gördü."
+  },
+  {
+   "id": "m6",
+   "say": "Veri her ay, genellikle ayın üçünde saat 10'da açıklanır.",
+   "cap": "Veri her ay, genellikle ayın 3'ünde saat 10:00'da açıklanır."
+  },
+  {
+   "id": "m7",
+   "say": "Ama senin enflasyonun TÜİK'inkinden farklı olabilir: kira ödüyorsan ve araban yoksa, senin sepetin ortalama sepete benzemez.",
+   "cap": "Ama senin enflasyonun TÜİK'inkinden farklı olabilir: kira ödüyorsan ve araban yoksa, senin sepetin ortalama sepete benzemez."
+  },
+  {
+   "id": "t1",
+   "say": "Haberlerde enflasyonun birkaç akrabasını duyarsın.",
+   "cap": "Haberlerde enflasyonun birkaç akrabasını duyarsın.",
+   "chapter": "Dezenflasyon, deflasyon, hiperenflasyon"
+  },
+  {
+   "id": "t2",
+   "say": "Dezenflasyon, enflasyonun yavaşlamasıdır: yüzde 50'den yüzde 30'a inmek gibi. Dikkat, fiyatlar yine artıyor, sadece daha yavaş.",
+   "cap": "Dezenflasyon, enflasyonun yavaşlamasıdır: %50'den %30'a inmek gibi. Dikkat, fiyatlar yine artıyor, sadece daha yavaş."
+  },
+  {
+   "id": "t3",
+   "say": "Deflasyon ise fiyatların genel olarak düşmesidir. Kulağa iyi gelir ama insanlar ucuzlamayı bekleyip harcamayı erteler, ekonomi yavaşlar.",
+   "cap": "Deflasyon ise fiyatların genel olarak düşmesidir. Kulağa iyi gelir ama insanlar ucuzlamayı bekleyip harcamayı erteler, ekonomi yavaşlar."
+  },
+  {
+   "id": "t4",
+   "say": "Hiperenflasyon, fiyatların kontrolden çıktığı durumdur; genellikle aylık yüzde 50'yi aşan enflasyon için kullanılır.",
+   "cap": "Hiperenflasyon, fiyatların kontrolden çıktığı durumdur; genellikle aylık %50'yi aşan enflasyon için kullanılır."
+  },
+  {
+   "id": "t5",
+   "say": "Bir de çekirdek enflasyon var: enerji, gıda, alkol, tütün ve altın gibi oynak kalemler çıkarılınca kalan, fiyatların asıl eğilimi.",
+   "cap": "Bir de çekirdek enflasyon var: enerji, gıda, alkol, tütün ve altın gibi oynak kalemler çıkarılınca kalan, fiyatların asıl eğilimi."
+  },
+  {
+   "id": "c0",
+   "say": "Enflasyonun üç ana sebebi var.",
+   "cap": "Enflasyonun üç ana sebebi var.",
+   "chapter": "Enflasyon neden olur?"
+  },
+  {
+   "id": "c1",
+   "say": "Birincisi talep: ceplerde daha çok para var ama üretilen mal aynıysa, satıcılar fiyatı yükseltir.",
+   "cap": "Birincisi talep: ceplerde daha çok para var ama üretilen mal aynıysa, satıcılar fiyatı yükseltir."
+  },
+  {
+   "id": "c2",
+   "say": "Kredi kolaylaştığında ya da para arzı hızla büyüdüğünde bu etki artar.",
+   "cap": "Kredi kolaylaştığında ya da para arzı hızla büyüdüğünde bu etki artar."
+  },
+  {
+   "id": "c3",
+   "say": "İkincisi maliyet: elektrik, akaryakıt ya da döviz pahalanınca üretici bu maliyeti fiyata yansıtır.",
+   "cap": "İkincisi maliyet: elektrik, akaryakıt ya da döviz pahalanınca üretici bu maliyeti fiyata yansıtır."
+  },
+  {
+   "id": "c4",
+   "say": "Türkiye'de üretimde ithal girdi çok olduğu için kurdaki artış fiyatlara hızla geçer.",
+   "cap": "Türkiye'de üretimde ithal girdi çok olduğu için kurdaki artış fiyatlara hızla geçer."
+  },
+  {
+   "id": "c5",
+   "say": "Üçüncüsü beklenti: herkes yarın zam geleceğini düşünürse bugünden zam yapar ve beklenti kendini gerçekleştirir.",
+   "cap": "Üçüncüsü beklenti: herkes yarın zam geleceğini düşünürse bugünden zam yapar ve beklenti kendini gerçekleştirir."
+  },
+  {
+   "id": "p1",
+   "say": "Enflasyonla mücadelenin baş aktörü Merkez Bankası'dır. TCMB'nin uzun vadeli hedefi yüzde 5 enflasyon.",
+   "cap": "Enflasyonla mücadelenin baş aktörü Merkez Bankası'dır. TCMB'nin uzun vadeli hedefi %5 enflasyon.",
+   "chapter": "Merkez Bankası ne yapar?"
+  },
+  {
+   "id": "p2",
+   "say": "En güçlü aracı politika faizi. Faiz yükselince kredi pahalanır, mevduat cazipleşir.",
+   "cap": "En güçlü aracı politika faizi. Faiz yükselince kredi pahalanır, mevduat cazipleşir."
+  },
+  {
+   "id": "p3",
+   "say": "İnsanlar daha az borçlanıp daha çok biriktirir, harcama yavaşlar ve fiyat artışları zamanla soğur.",
+   "cap": "İnsanlar daha az borçlanıp daha çok biriktirir, harcama yavaşlar ve fiyat artışları zamanla soğur."
+  },
+  {
+   "id": "p4",
+   "say": "Bu etki hemen gelmez; faiz kararının fiyatlara yansıması aylar sürebilir. Faizin nasıl çalıştığını bir sonraki bölümde ayrıntılı anlatacağız.",
+   "cap": "Bu etki hemen gelmez; faiz kararının fiyatlara yansıması aylar sürebilir. Faizin nasıl çalıştığını bir sonraki bölümde ayrıntılı anlatacağız."
+  },
+  {
+   "id": "w0",
+   "say": "Enflasyon herkesi aynı vurmaz. En çok sabit gelirli ve nakit tutan kaybeder.",
+   "cap": "Enflasyon herkesi aynı vurmaz. En çok sabit gelirli ve nakit tutan kaybeder.",
+   "chapter": "Enflasyon kimi vurur?"
+  },
+  {
+   "id": "w1",
+   "say": "Örneğin maaşın 30 bin lira ve fiyatlar bir yılda yüzde 30 artıyor.",
+   "cap": "Örneğin maaşın 30.000 lira ve fiyatlar bir yılda %30 artıyor."
+  },
+  {
+   "id": "w2",
+   "say": "Maaşın hiç artmazsa yıl sonunda 30 bin liran, bugünün parasıyla yaklaşık 23 bin liralık alım gücüne iner.",
+   "cap": "Maaşın hiç artmazsa yıl sonunda 30.000 liran, bugünün parasıyla yaklaşık 23.000 liralık alım gücüne iner."
+  },
+  {
+   "id": "w3",
+   "say": "Yastık altında bekleyen nakit de aynı şekilde erir.",
+   "cap": "Yastık altında bekleyen nakit de aynı şekilde erir."
+  },
+  {
+   "id": "w4",
+   "say": "Buna karşılık sabit faizli borcu olan kazanabilir: borcun tutarı aynı kalır ama paranın değeri düşer, yani borç gerçekte hafifler.",
+   "cap": "Buna karşılık sabit faizli borcu olan kazanabilir: borcun tutarı aynı kalır ama paranın değeri düşer, yani borç gerçekte hafifler."
+  },
+  {
+   "id": "w5",
+   "say": "Bu yüzden maaş zammı, kira artışı ve faiz oranı hep enflasyonla kıyaslanır.",
+   "cap": "Bu yüzden maaş zammı, kira artışı ve faiz oranı hep enflasyonla kıyaslanır."
+  },
+  {
+   "id": "b1",
+   "say": "Enflasyonun sinsi tarafı bileşik çalışmasıdır.",
+   "cap": "Enflasyonun sinsi tarafı bileşik çalışmasıdır.",
+   "chapter": "Bileşik etki"
+  },
+  {
+   "id": "b2",
+   "say": "Aylık yüzde 3 küçük görünür. Ama 12 ay üst üste gelince yıllık enflasyon yüzde 36 değil, yaklaşık yüzde 42,6 olur.",
+   "cap": "Aylık %3 küçük görünür. Ama 12 ay üst üste gelince yıllık enflasyon %36 değil, yaklaşık %42,6 olur."
+  },
+  {
+   "id": "b3",
+   "say": "Çünkü her ayın zammı, bir önceki ayın zamlı fiyatının üstüne gelir.",
+   "cap": "Çünkü her ayın zammı, bir önceki ayın zamlı fiyatının üstüne gelir."
+  },
+  {
+   "id": "b4",
+   "say": "Yıllık yüzde 30 enflasyon sürerse fiyatlar yaklaşık 2 yıl 8 ayda ikiye katlanır: 10 liralık simit 20 lira olur.",
+   "cap": "Yıllık %30 enflasyon sürerse fiyatlar yaklaşık 2 yıl 8 ayda ikiye katlanır: 10 liralık simit 20 lira olur."
+  },
+  {
+   "id": "r1",
+   "say": "Paranı bankaya koyduğunda da asıl soru şudur: getirim enflasyonu geçiyor mu?",
+   "cap": "Paranı bankaya koyduğunda da asıl soru şudur: getirim enflasyonu geçiyor mu?",
+   "chapter": "Reel getiri"
+  },
+  {
+   "id": "r2",
+   "say": "Diyelim mevduat yılda yüzde 40 getiriyor, enflasyon yüzde 30. Kazancın yüzde 10 değil.",
+   "cap": "Diyelim mevduat yılda %40 getiriyor, enflasyon %30. Kazancın %10 değil."
+  },
+  {
+   "id": "r3",
+   "say": "Doğru hesap şöyle: 1,40 bölü 1,30, eksi 1. Reel getirin yaklaşık yüzde 7,7.",
+   "cap": "Doğru hesap şöyle: 1,40 bölü 1,30, eksi 1. Reel getirin yaklaşık %7,7."
+  },
+  {
+   "id": "r4",
+   "say": "Mevduat faizinden stopaj da kesildiği için net getiriyi kesintiden sonra hesapla.",
+   "cap": "Mevduat faizinden stopaj da kesildiği için net getiriyi kesintiden sonra hesapla."
+  },
+  {
+   "id": "r5",
+   "say": "Enflasyon getiriden yüksekse, faiz alsan bile alım gücün azalır.",
+   "cap": "Enflasyon getiriden yüksekse, faiz alsan bile alım gücün azalır."
+  },
+  {
+   "id": "k0",
+   "say": "Peki ne yapabilirsin? Yatırım tavsiyesi vermiyoruz ama dört temel ilke var.",
+   "cap": "Peki ne yapabilirsin? Yatırım tavsiyesi vermiyoruz ama dört temel ilke var.",
+   "chapter": "Enflasyondan nasıl korunulur?"
+  },
+  {
+   "id": "k1",
+   "say": "Bir: kendi enflasyonunu bil. Harcamalarını yaz, hangi kalemin hızlı arttığını gör.",
+   "cap": "Bir: kendi enflasyonunu bil. Harcamalarını yaz, hangi kalemin hızlı arttığını gör."
+  },
+  {
+   "id": "k2",
+   "say": "İki: parayı uzun süre nakit bekletme; her kararda reel getiriyi hesapla.",
+   "cap": "İki: parayı uzun süre nakit bekletme; her kararda reel getiriyi hesapla."
+  },
+  {
+   "id": "k3",
+   "say": "Üç: gelirini koru. Maaş pazarlığında ve kira sözleşmesinde enflasyonu referans al.",
+   "cap": "Üç: gelirini koru. Maaş pazarlığında ve kira sözleşmesinde enflasyonu referans al."
+  },
+  {
+   "id": "k4",
+   "say": "Dört: tek bir varlığa yüklenme ve paniğe kapılma; zirvede alıp dipte satmak en pahalı hatadır.",
+   "cap": "Dört: tek bir varlığa yüklenme ve paniğe kapılma; zirvede alıp dipte satmak en pahalı hatadır."
+  },
+  {
+   "id": "s1",
+   "say": "Özetle: enflasyon fiyatların genel ve sürekli artışıdır. TÜİK onu bir sepetle ölçer; talep, maliyet ve beklenti onu besler.",
+   "cap": "Özetle: enflasyon fiyatların genel ve sürekli artışıdır. TÜİK onu bir sepetle ölçer; talep, maliyet ve beklenti onu besler.",
+   "chapter": "Özet"
+  },
+  {
+   "id": "s2",
+   "say": "Sabit geliri ve nakdi eritir, bileşik büyür. Bu yüzden her kararını reel olarak hesapla.",
+   "cap": "Sabit geliri ve nakdi eritir, bileşik büyür. Bu yüzden her kararını reel olarak hesapla."
+  },
+  {
+   "id": "s3",
+   "say": "Kendi rakamını görmek için parafomo.com'daki enflasyon hesaplama aracını kullanabilirsin; linki açıklamaya bıraktım.",
+   "cap": "Kendi rakamını görmek için parafomo.com'daki enflasyon hesaplama aracını kullanabilirsin; linki açıklamaya bıraktım."
+  },
+  {
+   "id": "s4",
+   "say": "Ekonomi Defteri'nin sonraki sayfasında faizi anlatacağız. Kaçırmamak için abone ol.",
+   "cap": "Ekonomi Defteri'nin sonraki sayfasında faizi anlatacağız. Kaçırmamak için abone ol."
+  }
+ ],
+ "comment": "📒 Ekonomi Defteri · Uzun Bölüm 1: Enflasyon\n\nVideodaki hesaplar (tutarlar örnek):\n• Alım gücü: 30.000 ÷ 1,30 ≈ 23.077 ₺\n• Bileşik: 1,03¹² ≈ 1,426 → yıllık ≈ %42,6\n• İkiye katlanma: ln 2 ÷ ln 1,30 ≈ 2,64 yıl (≈ 2 yıl 8 ay)\n• Reel getiri: 1,40 ÷ 1,30 − 1 ≈ %7,7\n\n🧮 Kendi rakamını hesapla: https://parafomo.com/enflasyon-hesaplama/?utm_source=youtube&utm_medium=longform&utm_campaign=lf-ekonomi-defteri-1-enflasyon-nedir\n\nSonraki sayfa: FAİZ. Defterde hangi konuyu görmek istersin? Yorumda yaz 👇"
+}

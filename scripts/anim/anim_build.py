@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""Kodla çizilmiş animasyonlu Short (9:16) üretir — stil kitleri: scripts/anim/vendor (MIT, cth9191/animate).
+"""Kodla çizilmiş animasyonlu Short (9:16) ya da uzun video (16:9, spec "aspect": "16:9") üretir — stil kitleri: scripts/anim/vendor (MIT, cth9191/animate).
 
     python3 scripts/anim/anim_build.py scripts/anim/pieces/net-maas-anatomi.json [--still 3.5,12,30] [--no-lock]
 
 Akış: her satır Orus ile seslendirilir (önbellekli) → satır süreleri zaman çizelgesi olur (sahneler satırların
 başlangıcına göre oynar, ses saattir) → sayfa (çekirdek + stil kiti + sahne + çizelge) → Chromium'da kare kare
 render (nice 19, ionice idle, Shorts kilidi) → anlatım + müzik (konuşmada kısılır) + loudnorm -14 LUFS → mux.
---still: yalnız o saniyelerin karelerini PNG çıkarır (tasarım kontrolü, ses/render yok).
+--still: yalnız o saniyelerin karelerini PNG çıkarır (tasarım kontrolü, ses/render yok); "thumb" = kapak karesi.
+16:9 (uzun video): satırlara "chapter": "Başlık" konur (bölüm başı) → public/social/longform/<slug>.mp4 + .meta.json
+(bölüm zaman damgaları, Türkçe SRT, 1280x720 kapak = parçanın drawThumb()'ı). Yükleme: scripts/longform/lf_upload.py.
 """
 import argparse
 import difflib
@@ -22,8 +24,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "longform"))
 from lf_common import ROOT, MUSIC_DIR, tts, duration, run  # noqa: E402
 
-W, H, FPS = 1080, 1920, 30
+W, H, FPS = 1080, 1920, 30      # 16:9 spec'te main() 1920x1080 yapar
 RATE = 1.15                     # Shorts temposu (uzun-form 1.08)
+RATE_LONG = 1.08
+LF_DIR = os.path.join(ROOT, "public", "social", "longform")
 LEAD, GAP, TAIL = 0.35, 0.28, 1.6
 MUSIC_VOL = 0.12
 OUT_DIR = os.path.join(ROOT, "public", "social", "anim")
@@ -82,12 +86,19 @@ def word_times(mp3, cap):
     return out
 
 
+def landscape(spec):
+    return spec.get("aspect") == "16:9"
+
+
 def timeline(spec):
     t, lines = LEAD, []
+    rate = spec.get("rate", RATE_LONG if landscape(spec) else RATE)
     for ln in spec["lines"]:
-        mp3 = tts(ln["say"], rate=RATE)
+        mp3 = tts(ln["say"], rate=rate)
         d = duration(mp3)
         item = {"id": ln["id"], "t0": round(t, 3), "t1": round(t + d, 3), "cap": ln["cap"], "mp3": mp3}
+        if ln.get("chapter"):
+            item["chapter"] = ln["chapter"]
         wt = word_times(mp3, ln["cap"])
         if wt:
             item["words"] = [round(t + w["t0"], 3) for w in wt]   # kelime başlangıçları (mutlak sn)
@@ -102,6 +113,8 @@ def page(spec, lines, dur, path):
     js = lambda p: open(p, encoding="utf-8").read()  # noqa: E731
     head = f"""
 const W = {W}, H = {H}, FPS = {FPS}, CX = 470, ISO_DARK = true, SKIN_NAME = {json.dumps(spec.get("skin", "iso"))};
+const CAPX = {960 if W > H else 470}, CAPW = {1500 if W > H else 860};   // altyazı merkezi + en geniş satır
+let THUMB = false;   // kapak karesi çizilirken true (parça drawThumb() sunabilir)
 const TL = {json.dumps(tl, ensure_ascii=False)};
 """
     style = spec.get("style", "isometric")
@@ -135,6 +148,7 @@ window.renderFrame = (f, png) => {{
   if (typeof drawOverlay === 'function') drawOverlay();                                    // altyazı (net)
   return CANVAS.toDataURL(png ? 'image/png' : 'image/jpeg', 0.93).split(',')[1];
 }};
+window.renderThumb = () => {{ THUMB = true; try {{ return window.renderFrame(0, true); }} finally {{ THUMB = false; }} }};
 Promise.all([document.fonts.load('60px Anton'), document.fonts.load('600 60px Oswald'), document.fonts.load('700 60px Amatic'), document.fonts.load('700 60px Caveat')]).then(() => {{ window.ANIM_READY = true; }});
 </script></body></html>"""
     open(path, "w", encoding="utf-8").write(html)
@@ -148,13 +162,53 @@ const {{ chromium }} = require('/root/.cache/parafomo/anim-node/node_modules/pla
   p.on('pageerror', e => {{ console.error('HATA', e.message); process.exitCode = 1; }});
   await p.goto('file://{html}'); await p.waitForFunction(() => window.ANIM_READY === true);
   for (const t of {json.dumps(times)}) {{
-    const b64 = await p.evaluate(f => window.renderFrame(f, true), Math.round(t * {FPS}));
+    const b64 = t === 'thumb' ? await p.evaluate(() => window.renderThumb())
+                              : await p.evaluate(f => window.renderFrame(f, true), Math.round(t * {FPS}));
     require('fs').writeFileSync('{out_prefix}' + t + '.png', Buffer.from(b64, 'base64'));
     console.log('{out_prefix}' + t + '.png');
   }}
   await b.close();
 }})();"""
     subprocess.run(["node", "-e", node], check=True)
+
+
+def mmss(t):
+    t = int(t)
+    return f"{t // 3600}:{t % 3600 // 60:02d}:{t % 60:02d}" if t >= 3600 else f"{t // 60:02d}:{t % 60:02d}"
+
+
+def srt(lines, path, maxlen=80):
+    """Satırları ≤2 satırlık altyazı parçalarına böler; zamanlar whisper kelime başlangıçlarından."""
+    def ts(t):
+        ms = int(round(t * 1000))
+        return f"{ms // 3600000:02d}:{ms % 3600000 // 60000:02d}:{ms % 60000 // 1000:02d},{ms % 1000:03d}"
+    out, n = [], 0
+    for l in lines:
+        ws = l["cap"].split()
+        st = l.get("words") if l.get("words") and len(l["words"]) == len(ws) else \
+            [l["t0"] + (l["t1"] - l["t0"]) * i / len(ws) for i in range(len(ws))]
+        i = 0
+        while i < len(ws):
+            j, ln = i, 0
+            while j < len(ws) and ln + len(ws[j]) + 1 <= maxlen:
+                ln += len(ws[j]) + 1
+                j += 1
+                if ln > maxlen * 0.55 and ws[j - 1][-1] in ",.:;?!":   # noktalama: doğal kesme
+                    break
+            j = max(j, i + 1)
+            t0, t1 = st[i], (st[j] if j < len(ws) else l["t1"])
+            n += 1
+            out.append(f"{n}\n{ts(t0)} --> {ts(max(t1, t0 + 0.6))}\n{' '.join(ws[i:j])}\n")
+            i = j
+    open(path, "w", encoding="utf-8").write("\n".join(out))
+
+
+def chapters(lines, dur):
+    ch = [(0.0 if not k else max(0.0, l["t0"] - 0.2), l["chapter"]) for k, l in enumerate(x for x in lines if x.get("chapter"))]
+    stamps = [f"{mmss(t)} {c}" for t, c in ch]
+    ends = [t for t, _ in ch[1:]] + [dur]
+    ok = len(ch) >= 3 and all(e - t >= 10 for (t, _), e in zip(ch, ends))
+    return stamps, ok
 
 
 def music_track(slug):
@@ -197,6 +251,26 @@ def wait_for_quiet():
         time.sleep(30)
 
 
+def longform_meta(spec, lines, dur, out, html, wd, meta):
+    slug = spec["slug"]
+    srt_p = os.path.join(LF_DIR, f"{slug}.srt")
+    srt(lines, srt_p)
+    stamps, ok = chapters(lines, dur)
+    thumb = os.path.join(LF_DIR, f"{slug}-thumb.jpg")
+    stills(html, ["thumb"], os.path.join(wd, "still-"))
+    run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", os.path.join(wd, "still-thumb.png"),
+         "-vf", "scale=1280:720", "-q:v", "2", thumb])
+    old = {}
+    mp = os.path.join(LF_DIR, f"{slug}.meta.json")
+    if os.path.exists(mp):   # önceki yükleme kimlikleri korunur
+        old = {k: v for k, v in json.load(open(mp, encoding="utf-8")).items() if k in ("video_id", "youtube_url", "privacy")}
+    return {**meta, **old, "description": spec.get("description", ""), "tags": spec.get("tags", []),
+            "source": spec.get("source"), "thumbnail": thumb, "srt": srt_p, "chapters": stamps,
+            "chapters_valid": ok, "format": spec.get("format", ""), "engine": "anim",
+            "series": spec.get("series"), "episode": spec.get("episode"), "comment": spec.get("comment"),
+            "built_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
+
+
 def main():
     os.nice(19)   # TTS/whisper/render: hepsi en düşük öncelik (alt süreçler devralır)
     ap = argparse.ArgumentParser()
@@ -205,6 +279,9 @@ def main():
     ap.add_argument("--no-lock", action="store_true")
     a = ap.parse_args()
     spec = json.load(open(a.spec, encoding="utf-8"))
+    global W, H
+    if landscape(spec):
+        W, H = 1920, 1080
     slug = spec["slug"]
     wd = os.path.join(WORK, slug)
     os.makedirs(wd, exist_ok=True)
@@ -214,13 +291,14 @@ def main():
     page(spec, lines, dur, html)
     print(f"[anim] {len(lines)} satır, {dur:.1f} sn")
     if a.still:
-        stills(html, [float(x) for x in a.still.split(",")], os.path.join(wd, "still-"))
+        stills(html, [x if x == "thumb" else float(x) for x in a.still.split(",")], os.path.join(wd, "still-"))
         return 0
     wait_for_quiet()
     t0 = time.time()
     frames = int(round(dur * FPS))
     vid = os.path.join(wd, "video.mp4")
-    cmd = ["nice", "-n", "19", "ionice", "-c3", "node", os.path.join(HERE, "render.mjs"), html, str(frames), str(FPS), vid]
+    cmd = ["nice", "-n", "19", "ionice", "-c3", "node", os.path.join(HERE, "render.mjs"), html, str(frames), str(FPS), vid,
+           str(W), str(H)]
     if not a.no_lock:
         cmd = ["flock", LOCK] + cmd
     subprocess.run(cmd, check=True)
@@ -230,19 +308,24 @@ def main():
     whooshes = [t0s[sc["line"]] - 0.15 for sc in scenes[1:] if sc.get("line") in t0s]
     track = audio(lines, dur, slug, wav, whooshes)
     out = os.path.join(OUT_DIR, f"{slug}.mp4")
-    if spec.get("short"):   # günlük hat: eski motorla aynı yer (Telegram/IG/FB adımları buradan okur)
+    if landscape(spec):
+        os.makedirs(LF_DIR, exist_ok=True)
+        out = os.path.join(LF_DIR, f"{slug}.mp4")
+    elif spec.get("short"):   # günlük hat: eski motorla aynı yer (Telegram/IG/FB adımları buradan okur)
         out = os.path.join(ROOT, "public", "social", f"short-{slug}.mp4")
     run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", vid, "-i", wav, "-map", "0:v", "-map", "1:a",
          "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", out])
     meta = {"slug": slug, "title": spec["title"], "file": out, "duration": dur, "music": track,
             "link": spec.get("link"), "lines": [{k: v for k, v in l.items() if k != "mp3"} for l in lines]}
-    json.dump(meta, open(os.path.join(OUT_DIR, f"{slug}.meta.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    if landscape(spec):   # lf_upload.py'nin okuduğu biçim (eski uzun hatla aynı alanlar)
+        meta = longform_meta(spec, lines, dur, out, html, wd, meta)
+    json.dump(meta, open(os.path.join(LF_DIR if landscape(spec) else OUT_DIR, f"{slug}.meta.json"), "w",
+                         encoding="utf-8"), ensure_ascii=False, indent=2)
     if spec.get("short"):   # mevcut yükleyiciler (youtube-upload / instagram-reel / facebook-reel) bu metayı okur
         tags = spec.get("tags", [])
-        tagline = " ".join("#" + t.replace(" ", "") for t in tags[:5]) or "#finans #yatırım"
-        site = "https://parafomo.com" + spec["link"] if spec.get("link") else "https://parafomo.com"
+        # açıklama yalın: site linki + hashtag'leri youtube-upload.with_funnel ekler (önceden iki kez çıkıyordu)
         sm = {"title": spec["title"][:90] + " #Shorts",
-              "description": f"{spec.get('description', '')}\n\nDaha fazlası: {site}\n\n#Shorts {tagline}",
+              "description": spec.get("description", "").strip(),
               "tags": tags, "file": out, "slug": slug, "format": spec.get("format", ""), "engine": "anim",
               "timeline": meta["lines"]}
         if spec.get("link"):

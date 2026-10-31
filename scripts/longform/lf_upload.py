@@ -50,7 +50,8 @@ def description(meta):
     parts.append("Rakamlar resmî kaynaklara (TÜİK, Resmî Gazete, Gelir İdaresi) dayanır; bilgilendirme amaçlıdır, "
                  "yatırım veya vergi tavsiyesi değildir.")
     parts.append("🔔 Zam, vergi ve faiz rakamları açıklanır açıklanmaz burada: ABONE OL, bildirimi aç.")
-    tags = ["#parafomo", "#2027zamları", "#vergi"] if "2027" in meta["title"] else ["#parafomo", "#finans"]
+    tags = (["#ekonomidefteri", "#parafomo", "#ekonomi"] if meta.get("format") == "ekonomi_defteri"
+            else ["#parafomo", "#2027zamları", "#vergi"] if "2027" in meta["title"] else ["#parafomo", "#finans"])
     parts.append(" ".join(tags[:3]))
     return "\n\n".join(p for p in parts if p)[:4900]
 
@@ -111,8 +112,10 @@ def publish(a):
                                                                   "selfDeclaredMadeForKids": False}}).execute()
     print(f"[lf-up] herkese açık: {meta['youtube_url']}")
     try:
+        key = "ekonomi_defteri" if meta.get("format") == "ekonomi_defteri" else "longform"   # seri kendi listesine
+        ex.PLAYLIST_TITLES.setdefault("longform", PLAYLIST)
         ex.PLAYLIST_TITLES["longform"] = PLAYLIST
-        pid, title = ex.ensure_playlist(yt, "longform")
+        pid, title = ex.ensure_playlist(yt, key)
         for i in range(3):  # yeni açılan listede ilk ekleme 409 "aborted" verebiliyor
             try:
                 ex.add_to_playlist(yt, pid, vid)
@@ -126,7 +129,7 @@ def publish(a):
     except Exception as e:
         print(f"[lf-up] oynatma listesi atlandı: {str(e)[:160]}")
     try:
-        text = ex.funnel_comment(a.slug, {"link": utm(meta["link"], a.slug)} if meta.get("link") else None)
+        text = ex.funnel_comment(a.slug, {"comment": meta.get("comment"), "link": utm(meta["link"], a.slug) if meta.get("link") else None})
         yt.commentThreads().insert(part="snippet", body={"snippet": {"videoId": vid, "topLevelComment": {
             "snippet": {"textOriginal": text}}}}).execute()
         print("[lf-up] yönlendirme yorumu eklendi (sabitlemeyi Studio'dan yap — API desteklemiyor)")

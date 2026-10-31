@@ -10,7 +10,7 @@ import { pathToFileURL } from 'node:url';
 const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.ANIM_NODE || '/root/.cache/parafomo/anim-node/node_modules/playwright-core');
 
-const [page_, framesS, fpsS, out] = process.argv.slice(2);
+const [page_, framesS, fpsS, out, wS, hS] = process.argv.slice(2);   // wS/hS: 16:9 uzun video için (varsayılan 1080x1920)
 const frames = +framesS, fps = +fpsS;
 if (!page_ || !frames || !fps || !out) { console.error('kullanım: render.mjs <page.html> <frames> <fps> <out.mp4>'); process.exit(2); }
 
@@ -32,7 +32,7 @@ function renice() {
 }
 renice();
 try {
-  const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
+  const page = await browser.newPage({ viewport: { width: +wS || 1080, height: +hS || 1920 } });
   page.on('pageerror', (e) => { console.error('[anim] sayfa hatası:', e.message); process.exitCode = 1; });
   await page.goto(pathToFileURL(page_).href);
   await page.waitForFunction(() => window.ANIM_READY === true, null, { timeout: 30000 });
