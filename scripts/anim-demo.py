@@ -187,14 +187,14 @@ def frame(i):
     # alt başlık
     a = appear(t, 0.95)
     if a > 0:
-        d.text((W / 2, 628), "TÜRKİYE · 2024 YIL SONU", font=F(OSWALD, 44),
+        d.text((W / 2, 628), "TÜRKİYE · 2023 YIL SONU (TÜİK)", font=F(OSWALD, 44),
                fill=(*MUTE, A(a)), anchor="mm")
 
-    # büyük sayan rakam %0 → %64.3
+    # büyük sayan rakam %0 → %64.8 (TÜİK Aralık 2023 yıllık TÜFE %64,77)
     a = appear(t, 1.15)
     if a > 0:
         prog = ease_out_cubic((t - 1.2) / 2.6)
-        val = 64.3 * prog
+        val = 64.8 * prog
         pop = 1.0
         if 3.7 < t < 4.1:
             pop = 1 + 0.06 * (1 - (t - 3.7) / 0.4)
