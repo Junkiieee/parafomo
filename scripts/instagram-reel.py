@@ -147,6 +147,13 @@ def site_link(slug):
     return "parafomo.com"
 
 
+def meta_link(meta):
+    link = (meta.get("link") or "").strip()
+    if not link:
+        return ""
+    return link.replace("https://", "") if link.startswith("http") else "parafomo.com/" + link.lstrip("/")
+
+
 def _clean(text):
     """YouTube artığını temizle: #Shorts, hashtag satırları, URL/'Daha fazlası' satırları."""
     out = []
@@ -172,6 +179,7 @@ FORMAT_Q = {
     "news_reaction": "Sence piyasa buna nasıl tepki verir?",
     "single_concept": "Bunu daha önce biliyor muydun?",
     "shock_number": "Bu rakam seni şaşırttı mı?",
+    "ekonomi_defteri": "Defterin sonraki sayfasında hangi konuyu görelim?",
 }
 
 # Blog Reels'inde viral "format" alanı yok → hepsi jenerik soruya düşüyordu
@@ -223,7 +231,7 @@ def build_caption(meta, slug):
     # Soruyu görünür ilk bloğa al (yorum), kaydet/takip/link altta.
     cta = (f"📌 Unutmamak için KAYDET · paylaş\n"
            f"🔔 Günlük altın · dolar · borsa · faiz → TAKİP ET @parafomo\n"
-           f"📲 Tam rehber (ücretsiz): {site_link(slug)}")
+           f"📲 Tam rehber (ücretsiz): {meta_link(meta) or site_link(slug)}")
     body_block = f"{body}\n\n" if body else ""
     cap = f"{hook}\n\n💬 {q} Yorumda yaz 👇\n\n{body_block}{cta}\n\n{build_hashtags(slug, title, desc)}"
     return cap[:2100]  # IG caption sınırı 2200

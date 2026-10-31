@@ -1,0 +1,60 @@
+{
+ "slug": "anim-ekonomi-defteri-2-taksit",
+ "title": "Taksit mi peşin mi? Taksitin gizli hesabı | Ekonomi Defteri #2",
+ "description": "Ekonomi Defteri'nin ikinci sayfası: 12 bin liralık buzdolabı, peşin mi 12 taksit mi? Fiyatlar her ay artarken son taksit bugünün parasıyla daha az eder. Bu örnekte (aylık %2 fiyat artışı, vade farksız taksit) 12 taksitin bugünkü değeri yaklaşık 10.575 ₺. Tutarlar ve oran örnektir; vade farkı varsa hesap değişir.",
+ "tags": [
+  "taksit mi peşin mi",
+  "taksit",
+  "peşin indirim",
+  "vade farkı",
+  "enflasyon",
+  "ekonomi defteri",
+  "parafomo"
+ ],
+ "style": "isometric",
+ "skin": "iso",
+ "kits": [
+  "defter"
+ ],
+ "scene": "defter-taksit.js",
+ "short": true,
+ "format": "ekonomi_defteri",
+ "data": {},
+ "lines": [
+  {
+   "id": "hook",
+   "say": "Peşin mi, taksit mi? Ekonomi Defteri, ikinci sayfa.",
+   "cap": "Peşin mi, taksit mi? Ekonomi Defteri, ikinci sayfa."
+  },
+  {
+   "id": "offer",
+   "say": "Mert 12 bin liralık buzdolabı alacak: peşin 12 bin mi, yoksa 12 ay boyunca ayda bin lira mı?",
+   "cap": "Mert 12 bin liralık buzdolabı alacak: peşin 12 bin mi, yoksa 12 ay boyunca ayda bin lira mı?"
+  },
+  {
+   "id": "same",
+   "say": "Toplam aynı: 12 bin lira. Ama paranın değeri zamanla değişir.",
+   "cap": "Toplam aynı: 12 bin lira. Ama paranın değeri zamanla değişir."
+  },
+  {
+   "id": "erode",
+   "say": "Fiyatlar her ay yüzde 2 artıyorsa, son taksitteki bin lira bugünün parasıyla yaklaşık 790 lira eder.",
+   "cap": "Fiyatlar her ay %2 artıyorsa, son taksitteki bin lira bugünün parasıyla yaklaşık 790 lira eder."
+  },
+  {
+   "id": "total",
+   "say": "Hepsini bugüne çevirince Mert aslında yaklaşık 10 bin 600 lira öder: yüzde 12 daha ucuz.",
+   "cap": "Hepsini bugüne çevirince Mert aslında yaklaşık 10.600 lira öder: %12 daha ucuz."
+  },
+  {
+   "id": "rule",
+   "say": "Yani peşin indirim yüzde on ikiden azsa taksit kazanır, fazlaysa peşin. Ama vade farkı varsa hesap değişir.",
+   "cap": "Yani peşin indirim %12'den azsa taksit kazanır, fazlaysa peşin. Ama vade farkı varsa hesap değişir."
+  },
+  {
+   "id": "cta",
+   "say": "Defterin sonraki sayfası için abone ol.",
+   "cap": "Defterin sonraki sayfası için abone ol."
+  }
+ ]
+}

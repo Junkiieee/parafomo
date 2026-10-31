@@ -13,6 +13,11 @@ göre seç; eski motora (shorts-build-v4) yalnız yeni motor çökerse yedek ola
    kapüşonlu, gözlüklü), Türkiye mekânları (simitçi), fosforlu kalem vurgusu, Caveat el yazısı, ParaFOMO yeşili başlık kartı.
    "Ekonomi Makinesi" adı ve lacivert süslü çerçeve KULLANILMAZ. İlk bölüm: `pieces/defter-enflasyon` (Short, 37 sn).
    Eski `kits/dalio.js` + `pieces/dalio-enflasyon` emekli (yayınlanmadı).
+   **Yayın: her Cuma 1 bölüm** (Kaan 2026-10-31 "süper olmuş devam böyle"). Bölüm elle yazılır (`pieces/defter-*.js/json`,
+   `"short": true, "format": "ekonomi_defteri"`), sonra `kuyruk.py ekle <slug> --title … --tarih <Cuma> --onayla`
+   (tarihli onay: o günden önce çıkmaz; YT "Ekonomi Defteri" listesi + meta `comment` ile bölüm yorumu).
+   #1 Enflasyon (simit) → 6 Kas · #2 Taksit mi peşin mi (11.11 haftası) → 13 Kas · sonraki adaylar: bileşik enflasyon,
+   vergi dilimi (Aralık maaşı), faiz nedir (TCMB/Fed haftası). Rakamlar "örnek" etiketli, güncel veri iddiası yok.
 
 ## Yayın düzeni (2026-10-31 Kaan onayı)
 - **Takvim:** `agent/plan/icerik-takvimi.json` — 2 Kas → 10 Oca, 10 hafta zam sezonu (yeniden değerleme, 11.11, vergi dilimi,

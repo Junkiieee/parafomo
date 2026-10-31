@@ -266,3 +266,21 @@ function pageFlip(drawOld, fx) {
   const gy = H * sy, g = ctx.createLinearGradient(0, gy, 0, gy + 90);
   g.addColorStop(0, 'rgba(20,30,60,0.6)'); g.addColorStop(1, 'rgba(20,30,60,0)'); ctx.fillStyle = g; ctx.fillRect(0, gy, W, 90); ctx.restore();
 }
+// buzdolabı (beyaz eşya); (x, y) = taban ortası, ~480 px boy @1
+function fridge(x, y, s = 1, o = {}) {
+  const w = 220 * s, h = 480 * s;
+  dRect(x - w / 2, y - h, w, h, 18 * s, { fill: o.fill ?? '#DDE9EF', w: 3.6 * s, seed: 91 });
+  dLine(x - w / 2 + 6 * s, y - h * 0.68, x + w / 2 - 6 * s, y - h * 0.68, { w: 3.2 * s, seed: 92 });
+  dLine(x - w / 2 + 28 * s, y - h + 40 * s, x - w / 2 + 28 * s, y - h * 0.68 - 30 * s, { w: 7 * s, c: '#8C98A4', seed: 93 });
+  dLine(x - w / 2 + 28 * s, y - h * 0.68 + 30 * s, x - w / 2 + 28 * s, y - h * 0.68 + 130 * s, { w: 7 * s, c: '#8C98A4', seed: 94 });
+  dEll(x - w * 0.3, y - 4 * s, 14 * s, 6 * s, { fill: '#30343F', w: 2 * s, off: 0 }); dEll(x + w * 0.3, y - 4 * s, 14 * s, 6 * s, { fill: '#30343F', w: 2 * s, off: 0 });
+}
+// el çizimi saat; ibreler TT ile döner (o.speed: tur/sn)
+function clock(x, y, r, o = {}) {
+  dEll(x, y, r, r, { fill: o.fill ?? DF.cream, w: 4, seed: 95 });
+  for (let i = 0; i < 12; i++) { const a = i / 12 * TAU; dLine(x + Math.cos(a) * r * 0.82, y + Math.sin(a) * r * 0.82, x + Math.cos(a) * r * 0.92, y + Math.sin(a) * r * 0.92, { w: 3, seed: 96 + i }); }
+  const sp = o.speed ?? 0.5, a1 = TT * TAU * sp - Math.PI / 2, a2 = TT * TAU * sp / 12 - Math.PI / 2;
+  dLine(x, y, x + Math.cos(a1) * r * 0.75, y + Math.sin(a1) * r * 0.75, { w: 4.5, seed: 110 });
+  dLine(x, y, x + Math.cos(a2) * r * 0.5, y + Math.sin(a2) * r * 0.5, { w: 6, seed: 111 });
+  dEll(x, y, 6, 6, { fill: DF.pen, w: 2, off: 0 });
+}

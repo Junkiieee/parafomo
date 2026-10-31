@@ -36,6 +36,8 @@ PLAYLIST_TITLES = {
     "backtest_return": "Geri Dönük Getiri",
     # olay sonucu (scripts/event-short.py) — seri kimliği: "rakam açıklanınca ilk burada" (abone vaadi)
     "event_result": "Açıklandı: Faiz, Enflasyon ve Zamlar",
+    # karakterli haftalık seri (scripts/anim/kits/defter.js)
+    "ekonomi_defteri": "Ekonomi Defteri",
 }
 DEFAULT_PL = "ParaFOMO Shorts"
 
@@ -45,6 +47,8 @@ BLOG_DIR = os.path.join(ROOT, "src", "content", "blog")
 def funnel_comment(slug, meta=None):
     """Sabit yorum: blog shortsa YAZIYA, viralse ana sayfaya link (huni + backlink).
     Olay sonucu videosu (meta.link): ilgili hesaplama sayfası + seri vaadi (abone dönüşümü %0,07 — RC 10-28)."""
+    if (meta or {}).get("comment"):   # bölüme özel yorum (Ekonomi Defteri)
+        return meta["comment"]
     link = (meta or {}).get("link")
     if link:
         url = link if link.startswith("http") else "https://parafomo.com/" + link.lstrip("/")

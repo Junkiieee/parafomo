@@ -8,7 +8,10 @@ onaysız yayınlanmaz. `rapor` stillerin karnesini çıkarır (deney aşama 1: e
 
   kuyruk.py uret [--adet 2] [--dry]
   kuyruk.py liste
-  kuyruk.py onayla <slug|no> ...      kuyruk.py reddet <slug|no> ...
+  kuyruk.py onayla <slug|no> ... [--tarih YYYY-MM-DD]   (tarih: o günden önce yayınlanmaz)
+  kuyruk.py reddet <slug|no> ...
+  kuyruk.py ekle <slug> --title "…" [--style defter] [--format ekonomi_defteri] [--tarih …]
+                                      (elle yapılmış bölüm: short-<slug>.json + "file" mp4 hazır olmalı)
   kuyruk.py yayinla                   (cron: onaylı sıradakini yayınlar)
   kuyruk.py rapor [--json]
 """
@@ -27,6 +30,10 @@ FORMATLAR = ["shock_number", "myth", "single_concept"]
 
 def now():
     return dt.datetime.now(dt.timezone.utc)
+
+
+def bugun_tr():
+    return (now() + dt.timedelta(hours=3)).date().isoformat()   # TSİ = UTC+3 (yaz saati yok)
 
 
 def load():
@@ -125,7 +132,8 @@ def liste(a):
     q = load()
     for it in q["items"]:
         if a.hepsi or it["status"] in ("bekliyor", "onaylandi"):
-            print(f"#{it['no']:<3} {it['status']:<11} {it['style']:<9} {it['format']:<14} {it['slug']}  —  {it['title'][:70]}")
+            tar = f" [{it['yayin_tarihi']}]" if it.get("yayin_tarihi") else ""
+            print(f"#{it['no']:<3} {it['status']:<11} {it['style']:<9} {it['format']:<14} {it['slug']}{tar}  —  {it['title'][:70]}")
     return 0
 
 
@@ -134,8 +142,32 @@ def onayla(a):
     for it in find(q, a.ids):
         if it["status"] in ("bekliyor", "reddedildi"):
             it["status"] = "onaylandi"; it["approved"] = now().isoformat(timespec="seconds")
-            print("onaylandı:", it["no"], it["slug"])
+            if a.tarih:
+                it["yayin_tarihi"] = a.tarih
+            print("onaylandı:", it["no"], it["slug"], a.tarih or "")
     save(q); return 0
+
+
+def ekle(a):
+    """Elle yapılmış bölümü (Ekonomi Defteri) kuyruğa koyar; stil deneyine sayılmaz (STILLER dışı)."""
+    q = load()
+    if find(q, [a.slug]):
+        print("zaten kuyrukta:", a.slug); return 1
+    mp = os.path.join(ROOT, "public", "social", f"short-{a.slug}.json")
+    mp4 = json.load(open(mp, encoding="utf-8")).get("file", "") if os.path.exists(mp) else ""
+    if not (mp4 and os.path.exists(mp4)):
+        print("short-<slug>.json ya da içindeki mp4 yok:", mp); return 2
+    no = max([it["no"] for it in q["items"]] or [0]) + 1
+    it = {"no": no, "slug": a.slug, "title": a.title, "topic": a.title, "week": "", "format": a.format,
+          "style": a.style, "mp4": mp4, "scenario": "", "created": now().isoformat(timespec="seconds"),
+          "status": "bekliyor"}
+    if a.tarih:
+        it["yayin_tarihi"] = a.tarih
+    q["items"].append(it); save(q)
+    print("eklendi:", no, a.slug)
+    if a.onayla:
+        a.ids = [a.slug]; return onayla(a)
+    return 0
 
 
 def reddet(a):
@@ -148,10 +180,12 @@ def reddet(a):
 
 def yayinla(a):
     q = load()
-    sira = [it for it in q["items"] if it["status"] == "onaylandi"]
+    gun = bugun_tr()
+    sira = [it for it in q["items"] if it["status"] == "onaylandi" and it.get("yayin_tarihi", "") <= gun]
     if not sira:
-        print("[yayın] onaylı video yok"); return 0
-    it = sorted(sira, key=lambda x: x.get("approved", ""))[0]
+        print("[yayın] bugün çıkacak onaylı video yok"); return 0
+    # tarihi bugün olan (seri bölümü) önce; sonra onay sırası
+    it = sorted(sira, key=lambda x: (x.get("yayin_tarihi", "") != gun, x.get("approved", "")))[0]
     slug = it["slug"]
     env = {"ONAYLI_YAYIN": "1"}   # PUBLISH_PAUSED bayrağı yalnız onaylı yayına izin verir
     if a.dry:
@@ -246,7 +280,7 @@ def rapor(a):
     for r in sorted(rows, key=lambda r: -r["no"]):
         print(f"  #{r['no']:<3} {r['style']:<9} {r['age_d']:>4}g  {r['views']:>6}  {r['avp'] or 0:>5.1f}%  +{r['subs']}  IG {r['ig_reach'] or '-'}  {r['slug'][:45]}")
     print("\nSTİL KARNESİ (yalnız ≥7 günlük videolar; ortanca)")
-    for s in STILLER:
+    for s in STILLER + ["defter"]:   # defter = elle yapılan seri (karşılaştırma için)
         rr = [r for r in rows if r["style"] == s and r["age_d"] >= 7]
         if not rr:
             n_all = sum(1 for r in rows if r["style"] == s)
@@ -262,7 +296,10 @@ def main():
     sp = ap.add_subparsers(dest="cmd", required=True)
     p = sp.add_parser("uret"); p.add_argument("--adet", type=int, default=2); p.add_argument("--dry", action="store_true"); p.set_defaults(f=uret)
     p = sp.add_parser("liste"); p.add_argument("--hepsi", action="store_true"); p.set_defaults(f=liste)
-    p = sp.add_parser("onayla"); p.add_argument("ids", nargs="+"); p.set_defaults(f=onayla)
+    p = sp.add_parser("onayla"); p.add_argument("ids", nargs="+"); p.add_argument("--tarih", default=""); p.set_defaults(f=onayla)
+    p = sp.add_parser("ekle"); p.add_argument("slug"); p.add_argument("--title", required=True)
+    p.add_argument("--style", default="defter"); p.add_argument("--format", default="ekonomi_defteri")
+    p.add_argument("--tarih", default=""); p.add_argument("--onayla", action="store_true"); p.set_defaults(f=ekle)
     p = sp.add_parser("reddet"); p.add_argument("ids", nargs="+"); p.set_defaults(f=reddet)
     p = sp.add_parser("yayinla"); p.add_argument("--dry", action="store_true"); p.set_defaults(f=yayinla)
     p = sp.add_parser("rapor"); p.add_argument("--json", action="store_true"); p.set_defaults(f=rapor)
