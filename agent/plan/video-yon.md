@@ -26,7 +26,12 @@ göre seç; eski motora (shorts-build-v4) yalnız yeni motor çökerse yedek ola
   → 10:00 ve 16:00 UTC (13:00/19:00 TSİ) yayın. Onaysız hiçbir şey çıkmaz; `PUBLISH_PAUSED` yerinde, yalnız `ONAYLI_YAYIN=1` geçer.
   Kuyruk/geri bildirim: `/root/parafomo-data/onay/kuyruk.json`. Adayların rakamları sabah raporundan ÖNCE doğrulanır
   (ilk adayda "cezalar her Kasım %25 artıyor" hatası yakalandı → düzeltildi).
-- **Stil deneyi:** aşama 1 = 5 stil (iso, paper, riso, blueprint, cutpaper) eşit dağılım, ~3 hafta; ölçüt 7. gün ortanca izlenme,
+- **Teknik deneyi (2026-10-31 güncelleme, Kaan "diğer tekniklerle de deneyelim"):** 5 kaplama aynı izometrik çizimin
+  renkleri olduğu için asıl eksen TEKNİK yapıldı: her gece 1 `iso` (kodla izometrik infografik, kaplama içeride döner) +
+  1 `klasik` (eski viral motor: stok/arşiv görsel + Manim veri kartı, shorts-build-v4; kanalın 1000+ videolarının çoğu bu
+  motordan → taban çizgisi) + haftalık `defter`. Karne iki katmanlı: teknik karnesi + izometrik içinde kaplama karnesi.
+  Hazır olunca 4. teknik adayı: kinetik tipografi (Anton/Oswald) ya da Economist kolaj; otomatik defter (V4).
+- **Stil deneyi (izometrik içinde):** 5 kaplama (iso, paper, riso, blueprint, cutpaper) eşit dağılım, ~3 hafta; ölçüt 7. gün ortanca izlenme,
   ort. izleme %, abone/1000, IG erişim (`kuyruk.py rapor`). Aşama 2 = alt yarı elenir, %70 kazanan / %30 keşif.
   Aşama 3 = sırayla kanca tipi, süre, müzik (tek değişken). Haftalık karne Pazar raporunda; kalıcı karar Kaan'ın.
 - **Kanal temizliği (31 Eki):** YouTube'da toplam izlenmesi 1000 altı 320 video gizleniyor (liste: `/root/parafomo-data/yt-private-plan-20261031.json`,

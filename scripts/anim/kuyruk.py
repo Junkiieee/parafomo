@@ -23,8 +23,14 @@ DATA = "/root/parafomo-data/onay"
 KUYRUK = os.path.join(DATA, "kuyruk.json")
 TAKVIM = os.path.join(ROOT, "agent", "plan", "icerik-takvimi.json")
 SCEN_DIR = os.path.join(ROOT, "public", "social", "scenarios")
-# Deney aşama 1: otomatik hatta yarışan stiller (karakterli "Ekonomi Defteri" haftalık seride, V4 gelince eklenir)
+# Deney (Kaan 2026-10-31 "diğer tekniklerle de deneyelim"): asıl eksen TEKNİK, renk/doku ikincil.
+#   iso    = kodla izometrik infografik (scripts/anim) — içinde 5 kaplama döner (STILLER)
+#   klasik = eski viral motor: stok/arşiv görsel + Manim veri kartı (shorts-build-v4); kanalın 1000+ izlenen
+#            videolarının çoğu bu motordan → taban çizgisi
+#   defter = Ekonomi Defteri (elle, haftalık; `ekle` ile girer)
+TEKNIKLER = ["iso", "klasik"]
 STILLER = ["iso", "paper", "riso", "blueprint", "cutpaper"]
+SES = "tr-TR-Chirp3-HD-Orus"
 FORMATLAR = ["shock_number", "myth", "single_concept"]
 
 
@@ -78,6 +84,10 @@ def pick_topic(q, day):
     return f"{w['theme']} — daha önce işlenmeyen yeni bir açı (işlenenler: {'; '.join(son)})", w
 
 
+def teknik_of(it):
+    return it.get("teknik") or ("defter" if it.get("style") == "defter" else "klasik" if it.get("style") == "klasik" else "iso")
+
+
 def pick_style(q, taken):
     sayac = {s: 0 for s in STILLER}
     for it in q["items"]:
@@ -99,25 +109,31 @@ def uret(a):
     n_done = 0
     for k in range(a.adet):
         topic, w = pick_topic(q, day)
-        style = pick_style(q, taken)
+        teknik = TEKNIKLER[(day.toordinal() + k) % len(TEKNIKLER)]   # her gece biri iso biri klasik, sıra günlük döner
+        style = pick_style(q, taken) if teknik == "iso" else "klasik"
         fmt = FORMATLAR[(day.toordinal() * a.adet + k) % len(FORMATLAR)]
-        print(f"[üret] {k+1}/{a.adet} konu: {topic[:80]} | format {fmt} | stil {style}")
-        if a.dry:
-            taken.add(style); continue
+        print(f"[üret] {k+1}/{a.adet} konu: {topic[:80]} | format {fmt} | teknik {teknik} | stil {style}")
+        if a.dry:   # kaydetmeden: sıradaki konu/stil nasıl dağılırdı
+            taken.add(style); q["used_topics"].append(topic); continue
         r = run([PY, os.path.join(ROOT, "scripts", "viral-script.py"), "--format", fmt, "--topic", topic], timeout=900)
         scen = (r.stdout.strip().splitlines() or [""])[-1]
         if r.returncode != 0 or not os.path.exists(scen):
             print("[üret] senaryo üretilemedi:", (r.stderr or r.stdout)[-300:]); continue
         slug = json.load(open(scen, encoding="utf-8"))["slug"]
-        r = run([PY, os.path.join(ROOT, "scripts", "anim", "anim_short.py"), "--scenario", scen],
-                env={"ANIM_SKIN": style}, timeout=3600)
+        if teknik == "klasik":
+            run([PY, os.path.join(ROOT, "scripts", "manimify.py"), scen, "--hybrid"], timeout=1800)
+            r = run(["nice", "-n", "19", PY, os.path.join(ROOT, "scripts", "shorts-build-v4.py"), slug, "--scenario", scen,
+                     "--engine", "google", "--voice", SES], timeout=3600)
+        else:
+            r = run([PY, os.path.join(ROOT, "scripts", "anim", "anim_short.py"), "--scenario", scen],
+                    env={"ANIM_SKIN": style}, timeout=3600)
         mp4 = os.path.join(ROOT, "public", "social", f"short-{slug}.mp4")
         if r.returncode != 0 or not os.path.exists(mp4):
             print("[üret] render başarısız:", (r.stderr or "")[-400:]); continue
         meta = json.load(open(os.path.join(ROOT, "public", "social", f"short-{slug}.json"), encoding="utf-8"))
         no = max([it.get("no", 0) for it in q["items"]] + [0]) + 1
         q["items"].append({"no": no, "slug": slug, "title": meta.get("title", slug), "topic": topic, "week": w["start"],
-                           "format": fmt, "style": style, "mp4": mp4, "scenario": scen,
+                           "format": fmt, "teknik": teknik, "style": style, "mp4": mp4, "scenario": scen,
                            "created": now().isoformat(timespec="seconds"), "status": "bekliyor"})
         if topic in w["topics"]:
             q["used_topics"].append(topic)
@@ -133,7 +149,7 @@ def liste(a):
     for it in q["items"]:
         if a.hepsi or it["status"] in ("bekliyor", "onaylandi"):
             tar = f" [{it['yayin_tarihi']}]" if it.get("yayin_tarihi") else ""
-            print(f"#{it['no']:<3} {it['status']:<11} {it['style']:<9} {it['format']:<14} {it['slug']}{tar}  —  {it['title'][:70]}")
+            print(f"#{it['no']:<3} {it['status']:<11} {teknik_of(it):<7} {it['style']:<9} {it['format']:<14} {it['slug']}{tar}  —  {it['title'][:70]}")
     return 0
 
 
@@ -271,23 +287,27 @@ def rapor(a):
     for it in pub:
         y = ys.get(it["youtube_id"], {}); g = igs.get(it.get("ig_media_id"), {})
         age = (now() - dt.datetime.fromisoformat(it["published"])).total_seconds() / 86400
-        rows.append({"no": it["no"], "slug": it["slug"], "style": it["style"], "format": it["format"], "age_d": round(age, 1),
+        rows.append({"no": it["no"], "slug": it["slug"], "teknik": teknik_of(it), "style": it["style"], "format": it["format"], "age_d": round(age, 1),
                      "views": y.get("views", 0), "avp": y.get("averageViewPercentage"), "engaged": y.get("engagedViews"),
                      "subs": y.get("subscribersGained", 0), "ig_reach": g.get("reach"), "ig_saved": g.get("saved")})
     if a.json:
         print(json.dumps(rows, ensure_ascii=False, indent=1)); return 0
     print("VİDEO BAZINDA (yaş gün · YT izlenme · ort. izleme % · abone · IG erişim)")
     for r in sorted(rows, key=lambda r: -r["no"]):
-        print(f"  #{r['no']:<3} {r['style']:<9} {r['age_d']:>4}g  {r['views']:>6}  {r['avp'] or 0:>5.1f}%  +{r['subs']}  IG {r['ig_reach'] or '-'}  {r['slug'][:45]}")
-    print("\nSTİL KARNESİ (yalnız ≥7 günlük videolar; ortanca)")
-    for s in STILLER + ["defter"]:   # defter = elle yapılan seri (karşılaştırma için)
-        rr = [r for r in rows if r["style"] == s and r["age_d"] >= 7]
-        if not rr:
-            n_all = sum(1 for r in rows if r["style"] == s)
-            print(f"  {s:<9} n=0 (yayında {n_all}, 7 günü dolan yok)"); continue
-        v = median([r["views"] for r in rr]); p = median([r["avp"] or 0 for r in rr])
-        sub = sum(r["subs"] for r in rr); tv = sum(r["views"] for r in rr)
-        print(f"  {s:<9} n={len(rr)}  izlenme ortanca {v:>7.0f}  izleme %{p:>5.1f}  abone/1000 {1000*sub/max(tv,1):.1f}")
+        print(f"  #{r['no']:<3} {r['teknik']:<7} {r['style']:<9} {r['age_d']:>4}g  {r['views']:>6}  {r['avp'] or 0:>5.1f}%  +{r['subs']}  IG {r['ig_reach'] or '-'}  {r['slug'][:45]}")
+    def karne(baslik, key, vals):
+        print(f"\n{baslik} (yalnız ≥7 günlük videolar; ortanca)")
+        for s in vals:
+            rr = [r for r in rows if r[key] == s and r["age_d"] >= 7]
+            if not rr:
+                n_all = sum(1 for r in rows if r[key] == s)
+                print(f"  {s:<9} n=0 (yayında {n_all}, 7 günü dolan yok)"); continue
+            v = median([r["views"] for r in rr]); p = median([r["avp"] or 0 for r in rr])
+            sub = sum(r["subs"] for r in rr); tv = sum(r["views"] for r in rr)
+            print(f"  {s:<9} n={len(rr)}  izlenme ortanca {v:>7.0f}  izleme %{p:>5.1f}  abone/1000 {1000*sub/max(tv,1):.1f}")
+    karne("TEKNİK KARNESİ", "teknik", TEKNIKLER + ["defter"])
+    rows = [r for r in rows if r["teknik"] == "iso"]
+    karne("İZOMETRİK İÇİNDE KAPLAMA", "style", STILLER)
     return 0
 
 
