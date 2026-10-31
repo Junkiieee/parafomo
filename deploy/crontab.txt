@@ -60,3 +60,9 @@
 */15 * * * * /root/.venvs/parafomo-api/bin/python /root/parafomo/scripts/portfolio-alerts.py >> /root/parafomo/logs/portfolio-alerts.log 2>&1
 10 5 2 * * /root/parafomo/scripts/benchmarks-update.sh >> /root/parafomo/logs/benchmarks.log 2>&1
 20 6 1 * * /root/.venvs/parafomo-api/bin/python /root/parafomo/scripts/portfolio-monthly.py >> /root/parafomo/logs/portfolio-monthly.log 2>&1
+
+# ONAYLI YAYIN KUYRUĞU (Kaan 2026-10-31): gece 2 aday üret; Kaan sabah raporunda onaylar; onaylılar 13:00 ve 19:00 TSİ yayında.
+# PUBLISH_PAUSED bayrağı yerinde: yalnız kuyruk.sh yayinla (ONAYLI_YAYIN=1) yayınlayabilir.
+40 0 * * * /root/parafomo/scripts/kuyruk.sh uret --adet 2 >> /root/parafomo/logs/kuyruk.log 2>&1
+0 10 * * * /root/parafomo/scripts/kuyruk.sh yayinla >> /root/parafomo/logs/kuyruk.log 2>&1
+0 16 * * * /root/parafomo/scripts/kuyruk.sh yayinla >> /root/parafomo/logs/kuyruk.log 2>&1

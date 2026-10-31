@@ -110,6 +110,7 @@ const TL = {json.dumps(tl, ensure_ascii=False)};
 @font-face {{ font-family: Anton; src: url('file://{FONTS}/Anton-Regular.ttf'); }}
 @font-face {{ font-family: Oswald; src: url('file://{FONTS}/Oswald.ttf'); font-weight: 200 700; }}
 @font-face {{ font-family: Amatic; src: url('file://{FONTS}/AmaticSC-Bold.ttf'); font-weight: 700; }}
+@font-face {{ font-family: Caveat; src: url('file://{FONTS}/Caveat.ttf'); font-weight: 400 700; }}
 html,body {{ margin:0; background:#000; }}
 </style></head><body><canvas id="c" width="{W}" height="{H}"></canvas>
 <span style="font-family:Anton;position:absolute;opacity:0">₺0</span><span style="font-family:Oswald;position:absolute;opacity:0">a</span>
@@ -134,7 +135,7 @@ window.renderFrame = (f, png) => {{
   if (typeof drawOverlay === 'function') drawOverlay();                                    // altyazı (net)
   return CANVAS.toDataURL(png ? 'image/png' : 'image/jpeg', 0.93).split(',')[1];
 }};
-Promise.all([document.fonts.load('60px Anton'), document.fonts.load('600 60px Oswald'), document.fonts.load('700 60px Amatic')]).then(() => {{ window.ANIM_READY = true; }});
+Promise.all([document.fonts.load('60px Anton'), document.fonts.load('600 60px Oswald'), document.fonts.load('700 60px Amatic'), document.fonts.load('700 60px Caveat')]).then(() => {{ window.ANIM_READY = true; }});
 </script></body></html>"""
     open(path, "w", encoding="utf-8").write(html)
 

@@ -1,0 +1,20 @@
+{
+ "slug": "anim-ekonomi-defteri-1-enflasyon",
+ "title": "Enflasyon nasıl olur? Simit üzerinden 30 saniyede | Ekonomi Defteri #1",
+ "description": "Ekonomi Defteri'nin ilk sayfası: para maldan hızlı artınca fiyatlar neden yükselir? Simitçi örneğiyle enflasyon. Tutarlar örnektir. Daha fazlası: parafomo.com",
+ "tags": ["enflasyon", "enflasyon nedir", "ekonomi defteri", "parafomo", "simit fiyatı", "ekonomi"],
+ "style": "isometric",
+ "skin": "iso",
+ "kits": ["defter"],
+ "scene": "defter-enflasyon.js",
+ "data": {},
+ "lines": [
+  {"id": "hook", "say": "Simit neden her yıl pahalanıyor? Ekonomi Defteri'nin ilk sayfası: enflasyon.", "cap": "Simit neden her yıl pahalanıyor? Ekonomi Defteri'nin ilk sayfası: enflasyon."},
+  {"id": "trade", "say": "Ekonomi aslında alışverişlerden oluşur. Mert simitçiye 10 lira verir, karşılığında simidi alır.", "cap": "Ekonomi aslında alışverişlerden oluşur. Mert simitçiye 10 lira verir, karşılığında simidi alır."},
+  {"id": "money", "say": "Şimdi herkesin cebine daha çok para girdiğini düşün: kredi kolaylaşır, piyasaya para dolar.", "cap": "Şimdi herkesin cebine daha çok para girdiğini düşün: kredi kolaylaşır, piyasaya para dolar."},
+  {"id": "same", "say": "Ama simitçinin tablasında hâlâ aynı sayıda simit var.", "cap": "Ama simitçinin tablasında hâlâ aynı sayıda simit var."},
+  {"id": "price", "say": "Daha çok para, aynı simidin peşine düşünce fiyat yükselir: 10 lira, 15 lira olur.", "cap": "Daha çok para, aynı simidin peşine düşünce fiyat yükselir: 10 lira, 15 lira olur."},
+  {"id": "chart", "say": "İşte enflasyon budur: para, maldan daha hızlı artınca fiyatlar yükselir.", "cap": "İşte enflasyon budur: para, maldan daha hızlı artınca fiyatlar yükselir."},
+  {"id": "cta", "say": "Paranı enflasyona karşı korumanın yollarını parafomo.com'da anlattık. Abone ol.", "cap": "Paranı enflasyona karşı korumanın yollarını parafomo.com'da anlattık. Abone ol."}
+ ]
+}

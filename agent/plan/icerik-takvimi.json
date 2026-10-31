@@ -1,0 +1,105 @@
+{
+  "_not": "İçerik takvimi 2026-11-02 → 2027-01-10 (Kaan onayı 2026-10-31). Gece üretimi (scripts/gunluk-uretim.py) bugünün haftasından sıradaki kullanılmamış konuları alır. Konu = başlık fikri; rakamlar senaryoda kaynaklı olmalı, emin olunmayan güncel rakam KULLANILMAZ. Olay günü konuları ('olay') yalnız veri açıklandıktan sonra kullanılır.",
+  "weeks": [
+    {"start": "2026-11-02", "theme": "2027 zam sezonu açılışı: yeniden değerleme, MTV, kira",
+     "events": [{"date": "2026-11-03", "what": "Ekim TÜFE + 2027 yeniden değerleme oranı (TÜİK 10:00)"}],
+     "topics": [
+       "Yeniden değerleme oranı nedir ve neden her yıl 3 Kasım'da belli olur",
+       "MTV, pasaport ve ehliyet harcı yeniden değerleme oranıyla nasıl artar",
+       "Kira artış oranı nasıl hesaplanır: 12 aylık TÜFE ortalaması mantığı",
+       "TÜİK enflasyonu nasıl ölçer: enflasyon sepeti ve ağırlıklar",
+       "Maaşın alım gücü: aynı maaşla bir yıl önce ve bugün ne alınıyordu",
+       "Vadeli mevduat faizi enflasyonu yeniyor mu: reel getiri nedir",
+       "Enflasyon yüzde düşse bile fiyatlar neden düşmez",
+       "Bileşik enflasyon: aylık yüzde 2 yılda neden yüzde 24 değil"
+     ]},
+    {"start": "2026-11-09", "theme": "11.11 indirim dönemi: taksit, kart faizi, gerçek indirim",
+     "events": [{"date": "2026-11-11", "what": "11.11 indirim günü"}],
+     "topics": [
+       "Taksit mi peşin mi: enflasyonda taksitin gizli kazancı",
+       "Kredi kartı asgari ödeme tuzağı: borç nasıl katlanır",
+       "İndirim gerçek mi: enflasyon karşısında yüzde 30 indirim ne demek",
+       "Kredi kartı gecikme faizi ve akdi faiz farkı",
+       "Nakit avans neden en pahalı borçtur",
+       "Taksitli alışverişte vade farkı nasıl hesaplanır",
+       "Alışverişte FOMO: kampanya psikolojisi paranı nasıl yönetir"
+     ]},
+    {"start": "2026-11-16", "theme": "Yıl sonu vergi dilimi: Aralık maaşı neden düşer",
+     "events": [],
+     "topics": [
+       "Aralık'ta net maaşın neden düşer: kümülatif vergi matrahı",
+       "Gelir vergisi dilimleri nasıl çalışır: tüm maaşa değil üstteki kısma",
+       "Brüt maaştan nete: SGK, işsizlik, gelir ve damga vergisi",
+       "Asgari ücret istisnası maaşını nasıl korur",
+       "Yılbaşında net maaş neden yeniden artar",
+       "İkramiye ve prim vergide neden daha az kalır"
+     ]},
+    {"start": "2026-11-23", "theme": "Black Friday + asgari ücret beklentisi",
+     "events": [{"date": "2026-11-27", "what": "Black Friday"}],
+     "topics": [
+       "Asgari ücret nasıl belirlenir: Tespit Komisyonu nasıl çalışır",
+       "Asgari ücretin işverene gerçek maliyeti",
+       "Zam pazarlığı: enflasyon kadar zam neden aslında zam değildir",
+       "Black Friday'de kredi kartı puanı ve taksit hesabı",
+       "Asgari ücret ve emekli maaşı arasındaki fark yıllar içinde nasıl açıldı",
+       "Kıdem tazminatı tavanı neden yılda iki kez değişir"
+     ]},
+    {"start": "2026-11-30", "theme": "Emekli ve memur zammı: 11 aylık birikim",
+     "events": [{"date": "2026-12-03", "what": "Kasım TÜFE (TÜİK 10:00)"}],
+     "topics": [
+       "Emekli zammı nasıl hesaplanır: 6 aylık enflasyon farkı",
+       "Memur zammında toplu sözleşme ve enflasyon farkı",
+       "SSK ve Bağ-Kur emeklisinin zammı neden farklı olabilir",
+       "En düşük emekli aylığı nasıl belirlenir",
+       "Emekli promosyonu: bankalar neden para veriyor",
+       "Enflasyon farkı nedir: zamdan sonra gelen ek zam"
+     ]},
+    {"start": "2026-12-07", "theme": "Faiz kararları: Fed + TCMB",
+     "events": [{"date": "2026-12-09", "what": "Fed faiz kararı (TSİ 22:00)"}, {"date": "2026-12-10", "what": "TCMB faiz kararı (TSİ 14:00)"}],
+     "topics": [
+       "Faiz kararı mevduatını, kredini ve kuru nasıl etkiler",
+       "Politika faizi nedir: TCMB neden faizi değiştirir",
+       "Fed faizi düşerse altın ve dolar ne yapar",
+       "Kredi faizi neden politika faizinden yüksek",
+       "Faiz düşerken mevduatta vade seçimi",
+       "Reel faiz: faiz enflasyonun altındaysa ne olur"
+     ]},
+    {"start": "2026-12-14", "theme": "Yeni asgari ücret",
+     "events": [{"date": "2026-12-15", "what": "Asgari ücret açıklaması (tarih kesin değil; açıklanınca)"}],
+     "topics": [
+       "Asgari ücret açıklandığında hangi ödemeler otomatik değişir",
+       "Asgari ücretle bağlantılı ödemeler: SGK primi, işsizlik maaşı, harçlar",
+       "Asgari ücretli için net maaş, brüt maaş ve işveren maliyeti",
+       "Asgari ücretin dolar karşılığı yıllar içinde",
+       "Part-time ve kısmi süreli çalışmada asgari ücret"
+     ]},
+    {"start": "2026-12-21", "theme": "2026 karnesi: hangi yatırım kazandırdı",
+     "events": [],
+     "topics": [
+       "2026'da altın, dolar, borsa ve mevduat: hangisi kazandırdı",
+       "Enflasyondan arındırınca 2026'nın gerçek kazananı",
+       "Gram altın 2026'da reel olarak ne kazandırdı",
+       "Borsa endeksi mi tek hisse mi: 2026 dersi",
+       "Yılbaşında bütçe planı: 50-30-20 kuralı",
+       "Yeni yılda acil durum fonu ne kadar olmalı"
+     ]},
+    {"start": "2026-12-28", "theme": "2027'de neler değişti",
+     "events": [{"date": "2027-01-01", "what": "Yeni yıl: zamlar yürürlükte"}],
+     "topics": [
+       "1 Ocak'ta yürürlüğe giren zamlar: harçlar, cezalar, MTV",
+       "Trafik cezaları yeniden değerleme oranıyla nasıl artar",
+       "Ocak'ta MTV ilk taksit: ne zaman ve nasıl ödenir",
+       "Yeni yılda vergi dilimleri neden güncellenir",
+       "Damga vergisi ve noter ücretleri yılbaşında nasıl artar"
+     ]},
+    {"start": "2027-01-04", "theme": "Emekli ve memur zammı kesinleşiyor",
+     "events": [{"date": "2027-01-04", "what": "Aralık TÜFE (TÜİK; 3 Ocak Pazar olduğu için tarih teyit edilecek)"}],
+     "topics": [
+       "Emekli zammı kesinleşti: yeni aylık nasıl hesaplanır",
+       "Memur maaş artışı: toplu sözleşme zammı + enflasyon farkı",
+       "Ocak kira artış oranı: ev sahibi en fazla ne kadar artırabilir",
+       "Kıdem tazminatı tavanı Ocak'ta ne oldu",
+       "Yılın enflasyonu: 2026 nasıl kapandı"
+     ]}
+  ]
+}
