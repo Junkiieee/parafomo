@@ -26,6 +26,12 @@ göre seç; eski motora (shorts-build-v4) yalnız yeni motor çökerse yedek ola
   → 10:00 ve 16:00 UTC (13:00/19:00 TSİ) yayın. Onaysız hiçbir şey çıkmaz; `PUBLISH_PAUSED` yerinde, yalnız `ONAYLI_YAYIN=1` geçer.
   Kuyruk/geri bildirim: `/root/parafomo-data/onay/kuyruk.json`. Adayların rakamları sabah raporundan ÖNCE doğrulanır
   (ilk adayda "cezalar her Kasım %25 artıyor" hatası yakalandı → düzeltildi).
+- **KARAR 2026-10-31 (son): eski motor (klasik stok+kart, Manim) gece hattından ÇIKTI** — Kaan: "eski sistemde stillerle
+  video üretimi yapılmasın, yenileri deneyelim; her paylaşımda beğendim/beğenmedim diyeceğim". Gece: 2 izometrik, 8
+  kaplamanın hepsi döner (iso, paper, riso, blueprint, cutpaper, ink, pixel, sketch). Kaan'ın oyu `kuyruk.py begen|begenme
+  <no>` → `rapor` karnesinde izlenmenin yanında. Sabah raporu dünkü yayınlar için oyu sorar. Olay videosu (event-short)
+  PUBLISH_PAUSED altında üretilir → kuyruğa "bekliyor" → Kaan onaylayınca `kuyruk.sh yayinla --no <n>` hemen çıkar.
+  Blog (daily-content) + bülten 2026-10-31 yeniden AÇIK; ajan ~7 Kasım'da açılacak; viral/shorts/news/manim/spk-ig KAPALI.
 - **Teknik deneyi (2026-10-31 güncelleme, Kaan "diğer tekniklerle de deneyelim"):** 5 kaplama aynı izometrik çizimin
   renkleri olduğu için asıl eksen TEKNİK yapıldı: her gece 1 `iso` (kodla izometrik infografik, kaplama içeride döner) +
   1 `klasik` (eski viral motor: stok/arşiv görsel + Manim veri kartı, shorts-build-v4; kanalın 1000+ videolarının çoğu bu

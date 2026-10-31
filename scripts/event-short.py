@@ -35,6 +35,7 @@ STATE = os.environ.get("EVENT_SHORT_STATE") or os.path.join(LOGS, "event-shorts.
 LOCK = os.path.join(LOGS, "event-short.lock")
 AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos",
          "Eylül", "Ekim", "Kasım", "Aralık"]
+ONAY_MODU = False       # __main__'da PUBLISH_PAUSED varsa True: üret + kuyruğa yaz, yükleme yok
 FRESH_H = 36            # olaydan bu kadar saat sonrasına kadar video anlamlı
 WINDOW_UTC = (5, 21)    # 08:00–24:00 TSİ arası üret; dışında sabaha bırak
 MAX_ATTEMPTS = 2        # aynı olay için en fazla 2 deneme (LLM/render hatası)
@@ -268,7 +269,7 @@ def candidates(now, st, ignore_state=False):
             out.append(e); continue
         if age_h < 0 or age_h > FRESH_H:
             continue
-        if rec.get("status") in ("done", "skip") or rec.get("attempts", 0) >= MAX_ATTEMPTS:
+        if rec.get("status") in ("done", "skip", "onayda") or rec.get("attempts", 0) >= MAX_ATTEMPTS:
             continue
         if e["pending"] and age_h < e.get("wait_h", 0):
             print(f"[event-short] {e['key']}: bekleniyor ({', '.join(e['pending'])} henüz gelmedi, {age_h:.1f} sa)")
@@ -281,6 +282,8 @@ def run(e, st, now):
     facts = " ".join(e["facts"])
     cmd = ["bash", os.path.join(REPO, "scripts", "viral-daily.sh"), "--format", "event_result",
            "--topic", e["topic"], "--facts", facts, "--must", "|".join(e["must"]), "--link", e["link"]]
+    if ONAY_MODU:
+        cmd.append("--render-only")
     rec = st.setdefault(e["key"], {})
     rec["attempts"] = rec.get("attempts", 0) + 1
     rec["ts"] = now.isoformat(timespec="seconds")
@@ -302,6 +305,22 @@ def run(e, st, now):
         save_state(st)
         print(f"[event-short] {e['key']}: BAŞARISIZ (deneme {rec['attempts']}/{MAX_ATTEMPTS})")
         return 2
+    if ONAY_MODU:
+        slug = next((ln.split()[1] for ln in tail.splitlines() if ln.startswith("RENDER_OK ")), "")
+        if not slug:
+            rec.update({"status": "failed", "error": "onay modu: RENDER_OK satırı yok"}); save_state(st); return 2
+        title = e["topic"]
+        try:
+            title = json.load(open(os.path.join(REPO, "public", "social", f"short-{slug}.json"), encoding="utf-8")).get("title", title)
+        except Exception:
+            pass
+        k = subprocess.run([sys.executable, os.path.join(REPO, "scripts", "anim", "kuyruk.py"), "ekle", slug, "--title", title,
+                            "--style", "iso", "--format", "event_result"], cwd=REPO, capture_output=True, text=True)
+        print(k.stdout.strip(), k.stderr[-300:])
+        rec.update({"status": "onayda", "slug": slug, "topic": e["topic"]})
+        rec.pop("error", None); save_state(st)
+        print(f"[event-short] {e['key']}: üretildi, Kaan'ın onayını bekliyor (kuyruk) → {slug}")
+        return 0
     url = ""
     for ln in tail.splitlines():
         if "Tamamlandı:" in ln and "→" in ln:
@@ -360,6 +379,8 @@ def main(argv):
 if __name__ == "__main__":
     # YAYIN DURDURMA BAYRAĞI (Kaan 2026-10-30): dosya varsa hiçbir şey yayınlanmaz (--dry serbest)
     import os as _os, sys as _sys
+    # Kaan 2026-10-31: olay videosu YİNE üretilir ama yayınlanmaz → onay kuyruğuna "bekliyor" (kuyruk.py), Kaan onaylayınca çıkar.
     if _os.path.exists("/root/parafomo-data/PUBLISH_PAUSED") and "--dry" not in _sys.argv and _os.environ.get("ONAYLI_YAYIN") != "1":
-        print("[durduruldu] /root/parafomo-data/PUBLISH_PAUSED var — yayın yapılmadı."); _sys.exit(0)
+        ONAY_MODU = True
+        print("[event-short] PUBLISH_PAUSED var → onay modu: video üretilir, kuyruğa 'bekliyor' yazılır, yayın yok.")
     sys.exit(main(sys.argv[1:]))

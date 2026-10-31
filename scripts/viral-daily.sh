@@ -36,7 +36,7 @@ set -a; . "$REPO/.env"; set +a
 
 # Argümanlar: --prepare | --publish | --at N | --format X | --topic "..."
 #   Olay sonucu (scripts/event-short.py): --format event_result --facts "<resmî rakamlar>" --must "a|b" --link /yol/
-MODE="full"; SLOT_AT=""; FORMAT_OVERRIDE=""; TOPIC=""; FACTS=""; MUST=""; LINK=""
+MODE="full"; SLOT_AT=""; FORMAT_OVERRIDE=""; TOPIC=""; FACTS=""; MUST=""; LINK=""; RENDER_ONLY=0
 while [ $# -gt 0 ]; do
   case "$1" in
     --prepare) MODE="prepare"; shift ;;
@@ -47,6 +47,8 @@ while [ $# -gt 0 ]; do
     --facts)   FACTS="$2"; shift 2 ;;
     --must)    MUST="$2"; shift 2 ;;
     --link)    LINK="$2"; shift 2 ;;
+    # Onaylı yayın (Kaan 2026-10-31): yalnız üret, YÜKLEME YOK → event-short.py kuyruğa "bekliyor" yazar
+    --render-only) RENDER_ONLY=1; shift ;;
     *)         echo "UYARI: bilinmeyen arg '$1'"; shift ;;
   esac
 done
@@ -198,6 +200,9 @@ fi
 echo "[*] Video üretiliyor..."
 if "$VPY" "$REPO/scripts/anim/anim_short.py" --scenario "$SCEN"; then
   echo "[+] Video: izometrik animasyon motoru"
+  if [ "$RENDER_ONLY" = "1" ]; then echo "RENDER_OK $SLUG"; exit 0; fi
+elif [ "$RENDER_ONLY" = "1" ]; then
+  echo "HATA: animasyon motoru başarısız (onay modu eski motora düşmez — Kaan: eski stil yok)"; exit 2
 else
   echo "UYARI: animasyon motoru başarısız — eski motora düşülüyor"
   if ! "$VPY" "$REPO/scripts/shorts-build-v4.py" "$SLUG" --scenario "$SCEN" --engine google --voice "$VOICE"; then

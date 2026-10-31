@@ -13,6 +13,8 @@ onaysız yayınlanmaz. `rapor` stillerin karnesini çıkarır (deney aşama 1: e
   kuyruk.py ekle <slug> --title "…" [--style defter] [--format ekonomi_defteri] [--tarih …]
                                       (elle yapılmış bölüm: short-<slug>.json + "file" mp4 hazır olmalı)
   kuyruk.py yayinla                   (cron: onaylı sıradakini yayınlar)
+  kuyruk.py begen <no> [--not "…"]   kuyruk.py begenme <no> [--not "…"]   (Kaan'ın yayın sonrası oyu)
+  kuyruk.py yayinla --no <no>         (olay videosu: onaydan hemen sonra)
   kuyruk.py rapor [--json]
 """
 import argparse, datetime as dt, json, os, subprocess, sys
@@ -28,8 +30,11 @@ SCEN_DIR = os.path.join(ROOT, "public", "social", "scenarios")
 #   klasik = eski viral motor: stok/arşiv görsel + Manim veri kartı (shorts-build-v4); kanalın 1000+ izlenen
 #            videolarının çoğu bu motordan → taban çizgisi
 #   defter = Ekonomi Defteri (elle, haftalık; `ekle` ile girer)
-TEKNIKLER = ["iso", "klasik"]
-STILLER = ["iso", "paper", "riso", "blueprint", "cutpaper"]
+# Kaan 2026-10-31 (2. karar): "eski sistemde stillerle video üretimi yapılmasın, yenileri deneyelim" → klasik ÇIKTI.
+#   Gece hattı yalnız yeni motor: izometrik, 8 kaplamanın hepsi döner. Kaan her yayında beğendi/beğenmedi der
+#   (`begen` / `begenme`) → karne izlenme verisinin yanında Kaan'ın oyunu da gösterir.
+TEKNIKLER = ["iso"]
+STILLER = ["iso", "paper", "riso", "blueprint", "cutpaper", "ink", "pixel", "sketch"]
 SES = "tr-TR-Chirp3-HD-Orus"
 FORMATLAR = ["shock_number", "myth", "single_concept"]
 
@@ -147,8 +152,9 @@ def uret(a):
 def liste(a):
     q = load()
     for it in q["items"]:
-        if a.hepsi or it["status"] in ("bekliyor", "onaylandi"):
+        if a.hepsi or it["status"] in ("bekliyor", "onaylandi") or (it["status"] == "yayinlandi" and not it.get("kaan")):
             tar = f" [{it['yayin_tarihi']}]" if it.get("yayin_tarihi") else ""
+            tar += {"+": " 👍", "-": " 👎"}.get(it.get("kaan"), "")
             print(f"#{it['no']:<3} {it['status']:<11} {teknik_of(it):<7} {it['style']:<9} {it['format']:<14} {it['slug']}{tar}  —  {it['title'][:70]}")
     return 0
 
@@ -186,6 +192,16 @@ def ekle(a):
     return 0
 
 
+def oyla(a, deger):
+    q = load()
+    for it in find(q, a.ids):
+        it["kaan"] = deger
+        if a.not_:
+            it["kaan_not"] = a.not_
+        print(("👍" if deger == "+" else "👎"), it["no"], it["slug"], it.get("style"))
+    save(q); return 0
+
+
 def reddet(a):
     q = load()
     for it in find(q, a.ids):
@@ -198,6 +214,8 @@ def yayinla(a):
     q = load()
     gun = bugun_tr()
     sira = [it for it in q["items"] if it["status"] == "onaylandi" and it.get("yayin_tarihi", "") <= gun]
+    if a.no:   # belirli bir videoyu hemen yayınla (olay videosu: Kaan onaylayınca bekletmeden)
+        sira = [it for it in q["items"] if str(it.get("no")) == str(a.no) and it["status"] == "onaylandi"]
     if not sira:
         print("[yayın] bugün çıkacak onaylı video yok"); return 0
     # tarihi bugün olan (seri bölümü) önce; sonra onay sırası
@@ -289,12 +307,13 @@ def rapor(a):
         age = (now() - dt.datetime.fromisoformat(it["published"])).total_seconds() / 86400
         rows.append({"no": it["no"], "slug": it["slug"], "teknik": teknik_of(it), "style": it["style"], "format": it["format"], "age_d": round(age, 1),
                      "views": y.get("views", 0), "avp": y.get("averageViewPercentage"), "engaged": y.get("engagedViews"),
-                     "subs": y.get("subscribersGained", 0), "ig_reach": g.get("reach"), "ig_saved": g.get("saved")})
+                     "subs": y.get("subscribersGained", 0), "ig_reach": g.get("reach"), "ig_saved": g.get("saved"),
+                     "kaan": it.get("kaan", "")})
     if a.json:
         print(json.dumps(rows, ensure_ascii=False, indent=1)); return 0
     print("VİDEO BAZINDA (yaş gün · YT izlenme · ort. izleme % · abone · IG erişim)")
     for r in sorted(rows, key=lambda r: -r["no"]):
-        print(f"  #{r['no']:<3} {r['teknik']:<7} {r['style']:<9} {r['age_d']:>4}g  {r['views']:>6}  {r['avp'] or 0:>5.1f}%  +{r['subs']}  IG {r['ig_reach'] or '-'}  {r['slug'][:45]}")
+        print(f"  #{r['no']:<3} {r['teknik']:<7} {r['style']:<9} {r['age_d']:>4}g  {r['views']:>6}  {r['avp'] or 0:>5.1f}%  +{r['subs']}  IG {r['ig_reach'] or '-'}  {({'+': '👍', '-': '👎'}).get(r['kaan'], '·')}  {r['slug'][:45]}")
     def karne(baslik, key, vals):
         print(f"\n{baslik} (yalnız ≥7 günlük videolar; ortanca)")
         for s in vals:
@@ -304,8 +323,10 @@ def rapor(a):
                 print(f"  {s:<9} n=0 (yayında {n_all}, 7 günü dolan yok)"); continue
             v = median([r["views"] for r in rr]); p = median([r["avp"] or 0 for r in rr])
             sub = sum(r["subs"] for r in rr); tv = sum(r["views"] for r in rr)
-            print(f"  {s:<9} n={len(rr)}  izlenme ortanca {v:>7.0f}  izleme %{p:>5.1f}  abone/1000 {1000*sub/max(tv,1):.1f}")
-    karne("TEKNİK KARNESİ", "teknik", TEKNIKLER + ["defter"])
+            oy = [r for r in rows if r[key] == s and r["kaan"]]
+            ky = f"  Kaan {sum(r['kaan'] == '+' for r in oy)}👍/{sum(r['kaan'] == '-' for r in oy)}👎" if oy else ""
+            print(f"  {s:<9} n={len(rr)}  izlenme ortanca {v:>7.0f}  izleme %{p:>5.1f}  abone/1000 {1000*sub/max(tv,1):.1f}{ky}")
+    karne("TEKNİK KARNESİ", "teknik", TEKNIKLER + ["defter", "klasik"])
     rows = [r for r in rows if r["teknik"] == "iso"]
     karne("İZOMETRİK İÇİNDE KAPLAMA", "style", STILLER)
     return 0
@@ -321,7 +342,11 @@ def main():
     p.add_argument("--style", default="defter"); p.add_argument("--format", default="ekonomi_defteri")
     p.add_argument("--tarih", default=""); p.add_argument("--onayla", action="store_true"); p.set_defaults(f=ekle)
     p = sp.add_parser("reddet"); p.add_argument("ids", nargs="+"); p.set_defaults(f=reddet)
-    p = sp.add_parser("yayinla"); p.add_argument("--dry", action="store_true"); p.set_defaults(f=yayinla)
+    for ad, deger in (("begen", "+"), ("begenme", "-")):   # Kaan'ın yayın sonrası oyu
+        p = sp.add_parser(ad); p.add_argument("ids", nargs="+"); p.add_argument("--not", dest="not_", default="")
+        p.set_defaults(f=lambda a, d=deger: oyla(a, d))
+    p = sp.add_parser("yayinla"); p.add_argument("--dry", action="store_true"); p.add_argument("--no", default="")
+    p.set_defaults(f=yayinla)
     p = sp.add_parser("rapor"); p.add_argument("--json", action="store_true"); p.set_defaults(f=rapor)
     a = ap.parse_args()
     return a.f(a)
