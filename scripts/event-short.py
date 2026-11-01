@@ -24,6 +24,7 @@ import datetime as dt
 import fcntl
 import glob
 import json
+import re
 import os
 import subprocess
 import sys
@@ -317,6 +318,15 @@ def run(e, st, now):
         k = subprocess.run([sys.executable, os.path.join(REPO, "scripts", "anim", "kuyruk.py"), "ekle", slug, "--title", title,
                             "--style", "iso", "--format", "event_result"], cwd=REPO, capture_output=True, text=True)
         print(k.stdout.strip(), k.stderr[-300:])
+        m = re.search(r"eklendi:\s*(\d+)", k.stdout or "")
+        oto = os.path.join("/root/parafomo-data", "onay", "oto.json")
+        if m and os.path.exists(oto) and "onaylandı" in (k.stdout or ""):   # otomatik hafta: bekletmeden yayınla
+            y = subprocess.run([sys.executable, os.path.join(REPO, "scripts", "anim", "kuyruk.py"), "yayinla", "--no", m.group(1)],
+                               cwd=REPO, capture_output=True, text=True, timeout=3600)
+            print(y.stdout[-600:], y.stderr[-300:])
+            rec.update({"status": "done" if "✅" in (y.stdout or "") else "onayda", "slug": slug, "topic": e["topic"]})
+            rec.pop("error", None); save_state(st)
+            return 0
         rec.update({"status": "onayda", "slug": slug, "topic": e["topic"]})
         rec.pop("error", None); save_state(st)
         print(f"[event-short] {e['key']}: üretildi, Kaan'ın onayını bekliyor (kuyruk) → {slug}")

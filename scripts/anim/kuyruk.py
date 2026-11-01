@@ -112,6 +112,18 @@ def run(cmd, env=None, **kw):
     return subprocess.run(cmd, cwd=ROOT, env=e, text=True, capture_output=True, **kw)
 
 
+OTO = "/root/parafomo-data/onay/oto.json"   # {"bitis": "YYYY-MM-DD"} — o güne kadar (dahil) onay beklenmez
+
+
+def oto_aktif():
+    """Kaan 2026-11-01: 'bir hafta boyunca otomatik paylaşımlar yapılsın ardından konuşalım' → 8 Kasım'a kadar
+    üretilen her video kendiliğinden onaylı (yayın saatleri aynı). Bitişten sonra otomatik olarak onay moduna döner."""
+    try:
+        return bugun_tr() <= json.load(open(OTO, encoding="utf-8"))["bitis"]
+    except Exception:
+        return False
+
+
 def uret(a):
     q = load()
     day = now().date()
@@ -145,6 +157,8 @@ def uret(a):
         q["items"].append({"no": no, "slug": slug, "title": meta.get("title", slug), "topic": topic, "week": w["start"],
                            "format": fmt, "teknik": teknik, "style": style, "mp4": mp4, "scenario": scen,
                            "created": now().isoformat(timespec="seconds"), "status": "bekliyor"})
+        if oto_aktif():
+            q["items"][-1].update({"status": "onaylandi", "approved": now().isoformat(timespec="seconds"), "oto": True})
         if topic in w["topics"]:
             q["used_topics"].append(topic)
         taken.add(style); n_done += 1
@@ -195,7 +209,7 @@ def ekle(a):
         it["yayin_tarihi"] = a.tarih
     q["items"].append(it); save(q)
     print("eklendi:", no, a.slug)
-    if a.onayla:
+    if a.onayla or oto_aktif():
         a.ids = [a.slug]; return onayla(a)
     return 0
 

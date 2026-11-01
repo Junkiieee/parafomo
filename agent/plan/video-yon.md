@@ -37,6 +37,12 @@ göre seç; eski motora (shorts-build-v4) yalnız yeni motor çökerse yedek ola
    ederse çekilir). Gece aday Short'ları için onay kuralı DEĞİŞMEDİ. Havuz boşaldıkça yeni konu eklenir; Pazar karnesinde
    bölüm izlenmeleri + Kaan oyu sinyale eklenecek.
 
+## OTOMATİK HAFTA 1-8 Kasım 2026 (Kaan 2026-11-01: "bir hafta boyunca otomatik paylaşımlar yapılsın ardından konuşalım")
+`/root/parafomo-data/onay/oto.json` {"bitis": "2026-11-08"} → `kuyruk.py uret` adayları ve `ekle` bölümleri kendiliğinden onaylı;
+olay videosu (event-short) üretilince hemen yayınlanır. Yayın saatleri aynı (13:00/19:00 TSİ). Rakam kapısı sürüyor: sabah
+raporu 13:00'ten önce senaryoları doğrular, düzeltir ya da `reddet` ile çeker. 9 Kasım'dan itibaren kendiliğinden onay moduna
+döner; 8 Kasım'da Kaan'la değerlendirme (uzatmak = bitis tarihini değiştirmek).
+
 ## Yayın düzeni (2026-10-31 Kaan onayı)
 - **Takvim:** `agent/plan/icerik-takvimi.json` — 2 Kas → 10 Oca, 10 hafta zam sezonu (yeniden değerleme, 11.11, vergi dilimi,
   asgari ücret, emekli zammı, faiz kararları, 2026 karnesi). Gece üretimi konuları buradan alır.
