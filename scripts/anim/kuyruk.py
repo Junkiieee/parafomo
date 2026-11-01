@@ -224,6 +224,10 @@ def yayinla(a):
     sira = [it for it in q["items"] if it["status"] == "onaylandi" and it.get("yayin_tarihi", "") <= gun]
     if a.no:   # belirli bir videoyu hemen yayınla (olay videosu: Kaan onaylayınca bekletmeden)
         sira = [it for it in q["items"] if str(it.get("no")) == str(a.no) and it["status"] == "onaylandi"]
+    if not a.dry and not a.no:   # zamanlanmış uzun bölüm yayına girdiyse: liste + yorum (Kaan onaylı yüklenmişti)
+        r = run([PY, "scripts/longform/lf_upload.py", "tamamla"], env={"ONAYLI_YAYIN": "1"}, timeout=600)
+        if r.stdout.strip():
+            print(r.stdout[-400:])
     if not sira:
         print("[yayın] bugün çıkacak onaylı video yok"); return 0
     # tarihi bugün olan (seri bölümü) önce; sonra onay sırası

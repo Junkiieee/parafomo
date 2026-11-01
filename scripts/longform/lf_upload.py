@@ -84,6 +84,8 @@ def upload(a):
             print(f"    %{int(st.progress() * 100)}")
     vid = resp["id"]
     meta.update({"video_id": vid, "youtube_url": f"https://youtu.be/{vid}", "privacy": status["privacyStatus"]})
+    if a.at:   # zamanlanmış: yayın saati geçince `tamamla` liste + yorumu ekler (kuyruk.py yayinla çağırır)
+        meta.update({"publish_at": a.at, "tamamlandi": False})
     json.dump(meta, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print(f"[lf-up] ✅ {meta['youtube_url']}")
     try:
@@ -91,16 +93,26 @@ def upload(a):
         print("[lf-up] kapak ayarlandı")
     except Exception as e:
         print(f"[lf-up] kapak ayarlanamadı (non-fatal): {str(e)[:160]}")
-    if meta.get("srt") and os.path.exists(meta["srt"]):
-        try:
-            yt.captions().insert(part="snippet",
-                                 body={"snippet": {"videoId": vid, "language": "tr", "name": "Türkçe",
-                                                   "isDraft": False}},
-                                 media_body=MediaFileUpload(meta["srt"], mimetype="application/octet-stream")).execute()
-            print("[lf-up] Türkçe altyazı eklendi")
-        except Exception as e:
-            print(f"[lf-up] altyazı eklenemedi (non-fatal): {str(e)[:160]}")
+    caption(yt, path, meta)
     return 0
+
+
+def caption(yt, path, meta):
+    """Türkçe SRT yükle; olmazsa (ör. günlük kota) meta'da altyazi=False kalır, `tamamla` yeniden dener."""
+    from googleapiclient.http import MediaFileUpload
+    if not (meta.get("srt") and os.path.exists(meta["srt"])):
+        return
+    try:
+        yt.captions().insert(part="snippet",
+                             body={"snippet": {"videoId": meta["video_id"], "language": "tr", "name": "Türkçe",
+                                               "isDraft": False}},
+                             media_body=MediaFileUpload(meta["srt"], mimetype="application/octet-stream")).execute()
+        meta["altyazi"] = True
+        print("[lf-up] Türkçe altyazı eklendi")
+    except Exception as e:
+        meta["altyazi"] = False
+        print(f"[lf-up] altyazı eklenemedi (tamamla yeniden dener): {str(e)[:160]}")
+    json.dump(meta, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 
 
 def publish(a):
@@ -140,6 +152,28 @@ def publish(a):
     return 0
 
 
+def tamamla(a):
+    """Zamanı gelmiş zamanlanmış uzun videolar: herkese açık + oynatma listesi + yorum (bir kez)."""
+    import datetime
+    import glob
+    now = datetime.datetime.now(datetime.timezone.utc)
+    for p in sorted(glob.glob(os.path.join(OUT_DIR, "*.meta.json"))):
+        m = json.load(open(p, encoding="utf-8"))
+        if m.get("video_id") and m.get("altyazi") is False:
+            caption(_extras().get_service(), p, m)
+        if not m.get("publish_at") or m.get("tamamlandi") is not False or not m.get("video_id"):
+            continue
+        if datetime.datetime.fromisoformat(m["publish_at"].replace("Z", "+00:00")) > now:
+            continue
+        a.slug = m["slug"]
+        publish(a)
+        m = json.load(open(p, encoding="utf-8"))
+        m["tamamlandi"] = True
+        json.dump(m, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+        print(f"[lf-up] tamamlandı: {m['slug']}")
+    return 0
+
+
 VENV_PY = "/root/.venvs/parafomo/bin/python"
 
 
@@ -159,7 +193,10 @@ def main():
     u.add_argument("--dry", action="store_true")
     p = sub.add_parser("publish")
     p.add_argument("slug")
+    sub.add_parser("tamamla")
     a = ap.parse_args()
+    if a.cmd == "tamamla":
+        return tamamla(a)
     if a.cmd == "upload" and a.dry:
         print(description(load_meta(a.slug)[1]))
         return 0
