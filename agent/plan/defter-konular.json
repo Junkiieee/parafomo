@@ -1,0 +1,369 @@
+{
+ "_not": "Ekonomi Defteri konu havuzu (Kaan 2026-11-01: 'veriyle sen seç ve paylaş'). scripts/anim/defter_konu.py her konuyu aranma hacmiyle puanlar ve Salı/Cuma Short + Pazar uzun için seçer. ara = Google/YouTube'da insanların yazdığı sorgu(lar); tema = takvim temasına uyum anahtar kelimeleri; uzun = 16:9 bölüm olarak da uygun mu. yapildi: slug ya da tarih.",
+ "konular": [
+  {
+   "id": "enflasyon",
+   "baslik": "Enflasyon nedir",
+   "ara": [
+    "enflasyon nedir"
+   ],
+   "tema": [
+    "zam",
+    "enflasyon"
+   ],
+   "uzun": true,
+   "yapildi": {
+    "short": "anim-ekonomi-defteri-1-enflasyon",
+    "uzun": "lf-ekonomi-defteri-1-enflasyon-nedir"
+   }
+  },
+  {
+   "id": "taksit",
+   "baslik": "Taksit mi peşin mi",
+   "ara": [
+    "taksit mi peşin mi"
+   ],
+   "tema": [
+    "11.11",
+    "taksit"
+   ],
+   "uzun": false,
+   "yapildi": {
+    "short": "anim-ekonomi-defteri-2-taksit"
+   }
+  },
+  {
+   "id": "indirim",
+   "baslik": "Önce zam sonra indirim",
+   "ara": [
+    "sahte indirim"
+   ],
+   "tema": [
+    "11.11",
+    "black friday",
+    "indirim"
+   ],
+   "uzun": false,
+   "yapildi": {
+    "short": "anim-ekonomi-defteri-3-indirim"
+   }
+  },
+  {
+   "id": "faiz",
+   "baslik": "Faiz nedir, nasıl çalışır",
+   "ara": [
+    "faiz nedir",
+    "politika faizi nedir"
+   ],
+   "tema": [
+    "faiz"
+   ],
+   "uzun": true
+  },
+  {
+   "id": "bilesik-faiz",
+   "baslik": "Bileşik faiz: paranın parası",
+   "ara": [
+    "bileşik faiz nedir",
+    "bileşik faiz"
+   ],
+   "tema": [
+    "faiz",
+    "karne"
+   ],
+   "uzun": true
+  },
+  {
+   "id": "reel-faiz",
+   "baslik": "Reel faiz: faiz enflasyonu yeniyor mu",
+   "ara": [
+    "reel faiz nedir",
+    "reel getiri"
+   ],
+   "tema": [
+    "faiz",
+    "karne"
+   ],
+   "uzun": false
+  },
+  {
+   "id": "kredi-karti-asgari",
+   "baslik": "Kredi kartında asgari ödeme tuzağı",
+   "ara": [
+    "kredi kartı asgari ödeme",
+    "asgari ödeme tutarı"
+   ],
+   "tema": [
+    "11.11",
+    "black friday",
+    "kart"
+   ],
+   "uzun": false
+  },
+  {
+   "id": "kredi-notu",
+   "baslik": "Kredi notu nasıl yükselir",
+   "ara": [
+    "kredi notu",
+    "findeks kredi notu"
+   ],
+   "tema": [
+    "kart",
+    "kredi"
+   ],
+   "uzun": true
+  },
+  {
+   "id": "vergi-dilimi",
+   "baslik": "Vergi dilimi: Aralık maaşı neden düşer",
+   "ara": [
+    "vergi dilimi",
+    "gelir vergisi dilimleri"
+   ],
+   "tema": [
+    "vergi dilimi",
+    "aralık maaşı"
+   ],
+   "uzun": true
+  },
+  {
+   "id": "brut-net",
+   "baslik": "Brüt maaştan nete: kesintiler",
+   "ara": [
+    "brütten nete maaş hesaplama",
+    "net maaş hesaplama"
+   ],
+   "tema": [
+    "vergi dilimi",
+    "asgari ücret",
+    "maaş"
+   ],
+   "uzun": true
+  },
+  {
+   "id": "asgari-ucret",
+   "baslik": "Asgari ücret nasıl belirlenir",
+   "ara": [
+    "asgari ücret",
+    "asgari ücret nasıl belirlenir"
+   ],
+   "tema": [
+    "asgari ücret"
+   ],
+   "uzun": true
+  },
+  {
+   "id": "emekli-zammi",
+   "baslik": "Emekli zammı nasıl hesaplanır",
+   "ara": [
+    "emekli zammı",
+    "emekli zammı nasıl hesaplanır"
+   ],
+   "tema": [
+    "emekli",
+    "memur"
+   ],
+   "uzun": true
+  },
+  {
+   "id": "memur-zammi",
+   "baslik": "Memur zammı: toplu sözleşme + enflasyon farkı",
+   "ara": [
+    "memur zammı",
+    "enflasyon farkı"
+   ],
+   "tema": [
+    "emekli",
+    "memur"
+   ],
+   "uzun": false
+  },
+  {
+   "id": "kira-artis",
+   "baslik": "Kira artış oranı nasıl hesaplanır",
+   "ara": [
+    "kira artış oranı",
+    "kira artışı nasıl hesaplanır"
+   ],
+   "tema": [
+    "kira",
+    "zam"
+   ],
+   "uzun": true
+  },
+  {
+   "id": "yeniden-degerleme",
+   "baslik": "Yeniden değerleme oranı nedir",
+   "ara": [
+    "yeniden değerleme oranı"
+   ],
+   "tema": [
+    "zam",
+    "mtv",
+    "2027"
+   ],
+   "uzun": false
+  },
+  {
+   "id": "dolar-kuru",
+   "baslik": "Dolar kuru neden yükselir",
+   "ara": [
+    "dolar neden yükseliyor",
+    "dolar neden artıyor"
+   ],
+   "tema": [
+    "faiz",
+    "kur",
+    "karne"
+   ],
+   "uzun": true
+  },
+  {
+   "id": "altin",
+   "baslik": "Altın neden değerli",
+   "ara": [
+    "altın neden yükseliyor",
+    "altın neden değerli"
+   ],
+   "tema": [
+    "karne",
+    "altın"
+   ],
+   "uzun": true
+  },
+  {
+   "id": "mevduat-stopaj",
+   "baslik": "Mevduatta stopaj: net getiri",
+   "ara": [
+    "stopaj nedir",
+    "mevduat faizi hesaplama"
+   ],
+   "tema": [
+    "faiz",
+    "karne"
+   ],
+   "uzun": false
+  },
+  {
+   "id": "borsa",
+   "baslik": "Borsa nedir, hisse nasıl değer kazanır",
+   "ara": [
+    "borsa nedir",
+    "hisse senedi nedir"
+   ],
+   "tema": [
+    "karne",
+    "borsa"
+   ],
+   "uzun": true
+  },
+  {
+   "id": "temettu",
+   "baslik": "Temettü nedir",
+   "ara": [
+    "temettü nedir"
+   ],
+   "tema": [
+    "borsa",
+    "karne"
+   ],
+   "uzun": false
+  },
+  {
+   "id": "halka-arz",
+   "baslik": "Halka arz nasıl işler",
+   "ara": [
+    "halka arz nedir",
+    "halka arz"
+   ],
+   "tema": [
+    "borsa"
+   ],
+   "uzun": true
+  },
+  {
+   "id": "bes",
+   "baslik": "BES: devlet katkısı nasıl işler",
+   "ara": [
+    "bes nedir",
+    "bes devlet katkısı"
+   ],
+   "tema": [
+    "birikim",
+    "karne"
+   ],
+   "uzun": true
+  },
+  {
+   "id": "devaluasyon",
+   "baslik": "Devalüasyon nedir",
+   "ara": [
+    "devalüasyon nedir"
+   ],
+   "tema": [
+    "kur"
+   ],
+   "uzun": false
+  },
+  {
+   "id": "resesyon",
+   "baslik": "Resesyon nedir",
+   "ara": [
+    "resesyon nedir"
+   ],
+   "tema": [
+    "fed",
+    "faiz"
+   ],
+   "uzun": false
+  },
+  {
+   "id": "cari-acik",
+   "baslik": "Cari açık nedir, neden önemli",
+   "ara": [
+    "cari açık nedir"
+   ],
+   "tema": [
+    "kur"
+   ],
+   "uzun": false
+  },
+  {
+   "id": "para-basmak",
+   "baslik": "Devlet neden sınırsız para basamaz",
+   "ara": [
+    "para basmak enflasyon",
+    "neden para basılmıyor"
+   ],
+   "tema": [
+    "enflasyon"
+   ],
+   "uzun": false
+  },
+  {
+   "id": "kidem",
+   "baslik": "Kıdem tazminatı nasıl hesaplanır",
+   "ara": [
+    "kıdem tazminatı hesaplama",
+    "kıdem tazminatı"
+   ],
+   "tema": [
+    "maaş",
+    "asgari ücret"
+   ],
+   "uzun": true
+  },
+  {
+   "id": "black-friday",
+   "baslik": "Black Friday'de gerçek indirimi bul",
+   "ara": [
+    "black friday indirim",
+    "efsane cuma"
+   ],
+   "tema": [
+    "black friday"
+   ],
+   "uzun": false
+  }
+ ]
+}

@@ -28,6 +28,15 @@ göre seç; eski motora (shorts-build-v4) yalnız yeni motor çökerse yedek ola
    Türkçe SRT. Uzun #1 Enflasyon nedir (5:45, 11 bölüm) → Paz 8 Kas · #2 Faiz nedir → Paz 15 Kas · sonra kredi/borç,
    dolar kuru, maaşın anatomisi, emekli zammı hesabı (Ocak'tan önce), kira artışı, altın.
 
+   **Konu seçimi VERİYLE ve ONAYSIZ (Kaan 2026-11-01: "bana sunma, sen seç ve paylaş"):** `scripts/anim/defter_konu.py plan
+   --hafta <Pzt> --yaz` → havuz `agent/plan/defter-konular.json`, seçimler `agent/plan/defter-plan.json`. Sinyal: Trends 12 ay
+   hacmi + son 4 hafta ivmesi (fırsat motoru önbelleği; fiyat niyeti ×0,4, dev baş terim ×0,4) × YouTube öneri sayısı × tema
+   (bu hafta ×1,6, 5 hafta içinde gelecek ×1,3). Önce Pazar uzun, Cuma Short = aynı konunun habercisi, Salı = kalan en iyi.
+   Verilen söz (bölüm sonunda "sonraki sayfa") veriden önce gelir → `elle: true` + `neden`. Ekonomi Defteri bölümleri artık
+   Kaan onayı beklemeden `kuyruk.py ekle … --tarih … --onayla` ile kuyruğa girer; video bilgi için Kaan'a gönderilir (itiraz
+   ederse çekilir). Gece aday Short'ları için onay kuralı DEĞİŞMEDİ. Havuz boşaldıkça yeni konu eklenir; Pazar karnesinde
+   bölüm izlenmeleri + Kaan oyu sinyale eklenecek.
+
 ## Yayın düzeni (2026-10-31 Kaan onayı)
 - **Takvim:** `agent/plan/icerik-takvimi.json` — 2 Kas → 10 Oca, 10 hafta zam sezonu (yeniden değerleme, 11.11, vergi dilimi,
   asgari ücret, emekli zammı, faiz kararları, 2026 karnesi). Gece üretimi konuları buradan alır.

@@ -1,0 +1,79 @@
+{
+ "_not": "defter_konu.py çıktısı: tarih → yuva → konu (veriyle seçildi; ilk dördü elle, 2026-10-31)",
+ "secimler": {
+  "2026-11-03": {
+   "yuva": "short",
+   "id": "enflasyon",
+   "baslik": "Enflasyon nedir",
+   "elle": true
+  },
+  "2026-11-06": {
+   "yuva": "short",
+   "id": "taksit",
+   "baslik": "Taksit mi peşin mi",
+   "elle": true
+  },
+  "2026-11-08": {
+   "yuva": "uzun",
+   "id": "enflasyon",
+   "baslik": "Enflasyon nedir",
+   "elle": true
+  },
+  "2026-11-10": {
+   "yuva": "short",
+   "id": "indirim",
+   "baslik": "Önce zam sonra indirim",
+   "elle": true
+  },
+  "2026-11-13": {
+   "yuva": "short",
+   "id": "faiz",
+   "baslik": "Faiz nedir, nasıl çalışır",
+   "elle": true,
+   "neden": "Uzun #1 kapanışında 'sonraki sayfa: FAİZ' sözü verildi; tema uyumu ×1,6 (kart faizi). Veri birincisi kira-artis bir sonraki haftaya."
+  },
+  "2026-11-15": {
+   "yuva": "uzun",
+   "id": "faiz",
+   "baslik": "Faiz nedir, nasıl çalışır",
+   "elle": true,
+   "neden": "Uzun #1 kapanışında 'sonraki sayfa: FAİZ' sözü verildi; tema uyumu ×1,6 (kart faizi). Veri birincisi kira-artis bir sonraki haftaya."
+  },
+  "2026-11-17": {
+   "yuva": "short",
+   "id": "kira-artis",
+   "baslik": "Kira artış oranı nasıl hesaplanır",
+   "sinyal": {
+    "hacim": 413.9,
+    "ivme": 343.1,
+    "yt": 10
+   },
+   "skor": 12.39,
+   "secildi": "2026-11-01"
+  },
+  "2026-11-20": {
+   "yuva": "short",
+   "id": "asgari-ucret",
+   "baslik": "Asgari ücret nasıl belirlenir",
+   "sinyal": {
+    "hacim": 392.6,
+    "ivme": 295.8,
+    "yt": 10
+   },
+   "skor": 15.03,
+   "secildi": "2026-11-01"
+  },
+  "2026-11-22": {
+   "yuva": "uzun",
+   "id": "asgari-ucret",
+   "baslik": "Asgari ücret nasıl belirlenir",
+   "sinyal": {
+    "hacim": 392.6,
+    "ivme": 295.8,
+    "yt": 10
+   },
+   "skor": 15.03,
+   "secildi": "2026-11-01"
+  }
+ }
+}
