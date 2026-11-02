@@ -74,6 +74,42 @@
    },
    "skor": 15.03,
    "secildi": "2026-11-01"
+  },
+  "2026-11-24": {
+   "yuva": "short",
+   "id": "memur-zammi",
+   "baslik": "Memur zammı: toplu sözleşme + enflasyon farkı",
+   "sinyal": {
+    "hacim": 130.2,
+    "ivme": 61.6,
+    "yt": 10
+   },
+   "skor": 11.77,
+   "secildi": "2026-11-02"
+  },
+  "2026-11-27": {
+   "yuva": "short",
+   "id": "kidem",
+   "baslik": "Kıdem tazminatı nasıl hesaplanır",
+   "sinyal": {
+    "hacim": 111.8,
+    "ivme": 90.4,
+    "yt": 10
+   },
+   "skor": 11.9,
+   "secildi": "2026-11-02"
+  },
+  "2026-11-29": {
+   "yuva": "uzun",
+   "id": "kira-artis",
+   "baslik": "Kira artış oranı nasıl hesaplanır",
+   "sinyal": {
+    "hacim": 413.9,
+    "ivme": 343.1,
+    "yt": 10
+   },
+   "skor": 15.25,
+   "secildi": "2026-11-02"
   }
  }
 }

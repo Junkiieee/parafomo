@@ -1,0 +1,467 @@
+1
+00:00:00,350 --> 00:00:05,430
+Mert bankaya 10.000 lira yatırıyor; bir yıl sonra hesabında 14.000 lira var.
+
+2
+00:00:05,430 --> 00:00:09,810
+Ya da bankadan 10.000 lira çekiyor; bir yıl sonra 16.000 lira ödüyor.
+
+3
+00:00:09,810 --> 00:00:12,470
+Aradaki fark faiz: paranın kirası.
+
+4
+00:00:12,750 --> 00:00:16,690
+Bu sayfada faizin ne olduğunu, basit ve bileşik faizi,
+
+5
+00:00:16,690 --> 00:00:21,010
+mevduat ve kredi faizini, Merkez Bankası'nın politika faizini,
+
+6
+00:00:21,010 --> 00:00:25,062
+reel faizi ve faizin dolar kuruyla ilişkisini örneklerle anlatıyoruz.
+
+7
+00:00:25,342 --> 00:00:29,470
+Sonunda da kendi faizini hesaplaman için basit bir formül vereceğiz.
+
+8
+00:00:29,750 --> 00:00:33,210
+Faiz, parayı bir süreliğine kullanmanın bedelidir.
+
+9
+00:00:33,210 --> 00:00:37,430
+Ev kiralarsın, kira ödersin; para kiralarsın,
+
+10
+00:00:37,430 --> 00:00:38,486
+faiz ödersin.
+
+11
+00:00:38,766 --> 00:00:42,586
+Borç alan faiz öder, borç veren faiz kazanır.
+
+12
+00:00:42,586 --> 00:00:46,426
+Banka ikisinin arasındaki aracıdır: mevduata düşük faiz verir,
+
+13
+00:00:46,426 --> 00:00:49,902
+krediye yüksek faiz ister; arası bankanın kazancıdır.
+
+14
+00:00:50,182 --> 00:00:54,842
+Oran hep yıllık söylenir: %40 faiz, 100 liranın bir yılda 40 lira kira
+
+15
+00:00:54,842 --> 00:00:56,062
+getirmesi demektir.
+
+16
+00:00:56,342 --> 00:01:00,442
+Oranı üç şey belirler: paranın ne kadar süre kullanılacağı,
+
+17
+00:01:00,442 --> 00:01:03,062
+geri ödenmeme riski ve enflasyon beklentisi.
+
+18
+00:01:03,342 --> 00:01:08,162
+Oran yüzde olarak söylenir; 100 baz puan 1 puan demektir.
+
+19
+00:01:08,162 --> 00:01:13,446
+TCMB '%37'den %36'ya' derken 100 baz puan indirmiş olur.
+
+20
+00:01:13,726 --> 00:01:17,226
+Basit faiz hep ana paraya işler. 10.000 lira,
+
+21
+00:01:17,226 --> 00:01:22,078
+yıllık %40: her yıl 4.000 lira; iki yılda 18.000 lira.
+
+22
+00:01:22,358 --> 00:01:26,998
+Bileşik faizde ilk yılın faizi ana paraya eklenir ve ikinci yıl o da faiz
+
+23
+00:01:26,998 --> 00:01:32,990
+kazanır. 14.000 liranın %40'ı 5.600: iki yılda 19.600 lira.
+
+24
+00:01:33,270 --> 00:01:39,890
+Fark başta küçük, zamanla büyür. %40 bileşik faizle para yaklaşık 2 yıl 1 ayda
+
+25
+00:01:39,890 --> 00:01:40,902
+ikiye katlanır.
+
+26
+00:01:41,182 --> 00:01:44,342
+Bu etki senin lehine de aleyhine de çalışır:
+
+27
+00:01:44,342 --> 00:01:48,478
+mevduatta kazancını büyütür, ödenmeyen kredi kartı borcunda yükü büyütür.
+
+28
+00:01:48,758 --> 00:01:53,098
+Vadeli mevduat, bankaya belirli bir süre borç vermektir.
+
+29
+00:01:53,098 --> 00:01:54,950
+Banka bu paraya faiz öder.
+
+30
+00:01:55,230 --> 00:02:01,010
+Oran vadeye göre değişir. Ekim 2026'da 3 aya kadar vadeli mevduatın ortalama
+
+31
+00:02:01,010 --> 00:02:03,702
+yıllık faizi %37,6 idi.
+
+32
+00:02:03,982 --> 00:02:08,062
+Ama bu brüt rakam. Faiz gelirinden stopaj kesilir;
+
+33
+00:02:08,062 --> 00:02:11,998
+ayrıca yıllık oran 3 aylık vadede yalnızca çeyreği kadar işler.
+
+34
+00:02:12,278 --> 00:02:18,378
+Örnek: 100.000 lira, 3 ay vade, yıllık %40. Faiz yaklaşık 10.000 lira;
+
+35
+00:02:18,378 --> 00:02:20,750
+stopaj kesilince eline daha azı geçer.
+
+36
+00:02:21,030 --> 00:02:25,170
+Bir de hoş geldin faizi tuzağı var: ilk ay yüksek görünür,
+
+37
+00:02:25,170 --> 00:02:28,926
+sonra düşer. Vade yenilenirken oranı mutlaka kontrol et.
+
+38
+00:02:29,206 --> 00:02:34,606
+Kredi, bankadan borç almaktır; bu kez faizi sen ödersin ve oran mevduatın hep
+
+39
+00:02:34,606 --> 00:02:35,470
+üstündedir.
+
+40
+00:02:35,750 --> 00:02:41,950
+Ekim 2026'da ihtiyaç kredilerinin ortalama faizi aylık %4 civarındaydı;
+
+41
+00:02:41,950 --> 00:02:45,134
+bu, yıllık bileşikte %60'ı aşar.
+
+42
+00:02:45,414 --> 00:02:53,114
+Örnek: 100.000 lira, 12 ay, aylık %4. Taksit yaklaşık 10.655 lira;
+
+43
+00:02:53,114 --> 00:02:56,046
+toplam geri ödeme yaklaşık 128.000 lira.
+
+44
+00:02:56,326 --> 00:03:01,066
+Kredi kartında da aynı mantık: borcun tamamını ödemezsen kalan borca aylık faiz
+
+45
+00:03:01,066 --> 00:03:07,534
+işler. Yasal tavan Kasım 2026'da aylık %3,25 ile %4,25 arasında.
+
+46
+00:03:07,814 --> 00:03:14,414
+Aylık %4, yıllık %4 değildir. Bileşik hesapla yıllık %60'ı geçer.
+
+47
+00:03:14,414 --> 00:03:16,670
+Kredi kıyaslarken yıllık maliyete bak.
+
+48
+00:03:16,950 --> 00:03:20,970
+Kredide faiz sabitse taksitin baştan bellidir.
+
+49
+00:03:20,970 --> 00:03:25,030
+Değişken faizli kredide oran bir endekse göre yeniden belirlenir:
+
+50
+00:03:25,030 --> 00:03:28,470
+faizler düşerse kazanırsın, yükselirse taksitin artar.
+
+51
+00:03:28,750 --> 00:03:32,810
+Türkiye'de konut ve ihtiyaç kredileri çoğunlukla sabit faizlidir;
+
+52
+00:03:32,810 --> 00:03:37,102
+faizler düşünce yeniden yapılandırma ya da erken kapama gündeme gelir.
+
+53
+00:03:37,382 --> 00:03:40,042
+Krediye vergi ve fon kesintileri de eklenir:
+
+54
+00:03:40,042 --> 00:03:43,582
+ilan edilen faiz, ödediğin toplam maliyet değildir.
+
+55
+00:03:43,582 --> 00:03:45,590
+Kıyaslarken toplam geri ödemeye bak.
+
+56
+00:03:45,870 --> 00:03:51,210
+Bütün bu faizlerin ortak bir referansı var: Merkez Bankası'nın politika faizi.
+
+57
+00:03:51,210 --> 00:03:53,766
+Türkiye'de buna bir haftalık repo faizi denir.
+
+58
+00:03:54,046 --> 00:03:58,926
+Bankalar kısa vadeli parayı Merkez Bankası'ndan bu oranla alır.
+
+59
+00:03:58,926 --> 00:04:02,266
+Politika faizi yükselince bankaların maliyeti artar,
+
+60
+00:04:02,266 --> 00:04:04,870
+mevduat ve kredi faizleri de yukarı çekilir.
+
+61
+00:04:05,150 --> 00:04:12,190
+TCMB 22 Ekim 2026'da politika faizini 1 puan indirerek %36'ya çekti.
+
+62
+00:04:12,190 --> 00:04:16,022
+Kararlar yılda 8 toplantıda alınır; bir sonraki 10 Aralık'ta.
+
+63
+00:04:16,302 --> 00:04:20,822
+Merkez Bankası'nın derdi enflasyon: hedef %5.
+
+64
+00:04:20,822 --> 00:04:25,686
+Enflasyon yüksekken faizi yüksek tutar, düşmeye başlayınca kademeli indirir.
+
+65
+00:04:25,966 --> 00:04:30,106
+Faiz yalnız bankalar arasında dönmez. Devlet de borç alır:
+
+66
+00:04:30,106 --> 00:04:33,526
+hazine bonosu ve tahvil çıkarır, yatırımcıya faiz öder.
+
+67
+00:04:33,806 --> 00:04:38,066
+Tahvil faizi yükselince devletin borçlanma maliyeti artar.
+
+68
+00:04:38,066 --> 00:04:42,878
+Dünyada en çok izlenen faiz, ABD'nin 10 yıllık tahvil faizidir.
+
+69
+00:04:43,158 --> 00:04:46,918
+Kısa vadeli mevduat faizi daha çok politika faizine,
+
+70
+00:04:46,918 --> 00:04:51,438
+uzun vadeli kredi ve tahvil faizleri ise enflasyon beklentisine bakar.
+
+71
+00:04:51,718 --> 00:04:54,918
+Eurobond ve döviz mevduatı dolar faizi verir;
+
+72
+00:04:54,918 --> 00:04:59,086
+TL faiziyle kıyaslarken kur beklentisini de hesaba katmalısın.
+
+73
+00:04:59,366 --> 00:05:03,726
+Faiz yükselince kredi pahalanır, harcama ve yatırım ertelenir;
+
+74
+00:05:03,726 --> 00:05:06,470
+mevduat cazipleşir, para biriktirmeye gider.
+
+75
+00:05:06,750 --> 00:05:11,490
+Talep azalınca satıcılar zam yapmakta zorlanır ve fiyat artışı yavaşlar.
+
+76
+00:05:11,490 --> 00:05:14,190
+Ama bu etki aylar, bazen bir yıl sürer.
+
+77
+00:05:14,470 --> 00:05:19,030
+Faiz düşerse tersi olur: kredi ucuzlar, harcama artar,
+
+78
+00:05:19,030 --> 00:05:22,558
+ekonomi canlanır; ama fiyatlar üzerindeki baskı da artar.
+
+79
+00:05:22,838 --> 00:05:27,470
+Bu yüzden Merkez Bankası faizi gaz ve fren pedalı gibi kullanır.
+
+80
+00:05:27,750 --> 00:05:31,510
+Faiz kararı önce kredi faizlerine, sonra harcamaya,
+
+81
+00:05:31,510 --> 00:05:34,854
+en son fiyatlara yansır; buna aktarım mekanizması denir.
+
+82
+00:05:35,134 --> 00:05:39,454
+Faizin gerçek değerini enflasyonla karşılaştırmadan bilemezsin.
+
+83
+00:05:39,734 --> 00:05:46,514
+Örnek: mevduat yıllık %40, enflasyon %30. Reel faiz %10 değil;
+
+84
+00:05:46,514 --> 00:05:51,470
+1,40 ÷ 1,30 − 1, yaklaşık %7,7.
+
+85
+00:05:51,750 --> 00:05:55,470
+Enflasyon faizden yüksekse reel faiz eksidir:
+
+86
+00:05:55,470 --> 00:05:58,014
+para bankada büyür ama alım gücü küçülür.
+
+87
+00:05:58,294 --> 00:06:02,694
+Her faiz kararında sorulacak soru şu: enflasyonun üstünde mi,
+
+88
+00:06:02,694 --> 00:06:03,454
+altında mı?
+
+89
+00:06:03,734 --> 00:06:07,534
+Stopajı da unutma: reel hesabı brüt faizle değil,
+
+90
+00:06:07,534 --> 00:06:09,278
+eline geçen net faizle yap.
+
+91
+00:06:09,558 --> 00:06:15,458
+Faiz döviz kurunu da etkiler. TL faizi yüksekse yatırımcı TL'de kalmayı tercih
+
+92
+00:06:15,458 --> 00:06:17,382
+eder, dövize talep azalır.
+
+93
+00:06:17,662 --> 00:06:21,602
+Faiz düşerse TL'de kalmak daha az cazip olur;
+
+94
+00:06:21,602 --> 00:06:27,046
+döviz ve altına talep artabilir. Tek sebep bu değil ama en güçlülerinden biri.
+
+95
+00:06:27,326 --> 00:06:31,086
+Fed gibi yabancı merkez bankalarının faizi de önemli:
+
+96
+00:06:31,086 --> 00:06:34,386
+dolar faizi yükselince para dünyadan dolara akar;
+
+97
+00:06:34,386 --> 00:06:37,550
+bu, altını ve gelişen ülke paralarını baskılar.
+
+98
+00:06:37,830 --> 00:06:45,006
+Basit formül: faiz = ana para × yıllık oran × gün ÷ 365.
+
+99
+00:06:45,286 --> 00:06:53,146
+50.000 lira, yıllık %36, 90 gün: 50.000 × 0,36 × 90 ÷ 365,
+
+100
+00:06:53,146 --> 00:06:55,774
+yaklaşık 4.438 lira.
+
+101
+00:06:56,054 --> 00:07:03,497
+Bileşik faizde formül, ana para × (1 + oran)^yıl:
+
+102
+00:07:03,497 --> 00:07:04,982
+10.000 × 1,40² = 19.600.
+
+103
+00:07:05,262 --> 00:07:10,462
+Kredi taksitinde formül daha karışık; parafomo.com'daki faiz hesaplama aracına
+
+104
+00:07:10,462 --> 00:07:13,614
+rakamları gir, taksiti ve toplam maliyeti gör.
+
+105
+00:07:13,894 --> 00:07:18,478
+Yatırım tavsiyesi vermiyoruz; ama faizle ilgili dört temel ilke var.
+
+106
+00:07:18,758 --> 00:07:22,814
+Bir: her faizi yıllığa çevir ve enflasyonla kıyasla.
+
+107
+00:07:23,094 --> 00:07:28,902
+İki: borçta bileşik faiz düşmandır; kredi kartı borcunu asgariyle döndürme.
+
+108
+00:07:29,182 --> 00:07:32,782
+Üç: mevduatta vadeye ve stopaj sonrası net getiriye bak.
+
+109
+00:07:33,062 --> 00:07:38,222
+Dört: faiz kararlarını takip et; kredi ve mevduatta zamanlama fark yaratır.
+
+110
+00:07:38,502 --> 00:07:43,322
+Özetle: faiz paranın kirasıdır. Basit faiz ana paraya,
+
+111
+00:07:43,322 --> 00:07:45,870
+bileşik faiz faizin faizine işler.
+
+112
+00:07:46,150 --> 00:07:51,590
+Mevduatta kazanır, kredide ödersin; hepsi Merkez Bankası'nın politika faizine
+
+113
+00:07:51,590 --> 00:07:54,622
+bakar. Gerçek kazancı reel faiz söyler.
+
+114
+00:07:54,902 --> 00:07:59,182
+Kendi hesabını parafomo.com'daki faiz hesaplama aracıyla yap;
+
+115
+00:07:59,182 --> 00:08:00,398
+link açıklamada.
+
+116
+00:08:00,678 --> 00:08:04,938
+Ekonomi Defteri'nin sonraki sayfasında asgari ücretin nasıl belirlendiğini
+
+117
+00:08:04,938 --> 00:08:07,278
+anlatacağız. Kaçırmamak için abone ol.

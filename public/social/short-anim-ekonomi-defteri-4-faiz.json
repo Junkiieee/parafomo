@@ -1,0 +1,150 @@
+{
+  "title": "Faiz nedir? Paranın kirası 44 saniyede | Ekonomi Defteri #4 #Shorts",
+  "description": "Ekonomi Defteri'nin dördüncü sayfası: faiz paranın kirasıdır. Mevduatta kirayı banka öder, kredide sen. Yıllık %40 ile 10.000 lira bir yılda 14.000, bileşik faizle iki yılda 19.600 lira olur (örnek). Bütün faizlerin referansı Merkez Bankası'nın politika faizi. Pazar günü uzun bölümde mevduat, kredi, reel faiz ve dolar ilişkisi.",
+  "tags": [
+    "faiz nedir",
+    "bileşik faiz",
+    "politika faizi",
+    "mevduat faizi",
+    "kredi faizi",
+    "ekonomi defteri",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-anim-ekonomi-defteri-4-faiz.mp4",
+  "slug": "anim-ekonomi-defteri-4-faiz",
+  "format": "ekonomi_defteri",
+  "engine": "anim",
+  "timeline": [
+    {
+      "id": "hook",
+      "t0": 0.35,
+      "t1": 3.662,
+      "cap": "Faiz nedir? Ekonomi Defteri, dördüncü sayfa.",
+      "words": [
+        0.35,
+        0.95,
+        1.69,
+        2.01,
+        2.73,
+        3.15
+      ]
+    },
+    {
+      "id": "rent",
+      "t0": 3.942,
+      "t1": 12.438,
+      "cap": "Faiz, paranın kirasıdır. Mert bankaya 10.000 lira yatırırsa kirayı banka öder; bankadan çekerse kirayı Mert öder.",
+      "words": [
+        3.942,
+        4.962,
+        5.322,
+        6.522,
+        6.762,
+        7.262,
+        7.722,
+        7.922,
+        8.502,
+        8.922,
+        9.322,
+        10.042,
+        10.522,
+        11.082,
+        11.542,
+        11.922
+      ]
+    },
+    {
+      "id": "rate",
+      "t0": 12.718,
+      "t1": 17.494,
+      "cap": "Yıllık %40 faiz, 10.000 liranın bir yılda 4.000 lira kira getirmesi demek.",
+      "words": [
+        12.718,
+        13.318,
+        13.758,
+        14.418,
+        14.758,
+        15.058,
+        15.278,
+        15.618,
+        15.998,
+        16.198,
+        16.458,
+        16.958
+      ]
+    },
+    {
+      "id": "comp",
+      "t0": 17.774,
+      "t1": 28.526,
+      "cap": "Ama ikinci yıl faiz, faizin üstüne de işler: 14.000'in %40'ı 5.600. İki yılda 19.600 lira. Buna bileşik faiz denir.",
+      "words": [
+        17.774,
+        18.234,
+        18.694,
+        18.874,
+        19.534,
+        19.934,
+        20.354,
+        20.494,
+        21.274,
+        22.141,
+        23.007,
+        24.254,
+        25.034,
+        25.314,
+        26.434,
+        26.994,
+        27.254,
+        27.654,
+        28.034
+      ]
+    },
+    {
+      "id": "key",
+      "t0": 28.806,
+      "t1": 36.15,
+      "cap": "Bütün faizlerin referansı Merkez Bankası'nın politika faizi: o yükselince kredi pahalanır, mevduat cazipleşir.",
+      "words": [
+        28.806,
+        29.406,
+        29.986,
+        30.626,
+        31.126,
+        31.866,
+        32.346,
+        32.786,
+        33.226,
+        33.766,
+        34.106,
+        34.906,
+        35.286
+      ]
+    },
+    {
+      "id": "cta",
+      "t0": 36.43,
+      "t1": 41.878,
+      "cap": "Mevduat, kredi, reel faiz ve dolar: hepsi Pazar günü uzun bölümde. Abone ol.",
+      "words": [
+        36.43,
+        37.49,
+        37.97,
+        38.13,
+        38.55,
+        38.73,
+        39.35,
+        39.81,
+        40.05,
+        40.39,
+        40.71,
+        41.25,
+        41.53
+      ]
+    }
+  ],
+  "link": "/faiz-hesaplama/",
+  "series": "Ekonomi Defteri",
+  "episode": 4,
+  "comment": "📒 Ekonomi Defteri #4: Faiz = paranın kirası\n\nÖrnek hesap: 10.000 ₺ × %40 = 4.000 ₺ faiz (1 yıl) · 2. yıl 14.000 × %40 = 5.600 → toplam 19.600 ₺ (bileşik). Basit faizle 18.000 olurdu.\n\nMevduat, kredi, reel faiz ve dolar ilişkisi: Pazar 12:00 uzun bölümde.\n\n🧮 Faiz hesaplama: https://parafomo.com/faiz-hesaplama/?utm_source=youtube&utm_medium=shorts&utm_campaign=ekonomi-defteri-4\n\nDefterin sonraki sayfasında hangi konuyu görelim? 👇"
+}

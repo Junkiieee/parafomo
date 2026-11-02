@@ -1,0 +1,343 @@
+{
+ "slug": "lf-ekonomi-defteri-2-faiz-nedir",
+ "aspect": "16:9",
+ "title": "Faiz Nedir, Nasıl Çalışır? 8 Dakikada Basit Anlatım",
+ "description": "Faiz nedir, nasıl hesaplanır, basit faiz ile bileşik faiz arasındaki fark ne? Ekonomi Defteri'nin ikinci uzun bölümünde faizi baştan sona anlatıyoruz: mevduat faizi ve stopaj, kredi ve kredi kartı faizi, TCMB politika faizi (bir haftalık repo) ve faiz kararları, faizin enflasyonu nasıl düşürdüğü, reel faiz hesabı (1,40 ÷ 1,30 − 1 ≈ %7,7), faizin dolar kuru ve altınla ilişkisi, basit faiz formülü ve dört temel ilke.\n\nVideodaki tutarlar örnektir. Gerçek veriler: TCMB politika faizi %36 (22 Ekim 2026 PPK kararı, −1 puan; sonraki toplantı 10 Aralık 2026); 3 aya kadar vadeli TL mevduat ortalama yıllık faizi %37,6 ve ihtiyaç kredisi yıllık bileşik %61,5 (TCMB haftalık faiz istatistikleri, Ekim 2026); kredi kartı azami akdi faizi aylık %3,25–%4,25 (Kasım 2026); TCMB enflasyon hedefi %5.",
+ "tags": [
+  "faiz nedir",
+  "faiz nasıl hesaplanır",
+  "bileşik faiz",
+  "basit faiz",
+  "politika faizi nedir",
+  "mevduat faizi",
+  "kredi faizi",
+  "reel faiz",
+  "tcmb faiz kararı",
+  "kredi kartı faizi",
+  "ekonomi defteri",
+  "parafomo"
+ ],
+ "skin": "iso",
+ "kits": [
+  "defter"
+ ],
+ "scene": "defter-uzun-faiz.js",
+ "format": "ekonomi_defteri",
+ "series": "Ekonomi Defteri",
+ "episode": "uzun-2",
+ "link": "/faiz-hesaplama/",
+ "source": "/blog/faiz-nedir-ekonomiyi-nasil-etkiler/",
+ "comment": "📒 Ekonomi Defteri · Uzun Bölüm 2: Faiz\n\nVideodaki hesaplar (tutarlar örnek):\n• Basit faiz: 10.000 × %40 × 2 yıl = 18.000 ₺ · Bileşik: 10.000 × 1,40² = 19.600 ₺\n• İkiye katlanma: ln 2 ÷ ln 1,40 ≈ 2,06 yıl (≈ 2 yıl 1 ay)\n• 3 ay mevduat: 100.000 × 0,40 × 92 ÷ 365 ≈ 10.082 ₺ (brüt)\n• Aylık %4 → yıllık bileşik: 1,04¹² − 1 ≈ %60,1\n• Kredi taksiti (100.000 ₺, 12 ay, aylık %4): ≈ 10.655 ₺ → toplam ≈ 127.860 ₺ (vergiler hariç)\n• Reel faiz: 1,40 ÷ 1,30 − 1 ≈ %7,7\n• Basit faiz formülü: 50.000 × 0,36 × 90 ÷ 365 ≈ 4.438 ₺\n\nKaynaklar: TCMB PPK kararı 22 Ekim 2026 (%36), TCMB haftalık mevduat/kredi faiz istatistikleri (Ekim 2026), TCMB kredi kartı azami faiz oranları (Kasım 2026).\n\n🧮 Kendi hesabın: https://parafomo.com/faiz-hesaplama/?utm_source=youtube&utm_medium=longform&utm_campaign=lf-ekonomi-defteri-2-faiz-nedir\n\nSonraki sayfa: ASGARİ ÜCRET. Defterde hangi konuyu görmek istersin? Yorumda yaz 👇",
+ "data": {},
+ "lines": [
+  {
+   "id": "hook",
+   "say": "Mert bankaya 10 bin lira yatırıyor; bir yıl sonra hesabında 14 bin lira var. Ya da bankadan 10 bin lira çekiyor; bir yıl sonra 16 bin lira ödüyor. Aradaki fark faiz: paranın kirası.",
+   "cap": "Mert bankaya 10.000 lira yatırıyor; bir yıl sonra hesabında 14.000 lira var. Ya da bankadan 10.000 lira çekiyor; bir yıl sonra 16.000 lira ödüyor. Aradaki fark faiz: paranın kirası.",
+   "chapter": "Paranın kirası"
+  },
+  {
+   "id": "plan",
+   "say": "Bu sayfada faizin ne olduğunu, basit ve bileşik faizi, mevduat ve kredi faizini, Merkez Bankası'nın politika faizini, reel faizi ve faizin dolar kuruyla ilişkisini örneklerle anlatıyoruz.",
+   "cap": "Bu sayfada faizin ne olduğunu, basit ve bileşik faizi, mevduat ve kredi faizini, Merkez Bankası'nın politika faizini, reel faizi ve faizin dolar kuruyla ilişkisini örneklerle anlatıyoruz."
+  },
+  {
+   "id": "plan2",
+   "say": "Sonunda da kendi faizini hesaplaman için basit bir formül vereceğiz.",
+   "cap": "Sonunda da kendi faizini hesaplaman için basit bir formül vereceğiz."
+  },
+  {
+   "id": "d1",
+   "say": "Faiz, parayı bir süreliğine kullanmanın bedelidir. Ev kiralarsın, kira ödersin; para kiralarsın, faiz ödersin.",
+   "cap": "Faiz, parayı bir süreliğine kullanmanın bedelidir. Ev kiralarsın, kira ödersin; para kiralarsın, faiz ödersin.",
+   "chapter": "Faiz nedir?"
+  },
+  {
+   "id": "d2",
+   "say": "Borç alan faiz öder, borç veren faiz kazanır. Banka ikisinin arasındaki aracıdır: mevduata düşük faiz verir, krediye yüksek faiz ister; arası bankanın kazancıdır.",
+   "cap": "Borç alan faiz öder, borç veren faiz kazanır. Banka ikisinin arasındaki aracıdır: mevduata düşük faiz verir, krediye yüksek faiz ister; arası bankanın kazancıdır."
+  },
+  {
+   "id": "d3",
+   "say": "Oran hep yıllık söylenir: yüzde 40 faiz, 100 liranın bir yılda 40 lira kira getirmesi demektir.",
+   "cap": "Oran hep yıllık söylenir: %40 faiz, 100 liranın bir yılda 40 lira kira getirmesi demektir."
+  },
+  {
+   "id": "d4",
+   "say": "Oranı üç şey belirler: paranın ne kadar süre kullanılacağı, geri ödenmeme riski ve enflasyon beklentisi.",
+   "cap": "Oranı üç şey belirler: paranın ne kadar süre kullanılacağı, geri ödenmeme riski ve enflasyon beklentisi."
+  },
+  {
+   "id": "d5",
+   "say": "Oran yüzde olarak söylenir; 100 baz puan 1 puan demektir. TCMB 'yüzde 37'den 36'ya' derken 100 baz puan indirmiş olur.",
+   "cap": "Oran yüzde olarak söylenir; 100 baz puan 1 puan demektir. TCMB '%37'den %36'ya' derken 100 baz puan indirmiş olur."
+  },
+  {
+   "id": "b1",
+   "say": "Basit faiz hep ana paraya işler. 10 bin lira, yıllık yüzde 40: her yıl 4 bin lira; iki yılda 18 bin lira.",
+   "cap": "Basit faiz hep ana paraya işler. 10.000 lira, yıllık %40: her yıl 4.000 lira; iki yılda 18.000 lira.",
+   "chapter": "Basit faiz, bileşik faiz"
+  },
+  {
+   "id": "b2",
+   "say": "Bileşik faizde ilk yılın faizi ana paraya eklenir ve ikinci yıl o da faiz kazanır. 14 bin liranın yüzde 40'ı 5 bin 600: iki yılda 19 bin 600 lira.",
+   "cap": "Bileşik faizde ilk yılın faizi ana paraya eklenir ve ikinci yıl o da faiz kazanır. 14.000 liranın %40'ı 5.600: iki yılda 19.600 lira."
+  },
+  {
+   "id": "b3",
+   "say": "Fark başta küçük, zamanla büyür. Yüzde 40 bileşik faizle para yaklaşık iki yıl bir ayda ikiye katlanır.",
+   "cap": "Fark başta küçük, zamanla büyür. %40 bileşik faizle para yaklaşık 2 yıl 1 ayda ikiye katlanır."
+  },
+  {
+   "id": "b4",
+   "say": "Bu etki senin lehine de aleyhine de çalışır: mevduatta kazancını büyütür, ödenmeyen kredi kartı borcunda yükü büyütür.",
+   "cap": "Bu etki senin lehine de aleyhine de çalışır: mevduatta kazancını büyütür, ödenmeyen kredi kartı borcunda yükü büyütür."
+  },
+  {
+   "id": "m1",
+   "say": "Vadeli mevduat, bankaya belirli bir süre borç vermektir. Banka bu paraya faiz öder.",
+   "cap": "Vadeli mevduat, bankaya belirli bir süre borç vermektir. Banka bu paraya faiz öder.",
+   "chapter": "Mevduat faizi"
+  },
+  {
+   "id": "m2",
+   "say": "Oran vadeye göre değişir. Ekim 2026'da 3 aya kadar vadeli mevduatın ortalama yıllık faizi yüzde 37,6 idi.",
+   "cap": "Oran vadeye göre değişir. Ekim 2026'da 3 aya kadar vadeli mevduatın ortalama yıllık faizi %37,6 idi."
+  },
+  {
+   "id": "m3",
+   "say": "Ama bu brüt rakam. Faiz gelirinden stopaj kesilir; ayrıca yıllık oran 3 aylık vadede yalnızca çeyreği kadar işler.",
+   "cap": "Ama bu brüt rakam. Faiz gelirinden stopaj kesilir; ayrıca yıllık oran 3 aylık vadede yalnızca çeyreği kadar işler."
+  },
+  {
+   "id": "m4",
+   "say": "Örnek: 100 bin lira, 3 ay vade, yıllık yüzde 40. Faiz yaklaşık 10 bin lira; stopaj kesilince eline daha azı geçer.",
+   "cap": "Örnek: 100.000 lira, 3 ay vade, yıllık %40. Faiz yaklaşık 10.000 lira; stopaj kesilince eline daha azı geçer."
+  },
+  {
+   "id": "m5",
+   "say": "Bir de hoş geldin faizi tuzağı var: ilk ay yüksek görünür, sonra düşer. Vade yenilenirken oranı mutlaka kontrol et.",
+   "cap": "Bir de hoş geldin faizi tuzağı var: ilk ay yüksek görünür, sonra düşer. Vade yenilenirken oranı mutlaka kontrol et."
+  },
+  {
+   "id": "k1",
+   "say": "Kredi, bankadan borç almaktır; bu kez faizi sen ödersin ve oran mevduatın hep üstündedir.",
+   "cap": "Kredi, bankadan borç almaktır; bu kez faizi sen ödersin ve oran mevduatın hep üstündedir.",
+   "chapter": "Kredi ve kart faizi"
+  },
+  {
+   "id": "k2",
+   "say": "Ekim 2026'da ihtiyaç kredilerinin ortalama faizi aylık yüzde 4 civarındaydı; bu, yıllık bileşikte yüzde 60'ı aşar.",
+   "cap": "Ekim 2026'da ihtiyaç kredilerinin ortalama faizi aylık %4 civarındaydı; bu, yıllık bileşikte %60'ı aşar."
+  },
+  {
+   "id": "k3",
+   "say": "Örnek: 100 bin lira, 12 ay, aylık yüzde 4. Taksit yaklaşık 10 bin 655 lira; toplam geri ödeme yaklaşık 128 bin lira.",
+   "cap": "Örnek: 100.000 lira, 12 ay, aylık %4. Taksit yaklaşık 10.655 lira; toplam geri ödeme yaklaşık 128.000 lira."
+  },
+  {
+   "id": "k4",
+   "say": "Kredi kartında da aynı mantık: borcun tamamını ödemezsen kalan borca aylık faiz işler. Yasal tavan Kasım 2026'da aylık yüzde 3,25 ile 4,25 arasında.",
+   "cap": "Kredi kartında da aynı mantık: borcun tamamını ödemezsen kalan borca aylık faiz işler. Yasal tavan Kasım 2026'da aylık %3,25 ile %4,25 arasında."
+  },
+  {
+   "id": "k5",
+   "say": "Aylık yüzde 4, yıllık yüzde 4 değildir. Bileşik hesapla yıllık yüzde 60'ı geçer. Kredi kıyaslarken yıllık maliyete bak.",
+   "cap": "Aylık %4, yıllık %4 değildir. Bileşik hesapla yıllık %60'ı geçer. Kredi kıyaslarken yıllık maliyete bak."
+  },
+  {
+   "id": "v1",
+   "say": "Kredide faiz sabitse taksitin baştan bellidir. Değişken faizli kredide oran bir endekse göre yeniden belirlenir: faizler düşerse kazanırsın, yükselirse taksitin artar.",
+   "cap": "Kredide faiz sabitse taksitin baştan bellidir. Değişken faizli kredide oran bir endekse göre yeniden belirlenir: faizler düşerse kazanırsın, yükselirse taksitin artar.",
+   "chapter": "Sabit mi, değişken mi?"
+  },
+  {
+   "id": "v2",
+   "say": "Türkiye'de konut ve ihtiyaç kredileri çoğunlukla sabit faizlidir; faizler düşünce yeniden yapılandırma ya da erken kapama gündeme gelir.",
+   "cap": "Türkiye'de konut ve ihtiyaç kredileri çoğunlukla sabit faizlidir; faizler düşünce yeniden yapılandırma ya da erken kapama gündeme gelir."
+  },
+  {
+   "id": "v3",
+   "say": "Krediye vergi ve fon kesintileri de eklenir: ilan edilen faiz, ödediğin toplam maliyet değildir. Kıyaslarken toplam geri ödemeye bak.",
+   "cap": "Krediye vergi ve fon kesintileri de eklenir: ilan edilen faiz, ödediğin toplam maliyet değildir. Kıyaslarken toplam geri ödemeye bak."
+  },
+  {
+   "id": "p1",
+   "say": "Bütün bu faizlerin ortak bir referansı var: Merkez Bankası'nın politika faizi. Türkiye'de buna bir haftalık repo faizi denir.",
+   "cap": "Bütün bu faizlerin ortak bir referansı var: Merkez Bankası'nın politika faizi. Türkiye'de buna bir haftalık repo faizi denir.",
+   "chapter": "Politika faizi: TCMB"
+  },
+  {
+   "id": "p2",
+   "say": "Bankalar kısa vadeli parayı Merkez Bankası'ndan bu oranla alır. Politika faizi yükselince bankaların maliyeti artar, mevduat ve kredi faizleri de yukarı çekilir.",
+   "cap": "Bankalar kısa vadeli parayı Merkez Bankası'ndan bu oranla alır. Politika faizi yükselince bankaların maliyeti artar, mevduat ve kredi faizleri de yukarı çekilir."
+  },
+  {
+   "id": "p3",
+   "say": "TCMB 22 Ekim 2026'da politika faizini 1 puan indirerek yüzde 36'ya çekti. Kararlar yılda 8 toplantıda alınır; bir sonraki 10 Aralık'ta.",
+   "cap": "TCMB 22 Ekim 2026'da politika faizini 1 puan indirerek %36'ya çekti. Kararlar yılda 8 toplantıda alınır; bir sonraki 10 Aralık'ta."
+  },
+  {
+   "id": "p4",
+   "say": "Merkez Bankası'nın derdi enflasyon: hedef yüzde 5. Enflasyon yüksekken faizi yüksek tutar, düşmeye başlayınca kademeli indirir.",
+   "cap": "Merkez Bankası'nın derdi enflasyon: hedef %5. Enflasyon yüksekken faizi yüksek tutar, düşmeye başlayınca kademeli indirir."
+  },
+  {
+   "id": "tb1",
+   "say": "Faiz yalnız bankalar arasında dönmez. Devlet de borç alır: hazine bonosu ve tahvil çıkarır, yatırımcıya faiz öder.",
+   "cap": "Faiz yalnız bankalar arasında dönmez. Devlet de borç alır: hazine bonosu ve tahvil çıkarır, yatırımcıya faiz öder.",
+   "chapter": "Devlete borç: tahvil faizi"
+  },
+  {
+   "id": "tb2",
+   "say": "Tahvil faizi yükselince devletin borçlanma maliyeti artar. Dünyada en çok izlenen faiz, ABD'nin 10 yıllık tahvil faizidir.",
+   "cap": "Tahvil faizi yükselince devletin borçlanma maliyeti artar. Dünyada en çok izlenen faiz, ABD'nin 10 yıllık tahvil faizidir."
+  },
+  {
+   "id": "tb3",
+   "say": "Kısa vadeli mevduat faizi daha çok politika faizine, uzun vadeli kredi ve tahvil faizleri ise enflasyon beklentisine bakar.",
+   "cap": "Kısa vadeli mevduat faizi daha çok politika faizine, uzun vadeli kredi ve tahvil faizleri ise enflasyon beklentisine bakar."
+  },
+  {
+   "id": "tb4",
+   "say": "Eurobond ve döviz mevduatı dolar faizi verir; TL faiziyle kıyaslarken kur beklentisini de hesaba katmalısın.",
+   "cap": "Eurobond ve döviz mevduatı dolar faizi verir; TL faiziyle kıyaslarken kur beklentisini de hesaba katmalısın."
+  },
+  {
+   "id": "e1",
+   "say": "Faiz yükselince kredi pahalanır, harcama ve yatırım ertelenir; mevduat cazipleşir, para biriktirmeye gider.",
+   "cap": "Faiz yükselince kredi pahalanır, harcama ve yatırım ertelenir; mevduat cazipleşir, para biriktirmeye gider.",
+   "chapter": "Faiz enflasyonu nasıl düşürür?"
+  },
+  {
+   "id": "e2",
+   "say": "Talep azalınca satıcılar zam yapmakta zorlanır ve fiyat artışı yavaşlar. Ama bu etki aylar, bazen bir yıl sürer.",
+   "cap": "Talep azalınca satıcılar zam yapmakta zorlanır ve fiyat artışı yavaşlar. Ama bu etki aylar, bazen bir yıl sürer."
+  },
+  {
+   "id": "e3",
+   "say": "Faiz düşerse tersi olur: kredi ucuzlar, harcama artar, ekonomi canlanır; ama fiyatlar üzerindeki baskı da artar.",
+   "cap": "Faiz düşerse tersi olur: kredi ucuzlar, harcama artar, ekonomi canlanır; ama fiyatlar üzerindeki baskı da artar."
+  },
+  {
+   "id": "e4",
+   "say": "Bu yüzden Merkez Bankası faizi gaz ve fren pedalı gibi kullanır.",
+   "cap": "Bu yüzden Merkez Bankası faizi gaz ve fren pedalı gibi kullanır."
+  },
+  {
+   "id": "e5",
+   "say": "Faiz kararı önce kredi faizlerine, sonra harcamaya, en son fiyatlara yansır; buna aktarım mekanizması denir.",
+   "cap": "Faiz kararı önce kredi faizlerine, sonra harcamaya, en son fiyatlara yansır; buna aktarım mekanizması denir."
+  },
+  {
+   "id": "r1",
+   "say": "Faizin gerçek değerini enflasyonla karşılaştırmadan bilemezsin.",
+   "cap": "Faizin gerçek değerini enflasyonla karşılaştırmadan bilemezsin.",
+   "chapter": "Reel faiz"
+  },
+  {
+   "id": "r2",
+   "say": "Örnek: mevduat yıllık yüzde 40, enflasyon yüzde 30. Reel faiz yüzde 10 değil; 1,40 bölü 1,30 eksi 1, yaklaşık yüzde 7,7.",
+   "cap": "Örnek: mevduat yıllık %40, enflasyon %30. Reel faiz %10 değil; 1,40 ÷ 1,30 − 1, yaklaşık %7,7."
+  },
+  {
+   "id": "r3",
+   "say": "Enflasyon faizden yüksekse reel faiz eksidir: para bankada büyür ama alım gücü küçülür.",
+   "cap": "Enflasyon faizden yüksekse reel faiz eksidir: para bankada büyür ama alım gücü küçülür."
+  },
+  {
+   "id": "r4",
+   "say": "Her faiz kararında sorulacak soru şu: enflasyonun üstünde mi, altında mı?",
+   "cap": "Her faiz kararında sorulacak soru şu: enflasyonun üstünde mi, altında mı?"
+  },
+  {
+   "id": "r5",
+   "say": "Stopajı da unutma: reel hesabı brüt faizle değil, eline geçen net faizle yap.",
+   "cap": "Stopajı da unutma: reel hesabı brüt faizle değil, eline geçen net faizle yap."
+  },
+  {
+   "id": "f1",
+   "say": "Faiz döviz kurunu da etkiler. TL faizi yüksekse yatırımcı TL'de kalmayı tercih eder, dövize talep azalır.",
+   "cap": "Faiz döviz kurunu da etkiler. TL faizi yüksekse yatırımcı TL'de kalmayı tercih eder, dövize talep azalır.",
+   "chapter": "Faiz, dolar ve altın"
+  },
+  {
+   "id": "f2",
+   "say": "Faiz düşerse TL'de kalmak daha az cazip olur; döviz ve altına talep artabilir. Tek sebep bu değil ama en güçlülerinden biri.",
+   "cap": "Faiz düşerse TL'de kalmak daha az cazip olur; döviz ve altına talep artabilir. Tek sebep bu değil ama en güçlülerinden biri."
+  },
+  {
+   "id": "f3",
+   "say": "Fed gibi yabancı merkez bankalarının faizi de önemli: dolar faizi yükselince para dünyadan dolara akar; bu, altını ve gelişen ülke paralarını baskılar.",
+   "cap": "Fed gibi yabancı merkez bankalarının faizi de önemli: dolar faizi yükselince para dünyadan dolara akar; bu, altını ve gelişen ülke paralarını baskılar."
+  },
+  {
+   "id": "h1",
+   "say": "Basit formül: faiz eşittir ana para çarpı yıllık oran çarpı gün bölü 365.",
+   "cap": "Basit formül: faiz = ana para × yıllık oran × gün ÷ 365.",
+   "chapter": "Faiz nasıl hesaplanır?"
+  },
+  {
+   "id": "h2",
+   "say": "50 bin lira, yıllık yüzde 36, 90 gün: 50 bin çarpı 0,36 çarpı 90 bölü 365, yaklaşık 4 bin 438 lira.",
+   "cap": "50.000 lira, yıllık %36, 90 gün: 50.000 × 0,36 × 90 ÷ 365, yaklaşık 4.438 lira."
+  },
+  {
+   "id": "h2b",
+   "say": "Bileşik faizde formül, ana para çarpı bir artı oran üzeri yıl: 10 bin çarpı 1,40'ın karesi, 19 bin 600.",
+   "cap": "Bileşik faizde formül, ana para × (1 + oran)^yıl: 10.000 × 1,40² = 19.600."
+  },
+  {
+   "id": "h3",
+   "say": "Kredi taksitinde formül daha karışık; parafomo.com'daki faiz hesaplama aracına rakamları gir, taksiti ve toplam maliyeti gör.",
+   "cap": "Kredi taksitinde formül daha karışık; parafomo.com'daki faiz hesaplama aracına rakamları gir, taksiti ve toplam maliyeti gör."
+  },
+  {
+   "id": "i0",
+   "say": "Yatırım tavsiyesi vermiyoruz; ama faizle ilgili dört temel ilke var.",
+   "cap": "Yatırım tavsiyesi vermiyoruz; ama faizle ilgili dört temel ilke var.",
+   "chapter": "4 ilke"
+  },
+  {
+   "id": "i1",
+   "say": "Bir: her faizi yıllığa çevir ve enflasyonla kıyasla.",
+   "cap": "Bir: her faizi yıllığa çevir ve enflasyonla kıyasla."
+  },
+  {
+   "id": "i2",
+   "say": "İki: borçta bileşik faiz düşmandır; kredi kartı borcunu asgariyle döndürme.",
+   "cap": "İki: borçta bileşik faiz düşmandır; kredi kartı borcunu asgariyle döndürme."
+  },
+  {
+   "id": "i3",
+   "say": "Üç: mevduatta vadeye ve stopaj sonrası net getiriye bak.",
+   "cap": "Üç: mevduatta vadeye ve stopaj sonrası net getiriye bak."
+  },
+  {
+   "id": "i4",
+   "say": "Dört: faiz kararlarını takip et; kredi ve mevduatta zamanlama fark yaratır.",
+   "cap": "Dört: faiz kararlarını takip et; kredi ve mevduatta zamanlama fark yaratır."
+  },
+  {
+   "id": "s1",
+   "say": "Özetle: faiz paranın kirasıdır. Basit faiz ana paraya, bileşik faiz faizin faizine işler.",
+   "cap": "Özetle: faiz paranın kirasıdır. Basit faiz ana paraya, bileşik faiz faizin faizine işler.",
+   "chapter": "Özet"
+  },
+  {
+   "id": "s2",
+   "say": "Mevduatta kazanır, kredide ödersin; hepsi Merkez Bankası'nın politika faizine bakar. Gerçek kazancı reel faiz söyler.",
+   "cap": "Mevduatta kazanır, kredide ödersin; hepsi Merkez Bankası'nın politika faizine bakar. Gerçek kazancı reel faiz söyler."
+  },
+  {
+   "id": "s3",
+   "say": "Kendi hesabını parafomo.com'daki faiz hesaplama aracıyla yap; link açıklamada.",
+   "cap": "Kendi hesabını parafomo.com'daki faiz hesaplama aracıyla yap; link açıklamada."
+  },
+  {
+   "id": "s4",
+   "say": "Ekonomi Defteri'nin sonraki sayfasında asgari ücretin nasıl belirlendiğini anlatacağız. Kaçırmamak için abone ol.",
+   "cap": "Ekonomi Defteri'nin sonraki sayfasında asgari ücretin nasıl belirlendiğini anlatacağız. Kaçırmamak için abone ol."
+  }
+ ]
+}

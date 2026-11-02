@@ -1,0 +1,56 @@
+{
+ "slug": "anim-ekonomi-defteri-4-faiz",
+ "title": "Faiz nedir? Paranın kirası 44 saniyede | Ekonomi Defteri #4",
+ "description": "Ekonomi Defteri'nin dördüncü sayfası: faiz paranın kirasıdır. Mevduatta kirayı banka öder, kredide sen. Yıllık %40 ile 10.000 lira bir yılda 14.000, bileşik faizle iki yılda 19.600 lira olur (örnek). Bütün faizlerin referansı Merkez Bankası'nın politika faizi. Pazar günü uzun bölümde mevduat, kredi, reel faiz ve dolar ilişkisi.",
+ "tags": [
+  "faiz nedir",
+  "bileşik faiz",
+  "politika faizi",
+  "mevduat faizi",
+  "kredi faizi",
+  "ekonomi defteri",
+  "parafomo"
+ ],
+ "style": "isometric",
+ "skin": "iso",
+ "kits": [
+  "defter"
+ ],
+ "scene": "defter-faiz.js",
+ "short": true,
+ "format": "ekonomi_defteri",
+ "link": "/faiz-hesaplama/",
+ "data": {},
+ "lines": [
+  {
+   "id": "hook",
+   "say": "Faiz nedir? Ekonomi Defteri, dördüncü sayfa.",
+   "cap": "Faiz nedir? Ekonomi Defteri, dördüncü sayfa."
+  },
+  {
+   "id": "rent",
+   "say": "Faiz, paranın kirasıdır. Mert bankaya 10 bin lira yatırırsa kirayı banka öder; bankadan çekerse kirayı Mert öder.",
+   "cap": "Faiz, paranın kirasıdır. Mert bankaya 10.000 lira yatırırsa kirayı banka öder; bankadan çekerse kirayı Mert öder."
+  },
+  {
+   "id": "rate",
+   "say": "Yıllık yüzde 40 faiz, 10 bin liranın bir yılda 4 bin lira kira getirmesi demek.",
+   "cap": "Yıllık %40 faiz, 10.000 liranın bir yılda 4.000 lira kira getirmesi demek."
+  },
+  {
+   "id": "comp",
+   "say": "Ama ikinci yıl faiz, faizin üstüne de işler: 14 binin yüzde 40'ı 5 bin 600. İki yılda 19 bin 600 lira. Buna bileşik faiz denir.",
+   "cap": "Ama ikinci yıl faiz, faizin üstüne de işler: 14.000'in %40'ı 5.600. İki yılda 19.600 lira. Buna bileşik faiz denir."
+  },
+  {
+   "id": "key",
+   "say": "Bütün faizlerin referansı Merkez Bankası'nın politika faizi: o yükselince kredi pahalanır, mevduat cazipleşir.",
+   "cap": "Bütün faizlerin referansı Merkez Bankası'nın politika faizi: o yükselince kredi pahalanır, mevduat cazipleşir."
+  },
+  {
+   "id": "cta",
+   "say": "Mevduat, kredi, reel faiz ve dolar: hepsi Pazar günü uzun bölümde. Abone ol.",
+   "cap": "Mevduat, kredi, reel faiz ve dolar: hepsi Pazar günü uzun bölümde. Abone ol."
+  }
+ ]
+}
