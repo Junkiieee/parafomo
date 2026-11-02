@@ -1,0 +1,74 @@
+{
+  "title": "Dolar alırken ilk gün kaybediyorsun, fark burada #Shorts",
+  "description": "Dolar alıp satarken banka ve döviz bürosunun alış-satış farkı (makas) cebinden ne kadar götürür ve bunu nasıl azaltırsın.\n\nDaha fazlası: https://parafomo.com\n\n#Shorts #dolar #döviz makası #alış satış farkı #tasarruf #kayıp korkusu",
+  "tags": [
+    "dolar",
+    "döviz makası",
+    "alış satış farkı",
+    "tasarruf",
+    "kayıp korkusu",
+    "yatırım",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-dolar-alirken-ilk-gun-kaybediyorsun-fark-burada.mp4",
+  "slug": "dolar-alirken-ilk-gun-kaybediyorsun-fark-burada",
+  "format": "myth",
+  "timeline": [
+    {
+      "i": 0,
+      "kind": "hook",
+      "start": 0.0,
+      "end": 3.14,
+      "spoken": "Dolar alırsan ilk gün zarardasın.",
+      "visual": "object: smartphone currency exchange app rising chart"
+    },
+    {
+      "i": 1,
+      "kind": "point",
+      "start": 3.14,
+      "end": 9.37,
+      "spoken": "Çünkü doları sana sattığı fiyat, senden aldığı fiyattan yüksek. Bu farka makas deniyor.",
+      "visual": "object: smartphone banking app"
+    },
+    {
+      "i": 2,
+      "kind": "point",
+      "start": 9.37,
+      "end": 15.31,
+      "spoken": "Makas yüzde 1 olsa bile 100 bin liralık dolar, aynı gün yaklaşık bin lira kaybettirir.",
+      "visual": "object: calculator"
+    },
+    {
+      "i": 3,
+      "kind": "point",
+      "start": 15.31,
+      "end": 22.77,
+      "spoken": "Sık al-sat yapma, makasları karşılaştır, uzun tut. Maliyet bir kez ödenir, bekledikçe yükü hafifler.",
+      "visual": "object: wallet"
+    },
+    {
+      "i": 4,
+      "kind": "cta",
+      "start": 22.77,
+      "end": 29.74,
+      "spoken": "Sıradaki hesap daha da can yakacak. Abone ol, her gün tek net analizi 60 saniyede al.",
+      "visual": "object: smartphone currency exchange app rising chart"
+    }
+  ],
+  "qa": {
+    "ts": "2026-10-30T13:03:11+00:00",
+    "slug": "dolar-alirken-ilk-gun-kaybediyorsun-fark-burada",
+    "llm": true,
+    "bad": {},
+    "notes": []
+  },
+  "video_id": "4QUV6nE9IgA",
+  "youtube_url": "https://youtube.com/shorts/4QUV6nE9IgA",
+  "ig_reel_id": "17979828002924423",
+  "ig_reel_permalink": "https://www.instagram.com/reel/DfHpVGSD0gJ/",
+  "ig_seed_comment_id": "18127178764917746",
+  "fb_reel_id": "1122020530536368",
+  "fb_reel_url": "https://www.facebook.com/reel/1122020530536368",
+  "fb_reel_status": "published",
+  "fb_reel_post_id": "122124856173372466"
+}

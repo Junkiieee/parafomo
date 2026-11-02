@@ -1,0 +1,134 @@
+{
+  "title": "Pasaport harcı her ocak otomatik zamlanıyor, işte formül #Shorts",
+  "description": "MTV, pasaport ve ehliyet harçları her yıl yeniden değerleme oranı kadar artıyor. Bu zam kanunla otomatik işliyor ve cebinden çıkan parayı doğrudan etkiliyor.",
+  "tags": [
+    "yeniden değerleme oranı",
+    "MTV",
+    "pasaport harcı",
+    "ehliyet harcı",
+    "harç zammı",
+    "vergi",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-pasaport-harci-her-yil-sessizce-zamlaniyor-iste-formul.mp4",
+  "slug": "pasaport-harci-her-yil-sessizce-zamlaniyor-iste-formul",
+  "format": "single_concept",
+  "engine": "anim",
+  "timeline": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 4.766,
+      "cap": "Pasaport harcı her ocakta otomatik zamlanıyor, çoğu kişi fark etmiyor.",
+      "words": [
+        0.35,
+        1.09,
+        1.45,
+        1.65,
+        2.05,
+        2.55,
+        3.35,
+        3.65,
+        3.79,
+        4.09
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 5.046,
+      "t1": 12.462,
+      "cap": "Yeniden değerleme oranı, devletin vergi ve harçlara uyguladığı yıllık otomatik zam katsayısıdır, tıpkı kirada yıllık artış gibi.",
+      "words": [
+        5.046,
+        5.766,
+        6.206,
+        6.766,
+        7.206,
+        7.526,
+        7.646,
+        8.106,
+        8.626,
+        9.006,
+        9.466,
+        9.606,
+        10.566,
+        10.866,
+        11.186,
+        11.666,
+        12.026
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 12.742,
+      "t1": 21.31,
+      "cap": "Ama kira artışını sözleşmede görürsün, bunda yok. MTV, pasaport ve ehliyet harcı ocakta kendiliğinden o oranda yükselir.",
+      "words": [
+        12.742,
+        13.262,
+        13.582,
+        14.142,
+        14.802,
+        15.502,
+        15.822,
+        16.662,
+        17.762,
+        18.122,
+        18.282,
+        18.702,
+        18.962,
+        19.402,
+        20.022,
+        20.222,
+        20.542
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 21.59,
+      "t1": 29.966,
+      "cap": "Örneğin oran %28 çıkarsa, 10.000 liralık harç yaklaşık 12.800 olur. Gerekli işlemleri aralıkta yaptırmak ucuza gelir.",
+      "words": [
+        21.59,
+        22.29,
+        22.57,
+        23.21,
+        24.39,
+        24.69,
+        25.05,
+        25.31,
+        25.75,
+        26.69,
+        27.39,
+        27.73,
+        28.19,
+        28.61,
+        29.03,
+        29.47
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 30.246,
+      "t1": 36.318,
+      "cap": "Ocakta başka hangi kalemler zamlanıyor, merak ediyorsan abone ol, her gün tek net hesap paylaşıyorum.",
+      "words": [
+        30.246,
+        31.006,
+        31.226,
+        31.606,
+        32.026,
+        32.746,
+        32.906,
+        33.546,
+        33.886,
+        34.426,
+        34.546,
+        34.726,
+        34.946,
+        35.126,
+        35.446
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "slug": "yeniden-degerleme-orani-ocakta-cebine-ne-cikacak",
+  "title": "Yeniden değerleme oranı: ocakta cebine ne çıkacak",
+  "description": "Yeniden değerleme oranı harç, ceza ve vergi tutarlarının her yıl nasıl güncellendiğini belirler. 2026 için oran %25,49'du (VUK Tebliği 585); MTV, damga vergisi ve harçlarda Cumhurbaşkanı kararıyla %18,95 uygulandı. 2027 oranı, TÜİK'in 3 Kasım'da açıklayacağı Ekim Yİ-ÜFE verisiyle belli olur. 10.000 ₺ × 1,25 = 12.500 ₺ örnek hesaptır.",
+  "tags": [
+    "yeniden değerleme oranı",
+    "harç",
+    "trafik cezası",
+    "vergi",
+    "TÜİK",
+    "enflasyon",
+    "parafomo"
+  ],
+  "format": "shock_number",
+  "style": "isometric",
+  "scene": "generic.js",
+  "short": true,
+  "data": {
+    "eyebrow": "CEZALARA ZAM GELİYOR",
+    "scenes": [
+      {
+        "type": "big_number",
+        "head": "Harç ve cezalar arttı",
+        "data": {
+          "icon": "percent",
+          "value": 25,
+          "unit": "%",
+          "suffix": "",
+          "label": "2026 oranı %25,49 · harçlarda %18,95"
+        },
+        "line": "s0"
+      },
+      {
+        "type": "icon_text",
+        "head": "Adı yeniden değerleme",
+        "data": {
+          "icon": "chart",
+          "text": "Üretici fiyatına göre *harç ve ceza* güncellenir"
+        },
+        "line": "s1"
+      },
+      {
+        "type": "compare",
+        "head": "Hesap çok sade",
+        "data": {
+          "a": {
+            "label": "ÖNCE",
+            "value": 10000
+          },
+          "b": {
+            "label": "SONRA",
+            "value": 12500
+          },
+          "unit": "₺",
+          "note": "ÖRNEK · %25"
+        },
+        "line": "s2"
+      },
+      {
+        "type": "steps",
+        "head": "Sürpriz yok",
+        "data": {
+          "items": [
+            "Ekim üretici enflasyonu",
+            "3 Kasım açıklanır",
+            "Oran belli olur"
+          ]
+        },
+        "line": "s3"
+      },
+      {
+        "type": "cta",
+        "head": "Sıradaki zam",
+        "data": {
+          "l1": "OCAK ZAMLARI",
+          "l2": "ABONE OL",
+          "sub": "HER GÜN 60 SANİYEDE TEK ANALİZ"
+        },
+        "line": "s4"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "s0",
+      "say": "Bu yıl yeniden değerleme oranı yüzde 25,49'du, ama harçlar ve MTV yüzde 18,95 arttı.",
+      "cap": "Bu yıl yeniden değerleme oranı %25,49'du, ama harçlar ve MTV %18,95 arttı."
+    },
+    {
+      "id": "s1",
+      "say": "Adı yeniden değerleme oranı: üretici fiyat artışına göre harç, ceza ve vergi tutarları güncellenir.",
+      "cap": "Adı yeniden değerleme oranı: üretici fiyat artışına göre harç, ceza ve vergi tutarları güncellenir."
+    },
+    {
+      "id": "s2",
+      "say": "Hesap sade: oran yüzde 25 olursa 10 bin liralık tutar 12 bin 500 lira olur. Ama harç ve MTV'de Cumhurbaşkanı daha düşük oran uygulayabilir.",
+      "cap": "Hesap sade: oran %25 olursa 10.000 liralık tutar 12.500 lira olur. Ama harç ve MTV'de Cumhurbaşkanı daha düşük oran uygulayabilir."
+    },
+    {
+      "id": "s3",
+      "say": "Yeni oranı, TÜİK'in 3 Kasım'da açıklayacağı Ekim üretici enflasyonu belirleyecek.",
+      "cap": "Yeni oranı, TÜİK'in 3 Kasım'da açıklayacağı Ekim üretici enflasyonu belirleyecek."
+    },
+    {
+      "id": "s4",
+      "say": "Ocakta hangi harçlar zamlanacak, merak ediyorsan abone ol; her gün 60 saniyede tek net analiz.",
+      "cap": "Ocakta hangi harçlar zamlanacak, merak ediyorsan abone ol; her gün 60 saniyede tek net analiz."
+    }
+  ],
+  "skin": "iso"
+}

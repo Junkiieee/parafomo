@@ -1,0 +1,363 @@
+1
+00:00:00,350 --> 00:00:03,710
+Geçen yıl 10 lira olan simit bu yıl 15 lira.
+
+2
+00:00:03,710 --> 00:00:09,330
+Simit aynı simit; değişen, paranın değeri. Ekonomi Defteri'nde bugün enflasyonu
+
+3
+00:00:09,330 --> 00:00:10,766
+baştan sona anlatıyoruz.
+
+4
+00:00:11,686 --> 00:00:15,966
+Enflasyon nedir, nasıl ölçülür, neden olur, kimi vurur ve ondan nasıl
+
+5
+00:00:15,966 --> 00:00:18,486
+korunulur? Hepsi bu sayfada, örneklerle.
+
+6
+00:00:18,766 --> 00:00:22,558
+Enflasyon, fiyatların genel düzeyinin sürekli artmasıdır.
+
+7
+00:00:22,838 --> 00:00:27,878
+Burada iki kelime önemli: genel ve sürekli. Sadece domatesin pahalanması
+
+8
+00:00:27,878 --> 00:00:33,062
+enflasyon değildir; market, kira, ulaşım hepsi birlikte artıyorsa enflasyondur.
+
+9
+00:00:33,342 --> 00:00:37,042
+Bir kere zam gelip duruyorsa o da enflasyon değildir;
+
+10
+00:00:37,042 --> 00:00:40,638
+fiyatlar ay be ay tırmanmaya devam ediyorsa enflasyondur.
+
+11
+00:00:40,918 --> 00:00:45,694
+Kısacası enflasyon, aynı parayla her ay biraz daha az şey alabilmek demektir.
+
+12
+00:00:45,974 --> 00:00:49,454
+Peki enflasyonu kim ölçüyor? Türkiye'de bu işi TÜİK yapıyor.
+
+13
+00:00:49,734 --> 00:00:54,294
+TÜİK, hanelerin aldığı yüzlerce ürün ve hizmetten bir sepet kurar:
+
+14
+00:00:54,294 --> 00:00:59,118
+ekmek, kira, elektrik, akaryakıt, giyim, ilaç.
+
+15
+00:00:59,398 --> 00:01:04,338
+Her kalemin bir ağırlığı vardır. Gıdaya ve konuta ayırdığımız pay büyük olduğu
+
+16
+00:01:04,338 --> 00:01:07,030
+için bu kalemler endeksi daha çok etkiler.
+
+17
+00:01:07,310 --> 00:01:12,990
+Her ay sepetin fiyatı yeniden hesaplanır. Geçen yılın aynı ayına göre değişim,
+
+18
+00:01:12,990 --> 00:01:14,870
+yıllık enflasyon olarak açıklanır.
+
+19
+00:01:15,150 --> 00:01:21,370
+Türkiye'de yıllık enflasyon Ekim 2022'de %85,5 ile son 24 yılın zirvesini
+
+20
+00:01:21,370 --> 00:01:21,970
+gördü.
+
+21
+00:01:22,222 --> 00:01:26,014
+Veri her ay, genellikle ayın 3'ünde saat 10:00'da açıklanır.
+
+22
+00:01:26,294 --> 00:01:28,794
+Ama senin enflasyonun TÜİK'inkinden farklı olabilir:
+
+23
+00:01:28,794 --> 00:01:32,750
+kira ödüyorsan ve araban yoksa, senin sepetin ortalama sepete benzemez.
+
+24
+00:01:33,030 --> 00:01:36,318
+Haberlerde enflasyonun birkaç akrabasını duyarsın.
+
+25
+00:01:36,598 --> 00:01:42,138
+Dezenflasyon, enflasyonun yavaşlamasıdır: %50'den %30'a inmek gibi.
+
+26
+00:01:42,138 --> 00:01:45,454
+Dikkat, fiyatlar yine artıyor, sadece daha yavaş.
+
+27
+00:01:45,734 --> 00:01:49,294
+Deflasyon ise fiyatların genel olarak düşmesidir.
+
+28
+00:01:49,294 --> 00:01:53,534
+Kulağa iyi gelir ama insanlar ucuzlamayı bekleyip harcamayı erteler,
+
+29
+00:01:53,534 --> 00:01:54,662
+ekonomi yavaşlar.
+
+30
+00:01:54,942 --> 00:01:58,802
+Hiperenflasyon, fiyatların kontrolden çıktığı durumdur;
+
+31
+00:01:58,802 --> 00:02:02,502
+genellikle aylık %50'yi aşan enflasyon için kullanılır.
+
+32
+00:02:02,782 --> 00:02:06,662
+Bir de çekirdek enflasyon var: enerji, gıda,
+
+33
+00:02:06,662 --> 00:02:10,722
+alkol, tütün ve altın gibi oynak kalemler çıkarılınca kalan,
+
+34
+00:02:10,722 --> 00:02:12,166
+fiyatların asıl eğilimi.
+
+35
+00:02:13,046 --> 00:02:14,678
+Enflasyonun üç ana sebebi var.
+
+36
+00:02:14,958 --> 00:02:20,158
+Birincisi talep: ceplerde daha çok para var ama üretilen mal aynıysa,
+
+37
+00:02:20,158 --> 00:02:22,014
+satıcılar fiyatı yükseltir.
+
+38
+00:02:22,294 --> 00:02:26,998
+Kredi kolaylaştığında ya da para arzı hızla büyüdüğünde bu etki artar.
+
+39
+00:02:27,278 --> 00:02:32,618
+İkincisi maliyet: elektrik, akaryakıt ya da döviz pahalanınca üretici bu
+
+40
+00:02:32,618 --> 00:02:34,334
+maliyeti fiyata yansıtır.
+
+41
+00:02:34,614 --> 00:02:39,414
+Türkiye'de üretimde ithal girdi çok olduğu için kurdaki artış fiyatlara hızla
+
+42
+00:02:39,414 --> 00:02:40,038
+geçer.
+
+43
+00:02:40,318 --> 00:02:45,538
+Üçüncüsü beklenti: herkes yarın zam geleceğini düşünürse bugünden zam yapar ve
+
+44
+00:02:45,538 --> 00:02:47,422
+beklenti kendini gerçekleştirir.
+
+45
+00:02:47,702 --> 00:02:51,822
+Enflasyonla mücadelenin baş aktörü Merkez Bankası'dır.
+
+46
+00:02:51,822 --> 00:02:55,334
+TCMB'nin uzun vadeli hedefi %5 enflasyon.
+
+47
+00:02:55,614 --> 00:02:59,934
+En güçlü aracı politika faizi. Faiz yükselince kredi pahalanır,
+
+48
+00:02:59,934 --> 00:03:01,302
+mevduat cazipleşir.
+
+49
+00:03:01,582 --> 00:03:04,762
+İnsanlar daha az borçlanıp daha çok biriktirir,
+
+50
+00:03:04,762 --> 00:03:07,582
+harcama yavaşlar ve fiyat artışları zamanla soğur.
+
+51
+00:03:07,862 --> 00:03:13,082
+Bu etki hemen gelmez; faiz kararının fiyatlara yansıması aylar sürebilir.
+
+52
+00:03:13,082 --> 00:03:17,054
+Faizin nasıl çalıştığını bir sonraki bölümde ayrıntılı anlatacağız.
+
+53
+00:03:17,334 --> 00:03:22,830
+Enflasyon herkesi aynı vurmaz. En çok sabit gelirli ve nakit tutan kaybeder.
+
+54
+00:03:23,110 --> 00:03:27,166
+Örneğin maaşın 30.000 lira ve fiyatlar bir yılda %30 artıyor.
+
+55
+00:03:27,446 --> 00:03:30,726
+Maaşın hiç artmazsa yıl sonunda 30.000 liran,
+
+56
+00:03:30,726 --> 00:03:34,430
+bugünün parasıyla yaklaşık 23.000 liralık alım gücüne iner.
+
+57
+00:03:34,710 --> 00:03:37,926
+Yastık altında bekleyen nakit de aynı şekilde erir.
+
+58
+00:03:38,206 --> 00:03:41,946
+Buna karşılık sabit faizli borcu olan kazanabilir:
+
+59
+00:03:41,946 --> 00:03:45,186
+borcun tutarı aynı kalır ama paranın değeri düşer,
+
+60
+00:03:45,186 --> 00:03:47,134
+yani borç gerçekte hafifler.
+
+61
+00:03:47,414 --> 00:03:52,646
+Bu yüzden maaş zammı, kira artışı ve faiz oranı hep enflasyonla kıyaslanır.
+
+62
+00:03:52,926 --> 00:03:55,806
+Enflasyonun sinsi tarafı bileşik çalışmasıdır.
+
+63
+00:03:56,086 --> 00:04:02,666
+Aylık %3 küçük görünür. Ama 12 ay üst üste gelince yıllık enflasyon %36 değil,
+
+64
+00:04:02,666 --> 00:04:04,750
+yaklaşık %42,6 olur.
+
+65
+00:04:05,030 --> 00:04:09,206
+Çünkü her ayın zammı, bir önceki ayın zamlı fiyatının üstüne gelir.
+
+66
+00:04:09,486 --> 00:04:15,166
+Yıllık %30 enflasyon sürerse fiyatlar yaklaşık 2 yıl 8 ayda ikiye katlanır:
+
+67
+00:04:15,166 --> 00:04:17,046
+10 liralık simit 20 lira olur.
+
+68
+00:04:17,326 --> 00:04:20,606
+Paranı bankaya koyduğunda da asıl soru şudur:
+
+69
+00:04:20,606 --> 00:04:22,294
+getirim enflasyonu geçiyor mu?
+
+70
+00:04:22,574 --> 00:04:26,114
+Diyelim mevduat yılda %40 getiriyor, enflasyon %30.
+
+71
+00:04:26,114 --> 00:04:27,470
+Kazancın %10 değil.
+
+72
+00:04:27,750 --> 00:04:34,806
+Doğru hesap şöyle: 1,40 bölü 1,30, eksi 1. Reel getirin yaklaşık %7,7.
+
+73
+00:04:35,086 --> 00:04:39,846
+Mevduat faizinden stopaj da kesildiği için net getiriyi kesintiden sonra
+
+74
+00:04:39,846 --> 00:04:40,582
+hesapla.
+
+75
+00:04:40,862 --> 00:04:45,254
+Enflasyon getiriden yüksekse, faiz alsan bile alım gücün azalır.
+
+76
+00:04:45,534 --> 00:04:50,238
+Peki ne yapabilirsin? Yatırım tavsiyesi vermiyoruz ama dört temel ilke var.
+
+77
+00:04:50,518 --> 00:04:54,578
+Bir: kendi enflasyonunu bil. Harcamalarını yaz,
+
+78
+00:04:54,578 --> 00:04:56,518
+hangi kalemin hızlı arttığını gör.
+
+79
+00:04:56,798 --> 00:05:02,294
+İki: parayı uzun süre nakit bekletme; her kararda reel getiriyi hesapla.
+
+80
+00:05:02,574 --> 00:05:08,694
+Üç: gelirini koru. Maaş pazarlığında ve kira sözleşmesinde enflasyonu referans
+
+81
+00:05:08,694 --> 00:05:09,294
+al.
+
+82
+00:05:09,310 --> 00:05:13,030
+Dört: tek bir varlığa yüklenme ve paniğe kapılma;
+
+83
+00:05:13,030 --> 00:05:15,766
+zirvede alıp dipte satmak en pahalı hatadır.
+
+84
+00:05:16,046 --> 00:05:20,026
+Özetle: enflasyon fiyatların genel ve sürekli artışıdır.
+
+85
+00:05:20,026 --> 00:05:24,326
+TÜİK onu bir sepetle ölçer; talep, maliyet ve beklenti onu besler.
+
+86
+00:05:24,606 --> 00:05:28,746
+Sabit geliri ve nakdi eritir, bileşik büyür.
+
+87
+00:05:28,746 --> 00:05:31,518
+Bu yüzden her kararını reel olarak hesapla.
+
+88
+00:05:31,798 --> 00:05:35,978
+Kendi rakamını görmek için parafomo.com'daki enflasyon hesaplama aracını
+
+89
+00:05:35,978 --> 00:05:38,446
+kullanabilirsin; linki açıklamaya bıraktım.
+
+90
+00:05:38,726 --> 00:05:42,026
+Ekonomi Defteri'nin sonraki sayfasında faizi anlatacağız.
+
+91
+00:05:42,026 --> 00:05:43,502
+Kaçırmamak için abone ol.

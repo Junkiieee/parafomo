@@ -1,0 +1,59 @@
+{
+  "slug": "tuik-sepeti-seninle-ayni-degil-enflasyon-neden-dusuk",
+  "title": "TÜİK sepeti seninle aynı değil: enflasyon neden düşük",
+  "category": "MİT",
+  "format": "myth",
+  "description": "TÜİK enflasyonu herkes için aynı sepetle ve sabit ağırlıklarla ölçer. Senin harcama sepetin farklıysa, kendi enflasyonun açıklanandan çok farklı olabilir.",
+  "tags": [
+    "enflasyon",
+    "TÜİK",
+    "enflasyon sepeti",
+    "kişisel enflasyon",
+    "TÜFE",
+    "birikim",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Açıklanan enflasyon senin enflasyonun değil.",
+      "visual": {
+        "type": "object",
+        "query": "shopping cart full of groceries"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "TÜİK yüzlerce ürünü tek sepete koyar, her birine harcamadaki payına göre ağırlık verir. Gıda, kira, ulaşım hepsi orada.",
+      "visual": {
+        "type": "object",
+        "query": "grocery basket with vegetables and bread"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama bu sepet ortalama haneye göre kurulu. Sen kira ödüyorsan ya da arabaya çok harcıyorsan, kendi oranın bambaşka çıkar.",
+      "visual": {
+        "type": "object",
+        "query": "house keys and car keys"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Doğrusu şu: son ayda ne harcadığını yaz, kendi sepetini çıkar. Zam oranını resmi rakama değil, kendi rakamına göre karşılaştır.",
+      "visual": {
+        "type": "object",
+        "query": "calculator and notebook"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Kendi enflasyonunu parafomo.com'daki enflasyon hesaplama aracıyla bul. Abone ol, her gün tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "shopping cart full of groceries"
+      }
+    }
+  ]
+}

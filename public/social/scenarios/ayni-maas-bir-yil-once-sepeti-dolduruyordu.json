@@ -1,0 +1,59 @@
+{
+  "slug": "ayni-maas-bir-yil-once-sepeti-dolduruyordu",
+  "title": "Aynı maaş, bir yıl önce sepeti dolduruyordu",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Aynı maaşın bir yıl önce ve bugün market sepetinde ne kadar az şey aldığını günlük bir metaforla anlatan kısa bir alım gücü açıklaması.",
+  "tags": [
+    "alım gücü",
+    "maaş",
+    "enflasyon",
+    "market sepeti",
+    "birikim",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Maaşın aynı, ama sepetin artık eskisi kadar dolmuyor.",
+      "visual": {
+        "type": "object",
+        "query": "full grocery basket with fresh vegetables"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Buna alım gücü deniyor: maaşın bir çanta gibi, fiyatlar yükselince içine eskisinden az şey sığıyor.",
+      "visual": {
+        "type": "object",
+        "query": "shopping bag with groceries"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl sürpriz şu: maaşın rakamı artsa bile fiyatlar daha hızlı artarsa sepetin küçülmeye devam eder.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kendi hesabını yap: bir yıl önce aldığın market sepetini bugünkü fiyatla tart, aradaki farkı maaşınla kıyasla.",
+      "visual": {
+        "type": "object",
+        "query": "receipt paper"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Kendi alım gücünü parafomo.com'daki enflasyon hesaplama aracıyla ölç. Abone ol, her gün tek net hesap.",
+      "visual": {
+        "type": "object",
+        "query": "full grocery basket with fresh vegetables"
+      }
+    }
+  ]
+}

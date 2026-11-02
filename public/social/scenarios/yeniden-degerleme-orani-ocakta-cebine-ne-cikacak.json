@@ -1,0 +1,64 @@
+{
+  "slug": "yeniden-degerleme-orani-ocakta-cebine-ne-cikacak",
+  "title": "Yeniden değerleme oranı: ocakta cebine ne çıkacak",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Yeniden değerleme oranı, harç, ceza ve vergi tutarlarının her yıl nasıl güncellendiğini belirler. TÜİK'in 3 Kasım'da açıkladığı üretici enflasyonu bu oranı netleştirir.\nKaynak/hesap: 10.000 TL x 1,25 = 12.500 TL · 2026 yeniden değerleme oranı (Kasım 2025'te TÜİK üretici fiyat verisiyle belirlendi, yaklaşık %25,5); Vergi Usul Kanunu mükerrer 298",
+  "tags": [
+    "yeniden değerleme oranı",
+    "harç",
+    "trafik cezası",
+    "vergi",
+    "TÜİK",
+    "enflasyon",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Bu yıl yeniden değerleme oranı yüzde 25,49'du, ama harçlar ve MTV yüzde 18,95 arttı.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Adı yeniden değerleme oranı: üretici fiyat artışına göre harç, ceza ve vergi tutarları güncellenir.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Hesap sade: oran yüzde 25 olursa 10 bin liralık tutar 12 bin 500 lira olur. Ama harç ve MTV'de Cumhurbaşkanı daha düşük oran uygulayabilir.",
+      "visual": {
+        "type": "object",
+        "query": "receipt paper"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yeni oranı, TÜİK'in 3 Kasım'da açıklayacağı Ekim üretici enflasyonu belirleyecek.",
+      "visual": {
+        "type": "place",
+        "query": "Türkiye İstatistik Kurumu"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Ocakta hangi harçlar zamlanacak, merak ediyorsan abone ol; her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "yaklaşık yüzde 25",
+    "calc": "10.000 TL x 1,25 = 12.500 TL",
+    "source": "2026 yeniden değerleme oranı (Kasım 2025'te TÜİK üretici fiyat verisiyle belirlendi, yaklaşık %25,5); Vergi Usul Kanunu mükerrer 298"
+  }
+}

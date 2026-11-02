@@ -1,0 +1,64 @@
+{
+  "slug": "kira-zammi-yuzde-25-degil-bu-hesapla-cikiyor",
+  "title": "Kira zammı yüzde 25 değil, bu hesapla çıkıyor",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Kira artış oranı, TÜİK'in açıkladığı son 12 aylık TÜFE ortalamasına göre hesaplanır. Basit bir örnekle ev sahibinin ve kiracının hakkını gösteriyoruz.\nKaynak/hesap: 20.000 TL x %30 = 6.000 TL azami artış (örnek hesap); ortalama = 12 aylık yıllık TÜFE değişimlerinin toplamı / 12 · senaryodaki hesap; TÜİK TÜFE verisi ve Türk Borçlar Kanunu md. 344",
+  "tags": [
+    "kira artış oranı",
+    "TÜFE",
+    "12 aylık ortalama",
+    "kira zammı",
+    "TÜİK",
+    "kiracı",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Kira zammını yıllık enflasyon değil, 12 aylık ortalama belirliyor.",
+      "visual": {
+        "type": "object",
+        "query": "house keys"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yasaya göre zam tavanı, kira yenilenirken geçerli olan 12 aylık TÜFE ortalamasıdır. Yıllık enflasyon değil.",
+      "visual": {
+        "type": "object",
+        "query": "calendar"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "TÜİK bunu her ay açıklar: son 12 ayın fiyat ortalaması, bir önceki 12 ayınkiyle kıyaslanır. Bu yüzden yıllık enflasyondan daha yavaş değişir.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Örneğin oran yüzde 30 ise, 20 bin liralık kiraya en fazla 6 bin lira zam gelir.",
+      "visual": {
+        "type": "object",
+        "query": "receipt paper"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Kontrol etmediğin kira artışı sana pahalıya gelir. Abone ol, her gün kısa ve net tek hesap anlatıyoruz.",
+      "visual": {
+        "type": "object",
+        "query": "house keys"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "12 aylık TÜFE ortalaması",
+    "calc": "20.000 TL x %30 = 6.000 TL azami artış (örnek hesap); ortalama = 12 aylık yıllık TÜFE değişimlerinin toplamı / 12",
+    "source": "senaryodaki hesap; TÜİK TÜFE verisi ve Türk Borçlar Kanunu md. 344"
+  }
+}

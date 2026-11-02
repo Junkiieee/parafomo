@@ -1,0 +1,139 @@
+{
+  "slug": "anim-ekonomi-makinesi-enflasyon",
+  "title": "Ekonomi makinesi: Enflasyon nasıl olur? (60 saniyede)",
+  "file": "/root/parafomo/public/social/anim/anim-ekonomi-makinesi-enflasyon.mp4",
+  "duration": 35.718,
+  "music": "Oats with Sugar - Casa Rosa's Tulum Vibes.mp3",
+  "link": null,
+  "lines": [
+    {
+      "id": "hook",
+      "t0": 0.35,
+      "t1": 4.574,
+      "cap": "Ekmek neden her yıl pahalanıyor? Cevap, ekonomi makinesinde.",
+      "words": [
+        0.35,
+        0.97,
+        1.23,
+        1.51,
+        1.67,
+        2.71,
+        3.39,
+        3.77
+      ]
+    },
+    {
+      "id": "trade",
+      "t0": 4.854,
+      "t1": 10.134,
+      "cap": "Ekonomi aslında alışverişlerden oluşur. Ali fırıncıya 10 lira verir, karşılığında ekmeği alır.",
+      "words": [
+        4.854,
+        5.534,
+        5.814,
+        6.734,
+        7.314,
+        7.454,
+        7.934,
+        8.154,
+        8.334,
+        8.734,
+        9.274,
+        9.654
+      ]
+    },
+    {
+      "id": "money",
+      "t0": 10.414,
+      "t1": 15.454,
+      "cap": "Şimdi herkesin cebine daha çok para girdiğini düşün: kredi kolaylaşır, piyasaya para dolar.",
+      "words": [
+        10.414,
+        10.974,
+        11.514,
+        11.834,
+        11.994,
+        12.214,
+        12.474,
+        12.934,
+        13.514,
+        13.774,
+        14.454,
+        14.834,
+        15.074
+      ]
+    },
+    {
+      "id": "same",
+      "t0": 15.734,
+      "t1": 18.566,
+      "cap": "Ama fırında hâlâ aynı sayıda ekmek var.",
+      "words": [
+        15.734,
+        16.094,
+        16.514,
+        16.994,
+        17.294,
+        17.714,
+        18.014
+      ]
+    },
+    {
+      "id": "price",
+      "t0": 18.846,
+      "t1": 23.622,
+      "cap": "Daha çok para, aynı ekmeğin peşine düşünce fiyat yükselir: 10 lira, 15 lira olur.",
+      "words": [
+        18.846,
+        19.206,
+        19.466,
+        19.826,
+        19.986,
+        20.386,
+        20.726,
+        21.106,
+        21.406,
+        22.186,
+        22.366,
+        22.606,
+        22.886,
+        23.146
+      ]
+    },
+    {
+      "id": "chart",
+      "t0": 23.902,
+      "t1": 28.27,
+      "cap": "İşte enflasyon budur: para, maldan daha hızlı artınca fiyatlar yükselir.",
+      "words": [
+        23.902,
+        24.442,
+        25.022,
+        25.562,
+        25.942,
+        26.222,
+        26.442,
+        26.782,
+        27.222,
+        27.602
+      ]
+    },
+    {
+      "id": "cta",
+      "t0": 28.55,
+      "t1": 34.118,
+      "cap": "Paranı enflasyona karşı korumanın yollarını parafomo.com'da anlattık. Abone ol.",
+      "words": [
+        28.55,
+        29.29,
+        29.93,
+        30.23,
+        30.79,
+        31.25,
+        32.47,
+        33.43,
+        33.75
+      ]
+    }
+  ]
+}

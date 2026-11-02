@@ -1,0 +1,111 @@
+{
+  "slug": "kira-zammi-yuzde-25-degil-bu-hesapla-cikiyor",
+  "title": "Kira zammı yüzde 25 değil, bu hesapla çıkıyor",
+  "description": "Kira artış oranı, TÜİK'in her ay açıkladığı 12 aylık TÜFE ortalamasına göre belirlenir (son 12 ayın endeks ortalaması, önceki 12 ayın ortalamasıyla kıyaslanır). Örnek hesap: 20.000 TL × %30 = 6.000 TL azami artış. Dayanak: Türk Borçlar Kanunu md. 344; %25 sınırı 2 Temmuz 2024'te sona erdi.",
+  "tags": [
+    "kira artış oranı",
+    "TÜFE",
+    "12 aylık ortalama",
+    "kira zammı",
+    "TÜİK",
+    "kiracı",
+    "parafomo"
+  ],
+  "format": "shock_number",
+  "style": "isometric",
+  "scene": "generic.js",
+  "short": true,
+  "data": {
+    "eyebrow": "KİRA ZAMMI HESABI",
+    "scenes": [
+      {
+        "type": "big_number",
+        "head": "Zammı ne belirliyor?",
+        "data": {
+          "icon": "house",
+          "value": 6000,
+          "unit": "₺",
+          "suffix": "",
+          "label": "20.000 TL kirada azami zam (örnek)"
+        },
+        "line": "s0"
+      },
+      {
+        "type": "icon_text",
+        "head": "Yasal tavan",
+        "data": {
+          "icon": "percent",
+          "text": "Tavan: *12 aylık* TÜFE *ortalaması*"
+        },
+        "line": "s1"
+      },
+      {
+        "type": "steps",
+        "head": "Oran nereden gelir?",
+        "data": {
+          "items": [
+            "Yenileme ayını bul",
+            "O ayın 12 aylık ortalaması",
+            "Sonuç = zam tavanı"
+          ]
+        },
+        "line": "s2"
+      },
+      {
+        "type": "compare",
+        "head": "Örnek hesap",
+        "data": {
+          "a": {
+            "label": "Mevcut kira",
+            "value": 20000
+          },
+          "b": {
+            "label": "Azami zam",
+            "value": 6000
+          },
+          "unit": "₺",
+          "note": "ÖRNEK · %30 TAVAN"
+        },
+        "line": "s3"
+      },
+      {
+        "type": "cta",
+        "head": "Kontrol et",
+        "data": {
+          "l1": "ZAMMI KONTROL ET",
+          "l2": "ABONE OL",
+          "sub": "HER GÜN TEK HESAP · ÜCRETSİZ"
+        },
+        "line": "s4"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "s0",
+      "say": "Kira zammını yıllık enflasyon değil, 12 aylık ortalama belirliyor.",
+      "cap": "Kira zammını yıllık enflasyon değil, 12 aylık ortalama belirliyor."
+    },
+    {
+      "id": "s1",
+      "say": "Yasaya göre zam tavanı, kira yenilenirken geçerli olan 12 aylık TÜFE ortalamasıdır. Yıllık enflasyon değil.",
+      "cap": "Yasaya göre zam tavanı, kira yenilenirken geçerli olan 12 aylık TÜFE ortalamasıdır. Yıllık enflasyon değil."
+    },
+    {
+      "id": "s2",
+      "say": "TÜİK bunu her ay açıklar: son 12 ayın fiyat ortalaması, bir önceki 12 ayınkiyle kıyaslanır. Bu yüzden yıllık enflasyondan daha yavaş değişir.",
+      "cap": "TÜİK bunu her ay açıklar: son 12 ayın fiyat ortalaması, bir önceki 12 ayınkiyle kıyaslanır. Bu yüzden yıllık enflasyondan daha yavaş değişir."
+    },
+    {
+      "id": "s3",
+      "say": "Örneğin oran yüzde 30 ise, 20 bin liralık kiraya en fazla 6 bin lira zam gelir.",
+      "cap": "Örneğin oran %30 ise, 20.000 liralık kiraya en fazla 6.000 lira zam gelir."
+    },
+    {
+      "id": "s4",
+      "say": "Kontrol etmediğin kira artışı sana pahalıya gelir. Abone ol, her gün kısa ve net tek hesap anlatıyoruz.",
+      "cap": "Kontrol etmediğin kira artışı sana pahalıya gelir. Abone ol, her gün kısa ve net tek hesap anlatıyoruz."
+    }
+  ],
+  "skin": "paper"
+}

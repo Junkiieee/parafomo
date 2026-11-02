@@ -1,0 +1,52 @@
+{
+  "slug": "skin-demo-riso",
+  "title": "skin demo",
+  "file": "/root/parafomo/public/social/anim/skin-demo-riso.mp4",
+  "duration": 27.318,
+  "music": "Oats with Sugar - Casa Rosa's Tulum Vibes.mp3",
+  "link": null,
+  "lines": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 2.462,
+      "cap": "Brüt maaşın 75 bin lira."
+    },
+    {
+      "id": "s1",
+      "t0": 2.742,
+      "t1": 6.726,
+      "cap": "SGK, işsizlik sigortası, gelir ve damga vergisi kesiliyor."
+    },
+    {
+      "id": "s2",
+      "t0": 7.006,
+      "t1": 12.166,
+      "cap": "Ocak'ta 58 bin, Nisan'da 54 bin, Ağustos'ta 51 bin."
+    },
+    {
+      "id": "s3",
+      "t0": 12.446,
+      "t1": 15.038,
+      "cap": "Aynı maaş, ayda 6 bin lira daha az."
+    },
+    {
+      "id": "s4",
+      "t0": 15.318,
+      "t1": 17.718,
+      "cap": "Üstüne kira artışı da maaşını eritiyor."
+    },
+    {
+      "id": "s5",
+      "t0": 17.998,
+      "t1": 21.814,
+      "cap": "Bordronu kontrol et, dilimini öğren, bütçeni ayarla."
+    },
+    {
+      "id": "s6",
+      "t0": 22.094,
+      "t1": 25.718,
+      "cap": "Kendi maaşını parafomo.com'da hesapla. Abone ol."
+    }
+  ]
+}

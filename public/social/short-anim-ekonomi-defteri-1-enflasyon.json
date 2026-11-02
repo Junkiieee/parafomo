@@ -1,0 +1,155 @@
+{
+  "title": "Simit neden pahalanıyor? Enflasyon 37 saniyede | Ekonomi Defteri #1 #Shorts",
+  "description": "Ekonomi Defteri'nin ilk sayfası: enflasyon nasıl olur? Herkesin cebinde daha çok para var ama simitçinin tablasında hâlâ aynı sayıda simit var. Para maldan hızlı artınca fiyat yükselir. Tutarlar örnektir.",
+  "tags": [
+    "enflasyon",
+    "enflasyon nedir",
+    "enflasyon nasıl olur",
+    "ekonomi defteri",
+    "simit fiyatı",
+    "ekonomi",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/anim/anim-ekonomi-defteri-1-enflasyon.mp4",
+  "slug": "anim-ekonomi-defteri-1-enflasyon",
+  "format": "ekonomi_defteri",
+  "engine": "anim",
+  "series": "Ekonomi Defteri",
+  "episode": 1,
+  "link": "/blog/enflasyondan-nasil-korunur/",
+  "comment": "📒 Ekonomi Defteri: ekonominin işleyişi her hafta tek sayfada, çizerek anlatılıyor.\n\n📖 Paranı enflasyona karşı korumanın yolları: https://parafomo.com/blog/enflasyondan-nasil-korunur/\n\n🔔 Sonraki sayfayı kaçırmamak için ABONE OL. Bir sonraki sayfada hangi konuyu görmek istersin? Yoruma yaz 👇",
+  "timeline": [
+    {
+      "id": "hook",
+      "t0": 0.35,
+      "t1": 4.958,
+      "cap": "Simit neden her yıl pahalanıyor? Ekonomi Defteri'nin ilk sayfası: enflasyon.",
+      "words": [
+        0.35,
+        0.71,
+        0.89,
+        1.21,
+        1.37,
+        2.31,
+        2.69,
+        3.23,
+        3.43,
+        4.23
+      ]
+    },
+    {
+      "id": "trade",
+      "t0": 5.238,
+      "t1": 10.278,
+      "cap": "Ekonomi aslında alışverişlerden oluşur. Mert simitçiye 10 lira verir, karşılığında simidi alır.",
+      "words": [
+        5.238,
+        5.918,
+        6.158,
+        7.038,
+        7.678,
+        7.878,
+        8.338,
+        8.518,
+        8.698,
+        9.058,
+        9.538,
+        9.898
+      ]
+    },
+    {
+      "id": "money",
+      "t0": 10.558,
+      "t1": 15.598,
+      "cap": "Şimdi herkesin cebine daha çok para girdiğini düşün: kredi kolaylaşır, piyasaya para dolar.",
+      "words": [
+        10.558,
+        11.118,
+        11.658,
+        11.978,
+        12.138,
+        12.358,
+        12.618,
+        13.078,
+        13.658,
+        13.918,
+        14.598,
+        14.978,
+        15.218
+      ]
+    },
+    {
+      "id": "same",
+      "t0": 15.878,
+      "t1": 19.262,
+      "cap": "Ama simitçinin tablasında hâlâ aynı sayıda simit var.",
+      "words": [
+        15.878,
+        16.298,
+        16.818,
+        17.418,
+        17.898,
+        18.198,
+        18.598,
+        18.918
+      ]
+    },
+    {
+      "id": "price",
+      "t0": 19.542,
+      "t1": 24.702,
+      "cap": "Daha çok para, aynı simidin peşine düşünce fiyat yükselir: 10 lira, 15 lira olur.",
+      "words": [
+        19.542,
+        19.902,
+        20.162,
+        20.402,
+        20.882,
+        21.362,
+        21.682,
+        22.082,
+        22.402,
+        23.142,
+        23.322,
+        23.642,
+        23.942,
+        24.202
+      ]
+    },
+    {
+      "id": "chart",
+      "t0": 24.982,
+      "t1": 29.35,
+      "cap": "İşte enflasyon budur: para, maldan daha hızlı artınca fiyatlar yükselir.",
+      "words": [
+        24.982,
+        25.522,
+        26.102,
+        26.642,
+        27.022,
+        27.302,
+        27.522,
+        27.862,
+        28.302,
+        28.682
+      ]
+    },
+    {
+      "id": "cta",
+      "t0": 29.63,
+      "t1": 35.198,
+      "cap": "Paranı enflasyona karşı korumanın yollarını parafomo.com'da anlattık. Abone ol.",
+      "words": [
+        29.63,
+        30.37,
+        31.01,
+        31.31,
+        31.87,
+        32.33,
+        33.55,
+        34.51,
+        34.83
+      ]
+    }
+  ]
+}

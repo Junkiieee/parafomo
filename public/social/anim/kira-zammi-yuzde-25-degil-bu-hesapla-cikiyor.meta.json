@@ -1,0 +1,126 @@
+{
+  "slug": "kira-zammi-yuzde-25-degil-bu-hesapla-cikiyor",
+  "title": "Kira zammı yüzde 25 değil, bu hesapla çıkıyor",
+  "file": "/root/parafomo/public/social/short-kira-zammi-yuzde-25-degil-bu-hesapla-cikiyor.mp4",
+  "duration": 34.558,
+  "music": "Survival Mode - Blue Deer Studio.mp3",
+  "link": null,
+  "lines": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 4.406,
+      "cap": "Kira zammını yıllık enflasyon değil, 12 aylık ortalama belirliyor.",
+      "words": [
+        0.35,
+        0.79,
+        1.21,
+        1.55,
+        2.19,
+        2.65,
+        2.83,
+        3.23,
+        3.67
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 4.686,
+      "t1": 11.31,
+      "cap": "Yasaya göre zam tavanı, kira yenilenirken geçerli olan 12 aylık TÜFE ortalamasıdır. Yıllık enflasyon değil.",
+      "words": [
+        4.686,
+        5.326,
+        5.526,
+        5.766,
+        6.326,
+        6.466,
+        7.106,
+        7.646,
+        7.846,
+        8.206,
+        8.626,
+        8.866,
+        9.966,
+        10.306,
+        10.906
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 11.59,
+      "t1": 20.206,
+      "cap": "TÜİK bunu her ay açıklar: son 12 ayın fiyat ortalaması, bir önceki 12 ayınkiyle kıyaslanır. Bu yüzden yıllık enflasyondan daha yavaş değişir.",
+      "words": [
+        11.59,
+        12.25,
+        12.47,
+        12.63,
+        12.79,
+        13.47,
+        13.73,
+        14.03,
+        14.35,
+        14.61,
+        15.33,
+        15.41,
+        15.83,
+        16.03,
+        16.71,
+        17.57,
+        17.69,
+        17.93,
+        18.39,
+        19.15,
+        19.31,
+        19.61
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 20.486,
+      "t1": 25.766,
+      "cap": "Örneğin oran %30 ise, 20.000 liralık kiraya en fazla 6.000 lira zam gelir.",
+      "words": [
+        20.486,
+        21.206,
+        21.466,
+        21.926,
+        22.666,
+        23.046,
+        23.366,
+        23.726,
+        24.086,
+        24.366,
+        24.826,
+        24.986,
+        25.186
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 26.046,
+      "t1": 32.958,
+      "cap": "Kontrol etmediğin kira artışı sana pahalıya gelir. Abone ol, her gün kısa ve net tek hesap anlatıyoruz.",
+      "words": [
+        26.046,
+        26.966,
+        27.606,
+        27.866,
+        28.446,
+        28.646,
+        29.106,
+        29.706,
+        29.966,
+        30.546,
+        30.666,
+        30.846,
+        31.206,
+        31.346,
+        31.526,
+        31.806,
+        32.146
+      ]
+    }
+  ]
+}

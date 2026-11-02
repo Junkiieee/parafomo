@@ -1,0 +1,108 @@
+{
+  "slug": "pasaport-harci-her-yil-sessizce-zamlaniyor-iste-formul",
+  "title": "Pasaport harcı her ocak otomatik zamlanıyor, işte formül",
+  "description": "MTV, pasaport ve ehliyet harçları her yıl yeniden değerleme oranı kadar artıyor. Bu zam kanunla otomatik işliyor ve cebinden çıkan parayı doğrudan etkiliyor.",
+  "tags": [
+    "yeniden değerleme oranı",
+    "MTV",
+    "pasaport harcı",
+    "ehliyet harcı",
+    "harç zammı",
+    "vergi",
+    "parafomo"
+  ],
+  "format": "single_concept",
+  "style": "isometric",
+  "scene": "generic.js",
+  "short": true,
+  "data": {
+    "eyebrow": "GİZLİ ZAM",
+    "scenes": [
+      {
+        "type": "icon_text",
+        "head": "Otomatik zam geliyor",
+        "data": {
+          "icon": "card",
+          "text": "*Pasaport harcı* ocakta otomatik zamlanır"
+        },
+        "line": "s0"
+      },
+      {
+        "type": "icon_text",
+        "head": "Yeniden değerleme nedir?",
+        "data": {
+          "icon": "percent",
+          "text": "Vergi ve harçlara *yıllık otomatik* zam"
+        },
+        "line": "s1"
+      },
+      {
+        "type": "steps",
+        "head": "Ocakta kendiliğinden artar",
+        "data": {
+          "items": [
+            "MTV",
+            "Pasaport harcı",
+            "Ehliyet harcı"
+          ]
+        },
+        "line": "s2"
+      },
+      {
+        "type": "compare",
+        "head": "Aralık mı, ocak mı?",
+        "data": {
+          "a": {
+            "label": "10 bin liralık harç",
+            "value": 10000
+          },
+          "b": {
+            "label": "Yüzde 28 zamlı",
+            "value": 12800
+          },
+          "unit": "₺",
+          "note": "ÖRNEK · YAKLAŞIK 12.800"
+        },
+        "line": "s3"
+      },
+      {
+        "type": "cta",
+        "head": "Ocak zamları",
+        "data": {
+          "l1": "OCAKTA NELER",
+          "l2": "ZAMLANIYOR?",
+          "sub": "HER GÜN TEK NET HESAP · ABONE OL"
+        },
+        "line": "s4"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "s0",
+      "say": "Pasaport harcı her ocakta otomatik zamlanıyor, çoğu kişi fark etmiyor.",
+      "cap": "Pasaport harcı her ocakta otomatik zamlanıyor, çoğu kişi fark etmiyor."
+    },
+    {
+      "id": "s1",
+      "say": "Yeniden değerleme oranı, devletin vergi ve harçlara uyguladığı yıllık otomatik zam katsayısıdır, tıpkı kirada yıllık artış gibi.",
+      "cap": "Yeniden değerleme oranı, devletin vergi ve harçlara uyguladığı yıllık otomatik zam katsayısıdır, tıpkı kirada yıllık artış gibi."
+    },
+    {
+      "id": "s2",
+      "say": "Ama kira artışını sözleşmede görürsün, bunda yok. MTV, pasaport ve ehliyet harcı ocakta kendiliğinden o oranda yükselir.",
+      "cap": "Ama kira artışını sözleşmede görürsün, bunda yok. MTV, pasaport ve ehliyet harcı ocakta kendiliğinden o oranda yükselir."
+    },
+    {
+      "id": "s3",
+      "say": "Örneğin oran yüzde 28 çıkarsa, 10 bin liralık harç yaklaşık 12 bin 800 olur. Gerekli işlemleri aralıkta yaptırmak ucuza gelir.",
+      "cap": "Örneğin oran %28 çıkarsa, 10.000 liralık harç yaklaşık 12.800 olur. Gerekli işlemleri aralıkta yaptırmak ucuza gelir."
+    },
+    {
+      "id": "s4",
+      "say": "Ocakta başka hangi kalemler zamlanıyor, merak ediyorsan abone ol, her gün tek net hesap paylaşıyorum.",
+      "cap": "Ocakta başka hangi kalemler zamlanıyor, merak ediyorsan abone ol, her gün tek net hesap paylaşıyorum."
+    }
+  ],
+  "skin": "cutpaper"
+}

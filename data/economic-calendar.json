@@ -1,89 +1,8 @@
 {
-  "updated": "2026-10-30",
+  "updated": "2026-11-02",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-10-28",
-      "time": "12:30pm",
-      "region": "GBP",
-      "impact": "High",
-      "title": "Annual Budget Release",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-10-28",
-      "time": "6:00pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Federal Funds Rate",
-      "source": "forexfactory",
-      "hook": "Fed faiz kararı — 'Fed faizi TL ve borsayı nasıl etkiler' explainer'ı."
-    },
-    {
-      "date": "2026-10-28",
-      "time": "6:00pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "FOMC Statement",
-      "source": "forexfactory",
-      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
-    },
-    {
-      "date": "2026-10-28",
-      "time": "6:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "FOMC Press Conference",
-      "source": "forexfactory",
-      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
-    },
-    {
-      "date": "2026-10-29",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Advance GDP q/q",
-      "source": "forexfactory",
-      "hook": "Büyüme verisi — küresel görünüm."
-    },
-    {
-      "date": "2026-10-29",
-      "time": "12:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core PCE Price Index m/m",
-      "source": "forexfactory",
-      "hook": "ABD çekirdek enflasyon (PCE) — Fed'in tercih ettiği gösterge, dolar yönü."
-    },
-    {
-      "date": "2026-10-29",
-      "time": "1:15pm",
-      "region": "EUR",
-      "impact": "High",
-      "title": "Main Refinancing Rate",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-10-29",
-      "time": "1:15pm",
-      "region": "EUR",
-      "impact": "High",
-      "title": "Monetary Policy Statement",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-10-29",
-      "time": "1:45pm",
-      "region": "EUR",
-      "impact": "High",
-      "title": "ECB Press Conference",
-      "source": "forexfactory",
-      "hook": "ECB — euro ve küresel faiz beklentisi."
-    },
     {
       "date": "2026-10-30",
       "region": "TR",
@@ -137,6 +56,96 @@
       "title": "TÜİK enflasyon (TÜFE) verisi",
       "source": "tuik-rule",
       "hook": "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı."
+    },
+    {
+      "date": "2026-11-03",
+      "time": "3:16pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Congressional Elections",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-11-05",
+      "time": "12:00pm",
+      "region": "GBP",
+      "impact": "High",
+      "title": "BOE Monetary Policy Report",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-11-05",
+      "time": "12:00pm",
+      "region": "GBP",
+      "impact": "High",
+      "title": "Monetary Policy Summary",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-11-05",
+      "time": "12:00pm",
+      "region": "GBP",
+      "impact": "High",
+      "title": "MPC Official Bank Rate Votes",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-11-05",
+      "time": "12:00pm",
+      "region": "GBP",
+      "impact": "High",
+      "title": "Official Bank Rate",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-11-05",
+      "time": "12:30pm",
+      "region": "GBP",
+      "impact": "High",
+      "title": "BOE Gov Bailey Speaks",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-11-06",
+      "time": "1:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Average Hourly Earnings m/m",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-11-06",
+      "time": "1:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Non-Farm Employment Change",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-11-06",
+      "time": "1:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Unemployment Rate",
+      "source": "forexfactory",
+      "hook": "İşsizlik verisi — büyüme ve faiz beklentisi."
+    },
+    {
+      "date": "2026-11-06",
+      "time": "4:00pm",
+      "region": "JPY",
+      "impact": "High",
+      "title": "BOJ Gov Ueda Speaks",
+      "source": "forexfactory",
+      "hook": ""
     },
     {
       "date": "2026-12-03",

@@ -1,0 +1,103 @@
+{
+  "slug": "ayni-maas-bir-yil-once-sepeti-dolduruyordu",
+  "title": "Aynı maaş, bir yıl önce sepeti dolduruyordu",
+  "description": "Aynı maaşın bir yıl önce ve bugün market sepetinde ne kadar az şey aldığını günlük bir metaforla anlatan kısa bir alım gücü açıklaması.",
+  "tags": [
+    "alım gücü",
+    "maaş",
+    "enflasyon",
+    "market sepeti",
+    "birikim",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "format": "single_concept",
+  "style": "isometric",
+  "scene": "generic.js",
+  "short": true,
+  "data": {
+    "eyebrow": "ALIM GÜCÜ",
+    "scenes": [
+      {
+        "type": "icon_text",
+        "head": "Maaş aynı, sepet küçülüyor",
+        "data": {
+          "icon": "cash",
+          "text": "Maaş aynı, *sepet* eskisi kadar *dolmuyor*"
+        },
+        "line": "s0"
+      },
+      {
+        "type": "steps",
+        "head": "Alım gücü nedir?",
+        "data": {
+          "items": [
+            "MAAŞ = ÇANTA",
+            "FİYATLAR YÜKSELİR",
+            "İÇİNE AZ SIĞAR"
+          ]
+        },
+        "line": "s1"
+      },
+      {
+        "type": "icon_text",
+        "head": "Asıl sürpriz",
+        "data": {
+          "icon": "percent",
+          "text": "Fiyatlar *hızlı* artarsa sepet *küçülür*"
+        },
+        "line": "s2"
+      },
+      {
+        "type": "steps",
+        "head": "Kendi hesabını yap",
+        "data": {
+          "items": [
+            "ESKİ SEPETİ AL",
+            "BUGÜNKÜ FİYATLA TART",
+            "FARKI MAAŞLA KIYASLA"
+          ]
+        },
+        "line": "s3"
+      },
+      {
+        "type": "cta",
+        "head": "Farkı kapat",
+        "data": {
+          "l1": "ALIM GÜCÜNÜ",
+          "l2": "ÖLÇ",
+          "sub": "ABONE OL · HER GÜN TEK NET HESAP"
+        },
+        "line": "s4"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "s0",
+      "say": "Maaşın aynı, ama sepetin artık eskisi kadar dolmuyor.",
+      "cap": "Maaşın aynı, ama sepetin artık eskisi kadar dolmuyor."
+    },
+    {
+      "id": "s1",
+      "say": "Buna alım gücü deniyor: maaşın bir çanta gibi, fiyatlar yükselince içine eskisinden az şey sığıyor.",
+      "cap": "Buna alım gücü deniyor: maaşın bir çanta gibi, fiyatlar yükselince içine eskisinden az şey sığıyor."
+    },
+    {
+      "id": "s2",
+      "say": "Ama asıl sürpriz şu: maaşın rakamı artsa bile fiyatlar daha hızlı artarsa sepetin küçülmeye devam eder.",
+      "cap": "Ama asıl sürpriz şu: maaşın rakamı artsa bile fiyatlar daha hızlı artarsa sepetin küçülmeye devam eder."
+    },
+    {
+      "id": "s3",
+      "say": "Kendi hesabını yap: bir yıl önce aldığın market sepetini bugünkü fiyatla tart, aradaki farkı maaşınla kıyasla.",
+      "cap": "Kendi hesabını yap: bir yıl önce aldığın market sepetini bugünkü fiyatla tart, aradaki farkı maaşınla kıyasla."
+    },
+    {
+      "id": "s4",
+      "say": "Kendi alım gücünü parafomo.com'daki enflasyon hesaplama aracıyla ölç. Abone ol, her gün tek net hesap.",
+      "cap": "Kendi alım gücünü parafomo.com'daki enflasyon hesaplama aracıyla ölç. Abone ol, her gün tek net hesap."
+    }
+  ],
+  "skin": "riso"
+}

@@ -1,0 +1,59 @@
+{
+  "slug": "pasaport-harci-her-yil-sessizce-zamlaniyor-iste-formul",
+  "title": "Pasaport harcı her yıl sessizce zamlanıyor, işte formül",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "MTV, pasaport ve ehliyet harçları her yıl yeniden değerleme oranı kadar artıyor. Bu zam kanunla otomatik işliyor ve cebinden çıkan parayı doğrudan etkiliyor.",
+  "tags": [
+    "yeniden değerleme oranı",
+    "MTV",
+    "pasaport harcı",
+    "ehliyet harcı",
+    "harç zammı",
+    "vergi",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Pasaport harcı her ocakta otomatik zamlanıyor, çoğu kişi fark etmiyor.",
+      "visual": {
+        "type": "object",
+        "query": "passport and driver license on desk"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yeniden değerleme oranı, devletin vergi ve harçlara uyguladığı yıllık otomatik zam katsayısıdır, tıpkı kirada yıllık artış gibi.",
+      "visual": {
+        "type": "object",
+        "query": "calendar with rent contract"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama kira artışını sözleşmede görürsün, bunda yok. MTV, pasaport ve ehliyet harcı ocakta kendiliğinden o oranda yükselir.",
+      "visual": {
+        "type": "object",
+        "query": "car license plate"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Örneğin oran yüzde 28 çıkarsa, 10 bin liralık harç yaklaşık 12 bin 800 olur. Gerekli işlemleri aralıkta yaptırmak ucuza gelir.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Ocakta başka hangi kalemler zamlanıyor, merak ediyorsan abone ol, her gün tek net hesap paylaşıyorum.",
+      "visual": {
+        "type": "object",
+        "query": "passport and driver license on desk"
+      }
+    }
+  ]
+}

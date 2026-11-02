@@ -1,0 +1,149 @@
+{
+  "title": "%30 indirim gerçek mi? Önce zam, sonra indirim | Ekonomi Defteri #3 #Shorts",
+  "description": "Ekonomi Defteri'nin üçüncü sayfası: 11.11'den iki hafta önce 1.000 ₺'lik kulaklık 1.500 ₺'ye çıkıyor, 11.11'de %30 indirimle 1.050 ₺ oluyor. İndirimli fiyat aslında iki hafta öncesinden %5 pahalı, çünkü yüzdeler aynı tabana uygulanmaz: zam 1.000 ₺'ye, indirim 1.500 ₺'ye. Tutarlar örnektir.",
+  "tags": [
+    "11.11 indirim",
+    "sahte indirim",
+    "indirim gerçek mi",
+    "11.11",
+    "alışveriş",
+    "ekonomi defteri",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-anim-ekonomi-defteri-3-indirim.mp4",
+  "slug": "anim-ekonomi-defteri-3-indirim",
+  "format": "ekonomi_defteri",
+  "engine": "anim",
+  "timeline": [
+    {
+      "id": "hook",
+      "t0": 0.35,
+      "t1": 4.046,
+      "cap": "%30 indirim gerçek mi? Ekonomi Defteri, üçüncü sayfa.",
+      "words": [
+        0.35,
+        0.85,
+        1.25,
+        1.63,
+        2.15,
+        2.55,
+        3.17,
+        3.53
+      ]
+    },
+    {
+      "id": "price",
+      "t0": 4.326,
+      "t1": 10.518,
+      "cap": "Mert'in gözündeki kulaklık 1.000 lira. 11.11'den iki hafta önce fiyatı 1.500 liraya çıkıyor.",
+      "words": [
+        4.326,
+        5.006,
+        5.466,
+        5.966,
+        6.206,
+        6.886,
+        8.026,
+        8.206,
+        8.486,
+        8.746,
+        9.146,
+        9.626,
+        9.906
+      ]
+    },
+    {
+      "id": "sale",
+      "t0": 10.798,
+      "t1": 16.558,
+      "cap": "11.11 geldi, etikette kocaman: %30 indirim! Yeni fiyat 1.050 lira.",
+      "words": [
+        10.798,
+        11.718,
+        12.438,
+        12.898,
+        13.798,
+        14.238,
+        15.258,
+        15.358,
+        15.678,
+        16.098
+      ]
+    },
+    {
+      "id": "compare",
+      "t0": 16.838,
+      "t1": 21.206,
+      "cap": "Ama iki hafta önce 1.000 liraydı. Yani indirimli fiyat aslında %5 daha pahalı.",
+      "words": [
+        16.838,
+        16.978,
+        17.158,
+        17.438,
+        17.658,
+        17.938,
+        18.518,
+        18.758,
+        19.298,
+        19.578,
+        19.898,
+        20.498,
+        20.738
+      ]
+    },
+    {
+      "id": "rule",
+      "t0": 21.486,
+      "t1": 26.646,
+      "cap": "Çünkü yüzdeler aynı tabana uygulanmaz: zam 1.000 liraya, indirim 1.500 liraya.",
+      "words": [
+        21.486,
+        22.046,
+        22.526,
+        22.846,
+        23.226,
+        24.106,
+        24.406,
+        24.746,
+        25.166,
+        25.466,
+        25.986
+      ]
+    },
+    {
+      "id": "tip",
+      "t0": 26.926,
+      "t1": 31.534,
+      "cap": "Alışverişten önce fiyat geçmişine bak, beğendiğin ürünün ekran görüntüsünü al.",
+      "words": [
+        26.926,
+        27.786,
+        28.066,
+        28.446,
+        28.926,
+        29.466,
+        29.946,
+        30.246,
+        30.626,
+        31.246
+      ]
+    },
+    {
+      "id": "cta",
+      "t0": 31.814,
+      "t1": 34.334,
+      "cap": "Defterin sonraki sayfası için abone ol.",
+      "words": [
+        31.814,
+        32.514,
+        32.994,
+        33.414,
+        33.634,
+        33.974
+      ]
+    }
+  ],
+  "series": "Ekonomi Defteri",
+  "episode": 3,
+  "comment": "📒 Ekonomi Defteri: ekonominin işleyişi her hafta tek sayfada, çizerek anlatılıyor.\n\nHesap (örnek): 1.000 ₺ × 1,50 = 1.500 ₺ (zam), 1.500 ₺ × 0,70 = 1.050 ₺ (indirim). 1.050 ÷ 1.000 = 1,05 → indirimli fiyat %5 pahalı. Zam ve indirimin birbirini götürmesi için %50 zamdan sonra %33,3 indirim gerekir.\n\n🔔 Sonraki sayfayı kaçırmamak için ABONE OL. 11.11'de sen de böyle bir indirim gördün mü? Yoruma yaz 👇"
+}

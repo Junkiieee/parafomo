@@ -1,0 +1,150 @@
+{
+  "slug": "anim-ekonomi-defteri-2-taksit",
+  "title": "Taksit mi peşin mi? Taksitin gizli hesabı | Ekonomi Defteri #2",
+  "file": "/root/parafomo/public/social/short-anim-ekonomi-defteri-2-taksit.mp4",
+  "duration": 40.23,
+  "music": "Friendship Wand - Freedom Trail Studio.mp3",
+  "link": null,
+  "lines": [
+    {
+      "id": "hook",
+      "t0": 0.35,
+      "t1": 4.406,
+      "cap": "Peşin mi, taksit mi? Ekonomi Defteri, ikinci sayfa.",
+      "words": [
+        0.35,
+        0.97,
+        1.29,
+        1.63,
+        2.49,
+        2.85,
+        3.53,
+        3.83
+      ]
+    },
+    {
+      "id": "offer",
+      "t0": 4.686,
+      "t1": 10.998,
+      "cap": "Mert 12 bin liralık buzdolabı alacak: peşin 12 bin mi, yoksa 12 ay boyunca ayda bin lira mı?",
+      "words": [
+        4.686,
+        5.266,
+        5.706,
+        5.866,
+        6.246,
+        6.706,
+        7.466,
+        7.806,
+        8.166,
+        8.366,
+        8.846,
+        9.106,
+        9.406,
+        9.626,
+        10.006,
+        10.326,
+        10.466,
+        10.666
+      ]
+    },
+    {
+      "id": "same",
+      "t0": 11.278,
+      "t1": 15.574,
+      "cap": "Toplam aynı: 12 bin lira. Ama paranın değeri zamanla değişir.",
+      "words": [
+        11.278,
+        11.858,
+        12.418,
+        12.738,
+        12.958,
+        13.478,
+        13.658,
+        14.058,
+        14.418,
+        14.898
+      ]
+    },
+    {
+      "id": "erode",
+      "t0": 15.854,
+      "t1": 22.526,
+      "cap": "Fiyatlar her ay %2 artıyorsa, son taksitteki bin lira bugünün parasıyla yaklaşık 790 lira eder.",
+      "words": [
+        15.854,
+        16.514,
+        16.694,
+        16.854,
+        17.354,
+        18.474,
+        18.594,
+        19.174,
+        19.374,
+        19.574,
+        20.054,
+        20.554,
+        21.094,
+        21.654,
+        21.994
+      ]
+    },
+    {
+      "id": "total",
+      "t0": 22.806,
+      "t1": 28.638,
+      "cap": "Hepsini bugüne çevirince Mert aslında yaklaşık 10.600 lira öder: %12 daha ucuz.",
+      "words": [
+        22.806,
+        23.426,
+        23.706,
+        24.286,
+        24.706,
+        25.026,
+        25.586,
+        26.386,
+        26.626,
+        27.106,
+        27.686,
+        27.906
+      ]
+    },
+    {
+      "id": "rule",
+      "t0": 28.918,
+      "t1": 35.83,
+      "cap": "Yani peşin indirim %12'den azsa taksit kazanır, fazlaysa peşin. Ama vade farkı varsa hesap değişir.",
+      "words": [
+        28.918,
+        29.558,
+        29.958,
+        30.258,
+        31.198,
+        31.558,
+        31.958,
+        32.438,
+        32.918,
+        33.598,
+        33.798,
+        34.098,
+        34.478,
+        34.758,
+        35.198
+      ]
+    },
+    {
+      "id": "cta",
+      "t0": 36.11,
+      "t1": 38.63,
+      "cap": "Defterin sonraki sayfası için abone ol.",
+      "words": [
+        36.11,
+        36.81,
+        37.29,
+        37.71,
+        37.93,
+        38.27
+      ]
+    }
+  ]
+}

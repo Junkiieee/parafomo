@@ -1,0 +1,134 @@
+{
+  "title": "TÜİK sepeti seninle aynı değil: senin enflasyonun farklı #Shorts",
+  "description": "TÜİK enflasyonu herkes için aynı sepetle ve sabit ağırlıklarla ölçer. Senin harcama sepetin farklıysa, kendi enflasyonun açıklanandan çok farklı olabilir.",
+  "tags": [
+    "enflasyon",
+    "TÜİK",
+    "enflasyon sepeti",
+    "kişisel enflasyon",
+    "TÜFE",
+    "birikim",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-tuik-sepeti-seninle-ayni-degil-enflasyon-neden-dusuk.mp4",
+  "slug": "tuik-sepeti-seninle-ayni-degil-enflasyon-neden-dusuk",
+  "format": "myth",
+  "engine": "anim",
+  "timeline": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 3.11,
+      "cap": "Açıklanan enflasyon senin enflasyonun değil.",
+      "words": [
+        0.35,
+        1.17,
+        1.73,
+        1.95,
+        2.69
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 3.39,
+      "t1": 10.614,
+      "cap": "TÜİK yüzlerce ürünü tek sepete koyar, her birine harcamadaki payına göre ağırlık verir. Gıda, kira, ulaşım hepsi orada.",
+      "words": [
+        3.39,
+        4.03,
+        4.53,
+        4.81,
+        4.99,
+        5.39,
+        5.91,
+        6.09,
+        6.39,
+        6.95,
+        7.33,
+        7.47,
+        7.91,
+        8.61,
+        9.03,
+        9.45,
+        9.79,
+        10.19
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 10.894,
+      "t1": 18.238,
+      "cap": "Ama bu sepet ortalama haneye göre kurulu. Sen kira ödüyorsan ya da arabaya çok harcıyorsan, kendi oranın bambaşka çıkar.",
+      "words": [
+        10.894,
+        11.474,
+        11.614,
+        11.874,
+        12.434,
+        12.914,
+        13.074,
+        13.794,
+        13.994,
+        14.254,
+        14.814,
+        14.994,
+        15.094,
+        15.434,
+        15.654,
+        16.574,
+        16.934,
+        17.294,
+        17.814
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 18.518,
+      "t1": 26.342,
+      "cap": "Doğrusu şu: son ayda ne harcadığını yaz, kendi sepetini çıkar. Zam oranını resmi rakama değil, kendi rakamına göre karşılaştır.",
+      "words": [
+        18.518,
+        19.278,
+        19.718,
+        19.938,
+        20.238,
+        20.378,
+        20.918,
+        21.338,
+        21.558,
+        21.998,
+        22.758,
+        22.978,
+        23.378,
+        23.718,
+        24.078,
+        24.618,
+        24.858,
+        25.318,
+        25.478
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 26.622,
+      "t1": 33.414,
+      "cap": "Kendi enflasyonunu parafomo.com'daki enflasyon hesaplama aracıyla bul. Abone ol, her gün tek net analiz.",
+      "words": [
+        26.622,
+        27.282,
+        28.022,
+        29.342,
+        29.902,
+        30.362,
+        30.782,
+        31.322,
+        31.602,
+        31.942,
+        32.242,
+        32.462,
+        32.702,
+        32.862
+      ]
+    }
+  ]
+}
