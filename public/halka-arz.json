@@ -1,9 +1,104 @@
 {
-  "updated": "2026-11-02T12:15+00:00",
+  "updated": "2026-11-02T18:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 70,
   "items": [
+    {
+      "company": "Tezmaksan Makina San. ve Tic. A.Ş.",
+      "bist_code": "",
+      "slug": "tezmaksan-makina-san-ve-tic-a-s",
+      "link": "https://halkarz.com/tezmaksan-makina-san-ve-tic-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "150.000.000 Lot",
+      "broker": "İntegral Yatırım Menkul Değerler A.Ş.",
+      "market": "Yıldız Pazar",
+      "first_trade": "",
+      "float_lot": "",
+      "float_pct": "",
+      "updated_src": "02.11.2026 15:47",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 120.000.000 Lot",
+            "Ortak Satışı : 30.000.000 Lot"
+          ],
+          "source": "Taslak İzahname, Sayfa 1."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%30 Yatırım harcamaları",
+            "%40 İşletme sermayesi",
+            "%30 Finansal borçların ödenmesi"
+          ],
+          "source": "Taslak İzahname, Sayfa 243."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "tahsisat": {
+          "items": [
+            "75.000.000 Lot (%50) Yurt İçi Bireysel Yatırımcı",
+            "60.000.000 Lot (%40) Yurt İçi Kurumsal Yatırımcı",
+            "15.000.000 Lot (%10) Yüksek Başvurulu Yatırımcı"
+          ],
+          "source": "Taslak İzahname, Sayfa 233."
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün. * Brüt halka arz gelirinin %20'si"
+          ],
+          "source": "Taslak İzahname, Sayfa 239."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "Taslak İzahname, Sayfa 241."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%31,91"
+          ],
+          "source": "Taslak İzahname, Sayfa 215."
+        },
+        "finansal": {
+          "periods": [
+            "2026/6",
+            "2025",
+            "2024"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "1,5 Milyar TL",
+                "3,1 Milyar TL",
+                "4,2 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "397,9 Milyon TL",
+                "798,4 Milyon TL",
+                "1,0 Milyar TL"
+              ]
+            }
+          ]
+        }
+      }
+    },
     {
       "company": "Dervişoğlu Bakliyat A.Ş.",
       "bist_code": "",
@@ -2349,87 +2444,6 @@
                 "1,9 Milyar TL",
                 "1,2 Milyar TL",
                 "959,6 Milyon TL"
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "company": "Adm Energy Elektrik Yatırımları A.Ş.",
-      "bist_code": "",
-      "slug": "adm-energy-elektrik-yatirimlari-a-s",
-      "link": "https://halkarz.com/adm-energy-elektrik-yatirimlari-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "72.814.782 Lot",
-      "broker": "Yapı Kredi Yatırım Menkul Değerler A.Ş.",
-      "market": "Yıldız Pazar",
-      "first_trade": "",
-      "float_lot": "",
-      "float_pct": "",
-      "updated_src": "15.09.2026 09:46",
-      "details": {
-        "sekil": {
-          "items": [
-            "Sermaye Artırımı : 36.407.391 Lot",
-            "Ortak Satışı : 36.407.391 Lot (Parka Enerji Yatırımları A.Ş.)"
-          ],
-          "source": "Taslak İzahname, Sayfa 1."
-        },
-        "fon_kullanim": {
-          "items": [
-            "%40 Dağıtım yatırımlarının finansmanı",
-            "%20 İşletme sermayesi",
-            "%40 Operasyonel şirketlerin borçluluk seviyelerinin azaltılması"
-          ],
-          "source": "Taslak İzahname, Sayfa 248."
-        },
-        "satis_yontemi": {
-          "items": [
-            "Sabit Fiyatla Talep Toplama",
-            "En İyi Gayret Aracılığı"
-          ],
-          "source": ""
-        },
-        "satmama": {
-          "items": [
-            "1 Yıl, İhraççı",
-            "1 Yıl, Ortaklar"
-          ],
-          "source": "Taslak İzahname, Sayfa 246."
-        },
-        "halka_aciklik": {
-          "items": [
-            "%10"
-          ],
-          "source": "Taslak İzahname, Sayfa 246."
-        },
-        "finansal": {
-          "periods": [
-            "2025",
-            "2024",
-            "2023"
-          ],
-          "rows": [
-            {
-              "label": "Hasılat",
-              "values": [
-                "68,6 Milyar TL",
-                "63,3 Milyar TL",
-                "81,5 Milyar TL"
-              ]
-            },
-            {
-              "label": "Brüt Kâr",
-              "values": [
-                "13,9 Milyar TL",
-                "18,2 Milyar TL",
-                "21,3 Milyar TL"
               ]
             }
           ]

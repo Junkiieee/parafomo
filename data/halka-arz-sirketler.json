@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02T12:15+00:00",
+ "updated": "2026-11-02T18:15+00:00",
  "source": "halkarz.com",
  "items": {
   "pronet-guvenlik-hizmetleri-a-s": {
@@ -8353,6 +8353,102 @@
     ]
    },
    "first_seen": "2026-10-27"
+  },
+  "tezmaksan-makina-san-ve-tic-a-s": {
+   "company": "Tezmaksan Makina San. ve Tic. A.Ş.",
+   "bist_code": "",
+   "slug": "tezmaksan-makina-san-ve-tic-a-s",
+   "link": "https://halkarz.com/tezmaksan-makina-san-ve-tic-a-s/",
+   "date_text": "",
+   "start": null,
+   "end": null,
+   "status": "Tarih Bekleniyor",
+   "price": "",
+   "distribution": "Eşit Dağıtım **",
+   "lot": "150.000.000 Lot",
+   "broker": "İntegral Yatırım Menkul Değerler A.Ş.",
+   "market": "Yıldız Pazar",
+   "first_trade": "",
+   "float_lot": "",
+   "float_pct": "",
+   "updated_src": "02.11.2026 15:47",
+   "details": {
+    "sekil": {
+     "items": [
+      "Sermaye Artırımı : 120.000.000 Lot",
+      "Ortak Satışı : 30.000.000 Lot"
+     ],
+     "source": "Taslak İzahname, Sayfa 1."
+    },
+    "fon_kullanim": {
+     "items": [
+      "%30 Yatırım harcamaları",
+      "%40 İşletme sermayesi",
+      "%30 Finansal borçların ödenmesi"
+     ],
+     "source": "Taslak İzahname, Sayfa 243."
+    },
+    "satis_yontemi": {
+     "items": [
+      "Sabit Fiyatla Talep Toplama",
+      "En İyi Gayret Aracılığı"
+     ],
+     "source": ""
+    },
+    "tahsisat": {
+     "items": [
+      "75.000.000 Lot (%50) Yurt İçi Bireysel Yatırımcı",
+      "60.000.000 Lot (%40) Yurt İçi Kurumsal Yatırımcı",
+      "15.000.000 Lot (%10) Yüksek Başvurulu Yatırımcı"
+     ],
+     "source": "Taslak İzahname, Sayfa 233."
+    },
+    "fiyat_istikrari": {
+     "items": [
+      "30 gün. * Brüt halka arz gelirinin %20'si"
+     ],
+     "source": "Taslak İzahname, Sayfa 239."
+    },
+    "satmama": {
+     "items": [
+      "1 Yıl, İhraççı",
+      "1 Yıl, Ortaklar"
+     ],
+     "source": "Taslak İzahname, Sayfa 241."
+    },
+    "halka_aciklik": {
+     "items": [
+      "%31,91"
+     ],
+     "source": "Taslak İzahname, Sayfa 215."
+    },
+    "finansal": {
+     "periods": [
+      "2026/6",
+      "2025",
+      "2024"
+     ],
+     "rows": [
+      {
+       "label": "Hasılat",
+       "values": [
+        "1,5 Milyar TL",
+        "3,1 Milyar TL",
+        "4,2 Milyar TL"
+       ]
+      },
+      {
+       "label": "Brüt Kâr",
+       "values": [
+        "397,9 Milyon TL",
+        "798,4 Milyon TL",
+        "1,0 Milyar TL"
+       ]
+      }
+     ]
+    }
+   },
+   "first_seen": "2026-11-02"
   }
  }
 }
