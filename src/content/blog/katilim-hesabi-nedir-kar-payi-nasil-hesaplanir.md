@@ -59,8 +59,8 @@ Aşağıdaki rakamlar **yalnızca hesap mantığını göstermek için varsayım
 |---|---|---|
 | Brüt kâr payı | 200.000 × %35,7 × 92/365 | **17.997 TL** |
 | Stopaj (%17,5) | 17.997 × 0,175 | **3.149 TL** |
-| Net kâr payı | 17.997 − 3.149 | **14.847 TL** |
-| Vade sonu bakiye | 200.000 + 14.847 | **214.847 TL** |
+| Net kâr payı | 17.997 − 3.149 | **14.848 TL** |
+| Vade sonu bakiye | 200.000 + 14.848 | **214.848 TL** |
 
 Havuzun gerçekleşen getirisi %42 yerine %38 olsaydı net kâr payın da orantılı olarak düşerdi; %45 olsaydı artardı. Mevduattaki "baştan bilinen getiri" rahatlığı burada yoktur.
 
