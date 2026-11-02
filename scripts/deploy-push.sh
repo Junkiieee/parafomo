@@ -19,14 +19,20 @@ if [ -n "$(git status --porcelain -- src astro.config.mjs package.json 2>/dev/nu
   echo "[deploy] UYARI: src/ altında commit'lenmemiş değişiklik var — build onları da içerir; önce commit'le"
 fi
 echo "[deploy] build..."
-if ! npm run build > "$REPO/logs/deploy-build.log" 2>&1; then
+# flock: aynı anda iki build dist/'i bozmasın · nice: sunucudaki diğer işler önce gelsin
+if ! flock -w 600 /tmp/parafomo-build.lock nice -n 10 npm run build > "$REPO/logs/deploy-build.log" 2>&1; then
   echo "[deploy] BUILD KIRIK — push YAPILMADI. Son satırlar:"
   tail -20 "$REPO/logs/deploy-build.log"
+  # Kaan'a uyarı (günde bir kez). 2026-11-02: build kırıkken sessiz kalınınca canlı site sabahki sürümde kaldı,
+  # SEO denetimi yarım dist'i tarayıp 87 sahte "kırık link" maili attı.
+  python3 "$REPO/agent/notify.py" alert --key build-kirik --subject "parafomo: site build KIRIK — push yapılmadı" \
+    --body "$(printf 'deploy-push.sh: npm run build geçmedi, push YAPILMADI; canlı site eski sürümde.\n\n%s\n\nDüzelt: hatayı gider, sonra bash scripts/deploy-push.sh' "$(tail -25 "$REPO/logs/deploy-build.log")")" >/dev/null 2>&1 || true
   exit 1
 fi
 # SEO bekçisi: yeni build'de kırık link / yanlış kanonik vb. KRİTİK varsa göster (push'u engellemez)
 python3 "$REPO/scripts/seo-audit.py" 2>/dev/null | sed -n '1,12p' | sed 's/^/[deploy] /' || true
-if git_push_retry main; then
+# build az önce geçti → gitsync.sh build kapısı ikinci kez build almasın
+if SKIP_BUILD_GATE=1 git_push_retry main; then
   echo "[deploy] push tamam — Cloudflare 1-3 dk içinde yayınlar ($(git log -1 --format='%h %s'))"
 else
   echo "[deploy] push başarısız"; exit 1

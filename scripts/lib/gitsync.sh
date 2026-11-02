@@ -56,8 +56,33 @@ git_add_commit() {
   ) 9>"$GIT_LOCK"
 }
 
+# PUSH ÖNCESİ BUILD KAPISI (2026-11-02). Neden: getiri verisinden 10 yıl satırı düşünce /altin-dolar-borsa sayfası
+# build'i çökertti; veri commit'i yine de push'landı → Cloudflare derlemesi sessizce başarısız oldu, canlı site sabahki
+# sürümde kaldı, SEO denetimi yarım dist'i tarayıp "87 kırık link" maili attı. Artık bu sunucudan hiçbir push
+# `npm run build` geçmeden gitmez; kırıksa Kaan'a mail (günde bir). Atlama: SKIP_BUILD_GATE=1 (deploy-push.sh zaten build alır).
+_build_gate() {
+  [ "${SKIP_BUILD_GATE:-}" = "1" ] && return 0
+  local repo log
+  repo="$(git rev-parse --show-toplevel 2>/dev/null)" || return 0
+  [ -f "$repo/package.json" ] || return 0
+  log="$repo/logs/deploy-build.log"
+  if ( cd "$repo" && PATH="/root/.local/bin:/usr/local/bin:/usr/bin:/bin:$PATH" \
+       flock -w 600 /tmp/parafomo-build.lock nice -n 10 npm run build > "$log" 2>&1 ); then
+    return 0
+  fi
+  echo "    [build-kapısı] npm run build KIRIK — push ENGELLENDİ (canlı site eski sürümde kalır). Son satırlar:" >&2
+  tail -12 "$log" | sed 's/^/    [build] /' >&2
+  python3 "$repo/agent/notify.py" alert --key build-kirik --subject "parafomo: site build KIRIK — push engellendi" \
+    --body "$(printf 'Push, build geçmediği için engellendi (scripts/lib/gitsync.sh build kapısı).\n\n%s\n\nDüzelt: npm run build hatasını gider, sonra: bash scripts/deploy-push.sh' "$(tail -25 "$log")")" >/dev/null 2>&1 || true
+  return 1
+}
+
 git_push_retry() {
   local branch="${1:-main}"
+  # push edilecek yerel commit varsa önce build kapısı (git kilidi DIŞINDA: build 15 sn, diğer işler commit'ine devam etsin)
+  if [ -n "$(git log "origin/$branch..HEAD" --oneline 2>/dev/null)" ]; then
+    _build_gate || return 1
+  fi
   (
     _git_lock_take || exit 1
     git push -q origin "$branch" 2>&1 | sed 's/^/    [push] /'; [ "${PIPESTATUS[0]}" -eq 0 ] && exit 0
