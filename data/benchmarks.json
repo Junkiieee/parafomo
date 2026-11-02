@@ -1,15 +1,7 @@
 {
  "_aciklama": "Aylık kapanışlar: usd=USD/TRY, eur=EUR/TRY, gold/silver=gram TL, xu100=BIST 100, btc=Bitcoin TL. Kaynak: Yahoo Finance chart API.",
- "updated": "2026-10-11",
+ "updated": "2026-11-02",
  "months": [
-  {
-   "ay": "2011-10",
-   "usd": 1.7417,
-   "gold": 96.55,
-   "xu100": 560.61,
-   "silver": 1.92,
-   "eur": 2.4633
-  },
   {
    "ay": "2011-11",
    "usd": 1.85,
@@ -1589,12 +1581,20 @@
   },
   {
    "ay": "2026-10",
-   "usd": 49.26,
-   "gold": 6677.55,
-   "xu100": 12266.0,
-   "silver": 96.68,
-   "eur": 55.2201,
-   "btc": 4126845.64
+   "usd": 49.9428,
+   "gold": 6260.46,
+   "xu100": 10759.6,
+   "silver": 78.83,
+   "eur": 55.8569,
+   "btc": 3867307.53
+  },
+  {
+   "ay": "2026-11",
+   "usd": 49.9576,
+   "gold": 6281.43,
+   "silver": 80.52,
+   "eur": 55.9087,
+   "btc": 3912382.97
   }
  ]
 }
