@@ -31,7 +31,7 @@ def yahoo_series(sym, rng="10y", interval="1mo"):
     url = (
         "https://query1.finance.yahoo.com/v8/finance/chart/"
         + sym
-        + f"?interval={interval}&range={rng}"
+        + f"?interval={interval}&range={'max' if (interval == '1mo' and rng == '10y') else rng}"   # 10y aralığı ayın 2-20'sinde 10 yıl öncesini DIŞARIDA bırakıyordu (2026-11-02 build çöktü) → tüm geçmişi çek, aşağıda 10 yıla kırp
     )
     req = urllib.request.Request(url, headers=UA)
     with urllib.request.urlopen(req, timeout=20) as fh:
@@ -54,6 +54,8 @@ def yahoo_series(sym, rng="10y", interval="1mo"):
             nxt = dt.datetime(d.year + (d.month == 12), d.month % 12 + 1, 1, tzinfo=dt.timezone.utc)
             rekeyed.append((min(int(nxt.timestamp()) - 1, now_ts), c))
         out = rekeyed
+        if rng == "10y":   # pencereyi 10 yıl + 45 gün tut: istatistikler (oran/drawdown) 10 yıllık kalır, 10 yıl öncesi noktası kesin içeride
+            out = [p for p in out if p[0] >= now_ts - int(10 * 365.25 * 86400) - 45 * 86400]
     return out
 
 

@@ -39,6 +39,7 @@ CODES = {  # kod → (önem, açıklama, nasıl düzeltilir)
     "sitemap_noindex": ("KRİTİK", "sitemap'te ama noindex", "ya noindex'i kaldır ya sitemap'ten çıkar"),
     "no_h1": ("KRİTİK", "H1 yok", "sayfaya tek bir <h1> ekle"),
     "broken_link": ("KRİTİK", "kırık iç link (404)", "linki düzelt ya da worker REDIRECTS'e ekle"),
+    "build_incomplete": ("KRİTİK", "dist/ eksik — build kırık ya da yarım kalmış", "npm run build hatasını düzelt; sayfa bulguları bu durumda sayılmaz"),
     "bad_jsonld": ("KRİTİK", "JSON-LD bozuk (parse edilemiyor)", "şema çıktısını düzelt"),
     "google_canonical": ("KRİTİK", "Google başka bir kanonik seçmiş", "kopya içerik/iç link tutarlılığını kontrol et"),
     "live_error": ("KRİTİK", "canlıda 200 dönmüyor", "deploy/worker'ı kontrol et"),
@@ -334,6 +335,22 @@ def google_layer(pages, issues, budget, ages):
     return state, done
 
 
+def expected_pages():
+    """Beklenen sayfa sayısı: son Google indeks durumunda bilinen sayfalar; yoksa src/pages + blog yazıları."""
+    try:
+        n = len(json.load(open(IDX, encoding="utf-8")))
+        if n >= 20:
+            return n
+    except (OSError, ValueError):
+        pass
+    try:
+        astro = sum(1 for _, _, fs in os.walk(os.path.join(ROOT, "src", "pages")) for f in fs if f.endswith(".astro"))
+        blog = sum(1 for f in os.listdir(os.path.join(ROOT, "src", "content", "blog")) if f.endswith(".md"))
+        return astro + blog
+    except OSError:
+        return 0
+
+
 def main():
     quiet = "--quiet" in sys.argv
     budget = int(sys.argv[sys.argv.index("--budget") + 1]) if "--budget" in sys.argv else 60
@@ -341,6 +358,13 @@ def main():
         print("[seo] dist/ yok — önce npm run build")
         return 0
     pages, issues = static_audit()
+    # Yarım dist koruması (2026-11-02: build /altin-dolar-borsa'da çökünce dist'te 1 sayfa kaldı, denetim "87 kırık link" dedi):
+    # dist'teki sayfa sayısı beklenenin yarısından azsa tek bir KRİTİK "build kırık" bulgusu yazılır, sayfa bulguları atılır.
+    expected = expected_pages()
+    if expected >= 20 and len(pages) < expected // 2:
+        issues = [{"code": "build_incomplete", "sev": "KRİTİK", "path": "/",
+                   "detail": f"dist/'te {len(pages)} sayfa var, beklenen ~{expected} — npm run build çıktısına bak (logs/deploy-build.log)"}]
+        print(f"[seo] UYARI: dist yarım ({len(pages)}/{expected} sayfa) — build kırık; sayfa denetimi atlandı")
     ages = page_ages()
     idx_state, inspected = ({}, 0)
     if "--google" in sys.argv:

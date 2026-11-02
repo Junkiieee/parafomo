@@ -290,11 +290,11 @@ def verdict(ga, gsc, yt):
     if ga.get("direct_share", 0) >= 50:
         flags.append(f"⚠️ Trafiğin %{ga['direct_share']:.0f}'i Direct — bu büyük ihtimalle "
                      f"sen + botlar, gerçek keşif değil. Çıplak sayıya güvenme.")
-    if gsc.get("best_pos", 999) > 10:
+    if "best_pos" in gsc and gsc["best_pos"] > 10:
         flags.append(f"🔴 **KÖK DARBOĞAZ:** en iyi sorgu bile {gsc['best_pos']:.0f}. sırada "
                      f"(1. sayfa = ilk 10). Hiçbir sayfa görünür değil → sorun içerik değil, "
                      f"**site otoritesi**. Daha çok yazı bunu ÇÖZMEZ.")
-    if gsc.get("opportunities", 0) == 0:
+    if "opportunities" in gsc and gsc["opportunities"] == 0:
         flags.append("🔴 Sıra 4-20 aralığında hiç sorgu yok → otomasyonun başlık/CTR ile "
                      "iyileştirebileceği bir hedef bile yok. Önce sıralama lazım.")
     org_series = ga.get("organic_series", [])
