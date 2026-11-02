@@ -51,10 +51,10 @@ beyannamesi" 2,8 (zirve Mart 32 → Şubat'ta yeniden ölç) · "aile destek pro
   /blog/2027-zamlari-yeniden-degerleme-orani-rehberi, /enflasyon-hesaplama linkleri. **Erken yayın (RC 2026-10-27):** "ekim ayı enflasyon
   beklentisi" aramaları şimdiden geliyor (GSC p13,8, yanlış yazıya); Google'ın dizine alması için olaydan ≥3 gün önce.
   AA Finans anketi sonradan çıkarsa 2 Kasım günlük koşusu yazıdaki beklenti rakamını güncellesin. → /blog/ekim-2026-enflasyon-beklentisi-3-kasim (2026-10-30)
-- [ ] **Katılım hesabı nedir? Kâr payı nasıl hesaplanır, mevduattan farkı ve stopajı** · hedef: "katılım hesabı"
+- [x] **Katılım hesabı nedir? Kâr payı nasıl hesaplanır, mevduattan farkı ve stopajı** · hedef: "katılım hesabı"
   (hacim 6,9) · neden: mevduat kümesi tamamlayıcı; kâr payı oranı örneği verirsen bankanın kendi sayfasından tarihli,
   TKBB/BDDK kaynaklı; tek banka önerme · iç-link: /mevduat-faizi-hesaplama, /blog/stopaj-nedir-2026-stopaj-oranlari,
-  /blog/para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki
+  /blog/para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki → /blog/katilim-hesabi-nedir-kar-payi-nasil-hesaplanir (2026-11-02)
 - [ ] **Evlilik kredisi 2026: kimler alabilir, tutarı ne kadar, geri ödeme nasıl?** · hedef: "evlilik kredisi"
   (hacim 38,1, zirve Mayıs 126) · neden: sosyal haklar kümesi (B261029-1). Tutar, yaş/gelir şartı, geri ödeme süresi ve
   çocuk doğunca ertelenen/silinen kısım YALNIZ Aile ve Sosyal Hizmetler Bakanlığı / Aile ve Gençlik Fonu resmî sayfasından,

@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-11-02 — Katılım Hesabı Nedir? Kâr Payı Hesabı, Stopaj ve Mevduat Farkı
+
+**Yayınlanan yazı:** [Katılım Hesabı Nedir? Kâr Payı Hesabı, Stopaj ve Mevduat Farkı](/blog/katilim-hesabi-nedir-kar-payi-nasil-hesaplanir)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — "katılım hesabı" hacim 6,9) · ayrıca Ekim enflasyon önizlemesine AA Finans anketi (28 Eki, aylık %2,20) eklendi
+
+---
+
 ## 2026-10-30 — Ekim 2026 Enflasyon Beklentisi: 3 Kasım'da Ne Açıklanacak?
 
 **Yayınlanan yazı:** [Ekim 2026 Enflasyon Beklentisi: 3 Kasım'da Ne Açıklanacak?](/blog/ekim-2026-enflasyon-beklentisi-3-kasim)

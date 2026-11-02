@@ -57,7 +57,7 @@ Bu yazıdaki beklenti rakamlarının tek kaynağı **TCMB Piyasa Katılımcılar
 
 Yani piyasa Ekim'in Eylül'den (aylık %1,84) biraz daha sıcak gelmesini bekliyor. Ekim genelde eğitim, giyim ve mevsimsel gıda fiyatlarının yükseldiği bir ay; konut (kira) kalemi de her ay olduğu gibi endeksi yukarı çekiyor. TÜFE'nin hangi kalemlerden oluştuğunu merak ediyorsan [TÜFE sepeti nedir](/blog/tufe-sepeti-nedir-enflasyon-nasil-hesaplanir) yazımıza bakabilirsin.
 
-**Not:** AA Finans'ın ekonomist anketi genelde veriden birkaç gün önce yayımlanır. Çıktığında bu bölüme tarihiyle eklenecek.
+**Güncelleme (AA Finans anketi, 28 Ekim 2026):** AA Finans'ın 21 ekonomistle yaptığı Enflasyon Beklenti Anketi'nde Ekim ayı TÜFE beklentisinin ortalaması **aylık %2,20** çıktı; tahminler %1,25 ile %2,70 arasında dağıldı. Bu ortalama gerçekleşirse yıllık enflasyonun Eylül'deki %29,73'ten **%29,28'e** gerilemesi bekleniyor. Yani iki anket aynı yönü gösteriyor: aylık rakam Eylül'den yüksek, yıllık oran biraz daha düşük.
 
 ## Son aylarda enflasyon nerede?
 
