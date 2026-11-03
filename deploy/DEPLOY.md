@@ -68,6 +68,10 @@ değiştir (`<BCRYPT_HASH>` yerine mevcut hash kalsın) → `caddy validate --co
 yeni değişiklikse `crontab /root/parafomo/deploy/crontab.txt` (canlı crontab'da şablonda olmayan bir satır
 varsa önce onu şablona taşı; kurulum tüm crontab'ı değiştirir).
 
+`app.parafomo.com` bloğu repoda yoktu: `deploy/Caddy-app.conf` başvuru şablonudur — mevcut bloğa
+`Cache-Control: no-cache` (HTML/JS/CSS/JSON/sw.js) ve güvenlik başlık satırlarını ekle; yoksa yayından sonra
+kullanıcılar eski uygulama sürümünü görebilir. Doğrula: `curl -sI https://app.parafomo.com/portfoy/app.js | grep -i cache-control`.
+
 Cron saatleri **UTC**'dir (`deploy/crontab.txt`); sunucu saat dilimi UTC olmalı:
 `timedatectl | grep "Time zone"` → `Etc/UTC` (değilse tüm işler ve paneldeki takvim 3 saat kayar).
 
