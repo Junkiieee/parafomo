@@ -3,7 +3,7 @@
  "_kaynak": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Enflasyon+Verileri/Uretici+Fiyatlari",
  "_kaynakEvds": "https://evds3.tcmb.gov.tr/igmevdsms-dis/ TP.TUFE1YI.T1",
  "updated": "2026-11-03",
- "hesapKaynagi": "tcmb-tablo",
+ "hesapKaynagi": "evds-endeks",
  "sonAy": "2026-10",
  "veriSonAy": "2026-10",
  "yiufeYillik": 27.41,
