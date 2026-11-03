@@ -50,7 +50,10 @@ def next_release(today):
         if d > today.isoformat():
             return d
     y, m = (today.year + 1, 1) if today.month == 12 else (today.year, today.month + 1)
-    return f"{y}-{m:02d}-03"  # TÜİK genelde ~3'ü; takvim dosyası yoksa tahmin
+    d = dt.date(y, m, 3)   # takvim dosyası yoksa tahmin: TÜİK olağan günü ayın 3'ü, hafta sonuysa ilk iş günü
+    while d.weekday() >= 5:   # (src/data/tuik.ts ile aynı kural; düz "3'ü" Aralık verisini Pazar 3 Ocak 2027 yapıyordu)
+        d += dt.timedelta(days=1)
+    return d.isoformat()
 
 
 def main():

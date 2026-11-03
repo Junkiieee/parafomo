@@ -282,17 +282,24 @@ def stale_data():
                 out.append("canlı yazı veriden geride: " + line.replace("[live-posts] ", "") + " → python3 scripts/live-posts.py")
     except Exception as e:
         out.append(f"live-posts --check çalışmadı: {e}")
-    # Yıl sonu: son toplantı geçtiyse gelecek yılın takvimi eklenmiş olmalı (takvim sayfası "sıradaki karar"ı gösteremez)
-    for name, label, extra in (("tcmb-2026.json", "TCMB", None), ("fomc-2026.json", "Fed", "meetings2027")):
-        dd = load(name)
-        if not dd:
-            continue
-        dates = [m["decisionDate"] for m in dd.get("meetings", [])] + [m["decisionDate"] for m in dd.get(extra, [])] if extra else \
-            [m["decisionDate"] for m in dd.get("meetings", [])]
-        nxt = os.path.exists(os.path.join(ROOT, "data", name.replace("2026", str(today.year + 1))))
-        if dates and max(dates) < today.isoformat() and not nxt:
-            out.append(f"{label} {today.year + 1} toplantı takvimi yok (son toplantı {max(dates)} geçti) → resmî takvimi "
-                       f"WebSearch ile doğrula, data/{name.replace('2026', str(today.year + 1))} ekle ve sayfayı ona bağla")
+    # Yıl sonu: BÜTÜN yıl dosyalarındaki (+ meetingsYYYY listeleri) son toplantı geçtiyse sonraki yılın takvimi eklenmeli.
+    # Sonraki yıl = son toplantının yılı + 1. Eskiden today.year + 1'di: 1 Ocak'tan sonra "data/tcmb-2028.json ekle"
+    # diyordu (yıl geçişi denetimi; ajan uydurma dosya açabilirdi). Sayfalar ve OG kartları bütün <önek>-*.json'u okur.
+    import glob as _glob
+    for prefix, label in (("tcmb", "TCMB"), ("fomc", "Fed")):
+        dates = []
+        for p in _glob.glob(os.path.join(ROOT, "data", f"{prefix}-[0-9][0-9][0-9][0-9].json")):
+            dd = load(os.path.basename(p)) or {}
+            for k, v in dd.items():
+                if k == "meetings" or (k.startswith("meetings") and k[8:].isdigit()):
+                    dates += [m["decisionDate"] for m in v if m.get("decisionDate")]
+        if dates and max(dates) < today.isoformat():
+            yil = int(max(dates)[:4]) + 1
+            hedef = (f"data/tcmb-{yil}.json ekle (sayfa ve OG kartı bütün tcmb-*.json'u okur)" if prefix == "tcmb" else
+                     f"data/fomc-2026.json'a meetings{yil} ekle — fed-faiz-takvimi.astro yalnız meetings + meetings2027 "
+                     f"okuyor, sayfayı da yeni listeye bağla (OG kartı bütün meetingsYYYY listelerini okur)")
+            out.append(f"{label} {yil} toplantı takvimi yok (son toplantı {max(dates)} geçti) → resmî takvimi "
+                       f"WebSearch ile doğrula, {hedef}")
     for name, label in (("fomc-2026.json", "Fed"), ("tcmb-2026.json", "TCMB")):
         d = load(name)
         if not d:
