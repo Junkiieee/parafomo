@@ -1,23 +1,23 @@
 {
-  "fetched_utc": "2026-11-02T08:47:43Z",
+  "fetched_utc": "2026-11-03T08:47:37Z",
   "hold_sec": 3.0,
-  "n": 12,
-  "median_hold_3s": 1.041,
+  "n": 11,
+  "median_hold_3s": 1.034,
   "avd_gate_pct": 65.0,
-  "median_avg_view_pct": 45.1,
-  "gate_pass_share": 0.167,
-  "gate_pass_n": 2,
-  "gate_breakdown_n": 45,
+  "median_avg_view_pct": 40.4,
+  "gate_pass_share": 0.091,
+  "gate_pass_n": 1,
+  "gate_breakdown_n": 37,
   "gate_by_format": {
     "shock_number": {
       "n": 8,
-      "median_avd": 35.7,
-      "gate_pass_n": 1,
-      "gate_pass_share": 0.125
+      "median_avd": 12.6,
+      "gate_pass_n": 0,
+      "gate_pass_share": 0.0
     },
     "myth": {
-      "n": 6,
-      "median_avd": 24.9,
+      "n": 3,
+      "median_avd": 25.2,
       "gate_pass_n": 0,
       "gate_pass_share": 0.0
     },
@@ -28,22 +28,10 @@
       "gate_pass_share": 0.0
     },
     "daily-short": {
-      "n": 13,
+      "n": 11,
       "median_avd": 25.3,
-      "gate_pass_n": 2,
-      "gate_pass_share": 0.154
-    },
-    "single_concept": {
-      "n": 4,
-      "median_avd": 40.4,
-      "gate_pass_n": 0,
-      "gate_pass_share": 0.0
-    },
-    "backtest_return": {
-      "n": 3,
-      "median_avd": 17.8,
-      "gate_pass_n": 0,
-      "gate_pass_share": 0.0
+      "gate_pass_n": 1,
+      "gate_pass_share": 0.091
     }
   },
   "videos": [
@@ -51,9 +39,9 @@
       "id": "youtube:otZm8NPl_m0",
       "video_id": "otZm8NPl_m0",
       "duration_sec": 35,
-      "hold_3s": 2.636,
-      "rel_perf_3s": 0.502,
-      "avg_view_pct": 197.3,
+      "hold_3s": 2.118,
+      "rel_perf_3s": 0.514,
+      "avg_view_pct": 148.5,
       "published_utc": "2026-10-30T21:03:47Z"
     },
     {
@@ -70,8 +58,8 @@
       "video_id": "0db5l5AtDYY",
       "duration_sec": 37,
       "hold_3s": 1.0,
-      "rel_perf_3s": 0.28,
-      "avg_view_pct": 52.9,
+      "rel_perf_3s": 0.279,
+      "avg_view_pct": 54.1,
       "published_utc": "2026-10-30T06:42:26Z"
     },
     {
@@ -116,7 +104,7 @@
       "duration_sec": 36,
       "hold_3s": 1.031,
       "rel_perf_3s": 0.179,
-      "avg_view_pct": 37.6,
+      "avg_view_pct": 37.7,
       "published_utc": "2026-10-28T11:05:17Z"
     },
     {
@@ -145,15 +133,6 @@
       "rel_perf_3s": 0.203,
       "avg_view_pct": 31.3,
       "published_utc": "2026-10-27T11:03:38Z"
-    },
-    {
-      "id": "youtube:l5ufQhvzlls",
-      "video_id": "l5ufQhvzlls",
-      "duration_sec": 33,
-      "hold_3s": 1.657,
-      "rel_perf_3s": 0.502,
-      "avg_view_pct": 103.0,
-      "published_utc": "2026-10-26T18:35:24Z"
     }
   ]
 }
