@@ -187,8 +187,8 @@ const CALC = rows.map((r) => ({ key: r.key, kh26: r.kh26, egzoz: r.egzoz }));
         </p>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">2026’da ödeyeceğiniz toplam</span>
           <span class="result-value" id="out-toplam">{tl(oto.u26 + EGZOZ)}</span>
         </div>

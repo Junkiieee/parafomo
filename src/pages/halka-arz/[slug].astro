@@ -242,7 +242,7 @@ const updated = new Date((archive as any).updated).toLocaleDateString('tr-TR', {
       <h2>{name} finansalları</h2>
       <div class="hs-table-wrap">
         <table class="hs-table">
-          <thead><tr><th></th>{d.finansal.periods.map((p) => <th>{p}</th>)}</tr></thead>
+          <thead><tr><th><span class="sr-only">Kalem</span></th>{d.finansal.periods.map((p) => <th>{p}</th>)}</tr></thead>
           <tbody>{d.finansal.rows.map((r) => <tr><th>{r.label}</th>{r.values.map((v) => <td>{v}</td>)}</tr>)}</tbody>
         </table>
       </div>
@@ -324,7 +324,7 @@ const updated = new Date((archive as any).updated).toLocaleDateString('tr-TR', {
   .hs-faq p { margin: .5rem 0 0; }
   .hs-hero { padding-top: clamp(1.4rem, 4vw, 2.4rem); max-width: 760px; }
   .hs-crumbs { font-size: var(--step--2); color: var(--text-muted); margin-bottom: 0.7rem; }
-  .hs-crumbs a { color: var(--brand-deep); text-decoration: none; }
+  .hs-crumbs a { color: var(--brand-deep); text-decoration: underline; text-underline-offset: 2px; } /* yalnız renkle ayrılıyordu (1,18:1) */
   .hs-status { display: inline-block; font-size: 0.68rem; font-weight: 700; border-radius: 999px; padding: 0.15rem 0.6rem; text-transform: uppercase; letter-spacing: 0.04em; }
   .tone-live { background: var(--brand); color: #fff; }
   .tone-soon { background: #fbf0d8; color: #8a5a12; }

@@ -176,8 +176,8 @@ const breadcrumbs = [
         </p>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">Net (çalışılan güne göre)</span>
           <span class="result-value" id="out-net">₺{fmt(NET)}</span>
         </div>
@@ -446,7 +446,7 @@ const breadcrumbs = [
 
     .countdown-block { background: var(--surface); border-radius: var(--radius); padding: 1.3rem 1.4rem; }
     .countdown { display: flex; align-items: baseline; gap: 0.7rem; margin-top: 0.6rem; }
-    .cd-num { font-family: var(--font-serif); font-size: 2.6rem; font-weight: 700; color: var(--brand-2); line-height: 1; }
+    .cd-num { font-family: var(--font-serif); font-size: 2.6rem; font-weight: 700; color: var(--brand); line-height: 1; }
     .cd-label { font-size: 0.9rem; color: var(--text-soft); font-weight: 500; }
 
     .prose-block, .faq-block { margin-top: 2.5rem; }

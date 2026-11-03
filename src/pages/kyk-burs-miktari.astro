@@ -124,8 +124,8 @@ const breadcrumbs = [
             <input id="ky-ert" type="number" min="0" max={GO.ertelemeMaks} step="1" value="0" inputmode="numeric" />
           </label>
         </form>
-        <div class="calc-results" aria-live="polite">
-          <div class="result-main">
+        <div class="calc-results">
+          <div class="result-main" aria-live="polite" aria-atomic="true">
             <span class="result-label">Toplam kredi borcu</span>
             <span class="result-value" id="ky-borc">₺{fmt0(48 * G.lisans)}</span>
           </div>

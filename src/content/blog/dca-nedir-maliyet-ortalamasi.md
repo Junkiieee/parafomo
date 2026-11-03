@@ -66,7 +66,7 @@ DCA ve [bileşik faiz](/bilesik-faiz-hesaplama/) el ele çalışır. Her ay alı
 
 ## DCA ile Toplu Yatırım Karşılaştırması
 
-| | DCA | Toplu Yatırım |
+| Kriter | DCA | Toplu Yatırım |
 |--|-----|----------------|
 | Risk yayılımı | Zaman içine dağıtılır | Tek noktaya yoğunlaşır |
 | Zamanlama gereği | Yok | Kritik (yüksekten girme riski) |

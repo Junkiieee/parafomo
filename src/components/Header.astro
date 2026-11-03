@@ -16,7 +16,7 @@ const isActive = (href: string) =>
 
     <nav class="nav-desktop" aria-label="Ana menü">
       {NAV.map((item) => (
-        <a href={item.href} class:list={['nav-link', { active: isActive(item.href), 'nav-home': item.href === '/' }]}>
+        <a href={item.href} class:list={['nav-link', { active: isActive(item.href), 'nav-home': item.href === '/' }]} aria-current={isActive(item.href) ? 'page' : undefined}>
           {item.label}
         </a>
       ))}
@@ -24,7 +24,7 @@ const isActive = (href: string) =>
 
     <div class="header-actions">
       <a href="/blog" class="btn btn-primary cta-desktop">Yazıları Oku</a>
-      <button class="menu-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false" id="menuToggle">
+      <button type="button" class="menu-toggle" aria-label="Menü" aria-expanded="false" aria-controls="mobileNav" id="menuToggle">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -32,7 +32,7 @@ const isActive = (href: string) =>
 
   <nav class="nav-mobile" id="mobileNav" aria-label="Mobil menü">
     {NAV.map((item) => (
-      <a href={item.href} class:list={['nav-link', { active: isActive(item.href) }]}>
+      <a href={item.href} class:list={['nav-link', { active: isActive(item.href) }]} aria-current={isActive(item.href) ? 'page' : undefined}>
         {item.label}
       </a>
     ))}
@@ -135,8 +135,16 @@ const isActive = (href: string) =>
 <script>
   const toggle = document.getElementById('menuToggle');
   const nav = document.getElementById('mobileNav');
-  toggle?.addEventListener('click', () => {
-    const open = nav?.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(!!open));
+  const setOpen = (open: boolean) => {
+    nav?.classList.toggle('open', open);
+    toggle?.setAttribute('aria-expanded', String(open));
+  };
+  toggle?.addEventListener('click', () => setOpen(!nav?.classList.contains('open')));
+  // Escape menüyü kapatır ve odağı düğmeye döndürür (klavye kullanıcısı menüde mahsur kalmasın).
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav?.classList.contains('open')) {
+      setOpen(false);
+      toggle?.focus();
+    }
   });
 </script>

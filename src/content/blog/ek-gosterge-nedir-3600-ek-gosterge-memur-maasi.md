@@ -104,7 +104,7 @@ Kanun, Genel İdare Hizmetleri sınıfındaki bazı unvanlar için 3600'den yara
 
 Ek göstergenin asıl değeri emeklilikte görünür. Ama etkisi, memuriyete **ne zaman başladığına** göre çok değişir:
 
-| | Ekim 2008 öncesi başlayanlar (5434) | Ekim 2008 sonrası başlayanlar (5510) |
+| Kriter | Ekim 2008 öncesi başlayanlar (5434) | Ekim 2008 sonrası başlayanlar (5510) |
 |---|---|---|
 | Emekli aylığı hesabı | Gösterge + ek gösterge × katsayı esaslı | Prime esas kazançlar ortalaması |
 | Ek göstergenin etkisi | **Doğrudan ve güçlü** | Dolaylı (prime esas kazanç üzerinden) |

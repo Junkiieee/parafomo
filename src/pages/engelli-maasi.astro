@@ -318,8 +318,8 @@ const AYLIK = Object.fromEntries(TURLER.map(({ key }) => [key, { simdi: tahminMo
           </label>
           <p class="hint">Maaş, emekli aylığı, kira, faiz gibi düzenli gelirlerin tamamını net tutar olarak toplayın.</p>
         </form>
-        <div class="calc-results" aria-live="polite">
-          <div class="result-main">
+        <div class="calc-results">
+          <div class="result-main" aria-live="polite" aria-atomic="true">
             <span class="result-label">Kişi başı aylık gelir</span>
             <span class="result-value" id="out-kb">—</span>
           </div>

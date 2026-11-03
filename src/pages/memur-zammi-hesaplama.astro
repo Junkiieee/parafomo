@@ -95,14 +95,14 @@ const breadcrumbs = [
           <div class="scen">
             <span>Kalan {remaining} ay için aylık enflasyon varsayımı</span>
             <div class="preset-row" role="group" aria-label="Aylık enflasyon varsayımı">
-              <button type="button" class="preset active" data-a={ASSUME}>%{nf(ASSUME)} (son 3 ay)</button>
-              {[1.0, 1.5, 2.0].map((x) => <button type="button" class="preset" data-a={x}>%{nf(x, 1)}</button>)}
+              <button type="button" class="preset active" aria-pressed="true" data-a={ASSUME}>%{nf(ASSUME)} (son 3 ay)</button>
+              {[1.0, 1.5, 2.0].map((x) => <button type="button" class="preset" aria-pressed="false" data-a={x}>%{nf(x, 1)}</button>)}
             </div>
           </div>
         )}
       </form>
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">Ocak 2027 tahmini maaş</span>
           <span class="result-value" id="out-new">₺{fmt(D.salary * (1 + zam))}</span>
         </div>
@@ -226,7 +226,7 @@ const breadcrumbs = [
       $('in-salary').addEventListener('input', update);
       document.querySelectorAll('.preset').forEach((b) => b.addEventListener('click', () => {
         a = +b.dataset.a;
-        document.querySelectorAll('.preset').forEach((x) => x.classList.toggle('active', x === b));
+        document.querySelectorAll('.preset').forEach((x) => { x.classList.toggle('active', x === b); x.setAttribute('aria-pressed', String(x === b)); });
         update();
       }));
       update();

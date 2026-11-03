@@ -176,7 +176,7 @@ const nextTREvent = nextTR?.events.find(e => e.region === 'TR');
             {day.events.map((ev) => (
               <li class:list={['cal-ev-row', { 'is-tr': ev.region === 'TR' }]}>
                 <span class:list={['impact-pill', ev.impact === 'High' ? 'high' : 'medium']}>
-                  {ev.impact === 'High' ? '▲' : '●'}
+                  <span aria-hidden="true">{ev.impact === 'High' ? '▲' : '●'}</span><span class="sr-only">{ev.impact === 'High' ? 'Yüksek etki' : 'Orta etki'}</span>
                 </span>
                 <span class="ev-flag">{REGION_FLAG[ev.region] ?? '🌍'}</span>
                 <div class="ev-body">
@@ -238,7 +238,7 @@ const nextTREvent = nextTR?.events.find(e => e.region === 'TR');
                 {day.events.map((ev) => (
                   <li class="cal-ev-row past-ev">
                     <span class:list={['impact-pill', ev.impact === 'High' ? 'high' : 'medium', 'muted']}>
-                      {ev.impact === 'High' ? '▲' : '●'}
+                      <span aria-hidden="true">{ev.impact === 'High' ? '▲' : '●'}</span><span class="sr-only">{ev.impact === 'High' ? 'Yüksek etki' : 'Orta etki'}</span>
                     </span>
                     <span class="ev-flag">{REGION_FLAG[ev.region] ?? '🌍'}</span>
                     <div class="ev-body">
@@ -309,7 +309,7 @@ const nextTREvent = nextTR?.events.find(e => e.region === 'TR');
   .cal-legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
   .impact-dot { display: inline-block; width: 9px; height: 9px; border-radius: 3px; }
   .impact-dot.high { background: #e74c3c; }
-  .impact-dot.medium { background: #d8982f; }
+  .impact-dot.medium { background: #c58925; }
   .flag-dot { font-size: 0.85rem; line-height: 1; }
   .legend-sep { color: var(--border); }
 
@@ -320,7 +320,7 @@ const nextTREvent = nextTR?.events.find(e => e.region === 'TR');
   .cal-day:last-child { border-bottom: none; }
   .cal-day.today { background: var(--brand-tint); border-left: 3px solid var(--brand-deep); }
   .cal-day.weekend { background: var(--bg-elev); }
-  .cal-day.is-past { opacity: 0.7; }
+  /* .is-past opacity 0,7 geçmiş günlerin metnini 2,7:1'e düşürüyordu; satırlar zaten --text-muted. */
 
   .cal-day-header {
     display: flex; align-items: center; gap: 0.5rem;
@@ -329,6 +329,7 @@ const nextTREvent = nextTR?.events.find(e => e.region === 'TR');
     background: rgba(0,0,0,0.02);
   }
   .cal-day-num { font-size: var(--step--2); font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .cal-day.today .cal-day-num { color: var(--text-soft); }
   .cal-day-label { font-size: var(--step--1); font-weight: 600; color: var(--text); }
   .cal-today-badge { font-size: 0.56rem; font-weight: 700; color: #fff; background: var(--brand-deep); border-radius: 999px; padding: 0.05rem 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
 
@@ -347,7 +348,7 @@ const nextTREvent = nextTR?.events.find(e => e.region === 'TR');
 
   .impact-pill { font-size: 0.65rem; font-weight: 800; line-height: 1; padding-top: 0.25rem; }
   .impact-pill.high { color: #e74c3c; }
-  .impact-pill.medium { color: #d8982f; }
+  .impact-pill.medium { color: #c58925; }
   .impact-pill.muted { opacity: 0.5; }
 
   .ev-flag { font-size: 1rem; line-height: 1.4; }

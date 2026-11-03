@@ -91,8 +91,8 @@ const breadcrumbs = [
         </label>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label"><span id="out-years">{D.years}</span> yıl sonra toplam birikim</span>
           <span class="result-value" id="out-final">₺{fmt(base.final.balance)}</span>
         </div>
@@ -280,7 +280,7 @@ const breadcrumbs = [
     .calc-chart-wrap figcaption { font-size: 0.85rem; color: var(--text-soft); margin-bottom: 0.5rem; text-align: center; }
     .lg { font-weight: 700; }
     .lg-cont { color: #1e6b7f; }
-    .lg-earn { color: #16a085; }
+    .lg-earn { color: var(--brand); }
     .chart { width: 100%; }
     .chart svg { width: 100%; height: auto; }
 

@@ -262,6 +262,33 @@ const shareLabel = typeof share === 'string' ? share : calcLd ? 'Bu hesaplayıc�
         });
       })();
     </script>
+    <script is:inline>
+      // Kayan (yatay ya da dikey) tablo kutuları klavyeyle odaklanıp kaydırılabilsin (WCAG 2.1.1; denetim 2026-11-03: 94 sayfa).
+      // Yalnız gerçekten taşan kutulara tabindex verilir; ad, kutunun bulunduğu bölümün başlığından gelir.
+      (function () {
+        var SEL = '.table-wrap, .table-block, .gr-tablewrap, .hs-table-wrap, .schedule-scroll, .tbl-wrap, .table-scroll';
+        function run() {
+          var seen = {};
+          document.querySelectorAll('main ' + SEL.split(', ').join(', main ')).forEach(function (el) {
+            if (el.hasAttribute('data-ts')) return;
+            var cs = getComputedStyle(el);
+            var sx = /auto|scroll/.test(cs.overflowX) && el.scrollWidth > el.clientWidth + 1;
+            var sy = /auto|scroll/.test(cs.overflowY) && el.scrollHeight > el.clientHeight + 1;
+            if (!sx && !sy) return;
+            var s = el.closest('section, .gr-section, .calc-wrap');
+            var h = s && s.querySelector('h2, h3');
+            var n = h ? h.textContent.trim() : 'Tablo';
+            seen[n] = (seen[n] || 0) + 1;
+            if (!el.hasAttribute('tabindex')) el.tabIndex = 0;
+            if (!el.hasAttribute('role')) el.setAttribute('role', 'region');
+            if (!el.hasAttribute('aria-label')) el.setAttribute('aria-label', seen[n] > 1 ? n + ' (' + seen[n] + ')' : n);
+            el.setAttribute('data-ts', '');
+          });
+        }
+        if (document.readyState === 'complete') run(); else addEventListener('load', run);
+        addEventListener('resize', function () { requestAnimationFrame(run); }, { passive: true });
+      })();
+    </script>
     <!-- Sayfa script'leri (slot="end"): </body> içinde ve sayı normalleştiriciden sonra çalışır.
          Önceden </BaseLayout> dışına yazılıyor, HTML'de </html>'den sonra basılıyordu. -->
     <slot name="end" />

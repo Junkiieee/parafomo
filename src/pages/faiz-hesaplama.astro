@@ -75,8 +75,8 @@ const breadcrumbs = [
         <label><span>Vergi / stopaj kesintisi (%) — isteğe bağlı</span><input type="number" id="in-k" value={D.kesinti} min="0" max="100" step="0.5" inputmode="decimal" /></label>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">Vade sonu toplam</span>
           <span class="result-value" id="o-top">₺{fmt(base.toplam)}</span>
         </div>

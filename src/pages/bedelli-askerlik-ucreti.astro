@@ -168,8 +168,8 @@ const breadcrumbs = [
           </label>
           <p class="hint">1–30 gün bir ay sayılır; geçerli mazeretli süreler hariç. Kaçak/bakaya değilseniz 0 bırakın.</p>
         </form>
-        <div class="calc-results" aria-live="polite">
-          <div class="result-main">
+        <div class="calc-results">
+          <div class="result-main" aria-live="polite" aria-atomic="true">
             <span class="result-label">Ödenecek toplam</span>
             <span class="result-value" id="bd-toplam">₺{fmt2(TUTAR)}</span>
           </div>

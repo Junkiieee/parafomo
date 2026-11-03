@@ -79,8 +79,8 @@ const breadcrumbs = [
     </header>
 
     <div class="mode-row" role="group" aria-label="Hesap yönü">
-      <button type="button" class="mode active" data-mode="price">Getiriden fiyat</button>
-      <button type="button" class="mode" data-mode="yield">Fiyattan getiri</button>
+      <button type="button" class="mode active" aria-pressed="true" data-mode="price">Getiriden fiyat</button>
+      <button type="button" class="mode" aria-pressed="false" data-mode="yield">Fiyattan getiri</button>
     </div>
 
     <div class="calc-grid">
@@ -102,15 +102,15 @@ const breadcrumbs = [
           <input type="number" id="in-days" value={D.days} min="1" max="3650" step="1" inputmode="numeric" />
         </label>
         <div class="preset-row" role="group" aria-label="Hızlı vade seçimi">
-          <button type="button" class="preset" data-days="91">3 ay</button>
-          <button type="button" class="preset" data-days="175">~6 ay</button>
-          <button type="button" class="preset" data-days="364">~1 yıl</button>
-          <button type="button" class="preset" data-days="728">2 yıl</button>
+          <button type="button" class="preset" aria-pressed="false" data-days="91">3 ay</button>
+          <button type="button" class="preset" aria-pressed="false" data-days="175">~6 ay</button>
+          <button type="button" class="preset" aria-pressed="false" data-days="364">~1 yıl</button>
+          <button type="button" class="preset" aria-pressed="false" data-days="728">2 yıl</button>
         </div>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label" id="out-main-label">Bugünkü alış fiyatı</span>
           <span class="result-value" id="out-main">₺{fmt0(base.price)}</span>
         </div>
@@ -246,12 +246,13 @@ const breadcrumbs = [
 
         document.querySelectorAll('.preset').forEach((b) => {
           b.classList.toggle('active', +b.dataset.days === days);
+          b.setAttribute('aria-pressed', String(+b.dataset.days === days));
         });
       }
 
       function setMode(m) {
         mode = m;
-        document.querySelectorAll('.mode').forEach((b) => b.classList.toggle('active', b.dataset.mode === m));
+        document.querySelectorAll('.mode').forEach((b) => { b.classList.toggle('active', b.dataset.mode === m); b.setAttribute('aria-pressed', String(b.dataset.mode === m)); });
         $('field-rate').hidden = m !== 'price';
         $('field-price').hidden = m !== 'yield';
         // strong satır etiketi price modunda sabit kalsın
