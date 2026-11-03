@@ -1,0 +1,59 @@
+{
+  "slug": "enflasyon-dusse-bile-market-fiyati-geri-inmiyor",
+  "title": "Enflasyon düşse bile market fiyatı geri inmiyor",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Enflasyonun düşmesi fiyatların ucuzlaması değil, artış hızının yavaşlaması demek. Zam gelen fiyat geri inmez, bu yüzden cebinde fark hissetmezsin.",
+  "tags": [
+    "enflasyon",
+    "fiyatlar",
+    "market",
+    "alım gücü",
+    "ParaFOMO",
+    "finans",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Enflasyon düşünce fiyatlar da düşer sanıyorsun.",
+      "visual": {
+        "type": "object",
+        "query": "price tag with downward arrow sale"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Enflasyon fiyatın ne kadar ucuzladığını değil, ne kadar yavaş pahalılaştığını gösterir. Düşen şey zammın hızı.",
+      "visual": {
+        "type": "object",
+        "query": "shopping cart with groceries"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama işin sırrı şu: 100 liralık ürün yüzde 50 zamlanıp enflasyon yüzde 30'a inse bile, 130 olur, 100'e dönmez.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Fiyat geri inmez, sadece daha yavaş çıkar. Asıl kıstas maaşın zamdan hızlı artıp artmadığıdır, rakama değil sepetine bak.",
+      "visual": {
+        "type": "object",
+        "query": "wallet with cash"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki zamlar neden bir türlü geri inmiyor? Yanıtı bir sonrakinde açıyorum. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "price tag with downward arrow sale"
+      }
+    }
+  ]
+}
