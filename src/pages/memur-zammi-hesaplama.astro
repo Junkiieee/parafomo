@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import ZamTutarTablosu from '../components/ZamTutarTablosu.astro';
 import em from '../../data/emekli-memur.json';
+import { yilDa } from '../data/yil';
 // Tahmin mantığı /emekli-zammi-hesaplama ile ORTAK modülde (aynı TÜFE, aynı varsayım — iki sayfa hep aynı sonucu verir).
 import { PERIOD, TS_H2_2026, TS_H1_2027, byMonth, knownKeys, cumKnown, remaining, ASSUME, project, memurFrom, memurProj } from '../data/zam2027';
 
@@ -15,6 +16,12 @@ const K = em.memurKatsayi;
 const ME = em.enDusukMemurEmeklisi;
 const zam = memurProj.zam;                 // Ocak 2027 tahmini toplam memur zammı (oran)
 const final = remaining === 0;
+// Tahmin yalnız yürürlükteki katsayı dönemi zam modülünün başlangıcıyla eşleşirken (evde-bakim-maasi ile aynı kural).
+// Ocak'ta emekli-memur.json resmî 2027-01 katsayılarına geçince kat27 = yeni katsayı × (1 + zam) çift zam olur;
+// "Temmuz 2026 zammı" etiketi de Ocak oranını gösterirdi (yıl geçişi denetimi). O zaman tahmin kısımları gizlenir.
+const TAHMIN_VAR = PERIOD[0] === em.donem;
+const DONEM_ADI = `${MONTHS[+em.donem.slice(5, 7) - 1]} ${em.donem.slice(0, 4)}`;
+if (!TAHMIN_VAR) console.warn(`[memur-zammi-hesaplama] katsayı dönemi ${em.donem}, zam dönemi ${PERIOD[0]}: tahmin kısımları gizlendi — sayfa metinlerini yeni döneme göre güncelle`);
 const nowFark = memurFrom(cumKnown).fark;  // şu ana kadar kesinleşen enflasyon farkı
 const known = knownKeys.map((k) => ({ k, name: monthName(k), aylik: byMonth.get(k)!.aylik }));
 // Boş dönemde known[known.length - 1] undefined olur ve build çöker (bkz. emekli-zammi-hesaplama).
@@ -39,17 +46,19 @@ const faq = [
     a: `Temmuz–Aralık 2026 birikimli enflasyon, aynı dönem için verilen %${TS_H2_2026} toplu sözleşme zammını aşarsa aşan kısım enflasyon farkı olarak Ocak'ta maaşa eklenir: fark = (1 + 6 aylık enflasyon) ÷ (1 + %${TS_H2_2026}) − 1. Ocak zammı bu farkla yeni dönemin toplu sözleşme oranının bileşiğidir: (1 + fark) × (1 + %${TS_H1_2027}) − 1.`,
   },
   {
-    q: 'Temmuz 2026 memur zammı yüzde kaç oldu?',
-    a: `Temmuz 2026'da memur maaşları %${nf(K.zamOrani)} arttı (%${TS_H2_2026} toplu sözleşme zammı ile Ocak–Haziran 2026 enflasyon farkının bileşiği). Hazine ve Maliye Bakanlığı genelgesiyle aylık katsayı ${nf(K.aylikKatsayi, 6)}, taban aylık katsayısı ${nf(K.tabanAylikKatsayi, 6)}, yan ödeme katsayısı ${nf(K.yanOdemeKatsayi, 6)} oldu.`,
+    q: `${DONEM_ADI} memur zammı yüzde kaç oldu?`,
+    a: `${DONEM_ADI}${yilDa(em.donem.slice(0, 4))} memur maaşları %${nf(K.zamOrani)} arttı (${TAHMIN_VAR ? `%${TS_H2_2026} toplu sözleşme zammı ile Ocak–Haziran 2026 enflasyon farkının bileşiği` : 'toplu sözleşme zammı ile önceki altı ayın enflasyon farkının bileşiği'}). Hazine ve Maliye Bakanlığı genelgesiyle aylık katsayı ${nf(K.aylikKatsayi, 6)}, taban aylık katsayısı ${nf(K.tabanAylikKatsayi, 6)}, yan ödeme katsayısı ${nf(K.yanOdemeKatsayi, 6)} oldu.`,
   },
   {
     q: 'En düşük memur emeklisi aylığı ne kadar?',
-    a: `Temmuz 2026 zammıyla en düşük memur emeklisi aylığı ${fmt(ME.onceki)} ₺'den ${fmt(ME.tutar)} ₺'ye yükseldi. Ocak 2027'de memur zammı kadar artar; tahmini %${nf(zam * 100)} zamla yaklaşık ${fmt(ME.tutar * (1 + zam))} ₺ olur.`,
+    a: `${DONEM_ADI} zammıyla en düşük memur emeklisi aylığı ${fmt(ME.onceki)} ₺'den ${fmt(ME.tutar)} ₺'ye yükseldi.${TAHMIN_VAR ? ` Ocak 2027'de memur zammı kadar artar; tahmini %${nf(zam * 100)} zamla yaklaşık ${fmt(ME.tutar * (1 + zam))} ₺ olur.` : ''}`,
   },
+  ...(TAHMIN_VAR ? [
   {
     q: 'Memur maaş katsayıları Ocak 2027’de ne olur?',
     a: `Katsayılar zam oranında artırılır. %${nf(zam * 100)} tahmini zamla aylık katsayı yaklaşık ${nf(kat27.aylik, 6)}, taban aylık katsayısı ${nf(kat27.taban, 6)} olur. Kesin katsayıları Hazine ve Maliye Bakanlığı Ocak 2027'nin ilk günlerinde genelgeyle açıklar.`,
   },
+  ] : []),
   {
     q: `60 bin TL memur maaşı Ocak 2027’de ne kadar olacak?`,
     a: `Ocak 2027 memur zammı ${final ? '' : 'yaklaşık '}%${nf(zam * 100)} ise 60.000 TL net maaş ${final ? '' : 'yaklaşık '}${fmt(60000 * (1 + zam))} TL’ye, 50.000 TL maaş ${fmt(50000 * (1 + zam))} TL’ye, 80.000 TL maaş ${fmt(80000 * (1 + zam))} TL’ye çıkar. Vergi dilimi ve ek ödemeler kişiye göre değiştiği için gerçek bordro birkaç yüz lira farklı olabilir.`,
@@ -153,16 +162,16 @@ const breadcrumbs = [
     <section class="table-block">
       <h2>Memur maaş katsayıları</h2>
       <table class="rate-table">
-        <thead><tr><th>Katsayı</th><th>{K.donem}</th><th>Ocak 2027 (tahmin)</th></tr></thead>
+        <thead><tr><th>Katsayı</th><th>{K.donem}</th>{TAHMIN_VAR && <th>Ocak 2027 (tahmin)</th>}</tr></thead>
         <tbody>
-          <tr><td>Aylık katsayı</td><td>{nf(K.aylikKatsayi, 6)}</td><td>≈ {nf(kat27.aylik, 6)}</td></tr>
-          <tr><td>Taban aylık katsayısı</td><td>{nf(K.tabanAylikKatsayi, 6)}</td><td>≈ {nf(kat27.taban, 6)}</td></tr>
-          <tr><td>Yan ödeme katsayısı</td><td>{nf(K.yanOdemeKatsayi, 6)}</td><td>≈ {nf(kat27.yan, 6)}</td></tr>
+          <tr><td>Aylık katsayı</td><td>{nf(K.aylikKatsayi, 6)}</td>{TAHMIN_VAR && <td>≈ {nf(kat27.aylik, 6)}</td>}</tr>
+          <tr><td>Taban aylık katsayısı</td><td>{nf(K.tabanAylikKatsayi, 6)}</td>{TAHMIN_VAR && <td>≈ {nf(kat27.taban, 6)}</td>}</tr>
+          <tr><td>Yan ödeme katsayısı</td><td>{nf(K.yanOdemeKatsayi, 6)}</td>{TAHMIN_VAR && <td>≈ {nf(kat27.yan, 6)}</td>}</tr>
         </tbody>
       </table>
       <p class="table-note">
-        Temmuz 2026 katsayıları Hazine ve Maliye Bakanlığı genelgesinden; Temmuz zammı %{nf(K.zamOrani)} oldu.
-        Ocak 2027 sütunu tahmini zam oranıyla hesaplanmıştır; kesin katsayılar Ocak başında açıklanır.
+        {DONEM_ADI} katsayıları Hazine ve Maliye Bakanlığı genelgesinden; dönem zammı %{nf(K.zamOrani)} oldu.
+        {TAHMIN_VAR && 'Ocak 2027 sütunu tahmini zam oranıyla hesaplanmıştır; kesin katsayılar Ocak başında açıklanır.'}
       </p>
     </section>
 
