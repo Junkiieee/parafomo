@@ -138,6 +138,15 @@ def next_release(today):
     return f"{y}-{m:02d}-03"
 
 
+def _write_json(path, obj, indent):
+    """Atomik yaz (geçici dosya + os.replace): eşzamanlı build/iş yarım JSON okumasın."""
+    tmp = f"{path}.{os.getpid()}.tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(obj, f, ensure_ascii=False, indent=indent)
+        f.write("\n")
+    os.replace(tmp, path)
+
+
 def hedef_for(son_ay):
     yil, ay_no = int(son_ay[:4]), int(son_ay[5:])
     return yil + 1 if ay_no >= 6 else yil
@@ -153,12 +162,10 @@ def write_endeks(levels):
         old = json.load(open(ENDEKS_OUT, encoding="utf-8"))
     if old.get("seri") == seri:
         return
-    with open(ENDEKS_OUT, "w", encoding="utf-8") as f:
-        json.dump({"_aciklama": "Yİ-ÜFE aylık endeks (2003=100), TCMB EVDS TP.TUFE1YI.T1. Değer artışı kazancında maliyet, "
-                   "iktisap ayından önceki ay ile satış ayından önceki ay arasındaki artış %10+ ise endekslenir.",
-                   "_kaynak": f"{EVDS} {EVDS_SERIES}", "updated": dt.date.today().isoformat(),
-                   "sonAy": max(seri), "seri": seri}, f, ensure_ascii=False, indent=0)
-        f.write("\n")
+    _write_json(ENDEKS_OUT, {"_aciklama": "Yİ-ÜFE aylık endeks (2003=100), TCMB EVDS TP.TUFE1YI.T1. Değer artışı kazancında maliyet, "
+                             "iktisap ayından önceki ay ile satış ayından önceki ay arasındaki artış %10+ ise endekslenir.",
+                             "_kaynak": f"{EVDS} {EVDS_SERIES}", "updated": dt.date.today().isoformat(),
+                             "sonAy": max(seri), "seri": seri}, 0)
     print(f"[yd] endeks yazıldı: {min(seri)}..{max(seri)} ({len(seri)} ay)")
 
 
@@ -260,14 +267,10 @@ def main():
         print(f"[yd] değişiklik yok (veri {son_ay}, oran ayı {oran_ay}, 12 ay ort %{ort}, {kaynak})")
         if old.get("sonrakiAciklama") != data["sonrakiAciklama"]:
             old["sonrakiAciklama"] = data["sonrakiAciklama"]
-            with open(OUT, "w", encoding="utf-8") as f:
-                json.dump(old, f, ensure_ascii=False, indent=1)
-                f.write("\n")
+            _write_json(OUT, old, 1)
         return 0
     data["updated"] = dt.date.today().isoformat()
-    with open(OUT, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=1)
-        f.write("\n")
+    _write_json(OUT, data, 1)
     durum = "KESİNLEŞTİ" if kesin else "tahmin"
     print(f"[yd] GÜNCELLENDİ: veri {son_ay} (yıllık %{months[son_ay]['yillik']} aylık %{months[son_ay]['aylik']}) "
           f"→ {hedef_yil} oranı %{ort} [{durum}, {oran_ay} itibarıyla, {kaynak}]")

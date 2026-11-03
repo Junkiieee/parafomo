@@ -101,8 +101,10 @@ def main():
             tr_now = datetime.now(timezone.utc).astimezone(timezone(timedelta(hours=3)))
             fb["guncellenme"] = tr_now.strftime("%Y-%m-%dT%H:%M:%S+03:00")
             fb["guncellemeEtiket"] = tr_now.strftime("%d %B %Y, %H:%M")
-            with open(OUT, "w", encoding="utf-8") as f:
+            tmp = f"{OUT}.{os.getpid()}.tmp"   # atomik yaz: eşzamanlı build yarım JSON okumasın
+            with open(tmp, "w", encoding="utf-8") as f:
                 json.dump(fb, f, ensure_ascii=False, indent=2)
+            os.replace(tmp, OUT)
             print(f"[altin-fiyat] Yahoo fallback ile {len(fb.get('kalemler', []))} kalem tazelendi → {OUT}")
             return 0
         print("[altin-fiyat] fallback yok → mevcut dosya korunuyor", file=sys.stderr)
@@ -137,8 +139,10 @@ def main():
         "guncellemeEtiket": tr_now.strftime("%d %B %Y, %H:%M"),
         "kalemler": items,
     }
-    with open(OUT, "w", encoding="utf-8") as f:
+    tmp = f"{OUT}.{os.getpid()}.tmp"   # atomik yaz: eşzamanlı build yarım JSON okumasın
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
+    os.replace(tmp, OUT)
     print(f"[altin-fiyat] {len(items)} kalem yazıldı → {OUT}")
     return 0
 

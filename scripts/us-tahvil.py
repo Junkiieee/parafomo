@@ -105,9 +105,13 @@ def main():
         "usdtry": round(usdtry, 4) if usdtry else None,
         "tenors": tenors,
     }
-    with open(OUT, "w", encoding="utf-8") as f:
+    tmp = f"{OUT}.{os.getpid()}.tmp"   # atomik yaz: eşzamanlı build yarım JSON okumasın
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
-    print(f"[us-tahvil] 10Y={out['us10y']}% ({out['us10yChangeBps']:+} bps), spread(10Y-3A)={spread}, {len(tenors)} vade yazıldı → {OUT}")
+    os.replace(tmp, OUT)
+    # 10Y alınamadıysa ya da önceki kapanış yoksa None: ":+" TypeError verip (yazdıktan sonra) çıkış 1 → "güncellenemedi" yalanı
+    bps = out["us10yChangeBps"]
+    print(f"[us-tahvil] 10Y={out['us10y']}% ({'?' if bps is None else f'{bps:+}'} bps), spread(10Y-3A)={spread}, {len(tenors)} vade yazıldı → {OUT}")
     return 0
 
 
