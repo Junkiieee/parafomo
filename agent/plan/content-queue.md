@@ -55,10 +55,10 @@ beyannamesi" 2,8 (zirve Mart 32 → Şubat'ta yeniden ölç) · "aile destek pro
   (hacim 6,9) · neden: mevduat kümesi tamamlayıcı; kâr payı oranı örneği verirsen bankanın kendi sayfasından tarihli,
   TKBB/BDDK kaynaklı; tek banka önerme · iç-link: /mevduat-faizi-hesaplama, /blog/stopaj-nedir-2026-stopaj-oranlari,
   /blog/para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki → /blog/katilim-hesabi-nedir-kar-payi-nasil-hesaplanir (2026-11-02)
-- [ ] **Evlilik kredisi 2026: kimler alabilir, tutarı ne kadar, geri ödeme nasıl?** · hedef: "evlilik kredisi"
+- [x] **Evlilik kredisi 2026: kimler alabilir, tutarı ne kadar, geri ödeme nasıl?** · hedef: "evlilik kredisi"
   (hacim 38,1, zirve Mayıs 126) · neden: sosyal haklar kümesi (B261029-1). Tutar, yaş/gelir şartı, geri ödeme süresi ve
   çocuk doğunca ertelenen/silinen kısım YALNIZ Aile ve Sosyal Hizmetler Bakanlığı / Aile ve Gençlik Fonu resmî sayfasından,
-  tarihli · iç-link: /dogum-yardimi, /ihtiyac-kredisi-hesaplama, /kredi-hesaplama
+  tarihli · iç-link: /dogum-yardimi, /ihtiyac-kredisi-hesaplama, /kredi-hesaplama → /blog/evlilik-kredisi-2026-sartlar-tutar-geri-odeme (2026-11-03)
 - [ ] 📅 4 Kasım **ABD Ekim İstihdam Verisi (NFP) 6 Kasım'da: Beklenti, Fed, Dolar ve Altın Etkisi** · slug:
   `abd-kasim-2026-nfp-istihdam-verisi-fed-dolar-altin` (ekim-2026-nfp adı Eylül verisi için kullanıldı) · hedef: izinli olay
   ailesi (ABD NFP — GSC'de tık kanıtlı; nfp yazısı 28g 3 tık / 34 gös) · tarih: 6 Kasım Cuma 15:30 TSİ (iki takvim aynı;

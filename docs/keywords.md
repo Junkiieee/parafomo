@@ -320,3 +320,5 @@ Günlük otomasyon bu listeden **en üstteki `[ ]` işaretli** konuyu alır, mak
 - [x] ECB Eylül 2026 Faiz Kararı: Euro, Dolar ve TL'ye Etkisi — `ecb-eylul-2026-faiz-karari-euro-tl-etkisi` (takvim: 4 Eylül 2026 🔴 NFP + İşsizlik Oranı + Saatlik Kazançlar; GSC fırsatı: "abd işsizlik verisi altını nasıl etkiler" — gös 8, sıra 9.5, tıklama 0; altın-odaklı açı mevcut NFP/işsizlik yazılarında yok; senaryo tablosu + 10 Eylül TCMB bağlantısı; 4 Eylül 2026)
 
 - [x] ABD Eylül 2026 PCE ve Final GDP: Fed Kasım'da Ne Yapar? Dolar ve Altın Etkisi — `pce-gdp-eylul-2026-fed-kasim-dolar-altin` (takvim: 30 Eylül 2026 🔴 Core PCE Price Index m/m + Final GDP q/q; Final GDP'nin Prelim'den farkı + TCMB 22 Ekim PPK bağlantısı; senaryo tablosu + Kasım Fed kararı çerçevesi; pce-nedir + gdp-gsyih + abd-faiz-artarsa-altin cluster'ı; 28 Eylül 2026)
+
+- [x] Evlilik Kredisi 2026: Şartlar, Tutar ve Geri Ödeme — `evlilik-kredisi-2026-sartlar-tutar-geri-odeme` (kuyruk: "evlilik kredisi" hacim 38,1; Aile ve Gençlik Fonu resmî sayfası 3 Kas 2026: 250/200 bin TL, gelir sınırı 2,5×brüt asgari=82.575 TL, 20 May 2026 hibe/erteleme kuralı; 3 Kasım 2026)
