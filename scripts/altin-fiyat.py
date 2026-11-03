@@ -82,10 +82,17 @@ def yahoo_fallback():
     if not old_gram:
         return None
     factor = new_gram / old_gram
+    # Ons kalemi DOLAR cinsinden: TL gram oranıyla ölçeklenince her yedek çalışmada USDTRY değişimi kadar kayıyordu
+    # (Truncgil'in son sağlam günündan beri kur ne kadar arttıysa ons o kadar şişkin). Ons doğrudan GC=F ile ölçeklenir.
+    old_ons = next((k.get("satis") for k in kalemler if k.get("key") == "ons"), None)
+    ons_factor = ons_usd / old_ons if old_ons else None
     for k in kalemler:
+        f_k = ons_factor if k.get("key") == "ons" else factor
+        if f_k is None:
+            continue
         for f in ("alis", "satis"):
             if isinstance(k.get(f), (int, float)):
-                k[f] = round(k[f] * factor, 2)
+                k[f] = round(k[f] * f_k, 2)
     old["kalemler"] = kalemler
     old["_kaynak"] = "Yahoo (GC=F×USDTRY) — Truncgil erişilemedi, son snapshot ölçeklendi"
     return old
