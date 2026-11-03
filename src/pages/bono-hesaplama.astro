@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { BU_YIL } from '../data/yil';
 import Newsletter from '../components/Newsletter.astro';
 
 // Hazine bonosu / iskontolu tahvil (DİBS) — basit faiz konvansiyonu.
@@ -64,7 +65,7 @@ const breadcrumbs = [
 
 <BaseLayout
   image="/og/bono-hesaplama.png"
-  title="Bono Hesaplama 2026 | Hazine Bonosu Fiyat ve Getiri Hesaplayıcı"
+  title={`Bono Hesaplama ${BU_YIL} | Hazine Bonosu Fiyat ve Getiri Hesaplayıcı`}
   description="Hazine bonosu (iskontolu tahvil) fiyatını ve getirisini hesapla: nominal, yıllık faiz ve vadeyi gir; alış fiyatı, kazanç ve yıllık verimi gör. İki yönlü."
   faq={faq}
   breadcrumbs={breadcrumbs}

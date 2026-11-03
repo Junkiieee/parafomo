@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { BU_YIL } from '../data/yil';
 import Newsletter from '../components/Newsletter.astro';
 import data from '../../data/economic-calendar.json';
 import fixed from '../../data/tr-fixed-events.json';
@@ -106,7 +107,7 @@ const nextTREvent = nextTR?.events.find(e => e.region === 'TR');
 
 <BaseLayout
   image="/og/ekonomik-takvim.png"
-  title="Ekonomik Takvim 2026 — Türkiye ve Dünya"
+  title={`Ekonomik Takvim ${BU_YIL} — Türkiye ve Dünya`}
   description="FED, TCMB, TÜİK ve dünya merkez bankası kararları. Türkiye ekonomik takvimi: faiz kararları, enflasyon verileri, NFP ve PMI duyuruları. Her gün güncellenir."
 >
   <section class="container ec-hero">
@@ -211,11 +212,11 @@ const nextTREvent = nextTR?.events.find(e => e.region === 'TR');
       borçlu şirketleri etkiler. TCMB de kararlarında küresel para politikasını gözetir.
     </p>
     <p>
-      → <a href="/enflasyon-takvimi">Enflasyon (TÜFE) Açıklama Takvimi 2026 (tarihler + geri sayım)</a>
+      → <a href="/enflasyon-takvimi">Enflasyon (TÜFE) Açıklama Takvimi {BU_YIL} (tarihler + geri sayım)</a>
       &nbsp;·&nbsp;
-      <a href="/tcmb-faiz-takvimi">TCMB Faiz Kararı Takvimi 2026 (PPK tarihleri + geri sayım)</a>
+      <a href="/tcmb-faiz-takvimi">TCMB Faiz Kararı Takvimi {BU_YIL} (PPK tarihleri + geri sayım)</a>
       &nbsp;·&nbsp;
-      <a href="/fed-faiz-takvimi">Fed Faiz Kararı Takvimi 2026 (tüm tarihler + geri sayım)</a>
+      <a href="/fed-faiz-takvimi">Fed Faiz Kararı Takvimi {BU_YIL} (tüm tarihler + geri sayım)</a>
       &nbsp;·&nbsp;
       <a href="/blog/fed-faiz-karari-nedir-etkisi">FED Faiz Kararı Nedir? Türkiye'ye etkileri</a>
       &nbsp;·&nbsp;

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { BU_YIL } from '../data/yil';
 import Newsletter from '../components/Newsletter.astro';
 import faiz from '../../data/faiz-oranlari.json';
 
@@ -65,7 +66,7 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="Kredi Hesaplama 2026 | Güncel Faiz, Aylık Taksit ve Toplam Faiz"
+  title={`Kredi Hesaplama ${BU_YIL} | Güncel Faiz, Aylık Taksit ve Toplam Faiz`}
   description={`Kredi taksit hesaplama: ortalama ihtiyaç kredisi faizi aylık %${pct(KR.ihtiyac.aylik)} (TCMB, ${HAFTA}). Tutar, faiz ve vadeyi girin; taksiti, toplam geri ödemeyi ve planı görün.`}
   image="/og/kredi-hesaplama.png"
   faq={faq}

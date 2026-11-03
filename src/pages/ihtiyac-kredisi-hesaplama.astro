@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { BU_YIL } from '../data/yil';
 import Newsletter from '../components/Newsletter.astro';
 import faiz from '../../data/faiz-oranlari.json';
 
@@ -81,7 +82,7 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="İhtiyaç Kredisi Hesaplama 2026 | Güncel Faiz, KKDF ve BSMV Dahil Taksit"
+  title={`İhtiyaç Kredisi Hesaplama ${BU_YIL} | Güncel Faiz, KKDF ve BSMV Dahil Taksit`}
   description={`İhtiyaç kredisi hesaplama: ortalama faiz aylık %${pct(KR.ihtiyac.aylik)} (TCMB, ${HAFTA}). Tutar ve vadeyi girin; KKDF-BSMV dahil taksit, toplam geri ödeme ve BDDK vade sınırı.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
