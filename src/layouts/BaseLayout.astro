@@ -206,8 +206,10 @@ const shareLabel = typeof share === 'string' ? share : calcLd ? 'Bu hesaplayıc�
     <link rel="alternate" type="application/rss+xml" title={`${SITE.name} RSS`} href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- Yalnız gövde fontu önceden yüklenir; diğerleri (font-display: optional) ilk ziyarette kaçarsa önbellekten gelir. -->
+    <!-- Yalnız gövde fontu önceden yüklenir; diğerleri (font-display: optional) ilk ziyarette kaçarsa önbellekten gelir.
+         inter-tr (3,6 KB: ğ ş İ ₺) de yüklenir: yoksa ilk ziyarette Türkçe harfler kelime içinde sistem fontuyla karışık görünür. -->
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-tr.woff2" as="font" type="font/woff2" crossorigin />
 
     <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
@@ -257,5 +259,8 @@ const shareLabel = typeof share === 'string' ? share : calcLd ? 'Bu hesaplayıc�
         });
       })();
     </script>
+    <!-- Sayfa script'leri (slot="end"): </body> içinde ve sayı normalleştiriciden sonra çalışır.
+         Önceden </BaseLayout> dışına yazılıyor, HTML'de </html>'den sonra basılıyordu. -->
+    <slot name="end" />
   </body>
 </html>

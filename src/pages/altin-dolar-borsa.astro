@@ -210,7 +210,18 @@ const datasetLd = {
       <strong>yatırım tavsiyesi değildir</strong>. Geçmiş getiri gelecekteki getirinin garantisi değildir.
     </p>
   </section>
-
+  <Fragment slot="end">
+  <script define:vars={{ built: gold.updated }}>
+    async function checkUpdate() {
+      try {
+        const r = await fetch('/altin-getiri.json?_=' + Date.now(), { cache: 'no-store' });
+        const d = await r.json();
+        if (d && d.updated && d.updated !== built) location.reload();
+      } catch { /* yoksay */ }
+    }
+    setInterval(() => { if (document.visibilityState === 'visible') checkUpdate(); }, 300000);
+  </script>
+  </Fragment>
 </BaseLayout>
 
 <style>
@@ -269,13 +280,3 @@ const datasetLd = {
   }
 </style>
 
-<script define:vars={{ built: gold.updated }}>
-  async function checkUpdate() {
-    try {
-      const r = await fetch('/altin-getiri.json?_=' + Date.now(), { cache: 'no-store' });
-      const d = await r.json();
-      if (d && d.updated && d.updated !== built) location.reload();
-    } catch { /* yoksay */ }
-  }
-  setInterval(() => { if (document.visibilityState === 'visible') checkUpdate(); }, 300000);
-</script>

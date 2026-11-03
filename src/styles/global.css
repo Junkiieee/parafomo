@@ -5,7 +5,9 @@
    =========================================================== */
 
 /* ---------- Fontlar: kendi sunucumuzdan (Google Fonts render'ı ~2,5 sn blokluyordu).
-   Değişken fontlar; Türkçe ğ/ş/İ latin-ext'te, ı latin'de. Preload: BaseLayout.
+   Değişken fontlar. ı latin'de; Türkçe ğ Ğ ş Ş İ ve ₺ (Inter'de ₿ de) *-tr.woff2'de: latin-ext'in yalnızca bu
+   harfleri içeren alt kümesi (Inter 85→3,6 KB, Fraunces 59→6,5 KB; pyftsubset, 2026-11-03). Tam latin-ext dosyası
+   yalnızca bu harfler dışındaki nadir bir karakter (ę, ő…) sayfada geçerse indirilir. Preload: BaseLayout.
    optional: font ~100 ms'de gelmezse o sayfa sistem fontuyla kalır, sonraki sayfa önbellekten alır.
    swap'ta font değişimi LCP'yi 2,3-4,4 sn'ye itiyordu; fontsuz 0,9 sn (canlı A/B, 2026-10-13). ---------- */
 @font-face {
@@ -13,8 +15,16 @@
   font-style: normal;
   font-weight: 400 700;
   font-display: optional;
+  src: url('/fonts/inter-tr.woff2') format('woff2');
+  unicode-range: U+011E-011F, U+0130, U+015E-015F, U+20BA, U+20BF;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: optional;
   src: url('/fonts/inter-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range: U+0100-011D, U+0120-012F, U+0132-015D, U+0160-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20B9, U+20BB-20BE, U+20C0-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
   font-family: 'Inter';
@@ -29,8 +39,16 @@
   font-style: normal;
   font-weight: 400 600;
   font-display: optional;
+  src: url('/fonts/fraunces-tr.woff2') format('woff2');
+  unicode-range: U+011E-011F, U+0130, U+015E-015F, U+20BA;
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: optional;
   src: url('/fonts/fraunces-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range: U+0100-011D, U+0120-012F, U+0132-015D, U+0160-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20B9, U+20BB-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
   font-family: 'Fraunces';

@@ -4,14 +4,23 @@
 // hero'sunda en fazla ~760px gösterilir. Mobil LCP'yi 5-6 sn'ye çıkarıyordu
 // (Lighthouse 2026-10-13). Bu entegrasyon config aşamasında (sayfalar render
 // edilmeden ve public/ kopyalanmadan önce) her kapak için
-// public/covers/w/<slug>-{640,1280}.webp üretir. Bileşenler varyantın varlığını
+// public/covers/w/<slug>-{640,960,1280}.webp üretir. Bileşenler varyantın varlığını
 // kontrol edip <picture> kullanır; sharp çalışmazsa JPG'ye düşer, build bozulmaz.
 // Varyantlar git'e girmez (.gitignore) — her build yeniden/eksikse üretir.
+import { existsSync } from 'node:fs';
 import { mkdir, readdir, stat } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-export const COVER_WIDTHS = [640, 1280];
+// 960: telefonların çoğu (375-412px × DPR 1,75-2,6) 640'ı aşıp 1280'i indiriyordu (Lighthouse 2026-11-03).
+export const COVER_WIDTHS = [640, 960, 1280];
+
+/** Var olan WebP varyantlarından srcset; hiçbiri yoksa '' (bileşen JPG'ye düşer). */
+export function coverSrcset(slug) {
+  return COVER_WIDTHS.filter((w) => existsSync(join(process.cwd(), 'public', 'covers', 'w', `${slug}-${w}.webp`)))
+    .map((w) => `/covers/w/${slug}-${w}.webp ${w}w`)
+    .join(', ');
+}
 
 export default function coverVariants() {
   return {

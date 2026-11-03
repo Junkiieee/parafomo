@@ -2,6 +2,7 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { categorySlug } from '../site.config';
+import { coverSrcset } from '../integrations/cover-variants.mjs';
 import FormatDate from './FormatDate.astro';
 
 interface Props {
@@ -23,17 +24,17 @@ const { title, description, pubDate, category, readingTime } = post.data;
 const href = `/blog/${post.id}`;
 const coverSrc = `/covers/${post.id}.jpg`;
 const hasCover = existsSync(join(process.cwd(), 'public', 'covers', `${post.id}.jpg`));
-const hasWebp = hasCover && existsSync(join(process.cwd(), 'public', 'covers', 'w', `${post.id}-640.webp`));
+const webpSrcset = hasCover ? coverSrcset(post.id) : '';
 ---
 
 <article class:list={['post-card card', { featured }]}>
   <a href={href} class:list={['cover', { 'has-img': hasCover }]} aria-hidden="true" tabindex="-1">
     {hasCover && (
       <picture>
-        {hasWebp && (
+        {webpSrcset && (
           <source
             type="image/webp"
-            srcset={`/covers/w/${post.id}-640.webp 640w, /covers/w/${post.id}-1280.webp 1280w`}
+            srcset={webpSrcset}
             sizes={featured ? '(max-width: 760px) 100vw, 46vw' : '(max-width: 760px) 100vw, 360px'}
           />
         )}
