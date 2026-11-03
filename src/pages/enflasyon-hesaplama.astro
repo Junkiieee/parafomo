@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { BU_YIL } from '../data/yil';
 import Newsletter from '../components/Newsletter.astro';
 import tufe from '../../data/tufe-aylik.json';
 import { RELEASES, RELEASE_TIME } from '../data/tuik';
@@ -81,7 +82,7 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title={`Enflasyon Hesaplama 2026: Güncel Oran %${pct(SON.yillik)} | Alım Gücü`}
+  title={`Enflasyon Hesaplama ${BU_YIL}: Güncel Oran %${pct(SON.yillik)} | Alım Gücü`}
   description={`Yıllık enflasyon ${ayAdi(SON.ay)} itibarıyla %${pct(SON.yillik)}. İki tarih arası TÜFE değişimini ve paranın bugünkü karşılığını hesaplayın; TÜİK verisi.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
@@ -90,7 +91,7 @@ const breadcrumbs = [
   <div class="calc-wrap">
     <header class="calc-head">
       <p class="eyebrow">Enflasyon · TÜFE</p>
-      <h1>Enflasyon Hesaplama 2026</h1>
+      <h1>Enflasyon Hesaplama {BU_YIL}</h1>
       <p class="lede">
         Yıllık enflasyon {ayAdi(SON.ay)} itibarıyla <strong>%{pct(SON.yillik)}</strong>, aylık <strong>%{pct(SON.aylik)}</strong>.
         Aşağıda iki tarih arasındaki fiyat artışını ve paranızın bugünkü karşılığını hesaplayın.
