@@ -2,7 +2,7 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { categorySlug } from '../site.config';
-import { coverSrcset } from '../integrations/cover-variants.mjs';
+import { coverAvifSrcset, coverSrcset } from '../integrations/cover-variants.mjs';
 import FormatDate from './FormatDate.astro';
 
 interface Props {
@@ -25,19 +25,16 @@ const href = `/blog/${post.id}`;
 const coverSrc = `/covers/${post.id}.jpg`;
 const hasCover = existsSync(join(process.cwd(), 'public', 'covers', `${post.id}.jpg`));
 const webpSrcset = hasCover ? coverSrcset(post.id) : '';
+const avifSrcset = hasCover ? coverAvifSrcset(post.id) : '';
+const sizes = featured ? '(max-width: 760px) 100vw, 46vw' : '(max-width: 760px) 100vw, 360px';
 ---
 
 <article class:list={['post-card card', { featured }]}>
   <a href={href} class:list={['cover', { 'has-img': hasCover }]} aria-hidden="true" tabindex="-1">
     {hasCover && (
       <picture>
-        {webpSrcset && (
-          <source
-            type="image/webp"
-            srcset={webpSrcset}
-            sizes={featured ? '(max-width: 760px) 100vw, 46vw' : '(max-width: 760px) 100vw, 360px'}
-          />
-        )}
+        {avifSrcset && <source type="image/avif" srcset={avifSrcset} sizes={sizes} />}
+        {webpSrcset && <source type="image/webp" srcset={webpSrcset} sizes={sizes} />}
         <img src={coverSrc} alt="" loading={eager ? "eager" : "lazy"} fetchpriority={eager ? "high" : undefined} decoding="async" width="640" height="360" />
       </picture>
     )}
