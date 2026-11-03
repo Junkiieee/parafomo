@@ -1,8 +1,13 @@
 {
  "_aciklama": "TÜİK TÜFE aylık ve yıllık % değişim (2025=100). ay = YYYY-AA, en yeni başta.",
  "_kaynak": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Enflasyon+Verileri/Tuketici+Fiyatlari",
- "updated": "2026-10-11",
+ "updated": "2026-11-03",
  "months": [
+  {
+   "ay": "2026-10",
+   "yillik": 29.77,
+   "aylik": 2.58
+  },
   {
    "ay": "2026-09",
    "yillik": 29.73,
@@ -357,11 +362,6 @@
    "ay": "2020-11",
    "yillik": 14.03,
    "aylik": 2.3
-  },
-  {
-   "ay": "2020-10",
-   "yillik": 11.89,
-   "aylik": 2.13
   }
  ]
 }
