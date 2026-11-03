@@ -190,12 +190,19 @@ const breadcrumbs = [
     display: none;
   }
 
-  .post-content { max-width: var(--maxw-prose); margin: 0 auto; font-size: 1.02rem; line-height: 1.7; }
+  .post-content { width: 100%; min-width: 0; max-width: var(--maxw-prose); margin: 0 auto; font-size: 1.02rem; line-height: 1.7; overflow-wrap: break-word; }
   .post-content :global(h2) { font-size: var(--step-2); margin-top: 2.4rem; scroll-margin-top: 90px; }
   .post-content :global(h3) { font-size: var(--step-1); margin-top: 1.8rem; scroll-margin-top: 90px; }
   .post-content :global(h2 a), .post-content :global(h3 a) { color: inherit; }
   .post-content :global(ul), .post-content :global(ol) { margin-bottom: 1.2rem; }
   .post-content :global(li) { margin-bottom: 0.4rem; }
+  .post-content :global(.table-scroll) { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.6rem 0; }
+  .post-content :global(.table-scroll:focus-visible) { outline: 2px solid var(--brand); outline-offset: 2px; }
+  .post-content :global(.table-scroll > table) { margin: 0; }
+  @media (max-width: 600px) {
+    /* Dar ekranda sütunlar ezilip metin dikine uzamasın: hücre en az ~7rem, sığmazsa tablo yana kayar. */
+    .post-content :global(.table-scroll th), .post-content :global(.table-scroll td) { min-width: 7rem; padding: 0.5rem 0.6rem; }
+  }
   .post-content :global(table) { width: 100%; border-collapse: collapse; margin: 1.6rem 0; font-size: var(--step--1); }
   .post-content :global(th), .post-content :global(td) { border: 1px solid var(--border); padding: 0.6rem 0.8rem; text-align: left; }
   .post-content :global(th) { background: var(--surface); font-family: var(--font-sans); }

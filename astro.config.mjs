@@ -6,6 +6,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import trailingSlashLinks from './src/integrations/trailing-slash-links.mjs';
 import coverVariants from './src/integrations/cover-variants.mjs';
+import rehypeTableScroll from './src/integrations/rehype-table-scroll.mjs';
 
 // Yayına alırken bu adresi kendi alan adınla değiştir.
 const SITE = 'https://parafomo.com';
@@ -150,6 +151,7 @@ export default defineConfig({
     }),
   ],
   markdown: {
+    rehypePlugins: [rehypeTableScroll],
     shikiConfig: {
       theme: 'github-dark',
       wrap: true,

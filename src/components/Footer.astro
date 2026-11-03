@@ -63,17 +63,17 @@ const TOOL_LINKS = [
       ))}
     </nav>
 
-    <nav class="footer-col" aria-label="Güncel veri">
+    <nav class="footer-col footer-col--wide" aria-label="Güncel veri">
       <h3>Güncel Veri</h3>
       {DATA_LINKS.map(([href, label]) => <a href={href}>{label}</a>)}
     </nav>
 
-    <nav class="footer-col" aria-label="Hesaplayıcılar">
+    <nav class="footer-col footer-col--wide" aria-label="Hesaplayıcılar">
       <h3>Hesaplayıcılar</h3>
       {TOOL_LINKS.map(([href, label]) => <a href={href}>{label}</a>)}
     </nav>
 
-    <nav class="footer-col" aria-label="Site">
+    <nav class="footer-col footer-col--site" aria-label="Site">
       <h3>Site</h3>
       <a href="/blog">Tüm Yazılar</a>
       <a href="/hakkimizda/">Hakkımızda</a>
@@ -152,7 +152,14 @@ const TOOL_LINKS = [
     .footer-brand { grid-column: 1 / -1; }
   }
   @media (max-width: 760px) {
-    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.25rem; }
     .footer-brand { grid-column: 1 / -1; }
+    /* Kısa sütunlar (Kategoriler + Site) yan yana; uzun listeler tam genişlikte 2 sütun. */
+    .footer-col--site { order: 1; }
+    .footer-col--wide { order: 2; grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; column-gap: 1.25rem; row-gap: 0; }
+    .footer-col--wide h3 { grid-column: 1 / -1; }
+    .footer-col { gap: 0; }
+    /* Parmakla rahat dokunma: her link ~34px yükseklikte */
+    .footer-col a { padding: 0.45rem 0; line-height: 1.3; }
   }
 </style>
