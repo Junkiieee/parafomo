@@ -49,9 +49,10 @@ class Settings(BaseSettings):
     # DNS-only kurulumda başlığı istemci yazar → hız sınırı atlatılır.
     trust_cf_connecting_ip: bool = False
 
-    # Üyeliksiz uçların (şifre sıfırlama, bülten onayı) saatte gönderebileceği
+    # Üyeliksiz uçların (şifre sıfırlama, bülten onayı) saatte / günde gönderebileceği
     # toplam e-posta — sahte IP'lerle SMTP kotasını/itibarını yakmaya karşı sigorta.
-    public_mail_per_hour: int = 100
+    public_mail_per_hour: int = 50
+    public_mail_per_day: int = 200
 
     @property
     def cors_origin_list(self) -> list[str]:

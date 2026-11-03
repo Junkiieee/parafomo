@@ -77,7 +77,7 @@ class RateLimiter:
         with self._lock:
             q = self._hits.get(key)
             if q is None:
-                return True
+                return self.limit > 0
             return len(self._queue(key, now)) < self.limit
 
     def hit(self, key: str) -> bool:
@@ -109,5 +109,29 @@ def enforce(limiter: RateLimiter, key: str, detail: str | None = None) -> None:
         )
 
 
-# Üyeliksiz uçlardan çıkan TÜM e-postalar için ortak saatlik bütçe (config.public_mail_per_hour)
-public_mail_budget = RateLimiter(limit=max(get_settings().public_mail_per_hour, 0), window=3600)
+class MailBudget:
+    """Üyeliksiz uçlardan (sıfırlama, bülten onayı) çıkan TÜM e-postalar için ortak bütçe.
+
+    Saatlik sınır patlamayı keser (özellik bir saat içinde toparlanır); günlük sınır SMTP
+    kotasını (Brevo ücretsiz: 300/gün) alarm/aylık özet/bülten için korur.
+    """
+
+    def __init__(self, per_hour: int, per_day: int) -> None:
+        self.hour = RateLimiter(limit=max(per_hour, 0), window=3600, max_keys=10)
+        self.day = RateLimiter(limit=max(per_day, 0), window=86400, max_keys=10)
+        self._lock = threading.Lock()
+
+    def hit(self, key: str = "mail") -> bool:
+        with self._lock:
+            if not (self.hour.allowed(key) and self.day.allowed(key)):
+                return False
+            self.hour.hit(key)
+            self.day.hit(key)
+            return True
+
+    def clear(self) -> None:
+        self.hour.clear()
+        self.day.clear()
+
+
+public_mail_budget = MailBudget(get_settings().public_mail_per_hour, get_settings().public_mail_per_day)

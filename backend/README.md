@@ -45,7 +45,7 @@ Auth gerektiren uç noktalar `Authorization: Bearer <token>` bekler.
   bağlanınca o kullanıcının eski oturumları düşer.
 - Giriş, kayıt, şifre sıfırlama, Google girişi, bülten ve `/public/*` IP başına hız
   sınırlıdır (`app/ratelimit.py`, süreç içi). Üyeliksiz uçların gönderdiği e-postalar
-  ayrıca saatlik toplam bütçeye tabidir (`PORTFOLIO_PUBLIC_MAIL_PER_HOUR`).
+  ayrıca saatlik/günlük toplam bütçeye tabidir (`PORTFOLIO_PUBLIC_MAIL_PER_HOUR` / `_PER_DAY`).
 - Gövde üst sınırı 64 KB (`/inbox/ingest` 6 MB); sayılarda NaN/Infinity reddedilir.
 
 ## Testler

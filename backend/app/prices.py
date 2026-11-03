@@ -295,11 +295,13 @@ def get_bist_history(ticker: str, rng: str) -> list[dict] | None:
         res = data["chart"]["result"][0]
         ts = res["timestamp"]
         closes = res["indicators"]["quote"][0]["close"]
-        points = [
-            {"t": _dt.datetime.fromtimestamp(t, tz=_dt.timezone.utc).strftime("%Y-%m-%d"),
-             "p": round(p, 4)}
-            for t, c in zip(ts, closes) if (p := _num(c)) is not None
-        ]
+        points = []
+        for t, c in zip(ts, closes):
+            p = _num(c)
+            if p is None or not isinstance(t, (int, float)):
+                continue  # bozuk tek nokta tüm seriyi düşürmesin
+            points.append({"t": _dt.datetime.fromtimestamp(t, tz=_dt.timezone.utc).strftime("%Y-%m-%d"),
+                           "p": round(p, 4)})
     except httpx.TimeoutException:
         _mark_failed("src:yahoo", _DOWN_TTL)
         return None

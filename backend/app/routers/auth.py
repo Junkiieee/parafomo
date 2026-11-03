@@ -222,6 +222,7 @@ def reset_password(body: PasswordResetConfirm, db: Session = Depends(get_db)) ->
         .values(used_at=now)
     )
     db.commit()
+    _login_fail.reset(user.email)  # posta kutusu sahibi kanıtlandı → başkasının kurduğu kilit kalksın
     return Token(access_token=create_access_token(user.id, user.password_hash))
 
 
