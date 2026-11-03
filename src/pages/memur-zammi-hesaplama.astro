@@ -17,6 +17,8 @@ const zam = memurProj.zam;                 // Ocak 2027 tahmini toplam memur zam
 const final = remaining === 0;
 const nowFark = memurFrom(cumKnown).fark;  // şu ana kadar kesinleşen enflasyon farkı
 const known = knownKeys.map((k) => ({ k, name: monthName(k), aylik: byMonth.get(k)!.aylik }));
+// Boş dönemde known[known.length - 1] undefined olur ve build çöker (bkz. emekli-zammi-hesaplama).
+const sonBilinen = known.length ? known[known.length - 1].name : 'henüz açıklanan ay yok';
 const SCEN = [1.0, 1.5, 2.0].map((x) => ({ x, ...memurFrom(project(x)) }));
 
 const D = { salary: 60000 };
@@ -30,7 +32,7 @@ const faq = [
     q: 'Ocak 2027 memur zammı ne kadar olacak?',
     a: final
       ? `Ocak 2027 memur zammı %${nf(zam * 100)} olarak kesinleşti: 2027 ilk yarısı toplu sözleşme zammı %${TS_H1_2027} ve 2026 ikinci yarısının enflasyon farkı %${nf(memurProj.fark * 100)}.`
-      : `Memurlar Ocak 2027'de toplu sözleşmedeki %${TS_H1_2027} zam ile 2026 ikinci yarısının enflasyon farkını alır. Temmuz–${known[known.length - 1].name} döneminde birikimli enflasyon %${nf(cumKnown * 100)}; kalan ${remaining} ayda aylık enflasyonun son 3 ay ortalaması olan %${nf(ASSUME)} seyrederse enflasyon farkı %${nf(memurProj.fark * 100)}, toplam memur zammı yaklaşık %${nf(zam * 100)} olur. Bu bir tahmindir; kesin oran Aralık 2026 enflasyonu açıklanınca belli olur.`,
+      : `Memurlar Ocak 2027'de toplu sözleşmedeki %${TS_H1_2027} zam ile 2026 ikinci yarısının enflasyon farkını alır. Temmuz–${sonBilinen} döneminde birikimli enflasyon %${nf(cumKnown * 100)}; kalan ${remaining} ayda aylık enflasyonun son 3 ay ortalaması olan %${nf(ASSUME)} seyrederse enflasyon farkı %${nf(memurProj.fark * 100)}, toplam memur zammı yaklaşık %${nf(zam * 100)} olur. Bu bir tahmindir; kesin oran Aralık 2026 enflasyonu açıklanınca belli olur.`,
   },
   {
     q: 'Memur enflasyon farkı nasıl hesaplanır?',
@@ -112,7 +114,7 @@ const breadcrumbs = [
           <div class="split-item"><span class="split-label">Enflasyon farkı (2026 ikinci yarı)</span><span class="split-val" id="out-fark">%{nf(memurProj.fark * 100)}</span></div>
           <div class="split-item strong"><span class="split-label">Aylık artış</span><span class="split-val" id="out-inc">+₺{fmt(D.salary * zam)}</span></div>
         </div>
-        <p class="result-note">Kesinleşen: Temmuz–{known[known.length - 1].name} birikimli enflasyon %{nf(cumKnown * 100)}{nowFark > 0 ? `, enflasyon farkı şimdiden %${nf(nowFark * 100)}` : ''}.</p>
+        <p class="result-note">Kesinleşen: Temmuz–{sonBilinen} birikimli enflasyon %{nf(cumKnown * 100)}{nowFark > 0 ? `, enflasyon farkı şimdiden %${nf(nowFark * 100)}` : ''}.</p>
       </div>
     </div>
 

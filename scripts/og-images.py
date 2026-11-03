@@ -278,22 +278,35 @@ def altin_kac_gram_card():
             "sub": f"çeyrek · yarım {tr_pct(sp['yarim-altin'], 3)} · tam {tr_pct(sp['tam-altin'], 3)} · Cumhuriyet {tr_pct(sp['cumhuriyet-altini'], 3)} g"}
 
 
+def _toplantilar(prefix):
+    """data/<prefix>-YYYY.json dosyalarının hepsi (+ içlerindeki meetingsYYYY listeleri), tarih sırasıyla.
+    Yalnız bu yılın dosyasını okumak 1 Ocak'ta FileNotFoundError verip kartı donduruyordu (yıl geçişi denetimi)."""
+    import glob
+    files = sorted(glob.glob(os.path.join(REPO, "data", f"{prefix}-[0-9][0-9][0-9][0-9].json")))
+    datas = [json.load(open(f, encoding="utf-8")) for f in files]
+    ms = {}
+    for d in datas:
+        for k, v in d.items():
+            if k == "meetings" or (k.startswith("meetings") and k[8:].isdigit()):
+                for m in v:
+                    ms[m["decisionDate"]] = m
+    return datas, [ms[k] for k in sorted(ms)]
+
+
 def tcmb_card():
-    d = load(f"tcmb-{__import__('datetime').date.today().year}.json")
-    ms = d.get("meetings", [])
+    datas, ms = _toplantilar("tcmb")
     done = [m for m in ms if m.get("result")]
-    rate = done[-1]["result"]["rate"] if done else d["previous"]["rate"]
+    rate = done[-1]["result"]["rate"] if done else datas[0]["previous"]["rate"]
     nxt = next((m for m in ms if not m.get("result")), None)
     sub = f"sıradaki PPK: {tr_date(nxt['decisionDate'])}, {nxt['tsiTime']} TSİ · tüm kararlar" if nxt else "PPK kararları ve toplantı takvimi"
     return {"kicker": "TCMB POLİTİKA FAİZİ", "stat": f"%{tr_pct(rate, 2 if rate % 1 else 0)}", "sub": sub}
 
 
 def fed_card():
-    d = load(f"fomc-{__import__('datetime').date.today().year}.json")
-    ms = d.get("meetings", [])
+    datas, ms = _toplantilar("fomc")
     done = [m for m in ms if m.get("result")]
-    cur = done[-1]["result"] if done else d["previous"]
-    nxt = next((m for m in ms + d.get("meetings2027", []) if not m.get("result")), None)
+    cur = done[-1]["result"] if done else datas[0]["previous"]
+    nxt = next((m for m in ms if not m.get("result")), None)
     sub = f"sıradaki FOMC: {tr_date(nxt['decisionDate'])}, {nxt['tsiTime']} TSİ · dot plot günleri" if nxt else "FOMC kararları ve toplantı takvimi"
     return {"kicker": "FED FAİZ ORANI", "stat": f"%{tr_pct(cur['lower'], 2)}–{tr_pct(cur['upper'], 2)}", "sub": sub}
 

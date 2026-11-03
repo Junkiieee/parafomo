@@ -42,6 +42,9 @@ const TABAN = em.enDusukEmekliAyligi.tutar;
 const TUTARLAR = [15000, 18000, 20000, 25000, 30000, 35000, 40000, 50000];
 const ZAM_SSK = final ? cumKnown : sskProj;
 const lastKnown = known[known.length - 1];
+// Dönemin hiçbir ayı açıklanmamışsa (PERIOD yeni döneme erken geçirilirse) known boş kalır; known[0].name
+// TypeError verip build'i — ve build kapısı yüzünden bütün yayınları — durduruyordu (yıl geçişi denetimi).
+const donemAralik = known.length ? `${known[0].name}–${lastKnown.name}` : 'henüz açıklanan ay yok';
 const kesin = `${known.length} aylık kesinleşen enflasyon %${nf(cumKnown * 100)}`;
 
 const faq = [
@@ -49,7 +52,7 @@ const faq = [
     q: 'Ocak 2027 emekli zammı ne kadar olacak?',
     a: final
       ? `SSK ve Bağ-Kur emeklilerinin Ocak 2027 zammı, Temmuz–Aralık 2026 birikimli enflasyonu olan %${nf(cumKnown * 100)} olarak kesinleşti.`
-      : `Kesin oran Aralık 2026 enflasyonu açıklanınca belli olur. Şu ana kadar ${known[0].name}–${lastKnown.name} dönemindeki ${known.length} aylık birikimli enflasyon %${nf(cumKnown * 100)}; kalan ${remaining} ayda aylık enflasyonun son 3 ay ortalaması olan %${nf(ASSUME)} seyretmesi hâlinde SSK ve Bağ-Kur emeklilerinin zammı yaklaşık %${nf(sskProj * 100)} olur. Bu bir tahmindir.`,
+      : `Kesin oran Aralık 2026 enflasyonu açıklanınca belli olur. Şu ana kadar ${donemAralik} dönemindeki ${known.length} aylık birikimli enflasyon %${nf(cumKnown * 100)}; kalan ${remaining} ayda aylık enflasyonun son 3 ay ortalaması olan %${nf(ASSUME)} seyretmesi hâlinde SSK ve Bağ-Kur emeklilerinin zammı yaklaşık %${nf(sskProj * 100)} olur. Bu bir tahmindir.`,
   },
   {
     q: `Emekli zammı için kesinleşen ${known.length} aylık enflasyon ne kadar?`,
@@ -103,7 +106,7 @@ const updatedLabel = new Date(tufe.updated + 'T12:00:00').toLocaleDateString('tr
     : `Ocak 2027 Emekli Zammı Hesaplama: SSK, Bağ-Kur, Memur (Kesinleşen %${nf(cumKnown * 100)})`}
   description={final
     ? `Ocak 2027 emekli zammı kesinleşti: SSK ve Bağ-Kur emeklisine %${nf(cumKnown * 100)} (Temmuz–Aralık 2026 enflasyonu), memur ve memur emeklisine %${nf(memurProj.zam * 100)}. Aylığını gir, yeni maaşını gör.`
-    : `Ocak 2027 emekli ve memur zammı hesaplama. ${kesin} (${known[0].name}–${lastKnown.name} 2026). Tahmini SSK/Bağ-Kur zammı %${nf(sskProj * 100)}, memur %${nf(memurProj.zam * 100)}. Aylığını gir, yeni maaşını gör.`}
+    : `Ocak 2027 emekli ve memur zammı hesaplama. ${kesin} (${donemAralik} 2026). Tahmini SSK/Bağ-Kur zammı %${nf(sskProj * 100)}, memur %${nf(memurProj.zam * 100)}. Aylığını gir, yeni maaşını gör.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
 >
@@ -123,7 +126,7 @@ const updatedLabel = new Date(tufe.updated + 'T12:00:00').toLocaleDateString('tr
       <div class="kpi">
         <span class="kpi-label">Kesinleşen ({known.length}/6 ay)</span>
         <span class="kpi-val">%{nf(cumKnown * 100)}</span>
-        <span class="kpi-sub">{known[0].name}–{lastKnown.name} 2026 birikimli TÜFE</span>
+        <span class="kpi-sub">{donemAralik} 2026 birikimli TÜFE</span>
       </div>
       <div class="kpi">
         <span class="kpi-label">SSK / Bağ-Kur {final ? 'zammı' : 'tahmini'}</span>
