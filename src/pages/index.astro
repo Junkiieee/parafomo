@@ -15,7 +15,7 @@ import em from '../../data/emekli-memur.json';
 import altinFiyat from '../../data/altin-fiyat.json';
 import dxyData from '../../data/dxy.json';
 import bistGetiri from '../../data/bist-getiri.json';
-import { cumKnown, remaining, sskProj, memurProj } from '../data/zam2027';
+import { PERIOD, cumKnown, remaining, sskProj, memurProj } from '../data/zam2027';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
@@ -86,7 +86,11 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
   { slug: 'veraset-ve-intikal-vergisi-hesaplama', ad: 'Veraset ve intikal vergisi', deger: 'hesapla' },
   { slug: 'engelli-maasi', ad: 'Engelli maaşı (Ocak)', deger: `≈+%${nf1(memurProj.zam * 100)}` },
   // 2828 s.K. ek md.7: 10.000 gösterge × memur aylık katsayısı → Ocak 2027 = × (1 + memur zammı)
-  { slug: 'evde-bakim-maasi', ad: 'Evde bakım maaşı (Ocak)', deger: `${remaining === 0 ? '' : '≈'}₺${Math.round(10000 * em.memurKatsayi.aylikKatsayi * (1 + memurProj.zam)).toLocaleString('tr-TR')}` },
+  // Ocak tahmini yalnız katsayı dönemi zam modülünün başlangıcıyken (evde-bakim-maasi ile aynı kural); Ocak'ta resmî
+  // katsayı girilince katsayı × (1 + zam) çift zam olurdu (yıl geçişi denetimi) → yürürlükteki tutar.
+  ...(PERIOD[0] === em.donem
+    ? [{ slug: 'evde-bakim-maasi', ad: 'Evde bakım maaşı (Ocak)', deger: `${remaining === 0 ? '' : '≈'}₺${Math.round(10000 * em.memurKatsayi.aylikKatsayi * (1 + memurProj.zam)).toLocaleString('tr-TR')}` }]
+    : [{ slug: 'evde-bakim-maasi', ad: 'Evde bakım maaşı', deger: `₺${Math.round(10000 * em.memurKatsayi.aylikKatsayi).toLocaleString('tr-TR')}` }]),
   { slug: 'gelir-vergisi-hesaplama', ad: 'Gelir vergisi (kira)', deger: 'hesapla' },
 ].filter((z) => hasPage(z.slug));
 ---

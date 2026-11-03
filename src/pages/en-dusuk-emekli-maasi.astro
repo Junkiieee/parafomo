@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import em from '../../data/emekli-memur.json';
 // Zam tahmini /emekli-zammi-hesaplama ile ORTAK modülde — burada tekrar hesaplanmaz.
-import { sskProj, memurProj, remaining, cumKnown } from '../data/zam2027';
+import { PERIOD, sskProj, memurProj, remaining, cumKnown } from '../data/zam2027';
 
 const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
 const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
@@ -17,6 +17,10 @@ const OG = em.odemeGunleri;
 const final = remaining === 0;
 const tabanScen = T.tutar * (1 + sskProj);       // senaryo: taban zam oranında artırılırsa
 const memurEm27 = ME.tutar * (1 + memurProj.zam);
+// Projeksiyonlar yalnız tutarın başladığı dönem zam modülünün başlangıcıyla eşleşirken: Ocak'ta resmî 2027 tutarı
+// girilince "tutar × (1 + Ocak zammı)" çift zam olurdu (yıl geçişi denetimi; evde-bakim-maasi ile aynı kural).
+const TAHMIN_TABAN = T.baslangic === PERIOD[0];
+const TAHMIN_ME = ME.baslangic === PERIOD[0];
 
 const faq = [
   {
@@ -25,11 +29,11 @@ const faq = [
   },
   {
     q: 'Ocak 2027’de en düşük emekli maaşı ne olacak?',
-    a: `En düşük aylık tutarı her dönem ayrıca kanunla belirlenir; Ocak zammı SGK'nın hesapladığı aylığa uygulanır. Taban ${fmt(T.tutar)} ₺'de kalırsa, zamlı aylığı bunun altında kalan emekliler yine ${fmt(T.tutar)} ₺ alır. Taban da zam oranında (${final ? 'kesinleşen' : 'tahmini'} %${nf(sskProj * 100)}) artırılırsa yaklaşık ${fmt(tabanScen)} ₺ olur. Bu bir senaryodur; tutarı TBMM belirler.`,
+    a: `En düşük aylık tutarı her dönem ayrıca kanunla belirlenir; Ocak zammı SGK'nın hesapladığı aylığa uygulanır. Taban ${fmt(T.tutar)} ₺'de kalırsa, zamlı aylığı bunun altında kalan emekliler yine ${fmt(T.tutar)} ₺ alır. ${TAHMIN_TABAN ? `Taban da zam oranında (${final ? 'kesinleşen' : 'tahmini'} %${nf(sskProj * 100)}) artırılırsa yaklaşık ${fmt(tabanScen)} ₺ olur. Bu bir senaryodur; tutarı TBMM belirler.` : ''}`,
   },
   {
     q: 'En düşük memur emeklisi aylığı ne kadar?',
-    a: `Temmuz 2026 zammıyla ${fmt(ME.onceki)} ₺'den ${fmt(ME.tutar)} ₺'ye yükseldi. Memur emeklileri Ocak 2027'de memurlarla aynı oranda zam alır; tahmini %${nf(memurProj.zam * 100)} zamla yaklaşık ${fmt(memurEm27)} ₺ olur.`,
+    a: `${ayYil(ME.baslangic)} zammıyla ${fmt(ME.onceki)} ₺'den ${fmt(ME.tutar)} ₺'ye yükseldi.${TAHMIN_ME ? ` Memur emeklileri Ocak 2027'de memurlarla aynı oranda zam alır; tahmini %${nf(memurProj.zam * 100)} zamla yaklaşık ${fmt(memurEm27)} ₺ olur.` : ''}`,
   },
   {
     q: 'Emekli maaşı hangi gün yatar?',
@@ -139,7 +143,7 @@ const breadcrumbs = [
       <h2>Ocak 2027 için iki senaryo</h2>
       <ul>
         <li><strong>Taban artırılmazsa:</strong> zamlı aylığı {fmt(T.tutar)} ₺'nin altında kalan herkes {fmt(T.tutar)} ₺ almaya devam eder.</li>
-        <li><strong>Taban zam oranında artırılırsa:</strong> %{nf(sskProj * 100)} ile yaklaşık <strong>{fmt(tabanScen)} ₺</strong>.</li>
+        {TAHMIN_TABAN && <li><strong>Taban zam oranında artırılırsa:</strong> %{nf(sskProj * 100)} ile yaklaşık <strong>{fmt(tabanScen)} ₺</strong>.</li>}
       </ul>
       <p class="cta-line">
         Zam oranının ayrıntısı ve enflasyon senaryoları → <a href="/emekli-zammi-hesaplama/">emekli zammı hesaplama</a>. Henüz emekli değilseniz yaş ve prim gününüze göre ne zaman emekli olacağınızı <a href="/emeklilik-hesaplama/">emeklilik hesaplama</a> aracıyla görün.
