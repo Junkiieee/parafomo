@@ -59,9 +59,11 @@ def main():
     if not changed:  # boş commit üretmemek için dosyaya dokunma
         print(f"[kk-faiz] aynı: {gecerli} · <30 bin akdi %{v[1]}")
         return 0
-    with open(OUT, "w", encoding="utf-8") as f:
+    tmp = f"{OUT}.{os.getpid()}.tmp"   # atomik yaz: eşzamanlı build/iş yarım JSON okumasın
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
         f.write("\n")
+    os.replace(tmp, OUT)
     print(f"[kk-faiz] {'GÜNCELLENDİ' if changed else 'aynı'}: {gecerli} · <30 bin akdi %{v[1]} · referans %{v[0]}")
     return 0
 

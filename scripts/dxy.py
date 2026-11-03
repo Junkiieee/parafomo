@@ -101,9 +101,13 @@ def main():
         "usdtryChange": pct(usdtry, usdtry_prev),
         "components": components,
     }
-    with open(OUT, "w", encoding="utf-8") as f:
+    tmp = f"{OUT}.{os.getpid()}.tmp"   # atomik yaz: eşzamanlı build yarım JSON okumasın
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
-    print(f"[dxy] DXY={out['dxy']} ({out['dxyChange']:+}%), {len(components)} bileşen yazıldı → {OUT}")
+    os.replace(tmp, OUT)
+    # önceki kapanış yoksa dxyChange None: ":+" TypeError verip (yazdıktan sonra) çıkış 1 → "güncellenemedi" yalanı
+    chg = out["dxyChange"]
+    print(f"[dxy] DXY={out['dxy']} ({'?' if chg is None else f'{chg:+}'}%), {len(components)} bileşen yazıldı → {OUT}")
     return 0
 
 

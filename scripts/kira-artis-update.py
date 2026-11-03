@@ -77,9 +77,11 @@ def main():
     data["updated"] = today.isoformat()  # sitemap lastmod (astro.config DATA_PAGES)
     data["sonrakiAciklama"] = next_release(today)
     data["gecmis"] = [{"ay": label, "oran": rate}] + [g for g in data.get("gecmis", []) if g["ay"] != label]
-    with open(DATA, "w", encoding="utf-8") as f:
+    tmp = f"{DATA}.{os.getpid()}.tmp"   # atomik yaz: eşzamanlı build/iş yarım JSON okumasın
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
         f.write("\n")
+    os.replace(tmp, DATA)
     print(f"[kira] GÜNCELLENDİ: {label} %{rate}")
     return 0
 

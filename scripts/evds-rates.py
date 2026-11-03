@@ -136,9 +136,11 @@ def main():
     if old.get("hafta") == data["hafta"] and old.get("seri") == data["seri"]:
         print(f"[evds] değişiklik yok (son hafta {data['hafta']})")
         return 0
-    with open(OUT, "w", encoding="utf-8") as f:
+    tmp = f"{OUT}.{os.getpid()}.tmp"   # atomik yaz: eşzamanlı build/iş yarım JSON okumasın
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
         f.write("\n")
+    os.replace(tmp, OUT)
     m, c = data["mevduat"], data["kredi"]
     print(f"[evds] GÜNCELLENDİ: hafta {data['hafta']} · mevduat 3ay %{m['ay3']['yillikBilesik']} "
           f"(basit %{m['ay3']['basit']}) · ihtiyaç %{c['ihtiyac']['yillikBilesik']} (aylık %{c['ihtiyac']['aylik']}) "

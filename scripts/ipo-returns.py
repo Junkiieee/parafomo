@@ -125,12 +125,16 @@ def main():
         "items": rows,
     }
 
-    with open(STORE, "w", encoding="utf-8") as fh:
-        json.dump(out, fh, ensure_ascii=False, indent=2)
+    def _write(path):   # atomik yaz (geçici dosya + os.replace): eşzamanlı build yarım JSON okumasın
+        tmp = f"{path}.{os.getpid()}.tmp"
+        with open(tmp, "w", encoding="utf-8") as fh:
+            json.dump(out, fh, ensure_ascii=False, indent=2)
+        os.replace(tmp, path)
+
+    _write(STORE)
     try:
         os.makedirs(os.path.dirname(PUBLIC), exist_ok=True)
-        with open(PUBLIC, "w", encoding="utf-8") as fh:
-            json.dump(out, fh, ensure_ascii=False, indent=2)
+        _write(PUBLIC)
     except Exception as e:
         print(f"UYARI: public kopya yazılamadı: {e}", file=sys.stderr)
 

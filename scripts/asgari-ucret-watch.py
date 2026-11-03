@@ -115,9 +115,11 @@ def parse_items(xml):
 
 
 def save(d):
-    with open(DATA, "w", encoding="utf-8") as f:
+    tmp = f"{DATA}.{os.getpid()}.tmp"   # atomik yaz: eşzamanlı build/iş yarım JSON okumasın
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(d, f, ensure_ascii=False, indent=1)
         f.write("\n")
+    os.replace(tmp, DATA)
 
 
 def sh(cmd):
