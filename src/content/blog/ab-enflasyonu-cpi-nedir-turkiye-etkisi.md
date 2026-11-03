@@ -1,5 +1,5 @@
 ---
-title: "AB Enflasyonu (CPI) Nedir? Euro Bölgesi Verisi Türkiye'yi Nasıl Etkiler"
+title: "AB Enflasyonu (CPI) Nedir? Euro Bölgesi Verisi ve Türkiye'ye Etkisi"
 description: "AB enflasyonu (CPI) nedir, nasıl okunur? Euro Bölgesi enflasyon verisi ECB faizini, EUR/TRY kurunu ve Türk yatırımcıyı nasıl etkiler? Pratik rehber."
 pubDate: 2026-06-28
 updatedDate: 2026-10-22

@@ -98,7 +98,7 @@ const jsonLd = {
 
 <BaseLayout
   title={upcoming
-    ? `TCMB Faiz Kararı Ne Zaman? Sıradaki PPK: ${upcoming.dayLabel}, ${upcoming.tsiTime} (Faiz %${nf(rate)})`
+    ? `TCMB Faiz Kararı Ne Zaman? ${upcoming.dayLabel}, ${upcoming.tsiTime} (Faiz %${nf(rate)})`
     : `TCMB Faiz Kararı 2026: PPK Takvimi ve Kararlar (Politika Faizi %${nf(rate)})`}
   description={`TCMB politika faizi %${nf(rate)}${last ? ` (son karar ${last.dayLabel}: ${decisionText(last.result!)})` : ''}. 2026 PPK tarihleri, tüm kararlar, açıklama saati ve sıradaki karara kalan gün.`}
 >

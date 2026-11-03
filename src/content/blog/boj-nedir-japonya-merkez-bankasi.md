@@ -1,5 +1,5 @@
 ---
-title: "BOJ Nedir? Japonya Merkez Bankası Faiz Kararı ve Küresel Piyasalara Etkisi"
+title: "BOJ Nedir? Japonya Merkez Bankası Faiz Kararı ve Piyasalara Etkisi"
 description: "BOJ (Bank of Japan) nedir, faiz kararı nasıl alınır? Sıfır faiz, YCC, QQE, 2024 normalleşmesi ve Yen carry trade üzerinden TL ile BIST'e etkisi sade dille."
 pubDate: 2026-08-14
 updatedDate: 2026-10-22

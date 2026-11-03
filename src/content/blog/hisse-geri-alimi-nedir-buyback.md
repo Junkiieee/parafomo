@@ -1,5 +1,5 @@
 ---
-title: "Hisse Geri Alımı (Buyback) Nedir? Şirket Neden Kendi Hissesini Satın Alır?"
+title: "Hisse Geri Alımı (Buyback) Nedir? Şirket Neden Kendi Hissesini Alır?"
 description: "Hisse geri alımı nedir, şirket neden kendi hissesini satın alır? EPS, hisse fiyatı ve temettüye etkisini, BIST örneklerini ve yatırım sinyalini öğren."
 pubDate: 2026-08-25
 updatedDate: 2026-10-22

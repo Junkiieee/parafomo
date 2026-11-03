@@ -1,6 +1,6 @@
 ---
 title: "Halka Arz (IPO) Nedir? Yeni Hisse Senetlerine Nasıl Yatırım Yapılır?"
-description: "Halka arz (IPO) nedir, şirketler neden halka arz olur ve Türkiye'de nasıl başvurursun? Adım adım katılım rehberi, değerlendirme kriterleri ve dikkat edilmesi gereken riskler."
+description: "Halka arz (IPO) nedir, şirketler neden halka arz olur, Türkiye'de nasıl başvurulur? Adım adım katılım rehberi, değerlendirme kriterleri ve riskler."
 pubDate: 2026-07-28
 category: "Borsa"
 tags: ["halka arz", "ipo", "hisse senedi", "borsa", "BIST", "yatırım"]

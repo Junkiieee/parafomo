@@ -116,7 +116,7 @@ const jsonLd = {
   title={upcoming
     ? `Fed Toplantı Tarihleri 2026-2027: Sıradaki Karar ${upLabel} (${curBand})`
     : `Fed Toplantı Tarihleri 2026-2027: Faiz Kararı Takvimi (${curBand})`}
-  description={`Fed faizi ${curBand}${last ? ` (son karar ${last.dayLabel}: ${decisionText(last.result!)})` : ''}. 2026 FOMC toplantı tarihleri ve kararları, TSİ saatleri, dot plot günleri ve 2027 Fed takvimi.`}
+  description={`Fed faizi ${curBand}${last ? ` (son karar ${last.dayLabel}: ${last.result!.decision === 'hold' ? 'sabit' : decisionText(last.result!)})` : ''}. 2026 FOMC toplantı tarihleri ve kararları, TSİ saatleri, dot plot günleri ve 2027 Fed takvimi.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 

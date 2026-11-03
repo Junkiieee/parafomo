@@ -1,5 +1,5 @@
 ---
-title: "Cari Açık Nedir? Türkiye'nin Cari Açığı TL ve Enflasyonu Nasıl Etkiler?"
+title: "Cari Açık Nedir? Cari Açık TL'yi ve Enflasyonu Nasıl Etkiler?"
 description: "Cari açık nedir, bileşenleri nelerdir ve Türkiye'nin cari açığı dolar kuru ile enflasyona nasıl yansır? Yatırımcı için sade 2026 rehberi."
 pubDate: 2026-08-20
 category: "Ekonomi"

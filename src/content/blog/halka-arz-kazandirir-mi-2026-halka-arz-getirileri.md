@@ -1,6 +1,6 @@
 ---
 title: "Halka Arz Kazandırır mı? 2026 Halka Arzlarının Getirisi"
-description: "Halka arz kazandırır mı? 2026'da talep toplayan 35 halka arzın 22 Ekim 2026 itibarıyla ortalama getirisi %-25,6; yalnızca 8'i arz fiyatının üzerinde. En iyi, en kötü arzlar ve lot örneği."
+description: "Halka arz kazandırır mı? 2026'da talep toplayan 35 arzın 22 Ekim itibarıyla ortalama getirisi %-25,6; yalnızca 8'i arz fiyatının üzerinde. En iyi ve en kötüler."
 pubDate: 2026-10-14
 updatedDate: 2026-10-22
 category: "Borsa"

@@ -1,5 +1,5 @@
 ---
-title: "Parasal Genişleme (QE) Nedir? Merkez Bankası Para Basma ve Piyasa Etkisi"
+title: "Parasal Genişleme (QE) Nedir? Para Basmanın Piyasalara Etkisi"
 description: "Parasal genişleme (QE) nedir, nasıl çalışır? Fed ve ECB'nin bilanço büyütme politikasının enflasyon, dolar, altın ve TL üzerindeki etkisini öğrenin."
 pubDate: 2026-08-29
 category: "Ekonomi"

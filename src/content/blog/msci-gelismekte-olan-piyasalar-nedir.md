@@ -1,6 +1,6 @@
 ---
-title: "MSCI Gelişmekte Olan Piyasalar Nedir? Türkiye'nin Ağırlığı ve Yatırım Rehberi"
-description: "MSCI Gelişmekte Olan Piyasalar Endeksi nedir, hangi ülkeleri kapsar, Türkiye'nin ağırlığı ne ve bu endekse nasıl yatırım yapılır? EEM, VWO ETF karşılaştırması ve pratik rehber."
+title: "MSCI Gelişmekte Olan Piyasalar Endeksi Nedir? Türkiye'nin Ağırlığı"
+description: "MSCI Gelişmekte Olan Piyasalar Endeksi nedir, hangi ülkeleri kapsar, Türkiye'nin ağırlığı ne? Endekse yatırım için EEM ve VWO ETF karşılaştırması."
 pubDate: 2026-08-29
 category: "Yatırım"
 tags: ["msci", "gelişmekte olan piyasalar", "emerging markets", "etf", "uluslararası yatırım", "türkiye borsası"]

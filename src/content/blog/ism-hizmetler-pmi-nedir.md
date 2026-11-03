@@ -1,5 +1,5 @@
 ---
-title: "ISM Hizmetler PMI Nedir? ABD Servis Sektörü Verisi Dolar ve TL'yi Nasıl Etkiler?"
+title: "ISM Hizmetler PMI Nedir? ABD Servis Verisinin Dolar ve TL'ye Etkisi"
 description: "ISM Hizmetler (Non-Manufacturing) PMI nedir, nasıl okunur? ABD servis sektörü verisi doları, altını ve TL'yi nasıl etkiler? Türk yatırımcı için rehber."
 pubDate: 2026-07-04
 updatedDate: 2026-10-22
