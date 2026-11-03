@@ -87,7 +87,8 @@ const jsonLd = {
   name: isHome ? SITE.name : pageTitle,
   headline: title ?? SITE.name,
   description,
-  url: canonical,
+  // noindex sayfada (404) var olmayan /404/ adresi yazılıyordu.
+  ...(!noindex && { url: canonical }),
   image:
     isArticle && heroImage
       ? [{ '@type': 'ImageObject', url: new URL(heroImage.src, SITE.url).href, width: heroImage.width, height: heroImage.height }, ogImage]
@@ -135,7 +136,8 @@ const breadcrumbLd =
     : null;
 
 // Hesaplayıcı sayfaları: ücretsiz finans web uygulaması olarak işaretle (zengin sonuç uygunluğu)
-const calcLd = canonPath.includes('hesaplama')
+// Yalnız tekil hesaplayıcılar (…-hesaplama/); araç merkezi /hesaplama-araclari/ bir liste sayfası, uygulama değil.
+const calcLd = /-hesaplama\/$/.test(canonPath)
   ? {
       '@context': 'https://schema.org',
       '@type': 'WebApplication',
@@ -181,7 +183,7 @@ const shareLabel = typeof share === 'string' ? share : calcLd ? 'Bu hesaplayıc�
     <meta property="og:locale" content={SITE.locale} />
     <meta property="og:title" content={title ?? SITE.name} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
+    {!noindex && <meta property="og:url" content={canonical} />}
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -202,6 +204,7 @@ const shareLabel = typeof share === 'string' ? share : calcLd ? 'Bu hesaplayıc�
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <meta name="theme-color" content="#ffffff" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="alternate" type="application/rss+xml" title={`${SITE.name} RSS`} href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />

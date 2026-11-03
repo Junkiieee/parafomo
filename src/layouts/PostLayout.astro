@@ -9,7 +9,7 @@ import PostCard from '../components/PostCard.astro';
 import EventResult from '../components/EventResult.astro';
 import RelatedTools from '../components/RelatedTools.astro';
 import ShareBar from '../components/ShareBar.astro';
-import { eventResult, fillTitle } from '../data/event-result';
+import { eventResult, eventModified, fillTitle } from '../data/event-result';
 import { categorySlug } from '../site.config';
 import { coverSrcset } from '../integrations/cover-variants.mjs';
 
@@ -19,7 +19,8 @@ const { title: rawTitle, description, pubDate, updatedDate, category, tags, auth
 const ev = eventResult(sonuc);
 const title = (ev?.done && fillTitle(sonucBaslik, ev.vars)) || rawTitle;
 const baseModified = updatedDate ?? pubDate;
-const evModified = ev?.done ? new Date(ev.date + 'T12:00:00Z') : null;
+// TÜFE 10:00 TSİ'de açıklanıyor; eski 12:00Z sabiti sabah build'inde dateModified'ı ~5 saat geleceğe yazıyordu.
+const evModified = ev?.done ? eventModified(ev) : null;
 const modified = evModified && evModified > baseModified ? evModified : baseModified;
 // Olay/haber yazısı (şemada NewsArticle): sonuç kutulu önizleme ya da slug’ında "ay-yıl" geçen (…-ekim-2026-…) yazı.
 const isNews = !!sonuc || /(?:^|-)(ocak|subat|mart|nisan|mayis|haziran|temmuz|agustos|eylul|ekim|kasim|aralik)-20\d\d(?:-|$)/.test(post.id);

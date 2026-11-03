@@ -7,6 +7,7 @@ import sitemap from '@astrojs/sitemap';
 import trailingSlashLinks from './src/integrations/trailing-slash-links.mjs';
 import coverVariants from './src/integrations/cover-variants.mjs';
 import rehypeTableScroll from './src/integrations/rehype-table-scroll.mjs';
+import stripPipelineFiles from './src/integrations/strip-pipeline-files.mjs';
 
 // Yayına alırken bu adresi kendi alan adınla değiştir.
 const SITE = 'https://parafomo.com';
@@ -49,8 +50,9 @@ const updatedOf = (f) => {
   if (d.updated) return asDate(d.updated);
   if (d.guncellenme) return asDate(d.guncellenme);
   // TCMB/Fed takvimi: açıklanmış son kararın günü
-  const ms = [...(d.meetings ?? []), ...(d.meetings2027 ?? [])].filter((m) => m.result).map((m) => m.decisionDate).sort();
-  return ms.length ? asDate(`${ms.at(-1)}T20:00:00Z`) : null;
+  const ms = [...(d.meetings ?? []), ...(d.meetings2027 ?? [])].filter((m) => m.result)
+    .map((m) => `${m.decisionDate}T${m.tsiTime ?? '14:00'}:00+03:00`).sort();
+  return ms.length ? asDate(ms.at(-1)) : null;
 };
 const YD = ['yeniden-degerleme.json'];
 const TUFE = ['tufe-aylik.json'];
@@ -84,6 +86,7 @@ for (const [page, files] of Object.entries(DATA_PAGES)) {
   if (ds.length) lastmodByPage[page] = new Date(Math.max(...ds)).toISOString();
 }
 // Olay yazıları (frontmatter `sonuc:`) — karar/veri açıklandıysa lastmod o gün (src/data/event-result.ts ile aynı kaynak)
+const AYLAR_TR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 const eventDate = (sonuc) => {
   const [tur, key] = sonuc.split(':');
   if (tur === 'tcmb' || tur === 'fed') {
@@ -91,12 +94,17 @@ const eventDate = (sonuc) => {
     for (const f of files) {
       const d = readJson(f) ?? {};
       const m = [...(d.meetings ?? []), ...(d.meetings2027 ?? [])].find((x) => x.decisionDate === key);
-      if (m?.result) return asDate(`${key}T20:00:00Z`);
+      if (m?.result) return asDate(`${key}T${m.tsiTime ?? '14:00'}:00+03:00`);
     }
   } else if (tur === 'tufe') {
     if ((readJson('tufe-aylik.json')?.months ?? []).some((x) => x.ay === key)) {
+      // src/data/event-result.ts ile aynı kural: TÜİK takvimindeki gün, yoksa izleyen ayın 3'ü; saat 10:00 TSİ.
       const [y, mo] = key.split('-').map(Number);
-      return asDate(mo === 12 ? `${y + 1}-01-05` : `${y}-${String(mo + 1).padStart(2, '0')}-05`);
+      const ay = `${AYLAR_TR[mo - 1]} ${y}`;
+      const rel = readdirSync(dataDir).filter((f) => /^tuik-enflasyon-\d{4}\.json$/.test(f))
+        .flatMap((f) => readJson(f)?.releases ?? []).find((r) => r.covers === ay)?.date
+        ?? (mo === 12 ? `${y + 1}-01-03` : `${y}-${String(mo + 1).padStart(2, '0')}-03`);
+      return asDate(`${rel}T10:00:00+03:00`);
     }
   }
   return null;
@@ -114,6 +122,47 @@ try {
   // sessiz geç
 }
 
+// Liste sayfaları: anasayfa ve /blog/ en yeni yazıyla, /kategori/<slug>/ o kategorinin en yeni yazısıyla değişir.
+const categorySlugByName = {};
+try {
+  const cfg = readFileSync(fileURLToPath(new URL('./src/site.config.ts', import.meta.url)), 'utf-8');
+  for (const m of cfg.matchAll(/\{\s*name:\s*'([^']+)',\s*slug:\s*'([^']+)'/g)) categorySlugByName[m[1]] = m[2];
+} catch {
+  // sessiz geç
+}
+const newestPost = { all: null, byCategory: {} };
+try {
+  for (const file of readdirSync(blogDir)) {
+    if (!/\.mdx?$/.test(file)) continue;
+    const fm = readFileSync(`${blogDir}/${file}`, 'utf-8').split(/^---\s*$/m)[1] ?? '';
+    if (/^\s*draft:\s*true\b/m.test(fm)) continue;
+    const lm = lastmodBySlug[file.replace(/\.mdx?$/, '')];
+    if (!lm) continue;
+    const cat = categorySlugByName[fm.match(/^\s*category:\s*['"]?([^'"\n]+?)['"]?\s*$/m)?.[1]];
+    if (!newestPost.all || lm > newestPost.all) newestPost.all = lm;
+    if (cat && (!newestPost.byCategory[cat] || lm > newestPost.byCategory[cat])) newestPost.byCategory[cat] = lm;
+  }
+} catch {
+  // sessiz geç
+}
+// Halka arz şirket sayfaları: kaynağın (halkarz.com) şirket güncellemesi "GG.AA.YYYY SS:dd" TSİ ya da ilk görülme;
+// işlem gören şirketin getirisi her gün yenilendiği için onlarda getiri dosyasının zamanı.
+const ipoReturns = readJson('halka-arz-getiri.json');
+const ipoRetCodes = new Set((ipoReturns?.items ?? []).map((r) => r.code));
+const trStamp = (v) => {
+  const m = /^(\d{2})\.(\d{2})\.(\d{4}) (\d{2}):(\d{2})$/.exec(v ?? '');
+  return m ? asDate(`${m[3]}-${m[2]}-${m[1]}T${m[4]}:${m[5]}:00+03:00`) : null;
+};
+const lastmodByIpo = {};
+for (const [slug, it] of Object.entries(readJson('halka-arz-sirketler.json')?.items ?? {})) {
+  const ds = [
+    trStamp(it.updated_src),
+    it.first_seen ? asDate(it.first_seen) : null,
+    it.bist_code && ipoRetCodes.has(it.bist_code) && ipoReturns?.updated ? asDate(ipoReturns.updated) : null,
+  ].filter(Boolean);
+  if (ds.length) lastmodByIpo[slug] = new Date(Math.max(...ds)).toISOString();
+}
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE,
@@ -123,10 +172,11 @@ export default defineConfig({
     coverVariants(),
     mdx(),
     trailingSlashLinks(),
+    stripPipelineFiles(),
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
-      // robots.txt /portfoy/'yu engelliyor; sitemap'te olmaları çelişkili sinyal (GSC 2026-10-10)
+      // /portfoy/ altı ya noindex (şifre sıfırlama) ya app.parafomo.com'a 301 — sitemap'te yeri yok (GSC 2026-10-10)
       filter: (page) => !page.includes('/portfoy/'),
       serialize(item) {
         const m = item.url.match(/\/blog\/([^/]+)\/?$/);
@@ -140,6 +190,15 @@ export default defineConfig({
           item.lastmod = lastmodByPage['altin-fiyatlari'];
           item.changefreq = 'daily';
         }
+        const path = new URL(item.url).pathname;
+        if ((path === '/' || path === '/blog/') && newestPost.all) {
+          item.lastmod = newestPost.all;
+          item.changefreq = 'daily';
+        }
+        const kat = path.match(/^\/kategori\/([^/]+)\/$/);
+        if (kat && newestPost.byCategory[kat[1]]) item.lastmod = newestPost.byCategory[kat[1]];
+        const ipo = path.match(/^\/halka-arz\/([^/]+)\/$/);
+        if (ipo && lastmodByIpo[ipo[1]]) item.lastmod = lastmodByIpo[ipo[1]];
         const pg = item.url.match(/^https?:\/\/[^/]+\/([^/]+)\/?$/);
         if (pg && lastmodByPage[pg[1]]) {
           item.lastmod = lastmodByPage[pg[1]];
