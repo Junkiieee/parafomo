@@ -25,7 +25,7 @@ faq:
 
 ## Evlilik kredisi nedir, kim veriyor?
 
-Evlilik kredisi halk arasındaki adı; resmî adı **"Evlenecek Gençlerin Desteklenmesi Projesi"**. Proje, 22 Kasım 2023 tarihli **7474 sayılı Aile ve Gençlik Fonu Kurulması Hakkında Kanun** ile kurulan fonun ilk uygulamalarından biri. Pilot olarak deprem bölgesinde (Adıyaman, Hatay, Kahramanmaraş, Malatya, Gaziantep'in İslahiye ve Nurdağı ilçeleri) başladı, 2024'te Karabük, Bartın, Zonguldak ve Osmaniye eklendi.
+Evlilik kredisi halk arasındaki adı; resmî adı **"Evlenecek Gençlerin Desteklenmesi Projesi"**. Proje, Kasım 2023 tarihli **7474 sayılı Aile ve Gençlik Fonu Kurulması Hakkında Kanun** ile kurulan fonun ilk uygulamalarından biri. Pilot olarak deprem bölgesinde (Adıyaman, Hatay, Kahramanmaraş, Malatya, Gaziantep'in İslahiye ve Nurdağı ilçeleri) başladı, 2024'te Karabük, Bartın, Zonguldak ve Osmaniye eklendi.
 
 Bunun bir banka ürünü olmadığını baştan bilmek önemli:
 
@@ -73,7 +73,7 @@ Gelir, **SGK hizmet dökümündeki** ya da Kamu Bordro Sistemi'ndeki **brüt** k
 | Çiftin aylık brüt gelir toplamı (6 ay ortalaması) | 33.030 × 2,5 | 82.575 TL |
 | Son aya ait gelir toplamı | 33.030 × 2,5 | 82.575 TL |
 
-Örnek: İkisi de brüt asgari ücretle çalışan bir çiftin toplamı 66.060 TL'dir ve sınırın altında kalır. Biri asgari ücret, diğeri brüt 50.000 TL kazanıyorsa toplam 83.030 TL olur ve sınır aşılır. Ocak 2027'de asgari ücret değişince sınır da kendiliğinden yükselecek.
+Örnek: İkisi de brüt asgari ücretle çalışan bir çiftin toplamı 66.060 TL'dir ve sınırın altında kalır. Biri asgari ücret, diğeri brüt 50.000 TL kazanıyorsa toplam 83.030 TL olur ve sınır aşılır. Ocak 2027'de brüt asgari ücret güncellenirse sınır da ona bağlı olarak değişir.
 
 ## Evlilik kredisi başvurusu adım adım
 
@@ -122,7 +122,7 @@ Sıkça sorulan sorular sayfasında hâlâ "her çocuk için borç 12 ay ertelen
 | Şart | Yaş, gelir, taşınmaz, eğitim | Gelir ve kredi notu |
 | Çocukta hibe | 12 taksit silinir, 2. çocukta tamamı | Yok |
 
-Faizsiz ve 2 yıl ödemesiz bir borç, enflasyonun yüksek olduğu bir ortamda **reel olarak** zamanla hafifler: 2028'de ödeyeceğin 10.417 TL'lik taksit, bugünkü 10.417 TL'den daha az alım gücü taşır. Ne kadar eridiğini [enflasyon hesaplama](/enflasyon-hesaplama) aracıyla kendi varsayımınla görebilirsin. Fonun tutarı yetmezse ve ek banka kredisi düşünüyorsan, toplam maliyeti önce [ihtiyaç kredisi hesaplama](/ihtiyac-kredisi-hesaplama) ya da [kredi hesaplama](/kredi-hesaplama) aracında gör.
+Faizsiz ve 2 yıl ödemesiz bir borç, enflasyonun yüksek olduğu bir ortamda **reel olarak** zamanla hafifler: bugün başvurursan ilk taksitlerin 2029'a denk gelir ve o gün ödeyeceğin 10.417 TL'lik taksit, bugünkü 10.417 TL'den daha az alım gücü taşır. Ne kadar eridiğini [enflasyon hesaplama](/enflasyon-hesaplama) aracıyla kendi varsayımınla görebilirsin. Fonun tutarı yetmezse ve ek banka kredisi düşünüyorsan, toplam maliyeti önce [ihtiyaç kredisi hesaplama](/ihtiyac-kredisi-hesaplama) ya da [kredi hesaplama](/kredi-hesaplama) aracında gör.
 
 ## Parayı nasıl planlamalı?
 
