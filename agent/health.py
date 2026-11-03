@@ -30,14 +30,19 @@ ERR_RE = re.compile(r"HATA|Traceback|hit your|Failed to authenticate|ÜRETİLEME
 
 # ad, log, başarı deseni, beklenen azami yaş (saat; None = olaya bağlı), not
 PIPELINES = [
-    ("Viral Short (YouTube+IG)", "viral.log", r"\] Tamamlandı: \S+ @", 30, "günlük 1 slot"),
+    # 2026-10-30/31'de crontab'da KAPALI (viral/shorts/manim/gündem/IG kartları): kapalıyken her gün kalıcı
+    # "GECİKTİ" üretip gerçek sorunları gürültüye gömüyordu. Cron'u geri açınca satırı da geri aç.
+    # ("Viral Short (YouTube+IG)", "viral.log", r"\] Tamamlandı: \S+ @", 30, "günlük 1 slot"),
     # "Kuyruk boş" = Shorts'a çevrilecek yeni yazı yok (hafta sonu blog yok) → hata değil (2026-10-18 yanlış alarm)
-    ("Blog→Short (YouTube)", "shorts.log", r"bu çalıştırmada [1-9]\d* Shorts yayınlandı|Kuyruk boş — işlenecek yeni yazı yok", 30, "11:00 UTC"),
-    ("Manim Short (YouTube+IG)", "manim-daily.log", r"Manim-daily tamam:", 30, "16:00 UTC"),
-    ("Gündem Short", "news.log", r"gündem videosu üretildi", None, "yalnız yüksek-etkili olay günü"),
+    # ("Blog→Short (YouTube)", "shorts.log", r"bu çalıştırmada [1-9]\d* Shorts yayınlandı|Kuyruk boş — işlenecek yeni yazı yok", 30, "11:00 UTC"),
+    # ("Manim Short (YouTube+IG)", "manim-daily.log", r"Manim-daily tamam:", 30, "16:00 UTC"),
+    # ("Gündem Short", "news.log", r"gündem videosu üretildi", None, "yalnız yüksek-etkili olay günü"),
     ("Blog yazısı", "cron.log", r"\] Tamamlandı$", 80, "Pzt-Cum"),
-    ("IG altın kartı", "altin-ig.log", r"YAYINLANDI", 30, "her gün"),
-    ("IG BIST kartları", "bist.log", r"YAYINLANDI", 80, "Pzt-Cum"),
+    # ("IG altın kartı", "altin-ig.log", r"YAYINLANDI", 30, "her gün"),
+    # ("IG BIST kartları", "bist.log", r"YAYINLANDI", 80, "Pzt-Cum"),
+    # Şu an AÇIK olup hiç izlenmeyenler: onaylı yayın kuyruğu (kuyruk.sh) ve gece yedeği (maintenance → backup.sh)
+    ("Onaylı yayın (YouTube+IG+FB)", "kuyruk.log", r"\[yayın\] (✅|bugün çıkacak onaylı video yok)", 20, "10:00 + 16:00 UTC (en uzun ara 18 sa)"),
+    ("Gece yedeği (portföy DB)", "maintenance.log", r"\[backup\] portföy DB yedeklendi", 30, "04:30 UTC"),
     ("Halka arz verisi", "halka-arz.log", r"Değişiklik yok|Push başarılı", 14, "6 saatte bir"),
     ("Öğrenme döngüsü", "learn.log", r"Öğrenme döngüsü tamamlandı", 30, "günlük"),
 ]

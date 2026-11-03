@@ -34,7 +34,10 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.hostname !== CANONICAL_HOST && url.hostname !== `www.${CANONICAL_HOST}`) {
-      return env.ASSETS.fetch(request);
+      // *.workers.dev / sürüm önizleme adresleri: aynı içeriğin kopyası → dizine girmesin; güvenlik başlıkları yine olsun
+      const res = withCache(url.pathname, await env.ASSETS.fetch(request));
+      res.headers.set('X-Robots-Tag', 'noindex');
+      return res;
     }
     let moved = false;
     if (url.protocol === 'http:') {
@@ -78,18 +81,42 @@ export default {
       message.setReject('Mesaj çok büyük');
       return;
     }
+    // Opsiyonel gönderen listesi (INBOX_ALLOWED_FROM="a@x.com,@alan.com"): ajan bu kutuyu okuyor; açık kutu =
+    // internetteki herkesin ajana metin (prompt injection) sokabilmesi. Boşsa herkes kabul (bugünkü davranış).
+    const allow = (env.INBOX_ALLOWED_FROM || '').toLowerCase().split(',').map((s) => s.trim()).filter(Boolean);
+    const from = String(message.from || '').toLowerCase();
+    if (allow.length && !allow.some((a) => (a.startsWith('@') ? from.endsWith(a) : from === a))) {
+      message.setReject('Bu adres yalnız tanımlı göndericilerden posta kabul eder');
+      return;
+    }
+    // Başlık değeri ASCII olmalı (ş/ğ/ı içeren SMTPUTF8 adresinde fetch TypeError atıp maili düşürüyordu)
+    const hdr = (v) => String(v || '').replace(/[^\x20-\x7e]/g, '?').slice(0, 320);
     const raw = await new Response(message.raw).arrayBuffer();
-    const res = await fetch('https://api.parafomo.com/inbox/ingest', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'message/rfc822',
-        'X-Inbox-Secret': env.INBOX_SECRET,
-        'X-Mail-From': message.from,
-        'X-Mail-To': message.to,
-      },
-      body: raw,
-    });
-    if (!res.ok) message.setReject(`Gelen kutusu hatası (${res.status})`);
+    let status = 0;
+    try {
+      const res = await fetch('https://api.parafomo.com/inbox/ingest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'message/rfc822',
+          'X-Inbox-Secret': env.INBOX_SECRET,
+          'X-Mail-From': hdr(message.from),
+          'X-Mail-To': hdr(message.to),
+        },
+        body: raw,
+        signal: AbortSignal.timeout(25000),
+      });
+      if (res.ok) return;
+      status = res.status;
+    } catch (err) {
+      console.error('inbox ingest ulaşılamadı:', String((err && err.message) || err));
+    }
+    // Sunucu kapalı/5xx: yedek adres tanımlıysa mail kaybolmasın (Email Routing'de DOĞRULANMIŞ, ajan@'a geri
+    // yönlendirmeyen bir adres olmalı — döngü olmasın). Yoksa açık bir ret (gönderen bounce görür).
+    if ((status === 0 || status >= 500) && env.INBOX_FALLBACK) {
+      await message.forward(env.INBOX_FALLBACK);
+      return;
+    }
+    message.setReject(status ? `Gelen kutusu hatası (${status})` : 'Gelen kutusu şu an ulaşılamıyor');
   },
 };
 
