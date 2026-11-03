@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ekDan, ekI } from '../data/ek';
 import Newsletter from '../components/Newsletter.astro';
 import em from '../../data/emekli-memur.json';
 // Zam tahmini /emekli-zammi-hesaplama ile ORTAK modülde — burada tekrar hesaplanmaz.
@@ -54,7 +55,7 @@ const breadcrumbs = [
 
 <BaseLayout
   title={`En Düşük Emekli Maaşı 2026: ${fmt(T.tutar)} TL | Ocak 2027 Tahmini ve Ödeme Günleri`}
-  description={`En düşük emekli maaşı ${ayYil(T.baslangic)}'dan beri ${fmt(T.tutar)} ₺ (SSK, Bağ-Kur); memur emeklisi ${fmt(ME.tutar)} ₺. Ocak 2027 senaryosu, Ocak maaşını hesaplama ve tahsis numarasına göre ödeme günleri.`}
+  description={`En düşük emekli maaşı ${ayYil(T.baslangic)}${ekDan(ayYil(T.baslangic))} beri ${fmt(T.tutar)} ₺ (SSK, Bağ-Kur); memur emeklisi ${fmt(ME.tutar)} ₺. Ocak 2027 senaryosu, Ocak maaşını hesaplama ve tahsis numarasına göre ödeme günleri.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
   image="/og/en-dusuk-emekli-maasi.png"
@@ -64,13 +65,13 @@ const breadcrumbs = [
       <p class="eyebrow">Emekli · Güncel Tutarlar</p>
       <h1>En Düşük Emekli Maaşı 2026</h1>
       <p class="lede">
-        SSK ve Bağ-Kur'da en düşük emekli aylığı <strong>{ayYil(T.baslangic)}'dan beri {fmt(T.tutar)} ₺</strong>
+        SSK ve Bağ-Kur'da en düşük emekli aylığı <strong>{ayYil(T.baslangic)}{ekDan(ayYil(T.baslangic))} beri {fmt(T.tutar)} ₺</strong>
         (önce {fmt(T.onceki)} ₺). Memur emeklilerinde en düşük aylık <strong>{fmt(ME.tutar)} ₺</strong>.
       </p>
     </header>
 
     <div class="stats">
-      <div class="stat"><span class="k">SSK · Bağ-Kur en düşük aylık</span><span class="v">₺{fmt(T.tutar)}</span><span class="s">{ayYil(T.baslangic)}'dan beri · önce ₺{fmt(T.onceki)}</span></div>
+      <div class="stat"><span class="k">SSK · Bağ-Kur en düşük aylık</span><span class="v">₺{fmt(T.tutar)}</span><span class="s">{ayYil(T.baslangic)}{ekDan(ayYil(T.baslangic))} beri · önce ₺{fmt(T.onceki)}</span></div>
       <div class="stat"><span class="k">Memur emeklisi en düşük aylık</span><span class="v">₺{fmt(ME.tutar)}</span><span class="s">Temmuz 2026 zammıyla · önce ₺{fmt(ME.onceki)}</span></div>
       <div class="stat"><span class="k">Bayram ikramiyesi</span><span class="v">₺{fmt(B.tutar)}</span><span class="s">{B.yil} Ramazan ve Kurban · <a href="/bayram-ikramiyesi/">ayrıntı</a></span></div>
     </div>
@@ -118,14 +119,14 @@ const breadcrumbs = [
           <h3>SSK (4/a) — tahsis no. son hanesi</h3>
           <table class="rate-table">
             <thead><tr><th>Son hane</th><th>Ödeme günü</th></tr></thead>
-            <tbody>{OG.ssk.map(([d, g]) => <tr><td>{d}</td><td>Ayın {g}'i</td></tr>)}</tbody>
+            <tbody>{OG.ssk.map(([d, g]) => <tr><td>{d}</td><td>Ayın {g}{ekI(g)}</td></tr>)}</tbody>
           </table>
         </div>
         <div>
           <h3>Bağ-Kur (4/b)</h3>
           <table class="rate-table">
             <thead><tr><th>Son hane</th><th>Ödeme günü</th></tr></thead>
-            <tbody>{(OG.bagkur as [number[], number][]).map(([ds, g]) => <tr><td>{ds.join(', ')}</td><td>Ayın {g}'i</td></tr>)}</tbody>
+            <tbody>{(OG.bagkur as [number[], number][]).map(([ds, g]) => <tr><td>{ds.join(', ')}</td><td>Ayın {g}{ekI(g)}</td></tr>)}</tbody>
           </table>
         </div>
       </div>

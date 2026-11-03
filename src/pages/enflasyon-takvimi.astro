@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ekDa } from '../data/ek';
 import Newsletter from '../components/Newsletter.astro';
 import AppCTA from '../components/AppCTA.astro';
 import { RELEASES, RELEASE_TIME, AYLAR, coversKey, releaseOf } from '../data/tuik';
@@ -66,7 +67,7 @@ const pctTr = (n: number) => n.toLocaleString('tr-TR', { minimumFractionDigits: 
 const faq = [
   {
     q: `${lastLabel} enflasyonu yüzde kaç oldu?`,
-    a: `TÜİK verilerine göre ${lastLabel}'da tüketici fiyatları (TÜFE) aylık %${pctTr(lastT.aylik)}, yıllık %${pctTr(lastT.yillik)} arttı. Bir önceki ay yıllık enflasyon %${pctTr(tufe.months[1].yillik)} idi.`,
+    a: `TÜİK verilerine göre ${lastLabel}${ekDa(lastLabel)} tüketici fiyatları (TÜFE) aylık %${pctTr(lastT.aylik)}, yıllık %${pctTr(lastT.yillik)} arttı. Bir önceki ay yıllık enflasyon %${pctTr(tufe.months[1].yillik)} idi.`,
   },
   {
     q: 'Enflasyon (TÜFE) ne zaman açıklanacak?',

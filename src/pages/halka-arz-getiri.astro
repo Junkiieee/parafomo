@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ekI } from '../data/ek';
 import Newsletter from '../components/Newsletter.astro';
 import data from '../../data/halka-arz-getiri.json';
 import archive from '../../data/halka-arz-sirketler.json';
@@ -31,7 +32,7 @@ const worst = items.find((i) => i.code === data.worst.code);
 const faqs = [
   {
     q: `${Y} halka arzları ortalama ne kadar kazandırdı?`,
-    a: `Borsada işlem gören ${data.count} halka arzın halka arz fiyatına göre ortalama getirisi %${fmt(data.avg_return_pct)}. Bu şirketlerin %${data.positive_pct}'i (yani ${data.positive_count}/${data.count}'i) halka arz fiyatının üzerinde işlem görüyor. Rakamlar güncel fiyatla her gün otomatik yenilenir.`,
+    a: `Borsada işlem gören ${data.count} halka arzın halka arz fiyatına göre ortalama getirisi %${fmt(data.avg_return_pct)}. Bu şirketlerin %${data.positive_pct}${ekI(data.positive_pct)} (yani ${data.positive_count}/${data.count}${ekI(data.positive_count)}) halka arz fiyatının üzerinde işlem görüyor. Rakamlar güncel fiyatla her gün otomatik yenilenir.`,
   },
   {
     q: 'Halka arza katılan herkes kâr eder mi?',
@@ -63,7 +64,7 @@ const datasetLd = {
 <BaseLayout
   image="/og/halka-arz-getiri.png"
   title={`${Y} Halka Arz Getirileri: Hangi Halka Arz Ne Kazandırdı?`}
-  description={`${Y}${yilDa(Y)} BIST'e gelen ${data.count} halka arzın güncel getirisi tek tabloda. Ortalama %${fmt(data.avg_return_pct)} getiri, %${data.positive_pct}'i kârda. Halka arz fiyatına göre her gün güncellenir.`}
+  description={`${Y}${yilDa(Y)} BIST'e gelen ${data.count} halka arzın güncel getirisi tek tabloda. Ortalama %${fmt(data.avg_return_pct)} getiri, %${data.positive_pct}${ekI(data.positive_pct)} kârda. Halka arz fiyatına göre her gün güncellenir.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(datasetLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
@@ -154,7 +155,7 @@ const datasetLd = {
       {best && <> en iyi performans <strong>{best.code}</strong> ({pct(best.return_pct)})</>}
       ile en kötü performans {worst && <><strong>{worst.code}</strong> ({pct(worst.return_pct)})</>} arasındaki
       fark, "halka arz = garanti kâr" algısının neden yanıltıcı olduğunu gösteriyor.
-      Şirketlerin <strong>%{data.positive_pct}'i</strong> halka arz fiyatının üzerinde olsa da,
+      Şirketlerin <strong>%{data.positive_pct}{ekI(data.positive_pct)}</strong> halka arz fiyatının üzerinde olsa da,
       geri kalan {data.count - data.positive_count} şirkette katılımcılar bugün zararda.
     </p>
     <p>

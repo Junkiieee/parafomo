@@ -1,10 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ekDa, ekDan } from '../data/ek';
 import Newsletter from '../components/Newsletter.astro';
 import em from '../../data/emekli-memur.json';
 
 const B = em.bayramIkramiyesi;
 const BY = em.bayramlar2027;
+// Bayram takviminin yılı (2027). İkramiye yılı (B.yil) ona ulaşınca "henüz açıklanmadı" metinleri kalkar.
+const BY_YIL = +BY.ramazan.baslangic.slice(0, 4);
+const ACIKLANDI = B.yil >= BY_YIL;
 const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 const GUN = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
 const tr = (iso: string, withDay = false) => {
@@ -22,13 +26,13 @@ const bayramlar = [
 
 const faq = [
   {
-    q: '2026 emekli bayram ikramiyesi ne kadar?',
-    a: `${B.yil} yılında hem Ramazan hem Kurban Bayramı'nda emekli bayram ikramiyesi ${fmt(B.tutar)} ₺ olarak ödendi. Tutar ${B.artisYili}'te ${fmt(B.oncekiTutar)} ₺'den ${fmt(B.tutar)} ₺'ye çıkarılmıştı; ${B.yil}'da değişmedi.`,
+    q: `${B.yil} emekli bayram ikramiyesi ne kadar?`,
+    a: `${B.yil} yılında hem Ramazan hem Kurban Bayramı'nda emekli bayram ikramiyesi ${fmt(B.tutar)} ₺ olarak ödendi. Tutar ${B.artisYili}${ekDa(B.artisYili)} ${fmt(B.oncekiTutar)} ₺'den ${fmt(B.tutar)} ₺'ye çıkarılmıştı${B.artisYili < B.yil ? `; ${B.yil}${ekDa(B.yil)} değişmedi` : ''}.`,
   },
-  {
-    q: '2027 bayram ikramiyesi ne kadar olacak?',
-    a: `2027 tutarı henüz açıklanmadı. Tutar kanunla belirlenir; değişiklik yapılmazsa ${fmt(B.tutar)} ₺ olarak ödenmeye devam eder. Yeni tutar açıklandığında bu sayfa güncellenir.`,
-  },
+  ...(ACIKLANDI ? [] : [{
+    q: `${BY_YIL} bayram ikramiyesi ne kadar olacak?`,
+    a: `${BY_YIL} tutarı henüz açıklanmadı. Tutar kanunla belirlenir; değişiklik yapılmazsa ${fmt(B.tutar)} ₺ olarak ödenmeye devam eder. Yeni tutar açıklandığında bu sayfa güncellenir.`,
+  }]),
   {
     q: '2027 Ramazan ve Kurban Bayramı ne zaman?',
     a: `Diyanet takvimine göre 2027 Ramazan Bayramı ${tr(BY.ramazan.baslangic, true)} – ${tr(BY.ramazan.bitis, true)} (arefe ${tr(BY.ramazan.arefe)}), Kurban Bayramı ${tr(BY.kurban.baslangic, true)} – ${tr(BY.kurban.bitis, true)} (arefe ${tr(BY.kurban.arefe)}) tarihleri arasında.`,
@@ -66,13 +70,13 @@ const breadcrumbs = [
       <p class="eyebrow">Emekli · Bayram İkramiyesi</p>
       <h1>Emekli Bayram İkramiyesi 2026–2027</h1>
       <p class="lede">
-        Emekli bayram ikramiyesi {B.yil}'da her bayram için <strong>{fmt(B.tutar)} ₺</strong>. 2027 tutarı henüz
-        açıklanmadı; değişiklik olmazsa aynı tutar ödenir.
+        Emekli bayram ikramiyesi {B.yil}{ekDa(B.yil)} her bayram için <strong>{fmt(B.tutar)} ₺</strong>.{!ACIKLANDI && <>{' '}{BY_YIL} tutarı henüz
+        açıklanmadı; değişiklik olmazsa aynı tutar ödenir.</>}
       </p>
     </header>
 
     <div class="stats">
-      <div class="stat"><span class="k">{B.yil} bayram ikramiyesi</span><span class="v">₺{fmt(B.tutar)}</span><span class="s">Ramazan ve Kurban · {B.artisYili}'te ₺{fmt(B.oncekiTutar)}'den çıkarıldı</span></div>
+      <div class="stat"><span class="k">{B.yil} bayram ikramiyesi</span><span class="v">₺{fmt(B.tutar)}</span><span class="s">Ramazan ve Kurban · {B.artisYili}{ekDa(B.artisYili)} ₺{fmt(B.oncekiTutar)}{ekDan(fmt(B.oncekiTutar))} çıkarıldı</span></div>
       {bayramlar.map((b) => (
         <div class="stat"><span class="k">2027 {b.ad}</span><span class="v small">{tr(b.baslangic)}</span><span class="s">bitiş {tr(b.bitis, true)} · <span class="cd" data-date={b.baslangic}></span></span></div>
       ))}

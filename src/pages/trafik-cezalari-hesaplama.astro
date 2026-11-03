@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ekDa } from '../data/ek';
 import Newsletter from '../components/Newsletter.astro';
 import yd from '../../data/yeniden-degerleme.json';
 
@@ -42,7 +43,7 @@ const faq = [
   },
   {
     q: `${HEDEF} trafik cezaları ne kadar olacak?`,
-    a: `İdari para cezaları her yıl başında yeniden değerleme oranıyla artırılır (Kabahatler Kanunu 17/7). ${sonAyAdi} itibarıyla ${HEDEF} oranı ${oranLabel}; bu oran uygulanırsa kırmızı ışık cezası yaklaşık ${fmt(5000 * carpan)} TL, telefon cezası yaklaşık ${fmt(5000 * carpan)} TL olur. Ancak 7574 sayılı Kanun'un doğrudan yazdığı yeni tutarlara 2027'de bu artışın uygulanıp uygulanmayacağı konusunda hukukçular ayrışıyor; kesin tutarlar Ocak ${HEDEF}'de netleşir.`,
+    a: `İdari para cezaları her yıl başında yeniden değerleme oranıyla artırılır (Kabahatler Kanunu 17/7). ${sonAyAdi} itibarıyla ${HEDEF} oranı ${oranLabel}; bu oran uygulanırsa kırmızı ışık cezası yaklaşık ${fmt(5000 * carpan)} TL, telefon cezası yaklaşık ${fmt(5000 * carpan)} TL olur. Ancak 7574 sayılı Kanun'un doğrudan yazdığı yeni tutarlara 2027'de bu artışın uygulanıp uygulanmayacağı konusunda hukukçular ayrışıyor; kesin tutarlar Ocak ${HEDEF}${ekDa(HEDEF)} netleşir.`,
   },
   {
     q: 'Hız cezası nasıl hesaplanır?',
@@ -198,7 +199,7 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
       </table>
       <p class="table-note">
         {HEDEF} sütunu, yeniden değerleme oranı 7574'ün tutarlarına da uygulanırsa geçerlidir; bazı hukukçular
-        kanunla yeni yazılan tutarların {HEDEF}'de artmayacağı görüşünde. Park gibi kaynakların çeliştiği
+        kanunla yeni yazılan tutarların {HEDEF}{ekDa(HEDEF)} artmayacağı görüşünde. Park gibi kaynakların çeliştiği
         kalemleri bilerek eklemedik. Muayenesi yapılmamış araç cezası (2026: 2.719 TL, KTK md. 34) ve TÜVTÜRK
         gecikme bedeli için → <a href="/arac-muayene-ucreti/">araç muayene ücreti ve gecikme cezası</a>.
       </p>
@@ -248,7 +249,7 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
         <li><strong>Ceza puanı:</strong> bir yılda 100 puan dolarsa ehliyet 2 ay geri alınır; aynı yıl ikinci kez 4 ay, üçüncü kez süresiz iptal.</li>
       </ul>
       <p class="table-note">Kaynak: 2918 sayılı Karayolları Trafik Kanunu md. 115-118 ve 5326 sayılı Kabahatler Kanunu md. 17, 27 (mevzuat.gov.tr güncel metin, 7574 sayılı Kanun değişiklikleri dâhil).</p>
-      <h2>{HEDEF}'de cezalar artacak mı?</h2>
+      <h2>{HEDEF}{ekDa(HEDEF)} cezalar artacak mı?</h2>
       <p>
         Kabahatler Kanunu'na göre idari para cezaları her takvim yılı başında, Kasım'da ilan edilen
         <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı</a> kadar artırılır. {sonAyAdi} verisiyle

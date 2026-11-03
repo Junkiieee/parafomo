@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ekIn } from '../data/ek';
 import Newsletter from '../components/Newsletter.astro';
 import kira from '../../data/kira-artis-2026.json';
 
 // Güncel yasal tavan (12 aylık TÜFE ortalaması) — data dosyasından, aylık güncellenir.
 const RATE = kira.guncelOran; // %
 const AY = kira.guncelAy;
+const RATE_IN = ekIn(String(RATE).replace('.', ','));
 
 // Sunucuda varsayılan hesap — JS kapalıyken bile sayfa dolu görünsün (SEO + no-JS).
 const D = { rent: 20000 };
@@ -179,7 +181,7 @@ const breadcrumbs = [
     <Newsletter />
   </div>
 
-  <script is:inline define:vars={{ RATE, AY }}>
+  <script is:inline define:vars={{ RATE, AY, RATE_IN }}>
     (function () {
       const $ = (id) => document.getElementById(id);
       const nf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
@@ -195,7 +197,7 @@ const breadcrumbs = [
         $('out-yearly').textContent = '₺' + nf.format(Math.round(monthly * 12));
         const over = rate - RATE > 0.001;
         $('out-note').textContent = over
-          ? `Girdiğin oran %${nf.format(rate)}, ${AY} yasal tavanı %${rateStr}'in üzerinde — tavanı aşan kısım kiracı için bağlayıcı değildir.`
+          ? `Girdiğin oran %${nf.format(rate)}, ${AY} yasal tavanı %${rateStr}${RATE_IN} üzerinde — tavanı aşan kısım kiracı için bağlayıcı değildir.`
           : `Bu, ${AY} için yasal üst sınırdır. Ev sahibi bundan fazlasını talep edemez.`;
       }
 

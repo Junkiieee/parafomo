@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ekDan, ekYa } from '../data/ek';
 import Newsletter from '../components/Newsletter.astro';
 import AppCTA from '../components/AppCTA.astro';
 import data from '../../data/dolar-getiri.json';
@@ -32,7 +33,7 @@ const goldMultiple = goldTen ? (1 + goldTen.return_tl_pct / 100) / (1 + ten.retu
 const faqs = [
   {
     q: `Dolar son ${ten.years} yılda TL bazında ne kadar kazandırdı?`,
-    a: `USD/TRY kuru son ${ten.years} yılda yaklaşık ${fmt(ten.usdtry_then)}'den ${fmt(ten.usdtry_now)}'ye çıktı; yani doları elde tutan biri TL bazında %${fmt(ten.return_tl_pct)} kazandı. Ancak bu "kazanç" gerçek bir zenginleşme değil, büyük ölçüde Türk lirasının değer kaybının aynadaki yansımasıdır: dolar bazında 1 dolar hâlâ 1 dolardır.`,
+    a: `USD/TRY kuru son ${ten.years} yılda yaklaşık ${fmt(ten.usdtry_then)}${ekDan(fmt(ten.usdtry_then))} ${fmt(ten.usdtry_now)}${ekYa(fmt(ten.usdtry_now))} çıktı; yani doları elde tutan biri TL bazında %${fmt(ten.return_tl_pct)} kazandı. Ancak bu "kazanç" gerçek bir zenginleşme değil, büyük ölçüde Türk lirasının değer kaybının aynadaki yansımasıdır: dolar bazında 1 dolar hâlâ 1 dolardır.`,
   },
   {
     q: 'Dolar tutmak gerçekten kazandırıyor mu, yoksa TL mi eriyor?',
