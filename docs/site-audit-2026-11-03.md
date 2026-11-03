@@ -11,15 +11,15 @@ axe-core 4.10 (310 sayfa) ve `scripts/seo-audit.py`.
 | Mobilde yana taşan sayfa | 64 | 0 |
 | Lighthouse performans (8 şablon) | 89–95 | 96–100 |
 | İlk ziyaret aktarımı (anasayfa) | 301 KB | 161 KB |
-| seo-audit UYARI | 83 | 23 (kalanlar bilerek, aşağıda) |
+| seo-audit UYARI | 83 | 22 (kalanlar bilerek, aşağıda) |
 | Sitemap'te lastmod'suz URL | 114 | 31 (veri beslemesi olmayan sabit sayfalar) |
-| axe ihlali olan sayfa (mobil) | 241 / 310 | bkz. PR açıklaması |
+| axe ihlali olan sayfa (mobil, gradyanlar düzleştirilmiş kontrastla) | 241 / 310 (829 düğüm) | 0 / 312 |
 
 ## Bilerek dokunulmayanlar
 
 - **Açık bahislerin sayfaları** (B261015-1, B261022-1, B261029-1) ve otomatik üretilen
   `2027-zamlari-yeniden-degerleme-orani-rehberi`: title/description değişmedi, ölçüm bozulmasın.
-  Kalan 23 seo-audit uyarısının 22'si bunlar.
+  Kalan 22 seo-audit uyarısının 21'i bunlar.
   - Not: `abd-ekim-2026-nfp-istihdam-verisi-fed-dolar-altin` başlığı hâlâ "Fed 28 Ekim'de Ne Yapar?" diye
     soruyor, oysa karar açıklandı. `pce-gdp-eylul-2026-…` başlığı da "— Fed 28 Ekim" diye yarım bitiyor.
     Bahis değerlendirmesinden sonra düzeltilmeli.
