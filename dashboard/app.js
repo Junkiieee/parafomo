@@ -107,7 +107,8 @@
       body: opt.body ? JSON.stringify(opt.body) : undefined,
     });
     const j = await r.json().catch(() => ({}));
-    if (!r.ok) throw new Error(j.detail || r.statusText);
+    // 422 (ör. çok uzun not) detail'i dizi döner → "[object Object]" yerine okunur mesaj
+    if (!r.ok) throw new Error((Array.isArray(j.detail) ? j.detail.map((d) => d.msg).join("; ") : j.detail) || r.statusText);
     return j;
   }
   function toast(msg, err) {

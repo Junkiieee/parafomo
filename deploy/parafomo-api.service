@@ -9,6 +9,27 @@ WorkingDirectory=/root/parafomo/backend
 ExecStart=/root/.venvs/parafomo-api/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
 Restart=on-failure
 RestartSec=3
+# --- Sertleştirme (2026-11) ---
+# Süreç root kalır ama yalnız veri dizinine yazabilir (portfolio.db + gelen kutusu .eml'leri);
+# repo, venv, /etc salt-okunur; root yetkileri (capability) bırakılır → uygulamada bir açık
+# sunucunun geri kalanına sıçrayamaz. Kontrol: systemd-analyze security parafomo-api
+# Bir şey bozulursa: bu bloğu sil → systemctl daemon-reload && systemctl restart parafomo-api
+NoNewPrivileges=yes
+ProtectSystem=strict
+ReadWritePaths=-/root/parafomo-data
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+UMask=0077
 
 [Install]
 WantedBy=multi-user.target

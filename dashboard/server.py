@@ -83,7 +83,9 @@ def read(path):
 
 
 def schedule():
-    day = dt.datetime.now(dt.timezone.utc).date()
+    # Panel TSİ gününü gösterir (app.js saatlere +3 ekler). UTC tarihi 00:00-03:00 TSİ arasında DÜNÜN
+    # gün-kısıtlı işlerini (Pzt bülteni, Pzt-Cum blog…) "bugün" diye listeliyordu. Cron saatleri UTC kalır.
+    day = (dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=3)).date()
     pub = {(h, m, l) for h, m, l in pubplan.build(day, False)}
     rows, seen = [], {}
     for h, m, label in pubplan.build(day, True):
