@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 
 import kt from '../../data/kidem-tavan.json';
-import { memurProj, remaining, ASSUME } from '../data/zam2027';
+import { PERIOD, memurProj, remaining, ASSUME } from '../data/zam2027';
 
 // Kıdem tazminatı tavanı: data/kidem-tavan.json (Ocak/Temmuz'da yeni dönem eklenir; health.py bayatsa uyarır).
 const CUR = kt.donemler[kt.donemler.length - 1];
@@ -12,6 +12,10 @@ const TAVAN_DONEM = CUR.donem;
 // Ocak 2027 tahmini: tavan memur maaş katsayısıyla güncellenir → Temmuz 2026 tavanı × (1 + memur zammı tahmini).
 // (Temmuz 2026: 64.948,77 → 73.729,87 = %13,52; memur zammı %13,51 — yöntem tutarlı.)
 const TAVAN_2027 = TAVAN * (1 + memurProj.zam);
+// Tahmin yalnız hedef yılın (Ocak 2027) resmî dönemi data'ya girilene dek: ajan "1 Ocak – 30 Haziran 2027" satırını
+// ekleyince formül 2027 tavanını ikinci kez zamlayıp ikinci bir "2027 (tahmin)" satırı basıyordu (yıl geçişi denetimi).
+const HEDEF_YIL = +PERIOD[PERIOD.length - 1].slice(0, 4) + 1; // zam2027.ts dönemi → Ocak 2027
+const TAHMIN_VAR = !kt.donemler.some((d) => d.donem.includes(String(HEDEF_YIL)));
 const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
 const DAMGA = 0.00759; // binde 7,59
 
@@ -55,10 +59,12 @@ const faq = [
     q: `Kıdem tazminatı tavanı 2026 ne kadar?`,
     a: `${TAVAN_DONEM} döneminde kıdem tazminatı tavanı ${fmt(TAVAN)} ₺'dir. Bu, her bir kıdem yılı için ödenecek tutarın üst sınırıdır: brüt ücretiniz tavandan yüksek olsa bile, her yıl için en fazla ${fmt(TAVAN)} ₺ üzerinden hesaplanır. Tavan her yıl Ocak ve Temmuz aylarında memur maaş katsayısına göre güncellenir.`,
   },
+  ...(TAHMIN_VAR ? [
   {
     q: 'Ocak 2027 kıdem tazminatı tavanı ne kadar olacak?',
     a: `Kıdem tavanı Ocak'ta memur maaş katsayısındaki artış oranında yükselir. Ocak 2027 memur zammı tahmini %${nf(memurProj.zam * 100)} (toplu sözleşme %5 + 2026 ikinci yarı enflasyon farkı${remaining > 0 ? `; kalan ${remaining} ay için aylık %${nf(ASSUME)} enflasyon varsayımıyla` : ''}) ile tavanın yaklaşık ${fmt(TAVAN_2027)} ₺ olması beklenir. Bu bir tahmindir; kesin tutar Ocak 2027 başında Hazine ve Maliye Bakanlığı katsayı genelgesiyle belli olur.`,
   },
+  ] : []),
   {
     q: 'Kıdem tazminatından hangi kesintiler yapılır?',
     a: 'Yasal sınırlar içinde ödenen kıdem tazminatından gelir vergisi ve SGK primi KESİLMEZ. Yalnızca binde 7,59 (%0,759) damga vergisi kesilir. Bu yönüyle kıdem tazminatı, maaş veya ihbar tazminatına göre çok daha az vergilendirilir; brüt ile net arasındaki fark küçüktür.',
@@ -82,7 +88,7 @@ const breadcrumbs = [
 <BaseLayout
   image="/og/kidem-tazminati-hesaplama.png"
   title="Kıdem Tazminatı Hesaplama 2026 ve Ocak 2027 Tavan Tahmini"
-  description={`Kıdem tazminatı hesaplama: güncel tavan ${fmt(TAVAN)} ₺ (${TAVAN_DONEM}), Ocak 2027 tavan tahmini ≈${fmt(TAVAN_2027)} ₺. Brüt maaş ve süreyi girin; brüt, damga vergisi ve net tazminatı görün.`}
+  description={`Kıdem tazminatı hesaplama: güncel tavan ${fmt(TAVAN)} ₺ (${TAVAN_DONEM})${TAHMIN_VAR ? `, Ocak 2027 tavan tahmini ≈${fmt(TAVAN_2027)} ₺` : ''}. Brüt maaş ve süreyi girin; brüt, damga vergisi ve net tazminatı görün.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
 >
@@ -183,11 +189,13 @@ const breadcrumbs = [
               <td>{i === 0 ? '—' : `+%${nf((d.tavan / kt.donemler[i - 1].tavan - 1) * 100)}`}</td>
             </tr>
           ))}
-          <tr>
-            <td>1 Ocak – 30 Haziran 2027 <em>(tahmin)</em></td>
-            <td>≈ ₺{fmt(TAVAN_2027)}</td>
-            <td>≈ +%{nf(memurProj.zam * 100)}</td>
-          </tr>
+          {TAHMIN_VAR && (
+            <tr>
+              <td>1 Ocak – 30 Haziran 2027 <em>(tahmin)</em></td>
+              <td>≈ ₺{fmt(TAVAN_2027)}</td>
+              <td>≈ +%{nf(memurProj.zam * 100)}</td>
+            </tr>
+          )}
         </tbody>
       </table>
       <p class="table-note">
@@ -238,8 +246,8 @@ const breadcrumbs = [
         tavandan yüksekse bile her yıl için en fazla bu tutar üzerinden hesaplama yapılır. Tavan,
         en yüksek devlet memuru aylığına bağlı olarak her yıl <strong>Ocak ve Temmuz</strong>
         aylarında güncellenir; hesaplarken içinde bulunduğunuz dönemin tavanını kullanmak gerekir.
-        Ocak 2027'de tavanın yaklaşık <strong>{fmt(TAVAN_2027)} ₺</strong>'ye çıkması bekleniyor
-        (<a href="#tavan-2027">tahmin tablosu</a>).
+        {TAHMIN_VAR && <>Ocak 2027'de tavanın yaklaşık <strong>{fmt(TAVAN_2027)} ₺</strong>'ye çıkması bekleniyor
+        (<a href="#tavan-2027">tahmin tablosu</a>).</>}
       </p>
       <h2>Kıdem tazminatından ne kadar kesinti yapılır?</h2>
       <p>
