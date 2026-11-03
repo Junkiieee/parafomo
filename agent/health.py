@@ -243,7 +243,8 @@ def stale_data():
         ("economic-calendar.json", 9, "scripts/fetch-economic-calendar.py"),
     ):
         d = load(name)
-        upd = (d or {}).get("updated", "")[:10]
+        # altin-fiyat.json'da 'updated' yok, 'guncellenme' var → eskiden bu kontrol sessizce atlanıyordu
+        upd = ((d or {}).get("updated") or (d or {}).get("guncellenme") or "")[:10]
         try:
             age = (today - dt.date.fromisoformat(upd)).days
         except Exception:
@@ -291,7 +292,7 @@ def stale_data():
         d = load(name)
         if not d:
             continue
-        for m in d["meetings"]:
+        for m in d["meetings"] + d.get("meetings2027", []):   # 2027 Fed toplantıları fomc-2026.json/meetings2027'de
             # karar günü + 1 gün sonra hâlâ result yoksa
             if (today - dt.date.fromisoformat(m["decisionDate"])).days >= 1 and not m.get("result"):
                 out.append(f"{label} {m['decisionDate']} kararı yazılmadı → scripts/policy-decisions.sh")

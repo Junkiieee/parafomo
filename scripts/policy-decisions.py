@@ -121,7 +121,8 @@ def main():
 
     fomc = json.load(open(FOMC, encoding="utf-8"))
     prev = fomc["previous"]
-    for m in fomc["meetings"]:
+    # 2027 toplantıları aynı dosyada meetings2027'de (sayfalar oradan okuyor); eskiden hiç doldurulmuyordu
+    for m in fomc["meetings"] + fomc.get("meetings2027", []):
         if m.get("result"):
             prev = m["result"]
             continue
@@ -162,9 +163,11 @@ def main():
 
     if changed:
         for path, obj in ((FOMC, fomc), (TCMB, tcmb)):
-            with open(path, "w", encoding="utf-8") as f:
+            tmp = f"{path}.{os.getpid()}.tmp"   # atomik yaz: eşzamanlı build/iş yarım JSON okumasın
+            with open(tmp, "w", encoding="utf-8") as f:
                 json.dump(obj, f, ensure_ascii=False, indent=2)
                 f.write("\n")
+            os.replace(tmp, path)
     else:
         print("[policy] bekleyen karar yok")
     return 0

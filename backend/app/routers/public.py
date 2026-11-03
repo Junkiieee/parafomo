@@ -6,33 +6,31 @@ kullanımı sınırlar. Hiçbir veri saklanmaz.
 from __future__ import annotations
 
 import time
-from collections import defaultdict, deque
 
-from fastapi import APIRouter, HTTPException, Query, Request, status
+from fastapi import APIRouter, HTTPException, Query, Request
 
 from ..models import AssetType
-from ..prices import get_bist_history, get_price
+from ..prices import get_bist_history, get_price, is_valid_bist_symbol
+from ..ratelimit import RateLimiter, client_ip, enforce
 
 router = APIRouter(prefix="/public", tags=["public"])
 
-# Basit sliding-window limiter: IP başına 60sn'de 30 istek
-_WINDOW = 60
-_LIMIT = 30
-_hits: dict[str, deque] = defaultdict(deque)
+# Sliding-window limiter: IP başına 60sn'de 30 istek (bellek sınırlı, ratelimit.py)
+_limiter = RateLimiter(limit=30, window=60)
 
 
 def _rate_limit(request: Request) -> None:
-    ip = request.client.host if request.client else "?"
-    now = time.time()
-    q = _hits[ip]
-    while q and now - q[0] > _WINDOW:
-        q.popleft()
-    if len(q) >= _LIMIT:
-        raise HTTPException(
-            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
-            detail="Çok fazla istek. Lütfen biraz sonra tekrar dene.",
-        )
-    q.append(now)
+    enforce(_limiter, client_ip(request), "Çok fazla istek. Lütfen biraz sonra tekrar dene.")
+
+
+def _bist_symbol(symbol: str) -> str:
+    """Kullanıcının yazdığı kod Yahoo URL'sine girer: yalnız harf/rakam."""
+    sym = symbol.strip().upper()
+    if not sym:
+        raise HTTPException(status_code=400, detail="Hisse kodu gerekli.")
+    if not is_valid_bist_symbol(sym):
+        raise HTTPException(status_code=400, detail="Geçersiz hisse kodu.")
+    return sym
 
 
 @router.get("/price")
@@ -43,9 +41,7 @@ def public_price(
 ) -> dict:
     """Bir varlığın güncel birim fiyatını (TL) döndürür. Üyelik gerekmez."""
     _rate_limit(request)
-    sym = symbol.strip().upper() if asset_type is AssetType.BIST else asset_type.value.upper()
-    if asset_type is AssetType.BIST and not sym:
-        raise HTTPException(status_code=400, detail="Hisse kodu gerekli.")
+    sym = _bist_symbol(symbol) if asset_type is AssetType.BIST else asset_type.value.upper()
     price = get_price(asset_type, sym)
     return {"asset_type": asset_type.value, "symbol": sym, "price": price}
 
@@ -64,9 +60,7 @@ def public_history(
     """Varlık fiyat geçmişi. BIST: günlük/haftalık (Yahoo); altın/gümüş: aylık (benchmarks)."""
     _rate_limit(request)
     if asset_type is AssetType.BIST:
-        sym = symbol.strip().upper()
-        if not sym:
-            raise HTTPException(status_code=400, detail="Hisse kodu gerekli.")
+        sym = _bist_symbol(symbol)
         points = get_bist_history(sym, range)
         if points is None:
             raise HTTPException(status_code=404, detail="Geçmiş veri alınamadı.")
@@ -93,6 +87,7 @@ def public_history(
 # ---- pozisyon haberleri (Google News RSS, 30 dk cache) ----
 _NEWS_TTL = 1800
 _NEWS_CACHE: dict[str, tuple[float, list[dict]]] = {}
+_NEWS_CACHE_MAX = 2000  # anahtar kullanıcı girdisi (name) → rastgele adlarla şişmesin
 _NEWS_Q = {
     AssetType.GOLD: "gram altın fiyatı",
     AssetType.SILVER: "gümüş fiyatı",
@@ -151,5 +146,10 @@ def public_news(
                 break
     except Exception:
         return {"items": []}   # haber yoksa sessiz boş — UI bölümü gizler
+    if len(_NEWS_CACHE) >= _NEWS_CACHE_MAX:
+        for k in [k for k, (ts, _) in _NEWS_CACHE.items() if now_ts - ts >= _NEWS_TTL]:
+            del _NEWS_CACHE[k]
+        while len(_NEWS_CACHE) >= _NEWS_CACHE_MAX:
+            del _NEWS_CACHE[next(iter(_NEWS_CACHE))]
     _NEWS_CACHE[q] = (now_ts, items)
     return {"items": items}

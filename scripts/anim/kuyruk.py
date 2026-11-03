@@ -305,7 +305,8 @@ def ig_stats(ids):
     for mid in ids:
         try:
             r = json.load(urllib.request.urlopen(
-                f"https://graph.facebook.com/v21.0/{mid}/insights?metric=reach,views,saved,shares&access_token={env['IG_PAGE_TOKEN']}"))
+                f"https://graph.facebook.com/v21.0/{mid}/insights?metric=reach,views,saved,shares&access_token={env['IG_PAGE_TOKEN']}",
+                timeout=30))   # zaman aşımı yoktu: asılı istek raporu kilitliyordu
             out[mid] = {m["name"]: m["values"][0]["value"] for m in r["data"]}
         except Exception:
             pass

@@ -8,54 +8,38 @@ Hesabın varlığı sızdırılmaz: subscribe her durumda aynı yanıtı döner.
 """
 from __future__ import annotations
 
+import logging
 import secrets
-import time
-from collections import defaultdict, deque
 from datetime import datetime, timedelta, timezone
 
-from fastapi import APIRouter, Depends, HTTPException, Query, Request, status
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Query, Request, status
 from fastapi.responses import RedirectResponse
 from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from ..config import get_settings
 from ..db import get_db
 from ..mailer import send_newsletter_confirm
 from ..models import NewsletterSubscriber
+from ..ratelimit import RateLimiter, client_ip, enforce, public_mail_budget
 from ..schemas import Message, NewsletterSubscribe
 
 router = APIRouter(prefix="/newsletter", tags=["newsletter"])
 _settings = get_settings()
+logger = logging.getLogger("parafomo.newsletter")
 
-# IP başına 10 dakikada 5 kayıt denemesi
-_WINDOW = 600
-_LIMIT = 5
-_hits: dict[str, deque] = defaultdict(deque)
+# IP başına 10 dakikada 5 kayıt denemesi. IP ratelimit.client_ip'ten: CF-Connecting-IP'ye
+# körü körüne güvenmek (api DNS-only) her istekte sahte IP ile sınırı atlatıyordu.
+_limiter = RateLimiter(limit=5, window=600)
 # Aynı adrese onay maili en sık bu aralıkla yeniden gider
 _RESEND_AFTER = timedelta(minutes=10)
 
 _GENERIC = "Neredeyse tamam! Gelen kutuna onay e-postası gönderdik — linke tıklayınca aboneliğin başlar."
 
 
-def _client_ip(request: Request) -> str:
-    # Cloudflare arkasında gerçek IP bu başlıkta
-    return request.headers.get("cf-connecting-ip") or (
-        request.client.host if request.client else "?"
-    )
-
-
 def _rate_limit(request: Request) -> None:
-    ip = _client_ip(request)
-    now = time.time()
-    q = _hits[ip]
-    while q and now - q[0] > _WINDOW:
-        q.popleft()
-    if len(q) >= _LIMIT:
-        raise HTTPException(
-            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
-            detail="Çok fazla deneme. Lütfen birkaç dakika sonra tekrar dene.",
-        )
-    q.append(now)
+    enforce(_limiter, client_ip(request))
 
 
 def _aware(dt: datetime | None) -> datetime | None:
@@ -75,7 +59,10 @@ def _links(token: str) -> tuple[str, str]:
 
 @router.post("/subscribe", response_model=Message)
 def subscribe(
-    body: NewsletterSubscribe, request: Request, db: Session = Depends(get_db)
+    body: NewsletterSubscribe,
+    request: Request,
+    background: BackgroundTasks,
+    db: Session = Depends(get_db),
 ) -> Message:
     if body.website:  # bal küpü dolu → bot; sessizce başarı dön
         return Message(message=_GENERIC)
@@ -108,9 +95,17 @@ def subscribe(
         sub.source = body.source or sub.source
 
     sub.confirm_sent_at = now
-    db.commit()
+    try:
+        db.commit()
+    except IntegrityError:  # aynı adres eşzamanlı iki kez → 500 değil, aynı yanıt
+        db.rollback()
+        return Message(message=_GENERIC)
+    if not public_mail_budget.hit("mail"):
+        logger.warning("Üyeliksiz e-posta bütçesi doldu — bülten onay maili atlandı.")
+        return Message(message=_GENERIC)
     confirm_url, unsub_url = _links(sub.token)
-    send_newsletter_confirm(email, confirm_url, unsub_url)
+    # SMTP yanıttan SONRA: süre farkı adresin zaten abone olup olmadığını sızdırmasın
+    background.add_task(send_newsletter_confirm, email, confirm_url, unsub_url)
     return Message(message=_GENERIC)
 
 
