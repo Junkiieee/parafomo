@@ -106,12 +106,30 @@ def memur_zam():
     return (1 + max(0.0, (1 + cum6) / 1.07 - 1)) * 1.05 - 1, len(known) == len(keys)
 
 
+ZAM_DONEMI_BASI = "2026-07"   # memur_zam()/emekli_card() keys[0] — src/data/zam2027.ts PERIOD[0] ile aynı tutulmalı
+
+
+def ocak_tahmini_gecerli():
+    """Katsayı dosyası hâlâ zam döneminin başındaysa (2026-07) "katsayı × (1 + Ocak zammı)" tahmini anlamlı.
+    Ocak'ta resmî 2027-01 katsayısı girilince aynı formül çift zam olurdu (yıl geçişi denetimi) → kartlar
+    yürürlükteki tutarı gösterir. (Sayfalardaki kural: PERIOD[0] === em.donem.)"""
+    return load("emekli-memur.json").get("donem") == ZAM_DONEMI_BASI
+
+
+def _donem_adi():
+    d = load("emekli-memur.json").get("donem", "")
+    return f"{MONTHS[int(d[5:7]) - 1]} {d[:4]}" if len(d) == 7 else ""
+
+
 def evde_bakim_card():
     # 2828 s.K. ek md.7: 10.000 gösterge × memur aylık katsayısı; Ocak 2027 = katsayı × (1 + memur zammı)
     k = load("emekli-memur.json")["memurKatsayi"]["aylikKatsayi"]
     zam, kesin = memur_zam()
     simdi, ocak = 10000 * k, 10000 * k * (1 + zam)
     tl = lambda x: f"{round(x):,}".replace(",", ".")
+    if not ocak_tahmini_gecerli():
+        return {"kicker": f"EVDE BAKIM MAAŞI {tr_upper(_donem_adi())}", "stat": "₺" + tl(simdi),
+                "sub": "10.000 gösterge × memur aylık katsayısı"}
     return {"kicker": "EVDE BAKIM MAAŞI OCAK 2027", "stat": ("₺" if kesin else "≈₺") + tl(ocak),
             "sub": f"şu an ₺{tl(simdi)} · 10.000 gösterge × memur katsayısı"}
 
@@ -121,6 +139,9 @@ def bedelli_card():
     k = load("emekli-memur.json")["memurKatsayi"]["aylikKatsayi"]
     zam, kesin = memur_zam()
     tl = lambda x: f"{round(x):,}".replace(",", ".")
+    if not ocak_tahmini_gecerli():
+        return {"kicker": "BEDELLİ ASKERLİK ÜCRETİ", "stat": "₺" + tl(300000 * k),
+                "sub": f"{_donem_adi()} · 300.000 gösterge × memur aylık katsayısı"}
     return {"kicker": "BEDELLİ ASKERLİK ÜCRETİ", "stat": "₺" + tl(300000 * k),
             "sub": f"Ocak 2027 {'' if kesin else '≈'}₺{tl(300000 * k * (1 + zam))} · 300.000 × memur katsayısı"}
 
@@ -143,6 +164,9 @@ def engelli_card():
         base = round(g * kat + 1e-9, 2)
         return base + round(base * 0.05 + 1e-9, 2)
     tl = lambda x: f"{round(x):,}".replace(",", ".")
+    if not ocak_tahmini_gecerli():
+        return {"kicker": f"ENGELLİ MAAŞI {tr_upper(_donem_adi())}", "stat": "₺" + tl(aylik(k)),
+                "sub": "%40–69 engelli · %70+ ve 65 yaş aylığı ayrı tutarda"}
     return {"kicker": "ENGELLİ MAAŞI OCAK 2027", "stat": ("₺" if kesin else "≈₺") + tl(aylik(k * (1 + zam))),
             "sub": f"%40–69 engelli · şu an ₺{tl(aylik(k))} · %70+ ve 65 yaş aylığı da artar"}
 
