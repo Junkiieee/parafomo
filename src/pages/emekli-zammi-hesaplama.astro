@@ -4,7 +4,7 @@ import Newsletter from '../components/Newsletter.astro';
 import ZamTutarTablosu from '../components/ZamTutarTablosu.astro';
 import em from '../../data/emekli-memur.json';
 import tufe from '../../data/tufe-aylik.json';
-import tuik from '../../data/tuik-enflasyon-2026.json';
+import { releaseOf as tuikRelease } from '../data/tuik';
 // Tahmin mantığı (dönem, toplu sözleşme oranları, memur/SSK projeksiyonu) ortak modülde — kıdem tavanı da kullanır.
 import { PERIOD, TS_H2_2026, TS_H1_2027, byMonth, cumKnown, remaining, ASSUME, project, memurFrom, sskProj, memurProj } from '../data/zam2027';
 
@@ -12,10 +12,12 @@ const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz'
 
 const monthName = (key: string) => MONTHS[+key.slice(5) - 1];
 
+// Bütün yılların TÜİK takvimi (src/data/tuik.ts); takvimde yoksa olağan gün "(tahmini)" — eskiden 2026 dosyası
+// dışındaki Aralık verisi için sabit "Ocak 2027 başı" yazıyordu.
 const releaseOf = (key: string) => {
-  const label = `${monthName(key)} ${key.slice(0, 4)}`;
-  const r = tuik.releases.find((x: { covers: string; date: string }) => x.covers === label);
-  return r ? new Date(r.date + 'T10:00:00+03:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' }) : 'Ocak 2027 başı';
+  const r = tuikRelease(key);
+  const label = new Date(r.date + 'T10:00:00+03:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', timeZone: 'Europe/Istanbul' });
+  return r.tahmini ? `${label} (tahmini)` : label;
 };
 
 const rows = PERIOD.map((key) => ({ key, name: monthName(key), data: byMonth.get(key), release: releaseOf(key) }));

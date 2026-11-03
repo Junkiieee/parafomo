@@ -86,6 +86,12 @@ for (const [page, files] of Object.entries(DATA_PAGES)) {
   if (ds.length) lastmodByPage[page] = new Date(Math.max(...ds)).toISOString();
 }
 // Olay yazıları (frontmatter `sonuc:`) — karar/veri açıklandıysa lastmod o gün (src/data/event-result.ts ile aynı kaynak)
+// src/data/tuik.ts usualReleaseDate ile aynı kural: izleyen ayın 3'ü, hafta sonuysa ilk iş günü.
+const usualTuikDate = (y, mo) => {
+  const d = new Date(Date.UTC(mo === 12 ? y + 1 : y, mo === 12 ? 0 : mo, 3));
+  while (d.getUTCDay() === 0 || d.getUTCDay() === 6) d.setUTCDate(d.getUTCDate() + 1);
+  return d.toISOString().slice(0, 10);
+};
 const AYLAR_TR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 const eventDate = (sonuc) => {
   const [tur, key] = sonuc.split(':');
@@ -103,7 +109,7 @@ const eventDate = (sonuc) => {
       const ay = `${AYLAR_TR[mo - 1]} ${y}`;
       const rel = readdirSync(dataDir).filter((f) => /^tuik-enflasyon-\d{4}\.json$/.test(f))
         .flatMap((f) => readJson(f)?.releases ?? []).find((r) => r.covers === ay)?.date
-        ?? (mo === 12 ? `${y + 1}-01-03` : `${y}-${String(mo + 1).padStart(2, '0')}-03`);
+        ?? usualTuikDate(y, mo);
       return asDate(`${rel}T10:00:00+03:00`);
     }
   }

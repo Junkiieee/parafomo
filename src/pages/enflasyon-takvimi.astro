@@ -2,12 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import AppCTA from '../components/AppCTA.astro';
-import tuik from '../../data/tuik-enflasyon-2026.json';
+import { RELEASES, RELEASE_TIME, AYLAR, coversKey, releaseOf } from '../data/tuik';
 import tufe from '../../data/tufe-aylik.json';
 
-type Release = { covers: string; date: string };
-const releases = tuik.releases as Release[];
-const releaseTime = tuik.releaseTime as string;
+const releaseTime = RELEASE_TIME;
 
 const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 const DOW_TR = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
@@ -16,6 +14,12 @@ const pad = (n: number) => String(n).padStart(2, '0');
 const today = new Date();
 today.setHours(0, 0, 0, 0);
 const todayKey = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
+
+// Bütün yılların takvimi (src/data/tuik.ts); tablo, sıradaki açıklamanın yılını gösterir (yoksa son yılı).
+// 2027 dosyası eklenince başlık/tablo kendiliğinden 2027'ye döner; eklenmeden 2026 bitince tahmini gün verilir.
+const nextRelease = RELEASES.find((r) => r.date >= todayKey);
+const YIL = (nextRelease ?? RELEASES[RELEASES.length - 1]).date.slice(0, 4);
+const releases = RELEASES.filter((r) => r.date.slice(0, 4) === YIL);
 
 const rows = releases.map((r) => {
   const dt = new Date(r.date + 'T00:00:00');
@@ -35,6 +39,19 @@ const rows = releases.map((r) => {
 });
 
 const next = rows.find((r) => !r.isPast);
+// Takvim bittiyse (2027 dosyası henüz yok): son kapsanan aydan sonraki ayın olağan açıklama günü — "tahmini".
+const lastCovered = coversKey(RELEASES[RELEASES.length - 1].covers);
+const sonrakiKey = (() => {
+  const y = +lastCovered.slice(0, 4);
+  const m = +lastCovered.slice(5, 7);
+  return m === 12 ? `${y + 1}-01` : `${y}-${pad(m + 1)}`;
+})();
+const tahmin = releaseOf(sonrakiKey);
+const tahminLabel = (() => {
+  const d = new Date(tahmin.date + 'T00:00:00');
+  return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()} ${DOW_TR[d.getDay()]}`;
+})();
+const tahminAy = `${AYLAR[+sonrakiKey.slice(5, 7) - 1]} ${sonrakiKey.slice(0, 4)}`;
 const nextCountdownText =
   next == null ? '' : next.daysUntil === 0 ? 'bugün' : next.daysUntil === 1 ? 'yarın' : `${next.daysUntil} gün sonra`;
 
@@ -55,7 +72,7 @@ const faq = [
     q: 'Enflasyon (TÜFE) ne zaman açıklanacak?',
     a: next
       ? `${next.covers} dönemine ait TÜFE (enflasyon) verisi ${next.dayLabel} günü (${nextCountdownText}), saat TSİ ${releaseTime}'da TÜİK tarafından açıklanacak. TÜİK enflasyon verisini genellikle ilgili ayı takip eden ayın başında (~3'ü) yayımlar.`
-      : '2026 enflasyon yayım takvimi tamamlandı. 2027 tarihleri TÜİK Ulusal Veri Yayımlama Takvimi ile açıklandığında bu sayfaya eklenecek.',
+      : `${YIL} enflasyon yayım takvimi tamamlandı. ${tahminAy} verisinin TÜİK'in olağan takvimine göre ${tahminLabel} günü saat TSİ ${releaseTime}'da açıklanması beklenir (tahmini: ayın 3'ü, hafta sonuysa ilk iş günü). Kesin tarih TÜİK Ulusal Veri Yayımlama Takvimi ile açıklandığında bu sayfaya eklenecek.`,
   },
   {
     q: 'TÜİK enflasyon verisini saat kaçta açıklıyor?',
@@ -88,16 +105,16 @@ const jsonLd = {
 
 <BaseLayout
   image="/og/enflasyon-takvimi.png"
-  title={`Enflasyon Ne Zaman Açıklanacak? 2026 TÜFE Takvimi (${lastLabel}: %${pctTr(lastT.yillik)})`}
-  description={`${lastLabel} enflasyonu yıllık %${pctTr(lastT.yillik)}, aylık %${pctTr(lastT.aylik)}. 2026 TÜİK enflasyon (TÜFE) takvimi: her ayın verisi hangi gün, saat kaçta açıklanır, sıradakine kaç gün kaldı.`}
+  title={`Enflasyon Ne Zaman Açıklanacak? ${YIL} TÜFE Takvimi (${lastLabel}: %${pctTr(lastT.yillik)})`}
+  description={`${lastLabel} enflasyonu yıllık %${pctTr(lastT.yillik)}, aylık %${pctTr(lastT.aylik)}. ${YIL} TÜİK enflasyon (TÜFE) takvimi: her ayın verisi hangi gün, saat kaçta açıklanır, sıradakine kaç gün kaldı.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <section class="container fk-hero">
     <span class="eyebrow"><span class="pulse"></span> Canlı Takvim</span>
-    <h1>Enflasyon Ne Zaman Açıklanacak? 2026 Takvimi</h1>
+    <h1>Enflasyon Ne Zaman Açıklanacak? {YIL} Takvimi</h1>
     <p class="lede soft">
-      TÜİK'in 2026 yılında her ay TÜFE (enflasyon) verisini hangi gün ve saatte açıkladığı —
+      TÜİK'in {YIL} yılında her ay TÜFE (enflasyon) verisini hangi gün ve saatte açıkladığı —
       resmi Ulusal Veri Yayımlama Takvimi'nden, tek sayfada geri sayımla.
     </p>
 
@@ -125,7 +142,7 @@ const jsonLd = {
 
   <section class="container fk-section">
     <div class="fk-shead">
-      <h2>2026 TÜFE Açıklama Tarihleri</h2>
+      <h2>{YIL} TÜFE Açıklama Tarihleri</h2>
       <span class="fk-shead-count">{releases.length} veri</span>
     </div>
 

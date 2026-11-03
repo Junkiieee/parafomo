@@ -6,6 +6,7 @@
 // Ajanın ertesi sabah elle sonuç kutusu eklemesine gerek kalmaz (eskiden ~16 saat gecikiyordu).
 // İsteğe bağlı `sonucBaslik`: karar açıklanınca sayfa başlığı olur; yer tutucular aşağıdaki `vars` anahtarları.
 import tufe from '../../data/tufe-aylik.json';
+import { usualReleaseDate } from './tuik';
 import kira from '../../data/kira-artis-2026.json';
 
 type TcmbResult = { decision: 'hold' | 'cut' | 'hike'; bp: number; rate: number; prev?: number; lending?: number; borrowing?: number; source: string };
@@ -100,9 +101,10 @@ function tufeEv(key: string): EventResult | null {
   const y = +key.slice(0, 4), mo = +key.slice(5);
   const ay = `${AYLAR[mo - 1]} ${y}`;
   const sonrakiAy = mo === 12 ? `Ocak ${y + 1}` : `${AYLAR[mo]} ${y}`;
-  // Takvimde yoksa: izleyen ayın 3'ü (TÜİK'in olağan günü)
+  // Takvimde yoksa: TÜİK'in olağan günü (izleyen ayın 3'ü, hafta sonuysa ilk iş günü) — src/data/tuik.ts.
+  // Eskiden düz "ayın 3'ü"ydü: Aralık 2026 verisi Pazar 3 Ocak 2027 görünüyordu.
   const rel = Object.values(tuikFiles).flatMap((f) => f.releases ?? []).find((r) => r.covers === ay)?.date
-    ?? (mo === 12 ? `${y + 1}-01-03` : `${y}-${String(mo + 1).padStart(2, '0')}-03`);
+    ?? usualReleaseDate(key);
   const links = [
     { href: '/enflasyon-takvimi/', label: 'Enflasyon takvimi' },
     { href: '/kira-artis-orani-hesaplama/', label: 'Kira artış oranı' },
