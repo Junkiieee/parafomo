@@ -1,0 +1,111 @@
+{
+  "slug": "faiz-aliyorsun-ama-sepet-daha-hizli-buyuyor",
+  "title": "Faiz alıyorsun ama sepet daha hızlı büyüyor",
+  "description": "Yüzde 40 faizli vadeli mevduat, enflasyon yüzde 45 ise reel olarak kaybettiriyor. Basit bir 100 bin TL örneğiyle reel getiri hesabı.\nKaynak/hesap: Örnek senaryo: 100.000 x 1,40 = 140.000 TL; enflasyon %45 varsayımıyla aynı sepet 100.000 x 1,45 = 145.000 TL; fark 5.000 TL (stopaj öncesi) · senaryodaki hesap",
+  "tags": [
+    "vadeli mevduat",
+    "enflasyon",
+    "reel getiri",
+    "faiz",
+    "birikim",
+    "stopaj",
+    "parafomo"
+  ],
+  "format": "shock_number",
+  "style": "isometric",
+  "scene": "generic.js",
+  "short": true,
+  "data": {
+    "eyebrow": "FAİZ TUZAĞI",
+    "scenes": [
+      {
+        "type": "big_number",
+        "head": "Faiz her zaman kazandırmaz",
+        "data": {
+          "icon": "percent",
+          "value": 40,
+          "unit": "%",
+          "suffix": "",
+          "label": "FAİZ ALSAN DA FAKİRLEŞEBİLİRSİN"
+        },
+        "line": "s0"
+      },
+      {
+        "type": "compare",
+        "head": "Faiz sepete yetişmedi",
+        "data": {
+          "a": {
+            "label": "FAİZLİ PARA",
+            "value": 140000
+          },
+          "b": {
+            "label": "AYNI SEPET",
+            "value": 145000
+          },
+          "unit": "₺",
+          "note": "SEPET ÖNDE"
+        },
+        "line": "s1"
+      },
+      {
+        "type": "icon_text",
+        "head": "Asıl dönüş: stopaj",
+        "data": {
+          "icon": "bank",
+          "text": "*Stopaj* kesilir, eline eksik geçer"
+        },
+        "line": "s2"
+      },
+      {
+        "type": "steps",
+        "head": "Altın kural",
+        "data": {
+          "items": [
+            "NET FAİZİ HESAPLA",
+            "ÜSTÜNDEYSE: KAZANÇ",
+            "ALTINDAYSA: KAYIP"
+          ]
+        },
+        "line": "s3"
+      },
+      {
+        "type": "cta",
+        "head": "Devamı geliyor",
+        "data": {
+          "l1": "ABONE OL",
+          "l2": "FAİZ > ENFLASYON",
+          "sub": "HER GÜN 60 SANİYEDE TEK ANALİZ"
+        },
+        "line": "s4"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "s0",
+      "say": "Yüzde 40 faiz alıp yine fakirleşebilirsin.",
+      "cap": "Yüzde 40 faiz alıp yine fakirleşebilirsin."
+    },
+    {
+      "id": "s1",
+      "say": "100 bin lira, yüzde 40 faizle 140 bin oluyor; aynı sepet ise 145 bin.",
+      "cap": "100 bin lira, yüzde 40 faizle 140 bin oluyor; aynı sepet ise 145 bin."
+    },
+    {
+      "id": "s2",
+      "say": "Ama asıl dönüş şu: faizden stopaj kesilir, eline 140 bin bile geçmez.",
+      "cap": "Ama asıl dönüş şu: faizden stopaj kesilir, eline 140 bin bile geçmez."
+    },
+    {
+      "id": "s3",
+      "say": "Kural: net faiz enflasyonun üstündeyse kazanırsın; altındaysa para artar, alım gücün azalır.",
+      "cap": "Kural: net faiz enflasyonun üstündeyse kazanırsın; altındaysa para artar, alım gücün azalır."
+    },
+    {
+      "id": "s4",
+      "say": "Sıradaki videoda faizi enflasyonun önüne geçirmenin yollarına bakacağız; abone ol, her gün 60 saniyede tek net analiz.",
+      "cap": "Sıradaki videoda faizi enflasyonun önüne geçirmenin yollarına bakacağız; abone ol, her gün 60 saniyede tek net analiz."
+    }
+  ],
+  "skin": "cutpaper"
+}

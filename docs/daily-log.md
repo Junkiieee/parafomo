@@ -4,6 +4,13 @@ Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya pay
 
 ---
 
+## 2026-11-03 — Evlilik Kredisi 2026: Şartlar, Tutar ve Geri Ödeme
+
+**Yayınlanan yazı:** [Evlilik Kredisi 2026: Şartlar, Tutar ve Geri Ödeme](/blog/evlilik-kredisi-2026-sartlar-tutar-geri-odeme)
+**Konu seçimi:** kuyruk (agent/plan/content-queue.md en üst satır — "evlilik kredisi" hacim 38,1)
+
+---
+
 ## 2026-11-02 — Katılım Hesabı Nedir? Kâr Payı Hesabı, Stopaj ve Mevduat Farkı
 
 **Yayınlanan yazı:** [Katılım Hesabı Nedir? Kâr Payı Hesabı, Stopaj ve Mevduat Farkı](/blog/katilim-hesabi-nedir-kar-payi-nasil-hesaplanir)

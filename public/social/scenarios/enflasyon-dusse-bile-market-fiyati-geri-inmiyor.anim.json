@@ -1,0 +1,108 @@
+{
+  "slug": "enflasyon-dusse-bile-market-fiyati-geri-inmiyor",
+  "title": "Enflasyon düşse bile market fiyatı geri inmiyor",
+  "description": "Enflasyonun düşmesi fiyatların ucuzlaması değil, artış hızının yavaşlaması demek. Zam gelen fiyat geri inmez, bu yüzden cebinde fark hissetmezsin.",
+  "tags": [
+    "enflasyon",
+    "fiyatlar",
+    "market",
+    "alım gücü",
+    "ParaFOMO",
+    "finans",
+    "parafomo"
+  ],
+  "format": "myth",
+  "style": "isometric",
+  "scene": "generic.js",
+  "short": true,
+  "data": {
+    "eyebrow": "ENFLASYON GERÇEĞİ",
+    "scenes": [
+      {
+        "type": "icon_text",
+        "head": "Büyük yanılgı",
+        "data": {
+          "icon": "percent",
+          "text": "Enflasyon düşünce fiyatlar *düşmez*"
+        },
+        "line": "s0"
+      },
+      {
+        "type": "steps",
+        "head": "Düşen tek şey ne?",
+        "data": {
+          "items": [
+            "FİYAT DÜŞMEZ",
+            "ZAM YAVAŞLAR",
+            "DÜŞEN: ZAMIN HIZI"
+          ]
+        },
+        "line": "s1"
+      },
+      {
+        "type": "compare",
+        "head": "Zam yavaşlasa da",
+        "data": {
+          "a": {
+            "label": "İlk fiyat",
+            "value": 100
+          },
+          "b": {
+            "label": "Zamlı fiyat",
+            "value": 130
+          },
+          "unit": "₺",
+          "note": "100'E DÖNMEZ"
+        },
+        "line": "s2"
+      },
+      {
+        "type": "icon_text",
+        "head": "Asıl kıstas",
+        "data": {
+          "icon": "cash",
+          "text": "Rakama değil *sepetine* bak"
+        },
+        "line": "s3"
+      },
+      {
+        "type": "cta",
+        "head": "Sıradaki video",
+        "data": {
+          "l1": "ZAMLAR NEDEN",
+          "l2": "İNMİYOR?",
+          "sub": "HER GÜN 60 SANİYEDE TEK ANALİZ"
+        },
+        "line": "s4"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "s0",
+      "say": "Enflasyon düşünce fiyatlar da düşer sanıyorsun.",
+      "cap": "Enflasyon düşünce fiyatlar da düşer sanıyorsun."
+    },
+    {
+      "id": "s1",
+      "say": "Enflasyon fiyatın ne kadar ucuzladığını değil, ne kadar yavaş pahalılaştığını gösterir. Düşen şey zammın hızı.",
+      "cap": "Enflasyon fiyatın ne kadar ucuzladığını değil, ne kadar yavaş pahalılaştığını gösterir. Düşen şey zammın hızı."
+    },
+    {
+      "id": "s2",
+      "say": "Ama işin sırrı şu: 100 liralık ürün yüzde 50 zamlanıp enflasyon yüzde 30'a inse bile, 130 olur, 100'e dönmez.",
+      "cap": "Ama işin sırrı şu: 100 liralık ürün yüzde 50 zamlanıp enflasyon yüzde 30'a inse bile, 130 olur, 100'e dönmez."
+    },
+    {
+      "id": "s3",
+      "say": "Fiyat geri inmez, sadece daha yavaş çıkar. Asıl kıstas maaşın zamdan hızlı artıp artmadığıdır, rakama değil sepetine bak.",
+      "cap": "Fiyat geri inmez, sadece daha yavaş çıkar. Asıl kıstas maaşın zamdan hızlı artıp artmadığıdır, rakama değil sepetine bak."
+    },
+    {
+      "id": "s4",
+      "say": "Peki zamlar neden bir türlü geri inmiyor? Yanıtı bir sonrakinde açıyorum. Abone ol, her gün 60 saniyede tek net analiz.",
+      "cap": "Peki zamlar neden bir türlü geri inmiyor? Yanıtı bir sonrakinde açıyorum. Abone ol, her gün 60 saniyede tek net analiz."
+    }
+  ],
+  "skin": "blueprint"
+}

@@ -1,0 +1,120 @@
+{
+  "title": "Faiz alıyorsun ama sepet daha hızlı büyüyor #Shorts",
+  "description": "Yüzde 40 faizli vadeli mevduat, enflasyon yüzde 45 ise reel olarak kaybettiriyor. Basit bir 100 bin TL örneğiyle reel getiri hesabı.\nKaynak/hesap: Örnek senaryo: 100.000 x 1,40 = 140.000 TL; enflasyon %45 varsayımıyla aynı sepet 100.000 x 1,45 = 145.000 TL; fark 5.000 TL (stopaj öncesi) · senaryodaki hesap",
+  "tags": [
+    "vadeli mevduat",
+    "enflasyon",
+    "reel getiri",
+    "faiz",
+    "birikim",
+    "stopaj",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-faiz-aliyorsun-ama-sepet-daha-hizli-buyuyor.mp4",
+  "slug": "faiz-aliyorsun-ama-sepet-daha-hizli-buyuyor",
+  "format": "shock_number",
+  "engine": "anim",
+  "timeline": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 3.254,
+      "cap": "Yüzde 40 faiz alıp yine fakirleşebilirsin.",
+      "words": [
+        0.35,
+        1.01,
+        1.21,
+        1.63,
+        1.85,
+        2.09
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 3.534,
+      "t1": 9.054,
+      "cap": "100 bin lira, yüzde 40 faizle 140 bin oluyor; aynı sepet ise 145 bin.",
+      "words": [
+        3.534,
+        3.974,
+        4.094,
+        4.654,
+        4.994,
+        5.194,
+        5.734,
+        6.014,
+        6.274,
+        6.914,
+        7.114,
+        7.454,
+        7.714,
+        8.594
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 9.334,
+      "t1": 14.302,
+      "cap": "Ama asıl dönüş şu: faizden stopaj kesilir, eline 140 bin bile geçmez.",
+      "words": [
+        9.334,
+        9.814,
+        10.134,
+        10.434,
+        10.994,
+        11.374,
+        11.794,
+        12.514,
+        12.774,
+        13.094,
+        13.394,
+        13.594
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 14.582,
+      "t1": 20.03,
+      "cap": "Kural: net faiz enflasyonun üstündeyse kazanırsın; altındaysa para artar, alım gücün azalır.",
+      "words": [
+        14.582,
+        15.222,
+        15.402,
+        15.782,
+        16.382,
+        16.922,
+        17.882,
+        18.442,
+        18.622,
+        19.042,
+        19.242,
+        19.502
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 20.31,
+      "t1": 27.654,
+      "cap": "Sıradaki videoda faizi enflasyonun önüne geçirmenin yollarına bakacağız; abone ol, her gün 60 saniyede tek net analiz.",
+      "words": [
+        20.31,
+        20.97,
+        21.41,
+        21.81,
+        22.57,
+        22.85,
+        23.37,
+        23.79,
+        24.65,
+        24.93,
+        25.45,
+        25.55,
+        25.71,
+        25.95,
+        26.57,
+        26.83,
+        27.01
+      ]
+    }
+  ]
+}

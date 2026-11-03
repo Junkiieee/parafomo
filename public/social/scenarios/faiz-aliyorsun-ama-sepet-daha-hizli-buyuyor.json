@@ -1,0 +1,64 @@
+{
+  "slug": "faiz-aliyorsun-ama-sepet-daha-hizli-buyuyor",
+  "title": "Faiz alıyorsun ama sepet daha hızlı büyüyor",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Yüzde 40 faizli vadeli mevduat, enflasyon yüzde 45 ise reel olarak kaybettiriyor. Basit bir 100 bin TL örneğiyle reel getiri hesabı.\nKaynak/hesap: Örnek senaryo: 100.000 x 1,40 = 140.000 TL; enflasyon %45 varsayımıyla aynı sepet 100.000 x 1,45 = 145.000 TL; fark 5.000 TL (stopaj öncesi) · senaryodaki hesap",
+  "tags": [
+    "vadeli mevduat",
+    "enflasyon",
+    "reel getiri",
+    "faiz",
+    "birikim",
+    "stopaj",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Yüzde 40 faiz alıp yine fakirleşebilirsin.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank with growing coins"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "100 bin lira, yüzde 40 faizle 140 bin oluyor; aynı sepet ise 145 bin.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl dönüş şu: faizden stopaj kesilir, eline 140 bin bile geçmez.",
+      "visual": {
+        "type": "object",
+        "query": "receipt paper"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kural: net faiz enflasyonun üstündeyse kazanırsın; altındaysa para artar, alım gücün azalır.",
+      "visual": {
+        "type": "object",
+        "query": "shopping cart groceries"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki videoda faizi enflasyonun önüne geçirmenin yollarına bakacağız; abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank with growing coins"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "yüzde 40",
+    "calc": "Örnek senaryo: 100.000 x 1,40 = 140.000 TL; enflasyon %45 varsayımıyla aynı sepet 100.000 x 1,45 = 145.000 TL; fark 5.000 TL (stopaj öncesi)",
+    "source": "senaryodaki hesap"
+  }
+}
