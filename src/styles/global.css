@@ -67,6 +67,7 @@
   --surface: #eef4f1;        /* hafif teal-gri yüzey */
   --border: #e0e8e4;
   --border-soft: #eef2f0;
+  --input-border: #739586;   /* form alanı sınırı: beyazla 3,3:1 (WCAG 1.4.11; --border 1,25:1 ile alan zor seçiliyordu) */
 
   --text: #121417;           /* Neutral — ana metin */
   --text-soft: #485049;
