@@ -67,7 +67,13 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
   { slug: 'yeniden-degerleme-orani', ad: `Yeniden değerleme ${yd.hedefYil}`, deger: `${ydKesin ? '' : '≈'}%${nf1(ydOran, ydKesin ? 2 : 1)}` },
   { slug: 'emekli-zammi-hesaplama', ad: 'Emekli zammı (Ocak)', deger: remaining === 0 ? `%${nf1(cumKnown * 100, 2)}` : `≈%${nf1(sskProj * 100)}` },
   { slug: 'memur-zammi-hesaplama', ad: 'Memur zammı (Ocak)', deger: `${remaining === 0 ? '' : '≈'}%${nf1(memurProj.zam * 100, remaining === 0 ? 2 : 1)}` },
-  { slug: 'asgari-ucret-hesaplama', ad: auYeni ? `Asgari ücret ${auYeni.yil}` : 'Asgari ücret 2027', deger: auYeni ? `₺${Math.round(auNet).toLocaleString('tr-TR')}` : 'Aralık’ta' },
+  // Açıklandıysa yeni yıl; Ekim–Aralık beklenen yıl "Aralık'ta"; diğer aylar yürürlükteki yılın neti (1 Ocak devrinden
+  // sonra sabit "Asgari ücret 2027 · Aralık'ta" yazıyordu — yıl geçişi denetimi)
+  { slug: 'asgari-ucret-hesaplama', ...(auYeni
+      ? { ad: `Asgari ücret ${auYeni.yil}`, deger: `₺${Math.round(auNet).toLocaleString('tr-TR')}` }
+      : new Date().getMonth() >= 9
+        ? { ad: `Asgari ücret ${asgari.guncel.yil + 1}`, deger: 'Aralık’ta' }
+        : { ad: `Asgari ücret ${asgari.guncel.yil}`, deger: `₺${Math.round(auNet).toLocaleString('tr-TR')}` }) },
   { slug: 'mtv-hesaplama', ad: `MTV ${yd.hedefYil}`, deger: 'hesapla' },
   { slug: 'emlak-vergisi-hesaplama', ad: `Emlak vergisi ${yd.hedefYil}`, deger: `${ydKesin ? '' : '≈'}+%${nf1(ydOran)}` },
   { slug: 'kira-artis-orani-hesaplama', ad: `Kira artışı (${(kira as any).guncelAy})`, deger: `%${nf1((kira as any).guncelOran, 2)}` },
