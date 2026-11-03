@@ -234,6 +234,93 @@ def vergi_dilimi_card():
             "sub": "190.000 ₺'ye kadar %15 · dilimini ve vergini hesapla"}
 
 
+
+# ---- Genel karta düşen sayfalar (denetim 2026-11-03: ~30 araç/veri sayfası og-default.png paylaşıyordu) ----
+# Gün içinde değişen fiyatlar karta yazılmaz (kart günde bir üretilir; WhatsApp önizlemesi eski fiyatı gösterirdi):
+# altın kartlarında ağırlık/ayar gibi sabit bilgiler, faiz kartlarında karar günü değişen oranlar yer alır.
+def tr_upper(s):
+    return s.replace("i", "İ").replace("ı", "I").upper()
+
+
+def tr_date(iso):  # "2026-12-10" → "10 Aralık"
+    return f"{int(iso[8:10])} {MONTHS[int(iso[5:7]) - 1]}"
+
+
+def altin_specs():
+    """src/data/altin-specs.ts tek kaynak: ağırlık/ayar burada kopyalanmaz, TS dosyasından okunur."""
+    import re
+    src = open(os.path.join(REPO, "src", "data", "altin-specs.ts"), encoding="utf-8").read()
+    pat = (r"\{ key: '([^']+)', slug: '([^']+)', ad: '([^']+)', kisa: '[^']+', gram: ([\d.]+), "
+           r"milyem: \w+,\s*ayar: '([^']+)', grup: '(\w+)', birim: '(\w+)'")
+    return [dict(zip(("key", "slug", "ad", "gram", "ayar", "grup", "birim"), m)) for m in re.findall(pat, src)]
+
+
+def altin_tur_card(slug):
+    def fn():
+        sp = next(x for x in altin_specs() if x["slug"] == slug)
+        g = float(sp["gram"])
+        if sp["birim"] == "adet":
+            stat = f"{tr_pct(g, 3)} g"
+            sub = f"{sp['ayar']} · alış, satış ve bozdurma fiyatı"
+        elif sp["birim"] == "ons":
+            stat = "31,1 g"
+            sub = "1 troy ons · dolar fiyatı ve gram altına çevirme"
+        else:
+            stat = sp["ayar"].split(" (")[0]
+            sub = f"{sp['ayar']} · gram alış, satış ve saf altın değeri"
+        return {"kicker": f"{tr_upper(sp['ad'])} FİYATI BUGÜN", "stat": stat, "sub": sub}
+    return fn
+
+
+def altin_kac_gram_card():
+    sp = {x["slug"]: float(x["gram"]) for x in altin_specs()}
+    return {"kicker": "ALTIN KAÇ GRAM?", "stat": f"{tr_pct(sp['ceyrek-altin'], 3)} g",
+            "sub": f"çeyrek · yarım {tr_pct(sp['yarim-altin'], 3)} · tam {tr_pct(sp['tam-altin'], 3)} · Cumhuriyet {tr_pct(sp['cumhuriyet-altini'], 3)} g"}
+
+
+def tcmb_card():
+    d = load(f"tcmb-{__import__('datetime').date.today().year}.json")
+    ms = d.get("meetings", [])
+    done = [m for m in ms if m.get("result")]
+    rate = done[-1]["result"]["rate"] if done else d["previous"]["rate"]
+    nxt = next((m for m in ms if not m.get("result")), None)
+    sub = f"sıradaki PPK: {tr_date(nxt['decisionDate'])}, {nxt['tsiTime']} TSİ · tüm kararlar" if nxt else "PPK kararları ve toplantı takvimi"
+    return {"kicker": "TCMB POLİTİKA FAİZİ", "stat": f"%{tr_pct(rate, 2 if rate % 1 else 0)}", "sub": sub}
+
+
+def fed_card():
+    d = load(f"fomc-{__import__('datetime').date.today().year}.json")
+    ms = d.get("meetings", [])
+    done = [m for m in ms if m.get("result")]
+    cur = done[-1]["result"] if done else d["previous"]
+    nxt = next((m for m in ms + d.get("meetings2027", []) if not m.get("result")), None)
+    sub = f"sıradaki FOMC: {tr_date(nxt['decisionDate'])}, {nxt['tsiTime']} TSİ · dot plot günleri" if nxt else "FOMC kararları ve toplantı takvimi"
+    return {"kicker": "FED FAİZ ORANI", "stat": f"%{tr_pct(cur['lower'], 2)}–{tr_pct(cur['upper'], 2)}", "sub": sub}
+
+
+def halka_arz_getiri_card():
+    d = load("halka-arz-getiri.json")
+    avg = round(d["avg_return_pct"])
+    sign = "+" if avg >= 0 else "−"
+    return {"kicker": f"{d['year']} HALKA ARZ GETİRİLERİ", "stat": f"{sign}%{abs(avg)}",
+            "sub": f"{d['count']} arzın ortalaması · {d['positive_count']} arz, arz fiyatının üzerinde"}
+
+
+def kidem_card():
+    d = load("kidem-tavan.json")["donemler"][-1]
+    t = f"{d['tavan']:,.0f}".replace(",", ".")
+    return {"kicker": "KIDEM TAZMİNATI TAVANI", "stat": f"₺{t}", "sub": f"{d['donem']} · brüt, damga vergisi, net"}
+
+
+def araclar_card():
+    import re
+    src = open(os.path.join(REPO, "src", "data", "tools.ts"), encoding="utf-8").read()
+    n = sum(1 for h in re.findall(r"href: '/([^']+)/'", src)
+            if os.path.exists(os.path.join(REPO, "src", "pages", f"{h}.astro"))
+            or os.path.isdir(os.path.join(REPO, "src", "pages", h)))
+    return {"kicker": "HESAPLAMA ARAÇLARI", "stat": f"{n} araç", "sub": "maaş, zam, vergi, kredi, faiz, altın · ücretsiz"}
+
+
 CARDS = {
     "kredi-karti-faiz-hesaplama": kk_faiz_card,
     "emeklilik-hesaplama": lambda: {
@@ -348,6 +435,53 @@ CARDS = {
     "euro-getiri": returns_card("euro-getiri.json", "EURO"),
     "bitcoin-getiri": returns_card("bitcoin-getiri.json", "BİTCOİN"),
     "bist-getiri": returns_card("bist-getiri.json", "BIST 100"),
+    # --- 2026-11-03: genel karta düşen araç/veri sayfaları ---
+    "tcmb-faiz-takvimi": tcmb_card,
+    "fed-faiz-takvimi": fed_card,
+    "halka-arz-getiri": halka_arz_getiri_card,
+    "kidem-tazminati-hesaplama": kidem_card,
+    "hesaplama-araclari": araclar_card,
+    "altin-kac-gram": altin_kac_gram_card,
+    "altin-fiyatlari": lambda: {
+        "kicker": "ALTIN FİYATLARI BUGÜN", "stat": f"{len(altin_specs())} tür",
+        "sub": "gram, çeyrek, yarım, tam, Cumhuriyet, ayar, ons"},
+    **{f"altin-fiyatlari-{x['slug']}": altin_tur_card(x["slug"]) for x in altin_specs()},
+    "altin-hesaplama": lambda: {
+        "kicker": "ALTIN HESAPLAMA", "stat": "Kaç TL?",
+        "sub": "gram, çeyrek, tam, bilezik · alış ve satış değeri"},
+    "altin-dolar-borsa": lambda: {
+        "kicker": "ALTIN MI DOLAR MI BORSA MI?", "stat": "10 yıl",
+        "sub": "altın, gümüş, dolar, euro, BIST 100, bitcoin · TL getirisi"},
+    "faiz-hesaplama": lambda: {
+        "kicker": "FAİZ HESAPLAMA", "stat": "Basit + bileşik",
+        "sub": "günlük, aylık, yıllık faiz · net getiri"},
+    "bilesik-faiz-hesaplama": lambda: {
+        "kicker": "BİLEŞİK FAİZ HESAPLAMA", "stat": "Faizin faizi",
+        "sub": "düzenli katkıyla uzun vadeli birikim"},
+    "bono-hesaplama": lambda: {
+        "kicker": "HAZİNE BONOSU HESAPLAMA", "stat": "Fiyat + getiri",
+        "sub": "nominal, vade ve faizle iki yönlü hesap"},
+    "kdv-hesaplama": lambda: {
+        "kicker": "KDV HESAPLAMA", "stat": "%1 · %10 · %20",
+        "sub": "KDV dahil ve hariç fiyat, KDV tutarı"},
+    "net-maas-hesaplama": lambda: {
+        "kicker": "NET MAAŞ HESAPLAMA 2026", "stat": "Brütten nete",
+        "sub": "SGK, kümülatif gelir vergisi ve damga vergisi"},
+    "issizlik-maasi-hesaplama": lambda: {
+        "kicker": "İŞSİZLİK MAAŞI HESAPLAMA", "stat": "%40",
+        "sub": "son 4 ayın brüt ortalaması · tavan: brüt asgari ücretin %80'i"},
+    "yuzde-hesaplama": lambda: {
+        "kicker": "YÜZDE HESAPLAMA", "stat": "Yüzde kaç?",
+        "sub": "yüzdesi, artış ve indirim oranı"},
+    "dolar-endeksi": lambda: {
+        "kicker": "ABD DOLAR ENDEKSİ", "stat": "DXY",
+        "sub": "güncel değer, bileşenler, TL ve altına etkisi"},
+    "abd-tahvil-faizi": lambda: {
+        "kicker": "ABD TAHVİL FAİZLERİ", "stat": "3 ay – 30 yıl",
+        "sub": "getiri eğrisi, resesyon sinyali, TL ve altına etkisi"},
+    "ekonomik-takvim": lambda: {
+        "kicker": "EKONOMİK TAKVİM", "stat": "Bu hafta",
+        "sub": "TÜİK, TCMB, Fed ve yüksek etkili veriler · TSİ"},
 }
 
 
