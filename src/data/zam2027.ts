@@ -4,6 +4,9 @@
 // Yöntem 2026-10-10'da Temmuz 2026 resmi oranlarıyla doğrulandı (SSK %17,75 · memur %13,51).
 import tufe from '../../data/tufe-aylik.json';
 
+// PERIOD'u bir sonraki döneme (2027-01…06, Temmuz 2027 zammı) geçirirken: sayfalar artık boş dönemde çökmez,
+// ama emekli-zammi / memur-zammi / kıdem sayfalarındaki "Temmuz–Aralık 2026", "Ocak 2027" metinleri ve TS_* oranları
+// da birlikte güncellenmeli (8. Dönem Toplu Sözleşme 2027 2. yarı oranı: Hakem Kurulu kararı, RG 27.08.2025).
 export const PERIOD = ['2026-07', '2026-08', '2026-09', '2026-10', '2026-11', '2026-12'];
 export const TS_H2_2026 = 7; // 8. Dönem Toplu Sözleşme (Hakem Kurulu, RG 27.08.2025): 2026 2. yarı %7
 export const TS_H1_2027 = 5; // 2027 1. yarı %5
