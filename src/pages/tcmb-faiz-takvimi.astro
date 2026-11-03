@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ekDa } from '../data/ek';
 import Newsletter from '../components/Newsletter.astro';
 import { yilDa } from '../data/yil';
 
@@ -49,7 +50,7 @@ const lastYil = last ? last.decisionDate.slice(0, 4) : String(tcmb.year);
 const decidedYil = decided.filter((r) => r.decisionDate.startsWith(lastYil));
 const decisionText = (res: Result) =>
   res.decision === 'hold'
-    ? `%${nf(res.rate)}'de sabit`
+    ? `%${nf(res.rate)}${ekDa(nf(res.rate))} sabit`
     : `${Math.abs(res.bp)} baz puan ${res.decision === 'cut' ? 'indirim' : 'artış'} → %${nf(res.rate)}`;
 const decisionShort = (res: Result) =>
   res.decision === 'hold' ? `Sabit · %${nf(res.rate)}` : `${res.bp > 0 ? '+' : '−'}${Math.abs(res.bp)} bp → %${nf(res.rate)}`;
