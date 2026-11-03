@@ -12,11 +12,18 @@
   --band-loss: #F2907F;
   --gold: #C9983F;
   --gold-ink: #231803;
+  /* sembol çipi yazıları: --a-* dolgu renkleri çip zemininde 3,0–4,0:1 kalıyordu → ≥4,5:1 */
+  --tk-bist: #076A83; --tk-gold: #835808; --tk-silver: #475FA3;
+  --tk-fx: var(--a-fx); --tk-crypto: var(--a-crypto); --tk-cash: #56635F;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --band: #0F211D; --band-line: #223F38; --gold: #D2A54C; }
+  :root:not([data-theme="light"]) { --band: #0F211D; --band-line: #223F38; --gold: #D2A54C;
+    --tk-bist: #22A9CB; --tk-gold: var(--a-gold); --tk-silver: var(--a-silver);
+    --tk-fx: #3DB57D; --tk-crypto: #D77CC0; --tk-cash: #93A6A1; }
 }
-:root[data-theme="dark"] { --band: #0F211D; --band-line: #223F38; --gold: #D2A54C; }
+:root[data-theme="dark"] { --band: #0F211D; --band-line: #223F38; --gold: #D2A54C;
+  --tk-bist: #22A9CB; --tk-gold: var(--a-gold); --tk-silver: var(--a-silver);
+  --tk-fx: #3DB57D; --tk-crypto: #D77CC0; --tk-cash: #93A6A1; }
 
 #app { min-height: 100svh; display: flex; flex-direction: column; }
 main { flex: 1; width: 100%; max-width: 980px; margin: 0 auto; padding: 0 16px 108px; }
@@ -99,7 +106,7 @@ h2 { font-size: 1.32rem; font-weight: 700; letter-spacing: .005em; margin: 0; }
   background: var(--band); color: var(--band-ink); border: 0;
   border-radius: var(--r-sheet); padding: 20px 20px 18px; max-width: 420px;
 }
-.sample-cap { font-size: .82rem; color: var(--band-muted); margin: 0 0 8px; }
+.sample .sample-cap { font-size: .82rem; color: var(--band-muted); margin: 0 0 8px; } /* .pitch p ezmesin (koyu bantta koyu yazı 1,9:1 idi) */
 .sample .total {
   font-family: "IBM Plex Sans Condensed", "IBM Plex Sans", sans-serif;
   font-size: 2rem; font-weight: 700; letter-spacing: -.01em;
@@ -125,6 +132,7 @@ h2 { font-size: 1.32rem; font-weight: 700; letter-spacing: .005em; margin: 0; }
 .auth-foot { margin: 14px 0 0; font-size: .88rem; color: var(--muted); }
 .auth-foot button { border: 0; background: none; color: var(--brand-deep); cursor: pointer; font: inherit; padding: 0; }
 .auth-foot button:hover { text-decoration: underline; }
+.auth-foot a { text-decoration: underline; text-underline-offset: 2px; } /* metin içi bağlantı yalnız renkle ayrılmasın */
 
 /* ---- kasa bandı (Özet kahramanı) ---- */
 .hero {
@@ -156,6 +164,11 @@ h2 { font-size: 1.32rem; font-weight: 700; letter-spacing: .005em; margin: 0; }
   font-size: .82rem; color: var(--band-muted);
 }
 .hero-mtools { display: flex; gap: 8px; }
+/* fiyatı alınamayan pozisyon uyarısı (toplamlar eksik) */
+.hero-warn {
+  margin: 12px 0 0; padding: 8px 12px; border: 1px solid var(--band-line); border-radius: 8px;
+  font-size: .86rem; color: var(--band-ink); background: rgba(255, 255, 255, .04);
+}
 .hero .btn-icon { border-color: var(--band-line); color: var(--band-muted); }
 .hero .btn-icon:hover { border-color: var(--band-muted); color: var(--band-ink); }
 .hero .chips { border-color: var(--band-line); }
@@ -212,12 +225,12 @@ h2 { font-size: 1.32rem; font-weight: 700; letter-spacing: .005em; margin: 0; }
 
 .asset { display: flex; align-items: center; gap: 10px; min-width: 0; }
 .tick { font-weight: 600; font-size: .82rem; padding: 3px 8px; border-radius: 6px; flex-shrink: 0; }
-.tick-bist { background: var(--chip-bist); color: var(--a-bist); }
-.tick-gold { background: var(--chip-gold); color: var(--a-gold); }
-.tick-silver { background: var(--chip-silver); color: var(--a-silver); }
-.tick-usd, .tick-eur { background: var(--chip-fx); color: var(--a-fx); }
-.tick-btc, .tick-eth { background: var(--chip-crypto); color: var(--a-crypto); }
-.tick-cash { background: var(--chip-cash); color: var(--a-cash); }
+.tick-bist { background: var(--chip-bist); color: var(--tk-bist); }
+.tick-gold { background: var(--chip-gold); color: var(--tk-gold); }
+.tick-silver { background: var(--chip-silver); color: var(--tk-silver); }
+.tick-usd, .tick-eur { background: var(--chip-fx); color: var(--tk-fx); }
+.tick-btc, .tick-eth { background: var(--chip-crypto); color: var(--tk-crypto); }
+.tick-cash { background: var(--chip-cash); color: var(--tk-cash); }
 .asset .aname { min-width: 0; overflow: hidden; }
 .asset .aname b { display: block; font-weight: 600; font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .asset .aname small { color: var(--muted); font-size: .8rem; }
@@ -245,6 +258,7 @@ h2 { font-size: 1.32rem; font-weight: 700; letter-spacing: .005em; margin: 0; }
 /* ---- boş durum ---- */
 .empty { text-align: center; padding: 56px 16px; border: 1.5px dashed var(--line); border-radius: var(--r-sheet); margin-top: 26px; }
 .empty h2 { margin: 0 0 8px; }
+.empty h1 { font: 700 1.32rem/1.3 "IBM Plex Sans Condensed", "IBM Plex Sans", system-ui, sans-serif; margin: 0 0 8px; }
 .empty p { color: var(--muted); max-width: 46ch; margin: 0 auto 20px; }
 .analiz-empty { color: var(--muted); max-width: 56ch; margin: 16px 0 0; }
 
