@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fed ve TCMB faiz kararlarını birincil kaynaktan çekip takvim verisine yazar.
 
-data/fomc-2026.json ve data/tcmb-2026.json'da tarihi geçmiş ama `result` alanı olmayan toplantı
+data/fomc-2026.json (+ meetings2027) ve data/tcmb-YYYY.json'larda tarihi geçmiş ama `result` alanı olmayan toplantı
 varsa kaynağı okur ve doldurur → /fed-faiz-takvimi ve /tcmb-faiz-takvimi "güncel faiz" kutusu, karar
 sütunu ve SSS'si karar gecesi tazelenir. Bekleyen toplantı yoksa ağa hiç çıkmaz.
 
@@ -12,6 +12,7 @@ Kaynaklar (yalnız birincil):
 Ayıklanamazsa hiçbir şey yazmaz (yanlış rakam yerine boş karar). "GÜNCELLENDİ" basarsa veri değişti.
 """
 import datetime as dt
+import glob
 import html
 import json
 import os
@@ -21,7 +22,9 @@ import urllib.request
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FOMC = os.path.join(REPO, "data", "fomc-2026.json")
-TCMB = os.path.join(REPO, "data", "tcmb-2026.json")
+# Her yılın PPK toplantıları kendi dosyasında (tcmb-2026.json, tcmb-2027.json …; /tcmb-faiz-takvimi hepsini okur).
+# Eskiden yalnız 2026 dosyası okunuyordu → 2027 kararları hiç dolmayacaktı (yıl geçişi denetimi 2026-11-03).
+TCMB_FILES = os.path.join(REPO, "data", "tcmb-[0-9][0-9][0-9][0-9].json")
 AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
          "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
 FED_URL = "https://www.federalreserve.gov/newsevents/pressreleases/monetary{d}a.htm"
@@ -141,28 +144,40 @@ def main():
         changed = True
         print(f"[fed] GÜNCELLENDİ {m['decisionDate']}: {res['decision']} {res['bp']} bp → {res['lower']}–{res['upper']}")
 
-    tcmb = json.load(open(TCMB, encoding="utf-8"))
-    prev_rate = tcmb["previous"]["rate"]
-    last_no = 0
-    for m in tcmb["meetings"]:
-        if m.get("result"):
-            prev_rate = m["result"]["rate"]
-            last_no = int(m["result"]["no"].split("-")[1])
-            continue
-        if m["decisionDate"] > today:
+    fomc_changed = changed
+    # Faiz zinciri yıllar arasında sürer (2027'nin ilk kararı 2026'nın son faiziyle tutarlı olmalı); basın duyurusu
+    # numarası her yıl 1'den başlar. Bir karar ayıklanamazsa sonrakilere (sonraki yıl dahil) geçilmez.
+    tcmb_docs = [(p, json.load(open(p, encoding="utf-8"))) for p in sorted(glob.glob(TCMB_FILES))]
+    tcmb_changed = set()
+    prev_rate = tcmb_docs[0][1]["previous"]["rate"] if tcmb_docs else None
+    stop = False
+    for path, tcmb in tcmb_docs:
+        if stop:
             break
-        res = tcmb_result(m["decisionDate"], tcmb["year"], last_no + 1, prev_rate)
-        if not res:
-            print(f"[tcmb] {m['decisionDate']} kararı henüz yok/ayıklanamadı")
-            break
-        m["result"] = res
-        prev_rate = res["rate"]
-        last_no = int(res["no"].split("-")[1])
-        changed = True
-        print(f"[tcmb] GÜNCELLENDİ {m['decisionDate']}: {res['decision']} {res['bp']} bp → %{res['rate']}")
+        last_no = 0
+        for m in tcmb["meetings"]:
+            if m.get("result"):
+                prev_rate = m["result"]["rate"]
+                last_no = int(m["result"]["no"].split("-")[1])
+                continue
+            if m["decisionDate"] > today:
+                stop = True
+                break
+            res = tcmb_result(m["decisionDate"], tcmb["year"], last_no + 1, prev_rate)
+            if not res:
+                print(f"[tcmb] {m['decisionDate']} kararı henüz yok/ayıklanamadı")
+                stop = True
+                break
+            m["result"] = res
+            prev_rate = res["rate"]
+            last_no = int(res["no"].split("-")[1])
+            changed = True
+            tcmb_changed.add(path)
+            print(f"[tcmb] GÜNCELLENDİ {m['decisionDate']}: {res['decision']} {res['bp']} bp → %{res['rate']}")
 
     if changed:
-        for path, obj in ((FOMC, fomc), (TCMB, tcmb)):
+        yaz = ([(FOMC, fomc)] if fomc_changed else []) + [(p, o) for p, o in tcmb_docs if p in tcmb_changed]
+        for path, obj in yaz:
             tmp = f"{path}.{os.getpid()}.tmp"   # atomik yaz: eşzamanlı build/iş yarım JSON okumasın
             with open(tmp, "w", encoding="utf-8") as f:
                 json.dump(obj, f, ensure_ascii=False, indent=2)

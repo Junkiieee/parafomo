@@ -626,11 +626,20 @@ def sec_calendar():
                 events.append((e["date"], e.get("region", ""), e.get("title", ""), e.get("impact")))
     except Exception:
         pass
-    for fn, label in (("fomc-2026.json", "Fed FOMC kararı"), ("tcmb-2026.json", "TCMB PPK"),
-                      ("tuik-enflasyon-2026.json", "TÜİK enflasyon")):
+    # Bütün yıl dosyaları + meetings2027 gibi ek listeler: yalnız 2026 dosyası okununca Aralık'tan itibaren 2027'nin
+    # ilk TÜİK/TCMB/Fed günleri özete hiç girmiyordu (yıl geçişi denetimi 2026-11-03).
+    try:
+        veri = os.listdir(os.path.join(ROOT, "data"))
+    except OSError:
+        veri = []
+    takvim = sorted((fn, label) for onek, label in (("fomc", "Fed FOMC kararı"), ("tcmb", "TCMB PPK"),
+                                                     ("tuik-enflasyon", "TÜİK enflasyon"))
+                    for fn in veri if re.fullmatch(rf"{onek}-\d{{4}}\.json", fn))
+    for fn, label in takvim:
         try:
             d = json.load(open(os.path.join(ROOT, "data", fn), encoding="utf-8"))
-            items = d.get("meetings") or d.get("releases") or d.get("dates") or d.get("events") or []
+            items = list(d.get("meetings") or d.get("releases") or d.get("dates") or d.get("events") or [])
+            items += [m for k, v in d.items() if re.fullmatch(r"meetings\d{4}", k) and isinstance(v, list) for m in v]
             for it in items:
                 date = it if isinstance(it, str) else (it.get("decisionDate") or it.get("date")
                                                        or it.get("decision_date") or "")
