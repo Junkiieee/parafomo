@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import data from '../../data/halka-arz.json';
+import ipoReturns from '../../data/halka-arz-getiri.json';
 
 type IPO = {
   company: string; bist_code: string; slug: string; link: string;
@@ -81,7 +82,7 @@ const datasetLd = {
     <h1>Halka Arz Takvimi</h1>
     <p class="lede soft">{monthLabel} ayının halka arz takvimi. Her gün otomatik güncellenir.</p>
     <p class="ha-upd">Son güncelleme: {updated} · Kaynak: halkarz.com</p>
-    <p class="ha-cta"><a href="/halka-arz-getiri">📈 2026 halka arzları ne kazandırdı? Güncel getiri tablosunu gör →</a></p>
+    <p class="ha-cta"><a href="/halka-arz-getiri">📈 {ipoReturns.year} halka arzları ne kazandırdı? Güncel getiri tablosunu gör →</a></p>
   </section>
 
   <section class="container ha-section">

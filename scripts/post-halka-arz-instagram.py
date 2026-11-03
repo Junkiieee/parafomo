@@ -85,6 +85,17 @@ def offer_size(lot, price):
     return f(t, 0) + " TL"
 
 
+def _iyelik(n):
+    """Yüzdeye gelen iyelik eki, okunuşun son kelimesine göre: %23'ü, %67'si, %40'ı, %8'i."""
+    n = abs(int(n))
+    birler = ["", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"]
+    onlar = ["", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"]
+    k = birler[n % 10] if n % 10 else onlar[n % 100 // 10] if n % 100 else "yüz" if n % 1000 else "bin" if n else "sıfır"
+    son = [c for c in k if c in "aıoueiöü"][-1]
+    dar = {"a": "ı", "ı": "ı", "o": "u", "u": "u", "e": "i", "i": "i", "ö": "ü", "ü": "ü"}[son]
+    return "'" + ("s" if k[-1] in "aıoueiöü" else "") + dar
+
+
 def build_caption(it):
     co = clean(it.get("company"))
     code = (it.get("bist_code") or "").upper()
@@ -107,10 +118,13 @@ def build_caption(it):
         avg = g.get("avg_return_pct")
         pp = g.get("positive_pct")
         if avg is not None:
-            sign = "+" if avg > 0 else ""
+            # Yıl veriden (ipo-returns.py yeni yıla 5 arzdan sonra geçer); eksi ortalamaya "kazandırdı" denmez
+            yil = g.get("year") or time.strftime("%Y")
+            fiil = "kazandırdı" if avg >= 0 else "kaybettirdi"
+            deger = f"{abs(avg):.1f}".replace(".", ",")
             cta += (
-                f"\n\n📈 2026 halka arzları ortalama {sign}%{avg} kazandırdı"
-                + (f" (%{pp}'i kârda)" if pp is not None else "")
+                f"\n\n📈 {yil} halka arzları ortalama %{deger} {fiil}"
+                + (f" (%{pp}{_iyelik(pp)} kârda)" if pp is not None else "")
                 + " — güncel getiri tablosu → parafomo.com/halka-arz-getiri"
             )
     except Exception:

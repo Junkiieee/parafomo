@@ -154,7 +154,7 @@ try {
 // Halka arz şirket sayfaları: kaynağın (halkarz.com) şirket güncellemesi "GG.AA.YYYY SS:dd" TSİ ya da ilk görülme;
 // işlem gören şirketin getirisi her gün yenilendiği için onlarda getiri dosyasının zamanı.
 const ipoReturns = readJson('halka-arz-getiri.json');
-const ipoRetCodes = new Set((ipoReturns?.items ?? []).map((r) => r.code));
+const ipoRetCodes = new Set((ipoReturns?.all_items ?? ipoReturns?.items ?? []).map((r) => r.code));
 const trStamp = (v) => {
   const m = /^(\d{2})\.(\d{2})\.(\d{4}) (\d{2}):(\d{2})$/.exec(v ?? '');
   return m ? asDate(`${m[3]}-${m[2]}-${m[1]}T${m[4]}:${m[5]}:00+03:00`) : null;

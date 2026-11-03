@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-ParaFOMO — 2026 Halka Arz Getiri Analizi (özgün veri varlığı / link-mıknatısı).
+ParaFOMO — Yıllık Halka Arz Getiri Analizi (özgün veri varlığı / link-mıknatısı).
 
 data/halka-arz.json'daki TAMAMLANMIŞ (borsada işlem gören) halka arzları alır,
 her biri için Yahoo Finance'ten güncel BIST fiyatını çeker ve halka arz fiyatına
@@ -97,12 +97,16 @@ def main():
         print("UYARI: hiç getiri hesaplanamadı; mevcut depo korunuyor.", file=sys.stderr)
         return 0 if os.path.exists(STORE) else 1
 
-    # İstatistik yalnız İÇİNDE BULUNULAN YILIN arzlarından (sayfa "2026 halka arzları" diyor).
-    # Yıl başında henüz tamamlanan arz yoksa bir önceki yıla düşülür.
+    # İstatistik yalnız İÇİNDE BULUNULAN YILIN arzlarından (sayfa "<yıl> halka arzları" diyor). Yeni yıla en az
+    # MIN_YIL_ARZ arz işlem görünce geçilir: eskiden ilk 2027 arzında geçiliyordu → "2027 ortalaması" tek arzdan,
+    # 2026 şirket sayfalarının getiri bloğu kayboluyordu (yıl geçişi denetimi). Şirket sayfaları için bütün yıllar
+    # all_items'ta kalır; items (tablo) seçilen yılın arzlarıdır.
+    MIN_YIL_ARZ = 5
+    all_rows = sorted(rows, key=lambda r: -r["return_pct"])
     year = int(time.strftime("%Y", time.gmtime()))
     for y in (year, year - 1):
         yr_rows = [r for r in rows if str(r.get("start") or "").startswith(str(y))]
-        if yr_rows:
+        if len(yr_rows) >= MIN_YIL_ARZ or (yr_rows and y == year - 1):
             rows, year = yr_rows, y
             break
     rows.sort(key=lambda r: -r["return_pct"])
@@ -123,6 +127,7 @@ def main():
         "best": {"code": best["code"], "return_pct": best["return_pct"]},
         "worst": {"code": worst["code"], "return_pct": worst["return_pct"]},
         "items": rows,
+        "all_items": all_rows,
     }
 
     def _write(path):   # atomik yaz (geçici dosya + os.replace): eşzamanlı build yarım JSON okumasın

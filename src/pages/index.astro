@@ -29,7 +29,7 @@ const postCount = posts.length;
 // tarih bekleyenler. Tarih bekleyenler güne göre döner — her şirket sayfası zamanla ana sayfadan link alır.
 type Ipo = { company: string; bist_code: string; slug: string; status: string; start: string | null };
 const ipos = Object.values((ipoArchive as any).items ?? {}) as Ipo[];
-const ipoRet = new Map(((ipoReturns as any).items ?? []).map((r: any) => [r.code, r.return_pct as number]));
+const ipoRet = new Map((((ipoReturns as any).all_items ?? (ipoReturns as any).items) ?? []).map((r: any) => [r.code, r.return_pct as number]));
 const ipoName = (raw: string) => {
   const p = raw.match(/^\((.+?)\)\s*(.*)$/);
   if (p && /\s/.test(p[1].trim())) return p[1].trim();
