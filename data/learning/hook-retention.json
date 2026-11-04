@@ -1,16 +1,16 @@
 {
-  "fetched_utc": "2026-11-03T08:47:37Z",
+  "fetched_utc": "2026-11-04T08:47:48Z",
   "hold_sec": 3.0,
-  "n": 11,
+  "n": 10,
   "median_hold_3s": 1.034,
   "avd_gate_pct": 65.0,
-  "median_avg_view_pct": 40.4,
-  "gate_pass_share": 0.091,
+  "median_avg_view_pct": 45.1,
+  "gate_pass_share": 0.1,
   "gate_pass_n": 1,
-  "gate_breakdown_n": 37,
+  "gate_breakdown_n": 38,
   "gate_by_format": {
     "shock_number": {
-      "n": 8,
+      "n": 9,
       "median_avd": 12.6,
       "gate_pass_n": 0,
       "gate_pass_share": 0.0
@@ -103,8 +103,8 @@
       "video_id": "M-hiAFNeck0",
       "duration_sec": 36,
       "hold_3s": 1.031,
-      "rel_perf_3s": 0.179,
-      "avg_view_pct": 37.7,
+      "rel_perf_3s": 0.178,
+      "avg_view_pct": 37.6,
       "published_utc": "2026-10-28T11:05:17Z"
     },
     {
@@ -124,15 +124,6 @@
       "rel_perf_3s": 0.266,
       "avg_view_pct": 47.0,
       "published_utc": "2026-10-28T06:35:06Z"
-    },
-    {
-      "id": "youtube:jk50WH9FR4I",
-      "video_id": "jk50WH9FR4I",
-      "duration_sec": 30,
-      "hold_3s": 1.055,
-      "rel_perf_3s": 0.203,
-      "avg_view_pct": 31.3,
-      "published_utc": "2026-10-27T11:03:38Z"
     }
   ]
 }
