@@ -1,5 +1,9 @@
 # Günlük Operasyon Günlüğü
 
+## 2026-11-05
+**Yayınlanan yazı:** [ABD Ekim İstihdam Verisi (NFP) 6 Kasım: Fed, Dolar, Altın](/blog/abd-kasim-2026-nfp-istihdam-verisi-fed-dolar-altin)
+Seçim kaynağı: kuyruk (📅 ABD NFP 6 Kasım; saat düzeltildi → TSİ 16:30, ABD kış saati; Ekim konsensüsü bulunamadı, veri günü eklenecek)
+
 Otomasyon her gün buraya: (1) o gün yayınlanan yazıyı, (2) sosyal medya paylaşım taslağını, (3) senin yapman gereken işleri ekler. En yeni gün en üstte.
 
 ---

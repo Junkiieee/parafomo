@@ -59,12 +59,12 @@ beyannamesi" 2,8 (zirve Mart 32 → Şubat'ta yeniden ölç) · "aile destek pro
   (hacim 38,1, zirve Mayıs 126) · neden: sosyal haklar kümesi (B261029-1). Tutar, yaş/gelir şartı, geri ödeme süresi ve
   çocuk doğunca ertelenen/silinen kısım YALNIZ Aile ve Sosyal Hizmetler Bakanlığı / Aile ve Gençlik Fonu resmî sayfasından,
   tarihli · iç-link: /dogum-yardimi, /ihtiyac-kredisi-hesaplama, /kredi-hesaplama → /blog/evlilik-kredisi-2026-sartlar-tutar-geri-odeme (2026-11-03)
-- [ ] 📅 4 Kasım **ABD Ekim İstihdam Verisi (NFP) 6 Kasım'da: Beklenti, Fed, Dolar ve Altın Etkisi** · slug:
+- [x] 📅 4 Kasım **ABD Ekim İstihdam Verisi (NFP) 6 Kasım'da: Beklenti, Fed, Dolar ve Altın Etkisi** · slug:
   `abd-kasim-2026-nfp-istihdam-verisi-fed-dolar-altin` (ekim-2026-nfp adı Eylül verisi için kullanıldı) · hedef: izinli olay
   ailesi (ABD NFP — GSC'de tık kanıtlı; nfp yazısı 28g 3 tık / 34 gös) · tarih: 6 Kasım Cuma 15:30 TSİ (iki takvim aynı;
   BLS'den doğrula) · beklenti rakamı YALNIZ tarihli konsensüs (Reuters/Bloomberg anketi), önceki ay BLS'den · Fed 28 Ekim
   kararı (%3,75–4,00 sabit) `data/fomc-2026.json`'dan · iç-link: /fed-faiz-takvimi, /ekonomik-takvim,
-  /blog/abd-issizlik-verisi-altin-dolar-etkisi, /dolar-getiri, /altin-getiri
+  /blog/abd-issizlik-verisi-altin-dolar-etkisi, /dolar-getiri, /altin-getiri → /blog/abd-kasim-2026-nfp-istihdam-verisi-fed-dolar-altin (2026-11-05)
 - [ ] **SED yardımı nedir? Sosyal ekonomik destek 2026 tutarı, şartları ve başvurusu** · hedef: "sed yardımı" (hacim 12,4,
   zirve Ocak 58) · neden: sosyal haklar kümesi (B261029-1); tutar ve gelir şartı YALNIZ ASHB resmî kaynağından, tarihli;
   emin olunmayan tutarı yazma · iç-link: /engelli-maasi, /evde-bakim-maasi, /dogum-yardimi
