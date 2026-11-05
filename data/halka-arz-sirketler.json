@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05T06:15+00:00",
+ "updated": "2026-11-05T12:15+00:00",
  "source": "halkarz.com",
  "items": {
   "pronet-guvenlik-hizmetleri-a-s": {
@@ -8449,6 +8449,94 @@
     }
    },
    "first_seen": "2026-11-02"
+  },
+  "simpro-elektronik-kart-uretim-san-ve-tic-a-s": {
+   "company": "Simpro Elektronik Kart Üretim San. ve Tic. A.Ş.",
+   "bist_code": "",
+   "slug": "simpro-elektronik-kart-uretim-san-ve-tic-a-s",
+   "link": "https://halkarz.com/simpro-elektronik-kart-uretim-san-ve-tic-a-s/",
+   "date_text": "",
+   "start": null,
+   "end": null,
+   "status": "Tarih Bekleniyor",
+   "price": "",
+   "distribution": "Eşit Dağıtım **",
+   "lot": "80.000.000 Lot",
+   "broker": "Halk Yatırım Menkul Değerler A.Ş.",
+   "market": "",
+   "first_trade": "",
+   "float_lot": "",
+   "float_pct": "",
+   "updated_src": "05.11.2026 14:56",
+   "details": {
+    "sekil": {
+     "items": [
+      "Sermaye Artırımı : 52.000.000 Lot",
+      "Ortak Satışı : 28.000.000 Lot"
+     ],
+     "source": "Taslak İzahname, Sayfa 1."
+    },
+    "fon_kullanim": {
+     "items": [
+      "%65 İşletme sermayesi",
+      "%65 Yatırım ihtiyaçlarının finansmanı",
+      "%15 Finansal borçluluğun azaltılması"
+     ],
+     "source": "Taslak İzahname, Sayfa 185."
+    },
+    "satis_yontemi": {
+     "items": [
+      "Sabit Fiyatla Talep Toplama",
+      "En İyi Gayret Aracılığı"
+     ],
+     "source": ""
+    },
+    "fiyat_istikrari": {
+     "items": [
+      "30 gün. * Brüt halka arz gelirinin %20'si"
+     ],
+     "source": "Taslak İzahname, Sayfa 181."
+    },
+    "satmama": {
+     "items": [
+      "1 Yıl, İhraççı",
+      "1 Yıl, Ortaklar"
+     ],
+     "source": "Taslak İzahname, Sayfa 183."
+    },
+    "halka_aciklik": {
+     "items": [
+      "%27,21"
+     ],
+     "source": "Taslak İzahname, Sayfa 163."
+    },
+    "finansal": {
+     "periods": [
+      "2026/6",
+      "2025",
+      "2024"
+     ],
+     "rows": [
+      {
+       "label": "Hasılat",
+       "values": [
+        "722,0 Milyon TL",
+        "1,2 Milyar TL",
+        "1,2 Milyar TL"
+       ]
+      },
+      {
+       "label": "Brüt Kâr",
+       "values": [
+        "161,6 Milyon TL",
+        "322,4 Milyon TL",
+        "206,4 Milyon TL"
+       ]
+      }
+     ]
+    }
+   },
+   "first_seen": "2026-11-05"
   }
  }
 }
