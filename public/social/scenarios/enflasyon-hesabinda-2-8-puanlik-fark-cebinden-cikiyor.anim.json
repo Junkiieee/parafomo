@@ -1,0 +1,119 @@
+{
+  "slug": "enflasyon-hesabinda-2-8-puanlik-fark-cebinden-cikiyor",
+  "title": "Enflasyon hesabında 2,8 puanlık fark cebinden çıkıyor",
+  "description": "Aylık yüzde 2 enflasyon yılda yüzde 24 değil, bileşik etkiyle yaklaşık yüzde 26,8 yapar. Üç yılda fark çok daha büyür.",
+  "tags": [
+    "enflasyon",
+    "bileşik etki",
+    "aylık enflasyon",
+    "birikim",
+    "alım gücü",
+    "finans",
+    "parafomo"
+  ],
+  "format": "myth",
+  "style": "isometric",
+  "scene": "generic.js",
+  "short": true,
+  "data": {
+    "eyebrow": "HESAP ŞAŞIRTIYOR",
+    "scenes": [
+      {
+        "type": "big_number",
+        "head": "Aylık zam yıla böyle yansımaz",
+        "data": {
+          "icon": "percent",
+          "value": 24,
+          "unit": "%",
+          "suffix": "",
+          "label": "Aylık %2 zam yılda 24 etmiyor"
+        },
+        "line": "s0"
+      },
+      {
+        "type": "icon_text",
+        "head": "Zam zamın üstüne biner",
+        "data": {
+          "icon": "chart",
+          "text": "Zam zamın üstüne biner: yıllık *%26,8*"
+        },
+        "line": "s1"
+      },
+      {
+        "type": "compare",
+        "head": "Uzun vadede fark açılıyor",
+        "data": {
+          "a": {
+            "label": "Toplamayla",
+            "value": 72
+          },
+          "b": {
+            "label": "Gerçek",
+            "value": 104
+          },
+          "unit": "%",
+          "note": "3 YILDA FARK"
+        },
+        "line": "s2"
+      },
+      {
+        "type": "bars",
+        "head": "Sepetin üç yıllık yolculuğu",
+        "data": {
+          "items": [
+            {
+              "label": "Bugün",
+              "value": 100
+            },
+            {
+              "label": "3 yıl sonra",
+              "value": 204
+            }
+          ],
+          "unit": "₺",
+          "suffix": "bin",
+          "hl": 1
+        },
+        "line": "s3"
+      },
+      {
+        "type": "cta",
+        "head": "Sıradaki hesap",
+        "data": {
+          "l1": "KENDİ HESABIN",
+          "l2": "ABONE OL",
+          "sub": "HER GÜN TEK NET ANALİZ"
+        },
+        "line": "s4"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "s0",
+      "say": "Aylık yüzde 2, yılda 24 etmiyor.",
+      "cap": "Aylık yüzde 2, yılda 24 etmiyor."
+    },
+    {
+      "id": "s1",
+      "say": "Çünkü her zam, önceki ayın zamlı fiyatının üstüne biniyor. Yıllık sonuç yaklaşık yüzde 26,8.",
+      "cap": "Çünkü her zam, önceki ayın zamlı fiyatının üstüne biniyor. Yıllık sonuç yaklaşık yüzde 26,8."
+    },
+    {
+      "id": "s2",
+      "say": "Ama asıl fark uzun vadede: üç yılda toplamayla yüzde 72 beklersin, gerçek yaklaşık yüzde 104.",
+      "cap": "Ama asıl fark uzun vadede: üç yılda toplamayla yüzde 72 beklersin, gerçek yaklaşık yüzde 104."
+    },
+    {
+      "id": "s3",
+      "say": "100 bin liralık sepet üç yılda yaklaşık 204 bin oluyor. Getirini yüzde 26,8'e göre karşılaştır.",
+      "cap": "100 bin liralık sepet üç yılda yaklaşık 204 bin oluyor. Getirini yüzde 26,8'e göre karşılaştır."
+    },
+    {
+      "id": "s4",
+      "say": "Kendi rakamını parafomo.com'daki enflasyon hesaplama aracıyla bul. Abone ol, her gün tek net analiz.",
+      "cap": "Kendi rakamını parafomo.com'daki enflasyon hesaplama aracıyla bul. Abone ol, her gün tek net analiz."
+    }
+  ],
+  "skin": "cutpaper"
+}

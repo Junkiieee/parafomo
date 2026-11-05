@@ -1,0 +1,59 @@
+{
+  "slug": "enflasyon-hesabinda-2-8-puanlik-fark-cebinden-cikiyor",
+  "title": "Enflasyon hesabında 2,8 puanlık fark cebinden çıkıyor",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Aylık yüzde 2 enflasyon yılda yüzde 24 değil, bileşik etkiyle yaklaşık yüzde 26,8 yapar. Üç yılda fark çok daha büyür.",
+  "tags": [
+    "enflasyon",
+    "bileşik etki",
+    "aylık enflasyon",
+    "birikim",
+    "alım gücü",
+    "finans",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Aylık yüzde 2, yılda 24 etmiyor.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çünkü her zam, önceki ayın zamlı fiyatının üstüne biniyor. Yıllık sonuç yaklaşık yüzde 26,8.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl fark uzun vadede: üç yılda toplamayla yüzde 72 beklersin, gerçek yaklaşık yüzde 104.",
+      "visual": {
+        "type": "concept",
+        "query": "compounding growth"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "100 bin liralık sepet üç yılda yaklaşık 204 bin oluyor. Getirini yüzde 26,8'e göre karşılaştır.",
+      "visual": {
+        "type": "object",
+        "query": "shopping cart groceries"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Kendi rakamını parafomo.com'daki enflasyon hesaplama aracıyla bul. Abone ol, her gün tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    }
+  ]
+}

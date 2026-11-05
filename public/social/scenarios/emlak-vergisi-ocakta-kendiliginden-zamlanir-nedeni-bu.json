@@ -1,0 +1,59 @@
+{
+  "slug": "emlak-vergisi-ocakta-kendiliginden-zamlanir-nedeni-bu",
+  "title": "Emlak vergisi ocakta kendiliğinden zamlanır, nedeni bu",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Emlak vergisi, yeniden değerleme oranı açıklanınca ocakta otomatik artıyor. Yürüyen merdiven metaforuyla, örnek hesapla ve bütçe için yapılacakla anlatıyoruz.",
+  "tags": [
+    "emlak vergisi",
+    "yeniden değerleme oranı",
+    "zam",
+    "ocak zammı",
+    "ekonomi",
+    "bütçe",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Emlak vergisi sen bir şey yapmadan artıyor.",
+      "visual": {
+        "type": "object",
+        "query": "house keys"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çünkü yürüyen merdiven gibi: yeniden değerleme oranı açıklanınca vergi ocakta kendiliğinden yukarı çıkıyor.",
+      "visual": {
+        "type": "object",
+        "query": "escalator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2027 için oran yüzde 27,83 oldu: 2 bin liralık emlak vergisi ocakta yaklaşık 2 bin 557 liraya çıkar.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çözüm basit: ocaktan önce yıllık gider listene emlak vergisini ekle, yeni oranla hesapla.",
+      "visual": {
+        "type": "object",
+        "query": "notebook budget list"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Ocakta başka hangi kalem sessizce zamlanıyor? Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "house keys"
+      }
+    }
+  ]
+}

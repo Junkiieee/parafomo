@@ -1,0 +1,108 @@
+{
+  "slug": "emlak-vergisi-ocakta-kendiliginden-zamlanir-nedeni-bu",
+  "title": "Emlak vergisi ocakta kendiliğinden zamlanır, nedeni bu",
+  "description": "Emlak vergisi her yıl yeniden değerleme oranıyla otomatik artar (7566 sayılı Kanun: 2027-2029 vergi değeri bir önceki yılın değeri × yeniden değerleme oranı). 2027 oranı %27,83 (TÜİK Ekim Yİ-ÜFE, 12 aylık ortalama). Örnek: 2.000 ₺ × 1,2783 ≈ 2.557 ₺.",
+  "tags": [
+    "emlak vergisi",
+    "yeniden değerleme oranı",
+    "zam",
+    "ocak zammı",
+    "ekonomi",
+    "bütçe",
+    "parafomo"
+  ],
+  "format": "single_concept",
+  "style": "isometric",
+  "scene": "generic.js",
+  "short": true,
+  "data": {
+    "eyebrow": "SESSİZ ZAM",
+    "scenes": [
+      {
+        "type": "icon_text",
+        "head": "Fark etmeden artıyor",
+        "data": {
+          "icon": "house",
+          "text": "Emlak vergisi *sen yapmadan* artıyor"
+        },
+        "line": "s0"
+      },
+      {
+        "type": "icon_text",
+        "head": "Yürüyen merdiven etkisi",
+        "data": {
+          "icon": "calendar",
+          "text": "Oran açıklanınca vergi *ocakta* kendiliğinden çıkıyor"
+        },
+        "line": "s1"
+      },
+      {
+        "type": "compare",
+        "head": "Ocakta vergi nasıl değişir",
+        "data": {
+          "a": {
+            "label": "2026 vergisi",
+            "value": 2000
+          },
+          "b": {
+            "label": "2027 (%27,83)",
+            "value": 2557
+          },
+          "unit": "₺",
+          "note": "ÖRNEK · ≈2.557 ₺"
+        },
+        "line": "s2"
+      },
+      {
+        "type": "steps",
+        "head": "Ocaktan önce hazırlan",
+        "data": {
+          "items": [
+            "Gider listeni aç",
+            "Emlak vergisini ekle",
+            "Yeni oranla hesapla"
+          ]
+        },
+        "line": "s3"
+      },
+      {
+        "type": "cta",
+        "head": "Sıradaki zam hangisi?",
+        "data": {
+          "l1": "OCAKTA NE ZAMLANIYOR?",
+          "l2": "ABONE OL",
+          "sub": "HER GÜN 60 SANİYEDE TEK ANALİZ"
+        },
+        "line": "s4"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "s0",
+      "say": "Emlak vergisi sen bir şey yapmadan artıyor.",
+      "cap": "Emlak vergisi sen bir şey yapmadan artıyor."
+    },
+    {
+      "id": "s1",
+      "say": "Çünkü yürüyen merdiven gibi: yeniden değerleme oranı açıklanınca vergi ocakta kendiliğinden yukarı çıkıyor.",
+      "cap": "Çünkü yürüyen merdiven gibi: yeniden değerleme oranı açıklanınca vergi ocakta kendiliğinden yukarı çıkıyor."
+    },
+    {
+      "id": "s2",
+      "say": "2027 için oran yüzde 27,83 oldu: 2 bin liralık emlak vergisi ocakta yaklaşık 2 bin 557 liraya çıkar.",
+      "cap": "2027 için oran %27,83 oldu: 2.000 liralık emlak vergisi ocakta yaklaşık 2.557 liraya çıkar."
+    },
+    {
+      "id": "s3",
+      "say": "Çözüm basit: ocaktan önce yıllık gider listene emlak vergisini ekle, yeni oranla hesapla.",
+      "cap": "Çözüm basit: ocaktan önce yıllık gider listene emlak vergisini ekle, yeni oranla hesapla."
+    },
+    {
+      "id": "s4",
+      "say": "Ocakta başka hangi kalem sessizce zamlanıyor? Abone ol, her gün 60 saniyede tek net analiz.",
+      "cap": "Ocakta başka hangi kalem sessizce zamlanıyor? Abone ol, her gün 60 saniyede tek net analiz."
+    }
+  ],
+  "skin": "ink"
+}
