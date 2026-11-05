@@ -108,6 +108,8 @@ def ev_tuik(now):
                 rel = dt.date.fromisoformat(r["date"])
     if rel is None:
         rel = dt.date(y + (mo == 12), 1 if mo == 12 else mo + 1, 3)
+        while rel.weekday() >= 5:   # hafta sonuysa ilk iş günü (src/data/tuik.ts ile aynı kural)
+            rel += dt.timedelta(days=1)
     when = utc(rel, 7)   # 10:00 TSİ
     app = f"{AYLAR[rel.month - 1]} {rel.year}"   # kira tavanı uygulama ayıyla anılır
     tufe_line = (f"TÜİK {covers} enflasyonu ({rel:%d.%m.%Y} açıklandı): TÜFE aylık %{tr(m0['aylik'])}, "

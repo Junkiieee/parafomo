@@ -87,7 +87,7 @@ const breadcrumbs = [
 
 <BaseLayout
   title="Mevduat Faizi Hesaplama 2026 | Güncel Faiz Oranları ve Net Getiri"
-  description={`Güncel mevduat faiz oranları (TCMB, ${HAFTA}): 3 aya kadar vadede ortalama yıllık %${pctTR(M.ay3.yillikBilesik)}. Anapara ve vadeyi gir; 2026 stopajıyla brüt faiz, kesinti ve net getiriyi gör.`}
+  description={`Güncel mevduat faizi (TCMB, ${HAFTA}): 3 aya kadar vadede ortalama yıllık %${pctTR(M.ay3.yillikBilesik)}. Anapara ve vadeyi gir; 2026 stopajıyla brüt faiz, kesinti ve net getiriyi gör.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
   image="/og/mevduat-faizi-hesaplama.png"
@@ -118,15 +118,15 @@ const breadcrumbs = [
           <input type="number" id="in-days" value={D.days} min="1" max="3650" step="1" inputmode="numeric" />
         </label>
         <div class="preset-row" role="group" aria-label="Hızlı vade seçimi">
-          <button type="button" class="preset" data-days="32">32 gün</button>
-          <button type="button" class="preset" data-days="92">3 ay</button>
-          <button type="button" class="preset" data-days="181">6 ay</button>
-          <button type="button" class="preset" data-days="365">1 yıl</button>
+          <button type="button" class="preset" aria-pressed="false" data-days="32">32 gün</button>
+          <button type="button" class="preset" aria-pressed="false" data-days="92">3 ay</button>
+          <button type="button" class="preset" aria-pressed="false" data-days="181">6 ay</button>
+          <button type="button" class="preset" aria-pressed="false" data-days="365">1 yıl</button>
         </div>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">Vade sonu eline geçen net faiz</span>
           <span class="result-value" id="out-net">₺{fmt0(base.net)}</span>
         </div>
@@ -294,6 +294,7 @@ const breadcrumbs = [
 
         document.querySelectorAll('.preset').forEach((b) => {
           b.classList.toggle('active', +b.dataset.days === days);
+          b.setAttribute('aria-pressed', String(+b.dataset.days === days));
         });
       }
 
@@ -336,7 +337,7 @@ const breadcrumbs = [
     .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
     .calc-inputs input {
       font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
-      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm);
       background: var(--bg); width: 100%;
     }
     .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
@@ -377,7 +378,8 @@ const breadcrumbs = [
     .rates-table thead th { color: var(--text); font-weight: 700; background: var(--surface); font-size: 0.82rem; }
     .rates-table th small, .rates-table td small { font-weight: 400; color: var(--text-muted); font-size: 0.75rem; }
     .rates-table tbody tr { cursor: pointer; }
-    .rates-table tbody tr:hover, .rates-table tbody tr:focus { background: var(--brand-tint); outline: none; }
+    .rates-table tbody tr:hover, .rates-table tbody tr:focus { background: var(--brand-tint); }
+    .rates-table tbody tr:focus-visible { outline: 2px solid var(--brand); outline-offset: -2px; }
     .rates-table td.up { color: #1f7a4d; } .rates-table td.down { color: #c0392b; }
 
     .prose-block, .faq-block { margin-top: 2.5rem; }

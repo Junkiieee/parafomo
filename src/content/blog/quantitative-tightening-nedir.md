@@ -1,5 +1,5 @@
 ---
-title: "Quantitative Tightening (QT) Nedir? Merkez Bankası Bilanço Küçültme Rehberi"
+title: "Quantitative Tightening (QT) Nedir? Bilanço Küçültme ve Etkileri"
 description: "Quantitative tightening (QT) nedir, nasıl çalışır? Fed'in bilanço küçültme politikasının tahvil faizleri, dolar ve TL üzerindeki etkisini adım adım öğrenin."
 pubDate: 2026-08-17
 category: "Ekonomi"

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ekDa, ekDan } from '../data/ek';
 import Newsletter from '../components/Newsletter.astro';
 import yd from '../../data/yeniden-degerleme.json';
 
@@ -58,7 +59,7 @@ const faq = [
   },
   {
     q: `Yeniden değerleme oranı ${HEDEF} ne zaman açıklanacak?`,
-    a: `Oranı belirleyen son veri olan Ekim ${HEDEF - 1} Yİ-ÜFE, ${HEDEF - 1} Kasım ayının ilk günlerinde (sıradaki TÜİK açıklaması: ${sonraki}) yayımlanır; o gün oran hesaben kesinleşir. Hazine ve Maliye Bakanlığı tebliği ise genellikle Kasım'ın son haftasında Resmî Gazete'de çıkar ve 1 Ocak ${HEDEF}'de yürürlüğe girer.`,
+    a: `Oranı belirleyen son veri olan Ekim ${HEDEF - 1} Yİ-ÜFE, ${HEDEF - 1} Kasım ayının ilk günlerinde (sıradaki TÜİK açıklaması: ${sonraki}) yayımlanır; o gün oran hesaben kesinleşir. Hazine ve Maliye Bakanlığı tebliği ise genellikle Kasım'ın son haftasında Resmî Gazete'de çıkar ve 1 Ocak ${HEDEF}${ekDa(HEDEF)} yürürlüğe girer.`,
   },
   {
     q: 'Yeniden değerleme oranı neleri etkiler?',
@@ -67,8 +68,8 @@ const faq = [
   {
     q: `MTV ${HEDEF} zammı ne kadar olacak?`,
     a: uygulanan
-      ? `${HEDEF} MTV tutarları, Cumhurbaşkanı kararıyla ${HEDEF - 1} tutarlarının %${nf(uygulanan, 2)} artırılmasıyla belirlendi (yeniden değerleme oranı ${oranLabel}). Örneğin 2026'da en düşük otomobil MTV'si olan 5.750 TL, ${HEDEF}'de yaklaşık ${fmt(5750 * harcCarpan)} TL oldu. Aracınız için hesabı MTV hesaplama sayfamızda yapabilirsiniz.`
-      : `${HEDEF} MTV tutarları, ${HEDEF - 1} tutarlarının yeniden değerleme oranı kadar artırılmasıyla bulunur. ${sonAyAdi} itibarıyla ${durum === 'tahmin' ? 'tahmini' : 'kesinleşen'} oran ${oranLabel}: örneğin 2026'da en düşük otomobil MTV'si olan 5.750 TL, ${HEDEF}'de yaklaşık ${fmt(5750 * carpan)} TL olur. Cumhurbaşkanı 2026'da olduğu gibi (%25,49 yerine %18,95) daha düşük bir artış uygulatabilir. Aracınız için hesabı MTV hesaplama sayfamızda yapabilirsiniz.`,
+      ? `${HEDEF} MTV tutarları, Cumhurbaşkanı kararıyla ${HEDEF - 1} tutarlarının %${nf(uygulanan, 2)} artırılmasıyla belirlendi (yeniden değerleme oranı ${oranLabel}). Örneğin 2026'da en düşük otomobil MTV'si olan 5.750 TL, ${HEDEF}${ekDa(HEDEF)} yaklaşık ${fmt(5750 * harcCarpan)} TL oldu. Aracınız için hesabı MTV hesaplama sayfamızda yapabilirsiniz.`
+      : `${HEDEF} MTV tutarları, ${HEDEF - 1} tutarlarının yeniden değerleme oranı kadar artırılmasıyla bulunur. ${sonAyAdi} itibarıyla ${durum === 'tahmin' ? 'tahmini' : 'kesinleşen'} oran ${oranLabel}: örneğin 2026'da en düşük otomobil MTV'si olan 5.750 TL, ${HEDEF}${ekDa(HEDEF)} yaklaşık ${fmt(5750 * carpan)} TL olur. Cumhurbaşkanı 2026'da olduğu gibi (%25,49 yerine %18,95) daha düşük bir artış uygulatabilir. Aracınız için hesabı MTV hesaplama sayfamızda yapabilirsiniz.`,
   },
   {
     q: 'Cumhurbaşkanı yeniden değerleme oranını değiştirebilir mi?',
@@ -128,7 +129,7 @@ const D = { tutar: 10000 };
       <div class="kpi">
         <span class="kpi-label">Kesinleşme</span>
         <span class="kpi-val kpi-date">{durum === 'tahmin' ? `3 Kasım ${HEDEF - 1}` : 'Kesinleşti'}</span>
-        <span class="kpi-sub">{durum === 'tahmin' ? `Ekim Yİ-ÜFE açıklaması · tebliğ Kasım sonu` : `1 Ocak ${HEDEF}'de yürürlükte`}</span>
+        <span class="kpi-sub">{durum === 'tahmin' ? `Ekim Yİ-ÜFE açıklaması · tebliğ Kasım sonu` : `1 Ocak ${HEDEF}${ekDa(HEDEF)} yürürlükte`}</span>
       </div>
       <div class="kpi">
         <span class="kpi-label">2026 oranı</span>
@@ -150,8 +151,8 @@ const D = { tutar: 10000 };
         <p class="form-note">İpucu: 2026'da MTV ve harçlara indirimli %18,95 uygulandı. {HEDEF} için de indirim ihtimaline karşı oranı değiştirip senaryo görebilirsiniz.</p>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">{HEDEF} tahmini tutar</span>
           <span class="result-value" id="out-new">₺{fmt(D.tutar * carpan)}</span>
         </div>
@@ -165,7 +166,7 @@ const D = { tutar: 10000 };
             <span class="split-val" id="out-rate">%{nf(oran)}</span>
           </div>
         </div>
-        <p class="result-note">Maktu tutarlar 1 Ocak {HEDEF}'den itibaren geçerli olur.</p>
+        <p class="result-note">Maktu tutarlar 1 Ocak {HEDEF}{ekDan(HEDEF)} itibaren geçerli olur.</p>
       </div>
     </div>
 
@@ -175,7 +176,7 @@ const D = { tutar: 10000 };
     </p>
 
     <section class="table-block">
-      <h2>{HEDEF}'de yeniden değerleme oranıyla artacak kalemler</h2>
+      <h2>{HEDEF}{ekDa(HEDEF)} yeniden değerleme oranıyla artacak kalemler</h2>
       <table class="rate-table">
         <thead><tr><th>Kalem</th><th>2026 değeri</th><th>{HEDEF} {durum === 'tahmin' ? 'tahmini' : 'değeri'}</th></tr></thead>
         <tbody>
@@ -312,7 +313,7 @@ const D = { tutar: 10000 };
     .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
     .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
     .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; }
-    .calc-inputs input { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .calc-inputs input { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
     .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
     .form-note { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.45; }
 

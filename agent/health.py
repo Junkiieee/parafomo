@@ -30,14 +30,19 @@ ERR_RE = re.compile(r"HATA|Traceback|hit your|Failed to authenticate|ÜRETİLEME
 
 # ad, log, başarı deseni, beklenen azami yaş (saat; None = olaya bağlı), not
 PIPELINES = [
-    ("Viral Short (YouTube+IG)", "viral.log", r"\] Tamamlandı: \S+ @", 30, "günlük 1 slot"),
+    # 2026-10-30/31'de crontab'da KAPALI (viral/shorts/manim/gündem/IG kartları): kapalıyken her gün kalıcı
+    # "GECİKTİ" üretip gerçek sorunları gürültüye gömüyordu. Cron'u geri açınca satırı da geri aç.
+    # ("Viral Short (YouTube+IG)", "viral.log", r"\] Tamamlandı: \S+ @", 30, "günlük 1 slot"),
     # "Kuyruk boş" = Shorts'a çevrilecek yeni yazı yok (hafta sonu blog yok) → hata değil (2026-10-18 yanlış alarm)
-    ("Blog→Short (YouTube)", "shorts.log", r"bu çalıştırmada [1-9]\d* Shorts yayınlandı|Kuyruk boş — işlenecek yeni yazı yok", 30, "11:00 UTC"),
-    ("Manim Short (YouTube+IG)", "manim-daily.log", r"Manim-daily tamam:", 30, "16:00 UTC"),
-    ("Gündem Short", "news.log", r"gündem videosu üretildi", None, "yalnız yüksek-etkili olay günü"),
+    # ("Blog→Short (YouTube)", "shorts.log", r"bu çalıştırmada [1-9]\d* Shorts yayınlandı|Kuyruk boş — işlenecek yeni yazı yok", 30, "11:00 UTC"),
+    # ("Manim Short (YouTube+IG)", "manim-daily.log", r"Manim-daily tamam:", 30, "16:00 UTC"),
+    # ("Gündem Short", "news.log", r"gündem videosu üretildi", None, "yalnız yüksek-etkili olay günü"),
     ("Blog yazısı", "cron.log", r"\] Tamamlandı$", 80, "Pzt-Cum"),
-    ("IG altın kartı", "altin-ig.log", r"YAYINLANDI", 30, "her gün"),
-    ("IG BIST kartları", "bist.log", r"YAYINLANDI", 80, "Pzt-Cum"),
+    # ("IG altın kartı", "altin-ig.log", r"YAYINLANDI", 30, "her gün"),
+    # ("IG BIST kartları", "bist.log", r"YAYINLANDI", 80, "Pzt-Cum"),
+    # Şu an AÇIK olup hiç izlenmeyenler: onaylı yayın kuyruğu (kuyruk.sh) ve gece yedeği (maintenance → backup.sh)
+    ("Onaylı yayın (YouTube+IG+FB)", "kuyruk.log", r"\[yayın\] (✅|bugün çıkacak onaylı video yok)", 20, "10:00 + 16:00 UTC (en uzun ara 18 sa)"),
+    ("Gece yedeği (portföy DB)", "maintenance.log", r"\[backup\] portföy DB yedeklendi", 30, "04:30 UTC"),
     ("Halka arz verisi", "halka-arz.log", r"Değişiklik yok|Push başarılı", 14, "6 saatte bir"),
     ("Öğrenme döngüsü", "learn.log", r"Öğrenme döngüsü tamamlandı", 30, "günlük"),
 ]
@@ -243,7 +248,8 @@ def stale_data():
         ("economic-calendar.json", 9, "scripts/fetch-economic-calendar.py"),
     ):
         d = load(name)
-        upd = (d or {}).get("updated", "")[:10]
+        # altin-fiyat.json'da 'updated' yok, 'guncellenme' var → eskiden bu kontrol sessizce atlanıyordu
+        upd = ((d or {}).get("updated") or (d or {}).get("guncellenme") or "")[:10]
         try:
             age = (today - dt.date.fromisoformat(upd)).days
         except Exception:
@@ -276,22 +282,29 @@ def stale_data():
                 out.append("canlı yazı veriden geride: " + line.replace("[live-posts] ", "") + " → python3 scripts/live-posts.py")
     except Exception as e:
         out.append(f"live-posts --check çalışmadı: {e}")
-    # Yıl sonu: son toplantı geçtiyse gelecek yılın takvimi eklenmiş olmalı (takvim sayfası "sıradaki karar"ı gösteremez)
-    for name, label, extra in (("tcmb-2026.json", "TCMB", None), ("fomc-2026.json", "Fed", "meetings2027")):
-        dd = load(name)
-        if not dd:
-            continue
-        dates = [m["decisionDate"] for m in dd.get("meetings", [])] + [m["decisionDate"] for m in dd.get(extra, [])] if extra else \
-            [m["decisionDate"] for m in dd.get("meetings", [])]
-        nxt = os.path.exists(os.path.join(ROOT, "data", name.replace("2026", str(today.year + 1))))
-        if dates and max(dates) < today.isoformat() and not nxt:
-            out.append(f"{label} {today.year + 1} toplantı takvimi yok (son toplantı {max(dates)} geçti) → resmî takvimi "
-                       f"WebSearch ile doğrula, data/{name.replace('2026', str(today.year + 1))} ekle ve sayfayı ona bağla")
+    # Yıl sonu: BÜTÜN yıl dosyalarındaki (+ meetingsYYYY listeleri) son toplantı geçtiyse sonraki yılın takvimi eklenmeli.
+    # Sonraki yıl = son toplantının yılı + 1. Eskiden today.year + 1'di: 1 Ocak'tan sonra "data/tcmb-2028.json ekle"
+    # diyordu (yıl geçişi denetimi; ajan uydurma dosya açabilirdi). Sayfalar ve OG kartları bütün <önek>-*.json'u okur.
+    import glob as _glob
+    for prefix, label in (("tcmb", "TCMB"), ("fomc", "Fed")):
+        dates = []
+        for p in _glob.glob(os.path.join(ROOT, "data", f"{prefix}-[0-9][0-9][0-9][0-9].json")):
+            dd = load(os.path.basename(p)) or {}
+            for k, v in dd.items():
+                if k == "meetings" or (k.startswith("meetings") and k[8:].isdigit()):
+                    dates += [m["decisionDate"] for m in v if m.get("decisionDate")]
+        if dates and max(dates) < today.isoformat():
+            yil = int(max(dates)[:4]) + 1
+            hedef = (f"data/tcmb-{yil}.json ekle (sayfa ve OG kartı bütün tcmb-*.json'u okur)" if prefix == "tcmb" else
+                     f"data/fomc-2026.json'a meetings{yil} ekle — fed-faiz-takvimi.astro yalnız meetings + meetings2027 "
+                     f"okuyor, sayfayı da yeni listeye bağla (OG kartı bütün meetingsYYYY listelerini okur)")
+            out.append(f"{label} {yil} toplantı takvimi yok (son toplantı {max(dates)} geçti) → resmî takvimi "
+                       f"WebSearch ile doğrula, {hedef}")
     for name, label in (("fomc-2026.json", "Fed"), ("tcmb-2026.json", "TCMB")):
         d = load(name)
         if not d:
             continue
-        for m in d["meetings"]:
+        for m in d["meetings"] + d.get("meetings2027", []):   # 2027 Fed toplantıları fomc-2026.json/meetings2027'de
             # karar günü + 1 gün sonra hâlâ result yoksa
             if (today - dt.date.fromisoformat(m["decisionDate"])).days >= 1 and not m.get("result"):
                 out.append(f"{label} {m['decisionDate']} kararı yazılmadı → scripts/policy-decisions.sh")

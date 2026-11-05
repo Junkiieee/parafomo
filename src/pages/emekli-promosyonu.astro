@@ -91,8 +91,8 @@ const breadcrumbs = [
           </label>
           <p class="hint">Birden fazla aylık alıyorsan toplamını yaz. Varsayılan: en düşük emekli aylığı ({fmt(taban)} ₺).</p>
         </form>
-        <div class="calc-results" aria-live="polite">
-          <div class="result-main">
+        <div class="calc-results">
+          <div class="result-main" aria-live="polite" aria-atomic="true">
             <span class="result-label">Dilimin</span>
             <span class="result-value small" id="out-dilim">{P.dilimler[UST]}</span>
           </div>
@@ -207,7 +207,7 @@ const breadcrumbs = [
     .calc-inputs { display: flex; flex-direction: column; justify-content: center; gap: 0.6rem; margin: 0; }
     .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
     .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
-    .calc-inputs input { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .calc-inputs input { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
     .hint { font-size: 0.8rem; color: var(--text-muted); margin: 0; }
     .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 0.6rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
     .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; display: block; }
@@ -221,7 +221,7 @@ const breadcrumbs = [
     .rate-table th { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
     .rate-table td small { display: block; font-size: 0.74rem; color: var(--text-muted); }
     .rate-table.wide { min-width: 680px; }
-    .rate-table tr.expired td { opacity: 0.55; }
+    .rate-table tr.expired td { color: var(--text-muted); } /* opacity 0,55 metni 2,2:1'e düşürüyordu */
     .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; line-height: 1.5; }
     .prose-block, .faq-block { margin-top: 2.5rem; }
     .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 1.6rem 0 0.8rem; }

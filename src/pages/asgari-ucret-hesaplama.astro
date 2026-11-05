@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 
 import au from '../../data/asgari-ucret.json';
+import { yilDa, yilYa } from '../data/yil';
 
 // Asgari ücret — tek kaynak data/asgari-ucret.json. Aralık'ta yeni yıl açıklanınca `yeni` alanı doldurulur
 // (brüt ya da net yeterli): sayfa o build'de "Belli Oldu" moduna geçer — başlık, rakamlar, kesinti/işveren
@@ -33,6 +34,16 @@ const G = tamamla(au.guncel as Yil);                 // yürürlükteki yıl
 const yeni = au.yeni ? tamamla(au.yeni as Yil) : null;
 const ACIKLANDI = yeni !== null;                     // gelecek yıl açıklandı mı?
 const A = yeni ?? G;                                 // sayfada öne çıkan yıl
+// "Açıklanmadı" dalının sezon metinleri 2026 için elle yazıldı ("2026'da ara zam yapılmadı", "Aralık 2026'da
+// belirlenecek", "1 Ocak 2027"…). 1 Ocak'ta asgari-ucret-watch yeni tutarı guncel'e taşıyınca (G.yil=2027, yeni=null)
+// bu metinler yanlış olurdu (yıl geçişi denetimi). Yıl tutmuyorsa sayfa YALIN moda geçer: yürürlükteki yılın
+// rakamları + hesaplayıcı; sezon bölümleri (ne zaman/kaç TL/ara zam, geri sayım, senaryolar) gizlenir, build uyarır.
+// Yeni sezon metinlerini yazınca METIN_YILI'nı o yıla çek.
+const METIN_YILI = 2026;
+const SEZON_METNI = ACIKLANDI || G.yil === METIN_YILI;
+if (!SEZON_METNI) {
+  console.warn(`[asgari-ucret-hesaplama] sezon metinleri ${METIN_YILI} için yazıldı, yürürlükteki yıl ${G.yil}: sayfa yalın modda — metinleri ${G.yil + 1} sezonuna göre güncelleyip METIN_YILI'nı ${G.yil} yap.`);
+}
 const YIL = A.yil;
 const BRUT = A.brut;
 const NET = A.net;
@@ -87,11 +98,11 @@ const faq = [
   ACIKLANDI
     ? {
         q: `${YIL} asgari ücret ne kadar oldu?`,
-        a: `${YIL} asgari ücreti ${gun(A.aciklanma)} tarihinde açıklandı: aylık net ${fmt(NET)} ₺, brüt ${fmt(BRUT)} ₺ (net artış %${fmt(ARTIS as number)}). Yeni tutar 1 Ocak ${YIL}'de yürürlüğe girer; o tarihe kadar ${G.yil} tutarı (net ${fmt(G.net)} ₺) geçerlidir. Günlük brüt ${fmt(GUNLUK_BRUT)} ₺, saatlik brüt ${fmt(SAATLIK_BRUT)} ₺.`,
+        a: `${YIL} asgari ücreti ${gun(A.aciklanma)} tarihinde açıklandı: aylık net ${fmt(NET)} ₺, brüt ${fmt(BRUT)} ₺ (net artış %${fmt(ARTIS as number)}). Yeni tutar 1 Ocak ${YIL}${yilDa(YIL)} yürürlüğe girer; o tarihe kadar ${G.yil} tutarı (net ${fmt(G.net)} ₺) geçerlidir. Günlük brüt ${fmt(GUNLUK_BRUT)} ₺, saatlik brüt ${fmt(SAATLIK_BRUT)} ₺.`,
       }
     : {
         q: `${YIL} asgari ücret ne kadar?`,
-        a: `${YIL} yılında asgari ücret aylık brüt ${fmt0(BRUT)} ₺, net (eline geçen) ${fmt(NET)} ₺'dir. Günlük brüt ${fmt0(GUNLUK_BRUT)} ₺, saatlik brüt ${fmt(SAATLIK_BRUT)} ₺'dir. Bu tutarlar 1 Ocak ${YIL}'dan 31 Aralık ${YIL}'ya kadar geçerlidir.`,
+        a: `${YIL} yılında asgari ücret aylık brüt ${fmt0(BRUT)} ₺, net (eline geçen) ${fmt(NET)} ₺'dir. Günlük brüt ${fmt0(GUNLUK_BRUT)} ₺, saatlik brüt ${fmt(SAATLIK_BRUT)} ₺'dir. Bu tutarlar 1 Ocak ${YIL}${yilDa(YIL)}n 31 Aralık ${YIL}${yilYa(YIL)} kadar geçerlidir.`,
       },
   {
     q: 'Asgari ücretten ne kadar kesinti yapılıyor?',
@@ -101,16 +112,16 @@ const faq = [
     q: 'Asgari ücretin işverene maliyeti ne kadar?',
     a: `Teşviksiz senaryoda ${YIL} asgari ücretin işverene aylık toplam maliyeti ${fmt(ISVEREN[0].val)} ₺'dir (brüt ücret + %${fmt(R.sgkIsveren)} işveren SGK primi + %${fmt0(R.issizlikIsveren)} işveren işsizlik primi). İmalat sektöründe ${R.tesvikImalat} puanlık indirimle ${fmt(ISVEREN[1].val)} ₺'ye, imalat dışında ${R.tesvikDiger} puanlık indirimle ${fmt(ISVEREN[2].val)} ₺'ye düşer. Ayrıca ${DESTEK_YIL} için aylık ${fmt0(DESTEK)} ₺ devlet asgari ücret desteği maliyetten düşülür.`,
   },
-  ACIKLANDI
-    ? {
+  ...(ACIKLANDI
+    ? [{
         q: `${YIL} asgari ücret ne zaman açıklandı, ne zaman yürürlüğe girer?`,
-        a: `${YIL} asgari ücreti Asgari Ücret Tespit Komisyonu kararıyla ${gun(A.aciklanma)} tarihinde açıklandı ve 1 Ocak ${YIL}'de yürürlüğe girer. Yeni tutarla ilk maaş Ocak ${YIL} çalışmasının karşılığı olarak ödenir (genellikle Şubat başı).`,
-      }
-    : {
+        a: `${YIL} asgari ücreti Asgari Ücret Tespit Komisyonu kararıyla ${gun(A.aciklanma)} tarihinde açıklandı ve 1 Ocak ${YIL}${yilDa(YIL)} yürürlüğe girer. Yeni tutarla ilk maaş Ocak ${YIL} çalışmasının karşılığı olarak ödenir (genellikle Şubat başı).`,
+      }]
+    : !SEZON_METNI ? [] : [{
         q: '2027 asgari ücret ne zaman açıklanacak, zam ne zaman gelecek?',
         a: `2026 için Temmuz'da (yıl ortası) ara zam yapılmadı; hükümet yılda tek zam politikasını sürdürüyor. Yeni asgari ücret, Asgari Ücret Tespit Komisyonu'nun Aralık 2026'daki toplantılarında belirlenecek ve 1 Ocak 2027'de yürürlüğe girecek. Son dört yılda yeni tutar hep 22-27 Aralık arasında açıklandı (2026 tutarı 23 Aralık 2025'te). Bugünden itibaren yürürlüğe yaklaşık ${daysToNew} gün var.`,
-      },
-  ...(ACIKLANDI ? [] : [{
+      }]),
+  ...(ACIKLANDI || !SEZON_METNI ? [] : [{
     q: '2027 asgari ücret kaç TL olacak?',
     a: `2027 asgari ücreti henüz belli değil; resmî bir rakam yok. Tutar, Aralık 2026'da Asgari Ücret Tespit Komisyonu'nda belirlenecek. Basında çıkan rakamlar tahmindir. Geçmiş artışlar referans olabilir: 2026'da %27, 2025'te %30, 2024'te %49. Örneğin net %25 zam gelirse net asgari ücret ${fmt0(SENARYO[2].net)} ₺, brüt ${fmt0(SENARYO[2].brut)} ₺ olur (senaryo, tahmin değil). Resmî tutar açıklandığı gün bu sayfa güncellenir.`,
   }]),
@@ -118,10 +129,10 @@ const faq = [
     q: 'Asgari Ücret Tespit Komisyonu nasıl çalışır?',
     a: `Komisyon 15 üyelidir: işçi, işveren ve hükümet (Çalışma ve Sosyal Güvenlik Bakanlığı) tarafından beşer temsilci. Toplantılar genellikle Aralık'ta 3-4 tur sürer; karar oy çokluğuyla alınır ve Resmî Gazete'de yayımlanarak 1 Ocak'ta yürürlüğe girer. Uzlaşma olmazsa karar işçi tarafının katılımı olmadan da çıkabilir.`,
   },
-  {
+  ...(SEZON_METNI ? [{
     q: '2027 asgari ücrete ara zam olacak mı?',
     a: `Ara zam (Temmuz) resmî bir kural değil, hükümetin kararıdır. 2023'te Temmuz'da ara zam yapıldı (net 11.402 ₺); 2024, 2025 ve 2026'da yapılmadı. 2027 için açıklanmış bir ara zam kararı yok.`,
-  },
+  }] : []),
   {
     q: 'Günlük ve saatlik asgari ücret ne kadar?',
     a: `${YIL} günlük brüt asgari ücret ${fmt(GUNLUK_BRUT)} ₺, saatlik brüt ${fmt(SAATLIK_BRUT)} ₺'dir. Eksik günlü (part-time / ay içi işe giriş-çıkış) çalışmada ücret, çalışılan gün sayısıyla orantılanır: net günlük yaklaşık ${fmt(NET_GUNLUK)} ₺.`,
@@ -137,10 +148,12 @@ const breadcrumbs = [
 <BaseLayout
   title={ACIKLANDI
     ? `${YIL} Asgari Ücret Belli Oldu: Net ${fmt(NET)} ₺, Brüt ${fmt0(BRUT)} ₺`
-    : 'Asgari Ücret 2027 Ne Zaman Belli Olacak? 2026 Net, Brüt Hesaplama'}
+    : SEZON_METNI ? 'Asgari Ücret 2027 Ne Zaman Belli Olacak? 2026 Net, Brüt Hesaplama'
+    : `${G.yil} Asgari Ücret: Net ${fmt(G.net)} ₺, Brüt ${fmt0(G.brut)} ₺ | Hesaplama`}
   description={ACIKLANDI
-    ? `${YIL} asgari ücret açıklandı: net ${fmt(NET)} ₺, brüt ${fmt(BRUT)} ₺ (%${fmt0(ARTIS as number)} artış), 1 Ocak ${YIL}'de yürürlükte. Kesinti dökümü, işveren maliyeti, kıst hesaplama.`
-    : `2027 asgari ücret Aralık 2026'da belli olacak; zam senaryoları tablosu. Güncel 2026 asgari ücret: net ${fmt(G.net)} ₺, brüt ${fmt0(G.brut)} ₺; kesinti dökümü ve işveren maliyeti.`}
+    ? `${YIL} asgari ücret açıklandı: net ${fmt(NET)} ₺, brüt ${fmt(BRUT)} ₺ (%${fmt0(ARTIS as number)} artış), 1 Ocak ${YIL}${yilDa(YIL)} yürürlükte. Kesinti dökümü, işveren maliyeti, kıst hesaplama.`
+    : SEZON_METNI ? `2027 asgari ücret Aralık 2026'da belli olacak; zam senaryoları tablosu. Güncel 2026 asgari ücret: net ${fmt(G.net)} ₺, brüt ${fmt0(G.brut)} ₺; kesinti dökümü ve işveren maliyeti.`
+    : `${G.yil} asgari ücret net ${fmt(G.net)} ₺, brüt ${fmt0(G.brut)} ₺. Kesinti dökümü, işverene maliyet ve eksik günlü (kıst) asgari ücret hesaplama.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
   image="/og/asgari-ucret-hesaplama.png"
@@ -148,11 +161,11 @@ const breadcrumbs = [
   <div class="calc-wrap">
     <header class="calc-head">
       <p class="eyebrow">Hesaplayıcı · Maaş & Ücret</p>
-      <h1>{ACIKLANDI ? `${YIL} Asgari Ücret Belli Oldu: Net ${fmt(NET)} ₺` : '2026 Asgari Ücret Ne Kadar? 2027 Ne Zaman Belli Olacak?'}</h1>
+      <h1>{ACIKLANDI ? `${YIL} Asgari Ücret Belli Oldu: Net ${fmt(NET)} ₺` : SEZON_METNI ? '2026 Asgari Ücret Ne Kadar? 2027 Ne Zaman Belli Olacak?' : `${G.yil} Asgari Ücret Ne Kadar? Net ${fmt(G.net)} ₺`}</h1>
       <p class="lede">
         {ACIKLANDI
-          ? <>1 Ocak {YIL}'den itibaren asgari ücret <strong>net {fmt(NET)} ₺</strong>, brüt {fmt(BRUT)} ₺ ({gun(A.aciklanma)} açıklandı; net artış %{fmt(ARTIS as number)}). {G.yil} tutarı (net {fmt(G.net)} ₺) 31 Aralık'a kadar geçerli.</>
-          : <>2026'da asgari ücret <strong>net {fmt(NET)} ₺</strong>, brüt {fmt0(BRUT)} ₺'dir.</>}
+          ? <>1 Ocak {YIL}{yilDa(YIL)}n itibaren asgari ücret <strong>net {fmt(NET)} ₺</strong>, brüt {fmt(BRUT)} ₺ ({gun(A.aciklanma)} açıklandı; net artış %{fmt(ARTIS as number)}). {G.yil} tutarı (net {fmt(G.net)} ₺) 31 Aralık'a kadar geçerli.</>
+          : <>{YIL}{yilDa(YIL)} asgari ücret <strong>net {fmt(NET)} ₺</strong>, brüt {fmt0(BRUT)} ₺'dir.</>}
         Aşağıda güncel <strong>kesinti dökümünü, işveren maliyetini</strong> ve çalıştığınız
         gün sayısına göre <strong>eksik günlü (kıst) asgari ücreti</strong> hesaplayın.
       </p>
@@ -176,8 +189,8 @@ const breadcrumbs = [
         </p>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">Net (çalışılan güne göre)</span>
           <span class="result-value" id="out-net">₺{fmt(NET)}</span>
         </div>
@@ -203,16 +216,32 @@ const breadcrumbs = [
 
     <p class="disclaimer">
       Bu araç yalnızca bilgilendirme amaçlıdır; hukuki/mali tavsiye değildir. {YIL} için resmî tutarlar
-      (brüt {fmt(BRUT)} ₺, net {fmt(NET)} ₺) esas alınmıştır{ACIKLANDI ? ` ve 1 Ocak ${YIL}'de yürürlüğe girer` : ` ve 31 Aralık ${YIL}'ya kadar geçerlidir`}. Eksik günlü hesap 30 günlük SGK konvansiyonuna göre
+      (brüt {fmt(BRUT)} ₺, net {fmt(NET)} ₺) esas alınmıştır{ACIKLANDI ? ` ve 1 Ocak ${YIL}${yilDa(YIL)} yürürlüğe girer` : ` ve 31 Aralık ${YIL}${yilYa(YIL)} kadar geçerlidir`}. Eksik günlü hesap 30 günlük SGK konvansiyonuna göre
       orantılanır; gerçek bordro, prim gün sayısı ve yan haklara göre değişebilir.
     </p>
 
+    {!SEZON_METNI && (
+      <section class="table-block">
+        <h2>Yıllara göre net asgari ücret</h2>
+        <table class="rate-table">
+          <thead><tr><th>Yıl</th><th>Açıklandığı gün</th><th>Net asgari ücret</th></tr></thead>
+          <tbody>
+            <tr class="current"><td>{G.yil}</td><td>{gun(G.aciklanma)}</td><td>₺{fmt(G.net)}</td></tr>
+            {HISTORY.filter((h) => h.yil !== G.yil).map((h) => (
+              <tr><td>{h.yil}</td><td>{h.tarih}</td><td>₺{fmt(h.net)}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    )}
+
+    {SEZON_METNI && (
     <section class="table-block countdown-block">
-      <h2>2027 asgari ücret ne zaman açıklanacak?</h2>
+      <h2>{ACIKLANDI ? `${YIL} asgari ücret ne zaman açıklandı?` : '2027 asgari ücret ne zaman açıklanacak?'}</h2>
       <p class="table-intro">
         {ACIKLANDI
           ? <>Yeni asgari ücret {gun(A.aciklanma)} tarihinde açıklandı: <strong>net {fmt(NET)} ₺</strong>. Tutar
-            <strong>1 Ocak {YIL}</strong>'de yürürlüğe girer.</>
+            <strong>1 Ocak {YIL}</strong>{yilDa(YIL)} yürürlüğe girer.</>
           : <>2026'da yıl ortası (Temmuz) ara zam yapılmadı. Yeni asgari ücret, Asgari Ücret Tespit
             Komisyonu'nun <strong>Aralık 2026</strong> toplantılarında belirlenecek ve
             <strong>1 Ocak 2027</strong>'de yürürlüğe girecek.</>}
@@ -248,8 +277,9 @@ const breadcrumbs = [
         Bakanlığı açıklamaları ve Resmî Gazete (açıklama tarihleri dönemin haberleriyle doğrulandı).
       </p>
     </section>
+    )}
 
-    {!ACIKLANDI && (
+    {!ACIKLANDI && SEZON_METNI && (
       <section class="table-block" id="senaryolar">
         <h2>2027 asgari ücret senaryoları: zam %15-35 olursa net ne olur?</h2>
         <p class="table-intro">
@@ -317,7 +347,7 @@ const breadcrumbs = [
       <p>
         <strong>Brüt ücret</strong>, işverenin bordroda gösterdiği toplam ücrettir;
         <strong>net ücret</strong> ise kesintiler sonrası çalışanın eline geçen tutardır.
-        {YIL}'da brüt {fmt(BRUT)} ₺ olan asgari ücretten yalnızca SGK işçi payı (%14) ve
+        {YIL}{yilDa(YIL)} brüt {fmt(BRUT)} ₺ olan asgari ücretten yalnızca SGK işçi payı (%14) ve
         işsizlik sigortası işçi payı (%1) kesilir — toplam {fmt(TOPLAM_KESINTI)} ₺. Asgari ücret
         gelir vergisi ve damga vergisinden muaf olduğu için net {fmt(NET)} ₺ eline geçer.
       </p>
@@ -414,7 +444,7 @@ const breadcrumbs = [
     .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
     .calc-inputs input {
       font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
-      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm);
       background: var(--bg); width: 100%;
     }
     .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
@@ -446,7 +476,7 @@ const breadcrumbs = [
 
     .countdown-block { background: var(--surface); border-radius: var(--radius); padding: 1.3rem 1.4rem; }
     .countdown { display: flex; align-items: baseline; gap: 0.7rem; margin-top: 0.6rem; }
-    .cd-num { font-family: var(--font-serif); font-size: 2.6rem; font-weight: 700; color: var(--brand-2); line-height: 1; }
+    .cd-num { font-family: var(--font-serif); font-size: 2.6rem; font-weight: 700; color: var(--brand); line-height: 1; }
     .cd-label { font-size: 0.9rem; color: var(--text-soft); font-weight: 500; }
 
     .prose-block, .faq-block { margin-top: 2.5rem; }

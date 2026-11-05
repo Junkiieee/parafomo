@@ -50,7 +50,10 @@ def next_release(today):
         if d > today.isoformat():
             return d
     y, m = (today.year + 1, 1) if today.month == 12 else (today.year, today.month + 1)
-    return f"{y}-{m:02d}-03"  # TÜİK genelde ~3'ü; takvim dosyası yoksa tahmin
+    d = dt.date(y, m, 3)   # takvim dosyası yoksa tahmin: TÜİK olağan günü ayın 3'ü, hafta sonuysa ilk iş günü
+    while d.weekday() >= 5:   # (src/data/tuik.ts ile aynı kural; düz "3'ü" Aralık verisini Pazar 3 Ocak 2027 yapıyordu)
+        d += dt.timedelta(days=1)
+    return d.isoformat()
 
 
 def main():
@@ -77,9 +80,11 @@ def main():
     data["updated"] = today.isoformat()  # sitemap lastmod (astro.config DATA_PAGES)
     data["sonrakiAciklama"] = next_release(today)
     data["gecmis"] = [{"ay": label, "oran": rate}] + [g for g in data.get("gecmis", []) if g["ay"] != label]
-    with open(DATA, "w", encoding="utf-8") as f:
+    tmp = f"{DATA}.{os.getpid()}.tmp"   # atomik yaz: eşzamanlı build/iş yarım JSON okumasın
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
         f.write("\n")
+    os.replace(tmp, DATA)
     print(f"[kira] GÜNCELLENDİ: {label} %{rate}")
     return 0
 

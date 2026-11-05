@@ -1,5 +1,5 @@
 ---
-title: "Döviz Rezervleri Nedir? Merkez Bankası Rezervlerini Anlamak İçin Rehber"
+title: "Döviz Rezervleri Nedir? Merkez Bankası Rezervleri Nasıl Okunur?"
 description: "Döviz rezervleri nedir, brüt ile net rezerv farkı ne demek? Türkiye'nin TCMB rezervleri TL kuru ve ekonomiyi nasıl etkiler? Yatırımcı rehberi."
 pubDate: 2026-08-26
 category: "Ekonomi"

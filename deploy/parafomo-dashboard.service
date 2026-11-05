@@ -7,6 +7,27 @@ WorkingDirectory=/root/parafomo
 ExecStart=/root/.venvs/parafomo-api/bin/uvicorn server:app --app-dir /root/parafomo/dashboard --host 127.0.0.1 --port 8792 --workers 1 --no-access-log
 Restart=always
 RestartSec=3
+# --- Sertleştirme (2026-11) ---
+# Panel yalnız okur + /root/parafomo-data/board.json'a yazar. git status / crontab -l /
+# live-posts.py --check / winner.py da yalnız okur (git kilidi: server.py GIT_OPTIONAL_LOCKS=0).
+# Kontrol: systemd-analyze security parafomo-dashboard
+# Bir şey bozulursa: bu bloğu sil → systemctl daemon-reload && systemctl restart parafomo-dashboard
+NoNewPrivileges=yes
+ProtectSystem=strict
+ReadWritePaths=-/root/parafomo-data
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+UMask=0077
 
 [Install]
 WantedBy=multi-user.target

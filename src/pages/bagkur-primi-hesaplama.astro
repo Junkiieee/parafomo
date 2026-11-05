@@ -10,7 +10,11 @@ import bk from '../../data/bagkur-prim-2026.json';
 // (5510 md. 81/ı) → %30,75. 2026 tutarları alomaliye.com ve tahanci.av.tr tablolarıyla kuruşu kuruşuna aynı.
 // Gelecek yıl: asgari ücret açıklanınca (au.yeni) resmî; önce yalnız senaryo tablosu.
 
-const Y: number = bk.yil;
+// Yıl, prim tabanının (asgari ücret brütü) yılından: 1 Ocak'ta au.guncel 2027'ye geçince bk.yil (2026) etiketi
+// 2027 tutarıyla "Bağ-Kur Primi 2026" yazıyor, senaryolar 2028'i 2027 diye gösteriyordu (yıl geçişi denetimi).
+// Oranlar bk.oranlar'dan (5510 md. 81-82); yeni yılda değişip değişmediğini SGK genelgesinden doğrula.
+const Y: number = au.guncel.yil;
+if (Y !== bk.yil) console.warn(`[bagkur-primi-hesaplama] oran dosyası ${bk.yil}, asgari ücret ${Y}: data/bagkur-prim-${Y}.json oranlarını SGK genelgesinden doğrula`);
 const HEDEF = Y + 1;
 const O = bk.oranlar;
 const ORAN = O.myo + O.gss + O.kisaVade; // 35,75
@@ -162,8 +166,8 @@ const dataset = {
           </label>
         </form>
 
-        <div class="calc-results" aria-live="polite">
-          <div class="result-main">
+        <div class="calc-results">
+          <div class="result-main" aria-live="polite" aria-atomic="true">
             <span class="result-label">Aylık Bağ-Kur primi</span>
             <span class="result-value" id="out-prim">{tl2(P.altInd)}</span>
           </div>
@@ -359,7 +363,7 @@ const dataset = {
     .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; line-height: 1.4; }
     .calc-inputs input, .calc-inputs select {
       font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text);
-      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm);
       background: var(--bg); width: 100%; min-height: 2.75rem;
     }
     .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }

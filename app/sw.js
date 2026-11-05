@@ -1,16 +1,25 @@
 /* ParaFOMO Uygulamalar — service worker.
    Strateji: ağ-öncelikli (içerik hep taze), ağ yoksa önbellekten; API asla önbelleklenmez
-   (zaten farklı origin). Sürümü artırmak eski önbelleği temizler. */
-const VERSION = 'pf-v3';
+   (zaten farklı origin). Sürümü artırmak eski önbelleği temizler.
+   Ağ isteği tarayıcının HTTP önbelleğini olduğu gibi kullanmaz, sunucuya doğrulatır
+   (cache:'no-cache' → değişmediyse 304): Caddy Cache-Control göndermediğinden tarayıcı
+   dosyaları sezgisel olarak "taze" sayıyor, yayından sonra eski HTML/JS saatlerce kalıyordu. */
+const VERSION = 'pf-v4';
 const SHELL = [
   '/', '/lobby.css', '/theme.css',
   '/portfoy/', '/portfoy/app.css', '/portfoy/app.js',
   '/birikim/', '/birikim/app.css', '/birikim/app.js',
   '/bist-symbols.json', '/tufe-aylik.json', '/benchmarks.json', '/favicon.svg', '/kvkk/',
 ];
+// çevrimdışı gezinme: yolun ait olduğu uygulamanın kabuğu (utm vb. sorgu dizesinden bağımsız)
+const shellFor = p => p.startsWith('/portfoy') ? '/portfoy/' : p.startsWith('/birikim') ? '/birikim/'
+  : p.startsWith('/kvkk') ? '/kvkk/' : '/';
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
+  // kurulumda da HTTP önbelleğini atla: yeni sürümün önbelleğine bayat kopya girmesin
+  e.waitUntil(caches.open(VERSION)
+    .then(c => c.addAll(SHELL.map(u => new Request(u, { cache: 'reload' }))))
+    .then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', e => {
@@ -22,23 +31,32 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  const url = new URL(e.request.url);
-  if (e.request.method !== 'GET' || url.origin !== self.location.origin) return;
+  const req = e.request;
+  const url = new URL(req.url);
+  // oturumlu istek (Authorization) aynı origin'e taşınsa bile önbelleğe girmesin: ortak cihazda
+  // çıkıştan sonra başkasına önceki kullanıcının verisi sunulmasın
+  if (req.method !== 'GET' || url.origin !== self.location.origin || req.headers.has('Authorization')) return;
+  const nav = req.mode === 'navigate';
+  const key = nav ? shellFor(url.pathname) : req;
+  // gezinme isteği init ile kopyalanamıyor (Chromium TypeError) → URL'den kur; yönlendirme
+  // (Caddy /dizin → /dizin/) tarayıcıya aynen dönsün diye redirect:'manual'
+  let fresh = req;
+  try {
+    fresh = nav ? new Request(req.url, { cache: 'no-cache', credentials: 'same-origin', redirect: 'manual' })
+      : new Request(req, { cache: 'no-cache' });
+  } catch {}   // eski tarayıcı: olduğu gibi
   e.respondWith(
-    fetch(e.request)
+    fetch(fresh)
       .then(res => {
-        if (res.ok) {
+        // yalnız aynı yolun kabuğu saklansın (sorgu dizeli her ziyaret ayrı kopya biriktirmesin)
+        if (res.ok && res.type === 'basic' && (!nav || url.pathname === key)) {
           const copy = res.clone();
-          caches.open(VERSION).then(c => c.put(e.request, copy)).catch(() => {});
+          caches.open(VERSION).then(c => c.put(key, copy)).catch(() => {});
         }
         return res;
       })
       .catch(() =>
-        caches.match(e.request).then(hit =>
-          hit || (e.request.mode === 'navigate'
-            ? caches.match(url.pathname.startsWith('/portfoy') ? '/portfoy/' : '/')
-            : Response.error())
-        )
+        caches.match(key).then(hit => hit || (nav ? caches.match('/') : Response.error()))
       )
   );
 });

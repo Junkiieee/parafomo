@@ -21,7 +21,8 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="Yüzde Hesaplama | Yüzdesini Bul, Yüzde Kaç, Yüzde Artış ve İndirim Hesabı"
+  image="/og/yuzde-hesaplama.png"
+  title="Yüzde Hesaplama: Yüzde Kaç, Yüzdesini Bulma, Artış ve İndirim Hesabı"
   description="Yüzde hesaplama: bir sayının yüzdesini, diğerinin yüzde kaçı olduğunu, yüzde artış/azalışı ve zam-indirim sonrası tutarı anında bulun; formül ve örneklerle."
   faq={faq}
   breadcrumbs={breadcrumbs}
@@ -43,7 +44,7 @@ const breadcrumbs = [
           <input type="number" id="b1" value="15" inputmode="decimal" aria-label="Yüzde" />
           <span>'i</span>
         </div>
-        <p class="res">= <strong id="r1">{nf(300)}</strong></p>
+        <p class="res" aria-live="polite" aria-atomic="true">= <strong id="r1">{nf(300)}</strong></p>
       </section>
 
       <section class="card" aria-labelledby="h2c">
@@ -54,7 +55,7 @@ const breadcrumbs = [
           <input type="number" id="b2" value="2000" inputmode="decimal" aria-label="Bütün" />
           <span>sayısının</span>
         </div>
-        <p class="res">= <strong id="r2">%{nf(15)}</strong>'i</p>
+        <p class="res" aria-live="polite" aria-atomic="true">= <strong id="r2">%{nf(15)}</strong>'i</p>
       </section>
 
       <section class="card" aria-labelledby="h3c">
@@ -63,7 +64,7 @@ const breadcrumbs = [
           <span>Eski</span><input type="number" id="a3" value="30000" inputmode="decimal" aria-label="Eski değer" />
           <span>Yeni</span><input type="number" id="b3" value="36000" inputmode="decimal" aria-label="Yeni değer" />
         </div>
-        <p class="res">= <strong id="r3">%{nf(20)} artış</strong></p>
+        <p class="res" aria-live="polite" aria-atomic="true">= <strong id="r3">%{nf(20)} artış</strong></p>
       </section>
 
       <section class="card" aria-labelledby="h4c">
@@ -73,7 +74,7 @@ const breadcrumbs = [
           <select id="s4" aria-label="İşlem"><option value="1" selected>+ ekle</option><option value="-1">− çıkar</option></select>
           <span>%</span><input type="number" id="b4" value="30" inputmode="decimal" aria-label="Oran" />
         </div>
-        <p class="res">= <strong id="r4">{nf(32500)}</strong> <span class="soft" id="d4">(fark {nf(7500)})</span></p>
+        <p class="res" aria-live="polite" aria-atomic="true">= <strong id="r4">{nf(32500)}</strong> <span class="soft" id="d4">(fark {nf(7500)})</span></p>
       </section>
     </div>
 
@@ -144,7 +145,7 @@ const breadcrumbs = [
     .card h2 { font-size: 1rem; margin: 0 0 0.8rem; }
     .line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; }
     .line span { font-size: 0.9rem; color: var(--text-soft); }
-    .line input, .line select { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.5rem 0.6rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 7.5rem; min-width: 0; }
+    .line input, .line select { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.5rem 0.6rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm); background: var(--bg); width: 7.5rem; min-width: 0; }
     .line select { width: auto; }
     .line input:focus, .line select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
     .res { margin: 0.9rem 0 0; font-size: 1.05rem; color: var(--text-soft); }

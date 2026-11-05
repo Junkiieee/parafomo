@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ekDan, ekI } from '../data/ek';
 import Newsletter from '../components/Newsletter.astro';
 import em from '../../data/emekli-memur.json';
 // Zam tahmini /emekli-zammi-hesaplama ile ORTAK modülde — burada tekrar hesaplanmaz.
-import { sskProj, memurProj, remaining, cumKnown } from '../data/zam2027';
+import { PERIOD, sskProj, memurProj, remaining, cumKnown } from '../data/zam2027';
 
 const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
 const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
@@ -17,6 +18,10 @@ const OG = em.odemeGunleri;
 const final = remaining === 0;
 const tabanScen = T.tutar * (1 + sskProj);       // senaryo: taban zam oranında artırılırsa
 const memurEm27 = ME.tutar * (1 + memurProj.zam);
+// Projeksiyonlar yalnız tutarın başladığı dönem zam modülünün başlangıcıyla eşleşirken: Ocak'ta resmî 2027 tutarı
+// girilince "tutar × (1 + Ocak zammı)" çift zam olurdu (yıl geçişi denetimi; evde-bakim-maasi ile aynı kural).
+const TAHMIN_TABAN = T.baslangic === PERIOD[0];
+const TAHMIN_ME = ME.baslangic === PERIOD[0];
 
 const faq = [
   {
@@ -25,11 +30,11 @@ const faq = [
   },
   {
     q: 'Ocak 2027’de en düşük emekli maaşı ne olacak?',
-    a: `En düşük aylık tutarı her dönem ayrıca kanunla belirlenir; Ocak zammı SGK'nın hesapladığı aylığa uygulanır. Taban ${fmt(T.tutar)} ₺'de kalırsa, zamlı aylığı bunun altında kalan emekliler yine ${fmt(T.tutar)} ₺ alır. Taban da zam oranında (${final ? 'kesinleşen' : 'tahmini'} %${nf(sskProj * 100)}) artırılırsa yaklaşık ${fmt(tabanScen)} ₺ olur. Bu bir senaryodur; tutarı TBMM belirler.`,
+    a: `En düşük aylık tutarı her dönem ayrıca kanunla belirlenir; Ocak zammı SGK'nın hesapladığı aylığa uygulanır. Taban ${fmt(T.tutar)} ₺'de kalırsa, zamlı aylığı bunun altında kalan emekliler yine ${fmt(T.tutar)} ₺ alır. ${TAHMIN_TABAN ? `Taban da zam oranında (${final ? 'kesinleşen' : 'tahmini'} %${nf(sskProj * 100)}) artırılırsa yaklaşık ${fmt(tabanScen)} ₺ olur. Bu bir senaryodur; tutarı TBMM belirler.` : ''}`,
   },
   {
     q: 'En düşük memur emeklisi aylığı ne kadar?',
-    a: `Temmuz 2026 zammıyla ${fmt(ME.onceki)} ₺'den ${fmt(ME.tutar)} ₺'ye yükseldi. Memur emeklileri Ocak 2027'de memurlarla aynı oranda zam alır; tahmini %${nf(memurProj.zam * 100)} zamla yaklaşık ${fmt(memurEm27)} ₺ olur.`,
+    a: `${ayYil(ME.baslangic)} zammıyla ${fmt(ME.onceki)} ₺'den ${fmt(ME.tutar)} ₺'ye yükseldi.${TAHMIN_ME ? ` Memur emeklileri Ocak 2027'de memurlarla aynı oranda zam alır; tahmini %${nf(memurProj.zam * 100)} zamla yaklaşık ${fmt(memurEm27)} ₺ olur.` : ''}`,
   },
   {
     q: 'Emekli maaşı hangi gün yatar?',
@@ -50,7 +55,7 @@ const breadcrumbs = [
 
 <BaseLayout
   title={`En Düşük Emekli Maaşı 2026: ${fmt(T.tutar)} TL | Ocak 2027 Tahmini ve Ödeme Günleri`}
-  description={`En düşük emekli maaşı ${ayYil(T.baslangic)}'dan beri ${fmt(T.tutar)} ₺ (SSK, Bağ-Kur); memur emeklisi ${fmt(ME.tutar)} ₺. Ocak 2027 senaryosu, Ocak maaşını hesaplama ve tahsis numarasına göre ödeme günleri.`}
+  description={`En düşük emekli maaşı ${ayYil(T.baslangic)}${ekDan(ayYil(T.baslangic))} beri ${fmt(T.tutar)} ₺ (SSK, Bağ-Kur); memur emeklisi ${fmt(ME.tutar)} ₺. Ocak 2027 senaryosu, Ocak maaşını hesaplama ve tahsis numarasına göre ödeme günleri.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
   image="/og/en-dusuk-emekli-maasi.png"
@@ -60,13 +65,13 @@ const breadcrumbs = [
       <p class="eyebrow">Emekli · Güncel Tutarlar</p>
       <h1>En Düşük Emekli Maaşı 2026</h1>
       <p class="lede">
-        SSK ve Bağ-Kur'da en düşük emekli aylığı <strong>{ayYil(T.baslangic)}'dan beri {fmt(T.tutar)} ₺</strong>
+        SSK ve Bağ-Kur'da en düşük emekli aylığı <strong>{ayYil(T.baslangic)}{ekDan(ayYil(T.baslangic))} beri {fmt(T.tutar)} ₺</strong>
         (önce {fmt(T.onceki)} ₺). Memur emeklilerinde en düşük aylık <strong>{fmt(ME.tutar)} ₺</strong>.
       </p>
     </header>
 
     <div class="stats">
-      <div class="stat"><span class="k">SSK · Bağ-Kur en düşük aylık</span><span class="v">₺{fmt(T.tutar)}</span><span class="s">{ayYil(T.baslangic)}'dan beri · önce ₺{fmt(T.onceki)}</span></div>
+      <div class="stat"><span class="k">SSK · Bağ-Kur en düşük aylık</span><span class="v">₺{fmt(T.tutar)}</span><span class="s">{ayYil(T.baslangic)}{ekDan(ayYil(T.baslangic))} beri · önce ₺{fmt(T.onceki)}</span></div>
       <div class="stat"><span class="k">Memur emeklisi en düşük aylık</span><span class="v">₺{fmt(ME.tutar)}</span><span class="s">Temmuz 2026 zammıyla · önce ₺{fmt(ME.onceki)}</span></div>
       <div class="stat"><span class="k">Bayram ikramiyesi</span><span class="v">₺{fmt(B.tutar)}</span><span class="s">{B.yil} Ramazan ve Kurban · <a href="/bayram-ikramiyesi/">ayrıntı</a></span></div>
     </div>
@@ -88,8 +93,8 @@ const breadcrumbs = [
           </label>
           <p class="hint">Taban aylık alıyorsanız zam, taban tamamlaması öncesi hesaplanan aylığınıza uygulanır; tutarı e-Devlet aylık bilgilerinde görebilirsiniz.</p>
         </form>
-        <div class="calc-results" aria-live="polite">
-          <div class="result-main">
+        <div class="calc-results">
+          <div class="result-main" aria-live="polite" aria-atomic="true">
             <span class="result-label">Ocak 2027 tahmini aylık</span>
             <span class="result-value" id="out-new">—</span>
           </div>
@@ -114,14 +119,14 @@ const breadcrumbs = [
           <h3>SSK (4/a) — tahsis no. son hanesi</h3>
           <table class="rate-table">
             <thead><tr><th>Son hane</th><th>Ödeme günü</th></tr></thead>
-            <tbody>{OG.ssk.map(([d, g]) => <tr><td>{d}</td><td>Ayın {g}'i</td></tr>)}</tbody>
+            <tbody>{OG.ssk.map(([d, g]) => <tr><td>{d}</td><td>Ayın {g}{ekI(g)}</td></tr>)}</tbody>
           </table>
         </div>
         <div>
           <h3>Bağ-Kur (4/b)</h3>
           <table class="rate-table">
             <thead><tr><th>Son hane</th><th>Ödeme günü</th></tr></thead>
-            <tbody>{(OG.bagkur as [number[], number][]).map(([ds, g]) => <tr><td>{ds.join(', ')}</td><td>Ayın {g}'i</td></tr>)}</tbody>
+            <tbody>{(OG.bagkur as [number[], number][]).map(([ds, g]) => <tr><td>{ds.join(', ')}</td><td>Ayın {g}{ekI(g)}</td></tr>)}</tbody>
           </table>
         </div>
       </div>
@@ -139,7 +144,7 @@ const breadcrumbs = [
       <h2>Ocak 2027 için iki senaryo</h2>
       <ul>
         <li><strong>Taban artırılmazsa:</strong> zamlı aylığı {fmt(T.tutar)} ₺'nin altında kalan herkes {fmt(T.tutar)} ₺ almaya devam eder.</li>
-        <li><strong>Taban zam oranında artırılırsa:</strong> %{nf(sskProj * 100)} ile yaklaşık <strong>{fmt(tabanScen)} ₺</strong>.</li>
+        {TAHMIN_TABAN && <li><strong>Taban zam oranında artırılırsa:</strong> %{nf(sskProj * 100)} ile yaklaşık <strong>{fmt(tabanScen)} ₺</strong>.</li>}
       </ul>
       <p class="cta-line">
         Zam oranının ayrıntısı ve enflasyon senaryoları → <a href="/emekli-zammi-hesaplama/">emekli zammı hesaplama</a>. Henüz emekli değilseniz yaş ve prim gününüze göre ne zaman emekli olacağınızı <a href="/emeklilik-hesaplama/">emeklilik hesaplama</a> aracıyla görün.
@@ -196,7 +201,7 @@ const breadcrumbs = [
     .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
     .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
     .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
-    .calc-inputs input, .calc-inputs select { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .calc-inputs input, .calc-inputs select { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
     .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
     .hint { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.45; }
     .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 1rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }

@@ -1,6 +1,6 @@
 ---
-title: "Stagflasyon Nedir? Enflasyon + Durgunluk Sarmalı ve Yatırımcı Stratejisi"
-description: "Stagflasyon nedir, neden oluşur ve yatırımcı ne yapmalı? Enflasyon ile ekonomik durgunluğun aynı anda yaşandığı bu sarmalı ve korunma stratejilerini adım adım açıklıyoruz."
+title: "Stagflasyon Nedir? Enflasyonlu Durgunlukta Yatırım Stratejisi"
+description: "Stagflasyon nedir, neden oluşur, yatırımcı ne yapmalı? Enflasyonla durgunluğun aynı anda yaşandığı sarmal ve korunma stratejileri, adım adım."
 pubDate: 2026-08-17
 category: "Ekonomi"
 tags: ["stagflasyon", "enflasyon", "resesyon", "merkez bankası", "altın", "yatırım stratejisi"]

@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { BU_YIL } from '../data/yil';
 import Newsletter from '../components/Newsletter.astro';
 import tufe from '../../data/tufe-aylik.json';
-import takvim from '../../data/tuik-enflasyon-2026.json';
+import { RELEASES, RELEASE_TIME } from '../data/tuik';
 
 // Seri en yeni başta gelir → eskiden yeniye sırala. Aylık % değişimler zincirlenir (2025=100 baz
 // değişikliği zinciri bozmaz; TÜİK yıllık oranlarıyla ±0,02 puan tutarlı).
@@ -38,7 +39,7 @@ const gecenYil = takvimYillar[takvimYillar.length - 1];
 const son12 = M.slice(-12).reverse();
 
 const bugun = new Date().toISOString().slice(0, 10);
-const sonraki = takvim.releases.find((r) => r.date > bugun);
+const sonraki = RELEASES.find((r) => r.date > bugun); // bütün yılların takvimi (src/data/tuik.ts)
 const trTarih = (iso: string) => {
   const d = new Date(iso + 'T12:00:00Z');
   return `${d.getUTCDate()} ${AYLAR[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
@@ -47,7 +48,7 @@ const trTarih = (iso: string) => {
 const faq = [
   {
     q: 'Güncel enflasyon oranı kaç?',
-    a: `TÜİK verisine göre ${ayAdi(SON.ay)} itibarıyla yıllık enflasyon (TÜFE) %${pct(SON.yillik)}, aylık enflasyon %${pct(SON.aylik)}.${sonraki ? ` ${sonraki.covers} verisi ${trTarih(sonraki.date)} saat ${takvim.releaseTime}’da açıklanacak.` : ''}`,
+    a: `TÜİK verisine göre ${ayAdi(SON.ay)} itibarıyla yıllık enflasyon (TÜFE) %${pct(SON.yillik)}, aylık enflasyon %${pct(SON.aylik)}.${sonraki ? ` ${sonraki.covers} verisi ${trTarih(sonraki.date)} saat ${RELEASE_TIME}’da açıklanacak.` : ''}`,
   },
   {
     q: `${gecenYil.yil} yılı enflasyonu ne kadar oldu?`,
@@ -81,7 +82,7 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title={`Enflasyon Hesaplama 2026: Güncel Oran %${pct(SON.yillik)} | Alım Gücü`}
+  title={`Enflasyon Hesaplama ${BU_YIL}: Güncel Oran %${pct(SON.yillik)} | Alım Gücü`}
   description={`Yıllık enflasyon ${ayAdi(SON.ay)} itibarıyla %${pct(SON.yillik)}. İki tarih arası TÜFE değişimini ve paranın bugünkü karşılığını hesaplayın; TÜİK verisi.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
@@ -90,7 +91,7 @@ const breadcrumbs = [
   <div class="calc-wrap">
     <header class="calc-head">
       <p class="eyebrow">Enflasyon · TÜFE</p>
-      <h1>Enflasyon Hesaplama 2026</h1>
+      <h1>Enflasyon Hesaplama {BU_YIL}</h1>
       <p class="lede">
         Yıllık enflasyon {ayAdi(SON.ay)} itibarıyla <strong>%{pct(SON.yillik)}</strong>, aylık <strong>%{pct(SON.aylik)}</strong>.
         Aşağıda iki tarih arasındaki fiyat artışını ve paranızın bugünkü karşılığını hesaplayın.
@@ -115,8 +116,8 @@ const breadcrumbs = [
             <select id="in-to">{M.map((m) => <option value={m.ay} selected={m.ay === SON.ay}>{ayAdi(m.ay)}</option>)}</select>
           </label>
         </form>
-        <div class="calc-results" aria-live="polite">
-          <div class="result-main">
+        <div class="calc-results">
+          <div class="result-main" aria-live="polite" aria-atomic="true">
             <span class="result-label">Bitiş ayındaki karşılığı</span>
             <span class="result-value" id="out-val">—</span>
           </div>
@@ -231,7 +232,7 @@ const breadcrumbs = [
     .calc-inputs { display: flex; flex-direction: column; justify-content: center; gap: 0.9rem; margin: 0; }
     .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
     .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
-    .calc-inputs select, .calc-inputs input { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; box-sizing: border-box; }
+    .calc-inputs select, .calc-inputs input { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; box-sizing: border-box; }
     .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 0.5rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
     .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; display: block; }
     .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; font-variant-numeric: tabular-nums; }

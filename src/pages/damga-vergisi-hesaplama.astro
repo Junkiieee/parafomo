@@ -246,8 +246,8 @@ const breadcrumbs = [
         </label>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">Ödenecek damga vergisi</span>
           <span class="result-value" id="out-tax">₺{tl(tax0)}</span>
         </div>
@@ -524,7 +524,7 @@ const breadcrumbs = [
     .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
     .calc-inputs input[type='number'], .calc-inputs select {
       font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text);
-      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm);
       background: var(--bg); width: 100%; min-width: 0;
     }
     .calc-inputs select { font-size: 0.98rem; }

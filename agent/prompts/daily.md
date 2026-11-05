@@ -34,11 +34,11 @@ Planı haftalık koşu yazdı; senin işin onu **uygulamak**. Strateji tartışm
        ölçütü: canlı + FAQPage + Footer/`/hesaplama-araclari/` linki + resmî kaynak) → bitince orada `[x]`.
    **Kanal dengesi:** son 3 günlük koşunun hiçbirinde YouTube/sosyal işi yapılmadıysa (a)'da önce YouTube/sosyal
    maddesini seç (R3/R4/R9/R10/R13…). Kaan'ın hedefi web + YouTube + Instagram (+ Facebook) birlikte büyüsün.
-5. **Olay sonrası güncelleme (her koşu, 1-2 yazı):** Slug'ında `<ay>-2026` geçen önizleme yazılarından
+5. **Olay sonrası güncelleme (her koşu, 1-2 yazı):** Slug'ında `<ay>-<yıl>` (`-2026`, `-2027`…) geçen önizleme yazılarından
    olayı GEÇMİŞ ve `updatedDate`'i olmayanları bul (ör. "TCMB Ekim kararı", "Eylül CPI").
    - Frontmatter'ında `sonuc:` VARSA (TCMB/Fed/TÜFE): sonuç kutusu, başlık (`sonucBaslik`) ve dateModified karar
-     günü OTOMATİK geldi — canlı sayfada kutunun "açıklandı" gösterdiğini doğrula (göstermiyorsa `data/tcmb-2026.json`
-     / `fomc-2026.json` / `tufe-aylik.json`'da sonuç var mı bak, yoksa `logs/policy-decisions.log`). Sen yalnız SSS
+     günü OTOMATİK geldi — canlı sayfada kutunun "açıklandı" gösterdiğini doğrula (göstermiyorsa `data/tcmb-<yıl>.json`
+     / `fomc-2026.json` (2027 Fed toplantıları `meetings2027`'de) / `tufe-aylik.json`'da sonuç var mı bak, yoksa `logs/policy-decisions.log`). Sen yalnız SSS
      cevaplarını geçmiş zamana çevir, "Sıradaki: [link]" cümlesi ekle, `updatedDate` ver. Elle kutu EKLEME.
    - `sonuc:` YOKSA ve olay TCMB/Fed/TÜİK TÜFE ise: `sonuc:` (+ `sonucBaslik`) ekle (kutu otomatik gelir).
    - Diğer olaylar (BLS CPI/NFP, ECB, BEA…): gerçekleşen sonucu RESMİ kaynaktan doğrula → başlığa sonucu yaz →

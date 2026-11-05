@@ -1,5 +1,5 @@
 ---
-title: "Ethereum Nedir? Bitcoin'den Farkı, Akıllı Sözleşmeler ve ETH Nasıl Alınır"
+title: "Ethereum Nedir? Bitcoin'den Farkı, Akıllı Sözleşme, ETH Nasıl Alınır"
 description: "Ethereum nedir, Bitcoin'den ne farkı var ve ETH nasıl alınır? Akıllı sözleşme, DeFi ve stake kavramlarını sade Türkçeyle anlatan başlangıç rehberi."
 pubDate: 2026-07-02
 category: "Kripto"

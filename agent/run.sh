@@ -145,8 +145,10 @@ fi
 
 # 6) Build kapısı + push: push'lanmamış commit varsa site build'i GEÇMEDEN gönderme
 if [ -n "$(git log origin/main..HEAD --oneline 2>/dev/null)" ]; then
-  if npm run build > "$LOGDIR/build-$STAMP.log" 2>&1; then
-    git_push_retry main && echo "[agent] push tamam (Cloudflare deploy tetiklendi)"
+  # Ortak build kilidi (deploy-push.sh / gitsync.sh build kapısıyla aynı): iki build aynı anda dist/'i bozmasın.
+  # Build az önce geçti → git_push_retry'deki build kapısı ikinci kez build almasın (SKIP_BUILD_GATE=1).
+  if flock -w 600 /tmp/parafomo-build.lock npm run build > "$LOGDIR/build-$STAMP.log" 2>&1; then
+    SKIP_BUILD_GATE=1 git_push_retry main && echo "[agent] push tamam (Cloudflare deploy tetiklendi)"
   else
     echo "[!] BUILD KIRIK — push YAPILMADI (log: $LOGDIR/build-$STAMP.log)"
     "$VPY" agent/notify.py alert --key build-broken \

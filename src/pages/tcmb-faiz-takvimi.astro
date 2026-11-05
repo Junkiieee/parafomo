@@ -1,11 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ekDa } from '../data/ek';
 import Newsletter from '../components/Newsletter.astro';
-import tcmb from '../../data/tcmb-2026.json';
+import { yilDa } from '../data/yil';
 
 type Result = { decision: 'hold' | 'cut' | 'hike'; bp: number; rate: number; prev?: number; lending?: number; borrowing?: number; no: string; source: string };
 type Meeting = { range: string; decisionDate: string; tsiTime: string; result?: Result };
-const meetings = tcmb.meetings as Meeting[];
+type TcmbFile = { year: number; previous: { rate: number }; meetings: Meeting[] };
+// Bütün yılların PPK takvimi (data/tcmb-YYYY.json). Eskiden yalnız 2026 içe aktarılıyordu: 10 Aralık'tan sonra
+// "sıradaki karar" kalmıyor, 2027 dosyası eklense de sayfa görmüyordu (yıl geçişi denetimi 2026-11-03).
+const files = Object.values(import.meta.glob('../../data/tcmb-[0-9][0-9][0-9][0-9].json', { eager: true, import: 'default' }) as Record<string, TcmbFile>)
+  .sort((a, b) => a.year - b.year);
+const allMeetings = files.flatMap((f) => f.meetings).sort((a, b) => a.decisionDate.localeCompare(b.decisionDate));
 
 const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 const DOW_TR = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
@@ -15,7 +21,7 @@ const today = new Date();
 today.setHours(0, 0, 0, 0);
 const todayKey = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
 
-const rows = meetings.map((m) => {
+const rowsAll = allMeetings.map((m) => {
   const dt = new Date(m.decisionDate + 'T00:00:00');
   const isPast = m.decisionDate < todayKey;
   const daysUntil = Math.round((dt.getTime() - today.getTime()) / 86400000);
@@ -28,23 +34,29 @@ const rows = meetings.map((m) => {
   };
 });
 
-const next = rows.find((r) => !r.isPast);
+const next = rowsAll.find((r) => !r.isPast);
 // Başlıkta "ne zaman?" sorusunun cevabı: kararı henüz açıklanmamış ilk toplantı (karar günü sonuç yazılınca bir sonrakine geçer)
-const upcoming = rows.find((r) => !r.isPast && !r.result);
+const upcoming = rowsAll.find((r) => !r.isPast && !r.result);
+// Gösterilen yıl: sıradaki toplantının yılı (2027 takvimi eklenince kendiliğinden), yoksa son dosyanın yılı.
+const YIL = upcoming ? +upcoming.decisionDate.slice(0, 4) : files[files.length - 1].year;
+const tcmb = files.find((f) => f.year === YIL) ?? files[files.length - 1];
+const rows = rowsAll.filter((r) => r.decisionDate.startsWith(String(tcmb.year)));
 const nf = (n: number) => n.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
 // Son açıklanan karar → güncel politika faizi (karar günü akşamı scripts/policy-decisions.py doldurur)
-const decided = rows.filter((r) => r.result);
+const decided = rowsAll.filter((r) => r.result);
 const last = decided[decided.length - 1];
-const rate = last?.result?.rate ?? tcmb.previous.rate;
+const rate = last?.result?.rate ?? files[0].previous.rate;
+const lastYil = last ? last.decisionDate.slice(0, 4) : String(tcmb.year);
+const decidedYil = decided.filter((r) => r.decisionDate.startsWith(lastYil));
 const decisionText = (res: Result) =>
   res.decision === 'hold'
-    ? `%${nf(res.rate)}'de sabit`
+    ? `%${nf(res.rate)}${ekDa(nf(res.rate))} sabit`
     : `${Math.abs(res.bp)} baz puan ${res.decision === 'cut' ? 'indirim' : 'artış'} → %${nf(res.rate)}`;
 const decisionShort = (res: Result) =>
   res.decision === 'hold' ? `Sabit · %${nf(res.rate)}` : `${res.bp > 0 ? '+' : '−'}${Math.abs(res.bp)} bp → %${nf(res.rate)}`;
 const statusText = (r: (typeof rows)[number]) =>
   r.isPast ? 'açıklanıyor' : next != null && r.decisionDate === next.decisionDate ? nextCountdownText : `${r.daysUntil} gün`;
-const changes = decided.filter((r) => r.result!.decision !== 'hold');
+const changes = decidedYil.filter((r) => r.result!.decision !== 'hold');
 const yearChange = rate - tcmb.previous.rate;
 const nextCountdownText =
   next == null ? '' : next.daysUntil === 0 ? 'bugün' : next.daysUntil === 1 ? 'yarın' : `${next.daysUntil} gün sonra`;
@@ -56,8 +68,8 @@ const faq = [
   {
     q: 'TCMB faiz kararı ne zaman açıklanacak?',
     a: next
-      ? `2026'daki bir sonraki TCMB (PPK) faiz kararı ${next.dayLabel} günü (${nextCountdownText}), TSİ ${next.tsiTime} civarında açıklanacak. Karar, Para Politikası Kurulu'nun (PPK) toplantı günü duyurulur.`
-      : '2026 PPK takvimi tamamlandı. 2027 tarihleri TCMB tarafından açıklandığında bu sayfaya eklenecek.',
+      ? `${next.decisionDate.slice(0, 4)}${yilDa(next.decisionDate.slice(0, 4))}ki bir sonraki TCMB (PPK) faiz kararı ${next.dayLabel} günü (${nextCountdownText}), TSİ ${next.tsiTime} civarında açıklanacak. Karar, Para Politikası Kurulu'nun (PPK) toplantı günü duyurulur.`
+      : `${tcmb.year} PPK takvimi tamamlandı. ${tcmb.year + 1} tarihleri TCMB tarafından açıklandığında bu sayfaya eklenecek.`,
   },
   ...(last
     ? [
@@ -67,13 +79,13 @@ const faq = [
         },
         {
           q: 'TCMB son faiz kararı ne oldu?',
-          a: `TCMB ${last.dayLabel} tarihli toplantıda politika faizini ${decisionText(last.result!)} olarak açıkladı. 2026'da şimdiye kadar ${decided.length} karar açıklandı; ${changes.length === 0 ? 'hiçbirinde faiz değişmedi' : changes.map((c) => `${c.dayLabel} (${decisionShort(c.result!)})`).join(', ') + ' dışında faiz sabit tutuldu'}. Yıl başından bu yana toplam değişim ${yearChange === 0 ? 'sıfır' : `${yearChange > 0 ? '+' : '−'}${nf(Math.abs(yearChange) * 100)} baz puan`}.`,
+          a: `TCMB ${last.dayLabel} tarihli toplantıda politika faizini ${decisionText(last.result!)} olarak açıkladı. ${lastYil}${yilDa(lastYil)} şimdiye kadar ${decidedYil.length} karar açıklandı; ${changes.length === 0 ? 'hiçbirinde faiz değişmedi' : changes.map((c) => `${c.dayLabel} (${decisionShort(c.result!)})`).join(', ') + ' dışında faiz sabit tutuldu'}. Yıl başından bu yana toplam değişim ${yearChange === 0 ? 'sıfır' : `${yearChange > 0 ? '+' : '−'}${nf(Math.abs(yearChange) * 100)} baz puan`}.`,
         },
       ]
     : []),
   {
     q: 'Merkez Bankası yılda kaç kez faiz kararı verir?',
-    a: 'TCMB Para Politikası Kurulu (PPK) 2026 yılında 8 kez toplanır — genellikle ayda bir, Ağustos ayı hariç. Faiz kararı her toplantının aynı günü, TSİ 14:00 civarında açıklanır.',
+    a: `TCMB Para Politikası Kurulu (PPK) ${tcmb.year} yılında ${rows.length} kez toplanır — genellikle ayda bir, Ağustos ayı hariç. Faiz kararı her toplantının aynı günü, TSİ 14:00 civarında açıklanır.`,
   },
   {
     q: 'PPK toplantı özeti ne zaman yayımlanır?',
@@ -97,18 +109,19 @@ const jsonLd = {
 ---
 
 <BaseLayout
+  image="/og/tcmb-faiz-takvimi.png"
   title={upcoming
-    ? `TCMB Faiz Kararı Ne Zaman? Sıradaki PPK: ${upcoming.dayLabel}, ${upcoming.tsiTime} (Faiz %${nf(rate)})`
-    : `TCMB Faiz Kararı 2026: PPK Takvimi ve Kararlar (Politika Faizi %${nf(rate)})`}
-  description={`TCMB politika faizi %${nf(rate)}${last ? ` (son karar ${last.dayLabel}: ${decisionText(last.result!)})` : ''}. 2026 PPK tarihleri, tüm kararlar, açıklama saati ve sıradaki karara kalan gün.`}
+    ? `TCMB Faiz Kararı Ne Zaman? ${upcoming.dayLabel}, ${upcoming.tsiTime} (Faiz %${nf(rate)})`
+    : `TCMB Faiz Kararı ${tcmb.year}: PPK Takvimi ve Kararlar (Politika Faizi %${nf(rate)})`}
+  description={`TCMB politika faizi %${nf(rate)}${last ? ` (son karar ${last.dayLabel}: ${decisionText(last.result!)})` : ''}. ${tcmb.year} PPK tarihleri, tüm kararlar, açıklama saati ve sıradaki karara kalan gün.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <section class="container fk-hero">
     <span class="eyebrow"><span class="pulse"></span> Canlı Takvim</span>
-    <h1>TCMB Faiz Kararı Takvimi 2026</h1>
+    <h1>TCMB Faiz Kararı Takvimi {tcmb.year}</h1>
     <p class="lede soft">
-      Türkiye Cumhuriyet Merkez Bankası'nın (TCMB) 2026 yılındaki tüm Para Politikası Kurulu (PPK)
+      Türkiye Cumhuriyet Merkez Bankası'nın (TCMB) {tcmb.year} yılındaki tüm Para Politikası Kurulu (PPK)
       faiz kararı tarihleri, her toplantıda alınan karar ve Türkiye saatiyle (TSİ) açıklama saatleri — tek sayfada.
     </p>
 
@@ -141,8 +154,8 @@ const jsonLd = {
 
   <section class="container fk-section">
     <div class="fk-shead">
-      <h2>2026 PPK Toplantı Tarihleri ve Kararları</h2>
-      <span class="fk-shead-count">{meetings.length} toplantı</span>
+      <h2>{tcmb.year} PPK Toplantı Tarihleri ve Kararları</h2>
+      <span class="fk-shead-count">{rows.length} toplantı</span>
     </div>
 
     <div class="fk-table">
@@ -189,8 +202,8 @@ const jsonLd = {
       <a href="/blog/merkez-bankasi-nedir-faiz-karari">Merkez Bankası Nedir, Faiz Kararı Nasıl Alınır? →</a>
       <a href="/blog/faiz-nedir-ekonomiyi-nasil-etkiler">Ekonomide Faiz Nedir? →</a>
       <a href="/blog/mevduat-faizi-nedir-vadeli-mevduat">Mevduat Faizi Nedir? Vadeli Mevduat Rehberi →</a>
-      <a href="/enflasyon-takvimi">Enflasyon (TÜFE) açıklama takvimi 2026 →</a>
-      <a href="/fed-faiz-takvimi">Fed (FOMC) faiz kararı takvimi 2026 →</a>
+      <a href="/enflasyon-takvimi">Enflasyon (TÜFE) açıklama takvimi →</a>
+      <a href="/fed-faiz-takvimi">Fed (FOMC) faiz kararı takvimi →</a>
       <a href="/ekonomik-takvim">Tüm ekonomik takvim (TCMB, NFP, TÜİK) →</a>
     </div>
   </section>

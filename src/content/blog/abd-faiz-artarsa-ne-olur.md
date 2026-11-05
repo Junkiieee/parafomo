@@ -1,6 +1,6 @@
 ---
 title: "ABD Faiz Artarsa Ne Olur? Dolar, TL, Altın ve Borsaya Etkisi"
-description: "ABD faiz artarsa dolar, TL, altın ve borsa nasıl etkilenir? Fed faiz artışının piyasa mekanizması, 1994'ten 2022'ye artış döngülerinde dolar ve altının gerçekte ne yaptığı ve Türk yatırımcısı için pratik rehber."
+description: "ABD faiz artarsa dolar, TL, altın ve borsa nasıl etkilenir? Fed artışının mekanizması, 1994-2022 döngülerinde dolar ve altının seyri, yatırımcıya pratik rehber."
 pubDate: 2026-08-21
 updatedDate: 2026-10-22
 category: "Ekonomi"

@@ -44,8 +44,10 @@
     let t = esc(s);
     const codes = [];
     t = t.replace(/`([^`]+)`/g, (_, c) => { codes.push(c); return "\u0000" + (codes.length - 1) + "\u0000"; });
-    t = t.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-    t = t.replace(/(^|[\s(])(https?:\/\/[^\s<)]+[^\s<).,;:])/g, '$1<a href="$2" target="_blank" rel="noopener">$2</a>');
+    // [metin](url) + çıplak URL TEK geçişte. İki ayrı geçişte ikincisi, birincinin yazdığı href="…" içindeki
+    // "(https://" ile eşleşip tırnağı kırıyordu → ajan/e-posta/arama sorgusu metninden onfocus=… (XSS).
+    t = t.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)|(^|[\s(])(https?:\/\/[^\s<)]+[^\s<).,;:])/g, (_, txt, href, pre, url) =>
+      href ? `<a href="${href}" target="_blank" rel="noopener">${txt}</a>` : `${pre}<a href="${url}" target="_blank" rel="noopener">${url}</a>`);
     t = t.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
     t = t.replace(/~~(.+?)~~/g, "<s>$1</s>");
     t = t.replace(/(^|[\s(])_([^_]+?)_(?=[\s).,;:]|$)/g, "$1<em>$2</em>");
@@ -87,8 +89,11 @@
         while (stack.length) html += `</li></${stack.pop()}>`;
         continue;
       }
-      let para = [];
-      while (i < lines.length && lines[i].trim() && !/^(#{1,4})\s/.test(lines[i]) && !/^\s*([-*]|\d+\.)\s+/.test(lines[i]) && !isTable(lines[i])) { para.push(lines[i].trim()); i++; }
+      // do-while: ilk satır HER ZAMAN tüketilir. Ayırıcısız tek "| a | b |" satırı (yukarıda tablo sayılmaz) eskiden
+      // burada hiç ilerlemeyip sonsuz döngüye giriyordu → panel donup bellek tüketiyordu.
+      const para = [];
+      do { para.push(lines[i].trim()); i++; }
+      while (i < lines.length && lines[i].trim() && !/^(#{1,4})\s/.test(lines[i]) && !/^\s*([-*]|\d+\.)\s+/.test(lines[i]) && !isTable(lines[i]));
       html += `<p>${inline(para.join(" "))}</p>`;
     }
     return html;
@@ -102,7 +107,8 @@
       body: opt.body ? JSON.stringify(opt.body) : undefined,
     });
     const j = await r.json().catch(() => ({}));
-    if (!r.ok) throw new Error(j.detail || r.statusText);
+    // 422 (ör. çok uzun not) detail'i dizi döner → "[object Object]" yerine okunur mesaj
+    if (!r.ok) throw new Error((Array.isArray(j.detail) ? j.detail.map((d) => d.msg).join("; ") : j.detail) || r.statusText);
     return j;
   }
   function toast(msg, err) {

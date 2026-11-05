@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import fomc from '../../data/fomc-2026.json';
+import { yilDa } from '../data/yil';
 
 type Result = { decision: 'hold' | 'cut' | 'hike'; bp: number; lower: number; upper: number; vote?: string; source: string };
 type Meeting = { range: string; decisionDate: string; tsiTime: string; dotPlot: boolean; result?: Result };
@@ -31,18 +32,30 @@ const rows = meetings.map((m) => {
 
 const rows2027 = meetings2027.map((m) => {
   const dt = new Date(m.decisionDate + 'T00:00:00');
-  return { ...m, dowLabel: DOW_TR[dt.getDay()] };
+  const isPast = m.decisionDate < todayKey;
+  return {
+    ...m,
+    isPast,
+    daysUntil: Math.round((dt.getTime() - today.getTime()) / 86400000),
+    dowLabel: DOW_TR[dt.getDay()],
+    dayLabel: `${dt.getDate()} ${MONTHS[dt.getMonth()]} ${dt.getFullYear()}`,
+  };
 });
+// 2026 + 2027 tek liste: geri sayım, sıradaki karar ve güncel faiz bandı yıl geçişinde de doğru kalsın
+// (eskiden yalnız 2026 satırlarından → 27 Ocak 2027 kararı "güncel faiz"e hiç yansımayacaktı; yıl geçişi denetimi).
+const allRows = [...rows, ...rows2027];
 
-const next = rows.find((r) => !r.isPast);
+const next = allRows.find((r) => !r.isPast);
 // Başlıkta sıradaki karar günü (kararı açıklanmamış ilk toplantı; 2026 bitince 2027 takvimi)
-const upcoming = rows.find((r) => !r.isPast && !r.result) ?? rows2027.find((r) => r.decisionDate >= todayKey);
+const upcoming = allRows.find((r) => !r.isPast && !r.result);
 const upLabel = upcoming ? `${+upcoming.decisionDate.slice(8)} ${MONTHS[+upcoming.decisionDate.slice(5, 7) - 1]}` : '';
 const nf = (n: number) => n.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const band = (lo: number, hi: number) => `%${nf(lo)}–${nf(hi)}`;
 // Son açıklanan karar → güncel faiz bandı (karar gecesi scripts/policy-decisions.py doldurur)
-const decided = rows.filter((r) => r.result);
+const decided = allRows.filter((r) => r.result);
 const last = decided[decided.length - 1];
+const lastYil = last ? last.decisionDate.slice(0, 4) : String(today.getFullYear());
+const decidedYil = decided.filter((r) => r.decisionDate.startsWith(lastYil));
 const cur = last?.result ?? { lower: fomc.previous.lower, upper: fomc.previous.upper };
 const curBand = band(cur.lower, cur.upper);
 const decisionText = (res: Result) =>
@@ -53,7 +66,7 @@ const decisionShort = (res: Result) =>
   res.decision === 'hold' ? `Sabit · ${band(res.lower, res.upper)}` : `${res.bp > 0 ? '+' : '−'}${Math.abs(res.bp)} bp → ${band(res.lower, res.upper)}`;
 const statusText = (r: (typeof rows)[number]) =>
   r.isPast ? 'açıklanıyor' : next != null && r.decisionDate === next.decisionDate ? nextCountdownText : `${r.daysUntil} gün`;
-const changes = decided.filter((r) => r.result!.decision !== 'hold');
+const changes = decidedYil.filter((r) => r.result!.decision !== 'hold');
 const nextCountdownText =
   next == null ? '' : next.daysUntil === 0 ? 'bugün' : next.daysUntil === 1 ? 'yarın' : `${next.daysUntil} gün sonra`;
 
@@ -64,7 +77,7 @@ const faq = [
   {
     q: 'Fed faiz kararı ne zaman açıklanacak?',
     a: next
-      ? `2026'daki bir sonraki Fed (FOMC) faiz kararı ${next.dayLabel} günü (${nextCountdownText}), TSİ ${next.tsiTime} civarında açıklanacak. Karar, iki günlük toplantının ikinci günü duyurulur.`
+      ? `${next.decisionDate.slice(0, 4)}${yilDa(next.decisionDate.slice(0, 4))}ki bir sonraki Fed (FOMC) faiz kararı ${next.dayLabel} günü (${nextCountdownText}), TSİ ${next.tsiTime} civarında açıklanacak. Karar, iki günlük toplantının ikinci günü duyurulur.`
       : '2026 FOMC takvimi tamamlandı. 2027 tarihleri Fed tarafından açıklandığında bu sayfaya eklenecek.',
   },
   ...(last
@@ -75,7 +88,7 @@ const faq = [
         },
         {
           q: 'Fed son faiz kararı ne oldu?',
-          a: `Fed ${last.dayLabel} tarihli toplantıda faizi ${decisionText(last.result!)} olarak açıkladı. 2026'da şimdiye kadar ${decided.length} karar açıklandı; ${changes.length === 0 ? 'hiçbirinde faiz değişmedi' : changes.map((c) => `${c.dayLabel} (${decisionShort(c.result!)})`).join(', ') + ' dışındaki toplantılarda faiz sabit tutuldu'}.`,
+          a: `Fed ${last.dayLabel} tarihli toplantıda faizi ${decisionText(last.result!)} olarak açıkladı. ${lastYil}${yilDa(lastYil)} şimdiye kadar ${decidedYil.length} karar açıklandı; ${changes.length === 0 ? 'hiçbirinde faiz değişmedi' : changes.map((c) => `${c.dayLabel} (${decisionShort(c.result!)})`).join(', ') + ' dışındaki toplantılarda faiz sabit tutuldu'}.`,
         },
       ]
     : []),
@@ -113,10 +126,11 @@ const jsonLd = {
 ---
 
 <BaseLayout
+  image="/og/fed-faiz-takvimi.png"
   title={upcoming
     ? `Fed Toplantı Tarihleri 2026-2027: Sıradaki Karar ${upLabel} (${curBand})`
     : `Fed Toplantı Tarihleri 2026-2027: Faiz Kararı Takvimi (${curBand})`}
-  description={`Fed faizi ${curBand}${last ? ` (son karar ${last.dayLabel}: ${decisionText(last.result!)})` : ''}. 2026 FOMC toplantı tarihleri ve kararları, TSİ saatleri, dot plot günleri ve 2027 Fed takvimi.`}
+  description={`Fed faizi ${curBand}${last ? ` (son karar ${last.dayLabel}: ${last.result!.decision === 'hold' ? 'sabit' : decisionText(last.result!)})` : ''}. 2026 FOMC toplantı tarihleri ve kararları, TSİ saatleri, dot plot günleri ve 2027 Fed takvimi.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
@@ -194,14 +208,14 @@ const jsonLd = {
       </div>
       <div class="fk-table">
         {rows2027.map((r) => (
-          <div class="fk-row">
+          <div class:list={['fk-row', { past: r.isPast, next: next != null && r.decisionDate === next.decisionDate }]}>
             <span class="fk-cell-date">
               <strong>{r.range} 2027</strong>
               <small>{r.dowLabel} kararı</small>
             </span>
             <span class="fk-cell-time">TSİ {r.tsiTime}</span>
             <span class:list={['fk-cell-tag', { on: r.dotPlot }]}>{r.dotPlot ? '● Dot plot' : '—'}</span>
-            <span class="fk-cell-status">—</span>
+            <span class="fk-cell-status">{r.result ? decisionShort(r.result) : statusText(r)}</span>
           </div>
         ))}
       </div>

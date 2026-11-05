@@ -14,7 +14,7 @@ out=$(python3 "$REPO/scripts/policy-decisions.py" 2>&1); echo "[$(date -u '+%F %
 # değilse yine de bak (önceki çalışmada ertelenen/başarısız taze olay) — taze olay yoksa ağa/LLM'e çıkmadan biter.
 case "$out" in *GÜNCELLENDİ*) ;; *) setsid nohup python3 "$REPO/scripts/event-short.py" >> "$REPO/logs/event-short.log" 2>&1 < /dev/null & exit 0 ;; esac
 git_sync >/dev/null 2>&1 || echo "UYARI: pull başarısız (devam)"
-git_add_commit "veri: faiz kararı eklendi (otomatik $(date -u '+%F %H:%M UTC'))" data/fomc-2026.json data/tcmb-2026.json \
+git_add_commit "veri: faiz kararı eklendi (otomatik $(date -u '+%F %H:%M UTC'))" data/fomc-[0-9]*.json data/tcmb-[0-9]*.json \
   || { echo "commit başarısız"; exit 0; }
 bash "$REPO/scripts/deploy-push.sh"
 setsid nohup python3 "$REPO/scripts/event-short.py" >> "$REPO/logs/event-short.log" 2>&1 < /dev/null &

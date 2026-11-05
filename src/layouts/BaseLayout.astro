@@ -87,7 +87,8 @@ const jsonLd = {
   name: isHome ? SITE.name : pageTitle,
   headline: title ?? SITE.name,
   description,
-  url: canonical,
+  // noindex sayfada (404) var olmayan /404/ adresi yazılıyordu.
+  ...(!noindex && { url: canonical }),
   image:
     isArticle && heroImage
       ? [{ '@type': 'ImageObject', url: new URL(heroImage.src, SITE.url).href, width: heroImage.width, height: heroImage.height }, ogImage]
@@ -135,7 +136,8 @@ const breadcrumbLd =
     : null;
 
 // Hesaplayıcı sayfaları: ücretsiz finans web uygulaması olarak işaretle (zengin sonuç uygunluğu)
-const calcLd = canonPath.includes('hesaplama')
+// Yalnız tekil hesaplayıcılar (…-hesaplama/); araç merkezi /hesaplama-araclari/ bir liste sayfası, uygulama değil.
+const calcLd = /-hesaplama\/$/.test(canonPath)
   ? {
       '@context': 'https://schema.org',
       '@type': 'WebApplication',
@@ -181,7 +183,7 @@ const shareLabel = typeof share === 'string' ? share : calcLd ? 'Bu hesaplayıc�
     <meta property="og:locale" content={SITE.locale} />
     <meta property="og:title" content={title ?? SITE.name} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
+    {!noindex && <meta property="og:url" content={canonical} />}
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -202,12 +204,15 @@ const shareLabel = typeof share === 'string' ? share : calcLd ? 'Bu hesaplayıc�
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <meta name="theme-color" content="#ffffff" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="alternate" type="application/rss+xml" title={`${SITE.name} RSS`} href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- Yalnız gövde fontu önceden yüklenir; diğerleri (font-display: optional) ilk ziyarette kaçarsa önbellekten gelir. -->
+    <!-- Yalnız gövde fontu önceden yüklenir; diğerleri (font-display: optional) ilk ziyarette kaçarsa önbellekten gelir.
+         inter-tr (3,6 KB: ğ ş İ ₺) de yüklenir: yoksa ilk ziyarette Türkçe harfler kelime içinde sistem fontuyla karışık görünür. -->
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-tr.woff2" as="font" type="font/woff2" crossorigin />
 
     <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
@@ -257,5 +262,35 @@ const shareLabel = typeof share === 'string' ? share : calcLd ? 'Bu hesaplayıc�
         });
       })();
     </script>
+    <script is:inline>
+      // Kayan (yatay ya da dikey) tablo kutuları klavyeyle odaklanıp kaydırılabilsin (WCAG 2.1.1; denetim 2026-11-03: 94 sayfa).
+      // Yalnız gerçekten taşan kutulara tabindex verilir; ad, kutunun bulunduğu bölümün başlığından gelir.
+      (function () {
+        var SEL = '.table-wrap, .table-block, .gr-tablewrap, .hs-table-wrap, .schedule-scroll, .tbl-wrap, .table-scroll';
+        function run() {
+          var seen = {};
+          document.querySelectorAll('main ' + SEL.split(', ').join(', main ')).forEach(function (el) {
+            if (el.hasAttribute('data-ts')) return;
+            var cs = getComputedStyle(el);
+            var sx = /auto|scroll/.test(cs.overflowX) && el.scrollWidth > el.clientWidth + 1;
+            var sy = /auto|scroll/.test(cs.overflowY) && el.scrollHeight > el.clientHeight + 1;
+            if (!sx && !sy) return;
+            var s = el.closest('section, .gr-section, .calc-wrap');
+            var h = s && s.querySelector('h2, h3');
+            var n = h ? h.textContent.trim() : 'Tablo';
+            seen[n] = (seen[n] || 0) + 1;
+            if (!el.hasAttribute('tabindex')) el.tabIndex = 0;
+            if (!el.hasAttribute('role')) el.setAttribute('role', 'region');
+            if (!el.hasAttribute('aria-label')) el.setAttribute('aria-label', seen[n] > 1 ? n + ' (' + seen[n] + ')' : n);
+            el.setAttribute('data-ts', '');
+          });
+        }
+        if (document.readyState === 'complete') run(); else addEventListener('load', run);
+        addEventListener('resize', function () { requestAnimationFrame(run); }, { passive: true });
+      })();
+    </script>
+    <!-- Sayfa script'leri (slot="end"): </body> içinde ve sayı normalleştiriciden sonra çalışır.
+         Önceden </BaseLayout> dışına yazılıyor, HTML'de </html>'den sonra basılıyordu. -->
+    <slot name="end" />
   </body>
 </html>

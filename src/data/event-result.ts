@@ -6,6 +6,7 @@
 // Ajanın ertesi sabah elle sonuç kutusu eklemesine gerek kalmaz (eskiden ~16 saat gecikiyordu).
 // İsteğe bağlı `sonucBaslik`: karar açıklanınca sayfa başlığı olur; yer tutucular aşağıdaki `vars` anahtarları.
 import tufe from '../../data/tufe-aylik.json';
+import { usualReleaseDate } from './tuik';
 import kira from '../../data/kira-artis-2026.json';
 
 type TcmbResult = { decision: 'hold' | 'cut' | 'hike'; bp: number; rate: number; prev?: number; lending?: number; borrowing?: number; source: string };
@@ -30,6 +31,7 @@ export type EventResult = {
   tur: 'tcmb' | 'fed' | 'tufe';
   done: boolean;
   date: string;          // karar/açıklama günü (YYYY-MM-DD)
+  at: string;            // açıklanma anı, ISO (TSİ +03:00) — dateModified/lastmod bununla, gelecekteyse build anına çekilir
   kicker: string;        // "Karar açıklandı · 22 Ekim 2026, 14:00"
   headline: string;      // ana cümle
   details: string[];
@@ -47,7 +49,7 @@ function tcmb(key: string): EventResult | null {
   const r = m.result;
   if (!r) {
     return {
-      tur: 'tcmb', done: false, date: m.decisionDate, kicker: `PPK kararı · ${when} TSİ`,
+      tur: 'tcmb', done: false, date: m.decisionDate, at: `${m.decisionDate}T${m.tsiTime}:00+03:00`, kicker: `PPK kararı · ${when} TSİ`,
       headline: 'Karar henüz açıklanmadı. Bu kutu, TCMB kararı açıkladığında otomatik güncellenir.',
       details: [], links, vars: {},
     };
@@ -61,7 +63,7 @@ function tcmb(key: string): EventResult | null {
   const details = r.lending != null && r.borrowing != null
     ? [`Gecelik borç verme faizi %${nf(r.lending)}, gecelik borçlanma faizi %${nf(r.borrowing)}.`] : [];
   return {
-    tur: 'tcmb', done: true, date: m.decisionDate, kicker: `Karar açıklandı · ${when}`, headline, details,
+    tur: 'tcmb', done: true, date: m.decisionDate, at: `${m.decisionDate}T${m.tsiTime}:00+03:00`, kicker: `Karar açıklandı · ${when}`, headline, details,
     links: [{ href: r.source, label: 'TCMB karar metni', external: true }, ...links],
     vars: { oran: nf(r.rate), onceki: prevRate != null ? nf(prevRate) : '', bp: String(Math.abs(r.bp)), karar },
   };
@@ -76,7 +78,7 @@ function fed(key: string): EventResult | null {
   const r = m.result;
   if (!r) {
     return {
-      tur: 'fed', done: false, date: m.decisionDate, kicker: `FOMC kararı · ${when}`,
+      tur: 'fed', done: false, date: m.decisionDate, at: `${m.decisionDate}T${m.tsiTime}:00+03:00`, kicker: `FOMC kararı · ${when}`,
       headline: 'Karar henüz açıklanmadı. Bu kutu, Fed kararı açıkladığında otomatik güncellenir.',
       details: [], links, vars: {},
     };
@@ -87,7 +89,7 @@ function fed(key: string): EventResult | null {
     ? `Fed politika faizini ${band(r.lower, r.upper)} bandında sabit tuttu.`
     : `Fed politika faizini ${Math.abs(r.bp)} baz puan ${r.decision === 'cut' ? 'indirdi' : 'artırdı'}: ${band(r.lower - d, r.upper - d)} → ${band(r.lower, r.upper)}.`;
   return {
-    tur: 'fed', done: true, date: m.decisionDate, kicker: `Karar açıklandı · ${when}`, headline,
+    tur: 'fed', done: true, date: m.decisionDate, at: `${m.decisionDate}T${m.tsiTime}:00+03:00`, kicker: `Karar açıklandı · ${when}`, headline,
     details: r.vote ? [`Oylama: ${r.vote}.`] : [],
     links: [{ href: r.source, label: 'Fed açıklaması', external: true }, ...links],
     vars: { bant: band(r.lower, r.upper), bp: String(Math.abs(r.bp)), karar },
@@ -99,9 +101,10 @@ function tufeEv(key: string): EventResult | null {
   const y = +key.slice(0, 4), mo = +key.slice(5);
   const ay = `${AYLAR[mo - 1]} ${y}`;
   const sonrakiAy = mo === 12 ? `Ocak ${y + 1}` : `${AYLAR[mo]} ${y}`;
-  // Takvimde yoksa: izleyen ayın 3'ü (TÜİK'in olağan günü)
+  // Takvimde yoksa: TÜİK'in olağan günü (izleyen ayın 3'ü, hafta sonuysa ilk iş günü) — src/data/tuik.ts.
+  // Eskiden düz "ayın 3'ü"ydü: Aralık 2026 verisi Pazar 3 Ocak 2027 görünüyordu.
   const rel = Object.values(tuikFiles).flatMap((f) => f.releases ?? []).find((r) => r.covers === ay)?.date
-    ?? (mo === 12 ? `${y + 1}-01-03` : `${y}-${String(mo + 1).padStart(2, '0')}-03`);
+    ?? usualReleaseDate(key);
   const links = [
     { href: '/enflasyon-takvimi/', label: 'Enflasyon takvimi' },
     { href: '/kira-artis-orani-hesaplama/', label: 'Kira artış oranı' },
@@ -110,7 +113,7 @@ function tufeEv(key: string): EventResult | null {
   const row = (tufe.months as { ay: string; yillik: number; aylik: number }[]).find((x) => x.ay === key);
   if (!row) {
     return {
-      tur: 'tufe', done: false, date: rel, kicker: `TÜİK · ${gun(rel)}, 10:00`,
+      tur: 'tufe', done: false, date: rel, at: `${rel}T10:00:00+03:00`, kicker: `TÜİK · ${gun(rel)}, 10:00`,
       headline: `${ay} enflasyonu henüz açıklanmadı. Bu kutu, TÜİK veriyi açıkladığı gün otomatik güncellenir.`,
       details: [], links, vars: {},
     };
@@ -118,7 +121,7 @@ function tufeEv(key: string): EventResult | null {
   const details = (kira as { guncelAy: string; guncelOran: number }).guncelAy === sonrakiAy
     ? [`${sonrakiAy} kira artış tavanı (12 aylık TÜFE ortalaması): %${nf2((kira as { guncelOran: number }).guncelOran)}.`] : [];
   return {
-    tur: 'tufe', done: true, date: rel, kicker: `Veri açıklandı · ${gun(rel)}, 10:00`,
+    tur: 'tufe', done: true, date: rel, at: `${rel}T10:00:00+03:00`, kicker: `Veri açıklandı · ${gun(rel)}, 10:00`,
     headline: `${ay} enflasyonu: aylık %${nf2(row.aylik)}, yıllık %${nf2(row.yillik)}.`,
     details,
     links: [{ href: 'https://data.tuik.gov.tr/Kategori/GetKategori?p=enflasyon-ve-fiyat-106', label: 'TÜİK', external: true }, ...links],
@@ -141,4 +144,9 @@ export function fillTitle(tpl: string | undefined, vars: Record<string, string>)
   if (!tpl) return null;
   const out = tpl.replace(/\{(\w+)\}/g, (all, k) => (vars[k] ? vars[k] : all));
   return /\{\w+\}/.test(out) ? null : out;
+}
+
+/** Olay sonucunun yazıya girdiği an: açıklanma saati; build daha erken/saat bilgisi şaşmışsa build anı (gelecek tarih yazılmaz). */
+export function eventModified(ev: EventResult): Date {
+  return new Date(Math.min(Date.parse(ev.at), Date.now()));
 }

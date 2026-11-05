@@ -2,7 +2,9 @@
    Veri + üyelik: api.parafomo.com (JWT, localStorage). Build adımı yok.
    Örnek mod (demo): API'ye dokunmadan tüm arayüzü temsilî veriyle gezdirir. */
 
-const API_BASE = safeGet('pf_api_base') || 'https://api.parafomo.com';
+// pf_api_base yalnız yerel geliştirmede (localhost/127.0.0.1) geçerli: üretimde localStorage'a
+// yazılmış bir değer girişleri (e-posta + şifre) başka sunucuya yönlendiremesin
+const API_BASE = (/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) && safeGet('pf_api_base')) || 'https://api.parafomo.com';
 const TOKEN_KEY = 'pf_token';
 const GOOGLE_CLIENT_ID = '1020605001020-3o64jftksul1tkqj2gov24j7qj4o18f4.apps.googleusercontent.com';
 
@@ -47,21 +49,66 @@ const nf1 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 1 });
 const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
 const nfq = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 4 });
 const nfc = new Intl.NumberFormat('tr-TR', { notation: 'compact', maximumFractionDigits: 1 });
-const money = v => v == null ? '—' : nf2.format(v) + ' ₺';
-const signedMoney = v => v == null ? '—' : (v > 0 ? '+' : v < 0 ? '−' : '') + nf2.format(Math.abs(v)) + ' ₺';
-const signedPct = v => v == null ? '' : (v > 0 ? '+' : v < 0 ? '−' : '') + '%' + nf2.format(Math.abs(v));
-const signedPct1 = v => v == null ? '' : (v > 0 ? '+' : v < 0 ? '−' : '') + '%' + nf1.format(Math.abs(v));
-const plClass = v => v == null || v === 0 ? 'pl-flat' : v > 0 ? 'pl-gain' : 'pl-loss';
+// sayı değilse (null/NaN/∞) ekrana "NaN" yerine boşluk/tire düşsün
+const bad = v => !Number.isFinite(v);
+const money = v => bad(v) ? '—' : nf2.format(v) + ' ₺';
+const signedMoney = v => bad(v) ? '—' : (v > 0 ? '+' : v < 0 ? '−' : '') + nf2.format(Math.abs(v)) + ' ₺';
+const signedPct = v => bad(v) ? '' : (v > 0 ? '+' : v < 0 ? '−' : '') + '%' + nf2.format(Math.abs(v));
+const signedPct1 = v => bad(v) ? '' : (v > 0 ? '+' : v < 0 ? '−' : '') + '%' + nf1.format(Math.abs(v));
+const plClass = v => bad(v) || v === 0 ? 'pl-flat' : v > 0 ? 'pl-gain' : 'pl-loss';
+
+/* Türkçe sayı girişi: "1.250,50" / "1250,50" / "1250.50" / "0,01" → sayı; anlaşılmazsa NaN.
+   type=number virgülü sessizce yutuyordu ("1,5" → 15). Tek nokta + tam 3 hane ("1.250")
+   Türkçe yazımdaki gibi binlik ayırıcı sayılır. */
+function parseNum(s) {
+  let t = String(s ?? '').trim().replace(/[\s₺$€%]/g, '').replace(/^\+/, '');
+  const lc = t.lastIndexOf(','), ld = t.lastIndexOf('.');
+  if (lc >= 0 && ld >= 0) t = lc > ld ? t.replace(/\./g, '').replace(',', '.') : t.replace(/,/g, '');
+  else if (lc >= 0) t = t.indexOf(',') !== lc ? t.replace(/,/g, '') : t.replace(',', '.');
+  else if (ld >= 0 && (t.indexOf('.') !== ld || /^[1-9]\d{0,2}\.\d{3}$/.test(t))) t = t.replace(/\./g, '');
+  return /^-?(\d+\.?\d*|\.\d+)$/.test(t) ? Number(t) : NaN;
+}
+// alanlara önceden yazılan değer: Türkçe ondalık virgül, binlik yok ("1250,5") — geri okununca aynı sayı
+const nfIn = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 8, useGrouping: false });
+const inNum = v => bad(v) ? '' : nfIn.format(v);
+// form sayı alanı: pozitif bir sayı değilse alana odaklanıp anlaşılır hata fırlat
+function numField(input, label) {
+  const v = parseNum(input.value);
+  if (!(v > 0)) { input.focus(); throw new Error(`${label} için geçerli bir sayı yaz — ör. 1.250,50`); }
+  return v;
+}
+// yerel tarih (UTC değil): gece 00–03 arası "bugün" dünü göstermesin
+const todayISO = () => new Date(Date.now() - new Date().getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
 /* Birim görünümü: ₺ / $ / gram altın — tutarları seçili birimde göster. */
 function unitRate(s) {
   if (state.unit === 'usd' && s.usd_try) return { r: s.usd_try, suf: ' $', nf: nf2 };
   if (state.unit === 'gold' && s.gold_gram_try) return { r: s.gold_gram_try, suf: ' g', nf: nf1 };
   return { r: 1, suf: ' ₺', nf: nf2 };
 }
-const fmtU = (v, u) => v == null ? '—' : u.nf.format(v / u.r) + u.suf;
-const signedU = (v, u) => v == null ? '—' : (v > 0 ? '+' : v < 0 ? '−' : '') + u.nf.format(Math.abs(v) / u.r) + u.suf;
+const fmtU = (v, u) => bad(v) ? '—' : u.nf.format(v / u.r) + u.suf;
+const signedU = (v, u) => bad(v) ? '—' : (v > 0 ? '+' : v < 0 ? '−' : '') + u.nf.format(Math.abs(v) / u.r) + u.suf;
+
+/* Fiyatı alınamayan pozisyonlar: API onları toplam değere katmıyor ama maliyetlerini toplam
+   maliyette bırakıyor → K/Z sahte "−%100" görünüyordu. K/Z'yi yalnız fiyatı gelenlerle hesapla. */
+function pricedTotals(s) {
+  const priced = s.holdings.filter(h => h.current_value != null);
+  const missing = s.holdings.length - priced.length;
+  if (!missing) return { pl: s.total_profit_loss, pct: s.total_profit_loss_pct, missing: 0, any: true };
+  const cost = priced.reduce((a, h) => a + h.cost_value, 0);
+  const pl = priced.length ? s.total_value - cost : null;
+  return { pl, pct: cost > 0 ? pl / cost * 100 : null, missing, any: priced.length > 0 };
+}
 const trDate = iso => new Date((iso.length === 7 ? iso + '-15' : iso) + 'T12:00:00')
   .toLocaleDateString('tr-TR', iso.length === 7 ? { month: 'short', year: 'numeric' } : { day: 'numeric', month: 'short' });
+
+/* Kip aç: ekran okuyucu adı başlıktan (aria-labelledby), kapanınca DOM'dan kaldır */
+function showDlg(dlg) {
+  const h = dlg.querySelector('h2');
+  if (h) { h.id = dlg.id + '-t'; dlg.setAttribute('aria-labelledby', h.id); }
+  document.body.appendChild(dlg);
+  dlg.showModal();
+  dlg.addEventListener('close', () => dlg.remove());
+}
 
 function toast(msg, isErr) {
   const el = document.createElement('div');
@@ -78,13 +125,20 @@ async function api(path, opts = {}) {
   let res;
   try { res = await fetch(API_BASE + path, opts); }
   catch { throw new Error('Sunucuya ulaşılamadı. Bağlantını kontrol edip tekrar dene.'); }
-  if (res.status === 401 && t) { logout(false); throw new Error('Oturumun sona erdi. Tekrar giriş yap.'); }
+  if (res.status === 401 && t) {
+    // eşzamanlı isteklerden yalnız ilki oturumu kapatsın (giriş ekranı bir kez, mesajla çizilsin)
+    const msg = 'Oturumun sona erdi. Tekrar giriş yap.';
+    if (token() === t) logout(false, msg);
+    throw new Error(msg);
+  }
   if (res.status === 204) return null;
   let body = null;
   try { body = await res.json(); } catch {}
   if (!res.ok) {
     const d = body && body.detail;
-    throw new Error(typeof d === 'string' ? d : 'İşlem tamamlanamadı (' + res.status + ').');
+    throw new Error(typeof d === 'string' ? d
+      : res.status === 422 ? 'Girdiğin bilgileri kontrol et — bir alan eksik ya da hatalı.'
+      : 'İşlem tamamlanamadı (' + res.status + ').');
   }
   return body;
 }
@@ -167,18 +221,22 @@ function benchReturn(s) {
     }
     return null;
   };
+  // son ayda bazı seriler henüz yok (ör. ay başında xu100) → her seri için en son dolu değer;
+  // yoksa "Hepsi BIST 100'de %NaN" çıkıyordu
+  const lastOf = k => { for (let i = b.months.length - 1; i >= 0; i--) if (b.months[i][k] != null) return b.months[i][k]; return null; };
+  const now = { gold: lastOf('gold'), usd: lastOf('usd'), xu100: lastOf('xu100') };
   let cost = 0, userVal = 0, excluded = 0, n = 0;
   const alt = { gold: 0, usd: 0, xu100: 0 };
   for (const h of s.holdings) {
     if (!h.purchase_date || h.current_value == null) continue;
     const ym = h.purchase_date.slice(0, 7);
     const row = rowFor(ym);
-    if (!row || row.xu100 == null) { excluded++; continue; }
+    if (!row || row.xu100 == null || row.gold == null || row.usd == null) { excluded++; continue; }
     cost += h.cost_value;
     userVal += h.current_value;
-    alt.gold += h.cost_value * (latest.gold / row.gold);
-    alt.usd += h.cost_value * (latest.usd / row.usd);
-    alt.xu100 += h.cost_value * (latest.xu100 / row.xu100);
+    alt.gold += h.cost_value * (now.gold / row.gold);
+    alt.usd += h.cost_value * (now.usd / row.usd);
+    alt.xu100 += h.cost_value * (now.xu100 / row.xu100);
     n++;
   }
   if (!n || cost <= 0) return null;
@@ -221,13 +279,39 @@ const isDark = () =>
   (document.documentElement.dataset.theme !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
 
 /* ---------- oturum ---------- */
-function logout(announce = true) {
+function logout(announce = true, msg = '') {
   safeSet(TOKEN_KEY, null);
+  // açık kipleri kapat: ortak cihazda sonraki kişi önceki hesabın formunu/verisini görmesin
+  document.querySelectorAll('dialog[open]').forEach(d => d.close());
   state.user = state.summary = null;
   state.history = []; state.watchlist = []; state.alerts = []; state.goals = []; state.txns = []; state.demo = false;
+  state.view = 'ozet';
   clearInterval(state.refreshTimer);
-  renderAuth();
+  renderAuth('signin', msg);
   if (announce) toast('Çıkış yapıldı.');
+}
+// başka sekmede çıkış yapılınca bu sekmedeki portföy de kapansın (ortak cihaz)
+window.addEventListener('storage', e => {
+  if (e.key === TOKEN_KEY && !e.newValue && state.user && !state.demo) logout(false);
+});
+
+/* Yeniden çizimde (innerHTML) odak body'ye düşmesin: odaktaki öğeyi tanıyan seçiciyi al,
+   çizimden sonra aynı öğeye — yoksa sayfa başlığına — geri ver (klavye/ekran okuyucu). */
+function focusKey() {
+  const a = document.activeElement;
+  // yalnız yeniden çizilen bölgeler: altbilgi/kip odağına (90 sn'lik yenileme dahil) dokunma
+  if (!a || !a.closest('#main, #bar-right')) return null;
+  if (a.id) return '#' + CSS.escape(a.id);
+  const cls = a.classList[0] ? '.' + CSS.escape(a.classList[0]) : '';
+  for (const k of ['view', 'mode', 'unit', 'range', 'id']) {
+    if (a.dataset[k] != null) return `${a.tagName.toLowerCase()}${cls}[data-${k}="${CSS.escape(a.dataset[k])}"]`;
+  }
+  return '#app-h1';
+}
+function restoreFocus(key) {
+  if (!key) return;
+  const el = document.querySelector(key) || document.getElementById('app-h1');
+  if (el && el !== document.activeElement) el.focus({ preventScroll: true });
 }
 async function onAuthed(tok) {
   safeSet(TOKEN_KEY, tok);
@@ -302,7 +386,8 @@ function demoNudge() {
 }
 
 /* ---------- giriş ekranı ---------- */
-function renderAuth(mode = 'signin') {
+function renderAuth(mode = 'signin', msg = '') {
+  const fk = focusKey();
   document.title = 'ParaFOMO Portföy';
   document.getElementById('bar-right').innerHTML = themeBtnHtml();
   bindThemeBtn();
@@ -311,7 +396,7 @@ function renderAuth(mode = 'signin') {
   main.innerHTML = `
   <div class="landing">
     <section class="pitch">
-      <h1>Altının, hissen, gümüşün — tek ekranda.</h1>
+      <h1 id="app-h1" tabindex="-1">Altının, hissen, gümüşün — tek ekranda.</h1>
       <p>Pozisyonlarını bir kez ekle; canlı fiyatla toplam değerini, değer grafiğini ve
       <strong>enflasyondan arındırılmış gerçek kârını</strong> her açtığında hazır bul.
       "Dolara koysaydım ne olurdu?" kıyası, hedefler, fiyat alarmı ve ay sonu özeti — hepsi ücretsiz.</p>
@@ -351,6 +436,8 @@ function renderAuth(mode = 'signin') {
   main.querySelector('#demo-btn').addEventListener('click', startDemo);
   const resetLink = main.querySelector('#to-reset');
   if (resetLink) resetLink.addEventListener('click', () => renderReset());
+  if (msg) main.querySelector('#auth-err').textContent = msg;   // ör. "Oturumun sona erdi"
+  restoreFocus(fk);
 
   main.querySelector('#auth-form').addEventListener('submit', async e => {
     e.preventDefault();
@@ -389,6 +476,8 @@ function authFormHtml(mode) {
 
 function renderReset() {
   const card = document.querySelector('.auth-card');
+  // "Girişe dön": giriş ekranını çiz, odağı e-posta alanına ver (odak body'ye düşmesin)
+  const back = () => { renderAuth('signin'); document.querySelector('#auth-form [name=email]')?.focus(); };
   card.innerHTML = `
     <h2 style="margin:0 0 6px;font-size:1.15rem">Şifre sıfırlama</h2>
     <p style="color:var(--muted);font-size:.92rem;margin:0 0 18px">E-postanı yaz; sıfırlama bağlantısını gönderelim.</p>
@@ -398,15 +487,19 @@ function renderReset() {
     </form>
     <p class="form-error" id="auth-err" role="alert"></p>
     <p class="auth-foot"><button type="button" id="back-signin">Girişe dön</button></p>`;
-  card.querySelector('#back-signin').addEventListener('click', () => renderAuth('signin'));
+  card.querySelector('#back-signin').addEventListener('click', back);
+  card.querySelector('[name=email]').focus();
   card.querySelector('#reset-form').addEventListener('submit', async e => {
     e.preventDefault();
     const err = card.querySelector('#auth-err');
+    const btn = e.target.querySelector('button[type=submit]');
+    btn.disabled = true;   // çift tıklama iki e-posta göndermesin
     try {
       await api('/auth/request-password-reset', { method: 'POST', body: JSON.stringify({ email: e.target.email.value.trim() }) });
-      card.innerHTML = '<p style="margin:8px 0">Bu adrese kayıtlı bir hesap varsa sıfırlama bağlantısı az önce gönderildi. Gelen kutunu (ve spam klasörünü) kontrol et.</p><p class="auth-foot"><button type="button" id="back-signin">Girişe dön</button></p>';
-      card.querySelector('#back-signin').addEventListener('click', () => renderAuth('signin'));
-    } catch (ex) { err.textContent = ex.message; }
+      card.innerHTML = '<p style="margin:8px 0" role="status" tabindex="-1" id="reset-ok">Bu adrese kayıtlı bir hesap varsa sıfırlama bağlantısı az önce gönderildi. Gelen kutunu (ve spam klasörünü) kontrol et.</p><p class="auth-foot"><button type="button" id="back-signin">Girişe dön</button></p>';
+      card.querySelector('#back-signin').addEventListener('click', back);
+      card.querySelector('#reset-ok').focus();
+    } catch (ex) { err.textContent = ex.message; btn.disabled = false; }
   });
 }
 
@@ -427,11 +520,19 @@ function mountGoogle() {
       google.accounts.id.renderButton(slot, { theme: isDark() ? 'filled_black' : 'outline', size: 'large', text: 'continue_with', locale: 'tr', width: 280 });
     } catch { slot.closest('.auth-card')?.querySelector('.auth-alt')?.remove(); slot.remove(); }
   };
+  const drop = () => { slot.closest('.auth-card')?.querySelector('.auth-alt')?.remove(); slot.remove(); };
   if (window.google?.accounts?.id) return render();
-  const s = document.createElement('script');
-  s.src = 'https://accounts.google.com/gsi/client'; s.async = true;
-  s.onload = render;
-  s.onerror = () => { slot.closest('.auth-card')?.querySelector('.auth-alt')?.remove(); slot.remove(); };
+  // betik zaten eklendiyse yenisini ekleme (sekme geçişleri/yeniden çizimler her seferinde ekliyordu)
+  let s = document.querySelector('script[data-gsi]');
+  if (s) {
+    if (s.dataset.gsi === 'err') return drop();
+    s.addEventListener('load', render); s.addEventListener('error', drop);
+    return;
+  }
+  s = document.createElement('script');
+  s.src = 'https://accounts.google.com/gsi/client'; s.async = true; s.dataset.gsi = '1';
+  s.addEventListener('load', render);
+  s.addEventListener('error', () => { s.dataset.gsi = 'err'; drop(); });
   document.head.appendChild(s);
 }
 
@@ -448,8 +549,11 @@ async function enterApp() {
     state.watchlist = watchlist || []; state.alerts = alerts || []; state.goals = goals || [];
     state.txns = txns || [];
   } catch (ex) {
-    if (token()) toast(ex.message, true);
-    return renderAuth();
+    // 401 → api() oturumu kapatıp giriş ekranını mesajla çizdi. Ağ/sunucu hatasında oturum
+    // geçerli: giriş formu göstermek "çıkış yapılmış" sandırıyordu → tekrar dene ekranı
+    if (token()) return renderOffline(ex.message);
+    if (!document.getElementById('auth-form')) renderAuth('signin', ex.message);
+    return;
   }
   renderApp();
   clearInterval(state.refreshTimer);
@@ -472,6 +576,28 @@ async function refreshData(silent) {
     renderApp();
   } catch (ex) { if (!silent) toast(ex.message, true); }
 }
+
+/* Bağlantı yok / sunucu yanıt vermiyor: oturumu koru, tekrar dene (çevrimiçi olunca kendiliğinden) */
+function renderOffline(msg) {
+  const fk = focusKey();
+  document.title = 'ParaFOMO Portföy';
+  document.getElementById('bar-right').innerHTML = themeBtnHtml();
+  bindThemeBtn();
+  const main = document.getElementById('main');
+  main.classList.remove('masked');
+  main.innerHTML = `
+    <div class="empty">
+      <h1 id="app-h1" tabindex="-1">Portföyün şu an yüklenemedi</h1>
+      <p role="alert">${esc(msg)} Oturumun açık; bağlantı gelince kaldığın yerden devam edersin.</p>
+      <button class="btn btn-primary" id="retry-btn">Tekrar dene</button>
+      <p class="auth-foot"><button type="button" id="off-logout">Çıkış yap</button></p>
+    </div>`;
+  main.querySelector('#retry-btn').addEventListener('click', () => enterApp());
+  main.querySelector('#off-logout').addEventListener('click', () => logout());
+  window.addEventListener('online', retryOnline, { once: true });
+  restoreFocus(fk);
+}
+function retryOnline() { if (token() && !state.user) enterApp(); }
 
 function themeBtnHtml() {
   return `<button class="btn-icon" id="theme-btn" title="Tema değiştir" aria-label="Tema değiştir">
@@ -514,14 +640,15 @@ function navHtml() {
 function miniBarHtml(s, U) {
   const d = s.total_day_change;
   return `<div class="minibar num" aria-label="Portföy özeti satırı">
-    <span class="mb-total">${fmtU(s.total_value, U)}</span>
+    <span class="mb-total">${pricedTotals(s).any ? fmtU(s.total_value, U) : '—'}</span>
     ${d != null ? `<span class="${plClass(d)}">${signedU(d, U)} bugün</span>` : ''}
   </div>`;
 }
 
 function renderApp() {
   const s = state.summary, u = state.user;
-  document.title = !state.demo && s.total_value != null && s.holdings.length
+  const fk = focusKey();
+  document.title = !state.demo && s.total_value != null && s.holdings.length && pricedTotals(s).any
     ? nf0.format(s.total_value) + ' ₺ — ParaFOMO Portföy' : 'ParaFOMO Portföy';
 
   document.getElementById('bar-right').innerHTML = `
@@ -544,15 +671,18 @@ function renderApp() {
     const ub = document.getElementById('user-btn'), um = document.getElementById('user-menu');
     ub.addEventListener('click', () => { um.hidden = !um.hidden; ub.setAttribute('aria-expanded', String(!um.hidden)); });
     document.getElementById('logout-btn').addEventListener('click', () => logout());
-    document.getElementById('account-btn').addEventListener('click', () => { um.hidden = true; openAccountDialog(); });
+    document.getElementById('account-btn').addEventListener('click', () => { closeUserMenu(true); openAccountDialog(); });
   }
 
   const main = document.getElementById('main');
-  const demoBanner = state.demo ? `
+  // sayfa başlığı (h1) ekran okuyucu için; görsel başlıklar bölüm (h2) düzeyinde
+  const viewName = { ozet: 'Özet', varliklar: 'Varlıklar', takip: 'Takip', analiz: 'Analiz' }[state.view];
+  const h1 = `<h1 class="sr-only" id="app-h1" tabindex="-1">${state.demo ? 'Örnek portföy' : 'Portföyüm'} — ${viewName}</h1>`;
+  const demoBanner = h1 + (state.demo ? `
     <div class="demo-banner">
       <span>Örnek görünümdesin — rakamlar temsilî. Beğendiysen 1 dakikada kendi portföyünü kur.</span>
       <button class="btn btn-primary" id="demo-signup">Ücretsiz kayıt ol</button>
-    </div>` : '';
+    </div>` : '');
 
   if (!s.holdings.length && !state.txns.length && !state.watchlist.length) {
     main.classList.remove('masked');
@@ -565,6 +695,7 @@ function renderApp() {
       </div>`;
     main.querySelector('#add-btn').addEventListener('click', () => openHoldingDialog());
     main.querySelector('#demo-signup')?.addEventListener('click', () => { state.demo = false; renderAuth('signup'); });
+    restoreFocus(fk);
     return;
   }
 
@@ -619,6 +750,7 @@ function renderApp() {
     bindWatch();
     bindAlerts();
   }
+  restoreFocus(fk);
 }
 
 /* ---------- görünümler ---------- */
@@ -634,11 +766,13 @@ function ozetHtml(s, U, masked) {
   const pricedAt = s.priced_at ? new Date(s.priced_at) : null;
   const timeStr = pricedAt ? pricedAt.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' }) : '';
   const unitLabel = { try: '₺', usd: '$', gold: 'g' };
-  const [lira, kurus] = U.nf.format((s.total_value ?? 0) / U.r).split(',');
+  const pt = pricedTotals(s);
+  // hiçbir fiyat alınamadıysa "0,00 ₺" değil "—" (değer bilinmiyor, sıfır değil)
+  const [lira, kurus] = pt.any ? U.nf.format((s.total_value ?? 0) / U.r).split(',') : ['—'];
   const equiv = [];
-  if (state.unit !== 'try') equiv.push(nf0.format(s.total_value) + ' ₺');
-  if (state.unit !== 'usd' && s.usd_try) equiv.push(nf0.format(s.total_value / s.usd_try) + ' $');
-  if (state.unit !== 'gold' && s.gold_gram_try) equiv.push(nf1.format(s.total_value / s.gold_gram_try) + ' gram altın');
+  if (pt.any && state.unit !== 'try') equiv.push(nf0.format(s.total_value) + ' ₺');
+  if (pt.any && state.unit !== 'usd' && s.usd_try) equiv.push(nf0.format(s.total_value / s.usd_try) + ' $');
+  if (pt.any && state.unit !== 'gold' && s.gold_gram_try) equiv.push(nf1.format(s.total_value / s.gold_gram_try) + ' gram altın');
   return `
   <section class="hero" aria-label="Portföy özeti">
     <div class="hero-top">
@@ -651,12 +785,13 @@ function ozetHtml(s, U, masked) {
         <button class="btn-icon" id="mask-btn" aria-pressed="${masked}" title="Tutarları gizle/göster" aria-label="Tutarları gizle/göster">${ICONS.eye}</button>
       </span>
     </div>
-    <p class="hero-value num">${lira}<span class="kurus">${kurus != null ? ',' + kurus : ''}</span><span class="suf${state.unit === 'gold' ? ' gold' : ''}">${U.suf}${state.unit === 'gold' ? ' altın' : ''}</span></p>
+    <p class="hero-value num">${lira}<span class="kurus">${kurus != null ? ',' + kurus : ''}</span><span class="suf${state.unit === 'gold' ? ' gold' : ''}">${pt.any ? U.suf + (state.unit === 'gold' ? ' altın' : '') : ''}</span></p>
     ${equiv.length ? `<p class="hero-equiv num">≈ ${equiv.join(' ya da ')}</p>` : ''}
     <div class="hero-stats num">
       <span>Bugün<b class="${plClass(s.total_day_change)}">${signedU(s.total_day_change, U)}${s.total_day_change_pct != null ? ' (' + signedPct(s.total_day_change_pct) + ')' : ''}</b></span>
-      <span>Toplam kâr/zarar<b class="${plClass(s.total_profit_loss)}">${signedU(s.total_profit_loss, U)} (${signedPct(s.total_profit_loss_pct)})</b></span>
+      <span>Toplam kâr/zarar<b class="${plClass(pt.pl)}">${signedU(pt.pl, U)}${pt.pct != null ? ' (' + signedPct(pt.pct) + ')' : ''}</b></span>
     </div>
+    ${pt.missing ? `<p class="hero-warn">${pt.missing} pozisyonun güncel fiyatı şu an alınamadı; toplam değer ve kâr/zarar yalnız fiyatı gelenleri kapsıyor. Biraz sonra yenilemeyi dene.</p>` : ''}
     <div class="hero-meta">
       <span>Fiyatlar ${timeStr} itibarıyla · reel getiri ve kıyas Analiz'de</span>
       <span class="hero-mtools">
@@ -749,7 +884,9 @@ function analizHtml(s, U) {
   const stat = (l, v, cls = '', title = '', m = true) =>
     `<div class="stat"${title ? ` title="${title}"` : ''}><span>${l}</span><b class="num ${m ? 'm ' : ''}${cls}">${v}</b></div>`;
   const bits = [];
-  bits.push(stat('Toplam kâr/zarar', `${signedU(s.total_profit_loss, U)} (${signedPct(s.total_profit_loss_pct)})`, plClass(s.total_profit_loss)));
+  const pt = pricedTotals(s);
+  bits.push(stat('Toplam kâr/zarar', `${signedU(pt.pl, U)}${pt.pct != null ? ' (' + signedPct(pt.pct) + ')' : ''}`, plClass(pt.pl),
+    pt.missing ? `${pt.missing} pozisyonun fiyatı alınamadı; yalnız fiyatı gelenler.` : ''));
   const rr = realReturn(s);
   if (rr && rr.dated) {
     bits.push(stat('Enflasyon sonrası (reel)', `${(rr.undated || rr.partial) ? '≈ ' : ''}${signedU(rr.pl, U)} (${signedPct(rr.pct)})`, plClass(rr.pl),
@@ -758,7 +895,8 @@ function analizHtml(s, U) {
     bits.push(stat('Enflasyon sonrası (reel)', 'alış tarihi ekle', 'pl-flat',
       'Pozisyonlarına alış tarihi eklersen maliyetini TÜFE ile bugüne taşıyıp gerçek (reel) kârını gösteririz.', false));
   }
-  const x = portfolioXirr(s);
+  // eksik fiyatla bugünkü değer eksik → XIRR sahte düşük çıkar (−%91 gibi); gösterme
+  const x = pt.missing ? null : portfolioXirr(s);
   if (x != null && Math.abs(x) < 500)
     bits.push(stat('Yıllık iç verim (XIRR)', signedPct1(x), plClass(x),
       'Para-ağırlıklı yıllık getiri: işlem defterindeki tüm giriş-çıkışlar ve bugünkü değere göre.', false));
@@ -816,7 +954,7 @@ function portfolioXirr(s) {
 
 /* ---------- hedefler ---------- */
 function goalProgress(g, s) {
-  if (!s.total_value) return null;
+  if (!s.total_value || pricedTotals(s).missing) return null;   // eksik fiyatla ilerleme yanıltır
   if (g.kind === 'try') return { cur: s.total_value };
   if (g.kind === 'usd') return s.usd_try ? { cur: s.total_value / s.usd_try } : null;
   if (g.kind === 'gold_g') return s.gold_gram_try ? { cur: s.total_value / s.gold_gram_try } : null;
@@ -874,7 +1012,7 @@ function openGoalDialog() {
         <label><input type="radio" name="kind" value="usd"><span>Dolar</span></label>
       </div>
       <label class="field"><span>Hedef tutar</span>
-        <input name="target" type="number" step="any" min="1" required inputmode="decimal" placeholder="1000000"></label>
+        <input name="target" type="text" required inputmode="decimal" autocomplete="off" placeholder="1.000.000"></label>
       <label class="field"><span>Ad (isteğe bağlı)</span>
         <input name="title" maxlength="80" placeholder="Ev peşinatı, düğün, yüz gram…"></label>
       <p class="form-error" id="gdlg-err" role="alert"></p>
@@ -883,9 +1021,7 @@ function openGoalDialog() {
         <button type="submit" class="btn btn-primary">Hedefi kaydet</button>
       </div>
     </form>`;
-  document.body.appendChild(dlg);
-  dlg.showModal();
-  dlg.addEventListener('close', () => dlg.remove());
+  showDlg(dlg);
   dlg.querySelector('#gdlg-x').addEventListener('click', () => dlg.close());
   dlg.querySelector('#gdlg-cancel').addEventListener('click', () => dlg.close());
   dlg.querySelector('#goal-form').addEventListener('submit', async e => {
@@ -895,7 +1031,7 @@ function openGoalDialog() {
     try {
       const g = await api('/portfolio/goals', { method: 'POST', body: JSON.stringify({
         kind: e.target.kind.value,
-        target: parseFloat(e.target.target.value.replace(',', '.')),
+        target: numField(e.target.target, 'Hedef tutar'),
         title: e.target.title.value.trim() || null,
       })});
       state.goals.push(g);
@@ -1115,9 +1251,7 @@ function openDetailDialog(h) {
       <button type="button" class="btn btn-quiet" id="ddlg-edit">Düzenle</button>
       <button type="button" class="btn btn-primary" id="ddlg-close">Kapat</button>
     </div>`;
-  document.body.appendChild(dlg);
-  dlg.showModal();
-  dlg.addEventListener('close', () => dlg.remove());
+  showDlg(dlg);
   dlg.querySelector('#ddlg-x').addEventListener('click', () => dlg.close());
   dlg.querySelector('#ddlg-close').addEventListener('click', () => dlg.close());
   dlg.querySelector('#ddlg-edit').addEventListener('click', () => { dlg.close(); openHoldingDialog(h); });
@@ -1131,10 +1265,12 @@ function openDetailDialog(h) {
         ? '&symbol=' + encodeURIComponent(h.symbol) + '&name=' + encodeURIComponent(TYPE.bist.name(h.symbol))
         : '';
       const r = await (await fetch(API_BASE + '/public/news?asset_type=' + h.asset_type + q)).json();
-      if (!r.items || !r.items.length) return;
+      // yalnız http(s) bağlantılar: "javascript:" gibi şemalar tıklanınca betik çalıştırır
+      const items = (r.items || []).filter(n => /^https?:\/\//i.test(n.u || ''));
+      if (!items.length) return;
       const el = dlg.querySelector('#dnews');
       el.hidden = false;
-      el.innerHTML = '<h3>İlgili haberler</h3>' + r.items.map(n =>
+      el.innerHTML = '<h3>İlgili haberler</h3>' + items.map(n =>
         `<a href="${esc(n.u)}" target="_blank" rel="noopener">${esc(n.t)}<small>${esc((n.d || '').slice(5, 16))}</small></a>`).join('');
     } catch {}
   }
@@ -1291,14 +1427,14 @@ function openSellDialog(h) {
     <form id="sell-form">
       <label class="field"><span>Satılan ${t.unit === 'gram' ? 'gram' : 'adet'}
         — <button type="button" class="linklike" id="sell-all">tümünü sat (${nfq.format(h.quantity)})</button></span>
-        <input name="quantity" type="number" step="any" min="0.0001" max="${h.quantity}" required inputmode="decimal"></label>
+        <input name="quantity" type="text" required inputmode="decimal" autocomplete="off"></label>
       <div ${t.fixed ? 'hidden' : ''}>
         <label class="field"><span>Satış fiyatı (₺)</span>
-          <input name="price" type="number" step="any" min="0.0001" required inputmode="decimal" value="${t.fixed ? 1 : (h.current_price != null ? Math.round(h.current_price * 100) / 100 : '')}"></label>
+          <input name="price" type="text" required inputmode="decimal" autocomplete="off" value="${t.fixed ? 1 : (h.current_price != null ? inNum(Math.round(h.current_price * 100) / 100) : '')}"></label>
         <p class="price-hint num">Ortalama maliyetin ${money(h.cost_price)} — realize kâr/zarar buna göre hesaplanır.</p>
       </div>
       <label class="field"><span>Satış tarihi</span>
-        <input name="trade_date" type="date" max="${new Date().toISOString().slice(0, 10)}" value="${new Date().toISOString().slice(0, 10)}"></label>
+        <input name="trade_date" type="date" max="${todayISO()}" value="${todayISO()}"></label>
       <label class="field"><span>Not (isteğe bağlı)</span><input name="note" maxlength="280"></label>
       <p class="form-error" id="sdlg-err" role="alert"></p>
       <div class="dlg-actions"><span class="grow"></span>
@@ -1306,13 +1442,11 @@ function openSellDialog(h) {
         <button type="submit" class="btn btn-primary">Satışı kaydet</button>
       </div>
     </form>`;
-  document.body.appendChild(dlg);
-  dlg.showModal();
-  dlg.addEventListener('close', () => dlg.remove());
+  showDlg(dlg);
   dlg.querySelector('#sdlg-x').addEventListener('click', () => dlg.close());
   dlg.querySelector('#sdlg-cancel').addEventListener('click', () => dlg.close());
   dlg.querySelector('#sell-all').addEventListener('click', () => {
-    dlg.querySelector('[name=quantity]').value = h.quantity;
+    dlg.querySelector('[name=quantity]').value = inNum(h.quantity);
   });
   dlg.querySelector('#sell-form').addEventListener('submit', async e => {
     e.preventDefault();
@@ -1321,10 +1455,12 @@ function openSellDialog(h) {
     const btn = e.target.querySelector('button[type=submit]');
     btn.disabled = true;
     try {
+      const qty = numField(e.target.quantity, 'Satılan miktar');
+      if (qty > h.quantity + 1e-9) { e.target.quantity.focus(); throw new Error(`Elinde ${nfq.format(h.quantity)} ${t.unit} var; daha fazlasını satamazsın.`); }
       const txn = await api('/portfolio/transactions', { method: 'POST', body: JSON.stringify({
         asset_type: h.asset_type, symbol: h.symbol, side: 'sell',
-        quantity: parseFloat(e.target.quantity.value.replace(',', '.')),
-        price: parseFloat(e.target.price.value.replace(',', '.')),
+        quantity: qty,
+        price: numField(e.target.price, 'Satış fiyatı'),
         trade_date: e.target.trade_date.value || null,
         note: e.target.note.value.trim() || null,
       })});
@@ -1445,7 +1581,7 @@ function openAlertDialog(assetType, symbol, currentPrice) {
         <label><input type="radio" name="direction" value="below"><span id="dir-below">Altına inince</span></label>
       </div>
       <label class="field"><span id="th-label">Eşik fiyat (₺)</span>
-        <input name="threshold" type="number" step="any" min="0.0001" required inputmode="decimal" value="${currentPrice != null ? Math.round(currentPrice * 100) / 100 : ''}"></label>
+        <input name="threshold" type="text" required inputmode="decimal" autocomplete="off" value="${currentPrice != null ? inNum(Math.round(currentPrice * 100) / 100) : ''}"></label>
       <label class="check"><input type="checkbox" name="repeat">
         <span>Tekrarlayan: tetiklenince kapanmasın, koşul düzelince yeniden kurulsun</span></label>
       <p class="hint" style="font-size:.85rem;color:var(--muted);margin:10px 0 14px">Eşik aşılınca <b>${esc(state.user?.email || '')}</b> adresine e-posta gönderilir. Kontrol sıklığı ~15 dakika.</p>
@@ -1455,9 +1591,7 @@ function openAlertDialog(assetType, symbol, currentPrice) {
         <button type="submit" class="btn btn-primary">Alarmı kur</button>
       </div>
     </form>`;
-  document.body.appendChild(dlg);
-  dlg.showModal();
-  dlg.addEventListener('close', () => dlg.remove());
+  showDlg(dlg);
   dlg.querySelector('#adlg-x').addEventListener('click', () => dlg.close());
   dlg.querySelector('#adlg-cancel').addEventListener('click', () => dlg.close());
   const form = dlg.querySelector('#alert-form');
@@ -1466,7 +1600,7 @@ function openAlertDialog(assetType, symbol, currentPrice) {
     dlg.querySelector('#th-label').textContent = pct ? 'Eşik değişim (%)' : 'Eşik fiyat (₺)';
     dlg.querySelector('#dir-above').textContent = pct ? 'Yükselirse' : 'Üstüne çıkınca';
     dlg.querySelector('#dir-below').textContent = pct ? 'Düşerse' : 'Altına inince';
-    form.threshold.value = pct ? 5 : (currentPrice != null ? Math.round(currentPrice * 100) / 100 : '');
+    form.threshold.value = pct ? 5 : (currentPrice != null ? inNum(Math.round(currentPrice * 100) / 100) : '');
   }));
   form.addEventListener('submit', async e => {
     e.preventDefault();
@@ -1477,7 +1611,7 @@ function openAlertDialog(assetType, symbol, currentPrice) {
         asset_type: assetType, symbol,
         kind: form.kind.value,
         direction: form.direction.value,
-        threshold: parseFloat(form.threshold.value.replace(',', '.')),
+        threshold: numField(form.threshold, 'Eşik'),
         repeat: form.repeat.checked,
       })});
       state.alerts.unshift(a);
@@ -1513,9 +1647,7 @@ function openWatchDialog() {
         <button type="submit" class="btn btn-primary">İzlemeye al</button>
       </div>
     </form>`;
-  document.body.appendChild(dlg);
-  dlg.showModal();
-  dlg.addEventListener('close', () => dlg.remove());
+  showDlg(dlg);
   dlg.querySelector('#wdlg-x').addEventListener('click', () => dlg.close());
   dlg.querySelector('#wdlg-cancel').addEventListener('click', () => dlg.close());
   const form = dlg.querySelector('#watch-form');
@@ -1566,13 +1698,11 @@ function openAccountDialog() {
       <div id="del-confirm" hidden>
         <p>Hesabın ve <b>tüm verilerin</b> (pozisyonlar, geçmiş, alarmlar, hedefler) kalıcı silinir.
         Bu geri alınamaz. Onaylamak için e-postanı yaz:</p>
-        <label class="field"><input id="del-email" type="email" placeholder="${esc(u.email)}" autocomplete="off"></label>
+        <label class="field"><input id="del-email" type="email" placeholder="${esc(u.email)}" autocomplete="off" aria-label="Onay için e-posta adresin"></label>
         <button type="button" class="btn btn-danger" id="del-go" disabled>Evet, hesabımı sil</button>
       </div>
     </div>`;
-  document.body.appendChild(dlg);
-  dlg.showModal();
-  dlg.addEventListener('close', () => dlg.remove());
+  showDlg(dlg);
   dlg.querySelector('#acct-x').addEventListener('click', () => dlg.close());
   dlg.querySelector('#acct-form').addEventListener('submit', async e => {
     e.preventDefault();
@@ -1599,9 +1729,7 @@ function openAccountDialog() {
     try {
       await api('/auth/me', { method: 'DELETE' });
       dlg.close();
-      safeSet(TOKEN_KEY, null);
-      state.user = state.summary = null;
-      renderAuth();
+      logout(false);   // yenileme zamanlayıcısı + bellekteki veriler de temizlensin
       toast('Hesabın ve tüm verilerin silindi. Görüşmek üzere.');
     } catch (ex) { toast(ex.message, true); delGo.disabled = false; }
   });
@@ -1624,10 +1752,25 @@ function wireSymbolSearch(form, list, onPick) {
       symQ.value = code + ' — ' + symbolName(code);
       symHidden.value = code;
       list.hidden = true;
+      (form.quantity || symQ).focus();   // seçilen düğme gizlenince odak body'ye düşmesin
       if (onPick) onPick(code);
     }));
   });
-  symQ.addEventListener('blur', () => setTimeout(() => { list.hidden = true; }, 180));
+  // klavye: ↓ listeye girer, ↑/↓ gezinir, Esc kapatır (Tab'la çıkınca liste kapanıyordu)
+  symQ.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown' && !list.hidden) { e.preventDefault(); list.querySelector('button')?.focus(); }
+  });
+  list.addEventListener('keydown', e => {
+    const bs = [...list.querySelectorAll('button')], i = bs.indexOf(document.activeElement);
+    if (e.key === 'ArrowDown') { e.preventDefault(); bs[Math.min(i + 1, bs.length - 1)]?.focus(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); (i > 0 ? bs[i - 1] : symQ).focus(); }
+    else if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); list.hidden = true; symQ.focus(); }
+  });
+  const hideLater = () => setTimeout(() => {
+    if (!list.contains(document.activeElement) && document.activeElement !== symQ) list.hidden = true;
+  }, 180);
+  symQ.addEventListener('blur', hideLater);
+  list.addEventListener('focusout', hideLater);
 }
 function resolveSymbol(form) {
   let symbol = form.symbol.value;
@@ -1663,6 +1806,7 @@ function exportCsv() {
 async function shareCard() {
   const s = state.summary;
   if (!s || !s.holdings.length) return;
+  if (pricedTotals(s).missing) return toast('Bazı fiyatlar şu an alınamadı — kart için fiyatların gelmesini bekle.', true);
   try { await document.fonts.load('700 120px "IBM Plex Sans"'); await document.fonts.load('500 44px "IBM Plex Sans"'); } catch {}
   const W = 1080, H = 1350;
   const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
@@ -1765,14 +1909,15 @@ function openHoldingDialog(existing, preset) {
         </label>
       </div>`}
       <label class="field"><span id="qty-label">${(isEdit ? TYPE[existing.asset_type] : TYPE[presetType]).q}</span>
-        <input name="quantity" type="number" step="any" min="0.0001" required inputmode="decimal" value="${isEdit ? existing.quantity : ''}"></label>
+        <input name="quantity" type="text" required inputmode="decimal" autocomplete="off" value="${isEdit ? inNum(existing.quantity) : ''}"></label>
       <div id="cost-wrap" ${!isEdit && TYPE[presetType].fixed ? 'hidden' : ''}>
         <label class="field"><span>Birim maliyet (₺)</span>
-          <input name="cost_price" type="number" step="any" min="0.0001" required inputmode="decimal" value="${isEdit ? existing.cost_price : (TYPE[presetType].fixed ? 1 : '')}"></label>
+          <input name="cost_price" type="text" required inputmode="decimal" autocomplete="off" placeholder="ör. 1.250,50" value="${isEdit ? inNum(existing.cost_price) : (TYPE[presetType].fixed ? 1 : '')}"></label>
         <p class="price-hint" id="price-hint"></p>
       </div>
+      <p class="price-hint num" id="total-hint"></p>
       <label class="field"><span>Alış tarihi (önerilir — reel getiri ve kıyas bununla hesaplanır)</span>
-        <input name="purchase_date" type="date" max="${new Date().toISOString().slice(0, 10)}" value="${isEdit && existing.purchase_date ? existing.purchase_date : ''}"></label>
+        <input name="purchase_date" type="date" max="${todayISO()}" value="${isEdit && existing.purchase_date ? existing.purchase_date : ''}"></label>
       <label class="field"><span>Not (isteğe bağlı)</span>
         <input name="note" maxlength="280" value="${isEdit ? esc(existing.note || '') : ''}"></label>
       <p class="form-error" id="dlg-err" role="alert"></p>
@@ -1783,15 +1928,23 @@ function openHoldingDialog(existing, preset) {
         <button type="submit" class="btn btn-primary">${isEdit ? 'Kaydet' : 'Ekle'}</button>
       </div>
     </form>`;
-  document.body.appendChild(dlg);
-  dlg.showModal();
-  dlg.addEventListener('close', () => dlg.remove());
+  showDlg(dlg);
   dlg.querySelector('#dlg-x').addEventListener('click', () => dlg.close());
   dlg.querySelector('#dlg-cancel').addEventListener('click', () => dlg.close());
 
   const form = dlg.querySelector('#holding-form');
   const err = dlg.querySelector('#dlg-err');
   const hint = dlg.querySelector('#price-hint');
+  // canlı toplam ("1,5 gram × 6.644,80 ₺ = 9.967,20 ₺"): 10×/1000× yazım hatası kaydetmeden görünsün
+  const totalHint = dlg.querySelector('#total-hint');
+  const showTotal = () => {
+    const q = parseNum(form.quantity.value), c = parseNum(form.cost_price.value);
+    const t = TYPE[isEdit ? existing.asset_type : form.asset_type.value];
+    totalHint.textContent = q > 0 && c > 0 ? `Toplam maliyet: ${nfq.format(q)} ${t.unit} × ${money(c)} = ${money(q * c)}` : '';
+  };
+  form.quantity.addEventListener('input', showTotal);
+  form.cost_price.addEventListener('input', showTotal);
+  showTotal();
 
   async function showLivePrice(assetType, symbol) {
     if (state.demo) return;
@@ -1801,7 +1954,7 @@ function openHoldingDialog(existing, preset) {
       const r = await (await fetch(API_BASE + '/public/price?asset_type=' + assetType + q)).json();
       if (r.price != null) {
         hint.innerHTML = `Güncel fiyat: <b class="num">${money(r.price)}</b> — <button type="button" id="use-price">maliyete yaz</button>`;
-        hint.querySelector('#use-price').addEventListener('click', () => { form.cost_price.value = r.price; });
+        hint.querySelector('#use-price').addEventListener('click', () => { form.cost_price.value = inNum(r.price); showTotal(); });
       } else hint.textContent = '';
     } catch { hint.textContent = ''; }
   }
@@ -1819,6 +1972,7 @@ function openHoldingDialog(existing, preset) {
       costWrap.hidden = Boolean(t.fixed);
       if (t.fixed) form.cost_price.value = 1;
       else if (r.value !== 'bist') showLivePrice(r.value);
+      showTotal();
     }));
     wireSymbolSearch(form, dlg.querySelector('#sym-list'), code => showLivePrice('bist', code));
     if (preset) {
@@ -1849,8 +2003,8 @@ function openHoldingDialog(existing, preset) {
     const btn = form.querySelector('button[type=submit]');
     btn.disabled = true;
     try {
-      const qty = parseFloat(form.quantity.value.replace(',', '.'));
-      const cost = parseFloat(form.cost_price.value.replace(',', '.'));
+      const qty = numField(form.quantity, 'Miktar');
+      const cost = numField(form.cost_price, 'Birim maliyet');
       const date = form.purchase_date.value || null;
       const note = form.note.value.trim() || null;
       if (isEdit) {
@@ -1875,10 +2029,15 @@ function openHoldingDialog(existing, preset) {
 }
 
 /* ---------- başlangıç ---------- */
-document.addEventListener('click', e => {
-  const um = document.getElementById('user-menu');
-  if (um && !um.hidden && !e.target.closest('.menu')) um.hidden = true;
-});
+function closeUserMenu(focusBtn) {
+  const um = document.getElementById('user-menu'), ub = document.getElementById('user-btn');
+  if (!um || um.hidden) return;
+  um.hidden = true;
+  ub?.setAttribute('aria-expanded', 'false');
+  if (focusBtn) ub?.focus();
+}
+document.addEventListener('click', e => { if (!e.target.closest('.menu')) closeUserMenu(false); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeUserMenu(true); });   // Esc menüyü kapatsın
 if ('serviceWorker' in navigator) {
   try { navigator.serviceWorker.register('/sw.js'); } catch {}
 }

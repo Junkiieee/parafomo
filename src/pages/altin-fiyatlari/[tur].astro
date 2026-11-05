@@ -1,4 +1,6 @@
 ---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Newsletter from '../../components/Newsletter.astro';
 import altin from '../../../data/altin-fiyat.json';
@@ -41,6 +43,40 @@ const hasDeger = !usd && has?.alis ? hasG * has.alis : 0;
 const prim = hasDeger > 0 ? (satis / hasDeger - 1) * 100 : 0;
 const birimAd = spec.birim === 'adet' ? 'adet' : spec.birim === 'gram' ? 'gram' : 'ons';
 const adetSet = spec.birim === 'adet' ? [1, 2, 3, 5, 10, 20] : spec.birim === 'gram' ? [1, 5, 10, 20, 50, 100] : [1, 2, 5, 10];
+
+// Ayar sayfalarına özgü açıklama + canlı örnek. 14 ve 18 ayar sayfaları rakamlar dışında %84 aynıydı
+// (yakın kopya, denetim 2026-11-03); her ayarın saflığı, damgası ve kullanımı ayrı anlatılır.
+const ornekGram = spec.key === '22-ayar-bilezik' ? 20 : 10;
+const ornekSaf = ornekGram * hasG;
+const ornekDeger = has?.alis ? ornekSaf * has.alis : 0;
+const ornekDegerMetni = ornekDeger > 0 ? `; bugünkü has altın alış fiyatıyla bu saf altının karşılığı yaklaşık ${fmt0(ornekDeger)} ₺ eder` : '';
+const AYAR_NOTU: Record<string, { baslik: string; paragraflar: string[] }> = {
+  '18-ayar-altin': {
+    baslik: '18 ayar altın nedir, nerede kullanılır?',
+    paragraflar: [
+      '18 ayar altının bin parçasının 750\'si saf altındır; kalan yüzde 25\'i bakır, gümüş ya da paladyum gibi alaşım metalleridir. Alaşım altına sertlik kazandırır ve rengini belirler: sarı, beyaz ve rose altın bu karışımın farklı oranlarıyla elde edilir. Takının iç yüzündeki "750" damgası 18 ayarı gösterir.',
+      `Örnek: 10 gram 18 ayar bir kolyede ${g3(ornekSaf)} gram saf altın vardır${ornekDegerMetni}. Mağazada ödenen fiyata ayrıca işçilik eklenir.`,
+    ],
+  },
+  '14-ayar-altin': {
+    baslik: '14 ayar altın nedir, 18 ve 22 ayardan farkı ne?',
+    paragraflar: [
+      '14 ayar altının bin parçasının 585\'i saf altındır; geri kalan yaklaşık yüzde 41,5\'i alaşım metalidir. Alaşım oranı yüksek olduğu için 18 ve 22 ayara göre daha serttir, çizilmeye ve eğilmeye daha dayanıklıdır; bu yüzden günlük takılarda ve alyanslarda sık kullanılır. Damgası "585"tir.',
+      `Örnek: 10 gram 14 ayar bir bileklikte ${g3(ornekSaf)} gram saf altın vardır${ornekDegerMetni}. Aynı ağırlıktaki 18 ayar takıda saf altın ${g3(10 * 0.75)} gram, 22 ayarda ${g3(10 * 0.916)} gram olur.`,
+    ],
+  },
+  '22-ayar-bilezik': {
+    baslik: '22 ayar bilezik: saflık ve işçilik',
+    paragraflar: [
+      '22 ayar altının bin parçasının 916\'sı saf altındır (damgası "916"). Türkiye\'de bilezikler ve Cumhuriyet altınları bu ayardadır. Saflığı yüksek olduğu için 14 ve 18 ayara göre daha yumuşaktır.',
+      `Örnek: 20 gram 22 ayar bir bilezikte ${g3(ornekSaf)} gram saf altın vardır${ornekDegerMetni}. Bilezik alırken gram fiyatına model işçiliği eklenir; bozdururken işçilik geri ödenmez.`,
+    ],
+  },
+};
+const ayarNotu = AYAR_NOTU[spec.key];
+// Türe özel paylaşım kartı (scripts/og-images.py altin-fiyatlari-<slug>); üretilmemişse genel karta düşer.
+const ogImage = existsSync(join(process.cwd(), 'public', 'og', `altin-fiyatlari-${spec.slug}.png`))
+  ? `/og/altin-fiyatlari-${spec.slug}.png` : undefined;
 
 // Aynı gruptaki ve komşu türler — iç link ağı
 const kardes = ALTIN_SPECS.filter((s) => s.slug !== spec.slug && items.some((i) => i.key === s.key));
@@ -86,7 +122,7 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout title={title} description={description} faq={faq} breadcrumbs={breadcrumbs}>
+<BaseLayout title={title} description={description} faq={faq} breadcrumbs={breadcrumbs} image={ogImage}>
   <div class="calc-wrap">
     <header class="calc-head">
       <p class="eyebrow">Güncel Veri · {spec.ayar}{spec.birim === 'adet' ? ` · ${g3(spec.gram)} gram` : ''}</p>
@@ -138,6 +174,13 @@ const breadcrumbs = [
       </table>
     </section>
 
+    {ayarNotu && (
+      <section class="prose-block">
+        <h2>{ayarNotu.baslik}</h2>
+        {ayarNotu.paragraflar.map((p) => <p>{p}</p>)}
+      </section>
+    )}
+
     {ziynetSikkeNotu && (
       <section class="prose-block">
         <h2>Ziynet mi, sikke mi? Ağırlık farkı</h2>
@@ -180,7 +223,7 @@ const breadcrumbs = [
       ))}
     </section>
 
-    <p class="disclaimer">Fiyatlar gösterge niteliğindedir ve günde bir kez güncellenir; yatırım tavsiyesi değildir.</p>
+    <p class="disclaimer">Fiyatlar gösterge niteliğindedir; Pazartesi–Cumartesi gün içinde birkaç kez güncellenir. Yatırım tavsiyesi değildir.</p>
     <Newsletter />
   </div>
 
@@ -221,7 +264,7 @@ const breadcrumbs = [
     .calc-grid { margin-top: 1.6rem; display: grid; grid-template-columns: 1fr 1.4fr; gap: 1rem; align-items: center; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.2rem; }
     .calc-in { display: flex; flex-direction: column; gap: 0.35rem; }
     .calc-in span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
-    .calc-in input { font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .calc-in input { font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
     .calc-in input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
     .calc-out { display: grid; gap: 0.45rem; }
     .calc-out div { display: grid; grid-template-columns: 1fr auto; gap: 0.5rem; }

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import data from '../../data/halka-arz.json';
+import ipoReturns from '../../data/halka-arz-getiri.json';
 
 type IPO = {
   company: string; bist_code: string; slug: string; link: string;
@@ -72,7 +73,7 @@ const datasetLd = {
 <BaseLayout
   image="/og/halka-arz.png"
   title={`Halka Arz Takvimi ${monthLabel}: Talep Tarihleri, Fiyat ve Lot`}
-  description={`${monthLabel} BIST halka arz takvimi: talep toplama günleri, tarih bekleyen ${pending.length} şirket ve son tamamlanan arzlar. Her şirketin fiyat, lot, aracı kurum ve getiri künyesi. Günde 4 kez güncellenir.`}
+  description={`${monthLabel} BIST halka arz takvimi: talep toplama günleri, tarih bekleyen ${pending.length} şirket ve son arzlar. Fiyat, lot, aracı kurum ve getiri künyesi; günde 4 kez güncel.`}
   breadcrumbs={[{ name: 'Ana sayfa', url: '/' }, { name: 'Halka Arz Takvimi', url: '/halka-arz/' }]}
 >
   <script type="application/ld+json" set:html={JSON.stringify(datasetLd)} />
@@ -81,7 +82,7 @@ const datasetLd = {
     <h1>Halka Arz Takvimi</h1>
     <p class="lede soft">{monthLabel} ayının halka arz takvimi. Her gün otomatik güncellenir.</p>
     <p class="ha-upd">Son güncelleme: {updated} · Kaynak: halkarz.com</p>
-    <p class="ha-cta"><a href="/halka-arz-getiri">📈 2026 halka arzları ne kazandırdı? Güncel getiri tablosunu gör →</a></p>
+    <p class="ha-cta"><a href="/halka-arz-getiri">📈 {ipoReturns.year} halka arzları ne kazandırdı? Güncel getiri tablosunu gör →</a></p>
   </section>
 
   <section class="container ha-section">
@@ -162,6 +163,19 @@ const datasetLd = {
   </section>
 
   <div class="container"><Newsletter /></div>
+  <Fragment slot="end">
+  <script define:vars={{ built: data.updated }}>
+    // Veri (cron ile) değiştiğinde açık sayfa kendini yeniler.
+    async function checkUpdate() {
+      try {
+        const r = await fetch('/halka-arz.json?_=' + Date.now(), { cache: 'no-store' });
+        const d = await r.json();
+        if (d && d.updated && d.updated !== built) location.reload();
+      } catch { /* yoksay */ }
+    }
+    setInterval(() => { if (document.visibilityState === 'visible') checkUpdate(); }, 300000);
+  </script>
+  </Fragment>
 </BaseLayout>
 
 <style>
@@ -247,14 +261,3 @@ const datasetLd = {
   }
 </style>
 
-<script define:vars={{ built: data.updated }}>
-  // Veri (cron ile) değiştiğinde açık sayfa kendini yeniler.
-  async function checkUpdate() {
-    try {
-      const r = await fetch('/halka-arz.json?_=' + Date.now(), { cache: 'no-store' });
-      const d = await r.json();
-      if (d && d.updated && d.updated !== built) location.reload();
-    } catch { /* yoksay */ }
-  }
-  setInterval(() => { if (document.visibilityState === 'visible') checkUpdate(); }, 300000);
-</script>

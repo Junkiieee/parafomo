@@ -100,8 +100,9 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
+  image="/og/net-maas-hesaplama.png"
   title="Net Maaş Hesaplama 2026 — Brütten Nete Maaş Hesaplama Aracı"
-  description="2026 net maaş hesaplama: brüt maaşı girin, SGK, gelir vergisi (kümülatif) ve damga vergisi kesintileriyle eline geçen net ücreti anında görün. Güncel 2026 gelir vergisi dilimleriyle."
+  description="2026 net maaş hesaplama: brüt maaşı girin; SGK, kümülatif gelir vergisi ve damga vergisi kesintileriyle eline geçen net ücreti görün. Güncel 2026 vergi dilimleriyle."
   faq={faq}
   breadcrumbs={breadcrumbs}
 >
@@ -135,8 +136,8 @@ const breadcrumbs = [
         </p>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">Net maaş (eline geçen)</span>
           <span class="result-value" id="out-net">₺{fmt(d.net)}</span>
         </div>
@@ -329,7 +330,7 @@ const breadcrumbs = [
     .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
     .calc-inputs input, .calc-inputs select {
       font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
-      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm);
       background: var(--bg); width: 100%;
     }
     .calc-inputs input:focus, .calc-inputs select:focus {

@@ -1,5 +1,5 @@
 ---
-title: "İngiltere GDP Nedir? Büyüme Verisi Sterlin ve Küresel Piyasalara Nasıl Etkiler?"
+title: "İngiltere GDP Nedir? Büyüme Verisi Sterlini Nasıl Etkiler?"
 description: "İngiltere GDP büyüme verisi nedir, nasıl okunur? Aylık m/m açıklaması sterlini, Bank of England'ı ve Türk yatırımcısının portföyünü nasıl etkiler? Adım adım rehber."
 pubDate: 2026-08-13
 category: "Ekonomi"

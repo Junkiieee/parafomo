@@ -104,6 +104,7 @@ const datasetLd = {
 ---
 
 <BaseLayout
+  image="/og/altin-dolar-borsa.png"
   title={`Altın mı, Dolar mı, Borsa mı? ${N} Yılın Kazananı (TL Getiri)`}
   description={`Son ${N} yılda TL bazında ${winner.name.toLowerCase()} %${fmt0(winner.ret)}, ${assets[1].name.toLowerCase()} %${fmt0(assets[1].ret)}, ${loser.name.toLowerCase()} %${fmt0(loser.ret)} kazandırdı. Altın, dolar ve BIST 100'ün 1, 3, 5, 10 yıllık getirisi tek tabloda — her gün güncel.`}
 >
@@ -210,7 +211,18 @@ const datasetLd = {
       <strong>yatırım tavsiyesi değildir</strong>. Geçmiş getiri gelecekteki getirinin garantisi değildir.
     </p>
   </section>
-
+  <Fragment slot="end">
+  <script define:vars={{ built: gold.updated }}>
+    async function checkUpdate() {
+      try {
+        const r = await fetch('/altin-getiri.json?_=' + Date.now(), { cache: 'no-store' });
+        const d = await r.json();
+        if (d && d.updated && d.updated !== built) location.reload();
+      } catch { /* yoksay */ }
+    }
+    setInterval(() => { if (document.visibilityState === 'visible') checkUpdate(); }, 300000);
+  </script>
+  </Fragment>
 </BaseLayout>
 
 <style>
@@ -269,13 +281,3 @@ const datasetLd = {
   }
 </style>
 
-<script define:vars={{ built: gold.updated }}>
-  async function checkUpdate() {
-    try {
-      const r = await fetch('/altin-getiri.json?_=' + Date.now(), { cache: 'no-store' });
-      const d = await r.json();
-      if (d && d.updated && d.updated !== built) location.reload();
-    } catch { /* yoksay */ }
-  }
-  setInterval(() => { if (document.visibilityState === 'visible') checkUpdate(); }, 300000);
-</script>

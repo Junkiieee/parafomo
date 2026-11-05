@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ekIn } from '../data/ek';
 import Newsletter from '../components/Newsletter.astro';
 import kira from '../../data/kira-artis-2026.json';
 
 // Güncel yasal tavan (12 aylık TÜFE ortalaması) — data dosyasından, aylık güncellenir.
 const RATE = kira.guncelOran; // %
 const AY = kira.guncelAy;
+const RATE_IN = ekIn(String(RATE).replace('.', ','));
 
 // Sunucuda varsayılan hesap — JS kapalıyken bile sayfa dolu görünsün (SEO + no-JS).
 const D = { rent: 20000 };
@@ -81,8 +83,8 @@ const breadcrumbs = [
         <button type="button" id="reset-rate" class="reset-btn">Yasal tavana sıfırla (%{RATE.toString().replace('.', ',')})</button>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">Yeni aylık kira (yasal üst sınır)</span>
           <span class="result-value" id="out-new">₺{fmt(newRent)}</span>
         </div>
@@ -179,7 +181,7 @@ const breadcrumbs = [
     <Newsletter />
   </div>
 
-  <script is:inline define:vars={{ RATE, AY }}>
+  <script is:inline define:vars={{ RATE, AY, RATE_IN }}>
     (function () {
       const $ = (id) => document.getElementById(id);
       const nf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
@@ -195,7 +197,7 @@ const breadcrumbs = [
         $('out-yearly').textContent = '₺' + nf.format(Math.round(monthly * 12));
         const over = rate - RATE > 0.001;
         $('out-note').textContent = over
-          ? `Girdiğin oran %${nf.format(rate)}, ${AY} yasal tavanı %${rateStr}'in üzerinde — tavanı aşan kısım kiracı için bağlayıcı değildir.`
+          ? `Girdiğin oran %${nf.format(rate)}, ${AY} yasal tavanı %${rateStr}${RATE_IN} üzerinde — tavanı aşan kısım kiracı için bağlayıcı değildir.`
           : `Bu, ${AY} için yasal üst sınırdır. Ev sahibi bundan fazlasını talep edemez.`;
       }
 
@@ -227,7 +229,7 @@ const breadcrumbs = [
     .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; }
     .calc-inputs input {
       font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
-      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm);
       background: var(--bg); width: 100%;
     }
     .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }

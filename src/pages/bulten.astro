@@ -41,22 +41,23 @@ const items = [
       <a href="/gizlilik/">Gizlilik</a> · <a href="/veri-silme/">Veri silme</a>.
     </p>
   </section>
+  <Fragment slot="end">
+  <script>
+    const MSG: Record<string, [string, string]> = {
+      onaylandi: ['ok', '✅ Aboneliğin onaylandı! İlk bülten pazartesi sabahı gelen kutunda.'],
+      ayrildi: ['info', 'Bülten aboneliğinden çıktın. Fikrini değiştirirsen aşağıdan tekrar abone olabilirsin.'],
+      gecersiz: ['err', 'Bu bağlantı geçersiz ya da süresi dolmuş. Aşağıdan yeniden abone olabilirsin.'],
+    };
+    const durum = new URLSearchParams(location.search).get('durum') || '';
+    const el = document.getElementById('nl-status');
+    if (el && MSG[durum]) {
+      el.dataset.state = MSG[durum][0];
+      el.textContent = MSG[durum][1];
+      el.hidden = false;
+    }
+  </script>
+  </Fragment>
 </BaseLayout>
-
-<script>
-  const MSG: Record<string, [string, string]> = {
-    onaylandi: ['ok', '✅ Aboneliğin onaylandı! İlk bülten pazartesi sabahı gelen kutunda.'],
-    ayrildi: ['info', 'Bülten aboneliğinden çıktın. Fikrini değiştirirsen aşağıdan tekrar abone olabilirsin.'],
-    gecersiz: ['err', 'Bu bağlantı geçersiz ya da süresi dolmuş. Aşağıdan yeniden abone olabilirsin.'],
-  };
-  const durum = new URLSearchParams(location.search).get('durum') || '';
-  const el = document.getElementById('nl-status');
-  if (el && MSG[durum]) {
-    el.dataset.state = MSG[durum][0];
-    el.textContent = MSG[durum][1];
-    el.hidden = false;
-  }
-</script>
 
 <style>
   .bulten { max-width: 760px; padding-top: 2.5rem; padding-bottom: 1rem; }

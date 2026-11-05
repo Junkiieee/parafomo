@@ -43,7 +43,7 @@ Bu komite yılda **8 kez** toplanır — yaklaşık her 6 haftada bir. Kararlar 
 
 FOMC kararı toplantı günü açıklanır; tutanaklar ise 3 hafta sonra gelir. Bu gecikme önemli çünkü tutanaklar kararın kendisi değil, o karara giden düşünce sürecidir.
 
-| | Faiz Kararı | Toplantı Tutanakları |
+| Kriter | Faiz Kararı | Toplantı Tutanakları |
 |---|---|---|
 | **Açıklanma zamanı** | Toplantının 2. günü, 21:00 TSİ (ABD kış saatinde 22:00) | Toplantıdan 3 hafta sonra, aynı saatte |
 | **Ne içerir?** | Kısa açıklama + yeni faiz rakamı | Üye yorumları, tartışmalar, oylamalar |

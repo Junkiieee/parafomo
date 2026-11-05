@@ -12,6 +12,10 @@ REPO="/root/parafomo"
 . "$REPO/scripts/lib/gitsync.sh"
 cd "$REPO" || exit 1
 echo "[$(date -u '+%F %T UTC')] kira artış güncelleme"
+# Tek kopya: bu cron (20 8,12) ile release-watch.py (*/10 7-10) 08:20'de AYNI ANDA tetikliyordu → iki kopya aynı
+# data/*.json'u eşzamanlı yazıp okuyordu. Arka plana atılan event-short kilidi devralmasın diye ona 7>&- verilir.
+exec 7>/tmp/parafomo-kira-artis.lock
+flock -n 7 || { echo "  başka bir kira-artis-update sürüyor — atlandı"; exit 0; }
 git_sync >/dev/null 2>&1 || echo "UYARI: pull başarısız (devam)"
 python3 "$REPO/scripts/kira-artis-update.py"
 # Aynı gün TÜFE aylık serisi (emekli zammı sayfası) — TCMB tablosu
@@ -32,7 +36,7 @@ PATHS="data/kira-artis-2026.json data/tufe-aylik.json data/yeniden-degerleme.jso
 # shellcheck disable=SC2086
 if [ -z "$(git status --porcelain $PATHS)" ]; then
   # veri değişmedi — yine de taze olay videosu bekliyorsa (ertelenmiş/başarısız) üret
-  setsid nohup python3 "$REPO/scripts/event-short.py" >> "$REPO/logs/event-short.log" 2>&1 < /dev/null &
+  setsid nohup python3 "$REPO/scripts/event-short.py" >> "$REPO/logs/event-short.log" 2>&1 < /dev/null 7>&- &
   exit 0
 fi
 # shellcheck disable=SC2086
@@ -51,4 +55,4 @@ if bash "$REPO/scripts/deploy-push.sh"; then
 fi
 # TÜİK günü sonuç Short'u (commit+deploy'dan SONRA): enflasyon + kira tavanı; Kasım'da yeniden değerleme, Ocak/Temmuz'da
 # emekli zammı ayrı video (scripts/event-short.py — bir olay bir kez, iki video arası ≥3 sa)
-setsid nohup python3 "$REPO/scripts/event-short.py" >> "$REPO/logs/event-short.log" 2>&1 < /dev/null &
+setsid nohup python3 "$REPO/scripts/event-short.py" >> "$REPO/logs/event-short.log" 2>&1 < /dev/null 7>&- &

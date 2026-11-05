@@ -1,6 +1,6 @@
 ---
 title: "Portföy Çeşitlendirmesi Nasıl Yapılır? Yatırım Riskini Azaltma Rehberi"
-description: "Portföy çeşitlendirmesi nasıl yapılır? Hisse senedi, tahvil, altın ve fonları dengeleyerek riskinizi azaltın. Türkiye'ye özel pratik adımlar ve karşılaştırma tablosu."
+description: "Portföy çeşitlendirmesi nasıl yapılır? Hisse, tahvil, altın ve fonları dengeleyerek riskinizi azaltın. Türkiye'ye özel adımlar ve karşılaştırma tablosu."
 pubDate: 2026-07-29
 updatedDate: 2026-10-22
 category: "Yatırım"

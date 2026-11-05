@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { BU_YIL } from '../data/yil';
 import Newsletter from '../components/Newsletter.astro';
 import faiz from '../../data/faiz-oranlari.json';
 
@@ -81,7 +82,7 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="İhtiyaç Kredisi Hesaplama 2026 | Güncel Faiz, KKDF ve BSMV Dahil Taksit"
+  title={`İhtiyaç Kredisi Hesaplama ${BU_YIL} | Güncel Faiz, KKDF ve BSMV Dahil Taksit`}
   description={`İhtiyaç kredisi hesaplama: ortalama faiz aylık %${pct(KR.ihtiyac.aylik)} (TCMB, ${HAFTA}). Tutar ve vadeyi girin; KKDF-BSMV dahil taksit, toplam geri ödeme ve BDDK vade sınırı.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
@@ -112,13 +113,13 @@ const breadcrumbs = [
           <input type="number" id="in-months" value={D.months} min="1" max="36" step="1" inputmode="numeric" />
         </label>
         <div class="preset-row" role="group" aria-label="Hızlı vade seçimi">
-          {[12, 24, 36].map((m) => <button type="button" class="preset" data-months={m}>{m} ay</button>)}
+          {[12, 24, 36].map((m) => <button type="button" class="preset" aria-pressed="false" data-months={m}>{m} ay</button>)}
         </div>
         <p class="vade-warn" id="out-vade" hidden></p>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">Aylık taksit (KKDF + BSMV dahil)</span>
           <span class="result-value" id="out-pay">₺{fmt(base.pay)}</span>
         </div>
@@ -315,7 +316,7 @@ const breadcrumbs = [
         const mv = maxVade(P), w = $('out-vade');
         w.hidden = n <= mv;
         w.textContent = `BDDK sınırı: ${money(P)} ihtiyaç kredisi en fazla ${mv} ay vadeyle kullanılabilir.`;
-        document.querySelectorAll('.preset').forEach((b) => b.classList.toggle('active', +b.dataset.months === n));
+        document.querySelectorAll('.preset').forEach((b) => { b.classList.toggle('active', +b.dataset.months === n); b.setAttribute('aria-pressed', String(+b.dataset.months === n)); });
         buildSchedule(P, l, n);
         buildGrid(rate);
       }
@@ -349,7 +350,7 @@ const breadcrumbs = [
     .calc-inputs span small { font-weight: 400; color: var(--text-muted); }
     .calc-inputs input {
       font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
-      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm);
       background: var(--bg); width: 100%;
     }
     .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }

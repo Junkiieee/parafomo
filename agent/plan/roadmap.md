@@ -87,6 +87,8 @@ V3/V-hacim kararıyla güncellendi; R14 (uzun video) → V5 olarak devam. Eski I
 - [ ] R12 (AI asistan) — **AI cevap motorları** · ChatGPT 28g 17 ziyaretçi (gerçek trafiğin ~%8'i, Bing indeksinden).
   `/llms.txt`'i `src/data/tools.ts`'ten otomatik üret (araç + tek cümle cevap + güncelleme tarihi); araç sayfalarında
   "Kısa cevap" kutusu (rakam + tarih + kaynak) eksik olanlara. Kabul: llms.txt build'de üretiliyor.
+  _2026-11-03 (site denetimi, PR Junkiieee/parafomo#2): llms.txt artık `src/pages/llms.txt.ts` ile tools.ts'ten
+  build'de üretiliyor (77 link, üretim tarihli); public/llms.txt silindi. Kalan: araç sayfalarında "Kısa cevap" kutusu._
 - [ ] R13 (video · olay günü kapısı → week V4, 10-29) — **Video hacmi: günde 3-4 → 2-3 güçlü** · aynı gün aynı küme yamyamlığı + "özgün olmayan içerik" riski;
   son 45 günün en zayıfı daily-short/manim (medyan 67). Manim hattını haftada 3'e indirmeyi `deploy/crontab.txt` ile öner
   (Kaan görevi). Olay günü sonuç Short'u varsa o gün viral slotu atlansın (viral-daily.sh kapısı).

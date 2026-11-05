@@ -1,6 +1,9 @@
 # ParaFOMO cron — v2 (2026-10-06). Saatler UTC (TR = UTC+3). KAYNAK DOSYA: deploy/crontab.txt
 # Kur:        crontab /root/parafomo/deploy/crontab.txt
 # Duraklat:   crontab -l > /root/crontab-yedek-$(date +%F).txt && crontab -r
+# Sunucu saat dilimi UTC OLMALI (timedatectl → Etc/UTC): cron saatleri sistem saatiyle çalışır; panel takvimi
+# (agent/pubplan.py) ve yorumlardaki TSİ karşılıkları UTC varsayar.
+# flock -n -o: önceki çalışma sürüyorsa yenisi sessizce atlar (-o: arka plana atılan alt süreç kilidi tutmasın).
 #
 # İlke: LLM kullanan işler farklı 5 saatlik pencerelere yayılır (Claude Pro kotası);
 # ajan 03:00'te tek başına çalışır, blog motoru onun kilidini bekler. Video YAYINI ve
@@ -40,15 +43,16 @@
 15 */6 * * * /root/parafomo/scripts/halka-arz-update.sh >> /root/parafomo/logs/halka-arz.log 2>&1
 45 8 * * * /root/parafomo/scripts/learn/learn-daily.sh >> /root/parafomo/logs/learn.log 2>&1
 # Kira artış + TÜFE + Yİ-ÜFE/yeniden değerleme + aylık OG kartları (TÜİK ~3'ü 10:00 TSİ) — ayın 3-10'u (gecikme toleransı)
-20 8,12 3-10 * * /root/parafomo/scripts/kira-artis-update.sh >> /root/parafomo/logs/kira-artis.log 2>&1
+20 8,12 3-10 * * flock -n -o /tmp/parafomo-kira.lock /root/parafomo/scripts/kira-artis-update.sh >> /root/parafomo/logs/kira-artis.log 2>&1
 # Açıklama günü bekçisi: TÜİK günü (takvim; yoksa ayın 3-6'sı) veri gelene kadar 10 dk'da bir kira-artis-update.sh
 # (diğer günler ve veri geldikten sonra ağa çıkmadan biter) — 3 Kasım YD oranı, 3 Aralık, Ocak emekli zammı
-*/10 7-10 * * * /usr/bin/python3 /root/parafomo/scripts/release-watch.py >> /root/parafomo/logs/kira-artis.log 2>&1
+# İkisi AYNI kilidi kullanır: 08:20'de ikisi birden ya da 10 dk'yı aşan (build + wait-live) bir koşu üst üste binmesin.
+*/10 7-10 * * * flock -n -o /tmp/parafomo-kira.lock /usr/bin/python3 /root/parafomo/scripts/release-watch.py >> /root/parafomo/logs/kira-artis.log 2>&1
 # TCMB haftalık mevduat/kredi faizleri (EVDS) → hesaplayıcı varsayılan faizleri + mevduat oran kutusu
 40 12 * * 4,5 /root/parafomo/scripts/evds-update.sh >> /root/parafomo/logs/evds.log 2>&1
 # Asgari ücret açıklama bekçisi (10 Aralık-10 Ocak; dışında ağa çıkmaz): Google News'te ÇSGB/AA+kaynak teyidiyle
 # yeni net tutar → data/asgari-ucret.json → deploy + Kaan'a doğrulama maili; 1 Ocak'ta yıl devri
-*/10 * * 12,1 * /usr/bin/python3 /root/parafomo/scripts/asgari-ucret-watch.py >> /root/parafomo/logs/asgari-ucret.log 2>&1
+*/10 * * 12,1 * flock -n -o /tmp/parafomo-asgari.lock /usr/bin/python3 /root/parafomo/scripts/asgari-ucret-watch.py >> /root/parafomo/logs/asgari-ucret.log 2>&1
 # Fed/TCMB faiz kararı → takvim sayfalarında güncel faiz + karar sütunu (bekleyen yoksa ağa çıkmaz)
 25 11,13,19,21 * * * /root/parafomo/scripts/policy-decisions.sh >> /root/parafomo/logs/policy-decisions.log 2>&1
 
@@ -57,7 +61,7 @@
 
 # Portföy uygulaması (app.parafomo.com/portfoy): gece değer fotoğrafı + fiyat alarmı kontrolü
 50 20 * * * /root/.venvs/parafomo-api/bin/python /root/parafomo/scripts/portfolio-snapshot.py >> /root/parafomo/logs/portfolio-snapshot.log 2>&1
-*/15 * * * * /root/.venvs/parafomo-api/bin/python /root/parafomo/scripts/portfolio-alerts.py >> /root/parafomo/logs/portfolio-alerts.log 2>&1
+*/15 * * * * flock -n -o /tmp/parafomo-portfolio-alerts.lock /root/.venvs/parafomo-api/bin/python /root/parafomo/scripts/portfolio-alerts.py >> /root/parafomo/logs/portfolio-alerts.log 2>&1
 10 5 2 * * /root/parafomo/scripts/benchmarks-update.sh >> /root/parafomo/logs/benchmarks.log 2>&1
 20 6 1 * * /root/.venvs/parafomo-api/bin/python /root/parafomo/scripts/portfolio-monthly.py >> /root/parafomo/logs/portfolio-monthly.log 2>&1
 

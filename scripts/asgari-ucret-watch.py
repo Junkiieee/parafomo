@@ -70,10 +70,11 @@ def brut_of(net, o):
 def tl_from_title(t, lo, hi):
     """Başlıktan net tutar adayları: (lira, kuruş|None). 28.075,50 TL · 28 bin 75 lira · 28075 TL.
     "net" geçiyorsa yalnız ondan SONRAKİ tutar; "net" yok ama "brüt" varsa başlık atlanır (brüt net sanılmasın)."""
-    if "net" in t.split():
-        t = t[t.index("net"):]
-    elif re.search(r"\bnet\b", t):
-        t = t[re.search(r"\bnet\b", t).start():]
+    # "net" KELİMESİ aranır: eski t.index("net") "internet"/"kabinette" içindeki ilk "net"i bulup kesimi erken
+    # başlatıyordu → ondan sonraki BRÜT tutar net aday sayılıyordu.
+    mnet = re.search(r"\bnet\b", t)
+    if mnet:
+        t = t[mnet.start():]
     elif "brüt" in t:
         return []
     out = []
@@ -114,9 +115,11 @@ def parse_items(xml):
 
 
 def save(d):
-    with open(DATA, "w", encoding="utf-8") as f:
+    tmp = f"{DATA}.{os.getpid()}.tmp"   # atomik yaz: eşzamanlı build/iş yarım JSON okumasın
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(d, f, ensure_ascii=False, indent=1)
         f.write("\n")
+    os.replace(tmp, DATA)
 
 
 def sh(cmd):

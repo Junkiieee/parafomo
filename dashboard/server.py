@@ -14,11 +14,14 @@ import time
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse, JSONResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 ROOT = "/root/parafomo"
 AG = os.path.join(ROOT, "agent")
 HERE = os.path.dirname(os.path.abspath(__file__))
+# health.git_status() her 2 dk `git status` çalıştırır; varsayılan git index.lock'u alıp index'i yazar →
+# aynı anda cron'un git add/commit'i "index.lock exists" ile düşebilir. Panel yalnız okur: kilit alma.
+os.environ.setdefault("GIT_OPTIONAL_LOCKS", "0")
 sys.path.insert(0, AG)
 import bets      # noqa: E402
 import board     # noqa: E402
@@ -26,6 +29,22 @@ import health    # noqa: E402
 import pubplan   # noqa: E402
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
+
+# Ajan/e-posta kaynaklı metin innerHTML ile çizilir → XSS'e karşı ikinci kat: satır içi script/olay
+# özniteliği/javascript: URL'si çalışmaz; başka sitede çerçevelenemez (Caddy'nin X-Frame-Options'ına ek).
+CSP = ("default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+       "font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; object-src 'none'; "
+       "base-uri 'none'; form-action 'none'; frame-ancestors 'none'")
+
+
+@app.middleware("http")
+async def security_headers(request: Request, call_next):
+    resp = await call_next(request)
+    resp.headers["Content-Security-Policy"] = CSP
+    resp.headers["X-Content-Type-Options"] = "nosniff"
+    if request.url.path.startswith("/api/"):
+        resp.headers["Cache-Control"] = "no-store"   # özel notlar tarayıcı/ara önbellekte kalmasın
+    return resp
 
 # health.collect() canlı siteyi/API'yi yoklar, pubplan winner.py çalıştırır → kısa önbellek
 _cache, _lock = {}, threading.Lock()
@@ -64,7 +83,9 @@ def read(path):
 
 
 def schedule():
-    day = dt.datetime.now(dt.timezone.utc).date()
+    # Panel TSİ gününü gösterir (app.js saatlere +3 ekler). UTC tarihi 00:00-03:00 TSİ arasında DÜNÜN
+    # gün-kısıtlı işlerini (Pzt bülteni, Pzt-Cum blog…) "bugün" diye listeliyordu. Cron saatleri UTC kalır.
+    day = (dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=3)).date()
     pub = {(h, m, l) for h, m, l in pubplan.build(day, False)}
     rows, seen = [], {}
     for h, m, label in pubplan.build(day, True):
@@ -92,8 +113,17 @@ def run_info():
     return {"status": st, "report": rep, "report_ts": rep_ts, "runs": runs[::-1]}
 
 
+# CSRF: basic_auth kimliği tarayıcıda başka sitelerden gelen isteklere de otomatik eklenir → her /api/ ucu
+# özel başlık ister (çapraz sitede ancak CORS ön-uçuşuyla eklenebilir; panel CORS izni vermez).
+# GET'ler de: <img src=".../api/health"> her seferinde git + alt süreç + canlı yoklama tetikliyordu.
+def guard(req: Request):
+    if req.headers.get("x-dash") != "1":
+        raise HTTPException(403, "eksik başlık")
+
+
 @app.get("/api/state")
-def state():
+def state(req: Request):
+    guard(req)
     v = board.view()
     return {
         "now": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
@@ -113,32 +143,29 @@ def state():
 
 
 @app.get("/api/health")
-def health_fresh():
+def health_fresh(req: Request):
+    guard(req)
     with _lock:
         _cache.pop("health", None)
     h = cached("health", 120, health.collect)
     return {"health": h, "problems": health.problems(h)}
 
 
-# ---------- yazma uçları (CSRF: basic_auth tarayıcıda otomatik gider → özel başlık şartı) ----------
-
-def guard(req: Request):
-    if req.headers.get("x-dash") != "1":
-        raise HTTPException(403, "eksik başlık")
-
+# ---------- yazma uçları (guard yukarıda: özel başlık şartı) ----------
+# Not/istek metni ajanın prompt'una girer → makul üst sınır (board.json ve token şişmesin).
 
 class AgentIn(BaseModel):
     decision: str | None = None
-    note: str | None = None
+    note: str | None = Field(None, max_length=10000)
 
 
 class UserIn(BaseModel):
     status: str | None = None
-    note: str | None = None
+    note: str | None = Field(None, max_length=10000)
 
 
 class InboxIn(BaseModel):
-    text: str
+    text: str = Field(max_length=10000)
 
 
 def _wrap(fn):
