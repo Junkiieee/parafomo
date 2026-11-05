@@ -38,13 +38,13 @@ shorts_visuals:
 
 **ABD Ekim istihdam verisi (NFP)** 6 Kasım 2026 Cuma günü Türkiye saatiyle **16:30**'da açıklanıyor. Eylül'de sadece **+29 bin** yeni iş eklenmesinin ardından piyasa şu soruya cevap arıyor: ABD işgücü piyasası gerçekten soğuyor mu, yoksa Eylül bir istisna mıydı? Bu yazıda verinin neden önemli olduğunu, önceki rakamları, üç olası senaryoyu ve dolar, altın ve TL'ye olası etkilerini anlatıyoruz.
 
-> **Saat uyarısı:** ABD 1 Kasım 2026'da kış saatine geçti. BLS raporu yine ABD saatiyle 08:30'da yayımlıyor, ama bu artık Türkiye'de **16:30** demek. Yaz aylarındaki 15:30'u bekleyip açıklamayı kaçırma. Güncel saatler için [ekonomik takvim](/ekonomik-takvim) sayfamıza bakabilirsin.
+> **Saat uyarısı:** ABD 1 Kasım 2026'da kış saatine geçti. BLS raporu yine ABD saatiyle 08:30'da yayımlanıyor, ama bu artık Türkiye'de **16:30** demek. Yaz aylarındaki 15:30'u bekleyip açıklamayı kaçırma. Güncel saatler için [ekonomik takvim](/ekonomik-takvim) sayfamıza bakabilirsin.
 
 ## 6 Kasım'da Hangi Veriler Açıklanacak?
 
 BLS'nin aylık **Employment Situation** raporu tek seferde üç ana veri içerir:
 
-1. **Tarım dışı istihdam (NFP):** Tarım, ev hizmetleri ve kâr amacı gütmeyen kuruluşlar dışında bir ayda eklenen ya da kaybedilen iş sayısı. Raporun asıl manşeti budur.
+1. **Tarım dışı istihdam (NFP):** Tarım çalışanları, ev hizmetlerinde çalışanlar ve kendi hesabına çalışanlar dışında bir ayda eklenen ya da kaybedilen iş sayısı. Raporun asıl manşeti budur.
 2. **İşsizlik oranı:** Hane halkı anketinden gelir. İş arayıp bulamayanların işgücüne oranını gösterir.
 3. **Ortalama saatlik kazanç:** Ücretlerin aylık ve yıllık artışı. Ücret kaynaklı enflasyon baskısını ölçer.
 
@@ -124,11 +124,11 @@ Ekim'deki 10–2'lik oylama, kurul içinde görüş ayrılığı olduğunu göst
 
 ## İstihdam Verisi Altını ve Doları Neden Etkiler?
 
-Bağlantı **reel faiz** üzerinden kurulur. Güçlü istihdam, Fed'in faizi yüksek tutacağı beklentisini güçlendirir. Nominal faiz yüksek kalır, getiri sağlamayan altının fırsat maliyeti artar ve dolar cazip hâle gelir. Zayıf istihdamda süreç tersine işler.
+Bağlantı **reel faiz** üzerinden kurulur. Güçlü istihdam, Fed'in faizi yüksek tutacağı beklentisini güçlendirir. Nominal ve reel faizler yüksek kalır, getiri sağlamayan altının fırsat maliyeti artar ve dolar cazip hâle gelir. Zayıf istihdamda süreç tersine işler. Faiz tarafını [ABD tahvil faizi](/abd-tahvil-faizi) sayfamızdan izleyebilirsin.
 
 Bu ilişkiyi geçmiş örneklerle anlattığımız [ABD işsizlik verisi altını ve doları nasıl etkiler?](/blog/abd-issizlik-verisi-altin-dolar-etkisi) yazısı iyi bir tamamlayıcı. Doların küresel gücünü anlık izlemek için [dolar endeksi (DXY)](/dolar-endeksi) sayfamızı kullanabilirsin.
 
-Türkiye'den bakınca ek bir katman var: gram altın **ons altın × dolar/TL** ile hesaplanır. 5 Kasım sabahı gram altın yaklaşık 6.633 TL, dolar/TL yaklaşık 50,04. NFP sonrası ons altında ve DXY'de görülen hareket gram altına aynı gün yansır. Dolar/TL'nin kademeli yükselişi ise TCMB politikasına bağlı ayrı bir etkendir. Uzun vadeli tabloyu [altın getirisi](/altin-getiri) ve [dolar getirisi](/dolar-getiri) sayfalarımızdan karşılaştırabilirsin.
+Türkiye'den bakınca ek bir katman var: gram altın kabaca **(ons altın × dolar/TL) ÷ 31,1** ile hesaplanır. 5 Kasım sabahı gram altın yaklaşık 6.633 TL, dolar/TL yaklaşık 50,04. NFP sonrası ons altında ve DXY'de görülen hareket gram altına aynı gün yansır. Dolar/TL'nin kademeli yükselişi ise TCMB politikasına bağlı ayrı bir etkendir. Uzun vadeli tabloyu [altın getirisi](/altin-getiri) ve [dolar getirisi](/dolar-getiri) sayfalarımızdan karşılaştırabilirsin.
 
 ## Veri Günü İçin Pratik Kontrol Listesi
 
