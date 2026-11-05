@@ -1,8 +1,8 @@
 {
 "_aciklama": "Yİ-ÜFE aylık endeks (2003=100), TCMB EVDS TP.TUFE1YI.T1. Değer artışı kazancında maliyet, iktisap ayından önceki ay ile satış ayından önceki ay arasındaki artış %10+ ise endekslenir.",
 "_kaynak": "https://evds3.tcmb.gov.tr/igmevdsms-dis/ TP.TUFE1YI.T1",
-"updated": "2026-10-21",
-"sonAy": "2026-09",
+"updated": "2026-11-03",
+"sonAy": "2026-10",
 "seri": {
 "2005-01": 114.83,
 "2005-02": 114.81,
@@ -264,6 +264,7 @@
 "2026-06": 5552.52,
 "2026-07": 5637.14,
 "2026-08": 5781.74,
-"2026-09": 5901.26
+"2026-09": 5901.26,
+"2026-10": 5998.51
 }
 }

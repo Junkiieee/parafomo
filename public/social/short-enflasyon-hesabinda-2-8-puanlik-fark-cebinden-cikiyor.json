@@ -1,0 +1,123 @@
+{
+  "title": "Enflasyon hesabında 2,8 puanlık fark cebinden çıkıyor #Shorts",
+  "description": "Aylık yüzde 2 enflasyon yılda yüzde 24 değil, bileşik etkiyle yaklaşık yüzde 26,8 yapar. Üç yılda fark çok daha büyür.",
+  "tags": [
+    "enflasyon",
+    "bileşik etki",
+    "aylık enflasyon",
+    "birikim",
+    "alım gücü",
+    "finans",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-enflasyon-hesabinda-2-8-puanlik-fark-cebinden-cikiyor.mp4",
+  "slug": "enflasyon-hesabinda-2-8-puanlik-fark-cebinden-cikiyor",
+  "format": "myth",
+  "engine": "anim",
+  "timeline": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 3.062,
+      "cap": "Aylık yüzde 2, yılda 24 etmiyor.",
+      "words": [
+        0.35,
+        0.93,
+        1.27,
+        1.69,
+        2.03,
+        2.25
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 3.342,
+      "t1": 10.014,
+      "cap": "Çünkü her zam, önceki ayın zamlı fiyatının üstüne biniyor. Yıllık sonuç yaklaşık yüzde 26,8.",
+      "words": [
+        3.342,
+        3.922,
+        4.262,
+        4.742,
+        5.122,
+        5.382,
+        5.702,
+        6.122,
+        6.462,
+        7.302,
+        7.562,
+        7.902,
+        8.362,
+        8.702
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 10.294,
+      "t1": 17.158,
+      "cap": "Ama asıl fark uzun vadede: üç yılda toplamayla yüzde 72 beklersin, gerçek yaklaşık yüzde 104.",
+      "words": [
+        10.294,
+        10.814,
+        11.214,
+        11.434,
+        11.734,
+        12.554,
+        12.674,
+        13.034,
+        13.594,
+        13.894,
+        14.134,
+        15.294,
+        15.534,
+        16.094,
+        16.394
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 17.438,
+      "t1": 23.798,
+      "cap": "100 bin liralık sepet üç yılda yaklaşık 204 bin oluyor. Getirini yüzde 26,8'e göre karşılaştır.",
+      "words": [
+        17.438,
+        17.918,
+        18.018,
+        18.318,
+        18.598,
+        18.878,
+        19.158,
+        19.578,
+        20.098,
+        20.278,
+        20.978,
+        21.378,
+        21.698,
+        22.678,
+        22.818
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 24.078,
+      "t1": 30.27,
+      "cap": "Kendi rakamını parafomo.com'daki enflasyon hesaplama aracıyla bul. Abone ol, her gün tek net analiz.",
+      "words": [
+        24.078,
+        24.598,
+        24.998,
+        26.138,
+        26.698,
+        27.158,
+        27.558,
+        28.118,
+        28.398,
+        28.858,
+        29.018,
+        29.258,
+        29.498,
+        29.638
+      ]
+    }
+  ]
+}

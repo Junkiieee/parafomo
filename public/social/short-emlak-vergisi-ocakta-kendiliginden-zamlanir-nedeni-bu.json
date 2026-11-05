@@ -1,0 +1,121 @@
+{
+  "title": "Emlak vergisi ocakta kendiliğinden zamlanır, nedeni bu #Shorts",
+  "description": "Emlak vergisi her yıl yeniden değerleme oranıyla otomatik artar (7566 sayılı Kanun: 2027-2029 vergi değeri bir önceki yılın değeri × yeniden değerleme oranı). 2027 oranı %27,83 (TÜİK Ekim Yİ-ÜFE, 12 aylık ortalama). Örnek: 2.000 ₺ × 1,2783 ≈ 2.557 ₺.",
+  "tags": [
+    "emlak vergisi",
+    "yeniden değerleme oranı",
+    "zam",
+    "ocak zammı",
+    "ekonomi",
+    "bütçe",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-emlak-vergisi-ocakta-kendiliginden-zamlanir-nedeni-bu.mp4",
+  "slug": "emlak-vergisi-ocakta-kendiliginden-zamlanir-nedeni-bu",
+  "format": "single_concept",
+  "engine": "anim",
+  "timeline": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 2.582,
+      "cap": "Emlak vergisi sen bir şey yapmadan artıyor.",
+      "words": [
+        0.35,
+        0.69,
+        1.13,
+        1.35,
+        1.49,
+        1.63,
+        2.03
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 2.862,
+      "t1": 9.222,
+      "cap": "Çünkü yürüyen merdiven gibi: yeniden değerleme oranı açıklanınca vergi ocakta kendiliğinden yukarı çıkıyor.",
+      "words": [
+        2.862,
+        3.482,
+        3.882,
+        4.282,
+        4.942,
+        5.282,
+        5.742,
+        6.002,
+        6.702,
+        7.242,
+        7.622,
+        8.222,
+        8.582
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 9.502,
+      "t1": 17.758,
+      "cap": "2027 için oran %27,83 oldu: 2.000 liralık emlak vergisi ocakta yaklaşık 2.557 liraya çıkar.",
+      "words": [
+        9.502,
+        10.602,
+        10.982,
+        11.262,
+        12.542,
+        13.282,
+        13.722,
+        14.102,
+        14.382,
+        14.842,
+        15.222,
+        15.642,
+        16.822,
+        17.222
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 18.038,
+      "t1": 23.726,
+      "cap": "Çözüm basit: ocaktan önce yıllık gider listene emlak vergisini ekle, yeni oranla hesapla.",
+      "words": [
+        18.038,
+        18.678,
+        19.338,
+        19.738,
+        19.958,
+        20.318,
+        20.518,
+        20.978,
+        21.318,
+        21.818,
+        22.518,
+        22.638,
+        23.078
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 24.006,
+      "t1": 30.366,
+      "cap": "Ocakta başka hangi kalem sessizce zamlanıyor? Abone ol, her gün 60 saniyede tek net analiz.",
+      "words": [
+        24.006,
+        24.986,
+        25.206,
+        25.606,
+        25.866,
+        26.406,
+        27.406,
+        27.706,
+        28.206,
+        28.326,
+        28.506,
+        28.746,
+        29.346,
+        29.606,
+        29.786
+      ]
+    }
+  ]
+}

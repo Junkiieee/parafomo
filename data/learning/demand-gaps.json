@@ -1,6 +1,6 @@
 {
  "_aciklama": "Google Autocomplete (tr) önerileri; covered = site slug'larıyla kaba eşleşme. Kapsanmayanlar = potansiyel yeni sayfa/yazı konusu — talebi GSC/rakiple doğrula.",
- "generated_utc": "2026-11-01T08:48:52Z",
+ "generated_utc": "2026-11-04T08:47:57Z",
  "uncovered_top": [
   "asgari ücret 2027 ne zaman zam gelecek",
   "asgari ücret 2027 zam oranı",
@@ -12,13 +12,13 @@
   "mtv movie awards 2027",
   "2027 mtv video music awards",
   "mtv vma 2027",
+  "altın fiyatı ne zaman yükselir",
   "altın fiyatı ne zaman yükselecek",
   "altın fiyatı ne zaman düşecek",
   "altın fiyatı ne zaman düşer",
   "altın fiyatı ne zaman artar",
   "altın fiyatı ne zaman artacak",
   "altın fiyatı ne zaman çıkar",
-  "altın fiyatı ne zaman yükselir",
   "altın fiyatı ne zaman",
   "altın fiyatı ne zaman düştü",
   "altın fiyatı ne zaman güncellenir",
@@ -28,20 +28,20 @@
   "dolar mı altın mı euro mu hangi yatırım daha karlı",
   "dolar mı altın mı daha mantıklı",
   "mevduat faizi en yüksek banka",
-  "emekli zammı resmi gazetede yayınlandı mı",
-  "emekli zammı resmi gazetede yayımlandı mı 2026",
+  "emekli zammı ne zaman yatacak",
+  "emekli zammı son dakika",
   "vergi dilimine girmek ne demek",
   "vergi dilimi nasıl hesaplanır",
   "vergi dilimine göre maaş hesaplama",
-  "yeniden değerleme muhasebe kaydı",
-  "faiz kararı ne zaman açıklanacak",
+  "faiz kararı ne zaman açıklanır",
   "faiz kararı saat kaçta",
   "faiz kararı ne zaman saat kaçta",
   "enflasyon ne zaman açıklanacak",
   "enflasyon ne zaman açıklanıyor",
   "enflasyon ne zaman düşecek",
   "enflasyon ne zaman",
-  "enflasyon ne zaman açıklanacak 2026"
+  "enflasyon ne zaman açıklanacak 2026",
+  "enflasyon ne zaman tek haneye düşecek"
  ],
  "seeds": [
   {
@@ -106,19 +106,15 @@
      "covered": true
     },
     {
-     "q": "asgari ücret 2027 de ne kadar olur",
-     "covered": true
-    },
-    {
      "q": "asgari ücret 2027 tahmini",
      "covered": true
     },
     {
-     "q": "asgari ücret 2027 net",
+     "q": "asgari ücret 2027 ne kadar olacak",
      "covered": true
     },
     {
-     "q": "asgari ücret 2027 yılında ne kadar olacak",
+     "q": "asgari ücret 2027 net",
      "covered": true
     },
     {
@@ -140,6 +136,10 @@
     {
      "q": "asgari ücret 2027 zam oranı",
      "covered": false
+    },
+    {
+     "q": "asgari ücret 2027 tahminleri",
+     "covered": true
     }
    ]
   },
@@ -192,6 +192,10 @@
    "seed": "altın fiyatı ne zaman",
    "suggestions": [
     {
+     "q": "altın fiyatı ne zaman yükselir",
+     "covered": false
+    },
+    {
      "q": "altın fiyatı ne zaman yükselecek",
      "covered": false
     },
@@ -213,10 +217,6 @@
     },
     {
      "q": "altın fiyatı ne zaman çıkar",
-     "covered": false
-    },
-    {
-     "q": "altın fiyatı ne zaman yükselir",
      "covered": false
     },
     {
@@ -364,7 +364,7 @@
    "seed": "emekli zammı",
    "suggestions": [
     {
-     "q": "emekli zammı",
+     "q": "emekli zammı ne kadar olacak",
      "covered": true
     },
     {
@@ -372,7 +372,23 @@
      "covered": true
     },
     {
-     "q": "emekli zammı ne kadar olacak",
+     "q": "emekli zammı ne zaman yatacak",
+     "covered": false
+    },
+    {
+     "q": "emekli zammı 2026",
+     "covered": true
+    },
+    {
+     "q": "emekli zammı son dakika",
+     "covered": false
+    },
+    {
+     "q": "emekli zammı hesaplama",
+     "covered": true
+    },
+    {
+     "q": "emekli zammı ne kadar oldu",
      "covered": true
     },
     {
@@ -384,24 +400,8 @@
      "covered": true
     },
     {
-     "q": "emekli zammı ne kadar",
-     "covered": true
-    },
-    {
-     "q": "emekli zammı hesaplama",
-     "covered": true
-    },
-    {
      "q": "emekli zammı belli oldu mu",
      "covered": true
-    },
-    {
-     "q": "emekli zammı resmi gazetede yayınlandı mı",
-     "covered": false
-    },
-    {
-     "q": "emekli zammı resmi gazetede yayımlandı mı 2026",
-     "covered": false
     }
    ]
   },
@@ -421,15 +421,23 @@
      "covered": true
     },
     {
-     "q": "kira artış oranı ekim 2026",
-     "covered": true
-    },
-    {
-     "q": "kira artış oranı eylül 2026",
+     "q": "kira artış oranı kasım 2026",
      "covered": true
     },
     {
      "q": "kira artış oranı 2026 hesaplama",
+     "covered": true
+    },
+    {
+     "q": "kira artış oranı ekim 2026",
+     "covered": true
+    },
+    {
+     "q": "kira artış oranı kasım",
+     "covered": true
+    },
+    {
+     "q": "kira artış oranı eylül 2026",
      "covered": true
     },
     {
@@ -438,14 +446,6 @@
     },
     {
      "q": "kira artış oranı ağustos 2026",
-     "covered": true
-    },
-    {
-     "q": "kira artış oranı haziran 2026",
-     "covered": true
-    },
-    {
-     "q": "kira artış oranı eylül",
      "covered": true
     }
    ]
@@ -499,7 +499,7 @@
    "seed": "yeniden değerleme",
    "suggestions": [
     {
-     "q": "yeniden değerleme oranı 2026",
+     "q": "yeniden değerleme oranı 2027",
      "covered": true
     },
     {
@@ -507,7 +507,7 @@
      "covered": true
     },
     {
-     "q": "yeniden değerleme hesaplama",
+     "q": "yeniden değerleme oranı 2026",
      "covered": true
     },
     {
@@ -515,27 +515,27 @@
      "covered": true
     },
     {
+     "q": "yeniden değerleme oranı nedir",
+     "covered": true
+    },
+    {
+     "q": "yeniden değerleme oranı 2026 3 dönem",
+     "covered": true
+    },
+    {
+     "q": "yeniden değerleme hesaplama",
+     "covered": true
+    },
+    {
+     "q": "yeniden değerleme oranı resmi gazete",
+     "covered": true
+    },
+    {
+     "q": "yeniden değerleme oranı kaç oldu",
+     "covered": true
+    },
+    {
      "q": "yeniden değerleme oranı 2025",
-     "covered": true
-    },
-    {
-     "q": "yeniden değerleme oranları",
-     "covered": true
-    },
-    {
-     "q": "yeniden değerleme oranı hesaplama",
-     "covered": true
-    },
-    {
-     "q": "yeniden değerleme oranı 2026 hesaplama",
-     "covered": true
-    },
-    {
-     "q": "yeniden değerleme muhasebe kaydı",
-     "covered": false
-    },
-    {
-     "q": "yeniden değerleme oranı nasıl hesaplanır",
      "covered": true
     }
    ]
@@ -552,10 +552,6 @@
      "covered": true
     },
     {
-     "q": "faiz kararı ne zaman açıklanacak",
-     "covered": false
-    },
-    {
      "q": "faiz kararı ne oldu",
      "covered": true
     },
@@ -566,6 +562,10 @@
     {
      "q": "faiz kararı ne olur",
      "covered": true
+    },
+    {
+     "q": "faiz kararı ne zaman açıklanır",
+     "covered": false
     },
     {
      "q": "faiz kararı 2026",
@@ -700,6 +700,10 @@
      "covered": false
     },
     {
+     "q": "temettü takvimi",
+     "covered": true
+    },
+    {
      "q": "temettü nedir",
      "covered": true
     },
@@ -726,10 +730,6 @@
     {
      "q": "temettücü",
      "covered": false
-    },
-    {
-     "q": "temettü hesaplama",
-     "covered": false
     }
    ]
   },
@@ -745,15 +745,7 @@
      "covered": false
     },
     {
-     "q": "borsa istanbul genel müdürü",
-     "covered": false
-    },
-    {
      "q": "borsa gündem",
-     "covered": false
-    },
-    {
-     "q": "borsa canlı",
      "covered": false
     },
     {
@@ -773,7 +765,15 @@
      "covered": true
     },
     {
-     "q": "borsa istanbul başkanı",
+     "q": "borsa istanbul genel müdürü",
+     "covered": false
+    },
+    {
+     "q": "borsa kaçta kapanıyor",
+     "covered": false
+    },
+    {
+     "q": "borsa haram mı",
      "covered": false
     }
    ]
