@@ -1,0 +1,103 @@
+{
+  "slug": "zam-sezonu-takvimden-once-basliyor-cebin-hazir-mi",
+  "title": "Zam sezonu takvimden önce başlıyor, cebin hazır mı",
+  "description": "Zam sezonu ocakta değil, oranların belli olduğu kasımda başlıyor. Yenilemeler ve fiyat listeleri ocağı beklemiyor; cebini korumak için kasımda yapılacak somut adım anlatılıyor.",
+  "tags": [
+    "zam sezonu",
+    "yeniden değerleme",
+    "enflasyon",
+    "kira",
+    "MTV",
+    "bütçe",
+    "parafomo"
+  ],
+  "format": "myth",
+  "style": "isometric",
+  "scene": "generic.js",
+  "short": true,
+  "data": {
+    "eyebrow": "ZAM TAKVİMİ",
+    "scenes": [
+      {
+        "type": "icon_text",
+        "head": "Takvim yanıltıyor",
+        "data": {
+          "icon": "calendar",
+          "text": "Zam ocakta değil, *kasımda* başlıyor"
+        },
+        "line": "s0"
+      },
+      {
+        "type": "steps",
+        "head": "Sessiz güncelleme",
+        "data": {
+          "items": [
+            "Oranlar belli olur",
+            "Zam sessizce gelir",
+            "Ocak: resmî tarih"
+          ]
+        },
+        "line": "s1"
+      },
+      {
+        "type": "icon_text",
+        "head": "Yenileme tuzağı",
+        "data": {
+          "icon": "card",
+          "text": "Abonelik, sigorta, aidat *aralıkta* yeni fiyatla gelir"
+        },
+        "line": "s2"
+      },
+      {
+        "type": "steps",
+        "head": "Doğru hamle",
+        "data": {
+          "items": [
+            "Giderleri listele",
+            "Yıllığa sabitle",
+            "Beklemek = zam"
+          ]
+        },
+        "line": "s3"
+      },
+      {
+        "type": "cta",
+        "head": "Zammı önce sen öğren",
+        "data": {
+          "l1": "ZAMMI SANA",
+          "l2": "İLK BEN SÖYLERİM",
+          "sub": "GÜNDE TEK KISA ANALİZ · ABONE OL"
+        },
+        "line": "s4"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "s0",
+      "say": "Zam ocakta değil, kasımda başlıyor.",
+      "cap": "Zam ocakta değil, kasımda başlıyor."
+    },
+    {
+      "id": "s1",
+      "say": "Oranlar kasımda belli olunca, birçok şirket fiyat listelerini yılbaşından önce sessizce güncelliyor; ocak sadece resmî tarih.",
+      "cap": "Oranlar kasımda belli olunca, birçok şirket fiyat listelerini yılbaşından önce sessizce güncelliyor; ocak sadece resmî tarih."
+    },
+    {
+      "id": "s2",
+      "say": "Ama tuzak şu: abonelik, sigorta, aidat yenilemeleri çoğu zaman aralıkta yeni fiyatla gelir, ocağı beklemez.",
+      "cap": "Ama tuzak şu: abonelik, sigorta, aidat yenilemeleri çoğu zaman aralıkta yeni fiyatla gelir, ocağı beklemez."
+    },
+    {
+      "id": "s3",
+      "say": "Doğrusu: kasımda yenilenecek her gideri listele, mümkünse eski fiyattan yıllık sabitle. Beklemek, zammı sana ödetir.",
+      "cap": "Doğrusu: kasımda yenilenecek her gideri listele, mümkünse eski fiyattan yıllık sabitle. Beklemek, zammı sana ödetir."
+    },
+    {
+      "id": "s4",
+      "say": "Sıradaki zammı kimse sana önceden haber vermeyecek, ben vereceğim. Abone ol, her gün kısa ve net tek analiz cebine gelsin.",
+      "cap": "Sıradaki zammı kimse sana önceden haber vermeyecek, ben vereceğim. Abone ol, her gün kısa ve net tek analiz cebine gelsin."
+    }
+  ],
+  "skin": "pixel"
+}

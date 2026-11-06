@@ -1,0 +1,126 @@
+{
+  "slug": "ceza-vergi-harc-1-ocak-ta-hepsi-yeniden-fiyatlaniyor",
+  "title": "Ceza, vergi, harç: 1 Ocak'ta hepsi yeniden fiyatlanıyor",
+  "description": "Trafik cezaları da yeniden değerleme oranıyla artıyor. Örnek bir hesapla, ihlal gününün tarifesinin cebine etkisini gösteriyoruz.\nKaynak/hesap: 2.000 x 1,25 = 2.500 TL (örnek oran yüzde 25; fark 500 TL) · senaryodaki hesap (yeniden değerleme oranı yalnızca örnek olarak varsayılmıştır)",
+  "tags": [
+    "yeniden değerleme",
+    "trafik cezası",
+    "2027 zam",
+    "ocak zammı",
+    "ekonomi",
+    "kişisel finans",
+    "parafomo"
+  ],
+  "format": "shock_number",
+  "style": "isometric",
+  "scene": "generic.js",
+  "short": true,
+  "data": {
+    "eyebrow": "OCAKTA ZAM GELİYOR",
+    "scenes": [
+      {
+        "type": "compare",
+        "head": "Aynı ceza, farklı tarife",
+        "data": {
+          "a": {
+            "label": "31 Aralık",
+            "value": 2000
+          },
+          "b": {
+            "label": "1 Ocak",
+            "value": 2500
+          },
+          "unit": "₺",
+          "note": "500 TL FARK"
+        },
+        "line": "s0"
+      },
+      {
+        "type": "layers",
+        "head": "Yeniden değerleme etkisi",
+        "data": {
+          "total": {
+            "label": "Yeni ceza",
+            "value": 2500
+          },
+          "parts": [
+            {
+              "label": "Mevcut ceza",
+              "value": 2000,
+              "hl": false
+            },
+            {
+              "label": "Zam farkı",
+              "value": 500,
+              "hl": true
+            }
+          ],
+          "unit": "₺"
+        },
+        "line": "s1"
+      },
+      {
+        "type": "big_number",
+        "head": "İhlal günü tarifesi geçerli",
+        "data": {
+          "icon": "calendar",
+          "value": 500,
+          "unit": "₺",
+          "suffix": "",
+          "label": "31 Aralık ile 1 Ocak farkı"
+        },
+        "line": "s2"
+      },
+      {
+        "type": "steps",
+        "head": "Ceza yediysen ne yapmalı?",
+        "data": {
+          "items": [
+            "Süresi içinde öde",
+            "İndirimden yararlan",
+            "İhlali hiç yapma"
+          ]
+        },
+        "line": "s3"
+      },
+      {
+        "type": "cta",
+        "head": "Ocak zamlarını kaçırma",
+        "data": {
+          "l1": "OCAKTA NELER",
+          "l2": "ZAMLANIYOR?",
+          "sub": "HER GÜN 60 SANİYEDE TEK ANALİZ"
+        },
+        "line": "s4"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "s0",
+      "say": "2.000 liralık trafik cezası ocakta yeniden fiyatlanıyor.",
+      "cap": "2.000 liralık trafik cezası ocakta yeniden fiyatlanıyor."
+    },
+    {
+      "id": "s1",
+      "say": "Trafik cezaları da yeniden değerleme oranıyla artar; oran yüzde 25 çıksa, 2.000 lira 2.500 lira olur.",
+      "cap": "Trafik cezaları da yeniden değerleme oranıyla artar; oran yüzde 25 çıksa, 2.000 lira 2.500 lira olur."
+    },
+    {
+      "id": "s2",
+      "say": "Ama ceza, ihlal gününün tarifesiyle kesilir; 31 Aralık ile 1 Ocak arasında 500 liralık fark çıkar.",
+      "cap": "Ama ceza, ihlal gününün tarifesiyle kesilir; 31 Aralık ile 1 Ocak arasında 500 liralık fark çıkar."
+    },
+    {
+      "id": "s3",
+      "say": "Sonuç: ceza yediysen süresi içinde öde, indirim var; asıl tasarruf ise ihlali hiç yapmamak.",
+      "cap": "Sonuç: ceza yediysen süresi içinde öde, indirim var; asıl tasarruf ise ihlali hiç yapmamak."
+    },
+    {
+      "id": "s4",
+      "say": "Ocakta başka hangi kalemler sessizce zamlanıyor, merak ediyorsan abone ol; her gün 60 saniyede tek net analiz.",
+      "cap": "Ocakta başka hangi kalemler sessizce zamlanıyor, merak ediyorsan abone ol; her gün 60 saniyede tek net analiz."
+    }
+  ],
+  "skin": "cutpaper"
+}

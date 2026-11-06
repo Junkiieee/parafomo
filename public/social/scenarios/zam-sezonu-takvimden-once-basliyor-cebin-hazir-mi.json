@@ -1,0 +1,59 @@
+{
+  "slug": "zam-sezonu-takvimden-once-basliyor-cebin-hazir-mi",
+  "title": "Zam sezonu takvimden önce başlıyor, cebin hazır mı",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Zam sezonu ocakta değil, oranların belli olduğu kasımda başlıyor. Yenilemeler ve fiyat listeleri ocağı beklemiyor; cebini korumak için kasımda yapılacak somut adım anlatılıyor.",
+  "tags": [
+    "zam sezonu",
+    "yeniden değerleme",
+    "enflasyon",
+    "kira",
+    "MTV",
+    "bütçe",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Zam ocakta değil, kasımda başlıyor.",
+      "visual": {
+        "type": "object",
+        "query": "wrapped gift box new year celebration"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Oranlar kasımda belli olunca, birçok şirket fiyat listelerini yılbaşından önce sessizce güncelliyor; ocak sadece resmî tarih.",
+      "visual": {
+        "type": "object",
+        "query": "price list paper calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama tuzak şu: abonelik, sigorta, aidat yenilemeleri çoğu zaman aralıkta yeni fiyatla gelir, ocağı beklemez.",
+      "visual": {
+        "type": "object",
+        "query": "smartphone banking app subscription"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Doğrusu: kasımda yenilenecek her gideri listele, mümkünse eski fiyattan yıllık sabitle. Beklemek, zammı sana ödetir.",
+      "visual": {
+        "type": "object",
+        "query": "notebook checklist pen"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki zammı kimse sana önceden haber vermeyecek, ben vereceğim. Abone ol, her gün kısa ve net tek analiz cebine gelsin.",
+      "visual": {
+        "type": "object",
+        "query": "wrapped gift box new year celebration"
+      }
+    }
+  ]
+}
