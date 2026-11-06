@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-11-05T08:55:18Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-11-06T08:50:00Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -19,7 +19,7 @@
 
 ### Viral format — **explore** (yeterli veri yok, rotasyon sürüyor)
 
-- `shock_number` — skor 396.852, örnek 11
+- `shock_number` — skor 382.648, örnek 10
 - `event_result` — skor 300.642, örnek 1
 - `single_concept` — skor 285.48, örnek 7
 - `myth` — skor 129.872, örnek 10
@@ -29,7 +29,7 @@
 ### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
 - `5` — skor 465.573, örnek 5
-- `1` — skor 427.411, örnek 6
+- `1` — skor 405.116, örnek 5
 - `2` — skor 217.51, örnek 6
 - `0` — skor 208.527, örnek 5
 - `manual` — skor 133.46, örnek 13
@@ -39,9 +39,9 @@
 ## Konu sinyalleri
 
 **En iyi blog sayfaları:**
-- euro-mi-dolar-mi-10-yillik-getiri-karsilastirma — skor 108.02
+- euro-mi-dolar-mi-10-yillik-getiri-karsilastirma — skor 110.77
 - abd-ekim-2026-cpi-verisi-fed-dolar-altin — skor 65.08
-- gumus-mi-altin-mi-10-yillik-getiri-karsilastirma — skor 23.83
+- gumus-mi-altin-mi-10-yillik-getiri-karsilastirma — skor 18.53
 - kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir — skor 17.07
 - 2027-zamlari-yeniden-degerleme-orani-rehberi — skor 14.5
 - stopaj-nedir-2026-stopaj-oranlari — skor 11.28
