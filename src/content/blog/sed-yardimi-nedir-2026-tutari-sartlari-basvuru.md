@@ -29,7 +29,7 @@ Bakanlık SED'i özellikle **"sosyal yardım değil, sosyal hizmet modeli"** ola
 
 SED iki şekilde ödeniyor:
 
-- **Süreli ekonomik destek:** Onayda belirtilen süre boyunca her ay ödenir. İlk onay genelde 1 yıllıktır, uygun görülürse 2 yıllık sürelerle uzatılır.
+- **Süreli ekonomik destek:** Onayda belirtilen süre boyunca her ay ödenir. Her onay en fazla 2 yıllık süre için verilir; süre bitince durum yeniden değerlendirilip uygun görülürse uzatılır.
 - **Geçici ekonomik destek:** Ani bir sorunu gidermek için tek seferlik ödenir. Yılda bir, zorunlu hallerde en fazla iki kez verilir ve tutarı ekonomik destek tutarının **3 katına** kadar çıkabilir.
 
 2026'ya kadar bu kuralların çoğu yalnızca yönetmelikte yazıyordu. **1 Mayıs 2026'da yürürlüğe giren 7578 sayılı Kanun**, 2828 sayılı Sosyal Hizmetler Kanunu'na "Sosyal ve ekonomik destek" başlıklı **25/A maddesini** ekledi. Böylece üst sınır, aile başına kişi sınırı ve yaş sınırı artık kanunda da yazıyor.
@@ -72,7 +72,7 @@ Bakanlığın açıkladığı dört grup SED'den yararlanabiliyor:
 
 ### Gelir sınırı var mı?
 
-**Sabit bir gelir sınırı yok.** Bu, SED'i [evlilik kredisi](/blog/evlilik-kredisi-2026-sartlar-tutar-geri-odeme) gibi formülle hesaplanan desteklerden ayırıyor. Meslek elemanı evi ziyaret edip bir **sosyal inceleme raporu** hazırlıyor. Raporda şunlar birlikte değerlendiriliyor:
+**Sabit bir gelir sınırı yok.** Bu, SED'i [evlilik kredisi](/blog/evlilik-kredisi-2026-sartlar-tutar-geri-odeme) gibi net gelir şartı olan desteklerden ayırıyor. Meslek elemanı evi ziyaret edip bir **sosyal inceleme raporu** hazırlıyor. Raporda şunlar birlikte değerlendiriliyor:
 
 - hanedeki herkesin geliri ve ailenin giderleri (kira, borç, eğitim harcaması),
 - sağlık durumu ve çalışabilirlik,
@@ -121,7 +121,7 @@ Bakanlığın istediği belgeler:
 - **Evde bakım maaşı:** Evde bakım ödemesi alan çocuk için aynı anda süreli SED ödenmez. Başka bir aile bireyinin [evde bakım maaşı](/evde-bakim-maasi) alması ise SED'e engel değil.
 - **Yatılı okuyan çocuk:** MEB yurdunda kalıp yazın aileye dönen çocuğa, ihtiyaç tespit edilirse yaz tatilinde 3 ay SED verilebilir.
 
-Engelli bir aile üyesi varsa, SED'den bağımsız olarak [engelli maaşı](/engelli-maasi) şartlarını da kontrol etmekte fayda var. Yeni doğum yapan aileler için [doğum yardımı](/dogum-yardimi) ayrı bir destek ve SED'le birlikte alınabilir.
+Engelli bir aile üyesi varsa, SED'den bağımsız olarak [engelli maaşı](/engelli-maasi) şartlarını da kontrol etmekte fayda var. Yeni doğum yapan aileler için [doğum yardımı](/dogum-yardimi) ayrı bir destek ve kural olarak SED'e engel değil.
 
 ## SED ile aile bütçesini planlamak
 
