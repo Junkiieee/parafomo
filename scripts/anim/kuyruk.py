@@ -33,7 +33,11 @@ SCEN_DIR = os.path.join(ROOT, "public", "social", "scenarios")
 # Kaan 2026-10-31 (2. karar): "eski sistemde stillerle video üretimi yapılmasın, yenileri deneyelim" → klasik ÇIKTI.
 #   Gece hattı yalnız yeni motor: izometrik, 8 kaplamanın hepsi döner. Kaan her yayında beğendi/beğenmedi der
 #   (`begen` / `begenme`) → karne izlenme verisinin yanında Kaan'ın oyunu da gösterir.
-TEKNIKLER = ["iso"]
+# Kaan 2026-11-06: "tüm hepsini deneyelim 1 ay boyunca en çok izlenen kazansın" → 4 motor yarışır (eşit sayıda):
+#   iso = mevcut izometrik · hf = HyperFrames (HeyGen, Apache-2.0) · dossier = Lemo halftone-dossier · news = Lemo
+#   news-package (Lemo-Opuscar, MIT). Ses/senaryo/konu aynı hat; yalnız görüntü motoru değişir (scripts/anim/engines/).
+TEKNIKLER = ["iso", "hf", "dossier", "news"]
+YARISMA = {"bas": "2026-11-07", "bit": "2026-12-07"}   # kazanan: ≥7 günlük videolarda ortanca YouTube izlenmesi
 STILLER = ["iso", "paper", "riso", "blueprint", "cutpaper", "ink", "pixel", "sketch"]
 # Kaan 2026-10-31 katalog oyu: "izometrik kesik kağıt ile ekonomi defterini beğendim" → her gece 1. video FAVORİ
 # kaplamayla, 2. video kalan kaplamalardan sırayla (keşif; Kaan'ın oyuyla elenir/eklenir).
@@ -96,6 +100,15 @@ def teknik_of(it):
     return it.get("teknik") or ("defter" if it.get("style") == "defter" else "klasik" if it.get("style") == "klasik" else "iso")
 
 
+def pick_teknik(q, taken_t):
+    """Yarışmada her motor eşit sayıda video alsın (format döngüsünden bağımsız): en az üretilen motor, aynı gece tekrar yok."""
+    say = {t: 0 for t in TEKNIKLER}
+    for it in q["items"]:
+        if it.get("teknik") in say and it.get("created", "") >= YARISMA["bas"] and it["status"] != "reddedildi":
+            say[it["teknik"]] += 1
+    return sorted(TEKNIKLER, key=lambda t: (t in taken_t, say[t], TEKNIKLER.index(t)))[0]
+
+
 def pick_style(q, taken, k=0):
     if k == 0 and FAVORI:
         return FAVORI[(len([1 for it in q["items"] if it.get("style") in FAVORI])) % len(FAVORI)]
@@ -153,14 +166,15 @@ def uret(a):
     day = now().date()
     taken = {it["style"] for it in q["items"] if it.get("created", "")[:10] == day.isoformat()}
     n_done = 0
+    taken_t = {it.get("teknik") for it in q["items"] if it.get("created", "")[:10] == day.isoformat()}
     for k in range(a.adet):
         topic, w = pick_topic(q, day)
-        teknik = TEKNIKLER[(day.toordinal() + k) % len(TEKNIKLER)]   # her gece biri iso biri klasik, sıra günlük döner
-        style = pick_style(q, taken, k) if teknik == "iso" else "klasik"
+        teknik = pick_teknik(q, taken_t)
+        style = pick_style(q, taken, k) if teknik == "iso" else teknik
         fmt = FORMATLAR[(day.toordinal() * a.adet + k) % len(FORMATLAR)]
         print(f"[üret] {k+1}/{a.adet} konu: {topic[:80]} | format {fmt} | teknik {teknik} | stil {style}")
         if a.dry:   # kaydetmeden: sıradaki konu/stil nasıl dağılırdı
-            taken.add(style); q["used_topics"].append(topic); continue
+            taken.add(style); taken_t.add(teknik); q["used_topics"].append(topic); continue
         r = run([PY, os.path.join(ROOT, "scripts", "viral-script.py"), "--format", fmt, "--topic", topic]
                 + (["--facts", fx] if (fx := guncel_veriler()) else []), timeout=900)
         scen = (r.stdout.strip().splitlines() or [""])[-1]
@@ -173,11 +187,18 @@ def uret(a):
                      "--engine", "google", "--voice", SES], timeout=3600)
         else:
             r = run([PY, os.path.join(ROOT, "scripts", "anim", "anim_short.py"), "--scenario", scen],
-                    env={"ANIM_SKIN": style}, timeout=3600)
+                    env={"ANIM_SKIN": style if teknik == "iso" else "iso", "ANIM_ENGINE": teknik}, timeout=3600)
         mp4 = os.path.join(ROOT, "public", "social", f"short-{slug}.mp4")
         if r.returncode != 0 or not os.path.exists(mp4):
             print("[üret] render başarısız:", (r.stderr or "")[-400:]); continue
         meta = json.load(open(os.path.join(ROOT, "public", "social", f"short-{slug}.json"), encoding="utf-8"))
+        if meta.get("teknik") and meta["teknik"] != teknik:   # motor çöktü, izometriğe düşüldü → doğru kaydet
+            print(f"[üret] ⚠️ {teknik} motoru başarısız, video izometrik çizildi")
+            teknik = meta["teknik"]; style = pick_style(q, taken, k)
+        ap_ = scen[:-5] + ".anim.json"
+        if teknik != "iso" and os.path.exists(ap_):   # sabah düzeltmesi aynı motorla yeniden çizsin
+            sj = json.load(open(ap_, encoding="utf-8")); sj["engine"] = teknik
+            json.dump(sj, open(ap_, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         no = max([it.get("no", 0) for it in q["items"]] + [0]) + 1
         q["items"].append({"no": no, "slug": slug, "title": meta.get("title", slug), "topic": topic, "week": w["start"],
                            "format": fmt, "teknik": teknik, "style": style, "mp4": mp4, "scenario": scen,
@@ -186,7 +207,7 @@ def uret(a):
             q["items"][-1].update({"status": "onaylandi", "approved": now().isoformat(timespec="seconds"), "oto": True})
         if topic in w["topics"]:
             q["used_topics"].append(topic)
-        taken.add(style); n_done += 1
+        taken.add(style); taken_t.add(teknik); n_done += 1
         save(q)
         print(f"[üret] ✅ #{no} {slug} ({style})")
     return 0 if n_done or a.dry else 2
@@ -359,7 +380,7 @@ def rapor(a):
         rows.append({"no": it["no"], "slug": it["slug"], "teknik": teknik_of(it), "style": it["style"], "format": it["format"], "age_d": round(age, 1),
                      "views": y.get("views", 0), "avp": y.get("averageViewPercentage"), "engaged": y.get("engagedViews"),
                      "subs": y.get("subscribersGained", 0), "ig_reach": g.get("reach"), "ig_saved": g.get("saved"),
-                     "kaan": it.get("kaan", "")})
+                     "kaan": it.get("kaan", ""), "created": it.get("created", "")})
     if a.json:
         print(json.dumps(rows, ensure_ascii=False, indent=1)); return 0
     print("VİDEO BAZINDA (yaş gün · YT izlenme · ort. izleme % · abone · IG erişim)")
@@ -377,7 +398,11 @@ def rapor(a):
             oy = [r for r in rows if r[key] == s and r["kaan"]]
             ky = f"  Kaan {sum(r['kaan'] == '+' for r in oy)}👍/{sum(r['kaan'] == '-' for r in oy)}👎" if oy else ""
             print(f"  {s:<9} n={len(rr)}  izlenme ortanca {v:>7.0f}  izleme %{p:>5.1f}  abone/1000 {1000*sub/max(tv,1):.1f}{ky}")
-    karne("TEKNİK KARNESİ", "teknik", TEKNIKLER + ["defter", "klasik"])
+    tum = rows
+    rows = [r for r in tum if YARISMA["bas"] <= r["created"][:10] <= YARISMA["bit"]]
+    karne(f"MOTOR YARIŞMASI {YARISMA['bas']} → {YARISMA['bit']} (kazanan: ortanca izlenme)", "teknik", TEKNIKLER)
+    rows = tum
+    karne("TEKNİK KARNESİ (tümü)", "teknik", TEKNIKLER + ["defter", "klasik"])
     rows = [r for r in rows if r["teknik"] == "iso"]
     karne("İZOMETRİK İÇİNDE KAPLAMA", "style", STILLER)
     return 0

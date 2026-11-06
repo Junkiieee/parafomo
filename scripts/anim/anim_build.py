@@ -277,8 +277,11 @@ def main():
     ap.add_argument("spec")
     ap.add_argument("--still", default="")
     ap.add_argument("--no-lock", action="store_true")
+    ap.add_argument("--engine", default="", help="görüntü motoru: iso (varsayılan) | hf | dossier | news (scripts/anim/engines/)")
+    ap.add_argument("--out", default="", help="deneme: mp4 yalnız buraya yazılır, meta/yayın dosyalarına dokunulmaz")
     a = ap.parse_args()
     spec = json.load(open(a.spec, encoding="utf-8"))
+    engine = a.engine or os.environ.get("ANIM_ENGINE") or spec.get("engine") or "iso"
     global W, H
     if landscape(spec):
         W, H = 1920, 1080
@@ -297,17 +300,35 @@ def main():
     t0 = time.time()
     frames = int(round(dur * FPS))
     vid = os.path.join(wd, "video.mp4")
-    cmd = ["nice", "-n", "19", "ionice", "-c3", "node", os.path.join(HERE, "render.mjs"), html, str(frames), str(FPS), vid,
-           str(W), str(H)]
-    if not a.no_lock:
-        cmd = ["flock", LOCK] + cmd
-    subprocess.run(cmd, check=True)
+    if engine != "iso":   # yarışma motorları (Kaan 2026-11-06: "hepsini 1 ay deneyelim, en çok izlenen kazansın")
+        import importlib
+        sys.path.insert(0, HERE)
+        try:
+            mod = importlib.import_module(f"engines.{engine}")
+            # sözleşme: render(spec, lines, dur, wd, W, H, lock) → sessiz mp4 yolu; ses/müzik/meta burada eklenir
+            vid = mod.render(spec, lines, dur, wd, W, H, None if a.no_lock else LOCK)
+        except Exception as ex:
+            if a.out:
+                raise
+            print(f"[anim] ⚠️ motor '{engine}' başarısız ({str(ex)[:200]}) → izometrik motora düşülüyor", flush=True)
+            engine = "iso"
+    if engine == "iso":
+        cmd = ["nice", "-n", "19", "ionice", "-c3", "node", os.path.join(HERE, "render.mjs"), html, str(frames), str(FPS), vid,
+               str(W), str(H)]
+        if not a.no_lock:
+            cmd = ["flock", LOCK] + cmd
+        subprocess.run(cmd, check=True)
     wav = os.path.join(wd, "mix.wav")
     scenes = spec.get("data", {}).get("scenes") or []
     t0s = {l["id"]: l["t0"] for l in lines}
     whooshes = [t0s[sc["line"]] - 0.15 for sc in scenes[1:] if sc.get("line") in t0s]
     track = audio(lines, dur, slug, wav, whooshes)
     out = os.path.join(OUT_DIR, f"{slug}.mp4")
+    if a.out:   # deneme çıktısı: yalnız mp4, meta yok
+        run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", vid, "-i", wav, "-map", "0:v", "-map", "1:a",
+             "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", a.out])
+        print(f"[anim] ✅ deneme ({engine}): {a.out} (render {time.time() - t0:.0f} sn)")
+        return 0
     if landscape(spec):
         os.makedirs(LF_DIR, exist_ok=True)
         out = os.path.join(LF_DIR, f"{slug}.mp4")
@@ -327,7 +348,7 @@ def main():
         sm = {"title": spec["title"][:90] + " #Shorts",
               "description": spec.get("description", "").strip(),
               "tags": tags, "file": out, "slug": slug, "format": spec.get("format", ""), "engine": "anim",
-              "timeline": meta["lines"]}
+              "teknik": engine, "timeline": meta["lines"]}
         if spec.get("link"):
             sm["link"] = spec["link"]
         sp = os.path.join(ROOT, "public", "social", f"short-{slug}.json")

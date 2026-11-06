@@ -1,0 +1,91 @@
+/* HyperFrames yarışma motoru — 1080x1920 dikey. Alanlar: üst etiket 200 · başlık 250-460 · görsel 480-1260 ·
+   altyazı 1320-1520 · ilerleme/marka 1560-1610 · en alt 280 px boş (Shorts arayüzü). Sağ ~110 px'e kritik yazı koyma. */
+:root { --ground:#0F1316; --ink:#F4F6F5; --muted:#9AA5A1; --red:#E3120B; --gold:#FFC94D; --green:#2BB194;
+  --light:#63D491; --paper:#F4EFE2; --card:#1B2429; --line:#2A363C; --orange:#E37B4F; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; overflow:hidden; background:var(--ground); }
+#root { position:relative; width:100%; height:100%; font-family:'OswaldV', sans-serif; color:var(--ink); }
+#bg { position:absolute; inset:0; overflow:hidden; background: radial-gradient(1200px 1000px at 50% 40%, #1B2429 0%, #0F1316 72%); }
+#grid { position:absolute; left:0; top:0; width:1080px; height:2400px; opacity:.35;
+  background-image: linear-gradient(#22303630 2px, transparent 2px), linear-gradient(90deg, #22303630 2px, transparent 2px);
+  background-size: 120px 120px; }
+.mono { font-family:'PlexMono', monospace; }
+#eyebrow { position:absolute; top:196px; left:0; width:100%; height:44px; text-align:center; font-family:'PlexMono', monospace;
+  font-size:34px; letter-spacing:.22em; color:var(--green); }
+.scene { position:absolute; inset:0; }
+.head { position:absolute; top:256px; left:80px; width:920px; height:210px; display:flex; align-items:center; justify-content:center;
+  text-align:center; font-family:'Anton'; line-height:1.08; color:var(--ink); }
+.viz { position:absolute; left:0; top:480px; width:1080px; height:780px; }
+.hl { color:var(--ground); background:var(--gold); padding:0 .18em; border-radius:.08em; }
+
+/* big_number */
+.bn-icon { position:absolute; left:430px; top:10px; width:220px; height:220px; }
+.bn-val { position:absolute; left:40px; top:250px; width:1000px; height:340px; display:flex; align-items:center; justify-content:center;
+  font-family:'Anton'; color:var(--gold); white-space:nowrap; font-variant-numeric:tabular-nums; }
+.bn-label { position:absolute; left:90px; top:610px; width:900px; height:160px; display:flex; align-items:center; justify-content:center;
+  text-align:center; font-size:60px; font-weight:500; line-height:1.15; }
+
+/* compare + bars */
+.cols { position:absolute; left:60px; top:20px; width:960px; height:640px; display:flex; justify-content:center; align-items:flex-end; }
+.col { display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; }
+.col-v { font-family:'Anton'; margin-bottom:14px; white-space:nowrap; }
+.col-bar { border-radius:12px 12px 0 0; transform-origin:50% 100%; }
+.col-l { font-family:'PlexMono', monospace; font-size:32px; color:var(--muted); margin-top:16px; letter-spacing:.08em; text-align:center;
+  height:84px; line-height:1.25; text-transform:uppercase; }
+.note { position:absolute; left:0; top:676px; width:1080px; height:96px; text-align:center; }
+.note span { display:inline-block; font-family:'Anton'; font-size:68px; line-height:96px; color:var(--ground); background:var(--gold);
+  padding:0 34px; border-radius:14px; }
+
+/* layers */
+.ly-total { position:absolute; left:90px; top:0; width:900px; height:190px; text-align:center; }
+.ly-total .t-l { font-family:'PlexMono', monospace; font-size:34px; color:var(--muted); letter-spacing:.12em; height:50px; text-transform:uppercase; }
+.ly-total .t-v { font-family:'Anton'; font-size:130px; line-height:140px; color:var(--gold); white-space:nowrap; }
+.ly-bar { position:absolute; left:90px; top:220px; width:900px; height:120px; display:flex; border-radius:16px; overflow:hidden; background:#1B2429; }
+.ly-seg { height:100%; transform-origin:0 50%; }
+.ly-rows { position:absolute; left:90px; top:380px; width:900px; height:400px; display:flex; flex-direction:column; gap:18px; }
+.ly-row { display:flex; align-items:center; justify-content:space-between; height:96px; padding:0 32px; border-radius:18px;
+  background:var(--card); border:3px solid var(--line); }
+.ly-row .r-l { display:flex; align-items:center; gap:22px; font-size:48px; font-weight:500; }
+.ly-row .r-l i { display:inline-block; width:34px; height:34px; border-radius:8px; }
+.ly-row .r-v { font-family:'Anton'; font-size:62px; white-space:nowrap; }
+.ly-row.on { border-color:var(--gold); background:#2a2616; }
+.ly-row.on .r-v { color:var(--gold); }
+
+/* steps */
+.steps { position:absolute; left:80px; top:10px; width:920px; height:760px; display:flex; flex-direction:column; justify-content:center; gap:34px; }
+.step { display:flex; align-items:center; gap:34px; background:var(--card); border:3px solid var(--line); border-radius:24px; padding:30px 40px; }
+.step .num { width:112px; height:112px; flex:none; border-radius:50%; background:var(--green); color:var(--ground); font-family:'Anton';
+  font-size:70px; display:flex; align-items:center; justify-content:center; }
+.step .st { font-size:66px; font-weight:500; line-height:1.12; }
+.step.last { border-color:var(--gold); background:#2a2616; }
+.step.last .num { background:var(--gold); }
+
+/* icon_text */
+.it-icon { position:absolute; left:390px; top:0; width:300px; height:300px; }
+.it-text { position:absolute; left:70px; top:330px; width:940px; height:440px; display:flex; align-items:center; justify-content:center;
+  text-align:center; font-family:'Anton'; line-height:1.14; }
+.it-text .em { color:var(--gold); padding:0 .16em; border-radius:.08em;
+  background: linear-gradient(var(--gold), var(--gold)) no-repeat left center / 0% 100%; }
+
+/* cta */
+.cta-q { position:absolute; left:60px; top:0; width:960px; height:420px; display:flex; flex-direction:column; align-items:center;
+  justify-content:center; font-family:'Anton'; line-height:1.12; text-align:center; }
+.cta-q .l2 { margin-top:14px; }
+.cta-sub { position:absolute; left:60px; top:440px; width:960px; height:60px; text-align:center; font-family:'PlexMono', monospace;
+  font-size:36px; color:var(--muted); letter-spacing:.06em; }
+.abone { position:absolute; left:290px; top:540px; width:500px; height:130px; background:var(--red); border-radius:24px; color:#fff;
+  font-family:'Anton'; font-size:72px; display:flex; align-items:center; justify-content:center; gap:26px; }
+.play { width:0; height:0; border-left:44px solid #fff; border-top:28px solid transparent; border-bottom:28px solid transparent; }
+.brand { position:absolute; left:0; top:700px; width:1080px; height:60px; text-align:center; font-family:'PlexMono', monospace;
+  font-size:44px; color:var(--green); }
+
+/* altyazı + alt şerit */
+.capg { position:absolute; left:0; top:1320px; width:1080px; height:200px; display:flex; align-items:center; justify-content:center; }
+.capin { width:100%; text-align:center; font-family:'OswaldV'; font-weight:700; font-size:68px; line-height:1.16; color:#fff;
+  text-transform:uppercase; padding:0 90px; text-shadow:0 4px 0 #000a; }
+.w { display:inline-block; padding:0 8px; border-radius:8px; }
+.w.on { color:var(--ground); background:var(--gold); text-shadow:none; }
+#foot { position:absolute; left:90px; top:1560px; width:900px; height:50px; display:flex; align-items:center; gap:14px; }
+#foot .seg { flex:1; height:8px; border-radius:4px; background:#2A363C; overflow:hidden; }
+#foot .seg i { display:block; width:100%; height:100%; background:var(--gold); transform-origin:0 50%; transform:scaleX(0); }
+#foot .mark { font-family:'PlexMono', monospace; font-size:28px; color:var(--muted); letter-spacing:.14em; margin-left:12px; }

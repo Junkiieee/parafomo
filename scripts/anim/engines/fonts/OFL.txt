@@ -1,0 +1,2 @@
+Bu klasördeki fontlar SIL Open Font License 1.1 ile lisanslıdır (Google Fonts): Alfa Slab One, Archivo, Barlow Condensed, IBM Plex Mono.
+https://openfontlicense.org
