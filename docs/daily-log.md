@@ -1,5 +1,9 @@
 # Günlük Operasyon Günlüğü
 
+## 2026-11-06
+**Yayınlanan yazı:** [SED Yardımı Nedir? 2026 Tutarı, Şartları ve Başvurusu](/blog/sed-yardimi-nedir-2026-tutari-sartlari-basvuru)
+Seçim kaynağı: kuyruk ("sed yardımı" hacim 12,4; tutarlar yönetmelik oranı × Temmuz 2026 katsayısıyla, basındaki resmî 11.225,52/11.973,89 TL ile birebir)
+
 ## 2026-11-05
 **Yayınlanan yazı:** [ABD Ekim İstihdam Verisi (NFP) 6 Kasım: Fed, Dolar, Altın](/blog/abd-kasim-2026-nfp-istihdam-verisi-fed-dolar-altin)
 Seçim kaynağı: kuyruk (📅 ABD NFP 6 Kasım; saat düzeltildi → TSİ 16:30, ABD kış saati; Ekim konsensüsü bulunamadı, veri günü eklenecek)

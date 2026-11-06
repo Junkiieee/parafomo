@@ -65,9 +65,9 @@ beyannamesi" 2,8 (zirve Mart 32 → Şubat'ta yeniden ölç) · "aile destek pro
   BLS'den doğrula) · beklenti rakamı YALNIZ tarihli konsensüs (Reuters/Bloomberg anketi), önceki ay BLS'den · Fed 28 Ekim
   kararı (%3,75–4,00 sabit) `data/fomc-2026.json`'dan · iç-link: /fed-faiz-takvimi, /ekonomik-takvim,
   /blog/abd-issizlik-verisi-altin-dolar-etkisi, /dolar-getiri, /altin-getiri → /blog/abd-kasim-2026-nfp-istihdam-verisi-fed-dolar-altin (2026-11-05)
-- [ ] **SED yardımı nedir? Sosyal ekonomik destek 2026 tutarı, şartları ve başvurusu** · hedef: "sed yardımı" (hacim 12,4,
+- [x] **SED yardımı nedir? Sosyal ekonomik destek 2026 tutarı, şartları ve başvurusu** · hedef: "sed yardımı" (hacim 12,4,
   zirve Ocak 58) · neden: sosyal haklar kümesi (B261029-1); tutar ve gelir şartı YALNIZ ASHB resmî kaynağından, tarihli;
-  emin olunmayan tutarı yazma · iç-link: /engelli-maasi, /evde-bakim-maasi, /dogum-yardimi
+  emin olunmayan tutarı yazma · iç-link: /engelli-maasi, /evde-bakim-maasi, /dogum-yardimi → /blog/sed-yardimi-nedir-2026-tutari-sartlari-basvuru (2026-11-06)
 - [ ] 📅 9 Kasım **ABD Ekim Enflasyonu (CPI) 10 Kasım'da: Beklenti, Fed Aralık Kararı, Dolar ve Altın** · slug:
   `abd-kasim-2026-cpi-verisi-fed-dolar-altin` · hedef: izinli olay ailesi (ABD CPI — abd-ekim-2026-cpi 28g 7 tık / 126 gös) ·
   tarih: 10 Kasım (TEK kaynak — 6 Kasım günlük koşusu BLS takviminden doğrulasın, farklıysa 📅 tarihini kaydırsın) ·
