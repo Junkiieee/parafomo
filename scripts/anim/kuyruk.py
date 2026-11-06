@@ -124,6 +124,30 @@ def oto_aktif():
         return False
 
 
+def guncel_veriler():
+    """Açıklanmış güncel oranlar → viral-script --facts. Üretici açıklanmış oranı 'örnek %25' diye uydurmasın."""
+    out = []
+    def j(f):
+        try:
+            return json.load(open(os.path.join(ROOT, "data", f), encoding="utf-8"))
+        except Exception:
+            return {}
+    y = j("yeniden-degerleme.json")
+    if y.get("ekimVerisiGeldi") and y.get("onikiAyOrt"):
+        r = str(y["tebligOrani"] or y["onikiAyOrt"]).replace(".", ",")
+        out.append(f"{y['hedefYil']} yeniden değerleme oranı: %{r}"
+                   + ("" if y.get("tebligOrani") else " (Ekim Yİ-ÜFE verisiyle hesaplandı; resmî VUK tebliği kasım sonunda)")
+                   + "; trafik cezası gibi idari para cezaları bu oranla artar (Kabahatler K. 17/7). "
+                   + "MTV/harçta Cumhurbaşkanı daha düşük oran uygulayabilir (2026'da %25,49 yerine %18,95).")
+    k = j("kira-artis-2026.json")
+    if k.get("guncelOran"):
+        out.append(f"Kira artış tavanı ({k['guncelAy']}): %{str(k['guncelOran']).replace('.', ',')} (12 aylık TÜFE ortalaması)")
+    m = sorted(j("tufe-aylik.json").get("months", []), key=lambda x: x["ay"])
+    if m:
+        out.append(f"TÜFE {m[-1]['ay']}: yıllık %{str(m[-1]['yillik']).replace('.', ',')}, aylık %{str(m[-1]['aylik']).replace('.', ',')}")
+    return "\n".join(out)
+
+
 def uret(a):
     q = load()
     day = now().date()
@@ -137,7 +161,8 @@ def uret(a):
         print(f"[üret] {k+1}/{a.adet} konu: {topic[:80]} | format {fmt} | teknik {teknik} | stil {style}")
         if a.dry:   # kaydetmeden: sıradaki konu/stil nasıl dağılırdı
             taken.add(style); q["used_topics"].append(topic); continue
-        r = run([PY, os.path.join(ROOT, "scripts", "viral-script.py"), "--format", fmt, "--topic", topic], timeout=900)
+        r = run([PY, os.path.join(ROOT, "scripts", "viral-script.py"), "--format", fmt, "--topic", topic]
+                + (["--facts", fx] if (fx := guncel_veriler()) else []), timeout=900)
         scen = (r.stdout.strip().splitlines() or [""])[-1]
         if r.returncode != 0 or not os.path.exists(scen):
             print("[üret] senaryo üretilemedi:", (r.stderr or r.stdout)[-300:]); continue
