@@ -4,98 +4,90 @@
   "mevduat": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Faiz+Istatistikleri/Haftalik/Mevduat+Faiz+Oranlari/",
   "kredi": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Faiz+Istatistikleri/Haftalik/Kredi+Faiz+Oranlari/"
  },
- "updated": "2026-11-05",
- "hafta": "2026-10-23",
- "oncekiHafta": "2026-10-16",
+ "updated": "2026-11-06",
+ "hafta": "2026-10-30",
+ "oncekiHafta": "2026-10-23",
  "mevduat": {
   "ay1": {
    "etiket": "1 aya kadar",
-   "yillikBilesik": 42.23,
-   "basit": 35.78,
+   "yillikBilesik": 42.05,
+   "basit": 35.65,
    "basitGun": 32,
-   "degisim": -0.51,
+   "degisim": -0.18,
    "seri": "TP.TRY.MT01"
   },
   "ay3": {
    "etiket": "3 aya kadar",
-   "yillikBilesik": 43.3,
-   "basit": 37.66,
+   "yillikBilesik": 42.23,
+   "basit": 36.84,
    "basitGun": 92,
-   "degisim": 0.08,
+   "degisim": -1.07,
    "seri": "TP.TRY.MT02"
   },
   "ay6": {
    "etiket": "6 aya kadar",
-   "yillikBilesik": 42.78,
-   "basit": 38.95,
+   "yillikBilesik": 40.5,
+   "basit": 37.04,
    "basitGun": 181,
-   "degisim": 0.25,
+   "degisim": -2.28,
    "seri": "TP.TRY.MT03"
   },
   "yil1": {
    "etiket": "1 yıla kadar",
-   "yillikBilesik": 40.84,
-   "basit": 40.84,
+   "yillikBilesik": 39.32,
+   "basit": 39.32,
    "basitGun": 365,
-   "degisim": -0.38,
+   "degisim": -1.52,
    "seri": "TP.TRY.MT04"
   },
   "yil1plus": {
    "etiket": "1 yıl ve daha uzun",
-   "yillikBilesik": 38.1,
-   "basit": 38.1,
+   "yillikBilesik": 37.81,
+   "basit": 37.81,
    "basitGun": 365,
-   "degisim": -0.22,
+   "degisim": -0.29,
    "seri": "TP.TRY.MT05"
   },
   "toplam": {
    "etiket": "Toplam (tüm vadeler)",
-   "yillikBilesik": 42.58,
-   "basit": 37.11,
+   "yillikBilesik": 42.06,
+   "basit": 36.71,
    "basitGun": 92,
-   "degisim": -0.3,
+   "degisim": -0.52,
    "seri": "TP.TRY.MT06"
   }
  },
  "kredi": {
   "ihtiyac": {
    "etiket": "İhtiyaç kredisi",
-   "yillikBilesik": 60.21,
-   "aylik": 4.01,
-   "degisim": -1.29,
+   "yillikBilesik": 58.68,
+   "aylik": 3.92,
+   "degisim": -1.53,
    "seri": "TP.KTF10"
   },
   "tasit": {
    "etiket": "Taşıt kredisi",
-   "yillikBilesik": 44.2,
-   "aylik": 3.1,
-   "degisim": 0.57,
+   "yillikBilesik": 44.68,
+   "aylik": 3.13,
+   "degisim": 0.48,
    "seri": "TP.KTF11"
   },
   "konut": {
    "etiket": "Konut kredisi (sabit faizli)",
    "yillikBilesik": 41.49,
    "aylik": 2.93,
-   "degisim": -0.01,
+   "degisim": 0.0,
    "seri": "TP.KTF12"
   },
   "tuketici": {
    "etiket": "Tüketici kredisi (toplam)",
-   "yillikBilesik": 58.23,
-   "aylik": 3.9,
-   "degisim": -1.41,
+   "yillikBilesik": 57.55,
+   "aylik": 3.86,
+   "degisim": -0.68,
    "seri": "TP.KTFTUK"
   }
  },
  "seri": [
-  {
-   "hafta": "2025-10-31",
-   "mevduat3ay": 48.13,
-   "mevduat1ay": 46.92,
-   "ihtiyac": 61.52,
-   "konut": 37.75,
-   "tasit": 35.16
-  },
   {
    "hafta": "2025-11-07",
    "mevduat3ay": 48.1,
@@ -503,6 +495,14 @@
    "ihtiyac": 60.21,
    "konut": 41.49,
    "tasit": 44.2
+  },
+  {
+   "hafta": "2026-10-30",
+   "mevduat3ay": 42.23,
+   "mevduat1ay": 42.05,
+   "ihtiyac": 58.68,
+   "konut": 41.49,
+   "tasit": 44.68
   }
  ]
 }
