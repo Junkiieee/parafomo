@@ -1,0 +1,64 @@
+{
+  "slug": "trafik-cezasi-ocakta-kac-lira-olacak-hesap-burada",
+  "title": "Trafik cezası ocakta kaç lira olacak, hesap burada",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "2027 yeniden değerleme oranı yüzde 27,83: bin liralık idari para cezası yaklaşık 1.278 lira oluyor. MTV ve harçta ise Cumhurbaşkanı daha düşük oran uygulayabilir; 2026'daki fark bin liralık MTV'de yaklaşık 65 lira.\nKaynak/hesap: 1.000 x 1,2783 = 1.278,30 (yeniden değerleme oranı %27,83) · 2027 yeniden değerleme oranı %27,83 (Ekim Yİ-ÜFE ile hesaplandı); Kabahatler Kanunu 17/7 gereği idari para cezaları bu oranla artar; resmî VUK tebliği kasım sonunda",
+  "tags": [
+    "yeniden değerleme",
+    "2027 zam",
+    "trafik cezası",
+    "MTV",
+    "harç",
+    "enflasyon",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Bin liralık ceza ocakta 1.278 lira oluyor.",
+      "visual": {
+        "type": "object",
+        "query": "wallet"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "İdari para cezaları yüzde 27,83 artıyor: bin lira çarpı 1,2783, yani yaklaşık 1.278 lira.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama MTV ve harçta oran düşebilir: 2026'da yüzde 25,49 yerine yüzde 18,95 uygulandı.",
+      "visual": {
+        "type": "object",
+        "query": "receipt paper"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "2026'da bu, bin liralık MTV'de yaklaşık 65 lira fark demekti. MTV kararı aralıkta çıkar, bütçeni ona göre ayarla.",
+      "visual": {
+        "type": "object",
+        "query": "wall calendar"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sırada ocakta hangi kalemin zamlanacağı var. Abone ol, her gün tek net hesabı 30 saniyede göstereyim.",
+      "visual": {
+        "type": "object",
+        "query": "wallet"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "1.278 lira",
+    "calc": "1.000 x 1,2783 = 1.278,30 (yeniden değerleme oranı %27,83)",
+    "source": "2027 yeniden değerleme oranı %27,83 (Ekim Yİ-ÜFE ile hesaplandı); Kabahatler Kanunu 17/7 gereği idari para cezaları bu oranla artar; resmî VUK tebliği kasım sonunda"
+  }
+}

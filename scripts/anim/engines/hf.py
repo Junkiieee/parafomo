@@ -239,9 +239,9 @@ class Scene:
     def compare(self):
         d = self.d
         a, b = d.get("a") or {}, d.get("b") or {}
-        html = self._cols([a, b], d.get("unit", ""), d.get("suffix", ""), 1, 120, 300, 110)
+        html = self._cols([a, b], d.get("unit", ""), d.get("suffix", ""), 1, 120, 300, 110, spread=True)
         if d.get("note"):
-            tb = find_t(self.line, num_needles(float(b.get("value", 0))), frac=0.6)
+            tb = seq_t(self.line, num_needles(float(b.get("value", 0))), 1, 2)
             self.enter(f"#{self.id('nt')}", tb + 0.5, "opacity: 0, scale: 1.6", {"opacity": 1, "scale": 1}, 0.28, "power4.in")
             html += f'<div id="{self.id("nt")}" class="note"><span>{E(d["note"])}</span></div>'
         return html

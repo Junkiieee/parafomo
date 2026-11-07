@@ -1,0 +1,123 @@
+{
+ "slug": "trafik-cezasi-ocakta-kac-lira-olacak-hesap-burada",
+ "title": "Trafik cezası ocakta kaç lira olacak, hesap burada",
+ "description": "2027 yeniden değerleme oranı yüzde 27,83: bin liralık idari para cezası yaklaşık 1.278 lira oluyor. MTV ve harçta ise Cumhurbaşkanı daha düşük oran uygulayabilir; 2026'daki fark bin liralık MTV'de yaklaşık 65 lira.\nKaynak/hesap: 1.000 x 1,2783 = 1.278,30 (yeniden değerleme oranı %27,83) · 2027 yeniden değerleme oranı %27,83 (Ekim Yİ-ÜFE ile hesaplandı); Kabahatler Kanunu 17/7 gereği idari para cezaları bu oranla artar; resmî VUK tebliği kasım sonunda",
+ "tags": [
+  "yeniden değerleme",
+  "2027 zam",
+  "trafik cezası",
+  "MTV",
+  "harç",
+  "enflasyon",
+  "parafomo"
+ ],
+ "format": "shock_number",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "OCAK ZAMMI",
+  "scenes": [
+   {
+    "type": "big_number",
+    "head": "Cezalar ocakta artıyor",
+    "data": {
+     "icon": "coins",
+     "value": 1278,
+     "unit": "₺",
+     "suffix": "",
+     "label": "Bin liralık ceza ocakta"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "compare",
+    "head": "Yeniden değerleme etkisi",
+    "data": {
+     "a": {
+      "label": "Bugün",
+      "value": 1000
+     },
+     "b": {
+      "label": "Ocakta",
+      "value": 1278
+     },
+     "unit": "₺",
+     "note": "ÇARPAN 1,2783"
+    },
+    "line": "s1"
+   },
+   {
+    "type": "bars",
+    "head": "MTV ve harçta oran düşebilir",
+    "data": {
+     "items": [
+      {
+       "label": "Hesaplanan",
+       "value": 25.49
+      },
+      {
+       "label": "Uygulanan",
+       "value": 18.95
+      }
+     ],
+     "unit": "%",
+     "suffix": "",
+     "hl": 1
+    },
+    "line": "s2"
+   },
+   {
+    "type": "big_number",
+    "head": "MTV'de fark küçük değil",
+    "data": {
+     "icon": "car",
+     "value": 65,
+     "unit": "₺",
+     "suffix": "",
+     "label": "2026'da bin liralık MTV'de fark"
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Sırada ne var?",
+    "data": {
+     "l1": "ABONE OL",
+     "l2": "TEK NET HESAP",
+     "sub": "HER GÜN · 30 SANİYEDE"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Bin liralık ceza ocakta 1.278 lira oluyor.",
+   "cap": "Bin liralık ceza ocakta 1.278 lira oluyor."
+  },
+  {
+   "id": "s1",
+   "say": "İdari para cezaları yüzde 27,83 artıyor: bin lira çarpı 1,2783, yani yaklaşık 1.278 lira.",
+   "cap": "İdari para cezaları yüzde 27,83 artıyor: bin lira çarpı 1,2783, yani yaklaşık 1.278 lira."
+  },
+  {
+   "id": "s2",
+   "say": "Ama MTV ve harçta oran düşebilir: 2026'da yüzde 25,49 yerine yüzde 18,95 uygulandı.",
+   "cap": "Ama MTV ve harçta oran düşebilir: 2026'da yüzde 25,49 yerine yüzde 18,95 uygulandı."
+  },
+  {
+   "id": "s3",
+   "say": "2026'da bu, bin liralık MTV'de yaklaşık 65 lira fark demekti. MTV kararı aralıkta çıkar, bütçeni ona göre ayarla.",
+   "cap": "2026'da bu, bin liralık MTV'de yaklaşık 65 lira fark demekti. MTV kararı aralıkta çıkar, bütçeni ona göre ayarla."
+  },
+  {
+   "id": "s4",
+   "say": "Sırada ocakta hangi kalemin zamlanacağı var. Abone ol, her gün tek net hesabı 30 saniyede göstereyim.",
+   "cap": "Sırada ocakta hangi kalemin zamlanacağı var. Abone ol, her gün tek net hesabı 30 saniyede göstereyim."
+  }
+ ],
+ "skin": "iso",
+ "engine": "hf"
+}
