@@ -1,0 +1,124 @@
+{
+ "slug": "zam-sezonu-kira-ceza-mtv-uc-ayri-oranla-geliyor",
+ "title": "Zam sezonu: kira, ceza, MTV üç ayrı oranla geliyor",
+ "description": "Ocak zamlarında herkese tek oran uygulanmaz. Kira, idari para cezası ve harç, MTV farklı ölçülere bağlıdır; bütçeni buna göre ayırmak gerekir.",
+ "tags": [
+  "zam sezonu",
+  "yeniden değerleme",
+  "MTV",
+  "kira artışı",
+  "enflasyon",
+  "bütçe",
+  "parafomo"
+ ],
+ "format": "myth",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "ZAM SEZONU",
+  "scenes": [
+   {
+    "type": "icon_text",
+    "head": "Zam herkese aynı değil",
+    "data": {
+     "icon": "percent",
+     "text": "Herkese *aynı zam* gelmiyor"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "bars",
+    "head": "Üç farklı cetvel",
+    "data": {
+     "items": [
+      {
+       "label": "Kira",
+       "value": 31.23
+      },
+      {
+       "label": "Ceza",
+       "value": 27.83
+      },
+      {
+       "label": "Enflasyon",
+       "value": 29.77
+      }
+     ],
+     "unit": "%",
+     "suffix": "",
+     "hl": 0
+    },
+    "line": "s1"
+   },
+   {
+    "type": "compare",
+    "head": "MTV'de devlet farkı",
+    "data": {
+     "a": {
+      "label": "Yasal oran",
+      "value": 25.49
+     },
+     "b": {
+      "label": "Uygulanan",
+      "value": 18.95
+     },
+     "unit": "%",
+     "note": "DÜŞÜK ORAN SEÇİLDİ"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "steps",
+    "head": "Üç ayrı kalem aç",
+    "data": {
+     "items": [
+      "Kira: ayrı hesap",
+      "Ceza: ayrı hesap",
+      "MTV: ayrı hesap"
+     ]
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Sıradaki soru",
+    "data": {
+     "l1": "OCAKTA EN ÇOK",
+     "l2": "HANGİSİ YORACAK?",
+     "sub": "HER GÜN 60 SANİYEDE NET ANALİZ"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Zam sezonunda herkese aynı oran gelmiyor.",
+   "cap": "Zam sezonunda herkese aynı oran gelmiyor."
+  },
+  {
+   "id": "s1",
+   "say": "Üç farklı oran var: kira tavanı yüzde 31,23, cezalar yüzde 27,83, yıllık enflasyon yüzde 29,77.",
+   "cap": "Üç farklı oran var: kira tavanı yüzde 31,23, cezalar yüzde 27,83, yıllık enflasyon yüzde 29,77."
+  },
+  {
+   "id": "s2",
+   "say": "Ama MTV ve harçta devlet düşük oran seçebilir: 2026'da yüzde 25,49 yerine yüzde 18,95 uygulandı.",
+   "cap": "Ama MTV ve harçta devlet düşük oran seçebilir: 2026'da yüzde 25,49 yerine yüzde 18,95 uygulandı."
+  },
+  {
+   "id": "s3",
+   "say": "Yani tek zam yok. Kirayı, cezayı ve MTV'yi ayrı hesapla; bütçene üç ayrı kalem aç.",
+   "cap": "Yani tek zam yok. Kirayı, cezayı ve MTV'yi ayrı hesapla; bütçene üç ayrı kalem aç."
+  },
+  {
+   "id": "s4",
+   "say": "Peki ocakta en çok hangisi cebini yoracak? Abone ol, her gün 60 saniyede tek net analiz.",
+   "cap": "Peki ocakta en çok hangisi cebini yoracak? Abone ol, her gün 60 saniyede tek net analiz."
+  }
+ ],
+ "skin": "iso",
+ "engine": "dossier"
+}

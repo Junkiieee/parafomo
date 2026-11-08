@@ -276,8 +276,8 @@ SC.compare = (d, t, i, T0, first) => {
   if (d.note) {
     const nv = (String(d.note).match(/\d[\d.,]*/) || [])[0];
     const tn = first ? 0 : Math.max(tB + 0.6, textTime(i, nv, tB + 0.8) - 0.1);
-    const lowH = Math.min(va, vb) * sc, lowX = va > vb ? 790 : 290;   // damga kısa çubuğun gövdesine iner (etiketi örtmez)
-    if (lowH >= 170) stamp(UP(d.note), lowX, base - lowH / 2, t, tn, -0.1);
+    const hiH = Math.max(va, vb) * sc, hiX = va > vb ? 290 : 790;   // damga uzun çubuğun gövdesine iner ("X DAHA YÜKSEK" doğru sütunda)
+    if (hiH >= 170) stamp(UP(d.note), hiX, base - hiH / 2, t, tn, -0.1);
     else stamp(UP(d.note), 540, 640, t, tn, -0.06);
   }
 };

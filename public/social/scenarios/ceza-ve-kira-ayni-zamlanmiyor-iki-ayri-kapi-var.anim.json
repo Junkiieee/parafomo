@@ -1,0 +1,112 @@
+{
+ "slug": "ceza-ve-kira-ayni-zamlanmiyor-iki-ayri-kapi-var",
+ "title": "Ceza ve kira aynı zamlanmıyor: iki ayrı kapı var",
+ "description": "Kira tavanı market sepetini (12 aylık TÜFE ortalaması), idari para cezaları ise üretici fiyatlarını (Yİ-ÜFE) izleyen yeniden değerleme oranını baz alıyor. 2027 için kira %31,23, ceza %27,83.",
+ "tags": [
+  "zam sezonu",
+  "yeniden değerleme oranı",
+  "kira artışı",
+  "trafik cezası",
+  "MTV",
+  "Yİ-ÜFE",
+  "parafomo"
+ ],
+ "format": "single_concept",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "CEZA ZAMMI",
+  "scenes": [
+   {
+    "type": "icon_text",
+    "head": "Zammı kim belirliyor?",
+    "data": {
+     "icon": "percent",
+     "text": "Cezanı market değil, *fabrika* zamlıyor"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "steps",
+    "head": "Devletin ölçüsü",
+    "data": {
+     "items": [
+      "Fabrika çıkış fiyatı",
+      "Yİ-ÜFE'ye bakılır",
+      "Ceza buna göre artar"
+     ]
+    },
+    "line": "s1"
+   },
+   {
+    "type": "compare",
+    "head": "Kira ile ceza ayrışıyor",
+    "data": {
+     "a": {
+      "label": "Ceza artışı",
+      "value": 27.83
+     },
+     "b": {
+      "label": "Kira tavanı",
+      "value": 31.23
+     },
+     "unit": "%",
+     "note": "KİRA DAHA YÜKSEK"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "big_number",
+    "head": "Bütçeni buna göre kur",
+    "data": {
+     "icon": "calendar",
+     "value": 27.83,
+     "unit": "%",
+     "suffix": "",
+     "label": "Ceza artış oranı"
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Kasımda geliyor",
+    "data": {
+     "l1": "RESMÎ TEBLİĞ",
+     "l2": "ABONE OL",
+     "sub": "HER GÜN 60 SANİYEDE TEK NET ANALİZ"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Cezanı market değil, fabrika zamlıyor.",
+   "cap": "Cezanı market değil, fabrika zamlıyor."
+  },
+  {
+   "id": "s1",
+   "say": "Devlet cezayı market rafına değil, fabrika çıkış fiyatına bakarak artırıyor; buna Yİ-ÜFE deniyor.",
+   "cap": "Devlet cezayı market rafına değil, fabrika çıkış fiyatına bakarak artırıyor; buna Yİ-ÜFE deniyor."
+  },
+  {
+   "id": "s2",
+   "say": "Ama kira rafa bakıyor: 12 aylık TÜFE ortalaması, tavan yüzde 31,23. Ceza ise yüzde 27,83.",
+   "cap": "Ama kira rafa bakıyor: 12 aylık TÜFE ortalaması, tavan yüzde 31,23. Ceza ise yüzde 27,83."
+  },
+  {
+   "id": "s3",
+   "say": "Ceza yüzde 27,83 artar; MTV ve harçta düşük oran mümkün. Bütçeni üç ayrı oranla yap.",
+   "cap": "Ceza yüzde 27,83 artar; MTV ve harçta düşük oran mümkün. Bütçeni üç ayrı oranla yap."
+  },
+  {
+   "id": "s4",
+   "say": "Kasımda resmî tebliğ gelince neyin değiştiğini göstereceğim. Abone ol, her gün 60 saniyede tek net analiz.",
+   "cap": "Kasımda resmî tebliğ gelince neyin değiştiğini göstereceğim. Abone ol, her gün 60 saniyede tek net analiz."
+  }
+ ],
+ "skin": "iso",
+ "engine": "news"
+}

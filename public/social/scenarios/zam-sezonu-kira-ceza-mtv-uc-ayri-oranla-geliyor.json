@@ -1,0 +1,59 @@
+{
+  "slug": "zam-sezonu-kira-ceza-mtv-uc-ayri-oranla-geliyor",
+  "title": "Zam sezonu: kira, ceza, MTV üç ayrı oranla geliyor",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Ocak zamlarında herkese tek oran uygulanmaz. Kira, idari para cezası ve harç, MTV farklı ölçülere bağlıdır; bütçeni buna göre ayırmak gerekir.",
+  "tags": [
+    "zam sezonu",
+    "yeniden değerleme",
+    "MTV",
+    "kira artışı",
+    "enflasyon",
+    "bütçe",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Zam sezonunda herkese aynı oran gelmiyor.",
+      "visual": {
+        "type": "object",
+        "query": "wall calendar with pen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Üç farklı oran var: kira tavanı yüzde 31,23, cezalar yüzde 27,83, yıllık enflasyon yüzde 29,77.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama MTV ve harçta devlet düşük oran seçebilir: 2026'da yüzde 25,49 yerine yüzde 18,95 uygulandı.",
+      "visual": {
+        "type": "object",
+        "query": "car license plate"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yani tek zam yok. Kirayı, cezayı ve MTV'yi ayrı hesapla; bütçene üç ayrı kalem aç.",
+      "visual": {
+        "type": "object",
+        "query": "house keys"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Peki ocakta en çok hangisi cebini yoracak? Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "wall calendar with pen"
+      }
+    }
+  ]
+}

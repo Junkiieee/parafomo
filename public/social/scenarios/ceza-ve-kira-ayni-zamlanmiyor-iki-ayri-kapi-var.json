@@ -1,0 +1,59 @@
+{
+  "slug": "ceza-ve-kira-ayni-zamlanmiyor-iki-ayri-kapi-var",
+  "title": "Ceza ve kira aynı zamlanmıyor: iki ayrı kapı var",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Kira tavanı market sepetini (12 aylık TÜFE ortalaması), idari para cezaları ise üretici fiyatlarını (Yİ-ÜFE) izleyen yeniden değerleme oranını baz alıyor. 2027 için kira %31,23, ceza %27,83.",
+  "tags": [
+    "zam sezonu",
+    "yeniden değerleme oranı",
+    "kira artışı",
+    "trafik cezası",
+    "MTV",
+    "Yİ-ÜFE",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Cezanı market değil, fabrika zamlıyor.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Devlet cezayı market rafına değil, fabrika çıkış fiyatına bakarak artırıyor; buna Yİ-ÜFE deniyor.",
+      "visual": {
+        "type": "object",
+        "query": "factory gate delivery trucks"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama kira rafa bakıyor: 12 aylık TÜFE ortalaması, tavan yüzde 31,23. Ceza ise yüzde 27,83.",
+      "visual": {
+        "type": "object",
+        "query": "house keys"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ceza yüzde 27,83 artar; MTV ve harçta düşük oran mümkün. Bütçeni üç ayrı oranla yap.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Kasımda resmî tebliğ gelince neyin değiştiğini göstereceğim. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    }
+  ]
+}
