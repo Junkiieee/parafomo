@@ -92,8 +92,12 @@ def pick_topic(q, day):
         if t not in q["used_topics"]:
             return t, w
     # konular bittiyse tema + farklı açı (LLM); tekrar etmesin diye kullanılanları da söyle
-    son = [it["topic"] for it in q["items"][-12:]]
-    return f"{w['theme']} — daha önce işlenmeyen yeni bir açı (işlenenler: {'; '.join(son)})", w
+    # konu metni değil gerçek başlıklar: konu metinleri bu dalda hep aynı cümleydi → model ne işlendiğini göremiyordu (11-08)
+    son = [it.get("title", it["topic"]).replace(" #Shorts", "") for it in q["items"]
+           if it.get("style") != "defter" and it["status"] != "reddedildi"][-8:]
+    return (f"{w['theme']} — daha önce işlenmeyen yeni bir açı. SON VİDEOLAR: {'; '.join(son)}. "
+            "Bunların ana rakamını, ana kıyasını veya ana konusunu TEKRARLAMA (aynı oranı başka kelimelerle anlatmak da tekrardır); "
+            "temanın başka bir hayat alanını seç (ör. maaş, fatura, kredi kartı, aidat, ulaşım, okul, sağlık, tatil)."), w
 
 
 def teknik_of(it):
