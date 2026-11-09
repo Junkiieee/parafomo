@@ -8,9 +8,9 @@
 
 5. **Cloudflare anahtarına "okuma" izni ekle (2 dakika) — botları görmek için** _(Kaan 2026-11-09: "yarın yaparım")_
    dash.cloudflare.com → sağ üst profil → **My Profile → API Tokens** → parafomo'nun kullandığı token'ın yanındaki
-   **Edit** → Permissions'a satır ekle: **Zone · Analytics · Read** (Zone Resources: parafomo.com) → Continue → Update Token.
+   **Edit** → Permissions'a iki satır olduğundan emin ol: **Zone · Zone · Read** ve **Zone · Analytics · Read** (Zone Resources: parafomo.com) → Continue → Update Token.
    Token değişmez, sadece izni genişler; bana "ekledim" yaz. Sonra: hangi bot (Google, ChatGPT, Claude, Perplexity) hangi
-   sayfaları ne sıklıkla okuyor haftalık rapor + ChatGPT/Perplexity'nin kullanıcı sorusu üzerine açtığı sayfalar → konu seçimi.
+   sayfaları ne sıklıkla okuyor haftalık rapor (Cloudflare'in IP ile doğruladığı bot etiketleri — verifiedBotCategory; yöntem DuvInc/cloudflare-ai-crawl-history (MIT) ile aynı, ama Python cron + yerel arşiv; CF 30 gün tutar, biz kalıcı saklarız) + ChatGPT/Perplexity'nin kullanıcı sorusu üzerine açtığı sayfalar → konu seçimi.
 
 _2026-11-09: R15 EVET (Kaan) → /sitene-ekle/ + /embed/altin + /embed/kira-artis yayında (2659a7a). Cinecode denemesi: Kaan "şimdilik yapma"._
 
