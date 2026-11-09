@@ -1,5 +1,9 @@
 # Günlük Operasyon Günlüğü
 
+## 2026-11-09
+**Yayınlanan yazı:** [ABD Ekim Enflasyonu (CPI) 10 Kasım: Fed, Dolar, Altın](/blog/abd-kasim-2026-cpi-verisi-fed-dolar-altin)
+Seçim kaynağı: kuyruk (📅 ABD CPI 10 Kasım 16:30 TSİ; Ekim NFP +165 bin sonucu eklendi; konsensüs henüz yok → uydurulmadı)
+
 ## 2026-11-06
 **Yayınlanan yazı:** [SED Yardımı Nedir? 2026 Tutarı, Şartları ve Başvurusu](/blog/sed-yardimi-nedir-2026-tutari-sartlari-basvuru)
 Seçim kaynağı: kuyruk ("sed yardımı" hacim 12,4; tutarlar yönetmelik oranı × Temmuz 2026 katsayısıyla, basındaki resmî 11.225,52/11.973,89 TL ile birebir)
