@@ -1,0 +1,74 @@
+---
+// Gömülebilir kira artış hesaplayıcısı (başka siteler iframe ile ekler; kodu /sitene-ekle/ sayfasında).
+// Oran: data/kira-artis-2026.json (TÜİK 12 aylık TÜFE ortalaması; scripts/kira-artis-update.py her ay günceller).
+import kira from '../../../data/kira-artis-2026.json';
+
+const RATE = kira.guncelOran as number;
+const AY = kira.guncelAy as string;
+const rateTxt = RATE.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const LINK = 'https://parafomo.com/kira-artis-orani-hesaplama/?utm_source=embed&utm_medium=widget&utm_campaign=kira';
+---
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://parafomo.com/kira-artis-orani-hesaplama/" />
+  <title>Kira Artış Hesaplama | ParaFOMO</title>
+  <script is:inline>
+    try { if (new URLSearchParams(location.search).get('tema') === 'koyu') document.documentElement.dataset.tema = 'koyu'; } catch (e) {}
+  </script>
+  <style is:global>
+    :root { --bg:#fff; --text:#121417; --muted:#66706a; --line:#e0e8e4; --brand:#0e7f69; --head:#f6faf8; --tint:#e7f5f0; }
+    :root[data-tema='koyu'] { --bg:#14181b; --text:#eef2f0; --muted:#9aa6a0; --line:#2a3236; --brand:#63d491; --head:#1b2125; --tint:#1d2a26; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--text);
+      font: 14px/1.4 system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .w { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+    h1 { margin: 0; padding: 10px 14px; font-size: 15px; background: var(--head); border-bottom: 1px solid var(--line); }
+    .b { padding: 12px 14px; display: grid; gap: 10px; }
+    label { font-size: 12px; font-weight: 600; color: var(--muted); display: grid; gap: 4px; }
+    input { font: inherit; font-size: 16px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px;
+      background: var(--bg); color: var(--text); width: 100%; }
+    .r { background: var(--tint); border-radius: 10px; padding: 10px 12px; font-variant-numeric: tabular-nums; }
+    .r b { font-size: 22px; display: block; }
+    .r span { font-size: 12px; color: var(--muted); }
+    .f { display: flex; justify-content: space-between; gap: 8px; padding: 8px 14px; font-size: 12px; color: var(--muted);
+      border-top: 1px solid var(--line); }
+    .f a { color: var(--brand); font-weight: 700; text-decoration: none; }
+    .f a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="w">
+    <h1>Kira Artış Hesaplama</h1>
+    <div class="b">
+      <label>Şu anki aylık kira (₺)
+        <input id="k" type="text" inputmode="numeric" autocomplete="off" value="10.000" />
+      </label>
+      <div class="r" aria-live="polite">
+        <span>Yasal tavanla en fazla yeni kira</span>
+        <b id="y">—</b>
+        <span id="d"></span>
+      </div>
+    </div>
+    <div class="f">
+      <span>{AY} tavanı %{rateTxt} (12 aylık TÜFE ort.)</span>
+      <a href={LINK} target="_blank" rel="noopener">ParaFOMO ↗</a>
+    </div>
+  </div>
+  <script is:inline define:vars={{ RATE }}>
+    const nf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+    const k = document.getElementById('k'), y = document.getElementById('y'), d = document.getElementById('d');
+    function calc() {
+      const v = Number(String(k.value).replace(/\./g, '').replace(',', '.').replace(/[^\d.]/g, ''));
+      if (!v) { y.textContent = '—'; d.textContent = ''; return; }
+      const n = v * (1 + RATE / 100);
+      y.textContent = nf.format(n) + ' ₺';
+      d.textContent = 'Artış en fazla ' + nf.format(n - v) + ' ₺';
+    }
+    k.addEventListener('input', calc); calc();
+  </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+---
+// "Sitene ekle": başka sitelerin ParaFOMO araçlarını ücretsiz gömmesi için kod sayfası (2026-11-09, Kaan R15 = evet).
+// Amaç: gömen sitelerden doğal kaynak linki. ÖNEMLİ: iframe içindeki link gömen sitenin linki sayılmaz,
+// bu yüzden kodun altında düz bir kaynak linki var — onu silmemelerini rica ediyoruz.
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const ARACLAR = [
+  {
+    id: 'altin', ad: 'Güncel altın fiyatları',
+    aciklama: 'Gram, çeyrek, yarım, tam ve Ata altının alış-satış fiyatı. Gün içinde birkaç kez güncellenir.',
+    src: 'https://parafomo.com/embed/altin/', h: 300, max: 480,
+    link: 'https://parafomo.com/altin-fiyatlari/', linkText: 'ParaFOMO altın fiyatları',
+  },
+  {
+    id: 'kira', ad: 'Kira artış hesaplayıcısı',
+    aciklama: 'Ziyaretçin mevcut kirasını yazar, yasal tavanla en fazla yeni kirayı görür. Oran her ay TÜİK açıklamasıyla güncellenir.',
+    src: 'https://parafomo.com/embed/kira-artis/', h: 280, max: 420,
+    link: 'https://parafomo.com/kira-artis-orani-hesaplama/', linkText: 'ParaFOMO kira artış oranı hesaplama',
+  },
+];
+const kod = (a: (typeof ARACLAR)[number]) =>
+  `<iframe src="${a.src}" title="${a.ad}" width="100%" height="${a.h}" style="border:0;max-width:${a.max}px" loading="lazy"></iframe>\n` +
+  `<p style="font-size:12px;margin:4px 0 0">Kaynak: <a href="${a.link}">${a.linkText}</a></p>`;
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Sitene Ekle', url: '/sitene-ekle/' },
+];
+---
+
+<BaseLayout
+  title="Sitene Ekle: Ücretsiz Altın Fiyatı ve Kira Artış Hesaplama Kutusu"
+  description="Altın fiyatları tablosunu ve kira artış hesaplayıcısını sitene ücretsiz ekle. Tek satır kod, kayıt yok, veriler otomatik güncellenir."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="wrap">
+    <header class="head">
+      <p class="eyebrow">Ücretsiz · Kayıt yok · Otomatik güncellenir</p>
+      <h1>Araçlarımızı sitene ekle</h1>
+      <p class="lede">Blogunda, haber sitende ya da emlak sayfanda güncel altın fiyatlarını veya kira artış hesaplayıcısını
+        göstermek istiyorsan aşağıdaki kodu kopyalayıp sayfana yapıştırman yeterli. Rakamları biz güncel tutarız.</p>
+    </header>
+
+    {ARACLAR.map((a) => (
+      <section class="tool" id={a.id}>
+        <h2>{a.ad}</h2>
+        <p>{a.aciklama}</p>
+        <div class="grid">
+          <div class="prev">
+            <iframe src={a.src.replace('https://parafomo.com', '')} title={a.ad} width="100%" height={a.h}
+              style={`border:0;max-width:${a.max}px`} loading="lazy"></iframe>
+          </div>
+          <div class="code">
+            <label for={`kod-${a.id}`}>Kopyalanacak kod</label>
+            <textarea id={`kod-${a.id}`} readonly rows="6">{kod(a)}</textarea>
+            <button type="button" class="btn" data-copy={`kod-${a.id}`}>Kodu kopyala</button>
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class="notes">
+      <h2>Kullanım koşulları</h2>
+      <ul>
+        <li>Ücretsizdir; kişisel ve ticari sitelerde kullanabilirsin.</li>
+        <li>Kodun altındaki <strong>"Kaynak: ParaFOMO"</strong> satırını silmemeni rica ediyoruz; araçları ücretsiz tutmamızı o sağlıyor.</li>
+        <li>Koyu temalı siten için adresin sonuna <code>?tema=koyu</code> ekle (ör. <code>/embed/altin/?tema=koyu</code>).</li>
+        <li>Altın fiyatları gösterge niteliğindedir, kesin işlem fiyatı değildir. Kira tavanı TÜİK'in 12 aylık TÜFE ortalamasıdır (Türk Borçlar Kanunu md. 344).</li>
+        <li>Soru ya da başka bir araç isteği için: <a href="/iletisim/">iletişim</a>.</li>
+      </ul>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((b) => {
+    b.addEventListener('click', async () => {
+      const t = document.getElementById(b.dataset.copy!) as HTMLTextAreaElement;
+      try { await navigator.clipboard.writeText(t.value); } catch { t.select(); document.execCommand('copy'); }
+      const o = b.textContent; b.textContent = 'Kopyalandı ✓'; setTimeout(() => (b.textContent = o), 1800);
+    });
+  });
+</script>
+
+<style>
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 32px 20px 56px; }
+  .head { max-width: var(--maxw-prose); margin-bottom: 28px; }
+  .eyebrow { color: var(--brand-ink); font-weight: 600; font-size: 0.85rem; margin: 0 0 6px; }
+  .lede { color: var(--text-soft); }
+  .tool { border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 24px; background: var(--bg-card); }
+  .tool h2 { margin-top: 0; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+  .code { display: grid; gap: 8px; }
+  .code label { font-weight: 600; font-size: 0.9rem; }
+  textarea { width: 100%; font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, monospace; padding: 10px; border: 1px solid var(--border);
+    border-radius: var(--radius-sm); background: var(--bg-elev); color: var(--text); resize: vertical; }
+  .btn { justify-self: start; background: var(--brand); color: #fff; border: 0; border-radius: var(--radius-sm); padding: 9px 16px;
+    font-weight: 600; cursor: pointer; }
+  .notes li { margin-bottom: 6px; }
+</style>

@@ -1,0 +1,60 @@
+---
+// Gömülebilir altın fiyat kutusu (başka siteler iframe ile ekler; kodu /sitene-ekle/ sayfasında).
+// Hafif: harici font/analitik yok. noindex — arama sonucunda asıl sayfa (/altin-fiyatlari/) çıksın.
+// Veri: data/altin-fiyat.json (gün içi prices-refresh ile tazelenir → yeniden deploy).
+import altin from '../../../data/altin-fiyat.json';
+
+const items = altin.kalemler as { key: string; label: string; alis: number | null; satis: number | null }[];
+const KEYS = ['gram-altin', 'ceyrek-altin', 'yarim-altin', 'tam-altin', 'ata-altin'];
+const rows = KEYS.map((k) => items.find((i) => i.key === k)).filter((r) => r && r.alis && r.satis) as typeof items;
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const upd = new Date(altin.guncellenme).toLocaleString('tr-TR', {
+  timeZone: 'Europe/Istanbul', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit',
+});
+const LINK = 'https://parafomo.com/altin-fiyatlari/?utm_source=embed&utm_medium=widget&utm_campaign=altin';
+---
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://parafomo.com/altin-fiyatlari/" />
+  <title>Altın Fiyatları | ParaFOMO</title>
+  <script is:inline>
+    try { if (new URLSearchParams(location.search).get('tema') === 'koyu') document.documentElement.dataset.tema = 'koyu'; } catch (e) {}
+  </script>
+  <style is:global>
+    :root { --bg:#fff; --text:#121417; --muted:#66706a; --line:#e0e8e4; --brand:#0e7f69; --head:#f6faf8; }
+    :root[data-tema='koyu'] { --bg:#14181b; --text:#eef2f0; --muted:#9aa6a0; --line:#2a3236; --brand:#63d491; --head:#1b2125; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--text);
+      font: 14px/1.4 system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .w { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+    h1 { margin: 0; padding: 10px 14px; font-size: 15px; background: var(--head); border-bottom: 1px solid var(--line); }
+    table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+    th, td { padding: 7px 14px; text-align: right; border-bottom: 1px solid var(--line); }
+    th { font-size: 12px; font-weight: 600; color: var(--muted); }
+    th:first-child, td:first-child { text-align: left; }
+    td:first-child { font-weight: 600; }
+    .f { display: flex; justify-content: space-between; gap: 8px; padding: 8px 14px; font-size: 12px; color: var(--muted); }
+    .f a { color: var(--brand); font-weight: 700; text-decoration: none; }
+    .f a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="w">
+    <h1>Güncel Altın Fiyatları</h1>
+    <table>
+      <thead><tr><th scope="col">Tür</th><th scope="col">Alış (₺)</th><th scope="col">Satış (₺)</th></tr></thead>
+      <tbody>
+        {rows.map((r) => <tr><td>{r.label}</td><td>{fmt(r.alis!)}</td><td>{fmt(r.satis!)}</td></tr>)}
+      </tbody>
+    </table>
+    <div class="f">
+      <span>{upd} · gösterge fiyat</span>
+      <a href={LINK} target="_blank" rel="noopener">ParaFOMO ↗</a>
+    </div>
+  </div>
+</body>
+</html>

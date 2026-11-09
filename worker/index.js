@@ -116,5 +116,10 @@ function withCache(path, res) {
   const out = new Response(res.body, res);
   if (policy) out.headers.set('Cache-Control', policy);
   for (const [k, v] of Object.entries(SECURITY_HEADERS)) out.headers.set(k, v);
+  // /embed/ araçları başka sitelerde iframe ile gösterilmek için var (/sitene-ekle/): çerçeve yasağı yalnız orada kalkar.
+  if (path.startsWith('/embed/')) {
+    out.headers.delete('X-Frame-Options');
+    out.headers.set('Content-Security-Policy', 'frame-ancestors *');
+  }
   return out;
 }
