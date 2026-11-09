@@ -6,9 +6,7 @@
    (1 Kas) · parafomo.com/kira-artis-orani-hesaplama/ (31 Eki). Neden: Google eski "tahmin" hâlini gösteriyor; zam
    sezonu aramaları şimdi zirvede. (Aynısı 5 Ocak'ta emekli/memur zammı sayfaları için de değerli olacak.)
 
-5. **Karar (1 dakika) — gömülebilir hesaplayıcı / altın fiyatı widget'ı (R15): evet/hayır?**
-   Başka siteler eklerse kaynak linki = doğal backlink; Google'daki baş sorgulardaki (p60-99) otorite kilidinin kalıcı
-   çözümü. 15 Ekim'de "dış link planı şimdilik yok" demiştin. (R14 uzun video: 2026-10-30 EVET — yapıldı, aşağıya bak.)
+_2026-11-09: R15 EVET (Kaan) → /sitene-ekle/ + /embed/altin + /embed/kira-artis yayında (2659a7a). Cinecode denemesi: Kaan "şimdilik yapma"._
 
 _2026-10-30 RC: R14 EVET → uzun video hattı kuruldu (scripts/longform/); ilk video yayında https://youtu.be/L-q8AL-NmxQ; 3 Kasım "belli oldu" videosu otomatik üretilip yayınlanacak (Kaan onayı)._
 _2026-10-30 RC: IG Reel DeyWcNigded açıklaması düzeltildi (API ile doğrulandı)._
