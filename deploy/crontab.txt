@@ -66,3 +66,5 @@
 40 0 * * * /root/parafomo/scripts/kuyruk.sh uret --adet 2 >> /root/parafomo/logs/kuyruk.log 2>&1
 0 10 * * * /root/parafomo/scripts/kuyruk.sh yayinla >> /root/parafomo/logs/kuyruk.log 2>&1
 0 16 * * * /root/parafomo/scripts/kuyruk.sh yayinla >> /root/parafomo/logs/kuyruk.log 2>&1
+# Cloudflare bot arşivi (2026-11-09, Kaan): IP-doğrulamalı bot istekleri günlük arşiv (CF 30 gün tutar) — /root/parafomo-data/bots/
+20 3 * * * /root/.venvs/parafomo/bin/python /root/parafomo/scripts/bots/cf_bots.py pull >> /root/parafomo/logs/bots.log 2>&1
