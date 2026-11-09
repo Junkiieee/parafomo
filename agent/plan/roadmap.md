@@ -121,3 +121,4 @@ V3/V-hacim kararıyla güncellendi; R14 (uzun video) → V5 olarak devam. Eski I
   Mart'ta hazır olmalı. Kabul: data/temettu-2027.json + /temettu-takvimi canlı.
 - [ ] R17 (Kaan, 2 dk) — **Yandex Webmaster** · Türkiye'de ~%5 arama payı; IndexNow zaten Yandex'e de gidiyor, site
   doğrulaması Kaan'ın hesabıyla. Düşük öncelik.
+- [ ] R23 (web/otorite · Kaan kararı: "iş olarak aç, daha sonra yapalım" 2026-11-09) — **Gömülebilir araç tanıtımı** · /sitene-ekle/ (altın tablosu + kira hesaplayıcısı) yayında ama kimse bilmiyor; backlink kodun altındaki düz linkten gelir · ne: küçük finans blogları, emlak siteleri, kuyumcu siteleri → 20-30 aday listesi + kişiye özel kısa e-posta taslakları · **Kaan onayı olmadan e-posta GÖNDERİLMEZ** (dış iletişim) · Kabul: aday listesi + taslaklar Kaan'a sunuldu.
