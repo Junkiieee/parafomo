@@ -319,10 +319,10 @@ class Scene:
             w = [x for x in re.findall(r"[\w,%.]+", em) if len(x) >= 2][:1]
             t = find_t(self.line, [w[0][:6]] if w else [], frac=0.4)
             if self.first:   # kanca karesi: vurgu ilk karede dolu
-                self.js.append(f"tl.set('#{self.id('em%d' % k)}', {{ backgroundSize: '100% 100%', color: '#0F1316' }}, 0);")
+                self.js.append(f"tl.set('#{self.id('em%d' % k)}', {{ backgroundSize: '100% 80%', color: '#0F1316' }}, 0);")
             else:   # vurgu gelene kadar sarı yazı, şerit gelince koyu yazı (koyu zeminde hiç kaybolmaz)
-                self.js.append(f"tl.fromTo('#{self.id('em%d' % k)}', {{ backgroundSize: '0% 100%', color: '#FFC94D' }}, "
-                               f"{{ backgroundSize: '100% 100%', color: '#0F1316', duration: 0.35, ease: 'power2.out' }}, {self.at(t - 0.1):.3f});")
+                self.js.append(f"tl.fromTo('#{self.id('em%d' % k)}', {{ backgroundSize: '0% 80%', color: '#FFC94D' }}, "
+                               f"{{ backgroundSize: '100% 80%', color: '#0F1316', duration: 0.35, ease: 'power2.out' }}, {self.at(t - 0.1):.3f});")
         return (icon(d.get("icon"), "it-icon", self.id("ic")) +
                 f'<div id="{self.id("tx")}" class="it-text" style="font-size:{fs}px"><div>{"".join(out)}</div></div>')
 

@@ -1,59 +1,59 @@
 {
-  "slug": "gecikme-faizi-akdi-faizden-pahali-fark-bu",
-  "title": "Gecikme faizi akdi faizden pahalı: fark bu",
-  "category": "MİT",
-  "format": "myth",
-  "description": "Asgari ödeme yapınca gecikme faizi değil akdi faiz işler. Hiç ödemezsen gecikme faizi devreye girer ve borç daha pahalı hale gelir.",
-  "tags": [
-    "kredi kartı",
-    "gecikme faizi",
-    "akdi faiz",
-    "asgari ödeme",
-    "kart borcu",
-    "kişisel finans",
-    "parafomo"
-  ],
-  "segments": [
-    {
-      "kind": "hook",
-      "eyebrow": "MİT",
-      "spoken": "Asgari ödeme borcunu ertelemiyor, pahalılaştırıyor.",
-      "visual": {
-        "type": "object",
-        "query": "credit card on table"
-      }
-    },
-    {
-      "kind": "point",
-      "spoken": "Asgari ödersen gecikme faizi değil, akdi faiz işler; kalan borcun tamamına her ay faiz biner.",
-      "visual": {
-        "type": "object",
-        "query": "credit card statement"
-      }
-    },
-    {
-      "kind": "point",
-      "spoken": "Ama hiç ödemezsen iş değişir: gecikme faizi devreye girer ve akdi faizden de daha pahalıdır.",
-      "visual": {
-        "type": "concept",
-        "query": "penalty"
-      }
-    },
-    {
-      "kind": "point",
-      "spoken": "Çıkarım: tam ödeyemiyorsan da asgariyi asla atlama; bu ay elinden geleni öde, kalan borcu küçült.",
-      "visual": {
-        "type": "object",
-        "query": "calculator"
-      }
-    },
-    {
-      "kind": "cta",
-      "spoken": "Bir sonraki videoda kart borcunu kapatmanın en ucuz yolunu göstereceğim; abone ol, her gün 60 saniyede tek net analiz.",
-      "visual": {
-        "type": "object",
-        "query": "credit card on table"
-      }
-    }
-  ]
+ "slug": "gecikme-faizi-akdi-faizden-pahali-fark-bu",
+ "title": "Gecikme faizi akdi faizden pahalı: fark bu",
+ "category": "MİT",
+ "format": "myth",
+ "description": "Asgari ödeme yapınca gecikme faizi değil akdi faiz işler. Hiç ödemezsen gecikme faizi devreye girer ve borç daha pahalı hale gelir.\nKaynak: TCMB kredi kartı azami faiz oranları (1 Kasım 2026'dan itibaren), en düşük dilim: akdi aylık %3,25, gecikme aylık %3,55.",
+ "tags": [
+  "kredi kartı",
+  "gecikme faizi",
+  "akdi faiz",
+  "asgari ödeme",
+  "kart borcu",
+  "kişisel finans",
+  "parafomo"
+ ],
+ "segments": [
+  {
+   "kind": "hook",
+   "eyebrow": "MİT",
+   "spoken": "Kartta asgariyi atlamak, borcun en pahalı hâli.",
+   "visual": {
+    "type": "object",
+    "query": "credit card on table"
+   }
+  },
+  {
+   "kind": "point",
+   "spoken": "Asgari ödersen gecikme faizi değil, akdi faiz işler; kalan borcun tamamına her ay faiz biner.",
+   "visual": {
+    "type": "object",
+    "query": "credit card statement"
+   }
+  },
+  {
+   "kind": "point",
+   "spoken": "Ama asgariyi bile ödemezsen gecikme faizi devreye girer: en düşük dilimde aylık yüzde 3,25 yerine yüzde 3,55.",
+   "visual": {
+    "type": "concept",
+    "query": "penalty"
+   }
+  },
+  {
+   "kind": "point",
+   "spoken": "Çıkarım: tam ödeyemiyorsan da asgariyi asla atlama; bu ay elinden geleni öde, kalan borcu küçült.",
+   "visual": {
+    "type": "object",
+    "query": "calculator"
+   }
+  },
+  {
+   "kind": "cta",
+   "spoken": "Abone ol, her gün 60 saniyede tek net hesap cebine gelsin.",
+   "visual": {
+    "type": "object",
+    "query": "credit card on table"
+   }
+  }
+ ]
 }

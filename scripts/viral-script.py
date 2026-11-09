@@ -216,7 +216,9 @@ Kurallar:
   akıcı Türkçe; kopuk ifade yok.
 - SOMUT konuş: soyut laf ("faiz eriyor") yerine günlük çapa kullan (market arabası, kira, 100 bin TL,
   bir yıl önce vs bugün). Jargonu günlük dile çevir; teknik terim kullanırsan hemen sadeleştir.
-- cta: kısa. Önce ileriye dönük bir MERAK cümlesi (HER SEFERİNDE FARKLI ifade et; kalıplaşma),
+- cta: kısa. Önce izleyicinin cebine dönük bir MERAK sorusu ya da tek cümlelik ipucu (HER SEFERİNDE FARKLI ifade et; kalıplaşma).
+  YASAK: belirli bir sonraki videoyu vaat etme ("sıradaki/bir sonraki videoda ... göstereceğim", "yarın anlatacağım") —
+  o video garanti üretilmiyor, tutulmayan söz güveni bozar;
   sonra abone çağrısı + net bir SEBEP/vaat ("her gün 60 saniyede tek net analiz" gibi, bunu da döndür).
   "abone ol" ifadesi mutlaka geçsin ama aynı cümleyi tekrarlama.
 - title: kancadan FARKLI olsun (aynı cümleyi tekrarlama), merak boşluğu taşısın, <70 karakter,

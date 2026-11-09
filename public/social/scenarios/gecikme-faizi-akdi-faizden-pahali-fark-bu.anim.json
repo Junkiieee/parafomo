@@ -1,7 +1,7 @@
 {
  "slug": "gecikme-faizi-akdi-faizden-pahali-fark-bu",
  "title": "Gecikme faizi akdi faizden pahalı: fark bu",
- "description": "Asgari ödeme yapınca gecikme faizi değil akdi faiz işler. Hiç ödemezsen gecikme faizi devreye girer ve borç daha pahalı hale gelir.",
+ "description": "Asgari ödeme yapınca gecikme faizi değil akdi faiz işler. Hiç ödemezsen gecikme faizi devreye girer ve borç daha pahalı hale gelir.\nKaynak: TCMB kredi kartı azami faiz oranları (1 Kasım 2026'dan itibaren), en düşük dilim: akdi aylık %3,25, gecikme aylık %3,55.",
  "tags": [
   "kredi kartı",
   "gecikme faizi",
@@ -16,14 +16,14 @@
  "scene": "generic.js",
  "short": true,
  "data": {
-  "eyebrow": "AÇIKLANDI",
+  "eyebrow": "KART FAİZİ",
   "scenes": [
    {
     "type": "icon_text",
-    "head": "Asgari ödeme tuzağı",
+    "head": "En pahalı hata",
     "data": {
      "icon": "card",
-     "text": "Asgari ödeme borcu *ertelemez*, *pahalılaştırır*"
+     "text": "Asgariyi *atlamak* kartın *en pahalı* hatası"
     },
     "line": "s0"
    },
@@ -40,11 +40,19 @@
     "line": "s1"
    },
    {
-    "type": "icon_text",
+    "type": "compare",
     "head": "Hiç ödemezsen",
     "data": {
-     "icon": "percent",
-     "text": "Hiç ödemezsen *gecikme faizi* akdi faizden *pahalı*"
+     "a": {
+      "label": "Akdi faiz",
+      "value": 3.25
+     },
+     "b": {
+      "label": "Gecikme faizi",
+      "value": 3.55
+     },
+     "unit": "%",
+     "note": "AYLIK +0,30 PUAN"
     },
     "line": "s2"
    },
@@ -62,7 +70,7 @@
    },
    {
     "type": "cta",
-    "head": "Sıradaki video",
+    "head": "Her gün tek hesap",
     "data": {
      "l1": "ABONE OL",
      "l2": "HER GÜN 60 SN",
@@ -75,8 +83,8 @@
  "lines": [
   {
    "id": "s0",
-   "say": "Asgari ödeme borcunu ertelemiyor, pahalılaştırıyor.",
-   "cap": "Asgari ödeme borcunu ertelemiyor, pahalılaştırıyor."
+   "say": "Kartta asgariyi atlamak, borcun en pahalı hâli.",
+   "cap": "Kartta asgariyi atlamak, borcun en pahalı hâli."
   },
   {
    "id": "s1",
@@ -85,8 +93,8 @@
   },
   {
    "id": "s2",
-   "say": "Ama hiç ödemezsen iş değişir: gecikme faizi devreye girer ve akdi faizden de daha pahalıdır.",
-   "cap": "Ama hiç ödemezsen iş değişir: gecikme faizi devreye girer ve akdi faizden de daha pahalıdır."
+   "say": "Ama asgariyi bile ödemezsen gecikme faizi devreye girer: en düşük dilimde aylık yüzde 3,25 yerine yüzde 3,55.",
+   "cap": "Ama asgariyi bile ödemezsen gecikme faizi devreye girer: en düşük dilimde aylık yüzde 3,25 yerine yüzde 3,55."
   },
   {
    "id": "s3",
@@ -95,8 +103,8 @@
   },
   {
    "id": "s4",
-   "say": "Bir sonraki videoda kart borcunu kapatmanın en ucuz yolunu göstereceğim; abone ol, her gün 60 saniyede tek net analiz.",
-   "cap": "Bir sonraki videoda kart borcunu kapatmanın en ucuz yolunu göstereceğim; abone ol, her gün 60 saniyede tek net analiz."
+   "say": "Abone ol, her gün 60 saniyede tek net hesap cebine gelsin.",
+   "cap": "Abone ol, her gün 60 saniyede tek net hesap cebine gelsin."
   }
  ],
  "skin": "iso",

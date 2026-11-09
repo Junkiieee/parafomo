@@ -25,7 +25,7 @@
     },
     {
       "kind": "point",
-      "spoken": "10 bin liralık borçta asgari ödeme yüzde 20 ise 2 bin ödersin, 8 bini kalır.",
+      "spoken": "Örnek: 10 bin liralık borçta asgari ödeme yüzde 20 ise 2 bin ödersin, 8 bini kalır.",
       "visual": {
         "type": "object",
         "query": "calculator"
@@ -49,7 +49,7 @@
     },
     {
       "kind": "cta",
-      "spoken": "Sıradaki videoda kart borcunu kapatmanın en akıllı sırasını göstereceğim. Abone ol, her gün tek net analiz sade dille cebine gelsin.",
+      "spoken": "Borcu küçültmenin tek yolu asgarinin üstünü ödemek. Abone ol, her gün tek net analiz sade dille cebine gelsin.",
       "visual": {
         "type": "object",
         "query": "credit card"
