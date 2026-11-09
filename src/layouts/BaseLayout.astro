@@ -227,6 +227,9 @@ const shareLabel = typeof share === 'string' ? share : calcLd ? 'Bu hesaplayıc�
     <Header />
     <main id="main">
       <slot />
+      {dataModified && (
+        <p class="container data-updated">Veriler son güncellendi: <time datetime={dataModified}>{new Date(dataModified).toLocaleDateString('tr-TR', { timeZone: 'Europe/Istanbul', day: 'numeric', month: 'long', year: 'numeric' })}</time> · <a href="/metodoloji/">Kaynak ve yöntem</a></p>
+      )}
       {showShare && (
         <div class="container sb-tool">
           <ShareBar title={title ?? SITE.name} label={shareLabel} ctx="tool" url={canonical} />
@@ -235,6 +238,7 @@ const shareLabel = typeof share === 'string' ? share : calcLd ? 'Bu hesaplayıc�
       <RelatedGuides path={canonPath} />
     </main>
     <Footer />
+    <style>.data-updated{font-size:.85rem;color:var(--text-muted);margin-top:18px;margin-bottom:0}.data-updated a{color:inherit}</style>
     <script is:inline>
       // Türkçe sayı girişi: type="number" alanlar "250.000" → 250, "1250,50" → 125050 okunuyordu
       // (denetim 2026-10-22). Alanları metne çevirip .value okumasını normalize ediyoruz:
