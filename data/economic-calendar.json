@@ -1,71 +1,8 @@
 {
-  "updated": "2026-11-06",
+  "updated": "2026-11-09",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-11-03",
-      "time": "10:00",
-      "region": "TR",
-      "impact": "High",
-      "title": "TÜİK enflasyon (TÜFE) verisi",
-      "source": "tuik-rule",
-      "hook": "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı."
-    },
-    {
-      "date": "2026-11-03",
-      "time": "3:16pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Congressional Elections",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-11-05",
-      "time": "12:00pm",
-      "region": "GBP",
-      "impact": "High",
-      "title": "BOE Monetary Policy Report",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-11-05",
-      "time": "12:00pm",
-      "region": "GBP",
-      "impact": "High",
-      "title": "Monetary Policy Summary",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-11-05",
-      "time": "12:00pm",
-      "region": "GBP",
-      "impact": "High",
-      "title": "MPC Official Bank Rate Votes",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-11-05",
-      "time": "12:00pm",
-      "region": "GBP",
-      "impact": "High",
-      "title": "Official Bank Rate",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-11-05",
-      "time": "12:30pm",
-      "region": "GBP",
-      "impact": "High",
-      "title": "BOE Gov Bailey Speaks",
-      "source": "forexfactory",
-      "hook": ""
-    },
     {
       "date": "2026-11-06",
       "time": "1:30pm",
@@ -99,6 +36,51 @@
       "region": "JPY",
       "impact": "High",
       "title": "BOJ Gov Ueda Speaks",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-11-10",
+      "time": "1:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Core CPI m/m",
+      "source": "forexfactory",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-11-10",
+      "time": "1:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "CPI m/m",
+      "source": "forexfactory",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-11-12",
+      "time": "7:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "GDP m/m",
+      "source": "forexfactory",
+      "hook": "Büyüme verisi — küresel görünüm."
+    },
+    {
+      "date": "2026-11-13",
+      "time": "1:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Core PPI m/m",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-11-13",
+      "time": "1:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "PPI m/m",
       "source": "forexfactory",
       "hook": ""
     },

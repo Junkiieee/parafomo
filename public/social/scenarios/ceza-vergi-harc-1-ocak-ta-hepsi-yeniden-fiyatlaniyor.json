@@ -1,64 +1,64 @@
 {
-  "slug": "ceza-vergi-harc-1-ocak-ta-hepsi-yeniden-fiyatlaniyor",
-  "title": "Ceza, vergi, harç: 1 Ocak'ta hepsi yeniden fiyatlanıyor",
-  "category": "ŞOK VERİ",
-  "format": "shock_number",
-  "description": "Trafik cezaları da yeniden değerleme oranıyla artıyor. Örnek bir hesapla, ihlal gününün tarifesinin cebine etkisini gösteriyoruz.\nKaynak/hesap: 2.000 x 1,25 = 2.500 TL (örnek oran yüzde 25; fark 500 TL) · senaryodaki hesap (yeniden değerleme oranı yalnızca örnek olarak varsayılmıştır)",
-  "tags": [
-    "yeniden değerleme",
-    "trafik cezası",
-    "2027 zam",
-    "ocak zammı",
-    "ekonomi",
-    "kişisel finans",
-    "parafomo"
-  ],
-  "segments": [
-    {
-      "kind": "hook",
-      "eyebrow": "ŞOK VERİ",
-      "spoken": "2.000 liralık trafik cezası ocakta yeniden fiyatlanıyor.",
-      "visual": {
-        "type": "object",
-        "query": "new car keys"
-      }
-    },
-    {
-      "kind": "point",
-      "spoken": "Trafik cezaları da yeniden değerleme oranıyla artar; oran yüzde 25 çıksa, 2.000 lira 2.500 lira olur.",
-      "visual": {
-        "type": "object",
-        "query": "calculator"
-      }
-    },
-    {
-      "kind": "point",
-      "spoken": "Ama ceza, ihlal gününün tarifesiyle kesilir; 31 Aralık ile 1 Ocak arasında 500 liralık fark çıkar.",
-      "visual": {
-        "type": "object",
-        "query": "calendar"
-      }
-    },
-    {
-      "kind": "point",
-      "spoken": "Sonuç: ceza yediysen süresi içinde öde, indirim var; asıl tasarruf ise ihlali hiç yapmamak.",
-      "visual": {
-        "type": "object",
-        "query": "wallet"
-      }
-    },
-    {
-      "kind": "cta",
-      "spoken": "Ocakta başka hangi kalemler sessizce zamlanıyor, merak ediyorsan abone ol; her gün 60 saniyede tek net analiz.",
-      "visual": {
-        "type": "object",
-        "query": "new car keys"
-      }
-    }
-  ],
-  "number_source": {
-    "number": "2.000 liralık trafik cezası",
-    "calc": "2.000 x 1,25 = 2.500 TL (örnek oran yüzde 25; fark 500 TL)",
-    "source": "senaryodaki hesap (yeniden değerleme oranı yalnızca örnek olarak varsayılmıştır)"
+ "slug": "ceza-vergi-harc-1-ocak-ta-hepsi-yeniden-fiyatlaniyor",
+ "title": "Ceza, vergi, harç: 1 Ocak'ta hepsi yeniden fiyatlanıyor",
+ "category": "ŞOK VERİ",
+ "format": "shock_number",
+ "description": "Trafik cezaları da yeniden değerleme oranıyla artıyor. Örnek bir hesapla, ihlal gününün tarifesinin cebine etkisini gösteriyoruz.\nKaynak/hesap: 2.000 x 1,2783 ≈ 2.557 TL (2.000 TL örnek ceza; oran Ekim Yİ-ÜFE verisiyle hesaplanan %27,83, resmî VUK tebliği kasım sonunda; fark ≈557 TL)",
+ "tags": [
+  "yeniden değerleme",
+  "trafik cezası",
+  "2027 zam",
+  "ocak zammı",
+  "ekonomi",
+  "kişisel finans",
+  "parafomo"
+ ],
+ "segments": [
+  {
+   "kind": "hook",
+   "eyebrow": "ŞOK VERİ",
+   "spoken": "2.000 liralık trafik cezası ocakta yeniden fiyatlanıyor.",
+   "visual": {
+    "type": "object",
+    "query": "new car keys"
+   }
+  },
+  {
+   "kind": "point",
+   "spoken": "Trafik cezaları da yeniden değerleme oranıyla artar; Ekim verisiyle oran yüzde 27,83 çıktı; 2.000 lira yaklaşık 2.557 lira olur.",
+   "visual": {
+    "type": "object",
+    "query": "calculator"
+   }
+  },
+  {
+   "kind": "point",
+   "spoken": "Ama ceza, ihlal gününün tarifesiyle kesilir; 31 Aralık ile 1 Ocak arasında yaklaşık 557 liralık fark çıkar.",
+   "visual": {
+    "type": "object",
+    "query": "calendar"
+   }
+  },
+  {
+   "kind": "point",
+   "spoken": "Sonuç: ceza yediysen süresi içinde öde, indirim var; asıl tasarruf ise ihlali hiç yapmamak.",
+   "visual": {
+    "type": "object",
+    "query": "wallet"
+   }
+  },
+  {
+   "kind": "cta",
+   "spoken": "Ocakta başka hangi kalemler sessizce zamlanıyor, merak ediyorsan abone ol; her gün 60 saniyede tek net analiz.",
+   "visual": {
+    "type": "object",
+    "query": "new car keys"
+   }
   }
+ ],
+ "number_source": {
+  "number": "2.000 liralık trafik cezası",
+  "calc": "2.000 x 1,2783 ≈ 2.557 TL (örnek ceza; oran %27,83; fark ≈557 TL)",
+  "source": "senaryodaki hesap (yeniden değerleme oranı yalnızca örnek olarak varsayılmıştır)"
+ }
 }

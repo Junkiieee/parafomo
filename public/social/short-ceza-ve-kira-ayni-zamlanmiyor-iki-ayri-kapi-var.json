@@ -1,0 +1,124 @@
+{
+  "title": "Ceza ve kira aynı zamlanmıyor: iki ayrı kapı var #Shorts",
+  "description": "Kira tavanı market sepetini (12 aylık TÜFE ortalaması), idari para cezaları ise üretici fiyatlarını (Yİ-ÜFE) izleyen yeniden değerleme oranını baz alıyor. 2027 için kira %31,23, ceza %27,83.",
+  "tags": [
+    "zam sezonu",
+    "yeniden değerleme oranı",
+    "kira artışı",
+    "trafik cezası",
+    "MTV",
+    "Yİ-ÜFE",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-ceza-ve-kira-ayni-zamlanmiyor-iki-ayri-kapi-var.mp4",
+  "slug": "ceza-ve-kira-ayni-zamlanmiyor-iki-ayri-kapi-var",
+  "format": "single_concept",
+  "engine": "anim",
+  "teknik": "news",
+  "timeline": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 3.422,
+      "cap": "Cezanı market değil, fabrika zamlıyor.",
+      "words": [
+        0.35,
+        1.15,
+        1.55,
+        2.27,
+        2.63
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 3.702,
+      "t1": 9.102,
+      "cap": "Devlet cezayı market rafına değil, fabrika çıkış fiyatına bakarak artırıyor; buna Yİ-ÜFE deniyor.",
+      "words": [
+        3.702,
+        4.262,
+        4.742,
+        5.022,
+        5.422,
+        5.902,
+        6.222,
+        6.522,
+        6.922,
+        7.262,
+        7.942,
+        8.162,
+        8.562
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 9.382,
+      "t1": 18.55,
+      "cap": "Ama kira rafa bakıyor: 12 aylık TÜFE ortalaması, tavan yüzde 31,23. Ceza ise yüzde 27,83.",
+      "words": [
+        9.382,
+        9.842,
+        10.142,
+        10.422,
+        11.182,
+        11.442,
+        11.902,
+        12.182,
+        13.182,
+        13.402,
+        13.802,
+        15.262,
+        16.042,
+        16.302,
+        16.942
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 18.83,
+      "t1": 26.486,
+      "cap": "Ceza yüzde 27,83 artar; MTV ve harçta düşük oran mümkün. Bütçeni üç ayrı oranla yap.",
+      "words": [
+        18.83,
+        19.47,
+        19.89,
+        20.97,
+        22.03,
+        22.35,
+        22.77,
+        23.21,
+        23.53,
+        23.77,
+        24.69,
+        25.07,
+        25.37,
+        25.77,
+        26.17
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 26.766,
+      "t1": 32.838,
+      "cap": "Kasımda resmî tebliğ gelince neyin değiştiğini göstereceğim. Abone ol, her gün 60 saniyede tek net analiz.",
+      "words": [
+        26.766,
+        27.446,
+        27.726,
+        28.106,
+        28.426,
+        28.726,
+        29.186,
+        30.146,
+        30.386,
+        30.906,
+        30.986,
+        31.126,
+        31.386,
+        31.846,
+        32.126,
+        32.266
+      ]
+    }
+  ]
+}

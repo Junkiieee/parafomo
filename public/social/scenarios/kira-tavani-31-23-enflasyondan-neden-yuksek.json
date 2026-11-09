@@ -1,0 +1,59 @@
+{
+  "slug": "kira-tavani-31-23-enflasyondan-neden-yuksek",
+  "title": "Kira tavanı %31,23: enflasyondan neden yüksek",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Kira artış tavanı son 12 ayın TÜFE ortalamasına bakar, bu yüzden bugünkü yıllık enflasyondan yüksek çıkar. Dikiz aynası metaforuyla açıklanıyor.",
+  "tags": [
+    "kira artışı",
+    "kira zammı 2026",
+    "TÜFE",
+    "enflasyon",
+    "yeniden değerleme",
+    "zam sezonu",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Kira zammın dünün enflasyonuna göre yazılıyor.",
+      "visual": {
+        "type": "object",
+        "query": "house keys"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kira tavanı son 12 ayın TÜFE ortalaması. Yani hesap ileriye değil, dikiz aynasına bakıyor.",
+      "visual": {
+        "type": "object",
+        "query": "car rearview mirror"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama bugünkü enflasyon daha düşük: yıllık TÜFE yüzde 29,77, kira tavanı ise yüzde 31,23.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "10 bin liralık kira tavanda 13.123 lira olur. Pazarlıkta yüzde 31,23 tavandır, hedef değil.",
+      "visual": {
+        "type": "object",
+        "query": "rental contract paper"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Cezalar ise yüzde 27,83 ile artıyor; hangi cetvel kimi vuruyor, sıradaki videoda. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "house keys"
+      }
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "title": "Asgari ödeme tuzağı: 8 bin lira geride kalıyor #Shorts",
+  "description": "Kredi kartında asgari ödeme yapınca borcun büyük kısmı geride kalır ve faiz o kısma işler. Basit bir 10 bin liralık örnekle tuzağı ve çıkış yolunu gösteriyoruz.\nKaynak/hesap: 10.000 TL borç, asgari ödeme %20 varsayımı = 2.000 TL; kalan 8.000/10.000 = %80 · senaryodaki hesap",
+  "tags": [
+    "kredi kartı",
+    "asgari ödeme",
+    "borç",
+    "faiz",
+    "kişisel finans",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-asgari-odeme-tuzagi-8-bin-lira-geride-kaliyor.mp4",
+  "slug": "asgari-odeme-tuzagi-8-bin-lira-geride-kaliyor",
+  "format": "shock_number",
+  "engine": "anim",
+  "teknik": "iso",
+  "timeline": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 3.062,
+      "cap": "Asgari ödeme borcunun yüzde sekseni kalıyor.",
+      "words": [
+        0.35,
+        0.97,
+        1.29,
+        1.71,
+        2.07,
+        2.47
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 3.342,
+      "t1": 8.118,
+      "cap": "10 bin liralık borçta asgari ödeme yüzde 20 ise 2 bin ödersin, 8 bini kalır.",
+      "words": [
+        3.342,
+        3.782,
+        3.862,
+        4.242,
+        4.622,
+        5.082,
+        5.342,
+        5.702,
+        5.842,
+        6.342,
+        6.502,
+        6.602,
+        7.202,
+        7.382,
+        7.662
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 8.398,
+      "t1": 13.678,
+      "cap": "Ama asıl tuzak şu: faiz, ödediğin 2 bine değil kalan 8 bin liraya işliyor.",
+      "words": [
+        8.398,
+        8.878,
+        9.198,
+        9.538,
+        10.238,
+        10.798,
+        11.258,
+        11.458,
+        11.678,
+        11.898,
+        12.258,
+        12.538,
+        12.718,
+        12.958
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 13.958,
+      "t1": 21.374,
+      "cap": "Faiz borca eklenir, ertesi ay faizin de faizi işler. Mümkünse tamamını, olmazsa asgarinin üstünü öde.",
+      "words": [
+        13.958,
+        14.918,
+        15.258,
+        15.858,
+        16.238,
+        16.458,
+        16.878,
+        17.058,
+        17.558,
+        18.278,
+        18.858,
+        19.558,
+        20.058,
+        20.638,
+        20.998
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 21.654,
+      "t1": 29.19,
+      "cap": "Sıradaki videoda kart borcunu kapatmanın en akıllı sırasını göstereceğim. Abone ol, her gün tek net analiz sade dille cebine gelsin.",
+      "words": [
+        21.654,
+        22.374,
+        22.834,
+        23.074,
+        23.514,
+        24.094,
+        24.234,
+        24.654,
+        25.014,
+        25.894,
+        26.174,
+        26.594,
+        26.734,
+        26.934,
+        27.194,
+        27.334,
+        27.734,
+        28.014,
+        28.294,
+        28.634
+      ]
+    }
+  ]
+}

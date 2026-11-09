@@ -1,0 +1,64 @@
+{
+  "slug": "asgari-odeme-tuzagi-8-bin-lira-geride-kaliyor",
+  "title": "Asgari ödeme tuzağı: 8 bin lira geride kalıyor",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Kredi kartında asgari ödeme yapınca borcun büyük kısmı geride kalır ve faiz o kısma işler. Basit bir 10 bin liralık örnekle tuzağı ve çıkış yolunu gösteriyoruz.\nKaynak/hesap: 10.000 TL borç, asgari ödeme %20 varsayımı = 2.000 TL; kalan 8.000/10.000 = %80 · senaryodaki hesap",
+  "tags": [
+    "kredi kartı",
+    "asgari ödeme",
+    "borç",
+    "faiz",
+    "kişisel finans",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Asgari ödeme borcunun yüzde sekseni kalıyor.",
+      "visual": {
+        "type": "object",
+        "query": "credit card"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "10 bin liralık borçta asgari ödeme yüzde 20 ise 2 bin ödersin, 8 bini kalır.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl tuzak şu: faiz, ödediğin 2 bine değil kalan 8 bin liraya işliyor.",
+      "visual": {
+        "type": "concept",
+        "query": "growing debt"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Faiz borca eklenir, ertesi ay faizin de faizi işler. Mümkünse tamamını, olmazsa asgarinin üstünü öde.",
+      "visual": {
+        "type": "object",
+        "query": "wallet"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sıradaki videoda kart borcunu kapatmanın en akıllı sırasını göstereceğim. Abone ol, her gün tek net analiz sade dille cebine gelsin.",
+      "visual": {
+        "type": "object",
+        "query": "credit card"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "yüzde 80",
+    "calc": "10.000 TL borç, asgari ödeme %20 varsayımı = 2.000 TL; kalan 8.000/10.000 = %80",
+    "source": "senaryodaki hesap"
+  }
+}

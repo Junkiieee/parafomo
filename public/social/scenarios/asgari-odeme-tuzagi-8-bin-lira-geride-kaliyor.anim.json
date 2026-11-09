@@ -1,0 +1,126 @@
+{
+  "slug": "asgari-odeme-tuzagi-8-bin-lira-geride-kaliyor",
+  "title": "Asgari ödeme tuzağı: 8 bin lira geride kalıyor",
+  "description": "Kredi kartında asgari ödeme yapınca borcun büyük kısmı geride kalır ve faiz o kısma işler. Basit bir 10 bin liralık örnekle tuzağı ve çıkış yolunu gösteriyoruz.\nKaynak/hesap: 10.000 TL borç, asgari ödeme %20 varsayımı = 2.000 TL; kalan 8.000/10.000 = %80 · senaryodaki hesap",
+  "tags": [
+    "kredi kartı",
+    "asgari ödeme",
+    "borç",
+    "faiz",
+    "kişisel finans",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "format": "shock_number",
+  "style": "isometric",
+  "scene": "generic.js",
+  "short": true,
+  "data": {
+    "eyebrow": "ASGARİ TUZAĞI",
+    "scenes": [
+      {
+        "type": "big_number",
+        "head": "Asgari ödemenin gizli yüzü",
+        "data": {
+          "icon": "card",
+          "value": 80,
+          "unit": "%",
+          "suffix": "",
+          "label": "borcun hâlâ üzerinde duruyor"
+        },
+        "line": "s0"
+      },
+      {
+        "type": "layers",
+        "head": "Borç nasıl bölünüyor?",
+        "data": {
+          "total": {
+            "label": "Kart borcu",
+            "value": 10000
+          },
+          "parts": [
+            {
+              "label": "Ödenen asgari",
+              "value": 2000,
+              "hl": false
+            },
+            {
+              "label": "Kalan borç",
+              "value": 8000,
+              "hl": true
+            }
+          ],
+          "unit": "₺"
+        },
+        "line": "s1"
+      },
+      {
+        "type": "compare",
+        "head": "Faiz nereye işliyor?",
+        "data": {
+          "a": {
+            "label": "Ödediğin",
+            "value": 2000
+          },
+          "b": {
+            "label": "Faiz işleyen",
+            "value": 8000
+          },
+          "unit": "₺",
+          "note": "FAİZ KALANA İŞLER"
+        },
+        "line": "s2"
+      },
+      {
+        "type": "steps",
+        "head": "Kartta doğru hamle",
+        "data": {
+          "items": [
+            "Faiz borca eklenir",
+            "Faizin faizi işler",
+            "Tamamını öde"
+          ]
+        },
+        "line": "s3"
+      },
+      {
+        "type": "cta",
+        "head": "Sıradaki video",
+        "data": {
+          "l1": "KART BORCUNU",
+          "l2": "AKILLI KAPAT",
+          "sub": "HER GÜN TEK NET ANALİZ · ÜCRETSİZ"
+        },
+        "line": "s4"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "s0",
+      "say": "Asgari ödeme borcunun yüzde sekseni kalıyor.",
+      "cap": "Asgari ödeme borcunun yüzde sekseni kalıyor."
+    },
+    {
+      "id": "s1",
+      "say": "10 bin liralık borçta asgari ödeme yüzde 20 ise 2 bin ödersin, 8 bini kalır.",
+      "cap": "10 bin liralık borçta asgari ödeme yüzde 20 ise 2 bin ödersin, 8 bini kalır."
+    },
+    {
+      "id": "s2",
+      "say": "Ama asıl tuzak şu: faiz, ödediğin 2 bine değil kalan 8 bin liraya işliyor.",
+      "cap": "Ama asıl tuzak şu: faiz, ödediğin 2 bine değil kalan 8 bin liraya işliyor."
+    },
+    {
+      "id": "s3",
+      "say": "Faiz borca eklenir, ertesi ay faizin de faizi işler. Mümkünse tamamını, olmazsa asgarinin üstünü öde.",
+      "cap": "Faiz borca eklenir, ertesi ay faizin de faizi işler. Mümkünse tamamını, olmazsa asgarinin üstünü öde."
+    },
+    {
+      "id": "s4",
+      "say": "Sıradaki videoda kart borcunu kapatmanın en akıllı sırasını göstereceğim. Abone ol, her gün tek net analiz sade dille cebine gelsin.",
+      "cap": "Sıradaki videoda kart borcunu kapatmanın en akıllı sırasını göstereceğim. Abone ol, her gün tek net analiz sade dille cebine gelsin."
+    }
+  ],
+  "skin": "cutpaper"
+}

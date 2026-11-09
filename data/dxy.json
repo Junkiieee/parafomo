@@ -1,55 +1,55 @@
 {
   "_aciklama": "Dolar Endeksi (DXY) ve bileşenleri. Yahoo Finance. Site günlük rebuild'de tazelenir; anlık/kesin işlem değeri değildir, göstergedir.",
   "_kaynak": "Yahoo Finance (ICE US Dollar Index DX-Y.NYB)",
-  "guncellenme": "2026-11-07T19:30:04+03:00",
-  "guncellemeEtiket": "7 Kasım 2026, 19:30",
-  "dxy": 102.279,
-  "dxyChange": 0.72,
-  "dxyPrev": 101.55,
-  "usdtry": 50.1343,
-  "usdtryChange": 0.19,
+  "guncellenme": "2026-11-09T09:00:37+03:00",
+  "guncellemeEtiket": "9 Kasım 2026, 09:00",
+  "dxy": 102.115,
+  "dxyChange": -0.18,
+  "dxyPrev": 102.3,
+  "usdtry": 50.1774,
+  "usdtryChange": 0.05,
   "components": [
     {
       "symbol": "EURUSD=X",
       "label": "Euro (EUR)",
       "weight": 57.6,
-      "rate": 1.1143,
-      "change": -0.82
+      "rate": 1.1163,
+      "change": -0.58
     },
     {
       "symbol": "USDJPY=X",
       "label": "Japon Yeni (JPY)",
       "weight": 13.6,
-      "rate": 158.425,
-      "change": 0.59
+      "rate": 158.24,
+      "change": 0.47
     },
     {
       "symbol": "GBPUSD=X",
       "label": "İngiliz Sterlini (GBP)",
       "weight": 11.9,
-      "rate": 1.3356,
-      "change": -0.9
+      "rate": 1.338,
+      "change": -0.57
     },
     {
       "symbol": "USDCAD=X",
       "label": "Kanada Doları (CAD)",
       "weight": 9.1,
-      "rate": 1.4128,
-      "change": 0.79
+      "rate": 1.4104,
+      "change": 0.62
     },
     {
       "symbol": "USDSEK=X",
       "label": "İsveç Kronu (SEK)",
       "weight": 4.2,
-      "rate": 9.8912,
-      "change": 0.83
+      "rate": 9.8689,
+      "change": 0.61
     },
     {
       "symbol": "USDCHF=X",
       "label": "İsviçre Frangı (CHF)",
       "weight": 3.6,
-      "rate": 0.82,
-      "change": 0.43
+      "rate": 0.8198,
+      "change": 0.54
     }
   ]
 }

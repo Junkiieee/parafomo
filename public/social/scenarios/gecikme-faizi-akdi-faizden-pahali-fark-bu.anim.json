@@ -1,0 +1,104 @@
+{
+ "slug": "gecikme-faizi-akdi-faizden-pahali-fark-bu",
+ "title": "Gecikme faizi akdi faizden pahalı: fark bu",
+ "description": "Asgari ödeme yapınca gecikme faizi değil akdi faiz işler. Hiç ödemezsen gecikme faizi devreye girer ve borç daha pahalı hale gelir.",
+ "tags": [
+  "kredi kartı",
+  "gecikme faizi",
+  "akdi faiz",
+  "asgari ödeme",
+  "kart borcu",
+  "kişisel finans",
+  "parafomo"
+ ],
+ "format": "myth",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "AÇIKLANDI",
+  "scenes": [
+   {
+    "type": "icon_text",
+    "head": "Asgari ödeme tuzağı",
+    "data": {
+     "icon": "card",
+     "text": "Asgari ödeme borcu *ertelemez*, *pahalılaştırır*"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "steps",
+    "head": "Asgari ödersen ne olur?",
+    "data": {
+     "items": [
+      "Asgari ödersin",
+      "Akdi faiz işler",
+      "Kalan borca faiz"
+     ]
+    },
+    "line": "s1"
+   },
+   {
+    "type": "icon_text",
+    "head": "Hiç ödemezsen",
+    "data": {
+     "icon": "percent",
+     "text": "Hiç ödemezsen *gecikme faizi* akdi faizden *pahalı*"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "steps",
+    "head": "Çıkarım",
+    "data": {
+     "items": [
+      "Asgariyi atlama",
+      "Elinden geleni öde",
+      "Kalan borcu küçült"
+     ]
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Sıradaki video",
+    "data": {
+     "l1": "ABONE OL",
+     "l2": "HER GÜN 60 SN",
+     "sub": "TEK NET ANALİZ · ÜCRETSİZ"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Asgari ödeme borcunu ertelemiyor, pahalılaştırıyor.",
+   "cap": "Asgari ödeme borcunu ertelemiyor, pahalılaştırıyor."
+  },
+  {
+   "id": "s1",
+   "say": "Asgari ödersen gecikme faizi değil, akdi faiz işler; kalan borcun tamamına her ay faiz biner.",
+   "cap": "Asgari ödersen gecikme faizi değil, akdi faiz işler; kalan borcun tamamına her ay faiz biner."
+  },
+  {
+   "id": "s2",
+   "say": "Ama hiç ödemezsen iş değişir: gecikme faizi devreye girer ve akdi faizden de daha pahalıdır.",
+   "cap": "Ama hiç ödemezsen iş değişir: gecikme faizi devreye girer ve akdi faizden de daha pahalıdır."
+  },
+  {
+   "id": "s3",
+   "say": "Çıkarım: tam ödeyemiyorsan da asgariyi asla atlama; bu ay elinden geleni öde, kalan borcu küçült.",
+   "cap": "Çıkarım: tam ödeyemiyorsan da asgariyi asla atlama; bu ay elinden geleni öde, kalan borcu küçült."
+  },
+  {
+   "id": "s4",
+   "say": "Bir sonraki videoda kart borcunu kapatmanın en ucuz yolunu göstereceğim; abone ol, her gün 60 saniyede tek net analiz.",
+   "cap": "Bir sonraki videoda kart borcunu kapatmanın en ucuz yolunu göstereceğim; abone ol, her gün 60 saniyede tek net analiz."
+  }
+ ],
+ "skin": "iso",
+ "engine": "hf"
+}
