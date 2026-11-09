@@ -84,7 +84,7 @@ Aşağıdaki tablo, tarihsel olarak sık görülen piyasa tepkilerini özetliyor
 | **Beklentiye yakın** (%0,3 civarı) | Fed'in "bekle-gör" tonu sürer | Sınırlı hareket | Yatay-dalgalı | Kur eğilimi belirleyici olur |
 | **Soğuk** (çekirdek aylık ≤ %0,2) | Ek artış beklentisi zayıflar | Zayıflama eğilimi | Destek bulur | Ons yükselişi gram altına yansır |
 
-Bugünkü seviyeler referans için: ons altın yaklaşık **4.132 dolar**, gram altın yaklaşık **6.661 TL**, dolar/TL **50,14** (9 Kasım sabahı, Yahoo Finance verisiyle). Uzun vadeli tablo için [altın getirisi](/altin-getiri) ve [dolar getirisi](/dolar-getiri) sayfalarımızı, dolar endeksinin seyri için [DXY sayfamızı](/dolar-endeksi) kullanabilirsin.
+Bugünkü seviyeler referans için: ons altın yaklaşık **4.123 dolar**, gram altın yaklaşık **6.651 TL**, dolar/TL yaklaşık **50,18** (9 Kasım sabahı 09:00 göstergesi). Uzun vadeli tablo için [altın getirisi](/altin-getiri) ve [dolar getirisi](/dolar-getiri) sayfalarımızı, dolar endeksinin seyri için [DXY sayfamızı](/dolar-endeksi) kullanabilirsin.
 
 ### Gram altın neden ons kadar oynamaz?
 
