@@ -20,7 +20,7 @@
   "scenes": [
    {
     "type": "layers",
-    "head": "Taksitin gizli bedeli",
+    "head": "Taksidin gizli bedeli",
     "data": {
      "total": {
       "label": "Taksit toplamı",
@@ -90,8 +90,8 @@
  "lines": [
   {
    "id": "s0",
-   "say": "20 bin liralık telefon taksitte 24 bin.",
-   "cap": "20 bin liralık telefon taksitte 24 bin."
+   "say": "Örnek: 20 bin liralık telefon, taksitte 24 bin.",
+   "cap": "Örnek: 20 bin liralık telefon, taksitte 24 bin."
   },
   {
    "id": "s1",
@@ -110,8 +110,8 @@
   },
   {
    "id": "s4",
-   "say": "Son taksitinin ne kadarı faiz, hiç baktın mı? Abone ol, her gün 60 saniyede tek net hesap.",
-   "cap": "Son taksitinin ne kadarı faiz, hiç baktın mı? Abone ol, her gün 60 saniyede tek net hesap."
+   "say": "Son taksidinin ne kadarı faiz, hiç baktın mı? Abone ol, her gün 60 saniyede tek net hesap.",
+   "cap": "Son taksidinin ne kadarı faiz, hiç baktın mı? Abone ol, her gün 60 saniyede tek net hesap."
   }
  ],
  "skin": "iso",

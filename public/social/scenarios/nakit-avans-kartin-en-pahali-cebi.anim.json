@@ -1,7 +1,7 @@
 {
  "slug": "nakit-avans-kartin-en-pahali-cebi",
  "title": "Nakit avans: kartın en pahalı cebi",
- "description": "Kredi kartıyla çekilen nakit avansta faiz ilk günden işler, üstüne ek ücretler biner. Bu yüzden en pahalı borç türü sayılır.",
+ "description": "Kredi kartıyla çekilen nakit avansta faiz ilk günden işler ve azami oran alışverişten yüksektir: aylık %4,25'e karşı %3,25. Üstüne KKDF ve BSMV biner.\nKaynak: TCMB kredi kartı azami faiz oranları (1 Kasım 2026'dan geçerli, en düşük dilim).",
  "tags": [
   "nakit avans",
   "kredi kartı",
@@ -16,7 +16,7 @@
  "scene": "generic.js",
  "short": true,
  "data": {
-  "eyebrow": "AÇIKLANDI",
+  "eyebrow": "NAKİT AVANS",
   "scenes": [
    {
     "type": "icon_text",
@@ -44,7 +44,7 @@
     "head": "Çifte maliyet",
     "data": {
      "icon": "percent",
-     "text": "Kart faizinden *yüksek*, üstüne *işlem ücreti*"
+     "text": "Azami faiz *%4,25*, alışverişte *%3,25*"
     },
     "line": "s2"
    },
@@ -85,13 +85,13 @@
   },
   {
    "id": "s2",
-   "say": "Ama bitmedi: faiz oranı normal kart faizinden de yüksek, üstüne işlem ücreti biniyor. Yani bir tüketici kredisinden bile pahalıya geliyor.",
-   "cap": "Ama bitmedi: faiz oranı normal kart faizinden de yüksek, üstüne işlem ücreti biniyor. Yani bir tüketici kredisinden bile pahalıya geliyor."
+   "say": "Ama bitmedi: azami faiz alışverişte aylık yüzde 3,25, nakit avansta yüzde 4,25. Üstüne bir de vergi biniyor.",
+   "cap": "Ama bitmedi: azami faiz alışverişte aylık yüzde 3,25, nakit avansta yüzde 4,25. Üstüne bir de vergi biniyor."
   },
   {
    "id": "s3",
-   "say": "Nakit avans, tek gecelik bir ödünç gibi düşün. Çekmeden önce kredi ya da tanıdık borç sor, çünkü bu kapı en pahalısı.",
-   "cap": "Nakit avans, tek gecelik bir ödünç gibi düşün. Çekmeden önce kredi ya da tanıdık borç sor, çünkü bu kapı en pahalısı."
+   "say": "Nakit avansı son çare gör. Çekmeden önce daha ucuz bir kredi ya da tanıdıktan borç sor, çünkü bu kapı en pahalısı.",
+   "cap": "Nakit avansı son çare gör. Çekmeden önce daha ucuz bir kredi ya da tanıdıktan borç sor, çünkü bu kapı en pahalısı."
   },
   {
    "id": "s4",
