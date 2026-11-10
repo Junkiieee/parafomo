@@ -39,7 +39,7 @@ shorts_visuals:
 
 "Gümüş mü altın mı?" sorusu son bir yılda iyice popülerleşti: gümüş birkaç kez manşetlere çıktı, "fakirin altını" lakabı yeniden konuşuldu. Bu yazıda gümüş mü altın mı sorusunu tahminle değil, **gerçek veriyle** cevaplıyoruz: gram gümüş ve gram altının son 1, 3, 5 ve 10 yıldaki TL getirisini, aynı dönemdeki düşüşlerini ve iki metali birbirinden ayıran riskleri yan yana koyuyoruz.
 
-> Veriler 8 Ekim 2026 tarihli olup Yahoo Finance ons fiyatları ve USD/TRY kurundan hesaplanmıştır (gram = ons ÷ 31,1035 × kur). Dönem başlangıç fiyatları 27 Ekim 2026'da düzeltildi: önceki sürümde aylık kapanışlar bir ay kayıktı (yıl başı değeri Ocak sonu kapanışıydı). Güncel rakamlar için [gram gümüş getiri sayfamıza](/gumus-getiri) ve [gram altın getiri sayfamıza](/altin-getiri) bakabilirsin.
+> Veriler 8 Ekim 2026 tarihli olup Yahoo Finance ons fiyatları ve USD/TRY kurundan hesaplanmıştır (gram = ons ÷ 31,1035 × kur). Dönem başlangıç fiyatları 27 Ekim 2026'da düzeltildi: önceki sürümde aylık kapanışlar bir ay kayıktı (yıl başı değeri Ocak sonu kapanışıydı). Güncel rakamlar için [gram gümüş getiri sayfamıza](/gumus-getiri) ve [gram altın getiri sayfamıza](/altin-getiri) bakabilirsin. Yıl yıl tablo için: [gümüş yıllık getirisi](/gumus-getiri/#yillik-getiri) · [altın yıllık getirisi](/altin-getiri/#yillik-getiri).
 
 ## Kısa Cevap: 10 Yılda Neredeyse Başa Baş, Ama Yol Çok Farklı
 

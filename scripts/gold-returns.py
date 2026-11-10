@@ -120,6 +120,26 @@ def main():
         "return_usd_pct": round((now_oz / ytd_oz - 1) * 100, 1),
     }
 
+    # Takvim yılı getirileri (2026-11-10, GSC: "… yıllık getirisi" aramaları yıl yıl tablo arıyor).
+    # Yıl sonu = o yılın son işlem günü kapanışı (GÜNLÜK seri: aylık seride bazı Aralıklar eksik). Veri yoksa yıl atlanır.
+    yearly = []
+    try:
+        d_met = yahoo_series("GC=F", rng="11y", interval="1d")
+        d_kur = yahoo_series("USDTRY=X", rng="11y", interval="1d")
+        def yil_sonu(y):
+            lo = int(dt.datetime(y, 12, 15, tzinfo=dt.timezone.utc).timestamp())
+            hi = int(dt.datetime(y + 1, 1, 1, tzinfo=dt.timezone.utc).timestamp())
+            m = [c for t, c in d_met if lo <= t < hi]; k = [c for t, c in d_kur if lo <= t < hi]
+            return ((m[-1] / OZ) * k[-1], m[-1]) if m and k else None
+        for y in range(dt.datetime.now().year - 10, dt.datetime.now().year):
+            a, b = yil_sonu(y - 1), yil_sonu(y)
+            if a and b:
+                yearly.append({"year": y, "gram_tl_end": round(b[0], 2),
+                               "return_tl_pct": round((b[0] / a[0] - 1) * 100, 1),
+                               "return_usd_pct": round((b[1] / a[1] - 1) * 100, 1)})
+    except Exception as e:
+        print(f"UYARI: yıllık getiri hesaplanamadı: {e}", file=sys.stderr)
+
     if not rows:
         print("HATA: hesaplanan dönem yok", file=sys.stderr)
         return 1
@@ -131,6 +151,7 @@ def main():
         "oz_usd_now": round(now_oz, 2),
         "ytd": ytd,
         "periods": rows,
+        "yearly": yearly,
     }
     # 10 yıllık getiri özet vurgusu (varsa)
     ten = next((r for r in rows if r["years"] == 10), rows[-1])

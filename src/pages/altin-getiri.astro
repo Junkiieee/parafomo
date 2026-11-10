@@ -61,6 +61,11 @@ const datasetLd = {
 // Başlıkta cevap: son 1 yılın TL getirisi (her gün veriyle tazelenir; GSC sorguları "son 1 yılda ne kadar kazandırdı")
 const _p1 = ((data as any).periods ?? []).find((p: any) => p.years === 1);
 const Y1 = _p1 ? `${_p1.return_tl_pct >= 0 ? '%' : '−%'}${Math.round(Math.abs(_p1.return_tl_pct)).toLocaleString('tr-TR')}` : '';
+// Yıl yıl getiri (takvim yılı; scripts/*-returns.py "yearly"). Eski veri dosyasında yoksa bölüm gizlenir.
+type YearRow = { year: number; gram_tl_end: number; return_tl_pct: number; return_usd_pct: number };
+const yearly = (((data as any).yearly ?? []) as YearRow[]).slice().reverse();
+const bestY = yearly.length ? yearly.reduce((a, b) => (b.return_tl_pct > a.return_tl_pct ? b : a)) : null;
+const worstUsd = yearly.length ? yearly.reduce((a, b) => (b.return_usd_pct < a.return_usd_pct ? b : a)) : null;
 ---
 
 <BaseLayout
@@ -139,6 +144,41 @@ const Y1 = _p1 ? `${_p1.return_tl_pct >= 0 ? '%' : '−%'}${Math.round(Math.abs(
       hem kur artışını içerir; "Getiri ($/ons)" altının döviz bazlı gerçek değer değişimidir. Göstergedir.
     </p>
   </section>
+
+  {yearly.length > 0 && (
+    <section class="container gr-section" id="yillik-getiri">
+      <h2 class="gr-h2">Altın yıllık getirisi <span class="gr-count">yıl yıl, gram altın</span></h2>
+      <p class="gr-tnote">
+        Her satır o takvim yılının getirisidir (önceki yıl sonu kapanışından o yıl sonuna).
+        Son {yearly.length} yılın en iyisi TL bazında {bestY!.year} ({pct(bestY!.return_tl_pct)}); dolar bazında en zayıf yıl
+        {worstUsd!.year} ({pct(worstUsd!.return_usd_pct)}). TL getirisi kur artışını da içerdiği için dolar bazında
+        düşen yıllarda bile TL'de kazandırmış olabilir.
+      </p>
+      <div class="gr-tablewrap">
+        <table class="gr-table">
+          <thead>
+            <tr>
+              <th>Yıl</th>
+              <th class="r">Yıl sonu (gram ₺)</th>
+              <th class="r">Getiri (TL)</th>
+              <th class="r">Getiri ($/ons)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {yearly.map((y) => (
+              <tr>
+                <td class="gr-co"><span class="gr-name">{y.year}</span></td>
+                <td class="r gr-mono">{fmt(y.gram_tl_end)}</td>
+                <td class="r"><span class={`gr-ret tone-${toneOf(y.return_tl_pct)}`}>{pct(y.return_tl_pct)}</span></td>
+                <td class="r"><span class={`gr-ret tone-${toneOf(y.return_usd_pct)}`}>{pct(y.return_usd_pct)}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="gr-tnote">Bu yılın getirisi için yukarıdaki "Yıl başından beri" satırına bak. Yıl sonu = yılın son işlem günü kapanışı (Yahoo Finance, günlük). Göstergedir.</p>
+    </section>
+  )}
 
   <div class="container"><Newsletter compact title="Rakamlar değiştikçe haber verelim" text="Getiri tabloları güncellendikçe yeni rakamları haftalık bültende özetliyoruz. Ücretsiz, spam yok, istediğin an çık." /></div>
 
