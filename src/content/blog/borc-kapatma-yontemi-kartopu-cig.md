@@ -1,5 +1,5 @@
 ---
-title: "Borç Kapatma Yöntemi: Kartopu mu Çığ mı? Kredi Kartı Borcundan Kurtulma Planı"
+title: "Borç Kapatma Yöntemi: Kartopu mu Çığ mı? Kredi Kartı Borcu Planı"
 description: "Kredi kartı ve kredi borcundan kurtulmak için iki yöntem: kartopu ve çığ. Hangisi daha fazla faiz tasarrufu sağlar, minimum ödeme tuzağı ve adım adım borç kapatma planı."
 pubDate: 2026-07-14
 updatedDate: 2026-10-22

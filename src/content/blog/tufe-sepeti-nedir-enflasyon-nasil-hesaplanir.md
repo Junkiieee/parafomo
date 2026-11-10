@@ -1,5 +1,5 @@
 ---
-title: "TÜFE Sepeti Nedir? Enflasyon Nasıl Hesaplanır, TÜİK Verisi Nasıl Okunur?"
+title: "TÜFE Sepeti Nedir? Enflasyon Nasıl Hesaplanır?"
 description: "Enflasyon sepeti nedir, TÜFE nasıl hesaplanır, TÜİK verisinde aylık, yıllık ve çekirdek enflasyon nasıl okunur? Kişisel enflasyonunuz neden farklı ve alım gücünüze etkisi."
 pubDate: 2026-08-02
 updatedDate: 2026-10-22

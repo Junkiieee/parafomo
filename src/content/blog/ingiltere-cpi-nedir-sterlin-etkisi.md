@@ -1,5 +1,5 @@
 ---
-title: "İngiltere CPI Nedir? Enflasyon Verisi ve Sterlinin Türk Yatırımcısına Etkisi"
+title: "İngiltere CPI Nedir? Enflasyon Verisi ve Sterline Etkisi"
 description: "İngiltere CPI enflasyon verisi nedir, nasıl okunur? Verinin sterline, Bank of England faizine ve Türk yatırımcının portföyüne etkisini açıklıyoruz."
 pubDate: 2026-07-21
 updatedDate: 2026-10-22

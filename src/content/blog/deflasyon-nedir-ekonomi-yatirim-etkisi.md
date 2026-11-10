@@ -1,5 +1,5 @@
 ---
-title: "Deflasyon Nedir? Fiyatlar Düşerken Ekonomi ve Yatırımlarınız Nasıl Etkilenir?"
+title: "Deflasyon Nedir? Fiyatlar Düşerken Ekonomi ve Yatırım"
 description: "Deflasyon nedir, enflasyondan farkı ne? Fiyat genel seviyesinin düşüşünün ekonomiye, borsaya ve Türk yatırımcıya etkisini adım adım açıklıyoruz."
 pubDate: 2026-08-20
 category: "Ekonomi"

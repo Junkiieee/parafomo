@@ -1,5 +1,5 @@
 ---
-title: "Türkiye Kredi Notu Nedir? Fitch, Moody's ve S&P Notu TL, Borsa ve Mevduatı Nasıl Etkiler?"
+title: "Türkiye Kredi Notu Nedir? Fitch, Moody's, S&P Notu Neyi Etkiler?"
 description: "Türkiye'nin kredi notu Ekim 2026 itibarıyla Fitch BB-, Moody's Ba3, S&P BB- (görünümler durağan). Kredi notu nedir, not kararları TL, BIST ve mevduatı nasıl etkiler?"
 updatedDate: 2026-10-22
 pubDate: 2026-09-26

@@ -1,5 +1,5 @@
 ---
-title: "ABD PCE ve GDP Açıklandı (30 Eylül 2026): Çekirdek PCE %3,0, Büyüme %2,2 — Fed 28 Ekim"
+title: "ABD PCE ve GDP (30 Eylül 2026): Çekirdek PCE %3,0, Büyüme %2,2"
 description: "BEA 30 Eylül 2026: Ağustos çekirdek PCE aylık %0,2, yıllık %3,0; Q2 büyümesi kesin hesapta %2,2'ye revize. Fed 28 Ekim kararı, dolar, altın ve TL etkisi."
 pubDate: 2026-09-28
 updatedDate: 2026-10-20

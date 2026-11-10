@@ -1,5 +1,5 @@
 ---
-title: "Nasdaq 100 Nedir? ABD Teknoloji Borsasına Türkiye'den Nasıl Yatırım Yapılır?"
+title: "Nasdaq 100 Nedir? Türkiye'den Nasıl Yatırım Yapılır?"
 description: "Nasdaq 100 nedir, hangi teknoloji şirketlerini kapsar ve S&P 500'den farkı ne? Türkiye'den QQQ ETF ile Nasdaq 100'e adım adım nasıl yatırım yapılır? Kapsamlı rehber."
 pubDate: 2026-08-27
 category: "Borsa"

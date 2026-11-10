@@ -1,5 +1,5 @@
 ---
-title: "ABD Eylül İstihdam Verisi (2 Ekim 2026): NFP +29 Bin, İşsizlik %4,2 — Fed 28 Ekim'de Ne Yapar?"
+title: "ABD Eylül İstihdam Verisi: NFP +29 Bin, İşsizlik %4,2"
 description: "ABD Eylül NFP verisi 2 Ekim 2026'da açıklandı: +29 bin istihdam (beklenti ~85-90 bin), işsizlik %4,2, saatlik kazanç yıllık %3,0. Fed 28 Ekim kararı, dolar ve altın için ne anlama geliyor?"
 pubDate: 2026-09-29
 updatedDate: 2026-10-22

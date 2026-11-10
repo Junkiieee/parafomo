@@ -1,5 +1,5 @@
 ---
-title: "İlk İşsizlik Başvuruları (Initial Jobless Claims) Nedir? Fed ve TL'ye Etkisi"
+title: "İlk İşsizlik Başvuruları Nedir? Fed ve TL'ye Etkisi"
 description: "İlk işsizlik başvuruları nedir, her hafta ne zaman açıklanır ve ABD işgücü piyasasını nasıl yansıtır? Fed faiz kararına ve TL'ye etkisini öğrenin."
 pubDate: 2026-08-12
 category: "Ekonomi"

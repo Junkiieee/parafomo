@@ -1,5 +1,5 @@
 ---
-title: "ABD İşsizlik Oranı Nedir? NFP Verisi Fed Faizini ve TL'yi Nasıl Etkiler?"
+title: "ABD İşsizlik Oranı Nedir? NFP Verisi Fed ve TL'yi Nasıl Etkiler?"
 description: "ABD işsizlik oranı nedir, nasıl hesaplanır? NFP verisi Fed faiz kararını ve dolayısıyla dolar/TL kurunu nasıl şekillendirir? Türk yatırımcı rehberi."
 pubDate: 2026-08-04
 updatedDate: 2026-10-22

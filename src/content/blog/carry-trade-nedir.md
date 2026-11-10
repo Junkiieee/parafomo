@@ -1,5 +1,5 @@
 ---
-title: "Carry Trade Nedir? Düşük Faizli Dövizden Kazanmanın Mantığı ve Riskleri"
+title: "Carry Trade Nedir? Düşük Faizli Dövizden Kazanmanın Mantığı"
 description: "Carry trade nedir, nasıl çalışır? JPY gibi düşük faizli para biriminden borçlanıp yüksek faizliye yatırım yapmanın mantığını, risklerini ve TL etkisini öğren."
 pubDate: 2026-08-08
 category: "Ekonomi"

@@ -1,5 +1,5 @@
 ---
-title: "Eylül 2026 Enflasyonu Açıklandı: Yıllık %29,73, Aylık %1,84 — TCMB'ye Etkisi"
+title: "Eylül 2026 Enflasyonu: Yıllık %29,73, Aylık %1,84 — TCMB'ye Etkisi"
 description: "TÜİK 5 Ekim 2026'da Eylül enflasyonunu açıkladı: yıllık %29,73, aylık %1,84 — beklentinin altında. Senaryolar, TCMB 22 Ekim kararına etkisi ve sıradaki veri."
 pubDate: 2026-09-25
 updatedDate: 2026-10-14

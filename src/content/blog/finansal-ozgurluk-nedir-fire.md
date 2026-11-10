@@ -1,5 +1,5 @@
 ---
-title: "Finansal Özgürlük Nedir? FIRE Hareketi ile Erken Emekliliğe Ulaşma Rehberi"
+title: "Finansal Özgürlük Nedir? FIRE ile Erken Emeklilik Rehberi"
 description: "Finansal özgürlük nasıl elde edilir? FIRE hareketinin matematiğini, tasarruf oranı tablolarını ve Türkiye bağlamında adım adım uygulamasını açıklıyoruz."
 pubDate: 2026-07-13
 updatedDate: 2026-10-22

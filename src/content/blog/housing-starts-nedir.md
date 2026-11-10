@@ -1,5 +1,5 @@
 ---
-title: "ABD Konut Başlangıçları (Housing Starts) Nedir? İnşaat Verisi Ekonomiye Nasıl Yansır?"
+title: "ABD Konut Başlangıçları (Housing Starts) Nedir? Etkisi"
 description: "Housing Starts nedir, nasıl okunur, Fed faiz kararları ve TL üzerindeki etkileri nelerdir? ABD konut başlangıçları verisini 2026 perspektifiyle anlatan kapsamlı rehber."
 pubDate: 2026-08-14
 category: "Ekonomi"
