@@ -1,0 +1,151 @@
+{
+  "title": "Kira artış oranı nasıl hesaplanır? %31,23 tavanı | Ekonomi Defteri #5 #Shorts",
+  "description": "Ekonomi Defteri'nin beşinci sayfası: kira artışının yasal tavanı son 12 ayın TÜFE ortalamasıdır (Türk Borçlar Kanunu md. 344). Kasım 2026'da yenilenen kiralar için tavan %31,23. Örnek: 20.000 ₺ kira × 1,3123 = en fazla 26.246 ₺. Bu oran yıllık enflasyon değildir: Ekim 2026'da yıllık TÜFE %29,77, 12 aylık ortalama %31,23. Tavan bir üst sınırdır, daha düşük artışta anlaşılabilir.\nKaynak: TÜİK TÜFE (12 aylık ortalama, Ekim 2026), TBK md. 344.\nKendi kiranı hesapla: https://parafomo.com/kira-artis-orani-hesaplama/",
+  "tags": [
+    "kira artış oranı",
+    "kira zammı",
+    "kira artış hesaplama",
+    "TÜFE ortalaması",
+    "kira tavanı",
+    "ekonomi defteri",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-anim-ekonomi-defteri-5-kira-artis.mp4",
+  "slug": "anim-ekonomi-defteri-5-kira-artis",
+  "format": "ekonomi_defteri",
+  "engine": "anim",
+  "teknik": "iso",
+  "timeline": [
+    {
+      "id": "hook",
+      "t0": 0.35,
+      "t1": 4.766,
+      "cap": "Kira artış oranı nasıl hesaplanır? Ekonomi Defteri, beşinci sayfa.",
+      "words": [
+        0.35,
+        0.83,
+        1.25,
+        1.45,
+        1.71,
+        2.73,
+        3.09,
+        3.85,
+        4.21
+      ]
+    },
+    {
+      "id": "rule",
+      "t0": 5.046,
+      "t1": 15.438,
+      "cap": "Kanun der ki: kira yılda en fazla, son 12 ayın TÜFE ortalaması kadar artabilir. Kasımda yenilenen kiralar için bu oran %31,23.",
+      "words": [
+        5.046,
+        5.726,
+        5.886,
+        6.406,
+        6.626,
+        7.026,
+        7.246,
+        7.526,
+        8.006,
+        8.426,
+        8.906,
+        9.346,
+        9.846,
+        10.106,
+        11.026,
+        11.566,
+        12.126,
+        12.466,
+        12.766,
+        12.986,
+        13.226
+      ]
+    },
+    {
+      "id": "calc",
+      "t0": 15.718,
+      "t1": 24.718,
+      "cap": "Örnek: Mert'in kirası 20.000 lira. 20.000'i 1,3123 ile çarp: yeni kira en fazla 26.246 lira.",
+      "words": [
+        15.718,
+        16.838,
+        17.178,
+        17.578,
+        18.058,
+        18.638,
+        19.538,
+        20.438,
+        20.878,
+        21.578,
+        21.718,
+        22.018,
+        22.298,
+        22.638,
+        24.138
+      ]
+    },
+    {
+      "id": "avg",
+      "t0": 24.998,
+      "t1": 36.614,
+      "cap": "Dikkat, bu yıllık enflasyon değil. Ekimde yıllık enflasyon %29,77, ortalama ise %31,23. Enflasyon düşerken ortalama geriden gelir.",
+      "words": [
+        24.998,
+        26.218,
+        26.338,
+        26.658,
+        27.278,
+        27.958,
+        28.318,
+        28.598,
+        29.218,
+        31.278,
+        31.698,
+        31.898,
+        33.918,
+        34.818,
+        35.298,
+        35.778,
+        36.158
+      ]
+    },
+    {
+      "id": "cap",
+      "t0": 36.894,
+      "t1": 41.43,
+      "cap": "Ve bu bir tavan: ev sahibinle daha düşük bir artışta anlaşabilirsin.",
+      "words": [
+        36.894,
+        37.334,
+        37.494,
+        37.714,
+        38.494,
+        38.654,
+        39.314,
+        39.554,
+        39.874,
+        39.994,
+        40.434
+      ]
+    },
+    {
+      "id": "cta",
+      "t0": 41.71,
+      "t1": 47.278,
+      "cap": "Kendi kiranı parafomo.com'daki kira artış hesaplayıcısıyla hesapla. Abone ol.",
+      "words": [
+        41.71,
+        42.37,
+        42.73,
+        43.97,
+        44.29,
+        44.77,
+        45.63,
+        46.43,
+        46.91
+      ]
+    }
+  ],
+  "link": "/kira-artis-orani-hesaplama/"
+}

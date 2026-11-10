@@ -1,0 +1,56 @@
+{
+ "slug": "anim-ekonomi-defteri-5-kira-artis",
+ "title": "Kira artış oranı nasıl hesaplanır? %31,23 tavanı | Ekonomi Defteri #5",
+ "description": "Ekonomi Defteri'nin beşinci sayfası: kira artışının yasal tavanı son 12 ayın TÜFE ortalamasıdır (Türk Borçlar Kanunu md. 344). Kasım 2026'da yenilenen kiralar için tavan %31,23. Örnek: 20.000 ₺ kira × 1,3123 = en fazla 26.246 ₺. Bu oran yıllık enflasyon değildir: Ekim 2026'da yıllık TÜFE %29,77, 12 aylık ortalama %31,23. Tavan bir üst sınırdır, daha düşük artışta anlaşılabilir.\nKaynak: TÜİK TÜFE (12 aylık ortalama, Ekim 2026), TBK md. 344.\nKendi kiranı hesapla: https://parafomo.com/kira-artis-orani-hesaplama/",
+ "tags": [
+  "kira artış oranı",
+  "kira zammı",
+  "kira artış hesaplama",
+  "TÜFE ortalaması",
+  "kira tavanı",
+  "ekonomi defteri",
+  "parafomo"
+ ],
+ "style": "isometric",
+ "skin": "iso",
+ "kits": [
+  "defter"
+ ],
+ "scene": "defter-kira-artis.js",
+ "short": true,
+ "format": "ekonomi_defteri",
+ "link": "/kira-artis-orani-hesaplama/",
+ "data": {},
+ "lines": [
+  {
+   "id": "hook",
+   "say": "Kira artış oranı nasıl hesaplanır? Ekonomi Defteri, beşinci sayfa.",
+   "cap": "Kira artış oranı nasıl hesaplanır? Ekonomi Defteri, beşinci sayfa."
+  },
+  {
+   "id": "rule",
+   "say": "Kanun der ki: kira yılda en fazla, son 12 ayın TÜFE ortalaması kadar artabilir. Kasımda yenilenen kiralar için bu oran yüzde 31,23.",
+   "cap": "Kanun der ki: kira yılda en fazla, son 12 ayın TÜFE ortalaması kadar artabilir. Kasımda yenilenen kiralar için bu oran %31,23."
+  },
+  {
+   "id": "calc",
+   "say": "Örnek: Mert'in kirası 20 bin lira. 20 bini 1,3123 ile çarp: yeni kira en fazla 26 bin 246 lira.",
+   "cap": "Örnek: Mert'in kirası 20.000 lira. 20.000'i 1,3123 ile çarp: yeni kira en fazla 26.246 lira."
+  },
+  {
+   "id": "avg",
+   "say": "Dikkat, bu yıllık enflasyon değil. Ekimde yıllık enflasyon yüzde 29,77, ortalama ise yüzde 31,23. Enflasyon düşerken ortalama geriden gelir.",
+   "cap": "Dikkat, bu yıllık enflasyon değil. Ekimde yıllık enflasyon %29,77, ortalama ise %31,23. Enflasyon düşerken ortalama geriden gelir."
+  },
+  {
+   "id": "cap",
+   "say": "Ve bu bir tavan: ev sahibinle daha düşük bir artışta anlaşabilirsin.",
+   "cap": "Ve bu bir tavan: ev sahibinle daha düşük bir artışta anlaşabilirsin."
+  },
+  {
+   "id": "cta",
+   "say": "Kendi kiranı parafomo.com'daki kira artış hesaplayıcısıyla hesapla. Abone ol.",
+   "cap": "Kendi kiranı parafomo.com'daki kira artış hesaplayıcısıyla hesapla. Abone ol."
+  }
+ ]
+}
