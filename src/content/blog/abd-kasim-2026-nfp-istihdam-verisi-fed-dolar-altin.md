@@ -1,6 +1,6 @@
 ---
 title: "ABD Ekim İstihdam Verisi Açıklandı: NFP +165 Bin, İşsizlik %4,1"
-description: "ABD Ekim istihdam verisi (6 Kasım 2026): NFP +165 bin (beklenti ~65 bin), işsizlik %4,1, saatlik kazanç yıllık %3,1. Eylül +60 bine revize edildi. Fed, dolar ve altın etkisi."
+description: "ABD Ekim istihdam verisi (6 Kasım 2026): NFP +165 bin (beklenti ~65 bin), işsizlik %4,1. Eylül +60 bine revize edildi. Fed, dolar ve altına etkisi."
 pubDate: 2026-11-05
 updatedDate: 2026-11-10
 category: "Ekonomi"
