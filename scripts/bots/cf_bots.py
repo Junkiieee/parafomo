@@ -31,8 +31,13 @@ BOTS = [
     ("bingbot", "Microsoft", "klasik"), ("YandexBot", "Yandex", "klasik"), ("DuckDuckBot", "DuckDuckGo", "klasik"),
     ("facebookexternalhit", "Meta", "onizleme"), ("Twitterbot", "X", "onizleme"), ("TelegramBot", "Telegram", "onizleme"),
     ("WhatsApp", "Meta", "onizleme"), ("Slackbot", "Slack", "onizleme"),
+    # 2026-11-10 ilk 30 günlük arşivde tanınmayanlar
+    ("PetalBot", "Huawei", "arama"), ("ShapBot", "Shap", "arama"), ("KeenableBot", "Keenable", "arama"),
+    ("Reflectionbot", "Reflection AI", "egitim"),
+    ("AhrefsBot", "Ahrefs", "seo"), ("SemrushBot", "Semrush", "seo"), ("MJ12bot", "Majestic", "seo"), ("DotBot", "Moz", "seo"),
+    ("trendictionbot", "Talkwalker", "izleme"),
 ]
-AI_SAGLAYICI = {"OpenAI", "Anthropic", "Perplexity", "Mistral", "Meta", "Amazon", "ByteDance", "Common Crawl"}
+AI_SAGLAYICI = {"OpenAI", "Anthropic", "Perplexity", "Mistral", "Meta", "Amazon", "ByteDance", "Common Crawl", "Reflection AI", "Shap"}
 
 
 def env():
@@ -86,7 +91,7 @@ def pull(days):
                 bot, prov, amac = classify(dm["userAgent"], dm["verifiedBotCategory"])
                 rows.append({"ts": s.isoformat(), "path": dm["clientRequestPath"], "bot": bot, "saglayici": prov,
                              "amac": amac, "cf_kategori": dm["verifiedBotCategory"], "status": dm["edgeResponseStatus"],
-                             "n": g["count"]})
+                             "n": g["count"], **({"ua": (dm["userAgent"] or "")[:160]} if prov == "?" else {})})
         fn = os.path.join(OUT, f"{(day_end - dt.timedelta(hours=1)):%Y-%m-%d}.jsonl")
         with open(fn, "w") as f:
             for r in rows:
@@ -119,6 +124,14 @@ def report(days):
         print(f"\n{baslik}")
         for p, n in c.most_common(15):
             print(f"  {n:5d}  {p}")
+    unk = collections.Counter()
+    for r in rows:
+        if r["saglayici"] == "?" and r.get("ua"):
+            unk[(r["bot"], r["ua"][:110])] += r["n"]
+    if unk:
+        print("\nTANINMAYAN BOTLAR (Cloudflare kategorisi · user-agent) → BOTS listesine eklenecek adaylar")
+        for (cat, ua), n in unk.most_common(12):
+            print(f"  {n:5d}  {cat:<24} {ua}")
     err = collections.Counter((r["bot"], r["status"]) for r in rows if r["status"] >= 400 and r["saglayici"] in AI_SAGLAYICI | {"Google"})
     if err:
         print("\nHATA ALAN BOT İSTEKLERİ (bot, durum)")

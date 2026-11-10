@@ -1,6 +1,6 @@
 # Kaan'dan beklenenler (güncelleme 2026-10-28 RC — 3 kısa iş + 1 tarihli + 1 karar; 10-30 madde 6 kapandı)
 
-5. **Cloudflare anahtarına "okuma" izni ekle (2 dakika) — botları görmek için** _(Kaan 2026-11-09: "yarın yaparım")_
+5. **Sunucu zamanlayıcısını kur (1 dakika) — Cloudflare izni ✅ 2026-11-10 eklendi (parafomo-claude token, 30 günlük geçmiş çekildi)** Kalan tek adım: Claude oturumunda `! crontab /root/parafomo/deploy/crontab.txt`
    dash.cloudflare.com → sağ üst profil → **My Profile → API Tokens** → parafomo'nun kullandığı token'ın yanındaki
    **Edit** → Permissions'a iki satır olduğundan emin ol: **Zone · Zone · Read** ve **Zone · Analytics · Read** (Zone Resources: parafomo.com) → Continue → Update Token.
    Token değişmez, sadece izni genişler. Sonra Claude oturumunda şu tek satırı çalıştır (günlük bot arşivi zamanlaması;
