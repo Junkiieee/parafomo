@@ -1,17 +1,13 @@
 # Kaan'dan beklenenler (güncelleme 2026-10-28 RC — 3 kısa iş + 1 tarihli + 1 karar; 10-30 madde 6 kapandı)
 
-4. **Google'a "yeniden tara" de — 3 sayfa (5 dakika)** _(2026-11-09 GSC ile kontrol: bu 3 sayfa Google'da hâlâ 3 Kasım ÖNCESİ haliyle; mtv/emlak 4 Kasım'da kendiliğinden tarandı)_
-   Search Console → üstteki "URL denetimi" kutusu → adresi yapıştır → "Dizine eklenmesini iste":
-   parafomo.com/yeniden-degerleme-orani/ (son tarama 29 Eki) · parafomo.com/blog/2027-zamlari-yeniden-degerleme-orani-rehberi/
-   (1 Kas) · parafomo.com/kira-artis-orani-hesaplama/ (31 Eki). Neden: Google eski "tahmin" hâlini gösteriyor; zam
-   sezonu aramaları şimdi zirvede. (Aynısı 5 Ocak'ta emekli/memur zammı sayfaları için de değerli olacak.)
-
 5. **Cloudflare anahtarına "okuma" izni ekle (2 dakika) — botları görmek için** _(Kaan 2026-11-09: "yarın yaparım")_
    dash.cloudflare.com → sağ üst profil → **My Profile → API Tokens** → parafomo'nun kullandığı token'ın yanındaki
    **Edit** → Permissions'a iki satır olduğundan emin ol: **Zone · Zone · Read** ve **Zone · Analytics · Read** (Zone Resources: parafomo.com) → Continue → Update Token.
    Token değişmez, sadece izni genişler. Sonra Claude oturumunda şu tek satırı çalıştır (günlük bot arşivi zamanlaması;
    sınıflandırıcı crontab yazmama izin vermiyor): `! crontab /root/parafomo/deploy/crontab.txt` — ve bana "ekledim" yaz. Sonra: hangi bot (Google, ChatGPT, Claude, Perplexity) hangi
    sayfaları ne sıklıkla okuyor haftalık rapor (Cloudflare'in IP ile doğruladığı bot etiketleri — verifiedBotCategory; yöntem DuvInc/cloudflare-ai-crawl-history (MIT) ile aynı, ama Python cron + yerel arşiv; CF 30 gün tutar, biz kalıcı saklarız) + ChatGPT/Perplexity'nin kullanıcı sorusu üzerine açtığı sayfalar → konu seçimi.
+
+_2026-11-10: Madde 4 (GSC yeniden tara: yeniden-degerleme-orani, 2027 rehberi, kira-artis) Kaan "yaptım" → KAPANDI. CEO raporu 11-11/11-12'de URL denetimiyle son taramanın 10 Kasım sonrasına geçtiğini doğrulasın; geçmediyse tekrar sor._
 
 _2026-11-09: R15 EVET (Kaan) → /sitene-ekle/ + /embed/altin + /embed/kira-artis yayında (2659a7a). Cinecode denemesi: Kaan "şimdilik yapma"._
 
