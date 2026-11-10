@@ -10,7 +10,7 @@ faq:
   - q: "ABD Ekim PPI verisi ne zaman açıklanacak?"
     a: "ABD Çalışma İstatistikleri Bürosu (BLS), Ekim 2026 üretici fiyat endeksini 13 Kasım 2026 Cuma günü ABD saatiyle 08:30'da yayımlıyor. ABD kış saatine geçtiği için bu, Türkiye saatiyle 16:30 demek."
   - q: "Bir önceki ABD PPI verisi kaç gelmişti?"
-    a: "15 Ekim'de açıklanan Eylül verisinde nihai talep PPI aylık %1,3, yıllık %6,3 arttı. Yıllık beklenti %5,3 civarındaydı; Ağustos'taki yıllık oran %5,4'tü. Artışın yüzde 80'den fazlası aylık %10,8 yükselen enerji fiyatlarından geldi."
+    a: "15 Ekim'de açıklanan Eylül verisinde nihai talep PPI aylık %1,3, yıllık %6,3 arttı. Yıllık beklenti %5,3 civarındaydı; Ağustos'taki yıllık oran %5,4'tü. Mal fiyatlarındaki artışın yüzde 80'den fazlası aylık %10,8 yükselen enerji fiyatlarından geldi."
   - q: "PPI verisi neden CPI'dan sonra da önemli?"
     a: "PPI, üreticilerin maliyetlerini ölçtüğü için CPI'a birkaç ay önden sinyal verir. Ayrıca Fed'in asıl hedef göstergesi PCE'nin bazı kalemleri (sağlık, hava yolu, portföy yönetimi) doğrudan PPI'dan hesaplanır; bu yüzden CPI'dan sonra gelse de Fed tahminlerini değiştirebilir."
   - q: "ABD PPI verisi gram altını nasıl etkiler?"
@@ -45,7 +45,7 @@ Ekim verisini doğru okumak için Eylül'deki sıçramayı anlamak gerekiyor. BL
 |-----------------------|---------|
 | Nihai talep PPI, aylık | **%1,3** (Mart'taki %1,7'den bu yana en yüksek) |
 | Nihai talep PPI, yıllık | **%6,3** (Ağustos: %5,4; beklenti: %5,3) |
-| Nihai talep malları, aylık | %2,6 (2009'dan bu yana serinin en büyük artışı) |
+| Nihai talep malları, aylık | %2,6 (serinin başladığı 2009'dan bu yana en büyük artış) |
 | Nihai talep enerjisi, aylık | **%10,8** |
 | Nihai talep gıdası, aylık | %1,2 |
 | Gıda ve enerji hariç mallar, aylık | %0,3 |
@@ -54,7 +54,7 @@ Ekim verisini doğru okumak için Eylül'deki sıçramayı anlamak gerekiyor. BL
 
 Tablodan üç sonuç çıkıyor:
 
-1. **Sıçramanın motoru enerji.** BLS'ye göre aylık artışın yüzde 80'den fazlası enerji endeksindeki %10,8'lik yükselişten geldi. Gıda ve enerji hariç mallardaki artış ise %0,3 ile çok daha ılımlı.
+1. **Sıçramanın motoru enerji.** BLS'ye göre nihai talep mallarındaki aylık artışın yüzde 80'den fazlası enerji endeksindeki %10,8'lik yükselişten geldi. Gıda ve enerji hariç mallardaki artış ise %0,3 ile çok daha ılımlı.
 2. **Hizmetler de sakin değil.** Hizmet fiyatlarının aylık %0,8 artması, baskının yalnızca petrol fiyatlarıyla sınırlı olmadığını gösteriyor.
 3. **Yapısal ölçü yüksek seyrediyor.** Gıda, enerji ve ticaret hizmetleri hariç yıllık %5,0, Fed'in %2 hedefinin çok üzerinde.
 
@@ -106,7 +106,7 @@ Bilgilendirme amaçlı birkaç pratik not:
 ## Özet
 
 - **ABD Ekim PPI verisi 13 Kasım 2026, TSİ 16:30'da** açıklanıyor; kış saati nedeniyle saat 15:30 değil.
-- Eylül'de üretici enflasyonu aylık **%1,3**, yıllık **%6,3** geldi; artışın yüzde 80'den fazlası **%10,8'lik enerji** sıçramasından kaynaklandı.
+- Eylül'de üretici enflasyonu aylık **%1,3**, yıllık **%6,3** geldi; mal fiyatlarındaki artışın yüzde 80'den fazlası **%10,8'lik enerji** sıçramasından kaynaklandı.
 - Ekim'de enerjinin tersine dönmesi manşeti düşürebilir; asıl sinyal **çekirdek kalemler ve hizmetler**de.
 - PPI, PCE tahminlerini doğrudan etkilediği için Fed'in **9 Aralık** kararından önceki kritik verilerden biri.
 
