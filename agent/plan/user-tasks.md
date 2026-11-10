@@ -1,11 +1,6 @@
 # Kaan'dan beklenenler (güncelleme 2026-10-28 RC — 3 kısa iş + 1 tarihli + 1 karar; 10-30 madde 6 kapandı)
 
-5. **Sunucu zamanlayıcısını kur (1 dakika) — Cloudflare izni ✅ 2026-11-10 eklendi (parafomo-claude token, 30 günlük geçmiş çekildi)** Kalan tek adım: Claude oturumunda `! crontab /root/parafomo/deploy/crontab.txt`
-   dash.cloudflare.com → sağ üst profil → **My Profile → API Tokens** → parafomo'nun kullandığı token'ın yanındaki
-   **Edit** → Permissions'a iki satır olduğundan emin ol: **Zone · Zone · Read** ve **Zone · Analytics · Read** (Zone Resources: parafomo.com) → Continue → Update Token.
-   Token değişmez, sadece izni genişler. Sonra Claude oturumunda şu tek satırı çalıştır (günlük bot arşivi zamanlaması;
-   sınıflandırıcı crontab yazmama izin vermiyor): `! crontab /root/parafomo/deploy/crontab.txt` — ve bana "ekledim" yaz. Sonra: hangi bot (Google, ChatGPT, Claude, Perplexity) hangi
-   sayfaları ne sıklıkla okuyor haftalık rapor (Cloudflare'in IP ile doğruladığı bot etiketleri — verifiedBotCategory; yöntem DuvInc/cloudflare-ai-crawl-history (MIT) ile aynı, ama Python cron + yerel arşiv; CF 30 gün tutar, biz kalıcı saklarız) + ChatGPT/Perplexity'nin kullanıcı sorusu üzerine açtığı sayfalar → konu seçimi.
+_2026-11-10: Madde 5 KAPANDI — Cloudflare izni (parafomo-claude token) + crontab kuruldu (cf_bots 03:20 UTC). Açık Kaan görevi yok._
 
 _2026-11-10: Madde 4 (GSC yeniden tara: yeniden-degerleme-orani, 2027 rehberi, kira-artis) Kaan "yaptım" → KAPANDI. CEO raporu 11-11/11-12'de URL denetimiyle son taramanın 10 Kasım sonrasına geçtiğini doğrulasın; geçmediyse tekrar sor._
 
