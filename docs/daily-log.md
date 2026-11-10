@@ -1,5 +1,9 @@
 # Günlük Operasyon Günlüğü
 
+## 2026-11-10
+**Yayınlanan yazı:** [ABD Ekim PPI Verisi 13 Kasım: Üretici Enflasyonu, Fed, Altın](/blog/abd-ekim-2026-ppi-uretici-enflasyonu-fed-dolar-altin)
+Seçim kaynağı: takvim (🔴 ABD PPI 13 Kasım; ajan kuyruğu boştu, CPI zaten yazılmıştı)
+
 ## 2026-11-09
 **Yayınlanan yazı:** [ABD Ekim Enflasyonu (CPI) 10 Kasım: Fed, Dolar, Altın](/blog/abd-kasim-2026-cpi-verisi-fed-dolar-altin)
 Seçim kaynağı: kuyruk (📅 ABD CPI 10 Kasım 16:30 TSİ; Ekim NFP +165 bin sonucu eklendi; konsensüs henüz yok → uydurulmadı)
