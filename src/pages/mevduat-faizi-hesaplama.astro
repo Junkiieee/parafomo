@@ -3,10 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import faiz from '../../data/faiz-oranlari.json';
 
-// 2026 güncel TL mevduat stopaj (gelir vergisi tevkifatı) oranları — vadeye göre.
-// Kaynak: banka resmi tabloları (DenizBank, Yapı Kredi), 9 Temmuz 2025'ten beri geçerli.
-// ≤6 ay: %17,5 · 6 ay–1 yıl: %15 · 1 yıldan uzun: %10.
-const STOPAJ = { short: 0.175, mid: 0.15, long: 0.10 };
+// TL mevduat stopaj oranları — tek kaynak data/stopaj-mevduat.json (karar, Resmî Gazete, bitiş tarihi orada).
+// ≤6 ay: %17,5 · 6 ay–1 yıl: %15 · 1 yıldan uzun: %10 (11444 s. CB Kararı ile 31.12.2026'ya kadar).
+import stopajData from '../../data/stopaj-mevduat.json';
+const STOPAJ = stopajData.oranlar;
+const STOPAJ_BITIS = (() => { const [y, m, d] = stopajData.bitis.split('-').map(Number); return `${d} ${['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'][m - 1]} ${y}`; })();
+const STOPAJ_DOLDU = new Date().toISOString().slice(0, 10) > stopajData.bitis;
 
 function tierForDays(days: number) {
   if (days <= 184) return { rate: STOPAJ.short, label: '6 aya kadar' }; // 6 aylık vade (181-184 gün) dahil
@@ -63,7 +65,7 @@ const faq = [
   },
   {
     q: 'TL mevduatta stopaj oranı 2026 ne kadar?',
-    a: '2026 itibarıyla TL vadeli mevduat faizinde stopaj vadeye göre kademelidir: 6 aya kadar %17,5, 6 ay ile 1 yıl arası %15, 1 yıldan uzun vadede %10. Bu oranlar 9 Temmuz 2025\'ten beri geçerlidir ve bankaların resmi tablolarıyla uyumludur. Döviz (YP) mevduatında oran daha yüksektir; altın mevduatında %15 uygulanır.',
+    a: '2026 itibarıyla TL vadeli mevduat faizinde stopaj vadeye göre kademelidir: 6 aya kadar %17,5, 6 ay ile 1 yıl arası %15, 1 yıldan uzun vadede %10. Bu oranlar 11444 sayılı Cumhurbaşkanı Kararı ile 31 Aralık 2026\'ya kadar uzatıldı; yeni karar Resmî Gazete\'de yayımlanınca bu sayfa güncellenir. Döviz (YP) mevduatında oran daha yüksektir; altın mevduatında %15 uygulanır.',
   },
   {
     q: 'Uzun vadeli mevduat neden daha avantajlı?',
@@ -215,15 +217,17 @@ const breadcrumbs = [
         </table>
       </div>
 
-      <h2>2026 TL mevduat stopaj oranları</h2>
+      <h2 id="stopaj">2026 TL mevduat stopaj oranları</h2>
       <ul>
         <li><strong>6 aya kadar vade:</strong> %17,5 stopaj</li>
         <li><strong>6 ay – 1 yıl vade:</strong> %15 stopaj</li>
         <li><strong>1 yıldan uzun vade:</strong> %10 stopaj</li>
       </ul>
       <p>
-        Bu oranlar 9 Temmuz 2025 tarihinden itibaren açılan/yenilenen hesaplar için geçerlidir
-        ve bankaların resmi stopaj tablolarıyla uyumludur. Döviz (YP) mevduatında oran daha
+        Bu oranlar {stopajData.karar} ile <strong>{STOPAJ_BITIS}</strong> tarihine kadar geçerlidir
+        (Resmî Gazete {stopajData.resmiGazete}). {STOPAJ_DOLDU
+          ? 'Bu tarih geçti; yeni karar Resmî Gazete\'de yayımlandığında oranlar burada güncellenecek. Hesap şimdilik son geçerli oranlarla yapılıyor.'
+          : 'Bu süre genellikle bitmeden kısa bir süre önce yeni bir kararla uzatılıyor ya da değiştiriliyor; yeni karar Resmî Gazete\'de çıktığında bu sayfa aynı gün güncellenir.'} Döviz (YP) mevduatında oran daha
         yüksek, altın (kıymetli maden) hesaplarında %15'tir. Mevduat faizi vergilendirmesi
         kaynağında kesinti (stopaj) yöntemiyle olur; ayrıca yıllık beyanname vermeniz gerekmez.
       </p>

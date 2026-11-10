@@ -1,0 +1,9 @@
+{
+  "_not": "TL mevduat/katılım hesabı stopajı (GVK geçici 67, 2006/10731 BKK geçici 4. md.). Değiştirmeden önce Resmî Gazete metnini oku; scripts/watch/resmi_gazete.py her sabah yeni kararı yakalar.",
+  "oranlar": { "short": 0.175, "mid": 0.15, "long": 0.10 },
+  "karar": "11444 sayılı Cumhurbaşkanı Kararı",
+  "resmiGazete": "20 Haziran 2026, sayı 33286",
+  "kaynak": "https://www.resmigazete.gov.tr/eskiler/2026/06/20260620-4.pdf",
+  "bitis": "2026-12-31",
+  "kontrol": "2026-11-10"
+}

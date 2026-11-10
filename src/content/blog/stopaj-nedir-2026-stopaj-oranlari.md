@@ -2,6 +2,7 @@
 title: "Stopaj Nedir? 2026 Stopaj Oranları: Mevduat, Fon, Hisse"
 description: "Stopaj nedir, 2026'da stopaj oranı ne kadar? Mevduat, yatırım fonu, hisse, temettü ve kira stopajı tek tabloda; kesinti örnekleri ve Resmî Gazete kaynakları."
 pubDate: 2026-10-15
+updatedDate: 2026-11-10
 category: "Kişisel Finans"
 tags: ["stopaj nedir", "stopaj oranı 2026", "mevduat stopajı", "fon stopajı", "temettü stopajı", "vergi"]
 readingTime: 8
@@ -31,6 +32,8 @@ shorts_broll:
 ---
 
 **Stopaj nedir** sorusunun kısa cevabı: kazancının vergisi, para hesabına geçmeden önce kaynağında kesilir. Mevduat faizinde bankanın, fon satışında portföy şirketinin, temettüde şirketin yaptığı bu kesintiye stopaj (resmî adıyla *gelir vergisi tevkifatı*) denir. Bu yazıda 2026'da geçerli **stopaj oranlarını** araç araç, kaynak ve tarihleriyle tek tabloda topladık; kesintinin cebine etkisini de örnek hesaplarla gösterdik.
+
+> **31 Aralık 2026'da bitiyor:** TL mevduattaki %17,5 / %15 / %10 oranları, 11444 sayılı Cumhurbaşkanı Kararı (Resmî Gazete 20 Haziran 2026, sayı 33286) ile **31 Aralık 2026'ya kadar** geçerli. 2027 için yeni karar Resmî Gazete'de yayımlandığı gün bu yazıyı ve [mevduat faizi hesaplayıcısını](/mevduat-faizi-hesaplama/#stopaj) güncelliyoruz.
 
 > **Not:** Oranlar 15 Ekim 2026 itibarıyla Resmî Gazete'de yayımlanan Cumhurbaşkanı Kararları ve bankaların resmî vergilendirme tablolarına göre derlenmiştir. Stopaj oranları kararla kısa sürede değişebilir; işlem öncesi bankandan teyit et.
 
