@@ -1,6 +1,6 @@
 ---
 title: "ABD 10 Yıllık Tahvil Faizi Nedir? Küresel Piyasaların Barometresi"
-description: "ABD 10 yıllık tahvil faizi nedir ve neden bu kadar kritik? Fed politikası, enflasyon ve küresel risk iştahının TL, BIST ve carry trade üzerindeki etkisini adım adım öğrenin."
+description: "ABD 10 yıllık tahvil faizi nedir, neden kritik? Fed, enflasyon ve risk iştahının TL, BIST ve carry trade üzerindeki etkisini adım adım öğrenin."
 pubDate: 2026-08-10
 category: "Ekonomi"
 tags: ["abd tahvil faizi", "10 yıllık tahvil", "treasury yield", "fed", "dolar", "TL", "tahvil", "faiz", "küresel piyasalar"]

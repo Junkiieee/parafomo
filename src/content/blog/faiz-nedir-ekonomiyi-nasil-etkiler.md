@@ -1,6 +1,6 @@
 ---
 title: "Ekonomide Faiz Nedir? Borsayı, Dolar'ı ve Mevduatı Nasıl Etkiler?"
-description: "Ekonomide faiz nedir, merkez bankaları neden faiz değiştirir ve bu kararlar dolar kuru, borsa, mevduat, kredi maliyetlerini nasıl etkiler? Türkiye bağlamıyla tam rehber."
+description: "Faiz nedir, merkez bankaları neden faiz değiştirir? Bu kararlar dolar kuru, borsa, mevduat ve kredi maliyetini nasıl etkiler? Türkiye odaklı rehber."
 pubDate: 2026-08-04
 category: "Ekonomi"
 tags: ["ekonomide faiz nedir", "faiz nedir", "merkez bankası faizi", "tcmb faiz kararı", "faiz etkisi", "ekonomi", "enflasyon"]

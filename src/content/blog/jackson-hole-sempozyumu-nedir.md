@@ -1,6 +1,6 @@
 ---
 title: "Jackson Hole Nedir, Ne Zaman? 2026 Warsh Konuşması ve Etkisi"
-description: "Jackson Hole Sempozyumu nedir, ne zaman yapılır? 2026'da 27-29 Ağustos'ta yapıldı; Warsh'ın konuşması ve istihdam revizyonu piyasayı nasıl etkiledi? Fed başkanının konuşması dolar, TL, altın ve borsaya nasıl yansır?"
+description: "Jackson Hole Sempozyumu nedir, ne zaman yapılır? 2026'da 27-29 Ağustos'ta yapıldı; Warsh'ın konuşması dolar, TL, altın ve borsaya nasıl yansıdı?"
 pubDate: 2026-08-21
 updatedDate: 2026-10-22
 category: "Ekonomi"

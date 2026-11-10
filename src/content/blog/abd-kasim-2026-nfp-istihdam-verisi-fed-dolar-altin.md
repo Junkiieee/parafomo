@@ -1,6 +1,6 @@
 ---
 title: "ABD Ekim İstihdam Verisi (NFP) 6 Kasım: Fed, Dolar, Altın"
-description: "ABD Ekim istihdam verisi (NFP) 6 Kasım 2026'da TSİ 16:30'da açıklanıyor. Eylül'ün +29 binlik zayıf rakamı sonrası senaryolar, Fed Aralık kararı, dolar ve altın etkisi."
+description: "ABD Ekim istihdam verisi (NFP) 6 Kasım 2026'da TSİ 16:30'da açıklanıyor. Eylül'ün +29 binlik zayıf rakamı sonrası senaryolar, Fed, dolar ve altın."
 pubDate: 2026-11-05
 category: "Ekonomi"
 tags: ["ABD istihdam verisi", "NFP", "tarım dışı istihdam", "Fed Aralık 2026", "dolar altın etkisi", "ABD işsizlik oranı"]

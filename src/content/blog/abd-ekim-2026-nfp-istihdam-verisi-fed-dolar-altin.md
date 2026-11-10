@@ -1,6 +1,6 @@
 ---
 title: "ABD Eylül İstihdam Verisi: NFP +29 Bin, İşsizlik %4,2"
-description: "ABD Eylül NFP verisi 2 Ekim 2026'da açıklandı: +29 bin istihdam (beklenti ~85-90 bin), işsizlik %4,2, saatlik kazanç yıllık %3,0. Fed 28 Ekim kararı, dolar ve altın için ne anlama geliyor?"
+description: "ABD Eylül NFP verisi 2 Ekim 2026'da açıklandı: +29 bin istihdam (beklenti ~85-90 bin), işsizlik %4,2. Fed 28 Ekim kararı, dolar ve altın için anlamı."
 pubDate: 2026-09-29
 updatedDate: 2026-10-22
 category: "Ekonomi"

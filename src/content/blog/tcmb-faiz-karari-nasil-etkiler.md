@@ -1,6 +1,6 @@
 ---
 title: "TCMB Faiz Kararı Paranı Nasıl Etkiler? Kredi, Mevduat, Döviz"
-description: "TCMB faiz kararı öncesinde bilmen gerekenler: artış, indirim veya sabit kararının kredi, mevduat, dolar kuru ve borsayı nasıl etkilediğini 3 senaryo tablosuyla anlatıyoruz."
+description: "TCMB faiz kararı kredi, mevduat, dolar kuru ve borsayı nasıl etkiler? Artış, indirim ve sabit kararını 3 senaryo tablosuyla anlatıyoruz."
 pubDate: 2026-07-19
 updatedDate: 2026-10-22
 category: "Ekonomi"

@@ -1,6 +1,6 @@
 ---
 title: "İngiltere GDP Açıklandı: Temmuz'da %0,4 Büyüme, Sterlin ve BOE"
-description: "ONS 11 Eylül 2026: İngiltere ekonomisi Temmuz'da aylık %0,4 büyüdü (Haziran %0,3), 3 aylık %0,4. Güçlü büyüme senaryosu gerçekleşti; BOE faiz yolu ve sterlinin TL'ye yansıması."
+description: "ONS 11 Eylül 2026: İngiltere ekonomisi Temmuz'da aylık %0,4 büyüdü (Haziran %0,3), 3 aylık %0,4. BOE faiz yolu ve sterlinin TL'ye yansıması."
 updatedDate: 2026-10-22
 pubDate: 2026-09-11
 category: "Ekonomi"

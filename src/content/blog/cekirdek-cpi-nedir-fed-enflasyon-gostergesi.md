@@ -1,6 +1,6 @@
 ---
 title: "ABD CPI ve Çekirdek CPI Nedir? Fed, Dolar ve TL'ye Etkisi"
-description: "ABD CPI (Tüketici Fiyat Endeksi) ve çekirdek CPI nedir, nasıl okunur, ne zaman açıklanır? Fed faiz kararlarını, doları, altını ve TL'yi nasıl etkiler? Sade bir rehber."
+description: "ABD CPI ve çekirdek CPI nedir, nasıl okunur, ne zaman açıklanır? Fed faiz kararlarını, doları, altını ve TL'yi nasıl etkiler? Sade bir rehber."
 pubDate: 2026-08-10
 updatedDate: 2026-10-22
 category: "Ekonomi"

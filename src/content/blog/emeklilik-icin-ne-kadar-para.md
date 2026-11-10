@@ -1,6 +1,6 @@
 ---
 title: "Emeklilikte Ne Kadar Paraya İhtiyacın Var? Gerçekçi Hesap Rehberi"
-description: "Emeklilik için ne kadar para biriktirmen gerektiğini hesapla: Türkiye koşullarında yaşam gideri, enflasyon ve SGK maaşı dahil adım adım gerçekçi emeklilik hedefi rehberi."
+description: "Emeklilik için ne kadar para biriktirmelisin? Türkiye'de yaşam gideri, enflasyon ve SGK maaşıyla adım adım gerçekçi emeklilik hedefi hesabı."
 pubDate: 2026-07-21
 category: "Emeklilik"
 tags: ["emeklilik", "emeklilik planlaması", "emeklilik için para", "BES", "tasarruf", "SGK", "finansal planlama"]

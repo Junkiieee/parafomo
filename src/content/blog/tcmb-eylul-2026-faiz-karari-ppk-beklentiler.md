@@ -1,6 +1,6 @@
 ---
 title: "TCMB Eylül 2026 Faiz Kararı Açıklandı: Politika Faizi %37'de Sabit"
-description: "TCMB 10 Eylül 2026'da politika faizini %37'de sabit tuttu (borç verme %40, borçlanma %35,5). Karar öncesi senaryolar, kredi-mevduat ve dolar/TL etkisi; sıradaki PPK 22 Ekim."
+description: "TCMB 10 Eylül 2026'da politika faizini %37'de sabit tuttu (borç verme %40, borçlanma %35,5). Kredi, mevduat ve dolar/TL etkisi; sıradaki PPK 22 Ekim."
 pubDate: 2026-09-06
 updatedDate: 2026-10-22
 category: "Ekonomi"
