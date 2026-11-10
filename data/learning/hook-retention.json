@@ -1,31 +1,31 @@
 {
-  "fetched_utc": "2026-11-09T08:47:23Z",
+  "fetched_utc": "2026-11-10T08:46:41Z",
   "hold_sec": 3.0,
-  "n": 5,
-  "median_hold_3s": 1.0,
+  "n": 4,
+  "median_hold_3s": 1.077,
   "avd_gate_pct": 65.0,
-  "median_avg_view_pct": 54.1,
-  "gate_pass_share": 0.4,
+  "median_avg_view_pct": 67.4,
+  "gate_pass_share": 0.5,
   "gate_pass_n": 2,
-  "gate_breakdown_n": 30,
+  "gate_breakdown_n": 32,
   "gate_by_format": {
+    "single_concept": {
+      "n": 4,
+      "median_avd": 35.0,
+      "gate_pass_n": 0,
+      "gate_pass_share": 0.0
+    },
+    "myth": {
+      "n": 6,
+      "median_avd": 40.3,
+      "gate_pass_n": 1,
+      "gate_pass_share": 0.167
+    },
     "shock_number": {
       "n": 10,
       "median_avd": 20.7,
       "gate_pass_n": 3,
       "gate_pass_share": 0.3
-    },
-    "single_concept": {
-      "n": 3,
-      "median_avd": 34.7,
-      "gate_pass_n": 0,
-      "gate_pass_share": 0.0
-    },
-    "myth": {
-      "n": 5,
-      "median_avd": 35.5,
-      "gate_pass_n": 0,
-      "gate_pass_share": 0.0
     },
     "daily-short": {
       "n": 5,
@@ -35,6 +35,15 @@
     }
   },
   "videos": [
+    {
+      "id": "youtube:3BXNVD9a32E",
+      "video_id": "3BXNVD9a32E",
+      "duration_sec": 36,
+      "hold_3s": 1.0,
+      "rel_perf_3s": 0.067,
+      "avg_view_pct": 37.2,
+      "published_utc": "2026-11-07T16:01:44Z"
+    },
     {
       "id": "youtube:E64L-FnLhrg",
       "video_id": "E64L-FnLhrg",
@@ -61,24 +70,6 @@
       "rel_perf_3s": 0.514,
       "avg_view_pct": 148.5,
       "published_utc": "2026-10-30T21:03:47Z"
-    },
-    {
-      "id": "youtube:4QUV6nE9IgA",
-      "video_id": "4QUV6nE9IgA",
-      "duration_sec": 31,
-      "hold_3s": 1.0,
-      "rel_perf_3s": 0.062,
-      "avg_view_pct": 40.3,
-      "published_utc": "2026-10-30T13:05:10Z"
-    },
-    {
-      "id": "youtube:0db5l5AtDYY",
-      "video_id": "0db5l5AtDYY",
-      "duration_sec": 37,
-      "hold_3s": 1.0,
-      "rel_perf_3s": 0.279,
-      "avg_view_pct": 54.1,
-      "published_utc": "2026-10-30T06:42:26Z"
     }
   ]
 }
