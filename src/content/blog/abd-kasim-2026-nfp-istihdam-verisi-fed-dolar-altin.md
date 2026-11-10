@@ -1,7 +1,8 @@
 ---
-title: "ABD Ekim İstihdam Verisi (NFP) 6 Kasım: Fed, Dolar, Altın"
-description: "ABD Ekim istihdam verisi (NFP) 6 Kasım 2026'da TSİ 16:30'da açıklanıyor. Eylül'ün +29 binlik zayıf rakamı sonrası senaryolar, Fed, dolar ve altın."
+title: "ABD Ekim İstihdam Verisi Açıklandı: NFP +165 Bin, İşsizlik %4,1"
+description: "ABD Ekim istihdam verisi (6 Kasım 2026): NFP +165 bin (beklenti ~65 bin), işsizlik %4,1, saatlik kazanç yıllık %3,1. Eylül +60 bine revize edildi. Fed, dolar ve altın etkisi."
 pubDate: 2026-11-05
+updatedDate: 2026-11-10
 category: "Ekonomi"
 tags: ["ABD istihdam verisi", "NFP", "tarım dışı istihdam", "Fed Aralık 2026", "dolar altın etkisi", "ABD işsizlik oranı"]
 readingTime: 8
@@ -35,6 +36,8 @@ shorts_visuals:
   - "object|turkish lira banknotes"
   - "concept|stock market financial data screen"
 ---
+
+> **Açıklandı (6 Kasım 2026, ABD Çalışma İstatistikleri Bürosu BLS):** Ekim'de tarım dışı istihdam **+165 bin** arttı; piyasa beklentisi ~65 bindi. İşsizlik oranı **%4,1** (Eylül %4,2). Ortalama saatlik kazanç yıllık **%3,1** arttı. Önceki aylar yukarı revize edildi: Eylül +29 binden **+60 bine**, Ağustos +133 binden **+186 bine**. Aşağıdaki senaryolar veri öncesinde yazıldı; gerçekleşen tablo yazıdaki "güçlü veri" ihtimaline yakın. Kaynak: [BLS Employment Situation](https://www.bls.gov/news.release/archives/empsit_11062026.htm).
 
 **ABD Ekim istihdam verisi (NFP)** 6 Kasım 2026 Cuma günü Türkiye saatiyle **16:30**'da açıklanıyor. Eylül'de sadece **+29 bin** yeni iş eklenmesinin ardından piyasa şu soruya cevap arıyor: ABD işgücü piyasası gerçekten soğuyor mu, yoksa Eylül bir istisna mıydı? Bu yazıda verinin neden önemli olduğunu, önceki rakamları, üç olası senaryoyu ve dolar, altın ve TL'ye olası etkilerini anlatıyoruz.
 
