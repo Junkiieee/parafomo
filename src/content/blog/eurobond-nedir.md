@@ -101,7 +101,7 @@ Bu iki araç sık karıştırılır. Özet tablo:
 | Likidite | İkincil piyasada kısıtlı | Vadeli hesapta düşük, vadesizde yüksek |
 | Fiyat riski | Var | Yok |
 
-Kısa vadeli ihtiyaç için mevduat daha güvenli. 5 yıl veya üzeri için eurobond tipik olarak 1-3 puan fazla getiri sağlar; büyük birikimde bu fark önemli tutarlara karşılık gelir.
+Kısa vadeli ihtiyaç için mevduat daha güvenli. 5 yıl veya üzeri için eurobond tipik olarak 1-3 puan fazla getiri sağlar; büyük birikimde bu fark önemli tutarlara karşılık gelir. Fon üzerinden girmeyi düşünüyorsan ayrıntılı karşılaştırma: [eurobond fonu mu mevduat mı](/blog/eurobond-fonu-mu-mevduat-mi/).
 
 [Altın mı dolar mı seçimini](/blog/altin-mi-dolar-mi) düşünüyorsan orada döviz seçim kriterleri daha ayrıntılı ele alınmış; eurobond ile altın arasındaki tercih de benzer bir risk-likidite dengesidir.
 

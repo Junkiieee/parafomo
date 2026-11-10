@@ -1,8 +1,8 @@
 ---
-title: "Eurobond Fonu mu Mevduat mı? Hangisi Daha Mantıklı?"
+title: "Eurobond Fonu mu Mevduat mı? Getiri, Risk ve Vergi Farkı"
 description: "Eurobond fonu mu mevduat mı sorusunun cevabı: getiri, risk, vergi ve likidite karşılaştırmasıyla hangi araç birikimini daha iyi değerlendirir?"
 pubDate: 2026-07-22
-updatedDate: 2026-10-22
+updatedDate: 2026-11-10
 category: "Yatırım"
 tags: ["eurobond fonu", "mevduat", "döviz yatırımı", "yatırım fonu", "TEFAS", "sabit getiri"]
 readingTime: 7
@@ -36,6 +36,8 @@ shorts_visuals:
   - "scene|mobile investment app trading screen"
   - "concept|financial planning investment decision"
 ---
+
+> **Kısa cevap:** Anaparanın güvencede olmasını ve getirinin baştan belli olmasını istiyorsan **mevduat** (TMSF güvencesi var, [limit burada](/blog/tmsf-nedir-mevduat-guvencesi/)). Dolar bazında mevduattan yüksek getiri arıyor ve fiyatın günlük dalgalanmasını kaldırabiliyorsan **eurobond fonu** (anapara garantisi yok). Vergide fark var: fon kazancından %17,5, TL mevduat faizinden vadeye göre %17,5 / %15 / %10 stopaj kesilir ([stopaj oranları](/blog/stopaj-nedir-2026-stopaj-oranlari/)). Bu bir yatırım tavsiyesi değildir.
 
 Birikimini değerlendirmek istiyorsun ama elinde iki seçenek var: eurobond fonu mu mevduat mı? Her iki araç da "güvenli" görünüyor — ama getiri, risk ve esneklik açısından aralarında ciddi farklar var.
 

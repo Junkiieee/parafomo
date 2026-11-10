@@ -1,8 +1,8 @@
 ---
-title: "Euro mu Dolar mı 2026? TL Bazında 10 Yıllık Getiri"
-description: "Euro mu dolar mı 2026? Euro ve doların 1, 3, 5 ve 10 yıllık TL getirisini gerçek kur verisiyle karşılaştırdık; EUR/USD paritesi, sepet ve riskler."
+title: "Dolar mı Euro mu Daha Çok Kazandırır? 2026 ve 10 Yıllık Getiri"
+description: "Dolar mı euro mu daha çok kazandırır? 2026'da dolar önde: yıl başından beri %16,7'ye %10,4. 1, 3, 5, 10 yıllık TL getirisi ve farkı belirleyen parite."
 pubDate: 2026-10-09
-updatedDate: 2026-10-27
+updatedDate: 2026-11-10
 category: "Yatırım"
 tags: ["euro", "dolar", "döviz", "euro mu dolar mı", "EUR/USD paritesi", "döviz sepeti"]
 readingTime: 8
@@ -36,6 +36,8 @@ shorts_visuals:
   - "place|Federal Reserve"
   - "logo|ParaFOMO logo"
 ---
+
+> **Kısa cevap (10 Kasım 2026 verisi):** 2026'da **dolar** daha çok kazandırdı. Yıl başından beri dolar TL karşısında **%16,7**, euro **%10,4** yükseldi. 10 yıllık resimde ise euro az farkla önde (%1.537'ye %1.514). İkisi arasındaki farkı EUR/USD paritesi belirliyor. Her gün güncel rakamlar: [dolar getirisi](/dolar-getiri/) · [euro getirisi](/euro-getiri/).
 
 Birikimini dövizde tutmak isteyenlerin ilk sorusu genelde aynı: **euro mu dolar mı?** Bu yazıda "euro mu dolar mı 2026" sorusunu tahminle değil, gerçek kur verisiyle cevaplıyoruz: euro ve doların son 1, 3, 5 ve 10 yılda TL karşısında ne kadar kazandırdığını yan yana koyuyor, farkı neyin belirlediğini ve karar verirken nelere bakman gerektiğini anlatıyoruz.
 
