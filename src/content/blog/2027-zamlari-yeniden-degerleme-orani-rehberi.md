@@ -2,7 +2,7 @@
 # OTOMATİK ÜRETİLİR — bu dosyayı doğrudan düzenleme (bir sonraki veri güncellemesinde ezilmez, uyarı verir).
 # Şablon: content-templates/blog/2027-zamlari-yeniden-degerleme-orani-rehberi.md.j2
 # Üret: python3 scripts/live-posts.py  (veri: data/yeniden-degerleme.json)
-title: "2027 Yeniden Değerleme Oranı Belli Oldu: %27,83 — 2027'de Neler Ne Kadar Zamlanacak?"
+title: "2027 Yeniden Değerleme Oranı %27,83: Neler Ne Kadar Zamlanacak?"
 description: "2027 yeniden değerleme oranı %27,83 olarak kesinleşti (3 Kasım 2026). MTV, harçlar, IMEI, trafik cezası ve emlak vergisi 2027'de ne kadar artacak? Kalem kalem tablo."
 pubDate: 2026-10-13
 updatedDate: 2026-11-03

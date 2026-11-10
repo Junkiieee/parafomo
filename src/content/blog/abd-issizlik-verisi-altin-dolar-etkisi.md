@@ -1,5 +1,5 @@
 ---
-title: "ABD İşsizlik Verisi Altını ve Doları Nasıl Etkiler? NFP Sonrası Rehberi"
+title: "ABD İşsizlik Verisi Altını ve Doları Nasıl Etkiler? NFP Rehberi"
 description: "ABD işsizlik verisi altını nasıl etkiler? NFP ve işsizlik oranı açıklandığında altın, dolar ve TL'de ne olur? Senaryo tablosu ve Türk yatırımcı rehberi."
 pubDate: 2026-09-04
 updatedDate: 2026-10-22

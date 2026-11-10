@@ -1,5 +1,5 @@
 ---
-title: "Dövize Yatırım Mantıklı mı? 2026'da Döviz Hesabının Artıları ve Eksileri"
+title: "Dövize Yatırım Mantıklı mı? 2026'da Artıları ve Eksileri"
 description: "Döviz hesabı açmak mantıklı mı? Dövize yatırım kime uygun, kime değil? 2026 koşullarında artıları, eksileri, alternatifleri ve portföydeki yeri."
 pubDate: 2026-08-18
 updatedDate: 2026-10-22
