@@ -1,0 +1,64 @@
+{
+  "slug": "taksit-hesabi-magazanin-soylemedigi-tek-bolme",
+  "title": "Taksit hesabı: mağazanın söylemediği tek bölme",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Taksitte vade farkı iki fiyatın farkını nakit fiyata bölerek bulunur. 20 bin liralık örnekte 6 taksit toplamı 24 bin lira, fark yüzde 20 çıkıyor.\nKaynak/hesap: 6 x 4.000 = 24.000 TL; 24.000 - 20.000 = 4.000 TL; 4.000/20.000 = %20 · senaryodaki hesap (varsayımsal örnek)",
+  "tags": [
+    "taksit",
+    "vade farkı",
+    "kredi kartı",
+    "alışveriş",
+    "kişisel finans",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "20 bin liralık telefon taksitte 24 bin.",
+      "visual": {
+        "type": "object",
+        "query": "new smartphone in box"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Taksit toplamından nakit fiyatı çıkar: 24 bin eksi 20 bin, 4 bin fark, yüzde 20.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama bu yüzde 20, altı ayın toplamı; borç eridikçe yıllık maliyet bunun çok üstüne çıkıyor.",
+      "visual": {
+        "type": "object",
+        "query": "receipt paper"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Mağazada nakit fiyatı sor, farkı ona böl. Yüzde 20 çıkıyorsa nakit pazarlık et.",
+      "visual": {
+        "type": "object",
+        "query": "wallet with cash"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Son taksitinin ne kadarı faiz, hiç baktın mı? Abone ol, her gün 60 saniyede tek net hesap.",
+      "visual": {
+        "type": "object",
+        "query": "new smartphone in box"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "20 bin liralık telefon taksitte 24 bin",
+    "calc": "6 x 4.000 = 24.000 TL; 24.000 - 20.000 = 4.000 TL; 4.000/20.000 = %20",
+    "source": "senaryodaki hesap (varsayımsal örnek)"
+  }
+}

@@ -1,0 +1,104 @@
+{
+ "slug": "nakit-avans-kartin-en-pahali-cebi",
+ "title": "Nakit avans: kartın en pahalı cebi",
+ "description": "Kredi kartıyla çekilen nakit avansta faiz ilk günden işler, üstüne ek ücretler biner. Bu yüzden en pahalı borç türü sayılır.",
+ "tags": [
+  "nakit avans",
+  "kredi kartı",
+  "borç",
+  "faiz",
+  "kişisel finans",
+  "ParaFOMO",
+  "parafomo"
+ ],
+ "format": "single_concept",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "AÇIKLANDI",
+  "scenes": [
+   {
+    "type": "icon_text",
+    "head": "Para değil, borç",
+    "data": {
+     "icon": "card",
+     "text": "Nakit avans *para* vermez, *borç* satar"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "steps",
+    "head": "Faiz sayacı ne zaman başlar?",
+    "data": {
+     "items": [
+      "Alışveriş: vadeli",
+      "Avans: faiz anında",
+      "Sayaç hemen başlar"
+     ]
+    },
+    "line": "s1"
+   },
+   {
+    "type": "icon_text",
+    "head": "Çifte maliyet",
+    "data": {
+     "icon": "percent",
+     "text": "Kart faizinden *yüksek*, üstüne *işlem ücreti*"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "steps",
+    "head": "Çekmeden önce ne yapmalı?",
+    "data": {
+     "items": [
+      "Önce kredi sor",
+      "Tanıdığa borç sor",
+      "Avans son çare"
+     ]
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Limit kimin parası?",
+    "data": {
+     "l1": "LİMİT SENİN",
+     "l2": "PARAN MI?",
+     "sub": "HER GÜN TEK KISA FİNANS ANALİZİ"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Nakit avans sana para vermiyor, borç satıyor.",
+   "cap": "Nakit avans sana para vermiyor, borç satıyor."
+  },
+  {
+   "id": "s1",
+   "say": "Alışverişte ödeme gününe kadar faiz işlemez. Nakit avansta ise para elinden çıktığı an, sayaç ilk günden çalışmaya başlar.",
+   "cap": "Alışverişte ödeme gününe kadar faiz işlemez. Nakit avansta ise para elinden çıktığı an, sayaç ilk günden çalışmaya başlar."
+  },
+  {
+   "id": "s2",
+   "say": "Ama bitmedi: faiz oranı normal kart faizinden de yüksek, üstüne işlem ücreti biniyor. Yani bir tüketici kredisinden bile pahalıya geliyor.",
+   "cap": "Ama bitmedi: faiz oranı normal kart faizinden de yüksek, üstüne işlem ücreti biniyor. Yani bir tüketici kredisinden bile pahalıya geliyor."
+  },
+  {
+   "id": "s3",
+   "say": "Nakit avans, tek gecelik bir ödünç gibi düşün. Çekmeden önce kredi ya da tanıdık borç sor, çünkü bu kapı en pahalısı.",
+   "cap": "Nakit avans, tek gecelik bir ödünç gibi düşün. Çekmeden önce kredi ya da tanıdık borç sor, çünkü bu kapı en pahalısı."
+  },
+  {
+   "id": "s4",
+   "say": "Kartındaki limit gerçekten senin paran mı? Cevap için abone ol, her gün kısa ve net tek bir finans analizi.",
+   "cap": "Kartındaki limit gerçekten senin paran mı? Cevap için abone ol, her gün kısa ve net tek bir finans analizi."
+  }
+ ],
+ "skin": "iso",
+ "engine": "dossier"
+}

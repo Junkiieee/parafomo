@@ -1,0 +1,59 @@
+{
+  "slug": "nakit-avans-kartin-en-pahali-cebi",
+  "title": "Nakit avans: kartın en pahalı cebi",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Kredi kartıyla çekilen nakit avansta faiz ilk günden işler, üstüne ek ücretler biner. Bu yüzden en pahalı borç türü sayılır.",
+  "tags": [
+    "nakit avans",
+    "kredi kartı",
+    "borç",
+    "faiz",
+    "kişisel finans",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Nakit avans sana para vermiyor, borç satıyor.",
+      "visual": {
+        "type": "object",
+        "query": "cash banknotes in hand at ATM"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Alışverişte ödeme gününe kadar faiz işlemez. Nakit avansta ise para elinden çıktığı an, sayaç ilk günden çalışmaya başlar.",
+      "visual": {
+        "type": "object",
+        "query": "stopwatch"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama bitmedi: faiz oranı normal kart faizinden de yüksek, üstüne işlem ücreti biniyor. Yani bir tüketici kredisinden bile pahalıya geliyor.",
+      "visual": {
+        "type": "object",
+        "query": "calculator and receipt paper"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Nakit avans, tek gecelik bir ödünç gibi düşün. Çekmeden önce kredi ya da tanıdık borç sor, çünkü bu kapı en pahalısı.",
+      "visual": {
+        "type": "object",
+        "query": "credit card"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Kartındaki limit gerçekten senin paran mı? Cevap için abone ol, her gün kısa ve net tek bir finans analizi.",
+      "visual": {
+        "type": "object",
+        "query": "cash banknotes in hand at ATM"
+      }
+    }
+  ]
+}

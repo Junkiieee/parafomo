@@ -1,44 +1,8 @@
 {
-  "updated": "2026-11-09",
+  "updated": "2026-11-10",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-11-06",
-      "time": "1:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Average Hourly Earnings m/m",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-11-06",
-      "time": "1:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Non-Farm Employment Change",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-11-06",
-      "time": "1:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Unemployment Rate",
-      "source": "forexfactory",
-      "hook": "İşsizlik verisi — büyüme ve faiz beklentisi."
-    },
-    {
-      "date": "2026-11-06",
-      "time": "4:00pm",
-      "region": "JPY",
-      "impact": "High",
-      "title": "BOJ Gov Ueda Speaks",
-      "source": "forexfactory",
-      "hook": ""
-    },
     {
       "date": "2026-11-10",
       "time": "1:30pm",

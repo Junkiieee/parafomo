@@ -1,0 +1,119 @@
+{
+ "slug": "taksit-hesabi-magazanin-soylemedigi-tek-bolme",
+ "title": "Taksit hesabı: mağazanın söylemediği tek bölme",
+ "description": "Taksitte vade farkı iki fiyatın farkını nakit fiyata bölerek bulunur. 20 bin liralık örnekte 6 taksit toplamı 24 bin lira, fark yüzde 20 çıkıyor.\nKaynak/hesap: 6 x 4.000 = 24.000 TL; 24.000 - 20.000 = 4.000 TL; 4.000/20.000 = %20 · senaryodaki hesap (varsayımsal örnek)",
+ "tags": [
+  "taksit",
+  "vade farkı",
+  "kredi kartı",
+  "alışveriş",
+  "kişisel finans",
+  "ParaFOMO",
+  "parafomo"
+ ],
+ "format": "shock_number",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "TAKSİT TUZAĞI",
+  "scenes": [
+   {
+    "type": "layers",
+    "head": "Taksitin gizli bedeli",
+    "data": {
+     "total": {
+      "label": "Taksit toplamı",
+      "value": 24000
+     },
+     "parts": [
+      {
+       "label": "Nakit fiyat",
+       "value": 20000,
+       "hl": false
+      },
+      {
+       "label": "Taksit farkı",
+       "value": 4000,
+       "hl": true
+      }
+     ],
+     "unit": "₺"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "big_number",
+    "head": "Farkı bul",
+    "data": {
+     "icon": "percent",
+     "value": 20,
+     "unit": "%",
+     "suffix": "",
+     "label": "Nakit fiyatın üstüne binen fark"
+    },
+    "line": "s1"
+   },
+   {
+    "type": "icon_text",
+    "head": "Asıl maliyet daha yüksek",
+    "data": {
+     "icon": "chart",
+     "text": "Yıllık maliyet bunun *çok üstünde*"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "steps",
+    "head": "Pazarlık formülü",
+    "data": {
+     "items": [
+      "Nakit fiyatı sor",
+      "Farkı ona böl",
+      "%20 ise nakit pazarlık et"
+     ]
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Abone ol",
+    "data": {
+     "l1": "FAİZ NE KADAR?",
+     "l2": "ABONE OL",
+     "sub": "NET HESAP · HER GÜN 60 SANİYE"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "20 bin liralık telefon taksitte 24 bin.",
+   "cap": "20 bin liralık telefon taksitte 24 bin."
+  },
+  {
+   "id": "s1",
+   "say": "Taksit toplamından nakit fiyatı çıkar: 24 bin eksi 20 bin, 4 bin fark, yüzde 20.",
+   "cap": "Taksit toplamından nakit fiyatı çıkar: 24 bin eksi 20 bin, 4 bin fark, yüzde 20."
+  },
+  {
+   "id": "s2",
+   "say": "Ama bu yüzde 20, altı ayın toplamı; borç eridikçe yıllık maliyet bunun çok üstüne çıkıyor.",
+   "cap": "Ama bu yüzde 20, altı ayın toplamı; borç eridikçe yıllık maliyet bunun çok üstüne çıkıyor."
+  },
+  {
+   "id": "s3",
+   "say": "Mağazada nakit fiyatı sor, farkı ona böl. Yüzde 20 çıkıyorsa nakit pazarlık et.",
+   "cap": "Mağazada nakit fiyatı sor, farkı ona böl. Yüzde 20 çıkıyorsa nakit pazarlık et."
+  },
+  {
+   "id": "s4",
+   "say": "Son taksitinin ne kadarı faiz, hiç baktın mı? Abone ol, her gün 60 saniyede tek net hesap.",
+   "cap": "Son taksitinin ne kadarı faiz, hiç baktın mı? Abone ol, her gün 60 saniyede tek net hesap."
+  }
+ ],
+ "skin": "iso",
+ "engine": "news"
+}
