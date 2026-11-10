@@ -1,0 +1,146 @@
+{
+  "slug": "anim-ekonomi-defteri-6-asgari-ucret",
+  "title": "Asgari ücret nasıl belirlenir? 15 kişilik masa | Ekonomi Defteri #6",
+  "file": "/root/parafomo/public/social/short-anim-ekonomi-defteri-6-asgari-ucret.mp4",
+  "duration": 44.87,
+  "music": "The Light - Alex Jones _ Xander Jones.mp3",
+  "link": "/asgari-ucret-hesaplama/",
+  "lines": [
+    {
+      "id": "hook",
+      "t0": 0.35,
+      "t1": 5.126,
+      "cap": "Asgari ücret nasıl belirlenir? Ekonomi Defteri, altıncı sayfa.",
+      "words": [
+        0.35,
+        1.01,
+        1.33,
+        1.63,
+        2.91,
+        3.63,
+        4.19,
+        4.59
+      ]
+    },
+    {
+      "id": "masa",
+      "t0": 5.406,
+      "t1": 13.182,
+      "cap": "Bir masa düşün: 5 işçi, 5 işveren, 5 de devlet temsilcisi. Toplam 15 kişi: Asgari Ücret Tespit Komisyonu.",
+      "words": [
+        5.406,
+        5.866,
+        6.066,
+        6.746,
+        6.866,
+        7.326,
+        7.466,
+        8.246,
+        8.406,
+        8.526,
+        8.806,
+        9.866,
+        10.246,
+        10.626,
+        11.026,
+        11.726,
+        12.006,
+        12.446
+      ]
+    },
+    {
+      "id": "oy",
+      "t0": 13.462,
+      "t1": 19.702,
+      "cap": "Karar oy çokluğuyla çıkar. Oylar eşit kalırsa başkanın tarafı kazanır, başkanı da Bakanlık belirler.",
+      "words": [
+        13.462,
+        14.082,
+        14.222,
+        14.842,
+        15.542,
+        15.842,
+        16.102,
+        16.882,
+        17.302,
+        17.602,
+        18.162,
+        18.542,
+        18.602,
+        19.042
+      ]
+    },
+    {
+      "id": "brut",
+      "t0": 19.982,
+      "t1": 30.878,
+      "cap": "2026'da masadan çıkan rakam brüt 33.030 lira. %14 SGK ve %1 işsizlik payı düşünce cebe 28.075,50 lira girer.",
+      "words": [
+        19.982,
+        21.182,
+        21.602,
+        21.962,
+        22.302,
+        22.662,
+        23.542,
+        24.242,
+        24.982,
+        25.702,
+        26.082,
+        26.502,
+        26.982,
+        27.242,
+        27.682,
+        28.202,
+        29.482,
+        30.422
+      ]
+    },
+    {
+      "id": "takvim",
+      "t0": 31.158,
+      "t1": 37.83,
+      "cap": "Karar Resmî Gazete'de yayımlanır, yeni ücret 1 Ocak'ta başlar. 2027 rakamını da bu Aralık aynı masa belirleyecek.",
+      "words": [
+        31.158,
+        31.698,
+        32.078,
+        32.498,
+        33.258,
+        33.398,
+        33.658,
+        33.838,
+        34.258,
+        34.958,
+        35.558,
+        36.038,
+        36.138,
+        36.278,
+        36.598,
+        36.798,
+        37.078
+      ]
+    },
+    {
+      "id": "cta",
+      "t0": 38.11,
+      "t1": 43.27,
+      "cap": "Son yılların artışları ve masanın perde arkası Pazar günü uzun bölümde. Abone ol.",
+      "words": [
+        38.11,
+        38.65,
+        39.15,
+        39.65,
+        39.77,
+        40.13,
+        40.43,
+        40.95,
+        41.23,
+        41.59,
+        41.89,
+        42.63,
+        42.95
+      ]
+    }
+  ]
+}

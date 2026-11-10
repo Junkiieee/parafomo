@@ -1,0 +1,59 @@
+{
+ "slug": "anim-ekonomi-defteri-6-asgari-ucret",
+ "title": "Asgari ücret nasıl belirlenir? 15 kişilik masa | Ekonomi Defteri #6",
+ "description": "Ekonomi Defteri'nin altıncı sayfası: asgari ücreti 15 kişilik Asgari Ücret Tespit Komisyonu belirler (5 işçi, 5 işveren, 5 devlet temsilcisi). Karar oy çokluğuyla çıkar, eşitlikte başkanın tarafı kazanır. 2026'da brüt 33.030 TL; %14 SGK + %1 işsizlik payı düşünce net 28.075,50 TL. Karar Resmî Gazete'de yayımlanır, yeni ücret 1 Ocak'ta başlar. 2027 tutarını Aralık'ta komisyon belirleyecek.\nKaynak: İş Kanunu md. 39; Asgari Ücret Yönetmeliği md. 8; 2026 kararı (Resmî Gazete, 26 Aralık 2025).",
+ "tags": [
+  "asgari ücret",
+  "asgari ücret 2027",
+  "asgari ücret tespit komisyonu",
+  "asgari ücret nasıl belirlenir",
+  "brüt net asgari ücret",
+  "ekonomi defteri",
+  "parafomo"
+ ],
+ "style": "isometric",
+ "skin": "iso",
+ "kits": [
+  "defter"
+ ],
+ "scene": "defter-asgari-ucret.js",
+ "short": true,
+ "format": "ekonomi_defteri",
+ "link": "/asgari-ucret-hesaplama/",
+ "series": "Ekonomi Defteri",
+ "episode": 6,
+ "comment": "📒 Ekonomi Defteri #6: Asgari ücret nasıl belirlenir?\n\n• Asgari Ücret Tespit Komisyonu: 15 üye (5 işçi, 5 işveren, 5 devlet) — Asgari Ücret Yönetmeliği md. 8\n• En az 10 üyeyle toplanır, oy çokluğuyla karar verir; eşitlikte başkanın tarafı kazanır\n• 2026: brüt 33.030 ₺ − %14 SGK − %1 işsizlik = net 28.075,50 ₺ (gelir ve damga vergisi istisnası)\n• Karar Resmî Gazete'de yayımlanır, 1 Ocak'ta yürürlüğe girer (İş Kanunu md. 39)\n\nSon yılların artışları ve masanın perde arkası: Pazar 12:00 uzun bölümde.\n\n🧮 Asgari ücret hesaplama: https://parafomo.com/asgari-ucret-hesaplama/?utm_source=youtube&utm_medium=shorts&utm_campaign=ekonomi-defteri-6\n\nDefterin sonraki sayfasında hangi konuyu görelim? 👇",
+ "data": {},
+ "lines": [
+  {
+   "id": "hook",
+   "say": "Asgari ücret nasıl belirlenir? Ekonomi Defteri, altıncı sayfa.",
+   "cap": "Asgari ücret nasıl belirlenir? Ekonomi Defteri, altıncı sayfa."
+  },
+  {
+   "id": "masa",
+   "say": "Bir masa düşün: beş işçi, beş işveren, beş de devlet temsilcisi. Toplam on beş kişi: Asgari Ücret Tespit Komisyonu.",
+   "cap": "Bir masa düşün: 5 işçi, 5 işveren, 5 de devlet temsilcisi. Toplam 15 kişi: Asgari Ücret Tespit Komisyonu."
+  },
+  {
+   "id": "oy",
+   "say": "Karar oy çokluğuyla çıkar. Oylar eşit kalırsa başkanın tarafı kazanır, başkanı da Bakanlık belirler.",
+   "cap": "Karar oy çokluğuyla çıkar. Oylar eşit kalırsa başkanın tarafı kazanır, başkanı da Bakanlık belirler."
+  },
+  {
+   "id": "brut",
+   "say": "2026'da masadan çıkan rakam brüt 33 bin 30 lira. Yüzde 14 SGK ve yüzde 1 işsizlik payı düşünce cebe 28 bin 75 lira 50 kuruş girer.",
+   "cap": "2026'da masadan çıkan rakam brüt 33.030 lira. %14 SGK ve %1 işsizlik payı düşünce cebe 28.075,50 lira girer."
+  },
+  {
+   "id": "takvim",
+   "say": "Karar Resmî Gazete'de yayımlanır, yeni ücret 1 Ocak'ta başlar. 2027 rakamını da bu Aralık aynı masa belirleyecek.",
+   "cap": "Karar Resmî Gazete'de yayımlanır, yeni ücret 1 Ocak'ta başlar. 2027 rakamını da bu Aralık aynı masa belirleyecek."
+  },
+  {
+   "id": "cta",
+   "say": "Son yılların artışları ve masanın perde arkası Pazar günü uzun bölümde. Abone ol.",
+   "cap": "Son yılların artışları ve masanın perde arkası Pazar günü uzun bölümde. Abone ol."
+  }
+ ]
+}
