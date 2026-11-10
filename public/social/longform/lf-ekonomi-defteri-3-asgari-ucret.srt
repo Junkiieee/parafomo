@@ -1,0 +1,311 @@
+1
+00:00:00,350 --> 00:00:03,450
+Her Aralık milyonlarca kişi aynı haberi bekler:
+
+2
+00:00:03,450 --> 00:00:09,130
+yeni asgari ücret. 2026'da net 28.075,50 lira.
+
+3
+00:00:09,130 --> 00:00:11,438
+Peki bu rakamı kim, nasıl belirliyor?
+
+4
+00:00:11,718 --> 00:00:15,658
+Bu sayfada asgari ücretin ne olduğunu, kimin belirlediğini,
+
+5
+00:00:15,658 --> 00:00:20,238
+brütten nete nasıl indiğini, işverene maliyetini ve geçmiş yıllardaki artışları
+
+6
+00:00:20,238 --> 00:00:21,102
+anlatıyoruz.
+
+7
+00:00:21,382 --> 00:00:26,086
+Sonunda da 2027 rakamının ne zaman ve nasıl açıklanacağını göreceğiz.
+
+8
+00:00:26,366 --> 00:00:31,206
+Asgari ücret, bir işçiye ödenebilecek en düşük yasal ücrettir.
+
+9
+00:00:31,206 --> 00:00:33,542
+İşveren bunun altında ücret ödeyemez.
+
+10
+00:00:33,822 --> 00:00:40,002
+Dayanağı İş Kanunu'nun 39. maddesi. Tutar ülke genelinde herkes için aynıdır;
+
+11
+00:00:40,002 --> 00:00:42,102
+sektöre ya da şehre göre değişmez.
+
+12
+00:00:42,382 --> 00:00:47,422
+Ayrıca SGK primlerinin hesaplandığı en düşük kazanç da asgari ücrettir.
+
+13
+00:00:47,702 --> 00:00:53,522
+Asgari ücret aylık brüt olarak belirlenir; günlük tutar aylığın otuzda biridir.
+
+14
+00:00:53,522 --> 00:00:55,910
+2026'da günlük brüt 1.101 lira.
+
+15
+00:00:56,190 --> 00:00:59,970
+Asgari ücreti, Asgari Ücret Tespit Komisyonu belirler.
+
+16
+00:00:59,970 --> 00:01:03,950
+Komisyonda 15 üye var: beşi devletten, beşi işçi tarafından,
+
+17
+00:01:03,950 --> 00:01:05,310
+beşi işveren tarafından.
+
+18
+00:01:05,590 --> 00:01:09,050
+Devlet tarafında Çalışma Bakanlığı ve kamu kurumları var.
+
+19
+00:01:09,050 --> 00:01:11,830
+İşçileri en büyük işçi konfederasyonu Türk-İş,
+
+20
+00:01:11,830 --> 00:01:15,430
+işverenleri en büyük işveren konfederasyonu TİSK temsil eder.
+
+21
+00:01:15,710 --> 00:01:19,850
+Komisyon en az 10 üyeyle toplanır ve oy çokluğuyla karar verir.
+
+22
+00:01:19,850 --> 00:01:23,090
+Oylar eşit çıkarsa başkanın bulunduğu taraf kazanır;
+
+23
+00:01:23,090 --> 00:01:24,638
+başkanı bakanlık belirler.
+
+24
+00:01:24,918 --> 00:01:30,578
+Yani işçi ve işveren anlaşamazsa, devlet hangi tarafla oy verirse karar o olur:
+
+25
+00:01:30,578 --> 00:01:31,638
+15 oyun 10'u.
+
+26
+00:01:31,918 --> 00:01:36,058
+Yönetmeliğe göre asgari ücret en geç iki yılda bir belirlenir.
+
+27
+00:01:36,058 --> 00:01:38,758
+Son yıllarda ise her yıl Aralık'ta belirleniyor.
+
+28
+00:01:39,038 --> 00:01:42,038
+Komisyon Aralık boyunca birkaç kez toplanır.
+
+29
+00:01:42,038 --> 00:01:46,358
+Karar Resmî Gazete'de yayımlanır ve genellikle 1 Ocak'tan itibaren geçerli
+
+30
+00:01:46,358 --> 00:01:46,958
+olur.
+
+31
+00:01:47,022 --> 00:01:51,562
+Son dört yılın açıklama tarihleri: 22 Aralık 2022,
+
+32
+00:01:51,562 --> 00:01:58,422
+27 Aralık 2023, 24 Aralık 2024 ve 23 Aralık 2025.
+
+33
+00:01:58,702 --> 00:02:02,602
+Enflasyon çok yüksekken yıl ortasında ara zam da yapıldı:
+
+34
+00:02:02,602 --> 00:02:05,806
+2022'de ve 2023'te, Temmuz'da.
+
+35
+00:02:06,086 --> 00:02:13,246
+2026'da asgari ücretin brütü 33.030 lira. Ama cebe giren net tutar 28.075,50
+
+36
+00:02:13,246 --> 00:02:14,750
+lira.
+
+37
+00:02:15,030 --> 00:02:20,730
+Aradaki fark işçinin primleri: %14 SGK ve %1 işsizlik sigortası.
+
+38
+00:02:20,730 --> 00:02:22,926
+Toplam, brütün %15'i.
+
+39
+00:02:23,206 --> 00:02:28,586
+Rakamla: 33.030 liranın %14'ü 4.624,20 lira,
+
+40
+00:02:28,586 --> 00:02:31,678
+%1'i 330,30 lira.
+
+41
+00:02:31,958 --> 00:02:37,358
+Gelir vergisi ve damga vergisi kesilmez: 2022'den beri asgari ücret bu
+
+42
+00:02:37,358 --> 00:02:41,990
+vergilerden istisna. Bu yüzden net, brütün tam %85'i.
+
+43
+00:02:42,270 --> 00:02:47,150
+İşveren yalnız brüt ücreti ödemez; üstüne kendi primlerini de öder:
+
+44
+00:02:47,150 --> 00:02:52,566
+%21,75 SGK ve %2 işsizlik sigortası.
+
+45
+00:02:52,846 --> 00:02:58,106
+Böylece 2026'da bir asgari ücretlinin işverene aylık maliyeti,
+
+46
+00:02:58,106 --> 00:03:03,142
+teşvik indirimi olmadan, 40.874,63 lira.
+
+47
+00:03:03,422 --> 00:03:08,602
+Yani teşviksiz hesapta işverenin ödediği her 100 liranın yaklaşık 69 lirası
+
+48
+00:03:08,602 --> 00:03:09,950
+işçinin cebine geçer.
+
+49
+00:03:10,230 --> 00:03:13,890
+Primini zamanında ödeyen işveren prim indirimi alır;
+
+50
+00:03:13,890 --> 00:03:19,758
+devlet de 2026'da asgari ücretli başına aylık 1.270 lira destek veriyor.
+
+51
+00:03:20,038 --> 00:03:25,698
+Net asgari ücret Ocak 2023'te 8.506,80 liraydı.
+
+52
+00:03:25,698 --> 00:03:33,526
+2024'te 17.002 lira, 2025'te 22.104 lira, 2026'da 28.075 lira oldu.
+
+53
+00:03:33,806 --> 00:03:43,906
+Artışlar sırasıyla %54,66, %49, %30 ve %27. Her artış bir önceki tutara göre;
+
+54
+00:03:43,906 --> 00:03:46,958
+Temmuz ara zammı varsa ondan sonraki tutara göre.
+
+55
+00:03:47,238 --> 00:03:53,018
+2026'nın net tutarı, Ocak 2023'ün yaklaşık 3,3 katı.
+
+56
+00:03:53,018 --> 00:03:55,446
+Ama aynı dönemde fiyatlar da hızla arttı.
+
+57
+00:03:55,726 --> 00:04:05,902
+Ama asıl soru alım gücü. 2026 zammı %27; Ekim 2026'da yıllık enflasyon %29,77.
+
+58
+00:04:06,182 --> 00:04:11,102
+Fiyatlar yıl boyunca artmaya devam ettiği için asgari ücretin alım gücü Ocak'ta
+
+59
+00:04:11,102 --> 00:04:13,358
+en yüksek, Aralık'ta en düşük olur.
+
+60
+00:04:13,638 --> 00:04:17,998
+Yönetmeliğe göre komisyon; ülkenin sosyal ve ekonomik durumuna,
+
+61
+00:04:17,998 --> 00:04:22,118
+geçinme indekslerine, ödenen ücretlerin genel durumuna ve geçim şartlarına
+
+62
+00:04:22,118 --> 00:04:22,830
+bakar.
+
+63
+00:04:23,110 --> 00:04:27,090
+Pazarlıkta en çok konuşulanlar: geçen yılın enflasyonu,
+
+64
+00:04:27,090 --> 00:04:31,078
+gelecek yıl beklenen enflasyon ve işverenin ödeyebileceği maliyet.
+
+65
+00:04:31,358 --> 00:04:35,738
+İşçi tarafı alım gücünü korumak ister, işveren tarafı maliyeti;
+
+66
+00:04:35,738 --> 00:04:38,462
+devlet ikisini ve bütçeyi birlikte tartar.
+
+67
+00:04:38,742 --> 00:04:43,982
+2027 asgari ücreti henüz belli değil. Komisyon Aralık'ta toplanıp karar
+
+68
+00:04:43,982 --> 00:04:44,582
+verecek.
+
+69
+00:04:44,830 --> 00:04:50,070
+Burada tahmin vermiyoruz. Rakam açıklandığında parafomo.com'daki asgari ücret
+
+70
+00:04:50,070 --> 00:04:54,550
+hesaplama aracı güncellenir: brütten nete, işveren maliyetine kadar.
+
+71
+00:04:54,830 --> 00:04:59,510
+Özetle: asgari ücreti 15 üyeli komisyon oy çokluğuyla belirler;
+
+72
+00:04:59,510 --> 00:05:03,230
+karar Resmî Gazete'de yayımlanır, genellikle 1 Ocak'ta başlar.
+
+73
+00:05:03,510 --> 00:05:08,690
+Net, brütün %85'i. İşverene maliyeti ise teşviksiz,
+
+74
+00:05:08,690 --> 00:05:11,022
+brütün yaklaşık 1,24 katı.
+
+75
+00:05:11,302 --> 00:05:16,042
+Kendi hesabın için parafomo.com'daki asgari ücret hesaplama aracına bak;
+
+76
+00:05:16,042 --> 00:05:17,110
+link açıklamada.
+
+77
+00:05:17,390 --> 00:05:21,910
+Ekonomi Defteri'nin sonraki uzun sayfasında kira artışının nasıl hesaplandığını
+
+78
+00:05:21,910 --> 00:05:24,494
+anlatacağız. Kaçırmamak için abone ol.

@@ -1,0 +1,225 @@
+{
+ "slug": "lf-ekonomi-defteri-3-asgari-ucret",
+ "aspect": "16:9",
+ "title": "Asgari Ücret Nasıl Belirlenir? Komisyon, Brüt-Net ve İşveren Maliyeti",
+ "description": "Asgari ücret nasıl belirlenir, kim karar verir? Ekonomi Defteri'nin üçüncü uzun bölümünde Asgari Ücret Tespit Komisyonu'nu (15 üye: devlet, Türk-İş, TİSK; oy çokluğu), Aralık takvimini ve Resmî Gazete sürecini, brütten nete hesabı (SGK %14 + işsizlik %1; gelir ve damga vergisi istisnası), işverene toplam maliyeti ve 2023-2026 net asgari ücret artışlarını anlatıyoruz.\n\nGerçek veriler: 2026 asgari ücret brüt 33.030 TL, net 28.075,50 TL (açıklanma 23 Aralık 2025); işverene teşviksiz maliyet 40.874,63 TL (SGK işveren %21,75 + işsizlik %2); asgari ücret desteği 2026: aylık 1.270 TL; Ekim 2026 yıllık TÜFE %29,77 (TÜİK). Komisyon kuralları: 4857 sayılı İş Kanunu md. 39 ve Asgari Ücret Yönetmeliği md. 7, 8, 11. 2027 asgari ücreti henüz açıklanmadı; videoda tahmin yok.",
+ "tags": [
+  "asgari ücret",
+  "asgari ücret nasıl belirlenir",
+  "asgari ücret tespit komisyonu",
+  "asgari ücret 2026",
+  "brüt net asgari ücret",
+  "asgari ücret işveren maliyeti",
+  "asgari ücret 2027",
+  "ekonomi defteri",
+  "parafomo"
+ ],
+ "skin": "iso",
+ "kits": [
+  "defter"
+ ],
+ "scene": "defter-uzun-asgari.js",
+ "format": "ekonomi_defteri",
+ "series": "Ekonomi Defteri",
+ "episode": "uzun-3",
+ "link": "/asgari-ucret-hesaplama/",
+ "comment": "📒 Ekonomi Defteri · Uzun Bölüm 3: Asgari Ücret\n\nVideodaki hesaplar (2026):\n• Net = brüt × 0,85: 33.030 × 0,85 = 28.075,50 ₺\n• İşçi kesintisi: SGK %14 = 4.624,20 ₺ · işsizlik %1 = 330,30 ₺\n• İşveren maliyeti (teşviksiz): 33.030 × 1,2375 = 40.874,63 ₺ (≈ brütün 1,24 katı)\n• Net asgari ücret: Oca 2023 8.506,80 · 2024 17.002 · 2025 22.104 · 2026 28.075,50 ₺ (artış %54,66 / %49 / %30 / %27)\n\nKaynaklar: 4857 sayılı İş Kanunu md. 39; Asgari Ücret Yönetmeliği md. 7-8-11; ÇSGB / Resmî Gazete (2026 tutarları); TÜİK TÜFE Ekim 2026.\n\n🧮 Kendi hesabın: https://parafomo.com/asgari-ucret-hesaplama/?utm_source=youtube&utm_medium=longform&utm_campaign=lf-ekonomi-defteri-3-asgari-ucret\n\nSonraki sayfa: KİRA ARTIŞI. Defterde hangi konuyu görmek istersin? Yorumda yaz 👇",
+ "data": {},
+ "lines": [
+  {
+   "id": "hook",
+   "say": "Her Aralık milyonlarca kişi aynı haberi bekler: yeni asgari ücret. 2026'da net 28 bin 75 lira 50 kuruş. Peki bu rakamı kim, nasıl belirliyor?",
+   "cap": "Her Aralık milyonlarca kişi aynı haberi bekler: yeni asgari ücret. 2026'da net 28.075,50 lira. Peki bu rakamı kim, nasıl belirliyor?"
+  },
+  {
+   "id": "plan",
+   "say": "Bu sayfada asgari ücretin ne olduğunu, kimin belirlediğini, brütten nete nasıl indiğini, işverene maliyetini ve geçmiş yıllardaki artışları anlatıyoruz.",
+   "cap": "Bu sayfada asgari ücretin ne olduğunu, kimin belirlediğini, brütten nete nasıl indiğini, işverene maliyetini ve geçmiş yıllardaki artışları anlatıyoruz."
+  },
+  {
+   "id": "plan2",
+   "say": "Sonunda da 2027 rakamının ne zaman ve nasıl açıklanacağını göreceğiz.",
+   "cap": "Sonunda da 2027 rakamının ne zaman ve nasıl açıklanacağını göreceğiz."
+  },
+  {
+   "id": "a1",
+   "say": "Asgari ücret, bir işçiye ödenebilecek en düşük yasal ücrettir. İşveren bunun altında ücret ödeyemez.",
+   "cap": "Asgari ücret, bir işçiye ödenebilecek en düşük yasal ücrettir. İşveren bunun altında ücret ödeyemez.",
+   "chapter": "Asgari ücret nedir?"
+  },
+  {
+   "id": "a2",
+   "say": "Dayanağı İş Kanunu'nun 39. maddesi. Tutar ülke genelinde herkes için aynıdır; sektöre ya da şehre göre değişmez.",
+   "cap": "Dayanağı İş Kanunu'nun 39. maddesi. Tutar ülke genelinde herkes için aynıdır; sektöre ya da şehre göre değişmez."
+  },
+  {
+   "id": "a3",
+   "say": "Ayrıca SGK primlerinin hesaplandığı en düşük kazanç da asgari ücrettir.",
+   "cap": "Ayrıca SGK primlerinin hesaplandığı en düşük kazanç da asgari ücrettir."
+  },
+  {
+   "id": "a4",
+   "say": "Asgari ücret aylık brüt olarak belirlenir; günlük tutar aylığın otuzda biridir. 2026'da günlük brüt 1.101 lira.",
+   "cap": "Asgari ücret aylık brüt olarak belirlenir; günlük tutar aylığın otuzda biridir. 2026'da günlük brüt 1.101 lira."
+  },
+  {
+   "id": "c1",
+   "say": "Asgari ücreti, Asgari Ücret Tespit Komisyonu belirler. Komisyonda 15 üye var: beşi devletten, beşi işçi tarafından, beşi işveren tarafından.",
+   "cap": "Asgari ücreti, Asgari Ücret Tespit Komisyonu belirler. Komisyonda 15 üye var: beşi devletten, beşi işçi tarafından, beşi işveren tarafından.",
+   "chapter": "Kim belirliyor?"
+  },
+  {
+   "id": "c2",
+   "say": "Devlet tarafında Çalışma Bakanlığı ve kamu kurumları var. İşçileri en büyük işçi konfederasyonu Türk-İş, işverenleri en büyük işveren konfederasyonu TİSK temsil eder.",
+   "cap": "Devlet tarafında Çalışma Bakanlığı ve kamu kurumları var. İşçileri en büyük işçi konfederasyonu Türk-İş, işverenleri en büyük işveren konfederasyonu TİSK temsil eder."
+  },
+  {
+   "id": "c3",
+   "say": "Komisyon en az 10 üyeyle toplanır ve oy çokluğuyla karar verir. Oylar eşit çıkarsa başkanın bulunduğu taraf kazanır; başkanı bakanlık belirler.",
+   "cap": "Komisyon en az 10 üyeyle toplanır ve oy çokluğuyla karar verir. Oylar eşit çıkarsa başkanın bulunduğu taraf kazanır; başkanı bakanlık belirler.",
+   "chapter": "Oylama nasıl işler?"
+  },
+  {
+   "id": "c4",
+   "say": "Yani işçi ve işveren anlaşamazsa, devlet hangi tarafla oy verirse karar o olur: 15 oyun 10'u.",
+   "cap": "Yani işçi ve işveren anlaşamazsa, devlet hangi tarafla oy verirse karar o olur: 15 oyun 10'u."
+  },
+  {
+   "id": "t1",
+   "say": "Yönetmeliğe göre asgari ücret en geç iki yılda bir belirlenir. Son yıllarda ise her yıl Aralık'ta belirleniyor.",
+   "cap": "Yönetmeliğe göre asgari ücret en geç iki yılda bir belirlenir. Son yıllarda ise her yıl Aralık'ta belirleniyor.",
+   "chapter": "Takvim: Aralık'tan Ocak'a"
+  },
+  {
+   "id": "t2",
+   "say": "Komisyon Aralık boyunca birkaç kez toplanır. Karar Resmî Gazete'de yayımlanır ve genellikle 1 Ocak'tan itibaren geçerli olur.",
+   "cap": "Komisyon Aralık boyunca birkaç kez toplanır. Karar Resmî Gazete'de yayımlanır ve genellikle 1 Ocak'tan itibaren geçerli olur."
+  },
+  {
+   "id": "t3",
+   "say": "Son dört yılın açıklama tarihleri: 22 Aralık 2022, 27 Aralık 2023, 24 Aralık 2024 ve 23 Aralık 2025.",
+   "cap": "Son dört yılın açıklama tarihleri: 22 Aralık 2022, 27 Aralık 2023, 24 Aralık 2024 ve 23 Aralık 2025."
+  },
+  {
+   "id": "t4",
+   "say": "Enflasyon çok yüksekken yıl ortasında ara zam da yapıldı: 2022'de ve 2023'te, Temmuz'da.",
+   "cap": "Enflasyon çok yüksekken yıl ortasında ara zam da yapıldı: 2022'de ve 2023'te, Temmuz'da."
+  },
+  {
+   "id": "n1",
+   "say": "2026'da asgari ücretin brütü 33 bin 30 lira. Ama cebe giren net tutar 28 bin 75 lira 50 kuruş.",
+   "cap": "2026'da asgari ücretin brütü 33.030 lira. Ama cebe giren net tutar 28.075,50 lira.",
+   "chapter": "Brütten nete"
+  },
+  {
+   "id": "n2",
+   "say": "Aradaki fark işçinin primleri: yüzde 14 SGK ve yüzde 1 işsizlik sigortası. Toplam, brütün yüzde 15'i.",
+   "cap": "Aradaki fark işçinin primleri: %14 SGK ve %1 işsizlik sigortası. Toplam, brütün %15'i."
+  },
+  {
+   "id": "n2b",
+   "say": "Rakamla: 33 bin 30 liranın yüzde 14'ü 4 bin 624 lira 20 kuruş, yüzde 1'i 330 lira 30 kuruş.",
+   "cap": "Rakamla: 33.030 liranın %14'ü 4.624,20 lira, %1'i 330,30 lira."
+  },
+  {
+   "id": "n3",
+   "say": "Gelir vergisi ve damga vergisi kesilmez: 2022'den beri asgari ücret bu vergilerden istisna. Bu yüzden net, brütün tam yüzde 85'i.",
+   "cap": "Gelir vergisi ve damga vergisi kesilmez: 2022'den beri asgari ücret bu vergilerden istisna. Bu yüzden net, brütün tam %85'i."
+  },
+  {
+   "id": "w1",
+   "say": "İşveren yalnız brüt ücreti ödemez; üstüne kendi primlerini de öder: yüzde 21,75 SGK ve yüzde 2 işsizlik sigortası.",
+   "cap": "İşveren yalnız brüt ücreti ödemez; üstüne kendi primlerini de öder: %21,75 SGK ve %2 işsizlik sigortası.",
+   "chapter": "İşverene maliyeti"
+  },
+  {
+   "id": "w2",
+   "say": "Böylece 2026'da bir asgari ücretlinin işverene aylık maliyeti, teşvik indirimi olmadan, 40 bin 874 lira 63 kuruş.",
+   "cap": "Böylece 2026'da bir asgari ücretlinin işverene aylık maliyeti, teşvik indirimi olmadan, 40.874,63 lira."
+  },
+  {
+   "id": "w2b",
+   "say": "Yani teşviksiz hesapta işverenin ödediği her 100 liranın yaklaşık 69 lirası işçinin cebine geçer.",
+   "cap": "Yani teşviksiz hesapta işverenin ödediği her 100 liranın yaklaşık 69 lirası işçinin cebine geçer."
+  },
+  {
+   "id": "w3",
+   "say": "Primini zamanında ödeyen işveren prim indirimi alır; devlet de 2026'da asgari ücretli başına aylık 1.270 lira destek veriyor.",
+   "cap": "Primini zamanında ödeyen işveren prim indirimi alır; devlet de 2026'da asgari ücretli başına aylık 1.270 lira destek veriyor."
+  },
+  {
+   "id": "g1",
+   "say": "Net asgari ücret Ocak 2023'te 8 bin 506 lira 80 kuruştu. 2024'te 17 bin 2 lira, 2025'te 22 bin 104 lira, 2026'da 28 bin 75 lira oldu.",
+   "cap": "Net asgari ücret Ocak 2023'te 8.506,80 liraydı. 2024'te 17.002 lira, 2025'te 22.104 lira, 2026'da 28.075 lira oldu.",
+   "chapter": "Geçmiş yıllar"
+  },
+  {
+   "id": "g2",
+   "say": "Artışlar sırasıyla yüzde 54,66, yüzde 49, yüzde 30 ve yüzde 27. Her artış bir önceki tutara göre; Temmuz ara zammı varsa ondan sonraki tutara göre.",
+   "cap": "Artışlar sırasıyla %54,66, %49, %30 ve %27. Her artış bir önceki tutara göre; Temmuz ara zammı varsa ondan sonraki tutara göre."
+  },
+  {
+   "id": "g2b",
+   "say": "2026'nın net tutarı, Ocak 2023'ün yaklaşık 3,3 katı. Ama aynı dönemde fiyatlar da hızla arttı.",
+   "cap": "2026'nın net tutarı, Ocak 2023'ün yaklaşık 3,3 katı. Ama aynı dönemde fiyatlar da hızla arttı."
+  },
+  {
+   "id": "g3",
+   "say": "Ama asıl soru alım gücü. 2026 zammı yüzde 27; Ekim 2026'da yıllık enflasyon yüzde 29,77.",
+   "cap": "Ama asıl soru alım gücü. 2026 zammı %27; Ekim 2026'da yıllık enflasyon %29,77."
+  },
+  {
+   "id": "g4",
+   "say": "Fiyatlar yıl boyunca artmaya devam ettiği için asgari ücretin alım gücü Ocak'ta en yüksek, Aralık'ta en düşük olur.",
+   "cap": "Fiyatlar yıl boyunca artmaya devam ettiği için asgari ücretin alım gücü Ocak'ta en yüksek, Aralık'ta en düşük olur."
+  },
+  {
+   "id": "k1",
+   "say": "Yönetmeliğe göre komisyon; ülkenin sosyal ve ekonomik durumuna, geçinme indekslerine, ödenen ücretlerin genel durumuna ve geçim şartlarına bakar.",
+   "cap": "Yönetmeliğe göre komisyon; ülkenin sosyal ve ekonomik durumuna, geçinme indekslerine, ödenen ücretlerin genel durumuna ve geçim şartlarına bakar.",
+   "chapter": "Komisyon neye bakar?"
+  },
+  {
+   "id": "k2",
+   "say": "Pazarlıkta en çok konuşulanlar: geçen yılın enflasyonu, gelecek yıl beklenen enflasyon ve işverenin ödeyebileceği maliyet.",
+   "cap": "Pazarlıkta en çok konuşulanlar: geçen yılın enflasyonu, gelecek yıl beklenen enflasyon ve işverenin ödeyebileceği maliyet."
+  },
+  {
+   "id": "k3",
+   "say": "İşçi tarafı alım gücünü korumak ister, işveren tarafı maliyeti; devlet ikisini ve bütçeyi birlikte tartar.",
+   "cap": "İşçi tarafı alım gücünü korumak ister, işveren tarafı maliyeti; devlet ikisini ve bütçeyi birlikte tartar."
+  },
+  {
+   "id": "y1",
+   "say": "2027 asgari ücreti henüz belli değil. Komisyon Aralık'ta toplanıp karar verecek.",
+   "cap": "2027 asgari ücreti henüz belli değil. Komisyon Aralık'ta toplanıp karar verecek.",
+   "chapter": "2027 ne zaman belli olur?"
+  },
+  {
+   "id": "y2",
+   "say": "Burada tahmin vermiyoruz. Rakam açıklandığında parafomo.com'daki asgari ücret hesaplama aracı güncellenir: brütten nete, işveren maliyetine kadar.",
+   "cap": "Burada tahmin vermiyoruz. Rakam açıklandığında parafomo.com'daki asgari ücret hesaplama aracı güncellenir: brütten nete, işveren maliyetine kadar."
+  },
+  {
+   "id": "s1",
+   "say": "Özetle: asgari ücreti 15 üyeli komisyon oy çokluğuyla belirler; karar Resmî Gazete'de yayımlanır, genellikle 1 Ocak'ta başlar.",
+   "cap": "Özetle: asgari ücreti 15 üyeli komisyon oy çokluğuyla belirler; karar Resmî Gazete'de yayımlanır, genellikle 1 Ocak'ta başlar.",
+   "chapter": "Özet"
+  },
+  {
+   "id": "s2",
+   "say": "Net, brütün yüzde 85'i. İşverene maliyeti ise teşviksiz, brütün yaklaşık 1,24 katı.",
+   "cap": "Net, brütün %85'i. İşverene maliyeti ise teşviksiz, brütün yaklaşık 1,24 katı."
+  },
+  {
+   "id": "s3",
+   "say": "Kendi hesabın için parafomo.com'daki asgari ücret hesaplama aracına bak; link açıklamada.",
+   "cap": "Kendi hesabın için parafomo.com'daki asgari ücret hesaplama aracına bak; link açıklamada."
+  },
+  {
+   "id": "s4",
+   "say": "Ekonomi Defteri'nin sonraki uzun sayfasında kira artışının nasıl hesaplandığını anlatacağız. Kaçırmamak için abone ol.",
+   "cap": "Ekonomi Defteri'nin sonraki uzun sayfasında kira artışının nasıl hesaplandığını anlatacağız. Kaçırmamak için abone ol."
+  }
+ ]
+}
