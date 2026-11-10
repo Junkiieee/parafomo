@@ -129,3 +129,8 @@ V3/V-hacim kararıyla güncellendi; R14 (uzun video) → V5 olarak devam. Eski I
   açıklanınca kesin, öncesinde formül + "örnek/tahmin" etiketli senaryo. Rakam resmî kaynaktan; tahmin açıkça etiketli.
 - [x] 2026-11-10 — Altın/gümüş getiri sayfalarına **yıl yıl getiri tablosu** (#yillik-getiri; günlük seri, d7b6007). Ölçüm: 2 hafta
   sonra GSC "gümüş yıllık getirisi" (/gumus-getiri/ p43,5) ve /altin-getiri/ tık (28g 16).
+- [ ] R27 (web/GEO · CEO 2026-11-10, bot verisi) — **Stopaj 2027 hazırlığı** · Cloudflare 30g: ChatGPT-User en çok
+  /blog/stopaj-nedir-2026-stopaj-oranlari/ (249) + /mevduat-faizi-hesaplama/ (178) açıyor. İndirimli TL mevduat stopajı
+  (11444 s. CB Kararı) 31.12.2026'da bitiyor → Aralık sonu "2027 stopaj oranı" zirvesi. Yap: yazı + hesaplayıcıya "bitiş tarihi /
+  yeni karar" kutusu; Resmî Gazete takibi + karar günü otomatik güncelleme (açıklama günü motoru). Rakam yalnız Resmî Gazete'den.
+- [ ] R28 (web/SEO · CEO 2026-11-10) — **Uzun başlıklar** · build denetimi 47 sayfa >70 karakter; GSC gösterimine göre ilk 10'u kısalt.
