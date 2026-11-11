@@ -1,0 +1,59 @@
+{
+  "slug": "11-11-de-20-indirim-neden-hala-pahali-kaliyor",
+  "title": "11.11'de %20 indirim neden hâlâ pahalı kalıyor",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Yıllık enflasyon %29,77 iken fiyatı aynı oranda artan 1.000 liralık ürün %20 indirimle bile geçen yılın fiyatının üstünde kalıyor. 11.11'de etiketi değil, geçen yılın fiyatını kıyaslamak gerekiyor.",
+  "tags": [
+    "11.11",
+    "indirim",
+    "enflasyon",
+    "TÜFE",
+    "alışveriş",
+    "kişisel finans",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "%20 indirim bile geçen yılın fiyatını yakalamıyor.",
+      "visual": {
+        "type": "object",
+        "query": "shopping bags with sale tag"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yıllık enflasyon %29,77. Geçen yıl 1.000 lira olan ürün, aynı oranda artarsa yaklaşık 1.298 lira.",
+      "visual": {
+        "type": "object",
+        "query": "price tag"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama %20 indirim bunu yaklaşık 1.038 liraya çeker. Yani indirimli fiyat bile geçen yılın üstünde.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yürüyen merdiven aşağı inerken yukarı koşmak gibi: indirim yerinde saydırır. Almadan geçen yılki fiyata bak.",
+      "visual": {
+        "type": "object",
+        "query": "escalator"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sepetindeki indirim gerçekten indirim mi? Abone ol, her gün 60 saniyede tek net analiz gelsin.",
+      "visual": {
+        "type": "object",
+        "query": "shopping bags with sale tag"
+      }
+    }
+  ]
+}

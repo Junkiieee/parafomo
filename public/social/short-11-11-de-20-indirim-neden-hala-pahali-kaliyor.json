@@ -1,0 +1,127 @@
+{
+  "title": "11.11'de %20 indirim neden hâlâ pahalı kalıyor #Shorts",
+  "description": "Yıllık enflasyon %29,77 iken fiyatı aynı oranda artan 1.000 liralık ürün %20 indirimle bile geçen yılın fiyatının üstünde kalıyor. 11.11'de etiketi değil, geçen yılın fiyatını kıyaslamak gerekiyor.",
+  "tags": [
+    "11.11",
+    "indirim",
+    "enflasyon",
+    "TÜFE",
+    "alışveriş",
+    "kişisel finans",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-11-11-de-20-indirim-neden-hala-pahali-kaliyor.mp4",
+  "slug": "11-11-de-20-indirim-neden-hala-pahali-kaliyor",
+  "format": "single_concept",
+  "engine": "anim",
+  "teknik": "hf",
+  "timeline": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 3.494,
+      "cap": "%20 indirim bile geçen yılın fiyatını yakalamıyor.",
+      "words": [
+        0.35,
+        1.01,
+        1.41,
+        1.61,
+        2.05,
+        2.31,
+        2.71
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 3.774,
+      "t1": 11.91,
+      "cap": "Yıllık enflasyon %29,77. Geçen yıl 1.000 lira olan ürün, aynı oranda artarsa yaklaşık 1.298 lira.",
+      "words": [
+        3.774,
+        4.434,
+        5.014,
+        7.014,
+        7.514,
+        7.654,
+        7.914,
+        8.054,
+        8.294,
+        8.854,
+        9.014,
+        9.354,
+        9.874,
+        10.414,
+        11.514
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 12.19,
+      "t1": 18.55,
+      "cap": "Ama %20 indirim bunu yaklaşık 1.038 liraya çeker. Yani indirimli fiyat bile geçen yılın üstünde.",
+      "words": [
+        12.19,
+        13.01,
+        13.47,
+        13.89,
+        14.13,
+        14.63,
+        15.03,
+        15.57,
+        16.29,
+        16.51,
+        16.99,
+        17.29,
+        17.45,
+        17.79,
+        18.05
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 18.83,
+      "t1": 25.022,
+      "cap": "Yürüyen merdiven aşağı inerken yukarı koşmak gibi: indirim yerinde saydırır. Almadan geçen yılki fiyata bak.",
+      "words": [
+        18.83,
+        19.25,
+        19.67,
+        20.05,
+        20.47,
+        20.83,
+        21.17,
+        21.81,
+        22.09,
+        22.45,
+        23.23,
+        23.71,
+        24.15,
+        24.43,
+        24.77
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 25.302,
+      "t1": 31.734,
+      "cap": "Sepetindeki indirim gerçekten indirim mi? Abone ol, her gün 60 saniyede tek net analiz gelsin.",
+      "words": [
+        26.182,
+        26.722,
+        26.982,
+        27.422,
+        27.942,
+        28.682,
+        28.982,
+        29.282,
+        29.402,
+        29.562,
+        29.802,
+        30.382,
+        30.662,
+        30.782,
+        31.182
+      ]
+    }
+  ]
+}

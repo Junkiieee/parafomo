@@ -1,0 +1,112 @@
+{
+ "slug": "11-11-de-20-indirim-neden-hala-pahali-kaliyor",
+ "title": "11.11'de %20 indirim neden hâlâ pahalı kalıyor",
+ "description": "Yıllık enflasyon %29,77 iken fiyatı aynı oranda artan 1.000 liralık ürün %20 indirimle bile geçen yılın fiyatının üstünde kalıyor. 11.11'de etiketi değil, geçen yılın fiyatını kıyaslamak gerekiyor.",
+ "tags": [
+  "11.11",
+  "indirim",
+  "enflasyon",
+  "TÜFE",
+  "alışveriş",
+  "kişisel finans",
+  "parafomo"
+ ],
+ "format": "single_concept",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "İNDİRİM TUZAĞI",
+  "scenes": [
+   {
+    "type": "big_number",
+    "head": "İndirim yetmiyor",
+    "data": {
+     "icon": "percent",
+     "value": 20,
+     "unit": "%",
+     "suffix": "",
+     "label": "İNDİRİM BİLE YAKALAMIYOR"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "compare",
+    "head": "Enflasyon fiyatı şişirdi",
+    "data": {
+     "a": {
+      "label": "GEÇEN YIL",
+      "value": 1000
+     },
+     "b": {
+      "label": "ZAMLI FİYAT",
+      "value": 1298
+     },
+     "unit": "₺",
+     "note": "%29,77 ZAM"
+    },
+    "line": "s1"
+   },
+   {
+    "type": "big_number",
+    "head": "İndirimli fiyat bile yüksek",
+    "data": {
+     "icon": "coins",
+     "value": 1038,
+     "unit": "₺",
+     "suffix": "",
+     "label": "İNDİRİMLİ FİYAT HÂLÂ ÜSTÜNDE"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "icon_text",
+    "head": "Yürüyen merdiven etkisi",
+    "data": {
+     "icon": "chart",
+     "text": "İndirim yerinde saydırır, *geçen yılki fiyata* bak"
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Bunu kaçırma",
+    "data": {
+     "l1": "İNDİRİM GERÇEK Mİ?",
+     "l2": "ABONE OL",
+     "sub": "HER GÜN 60 SANİYEDE TEK ANALİZ"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "%20 indirim bile geçen yılın fiyatını yakalamıyor.",
+   "cap": "%20 indirim bile geçen yılın fiyatını yakalamıyor."
+  },
+  {
+   "id": "s1",
+   "say": "Yıllık enflasyon %29,77. Geçen yıl 1.000 lira olan ürün, aynı oranda artarsa yaklaşık 1.298 lira.",
+   "cap": "Yıllık enflasyon %29,77. Geçen yıl 1.000 lira olan ürün, aynı oranda artarsa yaklaşık 1.298 lira."
+  },
+  {
+   "id": "s2",
+   "say": "Ama %20 indirim bunu yaklaşık 1.038 liraya çeker. Yani indirimli fiyat bile geçen yılın üstünde.",
+   "cap": "Ama %20 indirim bunu yaklaşık 1.038 liraya çeker. Yani indirimli fiyat bile geçen yılın üstünde."
+  },
+  {
+   "id": "s3",
+   "say": "Yürüyen merdiven aşağı inerken yukarı koşmak gibi: indirim yerinde saydırır. Almadan geçen yılki fiyata bak.",
+   "cap": "Yürüyen merdiven aşağı inerken yukarı koşmak gibi: indirim yerinde saydırır. Almadan geçen yılki fiyata bak."
+  },
+  {
+   "id": "s4",
+   "say": "Sepetindeki indirim gerçekten indirim mi? Abone ol, her gün 60 saniyede tek net analiz gelsin.",
+   "cap": "Sepetindeki indirim gerçekten indirim mi? Abone ol, her gün 60 saniyede tek net analiz gelsin."
+  }
+ ],
+ "skin": "iso",
+ "engine": "hf"
+}

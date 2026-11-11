@@ -1,0 +1,103 @@
+{
+  "slug": "kampanya-sayaci-parani-yonetiyor-sen-degil",
+  "title": "Kampanya sayacı paranı yönetiyor, sen değil",
+  "description": "İndirim ve geri sayım sayaçları kaçırma korkusunu satar, ihtiyacı değil. Bir gün bekleme kuralıyla sepetteki gereksiz harcamayı ayıklamanın yolu.",
+  "tags": [
+    "alışveriş",
+    "FOMO",
+    "indirim",
+    "kampanya",
+    "tasarruf",
+    "birikim",
+    "parafomo"
+  ],
+  "format": "myth",
+  "style": "isometric",
+  "scene": "generic.js",
+  "short": true,
+  "data": {
+    "eyebrow": "İNDİRİM TUZAĞI",
+    "scenes": [
+      {
+        "type": "icon_text",
+        "head": "İndirimin gizli yüzü",
+        "data": {
+          "icon": "card",
+          "text": "İndirim seni *kazandırmıyor*, *harcatıyor*"
+        },
+        "line": "s0"
+      },
+      {
+        "type": "steps",
+        "head": "Seni nasıl ikna ediyorlar?",
+        "data": {
+          "items": [
+            "GERİ SAYIM SAYACI",
+            "SON ÜRÜNLER YAZISI",
+            "KAÇIRMA KORKUSU"
+          ]
+        },
+        "line": "s1"
+      },
+      {
+        "type": "icon_text",
+        "head": "Asıl tuzak",
+        "data": {
+          "icon": "coins",
+          "text": "Para *cebinden çıkıyor*, kazanç *sanal*"
+        },
+        "line": "s2"
+      },
+      {
+        "type": "steps",
+        "head": "Çözüm: bekleme kuralı",
+        "data": {
+          "items": [
+            "SEPETİ KAYDET",
+            "BİR GÜN BEKLE",
+            "HÂLÂ İSTİYORSAN AL"
+          ]
+        },
+        "line": "s3"
+      },
+      {
+        "type": "cta",
+        "head": "Sıra sende",
+        "data": {
+          "l1": "SEPETİNDE KAÇI",
+          "l2": "İHTİYAÇ?",
+          "sub": "HER GÜN TEK NET ANALİZ"
+        },
+        "line": "s4"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "s0",
+      "say": "İndirim seni kazandırmıyor, harcatıyor.",
+      "cap": "İndirim seni kazandırmıyor, harcatıyor."
+    },
+    {
+      "id": "s1",
+      "say": "Geri sayım sayacı ve 'son ürünler' yazısı ihtiyacını değil, kaçırma korkunu satıyor.",
+      "cap": "Geri sayım sayacı ve 'son ürünler' yazısı ihtiyacını değil, kaçırma korkunu satıyor."
+    },
+    {
+      "id": "s2",
+      "say": "Ama asıl tuzak şu: indirimde harcadığın para cebinden çıkıyor, kazandığın sadece sanal bir tasarruf.",
+      "cap": "Ama asıl tuzak şu: indirimde harcadığın para cebinden çıkıyor, kazandığın sadece sanal bir tasarruf."
+    },
+    {
+      "id": "s3",
+      "say": "Çözüm: sepeti kaydet, bir gün bekle. Ertesi gün hâlâ istiyorsan al, istemiyorsan paran cebinde kalır.",
+      "cap": "Çözüm: sepeti kaydet, bir gün bekle. Ertesi gün hâlâ istiyorsan al, istemiyorsan paran cebinde kalır."
+    },
+    {
+      "id": "s4",
+      "say": "Sepetindeki kaçı gerçekten ihtiyaç? Abone ol, her gün 60 saniyede tek net analiz.",
+      "cap": "Sepetindeki kaçı gerçekten ihtiyaç? Abone ol, her gün 60 saniyede tek net analiz."
+    }
+  ],
+  "skin": "cutpaper"
+}

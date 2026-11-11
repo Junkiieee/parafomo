@@ -1,0 +1,118 @@
+{
+  "title": "Kampanya sayacı paranı yönetiyor, sen değil #Shorts",
+  "description": "İndirim ve geri sayım sayaçları kaçırma korkusunu satar, ihtiyacı değil. Bir gün bekleme kuralıyla sepetteki gereksiz harcamayı ayıklamanın yolu.",
+  "tags": [
+    "alışveriş",
+    "FOMO",
+    "indirim",
+    "kampanya",
+    "tasarruf",
+    "birikim",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-kampanya-sayaci-parani-yonetiyor-sen-degil.mp4",
+  "slug": "kampanya-sayaci-parani-yonetiyor-sen-degil",
+  "format": "myth",
+  "engine": "anim",
+  "teknik": "iso",
+  "timeline": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 2.51,
+      "cap": "İndirim seni kazandırmıyor, harcatıyor.",
+      "words": [
+        0.35,
+        0.85,
+        1.05,
+        1.83
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 2.79,
+      "t1": 8.118,
+      "cap": "Geri sayım sayacı ve 'son ürünler' yazısı ihtiyacını değil, kaçırma korkunu satıyor.",
+      "words": [
+        2.79,
+        3.35,
+        3.63,
+        3.99,
+        4.17,
+        4.51,
+        4.95,
+        5.29,
+        6.03,
+        6.69,
+        7.07,
+        7.45
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 8.398,
+      "t1": 14.95,
+      "cap": "Ama asıl tuzak şu: indirimde harcadığın para cebinden çıkıyor, kazandığın sadece sanal bir tasarruf.",
+      "words": [
+        8.398,
+        8.938,
+        9.338,
+        9.698,
+        10.298,
+        10.718,
+        11.218,
+        11.438,
+        11.838,
+        12.678,
+        13.178,
+        13.598,
+        14.078,
+        14.178
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 15.23,
+      "t1": 22.334,
+      "cap": "Çözüm: sepeti kaydet, bir gün bekle. Ertesi gün hâlâ istiyorsan al, istemiyorsan paran cebinde kalır.",
+      "words": [
+        15.23,
+        16.17,
+        16.55,
+        17.17,
+        17.25,
+        17.41,
+        18.15,
+        18.53,
+        18.67,
+        19.27,
+        19.95,
+        20.43,
+        21.19,
+        21.43,
+        21.87
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 22.614,
+      "t1": 27.894,
+      "cap": "Sepetindeki kaçı gerçekten ihtiyaç? Abone ol, her gün 60 saniyede tek net analiz.",
+      "words": [
+        22.614,
+        23.174,
+        23.514,
+        23.934,
+        24.854,
+        25.314,
+        25.694,
+        25.854,
+        25.994,
+        26.234,
+        26.794,
+        27.034,
+        27.214
+      ]
+    }
+  ]
+}

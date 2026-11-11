@@ -1,0 +1,59 @@
+{
+  "slug": "kampanya-sayaci-parani-yonetiyor-sen-degil",
+  "title": "Kampanya sayacı paranı yönetiyor, sen değil",
+  "category": "MİT",
+  "format": "myth",
+  "description": "İndirim ve geri sayım sayaçları kaçırma korkusunu satar, ihtiyacı değil. Bir gün bekleme kuralıyla sepetteki gereksiz harcamayı ayıklamanın yolu.",
+  "tags": [
+    "alışveriş",
+    "FOMO",
+    "indirim",
+    "kampanya",
+    "tasarruf",
+    "birikim",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "İndirim seni kazandırmıyor, harcatıyor.",
+      "visual": {
+        "type": "object",
+        "query": "colorful shopping bags"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Geri sayım sayacı ve 'son ürünler' yazısı ihtiyacını değil, kaçırma korkunu satıyor.",
+      "visual": {
+        "type": "object",
+        "query": "countdown timer"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl tuzak şu: indirimde harcadığın para cebinden çıkıyor, kazandığın sadece sanal bir tasarruf.",
+      "visual": {
+        "type": "object",
+        "query": "empty wallet"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çözüm: sepeti kaydet, bir gün bekle. Ertesi gün hâlâ istiyorsan al, istemiyorsan paran cebinde kalır.",
+      "visual": {
+        "type": "object",
+        "query": "smartphone online shopping cart"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sepetindeki kaçı gerçekten ihtiyaç? Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "colorful shopping bags"
+      }
+    }
+  ]
+}
