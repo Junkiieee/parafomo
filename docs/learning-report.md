@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-11-10T08:53:29Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-11-11T08:56:35Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -19,19 +19,19 @@
 
 ### Viral format — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `shock_number` — skor 383.018, örnek 10
+- `shock_number` — skor 375.778, örnek 9
 - `event_result` — skor 299.568, örnek 1
-- `single_concept` — skor 285.48, örnek 7
+- `single_concept` — skor 285.058, örnek 6
 - `myth` — skor 144.076, örnek 9
 - `news_reaction` — skor 123.009, örnek 11
 - `backtest_return` — skor 96.387, örnek 2
 
-### Viral yayın slotu — **explore** (yeterli veri yok, rotasyon sürüyor)
+### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `5` — skor 465.573, örnek 5
-- `1` — skor 405.116, örnek 5
-- `2` — skor 233.797, örnek 5
-- `0` — skor 208.527, örnek 5
+- `5` — skor 509.736, örnek 4
+- `1` — skor 405.296, örnek 5
+- `2` — skor 234.14, örnek 5
+- `0` — skor 148.184, örnek 4
 - `manual` — skor 137.723, örnek 12
 - `3` — skor 105.381, örnek 5
 - `4` — skor 75.345, örnek 3
@@ -39,11 +39,11 @@
 ## Konu sinyalleri
 
 **En iyi blog sayfaları:**
-- euro-mi-dolar-mi-10-yillik-getiri-karsilastirma — skor 67.2
-- abd-ekim-2026-cpi-verisi-fed-dolar-altin — skor 48.97
+- euro-mi-dolar-mi-10-yillik-getiri-karsilastirma — skor 68.2
+- abd-ekim-2026-cpi-verisi-fed-dolar-altin — skor 27.23
 - gumus-mi-altin-mi-10-yillik-getiri-karsilastirma — skor 19.47
 - kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir — skor 17.07
-- 2027-zamlari-yeniden-degerleme-orani-rehberi — skor 14.5
+- 2027-zamlari-yeniden-degerleme-orani-rehberi — skor 13.5
 - stopaj-nedir-2026-stopaj-oranlari — skor 11.28
 
 **🎯 Fırsat sorguları** (içerik/başlık iyileştir):
