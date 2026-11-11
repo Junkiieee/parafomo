@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-11T12:15+00:00",
+ "updated": "2026-11-11T18:15+00:00",
  "source": "halkarz.com",
  "items": {
   "pronet-guvenlik-hizmetleri-a-s": {
@@ -8537,6 +8537,92 @@
     }
    },
    "first_seen": "2026-11-05"
+  },
+  "tarim-kredi-yem-san-ve-tic-a-s": {
+   "company": "Tarım Kredi Yem San. ve Tic. A.Ş.",
+   "bist_code": "",
+   "slug": "tarim-kredi-yem-san-ve-tic-a-s",
+   "link": "https://halkarz.com/tarim-kredi-yem-san-ve-tic-a-s/",
+   "date_text": "",
+   "start": null,
+   "end": null,
+   "status": "Tarih Bekleniyor",
+   "price": "",
+   "distribution": "Eşit Dağıtım **",
+   "lot": "39.000.000 Lot",
+   "broker": "Vakıf Yatırım Menkul Değerler A.Ş. Bizim Menkul Değerler A.Ş.",
+   "market": "",
+   "first_trade": "",
+   "float_lot": "",
+   "float_pct": "",
+   "updated_src": "11.11.2026 16:06",
+   "details": {
+    "sekil": {
+     "items": [
+      "Sermaye Artırımı : 39.000.000 Lot"
+     ],
+     "source": "Taslak İzahname, Sayfa 1."
+    },
+    "fon_kullanim": {
+     "items": [
+      "%30 Planlanan yatırım harcamalarının finansmanı ve tesislerin revizyonu",
+      "%70 İşletme sermayesi"
+     ],
+     "source": "Taslak İzahname, Sayfa 200."
+    },
+    "satis_yontemi": {
+     "items": [
+      "Sabit Fiyatla Talep Toplama",
+      "En İyi Gayret Aracılığı"
+     ],
+     "source": ""
+    },
+    "fiyat_istikrari": {
+     "items": [
+      "Planlanmamaktadır"
+     ],
+     "source": "Taslak İzahname, Sayfa 198."
+    },
+    "satmama": {
+     "items": [
+      "1 Yıl, İhraççı",
+      "1 Yıl, Ortaklar"
+     ],
+     "source": "Taslak İzahname, Sayfa 199."
+    },
+    "halka_aciklik": {
+     "items": [
+      "%26"
+     ],
+     "source": "Taslak İzahname, Sayfa 178."
+    },
+    "finansal": {
+     "periods": [
+      "2026/6",
+      "2025",
+      "2024"
+     ],
+     "rows": [
+      {
+       "label": "Hasılat",
+       "values": [
+        "13,0 Milyar TL",
+        "26,4 Milyar TL",
+        "25,7 Milyar TL"
+       ]
+      },
+      {
+       "label": "Brüt Kâr",
+       "values": [
+        "1,4 Milyar TL",
+        "1,8 Milyar TL",
+        "1,2 Milyar TL"
+       ]
+      }
+     ]
+    }
+   },
+   "first_seen": "2026-11-11"
   }
  }
 }

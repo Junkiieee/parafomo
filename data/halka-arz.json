@@ -1,9 +1,94 @@
 {
-  "updated": "2026-11-11T12:15+00:00",
+  "updated": "2026-11-11T18:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 70,
   "items": [
+    {
+      "company": "Tarım Kredi Yem San. ve Tic. A.Ş.",
+      "bist_code": "",
+      "slug": "tarim-kredi-yem-san-ve-tic-a-s",
+      "link": "https://halkarz.com/tarim-kredi-yem-san-ve-tic-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "39.000.000 Lot",
+      "broker": "Vakıf Yatırım Menkul Değerler A.Ş. Bizim Menkul Değerler A.Ş.",
+      "market": "",
+      "first_trade": "",
+      "float_lot": "",
+      "float_pct": "",
+      "updated_src": "11.11.2026 16:06",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 39.000.000 Lot"
+          ],
+          "source": "Taslak İzahname, Sayfa 1."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%30 Planlanan yatırım harcamalarının finansmanı ve tesislerin revizyonu",
+            "%70 İşletme sermayesi"
+          ],
+          "source": "Taslak İzahname, Sayfa 200."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "Planlanmamaktadır"
+          ],
+          "source": "Taslak İzahname, Sayfa 198."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "Taslak İzahname, Sayfa 199."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%26"
+          ],
+          "source": "Taslak İzahname, Sayfa 178."
+        },
+        "finansal": {
+          "periods": [
+            "2026/6",
+            "2025",
+            "2024"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "13,0 Milyar TL",
+                "26,4 Milyar TL",
+                "25,7 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "1,4 Milyar TL",
+                "1,8 Milyar TL",
+                "1,2 Milyar TL"
+              ]
+            }
+          ]
+        }
+      }
+    },
     {
       "company": "Simpro Elektronik Kart Üretim San. ve Tic. A.Ş.",
       "bist_code": "",
@@ -2358,95 +2443,6 @@
                 "1,5 Milyar TL",
                 "1,9 Milyar TL",
                 "845,7 Milyon TL"
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "company": "(termo) Termopet Akaryakıt Nakliyat ve Tic. A.Ş.",
-      "bist_code": "",
-      "slug": "termopet-akaryakit-nakliyat-ve-tic-a-s",
-      "link": "https://halkarz.com/termopet-akaryakit-nakliyat-ve-tic-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "120.000.000 Lot",
-      "broker": "Tera Yatırım Menkul Değerler A.Ş.",
-      "market": "",
-      "first_trade": "",
-      "float_lot": "",
-      "float_pct": "",
-      "updated_src": "15.09.2026 09:42",
-      "details": {
-        "sekil": {
-          "items": [
-            "Sermaye Artırımı : 100.000.000 Lot",
-            "Ortak Satışı : 20.000.000 Lot (Cemil Direkci)"
-          ],
-          "source": "Taslak İzahname, Sayfa 2."
-        },
-        "fon_kullanim": {
-          "items": [
-            "%25-30 Biyogaz tesislerinin ilave üniteler ve modernizasyon yatırımı",
-            "%20-30 Akaryakıt alanında yeni yatırımlar ve var olan bayiliklerde geliştirme yatırımı",
-            "%10-15 Şirketin ticari taşıma ve operasyon filosunun yenilenmesi",
-            "%20-30 Enerji sektöründe yeni yatırımlar",
-            "%10-15 İşletme sermayesi"
-          ],
-          "source": "Taslak İzahname, Sayfa 165."
-        },
-        "satis_yontemi": {
-          "items": [
-            "Sabit Fiyatla Talep Toplama",
-            "En İyi Gayret Aracılığı"
-          ],
-          "source": ""
-        },
-        "fiyat_istikrari": {
-          "items": [
-            "İlerleyen aşamalarda tamamlanacaktır"
-          ],
-          "source": ""
-        },
-        "satmama": {
-          "items": [
-            "1 Yıl, İhraççı",
-            "1 Yıl, Ortaklar"
-          ],
-          "source": "Taslak İzahname, Sayfa 163."
-        },
-        "halka_aciklik": {
-          "items": [
-            "%30"
-          ],
-          "source": "Taslak İzahname, Sayfa 140."
-        },
-        "finansal": {
-          "periods": [
-            "2025",
-            "2024",
-            "2023"
-          ],
-          "rows": [
-            {
-              "label": "Hasılat",
-              "values": [
-                "17,3 Milyar TL",
-                "18,5 Milyar TL",
-                "22,0 Milyar TL"
-              ]
-            },
-            {
-              "label": "Brüt Kâr",
-              "values": [
-                "694,1 Milyon TL",
-                "476,5 Milyon TL",
-                "558,4 Milyon TL"
               ]
             }
           ]
