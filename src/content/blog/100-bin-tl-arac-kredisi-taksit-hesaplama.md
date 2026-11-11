@@ -99,7 +99,7 @@ Buna göre:
 | 200.000 TL | ≈ 10.679 TL | ≈ 9.545 TL |
 | 300.000 TL | ≈ 16.018 TL | ≈ 14.318 TL |
 
-48 ay vade yalnızca değeri 400 bin TL'ye kadar araçlarda mümkün; 300 bin TL kredi için ise %70 sınırı nedeniyle araç zaten 428 bin TL'yi geçeceğinden pratikte vade 36 aya iner. Tablo bu yüzden sadece taksit büyüklüğünü kıyaslamak içindir.
+48 ay vade yalnızca değeri 400 bin TL'ye kadar araçlarda mümkün; 300 bin TL kredi için ise %70 sınırıyla gereken 428 bin TL'lik değer zaten 400 bin TL kademesini aştığından oran %50'ye düşer; araç en az 600 bin TL olmalı ve vade en fazla 36 ay olur. Tablo bu yüzden sadece taksit büyüklüğünü kıyaslamak içindir.
 
 ## Araç kredisi mi, ihtiyaç kredisi mi?
 
@@ -128,7 +128,7 @@ Aynı tutar ve vadede ihtiyaç kredisi yaklaşık 28 bin TL daha pahalıya geliy
 
 - **Peşinatı artır:** Her 10 bin TL daha az kredi, 36 ayda yaklaşık 9 bin TL faiz-vergi tasarrufu demek.
 - **Vadeyi kısalt:** Taksit bütçeni zorlamıyorsa 24 ay, 48 aya göre yaklaşık 70 bin TL daha az maliyet getirir.
-- **Faiz takvimini izle:** Kredi faizleri TCMB politika faiziyle birlikte hareket eder. Karar tarihlerini [TCMB faiz takvimi](/tcmb-faiz-takvimi) sayfasından takip edebilirsin.
+- **Faiz takvimini izle:** Kredi faizleri genellikle TCMB politika faizinin yönünü gecikmeyle izler. Karar tarihlerini [TCMB faiz takvimi](/tcmb-faiz-takvimi) sayfasından takip edebilirsin.
 - **Eski borcu temizle:** Kredi kartı borcun yüksekse önce onu çözmek hem notunu hem bütçeni rahatlatır; seçenekler için [kredi yapılandırma rehberine](/blog/kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir) bakabilirsin.
 
 Evlilik, ev ya da araç gibi büyük harcamaları aynı döneme sıkıştırıyorsan [evlilik kredisi rehberimizdeki](/blog/evlilik-kredisi-2026-sartlar-tutar-geri-odeme) bütçe yaklaşımı da işine yarayabilir.
