@@ -25,7 +25,7 @@
     },
     {
       "kind": "point",
-      "spoken": "Yıllık enflasyon %29,77. Geçen yıl 1.000 lira olan ürün, aynı oranda artarsa yaklaşık 1.298 lira.",
+      "spoken": "Yıllık enflasyon %29,77. Örnek: geçen yıl 1.000 lira olan ürün, aynı oranda artarsa yaklaşık 1.298 lira.",
       "visual": {
         "type": "object",
         "query": "price tag"

@@ -66,8 +66,17 @@ def main():
     yamyam.sort(key=lambda x: -x["toplam_gosterim"])
 
     # 3) düşüş: sayfa bazında önceki 28 gün vs son 28 gün
-    now = {r["keys"][0]: r for r in q(svc, s1, end, ["page"])}
-    prev = {r["keys"][0]: r for r in q(svc, s0, e0, ["page"])}
+    def topla(rows):   # "/x" ve "/x/" aynı sayfa (301 ile birleşti) → tek satırda topla
+        out = {}
+        for r in rows:
+            k = r["keys"][0].split("?")[0].rstrip("/") + "/"
+            o = out.setdefault(k, {"clicks": 0, "impressions": 0, "_pw": 0})
+            o["clicks"] += r["clicks"]; o["impressions"] += r["impressions"]; o["_pw"] += r["position"] * r["impressions"]
+        for o in out.values():
+            o["position"] = o["_pw"] / o["impressions"] if o["impressions"] else 0
+        return out
+    now = topla(q(svc, s1, end, ["page"]))
+    prev = topla(q(svc, s0, e0, ["page"]))
     dusus = []
     for p, r0 in prev.items():
         r1 = now.get(p, {"clicks": 0, "impressions": 0, "position": 0})

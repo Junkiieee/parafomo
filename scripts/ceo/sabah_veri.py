@@ -97,7 +97,8 @@ def yapisal_veri():
 
 
 def hiz():
-    code, out = sh([f"{TOOLS}/lhci/node_modules/.bin/lhci", "autorun", f"--config={TOOLS}/lhci/lighthouserc.json"],
+    # video render kilidini bekle: render sırasında ölçüm 2 çekirdekte LCP'yi ikiye katlıyor (2026-11-11: 2,9 sn → 5,0 sn)
+    code, out = sh(["flock", "-w", "1200", "/tmp/shorts_frames.lock", f"{TOOLS}/lhci/node_modules/.bin/lhci", "autorun", f"--config={TOOLS}/lhci/lighthouserc.json"],
                    timeout=1500, cwd=f"{TOOLS}/lhci", env={"CHROME_PATH": CHROME})
     m = json.load(open(f"{TOOLS}/lhci/reports/manifest.json"))
     lines = ["| Sayfa | Perf | SEO | Erişilebilirlik | LCP | CLS |", "|---|---|---|---|---|---|"]

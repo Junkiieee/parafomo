@@ -43,7 +43,7 @@
       "value": 1298
      },
      "unit": "₺",
-     "note": "%29,77 ZAM"
+     "note": "ÖRNEK · %29,77 ZAM"
     },
     "line": "s1"
    },
@@ -88,8 +88,8 @@
   },
   {
    "id": "s1",
-   "say": "Yıllık enflasyon %29,77. Geçen yıl 1.000 lira olan ürün, aynı oranda artarsa yaklaşık 1.298 lira.",
-   "cap": "Yıllık enflasyon %29,77. Geçen yıl 1.000 lira olan ürün, aynı oranda artarsa yaklaşık 1.298 lira."
+   "say": "Yıllık enflasyon %29,77. Örnek: geçen yıl 1.000 lira olan ürün, aynı oranda artarsa yaklaşık 1.298 lira.",
+   "cap": "Yıllık enflasyon %29,77. Örnek: geçen yıl 1.000 lira olan ürün, aynı oranda artarsa yaklaşık 1.298 lira."
   },
   {
    "id": "s2",

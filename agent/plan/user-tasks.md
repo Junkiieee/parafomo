@@ -2,7 +2,7 @@
 
 _2026-11-10: Madde 5 KAPANDI — Cloudflare izni (parafomo-claude token) + crontab kuruldu (cf_bots 03:20 UTC). Açık Kaan görevi yok._
 
-_2026-11-10: Madde 4 (GSC yeniden tara: yeniden-degerleme-orani, 2027 rehberi, kira-artis) Kaan "yaptım" → KAPANDI. CEO raporu 11-11/11-12'de URL denetimiyle son taramanın 10 Kasım sonrasına geçtiğini doğrulasın; geçmediyse tekrar sor._
+_2026-11-10: Madde 4 (GSC yeniden tara) KAPANDI — 2026-11-11 URL denetimi: üç sayfanın son taraması 10 Kasım 08:50–10:29 UTC, dizinde._
 
 _2026-11-09: R15 EVET (Kaan) → /sitene-ekle/ + /embed/altin + /embed/kira-artis yayında (2659a7a). Cinecode denemesi: Kaan "şimdilik yapma"._
 
