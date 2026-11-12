@@ -1,0 +1,120 @@
+{
+  "title": "Taksit maaşını önceden harcıyor, fark etmiyorsun #Shorts",
+  "description": "11.11 taksitleri bu ayın değil, önümüzdeki ayların maaşından çıkar. Taksit toplamını maaşa göre sınırlamanın basit yolu.",
+  "tags": [
+    "11.11",
+    "taksit",
+    "maaş",
+    "kredi kartı",
+    "kişisel finans",
+    "bütçe",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-taksit-maasini-onceden-harciyor-fark-etmiyorsun.mp4",
+  "slug": "taksit-maasini-onceden-harciyor-fark-etmiyorsun",
+  "format": "myth",
+  "engine": "anim",
+  "teknik": "news",
+  "timeline": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 2.51,
+      "cap": "Maaşın bu ay sana ait değil.",
+      "words": [
+        0.35,
+        1.09,
+        1.25,
+        1.41,
+        1.71,
+        2.03
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 2.79,
+      "t1": 9.15,
+      "cap": "11.11'de taksite bindirdiğin her sepet, önümüzdeki aylarda maaşından sessizce pay alıyor.",
+      "words": [
+        2.79,
+        4.31,
+        4.75,
+        5.29,
+        5.49,
+        6.03,
+        6.59,
+        7.03,
+        7.69,
+        8.37,
+        8.61
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 9.43,
+      "t1": 14.038,
+      "cap": "Ama asıl tuzak şu: altı taksit, altı ayın maaşını bugünden harcamak demek.",
+      "words": [
+        9.43,
+        9.93,
+        10.23,
+        10.53,
+        11.07,
+        11.35,
+        11.79,
+        12.07,
+        12.33,
+        12.71,
+        13.11,
+        13.59
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 14.318,
+      "t1": 20.99,
+      "cap": "Çözüm basit: taksit toplamını maaşının bir kısmıyla sınırla, kalanını önce ayır; limit senin değil, bankanın.",
+      "words": [
+        14.318,
+        14.818,
+        15.538,
+        15.878,
+        16.278,
+        16.718,
+        16.938,
+        17.478,
+        18.258,
+        18.618,
+        18.998,
+        19.678,
+        19.818,
+        20.138,
+        20.458
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 21.27,
+      "t1": 27.63,
+      "cap": "Senin maaşının kaçı şimdiden taksitte? Cevap şaşırtabilir. Abone ol, her gün 60 saniyede tek net analiz.",
+      "words": [
+        21.27,
+        21.79,
+        22.27,
+        22.57,
+        22.97,
+        23.73,
+        24.01,
+        24.89,
+        25.13,
+        25.57,
+        25.69,
+        25.83,
+        26.09,
+        26.65,
+        26.89,
+        27.07
+      ]
+    }
+  ]
+}

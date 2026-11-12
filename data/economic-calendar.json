@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-11",
+  "updated": "2026-11-12",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
@@ -63,6 +63,15 @@
       "impact": "High",
       "title": "TCMB faiz kararı (PPK)",
       "hook": "Faiz kararı explainer'ı.",
+      "time": "",
+      "source": "tcmb"
+    },
+    {
+      "date": "2026-12-17",
+      "region": "TR",
+      "impact": "Medium",
+      "title": "TCMB PPK toplantı özeti",
+      "hook": "Karar gerekçesi yorumu.",
       "time": "",
       "source": "tcmb"
     }

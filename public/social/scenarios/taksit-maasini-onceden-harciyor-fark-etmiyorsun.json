@@ -1,0 +1,59 @@
+{
+  "slug": "taksit-maasini-onceden-harciyor-fark-etmiyorsun",
+  "title": "Taksit maaşını önceden harcıyor, fark etmiyorsun",
+  "category": "MİT",
+  "format": "myth",
+  "description": "11.11 taksitleri bu ayın değil, önümüzdeki ayların maaşından çıkar. Taksit toplamını maaşa göre sınırlamanın basit yolu.",
+  "tags": [
+    "11.11",
+    "taksit",
+    "maaş",
+    "kredi kartı",
+    "kişisel finans",
+    "bütçe",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Maaşın bu ay sana ait değil.",
+      "visual": {
+        "type": "object",
+        "query": "leather wallet full of cards"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "11.11'de taksite bindirdiğin her sepet, önümüzdeki aylarda maaşından sessizce pay alıyor.",
+      "visual": {
+        "type": "object",
+        "query": "shopping bags"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl tuzak şu: altı taksit, altı ayın maaşını bugünden harcamak demek.",
+      "visual": {
+        "type": "object",
+        "query": "calendar planner"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çözüm basit: taksit toplamını maaşının bir kısmıyla sınırla, kalanını önce ayır; limit senin değil, bankanın.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Senin maaşının kaçı şimdiden taksitte? Cevap şaşırtabilir. Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "leather wallet full of cards"
+      }
+    }
+  ]
+}

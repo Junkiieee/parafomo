@@ -1,0 +1,104 @@
+{
+ "slug": "taksit-maasini-onceden-harciyor-fark-etmiyorsun",
+ "title": "Taksit maaşını önceden harcıyor, fark etmiyorsun",
+ "description": "11.11 taksitleri bu ayın değil, önümüzdeki ayların maaşından çıkar. Taksit toplamını maaşa göre sınırlamanın basit yolu.",
+ "tags": [
+  "11.11",
+  "taksit",
+  "maaş",
+  "kredi kartı",
+  "kişisel finans",
+  "bütçe",
+  "parafomo"
+ ],
+ "format": "myth",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "MAAŞ UYARISI",
+  "scenes": [
+   {
+    "type": "icon_text",
+    "head": "Maaşın kimin?",
+    "data": {
+     "icon": "cash",
+     "text": "Maaşın bu ay *sana ait değil*"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "steps",
+    "head": "Sessiz maaş kesintisi",
+    "data": {
+     "items": [
+      "Sepeti taksitle",
+      "Aylar geçer",
+      "Maaştan pay gider"
+     ]
+    },
+    "line": "s1"
+   },
+   {
+    "type": "icon_text",
+    "head": "Geleceği bugün harcamak",
+    "data": {
+     "icon": "calendar",
+     "text": "Gelecek *aylarını* bugünden harcıyorsun"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "steps",
+    "head": "Çözüm: kendi limitin",
+    "data": {
+     "items": [
+      "TAKSİTİ SINIRLA",
+      "KALANI ÖNCE AYIR",
+      "LİMİT BANKANIN"
+     ]
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Maaşın kaçı taksitte?",
+    "data": {
+     "l1": "MAAŞIN KAÇI",
+     "l2": "TAKSİTTE?",
+     "sub": "HER GÜN 60 SANİYEDE TEK NET ANALİZ"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Maaşın bu ay sana ait değil.",
+   "cap": "Maaşın bu ay sana ait değil."
+  },
+  {
+   "id": "s1",
+   "say": "11.11'de taksite bindirdiğin her sepet, önümüzdeki aylarda maaşından sessizce pay alıyor.",
+   "cap": "11.11'de taksite bindirdiğin her sepet, önümüzdeki aylarda maaşından sessizce pay alıyor."
+  },
+  {
+   "id": "s2",
+   "say": "Ama asıl tuzak şu: altı taksit, altı ayın maaşını bugünden harcamak demek.",
+   "cap": "Ama asıl tuzak şu: altı taksit, altı ayın maaşını bugünden harcamak demek."
+  },
+  {
+   "id": "s3",
+   "say": "Çözüm basit: taksit toplamını maaşının bir kısmıyla sınırla, kalanını önce ayır; limit senin değil, bankanın.",
+   "cap": "Çözüm basit: taksit toplamını maaşının bir kısmıyla sınırla, kalanını önce ayır; limit senin değil, bankanın."
+  },
+  {
+   "id": "s4",
+   "say": "Senin maaşının kaçı şimdiden taksitte? Cevap şaşırtabilir. Abone ol, her gün 60 saniyede tek net analiz.",
+   "cap": "Senin maaşının kaçı şimdiden taksitte? Cevap şaşırtabilir. Abone ol, her gün 60 saniyede tek net analiz."
+  }
+ ],
+ "skin": "iso",
+ "engine": "news"
+}
