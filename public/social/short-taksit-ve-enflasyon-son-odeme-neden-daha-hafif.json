@@ -1,0 +1,125 @@
+{
+  "title": "Taksit ve enflasyon: son ödeme neden daha hafif #Shorts",
+  "description": "Aylık yüzde 2,58 enflasyonda sıfır faizli taksidin son ödemesi ilkinden daha hafif kalır. Bu avantaj yalnızca vade farkı ve kart faizi yoksa geçerli.\nKaynak/hesap: 12.000 / 12 = 1.000 TL taksit; aylık TÜFE %2,58 olduğundan sabit taksidin gerçek değeri her ay düşer · TÜİK TÜFE Ekim 2026 (aylık %2,58)",
+  "tags": [
+    "11.11",
+    "taksit",
+    "enflasyon",
+    "kredi kartı",
+    "maaş",
+    "TÜFE",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-taksit-ve-enflasyon-son-odeme-neden-daha-hafif.mp4",
+  "slug": "taksit-ve-enflasyon-son-odeme-neden-daha-hafif",
+  "format": "shock_number",
+  "engine": "anim",
+  "teknik": "dossier",
+  "timeline": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 4.334,
+      "cap": "Aylık yüzde 2,58 enflasyon taksidin lehine çalışıyor.",
+      "words": [
+        0.35,
+        0.93,
+        1.25,
+        2.03,
+        2.87,
+        3.33,
+        3.61
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 4.614,
+      "t1": 11.238,
+      "cap": "Örnek: 12 bin liralık ürün, 12 taksit: ayda bin lira. Son taksit, ilkinden daha ucuza geliyor.",
+      "words": [
+        4.614,
+        5.614,
+        5.854,
+        6.014,
+        6.354,
+        6.874,
+        7.094,
+        7.734,
+        7.974,
+        8.134,
+        8.754,
+        9.014,
+        9.594,
+        10.014,
+        10.274,
+        10.614
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 11.518,
+      "t1": 18.19,
+      "cap": "Ama sadece vade farkı yoksa. Ekstreyi asgari ödersen kart faizi bu kazancı hemen siler.",
+      "words": [
+        11.518,
+        12.038,
+        12.498,
+        12.878,
+        13.258,
+        14.238,
+        14.758,
+        15.098,
+        15.578,
+        16.058,
+        16.458,
+        16.918,
+        17.438,
+        17.598
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 18.47,
+      "t1": 24.83,
+      "cap": "Yani ihtiyacın olanı sıfır faizli taksitle al, ihtiyacın olmayanı alma; indirim borcu küçültmez.",
+      "words": [
+        18.47,
+        19.1,
+        19.73,
+        20.01,
+        20.29,
+        20.73,
+        21.27,
+        21.75,
+        22.35,
+        22.79,
+        23.47,
+        23.77,
+        24.11
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 25.11,
+      "t1": 31.422,
+      "cap": "Senin taksit yükün maaşının kaçta kaçı? Abone ol, her gün 60 saniyede tek net analiz.",
+      "words": [
+        25.11,
+        25.95,
+        26.33,
+        26.63,
+        27.05,
+        27.45,
+        28.21,
+        28.71,
+        29.25,
+        29.37,
+        29.57,
+        29.79,
+        30.39,
+        30.63,
+        30.81
+      ]
+    }
+  ]
+}

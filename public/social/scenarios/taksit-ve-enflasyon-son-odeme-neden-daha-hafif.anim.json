@@ -1,0 +1,112 @@
+{
+ "slug": "taksit-ve-enflasyon-son-odeme-neden-daha-hafif",
+ "title": "Taksit ve enflasyon: son ödeme neden daha hafif",
+ "description": "Aylık yüzde 2,58 enflasyonda sıfır faizli taksidin son ödemesi ilkinden daha hafif kalır. Bu avantaj yalnızca vade farkı ve kart faizi yoksa geçerli.\nKaynak/hesap: 12.000 / 12 = 1.000 TL taksit; aylık TÜFE %2,58 olduğundan sabit taksidin gerçek değeri her ay düşer · TÜİK TÜFE Ekim 2026 (aylık %2,58)",
+ "tags": [
+  "11.11",
+  "taksit",
+  "enflasyon",
+  "kredi kartı",
+  "maaş",
+  "TÜFE",
+  "parafomo"
+ ],
+ "format": "shock_number",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "TAKSİT GERÇEĞİ",
+  "scenes": [
+   {
+    "type": "big_number",
+    "head": "Enflasyon taksite yarıyor",
+    "data": {
+     "icon": "percent",
+     "value": 2.58,
+     "unit": "%",
+     "suffix": "",
+     "label": "Aylık enflasyon taksidin lehine"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "compare",
+    "head": "Son taksit daha ucuz",
+    "data": {
+     "a": {
+      "label": "Ürün fiyatı",
+      "value": 12000
+     },
+     "b": {
+      "label": "Aylık taksit",
+      "value": 1000
+     },
+     "unit": "₺",
+     "note": "ÖRNEK · 12 TAKSİT"
+    },
+    "line": "s1"
+   },
+   {
+    "type": "icon_text",
+    "head": "Vade farkı ve kart faizi",
+    "data": {
+     "icon": "card",
+     "text": "Asgari ödersen kart faizi kazancı *siler*"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "steps",
+    "head": "Akıllı taksit kuralı",
+    "data": {
+     "items": [
+      "Faizsiz taksit al",
+      "Gereksizi alma",
+      "İndirim kurtarmaz"
+     ]
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Sıra sende",
+    "data": {
+     "l1": "Taksit yükün",
+     "l2": "maaşının kaçı?",
+     "sub": "NET MAAŞ HESAPLAMA · ÜCRETSİZ"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Aylık yüzde 2,58 enflasyon taksidin lehine çalışıyor.",
+   "cap": "Aylık yüzde 2,58 enflasyon taksidin lehine çalışıyor."
+  },
+  {
+   "id": "s1",
+   "say": "Örnek: 12 bin liralık ürün, 12 taksit: ayda bin lira. Son taksit, ilkinden daha ucuza geliyor.",
+   "cap": "Örnek: 12 bin liralık ürün, 12 taksit: ayda bin lira. Son taksit, ilkinden daha ucuza geliyor."
+  },
+  {
+   "id": "s2",
+   "say": "Ama sadece vade farkı yoksa. Ekstreyi asgari ödersen kart faizi bu kazancı hemen siler.",
+   "cap": "Ama sadece vade farkı yoksa. Ekstreyi asgari ödersen kart faizi bu kazancı hemen siler."
+  },
+  {
+   "id": "s3",
+   "say": "Yani ihtiyacın olanı sıfır faizli taksitle al, ihtiyacın olmayanı alma; indirim borcu küçültmez.",
+   "cap": "Yani ihtiyacın olanı sıfır faizli taksitle al, ihtiyacın olmayanı alma; indirim borcu küçültmez."
+  },
+  {
+   "id": "s4",
+   "say": "Senin taksit yükün maaşının kaçta kaçı? Abone ol, her gün 60 saniyede tek net analiz.",
+   "cap": "Senin taksit yükün maaşının kaçta kaçı? Abone ol, her gün 60 saniyede tek net analiz."
+  }
+ ],
+ "skin": "iso",
+ "engine": "dossier"
+}

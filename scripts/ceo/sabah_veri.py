@@ -27,15 +27,18 @@ def sh(cmd, timeout=900, cwd=ROOT, env=None):
 
 def ga4():
     from google.analytics.data_v1beta import BetaAnalyticsDataClient
-    from google.analytics.data_v1beta.types import RunReportRequest, DateRange, Dimension, Metric
+    from google.analytics.data_v1beta.types import RunReportRequest, DateRange, Dimension, Metric, FilterExpression, Filter
     from google.oauth2 import service_account
     c = BetaAnalyticsDataClient(credentials=service_account.Credentials.from_service_account_file(
         os.path.expanduser("~/.config/parafomo/ga-sa.json")))
     P = "properties/542292605"
+    # yalnız gerçek alan adı: Lighthouse localhost'ta GA'yı tetikliyordu (2026-11-10/11: 32 sahte "doğrudan" oturum)
+    site = FilterExpression(filter=Filter(field_name="hostName", string_filter=Filter.StringFilter(
+        match_type=Filter.StringFilter.MatchType.ENDS_WITH, value="parafomo.com")))
 
     def rep(s, e):
         r = c.run_report(RunReportRequest(property=P, date_ranges=[DateRange(start_date=s, end_date=e)],
-                                          dimensions=[Dimension(name="sessionSource")],
+                                          dimensions=[Dimension(name="sessionSource")], dimension_filter=site,
                                           metrics=[Metric(name="sessions"), Metric(name="activeUsers")], limit=100))
         out = {}
         for row in r.rows:
