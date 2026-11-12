@@ -1,5 +1,9 @@
 # Günlük Operasyon Günlüğü
 
+## 2026-11-12
+**Yayınlanan yazı:** [Borsa İstanbul Nedir? Seans Saatleri, Pazarlar ve Takas](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas)
+Seçim kaynağı: fırsat motoru ("borsa istanbul" hacim 150, YENI_YAZI; kuyruk+backlog boş, takvimde izinli 🔴 olay yok, GSC fırsatları mevcut sayfalarca karşılanıyor)
+
 ## 2026-11-11
 **Yayınlanan yazı:** [100 Bin TL Araç Kredisi: Aylık Taksit ve Toplam Maliyet 2026](/blog/100-bin-tl-arac-kredisi-taksit-hesaplama)
 Seçim kaynağı: GSC ("100 bin araç kredisi"; kuyruk+backlog boş, takvim PPI zaten yazılı; üstteki GSC fırsatları mevcut sayfalarca karşılanıyor — evde bakım 2027 araç sayfasıyla birebir, yamyam riski)
