@@ -8,7 +8,7 @@ readingTime: 8
 featured: false
 faq:
   - q: "Borsa İstanbul nedir?"
-    a: "Borsa İstanbul (BIST), Türkiye'de hisse senedi, tahvil-bono, vadeli işlem ve opsiyon ile kıymetli madenlerin alınıp satıldığı tek resmî borsadır. 2013'te İMKB, İstanbul Altın Borsası ve Vadeli İşlem ve Opsiyon Borsası'nın birleşmesiyle kuruldu ve SPK gözetiminde çalışır."
+    a: "Borsa İstanbul (BIST), Türkiye'de hisse senedi, tahvil-bono, vadeli işlem ve opsiyon ile kıymetli madenlerin alınıp satıldığı tek menkul kıymet borsasıdır. 2013'te İMKB, İstanbul Altın Borsası ve Vadeli İşlem ve Opsiyon Borsası'nın birleşmesiyle kuruldu ve SPK gözetiminde çalışır."
   - q: "Borsa İstanbul saat kaçta açılır, kaçta kapanır?"
     a: "Pay piyasasında hafta içi 09:40'ta açılış seansı (emir toplama) başlar, sürekli işlem 10:00-18:00 arasında yapılır, 18:00-18:10 arasında kapanış seansı uygulanır. Hafta sonu ve resmî tatillerde işlem yapılmaz; arife günleri yarım gündür."
   - q: "Borsada tavan ve taban ne demek?"
@@ -23,13 +23,13 @@ faq:
 
 ## Borsa İstanbul Nedir ve Kim Yönetir?
 
-Borsa İstanbul (kısaltması **BIST**), 2013'te 6362 sayılı Sermaye Piyasası Kanunu ile kuruldu. Üç ayrı kurum tek çatı altında birleşti:
+Borsa İstanbul (kısaltması **BIST**), 2012 tarihli 6362 sayılı Sermaye Piyasası Kanunu'na dayanılarak 2013'te kuruldu. Üç ayrı kurum tek çatı altında birleşti:
 
 - **İMKB** (İstanbul Menkul Kıymetler Borsası, 1985'ten beri hisse ve tahvil),
 - **İstanbul Altın Borsası**,
 - **VOB** (Vadeli İşlem ve Opsiyon Borsası, İzmir).
 
-Borsa bir anonim şirkettir ve faaliyetleri **SPK** (Sermaye Piyasası Kurulu) gözetimindedir. Sen doğrudan borsaya üye olmazsın; işlemlerini SPK lisanslı bir **aracı kurum** ya da bankanın yatırım hesabı üzerinden yaparsın. Satın aldığın hisseler senin adına **MKK** (Merkezi Kayıt Kuruluşu) kayıtlarında tutulur, para ve kıymet transferini ise **Takasbank** yapar. Yani aracı kurum batsa bile hisselerin MKK'da senin adına kayıtlıdır; bunu e-Devlet'teki MKK e-Yatırımcı ekranından kontrol edebilirsin.
+Borsa bir anonim şirkettir ve faaliyetleri **SPK** (Sermaye Piyasası Kurulu) gözetimindedir. Sen doğrudan borsaya üye olmazsın; işlemlerini SPK lisanslı bir **aracı kurum** ya da bankanın yatırım hesabı üzerinden yaparsın. Satın aldığın hisseler senin adına **MKK** (Merkezi Kayıt Kuruluşu) kayıtlarında tutulur, para ve kıymet transferini ise **Takasbank** yapar. Yani aracı kurum batsa bile hisselerin MKK'da senin adına kayıtlıdır; bunu MKK'nın e-Yatırımcı ekranından (e-Devlet ile giriş yapılabilir) kontrol edebilirsin.
 
 ## Borsa İstanbul'da Hangi Piyasalar Var?
 
@@ -42,7 +42,7 @@ Borsa bir anonim şirkettir ve faaliyetleri **SPK** (Sermaye Piyasası Kurulu) g
 | **VİOP** (Vadeli İşlem ve Opsiyon) | Endeks, döviz, altın, hisse vadeli/opsiyon sözleşmeleri | Riskten korunan ya da kaldıraçlı işlem yapan deneyimli yatırımcı |
 | **Kıymetli Madenler Piyasası** | Altın, gümüş, platin (toptan) | Bankalar, kuyumcular, rafineriler |
 
-Bireysel yatırımcının %90'dan fazlası pay piyasasında işlem yapar. VİOP kaldıraçlı olduğu için ayrı bir risk bildirimi ister; mantığını [vadeli işlem sözleşmesi rehberimizde](/blog/vadeli-islem-sozlesmesi-nedir) anlattık.
+Bireysel yatırımcıların büyük çoğunluğu pay piyasasında işlem yapar. VİOP kaldıraçlı olduğu için ayrı bir risk bildirimi ister; mantığını [vadeli işlem sözleşmesi rehberimizde](/blog/vadeli-islem-sozlesmesi-nedir) anlattık.
 
 ## Pay Piyasası Pazarları: Yıldız, Ana, Alt ve Yakın İzleme
 
@@ -74,8 +74,8 @@ VİOP'ta ise gün seansına ek olarak bir **akşam seansı** vardır; bu yüzden
 Pay piyasasında bir hissenin fiyatı bir günde sınırsız hareket edemez:
 
 - **Baz fiyat:** Genellikle önceki günün kapanış fiyatıdır (temettü ve sermaye artırımı günlerinde düzeltilir).
-- **Tavan:** Baz fiyatın **%10 üstü**. Fiyat buraya ulaşınca satıcı bulunmaz, alış emirleri kuyrukta bekler.
-- **Taban:** Baz fiyatın **%10 altı**. Bu kez alıcı bulunmaz; satmak isteyen sırada kalır.
+- **Tavan:** Baz fiyatın **%10 üstü**. Fiyat buraya ulaşınca satıcı azalır; karşılanamayan alış emirleri kuyrukta bekler.
+- **Taban:** Baz fiyatın **%10 altı**. Bu kez alıcı azalır; karşılanamayan satış emirleri sırada kalır.
 
 Örnek: Dün 50,00 TL'den kapanan bir hissenin bugünkü tavanı 55,00 TL, tabanı 45,00 TL'dir. Art arda taban olan bir hissede "zararı kesip çıkmak" bu yüzden her zaman mümkün değildir; özellikle Alt Pazar ve yeni halka arzlarda bu risk büyüktür.
 
@@ -127,9 +127,9 @@ Sıfırdan başlıyorsan [borsaya nasıl başlanır](/blog/borsaya-nasil-baslani
 
 ## Özet
 
-- **Borsa İstanbul**, Türkiye'nin tek resmî borsasıdır; hisse, tahvil, VİOP ve kıymetli madenler aynı çatı altında, SPK gözetiminde işlem görür.
+- **Borsa İstanbul**, Türkiye'nin tek menkul kıymet borsasıdır; hisse, tahvil, VİOP ve kıymetli madenler aynı çatı altında, SPK gözetiminde işlem görür.
 - Pay piyasasında sürekli işlem **10:00–18:00** arasındadır; açılış ve kapanış fiyatları emir toplama seanslarıyla belirlenir.
-- Hisseler günde en fazla **±%10** hareket edebilir; tabanda satış her zaman mümkün olmayabilir.
+- Hisseler (Yakın İzleme Pazarı gibi istisnalar dışında) günde en fazla **±%10** hareket edebilir; tabanda satış her zaman mümkün olmayabilir.
 - Satış parası **T+2**'de çekilebilir; hisse kazancında stopaj %0, temettüde %15'tir.
 
 *Bu yazı genel bilgilendirme amaçlıdır, yatırım tavsiyesi değildir. Seans saatleri, fiyat marjları ve vergi oranları mevzuat ve borsa kararlarıyla değişebilir; işlem yapmadan önce Borsa İstanbul ve aracı kurumunun güncel duyurularını kontrol et.*
