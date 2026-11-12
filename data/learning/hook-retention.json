@@ -1,37 +1,37 @@
 {
-  "fetched_utc": "2026-11-11T08:47:00Z",
+  "fetched_utc": "2026-11-12T08:45:58Z",
   "hold_sec": 3.0,
-  "n": 6,
-  "median_hold_3s": 1.077,
+  "n": 4,
+  "median_hold_3s": 1.0,
   "avd_gate_pct": 65.0,
-  "median_avg_view_pct": 48.0,
-  "gate_pass_share": 0.333,
-  "gate_pass_n": 2,
-  "gate_breakdown_n": 34,
+  "median_avg_view_pct": 37.2,
+  "gate_pass_share": 0.0,
+  "gate_pass_n": 0,
+  "gate_breakdown_n": 24,
   "gate_by_format": {
-    "myth": {
-      "n": 7,
-      "median_avd": 35.5,
-      "gate_pass_n": 1,
-      "gate_pass_share": 0.143
-    },
     "shock_number": {
-      "n": 11,
-      "median_avd": 20.7,
+      "n": 8,
+      "median_avd": 46.6,
       "gate_pass_n": 3,
-      "gate_pass_share": 0.273
+      "gate_pass_share": 0.375
     },
     "single_concept": {
-      "n": 4,
-      "median_avd": 35.0,
+      "n": 5,
+      "median_avd": 34.7,
       "gate_pass_n": 0,
       "gate_pass_share": 0.0
     },
-    "daily-short": {
+    "myth": {
       "n": 5,
-      "median_avd": 52.4,
-      "gate_pass_n": 0,
-      "gate_pass_share": 0.0
+      "median_avd": 28.3,
+      "gate_pass_n": 1,
+      "gate_pass_share": 0.2
+    },
+    "daily-short": {
+      "n": 3,
+      "median_avd": 6.1,
+      "gate_pass_n": 1,
+      "gate_pass_share": 0.333
     }
   },
   "videos": [
@@ -48,9 +48,9 @@
       "id": "youtube:kEQH6D3_yVc",
       "video_id": "kEQH6D3_yVc",
       "duration_sec": 39,
-      "hold_3s": 1.122,
-      "rel_perf_3s": 0.325,
-      "avg_view_pct": 48.0,
+      "hold_3s": 1.091,
+      "rel_perf_3s": 0.313,
+      "avg_view_pct": 46.6,
       "published_utc": "2026-11-08T10:01:35Z"
     },
     {
@@ -70,24 +70,6 @@
       "rel_perf_3s": 0.062,
       "avg_view_pct": 34.7,
       "published_utc": "2026-11-05T16:00:48Z"
-    },
-    {
-      "id": "youtube:vRQwERqu9yY",
-      "video_id": "vRQwERqu9yY",
-      "duration_sec": 35,
-      "hold_3s": 1.077,
-      "rel_perf_3s": 0.286,
-      "avg_view_pct": 67.4,
-      "published_utc": "2026-11-01T16:01:40Z"
-    },
-    {
-      "id": "youtube:otZm8NPl_m0",
-      "video_id": "otZm8NPl_m0",
-      "duration_sec": 35,
-      "hold_3s": 2.118,
-      "rel_perf_3s": 0.514,
-      "avg_view_pct": 148.5,
-      "published_utc": "2026-10-30T21:03:47Z"
     }
   ]
 }
