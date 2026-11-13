@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-11-12T08:52:47Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-11-13T08:53:46Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -39,12 +39,12 @@
 ## Konu sinyalleri
 
 **En iyi blog sayfaları:**
-- euro-mi-dolar-mi-10-yillik-getiri-karsilastirma — skor 71.75
-- abd-kasim-2026-cpi-verisi-fed-dolar-altin — skor 36.87
-- gumus-mi-altin-mi-10-yillik-getiri-karsilastirma — skor 19.47
-- kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir — skor 17.07
-- abd-ekim-2026-cpi-verisi-fed-dolar-altin — skor 15.08
-- stopaj-nedir-2026-stopaj-oranlari — skor 12.3
+- abd-kasim-2026-cpi-verisi-fed-dolar-altin — skor 30.0
+- abd-ekim-2026-cpi-verisi-fed-dolar-altin — skor 10.0
+- kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir — skor 10.0
+- 2027-zamlari-yeniden-degerleme-orani-rehberi — skor 5.0
+- stopaj-nedir-2026-stopaj-oranlari — skor 5.0
+- abd-kasim-2026-nfp-istihdam-verisi-fed-dolar-altin — skor 5.0
 
 **🎯 Fırsat sorguları** (içerik/başlık iyileştir):
-- `10 yıllık gümüş grafik` — gös 9, sıra 4.3
+- `10 yıllık gümüş grafik` — gös 8, sıra 4.5

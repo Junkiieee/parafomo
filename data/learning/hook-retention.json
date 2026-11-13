@@ -1,5 +1,5 @@
 {
-  "fetched_utc": "2026-11-12T08:45:58Z",
+  "fetched_utc": "2026-11-13T08:47:00Z",
   "hold_sec": 3.0,
   "n": 4,
   "median_hold_3s": 1.0,
@@ -7,29 +7,35 @@
   "median_avg_view_pct": 37.2,
   "gate_pass_share": 0.0,
   "gate_pass_n": 0,
-  "gate_breakdown_n": 24,
+  "gate_breakdown_n": 26,
   "gate_by_format": {
+    "myth": {
+      "n": 6,
+      "median_avd": 48.0,
+      "gate_pass_n": 2,
+      "gate_pass_share": 0.333
+    },
+    "ekonomi_defteri": {
+      "n": 3,
+      "median_avd": 52.5,
+      "gate_pass_n": 1,
+      "gate_pass_share": 0.333
+    },
     "shock_number": {
       "n": 8,
-      "median_avd": 46.6,
-      "gate_pass_n": 3,
-      "gate_pass_share": 0.375
+      "median_avd": 39.9,
+      "gate_pass_n": 2,
+      "gate_pass_share": 0.25
     },
     "single_concept": {
       "n": 5,
-      "median_avd": 34.7,
+      "median_avd": 14.9,
       "gate_pass_n": 0,
       "gate_pass_share": 0.0
     },
-    "myth": {
-      "n": 5,
-      "median_avd": 28.3,
-      "gate_pass_n": 1,
-      "gate_pass_share": 0.2
-    },
     "daily-short": {
       "n": 3,
-      "median_avd": 6.1,
+      "median_avd": 18.8,
       "gate_pass_n": 1,
       "gate_pass_share": 0.333
     }
