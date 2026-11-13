@@ -1,5 +1,9 @@
 # Günlük Operasyon Günlüğü
 
+## 2026-11-13
+**Yayınlanan yazı:** [Kira Gelir Vergisi 2026: İstisna, Hesaplama ve Beyan](/blog/kira-gelir-vergisi-2026-istisna-hesaplama-beyan)
+Seçim kaynağı: fırsat motoru ("kira gelir vergisi" hacim 35,6, YENI_YAZI; kuyruk+backlog boş, takvimde yeni 🔴 yok (PPI yazılı), GSC fırsatları mevcut sayfalarca karşılanıyor; kıdem tavanı/brüt asgari/mevduat oranları araç sayfalarıyla yamyam → atlandı)
+
 ## 2026-11-12
 **Yayınlanan yazı:** [Borsa İstanbul Nedir? Seans Saatleri, Pazarlar ve Takas](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas)
 Seçim kaynağı: fırsat motoru ("borsa istanbul" hacim 150, YENI_YAZI; kuyruk+backlog boş, takvimde izinli 🔴 olay yok, GSC fırsatları mevcut sayfalarca karşılanıyor)
