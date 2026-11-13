@@ -1,0 +1,59 @@
+{
+  "slug": "ekstre-gunu-11-11-sepetinin-odeme-tarihini-belirliyor",
+  "title": "Ekstre günü: Kara Cuma sepetinin ödeme tarihini belirliyor",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Kredi kartı ekstre kesim günü, aynı alışverişin ne zaman ödeneceğini değiştirir. Kara Cuma sepetini onaylamadan önce kesim gününe bakmak, ödemeyi neredeyse bir ay öteleyebilir.",
+  "tags": [
+    "kara cuma",
+    "ekstre kesim günü",
+    "kredi kartı",
+    "indirim",
+    "kişisel finans",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Aynı sepet iki farklı ödeme gününe düşüyor.",
+      "visual": {
+        "type": "object",
+        "query": "shopping bags with gifts"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ekstre kesim günü otobüs kalkış saati gibi: o güne kadar aldıkların ilk otobüse biner.",
+      "visual": {
+        "type": "object",
+        "query": "bus station departure board"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama kesimden bir gün sonra alırsan sonraki otobüse biner; ödeme günün neredeyse bir ay uzar.",
+      "visual": {
+        "type": "object",
+        "query": "wall calendar"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kara Cuma sepetini onaylamadan önce ekstre kesim gününe bak; indirimden önce vadeyi kazan, maaşın nefes alsın.",
+      "visual": {
+        "type": "object",
+        "query": "credit card and smartphone banking app"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Kartının kesim günü hangi tarihte, hiç baktın mı? Abone ol, her gün kısa ve net bir cüzdan hesabı gör.",
+      "visual": {
+        "type": "object",
+        "query": "shopping bags with gifts"
+      }
+    }
+  ]
+}

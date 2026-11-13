@@ -1,0 +1,64 @@
+{
+  "slug": "258-lira-indirimi-beklemenin-gorunmeyen-faturasi",
+  "title": "258 lira: indirimi beklemenin görünmeyen faturası",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Ekim ayında aylık enflasyon %2,58 oldu. 10 bin liralık sepetin ortalamada ne kadar pahalandığını ve indirimi beklemenin ne zaman değmediğini sade bir hesapla gösteriyor.\nKaynak/hesap: 10.000 x %2,58 = 258 TL; 258 / 30 = yaklaşık 8,6 TL/gün; x 14 gün = yaklaşık 120 TL (yaklaşık %1,2) · TÜİK TÜFE Ekim 2026 (aylık %2,58); hesap genel ortalamadır, tek bir ürünün fiyatı değildir",
+  "tags": [
+    "11.11",
+    "indirim",
+    "enflasyon",
+    "TÜFE",
+    "alışveriş",
+    "kara cuma",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "10 binlik sepet ayda 258 lira şişiyor.",
+      "visual": {
+        "type": "object",
+        "query": "shopping bags"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ekimde aylık enflasyon yüzde 2,58 çıktı; yani 10 bin liralık sepet ortalamada 258 lira pahalandı.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama indirimi iki hafta beklemek bedava değil: aynı sepet yaklaşık 120 lira daha pahalı olabilir.",
+      "visual": {
+        "type": "object",
+        "query": "shopping cart"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Sonuç: ek indirim iki haftada yüzde 1,2'yi geçmiyorsa beklemek kazandırmaz; gereken ürünü şimdi al.",
+      "visual": {
+        "type": "object",
+        "query": "receipt paper"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sence bekleyerek en son ne kadar kazandın? Cevabı yorumlara yaz, abone ol; her gün tek net hesap.",
+      "visual": {
+        "type": "object",
+        "query": "shopping bags"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "258 lira",
+    "calc": "10.000 x %2,58 = 258 TL; 258 / 30 = yaklaşık 8,6 TL/gün; x 14 gün = yaklaşık 120 TL (yaklaşık %1,2)",
+    "source": "TÜİK TÜFE Ekim 2026 (aylık %2,58); hesap genel ortalamadır, tek bir ürünün fiyatı değildir"
+  }
+}

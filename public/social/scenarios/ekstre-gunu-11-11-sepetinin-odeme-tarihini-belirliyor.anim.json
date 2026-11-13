@@ -1,0 +1,104 @@
+{
+ "slug": "ekstre-gunu-11-11-sepetinin-odeme-tarihini-belirliyor",
+ "title": "Ekstre günü: Kara Cuma sepetinin ödeme tarihini belirliyor",
+ "description": "Kredi kartı ekstre kesim günü, aynı alışverişin ne zaman ödeneceğini değiştirir. Kara Cuma sepetini onaylamadan önce kesim gününe bakmak, ödemeyi neredeyse bir ay öteleyebilir.",
+ "tags": [
+  "kara cuma",
+  "ekstre kesim günü",
+  "kredi kartı",
+  "indirim",
+  "kişisel finans",
+  "ParaFOMO",
+  "parafomo"
+ ],
+ "format": "single_concept",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "KART TÜYOSU",
+  "scenes": [
+   {
+    "type": "icon_text",
+    "head": "Sepet aynı, vade farklı",
+    "data": {
+     "icon": "card",
+     "text": "Aynı *sepet*, iki farklı *ödeme günü*"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "steps",
+    "head": "Kesim günü otobüs gibi",
+    "data": {
+     "items": [
+      "Kesim gününe kadar",
+      "İlk otobüse biner",
+      "Ödeme günü yakın"
+     ]
+    },
+    "line": "s1"
+   },
+   {
+    "type": "icon_text",
+    "head": "Bir gün fark, bir ay",
+    "data": {
+     "icon": "calendar",
+     "text": "Kesimden *sonra* alırsan vade *uzar*"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "steps",
+    "head": "Sepetten önce vadeye bak",
+    "data": {
+     "items": [
+      "Kesim gününe bak",
+      "Önce vadeyi kazan",
+      "Sonra indirime bak"
+     ]
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Kesim günün neresi?",
+    "data": {
+     "l1": "Kesim günün",
+     "l2": "hangi tarihte?",
+     "sub": "HER GÜN KISA CÜZDAN HESABI"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Aynı sepet iki farklı ödeme gününe düşüyor.",
+   "cap": "Aynı sepet iki farklı ödeme gününe düşüyor."
+  },
+  {
+   "id": "s1",
+   "say": "Ekstre kesim günü otobüs kalkış saati gibi: o güne kadar aldıkların ilk otobüse biner.",
+   "cap": "Ekstre kesim günü otobüs kalkış saati gibi: o güne kadar aldıkların ilk otobüse biner."
+  },
+  {
+   "id": "s2",
+   "say": "Ama kesimden bir gün sonra alırsan sonraki otobüse biner; ödeme günün neredeyse bir ay uzar.",
+   "cap": "Ama kesimden bir gün sonra alırsan sonraki otobüse biner; ödeme günün neredeyse bir ay uzar."
+  },
+  {
+   "id": "s3",
+   "say": "Kara Cuma sepetini onaylamadan önce ekstre kesim gününe bak; indirimden önce vadeyi kazan, maaşın nefes alsın.",
+   "cap": "Kara Cuma sepetini onaylamadan önce ekstre kesim gününe bak; indirimden önce vadeyi kazan, maaşın nefes alsın."
+  },
+  {
+   "id": "s4",
+   "say": "Kartının kesim günü hangi tarihte, hiç baktın mı? Abone ol, her gün kısa ve net bir cüzdan hesabı gör.",
+   "cap": "Kartının kesim günü hangi tarihte, hiç baktın mı? Abone ol, her gün kısa ve net bir cüzdan hesabı gör."
+  }
+ ],
+ "skin": "iso",
+ "engine": "news"
+}

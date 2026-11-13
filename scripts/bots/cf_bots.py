@@ -34,10 +34,13 @@ BOTS = [
     # 2026-11-10 ilk 30 günlük arşivde tanınmayanlar
     ("PetalBot", "Huawei", "arama"), ("ShapBot", "Shap", "arama"), ("KeenableBot", "Keenable", "arama"),
     ("Reflectionbot", "Reflection AI", "egitim"),
+    # 2026-11-13 sabah raporunda tanınmayanlar (ExaSearchBot 7 günde 261 istek)
+    ("ExaSearchBot", "Exa", "arama"), ("ExaUser", "Exa", "kullanici"), ("Qwantbot", "Qwant", "klasik"),
+    ("RSiteAuditor", "RSiteAuditor", "seo"),
     ("AhrefsBot", "Ahrefs", "seo"), ("SemrushBot", "Semrush", "seo"), ("MJ12bot", "Majestic", "seo"), ("DotBot", "Moz", "seo"),
     ("trendictionbot", "Talkwalker", "izleme"),
 ]
-AI_SAGLAYICI = {"OpenAI", "Anthropic", "Perplexity", "Mistral", "Meta", "Amazon", "ByteDance", "Common Crawl", "Reflection AI", "Shap"}
+AI_SAGLAYICI = {"OpenAI", "Anthropic", "Perplexity", "Mistral", "Meta", "Amazon", "ByteDance", "Common Crawl", "Reflection AI", "Shap", "Exa"}
 
 
 def env():
@@ -104,6 +107,11 @@ def report(days):
     if not files:
         sys.exit("Arşiv boş — önce `pull`.")
     rows = [json.loads(l) for f in files for l in open(os.path.join(OUT, f))]
+    for r in rows:   # arşivdeki tanınmayanları güncel BOTS listesiyle yeniden sınıfla (liste sonradan büyüyebilir)
+        if r.get("saglayici") == "?" and r.get("ua"):
+            b, p, a = classify(r["ua"], r.get("cf_kategori"))
+            if p != "?":
+                r["bot"], r["saglayici"], r["amac"] = b, p, a
     print(f"BOT RAPORU {files[0][:10]} → {files[-1][:10]} ({len(files)} gün, Cloudflare doğrulamalı)")
     by = collections.Counter(); prov = {}
     for r in rows:

@@ -1,0 +1,131 @@
+{
+  "title": "Ekstre günü: Kara Cuma sepetinin ödeme tarihini belirliyor #Shorts",
+  "description": "Kredi kartı ekstre kesim günü, aynı alışverişin ne zaman ödeneceğini değiştirir. Kara Cuma sepetini onaylamadan önce kesim gününe bakmak, ödemeyi neredeyse bir ay öteleyebilir.",
+  "tags": [
+    "kara cuma",
+    "ekstre kesim günü",
+    "kredi kartı",
+    "indirim",
+    "kişisel finans",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-ekstre-gunu-11-11-sepetinin-odeme-tarihini-belirliyor.mp4",
+  "slug": "ekstre-gunu-11-11-sepetinin-odeme-tarihini-belirliyor",
+  "format": "single_concept",
+  "engine": "anim",
+  "teknik": "news",
+  "timeline": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 2.942,
+      "cap": "Aynı sepet iki farklı ödeme gününe düşüyor.",
+      "words": [
+        0.35,
+        0.83,
+        1.15,
+        1.39,
+        1.69,
+        2.03,
+        2.35
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 3.222,
+      "t1": 8.382,
+      "cap": "Ekstre kesim günü otobüs kalkış saati gibi: o güne kadar aldıkların ilk otobüse biner.",
+      "words": [
+        3.222,
+        3.882,
+        4.262,
+        4.482,
+        4.862,
+        5.242,
+        5.562,
+        6.102,
+        6.202,
+        6.362,
+        6.602,
+        7.082,
+        7.362,
+        7.822
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 8.662,
+      "t1": 13.99,
+      "cap": "Ama kesimden bir gün sonra alırsan sonraki otobüse biner; ödeme günün neredeyse bir ay uzar.",
+      "words": [
+        8.662,
+        9.142,
+        9.562,
+        9.742,
+        9.902,
+        10.162,
+        10.642,
+        11.122,
+        11.502,
+        12.142,
+        12.422,
+        12.682,
+        13.182,
+        13.302,
+        13.462
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 14.27,
+      "t1": 21.062,
+      "cap": "Kara Cuma sepetini onaylamadan önce ekstre kesim gününe bak; indirimden önce vadeyi kazan, maaşın nefes alsın.",
+      "words": [
+        14.27,
+        14.61,
+        14.89,
+        15.45,
+        16.05,
+        16.39,
+        16.79,
+        17.15,
+        17.45,
+        18.01,
+        18.49,
+        18.75,
+        19.21,
+        19.87,
+        20.21,
+        20.51
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 21.342,
+      "t1": 28.494,
+      "cap": "Kartının kesim günü hangi tarihte, hiç baktın mı? Abone ol, her gün kısa ve net bir cüzdan hesabı gör.",
+      "words": [
+        21.342,
+        22.002,
+        22.502,
+        22.802,
+        23.222,
+        23.722,
+        24.002,
+        24.382,
+        25.162,
+        25.502,
+        26.062,
+        26.202,
+        26.402,
+        26.762,
+        26.902,
+        27.062,
+        27.302,
+        27.682,
+        28.142
+      ]
+    }
+  ]
+}
