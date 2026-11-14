@@ -1,0 +1,59 @@
+{
+  "slug": "yillik-uyelik-indirimi-biraktigin-gun-kaybedersin",
+  "title": "Yıllık üyelik indirimi: bıraktığın gün kaybedersin",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Kara Cuma'da yıllık üyelik indirimi cazip görünür ama kazanç, o aboneliği gerçekten kaç ay kullandığına bağlıdır. Basit bir bölme hesabıyla yıllık mı aylık mı, nasıl seçeceğini anlatıyor.",
+  "tags": [
+    "kara cuma",
+    "indirim",
+    "abonelik",
+    "yıllık üyelik",
+    "enflasyon",
+    "kişisel finans",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Yıllık üyelik indirimi seni kurtarmaz.",
+      "visual": {
+        "type": "object",
+        "query": "gym membership card"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Cevap tek bir bölmede: indirimli yıllık fiyatı, gerçekten kullanacağın ay sayısına böl.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama bıraktığın an kaybedersin: kullanmadığın aylar peşin ödenmiştir ve çoğu zaman geri gelmez.",
+      "visual": {
+        "type": "concept",
+        "query": "wasted money"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yıllık enflasyon %29,77; fiyat artacaksa yıllık almak mantıklı, ama yalnızca yıl boyu kullanacaksan.",
+      "visual": {
+        "type": "object",
+        "query": "calendar"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Cebindeki kaç abonelik gerçekten kullanılıyor? Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "gym membership card"
+      }
+    }
+  ]
+}

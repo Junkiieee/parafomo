@@ -1,0 +1,59 @@
+{
+  "slug": "ustu-cizili-fiyat-11-11-in-en-eski-numarasi",
+  "title": "Üstü çizili fiyat: Kara Cuma'nın en eski numarası",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Kara Cuma indirimlerinde üstü çizili etiket, çıpa etkisiyle ilk gördüğün rakamı ölçü yaptırıyor. Almadan önce sorulacak tek soruyla gerçek indirimi ayırt etmenin yolu.",
+  "tags": [
+    "kara cuma",
+    "indirim",
+    "çıpa etkisi",
+    "kişisel finans",
+    "bilinçli harcama",
+    "alışveriş",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Üstü çizili fiyat seni kandırıyor.",
+      "visual": {
+        "type": "object",
+        "query": "red sale tag shopping bags"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çıpa gemiyi nasıl tutarsa, ilk gördüğün rakam da aklını orada tutar.",
+      "visual": {
+        "type": "object",
+        "query": "ship anchor"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama o eski fiyat bazen hiç satılmadı; indirim, yüksek etiketin üstünü çizmekten ibaret kalıyor.",
+      "visual": {
+        "type": "object",
+        "query": "crossed out price tag"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Almadan önce sor: bu fiyata, üstü çizili etiket olmasa da alır mıydım?",
+      "visual": {
+        "type": "object",
+        "query": "shopping cart"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sepetindeki son ürün çizik etiketsiz de lazım mıydı? Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "red sale tag shopping bags"
+      }
+    }
+  ]
+}

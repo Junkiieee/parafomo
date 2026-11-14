@@ -1,0 +1,104 @@
+{
+ "slug": "yillik-uyelik-indirimi-biraktigin-gun-kaybedersin",
+ "title": "Yıllık üyelik indirimi: bıraktığın gün kaybedersin",
+ "description": "Kara Cuma'da yıllık üyelik indirimi cazip görünür ama kazanç, o aboneliği gerçekten kaç ay kullandığına bağlıdır. Basit bir bölme hesabıyla yıllık mı aylık mı, nasıl seçeceğini anlatıyor.",
+ "tags": [
+  "kara cuma",
+  "indirim",
+  "abonelik",
+  "yıllık üyelik",
+  "enflasyon",
+  "kişisel finans",
+  "parafomo"
+ ],
+ "format": "myth",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "ABONELİK TUZAĞI",
+  "scenes": [
+   {
+    "type": "icon_text",
+    "head": "İndirim yanıltıcı",
+    "data": {
+     "icon": "card",
+     "text": "Yıllık indirim seni *kurtarmaz*"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "steps",
+    "head": "Tek bir bölme",
+    "data": {
+     "items": [
+      "İNDİRİMLİ FİYAT",
+      "÷ KULLANDIĞIN AY",
+      "GERÇEK AYLIK ÜCRET"
+     ]
+    },
+    "line": "s1"
+   },
+   {
+    "type": "icon_text",
+    "head": "Bırakmanın bedeli",
+    "data": {
+     "icon": "calendar",
+     "text": "Bıraktığın an *kaybedersin*, peşin ödenen aylar gelmez"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "big_number",
+    "head": "Fiyat artışı riski",
+    "data": {
+     "icon": "percent",
+     "value": 29.77,
+     "unit": "%",
+     "suffix": "",
+     "label": "yıllık enflasyon"
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Sıra sende",
+    "data": {
+     "l1": "KAÇ ABONELİK",
+     "l2": "KULLANILIYOR?",
+     "sub": "HER GÜN 60 SANİYEDE NET ANALİZ"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Yıllık üyelik indirimi seni kurtarmaz.",
+   "cap": "Yıllık üyelik indirimi seni kurtarmaz."
+  },
+  {
+   "id": "s1",
+   "say": "Cevap tek bir bölmede: indirimli yıllık fiyatı, gerçekten kullanacağın ay sayısına böl.",
+   "cap": "Cevap tek bir bölmede: indirimli yıllık fiyatı, gerçekten kullanacağın ay sayısına böl."
+  },
+  {
+   "id": "s2",
+   "say": "Ama bıraktığın an kaybedersin: kullanmadığın aylar peşin ödenmiştir ve çoğu zaman geri gelmez.",
+   "cap": "Ama bıraktığın an kaybedersin: kullanmadığın aylar peşin ödenmiştir ve çoğu zaman geri gelmez."
+  },
+  {
+   "id": "s3",
+   "say": "Yıllık enflasyon %29,77; fiyat artacaksa yıllık almak mantıklı, ama yalnızca yıl boyu kullanacaksan.",
+   "cap": "Yıllık enflasyon %29,77; fiyat artacaksa yıllık almak mantıklı, ama yalnızca yıl boyu kullanacaksan."
+  },
+  {
+   "id": "s4",
+   "say": "Cebindeki kaç abonelik gerçekten kullanılıyor? Abone ol, her gün 60 saniyede tek net analiz.",
+   "cap": "Cebindeki kaç abonelik gerçekten kullanılıyor? Abone ol, her gün 60 saniyede tek net analiz."
+  }
+ ],
+ "skin": "iso",
+ "engine": "hf"
+}

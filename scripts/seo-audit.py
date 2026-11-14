@@ -311,17 +311,7 @@ def google_layer(pages, issues, budget, ages):
             print(f"[seo] URL Inspection durdu ({done} sayfa): {str(e)[:120]}")
             break
     json.dump(state, open(IDX, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    for p, s in state.items():
-        if p not in pages or pages[p]["noindex"]:
-            continue
-        gc = s.get("googleCanonical")
-        if gc and gc.rstrip("/") != (SITE + p).rstrip("/"):
-            issues.append({"code": "google_canonical", "sev": "KRİTİK", "path": p, "detail": gc})
-        if s.get("verdict") != "PASS":
-            age = ages.get(p)
-            code = "not_indexed" if (age is None or age >= 14) else "index_unknown"
-            issues.append({"code": code, "sev": CODES[code][0], "path": p,
-                           "detail": f"{s.get('coverage')}" + (f" · {age} gündür yayında" if age is not None else "")})
+    index_issues(state, pages, issues, ages)
     # canlı kontrol: bugün bakılanlar + yeni sayfalar (ucuz HEAD)
     live = [p for p in cands if ages.get(p, 999) < 30][:40]
     for p in live:
@@ -333,6 +323,21 @@ def google_layer(pages, issues, budget, ages):
         except Exception as e:
             issues.append({"code": "live_error", "sev": "KRİTİK", "path": p, "detail": str(e)[:60]})
     return state, done
+
+
+def index_issues(state, pages, issues, ages):
+    """seo-index.json'daki Google durumundan bulgu üret (indekste değil, Google başka kanonik seçti)."""
+    for p, s in state.items():
+        if p not in pages or pages[p]["noindex"]:
+            continue
+        gc = s.get("googleCanonical")
+        if gc and gc.rstrip("/") != (SITE + p).rstrip("/"):
+            issues.append({"code": "google_canonical", "sev": "KRİTİK", "path": p, "detail": gc})
+        if s.get("verdict") != "PASS":
+            age = ages.get(p)
+            code = "not_indexed" if (age is None or age >= 14) else "index_unknown"
+            issues.append({"code": code, "sev": CODES[code][0], "path": p,
+                           "detail": f"{s.get('coverage')}" + (f" · {age} gündür yayında" if age is not None else "")})
 
 
 def expected_pages():
@@ -377,6 +382,9 @@ def main():
             idx_state = json.load(open(IDX, encoding="utf-8"))
         except (OSError, ValueError):
             idx_state = {}
+        # --google'sız koşu (deploy sonrası) son bilinen indeks durumunu kullanır; yoksa indeks uyarıları silinirdi (2026-11-14)
+        if not any(i["code"] == "build_incomplete" for i in issues):
+            index_issues(idx_state, pages, issues, ages)
     issues.sort(key=lambda i: (SEV_ORDER[i["sev"]], i["code"], i["path"]))
     counts = {s: sum(1 for i in issues if i["sev"] == s) for s in SEV_ORDER}
     by_code = {}

@@ -1,0 +1,101 @@
+{
+ "slug": "ustu-cizili-fiyat-11-11-in-en-eski-numarasi",
+ "title": "Üstü çizili fiyat: Kara Cuma'nın en eski numarası",
+ "description": "Kara Cuma indirimlerinde üstü çizili etiket, çıpa etkisiyle ilk gördüğün rakamı ölçü yaptırıyor. Almadan önce sorulacak tek soruyla gerçek indirimi ayırt etmenin yolu.",
+ "tags": [
+  "kara cuma",
+  "indirim",
+  "çıpa etkisi",
+  "kişisel finans",
+  "bilinçli harcama",
+  "alışveriş",
+  "parafomo"
+ ],
+ "format": "single_concept",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "FİYAT TUZAĞI",
+  "scenes": [
+   {
+    "type": "icon_text",
+    "head": "Etiketin oyunu",
+    "data": {
+     "icon": "percent",
+     "text": "Üstü çizili fiyat seni *kandırıyor*"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "icon_text",
+    "head": "Çıpa etkisi",
+    "data": {
+     "icon": "coins",
+     "text": "İlk gördüğün rakam aklını *çıpalar*"
+    },
+    "line": "s1"
+   },
+   {
+    "type": "icon_text",
+    "head": "Sahte indirim",
+    "data": {
+     "icon": "chart",
+     "text": "Eski fiyat bazen *hiç satılmadı*"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "steps",
+    "head": "Almadan önce sor",
+    "data": {
+     "items": [
+      "Önce etiketi unut",
+      "Fiyata tek başına bak",
+      "Üstü çizik olmasa alır mıydım?"
+     ]
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Son soru",
+    "data": {
+     "l1": "Çizik etiketsiz",
+     "l2": "lazım mıydı?",
+     "sub": "ABONE OL · HER GÜN TEK ANALİZ"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Üstü çizili fiyat seni kandırıyor.",
+   "cap": "Üstü çizili fiyat seni kandırıyor."
+  },
+  {
+   "id": "s1",
+   "say": "Çıpa gemiyi nasıl tutarsa, ilk gördüğün rakam da aklını orada tutar.",
+   "cap": "Çıpa gemiyi nasıl tutarsa, ilk gördüğün rakam da aklını orada tutar."
+  },
+  {
+   "id": "s2",
+   "say": "Ama o eski fiyat bazen hiç satılmadı; indirim, yüksek etiketin üstünü çizmekten ibaret kalıyor.",
+   "cap": "Ama o eski fiyat bazen hiç satılmadı; indirim, yüksek etiketin üstünü çizmekten ibaret kalıyor."
+  },
+  {
+   "id": "s3",
+   "say": "Almadan önce sor: bu fiyata, üstü çizili etiket olmasa da alır mıydım?",
+   "cap": "Almadan önce sor: bu fiyata, üstü çizili etiket olmasa da alır mıydım?"
+  },
+  {
+   "id": "s4",
+   "say": "Sepetindeki son ürün çizik etiketsiz de lazım mıydı? Abone ol, her gün 60 saniyede tek net analiz.",
+   "cap": "Sepetindeki son ürün çizik etiketsiz de lazım mıydı? Abone ol, her gün 60 saniyede tek net analiz."
+  }
+ ],
+ "skin": "iso",
+ "engine": "dossier"
+}

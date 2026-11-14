@@ -65,8 +65,11 @@ def gsc_hafta():
     spec = importlib.util.spec_from_file_location("g", f"{ROOT}/scripts/gsc-sitemap.py")
     g = importlib.util.module_from_spec(spec); spec.loader.exec_module(g)
     svc = g.client(); site = getattr(g, "SITE", None) or "sc-domain:parafomo.com"
-    end = BUGUN - dt.timedelta(days=2)
-    lines = ["| Hafta | Tık | Gösterim | Ort. sıra |", "|---|---|---|---|"]
+    # GSC 2-4 gün geriden gelir: son haftayı verinin bittiği güne daya, yoksa son satır 5-6 günlük olup "düşüş" gibi görünür
+    gun = svc.searchanalytics().query(siteUrl=site, body={"startDate": str(BUGUN - dt.timedelta(days=10)), "endDate": str(BUGUN),
+                                                          "dimensions": ["date"]}).execute().get("rows", [])
+    end = max((dt.date.fromisoformat(r["keys"][0]) for r in gun), default=BUGUN - dt.timedelta(days=3))
+    lines = [f"(veri {end:%d.%m}'e kadar; her satır tam 7 gün)", "", "| Hafta | Tık | Gösterim | Ort. sıra |", "|---|---|---|---|"]
     for w in range(4, 0, -1):
         e = end - dt.timedelta(days=7 * (w - 1)); s = e - dt.timedelta(days=6)
         r = svc.searchanalytics().query(siteUrl=site, body={"startDate": str(s), "endDate": str(e)}).execute().get("rows", [{}])[0]
