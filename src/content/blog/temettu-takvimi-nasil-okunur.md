@@ -2,6 +2,7 @@
 title: "Hisse Senedi Temettü Takvimi Nasıl Okunur? Tarihler ve Stratejiler"
 description: "Temettü takvimindeki hak tarihi, ex-temettü ve ödeme tarihlerini doğru okuyun. BIST'te temettü nasıl alınır, hangi tarihlere dikkat etmek gerekir?"
 pubDate: 2026-07-22
+updatedDate: 2026-11-14
 category: "Borsa"
 tags: ["temettü takvimi", "temettü", "hisse senedi", "BIST", "yatırım", "borsa"]
 readingTime: 8
@@ -9,8 +10,8 @@ featured: false
 faq:
   - q: "Temettü almak için hisseyi ne zaman almalıyım?"
     a: "Temettü almak için hisseyi ex-temettü (ayrım) tarihinden en az bir iş günü önce satın almalısınız. Bu tarih itibarıyla portföyünüzde kayıtlı olan hissedarlar temettüye hak kazanır; ayrım tarihinde veya sonrasında alanlar o dönem temettüsünü alamaz."
-  - q: "Ex-temettü tarihi nedir?"
-    a: "Ex-temettü (ayrım) tarihi, bu tarihte ve sonrasında hisse alan yatırımcıların o dönem temettüsüne hak kazanamadığı tarihtir. Hisseyi bu tarihten bir iş günü önce almanız yeterlidir."
+  - q: "Temettüsüz işlem tarihi nedir?"
+    a: "Temettüsüz işlem tarihi, hissenin temettü hakkı ayrılmış olarak işlem görmeye başladığı ilk gündür; ex-temettü ya da ayrım tarihi de denir, KAP bildirimlerinde 'hak kullanım tarihi' olarak yazar. Borsa İstanbul o sabah hisse başına brüt temettüyü açılış fiyatından düşer. Bu gün ve sonrasında alan o dönemin temettüsünü alamaz; temettü için hisseyi bir önceki iş günü kapanışına kadar almış olmak gerekir."
   - q: "Temettü takvimini nereden görebilirim?"
     a: "KAP (Kamuoyu Aydınlatma Platformu) en güvenilir kaynaktır; şirketler resmi dağıtım duyurularını orada yapar. Borsa İstanbul ve çeşitli finans portalleri de derlenmiş takvimler sunar."
   - q: "Temettü verimi yüksek olan her hisse alınır mı?"
@@ -52,14 +53,14 @@ Her temettü sürecinde dört temel tarih vardır. Bu tarihlerin birbirinden far
 |---|-----------|-----------------|
 | 1 | **Genel Kurul Tarihi** | Şirket ortakları toplanır; dağıtılacak temettü miktarını ve ödeme planını oylamayla onaylar. |
 | 2 | **Hak Tarihi (Kayıt Tarihi)** | Bu tarih itibarıyla hisseyi portföyünde bulunduran yatırımcılar temettüye kayıt yaptırır. |
-| 3 | **Ex-Temettü (Ayrım) Tarihi** | Bu tarihte veya sonrasında hisse alanlar o dönem temettüsüne hak kazanamaz. |
+| 3 | **Ex-Temettü (Ayrım) Tarihi** | Temettüsüz işlem tarihi (KAP'ta "hak kullanım tarihi"). Bu tarihte veya sonrasında hisse alanlar o dönem temettüsüne hak kazanamaz. |
 | 4 | **Ödeme Tarihi** | Temettü miktarı hissedarların aracı kurum hesaplarına aktarılır. |
 
 Bu dört tarih içinde yatırımcılar için en kritik olanı **ex-temettü (ayrım) tarihi**dir; çünkü "temettü almak için hisseyi ne zaman almalıyım?" sorusunun yanıtı burada yatmaktadır.
 
-## Ex-temettü tarihi: En çok karıştırılan nokta
+## Temettüsüz işlem tarihi (ex-temettü) nedir?
 
-Ex-temettü tarihi, Türkçede **ayrım tarihi** veya **hak tarihi** olarak da geçer. Temel kural şudur: hisseyi bu tarihten **en az bir iş günü önce** satın almış olmalısınız.
+**Temettüsüz işlem tarihi**, hissenin temettü hakkı ayrılmış olarak işlem görmeye başladığı ilk gündür. Türkçede **ayrım tarihi** de denir; KAP'taki kâr payı bildirimlerinde **hak kullanım tarihi** olarak yazar. Borsa İstanbul o sabah hisse başına brüt temettüyü açılış fiyatından düşer. Temel kural şudur: hisseyi bu tarihten **en az bir iş günü önce**, o günün kapanışına kadar satın almış olmalısınız.
 
 Somut örnek: Ayrım tarihi 5 Ağustos ise, temettüye hak kazanmak için 4 Ağustos mesai bitimine kadar hisseyi portföyünüzde bulundurmalısınız. 5 Ağustos sabahı, ister açılışta ister kapanışta alın, o dönem temettüsünü alamazsınız — bir sonraki yılı beklemeniz gerekir.
 
@@ -72,8 +73,8 @@ Hayali bir BIST şirketi olan "ABC Holding" örneği üzerinden takvimi inceleye
 | Tarih | Olay | Ne yapmalısın? |
 |-------|------|---------------|
 | 10 Mart | Genel Kurul | Hisse başı 3,00 TL brüt temettü kararı alındı. |
-| 2 Nisan | Hak Tarihi (Ayrım Tarihi) | Bu tarihe kadar portföyde olan hissedarlar hak kazanır. |
-| 3 Nisan | Ex-Temettü Fiyatı Oluşur | Hisse fiyatı ~3 TL düşük açılır; bu günden itibaren alanlar temettü almaz. |
+| 2 Nisan | Son alım günü | Bu günün kapanışına kadar hisseyi alan temettüye hak kazanır. |
+| 3 Nisan | Temettüsüz işlem (ayrım / hak kullanım) tarihi | Hisse fiyatı ~3 TL düşük açılır; bu günden itibaren alanlar temettü almaz. |
 | 18 Nisan | Ödeme Tarihi | 3,00 TL brüt (stopaj sonrası ~2,55 TL net) hesaplara geçer. |
 
 Bu takvimi doğru okuduğunuzda "hisseyi 2 Nisan'a kadar almalıyım" sonucuna ulaşırsınız. 3 Nisan veya sonrasında alanlar temettüsüz kalır.
