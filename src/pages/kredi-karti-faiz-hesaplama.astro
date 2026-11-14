@@ -32,6 +32,16 @@ function bitis(b: number, m: number) {
 const ORNEK_B = 50000;
 const ORNEK_M = [2500, 5000, 10000, 20000].map((m) => ({ m, r: bitis(ORNEK_B, m) }));
 const efektif = (r: number) => r * (1 + VERGI);
+// Sonradan taksitlendirme (2026-11-14, "kredi kartı taksit faiz hesaplama" aramaları): eşit taksit, vergili faiz
+// i = akdi × 1,30 — /ihtiyac-kredisi-hesaplama ile aynı yöntem. Örnek en düşük kademenin azami oranıyla.
+function taksit(P: number, n: number, r: number) {
+  const i = (r / 100) * (1 + VERGI);
+  const pay = i === 0 ? P / n : (P * i) / (1 - Math.pow(1 + i, -n));
+  return { pay, cost: pay * n - P };
+}
+const TK_P = 10000;
+const TK = [3, 6, 9, 12].map((n) => ({ n, ...taksit(TK_P, n, T[0].akdi) }));
+const TK12 = TK[TK.length - 1];
 
 const faq = [
   {
@@ -41,6 +51,10 @@ const faq = [
   {
     q: 'Kredi kartı faizine vergi ekleniyor mu?',
     a: `Evet. Bireysel kredi kartlarında faiz tutarının üzerine %15 KKDF ve %15 BSMV eklenir; 100 TL faizin cebinizden çıkan karşılığı 130 TL olur. Bu yüzden ${pct(T[0].akdi)} aylık akdi faizin vergili maliyeti yaklaşık ${pct(efektif(T[0].akdi))}’tür.`,
+  },
+  {
+    q: 'Kredi kartı taksit faizi nasıl hesaplanır?',
+    a: `Mağazada taksitli alışverişte taksitler her ay ekstrenize eklenir; ekstreyi tam öderseniz faiz işlemez. Yapılmış bir harcamayı ya da ekstreyi sonradan taksitlendirirseniz banka aylık faiz işletir, faize %15 KKDF ve %15 BSMV eklenir ve taksit eşit taksit formülüyle bulunur. Örnek: ${fmt0(TK_P)} TL’yi aylık ${pct(T[0].akdi)} faizle 12 taksite bölmek, aylık yaklaşık ${fmt(TK12.pay)} TL taksit ve toplam ${fmt0(TK12.cost)} TL faiz + vergi demektir.`,
   },
   {
     q: 'Asgari ödeme yaparsam faiz işler mi?',
@@ -70,7 +84,7 @@ const breadcrumbs = [
 <BaseLayout
   image="/og/kredi-karti-faiz-hesaplama.png"
   title={`Kredi Kartı Faiz Hesaplama ${kk.gecerli.slice(0, 4)}: Güncel Faiz Oranı (${AYLAR[+kk.gecerli.slice(5, 7) - 1]})`}
-  description={`Kredi kartı faiz hesaplama: TCMB ${AY} azami akdi faiz ${pct(T[0].akdi)}–${pct(T[2].akdi)}, gecikme ${pct(T[0].gecikme)}–${pct(T[2].gecikme)}. KKDF+BSMV dahil faiz, asgari ödeme ve borcun kaç ayda biteceği.`}
+  description={`Kredi kartı faiz hesaplama: TCMB ${AY} azami akdi faiz ${pct(T[0].akdi)}–${pct(T[2].akdi)}, gecikme ${pct(T[0].gecikme)}–${pct(T[2].gecikme)}. KKDF+BSMV dahil faiz, taksit faizi, asgari ödeme ve kaç ayda biter.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
 >
@@ -80,7 +94,8 @@ const breadcrumbs = [
       <h1>Kredi Kartı Faiz Hesaplama ({AY})</h1>
       <p class="lede">
         TCMB’nin {AY} azami oranlarıyla: dönem borcunuzu ve ödeyeceğiniz tutarı girin; <strong>işleyecek faizi
-        (KKDF+BSMV dahil), asgari ödeme tutarını ve borcun kaç ayda biteceğini</strong> görün.
+        (KKDF+BSMV dahil), asgari ödeme tutarını ve borcun kaç ayda biteceğini</strong> görün. Harcamanızı
+        taksitlendirecekseniz <a href="#taksit">taksit faizi hesaplamasına</a> geçin.
       </p>
     </header>
 
@@ -155,6 +170,40 @@ const breadcrumbs = [
         Kaynak: TCMB, 2020/16 sayılı Tebliğ kapsamında ilan edilen tablo; referans oran {pct(kk.referans)} (kredi kartı
         borcu yapılandırmasında aylık faiz bu oranı aşamaz). “Akdi + vergi” = akdi faiz × 1,30 (KKDF %15 + BSMV %15).
         TCMB tabloyu her ay başında yeniler; sayfa otomatik güncellenir.
+      </p>
+    </section>
+
+    <section class="table-block" id="taksit">
+      <h2>Kredi kartı taksit faizi hesaplama</h2>
+      <p class="sec-text">
+        <strong>Mağazada taksitli alışveriş:</strong> taksitler her ay ekstrenize eklenir; ekstreyi tam ödediğiniz sürece
+        size faiz işlemez. Mağaza taksitli fiyata vade farkı ekleyebilir, peşin fiyatla karşılaştırın.
+        <strong>Sonradan taksitlendirme</strong> (yapılmış bir harcamayı ya da ekstreyi bankanın taksite bölmesi): banka
+        aylık faiz işletir, faize %15 KKDF ve %15 BSMV eklenir.
+      </p>
+      <form class="tk-calc" id="tk-form" autocomplete="off">
+        <label><span>Taksitlendirilecek tutar (₺)</span><input type="number" id="tk-p" value="10000" min="0" step="500" inputmode="numeric" /></label>
+        <label><span>Taksit sayısı</span><input type="number" id="tk-n" value="12" min="1" max="36" step="1" inputmode="numeric" /></label>
+        <label><span>Aylık faiz (%)</span><input type="number" id="tk-r" value={T[0].akdi} min="0" max="10" step="0.01" inputmode="decimal" /></label>
+        <div class="tk-out" aria-live="polite">
+          <div><span>Aylık taksit</span><strong id="tk-pay">—</strong></div>
+          <div><span>Toplam ödeme</span><strong id="tk-tot">—</strong></div>
+          <div><span>Faiz + KKDF + BSMV</span><strong id="tk-cost">—</strong></div>
+        </div>
+      </form>
+      <table class="rate-table">
+        <thead><tr><th>Örnek: ₺{fmt0(TK_P)}</th><th>Aylık taksit</th><th>Toplam faiz + vergi</th></tr></thead>
+        <tbody>
+          {TK.map((o) => (
+            <tr><td>{o.n} taksit</td><td>₺{fmt(o.pay)}</td><td>₺{fmt0(o.cost)}</td></tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Örnek hesap: TCMB’nin {AY} azami akdi faizi {pct(T[0].akdi)} (30.000 TL altı dönem borcu) + %30 vergi, eşit taksit
+        yöntemiyle: taksit = tutar × i ÷ (1 − (1 + i)<sup>−n</sup>), i = aylık faiz × 1,30. Bankanız daha düşük oran
+        uygulayabilir; kesin tutar taksitlendirme ekranında yazar. Uzun vadeli bir planı
+        <a href="/ihtiyac-kredisi-hesaplama/">ihtiyaç kredisi hesaplama</a> ile karşılaştırın.
       </p>
     </section>
 
@@ -253,6 +302,18 @@ const breadcrumbs = [
       }
       ['in-b', 'in-l', 'in-p', 'in-m'].forEach((id) => $(id).addEventListener('input', update));
       update();
+      // taksit: eşit taksit, vergili faiz i = aylık faiz × 1,30
+      function tk() {
+        const P = Math.max(0, +$('tk-p').value || 0);
+        const n = Math.min(36, Math.max(1, Math.round(+$('tk-n').value || 1)));
+        const i = (Math.max(0, +$('tk-r').value || 0) / 100) * (1 + VERGI);
+        const pay = i === 0 ? P / n : (P * i) / (1 - Math.pow(1 + i, -n));
+        $('tk-pay').textContent = tl(pay);
+        $('tk-tot').textContent = tl(pay * n);
+        $('tk-cost').textContent = tl(pay * n - P);
+      }
+      ['tk-p', 'tk-n', 'tk-r'].forEach((id) => $(id).addEventListener('input', tk));
+      tk();
     })();
   </script>
 
@@ -314,6 +375,26 @@ const breadcrumbs = [
     .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
     .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
 
+    .sec-text { color: var(--text-soft); line-height: 1.7; margin: 0 0 1rem; }
+    .tk-calc {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin: 0 0 1rem;
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.1rem;
+    }
+    .tk-calc label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .tk-calc span { font-size: 0.82rem; font-weight: 600; color: var(--text-soft); }
+    .tk-calc input {
+      font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text);
+      padding: 0.5rem 0.6rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); width: 100%;
+    }
+    .tk-calc input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .tk-out {
+      grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem;
+      background: var(--brand-tint); border-radius: var(--radius); padding: 0.8rem;
+    }
+    .tk-out div { display: flex; flex-direction: column; gap: 0.15rem; }
+    .tk-out strong { font-family: var(--font-serif); font-size: 1.3rem; color: var(--brand-ink); }
+
     .prose-block, .faq-block { margin-top: 2.5rem; }
     .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
     .prose-block p { color: var(--text-soft); line-height: 1.7; }
@@ -328,6 +409,7 @@ const breadcrumbs = [
 
     @media (max-width: 600px) {
       .calc-grid { grid-template-columns: 1fr; }
+      .tk-calc, .tk-out { grid-template-columns: 1fr; }
       .rate-box strong { font-size: 1.3rem; }
     }
   </style>
