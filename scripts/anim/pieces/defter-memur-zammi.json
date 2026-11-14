@@ -1,0 +1,65 @@
+{
+ "slug": "anim-ekonomi-defteri-7-memur-zammi",
+ "title": "Memur zammı nasıl hesaplanır? Enflasyon farkı × %5 | Ekonomi Defteri #7",
+ "description": "Ekonomi Defteri'nin yedinci sayfası: memurun Ocak zammı iki parçadan oluşur, toplu sözleşme zammı ve enflasyon farkı. 8. Dönem Toplu Sözleşme'de 2026'nın ikinci yarısına %7, 2027'nin ilk yarısına %5 zam yazılı. Temmuz–Aralık 2026 enflasyonu %7'yi aşarsa aşan kısım Ocak'ta enflasyon farkı olarak eklenir; Temmuz–Ekim birikimli enflasyon şimdiden %8,3. İki oran toplanmaz, çarpılır: Ocak zammı = (1 + fark) × 1,05 − 1. Örnek: 6 aylık enflasyon %12 olursa fark %4,67, Ocak zammı %9,91 olur. Kesin oran Aralık enflasyonu açıklanınca belli olur; memur emeklileri de aynı oranı alır.\nKaynak: Kamu Görevlileri Hakem Kurulu kararı, 8. Dönem Toplu Sözleşme (Resmî Gazete, 27 Ağustos 2025); TÜİK TÜFE aylık değişim (Temmuz–Ekim 2026: %1,78, %1,84, %1,84, %2,58).",
+ "tags": [
+  "memur zammı",
+  "memur zammı 2027",
+  "ocak 2027 memur zammı",
+  "enflasyon farkı",
+  "toplu sözleşme",
+  "memur emeklisi zammı",
+  "ekonomi defteri",
+  "parafomo"
+ ],
+ "style": "isometric",
+ "skin": "iso",
+ "kits": [
+  "defter"
+ ],
+ "scene": "defter-memur-zammi.js",
+ "short": true,
+ "format": "ekonomi_defteri",
+ "link": "/memur-zammi-hesaplama/",
+ "series": "Ekonomi Defteri",
+ "episode": 7,
+ "comment": "📒 Ekonomi Defteri #7: Memur zammı nasıl hesaplanır?\n\n• 8. Dönem Toplu Sözleşme (Hakem Kurulu, RG 27.08.2025): 2026 2. yarı %7, 2027 1. yarı %5\n• Enflasyon farkı = (1 + Temmuz–Aralık enflasyonu) ÷ 1,07 − 1\n• Ocak zammı = (1 + fark) × 1,05 − 1 (oranlar toplanmaz, çarpılır)\n• Örnek: 6 aylık enflasyon %12 → fark %4,67 → Ocak zammı %9,91\n• Temmuz–Ekim 2026 birikimli enflasyon ≈ %8,3 (TÜİK aylık verileri)\n• Memur emeklileri de aynı oranda zam alır\n\n🧮 Güncel tahmin ve kendi maaşın: https://parafomo.com/memur-zammi-hesaplama/?utm_source=youtube&utm_medium=shorts&utm_campaign=ekonomi-defteri-7\n\nDefterin sonraki sayfasında hangi konuyu görelim? 👇",
+ "data": {},
+ "lines": [
+  {
+   "id": "hook",
+   "say": "Memur zammı nasıl hesaplanır? Ekonomi Defteri, yedinci sayfa.",
+   "cap": "Memur zammı nasıl hesaplanır? Ekonomi Defteri, yedinci sayfa."
+  },
+  {
+   "id": "iki",
+   "say": "Ocak zammı iki parçadan oluşur: toplu sözleşme zammı ve enflasyon farkı.",
+   "cap": "Ocak zammı iki parçadan oluşur: toplu sözleşme zammı ve enflasyon farkı."
+  },
+  {
+   "id": "ts",
+   "say": "Toplu sözleşmede 2026'nın ikinci yarısına yüzde 7, 2027'nin ilk yarısına yüzde 5 yazılı.",
+   "cap": "Toplu sözleşmede 2026'nın ikinci yarısına %7, 2027'nin ilk yarısına %5 yazılı."
+  },
+  {
+   "id": "fark",
+   "say": "Temmuz'dan Aralık'a enflasyon yüzde 7'yi aşarsa, aşan kısım Ocak'ta fark olarak eklenir. Temmuz'dan Ekim'e, dört ayda bile yüzde 8,3 oldu.",
+   "cap": "Temmuz'dan Aralık'a enflasyon %7'yi aşarsa, aşan kısım Ocak'ta fark olarak eklenir. Temmuz'dan Ekim'e, 4 ayda bile %8,3 oldu."
+  },
+  {
+   "id": "carp",
+   "say": "İki oran toplanmaz, çarpılır. Örnek: altı ayda enflasyon yüzde 12 olursa fark yüzde 4,67; Ocak zammı yüzde 9,91 olur.",
+   "cap": "İki oran toplanmaz, çarpılır. Örnek: 6 ayda enflasyon %12 olursa fark %4,67; Ocak zammı %9,91 olur."
+  },
+  {
+   "id": "kesin",
+   "say": "Kesin oran Aralık enflasyonu açıklanınca belli olur. Memur emeklisi de aynı oranı alır.",
+   "cap": "Kesin oran Aralık enflasyonu açıklanınca belli olur. Memur emeklisi de aynı oranı alır."
+  },
+  {
+   "id": "cta",
+   "say": "Güncel tahmin ve kendi maaşın için parafomo.com'daki memur zammı hesaplayıcısına bak. Abone ol.",
+   "cap": "Güncel tahmin ve kendi maaşın için parafomo.com'daki memur zammı hesaplayıcısına bak. Abone ol."
+  }
+ ]
+}

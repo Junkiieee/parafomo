@@ -351,6 +351,9 @@ def main():
               "teknik": engine, "timeline": meta["lines"]}
         if spec.get("link"):
             sm["link"] = spec["link"]
+        for k in ("comment", "series", "episode"):   # bölüme özel sabit yorum: youtube-extras meta["comment"] okur
+            if spec.get(k):
+                sm[k] = spec[k]
         sp = os.path.join(ROOT, "public", "social", f"short-{slug}.json")
         if os.path.exists(sp):   # önceki yayın kimlikleri (video_id, ig_reel_id…) korunur
             old = json.load(open(sp, encoding="utf-8"))
