@@ -1,0 +1,100 @@
+{
+ "slug": "tatil-bileti-indirimi-ucuz-gorunur-pahaliya-patlar",
+ "title": "Tatil bileti indirimi: ucuz görünür, pahalıya patlar",
+ "description": "Kara Cuma'da kampanyalı tatil bileti almadan önce iade şartı ve tarih esnekliği neden önemli, sade bir dille anlatılıyor.",
+ "tags": [
+  "kara cuma",
+  "tatil bileti",
+  "indirim",
+  "iade şartı",
+  "kişisel finans",
+  "ParaFOMO",
+  "parafomo"
+ ],
+ "format": "myth",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "TATİL TUZAĞI",
+  "scenes": [
+   {
+    "type": "icon_text",
+    "head": "İndirimin görünmeyen yüzü",
+    "data": {
+     "icon": "card",
+     "text": "İndirimli bilet cebinde *kilitli* kalır"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "icon_text",
+    "head": "İade şartı kritik",
+    "data": {
+     "icon": "cash",
+     "text": "Planın bozulursa indirim değil, *paran* gider"
+    },
+    "line": "s1"
+   },
+   {
+    "type": "icon_text",
+    "head": "Asıl tuzak tarih",
+    "data": {
+     "icon": "calendar",
+     "text": "Tarihin kesin değilse bilet seni *mecbur* bırakır"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "steps",
+    "head": "Bilet almadan önce",
+    "data": {
+     "items": [
+      "İzin tarihini netleştir",
+      "İade şartını oku",
+      "Esnek bileti düşün"
+     ]
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Her gün tek analiz",
+    "data": {
+     "l1": "SON TATİLİNİ",
+     "l2": "İNDİRİMLE Mİ SEÇTİN?",
+     "sub": "ABONE OL · 60 SANİYEDE ANALİZ"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "İndirimli tatil bileti, cebinde kilitli kalır.",
+   "cap": "İndirimli tatil bileti, cebinde kilitli kalır."
+  },
+  {
+   "id": "s1",
+   "say": "Kampanyalı biletlerin çoğunda iade yok ya da kesinti var; planın bozulursa indirim değil, paran gider.",
+   "cap": "Kampanyalı biletlerin çoğunda iade yok ya da kesinti var; planın bozulursa indirim değil, paran gider."
+  },
+  {
+   "id": "s2",
+   "say": "Ama asıl tuzak: tarihin kesin değilken aldığın bilet, seni o güne mecbur bırakır.",
+   "cap": "Ama asıl tuzak: tarihin kesin değilken aldığın bilet, seni o güne mecbur bırakır."
+  },
+  {
+   "id": "s3",
+   "say": "Önce izin tarihini netleştir, iade şartını oku. Esnek bilet biraz pahalıysa çoğu zaman daha güvenli.",
+   "cap": "Önce izin tarihini netleştir, iade şartını oku. Esnek bilet biraz pahalıysa çoğu zaman daha güvenli."
+  },
+  {
+   "id": "s4",
+   "say": "Son tatilini indirim görünce mi planladın? Abone ol; her gün 60 saniyede tek net analiz.",
+   "cap": "Son tatilini indirim görünce mi planladın? Abone ol; her gün 60 saniyede tek net analiz."
+  }
+ ],
+ "skin": "iso"
+}

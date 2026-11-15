@@ -1,0 +1,59 @@
+{
+  "slug": "tatil-bileti-indirimi-ucuz-gorunur-pahaliya-patlar",
+  "title": "Tatil bileti indirimi: ucuz görünür, pahalıya patlar",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Kara Cuma'da kampanyalı tatil bileti almadan önce iade şartı ve tarih esnekliği neden önemli, sade bir dille anlatılıyor.",
+  "tags": [
+    "kara cuma",
+    "tatil bileti",
+    "indirim",
+    "iade şartı",
+    "kişisel finans",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "İndirimli tatil bileti, cebinde kilitli kalır.",
+      "visual": {
+        "type": "object",
+        "query": "airplane flying over sunny tropical beach"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kampanyalı biletlerin çoğunda iade yok ya da kesinti var; planın bozulursa indirim değil, paran gider.",
+      "visual": {
+        "type": "object",
+        "query": "boarding pass"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama asıl tuzak: tarihin kesin değilken aldığın bilet, seni o güne mecbur bırakır.",
+      "visual": {
+        "type": "object",
+        "query": "calendar"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Önce izin tarihini netleştir, iade şartını oku. Esnek bilet biraz pahalıysa çoğu zaman daha güvenli.",
+      "visual": {
+        "type": "object",
+        "query": "passport and suitcase"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Son tatilini indirim görünce mi planladın? Abone ol; her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "airplane flying over sunny tropical beach"
+      }
+    }
+  ]
+}

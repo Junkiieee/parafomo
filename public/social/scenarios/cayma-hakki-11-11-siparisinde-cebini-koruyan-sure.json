@@ -1,0 +1,64 @@
+{
+  "slug": "cayma-hakki-11-11-siparisinde-cebini-koruyan-sure",
+  "title": "Cayma hakkı: Kara Cuma siparişinde cebini koruyan süre",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Online alışverişte teslimden sonra 14 gün gerekçe göstermeden iade hakkı var; indirimli ürün de buna dahil. Hangi ürünlerin dışarıda kaldığını ve bu süreyi nasıl kullanacağını anlatıyor.\nKaynak/hesap: 6502 sayılı Tüketicinin Korunması Hakkında Kanun m.48 ve Mesafeli Sözleşmeler Yönetmeliği (T.C. Ticaret Bakanlığı)",
+  "tags": [
+    "kara cuma",
+    "cayma hakkı",
+    "online alışveriş",
+    "tüketici hakları",
+    "iade",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Online alışverişte 14 gün cayma hakkın var.",
+      "visual": {
+        "type": "object",
+        "query": "gift boxes shopping bags"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Mesafeli satış yönetmeliği, teslim aldığın günden başlayarak 14 gün içinde gerekçe göstermeden vazgeçmene izin veriyor.",
+      "visual": {
+        "type": "object",
+        "query": "parcel delivery box"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama kişiye özel, hijyen ürünleri ve açılmış iç giyim hariç; indirimli olması hakkı kaldırmaz.",
+      "visual": {
+        "type": "object",
+        "query": "receipt paper"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kutuyu atma, teslim gününden 14 gün sonrasına alarm kur; pişmansan o tarihe kadar iade et.",
+      "visual": {
+        "type": "object",
+        "query": "smartphone alarm clock"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Son aldığın şeyi gerçekten kullanıyor musun? Abone ol, her gün 60 saniyede tek net para analizi.",
+      "visual": {
+        "type": "object",
+        "query": "gift boxes shopping bags"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "14 gün",
+    "calc": "",
+    "source": "6502 sayılı Tüketicinin Korunması Hakkında Kanun m.48 ve Mesafeli Sözleşmeler Yönetmeliği (T.C. Ticaret Bakanlığı)"
+  }
+}

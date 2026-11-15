@@ -1,0 +1,107 @@
+{
+ "slug": "cayma-hakki-11-11-siparisinde-cebini-koruyan-sure",
+ "title": "Cayma hakkı: Kara Cuma siparişinde cebini koruyan süre",
+ "description": "Online alışverişte teslimden sonra 14 gün gerekçe göstermeden iade hakkı var; indirimli ürün de buna dahil. Hangi ürünlerin dışarıda kaldığını ve bu süreyi nasıl kullanacağını anlatıyor.\nKaynak/hesap: 6502 sayılı Tüketicinin Korunması Hakkında Kanun m.48 ve Mesafeli Sözleşmeler Yönetmeliği (T.C. Ticaret Bakanlığı)",
+ "tags": [
+  "kara cuma",
+  "cayma hakkı",
+  "online alışveriş",
+  "tüketici hakları",
+  "iade",
+  "ParaFOMO",
+  "parafomo"
+ ],
+ "format": "shock_number",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "TÜKETİCİ HAKKI",
+  "scenes": [
+   {
+    "type": "big_number",
+    "head": "Online alışverişte hakkın",
+    "data": {
+     "icon": "calendar",
+     "value": 14,
+     "unit": "",
+     "suffix": "",
+     "label": "GÜN CAYMA HAKKIN VAR"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "steps",
+    "head": "Nasıl işliyor?",
+    "data": {
+     "items": [
+      "TESLİM ALDIĞIN GÜN",
+      "14 GÜN SÜREN VAR",
+      "GEREKÇE GEREKMEZ"
+     ]
+    },
+    "line": "s1"
+   },
+   {
+    "type": "icon_text",
+    "head": "İstisnalara dikkat",
+    "data": {
+     "icon": "card",
+     "text": "*Kişiye özel* ve *hijyen* ürünlerinde cayma yok"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "steps",
+    "head": "Pişman olmadan önce",
+    "data": {
+     "items": [
+      "KUTUYU ATMA",
+      "14. GÜNE ALARM KUR",
+      "SÜRE BİTMEDEN İADE ET"
+     ]
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Abone ol",
+    "data": {
+     "l1": "HER GÜN 60 SANİYE",
+     "l2": "TEK NET ANALİZ",
+     "sub": "PARA ANALİZİ · ÜCRETSİZ"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Online alışverişte 14 gün cayma hakkın var.",
+   "cap": "Online alışverişte 14 gün cayma hakkın var."
+  },
+  {
+   "id": "s1",
+   "say": "Mesafeli satış yönetmeliği, teslim aldığın günden başlayarak 14 gün içinde gerekçe göstermeden vazgeçmene izin veriyor.",
+   "cap": "Mesafeli satış yönetmeliği, teslim aldığın günden başlayarak 14 gün içinde gerekçe göstermeden vazgeçmene izin veriyor."
+  },
+  {
+   "id": "s2",
+   "say": "Ama kişiye özel, hijyen ürünleri ve açılmış iç giyim hariç; indirimli olması hakkı kaldırmaz.",
+   "cap": "Ama kişiye özel, hijyen ürünleri ve açılmış iç giyim hariç; indirimli olması hakkı kaldırmaz."
+  },
+  {
+   "id": "s3",
+   "say": "Kutuyu atma, teslim gününden 14 gün sonrasına alarm kur; pişmansan o tarihe kadar iade et.",
+   "cap": "Kutuyu atma, teslim gününden 14 gün sonrasına alarm kur; pişmansan o tarihe kadar iade et."
+  },
+  {
+   "id": "s4",
+   "say": "Son aldığın şeyi gerçekten kullanıyor musun? Abone ol, her gün 60 saniyede tek net para analizi.",
+   "cap": "Son aldığın şeyi gerçekten kullanıyor musun? Abone ol, her gün 60 saniyede tek net para analizi."
+  }
+ ],
+ "skin": "iso",
+ "engine": "news"
+}

@@ -1,8 +1,8 @@
 ---
 title: "Eurobond Fonu mu Mevduat mı? Getiri, Risk ve Vergi Farkı"
-description: "Eurobond fonu mu mevduat mı sorusunun cevabı: getiri, risk, vergi ve likidite karşılaştırmasıyla hangi araç birikimini daha iyi değerlendirir?"
+description: "Bankalar dolar mevduatına ortalama yıllık %1,28 faiz veriyor (TCMB, Kasım 2026). Eurobond fonu mu mevduat mı: getiri, risk, stopaj ve likidite farkı."
 pubDate: 2026-07-22
-updatedDate: 2026-11-10
+updatedDate: 2026-11-15
 category: "Yatırım"
 tags: ["eurobond fonu", "mevduat", "döviz yatırımı", "yatırım fonu", "TEFAS", "sabit getiri"]
 readingTime: 7
@@ -19,9 +19,9 @@ faq:
   - q: "Eurobond fonu ile mevduatın vergisi aynı mı?"
     a: "Hayır, farklı. 9 Temmuz 2025 ve sonrasında alınan eurobond fonu paylarında, fonu sattığınızda oluşan kazançtan %17,5 stopaj kesilir; bu kesinti genellikle nihai vergidir, ayrıca beyan gerekmez. TL mevduat faizinde ise banka vadeye göre %17,5, %15 veya %10 stopaj keser. Döviz mevduatta kur farkı kazancı da ayrıca değerlendirilebilir. Güncel vergi detayı için mali müşavire danış."
 shorts:
-  - "Döviz mevduatın 'güvenli' — ama yılda 200 dolar yanıyor."
+  - "Dolar mevduatın 'güvenli' — ama Kasım 2026'da ortalama faizi yıllık sadece %1,28."
   - "Bankalar döviz mevduatına piyasadan düşük faiz verdiği için eurobond'a kıyasla her yıl ciddi para kaybediyorsun."
-  - "Türkiye'nin dolar eurobond'ları, döviz mevduatından tipik olarak yüzde 1 ila 3 daha yüksek getiri sunuyor."
+  - "Türkiye'nin dolar eurobond'ları, dolar mevduatından genellikle birkaç puan yüksek getiri hedefler; ama fiyatları dalgalanır."
   - "Eurobond fonuna TEFAS üzerinden 100 TL ile girebilir, istediğin iş günü sonunda nakde çevirebilirsin."
   - "Peki hangi profil eurobond fonunu seçmeli, hangisi mevduatta kalmalı? Tam karşılaştırma tablosu parafomo.com'da — kanala abone ol, paranı doğru değerlendiren analizler her hafta burada."
 shorts_broll:
@@ -69,7 +69,7 @@ Mevduatın en büyük avantajı: anapara koruması ve yüksek likidite. Vadeli h
 
 | Kriter | Eurobond Fonu | TL Mevduat | Döviz Mevduat |
 |--------|--------------|-----------|--------------|
-| **Getiri potansiyeli** | Yüksek (eurobond kuponuna bağlı) | Orta | Düşük–orta |
+| **Getiri potansiyeli** | Yüksek (eurobond kuponuna bağlı) | Orta | Düşük |
 | **Anapara güvencesi** | Yok | TMSF (2026: kişi başı 1,2 milyon TL'ye kadar) | TMSF (aynı limit, TL ile toplam) |
 | **Likidite** | Yüksek (TEFAS, iş günü sonu) | Orta (vadeli kırmak prim kaybı) | Orta |
 | **Minimum tutar** | 10–100 TL | 100–1.000 TL (bankaya göre) | 100 USD/EUR |
@@ -84,9 +84,9 @@ Mevduatın en büyük avantajı: anapara koruması ve yüksek likidite. Vadeli h
 Tarihsel ortalamalar kesin kural vermez ama genel eğilim şöyle:
 
 - **Türkiye Hazinesi eurobond'larının dolar kuponu** genellikle ABD Hazine faizine 200–500 baz puan üstünde seyreder.
-- **Döviz mevduat faizi** bankadan bankaya farklılaşır; genellikle ABD Hazine faizine 50–200 baz puan üstünde kalır.
+- **Dolar mevduat faizi** ise çok daha düşük: TCMB verisine göre bankaların dolar tasarruf mevduatına ödediği ağırlıklı ortalama faiz 6 Kasım 2026 itibarıyla yıllık **%1,28** (1 yıla kadar vadede %1,85). Aynı dönemde Fed'in politika faizi %3,75–4,00 bandında; yani dolar mevduatı ABD'deki temel faizin de belirgin biçimde altında kalıyor.
 
-Yani eurobond fonu (döviz bazlı), döviz mevduatından tipik olarak 1–3 puan fazla getiri sunabilir. 10.000 dolarlık bir birikim için yüzde 5 mevduat yerine yüzde 7 eurobond fonu demek yılda 200 dolar ek gelir anlamına gelir.
+Yani eurobond fonu (döviz bazlı), dolar mevduatından genellikle birkaç puan fazla getiri hedefler. **Örnek:** 10.000 dolar, yıllık %1,3 faizli dolar mevduatında yılda yaklaşık 130 dolar getirir; yıllık %6 getiri sağlayan bir eurobond fonunda bu yaklaşık 600 dolar olur. Buradaki %6 bir varsayımdır: fon getirisi garanti değildir, yıldan yıla değişir.
 
 Ancak bu farkın bir maliyeti var: fiyat oynaklığı. Faizler yükseldiğinde eurobond fonu değeri düşer; düştüğünde yükselir. Uzun vadede tutunca bu dalgalanma dengelenir, ama kısa vadede satmak zorunda kalırsan zarara uğrayabilirsin.
 

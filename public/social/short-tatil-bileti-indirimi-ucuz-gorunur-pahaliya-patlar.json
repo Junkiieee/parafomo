@@ -1,0 +1,124 @@
+{
+  "title": "Tatil bileti indirimi: ucuz görünür, pahalıya patlar #Shorts",
+  "description": "Kara Cuma'da kampanyalı tatil bileti almadan önce iade şartı ve tarih esnekliği neden önemli, sade bir dille anlatılıyor.",
+  "tags": [
+    "kara cuma",
+    "tatil bileti",
+    "indirim",
+    "iade şartı",
+    "kişisel finans",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-tatil-bileti-indirimi-ucuz-gorunur-pahaliya-patlar.mp4",
+  "slug": "tatil-bileti-indirimi-ucuz-gorunur-pahaliya-patlar",
+  "format": "myth",
+  "engine": "anim",
+  "teknik": "iso",
+  "timeline": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 3.302,
+      "cap": "İndirimli tatil bileti, cebinde kilitli kalır.",
+      "words": [
+        0.35,
+        1.03,
+        1.45,
+        2.01,
+        2.35,
+        2.77
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 3.582,
+      "t1": 9.534,
+      "cap": "Kampanyalı biletlerin çoğunda iade yok ya da kesinti var; planın bozulursa indirim değil, paran gider.",
+      "words": [
+        3.582,
+        4.302,
+        4.742,
+        5.162,
+        5.522,
+        5.722,
+        5.882,
+        5.982,
+        6.482,
+        7.022,
+        7.362,
+        7.902,
+        8.222,
+        8.762,
+        8.942
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 9.814,
+      "t1": 14.902,
+      "cap": "Ama asıl tuzak: tarihin kesin değilken aldığın bilet, seni o güne mecbur bırakır.",
+      "words": [
+        9.814,
+        10.214,
+        10.594,
+        11.074,
+        11.514,
+        11.894,
+        12.314,
+        12.774,
+        13.274,
+        13.534,
+        13.694,
+        13.914,
+        14.274
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 15.182,
+      "t1": 21.734,
+      "cap": "Önce izin tarihini netleştir, iade şartını oku. Esnek bilet biraz pahalıysa çoğu zaman daha güvenli.",
+      "words": [
+        15.182,
+        16.082,
+        16.382,
+        16.852,
+        17.542,
+        17.822,
+        18.282,
+        18.982,
+        19.262,
+        19.542,
+        19.762,
+        20.402,
+        20.702,
+        20.842,
+        21.142
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 22.014,
+      "t1": 27.774,
+      "cap": "Son tatilini indirim görünce mi planladın? Abone ol; her gün 60 saniyede tek net analiz.",
+      "words": [
+        22.014,
+        22.454,
+        22.994,
+        23.314,
+        23.714,
+        23.814,
+        24.794,
+        25.054,
+        25.614,
+        25.734,
+        25.894,
+        26.114,
+        26.714,
+        26.954,
+        27.134
+      ]
+    }
+  ]
+}

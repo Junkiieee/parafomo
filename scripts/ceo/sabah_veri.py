@@ -90,7 +90,9 @@ def linkler():
     ozet = [l for l in out.splitlines() if any(k in l for k in ("Total", "Errors", "Successful", "✗", "[ERR]", "ERROR"))][:25]
     res = "İç linkler (dist/, çevrimdışı):\n```\n" + "\n".join(ozet) + "\n```"
     if HAFTA_GUNU == 6:   # Pazar: dış linkler (ağ, yavaş)
+        # --root-dir + yalnız http(s): yoksa kök-göreli iç linkler ("/fonts/…") "root dir" hatası verip dış taramayı boğuyordu (2026-11-15)
         code, out = sh([f"{TOOLS}/bin/lychee", "--no-progress", "--cache", "--max-concurrency", "8", "--timeout", "20",
+                        "--root-dir", f"{ROOT}/dist", "--scheme", "https", "--scheme", "http",
                         "--exclude", "parafomo\\.com", "--accept", "200..=299,403,429", "dist/**/*.html"], timeout=2400)
         hata = [l for l in out.splitlines() if l.startswith("[") and ("ERR" in l or "4" in l[:6] or "5" in l[:6])][:30]
         res += "\nDış linkler (haftalık):\n```\n" + "\n".join(hata or ["kırık dış link yok"]) + "\n```"
