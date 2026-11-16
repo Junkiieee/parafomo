@@ -174,6 +174,7 @@ const updatedLabel = new Date(tufe.updated + 'T12:00:00').toLocaleDateString('tr
           </div>
         </div>
         <p class="result-note" id="out-note">Kesinleşen kısım %{nf(cumKnown * 100)}; gerisi varsayımdır.</p>
+        <a class="btn-share" id="out-share" href="#" rel="noopener" target="_blank">Sonucu WhatsApp'ta paylaş</a>
       </div>
     </div>
 
@@ -311,7 +312,18 @@ const updatedLabel = new Date(tufe.updated + 'T12:00:00').toLocaleDateString('tr
         $('out-rate').textContent = '%' + nf2.format(rate * 100);
         $('out-diff').textContent = '₺' + nf0.format(Math.round(pension * rate));
         $('out-note').textContent = note;
+        // 2026-11-17 (deneme F6): paylaşım mesajı kişinin kendi rakamıyla başlar; link aynı hesabı açar
+        const tur = $('in-type').value === 'memur' ? 'Memur/memur emeklisi' : 'SSK/Bağ-Kur emeklisi';
+        const metin = tur + ' olarak Ocak 2027\'de aylığım ' + nf0.format(Math.round(pension)) + ' TL\'den yaklaşık ' +
+          nf0.format(Math.round(pension * (1 + rate))) + ' TL\'ye çıkıyor (%' + nf2.format(rate * 100) + ', tahmini). Kendi zammını hesapla: ' +
+          'https://parafomo.com/emekli-zammi-hesaplama/?maas=' + Math.round(pension) + '&tur=' + $('in-type').value +
+          '&utm_source=whatsapp&utm_medium=share&utm_campaign=sonuc';
+        $('out-share').href = 'https://wa.me/?text=' + encodeURIComponent(metin);
       }
+      const q = new URLSearchParams(location.search);
+      const qm = parseFloat(q.get('maas'));
+      if (Number.isFinite(qm) && qm > 0) $('in-pension').value = qm;
+      if (q.get('tur') === 'memur' || q.get('tur') === 'ssk') $('in-type').value = q.get('tur');
       ['in-type', 'in-pension', 'in-assume'].forEach((id) => { const el = $(id); if (el) el.addEventListener('input', update); });
       update();
     })();
@@ -376,5 +388,8 @@ const updatedLabel = new Date(tufe.updated + 'T12:00:00').toLocaleDateString('tr
       .calc-grid { grid-template-columns: 1fr; }
       .rate-table { font-size: 0.85rem; }
     }
+      .btn-share { display: inline-block; margin-top: 0.9rem; padding: 0.7rem 1.1rem; border-radius: 10px; background: #25d366;
+      color: #073b20; font-weight: 700; text-decoration: none; }
+    .btn-share:hover { filter: brightness(0.95); }
   </style>
 </BaseLayout>
