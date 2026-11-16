@@ -76,7 +76,7 @@ def main():
         pass
     for u in urls:
         try:
-            with urllib.request.urlopen(urllib.request.Request(u, method="HEAD"), timeout=20) as r:
+            with urllib.request.urlopen(urllib.request.Request(u, method="HEAD", headers={"User-Agent": "parafomo-ig/1.0"}), timeout=20) as r:
                 assert r.status == 200
         except Exception:
             sys.exit(f"[carousel] HATA: görsel canlı değil: {u} (önce deploy)")
