@@ -143,8 +143,17 @@ async function yukle(sessiz = false) {
   }
 }
 
+let hizliZamanlayici = null;
+function cevapBekleniyor() {   // cevap beklenirken 20 sn'de bir yenile (normalde 5 dk)
+  if (!S) return false;
+  return (S.istekler || []).some((i) => i.durum === 'yeni' || i.durum === 'okundu')
+    || Object.values(S.kanallar || {}).some((k) => k.onay && !k.onay.not);
+}
+
 function ciz() {
   if (!S) return;
+  clearTimeout(hizliZamanlayici);
+  if (cevapBekleniyor()) hizliZamanlayici = setTimeout(() => { if (document.visibilityState === 'visible') yukle(true); }, 20000);
   $('#baslik').textContent = BASLIK[sekme];
   $$('#sekmeler button').forEach((b) => b.classList.toggle('acik', b.dataset.sekme === sekme));
   $('#kontrolNokta').hidden = !(S.gorevler || []).some((g) => !g.yaptim);
@@ -181,7 +190,8 @@ function planHtml(ad) {
   if (!k) return '';
   const cip = k.onay ? '<span class="cip iyi">Onaylandı</span>' : '<span class="cip uyari">Onayını bekliyor</span>';
   const alt = k.onay
-    ? `<p class="soluk kucuk">${esc(zamanMetni(k.onay.zaman))} onayladın. Değişiklik istersen Kontrol → Bana yaz.</p>`
+    ? `<p class="soluk kucuk">${esc(zamanMetni(k.onay.zaman))} onayladın. Değişiklik istersen Kontrol → Bana yaz.</p>
+       ${k.onay.not ? `<div class="cevap-kutu"><b>Claude:</b> ${esc(k.onay.not)}</div>` : '<div class="cevap-kutu soluk">Onayın iletildi, en geç 10 dakikada buraya yazarım.</div>'}`
     : `<div class="butonlar"><button type="button" class="btn ana" data-plan-onay="${esc(ad)}">Planı onayla</button>
        <button type="button" class="btn" data-plan-degis="${esc(ad)}">Değişiklik iste</button></div>`;
   return `<details class="kart plan">
@@ -375,6 +385,9 @@ function kontrolHtml() {
   <h2>Otomatik sistem</h2>
   <div class="kart liste">${(S.kontrol || []).map(anahtarHtml).join('')}</div>
   <h2>Bana yaz</h2>
+  <p class="dinleme${S.claude?.cevrimici ? ' acik' : ''}">${S.claude?.cevrimici
+    ? '● Claude çevrimiçi: panelde yazdığın ve yaptığın her şey en geç 10 dakikada bana ulaşır.'
+    : '○ Claude şu an çevrimdışı: yazdıklarını ilk fırsatta, en geç sabah işlerim.'}</p>
   <div class="kart yaz">
     <textarea id="istekMetin" maxlength="4000" placeholder="İstek, fikir ya da düzeltme yaz. Okuyup cevabını buraya yazarım."></textarea>
     <div class="ek" id="ekAlan" hidden><img id="ekOnizleme" alt=""><span>Görsel eklendi</span>
@@ -411,7 +424,7 @@ function istekHtml(i) {
   return `<div class="istek"><div class="ib"><span>${esc(zamanMetni(i.zaman))}</span>${cip}</div>
     ${i.metin ? `<div class="im">${esc(i.metin)}</div>` : ''}
     ${i.gorsel ? `<a href="/api/istek/${id}/gorsel" target="_blank"><img class="ig" src="/api/istek/${id}/gorsel" alt="Eklediğin görsel" loading="lazy"></a>` : ''}
-    ${i.cevap ? `<div class="cevap"><b>Claude:</b> ${esc(i.cevap)}</div>` : ''}</div>`;
+    ${i.cevap ? `<div class="cevap-kutu"><b>Claude:</b> ${esc(i.cevap)}</div>` : ''}</div>`;
 }
 
 // ---------------------------------------------------------------- perde

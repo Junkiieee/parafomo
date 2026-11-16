@@ -248,8 +248,11 @@ button.satir:active { background: var(--bg); }
 .istek .ib { display: flex; justify-content: space-between; align-items: center; gap: 6px; font-size: 9px; color: var(--soluk); }
 .istek .im { margin-top: 4.5px; white-space: pre-wrap; overflow-wrap: anywhere; }
 .istek .ig { margin-top: 6px; max-width: 90px; border-radius: 6px; display: block; }
-.istek .cevap { margin-top: 6px; padding: 6px 7.5px; border-radius: 7.5px; background: var(--marka-acik); font-size: 10.5px; }
-.istek .cevap b { color: var(--marka-yazi); }
+.cevap-kutu { margin-top: 6px; padding: 6px 7.5px; border-radius: 7.5px; background: var(--marka-acik); font-size: 11px; }
+.cevap-kutu b { color: var(--marka-yazi); }
+.cevap-kutu.soluk { background: var(--bg); color: var(--soluk); }
+.dinleme { font-size: 11px; color: var(--soluk); margin: -3px 2px 7.5px; }
+.dinleme.acik { color: var(--iyi); }
 .alt-bilgi { text-align: center; font-size: 10px; color: var(--soluk); margin-top: 21px; }
 .link-btn { border: 0; background: none; color: var(--kotu); font-weight: 600; cursor: pointer; padding: 6px; }
 

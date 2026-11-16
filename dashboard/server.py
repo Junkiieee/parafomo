@@ -97,6 +97,20 @@ def dash(ad):
     return os.path.join(DASH, ad)
 
 
+def olay(eylem, **veri):
+    """Her panel eylemi eylemler.jsonl'a: Claude'un bekçisi (dashboard/panel.py bekle) bunu dinler → anında tepki."""
+    satir = json.dumps({"zaman": simdi().isoformat(timespec="seconds"), "eylem": eylem, **veri}, ensure_ascii=False)
+    with _lock:
+        with open(dash("eylemler.jsonl"), "a", encoding="utf-8") as f:
+            f.write(satir + "\n")
+
+
+def claude_durumu():
+    b = oku(dash("bekci.json"), {})
+    yas = time.time() - b.get("zaman", 0)
+    return {"cevrimici": yas < 900, "son": dt.datetime.fromtimestamp(b["zaman"], TR).isoformat(timespec="seconds") if b.get("zaman") else None}
+
+
 # ---------------------------------------------------------------- giriş / oturum
 _hatalar = {}
 
@@ -404,6 +418,7 @@ def durum(req: Request):
         "kontrol": kontrol_durum(),
         "gorevler": [{**g, "yaptim": gorev_d.get(g.get("id"), {}).get("zaman")} for g in plan.get("kaan", [])],
         "istekler": list(reversed(oku(dash("istekler.json"), [])))[:30],
+        "claude": claude_durumu(),
     }
 
 
@@ -433,9 +448,7 @@ def video_eylem(no: int, eylem: str, req: Request):
                        cwd=ROOT, capture_output=True, text=True, timeout=60)
     if r.returncode != 0:
         raise HTTPException(500, "kuyruk güncellenemedi")
-    with open(dash("eylemler.jsonl"), "a", encoding="utf-8") as f:
-        f.write(json.dumps({"zaman": simdi().isoformat(timespec="seconds"), "eylem": eylem, "no": no,
-                            "slug": it.get("slug")}, ensure_ascii=False) + "\n")
+    olay(eylem, no=no, slug=it.get("slug"), baslik=temiz_baslik(it.get("title")))
     yeni = next((x for x in oku(KUYRUK, {"items": []}).get("items", []) if x.get("no") == no), it)
     return {"ok": True, "durum": yeni.get("status"), "oy": yeni.get("kaan")}
 
@@ -504,9 +517,7 @@ def kontrol_yaz(body: KontrolIn, req: Request):
             k[body.anahtar] = body.acik
             k["_degisti"] = simdi().isoformat(timespec="seconds")
             yaz(dash("kontrol.json"), k)
-    with open(dash("eylemler.jsonl"), "a", encoding="utf-8") as f:
-        f.write(json.dumps({"zaman": simdi().isoformat(timespec="seconds"), "eylem": "kontrol",
-                            "anahtar": body.anahtar, "acik": body.acik}, ensure_ascii=False) + "\n")
+    olay("kontrol", anahtar=body.anahtar, acik=body.acik)
     return {"ok": True, "kontrol": kontrol_durum()}
 
 
@@ -520,6 +531,7 @@ def plan_onayla(kanal: str, req: Request):
         kr = oku(dash("kararlar.json"), {})
         kr[kanal] = {"surum": k.get("surum"), "durum": "onaylandi", "zaman": simdi().isoformat(timespec="seconds")}
         yaz(dash("kararlar.json"), kr)
+    olay("plan_onay", kanal=kanal, surum=k.get("surum"))
     return {"ok": True}
 
 
@@ -532,6 +544,7 @@ def gorev_yaptim(gid: str, req: Request):
         g = oku(dash("gorevler.json"), {})
         g[gid] = {"zaman": simdi().isoformat(timespec="seconds")}
         yaz(dash("gorevler.json"), g)
+    olay("gorev_yaptim", gorev=gid)
     return {"ok": True}
 
 
@@ -567,6 +580,7 @@ def istek(body: IstekIn, req: Request):
         lst.append({"id": iid, "zaman": simdi().isoformat(timespec="seconds"), "metin": metin, "gorsel": dosya,
                     "durum": "yeni", "cevap": ""})
         yaz(dash("istekler.json"), lst)
+    olay("istek", id=iid, metin=metin[:300], gorsel=bool(dosya))
     return {"ok": True, "id": iid}
 
 
