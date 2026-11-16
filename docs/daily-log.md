@@ -1,5 +1,9 @@
 # Günlük Operasyon Günlüğü
 
+## 2026-11-16
+**Yayınlanan yazı:** [ABD Perakende Satışları 17 Kasım: Ekim Verisi, Fed, Altın](/blog/abd-ekim-2026-perakende-satislar-fed-dolar-altin)
+Seçim kaynağı: takvim (🔴 ABD Retail Sales 17 Kasım 16:30 TSİ; kuyruk boş, GSC fırsatları mevcut sayfalarca karşılanıyor; öğrenme raporunda ABD veri günü yazıları en iyi; Eylül rakamları Census resmî PDF'inden, konsensüs bulunamadı → uydurulmadı)
+
 ## 2026-11-13
 **Yayınlanan yazı:** [Kira Gelir Vergisi 2026: İstisna, Hesaplama ve Beyan](/blog/kira-gelir-vergisi-2026-istisna-hesaplama-beyan)
 Seçim kaynağı: fırsat motoru ("kira gelir vergisi" hacim 35,6, YENI_YAZI; kuyruk+backlog boş, takvimde yeni 🔴 yok (PPI yazılı), GSC fırsatları mevcut sayfalarca karşılanıyor; kıdem tavanı/brüt asgari/mevduat oranları araç sayfalarıyla yamyam → atlandı)
