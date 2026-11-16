@@ -111,7 +111,7 @@ Türkiye'den erişilen en yaygın seçenekler şunlardır:
 - **Ledger Nano S Plus / X:** Donanım cüzdanı arayanların ilk durağı. Türkiye'ye uluslararası kargo ile gönderim yapılabiliyor.
 - **Trezor Model One / T:** Açık kaynak kodlu donanım cüzdanı alternatifi. Güvenlik araştırmacıları arasında saygın bir konumu var.
 
-[Bitcoin nedir, nasıl alınır](/blog/bitcoin-nedir-nasil-alinir/) rehberinde Bitcoin satın alma adımlarını, [Ethereum nedir](/blog/ethereum-nedir/) yazımızda ise ETH'nin farklı blokzincir ağlarında nasıl çalıştığını bulabilirsiniz. Ayrıca dolar sabitli kripto paraları anlamak isteyenler için [Stablecoin nedir](/blog/stablecoin-nedir/) yazımıza göz atabilirsiniz.
+[Bitcoin nedir, nasıl alınır](/bitcoin-getiri/) rehberinde Bitcoin satın alma adımlarını, [Ethereum nedir](/bitcoin-getiri/) yazımızda ise ETH'nin farklı blokzincir ağlarında nasıl çalıştığını bulabilirsiniz. Ayrıca dolar sabitli kripto paraları anlamak isteyenler için [Stablecoin nedir](/blog/stablecoin-nedir/) yazımıza göz atabilirsiniz.
 
 ## Özet
 

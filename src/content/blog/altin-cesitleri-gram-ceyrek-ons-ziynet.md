@@ -149,7 +149,7 @@ Yanlış kanal ve forma para yatırmak başlangıçta ciddi kayba yol açabilir.
 
 ## İç Bağlantılar: Altın Yatırımını Genişletin
 
-Altın, portföyünüzün yalnızca bir parçası olmalıdır. Altın ile birlikte dolar arasında nasıl denge kuracağınızı öğrenmek için [Altın mı Dolar mı? Türkiye'de Hangisi Daha Mantıklı?](/blog/altin-mi-dolar-mi/) yazımıza bakabilirsiniz. Enflasyona karşı altının yanı sıra başka koruma yöntemlerini keşfetmek için [Enflasyondan Nasıl Korunulur?](/blog/enflasyondan-nasil-korunur/) rehberimizi inceleyin. Birikimlerinizi düzenli aralıklarla yatırıma yönlendirmenin uzun vadede ne fark yarattığını görmek içinse [bileşik faiz hesaplama](/bilesik-faiz-hesaplama/) aracını kullanabilirsiniz. Farklı yatırım araçlarının risk-getiri dengesini değerlendirmek için [risk ve getiri ilişkisi](/blog/risk-getiri-iliskisi/) rehberimize göz atın.
+Altın, portföyünüzün yalnızca bir parçası olmalıdır. Altın ile birlikte dolar arasında nasıl denge kuracağınızı öğrenmek için [Altın mı Dolar mı? Türkiye'de Hangisi Daha Mantıklı?](/blog/altin-mi-dolar-mi/) yazımıza bakabilirsiniz. Enflasyona karşı altının yanı sıra başka koruma yöntemlerini keşfetmek için [Enflasyondan Nasıl Korunulur?](/blog/enflasyondan-nasil-korunur/) rehberimizi inceleyin. Birikimlerinizi düzenli aralıklarla yatırıma yönlendirmenin uzun vadede ne fark yarattığını görmek içinse [bileşik faiz hesaplama](/bilesik-faiz-hesaplama/) aracını kullanabilirsiniz. Farklı yatırım araçlarının risk-getiri dengesini değerlendirmek için [risk ve getiri ilişkisi](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) rehberimize göz atın.
 
 ## Özet
 

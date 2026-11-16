@@ -122,7 +122,7 @@ Genel kurulda alınan karar, temettünün mutlaka ödeneceği anlamına gelmez. 
 
 ### 5. Sadece yüksek verimi kovalamak
 
-%25 verim cazip görünür; ancak bu bazen hisse fiyatının dramatik düşüşünden veya şirketin sürdüremeyeceği bir tek seferlik ödeme kararından kaynaklanabilir. Şirketi hisse seçim kriterleri açısından değerlendirmek için [Hisse Senedi Nasıl Seçilir?](/blog/hisse-senedi-nasil-secilir/) rehberimize bakabilirsiniz. Değerleme oranlarını da göz önünde bulundurmak isteyenler için [F/K Oranı Nedir?](/blog/fk-orani-nedir/) yazısı tamamlayıcı bir kaynak olacaktır.
+%25 verim cazip görünür; ancak bu bazen hisse fiyatının dramatik düşüşünden veya şirketin sürdüremeyeceği bir tek seferlik ödeme kararından kaynaklanabilir. Şirketi hisse seçim kriterleri açısından değerlendirmek için [Hisse Senedi Nasıl Seçilir?](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) rehberimize bakabilirsiniz. Değerleme oranlarını da göz önünde bulundurmak isteyenler için [F/K Oranı Nedir?](/blog/fk-orani-nedir/) yazısı tamamlayıcı bir kaynak olacaktır.
 
 ## Ne zaman, ne kadar temettü beklenir?
 

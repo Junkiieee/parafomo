@@ -119,7 +119,7 @@ Bu kural sayesinde arka arkaya 10 kaybetsen bile hesabın %20 erir, biter gitmez
 5. **Teminat takibi yap:** Pozisyon açıkken hesabı düzenli izle; marjin seviyesi kritik eşiğe yaklaşırsa pozisyonu küçült.
 6. **Çıkış planını önceden belirle:** Hem kâr hedefini (take profit) hem de zararı durdur (stop-loss) önceden tanımla; duygusal kararlardan kaçın.
 
-> Kaldıraçlı pozisyonlarda risk sınırlamanın en pratik aracı stop-loss emirleridir. [Stop-loss nedir ve nasıl kullanılır](/blog/stop-loss-nedir-zarar-kesme/) yazısında bu konuyu ayrıntılı bulabilirsin.
+> Kaldıraçlı pozisyonlarda risk sınırlamanın en pratik aracı stop-loss emirleridir. [Stop-loss nedir ve nasıl kullanılır](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) yazısında bu konuyu ayrıntılı bulabilirsin.
 
 ## Kaldıracın Avantajları ve Riskleri
 
@@ -159,7 +159,7 @@ Kaldıraçlı işlemler aşağıdaki profiller için yüksek tehlike taşır:
 - **Margin call**, teminat belirli eşiğin altına düştüğünde gelen zorunlu ek teminat uyarısıdır; karşılanamazsa pozisyon zorla kapatılır.
 - Türkiye'de bireysel yatırımcılar için en güvenli kaldıraçlı piyasa **VİOP**'tur; Takasbank güvencesiyle çalışır.
 - Her işlemde hesabın en fazla **%1–2'sini** riske atmak uzun vadeli hayatta kalma şansını artırır.
-- Kaldıraçlı işlem, [risk ve getiri dengesini](/blog/risk-getiri-iliskisi/) çok iyi anlayan, deneyimli yatırımcılar için anlamlıdır; yeni başlayanlar için önerilmez.
+- Kaldıraçlı işlem, [risk ve getiri dengesini](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) çok iyi anlayan, deneyimli yatırımcılar için anlamlıdır; yeni başlayanlar için önerilmez.
 
 ---
 

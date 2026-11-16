@@ -132,7 +132,7 @@ Minimum ödemeleri yaptıktan sonra geri kalan her kuruş, sıranın başındaki
 
 ### 6. Küçük bir tampon koru
 
-Borç öderken [acil durum fonunu](/blog/acil-durum-fonu-nedir/) sıfırlamak cazip gelir. Ancak en az 1-2 aylık temel gider kadar nakit ayır; beklenmedik harcama seni tekrar borçlanmaya itmez.
+Borç öderken [acil durum fonunu](/blog/enflasyondan-nasil-korunur/) sıfırlamak cazip gelir. Ancak en az 1-2 aylık temel gider kadar nakit ayır; beklenmedik harcama seni tekrar borçlanmaya itmez.
 
 ## Süreci Hızlandıran 4 Strateji
 

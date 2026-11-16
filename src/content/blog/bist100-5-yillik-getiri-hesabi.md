@@ -103,7 +103,7 @@ Türkiye'de BIST 100 endeksine pasif yatırımın iki ana yolu:
 - **Pasif yatırım işe yarıyor** — düzenli katkıyla ve uzun vadeyle.
 - **Nominal getiri aldatıcı olabilir** — her zaman enflasyona göre düzeltilmiş reel getiriyi hesapla.
 - **Çeşitlendirme şart:** Tek bir varlığa tüm birikimi koymak (sadece BIST 100, sadece altın, sadece dolar) değer kazandıran olmayabilir. [Portföy çeşitlendirmesi](/blog/portfoy-cesitlendirmesi-nasil-yapilir) yazımıza göz atın.
-- **Kademeli alım daha az risk:** Toplu yatırım yerine [DCA (düzenli alım)](/blog/dca-nedir-maliyet-ortalamasi) ile başlamak oynaklığı azaltır.
+- **Kademeli alım daha az risk:** Toplu yatırım yerine [DCA (düzenli alım)](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) ile başlamak oynaklığı azaltır.
 
 ---
 

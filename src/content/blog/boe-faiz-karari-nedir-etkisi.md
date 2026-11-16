@@ -47,7 +47,7 @@ BOE'nin birincil görevi enflasyonu yüzde 2 hedefi etrafında tutmaktır. Bunu 
 
 İngiltere, Türkiye'nin önemli ticaret ortaklarından biri olmaya devam ediyor. Türkiye'nin tekstil, turizm ve tarım ürünlerinde İngiltere pazarına ciddi ihracatı var. Dolayısıyla sterlinin yönü, Türk ihracatçıların döviz gelirleri ve Birleşik Krallık'a olan turizm beklentileri üzerinde somut etkiler yaratıyor.
 
-Faizin ekonomi genelinde nasıl çalıştığını anlamak istiyorsan [Faiz Nedir? Ekonomiyi, Borsayı ve Dolar'ı Nasıl Etkiler?](/blog/faiz-nedir-ekonomiyi-nasil-etkiler) rehberine göz atabilirsin.
+Faizin ekonomi genelinde nasıl çalıştığını anlamak istiyorsan [Faiz Nedir? Ekonomiyi, Borsayı ve Dolar'ı Nasıl Etkiler?](/tcmb-faiz-takvimi/) rehberine göz atabilirsin.
 
 ## MPC Nedir, Nasıl Karar Alır?
 

@@ -99,7 +99,7 @@ Her iki veri de aynı BLS raporunda, aynı anda açıklanır. Ancak analistler v
 | **Fed'in resmi hedefi** | Değil | Yüzde 2 PCE |
 | **Piyasa etkisi** | Açıklandığında çok sert reaksiyon | Daha yumuşak, CPI'dan sonra geldiği için büyük ölçüde fiyatlanmış |
 
-Sonuç: **Fed resmi olarak [PCE'yi](/blog/pce-nedir-fed-enflasyon-gostergesi) hedefler, ama CPI piyasaları çok daha sert hareket ettirir.** CPI ayın daha erken döneminde açıklanır ve PCE'nin önemli bir kısmını önceden haber verir; bu yüzden yatırımcılar için kritik olmaya devam eder.
+Sonuç: **Fed resmi olarak [PCE'yi](/fed-faiz-takvimi/) hedefler, ama CPI piyasaları çok daha sert hareket ettirir.** CPI ayın daha erken döneminde açıklanır ve PCE'nin önemli bir kısmını önceden haber verir; bu yüzden yatırımcılar için kritik olmaya devam eder.
 
 ## Fed Neden Core CPI'ı Önemsiyor?
 
@@ -142,7 +142,7 @@ ABD enflasyonu yüksek gelince Fed faiz indiremez; yüksek faiz dolara olan tale
 
 ### 2. TCMB'nin Hareket Alanı
 
-TCMB faiz kararı alırken küresel faiz ortamını yakından izler. Fed'in faiz indirimi gecikiyor ve dolar güçlü seyrediyorsa, TCMB TL üzerindeki baskıyı hafifletmek için kendi indirim hızını ayarlamak zorunda kalabilir. [Faiz-ekonomi ilişkisi rehberimiz](/blog/faiz-nedir-ekonomiyi-nasil-etkiler) bu mekanizmayı ayrıntılı anlatıyor.
+TCMB faiz kararı alırken küresel faiz ortamını yakından izler. Fed'in faiz indirimi gecikiyor ve dolar güçlü seyrediyorsa, TCMB TL üzerindeki baskıyı hafifletmek için kendi indirim hızını ayarlamak zorunda kalabilir. [Faiz-ekonomi ilişkisi rehberimiz](/tcmb-faiz-takvimi/) bu mekanizmayı ayrıntılı anlatıyor.
 
 ### 3. Küresel Risk İştahı ve Gelişen Piyasalar
 
@@ -175,7 +175,7 @@ Core CPI sapması daha kalıcıdır; yalnızca genel CPI'daki sapma ise tek sefe
 
 ### Adım 5: Birkaç Aylık Ortalamaya ve Fed'in Tonuna Bak
 
-Tek aylık veri yanıltıcı olabilir. Core CPI üst üste birkaç ay hedefe yakın mı seyrediyor? Bu çok daha güçlü bir sinyaldir. Veriyle eş zamanlı gelen Fed üyesi yorumları ve sonraki [FOMC toplantısının](/blog/fomc-toplanti-tutanaklari-nedir) tonu da yönü belirler.
+Tek aylık veri yanıltıcı olabilir. Core CPI üst üste birkaç ay hedefe yakın mı seyrediyor? Bu çok daha güçlü bir sinyaldir. Veriyle eş zamanlı gelen Fed üyesi yorumları ve sonraki [FOMC toplantısının](/fed-faiz-takvimi/) tonu da yönü belirler.
 
 ## ABD CPI Verisi Ne Zaman Açıklanır?
 

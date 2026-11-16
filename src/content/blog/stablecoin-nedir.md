@@ -145,7 +145,7 @@ TL/USDT veya TL/USDC çifti arama çubuğunda bulun, almak istediğiniz tutarı 
 - **Yazılım cüzdanı (MetaMask, Trust Wallet):** Kendi anahtarınızda; daha fazla kontrol ama sorumluluk da size ait.
 - **Donanım cüzdanı (Ledger):** Büyük tutarlar için en güvenli seçenek.
 
-Cüzdan güvenliği hakkında detaylı bilgi için [Bitcoin başlangıç rehberimize](/blog/bitcoin-nedir-nasil-alinir) bakabilirsiniz — orada anlatılan seed phrase kuralları tüm kripto varlıklar için geçerlidir.
+Cüzdan güvenliği hakkında detaylı bilgi için [Bitcoin başlangıç rehberimize](/bitcoin-getiri/) bakabilirsiniz — orada anlatılan seed phrase kuralları tüm kripto varlıklar için geçerlidir.
 
 ### Adım 4: Kullanım amacınızı netleştirin
 Stablecoin'i ne için kullanacağınızı baştan belirlemek, gereksiz risk almaktan korur:
@@ -165,7 +165,7 @@ Dikkat: Stablecoin'i "dolar hesabı" gibi düşünmek büyük yanılgıya yol a�
 
 [Enflasyona karşı korunma yöntemlerini](/blog/enflasyondan-nasil-korunur) araştırıyorsanız: stablecoin gerçek bir araç olmakla birlikte TL enflasyonuna karşı tek savunma hattı yapılmamalıdır; altın, döviz mevduatı ve [endeks fonları](/blog/etf-nedir-borsa-yatirim-fonu/) ile çeşitlendirme daha sağlam bir strateji sunar.
 
-Kripto yatırımına ilk kez adım atıyorsanız [Ethereum nedir rehberimiz](/blog/ethereum-nedir) size blokzincir ekosistemini daha geniş bir perspektiften anlatacaktır.
+Kripto yatırımına ilk kez adım atıyorsanız [Ethereum nedir rehberimiz](/bitcoin-getiri/) size blokzincir ekosistemini daha geniş bir perspektiften anlatacaktır.
 
 ## Özet
 

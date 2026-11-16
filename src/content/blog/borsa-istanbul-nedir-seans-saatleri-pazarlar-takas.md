@@ -123,7 +123,7 @@ Oranların kaynaklarını ve diğer araçlarla karşılaştırmasını [stopaj n
 4. **Pazar ve likiditeye bak:** İlk alımlarında Yıldız Pazar'daki likit hisseler ya da endeks fonları hata payını azaltır.
 5. **Limit emirle, küçük tutarla başla:** Seans saatlerini ve T+2'yi bir kez yaşayarak öğren.
 
-Sıfırdan başlıyorsan [borsaya nasıl başlanır](/blog/borsaya-nasil-baslanir) ve [hisse senedi nasıl seçilir](/blog/hisse-senedi-nasil-secilir) rehberleri bu adımları ayrıntılandırıyor. Yeni şirketlerin borsaya nasıl girdiğini ise [halka arz takvimi](/halka-arz) sayfasından izleyebilirsin.
+Sıfırdan başlıyorsan [borsaya nasıl başlanır](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) ve [hisse senedi nasıl seçilir](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) rehberleri bu adımları ayrıntılandırıyor. Yeni şirketlerin borsaya nasıl girdiğini ise [halka arz takvimi](/halka-arz) sayfasından izleyebilirsin.
 
 ## Özet
 

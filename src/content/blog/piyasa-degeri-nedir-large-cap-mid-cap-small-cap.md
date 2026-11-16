@@ -117,7 +117,7 @@ Doğru kategoriyi seçmek, kişisel koşullarınıza göre değişir. Şu adıml
 4. **Likiditeyi göz önünde bulundurun.** Small cap hisselerde düşük işlem hacmi, acil çıkış kararlarını zorlaştırabilir; portföyde tuttuğunuz miktarı buna göre sınırlayın.
 5. **Sektörü de değerlendirin.** Defansif sektörlerde (gıda, kamu hizmetleri) large cap daha güvenli; büyüme sektörlerinde small ve mid cap daha ilgi çekici olabilir.
 
-Piyasa değeri sınıfını belirledikten sonra temel analiz oranlarına geçmek gerekir. [F/K oranı](/blog/fk-orani-nedir/) ve P/D gibi değerleme göstergeleri bu aşamada devreye girer. Adım adım bir hisse seçim süreci için [hisse senedi nasıl seçilir rehberimize](/blog/hisse-senedi-nasil-secilir/) göz atabilirsiniz.
+Piyasa değeri sınıfını belirledikten sonra temel analiz oranlarına geçmek gerekir. [F/K oranı](/blog/fk-orani-nedir/) ve P/D gibi değerleme göstergeleri bu aşamada devreye girer. Adım adım bir hisse seçim süreci için [hisse senedi nasıl seçilir rehberimize](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) göz atabilirsiniz.
 
 ## Özet
 

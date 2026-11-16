@@ -119,7 +119,7 @@ Volatilite tehlikeli görünür; ancak tek başına yeterli bir risk göstergesi
 
 Bu yüzden yüksek volatiliteli bir hisse, uzun vadeli yatırımcı için katlanılabilir; ancak aynı hisse, birkaç ay içinde paraya ihtiyaç duyacak biri için uygunsuz olabilir.
 
-[Risk ve getiri ilişkisi](/blog/risk-getiri-iliskisi) yazımızda bu dengeyi daha ayrıntılı ele alıyoruz.
+[Risk ve getiri ilişkisi](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) yazımızda bu dengeyi daha ayrıntılı ele alıyoruz.
 
 ## Volatiliteyi Nasıl Yönetirsiniz?
 
@@ -129,7 +129,7 @@ Yüksek volatiliteli bir varlığa tüm portföyünüzü yatırmak, küçük bir
 
 ### 2. Stop-loss emirleri kullanın
 
-Özellikle kısa vadeli pozisyonlarda, zararın belirli bir seviyeyi geçmesini engellemek için [stop-loss emirleri](/blog/stop-loss-nedir-zarar-kesme) kullanın. Bu, "bekleriz, düzelir" tuzağına düşmekten korur.
+Özellikle kısa vadeli pozisyonlarda, zararın belirli bir seviyeyi geçmesini engellemek için [stop-loss emirleri](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) kullanın. Bu, "bekleriz, düzelir" tuzağına düşmekten korur.
 
 ### 3. Korelasyonu düşük varlıklar karıştırın
 

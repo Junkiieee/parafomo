@@ -119,7 +119,7 @@ TÜİK verisine göre Eylül 2026'da aylık enflasyon **%1,84**, yıllık **%29,
 
 Bilgilendirme amacıyla, bu fon türünün genellikle hangi ihtiyaçlarda tercih edildiğini sıralayalım:
 
-- **Acil durum fonu:** Her an erişilebilir olması gereken birikim. (Bkz. [acil durum fonu nedir](/blog/acil-durum-fonu-nedir))
+- **Acil durum fonu:** Her an erişilebilir olması gereken birikim. (Bkz. [acil durum fonu nedir](/blog/enflasyondan-nasil-korunur/))
 - **Bekleme parası:** Ev, araç ya da başka bir alım için birkaç hafta/ay içinde kullanılacak tutar.
 - **Geçiş parası:** Riskli bir yatırıma girmeden önce veya bir pozisyondan çıktıktan sonra nakitte beklemek isteyenler.
 - **Düzenli küçük birikim:** Maaştan her ay küçük tutarlar ayıranlar; vade takibi gerekmez.

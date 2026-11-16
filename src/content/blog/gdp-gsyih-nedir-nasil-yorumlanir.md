@@ -108,7 +108,7 @@ Tarihsel olarak resesyon dönemlerinde:
 
 ## GDP'yi PCE ve Diğer Göstergelerle Birlikte Okumak
 
-GDP tek başına yeterli değil. Genellikle aynı hafta içinde, zaman zaman aynı gün açıklanan [PCE (Fed'in enflasyon göstergesi)](/blog/pce-nedir-fed-enflasyon-gostergesi) bu yüzden kritik:
+GDP tek başına yeterli değil. Genellikle aynı hafta içinde, zaman zaman aynı gün açıklanan [PCE (Fed'in enflasyon göstergesi)](/fed-faiz-takvimi/) bu yüzden kritik:
 
 - **Güçlü GDP + Yüksek PCE** → Fed için çok zor bir denklem. Ekonomi büyüyor ama enflasyon da yüksek. Faiz indirimi masada değil.
 - **Zayıf GDP + Düşük PCE** → Fed için faiz indirme yolu açılır. Risk iştahı artar.

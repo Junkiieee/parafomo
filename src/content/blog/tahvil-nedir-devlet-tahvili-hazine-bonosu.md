@@ -52,7 +52,7 @@ Basit anlatımla: "Sana bugün 100.000 TL veriyorum; sen 2 yıl boyunca her yıl
 
 ### Tahvil ile Hisse Senedi Arasındaki Fark
 
-Hisse senedi aldığında şirketin **ortağı** oluyorsunuz; şirket zarardaysa temettü alamaz, değer kaybedebilirsiniz. Tahvilde ise **alacaklısısınız** — şirket iflas etse bile tahvil sahipleri hissedarlardan önce ödenir. Bu yüzden tahvil genel olarak hisse senedinden daha az risklidir, ancak beklenen getiri de genellikle daha düşüktür. Bu dengeyi daha derinlemesine anlamak için [risk ve getiri ilişkisi](/blog/risk-getiri-iliskisi/) yazımıza göz atabilirsiniz.
+Hisse senedi aldığında şirketin **ortağı** oluyorsunuz; şirket zarardaysa temettü alamaz, değer kaybedebilirsiniz. Tahvilde ise **alacaklısısınız** — şirket iflas etse bile tahvil sahipleri hissedarlardan önce ödenir. Bu yüzden tahvil genel olarak hisse senedinden daha az risklidir, ancak beklenen getiri de genellikle daha düşüktür. Bu dengeyi daha derinlemesine anlamak için [risk ve getiri ilişkisi](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) yazımıza göz atabilirsiniz.
 
 ## Hazine Bonosu ile Tahvil Arasındaki Fark
 

@@ -67,7 +67,7 @@ Hafta sonu ve resmî tatiller iş günü sayılmaz. Cuma 14:00'te verdiğin bir 
 6. **Tutar ya da adet gir.** Alımda genellikle TL tutar girersin; fiyat henüz belli olmadığı için banka bir miktar bloke koyar, fiyat açıklanınca kesin adet hesabına geçer.
 7. **13:30'dan önce onayla ve takip et.** Talimat gerçekleştiğinde fon "Portföyüm" ekranında görünür. Satışta aynı menüden "sat" seçip adet ya da tutar girersin; para valör sonunda hesabına geçer.
 
-> İpucu: Acil ihtiyaç duyabileceğin parayı T+3 ya da daha uzun valörlü bir fona koyma. Önce [acil durum fonunu](/blog/acil-durum-fonu-nedir) kısa valörlü bir araçta tut, sonra uzun vadeli fonlara geç.
+> İpucu: Acil ihtiyaç duyabileceğin parayı T+3 ya da daha uzun valörlü bir fona koyma. Önce [acil durum fonunu](/blog/enflasyondan-nasil-korunur/) kısa valörlü bir araçta tut, sonra uzun vadeli fonlara geç.
 
 ## TEFAS Fon Türleri: Karşılaştırma Tablosu
 

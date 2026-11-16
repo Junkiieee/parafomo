@@ -130,7 +130,7 @@ Bu yüzden **PPI verisi sadece ABD meselesi değil, Türk yatırımcısının da
 
 ---
 
-**İlgili Konular:** [Çekirdek CPI nedir?](/blog/cekirdek-cpi-nedir-fed-enflasyon-gostergesi) | [Fed faiz kararı nedir?](/blog/fed-faiz-karari-nedir-etkisi) | [PCE nedir?](/blog/pce-nedir-fed-enflasyon-gostergesi)
+**İlgili Konular:** [Çekirdek CPI nedir?](/blog/cekirdek-cpi-nedir-fed-enflasyon-gostergesi) | [Fed faiz kararı nedir?](/blog/fed-faiz-karari-nedir-etkisi) | [PCE nedir?](/fed-faiz-takvimi/)
 
 ---
 

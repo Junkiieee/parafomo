@@ -98,7 +98,7 @@ Kendi senaryonu bul:
 - **6–12 ay içinde paraya ihtiyacın varsa.** Mevduat vade dolunca eksiksiz geri gelir; eurobond fonu o günkü fiyatından satılır, fiyat düşükse kayıp olur.
 - **Anapara kaybına tahammülün yoksa.** Mevduat limit dahilinde devlet güvencesi taşır; fon güvencesizdir.
 - **İlk kez tasarruf ediyorsan ve piyasaları takip etmiyorsan.** Mevduat daha az karar gerektirir.
-- **Nakit acil duruma ayrılıyorsa.** [Acil durum fonunu](/blog/acil-durum-fonu-nedir) her zaman likit, risksiz araçlarda tut.
+- **Nakit acil duruma ayrılıyorsa.** [Acil durum fonunu](/blog/enflasyondan-nasil-korunur/) her zaman likit, risksiz araçlarda tut.
 
 ### Eurobond Fonunu Tercih Et Eğer:
 - **2 yıl veya daha uzun süre dokunmayacağın birikimin varsa.** Faiz oynaklığının dengelenmesi için zamana ihtiyaç var.

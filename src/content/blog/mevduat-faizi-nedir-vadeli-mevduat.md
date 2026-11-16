@@ -128,7 +128,7 @@ Tasarruf Mevduatı Sigorta Fonu (TMSF), herhangi bir bankanın iflas etmesi duru
 | Altın | Orta | Yüksek | Belirsiz (kur bağımlı) | Hayır |
 | Hisse senedi | Yüksek | Yüksek | Belirsiz | Hayır |
 
-[Risk ve getiri dengesini daha ayrıntılı anlamak](/blog/risk-getiri-iliskisi) için ayrı yazımıza göz atabilirsiniz. Daha yüksek getiri peşindeyseniz [eurobond fonu ile mevduatı karşılaştıran rehberimiz](/blog/eurobond-fonu-mu-mevduat-mi) de yararlı olacaktır.
+[Risk ve getiri dengesini daha ayrıntılı anlamak](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) için ayrı yazımıza göz atabilirsiniz. Daha yüksek getiri peşindeyseniz [eurobond fonu ile mevduatı karşılaştıran rehberimiz](/blog/eurobond-fonu-mu-mevduat-mi) de yararlı olacaktır.
 
 ## Vadeli Mevduat Seçerken Dikkat Edilecekler
 

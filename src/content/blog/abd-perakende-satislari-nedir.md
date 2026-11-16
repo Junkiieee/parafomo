@@ -83,7 +83,7 @@ Güçlü perakende satışlar ekonominin sağlam olduğunu gösterir ve Fed'e "f
 
 Zayıf perakende satışlar tam tersi: ekonomi desteğe ihtiyaç duyuyor → faiz indirimi beklentisi güçlenir → dolar değer kaybeder → gelişmekte olan piyasalara sermaye akışı hızlanabilir.
 
-[Faiz mekanizmasının dolar ve TL'ye nasıl yansıdığını](/blog/faiz-nedir-ekonomiyi-nasil-etkiler) ayrı bir yazıda detaylandırdık.
+[Faiz mekanizmasının dolar ve TL'ye nasıl yansıdığını](/tcmb-faiz-takvimi/) ayrı bir yazıda detaylandırdık.
 
 ### 2. Küresel Risk İştahı ve BIST
 
@@ -105,7 +105,7 @@ Kesin tarihleri [ekonomik takvim](/ekonomik-takvim/) sayfasından, verinin etkil
 
 **1. Fed toplantısı öncesi kritik paket**
 
-Retail Sales, CPI ile birlikte bir sonraki FOMC toplantısı öncesinde Fed'in elindeki en önemli veri noktalarından biridir; toplantıya yakın açıklanan bir sürpriz, faiz beklentilerini hızla değiştirebilir. [FOMC toplantısının nasıl çalıştığını ve faiz kararlarının neden bu kadar önemli olduğunu](/blog/fomc-toplanti-tutanaklari-nedir) ayrıca ele aldık.
+Retail Sales, CPI ile birlikte bir sonraki FOMC toplantısı öncesinde Fed'in elindeki en önemli veri noktalarından biridir; toplantıya yakın açıklanan bir sürpriz, faiz beklentilerini hızla değiştirebilir. [FOMC toplantısının nasıl çalıştığını ve faiz kararlarının neden bu kadar önemli olduğunu](/fed-faiz-takvimi/) ayrıca ele aldık.
 
 **2. CPI ile birlikte okunması gereken veri**
 
@@ -133,7 +133,7 @@ Retail Sales günleri dolar ve borsa oynaklık yaşar. Akılda tutmaya değer bi
 1. **Veriyi önceden takip et.** [Ekonomik takvim](/ekonomik-takvim/) sayfasından tarihi, Investing.com gibi kaynaklardan konsensüs tahminini öğren. Rakamı beklentiyle karşılaştırmadan yorum yapamazsın.
 2. **İlk 15 dakikayı izle, içine girme.** Veri açıklandıktan hemen sonraki tepki çoğu zaman aşırıya kaçar; yön birkaç saatte netleşir.
 3. **CPI ile birlikte oku.** Aynı ay açıklanan CPI verisini ve ardından gelen bu veriyi bütün olarak değerlendir; biri diğerini doğrulamıyorsa Fed yorumuna bak.
-4. **Uzun vadeli planını bozma.** Tek bir veri günü büyük portföy değişikliği için yeterli neden değil. [Risk-getiri dengeli](/blog/risk-getiri-iliskisi) ve düzenli birikime dayalı yaklaşım, bu tür verilerden çok daha az sarsılır.
+4. **Uzun vadeli planını bozma.** Tek bir veri günü büyük portföy değişikliği için yeterli neden değil. [Risk-getiri dengeli](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) ve düzenli birikime dayalı yaklaşım, bu tür verilerden çok daha az sarsılır.
 5. **Döviz pozisyonunu gözden geçir.** Veri öncesinde elindeki döviz dengesini bilmek yeterli; spekülatif hamle yapmak zorunda değilsin.
 
 ## Özet

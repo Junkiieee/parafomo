@@ -51,7 +51,7 @@ NFP zayıf geliyor → Fed'e "ekonomi destek istiyor" sinyali → faiz indirim b
 
 Dolar dünya rezerv para birimi. Dolardaki hareket, Türk lirası dahil hemen her gelişmekte olan ülke parasını etkiler. NFP tek başına Fed politikasını değiştirmez, ama beklentileri şekillendirir; beklentiler ise piyasayı anında fiyatlar.
 
-[PCE verisi gibi](/blog/pce-nedir-fed-enflasyon-gostergesi) NFP de Fed'in faiz kararlarını anlamamızı sağlayan kilit makroekonomik veri noktalarından biridir.
+[PCE verisi gibi](/fed-faiz-takvimi/) NFP de Fed'in faiz kararlarını anlamamızı sağlayan kilit makroekonomik veri noktalarından biridir.
 
 ### 3. Küresel Risk İştahının Termometresi
 
@@ -82,7 +82,7 @@ Açıklanan rakamın kendisi tek başına anlam taşımaz. Asıl belirleyici ola
 
 *Güçlü istihdam = iyi ekonomi olumlu ama aynı zamanda = yüksek faiz riski olumsuz; iki etki birbirini dengeler.
 
-*Not: Bu tablo tarihsel eğilimi özetler. Piyasalar aynı gün gelen başka verilerden de etkilenir; örneğin aynı hafta açıklanan [AB enflasyon (CPI) verisi](/blog/ab-enflasyonu-cpi-nedir-turkiye-etkisi) tabloya farklı bir değişken katabilir.*
+*Not: Bu tablo tarihsel eğilimi özetler. Piyasalar aynı gün gelen başka verilerden de etkilenir; örneğin aynı hafta açıklanan [AB enflasyon (CPI) verisi](/enflasyon-takvimi/) tabloya farklı bir değişken katabilir.*
 
 ## NFP Türkiye'yi Nasıl Etkiler?
 

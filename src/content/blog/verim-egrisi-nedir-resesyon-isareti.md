@@ -101,7 +101,7 @@ ABD'de resesyon beklentisi güçlendiğinde Fed faiz indirebileceği sinyali art
 1. **Risk iştahı azalırsa**: Fonlar EM'den (emerging markets) çıkar, TL baskı altına girebilir.
 2. **Dolar zayıflarsa**: TL varlıkları ve döviz bazlı yatırımlar kısmen rahatlar.
 
-Faizin ekonomi, döviz ve borsa üzerindeki genel etkisini öğrenmek için [faiz nedir yazımıza](/blog/faiz-nedir-ekonomiyi-nasil-etkiler) bakabilirsin.
+Faizin ekonomi, döviz ve borsa üzerindeki genel etkisini öğrenmek için [faiz nedir yazımıza](/tcmb-faiz-takvimi/) bakabilirsin.
 
 ## Türkiye verim eğrisi nasıl okunur?
 

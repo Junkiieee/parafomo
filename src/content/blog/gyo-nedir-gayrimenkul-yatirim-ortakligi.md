@@ -97,7 +97,7 @@ Her yatırım aracında olduğu gibi GYO'nun da riskleri vardır:
 3. **KAP bildirimlerini okuyun:** Şirketin son bağımsız denetim raporu, portföy değerleme raporu ve faaliyet raporunu inceleyin.
 4. **NAV'ı analiz edin:** Hisse fiyatı ÷ hisse başına NAV oranı iskontolu mu primdeli mi? İskonto cazip görünebilir ama nedenini araştırın.
 5. **Temettü geçmişine bakın:** Geçmiş dönem ödeme tutarlılığını ve temettü verimini [temettü yatırımı rehberimizde](/blog/temettu-verimi-nedir/) anlattığımız kriterlerle değerlendirin.
-6. **Portföyünüzü çeşitlendirin:** Tek bir GYO'ya yoğunlaşmak yerine farklı türlerde GYO'lara bölmek veya başka varlık sınıflarıyla dengelemek riski yönetir. [Hisse senedi nasıl seçilir rehberimiz](/blog/hisse-senedi-nasil-secilir/) bu adımda size yol gösterebilir.
+6. **Portföyünüzü çeşitlendirin:** Tek bir GYO'ya yoğunlaşmak yerine farklı türlerde GYO'lara bölmek veya başka varlık sınıflarıyla dengelemek riski yönetir. [Hisse senedi nasıl seçilir rehberimiz](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) bu adımda size yol gösterebilir.
 
 ## GYO Değerlemesinde 3 Temel Gösterge
 

@@ -123,7 +123,7 @@ Mantıklı bir yaklaşım şöyle kurulabilir:
 - "Kullanım değeri" olan NFT'lere (gerçek oyun, topluluk üyeliği) bak; saf koleksiyon NFT'lerine değil.
 - Proje ekibini araştır: geçmiş işler, kimlik şeffaflığı, topluluk aktifliği.
 
-Kripto varlıkların risk-getiri profilini anlamak için [stablecoin rehberimize](/blog/stablecoin-nedir) ve genel [risk-getiri ilişkisi yazımıza](/blog/risk-getiri-iliskisi) bakabilirsin.
+Kripto varlıkların risk-getiri profilini anlamak için [stablecoin rehberimize](/blog/stablecoin-nedir) ve genel [risk-getiri ilişkisi yazımıza](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) bakabilirsin.
 
 ## Türkiye'den NFT Alımında Pratik Notlar
 

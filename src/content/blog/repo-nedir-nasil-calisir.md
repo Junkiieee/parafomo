@@ -67,7 +67,7 @@ Küçük görünebilir; ama bu parayı her gün döndürürseniz yıllık yakla�
 
 Repo faizi, TCMB'nin (Türkiye Cumhuriyet Merkez Bankası) belirlediği **gecelik borç verme faiz oranına** yakın seyreder. Merkez bankası politika faizini artırdığında repo faizleri de yükselir; düşürdüğünde tersine gider.
 
-Bu yüzden repo, merkez bankası faiz kararlarına oldukça duyarlıdır. [Faizin ekonomiyi nasıl etkilediğini](/blog/faiz-nedir-ekonomiyi-nasil-etkiler) anlarsanız repo getirisinin neden dalgalandığını da netlikle görürsünüz.
+Bu yüzden repo, merkez bankası faiz kararlarına oldukça duyarlıdır. [Faizin ekonomiyi nasıl etkilediğini](/tcmb-faiz-takvimi/) anlarsanız repo getirisinin neden dalgalandığını da netlikle görürsünüz.
 
 Bankalar arası rekabet ve kendi fonlama maliyetleri de oranı belirler; bu nedenle aynı gün farklı bankalarda farklı repo faizleri görebilirsiniz.
 

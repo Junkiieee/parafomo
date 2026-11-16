@@ -32,7 +32,7 @@ ECB (European Central Bank — Avrupa Merkez Bankası), Avrupa Birliği'nin euro
 
 Euro Bölgesi, Türkiye'nin en büyük ticaret ortağı konumunda. Türkiye'nin toplam ihracatının yaklaşık %40-45'i AB ülkelerine gidiyor. Dolayısıyla ECB'nin faiz kararı yalnızca euro/dolar paritesini değil, Türk ihracatçıların gelirini, ithalat maliyetlerini ve sermaye akışlarını da doğrudan etkiliyor.
 
-Faiz kavramının temellerine dair geniş bir açıklama için [Faiz Nedir? Ekonomiyi, Borsayı ve Dolar'ı Nasıl Etkiler?](/blog/faiz-nedir-ekonomiyi-nasil-etkiler) yazısına göz atabilirsin.
+Faiz kavramının temellerine dair geniş bir açıklama için [Faiz Nedir? Ekonomiyi, Borsayı ve Dolar'ı Nasıl Etkiler?](/tcmb-faiz-takvimi/) yazısına göz atabilirsin.
 
 ## ECB Faiz Kararı Nasıl Alınır?
 
@@ -80,7 +80,7 @@ Küresel faiz ortamı değiştiğinde yatırımcılar portföylerini yeniden dü
 - **TCMB indirir + ECB sabit** → Dolar belirgin güçlenmez; baskı TCMB kaynaklı kalır, TL için daha kontrollü bir tablo.
 - **TCMB sabit + ECB indirir** → TCMB'nin temkinli duruşu TL'ye kısa vadeli destek verirken ECB'nin gevşemesi euroyu zayıflatır; EUR/TL düşebilir.
 
-Böyle günlerde vadeli veya kaldıraçlı pozisyon taşıyanlar için [stop-loss](/blog/stop-loss-nedir-zarar-kesme) disiplini kritik önem taşır.
+Böyle günlerde vadeli veya kaldıraçlı pozisyon taşıyanlar için [stop-loss](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) disiplini kritik önem taşır.
 
 ## ECB ile Fed Farkı: EUR/USD Paritesi Neden Önemli?
 
@@ -90,7 +90,7 @@ Fed (ABD Merkez Bankası) ve ECB'nin faiz kararları arasındaki makası izlemek
 - **Fed daha hızlı faiz indirirse** → Dolar değer kaybeder → EUR/USD yükselir → Euro güçlenir.
 - **İkisi birlikte hareket ederse** → Parite görece sabit kalır, diğer değişkenler belirleyici olur.
 
-Fed'in karar mekanizmasını ve Türkiye etkisini anlamak için [FOMC Toplantı Tutanakları Nedir?](/blog/fomc-toplanti-tutanaklari-nedir) yazısına, toplantı tarihleri için [Fed faiz takvimine](/fed-faiz-takvimi/) bakabilirsin.
+Fed'in karar mekanizmasını ve Türkiye etkisini anlamak için [FOMC Toplantı Tutanakları Nedir?](/fed-faiz-takvimi/) yazısına, toplantı tarihleri için [Fed faiz takvimine](/fed-faiz-takvimi/) bakabilirsin.
 
 ## ECB Kararından Önce ve Sonra Ne İzlenir?
 

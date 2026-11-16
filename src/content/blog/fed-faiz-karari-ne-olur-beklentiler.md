@@ -73,7 +73,7 @@ Fed'in çift mandatı var: maksimum istihdam ve fiyat istikrarı. Bu iki hedefe 
 | NFP (Tarım Dışı İstihdam) | Ayda bir (ilk Cuma) | İstihdam mandası | [NFP nedir?](/blog/nfp-nedir-abd-tarim-disi-istihdam) |
 | İşsizlik Oranı | Ayda bir (NFP ile beraber) | İstihdam mandası | [İşsizlik oranı etkisi](/blog/abd-issizlik-orani-nedir-nfp-etkisi) |
 | CPI (Tüketici Enflasyonu) | Ayda bir | Fiyat istikrarı | [ABD CPI nedir?](/blog/cekirdek-cpi-nedir-fed-enflasyon-gostergesi/) |
-| Core PCE | Ayda bir | Fed'in tercih ettiği enflasyon | [PCE nedir?](/blog/pce-nedir-fed-enflasyon-gostergesi) |
+| Core PCE | Ayda bir | Fed'in tercih ettiği enflasyon | [PCE nedir?](/fed-faiz-takvimi/) |
 
 **Pratik kural:** İşsizlik düşük + enflasyon yüksekse Fed sıkılaştırma (artış/sabit) yolunda, işsizlik yüksek + enflasyon düşükse gevşeme (indirim) yolunda daha güçlü bir gerekçeye sahip olur.
 
@@ -88,7 +88,7 @@ Fed, yalnızca rakamlarla değil sözlerle de yönlendirme yapar — buna *forwa
 - **"Strong labor market" (güçlü işgücü piyasası):** İstihdam sağlam olduğu için acele indirim yok.
 - **"Inflation moving toward target" (enflasyon hedefe yaklaşıyor):** İndirim tartışması için zemin hazır.
 
-FOMC toplantılarının ardından yayımlanan tutanaklarda bu ifadeler ayrıntılı bağlamıyla yer alır; [FOMC tutanaklarını nasıl okuyacağını](/blog/fomc-toplanti-tutanaklari-nedir) ayrıca anlattık.
+FOMC toplantılarının ardından yayımlanan tutanaklarda bu ifadeler ayrıntılı bağlamıyla yer alır; [FOMC tutanaklarını nasıl okuyacağını](/fed-faiz-takvimi/) ayrıca anlattık.
 
 ## Faiz Senaryoları ve Piyasa Etkileri
 

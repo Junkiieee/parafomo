@@ -38,7 +38,7 @@ shorts_visuals:
 
 **Halka arza nasıl katılınır** sorusunun kısa cevabı şu: yetkili bir aracı kurumda hesap açarsın, talep toplama günlerinde uygulamadan talebini girersin, dağıtım sonucuna göre hesabına lot gelir ve artan paran iade edilir. Ama asıl kafa karıştıran kısım bu sürecin ortası: **eşit dağıtım mı oransal dağıtım mı**, 50 bin TL yatırınca neden sadece 15 lot geldi, kaç lot düşeceğini önceden nasıl tahmin edersin?
 
-Bu rehberde bu soruların hepsini sayısal örneklerle cevaplıyoruz. Halka arzın ne olduğunu ve şirketlerin neden halka açıldığını merak ediyorsan önce [Halka Arz (IPO) Nedir?](/blog/halka-arz-nedir-ipo) yazısına göz atabilirsin; burada doğrudan **katılım mekaniğine** odaklanıyoruz.
+Bu rehberde bu soruların hepsini sayısal örneklerle cevaplıyoruz. Halka arzın ne olduğunu ve şirketlerin neden halka açıldığını merak ediyorsan önce [Halka Arz (IPO) Nedir?](/blog/halka-arza-nasil-katilinir-esit-dagitim-lot-hesabi/) yazısına göz atabilirsin; burada doğrudan **katılım mekaniğine** odaklanıyoruz.
 
 ## Halka Arza Nasıl Katılınır? 5 Adımda Süreç
 
@@ -134,11 +134,11 @@ Somut bir örnek olarak, Temmuz 2026'da eşit dağıtımla tamamlanan bir arzı 
 
 Dağıtım tamamlanınca lotlar hesabına geçer ve hisse, ilan edilen tarihte borsada işlem görmeye başlar. Bu noktada üç seçeneğin vardır:
 
-- **Uzun vadeli tutmak:** Şirketin temellerine güveniyorsan, hisseyi diğer hisseler gibi bilanço ve büyümeye göre değerlendirirsin. Bunun için [hisse senedi nasıl seçilir](/blog/hisse-senedi-nasil-secilir) yazısındaki kriterler işine yarar.
+- **Uzun vadeli tutmak:** Şirketin temellerine güveniyorsan, hisseyi diğer hisseler gibi bilanço ve büyümeye göre değerlendirirsin. Bunun için [hisse senedi nasıl seçilir](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) yazısındaki kriterler işine yarar.
 - **İlk günlerde satmak:** Bazı yatırımcılar ilk işlem günlerindeki fiyat hareketinden yararlanmayı hedefler. Ancak işlem gördüğü ilk günlerde fiyatlar çok oynak olabilir.
 - **Kısmen satıp kısmen tutmak:** Riski dağıtmanın orta yol versiyonudur.
 
-Hangisini seçersen seç, satış kazancının vergisel durumu ve aracı kurum komisyonları net getirini etkiler; işlem öncesi kurumunun ücret tarifesine bakmakta fayda var. Borsaya yeni başlıyorsan genel çerçeve için [borsaya nasıl başlanır](/blog/borsaya-nasil-baslanir) rehberi iyi bir başlangıç.
+Hangisini seçersen seç, satış kazancının vergisel durumu ve aracı kurum komisyonları net getirini etkiler; işlem öncesi kurumunun ücret tarifesine bakmakta fayda var. Borsaya yeni başlıyorsan genel çerçeve için [borsaya nasıl başlanır](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) rehberi iyi bir başlangıç.
 
 ## Özet
 

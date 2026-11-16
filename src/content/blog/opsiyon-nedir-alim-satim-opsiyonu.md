@@ -110,7 +110,7 @@ Amerikan tipi opsiyonlar vade sonundan önce her an kullanılabilirken, Avrupa t
 | Fiyat yönüne bağımsız stratejiler | Piyasa beklediğin kadar hareket etmezse zaman değeri sıfırlanır |
 | Satıcı için düzenli prim geliri | Opsiyon satıcısının kaybı teorik olarak sınırsız |
 
-> Opsiyon stratejileri portföy riskini yönetmenin güçlü bir yolu olsa da [risk ve getiri ilişkisini](/blog/risk-getiri-iliskisi/) iyi anlamak her şeyden önce gelir.
+> Opsiyon stratejileri portföy riskini yönetmenin güçlü bir yolu olsa da [risk ve getiri ilişkisini](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) iyi anlamak her şeyden önce gelir.
 
 ## Adım Adım: İlk Opsiyon İşlemine Nasıl Başlanır?
 
@@ -122,7 +122,7 @@ Amerikan tipi opsiyonlar vade sonundan önce her an kullanılabilirken, Avrupa t
 6. **Riski izle:** Pozisyonun değerini her gün takip et; özellikle vade yaklaştıkça zaman erimesini gözlemle.
 7. **Vadesinden önce kapat ya da kullan:** Hakkını kullanmak ya da pozisyonu prim gelir/gideriyle kapatmak arasında bilinçli karar ver.
 
-> Zarara karşı kendinizi korumak isteyenler için [stop-loss nedir ve nasıl kullanılır](/blog/stop-loss-nedir-zarar-kesme/) yazısı ek bir perspektif sunuyor.
+> Zarara karşı kendinizi korumak isteyenler için [stop-loss nedir ve nasıl kullanılır](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) yazısı ek bir perspektif sunuyor.
 
 ## Pratik Opsiyon Stratejileri
 

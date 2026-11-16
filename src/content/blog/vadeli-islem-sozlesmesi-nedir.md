@@ -68,7 +68,7 @@ Eğer değer %5 düşerse: 5.000 TL kaybedersin → teminatının **%50'si silin
 
 Kaldıraç iki yönde de çalışır. Teminat tutarın belirli bir eşiğin altına düşerse "teminat tamamlama çağrısı" (margin call) gelir; hesaba para yatırmazsan pozisyonun zorunlu kapatılır.
 
-> [Risk ve getiri ilişkisi](/blog/risk-getiri-iliskisi/) hakkında daha fazla bilgi edinmek, vadeli işlemleri değerlendirmeden önce faydalı olacaktır.
+> [Risk ve getiri ilişkisi](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) hakkında daha fazla bilgi edinmek, vadeli işlemleri değerlendirmeden önce faydalı olacaktır.
 
 ## VİOP Nedir? Türkiye'de Vadeli İşlem Piyasası
 
@@ -110,7 +110,7 @@ Aynı varlığın farklı piyasalardaki fiyat farkından yararlanmak amacıyla e
 | Yüksek likidite (endeks ve dövir) | Sözleşme vade yönetimi karmaşıklığı |
 | Şeffaf ve organize piyasa (VİOP) | Gece yarısı küresel olaylara maruziyet |
 
-> Özellikle piyasaları düşerken pozisyon almanın mekanizmasını anlamak için [açığa satış (short selling) nedir](/blog/aciga-satis-nedir-short-selling/) yazısını inceleyebilirsin.
+> Özellikle piyasaları düşerken pozisyon almanın mekanizmasını anlamak için [açığa satış (short selling) nedir](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) yazısını inceleyebilirsin.
 
 ## Adım Adım: Futures Sözleşmesiyle İlk Pozisyon
 
@@ -121,7 +121,7 @@ Aynı varlığın farklı piyasalardaki fiyat farkından yararlanmak amacıyla e
 5. **Takibi sürdür:** Teminat seviyeni izle; piyasa aleyhine döndüğünde margin call'dan önce pozisyonu küçültmeyi değerlendir.
 6. **Pozisyonu kapat:** Vade gelmeden karşı yönde işlemle pozisyonu kapat ya da vade sonunda otomatik kapanmayı bekle.
 
-> Riski sınırlamak için stop-loss emirlerini mutlaka kullan. Nasıl çalıştığını öğrenmek için [stop-loss nedir rehberine](/blog/stop-loss-nedir-zarar-kesme/) bakabilirsin.
+> Riski sınırlamak için stop-loss emirlerini mutlaka kullan. Nasıl çalıştığını öğrenmek için [stop-loss nedir rehberine](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) bakabilirsin.
 
 ## Portföyde Vadeli İşlem Nasıl Konumlandırılır?
 

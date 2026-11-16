@@ -126,7 +126,7 @@ Güçlü bir temel analiz için F/K'yı şu metriklerle destekleyin:
 
 **Temettü Verimi:** Yüksek F/K'lı büyüme şirketleri nadiren temettü öder. Temettü önceliği olan yatırımcı için temettü verimi kritik tamamlayıcıdır.
 
-Bu konuları daha ayrıntılı incelemek isteyenler için [hisse senedi nasıl seçilir rehberimize](/blog/hisse-senedi-nasil-secilir) ve [temel analiz vs teknik analiz karşılaştırmamıza](/blog/temel-analiz-teknik-analiz-farki) bakabilirsiniz.
+Bu konuları daha ayrıntılı incelemek isteyenler için [hisse senedi nasıl seçilir rehberimize](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) ve [temel analiz vs teknik analiz karşılaştırmamıza](/blog/temel-analiz-teknik-analiz-farki) bakabilirsiniz.
 
 ## Pratik Adımlar: F/K Oranını Yatırım Kararlarında Nasıl Kullanırsınız?
 

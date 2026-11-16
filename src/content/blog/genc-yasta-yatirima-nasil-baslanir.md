@@ -49,7 +49,7 @@ Gelirinizin ne kadarını yatırıma ayırabileceğinizi bilmeden ilerlemeyin. 5
 
 ### 2. Acil Durum Fonu Oluşturun
 
-En az 3 aylık zorunlu giderinizi likit bir hesapta tutmadan yatırıma başlamayın. Borsa düşüşlerinde "para lazım" olursa yatırımlarınızı zararına satmak zorunda kalırsınız. [Acil durum fonu](/blog/acil-durum-fonu-nedir/) bu riski ortadan kaldırır.
+En az 3 aylık zorunlu giderinizi likit bir hesapta tutmadan yatırıma başlamayın. Borsa düşüşlerinde "para lazım" olursa yatırımlarınızı zararına satmak zorunda kalırsınız. [Acil durum fonu](/blog/enflasyondan-nasil-korunur/) bu riski ortadan kaldırır.
 
 ### 3. Yüksek Faizli Borçları Kapatın
 
@@ -117,7 +117,7 @@ Genç yaşta yatırımın amacı hızlı zenginleşmek değil, **zamanı en iyi 
 - **BES'i erken değerlendirin:** Devlet katkısı (%20) ve uzun vadeli birikim avantajı gençler için çok değerlidir.
 - **Düzenlilik, tutardan önemlidir:** Her ay küçük bir tutar yatırmak, zamanlama yapmaya çalışmaktan çok daha güçlüdür.
 
-Daha ileri adımlar için [borsaya nasıl başlanır rehberimizi](/blog/borsaya-nasil-baslanir/) ve [DCA stratejisini](/blog/dca-nedir-maliyet-ortalamasi/) incelemenizi tavsiye ederiz.
+Daha ileri adımlar için [borsaya nasıl başlanır rehberimizi](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) ve [DCA stratejisini](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) incelemenizi tavsiye ederiz.
 
 ---
 

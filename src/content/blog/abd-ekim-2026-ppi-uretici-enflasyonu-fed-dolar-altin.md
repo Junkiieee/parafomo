@@ -64,7 +64,7 @@ Bu tablo aynı dönemin tüketici tarafıyla da uyumlu: Eylül CPI'da manşet y�
 
 Ekim CPI bugün, 10 Kasım'da açıklanıyor; PPI ise üç gün sonra geliyor. "CPI zaten belli olduysa PPI'ın önemi kalır mı?" diye düşünebilirsin. Kalır, iki nedenle:
 
-- **PCE köprüsü:** Fed'in resmi hedef göstergesi PCE fiyat endeksidir. PCE'nin sağlık hizmetleri, hava yolu ücretleri ve portföy yönetim ücretleri gibi kalemleri doğrudan PPI verisinden hesaplanır. Ekonomistler PPI geldikten sonra PCE tahminlerini günceller. PCE'yi bilmiyorsan [PCE nedir](/blog/pce-nedir-fed-enflasyon-gostergesi) yazımız kısa bir giriş sunuyor.
+- **PCE köprüsü:** Fed'in resmi hedef göstergesi PCE fiyat endeksidir. PCE'nin sağlık hizmetleri, hava yolu ücretleri ve portföy yönetim ücretleri gibi kalemleri doğrudan PPI verisinden hesaplanır. Ekonomistler PPI geldikten sonra PCE tahminlerini günceller. PCE'yi bilmiyorsan [PCE nedir](/fed-faiz-takvimi/) yazımız kısa bir giriş sunuyor.
 - **Öncü sinyal:** Üreticinin maliyeti 1-3 ay içinde rafa yansıma eğilimindedir. Eylül'deki enerji kaynaklı sıçramanın Ekim'de sürüp sürmediği, önümüzdeki ayların CPI'ı için ipucu verir.
 
 Fed, Eylül'de faizi 25 baz puan artırarak **%3,75-4,00** aralığına çekmiş, 28 Ekim'de bu bandı sabit tutmuştu ([Fed faiz takvimi](/fed-faiz-takvimi)). Sıradaki karar **9 Aralık 2026**, Türkiye saatiyle 22:00'de ve yeni projeksiyonlarla birlikte gelecek. Ekim PPI, bu toplantıdan önceki son büyük enflasyon verilerinden biri.

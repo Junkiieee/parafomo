@@ -131,7 +131,7 @@ Uzun vadeli bileşik getirinin gücünü [bileşik faiz hesaplama](/bilesik-faiz
 - Likiditene ihtiyaç duyabilecek bir hayat dönemindeysen
 - Pasif, düşük emekli bir yatırım yöntemi arıyorsan (endeks fonu ile)
 - Çeşitlendirme ve küresel piyasalara erişimi önemsiyorsan
-- [Risk ve getiri ilişkisini](/blog/risk-getiri-iliskisi) anlayarak uzun vadeli oynaklıkla barışık yaşayabiliyorsan
+- [Risk ve getiri ilişkisini](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) anlayarak uzun vadeli oynaklıkla barışık yaşayabiliyorsan
 
 ## İkisi Birlikte Mümkün mü?
 

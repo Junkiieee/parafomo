@@ -104,7 +104,7 @@ Pratik kural: **tek bir hisse portföyünün %10'undan fazlasını oluşturmamal
 
 Tüm parayı tek seferde piyasaya sürmek yerine her ay sabit miktarda alım yapmak — dolar maliyet ortalaması (DCA) — farklı fiyat seviyelerinde işlem yapmanı sağlar. Piyasanın tepesinde tek seferde girmek riskini azaltır.
 
-[DCA nedir ve nasıl uygulanır](/blog/dca-nedir-maliyet-ortalamasi) yazımızda bu stratejiyi adım adım anlattık.
+[DCA nedir ve nasıl uygulanır](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) yazımızda bu stratejiyi adım adım anlattık.
 
 ## Türkiye'de Çeşitlendirme Seçenekleri Karşılaştırması
 
@@ -139,7 +139,7 @@ Vergi sütunu bireysel yatırımcı içindir; oranların dayanakları için [202
 5. **Yılda bir gözden geçir.** Piyasa hareketleriyle bozulan oranları hedef dağılıma getir.
 6. **Vergi ve maliyet takibi.** Aracı kurumun komisyonları ve stopaj oranları toplam getiriyi etkiler; hesaba katmayı unutma.
 
-[Risk ve getiri ilişkisi](/blog/risk-getiri-iliskisi) yazımızda çeşitlendirmenin matematiksel temelini daha derin inceledik.
+[Risk ve getiri ilişkisi](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) yazımızda çeşitlendirmenin matematiksel temelini daha derin inceledik.
 
 ## Özet
 

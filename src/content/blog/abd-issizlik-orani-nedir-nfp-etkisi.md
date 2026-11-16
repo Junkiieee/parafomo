@@ -85,7 +85,7 @@ Piyasalar genellikle %3,5-4,5 aralığını "tam istihdam" olarak tanımlar. Bu 
 ### Senaryo 3: Beklenenden Çok Sapma
 Bu durumda piyasalar aşırı tepki verir. NFP'nin beklentinin yüzde ellisi altında gelmesi gibi bir sürpriz, birkaç dakika içinde dolarda önemli hareket yaratabilir.
 
-[FOMC toplantı tutanakları](/blog/fomc-toplanti-tutanaklari-nedir), bu veri setlerinin Fed içindeki tartışmalarda nasıl yer aldığını görmek için önemli bir ek kaynak. Tutanaklar, işsizlik verisi yorumuyla faiz oylamasının nasıl bağlandığını açıklar.
+[FOMC toplantı tutanakları](/fed-faiz-takvimi/), bu veri setlerinin Fed içindeki tartışmalarda nasıl yer aldığını görmek için önemli bir ek kaynak. Tutanaklar, işsizlik verisi yorumuyla faiz oylamasının nasıl bağlandığını açıklar.
 
 ## Türk Yatırımcı Olarak Neden Dikkat Etmeli?
 
@@ -113,7 +113,7 @@ Yaklaşan açıklama tarihlerini [ekonomik takvim](/ekonomik-takvim/) sayfasınd
 | İlk 5-10 dakika | Ani volatilite — dolar, altın, majör endeksler tepki verir |
 | 30-60 dakika sonra | Piyasa sindirim aşaması; ilk hareket genellikle revize edilir |
 
-**Pratik öneri:** Kaldıraçlı işlemde değilseniz anlık tepkilere kapılmayın. Verinin beklentinin ne kadar altında veya üzerinde geldiğine bakın; ardından [Fed'in faiz yol haritasını](/blog/fomc-toplanti-tutanaklari-nedir) güncellenmiş beklentilerle değerlendirin.
+**Pratik öneri:** Kaldıraçlı işlemde değilseniz anlık tepkilere kapılmayın. Verinin beklentinin ne kadar altında veya üzerinde geldiğine bakın; ardından [Fed'in faiz yol haritasını](/fed-faiz-takvimi/) güncellenmiş beklentilerle değerlendirin.
 
 ## Özet
 

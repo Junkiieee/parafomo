@@ -154,7 +154,7 @@ Bu örüntü önemli: PMI birkaç ay üst üste 50 altında kalırsa, Fed faiz i
 3. **Altın:** PMI sonrası ilk 1-2 saati gözlemleyin; yön çoğu zaman ilk yarım saatte belirginleşmeye başlar
 4. **Uzun vadeli bakış:** Tek bir PMI verisi portföy stratejisini değiştirmez — [bileşik getiri mantığıyla](/bilesik-faiz-hesaplama/) düzenli yatırım yapıyorsanız veri günlerinde sakin kalın
 
-Döviz ve ABD verilerinin ilişkisini daha geniş çerçevede anlamak için [NFP (Tarım Dışı İstihdam) rehberimize](/blog/nfp-nedir-abd-tarim-disi-istihdam) ve [Fed'in enflasyon göstergesi PCE yazımıza](/blog/pce-nedir-fed-enflasyon-gostergesi) da bakabilirsiniz. Bu üç veri — PMI, NFP, PCE — birlikte ABD ekonomisinin sağlığını çok daha net gösterir.
+Döviz ve ABD verilerinin ilişkisini daha geniş çerçevede anlamak için [NFP (Tarım Dışı İstihdam) rehberimize](/blog/nfp-nedir-abd-tarim-disi-istihdam) ve [Fed'in enflasyon göstergesi PCE yazımıza](/fed-faiz-takvimi/) da bakabilirsiniz. Bu üç veri — PMI, NFP, PCE — birlikte ABD ekonomisinin sağlığını çok daha net gösterir.
 
 ## Özet
 

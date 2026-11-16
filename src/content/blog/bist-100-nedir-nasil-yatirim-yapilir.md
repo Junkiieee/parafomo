@@ -99,7 +99,7 @@ BIST 100 çeşitlendirme avantajı sunsa da bazı özgün riskler taşır:
 - **Siyasi ve makroekonomik riskler:** Merkez bankası faiz kararları, enflasyon politikası ve jeopolitik gelişmeler hisse fiyatlarını doğrudan etkiler.
 - **Likidite riski:** Piyasa saatlerinde ETF veya hisse alınıp satılabilir; ancak kriz dönemlerinde spread (alış-satış farkı) genişleyebilir.
 
-Risk ve getiri ilişkisini daha iyi anlamak, portföyünüzü daha sağlam kurmanızı sağlar. [Portföy çeşitlendirmesi ve risk yönetimi hakkındaki bu yazıyı inceleyebilirsiniz.](/blog/risk-getiri-iliskisi/)
+Risk ve getiri ilişkisini daha iyi anlamak, portföyünüzü daha sağlam kurmanızı sağlar. [Portföy çeşitlendirmesi ve risk yönetimi hakkındaki bu yazıyı inceleyebilirsiniz.](/blog/turkiyede-en-iyi-yatirim-araclari-2026/)
 
 ## Adım Adım: BIST 100 ETF'si Nasıl Alınır?
 
@@ -111,7 +111,7 @@ Risk ve getiri ilişkisini daha iyi anlamak, portföyünüzü daha sağlam kurma
 6. **Lot miktarı belirleyin ve alın:** Almak istediğiniz pay adedini girin, fiyatı onaylayın.
 7. **Düzenli alım planlayın:** Aylık sabit miktarla düzenli alım (DCA), piyasa zamanlaması stresini ortadan kaldırır ve maliyet ortalamasını dengeler.
 
-Eğer borsaya daha önce hiç adım atmadıysanız, hesap açma ve ilk işlem sürecini baştan anlatan [borsaya nasıl başlanır rehberimizi](/blog/borsaya-nasil-baslanir/) önce okumanızı öneririz.
+Eğer borsaya daha önce hiç adım atmadıysanız, hesap açma ve ilk işlem sürecini baştan anlatan [borsaya nasıl başlanır rehberimizi](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) önce okumanızı öneririz.
 
 ## Özet
 

@@ -124,7 +124,7 @@ IWM, küresel ölçekte en büyük small-cap ETF'dir ve günlük işlem hacmiyle
 2. **Hesap aç:** Kimlik belgesi ve adres kanıtıyla çevrimiçi başvuru tamamlanır.
 3. **Döviz transferi yap:** Türkiye'deki bankanızdan USD havalesi gönderin.
 4. **ETF'yi ara ve al:** IWM ya da VTWO'yu arayıp piyasa veya limit emirle satın alın.
-5. **DCA uygula:** Her ay düzenli aralıklarla sabit tutar yatırmak volatiliteyi yönetmenin etkili yoludur. [DCA (maliyet ortalaması) stratejisi](/blog/dca-nedir-maliyet-ortalamasi/) hakkında ayrıntılı rehberimize bakabilirsiniz.
+5. **DCA uygula:** Her ay düzenli aralıklarla sabit tutar yatırmak volatiliteyi yönetmenin etkili yoludur. [DCA (maliyet ortalaması) stratejisi](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) hakkında ayrıntılı rehberimize bakabilirsiniz.
 
 ## Russell 2000 Yatırımının Avantajları ve Riskleri
 

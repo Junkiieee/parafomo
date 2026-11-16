@@ -110,7 +110,7 @@ Rüçhan hakkının teorik fiyatı, mevcut hisse fiyatı ile ihraç fiyatı aras
 
 **Teorik Rüçhan Fiyatı = (Mevcut Fiyat − İhraç Fiyatı) × (Artırım Oranı) / 100**
 
-Uygulamada arz-talep dengesi bu teorik fiyatı belirli bir ölçüde etkiler. Rüçhan haklarının işlem gördüğü süre genellikle 15 gündür; süreyi kaçırmamak için aracı kurumundan gelen bildirimleri mutlaka takip et. Borsanın işleyişine daha yeni giriyorsan önce [borsaya nasıl başlanır](/blog/borsaya-nasil-baslanir/) yazısını okumanı öneririz.
+Uygulamada arz-talep dengesi bu teorik fiyatı belirli bir ölçüde etkiler. Rüçhan haklarının işlem gördüğü süre genellikle 15 gündür; süreyi kaçırmamak için aracı kurumundan gelen bildirimleri mutlaka takip et. Borsanın işleyişine daha yeni giriyorsan önce [borsaya nasıl başlanır](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) yazısını okumanı öneririz.
 
 ## Sermaye Artırımının Hisse Fiyatına Etkisi
 
@@ -122,7 +122,7 @@ Sermaye artırımı sonrası hisse fiyatı otomatik olarak "düzeltilir". Bu dü
 
 Orta ve uzun vadede fiyatın yönü, şirketin toplanan parayı **verimli** kullanıp kullanmadığına bağlıdır. Nakit sıkıntısını gidermek için yapılan bedelliler genelde piyasa tarafından soğuk karşılanır; net yeni yatırım için yapılanlar prim yapabilir.
 
-Şirketin bu değerlendirmesini yaparken [hisse senedi nasıl seçilir](/blog/hisse-senedi-nasil-secilir/) yazısındaki kriterleri kullanabilir, [F/K oranına](/blog/fk-orani-nedir/) bakarak değerleme mantığını sınayabilirsin.
+Şirketin bu değerlendirmesini yaparken [hisse senedi nasıl seçilir](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) yazısındaki kriterleri kullanabilir, [F/K oranına](/blog/fk-orani-nedir/) bakarak değerleme mantığını sınayabilirsin.
 
 ## Sermaye Artırımı Kararı Verirken Sorman Gereken Sorular
 

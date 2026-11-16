@@ -142,7 +142,7 @@ Veriler halka arzların otomatik kazanç olmadığını gösteriyor. Katılmayı
 5. **Çıkış planını önceden belirle.** "Tavan bozulunca satarım", "bilançoyu görünce karar veririm" gibi kuralı katılmadan önce koy; duygusal karar riskini azaltır.
 6. **Tutarı sınırlı tut.** Halka arzlar tek bir hisse riskidir. Toplam birikiminin küçük bir parçasını ayırmak ve [portföyünü çeşitlendirmek](/blog/portfoy-cesitlendirmesi-nasil-yapilir) riski dağıtır.
 
-Yaklaşan arzları, talep toplama tarihlerini ve dağıtım yöntemlerini [halka arz takvimi](/halka-arz) sayfasından izleyebilirsin. Halka arzın temel mantığını merak ediyorsan [Halka Arz (IPO) Nedir?](/blog/halka-arz-nedir-ipo) yazısı iyi bir başlangıç.
+Yaklaşan arzları, talep toplama tarihlerini ve dağıtım yöntemlerini [halka arz takvimi](/halka-arz) sayfasından izleyebilirsin. Halka arzın temel mantığını merak ediyorsan [Halka Arz (IPO) Nedir?](/blog/halka-arza-nasil-katilinir-esit-dagitim-lot-hesabi/) yazısı iyi bir başlangıç.
 
 ## Halka Arz Getirisini Neler Etkiler?
 
@@ -154,7 +154,7 @@ Aynı ay içinde biri %+26, diğeri %-67 getiren arzlar (CITAS ve TKNKA, ikisi d
 - **Bilanço sonrası gerçeklik:** Arzdan sonra açıklanan ilk finansal sonuçlar beklentiyi karşılamazsa fiyat yeniden fiyatlanır.
 - **İlk gün davranışı:** Kısa vadeli yatırımcıların ilk günlerdeki satışları, uzun vadeli değerden bağımsız fiyat baskısı yaratabilir.
 
-Hisse seçerken genel olarak hangi ölçütlere bakılabileceğini [hisse senedi nasıl seçilir](/blog/hisse-senedi-nasil-secilir) rehberinde ayrıntılı anlattık.
+Hisse seçerken genel olarak hangi ölçütlere bakılabileceğini [hisse senedi nasıl seçilir](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) rehberinde ayrıntılı anlattık.
 
 ## Özet
 

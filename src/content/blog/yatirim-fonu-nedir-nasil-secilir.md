@@ -79,7 +79,7 @@ TEFAS, fonları 1 (en düşük) ile 7 (en yüksek) arasında risk düzeylerine g
 - **3–4:** Tahvil ağırlıklı, orta vadeli birikim
 - **5–7:** Hisse ağırlıklı, uzun vadeli büyüme
 
-[Risk ve getiri ilişkisini](/blog/risk-getiri-iliskisi/) kavramadan fon seçmek, hangi hedefe attığını bilmeden ok çekmek gibidir.
+[Risk ve getiri ilişkisini](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) kavramadan fon seçmek, hangi hedefe attığını bilmeden ok çekmek gibidir.
 
 ### 3. Geçmiş Performans (ve Yanıltıcı Doğası)
 

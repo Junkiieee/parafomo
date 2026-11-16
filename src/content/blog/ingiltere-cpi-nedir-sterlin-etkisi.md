@@ -96,7 +96,7 @@ Piyasa bu rakamı önceden fiyatlamıştır; büyük bir sterlin hareketi beklem
 BoE faiz artırma sinyali verdiğinde, küresel "güvenli liman" talebi artabilir. Yatırımcılar dolar ve İngiliz tahvillerine yönelirken Türkiye gibi gelişmekte olan piyasalardan çıkış yapabilir; bu TL üzerinde hafif baskı yaratabilir.
 
 ### Dolar-Euro Dengesi
-Sterlin ile euro arasındaki hareket, EUR/USD paritesini de etkileyebilir. Euro'nun değer değişimi Türkiye'nin ihracat gelirlerine (ihracatın yaklaşık %40'ı AB'ye gidiyor) ve EUR/TRY kuruna yansır. [AB enflasyon verilerinin Türkiye'ye etkisi](/blog/ab-enflasyonu-cpi-nedir-turkiye-etkisi) hakkında daha fazlasını okuyabilirsin.
+Sterlin ile euro arasındaki hareket, EUR/USD paritesini de etkileyebilir. Euro'nun değer değişimi Türkiye'nin ihracat gelirlerine (ihracatın yaklaşık %40'ı AB'ye gidiyor) ve EUR/TRY kuruna yansır. [AB enflasyon verilerinin Türkiye'ye etkisi](/enflasyon-takvimi/) hakkında daha fazlasını okuyabilirsin.
 
 ### BIST 100 ve Yabancı Sermaye
 Küresel faiz ortamı sıkılaştıkça yabancı yatırımcılar BIST'ten de çıkabilir. Bu dolaylı etki küçük ama göz ardı edilmemeli.
@@ -124,7 +124,7 @@ Veriyi açıklama günü takip etmek istiyorsan şu adımları izle (yaklaşan t
 
 ## Faiz ve Enflasyon İlişkisini Anlamak
 
-İngiltere CPI'ının merkez bankası faiz kararıyla neden bu kadar iç içe olduğunu anlamak için faizin ne olduğunu bilmek gerekir. [Faiz Nedir? Ekonomiyi, Borsayı ve Dolar'ı Nasıl Etkiler?](/blog/faiz-nedir-ekonomiyi-nasil-etkiler) yazısı bu temeli güçlü biçimde aktarıyor.
+İngiltere CPI'ının merkez bankası faiz kararıyla neden bu kadar iç içe olduğunu anlamak için faizin ne olduğunu bilmek gerekir. [Faiz Nedir? Ekonomiyi, Borsayı ve Dolar'ı Nasıl Etkiler?](/tcmb-faiz-takvimi/) yazısı bu temeli güçlü biçimde aktarıyor.
 
 Benzer şekilde, ABD enflasyon verisinin küresel piyasalara etkisini merak ediyorsan [ABD CPI (Enflasyon) Verisi Nedir?](/blog/cekirdek-cpi-nedir-fed-enflasyon-gostergesi/) yazısı tam konuyu ele alıyor.
 

@@ -117,7 +117,7 @@ Enflasyona karşı korunma araçlarının kapsamlı bir listesi için [Enflasyon
 
 ## Bütçenizi Önce Sağlamlaştırın
 
-Altın veya dolara geçmeden önce temel finansal altyapıyı kurmak önemlidir. Aylık gelir-gider dengenizi net hâle getirmek için [50/30/20 bütçe yöntemini](/blog/butce-nasil-yapilir-50-30-20) inceleyebilir, beklenmedik giderler için de [acil durum fonu](/blog/acil-durum-fonu-nedir) oluşturabilirsiniz. Bu adımlar atılmadan yatırıma geçmek, sağlam temelsiz ev inşa etmeye benzer.
+Altın veya dolara geçmeden önce temel finansal altyapıyı kurmak önemlidir. Aylık gelir-gider dengenizi net hâle getirmek için [50/30/20 bütçe yöntemini](/blog/butce-nasil-yapilir-50-30-20) inceleyebilir, beklenmedik giderler için de [acil durum fonu](/blog/enflasyondan-nasil-korunur/) oluşturabilirsiniz. Bu adımlar atılmadan yatırıma geçmek, sağlam temelsiz ev inşa etmeye benzer.
 
 ## Özet
 

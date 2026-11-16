@@ -45,7 +45,7 @@ _Aşağıdaki metin veri öncesi yazılmıştır._ 26 Ağustos 2026'da piyasalar
 
 Çekirdek PCE (Core Personal Consumption Expenditures), **Fed'in kendi enflasyon hedeflemesinde kullandığı birincil gösterge**. Gıda ve enerji fiyatlarını dışarıda bıraktığı için daha istikrarlı bir resim çizer; manşet CPI'dan farklı olarak tüketici alışkanlıklarındaki değişimi de yansıtır.
 
-Fed'in resmi hedefi PCE'nin **%2 seviyesinde** seyretmesi. Bu seviyenin üzerinde kalan her veri, faiz indirimi için "henüz erken" mesajı verir. Konu hakkında daha fazla ayrıntı için [PCE nedir: Fed'in enflasyon göstergesi](/blog/pce-nedir-fed-enflasyon-gostergesi) yazısına bakabilirsiniz.
+Fed'in resmi hedefi PCE'nin **%2 seviyesinde** seyretmesi. Bu seviyenin üzerinde kalan her veri, faiz indirimi için "henüz erken" mesajı verir. Konu hakkında daha fazla ayrıntı için [PCE nedir: Fed'in enflasyon göstergesi](/fed-faiz-takvimi/) yazısına bakabilirsiniz.
 
 ## Q2 Büyüme Verisi: Ön Tahmin mi, Final mi?
 

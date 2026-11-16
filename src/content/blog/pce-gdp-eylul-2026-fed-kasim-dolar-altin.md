@@ -49,7 +49,7 @@ Fed'in resmi hedefi PCE'nin **yıllık bazda %2 seviyesinde** seyretmesi. Süreg
 
 Açıklama öncesi piyasa beklentisi aylık bazda yaklaşık **%0.2 artış**. Bu düzeyin belirgin şekilde üzerinde gelen bir baskılı PCE, Fed'i temkinli tutarken; beklentinin altında kalacak bir veri Fed kararı öncesinde güvercin (dovish) beklentileri güçlendirir.
 
-PCE'nin nasıl hesaplandığı ve Fed politikasıyla ilişkisi hakkında daha kapsamlı bir açıklama için [PCE nedir: Fed'in enflasyon göstergesi](/blog/pce-nedir-fed-enflasyon-gostergesi) yazısına bakabilirsiniz.
+PCE'nin nasıl hesaplandığı ve Fed politikasıyla ilişkisi hakkında daha kapsamlı bir açıklama için [PCE nedir: Fed'in enflasyon göstergesi](/fed-faiz-takvimi/) yazısına bakabilirsiniz.
 
 ## Q2 2026 Final GDP: Prelim'den Farkı Ne?
 

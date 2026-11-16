@@ -139,7 +139,7 @@ Bir buyback gerçekten pozitif sinyal içeriyorsa şu koşullar bir arada olmal�
 3. **Borç/EBITDA oranına bak:** 3x üzeriyse borçla finanse edilme riski var.
 4. **Serbest nakit akışını (FCF) kontrol et:** Geri alım bütçesi son iki yıllık FCF toplamıyla uyumlu mu?
 5. **İçeriden alımları ara:** Yönetim kurulu üyelerinin kendi alımlarını da KAP'tan takip et.
-6. **[Temel analizle hisseyi değerle:](/blog/hisse-senedi-nasil-secilir/)** Buyback güzel haberdir ama temel analiz olmadan karar vermek yanıltıcı olabilir.
+6. **[Temel analizle hisseyi değerle:](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/)** Buyback güzel haberdir ama temel analiz olmadan karar vermek yanıltıcı olabilir.
 
 ## Hisse Geri Alımının Riskleri
 

@@ -120,7 +120,7 @@ Bunlar kesin sınırlar değil, tarihsel gözlemlerdir. Hangi ülkenin kendi din
 
 ## Fed Kararı Takvimi ve DXY Stratejisi
 
-Fed yılda 8 kez toplanır. [FOMC toplantı takvimi](/blog/fomc-toplanti-tutanaklari-nedir) çıkış zamanını öğrenmek için kritiktir. Toplantı öncesinde:
+Fed yılda 8 kez toplanır. [FOMC toplantı takvimi](/fed-faiz-takvimi/) çıkış zamanını öğrenmek için kritiktir. Toplantı öncesinde:
 
 1. **Beklenti okuma**: CME FedWatch aracıyla piyasanın faiz ihtimali tahminini izleyin
 2. **DXY konumu**: DXY son 30 günde ne yaptı? Beklentiyi zaten fiyatladı mı?

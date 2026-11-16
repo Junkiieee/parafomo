@@ -122,7 +122,7 @@ Carry trade diğer popüler strateji yaklaşımlarıyla nasıl kıyaslanır?
 | **Temettü Yatırımı** | Düzenli nakit akışı | Temettü kesilmesi | Uzun vadeli |
 | **Arbitraj** | Anlık fiyat farkı | Yürütme ve karşı taraf riski | Çok kısa vadeli |
 
-Carry trade, faiz farklarının yüksek ve piyasa volatilitesinin düşük olduğu dönemlerde cazip görünür. Volatilite tırmandığında ise ilk terk edilen strateji olmaya adaydır. [Risk ve getiri ilişkisini](/blog/risk-getiri-iliskisi) anlatan yazımız bu dengeleme sanatını daha ayrıntılı ele alıyor.
+Carry trade, faiz farklarının yüksek ve piyasa volatilitesinin düşük olduğu dönemlerde cazip görünür. Volatilite tırmandığında ise ilk terk edilen strateji olmaya adaydır. [Risk ve getiri ilişkisini](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) anlatan yazımız bu dengeleme sanatını daha ayrıntılı ele alıyor.
 
 ## Bireysel Yatırımcı Carry Trade Yapmalı mı?
 

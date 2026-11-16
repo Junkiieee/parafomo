@@ -80,7 +80,7 @@ Toplantıdan haftalar önce ekonomistler verileri inceler: enflasyon (CPI, PCE),
 ### 3. Karar ve İletişim
 Toplantı sonrası bir **basın açıklaması** (statement) yayımlanır. Bu metin, sadece kararı değil, gerekçeleri ve gelecekteki olası adımları da içerir. Piyasalar bu açıklamayı kelime kelime analiz eder — "endişe" mi "derin endişe" mi gibi nüanslar bile fiyatlara yansır.
 
-Birkaç hafta sonra **toplantı tutanakları** (minutes) açıklanır; her üyenin görüşü ayrıntılandırılır. [FOMC tutanaklarının nasıl okunacağını buradan öğrenebilirsin](/blog/fomc-toplanti-tutanaklari-nedir).
+Birkaç hafta sonra **toplantı tutanakları** (minutes) açıklanır; her üyenin görüşü ayrıntılandırılır. [FOMC tutanaklarının nasıl okunacağını buradan öğrenebilirsin](/fed-faiz-takvimi/).
 
 ## Merkez Bankaları Hangi Araçları Kullanır?
 

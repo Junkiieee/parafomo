@@ -74,7 +74,7 @@ ISM Non-Manufacturing PMI dört alt endeksten oluşur. Her biri ekonominin farkl
 | **İstihdam** | İşe alım / çıkarım dengesi | Evet — NFP için öncü sinyal |
 | **Tedarikçi Teslimatı** | Zincir sıkışıklığı / rahatlama | Kısmi — enflasyon baskısının habercisi |
 
-Analistler için en kritik iki bileşen **Yeni Siparişler** ve **İstihdam**'dır. Yeni siparişler yüksekse şirketler büyümeye devam edecek, istihdam güçlüyse [Fed'in faiz politikası](/blog/pce-nedir-fed-enflasyon-gostergesi) sıkı kalmaya devam edebilir.
+Analistler için en kritik iki bileşen **Yeni Siparişler** ve **İstihdam**'dır. Yeni siparişler yüksekse şirketler büyümeye devam edecek, istihdam güçlüyse [Fed'in faiz politikası](/fed-faiz-takvimi/) sıkı kalmaya devam edebilir.
 
 ## ISM İmalat PMI ile Farkı: Hangisi Daha Önemli?
 
@@ -108,7 +108,7 @@ Piyasanın gözlemlediği olası senaryolar:
 ### Senaryo 2: PMI 50 Civarı (49–51)
 - Belirsizlik artar, büyük bir piyasa hareketi beklenmez
 - Fed beklentileri için belirleyici olmaz
-- Gözler bir sonraki büyük veriye ya da [FOMC tutanaklarına](/blog/fomc-toplanti-tutanaklari-nedir) kayar
+- Gözler bir sonraki büyük veriye ya da [FOMC tutanaklarına](/fed-faiz-takvimi/) kayar
 
 ### Senaryo 3: PMI Zayıf Gelir (48 altı)
 - Hizmetler sektörü de daralıyor → resesyon riski ciddi hale gelir

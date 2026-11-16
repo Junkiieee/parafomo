@@ -30,7 +30,7 @@ Evlilik kredisi halk arasındaki adı; resmî adı **"Evlenecek Gençlerin Deste
 Bunun bir banka ürünü olmadığını baştan bilmek önemli:
 
 - **Faiz yok:** Yükümlülüklere uyduğun sürece aldığın tutarın aynısını geri ödersin.
-- **Şartlar arasında kredi notu yok:** Resmî başvuru koşulları banka kredisindeki gibi [Findeks kredi notu](/blog/findeks-kredi-notu-nedir-nasil-yukselir) saymaz; yaş, gelir, taşınmaz ve adli sicil gibi kriterlere bakar.
+- **Şartlar arasında kredi notu yok:** Resmî başvuru koşulları banka kredisindeki gibi [Findeks kredi notu](/kredi-hesaplama/) saymaz; yaş, gelir, taşınmaz ve adli sicil gibi kriterlere bakar.
 - **Eğitim zorunlu:** Nikâhtan önce ve sonra Bakanlığın eğitim/danışmanlık programına katılma şartı var.
 
 ## Evlilik kredisi 2026 ne kadar?

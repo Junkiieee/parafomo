@@ -146,7 +146,7 @@ Trend çizgisi çizmek için en az iki dip noktayı (yükselen trend) ya da iki 
 7. **Hacmi kontrol et:** Yüksek hacimle kırılan destek ya da direnç, düşük hacimli kırılmadan daha güçlü bir sinyal sayılır.
 8. **Risk/ödül oranını belirle:** Alım noktası, stop-loss ve hedef fiyatı tanımlamadan işleme girme.
 
-Borsaya yeni adım atıyorsan [Borsaya Nasıl Başlanır?](/blog/borsaya-nasil-baslanir/) rehberi iyi bir başlangıç noktasıdır.
+Borsaya yeni adım atıyorsan [Borsaya Nasıl Başlanır?](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) rehberi iyi bir başlangıç noktasıdır.
 
 ## Teknik Analizin Sınırları
 
@@ -157,7 +157,7 @@ Teknik analiz güçlü bir araç ama sihirli değil:
 - **Kendi kendini gerçekleştiren kehanet riski:** Çok kişi aynı seviyeyi izlediğinde seviye gerçekmiş gibi davranılabilir; bu da piyasayı yapay yönlendirebilir.
 - **Hacim olmadan eksiktir:** Türkiye'deki bazı hisselerde likidite düşüktür; düşük hacimli hareketler yanıltıcı olabilir.
 
-Hisse seçimi için temel analiz uygulamak istiyorsan [Hisse Senedi Nasıl Seçilir?](/blog/hisse-senedi-nasil-secilir/) yazısını inceleyebilirsin.
+Hisse seçimi için temel analiz uygulamak istiyorsan [Hisse Senedi Nasıl Seçilir?](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) yazısını inceleyebilirsin.
 
 ## Özet
 

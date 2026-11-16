@@ -135,7 +135,7 @@ Pek çok yatırımcı merak ediyor: "Halka arzı kaçırdım, şimdi ne yapmalı
 | Zamanlama riski | Kotasyon günü volatilitesi | İstediğin zaman |
 | Bilgi avantajı | Sadece izahname | Piyasa fiyat geçmişi var |
 
-Halka arz fiyatının "ucuz" olduğu varsayımı her zaman doğru değildir. Kimi zaman borsada işlem görmeye başladıktan sonra şirket hakkında daha fazla bilgiye ulaşmak mümkün olur. [Halka arz yatırım rehberimizde](/blog/halka-arz-nedir-ipo) bu süreci başından sonuna anlattık.
+Halka arz fiyatının "ucuz" olduğu varsayımı her zaman doğru değildir. Kimi zaman borsada işlem görmeye başladıktan sonra şirket hakkında daha fazla bilgiye ulaşmak mümkün olur. [Halka arz yatırım rehberimizde](/blog/halka-arza-nasil-katilinir-esit-dagitim-lot-hesabi/) bu süreci başından sonuna anlattık.
 
 ## BIST'te İnşaat ve Malzeme Hisseleri
 
@@ -143,7 +143,7 @@ ALBTN, Borsa İstanbul'un inşaat malzemeleri segmentinde işlem gören şirketl
 
 [BIST 100 endeksi rehberimizde](/blog/bist-100-nedir-nasil-yatirim-yapilir) Türk borsasının genel yapısını ve sektörel dağılımını inceleyebilirsiniz.
 
-İnşaat hisselerine yatırım yaparken portföyde tek sektöre aşırı yoğunlaşmaktan kaçınmak önemlidir. [Hisse senedi seçim rehberimiz](/blog/hisse-senedi-nasil-secilir) size temel analiz çerçevesini adım adım aktarıyor.
+İnşaat hisselerine yatırım yaparken portföyde tek sektöre aşırı yoğunlaşmaktan kaçınmak önemlidir. [Hisse senedi seçim rehberimiz](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) size temel analiz çerçevesini adım adım aktarıyor.
 
 ## KAP'tan Şirketi Nasıl Takip Edersiniz?
 

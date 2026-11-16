@@ -66,7 +66,7 @@ Bu "ücret-fiyat sarmalı," 1970'lerde ABD'yi ve 1990'larda Türkiye'yi kasıp k
 
 ### PCE ve CPI'dan Farkı
 
-[PCE (Kişisel Tüketim Harcamaları) endeksi](/blog/pce-nedir-fed-enflasyon-gostergesi) ve CPI geriye bakar: dün satılan malların fiyatını ölçer. Ortalama saatlik kazançlar ise **üretim tarafındaki baskıyı** gösterir; bu onu **öncü gösterge** yapar. Yani yüksek ücret artışı, önümüzdeki aylarda PCE/CPI baskısına dönüşebilir.
+[PCE (Kişisel Tüketim Harcamaları) endeksi](/fed-faiz-takvimi/) ve CPI geriye bakar: dün satılan malların fiyatını ölçer. Ortalama saatlik kazançlar ise **üretim tarafındaki baskıyı** gösterir; bu onu **öncü gösterge** yapar. Yani yüksek ücret artışı, önümüzdeki aylarda PCE/CPI baskısına dönüşebilir.
 
 ## Veriyi Nasıl Okumalısın?
 

@@ -105,7 +105,7 @@ Tersinden de geçerlidir: her ETF bir endeks fonu değildir. Sektör, emtia, kal
 3. Birikimlerini düzenli ve disiplinli şekilde büyütmek isteyenler
 4. Aktif fonların yüksek masraflarından kaçınmak isteyenler
 
-Bireysel hisse seçmek ve şirket analizi yapmak istiyorsanız [hisse senedi nasıl seçilir](/blog/hisse-senedi-nasil-secilir/) rehberimize göz atın; endeks fonu ile bireysel hisseleri harmanlayan karma portföyler de oldukça yaygındır.
+Bireysel hisse seçmek ve şirket analizi yapmak istiyorsanız [hisse senedi nasıl seçilir](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) rehberimize göz atın; endeks fonu ile bireysel hisseleri harmanlayan karma portföyler de oldukça yaygındır.
 
 ## ETF Türleri
 
@@ -160,7 +160,7 @@ ETF almak için bankanızın yatırım hesabını ya da bağımsız bir aracı k
 | **ETF çeşidi** | BIST ETF'leri | BIST + bazılarında yabancı ETF |
 | **Ek hizmetler** | Sınırlı analiz | Araştırma raporları, grafikler |
 
-Yeni başlıyorsanız ve zaten bir bankada hesabınız varsa oradan başlamak en hızlı yoldur. Düzenli yatırım yapacak ve maliyetleri düşük tutmak istiyorsanız komisyonları karşılaştırıp bağımsız aracı kurumlara da bakın. Hesap açma sürecinin ayrıntıları için [borsaya nasıl başlanır](/blog/borsaya-nasil-baslanir/) rehberimizi okuyabilirsiniz.
+Yeni başlıyorsanız ve zaten bir bankada hesabınız varsa oradan başlamak en hızlı yoldur. Düzenli yatırım yapacak ve maliyetleri düşük tutmak istiyorsanız komisyonları karşılaştırıp bağımsız aracı kurumlara da bakın. Hesap açma sürecinin ayrıntıları için [borsaya nasıl başlanır](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) rehberimizi okuyabilirsiniz.
 
 ### Adım 1 — Hesap açın
 
@@ -172,7 +172,7 @@ SPK lisanslı bir aracı kurumda veya bankanızda yatırım hesabı açın. Sür
 
 ### Adım 2 — Hedefinizi belirleyin
 
-Türkiye odaklıysanız BIST 30 veya BIST 100 endeks ETF'i; küresel çeşitlendirme istiyorsanız yabancı endeks ETF'leri veya TEFAS'taki yurt dışı endeks fonları; enflasyona karşı denge arıyorsanız altın ETF'i öne çıkar. İkisinin karışımını isteyenler her kategoriden birer araç seçebilir. [Risk toleransınızı ve yatırım vadenizi](/blog/risk-getiri-iliskisi/) netleştirmeden ürün seçmeyin.
+Türkiye odaklıysanız BIST 30 veya BIST 100 endeks ETF'i; küresel çeşitlendirme istiyorsanız yabancı endeks ETF'leri veya TEFAS'taki yurt dışı endeks fonları; enflasyona karşı denge arıyorsanız altın ETF'i öne çıkar. İkisinin karışımını isteyenler her kategoriden birer araç seçebilir. [Risk toleransınızı ve yatırım vadenizi](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) netleştirmeden ürün seçmeyin.
 
 ### Adım 3 — Para yatırın ve ETF'yi arayın
 
@@ -222,7 +222,7 @@ Türkiye'de borsa yatırım fonlarının vergilendirmesi fon türüne göre değ
 
 **Toplu alım:** Tüm sermayenizi tek seferde yatırırsınız. Basittir ama zamanlama riski taşır; tepeden girdiyseniz uzun süre kâğıt üzerinde zarar görebilirsiniz.
 
-**Düzenli alım (DCA):** Her ay belirli bir tutarla alım yaparsınız. Fiyat düşükken otomatik olarak daha fazla pay, yüksekken daha az pay alırsınız; zamanla ortalama maliyet dengelenir. Uzun vadeli yatırımcılar için en sağlam yaklaşım budur. Ayrıntılar için [DCA (maliyet ortalaması) rehberimize](/blog/dca-nedir-maliyet-ortalamasi/) bakabilirsiniz.
+**Düzenli alım (DCA):** Her ay belirli bir tutarla alım yaparsınız. Fiyat düşükken otomatik olarak daha fazla pay, yüksekken daha az pay alırsınız; zamanla ortalama maliyet dengelenir. Uzun vadeli yatırımcılar için en sağlam yaklaşım budur. Ayrıntılar için [DCA (maliyet ortalaması) rehberimize](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) bakabilirsiniz.
 
 ETF'leri portföyünüzün tamamı olarak değil, bir bileşeni olarak düşünmek de mantıklıdır. [Portföy çeşitlendirmesi rehberimizde](/blog/portfoy-cesitlendirmesi-nasil-yapilir/) farklı varlık sınıflarını nasıl bir arada tutacağınızı görebilirsiniz.
 

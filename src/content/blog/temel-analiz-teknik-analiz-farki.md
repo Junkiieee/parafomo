@@ -37,7 +37,7 @@ Temel analizde şunlara bakılır:
 
 Temel analizin yanıtladığı soru **"hangi şirket?"** dir. Uzun vadeli bakış açısıyla hangi şirketin değer yaratacağını bulmaya odaklanır.
 
-Temel analiz konusunda daha fazla ayrıntı için [Hisse Senedi Nasıl Seçilir? Temel Analiz Rehberi](/blog/hisse-senedi-nasil-secilir/) yazımıza göz atabilirsiniz.
+Temel analiz konusunda daha fazla ayrıntı için [Hisse Senedi Nasıl Seçilir? Temel Analiz Rehberi](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) yazımıza göz atabilirsiniz.
 
 ## Teknik Analiz Nedir?
 
@@ -130,7 +130,7 @@ BIST'te faaliyet gösteren yatırımcılar için birkaç bağlama özgü not:
 - **Likidite:** BIST'te işlem hacmi az olan küçük şirket hisselerinde teknik analiz sinyalleri daha güvenilmez olabilir; ince piyasada fiyat kolayca manipüle edilebilir.
 - **Döviz ve faiz baskısı:** Makro koşulların dramatik değişebildiği Türkiye'de teknik analizin "normal koşullar" varsayımına dayanan göstergeleri daha sık yanlış sinyal üretebilir. Temel analiz ve makro bağlamı göz ardı etmemek önemlidir.
 
-[Borsaya nasıl başlanır?](/blog/borsaya-nasil-baslanir/) yazımızda hesap açmadan ilk alıma kadar pratik adımları ele aldık.
+[Borsaya nasıl başlanır?](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) yazımızda hesap açmadan ilk alıma kadar pratik adımları ele aldık.
 
 ## Adım Adım: Analiz Sürecinizi Kurun
 
@@ -143,7 +143,7 @@ Temel ve teknik analizin her ikisini de sürece dahil eden pratik bir çerçeve:
 5. **Giriş kararı ve stop-loss belirle:** "Fiyat X TL'ye düşerse alacağım, Y TL'nin altına inerse zararı keseceğim" planını önceden yap.
 6. **Portföyde koy ve izle:** Temel değerlendirmeni yılda en az bir kez güncelle; teknik durumu ise belirlediğin aralıklarla kontrol et.
 
-[Risk ve getiri ilişkisi](/blog/risk-getiri-iliskisi/) konusunu da işledik — hangi varlık sınıfını seçeceğini ve portföyünü nasıl dengeleyeceğini okumak için tavsiye ederiz.
+[Risk ve getiri ilişkisi](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) konusunu da işledik — hangi varlık sınıfını seçeceğini ve portföyünü nasıl dengeleyeceğini okumak için tavsiye ederiz.
 
 ## Özet
 

@@ -125,7 +125,7 @@ Tüm paranızı tek bir varlık sınıfına yatırmak düşüş dönemlerini kat
 
 ### 3. Stop-Loss Emirleri Kullanın
 
-Özellikle yüksek volatiliteli hisse veya sektörlerde, önceden belirlenmiş bir zarar sınırı belirlemek duygusal kararları önler. [Stop-loss nasıl kullanılır](/blog/stop-loss-nedir-zarar-kesme/) rehberine göz atabilirsiniz.
+Özellikle yüksek volatiliteli hisse veya sektörlerde, önceden belirlenmiş bir zarar sınırı belirlemek duygusal kararları önler. [Stop-loss nasıl kullanılır](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) rehberine göz atabilirsiniz.
 
 ### 4. Kademeli Alım Yapın (DCA)
 

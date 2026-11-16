@@ -8,6 +8,23 @@ const CANONICAL_HOST = 'parafomo.com';
 
 // Birleştirilen / kaldırılan sayfalar → kalıcı yeni adres (sonda '/' ile).
 const REDIRECTS = {
+  // 2026-11-17 (R30): Google'ın 'Tarandı - dizine eklenmedi' dediği 22 genel yazı → aynı niyetli güçlü sayfa.
+  '/blog/ab-enflasyonu-cpi-nedir-turkiye-etkisi/': '/enflasyon-takvimi/',
+  '/blog/aciga-satis-nedir-short-selling/': '/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/',
+  '/blog/acil-durum-fonu-nedir/': '/blog/enflasyondan-nasil-korunur/',
+  '/blog/bitcoin-nedir-nasil-alinir/': '/bitcoin-getiri/',
+  '/blog/borsaya-nasil-baslanir/': '/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/',
+  '/blog/dca-nedir-maliyet-ortalamasi/': '/blog/turkiyede-en-iyi-yatirim-araclari-2026/',
+  '/blog/ethereum-nedir/': '/bitcoin-getiri/',
+  '/blog/faiz-nedir-ekonomiyi-nasil-etkiler/': '/tcmb-faiz-takvimi/',
+  '/blog/findeks-kredi-notu-nedir-nasil-yukselir/': '/kredi-hesaplama/',
+  '/blog/fomc-toplanti-tutanaklari-nedir/': '/fed-faiz-takvimi/',
+  '/blog/halka-arz-nedir-ipo/': '/blog/halka-arza-nasil-katilinir-esit-dagitim-lot-hesabi/',
+  '/blog/hisse-senedi-nasil-secilir/': '/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/',
+  '/blog/kriz-doneminde-butce-nasil-yonetilir/': '/blog/enflasyondan-nasil-korunur/',
+  '/blog/pce-nedir-fed-enflasyon-gostergesi/': '/fed-faiz-takvimi/',
+  '/blog/risk-getiri-iliskisi/': '/blog/turkiyede-en-iyi-yatirim-araclari-2026/',
+  '/blog/stop-loss-nedir-zarar-kesme/': '/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/',
   // 2026-11-17: videolarda ekranda yazılan kısa adresler (Shorts'ta linkler tıklanmıyor; yazılabilir adres lazım).
   '/zam/': '/emekli-zammi-hesaplama/', '/zam': '/emekli-zammi-hesaplama/',
   '/refah/': '/emekli-refah-payi-seyyanen-zam/', '/refah': '/emekli-refah-payi-seyyanen-zam/',

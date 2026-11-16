@@ -122,7 +122,7 @@ gibi ETF'leri çok düşük maliyetle tutabilirsiniz. Yurt içi fonlara kıyasla
 1. **Yurt içi fon seçecekseniz:** Tefas'a girin → "ABD", "Amerika" veya "S&P 500" ile arama yapın → en düşük yönetim ücretli fonu karşılaştırın
 2. **Uluslararası ETF tercih edecekseniz:** Interactive Brokers'ta hesap açın → kimlik doğrulayın (1–3 gün) → USD'ye geçin → VOO veya IVV satın alın
 3. **Kur maliyetini hesaplayın:** TL'den USD'ye geçişte banka/kurum spread'i geliri etkiler
-4. **Düzenli alım planı yapın:** Her ay aynı miktarı yatırmanın (DCA) avantajlarını [maliyet ortalaması nedir](/blog/dca-nedir-maliyet-ortalamasi) yazısından okuyabilirsiniz
+4. **Düzenli alım planı yapın:** Her ay aynı miktarı yatırmanın (DCA) avantajlarını [maliyet ortalaması nedir](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) yazısından okuyabilirsiniz
 
 ## Kur Riski: TL Yatırımcısı için Hem Fırsat Hem Tehdit
 

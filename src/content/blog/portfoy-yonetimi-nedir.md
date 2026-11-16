@@ -83,7 +83,7 @@ Hedef netleştikçe portföyün yapısı da netleşir. Emeklilik için 25 yıl z
 
 Portföyün yüzde kaç değer kaybetse uyumayı kesersin? Bu soru basit ama kritiktir. Risk toleransın hem finansal (ne kadar kaybı kaldırabilirsin?) hem de psikolojik (ne kadar kaybı kaldırabilirmiş gibi hissedersin?) boyutu vardır.
 
-[Risk ve getiri ilişkisi](/blog/risk-getiri-iliskisi) yazımızda bu kavramı derinlemesiyle işledik; portföy yönetimine başlamadan önce okumana değer.
+[Risk ve getiri ilişkisi](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) yazımızda bu kavramı derinlemesiyle işledik; portföy yönetimine başlamadan önce okumana değer.
 
 ### 3. Varlık Dağılımı (Asset Allocation)
 

@@ -51,7 +51,7 @@ Faiz ve kur arasındaki ilişki doğrudandır. Bir ülkedeki faiz oranları yük
 
 Tersine, faiz düşükken TL daha az cazip olur; sermaye çıkışı yaşanır ve dolar yükselir.
 
-[Faiz nedir ve kurları nasıl etkiler](/blog/faiz-nedir-ekonomiyi-nasil-etkiler) yazımızda bu mekanizmayı daha geniş bir perspektiften ele aldık.
+[Faiz nedir ve kurları nasıl etkiler](/tcmb-faiz-takvimi/) yazımızda bu mekanizmayı daha geniş bir perspektiften ele aldık.
 
 ### 3. Enflasyon Farkı
 

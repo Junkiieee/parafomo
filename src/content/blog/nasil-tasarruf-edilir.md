@@ -130,7 +130,7 @@ Banka, kredi kartı ve market zincirlerinin puan ve indirim programları: genell
 
 ### 18. Acil durum fonu oluşturun — ve dokunmayın
 
-Tasarrufun en temel katmanı: 3–6 aylık gideri karşılayan likit fon. Bu olmadan her beklenmedik gider mevcut birikimi silip sıfırlar. Neden bu kadar kritik olduğu burada: [Acil Durum Fonu Nedir?](/blog/acil-durum-fonu-nedir).
+Tasarrufun en temel katmanı: 3–6 aylık gideri karşılayan likit fon. Bu olmadan her beklenmedik gider mevcut birikimi silip sıfırlar. Neden bu kadar kritik olduğu burada: [Acil Durum Fonu Nedir?](/blog/enflasyondan-nasil-korunur/).
 
 ### 19. Yıllık gider takvimi oluşturun
 

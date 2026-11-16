@@ -128,7 +128,7 @@ Engelli bir aile üyesi varsa, SED'den bağımsız olarak [engelli maaşı](/eng
 SED süreli ama kalıcı bir gelir değil. Onay süresi bitince yeniden değerlendiriliyor ve aile durumu düzelince kesiliyor. Bu yüzden desteği bütçede "geçici gelir" olarak görmek daha sağlıklı:
 
 - Önce çocuğun zorunlu giderlerini (okul, beslenme, giyim, servis) karşıla. Destek zaten bu kalemler için veriliyor.
-- Mümkünse küçük de olsa bir yastık biriktir. [Acil durum fonu rehberimiz](/blog/acil-durum-fonu-nedir) küçük tutarlarla nasıl başlanacağını anlatıyor.
+- Mümkünse küçük de olsa bir yastık biriktir. [Acil durum fonu rehberimiz](/blog/enflasyondan-nasil-korunur/) küçük tutarlarla nasıl başlanacağını anlatıyor.
 - Gelir-gider dengesini kurmak için [50/30/20 bütçe yöntemi](/blog/butce-nasil-yapilir-50-30-20) basit bir başlangıç noktası.
 
 ## Özet

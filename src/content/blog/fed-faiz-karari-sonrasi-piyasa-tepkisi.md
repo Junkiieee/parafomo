@@ -137,7 +137,7 @@ Adım adım ne yapmalısın:
 
 - **CME FedWatch Tool:** Vadeli işlem piyasasından elde edilen olasılıklar; faiz kararını beklentilerle kıyaslamak için en pratik araç.
 - **Fed Resmi Sitesi (federalreserve.gov):** Kararı, politika metnini, Dot Plot'u, basın toplantısı videosunu birlikte bulabilirsin.
-- **FOMC Tutanakları:** Karardan 3 hafta sonra yayımlanır; toplantıdaki tartışmaların detayını gösterir. [FOMC tutanakları ne işe yarar](/blog/fomc-toplanti-tutanaklari-nedir) yazımızda bu konuyu derinlemesine ele aldık.
+- **FOMC Tutanakları:** Karardan 3 hafta sonra yayımlanır; toplantıdaki tartışmaların detayını gösterir. [FOMC tutanakları ne işe yarar](/fed-faiz-takvimi/) yazımızda bu konuyu derinlemesine ele aldık.
 - **Investing.com Ekonomik Takvim:** Türkçe arayüzü ve anlık bildirim seçeneği ile her Fed toplantısını takip edebilirsin.
 
 ## Özet

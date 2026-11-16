@@ -117,7 +117,7 @@ Aynı tutar ve vadede ihtiyaç kredisi yaklaşık 28 bin TL daha pahalıya geliy
 
 ## Kredi başvurusundan önce yapman gerekenler
 
-1. **Kredi notunu kontrol et.** Bankaların teklif edeceği faiz ve onay ihtimali büyük ölçüde Findeks notuna bağlı. Not aralıklarını ve notu yükseltmenin yollarını [Findeks kredi notu rehberimizde](/blog/findeks-kredi-notu-nedir-nasil-yukselir) anlattık.
+1. **Kredi notunu kontrol et.** Bankaların teklif edeceği faiz ve onay ihtimali büyük ölçüde Findeks notuna bağlı. Not aralıklarını ve notu yükseltmenin yollarını [Findeks kredi notu rehberimizde](/kredi-hesaplama/) anlattık.
 2. **Taksit/gelir oranını hesapla.** Taksitin net gelirinin üçte birini geçmemesi, beklenmedik giderlere yer bırakır.
 3. **En az 3 bankadan teklif al** ve akdi faizi değil, **yıllık maliyet oranını** ve toplam geri ödemeyi karşılaştır.
 4. **Masrafları sor.** TCMB düzenlemesine göre kredi tahsis ücreti anaparanın binde 5'ini geçemez (100 bin TL için en fazla 500 TL); rehin ve ekspertizde yalnızca üçüncü kişilere ödenen ücret yansıtılabilir.

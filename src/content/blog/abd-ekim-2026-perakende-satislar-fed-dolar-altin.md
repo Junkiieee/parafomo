@@ -78,7 +78,7 @@ Bu ne demek? Eylül'deki benzin kaynaklı şişkinlik Ekim'de büyük ölçüde 
 
 Fed, Eylül'de faizi 25 baz puan artırarak **%3,75-4,00** aralığına çekmiş, 28 Ekim'de bu bandı 10'a 2 oyla sabit tutmuştu ([Fed faiz takvimi](/fed-faiz-takvimi)). Sıradaki karar **9 Aralık 2026**, Türkiye saatiyle 22:00'de, yeni projeksiyonlar ve nokta grafiğiyle birlikte gelecek.
 
-Fed için tablo şöyle: istihdam Ekim'de beklentinin üzerinde 165 bin arttı, enflasyon hedefin üzerinde. Bu ortamda tüketim de güçlü kalırsa "talep enflasyonu besliyor" kaygısı artar. Tüketim belirgin soğursa Fed'in ek artış için aceleye gerek görmemesi kolaylaşır. Ertesi gün açıklanacak tutanaklar da Fed üyelerinin bu konudaki tonunu gösterecek; tutanakların nasıl okunduğunu [FOMC toplantı tutanakları nedir](/blog/fomc-toplanti-tutanaklari-nedir) yazımızda anlattık.
+Fed için tablo şöyle: istihdam Ekim'de beklentinin üzerinde 165 bin arttı, enflasyon hedefin üzerinde. Bu ortamda tüketim de güçlü kalırsa "talep enflasyonu besliyor" kaygısı artar. Tüketim belirgin soğursa Fed'in ek artış için aceleye gerek görmemesi kolaylaşır. Ertesi gün açıklanacak tutanaklar da Fed üyelerinin bu konudaki tonunu gösterecek; tutanakların nasıl okunduğunu [FOMC toplantı tutanakları nedir](/fed-faiz-takvimi/) yazımızda anlattık.
 
 ## Ekim Perakende Verisini Adım Adım Nasıl Okumalı?
 

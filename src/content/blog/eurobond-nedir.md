@@ -115,7 +115,7 @@ Kısa vadeli ihtiyaç için mevduat daha güvenli. 5 yıl veya üzeri için euro
 
 Eurobond tek başına bir portföy stratejisi değil, tamamlayıcı bir unsurdur. Örneğin:
 
-- Portföyünün yüzde 20-30'unu eurobond'a yatırıp geri kalanını [dolar maliyet ortalaması (DCA) yöntemiyle](/blog/dca-nedir-maliyet-ortalamasi) hisse senedi veya fona dağıtabilirsin.
+- Portföyünün yüzde 20-30'unu eurobond'a yatırıp geri kalanını [dolar maliyet ortalaması (DCA) yöntemiyle](/blog/turkiyede-en-iyi-yatirim-araclari-2026/) hisse senedi veya fona dağıtabilirsin.
 - Özellikle 5+ yıl dokunamayacağın "emeklilik birikimi" gibi bölümler için sabit getirili araçlar portföy oynaklığını azaltır.
 - Yaklaşan büyük bir harcama varsa (ev, eğitim) eurobond yerine likidite yüksek mevduat ya da kısa vadeli tahvil tercih et.
 

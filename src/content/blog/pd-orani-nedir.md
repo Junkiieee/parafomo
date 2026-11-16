@@ -107,7 +107,7 @@ Dört temel kombinasyon:
 5. **Son 3-5 yıllık P/D ortalamasına bakın.** Hissenin tarihsel P/D aralığının dışına çıkıp çıkmadığını kontrol edin.
 6. **F/K ve ROE ile birlikte değerlendirin.** Tek göstergeye yaslanarak karar vermeyin.
 
-[Hisse senedi seçiminde kullandığınız diğer kriterleri ve adım adım temel analiz rehberini](/blog/hisse-senedi-nasil-secilir/) inceleyebilirsiniz.
+[Hisse senedi seçiminde kullandığınız diğer kriterleri ve adım adım temel analiz rehberini](/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/) inceleyebilirsiniz.
 
 ## P/D Oranının Sınırlamaları
 
