@@ -64,6 +64,8 @@ const ydKesin = yd.tebligOrani != null || yd.ekimVerisiGeldi;
 const auYeni = (asgari as any).yeni;
 const auNet = (auYeni ?? asgari.guncel).net as number;
 const ZAM: { slug: string; ad: string; deger: string }[] = [
+  { slug: 'emekli-refah-payi-seyyanen-zam', ad: 'Refah payı / seyyanen zam', deger: 'senaryo' },
+  { slug: 'en-dusuk-emekli-maasi', ad: 'En düşük emekli maaşı', deger: `₺${(em as any).enDusukEmekliAyligi.tutar.toLocaleString('tr-TR')}` },
   { slug: 'yeniden-degerleme-orani', ad: `Yeniden değerleme ${yd.hedefYil}`, deger: `${ydKesin ? '' : '≈'}%${nf1(ydOran, ydKesin ? 2 : 1)}` },
   { slug: 'emekli-zammi-hesaplama', ad: 'Emekli zammı (Ocak)', deger: remaining === 0 ? `%${nf1(cumKnown * 100, 2)}` : `≈%${nf1(sskProj * 100)}` },
   { slug: 'memur-zammi-hesaplama', ad: 'Memur zammı (Ocak)', deger: `${remaining === 0 ? '' : '≈'}%${nf1(memurProj.zam * 100, remaining === 0 ? 2 : 1)}` },
@@ -96,9 +98,8 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
         <span class="eyebrow"><span class="pulse"></span> Bağımsız finans yayını</span>
         <h1>Parana <span class="accent">akıl</span> kat.</h1>
         <p class="lede soft">
-          Yatırım, borsa, kripto ve kişisel finans… Karmaşık konuları sade ve uygulanabilir
-          rehberlere çeviriyoruz. Reklam yok, taraf yok — sadece paranı korumana ve
-          büyütmene yardım eden net bilgi.
+          Maaş, zam, emekli aylığı, altın ve dolar… Paranı ilgilendiren rakamları resmî kaynaktan,
+          sade Türkçe ve hesaplayıcılarla veriyoruz. Taraf yok, tavsiye yok — sadece net rakam.
         </p>
         <div class="hero-cta">
           <a href="/blog" class="btn btn-primary">Yazıları Keşfet</a>
@@ -107,7 +108,7 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
         <div class="hero-stats">
           <div><strong>{postCount}+</strong><span class="muted">Derinlemesine rehber</span></div>
           <div><strong>6</strong><span class="muted">Konu başlığı</span></div>
-          <div><strong>%100</strong><span class="muted">Bağımsız içerik</span></div>
+          <div><strong>Resmî</strong><span class="muted">kaynaklı rakamlar</span></div>
         </div>
       </div>
       <div class="hero-visual">
@@ -119,6 +120,22 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
           <div class="tc-foot"><span class="muted">Son 24 saat değişimi</span><span data-updated class="muted">{tickInit.stamp} TSİ</span></div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- 2027 ZAM SEZONU (2026-11-17: en çok aranan konu, hero'nun hemen altında) -->
+  <section class="container section zam-section">
+    <div class="section-head">
+      <h2>2027 Zam Sezonu</h2>
+      <a href="/blog/2027-zamlari-yeniden-degerleme-orani-rehberi/" class="muted-link">2027'de neler zamlanacak? →</a>
+    </div>
+    <div class="zam-grid">
+      {ZAM.map((z) => (
+        <a href={`/${z.slug}/`} class="zam-item card">
+          <span class="zam-ad">{z.ad}</span>
+          <span class="zam-deger">{z.deger}</span>
+        </a>
+      ))}
     </div>
   </section>
 
@@ -168,22 +185,6 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
           <h3>{c.name}</h3>
           <p class="soft">{c.desc}</p>
           <span class="cat-go">Keşfet →</span>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <!-- 2027 ZAM SEZONU -->
-  <section class="container section zam-section">
-    <div class="section-head">
-      <h2>2027 Zam Sezonu</h2>
-      <a href="/blog/2027-zamlari-yeniden-degerleme-orani-rehberi/" class="muted-link">2027'de neler zamlanacak? →</a>
-    </div>
-    <div class="zam-grid">
-      {ZAM.map((z) => (
-        <a href={`/${z.slug}/`} class="zam-item card">
-          <span class="zam-ad">{z.ad}</span>
-          <span class="zam-deger">{z.deger}</span>
         </a>
       ))}
     </div>

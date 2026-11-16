@@ -1,0 +1,280 @@
+{
+ "slug": "refah-payi-mi-seyyanen-mi",
+ "title": "Refah payı mı seyyanen zam mı? Emekliye hangisi daha çok kazandırır",
+ "description": "Ocak 2027 için emekliye refah payı ve seyyanen zam konuşuluyor; 17 Kasım 2026 itibarıyla resmî karar yok, ikisi de senaryo. Örnek hesap (tahmini enflasyon farkı %12,86 ile): en düşük aylık 23.552 TL, %5 refah payıyla yaklaşık 27.909 TL, 2.500 TL seyyanenle 29.080 TL. %5 refah payı ile 2.500 TL seyyanen yaklaşık 44.302 TL'de eşitlenir: altındaysan seyyanen, üstündeysen refah payı daha çok kazandırır.\nKaynak: TÜİK TÜFE (Temmuz–Ekim 2026 %8,28 kesin, kalan 2 ay varsayım), en düşük aylık Resmî Gazete Temmuz 2026.\nKendi aylığınla hesapla: parafomo.com/refah\nParafomo Para Hikâyeleri #2",
+ "tags": [
+  "refah payı",
+  "seyyanen zam",
+  "emekli zammı 2027",
+  "en düşük emekli maaşı",
+  "ocak 2027",
+  "para hikayeleri",
+  "parafomo"
+ ],
+ "format": "para_hikayesi",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "engine": "hikaye",
+ "lead": 0.05,
+ "series": "Para Hikâyeleri",
+ "episode": 2,
+ "link": "/emekli-refah-payi-seyyanen-zam/",
+ "comment": "🧮 Kendi aylığınla dene: https://parafomo.com/emekli-refah-payi-seyyanen-zam/?utm_source=youtube&utm_medium=shorts&utm_campaign=para-hikayeleri-2\n\nDurum (17 Kasım 2026): resmî karar yok; videodaki %5 refah payı ve 2.500 TL seyyanen ÖRNEKTİR. Enflasyon farkı Temmuz–Ekim %8,28 kesin, Ocak tahmini %12,86 (kalan 2 ay varsayımıyla).\n\nSenin aylığın 44 bin liralık çizginin neresinde?",
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Emekliye iki zam konuşuluyor. Biri sana daha çok kazandırır.",
+   "cap": "Emekliye iki zam konuşuluyor. Biri sana daha çok kazandırır."
+  },
+  {
+   "id": "s1",
+   "say": "Ama henüz hiçbiri kesin değil. İkisi de senaryo.",
+   "cap": "Ama henüz hiçbiri kesin değil. İkisi de senaryo."
+  },
+  {
+   "id": "s2",
+   "say": "Refah payı yüzdeyle gelir. Seyyanen zam herkese aynı tutardır.",
+   "cap": "Refah payı yüzdeyle gelir. Seyyanen zam herkese aynı tutardır."
+  },
+  {
+   "id": "s3",
+   "say": "Örnek: en düşük aylık, 23 bin 552 lira.",
+   "cap": "Örnek: en düşük aylık, 23.552 lira."
+  },
+  {
+   "id": "s4",
+   "say": "Yüzde 5 refah payıyla Ocak'ta yaklaşık 27 bin 900 olur.",
+   "cap": "%5 refah payıyla Ocak'ta yaklaşık 27.900 olur."
+  },
+  {
+   "id": "s5",
+   "say": "2 bin 500 lira seyyanenle ise 29 bin 80.",
+   "cap": "2.500 lira seyyanenle ise 29.080."
+  },
+  {
+   "id": "s6",
+   "say": "Asıl şaşırtıcı olan: çizgi 44 bin lirada.",
+   "cap": "Asıl şaşırtıcı olan: çizgi 44 bin lirada."
+  },
+  {
+   "id": "s7",
+   "say": "Altındaysan seyyanen, üstündeysen refah payı kazandırır.",
+   "cap": "Altındaysan seyyanen, üstündeysen refah payı kazandırır."
+  },
+  {
+   "id": "s8",
+   "say": "Senin aylığın çizginin neresinde? Hesabı parafomo nokta com, refah sayfasında.",
+   "cap": "Senin aylığın çizginin neresinde? Hesap: parafomo.com/refah"
+  },
+  {
+   "id": "s9",
+   "say": "Çünkü iki zamdan biri, sana daha çok kazandırır.",
+   "cap": "Çünkü iki zamdan biri, sana daha çok kazandırır."
+  }
+ ],
+ "data": {
+  "tema": "alacakaranlik",
+  "kanca": [
+   "İKİ ZAMDAN BİRİ",
+   "SANA DAHA ÇOK YARAR"
+  ],
+  "vurgu": [
+   "kazandırır",
+   "senaryo",
+   "yüzdeyle",
+   "aynı",
+   "tutardır",
+   "çizgi",
+   "altındaysan",
+   "üstündeysen",
+   "seyyanen",
+   "refah"
+  ],
+  "scenes": [
+   {
+    "line": "s0",
+    "vs": {
+     "sol": {
+      "k": "yuzde",
+      "etiket": "Refah payı",
+      "deger": "%"
+     },
+     "sag": {
+      "k": "yuzluk",
+      "etiket": "Seyyanen",
+      "deger": "TL"
+     }
+    }
+   },
+   {
+    "line": "s1",
+    "etiket": "Resmî karar yok",
+    "baslik": [
+     "İkisi de",
+     "senaryo"
+    ],
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "zarf",
+      "ifade": "endiseli",
+      "x": 540,
+      "y": 1000,
+      "olcek": 0.85,
+      "giris": "zipla"
+     }
+    ],
+    "kaynak": "Durum: 17 Kasım 2026"
+   },
+   {
+    "line": "s2",
+    "vs": {
+     "sol": {
+      "k": "yuzde",
+      "etiket": "Refah payı",
+      "deger": "yüzde"
+     },
+     "sag": {
+      "k": "yuzluk",
+      "etiket": "Seyyanen",
+      "deger": "aynı TL"
+     }
+    }
+   },
+   {
+    "line": "s3",
+    "etiket": "Örnek",
+    "sayi": {
+     "deger": 23552,
+     "birim": "₺",
+     "say": false,
+     "y": 520,
+     "not": "en düşük emekli aylığı"
+    },
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "zarf",
+      "ifade": "normal",
+      "x": 540,
+      "y": 1050,
+      "olcek": 0.75
+     }
+    ],
+    "kaynak": "Resmî Gazete, Temmuz 2026"
+   },
+   {
+    "line": "s4",
+    "etiket": "%5 refah payı · örnek",
+    "sayi": {
+     "bas": 23552,
+     "deger": 27909,
+     "birim": "₺",
+     "kelime": "27",
+     "y": 520,
+     "not": "Ocak 2027 (tahmini)"
+    },
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "yuzde",
+      "ifade": "mutlu",
+      "x": 540,
+      "y": 1050,
+      "olcek": 0.7,
+      "giris": "zipla"
+     }
+    ],
+    "kaynak": "Enflasyon farkı tahmini %12,86 (TÜİK, 4 ay kesin)"
+   },
+   {
+    "line": "s5",
+    "etiket": "2.500 TL seyyanen · örnek",
+    "sayi": {
+     "bas": 23552,
+     "deger": 29080,
+     "birim": "₺",
+     "kelime": "29",
+     "y": 520,
+     "not": "Ocak 2027 (tahmini)"
+    },
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "yuzluk",
+      "ifade": "mutlu",
+      "x": 540,
+      "y": 1050,
+      "olcek": 0.7,
+      "giris": "zipla"
+     }
+    ]
+   },
+   {
+    "line": "s6",
+    "baslik": [
+     "Asıl şaşırtıcı olan",
+     "çizgi 44 bin"
+    ],
+    "sayi": {
+     "bas": 0,
+     "deger": 44302,
+     "birim": "₺",
+     "kelime": "44",
+     "y": 620,
+     "not": "eşitlik çizgisi"
+    }
+   },
+   {
+    "line": "s7",
+    "cubuk": {
+     "a": {
+      "etiket": "Altında: seyyanen",
+      "deger": 30000
+     },
+     "b": {
+      "etiket": "Üstünde: refah",
+      "deger": 60000
+     },
+     "birim": "₺",
+     "not": "Örnek aylıklar · çizgi 44.302 ₺"
+    }
+   },
+   {
+    "line": "s8",
+    "baslik": [
+     "Senin aylığın",
+     "çizginin neresinde?"
+    ],
+    "soru": true,
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "zarf",
+      "ifade": "saskin",
+      "x": 540,
+      "y": 880,
+      "olcek": 0.6
+     }
+    ],
+    "kaynak": "Hesapla: parafomo.com/refah"
+   },
+   {
+    "line": "s9",
+    "vs": {
+     "sol": {
+      "k": "yuzde",
+      "etiket": "Refah payı",
+      "deger": "%"
+     },
+     "sag": {
+      "k": "yuzluk",
+      "etiket": "Seyyanen",
+      "deger": "TL"
+     }
+    }
+   }
+  ]
+ }
+}

@@ -85,6 +85,16 @@ def _dolar(kid, ifade):
             + yuz(kid, 300, 300, ifade, aralik=128, goz=48))
 
 
+def _yuzde(kid, ifade):
+    mor, koyu = "#7b5cd6", "#5a3fb0"
+    return (f'<g id="{kid}-ayak" stroke="{koyu}" stroke-width="14" stroke-linecap="round" fill="none">'
+            f'<path d="M240 470 l-18 74"/><path d="M360 470 l18 74"/></g>'
+            f'<g id="{kid}-govde"><rect x="110" y="110" width="380" height="380" rx="90" fill="{mor}"/>'
+            f'<rect x="110" y="110" width="380" height="190" rx="90" fill="#fff" opacity=".10"/>'
+            f'<text x="300" y="250" text-anchor="middle" font-family="Baslik, Anton, sans-serif" font-size="120" fill="#e7defc">%</text></g>'
+            + yuz(kid, 300, 330, ifade, aralik=120, goz=40, agiz_y=86))
+
+
 def _altin(kid, ifade):
     return (f'<g id="{kid}-govde"><circle cx="300" cy="300" r="205" fill="#d99a1e"/>'
             f'<circle cx="300" cy="292" r="200" fill="#f6c443"/>'
@@ -143,7 +153,7 @@ def _kumbara(kid, ifade):
             + yuz(kid, 330, 300, ifade, aralik=120, goz=36, agiz_y=74))
 
 
-KARAKTER = {"yuzluk": _yuzluk, "dolar": _dolar, "altin": _altin, "zarf": _zarf, "ev": _ev, "enflasyon": _enflasyon, "kumbara": _kumbara}
+KARAKTER = {"yuzluk": _yuzluk, "dolar": _dolar, "yuzde": _yuzde, "altin": _altin, "zarf": _zarf, "ev": _ev, "enflasyon": _enflasyon, "kumbara": _kumbara}
 
 
 def karakter(ad, ifade="normal", kid="k0"):

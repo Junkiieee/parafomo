@@ -310,9 +310,10 @@ function senaryolarHtml() {
   const lst = S.senaryolar || [];
   if (!lst.length) return '';
   return `<h2>Senaryo taslakları <small>onayınla üretime girer</small></h2>${lst.map((x) => {
-    const cip = x.karar ? '<span class="cip iyi">Onaylandı</span>' : '<span class="cip uyari">Onayını bekliyor</span>';
+    const uretildi = x.karar && x.karar.durum === 'uretildi';
+    const cip = uretildi ? '<span class="cip marka">Üretildi</span>' : x.karar ? '<span class="cip iyi">Onaylandı</span>' : '<span class="cip uyari">Onayını bekliyor</span>';
     const alt = x.karar
-      ? `<p class="soluk kucuk">${esc(zamanMetni(x.karar.zaman))} onayladın.</p>${x.karar.not ? `<div class="cevap-kutu"><b>Claude:</b> ${esc(x.karar.not)}</div>` : ''}`
+      ? `${uretildi ? '' : `<p class="soluk kucuk">${esc(zamanMetni(x.karar.zaman))} onayladın.</p>`}${x.karar.not ? `<div class="cevap-kutu"><b>Claude:</b> ${esc(x.karar.not)}</div>` : ''}`
       : `<div class="butonlar"><button type="button" class="btn ana" data-senaryo-onay="${esc(x.id)}">Senaryoyu onayla</button>
          <button type="button" class="btn" data-senaryo-degis="${esc(x.id)}">Değişiklik iste</button></div>`;
     return `<details class="kart plan senaryo"><summary><div class="sol"><span>${esc(x.baslik)} ${cip}</span>

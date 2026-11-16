@@ -1,0 +1,13 @@
+{
+ "tema": "gece",
+ "caption": "2020'nin yüzlüğünden bugün sadece 11 lira kaldı.\n\n2020'de 100 liraya aldığın sepet bugün yaklaşık 887 lira. En büyük iki ısırık: yıllık enflasyon 2022'de %64,27, 2023'te %64,77. Yerinde duran para eriyor; getirisi enflasyonu geçmeyen para her yıl küçülür.\n\n💬 Sence yüzlüğü ne kurtarırdı: altın mı, dolar mı?\n\nKaynak: TÜİK TÜFE, Aralık 2020 – Ekim 2026 (fiyatlar 8,87 katı). Kendi paranı hesapla: parafomo.com/enflasyon\n\n#enflasyon #para #birikim #ekonomi #parafomo",
+ "slaytlar": [
+  {"kanca": true, "baslik": ["Yüzlükten", "*11 lira* kaldı"], "karakterler": [{"k": "yuzluk", "ifade": "korkmus", "x": 430, "y": 800, "olcek": 0.85}, {"k": "enflasyon", "ifade": "mutlu", "x": 850, "y": 860, "olcek": 0.5}], "alt": "Kaydır →"},
+  {"baslik": ["Kimse cebine", "*dokunmadı*"], "karakterler": [{"k": "yuzluk", "ifade": "saskin", "x": 540, "y": 720, "olcek": 0.85}], "metin": "Üstünde hâlâ *100* yazıyor."},
+  {"baslik": ["2020'de", "100 liraya aldığın sepet"], "dekor": [{"d": "sepet", "x": 540, "y": 760, "olcek": 2.2}], "sayi": {"deger": "100", "birim": "₺", "y": 380}},
+  {"baslik": ["Bugün", "*aynı sepet*"], "dekor": [{"d": "sepet", "x": 540, "y": 800, "olcek": 2.2}], "sayi": {"deger": "887", "birim": "₺", "y": 380, "not": "yaklaşık"}, "kaynak": "Kaynak: TÜİK TÜFE, Aralık 2020 → Ekim 2026"},
+  {"baslik": ["En büyük", "*iki ısırık*"], "cubuk": {"a": {"etiket": "2022", "deger": 64.27, "yazi": "%64,27"}, "b": {"etiket": "2023", "deger": 64.77, "yazi": "%64,77"}}, "kaynak": "Yıllık enflasyon, Aralık ayları (TÜİK)"},
+  {"baslik": ["Duran para", "*erir*"], "karakterler": [{"k": "yuzluk", "ifade": "uzgun", "x": 540, "y": 700, "olcek": 0.8}], "metin": "Getirisi enflasyonu geçmeyen para *her yıl küçülür*."},
+  {"baslik": ["Sence onu", "ne kurtarırdı?"], "karakterler": [{"k": "altin", "ifade": "mutlu", "x": 320, "y": 690, "olcek": 0.55}, {"k": "dolar", "ifade": "normal", "x": 760, "y": 690, "olcek": 0.55}], "metin": "*Altın* mı, *dolar* mı?", "kaynak": "Kendi paranı hesapla: parafomo.com/enflasyon"}
+ ]
+}

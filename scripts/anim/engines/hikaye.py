@@ -52,7 +52,7 @@ VURGU = "#ffb547"
 
 TEMA = {
     "gece": ("radial-gradient(120% 70% at 50% 42%, #1f4134 0%, #10261f 45%, #08110e 100%)", "#cfe9dc", "#2f6b55"),
-    "alacakaranlik": ("linear-gradient(180deg, #14213d 0%, #23305a 45%, #6b4a6e 72%, #e58e4f 100%)", "#ffe6c7", "#3b2f4a"),
+    "alacakaranlik": ("linear-gradient(180deg, #14213d 0%, #23305a 45%, #5b3d63 72%, #9c4f2c 100%)", "#ffe6c7", "#3b2f4a"),
     "dram": ("radial-gradient(110% 60% at 50% 38%, #18262c 0%, #0b1216 55%, #050709 100%)", "#bcd3dc", "#22343b"),
 }
 
@@ -206,7 +206,7 @@ class Sahne:
             o = c[taraf]
             h = 500 * float(o["deger"]) / mx
             bid = f"s{self.i}c{taraf}"
-            self.parca.append(f'<div class="cubuk" style="left:{x - 110}px"><div class="cd">{fmt_num(float(o["deger"]))} '
+            self.parca.append(f'<div class="cubuk" style="left:{x - 150}px"><div class="cd">{fmt_num(float(o["deger"]))} '
                               f'<small>{E(c.get("birim", ""))}</small></div><div class="cb" id="{bid}" style="height:{h:.0f}px'
                               f';background:{"#4fa3e0" if k == 0 else VURGU}"></div><div class="ce">{E(o["etiket"])}</div></div>')
             self.js.append(f"tl.fromTo('#{bid}', {{ scaleY: 0 }}, {{ scaleY: 1, duration: 0.6, ease: 'power2.out', "
@@ -285,8 +285,8 @@ body { font-family: 'InterP', system-ui, sans-serif; color: #fff; }
 .baslik { position: absolute; top: 230px; left: 60px; right: 60px; text-align: center; font-weight: 700; font-size: 96px;
   line-height: 1.04; letter-spacing: -2px; text-shadow: 0 6px 30px rgba(0,0,0,.45); }
 .vz { color: #ffb547; }
-.hap { position: absolute; top: 150px; left: 50%; margin-left: -150px; width: 300px; text-align: center; background: #f4c26b;
-  color: #3a2606; font-weight: 700; font-size: 38px; padding: 8px 0; border-radius: 999px; }
+.hap { position: absolute; top: 150px; left: 0; right: 0; margin: 0 auto; width: fit-content; white-space: nowrap; text-align: center;
+  background: #f4c26b; color: #3a2606; font-weight: 700; font-size: 38px; padding: 8px 28px; border-radius: 999px; }
 #kanca { position: absolute; top: 230px; left: 40px; right: 40px; text-align: center; font-family: 'AntonP', sans-serif;
   font-size: 150px; line-height: 1.0; letter-spacing: 1px; text-transform: uppercase; text-shadow: 0 8px 40px rgba(0,0,0,.5); }
 .capg { position: absolute; left: 50px; right: 50px; top: 1330px; text-align: center; }
@@ -306,7 +306,7 @@ body { font-family: 'InterP', system-ui, sans-serif; color: #fff; }
 .vs-et b { display: block; font-family: 'AntonP', sans-serif; font-size: 96px; margin-top: 6px; }
 .vs-rozet { position: absolute; top: 750px; left: 470px; width: 140px; height: 140px; line-height: 140px; text-align: center;
   font-family: 'AntonP', sans-serif; font-size: 80px; color: #ff6b5b; text-shadow: 0 6px 24px rgba(0,0,0,.5); }
-.cubuk { position: absolute; top: 470px; width: 220px; height: 680px; display: flex; flex-direction: column; justify-content: flex-end;
+.cubuk { position: absolute; top: 470px; width: 300px; height: 680px; display: flex; flex-direction: column; justify-content: flex-end;
   align-items: center; }
 .cubuk .cb { width: 180px; border-radius: 18px 18px 6px 6px; }
 .cubuk .cd { font-family: 'AntonP', sans-serif; font-size: 70px; margin-bottom: 12px; }
@@ -314,10 +314,10 @@ body { font-family: 'InterP', system-ui, sans-serif; color: #fff; }
 .cubuk .ce { font-weight: 700; font-size: 40px; margin-top: 14px; color: #f4c26b; }
 .cnot { position: absolute; top: 1172px; left: 0; right: 0; text-align: center; }
 .balon { position: absolute; top: 1060px; left: 465px; }
-.kaynak { position: absolute; left: 60px; right: 60px; top: 1560px; text-align: center; font-weight: 600; font-size: 30px;
-  color: rgba(255,255,255,.55); }
+.kaynak { position: absolute; left: 60px; right: 60px; top: 1490px; text-align: center; font-weight: 600; font-size: 30px;
+  color: rgba(255,255,255,.88); text-shadow: 0 2px 8px rgba(0,0,0,.6); }
 #marka { position: absolute; right: 44px; bottom: 300px; font-family: 'AntonP', sans-serif; font-size: 34px; letter-spacing: 3px;
-  color: rgba(255,255,255,.35); }
+  color: rgba(255,255,255,.8); text-shadow: 0 2px 8px rgba(0,0,0,.6); }
 """
 
 
