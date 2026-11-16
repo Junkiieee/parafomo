@@ -229,11 +229,11 @@ def build_caption(meta, slug):
     q = FORMAT_Q.get((meta.get("format") or "").strip()) or topic_question(slug, title)
     # Erişim sinyali: yorum + kaydetme, beğeniden daha güçlü sıralama sinyalidir.
     # Soruyu görünür ilk bloğa al (yorum), kaydet/takip/link altta.
-    cta = (f"📌 Unutmamak için KAYDET · paylaş\n"
-           f"🔔 Günlük altın · dolar · borsa · faiz → TAKİP ET @parafomo\n"
-           f"📲 Tam rehber (ücretsiz): {meta_link(meta) or site_link(slug)}")
+    # 2026-11-17: Instagram açık "kaydet/paylaş/etiketle/takip et" çağrılarını etkileşim tuzağı sayıp takipçi dışı
+    # erişimi düşürebiliyor (creators.instagram.com, Meta engagement-bait); açık uçlu soru serbest → yalnız soru + bilgi.
+    cta = f"📲 Tam rehber (ücretsiz): {meta_link(meta) or site_link(slug)}"
     body_block = f"{body}\n\n" if body else ""
-    cap = f"{hook}\n\n💬 {q} Yorumda yaz 👇\n\n{body_block}{cta}\n\n{build_hashtags(slug, title, desc)}"
+    cap = f"{hook}\n\n💬 {q}\n\n{body_block}{cta}\n\n{build_hashtags(slug, title, desc)}"
     return cap[:2100]  # IG caption sınırı 2200
 
 
@@ -346,7 +346,6 @@ def main():
         "Sen hangisini yapıyorsun? 👇 Merak ettim, yorumda yazar mısın?",
         "Bunu daha önce biliyor muydun? 👇 Dürüst ol 😄",
         "Katılıyor musun, katılmıyor musun? 👇 Sebebini de yaz.",
-        "Bu videoyu kime göndermek isterdin? 👇 Etiketle.",
     ]
     seed = seeds[sum(ord(c) for c in args.slug) % len(seeds)]
     try:
