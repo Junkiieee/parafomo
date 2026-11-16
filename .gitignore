@@ -57,3 +57,4 @@ public/covers/w/
 # Claude Code alt-ajan çalışma kopyaları (geçici)
 .claude/worktrees/
 public/social/anim/*.mp4
+.lycheecache
