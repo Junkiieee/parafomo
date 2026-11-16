@@ -1476,8 +1476,8 @@
   "built_at": "2026-11-02T20:30:09Z",
   "video_id": "h4Ozr4fJoIg",
   "youtube_url": "https://youtu.be/h4Ozr4fJoIg",
-  "privacy": "private",
+  "privacy": "public",
   "publish_at": "2026-11-15T09:00:00Z",
-  "tamamlandi": false,
+  "tamamlandi": true,
   "altyazi": true
 }

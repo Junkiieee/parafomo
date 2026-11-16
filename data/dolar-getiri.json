@@ -1,43 +1,43 @@
 {
-  "updated": "2026-11-13T06:00+00:00",
+  "updated": "2026-11-16T06:00+00:00",
   "source": "Yahoo Finance (USDTRY=X kur, aylık kapanış)",
-  "usdtry_now": 50.2539,
+  "usdtry_now": 50.2819,
   "ytd": {
     "label": "Yıl başından beri",
     "usdtry_then": 42.952,
-    "usdtry_now": 50.2539,
-    "return_tl_pct": 17.0
+    "usdtry_now": 50.2819,
+    "return_tl_pct": 17.1
   },
   "periods": [
     {
       "label": "1 yıl",
       "years": 1,
-      "usdtry_then": 42.0268,
-      "usdtry_now": 50.2539,
-      "return_tl_pct": 19.6
+      "usdtry_then": 42.493,
+      "usdtry_now": 50.2819,
+      "return_tl_pct": 18.3
     },
     {
       "label": "3 yıl",
       "years": 3,
-      "usdtry_then": 28.2574,
-      "usdtry_now": 50.2539,
-      "return_tl_pct": 77.8
+      "usdtry_then": 28.9409,
+      "usdtry_now": 50.2819,
+      "return_tl_pct": 73.7
     },
     {
       "label": "5 yıl",
       "years": 5,
-      "usdtry_then": 9.5251,
-      "usdtry_now": 50.2539,
-      "return_tl_pct": 427.6
+      "usdtry_then": 12.699,
+      "usdtry_now": 50.2819,
+      "return_tl_pct": 296.0
     },
     {
       "label": "10 yıl",
       "years": 10,
       "usdtry_then": 3.1063,
-      "usdtry_now": 50.2539,
-      "return_tl_pct": 1517.8
+      "usdtry_now": 50.2819,
+      "return_tl_pct": 1518.7
     }
   ],
   "headline_years": 10,
-  "headline_return_tl_pct": 1517.8
+  "headline_return_tl_pct": 1518.7
 }

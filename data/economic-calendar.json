@@ -1,35 +1,8 @@
 {
-  "updated": "2026-11-13",
+  "updated": "2026-11-16",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-11-10",
-      "time": "1:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core CPI m/m",
-      "source": "forexfactory",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-11-10",
-      "time": "1:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "CPI m/m",
-      "source": "forexfactory",
-      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
-    },
-    {
-      "date": "2026-11-12",
-      "time": "7:00am",
-      "region": "GBP",
-      "impact": "High",
-      "title": "GDP m/m",
-      "source": "forexfactory",
-      "hook": "Büyüme verisi — küresel görünüm."
-    },
     {
       "date": "2026-11-13",
       "time": "1:30pm",
@@ -47,6 +20,60 @@
       "title": "PPI m/m",
       "source": "forexfactory",
       "hook": ""
+    },
+    {
+      "date": "2026-11-16",
+      "time": "5:00pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Fed Chairman Warsh Speaks",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-11-17",
+      "time": "1:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Core Retail Sales m/m",
+      "source": "forexfactory",
+      "hook": "Perakende satışlar — tüketim ve büyüme sinyali."
+    },
+    {
+      "date": "2026-11-17",
+      "time": "1:30pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "Retail Sales m/m",
+      "source": "forexfactory",
+      "hook": "Perakende satışlar — tüketim ve büyüme sinyali."
+    },
+    {
+      "date": "2026-11-18",
+      "time": "3:00pm",
+      "region": "GBP",
+      "impact": "High",
+      "title": "BOE Gov Bailey Speaks",
+      "source": "forexfactory",
+      "hook": ""
+    },
+    {
+      "date": "2026-11-18",
+      "time": "7:00am",
+      "region": "GBP",
+      "impact": "High",
+      "title": "CPI y/y",
+      "source": "forexfactory",
+      "hook": "Enflasyon verisi — dolar/euro yönü ve küresel faiz beklentisi."
+    },
+    {
+      "date": "2026-11-18",
+      "time": "7:00pm",
+      "region": "USD",
+      "impact": "High",
+      "title": "FOMC Meeting Minutes",
+      "source": "forexfactory",
+      "hook": "Fed/FOMC — küresel faiz beklentisi TL'yi etkiler."
     },
     {
       "date": "2026-12-03",
