@@ -110,6 +110,8 @@ const SECURITY_HEADERS = {
   'X-Content-Type-Options': 'nosniff',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
   'X-Frame-Options': 'SAMEORIGIN',
+  // 2026-11-17 (web yönetimi S2): site kamera/mikrofon/konum/ödeme kullanmıyor → tarayıcıya kapalı olduğunu bildir
+  'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=()',
 };
 function withCache(path, res) {
   const policy = res.status === 200 ? cachePolicy(path) : null;
