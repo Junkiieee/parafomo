@@ -141,6 +141,17 @@ def oto_aktif():
         return False
 
 
+KONTROL = "/root/parafomo-data/dash/kontrol.json"   # panelden aç/kapa (dashboard.parafomo.com, Kaan 2026-11-16)
+
+
+def panel_acik(anahtar):
+    """Panel anahtarı: video_uretim / youtube / instagram. Dosya yoksa ya da okunamazsa AÇIK sayılır."""
+    try:
+        return bool(json.load(open(KONTROL, encoding="utf-8")).get(anahtar, True))
+    except Exception:
+        return True
+
+
 def guncel_veriler():
     """Açıklanmış güncel oranlar → viral-script --facts. Üretici açıklanmış oranı 'örnek %25' diye uydurmasın."""
     out = []
@@ -166,6 +177,8 @@ def guncel_veriler():
 
 
 def uret(a):
+    if not panel_acik("video_uretim") and not a.dry:
+        print("[üret] panelden durduruldu (Gece video üretimi kapalı)"); return 0
     q = load()
     day = now().date()
     taken = {it["style"] for it in q["items"] if it.get("created", "")[:10] == day.isoformat()}
@@ -292,6 +305,8 @@ def yayinla(a):
         r = run([PY, "scripts/longform/lf_upload.py", "tamamla"], env={"ONAYLI_YAYIN": "1"}, timeout=600)
         if r.stdout.strip():
             print(r.stdout[-400:])
+    if not panel_acik("youtube") and not a.dry:
+        print("[yayın] panelden durduruldu (YouTube yayını kapalı) — videolar sırada bekliyor"); return 0
     if not sira:
         print("[yayın] bugün çıkacak onaylı video yok"); return 0
     # tarihi bugün olan (seri bölümü) önce; sonra onay sırası
@@ -307,8 +322,11 @@ def yayinla(a):
     if not meta.get("video_id"):
         it["status"] = "hata"; it["error"] = "youtube yüklemesi başarısız"; save(q); return 2
     run([PY, "scripts/youtube-extras.py", slug, "--format", it["format"]], env=env, timeout=600)
-    r = run([PY, "scripts/instagram-reel.py", slug], env=env, timeout=1800); print(r.stdout[-400:])
-    r = run([PY, "scripts/facebook-reel.py", slug], env=env, timeout=1800); print(r.stdout[-300:])
+    if panel_acik("instagram"):
+        r = run([PY, "scripts/instagram-reel.py", slug], env=env, timeout=1800); print(r.stdout[-400:])
+        r = run([PY, "scripts/facebook-reel.py", slug], env=env, timeout=1800); print(r.stdout[-300:])
+    else:
+        print("[yayın] Instagram/Facebook panelden kapalı → yalnız YouTube")
     meta = json.load(open(meta_p, encoding="utf-8"))
     it.update({"status": "yayinlandi", "published": now().isoformat(timespec="seconds"),
                "youtube_id": meta["video_id"],

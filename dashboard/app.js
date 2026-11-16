@@ -1,603 +1,553 @@
-/* ParaFOMO Panel — istemci. Veri: GET /api/state; yazma: board.py uçları (X-Dash başlığı şart). */
-(() => {
-  "use strict";
-  const $ = (s, el = document) => el.querySelector(s);
-  const TR = "tr-TR";
-  const TARGET_WEEK = 7000; // 1000 ziyaretçi/gün hedefi → 7 günlük kayan pencere
-  let S = null;             // son durum
-  const openRows = new Set(JSON.parse(store("open") || "[]"));
+'use strict';
+// Parafomo Panel v2 — telefona uygulama gibi eklenen sade panel (PWA).
+// Veri: GET /api/durum. Yazan uçlar X-Dash: 1 başlığı ister. Tüm metinler esc() ile basılır.
 
-  function store(k, v) {
+const TZ = 'Europe/Istanbul';
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const sayi = (n) => (n == null || Number.isNaN(Number(n)) ? '–' : Number(n).toLocaleString('tr-TR'));
+const YT_ID = /^[\w-]{6,20}$/;
+
+const BASLIK = { icerik: 'İçerik', web: 'Web sitesi', kontrol: 'Kontrol' };
+const MOTOR = { iso: 'İzometrik', hf: 'HyperFrames', dossier: 'Dosya', news: 'Haber', defter: 'Ekonomi Defteri', klasik: 'Klasik' };
+const IKON = {
+  yt: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg>',
+  ig: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></svg>',
+  ok: '<svg class="ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  tik: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+};
+
+let S = null;           // son durum (/api/durum)
+let sekme = 'icerik';
+let taslak = '';        // "Bana yaz" kutusundaki yazı (yeniden çizimde kaybolmasın)
+let ekGorsel = null;    // eklenecek görsel (data URL)
+let sonYukleme = 0;
+
+try { sekme = localStorage.getItem('pf-sekme') || 'icerik'; } catch (e) { /* özel mod */ }
+if (!BASLIK[sekme]) sekme = 'icerik';
+
+// ---------------------------------------------------------------- yardımcılar
+async function api(yol, secenek = {}) {
+  const r = await fetch(yol, {
+    credentials: 'same-origin',
+    ...secenek,
+    headers: { 'Content-Type': 'application/json', 'X-Dash': '1', ...(secenek.headers || {}) },
+  });
+  if (r.status === 401 && yol !== '/api/giris') {
+    S = null;
+    girisGoster();
+    throw new Error('Giriş gerekli');
+  }
+  let j = {};
+  try { j = await r.json(); } catch (e) { /* gövdesiz yanıt */ }
+  if (!r.ok) throw new Error(j.detail || `Bir sorun oldu (${r.status}).`);
+  return j;
+}
+const gonder = (yol, govde) => api(yol, { method: 'POST', body: JSON.stringify(govde || {}) });
+
+let bildirimZamani;
+function bildir(metin) {
+  const b = $('#bildirim');
+  b.textContent = metin;
+  b.classList.add('goster');
+  clearTimeout(bildirimZamani);
+  bildirimZamani = setTimeout(() => b.classList.remove('goster'), 2800);
+}
+
+const bicim = (d, o) => new Intl.DateTimeFormat('tr-TR', { timeZone: TZ, ...o }).format(d);
+const gunAnahtari = (d) => new Intl.DateTimeFormat('en-CA', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);
+const saat = (iso) => bicim(new Date(iso), { hour: '2-digit', minute: '2-digit' });
+
+function gunAdi(iso) {
+  const d = new Date(iso);
+  const k = gunAnahtari(d);
+  const t = bicim(d, { day: 'numeric', month: 'long', weekday: 'long' });
+  if (k === gunAnahtari(new Date())) return `Bugün · ${t}`;
+  if (k === gunAnahtari(new Date(Date.now() + 864e5))) return `Yarın · ${t}`;
+  return t;
+}
+
+function zamanMetni(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  const k = gunAnahtari(d);
+  if (k === gunAnahtari(new Date())) return `bugün ${saat(iso)}`;
+  if (k === gunAnahtari(new Date(Date.now() - 864e5))) return `dün ${saat(iso)}`;
+  if (k === gunAnahtari(new Date(Date.now() + 864e5))) return `yarın ${saat(iso)}`;
+  return `${bicim(d, { day: 'numeric', month: 'short' })} ${saat(iso)}`;
+}
+
+function kisaTarih(s) {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(s || '')) return bicim(new Date(`${s}T12:00:00+03:00`), { day: 'numeric', month: 'short' });
+  return s || '';
+}
+
+function fark(yeni, eski) {
+  if (yeni == null || !eski) return '';
+  const p = Math.round(((yeni - eski) / eski) * 100);
+  if (p === 0) return '<span class="fark">±%0</span>';
+  return `<span class="fark ${p > 0 ? 'yukari' : 'asagi'}">${p > 0 ? '▲' : '▼'} %${Math.abs(p)}</span>`;
+}
+
+const acikMi = (anahtar) => (S?.kontrol || []).find((k) => k.anahtar === anahtar)?.acik !== false;
+
+// ---------------------------------------------------------------- giriş
+function girisGoster(hata = '') {
+  $('#ust').hidden = true;
+  $('#sekmeler').hidden = true;
+  perdeKapat();
+  const ekran = $('#ekran');
+  ekran.className = '';
+  ekran.innerHTML = `
+    <div class="giris"><form class="kutu" id="girisFormu">
+      <img src="/logo.png" alt="" width="72" height="72">
+      <h1>Parafomo Panel</h1>
+      <input class="gizli" type="text" name="username" autocomplete="username" value="kaan" tabindex="-1" aria-hidden="true">
+      <input type="password" id="sifre" name="password" autocomplete="current-password" placeholder="Şifre" required aria-label="Şifre">
+      <button class="btn ana genis" type="submit">Giriş yap</button>
+      <p class="hata" id="girisHata">${esc(hata)}</p>
+    </form></div>`;
+  $('#girisFormu').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.disabled = true;
     try {
-      if (v === undefined) return localStorage.getItem("pf-dash-" + k);
-      localStorage.setItem("pf-dash-" + k, v);
-    } catch (e) { return null; }
-  }
-
-  // ---------- yardımcılar ----------
-  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  const num = (n) => (n == null || n === "" ? "—" : Number(n).toLocaleString(TR));
-  const money = (n) => (n == null ? "—" : "$" + Number(n).toLocaleString(TR, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
-  const dshort = (iso) => new Date(iso.length === 10 ? iso + "T12:00:00Z" : iso).toLocaleDateString(TR, { day: "numeric", month: "short" });
-  const tTR = (iso) => new Date(iso).toLocaleTimeString(TR, { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Istanbul" });
-  function ago(iso) {
-    if (!iso) return "—";
-    const m = (Date.now() - new Date(iso).getTime()) / 60000;
-    if (m < 1) return "az önce";
-    if (m < 60) return Math.round(m) + " dk önce";
-    if (m < 48 * 60) return Math.round(m / 60) + " sa önce";
-    return Math.round(m / 1440) + " gün önce";
-  }
-  const ICON = {
-    check: '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    x: '<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>',
-    clock: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
-    up: '<svg viewBox="0 0 24 24"><path d="M12 19V6m-6 6 6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    warn: '<svg viewBox="0 0 24 24"><path d="M12 4 2.8 20h18.4L12 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 10v4.5M12 17.2v.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>',
-    chev: '<svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-  };
-  const STATUS_ICON = { OK: ICON.check, success: ICON.check, UYARI: ICON.warn, budget: ICON.warn, HATA: ICON.x, "GECİKTİ": ICON.clock };
-  const stPill = (s, label) => `<span class="st ${esc(s)}">${STATUS_ICON[s] || ""}${esc(label || s)}</span>`;
-
-  // ---------- küçük markdown (ajanın rapor/plan biçimi: başlık, liste, tablo, kalın, kod, link) ----------
-  function inline(s) {
-    let t = esc(s);
-    const codes = [];
-    t = t.replace(/`([^`]+)`/g, (_, c) => { codes.push(c); return "\u0000" + (codes.length - 1) + "\u0000"; });
-    t = t.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-    t = t.replace(/(^|[\s(])(https?:\/\/[^\s<)]+[^\s<).,;:])/g, '$1<a href="$2" target="_blank" rel="noopener">$2</a>');
-    t = t.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-    t = t.replace(/~~(.+?)~~/g, "<s>$1</s>");
-    t = t.replace(/(^|[\s(])_([^_]+?)_(?=[\s).,;:]|$)/g, "$1<em>$2</em>");
-    return t.replace(/\u0000(\d+)\u0000/g, (_, i) => "<code>" + codes[i] + "</code>");
-  }
-  function md(src) {
-    const lines = String(src || "").replace(/\r/g, "").split("\n");
-    let html = "", i = 0;
-    const isTable = (l) => /^\s*\|.*\|\s*$/.test(l);
-    while (i < lines.length) {
-      const l = lines[i];
-      if (!l.trim()) { i++; continue; }
-      let m;
-      if ((m = l.match(/^(#{1,4})\s+(.*)/))) { html += `<h${m[1].length}>${inline(m[2])}</h${m[1].length}>`; i++; continue; }
-      if (isTable(l) && i + 1 < lines.length && /^\s*\|[\s:|-]+\|\s*$/.test(lines[i + 1])) {
-        const row = (r) => r.trim().replace(/^\||\|$/g, "").split("|").map((c) => c.trim());
-        html += "<table><thead><tr>" + row(l).map((c) => `<th>${inline(c)}</th>`).join("") + "</tr></thead><tbody>";
-        i += 2;
-        while (i < lines.length && isTable(lines[i])) { html += "<tr>" + row(lines[i]).map((c) => `<td>${inline(c)}</td>`).join("") + "</tr>"; i++; }
-        html += "</tbody></table>"; continue;
-      }
-      if (/^\s*([-*]|\d+\.)\s+/.test(l)) {
-        // iç içe listeler: girinti derinliğine göre
-        // önce öğeleri topla (devam satırları dahil) → sonra satır aşan **kalın** da doğru işlenir
-        const items = [];
-        while (i < lines.length && (/^\s*([-*]|\d+\.)\s+/.test(lines[i]) || (/^\s{2,}\S/.test(lines[i]) && items.length))) {
-          const mm = lines[i].match(/^(\s*)([-*]|\d+\.)\s+(.*)$/);
-          if (mm) items.push({ depth: Math.floor(mm[1].replace(/\t/g, "  ").length / 2), tag: /\d/.test(mm[2]) ? "ol" : "ul", text: mm[3] });
-          else items[items.length - 1].text += " " + lines[i].trim();
-          i++;
-        }
-        const stack = [];
-        for (const it of items) {
-          while (stack.length > it.depth + 1) html += `</li></${stack.pop()}>`;
-          if (stack.length === it.depth + 1) html += "</li>";
-          while (stack.length < it.depth + 1) { html += `<${it.tag}>`; stack.push(it.tag); }
-          html += "<li>" + inline(it.text.replace(/^\[( |x|X|-)\]\s+/, (_, c) => (c === " " ? "☐ " : c === "-" ? "⊘ " : "☑ ")));
-        }
-        while (stack.length) html += `</li></${stack.pop()}>`;
-        continue;
-      }
-      let para = [];
-      while (i < lines.length && lines[i].trim() && !/^(#{1,4})\s/.test(lines[i]) && !/^\s*([-*]|\d+\.)\s+/.test(lines[i]) && !isTable(lines[i])) { para.push(lines[i].trim()); i++; }
-      html += `<p>${inline(para.join(" "))}</p>`;
-    }
-    return html;
-  }
-
-  // ---------- ağ ----------
-  async function api(path, opt = {}) {
-    const r = await fetch(path, {
-      ...opt,
-      headers: { "Content-Type": "application/json", "X-Dash": "1", ...(opt.headers || {}) },
-      body: opt.body ? JSON.stringify(opt.body) : undefined,
-    });
-    const j = await r.json().catch(() => ({}));
-    if (!r.ok) throw new Error(j.detail || r.statusText);
-    return j;
-  }
-  function toast(msg, err) {
-    const t = $("#toast");
-    t.textContent = msg; t.className = "toast on" + (err ? " err" : "");
-    clearTimeout(toast._t); toast._t = setTimeout(() => (t.className = "toast"), 2400);
-  }
-
-  async function load(quiet) {
-    const b = $("#refresh");
-    b.classList.add("spin");
-    try {
-      S = await api("/api/state");
-      renderAll();
-    } catch (e) {
-      if (!quiet) toast("Yüklenemedi: " + e.message, true);
-    } finally {
-      b.classList.remove("spin");
-    }
-  }
-
-  // ---------- üst bant ----------
-  function renderPulse() {
-    const c = S.counts, k = S.kpi[S.kpi.length - 1] || {};
-    const probs = problems();
-    const st = S.agent.status || {};
-    const pills = [
-      { tab: "gorevler", cls: c.user_todo ? "hot" : "ok", html: `Senden <b>${c.user_todo}</b> iş` },
-      { tab: "gorevler", cls: "", html: `Kuyruk <b>${c.agent_open}</b> açık` },
-      { tab: "metrik", cls: "", html: `Ziyaretçi 7g <b>${num(k.real_7d)}</b>` },
-      { tab: "uretim", cls: probs.length ? "bad" : "ok", html: probs.length ? `<b>${probs.length}</b> üretim sorunu` : "Üretim sorunsuz" },
-      { tab: "ajan", cls: st.outcome === "success" ? "ok" : "bad", html: `Ajan ${ago(st.ended || st.started)}` },
-    ];
-    $("#pulse").innerHTML = pills.map((p) => `<button class="pill ${p.cls}" data-go="${p.tab}"><span class="dot"></span>${p.html}</button>`).join("");
-    $("#b-gorevler").textContent = c.user_todo + c.inbox_new || "";
-    const bu = $("#b-uretim");
-    bu.textContent = probs.length || ""; bu.className = "badge bad";
-    $("#stamp").textContent = "Güncellendi " + tTR(S.now) + " · " + new Date(S.now).toLocaleDateString(TR, { weekday: "long", day: "numeric", month: "long", timeZone: "Europe/Istanbul" });
-  }
-  function problems() {
-    const h = S.health, p = [];
-    for (const r of [...h.pipelines, h.agent]) if (r.status === "GECİKTİ" || r.status === "HATA") p.push(r.name);
-    if (h.llm.state !== "ok") p.push("Claude");
-    if (h.site !== 200) p.push("site"); if (h.api !== 200) p.push("api");
-    if (h.disk_pct >= 88) p.push("disk");
-    if (h.seo && h.seo.counts["KRİTİK"]) p.push("SEO");
-    return p.concat(h.stale || []);
-  }
-
-  // ---------- GÖREVLER ----------
-  function renderGorevler() {
-    const B = S.board, wk = B.week;
-    const open = wk.tasks.filter((t) => t.state === "open");
-    const groups = {};
-    for (const t of open) (groups[t.section] = groups[t.section] || []).push(t);
-
-    const userCards = B.user_tasks.length ? B.user_tasks.map(userTask).join("") :
-      `<div class="empty">Şu an senden beklenen iş yok.</div>`;
-
-    const queue = Object.entries(groups).map(([sec, ts]) =>
-      `<div class="qgroup">${esc(sec.replace(/\s*\(.*\)\s*$/, ""))} · ${ts.length}</div>` + ts.map(qRow).join("")).join("") ||
-      `<div class="empty">Kuyruk boş — haftalık koşu yeni plan yazacak.</div>`;
-
-    const done = wk.tasks.filter((t) => t.state !== "open");
-    const doneHtml = done.map((t) => `<li>${t.state === "done" ? `<span class="tick">${ICON.check}</span>` : `<span class="tick x">${ICON.x}</span>`}
-        <div><b>${esc(t.id)}</b> ${esc(t.title)}<span class="res">${inline(t.result || (t.state === "dropped" ? "iptal / park" : ""))}</span></div></li>`)
-      .concat(wk.log_done.map((l) => `<li><span class="tick">${ICON.check}</span><div>${inline(l)}</div></li>`))
-      .concat(B.user_closed.map((u) => `<li><span class="tick">${ICON.check}</span><div>${esc(u.title)} <span class="res">Senin işin · ${u.status === "verified" ? "ajan doğruladı" : "yapıldı"}${u.agent_note ? " — " + inline(u.agent_note) : ""}</span></div></li>`))
-      .join("");
-
-    const inbox = B.inbox.map((i) => `<div class="inbox-item">
-        <div class="row"><span class="small muted">${esc(i.id)} · ${dshort(i.created)}</span>
-          <span style="display:flex;gap:6px;align-items:center"><span class="chip ${esc(i.status)}">${esc(S.inbox_states[i.status] || i.status)}</span>
-          ${i.status === "new" ? `<button class="btn ghost" data-unsend="${esc(i.id)}">Geri çek</button>` : ""}</span></div>
-        <div>${esc(i.text)}</div>${i.agent_note ? `<div class="callout"><b>Ajan:</b> ${inline(i.agent_note)}</div>` : ""}</div>`).join("");
-
-    const log = B.log.slice(0, 12).map((l) => `<li><span class="muted">${dshort(l.ts)} ${tTR(l.ts)}</span><span class="who">${l.who === "ajan" ? "Ajan" : "Sen"}</span><span>${esc(l.what)}</span></li>`).join("");
-
-    $("#v-gorevler").innerHTML = `<div class="grid2 split">
-      <div class="col">
-        <div class="sec o1"><div class="sec-h"><h2>Senden beklenenler</h2><span class="meta">${B.user_tasks.length} iş</span></div>
-          <p class="lead">"Yaptım" dediğinde ajan bir sonraki gece sunucuda doğrular; eksik varsa buraya yazar.</p>
-          <div class="card">${userCards}</div>
-          ${B.user_notes ? `<details class="small muted" style="margin:8px 4px 0"><summary>Kalıcı notlar (${B.user_notes.split("\n").filter((x) => x.trim()).length} satır)</summary><div class="md" style="margin-top:6px">${md(B.user_notes)}</div></details>` : ""}
-        </div>
-        <div class="sec o3"><div class="sec-h"><h2>Ajanın kuyruğu</h2><span class="meta">${esc(wk.title.replace("Hafta planı — ", ""))}</span></div>
-          <p class="lead">Ajan her gece en üstteki açık görevi alır. <b>Onayla</b> öne alır, <b>Reddet</b> iptal eder; karar vermezsen sırası gelince yapılır. Not alanı ajana talimattır.</p>
-          <div class="card">${queue}</div>
-        </div>
-        <div class="sec o4"><div class="sec-h"><h2>Bu hafta biten</h2><span class="meta">${done.length + wk.log_done.length + B.user_closed.length}</span></div>
-          <div class="card"><ul class="done-list">${doneHtml || '<li><span></span><span class="muted">Henüz yok</span></li>'}</ul></div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="sec o2"><div class="sec-h"><h2>Ajana görev ver</h2></div>
-          <div class="card"><div class="compose">
-            <textarea class="note" id="inbox-text" placeholder="Ör. “Emekli bayram ikramiyesi sayfasını Kasım'dan önce açalım” — ajan sonraki koşuda değerlendirip kuyruğa ekler." maxlength="2000"></textarea>
-            <div class="actions" style="justify-content:space-between"><span class="small muted">Gece 06:00 TSİ koşusunda okunur.</span><button class="btn" id="inbox-send">Gönder</button></div>
-          </div>${inbox}</div>
-        </div>
-        <div class="sec o5"><div class="sec-h"><h2>Son hareketler</h2></div>
-          <div class="card">${log ? `<ul class="log">${log}</ul>` : '<div class="empty">Henüz hareket yok.</div>'}</div>
-        </div>
-      </div>
-    </div>`;
-  }
-
-  function userTask(u) {
-    const sts = [["todo", "Yapılacak", ""], ["done", "Yaptım", "ok"], ["later", "Sonraya", "info"]];
-    return `<div class="utask s-${esc(u.status)}" data-user="${esc(u.slug)}">
-      <div class="utask-title"><span class="no">${u.no}.</span>${inline(u.title)}</div>
-      ${u.body ? `<div class="md small clamp ${openRows.has("u:" + u.slug) ? "full" : ""}">${md(u.body)}</div>
-        <button class="more" data-more="u:${esc(u.slug)}">${openRows.has("u:" + u.slug) ? "Kısalt" : "Tamamını göster"}</button>` : ""}
-      ${u.agent_note ? `<div class="callout ${u.status === "todo" ? "bad" : ""}"><b>Ajan:</b> ${inline(u.agent_note)}</div>` : ""}
-      ${u.status === "done" ? `<div class="callout"><b>Bekliyor:</b> ajan bir sonraki koşuda doğrulayacak.</div>` : ""}
-      <div class="actions"><div class="seg" role="group" aria-label="Durum">${sts.map(([k, l, c]) =>
-        `<button class="${c}" data-ustatus="${k}" aria-pressed="${u.status === k}">${k === "done" ? ICON.check : ""}${l}</button>`).join("")}</div></div>
-      <div class="note-wrap"><textarea class="note" rows="1" data-unote placeholder="Ajana not (isteğe bağlı)">${esc(u.note)}</textarea><span class="saved">kaydedildi</span></div>
-    </div>`;
-  }
-
-  function qRow(t) {
-    const isOpen = openRows.has(t.key);
-    const decLbl = { pending: "Karar yok", approved: "Onaylı", rejected: "Reddedildi" }[t.decision];
-    const decIco = { pending: "", approved: ICON.check, rejected: ICON.x }[t.decision];
-    return `<div class="qrow ${t.decision} ${isOpen ? "open" : ""}" data-key="${esc(t.key)}">
-      <div class="qhead" data-toggle>
-        <span class="qid">${esc(t.id)}</span>
-        <div class="qtitle">${inline(t.title)}${t.decision === "approved" ? '<span class="qnext">ÖNE ALINDI</span>' : ""}
-          ${t.tag ? `<span class="qtag">${esc(t.tag)}</span>` : ""}
-          ${t.agent_status ? `<span class="astat">Ajan: ${inline(t.agent_status)}</span>` : ""}</div>
-        <span style="display:flex;align-items:center;gap:6px">${t.decision !== "pending" || t.note ? `<span class="dec ${t.decision}">${decIco}${decLbl}${t.note ? " · not" : ""}</span>` : ""}${ICON.chev}</span>
-      </div>
-      ${isOpen ? `<div class="qbody">
-        <div class="md">${md(t.body.replace(/^→.*?(?= — \*\*)/, ""))}</div>
-        <div class="actions"><div class="seg" role="group" aria-label="Karar">
-          <button class="ok" data-dec="approved" aria-pressed="${t.decision === "approved"}">${ICON.check}Onayla · öne al</button>
-          <button data-dec="pending" aria-pressed="${t.decision === "pending"}">Karar yok</button>
-          <button class="bad" data-dec="rejected" aria-pressed="${t.decision === "rejected"}">${ICON.x}Reddet</button>
-        </div></div>
-        <div class="note-wrap"><textarea class="note" rows="2" data-qnote placeholder="Ajana talimat — ör. “bunu yaparken X'i de ekle” (ajan uyar)">${esc(t.note)}</textarea><span class="saved">kaydedildi</span></div>
-        ${t.agent_status ? `<div class="small muted" style="margin-top:8px">Ajan durumu ${ago(t.agent_status_ts)} yazıldı.</div>` : ""}
-      </div>` : ""}
-    </div>`;
-  }
-
-  // ---------- METRİKLER ----------
-  function kpiAt(daysBack) {
-    const rows = S.kpi; if (!rows.length) return null;
-    const last = new Date(rows[rows.length - 1].date + "T00:00:00Z");
-    const want = new Date(last.getTime() - daysBack * 86400000).toISOString().slice(0, 10);
-    return rows.find((r) => r.date === want) || null;
-  }
-  function delta(key) {
-    const a = S.kpi[S.kpi.length - 1], b = kpiAt(7);
-    if (!a || !b || a[key] == null || b[key] == null) return '<span class="delta flat">7g önce veri yok</span>';
-    const d = a[key] - b[key];
-    if (!d) return '<span class="delta flat">7 güne göre değişmedi</span>';
-    return `<span class="delta ${d > 0 ? "up" : "down"}">${d > 0 ? "▲" : "▼"} ${num(Math.abs(d))} <span class="muted" style="font-weight:400">/ 7 gün</span></span>`;
-  }
-
-  function renderMetrik() {
-    const k = S.kpi[S.kpi.length - 1] || {};
-    const pct = Math.min(100, ((k.real_7d || 0) / TARGET_WEEK) * 100);
-    const tiles = [
-      ["organic_search_7d", "Organik arama ziyaretçisi · 7g"], ["gsc_clicks_7d", "Google tıklaması · 7g"],
-      ["gsc_impr_7d", "Google gösterimi · 7g"], ["ai_assistant_28d", "AI asistan ziyaretçisi · 28g"],
-      ["yt_subs", "YouTube abone"], ["yt_views", "YouTube toplam izlenme"],
-    ];
-    // Kanal metrikleri (brief §1b, 2026-10-28'den itibaren): darboğaz hangi kanalda?
-    const chTiles = [
-      ["yt_subs_per_1k", "YouTube abone / 1000 izlenme · 28g"], ["yt_search_share", "YouTube izlenmesi aramadan · %"],
-      ["ig_followers", "Instagram takipçi"], ["fb_followers", "Facebook takipçi"],
-      ["discover_impr_28d", "Google Discover gösterimi · 28g"], ["share_visits_28d", "Paylaş butonundan ziyaret · 28g"],
-    ];
-    const bets = S.bets.map((b) => {
-      const left = b.review ? Math.round((new Date(b.review + "T00:00:00Z") - Date.now()) / 86400000) : null;
-      const due = left == null ? "" : left < 0 ? `<span class="due over">değerlendirme ${-left} gün gecikti</span>` :
-        `<span class="due ${left <= 7 ? "soon" : ""}">${left} gün kaldı · ${dshort(b.review)}</span>`;
-      return `<div class="bet"><div class="bet-h"><span class="bet-t">${esc(b.title)}</span>${due}</div>
-        <div class="bet-id">${esc(b.id)} · ${esc(b.lever || "")}</div>
-        <dl><dt>Metrik</dt><dd>${inline(b.metric)}</dd><dt>Başlangıç</dt><dd>${inline(String(b.baseline))}</dd><dt>Hedef</dt><dd>${inline(String(b.target))}</dd>
-        ${(b.notes || []).length ? `<dt>Son not</dt><dd>${inline(b.notes[b.notes.length - 1])}</dd>` : ""}</dl></div>`;
-    }).join("") || '<div class="empty">Aktif bahis yok.</div>';
-    const closed = S.bets_closed.map((b) => `<li><span class="tick ${b.status === "won" ? "" : "x"}">${b.status === "won" ? ICON.check : ICON.x}</span><div>${esc(b.title)} <span class="res">${esc(b.status)} · ${inline(b.result || "")}</span></div></li>`).join("");
-
-    $("#v-metrik").innerHTML = `
-      <div class="sec"><div class="card hero">
-        <div class="hero-top"><div><div class="hero-lbl">Gerçek ziyaretçi, son 7 gün (Direct hariç)</div>
-          <div class="hero-num">${num(k.real_7d)}<small>/ ${num(TARGET_WEEK)} hedef</small></div></div>${delta("real_7d")}</div>
-        <div class="track" role="img" aria-label="Hedefin yüzde ${pct.toFixed(1)}'i"><i style="width:${pct}%"></i></div>
-        <div class="hero-foot"><span>Hedefin %${pct.toLocaleString(TR, { maximumFractionDigits: 1 })}'i</span><span>28 günde ${num(k.real_28d)} · ${k.date ? dshort(k.date) : ""}</span></div>
-      </div></div>
-      <div class="sec"><div class="tiles">${tiles.map(([key, lbl]) => `<div class="card tile"><div class="tile-lbl">${lbl}</div><div class="tile-num">${num(k[key])}</div>${delta(key)}</div>`).join("")}</div></div>
-      <div class="sec"><div class="sec-h"><h2>Kanallar ve dağıtım</h2><span class="meta">YouTube dönüşümü · sosyal · Discover · paylaşım</span></div>
-        <div class="tiles">${chTiles.map(([key, lbl]) => `<div class="card tile"><div class="tile-lbl">${lbl}</div><div class="tile-num">${num(k[key])}</div>${delta(key)}</div>`).join("")}</div></div>
-      <div class="sec"><div class="sec-h"><h2>Trend</h2><span class="meta">${S.kpi.length} gün · kayan pencereler</span></div>
-        <div class="charts">
-          ${chartCard("real_7d", "Gerçek ziyaretçi", "7 günlük kayan toplam")}
-          ${chartCard("gsc_clicks_7d", "Google tıklaması", "7 günlük kayan toplam")}
-          ${chartCard("yt_subs", "YouTube abone", "toplam")}
-        </div>
-        <button class="btn ghost tbl-toggle" id="kpi-tbl-btn">Tablo olarak gör</button>
-        <div class="card" id="kpi-tbl" hidden style="margin-top:10px"><div class="scroll">${kpiTable()}</div></div>
-      </div>
-      <div class="grid2">
-        <div class="sec"><div class="sec-h"><h2>Aktif bahisler</h2><span class="meta">${S.bets.length} / 3</span></div><div class="card">${bets}</div>
-          ${closed ? `<div class="card" style="margin-top:10px"><ul class="done-list">${closed}</ul></div>` : ""}</div>
-        <div class="sec"><div class="sec-h"><h2>Haftanın durumu</h2><span class="meta">ajanın teşhisi</span></div>
-          <div class="card pad"><div class="md">${md(S.board.week.status_md)}</div></div></div>
-      </div>`;
-    drawCharts();
-  }
-  function kpiTable() {
-    const cols = [["date", "Tarih"], ["real_7d", "Ziyaretçi 7g"], ["organic_search_7d", "Organik 7g"], ["gsc_clicks_7d", "GSC tık 7g"], ["gsc_impr_7d", "GSC gös. 7g"], ["yt_subs", "YT abone"], ["yt_views", "YT izlenme"], ["yt_subs_per_1k", "YT abone/1000"], ["ig_followers", "IG takipçi"], ["fb_followers", "FB takipçi"]];
-    return `<table class="data"><thead><tr>${cols.map(([, l], i) => `<th class="${i ? "n" : ""}">${l}</th>`).join("")}</tr></thead><tbody>${
-      S.kpi.slice().reverse().map((r) => `<tr>${cols.map(([c], i) => `<td class="${i ? "n" : ""}">${i ? num(r[c]) : dshort(r[c])}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
-  }
-  const chartCard = (key, title, sub) => `<div class="card chart" data-chart="${key}"><h3>${title}</h3><div class="sub">${sub}</div><svg role="img" aria-label="${title} trendi"></svg><div class="tip"></div></div>`;
-
-  function nice(max) {
-    if (max <= 0) return 1;
-    const p = Math.pow(10, Math.floor(Math.log10(max)));
-    for (const m of [1, 2, 2.5, 5, 10]) if (m * p >= max) return m * p;
-    return 10 * p;
-  }
-  function drawCharts() {
-    document.querySelectorAll("[data-chart]").forEach((card) => {
-      const key = card.dataset.chart;
-      const pts = S.kpi.filter((r) => r[key] != null).map((r) => ({ d: r.date, v: +r[key] }));
-      const svg = $("svg", card), tip = $(".tip", card);
-      const W = svg.clientWidth || 300, H = 150, L = 34, R = 34, T = 10, Bm = 22;
-      if (pts.length < 2) { svg.innerHTML = `<text x="${W / 2}" y="${H / 2}" text-anchor="middle" class="axis" fill="currentColor">Yeterli veri yok</text>`; return; }
-      const max = nice(Math.max(...pts.map((p) => p.v)) * 1.08);
-      const x = (i) => L + (i * (W - L - R)) / (pts.length - 1);
-      const y = (v) => T + (1 - v / max) * (H - T - Bm);
-      const ticks = [0, max / 2, max];
-      const path = pts.map((p, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(p.v).toFixed(1)}`).join("");
-      const last = pts[pts.length - 1];
-      svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
-      svg.innerHTML = `
-        <g class="grid">${ticks.map((t) => `<line x1="${L}" x2="${W - R}" y1="${y(t)}" y2="${y(t)}"/>`).join("")}</g>
-        <g class="axis">${ticks.map((t) => `<text x="${L - 6}" y="${y(t) + 4}" text-anchor="end">${num(t)}</text>`).join("")}
-          <text x="${L}" y="${H - 4}">${dshort(pts[0].d)}</text><text x="${W - R}" y="${H - 4}" text-anchor="end">${dshort(last.d)}</text></g>
-        <path class="area" d="${path}L${x(pts.length - 1)},${y(0)}L${x(0)},${y(0)}Z"/>
-        <path class="ln" d="${path}"/>
-        <circle class="end" cx="${x(pts.length - 1)}" cy="${y(last.v)}" r="4.5"/>
-        <text class="endlbl" x="${x(pts.length - 1) + 7}" y="${y(last.v) + 4}">${num(last.v)}</text>
-        <line class="xh" y1="${T}" y2="${H - Bm}" visibility="hidden"/><circle class="hdot" r="5" visibility="hidden"/>
-        <rect x="${L}" y="0" width="${W - L - R}" height="${H}" fill="transparent" data-hit/>`;
-      const xh = $(".xh", svg), hd = $(".hdot", svg), hit = $("[data-hit]", svg);
-      const move = (ev) => {
-        const r = svg.getBoundingClientRect();
-        const px = ((ev.clientX - r.left) / r.width) * W;
-        const i = Math.max(0, Math.min(pts.length - 1, Math.round(((px - L) / (W - L - R)) * (pts.length - 1))));
-        const p = pts[i];
-        xh.setAttribute("x1", x(i)); xh.setAttribute("x2", x(i)); xh.setAttribute("visibility", "visible");
-        hd.setAttribute("cx", x(i)); hd.setAttribute("cy", y(p.v)); hd.setAttribute("visibility", "visible");
-        tip.innerHTML = `${dshort(p.d)} · <b>${num(p.v)}</b>`;
-        const cr = card.getBoundingClientRect();
-        tip.style.left = r.left - cr.left + Math.max(50, Math.min(r.width - 50, (x(i) / W) * r.width)) + "px";
-        tip.style.top = r.top - cr.top + (y(p.v) / H) * r.height - 10 + "px";
-        tip.style.opacity = 1;
-      };
-      hit.addEventListener("pointermove", move);
-      hit.addEventListener("pointerdown", move);
-      hit.addEventListener("pointerleave", () => { xh.setAttribute("visibility", "hidden"); hd.setAttribute("visibility", "hidden"); tip.style.opacity = 0; });
-    });
-  }
-
-  // ---------- AJAN ----------
-  function renderAjan() {
-    const A = S.agent, st = A.status || {};
-    const fresh = A.report && st.started && new Date(A.report_ts) >= new Date(st.started);
-    const week = A.runs.filter((r) => Date.now() - new Date(r.started) < 7 * 86400000);
-    const cost7 = week.reduce((s, r) => s + (+r.cost || 0), 0);
-    const rows = A.runs.map((r) => `<tr><td>${dshort(r.started)} ${tTR(r.started)}</td><td>${r.mode === "weekly" ? "Haftalık" : "Günlük"}</td>
-      <td>${stPill(r.outcome, { success: "Başarılı", budget: "Bütçe", auth: "Giriş yok" }[r.outcome] || r.outcome)}</td>
-      <td class="n">${num(r.minutes)} dk</td><td class="n">${num(r.turns)}</td><td class="n">${money(r.cost)}</td>
-      <td class="small">${esc((r.message || "").replace(/[#*_`]/g, "").slice(0, 120))}…</td></tr>`).join("");
-    $("#v-ajan").innerHTML = `
-      <div class="sec"><div class="sec-h"><h2>Son koşu raporu</h2><span class="meta">${fresh ? "bu koşuda yazıldı" : "rapor bu koşudan eski"}</span></div>
-        <div class="card">
-          <div class="run-top">
-            <div class="kv"><div class="k">Koşu</div><div class="v">${st.mode === "weekly" ? "Haftalık plan" : "Günlük"}</div></div>
-            <div class="kv"><div class="k">Sonuç</div><div class="v">${stPill(st.outcome || "?", { success: "Başarılı" }[st.outcome])}</div></div>
-            <div class="kv"><div class="k">Bitti</div><div class="v">${st.ended ? dshort(st.ended) + " " + tTR(st.ended) : "—"}</div></div>
-            <div class="kv"><div class="k">Süre · tur</div><div class="v">${num(st.minutes)} dk · ${num(st.turns)}</div></div>
-            <div class="kv"><div class="k">Maliyet (API-eşd.) · 7g</div><div class="v">${money(st.cost)} · ${money(cost7)}</div></div>
-          </div>
-          <div class="report md">${fresh ? md(A.report) : md(st.message || "Rapor yok.")}</div>
-          ${(st.denied || []).length ? `<details class="denied"><summary>İzin listesi dışında kalan ${st.denied.length} komut</summary>${st.denied.map((d) => `<code>${esc(d)}</code>`).join("")}</details>` : ""}
-        </div></div>
-      <div class="sec"><div class="sec-h"><h2>Yol haritası</h2><span class="meta">ajanın kalıcı fikir havuzu · kuyruk boşalınca buradan iş çeker</span></div>
-        <div class="card pad"><details><summary>Teşhis, yapılanlar ve ${((S.roadmap || "").match(/^- \[ \]/gm) || []).length} açık madde</summary><div class="md">${md(S.roadmap || "Yol haritası yok.")}</div></details></div></div>
-      <div class="sec"><div class="sec-h"><h2>Koşu geçmişi</h2><span class="meta">son ${A.runs.length} · 7 günde ${week.length} koşu</span></div>
-        <div class="card"><div class="scroll"><table class="data"><thead><tr><th>Başladı (TSİ)</th><th>Mod</th><th>Sonuç</th><th class="n">Süre</th><th class="n">Tur</th><th class="n">Maliyet</th><th>Özet</th></tr></thead><tbody>${rows}</tbody></table></div></div></div>`;
-  }
-
-  // ---------- ÜRETİM ----------
-  function renderUretim() {
-    const h = S.health;
-    const LBL = { OK: "Çalışıyor", UYARI: "Uyarı", "GECİKTİ": "Gecikti", HATA: "Hata", "BİLİNMİYOR": "Bilinmiyor" };
-    const pipes = [...h.pipelines, h.agent].map((r) => `<div class="pipe"><span class="pipe-n">${esc(r.name)}</span>${stPill(r.status, LBL[r.status])}
-      <span class="pipe-m">Son başarı ${esc(r.age)} · ${esc(r.note)}</span>${r.error && r.status !== "OK" ? `<span class="pipe-e">${esc(r.error.slice(0, 200))}</span>` : ""}</div>`).join("");
-    const g = h.git;
-    const sys = [
-      ["Claude (LLM)", h.llm.state === "ok" ? stPill("OK", "Hazır") : stPill("HATA", h.llm.state + (h.llm.until ? " → " + tTR(h.llm.until) : ""))],
-      ["Canlı site", h.site === 200 ? stPill("OK", "200") : stPill("HATA", String(h.site))],
-      ["Portföy API", h.api === 200 ? stPill("OK", "200") : stPill("HATA", String(h.api))],
-      ["Disk", `${h.disk_pct >= 88 ? stPill("UYARI", "%" + h.disk_pct) : "%" + h.disk_pct + " dolu"} <span class="muted small">· ${h.disk_free_gb} GB boş</span>`],
-      ["Git", `${esc(g.branch)}${g.rebasing ? " · " + stPill("HATA", "yarım rebase") : ""} <span class="muted small">· ${g.dirty ? g.dirty + " kirli" : "temiz"}${g.ahead ? " · " + g.ahead + " push bekliyor" : ""}</span>`],
-      ["Veri tazeliği", (h.stale || []).length ? stPill("HATA", h.stale.length + " bayat") : stPill("OK", "Güncel")],
-    ].map(([k, v]) => `<div><div class="k">${k}</div><div class="v">${v}</div></div>`).join("");
-    const stale = (h.stale || []).map((s) => `<li>${inline(s)}</li>`).join("");
-
-    const showBg = store("bg") === "1";
-    const nowUtc = new Date(S.now).toISOString().slice(11, 16);
-    const items = [];
-    for (const r of S.schedule) {
-      if (r.bg && !showBg) continue;
-      const times = r.utc.length > 8 ? [r.utc[0]] : r.utc;
-      for (const t of times) items.push({ t, label: r.label + (r.utc.length > 8 ? ` (gün boyu ${r.utc.length} kez)` : ""), bg: r.bg });
-    }
-    items.sort((a, b) => trMin(a.t) - trMin(b.t));
-    let nowPlaced = false, li = "";
-    for (const it of items) {
-      const past = trMin(it.t) < trMin(nowUtc);
-      if (!nowPlaced && !past) { li += `<li class="now-line"><span>ŞİMDİ ${tTR(S.now)}</span></li>`; nowPlaced = true; }
-      li += `<li class="${past ? "past" : ""} ${it.bg ? "bg" : ""}"><span class="t">${utcToTr(it.t)}</span><span class="rail"></span><span>${esc(it.label)}</span></li>`;
-    }
-    if (!nowPlaced) li += `<li class="now-line"><span>ŞİMDİ ${tTR(S.now)}</span></li>`;
-
-    $("#v-uretim").innerHTML = `<div class="grid2">
-      <div>
-        <div class="sec"><div class="sec-h"><h2>Hatlar</h2><span class="meta">loglardan · ${ago(h.ts)} <button class="btn ghost" id="hc-refresh" style="margin-left:6px">Şimdi kontrol et</button></span></div>
-          <div class="card">${pipes}</div></div>
-        <div class="sec"><div class="sec-h"><h2>Sistem</h2></div><div class="card"><div class="sys">${sys}</div>
-          ${stale ? `<ul class="small" style="margin:0;padding:10px 16px 12px 32px;color:var(--bad)">${stale}</ul>` : ""}</div></div>
-      </div>
-      <div class="sec"><div class="sec-h"><h2>Bugün ne çıkıyor</h2>
-          <label class="switch meta"><input type="checkbox" id="bg-toggle" ${showBg ? "checked" : ""}> arka plan işleri</label></div>
-        <p class="lead">Saatler Türkiye saati; gerçek crontab'dan türetilir.</p>
-        <div class="card"><ul class="sched">${li}</ul></div></div>
-    </div>
-    ${seoHtml(h.seo)}`;
-  }
-  function seoHtml(seo) {
-    if (!seo) return `<div class="sec"><div class="sec-h"><h2>SEO denetimi</h2></div><div class="card"><div class="empty">Henüz çalışmadı — scripts/seo-audit.py</div></div></div>`;
-    const c = seo.counts, ix = seo.index;
-    const pct = ix.checked ? Math.round((ix.indexed / ix.checked) * 100) : 0;
-    const groups = {};
-    for (const i of seo.issues) (groups[i.code] = groups[i.code] || []).push(i);
-    const order = Object.entries(groups).sort((a, b) =>
-      (a[1][0].sev === "KRİTİK" ? 0 : 1) - (b[1][0].sev === "KRİTİK" ? 0 : 1) || b[1].length - a[1].length);
-    const rows = order.map(([code, items]) => {
-      const meta = seo.codes[code] || {};
-      const crit = items[0].sev === "KRİTİK";
-      return `<details class="seo-g ${crit ? "crit" : ""}"><summary>${stPill(crit ? "HATA" : "UYARI", crit ? "Kritik" : "Uyarı")}
-          <span class="seo-l">${esc(meta.label || code)}</span><b class="seo-n">${items.length}</b></summary>
-        <p class="small muted" style="margin:6px 0 8px">Düzeltme: ${esc(meta.fix || "")}</p>
-        <ul class="seo-list">${items.slice(0, 40).map((i) => `<li><a href="https://parafomo.com${esc(i.path)}" target="_blank" rel="noopener">${esc(i.path)}</a> <span class="muted">${esc(i.detail || "")}</span></li>`).join("")}
-        ${items.length > 40 ? `<li class="muted">… ${items.length - 40} sayfa daha</li>` : ""}</ul></details>`;
-    }).join("");
-    return `<div class="sec"><div class="sec-h"><h2>SEO denetimi</h2><span class="meta">${seo.pages} sayfa · ${seo.age_h < 1 ? "az önce" : Math.round(seo.age_h) + " sa önce"} · her gün 11:45 TSİ</span></div>
-      <p class="lead">Ajan kritikleri ertesi gece ilk iş düzeltir; uyarılardan her gece bir kümeyi temizler.</p>
-      <div class="card">
-        <div class="seo-top">
-          <div class="kv"><div class="k">Kritik</div><div class="v ${c["KRİTİK"] ? "bad-t" : ""}">${c["KRİTİK"]}</div></div>
-          <div class="kv"><div class="k">Uyarı</div><div class="v">${c["UYARI"]}</div></div>
-          <div class="kv"><div class="k">Bilgi</div><div class="v">${c["BİLGİ"]}</div></div>
-          <div class="kv seo-ix"><div class="k">Google indeksinde (bakılan sayfalar)</div><div class="v">${ix.indexed} / ${ix.checked} <span class="muted small">· %${pct}</span></div>
-            <div class="track"><i style="width:${pct}%"></i></div></div>
-        </div>
-        ${rows || '<div class="empty">Sorun yok.</div>'}
-      </div></div>`;
-  }
-
-  // takvim TSİ gününe göre sıralanır (UTC 21:00+ = ertesi gün 00:00+ TSİ)
-  const trMin = (t) => { const [h, m] = t.split(":").map(Number); return ((h + 3) % 24) * 60 + m; };
-  const utcToTr = (t) => { const [h, m] = t.split(":").map(Number); return String((h + 3) % 24).padStart(2, "0") + ":" + String(m).padStart(2, "0"); };
-
-  // ---------- çizim + olaylar ----------
-  function renderAll() {
-    const editing = document.activeElement && document.activeElement.matches("textarea");
-    renderPulse();
-    if (!editing) renderGorevler();
-    renderMetrik(); renderAjan(); renderUretim();
-  }
-
-  function setTab(name) {
-    document.querySelectorAll("#tabs button").forEach((b) => b.setAttribute("aria-selected", b.dataset.tab === name));
-    document.querySelectorAll(".view").forEach((v) => (v.hidden = v.id !== "v-" + name));
-    if (location.hash !== "#" + name) history.replaceState(null, "", "#" + name);
-    if (name === "metrik" && S) drawCharts();
-    window.scrollTo({ top: 0 });
-  }
-
-  function patchLocal(fn) { fn(); renderPulse(); renderGorevler(); }
-
-  async function saveNote(el, url, body) {
-    try {
-      await api(url, { method: "POST", body });
-      const s = el.parentElement.querySelector(".saved");
-      s.classList.add("on"); setTimeout(() => s.classList.remove("on"), 1500);
-    } catch (e) { toast(e.message, true); }
-  }
-
-  document.addEventListener("click", async (ev) => {
-    const t = ev.target.closest("button, [data-toggle]");
-    if (!t) return;
-    if (t.dataset.tab) return setTab(t.dataset.tab);
-    if (t.dataset.go) return setTab(t.dataset.go);
-    if (t.id === "refresh") return load();
-    if (t.id === "theme") {
-      const cur = document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-      const nxt = cur === "dark" ? "light" : "dark";
-      document.documentElement.dataset.theme = nxt; store("theme", nxt);
-      return S && drawCharts();
-    }
-    if (t.id === "kpi-tbl-btn") { const tb = $("#kpi-tbl"); tb.hidden = !tb.hidden; t.textContent = tb.hidden ? "Tablo olarak gör" : "Tabloyu gizle"; return; }
-    if (t.id === "hc-refresh") {
-      t.disabled = true; t.textContent = "Kontrol ediliyor…";
-      try { const r = await api("/api/health"); S.health = r.health; renderPulse(); renderUretim(); toast("Sağlık kontrolü güncellendi"); }
-      catch (e) { toast(e.message, true); t.disabled = false; }
-      return;
-    }
-    if (t.dataset.more) {
-      const k = t.dataset.more;
-      openRows.has(k) ? openRows.delete(k) : openRows.add(k);
-      store("open", JSON.stringify([...openRows]));
-      return renderGorevler();
-    }
-    if (t.dataset.toggle !== undefined) {
-      const row = t.closest("[data-key]"), k = row.dataset.key;
-      openRows.has(k) ? openRows.delete(k) : openRows.add(k);
-      store("open", JSON.stringify([...openRows]));
-      return renderGorevler();
-    }
-    if (t.dataset.dec) {
-      const k = t.closest("[data-key]").dataset.key, dec = t.dataset.dec;
-      const task = S.board.week.tasks.find((x) => x.key === k);
-      const prev = task.decision;
-      patchLocal(() => (task.decision = dec));
-      try { await api("/api/agent/" + encodeURIComponent(k), { method: "POST", body: { decision: dec } }); toast(`${task.id}: ${S.decisions[dec]}`); }
-      catch (e) { patchLocal(() => (task.decision = prev)); toast(e.message, true); }
-      return;
-    }
-    if (t.dataset.ustatus) {
-      const slug = t.closest("[data-user]").dataset.user, st = t.dataset.ustatus;
-      const u = S.board.user_tasks.find((x) => x.slug === slug);
-      const prev = u.status;
-      patchLocal(() => { u.status = st; u.agent_note = ""; S.counts.user_todo = S.board.user_tasks.filter((x) => x.status === "todo").length; });
-      try { await api("/api/user/" + encodeURIComponent(slug), { method: "POST", body: { status: st } }); toast(st === "done" ? "Harika — ajan doğrulayacak" : "Kaydedildi"); }
-      catch (e) { patchLocal(() => (u.status = prev)); toast(e.message, true); }
-      return;
-    }
-    if (t.id === "inbox-send") {
-      const ta = $("#inbox-text"), text = ta.value.trim();
-      if (!text) return ta.focus();
-      t.disabled = true;
-      try { await api("/api/inbox", { method: "POST", body: { text } }); ta.value = ""; toast("Ajana iletildi"); ta.blur(); await load(true); }
-      catch (e) { toast(e.message, true); } finally { t.disabled = false; }
-      return;
-    }
-    if (t.dataset.unsend) {
-      try { await api("/api/inbox/" + t.dataset.unsend, { method: "DELETE" }); toast("Geri çekildi"); await load(true); }
-      catch (e) { toast(e.message, true); }
+      await gonder('/api/giris', { sifre: $('#sifre').value });
+      await yukle();
+    } catch (err) {
+      $('#girisHata').textContent = err.message;
+      btn.disabled = false;
     }
   });
+  setTimeout(() => $('#sifre')?.focus(), 60);
+}
 
-  document.addEventListener("change", (ev) => {
-    const el = ev.target;
-    if (el.id === "bg-toggle") { store("bg", el.checked ? "1" : "0"); return renderUretim(); }
-    if (el.matches("[data-qnote]")) {
-      const k = el.closest("[data-key]").dataset.key;
-      const task = S.board.week.tasks.find((x) => x.key === k);
-      task.note = el.value;
-      return saveNote(el, "/api/agent/" + encodeURIComponent(k), { note: el.value });
+// ---------------------------------------------------------------- yükle + çiz
+async function yukle(sessiz = false) {
+  const btn = $('#yenile');
+  btn?.classList.add('donuyor');
+  try {
+    S = await api('/api/durum');
+    sonYukleme = Date.now();
+    $('#ust').hidden = false;
+    $('#sekmeler').hidden = false;
+    $('#ekran').className = 'ekran';
+    // yazarken yeniden çizip imleci kaçırma
+    if (!(sessiz && document.activeElement?.id === 'istekMetin')) ciz();
+    if (S.toplaniyor) setTimeout(() => yukle(true), 15000);
+  } catch (err) {
+    if (err.message !== 'Giriş gerekli' && !sessiz) bildir(err.message);
+  } finally {
+    btn?.classList.remove('donuyor');
+  }
+}
+
+function ciz() {
+  if (!S) return;
+  $('#baslik').textContent = BASLIK[sekme];
+  $$('#sekmeler button').forEach((b) => b.classList.toggle('acik', b.dataset.sekme === sekme));
+  $('#kontrolNokta').hidden = !(S.gorevler || []).some((g) => !g.yaptim);
+  $('#ekran').innerHTML = sekme === 'icerik' ? icerikHtml() : sekme === 'web' ? webHtml() : kontrolHtml();
+  $$('.cubuk i[data-h]').forEach((i) => { i.style.height = `${Math.max(3, Number(i.dataset.h))}%`; });
+  const ta = $('#istekMetin');
+  if (ta) {
+    ta.value = taslak;
+    ta.addEventListener('input', () => { taslak = ta.value; });
+  }
+  if (ekGorsel && $('#ekAlan')) {
+    $('#ekAlan').hidden = false;
+    $('#ekOnizleme').src = ekGorsel;
+  }
+}
+
+function sekmeSec(s) {
+  sekme = s;
+  try { localStorage.setItem('pf-sekme', s); } catch (e) { /* özel mod */ }
+  ciz();
+  window.scrollTo(0, 0);
+}
+
+// ---------------------------------------------------------------- ortak parçalar
+function gunlukHtml() {
+  const g = S.gunluk;
+  if (!g || !(g.maddeler || []).length) return '';
+  return `<div class="kart gunluk"><div class="t">${esc(kisaTarih(g.tarih))} · Claude'dan not</div>
+    <ul>${g.maddeler.map((m) => `<li>${esc(m)}</li>`).join('')}</ul></div>`;
+}
+
+function planHtml(ad) {
+  const k = S.kanallar?.[ad];
+  if (!k) return '';
+  const cip = k.onay ? '<span class="cip iyi">Onaylandı</span>' : '<span class="cip uyari">Onayını bekliyor</span>';
+  const alt = k.onay
+    ? `<p class="soluk kucuk">${esc(zamanMetni(k.onay.zaman))} onayladın. Değişiklik istersen Kontrol → Bana yaz.</p>`
+    : `<div class="butonlar"><button type="button" class="btn ana" data-plan-onay="${esc(ad)}">Planı onayla</button>
+       <button type="button" class="btn" data-plan-degis="${esc(ad)}">Değişiklik iste</button></div>`;
+  return `<details class="kart plan">
+    <summary><div class="sol"><span>${esc(k.baslik)} planı ${cip}</span><span class="hedef">Hedef: ${esc(k.hedef)}</span></div>${IKON.ok}</summary>
+    <div class="govde">
+      <p class="teshis">${esc(k.teshis)}</p>
+      <ol>${(k.plan || []).map((m) => `<li>${esc(m)}</li>`).join('')}</ol>
+      <div class="hedefler"><div><b>Hedef:</b> ${esc(k.hedef)}</div>${k.ara_hedef ? `<div><b>Ara hedef:</b> ${esc(k.ara_hedef)}</div>` : ''}</div>
+      ${alt}
+    </div></details>`;
+}
+
+function kanalIkonlari() {
+  return `<span class="kanal yt${acikMi('youtube') ? '' : ' kapali'}" title="YouTube">${IKON.yt}</span>`
+    + `<span class="kanal ig${acikMi('instagram') ? '' : ' kapali'}" title="Instagram">${IKON.ig}</span>`;
+}
+
+function durumCipi(v) {
+  return {
+    onaylandi: '<span class="cip iyi">Hazır</span>',
+    bekliyor: '<span class="cip uyari">Onay bekliyor</span>',
+    hata: '<span class="cip kotu">Hata</span>',
+    reddedildi: '<span class="cip">Çıkarıldı</span>',
+    yayinlandi: '<span class="cip marka">Yayında</span>',
+  }[v.durum] || '';
+}
+
+const kapak = (v) => (v.video
+  ? `<img class="kapak" src="/api/video/${Number(v.no)}.jpg" alt="" loading="lazy">`
+  : '<div class="kapak yer">▶</div>');
+
+// ---------------------------------------------------------------- İÇERİK
+function icerikHtml() {
+  const yt = S.kpi?.youtube || {};
+  const ig = S.kpi?.instagram || {};
+  const ic = S.icerik || {};
+  const erisim = (ic.yayinlanan || []).map((v) => v.ig_erisim).filter((x) => x != null);
+  const igOrt = erisim.length ? Math.round(erisim.reduce((a, b) => a + b, 0) / erisim.length) : null;
+
+  const gunler = [];
+  for (const y of ic.yuvalar || []) {
+    const ad = gunAdi(y.zaman);
+    let g = gunler[gunler.length - 1];
+    if (!g || g.ad !== ad) { g = { ad, yuvalar: [] }; gunler.push(g); }
+    g.yuvalar.push(y);
+  }
+  const takvim = gunler.slice(0, 5).map((g) => `<div class="gun"><div class="gun-ad">${esc(g.ad)}</div>
+    <div class="kart liste">${g.yuvalar.map(yuvaHtml).join('')}</div></div>`).join('');
+
+  return `${gunlukHtml()}
+  <div class="metrikler">
+    <div class="kart metrik"><div class="e">YouTube</div><div class="d">${sayi(yt.abone)}<small>abone</small></div>
+      <div class="a">${sayi(yt.son?.izlenme)} izlenme/hafta ${fark(yt.son?.izlenme, yt.onceki?.izlenme)}</div></div>
+    <div class="kart metrik"><div class="e">Instagram</div><div class="d">${sayi(ig.takipci)}<small>takipçi</small></div>
+      <div class="a">Reel başına ort. ${sayi(igOrt)} kişi</div></div>
+  </div>
+  ${planHtml('youtube')}
+  ${planHtml('instagram')}
+  ${(ic.bekleyen || []).length ? `<h2>Onayını bekleyenler</h2><div class="kart liste">${ic.bekleyen.map((v) => videoSatiri(v)).join('')}</div>` : ''}
+  ${(ic.sorunlu || []).length ? `<h2>Sorunlu</h2><div class="kart liste">${ic.sorunlu.map((v) => videoSatiri(v)).join('')}</div>` : ''}
+  <h2>Sıradaki yayınlar <small>her gün ${esc((ic.saatler || []).join(' ve '))}</small></h2>
+  ${takvim || '<div class="kart bos">Planlı yayın yok.</div>'}
+  <h2>Uzun videolar <small>YouTube</small></h2>
+  <div class="kart liste">${(ic.uzun || []).map(uzunHtml).join('') || '<div class="bos">Yok.</div>'}</div>
+  <h2>Yayınlananlar <small>son 12 video</small></h2>
+  <div class="kart liste">${(ic.yayinlanan || []).map(yayinHtml).join('') || '<div class="bos">Henüz yok.</div>'}</div>`;
+}
+
+function yuvaHtml(y) {
+  const v = y.video;
+  if (!v) {
+    return `<div class="satir bos-yuva"><div class="saat">${saat(y.zaman)}</div>
+      <div class="govde"><div class="bas soluk">${esc(y.not || 'Boş')}</div></div></div>`;
+  }
+  return `<button type="button" class="satir" data-video="${Number(v.no)}"><div class="saat">${saat(y.zaman)}</div>${kapak(v)}
+    <div class="govde"><div class="bas">${esc(v.baslik)}</div>
+    <div class="alt">${durumCipi(v)}${kanalIkonlari()}</div></div></button>`;
+}
+
+function videoSatiri(v) {
+  return `<button type="button" class="satir" data-video="${Number(v.no)}">${kapak(v)}
+    <div class="govde"><div class="bas">${esc(v.baslik)}</div><div class="alt">${durumCipi(v)}${kanalIkonlari()}</div></div></button>`;
+}
+
+function yayinHtml(v) {
+  const oy = v.oy === '+' ? ' · 👍' : v.oy === '-' ? ' · 👎' : '';
+  return `<button type="button" class="satir" data-video="${Number(v.no)}">${kapak(v)}
+    <div class="govde"><div class="bas">${esc(v.baslik)}</div>
+    <div class="alt"><span>${esc(zamanMetni(v.yayinlandi))}${oy}</span>
+      <span class="kanal yt" title="YouTube izlenme">${IKON.yt}<span class="sayi">${sayi(v.izlenme)}</span></span>
+      <span class="kanal ig" title="Instagram erişim">${IKON.ig}<span class="sayi">${sayi(v.ig_erisim)}</span></span></div></div></button>`;
+}
+
+function uzunHtml(u) {
+  const cip = {
+    planlandi: '<span class="cip iyi">Planlandı</span>', yayinda: '<span class="cip marka">Yayında</span>',
+    hazirlanacak: '<span class="cip">Hazırlanacak</span>', hazir: '<span class="cip">Hazır</span>',
+  }[u.durum] || '';
+  const img = u.kapak
+    ? `<img class="kapak yatay" src="/api/uzun/${encodeURIComponent(u.slug)}.jpg" alt="" loading="lazy">`
+    : '<div class="kapak yatay yer">▶</div>';
+  const zaman = u.zaman ? `${bicim(new Date(u.zaman), { day: 'numeric', month: 'long' })} ${saat(u.zaman)}` : '';
+  const ic = `${img}<div class="govde"><div class="bas">${esc(u.baslik)}</div><div class="alt">${cip}<span>${esc(zaman)}</span>
+    ${u.izlenme != null ? `<span class="kanal yt">${IKON.yt}<span class="sayi">${sayi(u.izlenme)}</span></span>` : ''}</div></div>`;
+  return u.yt && YT_ID.test(u.yt)
+    ? `<a class="satir" href="https://youtu.be/${u.yt}" target="_blank" rel="noopener">${ic}</a>`
+    : `<div class="satir">${ic}</div>`;
+}
+
+function videoBul(no) {
+  const ic = S?.icerik || {};
+  for (const y of ic.yuvalar || []) if (y.video && y.video.no === no) return { v: y.video, zaman: y.zaman };
+  for (const v of [...(ic.bekleyen || []), ...(ic.sorunlu || []), ...(ic.yayinlanan || [])]) if (v.no === no) return { v };
+  return null;
+}
+
+function videoAc(no) {
+  const b = videoBul(no);
+  if (!b) return;
+  const { v, zaman } = b;
+  let html = v.video
+    ? `<video controls playsinline preload="metadata" poster="/api/video/${Number(v.no)}.jpg" src="/api/video/${Number(v.no)}.mp4"></video>`
+    : '<p class="bos">Video dosyası yok.</p>';
+  html += `<h3>${esc(v.baslik)}</h3><div class="bilgi">
+    ${zaman ? `<span>${esc(gunAdi(zaman))}, ${saat(zaman)}</span>` : ''}
+    ${v.yayinlandi ? `<span>${esc(zamanMetni(v.yayinlandi))} yayınlandı</span>` : ''}
+    <span>${esc(MOTOR[v.motor] || v.motor || '')}</span><span>#${Number(v.no)}</span></div>`;
+  if (v.durum === 'yayinlandi') {
+    html += `<div class="rakamlar"><div><b>${sayi(v.izlenme)}</b><span>YouTube izlenme</span></div>
+      <div><b>${sayi(v.ig_erisim)}</b><span>Instagram erişim</span></div></div><div class="butonlar">
+      ${v.yt && YT_ID.test(v.yt) ? `<a class="btn" href="https://youtube.com/shorts/${v.yt}" target="_blank" rel="noopener">YouTube'da aç</a>` : ''}
+      ${v.ig && /^https:\/\/(www\.)?instagram\.com\//.test(v.ig) ? `<a class="btn" href="${esc(v.ig)}" target="_blank" rel="noopener">Instagram'da aç</a>` : ''}</div>
+      <div class="butonlar"><button type="button" class="btn${v.oy === '+' ? ' ana' : ''}" data-eylem="begen" data-no="${Number(v.no)}">👍 Beğendim</button>
+      <button type="button" class="btn${v.oy === '-' ? ' ana' : ''}" data-eylem="begenme" data-no="${Number(v.no)}">👎 Beğenmedim</button></div>`;
+  } else if (v.durum === 'bekliyor') {
+    html += `<div class="butonlar"><button type="button" class="btn ana" data-eylem="onayla" data-no="${Number(v.no)}">Onayla</button>
+      <button type="button" class="btn tehlike" data-eylem="cikar" data-no="${Number(v.no)}">Yayından çıkar</button></div>`;
+  } else if (v.durum === 'onaylandi') {
+    html += `<p class="soluk kucuk">Bu video otomatik çıkacak. İstemiyorsan çıkar; yerine sıradaki video geçer.</p>
+      <div class="butonlar"><button type="button" class="btn tehlike" data-eylem="cikar" data-no="${Number(v.no)}">Yayından çıkar</button></div>`;
+  } else if (v.durum === 'hata') {
+    html += `<p class="soluk kucuk">${esc(v.hata || 'Yayın sırasında bir hata oldu.')}</p>`;
+  }
+  perdeAc(html);
+}
+
+// ---------------------------------------------------------------- WEB
+function webHtml() {
+  const w = S.kpi?.web || {};
+  const hs = w.haftalar || [];
+  const enCok = Math.max(1, ...hs.map((h) => h.tik || 0));
+  const wb = S.web || {};
+  const grafik = hs.length ? `<div class="kart grafik"><div class="gb"><span>Haftalık Google tıkı · son 8 hafta</span></div>
+    <div class="cubuklar" role="img" aria-label="Haftalık Google tık sayıları">${hs.map((h, i) => `<div class="cubuk${i === hs.length - 1 ? ' son' : ''}">
+      <i data-h="${Math.round(((h.tik || 0) / enCok) * 100)}"></i><span>${sayi(h.tik)}</span></div>`).join('')}</div></div>` : '';
+  return `<div class="metrikler uc">
+    <div class="kart metrik"><div class="e">Google tık</div><div class="d">${sayi(w.son?.tik)}</div><div class="a">önceki ${sayi(w.onceki?.tik)} ${fark(w.son?.tik, w.onceki?.tik)}</div></div>
+    <div class="kart metrik"><div class="e">Gösterim</div><div class="d">${sayi(w.son?.gosterim)}</div><div class="a">önceki ${sayi(w.onceki?.gosterim)} ${fark(w.son?.gosterim, w.onceki?.gosterim)}</div></div>
+    <div class="kart metrik"><div class="e">Ziyaretçi</div><div class="d">${sayi(w.ziyaret_7g)}</div><div class="a">önceki ${sayi(w.ziyaret_onceki)} ${fark(w.ziyaret_7g, w.ziyaret_onceki)}</div></div>
+  </div>
+  <p class="oto-not">Son 7 gün. Google verisi 2–3 gün geriden gelir.</p>
+  ${grafik}
+  ${planHtml('web')}
+  <h2>Yapılacak</h2>
+  <div class="kart liste">${(wb.yapilacak || []).map(yapilacakHtml).join('') || '<div class="bos">Liste boş.</div>'}</div>
+  <h2>Yapıldı <small>son 3 hafta</small></h2>
+  <div class="kart liste">${(wb.yapildi || []).map(yapildiHtml).join('') || '<div class="bos">Henüz yok.</div>'}</div>
+  ${wb.oto_guncelleme_7g ? `<p class="oto-not">Ayrıca son 7 günde ${sayi(wb.oto_guncelleme_7g)} otomatik veri güncellemesi yapıldı (altın/döviz fiyatları, halka arz takvimi vb.).</p>` : ''}`;
+}
+
+function yapilacakHtml(x) {
+  const d = x.durum || 'sirada';
+  const isaret = d === 'yapildi' ? `<span class="isaret yapildi">${IKON.tik}</span>` : `<span class="isaret${d === 'yapiliyor' ? ' yapiliyor' : ''}"></span>`;
+  return `<div class="is">${isaret}<div class="govde">${esc(x.baslik)}<div class="ust-bilgi"><span>${esc(kisaTarih(x.tarih))}</span>
+    ${d === 'yapiliyor' ? '<span class="cip uyari">Yapılıyor</span>' : ''}</div></div></div>`;
+}
+
+function yapildiHtml(x) {
+  const link = x.link && /^\/[\w\-/]*$/.test(x.link) ? `https://parafomo.com${x.link}` : null;
+  const ic = `${esc(x.baslik)}${link ? ' <span class="ok-dis">↗</span>' : ''}`;
+  return `<div class="is"><span class="isaret yapildi">${IKON.tik}</span><div class="govde">
+    ${link ? `<a href="${link}" target="_blank" rel="noopener">${ic}</a>` : ic}
+    <div class="ust-bilgi"><span>${esc(kisaTarih(x.tarih))}</span>${x.oto ? '<span>otomatik</span>' : ''}</div></div></div>`;
+}
+
+// ---------------------------------------------------------------- KONTROL
+function kontrolHtml() {
+  const gorevler = S.gorevler || [];
+  const istekler = S.istekler || [];
+  return `${gorevler.length ? `<h2>Senden beklenenler</h2>${gorevler.map(gorevHtml).join('')}` : ''}
+  <h2>Otomatik sistem</h2>
+  <div class="kart liste">${(S.kontrol || []).map(anahtarHtml).join('')}</div>
+  <h2>Bana yaz</h2>
+  <div class="kart yaz">
+    <textarea id="istekMetin" maxlength="4000" placeholder="İstek, fikir ya da düzeltme yaz. Okuyup cevabını buraya yazarım."></textarea>
+    <div class="ek" id="ekAlan" hidden><img id="ekOnizleme" alt=""><span>Görsel eklendi</span>
+      <button type="button" class="link-btn" id="gorselSil">Kaldır</button></div>
+    <input type="file" id="gorselDosya" accept="image/*" hidden>
+    <div class="butonlar"><button type="button" class="btn" id="gorselSec">Görsel ekle</button>
+      <button type="button" class="btn ana" id="gonder">Gönder</button></div>
+  </div>
+  ${istekler.length ? `<h2>Yazdıkların</h2><div class="kart liste">${istekler.map(istekHtml).join('')}</div>` : ''}
+  <div class="alt-bilgi">Sayılar ${S.kpi?.guncellendi ? esc(zamanMetni(S.kpi.guncellendi)) : '—'} güncellendi.
+    ${(S.kpi?.hatalar || []).length ? '<br>Bazı sayılar alınamadı, eski değer gösteriliyor.' : ''}<br>
+    <button type="button" class="link-btn" id="cikis">Çıkış yap</button></div>`;
+}
+
+function gorevHtml(g) {
+  return `<div class="kart gorev"><div class="ad"><span>${esc(g.baslik)}</span>${g.sure ? `<span class="cip">${esc(g.sure)}</span>` : ''}</div>
+    <p>${esc(g.nasil || '')}</p>
+    ${g.yaptim ? `<p class="kucuk soluk">${esc(zamanMetni(g.yaptim))} "yaptım" dedin; kontrol edip kapatacağım.</p>`
+      : `<div class="butonlar"><button type="button" class="btn" data-gorev="${esc(g.id)}">Yaptım</button></div>`}</div>`;
+}
+
+function anahtarHtml(k) {
+  return `<div class="anahtar"><div class="govde"><div class="ad">${esc(k.ad)}</div><div class="acik">${esc(k.aciklama)}</div></div>
+    <label class="dugme"><input type="checkbox" data-kontrol="${esc(k.anahtar)}" data-ad="${esc(k.ad)}" ${k.acik ? 'checked' : ''} aria-label="${esc(k.ad)}"><span></span></label></div>`;
+}
+
+function istekHtml(i) {
+  const cip = {
+    yeni: '<span class="cip uyari">Okunmadı</span>', okundu: '<span class="cip marka">Okundu</span>',
+    yapiliyor: '<span class="cip marka">Yapılıyor</span>', yapildi: '<span class="cip iyi">Yapıldı</span>',
+    yapilmayacak: '<span class="cip">Yapılmayacak</span>',
+  }[i.durum] || '';
+  const id = Number(i.id);
+  return `<div class="istek"><div class="ib"><span>${esc(zamanMetni(i.zaman))}</span>${cip}</div>
+    ${i.metin ? `<div class="im">${esc(i.metin)}</div>` : ''}
+    ${i.gorsel ? `<a href="/api/istek/${id}/gorsel" target="_blank"><img class="ig" src="/api/istek/${id}/gorsel" alt="Eklediğin görsel" loading="lazy"></a>` : ''}
+    ${i.cevap ? `<div class="cevap"><b>Claude:</b> ${esc(i.cevap)}</div>` : ''}</div>`;
+}
+
+// ---------------------------------------------------------------- perde
+function perdeAc(html) {
+  $('#perdeIc').innerHTML = html;
+  $('#perde').hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+function perdeKapat() {
+  $('#perde video')?.pause();
+  $('#perde').hidden = true;
+  $('#perdeIc').innerHTML = '';
+  document.body.style.overflow = '';
+}
+
+// ---------------------------------------------------------------- eylemler
+async function videoEylem(no, ad) {
+  if (ad === 'cikar' && !window.confirm('Bu video yayından çıkarılsın mı? Yerine sıradaki video geçer.')) return;
+  try {
+    await gonder(`/api/video/${Number(no)}/${ad}`);
+    bildir({ cikar: 'Video yayından çıkarıldı.', onayla: 'Onaylandı, sıraya girdi.', begen: 'Beğendin olarak kaydedildi.', begenme: 'Beğenmedin olarak kaydedildi.' }[ad]);
+    perdeKapat();
+    await yukle(true);
+  } catch (err) { bildir(err.message); }
+}
+
+async function gorselHazirla(dosya) {
+  const url = URL.createObjectURL(dosya);
+  try {
+    const img = await new Promise((ok, red) => { const i = new Image(); i.onload = () => ok(i); i.onerror = red; i.src = url; });
+    const olcek = Math.min(1, 1600 / Math.max(img.naturalWidth, img.naturalHeight));
+    const c = document.createElement('canvas');
+    c.width = Math.round(img.naturalWidth * olcek);
+    c.height = Math.round(img.naturalHeight * olcek);
+    c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+    return c.toDataURL('image/jpeg', 0.85);
+  } finally { URL.revokeObjectURL(url); }
+}
+
+async function istekGonder() {
+  const metin = ($('#istekMetin')?.value || '').trim();
+  if (!metin && !ekGorsel) { bildir('Önce bir şey yaz.'); return; }
+  const btn = $('#gonder');
+  btn.disabled = true;
+  try {
+    await gonder('/api/istek', { metin, gorsel: ekGorsel });
+    taslak = '';
+    ekGorsel = null;
+    bildir('Gönderildi. Okuyup cevabını buraya yazacağım.');
+    await yukle(true);
+  } catch (err) {
+    bildir(err.message);
+    btn.disabled = false;
+  }
+}
+
+document.addEventListener('click', async (e) => {
+  const t = e.target.closest('button, [data-kapat]');
+  if (!t) return;
+  if (t.dataset.kapat !== undefined) { perdeKapat(); return; }
+  if (t.dataset.sekme) { sekmeSec(t.dataset.sekme); return; }
+  if (t.dataset.video) { videoAc(Number(t.dataset.video)); return; }
+  if (t.dataset.eylem) { videoEylem(t.dataset.no, t.dataset.eylem); return; }
+  if (t.dataset.planOnay) {
+    if (!window.confirm('Bu plan onaylansın mı? Onaylayınca uygulamaya geçerim.')) return;
+    try { await gonder(`/api/plan/${encodeURIComponent(t.dataset.planOnay)}/onayla`); bildir('Plan onaylandı.'); await yukle(true); } catch (err) { bildir(err.message); }
+    return;
+  }
+  if (t.dataset.planDegis) {
+    taslak = `${S?.kanallar?.[t.dataset.planDegis]?.baslik || ''} planı: `;
+    sekmeSec('kontrol');
+    setTimeout(() => { const ta = $('#istekMetin'); if (ta) { ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); ta.scrollIntoView({ block: 'center' }); } }, 80);
+    return;
+  }
+  if (t.dataset.gorev) {
+    try { await gonder(`/api/gorev/${encodeURIComponent(t.dataset.gorev)}/yaptim`); bildir('Teşekkürler, kontrol edeceğim.'); await yukle(true); } catch (err) { bildir(err.message); }
+    return;
+  }
+  switch (t.id) {
+    case 'yenile':
+      try { const r = await gonder('/api/yenile'); if (r.basladi) bildir('Sayılar güncelleniyor…'); } catch (err) { if (err.message !== 'Giriş gerekli') bildir(err.message); return; }
+      await yukle();
+      break;
+    case 'gorselSec': $('#gorselDosya')?.click(); break;
+    case 'gorselSil': ekGorsel = null; ciz(); break;
+    case 'gonder': istekGonder(); break;
+    case 'cikis':
+      if (!window.confirm('Çıkış yapılsın mı?')) return;
+      try { await gonder('/api/cikis'); } catch (err) { /* yine de çık */ }
+      S = null;
+      girisGoster();
+      break;
+    default: break;
+  }
+});
+
+document.addEventListener('change', async (e) => {
+  const inp = e.target;
+  if (inp.matches('input[data-kontrol]')) {
+    const acik = inp.checked;
+    const ad = inp.dataset.ad;
+    if (!acik && !window.confirm(`"${ad}" kapatılsın mı?`)) { inp.checked = true; return; }
+    inp.disabled = true;
+    try {
+      const r = await gonder('/api/kontrol', { anahtar: inp.dataset.kontrol, acik });
+      S.kontrol = r.kontrol;
+      bildir(`${ad} ${acik ? 'açıldı' : 'kapatıldı'}.`);
+      ciz();
+    } catch (err) {
+      inp.checked = !acik;
+      inp.disabled = false;
+      bildir(err.message);
     }
-    if (el.matches("[data-unote]")) {
-      const slug = el.closest("[data-user]").dataset.user;
-      S.board.user_tasks.find((x) => x.slug === slug).note = el.value;
-      return saveNote(el, "/api/user/" + encodeURIComponent(slug), { note: el.value });
-    }
-  });
-  document.addEventListener("keydown", (ev) => {
-    if (ev.target.id === "inbox-text" && ev.key === "Enter" && (ev.metaKey || ev.ctrlKey)) $("#inbox-send").click();
-  });
+    return;
+  }
+  if (inp.id === 'gorselDosya' && inp.files?.[0]) {
+    try { ekGorsel = await gorselHazirla(inp.files[0]); ciz(); } catch (err) { bildir('Görsel okunamadı.'); }
+  }
+});
 
-  let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => S && drawCharts(), 150); });
+// kırık kapak görseli → yer tutucu
+document.addEventListener('error', (e) => {
+  const t = e.target;
+  if (t.tagName === 'IMG' && t.classList.contains('kapak')) {
+    const d = document.createElement('div');
+    d.className = `${t.className} yer`;
+    d.textContent = '▶';
+    t.replaceWith(d);
+  }
+}, true);
 
-  const th = store("theme"); if (th) document.documentElement.dataset.theme = th;
-  setTab((location.hash || "#gorevler").slice(1).replace(/[^a-z]/g, "") || "gorevler");
-  load();
-  setInterval(() => { if (!document.hidden) load(true); }, 90000);
-  document.addEventListener("visibilitychange", () => { if (!document.hidden) load(true); });
-})();
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !$('#perde').hidden) perdeKapat(); });
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && S && Date.now() - sonYukleme > 30000) yukle(true);
+});
+setInterval(() => { if (document.visibilityState === 'visible' && S) yukle(true); }, 5 * 60 * 1000);
+
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(() => {});
+yukle();

@@ -22,6 +22,17 @@ LOG_DIR="$REPO/logs"
 PROMPT_FILE="$REPO/scripts/daily-prompt.md"
 VPY="/root/.venvs/parafomo/bin/python"
 mkdir -p "$LOG_DIR"
+
+# Panel anahtarı (dashboard.parafomo.com → Kontrol → "Web: yeni içerik", Kaan 2026-11-16).
+# Dosya yoksa ya da okunamazsa AÇIK sayılır; yalnız açıkça kapatıldıysa atlar.
+PANEL_WEB="$("$VPY" -c 'import json
+try: print(int(bool(json.load(open("/root/parafomo-data/dash/kontrol.json")).get("web_icerik", True))))
+except Exception: print(1)' 2>/dev/null || echo 1)"
+if [ "$PANEL_WEB" = "0" ]; then
+  echo "[$(date -u '+%Y-%m-%d %H:%M:%S UTC')] panelden durduruldu (Web: yeni içerik kapalı) — atlandı"
+  exit 0
+fi
+
 MODEL="${CONTENT_MODEL:-opus}"   # Max 5x (2026-10-06): blog = marka/SEO çekirdeği → en iyi model
 EFFORT="${CONTENT_EFFORT:-medium}"
 BUDGET="${CONTENT_MAX_BUDGET:-6}"
