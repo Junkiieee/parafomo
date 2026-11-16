@@ -1,0 +1,57 @@
+---
+// Çerez onayı (KVKK çerez rehberi 2025: açık rıza, "Reddet" en az "Kabul et" kadar görünür, ön işaret yok, duvar yok).
+// Seçim localStorage 'pf-cerez' = 'kabul' | 'red'. Kabulde Google Consent Mode güncellenir (Analytics.astro).
+// Altbilgideki "Çerez tercihleri" düğmesi (data-cerez-ac) bandı yeniden açar.
+---
+<div id="cerez-bant" class="cerez-bant" role="dialog" aria-live="polite" aria-label="Çerez tercihi" hidden>
+  <p>
+    Siteyi geliştirmek için <strong>analiz</strong>, ileride reklam göstermek için <strong>reklam</strong> çerezleri
+    kullanmak istiyoruz. Reddedersen yalnız zorunlu çerezler kullanılır. <a href="/cerez-politikasi/">Ayrıntılar</a>
+  </p>
+  <div class="cerez-btn">
+    <button type="button" data-cerez="red">Reddet</button>
+    <button type="button" data-cerez="kabul">Kabul et</button>
+  </div>
+</div>
+<script is:inline>
+  (function () {
+    var bant = document.getElementById('cerez-bant');
+    if (!bant) return;
+    var oku = function () { try { return localStorage.getItem('pf-cerez'); } catch (e) { return null; } };
+    var goster = function () { bant.hidden = false; };
+    bant.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-cerez]');
+      if (!b) return;
+      var secim = b.getAttribute('data-cerez');
+      try { localStorage.setItem('pf-cerez', secim); } catch (err) { /* yok say */ }
+      if (window.gtag) {
+        var v = secim === 'kabul' ? 'granted' : 'denied';
+        window.gtag('consent', 'update', { analytics_storage: v, ad_storage: v, ad_user_data: v, ad_personalization: v });
+      }
+      bant.hidden = true;
+    });
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('[data-cerez-ac]')) { e.preventDefault(); goster(); }
+    });
+    if (!oku()) {
+      if (document.readyState === 'complete') setTimeout(goster, 400);
+      else window.addEventListener('load', function () { setTimeout(goster, 400); }, { once: true });
+    }
+  })();
+</script>
+<style>
+  .cerez-bant {
+    position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 60; max-width: 640px; margin: 0 auto;
+    background: var(--bg-card, #fff); color: var(--text, #111); border: 1px solid var(--border, #dde5e1);
+    border-radius: 14px; padding: 12px 14px; box-shadow: 0 8px 30px rgba(0, 0, 0, .18); font-size: .86rem; line-height: 1.45;
+  }
+  .cerez-bant[hidden] { display: none; }
+  .cerez-bant p { margin: 0; }
+  .cerez-bant a { color: var(--brand-deep, #1e6b7f); }
+  .cerez-btn { display: flex; gap: 8px; margin-top: 10px; }
+  .cerez-btn button {
+    flex: 1; min-height: 40px; border-radius: 10px; border: 1px solid var(--border, #cfd8d4); cursor: pointer;
+    background: var(--bg-elev, #f6faf8); color: var(--text, #111); font: inherit; font-weight: 700;
+  }
+  .cerez-btn button:hover { border-color: var(--brand, #0e7f69); }
+</style>

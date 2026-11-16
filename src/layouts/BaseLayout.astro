@@ -4,6 +4,7 @@ import { SITE } from '../site.config';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
+import CerezOnay from '../components/CerezOnay.astro';
 import RelatedGuides from '../components/RelatedGuides.astro';
 import ShareBar from '../components/ShareBar.astro';
 import { TOOLS } from '../data/tools';
@@ -238,6 +239,7 @@ const shareLabel = typeof share === 'string' ? share : calcLd ? 'Bu hesaplayıc�
       <RelatedGuides path={canonPath} />
     </main>
     <Footer />
+    {!noAnalytics && <CerezOnay />}
     <style>.data-updated{font-size:.85rem;color:var(--text-muted);margin-top:18px;margin-bottom:0}.data-updated a{color:inherit}</style>
     <script is:inline>
       // Türkçe sayı girişi: type="number" alanlar "250.000" → 250, "1250,50" → 125050 okunuyordu

@@ -15,6 +15,16 @@ const PLAUSIBLE = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
       window.dataLayer = window.dataLayer || [];
       function gtag(){ dataLayer.push(arguments); }
       window.gtag = gtag;
+      // KVKK çerez rehberi (2025) + Google Consent Mode v2 (2026-11-17): onay gelene kadar analiz ve reklam
+      // çerezi YAZILMAZ (çerezsiz ölçüm). Seçim CerezOnay bileşeninde 'pf-cerez' anahtarına kaydedilir.
+      gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied',
+        ad_personalization: 'denied', wait_for_update: 500 });
+      try {
+        if (localStorage.getItem('pf-cerez') === 'kabul') {
+          gtag('consent', 'update', { analytics_storage: 'granted', ad_storage: 'granted', ad_user_data: 'granted',
+            ad_personalization: 'granted' });
+        }
+      } catch (e) { /* depolama kapalı: varsayılan (reddedilmiş) kalır */ }
       gtag('js', new Date());
       gtag('config', GA);
       // gtag.js (~150 KB) ana iş parçacığını mobilde ~460 ms bloklıyordu; sayfa yüklendikten sonra

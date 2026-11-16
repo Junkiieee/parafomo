@@ -48,6 +48,30 @@ Geçemeyen senaryo üretilmez.
     Seri fikri: "Yüzlüğün yolculuğu" — aynı yüzlük her bölümde başka birinin cebinde (öğrenci, emekli, kiracı…),
     her bölüm başka gerçek olay, başka son (1760'taki "Chrysal" romanı gibi, elden ele geçen para anlatıcı).
 
+## 2b. Duygu tasarımı (Kaan 2026-11-17: "insanların izlerken hissedeceği duygulara göre oluştur")
+
+Dayanak: Berger & Milkman (2012, Journal of Marketing Research, ~7.000 NYT haberi) — yüksek uyarılmışlık yaratan
+duygular (hayranlık/şaşkınlık, öfke, kaygı, eğlence) paylaşımı artırır; düşük uyarılmışlık yaratan hüzün azaltır;
+olumlu içerik olumsuzdan daha çok paylaşılır. Instagram'ın en güçlü sinyali "gönderme" (sends per reach) olduğundan
+her video, izleyicinin birine "bunu gör" diyeceği bir duyguyla biter.
+
+Her senaryoda yazılır: **ana duygu** + **duygu yolu** (3 durak) + **paylaşım nedeni**.
+
+| Duygu | Ne zaman | Parafomo'da örnek | Görsel / ses |
+|---|---|---|---|
+| Merak | Açılış (her videoda) | "Yüzlükten 11 lira kaldı. Nereye gitti?" | Gece teması, karanlıkta ışık |
+| Şaşkınlık / hayranlık | Ana rakam anı | 887 TL'lik sepet, "dolar bile yetişemedi" | Rakam patlaması, vuruş efekti |
+| Haksızlık (kontrollü öfke) | Dönemeç | Gizli faiz, asgari ödeme tuzağı, sessiz eriyen maaş | Kırmızı vurgu; hedef MEKANİZMA, asla siyasi taraf |
+| Kaygı | Kayıp anı (kısa) | "Maaşın her ay sessizce küçülüyor" | Karakter küçülür/erir; hemen ardından çözüm |
+| Nostalji | O zaman/şimdi | "2016'da bir maaşla…" | Alacakaranlık teması, sıcak renk |
+| Eğlence | Mizah bölümleri | "Maaş yattı. Kira, fatura, kart… Maaş: 'Ben gidiyorum.'" | Hızlı tempo, komik ses |
+| Kontrol / rahatlama | KAPANIŞ (her videoda) | Tek kural ya da rakam: "Getirisi enflasyonu geçmeyen para erir." | Karakter doğrulur, aydınlanır |
+
+Kurallar: (1) Hiçbir video hüzün ya da korkuyla bitmez; son 5 sn izleyiciye kontrol hissi verir. (2) Öfke yalnız
+mekanizmaya (enflasyon, faiz, gizli masraf) yönelir; kişi, parti, kurum hedeflenmez. (3) Duygu rakamla hak edilir:
+abartı yok, her duygu doğrulanmış bir rakama dayanır. (4) Duygu yolunun ikinci durağı videonun %50–60'ında, kancanın
+cevabıyla aynı ana denk gelir.
+
 ## 3. Kanca kalıpları (örnekler bizim karakterlerimizle)
 
 | Kalıp | Örnek açılış (ses + kart) | Neden çalışır |

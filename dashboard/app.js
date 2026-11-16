@@ -318,6 +318,7 @@ function senaryolarHtml() {
     return `<details class="kart plan senaryo"><summary><div class="sol"><span>${esc(x.baslik)} ${cip}</span>
       <span class="hedef">${esc(x.kalip)} · ${esc(x.sure)}</span></div>${IKON.ok}</summary><div class="govde">
       <p class="teshis">Kanca kartı (ilk 2 sn): <b>${esc(x.kanca_karti)}</b></p>
+      ${x.duygu ? `<p class="teshis"><b>Duygu yolu:</b> ${esc(x.duygu)}</p>` : ''}
       <ol>${(x.satirlar || []).map((m) => `<li>${esc(m)}</li>`).join('')}</ol>
       <p class="teshis"><b>Görüntü:</b> ${esc(x.gorsel)}</p>
       <div class="hedefler">${(x.kaynak || []).map((k) => `<div>${esc(k)}</div>`).join('')}</div>${alt}</div></details>`;

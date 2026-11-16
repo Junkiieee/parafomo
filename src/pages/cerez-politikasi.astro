@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../site.config';
+
+const updated = '17 Kasım 2026';
+---
+
+<BaseLayout
+  title="Çerez Politikası"
+  description="ParaFOMO hangi çerezleri kullanır, ne işe yarar ve tercihini nasıl değiştirirsin? Zorunlu, analiz ve reklam çerezleri."
+>
+  <article class="container legal prose">
+    <span class="eyebrow">Yasal</span>
+    <h1>Çerez Politikası</h1>
+    <p class="soft">Son güncelleme: {updated}</p>
+
+    <p>
+      Çerezler, bir siteyi ziyaret ettiğinde tarayıcına kaydedilen küçük dosyalardır. {SITE.name}, 6698 sayılı KVKK ve
+      Kişisel Verileri Koruma Kurumu'nun çerez rehberi doğrultusunda zorunlu olmayan çerezleri yalnız <strong>açık
+      onayınla</strong> kullanır. Onay vermezsen site eksiksiz çalışmaya devam eder.
+    </p>
+
+    <h2>Kullandığımız çerezler</h2>
+    <ul>
+      <li><strong>Zorunlu:</strong> tercihini hatırlamak (tarayıcıda 'pf-cerez' kaydı) ve güvenlik (Cloudflare). Onay gerektirmez.</li>
+      <li><strong>Analiz (onayla):</strong> Google Analytics 4 — hangi sayfaların okunduğunu toplu olarak ölçmek için.
+        Onay vermezsen analiz çerezi yazılmaz; Google'a yalnız çerezsiz, kimliksiz sayım sinyali gider.</li>
+      <li><strong>Reklam (onayla):</strong> sitede reklam gösterilmeye başladığında Google AdSense ve iş ortakları,
+        ilgi alanına göre reklam göstermek için çerez kullanabilir. Onay vermezsen kişiselleştirilmiş reklam çerezi yazılmaz.</li>
+    </ul>
+
+    <h2>Tercihini değiştirmek</h2>
+    <p>
+      Sayfanın altındaki <a href="#" data-cerez-ac>Çerez tercihleri</a> bağlantısından onayını istediğin an verebilir ya da
+      geri çekebilirsin. Ayrıca tarayıcı ayarlarından çerezleri silebilirsin. Kişiselleştirilmiş reklamları
+      <a href="https://www.google.com/settings/ads" rel="noopener">Google Reklam Ayarları</a>'ndan kapatabilir, üçüncü
+      taraf reklam çerezlerini <a href="https://www.aboutads.info/choices/" rel="noopener">aboutads.info</a> üzerinden
+      reddedebilirsin.
+    </p>
+
+    <h2>Avrupa'dan ziyaret edenler</h2>
+    <p>
+      Avrupa Ekonomik Alanı, Birleşik Krallık ve İsviçre'den gelen ziyaretçilere reklam çerezleri için Google'ın
+      onaylı onay mesajı gösterilir.
+    </p>
+
+    <h2>İletişim</h2>
+    <p>
+      Sorular ve KVKK başvuruları için: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Ayrıntılı bilgi:
+      <a href="/gizlilik/">Gizlilik politikası</a>.
+    </p>
+  </article>
+</BaseLayout>
