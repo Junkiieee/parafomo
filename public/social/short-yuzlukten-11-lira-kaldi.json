@@ -1,0 +1,178 @@
+{
+  "title": "2020'nin 100 lirası bugün 11 lira: enflasyon hesabı #Shorts",
+  "description": "2020 sonunda cebine koyduğun 100 liranın bugünkü alım gücü yaklaşık 11 lira. 2020'de 100 liraya aldığın sepet bugün yaklaşık 887 lira. En büyük iki ısırık: yıllık enflasyon 2022'de %64,27, 2023'te %64,77.\nKaynak: TÜİK TÜFE aylık değişimleri, Aralık 2020 → Ekim 2026 (fiyatlar 8,87 katı).\nKendi paranı hesapla: parafomo.com/enflasyon-hesaplama/\nParafomo Para Hikâyeleri #1",
+  "tags": [
+    "enflasyon",
+    "alım gücü",
+    "100 lira",
+    "TÜFE",
+    "para hikayeleri",
+    "kişisel finans",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-yuzlukten-11-lira-kaldi.mp4",
+  "slug": "yuzlukten-11-lira-kaldi",
+  "format": "para_hikayesi",
+  "engine": "anim",
+  "teknik": "hikaye",
+  "timeline": [
+    {
+      "id": "s0",
+      "t0": 0.05,
+      "t1": 3.434,
+      "cap": "2020'nin yüzlüğünden bugün sadece 11 lira kaldı.",
+      "words": [
+        0.05,
+        0.99,
+        1.57,
+        1.87,
+        2.33,
+        2.67,
+        2.91
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 3.714,
+      "t1": 7.458,
+      "cap": "Kimse cebine dokunmadı. Üstünde hâlâ 100 yazıyor.",
+      "words": [
+        3.714,
+        4.314,
+        4.654,
+        5.514,
+        5.934,
+        6.414,
+        6.634
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 7.738,
+      "t1": 10.642,
+      "cap": "Ama her yıl biri, ondan bir parça kopardı.",
+      "words": [
+        7.738,
+        8.198,
+        8.458,
+        8.658,
+        9.198,
+        9.398,
+        9.638,
+        9.998
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 10.922,
+      "t1": 13.946,
+      "cap": "Bu yüzden 2020'de 100 liraya aldığın sepet,",
+      "words": [
+        10.922,
+        11.322,
+        11.582,
+        12.462,
+        12.662,
+        12.982,
+        13.382
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 14.226,
+      "t1": 16.938,
+      "cap": "bugün yaklaşık 887 lira.",
+      "words": [
+        14.226,
+        14.766,
+        15.326,
+        16.166
+      ]
+    },
+    {
+      "id": "s5",
+      "t0": 17.218,
+      "t1": 20.362,
+      "cap": "Asıl şaşırtıcı olan: iki yıl üst üste ısırdı.",
+      "words": [
+        17.218,
+        17.798,
+        18.378,
+        18.638,
+        18.998,
+        19.198,
+        19.438,
+        19.738
+      ]
+    },
+    {
+      "id": "s6",
+      "t0": 20.642,
+      "t1": 26.474,
+      "cap": "2022'de de, 2023'te de fiyatlar %64'ten fazla arttı.",
+      "words": [
+        21.422,
+        22.062,
+        22.442,
+        23.442,
+        23.862,
+        24.282,
+        25.462,
+        25.762
+      ]
+    },
+    {
+      "id": "s7",
+      "t0": 26.754,
+      "t1": 29.826,
+      "cap": "Yani yerinde duran para, aslında hep eriyordu.",
+      "words": [
+        26.754,
+        27.274,
+        27.754,
+        28.034,
+        28.534,
+        28.814,
+        29.074
+      ]
+    },
+    {
+      "id": "s8",
+      "t0": 30.106,
+      "t1": 33.298,
+      "cap": "Sence onu ne kurtarırdı: altın mı, dolar mı?",
+      "words": [
+        30.106,
+        30.706,
+        30.826,
+        31.006,
+        31.786,
+        32.126,
+        32.586,
+        32.866
+      ]
+    },
+    {
+      "id": "s9",
+      "t0": 33.578,
+      "t1": 36.89,
+      "cap": "Bu arada, sen bunu izlerken bile yüzlük biraz daha eridi.",
+      "words": [
+        33.578,
+        33.918,
+        34.318,
+        34.458,
+        34.718,
+        35.218,
+        35.418,
+        35.858,
+        36.018,
+        36.318
+      ]
+    }
+  ],
+  "link": "/enflasyon-hesaplama/",
+  "comment": "🧮 Kendi 100 liranı hesapla: https://parafomo.com/enflasyon-hesaplama/?utm_source=youtube&utm_medium=shorts&utm_campaign=para-hikayeleri-1\n\nKaynak: TÜİK TÜFE, Aralık 2020 → Ekim 2026 (fiyatlar 8,87 katı). Yıllık enflasyon: 2022 %64,27 · 2023 %64,77.\n\nSence yüzlüğü ne kurtarırdı: altın mı, dolar mı?",
+  "series": "Para Hikâyeleri",
+  "episode": 1
+}

@@ -19,7 +19,7 @@
 </head>
 <body>
 <header class="ust" id="ust" hidden>
-  <div class="marka"><img src="/logo.png" alt="" width="21" height="21"><span id="baslik">İçerik</span></div>
+  <div class="marka"><img src="/logo.png" alt="" width="21" height="21"><span id="baslik">Özet</span></div>
   <button class="ikon-btn" id="yenile" type="button" aria-label="Yenile">
     <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
@@ -28,6 +28,10 @@
 <main id="ekran" class="ekran"><p class="yukleniyor">Yükleniyor…</p></main>
 
 <nav class="sekmeler" id="sekmeler" hidden>
+  <button type="button" data-sekme="ozet" aria-label="Özet">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg>
+    <span>Özet</span>
+  </button>
   <button type="button" data-sekme="icerik" aria-label="İçerik">
     <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9v6l5-3z" fill="currentColor"/></svg>
     <span>İçerik</span>
@@ -36,10 +40,14 @@
     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9s1.3-6.3 3.8-9z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
     <span>Web</span>
   </button>
+  <button type="button" data-sekme="gorevler" aria-label="Görevler">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 9l2 2 4-4M8 16h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>Görevler</span>
+    <i class="nokta" id="gorevNokta" hidden></i>
+  </button>
   <button type="button" data-sekme="kontrol" aria-label="Kontrol">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="7" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="17" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
     <span>Kontrol</span>
-    <i class="nokta" id="kontrolNokta" hidden></i>
   </button>
 </nav>
 

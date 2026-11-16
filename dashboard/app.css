@@ -79,7 +79,7 @@ a { color: var(--marka-yazi); }
 
 .sekmeler {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  display: grid; grid-template-columns: repeat(5, 1fr);
   padding: 4.5px 6px calc(env(safe-area-inset-bottom) + 4.5px);
   background: var(--kart);
   border-top: 1px solid var(--cizgi);
@@ -306,3 +306,24 @@ button.satir:active { background: var(--bg); }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+
+/* ---------- özet: hedef panosu ---------- */
+.hedef-s { padding: 10px 12px; border-top: 1px solid var(--cizgi); }
+.liste > .hedef-s:first-child { border-top: 0; }
+.hedef-s .ust-s { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.hedef-s .ad { font-weight: 700; font-size: 12px; }
+.hedef-s .deger { font-weight: 750; font-size: 15px; font-variant-numeric: tabular-nums; }
+.hedef-s .deger small { font-weight: 600; font-size: 11px; color: var(--soluk); }
+.ilerleme { height: 7px; border-radius: 99px; background: var(--cizgi); margin-top: 6px; overflow: hidden; }
+.ilerleme i { display: block; height: 100%; border-radius: 99px; background: var(--marka); min-width: 3px; }
+.hedef-s .not-s { font-size: 10.5px; color: var(--soluk); margin-top: 4px; }
+.gelir-s, .fikir-s { display: flex; justify-content: space-between; align-items: center; gap: 9px; padding: 9px 12px; border-top: 1px solid var(--cizgi); }
+.liste > .gelir-s:first-child, .liste > .fikir-s:first-child { border-top: 0; }
+.gelir-s .ad, .fikir-s .ad { font-weight: 600; font-size: 12px; }
+.gelir-s .ac, .fikir-s .ac { font-size: 10.5px; color: var(--soluk); margin-top: 2px; }
+.gorev-git { width: 100%; margin-top: 10px; }
+.gorev .adimlar { margin: 6px 0 0; padding-left: 16px; font-size: 11px; }
+.gorev .adimlar li { margin: 3px 0; }
+.harcama { padding: 10.5px 12px; }
+.harcama + .harcama { margin-top: 6px; }
+.harcama .tutar { font-family: inherit; font-weight: 800; font-size: 18px; }

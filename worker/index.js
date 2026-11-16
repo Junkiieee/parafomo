@@ -8,6 +8,10 @@ const CANONICAL_HOST = 'parafomo.com';
 
 // Birleştirilen / kaldırılan sayfalar → kalıcı yeni adres (sonda '/' ile).
 const REDIRECTS = {
+  // 2026-11-17: videolarda ekranda yazılan kısa adresler (Shorts'ta linkler tıklanmıyor; yazılabilir adres lazım).
+  '/zam/': '/emekli-zammi-hesaplama/', '/zam': '/emekli-zammi-hesaplama/',
+  '/refah/': '/emekli-refah-payi-seyyanen-zam/', '/refah': '/emekli-refah-payi-seyyanen-zam/',
+  '/enflasyon/': '/enflasyon-hesaplama/', '/enflasyon': '/enflasyon-hesaplama/',
   // 2026-10-13: neredeyse birebir kopya, aynı sorgularda birbirini yiyordu (GSC sıra 27-29).
   '/blog/abd-faiz-karari-altin-dolar-tl-etkisi/': '/blog/abd-faiz-artarsa-ne-olur/',
   // 2026-10-13: eski sitedeki portföy mini-uygulaması kaldırıldı; tek ürün app.parafomo.com.

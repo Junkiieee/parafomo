@@ -9,7 +9,7 @@ const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '
 const sayi = (n) => (n == null || Number.isNaN(Number(n)) ? '–' : Number(n).toLocaleString('tr-TR'));
 const YT_ID = /^[\w-]{6,20}$/;
 
-const BASLIK = { icerik: 'İçerik', web: 'Web sitesi', kontrol: 'Kontrol' };
+const BASLIK = { ozet: 'Özet', icerik: 'İçerik', web: 'Web sitesi', gorevler: 'Görevler', kontrol: 'Kontrol' };
 const MOTOR = { iso: 'İzometrik', hf: 'HyperFrames', dossier: 'Dosya', news: 'Haber', defter: 'Ekonomi Defteri', klasik: 'Klasik' };
 const IKON = {
   yt: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg>',
@@ -19,13 +19,13 @@ const IKON = {
 };
 
 let S = null;           // son durum (/api/durum)
-let sekme = 'icerik';
+let sekme = 'ozet';
 let taslak = '';        // "Bana yaz" kutusundaki yazı (yeniden çizimde kaybolmasın)
 let ekGorsel = null;    // eklenecek görsel (data URL)
 let sonYukleme = 0;
 
-try { sekme = localStorage.getItem('pf-sekme') || 'icerik'; } catch (e) { /* özel mod */ }
-if (!BASLIK[sekme]) sekme = 'icerik';
+try { sekme = localStorage.getItem('pf-sekme') || 'ozet'; } catch (e) { /* özel mod */ }
+if (!BASLIK[sekme]) sekme = 'ozet';
 
 // ---------------------------------------------------------------- yardımcılar
 async function api(yol, secenek = {}) {
@@ -156,9 +156,11 @@ function ciz() {
   if (cevapBekleniyor()) hizliZamanlayici = setTimeout(() => { if (document.visibilityState === 'visible') yukle(true); }, 20000);
   $('#baslik').textContent = BASLIK[sekme];
   $$('#sekmeler button').forEach((b) => b.classList.toggle('acik', b.dataset.sekme === sekme));
-  $('#kontrolNokta').hidden = !(S.gorevler || []).some((g) => !g.yaptim);
-  $('#ekran').innerHTML = sekme === 'icerik' ? icerikHtml() : sekme === 'web' ? webHtml() : kontrolHtml();
+  $('#gorevNokta').hidden = !((S.gorevler || []).some((g) => !g.yaptim) || (S.harcamalar || []).some((h) => !h.karar));
+  const CIZ = { ozet: ozetHtml, icerik: icerikHtml, web: webHtml, gorevler: gorevlerHtml, kontrol: kontrolHtml };
+  $('#ekran').innerHTML = (CIZ[sekme] || ozetHtml)();
   $$('.cubuk i[data-h]').forEach((i) => { i.style.height = `${Math.max(3, Number(i.dataset.h))}%`; });
+  $$('.ilerleme i[data-w]').forEach((i) => { i.style.width = `${Math.min(100, Math.max(1, Number(i.dataset.w)))}%`; });
   const ta = $('#istekMetin');
   if (ta) {
     ta.value = taslak;
@@ -223,6 +225,49 @@ const kapak = (v) => (v.video
   ? `<img class="kapak" src="/api/video/${Number(v.no)}.jpg" alt="" loading="lazy">`
   : '<div class="kapak yer">▶</div>');
 
+// ---------------------------------------------------------------- ÖZET (hedef panosu)
+function kpiDegeri(yol) {
+  return String(yol || '').split('.').reduce((o, k) => (o == null ? o : o[k]), S.kpi || {});
+}
+
+function ozetHtml() {
+  const hedefler = (S.hedefler || []).map((h) => {
+    const v = h.kpi ? kpiDegeri(h.kpi) : h.simdi;
+    const yuzde = h.hedef ? (100 * (Number(v) || 0)) / h.hedef : 0;
+    return `<div class="hedef-s"><div class="ust-s"><span class="ad">${esc(h.baslik)}</span>
+      <span class="deger">${sayi(v)} <small>/ ${sayi(h.hedef)} ${esc(h.birim || '')}</small></span></div>
+      <div class="ilerleme"><i data-w="${yuzde.toFixed(1)}"></i></div>
+      <div class="not-s">${esc(h.not || '')}${h.tarih ? ` · hedef tarihi ${esc(kisaTarih(h.tarih))}` : ''}</div></div>`;
+  }).join('');
+  const cipDurum = (d) => ({ hazir: 'iyi', calisiyor: 'iyi', deneniyor: 'marka', sirada: '', bekliyor: 'uyari', durdu: 'kotu', sonuc: 'iyi' }[d] ?? '');
+  const DURUM = { hazir: 'Hazır', calisiyor: 'Çalışıyor', deneniyor: 'Deneniyor', sirada: 'Sırada', bekliyor: 'Görev bekliyor', durdu: 'Durduruldu', sonuc: 'Sonuç var' };
+  const gelir = (S.gelir || []).map((g) => `<div class="gelir-s"><div><div class="ad">${esc(g.yol)}</div><div class="ac">${esc(g.aciklama || '')}</div></div>
+    <span class="cip ${cipDurum(g.durum)}">${esc(DURUM[g.durum] || g.durum || '')}</span></div>`).join('');
+  const fikirler = (S.fikirler || []).map((f) => `<div class="fikir-s"><div><div class="ad">${esc(f.baslik)}</div><div class="ac">${esc(f.sonuc || f.neden || '')}</div></div>
+    <span class="cip ${cipDurum(f.durum)}">${esc(DURUM[f.durum] || f.durum || '')}</span></div>`).join('');
+  const nGorev = (S.gorevler || []).filter((g) => !g.yaptim).length + (S.harcamalar || []).filter((h) => !h.karar).length;
+  return `${gunlukHtml()}
+  ${nGorev ? `<button type="button" class="btn ana gorev-git" data-sekme="gorevler">Senden bekleyen ${nGorev} iş var →</button>` : ''}
+  <h2>Hedefe ilerleme</h2><div class="kart liste">${hedefler || '<div class="bos">Hedefler yazılıyor.</div>'}</div>
+  <h2>Para kazanma yolları</h2><div class="kart liste">${gelir || '<div class="bos">Hazırlanıyor.</div>'}</div>
+  <h2>Denemeler <small>fikir → deneme → sonuç</small></h2><div class="kart liste">${fikirler || '<div class="bos">Hazırlanıyor.</div>'}</div>`;
+}
+
+// ---------------------------------------------------------------- GÖREVLER (Kaan'ın işleri + harcama onayı)
+function gorevlerHtml() {
+  const g = S.gorevler || [];
+  const h = S.harcamalar || [];
+  const harc = h.map((x) => `<div class="kart harcama"><div class="ust-s"><span class="tutar">${sayi(x.tutar)} TL</span></div>
+    <div class="ad">${esc(x.baslik)}</div><p class="soluk kucuk">${esc(x.neden || '')}</p>
+    ${x.karar ? `<p class="kucuk"><span class="cip ${x.karar.durum === 'onaylandi' ? 'iyi' : 'kotu'}">${x.karar.durum === 'onaylandi' ? 'Onayladın' : 'Reddettin'}</span></p>`
+      : `<div class="butonlar"><button type="button" class="btn ana" data-harcama="${esc(x.id)}" data-karar="onayla">Onayla</button>
+         <button type="button" class="btn" data-harcama="${esc(x.id)}" data-karar="reddet">Reddet</button></div>`}</div>`).join('');
+  return `<p class="oto-not">Bunlar yalnız senin yapabileceğin işler (hesap açma, başvuru, paylaşım). Her birinin adımlarını yazdım; "Yaptım" deyince kontrol edip kapatırım.</p>
+    <h2>Senin görevlerin <small>${g.filter((x) => !x.yaptim).length} açık</small></h2>
+    ${g.map(gorevHtml).join('') || '<div class="kart bos">Şu an senden beklenen bir şey yok.</div>'}
+    ${h.length ? `<h2>Harcama onayı <small>aylık sınır 1.000 TL</small></h2>${harc}` : ''}`;
+}
+
 // ---------------------------------------------------------------- İÇERİK
 function icerikHtml() {
   const yt = S.kpi?.youtube || {};
@@ -250,6 +295,7 @@ function icerikHtml() {
   </div>
   ${planHtml('youtube')}
   ${planHtml('instagram')}
+  ${senaryolarHtml()}
   ${(ic.bekleyen || []).length ? `<h2>Onayını bekleyenler</h2><div class="kart liste">${ic.bekleyen.map((v) => videoSatiri(v)).join('')}</div>` : ''}
   ${(ic.sorunlu || []).length ? `<h2>Sorunlu</h2><div class="kart liste">${ic.sorunlu.map((v) => videoSatiri(v)).join('')}</div>` : ''}
   <h2>Sıradaki yayınlar <small>her gün ${esc((ic.saatler || []).join(' ve '))}</small></h2>
@@ -258,6 +304,24 @@ function icerikHtml() {
   <div class="kart liste">${(ic.uzun || []).map(uzunHtml).join('') || '<div class="bos">Yok.</div>'}</div>
   <h2>Yayınlananlar <small>son 12 video</small></h2>
   <div class="kart liste">${(ic.yayinlanan || []).map(yayinHtml).join('') || '<div class="bos">Henüz yok.</div>'}</div>`;
+}
+
+function senaryolarHtml() {
+  const lst = S.senaryolar || [];
+  if (!lst.length) return '';
+  return `<h2>Senaryo taslakları <small>onayınla üretime girer</small></h2>${lst.map((x) => {
+    const cip = x.karar ? '<span class="cip iyi">Onaylandı</span>' : '<span class="cip uyari">Onayını bekliyor</span>';
+    const alt = x.karar
+      ? `<p class="soluk kucuk">${esc(zamanMetni(x.karar.zaman))} onayladın.</p>${x.karar.not ? `<div class="cevap-kutu"><b>Claude:</b> ${esc(x.karar.not)}</div>` : ''}`
+      : `<div class="butonlar"><button type="button" class="btn ana" data-senaryo-onay="${esc(x.id)}">Senaryoyu onayla</button>
+         <button type="button" class="btn" data-senaryo-degis="${esc(x.id)}">Değişiklik iste</button></div>`;
+    return `<details class="kart plan senaryo"><summary><div class="sol"><span>${esc(x.baslik)} ${cip}</span>
+      <span class="hedef">${esc(x.kalip)} · ${esc(x.sure)}</span></div>${IKON.ok}</summary><div class="govde">
+      <p class="teshis">Kanca kartı (ilk 2 sn): <b>${esc(x.kanca_karti)}</b></p>
+      <ol>${(x.satirlar || []).map((m) => `<li>${esc(m)}</li>`).join('')}</ol>
+      <p class="teshis"><b>Görüntü:</b> ${esc(x.gorsel)}</p>
+      <div class="hedefler">${(x.kaynak || []).map((k) => `<div>${esc(k)}</div>`).join('')}</div>${alt}</div></details>`;
+  }).join('')}`;
 }
 
 function yuvaHtml(y) {
@@ -379,10 +443,8 @@ function yapildiHtml(x) {
 
 // ---------------------------------------------------------------- KONTROL
 function kontrolHtml() {
-  const gorevler = S.gorevler || [];
   const istekler = S.istekler || [];
-  return `${gorevler.length ? `<h2>Senden beklenenler</h2>${gorevler.map(gorevHtml).join('')}` : ''}
-  <h2>Otomatik sistem</h2>
+  return `<h2>Otomatik sistem</h2>
   <div class="kart liste">${(S.kontrol || []).map(anahtarHtml).join('')}</div>
   <h2>Bana yaz</h2>
   <p class="dinleme${S.claude?.cevrimici ? ' acik' : ''}">${S.claude?.cevrimici
@@ -403,8 +465,11 @@ function kontrolHtml() {
 }
 
 function gorevHtml(g) {
+  const link = g.link && /^https:\/\//.test(g.link) ? `<a class="btn" href="${esc(g.link)}" target="_blank" rel="noopener">Sayfayı aç</a>` : '';
   return `<div class="kart gorev"><div class="ad"><span>${esc(g.baslik)}</span>${g.sure ? `<span class="cip">${esc(g.sure)}</span>` : ''}</div>
-    <p>${esc(g.nasil || '')}</p>
+    ${g.neden ? `<p class="soluk kucuk">${esc(g.neden)}</p>` : ''}
+    ${(g.adimlar || []).length ? `<ol class="adimlar">${g.adimlar.map((a) => `<li>${esc(a)}</li>`).join('')}</ol>` : `<p>${esc(g.nasil || '')}</p>`}
+    ${link ? `<div class="butonlar">${link}</div>` : ''}
     ${g.yaptim ? `<p class="kucuk soluk">${esc(zamanMetni(g.yaptim))} "yaptım" dedin; kontrol edip kapatacağım.</p>`
       : `<div class="butonlar"><button type="button" class="btn" data-gorev="${esc(g.id)}">Yaptım</button></div>`}</div>`;
 }
@@ -497,6 +562,23 @@ document.addEventListener('click', async (e) => {
     taslak = `${S?.kanallar?.[t.dataset.planDegis]?.baslik || ''} planı: `;
     sekmeSec('kontrol');
     setTimeout(() => { const ta = $('#istekMetin'); if (ta) { ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); ta.scrollIntoView({ block: 'center' }); } }, 80);
+    return;
+  }
+  if (t.dataset.senaryoOnay) {
+    if (!window.confirm('Bu senaryo onaylansın mı? Onaylayınca videosunu üretirim.')) return;
+    try { await gonder(`/api/senaryo/${encodeURIComponent(t.dataset.senaryoOnay)}/onayla`); bildir('Senaryo onaylandı.'); await yukle(true); } catch (err) { bildir(err.message); }
+    return;
+  }
+  if (t.dataset.senaryoDegis) {
+    taslak = `${t.dataset.senaryoDegis} senaryosu: `;
+    sekmeSec('kontrol');
+    setTimeout(() => { const ta = $('#istekMetin'); if (ta) { ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); ta.scrollIntoView({ block: 'center' }); } }, 80);
+    return;
+  }
+  if (t.dataset.harcama) {
+    const onay = t.dataset.karar === 'onayla';
+    if (!window.confirm(onay ? 'Bu harcama onaylansın mı?' : 'Bu harcama reddedilsin mi?')) return;
+    try { await gonder(`/api/harcama/${encodeURIComponent(t.dataset.harcama)}/${t.dataset.karar}`); bildir(onay ? 'Harcama onaylandı.' : 'Harcama reddedildi.'); await yukle(true); } catch (err) { bildir(err.message); }
     return;
   }
   if (t.dataset.gorev) {

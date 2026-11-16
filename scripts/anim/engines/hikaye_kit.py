@@ -70,6 +70,21 @@ def _yuzluk(kid, ifade):
             + yuz(kid, 300, 300, ifade, aralik=128, goz=48))
 
 
+def _dolar(kid, ifade):
+    yesil, koyu, acik = "#3f9d63", "#2b7047", "#d3f2dd"
+    return (f'<g id="{kid}-ayak" stroke="{koyu}" stroke-width="14" stroke-linecap="round" fill="none">'
+            f'<path d="M215 440 l-26 96"/><path d="M265 445 l6 92"/><path d="M335 445 l-6 92"/><path d="M385 440 l26 96"/></g>'
+            f'<g id="{kid}-kol" stroke="{koyu}" stroke-width="13" stroke-linecap="round" fill="none">'
+            f'<path d="M62 300 q-48 18 -58 70"/><path d="M538 300 q48 18 58 70"/></g>'
+            f'<g id="{kid}-govde"><rect x="60" y="150" width="480" height="300" rx="44" fill="{yesil}"/>'
+            f'<rect x="60" y="150" width="480" height="150" rx="44" fill="#fff" opacity=".10"/>'
+            f'<rect x="98" y="186" width="404" height="228" rx="28" fill="none" stroke="{acik}" stroke-width="7" '
+            f'stroke-dasharray="1 17" stroke-linecap="round"/>'
+            f'<text x="118" y="250" font-family="Baslik, Anton, sans-serif" font-size="58" fill="{acik}">$</text>'
+            f'<text x="452" y="398" font-family="Baslik, Anton, sans-serif" font-size="46" fill="{acik}">$</text></g>'
+            + yuz(kid, 300, 300, ifade, aralik=128, goz=48))
+
+
 def _altin(kid, ifade):
     return (f'<g id="{kid}-govde"><circle cx="300" cy="300" r="205" fill="#d99a1e"/>'
             f'<circle cx="300" cy="292" r="200" fill="#f6c443"/>'
@@ -128,7 +143,7 @@ def _kumbara(kid, ifade):
             + yuz(kid, 330, 300, ifade, aralik=120, goz=36, agiz_y=74))
 
 
-KARAKTER = {"yuzluk": _yuzluk, "altin": _altin, "zarf": _zarf, "ev": _ev, "enflasyon": _enflasyon, "kumbara": _kumbara}
+KARAKTER = {"yuzluk": _yuzluk, "dolar": _dolar, "altin": _altin, "zarf": _zarf, "ev": _ev, "enflasyon": _enflasyon, "kumbara": _kumbara}
 
 
 def karakter(ad, ifade="normal", kid="k0"):

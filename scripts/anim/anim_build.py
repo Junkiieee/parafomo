@@ -91,7 +91,7 @@ def landscape(spec):
 
 
 def timeline(spec):
-    t, lines = LEAD, []
+    t, lines = float(spec.get("lead", LEAD)), []   # "Para hikâyeleri": lead 0.05 (ses ilk karede başlar)
     rate = spec.get("rate", RATE_LONG if landscape(spec) else RATE)
     for ln in spec["lines"]:
         mp3 = tts(ln["say"], rate=rate)

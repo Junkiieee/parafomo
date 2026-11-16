@@ -416,9 +416,14 @@ def durum(req: Request):
         "icerik": icerik(kpi),
         "web": web_bolumu(plan),
         "kontrol": kontrol_durum(),
-        "gorevler": [{**g, "yaptim": gorev_d.get(g.get("id"), {}).get("zaman")} for g in plan.get("kaan", [])],
+        "gorevler": [{**g, "yaptim": gorev_d.get(g.get("id"), {}).get("zaman")} for g in (plan.get("gorevler") or plan.get("kaan", []))],
+        "hedefler": plan.get("hedefler", []),
+        "gelir": plan.get("gelir", []),
+        "fikirler": plan.get("fikirler", []),
+        "harcamalar": [{**h, "karar": oku(dash("harcama-kararlar.json"), {}).get(h.get("id"))} for h in plan.get("harcamalar", [])],
         "istekler": list(reversed(oku(dash("istekler.json"), [])))[:30],
         "claude": claude_durumu(),
+        "senaryolar": [{**x, "karar": oku(dash("senaryo-kararlar.json"), {}).get(x.get("id"))} for x in plan.get("senaryolar", [])],
     }
 
 
@@ -532,6 +537,32 @@ def plan_onayla(kanal: str, req: Request):
         kr[kanal] = {"surum": k.get("surum"), "durum": "onaylandi", "zaman": simdi().isoformat(timespec="seconds")}
         yaz(dash("kararlar.json"), kr)
     olay("plan_onay", kanal=kanal, surum=k.get("surum"))
+    return {"ok": True}
+
+
+@app.post("/api/senaryo/{sid}/onayla")
+def senaryo_onayla(sid: str, req: Request):
+    koruma(req)
+    if not re.fullmatch(r"[A-Za-z0-9_-]{1,20}", sid) or not any(x.get("id") == sid for x in oku(dash("plan.json"), {}).get("senaryolar", [])):
+        raise HTTPException(404, "senaryo yok")
+    with _lock:
+        k = oku(dash("senaryo-kararlar.json"), {})
+        k[sid] = {"durum": "onaylandi", "zaman": simdi().isoformat(timespec="seconds")}
+        yaz(dash("senaryo-kararlar.json"), k)
+    olay("senaryo_onay", id=sid)
+    return {"ok": True}
+
+
+@app.post("/api/harcama/{hid}/{karar}")
+def harcama_karar(hid: str, karar: str, req: Request):
+    koruma(req)
+    if karar not in ("onayla", "reddet") or not any(h.get("id") == hid for h in oku(dash("plan.json"), {}).get("harcamalar", [])):
+        raise HTTPException(404, "harcama yok")
+    with _lock:
+        k = oku(dash("harcama-kararlar.json"), {})
+        k[hid] = {"durum": "onaylandi" if karar == "onayla" else "reddedildi", "zaman": simdi().isoformat(timespec="seconds")}
+        yaz(dash("harcama-kararlar.json"), k)
+    olay("harcama", id=hid, karar=karar)
     return {"ok": True}
 
 

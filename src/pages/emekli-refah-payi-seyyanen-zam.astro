@@ -1,0 +1,225 @@
+---
+// Ocak 2027 emekli zammı + refah payı + seyyanen zam SENARYO hesaplayıcı (2026-11-17).
+// Neden: Kasım 2026'da YouTube'da "refah payı / seyyanen zam / en düşük emekli maaşı" videoları 160–370 bin izlenirken
+// sitede bu sorgularda hiç gösterim yoktu. Kural: siyasi yorum yok, yalnız rakam + tarih; karar yoksa "senaryo".
+// Enflasyon farkı zam2027.ts'ten (TÜİK TÜFE), taban aylık data/emekli-memur.json'dan gelir.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import em from '../../data/emekli-memur.json';
+import tufe from '../../data/tufe-aylik.json';
+import { PERIOD, byMonth, cumKnown, remaining, ASSUME, sskProj } from '../data/zam2027';
+
+const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const known = PERIOD.filter((k) => byMonth.has(k));
+const ilkAy = MONTHS[+known[0].slice(5) - 1];
+const sonAy = MONTHS[+known[known.length - 1].slice(5) - 1];
+const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const TABAN = em.enDusukEmekliAyligi.tutar;               // 23.552 (Temmuz 2026'dan beri, kanunla)
+const ZAM = remaining === 0 ? cumKnown : sskProj;          // Ocak 2027 enflasyon farkı (kesin ya da tahmini)
+const DURUM_TARIHI = '17 Kasım 2026';
+
+const yeni = (p: number, rp = 0, sy = 0) => p * (1 + ZAM) * (1 + rp / 100) + sy;
+const MAASLAR = [TABAN, 30000, 40000];
+const SENARYO = [
+  { ad: 'Yalnız enflasyon farkı', rp: 0, sy: 0 },
+  { ad: '+ %5 refah payı', rp: 5, sy: 0 },
+  { ad: '+ %10 refah payı', rp: 10, sy: 0 },
+  { ad: '+ %15 refah payı', rp: 15, sy: 0 },
+  { ad: '+ 2.500 TL seyyanen', rp: 0, sy: 2500 },
+  { ad: '+ 5.000 TL seyyanen', rp: 0, sy: 5000 },
+  { ad: '+ 10.000 TL seyyanen', rp: 0, sy: 10000 },
+];
+// %5 refah payı ile 2.500 TL seyyanen hangi aylıkta eşitlenir? P·(1+ZAM)·0,05 = 2.500
+const esik = 2500 / ((1 + ZAM) * 0.05);
+
+const title = 'Emekliye Refah Payı ve Seyyanen Zam 2027: Maaş Kaç TL Olur?';
+const description = `Ocak 2027'de refah payı ya da seyyanen zam gelirse emekli maaşın kaç TL olur? Resmî karar yok (${DURUM_TARIHI}); enflasyon farkı ${known.length} ayda %${nf(cumKnown * 100)}. Aylığını gir, senaryoyu seç.`;
+
+const faq = [
+  {
+    q: 'Emekliye Ocak 2027\'de refah payı verilecek mi?',
+    a: `${DURUM_TARIHI} itibarıyla resmî bir karar yok. Çalışma ve Sosyal Güvenlik Bakanı 3 Kasım 2026'da TBMM Plan ve Bütçe Komisyonu'nda, yasal artışların üzerine ek iyileştirme çalışması yürütüldüğünü ve bunun Ocak 2027'den itibaren uygulanmasının hedeflendiğini söyledi; oran ya da tutar açıklanmadı. Haberlerde geçen %5–15 aralığı resmî değildir.`,
+  },
+  {
+    q: 'Emekliye seyyanen zam ne kadar olacak?',
+    a: `Açıklanmadı. Basında konuşulan 10–15 bin TL'lik seyyanen tutarlar resmî bir karara dayanmıyor. Bu sayfadaki hesaplayıcıda istediğin tutarı girip etkisini görebilirsin.`,
+  },
+  {
+    q: 'Ocak 2027 emekli zammı yüzde kaç olacak?',
+    a: `SSK ve Bağ-Kur emeklisinin yasal zammı Temmuz–Aralık 2026 enflasyonuna eşittir. ${ilkAy}–${sonAy} döneminde birikimli %${nf(cumKnown * 100)} kesinleşti; kalan ${remaining} ay için aylık %${nf(ASSUME)} varsayımıyla toplam yaklaşık %${nf(sskProj * 100)} olur. Kesin oran Aralık enflasyonu açıklanınca (Ocak 2027 başı) belli olur.`,
+  },
+  {
+    q: 'En düşük emekli maaşı Ocak 2027\'de ne kadar olacak?',
+    a: `Şu an en düşük emekli aylığı ${fmt(TABAN)} TL (Temmuz 2026'dan beri). Bu taban ayrıca kanunla belirlenir. Yalnız enflasyon farkı kadar artırılırsa yaklaşık ${fmt(TABAN * (1 + ZAM))} TL olur; bu bir senaryodur.`,
+  },
+  {
+    q: 'Refah payı mı seyyanen zam mı daha çok kazandırır?',
+    a: `Aylığına bağlı. Seyyanen zam herkese aynı tutarı eklediği için düşük aylıklarda oransal etkisi büyüktür; refah payı yüzde olduğu için yüksek aylıkta daha çok TL eder. Örneğin %5 refah payı, aylığı yaklaşık ${fmt(esik)} TL'nin üstünde olanlara 2.500 TL seyyanenden daha çok kazandırır.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Emekli Zammı Hesaplama', url: '/emekli-zammi-hesaplama/' },
+  { name: 'Refah Payı ve Seyyanen Zam', url: '/emekli-refah-payi-seyyanen-zam/' },
+];
+const updatedLabel = new Date(tufe.updated + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout title={title} description={description} faq={faq} breadcrumbs={breadcrumbs}>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Senaryo hesaplayıcı · Ocak 2027</p>
+      <h1>Refah Payı ve Seyyanen Zam Gelirse Emekli Maaşı Kaç TL Olur?</h1>
+      <p class="lede">
+        <strong>Durum ({DURUM_TARIHI}): resmî karar yok.</strong> Bakan 3 Kasım'da TBMM'de Ocak 2027'den itibaren
+        yasal zamların üzerine ek iyileştirme hedeflendiğini söyledi; oran ya da tutar açıklanmadı.
+        Kesinleşen: {ilkAy}–{sonAy} enflasyon farkı <strong>%{nf(cumKnown * 100)}</strong>, en düşük aylık
+        <strong>{fmt(TABAN)} TL</strong>. Aylığını gir, senaryoyu sen seç.
+      </p>
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="kpi-label">Kesinleşen enflasyon farkı</span>
+        <span class="kpi-val">%{nf(cumKnown * 100)}</span>
+        <span class="kpi-sub">{ilkAy}–{sonAy} 2026 birikimli TÜFE ({known.length}/6 ay)</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Ocak 2027 yasal zam (tahmini)</span>
+        <span class="kpi-val">%{nf(ZAM * 100)}</span>
+        <span class="kpi-sub">kalan {remaining} ay %{nf(ASSUME)}/ay varsayımıyla</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">En düşük emekli aylığı</span>
+        <span class="kpi-val">{fmt(TABAN)} TL</span>
+        <span class="kpi-sub">Temmuz 2026'dan beri (kanun)</span>
+      </div>
+    </div>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Şu anki aylığın (₺)</span>
+          <input type="number" id="in-pension" value={TABAN} min="0" step="500" inputmode="numeric" />
+        </label>
+        <label>
+          <span>Refah payı senaryosu (%) <em class="hint">— resmî oran yok</em></span>
+          <input type="number" id="in-rp" value="0" min="0" max="50" step="1" inputmode="decimal" />
+        </label>
+        <label>
+          <span>Seyyanen zam senaryosu (₺) <em class="hint">— resmî tutar yok</em></span>
+          <input type="number" id="in-sy" value="0" min="0" max="50000" step="500" inputmode="numeric" />
+        </label>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Ocak 2027 aylığın (senaryo)</span>
+          <span class="result-value" id="out-new">₺{fmt(yeni(TABAN))}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item">
+            <span class="split-label">Aylık artış</span>
+            <span class="split-val" id="out-diff">₺{fmt(yeni(TABAN) - TABAN)}</span>
+          </div>
+          <div class="split-item">
+            <span class="split-label">Toplam artış oranı</span>
+            <span class="split-val" id="out-rate">%{nf((yeni(TABAN) / TABAN - 1) * 100)}</span>
+          </div>
+        </div>
+        <p class="result-note" id="out-note">Enflasyon farkı %{nf(ZAM * 100)} (tahmini) ile hesaplandı.</p>
+        <a class="btn-share" id="out-share" href="#" rel="noopener" target="_blank">Sonucu WhatsApp'ta paylaş</a>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bu bir senaryo hesabıdır, resmî karar değildir. Refah payının enflasyon farkının üzerine bileşik eklendiği ve seyyanen
+      tutarın zamlı aylığa eklendiği varsayıldı; resmî düzenleme farklı olabilir. Kaynak: TÜİK TÜFE (enflasyon farkı),
+      Resmî Gazete Temmuz 2026 (en düşük aylık), TBMM Plan ve Bütçe Komisyonu 3 Kasım 2026 (açıklama). Son güncelleme: {updatedLabel}.
+    </p>
+
+    <section class="table-block">
+      <h2>Senaryo tablosu: hangi aylık ne olur?</h2>
+      <p>Yasal zam %{nf(ZAM * 100)} (tahmini) varsayımıyla Ocak 2027 aylığı. Tutarlar TL, yuvarlanmıştır.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Senaryo</th>{MAASLAR.map((m) => <th>{fmt(m)} TL alan</th>)}</tr>
+          </thead>
+          <tbody>
+            {SENARYO.map((s) => (
+              <tr><td>{s.ad}</td>{MAASLAR.map((m) => <td>{fmt(yeni(m, s.rp, s.sy))}</td>)}</tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="prose-block">
+      <h2>Refah payı ile seyyanen zam arasındaki fark</h2>
+      <p>
+        <strong>Refah payı</strong>, enflasyon farkının üzerine verilen ek yüzdedir; aylığı yüksek olana TL olarak daha çok
+        yansır. <strong>Seyyanen zam</strong> ise herkese aynı tutarın eklenmesidir; düşük aylıkta oransal etkisi büyüktür.
+        Bu yüzden %5 refah payı, aylığı yaklaşık <strong>{fmt(esik)} TL</strong>'nin üstünde olana 2.500 TL seyyanenden daha
+        çok kazandırır; altında olana seyyanen daha çok kazandırır.
+      </p>
+      <h2>En düşük emekli aylığı ne olur?</h2>
+      <p>
+        En düşük aylık ({fmt(TABAN)} TL) zamdan ayrı olarak kanunla belirlenir. Yalnız enflasyon farkı kadar artırılırsa
+        yaklaşık <strong>{fmt(TABAN * (1 + ZAM))} TL</strong> olur. Karar açıklanınca bu sayfa aynı gün güncellenir.
+      </p>
+      <p>
+        Yasal zam oranının ay ay hesabı için <a href="/emekli-zammi-hesaplama/">emekli zammı hesaplama</a>, taban aylık için
+        <a href="/en-dusuk-emekli-maasi/">en düşük emekli maaşı</a> sayfalarına bakabilirsin.
+      </p>
+    </section>
+
+    <Newsletter title="Zam açıklanınca ilk sen öğren." text="Emekli zammı, refah payı ve en düşük aylık kesinleşince tek e-postayla haber veririz. Spam yok." />
+  </div>
+
+  <script is:inline define:vars={{ ZAM }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const nf2 = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      function update() {
+        const p = Math.max(0, +$('in-pension').value || 0);
+        const rp = Math.max(0, +$('in-rp').value || 0);
+        const sy = Math.max(0, +$('in-sy').value || 0);
+        const y = p * (1 + ZAM) * (1 + rp / 100) + sy;
+        $('out-new').textContent = '₺' + nf0.format(Math.round(y));
+        $('out-diff').textContent = '₺' + nf0.format(Math.round(y - p));
+        $('out-rate').textContent = '%' + (p ? nf2.format((y / p - 1) * 100) : '0');
+        const parca = ['enflasyon farkı %' + nf2.format(ZAM * 100) + ' (tahmini)'];
+        if (rp) parca.push('refah payı %' + nf2.format(rp));
+        if (sy) parca.push('seyyanen ' + nf0.format(sy) + ' TL');
+        $('out-note').textContent = 'Senaryo: ' + parca.join(' + ') + '.';
+        const metin = 'Ocak 2027\'de emekli maaşım ' + nf0.format(Math.round(p)) + ' TL\'den ' + nf0.format(Math.round(y)) +
+          ' TL\'ye çıkabilir (senaryo: ' + parca.join(' + ') + '). Kendi maaşını hesapla: https://parafomo.com/emekli-refah-payi-seyyanen-zam/?maas=' +
+          Math.round(p) + '&rp=' + rp + '&sy=' + sy + '&utm_source=whatsapp&utm_medium=share&utm_campaign=sonuc';
+        $('out-share').href = 'https://wa.me/?text=' + encodeURIComponent(metin);
+      }
+      // paylaşılan link aynı hesabı açar: ?maas=…&rp=…&sy=…
+      const q = new URLSearchParams(location.search);
+      [['maas', 'in-pension'], ['rp', 'in-rp'], ['sy', 'in-sy']].forEach(([k, id]) => {
+        const v = parseFloat(q.get(k));
+        if (Number.isFinite(v) && v >= 0) $(id).value = v;
+      });
+      ['in-pension', 'in-rp', 'in-sy'].forEach((id) => $(id).addEventListener('input', update));
+      update();
+    })();
+  </script>
+</BaseLayout>
+
+<style>
+  .btn-share {
+    display: inline-block; margin-top: 0.9rem; padding: 0.7rem 1.1rem; border-radius: 10px;
+    background: #25d366; color: #073b20; font-weight: 700; text-decoration: none;
+  }
+  .btn-share:hover { filter: brightness(0.95); }
+  .prose-block { margin-top: 2rem; }
+  .prose-block h2 { margin-top: 1.5rem; }
+  .table-scroll { overflow-x: auto; }
+</style>
