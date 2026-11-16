@@ -36,7 +36,7 @@ Takvimlerde iki satır olarak görünür; piyasa ise birkaç kaleme daha bakar:
 | Retail Sales m/m (manşet) | Perakende ve yemek hizmetleri satışlarının aylık değişimi | Anlık sürpriz etkisi en yüksek rakam |
 | Core Retail Sales m/m (otomotiv hariç) | Araç ve parça satışları çıkarılmış toplam | Oynak otomotiv kaleminden arındırılmış eğilim |
 | Otomotiv ve benzin hariç | Fiyat oynaklığı en yüksek iki kalem çıkarılmış | Gerçek tüketim iştahına en yakın ölçü |
-| Kontrol grubu | Otomotiv, benzin, yapı malzemesi ve restoranlar hariç | GSYH'deki tüketim hesabına doğrudan girer |
+| Kontrol grubu | Otomotiv, benzin, yapı malzemesi ve restoranlar hariç | GSYH'deki mal tüketimi tahmininde kullanılır |
 | Önceki ayın revizyonu | Eylül rakamının düzeltilmesi | Bazen yeni ayın kendisinden daha önemli |
 
 ## Eylül Verisi: Güçlü Manşet, Benzinle Şişen Rakam
@@ -58,7 +58,7 @@ Ekim'i doğru okumak için önce Eylül'ün içine bakmak gerekiyor. Census'ün 
 Ayrıca Ağustos'un aylık artışı **%1,1'den %1,3'e** yukarı revize edildi. Tablodan üç sonuç çıkıyor:
 
 1. **Manşeti benzin taşıdı.** Benzin istasyonları hariç satışlar yalnızca %0,2 arttı. Akaryakıt satışlarındaki %6,4'lük aylık sıçrama, hacimden çok fiyat artışını yansıtıyor.
-2. **Çekirdek tüketim yavaşladı ama durmadı.** Otomotiv ve benzin hariç satışlardaki %0,2, Ağustos'taki %1,1'e göre belirgin bir soğuma.
+2. **Çekirdek tüketim yavaşladı ama durmadı.** Otomotiv ve benzin hariç satışlardaki %0,2, manşetteki %0,8'in çok gerisinde kaldı; bu, akaryakıt dışındaki harcamada belirgin bir soğumaya işaret ediyor.
 3. **Restoranlar hâlâ güçlü.** Yemek hizmetlerindeki %1,1'lik artış, hizmet harcamasının sürdüğünü gösteriyor.
 
 ### Rakam neden "nominal" okunmalı?
