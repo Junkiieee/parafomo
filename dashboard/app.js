@@ -101,7 +101,7 @@ function girisGoster(hata = '') {
   ekran.className = '';
   ekran.innerHTML = `
     <div class="giris"><form class="kutu" id="girisFormu">
-      <img src="/logo.png" alt="" width="72" height="72">
+      <img src="/logo.png" alt="" width="54" height="54">
       <h1>Parafomo Panel</h1>
       <input class="gizli" type="text" name="username" autocomplete="username" value="kaan" tabindex="-1" aria-hidden="true">
       <input type="password" id="sifre" name="password" autocomplete="current-password" placeholder="Şifre" required aria-label="Şifre">
