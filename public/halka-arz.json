@@ -1,9 +1,97 @@
 {
-  "updated": "2026-11-16T12:15+00:00",
+  "updated": "2026-11-16T18:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 70,
   "items": [
+    {
+      "company": "Şahinler Metal San. ve Tic. A.Ş.",
+      "bist_code": "",
+      "slug": "sahinler-metal-san-ve-tic-a-s",
+      "link": "https://halkarz.com/sahinler-metal-san-ve-tic-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "200.000.000 Lot",
+      "broker": "Ziraat Yatırım Menkul Kıymetler A.Ş. İntegral Yatırım Menkul Değerler A.Ş.",
+      "market": "",
+      "first_trade": "",
+      "float_lot": "",
+      "float_pct": "",
+      "updated_src": "16.11.2026 15:19",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 160.000.000 Lot",
+            "Ortak Satışı : 40.000.000 Lot"
+          ],
+          "source": "Taslak İzahname, Sayfa 1."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%40-50 Orta gerilim kablo üretim tesisi",
+            "%10-20 Yenileme yatırımları",
+            "%10-20 Finansal borçluluğun azaltılması",
+            "%20-30 İşletme sermayesi"
+          ],
+          "source": "Taslak İzahname, Sayfa 382."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "(İntegral Yatırım Menkul Değerler A.Ş.)"
+          ],
+          "source": "Taslak İzahname, Sayfa 378."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "Taslak İzahname, Sayfa 380."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%20,83"
+          ],
+          "source": "Taslak İzahname, Sayfa 342."
+        },
+        "finansal": {
+          "periods": [
+            "2026/6",
+            "2025",
+            "2024"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "8,5 Milyar TL",
+                "14,0 Milyar TL",
+                "13,4 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "493,4 Milyon TL",
+                "1,0 Milyar TL",
+                "845,9 Milyon TL"
+              ]
+            }
+          ]
+        }
+      }
+    },
     {
       "company": "Tarım Kredi Yem San. ve Tic. A.Ş.",
       "bist_code": "",
@@ -2356,93 +2444,6 @@
                 "34,1 Milyon TL",
                 "138,4 Milyon TL",
                 "427,0 Milyon TL"
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "company": "Asos Proses Makina San. ve Tic. A.Ş.",
-      "bist_code": "",
-      "slug": "asos-proses-makina-san-ve-tic-a-s",
-      "link": "https://halkarz.com/asos-proses-makina-san-ve-tic-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "36.000.000 Lot",
-      "broker": "İnfo Yatırım Menkul Değerler A.Ş.",
-      "market": "Yıldız Pazar",
-      "first_trade": "",
-      "float_lot": "",
-      "float_pct": "",
-      "updated_src": "15.09.2026 09:41",
-      "details": {
-        "sekil": {
-          "items": [
-            "Sermaye Artırımı : 25.200.000 Lot",
-            "Ortak Satışı : 10.800.000 Lot (Önder Filiz)"
-          ],
-          "source": "Taslak İzahname, Sayfa 1."
-        },
-        "fon_kullanim": {
-          "items": [
-            "%35 Yeni projelerin finansmanı",
-            "%35 İşletme sermayesşi",
-            "%30 Farklı sektör yatırımları"
-          ],
-          "source": "Taslak İzahname, Sayfa 198."
-        },
-        "satis_yontemi": {
-          "items": [
-            "Sabit Fiyatla Talep Toplama",
-            "En İyi Gayret Aracılığı"
-          ],
-          "source": ""
-        },
-        "fiyat_istikrari": {
-          "items": [
-            "Planlanmamaktadır"
-          ],
-          "source": "Taslak İzahname, Sayfa 195."
-        },
-        "satmama": {
-          "items": [
-            "1 Yıl, İhraççı",
-            "1 Yıl, Ortaklar"
-          ],
-          "source": "Taslak İzahname, Sayfa 196."
-        },
-        "halka_aciklik": {
-          "items": [
-            "%20,17"
-          ],
-          "source": "Taslak İzahname, Sayfa 178."
-        },
-        "finansal": {
-          "periods": [
-            "2025",
-            "2024",
-            "2023"
-          ],
-          "rows": [
-            {
-              "label": "Hasılat",
-              "values": [
-                "4,4 Milyar TL",
-                "4,4 Milyar TL",
-                "1,9 Milyar TL"
-              ]
-            },
-            {
-              "label": "Brüt Kâr",
-              "values": [
-                "1,5 Milyar TL",
-                "1,9 Milyar TL",
-                "845,7 Milyon TL"
               ]
             }
           ]

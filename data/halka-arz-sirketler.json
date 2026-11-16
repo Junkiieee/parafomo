@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16T12:15+00:00",
+ "updated": "2026-11-16T18:15+00:00",
  "source": "halkarz.com",
  "items": {
   "pronet-guvenlik-hizmetleri-a-s": {
@@ -8623,6 +8623,95 @@
     }
    },
    "first_seen": "2026-11-11"
+  },
+  "sahinler-metal-san-ve-tic-a-s": {
+   "company": "Şahinler Metal San. ve Tic. A.Ş.",
+   "bist_code": "",
+   "slug": "sahinler-metal-san-ve-tic-a-s",
+   "link": "https://halkarz.com/sahinler-metal-san-ve-tic-a-s/",
+   "date_text": "",
+   "start": null,
+   "end": null,
+   "status": "Tarih Bekleniyor",
+   "price": "",
+   "distribution": "Eşit Dağıtım **",
+   "lot": "200.000.000 Lot",
+   "broker": "Ziraat Yatırım Menkul Kıymetler A.Ş. İntegral Yatırım Menkul Değerler A.Ş.",
+   "market": "",
+   "first_trade": "",
+   "float_lot": "",
+   "float_pct": "",
+   "updated_src": "16.11.2026 15:19",
+   "details": {
+    "sekil": {
+     "items": [
+      "Sermaye Artırımı : 160.000.000 Lot",
+      "Ortak Satışı : 40.000.000 Lot"
+     ],
+     "source": "Taslak İzahname, Sayfa 1."
+    },
+    "fon_kullanim": {
+     "items": [
+      "%40-50 Orta gerilim kablo üretim tesisi",
+      "%10-20 Yenileme yatırımları",
+      "%10-20 Finansal borçluluğun azaltılması",
+      "%20-30 İşletme sermayesi"
+     ],
+     "source": "Taslak İzahname, Sayfa 382."
+    },
+    "satis_yontemi": {
+     "items": [
+      "Sabit Fiyatla Talep Toplama",
+      "En İyi Gayret Aracılığı"
+     ],
+     "source": ""
+    },
+    "fiyat_istikrari": {
+     "items": [
+      "(İntegral Yatırım Menkul Değerler A.Ş.)"
+     ],
+     "source": "Taslak İzahname, Sayfa 378."
+    },
+    "satmama": {
+     "items": [
+      "1 Yıl, İhraççı",
+      "1 Yıl, Ortaklar"
+     ],
+     "source": "Taslak İzahname, Sayfa 380."
+    },
+    "halka_aciklik": {
+     "items": [
+      "%20,83"
+     ],
+     "source": "Taslak İzahname, Sayfa 342."
+    },
+    "finansal": {
+     "periods": [
+      "2026/6",
+      "2025",
+      "2024"
+     ],
+     "rows": [
+      {
+       "label": "Hasılat",
+       "values": [
+        "8,5 Milyar TL",
+        "14,0 Milyar TL",
+        "13,4 Milyar TL"
+       ]
+      },
+      {
+       "label": "Brüt Kâr",
+       "values": [
+        "493,4 Milyon TL",
+        "1,0 Milyar TL",
+        "845,9 Milyon TL"
+       ]
+      }
+     ]
+    }
+   },
+   "first_seen": "2026-11-16"
   }
  }
 }
