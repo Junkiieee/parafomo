@@ -1,0 +1,114 @@
+{
+ "slug": "aralik-maasi-vergi-merdiveninde-yukari-cikiyorsun",
+ "title": "Aralık maaşı: vergi merdiveninde yukarı çıkıyorsun",
+ "description": "Gelir vergisi yıl boyunca birikir: 2026'da kümülatif matrah 190.000 ₺'yi aşınca oran %15'ten %20'ye, 400.000 ₺'yi aşınca %27'ye çıkar. Bu yüzden aynı brüt maaşta net, yıl sonuna doğru azalır. Örnek: brüt 50.000 ₺ maaşta Ocak neti yaklaşık 40.200 ₺, Aralık neti 36.500 ₺ (asgari ücret istisnası dahil). Asgari ücret gelir ve damga vergisinden istisna olduğu için asgari ücretlinin neti yıl boyunca değişmez.\nKaynak: 2026 ücret gelir vergisi tarifesi (GVK md. 103, 332 Seri No'lu GV Genel Tebliği); hesap: parafomo.com/net-maas-hesaplama (SGK %14 + işsizlik %1, damga binde 7,59, asgari ücret istisnası).",
+ "tags": [
+  "aralık maaşı",
+  "kümülatif vergi matrahı",
+  "gelir vergisi",
+  "net maaş",
+  "bordro",
+  "kişisel finans",
+  "parafomo"
+ ],
+ "format": "single_concept",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "BORDRO",
+  "scenes": [
+   {
+    "type": "icon_text",
+    "head": "Aralık neti neden az?",
+    "data": {
+     "icon": "cash",
+     "text": "Aralık neti *az* geliyorsa hata değil"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "steps",
+    "head": "2026 vergi merdiveni",
+    "data": {
+     "items": [
+      "190 BİNE KADAR %15",
+      "190 BİN ÜSTÜ %20",
+      "400 BİN ÜSTÜ %27"
+     ]
+    },
+    "line": "s1"
+   },
+   {
+    "type": "compare",
+    "head": "Örnek: brüt 50 bin ₺",
+    "data": {
+     "a": {
+      "label": "Ocak neti",
+      "value": 40200
+     },
+     "b": {
+      "label": "Aralık neti",
+      "value": 36500
+     },
+     "unit": "₺",
+     "note": "ÖRNEK · FARK ≈ 3.700 ₺"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "steps",
+    "head": "Kime işler?",
+    "data": {
+     "items": [
+      "ASGARİ ÜCRETLİ: NET SABİT",
+      "ÜSTÜNDE: ARALIK NETİ AZ",
+      "BÜTÇEYİ BUNA GÖRE KUR"
+     ]
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "data": {
+     "l1": "ARALIK BORDRO",
+     "l2": "SÜRPRİZ OLMASIN",
+     "sub": "HER GÜN 60 SANİYE · TEK NET ANALİZ"
+    },
+    "head": "Abone ol",
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Aralık maaşın Ocak'tan az geliyorsa, bu hata değil.",
+   "cap": "Aralık maaşın Ocak'tan az geliyorsa, bu hata değil."
+  },
+  {
+   "id": "s1",
+   "say": "Gelir vergisi yıl boyunca birikir. Biriken matrah 190 bini aşınca oran yüzde 15'ten 20'ye, 400 bini aşınca 27'ye çıkar.",
+   "cap": "Gelir vergisi yıl boyunca birikir. Biriken matrah 190 bini aşınca oran %15'ten %20'ye, 400 bini aşınca %27'ye çıkar."
+  },
+  {
+   "id": "s2",
+   "say": "Örnek: brüt 50 bin lira alan biri Ocak'ta yaklaşık 40 bin 200 lira net alır, Aralık'ta 36 bin 500.",
+   "cap": "Örnek: brüt 50 bin ₺ alan biri Ocak'ta yaklaşık 40.200 ₺ net alır, Aralık'ta 36.500 ₺."
+  },
+  {
+   "id": "s3",
+   "say": "Asgari ücretin vergisi yok, o yüzden asgari ücretlinin neti değişmez. Üstünü kazanıyorsan Aralık bütçeni bu düşüşe göre kur.",
+   "cap": "Asgari ücretin vergisi yok, o yüzden asgari ücretlinin neti değişmez. Üstünü kazanıyorsan Aralık bütçeni bu düşüşe göre kur."
+  },
+  {
+   "id": "s4",
+   "say": "Aralık bordronda hiç sürpriz yaşadın mı? Abone ol, her gün 60 saniyede tek net analiz.",
+   "cap": "Aralık bordronda hiç sürpriz yaşadın mı? Abone ol, her gün 60 saniyede tek net analiz."
+  }
+ ],
+ "skin": "iso",
+ "engine": "hf",
+ "link": "/net-maas-hesaplama/",
+ "comment": "🧾 Aralık neti neden düşer?\n\n• 2026 ücret tarifesi: kümülatif matrah 190.000 ₺'ye kadar %15, 400.000 ₺'ye kadar %20, sonrası %27\n• Örnek: brüt 50.000 ₺ → Ocak neti ≈ 40.200 ₺, Aralık neti ≈ 36.500 ₺ (asgari ücret istisnası dahil)\n• Asgari ücret gelir ve damga vergisinden istisna: asgari ücretlinin neti yıl boyunca aynı\n\n🧮 Kendi maaşını ay ay hesapla: https://parafomo.com/net-maas-hesaplama/?utm_source=youtube&utm_medium=shorts&utm_campaign=aralik-maasi\n\nSenin bordronda net hangi ay düştü? 👇"
+}

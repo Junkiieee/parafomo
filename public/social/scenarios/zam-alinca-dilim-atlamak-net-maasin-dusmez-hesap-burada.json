@@ -1,0 +1,65 @@
+{
+  "slug": "zam-alinca-dilim-atlamak-net-maasin-dusmez-hesap-burada",
+  "title": "Zam alınca dilim atlamak: net maaşın düşmez, hesap burada",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Gelir vergisinde yüksek oran maaşın tamamına değil, yalnız dilim sınırını aşan kısma uygulanır. 2026 ücret tarifesi: 190.000 ₺'ye kadar %15, 190.001–400.000 ₺ %20, 400.001–1.500.000 ₺ %27, 1.500.001–5.300.000 ₺ %35, üzeri %40.\nÖrnek hesap: matrah 200.000 ₺ → 190.000 × %15 = 28.500 ₺ + 10.000 × %20 = 2.000 ₺ = 30.500 ₺ (tamamına %20 uygulansaydı 40.000 ₺). Ücretlilerde ayrıca asgari ücret istisnası düşülür.\nKaynak: GVK md. 103, 332 Seri No'lu Gelir Vergisi Genel Tebliği.",
+  "tags": [
+    "gelir vergisi",
+    "vergi dilimi",
+    "maaş",
+    "zam",
+    "net maaş",
+    "kümülatif matrah",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Maaşının tamamı yüzde 20 vergilenmiyor.",
+      "visual": {
+        "type": "object",
+        "query": "stack of cash and wallet"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Örnek: yıl içinde biriken matrahın 200 bin lira olsun. 2026'da ilk 190 bine yüzde 15, sadece aşan 10 bine yüzde 20 uygulanır.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Hepsine yüzde 20 uygulansaydı 40 bin öderdin. Gerçekte 28 bin 500 artı 2 bin, toplam 30 bin 500.",
+      "visual": {
+        "type": "object",
+        "query": "receipt paper"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yani zam alıp dilim atlamak, eline geçen parayı azaltmaz. Yüksek oran sadece sınırı aşan kısma işler.",
+      "visual": {
+        "type": "object",
+        "query": "smartphone banking app"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bordronda hangi dilimdesin, hiç baktın mı? Abone ol, her gün 60 saniyede tek net hesap.",
+      "visual": {
+        "type": "object",
+        "query": "stack of cash and wallet"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "yüzde 20",
+    "calc": "Örnek: matrah 200.000 ₺; 190.000 × %15 = 28.500; 10.000 × %20 = 2.000; toplam 30.500 (tamamına %20 olsaydı 40.000).",
+    "source": "2026 ücret gelir vergisi tarifesi (GVK md. 103, 332 Seri No'lu GV Genel Tebliği): 190.000 ₺'ye kadar %15, 190.001–400.000 ₺ %20"
+  },
+  "link": "/vergi-dilimi-hesaplama/"
+}

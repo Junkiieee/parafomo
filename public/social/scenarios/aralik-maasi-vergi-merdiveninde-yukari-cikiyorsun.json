@@ -1,0 +1,60 @@
+{
+  "slug": "aralik-maasi-vergi-merdiveninde-yukari-cikiyorsun",
+  "title": "Aralık maaşı: vergi merdiveninde yukarı çıkıyorsun",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "Gelir vergisi yıl boyunca birikir: 2026'da kümülatif matrah 190.000 ₺'yi aşınca oran %15'ten %20'ye, 400.000 ₺'yi aşınca %27'ye çıkar. Bu yüzden aynı brüt maaşta net, yıl sonuna doğru azalır. Örnek: brüt 50.000 ₺ maaşta Ocak neti yaklaşık 40.200 ₺, Aralık neti 36.500 ₺ (asgari ücret istisnası dahil). Asgari ücret gelir ve damga vergisinden istisna olduğu için asgari ücretlinin neti yıl boyunca değişmez.\nKaynak: 2026 ücret gelir vergisi tarifesi (GVK md. 103, 332 Seri No'lu GV Genel Tebliği); hesap: parafomo.com/net-maas-hesaplama (SGK %14 + işsizlik %1, damga binde 7,59, asgari ücret istisnası).",
+  "tags": [
+    "aralık maaşı",
+    "kümülatif vergi matrahı",
+    "gelir vergisi",
+    "net maaş",
+    "bordro",
+    "kişisel finans",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "Aralık maaşın Ocak'tan az geliyorsa, bu hata değil.",
+      "visual": {
+        "type": "object",
+        "query": "wallet full of cash"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gelir vergisi yıl boyunca birikir. Biriken matrah 190 bini aşınca oran yüzde 15'ten 20'ye, 400 bini aşınca 27'ye çıkar.",
+      "visual": {
+        "type": "object",
+        "query": "staircase"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Örnek: brüt 50 bin lira alan biri Ocak'ta yaklaşık 40 bin 200 lira net alır, Aralık'ta 36 bin 500.",
+      "visual": {
+        "type": "object",
+        "query": "payslip salary statement"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Asgari ücretin vergisi yok, o yüzden asgari ücretlinin neti değişmez. Üstünü kazanıyorsan Aralık bütçeni bu düşüşe göre kur.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Aralık bordronda hiç sürpriz yaşadın mı? Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "wallet full of cash"
+      }
+    }
+  ],
+  "link": "/net-maas-hesaplama/"
+}
