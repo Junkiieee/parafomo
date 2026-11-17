@@ -6,9 +6,24 @@ const API_BASE = safeGet('pf_api_base') || 'https://api.parafomo.com';
 const TOKEN_KEY = 'pf_token';
 const GOOGLE_CLIENT_ID = '1020605001020-3o64jftksul1tkqj2gov24j7qj4o18f4.apps.googleusercontent.com';
 
+// Altın türleri (2026-11-17): backend GOLD + sembol (prices.ALTIN_TURLERI ile aynı). Eski kayıtlar 'GOLD' = gram.
+const ALTIN_TUR = {
+  GOLD:       { ad: 'Gram altın (24 ayar)', tick: 'ALTIN',   birim: 'gram', q: 'Gram' },
+  CEYREK:     { ad: 'Çeyrek altın',         tick: 'ÇEYREK',  birim: 'adet', q: 'Adet' },
+  YARIM:      { ad: 'Yarım altın',          tick: 'YARIM',   birim: 'adet', q: 'Adet' },
+  TAM:        { ad: 'Tam (ziynet) altın',   tick: 'TAM',     birim: 'adet', q: 'Adet' },
+  CUMHURIYET: { ad: 'Cumhuriyet altını',    tick: 'CUMH.',   birim: 'adet', q: 'Adet' },
+  ATA:        { ad: 'Ata altın',            tick: 'ATA',     birim: 'adet', q: 'Adet' },
+  BILEZIK22:  { ad: '22 ayar bilezik',      tick: '22 AYAR', birim: 'gram', q: 'Gram' },
+  AYAR18:     { ad: '18 ayar altın',        tick: '18 AYAR', birim: 'gram', q: 'Gram' },
+  AYAR14:     { ad: '14 ayar altın',        tick: '14 AYAR', birim: 'gram', q: 'Gram' },
+};
+const altinTur = s => ALTIN_TUR[String(s || '').toUpperCase()] || ALTIN_TUR.GOLD;
+
 const TYPE = {
   bist:   { tick: s => s, name: s => symbolName(s), unit: 'adet', q: 'Adet', cls: 'bist',   label: 'Hisse' },
-  gold:   { tick: () => 'ALTIN',  name: () => 'Gram altın (24 ayar)', unit: 'gram', q: 'Gram', cls: 'gold',   label: 'Altın' },
+  gold:   { tick: s => altinTur(s).tick, name: s => altinTur(s).ad, unit: 'gram', q: 'Gram', cls: 'gold', label: 'Altın',
+            unitOf: s => altinTur(s).birim, qOf: s => altinTur(s).q },
   silver: { tick: () => 'GÜMÜŞ', name: () => 'Gram gümüş',           unit: 'gram', q: 'Gram', cls: 'silver', label: 'Gümüş' },
   usd:    { tick: () => 'USD', name: () => 'Amerikan doları', unit: '$',   q: 'Dolar miktarı ($)', cls: 'usd',  label: 'Dolar' },
   eur:    { tick: () => 'EUR', name: () => 'Euro',            unit: '€',   q: 'Euro miktarı (€)',  cls: 'eur',  label: 'Euro' },
@@ -16,6 +31,8 @@ const TYPE = {
   eth:    { tick: () => 'ETH', name: () => 'Ethereum',        unit: 'ETH', q: 'Miktar (ETH)',      cls: 'eth',  label: 'Ethereum' },
   cash:   { tick: () => 'TL',  name: () => 'Nakit (TL)',      unit: '₺',   q: 'Tutar (₺)',         cls: 'cash', label: 'Nakit', fixed: true },
 };
+const UNIT = (t, s) => (t.unitOf ? t.unitOf(s) : t.unit);   // altında tür birimi (adet/gram)
+const QLABEL = (t, s) => (t.qOf ? t.qOf(s) : t.q);
 const ALLOC_CLASS = { bist: 'bist', gold: 'gold', silver: 'silver', usd: 'fx', eur: 'fx', btc: 'crypto', eth: 'crypto', cash: 'cash' };
 const ALLOC_META = [
   ['gold', 'Altın'], ['bist', 'Hisse'], ['silver', 'Gümüş'],
@@ -240,7 +257,7 @@ const DEMO = {
   // Maliyetler gerçek ay-sonu serileriyle (benchmarks.json) tutarlı seçildi —
   // "ne olsaydı" kıyası demo'da da anlamlı görünsün.
   holdings: [
-    { id: -1, asset_type: 'gold',   symbol: 'GOLD',  quantity: 25,  cost_price: 5400, purchase_date: '2025-10-20', note: 'düğün altınları', current_price: 6644.8, change_pct: 0.4 },
+    { id: -1, asset_type: 'gold',   symbol: 'CEYREK', quantity: 10, cost_price: 8900, purchase_date: '2025-10-20', note: 'düğün altınları', current_price: 10346, change_pct: 0.4 },
     { id: -2, asset_type: 'bist',   symbol: 'THYAO', quantity: 40,  cost_price: 246,  purchase_date: '2025-12-15', note: null, current_price: 287.5, change_pct: 0 },
     { id: -3, asset_type: 'bist',   symbol: 'ASELS', quantity: 15,  cost_price: 298,  purchase_date: '2026-07-10', note: null, current_price: 351.2, change_pct: 0 },
     { id: -4, asset_type: 'silver', symbol: 'SILVER', quantity: 200, cost_price: 53.2, purchase_date: '2025-08-18', note: null, current_price: 96.4, change_pct: 0.6 },
@@ -1060,7 +1077,7 @@ function rowHtml(h, totalValue, U) {
       <span class="tick tick-${t.cls}">${esc(t.tick(h.symbol))}</span>
       <span class="aname"><b>${esc(t.name(h.symbol))}</b>${h.note ? `<small>${esc(h.note)}</small>` : ''}</span>
     </span>
-    <span class="r c-qty"><span class="cell-main">${nfq.format(h.quantity)} ${t.unit}</span>${isCash ? '' : `<span class="cell-sub">maliyet ${money(h.cost_price)}</span>`}</span>
+    <span class="r c-qty"><span class="cell-main">${nfq.format(h.quantity)} ${UNIT(t, h.symbol)}</span>${isCash ? '' : `<span class="cell-sub">maliyet ${money(h.cost_price)}</span>`}</span>
     <span class="r c-price">${isCash ? '' : `<span class="cell-main">${money(h.current_price)}</span><span class="cell-sub ${plClass(h.change_pct)}">${dayStr}</span>`}</span>
     <span class="r c-value"><span class="cell-main">${fmtU(h.current_value, U)}</span>${w != null ? `<span class="cell-sub" title="Portföydeki payı">pay %${nf0.format(w)}</span>` : ''}</span>
     <span class="r c-pl">${isCash ? '<span class="pl-flat">—</span>' : `<span class="${plClass(h.profit_loss)}">${signedU(h.profit_loss, U)}</span><span class="cell-sub ${plClass(h.profit_loss)}">${h.profit_loss_pct != null ? signedPct(h.profit_loss_pct) : ''}</span>`}</span>
@@ -1086,7 +1103,7 @@ function openDetailDialog(h) {
       <button class="btn-icon" id="ddlg-x" aria-label="Kapat">${ICONS.x}</button>
     </div>
     <div class="stats">
-      ${stat('Miktar', nfq.format(h.quantity) + ' ' + t.unit)}
+      ${stat('Miktar', nfq.format(h.quantity) + ' ' + UNIT(t, h.symbol))}
       ${stat('Birim maliyet', money(h.cost_price))}
       ${stat('Güncel fiyat', money(h.current_price))}
       ${stat('Değer', money(h.current_value))}
@@ -1240,7 +1257,7 @@ function txnsHtml() {
     return `<div class="trow num">
       <span class="side side-${x.side}">${x.side === 'buy' ? 'AL' : 'SAT'}</span>
       <span class="asset"><span class="tick tick-${t.cls}">${esc(t.tick(x.symbol))}</span>
-        <span class="aname"><b>${nfq.format(x.quantity)} ${t.unit} · ${money(x.price)}</b>
+        <span class="aname"><b>${nfq.format(x.quantity)} ${UNIT(t, x.symbol)} · ${money(x.price)}</b>
         ${x.note ? `<small>${esc(x.note)}</small>` : ''}</span></span>
       <span class="r"><span class="cell-sub">${dStr}</span>
         ${x.realized_pl != null ? `<span class="${plClass(x.realized_pl)}">${signedMoney(x.realized_pl)}</span>` : ''}</span>
@@ -1287,9 +1304,9 @@ function openSellDialog(h) {
       <button class="btn-icon" id="sdlg-x" aria-label="Kapat">${ICONS.x}</button></div>
     <p style="margin:0 0 14px"><span class="tick tick-${t.cls}">${esc(t.tick(h.symbol))}</span>
       <b style="margin-left:8px">${esc(t.name(h.symbol))}</b>
-      <span class="cell-sub num" style="display:inline;margin-left:8px">elinde ${nfq.format(h.quantity)} ${t.unit}</span></p>
+      <span class="cell-sub num" style="display:inline;margin-left:8px">elinde ${nfq.format(h.quantity)} ${UNIT(t, h.symbol)}</span></p>
     <form id="sell-form">
-      <label class="field"><span>Satılan ${t.unit === 'gram' ? 'gram' : 'adet'}
+      <label class="field"><span>Satılan ${UNIT(t, h.symbol) === 'gram' ? 'gram' : 'adet'}
         — <button type="button" class="linklike" id="sell-all">tümünü sat (${nfq.format(h.quantity)})</button></span>
         <input name="quantity" type="number" step="any" min="0.0001" max="${h.quantity}" required inputmode="decimal"></label>
       <div ${t.fixed ? 'hidden' : ''}>
@@ -1763,8 +1780,14 @@ function openHoldingDialog(existing, preset) {
           <input type="hidden" name="symbol" value="${preset && preset.asset_type === 'bist' ? esc(preset.symbol) : ''}">
           <ul id="sym-list" hidden></ul>
         </label>
+      </div>
+      <div id="gold-wrap" ${presetType !== 'gold' ? 'hidden' : ''}>
+        <label class="field"><span>Altın türü</span>
+          <select name="gold_kind">${Object.entries(ALTIN_TUR).map(([k, a]) =>
+            `<option value="${k}" ${preset && preset.asset_type === 'gold' && altinTur(preset.symbol) === a ? 'selected' : ''}>${a.ad}</option>`).join('')}</select></label>
       </div>`}
-      <label class="field"><span id="qty-label">${(isEdit ? TYPE[existing.asset_type] : TYPE[presetType]).q}</span>
+      <label class="field"><span id="qty-label">${isEdit ? QLABEL(TYPE[existing.asset_type], existing.symbol)
+        : QLABEL(TYPE[presetType], preset && preset.asset_type === 'gold' ? preset.symbol : null)}</span>
         <input name="quantity" type="number" step="any" min="0.0001" required inputmode="decimal" value="${isEdit ? existing.quantity : ''}"></label>
       <div id="cost-wrap" ${!isEdit && TYPE[presetType].fixed ? 'hidden' : ''}>
         <label class="field"><span>Birim maliyet (₺)</span>
@@ -1797,7 +1820,7 @@ function openHoldingDialog(existing, preset) {
     if (state.demo) return;
     hint.textContent = 'Güncel fiyat alınıyor…';
     try {
-      const q = assetType === 'bist' ? '&symbol=' + encodeURIComponent(symbol) : '';
+      const q = (assetType === 'bist' || assetType === 'gold') && symbol ? '&symbol=' + encodeURIComponent(symbol) : '';
       const r = await (await fetch(API_BASE + '/public/price?asset_type=' + assetType + q)).json();
       if (r.price != null) {
         hint.innerHTML = `Güncel fiyat: <b class="num">${money(r.price)}</b> — <button type="button" id="use-price">maliyete yaz</button>`;
@@ -1808,23 +1831,30 @@ function openHoldingDialog(existing, preset) {
 
   if (!isEdit) {
     const symWrap = dlg.querySelector('#symbol-wrap');
+    const goldWrap = dlg.querySelector('#gold-wrap');
     const qtyLabel = dlg.querySelector('#qty-label');
     const costWrap = dlg.querySelector('#cost-wrap');
     form.querySelectorAll('input[name=asset_type]').forEach(r => r.addEventListener('change', () => {
       const t = TYPE[r.value];
       symWrap.hidden = r.value !== 'bist';
+      goldWrap.hidden = r.value !== 'gold';
       form.symbol_q.required = r.value === 'bist';
-      qtyLabel.textContent = t.q;
+      qtyLabel.textContent = QLABEL(t, r.value === 'gold' ? form.gold_kind.value : null);
       hint.textContent = '';
       costWrap.hidden = Boolean(t.fixed);
       if (t.fixed) form.cost_price.value = 1;
+      else if (r.value === 'gold') showLivePrice('gold', form.gold_kind.value);
       else if (r.value !== 'bist') showLivePrice(r.value);
     }));
+    form.gold_kind.addEventListener('change', () => {
+      qtyLabel.textContent = QLABEL(TYPE.gold, form.gold_kind.value);
+      showLivePrice('gold', form.gold_kind.value);
+    });
     wireSymbolSearch(form, dlg.querySelector('#sym-list'), code => showLivePrice('bist', code));
     if (preset) {
-      if (preset.asset_type === 'bist') showLivePrice('bist', preset.symbol);
+      if (preset.asset_type === 'bist' || preset.asset_type === 'gold') showLivePrice(preset.asset_type, preset.symbol);
       else showLivePrice(preset.asset_type);
-    }
+    } else if (presetType === 'gold') showLivePrice('gold', form.gold_kind.value);
   } else if (existing.current_price != null) {
     hint.innerHTML = `Güncel fiyat: <b class="num">${money(existing.current_price)}</b>`;
   }
@@ -1861,7 +1891,7 @@ function openHoldingDialog(existing, preset) {
         toast('Pozisyon güncellendi.');
       } else {
         const assetType = form.asset_type.value;
-        let symbol = assetType === 'bist' ? resolveSymbol(form) : assetType;
+        let symbol = assetType === 'bist' ? resolveSymbol(form) : assetType === 'gold' ? form.gold_kind.value : assetType;
         await api('/portfolio/transactions', {
           method: 'POST',
           body: JSON.stringify({ asset_type: assetType, symbol, side: 'buy', quantity: qty, price: cost, trade_date: date, note }),

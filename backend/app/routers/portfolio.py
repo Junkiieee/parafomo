@@ -19,7 +19,7 @@ from ..models import (
     User,
     WatchItem,
 )
-from ..prices import get_price, get_quote, get_usd_try
+from ..prices import get_price, get_quote, get_usd_try, altin_sembol
 from ..schemas import (
     AlertCreate,
     AlertOut,
@@ -46,7 +46,9 @@ router = APIRouter(prefix="/portfolio", tags=["portfolio"])
 def _normalize_symbol(asset_type: AssetType, symbol: str) -> str:
     if asset_type is AssetType.BIST:
         return symbol.strip().upper()
-    # Altın/gümüş için sembol sabit tutulur
+    if asset_type is AssetType.GOLD:   # altın türü: GOLD (gram), CEYREK, YARIM, TAM, CUMHURIYET, ATA, BILEZIK22, AYAR18, AYAR14
+        return altin_sembol(symbol)
+    # Gümüş, döviz, kripto, nakit için sembol sabit tutulur
     return asset_type.value.upper()
 
 

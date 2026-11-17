@@ -11,7 +11,7 @@ from collections import defaultdict, deque
 from fastapi import APIRouter, HTTPException, Query, Request, status
 
 from ..models import AssetType
-from ..prices import get_bist_history, get_price
+from ..prices import altin_sembol, get_bist_history, get_price
 
 router = APIRouter(prefix="/public", tags=["public"])
 
@@ -43,7 +43,12 @@ def public_price(
 ) -> dict:
     """Bir varlığın güncel birim fiyatını (TL) döndürür. Üyelik gerekmez."""
     _rate_limit(request)
-    sym = symbol.strip().upper() if asset_type is AssetType.BIST else asset_type.value.upper()
+    if asset_type is AssetType.BIST:
+        sym = symbol.strip().upper()
+    elif asset_type is AssetType.GOLD:
+        sym = altin_sembol(symbol)
+    else:
+        sym = asset_type.value.upper()
     if asset_type is AssetType.BIST and not sym:
         raise HTTPException(status_code=400, detail="Hisse kodu gerekli.")
     price = get_price(asset_type, sym)

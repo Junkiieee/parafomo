@@ -65,8 +65,21 @@ def _fetch_truncgil() -> dict:
         return r.json()
 
 
-def _gold_silver_quote(asset_type: AssetType) -> tuple[float, float | None] | None:
-    key = "gram-altin" if asset_type is AssetType.GOLD else "gumus"
+# Altın türleri (2026-11-17, Kaan: portföy uygulamasına çekme — "Altınlarım"): GOLD varlığında sembol türü seçer.
+# Eski kayıtlar "GOLD" = gram altın (24 ayar). Anahtarlar Truncgil v3 today.json ile birebir (2026-11-17 doğrulandı).
+ALTIN_TURLERI = {"GOLD": "gram-altin", "CEYREK": "ceyrek-altin", "YARIM": "yarim-altin", "TAM": "tam-altin",
+                 "CUMHURIYET": "cumhuriyet-altini", "ATA": "ata-altin", "BILEZIK22": "22-ayar-bilezik",
+                 "AYAR18": "18-ayar-altin", "AYAR14": "14-ayar-altin"}
+
+
+def altin_sembol(symbol: str | None) -> str:
+    """Geçerli altın türü sembolü; bilinmeyen ya da boşsa gram altın ("GOLD")."""
+    s = (symbol or "").strip().upper()
+    return s if s in ALTIN_TURLERI else "GOLD"
+
+
+def _gold_silver_quote(asset_type: AssetType, symbol: str = "GOLD") -> tuple[float, float | None] | None:
+    key = ALTIN_TURLERI[altin_sembol(symbol)] if asset_type is AssetType.GOLD else "gumus"
     cached = _cache_get(key)
     if cached is not None:
         return cached
@@ -174,7 +187,7 @@ def get_quote(asset_type: AssetType, symbol: str) -> tuple[float, float | None] 
     if asset_type is AssetType.BIST:
         return _bist_quote(symbol)
     if asset_type in (AssetType.GOLD, AssetType.SILVER):
-        return _gold_silver_quote(asset_type)
+        return _gold_silver_quote(asset_type, symbol)
     if asset_type in (AssetType.USD, AssetType.EUR):
         return _fx_quote(asset_type)
     if asset_type in (AssetType.BTC, AssetType.ETH):
