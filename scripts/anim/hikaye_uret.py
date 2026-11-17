@@ -43,6 +43,10 @@ def trend_tazele():
             subprocess.run([PY, os.path.join(ROOT, "scripts", "learn", betik)], timeout=300, check=False)
         except Exception as e:
             print(f"[hikaye] {betik} atlandı: {e}")
+    try:   # biçim radarı: patlayanların kapakları tek sayfada (sabah rutini Pzt/Prş inceler)
+        subprocess.run([PY, os.path.join(ROOT, "scripts", "learn", "format_sheet.py")], timeout=180, check=False)
+    except Exception as e:
+        print(f"[hikaye] format_sheet atlandı: {e}")
 
 
 def trend_satirlari(n=5):
@@ -502,6 +506,10 @@ def yerlesim_duzelt(spec):
     for i, sc in enumerate(d.get("scenes", [])):
         if sc.get("cubuk") and sc.get("vs"):
             sc.pop("vs")
+        if sc.get("tablo"):   # tablo kartı tek başına (2026-11-17)
+            for k in ("oyuncular", "dekor", "sayi", "soru", "vs", "cubuk", "baslik"):
+                sc.pop(k, None)
+            continue
         if sc.get("cubuk") or sc.get("vs"):   # grafik/vs sahnesi kendi başına (vs kendi karakterlerini çizer)
             for k in ("oyuncular", "dekor", "sayi", "soru"):
                 sc.pop(k, None)

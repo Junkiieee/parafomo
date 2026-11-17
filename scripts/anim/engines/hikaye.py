@@ -73,6 +73,28 @@ def _t(line, kelime, frac=0.35):
 
 
 # ---------------------------------------------------------------- altyazı (1–3 kelime, vurgulu)
+CAP_GEN = 21.0   # 78 px kalın altyazı, 980 px: "Tabloda bugünkü aylığına" (20,7) sığar, "Memur emeklisinde %10,75." (23,1) taşar
+
+
+def _gen(s):
+    """Altyazı satırının yaklaşık genişliği (ortalama harf = 1)."""
+    w = 0.0
+    for ch in s:
+        if ch == " ":
+            w += 0.35
+        elif ch in "iıIlj.,;:'!|":
+            w += 0.45
+        elif ch in "fjtr":
+            w += 0.7
+        elif ch in "MWmw%@₺":
+            w += 1.45
+        elif ch.isupper() or ch.isdigit():
+            w += 1.15
+        else:
+            w += 1.0
+    return w
+
+
 def captions(lines, dur, vurgu_kelimeler=()):
     """Vurgu: rakam içeren kelimeler + spec.data.vurgu listesindeki kelimeler (altyazı metni yıldızsız kalır ki
     whisper hizalaması bozulmasın)."""
@@ -84,6 +106,11 @@ def captions(lines, dur, vurgu_kelimeler=()):
         ws = word_times(l)
         cur = []
         for k, w in enumerate(ws):
+            # Genişlik: grup tek satıra sığmazsa ikinci satır kaynak yazısının üstüne biniyordu (2026-11-17, "Memur
+            # emeklisinde %10,75."). Bu kelime satırı taşıracaksa önce mevcut grubu kapat.
+            if cur and _gen(" ".join(x[0][0] for x in cur) + " " + w[0]) > CAP_GEN:
+                groups.append(cur)
+                cur = []
             cur.append((w, vurgu[k] if k < len(vurgu) else False))
             if len(cur) >= 3 or (w[0][-1] in ".,;:?!…" and len(cur) >= 1) or k == len(ws) - 1:
                 groups.append(cur)
@@ -223,6 +250,37 @@ class Sahne:
         if c.get("not"):
             self.parca.append(f'<div class="cnot">{_vurgula(c["not"])}</div>')
 
+    def tablo(self, tb):
+        """Zam tablosu kartı (2026-11-17 biçim araştırması: '2027 Ocak zamlı emekli maaşları' tablosu IG'de 2 milyon).
+        {"baslik": "…", "sutunlar": ["…", …], "satirlar": [["…", …], …] (en çok 8), "vurgu": satır no, "kelime": "…", "not": "…"}"""
+        sut = tb.get("sutunlar") or []
+        sat = (tb.get("satirlar") or [])[:8]
+        t0 = self.s + 0.25
+        h = [f'<div class="tablo" id="s{self.i}tb">']
+        if tb.get("baslik"):
+            h.append(f'<div class="tb">{E(tb["baslik"])}</div>')
+        h.append("<table>")
+        if sut:
+            h.append("<tr>" + "".join(f"<th>{E(x)}</th>" for x in sut) + "</tr>")
+        hemen = bool(tb.get("hemen"))   # tablo önceki sahnede zaten görüldü: satırlar hazır, vurgu sabit
+        v = tb.get("vurgu")
+        for r, row in enumerate(sat):
+            sinif = ' class="vurgu"' if (hemen and v == r) else ""
+            h.append(f'<tr id="s{self.i}t{r}"{sinif}>' + "".join(f"<td>{E(str(x))}</td>" for x in row) + "</tr>")
+            if not hemen:
+                self.js.append(f"tl.fromTo('#s{self.i}t{r}', {{ opacity: 0, x: -40 }}, {{ opacity: 1, x: 0, duration: 0.25, "
+                               f"ease: 'power2.out' }}, {t0 + r * 0.14:.3f});")
+        h.append("</table>")
+        if tb.get("not"):
+            h.append(f'<div class="tnot">{_vurgula(tb["not"])}</div>')
+        h.append("</div>")
+        self.parca.append("".join(h))
+        if not hemen and isinstance(v, int) and 0 <= v < len(sat):
+            tv = max(t0 + len(sat) * 0.14 + 0.2, self.at(_t(self.line, tb.get("kelime"), 0.6)))
+            self.js.append(f"tl.to('#s{self.i}t{v} td', {{ backgroundColor: '#f4c26b', color: '#3a2606', duration: 0.2 }}, {tv:.3f});")
+            self.js.append(f"tl.fromTo('#s{self.i}t{v}', {{ scale: 1 }}, {{ scale: 1.04, duration: 0.18, yoyo: true, repeat: 1, "
+                           f"transformOrigin: '50% 50%' }}, {tv:.3f});")
+
     def gosterge(self, g):
         bas, son = float(g.get("bas", 0)), float(g["son"])
         t = self.at(_t(self.line, g.get("kelime"), 0.25))
@@ -268,6 +326,8 @@ class Sahne:
             self.cubuk(sc["cubuk"])
         if sc.get("gosterge"):
             self.gosterge(sc["gosterge"])
+        if sc.get("tablo"):
+            self.tablo(sc["tablo"])
         if sc.get("kaynak"):
             self.parca.append(f'<div class="kaynak">{E(sc["kaynak"])}</div>')
         if sc.get("zemin"):
@@ -317,6 +377,16 @@ body { font-family: 'InterP', system-ui, sans-serif; color: #fff; }
 .vs-et b { display: block; font-family: 'AntonP', sans-serif; font-size: 96px; margin-top: 6px; }
 .vs-rozet { position: absolute; top: 750px; left: 470px; width: 140px; height: 140px; line-height: 140px; text-align: center;
   font-family: 'AntonP', sans-serif; font-size: 80px; color: #ff6b5b; text-shadow: 0 6px 24px rgba(0,0,0,.5); }
+.tablo { position: absolute; top: 300px; left: 50px; right: 50px; }
+.tablo .tb { font-weight: 700; font-size: 46px; color: #f4c26b; text-align: center; margin-bottom: 14px; }
+.tablo table { width: 100%; border-collapse: separate; border-spacing: 0 10px; font-variant-numeric: tabular-nums; }
+.tablo th { font-size: 30px; color: #cfe3da; text-align: right; padding: 0 18px; font-weight: 700; }
+.tablo td { font-size: 48px; font-weight: 700; padding: 14px 18px; background: rgba(255,255,255,.09); text-align: right; white-space: nowrap; }
+.tablo th:first-child, .tablo td:first-child { text-align: left; }
+.tablo tr td:first-child { border-radius: 14px 0 0 14px; }
+.tablo tr td:last-child { border-radius: 0 14px 14px 0; }
+.tablo tr.vurgu td { background: #f4c26b; color: #3a2606; }
+.tablo .tnot { font-size: 30px; color: #b8c7c0; text-align: center; margin-top: 12px; line-height: 1.3; }
 .cubuk { position: absolute; top: 470px; width: 300px; height: 680px; display: flex; flex-direction: column; justify-content: flex-end;
   align-items: center; }
 .cubuk .cb { width: 180px; border-radius: 18px 18px 6px 6px; }

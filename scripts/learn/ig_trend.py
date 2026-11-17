@@ -54,7 +54,7 @@ E = None
 def bd(username, n=20):
     """business_discovery: hesabın son n gönderisi. Hata → None (mesajda jeton olmaz)."""
     fields = (f"business_discovery.username({username}){{username,followers_count,media.limit({n})"
-              "{id,caption,media_product_type,timestamp,like_count,comments_count,view_count,permalink}}")
+              "{id,caption,media_product_type,timestamp,like_count,comments_count,view_count,permalink,thumbnail_url}}")
     q = urllib.parse.urlencode({"fields": fields, "access_token": E["IG_PAGE_TOKEN"]})
     try:
         with urllib.request.urlopen(f"{API}/{E['IG_BUSINESS_ACCOUNT_ID']}?{q}", timeout=40) as r:
@@ -130,7 +130,7 @@ def main():
                 continue
             satir = {"hesap": u, "takipci": d.get("followers_count"), "izlenme": x["view_count"], "begeni": x.get("like_count"),
                      "yorum": x.get("comments_count"), "gun": round(yas, 1), "kat": round(x["view_count"] / max(med, 1), 1),
-                     "kanca": re.split(r"(?<=[.!?…])\s", cap)[0][:140], "url": x.get("permalink")}
+                     "kanca": re.split(r"(?<=[.!?…])\s", cap)[0][:140], "url": x.get("permalink"), "kapak": x.get("thumbnail_url")}
             hepsi.append(satir)
             if x["view_count"] >= max(2.5 * med, 50000):
                 patlayan.append(satir)

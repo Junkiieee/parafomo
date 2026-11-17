@@ -95,7 +95,8 @@ def main():
         satir.append({"baslik": sn.get("title", "")[:120], "kanal": sn.get("channelTitle", "")[:60], "kanal_id": sn["channelId"], "abone": ab,
                       "izlenme": izl, "gunluk": round(izl / yas), "gun": round(yas, 1),
                       "sure": saniye(v["contentDetails"].get("duration")), "url": f"https://youtu.be/{v['id']}",
-                      "siyasi": bool(SIYASI.search(metin)), "yorum": int(st.get("commentCount", 0) or 0)})
+                      "siyasi": bool(SIYASI.search(metin)), "yorum": int(st.get("commentCount", 0) or 0),
+                      "kapak": ((sn.get("thumbnails") or {}).get("high") or (sn.get("thumbnails") or {}).get("medium") or {}).get("url")})
     satir.sort(key=lambda x: -x["izlenme"])
     en_cok = [x for x in satir if not x["siyasi"]][:25]
     kucuk = [x for x in satir if not x["siyasi"] and x["abone"] is not None and x["abone"] < 20000 and x["izlenme"] >= 50000][:15]
