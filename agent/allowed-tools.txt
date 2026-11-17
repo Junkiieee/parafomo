@@ -77,3 +77,8 @@ Bash(journalctl -u parafomo-api*)
 
 # cron yalnız OKUMA
 Bash(crontab -l)
+
+# 2026-11-17 sabah rutini (agent/sabah.sh): render önceliği ve kare kontrolü
+Bash(nice *)
+Bash(ffmpeg *)
+Bash(ffprobe *)

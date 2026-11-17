@@ -69,3 +69,7 @@
 0 16 * * * /root/parafomo/scripts/kuyruk.sh yayinla >> /root/parafomo/logs/kuyruk.log 2>&1
 # Cloudflare bot arşivi (2026-11-09, Kaan): IP-doğrulamalı bot istekleri günlük arşiv (CF 30 gün tutar) — /root/parafomo-data/bots/
 20 3 * * * /root/.venvs/parafomo/bin/python /root/parafomo/scripts/bots/cf_bots.py pull >> /root/parafomo/logs/bots.log 2>&1
+
+# 2026-11-17 Kaan: "kapanmamasını nasıl sağlarız" → sabah rutini oturumdan bağımsız (07:37 TSİ).
+# İstem agent/prompts/sabah.md, izinler agent/allowed-tools.txt, hata olursa notify.py uyarısı.
+37 4 * * * /root/parafomo/agent/sabah.sh >> /root/parafomo/logs/sabah.log 2>&1
