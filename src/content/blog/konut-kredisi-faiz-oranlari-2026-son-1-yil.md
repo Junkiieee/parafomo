@@ -1,6 +1,6 @@
 ---
 title: "Konut Kredisi Faiz Oranları 2026: Son 1 Yılda Ne Değişti?"
-description: "Konut kredisi faiz oranları 2026'da yüzde kaç? TCMB'nin 52 haftalık verisiyle ortalama konut faizi, en düşük-en yüksek dönem, taksit tablosu ve faizi düşürme yolları."
+description: "Konut kredisi faiz oranları 2026'da yüzde kaç? TCMB'nin 52 haftalık verisiyle ortalama konut faizi, en düşük-en yüksek dönem, taksit tablosu ve faizi düşürme."
 pubDate: 2026-11-17
 category: "Kişisel Finans"
 tags: ["konut kredisi faiz oranları", "konut kredisi", "mortgage", "kredi taksit hesaplama", "TCMB faiz istatistikleri", "ev alma"]
