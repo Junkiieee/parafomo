@@ -22,11 +22,15 @@ from datetime import date, datetime, timedelta, timezone
 from email.message import EmailMessage
 from pathlib import Path
 
-from sqlalchemy import select
+from sqlalchemy import or_, select
 
 from .config import get_settings
 from .db import SessionLocal, init_db
 from .models import NewsletterSubscriber
+
+# Haftalık bülten yalnız bülten için kaydolanlara (2026-11-17): yalnız "zam-alarmi:" etiketli kayıt bülten almaz.
+BULTEN = or_(NewsletterSubscriber.source.is_(None), ~NewsletterSubscriber.source.like("zam-alarmi:%"),
+             NewsletterSubscriber.source.like("%bulten:%"))
 
 REPO = Path(__file__).resolve().parents[2]
 DATA = REPO / "data"
@@ -289,7 +293,7 @@ def main() -> int:
     if args.dry_run:
         Path(args.out).write_text(html_body.replace("{UNSUB}", "#"), encoding="utf-8")
         with SessionLocal() as db:
-            n = len(db.scalars(select(NewsletterSubscriber).where(NewsletterSubscriber.status == "confirmed")).all())
+            n = len(db.scalars(select(NewsletterSubscriber).where(NewsletterSubscriber.status == "confirmed", BULTEN)).all())
         print(f"[dry-run] konu: {subject}\n[dry-run] önizleme: {args.out}\n[dry-run] onaylı abone: {n}")
         return 0
 
@@ -305,7 +309,7 @@ def main() -> int:
             if state.get("campaign") == campaign and not args.force:
                 print(f"{campaign} zaten gönderildi ({state.get('sent_at')}); --force ile tekrar.")
                 return 0
-            subs = db.scalars(select(NewsletterSubscriber).where(NewsletterSubscriber.status == "confirmed")).all()
+            subs = db.scalars(select(NewsletterSubscriber).where(NewsletterSubscriber.status == "confirmed", BULTEN)).all()
             targets = [(s.email, s.token) for s in subs]
 
     sent = failed = 0

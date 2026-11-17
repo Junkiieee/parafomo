@@ -57,6 +57,23 @@ def send_password_reset(to: str, reset_url: str) -> bool:
     return send_email(to, subject, body)
 
 
+def send_zam_alarm_confirm(to: str, confirm_url: str, unsubscribe_url: str) -> bool:
+    """Zam alarmı kaydı (2026-11-17, Kaan: "asıl istediğim kaydolmaları"): haftalık bülten DEĞİL; yalnız açıklama günleri."""
+    subject = "Parafomo zam alarmı — kaydını onayla"
+    body = (
+        "Merhaba,\n\n"
+        "Parafomo zam alarmına kaydolmak istediğini aldık. Onaylamak için aşağıdaki bağlantıya tıkla:\n\n"
+        f"{confirm_url}\n\n"
+        "Ne zaman e-posta gelir? Yalnız resmî rakam açıklandığı günlerde: asgari ücret (Aralık sonu), Aralık "
+        "enflasyonuyla kesinleşen emekli ve memur zammı (Ocak başı). Her seferinde tek e-posta: kesin oran ve "
+        "kendi maaşınla hesaplayabileceğin bağlantı. Haftalık bülten ya da reklam yok.\n\n"
+        "Bu talebi sen yapmadıysan hiçbir şey yapmana gerek yok — onaylamadıkça e-posta gönderilmez.\n\n"
+        f"Kaydını silmek için: {unsubscribe_url}\n\n"
+        "Parafomo · parafomo.com"
+    )
+    return send_email(to, subject, body)
+
+
 def send_newsletter_confirm(to: str, confirm_url: str, unsubscribe_url: str) -> bool:
     subject = "ParaFOMO bülteni — aboneliğini onayla"
     body = (

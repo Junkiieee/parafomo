@@ -118,6 +118,28 @@ def instagram(media_ids):
     return out
 
 
+def kayit():
+    """Site kayıtları (Kaan 2026-11-17: "asıl istediğim kaydolmaları"): zam alarmı + bülten + portföy üyeliği.
+    Veritabanı salt-okunur açılır; kişisel veri çekilmez, yalnız sayılar."""
+    import sqlite3
+    con = sqlite3.connect("file:/root/parafomo-data/portfolio.db?mode=ro", uri=True)
+    try:
+        rows = con.execute("select status, coalesce(source, '') from newsletter_subscribers "
+                           "where coalesce(source, '') not like 'rc-e2e%'").fetchall()
+        uye = con.execute("select count(*) from users").fetchone()[0]
+        hafta = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=7)).strftime("%Y-%m-%d")
+        yeni7 = con.execute("select count(*) from newsletter_subscribers where created_at >= ? "
+                            "and coalesce(source, '') not like 'rc-e2e%'", (hafta,)).fetchone()[0]
+    finally:
+        con.close()
+    zam = lambda s: "zam-alarmi:" in s
+    out = {"zam_onayli": sum(1 for st, s in rows if st == "confirmed" and zam(s)),
+           "bulten_onayli": sum(1 for st, s in rows if st == "confirmed" and not zam(s)),
+           "bekleyen": sum(1 for st, _ in rows if st == "pending"), "yeni_7g": yeni7, "uye": uye}
+    out["onayli"] = sum(1 for st, _ in rows if st == "confirmed")
+    return out
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     q = {"items": []}
@@ -139,7 +161,8 @@ def main():
     kpi = {"guncellendi": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "hatalar": []}
     for ad, fn in (("web", web),
                    ("youtube", lambda: youtube([it.get("youtube_id") for it in yayinda] + lf_ids)),
-                   ("instagram", lambda: instagram([it.get("ig_media_id") for it in yayinda]))):
+                   ("instagram", lambda: instagram([it.get("ig_media_id") for it in yayinda])),
+                   ("kayit", kayit)):
         try:
             kpi[ad] = fn()
         except Exception as e:   # noqa: BLE001 — bölüm bağımsız
@@ -150,7 +173,7 @@ def main():
         eski = json.load(open(p, encoding="utf-8"))
     except (OSError, ValueError):
         pass
-    for ad in ("web", "youtube", "instagram"):   # bir bölüm çöktüyse son iyi değeri koru (eski diye işaretli)
+    for ad in ("web", "youtube", "instagram", "kayit"):   # bir bölüm çöktüyse son iyi değeri koru (eski diye işaretli)
         if ad not in kpi and ad in eski:
             kpi[ad] = {**eski[ad], "eski": True}
     tmp = p + ".tmp"

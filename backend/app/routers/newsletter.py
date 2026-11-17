@@ -20,7 +20,7 @@ from sqlalchemy.orm import Session
 
 from ..config import get_settings
 from ..db import get_db
-from ..mailer import send_newsletter_confirm
+from ..mailer import send_newsletter_confirm, send_zam_alarm_confirm
 from ..models import NewsletterSubscriber
 from ..schemas import Message, NewsletterSubscribe
 
@@ -95,7 +95,12 @@ def subscribe(
         )
         db.add(sub)
     elif sub.status == "confirmed":
-        return Message(message=_GENERIC)  # zaten abone — mail atma, sızdırma
+        # Zaten onaylı: yeni konuyu (zam-alarmi: / bulten:) kaynağa ekle, mail atma, sızdırma
+        yeni = (body.source or "").split(":", 1)[0]
+        if yeni in ("zam-alarmi", "bulten") and f"{yeni}:" not in (sub.source or ""):
+            sub.source = (f"{sub.source}|{body.source}" if sub.source else body.source)[:200]
+            db.commit()
+        return Message(message=_GENERIC)
     else:
         sent = _aware(sub.confirm_sent_at)
         if sub.status == "pending" and sent is not None and now - sent < _RESEND_AFTER:
@@ -110,8 +115,16 @@ def subscribe(
     sub.confirm_sent_at = now
     db.commit()
     confirm_url, unsub_url = _links(sub.token)
-    send_newsletter_confirm(email, confirm_url, unsub_url)
+    if _zam(sub.source):
+        send_zam_alarm_confirm(email, confirm_url, unsub_url)
+    else:
+        send_newsletter_confirm(email, confirm_url, unsub_url)
     return Message(message=_GENERIC)
+
+
+def _zam(source: str | None) -> bool:
+    """Yalnız zam alarmı kaydı mı (bülten etiketi yok)? Kaynak: 'zam-alarmi:<sayfa>' (2026-11-17)."""
+    return (source or "").startswith("zam-alarmi:") and "bulten:" not in (source or "")
 
 
 def _redirect(path: str) -> RedirectResponse:
@@ -127,7 +140,7 @@ def confirm(token: str = Query(..., max_length=64), db: Session = Depends(get_db
         sub.status = "confirmed"
         sub.confirmed_at = datetime.now(timezone.utc)
         db.commit()
-    return _redirect("/bulten/?durum=onaylandi")
+    return _redirect("/zam-alarmi/?durum=onaylandi" if _zam(sub.source) else "/bulten/?durum=onaylandi")
 
 
 def _unsubscribe(token: str, db: Session) -> bool:
