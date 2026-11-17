@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ZamAlarmi from '../components/ZamAlarmi.astro';
 import Newsletter from '../components/Newsletter.astro';
 
 import au from '../../data/asgari-ucret.json';
@@ -206,6 +207,7 @@ const breadcrumbs = [
       (brüt {fmt(BRUT)} ₺, net {fmt(NET)} ₺) esas alınmıştır{ACIKLANDI ? ` ve 1 Ocak ${YIL}'de yürürlüğe girer` : ` ve 31 Aralık ${YIL}'ya kadar geçerlidir`}. Eksik günlü hesap 30 günlük SGK konvansiyonuna göre
       orantılanır; gerçek bordro, prim gün sayısı ve yan haklara göre değişebilir.
     </p>
+    <ZamAlarmi />
 
     <section class="table-block countdown-block">
       <h2>2027 asgari ücret ne zaman açıklanacak?</h2>

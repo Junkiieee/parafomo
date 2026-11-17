@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ZamAlarmi from '../components/ZamAlarmi.astro';
 import Newsletter from '../components/Newsletter.astro';
 import em from '../../data/emekli-memur.json';
 import au from '../../data/asgari-ucret.json';
@@ -286,6 +287,7 @@ const AYLIK = Object.fromEntries(TURLER.map(({ key }) => [key, { simdi: tahminMo
       </p>
     </section>
 
+    <ZamAlarmi />
     <section class="table-block" id="gelir-sarti">
       <h2>Gelir şartını kontrol et: bu aylığı alabilir misiniz?</h2>
       <p class="table-intro">

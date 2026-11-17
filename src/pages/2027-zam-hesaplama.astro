@@ -3,6 +3,7 @@
 // Oranlar diğer sayfalarla AYNI kaynaktan: emekli/memur → src/data/zam2027.ts, asgari ücret → data/asgari-ucret.json
 // (yeni açıklanınca otomatik resmî rakam), kira tavanı → data/kira-artis-2026.json. Burada yeni tahmin üretilmez.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ZamAlarmi from '../components/ZamAlarmi.astro';
 import Newsletter from '../components/Newsletter.astro';
 import au from '../../data/asgari-ucret.json';
 import kira from '../../data/kira-artis-2026.json';
@@ -147,6 +148,7 @@ const breadcrumbs = [
       ev sahibi tavanın altında da artırabilir. Kaynak: TÜİK TÜFE, Resmî Gazete, Türk Borçlar Kanunu md. 344.
     </p>
 
+    <ZamAlarmi />
     <section class="table-block">
       <h2>Zam takvimi: hangi rakam ne zaman belli olur?</h2>
       <table class="rate-table">

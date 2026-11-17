@@ -1,0 +1,79 @@
+---
+// Zam alarmı açılış sayfası (2026-11-17): video açıklamaları, profil bağlantıları ve onay e-postası buraya gelir.
+// Tahmin rakamları memur ve emekli zammı sayfalarıyla AYNI modülden (src/data/zam2027.ts).
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ZamAlarmi from '../components/ZamAlarmi.astro';
+import { memurProj, sskProj, remaining } from '../data/zam2027';
+
+const nf = (n: number) => n.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const kesin = remaining === 0;
+const items = [
+  { t: 'Asgari ücret 2027', d: 'Genelde Aralık’ın son haftasında açıklanır. Net ve brüt tutar, işveren maliyeti.', href: '/asgari-ucret-hesaplama/' },
+  { t: 'Emekli zammı (SSK, Bağ-Kur)', d: `Aralık enflasyonuyla Ocak başında kesinleşir. Şu anki tahmin %${nf(sskProj * 100)}.`, href: '/emekli-zammi-hesaplama/' },
+  { t: 'Memur ve memur emeklisi zammı', d: `Toplu sözleşme %5 + enflasyon farkı. Şu anki tahmin %${nf(memurProj.zam * 100)}.`, href: '/memur-zammi-hesaplama/' },
+  { t: 'Maaşın ve kiran birlikte', d: 'Zam açıklanınca Ocak 2027 bütçeni kendi rakamlarınla yeniden hesapla.', href: '/2027-zam-hesaplama/' },
+];
+---
+
+<BaseLayout
+  title="Zam Alarmı: Ocak 2027 Zamları Açıklandığı Gün E-postana Gelsin"
+  description="Asgari ücret, emekli ve memur zammı açıklandığı gün tek e-posta: kesin oran ve hesaplama bağlantısı. Ücretsiz; bülten ya da reklam yok."
+  breadcrumbs={[{ name: 'Ana sayfa', url: '/' }, { name: 'Zam alarmı', url: '/zam-alarmi/' }]}
+>
+  <section class="container zam">
+    <p class="za-durum" id="za-durum" hidden></p>
+    <span class="eyebrow">Zam alarmı</span>
+    <h1>Ocak 2027 zamları açıklandığı gün e-postana gelsin</h1>
+    <p class="soft lead">
+      Rakam açıklanınca aramakla uğraşma. Resmî rakam geldiği gün tek bir e-posta: kesin oran ve kendi maaşınla
+      hesaplayabileceğin bağlantı. {kesin ? '' : 'Şimdilik tahminler aşağıda; kesinleşince sana haber veririz.'}
+    </p>
+
+    <ZamAlarmi bilgi={false} />
+
+    <h2>Hangi rakamlar için e-posta gelir?</h2>
+    <ul class="za-items">
+      {items.map((i) => (
+        <li>
+          <a href={i.href}><strong>{i.t}</strong></a>
+          <span class="soft">{i.d}</span>
+        </li>
+      ))}
+    </ul>
+
+    <p class="soft small">
+      Çift onaylı kayıt: e-postandaki bağlantıya tıklamadıkça e-posta gönderilmez. Yalnız açıklama günlerinde yazarız;
+      her e-postada tek tıkla çıkış bağlantısı var. Yalnız e-posta adresini saklarız:
+      <a href="/gizlilik/">Gizlilik</a> · <a href="/veri-silme/">Veri silme</a>. Haftalık bülteni de istersen:
+      <a href="/bulten/">bülten</a>.
+    </p>
+  </section>
+</BaseLayout>
+
+<script>
+  const MSG: Record<string, [string, string]> = {
+    onaylandi: ['ok', '✅ Zam alarmın kuruldu! Rakam açıklandığı gün e-postan gelecek.'],
+    ayrildi: ['info', 'Zam alarmından çıktın. Fikrini değiştirirsen aşağıdan yeniden kurabilirsin.'],
+    gecersiz: ['err', 'Bu bağlantı geçersiz ya da süresi dolmuş. Aşağıdan yeniden kaydolabilirsin.'],
+  };
+  const durum = new URLSearchParams(location.search).get('durum') || '';
+  const el = document.getElementById('za-durum');
+  if (el && MSG[durum]) {
+    el.dataset.state = MSG[durum][0];
+    el.textContent = MSG[durum][1];
+    el.hidden = false;
+  }
+</script>
+
+<style>
+  .zam { max-width: 760px; padding-top: 2.5rem; padding-bottom: 1rem; }
+  .zam h1 { margin: 0.6rem 0 0.8rem; }
+  .zam h2 { font-size: var(--step-2); margin: 2rem 0 0.9rem; }
+  .lead { font-size: var(--step-1); margin: 0 0 0.5rem; }
+  .za-items { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.9rem; }
+  .za-items li { display: grid; gap: 0.2rem; padding-left: 1rem; border-left: 3px solid var(--brand); }
+  .small { font-size: var(--step--1); margin-top: 1.8rem; }
+  .za-durum { margin: 0 0 1.5rem; padding: 0.9rem 1.1rem; border-radius: var(--radius-lg); border: 1px solid var(--border); background: var(--bg-card); }
+  .za-durum[data-state='ok'] { border-color: var(--brand); }
+  .za-durum[data-state='err'] { border-color: var(--danger); }
+</style>

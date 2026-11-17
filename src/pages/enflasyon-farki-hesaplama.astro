@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ZamAlarmi from '../components/ZamAlarmi.astro';
 import Newsletter from '../components/Newsletter.astro';
 import em from '../../data/emekli-memur.json';
 import tuik from '../../data/tuik-enflasyon-2026.json';
@@ -158,6 +159,7 @@ const dataset = {
       </div>
     )}
 
+    <ZamAlarmi />
     <section class="table-block" id="ay-ay">
       <h2>Enflasyon farkı ay ay nasıl birikiyor?</h2>
       <p class="table-intro">

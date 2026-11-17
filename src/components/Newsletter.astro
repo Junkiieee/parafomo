@@ -52,7 +52,7 @@ const {
           body: JSON.stringify({
             email,
             consent: true,
-            source: location.pathname,
+            source: 'bulten:' + location.pathname,   // konu etiketi (2026-11-17): zam alarmı kayıtlarından ayrılır
             website: String(fd.get('website') || '') || null,
           }),
         });

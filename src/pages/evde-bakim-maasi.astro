@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ZamAlarmi from '../components/ZamAlarmi.astro';
 import { existsSync as __exists } from 'node:fs';
 import { join as __join } from 'node:path';
 // Engelli maaşı sayfası paralel geliştiriliyordu: dosyası yoksa link verilmez
@@ -278,6 +279,7 @@ const breadcrumbs = [
       </section>
     )}
 
+    <ZamAlarmi />
     <section class="table-block" id="gelir-sarti">
       <h2>Evde bakım maaşı gelir şartı: haneniz uygun mu?</h2>
       <p class="table-intro">

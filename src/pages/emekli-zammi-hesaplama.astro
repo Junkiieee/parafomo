@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ZamAlarmi from '../components/ZamAlarmi.astro';
 import Newsletter from '../components/Newsletter.astro';
 import ZamTutarTablosu from '../components/ZamTutarTablosu.astro';
 import em from '../../data/emekli-memur.json';
@@ -187,6 +188,7 @@ const updatedLabel = new Date(tufe.updated + 'T12:00:00').toLocaleDateString('tr
       <a href="/emekli-refah-payi-seyyanen-zam/">refah payı ve seyyanen zam hesaplayıcısında</a> deneyebilirsin.
       Zammın kira artışını karşılıyor mu? <a href="/2027-zam-hesaplama/">2027 zam hesaplama</a> ile maaşını ve kiranı birlikte gör.</p>
 
+    <ZamAlarmi />
     <section class="table-block">
       <h2>Temmuz–Aralık 2026 aylık enflasyon ve birikimli zam</h2>
       <table class="rate-table">

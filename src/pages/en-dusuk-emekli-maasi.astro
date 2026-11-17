@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ZamAlarmi from '../components/ZamAlarmi.astro';
 import Newsletter from '../components/Newsletter.astro';
 import em from '../../data/emekli-memur.json';
 // Zam tahmini /emekli-zammi-hesaplama ile ORTAK modülde — burada tekrar hesaplanmaz.
@@ -109,6 +110,7 @@ const breadcrumbs = [
       </p>
     </section>
 
+    <ZamAlarmi />
     <section class="table-block">
       <h2>Emekli maaşı ödeme günleri</h2>
       <div class="two-col">

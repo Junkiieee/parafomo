@@ -4,7 +4,7 @@
 // sitede bu sorgularda hiç gösterim yoktu. Kural: siyasi yorum yok, yalnız rakam + tarih; karar yoksa "senaryo".
 // Enflasyon farkı zam2027.ts'ten (TÜİK TÜFE), taban aylık data/emekli-memur.json'dan gelir.
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Newsletter from '../components/Newsletter.astro';
+import ZamAlarmi from '../components/ZamAlarmi.astro';
 import em from '../../data/emekli-memur.json';
 import tufe from '../../data/tufe-aylik.json';
 import { PERIOD, byMonth, cumKnown, remaining, ASSUME, sskProj } from '../data/zam2027';
@@ -140,6 +140,7 @@ const updatedLabel = new Date(tufe.updated + 'T12:00:00').toLocaleDateString('tr
       Resmî Gazete Temmuz 2026 (en düşük aylık), TBMM Plan ve Bütçe Komisyonu 3 Kasım 2026 (açıklama). Son güncelleme: {updatedLabel}.
     </p>
 
+    <ZamAlarmi />
     <section class="table-block">
       <h2>Senaryo tablosu: hangi aylık ne olur?</h2>
       <p>Yasal zam %{nf(ZAM * 100)} (tahmini) varsayımıyla Ocak 2027 aylığı. Tutarlar TL, yuvarlanmıştır.</p>
@@ -176,7 +177,6 @@ const updatedLabel = new Date(tufe.updated + 'T12:00:00').toLocaleDateString('tr
       </p>
     </section>
 
-    <Newsletter title="Zam açıklanınca ilk sen öğren." text="Emekli zammı, refah payı ve en düşük aylık kesinleşince tek e-postayla haber veririz. Spam yok." />
   </div>
 
   <script is:inline define:vars={{ ZAM }}>
