@@ -164,6 +164,23 @@ def memur_card():
             "sub": "toplu sözleşme %5 + enflasyon farkı · maaşını hesapla"}
 
 
+def enflasyon_farki_card():
+    # memur_card ile AYNI hesap (src/data/zam2027.ts): fark = (1 + Temmuz–Aralık TÜFE) / 1,07 − 1
+    t = load("tufe-aylik.json")
+    by = {m["ay"]: m["aylik"] for m in t["months"]}
+    keys = ["2026-07", "2026-08", "2026-09", "2026-10", "2026-11", "2026-12"]
+    known = [k for k in keys if k in by]
+    cum = 1.0
+    for k in known:
+        cum *= 1 + by[k] / 100
+    assume = round(sum(m["aylik"] for m in t["months"][:3]) / 3, 2)
+    cum6 = cum * (1 + assume / 100) ** (len(keys) - len(known)) - 1
+    fark = max(0.0, (1 + cum6) / 1.07 - 1)
+    kesin = len(known) == len(keys)
+    return {"kicker": "ENFLASYON FARKI OCAK 2027", "stat": ("%" if kesin else "≈%") + tr_pct(fark * 100, 1),
+            "sub": "memur ve memur emeklisi · ay ay birikim ve senaryolar"}
+
+
 def emekli_memur_card(kind):
     def fn():
         d = load("emekli-memur.json")
@@ -334,6 +351,7 @@ CARDS = {
     "kyk-burs-miktari": kyk_card,
     "engelli-maasi": engelli_card,
     "memur-zammi-hesaplama": memur_card,
+    "enflasyon-farki-hesaplama": enflasyon_farki_card,
     "en-dusuk-emekli-maasi": emekli_memur_card("taban"),
     "bayram-ikramiyesi": emekli_memur_card("bayram"),
     "emekli-promosyonu": emekli_promosyon_card,

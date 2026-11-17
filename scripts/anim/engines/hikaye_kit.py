@@ -153,7 +153,66 @@ def _kumbara(kid, ifade):
             + yuz(kid, 330, 300, ifade, aralik=120, goz=36, agiz_y=74))
 
 
-KARAKTER = {"yuzluk": _yuzluk, "dolar": _dolar, "yuzde": _yuzde, "altin": _altin, "zarf": _zarf, "ev": _ev, "enflasyon": _enflasyon, "kumbara": _kumbara}
+# ---------------------------------------------------------------- insanlar (2026-11-17)
+# Araştırma (YouTube TR finans Shorts, Eyl–Kas 2026): küçük kanallarda patlayan 2D para hikâyelerinin hepsi
+# gündelik ikilemdeki İNSANLARI anlatıyor (aynı maaşı alan iki iş arkadaşı, kiracı–ev sahibi, emekli).
+# Para karakterleri bu hikâyelerde sahne nesnesi ya da kötü karakter (enflasyon) olur. Aynı büyük göz yüzü.
+def _insan(kid, ifade, ten, sac_arka, sac_on, govde, ekstra=""):
+    """Ortak insan gövdesi: büyük kafa (300,215), kısa gövde, çubuk kol/bacak. 600x600."""
+    koyu = "#22313a"
+    return (f'<g id="{kid}-ayak" stroke="{koyu}" stroke-width="16" stroke-linecap="round" fill="none">'
+            f'<path d="M262 530 l-8 52"/><path d="M338 530 l8 52"/></g>'
+            f'<g id="{kid}-kol" stroke="{ten}" stroke-width="22" stroke-linecap="round" fill="none">'
+            f'<path id="{kid}-kolL" d="M196 420 q-44 34 -46 92"/><path id="{kid}-kolR" d="M404 420 q44 34 46 92"/></g>'
+            f'<g id="{kid}-govde">{govde}</g>'
+            f'{sac_arka}'
+            f'<circle cx="300" cy="215" r="148" fill="{ten}"/>'
+            f'<ellipse cx="300" cy="150" rx="104" ry="40" fill="#fff" opacity=".10"/>'
+            f'{sac_on}{ekstra}'
+            + yuz(kid, 300, 220, ifade, aralik=104, goz=36, agiz_y=86))
+
+
+def _kadin(kid, ifade):   # genç çalışan kadın
+    sac = "#3b2a24"
+    arka = f'<path d="M144 230 Q140 70 300 62 Q460 70 456 230 L460 372 Q412 392 382 352 L218 352 Q188 392 140 372 Z" fill="{sac}"/>'
+    on = f'<path d="M156 196 Q170 80 300 74 Q420 80 446 178 Q380 120 304 132 Q228 120 156 196 Z" fill="{sac}"/>'
+    govde = ('<path d="M190 560 Q186 404 236 372 L364 372 Q414 404 410 560 Z" fill="#2bb3a3"/>'
+             '<path d="M270 372 L300 420 L330 372 Z" fill="#f5f0e6"/>')
+    return _insan(kid, ifade, "#f2c9a5", arka, on, govde)
+
+
+def _erkek(kid, ifade):   # genç çalışan erkek
+    sac = "#2b1e17"
+    on = f'<path d="M154 214 Q146 70 300 64 Q456 70 448 210 Q430 140 372 132 Q330 150 286 126 Q220 138 172 150 Q158 176 154 214 Z" fill="{sac}"/>'
+    govde = ('<path d="M190 560 Q186 404 236 372 L364 372 Q414 404 410 560 Z" fill="#f08a3c"/>'
+             '<path d="M262 372 L300 410 L338 372" fill="none" stroke="#c9692a" stroke-width="10" stroke-linejoin="round"/>')
+    return _insan(kid, ifade, "#e8b48a", "", on, govde)
+
+
+def _emekli(kid, ifade):   # emekli amca: kır saç, bıyık, gözlük
+    on = ('<path d="M152 240 Q140 150 196 118 Q186 176 196 222 Z M448 240 Q460 150 404 118 Q414 176 404 222 Z" fill="#d7dadd"/>')
+    gozluk = ('<g fill="none" stroke="#3a3f45" stroke-width="8"><circle cx="248" cy="220" r="48"/><circle cx="352" cy="220" r="48"/>'
+              '<path d="M296 214 q4 -8 8 0"/></g>'
+              '<path d="M248 288 Q300 270 352 288 Q330 312 300 300 Q270 312 248 288 Z" fill="#d7dadd"/>')
+    govde = ('<path d="M190 560 Q186 404 236 372 L364 372 Q414 404 410 560 Z" fill="#8a6a4a"/>'
+             '<path d="M300 380 L300 560" stroke="#6f5338" stroke-width="8"/><circle cx="300" cy="430" r="7" fill="#e9d8b8"/>'
+             '<circle cx="300" cy="490" r="7" fill="#e9d8b8"/>')
+    return _insan(kid, ifade, "#f0c8a0", "", on, govde, ekstra=gozluk)
+
+
+def _evsahibi(kid, ifade):   # ev sahibi / patron: takım elbise, kravat
+    sac = "#4a3b33"
+    on = f'<path d="M156 200 Q150 76 300 68 Q452 76 446 196 Q404 112 300 112 Q214 112 172 150 Q160 170 156 200 Z" fill="{sac}"/>'
+    govde = ('<path d="M190 560 Q186 404 236 372 L364 372 Q414 404 410 560 Z" fill="#2f3e57"/>'
+             '<path d="M262 372 L300 470 L338 372 Z" fill="#f5f0e6"/>'
+             '<path d="M300 384 L286 404 L300 470 L314 404 Z" fill="#c0392b"/>'
+             '<path d="M236 372 L300 470 M364 372 L300 470" fill="none" stroke="#23304a" stroke-width="8"/>'
+             '<circle cx="300" cy="500" r="7" fill="#8fa0bd"/>')
+    return _insan(kid, ifade, "#efc39b", "", on, govde)
+
+
+KARAKTER = {"yuzluk": _yuzluk, "dolar": _dolar, "yuzde": _yuzde, "altin": _altin, "zarf": _zarf, "ev": _ev, "enflasyon": _enflasyon, "kumbara": _kumbara,
+            "kadin": _kadin, "erkek": _erkek, "emekli": _emekli, "evsahibi": _evsahibi}
 
 
 def karakter(ad, ifade="normal", kid="k0"):

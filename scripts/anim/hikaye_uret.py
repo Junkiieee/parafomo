@@ -277,7 +277,8 @@ SAHNE = f"""Sahne alanları (hepsi isteğe bağlı, sahne başına 1-3 öğe; sa
 - "kaynak": "Kaynak: … (rakamlı sahnelerde ZORUNLU)"
 - "soru": true (yalnız soru satırında: yorum balonu)
 KARAKTER = {KARAKTER}  (yuzluk = gözlü 100 TL, dolar = yeşil dolar, yuzde = % karakteri, altin = altın para, zarf = maaş zarfı,
-ev = kiralık ev, enflasyon = aç mor canavar (kötü karakter), kumbara = kumbara)
+ev = kiralık ev, enflasyon = aç mor canavar (kötü karakter), kumbara = kumbara,
+kadin = genç çalışan kadın, erkek = genç çalışan erkek, emekli = emekli amca (gözlüklü), evsahibi = ev sahibi / patron (takım elbise))
 IFADE = {IFADE} · DEKOR = {DEKOR}"""
 
 KURALLAR = """SENARYO KİTABI (uymazsan senaryo reddedilir):
@@ -293,7 +294,13 @@ KURALLAR = """SENARYO KİTABI (uymazsan senaryo reddedilir):
 9. Son satır ilk satıra bağlanır (döngü): ilk satırdaki anahtar ifadeyi tekrar eder ya da ona akar.
 10. Yatırım tavsiyesi YOK (al/sat, hedef fiyat, tahmin yok); karşılaştırmada "geçmiş, geleceğin garantisi değil". Siyaset YOK: kişi, parti, hükümet, kurum yorumu yok; yalnız rakam ve tarih.
 11. Kalıp ifadeler yasak: "peki ya", "inanamayacaksınız", "bu videoda", "merhaba", "hadi başlayalım", "sonuna kadar izle".
-12. Rakamlı her sahnede "kaynak" alanı; örnek hesaplarda "etiket": "Örnek"."""
+12. Rakamlı her sahnede "kaynak" alanı; örnek hesaplarda "etiket": "Örnek".
+13. Uygunsa hikâyeyi İNSANLARLA kur (kadin, erkek, emekli, evsahibi): gündelik bir para ikilemi (aynı maaşı alan iki
+    iş arkadaşı, kiracı ve ev sahibi, emekli). Para karakterleri (yuzluk, altin, zarf…) o zaman sahne nesnesi ya da
+    kötü karakter (enflasyon) olur. Kaynak: 2026 sonbaharında küçük TR kanallarında 1+ milyon izlenen 2D para
+    hikâyelerinin hepsi insan merkezli.
+14. Başlıkta bir RAKAM olsun ve kalıplardan biri: "[X] ne kadar olacak/kazanır?", "Aynı maaş, farklı son: …",
+    "[X]: 2020 vs bugün", "[X] neden hep [Y]? Cevap …". Soru satırı izleyiciyi gruba koysun ("Sen hangisisin: …?")."""
 
 
 def istem(p, gecmis_basliklar, duzeltme=""):

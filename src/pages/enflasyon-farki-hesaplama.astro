@@ -1,0 +1,321 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import em from '../../data/emekli-memur.json';
+import tuik from '../../data/tuik-enflasyon-2026.json';
+// Hesap /memur-zammi-hesaplama ve /emekli-zammi-hesaplama ile ORTAK modülde: üç sayfa her zaman aynı rakamı verir.
+// Talep: "enflasyon farkı 2027" Kasım sonu ve Ocak başında tepe yapıyor (trends-cache 2026-10); 2026-11-17'de sayfamız yoktu.
+import { PERIOD, TS_H2_2026, TS_H1_2027, byMonth, knownKeys, cumKnown, remaining, ASSUME, project, memurFrom, memurProj, sskProj } from '../data/zam2027';
+
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const ayAd = (k: string) => AYLAR[+k.slice(5) - 1];
+const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+
+const final = remaining === 0;
+const TS2 = TS_H2_2026 / 100;
+const fark = memurProj.fark; // Ocak 2027 enflasyon farkı (tahmin ya da kesin)
+const zam = memurProj.zam; // Ocak 2027 toplam memur zammı
+const simdiFark = memurFrom(cumKnown).fark; // bugüne kadar açıklanan aylarla oluşan fark
+const sonAy = knownKeys.length ? ayAd(knownKeys[knownKeys.length - 1]) : 'Haziran';
+const bekleyen = PERIOD.filter((k) => !byMonth.has(k));
+const bekleyenAd = bekleyen.map(ayAd).join(' ve ');
+
+// Ay ay birikim: açıklanan aylar TÜİK, açıklanmayanlar son 3 ay ortalaması (varsayım)
+let c = 1;
+const SATIR = PERIOD.map((k) => {
+  const m = byMonth.get(k);
+  const aylik = m ? m.aylik : ASSUME;
+  c *= 1 + aylik / 100;
+  return { k, ad: ayAd(k), aylik, bilinen: !!m, birikim: c - 1, fark: Math.max(0, c / (1 + TS2) - 1) };
+});
+
+// Senaryolar: kalan aylarda aynı aylık enflasyon
+const xs = [...new Set([1.0, 1.5, 2.0, ASSUME, 2.5, 3.0].map((x) => +x.toFixed(2)))].sort((a, b) => a - b);
+const SENARYO = xs.map((x) => {
+  const cum6 = project(x);
+  return { x, cum6, ...memurFrom(cum6), varsayim: x === ASSUME };
+});
+
+// Temmuz 2026 örneği (doğrulandı: Ocak–Haziran 2026 TÜFE %17,75; 8. Dönem TS 2026 ilk yarı %11)
+const TS_H1_2026 = 11;
+let c1 = 1;
+for (const k of ['2026-01', '2026-02', '2026-03', '2026-04', '2026-05', '2026-06']) c1 *= 1 + (byMonth.get(k)?.aylik ?? 0) / 100;
+const TEMMUZ = { cum6: c1 - 1, fark: c1 / (1 + TS_H1_2026 / 100) - 1, zam: em.memurKatsayi.zamOrani };
+
+// Sıradaki TÜFE açıklaması (takvimde varsa)
+const bugun = new Date().toISOString().slice(0, 10);
+const sonraki = (tuik.releases as { covers: string; date: string }[]).find((r) => r.date >= bugun);
+// "3 Aralık’ta", "3 Haziran’da": bulunma eki ay adına göre
+const BULUNMA = ['’ta', '’ta', '’ta', '’da', '’ta', '’da', '’da', '’ta', '’de', '’de', '’da', '’ta'];
+const tarihAd = (iso: string) => `${+iso.slice(8, 10)} ${AYLAR[+iso.slice(5, 7) - 1]}${BULUNMA[+iso.slice(5, 7) - 1]}`;
+
+const ME = em.enDusukMemurEmeklisi.tutar;
+const yuzde = (x: number) => `%${nf(x * 100)}`;
+
+const faq = [
+  {
+    q: 'Enflasyon farkı 2027’de ne kadar olacak?',
+    a: final
+      ? `Ocak 2027 enflasyon farkı ${yuzde(fark)} olarak kesinleşti: Temmuz–Aralık 2026 enflasyonu ${yuzde(cumKnown)}, toplu sözleşmedeki %${TS_H2_2026}’yi bu kadar aştı. %${TS_H1_2027} toplu sözleşme zammıyla birlikte memur ve memur emeklilerinin Ocak 2027 zammı ${yuzde(zam)} oldu.`
+      : `Temmuz–${sonAy} 2026 enflasyonu ${yuzde(cumKnown)} oldu; bu, toplu sözleşmedeki %${TS_H2_2026}’yi şimdiden aştığı için ${yuzde(simdiFark)} fark kesinleşti. ${bekleyenAd} için aylık %${nf(ASSUME)} (son 3 ay ortalaması) varsayılırsa enflasyon farkı yaklaşık ${yuzde(fark)}, Ocak 2027 memur zammı %${TS_H1_2027} ile birlikte yaklaşık ${yuzde(zam)} olur. Kesin oran Aralık enflasyonu açıklanınca belli olur.`,
+  },
+  {
+    q: 'Enflasyon farkı nedir?',
+    a: `Memur maaş zammı toplu sözleşmede önceden belirlenir; 2026 ikinci yarısı için bu oran %${TS_H2_2026}. Altı aylık enflasyon bu oranı aşarsa aşan kısım bir sonraki dönemin başında maaşa eklenir. Bu ek zamma enflasyon farkı denir: Temmuz–Aralık 2026 için oluşan fark Ocak 2027 maaşına eklenir.`,
+  },
+  {
+    q: 'Enflasyon farkı nasıl hesaplanır?',
+    a: `Fark = (1 + altı aylık enflasyon) ÷ (1 + toplu sözleşme zammı) − 1. Oranlar çıkarılmaz, bölünür: altı aylık enflasyon %12 ise fark %12 − %7 = %5 değil, 1,12 ÷ 1,07 − 1 = %4,67 olur. Ocak zammı bu farkın yeni dönemin toplu sözleşme zammıyla (%${TS_H1_2027}) bileşiğidir: (1 + fark) × 1,05 − 1.`,
+  },
+  {
+    q: 'Enflasyon farkı kimlere verilir?',
+    a: `Toplu sözleşme kapsamındaki kamu görevlilerine (memurlar ve sözleşmeli personel) ve aynı oranda zam alan memur emeklilerine (Emekli Sandığı, 4/c). SSK ve Bağ-Kur emeklileri enflasyon farkı almaz; onların Ocak zammı doğrudan altı aylık enflasyon kadardır (tahmini ${yuzde(sskProj)}). İşçilerin zammı iş yerindeki toplu sözleşmeye bağlıdır.`,
+  },
+  {
+    q: 'Enflasyon farkı ne zaman kesinleşir, maaşa ne zaman yansır?',
+    a: `Fark, TÜİK Aralık 2026 enflasyonunu Ocak 2027’nin ilk günlerinde açıklayınca kesinleşir. Hazine ve Maliye Bakanlığı yeni katsayıları genelgeyle duyurur; memurların 15 Ocak’ta peşin ödenen maaşı zamlı yatar, memur emeklilerinin Ocak aylığına da aynı oran yansır.`,
+  },
+  {
+    q: 'Temmuz 2026’da ne kadar enflasyon farkı verildi?',
+    a: `Ocak–Haziran 2026 enflasyonu ${yuzde(TEMMUZ.cum6)} oldu ve o dönemin toplu sözleşme zammı %${TS_H1_2026}’i aştı. Fark ${yuzde(TEMMUZ.fark)} oldu; %${TS_H2_2026} toplu sözleşme zammıyla birlikte Temmuz 2026 memur zammı %${nf(TEMMUZ.zam)} oldu (Hazine ve Maliye Bakanlığı katsayıları).`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Hesaplama Araçları', url: '/hesaplama-araclari/' },
+  { name: 'Enflasyon Farkı Hesaplama', url: '/enflasyon-farki-hesaplama/' },
+];
+const title = final
+  ? `Enflasyon Farkı Ocak 2027: Kesinleşti, ${yuzde(fark)} | Memur Zammı ${yuzde(zam)}`
+  : `Enflasyon Farkı 2027: Ocak’ta Tahmini ${yuzde(fark)} (Memur ve Emeklisi)`;
+const description = final
+  ? `Ocak 2027 enflasyon farkı ${yuzde(fark)}: Temmuz–Aralık 2026 enflasyonu ${yuzde(cumKnown)}. Memur ve memur emeklisi zammı ${yuzde(zam)}, ay ay hesap.`
+  : `Ocak 2027 enflasyon farkı tahmini ${yuzde(fark)}. Temmuz–${sonAy} enflasyonu ${yuzde(cumKnown)}, kesinleşen fark ${yuzde(simdiFark)}. Senaryolar ve hesaplama.`;
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'Ocak 2027 memur enflasyon farkı: ay ay birikim ve senaryolar',
+  description: 'Temmuz–Aralık 2026 aylık TÜFE ile 8. Dönem Toplu Sözleşme oranından hesaplanan enflasyon farkı ve Ocak 2027 memur zammı.',
+  url: 'https://parafomo.com/enflasyon-farki-hesaplama/',
+  creator: { '@type': 'Organization', name: 'ParaFOMO', url: 'https://parafomo.com/' },
+  isBasedOn: ['https://www.tuik.gov.tr', 'https://www.resmigazete.gov.tr'],
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+};
+---
+
+<BaseLayout title={title} description={description} faq={faq} breadcrumbs={breadcrumbs} image="/og/enflasyon-farki-hesaplama.png">
+  <script type="application/ld+json" set:html={JSON.stringify(dataset)} />
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Memur ve Memur Emeklisi</p>
+      <h1>Enflasyon Farkı Hesaplama (Ocak 2027)</h1>
+      {final ? (
+        <p class="lede">
+          Ocak 2027 enflasyon farkı <strong>{yuzde(fark)}</strong> olarak kesinleşti. Toplu sözleşmedeki %{TS_H1_2027} ile
+          birlikte memur ve memur emeklisi zammı <strong>{yuzde(zam)}</strong>.
+        </p>
+      ) : (
+        <p class="lede">
+          Temmuz–{sonAy} enflasyonu <strong>{yuzde(cumKnown)}</strong>; toplu sözleşmedeki %{TS_H2_2026}’yi aştığı için
+          <strong> {yuzde(simdiFark)}</strong> fark şimdiden kesinleşti. {bekleyenAd} için son 3 ayın ortalaması varsayılırsa Ocak 2027’de fark
+          <strong> {yuzde(fark)}</strong>, toplam memur zammı <strong>{yuzde(zam)}</strong>.
+        </p>
+      )}
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi"><span class="kpi-label">Kesinleşen fark</span><span class="kpi-val">{yuzde(simdiFark)}</span><span class="kpi-sub">Temmuz–{sonAy} TÜFE ile</span></div>
+      <div class="kpi"><span class="kpi-label">{final ? 'Ocak 2027 enflasyon farkı' : 'Ocak 2027 tahmini fark'}</span><span class="kpi-val">{final ? '' : '≈ '}{yuzde(fark)}</span><span class="kpi-sub">{final ? 'kesin' : `${bekleyenAd} için aylık %${nf(ASSUME)}`}</span></div>
+      <div class="kpi"><span class="kpi-label">Ocak 2027 memur zammı</span><span class="kpi-val">{final ? '' : '≈ '}{yuzde(zam)}</span><span class="kpi-sub">fark + %{TS_H1_2027} toplu sözleşme</span></div>
+    </div>
+
+    {!final && (
+      <div class="calc-grid">
+        <form class="calc-inputs" autocomplete="off" onsubmit="return false">
+          <p class="form-intro">Açıklanmayan aylar için kendi tahminini gir:</p>
+          {bekleyen.map((k) => (
+            <label>
+              <span>{ayAd(k)} 2026 aylık enflasyon (%)</span>
+              <input type="number" class="in-ay" value={ASSUME} min="-5" max="20" step="0.1" inputmode="decimal" />
+            </label>
+          ))}
+          <p class="hint">Varsayılan: son 3 ayın ortalaması %{nf(ASSUME)}.{sonraki ? ` ${sonraki.covers} enflasyonu ${tarihAd(sonraki.date)} açıklanacak.` : ''}</p>
+        </form>
+        <div class="calc-results" aria-live="polite">
+          <div class="result-main">
+            <span class="result-label">Ocak 2027 enflasyon farkı</span>
+            <span class="result-value" id="out-fark">{yuzde(fark)}</span>
+          </div>
+          <div class="result-split">
+            <div class="split-item"><span class="split-label">Temmuz–Aralık enflasyonu</span><span class="split-val" id="out-cum">{yuzde(sskProj)}</span></div>
+            <div class="split-item"><span class="split-label">Memur ve memur emeklisi zammı</span><span class="split-val" id="out-zam">{yuzde(zam)}</span></div>
+            <div class="split-item"><span class="split-label">SSK ve Bağ-Kur emeklisi zammı</span><span class="split-val" id="out-ssk">{yuzde(sskProj)}</span></div>
+            <div class="split-item strong"><span class="split-label">En düşük memur emeklisi aylığı</span><span class="split-val" id="out-me">₺{fmt(ME * (1 + zam))}</span></div>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <section class="table-block" id="ay-ay">
+      <h2>Enflasyon farkı ay ay nasıl birikiyor?</h2>
+      <p class="table-intro">
+        Altı aylık enflasyon %{TS_H2_2026}’yi geçtiği andan itibaren fark oluşmaya başlar. {final ? '' : 'Açıklanmayan aylar varsayımdır.'}
+      </p>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <thead><tr><th>Ay (2026)</th><th>Aylık TÜFE</th><th>Temmuz’dan beri</th><th>Oluşan fark</th></tr></thead>
+          <tbody>
+            {SATIR.map((s) => (
+              <tr class={s.bilinen ? '' : 'varsayim'}>
+                <td>{s.ad}{s.bilinen ? '' : ' (varsayım)'}</td>
+                <td>%{nf(s.aylik)}</td>
+                <td>%{nf(s.birikim * 100)}</td>
+                <td><strong>{s.fark > 0 ? yuzde(s.fark) : '—'}</strong></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Kaynak: TÜİK Tüketici Fiyat Endeksi (aylık değişim); 8. Dönem Toplu Sözleşme, 2026 ikinci yarısı %{TS_H2_2026}.</p>
+    </section>
+
+    {!final && (
+      <section class="table-block" id="senaryolar">
+        <h2>{bekleyenAd} enflasyonuna göre Ocak 2027 enflasyon farkı</h2>
+        <div class="table-scroll">
+          <table class="rate-table">
+            <thead><tr><th>Kalan aylarda aylık enflasyon</th><th>Altı aylık enflasyon</th><th>Enflasyon farkı</th><th>Memur zammı</th></tr></thead>
+            <tbody>
+              {SENARYO.map((s) => (
+                <tr class={s.varsayim ? 'secili' : ''}>
+                  <td>%{nf(s.x)}{s.varsayim ? ' (son 3 ay ort.)' : ''}</td>
+                  <td>%{nf(s.cum6 * 100)}</td>
+                  <td><strong>{yuzde(s.fark)}</strong></td>
+                  <td>{yuzde(s.zam)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">Senaryolar örnek amaçlıdır; kesin oran Aralık 2026 enflasyonu açıklanınca belli olur.</p>
+      </section>
+    )}
+
+    <section class="prose-block">
+      <h2>Enflasyon farkı nasıl hesaplanır?</h2>
+      <p>
+        Memur maaşları Ocak ve Temmuz’da iki parçalı artar: önceden belirlenen <strong>toplu sözleşme zammı</strong> ve
+        geride kalan altı ayın <strong>enflasyon farkı</strong>. Temmuz–Aralık 2026 için toplu sözleşme zammı %{TS_H2_2026}.
+        Bu dönemin enflasyonu %{TS_H2_2026}’yi aşarsa fark = (1 + altı aylık enflasyon) ÷ 1,07 − 1 olur ve Ocak 2027 maaşına
+        eklenir. Ocak zammı bu fark ile 2027’nin ilk yarısı için belirlenen %{TS_H1_2027}’in bileşiğidir:
+        (1 + fark) × 1,05 − 1. Oranlar toplanmaz; çarpılır.
+      </p>
+      <h2>Temmuz 2026’da ne olmuştu?</h2>
+      <p>
+        Ocak–Haziran 2026 enflasyonu <strong>{yuzde(TEMMUZ.cum6)}</strong> oldu; o dönemin toplu sözleşme zammı %{TS_H1_2026}
+        idi. Aradaki fark <strong>{yuzde(TEMMUZ.fark)}</strong> Temmuz’da maaşlara eklendi ve %{TS_H2_2026} toplu sözleşme
+        zammıyla birlikte Temmuz 2026 memur zammı <strong>%{nf(TEMMUZ.zam)}</strong> oldu.
+      </p>
+      <h2>Kimler enflasyon farkı alır?</h2>
+      <p>
+        Memurlar ve sözleşmeli personel ile memur emeklileri (Emekli Sandığı, 4/c) aynı oranda zam alır. En düşük memur
+        emeklisi aylığı {fmt(em.enDusukMemurEmeklisi.tutar)} ₺; Ocak 2027’de {final ? '' : 'yaklaşık '}<strong>{fmt(ME * (1 + zam))} ₺</strong> olur.
+        SSK ve Bağ-Kur emeklileri enflasyon farkı almaz: Ocak zammları doğrudan altı aylık enflasyon kadardır
+        ({final ? '' : 'tahmini '}{yuzde(sskProj)}).
+      </p>
+      <p class="cta-line">
+        Kendi maaşınla hesapla → <a href="/memur-zammi-hesaplama/">memur zammı hesaplama</a> ·
+        SSK ve Bağ-Kur → <a href="/emekli-zammi-hesaplama/">emekli zammı hesaplama</a> ·
+        Maaş ve kira birlikte → <a href="/2027-zam-hesaplama/">2027 zam hesaplama</a> ·
+        Memur katsayısına bağlı ödemeler → <a href="/evde-bakim-maasi/">evde bakım maaşı</a>, <a href="/engelli-maasi/">engelli maaşı ve 65 yaş aylığı</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ cumKnown, TS2, TS1: TS_H1_2027 / 100, ME }}>
+    (function () {
+      const p2 = (x) => '%' + (x * 100).toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const ins = Array.from(document.querySelectorAll('.in-ay'));
+      if (!ins.length) return;
+      const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+      function update() {
+        let c = 1 + cumKnown;
+        for (const i of ins) c *= 1 + (parseFloat(String(i.value).replace(',', '.')) || 0) / 100;
+        const fark = Math.max(0, c / (1 + TS2) - 1);
+        const zam = (1 + fark) * (1 + TS1) - 1;
+        set('out-fark', p2(fark));
+        set('out-cum', p2(c - 1));
+        set('out-zam', p2(zam));
+        set('out-ssk', p2(c - 1));
+        set('out-me', '₺' + nf0.format(Math.round(ME * (1 + zam))));
+      }
+      ins.forEach((i) => i.addEventListener('input', update));
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+    .kpi-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin: 0 0 1.4rem; }
+    .kpi { display: flex; flex-direction: column; gap: 0.2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; min-width: 0; }
+    .kpi-label { font-size: 0.78rem; font-weight: 600; color: var(--text-soft); }
+    .kpi-val { font-size: 1.5rem; font-weight: 700; color: var(--brand-ink); font-variant-numeric: tabular-nums; }
+    .kpi-sub { font-size: 0.75rem; color: var(--text-muted); }
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .form-intro { margin: 0; font-weight: 600; color: var(--text); }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input { font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .calc-inputs input:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .hint { font-size: 0.8rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+    .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 1rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 700; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.5rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-item.strong { border-top: 1px solid var(--border); padding-top: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; }
+    .table-block { margin-top: 2.5rem; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.6rem; }
+    .table-intro { color: var(--text-soft); margin: 0 0 0.8rem; line-height: 1.6; }
+    .table-scroll { overflow-x: auto; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .rate-table tr.varsayim td { color: var(--text-muted); font-style: italic; }
+    .rate-table tr.secili td { background: var(--brand-tint); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; line-height: 1.5; }
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+    @media (max-width: 600px) {
+      .calc-grid { grid-template-columns: 1fr; }
+      .kpi-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>

@@ -26,6 +26,7 @@ const GRUPLAR_HAM: Grup[] = [
     { href: '/asgari-ucret-hesaplama/', ad: 'Asgari ücret', aciklama: 'Net-brüt asgari ücret ve işveren maliyeti', k: ['asgari ücret'] },
     { href: '/emekli-zammi-hesaplama/', ad: 'Emekli zammı hesaplama', aciklama: 'SSK, Bağ-Kur ve memur emeklisi zammı', k: ['emekli', 'emeklilik', 'ssk', 'bağ-kur'] },
     { href: '/memur-zammi-hesaplama/', ad: 'Memur zammı hesaplama', aciklama: 'Ocak 2027 memur zammı tahmini ve katsayılar', k: ['memur'] },
+    { href: '/enflasyon-farki-hesaplama/', ad: 'Enflasyon farkı hesaplama', aciklama: 'Ocak 2027 memur enflasyon farkı, ay ay birikim ve senaryolar', k: ['enflasyon farkı', 'toplu sözleşme'] },
     { href: '/en-dusuk-emekli-maasi/', ad: 'En düşük emekli maaşı', aciklama: 'Taban aylık, Ocak 2027 senaryosu, ödeme günleri', k: ['emekli maaşı', 'en düşük emekli'] },
     { href: '/engelli-maasi/', ad: 'Engelli maaşı ve 65 yaş aylığı', aciklama: 'Ocak 2027 tahmini ve 2026 tutarları', k: ['engelli', '65 yaş', 'yaşlılık aylığı'] },
     { href: '/evde-bakim-maasi/', ad: 'Evde bakım maaşı', aciklama: '2027 tutarı ve hane geliri şartı', k: ['evde bakım'] },
