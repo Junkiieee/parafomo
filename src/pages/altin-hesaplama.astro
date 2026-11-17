@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import AppCTA from '../components/AppCTA.astro';
+import Altinlarim from '../components/Altinlarim.astro';
 import altin from '../../data/altin-fiyat.json';
 import { ALTIN_SPECS } from '../data/altin-specs';
 
@@ -86,40 +87,7 @@ const breadcrumbs = [
       <p class="soft" style="margin-top:.6rem">Bugünkü fiyatlar: <a href="/altin-fiyatlari/gram-altin/">gram altın fiyatı</a> · <a href="/altin-fiyatlari/ceyrek-altin/">çeyrek altın fiyatı</a> · <a href="/altin-fiyatlari/22-ayar-bilezik/">22 ayar bilezik</a> · <a href="/altin-fiyatlari/cumhuriyet-altini/">Cumhuriyet altını</a> · <a href="/altin-fiyatlari/">tüm altın fiyatları</a></p>
     </header>
 
-    <div class="calc-grid">
-      <form class="calc-inputs" id="calc-form" autocomplete="off">
-        <label>
-          <span>Altın türü</span>
-          <select id="in-type">
-            {calcItems.map((i) => (
-              <option value={i.key} selected={i.key === def.key}>{i.label}</option>
-            ))}
-          </select>
-        </label>
-        <label>
-          <span>Adet</span>
-          <input type="number" id="in-adet" value={defAdet} min="0" step="1" inputmode="numeric" />
-        </label>
-      </form>
-
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
-          <span class="result-label">Bozdurma değeri (alış) <em class="hint">— elinize geçen</em></span>
-          <span class="result-value" id="out-alis">₺{fmt((def.alis || 0) * defAdet)}</span>
-        </div>
-        <div class="result-split">
-          <div class="split-item">
-            <span class="split-label">Almak için (satış)</span>
-            <span class="split-val" id="out-satis">₺{fmt((def.satis || 0) * defAdet)}</span>
-          </div>
-          <div class="split-item">
-            <span class="split-label">Toplam ağırlık</span>
-            <span class="split-val" id="out-gram">{def.gram.toString().replace('.', ',')} gr</span>
-          </div>
-        </div>
-        <p class="result-note" id="out-note">Fiyatlar göstergedir; kuyumcuya göre küçük farklar olabilir.</p>
-      </div>
-    </div>
+    <Altinlarim kampanya="altin-hesaplama" baslik="Altınlarını ekle, bugünkü değerini gör" />
 
     <div class="updated-strip">
       <span class="dot"></span>
@@ -208,33 +176,6 @@ const breadcrumbs = [
     <Newsletter />
   </div>
 
-  <script is:inline define:vars={{ items }}>
-    (function () {
-      const $ = (id) => document.getElementById(id);
-      const nf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
-      const byKey = {};
-      items.forEach((i) => (byKey[i.key] = i));
-
-      function update() {
-        const it = byKey[$('in-type').value];
-        if (!it) return;
-        const adet = Math.max(0, +$('in-adet').value || 0);
-        const alis = (it.alis || 0) * adet;
-        const satis = (it.satis || 0) * adet;
-        $('out-alis').textContent = '₺' + nf.format(Math.round(alis));
-        $('out-satis').textContent = '₺' + nf.format(Math.round(satis));
-        const gram = (it.gram * adet).toLocaleString('tr-TR', { maximumFractionDigits: 2 });
-        $('out-gram').textContent = gram + ' gr';
-        $('out-note').textContent = adet > 1
-          ? `${adet} adet ${it.label.toLowerCase()} bozdurulunca yaklaşık ₺${nf.format(Math.round(alis))} eder.`
-          : 'Fiyatlar göstergedir; kuyumcuya göre küçük farklar olabilir.';
-      }
-
-      $('in-type').addEventListener('change', update);
-      $('in-adet').addEventListener('input', update);
-      update();
-    })();
-  </script>
 
   <style>
     .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }

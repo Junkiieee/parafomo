@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import AppCTA from '../components/AppCTA.astro';
+import Altinlarim from '../components/Altinlarim.astro';
 import altin from '../../data/altin-fiyat.json';
 import { ALTIN_SPECS } from '../data/altin-specs';
 const slugOf = (key: string) => ALTIN_SPECS.find((s) => s.key === key)?.slug;
@@ -110,11 +111,7 @@ const year = new Date().getFullYear();
     </div>
     <p class="embed-cta"><a href="/sitene-ekle/#altin">Bu fiyat tablosunu sitene ücretsiz ekle →</a></p>
 
-    <p class="calc-cta">
-      💡 Elindeki altının <strong>toplam değerini</strong> hesaplamak ister misin?
-      <a href="/altin-hesaplama">Altın hesaplama aracıyla</a> tür ve adet girip anında gör.
-      Altının <a href="/altin-getiri">1, 5, 10 yıllık getirisini</a> merak ediyorsan ayrı sayfamıza bak.
-    </p>
+    <Altinlarim kampanya="altin-fiyatlari" />
 
     <section class="table-block">
       <h2>Güncel altın fiyatları tablosu</h2>

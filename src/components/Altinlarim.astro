@@ -1,0 +1,191 @@
+---
+// "Altınlarım ne kadar ediyor?" — çok satırlı altın hesabı, hesapsız, cihazda saklanır (2026-11-17).
+// Kaan: "insanları sitede tutmanın ve ileride para kazanmanın yollarından biri portföy uygulaması … buraya çekelim".
+// Adım 1: tekrar gelme nedeni (son ziyaretten bu yana değişim) + uygulamaya köprü (her gün takip, fiyat alarmı).
+// Fiyatlar derleme anında data/altin-fiyat.json'dan (site günde birkaç kez yeniden derlenir); ağırlıklar HMB tablosundan.
+import altin from '../../data/altin-fiyat.json';
+import { ALTIN_SPECS } from '../data/altin-specs';
+
+interface Props { kampanya?: string; baslik?: string }
+const { kampanya = 'altinlarim', baslik = 'Altınlarım ne kadar ediyor?' } = Astro.props;
+
+type Kalem = { key: string; label: string; gram: number; alis: number | null; satis: number | null };
+const kalemler = altin.kalemler as Kalem[];
+// Seçilebilir türler ve birimleri (adet ya da gram)
+const TURLER: [string, string, 'adet' | 'gram'][] = [
+  ['ceyrek-altin', 'Çeyrek altın', 'adet'],
+  ['yarim-altin', 'Yarım altın', 'adet'],
+  ['tam-altin', 'Tam (ziynet) altın', 'adet'],
+  ['cumhuriyet-altini', 'Cumhuriyet altını', 'adet'],
+  ['ata-altin', 'Ata altın', 'adet'],
+  ['gram-altin', 'Gram altın (24 ayar)', 'gram'],
+  ['22-ayar-bilezik', '22 ayar bilezik', 'gram'],
+  ['18-ayar-altin', '18 ayar altın', 'gram'],
+  ['14-ayar-altin', '14 ayar altın', 'gram'],
+];
+const FIYAT = Object.fromEntries(
+  TURLER.map(([k, ad, birim]) => {
+    const i = kalemler.find((x) => x.key === k);
+    const gram = ALTIN_SPECS.find((s) => s.key === k)?.gram ?? i?.gram ?? 1;
+    return [k, { ad, birim, alis: i?.alis ?? null, satis: i?.satis ?? null, gram }];
+  }).filter(([, v]) => (v as { alis: number | null }).alis),
+);
+const has = kalemler.find((x) => x.key === 'gram-has-altin');
+const HAS_ALIS = has?.alis ?? null;   // toplamı "kaç gram has altın" olarak da göstermek için
+const upd = new Date(altin.guncellenme);
+const updLabel = upd.toLocaleDateString('tr-TR', { timeZone: 'Europe/Istanbul', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
+const appUrl = `https://app.parafomo.com/portfoy/?utm_source=parafomo&utm_medium=altinlarim&utm_campaign=${kampanya}`;
+---
+<section class="altinlarim" data-altinlarim aria-label="Altınlarım ne kadar ediyor">
+  <div class="al-bas">
+    <h2>{baslik}</h2>
+    <p class="al-alt">Elindeki altınları ekle, bugünkü değerini gör. Bilgilerin yalnız bu cihazda saklanır; hesap gerekmez.</p>
+  </div>
+  <div class="al-satirlar" data-satirlar></div>
+  <button type="button" class="al-ekle" data-ekle>+ Altın ekle</button>
+  <div class="al-sonuc" aria-live="polite">
+    <span class="al-etiket">Bugün bozdurursan (alış)</span>
+    <span class="al-deger" data-toplam>₺0</span>
+    <span class="al-detay" data-detay></span>
+    <span class="al-degisim" data-degisim hidden></span>
+  </div>
+  <p class="al-not">Fiyatlar {updLabel} itibarıyla, göstergedir; kuyumcuya göre küçük farklar olabilir.</p>
+  <div class="al-cta">
+    <div>
+      <strong>Her gün otomatik takip et</strong>
+      <span>Ücretsiz hesapla altınların her gün güncellenir; fiyat istediğin seviyeye gelince haber alırsın.</span>
+    </div>
+    <a href={appUrl} class="btn btn-primary" data-app-cta rel="noopener">Takibe başla</a>
+  </div>
+</section>
+
+<script is:inline define:vars={{ FIYAT, HAS_ALIS }}>
+  (function () {
+    var kok = document.querySelector('[data-altinlarim]');
+    if (!kok || kok.dataset.hazir) return;
+    kok.dataset.hazir = '1';
+    var ANAHTAR = 'pf-altinlarim-v1';
+    var nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+    var nf2 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
+    var bugun = new Date().toISOString().slice(0, 10);
+    var oku = function () { try { return JSON.parse(localStorage.getItem(ANAHTAR) || 'null'); } catch (e) { return null; } };
+    var yaz = function (v) { try { localStorage.setItem(ANAHTAR, JSON.stringify(v)); } catch (e) {} };
+    var kayit = oku() || { satirlar: [{ k: 'ceyrek-altin', m: 1 }] };
+    var satirlarEl = kok.querySelector('[data-satirlar]');
+    var secenekler = Object.keys(FIYAT).map(function (k) { return '<option value="' + k + '">' + FIYAT[k].ad + '</option>'; }).join('');
+
+    function satirHtml(s, i) {
+      var f = FIYAT[s.k] || FIYAT['ceyrek-altin'];
+      return '<div class="al-satir" data-i="' + i + '">' +
+        '<select aria-label="Altın türü" data-tur>' + secenekler + '</select>' +
+        '<input type="number" min="0" step="' + (f.birim === 'gram' ? '0.1' : '1') + '" inputmode="decimal" aria-label="Miktar" data-miktar value="' + (s.m || '') + '">' +
+        '<span class="al-birim">' + (f.birim === 'gram' ? 'gram' : 'adet') + '</span>' +
+        '<button type="button" class="al-sil" aria-label="Satırı sil" data-sil>×</button></div>';
+    }
+    function ciz() {
+      satirlarEl.innerHTML = kayit.satirlar.map(satirHtml).join('');
+      satirlarEl.querySelectorAll('[data-tur]').forEach(function (sel, i) { sel.value = kayit.satirlar[i].k; });
+      hesapla();
+    }
+    function hesapla(ilk) {
+      var alis = 0, satis = 0;
+      kayit.satirlar.forEach(function (s) {
+        var f = FIYAT[s.k]; var m = Math.max(0, parseFloat(String(s.m).replace(',', '.')) || 0);
+        if (!f) return;
+        alis += (f.alis || 0) * m; satis += (f.satis || f.alis || 0) * m;
+      });
+      kok.querySelector('[data-toplam]').textContent = '₺' + nf0.format(Math.round(alis));
+      var detay = 'Almak için (satış) ₺' + nf0.format(Math.round(satis));
+      if (HAS_ALIS && alis > 0) detay += ' · ≈ ' + nf2.format(alis / HAS_ALIS) + ' gram has altın';
+      kok.querySelector('[data-detay]').textContent = detay;
+      // Son ziyaretten bu yana (aynı altınlar, farklı gün): tekrar gelme nedeni
+      var dg = kok.querySelector('[data-degisim]');
+      var son = kayit.son;
+      if (ilk && son && son.tarih !== bugun && son.imza === imza() && son.alis > 0 && alis > 0) {
+        var fark = alis - son.alis;
+        var yuzde = (fark / son.alis) * 100;
+        dg.textContent = (fark >= 0 ? '▲ ' : '▼ ') + 'Son bakışından (' + son.tarih.split('-').reverse().join('.') + ') bu yana ' +
+          (fark >= 0 ? '+' : '−') + '₺' + nf0.format(Math.abs(Math.round(fark))) + ' (' + (fark >= 0 ? '+' : '−') + '%' + nf2.format(Math.abs(yuzde)) + ')';
+        dg.dataset.yon = fark >= 0 ? 'artis' : 'dusus';
+        dg.hidden = false;
+      } else if (!ilk) {
+        dg.hidden = true;
+      }
+      kayit.alis = alis;
+      return alis;
+    }
+    function imza() { return kayit.satirlar.map(function (s) { return s.k + ':' + s.m; }).join('|'); }
+    function sakla() {
+      var alis = kayit.alis || 0;
+      if (!kayit.son || kayit.son.tarih !== bugun || kayit.son.imza !== imza()) {
+        // Bugünün değerini sakla (yarın gelince fark buna göre); bugün gösterilen fark kaybolmasın diye ilk çizimden sonra
+        kayit.son = { tarih: bugun, alis: alis, imza: imza() };
+      }
+      yaz({ satirlar: kayit.satirlar, son: kayit.son });
+    }
+    var zamanlayici = null, olayGitti = false;
+    satirlarEl.addEventListener('input', function (e) {
+      var satir = e.target.closest('.al-satir'); if (!satir) return;
+      var i = +satir.dataset.i;
+      if (e.target.matches('[data-miktar]')) kayit.satirlar[i].m = e.target.value;
+      hesapla(); clearTimeout(zamanlayici); zamanlayici = setTimeout(sakla, 600);
+      if (!olayGitti && window.gtag) { olayGitti = true; window.gtag('event', 'altinlarim_kullanim', { page_path: location.pathname }); }
+    });
+    satirlarEl.addEventListener('change', function (e) {
+      var satir = e.target.closest('.al-satir'); if (!satir) return;
+      if (e.target.matches('[data-tur]')) { kayit.satirlar[+satir.dataset.i].k = e.target.value; ciz(); sakla(); }
+    });
+    satirlarEl.addEventListener('click', function (e) {
+      if (!e.target.matches('[data-sil]')) return;
+      kayit.satirlar.splice(+e.target.closest('.al-satir').dataset.i, 1);
+      if (!kayit.satirlar.length) kayit.satirlar.push({ k: 'ceyrek-altin', m: '' });
+      ciz(); sakla();
+    });
+    kok.querySelector('[data-ekle]').addEventListener('click', function () {
+      kayit.satirlar.push({ k: 'gram-altin', m: '' }); ciz();
+      var son = satirlarEl.querySelector('.al-satir:last-child [data-miktar]'); if (son) son.focus();
+    });
+    kok.querySelector('[data-app-cta]').addEventListener('click', function () {
+      if (window.gtag) window.gtag('event', 'altinlarim_app_cta', { page_path: location.pathname, value: Math.round(kayit.alis || 0) });
+    });
+    satirlarEl.innerHTML = kayit.satirlar.map(satirHtml).join('');
+    satirlarEl.querySelectorAll('[data-tur]').forEach(function (sel, i) { sel.value = kayit.satirlar[i].k; });
+    hesapla(true);
+    if (oku()) sakla();   // daha önce kaydı olanın bugünkü değerini güncelle (ilk kez gelende varsayılan satır kaydedilmez)
+  })();
+</script>
+
+<!-- is:global: satırlar JS ile oluşturuluyor, kapsamlı (scoped) stil onlara ulaşmaz; sınıflar al- önekli, çakışmaz -->
+<style is:global>
+  .altinlarim { margin: 1.6rem 0 2rem; border: 1.5px solid var(--brand-2); border-radius: var(--radius-lg); background: var(--bg-card);
+    padding: 1.3rem 1.3rem 1.1rem; box-shadow: var(--shadow-soft); }
+  .al-bas h2 { margin: 0 0 0.3rem; font-size: var(--step-2); }
+  .al-alt { margin: 0 0 1rem; color: var(--text-soft); font-size: var(--step--1); }
+  .al-satirlar { display: flex; flex-direction: column; gap: 0.55rem; }
+  .al-satir { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) auto auto; gap: 0.45rem; align-items: center; }
+  .al-satir select, .al-satir input { font-family: inherit; font-size: 1rem; color: var(--text); background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 0.6rem 0.55rem; min-width: 0; width: 100%; }
+  .al-satir input { font-weight: 700; }
+  .al-birim { font-size: 0.82rem; color: var(--text-soft); }
+  .al-sil { border: 0; background: transparent; color: var(--text-muted); font-size: 1.4rem; line-height: 1; cursor: pointer; padding: 0 0.3rem; }
+  .al-ekle { margin-top: 0.6rem; border: 1px dashed var(--brand-2); background: transparent; color: var(--brand-deep); font-weight: 600;
+    border-radius: var(--radius-sm); padding: 0.5rem 0.8rem; cursor: pointer; font-family: inherit; }
+  .al-sonuc { display: flex; flex-direction: column; gap: 0.15rem; margin-top: 1rem; padding: 1rem; border-radius: var(--radius);
+    background: var(--brand-tint); }
+  .al-etiket { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+  .al-deger { font-size: clamp(2rem, 1.5rem + 2.2vw, 2.8rem); font-weight: 800; color: var(--brand-ink); line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .al-detay { font-size: 0.85rem; color: var(--text-soft); }
+  .al-degisim { margin-top: 0.35rem; font-weight: 700; font-size: 0.92rem; }
+  .al-degisim[data-yon='artis'] { color: var(--brand); }
+  .al-degisim[data-yon='dusus'] { color: var(--danger); }
+  .al-not { margin: 0.6rem 0 0; font-size: 0.78rem; color: var(--text-muted); }
+  .al-cta { margin-top: 1rem; display: flex; gap: 0.8rem 1rem; align-items: center; justify-content: space-between; flex-wrap: wrap;
+    border-top: 1px solid var(--border); padding-top: 0.9rem; }
+  .al-cta div { display: flex; flex-direction: column; gap: 0.15rem; max-width: 44ch; }
+  .al-cta span { font-size: 0.85rem; color: var(--text-soft); }
+  @media (max-width: 520px) {
+    .al-satir { grid-template-columns: minmax(0, 1fr) 5.2rem auto; }
+    .al-satir .al-birim { display: none; }
+    .al-cta .btn { width: 100%; justify-content: center; }
+  }
+</style>
