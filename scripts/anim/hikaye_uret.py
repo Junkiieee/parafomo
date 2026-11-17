@@ -29,20 +29,23 @@ DATA = os.path.join(ROOT, "data")
 GECMIS = "/root/parafomo-data/dash/hikaye-gecmis.json"
 PLAN = "/root/parafomo-data/dash/plan.json"
 TREND = "/root/parafomo-data/trend/yt-trend.json"   # scripts/learn/yt_trend.py (günlük YouTube trend radarı)
+TREND_IG = "/root/parafomo-data/trend/ig-trend.json"   # scripts/learn/ig_trend.py (günlük Instagram radarı)
 TAHMIN = re.compile(r"devalüasyon|olası|tahmin|çökecek|çöküş|uçacak|düşecek|yükselecek|patlayacak|olacak mı|kriz geliyor", re.I)
 
 
 def trend_tazele():
-    """Radar 20 saatten eskiyse yenile (Kaan 2026-11-17: her gün araştırıp video hazırla). Hata hattı bozmaz."""
-    try:
-        if os.path.exists(TREND) and dt.datetime.now().timestamp() - os.path.getmtime(TREND) < 20 * 3600:
-            return
-        subprocess.run([PY, os.path.join(ROOT, "scripts", "learn", "yt_trend.py")], timeout=300, check=False)
-    except Exception as e:
-        print(f"[hikaye] trend radarı atlandı: {e}")
+    """YouTube ve Instagram radarları 20 saatten eskiyse yenile (Kaan 2026-11-17: her gün araştırıp video hazırla).
+    Instagram radarı YouTube kanallarından yeni hesap keşfettiği için YouTube'dan sonra çalışır. Hata hattı bozmaz."""
+    for dosya, betik in ((TREND, "yt_trend.py"), (TREND_IG, "ig_trend.py")):
+        try:
+            if os.path.exists(dosya) and dt.datetime.now().timestamp() - os.path.getmtime(dosya) < 20 * 3600:
+                continue
+            subprocess.run([PY, os.path.join(ROOT, "scripts", "learn", betik)], timeout=300, check=False)
+        except Exception as e:
+            print(f"[hikaye] {betik} atlandı: {e}")
 
 
-def trend_satirlari(n=8):
+def trend_satirlari(n=5):
     """Son radar: önce küçük kanalda patlayanlar, sonra en çok izlenenler (siyasi olanlar zaten ayıklı)."""
     try:
         d = json.load(open(TREND, encoding="utf-8"))
@@ -338,11 +341,25 @@ KURALLAR = """SENARYO KİTABI (uymazsan senaryo reddedilir):
     "[X]: 2020 vs bugün", "[X] neden hep [Y]? Cevap …". Soru satırı izleyiciyi gruba koysun ("Sen hangisisin: …?")."""
 
 
+def ig_satirlari(n=5):
+    """Instagram radarı: takip edilen para hesaplarında hesabın ortancasının çok üstüne çıkan Reels (kanca cümlesiyle)."""
+    try:
+        d = json.load(open(TREND_IG, encoding="utf-8"))
+        if dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(d["tarih"]) > dt.timedelta(days=3):
+            return []
+    except (OSError, ValueError, KeyError):
+        return []
+    nokta = lambda x: f"{x:,}".replace(",", ".")
+    return [f'Instagram @{x["hesap"]} ({nokta(x["takipci"] or 0)} takipçi): "{x["kanca"]}" ({nokta(x["izlenme"])} izlenme, '
+            f'hesabın ortancasının {str(x["kat"]).replace(".", ",")} katı)' for x in d.get("patlayan", [])[:n] if not TAHMIN.search(x["kanca"])]
+
+
 def trend_blok():
-    t = trend_satirlari()
+    t = trend_satirlari() + ig_satirlari()
     if not t:
         return ""
-    return ("\nBU HAFTA TÜRKÇE PARA SHORTS'TA PATLAYANLAR (YouTube radarı, son 7 gün). Yalnız AÇI ve BAŞLIK KALIBI ilhamı: "
+    return ("\nBU HAFTA TÜRKÇE PARA VİDEOLARINDA PATLAYANLAR (YouTube Shorts ve Instagram Reels radarı, son 7-10 gün). "
+            "Yalnız AÇI ve BAŞLIK KALIBI ilhamı: "
             "başlıklarını, rakamlarını, iddialarını ve karakterlerini KOPYALAMA; tahmin ve siyaset yok. Kendi VERİ PAKETİNLE "
             "uygun düşen bir açı (ikilem, merak, o zaman/şimdi, kim kazanır) seç:\n- " + "\n- ".join(t) + "\n")
 

@@ -92,7 +92,7 @@ def main():
         izl = int(st.get("viewCount", 0))
         yas = max(0.25, (simdi - dt.datetime.fromisoformat(sn["publishedAt"].replace("Z", "+00:00"))).total_seconds() / 86400)
         ab = abone.get(sn["channelId"])
-        satir.append({"baslik": sn.get("title", "")[:120], "kanal": sn.get("channelTitle", "")[:60], "abone": ab,
+        satir.append({"baslik": sn.get("title", "")[:120], "kanal": sn.get("channelTitle", "")[:60], "kanal_id": sn["channelId"], "abone": ab,
                       "izlenme": izl, "gunluk": round(izl / yas), "gun": round(yas, 1),
                       "sure": saniye(v["contentDetails"].get("duration")), "url": f"https://youtu.be/{v['id']}",
                       "siyasi": bool(SIYASI.search(metin)), "yorum": int(st.get("commentCount", 0) or 0)})
