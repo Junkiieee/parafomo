@@ -66,6 +66,16 @@ def main():
                 insights_ok = True
             except urllib.error.HTTPError:
                 insights_ok = False
+        # Reels'e özgü: ilk 3 sn testi (2026-11-17 araştırması: atlama %74, ort. izleme 3,5 sn). Karuselde hata
+        # verir → sessizce geç, genel insights bayrağına dokunma.
+        if insights_ok:
+            try:
+                q = urllib.parse.urlencode({"metric": "views,ig_reels_avg_watch_time,reels_skip_rate", "access_token": tok})
+                ins = get(f"{API}/{mid}/insights?{q}")
+                for i in ins.get("data", []):
+                    m[i["name"]] = i["values"][0]["value"]
+            except urllib.error.HTTPError:
+                pass
         rows.append({"id": r["id"], "channel": "instagram", "fetched_utc": fetched, "metrics": m})
     lib.append_jsonl(lib.METRICS, rows)
     tag = "insights VAR" if insights_ok else "insights YOK (izin gerekli — sadece beğeni/yorum)"

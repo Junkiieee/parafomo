@@ -28,6 +28,41 @@ PY = "/root/.venvs/parafomo/bin/python"
 DATA = os.path.join(ROOT, "data")
 GECMIS = "/root/parafomo-data/dash/hikaye-gecmis.json"
 PLAN = "/root/parafomo-data/dash/plan.json"
+TREND = "/root/parafomo-data/trend/yt-trend.json"   # scripts/learn/yt_trend.py (günlük YouTube trend radarı)
+TAHMIN = re.compile(r"devalüasyon|olası|tahmin|çökecek|çöküş|uçacak|düşecek|yükselecek|patlayacak|olacak mı|kriz geliyor", re.I)
+
+
+def trend_tazele():
+    """Radar 20 saatten eskiyse yenile (Kaan 2026-11-17: her gün araştırıp video hazırla). Hata hattı bozmaz."""
+    try:
+        if os.path.exists(TREND) and dt.datetime.now().timestamp() - os.path.getmtime(TREND) < 20 * 3600:
+            return
+        subprocess.run([PY, os.path.join(ROOT, "scripts", "learn", "yt_trend.py")], timeout=300, check=False)
+    except Exception as e:
+        print(f"[hikaye] trend radarı atlandı: {e}")
+
+
+def trend_satirlari(n=8):
+    """Son radar: önce küçük kanalda patlayanlar, sonra en çok izlenenler (siyasi olanlar zaten ayıklı)."""
+    try:
+        d = json.load(open(TREND, encoding="utf-8"))
+        if dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(d["tarih"]) > dt.timedelta(days=3):
+            return []
+    except (OSError, ValueError, KeyError):
+        return []
+    out, gor = [], set()
+    for x in d.get("patlayan_kucuk", []) + d.get("en_cok", []):
+        if x.get("siyasi") or x["baslik"] in gor:
+            continue
+        gor.add(x["baslik"])
+        if TAHMIN.search(x["baslik"]):   # kur/fiyat tahmini ve kriz kehaneti: markaya aykırı
+            continue
+        nokta = lambda n: f"{n:,}".replace(",", ".")
+        ab = nokta(x["abone"]) if x.get("abone") is not None else "?"
+        out.append(f'"{x["baslik"]}" ({nokta(x["izlenme"])} izlenme, {ab} aboneli kanal, {x["sure"]} sn)')
+        if len(out) >= n:
+            break
+    return out
 KARAKTER = sorted(hikaye_kit.KARAKTER)
 DEKOR = ["simit", "ekmek", "cay", "sepet", "deste"]
 IFADE = ["normal", "mutlu", "endiseli", "saskin", "uzgun", "korkmus"]
@@ -303,6 +338,15 @@ KURALLAR = """SENARYO KİTABI (uymazsan senaryo reddedilir):
     "[X]: 2020 vs bugün", "[X] neden hep [Y]? Cevap …". Soru satırı izleyiciyi gruba koysun ("Sen hangisisin: …?")."""
 
 
+def trend_blok():
+    t = trend_satirlari()
+    if not t:
+        return ""
+    return ("\nBU HAFTA TÜRKÇE PARA SHORTS'TA PATLAYANLAR (YouTube radarı, son 7 gün). Yalnız AÇI ve BAŞLIK KALIBI ilhamı: "
+            "başlıklarını, rakamlarını, iddialarını ve karakterlerini KOPYALAMA; tahmin ve siyaset yok. Kendi VERİ PAKETİNLE "
+            "uygun düşen bir açı (ikilem, merak, o zaman/şimdi, kim kazanır) seç:\n- " + "\n- ".join(t) + "\n")
+
+
 def istem(p, gecmis_basliklar, duzeltme=""):
     return f"""Sen Parafomo'nun "Para hikâyeleri" senaristisin: Türkçe, 35-50 saniyelik, düz vektör karakterli animasyon Shorts/Reels.
 Kaan'ın beğendiği tarz: yüzü olan karakter, ilk saniyede merak, rakamlar çizimle, izleyiciye soruyla biten kısa hikâye.
@@ -316,7 +360,7 @@ VERİ PAKETİ (doğrulanmış; BAŞKA RAKAM KULLANMA):
 - """ + "\n- ".join(p["veri"]) + f"""
 Kaynak: {p['kaynak']}
 Sitedeki ilgili sayfa (açıklama ve "link" alanında kullan): {('parafomo.com' + p['link']) if p.get('link') else 'yok'}
-
+{trend_blok()}
 {KURALLAR}
 
 {SAHNE}
@@ -515,6 +559,7 @@ def main():
         gecmis = json.load(open(GECMIS, encoding="utf-8"))
     except (OSError, ValueError):
         pass
+    trend_tazele()
     P = paketler()
     if a.paket:
         P = [p for p in P if p["id"] == a.paket] or sys.exit(f"paket yok: {a.paket}")

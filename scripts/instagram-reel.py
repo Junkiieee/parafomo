@@ -281,8 +281,10 @@ def main():
         caption = build_caption(meta, args.slug)
 
     # Günlük üst sınır (2026-10-30, video-yon.md V3): IG'de günde 5-7 gönderi erişimi 0-3'e düşürüyordu → TR günü
-    # içinde en çok IG_REELS_PER_DAY (vars. 2) Reel. Fazlası yalnız YouTube/FB'de kalır (çıkış 0: hattı bozmaz).
-    cap = int(env.get("IG_REELS_PER_DAY") or os.environ.get("IG_REELS_PER_DAY") or 2)
+    # içinde en çok IG_REELS_PER_DAY Reel. Fazlası yalnız YouTube/FB'de kalır (çıkış 0: hattı bozmaz).
+    # 2026-11-17: 2 → 1. Araştırma: son 27 Reel'in toplam erişimi 40, her biri ilk 3 sn testinde eleniyor;
+    # az ama güçlü test (19:00 Para hikâyesi IG'ye, 21:00 videosu yalnız YouTube/FB).
+    cap = int(env.get("IG_REELS_PER_DAY") or os.environ.get("IG_REELS_PER_DAY") or 1)
     lst = graph_get(f"{ig}/media", {"fields": "timestamp,media_product_type", "limit": "15", "access_token": tok})
     import datetime as _dt
     tr_today = (_dt.datetime.now(_dt.timezone.utc) + _dt.timedelta(hours=3)).date()
@@ -348,7 +350,13 @@ def main():
         "Katılıyor musun, katılmıyor musun? 👇 Sebebini de yaz.",
     ]
     seed = seeds[sum(ord(c) for c in args.slug) % len(seeds)]
+    # 2026-11-17: KAPALI (IG_SEED_COMMENT=1 ile açılır). 31 Reel'de tek yorum bizim tohumdu; Meta tekrar eden
+    # kopyala-yapıştır yorumların dağıtımını düşürüyor (transparency.meta.com, lowering distribution).
+    if (env.get("IG_SEED_COMMENT") or os.environ.get("IG_SEED_COMMENT")) != "1":
+        seed = None
     try:
+        if seed is None:
+            raise RuntimeError("tohum yorum kapalı")
         cm = graph_post(f"{reel_id}/comments", {"message": seed, "access_token": tok})
         if "id" in cm:
             print(f"[+] İlk yorum tohumu eklendi: {cm['id']}")
