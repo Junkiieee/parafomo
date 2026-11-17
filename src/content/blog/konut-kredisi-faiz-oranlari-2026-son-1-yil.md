@@ -93,7 +93,7 @@ TCMB'nin 6 Kasım 2026 ortalamasıyla (aylık ~%2,92), KKDF/BSMV olmadan:
 | 2.000.000 TL | ~71.104 TL | ~60.393 TL | ~58.822 TL |
 | 3.000.000 TL | ~106.656 TL | ~90.590 TL | ~88.233 TL |
 
-Dikkat çeken nokta: yüksek faiz ortamında vadeyi uzatmak taksiti çok az düşürür ama toplam maliyeti katlar. 1 milyon TL'yi 120 yerine 180 ayda ödemek taksiti yalnızca ~786 TL azaltırken toplam geri ödemeyi ~3,62 milyon TL'den ~5,29 milyon TL'ye çıkarır. Faizin zamanla nasıl büyüdüğünü [reel faiz nedir](/blog/reel-faiz-nedir) yazısında enflasyonla birlikte ele aldık.
+Dikkat çeken nokta: yüksek faiz ortamında vadeyi uzatmak taksiti çok az düşürür ama toplam maliyeti ciddi biçimde artırır. 1 milyon TL'yi 120 yerine 180 ayda ödemek taksiti yalnızca ~786 TL azaltırken toplam geri ödemeyi ~3,62 milyon TL'den ~5,29 milyon TL'ye çıkarır. Faizin zamanla nasıl büyüdüğünü [reel faiz nedir](/blog/reel-faiz-nedir) yazısında enflasyonla birlikte ele aldık.
 
 Tabloda olmayan bir tutar ve vade için [kredi hesaplama](/kredi-hesaplama) ya da doğrudan [konut kredisi hesaplama](/konut-kredisi-hesaplama) aracını kullanabilirsin.
 
@@ -114,7 +114,7 @@ Bankanın sana teklif ettiği oran TCMB ortalamasından yüksek ya da düşük o
 2. **En az 3-4 bankadan yazılı teklif al.** Kamu, özel ve katılım bankalarının oranları haftadan haftaya değişebilir.
 3. **Yıllık maliyet oranını karşılaştır.** Faiz tek başına yetmez; dosya masrafı, ekspertiz, DASK ve hayat sigortası toplam maliyeti değiştirir. Sözleşme öncesi bilgi formundaki **yıllık maliyet oranı** asıl karşılaştırma ölçüsüdür.
 4. **Peşinatı artırmayı düşün.** Daha az kredi hem toplam faizi azaltır hem de daha iyi oran almana yardım edebilir.
-5. **Vadeyi gereğinden uzun tutma.** Yukarıdaki tabloda gördüğün gibi yüksek faizde uzun vade taksiti az düşürüp toplam maliyeti katlar.
+5. **Vadeyi gereğinden uzun tutma.** Yukarıdaki tabloda gördüğün gibi yüksek faizde uzun vade taksiti az düşürüp toplam maliyeti ciddi biçimde artırır.
 6. **Erken ödeme kuralını öğren.** Sabit faizli konut kredisinde erken ödeme tazminatı, kalan vade 36 ay veya daha kısaysa en fazla %1, daha uzunsa en fazla %2'dir (6502 s. Kanun md. 37). Faizler ileride düşerse krediyi kapatıp yeniden yapılandırmanın maliyetini bu oranla hesaplayabilirsin.
 7. **Taksit/gelir oranına dikkat et.** Taksitin hanenin net gelirinin makul bir payını aşmaması, faiz ya da gelir şokunda seni korur.
 
