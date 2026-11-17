@@ -143,21 +143,23 @@ def confirm(token: str = Query(..., max_length=64), db: Session = Depends(get_db
     return _redirect("/zam-alarmi/?durum=onaylandi" if _zam(sub.source) else "/bulten/?durum=onaylandi")
 
 
-def _unsubscribe(token: str, db: Session) -> bool:
+def _unsubscribe(token: str, db: Session) -> NewsletterSubscriber | None:
     sub = db.scalar(select(NewsletterSubscriber).where(NewsletterSubscriber.token == token))
     if sub is None:
-        return False
+        return None
     if sub.status != "unsubscribed":
         sub.status = "unsubscribed"
         sub.unsubscribed_at = datetime.now(timezone.utc)
         db.commit()
-    return True
+    return sub
 
 
 @router.get("/unsubscribe")
 def unsubscribe(token: str = Query(..., max_length=64), db: Session = Depends(get_db)):
-    ok = _unsubscribe(token, db)
-    return _redirect("/bulten/?durum=ayrildi" if ok else "/bulten/?durum=gecersiz")
+    sub = _unsubscribe(token, db)
+    if sub is None:
+        return _redirect("/bulten/?durum=gecersiz")
+    return _redirect("/zam-alarmi/?durum=ayrildi" if _zam(sub.source) else "/bulten/?durum=ayrildi")
 
 
 @router.post("/unsubscribe", response_model=Message)
