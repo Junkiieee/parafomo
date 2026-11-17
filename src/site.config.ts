@@ -15,12 +15,13 @@ export const SITE = {
   owner: 'Kaan Özdemir',
   email: 'info@parafomo.com',
   twitter: '@parafomo',
-  // Yayına alırken doğru kullanıcı adlarıyla güncelle.
+  // Kaan 2026-11-17: yalnız 3 kanal (site, Instagram, YouTube). Boş bırakılan link
+  // footer, iletişim sayfası ve sameAs şemasında görünmez.
   social: {
-    x: 'https://x.com/parafomo',
+    x: '',
     instagram: 'https://instagram.com/parafomo',
     youtube: 'https://www.youtube.com/@parafomo',
-    telegram: 'https://t.me/parafomo',
+    telegram: '',
   },
 };
 

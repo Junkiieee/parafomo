@@ -51,8 +51,19 @@ KAYNAK: %(source)s
 BÖLÜMLER:
 %(segments)s
 
-Çıktı: {"eyebrow": "≤22 krk üst etiket (ör. 'ŞOK VERİ', 'AÇIKLANDI')", "scenes": [{"type": "…", "head": "…", "data": {…}}, …]}
+Çıktı: {"eyebrow": "≤22 krk konu etiketi (ör. 'VERGİ DİLİMİ', 'TAKSİT TUZAĞI'; 'AÇIKLANDI' yalnız resmî açıklama videosunda)", "scenes": [{"type": "…", "head": "…", "data": {…}}, …]}
 %(feedback)s"""
+
+
+def ust_etiket(eb, kategori):
+    """Ekrandaki üst etiket. Açıklama yokken 'AÇIKLANDI/BELLİ OLDU' yanıltıcı (2026-11-17, #43 bordro videosu);
+    'MİT' ekranda istihbarat teşkilatı gibi okunur → 'YANLIŞ BİLİNEN'."""
+    tr = lambda x: (x or "").replace("i", "İ").replace("ı", "I").upper()   # Türkçe büyük harf: belli → BELLİ (BELLI değil)
+    kat = tr(kategori)
+    eb = tr(eb) or kat or "PARAFOMO"
+    if kat != "AÇIKLANDI" and ("AÇIKLAN" in eb or "BELLİ OLDU" in eb):
+        eb = kat or "PARAFOMO"
+    return "YANLIŞ BİLİNEN" if eb == "MİT" else eb
 
 
 def tr_numbers(text):
@@ -198,7 +209,7 @@ def main():
         sc["line"] = f"s{i}"
     piece = {"slug": scn["slug"], "title": scn["title"], "description": scn.get("description", ""), "tags": scn.get("tags", []),
              "format": scn.get("format", ""), "style": "isometric", "scene": "generic.js", "short": True,
-             "data": {"eyebrow": (out.get("eyebrow") or scn.get("category") or "PARAFOMO").upper(), "scenes": out["scenes"]},
+             "data": {"eyebrow": ust_etiket(out.get("eyebrow"), scn.get("category")), "scenes": out["scenes"]},
              "lines": lines}
     if scn.get("link"):
         piece["link"] = scn["link"]

@@ -190,7 +190,12 @@ const breadcrumbs = [
     display: none;
   }
 
-  .post-content { max-width: var(--maxw-prose); margin: 0 auto; font-size: 1.02rem; line-height: 1.7; }
+  /* width:100% + min-width:0: otomatik kenar boşluklu grid öğesi içeriğe göre daralıp en geniş tablonun boyuna büyüyordu
+     → telefonda bütün yazı sütunu yana taşıyordu (2026-11-17 taşma taraması). Geniş tablo artık kendi içinde kayar. */
+  .post-content { width: 100%; min-width: 0; max-width: var(--maxw-prose); margin: 0 auto; font-size: 1.02rem; line-height: 1.7; }
+  @media (max-width: 640px) {
+    .post-content :global(table) { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  }
   .post-content :global(h2) { font-size: var(--step-2); margin-top: 2.4rem; scroll-margin-top: 90px; }
   .post-content :global(h3) { font-size: var(--step-1); margin-top: 1.8rem; scroll-margin-top: 90px; }
   .post-content :global(h2 a), .post-content :global(h3 a) { color: inherit; }

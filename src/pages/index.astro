@@ -64,6 +64,7 @@ const ydKesin = yd.tebligOrani != null || yd.ekimVerisiGeldi;
 const auYeni = (asgari as any).yeni;
 const auNet = (auYeni ?? asgari.guncel).net as number;
 const ZAM: { slug: string; ad: string; deger: string }[] = [
+  { slug: '2027-zam-hesaplama', ad: 'Maaşın + kiran, Ocak 2027', deger: 'tek hesap' },
   { slug: 'emekli-refah-payi-seyyanen-zam', ad: 'Refah payı / seyyanen zam', deger: 'senaryo' },
   { slug: 'en-dusuk-emekli-maasi', ad: 'En düşük emekli maaşı', deger: `₺${(em as any).enDusukEmekliAyligi.tutar.toLocaleString('tr-TR')}` },
   { slug: 'yeniden-degerleme-orani', ad: `Yeniden değerleme ${yd.hedefYil}`, deger: `${ydKesin ? '' : '≈'}%${nf1(ydOran, ydKesin ? 2 : 1)}` },
@@ -433,7 +434,7 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
   .tc-foot { display: flex; justify-content: space-between; font-size: var(--step--2); color: var(--text-muted); margin-top: 0.9rem; padding-top: 0.7rem; border-top: 1px solid var(--border-soft); }
 
   .section { margin-top: clamp(3rem, 7vw, 5rem); }
-  .section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.35rem 1rem; margin-bottom: 1.5rem; }
   .section-head h2 { font-size: var(--step-2); margin: 0; }
   .muted-link { color: var(--text-muted); font-size: var(--step--1); font-weight: 600; }
   .muted-link:hover { color: var(--brand); }

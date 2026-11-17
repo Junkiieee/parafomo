@@ -50,6 +50,7 @@ KPI_YAS = 3 * 3600
 
 KONTROLLER = [
     ("video_uretim", "Gece video üretimi", "Her gece yeni videolar hazırlanır."),
+    ("hikaye_uretim", "Para hikâyeleri (otomatik)", "Her gece bir Para hikâyesi otomatik yazılır, kontrol edilir ve 19:00'da çıkar."),
     ("oto_onay", "Onaysız yayın", "Açıkken hazır videolar senin onayını beklemeden çıkar. Kapalıyken her video burada onayını bekler."),
     ("youtube", "YouTube yayını", "Hazır videolar yayın saatlerinde YouTube'a çıkar."),
     ("instagram", "Instagram paylaşımı", "Aynı videolar Instagram Reels (ve Facebook) olarak da paylaşılır."),

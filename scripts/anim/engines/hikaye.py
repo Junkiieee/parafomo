@@ -57,6 +57,11 @@ TEMA = {
 }
 
 
+def _yuzde(b):
+    """Birim yüzde mi? Türkçede yüzde işareti sayının ÖNÜNE yazılır (%21,2)."""
+    return (b or "").strip() == "%"
+
+
 def _vurgula(metin):
     """*kelime* → vurgu rengi; geri kalan kaçışlı."""
     parts = re.split(r"(\*[^*]+\*)", metin or "")
@@ -177,13 +182,16 @@ class Sahne:
     def sayi(self, sy):
         y = int(sy.get("y", 470))
         v = float(sy["deger"])
-        d = 0 if abs(v - round(v)) < 1e-9 else 1
+        d = 0 if abs(v - round(v)) < 1e-9 else (1 if abs(v * 10 - round(v * 10)) < 1e-9 else 2)   # 7,75 → 7,75 (7,8 değil)
         t = self.at(_t(self.line, sy.get("kelime"), 0.2))
         self.js.append(f"tl.fromTo('#s{self.i}sy', {{ opacity: 0, scale: 0.7 }}, {{ opacity: 1, scale: 1, duration: 0.25, "
                        f"ease: 'back.out(2)' }}, {t:.3f});")
-        self.parca.append(f'<div class="sayi" id="s{self.i}sy" style="top:{y}px"><span class="on">{E(sy.get("onek", ""))}</span>'
+        on, bir = sy.get("onek", ""), sy.get("birim", "")
+        if _yuzde(bir) and not on:   # Türkçe yazım: %21,2 (21,2% değil)
+            on, bir = "%", ""
+        self.parca.append(f'<div class="sayi" id="s{self.i}sy" style="top:{y}px"><span class="on">{E(on)}</span>'
                           f'<span id="s{self.i}n">{fmt_num(float(sy.get("bas", 0)) if sy.get("say", True) else v, d)}</span>'
-                          f'<span class="bir">{E(sy.get("birim", ""))}</span>'
+                          f'<span class="bir">{E(bir)}</span>'
                           f'{"<div class=not>" + E(sy["not"]) + "</div>" if sy.get("not") else ""}</div>')
         if sy.get("say", True):
             self.js.append(f"(() => {{ const o = {{ v: {float(sy.get('bas', 0))} }}; tl.to(o, {{ v: {v}, duration: 0.9, ease: 'power2.out', onUpdate: () => {{ "
@@ -206,8 +214,9 @@ class Sahne:
             o = c[taraf]
             h = 500 * float(o["deger"]) / mx
             bid = f"s{self.i}c{taraf}"
-            self.parca.append(f'<div class="cubuk" style="left:{x - 150}px"><div class="cd">{fmt_num(float(o["deger"]))} '
-                              f'<small>{E(c.get("birim", ""))}</small></div><div class="cb" id="{bid}" style="height:{h:.0f}px'
+            self.parca.append(f'<div class="cubuk" style="left:{x - 150}px"><div class="cd">'
+                              + (f'<small>%</small>{fmt_num(float(o["deger"]))}' if _yuzde(c.get("birim")) else
+                                 f'{fmt_num(float(o["deger"]))} <small>{E(c.get("birim", ""))}</small>') + f'</div><div class="cb" id="{bid}" style="height:{h:.0f}px'
                               f';background:{"#4fa3e0" if k == 0 else VURGU}"></div><div class="ce">{E(o["etiket"])}</div></div>')
             self.js.append(f"tl.fromTo('#{bid}', {{ scaleY: 0 }}, {{ scaleY: 1, duration: 0.6, ease: 'power2.out', "
                            f"transformOrigin: '50% 100%' }}, {self.s + 0.2 + k * 0.35:.3f});")
@@ -217,6 +226,8 @@ class Sahne:
     def gosterge(self, g):
         bas, son = float(g.get("bas", 0)), float(g["son"])
         t = self.at(_t(self.line, g.get("kelime"), 0.25))
+        gd = (f'<div class="gd">%<span id="s{self.i}gv">{fmt_num(bas)}</span></div>' if _yuzde(g.get("birim")) else
+              f'<div class="gd"><span id="s{self.i}gv">{fmt_num(bas)}</span> {E(g.get("birim", ""))}</div>')
         self.parca.append(f'<div class="gosterge"><svg viewBox="0 0 400 260" width="520" height="338">'
                           f'<path d="M40 220 A160 160 0 0 1 360 220" stroke="#ffffff22" stroke-width="34" fill="none" stroke-linecap="round"/>'
                           f'<path d="M40 220 A160 160 0 0 1 360 220" stroke="url(#gr{self.i})" stroke-width="34" fill="none" '
@@ -225,7 +236,7 @@ class Sahne:
                           f'stroke-width="10" stroke-linecap="round"/></g><circle cx="200" cy="220" r="18" fill="#fff"/>'
                           f'<defs><linearGradient id="gr{self.i}"><stop offset="0" stop-color="#5fd39b"/><stop offset=".6" '
                           f'stop-color="#ffb547"/><stop offset="1" stop-color="#ff6b5b"/></linearGradient></defs></svg>'
-                          f'<div class="gd"><span id="s{self.i}gv">{fmt_num(bas)}</span> {E(g.get("birim", ""))}</div>'
+                          f'{gd}'
                           f'{"<div class=not>" + _vurgula(g["not"]) + "</div>" if g.get("not") else ""}</div>')
         oran = 100 * (son - bas) / max(1e-9, float(g.get("tavan", son)) - bas)
         self.js.append(f"tl.fromTo('#s{self.i}ib', {{ rotation: -90 }}, {{ rotation: {-90 + 180 * oran / 100:.1f}, duration: 1.1, "

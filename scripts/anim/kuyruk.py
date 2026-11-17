@@ -179,12 +179,23 @@ def guncel_veriler():
 def uret(a):
     if not panel_acik("video_uretim") and not a.dry:
         print("[üret] panelden durduruldu (Gece video üretimi kapalı)"); return 0
+    # 2026-11-17 (Kaan: otomatik sistem + Para hikâyeleri planı onaylı): gecenin İLK videosu otomatik "Para hikâyesi"
+    # (scripts/anim/hikaye_uret.py: doğrulanmış veri paketi → senaryo kitabı → kontrol listesi → hikaye motoru → kuyruk).
+    # Kalanlar eski hat (karşılaştırma grubu). q bundan SONRA okunur: hikaye_uret kuyruğa kendisi yazar.
+    hikaye_ok = 0
+    if not a.dry and a.adet >= 1 and panel_acik("hikaye_uretim"):
+        try:
+            r = run([PY, os.path.join(ROOT, "scripts", "anim", "hikaye_uret.py"), "--kuyruk"], timeout=4200)
+            print(r.stdout[-800:], r.stderr[-400:])
+            hikaye_ok = 1 if r.returncode == 0 else 0
+        except subprocess.TimeoutExpired:
+            print("[üret] Para hikâyesi zaman aşımı — eski hatla devam")
     q = load()
     day = now().date()
     taken = {it["style"] for it in q["items"] if it.get("created", "")[:10] == day.isoformat()}
-    n_done = 0
     taken_t = {it.get("teknik") for it in q["items"] if it.get("created", "")[:10] == day.isoformat()}
-    for k in range(a.adet):
+    n_done = hikaye_ok
+    for k in range(a.adet - hikaye_ok):
         topic, w = pick_topic(q, day)
         teknik = pick_teknik(q, taken_t)
         style = pick_style(q, taken, k) if teknik == "iso" else teknik
@@ -309,8 +320,12 @@ def yayinla(a):
         print("[yayın] panelden durduruldu (YouTube yayını kapalı) — videolar sırada bekliyor"); return 0
     if not sira:
         print("[yayın] bugün çıkacak onaylı video yok"); return 0
-    # tarihi bugün olan (seri bölümü) önce; sonra onay sırası
-    it = sorted(sira, key=lambda x: (x.get("yayin_tarihi", "") != gun, x.get("approved", "")))[0]
+    # ŞERİT (2026-11-17): 19:00 (16 UTC) Para hikâyeleri, 21:00 (18 UTC) diğerleri (Defter, eski hat). Şerit içinde tarihi
+    # bugün olan (seri bölümü, olay videosu) önce, sonra onay sırası. Her gece 1 hikâye + 1 eski hat üretilir; şerit
+    # olmasa biri diğerini aç bırakır, tarih önde olsa haftalık Defter günleri hikâye şeridini her hafta bir gün kaydırırdı.
+    serit_hikaye = now().hour < 17
+    it = sorted(sira, key=lambda x: ((x.get("style") == "hikaye") != serit_hikaye, x.get("yayin_tarihi", "") != gun,
+                                     x.get("approved", "")))[0]
     slug = it["slug"]
     env = {"ONAYLI_YAYIN": "1"}   # PUBLISH_PAUSED bayrağı yalnız onaylı yayına izin verir
     if a.dry:

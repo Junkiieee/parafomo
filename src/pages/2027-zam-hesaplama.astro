@@ -1,0 +1,317 @@
+---
+// 2027 Zam Hesaplama (F10, 2026-11-17): zam sezonunun merkez sayfası — gelir türü + net gelir + kira → Ocak 2027'de elde kalan.
+// Oranlar diğer sayfalarla AYNI kaynaktan: emekli/memur → src/data/zam2027.ts, asgari ücret → data/asgari-ucret.json
+// (yeni açıklanınca otomatik resmî rakam), kira tavanı → data/kira-artis-2026.json. Burada yeni tahmin üretilmez.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import au from '../../data/asgari-ucret.json';
+import kira from '../../data/kira-artis-2026.json';
+import tufe from '../../data/tufe-aylik.json';
+import tuik from '../../data/tuik-enflasyon-2026.json';
+import { cumKnown, remaining, ASSUME, sskProj, memurProj, knownKeys } from '../data/zam2027';
+
+const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const final = remaining === 0;
+
+const ASG_NET = au.guncel.net;                                        // 2026 net asgari ücret
+const ASG_YENI = (au as { yeni?: { net?: number; brut?: number } | null }).yeni;
+const ASG_YENI_NET = ASG_YENI ? (ASG_YENI.net ?? (ASG_YENI.brut ? ASG_YENI.brut * 0.85 : null)) : null;
+const ASG_SENARYO = [20, 25, 30];
+const ASG_GECMIS = au.gecmis.slice(0, 2);                             // son iki açıklama (tarih + artış)
+const KIRA_ORAN = kira.guncelOran;
+const sonTufe = [...tufe.months].sort((a, b) => (a.ay < b.ay ? 1 : -1))[0];
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const sonTufeAd = `${AYLAR[+sonTufe.ay.slice(5) - 1]} ${sonTufe.ay.slice(0, 4)}`;
+const kasimTarih = (tuik.releases.find((r: { covers: string }) => r.covers === 'Kasım 2026') as { date: string } | undefined)?.date;
+const tarihAd = (d?: string) => (d ? new Date(d + 'T10:00:00+03:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }) : '');
+
+const D = { gelir: 25000, kira: 15000 };
+const ornek = { yeni: D.gelir * (1 + sskProj), kira: D.kira * (1 + KIRA_ORAN / 100) };
+
+const faq = [
+  {
+    q: '2027 zamları ne zaman belli olur?',
+    a: `SSK, Bağ-Kur ve memur zammı Aralık 2026 enflasyonu açıklanınca (Ocak 2027'nin ilk iş günleri) kesinleşir; ${kasimTarih ? `ondan önce Kasım enflasyonu ${tarihAd(kasimTarih)} tarihinde açıklanır` : 'ondan önce Kasım enflasyonu Aralık başında açıklanır'}. 2027 asgari ücreti ${ASG_YENI_NET ? 'açıklandı' : `henüz açıklanmadı; son iki yıl ${ASG_GECMIS.map((g) => g.tarih).join(' ve ')} tarihlerinde açıklanmıştı`}.`,
+  },
+  {
+    q: '2027 asgari ücret ne kadar olacak?',
+    a: ASG_YENI_NET
+      ? `2027 net asgari ücreti ${fmt(ASG_YENI_NET)} TL olarak açıklandı (2026: ${fmt(ASG_NET)} TL).`
+      : `Henüz açıklanmadı. Bugünkü net asgari ücret ${fmt(ASG_NET)} TL; senaryo olarak %20 artışla ${fmt(ASG_NET * 1.2)} TL, %25 artışla ${fmt(ASG_NET * 1.25)} TL, %30 artışla ${fmt(ASG_NET * 1.3)} TL olur. Son iki yılın artışları %${ASG_GECMIS[1].artis} ve %${ASG_GECMIS[0].artis} idi. Bunlar tahmin değil, senaryodur.`,
+  },
+  {
+    q: 'Kira zammı 2027 Ocak’ta yüzde kaç olacak?',
+    a: `Konut kirası en fazla 12 aylık TÜFE ortalaması kadar artırılabilir (Türk Borçlar Kanunu md. 344). ${kira.guncelAy}'da yenilenen sözleşmelerde tavan %${nf(KIRA_ORAN)}. Ocak 2027'de yenilenecek sözleşmelerin tavanı Aralık enflasyonuyla birlikte Ocak başında açıklanır; bu hesap son açıklanan tavanı kullanır.`,
+  },
+  {
+    q: 'Bu hesap kesin mi?',
+    a: final
+      ? `Emekli ve memur oranları kesinleşti. Asgari ücret ve kira tavanı açıklanan son rakamlara göredir; özel sektör zammı senin girdiğin orandır.`
+      : `Hayır, tahmindir. Emekli ve memur zammında kesinleşen kısım %${nf(cumKnown * 100)}; kalan ${remaining} ay için aylık %${nf(ASSUME)} (son 3 ay ortalaması) varsayıldı. Kira için son açıklanan tavan, asgari ücret için senaryo kullanılır.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: '2027 Zam Hesaplama', url: '/2027-zam-hesaplama/' },
+];
+---
+
+<BaseLayout
+  title={`2027 Zam Hesaplama: Ocak'ta Maaşın ve Kiran Ne Olacak?`}
+  description={`Emekli zammı ${final ? '' : 'tahmini '}%${nf(sskProj * 100)}, memur %${nf(memurProj.zam * 100)}, kira tavanı %${nf(KIRA_ORAN)}${ASG_YENI_NET ? `, asgari ücret ${fmt(ASG_YENI_NET)} TL` : ', asgari ücret senaryoları'} tek hesapta. Gelirini ve kiranı gir, Ocak 2027'de elinde ne kalacağını gör.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Hesaplayıcı · Ocak 2027</p>
+      <h1>2027 Zam Hesaplama: Maaşın ve Kiran Ocak'ta Ne Olacak?</h1>
+      <p class="lede">
+        Zam gelir, kira da artar. Gelir türünü, net gelirini ve kiranı gir; Ocak 2027'de <strong>kiradan sonra elinde
+        ne kalacağını</strong> tek hesapta gör. Oranlar resmî verilerden, her açıklamada kendiliğinden güncellenir.
+      </p>
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="kpi-label">SSK / Bağ-Kur {final ? 'zammı' : 'tahmini'}</span>
+        <span class="kpi-val">%{nf(sskProj * 100)}</span>
+        <span class="kpi-sub">{final ? 'kesinleşti' : `${knownKeys.length}/6 ay kesin: %${nf(cumKnown * 100)}`}</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Memur {final ? 'zammı' : 'tahmini'}</span>
+        <span class="kpi-val">%{nf(memurProj.zam * 100)}</span>
+        <span class="kpi-sub">%5 toplu sözleşme + enflasyon farkı</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Kira artış tavanı</span>
+        <span class="kpi-val">%{nf(KIRA_ORAN)}</span>
+        <span class="kpi-sub">{kira.guncelAy} yenilemeleri · 12 aylık TÜFE ort.</span>
+      </div>
+    </div>
+
+    <div class="calc-grid">
+      <form class="calc-inputs" id="calc-form" autocomplete="off">
+        <label>
+          <span>Gelir türün</span>
+          <select id="in-tur">
+            <option value="ssk">SSK (4/a) veya Bağ-Kur (4/b) emeklisi</option>
+            <option value="memur">Memur veya memur emeklisi</option>
+            <option value="asgari">Asgari ücretli</option>
+            <option value="ozel">Özel sektör çalışanı (zam oranını sen gir)</option>
+          </select>
+        </label>
+        <label>
+          <span>Bugünkü aylık net gelirin (₺)</span>
+          <input type="number" id="in-gelir" value={D.gelir} min="0" step="500" inputmode="numeric" />
+        </label>
+        <label id="lb-asg" hidden>
+          <span>Asgari ücret {ASG_YENI_NET ? '(açıklandı)' : 'senaryosu'} <em class="hint">{ASG_YENI_NET ? '' : '— henüz açıklanmadı'}</em></span>
+          <select id="in-asg" disabled={!!ASG_YENI_NET}>
+            {ASG_YENI_NET
+              ? <option value="resmi">Resmî: {fmt(ASG_YENI_NET)} TL net</option>
+              : ASG_SENARYO.map((x) => <option value={x} selected={x === 25}>%{x} artış senaryosu</option>)}
+          </select>
+        </label>
+        <label id="lb-ozel" hidden>
+          <span>Beklediğin zam oranı (%) <em class="hint">— yıllık enflasyon {sonTufeAd}: %{nf(sonTufe.yillik)}</em></span>
+          <input type="number" id="in-ozel" value={Math.round(sonTufe.yillik)} min="0" max="200" step="1" inputmode="decimal" />
+        </label>
+        <label>
+          <span>Aylık kiran (₺) <em class="hint">— kiracı değilsen 0 yaz</em></span>
+          <input type="number" id="in-kira" value={D.kira} min="0" step="500" inputmode="numeric" />
+        </label>
+      </form>
+
+      <div class="calc-results" aria-live="polite">
+        <div class="result-main">
+          <span class="result-label">Ocak 2027 aylık gelirin (tahmini)</span>
+          <span class="result-value" id="out-yeni">₺{fmt(ornek.yeni)}</span>
+        </div>
+        <div class="result-split">
+          <div class="split-item"><span class="split-label">Zam oranı</span><span class="split-val" id="out-oran">%{nf(sskProj * 100)}</span></div>
+          <div class="split-item"><span class="split-label">Aylık artış</span><span class="split-val" id="out-artis">+₺{fmt(ornek.yeni - D.gelir)}</span></div>
+          <div class="split-item" id="row-kira"><span class="split-label">Kira yenilenince en fazla</span><span class="split-val" id="out-kira">₺{fmt(ornek.kira)}</span></div>
+          <div class="split-item" id="row-kalan"><span class="split-label">Kiradan sonra kalan</span><span class="split-val" id="out-kalan">₺{fmt(D.gelir - D.kira)} → ₺{fmt(ornek.yeni - ornek.kira)}</span></div>
+        </div>
+        <p class="result-note" id="out-not">Zammın kira artışından fazla.</p>
+        <a class="btn-share" id="out-share" href="#" rel="noopener" target="_blank">Sonucu WhatsApp'ta paylaş</a>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Bilgilendirme amaçlıdır, kesin değildir. Emekli ve memur oranı {final ? 'kesinleşti' : `Aralık 2026 enflasyonu açıklanınca kesinleşir (kesin kısım %${nf(cumKnown * 100)}, kalan ${remaining} ay %${nf(ASSUME)}/ay varsayımı)`};
+      kira için son açıklanan tavan ({kira.guncelAy}: %{nf(KIRA_ORAN)}) kullanılır, kendi yenileme ayının tavanı o ayın başında açıklanır;
+      ev sahibi tavanın altında da artırabilir. Kaynak: TÜİK TÜFE, Resmî Gazete, Türk Borçlar Kanunu md. 344.
+    </p>
+
+    <section class="table-block">
+      <h2>Zam takvimi: hangi rakam ne zaman belli olur?</h2>
+      <table class="rate-table">
+        <thead><tr><th>Tarih</th><th>Açıklanacak</th><th>Neyi belirler?</th></tr></thead>
+        <tbody>
+          <tr><td>{kasimTarih ? tarihAd(kasimTarih) : 'Aralık başı'}</td><td>Kasım enflasyonu (TÜİK)</td><td>Emekli ve memur zammının 5. ayı; Aralık yenilemelerinin kira tavanı</td></tr>
+          <tr><td>{ASG_YENI_NET ? 'Açıklandı' : 'Aralık sonu (beklenen)'}</td><td>2027 asgari ücret</td><td>Asgari ücretli maaşı{ASG_YENI_NET ? '' : `; son iki yıl ${ASG_GECMIS.map((g) => g.tarih).join(' ve ')}`}</td></tr>
+          <tr><td>Ocak 2027 başı</td><td>Aralık enflasyonu (TÜİK)</td><td>SSK, Bağ-Kur ve memur zammı kesinleşir; Ocak yenilemelerinin kira tavanı</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">Açıklama günlerinde bu sayfa ve ayrıntılı hesaplayıcılar aynı gün güncellenir.</p>
+    </section>
+
+    <section class="prose-block">
+      <h2>Ayrıntılı hesaplayıcılar</h2>
+      <p>
+        Emekliler için <a href="/emekli-zammi-hesaplama/">emekli zammı hesaplama</a>,
+        <a href="/en-dusuk-emekli-maasi/">en düşük emekli maaşı</a> ve
+        <a href="/emekli-refah-payi-seyyanen-zam/">refah payı ve seyyanen zam senaryoları</a>;
+        çalışanlar için <a href="/memur-zammi-hesaplama/">memur zammı hesaplama</a>,
+        <a href="/asgari-ucret-hesaplama/">asgari ücret hesaplama</a> ve
+        <a href="/vergi-dilimi-hesaplama/">vergi dilimi hesaplama</a>;
+        kiracılar için <a href="/kira-artis-orani-hesaplama/">kira artış oranı hesaplama</a>.
+        Sosyal ödemeler: <a href="/evde-bakim-maasi/">evde bakım maaşı</a> ve <a href="/engelli-maasi/">engelli maaşı</a>.
+        Harç ve vergiler: <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı 2027</a> ve <a href="/mtv-hesaplama/">MTV 2027</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ SSK: sskProj, MEMUR: memurProj.zam, KIRA: KIRA_ORAN / 100, ASG_NET, ASG_YENI_NET, FINAL: final }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const nf2 = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const tl = (n) => '₺' + nf0.format(Math.round(n));
+      let gelirElle = false;
+      function oranBul(tur) {
+        if (tur === 'ssk') return { oran: SSK, ad: 'SSK/Bağ-Kur emeklisi', not: FINAL ? 'kesin' : 'tahmini' };
+        if (tur === 'memur') return { oran: MEMUR, ad: 'Memur', not: FINAL ? 'kesin' : 'tahmini' };
+        if (tur === 'asgari') {
+          if (ASG_YENI_NET) return { oran: ASG_YENI_NET / ASG_NET - 1, ad: 'Asgari ücretli', not: 'resmî' };
+          return { oran: (+$('in-asg').value || 0) / 100, ad: 'Asgari ücretli', not: 'senaryo' };
+        }
+        return { oran: (+$('in-ozel').value || 0) / 100, ad: 'Özel sektör çalışanı', not: 'kendi tahminim' };
+      }
+      function update() {
+        const tur = $('in-tur').value;
+        $('lb-asg').hidden = tur !== 'asgari';
+        $('lb-ozel').hidden = tur !== 'ozel';
+        const gelir = Math.max(0, +$('in-gelir').value || 0);
+        const kira = Math.max(0, +$('in-kira').value || 0);
+        const o = oranBul(tur);
+        const yeni = gelir * (1 + o.oran);
+        const kiraYeni = kira * (1 + KIRA);
+        const fark = (yeni - kiraYeni) - (gelir - kira);
+        $('out-yeni').textContent = tl(yeni);
+        $('out-oran').textContent = '%' + nf2.format(o.oran * 100) + (o.not === 'kesin' || o.not === 'resmî' ? '' : ' (' + o.not + ')');
+        $('out-artis').textContent = '+' + tl(yeni - gelir);
+        $('row-kira').hidden = kira === 0;
+        $('row-kalan').hidden = kira === 0;
+        $('out-kira').textContent = tl(kiraYeni);
+        $('out-kalan').textContent = tl(gelir - kira) + ' → ' + tl(yeni - kiraYeni);
+        // Emekli ve memur aylıkları yılda iki kez (Ocak + Temmuz) artar, kira yılda bir kez: karşılaştırma Ocak–Haziran içindir.
+        const yarim = tur === 'ssk' || tur === 'memur';
+        const donem = yarim ? ' (Ocak–Haziran; Temmuz\'da aylıklar yeniden artar)' : '';
+        let not;
+        if (kira === 0) not = 'Kira girmedin; yalnız gelir artışı gösteriliyor.';
+        else if (gelir - kira <= 0) not = 'Kiran gelirine eşit ya da fazla; gelirini ve kiranı kontrol et.';
+        else if (fark >= 0) not = 'Kira tavandan artsa bile zammın kira artışından ayda yaklaşık ' + tl(fark) + ' fazla' + donem + '.';
+        else not = 'Kira tavandan artarsa artış zammını ayda yaklaşık ' + tl(-fark) + ' aşar' + donem + '.';
+        $('out-not').textContent = not;
+        const metin = o.ad + ' olarak Ocak 2027\'de gelirim yaklaşık ' + nf0.format(Math.round(yeni)) + ' TL\'ye çıkıyor (%' + nf2.format(o.oran * 100) +
+          (o.not === 'kesin' || o.not === 'resmî' ? '' : ', ' + o.not) + ').' +
+          (kira > 0 ? ' Kira tavandan artarsa kiradan sonra elimde ' + (fark >= 0 ? 'ayda ' + nf0.format(Math.round(fark)) + ' TL fazla' : 'ayda ' + nf0.format(Math.round(-fark)) + ' TL az') + ' kalıyor' + (yarim ? ' (Ocak–Haziran)' : '') + '.' : '') +
+          ' Kendi hesabın: https://parafomo.com/2027-zam-hesaplama/?tur=' + tur + '&gelir=' + Math.round(gelir) + '&kira=' + Math.round(kira) +
+          '&utm_source=whatsapp&utm_medium=share&utm_campaign=sonuc';
+        $('out-share').href = 'https://wa.me/?text=' + encodeURIComponent(metin);
+      }
+      const q = new URLSearchParams(location.search);
+      if (['ssk', 'memur', 'asgari', 'ozel'].includes(q.get('tur'))) $('in-tur').value = q.get('tur');
+      const qg = parseFloat(q.get('gelir')), qk = parseFloat(q.get('kira'));
+      if (Number.isFinite(qg) && qg > 0) { $('in-gelir').value = qg; gelirElle = true; }
+      if (Number.isFinite(qk) && qk >= 0) $('in-kira').value = qk;
+      if ($('in-tur').value === 'asgari' && !gelirElle) $('in-gelir').value = Math.round(ASG_NET);
+      $('in-gelir').addEventListener('input', () => { gelirElle = true; });
+      $('in-tur').addEventListener('change', () => {
+        if ($('in-tur').value === 'asgari' && !gelirElle) $('in-gelir').value = Math.round(ASG_NET);
+      });
+      ['in-tur', 'in-gelir', 'in-asg', 'in-ozel', 'in-kira'].forEach((id) => { const el = $(id); if (el) { el.addEventListener('input', update); el.addEventListener('change', update); } });
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin: 0 0 1rem; }
+    .kpi { display: flex; flex-direction: column; gap: 0.15rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-xs); }
+    .kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .kpi-val { font-family: var(--font-serif); font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.1rem); font-weight: 700; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .kpi-sub { font-size: 0.78rem; color: var(--text-soft); line-height: 1.35; }
+
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs label[hidden] { display: none; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; }
+    .calc-inputs input, .calc-inputs select { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+
+    .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 1rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 700; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.55rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-item[hidden] { display: none; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; text-align: right; }
+    .result-note { font-size: 0.85rem; color: var(--brand-ink); margin: 0; font-weight: 600; }
+
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin: 1.2rem 0 2.5rem; line-height: 1.5; }
+
+    .table-block { margin-top: 2.5rem; overflow-x: auto; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.7rem 0 0; }
+
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+
+    .btn-share { display: inline-block; align-self: flex-start; padding: 0.7rem 1.1rem; border-radius: 10px; background: #25d366; color: #073b20; font-weight: 700; text-decoration: none; }
+    .btn-share:hover { filter: brightness(0.95); }
+
+    @media (max-width: 680px) {
+      .kpi-row { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: 1fr; }
+      .rate-table { font-size: 0.85rem; }
+    }
+  </style>
+</BaseLayout>

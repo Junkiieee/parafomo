@@ -58,7 +58,7 @@ def slayt_html(s, tema, no, toplam):
         for k, (t, x) in enumerate((("a", 330), ("b", 750))):
             o = c[t]
             h = 420 * float(o["deger"]) / mx
-            parca.append(f'<div class="cubuk" style="left:{x - 110}px"><div class="cd">{E(o.get("yazi", str(o["deger"])))}</div>'
+            parca.append(f'<div class="cubuk" style="left:{x - 150}px"><div class="cd">{E(o.get("yazi", str(o["deger"])))}</div>'
                          f'<div class="cb" style="height:{h:.0f}px;background:{"#4fa3e0" if k == 0 else "#ffb547"}"></div>'
                          f'<div class="ce">{E(o["etiket"])}</div></div>')
     baslik = "<br>".join(vurgula(x) for x in s.get("baslik", []))
@@ -80,9 +80,9 @@ body {{ background: {TEMA.get(tema, TEMA['gece'])}; color: #fff; font-family: In
 .sayi {{ position: absolute; left: 0; right: 0; text-align: center; font-family: AntonP, sans-serif; font-size: 200px; line-height: 1; }}
 .sayi span {{ font-size: 96px; color: #ffb547; margin-left: 14px; }}
 .sayi .not {{ font-family: InterP, sans-serif; font-weight: 700; font-size: 44px; margin-top: 10px; }}
-.cubuk {{ position: absolute; top: 330px; width: 220px; height: 620px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }}
+.cubuk {{ position: absolute; top: 330px; width: 300px; height: 620px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }}
 .cubuk .cb {{ width: 180px; border-radius: 18px 18px 6px 6px; }}
-.cubuk .cd {{ font-family: AntonP, sans-serif; font-size: 72px; margin-bottom: 12px; }}
+.cubuk .cd {{ font-family: AntonP, sans-serif; font-size: 66px; margin-bottom: 12px; white-space: nowrap; }}
 .cubuk .ce {{ font-weight: 700; font-size: 40px; margin-top: 14px; color: #f4c26b; }}
 .kaynak {{ position: absolute; left: 60px; right: 60px; bottom: 120px; text-align: center; font-weight: 600; font-size: 28px; color: rgba(255,255,255,.75); }}
 .alt {{ position: absolute; left: 0; right: 0; bottom: 48px; text-align: center; font-weight: 700; font-size: 32px; color: #ffb547; }}

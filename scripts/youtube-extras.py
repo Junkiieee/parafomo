@@ -38,8 +38,14 @@ PLAYLIST_TITLES = {
     "event_result": "Açıklandı: Faiz, Enflasyon ve Zamlar",
     # karakterli haftalık seri (scripts/anim/kits/defter.js)
     "ekonomi_defteri": "Ekonomi Defteri",
+    # 2026-11-17: karakterli kısa animasyon hikâyeler (scripts/anim/engines/hikaye.py, otomatik hat hikaye_uret.py)
+    "para_hikayesi": "Para Hikâyeleri",
 }
 DEFAULT_PL = "ParaFOMO Shorts"
+PLAYLIST_DESC = {
+    "Para Hikâyeleri": "Paranın başına gelenler: eriyen yüzlük, şişip küçülen maaş zarfı, enflasyon canavarı... "
+                       "Resmî rakamlarla (TÜİK, Resmî Gazete, TCMB) 40 saniyelik animasyon hikâyeler. Yatırım tavsiyesi değildir.",
+}
 
 BLOG_DIR = os.path.join(ROOT, "src", "content", "blog")
 
@@ -106,7 +112,7 @@ def ensure_playlist(yt, fmt):
     resp = yt.playlists().insert(
         part="snippet,status",
         body={"snippet": {"title": title,
-                          "description": f"ParaFOMO — {title}. Günlük finans Shorts'ları."},
+                          "description": PLAYLIST_DESC.get(title, f"ParaFOMO — {title}. Günlük finans Shorts'ları.")},
               "status": {"privacyStatus": "public"}}).execute()
     cache[title] = resp["id"]; _save_pl_cache(cache)
     return resp["id"], title
