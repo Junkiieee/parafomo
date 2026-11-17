@@ -1,5 +1,9 @@
 # Günlük Operasyon Günlüğü
 
+## 2026-11-17
+**Yayınlanan yazı:** [Konut Kredisi Faiz Oranları 2026: Son 1 Yılda Ne Değişti?](/blog/konut-kredisi-faiz-oranlari-2026-son-1-yil)
+Seçim kaynağı: fırsat motoru ("konut kredisi faiz oranları" hacim 19,6, YENI_YAZI; kuyruk+backlog boş, takvimde izinli 🔴 olay yok (FOMC tutanakları aile dışı, yazısı mevcut), GSC fırsatları mevcut sayfalarca karşılanıyor; araçtan ayrışan açı: TCMB TP.KTF12 52 haftalık seri + dönem bazlı taksit farkı)
+
 ## 2026-11-16
 **Yayınlanan yazı:** [ABD Perakende Satışları 17 Kasım: Ekim Verisi, Fed, Altın](/blog/abd-ekim-2026-perakende-satislar-fed-dolar-altin)
 Seçim kaynağı: takvim (🔴 ABD Retail Sales 17 Kasım 16:30 TSİ; kuyruk boş, GSC fırsatları mevcut sayfalarca karşılanıyor; öğrenme raporunda ABD veri günü yazıları en iyi; Eylül rakamları Census resmî PDF'inden, konsensüs bulunamadı → uydurulmadı)
