@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-16T06:00+00:00",
+  "updated": "2026-11-17T06:00+00:00",
   "source": "Yahoo Finance (SI=F ons gümüş, GC=F ons altın, USDTRY=X kur); gram = ons/31.1035 × USDTRY",
-  "gram_tl_now": 76.33,
-  "oz_usd_now": 47.22,
+  "gram_tl_now": 77.21,
+  "oz_usd_now": 47.76,
   "gold_silver_ratio_now": 81.4,
   "gold_silver_ratio_min": 60.6,
   "gold_silver_ratio_max": 113.0,
@@ -10,56 +10,56 @@
   "ytd": {
     "label": "Yıl başından beri",
     "gram_tl_then": 96.85,
-    "gram_tl_now": 76.33,
-    "return_tl_pct": -21.2,
+    "gram_tl_now": 77.21,
+    "return_tl_pct": -20.3,
     "oz_usd_then": 70.13,
-    "oz_usd_now": 47.22,
-    "return_usd_pct": -32.7
+    "oz_usd_now": 47.76,
+    "return_usd_pct": -31.9
   },
   "periods": [
     {
       "label": "1 yıl",
       "years": 1,
       "gram_tl_then": 77.12,
-      "gram_tl_now": 76.33,
-      "return_tl_pct": -1.0,
+      "gram_tl_now": 77.21,
+      "return_tl_pct": 0.1,
       "oz_usd_then": 56.45,
-      "oz_usd_now": 47.22,
-      "return_usd_pct": -16.4,
+      "oz_usd_now": 47.76,
+      "return_usd_pct": -15.4,
       "gold_silver_ratio_then": 75.4
     },
     {
       "label": "3 yıl",
       "years": 3,
       "gram_tl_then": 23.53,
-      "gram_tl_now": 76.33,
-      "return_tl_pct": 224.3,
+      "gram_tl_now": 77.21,
+      "return_tl_pct": 228.1,
       "oz_usd_then": 25.29,
-      "oz_usd_now": 47.22,
-      "return_usd_pct": 86.7,
+      "oz_usd_now": 47.76,
+      "return_usd_pct": 88.8,
       "gold_silver_ratio_then": 80.6
     },
     {
       "label": "5 yıl",
       "years": 5,
       "gram_tl_then": 9.29,
-      "gram_tl_now": 76.33,
-      "return_tl_pct": 721.2,
+      "gram_tl_now": 77.21,
+      "return_tl_pct": 730.7,
       "oz_usd_then": 22.76,
-      "oz_usd_now": 47.22,
-      "return_usd_pct": 107.4,
+      "oz_usd_now": 47.76,
+      "return_usd_pct": 109.8,
       "gold_silver_ratio_then": 77.9
     },
     {
       "label": "10 yıl",
       "years": 10,
-      "gram_tl_then": 1.77,
-      "gram_tl_now": 76.33,
-      "return_tl_pct": 4202.8,
-      "oz_usd_then": 17.76,
-      "oz_usd_now": 47.22,
-      "return_usd_pct": 165.8,
-      "gold_silver_ratio_then": 71.6
+      "gram_tl_then": 1.8,
+      "gram_tl_now": 77.21,
+      "return_tl_pct": 4193.3,
+      "oz_usd_then": 16.41,
+      "oz_usd_now": 47.76,
+      "return_usd_pct": 191.1,
+      "gold_silver_ratio_then": 71.4
     }
   ],
   "yearly": [
@@ -125,6 +125,6 @@
     }
   ],
   "headline_years": 10,
-  "headline_return_tl_pct": 4202.8,
-  "headline_return_usd_pct": 165.8
+  "headline_return_tl_pct": 4193.3,
+  "headline_return_usd_pct": 191.1
 }

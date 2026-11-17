@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-16T06:00+00:00",
+  "updated": "2026-11-17T06:00+00:00",
   "source": "Yahoo Finance (USDTRY=X kur, aylık kapanış)",
   "usdtry_now": 50.2819,
   "ytd": {
@@ -33,11 +33,11 @@
     {
       "label": "10 yıl",
       "years": 10,
-      "usdtry_then": 3.1063,
+      "usdtry_then": 3.4094,
       "usdtry_now": 50.2819,
-      "return_tl_pct": 1518.7
+      "return_tl_pct": 1374.8
     }
   ],
   "headline_years": 10,
-  "headline_return_tl_pct": 1518.7
+  "headline_return_tl_pct": 1374.8
 }

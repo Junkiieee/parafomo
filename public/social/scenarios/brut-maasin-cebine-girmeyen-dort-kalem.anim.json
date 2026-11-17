@@ -1,0 +1,104 @@
+{
+ "slug": "brut-maasin-cebine-girmeyen-dort-kalem",
+ "title": "Brüt maaşın cebine girmeyen dört kalem",
+ "description": "Sözleşmedeki brüt maaş hesabına yatmaz. SGK, işsizlik sigortası, gelir vergisi ve damga vergisi düşülür; bütçeyi nete göre kurmak gerekir.",
+ "tags": [
+  "brüt maaş",
+  "net maaş",
+  "SGK",
+  "gelir vergisi",
+  "damga vergisi",
+  "işsizlik sigortası",
+  "parafomo"
+ ],
+ "format": "myth",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "YANLIŞ BİLİNEN",
+  "scenes": [
+   {
+    "type": "icon_text",
+    "head": "Sözleşme ≠ cebine giren",
+    "data": {
+     "icon": "cash",
+     "text": "Sözleşmedeki maaş *cebine girmiyor*"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "steps",
+    "head": "Brütten düşen kalemler",
+    "data": {
+     "items": [
+      "SGK + İŞSİZLİK",
+      "GELİR VERGİSİ",
+      "DAMGA VERGİSİ"
+     ]
+    },
+    "line": "s1"
+   },
+   {
+    "type": "icon_text",
+    "head": "Teklif brütle söylenir",
+    "data": {
+     "icon": "percent",
+     "text": "Aynı görünen iki maaş, *cebe farklı* girer"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "steps",
+    "head": "Bütçeyi netle kur",
+    "data": {
+     "items": [
+      "KİRAYI NETTEN YAP",
+      "KREDİYİ NETTEN YAP",
+      "HER AY YATANI SAY"
+     ]
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Bordroya baktın mı?",
+    "data": {
+     "l1": "BORDRONA BAK",
+     "l2": "NE KESİLİYOR?",
+     "sub": "NET MAAŞ HESAPLAMA · ÜCRETSİZ"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Sözleşmedeki maaş cebine girmiyor.",
+   "cap": "Sözleşmedeki maaş cebine girmiyor."
+  },
+  {
+   "id": "s1",
+   "say": "Sözleşmedeki rakam brüt. Önce dört kalem düşülüyor: SGK, işsizlik sigortası, gelir vergisi, damga vergisi.",
+   "cap": "Sözleşmedeki rakam brüt. Önce dört kalem düşülüyor: SGK, işsizlik sigortası, gelir vergisi, damga vergisi."
+  },
+  {
+   "id": "s2",
+   "say": "Ama teklifler çoğu zaman brütle söylenir; aynı görünen iki maaşın cebe giren kısmı farklı çıkabilir.",
+   "cap": "Ama teklifler çoğu zaman brütle söylenir; aynı görünen iki maaşın cebe giren kısmı farklı çıkabilir."
+  },
+  {
+   "id": "s3",
+   "say": "Kira ve kredi hesabını neti üzerinden yap: brütü değil, hesabına her ay yatanı bütçe say.",
+   "cap": "Kira ve kredi hesabını neti üzerinden yap: brütü değil, hesabına her ay yatanı bütçe say."
+  },
+  {
+   "id": "s4",
+   "say": "Senin maaşından tam olarak ne kadar kesiliyor, hiç bordroya baktın mı? Her gün 60 saniyede tek net analiz için abone ol.",
+   "cap": "Senin maaşından tam olarak ne kadar kesiliyor, hiç bordroya baktın mı? Her gün 60 saniyede tek net analiz için abone ol."
+  }
+ ],
+ "skin": "iso",
+ "engine": "news"
+}

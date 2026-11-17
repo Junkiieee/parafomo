@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-16T06:00+00:00",
+  "updated": "2026-11-17T06:00+00:00",
   "source": "Yahoo Finance (BTC-USD, USDTRY=X; aylık kapanış); BTC TL = BTC-USD × USDTRY",
   "btc_tl_now": 3224482.1,
   "btc_usd_now": 64128.05,
@@ -53,16 +53,16 @@
     },
     {
       "label": "10 yıl",
-      "btc_tl_then": 2177.44,
+      "btc_tl_then": 2542.36,
       "btc_tl_now": 3224482.1,
-      "return_tl_pct": 147986.2,
-      "btc_usd_then": 700.97,
+      "return_tl_pct": 126730.3,
+      "btc_usd_then": 745.69,
       "btc_usd_now": 64128.05,
-      "return_usd_pct": 9048.4,
+      "return_usd_pct": 8499.8,
       "years": 10
     }
   ],
   "headline_years": 10,
-  "headline_return_tl_pct": 147986.2,
-  "headline_return_usd_pct": 9048.4
+  "headline_return_tl_pct": 126730.3,
+  "headline_return_usd_pct": 8499.8
 }

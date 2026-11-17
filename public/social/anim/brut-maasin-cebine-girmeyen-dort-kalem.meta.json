@@ -1,0 +1,119 @@
+{
+  "slug": "brut-maasin-cebine-girmeyen-dort-kalem",
+  "title": "Brüt maaşın cebine girmeyen dört kalem",
+  "file": "/root/parafomo/public/social/short-brut-maasin-cebine-girmeyen-dort-kalem.mp4",
+  "duration": 32.494,
+  "music": "Oats with Sugar - Casa Rosa's Tulum Vibes.mp3",
+  "link": null,
+  "lines": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 2.63,
+      "cap": "Sözleşmedeki maaş cebine girmiyor.",
+      "words": [
+        0.35,
+        1.33,
+        1.69,
+        2.01
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 2.91,
+      "t1": 10.326,
+      "cap": "Sözleşmedeki rakam brüt. Önce dört kalem düşülüyor: SGK, işsizlik sigortası, gelir vergisi, damga vergisi.",
+      "words": [
+        2.91,
+        3.99,
+        4.35,
+        4.89,
+        5.13,
+        5.31,
+        5.57,
+        6.33,
+        7.27,
+        7.69,
+        8.59,
+        8.73,
+        9.39,
+        9.65
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 10.606,
+      "t1": 16.678,
+      "cap": "Ama teklifler çoğu zaman brütle söylenir; aynı görünen iki maaşın cebe giren kısmı farklı çıkabilir.",
+      "words": [
+        10.606,
+        11.006,
+        11.546,
+        11.886,
+        12.066,
+        12.506,
+        13.426,
+        13.606,
+        14.046,
+        14.286,
+        14.726,
+        14.986,
+        15.206,
+        15.666,
+        15.946
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 16.958,
+      "t1": 22.79,
+      "cap": "Kira ve kredi hesabını neti üzerinden yap: brütü değil, hesabına her ay yatanı bütçe say.",
+      "words": [
+        16.958,
+        17.498,
+        17.678,
+        17.998,
+        18.478,
+        18.778,
+        19.138,
+        19.858,
+        20.218,
+        20.738,
+        21.258,
+        21.458,
+        21.638,
+        22.038,
+        22.278
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 23.07,
+      "t1": 30.894,
+      "cap": "Senin maaşından tam olarak ne kadar kesiliyor, hiç bordroya baktın mı? Her gün 60 saniyede tek net analiz için abone ol.",
+      "words": [
+        23.07,
+        23.75,
+        24.29,
+        24.51,
+        24.75,
+        24.99,
+        25.19,
+        25.95,
+        26.09,
+        26.53,
+        26.91,
+        27.65,
+        28.01,
+        28.17,
+        28.45,
+        29.13,
+        29.43,
+        29.57,
+        29.99,
+        30.23,
+        30.59
+      ]
+    }
+  ]
+}

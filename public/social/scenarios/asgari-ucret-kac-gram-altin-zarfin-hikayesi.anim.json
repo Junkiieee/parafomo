@@ -1,0 +1,377 @@
+{
+ "slug": "asgari-ucret-kac-gram-altin-zarfin-hikayesi",
+ "title": "Asgari ücret kaç gram altın ediyor? Maaş zarfı şişti ama küçüldü",
+ "description": "Maaş zarfı kendi hikâyesini anlatıyor: 2023'ten bugüne lirası her yıl arttı, ama altın karşısında gramı eridi. Ocak 2023'te 7,75 gram eden net asgari ücret, bugün yaklaşık 4,52 gram ediyor. Geçmiş, geleceğin garantisi değildir; bu bir yatırım tavsiyesi değildir.\nKaynak: Asgari ücret: Resmî Gazete; gram altın: ons × USDTRY (Yahoo), yıl sonu ve 16.11.2026.\nKendi hesabını yap: parafomo.com/asgari-ucret/",
+ "tags": [
+  "asgari ücret",
+  "gram altın",
+  "asgari ücret kaç gram altın",
+  "altın fiyatları",
+  "maaş ve altın",
+  "para hikâyeleri"
+ ],
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Her yıl şiştim, altının karşısında yine küçüldüm.",
+   "cap": "Her yıl şiştim, altının karşısında yine küçüldüm."
+  },
+  {
+   "id": "s1",
+   "say": "Ocak 2023'te içimde sekiz bin beş yüz yedi lira vardı.",
+   "cap": "Ocak 2023'te içimde 8.507 lira vardı."
+  },
+  {
+   "id": "s2",
+   "say": "Ama altınla tartılsam, yaklaşık yedi virgül yetmiş beş gram ederdim.",
+   "cap": "Ama altınla tartılsam, yaklaşık 7,75 gram ederdim."
+  },
+  {
+   "id": "s3",
+   "say": "Bu yüzden 2024'te gururlandım: sekiz virgül altmış beş gram ettim!",
+   "cap": "Bu yüzden 2024'te gururlandım: 8,65 gram ettim!"
+  },
+  {
+   "id": "s4",
+   "say": "Ama altın benden hızlı koştu, ben ise yürüdüm.",
+   "cap": "Ama altın benden hızlı koştu, ben ise yürüdüm."
+  },
+  {
+   "id": "s5",
+   "say": "Şimdi içimde yirmi sekiz bin yetmiş altı lira taşıyorum.",
+   "cap": "Şimdi içimde 28.076 lira taşıyorum."
+  },
+  {
+   "id": "s6",
+   "say": "Ama altın tartısında yalnız dört virgül elli iki gram çıkıyorum.",
+   "cap": "Ama altın tartısında yalnız 4,52 gram çıkıyorum."
+  },
+  {
+   "id": "s7",
+   "say": "Asıl şaşırtıcı olan: liralarım arttıkça gramlarım sessizce eridi.",
+   "cap": "Asıl şaşırtıcı olan: liralarım arttıkça gramlarım sessizce eridi."
+  },
+  {
+   "id": "s8",
+   "say": "Senin maaşın bugün kaç gram altın ediyor sence?",
+   "cap": "Senin maaşın bugün kaç gram altın ediyor sence?"
+  },
+  {
+   "id": "s9",
+   "say": "Tartıyı sen tutarsan, altının karşısında küçülmeyi önceden görürsün.",
+   "cap": "Tartıyı sen tutarsan, altının karşısında küçülmeyi önceden görürsün."
+  }
+ ],
+ "data": {
+  "tema": "dram",
+  "kanca": [
+   "ŞİŞTİM AMA",
+   "ALTINDA KÜÇÜLDÜM"
+  ],
+  "vurgu": [
+   "şiştim",
+   "küçüldüm",
+   "altının",
+   "gram",
+   "tartılsam",
+   "koştu",
+   "şaşırtıcı",
+   "eridi",
+   "tartıyı",
+   "küçülmeyi"
+  ],
+  "scenes": [
+   {
+    "line": "s0",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "zarf",
+      "ifade": "mutlu",
+      "x": 320,
+      "y": 950,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "şiştim",
+        "eylem": "zipla",
+        "deger": 0.6
+       },
+       {
+        "kelime": "küçüldüm",
+        "ifade": "uzgun",
+        "eylem": "kucul",
+        "deger": 0.5
+       }
+      ]
+     },
+     {
+      "id": "b",
+      "k": "altin",
+      "ifade": "normal",
+      "x": 760,
+      "y": 950,
+      "olcek": 0.667,
+      "giris": "sag"
+     }
+    ]
+   },
+   {
+    "line": "s1",
+    "etiket": "Ocak 2023",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "zarf",
+      "ifade": "mutlu",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "yok"
+     }
+    ],
+    "sayi": {
+     "deger": 8507,
+     "bas": 0,
+     "birim": "₺",
+     "kelime": "bin",
+     "y": 520,
+     "not": "net asgari ücret",
+     "say": true
+    },
+    "kaynak": "Kaynak: Resmî Gazete, Ocak 2023 net asgari ücret"
+   },
+   {
+    "line": "s2",
+    "etiket": "Ocak 2023",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "zarf",
+      "ifade": "normal",
+      "x": 320,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "yok"
+     },
+     {
+      "id": "b",
+      "k": "altin",
+      "ifade": "normal",
+      "x": 760,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "sag"
+     }
+    ],
+    "sayi": {
+     "deger": 7.75,
+     "bas": 0,
+     "birim": "gram",
+     "kelime": "gram",
+     "y": 520,
+     "not": "8.507 ₺ ÷ 1.098 ₺",
+     "say": true
+    },
+    "kaynak": "Kaynak: Resmî Gazete; gram altın 2022 yıl sonu, ons × USDTRY (Yahoo)"
+   },
+   {
+    "line": "s3",
+    "etiket": "Ocak 2024",
+    "cubuk": {
+     "a": {
+      "etiket": "2023",
+      "deger": 7.75
+     },
+     "b": {
+      "etiket": "2024",
+      "deger": 8.65
+     },
+     "birim": "gram",
+     "not": "maaşın gram altın karşılığı"
+    },
+    "kaynak": "Kaynak: Resmî Gazete; gram altın 2023 yıl sonu 1.966 ₺, ons × USDTRY (Yahoo)"
+   },
+   {
+    "line": "s4",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "zarf",
+      "ifade": "endiseli",
+      "x": 320,
+      "y": 1000,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "yürüdüm",
+        "eylem": "titre",
+        "deger": 0.4
+       }
+      ]
+     },
+     {
+      "id": "b",
+      "k": "altin",
+      "ifade": "mutlu",
+      "x": 760,
+      "y": 950,
+      "olcek": 0.667,
+      "giris": "sol",
+      "olaylar": [
+       {
+        "kelime": "koştu",
+        "eylem": "git",
+        "deger": 0.8
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "line": "s5",
+    "etiket": "Bugün",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "zarf",
+      "ifade": "mutlu",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "zipla"
+     }
+    ],
+    "sayi": {
+     "deger": 28076,
+     "bas": 8507,
+     "birim": "₺",
+     "kelime": "bin",
+     "y": 520,
+     "not": "net asgari ücret",
+     "say": true
+    },
+    "kaynak": "Kaynak: Resmî Gazete, 2026 net asgari ücret"
+   },
+   {
+    "line": "s6",
+    "etiket": "Bugün",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "zarf",
+      "ifade": "saskin",
+      "x": 320,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "yalnız",
+        "ifade": "uzgun",
+        "eylem": "kucul",
+        "deger": 0.5
+       }
+      ]
+     },
+     {
+      "id": "b",
+      "k": "altin",
+      "ifade": "normal",
+      "x": 760,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "yok"
+     }
+    ],
+    "sayi": {
+     "deger": 4.52,
+     "bas": 8.65,
+     "birim": "gram",
+     "kelime": "gram",
+     "y": 520,
+     "not": "28.076 ₺ ÷ 6.212,6 ₺",
+     "say": true
+    },
+    "kaynak": "Kaynak: Resmî Gazete; gram altın 16.11.2026, ons × USDTRY (Yahoo)"
+   },
+   {
+    "line": "s7",
+    "cubuk": {
+     "a": {
+      "etiket": "2024",
+      "deger": 8.65
+     },
+     "b": {
+      "etiket": "Bugün",
+      "deger": 4.52
+     },
+     "birim": "gram",
+     "not": "lira arttı, gram azaldı"
+    },
+    "kaynak": "Kaynak: Resmî Gazete; gram altın ons × USDTRY (Yahoo)"
+   },
+   {
+    "line": "s8",
+    "soru": true,
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "zarf",
+      "ifade": "normal",
+      "x": 540,
+      "y": 790,
+      "olcek": 0.867,
+      "giris": "yok"
+     }
+    ],
+    "baslik": [
+     "Senin maaşın",
+     "kaç gram?"
+    ]
+   },
+   {
+    "line": "s9",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "zarf",
+      "ifade": "mutlu",
+      "x": 320,
+      "y": 1000,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "görürsün",
+        "eylem": "zipla",
+        "deger": 0.6
+       }
+      ]
+     },
+     {
+      "id": "b",
+      "k": "altin",
+      "ifade": "normal",
+      "x": 760,
+      "y": 1000,
+      "olcek": 0.667,
+      "giris": "yok"
+     }
+    ]
+   }
+  ]
+ },
+ "comment": "Senin maaşın bugün kaç gram altın ediyor, birkaç yıl önce kaç gram ediyordu? Geçmiş, geleceğin garantisi değildir; bu bir yatırım tavsiyesi değildir. Kaynak: Asgari ücret: Resmî Gazete; gram altın: ons × USDTRY (Yahoo). Kendi hesabını yap: parafomo.com/asgari-ucret/",
+ "link": "/asgari-ucret/",
+ "format": "para_hikayesi",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "engine": "hikaye",
+ "lead": 0.05,
+ "series": "Para Hikâyeleri",
+ "skin": "iso"
+}

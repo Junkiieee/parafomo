@@ -1,0 +1,355 @@
+{
+ "slug": "2020-dolara-konan-100-lira-enflasyonu-yendi-mi",
+ "title": "2020'de dolara konan 100 lira enflasyonu yendi mi? Dolar vs enflasyon",
+ "description": "2020 sonunda dolara konan 100 lira, 2021'de fiyatları açık farkla geçti: dolar %76,8, fiyatlar %36,1. Sonra 2022–2025 arasında dört yıl üst üste fiyatların gerisinde kaldı. Bugün o para yaklaşık 684 TL; aynı sepet 887 TL. Geçmiş getiri, geleceğin garantisi değildir; bu bir yatırım tavsiyesi değildir.\nKaynak: TCMB döviz alış kuru (31.12.2020: 7,3405 TL · 31.12.2021: 12,9775 TL · 16.11.2026: 50,1926 TL); TÜFE: TÜİK (Aralık 2020 → Ekim 2026, 8,87 katı).\nKendi hesabını yap: parafomo.com/dolar-getiri/\nParafomo Para Hikâyeleri",
+ "tags": [
+  "dolar enflasyon",
+  "dolar getiri",
+  "100 lira dolar",
+  "dolar mı altın mı",
+  "enflasyon hesabı",
+  "para hikayeleri",
+  "parafomo"
+ ],
+ "data": {
+  "tema": "alacakaranlik",
+  "kanca": [
+   "DOLARDAKİ 100 LİRA",
+   "YARIŞI KAYBETTİ"
+  ],
+  "vurgu": [
+   "dolara",
+   "kaybetti",
+   "öndeydi",
+   "sevindi",
+   "yürüdü",
+   "koşmaya",
+   "sepet",
+   "şaşırtıcı",
+   "garantisi",
+   "rakamları"
+  ],
+  "scenes": [
+   {
+    "line": "s0",
+    "etiket": "2020 sonu",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "yuzluk",
+      "ifade": "normal",
+      "x": 320,
+      "y": 950,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "kaybetti",
+        "ifade": "uzgun",
+        "eylem": "kucul",
+        "deger": 0.5
+       }
+      ]
+     },
+     {
+      "id": "b",
+      "k": "dolar",
+      "ifade": "mutlu",
+      "x": 760,
+      "y": 980,
+      "olcek": 0.667,
+      "giris": "sag",
+      "olaylar": [
+       {
+        "kelime": "kaybetti",
+        "ifade": "endiseli",
+        "eylem": "titre",
+        "deger": 0.3
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "line": "s1",
+    "etiket": "2021",
+    "oyuncular": [
+     {
+      "id": "b",
+      "k": "dolar",
+      "ifade": "mutlu",
+      "x": 540,
+      "y": 1000,
+      "olcek": 0.8,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "öndeydi",
+        "eylem": "zipla",
+        "deger": 0.7
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "line": "s2",
+    "etiket": "2021",
+    "sayi": {
+     "deger": 76.8,
+     "bas": 0,
+     "birim": "%",
+     "kelime": "dolar",
+     "y": 520,
+     "not": "Dolar kuru: 7,3405 → 12,9775 TL",
+     "say": true
+    },
+    "oyuncular": [
+     {
+      "id": "b",
+      "k": "dolar",
+      "ifade": "mutlu",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "yok"
+     }
+    ],
+    "kaynak": "Kaynak: TCMB döviz alış kuru (31.12.2020 → 31.12.2021)"
+   },
+   {
+    "line": "s3",
+    "etiket": "2021",
+    "cubuk": {
+     "a": {
+      "etiket": "Fiyatlar (TÜFE)",
+      "deger": 36.1
+     },
+     "b": {
+      "etiket": "Dolar",
+      "deger": 76.8
+     },
+     "birim": "%",
+     "not": "2021: dolar önde"
+    },
+    "kaynak": "Kaynak: TÜİK (Aralık 2021 yıllık TÜFE); TCMB"
+   },
+   {
+    "line": "s4",
+    "etiket": "2022–2025",
+    "oyuncular": [
+     {
+      "id": "b",
+      "k": "dolar",
+      "ifade": "endiseli",
+      "x": 320,
+      "y": 1000,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "yürüdü",
+        "eylem": "titre",
+        "deger": 0.4
+       }
+      ]
+     },
+     {
+      "id": "c",
+      "k": "enflasyon",
+      "ifade": "mutlu",
+      "x": 760,
+      "y": 950,
+      "olcek": 0.667,
+      "giris": "sol",
+      "olaylar": [
+       {
+        "kelime": "koşmaya",
+        "eylem": "git",
+        "deger": 0.8
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "line": "s5",
+    "etiket": "Bugün",
+    "sayi": {
+     "deger": 684,
+     "bas": 100,
+     "birim": "₺",
+     "kelime": "bugün",
+     "y": 520,
+     "not": "2020 sonunda dolara konan 100 TL",
+     "say": true
+    },
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "yuzluk",
+      "ifade": "saskin",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "yok"
+     }
+    ],
+    "kaynak": "Kaynak: TCMB döviz alış kuru (31.12.2020: 7,3405 · 16.11.2026: 50,1926)"
+   },
+   {
+    "line": "s6",
+    "vs": {
+     "sol": {
+      "k": "dolar",
+      "etiket": "Dolardaki 100 TL",
+      "deger": "684 TL"
+     },
+     "sag": {
+      "k": "enflasyon",
+      "etiket": "Aynı sepet",
+      "deger": "887 TL"
+     }
+    },
+    "kaynak": "Kaynak: TCMB; TÜİK (TÜFE, Aralık 2020 → Ekim 2026)"
+   },
+   {
+    "line": "s7",
+    "etiket": "2022–2025",
+    "baslik": [
+     "4 yıl üst üste",
+     "geride"
+    ],
+    "cubuk": {
+     "a": {
+      "etiket": "Fiyatlar (TÜFE)",
+      "deger": 411.5
+     },
+     "b": {
+      "etiket": "Dolar",
+      "deger": 230.3
+     },
+     "birim": "%",
+     "not": "2022–2025 toplam artış"
+    },
+    "kaynak": "Kaynak: TÜİK (TÜFE); TCMB döviz alış kuru"
+   },
+   {
+    "line": "s8",
+    "soru": true,
+    "oyuncular": [
+     {
+      "id": "d",
+      "k": "altin",
+      "ifade": "normal",
+      "x": 300,
+      "y": 790,
+      "olcek": 0.55,
+      "giris": "sol"
+     },
+     {
+      "id": "b",
+      "k": "dolar",
+      "ifade": "normal",
+      "x": 780,
+      "y": 790,
+      "olcek": 0.55,
+      "giris": "sag"
+     }
+    ]
+   },
+   {
+    "line": "s9",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "yuzluk",
+      "ifade": "mutlu",
+      "x": 320,
+      "y": 980,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "biliyorsun",
+        "eylem": "zipla",
+        "deger": 0.6
+       }
+      ]
+     },
+     {
+      "id": "b",
+      "k": "dolar",
+      "ifade": "normal",
+      "x": 760,
+      "y": 1000,
+      "olcek": 0.667,
+      "giris": "yok"
+     }
+    ]
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "İki bin yirmide dolara kaçan yüz lira, yarışı kaybetti.",
+   "cap": "2020'de dolara kaçan 100 TL, yarışı kaybetti."
+  },
+  {
+   "id": "s1",
+   "say": "Ama ilk yıl, açık ara öndeydi.",
+   "cap": "Ama ilk yıl, açık ara öndeydi."
+  },
+  {
+   "id": "s2",
+   "say": "İki bin yirmi birde dolar yüzde yetmiş altı virgül sekiz arttı.",
+   "cap": "2021'de dolar %76,8 arttı."
+  },
+  {
+   "id": "s3",
+   "say": "Fiyatlar ise yüzde otuz altı virgül bir. Yüzlük sevindi.",
+   "cap": "Fiyatlar ise %36,1. Yüzlük sevindi."
+  },
+  {
+   "id": "s4",
+   "say": "Ama sonra dolar yürüdü, fiyatlar koşmaya devam etti.",
+   "cap": "Ama sonra dolar yürüdü, fiyatlar koşmaya devam etti."
+  },
+  {
+   "id": "s5",
+   "say": "Bu yüzden o para bugün yaklaşık altı yüz seksen dört lira.",
+   "cap": "Bu yüzden o para bugün yaklaşık 684 TL."
+  },
+  {
+   "id": "s6",
+   "say": "Oysa aynı sepet için sekiz yüz seksen yedi lira lazım.",
+   "cap": "Oysa aynı sepet için 887 TL lazım."
+  },
+  {
+   "id": "s7",
+   "say": "Asıl şaşırtıcı olan: dolar dört yıl üst üste geride kaldı. Geçmiş, geleceğin garantisi değil.",
+   "cap": "Asıl şaşırtıcı olan: dolar 4 yıl üst üste geride kaldı. Geçmiş, geleceğin garantisi değil."
+  },
+  {
+   "id": "s8",
+   "say": "Sence iki bin otuzda kim önde olur: altın mı, dolar mı?",
+   "cap": "Sence 2030'da kim önde olur: altın mı, dolar mı?"
+  },
+  {
+   "id": "s9",
+   "say": "Yüz lira bugün yine yarışta; bu sefer rakamları sen biliyorsun.",
+   "cap": "100 TL bugün yine yarışta; bu sefer rakamları sen biliyorsun."
+  }
+ ],
+ "comment": "Sen 2020'de o 100 lirayı dolara mı koyardın, altına mı? Kaynak: TCMB döviz alış kuru; TÜFE: TÜİK. Kendi hesabını yap: parafomo.com/dolar-getiri/",
+ "link": "/dolar-getiri/",
+ "format": "para_hikayesi",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "engine": "hikaye",
+ "lead": 0.05,
+ "series": "Para Hikâyeleri",
+ "skin": "iso"
+}

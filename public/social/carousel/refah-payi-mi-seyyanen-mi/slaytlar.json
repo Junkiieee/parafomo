@@ -1,0 +1,143 @@
+{
+ "tema": "alacakaranlik",
+ "caption": "Emekliye iki zam konuşuluyor: refah payı mı, seyyanen zam mı? Biri sana daha çok kazandırır.\n\nHenüz resmî karar yok; rakamlar örnek. En düşük aylık (23.552 TL) için Ocak 2027'de: %5 refah payıyla yaklaşık 27.909 TL, 2.500 TL seyyanenle yaklaşık 29.080 TL. Eşitlik çizgisi 44.302 TL: aylığın bunun altındaysa seyyanen, üstündeyse refah payı daha çok kazandırır.\n\n💬 Senin aylığın çizginin neresinde?\n\nKaynak: Resmî Gazete (Temmuz 2026), TÜİK TÜFE (enflasyon farkı tahmini %12,86: 4 ay kesin + 2 ay varsayım). Kendi aylığınla hesapla: parafomo.com/refah\n\n#emeklizammı #refahpayı #emekli #zam #parafomo",
+ "slaytlar": [
+  {
+   "kanca": true,
+   "baslik": [
+    "Refah payı mı",
+    "*seyyanen mi?*"
+   ],
+   "karakterler": [
+    {
+     "k": "yuzde",
+     "ifade": "saskin",
+     "x": 320,
+     "y": 820,
+     "olcek": 0.62
+    },
+    {
+     "k": "zarf",
+     "ifade": "mutlu",
+     "x": 760,
+     "y": 820,
+     "olcek": 0.62
+    }
+   ],
+   "alt": "Kaydır →"
+  },
+  {
+   "baslik": [
+    "Önce",
+    "*durum*"
+   ],
+   "karakterler": [
+    {
+     "k": "zarf",
+     "ifade": "endiseli",
+     "x": 540,
+     "y": 720,
+     "olcek": 0.75
+    }
+   ],
+   "metin": "İkisi için de *resmî karar yok*. Buradakiler *örnek* hesaplar.",
+   "kaynak": "Durum: 17 Kasım 2026"
+  },
+  {
+   "baslik": [
+    "İki zam",
+    "*iki mantık*"
+   ],
+   "karakterler": [
+    {
+     "k": "yuzde",
+     "ifade": "normal",
+     "x": 320,
+     "y": 700,
+     "olcek": 0.55
+    },
+    {
+     "k": "zarf",
+     "ifade": "normal",
+     "x": 760,
+     "y": 700,
+     "olcek": 0.55
+    }
+   ],
+   "metin": "*Refah payı* yüzdeyle gelir. *Seyyanen* herkese aynı tutardır."
+  },
+  {
+   "baslik": [
+    "Örnek:",
+    "en düşük aylık"
+   ],
+   "sayi": {
+    "deger": "23.552",
+    "birim": "₺",
+    "y": 470,
+    "not": "Temmuz 2026'dan beri"
+   },
+   "karakterler": [
+    {
+     "k": "zarf",
+     "ifade": "normal",
+     "x": 540,
+     "y": 930,
+     "olcek": 0.5
+    }
+   ],
+   "kaynak": "Kaynak: Resmî Gazete, Temmuz 2026"
+  },
+  {
+   "baslik": [
+    "Ocak 2027",
+    "*örnek* hesap"
+   ],
+   "cubuk": {
+    "a": {
+     "etiket": "%5 refah payı",
+     "deger": 27909,
+     "yazi": "27.909 ₺"
+    },
+    "b": {
+     "etiket": "2.500 TL seyyanen",
+     "deger": 29080,
+     "yazi": "29.080 ₺"
+    }
+   },
+   "kaynak": "En düşük aylık için · enflasyon farkı tahmini %12,86 (TÜİK: 4 ay kesin + 2 ay varsayım)",
+   "metin": "En düşük aylıkta *seyyanen* yaklaşık *1.171 ₺* önde."
+  },
+  {
+   "baslik": [
+    "Asıl şaşırtıcı:",
+    "*çizgi*"
+   ],
+   "sayi": {
+    "deger": "44.302",
+    "birim": "₺",
+    "y": 420,
+    "not": "eşitlik çizgisi"
+   },
+   "metin": "Aylığın bunun *altındaysa* seyyanen, *üstündeyse* refah payı daha çok kazandırır.",
+   "kaynak": "2.500 ₺ ÷ (1,1286 × 0,05)"
+  },
+  {
+   "baslik": [
+    "Senin aylığın",
+    "çizginin neresinde?"
+   ],
+   "karakterler": [
+    {
+     "k": "zarf",
+     "ifade": "saskin",
+     "x": 540,
+     "y": 700,
+     "olcek": 0.7
+    }
+   ],
+   "metin": "Kendi aylığınla *10 saniyede* hesapla.",
+   "kaynak": "parafomo.com/refah"
+  }
+ ]
+}

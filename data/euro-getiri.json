@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-16T06:00+00:00",
+  "updated": "2026-11-17T06:00+00:00",
   "source": "Yahoo Finance (EURTRY=X ve USDTRY=X kur, aylık kapanış); EUR/USD = EURTRY ÷ USDTRY",
   "eurtry_now": 55.6043,
   "usdtry_now": 50.2819,
@@ -50,16 +50,16 @@
     },
     {
       "label": "10 yıl",
-      "eurtry_then": 3.4127,
+      "eurtry_then": 3.6299,
       "eurtry_now": 55.6043,
-      "return_tl_pct": 1529.3,
-      "usdtry_then": 3.1063,
-      "usd_return_tl_pct": 1518.7,
-      "eurusd_then": 1.0986,
-      "eurusd_change_pct": 0.7,
+      "return_tl_pct": 1431.8,
+      "usdtry_then": 3.4094,
+      "usd_return_tl_pct": 1374.8,
+      "eurusd_then": 1.0647,
+      "eurusd_change_pct": 3.9,
       "years": 10
     }
   ],
   "headline_years": 10,
-  "headline_return_tl_pct": 1529.3
+  "headline_return_tl_pct": 1431.8
 }

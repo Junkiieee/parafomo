@@ -1,26 +1,8 @@
 {
-  "updated": "2026-11-16",
+  "updated": "2026-11-17",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-11-13",
-      "time": "1:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Core PPI m/m",
-      "source": "forexfactory",
-      "hook": ""
-    },
-    {
-      "date": "2026-11-13",
-      "time": "1:30pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "PPI m/m",
-      "source": "forexfactory",
-      "hook": ""
-    },
     {
       "date": "2026-11-16",
       "time": "5:00pm",

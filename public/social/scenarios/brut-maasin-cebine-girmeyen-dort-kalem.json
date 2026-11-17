@@ -1,0 +1,59 @@
+{
+  "slug": "brut-maasin-cebine-girmeyen-dort-kalem",
+  "title": "Brüt maaşın cebine girmeyen dört kalem",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Sözleşmedeki brüt maaş hesabına yatmaz. SGK, işsizlik sigortası, gelir vergisi ve damga vergisi düşülür; bütçeyi nete göre kurmak gerekir.",
+  "tags": [
+    "brüt maaş",
+    "net maaş",
+    "SGK",
+    "gelir vergisi",
+    "damga vergisi",
+    "işsizlik sigortası",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Sözleşmedeki maaş cebine girmiyor.",
+      "visual": {
+        "type": "object",
+        "query": "full leather wallet"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Sözleşmedeki rakam brüt. Önce dört kalem düşülüyor: SGK, işsizlik sigortası, gelir vergisi, damga vergisi.",
+      "visual": {
+        "type": "object",
+        "query": "payslip document"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama teklifler çoğu zaman brütle söylenir; aynı görünen iki maaşın cebe giren kısmı farklı çıkabilir.",
+      "visual": {
+        "type": "object",
+        "query": "job contract and pen"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Kira ve kredi hesabını neti üzerinden yap: brütü değil, hesabına her ay yatanı bütçe say.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Senin maaşından tam olarak ne kadar kesiliyor, hiç bordroya baktın mı? Her gün 60 saniyede tek net analiz için abone ol.",
+      "visual": {
+        "type": "object",
+        "query": "full leather wallet"
+      }
+    }
+  ]
+}
