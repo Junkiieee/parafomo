@@ -2,7 +2,7 @@
 // Kullananlar: astro.config.mjs (sitemap lastmod) ve BaseLayout (WebPage JSON-LD dateModified, 2026-11-09:
 // GEO denetimi araç sayfalarında tarih sinyali bulamadı; rakam her ay değişse de arama motorları görmüyordu).
 // Neden: lastmod yalnız veri gerçekten değişince ilerler (doğru sinyal). Build repo kökünden çalışır.
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 export const dataDir = join(process.cwd(), 'data');
@@ -25,6 +25,11 @@ export const updatedOf = (f) => {
   return ms.length ? asDate(`${ms.at(-1)}T20:00:00Z`) : null;
 };
 const YD = ['yeniden-degerleme.json'];
+// Yıllık takvim dosyaları (tcmb-2026.json, tcmb-2027.json …): hepsi okunur — yeni yıl dosyası eklenince lastmod onu
+// da görür (yıl geçişi denetimi 2026-11-03: yalnız 2026 dosyası okunuyordu).
+const yillik = (onek) => {
+  try { return readdirSync(dataDir).filter((f) => new RegExp(`^${onek}-\\d{4}\\.json$`).test(f)); } catch { return []; }
+};
 const TUFE = ['tufe-aylik.json'];
 const FAIZ = ['faiz-oranlari.json'];
 export const DATA_PAGES = {
@@ -37,6 +42,10 @@ export const DATA_PAGES = {
   'arac-muayene-ucreti': YD,
   'damga-vergisi-hesaplama': YD,
   'tasit-kredisi-hesaplama': FAIZ,
+  // Asgari ücrete bağlı sayfalar, ÖTV ve değer artışı: sitemap'te lastmod'ları yoktu (denetim 2026-11-03).
+  'asgari-ucret-hesaplama': ['asgari-ucret.json'], 'bagkur-primi-hesaplama': ['asgari-ucret.json'],
+  'gss-primi-hesaplama': ['asgari-ucret.json'], 'otv-hesaplama': YD,
+  'deger-artis-kazanci-hesaplama': ['yiufe-endeks.json', 'yeniden-degerleme.json'],
   'yeniden-degerleme-orani': YD, 'mtv-hesaplama': YD, 'pasaport-ehliyet-harci': YD, 'trafik-cezalari-hesaplama': YD,
   'emlak-vergisi-hesaplama': YD, 'gelir-vergisi-hesaplama': YD, 'vergi-dilimi-hesaplama': YD,
   'emekli-zammi-hesaplama': TUFE, 'memur-zammi-hesaplama': TUFE, 'en-dusuk-emekli-maasi': TUFE,
@@ -48,7 +57,7 @@ export const DATA_PAGES = {
   'altin-dolar-borsa': ['altin-getiri.json', 'dolar-getiri.json', 'bist-getiri.json', 'euro-getiri.json', 'gumus-getiri.json', 'bitcoin-getiri.json'],
   'altin-fiyatlari': ['altin-fiyat.json'], 'altin-hesaplama': ['altin-fiyat.json'], 'altin-kac-gram': ['altin-fiyat.json'],
   'dolar-endeksi': ['dxy.json'], 'abd-tahvil-faizi': ['us-tahvil.json'], 'halka-arz': ['halka-arz.json'], 'halka-arz-getiri': ['halka-arz-getiri.json'],
-  'tcmb-faiz-takvimi': ['tcmb-2026.json'], 'fed-faiz-takvimi': ['fomc-2026.json'], 'ekonomik-takvim': ['economic-calendar.json'],
+  'tcmb-faiz-takvimi': yillik('tcmb'), 'fed-faiz-takvimi': yillik('fomc'), 'ekonomik-takvim': ['economic-calendar.json'],
 };
 export const lastmodByPage = {};
 for (const [page, files] of Object.entries(DATA_PAGES)) {
