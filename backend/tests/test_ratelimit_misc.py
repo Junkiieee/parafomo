@@ -81,3 +81,19 @@ def test_mail_budget_hourly_and_daily():
     b.hour.clear()  # saat döndü: günlük sınır hâlâ geçerli
     assert [b.hit() for _ in range(3)] == [True, True, False]
     assert MailBudget(per_hour=0, per_day=10).hit() is False
+
+
+def test_api_docs_disabled_by_default(client):
+    for path in ("/docs", "/redoc", "/openapi.json"):
+        assert client.get(path).status_code == 404, path
+    assert client.get("/health").status_code == 200
+
+
+def test_confirmation_mails_have_no_unsubscribe_link(client, outbox):
+    """Bağlantı tarayıcıları (Safe Links) onay + çıkışı birlikte açıp yeni kaydı düşürmesin."""
+    for i, src in enumerate(("zam-alarmi:/asgari-ucret-hesaplama/", "bulten:/")):
+        r = client.post("/newsletter/subscribe", json={"email": f"m{i}@example.com", "consent": True, "source": src})
+        assert r.status_code == 200
+    assert len(outbox) == 2
+    for mail in outbox:
+        assert "confirm?token=" in mail["body"] and "unsubscribe" not in mail["body"]

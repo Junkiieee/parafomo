@@ -22,7 +22,7 @@ cd backend
 /root/.venvs/parafomo-api/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-Dokümantasyon: http://127.0.0.1:8000/docs
+Dokümantasyon: http://127.0.0.1:8000/docs (yalnız `.env`de `PORTFOLIO_DOCS_ENABLED=true` iken; canlıda kapalı)
 
 ## Uç noktalar (ilk gece)
 

@@ -117,10 +117,10 @@ def subscribe(
     if not public_mail_budget.hit("mail"):
         logger.warning("Üyeliksiz e-posta bütçesi doldu — bülten onay maili atlandı.")
         return Message(message=_GENERIC)
-    confirm_url, unsub_url = _links(sub.token)
+    confirm_url, _ = _links(sub.token)
     # SMTP yanıttan SONRA: süre farkı adresin zaten abone olup olmadığını sızdırmasın
     gonder = send_zam_alarm_confirm if _zam(sub.source) else send_newsletter_confirm
-    background.add_task(gonder, email, confirm_url, unsub_url)
+    background.add_task(gonder, email, confirm_url)   # çıkış bağlantısı yok: bkz. mailer
     return Message(message=_GENERIC)
 
 

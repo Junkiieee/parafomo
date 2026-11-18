@@ -81,11 +81,15 @@ async def lifespan(app: FastAPI):
     yield
 
 
+_docs = _settings.docs_enabled  # canlıda kapalı: /docs, /redoc, /openapi.json → 404
 app = FastAPI(
     title="ParaFOMO Portföy API",
     version="0.1.0",
     description="Ücretsiz portföy takip sistemi — BIST hisse + altın + gümüş.",
     lifespan=lifespan,
+    docs_url="/docs" if _docs else None,
+    redoc_url="/redoc" if _docs else None,
+    openapi_url="/openapi.json" if _docs else None,
 )
 
 # Guard CORS'un İÇİNDE: 413 yanıtı da CORS başlığı alsın (uygulama hatayı okuyabilsin)
