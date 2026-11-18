@@ -15,6 +15,19 @@ cd "$REPO" || exit 1
 if ! [ -n "$(git log origin/main..HEAD --oneline 2>/dev/null)" ]; then
   echo "[deploy] push edilecek yerel commit yok"; exit 0
 fi
+# SIR BEKÇİSİ (denetim 2026-11-18, repo-7): repo herkese açık. Push'lanacak commit'lerde yüksek güvenli token kalıbı,
+# bu sunucudaki gerçek bir sır değeri ya da .env/*.pem/*.db gibi dosya varsa push YAPILMAZ (değer asla yazdırılmaz).
+# Tarama kendisi çalışamazsa (çıkış 2) push engellenmez — yalnız uyarı.
+SIR_OUT="$(python3 "$REPO/scripts/lib/secret_check.py" "origin/main..HEAD" 2>&1)"; SIR_RC=$?
+echo "$SIR_OUT" | sed 's/^/[deploy] /'
+if [ $SIR_RC -eq 1 ]; then
+  echo "[deploy] SIR ŞÜPHESİ — push YAPILMADI"
+  python3 "$REPO/agent/notify.py" alert --key sir-supheli --subject "parafomo: push durduruldu — commit'te sır şüphesi" \
+    --body "$(printf 'deploy-push.sh: push edilecek commit(ler)de sır şüphesi bulundu, push YAPILMADI (repo herkese açık).\n\n%s\n\nDüzelt: değeri dosyadan çıkar, yerel commit(ler)i düzelt (git commit --amend / reset --soft), sonra bash scripts/deploy-push.sh. Yanlış alarmsa scripts/lib/secret_check.py kuralını daralt.' "$SIR_OUT")" >/dev/null 2>&1 || true
+  exit 1
+elif [ $SIR_RC -ne 0 ]; then
+  echo "[deploy] UYARI: sır taraması çalışmadı (çıkış $SIR_RC) — push sürüyor"
+fi
 if [ -n "$(git status --porcelain -- src astro.config.mjs package.json 2>/dev/null)" ]; then
   echo "[deploy] UYARI: src/ altında commit'lenmemiş değişiklik var — build onları da içerir; önce commit'le"
 fi
