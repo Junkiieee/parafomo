@@ -77,3 +77,64 @@ def test_global_mail_budget_caps_confirmations(client, outbox, monkeypatch):
 
 def test_token_query_length_capped(client):
     assert client.get("/newsletter/confirm", params={"token": "x" * 65}, follow_redirects=False).status_code == 422
+
+
+# ---- Konu etiketleri (zam-alarmi: / bulten:) birleşir, üzerine yazılmaz ----
+def _sub_src(client, email, source, addr):
+    return client.post("/newsletter/subscribe", json={"email": email, "consent": True, "source": source},
+                       headers=ip(addr))
+
+
+def _source(email):
+    with SessionLocal() as db:
+        return db.scalar(select(NewsletterSubscriber.source).where(NewsletterSubscriber.email == email))
+
+
+def _age_confirm_sent(email, minutes=11):
+    from datetime import datetime, timedelta, timezone
+    with SessionLocal() as db:
+        sub = db.scalar(select(NewsletterSubscriber).where(NewsletterSubscriber.email == email))
+        sub.confirm_sent_at = datetime.now(timezone.utc) - timedelta(minutes=minutes)
+        db.commit()
+
+
+def test_pending_zam_alarm_keeps_tag_after_bulletin_form(client, outbox):
+    _sub_src(client, "z@example.com", "zam-alarmi:/asgari-ucret-hesaplama/", "10.6.0.1")
+    assert outbox[-1]["subject"].startswith("Parafomo zam alarmı")
+    _age_confirm_sent("z@example.com")  # 10 dk sonra: yeniden gönderim yolu
+    _sub_src(client, "z@example.com", "bulten:/emekli-zammi/", "10.6.0.2")
+    src = _source("z@example.com")
+    assert "zam-alarmi:/asgari-ucret-hesaplama/" in src and "bulten:/emekli-zammi/" in src
+    assert len(outbox) == 2
+
+
+def test_pending_within_resend_window_merges_without_mail(client, outbox):
+    _sub_src(client, "y@example.com", "zam-alarmi:/memur-zammi/", "10.6.1.1")
+    _sub_src(client, "y@example.com", "bulten:/", "10.6.1.2")
+    assert _source("y@example.com") == "zam-alarmi:/memur-zammi/|bulten:/"
+    assert len(outbox) == 1
+
+
+def test_same_topic_not_duplicated(client, outbox):
+    _sub_src(client, "x@example.com", "zam-alarmi:/a/", "10.6.2.1")
+    _age_confirm_sent("x@example.com")
+    _sub_src(client, "x@example.com", "zam-alarmi:/b/", "10.6.2.2")
+    assert _source("x@example.com") == "zam-alarmi:/a/"
+
+
+def test_confirmed_subscriber_gains_topic(client, outbox):
+    _sub_src(client, "c@example.com", "bulten:/", "10.6.4.1")
+    token = outbox[0]["body"].split("confirm?token=")[1].split()[0]
+    client.get("/newsletter/confirm", params={"token": token}, follow_redirects=False)
+    _sub_src(client, "c@example.com", "zam-alarmi:/asgari-ucret-hesaplama/", "10.6.4.2")
+    assert _source("c@example.com") == "bulten:/|zam-alarmi:/asgari-ucret-hesaplama/"
+    assert len(outbox) == 1
+
+
+def test_unsubscribed_resubscribe_starts_fresh(client, outbox):
+    _sub_src(client, "q@example.com", "zam-alarmi:/a/", "10.6.3.1")
+    with SessionLocal() as db:
+        tok = db.scalar(select(NewsletterSubscriber.token).where(NewsletterSubscriber.email == "q@example.com"))
+    client.post("/newsletter/unsubscribe", params={"token": tok})
+    _sub_src(client, "q@example.com", "bulten:/", "10.6.3.2")
+    assert _source("q@example.com") == "bulten:/"

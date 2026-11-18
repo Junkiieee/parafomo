@@ -83,21 +83,30 @@ def subscribe(
         db.add(sub)
     elif sub.status == "confirmed":
         # Zaten onaylı: yeni konuyu (zam-alarmi: / bulten:) kaynağa ekle, mail atma, sızdırma
-        yeni = (body.source or "").split(":", 1)[0]
-        if yeni in ("zam-alarmi", "bulten") and f"{yeni}:" not in (sub.source or ""):
-            sub.source = (f"{sub.source}|{body.source}" if sub.source else body.source)[:200]
+        merged = _merge_source(sub.source, body.source)
+        if merged != sub.source:
+            sub.source = merged
             db.commit()
         return Message(message=_GENERIC)
     else:
         sent = _aware(sub.confirm_sent_at)
         if sub.status == "pending" and sent is not None and now - sent < _RESEND_AFTER:
+            merged = _merge_source(sub.source, body.source)  # mail yok ama yeni konu kaybolmasın
+            if merged != sub.source:
+                sub.source = merged
+                db.commit()
             return Message(message=_GENERIC)
         if sub.status == "unsubscribed":
+            # Ayrılmış kişi yeniden kaydoluyor: eski konular geri gelmesin, yalnız yeni form
             sub.token = secrets.token_urlsafe(32)
             sub.unsubscribed_at = None
+            sub.source = body.source or sub.source
+        else:
+            # Onay bekleyen kişi başka bir formu da doldurdu: etiketleri BİRLEŞTİR (eskiden üzerine
+            # yazılıyordu → zam alarmı bekleyen kişi bülten formunu doldurunca alarmı sessizce kaybediyordu)
+            sub.source = _merge_source(sub.source, body.source)
         sub.status = "pending"
         sub.consent_at = now
-        sub.source = body.source or sub.source
 
     sub.confirm_sent_at = now
     try:
@@ -113,6 +122,24 @@ def subscribe(
     gonder = send_zam_alarm_confirm if _zam(sub.source) else send_newsletter_confirm
     background.add_task(gonder, email, confirm_url, unsub_url)
     return Message(message=_GENERIC)
+
+
+_KONULAR = ("zam-alarmi", "bulten")
+
+
+def _merge_source(old: str | None, new: str | None) -> str | None:
+    """Kaynak etiketlerini birleştirir: 'zam-alarmi:/x' + 'bulten:/y' → 'zam-alarmi:/x|bulten:/y'.
+
+    Yeni konu zaten varsa ya da yeni kaynak konu etiketi taşımıyorsa eski kaynak korunur.
+    """
+    if not new:
+        return old
+    if not old:
+        return new[:200]
+    konu = new.split(":", 1)[0]
+    if konu not in _KONULAR or f"{konu}:" in old:
+        return old
+    return f"{old}|{new}"[:200]
 
 
 def _zam(source: str | None) -> bool:
