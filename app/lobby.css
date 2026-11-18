@@ -43,6 +43,7 @@ main { flex: 1; width: 100%; max-width: 980px; margin: 0 auto; padding: 0 16px 5
 .app-soon b { display: block; font-size: .98rem; margin-bottom: 3px; }
 .app-soon span { font-size: .88rem; color: var(--muted); }
 .soon-note { font-size: .88rem; color: var(--muted); margin: 16px 0 0; }
+.soon-note a { text-decoration: underline; text-underline-offset: 2px; } /* metin içi bağlantı yalnız renkle ayrılmasın */
 
 .one-account {
   margin-top: 40px; border-top: 1px solid var(--line-soft); padding-top: 22px;

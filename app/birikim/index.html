@@ -7,6 +7,8 @@
 <meta name="description" content="Ayda 5.000 TL'yi altına, dolara ya da BIST 100'e düzenli koysaydın bugün ne olurdu? Gerçek 15 yıllık verilerle birikim simülasyonu — enflasyon karşılaştırmalı.">
 <link rel="canonical" href="https://app.parafomo.com/birikim/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icon-192.png">
 <meta property="og:title" content="Birikim Simülatörü — ParaFOMO">
 <meta property="og:description" content="Ayda 5.000 TL'yi altına koysaydın bugün ne olurdu? Gerçek verilerle dene.">
 <meta property="og:url" content="https://app.parafomo.com/birikim/">
@@ -26,8 +28,8 @@
 <a class="skip" href="#main">İçeriğe atla</a>
 <div id="app">
   <header class="bar">
-    <a class="wordmark" href="/" aria-label="ParaFOMO uygulamalar lobisine dön">
-      <span class="wm-name">parafomo</span><span class="wm-app">birikim</span>
+    <a class="wordmark" href="/">
+      <span class="wm-name">parafomo</span> <span class="wm-app">birikim</span><span class="sr-only"> — uygulamalar lobisine dön</span>
     </a>
     <div class="bar-right">
       <button class="btn-icon" id="theme-btn" title="Tema değiştir" aria-label="Tema değiştir">
@@ -44,7 +46,7 @@
     <section class="sim-form" aria-label="Simülasyon ayarları">
       <label class="field amount">
         <span>Aylık tutar</span>
-        <div class="amount-wrap"><input id="amount" type="number" inputmode="numeric" min="50" step="50" value="5000"><b>₺ / ay</b></div>
+        <div class="amount-wrap"><input id="amount" type="text" inputmode="numeric" autocomplete="off" value="5.000"><b>₺ / ay</b></div>
       </label>
       <div class="period">
         <span class="p-label">Süre</span>
@@ -57,7 +59,9 @@
         </span>
       </div>
     </section>
-    <section id="results" aria-live="polite"></section>
+    <!-- sonuç özeti tek cümle okunur; tüm bölüm her değişimde baştan okunmasın -->
+    <p id="sim-status" class="sr-only" aria-live="polite"></p>
+    <section id="results" aria-label="Sonuçlar"></section>
     <section class="sim-notes">
       <p>Nasıl hesaplanıyor? Her ayın kapanış fiyatından alım yapıldığı varsayılır; toplam birikim
       bugünkü fiyatla değerlenir. "Enflasyona endeksli" satırı, yatırdığın her taksitin TÜİK TÜFE ile
