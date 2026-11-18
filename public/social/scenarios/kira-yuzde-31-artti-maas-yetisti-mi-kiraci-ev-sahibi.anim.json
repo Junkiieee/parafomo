@@ -1,0 +1,345 @@
+{
+ "slug": "kira-yuzde-31-artti-maas-yetisti-mi-kiraci-ev-sahibi",
+ "title": "Kira %31,23 arttı, memur maaşı yetişti mi? Kiracı vs ev sahibi",
+ "description": "Kasım 2026'da yenilenen kiralarda yasal artış tavanı %31,23 (12 aylık TÜFE ortalaması). Örnek: 20.000 TL kira en fazla 26.246 TL olur. Memur maaşı Temmuz 2026'da %13,52 arttı; Ocak 2027 için tahmin yaklaşık %10,75, ikisi birlikte bir yılda yaklaşık %25,7. Ekim'de yıllık enflasyon %29,77 olsa da tavan ortalamaya baktığı için daha yüksek. Tavan bir üst sınırdır; daha düşük artışta anlaşılabilir. Ocak tahmini kesin değildir.\nKaynak: TÜİK TÜFE (Ekim 2026, 12 aylık ortalama), TBK md. 344; Hazine ve Maliye Bakanlığı katsayıları; 8. Dönem Toplu Sözleşme.\nMaaşın ve kiran birlikte: parafomo.com/2027-zam-hesaplama/\nParafomo Para Hikâyeleri",
+ "tags": [
+  "kira artış oranı",
+  "kira zammı",
+  "memur zammı",
+  "kiracı ev sahibi",
+  "2027 zam",
+  "para hikayeleri",
+  "parafomo"
+ ],
+ "data": {
+  "tema": "gece",
+  "kanca": [
+   "KİRA %31,23 ARTTI",
+   "MAAŞ YETİŞEMEDİ"
+  ],
+  "vurgu": [
+   "yetişemedi",
+   "memur",
+   "tavan",
+   "Örnek",
+   "Temmuzda",
+   "tahmini",
+   "şaşırtıcı",
+   "taraftasın",
+   "pazarlığa"
+  ],
+  "scenes": [
+   {
+    "line": "s0",
+    "etiket": "Kasım 2026",
+    "oyuncular": [
+     {
+      "id": "e",
+      "k": "evsahibi",
+      "ifade": "mutlu",
+      "x": 320,
+      "y": 980,
+      "olcek": 0.667,
+      "giris": "sol"
+     },
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 760,
+      "y": 980,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "yetişemedi",
+        "ifade": "uzgun",
+        "eylem": "kucul",
+        "deger": 0.85
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "line": "s1",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 320,
+      "y": 1000,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "iki",
+        "ifade": "mutlu",
+        "eylem": "zipla",
+        "deger": 0.6
+       }
+      ]
+     },
+     {
+      "id": "z",
+      "k": "zarf",
+      "ifade": "mutlu",
+      "x": 760,
+      "y": 1000,
+      "olcek": 0.6,
+      "giris": "sag"
+     }
+    ]
+   },
+   {
+    "line": "s2",
+    "etiket": "Kasım 2026",
+    "sayi": {
+     "deger": 31.23,
+     "bas": 0,
+     "birim": "%",
+     "kelime": "tavan",
+     "y": 520,
+     "not": "12 aylık TÜFE ortalaması",
+     "say": true
+    },
+    "oyuncular": [
+     {
+      "id": "h",
+      "k": "ev",
+      "ifade": "mutlu",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "yok"
+     }
+    ],
+    "kaynak": "Kaynak: TÜİK (12 aylık TÜFE ortalaması), TBK md. 344"
+   },
+   {
+    "line": "s3",
+    "etiket": "Örnek",
+    "sayi": {
+     "deger": 26246,
+     "bas": 20000,
+     "birim": "₺",
+     "kelime": "26.246",
+     "y": 520,
+     "not": "20.000 TL × 1,3123",
+     "say": true
+    },
+    "oyuncular": [
+     {
+      "id": "e",
+      "k": "evsahibi",
+      "ifade": "mutlu",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "yok"
+     }
+    ],
+    "kaynak": "Kaynak: TÜİK (12 aylık TÜFE ortalaması), TBK md. 344"
+   },
+   {
+    "line": "s4",
+    "etiket": "Temmuz 2026",
+    "sayi": {
+     "deger": 13.52,
+     "bas": 0,
+     "birim": "%",
+     "kelime": "Temmuzda",
+     "y": 520,
+     "not": "memur maaş zammı",
+     "say": true
+    },
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "yok"
+     }
+    ],
+    "kaynak": "Kaynak: Hazine ve Maliye Bakanlığı katsayıları"
+   },
+   {
+    "line": "s5",
+    "etiket": "Ocak 2027 · tahmin",
+    "sayi": {
+     "deger": 10.75,
+     "bas": 0,
+     "birim": "%",
+     "kelime": "Ocak",
+     "y": 520,
+     "not": "toplu sözleşme %5 + enflasyon farkı",
+     "say": true
+    },
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "endiseli",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "yok"
+     }
+    ],
+    "kaynak": "Kaynak: TÜİK TÜFE, 8. Dönem Toplu Sözleşme (tahmin)"
+   },
+   {
+    "line": "s6",
+    "cubuk": {
+     "a": {
+      "etiket": "Kira (tavan)",
+      "deger": 31.23
+     },
+     "b": {
+      "etiket": "Maaş (1 yıl, tahmin)",
+      "deger": 25.7
+     },
+     "birim": "%",
+     "not": "Kira daha hızlı artıyor"
+    },
+    "kaynak": "Kaynak: TÜİK; HMB; parafomo hesabı"
+   },
+   {
+    "line": "s7",
+    "vs": {
+     "sol": {
+      "k": "yuzde",
+      "etiket": "Yıllık enflasyon (Ekim)",
+      "deger": "%29,77"
+     },
+     "sag": {
+      "k": "ev",
+      "etiket": "Kira tavanı (Kasım)",
+      "deger": "%31,23"
+     }
+    },
+    "kaynak": "Kaynak: TÜİK (Ekim 2026)"
+   },
+   {
+    "line": "s8",
+    "soru": true,
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 300,
+      "y": 790,
+      "olcek": 0.55,
+      "giris": "yok"
+     },
+     {
+      "id": "e",
+      "k": "evsahibi",
+      "ifade": "normal",
+      "x": 780,
+      "y": 790,
+      "olcek": 0.55,
+      "giris": "yok"
+     }
+    ]
+   },
+   {
+    "line": "s9",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "mutlu",
+      "x": 320,
+      "y": 980,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "hazır",
+        "eylem": "zipla",
+        "deger": 0.6
+       }
+      ]
+     },
+     {
+      "id": "e",
+      "k": "evsahibi",
+      "ifade": "saskin",
+      "x": 760,
+      "y": 980,
+      "olcek": 0.667,
+      "giris": "yok"
+     }
+    ]
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Ev sahibi kirayı artırdı, maaş yetişemedi.",
+   "cap": "Ev sahibi kirayı artırdı, maaş yetişemedi."
+  },
+  {
+   "id": "s1",
+   "say": "Ama Elif bir memur, maaşı yılda iki kez artıyor.",
+   "cap": "Ama Elif bir memur, maaşı yılda iki kez artıyor."
+  },
+  {
+   "id": "s2",
+   "say": "Kasımda yenilenen kiralarda yasal tavan yüzde otuz bir virgül yirmi üç.",
+   "cap": "Kasımda yenilenen kiralarda yasal tavan %31,23."
+  },
+  {
+   "id": "s3",
+   "say": "Örnek: yirmi bin liralık kira, yirmi altı bin iki yüz kırk altı oldu.",
+   "cap": "Örnek: 20.000 TL kira, 26.246 TL oldu."
+  },
+  {
+   "id": "s4",
+   "say": "Bu yüzden Elif maaşına baktı. Temmuzda yüzde on üç virgül elli iki zam aldı.",
+   "cap": "Bu yüzden Elif maaşına baktı. Temmuzda %13,52 zam aldı."
+  },
+  {
+   "id": "s5",
+   "say": "Ocak tahmini de yaklaşık yüzde on virgül yetmiş beş.",
+   "cap": "Ocak tahmini de yaklaşık %10,75."
+  },
+  {
+   "id": "s6",
+   "say": "İkisi birlikte bir yılda yaklaşık yüzde yirmi beş virgül yedi.",
+   "cap": "İkisi birlikte bir yılda yaklaşık %25,7."
+  },
+  {
+   "id": "s7",
+   "say": "Asıl şaşırtıcı olan: yıllık enflasyon yüzde yirmi dokuz virgül yetmiş yedi. Tavan yine de daha yüksek.",
+   "cap": "Asıl şaşırtıcı olan: yıllık enflasyon %29,77. Tavan yine de daha yüksek."
+  },
+  {
+   "id": "s8",
+   "say": "Sen hangi taraftasın: kiracı mı, ev sahibi mi?",
+   "cap": "Sen hangi taraftasın: kiracı mı, ev sahibi mi?"
+  },
+  {
+   "id": "s9",
+   "say": "Ev sahibi kirayı artırınca, hesabı bilen pazarlığa hazır gider.",
+   "cap": "Ev sahibi kirayı artırınca, hesabı bilen pazarlığa hazır gider."
+  }
+ ],
+ "comment": "Sen hangi taraftasın: kiracı mı, ev sahibi mi? Kaynak: TÜİK TÜFE, TBK md. 344, HMB katsayıları. Maaşın ve kiran birlikte hesapla: parafomo.com/2027-zam-hesaplama/",
+ "link": "/2027-zam-hesaplama/",
+ "format": "para_hikayesi",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "engine": "hikaye",
+ "lead": 0.05,
+ "series": "Para Hikâyeleri",
+ "skin": "iso"
+}

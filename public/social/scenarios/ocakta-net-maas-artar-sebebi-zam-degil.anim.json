@@ -1,0 +1,104 @@
+{
+ "slug": "ocakta-net-maas-artar-sebebi-zam-degil",
+ "title": "Ocakta net maaş artar, sebebi zam değil",
+ "description": "Gelir vergisi yıl içinde birikir ve net maaşı küçültür. Ocakta sayaç sıfırlandığı için zam gelmese bile net maaş toparlanır.",
+ "tags": [
+  "net maaş",
+  "gelir vergisi",
+  "vergi dilimi",
+  "ocak maaşı",
+  "maaş hesabı",
+  "ParaFOMO",
+  "parafomo"
+ ],
+ "format": "myth",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "VERGİ DİLİMİ",
+  "scenes": [
+   {
+    "type": "icon_text",
+    "head": "Maaşın hep aynı değil",
+    "data": {
+     "icon": "cash",
+     "text": "Net maaşın yıl boyu *aynı kalmıyor*"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "steps",
+    "head": "Vergi yıl boyu birikir",
+    "data": {
+     "items": [
+      "Vergi birikir",
+      "Dilim yükselir",
+      "Cebine az girer"
+     ]
+    },
+    "line": "s1"
+   },
+   {
+    "type": "icon_text",
+    "head": "Ocakta sayaç sıfırlanır",
+    "data": {
+     "icon": "calendar",
+     "text": "Ocakta dilimler *baştan başlar*, kesinti yeniden düşük orandan işler"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "steps",
+    "head": "Zam sanıp aldanma",
+    "data": {
+     "items": [
+      "Zam var mı bak",
+      "Aralıkla kıyasla",
+      "Hemen harcama"
+     ]
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Sence neden?",
+    "data": {
+     "l1": "ARALIK NEDEN",
+     "l2": "OCAKTAN DÜŞÜK?",
+     "sub": "HER GÜN KISA VE NET TEK ANALİZ"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Net maaşın yıl boyu aynı kalmıyor.",
+   "cap": "Net maaşın yıl boyu aynı kalmıyor."
+  },
+  {
+   "id": "s1",
+   "say": "Gelir vergisi yıl boyunca birikir; dilim yükselince aynı brütten cebine daha az girer.",
+   "cap": "Gelir vergisi yıl boyunca birikir; dilim yükselince aynı brütten cebine daha az girer."
+  },
+  {
+   "id": "s2",
+   "say": "Ama ocakta sayaç sıfırlanır. Dilimler baştan başlar, kesinti yeniden en düşük orandan işler.",
+   "cap": "Ama ocakta sayaç sıfırlanır. Dilimler baştan başlar, kesinti yeniden en düşük orandan işler."
+  },
+  {
+   "id": "s3",
+   "say": "Zam gelmese bile ocakta net maaş genelde aralıktan yüksek çıkar; bunu zam sanıp harcamaya girişme.",
+   "cap": "Zam gelmese bile ocakta net maaş genelde aralıktan yüksek çıkar; bunu zam sanıp harcamaya girişme."
+  },
+  {
+   "id": "s4",
+   "say": "Sence aralık maaşın neden hep ocaktan düşük? Abone ol, her gün kısa ve net tek analiz.",
+   "cap": "Sence aralık maaşın neden hep ocaktan düşük? Abone ol, her gün kısa ve net tek analiz."
+  }
+ ],
+ "skin": "iso",
+ "engine": "hf"
+}

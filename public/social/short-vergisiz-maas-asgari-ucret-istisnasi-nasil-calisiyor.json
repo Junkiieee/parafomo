@@ -1,0 +1,120 @@
+{
+  "title": "Vergisiz maaş: asgari ücret istisnası nasıl çalışıyor #Shorts",
+  "description": "Asgari ücret kadar kazanç gelir ve damga vergisinden muaf. İstisna her zamla büyüdüğü için maaşın vergisiz kısmı da büyüyor.\nKaynak/hesap: Maaş = 2 asgari ücret; istisna = 1 asgari ücret; 1/2 = yaklaşık %50 (basit anlatım, SGK ve işsizlik kesintileri hariç) · senaryodaki hesap; yıllık enflasyon %29,77: TÜİK TÜFE Ekim 2026",
+  "tags": [
+    "asgari ücret",
+    "gelir vergisi",
+    "damga vergisi",
+    "maaş",
+    "vergi istisnası",
+    "bordro",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-vergisiz-maas-asgari-ucret-istisnasi-nasil-calisiyor.mp4",
+  "slug": "vergisiz-maas-asgari-ucret-istisnasi-nasil-calisiyor",
+  "format": "shock_number",
+  "engine": "anim",
+  "teknik": "iso",
+  "timeline": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 3.062,
+      "cap": "İki asgari ücret alıyorsan yarısı vergisiz.",
+      "words": [
+        0.35,
+        0.81,
+        1.21,
+        1.49,
+        2.05,
+        2.37
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 3.342,
+      "t1": 9.294,
+      "cap": "Asgari ücret kadarlık kazanç gelir ve damga vergisinden muaf; vergi yalnızca üstüne işliyor.",
+      "words": [
+        3.342,
+        4.062,
+        4.342,
+        4.782,
+        5.142,
+        5.402,
+        5.702,
+        6.042,
+        6.562,
+        7.422,
+        7.702,
+        8.302,
+        8.622
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 9.574,
+      "t1": 17.23,
+      "cap": "Ama istisna sabit değil, asgari ücret zamlandıkça o da büyüyor; yıllık enflasyon yüzde 29,77.",
+      "words": [
+        9.574,
+        10.074,
+        10.594,
+        11.054,
+        11.634,
+        12.034,
+        12.434,
+        13.154,
+        13.354,
+        13.434,
+        14.234,
+        14.534,
+        15.094,
+        15.434
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 17.51,
+      "t1": 23.51,
+      "cap": "Sonuç: maaşının vergisiz kısmı zamla büyüyor; bordronda istisnanın yansıdığını kontrol et.",
+      "words": [
+        17.51,
+        18.57,
+        18.97,
+        19.51,
+        19.85,
+        20.13,
+        20.93,
+        21.45,
+        22.21,
+        22.75,
+        23.15
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 23.79,
+      "t1": 30.222,
+      "cap": "Bordrondaki hangi satır cebini sessizce küçültüyor? Abone ol, her gün 60 saniyede tek net analiz al.",
+      "words": [
+        23.79,
+        24.77,
+        25.09,
+        25.37,
+        25.71,
+        26.27,
+        27.25,
+        27.51,
+        27.95,
+        28.07,
+        28.21,
+        28.45,
+        29.03,
+        29.29,
+        29.47,
+        29.91
+      ]
+    }
+  ]
+}

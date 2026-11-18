@@ -1,0 +1,64 @@
+{
+  "slug": "vergisiz-maas-asgari-ucret-istisnasi-nasil-calisiyor",
+  "title": "Vergisiz maaş: asgari ücret istisnası nasıl çalışıyor",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "Asgari ücret kadar kazanç gelir ve damga vergisinden muaf. İstisna her zamla büyüdüğü için maaşın vergisiz kısmı da büyüyor.\nKaynak/hesap: Maaş = 2 asgari ücret; istisna = 1 asgari ücret; 1/2 = yaklaşık %50 (basit anlatım, SGK ve işsizlik kesintileri hariç) · senaryodaki hesap; yıllık enflasyon %29,77: TÜİK TÜFE Ekim 2026",
+  "tags": [
+    "asgari ücret",
+    "gelir vergisi",
+    "damga vergisi",
+    "maaş",
+    "vergi istisnası",
+    "bordro",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "İki asgari ücret alıyorsan yarısı vergisiz.",
+      "visual": {
+        "type": "object",
+        "query": "wallet"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Asgari ücret kadarlık kazanç gelir ve damga vergisinden muaf; vergi yalnızca üstüne işliyor.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama istisna sabit değil, asgari ücret zamlandıkça o da büyüyor; yıllık enflasyon yüzde 29,77.",
+      "visual": {
+        "type": "object",
+        "query": "calendar"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Sonuç: maaşının vergisiz kısmı zamla büyüyor; bordronda istisnanın yansıdığını kontrol et.",
+      "visual": {
+        "type": "object",
+        "query": "receipt paper"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bordrondaki hangi satır cebini sessizce küçültüyor? Abone ol, her gün 60 saniyede tek net analiz al.",
+      "visual": {
+        "type": "object",
+        "query": "wallet"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "yarısı (iki asgari ücretlik maaşta vergisiz kısım)",
+    "calc": "Maaş = 2 asgari ücret; istisna = 1 asgari ücret; 1/2 = yaklaşık %50 (basit anlatım, SGK ve işsizlik kesintileri hariç)",
+    "source": "senaryodaki hesap; yıllık enflasyon %29,77: TÜİK TÜFE Ekim 2026"
+  }
+}

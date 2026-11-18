@@ -1,0 +1,123 @@
+{
+  "title": "Ocakta net maaş artar, sebebi zam değil #Shorts",
+  "description": "Gelir vergisi yıl içinde birikir ve net maaşı küçültür. Ocakta sayaç sıfırlandığı için zam gelmese bile net maaş toparlanır.",
+  "tags": [
+    "net maaş",
+    "gelir vergisi",
+    "vergi dilimi",
+    "ocak maaşı",
+    "maaş hesabı",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-ocakta-net-maas-artar-sebebi-zam-degil.mp4",
+  "slug": "ocakta-net-maas-artar-sebebi-zam-degil",
+  "format": "myth",
+  "engine": "anim",
+  "teknik": "hf",
+  "timeline": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 2.75,
+      "cap": "Net maaşın yıl boyu aynı kalmıyor.",
+      "words": [
+        0.35,
+        0.67,
+        1.23,
+        1.41,
+        1.75,
+        1.97
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 3.03,
+      "t1": 8.31,
+      "cap": "Gelir vergisi yıl boyunca birikir; dilim yükselince aynı brütten cebine daha az girer.",
+      "words": [
+        3.03,
+        3.59,
+        4.03,
+        4.23,
+        4.65,
+        5.43,
+        5.69,
+        6.23,
+        6.53,
+        7.01,
+        7.37,
+        7.57,
+        7.83
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 8.59,
+      "t1": 14.59,
+      "cap": "Ama ocakta sayaç sıfırlanır. Dilimler baştan başlar, kesinti yeniden en düşük orandan işler.",
+      "words": [
+        8.59,
+        9.15,
+        9.63,
+        10.01,
+        10.95,
+        11.25,
+        11.67,
+        12.35,
+        12.75,
+        13.07,
+        13.31,
+        13.67,
+        14.03
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 14.87,
+      "t1": 20.99,
+      "cap": "Zam gelmese bile ocakta net maaş genelde aralıktan yüksek çıkar; bunu zam sanıp harcamaya girişme.",
+      "words": [
+        14.87,
+        15.39,
+        15.89,
+        16.09,
+        16.57,
+        16.73,
+        17.13,
+        17.57,
+        18.07,
+        18.41,
+        19.13,
+        19.29,
+        19.49,
+        19.85,
+        20.29
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 21.27,
+      "t1": 26.55,
+      "cap": "Sence aralık maaşın neden hep ocaktan düşük? Abone ol, her gün kısa ve net tek analiz.",
+      "words": [
+        21.27,
+        21.97,
+        22.35,
+        22.71,
+        22.87,
+        23.11,
+        23.57,
+        24.19,
+        24.47,
+        24.89,
+        25.01,
+        25.19,
+        25.49,
+        25.63,
+        25.75,
+        26.05
+      ]
+    }
+  ]
+}

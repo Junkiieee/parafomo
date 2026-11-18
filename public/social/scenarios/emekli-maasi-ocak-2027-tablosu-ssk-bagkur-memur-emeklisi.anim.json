@@ -1,0 +1,247 @@
+{
+ "slug": "emekli-maasi-ocak-2027-tablosu-ssk-bagkur-memur-emeklisi",
+ "title": "Emekli maaşı Ocak 2027 tablosu: SSK, Bağ-Kur ve memur emeklisi (tahmin)",
+ "description": "Ocak 2027 emekli zammı tahmini: SSK ve Bağ-Kur %12,86, memur emeklisi %10,75. Tablo bugünkü aylığa göre Ocak 2027 tahminini gösterir (ör. 30.000 TL → SSK 33.857 TL, memur emeklisi 33.224 TL). Tahmin Temmuz–Ekim 2026 TÜFE'sine ve Kasım–Aralık için aylık %2,09 varsayımına dayanır; kesin oran Aralık enflasyonu açıklanınca belli olur. En düşük emekli aylığı (23.552 TL) için Ocak'ta ayrı yasal düzenleme gerekir.\nKaynak: TÜİK TÜFE; 8. Dönem Toplu Sözleşme (memur emeklisi: %5 + enflasyon farkı).\nKendi aylığınla hesapla: parafomo.com/emekli-zammi-hesaplama/\nParafomo",
+ "tags": [
+  "emekli zammı 2027",
+  "emekli maaşı ocak 2027",
+  "ssk bağkur zammı",
+  "memur emeklisi zammı",
+  "emekli maaş tablosu",
+  "parafomo"
+ ],
+ "data": {
+  "tema": "gece",
+  "kanca": [
+   "EMEKLİ MAAŞI",
+   "OCAK 2027 TABLOSU"
+  ],
+  "vurgu": [
+   "tahmini",
+   "Memur",
+   "Örneğin",
+   "yasal",
+   "satırda"
+  ],
+  "scenes": [
+   {
+    "line": "s0",
+    "etiket": "Ocak 2027 · tahmin",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "emekli",
+      "ifade": "saskin",
+      "x": 540,
+      "y": 1000,
+      "olcek": 0.8,
+      "giris": "zipla"
+     }
+    ]
+   },
+   {
+    "line": "s1",
+    "etiket": "SSK ve Bağ-Kur",
+    "sayi": {
+     "deger": 12.86,
+     "bas": 0,
+     "birim": "%",
+     "kelime": "tahmini",
+     "y": 520,
+     "not": "Temmuz–Aralık enflasyonu (tahmin)",
+     "say": true
+    },
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "emekli",
+      "ifade": "mutlu",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "yok"
+     }
+    ],
+    "kaynak": "Kaynak: TÜİK TÜFE; 8. Dönem Toplu Sözleşme; parafomo hesabı (tahmin)"
+   },
+   {
+    "line": "s2",
+    "etiket": "Memur emeklisi",
+    "sayi": {
+     "deger": 10.75,
+     "bas": 0,
+     "birim": "%",
+     "kelime": "Memur",
+     "y": 520,
+     "not": "toplu sözleşme %5 + enflasyon farkı",
+     "say": true
+    },
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "emekli",
+      "ifade": "normal",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "yok"
+     }
+    ],
+    "kaynak": "Kaynak: TÜİK TÜFE; 8. Dönem Toplu Sözleşme; parafomo hesabı (tahmin)"
+   },
+   {
+    "line": "s3",
+    "etiket": "Tahmin tablosu",
+    "tablo": {
+     "baslik": "Ocak 2027 tahmini aylık (TL)",
+     "sutunlar": [
+      "Bugün",
+      "SSK/Bağ-Kur",
+      "Memur emek."
+     ],
+     "satirlar": [
+      [
+       "25.000",
+       "28.214",
+       "27.687"
+      ],
+      [
+       "30.000",
+       "33.857",
+       "33.224"
+      ],
+      [
+       "35.000",
+       "39.500",
+       "38.762"
+      ],
+      [
+       "40.000",
+       "45.143",
+       "44.299"
+      ],
+      [
+       "45.000",
+       "50.786",
+       "49.836"
+      ],
+      [
+       "50.000",
+       "56.428",
+       "55.374"
+      ]
+     ],
+     "vurgu": 1,
+     "kelime": "Örneğin",
+     "not": "Tahmin: Temmuz–Ekim TÜFE + Kasım–Aralık için aylık %2,09"
+    },
+    "kaynak": "Kaynak: TÜİK TÜFE; 8. Dönem Toplu Sözleşme; parafomo hesabı (tahmin)"
+   },
+   {
+    "line": "s4",
+    "etiket": "En düşük aylık: 23.552 TL",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "emekli",
+      "ifade": "endiseli",
+      "x": 540,
+      "y": 1000,
+      "olcek": 0.8,
+      "giris": "yok"
+     }
+    ]
+   },
+   {
+    "line": "s5",
+    "tablo": {
+     "baslik": "Ocak 2027 tahmini aylık (TL)",
+     "sutunlar": [
+      "Bugün",
+      "SSK/Bağ-Kur",
+      "Memur emek."
+     ],
+     "satirlar": [
+      [
+       "25.000",
+       "28.214",
+       "27.687"
+      ],
+      [
+       "30.000",
+       "33.857",
+       "33.224"
+      ],
+      [
+       "35.000",
+       "39.500",
+       "38.762"
+      ],
+      [
+       "40.000",
+       "45.143",
+       "44.299"
+      ],
+      [
+       "45.000",
+       "50.786",
+       "49.836"
+      ],
+      [
+       "50.000",
+       "56.428",
+       "55.374"
+      ]
+     ],
+     "vurgu": 1,
+     "kelime": "Örneğin",
+     "not": "Tahmin: Temmuz–Ekim TÜFE + Kasım–Aralık için aylık %2,09",
+     "hemen": true
+    },
+    "kaynak": "Kaynak: TÜİK TÜFE; 8. Dönem Toplu Sözleşme; parafomo hesabı (tahmin)"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Emekli maaşın Ocak iki bin yirmi yedide ne kadar olacak? Tablo burada.",
+   "cap": "Emekli maaşın Ocak 2027'de ne kadar olacak? Tablo burada."
+  },
+  {
+   "id": "s1",
+   "say": "SSK ve Bağ-Kur zammı tahmini yüzde on iki virgül seksen altı.",
+   "cap": "SSK ve Bağ-Kur zammı tahmini %12,86."
+  },
+  {
+   "id": "s2",
+   "say": "Memur emeklisinde yüzde on virgül yetmiş beş.",
+   "cap": "Memur emeklisinde %10,75."
+  },
+  {
+   "id": "s3",
+   "say": "Tabloda bugünkü aylığına göre Ocak tahmini var. Örneğin otuz bin lira alan SSK emeklisi, yaklaşık otuz üç bin sekiz yüz elli yedi lira alır. Memur emeklisiyse otuz üç bin iki yüz yirmi dört.",
+   "cap": "Tabloda bugünkü aylığına göre Ocak tahmini var. Örneğin 30.000 TL alan SSK emeklisi, yaklaşık 33.857 TL alır. Memur emeklisiyse 33.224 TL."
+  },
+  {
+   "id": "s4",
+   "say": "En düşük aylık için ayrı yasal karar gerekir. Kesin oran Ocak başında belli olur.",
+   "cap": "En düşük aylık için ayrı yasal karar gerekir. Kesin oran Ocak başında belli olur."
+  },
+  {
+   "id": "s5",
+   "say": "Senin maaşın tabloda hangi satırda?",
+   "cap": "Senin maaşın tabloda hangi satırda?"
+  }
+ ],
+ "comment": "Senin maaşın tabloda hangi satırda? Kaynak: TÜİK TÜFE, 8. Dönem Toplu Sözleşme (tahmin). Kendi aylığınla hesapla: parafomo.com/emekli-zammi-hesaplama/",
+ "link": "/emekli-zammi-hesaplama/",
+ "format": "para_hikayesi",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "engine": "hikaye",
+ "lead": 0.05,
+ "series": "Para Hikâyeleri",
+ "skin": "iso"
+}

@@ -1,0 +1,59 @@
+{
+  "slug": "ocakta-net-maas-artar-sebebi-zam-degil",
+  "title": "Ocakta net maaş artar, sebebi zam değil",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Gelir vergisi yıl içinde birikir ve net maaşı küçültür. Ocakta sayaç sıfırlandığı için zam gelmese bile net maaş toparlanır.",
+  "tags": [
+    "net maaş",
+    "gelir vergisi",
+    "vergi dilimi",
+    "ocak maaşı",
+    "maaş hesabı",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Net maaşın yıl boyu aynı kalmıyor.",
+      "visual": {
+        "type": "object",
+        "query": "wallet"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Gelir vergisi yıl boyunca birikir; dilim yükselince aynı brütten cebine daha az girer.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama ocakta sayaç sıfırlanır. Dilimler baştan başlar, kesinti yeniden en düşük orandan işler.",
+      "visual": {
+        "type": "object",
+        "query": "wall calendar"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Zam gelmese bile ocakta net maaş genelde aralıktan yüksek çıkar; bunu zam sanıp harcamaya girişme.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sence aralık maaşın neden hep ocaktan düşük? Abone ol, her gün kısa ve net tek analiz.",
+      "visual": {
+        "type": "object",
+        "query": "wallet"
+      }
+    }
+  ]
+}

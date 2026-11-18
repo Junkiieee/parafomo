@@ -1,0 +1,104 @@
+{
+  "slug": "vergisiz-maas-asgari-ucret-istisnasi-nasil-calisiyor",
+  "title": "Vergisiz maaş: asgari ücret istisnası nasıl çalışıyor",
+  "description": "Asgari ücret kadar kazanç gelir ve damga vergisinden muaf. İstisna her zamla büyüdüğü için maaşın vergisiz kısmı da büyüyor.\nKaynak/hesap: Maaş = 2 asgari ücret; istisna = 1 asgari ücret; 1/2 = yaklaşık %50 (basit anlatım, SGK ve işsizlik kesintileri hariç) · senaryodaki hesap; yıllık enflasyon %29,77: TÜİK TÜFE Ekim 2026",
+  "tags": [
+    "asgari ücret",
+    "gelir vergisi",
+    "damga vergisi",
+    "maaş",
+    "vergi istisnası",
+    "bordro",
+    "parafomo"
+  ],
+  "format": "shock_number",
+  "style": "isometric",
+  "scene": "generic.js",
+  "short": true,
+  "data": {
+    "eyebrow": "MAAŞ VERGİ İSTİSNASI",
+    "scenes": [
+      {
+        "type": "big_number",
+        "head": "İki asgari ücretin yarısı",
+        "data": {
+          "icon": "cash",
+          "value": 50,
+          "unit": "%",
+          "label": "MAAŞIN VERGİSİZ KISMI"
+        },
+        "line": "s0"
+      },
+      {
+        "type": "icon_text",
+        "head": "Vergi yalnızca üstüne",
+        "data": {
+          "icon": "bank",
+          "text": "Asgari ücret kadarı *gelir* ve *damga vergisinden* muaf"
+        },
+        "line": "s1"
+      },
+      {
+        "type": "big_number",
+        "head": "İstisna sabit değil",
+        "data": {
+          "icon": "percent",
+          "value": 29.77,
+          "unit": "%",
+          "label": "YILLIK ENFLASYON (TÜFE)"
+        },
+        "line": "s2"
+      },
+      {
+        "type": "steps",
+        "head": "Bordronda ne yapmalı?",
+        "data": {
+          "items": [
+            "Zamla istisna büyür",
+            "Bordronu aç",
+            "İstisnayı kontrol et"
+          ]
+        },
+        "line": "s3"
+      },
+      {
+        "type": "cta",
+        "head": "Abone ol",
+        "data": {
+          "l1": "SESSİZ KESİNTİ",
+          "l2": "HANGİ SATIRDA?",
+          "sub": "HER GÜN 60 SANİYEDE TEK ANALİZ"
+        },
+        "line": "s4"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "s0",
+      "say": "İki asgari ücret alıyorsan yarısı vergisiz.",
+      "cap": "İki asgari ücret alıyorsan yarısı vergisiz."
+    },
+    {
+      "id": "s1",
+      "say": "Asgari ücret kadarlık kazanç gelir ve damga vergisinden muaf; vergi yalnızca üstüne işliyor.",
+      "cap": "Asgari ücret kadarlık kazanç gelir ve damga vergisinden muaf; vergi yalnızca üstüne işliyor."
+    },
+    {
+      "id": "s2",
+      "say": "Ama istisna sabit değil, asgari ücret zamlandıkça o da büyüyor; yıllık enflasyon yüzde 29,77.",
+      "cap": "Ama istisna sabit değil, asgari ücret zamlandıkça o da büyüyor; yıllık enflasyon yüzde 29,77."
+    },
+    {
+      "id": "s3",
+      "say": "Sonuç: maaşının vergisiz kısmı zamla büyüyor; bordronda istisnanın yansıdığını kontrol et.",
+      "cap": "Sonuç: maaşının vergisiz kısmı zamla büyüyor; bordronda istisnanın yansıdığını kontrol et."
+    },
+    {
+      "id": "s4",
+      "say": "Bordrondaki hangi satır cebini sessizce küçültüyor? Abone ol, her gün 60 saniyede tek net analiz al.",
+      "cap": "Bordrondaki hangi satır cebini sessizce küçültüyor? Abone ol, her gün 60 saniyede tek net analiz al."
+    }
+  ],
+  "skin": "cutpaper"
+}
