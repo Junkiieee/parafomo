@@ -50,6 +50,8 @@ data/learning/yt-search-terms.json
 # Büyüme Ajanı geçici durum/log (versiyonlanmaz)
 agent/state/
 agent/logs/
+# Sabah rutininin geçici script/kare sayfaları (agent/prompts/sabah.md "KOMUT KURALLARI"; bakım 7 günde siler)
+agent/tmp/
 
 # Kapak WebP varyantları — build sırasında src/integrations/cover-variants.mjs üretir
 public/covers/w/
