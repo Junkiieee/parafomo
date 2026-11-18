@@ -1,5 +1,9 @@
 # Günlük Operasyon Günlüğü
 
+## 2026-11-18
+**Yayınlanan yazı:** [İhtiyaç Kredisi Faiz Oranları 2026: Son 1 Yılda Ne Oldu?](/blog/ihtiyac-kredisi-faiz-oranlari-2026-son-1-yil)
+Seçim kaynağı: fırsat motoru ("ihtiyaç kredisi faiz oranları" hacim 9,4, YENI_YAZI; kuyruk+backlog boş, takvimde izinli 🔴 olay yok (FOMC tutanakları/UK CPI aile dışı), GSC fırsatları mevcut sayfalarca karşılanıyor; açı: TCMB TP.KTF10 52 haftalık seri + KKDF/BSMV dahil gerçek maliyet)
+
 ## 2026-11-17
 **Yayınlanan yazı:** [Konut Kredisi Faiz Oranları 2026: Son 1 Yılda Ne Değişti?](/blog/konut-kredisi-faiz-oranlari-2026-son-1-yil)
 Seçim kaynağı: fırsat motoru ("konut kredisi faiz oranları" hacim 19,6, YENI_YAZI; kuyruk+backlog boş, takvimde izinli 🔴 olay yok (FOMC tutanakları aile dışı, yazısı mevcut), GSC fırsatları mevcut sayfalarca karşılanıyor; araçtan ayrışan açı: TCMB TP.KTF12 52 haftalık seri + dönem bazlı taksit farkı)
