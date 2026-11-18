@@ -36,6 +36,7 @@ const REDIRECTS = {
   // 2026-11-17: videolarda ekranda yazılan kısa adresler (Shorts'ta linkler tıklanmıyor; yazılabilir adres lazım).
   '/zam/': '/emekli-zammi-hesaplama/', '/zam': '/emekli-zammi-hesaplama/',
   '/refah/': '/emekli-refah-payi-seyyanen-zam/', '/refah': '/emekli-refah-payi-seyyanen-zam/',
+  '/asgari-ucret/': '/asgari-ucret-hesaplama/', '/asgari-ucret': '/asgari-ucret-hesaplama/',
   '/enflasyon/': '/enflasyon-hesaplama/', '/enflasyon': '/enflasyon-hesaplama/',
   // 2026-10-13: neredeyse birebir kopya, aynı sorgularda birbirini yiyordu (GSC sıra 27-29).
   '/blog/abd-faiz-karari-altin-dolar-tl-etkisi/': '/fed-faiz-takvimi/',
