@@ -57,7 +57,7 @@ TCMB'nin haftalık serisinden seçtiğimiz kilit noktalar:
 | Dönem (hafta) | Ortalama faiz (yıllık) | Aylık karşılığı | Ne oldu? |
 |---|---|---|---|
 | 14 Kasım 2025 | %61,03 | ~%4,05 | Bir yıl önceki başlangıç |
-| 5 Aralık 2025 | %64,57 | ~%4,19 | Yıl sonu öncesi yükseliş |
+| 5 Aralık 2025 | %64,57 | ~%4,24 | Yıl sonu öncesi yükseliş |
 | 26 Aralık 2025 | %46,37 | ~%3,23 | Yıl sonu haftası; tek haftalık sert düşüş, Ocak'ta geri döndü |
 | 23 Ocak 2026 | %56,37 | ~%3,81 | TCMB 22 Ocak'ta politika faizini %38'den %37'ye indirdi |
 | 13 Mart 2026 | %58,66 | ~%3,92 | Bahar aylarının dip bölgesi |
@@ -67,8 +67,8 @@ TCMB'nin haftalık serisinden seçtiğimiz kilit noktalar:
 
 Bu seriden çıkan dersler:
 
-1. **İhtiyaç kredisi faizi oynaktır.** Konut faizi haftadan haftaya onda birlik puanlarla hareket ederken ihtiyaç kredisinde haftalık 2-6 puanlık sıçramalar görülebiliyor. Bunun nedeni, bankaların kampanya dönemleri ve kısa vadeli fonlama maliyetindeki değişimin hacmi hızla etkilemesi. 26 Aralık 2025'teki %46,37 gibi tek haftalık uç değerleri "faizler düştü" diye okumamak gerekir.
-2. **Yaz aylarında zirve, sonbaharda gevşeme.** Ortalama Nisan'dan Ağustos'a %60'ın altından %65'in üzerine çıktı; Eylül'den bu yana kademeli olarak %59 civarına geriledi. Aynı dönemde 3 aya kadar vadeli mevduat faizi ortalaması da Haziran'daki %49,5'ten Kasım başında %42,5'e indi — bankaların fonlama maliyeti düştükçe kredi faizine de yansıyor.
+1. **İhtiyaç kredisi faizi oynaktır.** Konut faizi haftadan haftaya onda birlik puanlarla hareket ederken ihtiyaç kredisinde haftalık 2-10 puanlık sıçramalar görülebiliyor. Bunun nedeni, bankaların kampanya dönemleri ve kısa vadeli fonlama maliyetindeki değişimin hacmi hızla etkilemesi. 26 Aralık 2025'teki %46,37 gibi tek haftalık uç değerleri "faizler düştü" diye okumamak gerekir.
+2. **Yaz aylarında zirve, sonbaharda gevşeme.** Ortalama Mart sonundaki %60'ın altından Ağustos'ta %65'in üzerine çıktı; Eylül ortasından bu yana kademeli olarak %59 civarına geriledi. Aynı dönemde 3 aya kadar vadeli mevduat faizi ortalaması da Haziran'daki %49,5'ten Kasım başında %42,5'e indi — bankaların fonlama maliyeti düştükçe kredi faizine de yansıyor.
 3. **Bir yılın sonunda tablo yatay.** Kasım 2025'te %61,03 olan ortalama bugün %59,20; yani bir yıl önceye göre yaklaşık 1,8 puan aşağıda. Politika faizindeki indirimler ihtiyaç kredisine sınırlı ve gecikmeli geçiyor. Bu aktarımın nasıl işlediğini [TCMB faiz kararı paranı nasıl etkiler](/blog/tcmb-faiz-karari-nasil-etkiler) yazısında anlattık.
 
 Bir sonraki para politikası kararı 10 Aralık 2026'da; tarihleri [TCMB faiz takvimi](/tcmb-faiz-takvimi) sayfasından takip edebilirsin.
@@ -79,7 +79,7 @@ TCMB'nin 6 Kasım 2026 ortalamasıyla (aylık ~%3,95, KKDF + BSMV dahil ~%5,14),
 
 | Kredi tutarı | 12 ay taksit | 24 ay taksit | 36 ay taksit |
 |---|---|---|---|
-| 50.000 TL | ~5.685 TL | ~3.672 TL | — |
+| 50.000 TL | ~5.685 TL | ~3.672 TL | ~3.075 TL |
 | 100.000 TL | ~11.369 TL | ~7.343 TL | ~6.150 TL |
 | 125.000 TL | ~14.212 TL | ~9.179 TL | ~7.687 TL |
 | 200.000 TL | ~22.739 TL | ~14.687 TL | Vade sınırı (en fazla 24 ay) |
