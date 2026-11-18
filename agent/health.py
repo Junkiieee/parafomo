@@ -125,7 +125,7 @@ def pipelines():
         if last_err and status == "OK" and max_h is not None:
             status = "UYARI"
         rows.append({"name": name, "status": status, "last_ok": last_ok.isoformat() if last_ok else None,
-                     "age": fmt_age(h), "note": note,
+                     "age": fmt_age(h), "note": note, "log": log,
                      "error": last_err[1] if last_err else ""})
     return rows
 
@@ -429,6 +429,8 @@ def render(h):
     out = ["| Hat | Durum | Son başarı | Not |", "|---|---|---|---|"]
     for r in h["pipelines"]:
         err = f" — `{r['error'][:110]}`" if r.get("error") and r["status"] != "OK" else ""
+        if r["status"] != "OK" and r.get("log"):
+            err += f" (logs/{r['log']})"
         out.append(f"| {r['name']} | {ICON.get(r['status'], '')} {r['status']} | {r['age']} | {r['note']}{err} |")
     llm = h["llm"]
     llm_txt = "✅ ok" if llm["state"] == "ok" else f"🔴 {llm['state']}" + (f" (→ {llm['until']})" if llm.get("until") else "")
@@ -470,8 +472,8 @@ def problems(h, alarm=False):
     alarm=True → yalnız Kaan'a UYARI gerektiren operasyonel sorunlar (agent/sabah.sh → notify.py --key saglik):
     bayat veri ve SEO maddeleri çıkarılır (sabah rutini onları aynı gün kapatır; her gün mail atmasın),
     disk de çıkarılır (scripts/maintenance.sh 04:30'da kendi 'disk' uyarısını du dökümüyle atar)."""
-    p = [f"{r['name']}: {r['status']} (son başarı {r['age']}; logs/{spec[1]})"
-         for r, spec in zip(h["pipelines"], PIPELINES) if r["status"] in ("GECİKTİ", "HATA")]
+    p = [f"{r['name']}: {r['status']} (son başarı {r['age']}" + (f"; logs/{r['log']})" if r.get("log") else ")")
+         for r in h["pipelines"] if r["status"] in ("GECİKTİ", "HATA")]
     if h["llm"]["state"] != "ok":
         p.append(f"Claude: {h['llm']['state']}")
     if h["git"]["rebasing"]:
