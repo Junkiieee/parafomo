@@ -504,6 +504,8 @@ def yerlesim_duzelt(spec):
     Çizim sırası (hikaye.py): başlık → hap → dekor → oyuncular → sayı → vs → çubuk → kaynak → soru balonu."""
     d = spec["data"]
     for i, sc in enumerate(d.get("scenes", [])):
+        if i == 0 and d.get("kanca"):   # açılışta kanca kartı başlık yerinde; ikisi üst üste biner (hf content_overlap, 2026-11-18)
+            sc.pop("baslik", None)
         if sc.get("cubuk") and sc.get("vs"):
             sc.pop("vs")
         if sc.get("tablo"):   # tablo kartı tek başına (2026-11-17)

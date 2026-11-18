@@ -1,0 +1,360 @@
+{
+ "slug": "evde-bakim-maasi-ocak-2027-ne-kadar-olacak",
+ "title": "Evde bakım maaşı Ocak 2027'de ne kadar olacak? 17.448 TL tahmini",
+ "description": "Evde bakım maaşı memur aylık katsayısına bağlı: 10.000 × katsayı. Temmuz–Aralık 2026'da 15.755,12 TL olan maaş, yaklaşık %10,75'lik memur zammı tahminiyle Ocak 2027'de yaklaşık 17.448 TL olabilir. Kesin oran Kasım ve Aralık enflasyonu açıklanınca, kesin tutar Ocak başında katsayı ilan edilince belli olur. Şartlar ve gelir sınırı sitede.\nKaynak: 2828 s. Kanun ek md. 7; HMB memur katsayı genelgeleri; TÜİK TÜFE; 2027 1. yarı toplu sözleşme %5\nKendi hesabını yap: parafomo.com/evde-bakim-maasi/",
+ "tags": [
+  "evde bakım maaşı",
+  "evde bakım maaşı 2027",
+  "evde bakım maaşı zammı",
+  "memur katsayısı",
+  "Ocak 2027 zam",
+  "memur zammı tahmini",
+  "parafomo"
+ ],
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Evde bakım maaşının Ocak zammını iki ay belirleyecek.",
+   "cap": "Evde bakım maaşının Ocak zammını iki ay belirleyecek."
+  },
+  {
+   "id": "s1",
+   "say": "Annesine evde bakan Elif, bugün her ay 15.755 lira alıyor.",
+   "cap": "Annesine evde bakan Elif, bugün her ay 15.755 TL alıyor."
+  },
+  {
+   "id": "s2",
+   "say": "Ama bu rakam Ocak'ta kendiliğinden artmıyor.",
+   "cap": "Ama bu rakam Ocak'ta kendiliğinden artmıyor."
+  },
+  {
+   "id": "s3",
+   "say": "Çünkü maaş, memur katsayısına bağlı; zammı da ondan.",
+   "cap": "Çünkü maaş, memur katsayısına bağlı; zammı da ondan."
+  },
+  {
+   "id": "s4",
+   "say": "Bu yüzden memur zammı tahmini önemli: yaklaşık yüzde 10,75.",
+   "cap": "Bu yüzden memur zammı tahmini önemli: yaklaşık %10,75."
+  },
+  {
+   "id": "s5",
+   "say": "Bu yüzden Elif'in maaşı Ocak'ta yaklaşık 17.448 lira olabilir.",
+   "cap": "Bu yüzden Elif'in maaşı Ocak'ta yaklaşık 17.448 TL olabilir."
+  },
+  {
+   "id": "s6",
+   "say": "Ama asıl şaşırtıcı olan: Kasım ve Aralık enflasyonu henüz açıklanmadı.",
+   "cap": "Ama asıl şaşırtıcı olan: Kasım ve Aralık enflasyonu henüz açıklanmadı."
+  },
+  {
+   "id": "s7",
+   "say": "Sen hangisisin: hesabı şimdi yapan mı, Ocak'ı bekleyen mi?",
+   "cap": "Sen hangisisin: hesabı şimdi yapan mı, Ocak'ı bekleyen mi?"
+  },
+  {
+   "id": "s8",
+   "say": "Takvimini işaretle: kesin zammı o iki ay belirleyecek.",
+   "cap": "Takvimini işaretle: kesin zammı o iki ay belirleyecek."
+  }
+ ],
+ "data": {
+  "tema": "alacakaranlik",
+  "kanca": [
+   "ZAMMI İKİ AY",
+   "BELİRLEYECEK"
+  ],
+  "vurgu": [
+   "iki ay",
+   "Elif",
+   "katsayısına",
+   "kendiliğinden",
+   "tahmini",
+   "Kasım",
+   "Aralık",
+   "Ocak",
+   "Takvimini"
+  ],
+  "scenes": [
+   {
+    "line": "s0",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "endiseli",
+      "x": 320,
+      "y": 980,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "iki",
+        "ifade": "saskin",
+        "eylem": "zipla",
+        "deger": 0.5
+       }
+      ]
+     },
+     {
+      "id": "b",
+      "k": "zarf",
+      "ifade": "normal",
+      "x": 760,
+      "y": 1000,
+      "olcek": 0.667,
+      "giris": "sag"
+     }
+    ]
+   },
+   {
+    "line": "s1",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 320,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "yok"
+     },
+     {
+      "id": "b",
+      "k": "zarf",
+      "ifade": "mutlu",
+      "x": 760,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "zipla"
+     }
+    ],
+    "etiket": "Temmuz–Aralık 2026",
+    "sayi": {
+     "deger": 15755,
+     "birim": "₺",
+     "kelime": "15.755",
+     "y": 520,
+     "not": "10.000 × 1,575512",
+     "say": true
+    },
+    "kaynak": "Kaynak: 2828 s. Kanun ek md. 7; HMB memur katsayı genelgesi"
+   },
+   {
+    "line": "s2",
+    "oyuncular": [
+     {
+      "id": "b",
+      "k": "zarf",
+      "ifade": "endiseli",
+      "x": 540,
+      "y": 980,
+      "olcek": 0.867,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "artmıyor",
+        "ifade": "uzgun",
+        "eylem": "titre",
+        "deger": 0.5
+       }
+      ]
+     }
+    ],
+    "baslik": [
+     "Otomatik zam yok"
+    ]
+   },
+   {
+    "line": "s3",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "zarf",
+      "ifade": "normal",
+      "x": 320,
+      "y": 1000,
+      "olcek": 0.667,
+      "giris": "yok"
+     },
+     {
+      "id": "b",
+      "k": "yuzde",
+      "ifade": "normal",
+      "x": 760,
+      "y": 980,
+      "olcek": 0.667,
+      "giris": "sag",
+      "olaylar": [
+       {
+        "kelime": "bağlı",
+        "ifade": "mutlu",
+        "eylem": "zipla",
+        "deger": 0.6
+       }
+      ]
+     }
+    ],
+    "baslik": [
+     "Maaş = 10.000 × katsayı"
+    ],
+    "kaynak": "Kaynak: 2828 s. Kanun ek md. 7"
+   },
+   {
+    "line": "s4",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "yuzde",
+      "ifade": "saskin",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "zipla"
+     }
+    ],
+    "etiket": "Tahmin",
+    "sayi": {
+     "deger": 10.75,
+     "birim": "%",
+     "kelime": "10,75",
+     "y": 520,
+     "not": "%5 toplu sözleşme + %5,47 enflasyon farkı",
+     "say": true
+    },
+    "kaynak": "Kaynak: 2027 1. yarı toplu sözleşme %5; TÜİK TÜFE (tahmin)"
+   },
+   {
+    "line": "s5",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "mutlu",
+      "x": 320,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "yok"
+     },
+     {
+      "id": "b",
+      "k": "zarf",
+      "ifade": "mutlu",
+      "x": 760,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "17.448",
+        "ifade": "mutlu",
+        "eylem": "zipla",
+        "deger": 0.7
+       }
+      ]
+     }
+    ],
+    "etiket": "Tahmin",
+    "sayi": {
+     "deger": 17448,
+     "bas": 15755,
+     "birim": "₺",
+     "kelime": "17.448",
+     "y": 520,
+     "not": "Ocak 2027, yaklaşık",
+     "say": true
+    },
+    "kaynak": "Kaynak: HMB memur katsayı genelgeleri; memur zammı tahmini %10,75"
+   },
+   {
+    "line": "s6",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "enflasyon",
+      "ifade": "normal",
+      "x": 320,
+      "y": 980,
+      "olcek": 0.667,
+      "giris": "sag",
+      "olaylar": [
+       {
+        "kelime": "Kasım",
+        "ifade": "saskin",
+        "eylem": "zipla",
+        "deger": 0.5
+       }
+      ]
+     },
+     {
+      "id": "b",
+      "k": "kadin",
+      "ifade": "saskin",
+      "x": 760,
+      "y": 1000,
+      "olcek": 0.667,
+      "giris": "yok"
+     }
+    ],
+    "baslik": [
+     "Kasım: 3 Aralık'ta",
+     "Aralık: Ocak başında"
+    ],
+    "kaynak": "Kaynak: TÜİK TÜFE açıklama takvimi"
+   },
+   {
+    "line": "s7",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 540,
+      "y": 795,
+      "olcek": 0.85,
+      "giris": "yok"
+     }
+    ],
+    "soru": true
+   },
+   {
+    "line": "s8",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "mutlu",
+      "x": 320,
+      "y": 1000,
+      "olcek": 0.667,
+      "giris": "yok"
+     },
+     {
+      "id": "b",
+      "k": "zarf",
+      "ifade": "mutlu",
+      "x": 760,
+      "y": 1000,
+      "olcek": 0.667,
+      "giris": "zipla"
+     }
+    ],
+    "etiket": "Ocak 2027",
+    "baslik": [
+     "Kesin tutar:",
+     "Ocak başında katsayıyla"
+    ]
+   }
+  ]
+ },
+ "comment": "Sen hangisisin: hesabı şimdi yapan mı, Ocak'ı bekleyen mi? Kaynak: 2828 s. Kanun ek md. 7; HMB memur katsayı genelgeleri; TÜİK TÜFE. Şartlar ve gelir sınırı: parafomo.com/evde-bakim-maasi/",
+ "link": "/evde-bakim-maasi/",
+ "format": "para_hikayesi",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "engine": "hikaye",
+ "lead": 0.05,
+ "series": "Para Hikâyeleri",
+ "skin": "iso"
+}
