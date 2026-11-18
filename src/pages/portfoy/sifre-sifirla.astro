@@ -46,10 +46,15 @@ const breadcrumbs = [
 
   <script is:inline>
     (function () {
-      var API_BASE = localStorage.getItem('pf_api_base') || 'https://api.parafomo.com';
+      // pf_api_base geçersiz kılması yalnız yerel geliştirmede (app/ ile aynı kural): kayıtlı bir değer
+      // yeni şifreyi başka bir sunucuya gönderemesin.
+      var yerel = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+      var API_BASE = (yerel && localStorage.getItem('pf_api_base')) || 'https://api.parafomo.com';
       var $ = function (id) { return document.getElementById(id); };
       var params = new URLSearchParams(location.search);
       var rtoken = params.get('token') || '';
+      // Sıfırlama anahtarı adres çubuğunda/tarayıcı geçmişinde kalmasın (ekran görüntüsü, paylaşım)
+      if (rtoken && history.replaceState) history.replaceState(null, '', location.pathname);
 
       if (!rtoken) {
         $('sub').textContent = 'Bağlantı geçersiz. Lütfen şifre sıfırlamayı yeniden başlat.';
@@ -75,9 +80,10 @@ const breadcrumbs = [
             if (Array.isArray(msg)) msg = msg.map(function (m) { return m.msg; }).join(' ');
             throw new Error(msg);
           }
-          if (data && data.access_token) localStorage.setItem('pf_token', data.access_token);
-          ok.textContent = 'Şifren güncellendi. Panele yönlendiriliyorsun…'; ok.hidden = false;
-          setTimeout(function () { location.href = 'https://app.parafomo.com/portfoy/'; }, 1200);
+          // Oturum token'ı burada (parafomo.com) saklanmaz: uygulama app.parafomo.com'da, ayrı origin —
+          // görmüyordu; "Panele yönlendiriliyorsun" deyip giriş ekranına düşürüyordu.
+          ok.textContent = 'Şifren güncellendi. Yeni şifrenle giriş yapabilirsin; giriş ekranına yönlendiriliyorsun…'; ok.hidden = false;
+          setTimeout(function () { location.href = 'https://app.parafomo.com/portfoy/'; }, 1800);
         } catch (ex) {
           err.textContent = ex.message; err.hidden = false;
           btn.disabled = false;
