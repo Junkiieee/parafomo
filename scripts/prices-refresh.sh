@@ -30,10 +30,28 @@ if git diff --quiet -- "${FILES[@]}"; then
   echo "  değişiklik yok"
   exit 0
 fi
+# Yalnız guncellenme/guncellemeEtiket değişen dosya (ör. Cumartesi DXY/tahvil: piyasa kapalı) geri alınır; commit'e
+# yalnız verisi GERÇEKTEN değişen dosyalar girer, hiçbiri yoksa deploy yok. Neden (denetim 2026-11-18, zamanlama-5):
+# zaman-damgası-yalnız commit'ler build + deploy tetikliyor, "son güncelleme"yi ve lastmod'u sahte ilerletiyordu.
+TS_ONLY='^ *"(guncellenme|guncellemeEtiket)": *"[^"]*",? *$'
+REAL=()
+for f in "${FILES[@]}"; do
+  git diff --quiet -- "$f" && continue
+  if git diff --quiet -I"$TS_ONLY" -- "$f"; then
+    if [ $DRY -eq 1 ]; then echo "  [dry] yalnız zaman damgası: $f (gerçekte geri alınır)"
+    else git_locked git checkout -q -- "$f"; fi
+  else
+    REAL+=("$f")
+  fi
+done
+if [ ${#REAL[@]} -eq 0 ]; then
+  echo "  değişiklik yok (yalnız zaman damgası)"
+  exit 0
+fi
 if [ $DRY -eq 1 ]; then
-  git diff --stat -- "${FILES[@]}"
+  git diff --stat -- "${REAL[@]}"
   echo "  --dry-run: commit/push yapılmadı"
   exit 0
 fi
-git_add_commit "fiyat: gün içi tazeleme ($(date -u '+%F %H:%M') UTC)" "${FILES[@]}" || { echo "HATA: commit"; exit 1; }
+git_add_commit "fiyat: gün içi tazeleme ($(date -u '+%F %H:%M') UTC)" "${REAL[@]}" || { echo "HATA: commit"; exit 1; }
 git_push_retry main && echo "  push tamam (deploy tetiklendi)"
