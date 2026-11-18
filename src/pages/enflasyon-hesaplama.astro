@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { BU_YIL } from '../data/yil';
 import Newsletter from '../components/Newsletter.astro';
 import tufe from '../../data/tufe-aylik.json';
-import { RELEASES, RELEASE_TIME } from '../data/tuik';
+import { RELEASE_TIME, nextRelease } from '../data/tuik';
 
 // Seri en yeni başta gelir → eskiden yeniye sırala. Aylık % değişimler zincirlenir (2025=100 baz
 // değişikliği zinciri bozmaz; TÜİK yıllık oranlarıyla ±0,02 puan tutarlı).
@@ -39,7 +39,7 @@ const gecenYil = takvimYillar[takvimYillar.length - 1];
 const son12 = M.slice(-12).reverse();
 
 const bugun = new Date().toISOString().slice(0, 10);
-const sonraki = RELEASES.find((r) => r.date > bugun); // bütün yılların takvimi (src/data/tuik.ts)
+const sonraki = nextRelease(bugun, false); // bütün yılların takvimi; takvim bittiyse olağan gün "(tahmini)" (src/data/tuik.ts)
 const trTarih = (iso: string) => {
   const d = new Date(iso + 'T12:00:00Z');
   return `${d.getUTCDate()} ${AYLAR[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
@@ -48,7 +48,7 @@ const trTarih = (iso: string) => {
 const faq = [
   {
     q: 'Güncel enflasyon oranı kaç?',
-    a: `TÜİK verisine göre ${ayAdi(SON.ay)} itibarıyla yıllık enflasyon (TÜFE) %${pct(SON.yillik)}, aylık enflasyon %${pct(SON.aylik)}.${sonraki ? ` ${sonraki.covers} verisi ${trTarih(sonraki.date)} saat ${RELEASE_TIME}’da açıklanacak.` : ''}`,
+    a: `TÜİK verisine göre ${ayAdi(SON.ay)} itibarıyla yıllık enflasyon (TÜFE) %${pct(SON.yillik)}, aylık enflasyon %${pct(SON.aylik)}.${sonraki ? ` ${sonraki.covers} verisi ${trTarih(sonraki.date)}${sonraki.tahmini ? ' (tahmini)' : ''} saat ${RELEASE_TIME}’da açıklanacak.` : ''}`,
   },
   {
     q: `${gecenYil.yil} yılı enflasyonu ne kadar oldu?`,
@@ -100,7 +100,7 @@ const breadcrumbs = [
 
     <div class="stats">
       <div class="stat"><span class="k">Yıllık enflasyon</span><span class="v">%{pct(SON.yillik)}</span><span class="s">{ayAdi(SON.ay)} · TÜİK TÜFE</span></div>
-      <div class="stat"><span class="k">Aylık enflasyon</span><span class="v">%{pct(SON.aylik)}</span><span class="s">{sonraki ? `${sonraki.covers} verisi: ${trTarih(sonraki.date)}` : ayAdi(SON.ay)}</span></div>
+      <div class="stat"><span class="k">Aylık enflasyon</span><span class="v">%{pct(SON.aylik)}</span><span class="s">{sonraki ? `${sonraki.covers} verisi: ${trTarih(sonraki.date)}${sonraki.tahmini ? ' (tahmini)' : ''}` : ayAdi(SON.ay)}</span></div>
       {bes && <div class="stat"><span class="k">{bes.y} yıl önceki 1.000 ₺</span><span class="v">₺{tl(1000 * bes.f)}</span><span class="s">{ayAdi(bes.ay)} → {ayAdi(SON.ay)} karşılığı</span></div>}
     </div>
 

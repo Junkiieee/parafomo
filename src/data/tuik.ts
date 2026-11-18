@@ -41,3 +41,22 @@ export const coversKey = (covers: string) => {
   const [ad, yil] = covers.split(' ');
   return `${yil}-${pad(AYLAR.indexOf(ad) + 1)}`;
 };
+
+/** Bugünden sonraki ilk TÜFE açıklaması: takvimde varsa o; takvim bittiyse (yeni yıl dosyası henüz yok) son kapsanan
+ *  aydan sonraki ayların olağan günü, `tahmini: true`. `dahil`: bugünkü açıklama da sayılsın mı (>=).
+ *  Neden (denetim 2026-11-18): 2026 dosyası 3 Aralık'ta bitince /enflasyon-hesaplama ve /enflasyon-farki-hesaplama
+ *  "sıradaki açıklama" cümlesini tamamen kaybediyordu — Aralık verisinin (emekli zammı günü) arandığı haftalarda. */
+export function nextRelease(bugun: string, dahil = true): (Release & { tahmini: boolean }) | null {
+  const r = RELEASES.find((x) => (dahil ? x.date >= bugun : x.date > bugun));
+  if (r) return { ...r, tahmini: false };
+  if (!RELEASES.length) return null;
+  let key = coversKey(RELEASES[RELEASES.length - 1].covers);
+  for (let i = 0; i < 24; i++) {
+    const y = +key.slice(0, 4);
+    const m = +key.slice(5, 7);
+    key = m === 12 ? `${y + 1}-01` : `${y}-${pad(m + 1)}`;
+    const date = usualReleaseDate(key);
+    if (dahil ? date >= bugun : date > bugun) return { covers: `${AYLAR[+key.slice(5, 7) - 1]} ${key.slice(0, 4)}`, date, tahmini: true };
+  }
+  return null;
+}

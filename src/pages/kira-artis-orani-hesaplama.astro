@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { ekIn } from '../data/ek';
 import Newsletter from '../components/Newsletter.astro';
 import kira from '../../data/kira-artis-2026.json';
+import { RELEASES } from '../data/tuik';
 
 // Güncel yasal tavan (12 aylık TÜFE ortalaması) — data dosyasından, aylık güncellenir.
 const RATE = kira.guncelOran; // %
@@ -21,6 +22,9 @@ const fmt = (n: number) =>
 const next = new Date(kira.sonrakiAciklama + 'T10:00:00+03:00');
 const now = new Date();
 const daysToNext = Math.max(0, Math.ceil((next.getTime() - now.getTime()) / 86400000));
+// Takvimde (data/tuik-enflasyon-*.json) olmayan gün scripts/kira-artis-update.py'nin olağan gün tahminidir (ayın 3'ü,
+// hafta sonuysa ilk iş günü) → "(tahmini)". Ör. 2026 takvimi 3 Aralık'ta bitince Aralık verisi 4 Ocak 2027 tahmini.
+const nextTahmini = !RELEASES.some((r) => r.date === kira.sonrakiAciklama);
 const nextLabel = next.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
 
 const faq = [
@@ -42,7 +46,7 @@ const faq = [
   },
   {
     q: 'Kira artış oranı ne zaman güncellenir?',
-    a: `Oran her ay değişir çünkü 12 aylık TÜFE ortalaması TÜİK'in aylık enflasyon açıklamasıyla güncellenir. TÜİK enflasyonu her ayın başında (genelde ~3'ünde, saat 10:00) açıklar. Sıradaki açıklama ${nextLabel} tarihinde. Sözleşme yenilenme ayınızda geçerli olan oranı esas almalısınız.`,
+    a: `Oran her ay değişir çünkü 12 aylık TÜFE ortalaması TÜİK'in aylık enflasyon açıklamasıyla güncellenir. TÜİK enflasyonu her ayın başında (genelde ~3'ünde, saat 10:00) açıklar. Sıradaki açıklama ${nextLabel}${nextTahmini ? ' (tahmini)' : ''} tarihinde. Sözleşme yenilenme ayınızda geçerli olan oranı esas almalısınız.`,
   },
 ];
 
@@ -105,7 +109,7 @@ const breadcrumbs = [
 
     <div class="countdown-strip">
       <span class="cd-num">{daysToNext}</span>
-      <span class="cd-text">gün sonra ({nextLabel}) TÜİK yeni enflasyonu açıklıyor → oran güncellenecek.
+      <span class="cd-text">gün sonra ({nextLabel}{nextTahmini ? ', tahmini' : ''}) TÜİK yeni enflasyonu açıklıyor → oran güncellenecek.
         <a href="/enflasyon-takvimi">Tüm enflasyon takvimi →</a></span>
     </div>
 
