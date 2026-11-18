@@ -112,6 +112,7 @@ def clean_state():
     prices._CACHE.clear()
     prices._FAILED.clear()
     prices._HIST_CACHE.clear()
+    prices._LAST_GOOD.clear()
     prices._TRUNCGIL_DOC = None
     public_router._NEWS_CACHE.clear()
     yield

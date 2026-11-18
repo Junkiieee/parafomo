@@ -33,6 +33,8 @@ _TTL_SECONDS = 120
 # Hızlı hatalarda (bağlantı reddi, 5xx) kaynak kapatılmaz: gece cron'ları her sembolü dener.
 _FAIL_TTL = 60
 _DOWN_TTL = 30
+# Yahoo yanıt verdi ama sembol yok (404 / fiyatsız): uydurma kod 10 dk boyunca yeniden sorulmasın
+_MISS_TTL = 600
 _FAILED: dict[str, float] = {}
 
 # BIST kodu URL yoluna girer: yalnız harf/rakam (../, ?, # ile Yahoo'da başka uç çağrılmasın)
@@ -245,11 +247,14 @@ def _bist_quote(ticker: str) -> tuple[float, float | None] | None:
         # Yahoo asılı → kısa süre hiç deneme (sıradaki semboller 10'ar sn beklemesin)
         _mark_failed("src:yahoo", _DOWN_TTL)
         return None
+    except httpx.HTTPStatusError as exc:
+        _mark_failed(cache_key, _MISS_TTL if exc.response.status_code == 404 else _FAIL_TTL)
+        return None
     except (httpx.HTTPError, ValueError, KeyError, IndexError, AttributeError, TypeError):
         _mark_failed(cache_key)
         return None
     if price is None:
-        _mark_failed(cache_key)
+        _mark_failed(cache_key, _MISS_TTL)
         return None
     prev = _num(meta.get("previousClose")) or _num(meta.get("chartPreviousClose"))
     change_pct = ((price - prev) / prev * 100) if prev else None
@@ -258,8 +263,35 @@ def _bist_quote(ticker: str) -> tuple[float, float | None] | None:
     return quote
 
 
-def get_quote(asset_type: AssetType, symbol: str) -> tuple[float, float | None] | None:
-    """Güncel (birim fiyat TL, gün içi değişim %) döndürür; alınamazsa None."""
+# Son başarılı fiyat (süreç içi): kaynak kısa süre düşerse portföy özeti sahte zarar göstermesin.
+_LAST_GOOD: dict[str, tuple[float, tuple[float, float | None]]] = {}
+_LAST_GOOD_TTL = 24 * 3600
+
+
+def get_quote(
+    asset_type: AssetType, symbol: str, allow_stale: bool = False
+) -> tuple[float, float | None] | None:
+    """Güncel (birim fiyat TL, gün içi değişim %) döndürür; alınamazsa None.
+
+    allow_stale=True: kaynak o an yanıt vermezse son 24 saatteki son başarılı fiyat döner
+    (gün içi değişim None — bayat değişim gösterilmesin). Alarm gibi karar veren yerlerde KULLANMA.
+    """
+    quote = _live_quote(asset_type, symbol)
+    key = f"{asset_type.value}:{(symbol or '').strip().upper()}"
+    now = time.time()
+    if quote is not None:
+        if key not in _LAST_GOOD and len(_LAST_GOOD) >= 10_000:  # uydurma sembollerle şişmesin
+            _LAST_GOOD.clear()
+        _LAST_GOOD[key] = (now, quote)
+        return quote
+    if allow_stale:
+        hit = _LAST_GOOD.get(key)
+        if hit and now - hit[0] < _LAST_GOOD_TTL:
+            return (hit[1][0], None)
+    return None
+
+
+def _live_quote(asset_type: AssetType, symbol: str) -> tuple[float, float | None] | None:
     if asset_type is AssetType.BIST:
         return _bist_quote(symbol)
     if asset_type in (AssetType.GOLD, AssetType.SILVER):

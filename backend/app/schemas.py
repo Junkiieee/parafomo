@@ -127,6 +127,9 @@ class PortfolioSummary(BaseModel):
     # Satışlardan realize edilmiş kâr/zarar (işlem defterinden)
     realized_pl_total: float = 0.0
     realized_pl_year: float = 0.0
+    # Fiyatı alınamayan pozisyon sayısı: >0 ise total_value bunları içermez, K/Z yalnız
+    # fiyatı gelenlerle hesaplanır (total_cost tüm pozisyonların maliyeti olarak kalır)
+    unpriced_count: int = 0
 
 
 class SnapshotOut(BaseModel):

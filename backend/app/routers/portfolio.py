@@ -1,6 +1,8 @@
 """Portföy uç noktaları: pozisyon ekle/listele/sil + canlı değerleme."""
 from __future__ import annotations
 
+import json
+import pathlib
 from datetime import datetime, timezone
 from typing import Annotated
 
@@ -72,6 +74,32 @@ def _new_symbol(asset_type: AssetType, symbol: str) -> str:
     return sym
 
 
+_BIST_LIST = pathlib.Path(__file__).resolve().parents[3] / "public" / "bist-symbols.json"
+_bist_known_cache: frozenset[str] | None = None
+
+
+def _bist_known() -> frozenset[str]:
+    """Uygulamanın önerdiği BIST kodları (public/bist-symbols.json); okunamazsa boş küme."""
+    global _bist_known_cache
+    if _bist_known_cache is None:
+        try:
+            data = json.loads(_BIST_LIST.read_text(encoding="utf-8"))
+            _bist_known_cache = frozenset(str(x.get("c", "")).upper() for x in data if isinstance(x, dict))
+        except (OSError, ValueError, TypeError, AttributeError):
+            _bist_known_cache = frozenset()
+    return _bist_known_cache
+
+
+def _check_bist_exists(asset_type: AssetType, symbol: str) -> None:
+    """Yeni BIST satırı açan uçlar: listede olmayan kodun fiyatı alınabilmeli. Uydurma kodlarla
+    dolu bir hesap her özet çağrısında sunucumuzu Yahoo'ya yüklendirmesin (site verileri de Yahoo'dan)."""
+    if asset_type is AssetType.BIST and symbol not in _bist_known() and get_price(asset_type, symbol) is None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Bu hisse kodunun fiyatı bulunamadı — kodu kontrol et (ör. THYAO) ya da biraz sonra tekrar dene.",
+        )
+
+
 def _count(db: Session, model, user_id: int) -> int:
     return db.scalar(select(func.count()).select_from(model).where(model.user_id == user_id)) or 0
 
@@ -109,6 +137,8 @@ def add_holding(
         )
     )
     _check_room(db, user.id, new_holding=existing is None)
+    if existing is None:
+        _check_bist_exists(body.asset_type, symbol)
     if existing is not None:
         total_qty = existing.quantity + body.quantity
         existing.cost_price = round(
@@ -227,13 +257,16 @@ def portfolio_summary(
     valued: list[HoldingValued] = []
     total_cost = 0.0
     total_value = 0.0
+    priced_cost = 0.0  # fiyatı alınan pozisyonların maliyeti (K/Z yalnız bunlarla)
+    unpriced = 0
     total_day_change = 0.0
     total_prev_value = 0.0  # gün içi % için önceki-kapanış değeri toplamı
 
     for h in holdings:
         key = (h.asset_type, h.symbol)
         if key not in quote_cache:
-            quote_cache[key] = get_quote(h.asset_type, h.symbol)
+            # kaynak anlık düştüyse son 24 saatin son fiyatı (sahte −%100 / dip yerine)
+            quote_cache[key] = get_quote(h.asset_type, h.symbol, allow_stale=True)
         quote = quote_cache[key]
         current_price = quote[0] if quote else None
         change_pct = quote[1] if quote else None
@@ -247,6 +280,7 @@ def portfolio_summary(
             profit_loss = current_value - cost_value
             profit_loss_pct = (profit_loss / cost_value * 100) if cost_value else None
             total_value += current_value
+            priced_cost += cost_value
             if change_pct is not None:
                 # önceki kapanış = fiyat / (1 + %/100); gün içi K/Z = güncel - önceki
                 prev_price = current_price / (1 + change_pct / 100) if change_pct != -100 else 0.0
@@ -256,6 +290,7 @@ def portfolio_summary(
                 total_prev_value += prev_value
         else:
             current_value = profit_loss = profit_loss_pct = None
+            unpriced += 1
 
         valued.append(
             HoldingValued(
@@ -277,8 +312,9 @@ def portfolio_summary(
             )
         )
 
-    total_pl = total_value - total_cost
-    total_pl_pct = (total_pl / total_cost * 100) if total_cost else 0.0
+    # Fiyatı alınamayan pozisyonun maliyeti K/Z'ye katılmaz: yoksa kaynak çökünce sahte zarar
+    total_pl = total_value - priced_cost
+    total_pl_pct = (total_pl / priced_cost * 100) if priced_cost else 0.0
     total_day_pct = (
         total_day_change / total_prev_value * 100 if total_prev_value else None
     )
@@ -289,8 +325,8 @@ def portfolio_summary(
     gold_try = gold_q[0] if gold_q else None
 
     # Günün değer fotoğrafı: değer grafiğini besler (gün başına tek satır, tazelenir).
-    # Fiyat kaynakları çöktüyse (total_value=0 ama maliyet var) yanlış dip yazma.
-    if holdings and (total_value > 0 or total_cost == 0):
+    # Bir pozisyonun bile fiyatı yoksa yazma: eksik toplam grafikte yanlış dip olur.
+    if holdings and unpriced == 0:
         today = datetime.now(timezone.utc).date()
         try:
             snap = db.scalar(
@@ -326,6 +362,7 @@ def portfolio_summary(
     ) or 0.0
 
     return PortfolioSummary(
+        unpriced_count=unpriced,
         realized_pl_total=round(realized_total, 2),
         realized_pl_year=round(realized_year, 2),
         usd_try=usd_try,
@@ -485,6 +522,7 @@ def add_watch(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail=f"İzleme listesi en fazla {_MAX_WATCH_ITEMS} varlık alır.",
             )
+        _check_bist_exists(body.asset_type, symbol)
         existing = WatchItem(user_id=user.id, asset_type=body.asset_type, symbol=symbol)
         db.add(existing)
         db.commit()
@@ -611,6 +649,7 @@ def add_transaction(
 
     if body.side == "buy":
         if holding is None:
+            _check_bist_exists(body.asset_type, symbol)
             holding = Holding(
                 user_id=user.id, asset_type=body.asset_type, symbol=symbol,
                 quantity=body.quantity, cost_price=body.price,

@@ -184,3 +184,85 @@ def test_sell_more_than_held_rejected(client, two_users):
     r = client.post("/portfolio/transactions", headers=a, json={
         "asset_type": "cash", "symbol": "cash", "side": "sell", "quantity": 101, "price": 1})
     assert r.status_code == 400
+
+
+# ---- Fiyat kaynağı kısmen çökünce sahte zarar / yanlış grafik noktası yok (backend-5)
+def _fake_quotes(monkeypatch, table):
+    """prices kaynaklarını taklit et: table[(asset_type, symbol)] = (fiyat, %) | None."""
+    from app import prices
+
+    monkeypatch.setattr(prices, "_live_quote", lambda at, sym: table.get((at.value, (sym or "").upper())))
+
+
+def test_unpriced_holding_does_not_fake_a_loss_or_write_snapshot(client, two_users, monkeypatch):
+    a, _ = two_users
+    table = {("gold", "GOLD"): (100.0, 0.0), ("bist", "TUPRS"): (100.0, 0.0)}
+    _fake_quotes(monkeypatch, table)
+    for body in ({"asset_type": "gold", "symbol": "GOLD", "quantity": 10, "cost_price": 100},
+                 {"asset_type": "bist", "symbol": "TUPRS", "quantity": 100, "cost_price": 100}):
+        assert client.post("/portfolio/holdings", headers=a, json=body).status_code == 201
+    from app import prices
+    prices._LAST_GOOD.clear()          # süreç yeni başladı: bayat yedek yok
+    table[("bist", "TUPRS")] = None    # Yahoo düştü
+    s = client.get("/portfolio/summary", headers=a).json()
+    assert s["unpriced_count"] == 1 and s["total_cost"] == 11000 and s["total_value"] == 1000
+    assert s["total_profit_loss"] == 0 and s["total_profit_loss_pct"] == 0   # −%90,91 değil
+    assert client.get("/portfolio/history", headers=a).json() == []          # yanlış dip yazılmadı
+
+
+def test_last_good_quote_bridges_short_outage(client, two_users, monkeypatch):
+    a, _ = two_users
+    table = {("bist", "TUPRS"): (120.0, 2.0)}
+    _fake_quotes(monkeypatch, table)
+    assert client.post("/portfolio/holdings", headers=a, json={
+        "asset_type": "bist", "symbol": "TUPRS", "quantity": 10, "cost_price": 100}).status_code == 201
+    assert client.get("/portfolio/summary", headers=a).json()["total_value"] == 1200
+    table[("bist", "TUPRS")] = None
+    s = client.get("/portfolio/summary", headers=a).json()
+    h = s["holdings"][0]
+    assert s["unpriced_count"] == 0 and h["current_price"] == 120 and h["change_pct"] is None
+    from app import prices
+    from app.models import AssetType as AT
+    assert prices.get_quote(AT.BIST, "TUPRS") is None          # alarm gibi yerler bayat fiyat görmez
+    prices._LAST_GOOD["bist:TUPRS"] = (0.0, (120.0, 2.0))      # 24 saatten eski
+    assert prices.get_quote(AT.BIST, "TUPRS", allow_stale=True) is None
+
+
+# ---- Uydurma BIST kodları Yahoo'yu yormasın (backend-6)
+def test_unknown_bist_code_needs_a_price(client, two_users, monkeypatch):
+    a, _ = two_users
+    table = {("bist", "YENIHA"): (10.0, 0.0)}
+    _fake_quotes(monkeypatch, table)
+    for path, body in (
+        ("/portfolio/holdings", {"asset_type": "bist", "symbol": "UYDURMA", "quantity": 1, "cost_price": 1}),
+        ("/portfolio/transactions", {"asset_type": "bist", "symbol": "UYDURMA", "side": "buy", "quantity": 1, "price": 1}),
+        ("/portfolio/watchlist", {"asset_type": "bist", "symbol": "UYDURMA"}),
+    ):
+        r = client.post(path, headers=a, json=body)
+        assert r.status_code == 400 and "fiyatı bulunamadı" in r.json()["detail"], path
+    # listede olmayan ama fiyatı gelen yeni kod (ör. yeni halka arz) kabul
+    assert client.post("/portfolio/holdings", headers=a, json={
+        "asset_type": "bist", "symbol": "YENIHA", "quantity": 1, "cost_price": 1}).status_code == 201
+    # listedeki kod kaynak çökükken de eklenebilir
+    assert client.post("/portfolio/holdings", headers=a, json={
+        "asset_type": "bist", "symbol": "THYAO", "quantity": 1, "cost_price": 1}).status_code == 201
+
+
+def test_yahoo_miss_is_cached_longer(monkeypatch):
+    import httpx
+
+    from app import prices
+    from app.models import AssetType as AT
+
+    calls = []
+
+    def handler(request):
+        calls.append(request.url)
+        return httpx.Response(404, json={})
+
+    real = httpx.Client
+    monkeypatch.setattr(prices.httpx, "Client", lambda *a, **kw: real(transport=httpx.MockTransport(handler)))
+    assert prices.get_quote(AT.BIST, "UYDURMA") is None
+    assert prices.get_quote(AT.BIST, "UYDURMA") is None
+    assert len(calls) == 1
+    assert prices._FAILED["bist:UYDURMA"] - __import__("time").time() > 500
