@@ -43,7 +43,7 @@ echo "[$STAMP] ParaFOMO günlük içerik motoru başladı"
 
 cd "$REPO" || { echo "HATA: repo dizinine girilemedi"; exit 1; }
 
-# 0) Ağır-iş kilidi: ajan (agent/run.sh) çalışıyorsa bitmesini bekle (en çok 3 saat).
+# 0) Ağır-iş kilidi: sabah rutini (agent/sabah.sh) ya da render çalışıyorsa bitmesini bekle (en çok 3 saat).
 exec 8>"$REPO/.git/parafomo-heavy.lock"
 if ! flock -w 10800 8; then
   echo "[!] Ajan 3 saattir bitmedi — bugünkü içerik atlandı"; exit 0
