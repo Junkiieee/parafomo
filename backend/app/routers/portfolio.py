@@ -2,8 +2,9 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
+from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, Response, status
+from fastapi import APIRouter, Depends, HTTPException, Path, Response, status
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
@@ -19,7 +20,7 @@ from ..models import (
     User,
     WatchItem,
 )
-from ..prices import get_price, get_quote, get_usd_try, altin_sembol
+from ..prices import altin_sembol, get_price, get_quote, get_usd_try, is_valid_bist_symbol
 from ..schemas import (
     AlertCreate,
     AlertOut,
@@ -39,8 +40,15 @@ from ..schemas import (
 
 _MAX_ACTIVE_ALERTS = 20
 _MAX_WATCH_ITEMS = 30
+# Kullanıcı başına üst sınırlar: özet her farklı sembol için dış fiyat isteği atar;
+# sınırsız uydurma pozisyon / işlem satırı = kaynakları ve diski yoran DoS.
+_MAX_HOLDINGS = 200
+_MAX_TRANSACTIONS = 10_000
 
 router = APIRouter(prefix="/portfolio", tags=["portfolio"])
+
+# SQLite INTEGER 64 bit: taşan id 500 (OverflowError) yerine 422
+_Id = Annotated[int, Path(ge=1, le=2**63 - 1)]
 
 
 def _normalize_symbol(asset_type: AssetType, symbol: str) -> str:
@@ -52,6 +60,35 @@ def _normalize_symbol(asset_type: AssetType, symbol: str) -> str:
     return asset_type.value.upper()
 
 
+def _new_symbol(asset_type: AssetType, symbol: str) -> str:
+    """Yeni kayıt açan uçlar için: BIST kodu Yahoo URL'sine girer → yalnız harf/rakam.
+    (Satış mevcut pozisyonla eşleşir, eski kayıtlar kilitlenmesin diye orada kontrol yok.)"""
+    sym = _normalize_symbol(asset_type, symbol)
+    if asset_type is AssetType.BIST and not is_valid_bist_symbol(sym):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Geçersiz hisse kodu — listeden seç (ör. THYAO).",
+        )
+    return sym
+
+
+def _count(db: Session, model, user_id: int) -> int:
+    return db.scalar(select(func.count()).select_from(model).where(model.user_id == user_id)) or 0
+
+
+def _check_room(db: Session, user_id: int, new_holding: bool) -> None:
+    if _count(db, Transaction, user_id) >= _MAX_TRANSACTIONS:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"İşlem defteri en fazla {_MAX_TRANSACTIONS} kayıt alır.",
+        )
+    if new_holding and _count(db, Holding, user_id) >= _MAX_HOLDINGS:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Portföy en fazla {_MAX_HOLDINGS} farklı varlık alır.",
+        )
+
+
 @router.post("/holdings", response_model=HoldingOut, status_code=status.HTTP_201_CREATED)
 def add_holding(
     body: HoldingCreate,
@@ -59,7 +96,7 @@ def add_holding(
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> Holding:
-    symbol = _normalize_symbol(body.asset_type, body.symbol)
+    symbol = _new_symbol(body.asset_type, body.symbol)
 
     # Aynı sembolde ikinci alım → ayrı satır AÇMA, mevcut pozisyona BİRLEŞTİR ve
     # adet-ağırlıklı ortalama maliyet hesapla. Kullanıcı "TUPRS 10@100 sonra 5@130"
@@ -71,6 +108,7 @@ def add_holding(
             Holding.symbol == symbol,
         )
     )
+    _check_room(db, user.id, new_holding=existing is None)
     if existing is not None:
         total_qty = existing.quantity + body.quantity
         existing.cost_price = round(
@@ -131,7 +169,7 @@ def list_holdings(
 
 @router.patch("/holdings/{holding_id}", response_model=HoldingOut)
 def update_holding(
-    holding_id: int,
+    holding_id: _Id,
     body: HoldingUpdate,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
@@ -142,6 +180,12 @@ def update_holding(
             status_code=status.HTTP_404_NOT_FOUND, detail="Pozisyon bulunamadı."
         )
     fields = body.model_dump(exclude_unset=True)
+    # Açıkça null gelen adet/maliyet NOT NULL kolonda 500'e dönüyordu
+    if any(fields.get(k, 0) is None for k in ("quantity", "cost_price")):
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="Miktar ve birim maliyet boş olamaz.",
+        )
     for key, value in fields.items():
         setattr(holding, key, value)
     db.commit()
@@ -155,7 +199,7 @@ def update_holding(
     response_class=Response,
 )
 def delete_holding(
-    holding_id: int,
+    holding_id: _Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> Response:
@@ -345,7 +389,7 @@ def add_alert(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"En fazla {_MAX_ACTIVE_ALERTS} aktif alarm kurabilirsin. Önce birini sil.",
         )
-    symbol = _normalize_symbol(body.asset_type, body.symbol)
+    symbol = _new_symbol(body.asset_type, body.symbol)
     if body.kind == "day_pct" and body.threshold > 95:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -377,7 +421,7 @@ def add_alert(
     response_class=Response,
 )
 def delete_alert(
-    alert_id: int,
+    alert_id: _Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> Response:
@@ -426,7 +470,7 @@ def add_watch(
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> WatchOut:
-    symbol = _normalize_symbol(body.asset_type, body.symbol)
+    symbol = _new_symbol(body.asset_type, body.symbol)
     existing = db.scalar(
         select(WatchItem).where(
             WatchItem.user_id == user.id,
@@ -463,7 +507,7 @@ def add_watch(
     response_class=Response,
 )
 def delete_watch(
-    item_id: int,
+    item_id: _Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> Response:
@@ -515,7 +559,7 @@ def add_goal(
     response_class=Response,
 )
 def delete_goal(
-    goal_id: int,
+    goal_id: _Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> Response:
@@ -555,7 +599,7 @@ def add_transaction(
     pozisyondan düşülür; realize K/Z = (satış − ortalama maliyet) × miktar.
     Pozisyon sıfırlanırsa satır silinir, defter kaydı kalır.
     """
-    symbol = _normalize_symbol(body.asset_type, body.symbol)
+    symbol = (_new_symbol if body.side == "buy" else _normalize_symbol)(body.asset_type, body.symbol)
     holding = db.scalar(
         select(Holding).where(
             Holding.user_id == user.id,
@@ -563,6 +607,7 @@ def add_transaction(
             Holding.symbol == symbol,
         )
     )
+    _check_room(db, user.id, new_holding=body.side == "buy" and holding is None)
 
     if body.side == "buy":
         if holding is None:

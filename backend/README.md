@@ -39,6 +39,24 @@ Dokümantasyon: http://127.0.0.1:8000/docs
 
 Auth gerektiren uç noktalar `Authorization: Bearer <token>` bekler.
 
+## Güvenlik notları
+
+- Token'da parola parmak izi (`pwv`) var: şifre sıfırlanınca / hesap Google'a ilk kez
+  bağlanınca o kullanıcının eski oturumları düşer.
+- Giriş, kayıt, şifre sıfırlama, Google girişi, bülten ve `/public/*` IP başına hız
+  sınırlıdır (`app/ratelimit.py`, süreç içi). Üyeliksiz uçların gönderdiği e-postalar
+  ayrıca saatlik/günlük toplam bütçeye tabidir (`PORTFOLIO_PUBLIC_MAIL_PER_HOUR` / `_PER_DAY`).
+- Gövde üst sınırı 64 KB (`/inbox/ingest` 6 MB); sayılarda NaN/Infinity reddedilir.
+
+## Testler
+
+Ağsız, geçici DB ile çalışır (gerçek `.env`, SMTP ve fiyat kaynaklarına dokunmaz):
+
+```bash
+pip install pytest   # requirements.txt'e ek
+python -m pytest backend/tests        # repo kökünden
+```
+
 ## Sonraki geceler (backlog)
 
 - Google ile giriş (OAuth)

@@ -44,6 +44,16 @@ class Settings(BaseSettings):
     inbox_secret: str = ""
     inbox_dir: str = str(Path.home() / "parafomo-data" / "inbox")
 
+    # CF-Connecting-IP başlığına güven: YALNIZ api.parafomo.com Cloudflare proxy'si
+    # (turuncu bulut) arkasındaysa ve origin yalnız Cloudflare'e açıksa true yap.
+    # DNS-only kurulumda başlığı istemci yazar → hız sınırı atlatılır.
+    trust_cf_connecting_ip: bool = False
+
+    # Üyeliksiz uçların (şifre sıfırlama, bülten onayı) saatte / günde gönderebileceği
+    # toplam e-posta — sahte IP'lerle SMTP kotasını/itibarını yakmaya karşı sigorta.
+    public_mail_per_hour: int = 50
+    public_mail_per_day: int = 200
+
     @property
     def cors_origin_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
