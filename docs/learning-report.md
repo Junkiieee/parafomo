@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-11-17T08:52:52Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-11-18T08:55:39Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -42,12 +42,12 @@
 - euro-mi-dolar-mi-10-yillik-getiri-karsilastirma — skor 76.22
 - abd-ekim-2026-ppi-uretici-enflasyonu-fed-dolar-altin — skor 41.88
 - abd-kasim-2026-cpi-verisi-fed-dolar-altin — skor 37.87
-- gumus-mi-altin-mi-10-yillik-getiri-karsilastirma — skor 18.47
 - kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir — skor 17.07
+- gumus-mi-altin-mi-10-yillik-getiri-karsilastirma — skor 16.4
 - abd-ekim-2026-cpi-verisi-fed-dolar-altin — skor 14.08
 
 **🎯 Fırsat sorguları** (içerik/başlık iyileştir):
 - `uzun vadede euro mu dolar mı` — gös 23, sıra 10.8
-- `10 yıllık gümüş grafik` — gös 10, sıra 4.5
-- `15 ekim 22 ayar bilezik gram fiyatı` — gös 9, sıra 9.7
+- `10 yıllık gümüş grafik` — gös 9, sıra 4.7
+- `15 ekim 22 ayar bilezik gram fiyatı` — gös 8, sıra 10
 - `100 bin araç kredisi` — gös 5, sıra 20
