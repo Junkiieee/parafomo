@@ -12,10 +12,12 @@ kaynak yoksa güvenli bir varsayılan snapshot yazar.
 
 Kullanım: python3 scripts/altin-fiyat.py   (token harcamaz)
 """
+import http.client
 import json
 import os
 import re
 import sys
+import time
 import urllib.request
 from datetime import datetime, timezone, timedelta
 
@@ -49,10 +51,21 @@ def parse_tr(s):
         return None
 
 
-def fetch():
-    req = urllib.request.Request(API, headers={"User-Agent": "Mozilla/5.0 ParaFOMO"})
-    with urllib.request.urlopen(req, timeout=15) as r:
-        return json.loads(r.read().decode("utf-8", "ignore"))
+def fetch(denemeler=3, bekle=20):
+    """Truncgil today.json. Sabah 06:00 koşusunda ara sıra YARIM JSON dönüyor ("Unterminated string … char 6939",
+    Truncgil dosyayı yeniden yazarken okunuyor); gün içi koşularda hiç olmadı. Bu yüzden Yahoo yedeğine (ölçeklenmiş
+    eski snapshot) düşmeden önce 20 sn arayla 3 kez denenir — en kötü durumda koşuya ~40 sn ekler."""
+    for i in range(1, denemeler + 1):
+        try:
+            req = urllib.request.Request(API, headers={"User-Agent": "Mozilla/5.0 ParaFOMO"})
+            with urllib.request.urlopen(req, timeout=15) as r:
+                return json.loads(r.read().decode("utf-8", "ignore"))
+        except (ValueError, OSError, http.client.HTTPException) as e:   # JSONDecodeError ⊂ ValueError, URLError ⊂ OSError
+            if i >= denemeler:
+                raise
+            print(f"[altin-fiyat] Truncgil denemesi {i}/{denemeler} başarısız ({str(e)[:60]}) → {bekle} sn sonra tekrar",
+                  file=sys.stderr)
+            time.sleep(bekle)
 
 
 def _yahoo_price(symbol):
