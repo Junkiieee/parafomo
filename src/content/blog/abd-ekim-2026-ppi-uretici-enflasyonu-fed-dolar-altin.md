@@ -27,7 +27,7 @@ faq:
 
 Kısa cevap: **13 Kasım 2026, 16:30 (TSİ)**. Açıklamayı ABD Çalışma Bakanlığı'na bağlı Çalışma İstatistikleri Bürosu (BLS) yapıyor. Kasım'da yayımlanan rakam, **Ekim ayındaki** üretici fiyat değişimini ölçer. Takvimlerde "PPI m/m" ve "Core PPI m/m" diye iki ayrı satır olarak görünür.
 
-PPI'ın ne olduğunu ve CPI ile farkını temelden okumak istersen önce [PPI nedir](/blog/ppi-nedir-uretici-fiyat-endeksi) rehberimize göz atabilirsin. Açıklamada piyasanın baktığı ana rakamlar şunlar:
+PPI'ın ne olduğunu ve CPI ile farkını temelden okumak istersen önce [PPI nedir](/ekonomik-takvim/) sayfamıza göz atabilirsin. Açıklamada piyasanın baktığı ana rakamlar şunlar:
 
 | Kalem | Ne ölçer? | Piyasa için anlamı |
 |-------|-----------|--------------------|
@@ -64,7 +64,7 @@ Bu tablo aynı dönemin tüketici tarafıyla da uyumlu: Eylül CPI'da manşet y�
 
 Ekim CPI bugün, 10 Kasım'da açıklanıyor; PPI ise üç gün sonra geliyor. "CPI zaten belli olduysa PPI'ın önemi kalır mı?" diye düşünebilirsin. Kalır, iki nedenle:
 
-- **PCE köprüsü:** Fed'in resmi hedef göstergesi PCE fiyat endeksidir. PCE'nin sağlık hizmetleri, hava yolu ücretleri ve portföy yönetim ücretleri gibi kalemleri doğrudan PPI verisinden hesaplanır. Ekonomistler PPI geldikten sonra PCE tahminlerini günceller. PCE'yi bilmiyorsan [PCE nedir](/fed-faiz-takvimi/) yazımız kısa bir giriş sunuyor.
+- **PCE köprüsü:** Fed'in resmi hedef göstergesi PCE fiyat endeksidir. PCE'nin sağlık hizmetleri, hava yolu ücretleri ve portföy yönetim ücretleri gibi kalemleri doğrudan PPI verisinden hesaplanır. Ekonomistler PPI geldikten sonra PCE tahminlerini günceller. PCE'yi bilmiyorsan [PCE nedir](/fed-faiz-takvimi/) sayfamız kısa bir giriş sunuyor.
 - **Öncü sinyal:** Üreticinin maliyeti 1-3 ay içinde rafa yansıma eğilimindedir. Eylül'deki enerji kaynaklı sıçramanın Ekim'de sürüp sürmediği, önümüzdeki ayların CPI'ı için ipucu verir.
 
 Fed, Eylül'de faizi 25 baz puan artırarak **%3,75-4,00** aralığına çekmiş, 28 Ekim'de bu bandı sabit tutmuştu ([Fed faiz takvimi](/fed-faiz-takvimi)). Sıradaki karar **9 Aralık 2026**, Türkiye saatiyle 22:00'de ve yeni projeksiyonlarla birlikte gelecek. Ekim PPI, bu toplantıdan önceki son büyük enflasyon verilerinden biri.

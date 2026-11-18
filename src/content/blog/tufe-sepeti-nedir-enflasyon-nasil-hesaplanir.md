@@ -171,7 +171,7 @@ Genellikle kiracılar ve toplu taşıma kullanmayanlar için bu rakam resmi TÜF
 
 Enflasyon yüksek seyrederken paranızın reel değerini korumanın birkaç temel yolu vardır. Enflasyonu yenen araçlar tarihsel olarak altın, döviz, hisse senedi ve enflasyona endeksli tahviller arasında yer almıştır. Bu araçların karşılaştırmalı değerlendirmesi için [enflasyondan korunma rehberimizi](/blog/enflasyondan-nasil-korunur) okuyabilirsiniz.
 
-Eğer mevduatınızı değerlendiriyorsanız TCMB'nin faiz kararları doğrudan mevduat faizini etkiler; [TCMB faiz kararının size nasıl yansıdığını](/blog/tcmb-faiz-karari-nasil-etkiler) anlatan yazımız bu bağlantıyı somutlaştırıyor. Mevduatın TÜFE karşısında ne kadar kazandırdığını ise [vadeli mevduat rehberimizde](/blog/mevduat-faizi-nedir-vadeli-mevduat) ayrıntılı ele aldık.
+Eğer mevduatınızı değerlendiriyorsanız TCMB'nin faiz kararları doğrudan mevduat faizini etkiler; [TCMB faiz kararının size nasıl yansıdığını](/blog/tcmb-faiz-karari-nasil-etkiler) anlatan yazımız bu bağlantıyı somutlaştırıyor. Mevduatın TÜFE karşısında ne kadar kazandırdığını ise [vadeli mevduat rehberimizde](/mevduat-faizi-hesaplama/) ayrıntılı ele aldık.
 
 ## Özet
 

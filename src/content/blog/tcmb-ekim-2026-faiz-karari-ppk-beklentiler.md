@@ -150,7 +150,7 @@ Enflasyondaki düşüşü hızlandırılmış gevşeme sinyali olarak okuyan bir
 
 1. **Vadeniz yenileniyorsa:** Karar sonrasındaki günlerde bankaların revize oranlarını karşılaştırın; indirim yeni hesaplara kademeli yansır. Net getiriyi [mevduat faizi hesaplama](/mevduat-faizi-hesaplama/) aracıyla görün.
 2. **Uzun vade kilitleyecekseniz:** Yıl sonu faiz beklentisi %35; oranlar daha da gerilemeden önce vade uzunluğunu kendi nakit ihtiyacınıza göre değerlendirin.
-3. **Reel getiriyi kontrol edin:** Nominal oran yanıltıcı olabilir; [reel faiz](/blog/reel-faiz-nedir/) enflasyonun altında kalıyorsa paranız erir.
+3. **Reel getiriyi kontrol edin:** Nominal oran yanıltıcı olabilir; [reel faiz](/mevduat-faizi-hesaplama/) enflasyonun altında kalıyorsa paranız erir.
 4. **Çeşitlendirin:** Alternatifler için [Türkiye'de En İyi Yatırım Araçları 2026](/blog/turkiyede-en-iyi-yatirim-araclari-2026/).
 
 ---

@@ -142,7 +142,7 @@ TCMB politika faizi, bankaların kaynak maliyetini doğrudan etkiler. İndirim k
 
 Vadeli mevduat hesabı sahipleri için kritik bilgi:
 
-- **Mevcut vadeli hesap:** Karardan etkilenmez. ([Vadeli mevduat nasıl çalışır?](/blog/mevduat-faizi-nedir-vadeli-mevduat)) Vade bitene kadar açılışta belirlenen faiz geçerlidir.
+- **Mevcut vadeli hesap:** Karardan etkilenmez. ([Vadeli mevduat nasıl çalışır?](/mevduat-faizi-hesaplama/)) Vade bitene kadar açılışta belirlenen faiz geçerlidir.
 - **Vade yenileme:** Karar sonrası bankalar faiz günceller; eğer indirim bekliyorsanız mevcut vadelerinizin yenileme tarihine dikkat edin.
 - **Yeni açılacak hesap:** Kararın ardından 24-72 saat içinde güncel faiz oranlarını öğrenip karşılaştırma yapın.
 

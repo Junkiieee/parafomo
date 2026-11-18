@@ -119,7 +119,7 @@ Kredi notu **bir gecikmeli göstergedir** — yani mevcut iyi gidişatı teyit e
 
 Şunu bilmek önemli: Eğer mevduat faiziniz **gerçek enflasyonun altındaysa**, Fitch notu ne kadar yükselirse yükselsin siz reel olarak kayıp yaşıyorsunuz. Bu durumda "not yükseltildi" haberi sizi doğrudan zenginleştirmiyor; sadece ülkenin dış borçlanma şartlarını iyileştiriyor.
 
-[Reel faiz nedir ve nasıl hesaplanır?](/blog/reel-faiz-nedir) yazımızda bu ayrımı detaylı anlattık — mevduat hesabınızın gerçek getirisini ölçmek için okumaya değer.
+[Reel faiz nedir ve nasıl hesaplanır?](/mevduat-faizi-hesaplama/) sayfamızda bu ayrımı detaylı anlattık — mevduat hesabınızın gerçek getirisini ölçmek için okumaya değer.
 
 ## Investment Grade Ne Zaman, Ne Anlama Gelir?
 

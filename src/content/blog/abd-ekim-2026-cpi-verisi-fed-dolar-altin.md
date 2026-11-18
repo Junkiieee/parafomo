@@ -115,7 +115,7 @@ En olası ve en az oynaklık yaratan senaryo. Fed'in "veriye bağlıyız" söyle
 
 Çekirdek tarafta belirgin yavaşlama görülürse Eylül artışının "tek seferlik" olduğu yorumu güçlenir. Tahvil faizleri ve dolar geriler, altın destek bulur. Gelişmekte olan piyasa para birimleri, TL dahil, kısa süreli nefes alabilir.
 
-Faiz beklentisi ile altın arasındaki mekanizmayı [ABD faiz artarsa altın ne olur](/blog/abd-faiz-artarsa-ne-olur/) yazımızda adım adım açıkladık.
+Faiz beklentisi ile altın arasındaki mekanizmayı [ABD faiz artarsa altın ne olur](/fed-faiz-takvimi/) sayfamızda adım adım açıkladık.
 
 ## Türk Yatırımcısı İçin Pratik Kontrol Listesi
 

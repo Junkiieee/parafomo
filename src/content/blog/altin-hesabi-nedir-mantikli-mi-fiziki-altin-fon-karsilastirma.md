@@ -68,7 +68,7 @@ Altın türlerinin (gram, çeyrek, ons, ziynet) farkını [altın çeşitleri re
 | Likidite | Mesai içi anında, mesai dışı makas açılır | Kuyumcu açıkken | BYF seans içi; TEFAS fonu T+1/T+2 |
 | Bankadan bağımsızlık | Hayır | Evet | Kısmen (fon kurucudan ayrı) |
 
-Fonların işleyişini merak ediyorsan [altın fonu nedir](/blog/altin-fonu-nedir-gram-altindan-farki) yazısı fon tarafını; bu yazı ise **hesap** tarafını anlatıyor.
+Bu yazı altın hesabı ile altın fonunu yan yana koyuyor; aşağıdaki karşılaştırma tablosu ikisinin maliyet farkını gösteriyor.
 
 ## Altın Hesabının Gerçek Maliyeti: Makas ve BSMV
 

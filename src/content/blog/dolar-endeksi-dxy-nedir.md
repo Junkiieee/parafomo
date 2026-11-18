@@ -68,7 +68,7 @@ Fed faiz kararları ile dolar endeksi arasındaki bağlantı neredeyse mekanik b
 
 **Fed faiz artırınca ne olur?**
 
-Faiz artışı ABD tahvillerinin getirisini yükseltir. Daha yüksek getiri peşindeki küresel yatırımcılar dolar satın alır ve ABD tahvillerine yatırım yapar. Bu talep artışı doları güçlendirir → DXY yükselir. Bu ilişkinin tarihsel veriyle ve senaryolarla ayrıntısı için [ABD faiz yükseltirse dolar ne olur?](/blog/abd-faiz-artarsa-ne-olur/) yazımıza göz atabilirsin.
+Faiz artışı ABD tahvillerinin getirisini yükseltir. Daha yüksek getiri peşindeki küresel yatırımcılar dolar satın alır ve ABD tahvillerine yatırım yapar. Bu talep artışı doları güçlendirir → DXY yükselir. Bu ilişkinin tarihsel veriyle ve senaryolarla ayrıntısı için [ABD faiz yükseltirse dolar ne olur?](/fed-faiz-takvimi/) sayfamıza göz atabilirsin.
 
 **Fed faiz indirince ne olur?**
 
@@ -90,7 +90,7 @@ Dolar güçlenince (DXY yükselince) yalnızca sepetteki para birimleri değil, 
 
 ### 2. Altın ve Emtia Fiyatları
 
-Altın, petrol ve diğer emtialar dolarla fiyatlanır. DXY yükselince bu varlıklar diğer para birimleri açısından daha pahalı hale gelir → talep düşer → fiyatlar gerileme eğilimindedir. Dolayısıyla [altın yatırımı](/blog/altin-fonu-nedir-gram-altindan-farki) yapanlar DXY'yi yakından takip etmelidir.
+Altın, petrol ve diğer emtialar dolarla fiyatlanır. DXY yükselince bu varlıklar diğer para birimleri açısından daha pahalı hale gelir → talep düşer → fiyatlar gerileme eğilimindedir. Dolayısıyla [altın yatırımı](/blog/altin-hesabi-nedir-mantikli-mi-fiziki-altin-fon-karsilastirma/) yapanlar DXY'yi yakından takip etmelidir.
 
 ### 3. BIST ve Yabancı Sermaye
 

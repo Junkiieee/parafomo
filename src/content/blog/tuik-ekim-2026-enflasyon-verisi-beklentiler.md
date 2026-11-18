@@ -96,7 +96,7 @@ TCMB'nin faiz kararını iki faktör çerçeveler:
 1. **Enflasyondaki trend:** Dezenflasyon süreci bozuluyor mu, devam mı ediyor?
 2. **Reel faiz seviyesi:** Mevcut politika faizi enflasyona kıyasla yeterince kısıtlayıcı mı?
 
-[Reel faizin nasıl hesaplandığını ve TCMB kararlarına etkisini](/blog/reel-faiz-nedir) anlamak bu bağlamda kritik. Yıllık enflasyonun beklenenden düşük çıkması TCMB'nin indirim yapma payını genişletir; beklenenden yüksek çıkması ise "temkinli duruş" mesajını güçlendirir.
+[Reel faizin nasıl hesaplandığını ve TCMB kararlarına etkisini](/mevduat-faizi-hesaplama/) anlamak bu bağlamda kritik. Yıllık enflasyonun beklenenden düşük çıkması TCMB'nin indirim yapma payını genişletir; beklenenden yüksek çıkması ise "temkinli duruş" mesajını güçlendirir.
 
 Tarihsel deneyim şunu gösteriyor: **TCMB nadiren tek bir veriyle ani dönüş yapar.** Ama 5 Ekim rakamı Ekim toplantısındaki PPK söylemini ve oy dağılımını şekillendirecek.
 

@@ -125,10 +125,10 @@ NFP açıklamasını takip ederken şu adımları izleyebilirsiniz:
 1. **Açıklama saatini not edin:** 15:30 Türkiye saati (ABD kış saati döneminde 16:30). Tarihleri [ekonomik takvim](/ekonomik-takvim/) sayfasından kontrol edin. Bu saati "alarm saati" yapın; açıklama öncesi büyük pozisyon almak mantıklı değil.
 2. **Beklentiyle kıyaslayın:** Rakamın mutlak değeri değil, "beklentiden sapma" miktarı hareket üretir. Küçük fark → küçük tepki; büyük fark → sert hareket.
 3. **İlk 30 dakikayı gözlemleyin:** Anlık tepki her zaman kalıcı değildir. DXY ve altının nereye yerleştiğini takip edin.
-4. **Altında kademeli yaklaşım benimseyin:** Koşullar altın için olumlu görünüyorsa tek seferde değil, birkaç alışla konum alın. [Altın Fonu](/blog/altin-fonu-nedir-gram-altindan-farki) gibi araçlar düşük maliyetle ve kolayca altına erişim sağlar.
+4. **Altında kademeli yaklaşım benimseyin:** Koşullar altın için olumlu görünüyorsa tek seferde değil, birkaç alışla konum alın. [Altın Fonu](/blog/altin-hesabi-nedir-mantikli-mi-fiziki-altin-fon-karsilastirma/) gibi araçlar düşük maliyetle ve kolayca altına erişim sağlar.
 5. **Uzun vadeli perspektifi koruyun:** NFP tek aylık anlık veridir. Uzun vadeli altın tutmak isteyenler için bir ayın verisi stratejik yönü değiştirmez.
 
-[ABD Faiz Kararı Altın, Dolar ve TL'yi Nasıl Etkiler?](/blog/abd-faiz-artarsa-ne-olur/) yazımızda bu zincirin Fed faizi ayağını daha ayrıntılı anlattık.
+[ABD Faiz Kararı Altın, Dolar ve TL'yi Nasıl Etkiler?](/fed-faiz-takvimi/) sayfamızda bu zincirin Fed faizi ayağını daha ayrıntılı anlattık.
 
 ## Özet
 

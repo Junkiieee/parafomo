@@ -93,7 +93,7 @@ Geri ödenemeyen kredilerin artmasıyla bankalar daha temkinli hale gelir. Kredi
 Deflasyonist ortamda portföyünüzü yönetmek için şu adımları izleyin:
 
 1. **Nakit ve kısa vadeli mevduat tutun:** Fiyatlar düştükçe paranın reel değeri artar; likidite en büyük kalkan haline gelir.
-2. **Uzun vadeli devlet tahvillerini değerlendirin:** Deflasyonda merkez bankaları faiz indirir; bu da tahvil fiyatlarını yükseltir. [Reel faiz nedir ve gerçek getirinizi nasıl hesaplarsınız?](/blog/reel-faiz-nedir/) yazımızda bu ilişkiyi Türkiye bağlamında detaylandırdık.
+2. **Uzun vadeli devlet tahvillerini değerlendirin:** Deflasyonda merkez bankaları faiz indirir; bu da tahvil fiyatlarını yükseltir. [Reel faiz nedir ve gerçek getirinizi nasıl hesaplarsınız?](/mevduat-faizi-hesaplama/) sayfamızda bu ilişkiyi Türkiye bağlamında detaylandırdık.
 3. **Defansif hisseleri tercih edin:** Gıda, ilaç, su, elektrik gibi "olmazsa olmaz" sektörlerin talebi korunur.
 4. **Yüksek borçlu şirketlerden uzak durun:** Döngüsel sektörler ve yüksek borçla çalışan firmalar deflasyonun ilk darbelerini alır.
 5. **Altın konusunda ihtiyatlı olun:** Deflasyonda güven arayışından yükselebilir; ancak emtia fiyatlarının genel düşüşü baskı yaratır; sonuç belirsizdir.

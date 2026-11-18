@@ -96,7 +96,7 @@ Piyasanın mevcut fiyatlaması: PCE beklentiye yakın veya altında çıkarsa ve
 
 - **Güçlü dolar → TL baskısı:** Dolar endeksi yükselirse TL üzerinde değer kaybı baskısı oluşur ve TCMB "kur cephesi" nedeniyle daha temkinli davranmak zorunda kalabilir.
 - **Zayıf dolar → TL rahatlama:** Dolar zayıflarsa TCMB dezenflasyon yolundaki indirim adımlarını sürdürmek için daha geniş bir hareket alanı bulur.
-- **Altın TL bazında:** DXY ve TL'nin ters yönlü hareket etmesi durumunda gram altın beklenmedik bir yön izleyebilir. [ABD faiz artışının altın üzerindeki etkisini](/blog/abd-faiz-artarsa-ne-olur/) anlatan yazıda bu mekanizma ayrıntılı ele alınmaktadır.
+- **Altın TL bazında:** DXY ve TL'nin ters yönlü hareket etmesi durumunda gram altın beklenmedik bir yön izleyebilir. [ABD faiz artışının altın üzerindeki etkisini](/fed-faiz-takvimi/) anlatan yazıda bu mekanizma ayrıntılı ele alınmaktadır.
 
 ## Türk Yatırımcısı 30 Eylül'ü Nasıl Okumalı?
 

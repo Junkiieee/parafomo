@@ -70,7 +70,7 @@ Vadeli mevduat, paranı belirli bir süre (1–3–6–12 ay) bankada tutman kar
 
 **Dikkat:** Vadeli mevduat enflasyonun üzerinde getiri sunduğunda anlamlıdır. Politika faizini ve mevcut enflasyonu takip ederek reel getiriyi hesapla. Reel getiri = (Mevduat faizi) − (Enflasyon oranı).
 
-[Mevduat faizinin detaylı hesabını ve vadeli mevduat açma adımlarını bu yazıdan öğren →](/blog/mevduat-faizi-nedir-vadeli-mevduat)
+[Mevduat faizinin detaylı hesabını ve vadeli mevduat açma adımlarını bu yazıdan öğren →](/mevduat-faizi-hesaplama/)
 
 ## Altın ve Döviz — Enflasyona ve Devalüasyona Karşı Kalkan
 

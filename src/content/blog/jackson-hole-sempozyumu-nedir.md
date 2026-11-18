@@ -80,7 +80,7 @@ Warsh, daha önce 2006-2011 arasında Fed Yönetim Kurulu üyeliği yapmış, en
 - **Piyasa:** Konuşma şahin okundu. Vadeli piyasalarda Eylül toplantısında faiz artışı olasılığı yükseldi, altın sert düştü ([XTB değerlendirmesi](https://www.xtb.com/en/market-analysis/jackson-hole-review)).
 - **Sonrası:** Jackson Hole'dan gelen sinyal karşılığını buldu: Fed 15-16 Eylül toplantısında oybirliğiyle (12-0) faizi **25 baz puan artırarak %3,75-4,00** aralığına çıkardı. Bu karar, piyasanın uzun süre fiyatladığı "indirim" anlatısını tersine çevirdi.
 
-2026 örneği, bu rehberde anlatılan iki dersi birlikte gösterdi: Jackson Hole'da faiz kararı alınmaz ama sonraki FOMC kararının yönü burada sinyallenir; ve tepkinin büyüklüğünü sinyalin kendisi kadar beklentiden sapması belirler. Sonraki toplantı tarihleri ve son kararlar için [Fed faiz takvimine](/fed-faiz-takvimi/), faiz artışının dolar, TL ve altına etkisi için [ABD faiz artarsa ne olur?](/blog/abd-faiz-artarsa-ne-olur/) yazımıza bakabilirsiniz.
+2026 örneği, bu rehberde anlatılan iki dersi birlikte gösterdi: Jackson Hole'da faiz kararı alınmaz ama sonraki FOMC kararının yönü burada sinyallenir; ve tepkinin büyüklüğünü sinyalin kendisi kadar beklentiden sapması belirler. Sonraki toplantı tarihleri ve son kararlar için [Fed faiz takvimine](/fed-faiz-takvimi/), faiz artışının dolar, TL ve altına etkisi için [ABD faiz artarsa ne olur?](/fed-faiz-takvimi/) sayfamıza bakabilirsiniz.
 
 ## Fed Başkanı'nın Konuşması Neden Bu Kadar Önemli?
 

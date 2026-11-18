@@ -84,7 +84,7 @@ Aynı tutar ve vadede mevduatın ne kadar getireceğini karşılaştırmak ister
 
 **Zarar konusunda gerçekçi olalım:** Katılma hesabının sözleşmesi hesap sahibinin zarara da katılabileceğini söyler. Uygulamada katılım bankaları havuz getirisini dengelemek için çeşitli yöntemler kullandığından anaparanın eridiği durum Türkiye'de pek görülmez. Ama bu bir garanti değil, ürünün yapısından gelen bir risk; bunu bilerek seçmek gerekir.
 
-Mevduatın kendi işleyişini ayrıntılı merak ediyorsan [vadeli mevduat rehberimize](/blog/mevduat-faizi-nedir-vadeli-mevduat) bakabilirsin.
+Mevduatın kendi işleyişini ayrıntılı merak ediyorsan [vadeli mevduat rehberimize](/mevduat-faizi-hesaplama/) bakabilirsin.
 
 ## Katılım hesabında stopaj: 2026 oranları
 

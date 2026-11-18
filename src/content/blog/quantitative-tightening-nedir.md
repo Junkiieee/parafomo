@@ -104,7 +104,7 @@ Fed, 2017'de ilk kez sistematik QT'ye başladı. Ayda 10 milyar dolardan başlay
 
 ## QT ve Reel Faiz İlişkisi
 
-QT'nin bir diğer kritik boyutu, [reel faiz](/blog/reel-faiz-nedir/) oranları üzerindeki etkisidir. Enflasyon düşerken nominal faizler yüksek kalmaya devam ederse reel faiz yükselir — büyüme varlıkları için özellikle zorlu bir ortam yaratır. Fed'in "daha uzun süre yüksek" (higher for longer) söylemi bu dinamiği yönetmenin dil stratejisidir.
+QT'nin bir diğer kritik boyutu, [reel faiz](/mevduat-faizi-hesaplama/) oranları üzerindeki etkisidir. Enflasyon düşerken nominal faizler yüksek kalmaya devam ederse reel faiz yükselir — büyüme varlıkları için özellikle zorlu bir ortam yaratır. Fed'in "daha uzun süre yüksek" (higher for longer) söylemi bu dinamiği yönetmenin dil stratejisidir.
 
 ## QT Döneminde Türk Yatırımcısı İçin Strateji
 

@@ -98,7 +98,7 @@ Break-even enflasyon oranı, tahvil piyasasının önümüzdeki döneme ilişkin
 
 ## Reel Getiri: TIPS'in Kalp Atışı
 
-[Reel faiz](/blog/reel-faiz-nedir) kavramı TIPS'i anlamak için kritiktir. Reel getiri = Nominal getiri − Enflasyon formülüyle hesaplanır.
+[Reel faiz](/mevduat-faizi-hesaplama/) kavramı TIPS'i anlamak için kritiktir. Reel getiri = Nominal getiri − Enflasyon formülüyle hesaplanır.
 
 Enflasyonun yüksek olduğu dönemlerde vadeli mevduat veya normal tahvil sahipleri reel kayıp yaşayabilir. TIPS ise reel getiriyi önceden belirler — portföyünüzün satın alma gücü korunmuş olur.
 

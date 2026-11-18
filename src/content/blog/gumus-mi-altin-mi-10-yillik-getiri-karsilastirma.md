@@ -102,7 +102,7 @@ Altın büyük ölçüde "değer saklama" aracı olarak alınırken, gümüş ta
 
 ### 2. Kriz anında altın daha güvenilir
 
-Jeopolitik gerilim, savaş ya da finansal panik dönemlerinde merkez bankaları ve büyük fonlar altına yönelir. Gümüş bu dönemlerde altını takip etse de aynı "sığınak" talebini görmez. Altının bu davranışını [ABD faizi artarsa altın ne olur](/blog/abd-faiz-artarsa-ne-olur/) yazımızda da ele aldık.
+Jeopolitik gerilim, savaş ya da finansal panik dönemlerinde merkez bankaları ve büyük fonlar altına yönelir. Gümüş bu dönemlerde altını takip etse de aynı "sığınak" talebini görmez. Altının bu davranışını [ABD faizi artarsa altın ne olur](/fed-faiz-takvimi/) sayfamızda da ele aldık.
 
 ### 3. Oynaklık iki yönlü çalışır
 
@@ -146,7 +146,7 @@ Birçok yatırımcı ikisini birlikte tutmayı tercih eder: ana koruma için alt
 ## Gümüş veya Altın Alırken Dikkat Edilecek 5 Nokta
 
 1. **Alış-satış farkını kontrol et.** Banka uygulamasında alış ve satış fiyatı arasındaki farkı yüzde olarak hesapla; gümüşte bu fark genelde altından geniştir.
-2. **Fiziki mi dijital mi karar ver.** Fiziki külçe saklama ve güvenlik maliyeti getirir; dijital hesap ve fonlar daha düşük maliyetlidir. Seçenekleri [altın fonu ile gram altın farkı](/blog/altin-fonu-nedir-gram-altindan-farki) yazımızda karşılaştırdık.
+2. **Fiziki mi dijital mi karar ver.** Fiziki külçe saklama ve güvenlik maliyeti getirir; dijital hesap ve fonlar daha düşük maliyetlidir. Seçenekleri [altın fonu ile gram altın farkı](/blog/altin-hesabi-nedir-mantikli-mi-fiziki-altin-fon-karsilastirma/) yazımızda karşılaştırdık.
 3. **Vergi ve masrafları sor.** Fiziki gümüş ürünlerinde vergi ve işçilik durumu ürüne göre değişebilir; almadan önce satıcıya net toplam maliyeti sor.
 4. **Tek seferde değil, kademeli al.** Oynak bir metalde alımları aylara yaymak, yanlış zamanlama riskini azaltır.
 5. **Vadeni belirle.** Bir yıl içinde ihtiyaç duyacağın parayı gümüş gibi oynak bir araçta tutmak, zorunlu zararla satma riskini artırır.

@@ -94,7 +94,7 @@ Repo işlemi için ayrı bir hesap açmanıza gerek yok; mevcut banka hesabını
 | Vergi | %15 stopaj | %17,5 / %15 / %10 stopaj (vadeye göre) | %0 stopaj (gerçek kişiler, 31.12.2026'ya kadar) |
 | Minimum tutar | 100–1.000 TL | 500–1.000 TL | 1.000 TL |
 
-[Vadeli mevduatı](/blog/mevduat-faizi-nedir-vadeli-mevduat) daha uzun süre bağlayabiliyorsanız ve sabit faiz istiyorsanız tercih edin. [Devlet tahvilini](/blog/tahvil-nedir-devlet-tahvili-hazine-bonosu) ise 6+ ay ufuklu bir yatırım için değerlendirin. Repo ise kısa vadeli park etme ve esneklik gerektiren durumlar için idealdir.
+[Vadeli mevduatı](/mevduat-faizi-hesaplama/) daha uzun süre bağlayabiliyorsanız ve sabit faiz istiyorsanız tercih edin. [Devlet tahvilini](/blog/tahvil-nedir-devlet-tahvili-hazine-bonosu) ise 6+ ay ufuklu bir yatırım için değerlendirin. Repo ise kısa vadeli park etme ve esneklik gerektiren durumlar için idealdir.
 
 ## Repo Yatırımının Avantajları
 

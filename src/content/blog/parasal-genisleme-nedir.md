@@ -74,7 +74,7 @@ Merkez bankasının büyük alıcı olarak piyasaya girmesi tahvil fiyatlarını
 
 ### Altın ve Emtia
 
-QE dönemlerinde dolar zayıflar ve [reel faiz](/blog/reel-faiz-nedir/) negatif bölgeye iner. Bu iki faktör altın için güçlü bir alım sinyali üretir: enflasyona karşı koruma talebi artar. 2020 QE döneminde ons altın 2.000 doların üzerine çıktı.
+QE dönemlerinde dolar zayıflar ve [reel faiz](/mevduat-faizi-hesaplama/) negatif bölgeye iner. Bu iki faktör altın için güçlü bir alım sinyali üretir: enflasyona karşı koruma talebi artar. 2020 QE döneminde ons altın 2.000 doların üzerine çıktı.
 
 ### Dolar, TL ve Gelişmekte Olan Piyasalar
 
@@ -110,7 +110,7 @@ Fed 2022'de tarihin en büyük faiz artış döngüsüyle eş zamanlı olarak QT
 **QE biterken veya QT başlarken:**
 - Dolar güçlenir → dolar bazlı araçlar (Eurobond, döviz hesabı, dolar/euro kıymetleri) cazip hale gelir.
 - Riskin arttığı bu dönemde kısa vadeli, likit pozisyonlar öne çıkar.
-- [Reel faiz](/blog/reel-faiz-nedir/) yükselince tahvil ve mevduat getirileri de çekici olmaya başlar.
+- [Reel faiz](/mevduat-faizi-hesaplama/) yükselince tahvil ve mevduat getirileri de çekici olmaya başlar.
 
 ## Özet
 

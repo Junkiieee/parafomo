@@ -82,7 +82,7 @@ BIST'te pek çok şirket yılda tek sefer temettü ödediğinden genellikle trai
 | %6 – 9 | Yüksek — cazip ama mutlaka kontrol edilmeli |
 | %10 ve üzeri | Çok yüksek — tuzak olabilir, dikkat |
 
-**Türkiye bağlamında:** Mevduat faizi yüksekken temettü verimi ile birebir karşılaştırma yapmak yanıltıcı olabilir; çünkü mevduat devlet güvencesindedir, hisse değildir. Bununla birlikte enflasyonun sürekli yüksek seyrettiği bir ortamda yalnızca mevduata yatırım yapmak reel satın alma gücünü eritebilir. Konu hakkında ayrıntılı değerlendirme için [mevduat faizi nedir?](/blog/mevduat-faizi-nedir-vadeli-mevduat/) yazımıza bakabilirsiniz.
+**Türkiye bağlamında:** Mevduat faizi yüksekken temettü verimi ile birebir karşılaştırma yapmak yanıltıcı olabilir; çünkü mevduat devlet güvencesindedir, hisse değildir. Bununla birlikte enflasyonun sürekli yüksek seyrettiği bir ortamda yalnızca mevduata yatırım yapmak reel satın alma gücünü eritebilir. Konu hakkında ayrıntılı değerlendirme için [mevduat faizi nedir?](/mevduat-faizi-hesaplama/) sayfamıza bakabilirsiniz.
 
 ## Yüksek Temettü Verimi Tuzağı: Dikkat Edin
 

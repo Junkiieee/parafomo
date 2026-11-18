@@ -113,7 +113,7 @@ PPF'nin asıl avantajı burada ortaya çıkar: **ne zaman lazım olacağını bi
 
 ### Enflasyona karşı durum
 
-TÜİK verisine göre Eylül 2026'da aylık enflasyon **%1,84**, yıllık **%29,73** oldu (sonraki açıklama tarihleri [enflasyon takvimi](/enflasyon-takvimi) sayfasında). Yukarıdaki 32 günlük net getiri (%2,62) aylık enflasyonun biraz üzerinde kalıyor; yani reel getiri pozitif ama ince. Faiz indirimleri hızlanırsa bu fark daralabilir. Hesabın mantığını [reel faiz nedir](/blog/reel-faiz-nedir) yazısında anlattık.
+TÜİK verisine göre Eylül 2026'da aylık enflasyon **%1,84**, yıllık **%29,73** oldu (sonraki açıklama tarihleri [enflasyon takvimi](/enflasyon-takvimi) sayfasında). Yukarıdaki 32 günlük net getiri (%2,62) aylık enflasyonun biraz üzerinde kalıyor; yani reel getiri pozitif ama ince. Faiz indirimleri hızlanırsa bu fark daralabilir. Hesabın mantığını [reel faiz nedir](/mevduat-faizi-hesaplama/) sayfasında anlattık.
 
 ## Para piyasası fonu kimler için uygun?
 

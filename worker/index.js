@@ -8,6 +8,14 @@ const CANONICAL_HOST = 'parafomo.com';
 
 // Birleştirilen / kaldırılan sayfalar → kalıcı yeni adres (sonda '/' ile).
 const REDIRECTS = {
+  // 2026-11-18 (W10): 89–120 gündür 'Tarandı - dizine eklenmedi' kalan 7 genel yazı → aynı niyetli güçlü sayfa.
+  '/blog/reel-faiz-nedir/': '/mevduat-faizi-hesaplama/',
+  '/blog/mevduat-faizi-nedir-vadeli-mevduat/': '/mevduat-faizi-hesaplama/',
+  '/blog/ppi-nedir-uretici-fiyat-endeksi/': '/ekonomik-takvim/',
+  '/blog/ingiltere-cpi-nedir-sterlin-etkisi/': '/ekonomik-takvim/',
+  '/blog/nft-nedir-yatirim-mantikli-mi/': '/bitcoin-getiri/',
+  '/blog/altin-fonu-nedir-gram-altindan-farki/': '/blog/altin-hesabi-nedir-mantikli-mi-fiziki-altin-fon-karsilastirma/',
+  '/blog/abd-faiz-artarsa-ne-olur/': '/fed-faiz-takvimi/',
   // 2026-11-17 (R30): Google'ın 'Tarandı - dizine eklenmedi' dediği 22 genel yazı → aynı niyetli güçlü sayfa.
   '/blog/ab-enflasyonu-cpi-nedir-turkiye-etkisi/': '/enflasyon-takvimi/',
   '/blog/aciga-satis-nedir-short-selling/': '/blog/borsa-istanbul-nedir-seans-saatleri-pazarlar-takas/',
@@ -30,13 +38,13 @@ const REDIRECTS = {
   '/refah/': '/emekli-refah-payi-seyyanen-zam/', '/refah': '/emekli-refah-payi-seyyanen-zam/',
   '/enflasyon/': '/enflasyon-hesaplama/', '/enflasyon': '/enflasyon-hesaplama/',
   // 2026-10-13: neredeyse birebir kopya, aynı sorgularda birbirini yiyordu (GSC sıra 27-29).
-  '/blog/abd-faiz-karari-altin-dolar-tl-etkisi/': '/blog/abd-faiz-artarsa-ne-olur/',
+  '/blog/abd-faiz-karari-altin-dolar-tl-etkisi/': '/fed-faiz-takvimi/',
   // 2026-10-13: eski sitedeki portföy mini-uygulaması kaldırıldı; tek ürün app.parafomo.com.
   '/portfoy-takip/': 'https://app.parafomo.com/portfoy/',
   '/portfoy/panel/': 'https://app.parafomo.com/portfoy/',
   // 2026-10-22: GSC yamyamlaşma temizliği — aynı arama niyeti için tek URL; içerik kalan yazıya birleştirildi.
-  '/blog/abd-faiz-yukseltirse-dolar-ne-olur/': '/blog/abd-faiz-artarsa-ne-olur/',
-  '/blog/abd-faiz-artarsa-altin-ne-olur/': '/blog/abd-faiz-artarsa-ne-olur/',
+  '/blog/abd-faiz-yukseltirse-dolar-ne-olur/': '/fed-faiz-takvimi/',
+  '/blog/abd-faiz-artarsa-altin-ne-olur/': '/fed-faiz-takvimi/',
   '/blog/2026-fed-toplanti-tarihleri/': '/fed-faiz-takvimi/',
   '/blog/jackson-hole-2026-ne-zaman-warsh-konusmasi/': '/blog/jackson-hole-sempozyumu-nedir/',
   '/blog/altin-cesitleri-farki/': '/blog/altin-cesitleri-gram-ceyrek-ons-ziynet/',

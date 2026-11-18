@@ -48,7 +48,7 @@ Her yıl enflasyon yükseldiğinde ya da dolar sert yükseldiğinde aynı soru g
 - **Yurt dışı harcama planın varsa:** Eğitim, seyahat, yurt dışı alışveriş gibi kur bağımlı harcamalar için döviz tutmak kur riskini bertaraf eder.
 - **Portföy çeşitlendirmesi istiyorsanız:** Tüm birikimini tek bir para biriminde (TL) tutmak, o para birimine mahkûm kılıyor. Döviz eklemek sistematik kur riskini azaltır. (Bkz. [portföy çeşitlendirmesi nasıl yapılır?](/blog/portfoy-cesitlendirmesi-nasil-yapilir/))
 - **Kısa vadeli güvenli liman arıyorsanız:** Piyasalarda volatilite arttığında, özellikle yükselen küresel risklerle birlikte dolar "güvenli liman" işlevi görür.
-- **TL mevduatın reel getirisi eksi ise:** Mevduat faizi enflasyonun altında kalıyorsa döviz, en azından uluslararası satın alma gücünü koruma işlevi görür. ([Reel faiz nasıl hesaplanır?](/blog/reel-faiz-nedir/))
+- **TL mevduatın reel getirisi eksi ise:** Mevduat faizi enflasyonun altında kalıyorsa döviz, en azından uluslararası satın alma gücünü koruma işlevi görür. ([Reel faiz nasıl hesaplanır?](/mevduat-faizi-hesaplama/))
 
 ---
 

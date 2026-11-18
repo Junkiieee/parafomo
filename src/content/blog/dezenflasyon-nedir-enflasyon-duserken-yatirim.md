@@ -94,14 +94,14 @@ Yatırımcı için kilit soru şu: Enflasyon düşerken hangi varlık sınıfı 
 ## Dezenflasyon Döneminde Yatırım Stratejisi
 
 ### Adım 1: Reel Faizi İzle
-Dezenflasyon döneminde reel faiz (nominal faiz − enflasyon) pozitife döner. Bu, tasarruf sahipleri için iyi haberdir. [Reel faizin nasıl hesaplandığını](/blog/reel-faiz-nedir) öğrenmek bu dönemde kritik bir araçtır.
+Dezenflasyon döneminde reel faiz (nominal faiz − enflasyon) pozitife döner. Bu, tasarruf sahipleri için iyi haberdir. [Reel faizin nasıl hesaplandığını](/mevduat-faizi-hesaplama/) öğrenmek bu dönemde kritik bir araçtır.
 
 ### Adım 2: Portföy Dengeni Gözden Geçir
 - Yüksek enflasyon döneminde aldığın "koruma" pozisyonları (altın, döviz, emtia) artık aynı işlevi görmeyebilir.
 - Reel getiri potansiyeli olan araçlar (uzun vadeli tahvil, seçici hisse senedi) daha cazip hale gelir.
 
 ### Adım 3: Sabit Faizli Enstrümanları Değerlendir
-Enflasyon düşerken bugün kilitlenecek yüksek sabit faizler, yarın çok daha cazip görünebilir. Vadeli mevduat ve devlet tahvilleri bu dönemde değerlendirilebilir. [Mevduat faizinin nasıl çalıştığını](/blog/mevduat-faizi-nedir-vadeli-mevduat) bilmek seçim yaparken yardımcı olur.
+Enflasyon düşerken bugün kilitlenecek yüksek sabit faizler, yarın çok daha cazip görünebilir. Vadeli mevduat ve devlet tahvilleri bu dönemde değerlendirilebilir. [Mevduat faizinin nasıl çalıştığını](/mevduat-faizi-hesaplama/) bilmek seçim yaparken yardımcı olur.
 
 ### Adım 4: Faiz İndirimi Döngüsüne Hazırlan
 Dezenflasyon yeterli ilerleme kaydederse merkez bankası faiz indirimine geçer. Bu dönem:

@@ -87,7 +87,7 @@ TL mevduatta stopaj vadeye göre kademeli. Bu, aynı brüt faizde **uzun vadenin
 2. Stopaj (%17,5): 3.506,85 × 0,175 = **613,70 TL**
 3. Hesabına geçen net faiz: **2.893,15 TL**
 
-Kendi tutarın ve vaden için bu hesabı [mevduat faizi hesaplama aracımızla](/mevduat-faizi-hesaplama) saniyeler içinde yapabilirsin; araç güncel stopaj kademelerini otomatik uygular. Mevduatın genel işleyişini [vadeli mevduat rehberimizde](/blog/mevduat-faizi-nedir-vadeli-mevduat) anlattık.
+Kendi tutarın ve vaden için bu hesabı [mevduat faizi hesaplama aracımızla](/mevduat-faizi-hesaplama) saniyeler içinde yapabilirsin; araç güncel stopaj kademelerini otomatik uygular. Mevduatın genel işleyişini [vadeli mevduat rehberimizde](/mevduat-faizi-hesaplama/) anlattık.
 
 **Dikkat:** Oran, hesabın **açıldığı ya da vadesinin yenilendiği** tarihte geçerli olan karara göre belirlenir. Vadesi dolup otomatik yenilenen hesaplar yeni dönemin oranına tabi olur.
 
@@ -123,7 +123,7 @@ Stopajdan kaçınmak değil, araçları bilerek seçmek mümkün:
 1. **Vadeyi uzatmayı değerlendir:** 1 yıldan uzun mevduatta oran %10'a iniyor; ancak paranı uzun süre kilitlemenin likidite maliyetini de hesaba kat.
 2. **Araç türünü bil:** Hisse senedi yoğun fonlar ve DİBS'te güncel oran %0; ama bunların risk profili mevduattan farklı.
 3. **Alış tarihini kayıt altında tut:** Fonlarda eski tarihli payların oranı farklı olabilir; satışta hangi payın satıldığı FIFO ile belirlenir.
-4. **Reel getiriye bak:** Net faizi enflasyonla karşılaştırmadan karar verme. [Reel faiz yazımız](/blog/reel-faiz-nedir) bu hesabı adım adım anlatıyor.
+4. **Reel getiriye bak:** Net faizi enflasyonla karşılaştırmadan karar verme. [Mevduat faizi hesaplama](/mevduat-faizi-hesaplama/) net getiriyi enflasyonla karşılaştırmana yardım ediyor.
 
 Vergi açısından avantajlı araçların daha geniş listesi için [vergi avantajlı yatırım araçları](/blog/vergi-avantajli-yatirim-araclari) yazımıza göz atabilirsin.
 

@@ -120,7 +120,7 @@ Aynı bankada hem TL hem döviz hesabınız varsa, dövizin TL karşılığını
 
 ### 3. Güvence dışı ürünleri bilin
 
-[Vadeli mevduat](/blog/mevduat-faizi-nedir-vadeli-mevduat) ve vadesiz hesap dışında kalan ürünlerin — repo, yatırım fonu, hisse — farklı güvence mekanizmaları olduğunu hatırlayın. Bu farkı bilmeden karar vermek risklidir.
+[Vadeli mevduat](/mevduat-faizi-hesaplama/) ve vadesiz hesap dışında kalan ürünlerin — repo, yatırım fonu, hisse — farklı güvence mekanizmaları olduğunu hatırlayın. Bu farkı bilmeden karar vermek risklidir.
 
 ### 4. Limiti takip edin
 
@@ -151,7 +151,7 @@ TL'nin reel değeri ve enflasyon ortamı göz önüne alındığında, döviz ba
 
 **İlgili Okumalar:**
 
-Mevduat güvencesi hakkında bilgi sahibi olduktan sonra mevduatı daha verimli kullanmak için [vadeli mevduat rehberine](/blog/mevduat-faizi-nedir-vadeli-mevduat) göz atabilirsiniz. Döviz hesabı açmayı düşünüyorsanız [döviz hesabı nedir rehberini](/blog/doviz-hesabi-nedir) inceleyebilirsiniz. Mevduat dışında yatırım araçlarını karşılaştırmak için [Türkiye'nin en iyi yatırım araçları 2026 rehberine](/blog/turkiyede-en-iyi-yatirim-araclari-2026) bakabilirsiniz.
+Mevduat güvencesi hakkında bilgi sahibi olduktan sonra mevduatı daha verimli kullanmak için [vadeli mevduat rehberine](/mevduat-faizi-hesaplama/) göz atabilirsiniz. Döviz hesabı açmayı düşünüyorsanız [döviz hesabı nedir rehberini](/blog/doviz-hesabi-nedir) inceleyebilirsiniz. Mevduat dışında yatırım araçlarını karşılaştırmak için [Türkiye'nin en iyi yatırım araçları 2026 rehberine](/blog/turkiyede-en-iyi-yatirim-araclari-2026) bakabilirsiniz.
 
 ---
 

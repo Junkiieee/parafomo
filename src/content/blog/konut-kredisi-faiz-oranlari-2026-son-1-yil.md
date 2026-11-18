@@ -93,7 +93,7 @@ TCMB'nin 6 Kasım 2026 ortalamasıyla (aylık ~%2,92), KKDF/BSMV olmadan:
 | 2.000.000 TL | ~71.104 TL | ~60.393 TL | ~58.822 TL |
 | 3.000.000 TL | ~106.656 TL | ~90.590 TL | ~88.233 TL |
 
-Dikkat çeken nokta: yüksek faiz ortamında vadeyi uzatmak taksiti çok az düşürür ama toplam maliyeti ciddi biçimde artırır. 1 milyon TL'yi 120 yerine 180 ayda ödemek taksiti yalnızca ~786 TL azaltırken toplam geri ödemeyi ~3,62 milyon TL'den ~5,29 milyon TL'ye çıkarır. Faizin zamanla nasıl büyüdüğünü [reel faiz nedir](/blog/reel-faiz-nedir) yazısında enflasyonla birlikte ele aldık.
+Dikkat çeken nokta: yüksek faiz ortamında vadeyi uzatmak taksiti çok az düşürür ama toplam maliyeti ciddi biçimde artırır. 1 milyon TL'yi 120 yerine 180 ayda ödemek taksiti yalnızca ~786 TL azaltırken toplam geri ödemeyi ~3,62 milyon TL'den ~5,29 milyon TL'ye çıkarır. Faizin zamanla nasıl büyüdüğünü [reel faiz nedir](/mevduat-faizi-hesaplama/) sayfasında enflasyonla birlikte ele aldık.
 
 Tabloda olmayan bir tutar ve vade için [kredi hesaplama](/kredi-hesaplama) ya da doğrudan [konut kredisi hesaplama](/konut-kredisi-hesaplama) aracını kullanabilirsin.
 
