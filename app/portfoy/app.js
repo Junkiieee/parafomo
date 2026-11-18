@@ -295,6 +295,11 @@ const isDark = () =>
   document.documentElement.dataset.theme === 'dark' ||
   (document.documentElement.dataset.theme !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
 
+/* GA4 olayı (consent.js gtag'i tanımlar; engellenmişse sessizce geç). Kişisel veri GÖNDERİLMEZ. */
+function gaEvent(name, params) {
+  try { if (typeof window.gtag === 'function') window.gtag('event', name, params || {}); } catch {}
+}
+
 /* ---------- oturum ---------- */
 function logout(announce = true, msg = '') {
   safeSet(TOKEN_KEY, null);
@@ -468,8 +473,10 @@ function renderAuth(mode = 'signin', msg = '') {
         const dn = f.display_name.value.trim();
         if (dn) body.display_name = dn;
         out = await api('/auth/register', { method: 'POST', body: JSON.stringify(body) });
+        gaEvent('sign_up', { method: 'email' });
       } else {
         out = await api('/auth/login', { method: 'POST', body: JSON.stringify(body) });
+        gaEvent('login', { method: 'email' });
       }
       await onAuthed(out.access_token);
     } catch (ex) { err.textContent = ex.message; btn.disabled = false; }
@@ -530,6 +537,7 @@ function mountGoogle() {
         callback: async resp => {
           try {
             const out = await api('/auth/google', { method: 'POST', body: JSON.stringify({ credential: resp.credential }) });
+            gaEvent(out.new_user ? 'sign_up' : 'login', { method: 'google' });
             await onAuthed(out.access_token);
           } catch (ex) { toast(ex.message, true); }
         },

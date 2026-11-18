@@ -1,6 +1,8 @@
 ---
 // Çerez onayı (KVKK çerez rehberi 2025: açık rıza, "Reddet" en az "Kabul et" kadar görünür, ön işaret yok, duvar yok).
 // Seçim localStorage 'pf-cerez' = 'kabul' | 'red'. Kabulde Google Consent Mode güncellenir (Analytics.astro).
+// Ayrıca .parafomo.com çerezi 'pf-cerez' (2026-11-18): app.parafomo.com (app/consent.js) aynı seçimi görsün,
+// orada verilen seçim de sitede tekrar sorulmasın (localStorage alan adına özel).
 // Altbilgideki "Çerez tercihleri" düğmesi (data-cerez-ac) bandı yeniden açar.
 ---
 <div id="cerez-bant" class="cerez-bant" role="dialog" aria-live="polite" aria-label="Çerez tercihi" hidden>
@@ -18,12 +20,21 @@
     var bant = document.getElementById('cerez-bant');
     if (!bant) return;
     var oku = function () { try { return localStorage.getItem('pf-cerez'); } catch (e) { return null; } };
+    var ortakOku = function () {
+      var m = document.cookie.match(/(?:^|;\s*)pf-cerez=(kabul|red)(?:;|$)/);
+      return m ? m[1] : null;
+    };
+    var ortakYaz = function (v) {
+      if (!/(^|\.)parafomo\.com$/.test(location.hostname)) return;   // yerel önizleme: çerez yok
+      document.cookie = 'pf-cerez=' + v + '; Domain=.parafomo.com; Path=/; Max-Age=31536000; SameSite=Lax; Secure';
+    };
     var goster = function () { bant.hidden = false; };
     bant.addEventListener('click', function (e) {
       var b = e.target.closest('[data-cerez]');
       if (!b) return;
       var secim = b.getAttribute('data-cerez');
       try { localStorage.setItem('pf-cerez', secim); } catch (err) { /* yok say */ }
+      ortakYaz(secim);
       if (window.gtag) {
         var v = secim === 'kabul' ? 'granted' : 'denied';
         window.gtag('consent', 'update', { analytics_storage: v, ad_storage: v, ad_user_data: v, ad_personalization: v });
@@ -33,7 +44,16 @@
     document.addEventListener('click', function (e) {
       if (e.target.closest('[data-cerez-ac]')) { e.preventDefault(); goster(); }
     });
-    if (!oku()) {
+    var yerel = oku(), ortak = ortakOku();
+    if (!yerel && ortak) {   // seçim uygulamada verilmiş: buraya da uygula, bandı gösterme
+      try { localStorage.setItem('pf-cerez', ortak); } catch (err) { /* yok say */ }
+      if (ortak === 'kabul' && window.gtag) {
+        window.gtag('consent', 'update', { analytics_storage: 'granted', ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted' });
+      }
+    } else if ((yerel === 'kabul' || yerel === 'red') && !ortak) {
+      ortakYaz(yerel);       // eski seçim yalnız bu alan adındaydı → uygulama da görsün
+    }
+    if (!yerel && !ortak) {
       if (document.readyState === 'complete') setTimeout(goster, 400);
       else window.addEventListener('load', function () { setTimeout(goster, 400); }, { once: true });
     }

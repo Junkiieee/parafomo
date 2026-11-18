@@ -6,7 +6,7 @@
    dosyaları sezgisel olarak "taze" sayıyor, yayından sonra eski HTML/JS saatlerce kalıyordu. */
 const VERSION = 'pf-v4';
 const SHELL = [
-  '/', '/lobby.css', '/theme.css',
+  '/', '/lobby.css', '/theme.css', '/consent.js',
   '/portfoy/', '/portfoy/app.css', '/portfoy/app.js',
   '/birikim/', '/birikim/app.css', '/birikim/app.js',
   '/bist-symbols.json', '/tufe-aylik.json', '/benchmarks.json', '/favicon.svg', '/kvkk/',

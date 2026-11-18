@@ -32,6 +32,8 @@ class UserLogin(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str = "bearer"
+    # Bu istekle yeni hesap açıldı mı (kayıt / ilk Google girişi) — uygulama GA4 sign_up olayı için
+    new_user: bool = False
 
 
 class GoogleLogin(BaseModel):

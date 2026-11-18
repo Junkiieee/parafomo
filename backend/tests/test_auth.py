@@ -207,6 +207,17 @@ def test_google_link_invalidates_preexisting_password(client, monkeypatch):
         assert db.scalar(select(User.google_sub)) == "g-123"
 
 
+def test_new_user_flag_for_sign_up_event(client, monkeypatch):
+    r = client.post("/auth/register", json={"email": "n@example.com", "password": "password123"})
+    assert r.status_code == 201 and r.json()["new_user"] is True
+    r = client.post("/auth/login", json={"email": "n@example.com", "password": "password123"})
+    assert r.json()["new_user"] is False
+    monkeypatch.setattr(auth_router, "verify_google_id_token",
+                        lambda cred: {"sub": "g-7", "email": "g7@example.com", "name": None, "email_verified": True})
+    assert client.post("/auth/google", json={"credential": "c"}).json()["new_user"] is True
+    assert client.post("/auth/google", json={"credential": "c"}).json()["new_user"] is False
+
+
 def test_google_rejects_bad_verification(client, monkeypatch):
     monkeypatch.setattr(auth_router, "verify_google_id_token", lambda cred: None)
     assert client.post("/auth/google", json={"credential": "abc"}).status_code == 401

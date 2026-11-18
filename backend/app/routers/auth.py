@@ -88,7 +88,7 @@ def register(body: UserRegister, request: Request, db: Session = Depends(get_db)
             detail="Bu e-posta ile zaten bir hesap var.",
         )
     db.refresh(user)
-    return Token(access_token=create_access_token(user.id, user.password_hash))
+    return Token(access_token=create_access_token(user.id, user.password_hash), new_user=True)
 
 
 @router.post("/login", response_model=Token)
@@ -133,12 +133,14 @@ def google_login(body: GoogleLogin, request: Request, db: Session = Depends(get_
         )
     email = _normalize_email(info["email"])
     # Önce google_sub, sonra e-posta ile eşle; yoksa oluştur.
+    new_user = False
     user = db.scalar(select(User).where(User.google_sub == info["sub"]))
     if user is None:
         user = db.scalar(select(User).where(User.email == email))
         if user is None:
             user = User(email=email, google_sub=info["sub"], display_name=info.get("name"))
             db.add(user)
+            new_user = True
         else:
             # Var olan e-posta hesabına Google'ı bağla. Kayıtta e-posta doğrulanmadığı için
             # hesabı adresi önceden kaydeden başkası açmış olabilir (ön-ele geçirme): Google
@@ -156,7 +158,7 @@ def google_login(body: GoogleLogin, request: Request, db: Session = Depends(get_
                 user.display_name = info["name"]
         db.commit()
         db.refresh(user)
-    return Token(access_token=create_access_token(user.id, user.password_hash))
+    return Token(access_token=create_access_token(user.id, user.password_hash), new_user=new_user)
 
 
 _INVALID_RESET = "Bağlantı geçersiz veya süresi dolmuş. Lütfen yeniden talep et."
