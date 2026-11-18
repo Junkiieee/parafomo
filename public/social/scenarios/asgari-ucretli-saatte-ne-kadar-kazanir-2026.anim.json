@@ -1,0 +1,338 @@
+{
+ "slug": "asgari-ucretli-saatte-ne-kadar-kazanir-2026",
+ "title": "Asgari ücretli saatte ne kadar kazanır? 2026'da 124,78 TL",
+ "description": "Asgari ücretle çalışan Ayşe, bir gece kendi saatinin fiyatını ilk kez hesaplıyor. 2026 net asgari ücreti 225 saate bölünce saatte 124,78 TL, dakikada yaklaşık 2,08 TL çıkıyor. Ayşe örnek bir karakterdir; hesap herkes için aynıdır.\nKaynak: Net asgari ücret: Resmî Gazete; saat ücreti = aylık / 225 (haftalık 45 saat, Asgari Ücret Yönetmeliği)\nKendi hesabını yap: parafomo.com/asgari-ucret-hesaplama/",
+ "tags": [
+  "asgari ücret",
+  "asgari ücret saatlik",
+  "saat ücreti hesaplama",
+  "asgari ücret 2026",
+  "dakikada kaç lira",
+  "maaş hesaplama",
+  "para hikayeleri"
+ ],
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Ayşe bu gece kendi saatinin fiyatını buldu.",
+   "cap": "Ayşe bu gece kendi saatinin fiyatını buldu."
+  },
+  {
+   "id": "s1",
+   "say": "Asgari ücretle çalışıyor. Maaşını hep aylık düşünürdü.",
+   "cap": "Asgari ücretle çalışıyor. Maaşını hep aylık düşünürdü."
+  },
+  {
+   "id": "s2",
+   "say": "Ama bir saatinin kaç lira ettiğini hiç bilmiyordu. Bu yüzden maaşı 225 saate böldü.",
+   "cap": "Ama bir saatinin kaç lira ettiğini hiç bilmiyordu. Bu yüzden maaşı 225 saate böldü."
+  },
+  {
+   "id": "s3",
+   "say": "Sonuç ekranda parladı: saatte yaklaşık 125 lira. Gecenin sessizliğinde bir süre baktı.",
+   "cap": "Sonuç ekranda parladı: saatte 124,78 TL. Gecenin sessizliğinde bir süre baktı."
+  },
+  {
+   "id": "s4",
+   "say": "Ama bu rakam ona soyut geldi. Bu yüzden hesabı dakikaya indirdi.",
+   "cap": "Ama bu rakam ona soyut geldi. Bu yüzden hesabı dakikaya indirdi."
+  },
+  {
+   "id": "s5",
+   "say": "Asıl şaşırtıcı olan şuydu: bir dakikası yaklaşık 2 lira. Artık her dakikasına fiyat biçiyor.",
+   "cap": "Asıl şaşırtıcı olan şuydu: bir dakikası yaklaşık 2,08 TL. Artık her dakikasına fiyat biçiyor."
+  },
+  {
+   "id": "s6",
+   "say": "Sen hangisisin: saatini bilen mi, hiç hesaplamayan mı?",
+   "cap": "Sen hangisisin: saatini bilen mi, hiç hesaplamayan mı?"
+  },
+  {
+   "id": "s7",
+   "say": "Bir hesap makinesi yeter. Bu gece kendi saatinin fiyatını sen bul.",
+   "cap": "Bir hesap makinesi yeter. Bu gece kendi saatinin fiyatını sen bul."
+  }
+ ],
+ "data": {
+  "tema": "gece",
+  "kanca": [
+   "SAATİNİN FİYATI",
+   "BELLİ OLDU"
+  ],
+  "vurgu": [
+   "saatinin fiyatını",
+   "asgari ücretle",
+   "Ama",
+   "225 saate",
+   "saatte",
+   "dakikası",
+   "Asıl şaşırtıcı",
+   "fiyat biçiyor",
+   "sen bul"
+  ],
+  "scenes": [
+   {
+    "line": "s0",
+    "etiket": "Örnek",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "saskin",
+      "x": 760,
+      "y": 980,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "buldu",
+        "ifade": "saskin",
+        "eylem": "zipla",
+        "deger": 0.5
+       }
+      ]
+     }
+    ],
+    "dekor": [
+     {
+      "d": "cay",
+      "adet": 1,
+      "x": 300,
+      "y": 1080,
+      "olcek": 0.6
+     }
+    ]
+   },
+   {
+    "line": "s1",
+    "etiket": "2026",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 320,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "yok"
+     },
+     {
+      "id": "b",
+      "k": "zarf",
+      "ifade": "normal",
+      "x": 760,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "sag"
+     }
+    ],
+    "sayi": {
+     "deger": 28075.5,
+     "bas": 0,
+     "birim": "₺",
+     "kelime": "aylık",
+     "y": 520,
+     "not": "2026 net asgari ücret (aylık)",
+     "say": true
+    },
+    "kaynak": "Kaynak: Resmî Gazete, 2026 net asgari ücret"
+   },
+   {
+    "line": "s2",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "endiseli",
+      "x": 540,
+      "y": 1000,
+      "olcek": 0.85,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "böldü",
+        "ifade": "normal",
+        "eylem": "zipla",
+        "deger": 0.5
+       }
+      ]
+     }
+    ],
+    "baslik": [
+     "Aylık maaş ÷ 225 saat",
+     "Haftada 45 saat"
+    ],
+    "kaynak": "Kaynak: Asgari Ücret Yönetmeliği (haftalık 45 saat → aylık 225 saat)"
+   },
+   {
+    "line": "s3",
+    "etiket": "2026",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "saskin",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "baktı",
+        "ifade": "saskin",
+        "eylem": "titre",
+        "deger": 0.4
+       }
+      ]
+     }
+    ],
+    "sayi": {
+     "deger": 124.78,
+     "bas": 0,
+     "birim": "₺",
+     "kelime": "125",
+     "y": 520,
+     "not": "saatte (aylık / 225)",
+     "say": true
+    },
+    "kaynak": "Kaynak: Resmî Gazete; saat ücreti = aylık / 225"
+   },
+   {
+    "line": "s4",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 320,
+      "y": 1000,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "dakikaya",
+        "ifade": "endiseli",
+        "eylem": "kucul",
+        "deger": 0.7
+       }
+      ]
+     },
+     {
+      "id": "b",
+      "k": "yuzluk",
+      "ifade": "normal",
+      "x": 760,
+      "y": 980,
+      "olcek": 0.6,
+      "giris": "sag",
+      "olaylar": [
+       {
+        "kelime": "indirdi",
+        "eylem": "kucul",
+        "deger": 0.5
+       }
+      ]
+     }
+    ],
+    "baslik": [
+     "Saatten",
+     "dakikaya"
+    ]
+   },
+   {
+    "line": "s5",
+    "etiket": "Dakikada",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "saskin",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "biçiyor",
+        "ifade": "mutlu",
+        "eylem": "zipla",
+        "deger": 0.6
+       }
+      ]
+     }
+    ],
+    "sayi": {
+     "deger": 2.08,
+     "bas": 0,
+     "birim": "₺",
+     "kelime": "2",
+     "y": 520,
+     "not": "2026, dakikada yaklaşık",
+     "say": true
+    },
+    "kaynak": "Kaynak: Resmî Gazete; dakika ücreti = saat ücreti / 60"
+   },
+   {
+    "line": "s6",
+    "vs": {
+     "sol": {
+      "k": "kadin",
+      "etiket": "Saatini bilen",
+      "deger": "124,78 TL"
+     },
+     "sag": {
+      "k": "erkek",
+      "etiket": "Hiç hesaplamayan",
+      "deger": "?"
+     }
+    },
+    "kaynak": "Kaynak: Resmî Gazete; saat ücreti = aylık / 225"
+   },
+   {
+    "line": "s7",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "mutlu",
+      "x": 760,
+      "y": 1000,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "bul",
+        "ifade": "mutlu",
+        "eylem": "zipla",
+        "deger": 0.6
+       }
+      ]
+     }
+    ],
+    "baslik": [
+     "Kendi saatini",
+     "hesapla"
+    ],
+    "dekor": [
+     {
+      "d": "cay",
+      "adet": 1,
+      "x": 300,
+      "y": 1080,
+      "olcek": 0.6
+     }
+    ]
+   }
+  ]
+ },
+ "comment": "Sen kendi saatinin fiyatını hiç hesapladın mı, çıkan rakam seni şaşırttı mı? Kaynak: Resmî Gazete (2026 net asgari ücret 28.075,50 TL); saat ücreti = aylık / 225. Kendi hesabını yap: parafomo.com/asgari-ucret-hesaplama/",
+ "link": "/asgari-ucret-hesaplama/",
+ "format": "para_hikayesi",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "engine": "hikaye",
+ "lead": 0.05,
+ "series": "Para Hikâyeleri",
+ "skin": "iso"
+}

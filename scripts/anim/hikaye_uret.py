@@ -131,6 +131,19 @@ def paketler():
                 "konu": "Asgari ücretin gram altın karşılığı yıllar içinde nasıl değişti",
                 "kalip": "dram", "tema": "dram", "veri": satir,
                 "kaynak": "Asgari ücret: Resmî Gazete (sitedeki asgari ücret verisi); gram altın: ons × USDTRY (Yahoo), yıl sonu"})
+    # 1b) "saatte kaç lira" (YouTube radarı 2026-11-18: "Döner ustası saatte kaç lira alıyor?" 84 bin, küçük kanal).
+    # Saat ücreti = aylık / 225 (haftalık 45 saat; Asgari Ücret Yönetmeliği). Yalnız resmî net asgari ücretle.
+    yillar_s = [y for y in sorted(asg) if y >= son_asg - 2]
+    saat = {y: asg[y] / 225 for y in yillar_s}
+    out.append({"id": "asgari-saatlik", "aile": "asgari-saatlik", "olay": str(son_asg), "link": "/asgari-ucret-hesaplama/",
+                "konu": "Asgari ücretli saatte kaç lira kazanıyor? Bir saatin, bir dakikanın değeri",
+                "kalip": "merak", "tema": "gece",
+                "veri": [f"{y} net asgari ücret {fmt(asg[y], 2)} TL → saatte {fmt(saat[y], 2)} TL (aylık / 225 saat)" for y in yillar_s]
+                        + [f"{son_asg}: dakikada yaklaşık {fmt(saat[son_asg] / 60, 2)} TL; haftalık 45 saatte {fmt(saat[son_asg] * 45)} TL",
+                           "225 saat: haftalık 45 saatlik yasal çalışma süresinden aylık hesap (Asgari Ücret Yönetmeliği)",
+                           f"ÖRNEK karakter: asgari ücretle çalışan biri kendi saat ücretini ilk kez hesaplıyor",
+                           f"Ocak {son_asg + 1} asgari ücreti henüz açıklanmadı (genelde Aralık sonu); tahmin verme"],
+                "kaynak": "Net asgari ücret: Resmî Gazete (sitedeki asgari ücret verisi); saat ücreti = aylık / 225"})
     # 2) yüzlüğün alım gücü (TÜFE)
     for bas in (2021, 2022, 2023):   # 2019 = 1. bölüm (yuzlukten-11-lira-kaldi)
         k, son = tufe_zincir(f"{bas}-12")
