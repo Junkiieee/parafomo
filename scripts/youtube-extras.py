@@ -12,15 +12,23 @@ GEREKSİNİM: youtube_oauth.json'ın scope'u youtube.force-ssl olmalı. Mevcut t
 sadece youtube.upload ise API 403 verir → `youtube-reauth.py` ile yeniden yetkilendir.
 Bu betik hata olsa da 0 döner (pipeline'ı düşürmez); durum stderr'e yazılır.
 
-Kullanım: python3 scripts/youtube-extras.py <slug> [--format <key>] [--no-comment]
+Tekrar koruması (denetim sosyal-2, 2026-11-18): yapılan adımlar meta'ya "yt_extras" olarak yazılır
+({video_id, playlist, comment, ts}); aynı video için ikinci koşu listeye yeniden eklemez, yorumu yeniden atmaz
+(--force ile yeniden yapar). Yorumdaki ve "link"teki parafomo.com adresleri sitede açılmıyorsa
+(scripts/lib/funnel.py) blog/araç sayfasına çevrilir (#41 '/asgari-ucret/' 404 dersi).
+
+Kullanım: python3 scripts/youtube-extras.py <slug> [--format <key>] [--no-comment] [--force] [--dry]
 """
 import os
 import re
 import sys
 import json
 import argparse
+import datetime as dt
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, "scripts", "lib"))
+import funnel  # noqa: E402
 OUT_DIR = os.path.join(ROOT, "public", "social")
 OAUTH = "/root/.config/parafomo/youtube_oauth.json"
 PL_CACHE = "/root/.config/parafomo/youtube_playlists.json"   # {format: playlist_id}
@@ -53,9 +61,17 @@ BLOG_DIR = os.path.join(ROOT, "src", "content", "blog")
 def funnel_comment(slug, meta=None):
     """Sabit yorum: blog shortsa YAZIYA, viralse ana sayfaya link (huni + backlink).
     Olay sonucu videosu (meta.link): ilgili hesaplama sayfası + seri vaadi (abone dönüşümü %0,07 — RC 10-28)."""
-    if (meta or {}).get("comment"):   # bölüme özel yorum (Ekonomi Defteri)
-        return meta["comment"]
-    link = (meta or {}).get("link")
+    meta = meta or {}
+    link = meta.get("link")
+    if link and funnel.sayfa_yolu(link, ROOT) is None:   # sitede açılmayan link yoruma girmesin
+        print(f"[i] link sitede açılmıyor, yorumda kullanılmadı: {link}", file=sys.stderr)
+        link = None
+    if meta.get("comment"):   # bölüme özel yorum (Ekonomi Defteri, Para hikâyeleri)
+        yedek, _ = funnel.huni_url(slug, meta.get("title", ""), link or "", ROOT)
+        text, degisen = funnel.linkleri_duzelt(meta["comment"], yedek, ROOT)
+        if degisen:
+            print(f"[i] yorumdaki geçersiz adres düzeltildi: {', '.join(degisen)} → {yedek}", file=sys.stderr)
+        return text
     if link:
         url = link if link.startswith("http") else "https://parafomo.com/" + link.lstrip("/")
         return (f"🧮 Kendi rakamını hesapla (ücretsiz): {url}\n\n"
@@ -126,10 +142,20 @@ def add_to_playlist(yt, playlist_id, video_id):
 
 
 def post_comment(yt, video_id, text):
-    yt.commentThreads().insert(
+    return yt.commentThreads().insert(
         part="snippet",
         body={"snippet": {"videoId": video_id,
                           "topLevelComment": {"snippet": {"textOriginal": text}}}}).execute()
+
+
+def kaydet(meta_path, durum):
+    """Taze oku + yalnız yt_extras alanını yaz (IG/FB'nin alanları ezilmesin)."""
+    try:
+        cur = json.load(open(meta_path, encoding="utf-8"))
+        cur["yt_extras"] = durum
+        json.dump(cur, open(meta_path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f"[i] meta'ya yt_extras yazılamadı: {str(e)[:90]}", file=sys.stderr)
 
 
 def main():
@@ -137,6 +163,8 @@ def main():
     ap.add_argument("slug")
     ap.add_argument("--format", default="")
     ap.add_argument("--no-comment", action="store_true")
+    ap.add_argument("--force", action="store_true", help="yapılmış adımları da yeniden yap")
+    ap.add_argument("--dry", action="store_true", help="YouTube'a dokunmadan liste + yorumu yazdır")
     args = ap.parse_args()
 
     meta_path = os.path.join(OUT_DIR, f"short-{args.slug}.json")
@@ -144,35 +172,61 @@ def main():
         print(f"[i] meta yok: {meta_path}", file=sys.stderr); return 0
     meta = json.load(open(meta_path, encoding="utf-8"))
     video_id = meta.get("video_id")
+    fmt = args.format or meta.get("format", "")
+    if args.dry:
+        print(f"[dry] liste: {PLAYLIST_TITLES.get(fmt, DEFAULT_PL)} · video_id: {video_id or '-'} · "
+              f"yapılmış: {meta.get('yt_extras') or '-'}\n[dry] yorum:\n{funnel_comment(args.slug, meta)}")
+        return 0
     if not video_id:
         print("[i] video_id yok (yükleme yapılmamış?) — ekstralar atlanıyor", file=sys.stderr); return 0
+    durum = meta.get("yt_extras") or {}
+    if args.force or durum.get("video_id") != video_id:   # yeni yükleme (ya da zorla) → baştan
+        durum = {}
+    durum["video_id"] = video_id
+    yap_liste = not durum.get("playlist")
+    yap_yorum = not args.no_comment and not durum.get("comment")
+    if not (yap_liste or yap_yorum):
+        print(f"[i] ekstralar zaten yapılmış ({durum.get('ts', '?')}) — atlandı (yeniden: --force)", file=sys.stderr)
+        return 0
 
     try:
         yt = get_service()
     except Exception as e:
         print(f"[i] YouTube servisi kurulamadı: {str(e)[:90]}", file=sys.stderr); return 0
 
-    fmt = args.format or meta.get("format", "")
     # 1) oynatma listesi
-    try:
-        pid, title = ensure_playlist(yt, fmt)
-        add_to_playlist(yt, pid, video_id)
-        print(f"[+] Oynatma listesine eklendi: '{title}' ({pid})", file=sys.stderr)
-    except Exception as e:
-        msg = str(e)
-        scope_hint = " → youtube-reauth.py ile force-ssl yetkisi gerekiyor" if "insufficient" in msg.lower() or "403" in msg else ""
-        print(f"[i] Oynatma listesi atlandı: {msg[:120]}{scope_hint}", file=sys.stderr)
+    if not yap_liste:
+        print(f"[i] Oynatma listesi zaten eklendi ({durum['playlist']}) — atlandı", file=sys.stderr)
+    else:
+        try:
+            pid, title = ensure_playlist(yt, fmt)
+            add_to_playlist(yt, pid, video_id)
+            durum["playlist"] = pid
+            print(f"[+] Oynatma listesine eklendi: '{title}' ({pid})", file=sys.stderr)
+        except Exception as e:
+            msg = str(e)
+            scope_hint = " → youtube-reauth.py ile force-ssl yetkisi gerekiyor" if "insufficient" in msg.lower() or "403" in msg else ""
+            print(f"[i] Oynatma listesi atlandı: {msg[:120]}{scope_hint}", file=sys.stderr)
 
     # 2) abone CTA yorumu
-    if not args.no_comment:
+    if yap_yorum:
         try:
-            post_comment(yt, video_id, funnel_comment(args.slug, meta))
+            r = post_comment(yt, video_id, funnel_comment(args.slug, meta))
+            durum["comment"] = (r or {}).get("id") or True
             print("[+] Abone CTA yorumu atıldı (sabitlemeyi Studio'dan yapabilirsin)", file=sys.stderr)
         except Exception as e:
             print(f"[i] Yorum atılamadı: {str(e)[:120]}", file=sys.stderr)
+    elif not args.no_comment:
+        print("[i] Yorum zaten atıldı — atlandı", file=sys.stderr)
 
+    durum["ts"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    kaydet(meta_path, durum)
     return 0
 
 
 if __name__ == "__main__":
+    # YAYIN DURDURMA BAYRAĞI (Kaan 2026-10-30): diğer yayıncılarla aynı — dosya varsa yalnız ONAYLI_YAYIN=1 ile
+    # (kuyruk.py yayinla bunu verir). Denetim sosyal-2: bu betik bayrağı hiç okumayan tek yayıncıydı.
+    if os.path.exists("/root/parafomo-data/PUBLISH_PAUSED") and "--dry" not in sys.argv and os.environ.get("ONAYLI_YAYIN") != "1":
+        print("[durduruldu] /root/parafomo-data/PUBLISH_PAUSED var — ekstralar yapılmadı.", file=sys.stderr); sys.exit(0)
     sys.exit(main())
