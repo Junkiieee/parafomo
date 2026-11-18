@@ -158,3 +158,27 @@ def test_mail_queued_after_response_not_inline(client, monkeypatch):
     assert out.message == GENERIC
     assert inline == []
     assert len(bt.tasks) == 1 and bt.tasks[0].args[0] == "a@example.com"
+
+
+def test_reset_password_rate_limited_per_ip(client):
+    codes = [client.post("/auth/reset-password", json={"token": f"t{i}", "new_password": "new-password-1"},
+                         headers=ip("10.9.5.1")).status_code for i in range(12)]
+    assert codes[:10] == [400] * 10 and codes[10:] == [429, 429]
+    # başka IP etkilenmez
+    assert client.post("/auth/reset-password", json={"token": "t", "new_password": "new-password-1"},
+                       headers=ip("10.9.5.2")).status_code == 400
+
+
+def test_google_link_revokes_open_reset_links(client, outbox, monkeypatch):
+    """Ön-ele geçiren hesabı açıp sıfırlama bağlantısı istediyse (posta kurbanda) bile, kurban Google ile
+    bağlandıktan sonra o bağlantı kullanılamaz."""
+    from app.routers import auth as auth_router
+
+    register(client, email="victim@gmail.com", password="attacker-pass")
+    _request(client, email="victim@gmail.com")
+    assert len(outbox) == 1
+    monkeypatch.setattr(auth_router, "verify_google_id_token",
+                        lambda cred: {"sub": "g-9", "email": "victim@gmail.com", "name": "V", "email_verified": True})
+    assert client.post("/auth/google", json={"credential": "c"}).status_code == 200
+    r = client.post("/auth/reset-password", json={"token": _token_from(outbox[0]), "new_password": "new-password-1"})
+    assert r.status_code == 400

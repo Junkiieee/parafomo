@@ -56,6 +56,7 @@ _register_ip = RateLimiter(limit=10, window=3600)
 _google_ip = RateLimiter(limit=30, window=300)      # her deneme Google'a dış istek
 _reset_ip = RateLimiter(limit=10, window=3600)
 _reset_email = RateLimiter(limit=3, window=3600)    # aynı adrese saatte en çok 3 sıfırlama maili
+_reset_confirm_ip = RateLimiter(limit=10, window=600)  # yeni şifre kaydı (token denemesi)
 
 
 def _normalize_email(email: str) -> str:
@@ -145,6 +146,12 @@ def google_login(body: GoogleLogin, request: Request, db: Session = Depends(get_
             # pwv ile düşer. Parola isteyen kullanıcı "Şifreni mi unuttun?" ile yeniden belirler.
             user.google_sub = info["sub"]
             user.password_hash = None
+            # Ön-ele geçirenin talep ettiği açık sıfırlama bağlantıları da kapansın
+            db.execute(
+                update(PasswordResetToken)
+                .where(PasswordResetToken.user_id == user.id, PasswordResetToken.used_at.is_(None))
+                .values(used_at=datetime.now(timezone.utc))
+            )
             if not user.display_name and info.get("name"):
                 user.display_name = info["name"]
         db.commit()
@@ -191,7 +198,8 @@ def request_password_reset(
 
 
 @router.post("/reset-password", response_model=Token)
-def reset_password(body: PasswordResetConfirm, db: Session = Depends(get_db)) -> Token:
+def reset_password(body: PasswordResetConfirm, request: Request, db: Session = Depends(get_db)) -> Token:
+    enforce(_reset_confirm_ip, client_ip(request))
     token_hash = hash_reset_token(body.token)
     prt = db.scalar(
         select(PasswordResetToken).where(PasswordResetToken.token_hash == token_hash)

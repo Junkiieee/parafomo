@@ -52,7 +52,8 @@ class Settings(BaseSettings):
     # Üyeliksiz uçların (şifre sıfırlama, bülten onayı) saatte / günde gönderebileceği
     # toplam e-posta — sahte IP'lerle SMTP kotasını/itibarını yakmaya karşı sigorta.
     public_mail_per_hour: int = 50
-    public_mail_per_day: int = 200
+    # Günlük 150: Brevo ücretsiz 300/gün → kalan ~150 zam alarmı / bülten / aylık özet için kalsın
+    public_mail_per_day: int = 150
 
     @property
     def cors_origin_list(self) -> list[str]:
