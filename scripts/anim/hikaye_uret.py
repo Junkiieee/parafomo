@@ -6,14 +6,25 @@ duygu tasarımı kuralları, hikaye motoru şeması) → OTOMATİK KONTROL LİST
 paketteki rakamlar, geçerli karakter/sahne) → hata varsa düzeltme turu → anim_build (hikaye motoru) → kuyruk + panel.
 
   /root/.venvs/parafomo/bin/python scripts/anim/hikaye_uret.py [--paket asgari-altin] [--kuru] [--kuyruk]
+                                    [--max-bekleyen N] [--sadece-yeni-veri]
     --kuru    yalnız senaryoyu üret ve kontrol et (render yok)
     --kuyruk  render sonrası kuyruğa ekle (kuyruk.py ekle) ve panele senaryo kartı yaz
+    --max-bekleyen N   hikâye şeridinde N+ video yayın bekliyorsa LLM'e gitmeden 0 ile çık (resmî veri yeni geldiyse
+                       yine üretir: o video bugüne tarihlenip sırayı atlar). kuyruk.py uret 2 verir (denetim video-3).
+    --sadece-yeni-veri yalnız resmî veri yeni geldiyse üret (sec() → "yeni veri"); değilse hiçbir şey yapmadan 0.
+                       Gündüz event-short.py çağırır: açıklama günü hikâyesi aynı gün 19:00'a yetişsin (video-7).
+
+Link (denetim video-2, 2026-11-18): "link" alanı LLM'e bırakılmaz, paketin doğrulanmış linki yazılır; açıklama ve
+sabit yorumdaki parafomo.com/… adresleri sitede açılmıyorsa (scripts/lib/funnel.py) o linke çevrilir; kontrol
+listesi geçersiz adres kalırsa senaryoyu reddeder. Geçmiş (hikaye-gecmis.json: paket/aile/olay/başlık) yalnız video
+BAŞARIYLA çizildikten sonra yazılır (video-10: render çökünce konu ve "yeni veri" tetiği yanıyordu).
 """
 import argparse
 import datetime as dt
 import json
 import os
 import re
+import signal
 import subprocess
 import sys
 import unicodedata
@@ -22,6 +33,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 sys.path.insert(0, os.path.join(ROOT, "scripts", "lib"))
 sys.path.insert(0, os.path.join(HERE, "engines"))
+import funnel  # noqa: E402
 import hikaye_kit  # noqa: E402
 
 PY = "/root/.venvs/parafomo/bin/python"
@@ -509,7 +521,64 @@ def kontrol(spec, p):
                 hata.append(f"geçersiz dekor: {dk.get('d')}")
     if not d.get("scenes"):
         hata.append("sahne yok")
+    for alan in ("description", "comment", "link"):   # sitede açılmayan adres (#41 '/asgari-ucret/' 404 dersi)
+        metin = spec.get(alan) or ""
+        kotu = funnel.gecersiz_linkler(metin, ROOT) if alan != "link" else \
+            ([metin] if metin and funnel.sayfa_yolu(metin, ROOT) is None else [])
+        for x in kotu:
+            hata.append(f"{alan}: sitede olmayan adres {x} (yalnız VERİ PAKETİNDEKİ sayfayı kullan)")
     return hata
+
+
+def link_duzelt(spec, p):
+    """LLM'in yazdığı link/adresleri DETERMİNİSTİK düzelt: 'link' = paketin doğrulanmış linki (paket linksizse LLM'inki
+    yalnız sitede açılıyorsa kalır); açıklama/yorumdaki geçersiz parafomo.com/… adresleri o linke (yoksa konu aracına)
+    çevrilir. Böylece düzeltme turu (LLM çağrısı) harcanmaz."""
+    pl = p.get("link") or ""
+    if pl and funnel.sayfa_yolu(pl, ROOT):
+        spec["link"] = pl
+    elif spec.get("link") and not funnel.sayfa_yolu(spec["link"], ROOT):
+        print(f"[hikaye] link sitede açılmıyor, çıkarıldı: {spec['link']}")
+        spec.pop("link", None)
+    yedek = funnel.tam_url(funnel.sayfa_yolu(spec["link"], ROOT)) if spec.get("link") else \
+        funnel.tool_url_for(spec.get("slug", ""), spec.get("title", ""), ROOT)
+    for alan in ("description", "comment"):
+        if isinstance(spec.get(alan), str):
+            spec[alan], degisen = funnel.linkleri_duzelt(spec[alan], yedek, ROOT)
+            if degisen:
+                print(f"[hikaye] {alan}: geçersiz adres düzeltildi {', '.join(degisen)} → {yedek}")
+    return spec
+
+
+def hikaye_bekleyen():
+    """Hikâye şeridinde yayın bekleyen video sayısı (kuyruk.py ile aynı sayım; KUYRUK_DATA'ya uyar)."""
+    try:
+        import kuyruk
+        return kuyruk.bekleyen(kuyruk.load(), hikaye=True)
+    except Exception as ex:
+        print(f"[hikaye] kuyruk okunamadı ({type(ex).__name__}: {ex}) — tavan uygulanmadı")
+        return 0
+
+
+def calistir(cmd, timeout):
+    """Render alt sürecini kendi süreç grubunda çalıştır; zaman aşımında BÜTÜN grubu sonlandır (anim_build/node
+    çocukları öksüz kalıp render kilidini tutmasın — denetim video-10). subprocess.TimeoutExpired yükseltir."""
+    pr = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, start_new_session=True)
+    try:
+        out, err = pr.communicate(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        for sig, bekle in ((signal.SIGTERM, 15), (signal.SIGKILL, 30)):
+            try:
+                os.killpg(pr.pid, sig)
+            except (ProcessLookupError, PermissionError):
+                pass
+            try:
+                pr.communicate(timeout=bekle)
+                break
+            except subprocess.TimeoutExpired:
+                continue
+        raise
+    return subprocess.CompletedProcess(cmd, pr.returncode, out, err)
 
 
 ONCELIK = ["altin-enflasyon", "sosyal", "ayni-maas", "kredi-karti", "kira", "dolar-altin", "kissa", "asgari-altin", "yuzluk", "emekli"]
@@ -610,17 +679,30 @@ def main():
     ap.add_argument("--kuru", action="store_true")
     ap.add_argument("--kuyruk", action="store_true")
     ap.add_argument("--model", default="opus")
+    ap.add_argument("--max-bekleyen", type=int, default=0)
+    ap.add_argument("--sadece-yeni-veri", action="store_true")
     a = ap.parse_args()
     gecmis = {}
     try:
         gecmis = json.load(open(GECMIS, encoding="utf-8"))
     except (OSError, ValueError):
         pass
-    trend_tazele()
+    if not a.sadece_yeni_veri:   # gündüz yoklamasında radarlar yenilenmez (ucuz kalsın); üretilecekse aşağıda
+        trend_tazele()
     P = paketler()
     if a.paket:
         P = [p for p in P if p["id"] == a.paket] or sys.exit(f"paket yok: {a.paket}")
     p, neden = sec(P, gecmis)
+    if a.sadece_yeni_veri and neden != "yeni veri":
+        print("[hikaye] yeni resmî veri yok — üretim yok"); return 0
+    if a.max_bekleyen and neden != "yeni veri":
+        n = hikaye_bekleyen()
+        if n >= a.max_bekleyen:
+            print(f"[hikaye] hikâye şeridinde {n} video yayın bekliyor (tavan {a.max_bekleyen}) — bu gece yeni hikâye yok"
+                  f" (sıradaki olurdu: {p['id']})")
+            return 0
+    if a.sadece_yeni_veri:
+        trend_tazele()
     print(f"[hikaye] paket: {p['id']} ({neden}) · {p['konu']} · kalıp {p['kalip']}")
     duzeltme, spec, hatalar = "", None, ["başlamadı"]
     for tur in range(3):
@@ -633,6 +715,7 @@ def main():
         except Exception as ex:
             duzeltme = f"ÖNCEKİ ÇIKTI GEÇERSİZ JSON ({ex}). Yalnız JSON yaz."
             continue
+        link_duzelt(spec, p)
         hatalar = kontrol(spec, p)
         print(f"[hikaye] tur {tur + 1}: {len(hatalar)} sorun", "; ".join(hatalar[:6]))
         if not hatalar:
@@ -651,18 +734,12 @@ def main():
     print(f"[hikaye] senaryo: {sp}")
     if a.kuru:
         print(json.dumps(spec["lines"], ensure_ascii=False, indent=1)); return 0
-    simdi = dt.datetime.now().isoformat(timespec="seconds")
-    gecmis.setdefault("paketler", {})[p["id"]] = simdi
-    gecmis.setdefault("aileler", {})[p["aile"]] = simdi
-    if p.get("olay"):
-        gecmis.setdefault("olay", {})[p["id"]] = p["olay"]
-    gecmis.setdefault("basliklar", []).append(spec["title"])
-    os.makedirs(os.path.dirname(GECMIS), exist_ok=True)
-    json.dump(gecmis, open(GECMIS, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     mp4 = os.path.join(ROOT, "public", "social", f"short-{slug}.mp4")
     for deneme in range(2):
-        r = subprocess.run(["nice", "-n", "19", PY, os.path.join(HERE, "anim_build.py"), sp, "--engine", "hikaye"],
-                           capture_output=True, text=True, timeout=3600)
+        try:
+            r = calistir(["nice", "-n", "19", PY, os.path.join(HERE, "anim_build.py"), sp, "--engine", "hikaye"], 3600)
+        except subprocess.TimeoutExpired:
+            sys.exit("[hikaye] render 3600 sn'de bitmedi (süreç grubu sonlandırıldı) — geçmiş yazılmadı, konu yine sırada")
         if r.returncode == 0 and os.path.exists(mp4):
             break
         hata = (r.stderr or "") + (r.stdout or "")
@@ -679,6 +756,21 @@ def main():
     meta = json.load(open(os.path.join(ROOT, "public", "social", f"short-{slug}.json"), encoding="utf-8"))
     if meta.get("teknik") != "hikaye":
         sys.exit("[hikaye] motor başarısız (izometriğe düştü) — kuyruğa eklenmedi")
+    # Geçmiş ANCAK video çizildikten sonra: render çökerse paket/aile "kullanıldı" sayılmaz, "yeni veri" tetiği yanmaz
+    # (2026-11-18 00:41: sosyal-evde-bakim işaretlendi, render düştü, ancak sabah elle kurtarıldı).
+    try:   # render uzun sürebilir: bu arada elle koşan başka bir üretimin yazdığı geçmiş ezilmesin → taze oku
+        gecmis = json.load(open(GECMIS, encoding="utf-8"))
+    except (OSError, ValueError):
+        pass
+    simdi = dt.datetime.now().isoformat(timespec="seconds")
+    gecmis.setdefault("paketler", {})[p["id"]] = simdi
+    gecmis.setdefault("aileler", {})[p["aile"]] = simdi
+    if p.get("olay"):
+        gecmis.setdefault("olay", {})[p["id"]] = p["olay"]
+    gecmis.setdefault("basliklar", []).append(spec["title"])
+    os.makedirs(os.path.dirname(GECMIS), exist_ok=True)
+    json.dump(gecmis, open(GECMIS + ".tmp", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    os.replace(GECMIS + ".tmp", GECMIS)
     print(f"[hikaye] ✅ video: {mp4}")
     if a.kuyruk:
         tarih = []   # resmî veri yeni geldiyse (TÜFE, kira tavanı…) bugün 19:00'da çıksın; değilse 19:00 şeridinde sırasını bekler
