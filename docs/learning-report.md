@@ -1,13 +1,13 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-11-18T08:55:39Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-11-19T08:52:50Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
 - YouTube retention: ✅
 - YouTube izlenme: ✅
 - Instagram insights: ✅
-- Web (GA4+GSC): ✅
+- Web (GSC tıkı; GA4 17.11'den beri yalnız çerez onaylı → skora girmez): ✅
 
 ## Kararlar
 
@@ -26,7 +26,7 @@
 - `myth` — skor 88.931, örnek 8
 - `backtest_return` — skor 15.194, örnek 1
 
-### Viral yayın slotu — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
+### Viral yayın slotu — **explore** (yeterli veri yok, rotasyon sürüyor)
 
 - `5` — skor 513.248, örnek 4
 - `1` — skor 360.538, örnek 4
@@ -39,15 +39,16 @@
 ## Konu sinyalleri
 
 **En iyi blog sayfaları:**
-- euro-mi-dolar-mi-10-yillik-getiri-karsilastirma — skor 76.22
-- abd-ekim-2026-ppi-uretici-enflasyonu-fed-dolar-altin — skor 41.88
-- abd-kasim-2026-cpi-verisi-fed-dolar-altin — skor 37.87
-- kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir — skor 17.07
-- gumus-mi-altin-mi-10-yillik-getiri-karsilastirma — skor 16.4
-- abd-ekim-2026-cpi-verisi-fed-dolar-altin — skor 14.08
+- abd-ekim-2026-ppi-uretici-enflasyonu-fed-dolar-altin — skor 35
+- abd-kasim-2026-cpi-verisi-fed-dolar-altin — skor 30
+- abd-ekim-2026-perakende-satislar-fed-dolar-altin — skor 25
+- abd-ekim-2026-cpi-verisi-fed-dolar-altin — skor 10
+- kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir — skor 10
+- 2027-zamlari-yeniden-degerleme-orani-rehberi — skor 5
 
 **🎯 Fırsat sorguları** (içerik/başlık iyileştir):
-- `uzun vadede euro mu dolar mı` — gös 23, sıra 10.8
-- `10 yıllık gümüş grafik` — gös 9, sıra 4.7
-- `15 ekim 22 ayar bilezik gram fiyatı` — gös 8, sıra 10
+- `ocak ayında evde bakım maaşı ne kadar olacak` — gös 34, sıra 10.1
+- `uzun vadede euro mu dolar mı` — gös 26, sıra 10.1
+- `10 yıllık gümüş grafik` — gös 9, sıra 4.9
+- `15 ekim 22 ayar bilezik gram fiyatı` — gös 7, sıra 10
 - `100 bin araç kredisi` — gös 5, sıra 20

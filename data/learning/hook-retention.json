@@ -1,31 +1,31 @@
 {
-  "fetched_utc": "2026-11-18T08:46:00Z",
+  "fetched_utc": "2026-11-19T08:45:56Z",
   "hold_sec": 3.0,
-  "n": 2,
-  "median_hold_3s": 1.091,
+  "n": 1,
+  "median_hold_3s": 1.062,
   "avd_gate_pct": 65.0,
-  "median_avg_view_pct": 46.6,
+  "median_avg_view_pct": 45.5,
   "gate_pass_share": 0.0,
   "gate_pass_n": 0,
-  "gate_breakdown_n": 25,
+  "gate_breakdown_n": 26,
   "gate_by_format": {
-    "single_concept": {
-      "n": 6,
-      "median_avd": 0.0,
-      "gate_pass_n": 0,
-      "gate_pass_share": 0.0
-    },
     "myth": {
-      "n": 4,
-      "median_avd": 28.3,
+      "n": 5,
+      "median_avd": 22.0,
       "gate_pass_n": 0,
       "gate_pass_share": 0.0
     },
     "shock_number": {
       "n": 9,
-      "median_avd": 39.9,
-      "gate_pass_n": 2,
-      "gate_pass_share": 0.222
+      "median_avd": 27.6,
+      "gate_pass_n": 1,
+      "gate_pass_share": 0.111
+    },
+    "single_concept": {
+      "n": 6,
+      "median_avd": 0.0,
+      "gate_pass_n": 0,
+      "gate_pass_share": 0.0
     },
     "ekonomi_defteri": {
       "n": 3,
@@ -42,22 +42,13 @@
   },
   "videos": [
     {
-      "id": "youtube:iPcJNhJ43SM",
-      "video_id": "iPcJNhJ43SM",
-      "duration_sec": 39,
-      "hold_3s": 1.0,
-      "rel_perf_3s": 0.064,
-      "avg_view_pct": 28.3,
-      "published_utc": "2026-11-08T16:02:23Z"
-    },
-    {
-      "id": "youtube:kEQH6D3_yVc",
-      "video_id": "kEQH6D3_yVc",
-      "duration_sec": 39,
-      "hold_3s": 1.091,
-      "rel_perf_3s": 0.313,
-      "avg_view_pct": 46.6,
-      "published_utc": "2026-11-08T10:01:35Z"
+      "id": "youtube:tYCdJoCZ9qI",
+      "video_id": "tYCdJoCZ9qI",
+      "duration_sec": 26,
+      "hold_3s": 1.062,
+      "rel_perf_3s": 0.216,
+      "avg_view_pct": 45.5,
+      "published_utc": "2026-11-15T16:01:52Z"
     }
   ]
 }
