@@ -49,7 +49,8 @@ const ETKI = [
 
 const faq = [
   {
-    q: `${HEDEF} yeniden değerleme oranı ne kadar olacak?`,
+    // Oran kesinleşince soru da geçmiş zamana geçer (seo-3: 'ne kadar olacak?' kesinleşmeden sonra da soruluyordu).
+    q: `${HEDEF} yeniden değerleme oranı ${durum === 'tahmin' ? 'ne kadar olacak' : 'ne kadar oldu'}?`,
     a: durum === 'tahmin'
       ? `Kesin oran, Ekim ${HEDEF - 1} Yİ-ÜFE verisiyle hesaplanır ve Kasım sonunda Resmî Gazete'de ilan edilir. ${sonAyAdi} verisi itibarıyla 12 aylık ortalama Yİ-ÜFE artışı yaklaşık %${nf(oran)}; kalan ${kalanAy} aylık veri gelmeden bu bir tahmindir. Üretici enflasyonu mevcut seyrinde giderse ${HEDEF} yeniden değerleme oranı %${nf(Math.floor(oran))}-${nf(Math.ceil(oran + 1), 0)} bandında kesinleşir.`
       : durum === 'hesap'
@@ -65,7 +66,7 @@ const faq = [
     a: `MTV, trafik cezaları, pasaport-ehliyet-kimlik harçları, IMEI kayıt ücreti, damga vergisi, yargı ve noter harçları, çevre temizlik vergisi gibi maktu vergi ve cezaların tamamı her yıl 1 Ocak'ta bu oran kadar artar. Gelir vergisi dilimleri ve bazı istisna tutarları da bu orana göre güncellenir; ancak Cumhurbaşkanı'nın oranı farklı uygulatma yetkisi vardır.`,
   },
   {
-    q: `MTV ${HEDEF} zammı ne kadar olacak?`,
+    q: `MTV ${HEDEF} zammı ne kadar ${uygulanan ? 'oldu' : 'olacak'}?`,
     a: uygulanan
       ? `${HEDEF} MTV tutarları, Cumhurbaşkanı kararıyla ${HEDEF - 1} tutarlarının %${nf(uygulanan, 2)} artırılmasıyla belirlendi (yeniden değerleme oranı ${oranLabel}). Örneğin 2026'da en düşük otomobil MTV'si olan 5.750 TL, ${HEDEF}'de yaklaşık ${fmt(5750 * harcCarpan)} TL oldu. Aracınız için hesabı MTV hesaplama sayfamızda yapabilirsiniz.`
       : `${HEDEF} MTV tutarları, ${HEDEF - 1} tutarlarının yeniden değerleme oranı kadar artırılmasıyla bulunur. ${sonAyAdi} itibarıyla ${durum === 'tahmin' ? 'tahmini' : 'kesinleşen'} oran ${oranLabel}: örneğin 2026'da en düşük otomobil MTV'si olan 5.750 TL, ${HEDEF}'de yaklaşık ${fmt(5750 * carpan)} TL olur. Cumhurbaşkanı 2026'da olduğu gibi (%25,49 yerine %18,95) daha düşük bir artış uygulatabilir. Aracınız için hesabı MTV hesaplama sayfamızda yapabilirsiniz.`,
