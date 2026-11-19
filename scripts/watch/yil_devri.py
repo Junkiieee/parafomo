@@ -23,7 +23,7 @@ KONTROLLER = [
     ("json", "data/asgari-ucret.json", "guncel.yil", (1, 2),
      "asgari-ucret-watch.py 1 Ocak'ta kendisi taşır; taşımadıysa yeni yılı 'yeni'ye yaz (≥2 kaynak)"),
     ("json", "data/gelir-vergisi-tarife.json", "yil", (1, 3),
-     "Gelir Vergisi Genel Tebliği (31 Aralık, mükerrer RG): yil + ücret/ücret dışı dilimler → net maaş, vergi dilimi, "
+     "Gelir Vergisi Genel Tebliği (31 Aralık, mükerrer RG): tarifeler'e yeni yıl (ücret/ücret dışı) + yil → net maaş, vergi dilimi, "
      "gelir vergisi, değer artışı; sonra o sayfaların METIN_YILI metinleri"),
     ("json", "data/veraset-2026.json", "yil", (1, 5), "VİVK Genel Tebliği (31 Aralık, mükerrer RG): istisnalar + dilimler"),
     ("const", "src/pages/damga-vergisi-hesaplama.astro", r"const BAZ_YIL = (\d{4})", (1, 5),
@@ -38,11 +38,12 @@ KONTROLLER = [
     ("json", "data/asgari-ucret.json", "destek.yil", (1, 31), "işverene asgari ücret desteği: yeni yıl tutarı (karar çıkınca)"),
     ("json", "data/emekli-memur.json", "bayramIkramiyesi.yil", (2, 15), "Ramazan Bayramı öncesi: emekli bayram ikramiyesi tutarı"),
 ]
-# Metinleri belli bir yıl için elle yazılmış sayfalar: verinin yılı metnin yılını geçerse ⚑ (build de uyarır).
+# Metinleri belli bir yıl için elle yazılmış sayfalar: verinin yılı metnin yılını geçerse ⚑ (build de uyarır; sayfa
+# o arada kendi yılının verisiyle tutarlı kalır — gelir vergisi tarifesi tarifeler[METIN_YILI], asgari ücret yalın mod).
 METIN_YILI = [
     ("src/pages/vergi-dilimi-hesaplama.astro", r"const METIN_YILI = (\d{4})", "data/gelir-vergisi-tarife.json", "yil"),
-    ("src/pages/gelir-vergisi-hesaplama.astro", r"metinYiliKontrol\('[^']+', (\d{4})\)", "data/gelir-vergisi-tarife.json", "yil"),
-    ("src/pages/deger-artis-kazanci-hesaplama.astro", r"metinYiliKontrol\('[^']+', (\d{4})\)", "data/gelir-vergisi-tarife.json", "yil"),
+    ("src/pages/gelir-vergisi-hesaplama.astro", r"const METIN_YILI = (\d{4})", "data/gelir-vergisi-tarife.json", "yil"),
+    ("src/pages/deger-artis-kazanci-hesaplama.astro", r"const METIN_YILI = (\d{4})", "data/gelir-vergisi-tarife.json", "yil"),
     ("src/pages/asgari-ucret-hesaplama.astro", r"const METIN_YILI = (\d{4})", "data/asgari-ucret.json", "guncel.yil"),
 ]
 # Zam dönemi sayfaları (src/data/zam2027.ts PERIOD): hedef dönemin TÜFE'si açıklanınca (~3 Şubat / ~3 Ağustos) sonraki

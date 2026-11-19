@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import endeks from '../../data/yiufe-endeks.json';
 import yd from '../../data/yeniden-degerleme.json';
-import { DIGER_DILIM, DIGER_JSON, metinYiliKontrol } from '../data/vergi';
+import { tarifeYili, metinYiliKontrol } from '../data/vergi';
 
 // Değer artışı kazancı (GVK mük. md.80-81) — mevzuat.gov.tr GVK güncel metninden doğrulandı 2026-10-21:
 // - mük.80/6: gayrimenkul iktisaptan itibaren 5 yıl içinde elden çıkarılırsa (ivazsız iktisap hariç) kazanç vergilenir.
@@ -12,10 +12,12 @@ import { DIGER_DILIM, DIGER_JSON, metinYiliKontrol } from '../data/vergi';
 // - mük.81: maliyet, elden çıkarıldığı ay hariç toptan eşya (bugün Yİ-ÜFE) endeksindeki artışla endekslenir; artış ≥%10 şart.
 //   Uygulama (GİB): iktisap ayından önceki ay endeksi → elden çıkarma ayından önceki ay endeksi.
 // Tarife: ücret dışı gelir tarifesi 2026 (gelir-vergisi-hesaplama ile aynı). GÜNCELLEME: Ocak 2027’de istisna + tarife.
-// Dilimler data/gelir-vergisi-tarife.json'dan (src/data/vergi.ts); istisna ve metinler 2026 için elle → JSON yeni yıla
-// geçince build uyarır.
-const DIGER: [number, number][] = DIGER_DILIM;
-metinYiliKontrol('deger-artis-kazanci-hesaplama', 2026);
+// Dilimler data/gelir-vergisi-tarife.json'dan (src/data/vergi.ts), METIN_YILI'nın tarifesi; istisna ve metinler 2026
+// için elle → yürürlükteki tarife yılı farklıysa build uyarır.
+const METIN_YILI = 2026;
+metinYiliKontrol('deger-artis-kazanci-hesaplama', METIN_YILI);
+const TY = tarifeYili(METIN_YILI);
+const DIGER: [number, number][] = TY.DIGER_DILIM;
 const ISTISNA = 150000;
 const SERI: Record<string, number> = endeks.seri;
 const SON_AY: string = endeks.sonAy;
@@ -330,7 +332,7 @@ const varsayilanSatis = `${SATIS_AY}-15`;
     <Newsletter />
   </div>
 
-  <script is:inline define:vars={{ ISTISNA, SERI, SON_AY, TARIFE: DIGER_JSON }}>
+  <script is:inline define:vars={{ ISTISNA, SERI, SON_AY, TARIFE: TY.DIGER_JSON }}>
     (function () {
       const $ = (id) => document.getElementById(id);
       const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });

@@ -13,11 +13,27 @@ export type Dilim = [number, number];
 
 const hesapBicimi = (d: DilimJson[]): Dilim[] => d.map(([ust, oran]) => [ust ?? Infinity, oran / 100]);
 
+type TarifeJson = { ucret: DilimJson[]; diger: DilimJson[]; kaynak?: string };
+const TARIFELER = tarife.tarifeler as Record<string, TarifeJson>;
+/** Yürürlükteki tarifenin yılı (data/gelir-vergisi-tarife.json → yil). */
 export const TARIFE_YIL: number = tarife.yil;
-export const UCRET_JSON = tarife.ucret as DilimJson[];
-export const DIGER_JSON = tarife.diger as DilimJson[];
-export const UCRET_DILIM: Dilim[] = hesapBicimi(UCRET_JSON);
-export const DIGER_DILIM: Dilim[] = hesapBicimi(DIGER_JSON);
+
+/** İstenen yılın tarifesi. Metinleri bir yıl için yazılmış sayfalar METIN_YILI'yı verir: JSON'a yeni yıl eklense de
+ *  sayfa metinleri güncellenene dek kendi yılının dilimleriyle tutarlı kalır (yeni dilim + eski metin karışmaz). */
+export function tarifeYili(yil: number) {
+  let t = TARIFELER[String(yil)];
+  if (!t) {
+    console.warn(`[vergi.ts] ${yil} gelir vergisi tarifesi data/gelir-vergisi-tarife.json'da yok — ${TARIFE_YIL} kullanıldı`);
+    t = TARIFELER[String(TARIFE_YIL)];
+  }
+  return { UCRET_JSON: t.ucret, DIGER_JSON: t.diger, UCRET_DILIM: hesapBicimi(t.ucret), DIGER_DILIM: hesapBicimi(t.diger) };
+}
+
+const GUNCEL = tarifeYili(TARIFE_YIL);
+export const UCRET_JSON: DilimJson[] = GUNCEL.UCRET_JSON;
+export const DIGER_JSON: DilimJson[] = GUNCEL.DIGER_JSON;
+export const UCRET_DILIM: Dilim[] = GUNCEL.UCRET_DILIM;
+export const DIGER_DILIM: Dilim[] = GUNCEL.DIGER_DILIM;
 
 const tl0 = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
 
@@ -51,10 +67,11 @@ export function asgariBrut(yil: number): number {
 export const ASGARI_YIL: number = (au.guncel as { yil: number }).yil;
 export const ASGARI_BRUT: number = (au.guncel as { brut: number }).brut;
 
-/** Metinleri belli bir tarife yılı için elle yazılmış sayfalar: tarife yılı değişince build uyarısı. */
+/** Metinleri belli bir tarife yılı için elle yazılmış sayfalar: yürürlükteki tarife yılı farklıysa build uyarısı
+ *  (sayfa o arada tarifeYili(METIN_YILI) ile kendi yılında tutarlı kalır). */
 export function metinYiliKontrol(sayfa: string, metinYili: number) {
   if (metinYili !== TARIFE_YIL) {
-    console.warn(`[${sayfa}] metinler ${metinYili} tarifesi için yazıldı, data/gelir-vergisi-tarife.json yılı ${TARIFE_YIL}: ` +
-      `sayfadaki yıl/dilim metinlerini güncelleyip METIN_YILI'nı ${TARIFE_YIL} yap.`);
+    console.warn(`[${sayfa}] metinler ${metinYili} tarifesi için yazıldı, yürürlükteki tarife ${TARIFE_YIL} ` +
+      `(data/gelir-vergisi-tarife.json): sayfa ${metinYili} dilimleriyle kaldı — yıl/dilim metinlerini güncelleyip METIN_YILI'nı ${TARIFE_YIL} yap.`);
   }
 }

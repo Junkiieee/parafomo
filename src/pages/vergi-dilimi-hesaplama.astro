@@ -2,19 +2,21 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import yd from '../../data/yeniden-degerleme.json';
-import { UCRET_DILIM, DIGER_DILIM, UCRET_JSON, DIGER_JSON, dilimSatirlari, metinYiliKontrol } from '../data/vergi';
+import { tarifeYili, dilimSatirlari, metinYiliKontrol } from '../data/vergi';
 
 // Gelir vergisi tarifesi — GVK md.103; dilimler data/gelir-vergisi-tarife.json'dan (src/data/vergi.ts; 2026: 332 Seri
 // No'lu GVK Genel Tebliği, RG 31.12.2025, doğrulandı 2026-10-11). Ücret ve ücret dışı tarife yalnız 3. dilimin üst
 // sınırında ayrışır (1.500.000 vs 1.000.000). Hesap ve tablolar JSON'dan; SSS/giriş metinleri ve 2027 tahmini bölümü
-// 2026 için elle yazıldı → JSON yeni yıla geçince build uyarır (METIN_YILI).
-// GÜNCELLEME: Ocak 2027'de tebliğle JSON'u güncelle, metinleri 2027'ye göre yaz, METIN_YILI = 2027.
+// 2026 için elle yazıldı → sayfa METIN_YILI'nın tarifesini kullanır (JSON'a 2027 eklense de metinle tutarlı kalır),
+// yürürlükteki tarife yılı farklıysa build uyarır, yıl devri bekçisi ⚑ yazar.
+// GÜNCELLEME: Ocak 2027'de tebliğle JSON'a 2027'yi ekle, metinleri 2027'ye göre yaz, METIN_YILI = 2027.
 const METIN_YILI = 2026;
 metinYiliKontrol('vergi-dilimi-hesaplama', METIN_YILI);
-const UCRET: [number, number][] = UCRET_DILIM;
-const DIGER: [number, number][] = DIGER_DILIM;
-const SATIR_U = dilimSatirlari(UCRET_JSON);
-const SATIR_D = dilimSatirlari(DIGER_JSON);
+const TY = tarifeYili(METIN_YILI);
+const UCRET: [number, number][] = TY.UCRET_DILIM;
+const DIGER: [number, number][] = TY.DIGER_DILIM;
+const SATIR_U = dilimSatirlari(TY.UCRET_JSON);
+const SATIR_D = dilimSatirlari(TY.DIGER_JSON);
 
 function gv(m: number, b: [number, number][]): number {
   let tax = 0;
@@ -255,7 +257,7 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
     <Newsletter />
   </div>
 
-  <script is:inline define:vars={{ TARIFE_U: UCRET_JSON, TARIFE_D: DIGER_JSON }}>
+  <script is:inline define:vars={{ TARIFE_U: TY.UCRET_JSON, TARIFE_D: TY.DIGER_JSON }}>
     (function () {
       const $ = (id) => document.getElementById(id);
       const nf = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
