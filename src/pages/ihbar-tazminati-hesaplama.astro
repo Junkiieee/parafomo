@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
+import { ASGARI_YIL, ASGARI_BRUT } from '../data/vergi';
 
 // İhbar süreleri: 4857 sayılı İş Kanunu md.17 (2/4/6/8 hafta; sözleşmeyle artırılabilir, azaltılamaz).
 // İhbar tazminatı = bildirim süresine ait ücret; giydirilmiş brüt ücret esas alınır. SGK primi kesilmez;
@@ -27,7 +28,10 @@ const hesap = (aylik: number, hafta: number, gvOran: number) => {
 
 const DEFAULT_W = 50000;
 const d0 = hesap(DEFAULT_W, 8, 0.15);
-const UCRETLER = [33030, 50000, 75000, 100000, 150000];
+// İlk satır yürürlükteki brüt asgari ücret (data/asgari-ucret.json; 1 Ocak'ta asgari-ucret-watch.py yeni yıla taşır).
+// Sayfanın yıl etiketi de o yıl: süreler kanunda sabit, gelir vergisi oranını kullanıcı seçer — yıla bağlı başka veri yok.
+const YIL = ASGARI_YIL;
+const UCRETLER = [ASGARI_BRUT, 50000, 75000, 100000, 150000];
 
 const faq = [
   {
@@ -35,7 +39,7 @@ const faq = [
     a: `İhbar tazminatı = günlük giydirilmiş brüt ücret × ihbar süresi (gün). Günlük ücret aylık brütün 30’a bölünmesiyle bulunur; ihbar süresi kıdeme göre 2, 4, 6 veya 8 haftadır (14, 28, 42, 56 gün). Örnek: ${fmt0(DEFAULT_W)} ₺ brüt ücretli, 3 yıldan uzun çalışmış işçi için ${fmt0(DEFAULT_W)} / 30 × 56 = ${fmt(d0.brut)} ₺ brüt ihbar tazminatı.`,
   },
   {
-    q: 'İhbar süreleri ne kadar? (2026)',
+    q: `İhbar süreleri ne kadar? (${YIL})`,
     a: 'İş Kanunu md.17’ye göre: işi 6 aydan az sürmüş işçi için 2 hafta, 6 ay – 1,5 yıl için 4 hafta, 1,5 – 3 yıl için 6 hafta, 3 yıldan fazla için 8 hafta. Bu süreler asgaridir; iş sözleşmesiyle artırılabilir.',
   },
   {
@@ -61,15 +65,15 @@ const breadcrumbs = [
 
 <BaseLayout
   image="/og/ihbar-tazminati-hesaplama.png"
-  title="İhbar Tazminatı Hesaplama 2026: Süreler, Brüt ve Net Tutar"
-  description="İhbar tazminatı hesaplama 2026: kıdeme göre 2, 4, 6 veya 8 hafta (İş Kanunu md.17). Brüt maaşını gir; brüt tazminatı, gelir ve damga vergisini, neti gör."
+  title={`İhbar Tazminatı Hesaplama ${YIL}: Süreler, Brüt ve Net Tutar`}
+  description={`İhbar tazminatı hesaplama ${YIL}: kıdeme göre 2, 4, 6 veya 8 hafta (İş Kanunu md.17). Brüt maaşını gir; brüt tazminatı, gelir ve damga vergisini, neti gör.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
 >
   <div class="calc-wrap">
     <header class="calc-head">
       <p class="eyebrow">Hesaplayıcı · Çalışan hakları</p>
-      <h1>İhbar Tazminatı Hesaplama (2026)</h1>
+      <h1>İhbar Tazminatı Hesaplama ({YIL})</h1>
       <p class="lede">
         İhbar tazminatı, çalışma sürenize göre <strong>2, 4, 6 veya 8 haftalık brüt ücret</strong>
         tutarındadır. Brüt maaşınızı ve kıdeminizi girin; <strong>brüt tazminatı, kesintileri ve
@@ -154,7 +158,7 @@ const breadcrumbs = [
     </section>
 
     <section class="table-block">
-      <h2>Brüt maaşa göre ihbar tazminatı (brüt, 2026)</h2>
+      <h2>Brüt maaşa göre ihbar tazminatı (brüt, {YIL})</h2>
       <table class="rate-table">
         <thead><tr><th>Brüt ücret</th>{SURELER.map((s) => <th>{s.hafta} hafta</th>)}</tr></thead>
         <tbody>
@@ -167,7 +171,7 @@ const breadcrumbs = [
         </tbody>
       </table>
       <p class="table-note">
-        33.030 ₺ = 2026 brüt asgari ücret. Neti bulmak için gelir vergisi (dilime göre) ve binde 7,59
+        {fmt0(ASGARI_BRUT)} ₺ = {YIL} brüt asgari ücret. Neti bulmak için gelir vergisi (dilime göre) ve binde 7,59
         damga vergisi düşülür; SGK primi kesilmez.
       </p>
     </section>

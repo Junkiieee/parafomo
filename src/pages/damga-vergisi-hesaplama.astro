@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import yd from '../../data/yeniden-degerleme.json';
+import { asgariBrut } from '../data/vergi';
+import { ekDa } from '../data/ek';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 // Noter sayfası paralel geliştiriliyordu: dosyası yoksa link verilmez (kırık link olmasın)
@@ -17,8 +19,12 @@ const hasNoter = existsSync(join(process.cwd(), 'src', 'pages', 'noter-ucretleri
 // GÜNCELLEME: Seri No 72 (Aralık 2026 sonu) yayımlanınca BAZ_YIL = 2027 yap, tutarları tebliğden yenile.
 const BAZ_YIL = 2026;
 const UST_SINIR = 29115961.1; // bir kağıttan alınabilecek azami damga vergisi (TL)
-const MIN_BRUT = 33030; // 2026 aylık brüt asgari ücret → damga istisnası 33.030 × binde 7,59 = 250,70 TL
+// Asgari ücret istisnası BAZ_YIL'ın asgari ücretiyle (data/asgari-ucret.json; src/data/vergi.ts): 1 Ocak'ta asgari ücret
+// yeni yıla geçse de sayfa BAZ_YIL tutarlarıyla tutarlı kalır, BAZ_YIL = 2027 yapılınca 2027 asgari ücreti gelir.
+const MIN_BRUT = asgariBrut(BAZ_YIL); // aylık brüt asgari ücret → damga istisnası (2026: 33.030 × binde 7,59 = 250,70 TL)
 const MIN_DAMGA = Math.round(MIN_BRUT * 0.759) / 100;
+const ORNEK_DAMGA = Math.round((50000 - MIN_BRUT) * 0.759) / 100; // brüt 50.000 ₺ maaşın damga vergisi (2026: 128,80)
+const BAZ_DA = ekDa(BAZ_YIL).replace("'", '’'); // 2026’da · 2027’de
 
 const HEDEF = yd.hedefYil;
 const teblig = yd.tebligOrani as number | null;
@@ -32,6 +38,7 @@ const monthName = (key: string) => `${MONTHS[+key.slice(5) - 1]} ${key.slice(0, 
 const sonAyAdi = monthName(yd.sonAy);
 const nf = (n: number, d = 1) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
 const tl = (n: number) => n.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const tl0 = (n: number) => n.toLocaleString('tr-TR', { maximumFractionDigits: 0 });
 const oranLabel = durum === 'tahmin' ? `≈%${nf(oran)}` : `%${nf(oran, 2)}`;
 const yaklasik = uygulanan == null ? '≈' : ''; // CB kararı yayımlanana dek gelecek yıl tutarları tahmindir
 const p27 = uygulanan == null ? `${HEDEF} tahmini` : `${HEDEF}`;
@@ -131,7 +138,7 @@ const oranCumle =
 const faq = [
   {
     q: 'Damga vergisi nasıl hesaplanır?',
-    a: `Damga vergisi iki şekilde alınır. Nispi vergide kağıtta yazılı tutar oranla çarpılır: sözleşme, taahhütname ve kefalette binde 9,48, kira sözleşmesinde binde 1,89, maaş ve ücret ödemelerinde binde 7,59. Örneğin 1.000.000 ₺’lik bir sözleşmenin damga vergisi 1.000.000 × 0,00948 = 9.480 ₺’dir. Maktu vergide ise tutar sabittir: ${BAZ_YIL}’da yıllık gelir vergisi beyannamesi için 1.189,50 ₺, KDV beyannamesi için 791 ₺ ödenir. Bir kağıttan alınabilecek damga vergisi ${BAZ_YIL}’da en fazla ${tl(UST_SINIR)} ₺’dir.`,
+    a: `Damga vergisi iki şekilde alınır. Nispi vergide kağıtta yazılı tutar oranla çarpılır: sözleşme, taahhütname ve kefalette binde 9,48, kira sözleşmesinde binde 1,89, maaş ve ücret ödemelerinde binde 7,59. Örneğin 1.000.000 ₺’lik bir sözleşmenin damga vergisi 1.000.000 × 0,00948 = 9.480 ₺’dir. Maktu vergide ise tutar sabittir: ${BAZ_YIL}${BAZ_DA} yıllık gelir vergisi beyannamesi için 1.189,50 ₺, KDV beyannamesi için 791 ₺ ödenir. Bir kağıttan alınabilecek damga vergisi ${BAZ_YIL}${BAZ_DA} en fazla ${tl(UST_SINIR)} ₺’dir.`,
   },
   {
     q: 'Kira sözleşmesi damga vergisi ne kadar, kim öder?',
@@ -139,7 +146,7 @@ const faq = [
   },
   {
     q: 'Maaştan ne kadar damga vergisi kesilir?',
-    a: `Maaş, ücret, ikramiye ve tazminat gibi ödemelerde damga vergisi binde 7,59’dur ve işveren tarafından bordrodan kesilir. 2022’den beri brüt ücretin asgari ücrete isabet eden kısmı istisnadır; ${BAZ_YIL}’da bu istisna aylık ${tl(MIN_DAMGA)} ₺’dir (33.030 × 0,00759). Örneğin brüt 50.000 ₺ maaştan (50.000 − 33.030) × 0,00759 = 128,80 ₺ damga vergisi kesilir; asgari ücretliden hiç kesilmez.`,
+    a: `Maaş, ücret, ikramiye ve tazminat gibi ödemelerde damga vergisi binde 7,59’dur ve işveren tarafından bordrodan kesilir. 2022’den beri brüt ücretin asgari ücrete isabet eden kısmı istisnadır; ${BAZ_YIL}${BAZ_DA} bu istisna aylık ${tl(MIN_DAMGA)} ₺’dir (${tl0(MIN_BRUT)} × 0,00759). Örneğin brüt 50.000 ₺ maaştan (50.000 − ${tl0(MIN_BRUT)}) × 0,00759 = ${tl(ORNEK_DAMGA)} ₺ damga vergisi kesilir; asgari ücretliden hiç kesilmez.`,
   },
   {
     q: `${HEDEF}’de damga vergisi ne kadar artacak?`,
@@ -366,8 +373,8 @@ const breadcrumbs = [
       <p>
         Maaş, ücret, ikramiye, harcırah ve tazminat gibi hizmet karşılığı ödemelerde oran <strong>binde 7,59</strong>’dur;
         vergiyi işveren bordrodan keser. 2022’den beri brüt ücretin asgari ücrete isabet eden kısmı istisnadır:
-        {BAZ_YIL}’da bu istisna aylık <strong>{tl(MIN_DAMGA)} ₺</strong> (brüt asgari ücret 33.030 ₺ × binde 7,59).
-        Brüt 50.000 ₺ maaştan (50.000 − 33.030) × 0,00759 = <strong>128,80 ₺</strong> damga vergisi kesilir. Tüm
+        {BAZ_YIL}{BAZ_DA} bu istisna aylık <strong>{tl(MIN_DAMGA)} ₺</strong> (brüt asgari ücret {tl0(MIN_BRUT)} ₺ × binde 7,59).
+        Brüt 50.000 ₺ maaştan (50.000 − {tl0(MIN_BRUT)}) × 0,00759 = <strong>{tl(ORNEK_DAMGA)} ₺</strong> damga vergisi kesilir. Tüm
         kesintilerle net maaşınız için → <a href="/net-maas-hesaplama/">net maaş hesaplama</a>.
       </p>
 
