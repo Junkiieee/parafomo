@@ -1,6 +1,6 @@
 {
  "_aciklama": "Günlük altın fiyat arşivi (scripts/altin-gecmis.py). gunler[YYYY-MM-DD] = o günün son gerçek kotasyonu (TSİ saat), fiyat[tür] = [alış, satış]; ons USD, diğerleri TL. Yalnız finans.truncgil.com kotasyonu; Yahoo ile ölçeklenmiş yedek değerler arşive girmez.",
  "gunler": {
-  "2026-11-19": {"saat":"17:30","fiyat":{"gram-altin":[6021.27,6022.31],"gram-has-altin":[5991.16,5992.19],"ceyrek-altin":[9984.0,10092.0],"yarim-altin":[19968.0,20148.0],"tam-altin":[39814.0,40203.0],"ata-altin":[40898.0,41250.0],"cumhuriyet-altini":[40898.0,41250.0],"22-ayar-bilezik":[5572.07,5769.01],"18-ayar-altin":[4216.0,4935.0],"14-ayar-altin":[3340.2,4503.04],"ons":[3710.96,3711.6]}}
+  "2026-11-19": {"saat":"19:30","fiyat":{"gram-altin":[5968.28,5969.24],"gram-has-altin":[5938.44,5939.39],"ceyrek-altin":[9895.0,10025.0],"yarim-altin":[19789.0,20014.0],"tam-altin":[39457.0,39935.0],"ata-altin":[40531.0,40975.0],"cumhuriyet-altini":[40531.0,40975.0],"22-ayar-bilezik":[5521.86,5730.16],"18-ayar-altin":[4180.0,4900.0],"14-ayar-altin":[3309.3,4476.17],"ons":[3678.27,3678.86]}}
  }
 }
