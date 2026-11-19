@@ -39,7 +39,7 @@ TCMB'nin "Mevduat Faiz Oranları" istatistiğinde (EVDS serileri TP.TRY.MT01–M
 Bu tabloyu okurken iki tuzağa dikkat:
 
 1. **TCMB bileşik, banka basit faiz yazar.** TCMB oranları yıllık bileşik (efektif) yayımlar; bankalar ise "yıllık %37" gibi basit faiz ilan eder. 3 aylık vadede %42,47 bileşik oran, basit faize çevrildiğinde ~%37,0'dir. Bankanın ilanını TCMB'nin bileşik oranıyla doğrudan kıyaslarsan teklifi olduğundan kötü sanırsın.
-2. **En yüksek basit oran en uzun vadede görünür, ama bu "en kârlı" demek değil.** 1 yıllık vadede bileşikleştirme olmadığı için basit ve bileşik oran aynıdır. 3 aylık mevduatı yıl boyu çevirmek (faizi anaparaya ekleyerek) kısa vadeli faizin yüksekliği sayesinde benzer ya da daha yüksek yıllık getiri sağlayabilir; ama faiz düşerse bir sonraki vadede oran da düşer.
+2. **En yüksek basit oran en uzun vadede görünür, ama bu "en kârlı" demek değil.** 1 yıllık vadede bileşikleştirme olmadığı için basit ve bileşik oran aynıdır. 3 aylık mevduatı yıl boyu çevirmek (faizi anaparaya ekleyerek; etkisini [bileşik faiz hesaplama](/bilesik-faiz-hesaplama) aracıyla görebilirsin) kısa vadeli faizin yüksekliği sayesinde benzer ya da daha yüksek yıllık getiri sağlayabilir; ama faiz düşerse bir sonraki vadede oran da düşer.
 
 ## Son 1 yılda mevduat faizi nasıl değişti?
 
@@ -48,21 +48,21 @@ Piyasanın büyük kısmı **3 aya kadar vadede** toplandığı için bu vadeyi 
 | Dönem (hafta) | 3 aya kadar (yıllık bileşik) | Basit karşılığı | Ne oldu? |
 |---|---|---|---|
 | 7 Kasım 2025 | %48,10 | ~%41,3 | Bir yıl önceki başlangıç |
-| 26 Aralık 2025 | %45,73 | ~%39,6 | Yıl sonuna doğru gerileme |
+| 26 Aralık 2025 | %45,73 | ~%39,5 | Yıl sonuna doğru gerileme |
 | 23 Ocak 2026 | %45,09 | ~%39,0 | TCMB 22 Ocak'ta politika faizini %38'den %37'ye indirdi |
 | 27 Şubat 2026 | %44,38 | ~%38,5 | Yılın ilk dip bölgesi |
 | 19 Haziran 2026 | %49,50 | ~%42,3 | Son bir yılın **en yüksek** seviyesi |
 | 14 Ağustos 2026 | %47,40 | ~%40,8 | Yaz boyunca yüksek seyir |
-| 28 Ağustos 2026 | %44,79 | ~%38,8 | Tek haftada ~2,6 puanlık düşüş |
+| 28 Ağustos 2026 | %44,79 | ~%38,8 | Tek haftada ~2,4 puanlık düşüş |
 | 30 Ekim 2026 | %42,23 | ~%36,8 | TCMB 22 Ekim'de faizi %37'den %36'ya indirdi |
 | 6 Kasım 2026 | %42,47 | ~%37,0 | Son veri |
 
 Bu seriden çıkan dersler:
 
 1. **Faiz değişmeden de mevduat oranı değişebilir.** TCMB Mart'tan Eylül'e kadar politika faizini %37'de sabit tuttu; buna rağmen 3 aylık mevduat ortalaması Şubat sonundaki %44,38'den Haziran'da %49,50'ye çıktı, sonra geri indi. Bankalar mevduat oranını kendi fonlama ihtiyacına ve TL mevduat payına göre de ayarlıyor.
-2. **Ağustos sonundan beri yön aşağı.** 21 Ağustos'tan 28 Ağustos'a ortalama tek haftada %47,14'ten %44,79'a düştü ve o tarihten bu yana neredeyse her hafta geriledi. 22 Ekim'deki 100 baz puanlık indirim bu eğilimi teyit etti.
+2. **Ağustos sonundan beri yön aşağı.** 21 Ağustos'tan 28 Ağustos'a ortalama tek haftada %47,14'ten %44,79'a düştü ve o tarihten bu yana, arada küçük haftalık yükselişler olsa da, genel eğilim aşağı yönlü. 22 Ekim'deki 100 baz puanlık indirim bu eğilimi teyit etti.
 3. **Bir yılda ~5,6 puan kayıp.** Kasım 2025'te %48,10 olan 3 aylık ortalama bugün %42,47. Aynı dönemde [ihtiyaç kredisi faizi](/blog/ihtiyac-kredisi-faiz-oranlari-2026-son-1-yil) yalnızca ~1,8 puan geriledi; yani bankalar mevduata ödediği faizi, krediden aldığı faizden daha hızlı düşürdü.
-4. **Uzun vadeli seri gürültülü.** "1 yıl ve daha uzun" vadede hacim çok düşük olduğu için ortalama haftadan haftaya %23 ile %43 arasında sıçrayabiliyor; bu seriyi tek başına yorumlamamak gerekir.
+4. **Uzun vadeli seri gürültülü.** "1 yıl ve daha uzun" vadede hacim çok düşük olduğu için ortalama haftadan haftaya birkaç puan birden sıçrayabiliyor; bu seriyi tek başına yorumlamamak gerekir.
 
 Politika faizinin mevduata nasıl geçtiğini [TCMB faiz kararı paranı nasıl etkiler](/blog/tcmb-faiz-karari-nasil-etkiler) yazısında anlattık. Bir sonraki karar 10 Aralık 2026'da; tarihleri [TCMB faiz takvimi](/tcmb-faiz-takvimi) sayfasından takip edebilirsin.
 
