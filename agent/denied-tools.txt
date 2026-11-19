@@ -1,0 +1,50 @@
+# Sabah rutini (agent/sabah.sh) — YASAK kurallar (claude --disallowedTools ...).
+# Yasak, agent/allowed-tools.txt'deki izinden ÖNCE gelir: `Bash(git *)`, `Bash(python3 *)` geniş kalsa da
+# aşağıdakiler başsız koşuda reddedilir. Denetim 2026-11-18 (panel-ajan-6): ajan root olarak trend başlıkları /
+# web içeriği gibi yabancı metin okuyor; bu liste bir istem enjeksiyonunun en zararlı adımlarını keser.
+# 2026-11-18 sabah koşusunun 94 komutunun hiçbiri bu kalıplara uymuyordu (yayın: bash scripts/deploy-push.sh;
+# deploy-push.sh'ın kendi git push'u alt süreçtir, bu kurallardan etkilenmez).
+
+# git: geçmişi/dalı bozan ya da onaysız yayınlayan komutlar
+Bash(git push*)
+Bash(git reset --hard*)
+Bash(git clean*)
+Bash(git switch*)
+Bash(git checkout -b*)
+Bash(git checkout -B*)
+Bash(git branch -D*)
+Bash(git rebase*)
+Bash(git config*)
+Bash(git filter-branch*)
+Bash(git update-ref*)
+Bash(git stash drop*)
+Bash(git stash clear*)
+Bash(git stash pop*)
+
+# paket kurulumu (istem: "harici paket kurma yok"; Astro 7 geçişi yalnız etkileşimli oturumda)
+Bash(npx astro add*)
+Bash(python3 -m pip*)
+Bash(/root/.venvs/parafomo/bin/python -m pip*)
+Bash(/root/.venvs/parafomo-api/bin/python -m pip*)
+
+# sırlar: anahtar/token dosyaları okunmaz (değerleri repoya ya da web isteğine sızmasın)
+Read(//root/.config/**)
+Read(//root/parafomo/.env)
+Read(//root/parafomo/.env.*)
+Read(//root/parafomo/backend/.env)
+Read(//root/.claude/.credentials.json)
+Read(//root/.ssh/**)
+Bash(cat /root/.config/*)
+Bash(cat /root/parafomo/.env*)
+Bash(cat .env*)
+Bash(cat backend/.env*)
+
+# /root/parafomo-data çalışma dizini (--add-dir): yayın kilidi ve onay dosyaları elle değiştirilmez
+# (PUBLISH_PAUSED: yayın yalnız kuyruk.sh ONAYLI_YAYIN ile; onay/: kuyruk.py komutlarıyla; oto.json: Kaan kararı)
+Edit(//root/parafomo-data/PUBLISH_PAUSED)
+Write(//root/parafomo-data/PUBLISH_PAUSED)
+Bash(mv /root/parafomo-data/PUBLISH_PAUSED*)
+Edit(//root/parafomo-data/onay/**)
+Write(//root/parafomo-data/onay/**)
+Edit(//root/parafomo-data/portfolio.db)
+Write(//root/parafomo-data/portfolio.db)

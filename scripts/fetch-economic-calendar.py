@@ -2,17 +2,17 @@
 """
 ParaFOMO — Ekonomik takvim toplayıcı.
 
-Her gün TEK bir dış sorgu yapar (Investing.com ekonomik takvim — Türkiye + küresel
-makro), bunu Türkiye'ye özgü sabit olaylarla (TCMB faiz kararları) birleştirir.
+Her gün TEK bir dış sorgu yapar (ForexFactory haftalık XML — küresel makro; Investing.com
+yalnız INVESTING=1 ile, 2026-07'den beri 403 verdiği için varsayılan kapalı), bunu Türkiye'ye özgü sabit olaylarla (TCMB faiz kararları) birleştirir.
 Sonucu kalıcı bir depoda biriktirir (data/economic-calendar.json) ve içerik
 üreticisinin okuyacağı insan/LLM-dostu bir özet yazar (docs/economic-calendar.md).
 
 Kaynaklar:
-  1) Investing.com (BİRİNCİL) — Türkiye (TÜFE, işsizlik, PMI, dış ticaret, faiz)
+  1) Investing.com (INVESTING=1 ile; 2026-07'den beri 403) — Türkiye (TÜFE, işsizlik, PMI, dış ticaret, faiz)
      + küresel majörler (Fed, ECB, ABD enflasyon/istihdam). Tek POST sorgusu.
   2) TCMB sabit PPK takvimi (data/tr-fixed-events.json) — her zaman birleştirilir
      (resmi, güvenilir; faiz kararı için otorite).
-  3) YEDEK (yalnız Investing çekilemezse): ForexFactory haftalık XML (küresel) +
+  3) VARSAYILAN (Investing kapalı/çekilemezse): ForexFactory haftalık XML (küresel) +
      TÜİK enflasyon kuralı (~ayın 3'ü).
 
 Tasarım: yalnızca standart kütüphane. Ağ hatasında çökmez — mevcut depoyu korur.
@@ -223,10 +223,14 @@ def tuik_inflation_events(today):
         d = date(y, m, 3)
         while d.weekday() >= 5:
             d += timedelta(days=1)
+        hook = "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı."
+        if m in (1, 7):  # Aralık / Haziran verisi: Ocak / Temmuz emekli ve memur zammı o gün kesinleşir
+            zam = "Ocak" if m == 1 else "Temmuz"
+            hook = (f"{zam} emekli ve memur zammı bu veriyle kesinleşir — yılın en çok aranan günlerinden: "
+                    "/emekli-zammi-hesaplama, /memur-zammi-hesaplama sonuç kutuları + açıklama kartı/Short hazır olsun.")
         out.append({
             "date": d.isoformat(), "time": "10:00", "region": "TR", "impact": "High",
-            "title": "TÜİK enflasyon (TÜFE) verisi", "source": "tuik-rule",
-            "hook": "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı.",
+            "title": "TÜİK enflasyon (TÜFE) verisi", "source": "tuik-rule", "hook": hook,
         })
         m += 1
         if m > 12:
@@ -268,13 +272,19 @@ def main():
     fetched = []
     source_label = ""
     fetch_ok = True
-    try:
-        fetched = fetch_investing(today)
-        source_label = "investing"
-        print(f"[+] Investing.com: {len(fetched)} olay (TR + küresel, filtreli)")
-    except Exception as exc:
+    # Investing.com 2026-07-14'ten beri her gün HTTP 403 veriyor (bot koruması): her koşuda log'a "[!]" düşüp gerçek
+    # hataları gömüyordu. Varsayılan KAPALI; yeniden denemek için INVESTING=1 ile çalıştır.
+    if os.environ.get("INVESTING") == "1":
+        try:
+            fetched = fetch_investing(today)
+            source_label = "investing"
+            print(f"[+] Investing.com: {len(fetched)} olay (TR + küresel, filtreli)")
+        except Exception as exc:
+            print(f"[!] Investing çekilemedi ({exc}); ForexFactory + TÜİK kuralına düşülüyor")
+    else:
+        print("[i] Investing.com kapalı (2026-07'den beri 403; denemek için INVESTING=1) → ForexFactory + TÜİK kuralı")
+    if source_label != "investing":
         fetch_ok = False
-        print(f"[!] Investing çekilemedi ({exc}); ForexFactory + TÜİK kuralına düşülüyor")
         try:
             fetched += fetch_forexfactory()
             print(f"    [yedek] ForexFactory: {len(fetched)} küresel olay")

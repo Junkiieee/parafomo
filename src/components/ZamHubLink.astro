@@ -1,0 +1,19 @@
+---
+// Zam kümesinden /2027-zam-hesaplama/ merkez sayfasına metin içi link (denetim 2026-11-19, seo-1).
+// Neden: merkez sayfa Google'a bilinmiyordu; kümenin tık alan sayfaları (evde bakım, engelli, memur, asgari ücret,
+// en düşük emekli, bayram ikramiyesi) ona hiç link vermiyordu. Görünüm sade bir cümle; reklam/CTA kutusu değil.
+const {
+  giris = 'Emekli, memur, asgari ücret ve kira artışını birlikte görmek için',
+  anchor = 'tüm Ocak 2027 zamlarını tek hesapta gör',
+} = Astro.props;
+---
+<p class="zam-hub-link">{giris} <a href="/2027-zam-hesaplama/">{anchor}</a>.</p>
+
+<style>
+  .zam-hub-link {
+    margin: 1.4rem 0 0;
+    font-size: var(--step-0);
+    color: var(--text-soft);
+  }
+  .zam-hub-link a { font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+</style>

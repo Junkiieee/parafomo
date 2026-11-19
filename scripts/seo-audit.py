@@ -29,7 +29,8 @@ IDX = os.path.join(ROOT, "data", "learning", "seo-index.json")
 SITE = "https://parafomo.com"
 GSC_SITE = "sc-domain:parafomo.com"
 SKIP_PREFIX = ("/social/", "/og/", "/_astro/")
-TODAY = dt.date.today()
+# test için değiştirilebilir (yıl geçişi provası: SEO_AUDIT_TODAY=2027-01-10)
+TODAY = dt.date.fromisoformat(os.environ["SEO_AUDIT_TODAY"]) if os.environ.get("SEO_AUDIT_TODAY") else dt.date.today()
 
 SEV_ORDER = {"KRİTİK": 0, "UYARI": 1, "BİLGİ": 2}
 CODES = {  # kod → (önem, açıklama, nasıl düzeltilir)
@@ -57,6 +58,8 @@ CODES = {  # kod → (önem, açıklama, nasıl düzeltilir)
     "og_missing_file": ("UYARI", "og:image dosyası dist'te yok", "og-images.py ile üret"),
     "not_indexed": ("UYARI", "14+ gündür yayında ama Google indekslememiş", "iç link ver, içeriği güçlendir, IndexNow/sitemap"),
     "year_stale": ("UYARI", "title'daki yıl eskimek üzere/eskidi", "yeni yılı title + içerikte güncelle"),
+    "tahmin_stale": ("UYARI", "title 'tahmin' diyor ama dönemi başladı (rakam kesinleşti)", "kesin rakamı yaz, 'tahmin'i kaldır ya da sonraki döneme geç"),
+    "rehber_missing": ("UYARI", "araç sayfasının elle seçilmiş rehberi (tools.ts REHBER) artık yok", "silinen/yönlendirilen yazının yerine var olan bir rehber yaz"),
     "slash_link": ("BİLGİ", "sonu '/' olmayan iç link (301 adımı)", "href'i '/' ile bitir"),
     "img_no_alt": ("BİLGİ", "alt niteliği hiç olmayan görsel", "anlamlı alt ekle (dekoratifse alt=\"\")"),
     "thin": ("BİLGİ", "ince içerik (<250 kelime)", "SSS/tablo/açıklama ekle"),
@@ -114,6 +117,32 @@ class Page(HTMLParser):
             self._buf.append(d)
         elif not self._skip:
             self.text.append(d)
+
+
+AY_NO = {"ocak": 1, "temmuz": 7}
+# "Ocak 2027 Tahmini", "2027 Tahmini", "Tahmini %10,75 … Ocak 2027": tahminin bağlı olduğu dönem. Yalnız Ocak/Temmuz
+# (zam dönemleri) ve yalın yıl (yıllık tutar) sayılır; "Kasım 2026 enflasyon tahmini" gibi aylık veri tahmininin
+# verisi ay bitince açıklanır, dönemin başlaması onu bayatlatmaz → bakılmaz.
+DONEM_RE = re.compile(r"(?:\b(Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)\s+)?\b(20\d\d)\b", re.I)
+TAHMIN_GRACE = 7  # gün: Ocak zammı ~5 Ocak'ta kesinleşir; sayfaların ilk haftada kesin rakama geçmesi beklenir
+
+
+def gecmis_tahmin(title, today=None):
+    """Title'da dönemi (+7 gün) başlamış bir 'tahmin' varsa o dönemi ('Ocak 2027') döndürür, yoksa None."""
+    today = today or TODAY
+    for m in re.finditer(r"tahmin", title, re.I):
+        once = list(DONEM_RE.finditer(title[max(0, m.start() - 30):m.start()]))
+        sonra = DONEM_RE.search(title[m.end():m.end() + 20])
+        d = once[-1] if once else sonra
+        if not d:
+            continue
+        ay = (d.group(1) or "").lower().replace("i̇", "i")
+        if ay and ay not in AY_NO:
+            continue
+        bas = dt.date(int(d.group(2)), AY_NO.get(ay, 1), 1)
+        if today >= bas + dt.timedelta(days=TAHMIN_GRACE):
+            return d.group(0)
+    return None
 
 
 def page_path(f):
@@ -231,11 +260,16 @@ def static_audit():
                 titles.setdefault(d["title"], []).append(path)
             if d["desc"]:
                 descs.setdefault(d["desc"], []).append(path)
-            # yıl bayatlığı: Aralık-Ocak'ta title yalnız eski yılı taşıyorsa
+            # yıl bayatlığı: Aralık'ta title yalnız bu yılı, Ocak-Şubat'ta yalnız geçmiş yılları taşıyorsa
             ys = set(re.findall(r"\b(20\d\d)\b", d["title"]))
-            if ys and (TODAY.month == 12 and str(TODAY.year) in ys and str(TODAY.year + 1) not in ys
-                       or TODAY.month <= 2 and str(TODAY.year - 1) in ys and str(TODAY.year) not in ys):
+            yi = {int(y) for y in ys}
+            if yi and (TODAY.month == 12 and TODAY.year in yi and TODAY.year + 1 not in yi
+                       or TODAY.month <= 2 and max(yi) < TODAY.year):
                 add("year_stale", path, "title yılları: " + ", ".join(sorted(ys)))
+            # İki yıllı title'lar ("Kıdem … 2026 ve Ocak 2027 Tavan Tahmini") yukarıdakine hiç takılmıyordu (seo-5).
+            tp = gecmis_tahmin(d["title"])
+            if tp:
+                add("tahmin_stale", path, f"'{tp}' tahmini — dönem başladı")
         elif path in sm:
             add("sitemap_noindex", path)
         for raw in d["jsonld"]:
@@ -274,7 +308,25 @@ def static_audit():
         if len(ps) > 1:
             for pth in ps:
                 add("dup_desc", pth, f"{len(ps)} sayfa")
+    for tool, slug in rehber_missing():
+        issues.append({"code": "rehber_missing", "sev": CODES["rehber_missing"][0], "path": tool, "detail": f"/blog/{slug}/ yok"})
     return pages, issues
+
+
+def rehber_missing():
+    """src/data/tools.ts REHBER: araç sayfalarının elle seçilmiş "Konuyu öğren" yazıları. Yazı silinip worker'da
+    yönlendirilince liste sessizce kısalıyordu (2026-11-19: /faiz-hesaplama/ hiç rehber göstermiyordu)."""
+    try:
+        src = open(os.path.join(ROOT, "src", "data", "tools.ts"), encoding="utf-8").read()
+        blog = os.path.join(ROOT, "src", "content", "blog")
+        mevcut = {f.rsplit(".", 1)[0] for f in os.listdir(blog) if f.endswith((".md", ".mdx"))}
+    except OSError:
+        return []
+    m = re.search(r"const REHBER[^=]*=\s*\{(.*?)\n\};", src, re.S)
+    out = []
+    for tool, lst in re.findall(r"'(/[^']+/)':\s*\[([^\]]*)\]", m.group(1) if m else ""):
+        out += [(tool, slug) for slug in re.findall(r"'([^']+)'", lst) if slug not in mevcut]
+    return out
 
 
 def google_layer(pages, issues, budget, ages):

@@ -1,0 +1,11 @@
+{
+ "_aciklama": "Gelir vergisi tarifesi (GVK md.103) — vergi-dilimi, gelir-vergisi, net-maas, deger-artis-kazanci sayfalarının TEK kaynağı (src/data/vergi.ts). Her yıl 31 Aralık'ta (mükerrer Resmî Gazete) Gelir Vergisi Genel Tebliği ile yenilenir: tarifeler'e yeni yılı EKLE (eskiyi silme) ve yil'i yeni yıla çek. Dilim: [üst sınır ₺ | null = son dilim, oran %]. ucret = ücret gelirleri; diger = ücret dışı (kira, serbest meslek, ticari kazanç, değer artışı). yil = yürürlükteki tarife (net maaş bunu kullanır). Metinleri bir yıl için elle yazılmış sayfalar (vergi dilimi, gelir vergisi, değer artışı: METIN_YILI) metinleri güncellenene dek KENDİ yıllarının tarifesiyle tutarlı kalır; build uyarır, sabah raporunda yıl devri bekçisi ⚑ yazar.",
+ "yil": 2026,
+ "tarifeler": {
+  "2026": {
+   "kaynak": "332 Seri No'lu Gelir Vergisi Genel Tebliği, RG 31.12.2025 (5. mükerrer) — Yöntem YMM, TÜRMOB, Alomaliye özetleriyle doğrulandı 2026-10-11",
+   "ucret": [[190000, 15], [400000, 20], [1500000, 27], [5300000, 35], [null, 40]],
+   "diger": [[190000, 15], [400000, 20], [1000000, 27], [5300000, 35], [null, 40]]
+  }
+ }
+}

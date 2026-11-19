@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ZamAlarmi from '../components/ZamAlarmi.astro';
+import ZamHubLink from '../components/ZamHubLink.astro';
 import Newsletter from '../components/Newsletter.astro';
+import { ZAM_SEZONU } from '../data/zam-sezonu';
 import em from '../../data/emekli-memur.json';
 import au from '../../data/asgari-ucret.json';
 import sa from '../../data/sosyal-aylik-2026.json';
@@ -287,6 +289,7 @@ const AYLIK = Object.fromEntries(TURLER.map(({ key }) => [key, { simdi: tahminMo
       </p>
     </section>
 
+    <ZamHubLink giris="Engelli ve 65 yaş aylığının yanında emekli, memur, asgari ücret ve kira zamlarını da görmek için" />
     <ZamAlarmi />
     <section class="table-block" id="gelir-sarti">
       <h2>Gelir şartını kontrol et: bu aylığı alabilir misiniz?</h2>
@@ -505,7 +508,8 @@ const AYLIK = Object.fromEntries(TURLER.map(({ key }) => [key, { simdi: tahminMo
       {faq.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
     </section>
 
-    <Newsletter />
+    {/* Zam sezonunda tek e-posta sorusu yukarıdaki zam alarmı (src/data/zam-sezonu.ts) */}
+    {!ZAM_SEZONU && <Newsletter />}
   </div>
 
   <script is:inline define:vars={{ AYLIK, SINIR, YENI_KESIN: yeniKesin }}>

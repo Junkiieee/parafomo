@@ -168,8 +168,8 @@ const dataset = {
           </label>
         </form>
 
-        <div class="calc-results" aria-live="polite">
-          <div class="result-main">
+        <div class="calc-results">
+          <div class="result-main" aria-live="polite" aria-atomic="true">
             <span class="result-label">ÖTV tutarı</span>
             <span class="result-value" id="out-otv">—</span>
           </div>
@@ -347,7 +347,7 @@ const dataset = {
     .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; line-height: 1.4; }
     .calc-inputs input, .calc-inputs select {
       font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text);
-      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm);
       background: var(--bg); width: 100%; min-height: 2.75rem;
     }
     .calc-inputs select { font-size: 0.95rem; }

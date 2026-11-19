@@ -3,13 +3,13 @@
 # Duraklat:   crontab -l > /root/crontab-yedek-$(date +%F).txt && crontab -r
 #
 # İlke: LLM kullanan işler farklı 5 saatlik pencerelere yayılır (Claude Pro kotası);
-# ajan 03:00'te tek başına çalışır, blog motoru onun kilidini bekler. Video YAYINI ve
+# sabah rutini (agent/sabah.sh) 04:37'de tek başına çalışır, blog motoru onun kilidini bekler. Video YAYINI ve
 # kartlar LLM'siz (hazır senaryo / şablon yedekli) — kota dolsa da akış sürer.
 # Tüm LLM çağrıları scripts/lib/llm.py kapısından geçer (kota/oturum durumu: logs/llm-status.json).
 
 # --- Gece: LLM hazırlık + ajan ---
 # KAPALI 2026-10-31 (Kaan: eski video hatları denendi, olmadı; yerine onaylı kuyruk): 30 0 * * * /root/parafomo/scripts/viral-daily.sh --prepare >> /root/parafomo/logs/viral.log 2>&1
-# DURDU (Kaan 2026-10-31: yeni düzen 1 hafta otursun, ~7 Kasım'da açılacak): 0 3 * * * /root/parafomo/agent/run.sh auto >> /root/parafomo/logs/agent.log 2>&1
+# EMEKLİ 2026-11-18: ajan v2 (agent/run.sh, 03:00) — 10-31'den beri kapalıydı; günlük tek Claude koşusu agent/sabah.sh (04:37, aşağıda).
 30 4 * * * /root/parafomo/scripts/maintenance.sh >> /root/parafomo/logs/maintenance.log 2>&1
 
 # --- Sabah: blog (ajanın konu kuyruğundan) + blog→Short hazırlığı + gündem ---

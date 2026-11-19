@@ -6,8 +6,9 @@ shorts-build-v4.py'nin ürettiği public/social/short-<slug>.json metasını oku
 videoyu YouTube'a yükler. OAuth refresh-token ~/.config/parafomo/youtube_oauth.json'da.
 
 Kullanım:
-  python3 scripts/youtube-upload.py <slug> [--privacy unlisted|private|public]
+  python3 scripts/youtube-upload.py <slug> [--privacy unlisted|private|public] [--force] [--dry]
 Çıktı: yüklenen videonun URL'si (+ meta json'a video_id yazılır).
+  meta'da video_id varsa yüklemez (çift yükleme koruması; --force ile yeniden yükler). --dry: açıklamayı yazdırır.
 """
 import os
 import sys
@@ -29,64 +30,17 @@ def site_url_for(slug):
     return "https://parafomo.com/"
 
 
-# Konu → İLGİLİ ARAÇ SAYFASI eşlemesi (huni iyileştirme). Blog olmayan viral Short'un
-# funnel linki jenerik ana sayfa yerine konuya uygun interaktif araca gider → izleyici
-# değerli bir sayfaya iner (jenerik ana sayfadan daha iyi landing). Retention'ı ve hashtag
-# arama bloğunu ETKİLEMEZ — ayrı funnel/UTM yüzeyi.
-_TOOL_MAP = [
-    # Önce özgül konular (ilk eşleşen kazanır). Yollar '/' ile biter: site kanonik URL'i (301 zinciri yok).
-    ("kdv", "/kdv-hesaplama/"),
-    ("doğum yardım", "/dogum-yardimi/"), ("vergi borcu", "/vergi-borcu-sorgulama/"), ("gecikme zammı", "/vergi-borcu-sorgulama/"),
-    ("evde bakım", "/evde-bakim-maasi/"), ("engelli", "/engelli-maasi/"), ("65 yaş", "/engelli-maasi/"),
-    ("emekli", "/emekli-zammi-hesaplama/"), ("memur", "/memur-zammi-hesaplama/"),
-    ("bayram ikramiye", "/bayram-ikramiyesi/"),
-    ("mtv", "/mtv-hesaplama/"), ("motorlu taşıt", "/mtv-hesaplama/"),
-    ("emlak vergisi", "/emlak-vergisi-hesaplama/"), ("tapu", "/tapu-harci-hesaplama/"),
-    ("yeniden değerleme", "/yeniden-degerleme-orani/"), ("zam oranı", "/yeniden-degerleme-orani/"),
-    ("pasaport", "/pasaport-ehliyet-harci/"), ("ehliyet", "/pasaport-ehliyet-harci/"), ("harç", "/pasaport-ehliyet-harci/"),
-    ("trafik ceza", "/trafik-cezalari-hesaplama/"), ("muayene", "/arac-muayene-ucreti/"),
-    ("damga vergisi", "/damga-vergisi-hesaplama/"), ("noter", "/noter-ucretleri/"),
-    ("gelir vergisi", "/gelir-vergisi-hesaplama/"), ("vergi dilim", "/vergi-dilimi-hesaplama/"),
-    ("konut kredi", "/konut-kredisi-hesaplama/"), ("ev kredi", "/konut-kredisi-hesaplama/"),
-    ("ihtiyaç kredi", "/ihtiyac-kredisi-hesaplama/"), ("taşıt kredi", "/tasit-kredisi-hesaplama/"),
-    ("araç kredi", "/tasit-kredisi-hesaplama/"),
-    ("bilezik", "/altin-fiyatlari/22-ayar-bilezik/"), ("çeyrek", "/altin-fiyatlari/ceyrek-altin/"),
-    ("cumhuriyet altın", "/altin-fiyatlari/cumhuriyet-altini/"), ("altın kaç gram", "/altin-kac-gram/"),
-    ("altın", "/altin-hesaplama/"), ("altin", "/altin-hesaplama/"), ("gram", "/altin-hesaplama/"),
-    ("gümüş", "/gumus-getiri/"), ("gumus", "/gumus-getiri/"),
-    ("asgari", "/asgari-ucret-hesaplama/"),
-    ("işsizlik", "/issizlik-maasi-hesaplama/"), ("issizlik", "/issizlik-maasi-hesaplama/"),
-    ("işsizlik ödeneği", "/issizlik-maasi-hesaplama/"), ("işten çıkar", "/issizlik-maasi-hesaplama/"),
-    ("ihbar", "/ihbar-tazminati-hesaplama/"), ("yıllık izin", "/yillik-izin-hesaplama/"),
-    ("net maaş", "/net-maas-hesaplama/"), ("net maas", "/net-maas-hesaplama/"),
-    ("maaş", "/net-maas-hesaplama/"), ("maas", "/net-maas-hesaplama/"),
-    ("kıdem", "/kidem-tazminati-hesaplama/"), ("kidem", "/kidem-tazminati-hesaplama/"),
-    ("tazminat", "/kidem-tazminati-hesaplama/"),
-    ("kira", "/kira-artis-orani-hesaplama/"),
-    ("kredi", "/kredi-hesaplama/"), ("taksit", "/kredi-hesaplama/"),
-    ("bileşik", "/bilesik-faiz-hesaplama/"), ("bilesik", "/bilesik-faiz-hesaplama/"),
-    ("mevduat", "/mevduat-faizi-hesaplama/"),
-    ("enflasyon", "/enflasyon-hesaplama/"), ("tüfe", "/enflasyon-hesaplama/"), ("tufe", "/enflasyon-hesaplama/"),
-    ("eriyor", "/enflasyon-hesaplama/"), ("alım gücü", "/enflasyon-hesaplama/"),
-    ("tcmb", "/tcmb-faiz-takvimi/"),
-    ("fed", "/fed-faiz-takvimi/"), ("fomc", "/fed-faiz-takvimi/"),
-    ("halka arz", "/halka-arz/"), ("ipo", "/halka-arz/"),
-    ("dolar", "/dolar-getiri/"), ("euro", "/euro-getiri/"), ("bitcoin", "/bitcoin-getiri/"),
-    ("borsa", "/bist-getiri/"), ("bist", "/bist-getiri/"),
-]
+# Konu → İLGİLİ ARAÇ SAYFASI eşlemesi ve sayfa-var kontrolü artık scripts/lib/funnel.py'de (tek kaynak: YouTube açıklaması,
+# sabit yorum, FB ve IG aynı kuralla doğrular). Adlar geriye uyum için burada da duruyor.
+sys.path.insert(0, os.path.join(ROOT, "scripts", "lib"))
+import funnel  # noqa: E402
+
+_TOOL_MAP = funnel._TOOL_MAP
 
 
 def tool_url_for(slug, title=""):
-    """Blog olmayan Short için konuya en uygun araç sayfası URL'i (yoksa araç merkezi).
-    Sayfa dosyası henüz yoksa (yeni araç geliştiriliyor) o eşleşme atlanır → açıklamada 404 link olmaz."""
-    hay = f"{slug} {title}".lower()
-    pages = os.path.join(os.path.dirname(BLOG_DIR), "..", "pages")
-    for kw, path in _TOOL_MAP:
-        if kw in hay:
-            first = path.strip("/").split("/")[0]  # dinamik rotalar (altin-fiyatlari/[tur]) için ilk parça yeterli
-            if os.path.exists(os.path.join(pages, f"{first}.astro")) or os.path.isdir(os.path.join(pages, first)):
-                return f"https://parafomo.com{path}"
-    return "https://parafomo.com/hesaplama-araclari/"
+    """Blog olmayan Short için konuya en uygun araç sayfası URL'i (yoksa araç merkezi)."""
+    return funnel.tool_url_for(slug, title, ROOT)
 
 
 def with_utm(url):
@@ -139,17 +93,20 @@ def topic_hashtags(slug, title=""):
 
 def with_funnel(description, slug, title="", link=""):
     """Açıklamaya siteye yönlendiren altbilgi + abone CTA + konu hashtag'leri ekle (huni).
-    link: senaryonun açık huni hedefi (olay sonucu → /kira-artis-orani-hesaplama/ gibi) — varsa öncelikli."""
-    if link:
-        base = link if link.startswith("http") else "https://parafomo.com" + ("/" + link.lstrip("/"))
-    else:
-        base = site_url_for(slug)
-    is_article = "parafomo.com/blog/" in base
-    # Blog değilse: jenerik ana sayfa yerine konuya uygun interaktif araç sayfası (daha iyi landing + huni).
-    if not is_article and not link:
-        base = tool_url_for(slug, title)
+    link: senaryonun açık huni hedefi (olay sonucu → /kira-artis-orani-hesaplama/ gibi) — sitede AÇILIYORSA öncelikli;
+    açılmıyorsa (2026-11-18: #41 '/asgari-ucret/' 404) blog yazısı ya da konu aracı. Açıklama metnindeki geçersiz
+    parafomo.com/… adresleri de aynı hedefe çevrilir."""
+    base, tur = funnel.huni_url(slug, title, link, ROOT)
+    if link and tur == "arac":
+        print(f"[huni] UYARI: link sitede açılmıyor, atlandı: {link} → {base}")
+    description, degisen = funnel.linkleri_duzelt(description or "", base, ROOT)
+    if degisen:
+        print(f"[huni] UYARI: açıklamadaki geçersiz adres düzeltildi: {', '.join(degisen)} → {base}")
+    is_article = tur == "blog"
     url = with_utm(base)
-    is_tool = "/hesaplama" in base or "-takvimi" in base or "/halka-arz" in base
+    # "hesaplama" (eskiden "/hesaplama"): /kira-artis-orani-hesaplama/ gibi araçlar "altın/dolar/borsa analizleri" diye
+    # anılıyordu; yalnız /hesaplama-araclari/ eşleşiyordu.
+    is_tool = "hesaplama" in base or "-takvimi" in base or "/halka-arz" in base
     if is_article:
         lead = "📖 Konunun tam rehberi (ücretsiz):"
     elif is_tool:
@@ -216,22 +173,33 @@ def main():
     ap.add_argument("slug")
     ap.add_argument("--privacy", default="unlisted",
                     choices=["public", "unlisted", "private"])
+    ap.add_argument("--force", action="store_true", help="meta'da video_id olsa da yeniden yükle")
+    ap.add_argument("--dry", action="store_true", help="yükleme yok: başlık + açıklamayı yazdır")
     args = ap.parse_args()
 
     meta_path = os.path.join(OUT_DIR, f"short-{args.slug}.json")
     if not os.path.exists(meta_path):
         print(f"HATA: meta yok: {meta_path} (önce shorts-build-v4.py çalıştır)"); return 1
     meta = json.load(open(meta_path, encoding="utf-8"))
+    # ÇİFT YÜKLEME KORUMASI (denetim sosyal-2, 2026-11-18): yükleme sonrası bir adım (IG/FB) zaman aşımına uğrayıp
+    # kuyruk yeniden denerse aynı video ikinci kez yüklenmesin. kuyruk.py / viral-daily.sh mevcut video_id ile sürer.
+    if meta.get("video_id") and not args.force:
+        print(f"[i] zaten yüklü: {meta['video_id']} {meta.get('youtube_url', '')} — yeniden yüklemek için --force")
+        return 0
     video = meta["file"]
     if not os.path.exists(video):
         print(f"HATA: video yok: {video}"); return 1
 
+    desc = with_funnel(meta["description"], args.slug, meta.get("title", ""), meta.get("link", ""))
+    if args.dry:
+        print(f"[dry] başlık: {meta['title'][:100]}\n[dry] açıklama:\n{desc}")
+        return 0
     from googleapiclient.http import MediaFileUpload
     yt = get_service()
     body = {
         "snippet": {
             "title": meta["title"][:100],
-            "description": with_funnel(meta["description"], args.slug, meta.get("title", ""), meta.get("link", "")),
+            "description": desc,
             "tags": meta.get("tags", []),
             "categoryId": CATEGORY_EDUCATION,
             "defaultLanguage": "tr",
@@ -256,9 +224,11 @@ def main():
     print(f"[+] YÜKLENDI: {url}")
     # Kapak karesini açıkça ayarla (keşfedilebilirlik — grid/arama/abonelik yüzeyleri).
     set_shorts_thumbnail(yt, vid, video)
-    meta["video_id"] = vid
-    meta["youtube_url"] = url
-    json.dump(meta, open(meta_path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    # taze oku + yalnız kendi alanlarımızı yaz (yükleme sürerken başka betiğin yazdığı alanlar ezilmesin)
+    cur = json.load(open(meta_path, encoding="utf-8"))
+    cur["video_id"] = vid
+    cur["youtube_url"] = url
+    json.dump(cur, open(meta_path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     return 0
 
 

@@ -22,10 +22,16 @@ from app.mailer import send_email  # noqa: E402
 from app.models import AssetType, PriceAlert, User  # noqa: E402
 from app.prices import get_quote  # noqa: E402
 
+# Uygulama nakit dışı TÜM varlıklarda alarm kurdurur (API her AssetType'ı kabul ediyor). Eksik tür _mail'de
+# KeyError → betik commit'ten ÖNCE çöküyordu: o turda tetiklenen alarmlar her 15 dk'da yeniden mail atıyordu.
 ASSET_NAME = {
     AssetType.BIST: lambda s: s,
     AssetType.GOLD: lambda s: "Gram altın",
     AssetType.SILVER: lambda s: "Gram gümüş",
+    AssetType.USD: lambda s: "Dolar",
+    AssetType.EUR: lambda s: "Euro",
+    AssetType.BTC: lambda s: "Bitcoin",
+    AssetType.ETH: lambda s: "Ethereum",
 }
 
 
@@ -47,7 +53,7 @@ def _is_hit(a: PriceAlert, price: float, change_pct: float | None) -> bool | Non
 
 
 def _mail(a: PriceAlert, user: User, price: float, change_pct: float | None) -> tuple[str, str]:
-    name = ASSET_NAME[a.asset_type](a.symbol)
+    name = ASSET_NAME.get(a.asset_type, lambda s: s)(a.symbol)   # bilinmeyen tür çökertmesin: sembolü yaz
     if a.kind == "day_pct":
         yon = "yükseldi" if a.direction == "above" else "düştü"
         subject = f"🔔 {name} bugün {_pct(abs(change_pct or 0))} {yon} — ParaFOMO"
@@ -108,6 +114,8 @@ def main(dry: bool = False) -> None:
                 else:
                     a.active = False
                 fired += 1
+                if not dry:
+                    db.commit()   # mail gitti → hemen kaydet; sonraki alarmda hata çıkarsa bu mail 15 dk sonra TEKRAR gitmesin
             elif not a.armed and not hit:
                 a.armed = True        # koşul düzeldi → yeniden kurul
                 rearmed += 1

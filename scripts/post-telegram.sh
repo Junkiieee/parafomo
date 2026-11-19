@@ -9,6 +9,16 @@
 
 set -uo pipefail
 
+# KANAL KAPALI (Kaan 2026-11-17: "üç kanal: site, Instagram, YouTube — Telegram/WhatsApp kanallarına gerek yok";
+# denetim sosyal-5): daily-content.sh hâlâ çağırıyor ama varsayılan olarak hiçbir şey gönderilmez.
+# Bilerek açmak: TELEGRAM_ENABLED=1 scripts/post-telegram.sh. Yayın durdurma bayrağı da geçerli.
+if [ "${TELEGRAM_ENABLED:-0}" != 1 ]; then
+  echo "[tg] kanal kapalı (Kaan 2026-11-17) — gönderilmedi (açmak için TELEGRAM_ENABLED=1)"; exit 0
+fi
+if [ -f /root/parafomo-data/PUBLISH_PAUSED ] && [ "${ONAYLI_YAYIN:-}" != 1 ]; then
+  echo "[tg] PUBLISH_PAUSED var — gönderilmedi (yalnız ONAYLI_YAYIN=1 ile)"; exit 0
+fi
+
 REPO="/root/parafomo"
 ENV_FILE="$REPO/.env"
 LOG_FILE="$REPO/docs/daily-log.md"

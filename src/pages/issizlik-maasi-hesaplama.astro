@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
+import { ASGARI_YIL, ASGARI_BRUT } from '../data/vergi';
+import { ekDa } from '../data/ek';
 
 // 2026 işsizlik maaşı (işsizlik ödeneği) hesaplama — resmî parametreler.
 // Kaynak: 4447 s. İşsizlik Sigortası Kanunu md.50-51; İŞKUR 2026 uygulaması.
@@ -11,8 +13,10 @@ import Newsletter from '../components/Newsletter.astro';
 // TABAN (asgari ücretli için): 33.030 × 0,40 = 13.212 ₺.
 // Kesinti: yalnız binde 7,59 damga vergisi (gelir vergisi/SGK YOK).
 // Süre: son 3 yıl prim günü 600-899 → 180 gün · 900-1079 → 240 gün · 1080+ → 300 gün.
-// GÜNCELLEME: Ocak 2027'de yeni asgari ücretle MIN_BRUT'u güncelle (tavan/taban otomatik).
-const MIN_BRUT = 33030.0; // 2026 aylık brüt asgari ücret
+// Asgari ücret data/asgari-ucret.json'dan (asgari-ucret-watch.py 1 Ocak'ta yeni yıla taşır): tavan, taban, tablo ve
+// sayfadaki yıl etiketleri birlikte ilerler — formülde yıla bağlı başka parametre yok (oranlar kanunda sabit).
+const YIL = ASGARI_YIL;
+const MIN_BRUT = ASGARI_BRUT; // aylık brüt asgari ücret (2026: 33.030)
 const ORAN = 0.4; // ödenek oranı %40
 const DAMGA_ORAN = 0.00759; // binde 7,59
 const TAVAN = MIN_BRUT * 0.8; // 26.424 ₺ — aylık brüt üst sınır
@@ -43,16 +47,16 @@ const fmt0 = (n: number) =>
   new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
 
 // Örnek tablo: çeşitli ortalama brüt maaşların aylık net ödeneği
-const ORNEKLER = [MIN_BRUT, 40000, 50000, 66060, 80000, 120000].map((b) => ({ b, ...odenek(b) }));
+const ORNEKLER = [MIN_BRUT, 40000, 50000, 2 * MIN_BRUT, 80000, 120000].map((b) => ({ b, ...odenek(b) }));
 
 const faq = [
   {
-    q: 'İşsizlik maaşı nasıl hesaplanır? (2026)',
-    a: `İşsizlik ödeneği, son dört aydaki prime esas kazançların <strong>günlük ortalama brütünün %40'ı</strong> kadardır. Aylık tutar, ortalama aylık brüt maaşınızın %40'ına denk gelir. 2026'da bu tutar aylık brüt asgari ücretin %80'ini (${fmt0(TAVAN)} ₺) geçemez. Hesaplanan brüt ödenekten yalnızca binde 7,59 damga vergisi kesilir; gelir vergisi veya SGK primi kesilmez.`,
+    q: `İşsizlik maaşı nasıl hesaplanır? (${YIL})`,
+    a: `İşsizlik ödeneği, son dört aydaki prime esas kazançların <strong>günlük ortalama brütünün %40'ı</strong> kadardır. Aylık tutar, ortalama aylık brüt maaşınızın %40'ına denk gelir. ${YIL}${ekDa(YIL)} bu tutar aylık brüt asgari ücretin %80'ini (${fmt0(TAVAN)} ₺) geçemez. Hesaplanan brüt ödenekten yalnızca binde 7,59 damga vergisi kesilir; gelir vergisi veya SGK primi kesilmez.`,
   },
   {
-    q: '2026 işsizlik maaşı en az ve en çok ne kadar?',
-    a: `2026 yılında en düşük (asgari ücretle çalışan için) aylık brüt işsizlik ödeneği ${fmt0(TABAN)} ₺, damga sonrası net ${fmt(TABAN - TABAN * DAMGA_ORAN)} ₺'dir. En yüksek (tavan) aylık brüt ödenek ${fmt0(TAVAN)} ₺, net ${fmt(TAVAN - TAVAN * DAMGA_ORAN)} ₺'dir. Ortalama maaşınız ne kadar yüksek olursa olsun aylık ödenek bu tavanı aşamaz.`,
+    q: `${YIL} işsizlik maaşı en az ve en çok ne kadar?`,
+    a: `${YIL} yılında en düşük (asgari ücretle çalışan için) aylık brüt işsizlik ödeneği ${fmt0(TABAN)} ₺, damga sonrası net ${fmt(TABAN - TABAN * DAMGA_ORAN)} ₺'dir. En yüksek (tavan) aylık brüt ödenek ${fmt0(TAVAN)} ₺, net ${fmt(TAVAN - TAVAN * DAMGA_ORAN)} ₺'dir. Ortalama maaşınız ne kadar yüksek olursa olsun aylık ödenek bu tavanı aşamaz.`,
   },
   {
     q: 'İşsizlik maaşı kaç ay ödenir?',
@@ -75,17 +79,18 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="İşsizlik Maaşı Hesaplama 2026 — İşsizlik Ödeneği Ne Kadar?"
-  description="2026 işsizlik maaşı hesaplama: son 4 ayın ortalama brüt maaşını gir; %40 oran, tavan ve damga vergisiyle aylık net işsizlik ödeneğini ve kaç ay alacağını anında gör."
+  image="/og/issizlik-maasi-hesaplama.png"
+  title={`İşsizlik Maaşı Hesaplama ${YIL} — İşsizlik Ödeneği Ne Kadar?`}
+  description={`${YIL} işsizlik maaşı hesaplama: son 4 ayın ortalama brüt maaşını gir; %40 oran, tavan ve damga vergisiyle aylık net işsizlik ödeneğini ve kaç ay alacağını anında gör.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
 >
   <div class="calc-wrap">
     <header class="calc-head">
       <p class="eyebrow">Hesaplayıcı · Çalışma & Ücret</p>
-      <h1>İşsizlik Maaşı Hesaplama (2026)</h1>
+      <h1>İşsizlik Maaşı Hesaplama ({YIL})</h1>
       <p class="lede">
-        Son 4 ayın <strong>ortalama brüt maaşını</strong> girin; <strong>%40 oran, 2026 tavanı ve
+        Son 4 ayın <strong>ortalama brüt maaşını</strong> girin; <strong>%40 oran, {YIL} tavanı ve
         damga vergisi</strong> ile aylık <strong>net işsizlik ödeneğinizi</strong> ve kaç ay
         alacağınızı anında hesaplayın.
       </p>
@@ -111,8 +116,8 @@ const breadcrumbs = [
         </p>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">Aylık net işsizlik maaşı</span>
           <span class="result-value" id="out-net">₺{fmt(d.net)}</span>
         </div>
@@ -141,14 +146,14 @@ const breadcrumbs = [
     </div>
 
     <p class="disclaimer">
-      Bu araç yalnızca bilgilendirme amaçlıdır; hukuki/mali tavsiye değildir. 2026 resmî formül
+      Bu araç yalnızca bilgilendirme amaçlıdır; hukuki/mali tavsiye değildir. {YIL} resmî formül
       (%40 oran + aylık brüt asgari ücretin %80'i tavan + binde 7,59 damga vergisi) esas alınmıştır.
       Son 4 ayın sabit ortalama brütü varsayılır; gerçek tutar prime esas kazanç, eksik günler ve
       İŞKUR'un değerlendirmesine göre değişebilir.
     </p>
 
     <section class="table-block">
-      <h2>2026 işsizlik maaşı tablosu (aylık, ortalama brüte göre)</h2>
+      <h2>{YIL} işsizlik maaşı tablosu (aylık, ortalama brüte göre)</h2>
       <p class="table-intro">
         Son 4 ayın ortalama brüt maaşına göre aylık net işsizlik ödeneği. Tavan {fmt0(TAVAN)} ₺'yi
         aşan maaşlarda ödenek tavanda sabitlenir.
@@ -195,7 +200,7 @@ const breadcrumbs = [
         İŞKUR tarafından ödenir. Tutar, son dört ayın <em>prime esas günlük brüt kazancının
         ortalamasının %40'ı</em>dır. Aylık karşılığı, ortalama aylık brüt maaşınızın %40'ına denk
         gelir. Ancak yasa bir üst sınır koyar: aylık ödenek, <strong>aylık brüt asgari ücretin
-        %80'ini</strong> ({fmt0(TAVAN)} ₺, 2026) aşamaz. Yüksek maaşlılar bu tavana takılır.
+        %80'ini</strong> ({fmt0(TAVAN)} ₺, {YIL}) aşamaz. Yüksek maaşlılar bu tavana takılır.
       </p>
       <h2>Ödenekten hangi kesinti yapılır?</h2>
       <p>
@@ -278,7 +283,7 @@ const breadcrumbs = [
     .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
     .calc-inputs input, .calc-inputs select {
       font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
-      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm);
       background: var(--bg); width: 100%;
     }
     .calc-inputs input:focus, .calc-inputs select:focus {

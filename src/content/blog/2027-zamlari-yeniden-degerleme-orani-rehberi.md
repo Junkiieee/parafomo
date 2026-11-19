@@ -2,10 +2,10 @@
 # OTOMATİK ÜRETİLİR — bu dosyayı doğrudan düzenleme (bir sonraki veri güncellemesinde ezilmez, uyarı verir).
 # Şablon: content-templates/blog/2027-zamlari-yeniden-degerleme-orani-rehberi.md.j2
 # Üret: python3 scripts/live-posts.py  (veri: data/yeniden-degerleme.json)
-title: "2027 Yeniden Değerleme Oranı %27,83: Neler Ne Kadar Zamlanacak?"
-description: "2027 yeniden değerleme oranı %27,83 olarak kesinleşti (3 Kasım 2026). MTV, harçlar, IMEI, trafik cezası ve emlak vergisi 2027'de ne kadar artacak? Kalem kalem tablo."
+title: "2027 Zam Listesi: MTV, Harç, Pasaport ve Cezalar Ne Kadar Olacak?"
+description: "2027'de neler zamlanıyor? MTV, pasaport, ehliyet, IMEI, trafik cezası, emlak vergisi: kesinleşen %27,83 yeniden değerleme oranıyla kalem kalem tutarlar."
 pubDate: 2026-10-13
-updatedDate: 2026-11-03
+updatedDate: 2026-11-19
 category: "Kişisel Finans"
 tags: ["2027 zamları", "yeniden değerleme oranı 2027", "MTV 2027", "harçlar", "trafik cezaları", "emlak vergisi 2027", "vergi dilimleri"]
 readingTime: 8
@@ -44,7 +44,7 @@ shorts_visuals:
 
 > **Güncelleme (3 Kasım 2026):** TÜİK Ekim 2026 Yİ-ÜFE verisini açıkladı; **2027 yeniden değerleme oranı %27,83** olarak kesinleşti. Aşağıdaki tutarlar bu orana göre güncellendi; canlı hesap için [yeniden değerleme oranı](/yeniden-degerleme-orani/) sayfasına bak.
 
-**2027 zamları** denince akla ilk gelen maaşlar olsa da, 1 Ocak'ta cebinden çıkan paranın büyük kısmını belirleyen tek bir sayı var: **yeniden değerleme oranı**. MTV'den pasaport harcına, trafik cezasından IMEI kayıt ücretine kadar onlarca kalem, her yıl bu oran kadar otomatik artar. Bu rehberde 2027'de neyin, ne kadar zamlanacağını gerçek 2026 tutarları ve güncel Yİ-ÜFE verisiyle hesaplıyoruz.
+**2027 zamları** denince akla ilk gelen maaşlar olsa da, 1 Ocak'ta cebinden çıkan paranın büyük kısmını belirleyen tek bir sayı var: [**2027 yeniden değerleme oranı %27,83**](/yeniden-degerleme-orani/). MTV'den pasaport harcına, trafik cezasından IMEI kayıt ücretine kadar onlarca kalem, her yıl bu oran kadar otomatik artar. Bu rehberde 2027'de neyin, ne kadar zamlanacağını gerçek 2026 tutarları ve güncel Yİ-ÜFE verisiyle hesaplıyoruz.
 
 Kısa cevap: **2027 yeniden değerleme oranı %27,83**. Oran, 3 Kasım'da açıklanan Ekim 2026 Yİ-ÜFE verisiyle hesaben kesinleşti; Hazine ve Maliye Bakanlığı tebliği Kasım sonunda Resmî Gazete'de yayımlanacak. Aşağıdaki tutarlar bu orana göre hesaplandı.
 

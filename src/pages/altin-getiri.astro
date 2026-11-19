@@ -230,6 +230,18 @@ const worstUsd = yearly.length ? yearly.reduce((a, b) => (b.return_usd_pct < a.r
   </section>
 
   <div class="container"><AppCTA app="birikim" campaign="altin-getiri" /></div>
+  <Fragment slot="end">
+<script define:vars={{ built: data.updated }}>
+  async function checkUpdate() {
+    try {
+      const r = await fetch('/altin-getiri.json?_=' + Date.now(), { cache: 'no-store' });
+      const d = await r.json();
+      if (d && d.updated && d.updated !== built) location.reload();
+    } catch { /* yoksay */ }
+  }
+  setInterval(() => { if (document.visibilityState === 'visible') checkUpdate(); }, 300000);
+</script>
+  </Fragment>
 </BaseLayout>
 
 <style>
@@ -283,13 +295,3 @@ const worstUsd = yearly.length ? yearly.reduce((a, b) => (b.return_usd_pct < a.r
   }
 </style>
 
-<script define:vars={{ built: data.updated }}>
-  async function checkUpdate() {
-    try {
-      const r = await fetch('/altin-getiri.json?_=' + Date.now(), { cache: 'no-store' });
-      const d = await r.json();
-      if (d && d.updated && d.updated !== built) location.reload();
-    } catch { /* yoksay */ }
-  }
-  setInterval(() => { if (document.visibilityState === 'visible') checkUpdate(); }, 300000);
-</script>

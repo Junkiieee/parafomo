@@ -11,8 +11,9 @@ import { PERIOD, byMonth, cumKnown, remaining, ASSUME, sskProj } from '../data/z
 
 const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 const known = PERIOD.filter((k) => byMonth.has(k));
-const ilkAy = MONTHS[+known[0].slice(5) - 1];
-const sonAy = MONTHS[+known[known.length - 1].slice(5) - 1];
+// Boş dönemde (PERIOD yeni döneme geçip ilk ay açıklanmadan) known[0] undefined → build çökerdi (bkz. emekli-zammi).
+const ilkAy = known.length ? MONTHS[+known[0].slice(5) - 1] : MONTHS[+PERIOD[0].slice(5) - 1];
+const sonAy = known.length ? MONTHS[+known[known.length - 1].slice(5) - 1] : ilkAy;
 const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
 const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
 const TABAN = em.enDusukEmekliAyligi.tutar;               // 23.552 (Temmuz 2026'dan beri, kanunla)
@@ -67,7 +68,7 @@ const breadcrumbs = [
 const updatedLabel = new Date(tufe.updated + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 
-<BaseLayout title={title} description={description} faq={faq} breadcrumbs={breadcrumbs}>
+<BaseLayout title={title} description={description} image="/og/emekli-refah-payi-seyyanen-zam.png" faq={faq} breadcrumbs={breadcrumbs}>
   <div class="calc-wrap">
     <header class="calc-head">
       <p class="eyebrow">Senaryo hesaplayıcı · Ocak 2027</p>

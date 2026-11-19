@@ -175,16 +175,16 @@ Faiz kararı öncesi ve sonrası borsada tipik davranış kalıpları:
 ## Yatırımcı İçin Yapılacaklar Listesi
 
 **Mevduat sahipleri:**
-- [ ] Vadeli hesabınızın bitiş tarihini kontrol edin; yenileme 10 Eylül'e denk geliyor mu?
-- [ ] Karar öncesinde sabit faizle uzun vade kilitlemek mi, kısala mı gitmek — risk iştahınıza göre karar verin.
-- [ ] Birden fazla bankayı karşılaştırın; kararın ardından faiz listesi değişir.
+- Vadeli hesabınızın bitiş tarihini kontrol edin; yenileme 10 Eylül'e denk geliyor mu?
+- Karar öncesinde sabit faizle uzun vade kilitlemek mi, kısala mı gitmek — risk iştahınıza göre karar verin.
+- Birden fazla bankayı karşılaştırın; kararın ardından faiz listesi değişir.
 
 **Kredi kullanacaklar:**
-- [ ] Konut/araç kredisi planı varsa kararı bekleyin. Beklenti dahilinde indirim gelirse faizler 1-2 hafta içinde güncellenir.
+- Konut/araç kredisi planı varsa kararı bekleyin. Beklenti dahilinde indirim gelirse faizler 1-2 hafta içinde güncellenir.
 
 **Borsa yatırımcıları:**
-- [ ] Karar günü banka hisselerinde volatilite olabilir; stop-loss seviyelerinizi kontrol edin.
-- [ ] PPK metnini okuyun: "Temkinli" → sıkılaşma sinyali; "faiz indirimini sürdürme" → yumuşama sinyali.
+- Karar günü banka hisselerinde volatilite olabilir; stop-loss seviyelerinizi kontrol edin.
+- PPK metnini okuyun: "Temkinli" → sıkılaşma sinyali; "faiz indirimini sürdürme" → yumuşama sinyali.
 
 ---
 

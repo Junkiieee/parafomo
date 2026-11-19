@@ -2,25 +2,21 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import yd from '../../data/yeniden-degerleme.json';
+import { tarifeYili, dilimSatirlari, metinYiliKontrol } from '../data/vergi';
 
-// 2026 gelir vergisi tarifesi — GVK md.103, 332 Seri No'lu GVK Genel Tebliği (RG 31.12.2025).
-// Doğrulandı 2026-10-11 (Yöntem YMM, TÜRMOB, Alomaliye özetleri birbiriyle tutarlı).
-// Ücret ve ücret dışı tarife yalnız 3. dilimin üst sınırında ayrışır (1.500.000 vs 1.000.000).
-// GÜNCELLEME: Ocak 2027'de yeni tebliğle 2027 tarifesini yaz, 2026'yı "geçmiş" yap.
-const UCRET: [number, number][] = [
-  [190000, 0.15],
-  [400000, 0.2],
-  [1500000, 0.27],
-  [5300000, 0.35],
-  [Infinity, 0.4],
-];
-const DIGER: [number, number][] = [
-  [190000, 0.15],
-  [400000, 0.2],
-  [1000000, 0.27],
-  [5300000, 0.35],
-  [Infinity, 0.4],
-];
+// Gelir vergisi tarifesi — GVK md.103; dilimler data/gelir-vergisi-tarife.json'dan (src/data/vergi.ts; 2026: 332 Seri
+// No'lu GVK Genel Tebliği, RG 31.12.2025, doğrulandı 2026-10-11). Ücret ve ücret dışı tarife yalnız 3. dilimin üst
+// sınırında ayrışır (1.500.000 vs 1.000.000). Hesap ve tablolar JSON'dan; SSS/giriş metinleri ve 2027 tahmini bölümü
+// 2026 için elle yazıldı → sayfa METIN_YILI'nın tarifesini kullanır (JSON'a 2027 eklense de metinle tutarlı kalır),
+// yürürlükteki tarife yılı farklıysa build uyarır, yıl devri bekçisi ⚑ yazar.
+// GÜNCELLEME: Ocak 2027'de tebliğle JSON'a 2027'yi ekle, metinleri 2027'ye göre yaz, METIN_YILI = 2027.
+const METIN_YILI = 2026;
+metinYiliKontrol('vergi-dilimi-hesaplama', METIN_YILI);
+const TY = tarifeYili(METIN_YILI);
+const UCRET: [number, number][] = TY.UCRET_DILIM;
+const DIGER: [number, number][] = TY.DIGER_DILIM;
+const SATIR_U = dilimSatirlari(TY.UCRET_JSON);
+const SATIR_D = dilimSatirlari(TY.DIGER_JSON);
 
 function gv(m: number, b: [number, number][]): number {
   let tax = 0;
@@ -61,11 +57,12 @@ const proj = UCRET.slice(0, 4).map(([top], i) => ({
   yd: round1k(top * (1 + ydRate / 100)),
   low: round1k(top * (1 + LOW)),
 }));
-const DIGER3 = 1000000;
+const DIGER3 = DIGER[2][0]; // ücret dışı %27 diliminin üst sınırı (2026: 1.000.000)
 
 const SAMPLES = [150000, 300000, 600000, 1200000, 2500000, 6000000];
 const DEFAULT_M = 600000;
 const d0 = gv(DEFAULT_M, UCRET);
+const D0_UST = (UCRET.find(([top]) => DEFAULT_M <= top) ?? UCRET[UCRET.length - 1])[0]; // varsayılan matrahın dilim sonu
 
 const faq = [
   {
@@ -147,8 +144,8 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
         </p>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">Toplam gelir vergisi (yıllık)</span>
           <span class="result-value" id="out-tax">₺{fmt(d0)}</span>
         </div>
@@ -166,7 +163,7 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
             <span class="split-val" id="out-net">₺{fmt(DEFAULT_M - d0)}</span>
           </div>
         </div>
-        <p class="result-note" id="out-note">Bir üst dilime kalan: ₺{fmt0(1500000 - DEFAULT_M)}</p>
+        <p class="result-note" id="out-note">{D0_UST === Infinity ? 'En üst dilimdesiniz (%40).' : `Bir üst dilime kalan: ₺${fmt0(D0_UST - DEFAULT_M)}`}</p>
       </div>
     </div>
 
@@ -182,11 +179,7 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
       <table class="rate-table">
         <thead><tr><th>Oran</th><th>Ücret gelirleri</th><th>Ücret dışı gelirler</th></tr></thead>
         <tbody>
-          <tr><td>%15</td><td>190.000 ₺'ye kadar</td><td>190.000 ₺'ye kadar</td></tr>
-          <tr><td>%20</td><td>190.001 – 400.000 ₺</td><td>190.001 – 400.000 ₺</td></tr>
-          <tr><td>%27</td><td>400.001 – 1.500.000 ₺</td><td>400.001 – 1.000.000 ₺</td></tr>
-          <tr><td>%35</td><td>1.500.001 – 5.300.000 ₺</td><td>1.000.001 – 5.300.000 ₺</td></tr>
-          <tr><td>%40</td><td>5.300.000 ₺ üzeri</td><td>5.300.000 ₺ üzeri</td></tr>
+          {SATIR_U.map((r, i) => <tr><td>%{r.oran}</td><td>{r.aralik}</td><td>{SATIR_D[i].aralik}</td></tr>)}
         </tbody>
       </table>
       <p class="table-note">
@@ -264,16 +257,15 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
     <Newsletter />
   </div>
 
-  <script is:inline>
+  <script is:inline define:vars={{ TARIFE_U: TY.UCRET_JSON, TARIFE_D: TY.DIGER_JSON }}>
     (function () {
       const $ = (id) => document.getElementById(id);
       const nf = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
       const pf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
-      const T = {
-        ucret: [[190000, 0.15], [400000, 0.2], [1500000, 0.27], [5300000, 0.35], [Infinity, 0.4]],
-        diger: [[190000, 0.15], [400000, 0.2], [1000000, 0.27], [5300000, 0.35], [Infinity, 0.4]],
-      };
+      // data/gelir-vergisi-tarife.json — [üst | null, oran %] → [üst | Infinity, oran]
+      const cevir = (d) => d.map(([ust, oran]) => [ust == null ? Infinity : ust, oran / 100]);
+      const T = { ucret: cevir(TARIFE_U), diger: cevir(TARIFE_D) };
 
       function update() {
         const m = Math.max(0, +$('in-m').value || 0);
@@ -318,7 +310,7 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
     .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
     .calc-inputs input, .calc-inputs select {
       font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
-      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm);
       background: var(--bg); width: 100%;
     }
     .calc-inputs input:focus, .calc-inputs select:focus {

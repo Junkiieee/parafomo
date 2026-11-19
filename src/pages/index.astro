@@ -5,6 +5,8 @@ import { join } from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
 import Newsletter from '../components/Newsletter.astro';
+import ZamAlarmi from '../components/ZamAlarmi.astro';
+import { ZAM_SEZONU } from '../data/zam-sezonu';
 import { CATEGORIES, SITE } from '../site.config';
 import ipoArchive from '../../data/halka-arz-sirketler.json';
 import ipoReturns from '../../data/halka-arz-getiri.json';
@@ -15,7 +17,7 @@ import em from '../../data/emekli-memur.json';
 import altinFiyat from '../../data/altin-fiyat.json';
 import dxyData from '../../data/dxy.json';
 import bistGetiri from '../../data/bist-getiri.json';
-import { cumKnown, remaining, sskProj, memurProj } from '../data/zam2027';
+import { PERIOD, cumKnown, remaining, sskProj, memurProj } from '../data/zam2027';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
@@ -29,7 +31,7 @@ const postCount = posts.length;
 // tarih bekleyenler. Tarih bekleyenler güne göre döner — her şirket sayfası zamanla ana sayfadan link alır.
 type Ipo = { company: string; bist_code: string; slug: string; status: string; start: string | null };
 const ipos = Object.values((ipoArchive as any).items ?? {}) as Ipo[];
-const ipoRet = new Map(((ipoReturns as any).items ?? []).map((r: any) => [r.code, r.return_pct as number]));
+const ipoRet = new Map((((ipoReturns as any).all_items ?? (ipoReturns as any).items) ?? []).map((r: any) => [r.code, r.return_pct as number]));
 const ipoName = (raw: string) => {
   const p = raw.match(/^\((.+?)\)\s*(.*)$/);
   if (p && /\s/.test(p[1].trim())) return p[1].trim();
@@ -70,7 +72,13 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
   { slug: 'yeniden-degerleme-orani', ad: `Yeniden değerleme ${yd.hedefYil}`, deger: `${ydKesin ? '' : '≈'}%${nf1(ydOran, ydKesin ? 2 : 1)}` },
   { slug: 'emekli-zammi-hesaplama', ad: 'Emekli zammı (Ocak)', deger: remaining === 0 ? `%${nf1(cumKnown * 100, 2)}` : `≈%${nf1(sskProj * 100)}` },
   { slug: 'memur-zammi-hesaplama', ad: 'Memur zammı (Ocak)', deger: `${remaining === 0 ? '' : '≈'}%${nf1(memurProj.zam * 100, remaining === 0 ? 2 : 1)}` },
-  { slug: 'asgari-ucret-hesaplama', ad: auYeni ? `Asgari ücret ${auYeni.yil}` : 'Asgari ücret 2027', deger: auYeni ? `₺${Math.round(auNet).toLocaleString('tr-TR')}` : 'Aralık’ta' },
+  // Açıklandıysa yeni yıl; Ekim–Aralık beklenen yıl "Aralık'ta"; diğer aylar yürürlükteki yılın neti (1 Ocak devrinden
+  // sonra sabit "Asgari ücret 2027 · Aralık'ta" yazıyordu — yıl geçişi denetimi)
+  { slug: 'asgari-ucret-hesaplama', ...(auYeni
+      ? { ad: `Asgari ücret ${auYeni.yil}`, deger: `₺${Math.round(auNet).toLocaleString('tr-TR')}` }
+      : new Date().getMonth() >= 9
+        ? { ad: `Asgari ücret ${asgari.guncel.yil + 1}`, deger: 'Aralık’ta' }
+        : { ad: `Asgari ücret ${asgari.guncel.yil}`, deger: `₺${Math.round(auNet).toLocaleString('tr-TR')}` }) },
   { slug: 'mtv-hesaplama', ad: `MTV ${yd.hedefYil}`, deger: 'hesapla' },
   { slug: 'emlak-vergisi-hesaplama', ad: `Emlak vergisi ${yd.hedefYil}`, deger: `${ydKesin ? '' : '≈'}+%${nf1(ydOran)}` },
   { slug: 'kira-artis-orani-hesaplama', ad: `Kira artışı (${(kira as any).guncelAy})`, deger: `%${nf1((kira as any).guncelOran, 2)}` },
@@ -83,7 +91,11 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
   { slug: 'veraset-ve-intikal-vergisi-hesaplama', ad: 'Veraset ve intikal vergisi', deger: 'hesapla' },
   { slug: 'engelli-maasi', ad: 'Engelli maaşı (Ocak)', deger: `≈+%${nf1(memurProj.zam * 100)}` },
   // 2828 s.K. ek md.7: 10.000 gösterge × memur aylık katsayısı → Ocak 2027 = × (1 + memur zammı)
-  { slug: 'evde-bakim-maasi', ad: 'Evde bakım maaşı (Ocak)', deger: `${remaining === 0 ? '' : '≈'}₺${Math.round(10000 * em.memurKatsayi.aylikKatsayi * (1 + memurProj.zam)).toLocaleString('tr-TR')}` },
+  // Ocak tahmini yalnız katsayı dönemi zam modülünün başlangıcıyken (evde-bakim-maasi ile aynı kural); Ocak'ta resmî
+  // katsayı girilince katsayı × (1 + zam) çift zam olurdu (yıl geçişi denetimi) → yürürlükteki tutar.
+  ...(PERIOD[0] === em.donem
+    ? [{ slug: 'evde-bakim-maasi', ad: 'Evde bakım maaşı (Ocak)', deger: `${remaining === 0 ? '' : '≈'}₺${Math.round(10000 * em.memurKatsayi.aylikKatsayi * (1 + memurProj.zam)).toLocaleString('tr-TR')}` }]
+    : [{ slug: 'evde-bakim-maasi', ad: 'Evde bakım maaşı', deger: `₺${Math.round(10000 * em.memurKatsayi.aylikKatsayi).toLocaleString('tr-TR')}` }]),
   { slug: 'gelir-vergisi-hesaplama', ad: 'Gelir vergisi (kira)', deger: 'hesapla' },
 ].filter((z) => hasPage(z.slug));
 ---
@@ -138,6 +150,8 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
         </a>
       ))}
     </div>
+    {/* Zam sezonu: anasayfanın tek e-posta sorusu zam alarmı (bülten kutusu sezon bitince geri gelir; src/data/zam-sezonu.ts) */}
+    {ZAM_SEZONU && <ZamAlarmi />}
   </section>
 
   <!-- FEATURED -->
@@ -395,83 +409,12 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
     </section>
   )}
 
-  <div class="container">
-    <Newsletter />
-  </div>
-</BaseLayout>
-
-<style>
-  .hero { padding: clamp(2.5rem, 6vw, 5rem) 0 2rem; position: relative; }
-  .hero-inner { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 3rem; align-items: center; }
-  .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 0 var(--brand); animation: pulse 2s infinite; }
-  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(43,177,148,0.5); } 70% { box-shadow: 0 0 0 8px rgba(43,177,148,0); } 100% { box-shadow: 0 0 0 0 rgba(43,177,148,0); } }
-  .hero-text h1 { font-size: var(--step-4); margin: 1rem 0 1rem; }
-  .accent { color: var(--brand); }
-  .hero-text .lede { font-size: var(--step-1); max-width: 52ch; line-height: 1.55; }
-  .hero-cta { display: flex; gap: 0.8rem; margin: 1.8rem 0 2rem; flex-wrap: wrap; }
-  .hero-stats { display: flex; gap: 2.2rem; flex-wrap: wrap; padding-top: 1.5rem; border-top: 1px solid var(--border-soft); }
-  .hero-stats strong { display: block; font-family: var(--font-serif); font-size: var(--step-2); color: var(--text); }
-  .hero-stats span { font-size: var(--step--1); }
-
-  .hero-visual { display: flex; justify-content: center; }
-  .ticker-card {
-    width: 100%; max-width: 360px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.4rem;
-    box-shadow: var(--shadow-soft);
-  }
-  .tc-row { display: flex; justify-content: space-between; padding: 0.65rem 0; border-bottom: 1px solid var(--border-soft); font-size: var(--step--1); }
-  .tc-row span:first-child { color: var(--text-soft); }
-  .tc-val { display: flex; align-items: baseline; gap: 0.5rem; }
-  .tc-val b { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--text); }
-  .chg { font-size: var(--step--2); font-weight: 600; font-style: normal; }
-  .chg:empty::before { content: ''; }
-  .up { color: var(--brand); font-weight: 600; }
-  .down { color: var(--danger); font-weight: 600; }
-  .tc-row:last-of-type { border-bottom: none; }
-  .tc-foot { display: flex; justify-content: space-between; font-size: var(--step--2); color: var(--text-muted); margin-top: 0.9rem; padding-top: 0.7rem; border-top: 1px solid var(--border-soft); }
-
-  .section { margin-top: clamp(3rem, 7vw, 5rem); }
-  .section-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.35rem 1rem; margin-bottom: 1.5rem; }
-  .section-head h2 { font-size: var(--step-2); margin: 0; }
-  .muted-link { color: var(--text-muted); font-size: var(--step--1); font-weight: 600; }
-  .muted-link:hover { color: var(--brand); }
-
-  .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.1rem; }
-  .cat-card { padding: 1.4rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
-  .cat-card h3 { font-size: var(--step-1); margin: 0; color: var(--text); }
-  .cat-card p { font-size: var(--step--1); margin: 0; flex: 1; }
-  .cat-go { font-size: var(--step--1); font-weight: 600; color: var(--brand); margin-top: 0.6rem; }
-
-  .ipo-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.8rem; }
-  .ipo-item { display: flex; flex-direction: column; gap: 0.3rem; padding: 0.9rem 1.1rem; color: var(--text); text-decoration: none; }
-  .ipo-item strong { font-size: var(--step--1); line-height: 1.35; }
-  .ipo-meta { display: flex; justify-content: space-between; font-size: var(--step--2); }
-  .ipo-meta .up { color: #16a34a; }
-  .ipo-meta .down { color: #dc2626; }
-  .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.1rem; }
-  .zam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.6rem; }
-  .zam-item { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.75rem 0.95rem; text-decoration: none; }
-  .zam-ad { font-size: var(--step--1); color: var(--text-soft); font-weight: 600; line-height: 1.3; }
-  .zam-deger { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600; color: var(--brand-ink); }
-  .tool-card { padding: 1.2rem 1.4rem 1.4rem; display: flex; align-items: flex-start; gap: 0.9rem; }
-  .tool-icon { font-size: 1.6rem; line-height: 1; flex-shrink: 0; }
-  .tool-card h3 { font-size: var(--step-0); margin: 0 0 0.25rem; color: var(--text); }
-  .tool-card p { font-size: var(--step--2); margin: 0; flex: 1; line-height: 1.5; }
-  .tool-go { font-size: var(--step--1); font-weight: 600; color: var(--brand); margin-top: 0.6rem; display: block; }
-  .tool-card > div { display: flex; flex-direction: column; gap: 0.1rem; flex: 1; }
-
-  .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.4rem; }
-
-  @media (max-width: 900px) {
-    .hero-inner { grid-template-columns: 1fr; }
-    .hero-visual { order: -1; }
-    .ticker-card { max-width: 100%; }
-  }
-</style>
-
+  {!ZAM_SEZONU && (
+    <div class="container">
+      <Newsletter />
+    </div>
+  )}
+  <Fragment slot="end">
 <script>
   const fmt = (n: number, d = 0) =>
     n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
@@ -552,3 +495,78 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
     if (document.visibilityState === 'visible') loadTicker();
   }, 60000);
 </script>
+  </Fragment>
+</BaseLayout>
+
+<style>
+  .hero { padding: clamp(2.5rem, 6vw, 5rem) 0 2rem; position: relative; }
+  .hero-inner { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 3rem; align-items: center; }
+  .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 0 var(--brand); animation: pulse 2s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(43,177,148,0.5); } 70% { box-shadow: 0 0 0 8px rgba(43,177,148,0); } 100% { box-shadow: 0 0 0 0 rgba(43,177,148,0); } }
+  .hero-text h1 { font-size: var(--step-4); margin: 1rem 0 1rem; }
+  .accent { color: var(--brand); }
+  .hero-text .lede { font-size: var(--step-1); max-width: 52ch; line-height: 1.55; }
+  .hero-cta { display: flex; gap: 0.8rem; margin: 1.8rem 0 2rem; flex-wrap: wrap; }
+  .hero-stats { display: flex; gap: 2.2rem; flex-wrap: wrap; padding-top: 1.5rem; border-top: 1px solid var(--border-soft); }
+  .hero-stats strong { display: block; font-family: var(--font-serif); font-size: var(--step-2); color: var(--text); }
+  .hero-stats span { font-size: var(--step--1); }
+
+  .hero-visual { display: flex; justify-content: center; }
+  .ticker-card {
+    width: 100%; max-width: 360px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.4rem;
+    box-shadow: var(--shadow-soft);
+  }
+  .tc-row { display: flex; justify-content: space-between; padding: 0.65rem 0; border-bottom: 1px solid var(--border-soft); font-size: var(--step--1); }
+  .tc-row span:first-child { color: var(--text-soft); }
+  .tc-val { display: flex; align-items: baseline; gap: 0.5rem; }
+  .tc-val b { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--text); }
+  .chg { font-size: var(--step--2); font-weight: 600; font-style: normal; }
+  .chg:empty::before { content: ''; }
+  .up { color: var(--brand); font-weight: 600; }
+  .down { color: var(--danger); font-weight: 600; }
+  .tc-row:last-of-type { border-bottom: none; }
+  .tc-foot { display: flex; justify-content: space-between; font-size: var(--step--2); color: var(--text-muted); margin-top: 0.9rem; padding-top: 0.7rem; border-top: 1px solid var(--border-soft); }
+
+  .section { margin-top: clamp(3rem, 7vw, 5rem); }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.35rem 1rem; margin-bottom: 1.5rem; }
+  .section-head h2 { font-size: var(--step-2); margin: 0; }
+  .muted-link { color: var(--text-muted); font-size: var(--step--1); font-weight: 600; }
+  .muted-link:hover { color: var(--brand); }
+
+  .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.1rem; }
+  .cat-card { padding: 1.4rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .cat-card h3 { font-size: var(--step-1); margin: 0; color: var(--text); }
+  .cat-card p { font-size: var(--step--1); margin: 0; flex: 1; }
+  .cat-go { font-size: var(--step--1); font-weight: 600; color: var(--brand); margin-top: 0.6rem; }
+
+  .ipo-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.8rem; }
+  .ipo-item { display: flex; flex-direction: column; gap: 0.3rem; padding: 0.9rem 1.1rem; color: var(--text); text-decoration: none; }
+  .ipo-item strong { font-size: var(--step--1); line-height: 1.35; }
+  .ipo-meta { display: flex; justify-content: space-between; font-size: var(--step--2); }
+  .ipo-meta .up { color: #16a34a; }
+  .ipo-meta .down { color: #dc2626; }
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.1rem; }
+  .zam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.6rem; }
+  .zam-item { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.75rem 0.95rem; text-decoration: none; }
+  .zam-ad { font-size: var(--step--1); color: var(--text-soft); font-weight: 600; line-height: 1.3; }
+  .zam-deger { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600; color: var(--brand-ink); }
+  .tool-card { padding: 1.2rem 1.4rem 1.4rem; display: flex; align-items: flex-start; gap: 0.9rem; }
+  .tool-icon { font-size: 1.6rem; line-height: 1; flex-shrink: 0; }
+  .tool-card h3 { font-size: var(--step-0); margin: 0 0 0.25rem; color: var(--text); }
+  .tool-card p { font-size: var(--step--2); margin: 0; flex: 1; line-height: 1.5; }
+  .tool-go { font-size: var(--step--1); font-weight: 600; color: var(--brand); margin-top: 0.6rem; display: block; }
+  .tool-card > div { display: flex; flex-direction: column; gap: 0.1rem; flex: 1; }
+
+  .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.4rem; }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { order: -1; }
+    .ticker-card { max-width: 100%; }
+  }
+</style>
+

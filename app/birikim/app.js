@@ -21,6 +21,27 @@ let amount = 5000, years = 5, chartAsset = 'gold';
 function safeGet(k) { try { return localStorage.getItem(k); } catch { return null; } }
 function safeSet(k, v) { try { v === null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} }
 
+/* Türkçe tutar: "5.000" / "7.500" / "2.000,50" → sayı (type=number "5.000"ı 5 sayıyordu) */
+function parseNum(s) {
+  let t = String(s ?? '').trim().replace(/[\s₺]/g, '');
+  const lc = t.lastIndexOf(','), ld = t.lastIndexOf('.');
+  if (lc >= 0 && ld >= 0) t = lc > ld ? t.replace(/\./g, '').replace(',', '.') : t.replace(/,/g, '');
+  else if (lc >= 0) t = t.indexOf(',') !== lc ? t.replace(/,/g, '') : t.replace(',', '.');
+  else if (ld >= 0 && (t.indexOf('.') !== ld || /^[1-9]\d{0,2}\.\d{3}$/.test(t))) t = t.replace(/\./g, '');
+  return /^(\d+\.?\d*|\.\d+)$/.test(t) ? Number(t) : NaN;
+}
+/* "Kas 2021'den", "Kas 2025'ten", "Kas 2026'dan": yılın okunuşuna göre ayrılma eki */
+function abl(ym) {
+  const n = Number(ym.slice(0, 4)) % 100, d = n % 10;
+  return "'" + (d ? ['', 'den', 'den', 'ten', 'ten', 'ten', 'dan', 'den', 'den', 'dan'][d]
+    : ['den', 'dan', 'den', 'dan', 'tan', 'den', 'tan', 'ten', 'den', 'dan'][n / 10]);
+}
+// son ayda bazı seriler henüz yok (ör. ay başında BIST 100) → o seri için en son dolu fiyat
+function lastPrice(k) {
+  for (let i = bench.length - 1; i >= 0; i--) if (bench[i][k] != null) return bench[i][k];
+  return null;
+}
+
 async function load() {
   const [b, t] = await Promise.all([
     fetch('/benchmarks.json').then(r => r.json()),
@@ -58,8 +79,9 @@ function simulate() {
       if (m[a.key] == null) { ok = false; break; }
       units += amount / m[a.key];
     }
-    if (!ok || latest[a.key] == null) return null;
-    const value = units * latest[a.key];
+    const now = latest[a.key] ?? lastPrice(a.key);   // yoksa BIST 100 satırı tümden kayboluyordu
+    if (!ok || now == null) return null;
+    const value = units * now;
     return { ...a, value, pct: (value / invested - 1) * 100 };
   }).filter(Boolean);
 
@@ -85,7 +107,7 @@ function curve(assetKey) {
   let units = 0;
   const pts = [];
   for (let i = 0; i < rows.length; i++) {
-    const price = rows[i][assetKey];
+    const price = rows[i][assetKey] ?? (i === rows.length - 1 ? lastPrice(assetKey) : null);
     if (price == null) return null;
     if (i < rows.length - 1) units += amount / price;   // son ay yalnız değerleme
     pts.push({ t: rows[i].ay, v: units * price, paid: amount * Math.min(i + 1, n) });
@@ -100,11 +122,14 @@ const trAy = ym => {
 
 function render() {
   const el = document.getElementById('results');
+  const status = document.getElementById('sim-status');
   const sim = simulate();
-  if (!sim) { el.innerHTML = '<p class="sim-lead">Bu süre için yeterli veri yok.</p>'; return; }
+  if (!sim) { el.innerHTML = '<p class="sim-lead">Bu süre için yeterli veri yok.</p>'; status.textContent = 'Bu süre için yeterli veri yok.'; return; }
   const best = sim.rows[0];
+  // ekran okuyucuya kısa özet (tüm tablo yerine)
+  status.textContent = `${trAy(sim.start)}${abl(sim.start)} beri ayda ${tl(amount)}: en iyisi ${best.label.toLocaleLowerCase('tr-TR')}, ${tl(best.value)} (${sp(best.pct)}).`;
   el.innerHTML = `
-    <p class="sim-lead"><b>${trAy(sim.start)}</b>'dan beri her ay <b>${tl(amount)}</b> biriktirseydin
+    <p class="sim-lead"><b>${trAy(sim.start)}</b>${abl(sim.start)} beri her ay <b>${tl(amount)}</b> biriktirseydin
     toplam <b>${tl(sim.invested)}</b> yatırmış olacaktın. En iyisi <b>${best.label.toLocaleLowerCase('tr-TR')}</b> olurdu:</p>
     <div class="rows num">
       ${sim.rows.map(r => `
@@ -153,7 +178,7 @@ async function shareCard(sim) {
   c.fillStyle = '#E9F0EE'; c.font = F('700 64px');
   c.fillText(`Ayda ${nf0.format(amount)} ₺, ${years} yıl.`, 80, 260);
   c.fillStyle = '#8DA29D'; c.font = F('500 42px');
-  c.fillText(`${trAy(sim.start)}'dan beri düzenli alsaydın bugün:`, 80, 322);
+  c.fillText(`${trAy(sim.start)}${abl(sim.start)} beri düzenli alsaydın bugün:`, 80, 322);
   let ly = 430;
   const top = sim.rows.slice(0, 5);
   const maxV = top[0].value;
@@ -247,9 +272,13 @@ let amtTimer = 0;
 document.getElementById('amount').addEventListener('input', e => {
   clearTimeout(amtTimer);
   amtTimer = setTimeout(() => {
-    const v = parseFloat(String(e.target.value).replace(',', '.'));
+    const v = parseNum(e.target.value);
     if (v >= 1) { amount = v; render(); }
   }, 350);
+});
+// alandan çıkınca Türkçe biçime getir ("7500" → "7.500"): kullanıcı hangi tutarın hesaplandığını görsün
+document.getElementById('amount').addEventListener('change', e => {
+  e.target.value = amount.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
 });
 if ('serviceWorker' in navigator) { try { navigator.serviceWorker.register('/sw.js'); } catch {} }
 load().then(render).catch(() => {

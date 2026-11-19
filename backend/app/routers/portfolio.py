@@ -1,9 +1,12 @@
 """Portföy uç noktaları: pozisyon ekle/listele/sil + canlı değerleme."""
 from __future__ import annotations
 
+import json
+import pathlib
 from datetime import datetime, timezone
+from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, Response, status
+from fastapi import APIRouter, Depends, HTTPException, Path, Response, status
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
@@ -19,7 +22,7 @@ from ..models import (
     User,
     WatchItem,
 )
-from ..prices import get_price, get_quote, get_usd_try, altin_sembol
+from ..prices import altin_sembol, get_price, get_quote, get_usd_try, is_valid_bist_symbol
 from ..schemas import (
     AlertCreate,
     AlertOut,
@@ -39,8 +42,15 @@ from ..schemas import (
 
 _MAX_ACTIVE_ALERTS = 20
 _MAX_WATCH_ITEMS = 30
+# Kullanıcı başına üst sınırlar: özet her farklı sembol için dış fiyat isteği atar;
+# sınırsız uydurma pozisyon / işlem satırı = kaynakları ve diski yoran DoS.
+_MAX_HOLDINGS = 200
+_MAX_TRANSACTIONS = 10_000
 
 router = APIRouter(prefix="/portfolio", tags=["portfolio"])
+
+# SQLite INTEGER 64 bit: taşan id 500 (OverflowError) yerine 422
+_Id = Annotated[int, Path(ge=1, le=2**63 - 1)]
 
 
 def _normalize_symbol(asset_type: AssetType, symbol: str) -> str:
@@ -52,6 +62,61 @@ def _normalize_symbol(asset_type: AssetType, symbol: str) -> str:
     return asset_type.value.upper()
 
 
+def _new_symbol(asset_type: AssetType, symbol: str) -> str:
+    """Yeni kayıt açan uçlar için: BIST kodu Yahoo URL'sine girer → yalnız harf/rakam.
+    (Satış mevcut pozisyonla eşleşir, eski kayıtlar kilitlenmesin diye orada kontrol yok.)"""
+    sym = _normalize_symbol(asset_type, symbol)
+    if asset_type is AssetType.BIST and not is_valid_bist_symbol(sym):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Geçersiz hisse kodu — listeden seç (ör. THYAO).",
+        )
+    return sym
+
+
+_BIST_LIST = pathlib.Path(__file__).resolve().parents[3] / "public" / "bist-symbols.json"
+_bist_known_cache: frozenset[str] | None = None
+
+
+def _bist_known() -> frozenset[str]:
+    """Uygulamanın önerdiği BIST kodları (public/bist-symbols.json); okunamazsa boş küme."""
+    global _bist_known_cache
+    if _bist_known_cache is None:
+        try:
+            data = json.loads(_BIST_LIST.read_text(encoding="utf-8"))
+            _bist_known_cache = frozenset(str(x.get("c", "")).upper() for x in data if isinstance(x, dict))
+        except (OSError, ValueError, TypeError, AttributeError):
+            _bist_known_cache = frozenset()
+    return _bist_known_cache
+
+
+def _check_bist_exists(asset_type: AssetType, symbol: str) -> None:
+    """Yeni BIST satırı açan uçlar: listede olmayan kodun fiyatı alınabilmeli. Uydurma kodlarla
+    dolu bir hesap her özet çağrısında sunucumuzu Yahoo'ya yüklendirmesin (site verileri de Yahoo'dan)."""
+    if asset_type is AssetType.BIST and symbol not in _bist_known() and get_price(asset_type, symbol) is None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Bu hisse kodunun fiyatı bulunamadı — kodu kontrol et (ör. THYAO) ya da biraz sonra tekrar dene.",
+        )
+
+
+def _count(db: Session, model, user_id: int) -> int:
+    return db.scalar(select(func.count()).select_from(model).where(model.user_id == user_id)) or 0
+
+
+def _check_room(db: Session, user_id: int, new_holding: bool) -> None:
+    if _count(db, Transaction, user_id) >= _MAX_TRANSACTIONS:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"İşlem defteri en fazla {_MAX_TRANSACTIONS} kayıt alır.",
+        )
+    if new_holding and _count(db, Holding, user_id) >= _MAX_HOLDINGS:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Portföy en fazla {_MAX_HOLDINGS} farklı varlık alır.",
+        )
+
+
 @router.post("/holdings", response_model=HoldingOut, status_code=status.HTTP_201_CREATED)
 def add_holding(
     body: HoldingCreate,
@@ -59,7 +124,7 @@ def add_holding(
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> Holding:
-    symbol = _normalize_symbol(body.asset_type, body.symbol)
+    symbol = _new_symbol(body.asset_type, body.symbol)
 
     # Aynı sembolde ikinci alım → ayrı satır AÇMA, mevcut pozisyona BİRLEŞTİR ve
     # adet-ağırlıklı ortalama maliyet hesapla. Kullanıcı "TUPRS 10@100 sonra 5@130"
@@ -71,6 +136,9 @@ def add_holding(
             Holding.symbol == symbol,
         )
     )
+    _check_room(db, user.id, new_holding=existing is None)
+    if existing is None:
+        _check_bist_exists(body.asset_type, symbol)
     if existing is not None:
         total_qty = existing.quantity + body.quantity
         existing.cost_price = round(
@@ -131,7 +199,7 @@ def list_holdings(
 
 @router.patch("/holdings/{holding_id}", response_model=HoldingOut)
 def update_holding(
-    holding_id: int,
+    holding_id: _Id,
     body: HoldingUpdate,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
@@ -142,6 +210,12 @@ def update_holding(
             status_code=status.HTTP_404_NOT_FOUND, detail="Pozisyon bulunamadı."
         )
     fields = body.model_dump(exclude_unset=True)
+    # Açıkça null gelen adet/maliyet NOT NULL kolonda 500'e dönüyordu
+    if any(fields.get(k, 0) is None for k in ("quantity", "cost_price")):
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="Miktar ve birim maliyet boş olamaz.",
+        )
     for key, value in fields.items():
         setattr(holding, key, value)
     db.commit()
@@ -155,7 +229,7 @@ def update_holding(
     response_class=Response,
 )
 def delete_holding(
-    holding_id: int,
+    holding_id: _Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> Response:
@@ -183,13 +257,16 @@ def portfolio_summary(
     valued: list[HoldingValued] = []
     total_cost = 0.0
     total_value = 0.0
+    priced_cost = 0.0  # fiyatı alınan pozisyonların maliyeti (K/Z yalnız bunlarla)
+    unpriced = 0
     total_day_change = 0.0
     total_prev_value = 0.0  # gün içi % için önceki-kapanış değeri toplamı
 
     for h in holdings:
         key = (h.asset_type, h.symbol)
         if key not in quote_cache:
-            quote_cache[key] = get_quote(h.asset_type, h.symbol)
+            # kaynak anlık düştüyse son 24 saatin son fiyatı (sahte −%100 / dip yerine)
+            quote_cache[key] = get_quote(h.asset_type, h.symbol, allow_stale=True)
         quote = quote_cache[key]
         current_price = quote[0] if quote else None
         change_pct = quote[1] if quote else None
@@ -203,6 +280,7 @@ def portfolio_summary(
             profit_loss = current_value - cost_value
             profit_loss_pct = (profit_loss / cost_value * 100) if cost_value else None
             total_value += current_value
+            priced_cost += cost_value
             if change_pct is not None:
                 # önceki kapanış = fiyat / (1 + %/100); gün içi K/Z = güncel - önceki
                 prev_price = current_price / (1 + change_pct / 100) if change_pct != -100 else 0.0
@@ -212,6 +290,7 @@ def portfolio_summary(
                 total_prev_value += prev_value
         else:
             current_value = profit_loss = profit_loss_pct = None
+            unpriced += 1
 
         valued.append(
             HoldingValued(
@@ -233,8 +312,9 @@ def portfolio_summary(
             )
         )
 
-    total_pl = total_value - total_cost
-    total_pl_pct = (total_pl / total_cost * 100) if total_cost else 0.0
+    # Fiyatı alınamayan pozisyonun maliyeti K/Z'ye katılmaz: yoksa kaynak çökünce sahte zarar
+    total_pl = total_value - priced_cost
+    total_pl_pct = (total_pl / priced_cost * 100) if priced_cost else 0.0
     total_day_pct = (
         total_day_change / total_prev_value * 100 if total_prev_value else None
     )
@@ -245,8 +325,8 @@ def portfolio_summary(
     gold_try = gold_q[0] if gold_q else None
 
     # Günün değer fotoğrafı: değer grafiğini besler (gün başına tek satır, tazelenir).
-    # Fiyat kaynakları çöktüyse (total_value=0 ama maliyet var) yanlış dip yazma.
-    if holdings and (total_value > 0 or total_cost == 0):
+    # Bir pozisyonun bile fiyatı yoksa yazma: eksik toplam grafikte yanlış dip olur.
+    if holdings and unpriced == 0:
         today = datetime.now(timezone.utc).date()
         try:
             snap = db.scalar(
@@ -282,6 +362,7 @@ def portfolio_summary(
     ) or 0.0
 
     return PortfolioSummary(
+        unpriced_count=unpriced,
         realized_pl_total=round(realized_total, 2),
         realized_pl_year=round(realized_year, 2),
         usd_try=usd_try,
@@ -345,7 +426,7 @@ def add_alert(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"En fazla {_MAX_ACTIVE_ALERTS} aktif alarm kurabilirsin. Önce birini sil.",
         )
-    symbol = _normalize_symbol(body.asset_type, body.symbol)
+    symbol = _new_symbol(body.asset_type, body.symbol)
     if body.kind == "day_pct" and body.threshold > 95:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -377,7 +458,7 @@ def add_alert(
     response_class=Response,
 )
 def delete_alert(
-    alert_id: int,
+    alert_id: _Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> Response:
@@ -426,7 +507,7 @@ def add_watch(
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> WatchOut:
-    symbol = _normalize_symbol(body.asset_type, body.symbol)
+    symbol = _new_symbol(body.asset_type, body.symbol)
     existing = db.scalar(
         select(WatchItem).where(
             WatchItem.user_id == user.id,
@@ -441,6 +522,7 @@ def add_watch(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail=f"İzleme listesi en fazla {_MAX_WATCH_ITEMS} varlık alır.",
             )
+        _check_bist_exists(body.asset_type, symbol)
         existing = WatchItem(user_id=user.id, asset_type=body.asset_type, symbol=symbol)
         db.add(existing)
         db.commit()
@@ -463,7 +545,7 @@ def add_watch(
     response_class=Response,
 )
 def delete_watch(
-    item_id: int,
+    item_id: _Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> Response:
@@ -515,7 +597,7 @@ def add_goal(
     response_class=Response,
 )
 def delete_goal(
-    goal_id: int,
+    goal_id: _Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> Response:
@@ -555,7 +637,7 @@ def add_transaction(
     pozisyondan düşülür; realize K/Z = (satış − ortalama maliyet) × miktar.
     Pozisyon sıfırlanırsa satır silinir, defter kaydı kalır.
     """
-    symbol = _normalize_symbol(body.asset_type, body.symbol)
+    symbol = (_new_symbol if body.side == "buy" else _normalize_symbol)(body.asset_type, body.symbol)
     holding = db.scalar(
         select(Holding).where(
             Holding.user_id == user.id,
@@ -563,9 +645,11 @@ def add_transaction(
             Holding.symbol == symbol,
         )
     )
+    _check_room(db, user.id, new_holding=body.side == "buy" and holding is None)
 
     if body.side == "buy":
         if holding is None:
+            _check_bist_exists(body.asset_type, symbol)
             holding = Holding(
                 user_id=user.id, asset_type=body.asset_type, symbol=symbol,
                 quantity=body.quantity, cost_price=body.price,

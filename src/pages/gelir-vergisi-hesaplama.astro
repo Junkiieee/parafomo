@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import yd from '../../data/yeniden-degerleme.json';
+import { tarifeYili, dilimSatirlari, metinYiliKontrol } from '../data/vergi';
 
 // Ücret dışı gelirlerin (kira, serbest meslek, ticari kazanç) yıllık beyanname vergisi — 2026 gelirleri,
 // beyan Mart 2027. Tarife: GVK md.103, 332 Seri No'lu GVK Genel Tebliği (RG 31.12.2025) — /vergi-dilimi-hesaplama ile aynı.
@@ -9,18 +10,19 @@ import yd from '../../data/yeniden-degerleme.json';
 // İstisna engeli: ücret tarifesinin 3. dilim tutarı (2026: 1.500.000 ₺) — GVK md.21. Tevkifatlı kira/serbest meslek
 // beyan sınırı: tarifenin 2. dilim tutarı (2026: 400.000 ₺) — GVK md.86/1-c. Götürü gider %15 — GVK md.74.
 // Stopaj: işyeri kirası ve serbest meslek %20 — GVK md.94. Doğrulandı 2026-10-17.
-// GÜNCELLEME: Ocak 2027'de 2027 tarifesini/istisnasını yaz (vergi-dilimi-hesaplama ile birlikte).
-const DIGER: [number, number][] = [
-  [190000, 0.15],
-  [400000, 0.2],
-  [1000000, 0.27],
-  [5300000, 0.35],
-  [Infinity, 0.4],
-];
+// GÜNCELLEME: Ocak 2027'de tarifeyi data/gelir-vergisi-tarife.json'a (src/data/vergi.ts — dilimler, istisna engeli,
+// beyan sınırı ve tablo oradan), konut istisnasını ve 2026 için elle yazılmış metinleri buraya yaz; build uyarır.
+// Sayfa METIN_YILI gelirlerini anlatır (2026 gelirleri, beyan Mart 2027) → o yılın tarifesi; yürürlükteki tarife
+// yılı farklıysa build uyarır (metinleri yeni yıla geçirme zamanı: beyan dönemi bitince).
+const METIN_YILI = 2026;
+metinYiliKontrol('gelir-vergisi-hesaplama', METIN_YILI);
+const TY = tarifeYili(METIN_YILI);
+const DIGER: [number, number][] = TY.DIGER_DILIM;
+const SATIR_D = dilimSatirlari(TY.DIGER_JSON, '’');
 const ISTISNA = 58000;
 const ISTISNA_GECMIS: [number, number][] = [[2024, 33000], [2025, 47000], [2026, 58000]];
-const ISTISNA_ENGEL = 1500000;
-const BEYAN_SINIRI = 400000;
+const ISTISNA_ENGEL = TY.UCRET_JSON[2][0] as number; // ücret tarifesinin 3. dilim tutarı (2026: 1.500.000)
+const BEYAN_SINIRI = TY.DIGER_JSON[1][0] as number; // tarifenin 2. dilim tutarı (2026: 400.000)
 const GOTURU = 0.15;
 const STOPAJ = 0.2;
 
@@ -162,8 +164,8 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
         </label>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label" id="out-label">Hesaplanan gelir vergisi</span>
           <span class="result-value" id="out-tax">₺{fmt(d0)}</span>
         </div>
@@ -206,11 +208,7 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
       <table class="rate-table">
         <thead><tr><th>Oran</th><th>Matrah aralığı</th><th>Dilim sonuna kadar vergi</th></tr></thead>
         <tbody>
-          <tr><td>%15</td><td>190.000 ₺’ye kadar</td><td>₺{fmt0(gv(190000))}</td></tr>
-          <tr><td>%20</td><td>190.001 – 400.000 ₺</td><td>₺{fmt0(gv(400000))}</td></tr>
-          <tr><td>%27</td><td>400.001 – 1.000.000 ₺</td><td>₺{fmt0(gv(1000000))}</td></tr>
-          <tr><td>%35</td><td>1.000.001 – 5.300.000 ₺</td><td>₺{fmt0(gv(5300000))}</td></tr>
-          <tr><td>%40</td><td>5.300.000 ₺ üzeri</td><td>—</td></tr>
+          {SATIR_D.map((r) => <tr><td>%{r.oran}</td><td>{r.aralik}</td><td>{r.ust == null ? '—' : `₺${fmt0(gv(r.ust))}`}</td></tr>)}
         </tbody>
       </table>
       <p class="table-note">
@@ -296,13 +294,13 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
     <Newsletter />
   </div>
 
-  <script is:inline define:vars={{ ISTISNA, ISTISNA_ENGEL, BEYAN_SINIRI, GOTURU, STOPAJ }}>
+  <script is:inline define:vars={{ ISTISNA, ISTISNA_ENGEL, BEYAN_SINIRI, GOTURU, STOPAJ, TARIFE: TY.DIGER_JSON }}>
     (function () {
       const $ = (id) => document.getElementById(id);
       const nf = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
       const pf = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
-      const T = [[190000, 0.15], [400000, 0.2], [1000000, 0.27], [5300000, 0.35], [Infinity, 0.4]];
+      const T = TARIFE.map(([ust, oran]) => [ust == null ? Infinity : ust, oran / 100]); // data/gelir-vergisi-tarife.json
       const LBL = {
         konut: 'Yıllık brüt kira geliri (₺)',
         isyeri: 'Yıllık brüt işyeri kirası (₺, stopaj dahil)',
@@ -396,7 +394,7 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
     .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
     .calc-inputs input, .calc-inputs select {
       font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
-      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm);
       background: var(--bg); width: 100%;
     }
     .calc-inputs input:focus, .calc-inputs select:focus {

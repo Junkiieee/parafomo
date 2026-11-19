@@ -12,10 +12,12 @@ kaynak yoksa güvenli bir varsayılan snapshot yazar.
 
 Kullanım: python3 scripts/altin-fiyat.py   (token harcamaz)
 """
+import http.client
 import json
 import os
 import re
 import sys
+import time
 import urllib.request
 from datetime import datetime, timezone, timedelta
 
@@ -49,10 +51,21 @@ def parse_tr(s):
         return None
 
 
-def fetch():
-    req = urllib.request.Request(API, headers={"User-Agent": "Mozilla/5.0 ParaFOMO"})
-    with urllib.request.urlopen(req, timeout=15) as r:
-        return json.loads(r.read().decode("utf-8", "ignore"))
+def fetch(denemeler=3, bekle=20):
+    """Truncgil today.json. Sabah 06:00 koşusunda ara sıra YARIM JSON dönüyor ("Unterminated string … char 6939",
+    Truncgil dosyayı yeniden yazarken okunuyor); gün içi koşularda hiç olmadı. Bu yüzden Yahoo yedeğine (ölçeklenmiş
+    eski snapshot) düşmeden önce 20 sn arayla 3 kez denenir — en kötü durumda koşuya ~40 sn ekler."""
+    for i in range(1, denemeler + 1):
+        try:
+            req = urllib.request.Request(API, headers={"User-Agent": "Mozilla/5.0 ParaFOMO"})
+            with urllib.request.urlopen(req, timeout=15) as r:
+                return json.loads(r.read().decode("utf-8", "ignore"))
+        except (ValueError, OSError, http.client.HTTPException) as e:   # JSONDecodeError ⊂ ValueError, URLError ⊂ OSError
+            if i >= denemeler:
+                raise
+            print(f"[altin-fiyat] Truncgil denemesi {i}/{denemeler} başarısız ({str(e)[:60]}) → {bekle} sn sonra tekrar",
+                  file=sys.stderr)
+            time.sleep(bekle)
 
 
 def _yahoo_price(symbol):
@@ -82,10 +95,17 @@ def yahoo_fallback():
     if not old_gram:
         return None
     factor = new_gram / old_gram
+    # Ons kalemi DOLAR cinsinden: TL gram oranıyla ölçeklenince her yedek çalışmada USDTRY değişimi kadar kayıyordu
+    # (Truncgil'in son sağlam günündan beri kur ne kadar arttıysa ons o kadar şişkin). Ons doğrudan GC=F ile ölçeklenir.
+    old_ons = next((k.get("satis") for k in kalemler if k.get("key") == "ons"), None)
+    ons_factor = ons_usd / old_ons if old_ons else None
     for k in kalemler:
+        f_k = ons_factor if k.get("key") == "ons" else factor
+        if f_k is None:
+            continue
         for f in ("alis", "satis"):
             if isinstance(k.get(f), (int, float)):
-                k[f] = round(k[f] * factor, 2)
+                k[f] = round(k[f] * f_k, 2)
     old["kalemler"] = kalemler
     old["_kaynak"] = "Yahoo (GC=F×USDTRY) — Truncgil erişilemedi, son snapshot ölçeklendi"
     return old
@@ -101,8 +121,10 @@ def main():
             tr_now = datetime.now(timezone.utc).astimezone(timezone(timedelta(hours=3)))
             fb["guncellenme"] = tr_now.strftime("%Y-%m-%dT%H:%M:%S+03:00")
             fb["guncellemeEtiket"] = tr_now.strftime("%d %B %Y, %H:%M")
-            with open(OUT, "w", encoding="utf-8") as f:
+            tmp = f"{OUT}.{os.getpid()}.tmp"   # atomik yaz: eşzamanlı build yarım JSON okumasın
+            with open(tmp, "w", encoding="utf-8") as f:
                 json.dump(fb, f, ensure_ascii=False, indent=2)
+            os.replace(tmp, OUT)
             print(f"[altin-fiyat] Yahoo fallback ile {len(fb.get('kalemler', []))} kalem tazelendi → {OUT}")
             return 0
         print("[altin-fiyat] fallback yok → mevcut dosya korunuyor", file=sys.stderr)
@@ -137,8 +159,10 @@ def main():
         "guncellemeEtiket": tr_now.strftime("%d %B %Y, %H:%M"),
         "kalemler": items,
     }
-    with open(OUT, "w", encoding="utf-8") as f:
+    tmp = f"{OUT}.{os.getpid()}.tmp"   # atomik yaz: eşzamanlı build yarım JSON okumasın
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
+    os.replace(tmp, OUT)
     print(f"[altin-fiyat] {len(items)} kalem yazıldı → {OUT}")
     return 0
 

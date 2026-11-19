@@ -39,6 +39,15 @@ def main():
     if len(months) < 12 or any(not (-10 < m["aylik"] < 30 and -10 < m["yillik"] < 200) for m in months):
         print(f"[tufe] UYARI: tablo ayıklanamadı ({len(months)} satır) — yazılmadı")
         return 0
+    # "ardışık" yukarıda yazıyordu ama kontrol edilmiyordu: satırı kaçan bir tablo boşluklu seri yazar →
+    # emekli/memur zammı birikimli TÜFE'si o ayı sessizce atlayıp düşük çıkar
+    def _prev_key(k):
+        y, mo = int(k[:4]), int(k[5:])
+        return f"{y - 1}-12" if mo == 1 else f"{y}-{mo - 1:02d}"
+    gaps = [b["ay"] for a, b in zip(months, months[1:]) if b["ay"] != _prev_key(a["ay"])]
+    if gaps:
+        print(f"[tufe] UYARI: seri ardışık değil (boşluk {gaps[:3]} civarı) — yazılmadı")
+        return 0
     old = json.load(open(OUT, encoding="utf-8")) if os.path.exists(OUT) else {}
     if old.get("months") == months:
         print(f"[tufe] değişiklik yok (son ay {months[0]['ay']})")
@@ -53,9 +62,11 @@ def main():
     for k, v in old.items():
         if k not in data and not k.startswith("_"):
             data[k] = v
-    with open(OUT, "w", encoding="utf-8") as f:
+    tmp = f"{OUT}.{os.getpid()}.tmp"   # atomik yaz: eşzamanlı build/iş yarım JSON okumasın
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
         f.write("\n")
+    os.replace(tmp, OUT)
     print(f"[tufe] GÜNCELLENDİ: son ay {months[0]['ay']} yıllık %{months[0]['yillik']} aylık %{months[0]['aylik']}")
     return 0
 

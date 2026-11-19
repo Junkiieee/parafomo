@@ -12,6 +12,26 @@ node_modules/
 .env
 .env.*
 !.env.example
+# 2026-11-18 denetim (repo-6/repo-7): repo herkese açık — anahtar/token/DB dosyaları asla eklenmesin
+*.db
+*.sqlite
+*.sqlite3
+*.pem
+*.key
+*.p12
+client_secret*.json
+*oauth*.json
+token.json
+*_token.json
+*-token.json
+ga-sa*.json
+# Yerel Claude Code izin ayarları (kişisel; 2026-09-30'da eski `git add -A` ile yanlışlıkla girdi).
+# Hâlâ izleniyor: canlı checkout'ta `git rm --cached .claude/settings.local.json` ile çıkarılacak (dosya diskte kalır).
+.claude/settings.local.json
+# Kök dizine düşen demo/kare çıktıları ve demos/ (büyük ikili; demos/ canlıda `git rm -r --cached demos/` ile çıkacak)
+/frame_*.png
+/*.mp4
+/demos/
 
 # logs & os
 *.log
@@ -50,6 +70,8 @@ data/learning/yt-search-terms.json
 # Büyüme Ajanı geçici durum/log (versiyonlanmaz)
 agent/state/
 agent/logs/
+# Sabah rutininin geçici script/kare sayfaları (agent/prompts/sabah.md "KOMUT KURALLARI"; bakım 7 günde siler)
+agent/tmp/
 
 # Kapak WebP varyantları — build sırasında src/integrations/cover-variants.mjs üretir
 public/covers/w/

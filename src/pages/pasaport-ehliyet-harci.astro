@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ekDa } from '../data/ek';
 import Newsletter from '../components/Newsletter.astro';
 import yd from '../../data/yeniden-degerleme.json';
 
@@ -86,7 +87,7 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
 <BaseLayout
   image="/og/pasaport-ehliyet-harci.png"
   title={`Pasaport ve Ehliyet Harcı 2026-${HEDEF}: Güncel Ücretler ve ${HEDEF} Tahmini`}
-  description={`2026 pasaport harcı 10 yıl 13.410,40 TL + 1.351 TL defter; B ehliyet toplam 8.869,60 TL; IMEI 54.258 TL. ${HEDEF}'de ne kadar olacak? Yeniden değerleme tahmini ${oranLabel}.`}
+  description={`2026 pasaport harcı 10 yıl 13.410,40 TL + 1.351 TL defter; B ehliyet toplam 8.869,60 TL; IMEI 54.258 TL. ${HEDEF}${ekDa(HEDEF)} ne kadar olacak? Yeniden değerleme tahmini ${oranLabel}.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
 >
@@ -96,7 +97,7 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
       <p class="eyebrow">Harçlar · {HEDEF} zam sezonu</p>
       <h1>Pasaport ve Ehliyet Harcı 2026: 10 Yıllık Pasaport ₺{tl2(p10)}</h1>
       <p class="lede">
-        Pasaport, ehliyet, IMEI ve kimlik ücretlerinin 2026 tutarları ve {HEDEF}'de
+        Pasaport, ehliyet, IMEI ve kimlik ücretlerinin 2026 tutarları ve {HEDEF}{ekDa(HEDEF)}
         {uygulanan
           ? <>Cumhurbaşkanı kararındaki artış oranıyla ({oranLabel}) ne kadar olacağı.</>
           : <><a href="/yeniden-degerleme-orani/">yeniden değerleme oranıyla</a> ({oranLabel}) ne kadar olacağının tahmini.</>}
@@ -136,8 +137,8 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
         <p class="form-note">2026'daki gibi indirimli artış senaryosu için oranı değiştirin (2026: %18,95). Defter bedeli de aynı oranla tahmin edilir.</p>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">{HEDEF} tahmini toplam (harç + defter)</span>
           <span class="result-value" id="out-new">₺{fmt(p10 * carpan)}</span>
         </div>
@@ -200,7 +201,7 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
     </section>
 
     <section class="prose-block">
-      <h2>{HEDEF}'de harçlar ne kadar artacak?</h2>
+      <h2>{HEDEF}{ekDa(HEDEF)} harçlar ne kadar artacak?</h2>
       <p>
         Harçlar Kanunu'ndaki maktu tutarlar her yıl 1 Ocak'ta, Kasım'da ilan edilen
         <a href="/yeniden-degerleme-orani/">yeniden değerleme oranı</a> kadar artar. {sonAyAdi} verisiyle
@@ -273,7 +274,7 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
     .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
     .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
     .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; }
-    .calc-inputs input, .calc-inputs select { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
+    .calc-inputs input, .calc-inputs select { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; }
     .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
     .form-note { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.45; }
 

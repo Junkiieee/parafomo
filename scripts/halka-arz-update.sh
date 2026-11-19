@@ -28,14 +28,26 @@ python3 "$REPO/scripts/fetch-halka-arz.py" 2>&1 | sed 's/^/  /'
 python3 "$REPO/scripts/ipo-returns.py" 2>&1 | sed 's/^/  /'
 
 # Değişiklik var mı? (hem build verisi hem public kopya)
-if [ -z "$(git status --porcelain data/halka-arz.json data/halka-arz-sirketler.json public/halka-arz.json data/halka-arz-getiri.json public/halka-arz-getiri.json)" ]; then
+FILES=(data/halka-arz.json data/halka-arz-sirketler.json public/halka-arz.json data/halka-arz-getiri.json public/halka-arz-getiri.json)
+DURUM="$(git status --porcelain -- "${FILES[@]}")"
+if [ -z "$DURUM" ]; then
   echo "[i] Değişiklik yok — deploy gerekmiyor."
+  exit 0
+fi
+# Yalnız "updated" zaman damgası değiştiyse geri al, deploy yok. Neden (denetim 2026-11-18, zamanlama-5): 7 günde
+# 28 commit'in 17'si yalnız bu satırdı (gece/hafta sonu BIST kapalıyken) → her biri build + deploy, 79 /halka-arz/
+# sayfasında sahte dateModified/lastmod (src/data/page-lastmod.mjs: "lastmod yalnız veri gerçekten değişince").
+# Desen satıra sabit: küçültülmüş tek satır JSON'da gerçek değişiklik yutulmaz. Yeni (izlenmeyen) dosya varsa atlanmaz.
+TS_ONLY='^ *"updated": *"[^"]*",? *$'
+if ! printf '%s\n' "$DURUM" | grep -q '^??' && git diff --quiet -I"$TS_ONLY" -- "${FILES[@]}"; then
+  git_locked git checkout -q -- "${FILES[@]}"
+  echo "[i] Değişiklik yok (yalnız zaman damgası) — deploy gerekmiyor."
   exit 0
 fi
 
 echo "[*] Değişiklik bulundu, commit + push"
 git_add_commit "halka-arz: takvim verisi güncellendi (otomatik $(date -u '+%F %H:%M UTC'))" \
-  data/halka-arz.json data/halka-arz-sirketler.json public/halka-arz.json data/halka-arz-getiri.json public/halka-arz-getiri.json \
+  "${FILES[@]}" \
   || { echo "commit başarısız"; exit 0; }
 if git_push_retry main; then
   echo "[+] Push başarılı — Cloudflare deploy tetiklendi"

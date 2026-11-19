@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { BU_YIL } from '../data/yil';
 import Newsletter from '../components/Newsletter.astro';
 
 // Emeklilik (yaşlılık aylığı) şartları — kaynaklar (mevzuat.gov.tr 5510 güncel metni, 2026-10-23 okundu):
@@ -76,7 +77,7 @@ const ORNEKLER = [
 
 const faq = [
   {
-    q: 'Ne zaman emekli olurum? (2026)',
+    q: `Ne zaman emekli olurum? (${BU_YIL})`,
     a: 'Emeklilik tarihi üç bilgiye bağlıdır: ilk sigorta giriş tarihi, prim gün sayısı ve yaş. 8 Eylül 1999 ve öncesinde sigortalı olanlarda (EYT) yaş şartı yoktur; 9 Eylül 1999–30 Nisan 2008 arası girenlerde kadın 58, erkek 60 yaş ve 7000 gün; 1 Mayıs 2008 ve sonrası girenlerde kadın 58, erkek 60 yaş ve SSK’lılar için 7200, Bağ-Kur ve memurlar için 9000 gün gerekir. Kesin tarihi e-Devlet’teki hizmet dökümünüz belirler.',
   },
   {
@@ -110,15 +111,15 @@ const breadcrumbs = [
 
 <BaseLayout
   image="/og/emeklilik-hesaplama.png"
-  title="Emeklilik Hesaplama 2026: Ne Zaman Emekli Olurum? Yaş ve Prim"
-  description="Emeklilik hesaplama 2026: ilk sigorta girişi, prim günü ve doğum tarihine göre emeklilik yaşı ve tarihi. EYT, 1999-2008 ve 2008 sonrası; SSK 7200, Bağ-Kur 9000 gün."
+  title={`Emeklilik Hesaplama ${BU_YIL}: Ne Zaman Emekli Olurum? Yaş ve Prim`}
+  description={`Emeklilik hesaplama ${BU_YIL}: ilk sigorta girişi, prim günü ve doğum tarihine göre emeklilik yaşı ve tarihi. EYT, 1999-2008 ve 2008 sonrası; SSK 7200, Bağ-Kur 9000 gün.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
 >
   <div class="calc-wrap">
     <header class="calc-head">
       <p class="eyebrow">Hesaplayıcı · Emeklilik</p>
-      <h1>Emeklilik Hesaplama: Ne Zaman Emekli Olurum? (2026)</h1>
+      <h1>Emeklilik Hesaplama: Ne Zaman Emekli Olurum? ({BU_YIL})</h1>
       <p class="lede">
         İlk sigorta giriş tarihiniz, prim gün sayınız ve doğum tarihinizi girin; <strong>emeklilik yaşınızı,
         gereken prim gününü ve tahmini emeklilik tarihinizi</strong> görün. Kurallar 5510 sayılı Kanun’un

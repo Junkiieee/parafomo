@@ -16,13 +16,28 @@ onaysız yayınlanmaz. `rapor` stillerin karnesini çıkarır (deney aşama 1: e
   kuyruk.py begen <no> [--not "…"]   kuyruk.py begenme <no> [--not "…"]   (Kaan'ın yayın sonrası oyu)
   kuyruk.py yayinla --no <no>         (olay videosu: onaydan hemen sonra)
   kuyruk.py rapor [--json]
+
+Sağlamlık (2026-11-18 denetimi: video-3/4/5/10, sosyal-1/2):
+  - Kuyruk dosyasına her yazma kısa bir kilitle (kuyruk.json.lock) ve TAZE okumayla yapılır (guncelle/degistir);
+    kilit render/yükleme boyunca TUTULMAZ → panel onayı ya da olay videosu eklemesi gece üretimi/yayın sırasında ezilmez.
+  - yayinla: YouTube yüklemesi biter bitmez durum "yayinlandi" kaydedilir (IG/FB adımı çökse de video ikinci kez
+    yüklenmez); IG/FB/ekstra adımları zaman aşımında hattı durdurmaz; çıktı + hata loga basılır; IG/FB/YouTube
+    hatası öğeye (ig_hata/fb_hata) yazılır ve agent/notify.py ile Kaan'a e-posta gider (anahtar başına günde bir).
+  - uret: şeritte ≥ MAX_BEKLEYEN yayın bekleyen video varsa o şerit için yeni video üretilmez (6-7 günlük üretim→yayın
+    gecikmesi birikmesin; LLM kotası boşa yanmasın); konu, videonun YAYIN haftasına göre seçilir.
+  - Alt süreçler kendi süreç grubunda çalışır; zaman aşımında bütün grup (render çocukları dahil) sonlandırılır.
+  KUYRUK_DATA ortam değişkeni kuyruk klasörünü değiştirir (test için; varsayılan /root/parafomo-data/onay).
 """
-import argparse, datetime as dt, json, os, subprocess, sys
+import argparse, contextlib, datetime as dt, fcntl, json, os, signal, subprocess, sys, time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 PY = sys.executable
-DATA = "/root/parafomo-data/onay"
+DATA = os.environ.get("KUYRUK_DATA") or "/root/parafomo-data/onay"
 KUYRUK = os.path.join(DATA, "kuyruk.json")
+KILIT = KUYRUK + ".lock"
+NOTIFY = os.path.join(ROOT, "agent", "notify.py")
+MAX_BEKLEYEN = 2       # şerit başına yayın bekleyen video tavanı (video-3): bu kadar varsa o şerit için üretim yok
+OLGUN_GUN = 1          # karnelerde sayılan en düşük yaş (gün). Ölçüm: ~17. saatteki izlenme ≈ son izlenme (video-4)
 TAKVIM = os.path.join(ROOT, "agent", "plan", "icerik-takvimi.json")
 SCEN_DIR = os.path.join(ROOT, "public", "social", "scenarios")
 # Deney (Kaan 2026-10-31 "diğer tekniklerle de deneyelim"): asıl eksen TEKNİK, renk/doku ikincil.
@@ -37,7 +52,9 @@ SCEN_DIR = os.path.join(ROOT, "public", "social", "scenarios")
 #   iso = mevcut izometrik · hf = HyperFrames (HeyGen, Apache-2.0) · dossier = Lemo halftone-dossier · news = Lemo
 #   news-package (Lemo-Opuscar, MIT). Ses/senaryo/konu aynı hat; yalnız görüntü motoru değişir (scripts/anim/engines/).
 TEKNIKLER = ["iso", "hf", "dossier", "news"]
-YARISMA = {"bas": "2026-11-07", "bit": "2026-12-07"}   # kazanan: ≥7 günlük videolarda ortanca YouTube izlenmesi
+YARISMA = {"bas": "2026-11-07", "bit": "2026-12-07"}   # kazanan: olgun (≥OLGUN_GUN) videolarda ortanca YouTube izlenmesi
+# Not (denetim video-4, 2026-11-18): 11-17 öncesi news/hf videolarının çoğu 13:00 TSİ (ölü saat), dossier 19:00'da
+# çıktı → yarışma verisi saatle karışık. rapor her karneyi ayrıca yayın saatine göre böler; karar Kaan'da.
 STILLER = ["iso", "paper", "riso", "blueprint", "cutpaper", "ink", "pixel", "sketch"]
 # Kaan 2026-10-31 katalog oyu: "izometrik kesik kağıt ile ekonomi defterini beğendim" → her gece 1. video FAVORİ
 # kaplamayla, 2. video kalan kaplamalardan sırayla (keşif; Kaan'ın oyuyla elenir/eklenir).
@@ -63,8 +80,52 @@ def load():
 
 def save(q):
     tmp = KUYRUK + ".tmp"
-    json.dump(q, open(tmp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(q, f, ensure_ascii=False, indent=1)
     os.replace(tmp, KUYRUK)
+
+
+@contextlib.contextmanager
+def kilit(bekle=45):
+    """Kuyruk dosyasının kısa yazma kilidi (oku → değiştir → yaz). Uzun işlerde (render, yükleme) TUTULMAZ.
+    Panel (dashboard/server.py) kuyruk.py'yi 60 sn zaman aşımıyla çağırır → bekleme 45 sn."""
+    os.makedirs(DATA, exist_ok=True)
+    f = open(KILIT, "w")
+    son = time.time() + bekle
+    while True:
+        try:
+            fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            break
+        except BlockingIOError:
+            if time.time() > son:
+                f.close()
+                raise TimeoutError("kuyruk kilidi alınamadı")
+            time.sleep(0.2)
+    try:
+        yield
+    finally:
+        fcntl.flock(f, fcntl.LOCK_UN)
+        f.close()
+
+
+def degistir(fn):
+    """Kilit altında taze oku → fn(q) → kaydet; fn'in dönüşünü döndür."""
+    with kilit():
+        q = load()
+        r = fn(q)
+        save(q)
+        return r
+
+
+def guncelle(no, alanlar):
+    """'no'lu öğeyi kilit altında taze okuyup yamalar (başka süreçlerin yazdıkları korunur). Öğe yoksa None."""
+    def f(q):
+        for it in q["items"]:
+            if str(it.get("no")) == str(no):
+                it.update(alanlar)
+                return dict(it)
+        return None
+    return degistir(f)
 
 
 def find(q, keys):
@@ -86,6 +147,34 @@ def week_for(day):
     return cur or weeks[0]
 
 
+def takvim_uyarisi(day=None):
+    """İçerik takviminde bugünden sonra 2'den az hafta kaldıysa uyarı metni (yoksa ""). Takvim bitince week_for son
+    haftayı sonsuza dek döndürür (denetim video-3)."""
+    try:
+        weeks = json.load(open(TAKVIM, encoding="utf-8"))["weeks"]
+    except Exception as ex:
+        return f"⚠️ içerik takvimi okunamadı: {ex}"
+    gun = (day or now().date()).isoformat()
+    ileri = [w for w in weeks if w["start"] > gun]
+    if len(ileri) < 2:
+        son = weeks[-1]["start"] if weeks else "?"
+        return (f"⚠️ içerik takviminde ileriye {len(ileri)} hafta kaldı (son hafta {son}) — "
+                "agent/plan/icerik-takvimi.json'a yeni haftalar ekle")
+    return ""
+
+
+def hikaye_mi(it):
+    return it.get("style") == "hikaye"
+
+
+def bekleyen(q, hikaye, gun=None):
+    """Şeritteki yayın bekleyen video sayısı (bekliyor + onaylandi). İleri tarihli olanlar (ör. haftaya Defter) yakın
+    günlerin yayın yerini tutmadığı için sayılmaz: yalnız tarihsiz ya da ≤ bugün+MAX_BEKLEYEN gün olanlar."""
+    sinir = ((gun or (now() + dt.timedelta(hours=3)).date()) + dt.timedelta(days=MAX_BEKLEYEN)).isoformat()
+    return sum(1 for it in q["items"] if it["status"] in ("bekliyor", "onaylandi") and hikaye_mi(it) == hikaye
+               and it.get("yayin_tarihi", "") <= sinir)
+
+
 def pick_topic(q, day):
     w = week_for(day)
     for t in w["topics"]:
@@ -101,7 +190,15 @@ def pick_topic(q, day):
 
 
 def teknik_of(it):
-    return it.get("teknik") or ("defter" if it.get("style") == "defter" else "klasik" if it.get("style") == "klasik" else "iso")
+    """Karne ekseni. 2026-11-18 (video-4): Para hikâyeleri ve olay videoları "iso" sayılıyordu (teknik alanı yok) →
+    yarışmanın iso sütununa ~20 hikâye karışacaktı. Artık kendi satırları var; MOTOR YARIŞMASI'na girmezler."""
+    if it.get("teknik"):
+        return it["teknik"]
+    if it.get("style") == "hikaye":
+        return "hikaye"
+    if it.get("format") == "event_result":
+        return "olay"
+    return "defter" if it.get("style") == "defter" else "klasik" if it.get("style") == "klasik" else "iso"
 
 
 def pick_teknik(q, taken_t):
@@ -124,12 +221,46 @@ def pick_style(q, taken, k=0):
     return aday[0]
 
 
-def run(cmd, env=None, **kw):
+def _grubu_sonlandir(p):
+    """Zaman aşımında alt sürecin BÜTÜN grubunu sonlandır (anim_build/node/ffmpeg çocukları öksüz kalıp render
+    kilidini tutmasın — denetim video-10)."""
+    for sig, bekle in ((signal.SIGTERM, 15), (signal.SIGKILL, 30)):
+        try:
+            os.killpg(p.pid, sig)
+        except (ProcessLookupError, PermissionError):
+            pass
+        try:
+            p.communicate(timeout=bekle)
+            return
+        except subprocess.TimeoutExpired:
+            continue
+
+
+def run(cmd, env=None, timeout=None):
+    """subprocess.run gibi (text, çıktı yakalanır, cwd=ROOT) ama alt süreç kendi süreç grubunda; zaman aşımında
+    grup sonlandırılır ve subprocess.TimeoutExpired yükseltilir."""
     e = dict(os.environ); e.update(env or {})
-    return subprocess.run(cmd, cwd=ROOT, env=e, text=True, capture_output=True, **kw)
+    p = subprocess.Popen(cmd, cwd=ROOT, env=e, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                         start_new_session=True)
+    try:
+        out, err = p.communicate(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        _grubu_sonlandir(p)
+        raise
+    return subprocess.CompletedProcess(cmd, p.returncode, out, err)
 
 
-OTO = "/root/parafomo-data/onay/oto.json"   # {"bitis": "YYYY-MM-DD"} — o güne kadar (dahil) onay beklenmez
+def uyari(anahtar, konu, govde):
+    """Kaan'a e-posta (agent/notify.py alert — aynı anahtar günde en çok bir kez). Hata hattı bozmaz."""
+    try:
+        r = subprocess.run([PY, NOTIFY, "alert", "--key", anahtar, "--subject", konu, "--body", govde[:1500]],
+                           cwd=ROOT, capture_output=True, text=True, timeout=60)
+        print(f"[uyarı] {anahtar}: {(r.stdout or r.stderr or '').strip()[-160:]}")
+    except Exception as ex:
+        print(f"[uyarı] {anahtar} gönderilemedi: {type(ex).__name__}: {ex}")
+
+
+OTO = os.path.join(DATA, "oto.json")   # {"bitis": "YYYY-MM-DD"} — o güne kadar (dahil) onay beklenmez
 
 
 def oto_aktif():
@@ -179,43 +310,60 @@ def guncel_veriler():
 def uret(a):
     if not panel_acik("video_uretim") and not a.dry:
         print("[üret] panelden durduruldu (Gece video üretimi kapalı)"); return 0
+    if (tu := takvim_uyarisi()):
+        print("[üret]", tu)
     # 2026-11-17 (Kaan: otomatik sistem + Para hikâyeleri planı onaylı): gecenin İLK videosu otomatik "Para hikâyesi"
     # (scripts/anim/hikaye_uret.py: doğrulanmış veri paketi → senaryo kitabı → kontrol listesi → hikaye motoru → kuyruk).
     # Kalanlar eski hat (karşılaştırma grubu). q bundan SONRA okunur: hikaye_uret kuyruğa kendisi yazar.
+    # hikaye_uret, hikâye şeridinde ≥MAX_BEKLEYEN video varsa (resmî veri yeni gelmediyse) LLM'e gitmeden 0 ile çıkar.
+    # Zaman aşımı en kötü duruma göre: 3×600 sn LLM + 2×3600 sn render (eskiden 4200 sn, render ortasında kesiyordu).
     hikaye_ok = 0
     if not a.dry and a.adet >= 1 and panel_acik("hikaye_uretim"):
         try:
-            r = run([PY, os.path.join(ROOT, "scripts", "anim", "hikaye_uret.py"), "--kuyruk"], timeout=4200)
+            r = run([PY, os.path.join(ROOT, "scripts", "anim", "hikaye_uret.py"), "--kuyruk",
+                     "--max-bekleyen", str(MAX_BEKLEYEN)], timeout=9000)
             print(r.stdout[-800:], r.stderr[-400:])
             hikaye_ok = 1 if r.returncode == 0 else 0
         except subprocess.TimeoutExpired:
-            print("[üret] Para hikâyesi zaman aşımı — eski hatla devam")
-    q = load()
+            print("[üret] Para hikâyesi zaman aşımı (süreç grubu sonlandırıldı) — eski hatla devam")
+    q = load()   # anlık görüntü: konu/stil seçimi için; yazma aşağıda kilit altında taze okumayla
     day = now().date()
     taken = {it["style"] for it in q["items"] if it.get("created", "")[:10] == day.isoformat()}
     taken_t = {it.get("teknik") for it in q["items"] if it.get("created", "")[:10] == day.isoformat()}
     n_done = hikaye_ok
-    for k in range(a.adet - hikaye_ok):
-        topic, w = pick_topic(q, day)
+    eski = bekleyen(q, hikaye=False)
+    adet = min(a.adet - hikaye_ok, max(0, MAX_BEKLEYEN - eski))
+    if adet < a.adet - hikaye_ok:
+        print(f"[üret] eski şeritte {eski} video yayın bekliyor (tavan {MAX_BEKLEYEN}) → "
+              f"{a.adet - hikaye_ok} yerine {adet} video üretilecek")
+    yayin_gunu = day + dt.timedelta(days=eski)   # konu, videonun YAYINLANACAĞI haftanın takviminden
+    for k in range(adet):
+        topic, w = pick_topic(q, yayin_gunu)
         teknik = pick_teknik(q, taken_t)
         style = pick_style(q, taken, k) if teknik == "iso" else teknik
         fmt = FORMATLAR[(day.toordinal() * a.adet + k) % len(FORMATLAR)]
-        print(f"[üret] {k+1}/{a.adet} konu: {topic[:80]} | format {fmt} | teknik {teknik} | stil {style}")
+        print(f"[üret] {k+1}/{adet} konu: {topic[:80]} | format {fmt} | teknik {teknik} | stil {style} | hafta {w['start']}")
         if a.dry:   # kaydetmeden: sıradaki konu/stil nasıl dağılırdı
             taken.add(style); taken_t.add(teknik); q["used_topics"].append(topic); continue
-        r = run([PY, os.path.join(ROOT, "scripts", "viral-script.py"), "--format", fmt, "--topic", topic]
-                + (["--facts", fx] if (fx := guncel_veriler()) else []), timeout=900)
+        try:
+            r = run([PY, os.path.join(ROOT, "scripts", "viral-script.py"), "--format", fmt, "--topic", topic]
+                    + (["--facts", fx] if (fx := guncel_veriler()) else []), timeout=900)
+        except subprocess.TimeoutExpired:
+            print("[üret] senaryo zaman aşımı"); continue
         scen = (r.stdout.strip().splitlines() or [""])[-1]
         if r.returncode != 0 or not os.path.exists(scen):
             print("[üret] senaryo üretilemedi:", (r.stderr or r.stdout)[-300:]); continue
         slug = json.load(open(scen, encoding="utf-8"))["slug"]
-        if teknik == "klasik":
-            run([PY, os.path.join(ROOT, "scripts", "manimify.py"), scen, "--hybrid"], timeout=1800)
-            r = run(["nice", "-n", "19", PY, os.path.join(ROOT, "scripts", "shorts-build-v4.py"), slug, "--scenario", scen,
-                     "--engine", "google", "--voice", SES], timeout=3600)
-        else:
-            r = run([PY, os.path.join(ROOT, "scripts", "anim", "anim_short.py"), "--scenario", scen],
-                    env={"ANIM_SKIN": style if teknik == "iso" else "iso", "ANIM_ENGINE": teknik}, timeout=3600)
+        try:
+            if teknik == "klasik":
+                run([PY, os.path.join(ROOT, "scripts", "manimify.py"), scen, "--hybrid"], timeout=1800)
+                r = run(["nice", "-n", "19", PY, os.path.join(ROOT, "scripts", "shorts-build-v4.py"), slug, "--scenario", scen,
+                         "--engine", "google", "--voice", SES], timeout=3600)
+            else:
+                r = run([PY, os.path.join(ROOT, "scripts", "anim", "anim_short.py"), "--scenario", scen],
+                        env={"ANIM_SKIN": style if teknik == "iso" else "iso", "ANIM_ENGINE": teknik}, timeout=3600)
+        except subprocess.TimeoutExpired:
+            print("[üret] render zaman aşımı (süreç grubu sonlandırıldı)"); continue
         mp4 = os.path.join(ROOT, "public", "social", f"short-{slug}.mp4")
         if r.returncode != 0 or not os.path.exists(mp4):
             print("[üret] render başarısız:", (r.stderr or "")[-400:]); continue
@@ -227,18 +375,23 @@ def uret(a):
         if teknik != "iso" and os.path.exists(ap_):   # sabah düzeltmesi aynı motorla yeniden çizsin
             sj = json.load(open(ap_, encoding="utf-8")); sj["engine"] = teknik
             json.dump(sj, open(ap_, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-        no = max([it.get("no", 0) for it in q["items"]] + [0]) + 1
-        q["items"].append({"no": no, "slug": slug, "title": meta.get("title", slug), "topic": topic, "week": w["start"],
-                           "format": fmt, "teknik": teknik, "style": style, "mp4": mp4, "scenario": scen,
-                           "created": now().isoformat(timespec="seconds"), "status": "bekliyor"})
+        item = {"slug": slug, "title": meta.get("title", slug), "topic": topic, "week": w["start"],
+                "format": fmt, "teknik": teknik, "style": style, "mp4": mp4, "scenario": scen,
+                "created": now().isoformat(timespec="seconds"), "status": "bekliyor"}
         if oto_aktif():
-            q["items"][-1].update({"status": "onaylandi", "approved": now().isoformat(timespec="seconds"), "oto": True})
-        if topic in w["topics"]:
-            q["used_topics"].append(topic)
+            item.update({"status": "onaylandi", "approved": now().isoformat(timespec="seconds"), "oto": True})
+
+        def ekle_(qq, item=item, topic=topic, w=w):   # kilit altında taze kuyruğa: numara + konu orada belirlenir
+            item["no"] = max([it.get("no", 0) for it in qq["items"]] + [0]) + 1
+            qq["items"].append(item)
+            if topic in w["topics"]:
+                qq["used_topics"].append(topic)
+            return qq
+        q = degistir(ekle_)
         taken.add(style); taken_t.add(teknik); n_done += 1
-        save(q)
-        print(f"[üret] ✅ #{no} {slug} ({style})")
-    return 0 if n_done or a.dry else 2
+        print(f"[üret] ✅ #{item['no']} {slug} ({style})")
+    # bilinçli atlama (tavan dolu) başarısızlık değildir → 0; hiçbir şey üretilemediyse 2
+    return 0 if n_done or a.dry or adet == 0 else 2
 
 
 # ---------------------------------------------------------------- onay
@@ -253,69 +406,100 @@ def liste(a):
 
 
 def onayla(a):
-    q = load()
-    for it in find(q, a.ids):
-        if it["status"] in ("bekliyor", "reddedildi"):
-            it["status"] = "onaylandi"; it["approved"] = now().isoformat(timespec="seconds")
-            if a.tarih:
+    def f(q):
+        for it in find(q, a.ids):
+            if it["status"] in ("bekliyor", "reddedildi"):
+                it["status"] = "onaylandi"; it["approved"] = now().isoformat(timespec="seconds")
+                if a.tarih:
+                    it["yayin_tarihi"] = a.tarih
+                print("onaylandı:", it["no"], it["slug"], a.tarih or "")
+            elif it["status"] == "onaylandi" and a.tarih:   # onaylı bölümün yayın gününü kaydır
                 it["yayin_tarihi"] = a.tarih
-            print("onaylandı:", it["no"], it["slug"], a.tarih or "")
-        elif it["status"] == "onaylandi" and a.tarih:   # onaylı bölümün yayın gününü kaydır
-            it["yayin_tarihi"] = a.tarih
-            print("tarih değişti:", it["no"], it["slug"], a.tarih)
-    save(q); return 0
+                print("tarih değişti:", it["no"], it["slug"], a.tarih)
+    degistir(f); return 0
 
 
 def ekle(a):
     """Elle yapılmış bölümü (Ekonomi Defteri) kuyruğa koyar; stil deneyine sayılmaz (STILLER dışı)."""
-    q = load()
-    if find(q, [a.slug]):
-        print("zaten kuyrukta:", a.slug); return 1
     mp = os.path.join(ROOT, "public", "social", f"short-{a.slug}.json")
     mp4 = json.load(open(mp, encoding="utf-8")).get("file", "") if os.path.exists(mp) else ""
-    if not (mp4 and os.path.exists(mp4)):
-        print("short-<slug>.json ya da içindeki mp4 yok:", mp); return 2
-    no = max([it["no"] for it in q["items"]] or [0]) + 1
-    it = {"no": no, "slug": a.slug, "title": a.title, "topic": a.title, "week": "", "format": a.format,
-          "style": a.style, "mp4": mp4, "scenario": "", "created": now().isoformat(timespec="seconds"),
-          "status": "bekliyor"}
-    if a.tarih:
-        it["yayin_tarihi"] = a.tarih
-    q["items"].append(it); save(q)
-    print("eklendi:", no, a.slug)
+
+    def f(q):
+        if find(q, [a.slug]):
+            print("zaten kuyrukta:", a.slug); return 1
+        if not (mp4 and os.path.exists(mp4)):
+            print("short-<slug>.json ya da içindeki mp4 yok:", mp); return 2
+        no = max([it["no"] for it in q["items"]] or [0]) + 1
+        it = {"no": no, "slug": a.slug, "title": a.title, "topic": a.title, "week": "", "format": a.format,
+              "style": a.style, "mp4": mp4, "scenario": "", "created": now().isoformat(timespec="seconds"),
+              "status": "bekliyor"}
+        if a.tarih:
+            it["yayin_tarihi"] = a.tarih
+        q["items"].append(it)
+        print("eklendi:", no, a.slug)
+        return 0
+    rc = degistir(f)
+    if rc:
+        return rc
     if a.onayla or oto_aktif():
         a.ids = [a.slug]; return onayla(a)
     return 0
 
 
 def oyla(a, deger):
-    q = load()
-    for it in find(q, a.ids):
-        it["kaan"] = deger
-        if a.not_:
-            it["kaan_not"] = a.not_
-        print(("👍" if deger == "+" else "👎"), it["no"], it["slug"], it.get("style"))
-    save(q); return 0
+    def f(q):
+        for it in find(q, a.ids):
+            it["kaan"] = deger
+            if a.not_:
+                it["kaan_not"] = a.not_
+            print(("👍" if deger == "+" else "👎"), it["no"], it["slug"], it.get("style"))
+    degistir(f); return 0
 
 
 def reddet(a):
-    q = load()
-    for it in find(q, a.ids):
-        if it["status"] in ("bekliyor", "onaylandi"):
-            it["status"] = "reddedildi"; print("reddedildi:", it["no"], it["slug"])
-    save(q); return 0
+    def f(q):
+        for it in find(q, a.ids):
+            if it["status"] in ("bekliyor", "onaylandi"):
+                it["status"] = "reddedildi"; print("reddedildi:", it["no"], it["slug"])
+    degistir(f); return 0
+
+
+def adim(ad, cmd, env, timeout):
+    """Yayın sonrası adım (ekstra/IG/FB): zaman aşımı ya da çöküş hattı DURDURMAZ. Çıktının ve stderr'in sonu loga
+    basılır (eskiden atılıyordu: 4 Kasım IG hatası hiç görünmedi). Döner: (çıkış kodu, son ~600 karakter)."""
+    try:
+        r = run(cmd, env=env, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        msg = f"{ad}: {timeout} sn'de bitmedi (zaman aşımı, süreç grubu sonlandırıldı)"
+        print(f"[yayın] ⚠️ {msg}")
+        return 124, msg
+    except Exception as ex:
+        msg = f"{ad}: çalıştırılamadı ({type(ex).__name__}: {ex})"
+        print(f"[yayın] ⚠️ {msg}")
+        return 125, msg
+    out, err = (r.stdout or "").strip(), (r.stderr or "").strip()
+    if out:
+        print(out[-600:])
+    if err:
+        print(f"[{ad} stderr] {err[-600:]}")
+    if r.returncode:
+        print(f"[yayın] ⚠️ {ad} çıkış kodu {r.returncode}")
+    return r.returncode, (out + "\n" + err).strip()[-600:]
 
 
 def yayinla(a):
-    q = load()
+    q = load()   # anlık görüntü yalnız SEÇİM için; her yazma guncelle() ile (kısa kilit + taze okuma)
     gun = bugun_tr()
     sira = [it for it in q["items"] if it["status"] == "onaylandi" and it.get("yayin_tarihi", "") <= gun]
     if a.no:   # belirli bir videoyu hemen yayınla (olay videosu: Kaan onaylayınca bekletmeden)
         sira = [it for it in q["items"] if str(it.get("no")) == str(a.no) and it["status"] == "onaylandi"]
     if not a.dry and not a.no:   # zamanlanmış uzun bölüm yayına girdiyse: liste + yorum (Kaan onaylı yüklenmişti)
-        r = run([PY, "scripts/longform/lf_upload.py", "tamamla"], env={"ONAYLI_YAYIN": "1"}, timeout=600)
-        if r.stdout.strip():
-            print(r.stdout[-400:])
+        try:
+            r = run([PY, "scripts/longform/lf_upload.py", "tamamla"], env={"ONAYLI_YAYIN": "1"}, timeout=600)
+            if r.stdout.strip():
+                print(r.stdout[-400:])
+        except subprocess.TimeoutExpired:
+            print("[yayın] ⚠️ lf_upload tamamla zaman aşımı — Short yayınına devam")
     if not panel_acik("youtube") and not a.dry:
         print("[yayın] panelden durduruldu (YouTube yayını kapalı) — videolar sırada bekliyor"); return 0
     if not sira:
@@ -326,28 +510,60 @@ def yayinla(a):
     serit_hikaye = now().hour < 17
     it = sorted(sira, key=lambda x: ((x.get("style") == "hikaye") != serit_hikaye, x.get("yayin_tarihi", "") != gun,
                                      x.get("approved", "")))[0]
-    slug = it["slug"]
+    slug, no = it["slug"], it["no"]
     env = {"ONAYLI_YAYIN": "1"}   # PUBLISH_PAUSED bayrağı yalnız onaylı yayına izin verir
     if a.dry:
         print("[yayın] (dry) sıradaki:", slug); return 0
-    r = run([PY, "scripts/youtube-upload.py", slug, "--privacy", "public"], env=env, timeout=1800)
-    print(r.stdout[-800:], r.stderr[-400:])
     meta_p = os.path.join(ROOT, "public", "social", f"short-{slug}.json")
-    meta = json.load(open(meta_p, encoding="utf-8"))
+
+    def oku_meta():
+        try:
+            return json.load(open(meta_p, encoding="utf-8"))
+        except Exception:
+            return {}
+
+    # youtube-upload.py meta'da video_id varsa yeniden yüklemez (çift yükleme koruması) → aşağıda mevcut id ile sürer
+    rc, tail = adim("youtube-upload", [PY, "scripts/youtube-upload.py", slug, "--privacy", "public"], env, 1800)
+    meta = oku_meta()
     if not meta.get("video_id"):
-        it["status"] = "hata"; it["error"] = "youtube yüklemesi başarısız"; save(q); return 2
-    run([PY, "scripts/youtube-extras.py", slug, "--format", it["format"]], env=env, timeout=600)
+        guncelle(no, {"status": "hata", "error": f"youtube yüklemesi başarısız (çıkış {rc})", "hata_ayrinti": tail[-300:]})
+        uyari("yt-yayin-hata", f"parafomo: YouTube yüklemesi başarısız — #{no}",
+              f"Kuyruk #{no} {slug} YouTube'a yüklenemedi (çıkış {rc}); öğe 'hata' durumuna alındı, yeniden denenmez.\n\n"
+              f"Son çıktı:\n{tail}\n\nKontrol: logs/kuyruk.log · tekrar: kuyruk.py onayla {no}")
+        return 2
+    yt_id = meta["video_id"]
+    # Video YouTube'da: durum HEMEN kaydedilir. Sonraki adım (ekstra/IG/FB) çökse ya da zaman aşımına uğrasa da sonraki
+    # yayın saati bu öğeyi yeniden seçip videoyu ikinci kez yüklemez (denetim video-5 / sosyal-2).
+    guncelle(no, {"status": "yayinlandi", "published": now().isoformat(timespec="seconds"), "youtube_id": yt_id})
+    adim("youtube-extras", [PY, "scripts/youtube-extras.py", slug, "--format", it["format"]], env, 600)
+    alan = {}
     if panel_acik("instagram"):
-        r = run([PY, "scripts/instagram-reel.py", slug], env=env, timeout=1800); print(r.stdout[-400:])
-        r = run([PY, "scripts/facebook-reel.py", slug], env=env, timeout=1800); print(r.stdout[-300:])
+        rc, tail = adim("instagram-reel", [PY, "scripts/instagram-reel.py", slug], env, 1800)
+        if rc != 0:   # 0 = paylaşıldı / günlük sınır dolu (bilinçli atlama) / zaten IG'de
+            alan["ig_hata"] = tail[-300:] or f"çıkış {rc}"
+            uyari("ig-yayin-hata", "parafomo: IG Reel yayınlanamadı",
+                  f"Kuyruk #{no} {slug}: YouTube'da yayında (https://youtu.be/{yt_id}) ama Instagram Reel paylaşılamadı "
+                  f"(çıkış {rc}).\n\nSon çıktı:\n{tail}\n\nElle tekrar (günlük sınır izin veriyorsa): "
+                  f"ONAYLI_YAYIN=1 /root/.venvs/parafomo/bin/python scripts/instagram-reel.py {slug}")
+        rc, tail = adim("facebook-reel", [PY, "scripts/facebook-reel.py", slug], env, 1800)
+        if not oku_meta().get("fb_reel_id"):   # facebook-reel hatada da 0 döner (--strict yok) → sonuca bak
+            neden = tail
+            try:
+                st = json.load(open(os.path.join(ROOT, "logs", "fb-status.json"), encoding="utf-8"))
+                if st.get("last") == slug and not st.get("ok"):
+                    neden = st.get("reason") or tail
+            except Exception:
+                pass
+            alan["fb_hata"] = (neden or f"çıkış {rc}")[-300:]
+            uyari("fb-yayin-hata", "parafomo: Facebook Reel yayınlanamadı",
+                  f"Kuyruk #{no} {slug}: YouTube'da yayında ama Facebook Reel paylaşılamadı.\n\nNeden: {alan['fb_hata']}\n\n"
+                  f"Elle tekrar: ONAYLI_YAYIN=1 /root/.venvs/parafomo/bin/python scripts/facebook-reel.py {slug}")
     else:
         print("[yayın] Instagram/Facebook panelden kapalı → yalnız YouTube")
-    meta = json.load(open(meta_p, encoding="utf-8"))
-    it.update({"status": "yayinlandi", "published": now().isoformat(timespec="seconds"),
-               "youtube_id": meta["video_id"],
-               "ig_permalink": meta.get("ig_reel_permalink", ""), "ig_media_id": meta.get("ig_reel_id", "")})
-    save(q)
-    print(f"[yayın] ✅ {slug} → https://youtu.be/{it['youtube_id']}  {it['ig_permalink']}")
+    meta = oku_meta()
+    alan.update({"ig_permalink": meta.get("ig_reel_permalink", ""), "ig_media_id": meta.get("ig_reel_id", "")})
+    guncelle(no, alan)
+    print(f"[yayın] ✅ {slug} → https://youtu.be/{yt_id}  {alan['ig_permalink']}")
     return 0
 
 
@@ -384,11 +600,14 @@ def ig_stats(ids):
     env = dict(l.strip().split("=", 1) for l in open(os.path.expanduser("~/.config/parafomo/instagram.env"))
                if "=" in l and not l.startswith("#"))
     import urllib.request
+    sys.path.insert(0, os.path.join(ROOT, "scripts", "lib"))
+    from meta_graph import API   # Graph sürümü tek yerde (denetim sosyal-6)
     out = {}
     for mid in ids:
         try:
             r = json.load(urllib.request.urlopen(
-                f"https://graph.facebook.com/v21.0/{mid}/insights?metric=reach,views,saved,shares&access_token={env['IG_PAGE_TOKEN']}"))
+                f"{API}/{mid}/insights?metric=reach,views,saved,shares&access_token={env['IG_PAGE_TOKEN']}",
+                timeout=30))   # zaman aşımı yoktu: asılı istek raporu kilitliyordu
             out[mid] = {m["name"]: m["values"][0]["value"] for m in r["data"]}
         except Exception:
             pass
@@ -401,6 +620,14 @@ def median(xs):
         return None
     m = len(xs) // 2
     return xs[m] if len(xs) % 2 else (xs[m - 1] + xs[m]) / 2
+
+
+def slot_of(it):
+    """Yayın saati (TSİ, 'HH:00') — karneleri saatlere bölmek için (13:00 'ölü saat' vs 19:00/21:00)."""
+    try:
+        return f"{(dt.datetime.fromisoformat(it['published']) + dt.timedelta(hours=3)).hour:02d}:00"
+    except Exception:
+        return "?"
 
 
 def rapor(a):
@@ -417,31 +644,36 @@ def rapor(a):
         rows.append({"no": it["no"], "slug": it["slug"], "teknik": teknik_of(it), "style": it["style"], "format": it["format"], "age_d": round(age, 1),
                      "views": y.get("views", 0), "avp": y.get("averageViewPercentage"), "engaged": y.get("engagedViews"),
                      "subs": y.get("subscribersGained", 0), "ig_reach": g.get("reach"), "ig_saved": g.get("saved"),
-                     "kaan": it.get("kaan", ""), "created": it.get("created", "")})
+                     "kaan": it.get("kaan", ""), "created": it.get("created", ""), "slot": slot_of(it),
+                     "ig_hata": it.get("ig_hata", ""), "fb_hata": it.get("fb_hata", "")})
     if a.json:
         print(json.dumps(rows, ensure_ascii=False, indent=1)); return 0
-    print("VİDEO BAZINDA (yaş gün · YT izlenme · ort. izleme % · abone · IG erişim)")
+    if (tu := takvim_uyarisi()):
+        print(tu + "\n")
+    print("VİDEO BAZINDA (yaş gün · yayın saati TSİ · YT izlenme · ort. izleme % · abone · IG erişim)")
     for r in sorted(rows, key=lambda r: -r["no"]):
-        print(f"  #{r['no']:<3} {r['teknik']:<7} {r['style']:<9} {r['age_d']:>4}g  {r['views']:>6}  {r['avp'] or 0:>5.1f}%  +{r['subs']}  IG {r['ig_reach'] or '-'}  {({'+': '👍', '-': '👎'}).get(r['kaan'], '·')}  {r['slug'][:45]}")
-    def karne(baslik, key, vals):
-        print(f"\n{baslik} (yalnız ≥7 günlük videolar; ortanca)")
+        ig = r["ig_reach"] if r["ig_reach"] is not None else "-"   # 0 erişim '0', IG'de yoksa '-'
+        hata = (" ⚠️IG" if r["ig_hata"] else "") + (" ⚠️FB" if r["fb_hata"] else "")
+        print(f"  #{r['no']:<3} {r['teknik']:<7} {r['style']:<9} {r['age_d']:>4}g {r['slot']}  {r['views']:>6}  {r['avp'] or 0:>5.1f}%  +{r['subs']}  IG {ig}{hata}  {({'+': '👍', '-': '👎'}).get(r['kaan'], '·')}  {r['slug'][:45]}")
+    def karne(baslik, key, vals, rows):
+        print(f"\n{baslik} (yalnız ≥{OLGUN_GUN} günlük videolar; ortanca)")
         for s in vals:
-            rr = [r for r in rows if r[key] == s and r["age_d"] >= 7]
+            rr = [r for r in rows if r[key] == s and r["age_d"] >= OLGUN_GUN]
             if not rr:
                 n_all = sum(1 for r in rows if r[key] == s)
-                print(f"  {s:<9} n=0 (yayında {n_all}, 7 günü dolan yok)"); continue
+                print(f"  {s:<9} n=0 (yayında {n_all}, {OLGUN_GUN} günü dolan yok)"); continue
             v = median([r["views"] for r in rr]); p = median([r["avp"] or 0 for r in rr])
             sub = sum(r["subs"] for r in rr); tv = sum(r["views"] for r in rr)
             oy = [r for r in rows if r[key] == s and r["kaan"]]
             ky = f"  Kaan {sum(r['kaan'] == '+' for r in oy)}👍/{sum(r['kaan'] == '-' for r in oy)}👎" if oy else ""
             print(f"  {s:<9} n={len(rr)}  izlenme ortanca {v:>7.0f}  izleme %{p:>5.1f}  abone/1000 {1000*sub/max(tv,1):.1f}{ky}")
-    tum = rows
-    rows = [r for r in tum if YARISMA["bas"] <= r["created"][:10] <= YARISMA["bit"]]
-    karne(f"MOTOR YARIŞMASI {YARISMA['bas']} → {YARISMA['bit']} (kazanan: ortanca izlenme)", "teknik", TEKNIKLER)
-    rows = tum
-    karne("TEKNİK KARNESİ (tümü)", "teknik", TEKNIKLER + ["defter", "klasik"])
-    rows = [r for r in rows if r["teknik"] == "iso"]
-    karne("İZOMETRİK İÇİNDE KAPLAMA", "style", STILLER)
+    yar = [r for r in rows if YARISMA["bas"] <= r["created"][:10] <= YARISMA["bit"] and r["teknik"] in TEKNIKLER]
+    karne(f"MOTOR YARIŞMASI {YARISMA['bas']} → {YARISMA['bit']} (kazanan: ortanca izlenme)", "teknik", TEKNIKLER, yar)
+    # Saat etkisi: aynı motor 13:00'te (ölü saat) ve 19:00/21:00'te çok farklı izleniyor → her saat ayrı karne
+    for slot in sorted({r["slot"] for r in yar}):
+        karne(f"  └ yalnız {slot} TSİ yayınları", "teknik", TEKNIKLER, [r for r in yar if r["slot"] == slot])
+    karne("TEKNİK KARNESİ (tümü)", "teknik", TEKNIKLER + ["hikaye", "olay", "defter", "klasik"], rows)
+    karne("İZOMETRİK İÇİNDE KAPLAMA", "style", STILLER, [r for r in rows if r["teknik"] == "iso"])
     return 0
 
 

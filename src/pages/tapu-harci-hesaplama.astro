@@ -184,8 +184,8 @@ const dogrulamaLabel = new Date(T.dogrulama + 'T12:00:00').toLocaleDateString('t
         </p>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">Toplam tapu masrafı (2026)</span>
           <span class="result-value" id="out-total">₺{fmt(tot3Max)}</span>
         </div>
@@ -490,7 +490,7 @@ const dogrulamaLabel = new Date(T.dogrulama + 'T12:00:00').toLocaleDateString('t
     .calc-inputs .hint { font-weight: 500; font-style: normal; color: var(--text-muted); font-size: 0.78rem; }
     .calc-inputs input[type='number'], .calc-inputs select {
       font-family: var(--font-sans); font-size: 1.1rem; font-weight: 600; color: var(--text);
-      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm);
       background: var(--bg); width: 100%; min-width: 0;
     }
     .calc-inputs select { font-size: 0.98rem; }

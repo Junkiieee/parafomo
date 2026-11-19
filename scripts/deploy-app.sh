@@ -6,7 +6,9 @@ set -euo pipefail
 REPO="/root/parafomo"
 DEST="/srv/parafomo-app"
 mkdir -p "$DEST"
-rsync -a --delete "$REPO/app/" "$DEST/"
+# P = --delete, aşağıda ayrıca kopyalanan veri dosyalarını her seferinde silip kısa süre 404 bırakmasın
+rsync -a --delete --filter='P /bist-symbols.json' --filter='P /favicon.svg' --filter='P /tufe-aylik.json' \
+  --filter='P /benchmarks.json' --filter='P /halka-arz-map.json' "$REPO/app/" "$DEST/"
 cp "$REPO/public/bist-symbols.json" "$REPO/public/favicon.svg" "$DEST/"
 cp "$REPO/data/tufe-aylik.json" "$REPO/data/benchmarks.json" "$DEST/"   # reel getiri + kıyas serileri
 # BIST kodu → parafomo.com halka arz şirket sayfası (portföy "İlgili veri" köprüsü)

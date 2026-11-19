@@ -1,4 +1,29 @@
-# ParaFOMO Ajanı v2
+# ParaFOMO Ajanı
+
+## Şu an (2026-11-18): sabah rutini
+Günlük TEK Claude koşusu **`agent/sabah.sh`** (sistem cron'u 04:37 UTC, `logs/sabah.log`):
+ağır-iş kilidi → dal bekçisi (main + `git_sync`) → `health.py --sabah` (sağlık raporu istemin sonuna;
+operasyonel sorun varsa `notify.py alert --key saglik`) → `claude -p` (`prompts/sabah.md`, 90 dk tavan).
+
+| Dosya | Görev |
+|---|---|
+| `sabah.sh` | sabah rutini (kilit, dal, sağlık, claude, hata uyarısı) |
+| `prompts/sabah.md` | rutin istemi (veri → site → video → panel; komut kuralları) |
+| `allowed-tools.txt` · `denied-tools.txt` | izinli komutlar · her zaman reddedilenler (push/reset/rebase, sır dosyaları, pip…) |
+| `health.py` | üretim hatlarının son başarısı, disk, git, site/API, yayın kuyruğu, bayat veri (`--sabah`) |
+| `notify.py` | e-posta: `alert` (günde 1/tür) — `report` eski v2 raporu |
+| `board.py` | eski görev masası (notify.py report kullanır) |
+| `../scripts/anim/kare_sayfasi.py` | video QA: tek PNG kare sayfası (rutin bunu Read ile inceler) |
+
+Plan ve günlük panelde: `/root/parafomo-data/dash/plan.json` + `dashboard/panel.py` (dashboard.parafomo.com).
+
+**Ajan v2 (`run.sh`, aşağıdaki bölümler) EMEKLİ:** cron'u 2026-10-31'den beri kapalıydı, 2026-11-18'de
+`run.sh` çalıştırılınca hiçbir şey yapmadan çıkacak hale getirildi (bilerek: `AGENT_V2_ZORLA=1`).
+`brief.py`, `runlog.py`, `bets.py`, `pubplan.py`, `prompts/{core,daily,weekly}.md` yalnız tarihsel kayıt.
+
+---
+
+# (TARİHSEL) ParaFOMO Ajanı v2
 
 Özerk büyüme ajanı + üretim hatları. Kuruluş: 2026-10-06 (v1: 2026-08-02 → 2026-09-30, `archive/v1/`).
 
@@ -60,9 +85,9 @@ eller (deterministik cron'lar, ajan olmadan da çalışır) — deploy/crontab.t
 
 ## Komutlar
 ```bash
-agent/run.sh --dry                 # brief + prompt üret, beyni çağırma
-agent/run.sh daily                 # elle günlük koşu (weekly ile haftalık)
-python3 agent/health.py            # üretim sağlığı
+agent/sabah.sh --dry               # sabah rutini: ne çalışacağını göster (git/sağlık/claude çağrılmaz)
+python3 agent/health.py            # üretim sağlığı (--sabah <dosya>: rapor + yalnız uyarı satırları)
+# (emekli) agent/run.sh — artık hiçbir şey yapmadan çıkar
 python3 agent/pubplan.py --all     # bugünün takvimi (arka plan işleri dahil)
 python3 agent/bets.py list --all   # bahisler
 python3 agent/notify.py report --dry

@@ -1,9 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ZamAlarmi from '../components/ZamAlarmi.astro';
+import ZamHubLink from '../components/ZamHubLink.astro';
 import Newsletter from '../components/Newsletter.astro';
+import { ZAM_SEZONU } from '../data/zam-sezonu';
 import ZamTutarTablosu from '../components/ZamTutarTablosu.astro';
 import em from '../../data/emekli-memur.json';
+import { yilDa } from '../data/yil';
 // Tahmin mantığı /emekli-zammi-hesaplama ile ORTAK modülde (aynı TÜFE, aynı varsayım — iki sayfa hep aynı sonucu verir).
 import { PERIOD, TS_H2_2026, TS_H1_2027, byMonth, knownKeys, cumKnown, remaining, ASSUME, project, memurFrom, memurProj } from '../data/zam2027';
 
@@ -16,8 +19,16 @@ const K = em.memurKatsayi;
 const ME = em.enDusukMemurEmeklisi;
 const zam = memurProj.zam;                 // Ocak 2027 tahmini toplam memur zammı (oran)
 const final = remaining === 0;
+// Tahmin yalnız yürürlükteki katsayı dönemi zam modülünün başlangıcıyla eşleşirken (evde-bakim-maasi ile aynı kural).
+// Ocak'ta emekli-memur.json resmî 2027-01 katsayılarına geçince kat27 = yeni katsayı × (1 + zam) çift zam olur;
+// "Temmuz 2026 zammı" etiketi de Ocak oranını gösterirdi (yıl geçişi denetimi). O zaman tahmin kısımları gizlenir.
+const TAHMIN_VAR = PERIOD[0] === em.donem;
+const DONEM_ADI = `${MONTHS[+em.donem.slice(5, 7) - 1]} ${em.donem.slice(0, 4)}`;
+if (!TAHMIN_VAR) console.warn(`[memur-zammi-hesaplama] katsayı dönemi ${em.donem}, zam dönemi ${PERIOD[0]}: tahmin kısımları gizlendi — sayfa metinlerini yeni döneme göre güncelle`);
 const nowFark = memurFrom(cumKnown).fark;  // şu ana kadar kesinleşen enflasyon farkı
 const known = knownKeys.map((k) => ({ k, name: monthName(k), aylik: byMonth.get(k)!.aylik }));
+// Boş dönemde known[known.length - 1] undefined olur ve build çöker (bkz. emekli-zammi-hesaplama).
+const sonBilinen = known.length ? known[known.length - 1].name : 'henüz açıklanan ay yok';
 const SCEN = [1.0, 1.5, 2.0].map((x) => ({ x, ...memurFrom(project(x)) }));
 
 const D = { salary: 60000 };
@@ -31,24 +42,26 @@ const faq = [
     q: 'Ocak 2027 memur zammı ne kadar olacak?',
     a: final
       ? `Ocak 2027 memur zammı %${nf(zam * 100)} olarak kesinleşti: 2027 ilk yarısı toplu sözleşme zammı %${TS_H1_2027} ve 2026 ikinci yarısının enflasyon farkı %${nf(memurProj.fark * 100)}.`
-      : `Memurlar Ocak 2027'de toplu sözleşmedeki %${TS_H1_2027} zam ile 2026 ikinci yarısının enflasyon farkını alır. Temmuz–${known[known.length - 1].name} döneminde birikimli enflasyon %${nf(cumKnown * 100)}; kalan ${remaining} ayda aylık enflasyonun son 3 ay ortalaması olan %${nf(ASSUME)} seyrederse enflasyon farkı %${nf(memurProj.fark * 100)}, toplam memur zammı yaklaşık %${nf(zam * 100)} olur. Bu bir tahmindir; kesin oran Aralık 2026 enflasyonu açıklanınca belli olur.`,
+      : `Memurlar Ocak 2027'de toplu sözleşmedeki %${TS_H1_2027} zam ile 2026 ikinci yarısının enflasyon farkını alır. Temmuz–${sonBilinen} döneminde birikimli enflasyon %${nf(cumKnown * 100)}; kalan ${remaining} ayda aylık enflasyonun son 3 ay ortalaması olan %${nf(ASSUME)} seyrederse enflasyon farkı %${nf(memurProj.fark * 100)}, toplam memur zammı yaklaşık %${nf(zam * 100)} olur. Bu bir tahmindir; kesin oran Aralık 2026 enflasyonu açıklanınca belli olur.`,
   },
   {
     q: 'Memur enflasyon farkı nasıl hesaplanır?',
     a: `Temmuz–Aralık 2026 birikimli enflasyon, aynı dönem için verilen %${TS_H2_2026} toplu sözleşme zammını aşarsa aşan kısım enflasyon farkı olarak Ocak'ta maaşa eklenir: fark = (1 + 6 aylık enflasyon) ÷ (1 + %${TS_H2_2026}) − 1. Ocak zammı bu farkla yeni dönemin toplu sözleşme oranının bileşiğidir: (1 + fark) × (1 + %${TS_H1_2027}) − 1.`,
   },
   {
-    q: 'Temmuz 2026 memur zammı yüzde kaç oldu?',
-    a: `Temmuz 2026'da memur maaşları %${nf(K.zamOrani)} arttı (%${TS_H2_2026} toplu sözleşme zammı ile Ocak–Haziran 2026 enflasyon farkının bileşiği). Hazine ve Maliye Bakanlığı genelgesiyle aylık katsayı ${nf(K.aylikKatsayi, 6)}, taban aylık katsayısı ${nf(K.tabanAylikKatsayi, 6)}, yan ödeme katsayısı ${nf(K.yanOdemeKatsayi, 6)} oldu.`,
+    q: `${DONEM_ADI} memur zammı yüzde kaç oldu?`,
+    a: `${DONEM_ADI}${yilDa(em.donem.slice(0, 4))} memur maaşları %${nf(K.zamOrani)} arttı (${TAHMIN_VAR ? `%${TS_H2_2026} toplu sözleşme zammı ile Ocak–Haziran 2026 enflasyon farkının bileşiği` : 'toplu sözleşme zammı ile önceki altı ayın enflasyon farkının bileşiği'}). Hazine ve Maliye Bakanlığı genelgesiyle aylık katsayı ${nf(K.aylikKatsayi, 6)}, taban aylık katsayısı ${nf(K.tabanAylikKatsayi, 6)}, yan ödeme katsayısı ${nf(K.yanOdemeKatsayi, 6)} oldu.`,
   },
   {
     q: 'En düşük memur emeklisi aylığı ne kadar?',
-    a: `Temmuz 2026 zammıyla en düşük memur emeklisi aylığı ${fmt(ME.onceki)} ₺'den ${fmt(ME.tutar)} ₺'ye yükseldi. Ocak 2027'de memur zammı kadar artar; tahmini %${nf(zam * 100)} zamla yaklaşık ${fmt(ME.tutar * (1 + zam))} ₺ olur.`,
+    a: `${DONEM_ADI} zammıyla en düşük memur emeklisi aylığı ${fmt(ME.onceki)} ₺'den ${fmt(ME.tutar)} ₺'ye yükseldi.${TAHMIN_VAR ? ` Ocak 2027'de memur zammı kadar artar; tahmini %${nf(zam * 100)} zamla yaklaşık ${fmt(ME.tutar * (1 + zam))} ₺ olur.` : ''}`,
   },
+  ...(TAHMIN_VAR ? [
   {
     q: 'Memur maaş katsayıları Ocak 2027’de ne olur?',
     a: `Katsayılar zam oranında artırılır. %${nf(zam * 100)} tahmini zamla aylık katsayı yaklaşık ${nf(kat27.aylik, 6)}, taban aylık katsayısı ${nf(kat27.taban, 6)} olur. Kesin katsayıları Hazine ve Maliye Bakanlığı Ocak 2027'nin ilk günlerinde genelgeyle açıklar.`,
   },
+  ] : []),
   {
     q: `60 bin TL memur maaşı Ocak 2027’de ne kadar olacak?`,
     a: `Ocak 2027 memur zammı ${final ? '' : 'yaklaşık '}%${nf(zam * 100)} ise 60.000 TL net maaş ${final ? '' : 'yaklaşık '}${fmt(60000 * (1 + zam))} TL’ye, 50.000 TL maaş ${fmt(50000 * (1 + zam))} TL’ye, 80.000 TL maaş ${fmt(80000 * (1 + zam))} TL’ye çıkar. Vergi dilimi ve ek ödemeler kişiye göre değiştiği için gerçek bordro birkaç yüz lira farklı olabilir.`,
@@ -81,8 +94,9 @@ const breadcrumbs = [
       <p class="eyebrow">Hesaplayıcı · Memur Zammı</p>
       <h1>Memur Zammı Hesaplama (Ocak 2027)</h1>
       <p class="lede">
-        Ocak 2027 memur zammı tahmini <strong>%{nf(zam * 100)}</strong>: toplu sözleşmedeki %{TS_H1_2027} zam ile
-        2026 ikinci yarısının enflasyon farkı. Maaşınızı girin, Ocak 2027'deki tahmini maaşınızı görün.
+        {/* Aralık TÜFE'si açıklanınca (final) başlık "Belli Oldu" derken giriş "tahmini" diyordu (yıl geçişi provası). */}
+        Ocak 2027 memur zammı {final ? 'kesinleşti:' : 'tahmini'} <strong>%{nf(zam * 100)}</strong>{final ? ' —' : ':'} toplu sözleşmedeki %{TS_H1_2027} zam ile
+        2026 ikinci yarısının enflasyon farkı. Maaşınızı girin, Ocak 2027'deki {final ? 'yeni' : 'tahmini'} maaşınızı görün.
       </p>
     </header>
 
@@ -104,7 +118,7 @@ const breadcrumbs = [
       </form>
       <div class="calc-results" aria-live="polite">
         <div class="result-main">
-          <span class="result-label">Ocak 2027 tahmini maaş</span>
+          <span class="result-label">Ocak 2027 {final ? 'yeni' : 'tahmini'} maaş</span>
           <span class="result-value" id="out-new">₺{fmt(D.salary * (1 + zam))}</span>
         </div>
         <div class="result-split">
@@ -113,7 +127,7 @@ const breadcrumbs = [
           <div class="split-item"><span class="split-label">Enflasyon farkı (2026 ikinci yarı)</span><span class="split-val" id="out-fark">%{nf(memurProj.fark * 100)}</span></div>
           <div class="split-item strong"><span class="split-label">Aylık artış</span><span class="split-val" id="out-inc">+₺{fmt(D.salary * zam)}</span></div>
         </div>
-        <p class="result-note">Kesinleşen: Temmuz–{known[known.length - 1].name} birikimli enflasyon %{nf(cumKnown * 100)}{nowFark > 0 ? `, enflasyon farkı şimdiden %${nf(nowFark * 100)}` : ''}.</p>
+        <p class="result-note">Kesinleşen: Temmuz–{sonBilinen} birikimli enflasyon %{nf(cumKnown * 100)}{nowFark > 0 ? `, enflasyon farkı şimdiden %${nf(nowFark * 100)}` : ''}.</p>
       </div>
     </div>
 
@@ -123,6 +137,7 @@ const breadcrumbs = [
       Aralık 2026 enflasyonu açıklanınca belli olur ve bu sayfa kendiliğinden güncellenir.
     </p>
 
+    <ZamHubLink giris="Memur zammını emekli zammı, asgari ücret ve kira artışıyla birlikte görmek için" />
     <ZamAlarmi />
     <section class="table-block">
       <h2>Kesinleşen aylık enflasyon (Temmuz–Aralık 2026)</h2>
@@ -153,16 +168,16 @@ const breadcrumbs = [
     <section class="table-block">
       <h2>Memur maaş katsayıları</h2>
       <table class="rate-table">
-        <thead><tr><th>Katsayı</th><th>{K.donem}</th><th>Ocak 2027 (tahmin)</th></tr></thead>
+        <thead><tr><th>Katsayı</th><th>{K.donem}</th>{TAHMIN_VAR && <th>Ocak 2027 (tahmin)</th>}</tr></thead>
         <tbody>
-          <tr><td>Aylık katsayı</td><td>{nf(K.aylikKatsayi, 6)}</td><td>≈ {nf(kat27.aylik, 6)}</td></tr>
-          <tr><td>Taban aylık katsayısı</td><td>{nf(K.tabanAylikKatsayi, 6)}</td><td>≈ {nf(kat27.taban, 6)}</td></tr>
-          <tr><td>Yan ödeme katsayısı</td><td>{nf(K.yanOdemeKatsayi, 6)}</td><td>≈ {nf(kat27.yan, 6)}</td></tr>
+          <tr><td>Aylık katsayı</td><td>{nf(K.aylikKatsayi, 6)}</td>{TAHMIN_VAR && <td>≈ {nf(kat27.aylik, 6)}</td>}</tr>
+          <tr><td>Taban aylık katsayısı</td><td>{nf(K.tabanAylikKatsayi, 6)}</td>{TAHMIN_VAR && <td>≈ {nf(kat27.taban, 6)}</td>}</tr>
+          <tr><td>Yan ödeme katsayısı</td><td>{nf(K.yanOdemeKatsayi, 6)}</td>{TAHMIN_VAR && <td>≈ {nf(kat27.yan, 6)}</td>}</tr>
         </tbody>
       </table>
       <p class="table-note">
-        Temmuz 2026 katsayıları Hazine ve Maliye Bakanlığı genelgesinden; Temmuz zammı %{nf(K.zamOrani)} oldu.
-        Ocak 2027 sütunu tahmini zam oranıyla hesaplanmıştır; kesin katsayılar Ocak başında açıklanır.
+        {DONEM_ADI} katsayıları Hazine ve Maliye Bakanlığı genelgesinden; dönem zammı %{nf(K.zamOrani)} oldu.
+        {TAHMIN_VAR && 'Ocak 2027 sütunu tahmini zam oranıyla hesaplanmıştır; kesin katsayılar Ocak başında açıklanır.'}
       </p>
     </section>
 
@@ -187,14 +202,14 @@ const breadcrumbs = [
       </p>
       <h2>Memur emeklileri de aynı zammı alır</h2>
       <p>
-        Emekli Sandığı (4/c) emeklileri memurlarla aynı oranda zam alır. En düşük memur emeklisi aylığı Temmuz 2026'da
-        <strong>{fmt(ME.tutar)} ₺</strong> oldu; Ocak 2027'de tahmini %{nf(zam * 100)} zamla yaklaşık
-        <strong>{fmt(ME.tutar * (1 + zam))} ₺</strong>'ye çıkar. SSK ve Bağ-Kur emeklilerinin zammı ise yalnız enflasyona
+        Emekli Sandığı (4/c) emeklileri memurlarla aynı oranda zam alır. En düşük memur emeklisi aylığı {DONEM_ADI}{yilDa(em.donem.slice(0, 4))}
+        <strong>{fmt(ME.tutar)} ₺</strong> oldu{TAHMIN_VAR ? <>; Ocak 2027'de tahmini %{nf(zam * 100)} zamla yaklaşık
+        <strong>{fmt(ME.tutar * (1 + zam))} ₺</strong>'ye çıkar</> : ''}. SSK ve Bağ-Kur emeklilerinin zammı ise yalnız enflasyona
         bağlıdır (→ <a href="/emekli-zammi-hesaplama/">emekli zammı hesaplama</a>; taban aylık için →
         <a href="/en-dusuk-emekli-maasi/">en düşük emekli maaşı</a>).
       </p>
       <p class="cta-line">
-        Zam, kıdem tazminatı tavanını da belirler → <a href="/kidem-tazminati-hesaplama/#tavan-2027">Ocak 2027 kıdem tavanı tahmini</a>.
+        Zam, kıdem tazminatı tavanını da belirler → <a href="/kidem-tazminati-hesaplama/#tavan-2027">Ocak 2027 kıdem tavanı{final ? '' : ' tahmini'}</a>.
         Evde bakım maaşı da memur katsayısına bağlı → <a href="/evde-bakim-maasi/">evde bakım maaşı 2027 tahmini</a>; engelli ve
         65 yaş aylıkları da → <a href="/engelli-maasi/">Ocak 2027 engelli maaşı</a>; bedelli ücreti de aynı katsayıyla
         artar → <a href="/bedelli-askerlik-ucreti/">Ocak 2027 bedelli askerlik ücreti</a>.
@@ -207,7 +222,8 @@ const breadcrumbs = [
       {faq.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
     </section>
 
-    <Newsletter />
+    {/* Zam sezonunda tek e-posta sorusu yukarıdaki zam alarmı (src/data/zam-sezonu.ts) */}
+    {!ZAM_SEZONU && <Newsletter />}
   </div>
 
   <script is:inline define:vars={{ cumKnown, remaining, TS2: TS_H2_2026 / 100, TS1: TS_H1_2027 / 100, ASSUME }}>

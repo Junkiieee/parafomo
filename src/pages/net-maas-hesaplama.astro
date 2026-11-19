@@ -2,29 +2,28 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
 import bagkur from '../../data/bagkur-prim-2026.json';
+import { TARIFE_YIL, UCRET_DILIM, UCRET_JSON, dilimSatirlari, asgariBrut } from '../data/vergi';
+import { ekDan, ekYa } from '../data/ek';
 
-// 2026 net/brüt maaş hesaplama — resmî parametreler.
-// Kaynak: 193 s. GVK md.103 ücret tarifesi (01.01.2026), Alomaliye/MuhasebeTR ile doğrulandı 2026-08.
-// Gelir vergisi ücret tarifesi (2026): 190.000'e kadar %15 · 190.001-400.000 %20 ·
-// 400.001-1.500.000 %27 · 1.500.001-5.300.000 %35 · üzeri %40.
+// Net/brüt maaş hesaplama — resmî parametreler, TEK kaynaktan (src/data/vergi.ts):
+// ücret tarifesi data/gelir-vergisi-tarife.json (193 s. GVK md.103; 2026: 332 Seri No'lu tebliğ), asgari ücret
+// data/asgari-ucret.json. Sayfanın yılı TARİFENİN yılıdır: asgari ücret de o yılınki alınır — 1 Ocak'ta
+// asgari-ucret-watch yeni yıla geçse bile yeni tarife girilene dek sayfa tutarlı biçimde eski yılı gösterir.
+// GÜNCELLEME (Ocak): yalnız data/gelir-vergisi-tarife.json (yil + dilimler) — başlık, tablolar ve SSS ondan.
 // Asgari ücret gelir + damga vergisi istisnası herkese uygulanır (2022'den beri).
-// GÜNCELLEME: Ocak 2027'de yeni asgari ücret + yeni tarife dilimleriyle güncelle.
-const MIN_BRUT = 33030.0; // 2026 aylık brüt asgari ücret
-const MIN_MATRAH = 28075.5; // asgari ücret gelir vergisi matrahı (brüt − %15 SGK/işsizlik)
+const YIL = TARIFE_YIL;
+const MIN_BRUT = asgariBrut(YIL); // aylık brüt asgari ücret (2026: 33.030)
+const MIN_MATRAH = Math.round(MIN_BRUT * 85) / 100; // asgari ücret gelir vergisi matrahı (brüt − %15 SGK/işsizlik; 2026: 28.075,50)
 // PEK üst sınırı = brüt asgari ücret × tavanKat (2026: 9 kat = 297.270 ₺; 7566 s.K., SGK Genelgesi 2026/2).
 // Çarpan Bağ-Kur sayfasıyla TEK kaynaktan (data/bagkur-prim-2026.json) okunur.
 const SGK_TAVAN = MIN_BRUT * ((bagkur as any).tavanKat ?? 9);
 const DAMGA_ORAN = 0.00759; // binde 7,59
 const MIN_DAMGA = MIN_BRUT * DAMGA_ORAN; // asgari ücret damga istisnası
 
-// Ücret gelir vergisi tarifesi (2026) — [üst sınır, oran]
-const BRACKETS: [number, number][] = [
-  [190000, 0.15],
-  [400000, 0.2],
-  [1500000, 0.27],
-  [5300000, 0.35],
-  [Infinity, 0.4],
-];
+// Ücret gelir vergisi tarifesi — [üst sınır, oran]
+const BRACKETS: [number, number][] = UCRET_DILIM;
+const D = dilimSatirlari(UCRET_JSON);
+const sinir = (i: number) => fmt0(UCRET_JSON[i][0] as number);
 
 // Kümülatif matrah üzerinden toplam gelir vergisi
 function gv(m: number): number {
@@ -63,29 +62,35 @@ const DEFAULT_BRUT = 75000;
 const d = netMaas(DEFAULT_BRUT, 1);
 
 // Örnek net maaş tablosu (ilk ay / yıl başı, %15 dilimi)
-const ORNEKLER = [33030, 40000, 50000, 75000, 100000, 150000, 250000].map((b) => netMaas(b, 1));
+const ORNEKLER = [MIN_BRUT, 40000, 50000, 75000, 100000, 150000, 250000].map((b) => netMaas(b, 1));
 
-const fmt = (n: number) =>
-  new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
-const fmt0 = (n: number) =>
-  new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+function fmt(n: number) {
+  return new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+}
+function fmt0(n: number) {
+  return new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+}
+// SSS'deki tarife cümlesi: "190.000 ₺'ye kadar %15; 190.001–400.000 ₺ arası %20; … 5.300.000 ₺ üzeri %40"
+const tarifeCumlesi = D.map((r, i) =>
+  r.ust == null ? `${r.aralik} %${r.oran}` : i === 0 ? `${r.aralik} %${r.oran}` : `${r.aralik.replace(' – ', '–')} arası %${r.oran}`,
+).join('; ');
 
 const faq = [
   {
-    q: 'Brütten nete nasıl geçilir? (2026)',
-    a: `Brüt maaştan önce SGK işçi payı %14 ve işsizlik sigortası %1 (toplam %15) kesilir; kalan tutar gelir vergisi matrahıdır. Matrah, yıl içinde biriken (kümülatif) tutara göre 2026 ücret tarifesinden vergilendirilir (190.000 ₺'ye kadar %15). Ardından binde 7,59 damga vergisi hesaplanır. Asgari ücret kadar kısmın gelir ve damga vergisi herkes için istisnadır, bu tutar vergiden düşülür. Kalan tutar net (eline geçen) maaştır.`,
+    q: `Brütten nete nasıl geçilir? (${YIL})`,
+    a: `Brüt maaştan önce SGK işçi payı %14 ve işsizlik sigortası %1 (toplam %15) kesilir; kalan tutar gelir vergisi matrahıdır. Matrah, yıl içinde biriken (kümülatif) tutara göre ${YIL} ücret tarifesinden vergilendirilir (${D[0].aralik} %${D[0].oran}). Ardından binde 7,59 damga vergisi hesaplanır. Asgari ücret kadar kısmın gelir ve damga vergisi herkes için istisnadır, bu tutar vergiden düşülür. Kalan tutar net (eline geçen) maaştır.`,
   },
   {
     q: 'Neden maaşım yıl ortasında düşüyor?',
-    a: `Türkiye'de gelir vergisi kümülatiftir: yıl başından beri biriken matrah arttıkça bir üst dilime geçilir. Kümülatif matrah 190.000 ₺'yi aşınca vergi oranı %15'ten %20'ye, 400.000 ₺'yi aşınca %27'ye çıkar. Bu yüzden aynı brüt maaşta net tutar yılın ikinci yarısında kademeli olarak azalır. Hesaplayıcıda "hangi ay" alanını değiştirerek bu etkiyi görebilirsiniz.`,
+    a: `Türkiye'de gelir vergisi kümülatiftir: yıl başından beri biriken matrah arttıkça bir üst dilime geçilir. Kümülatif matrah ${sinir(0)} ₺'yi aşınca vergi oranı %${D[0].oran}${ekDan(D[0].oran)} %${D[1].oran}${ekYa(D[1].oran)}, ${sinir(1)} ₺'yi aşınca %${D[2].oran}${ekYa(D[2].oran)} çıkar. Bu yüzden aynı brüt maaşta net tutar yılın ikinci yarısında kademeli olarak azalır. Hesaplayıcıda "hangi ay" alanını değiştirerek bu etkiyi görebilirsiniz.`,
   },
   {
-    q: '2026 gelir vergisi dilimleri (ücret) nelerdir?',
-    a: `2026 ücret gelir vergisi tarifesi: 190.000 ₺'ye kadar %15; 190.001–400.000 ₺ arası %20; 400.001–1.500.000 ₺ arası %27; 1.500.001–5.300.000 ₺ arası %35; 5.300.000 ₺ üzeri %40. Dilim sınırı yıl içinde biriken kümülatif matraha göre belirlenir.`,
+    q: `${YIL} gelir vergisi dilimleri (ücret) nelerdir?`,
+    a: `${YIL} ücret gelir vergisi tarifesi: ${tarifeCumlesi}. Dilim sınırı yıl içinde biriken kümülatif matraha göre belirlenir.`,
   },
   {
     q: 'Asgari ücret istisnası ne demek?',
-    a: `2022'den beri asgari ücret tutarına denk gelen gelir vergisi ve damga vergisi tüm çalışanlar için istisnadır. Yani herkesin maaşından, asgari ücret üzerinden hesaplanan vergi (2026 ilk ay için aylık ${fmt0(MIN_MATRAH * 0.15)} ₺ gelir vergisi + ${fmt0(MIN_DAMGA)} ₺ damga) düşülür. Bu yüzden asgari ücretli hiç gelir/damga vergisi ödemez, üstündekiler ise yalnızca aşan kısım için öder.`,
+    a: `2022'den beri asgari ücret tutarına denk gelen gelir vergisi ve damga vergisi tüm çalışanlar için istisnadır. Yani herkesin maaşından, asgari ücret üzerinden hesaplanan vergi (${YIL} ilk ay için aylık ${fmt0(MIN_MATRAH * BRACKETS[0][1])} ₺ gelir vergisi + ${fmt0(MIN_DAMGA)} ₺ damga) düşülür. Bu yüzden asgari ücretli hiç gelir/damga vergisi ödemez, üstündekiler ise yalnızca aşan kısım için öder.`,
   },
   {
     q: 'Bu hesap gerçek bordromla birebir aynı mı?',
@@ -100,18 +105,19 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="Net Maaş Hesaplama 2026 — Brütten Nete Maaş Hesaplama Aracı"
-  description="2026 net maaş hesaplama: brüt maaşı girin; SGK, kümülatif gelir vergisi ve damga vergisi kesintileriyle eline geçen net ücreti görün."
+  image="/og/net-maas-hesaplama.png"
+  title={`Net Maaş Hesaplama ${YIL} — Brütten Nete Maaş Hesaplama Aracı`}
+  description={`${YIL} net maaş hesaplama: brüt maaşı girin; SGK, kümülatif gelir vergisi ve damga vergisi kesintileriyle eline geçen net ücreti görün.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
 >
   <div class="calc-wrap">
     <header class="calc-head">
       <p class="eyebrow">Hesaplayıcı · Maaş & Ücret</p>
-      <h1>Net Maaş Hesaplama (2026)</h1>
+      <h1>Net Maaş Hesaplama ({YIL})</h1>
       <p class="lede">
         Brüt maaşınızı girin; <strong>SGK, gelir vergisi ve damga vergisi</strong> kesintileriyle
-        eline geçen <strong>net ücreti</strong> güncel 2026 tarifesiyle anında hesaplayın.
+        eline geçen <strong>net ücreti</strong> güncel {YIL} tarifesiyle anında hesaplayın.
       </p>
     </header>
 
@@ -135,8 +141,8 @@ const breadcrumbs = [
         </p>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">Net maaş (eline geçen)</span>
           <span class="result-value" id="out-net">₺{fmt(d.net)}</span>
         </div>
@@ -169,16 +175,16 @@ const breadcrumbs = [
     </div>
 
     <p class="disclaimer">
-      Bu araç yalnızca bilgilendirme amaçlıdır; hukuki/mali tavsiye değildir. 2026 resmî gelir
+      Bu araç yalnızca bilgilendirme amaçlıdır; hukuki/mali tavsiye değildir. {YIL} resmî gelir
       vergisi ücret tarifesi ve %14 SGK + %1 işsizlik işçi payı esas alınmıştır. Sabit maaş
       varsayımıyla hesaplanır; gerçek bordro yan haklar, prim gün sayısı, özel kesintiler ve SGK
       tavanına göre değişebilir.
     </p>
 
     <section class="table-block">
-      <h2>2026 net maaş tablosu (brütten nete, ilk ay)</h2>
+      <h2>{YIL} net maaş tablosu (brütten nete, ilk ay)</h2>
       <p class="table-intro">
-        Yıl başı / %15 diliminde çeşitli brüt maaşların net karşılığı. İlerleyen aylarda kümülatif
+        Yıl başı / %{D[0].oran} diliminde çeşitli brüt maaşların net karşılığı. İlerleyen aylarda kümülatif
         matrah büyüdükçe net tutar bir miktar düşer.
       </p>
       <table class="rate-table">
@@ -201,15 +207,11 @@ const breadcrumbs = [
     </section>
 
     <section class="table-block">
-      <h2>2026 gelir vergisi dilimleri (ücret)</h2>
+      <h2>{YIL} gelir vergisi dilimleri (ücret)</h2>
       <table class="rate-table">
         <thead><tr><th>Kümülatif matrah</th><th>Oran</th></tr></thead>
         <tbody>
-          <tr><td>190.000 ₺'ye kadar</td><td>%15</td></tr>
-          <tr><td>190.001 – 400.000 ₺</td><td>%20</td></tr>
-          <tr><td>400.001 – 1.500.000 ₺</td><td>%27</td></tr>
-          <tr><td>1.500.001 – 5.300.000 ₺</td><td>%35</td></tr>
-          <tr><td>5.300.000 ₺ üzeri</td><td>%40</td></tr>
+          {D.map((r) => <tr><td>{r.aralik}</td><td>%{r.oran}</td></tr>)}
         </tbody>
       </table>
       <p class="table-note">
@@ -224,20 +226,20 @@ const breadcrumbs = [
         <strong>Brüt maaş</strong> işverenin bordroda gösterdiği toplam ücrettir;
         <strong>net maaş</strong> ise tüm kesintiler sonrası elinize geçen tutardır. Sırasıyla:
         (1) brütten %14 SGK ve %1 işsizlik primi düşülür, kalan <em>gelir vergisi matrahı</em>dır;
-        (2) matrah, yıl içinde biriken kümülatif tutara göre 2026 tarifesinden vergilendirilir;
+        (2) matrah, yıl içinde biriken kümülatif tutara göre {YIL} tarifesinden vergilendirilir;
         (3) brüt üzerinden binde 7,59 damga vergisi hesaplanır; (4) asgari ücrete denk gelen
         gelir ve damga vergisi istisnası düşülür. Kalan tutar net maaştır.
       </p>
       <h2>Kümülatif vergi matrahı neden önemli?</h2>
       <p>
-        Gelir vergisi her ay sıfırlanmaz; yıl boyunca birikir. Kümülatif matrah 190.000 ₺'yi
-        aştığında oran %20'ye, 400.000 ₺'yi aştığında %27'ye yükselir. Yüksek maaşlılarda bu geçiş
+        Gelir vergisi her ay sıfırlanmaz; yıl boyunca birikir. Kümülatif matrah {sinir(0)} ₺'yi
+        aştığında oran %{D[1].oran}{ekYa(D[1].oran)}, {sinir(1)} ₺'yi aştığında %{D[2].oran}{ekYa(D[2].oran)} yükselir. Yüksek maaşlılarda bu geçiş
         yılın ortasında yaşanır ve net maaş görünür biçimde azalır. Yıllık bordronuzu planlarken
         bu etkiyi hesaba katın; hangi dilimde olduğunuzu ve efektif oranınızı
         <a href="/vergi-dilimi-hesaplama/">vergi dilimi hesaplama</a> aracıyla görebilirsiniz.
       </p>
       <p class="cta-line">
-        İlgili araçlar: <a href="/asgari-ucret-hesaplama">asgari ücret hesaplama</a> ile 2026 net/brüt
+        İlgili araçlar: <a href="/asgari-ucret-hesaplama">asgari ücret hesaplama</a> ile {YIL} net/brüt
         asgari ücreti, işten ayrılırsanız <a href="/kidem-tazminati-hesaplama">kıdem tazminatı
         hesaplama</a> ile hak ettiğiniz tazminatı, birikiminizi büyütmek için
         <a href="/bilesik-faiz-hesaplama">bileşik faiz hesaplama</a> aracını kullanın.
@@ -260,12 +262,12 @@ const breadcrumbs = [
     <Newsletter />
   </div>
 
-  <script is:inline define:vars={{ MIN_MATRAH, SGK_TAVAN, DAMGA_ORAN, MIN_DAMGA }}>
+  <script is:inline define:vars={{ MIN_MATRAH, SGK_TAVAN, DAMGA_ORAN, MIN_DAMGA, TARIFE: UCRET_JSON }}>
     (function () {
       const $ = (id) => document.getElementById(id);
       const nf = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       const money = (n) => '₺' + nf.format(n);
-      const BRACKETS = [[190000, 0.15], [400000, 0.2], [1500000, 0.27], [5300000, 0.35], [Infinity, 0.4]];
+      const BRACKETS = TARIFE.map(([ust, oran]) => [ust == null ? Infinity : ust, oran / 100]); // data/gelir-vergisi-tarife.json
 
       function gv(m) {
         let tax = 0, prev = 0;
@@ -329,7 +331,7 @@ const breadcrumbs = [
     .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
     .calc-inputs input, .calc-inputs select {
       font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
-      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm);
       background: var(--bg); width: 100%;
     }
     .calc-inputs input:focus, .calc-inputs select:focus {

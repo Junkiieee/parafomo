@@ -20,7 +20,15 @@
 #            Varsayılan opus/medium, tavan $8 (Max 5x, 2026-10-06).
 # Knob'lar (env): AGENT_{DAILY,WEEKLY}_{MODEL,EFFORT,BUDGET}, AGENT_WEEKLY_DOW (4=Perş.)
 #
+# ⛔ EMEKLİ (2026-11-18, denetim panel-ajan-9): cron'u 2026-10-31'den beri kapalıydı; günlük tek Claude koşusu
+# artık agent/sabah.sh (sistem cron'u 04:37 UTC, istem agent/prompts/sabah.md, plan /root/parafomo-data/dash/plan.json).
+# Bu dosya geçmiş için duruyor. Yanlışlıkla cron'a geri konursa günde iki Opus koşusu + çakışan iki plan
+# (roadmap.md ↔ plan.json) olmasın diye hiçbir şey yapmadan çıkar. Bilerek çalıştırmak: AGENT_V2_ZORLA=1 agent/run.sh …
 set -uo pipefail
+if [ "${AGENT_V2_ZORLA:-}" != "1" ]; then
+  echo "[$(date -u '+%F %T UTC')] agent/run.sh EMEKLİ (2026-11-18) — günlük iş agent/sabah.sh'ta; ÇALIŞTIRILMADI (bilerek: AGENT_V2_ZORLA=1)"
+  exit 1
+fi
 export HOME=/root
 export PATH="/root/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 

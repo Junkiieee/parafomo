@@ -17,6 +17,9 @@ CHROME = "/root/.cache/ms-playwright/chromium_headless_shell-1148/chrome-linux/h
 BUGUN = dt.date.today()
 HAFTA_GUNU = BUGUN.weekday()   # 0 = Pazartesi
 AI_KAYNAK = ("chatgpt", "openai", "perplexity", "gemini", "copilot", "claude", "deepseek", "grok", "you.com")
+# ÖLÇÜM KIRILMASI: KVKK çerez bandı (Consent Mode v2, varsayılan "denied") 17 Kasım'dan beri yayında → GA4 yalnız onay
+# verenleri sayıyor (~1/4–1/3; trafik GA4 modelleme eşiğinin çok altında). Trafik/eşik kararı GSC tıkı + DB kayıtlarıyla.
+GA4_KIRILMA = dt.date(2026, 11, 17)
 
 
 def sh(cmd, timeout=900, cwd=ROOT, env=None):
@@ -52,7 +55,15 @@ def ga4():
         "diger_arama": sum(v for k, v in d.items() if any(x in k for x in ("bing", "yandex", "duckduckgo", "yahoo"))),
         "toplam": sum(d.values())}
     ga, gb = grp(a), grp(b)
-    lines = ["| Kaynak | Son 7 gün | Önceki 7 gün |", "|---|---|---|"]
+    lines = []
+    # iki pencere kırılmanın aynı tarafında değilse "önceki hafta" kıyası sahte bir düşüş gösterir
+    kiyas = BUGUN - dt.timedelta(days=14) >= GA4_KIRILMA or BUGUN - dt.timedelta(days=1) < GA4_KIRILMA
+    if BUGUN > GA4_KIRILMA:
+        lines.append("⚠ GA4 17.11.2026'dan beri YALNIZ ÇEREZ ONAYI VERENLERİ sayar (çerez bandı; gerçek trafik düşmedi). "
+                     "Trafik ve eşikler (ör. 'günde 100+ ziyaretçi') GSC tıkı + kayıtlar + çerezsiz Cloudflare sayısıyla "
+                     "ölçülür; bu tablo yalnız kaynak dağılımı içindir, düşüşüne göre karar verme." + ("" if kiyas else
+                     " Önceki 7 gün kırılmadan önce → iki sütun KIYASLANMAZ.") + "\n")
+    lines += [f"| Kaynak | Son 7 gün | Önceki 7 gün{'' if kiyas else ' (kırılma öncesi, kıyaslanmaz)'} |", "|---|---|---|"]
     for k in ("toplam", "google", "yapay_zeka", "dogrudan", "sosyal", "diger_arama"):
         lines.append(f"| {k} | {ga[k]} | {gb[k]} |")
     ai = sorted(((k, v) for k, v in a.items() if any(x in k for x in AI_KAYNAK)), key=lambda x: -x[1])
@@ -75,6 +86,40 @@ def gsc_hafta():
         r = svc.searchanalytics().query(siteUrl=site, body={"startDate": str(s), "endDate": str(e)}).execute().get("rows", [{}])[0]
         lines.append(f"| {s:%d.%m}–{e:%d.%m} | {r.get('clicks', 0):.0f} | {r.get('impressions', 0):.0f} | {r.get('position', 0):.1f} |")
     return "\n".join(lines)
+
+
+def kayitlar():
+    """Site kayıtları (zam alarmı + bülten + portföy üyeliği) — panelle aynı sayım (dashboard/collect.py kayit(),
+    test kayıtları hariç). Çerez onayından etkilenmez: dönüşümün ana ölçüsü."""
+    import importlib.util
+    yol = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "dashboard", "collect.py")
+    spec = importlib.util.spec_from_file_location("panel_collect", yol)
+    m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+    k = m.kayit()
+    return "\n".join([
+        "| Ölçü | Sayı |", "|---|---|",
+        f"| Onaylı kayıt (toplam) | {k['onayli']} |",
+        f"| — zam alarmı onaylı | {k['zam_onayli']} |",
+        f"| — bülten onaylı | {k['bulten_onayli']} |",
+        f"| E-posta onayı bekleyen | {k['bekleyen']} |",
+        f"| Yeni kayıt, son 7 gün (önceki 7 gün) | {k['yeni_7g']} ({k.get('yeni_onceki_7g', '?')}) |",
+        f"| Portföy üyesi (toplam) | {k['uye']} |"])
+
+
+def insan_trafik():
+    """Çerezsiz sayfa görüntüleme (Cloudflare kenarı: TR + tarayıcı, doğrulanmış bot değil) — GA4 kırılmasının yanına
+    onaydan bağımsız eğilim sayısı (scripts/bots/cf_bots.py insan)."""
+    import importlib.util
+    yol = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "bots", "cf_bots.py")
+    spec = importlib.util.spec_from_file_location("cf_bots", yol)
+    m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+    r = m.insan(7)
+    fark = f"{(r['son'] - r['onceki']) / r['onceki'] * 100:+.0f}%" if r["onceki"] else "–"
+    return "\n".join([
+        f"Son 7 gün ({r['bitis']}'e kadar): **{r['son']}** sayfa görüntüleme · önceki 7 gün {r['onceki']} ({fark})",
+        "Günlük: " + " · ".join(f"{d[5:]} {n}" for d, n in r["gunluk"].items()),
+        "En çok: " + " · ".join(f"{p} {n}" for p, n in r["sayfalar"][:8]),
+        "_(eğilim: TR dışı okurlar yok, tarayıcı taklidi yapan botlar olabilir; çerez onayından bağımsız → 17.11 öncesiyle kıyaslanabilir)_"])
 
 
 def gsc_firsat():
@@ -147,6 +192,12 @@ def resmi_gazete():
     return "```\n" + out.strip()[-3000:] + "\n```\n(⚑ varsa: metni aç, doğrula, ilgili data/*.json'u güncelle — betik rakam değiştirmez)"
 
 
+def yil_devri():
+    # Yıla bağlı veri/sabitler (Ocak tebliğleri, TÜİK yeni yıl takvimi, zam dönemi): eşik geçtiyse ⚑ (veri-5, 2026-11-18)
+    code, out = sh([PY, f"{ROOT}/scripts/watch/yil_devri.py"], timeout=60)
+    return "```\n" + out.strip()[-3000:] + "\n```\n(⚑ varsa: kaynağı doğrula, ilgili data/*.json'u ya da sayfa sabitini güncelle — betik rakam değiştirmez)"
+
+
 def build_denetim():
     d = json.load(open(f"{ROOT}/data/learning/seo-audit.json"))
     lab = {k: v.get("label", k) for k, v in d.get("codes", {}).items()}
@@ -161,8 +212,13 @@ def kaan_gorevleri():
     return "\n".join(items) or "açık görev yok"
 
 
-BOLUMLER = [("Trafik (GA4, 7g vs önceki 7g)", ga4), ("Google arama (GSC, haftalık)", gsc_hafta),
-            ("SEO fırsatları (GSC)", gsc_firsat), ("Botlar (Cloudflare)", botlar), ("Resmî Gazete bekçisi", resmi_gazete), ("GEO puanı", geo),
+# Sıra = önem: trafik başlığı GSC tıkı, dönüşüm başlığı DB kayıtları; GA4 17.11'den beri yalnız onaylı (ek bilgi)
+BOLUMLER = [("Trafik — Google arama (GSC, haftalık; ANA trafik ölçüsü)", gsc_hafta),
+            ("Kayıtlar (veritabanı; ANA dönüşüm ölçüsü)", kayitlar),
+            ("Çerezsiz sayfa görüntüleme (Cloudflare kenarı, TR + tarayıcı; GA4'ün yerine eğilim)", insan_trafik),
+            ("GA4 kaynak dağılımı (yalnız çerez onaylı ziyaret, 17.11'den beri eksik; 7g vs önceki 7g)", ga4),
+            ("SEO fırsatları (GSC)", gsc_firsat), ("Botlar (Cloudflare)", botlar), ("Resmî Gazete bekçisi", resmi_gazete),
+            ("Yıl devri bekçisi", yil_devri), ("GEO puanı", geo),
             ("Kırık linkler", linkler), ("Yapısal veri (JSON-LD)", yapisal_veri), ("Hız (Lighthouse CI)", hiz),
             ("Build SEO denetimi", build_denetim), ("Kaan'ın açık görevleri (user-tasks.md)", kaan_gorevleri)]
 

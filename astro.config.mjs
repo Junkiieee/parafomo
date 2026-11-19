@@ -6,7 +6,9 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import trailingSlashLinks from './src/integrations/trailing-slash-links.mjs';
 import coverVariants from './src/integrations/cover-variants.mjs';
-import { readJson, asDate, lastmodByPage, dataDir } from './src/data/page-lastmod.mjs';
+import stripPipelineFiles from './src/integrations/strip-pipeline-files.mjs';
+import rehypeTableScroll from './src/integrations/rehype-table-scroll.mjs';
+import { readJson, asDate, lastmodByPage, lastmodByIpo, dataDir } from './src/data/page-lastmod.mjs';
 
 // Yayına alırken bu adresi kendi alan adınla değiştir.
 const SITE = 'https://parafomo.com';
@@ -31,7 +33,14 @@ try {
 }
 
 // Veri sayfaları lastmod'u: src/data/page-lastmod.mjs (BaseLayout dateModified ile ortak kaynak).
-// Olay yazıları (frontmatter `sonuc:`) — karar/veri açıklandıysa lastmod o gün (src/data/event-result.ts ile aynı kaynak)
+// Olay yazıları (frontmatter `sonuc:`) — karar/veri açıklandıysa lastmod açıklanma anı (src/data/event-result.ts ile aynı kaynak)
+// src/data/tuik.ts usualReleaseDate ile aynı kural: izleyen ayın 3'ü, hafta sonuysa ilk iş günü.
+const usualTuikDate = (y, mo) => {
+  const d = new Date(Date.UTC(mo === 12 ? y + 1 : y, mo === 12 ? 0 : mo, 3));
+  while (d.getUTCDay() === 0 || d.getUTCDay() === 6) d.setUTCDate(d.getUTCDate() + 1);
+  return d.toISOString().slice(0, 10);
+};
+const AYLAR_TR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 const eventDate = (sonuc) => {
   const [tur, key] = sonuc.split(':');
   if (tur === 'tcmb' || tur === 'fed') {
@@ -39,12 +48,18 @@ const eventDate = (sonuc) => {
     for (const f of files) {
       const d = readJson(f) ?? {};
       const m = [...(d.meetings ?? []), ...(d.meetings2027 ?? [])].find((x) => x.decisionDate === key);
-      if (m?.result) return asDate(`${key}T20:00:00Z`);
+      if (m?.result) return asDate(`${key}T${m.tsiTime ?? '14:00'}:00+03:00`);
     }
   } else if (tur === 'tufe') {
     if ((readJson('tufe-aylik.json')?.months ?? []).some((x) => x.ay === key)) {
+      // event-result.ts ile aynı kural: TÜİK takvimindeki gün, yoksa izleyen ayın 3'ü; saat 10:00 TSİ
+      // (eskiden "ayın 5'i" sabiti: Ekim 2026 verisi 3 Kasım'da açıklandı).
       const [y, mo] = key.split('-').map(Number);
-      return asDate(mo === 12 ? `${y + 1}-01-05` : `${y}-${String(mo + 1).padStart(2, '0')}-05`);
+      const ay = `${AYLAR_TR[mo - 1]} ${y}`;
+      const rel = readdirSync(dataDir).filter((f) => /^tuik-enflasyon-\d{4}\.json$/.test(f))
+        .flatMap((f) => readJson(f)?.releases ?? []).find((r) => r.covers === ay)?.date
+        ?? usualTuikDate(y, mo);
+      return asDate(`${rel}T10:00:00+03:00`);
     }
   }
   return null;
@@ -62,6 +77,31 @@ try {
   // sessiz geç
 }
 
+// Liste sayfaları: anasayfa ve /blog/ en yeni yazıyla, /kategori/<slug>/ o kategorinin en yeni yazısıyla değişir
+// (dal 2026-11-03 a9ca5d89; sitemap'te lastmod'ları yoktu).
+const categorySlugByName = {};
+try {
+  const cfg = readFileSync(fileURLToPath(new URL('./src/site.config.ts', import.meta.url)), 'utf-8');
+  for (const m of cfg.matchAll(/\{\s*name:\s*'([^']+)',\s*slug:\s*'([^']+)'/g)) categorySlugByName[m[1]] = m[2];
+} catch {
+  // sessiz geç
+}
+const newestPost = { all: null, byCategory: {} };
+try {
+  for (const file of readdirSync(blogDir)) {
+    if (!/\.mdx?$/.test(file)) continue;
+    const fm = readFileSync(`${blogDir}/${file}`, 'utf-8').split(/^---\s*$/m)[1] ?? '';
+    if (/^\s*draft:\s*true\b/m.test(fm)) continue;
+    const lm = lastmodBySlug[file.replace(/\.mdx?$/, '')];
+    if (!lm) continue;
+    const cat = categorySlugByName[fm.match(/^\s*category:\s*['"]?([^'"\n]+?)['"]?\s*$/m)?.[1]];
+    if (!newestPost.all || lm > newestPost.all) newestPost.all = lm;
+    if (cat && (!newestPost.byCategory[cat] || lm > newestPost.byCategory[cat])) newestPost.byCategory[cat] = lm;
+  }
+} catch {
+  // sessiz geç
+}
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE,
@@ -71,6 +111,7 @@ export default defineConfig({
     coverVariants(),
     mdx(),
     trailingSlashLinks(),
+    stripPipelineFiles(),
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
@@ -88,6 +129,16 @@ export default defineConfig({
           item.lastmod = lastmodByPage['altin-fiyatlari'];
           item.changefreq = 'daily';
         }
+        const path = new URL(item.url).pathname;
+        if ((path === '/' || path === '/blog/') && newestPost.all) {
+          item.lastmod = newestPost.all;
+          item.changefreq = 'daily';
+        }
+        const kat = path.match(/^\/kategori\/([^/]+)\/$/);
+        if (kat && newestPost.byCategory[kat[1]]) item.lastmod = newestPost.byCategory[kat[1]];
+        // Halka arz şirket sayfaları (78): src/data/page-lastmod.mjs → lastmodByIpo
+        const ipo = path.match(/^\/halka-arz\/([^/]+)\/$/);
+        if (ipo && lastmodByIpo[ipo[1]]) item.lastmod = lastmodByIpo[ipo[1]];
         const pg = item.url.match(/^https?:\/\/[^/]+\/([^/]+)\/?$/);
         if (pg && lastmodByPage[pg[1]]) {
           item.lastmod = lastmodByPage[pg[1]];
@@ -99,6 +150,7 @@ export default defineConfig({
     }),
   ],
   markdown: {
+    rehypePlugins: [rehypeTableScroll],
     shikiConfig: {
       theme: 'github-dark',
       wrap: true,

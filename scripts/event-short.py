@@ -15,6 +15,16 @@ sık çağrılabilir). Varsa: olgu metni YALNIZ veri dosyalarındaki rakamlardan
 yanlış rakamlı video çıkmaz) → başarıda logs/event-shorts.json'a işaretlenir (aynı olay iki kez video olmaz).
 Bir çağrıda en fazla BİR video. Gece (≥21:00 UTC) üretmez; olay tazeyse sabahki çağrıya kalır.
 
+LLM limiti (denetim video-7, 3 Kasım dersi: iki olay da 15 dk içinde 2 denemeyi 'weekly_limit'e harcayıp kalıcı
+'failed' oldu): scripts/lib/llm.py sert limit bildiriyorsa LLM hattı denenmez ve DENEME HARCANMAZ (durum
+'limit_bekliyor'; olay 36 saat taze kaldıkça sonraki çağrılar yeniden dener). Çıktıda weekly_limit/session_limit
+görülen başarısızlık da denemeden sayılmaz (en çok LIMIT_TEKRAR kez). LLM'siz açıklama kartı limitten etkilenmez.
+
+Gündüz hikâyesi (video-7): resmî veri yeni geldiyse (hikaye_uret.py sec() → "yeni veri") Para hikâyesi gece 00:40'ı
+beklemeden 05–14 UTC arasında arka planda üretilir (hikaye_uret.py --kuyruk --sadece-yeni-veri) → bugüne tarihli,
+aynı gün 19:00'da çıkar. Aynı paket+veri için en çok GUNDUZ_DENEME başlatma; panelde video/hikâye üretimi kapalıysa
+ya da LLM limitteyse başlatılmaz. Günlük: logs/hikaye-gunduz.log.
+
 Kullanım:  python3 scripts/event-short.py                  # gerekiyorsa üret + yayınla
            python3 scripts/event-short.py --dry            # ne üreteceğini yaz (LLM/yayın yok)
            python3 scripts/event-short.py --dry --now 2026-11-03T08:00 --all   # test: tazelik + yapılmışları yok say
@@ -41,6 +51,11 @@ FRESH_H = 36            # olaydan bu kadar saat sonrasına kadar video anlamlı
 WINDOW_UTC = (5, 21)    # 08:00–24:00 TSİ arası üret; dışında sabaha bırak
 MAX_ATTEMPTS = 2        # aynı olay için en fazla 2 deneme (LLM/render hatası)
 GAP_H = 3               # iki olay videosu arası en az bu kadar saat
+LIMIT_TEKRAR = 6        # LLM limitine takılan deneme en çok bu kadar kez "harcanmadı" sayılır (sonsuz döngü olmasın)
+GUNDUZ_UTC = (5, 14)    # gündüz hikâyesi bu saatlerde başlar (16:00 UTC hikâye yayınına ≥2 saat kalsın)
+GUNDUZ_DENEME = 2       # aynı paket+veri için en çok bu kadar gündüz denemesi (sonrası gece hattına kalır)
+VPY = "/root/.venvs/parafomo/bin/python"   # hikaye_uret bağımlılıkları venv'de (çağıranlar sistem python3 kullanıyor)
+KONTROL = "/root/parafomo-data/dash/kontrol.json"   # panel aç/kapa (kuyruk.py ile aynı anahtarlar)
 
 
 def tr(x, nd=2):
@@ -108,6 +123,8 @@ def ev_tuik(now):
                 rel = dt.date.fromisoformat(r["date"])
     if rel is None:
         rel = dt.date(y + (mo == 12), 1 if mo == 12 else mo + 1, 3)
+        while rel.weekday() >= 5:   # hafta sonuysa ilk iş günü (src/data/tuik.ts ile aynı kural)
+            rel += dt.timedelta(days=1)
     when = utc(rel, 7)   # 10:00 TSİ
     app = f"{AYLAR[rel.month - 1]} {rel.year}"   # kira tavanı uygulama ayıyla anılır
     tufe_line = (f"TÜİK {covers} enflasyonu ({rel:%d.%m.%Y} açıklandı): TÜFE aylık %{tr(m0['aylik'])}, "
@@ -317,10 +334,36 @@ def kart_dene(e, st, now):
     return 0
 
 
+def llm_engeli():
+    """scripts/lib/llm.py sert limit (weekly/session) bitiş zamanı ya da None. Okunamazsa None (eski davranış)."""
+    try:
+        sys.path.insert(0, os.path.join(REPO, "scripts", "lib"))
+        import llm
+        return llm.blocked_until()
+    except Exception:
+        return None
+
+
+LIMIT_RE = re.compile(r"\b(weekly_limit|session_limit)\b")
+
+
+def limit_bekle(e, rec, st, neden):
+    """LLM limiti: denemeyi harcamadan 'limit_bekliyor' bırak (olay taze kaldıkça sonraki çağrı yeniden dener)."""
+    rec["status"] = "limit_bekliyor"
+    rec["error"] = neden[-300:]
+    save_state(st)
+    print(f"[event-short] {e['key']}: {neden[:160]} — deneme harcanmadı "
+          f"({rec.get('attempts', 0)}/{MAX_ATTEMPTS}), sonraki çağrıda yeniden")
+    return 0
+
+
 def run(e, st, now):
     k = kart_dene(e, st, now)
     if k is not None:
         return k
+    until = llm_engeli()
+    if until:   # 3 Kasım: limit dolu iken iki deneme 15 dk'da yandı → olay kalıcı 'failed' oldu
+        return limit_bekle(e, st.setdefault(e["key"], {}), st, f"LLM limiti {until:%Y-%m-%d %H:%M} UTC'ye kadar dolu")
     facts = " ".join(e["facts"])
     cmd = ["bash", os.path.join(REPO, "scripts", "viral-daily.sh"), "--format", "event_result",
            "--topic", e["topic"], "--facts", facts, "--must", "|".join(e["must"]), "--link", e["link"]]
@@ -342,6 +385,11 @@ def run(e, st, now):
     print(tail)
     if p.returncode != 0:
         print((p.stderr or "")[-800:])
+        lm = LIMIT_RE.search((p.stdout or "") + (p.stderr or ""))
+        if lm and rec.get("limit_tekrar", 0) < LIMIT_TEKRAR:   # kota hatası içerik hatası değil → deneme geri
+            rec["attempts"] = max(0, rec["attempts"] - 1)
+            rec["limit_tekrar"] = rec.get("limit_tekrar", 0) + 1
+            return limit_bekle(e, rec, st, f"LLM limiti ({lm.group(1)}) — viral-daily.sh başarısız")
         rec["status"] = "failed"
         rec["error"] = ((p.stderr or "") + tail)[-300:]
         save_state(st)
@@ -411,7 +459,74 @@ def main(argv):
         for e in cands:
             print(f"- {e['key']} · {e['age_h']:.1f} sa önce · {e['topic']}\n  olgular: {' '.join(e['facts'])}\n"
                   f"  zorunlu: {e['must']} · link {e['link']}" + (f" · eksik: {e['pending']}" if e['pending'] else ""))
+        gunduz_hikaye(now, st, dry=True)
         return 0
+    rc = olay_videosu(cands, st, now)
+    gunduz_hikaye(now, st)
+    return rc
+
+
+def panel_acik(anahtar):
+    try:
+        return bool(json.load(open(KONTROL, encoding="utf-8")).get(anahtar, True))
+    except Exception:
+        return True
+
+
+def gunduz_hikaye(now, st, dry=False):
+    """Resmî veri yeni geldiyse Para hikâyesini gündüz, arka planda başlat (bkz. modül notu). Hata hattı bozmaz."""
+    try:
+        if not dry and not (GUNDUZ_UTC[0] <= now.hour < GUNDUZ_UTC[1]):
+            return
+        hu = os.path.join(REPO, "scripts", "anim", "hikaye_uret.py")
+        py = VPY if os.path.exists(VPY) else sys.executable
+        p = subprocess.run([py, hu, "--sadece-yeni-veri", "--yokla"], cwd=REPO, capture_output=True, text=True, timeout=120)
+        satir = next((ln for ln in (p.stdout or "").splitlines() if ln.startswith("YENI_VERI")), "")
+        if not satir.startswith("YENI_VERI "):
+            if p.returncode != 0 or not satir:
+                print("[event-short] gündüz hikâyesi yoklanamadı:", ((p.stderr or "") + (p.stdout or ""))[-300:])
+            elif dry:
+                print("[event-short] gündüz hikâyesi: yeni resmî veri yok")
+            return
+        y = json.loads(satir.split(" ", 1)[1])
+        key = f"hikaye:{y['paket']}:{y['olay']}"
+        rec = st.get("_gunduz_hikaye", {}).get(key, {})   # '_' alanı: brief/health olay listesine karışmaz
+        if dry:
+            print(f"[event-short] gündüz hikâyesi: {key} üretilirdi (deneme {rec.get('attempts', 0)}/{GUNDUZ_DENEME})")
+            return
+        if rec.get("attempts", 0) >= GUNDUZ_DENEME:
+            return   # sessiz: gece 00:40 hattı yine dener
+        if not (panel_acik("video_uretim") and panel_acik("hikaye_uretim")):
+            print(f"[event-short] {key}: panelde video/hikâye üretimi kapalı — gündüz hikâyesi başlatılmadı")
+            return
+        until = llm_engeli()
+        if until:
+            print(f"[event-short] {key}: LLM limiti {until:%H:%M} UTC'ye kadar — gündüz hikâyesi başlatılmadı")
+            return
+        kilit = os.path.join(LOGS, "hikaye-gunduz.lock")
+        with open(kilit, "w") as kf:   # önceki gündüz üretimi sürüyorsa ikincisini başlatma (deneme de harcanmaz)
+            try:
+                fcntl.flock(kf, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                fcntl.flock(kf, fcntl.LOCK_UN)
+            except BlockingIOError:
+                print(f"[event-short] {key}: gündüz hikâyesi zaten üretiliyor")
+                return
+        rec["attempts"] = rec.get("attempts", 0) + 1
+        rec["ts"] = now.isoformat(timespec="seconds")
+        st.setdefault("_gunduz_hikaye", {})[key] = rec
+        save_state(st)
+        log = open(os.path.join(LOGS, "hikaye-gunduz.log"), "a")
+        log.write(f"\n[{now:%Y-%m-%d %H:%M} UTC] {key} deneme {rec['attempts']}/{GUNDUZ_DENEME}\n")
+        log.flush()
+        # flock -n: kilidi ÇOCUK tutar (event-short kendi kilidini bırakıp çıkar; render saatler sürebilir)
+        subprocess.Popen(["flock", "-n", kilit, py, hu, "--kuyruk", "--sadece-yeni-veri"], cwd=REPO,
+                         stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+        print(f"[event-short] {key}: resmî veri yeni → gündüz Para hikâyesi arka planda başladı (logs/hikaye-gunduz.log)")
+    except Exception as ex:
+        print(f"[event-short] gündüz hikâyesi atlandı: {type(ex).__name__}: {str(ex)[:200]}")
+
+
+def olay_videosu(cands, st, now):
     if not cands:
         return 0
     if not (WINDOW_UTC[0] <= now.hour < WINDOW_UTC[1]):

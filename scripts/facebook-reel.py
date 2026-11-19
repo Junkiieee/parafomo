@@ -44,10 +44,10 @@ from datetime import datetime, timezone
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.dirname(SCRIPT_DIR)
+sys.path.insert(0, os.path.join(SCRIPT_DIR, "lib"))
+import funnel  # noqa: E402  (link doğrulama: sitede açılmayan adres açıklamaya girmez)
+from meta_graph import API, GRAPH_VERSION, RUPLOAD  # noqa: E402,F401  (sürüm tek yerde; v21.0 2027-01-21'e kadar)
 ENV_FILE = os.path.expanduser("~/.config/parafomo/instagram.env")
-GRAPH_VERSION = "v21.0"   # IG betikleriyle aynı. Meta: v21.0 2027-01-21'e kadar → toplu yükselt.
-API = f"https://graph.facebook.com/{GRAPH_VERSION}"
-RUPLOAD = f"https://rupload.facebook.com/video-upload/{GRAPH_VERSION}"
 SITE = "https://parafomo.com"
 UTM = "utm_source=facebook&utm_medium=social&utm_campaign={campaign}"
 PERM_LINE = ("[fb] atlandı: Facebook paylaşım izni yok (pages_manage_posts) — "
@@ -340,9 +340,10 @@ def pick_hashtags(meta, slug, title, post_tags=None):
             h = _hashtag(t)
             if 3 <= len(h) <= 20 and h not in GENERIC_TAGS:
                 cands.append("#" + h)
-    hay = f"{slug.replace('-', ' ')} {(title or '').lower()}"
-    for kw, tags in ig_mod().TOPIC_TAGS.items():
-        if kw in hay:
+    ig = ig_mod()
+    hay = ig._kucuk(f"{slug} {title or ''}")
+    for kw, tags in ig.TOPIC_TAGS.items():   # kelime başında eşleşme (IG ile aynı kural; 'altındaysan' altın değil)
+        if ig.kw_eslesir(kw, hay):
             cands.extend(tags)
     out = []
     for h in cands + ["#finans", "#yatırım"]:
@@ -354,19 +355,29 @@ def pick_hashtags(meta, slug, title, post_tags=None):
 
 
 def build_description(meta, slug, root):
-    """Kanca (başlık) · 1-2 cümle bağlam · konu sorusu · site linki (UTM) · ≤3 etiket."""
+    """Kanca (başlık) · 1-2 cümle bağlam · konu sorusu · site linki (UTM) · ≤3 etiket.
+    Link sırası: blog yazısı > sitede AÇILAN açık link (event-short / Para hikâyesi) > konunun araç sayfası.
+    2026-11-18 (denetim video-2): ana sayfaya düşüş kalktı (FB oturumlarının 9/13'ü '/'e iniyordu) ve geçersiz link
+    (#41 '/asgari-ucret/' 404) artık kullanılmıyor; açıklama metnindeki geçersiz adresler de aynı hedefe çevrilir."""
     title = clean_title(meta.get("title", ""))
-    ctx = context_text(meta.get("description", ""), title)
-    if not title:
-        title, ctx = ctx, ""
     post = published_post(root, slug)
     has_blog = post is not None
     url = site_url(slug, "reel", has_blog)
     link = (meta.get("link") or "").strip()   # olay sonucu Short'u → ilgili hesaplama sayfası (event-short.py)
-    if link and not has_blog:
-        base = link if link.startswith("http") else f"{SITE}/{link.lstrip('/')}"
+    if link and funnel.sayfa_yolu(link, root) is None:
+        say(f"[fb] uyarı: link sitede açılmıyor, kullanılmadı: {link}")
+        link = ""
+    if not has_blog:
+        base = link if link.startswith("http") else (f"{SITE}/{link.lstrip('/')}" if link
+                                                       else funnel.tool_url_for(slug, title, root))
         url = f"{base}{'&' if '?' in base else '?'}{UTM.format(campaign='reel')}"
-    lead = "Tamamı" if has_blog else ("Kendi rakamını hesapla" if link else "Daha fazlası")
+    desc, degisen = funnel.linkleri_duzelt(meta.get("description", ""), url.split("?")[0], root)
+    if degisen:
+        say(f"[fb] uyarı: açıklamadaki geçersiz adres düzeltildi: {', '.join(degisen)}")
+    ctx = context_text(desc, title)
+    if not title:
+        title, ctx = ctx, ""
+    lead = "Tamamı" if has_blog else ("Kendi rakamını hesapla" if (link or "hesaplama" in url) else "Daha fazlası")
     parts = [title, ctx, f"💬 {pick_question(slug, title, meta.get('format'))}",
              f"{lead}: {url}",
              pick_hashtags(meta, slug, title, (post or {}).get("tags"))]
@@ -487,7 +498,7 @@ def dry_report(root, meta_path, mp4, size, info, desc, url, has_blog, env, alrea
         f"{' ✓ Reels sınırları içinde' if info and not notes else ''}")
     for n in notes:
         say(f"[fb] UYARI: {n}")
-    say(f"[fb] link : {url}  ({'blog yazısı var' if has_blog else 'blog yazısı yok → ana sayfa'})")
+    say(f"[fb] link : {url}  ({'blog yazısı var' if has_blog else 'blog yazısı yok → link / konu aracı'})")
     say(f"[fb] ----- açıklama ({len(desc)} karakter) -----")
     say(desc)
     say("[fb] -----------------------------------")

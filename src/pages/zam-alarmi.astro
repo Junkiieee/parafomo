@@ -7,6 +7,9 @@ import { memurProj, sskProj, remaining } from '../data/zam2027';
 
 const nf = (n: number) => n.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const kesin = remaining === 0;
+// Onay sonrası tek sonraki adım: aileye/arkadaşa WhatsApp'tan iletme (denetim 2026-11-19, gelir-huni-5).
+const paylasUrl = 'https://parafomo.com/zam-alarmi/?utm_source=whatsapp&utm_medium=share&utm_campaign=alarm-onay';
+const waHref = 'https://wa.me/?text=' + encodeURIComponent(`Ocak 2027 zamları (asgari ücret, emekli ve memur zammı) açıklandığı gün e-postana gelsin. Ücretsiz zam alarmı:\n${paylasUrl}`);
 const items = [
   { t: 'Asgari ücret 2027', d: 'Genelde Aralık’ın son haftasında açıklanır. Net ve brüt tutar, işveren maliyeti.', href: '/asgari-ucret-hesaplama/' },
   { t: 'Emekli zammı (SSK, Bağ-Kur)', d: `Aralık enflasyonuyla Ocak başında kesinleşir. Şu anki tahmin %${nf(sskProj * 100)}.`, href: '/emekli-zammi-hesaplama/' },
@@ -22,6 +25,10 @@ const items = [
 >
   <section class="container zam">
     <p class="za-durum" id="za-durum" hidden></p>
+    <div class="za-paylas" id="za-paylas" hidden>
+      <p>Annen, baban ya da emekli bir yakının da bilsin mi? Bağlantıyı WhatsApp'tan gönder, alarmı kendisi kursun.</p>
+      <a class="btn btn-primary" href={waHref} target="_blank" rel="nofollow noopener" data-za-paylas>Ailene de kur (WhatsApp)</a>
+    </div>
     <span class="eyebrow">Zam alarmı</span>
     <h1>Ocak 2027 zamları açıklandığı gün e-postana gelsin</h1>
     <p class="soft lead">
@@ -48,8 +55,7 @@ const items = [
       <a href="/bulten/">bülten</a>.
     </p>
   </section>
-</BaseLayout>
-
+  <Fragment slot="end">
 <script>
   const MSG: Record<string, [string, string]> = {
     onaylandi: ['ok', '✅ Zam alarmın kuruldu! Rakam açıklandığı gün e-postan gelecek.'],
@@ -63,7 +69,16 @@ const items = [
     el.textContent = MSG[durum][1];
     el.hidden = false;
   }
+  if (durum === 'onaylandi') {
+    const box = document.getElementById('za-paylas');
+    if (box) box.hidden = false;
+    box?.querySelector('[data-za-paylas]')?.addEventListener('click', () => {
+      (window as any).gtag?.('event', 'share', { method: 'whatsapp', content_type: 'zam_alarmi_onay' });
+    });
+  }
 </script>
+  </Fragment>
+</BaseLayout>
 
 <style>
   .zam { max-width: 760px; padding-top: 2.5rem; padding-bottom: 1rem; }
@@ -76,4 +91,6 @@ const items = [
   .za-durum { margin: 0 0 1.5rem; padding: 0.9rem 1.1rem; border-radius: var(--radius-lg); border: 1px solid var(--border); background: var(--bg-card); }
   .za-durum[data-state='ok'] { border-color: var(--brand); }
   .za-durum[data-state='err'] { border-color: var(--danger); }
+  .za-paylas { margin: -0.6rem 0 1.5rem; padding: 0.9rem 1.1rem; border-radius: var(--radius-lg); background: var(--brand-tint); }
+  .za-paylas p { margin: 0 0 0.7rem; }
 </style>

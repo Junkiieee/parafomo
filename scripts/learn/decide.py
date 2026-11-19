@@ -53,8 +53,10 @@ def yt_reach(m):
 
 
 def web_score(m):
-    # tıklama en değerli sinyal; görüntüleme + etkileşim süresi ikincil
-    return (m.get("clicks", 0) * 5) + m.get("pageviews", 0) + (m.get("eng_sec", 0) / 60.0)
+    # Yalnız GSC tıkı (2026-11-17'den beri). Eskiden + GA4 pageviews + eng_sec/60 vardı; KVKK çerez bandından beri GA4
+    # yalnız onay verenleri sayıyor ve 45 günlük pencerede kırılma öncesi ölçülen eski yazılar yenilere göre şişkin
+    # görünürdü. Eski metrik satırlarında kalan pageviews/eng_sec de bu yüzden okunmaz: tüm yazılar aynı ölçüyle.
+    return m.get("clicks", 0) * 5
 
 
 def ig_score(m):
@@ -206,7 +208,7 @@ def write_report(w, items):
           f"- YouTube retention: {'✅' if s['youtube_retention'] else '❌ (re-auth gerekli)'}",
           f"- YouTube izlenme: {'✅' if s['youtube_views'] else '❌ (re-auth gerekli)'}",
           f"- Instagram insights: {'✅' if s['instagram_insights'] else '❌ (izin gerekli)'}",
-          f"- Web (GA4+GSC): {'✅' if s['web'] else '❌'}", ""]
+          f"- Web (GSC tıkı; GA4 17.11'den beri yalnız çerez onaylı → skora girmez): {'✅' if s['web'] else '❌'}", ""]
 
     def dim(title, d):
         if d.get("next_pick"):

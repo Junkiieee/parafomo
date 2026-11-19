@@ -70,8 +70,7 @@ const breadcrumbs = [
       </ul>
     </section>
   </div>
-</BaseLayout>
-
+  <Fragment slot="end">
 <script>
   document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((b) => {
     b.addEventListener('click', async () => {
@@ -81,6 +80,8 @@ const breadcrumbs = [
     });
   });
 </script>
+  </Fragment>
+</BaseLayout>
 
 <style>
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 32px 20px 56px; }

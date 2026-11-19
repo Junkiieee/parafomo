@@ -7,7 +7,13 @@ Ayrıca konu-önericisi için arama sorgularını data/learning/web-queries.json
 (en çok gösterilen + 'fırsat' sorguları = çok gösterim / az tıklama / 4-20. sıra).
 
 Kimlik: ~/.config/parafomo/ga-sa.json (weekly-report.py ile aynı servis hesabı).
+
+ÖLÇÜM KIRILMASI (2026-11-17): KVKK çerez bandı (Consent Mode v2, varsayılan "denied") yayına girdi; GA4 o günden
+beri yalnız çerez onayı verenleri sayıyor. 28 günlük pencere kırılmayı içerdiğinde kırılmadan sonra yayınlanan yazılar
+eski yazılara göre eksik sayfa görüntülemesi alır → GA4 değerleri KARAR SİNYALİ olarak yazılmaz (decide.py skoru
+yalnız GSC'den hesaplar); yalnız bilgi için "ga4_onayli_*" anahtarlarıyla tutulur.
 """
+import datetime as dt
 import os
 import sys
 import json
@@ -20,6 +26,7 @@ GA4_PROPERTY = "542292605"
 WINDOW = 28
 GSC_SCOPE = ["https://www.googleapis.com/auth/webmasters.readonly"]
 GA4_SCOPE = ["https://www.googleapis.com/auth/analytics.readonly"]
+GA4_KIRILMA = dt.date(2026, 11, 17)   # bu günden itibaren GA4 yalnız çerez onaylı (bkz. modül notu)
 
 
 def slug_from_path(path):
@@ -35,14 +42,19 @@ def ga4_pages():
     if creds is None:
         return {}
     from google.analytics.data_v1beta import BetaAnalyticsDataClient
-    from google.analytics.data_v1beta.types import RunReportRequest, DateRange, Dimension, Metric
+    from google.analytics.data_v1beta.types import (RunReportRequest, DateRange, Dimension, Metric,
+                                                    FilterExpression, Filter)
     client = BetaAnalyticsDataClient(credentials=creds)
+    # yalnız gerçek alan adı: Lighthouse/yerel önizleme localhost'ta GA'yı tetikliyordu (sabah_veri.py ile aynı süzgeç)
+    site = FilterExpression(filter=Filter(field_name="hostName", string_filter=Filter.StringFilter(
+        match_type=Filter.StringFilter.MatchType.ENDS_WITH, value="parafomo.com")))
     req = RunReportRequest(
         property=f"properties/{GA4_PROPERTY}",
         date_ranges=[DateRange(start_date=f"{WINDOW}daysAgo", end_date="today")],
         dimensions=[Dimension(name="pagePath")],
         metrics=[Metric(name="screenPageViews"), Metric(name="activeUsers"),
                  Metric(name="userEngagementDuration")],
+        dimension_filter=site,
         limit=500,
     )
     out = {}
@@ -108,11 +120,16 @@ def main():
     slugs = set(ga) | set(gpages)
     rows = []
     fetched = lib.iso()
+    # pencere kırılmayı içeriyorsa GA4 karar sinyali değil: pageviews/eng_sec yerine ga4_onayli_* (yalnız bilgi)
+    ga_kirik = dt.date.today() >= GA4_KIRILMA
+    if ga_kirik and ga:
+        print("[web] GA4 17.11'den beri yalnız çerez onaylı → sayfa skoru yalnız GSC'den (ga4_onayli_* bilgi amaçlı)")
     for slug in slugs:
         if slug not in ledger:
             continue
         m = {}
-        m.update(ga.get(slug, {}))
+        g = ga.get(slug, {})
+        m.update({f"ga4_onayli_{k}": v for k, v in g.items()} if ga_kirik else g)
         m.update(gpages.get(slug, {}))
         if m:
             rows.append({"id": lib.cid("blog", slug), "channel": "web",

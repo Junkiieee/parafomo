@@ -1,17 +1,23 @@
 #!/usr/bin/env python3
 """
-ParaFOMO Ajanı v2 — ÜRETİM SAĞLIĞI (token'sız).
+ParaFOMO — ÜRETİM SAĞLIĞI (token'sız).
 
 Her üretim hattının SON BAŞARILI çalışmasını loglardan bulur, beklenen sıklıkla
 kıyaslar → OK / GECİKTİ / HATA. Ayrıca: Claude kota/oturum durumu, disk, git
-(dal, ileride/geride, yarım rebase), canlı site + portföy API'si.
+(dal, ileride/geride, yarım rebase), canlı site + portföy API'si, onaylı yayın
+kuyruğu (otomatik onay bitişi, onaylı stok) ve bayat veri listesi.
 
 Eski sistemin en pahalı hatası buydu: 8 gece OAuth düşük kaldı, hatlar sessizce
-durdu, kimse fark etmedi. Bu betik brief'in ve e-postanın ilk bölümünü besler.
+durdu, kimse fark etmedi. 2026-11-18 denetimi: hat listesi emekli işleri izliyordu
+(viral/shorts/manim…), hiçbir cron çalıştırmıyordu → disk %88 ve bayat veri sessiz
+kaldı. Artık agent/sabah.sh her sabah `--sabah` ile çağırır: rapor istemin sonuna
+eklenir, operasyonel sorun varsa Kaan'a tek uyarı (notify.py alert --key saglik).
 
 Kullanım:
-  python3 agent/health.py            # markdown tablo
-  python3 agent/health.py --json     # makine-okur özet
+  python3 agent/health.py                    # markdown tablo
+  python3 agent/health.py --json             # makine-okur özet
+  python3 agent/health.py --sabah <dosya>    # raporu dosyaya yaz; stdout'a yalnız UYARI satırları
+                                             # (boşsa uyarı yok — sabah.sh bunu notify.py'ye verir)
 """
 import datetime as dt
 import json
@@ -25,21 +31,32 @@ import urllib.request
 ROOT = "/root/parafomo"
 LOGS = os.path.join(ROOT, "logs")
 STATE = os.path.join(ROOT, "agent", "state")
+ONAY = "/root/parafomo-data/onay"          # onaylı yayın kuyruğu (scripts/anim/kuyruk.py) — yalnız OKUNUR
 TS_RE = re.compile(r"\[(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}):\d{2} UTC\]")
-ERR_RE = re.compile(r"HATA|Traceback|hit your|Failed to authenticate|ÜRETİLEMEDİ|başarısız", re.I)
+# "(?<!0 )": "… 0 hata" özet satırları (EVDS/OG kartları) hata sayılmasın
+ERR_RE = re.compile(r"(?<!0 )HATA|Traceback|hit your|Failed to authenticate|ÜRETİLEMEDİ|başarısız", re.I)
+# Disk: kullanılan/(kullanılan+boş) — df'in yüzdesi (shutil'in used/total'ı root ayrılmış bloğu sayıp ~%4 düşük gösterir).
+# Eşik boş GB'a göre: build (dist ~0.5 GB) + render + SQLite ~1 GB altında patlar; 4 GB'ta uyarmak 1 haftalık pay bırakır.
+DISK_MIN_FREE_GB = 4.0
+DISK_MAX_PCT = 90
 
 # ad, log, başarı deseni, beklenen azami yaş (saat; None = olaya bağlı), not
+# 2026-11-18: emekli hatlar (viral/shorts/manim/news/altın-IG/BIST — cron'ları 10-30/31'de kapandı) çıkarıldı;
+# çalışan işler eklendi. Zaman damgasız loglarda (bots, bülten, portföy) son başarı = dosyanın mtime'ı.
 PIPELINES = [
-    ("Viral Short (YouTube+IG)", "viral.log", r"\] Tamamlandı: \S+ @", 30, "günlük 1 slot"),
-    # "Kuyruk boş" = Shorts'a çevrilecek yeni yazı yok (hafta sonu blog yok) → hata değil (2026-10-18 yanlış alarm)
-    ("Blog→Short (YouTube)", "shorts.log", r"bu çalıştırmada [1-9]\d* Shorts yayınlandı|Kuyruk boş — işlenecek yeni yazı yok", 30, "11:00 UTC"),
-    ("Manim Short (YouTube+IG)", "manim-daily.log", r"Manim-daily tamam:", 30, "16:00 UTC"),
-    ("Gündem Short", "news.log", r"gündem videosu üretildi", None, "yalnız yüksek-etkili olay günü"),
+    ("Video yayını (YT+IG+FB)", "kuyruk.log", r"\[yayın\] ✅", 30, "kuyruk.sh yayinla 16:00+18:00 UTC"),
+    ("Gece video üretimi", "kuyruk.log", r"\[üret\] ✅|\[hikaye\] ✅ video", 30, "kuyruk.sh uret 00:40 UTC"),
+    ("Sabah rutini (Claude)", "sabah.log", r"Sabah rutini bitti \(çıkış 0\)", 26, "agent/sabah.sh 04:37 UTC"),
     ("Blog yazısı", "cron.log", r"\] Tamamlandı$", 80, "Pzt-Cum"),
-    ("IG altın kartı", "altin-ig.log", r"YAYINLANDI", 30, "her gün"),
-    ("IG BIST kartları", "bist.log", r"YAYINLANDI", 80, "Pzt-Cum"),
+    ("Fiyat tazeleme", "prices.log", r"push tamam|değişiklik yok", 74, "Pzt-Cmt 08:30-16:30 UTC"),
     ("Halka arz verisi", "halka-arz.log", r"Değişiklik yok|Push başarılı", 14, "6 saatte bir"),
     ("Öğrenme döngüsü", "learn.log", r"Öğrenme döngüsü tamamlandı", 30, "günlük"),
+    ("Bakım + yedek", "maintenance.log", r"uzak kopya: portfolio-", 26, "04:30 UTC (portföy DB uzak kopya)"),
+    ("Faiz kararı bekçisi", "policy-decisions.log", r"\[policy\]", 14, "4×/gün"),
+    ("EVDS faizleri", "evds.log", r"\[evds\] (GÜNCELLENDİ|değişiklik yok)", 200, "Prş+Cum 12:40 UTC"),
+    ("Bot arşivi (CF)", "bots.log", r"\[bots\] .+\.jsonl:", 30, "03:20 UTC"),
+    ("Portföy fotoğrafı", "portfolio-snapshot.log", r"kullanıcı yazıldı", 30, "20:50 UTC"),
+    ("Haftalık bülten", "newsletter.log", r"gönderildi \d+, hata 0", 180, "Pzt 05:30 UTC"),
 ]
 
 
@@ -62,16 +79,25 @@ def scan_log(path, ok_pat, tail_bytes=400_000):
         text = f.read().decode("utf-8", "ignore")
     ok_re = re.compile(ok_pat)
     cur = last_ok = last_err = last_run = None
+    last_line_ok = False
     for line in text.splitlines():
+        if not line.strip():
+            continue
         m = TS_RE.search(line)
         if m:
             cur = _parse_ts(m)
             last_run = cur
-        if ok_re.search(line):
+        last_line_ok = bool(ok_re.search(line))
+        if last_line_ok:
             last_ok = cur
             last_err = None
         elif ERR_RE.search(line) and "UYARI" not in line[:8]:
             last_err = (cur, line.strip()[:160])
+    if last_run is None:
+        # Log hiç [YYYY-MM-DD HH:MM:SS UTC] damgası taşımıyor (bots, bülten, portföy): son satır başarıysa
+        # son başarı = dosyanın son yazılma anı; son satır başarı değilse (son koşu hata verdi) tarih yok → GECİKTİ.
+        last_ok = dt.datetime.fromtimestamp(os.path.getmtime(path), dt.timezone.utc) if last_line_ok else None
+        last_run = last_ok
     return last_ok, last_err, last_run
 
 
@@ -99,23 +125,45 @@ def pipelines():
         if last_err and status == "OK" and max_h is not None:
             status = "UYARI"
         rows.append({"name": name, "status": status, "last_ok": last_ok.isoformat() if last_ok else None,
-                     "age": fmt_age(h), "note": note,
+                     "age": fmt_age(h), "note": note, "log": log,
                      "error": last_err[1] if last_err else ""})
     return rows
 
 
-def agent_status():
+def kuyruk_status():
+    """Onaylı yayın kuyruğu (scripts/anim/kuyruk.py): onaylı stok + otomatik onay (oto.json) bitişi.
+
+    Denetim 2026-11-18 (zamanlama-1): oto.json bitince gece videoları 'bekliyor'a düşer, yayinla yalnız
+    'onaylandi' yayınlar → stok ~6 günde biter, yayın sessizce durur. Bitişi uzatmak Kaan'ın kararı
+    (panel → 'Onaysız yayın' anahtarı); burada yalnız uyarılır."""
+    out = {"onayli": None, "bekliyor": None, "oto_bitis": None, "uyari": []}
     try:
-        d = json.load(open(os.path.join(STATE, "run-status.json"), encoding="utf-8"))
-    except Exception:
-        return {"name": "Ajan (gece koşusu)", "status": "BİLİNMİYOR", "age": "hiç", "note": "", "error": ""}
-    end = d.get("ended") or d.get("started")
-    h = age_h(dt.datetime.fromisoformat(end)) if end else None
-    ok = d.get("outcome") == "success"
-    status = "OK" if ok and h is not None and h < 30 else ("GECİKTİ" if ok else "HATA")
-    return {"name": f"Ajan ({d.get('mode', '?')})", "status": status, "age": fmt_age(h),
-            "note": f"{d.get('model', '?')} · ${d.get('cost', '?')}",
-            "error": "" if ok else f"{d.get('outcome')}: {(d.get('message') or '')[:140]}"}
+        q = json.load(open(os.path.join(ONAY, "kuyruk.json"), encoding="utf-8"))
+    except FileNotFoundError:
+        return out
+    except Exception as e:
+        out["uyari"].append(f"kuyruk.json okunamadı ({type(e).__name__}) → scripts/anim/kuyruk.py liste")
+        return out
+    items = q.get("items", []) if isinstance(q, dict) else []
+    out["onayli"] = sum(1 for i in items if i.get("status") == "onaylandi")
+    out["bekliyor"] = sum(1 for i in items if i.get("status") == "bekliyor")
+    bugun_tr = (_now() + dt.timedelta(hours=3)).date()          # kuyruk.py ile aynı: TSİ = UTC+3
+    try:
+        out["oto_bitis"] = json.load(open(os.path.join(ONAY, "oto.json"), encoding="utf-8"))["bitis"]
+        kalan = (dt.date.fromisoformat(out["oto_bitis"]) - bugun_tr).days
+        if 0 <= kalan <= 7:
+            out["uyari"].append(f"otomatik onay {kalan} gün sonra bitiyor ({out['oto_bitis']}): sonra gece videoları "
+                                "'bekliyor'a düşer, yayın yalnız onaylıdan sürer → Kaan kararı (panel: 'Onaysız yayın')")
+        elif -3 <= kalan < 0:
+            out["uyari"].append(f"otomatik onay {out['oto_bitis']}'de bitti: yeni videolar 'bekliyor'da "
+                                f"({out['bekliyor']} adet) → Kaan kararı (panel: 'Onaysız yayın') ya da kuyruk.py onayla")
+    except FileNotFoundError:
+        pass
+    except Exception as e:
+        out["uyari"].append(f"oto.json okunamadı ({type(e).__name__})")
+    if out["onayli"] < 3:
+        out["uyari"].append(f"onaylı video stoğu {out['onayli']} (<3; günde 2 yayın yuvası) → kuyruk.py liste + onayla")
+    return out
 
 
 def llm_status():
@@ -136,7 +184,9 @@ def llm_status():
 
 def git_status():
     def g(*a):
-        r = subprocess.run(["git", "-C", ROOT, *a], capture_output=True, text=True, timeout=30)
+        # GIT_OPTIONAL_LOCKS=0: izleme `git status` ile index.lock'u kapıp cron'ların commit'iyle yarışmasın
+        r = subprocess.run(["git", "-C", ROOT, *a], capture_output=True, text=True, timeout=30,
+                           env={**os.environ, "GIT_OPTIONAL_LOCKS": "0"})
         return r.stdout.strip()
     branch = g("rev-parse", "--abbrev-ref", "HEAD")
     rebasing = os.path.isdir(os.path.join(ROOT, ".git", "rebase-merge")) or \
@@ -149,13 +199,20 @@ def git_status():
             "dirty": len(dirty), "dirty_sample": dirty[:6], "agent_stashes": stashes[:3]}
 
 
-def http_ok(url, timeout=12):
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": "parafomo-health"})
-        with urllib.request.urlopen(req, timeout=timeout) as r:
-            return r.status
-    except Exception as e:
-        return str(e)[:60]
+def http_ok(url, timeout=12, tries=2):
+    # 2 deneme: tek bir anlık ağ hıçkırığı sabah uyarısı göndermesin
+    res = None
+    for i in range(tries):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "parafomo-health"})
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.status
+        except Exception as e:
+            res = str(e)[:60]
+        if i + 1 < tries:
+            import time
+            time.sleep(5)
+    return res
 
 
 def stale_data():
@@ -239,7 +296,9 @@ def stale_data():
         ("altin-getiri.json", 4, "scripts/gold-returns.py"), ("dolar-getiri.json", 4, "scripts/dollar-returns.py"),
         ("gumus-getiri.json", 4, "scripts/silver-returns.py"), ("euro-getiri.json", 4, "scripts/euro-returns.py"),
         ("bitcoin-getiri.json", 4, "scripts/bitcoin-returns.py"), ("bist-getiri.json", 4, "scripts/bist-returns.py"),
-        ("altin-fiyat.json", 3, "scripts/altin-fiyat.py"), ("halka-arz.json", 2, "scripts/fetch-halka-arz.py"),
+        # halka-arz.json: 'updated' 2026-11-18'den beri yalnız veri GERÇEKTEN değişince ilerler (halka-arz-update.sh
+        # zaman-damgası-yalnız değişikliği geri alır) → hafta sonu Cuma→Pazartesi 3 gün normal; eşik 4.
+        ("altin-fiyat.json", 3, "scripts/altin-fiyat.py"), ("halka-arz.json", 4, "scripts/fetch-halka-arz.py"),
         ("economic-calendar.json", 9, "scripts/fetch-economic-calendar.py"),
     ):
         d = load(name)
@@ -271,22 +330,31 @@ def stale_data():
                            capture_output=True, text=True, timeout=60)
         for line in r.stdout.splitlines():
             if "UYARI" in line:
-                out.append("canlı yazı: " + line.replace("[live-posts] UYARI: ", "")[:220])
+                out.append("canlı yazı: " + line.replace("[live-posts] UYARI: ", "")[:400])
             elif "GÜNCELLENECEK" in line:
                 out.append("canlı yazı veriden geride: " + line.replace("[live-posts] ", "") + " → python3 scripts/live-posts.py")
     except Exception as e:
         out.append(f"live-posts --check çalışmadı: {e}")
-    # Yıl sonu: son toplantı geçtiyse gelecek yılın takvimi eklenmiş olmalı (takvim sayfası "sıradaki karar"ı gösteremez)
-    for name, label, extra in (("tcmb-2026.json", "TCMB", None), ("fomc-2026.json", "Fed", "meetings2027")):
-        dd = load(name)
-        if not dd:
-            continue
-        dates = [m["decisionDate"] for m in dd.get("meetings", [])] + [m["decisionDate"] for m in dd.get(extra, [])] if extra else \
-            [m["decisionDate"] for m in dd.get("meetings", [])]
-        nxt = os.path.exists(os.path.join(ROOT, "data", name.replace("2026", str(today.year + 1))))
-        if dates and max(dates) < today.isoformat() and not nxt:
-            out.append(f"{label} {today.year + 1} toplantı takvimi yok (son toplantı {max(dates)} geçti) → resmî takvimi "
-                       f"WebSearch ile doğrula, data/{name.replace('2026', str(today.year + 1))} ekle ve sayfayı ona bağla")
+    # Yıl sonu: BÜTÜN yıl dosyalarındaki (+ meetingsYYYY listeleri) son toplantı geçtiyse sonraki yılın takvimi eklenmeli
+    # (takvim sayfası "sıradaki karar"ı gösteremez). Sonraki yıl = son toplantının yılı + 1. Eskiden today.year + 1'di:
+    # 1 Ocak'tan sonra "data/tcmb-2028.json ekle" diyordu (yıl geçişi denetimi 2026-11-03, af0ec65; ajan uydurma dosya
+    # açabilirdi). Not: tcmb-faiz-takvimi.astro yalnız tcmb-2026.json'u, fed-faiz-takvimi.astro meetings + meetings2027'yi okur.
+    import glob as _glob
+    for prefix, label in (("tcmb", "TCMB"), ("fomc", "Fed")):
+        dates = []
+        for p in _glob.glob(os.path.join(ROOT, "data", f"{prefix}-[0-9][0-9][0-9][0-9].json")):
+            dd = load(os.path.basename(p)) or {}
+            for k, v in dd.items():
+                if (k == "meetings" or (k.startswith("meetings") and k[8:].isdigit())) and isinstance(v, list):
+                    dates += [m["decisionDate"] for m in v if isinstance(m, dict) and m.get("decisionDate")]
+        if dates and max(dates) < today.isoformat():
+            yil = int(max(dates)[:4]) + 1
+            hedef = (f"data/tcmb-{yil}.json ekle ve src/pages/tcmb-faiz-takvimi.astro'yu (şu an yalnız tcmb-2026.json "
+                     f"import ediyor) yeni dosyaya bağla" if prefix == "tcmb" else
+                     f"data/fomc-2026.json'a meetings{yil} ekle — fed-faiz-takvimi.astro yalnız meetings + meetings2027 "
+                     f"okuyor, sayfayı da yeni listeye bağla")
+            out.append(f"{label} {yil} toplantı takvimi yok (son toplantı {max(dates)} geçti) → resmî takvimi "
+                       f"WebSearch ile doğrula, {hedef}")
     for name, label in (("fomc-2026.json", "Fed"), ("tcmb-2026.json", "TCMB")):
         d = load(name)
         if not d:
@@ -328,18 +396,26 @@ def distribution_status():
     return out
 
 
-def collect():
+def disk_status():
     du = shutil.disk_usage("/")
+    pct = round(du.used / (du.used + du.free) * 100)        # df'in "Use%" değeri
+    free_gb = round(du.free / 1e9, 1)
+    return pct, free_gb, (free_gb < DISK_MIN_FREE_GB or pct >= DISK_MAX_PCT)
+
+
+def collect():
+    pct, free_gb, low = disk_status()
     return {
         "ts": _now().isoformat(timespec="seconds"),
         "pipelines": pipelines(),
-        "agent": agent_status(),
         "llm": llm_status(),
         "git": git_status(),
-        "disk_pct": round(du.used / du.total * 100),
-        "disk_free_gb": round(du.free / 1e9, 1),
+        "disk_pct": pct,
+        "disk_free_gb": free_gb,
+        "disk_low": low,
         "site": http_ok("https://parafomo.com/"),
         "api": http_ok("https://api.parafomo.com/health"),
+        "kuyruk": kuyruk_status(),
         "stale": stale_data(),
         "seo": seo_status(),
         "dist": distribution_status(),
@@ -351,22 +427,33 @@ ICON = {"OK": "✅", "UYARI": "🟡", "GECİKTİ": "🔴", "HATA": "🔴", "BİL
 
 def render(h):
     out = ["| Hat | Durum | Son başarı | Not |", "|---|---|---|---|"]
-    for r in h["pipelines"] + [h["agent"]]:
+    for r in h["pipelines"]:
         err = f" — `{r['error'][:110]}`" if r.get("error") and r["status"] != "OK" else ""
+        if r["status"] != "OK" and r.get("log"):
+            err += f" (logs/{r['log']})"
         out.append(f"| {r['name']} | {ICON.get(r['status'], '')} {r['status']} | {r['age']} | {r['note']}{err} |")
     llm = h["llm"]
     llm_txt = "✅ ok" if llm["state"] == "ok" else f"🔴 {llm['state']}" + (f" (→ {llm['until']})" if llm.get("until") else "")
     g = h["git"]
-    git_txt = f"{g['branch']}" + (" · ⚠️ YARIM REBASE" if g["rebasing"] else "") + \
+    git_txt = f"{g['branch']}" + (" · ⚠️ main DEĞİL" if g["branch"] != "main" else "") + \
+        (" · ⚠️ YARIM REBASE" if g["rebasing"] else "") + \
         (f" · {g['ahead']} push bekliyor" if g["ahead"] else "") + (f" · {g['behind']} geride" if g["behind"] else "") + \
         (f" · {g['dirty']} kirli dosya" if g["dirty"] else " · temiz")
     if g["agent_stashes"]:
         git_txt += f" · yarım ajan işi stash'te: {g['agent_stashes'][0]}"
-    disk = f"%{h['disk_pct']} dolu ({h['disk_free_gb']} GB boş)" + (" ⚠️" if h["disk_pct"] >= 88 else "")
+    disk = f"%{h['disk_pct']} dolu ({h['disk_free_gb']} GB boş)" + \
+        (f" ⚠️ (eşik: <{DISK_MIN_FREE_GB:g} GB boş ya da ≥%{DISK_MAX_PCT}; bakım uyarır)" if h.get("disk_low") else "")
+    k = h.get("kuyruk") or {}
+    k_txt = "kuyruk.json yok" if k.get("onayli") is None else (
+        f"{k['onayli']} onaylı · {k['bekliyor']} bekliyor"
+        + (f" · otomatik onay bitişi {k['oto_bitis']}" if k.get("oto_bitis") else ""))
+    if k.get("uyari"):
+        k_txt += " · 🔴 " + "; ".join(k["uyari"])
     out += ["", f"- **Claude (LLM) durumu:** {llm_txt}",
             f"- **Git:** {git_txt}",
             f"- **Disk:** {disk}",
             f"- **Canlı site:** {h['site']} · **Portföy API:** {h['api']}",
+            f"- **Yayın kuyruğu:** {k_txt}",
             "- **Veri tazeliği:** " + ("✅ güncel" if not h.get("stale") else "🔴 " + "; ".join(h["stale"]))]
     d = h.get("dist") or {}
     ev, fb = d.get("event"), d.get("fb")
@@ -379,23 +466,39 @@ def render(h):
     return "\n".join(out)
 
 
-def problems(h):
-    """E-posta konusu/özet için kısa sorun listesi."""
-    p = [f"{r['name']}: {r['status']}" for r in h["pipelines"] + [h["agent"]] if r["status"] in ("GECİKTİ", "HATA")]
+def problems(h, alarm=False):
+    """E-posta konusu/özet için kısa sorun listesi.
+
+    alarm=True → yalnız Kaan'a UYARI gerektiren operasyonel sorunlar (agent/sabah.sh → notify.py --key saglik):
+    bayat veri ve SEO maddeleri çıkarılır (sabah rutini onları aynı gün kapatır; her gün mail atmasın),
+    disk de çıkarılır (scripts/maintenance.sh 04:30'da kendi 'disk' uyarısını du dökümüyle atar)."""
+    p = [f"{r['name']}: {r['status']} (son başarı {r['age']}" + (f"; logs/{r['log']})" if r.get("log") else ")")
+         for r in h["pipelines"] if r["status"] in ("GECİKTİ", "HATA")]
     if h["llm"]["state"] != "ok":
         p.append(f"Claude: {h['llm']['state']}")
     if h["git"]["rebasing"]:
         p.append("git: yarım rebase")
-    if h["disk_pct"] >= 88:
-        p.append(f"disk %{h['disk_pct']}")
+    if h["git"]["branch"] != "main":
+        p.append(f"git: çalışma dizini '{h['git']['branch']}' dalında (main değil — commit'ler canlıya gitmez)")
+    if h.get("disk_low") and not alarm:
+        p.append(f"disk %{h['disk_pct']} ({h['disk_free_gb']} GB boş)")
     if h["site"] != 200:
         p.append(f"site: {h['site']}")
     if h["api"] != 200:
         p.append(f"api: {h['api']}")
-    p += [f"veri: {x}" for x in h.get("stale", [])]
+    p += [f"yayın kuyruğu: {x}" for x in (h.get("kuyruk") or {}).get("uyari", [])]
     ev = (h.get("dist") or {}).get("event")
     if ev and ev.get("status") == "failed":
-        p.append(f"olay Short'u başarısız: {ev['key']} (logs/event-short.log)")
+        try:
+            ev_h = age_h(dt.datetime.fromisoformat(ev.get("ts", "")))
+        except Exception:
+            ev_h = None
+        # uyarı yalnız taze başarısızlıkta (≤3 gün); eskisi (ör. 3 Kasım weekly_limit) her sabah mail atmasın
+        if not alarm or (ev_h is not None and ev_h <= 72):
+            p.append(f"olay Short'u başarısız: {ev['key']} (logs/event-short.log)")
+    if alarm:
+        return p
+    p += [f"veri: {x}" for x in h.get("stale", [])]
     seo = h.get("seo")
     if seo and seo["counts"].get("KRİTİK"):
         p.append(f"SEO: {seo['counts']['KRİTİK']} kritik sorun")
@@ -404,11 +507,36 @@ def problems(h):
     return p
 
 
+def sabah_raporu(h):
+    """agent/sabah.sh: istemin sonuna eklenen sağlık bölümü (agent/state/saglik.md)."""
+    stale = h.get("stale") or []
+    tablo = [("- **Veri tazeliği:** " + (f"🔴 {len(stale)} madde (aşağıda)" if stale else "✅ güncel"))
+             if l.startswith("- **Veri tazeliği:**") else l for l in render(h).split("\n")]
+    out = [f"_Üretildi: {h['ts']} (agent/health.py)_", "", *tablo, ""]
+    if stale:
+        out.append("**Veri tazeliği — bugün kapatılacaklar** (her biri resmî kaynakla, ≥2 kaynak):")
+        out += [f"{i}. {x}" for i, x in enumerate(stale, 1)]
+        out.append("")
+    pr = [x for x in problems(h) if not x.startswith("veri: ")]
+    out.append("**Diğer sorunlar:** " + ("; ".join(pr) if pr else "yok"))
+    return "\n".join(out) + "\n"
+
+
 if __name__ == "__main__":
     h = collect()
     if "--json" in sys.argv:
         print(json.dumps(h, ensure_ascii=False, indent=1))
+    elif "--sabah" in sys.argv:
+        # agent/sabah.sh: rapor → dosya (istemin sonuna eklenir); stdout'a yalnız uyarı satırları (boş = uyarı yok)
+        i = sys.argv.index("--sabah")
+        path = sys.argv[i + 1] if i + 1 < len(sys.argv) else os.path.join(STATE, "saglik.md")
+        os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(sabah_raporu(h))
+        for x in problems(h, alarm=True):
+            print(x)
     else:
         print(render(h))
         pr = problems(h)
         print("\n**Sorunlar:** " + ("; ".join(pr) if pr else "yok"))
+

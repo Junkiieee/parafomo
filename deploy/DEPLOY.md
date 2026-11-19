@@ -43,6 +43,10 @@ cd /root/parafomo && npm run build && npx wrangler deploy
 
 (Gecelik `daily-content.sh` cron'u da build+deploy yapar; yeni sayfalar o gece de yayına girer.)
 
+`app.parafomo.com` bloğu repoda yoktu: `deploy/Caddy-app.conf` başvuru şablonudur — mevcut bloğa
+`Cache-Control: no-cache` (HTML/JS/CSS/JSON/sw.js) ve güvenlik başlık satırlarını ekle; yoksa yayından sonra
+kullanıcılar eski uygulama sürümünü görebilir. Doğrula: `curl -sI https://app.parafomo.com/portfoy/app.js | grep -i cache-control`.
+
 ## Kullanıcıdan beklenenler (opsiyonel özellikler için)
 
 - **Google ile giriş**: Google Cloud Console → OAuth 2.0 **Web** İstemci Kimliği; yetkili JS

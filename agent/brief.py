@@ -39,6 +39,25 @@ TODAY = dt.date.today()
 MODE = "weekly" if "--mode" in sys.argv and sys.argv[sys.argv.index("--mode") + 1] == "weekly" else "daily"
 WEEKS = 8 if MODE == "weekly" else 4
 KPI = {}
+# ÖLÇÜM KIRILMASI: KVKK çerez bandı (Consent Mode v2, varsayılan "denied") 17 Kasım'dan beri yayında → GA4 yalnız onay
+# verenleri sayıyor (~1/4–1/3). GA4 sayıları kaynak dağılımı için kalır; trafik trendi/kararı GSC tıkı + DB kayıtlarıyla.
+GA4_KIRILMA = dt.date(2026, 11, 17)
+GA4_UYARI = ("⚠ GA4 17.11.2026'dan beri yalnız çerez onayı verenleri sayar (gerçek trafik düşmedi): GA4 düşüşüne göre "
+             "karar verme, trafik trendi için GSC tık + kayıt sayısına bak.")
+
+
+def _ga4_kiyas_gecerli(a_bas, b_son):
+    """İki GA4 penceresi (eski pencerenin başı, yeni pencerenin sonu) kırılmanın aynı tarafında mı?"""
+    return a_bas >= GA4_KIRILMA or b_son < GA4_KIRILMA
+
+
+def _kayit():
+    """Site kayıtları (panel ile aynı sayım: dashboard/collect.py kayit(); test kayıtları hariç)."""
+    spec = importlib.util.spec_from_file_location(
+        "panel_collect", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "dashboard", "collect.py"))
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m.kayit()
 
 
 def out(s=""):
@@ -137,7 +156,9 @@ def sec_scorecard():
     weeks = sorted(set(list(wk.keys()) + list(gw.keys())))[-(WEEKS + 1):]
     cur_iy, cur_iw, _ = TODAY.isocalendar()
     cur = f"{cur_iy}{cur_iw:02d}"
-    out("| ISO hafta | Gerçek erişim (Direct hariç) | Organic Search | GSC tık | GSC gös | Yeni video | Video medyan izl. |")
+    ki, kw, _ = GA4_KIRILMA.isocalendar()
+    kirik_hafta = f"{ki}{kw:02d}"   # bu ISO haftadan itibaren GA4 sütunları yalnız çerez onaylı
+    out("| ISO hafta | GA4 erişim (Direct hariç) | GA4 Organic Search | GSC tık | GSC gös | Yeni video | Video medyan izl. |")
     out("|---|---|---|---|---|---|---|")
     for w in weeks:
         ch = wk.get(w, {})
@@ -147,9 +168,13 @@ def sec_scorecard():
         vids = yw.get(w, [])
         med = int(statistics.median(vids)) if vids else "-"
         tag = " (kısmi)" if w == cur else ""
-        out(f"| {w}{tag} | {real} | {org} | {c} | {i} | {len(vids)} | {med} |")
+        yildiz = "*" if w >= kirik_hafta else ""
+        out(f"| {w}{tag} | {real}{yildiz} | {org}{yildiz} | {c} | {i} | {len(vids)} | {med} |")
     out(f"\n_GSC verisi {last_gsc_day} gününe kadar (Google ~2-3 gün gecikmeli). Kısmi haftayı tam haftayla kıyaslama. "
         f"Video medyanı = o hafta yayınlanan videoların BUGÜNKÜ izlenmesi (eski haftalar avantajlı)._")
+    if any(w >= kirik_hafta for w in weeks):
+        out(f"_* {kirik_hafta} haftasından (17 Kasım) itibaren GA4 yalnız çerez onaylı → GA4 sütunlarındaki düşüş ölçüm "
+            f"kırılmasıdır, trafik kaybı değil. Haftalık trend için GSC tık sütununa bak._")
 
 
 def sec_kpi_snapshot():
@@ -183,6 +208,15 @@ def sec_kpi_snapshot():
             "organic_social_28d": g28.get("Organic Social", 0),
             "gsc_clicks_7d": c7, "gsc_impr_7d": i7, "gsc_clicks_28d": c28, "gsc_impr_28d": i28,
             "yt_subs": yt.get("subs"), "yt_views": yt.get("views"), "yt_videos": yt.get("videos")}
+    if TODAY > GA4_KIRILMA:   # real_*/organic/direct/AI/social GA4'ten: bu satırdan itibaren yalnız çerez onaylı (seri kırık)
+        snap["ga4_olcum"] = "onayli"
+    try:
+        k = _kayit()
+        snap.update({"kayit_onayli": k["onayli"], "kayit_zam_onayli": k["zam_onayli"],
+                     "kayit_bulten_onayli": k["bulten_onayli"], "kayit_bekleyen": k["bekleyen"],
+                     "kayit_yeni_7d": k["yeni_7g"], "portfoy_uye": k["uye"]})
+    except Exception as e:
+        out(f"_(kayıt sayısı alınamadı: {type(e).__name__})_")
     KPI.update(snap)
     os.makedirs(STATE, exist_ok=True)
     json.dump(snap, open(os.path.join(STATE, "kpi.json"), "w", encoding="utf-8"), ensure_ascii=False)
@@ -196,17 +230,28 @@ def sec_kpi_snapshot():
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
     # bugün vs 7 gün önce
     prev = next((r for r in reversed(rows[:-1]) if r["date"] <= (TODAY - dt.timedelta(days=7)).isoformat()), None)
-    def d(k):
+    def d(k, ga4=False):
         if not prev or prev.get(k) is None or snap.get(k) is None:
             return ""
+        # GA4 değeri: iki gözlemin 7 günlük pencereleri kırılmanın farklı tarafındaysa fark sahte → gösterme
+        if ga4 and not _ga4_kiyas_gecerli(dt.date.fromisoformat(prev["date"]) - dt.timedelta(days=7), y):
+            return " (7g kıyas yok: GA4 seri kırılması)"
         diff = snap[k] - prev[k]
         return f" ({'+' if diff >= 0 else ''}{diff} / 7g)"
-    out(f"- **Gerçek erişim (Direct hariç), son 7 gün:** {snap['real_7d']}{d('real_7d')} · "
-        f"Organic Search {snap['organic_search_7d']} · Direct {snap['direct_7d']} · hedef 7000/hafta "
-        f"(%{snap['real_7d'] / 70:.1f})")
-    out(f"- **Son 28 gün:** gerçek erişim {snap['real_28d']} · AI asistan {snap['ai_assistant_28d']} · "
-        f"Organic Social {snap['organic_social_28d']}")
-    out(f"- **GSC (gecikmeli, {gl} dahil):** 7g {c7} tık / {i7} gös{d('gsc_clicks_7d')} · 28g {c28} tık / {i28} gös")
+    # Başlık KPI'ları: GSC tıkı (trafik) + DB kayıtları (dönüşüm) — ikisi de çerez onayından bağımsız
+    out(f"- **GSC (ANA trafik ölçüsü; gecikmeli, {gl} dahil):** 7g {c7} tık / {i7} gös{d('gsc_clicks_7d')} · "
+        f"28g {c28} tık / {i28} gös")
+    if "kayit_onayli" in snap:
+        out(f"- **Kayıtlar (ANA dönüşüm ölçüsü, veritabanı):** onaylı {snap['kayit_onayli']} (zam alarmı "
+            f"{snap['kayit_zam_onayli']} · bülten {snap['kayit_bulten_onayli']}) · onay bekleyen {snap['kayit_bekleyen']} · "
+            f"son 7 gün yeni {snap['kayit_yeni_7d']}{d('kayit_onayli')} · portföy üyesi {snap['portfoy_uye']}")
+    if TODAY > GA4_KIRILMA:
+        out(f"- {GA4_UYARI}")
+    out(f"- **GA4 erişim (Direct hariç), son 7 gün{' — yalnız çerez onaylı' if TODAY > GA4_KIRILMA else ''}:** "
+        f"{snap['real_7d']}{d('real_7d', ga4=True)} · Organic Search {snap['organic_search_7d']} · Direct {snap['direct_7d']}"
+        + ("" if TODAY > GA4_KIRILMA else f" · hedef 7000/hafta (%{snap['real_7d'] / 70:.1f})"))
+    out(f"- **Son 28 gün (GA4{', kırılmayı içerir' if TODAY - dt.timedelta(days=28) < GA4_KIRILMA <= y else ''}):** "
+        f"erişim {snap['real_28d']} · AI asistan {snap['ai_assistant_28d']} · Organic Social {snap['organic_social_28d']}")
     if yt:
         out(f"- **YouTube:** {yt.get('subs')} abone{d('yt_subs')} · {yt.get('views'):,} toplam izlenme{d('yt_views')} · "
             f"{yt.get('videos')} video")
@@ -349,7 +394,8 @@ def sec_channels():
         sh = sorted(((r[0][0], int(r[1][0])) for r in ga_report(["sessionSource"], s28, y,
                      dim_filter=("sessionCampaignName", "share"))), key=lambda x: -x[1])
         f.update({"returning_28d": nv.get("returning", 0), "share_visits_28d": sum(v for _, v in sh)})
-        lines.append(f"- **Sadakat + paylaşım (28g):** geri dönen {nv.get('returning', 0)} / yeni {nv.get('new', 0)} · "
+        etiket = " — GA4, 17.11'den beri yalnız çerez onaylı" if y >= GA4_KIRILMA else ""
+        lines.append(f"- **Sadakat + paylaşım (28g{etiket}):** geri dönen {nv.get('returning', 0)} / yeni {nv.get('new', 0)} · "
                      f"Organic Social kaynakları: " + (", ".join(f"{k} {v}" for k, v in soc[:5]) or "yok")
                      + " · paylaş butonundan gelen: " + (", ".join(f"{k} {v}" for k, v in sh[:5]) or "henüz yok"))
     except Exception as e:
@@ -607,7 +653,8 @@ def sec_web():
     try:
         rows = ga_report(["sessionDefaultChannelGroup"], TODAY - dt.timedelta(days=28), TODAY - dt.timedelta(days=1))
         rows.sort(key=lambda r: -r[1][0])
-        out("\n**GA4 kanal kırılımı (28g, kullanıcı):** " + " · ".join(f"{r[0][0]} {int(r[1][0])}" for r in rows))
+        etiket = "; 17.11'den beri yalnız çerez onaylı — oran için, trend için değil" if TODAY > GA4_KIRILMA else ""
+        out(f"\n**GA4 kanal kırılımı (28g, kullanıcı{etiket}):** " + " · ".join(f"{r[0][0]} {int(r[1][0])}" for r in rows))
         lp = ga_report(["landingPage"], TODAY - dt.timedelta(days=28), TODAY - dt.timedelta(days=1),
                        dim_filter=("sessionDefaultChannelGroup", "Organic Search"))
         lp.sort(key=lambda r: -r[1][0])

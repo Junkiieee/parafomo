@@ -12,7 +12,9 @@ Karar kuralı (yanlış rakam yayınlamamak için tutucu):
   - Kuruş başlıkta yoksa: o net'i veren brütlerden en yuvarlağı (tam TL > ,50) seçilir (bordro yuvarlamasıyla;
     2024-2026 resmî rakamlarıyla doğrulandı).
 Onaylanırsa: data/asgari-ucret.json → yeni = {yil, brut, net, aciklanma, kaynak, otomatik: true} → commit →
-build kapılı deploy → IndexNow + GSC sitemap → Kaan'a e-posta (doğrulasın; yanlışsa `yeni` = null).
+build kapılı deploy → IndexNow + GSC sitemap → zam alarmı aboneleri (scripts/zam-alarm-send.sh; YALNIZ panel
+kontrol.json "zam_alarm_gonder": true ise gider) → Kaan'a e-posta (doğrulasın; yanlışsa `yeni` = null).
+Kapı açıklamadan sonra açılırsa sonraki 2 günün koşuları gönderimi tamamlar (olay başına tek e-posta).
 1 Ocak'tan sonra: yeni → guncel, eski guncel → gecmis (yıl devri).
 
 Cron: */10 * * 12,1 *  (pencere dışında ağa çıkmadan biter: 10 Aralık – 10 Ocak)
@@ -70,10 +72,11 @@ def brut_of(net, o):
 def tl_from_title(t, lo, hi):
     """Başlıktan net tutar adayları: (lira, kuruş|None). 28.075,50 TL · 28 bin 75 lira · 28075 TL.
     "net" geçiyorsa yalnız ondan SONRAKİ tutar; "net" yok ama "brüt" varsa başlık atlanır (brüt net sanılmasın)."""
-    if "net" in t.split():
-        t = t[t.index("net"):]
-    elif re.search(r"\bnet\b", t):
-        t = t[re.search(r"\bnet\b", t).start():]
+    # "net" KELİMESİ aranır: eski t.index("net") "internet"/"kabinette" içindeki ilk "net"i bulup kesimi erken
+    # başlatıyordu → ondan sonraki BRÜT tutar net aday sayılıyordu (friendly-galileo b4c6682'den).
+    mnet = re.search(r"\bnet\b", t)
+    if mnet:
+        t = t[mnet.start():]
     elif "brüt" in t:
         return []
     out = []
@@ -114,18 +117,54 @@ def parse_items(xml):
 
 
 def save(d):
-    with open(DATA, "w", encoding="utf-8") as f:
+    tmp = f"{DATA}.{os.getpid()}.tmp"   # atomik yaz: eşzamanlı build/iş yarım JSON okumasın
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(d, f, ensure_ascii=False, indent=1)
         f.write("\n")
+    os.replace(tmp, DATA)
 
 
 def sh(cmd):
     return subprocess.call(cmd, shell=True, cwd=REPO)
 
 
-def deploy(msg, subject, body, dry):
+ZAM_STATE = "/root/parafomo-data/zam-alarm-state.json"   # backend/app/zam_alarm_send.py yazar
+
+
+def zam_alarm_durum(olay):
+    """Gönderici durum kaydı (yoksa {}): {"tetiklendi", "gonderilen", "tamam", ...}."""
+    try:
+        with open(ZAM_STATE, encoding="utf-8") as f:
+            return json.load(f).get(olay) or {}
+    except Exception:
+        return {}
+
+
+def zam_alarm(olay, dry):
+    """Zam alarmı abonelerine e-posta (scripts/zam-alarm-send.sh --tetik). Go-live kapısı (kontrol.json
+    "zam_alarm_gonder"), olay başına tek gönderim ve günlük kota GÖNDERİCİDE; burada --force yok, kapı aşılamaz.
+    Hata/zaman aşımı bekçiyi ASLA durdurmaz. Döner: gönderici çıktısı (Kaan'a giden e-postaya eklenir)."""
+    if dry:
+        print(f"[asgari] (dry) zam alarmı: scripts/zam-alarm-send.sh --olay {olay} --tetik")
+        return ""
+    if zam_alarm_durum(olay).get("tamam"):
+        return ""
+    try:
+        r = subprocess.run(["bash", os.path.join(REPO, "scripts", "zam-alarm-send.sh"), "--olay", olay, "--tetik"],
+                           cwd=REPO, capture_output=True, text=True, timeout=1800)
+        out = ((r.stdout or "") + (r.stderr or "")).strip()
+    except Exception as e:  # noqa: BLE001 — bekçi her durumda sürmeli
+        out = f"zam alarmı çalıştırılamadı: {e}"
+    if out:
+        print(out)
+    return out
+
+
+def deploy(msg, subject, body, dry, alarm=None):
     if dry:
         print(f"[asgari] (dry) commit+deploy: {msg}")
+        if alarm:
+            zam_alarm(alarm, dry)
         return
     subprocess.call(["python3", "scripts/og-images.py", "--only", "asgari-ucret-hesaplama"], cwd=REPO)
     subprocess.call(["bash", "-c", '. scripts/lib/gitsync.sh && git_sync >/dev/null 2>&1; git_add_commit "$1" data/asgari-ucret.json public/og/asgari-ucret-hesaplama.png',
@@ -134,6 +173,10 @@ def deploy(msg, subject, body, dry):
         sh('python3 scripts/wait-live.py "https://parafomo.com/asgari-ucret-hesaplama/" --timeout 600 && '
            'python3 scripts/indexnow.py https://parafomo.com/asgari-ucret-hesaplama/; '
            '/root/.venvs/parafomo/bin/python scripts/gsc-sitemap.py --force')
+        if alarm:  # yalnız yayın başarılıysa (e-postadaki bağlantı yeni rakamlı sayfaya gitsin)
+            ozet = zam_alarm(alarm, dry)
+            if ozet:
+                body += "\n\nZam alarmı: " + ozet
     subprocess.call(["python3", os.path.join(REPO, "agent", "notify.py"), "alert", "--key", "asgari-ucret",
                      "--subject", subject, "--body", body, "--force"], cwd=REPO)
 
@@ -169,6 +212,17 @@ def main(argv):
 
     in_window = (today.month == 12 and today.day >= 10) or (today.month == 1 and today.day <= 10)
     hedef = today.year + 1 if today.month == 12 else today.year
+    if yeni and in_window:
+        # Zam alarmı yeniden denemesi: açıklama gönderimi tetiklendiyse (deploy başarılı) ama bitmediyse
+        # (kapı sonradan açıldı / günlük kota / SMTP hatası) açıklamadan sonraki 2 gün içinde tamamla.
+        olay = f"asgari-{yeni['yil']}"
+        try:
+            gun = (today - dt.date.fromisoformat(yeni.get("aciklanma") or "")).days
+        except ValueError:
+            gun = 99
+        durum = zam_alarm_durum(olay)
+        if 0 <= gun <= 2 and durum and not durum.get("tamam"):
+            zam_alarm(olay, dry)
     if not in_window or yeni or g["yil"] >= hedef:
         if dry:
             print(f"[asgari] pencere dışı ya da {hedef} zaten var — çıkış")
@@ -240,7 +294,7 @@ def main(argv):
             "\n\nLütfen resmî açıklamayla doğrula. Yanlışsa data/asgari-ucret.json içinde yeni=null yap ve deploy et "
             "(ya da doğru net/brütü yaz).")
     deploy(f"veri: {hedef} asgari ücret açıklandı — net {net} TL (otomatik, {len(hosts)} kaynak)",
-           f"Asgari ücret {hedef}: net {net:,.2f} TL yayınlandı (doğrula)", body, dry)
+           f"Asgari ücret {hedef}: net {net:,.2f} TL yayınlandı (doğrula)", body, dry, alarm=f"asgari-{hedef}")
     if not dry:  # resmî rakamla "asgari ücret belli oldu" Short'u (arka planda; kendi kilidi var)
         subprocess.Popen(["python3", os.path.join(REPO, "scripts", "event-short.py")],
                          stdout=open(os.path.join(REPO, "logs", "event-short.log"), "a"),

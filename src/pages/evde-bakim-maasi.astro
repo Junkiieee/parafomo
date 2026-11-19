@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ZamAlarmi from '../components/ZamAlarmi.astro';
+import ZamHubLink from '../components/ZamHubLink.astro';
 import { existsSync as __exists } from 'node:fs';
 import { join as __join } from 'node:path';
 // Engelli maaşı sayfası paralel geliştiriliyordu: dosyası yoksa link verilmez
 const hasEngelli = __exists(__join(process.cwd(), 'src', 'pages', 'engelli-maasi.astro'));
 import Newsletter from '../components/Newsletter.astro';
+import { ZAM_SEZONU } from '../data/zam-sezonu';
 import au from '../../data/asgari-ucret.json';
 import em from '../../data/emekli-memur.json';
 // Ocak zammı tahmini /memur-zammi-hesaplama ile ORTAK modülde (aynı TÜFE, aynı varsayım) — burada tekrar hesaplanmaz.
@@ -279,6 +281,7 @@ const breadcrumbs = [
       </section>
     )}
 
+    <ZamHubLink />
     <ZamAlarmi />
     <section class="table-block" id="gelir-sarti">
       <h2>Evde bakım maaşı gelir şartı: haneniz uygun mu?</h2>
@@ -514,7 +517,8 @@ const breadcrumbs = [
       <p class="table-note">Bu sayfa bilgilendirme amaçlıdır; hak sahipliğine Bakanlığın heyeti karar verir. Rakamlar Ekim 2026’da resmî metinlerden kontrol edildi; tahminler TÜİK verisiyle her güncellemede yeniden hesaplanır.</p>
     </section>
 
-    <Newsletter />
+    {/* Zam sezonunda tek e-posta sorusu yukarıdaki zam alarmı (src/data/zam-sezonu.ts) */}
+    {!ZAM_SEZONU && <Newsletter />}
   </div>
 
   <script is:inline define:vars={{ NG: kurus(G.net), NY: Y ? kurus(Y.net) : 0, GY: G.yil, YY: Y ? Y.yil : 0 }}>

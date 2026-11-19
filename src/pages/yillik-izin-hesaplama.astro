@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Newsletter from '../components/Newsletter.astro';
+import { ASGARI_YIL, ASGARI_BRUT } from '../data/vergi';
 
 // Yıllık ücretli izin: 4857 sayılı İş Kanunu md.53 (14/20/26 gün; 18 ve daha küçük / 50 ve daha
 // yukarı yaştakilere en az 20 gün; yer altı işlerinde +4 gün), md.56 (bölünme, hafta tatili ve
@@ -40,12 +41,15 @@ const D_YAS = 35;
 const d0Hak = yillikHak(D_YIL, D_YAS, false);
 const d0Kalan = 10;
 const d0 = ucret(DEFAULT_W, d0Kalan, 0.15);
-const UCRETLER = [33030, 50000, 75000, 100000];
+// İlk satır yürürlükteki brüt asgari ücret (data/asgari-ucret.json; 1 Ocak'ta asgari-ucret-watch.py yeni yıla taşır).
+// Sayfanın yıl etiketi de o yıl: izin süreleri kanunda sabit — yıla bağlı başka veri yok.
+const YIL = ASGARI_YIL;
+const UCRETLER = [ASGARI_BRUT, 50000, 75000, 100000];
 const GUNLER = [5, 10, 14, 20, 26];
 
 const faq = [
   {
-    q: 'Yıllık izin kaç gün? (2026)',
+    q: `Yıllık izin kaç gün? (${YIL})`,
     a: 'İş Kanunu md.53’e göre hizmet süresi 1 yıldan 5 yıla kadar (5 yıl dahil) olan işçiye 14 gün, 5 yıldan fazla 15 yıldan az olana 20 gün, 15 yıl (dahil) ve daha fazla olana 26 gün yıllık ücretli izin verilir. Yer altı işlerinde çalışanlara bu süreler 4’er gün artırılarak uygulanır. Süreler asgaridir; iş veya toplu sözleşmeyle artırılabilir.',
   },
   {
@@ -83,15 +87,15 @@ const breadcrumbs = [
 
 <BaseLayout
   image="/og/yillik-izin-hesaplama.png"
-  title="Yıllık İzin Hesaplama 2026: Kaç Gün, Kullanılmayan İzin Ücreti"
-  description="Yıllık izin hesaplama 2026: kıdeme göre 14, 20 veya 26 gün (İş Kanunu md.53), 50 yaş üstü en az 20 gün. Birikmiş izni ve kullanılmayan izin ücretini hesapla."
+  title={`Yıllık İzin Hesaplama ${YIL}: Kaç Gün, Kullanılmayan İzin Ücreti`}
+  description={`Yıllık izin hesaplama ${YIL}: kıdeme göre 14, 20 veya 26 gün (İş Kanunu md.53), 50 yaş üstü en az 20 gün. Birikmiş izni ve kullanılmayan izin ücretini hesapla.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
 >
   <div class="calc-wrap">
     <header class="calc-head">
       <p class="eyebrow">Hesaplayıcı · Çalışan hakları</p>
-      <h1>Yıllık İzin Hesaplama (2026)</h1>
+      <h1>Yıllık İzin Hesaplama ({YIL})</h1>
       <p class="lede">
         Kıdeminize göre yıllık izniniz <strong>14, 20 veya 26 gündür</strong>; 18 yaş ve altı ile 50 yaş
         ve üstünde en az 20 gün. Kıdem ve yaşınızı girin; <strong>bu yılki hakkınızı, birikmiş izin
@@ -137,8 +141,8 @@ const breadcrumbs = [
         </p>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">Bu yılki yıllık izin hakkınız</span>
           <span class="result-value" id="out-hak">{d0Hak} gün</span>
         </div>
@@ -197,7 +201,7 @@ const breadcrumbs = [
     </section>
 
     <section class="table-block">
-      <h2>Kullanılmayan izin ücreti tablosu (brüt, 2026)</h2>
+      <h2>Kullanılmayan izin ücreti tablosu (brüt, {YIL})</h2>
       <table class="rate-table">
         <thead><tr><th>Brüt ücret</th>{GUNLER.map((g) => <th>{g} gün</th>)}</tr></thead>
         <tbody>
@@ -210,7 +214,7 @@ const breadcrumbs = [
         </tbody>
       </table>
       <p class="table-note">
-        33.030 ₺ = 2026 brüt asgari ücret. Formül: aylık brüt ÷ 30 × gün (md.59, son ücret üzerinden).
+        {fmt0(ASGARI_BRUT)} ₺ = {YIL} brüt asgari ücret. Formül: aylık brüt ÷ 30 × gün (md.59, son ücret üzerinden).
         Neti bulmak için SGK işçi payı, gelir vergisi ve binde 7,59 damga vergisi düşülür.
       </p>
     </section>
@@ -312,7 +316,7 @@ const breadcrumbs = [
     .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
     .calc-inputs input, .calc-inputs select {
       font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600; color: var(--text);
-      padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 0.6rem 0.7rem; border: 1px solid var(--input-border); border-radius: var(--radius-sm);
       background: var(--bg); width: 100%;
     }
     .calc-inputs input:focus, .calc-inputs select:focus {
