@@ -71,6 +71,7 @@ echo "[*] Halka arz takvimi çekiliyor"
 python3 "$REPO/scripts/fetch-halka-arz.py" 2>&1 | sed 's/^/    [halka-arz] /' || echo "UYARI: halka arz takvimi güncellenemedi (devam)"
 echo "[*] Altın fiyatları çekiliyor"
 python3 "$REPO/scripts/altin-fiyat.py" 2>&1 | sed 's/^/    [altin] /' || echo "UYARI: altın fiyatı güncellenemedi (mevcut korunur, devam)"
+python3 "$REPO/scripts/altin-gecmis.py" 2>&1 | sed 's/^/    [altin-gecmis] /' || true
 echo "[*] Dolar endeksi (DXY) çekiliyor"
 python3 "$REPO/scripts/dxy.py" 2>&1 | sed 's/^/    [dxy] /' || echo "UYARI: dolar endeksi güncellenemedi (mevcut korunur, devam)"
 echo "[*] Altın getiri analizi hesaplanıyor"

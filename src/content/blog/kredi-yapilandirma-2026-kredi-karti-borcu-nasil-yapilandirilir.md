@@ -96,7 +96,7 @@ Tablodan çıkan ders açık: 12 aydan 48 aya geçmek aylık taksiti yaklaşık 
 
 ## Yapılandırmanın artıları ve eksileri
 
-| | Artıları | Eksileri |
+| Kriter | Artıları | Eksileri |
 |--|----------|----------|
 | **Aylık yük** | Taksit düşer, bütçe nefes alır | Borç yıllarca sürer |
 | **Toplam maliyet** | Gecikme faizi ve takip masraflarını durdurur | Uzun vadede toplam faiz belirgin artar |

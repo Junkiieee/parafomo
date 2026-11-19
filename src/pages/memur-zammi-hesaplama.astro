@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ZamAlarmi from '../components/ZamAlarmi.astro';
+import ZamHubLink from '../components/ZamHubLink.astro';
 import Newsletter from '../components/Newsletter.astro';
+import { ZAM_SEZONU } from '../data/zam-sezonu';
 import ZamTutarTablosu from '../components/ZamTutarTablosu.astro';
 import em from '../../data/emekli-memur.json';
 import { yilDa } from '../data/yil';
@@ -135,6 +137,7 @@ const breadcrumbs = [
       Aralık 2026 enflasyonu açıklanınca belli olur ve bu sayfa kendiliğinden güncellenir.
     </p>
 
+    <ZamHubLink giris="Memur zammını emekli zammı, asgari ücret ve kira artışıyla birlikte görmek için" />
     <ZamAlarmi />
     <section class="table-block">
       <h2>Kesinleşen aylık enflasyon (Temmuz–Aralık 2026)</h2>
@@ -219,7 +222,8 @@ const breadcrumbs = [
       {faq.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
     </section>
 
-    <Newsletter />
+    {/* Zam sezonunda tek e-posta sorusu yukarıdaki zam alarmı (src/data/zam-sezonu.ts) */}
+    {!ZAM_SEZONU && <Newsletter />}
   </div>
 
   <script is:inline define:vars={{ cumKnown, remaining, TS2: TS_H2_2026 / 100, TS1: TS_H1_2027 / 100, ASSUME }}>

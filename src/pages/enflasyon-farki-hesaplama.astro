@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ZamAlarmi from '../components/ZamAlarmi.astro';
 import Newsletter from '../components/Newsletter.astro';
+import { ZAM_SEZONU } from '../data/zam-sezonu';
 import em from '../../data/emekli-memur.json';
 import { nextRelease } from '../data/tuik';
 // Hesap /memur-zammi-hesaplama ve /emekli-zammi-hesaplama ile ORTAK modülde: üç sayfa her zaman aynı rakamı verir.
@@ -241,7 +242,8 @@ const dataset = {
       {faq.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
     </section>
 
-    <Newsletter />
+    {/* Zam sezonunda tek e-posta sorusu yukarıdaki zam alarmı (src/data/zam-sezonu.ts) */}
+    {!ZAM_SEZONU && <Newsletter />}
   </div>
 
   <script is:inline define:vars={{ cumKnown, TS2, TS1: TS_H1_2027 / 100, ME }}>

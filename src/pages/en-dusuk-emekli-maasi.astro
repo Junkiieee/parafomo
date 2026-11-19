@@ -2,7 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ZamAlarmi from '../components/ZamAlarmi.astro';
 import { ekDan, ekI } from '../data/ek';
+import ZamHubLink from '../components/ZamHubLink.astro';
 import Newsletter from '../components/Newsletter.astro';
+import { ZAM_SEZONU } from '../data/zam-sezonu';
 import em from '../../data/emekli-memur.json';
 // Zam tahmini /emekli-zammi-hesaplama ile ORTAK modülde — burada tekrar hesaplanmaz.
 import { PERIOD, sskProj, memurProj, remaining, cumKnown } from '../data/zam2027';
@@ -115,6 +117,7 @@ const breadcrumbs = [
       </p>
     </section>
 
+    <ZamHubLink giris="Emekli zammını memur zammı, asgari ücret ve kira artışıyla birlikte görmek için" />
     <ZamAlarmi />
     <section class="table-block">
       <h2>Emekli maaşı ödeme günleri</h2>
@@ -165,7 +168,8 @@ const breadcrumbs = [
       {faq.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
     </section>
 
-    <Newsletter />
+    {/* Zam sezonunda tek e-posta sorusu yukarıdaki zam alarmı (src/data/zam-sezonu.ts) */}
+    {!ZAM_SEZONU && <Newsletter />}
   </div>
 
   <script is:inline define:vars={{ ZSSK: sskProj, ZMEM: memurProj.zam, TABAN: T.tutar }}>

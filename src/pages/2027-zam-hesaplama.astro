@@ -5,6 +5,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ZamAlarmi from '../components/ZamAlarmi.astro';
 import Newsletter from '../components/Newsletter.astro';
+import { ZAM_SEZONU } from '../data/zam-sezonu';
 import au from '../../data/asgari-ucret.json';
 import kira from '../../data/kira-artis-2026.json';
 import tufe from '../../data/tufe-aylik.json';
@@ -62,6 +63,7 @@ const breadcrumbs = [
 <BaseLayout
   title={`2027 Zam Hesaplama: Ocak'ta Maaşın ve Kiran Ne Olacak?`}
   description={`Emekli zammı ${final ? '' : 'tahmini '}%${nf(sskProj * 100)}, memur %${nf(memurProj.zam * 100)}, kira tavanı %${nf(KIRA_ORAN)}${ASG_YENI_NET ? `, asgari ücret ${fmt(ASG_YENI_NET)} TL` : ', asgari ücret senaryoları'} tek hesapta. Gelirini ve kiranı gir, Ocak 2027'de elinde ne kalacağını gör.`}
+  image="/og/2027-zam-hesaplama.png"
   faq={faq}
   breadcrumbs={breadcrumbs}
 >
@@ -187,7 +189,8 @@ const breadcrumbs = [
       ))}
     </section>
 
-    <Newsletter />
+    {/* Zam sezonunda tek e-posta sorusu yukarıdaki zam alarmı (src/data/zam-sezonu.ts) */}
+    {!ZAM_SEZONU && <Newsletter />}
   </div>
 
   <script is:inline define:vars={{ SSK: sskProj, MEMUR: memurProj.zam, KIRA: KIRA_ORAN / 100, ASG_NET, ASG_YENI_NET, FINAL: final }}>

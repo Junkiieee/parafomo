@@ -59,6 +59,7 @@ CODES = {  # kod → (önem, açıklama, nasıl düzeltilir)
     "not_indexed": ("UYARI", "14+ gündür yayında ama Google indekslememiş", "iç link ver, içeriği güçlendir, IndexNow/sitemap"),
     "year_stale": ("UYARI", "title'daki yıl eskimek üzere/eskidi", "yeni yılı title + içerikte güncelle"),
     "tahmin_stale": ("UYARI", "title 'tahmin' diyor ama dönemi başladı (rakam kesinleşti)", "kesin rakamı yaz, 'tahmin'i kaldır ya da sonraki döneme geç"),
+    "rehber_missing": ("UYARI", "araç sayfasının elle seçilmiş rehberi (tools.ts REHBER) artık yok", "silinen/yönlendirilen yazının yerine var olan bir rehber yaz"),
     "slash_link": ("BİLGİ", "sonu '/' olmayan iç link (301 adımı)", "href'i '/' ile bitir"),
     "img_no_alt": ("BİLGİ", "alt niteliği hiç olmayan görsel", "anlamlı alt ekle (dekoratifse alt=\"\")"),
     "thin": ("BİLGİ", "ince içerik (<250 kelime)", "SSS/tablo/açıklama ekle"),
@@ -307,7 +308,25 @@ def static_audit():
         if len(ps) > 1:
             for pth in ps:
                 add("dup_desc", pth, f"{len(ps)} sayfa")
+    for tool, slug in rehber_missing():
+        issues.append({"code": "rehber_missing", "sev": CODES["rehber_missing"][0], "path": tool, "detail": f"/blog/{slug}/ yok"})
     return pages, issues
+
+
+def rehber_missing():
+    """src/data/tools.ts REHBER: araç sayfalarının elle seçilmiş "Konuyu öğren" yazıları. Yazı silinip worker'da
+    yönlendirilince liste sessizce kısalıyordu (2026-11-19: /faiz-hesaplama/ hiç rehber göstermiyordu)."""
+    try:
+        src = open(os.path.join(ROOT, "src", "data", "tools.ts"), encoding="utf-8").read()
+        blog = os.path.join(ROOT, "src", "content", "blog")
+        mevcut = {f.rsplit(".", 1)[0] for f in os.listdir(blog) if f.endswith((".md", ".mdx"))}
+    except OSError:
+        return []
+    m = re.search(r"const REHBER[^=]*=\s*\{(.*?)\n\};", src, re.S)
+    out = []
+    for tool, lst in re.findall(r"'(/[^']+/)':\s*\[([^\]]*)\]", m.group(1) if m else ""):
+        out += [(tool, slug) for slug in re.findall(r"'([^']+)'", lst) if slug not in mevcut]
+    return out
 
 
 def google_layer(pages, issues, budget, ages):

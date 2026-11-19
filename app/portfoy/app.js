@@ -1290,8 +1290,8 @@ function openDetailDialog(h) {
         ? '&symbol=' + encodeURIComponent(h.symbol) + '&name=' + encodeURIComponent(TYPE.bist.name(h.symbol))
         : '';
       const r = await (await fetch(API_BASE + '/public/news?asset_type=' + h.asset_type + q)).json();
-      // yalnız http(s) bağlantılar: "javascript:" gibi şemalar tıklanınca betik çalıştırır
-      const items = (r.items || []).filter(n => /^https?:\/\//i.test(n.u || ''));
+      // Yalnız http(s) bağlantı: esc() tırnakları kaçırır ama javascript: adresini durdurmaz (denetim 2026-11-19 web-teknik-6).
+      const items = (r.items || []).filter(n => /^https?:\/\//i.test(String(n.u || '')));
       if (!items.length) return;
       const el = dlg.querySelector('#dnews');
       el.hidden = false;

@@ -4,10 +4,18 @@
  * Yayına alırken hosting panelinden (Cloudflare/Netlify) ortam değişkeni gir:
  *   PUBLIC_GA_ID            -> Google Analytics 4 (örn. G-XXXXXXX)
  *   PUBLIC_PLAUSIBLE_DOMAIN -> Plausible (örn. parafomo.com)
+ *   PUBLIC_ADSENSE_CLIENT   -> Google AdSense yayıncı kimliği (örn. ca-pub-1234567890123456). Boşken HİÇBİR reklam kodu,
+ *                              doğrulama meta'sı ya da /ads.txt üretilmez (src/pages/[adsdosya].txt.ts). Doluysa:
+ *                              google-adsense-account meta'sı (site doğrulaması) + adsbygoogle.js YALNIZ çerez onayı
+ *                              (pf-cerez = kabul → ad_storage granted) verildikten ve sayfa yüklendikten sonra.
+ *                              Reklam alanı (ins.adsbygoogle) henüz yok; otomatik reklamlar AdSense panelinden açılır.
  * Cloudflare Web Analytics kullanırsan onu Cloudflare panelinden otomatik enjekte ettir.
  */
 const GA = import.meta.env.PUBLIC_GA_ID || 'G-4KNGH3574V';
 const PLAUSIBLE = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
+// Biçim tutmazsa (yanlış/boş değer) kapalı kalır: sahte kimlikle reklam kodu yayına çıkmasın.
+const ADSENSE = String(import.meta.env.PUBLIC_ADSENSE_CLIENT ?? '').trim();
+const ADS_ON = /^ca-pub-\d{10,20}$/.test(ADSENSE);
 ---
 {GA && (
   <>
@@ -39,6 +47,28 @@ const PLAUSIBLE = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
       else window.addEventListener('load', function(){ setTimeout(loadGtag, 1); }, { once: true });
     </script>
   </>
+)}
+{ADS_ON && <meta name="google-adsense-account" content={ADSENSE} />}
+{ADS_ON && (
+  <script is:inline define:vars={{ ADSENSE }}>
+    (function () {
+      var yuklendi = false;
+      function onayli() { try { return localStorage.getItem('pf-cerez') === 'kabul'; } catch (e) { return false; } }
+      function yukle() {
+        if (yuklendi || !onayli()) return;
+        yuklendi = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.crossOrigin = 'anonymous';
+        s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(ADSENSE);
+        document.head.appendChild(s);
+      }
+      // Onay bu sayfada verilirse (CerezOnay 'pf-cerez' olayı) hemen; önceden verildiyse sayfa yüklendikten sonra.
+      window.addEventListener('pf-cerez', function (e) { if (e.detail === 'kabul') yukle(); });
+      if (document.readyState === 'complete') setTimeout(yukle, 1);
+      else window.addEventListener('load', function () { setTimeout(yukle, 1); }, { once: true });
+    })();
+  </script>
 )}
 {PLAUSIBLE && (
   <script is:inline defer data-domain={PLAUSIBLE} src="https://plausible.io/js/script.js"></script>

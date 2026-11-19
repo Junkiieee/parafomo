@@ -26,13 +26,13 @@
 # Şablon: content-templates/blog/2027-zamlari-yeniden-degerleme-orani-rehberi.md.j2
 # Üret: python3 scripts/live-posts.py  (veri: data/yeniden-degerleme.json)
 {% if tahmin %}
-title: "{{ H }} Yeniden Değerleme Oranı Tahmini {{ oran1 }}: {{ H }}'de Neler Ne Kadar Zamlanacak?"
-description: "{{ H }} yeniden değerleme oranı tahmini {{ oran1 }} ({{ y.son_ay_adi }} Yİ-ÜFE). MTV, harçlar, IMEI, trafik cezası ve emlak vergisi {{ H }}'de ne kadar artacak? Kalem kalem tablo."
+title: "{{ H }} Zam Listesi Tahmini: MTV, Harç, Pasaport, Cezalar Ne Kadar?"
+description: "{{ H }}'de neler zamlanıyor? MTV, pasaport, ehliyet, IMEI, trafik cezası, emlak vergisi: yeniden değerleme oranı tahmini {{ oran1 }} ({{ y.son_ay_adi }}) ile kalem kalem."
 {% elif y.durum == 'hesap' %}
-title: "{{ H }} Yeniden Değerleme Oranı {{ oran2 }}: Neler Ne Kadar Zamlanacak?"
-description: "{{ H }} yeniden değerleme oranı {{ oran2 }} olarak kesinleşti ({{ kesin_gun }}). MTV, harçlar, IMEI, trafik cezası ve emlak vergisi {{ H }}'de ne kadar artacak? Kalem kalem tablo."
+title: "{{ H }} Zam Listesi: MTV, Harç, Pasaport ve Cezalar Ne Kadar Olacak?"
+description: "{{ H }}'de neler zamlanıyor? MTV, pasaport, ehliyet, IMEI, trafik cezası, emlak vergisi: kesinleşen {{ oran2 }} yeniden değerleme oranıyla kalem kalem tutarlar."
 {% else %}
-title: "{{ H }} Yeniden Değerleme Oranı {{ oran2 }} Resmî Gazete'de: {{ H }} Zamları"
+title: "{{ H }} Zam Listesi: MTV, Harç, Pasaport ve Cezalar Kalem Kalem"
 description: "{{ H }} yeniden değerleme oranı VUK tebliğiyle {{ oran2 }} ilan edildi.{% if y.uygulanan is not none %} MTV ve harçlarda Cumhurbaşkanı kararıyla {{ y.uygulanan|pct(2) }} uygulanacak.{% endif %} MTV, pasaport-ehliyet harcı, IMEI, trafik cezası ve emlak vergisinin {{ H }} tutarları."
 {% endif %}
 pubDate: 2026-10-13
@@ -85,7 +85,7 @@ shorts_visuals:
 > **Güncelleme ({{ kesin_gun }}):** TÜİK Ekim {{ P }} Yİ-ÜFE verisini açıkladı; **{{ H }} yeniden değerleme oranı {{ oran2 }}** olarak {{ 'kesinleşti' if y.durum == 'hesap' else 'kesinleşti ve VUK tebliğiyle Resmî Gazete’de ilan edildi' }}.{% if y.uygulanan is not none %} MTV, harç ve damga vergisinde Cumhurbaşkanı kararıyla **{{ y.uygulanan|pct(2) }}** uygulanacak.{% endif %} Aşağıdaki tutarlar bu orana göre güncellendi; canlı hesap için [yeniden değerleme oranı](/yeniden-degerleme-orani/) sayfasına bak.
 
 {% endif %}
-**{{ H }} zamları** denince akla ilk gelen maaşlar olsa da, 1 Ocak'ta cebinden çıkan paranın büyük kısmını belirleyen tek bir sayı var: **yeniden değerleme oranı**. MTV'den pasaport harcına, trafik cezasından IMEI kayıt ücretine kadar onlarca kalem, her yıl bu oran kadar otomatik artar. Bu rehberde {{ H }}'de neyin, ne kadar zamlanacağını gerçek 2026 tutarları ve güncel Yİ-ÜFE verisiyle hesaplıyoruz.
+**{{ H }} zamları** denince akla ilk gelen maaşlar olsa da, 1 Ocak'ta cebinden çıkan paranın büyük kısmını belirleyen tek bir sayı var: [**{{ H }} yeniden değerleme oranı {{ oran_kisa }}**](/yeniden-degerleme-orani/). MTV'den pasaport harcına, trafik cezasından IMEI kayıt ücretine kadar onlarca kalem, her yıl bu oran kadar otomatik artar. Bu rehberde {{ H }}'de neyin, ne kadar zamlanacağını gerçek 2026 tutarları ve güncel Yİ-ÜFE verisiyle hesaplıyoruz.
 
 {% if tahmin %}
 Kısa cevap: {{ y.son_ay_adi }} verisi itibarıyla **{{ H }} yeniden değerleme oranı tahmini {{ oran_kisa }}**. Kesin oran {{ kgun }}'da netleşecek; aşağıdaki tüm rakamlar bu tahmine dayanır ve güncel hali [yeniden değerleme oranı](/yeniden-degerleme-orani/) sayfamızda her ay otomatik güncellenir.

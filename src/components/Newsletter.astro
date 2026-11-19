@@ -60,6 +60,7 @@ const {
         if (res.ok) {
           show(data.message || 'Onay e-postası gönderildi.', true);
           form.reset();
+          (window as any).gtag?.('event', 'generate_lead', { method: 'bulten', page_path: location.pathname });
         } else {
           const d = data.detail;
           show(typeof d === 'string' ? d : 'Geçerli bir e-posta adresi yaz.', false);
@@ -99,14 +100,16 @@ const {
   .nl-row input {
     flex: 1;
     background: var(--bg);
-    border: 1px solid var(--border);
+    border: 1px solid var(--input-border);
     border-radius: 999px;
     padding: 0.75rem 1.1rem;
     color: var(--text);
-    font-size: var(--step--1);
+    /* 16px altı alan iPhone Safari'de odakta sayfayı yakınlaştırıyordu (denetim 2026-11-19). */
+    font-size: max(16px, var(--step--1));
     font-family: inherit;
   }
-  .nl-row input:focus { outline: none; border-color: var(--brand); }
+  .nl-row input:focus { border-color: var(--brand); }
+  .nl-row input:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
   .nl-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
   .nl-consent { display: flex; gap: 0.5rem; align-items: flex-start; font-size: var(--step--2, 0.8rem); color: var(--text-soft); line-height: 1.4; cursor: pointer; }
   .nl-consent input { margin-top: 0.2rem; accent-color: var(--brand); }

@@ -5,7 +5,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { SITE } from '../site.config';
-import { eventResult, fillTitle } from '../data/event-result';
+import { eventResult, eventModified, fillTitle } from '../data/event-result';
 
 const WINDOW_MS = 48 * 60 * 60 * 1000;
 const MAX_URLS = 1000;
@@ -28,7 +28,7 @@ export const GET: APIRoute = async () => {
       const ev = eventResult(sonuc);
       const title = (ev?.done && fillTitle(sonucBaslik, ev.vars)) || rawTitle;
       const base = updatedDate ?? pubDate;
-      const evModified = ev?.done ? new Date(ev.date + 'T12:00:00Z') : null;
+      const evModified = ev?.done ? eventModified(ev) : null;
       const pub = clamp(pubDate);
       const modified = clamp(evModified && evModified > base ? evModified : base);
       return { id: post.id, title, pub, modified, date: modified > pub ? modified : pub };

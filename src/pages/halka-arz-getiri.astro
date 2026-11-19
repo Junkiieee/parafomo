@@ -62,6 +62,7 @@ const datasetLd = {
 ---
 
 <BaseLayout
+  image="/og/halka-arz-getiri.png"
   title={`${Y} Halka Arz Getirileri: Hangi Halka Arz Ne Kazandırdı?`}
   description={`${Y}${yilDa(Y)} BIST'e gelen ${data.count} halka arzın güncel getirisi tek tabloda. Ortalama %${fmt(data.avg_return_pct)} getiri, %${data.positive_pct}${ekI(data.positive_pct)} kârda. Halka arz fiyatına göre her gün güncellenir.`}
 >
@@ -185,6 +186,18 @@ const datasetLd = {
     </p>
   </section>
 
+  <Fragment slot="end">
+<script define:vars={{ built: data.updated }}>
+  async function checkUpdate() {
+    try {
+      const r = await fetch('/halka-arz-getiri.json?_=' + Date.now(), { cache: 'no-store' });
+      const d = await r.json();
+      if (d && d.updated && d.updated !== built) location.reload();
+    } catch { /* yoksay */ }
+  }
+  setInterval(() => { if (document.visibilityState === 'visible') checkUpdate(); }, 300000);
+</script>
+  </Fragment>
 </BaseLayout>
 
 <style>
@@ -243,13 +256,3 @@ const datasetLd = {
   }
 </style>
 
-<script define:vars={{ built: data.updated }}>
-  async function checkUpdate() {
-    try {
-      const r = await fetch('/halka-arz-getiri.json?_=' + Date.now(), { cache: 'no-store' });
-      const d = await r.json();
-      if (d && d.updated && d.updated !== built) location.reload();
-    } catch { /* yoksay */ }
-  }
-  setInterval(() => { if (document.visibilityState === 'visible') checkUpdate(); }, 300000);
-</script>

@@ -22,10 +22,13 @@ echo "[$(date -u '+%F %T UTC')] Fiyat tazeleme başladı"
 [ $DRY -eq 1 ] || git_sync >/dev/null 2>&1 || echo "UYARI: pull başarısız (devam)"
 
 python3 "$REPO/scripts/altin-fiyat.py" 2>&1 | sed 's/^/  [altin] /'
+# Günlük fiyat arşivi (altın türü sayfalarının "son günler" tablosu); yalnız gerçek kotasyon, gün içi son değer kalır.
+if [ $DRY -eq 1 ]; then python3 "$REPO/scripts/altin-gecmis.py" --dry-run 2>&1 | sed 's/^/  [altin-gecmis] /'
+else python3 "$REPO/scripts/altin-gecmis.py" 2>&1 | sed 's/^/  [altin-gecmis] /'; fi
 python3 "$REPO/scripts/dxy.py" 2>&1 | sed 's/^/  [dxy] /'
 python3 "$REPO/scripts/us-tahvil.py" 2>&1 | sed 's/^/  [tahvil] /'
 
-FILES=(data/altin-fiyat.json data/dxy.json data/us-tahvil.json)
+FILES=(data/altin-fiyat.json data/altin-fiyat-gecmis.json data/dxy.json data/us-tahvil.json)
 if git diff --quiet -- "${FILES[@]}"; then
   echo "  değişiklik yok"
   exit 0

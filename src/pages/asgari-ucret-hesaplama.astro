@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ZamAlarmi from '../components/ZamAlarmi.astro';
+import ZamHubLink from '../components/ZamHubLink.astro';
 import Newsletter from '../components/Newsletter.astro';
+import { ZAM_SEZONU } from '../data/zam-sezonu';
 
 import au from '../../data/asgari-ucret.json';
 import { yilDa, yilYa } from '../data/yil';
@@ -220,6 +222,7 @@ const breadcrumbs = [
       (brüt {fmt(BRUT)} ₺, net {fmt(NET)} ₺) esas alınmıştır{ACIKLANDI ? ` ve 1 Ocak ${YIL}${yilDa(YIL)} yürürlüğe girer` : ` ve 31 Aralık ${YIL}${yilYa(YIL)} kadar geçerlidir`}. Eksik günlü hesap 30 günlük SGK konvansiyonuna göre
       orantılanır; gerçek bordro, prim gün sayısı ve yan haklara göre değişebilir.
     </p>
+    <ZamHubLink giris="Asgari ücreti emekli ve memur zammı, kira artışıyla birlikte görmek için" />
     <ZamAlarmi />
 
     {!SEZON_METNI && (
@@ -382,7 +385,8 @@ const breadcrumbs = [
       ))}
     </section>
 
-    <Newsletter />
+    {/* Zam sezonunda tek e-posta sorusu yukarıdaki zam alarmı (src/data/zam-sezonu.ts) */}
+    {!ZAM_SEZONU && <Newsletter />}
   </div>
 
   <script is:inline define:vars={{ GUNLUK_BRUT, NET, BRUT, SGK_ISCI, ISSIZLIK_ISCI }}>

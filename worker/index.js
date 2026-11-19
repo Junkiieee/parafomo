@@ -133,9 +133,13 @@ function cachePolicy(path) {
   if (/\.(?:webp|jpe?g|png|svg|ico|avif)$/.test(path)) return IMAGE;
   return null;
 }
-// Temel güvenlik başlıkları (denetim 2026-10-22: hiçbir sayfada yoktu). CSP bilinçli olarak yok —
-// inline script/stil ve gtag'i kırmamak için ayrı, test edilmiş bir adım gerektirir.
+// Temel güvenlik başlıkları (denetim 2026-10-22: hiçbir sayfada yoktu).
+// CSP (2026-11-19, denetim web-teknik-6 adım 1): yalnız script/bağlantı KISITLAMAYAN yönergeler — eklenti (<object>/<embed>)
+// yok, <base> ile başka köke yönlendirme yok, yalnız kendi sitemiz çerçeveleyebilir (X-Frame-Options ile aynı), http alt
+// kaynaklar https'e yükseltilir (dist'te 0 http:// kaynak). script-src/connect-src/default-src YOK: inline script'ler,
+// gtag/GA4 + Consent Mode, api.parafomo.com form POST'ları ve canlı fiyat fetch'leri etkilenmez. Tam CSP ayrı, testli adım.
 const SECURITY_HEADERS = {
+  'Content-Security-Policy': "object-src 'none'; base-uri 'self'; frame-ancestors 'self'; upgrade-insecure-requests",
   'Strict-Transport-Security': 'max-age=31536000',
   'X-Content-Type-Options': 'nosniff',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
