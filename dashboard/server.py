@@ -56,7 +56,11 @@ KONTROLLER = [
     ("instagram", "Instagram paylaşımı", "Günün ilk videosu (19:00 Para hikâyesi) Instagram Reels'e de gider (günde 1 Reel); "
                                          "videolar Facebook'ta da paylaşılır."),
     ("web_icerik", "Web: yeni içerik", "Hafta içi her sabah siteye yeni yazı/sayfa eklenir."),
+    ("zam_alarm_gonder", "Zam alarmı e-postası", "Açıkken asgari ücret / emekli-memur zammı açıklandığı gün zam alarmı abonelerine "
+                         "tek e-posta gider (backend/app/zam_alarm_send.py). İlk açmadan önce metni deneme e-postasıyla gör."),
 ]
+# Kayıt yoksa KAPALI sayılanlar (gönderici de yokluğu kapalı sayar; panel aynı şeyi göstersin).
+VARSAYILAN_KAPALI = {"zam_alarm_gonder"}
 
 class GuvenlikBasliklari:
     """Her yanıta nosniff; /api/ yanıtlarına (kendi Cache-Control'ü olmayan) no-store — veri tarayıcı/ara önbellekte
@@ -262,7 +266,7 @@ def kontrol_durum():
             ek = f" Şu an {dt.date.fromisoformat(b).strftime('%d.%m.%Y')} tarihine kadar açık." if acik else ""
             out.append({"anahtar": anahtar, "ad": ad, "aciklama": aciklama + ek, "acik": acik})
         else:
-            out.append({"anahtar": anahtar, "ad": ad, "aciklama": aciklama, "acik": bool(k.get(anahtar, True))})
+            out.append({"anahtar": anahtar, "ad": ad, "aciklama": aciklama, "acik": bool(k.get(anahtar, anahtar not in VARSAYILAN_KAPALI))})
     return out
 
 
