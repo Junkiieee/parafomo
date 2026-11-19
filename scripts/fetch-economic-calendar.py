@@ -223,10 +223,14 @@ def tuik_inflation_events(today):
         d = date(y, m, 3)
         while d.weekday() >= 5:
             d += timedelta(days=1)
+        hook = "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı."
+        if m in (1, 7):  # Aralık / Haziran verisi: Ocak / Temmuz emekli ve memur zammı o gün kesinleşir
+            zam = "Ocak" if m == 1 else "Temmuz"
+            hook = (f"{zam} emekli ve memur zammı bu veriyle kesinleşir — yılın en çok aranan günlerinden: "
+                    "/emekli-zammi-hesaplama, /memur-zammi-hesaplama sonuç kutuları + açıklama kartı/Short hazır olsun.")
         out.append({
             "date": d.isoformat(), "time": "10:00", "region": "TR", "impact": "High",
-            "title": "TÜİK enflasyon (TÜFE) verisi", "source": "tuik-rule",
-            "hook": "Enflasyon verisi öncesi 'enflasyon nasıl okunur / paranı nasıl korursun' explainer'ı.",
+            "title": "TÜİK enflasyon (TÜFE) verisi", "source": "tuik-rule", "hook": hook,
         })
         m += 1
         if m > 12:
