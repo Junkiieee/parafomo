@@ -156,19 +156,54 @@
    },
    {
     "line": "s2",
-    "vs": {
+    "etiket": "Örnek",
+    "liste": {
      "sol": {
-      "k": "kadin",
-      "etiket": "Ayşe",
-      "deger": "Nakit, çekmecede"
+      "baslik": "AYŞE",
+      "kalemler": [
+       "Aynı maaş",
+       "%10 kenara",
+       "Çekmecede",
+       "~Altın"
+      ]
      },
      "sag": {
-      "k": "erkek",
-      "etiket": "Mert",
-      "deger": "Her yıl sonu altın"
-     }
+      "baslik": "MERT",
+      "kalemler": [
+       "Aynı maaş",
+       "%10 kenara",
+       "Yıl sonu altın"
+      ]
+     },
+     "kelime": "Mert",
+     "y": 300
     },
-    "etiket": "Örnek"
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 300,
+      "y": 1130,
+      "olcek": 0.55,
+      "giris": "yok"
+     },
+     {
+      "id": "m",
+      "k": "erkek",
+      "ifade": "normal",
+      "x": 780,
+      "y": 1130,
+      "olcek": 0.55,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "altına",
+        "ifade": "mutlu"
+       }
+      ]
+     }
+    ]
    },
    {
     "line": "s3",

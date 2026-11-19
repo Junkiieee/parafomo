@@ -342,6 +342,9 @@ SAHNE = f"""Sahne alanları (hepsi isteğe bağlı, sahne başına 1-3 öğe; sa
 - "sayi": {{"deger": sayı, "bas": başlangıç (isteğe bağlı), "birim": "₺|%|gram", "kelime": "sayının geçtiği kelime", "y": 450-650, "not": "kısa açıklama", "say": true}}
 - "vs": {{"sol": {{"k": KARAKTER, "etiket": "…", "deger": "…"}}, "sag": {{…}}}}
 - "cubuk": {{"a": {{"etiket": "…", "deger": sayı}}, "b": {{"etiket": "…", "deger": sayı}}, "birim": "…", "not": "…"}}
+- "liste": {{"sol": {{"baslik": "AYŞE", "kalemler": ["Aynı maaş", "~Altın"]}}, "sag": {{"baslik": "MERT", "kalemler": ["…"]}}, "kelime": "çizginin geldiği kelime", "y": 300}}
+   (iki kişiyi karşılaştıran defter listesi; sütun başına 2-5 kısa kalem, her biri en çok 14 harf; "~" ile başlayan kalemin üstü çizilir;
+   iki karakter isteğe bağlı, liste altında y 1100-1150, olcek 0.55; vs yerine kalem kalem farkı anlatırken kullan)
 - "dekor": [{{"d": DEKOR, "adet": 1-24, "kalan": sayı (isteğe bağlı, kelimede soluklaşır), "kelime": "…", "x": 540, "y": 1000-1150, "olcek": 0.3-2}}]
 - "kaynak": "Kaynak: … (rakamlı sahnelerde ZORUNLU)"
 - "soru": true (yalnız soru satırında: yorum balonu)
