@@ -115,8 +115,8 @@ const breadcrumbs = [
             <select id="in-to">{M.map((m) => <option value={m.ay} selected={m.ay === SON.ay}>{ayAdi(m.ay)}</option>)}</select>
           </label>
         </form>
-        <div class="calc-results" aria-live="polite">
-          <div class="result-main">
+        <div class="calc-results">
+          <div class="result-main" aria-live="polite" aria-atomic="true">
             <span class="result-label">Bitiş ayındaki karşılığı</span>
             <span class="result-value" id="out-val">—</span>
           </div>

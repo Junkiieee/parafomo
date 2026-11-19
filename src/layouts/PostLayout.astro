@@ -242,7 +242,7 @@ const breadcrumbs = [
   .byline { display: inline-flex; align-items: center; gap: 0.6rem; font-size: var(--step--1); color: var(--text-soft); }
   .byline a { color: inherit; text-decoration: none; }
   .byline a:hover { text-decoration: underline; }
-  .avatar { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--grad); color: #ffffff; font-weight: 700; }
+  .avatar { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--grad-btn); color: #ffffff; font-weight: 700; }
 
   .post-body-wrap {
     display: grid;
@@ -258,8 +258,14 @@ const breadcrumbs = [
   /* width:100% + min-width:0: otomatik kenar boşluklu grid öğesi içeriğe göre daralıp en geniş tablonun boyuna büyüyordu
      → telefonda bütün yazı sütunu yana taşıyordu (2026-11-17 taşma taraması). Geniş tablo artık kendi içinde kayar. */
   .post-content { width: 100%; min-width: 0; max-width: var(--maxw-prose); margin: 0 auto; font-size: 1.02rem; line-height: 1.7; }
-  @media (max-width: 640px) {
-    .post-content :global(table) { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  /* Markdown tabloları .table-scroll kutusunda (src/integrations/rehype-table-scroll.mjs): geniş tablo kendi içinde kayar,
+     tablo semantiği korunur (eskiden mobilde table'a display:block veriliyordu), kutu klavyeyle odaklanır. */
+  .post-content :global(.table-scroll) { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.6rem 0; }
+  .post-content :global(.table-scroll:focus-visible) { outline: 2px solid var(--brand); outline-offset: 2px; }
+  .post-content :global(.table-scroll > table) { margin: 0; }
+  @media (max-width: 600px) {
+    /* Dar ekranda sütunlar ezilip metin dikine uzamasın: hücre en az ~7rem, sığmazsa tablo yana kayar. */
+    .post-content :global(.table-scroll th), .post-content :global(.table-scroll td) { min-width: 7rem; padding: 0.5rem 0.6rem; }
   }
   .post-content :global(h2) { font-size: var(--step-2); margin-top: 2.4rem; scroll-margin-top: 90px; }
   .post-content :global(h3) { font-size: var(--step-1); margin-top: 1.8rem; scroll-margin-top: 90px; }

@@ -132,8 +132,8 @@ const updatedLabel = new Date(yd.updated + 'T12:00:00').toLocaleDateString('tr-T
         <p class="form-note">2026'da olduğu gibi indirimli artış ihtimali için oranı değiştirip senaryo görebilirsiniz (ör. 2026'da %18,95 uygulandı).</p>
       </form>
 
-      <div class="calc-results" aria-live="polite">
-        <div class="result-main">
+      <div class="calc-results">
+        <div class="result-main" aria-live="polite" aria-atomic="true">
           <span class="result-label">{HEDEF} tahmini yıllık MTV</span>
           <span class="result-value" id="out-new">₺{fmt(D.mtv * carpan)}</span>
         </div>

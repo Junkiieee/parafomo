@@ -7,6 +7,7 @@ import sitemap from '@astrojs/sitemap';
 import trailingSlashLinks from './src/integrations/trailing-slash-links.mjs';
 import coverVariants from './src/integrations/cover-variants.mjs';
 import stripPipelineFiles from './src/integrations/strip-pipeline-files.mjs';
+import rehypeTableScroll from './src/integrations/rehype-table-scroll.mjs';
 import { readJson, asDate, lastmodByPage, lastmodByIpo, dataDir } from './src/data/page-lastmod.mjs';
 
 // Yayına alırken bu adresi kendi alan adınla değiştir.
@@ -143,6 +144,7 @@ export default defineConfig({
     }),
   ],
   markdown: {
+    rehypePlugins: [rehypeTableScroll],
     shikiConfig: {
       theme: 'github-dark',
       wrap: true,
