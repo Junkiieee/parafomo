@@ -1,5 +1,9 @@
 # Günlük Operasyon Günlüğü
 
+## 2026-11-19
+**Yayınlanan yazı:** [Mevduat Faiz Oranları 2026: Son 1 Yılda Ne Oldu?](/blog/mevduat-faiz-oranlari-2026-son-1-yil)
+Seçim kaynağı: fırsat motoru ("mevduat faiz oranları" hacim 56,5, YENI_YAZI; kuyruk+backlog boş, takvimde 1-3 gün içinde 🔴 olay yok, GSC fırsatları mevcut sayfalarca karşılanıyor; açı: TCMB TP.TRY.MT01-06 52 haftalık seri + stopaj sonrası net + TÜFE'ye göre reel getiri)
+
 ## 2026-11-18
 **Yayınlanan yazı:** [İhtiyaç Kredisi Faiz Oranları 2026: Son 1 Yılda Ne Oldu?](/blog/ihtiyac-kredisi-faiz-oranlari-2026-son-1-yil)
 Seçim kaynağı: fırsat motoru ("ihtiyaç kredisi faiz oranları" hacim 9,4, YENI_YAZI; kuyruk+backlog boş, takvimde izinli 🔴 olay yok (FOMC tutanakları/UK CPI aile dışı), GSC fırsatları mevcut sayfalarca karşılanıyor; açı: TCMB TP.KTF10 52 haftalık seri + KKDF/BSMV dahil gerçek maliyet)
