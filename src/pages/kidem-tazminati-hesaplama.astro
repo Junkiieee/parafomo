@@ -16,6 +16,13 @@ const TAVAN_2027 = TAVAN * (1 + memurProj.zam);
 // ekleyince formül 2027 tavanını ikinci kez zamlayıp ikinci bir "2027 (tahmin)" satırı basıyordu (yıl geçişi denetimi).
 const HEDEF_YIL = +PERIOD[PERIOD.length - 1].slice(0, 4) + 1; // zam2027.ts dönemi → Ocak 2027
 const TAHMIN_VAR = !kt.donemler.some((d) => d.donem.includes(String(HEDEF_YIL)));
+// Sayfanın yıl etiketi yürürlükteki tavanın yılı (veriden): Ocak dönemi eklenince başlık/SSS kendiliğinden ilerler,
+// eklenmeden önce "2027" demez (seo-5 denetimi 2026-11-18: başlık elle "2026 ve Ocak 2027 … Tahmini" yazılıydı).
+const TAVAN_YIL = +CUR.baslangic.slice(0, 4);
+const ILK_YIL = +kt.donemler[0].baslangic.slice(0, 4);
+const BASLIK = TAHMIN_VAR
+  ? `Kıdem Tazminatı Hesaplama ${TAVAN_YIL} ve Ocak ${HEDEF_YIL} Tavan Tahmini`
+  : `Kıdem Tazminatı Hesaplama ${TAVAN_YIL}: Güncel Tavan ve Net Tutar`;
 const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
 const DAMGA = 0.00759; // binde 7,59
 
@@ -56,7 +63,7 @@ const faq = [
     a: `Kıdem tazminatı, çalıştığınız her tam yıl için bir aylık giydirilmiş brüt ücret tutarındadır: Kıdem tazminatı = giydirilmiş brüt aylık ücret × çalışılan yıl. Örneğin ${fmt(D.wage)} ₺ brüt ücretle ${D.years} yıl çalışan biri yaklaşık ${fmt(res.gross)} ₺ brüt tazminata hak kazanır; bundan yalnızca binde 7,59 damga vergisi kesilince eline yaklaşık ${fmt(res.net)} ₺ net geçer. Bir yıldan artan süreler de oranlanarak eklenir.`,
   },
   {
-    q: `Kıdem tazminatı tavanı 2026 ne kadar?`,
+    q: `Kıdem tazminatı tavanı ${TAVAN_YIL} ne kadar?`,
     a: `${TAVAN_DONEM} döneminde kıdem tazminatı tavanı ${fmt(TAVAN)} ₺'dir. Bu, her bir kıdem yılı için ödenecek tutarın üst sınırıdır: brüt ücretiniz tavandan yüksek olsa bile, her yıl için en fazla ${fmt(TAVAN)} ₺ üzerinden hesaplanır. Tavan her yıl Ocak ve Temmuz aylarında memur maaş katsayısına göre güncellenir.`,
   },
   ...(TAHMIN_VAR ? [
@@ -86,7 +93,7 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="Kıdem Tazminatı Hesaplama 2026 ve Ocak 2027 Tavan Tahmini"
+  title={BASLIK}
   description={`Kıdem tazminatı hesaplama: güncel tavan ${fmt(TAVAN)} ₺ (${TAVAN_DONEM})${TAHMIN_VAR ? `, Ocak 2027 tavan tahmini ≈${fmt(TAVAN_2027)} ₺` : ''}. Net tazminatı hesaplayın.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
@@ -96,7 +103,7 @@ const breadcrumbs = [
       <p class="eyebrow">Hesaplayıcı · İş & Tazminat</p>
       <h1>Kıdem Tazminatı Hesaplama</h1>
       <p class="lede">
-        Giydirilmiş brüt aylık ücretinizi ve çalışma sürenizi girin; <strong>2026 güncel
+        Giydirilmiş brüt aylık ücretinizi ve çalışma sürenizi girin; <strong>{TAVAN_YIL} güncel
         tavana göre brüt kıdem tazminatınızı, damga vergisini ve net eline geçecek tutarı</strong>
         anında görün.
       </p>
@@ -172,11 +179,11 @@ const breadcrumbs = [
     </section>
 
     <section class="table-block" id="tavan-2027">
-      <h2>Kıdem tazminatı tavanı: 2025-2026 ve Ocak 2027 tahmini</h2>
+      <h2>Kıdem tazminatı tavanı: {ILK_YIL}-{TAVAN_YIL}{TAHMIN_VAR && ` ve Ocak ${HEDEF_YIL} tahmini`}</h2>
       <p class="table-intro">
-        Tavan her yıl Ocak ve Temmuz'da memur maaş katsayısına göre güncellenir. Ocak 2027 satırı,
+        Tavan her yıl Ocak ve Temmuz'da memur maaş katsayısına göre güncellenir.{TAHMIN_VAR && <> Ocak 2027 satırı,
         <a href="/emekli-zammi-hesaplama/">Ocak 2027 memur zammı tahminimiz</a> (%{nf(memurProj.zam * 100)}) ile
-        hesaplanmış bir <strong>tahmindir</strong>; enflasyon verisi geldikçe kendiliğinden güncellenir.
+        hesaplanmış bir <strong>tahmindir</strong>; enflasyon verisi geldikçe kendiliğinden güncellenir.</>}
       </p>
       <table class="rate-table">
         <thead><tr><th>Dönem</th><th>Brüt tavan (kıdem yılı başına)</th><th>Değişim</th></tr></thead>

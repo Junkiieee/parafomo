@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { BU_YIL, yilDa } from '../data/yil';
 import Newsletter from '../components/Newsletter.astro';
 
 // Kaynaklar (doğrulama 2026-10-18/19):
@@ -109,7 +110,7 @@ const faq = [
     a: 'e-Devlet’e girip Gelir İdaresi Başkanlığı’nın “Vergi Borcu Sorgulama ve Ödeme” hizmetini açın ya da Dijital Vergi Dairesi’nde (dijital.gib.gov.tr) “Ödeme ve Borç İşlemleri > Borç Ödeme ve Detay” ekranına bakın. Araca ait MTV ve trafik cezası borcu için Dijital Vergi Dairesi’nin şifre gerektirmeyen “Hızlı Ödemeler > MTV ve Trafik Para Cezası Ödeme” ekranı da kullanılabilir. Emlak vergisi belediye alacağıdır, belediyeden sorgulanır.',
   },
   {
-    q: '2026’da gecikme zammı oranı ne kadar?',
+    q: `${BU_YIL}${yilDa(BU_YIL).replace("'", '’')} gecikme zammı oranı ne kadar?`,
     a: `Aylık %${nf(CUR, 1)}. Oran, 13 Kasım 2025 tarihli Resmî Gazete’de yayımlanan 10556 sayılı Cumhurbaşkanı Kararı’yla %4,5’ten %3,7’ye indirildi ve o günden beri uygulanıyor. Ay kesirleri günlük hesaplanır; günlük oran ${nf(CUR_DAILY, 6)}’tür. Örneğin 31 Temmuz 2026 vadeli 10.000 TL’lik borç 5 Ekim 2026’da ödenirse gecikme zammı ${nf(EX.zam)} TL olur.`,
   },
   {
@@ -137,7 +138,7 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="Vergi Borcu Sorgulama 2026: e-Devlet, GİB ve Gecikme Zammı"
+  title={`Vergi Borcu Sorgulama ${BU_YIL}: e-Devlet, GİB ve Gecikme Zammı`}
   description={`Vergi borcu sorgulama adım adım: e-Devlet ve Dijital Vergi Dairesi. Gecikme zammı aylık %${nf(CUR, 1)}; borcu ve tarihleri girin, gecikme zammını hesaplayın.`}
   faq={faq}
   breadcrumbs={breadcrumbs}
@@ -146,7 +147,7 @@ const breadcrumbs = [
   <div class="calc-wrap">
     <header class="calc-head">
       <p class="eyebrow">Rehber · Hesaplayıcı · Vergi</p>
-      <h1>Vergi Borcu Sorgulama ve Gecikme Zammı Hesaplama 2026</h1>
+      <h1>Vergi Borcu Sorgulama ve Gecikme Zammı Hesaplama {BU_YIL}</h1>
       <p class="lede">
         Vergi dairesine borcunuz olup olmadığını e-Devlet’ten veya Dijital Vergi Dairesi’nden birkaç adımda öğrenin.
         Geciken borcun <strong>aylık %{nf(CUR, 1)}</strong> gecikme zammını aşağıda, GİB’in hesaplama yöntemiyle bulun.

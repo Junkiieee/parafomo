@@ -4,7 +4,8 @@
 export { ekDa as yilDa, ekYa as yilYa } from './ek';
 
 // Build gününün yılı (İstanbul saatiyle; 1 Ocak 00:00-03:00 arası UTC hâlâ eski yıldadır).
-// YALNIZ yıla bağlı tutarı olmayan sayfaların başlığında (faiz, kredi, bono, enflasyon, ekonomik takvim):
+// YALNIZ yıla bağlı tutarı olmayan sayfaların başlığında (faiz, kredi, ihtiyaç/taşıt/konut kredisi, bono, enflasyon,
+// ekonomik takvim, KDV, vergi borcu/gecikme zammı, emeklilik yaşı):
 // 1 Ocak'taki ilk build'de kendiliğinden yeni yıla geçer. Vergi dilimi, asgari ücret, harç gibi yıllık
 // tutar gösteren sayfalarda KULLANMA — onların yılı verinin yılıdır (veri güncellenmeden başlık değişmesin).
 export const BU_YIL = Number(
