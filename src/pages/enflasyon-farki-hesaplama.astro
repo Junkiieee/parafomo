@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ZamAlarmi from '../components/ZamAlarmi.astro';
 import Newsletter from '../components/Newsletter.astro';
 import em from '../../data/emekli-memur.json';
-import tuik from '../../data/tuik-enflasyon-2026.json';
+import { nextRelease } from '../data/tuik';
 // Hesap /memur-zammi-hesaplama ve /emekli-zammi-hesaplama ile ORTAK modülde: üç sayfa her zaman aynı rakamı verir.
 // Talep: "enflasyon farkı 2027" Kasım sonu ve Ocak başında tepe yapıyor (trends-cache 2026-10); 2026-11-17'de sayfamız yoktu.
 import { PERIOD, TS_H2_2026, TS_H1_2027, byMonth, knownKeys, cumKnown, remaining, ASSUME, project, memurFrom, memurProj, sskProj } from '../data/zam2027';
@@ -44,9 +44,10 @@ let c1 = 1;
 for (const k of ['2026-01', '2026-02', '2026-03', '2026-04', '2026-05', '2026-06']) c1 *= 1 + (byMonth.get(k)?.aylik ?? 0) / 100;
 const TEMMUZ = { cum6: c1 - 1, fark: c1 / (1 + TS_H1_2026 / 100) - 1, zam: em.memurKatsayi.zamOrani };
 
-// Sıradaki TÜFE açıklaması (takvimde varsa)
+// Sıradaki TÜFE açıklaması: bütün yılların takvimi; takvim bittiyse olağan gün "(tahmini)" (src/data/tuik.ts).
+// Eskiden yalnız 2026 dosyası → 3 Aralık'tan sonra Aralık verisinin (Ocak zammı) günü hiç yazılmıyordu.
 const bugun = new Date().toISOString().slice(0, 10);
-const sonraki = (tuik.releases as { covers: string; date: string }[]).find((r) => r.date >= bugun);
+const sonraki = nextRelease(bugun);
 // "3 Aralık’ta", "3 Haziran’da": bulunma eki ay adına göre
 const BULUNMA = ['’ta', '’ta', '’ta', '’da', '’ta', '’da', '’da', '’ta', '’de', '’de', '’da', '’ta'];
 const tarihAd = (iso: string) => `${+iso.slice(8, 10)} ${AYLAR[+iso.slice(5, 7) - 1]}${BULUNMA[+iso.slice(5, 7) - 1]}`;
@@ -142,7 +143,7 @@ const dataset = {
               <input type="number" class="in-ay" value={ASSUME} min="-5" max="20" step="0.1" inputmode="decimal" />
             </label>
           ))}
-          <p class="hint">Varsayılan: son 3 ayın ortalaması %{nf(ASSUME)}.{sonraki ? ` ${sonraki.covers} enflasyonu ${tarihAd(sonraki.date)} açıklanacak.` : ''}</p>
+          <p class="hint">Varsayılan: son 3 ayın ortalaması %{nf(ASSUME)}.{sonraki ? ` ${sonraki.covers} enflasyonu ${tarihAd(sonraki.date)}${sonraki.tahmini ? ' (tahmini)' : ''} açıklanacak.` : ''}</p>
         </form>
         <div class="calc-results" aria-live="polite">
           <div class="result-main">

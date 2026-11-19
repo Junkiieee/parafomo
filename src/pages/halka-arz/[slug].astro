@@ -20,7 +20,7 @@ type IPO = {
   market?: string; first_trade?: string; float_lot?: string; float_pct?: string;
   updated_src?: string; details?: Details;
 };
-type Ret = { code: string; ipo_price: number; current_price: number; return_pct: number };
+type Ret = { code: string; start?: string | null; ipo_price: number; current_price: number; return_pct: number };
 
 export function getStaticPaths() {
   const items = Object.values((archive as any).items ?? {}) as IPO[];
@@ -59,8 +59,17 @@ const guide = code
   ? (await getCollection('blog')).find((p) => !p.data.draft && p.id.startsWith(`${code.toLocaleLowerCase('tr-TR')}-`) && p.data.title.includes(code))
   : undefined;
 
-const ret = code ? ((returns as any).items as Ret[]).find((r) => r.code === code) : undefined;
-const avgRet: number = (returns as any).avg_return_pct;
+// all_items: bütün yılların arzları (items yalnız tablo yılı) → yıl dönünce 2026 şirketlerinin getiri bloğu kaybolmasın.
+// Karşılaştırma şirketin kendi arz yılının ortalamasıyla; o yılın en az 5 arzı yoksa tablo yılının ortalaması.
+const retAll = ((returns as any).all_items ?? (returns as any).items ?? []) as Ret[];
+const ret = code ? retAll.find((r) => r.code === code) : undefined;
+const tabloYil: number = (returns as any).year;
+const arzYil = Number(ret?.start?.slice(0, 4)) || tabloYil;
+const ayniYil = retAll.filter((r) => r.start?.startsWith(String(arzYil)));
+const ortYil = arzYil === tabloYil || ayniYil.length < 5 ? tabloYil : arzYil;
+const avgRet: number = ortYil === tabloYil
+  ? (returns as any).avg_return_pct
+  : Math.round((ayniYil.reduce((s, r) => s + r.return_pct, 0) / ayniYil.length) * 10) / 10;
 const fmt = (n: number, dg = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: dg, maximumFractionDigits: dg });
 const pct = (n: number) => (n > 0 ? '+' : '') + n.toLocaleString('tr-TR', { maximumFractionDigits: 1 }) + '%';
 
@@ -125,7 +134,7 @@ if (ipo.lot) faq.push({
 });
 if (ret) faq.push({
   q: `${name} halka arzı kaç kazandırdı?`,
-  a: `${code} hissesi ${fmt(ret.ipo_price)} TL halka arz fiyatına göre güncel ${fmt(ret.current_price)} TL fiyatla ${pct(ret.return_pct)} getiride. Aynı dönemde 2026 halka arzlarının ortalaması ${pct(avgRet)}. Geçmiş getiri gelecek getirinin garantisi değildir.`,
+  a: `${code} hissesi ${fmt(ret.ipo_price)} TL halka arz fiyatına göre güncel ${fmt(ret.current_price)} TL fiyatla ${pct(ret.return_pct)} getiride. Aynı dönemde ${ortYil} halka arzlarının ortalaması ${pct(avgRet)}. Geçmiş getiri gelecek getirinin garantisi değildir.`,
 });
 if (ipo.broker) faq.push({ q: `${name} halka arzına hangi aracı kurumdan katılabilirim?`, a: `Halka arzın lider aracı kurumu ${ipo.broker}. Konsorsiyumdaki diğer banka ve aracı kurumlar izahnamede ve KAP duyurusunda listelenir; talep toplama günlerinde bu kurumların mobil uygulamalarından başvurulabilir.` });
 
@@ -190,7 +199,7 @@ const updated = new Date((archive as any).updated).toLocaleDateString('tr-TR', {
         <div class="hs-ret-cell"><span class="k">Halka arz fiyatı</span><span class="v">{fmt(ret.ipo_price)} TL</span></div>
         <div class="hs-ret-cell"><span class="k">Güncel fiyat</span><span class="v">{fmt(ret.current_price)} TL</span></div>
         <div class="hs-ret-cell"><span class="k">Getiri</span><span class={`v ${ret.return_pct >= 0 ? 'up' : 'down'}`}>{pct(ret.return_pct)}</span></div>
-        <div class="hs-ret-cell"><span class="k">2026 halka arz ortalaması</span><span class="v">{pct(avgRet)}</span></div>
+        <div class="hs-ret-cell"><span class="k">{ortYil} halka arz ortalaması</span><span class="v">{pct(avgRet)}</span></div>
       </div>
       {perPersonLot && perPersonCost && perPersonValueNow && (
         <p class="hs-ret-note">
@@ -199,7 +208,7 @@ const updated = new Date((archive as any).updated).toLocaleDateString('tr-TR', {
           ({perPersonValueNow >= perPersonCost ? '+' : '−'}{fmt(Math.abs(perPersonValueNow - perPersonCost), 0)} TL).
         </p>
       )}
-      <p class="hs-ret-link"><a href="/halka-arz-getiri/">Tüm 2026 halka arzlarının getiri tablosu →</a></p>
+      <p class="hs-ret-link"><a href="/halka-arz-getiri/">Tüm {tabloYil} halka arzlarının getiri tablosu →</a></p>
     </section>
   )}
 
@@ -282,7 +291,7 @@ const updated = new Date((archive as any).updated).toLocaleDateString('tr-TR', {
       <li>{/eşit/i.test(distClean) ? 'Eşit dağıtımda katılımcı sayısı arttıkça kişi başı düşen lot azalır; yüksek tutarlı talep fazla lot getirmez.' : 'Talep edilecek lot ve tutar girilir; dağıtım yöntemine göre talebin tamamı karşılanmayabilir.'}</li>
       <li>Dağıtım sonrası karşılanmayan tutar hesaba iade edilir; paylar borsada işlem görmeye başlayınca alınıp satılabilir.</li>
     </ol>
-    <p class="hs-src">Ayrıntılı rehber: <a href="/halka-arz/">halka arz takvimi</a> · <a href="/halka-arz-getiri/">2026 halka arz getirileri</a></p>
+    <p class="hs-src">Ayrıntılı rehber: <a href="/halka-arz/">halka arz takvimi</a> · <a href="/halka-arz-getiri/">{tabloYil} halka arz getirileri</a></p>
   </section>
 
   {related.length > 0 && (

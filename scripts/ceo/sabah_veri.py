@@ -192,6 +192,12 @@ def resmi_gazete():
     return "```\n" + out.strip()[-3000:] + "\n```\n(⚑ varsa: metni aç, doğrula, ilgili data/*.json'u güncelle — betik rakam değiştirmez)"
 
 
+def yil_devri():
+    # Yıla bağlı veri/sabitler (Ocak tebliğleri, TÜİK yeni yıl takvimi, zam dönemi): eşik geçtiyse ⚑ (veri-5, 2026-11-18)
+    code, out = sh([PY, f"{ROOT}/scripts/watch/yil_devri.py"], timeout=60)
+    return "```\n" + out.strip()[-3000:] + "\n```\n(⚑ varsa: kaynağı doğrula, ilgili data/*.json'u ya da sayfa sabitini güncelle — betik rakam değiştirmez)"
+
+
 def build_denetim():
     d = json.load(open(f"{ROOT}/data/learning/seo-audit.json"))
     lab = {k: v.get("label", k) for k, v in d.get("codes", {}).items()}
@@ -211,7 +217,8 @@ BOLUMLER = [("Trafik — Google arama (GSC, haftalık; ANA trafik ölçüsü)", 
             ("Kayıtlar (veritabanı; ANA dönüşüm ölçüsü)", kayitlar),
             ("Çerezsiz sayfa görüntüleme (Cloudflare kenarı, TR + tarayıcı; GA4'ün yerine eğilim)", insan_trafik),
             ("GA4 kaynak dağılımı (yalnız çerez onaylı ziyaret, 17.11'den beri eksik; 7g vs önceki 7g)", ga4),
-            ("SEO fırsatları (GSC)", gsc_firsat), ("Botlar (Cloudflare)", botlar), ("Resmî Gazete bekçisi", resmi_gazete), ("GEO puanı", geo),
+            ("SEO fırsatları (GSC)", gsc_firsat), ("Botlar (Cloudflare)", botlar), ("Resmî Gazete bekçisi", resmi_gazete),
+            ("Yıl devri bekçisi", yil_devri), ("GEO puanı", geo),
             ("Kırık linkler", linkler), ("Yapısal veri (JSON-LD)", yapisal_veri), ("Hız (Lighthouse CI)", hiz),
             ("Build SEO denetimi", build_denetim), ("Kaan'ın açık görevleri (user-tasks.md)", kaan_gorevleri)]
 

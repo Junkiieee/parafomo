@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { BU_YIL } from '../data/yil';
 import Newsletter from '../components/Newsletter.astro';
 
 // "faiz hesaplama" (Trends ≈500, "mevduat faizi" = 100) — genel faiz niyeti: basit / bileşik, gün-ay-yıl,
@@ -42,7 +43,7 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="Faiz Hesaplama 2026: Basit, Bileşik, Aylık ve Yıllık Faiz"
+  title={`Faiz Hesaplama ${BU_YIL}: Basit, Bileşik, Aylık ve Yıllık Faiz`}
   description="Faiz hesaplama: anapara, faiz oranı ve süreyi (gün, ay, yıl) girin; basit veya bileşik faiz, stopaj sonrası net getiri ve vade sonu toplamı anında."
   faq={faq}
   breadcrumbs={breadcrumbs}

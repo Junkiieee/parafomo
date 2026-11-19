@@ -1,5 +1,5 @@
 {
-  "_aciklama": "Türkiye'ye özgü, önceden açıklanan ekonomik olaylar. TCMB resmi PPK takviminden alınmıştır (tcmb.gov.tr). Yeni yıl takvimi yayınlanınca güncelle. TÜİK enflasyon verisi scriptte kural ile (her ayın ~3'ü) otomatik üretilir.",
+  "_aciklama": "Türkiye'ye özgü, önceden açıklanan ekonomik olaylar. TCMB resmi PPK takviminden alınmıştır (tcmb.gov.tr; 2027 ilk yarı tarihleri TCMB PPK/2027 sayfasından 2026-11-19'da alındı: karar 21 Ocak, 18 Mart, 22 Nisan, 10 Haziran, özet bir hafta sonra). Yeni yıl/dönem takvimi yayınlanınca güncelle. Yasal son günler (MTV taksiti) kanundan; hafta sonuna denk gelirse VUK md. 18 ile ilk iş günü. TÜİK enflasyon verisi scriptte kural ile (her ayın ~3'ü) otomatik üretilir.",
   "_kaynak": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Temel+Faaliyetler/Para+Politikasi/PPK/",
   "events": [
     { "date": "2026-07-23", "region": "TR", "impact": "High", "title": "TCMB faiz kararı (PPK)", "hook": "Faiz kararı kredi, mevduat, döviz ve borsayı doğrudan etkiler — karar öncesi 'faiz kararı paranı nasıl etkiler' explainer'ı yaz." },
@@ -9,6 +9,15 @@
     { "date": "2026-10-22", "region": "TR", "impact": "High", "title": "TCMB faiz kararı (PPK)", "hook": "Faiz kararı explainer'ı." },
     { "date": "2026-10-30", "region": "TR", "impact": "Medium", "title": "TCMB PPK toplantı özeti", "hook": "Karar gerekçesi yorumu." },
     { "date": "2026-12-10", "region": "TR", "impact": "High", "title": "TCMB faiz kararı (PPK)", "hook": "Faiz kararı explainer'ı." },
-    { "date": "2026-12-17", "region": "TR", "impact": "Medium", "title": "TCMB PPK toplantı özeti", "hook": "Karar gerekçesi yorumu." }
+    { "date": "2026-12-17", "region": "TR", "impact": "Medium", "title": "TCMB PPK toplantı özeti", "hook": "Karar gerekçesi yorumu." },
+    { "date": "2027-01-21", "region": "TR", "impact": "High", "title": "TCMB faiz kararı (PPK)", "hook": "Yılın ilk faiz kararı — Aralık enflasyonu ve Ocak zamlarından sonra; faiz kararı explainer'ı." },
+    { "date": "2027-01-28", "region": "TR", "impact": "Medium", "title": "TCMB PPK toplantı özeti", "hook": "Karar gerekçesi yorumu." },
+    { "date": "2027-02-01", "region": "TR", "impact": "Medium", "title": "MTV 1. taksit son ödeme günü", "hook": "Kanunda 31 Ocak; 2027'de Pazar'a denk geldiği için süre 1 Şubat Pazartesi biter (VUK md. 18). /mtv-hesaplama'ya son gün hatırlatması, gecikme zammı için /vergi-borcu-sorgulama." },
+    { "date": "2027-03-18", "region": "TR", "impact": "High", "title": "TCMB faiz kararı (PPK)", "hook": "Faiz kararı explainer'ı." },
+    { "date": "2027-03-25", "region": "TR", "impact": "Medium", "title": "TCMB PPK toplantı özeti", "hook": "Karar gerekçesi yorumu." },
+    { "date": "2027-04-22", "region": "TR", "impact": "High", "title": "TCMB faiz kararı (PPK)", "hook": "Faiz kararı explainer'ı." },
+    { "date": "2027-04-29", "region": "TR", "impact": "Medium", "title": "TCMB PPK toplantı özeti", "hook": "Karar gerekçesi yorumu." },
+    { "date": "2027-06-10", "region": "TR", "impact": "High", "title": "TCMB faiz kararı (PPK)", "hook": "Faiz kararı explainer'ı." },
+    { "date": "2027-06-17", "region": "TR", "impact": "Medium", "title": "TCMB PPK toplantı özeti", "hook": "Karar gerekçesi yorumu." }
   ]
 }

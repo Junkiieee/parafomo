@@ -71,23 +71,34 @@ def parse_tr_dates(text):
     if not ym:
         return (None, None)
     year = int(ym.group(1))
-    # Sırayla token'ları topla: gün sayıları ve ay adları.
-    tokens = re.findall(r"\d{1,2}|" + MONTH_RE, low)
-    pending_days, pairs = [], []  # pairs: (day, month)
+    # Sırayla token'ları topla: gün sayıları, ay adları ve YIL. Yıl ayrı token (eskiden "2025" gün 20 ve 25 sayılıyordu)
+    # ve kendinden önceki yılsız tarihlere ait; geriye doğru ay büyürse önceki yıl. Yıl devri: "30 Aralık 2025 -
+    # 2 Ocak 2026" eskiden 2025-01-02..2025-12-30 (bütün yıl "Devam Ediyor") çıkıyordu; "31 Aralık - 2 Ocak 2026" de.
+    tokens = re.findall(r"20\d{2}|\d{1,2}|" + MONTH_RE, low)
+    pending_days, pairs = [], []  # pairs: [gün, ay, yıl|None]
     for tok in tokens:
         if tok in TR_MONTHS:
             month = TR_MONTHS[tok]
             for d in pending_days:
-                pairs.append((d, month))
+                pairs.append([d, month, None])
             pending_days = []
+        elif len(tok) == 4:
+            year = y = int(tok)
+            nxt_m = 13
+            for p in reversed(pairs):
+                if p[2] is not None:
+                    break
+                if p[1] > nxt_m:   # geriye giderken Ocak → Aralık: bir önceki yıl
+                    y -= 1
+                p[2], nxt_m = y, p[1]
         elif tok.isdigit():
             n = int(tok)
             if 1 <= n <= 31:
                 pending_days.append(n)
     dates = []
-    for d, m in pairs:
+    for d, m, y in pairs:
         try:
-            dates.append(date(year, m, d))
+            dates.append(date(y or year, m, d))
         except ValueError:
             pass
     if not dates:
@@ -296,6 +307,14 @@ def build():
     }
 
 
+def _write_json(path, obj, indent):
+    """Atomik yaz (geçici dosya + os.replace): eşzamanlı build/iş yarım JSON okumasın."""
+    tmp = f"{path}.{os.getpid()}.tmp"
+    with open(tmp, "w", encoding="utf-8") as fh:
+        json.dump(obj, fh, ensure_ascii=False, indent=indent)
+    os.replace(tmp, path)
+
+
 def update_archive(data):
     """Arşive güncel kayıtları yaz (slug anahtarlı); takvimden düşenleri koru.
     Arşivdeki eski kaydın durumu tarihe göre yeniden hesaplanır."""
@@ -313,9 +332,7 @@ def update_archive(data):
         arch[it["slug"]] = it
     for it in arch.values():
         it["status"] = status_for(it.get("start"), it.get("end"))
-    with open(ARCHIVE, "w", encoding="utf-8") as fh:
-        json.dump({"updated": data["updated"], "source": SOURCE_NAME, "items": arch},
-                  fh, ensure_ascii=False, indent=1)
+    _write_json(ARCHIVE, {"updated": data["updated"], "source": SOURCE_NAME, "items": arch}, 1)
 
 
 def main():
@@ -331,12 +348,10 @@ def main():
     if not data["items"]:
         print("UYARI: hiç kayıt bulunamadı; depo güncellenmiyor.", file=sys.stderr)
         return 0 if os.path.exists(STORE) else 1
-    with open(STORE, "w", encoding="utf-8") as fh:
-        json.dump(data, fh, ensure_ascii=False, indent=2)
+    _write_json(STORE, data, 2)
     try:
         os.makedirs(os.path.dirname(PUBLIC), exist_ok=True)
-        with open(PUBLIC, "w", encoding="utf-8") as fh:
-            json.dump(data, fh, ensure_ascii=False, indent=2)
+        _write_json(PUBLIC, data, 2)
     except Exception as e:
         print(f"UYARI: public kopya yazılamadı: {e}", file=sys.stderr)
     update_archive(data)

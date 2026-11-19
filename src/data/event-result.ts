@@ -6,6 +6,8 @@
 // Ajanın ertesi sabah elle sonuç kutusu eklemesine gerek kalmaz (eskiden ~16 saat gecikiyordu).
 // İsteğe bağlı `sonucBaslik`: karar açıklanınca sayfa başlığı olur; yer tutucular aşağıdaki `vars` anahtarları.
 import tufe from '../../data/tufe-aylik.json';
+import { releaseOf } from './tuik';
+import { PERIOD, byMonth, cumKnown, remaining, sskProj, memurProj } from './zam2027';
 import kira from '../../data/kira-artis-2026.json';
 
 type TcmbResult = { decision: 'hold' | 'cut' | 'hike'; bp: number; rate: number; prev?: number; lending?: number; borrowing?: number; source: string };
@@ -15,7 +17,6 @@ type FedMeeting = { decisionDate: string; tsiTime: string; result?: FedResult };
 
 const tcmbFiles = import.meta.glob('../../data/tcmb-*.json', { eager: true, import: 'default' }) as Record<string, { meetings: TcmbMeeting[]; previous?: { rate: number } }>;
 const fomcFiles = import.meta.glob('../../data/fomc-*.json', { eager: true, import: 'default' }) as Record<string, { meetings: FedMeeting[]; meetings2027?: FedMeeting[] }>;
-const tuikFiles = import.meta.glob('../../data/tuik-enflasyon-*.json', { eager: true, import: 'default' }) as Record<string, { releases: { covers: string; date: string }[] }>;
 
 const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 const nf = (n: number) => n.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
@@ -99,9 +100,9 @@ function tufeEv(key: string): EventResult | null {
   const y = +key.slice(0, 4), mo = +key.slice(5);
   const ay = `${AYLAR[mo - 1]} ${y}`;
   const sonrakiAy = mo === 12 ? `Ocak ${y + 1}` : `${AYLAR[mo]} ${y}`;
-  // Takvimde yoksa: izleyen ayın 3'ü (TÜİK'in olağan günü)
-  const rel = Object.values(tuikFiles).flatMap((f) => f.releases ?? []).find((r) => r.covers === ay)?.date
-    ?? (mo === 12 ? `${y + 1}-01-03` : `${y}-${String(mo + 1).padStart(2, '0')}-03`);
+  // Takvimde yoksa: TÜİK'in olağan günü (izleyen ayın 3'ü, hafta sonuysa ilk iş günü) — src/data/tuik.ts; o zaman
+  // "(tahmini)" yazılır. Eskiden düz "ayın 3'ü"ydü: Aralık 2026 verisi Pazar 3 Ocak 2027 görünüyordu.
+  const { date: rel, tahmini } = releaseOf(key);
   const links = [
     { href: '/enflasyon-takvimi/', label: 'Enflasyon takvimi' },
     { href: '/kira-artis-orani-hesaplama/', label: 'Kira artış oranı' },
@@ -110,19 +111,39 @@ function tufeEv(key: string): EventResult | null {
   const row = (tufe.months as { ay: string; yillik: number; aylik: number }[]).find((x) => x.ay === key);
   if (!row) {
     return {
-      tur: 'tufe', done: false, date: rel, kicker: `TÜİK · ${gun(rel)}, 10:00`,
+      tur: 'tufe', done: false, date: rel, kicker: `TÜİK · ${gun(rel)}, 10:00${tahmini ? ' (tahmini)' : ''}`,
       headline: `${ay} enflasyonu henüz açıklanmadı. Bu kutu, TÜİK veriyi açıkladığı gün otomatik güncellenir.`,
       details: [], links, vars: {},
     };
   }
   const details = (kira as { guncelAy: string; guncelOran: number }).guncelAy === sonrakiAy
     ? [`${sonrakiAy} kira artış tavanı (12 aylık TÜFE ortalaması): %${nf2((kira as { guncelOran: number }).guncelOran)}.`] : [];
+  const vars: Record<string, string> = { ay, aylik: nf2(row.aylik), yillik: nf2(row.yillik) };
+  // Zam dönemi ayıysa (src/data/zam2027.ts PERIOD) emekli/memur zammı satırı — araç sayfalarıyla AYNI modül ve rakam.
+  // Neden (denetim 2026-11-18): Ekim yazısının gövdesi "memur zammı ~%8,1" derken araçlar %10,75 gösteriyordu; kutu
+  // yalnız TÜFE + kira tavanını yazıyordu. Birikim yazının ayına kadar; tahmin build günündeki güncel tahmin.
+  const idx = PERIOD.indexOf(key);
+  if (idx >= 0 && PERIOD.slice(0, idx + 1).every((k) => byMonth.has(k))) {
+    const pct = (x: number) => `%${nf2(x * 100)}`;
+    const ilk = PERIOD[0];
+    const son = PERIOD[PERIOD.length - 1];
+    const ad = (k: string) => AYLAR[+k.slice(5) - 1];
+    const hedefAy = +son.slice(5) === 12 ? `Ocak ${+son.slice(0, 4) + 1}` : `${AYLAR[+son.slice(5)]} ${son.slice(0, 4)}`;
+    const cumKey = PERIOD.slice(0, idx + 1).reduce((c, k) => c * (1 + byMonth.get(k)!.aylik / 100), 1) - 1;
+    const aralik = idx === 0 ? ay : `${ad(ilk)}–${ay}`;
+    const ssk = remaining === 0 ? cumKnown : sskProj;
+    details.push(remaining === 0
+      ? `${hedefAy} zammı kesinleşti: SSK ve Bağ-Kur emeklisine ${pct(cumKnown)} (${ad(ilk)}–${ad(son)} ${son.slice(0, 4)} enflasyonu), memur ve memur emeklisine ${pct(memurProj.zam)}.`
+      : `${aralik} birikimli enflasyon ${pct(cumKey)} (${hedefAy} emekli zammının kesinleşen kısmı). Güncel tahmin: SSK ve Bağ-Kur ${pct(ssk)}, memur ${pct(memurProj.zam)}.`);
+    links.splice(3, 0, { href: '/memur-zammi-hesaplama/', label: 'Memur zammı' });
+    Object.assign(vars, { birikim: nf2(cumKey * 100), ssk: nf2(ssk * 100), memur: nf2(memurProj.zam * 100) });
+  }
   return {
     tur: 'tufe', done: true, date: rel, kicker: `Veri açıklandı · ${gun(rel)}, 10:00`,
     headline: `${ay} enflasyonu: aylık %${nf2(row.aylik)}, yıllık %${nf2(row.yillik)}.`,
     details,
     links: [{ href: 'https://data.tuik.gov.tr/Kategori/GetKategori?p=enflasyon-ve-fiyat-106', label: 'TÜİK', external: true }, ...links],
-    vars: { ay, aylik: nf2(row.aylik), yillik: nf2(row.yillik) },
+    vars,
   };
 }
 

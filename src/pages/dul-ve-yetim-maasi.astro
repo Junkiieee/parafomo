@@ -4,7 +4,7 @@ import ZamAlarmi from '../components/ZamAlarmi.astro';
 import Newsletter from '../components/Newsletter.astro';
 import em from '../../data/emekli-memur.json';
 // Zam tahmini /emekli-zammi-hesaplama ile ORTAK modülde — burada tekrar hesaplanmaz.
-import { sskProj, memurProj, remaining, cumKnown } from '../data/zam2027';
+import { sskProj, memurProj, remaining, cumKnown, knownKeys, PERIOD } from '../data/zam2027';
 
 const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
 const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
@@ -15,6 +15,14 @@ const T = em.enDusukEmekliAyligi;
 const B = em.bayramIkramiyesi;
 const final = remaining === 0;
 const zEt = final ? 'kesinleşen' : 'tahmini';
+// Açıklanan / kalan aylar veriden (elle "Temmuz–Ekim açıklandı; Kasım ve Aralık varsayıldı" yazılıydı: 3 Aralık'ta
+// Kasım gelince, 5 Ocak'ta Aralık gelince yanlış olurdu — yıl geçişi provası 2026-11-19).
+const ayAd = (k: string) => AYLAR[+k.slice(5) - 1];
+const kalan = PERIOD.slice(knownKeys.length).map(ayAd);
+const kalanAd = kalan.length <= 2 ? kalan.join(' ve ') : `${kalan[0]}–${kalan[kalan.length - 1]}`;
+const ilkAy = ayAd(PERIOD[0]);
+const sonAy = ayAd(PERIOD[PERIOD.length - 1]);
+const aciklananAd = knownKeys.length ? `${ilkAy}–${ayAd(knownKeys[knownKeys.length - 1])} ${PERIOD[0].slice(0, 4)}` : '';
 // 5510 sayılı Kanun md. 34 — hak sahiplerinin hisse oranları
 const HISSE = [
   { k: 'es50', ad: 'Eş (aylık alan çocuk varken)', h: 0.5 },
@@ -29,7 +37,7 @@ const tabanPay = (h: number) => T.tutar * h;
 const faq = [
   {
     q: 'Dul maaşı Ocak 2027’de ne kadar olacak?',
-    a: `Dul ve yetim aylıkları SSK ve Bağ-Kur emeklileriyle aynı oranda zamlanır. ${final ? 'Kesinleşen' : 'Şu anki tahmin'} %${nf(sskProj * 100)}. Örneğin eşinden %50 hisseyle bugün 12.500 ₺ alan biri, Ocak 2027'de yaklaşık ${fmt(12500 * (1 + sskProj))} ₺ alır. Kesin oran Aralık enflasyonu açıklanınca (Ocak 2027 başı) belli olur.`,
+    a: `Dul ve yetim aylıkları SSK ve Bağ-Kur emeklileriyle aynı oranda zamlanır. ${final ? 'Kesinleşen' : 'Şu anki tahmin'} %${nf(sskProj * 100)}. Örneğin eşinden %50 hisseyle bugün 12.500 ₺ alan biri, Ocak 2027'de ${final ? '' : 'yaklaşık '}${fmt(12500 * (1 + sskProj))} ₺ alır.${final ? '' : ' Kesin oran Aralık enflasyonu açıklanınca (Ocak 2027 başı) belli olur.'}`,
   },
   {
     q: 'Dul maaşı nasıl hesaplanır?',
@@ -100,7 +108,7 @@ const breadcrumbs = [
         </form>
         <div class="calc-results" aria-live="polite">
           <div class="result-main">
-            <span class="result-label">Ocak 2027 tahmini aylık</span>
+            <span class="result-label">Ocak 2027 {final ? 'yeni' : 'tahmini'} aylık</span>
             <span class="result-value" id="out-new">—</span>
           </div>
           <div class="result-split">
@@ -112,8 +120,8 @@ const breadcrumbs = [
         </div>
       </div>
       <p class="table-note">
-        Zam tahmini <a href="/emekli-zammi-hesaplama/">emekli zammı hesaplama</a> sayfasıyla aynı veriden gelir.
-        {!final && <>Kasım ve Aralık enflasyonu açıklandıkça oran güncellenir; kesin oran Ocak 2027 başında belli olur.</>}
+        {final ? 'Zam oranı' : 'Zam tahmini'} <a href="/emekli-zammi-hesaplama/">emekli zammı hesaplama</a> sayfasıyla aynı veriden gelir.
+        {!final && <>{kalanAd} enflasyonu açıklandıkça oran güncellenir; kesin oran Ocak 2027 başında belli olur.</>}
         Taban tutarı Ocak'ta kanunla değişirse hesap ona göre güncellenir.
       </p>
     </section>
@@ -137,8 +145,10 @@ const breadcrumbs = [
       <h2>Dul maaşına zam nasıl yapılır?</h2>
       <p>
         Ölüm aylığı, vefat eden sigortalının aylığı üzerinden hesaplanır ve her Ocak ile Temmuz'da emekli aylıklarıyla aynı
-        oranda artar. Bu oran önceki altı ayın enflasyonudur (TÜİK TÜFE). Temmuz–Ekim 2026 enflasyonu açıklandı;
-        Kasım ve Aralık için son üç ayın ortalaması varsayıldı. Bu yüzden Ocak 2027 oranı şimdilik bir tahmindir.
+        oranda artar. Bu oran önceki altı ayın enflasyonudur (TÜİK TÜFE).
+        {final
+          ? `${ilkAy}–${sonAy} ${PERIOD[0].slice(0, 4)} enflasyonunun tamamı açıklandı: Ocak 2027 zammı %${nf(sskProj * 100)} olarak kesinleşti.`
+          : <>{aciklananAd ? `${aciklananAd} enflasyonu açıklandı; ` : ''}{kalanAd} için son üç ayın ortalaması varsayıldı. Bu yüzden Ocak 2027 oranı şimdilik bir tahmindir.</>}
       </p>
       <h2>En düşük dul maaşı neden farklı?</h2>
       <p>

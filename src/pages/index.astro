@@ -15,7 +15,7 @@ import em from '../../data/emekli-memur.json';
 import altinFiyat from '../../data/altin-fiyat.json';
 import dxyData from '../../data/dxy.json';
 import bistGetiri from '../../data/bist-getiri.json';
-import { cumKnown, remaining, sskProj, memurProj } from '../data/zam2027';
+import { PERIOD, cumKnown, remaining, sskProj, memurProj } from '../data/zam2027';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
@@ -29,7 +29,7 @@ const postCount = posts.length;
 // tarih bekleyenler. Tarih bekleyenler güne göre döner — her şirket sayfası zamanla ana sayfadan link alır.
 type Ipo = { company: string; bist_code: string; slug: string; status: string; start: string | null };
 const ipos = Object.values((ipoArchive as any).items ?? {}) as Ipo[];
-const ipoRet = new Map(((ipoReturns as any).items ?? []).map((r: any) => [r.code, r.return_pct as number]));
+const ipoRet = new Map((((ipoReturns as any).all_items ?? (ipoReturns as any).items) ?? []).map((r: any) => [r.code, r.return_pct as number]));
 const ipoName = (raw: string) => {
   const p = raw.match(/^\((.+?)\)\s*(.*)$/);
   if (p && /\s/.test(p[1].trim())) return p[1].trim();
@@ -70,7 +70,13 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
   { slug: 'yeniden-degerleme-orani', ad: `Yeniden değerleme ${yd.hedefYil}`, deger: `${ydKesin ? '' : '≈'}%${nf1(ydOran, ydKesin ? 2 : 1)}` },
   { slug: 'emekli-zammi-hesaplama', ad: 'Emekli zammı (Ocak)', deger: remaining === 0 ? `%${nf1(cumKnown * 100, 2)}` : `≈%${nf1(sskProj * 100)}` },
   { slug: 'memur-zammi-hesaplama', ad: 'Memur zammı (Ocak)', deger: `${remaining === 0 ? '' : '≈'}%${nf1(memurProj.zam * 100, remaining === 0 ? 2 : 1)}` },
-  { slug: 'asgari-ucret-hesaplama', ad: auYeni ? `Asgari ücret ${auYeni.yil}` : 'Asgari ücret 2027', deger: auYeni ? `₺${Math.round(auNet).toLocaleString('tr-TR')}` : 'Aralık’ta' },
+  // Açıklandıysa yeni yıl; Ekim–Aralık beklenen yıl "Aralık'ta"; diğer aylar yürürlükteki yılın neti (1 Ocak devrinden
+  // sonra sabit "Asgari ücret 2027 · Aralık'ta" yazıyordu — yıl geçişi denetimi)
+  { slug: 'asgari-ucret-hesaplama', ...(auYeni
+      ? { ad: `Asgari ücret ${auYeni.yil}`, deger: `₺${Math.round(auNet).toLocaleString('tr-TR')}` }
+      : new Date().getMonth() >= 9
+        ? { ad: `Asgari ücret ${asgari.guncel.yil + 1}`, deger: 'Aralık’ta' }
+        : { ad: `Asgari ücret ${asgari.guncel.yil}`, deger: `₺${Math.round(auNet).toLocaleString('tr-TR')}` }) },
   { slug: 'mtv-hesaplama', ad: `MTV ${yd.hedefYil}`, deger: 'hesapla' },
   { slug: 'emlak-vergisi-hesaplama', ad: `Emlak vergisi ${yd.hedefYil}`, deger: `${ydKesin ? '' : '≈'}+%${nf1(ydOran)}` },
   { slug: 'kira-artis-orani-hesaplama', ad: `Kira artışı (${(kira as any).guncelAy})`, deger: `%${nf1((kira as any).guncelOran, 2)}` },
@@ -83,7 +89,11 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
   { slug: 'veraset-ve-intikal-vergisi-hesaplama', ad: 'Veraset ve intikal vergisi', deger: 'hesapla' },
   { slug: 'engelli-maasi', ad: 'Engelli maaşı (Ocak)', deger: `≈+%${nf1(memurProj.zam * 100)}` },
   // 2828 s.K. ek md.7: 10.000 gösterge × memur aylık katsayısı → Ocak 2027 = × (1 + memur zammı)
-  { slug: 'evde-bakim-maasi', ad: 'Evde bakım maaşı (Ocak)', deger: `${remaining === 0 ? '' : '≈'}₺${Math.round(10000 * em.memurKatsayi.aylikKatsayi * (1 + memurProj.zam)).toLocaleString('tr-TR')}` },
+  // Ocak tahmini yalnız katsayı dönemi zam modülünün başlangıcıyken (evde-bakim-maasi ile aynı kural); Ocak'ta resmî
+  // katsayı girilince katsayı × (1 + zam) çift zam olurdu (yıl geçişi denetimi) → yürürlükteki tutar.
+  ...(PERIOD[0] === em.donem
+    ? [{ slug: 'evde-bakim-maasi', ad: 'Evde bakım maaşı (Ocak)', deger: `${remaining === 0 ? '' : '≈'}₺${Math.round(10000 * em.memurKatsayi.aylikKatsayi * (1 + memurProj.zam)).toLocaleString('tr-TR')}` }]
+    : [{ slug: 'evde-bakim-maasi', ad: 'Evde bakım maaşı', deger: `₺${Math.round(10000 * em.memurKatsayi.aylikKatsayi).toLocaleString('tr-TR')}` }]),
   { slug: 'gelir-vergisi-hesaplama', ad: 'Gelir vergisi (kira)', deger: 'hesapla' },
 ].filter((z) => hasPage(z.slug));
 ---

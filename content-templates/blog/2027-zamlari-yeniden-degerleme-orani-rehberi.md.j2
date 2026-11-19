@@ -29,10 +29,10 @@
 title: "{{ H }} Yeniden Değerleme Oranı Tahmini {{ oran1 }}: {{ H }}'de Neler Ne Kadar Zamlanacak?"
 description: "{{ H }} yeniden değerleme oranı tahmini {{ oran1 }} ({{ y.son_ay_adi }} Yİ-ÜFE). MTV, harçlar, IMEI, trafik cezası ve emlak vergisi {{ H }}'de ne kadar artacak? Kalem kalem tablo."
 {% elif y.durum == 'hesap' %}
-title: "{{ H }} Yeniden Değerleme Oranı Belli Oldu: {{ oran2 }} — {{ H }}'de Neler Ne Kadar Zamlanacak?"
+title: "{{ H }} Yeniden Değerleme Oranı {{ oran2 }}: Neler Ne Kadar Zamlanacak?"
 description: "{{ H }} yeniden değerleme oranı {{ oran2 }} olarak kesinleşti ({{ kesin_gun }}). MTV, harçlar, IMEI, trafik cezası ve emlak vergisi {{ H }}'de ne kadar artacak? Kalem kalem tablo."
 {% else %}
-title: "{{ H }} Yeniden Değerleme Oranı {{ oran2 }} (Resmî Gazete): {{ H }} Zamları Kalem Kalem"
+title: "{{ H }} Yeniden Değerleme Oranı {{ oran2 }} Resmî Gazete'de: {{ H }} Zamları"
 description: "{{ H }} yeniden değerleme oranı VUK tebliğiyle {{ oran2 }} ilan edildi.{% if y.uygulanan is not none %} MTV ve harçlarda Cumhurbaşkanı kararıyla {{ y.uygulanan|pct(2) }} uygulanacak.{% endif %} MTV, pasaport-ehliyet harcı, IMEI, trafik cezası ve emlak vergisinin {{ H }} tutarları."
 {% endif %}
 pubDate: 2026-10-13
