@@ -279,6 +279,8 @@ def main():
     ap.add_argument("--no-lock", action="store_true")
     ap.add_argument("--engine", default="", help="görüntü motoru: iso (varsayılan) | hf | dossier | news (scripts/anim/engines/)")
     ap.add_argument("--out", default="", help="deneme: mp4 yalnız buraya yazılır, meta/yayın dosyalarına dokunulmaz")
+    ap.add_argument("--yedeksiz", action="store_true",
+                    help="motor başarısızsa izometriğe DÜŞME, hatayı ver (hikaye_uret örtüşme kurtarması hatayı görsün)")
     a = ap.parse_args()
     spec = json.load(open(a.spec, encoding="utf-8"))
     engine = a.engine or os.environ.get("ANIM_ENGINE") or spec.get("engine") or "iso"
@@ -308,7 +310,7 @@ def main():
             # sözleşme: render(spec, lines, dur, wd, W, H, lock) → sessiz mp4 yolu; ses/müzik/meta burada eklenir
             vid = mod.render(spec, lines, dur, wd, W, H, None if a.no_lock else LOCK)
         except Exception as ex:
-            if a.out:
+            if a.out or a.yedeksiz:
                 raise
             print(f"[anim] ⚠️ motor '{engine}' başarısız ({str(ex)[:200]}) → izometrik motora düşülüyor", flush=True)
             engine = "iso"

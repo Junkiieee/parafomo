@@ -744,7 +744,8 @@ def main():
     mp4 = os.path.join(ROOT, "public", "social", f"short-{slug}.mp4")
     for deneme in range(2):
         try:
-            r = calistir(["nice", "-n", "19", PY, os.path.join(HERE, "anim_build.py"), sp, "--engine", "hikaye"], 3600)
+            r = calistir(["nice", "-n", "19", PY, os.path.join(HERE, "anim_build.py"), sp, "--engine", "hikaye",
+                           "--yedeksiz"], 3600)   # izometriğe sessizce düşmesin: hata aşağıdaki kurtarmaya gelsin (2026-11-18/19 gece)
         except subprocess.TimeoutExpired:
             sys.exit("[hikaye] render 3600 sn'de bitmedi (süreç grubu sonlandırıldı) — geçmiş yazılmadı, konu yine sırada")
         if r.returncode == 0 and os.path.exists(mp4):
@@ -762,7 +763,8 @@ def main():
         sys.exit(f"[hikaye] render başarısız: {hata[-600:]}")
     meta = json.load(open(os.path.join(ROOT, "public", "social", f"short-{slug}.json"), encoding="utf-8"))
     if meta.get("teknik") != "hikaye":
-        sys.exit("[hikaye] motor başarısız (izometriğe düştü) — kuyruğa eklenmedi")
+        sys.exit("[hikaye] motor başarısız (izometriğe düştü) — kuyruğa eklenmedi: "
+                 + ((r.stdout or "").strip().splitlines() or [""])[-1][:300])
     # Geçmiş ANCAK video çizildikten sonra: render çökerse paket/aile "kullanıldı" sayılmaz, "yeni veri" tetiği yanmaz
     # (2026-11-18 00:41: sosyal-evde-bakim işaretlendi, render düştü, ancak sabah elle kurtarıldı).
     try:   # render uzun sürebilir: bu arada elle koşan başka bir üretimin yazdığı geçmiş ezilmesin → taze oku
