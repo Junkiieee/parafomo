@@ -1148,10 +1148,12 @@ function openDetailDialog(h) {
         ? '&symbol=' + encodeURIComponent(h.symbol) + '&name=' + encodeURIComponent(TYPE.bist.name(h.symbol))
         : '';
       const r = await (await fetch(API_BASE + '/public/news?asset_type=' + h.asset_type + q)).json();
-      if (!r.items || !r.items.length) return;
+      // Yalnız http(s) bağlantı: esc() tırnakları kaçırır ama javascript: adresini durdurmaz (denetim 2026-11-19 web-teknik-6).
+      const items = (r.items || []).filter(n => /^https?:\/\//i.test(String(n.u || '')));
+      if (!items.length) return;
       const el = dlg.querySelector('#dnews');
       el.hidden = false;
-      el.innerHTML = '<h3>İlgili haberler</h3>' + r.items.map(n =>
+      el.innerHTML = '<h3>İlgili haberler</h3>' + items.map(n =>
         `<a href="${esc(n.u)}" target="_blank" rel="noopener">${esc(n.t)}<small>${esc((n.d || '').slice(5, 16))}</small></a>`).join('');
     } catch {}
   }
