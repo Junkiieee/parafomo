@@ -443,6 +443,8 @@ function webHtml() {
     <div class="kart metrik"><div class="e">Kayıt (onaylı)</div><div class="d">${sayi(k.onayli)}</div><div class="a">7 günde ${sayi(k.yeni_7g)} yeni ${fark(k.yeni_7g, k.yeni_onceki_7g)}</div></div>
   </div>
   <p class="oto-not">Google: son 7 gün, veri 2–3 gün geriden gelir. Kayıt: ${esc(kayitDetay() || 'alınamadı')}.</p>
+  ${w.insan_7g != null ? `<p class="oto-not">Sitede görüntülenen sayfa (7 gün, çerezsiz sayım): <b>${sayi(w.insan_7g)}</b> · önceki ${sayi(w.insan_onceki)} ${fark(w.insan_7g, w.insan_onceki)}
+    · Cloudflare, Türkiye'den tarayıcılar; eğilim içindir.</p>` : ''}
   ${ga4}
   ${grafik}
   ${planHtml('web')}

@@ -60,8 +60,8 @@ def ga4():
     kiyas = BUGUN - dt.timedelta(days=14) >= GA4_KIRILMA or BUGUN - dt.timedelta(days=1) < GA4_KIRILMA
     if BUGUN > GA4_KIRILMA:
         lines.append("⚠ GA4 17.11.2026'dan beri YALNIZ ÇEREZ ONAYI VERENLERİ sayar (çerez bandı; gerçek trafik düşmedi). "
-                     "Trafik ve eşikler (ör. 'günde 100+ ziyaretçi') GSC tıkı + kayıtlarla ölçülür; bu tablo yalnız kaynak "
-                     "dağılımı içindir, düşüşüne göre karar verme." + ("" if kiyas else
+                     "Trafik ve eşikler (ör. 'günde 100+ ziyaretçi') GSC tıkı + kayıtlar + çerezsiz Cloudflare sayısıyla "
+                     "ölçülür; bu tablo yalnız kaynak dağılımı içindir, düşüşüne göre karar verme." + ("" if kiyas else
                      " Önceki 7 gün kırılmadan önce → iki sütun KIYASLANMAZ.") + "\n")
     lines += [f"| Kaynak | Son 7 gün | Önceki 7 gün{'' if kiyas else ' (kırılma öncesi, kıyaslanmaz)'} |", "|---|---|---|"]
     for k in ("toplam", "google", "yapay_zeka", "dogrudan", "sosyal", "diger_arama"):
@@ -104,6 +104,22 @@ def kayitlar():
         f"| E-posta onayı bekleyen | {k['bekleyen']} |",
         f"| Yeni kayıt, son 7 gün (önceki 7 gün) | {k['yeni_7g']} ({k.get('yeni_onceki_7g', '?')}) |",
         f"| Portföy üyesi (toplam) | {k['uye']} |"])
+
+
+def insan_trafik():
+    """Çerezsiz sayfa görüntüleme (Cloudflare kenarı: TR + tarayıcı, doğrulanmış bot değil) — GA4 kırılmasının yanına
+    onaydan bağımsız eğilim sayısı (scripts/bots/cf_bots.py insan)."""
+    import importlib.util
+    yol = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "bots", "cf_bots.py")
+    spec = importlib.util.spec_from_file_location("cf_bots", yol)
+    m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+    r = m.insan(7)
+    fark = f"{(r['son'] - r['onceki']) / r['onceki'] * 100:+.0f}%" if r["onceki"] else "–"
+    return "\n".join([
+        f"Son 7 gün ({r['bitis']}'e kadar): **{r['son']}** sayfa görüntüleme · önceki 7 gün {r['onceki']} ({fark})",
+        "Günlük: " + " · ".join(f"{d[5:]} {n}" for d, n in r["gunluk"].items()),
+        "En çok: " + " · ".join(f"{p} {n}" for p, n in r["sayfalar"][:8]),
+        "_(eğilim: TR dışı okurlar yok, tarayıcı taklidi yapan botlar olabilir; çerez onayından bağımsız → 17.11 öncesiyle kıyaslanabilir)_"])
 
 
 def gsc_firsat():
@@ -193,6 +209,7 @@ def kaan_gorevleri():
 # Sıra = önem: trafik başlığı GSC tıkı, dönüşüm başlığı DB kayıtları; GA4 17.11'den beri yalnız onaylı (ek bilgi)
 BOLUMLER = [("Trafik — Google arama (GSC, haftalık; ANA trafik ölçüsü)", gsc_hafta),
             ("Kayıtlar (veritabanı; ANA dönüşüm ölçüsü)", kayitlar),
+            ("Çerezsiz sayfa görüntüleme (Cloudflare kenarı, TR + tarayıcı; GA4'ün yerine eğilim)", insan_trafik),
             ("GA4 kaynak dağılımı (yalnız çerez onaylı ziyaret, 17.11'den beri eksik; 7g vs önceki 7g)", ga4),
             ("SEO fırsatları (GSC)", gsc_firsat), ("Botlar (Cloudflare)", botlar), ("Resmî Gazete bekçisi", resmi_gazete), ("GEO puanı", geo),
             ("Kırık linkler", linkler), ("Yapısal veri (JSON-LD)", yapisal_veri), ("Hız (Lighthouse CI)", hiz),

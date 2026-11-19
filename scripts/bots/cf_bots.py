@@ -10,8 +10,9 @@ Token: ~/.config/parafomo/cloudflare.env (CLOUDFLARE_API_TOKEN, CLOUDFLARE_ZONE_
 
   pull [--days N]   son N günü (varsayılan 1) 6 saatlik pencerelerle çek → /root/parafomo-data/bots/<gün>.jsonl
   report [--days 7] bot bazında istek, en çok okunan sayfalar, kullanıcı-tetikli (ChatGPT-User vb.) sayfalar
+  insan [--days 7]  çerezsiz insan sayfa görüntüleme tahmini (GA4 17.11 çerez kırılmasının yanına; dosya yazmaz)
 """
-import argparse, collections, datetime as dt, json, os, sys, urllib.request, urllib.error
+import argparse, collections, datetime as dt, json, os, re, sys, urllib.request, urllib.error
 
 ENV = os.path.expanduser("~/.config/parafomo/cloudflare.env")
 OUT = "/root/parafomo-data/bots"
@@ -147,9 +148,62 @@ def report(days):
             print(f"  {n:5d}  {b} {st}")
 
 
+# ---------------------------------------------------------------- çerezsiz insan sayfa görüntüleme (2026-11-19)
+# KVKK çerez bandından (17 Kasım) beri GA4 yalnız onay verenleri sayıyor. Aynı Zone·Analytics·Read token'ıyla Cloudflare
+# kenarından onaydan bağımsız bir EĞİLİM sayısı: parafomo.com, Türkiye, tarayıcı kimlikli, doğrulanmış bot değil, HTML
+# GET 200. Sınırlar: TR dışındaki okurlar yok; tarayıcı taklidi yapan yerli botlar olabilir; bu planda referer alanı
+# (clientRefererHost) ve ASN erişilemiyor (2026-11-19 denendi). Doğrulama: 9–16 Kasım günde 14–31 (GA4 10–24 oturum).
+INSAN_Q = """query($z:String!,$s:Time!,$e:Time!,$l:Int!){viewer{zones(filter:{zoneTag:$z}){
+  httpRequestsAdaptiveGroups(limit:$l,filter:{datetime_geq:$s,datetime_lt:$e,verifiedBotCategory:"",
+    edgeResponseContentTypeName:"html",clientRequestHTTPMethodName:"GET",edgeResponseStatus:200,requestSource:"eyeball",
+    clientRequestHTTPHost:"parafomo.com",clientCountryName:"TR"}){
+    count dimensions{date userAgentBrowser userAgent clientRequestPath}}}}}"""
+TARAYICI_DISI = {"Unknown", "Other", "Curl", "Wget", "Python", "Go", "Java", "HeadlessChrome", "PhantomJS"}
+BOT_UA = re.compile(r"bot\b|bot/|crawl|spider|slurp|headless|lighthouse|python|curl|wget|httpclient|okhttp|"
+                    r"claude-|chatgpt|perplexity|webtures|monitor|preview", re.I)
+
+
+def insan(gun=7, bitis=None):
+    """Son `gun` tam UTC günü ve önceki `gun` gün: çerezsiz insan sayfa görüntüleme tahmini. Hata → RuntimeError."""
+    token, zone = env()
+    bitis = bitis or dt.datetime.now(dt.timezone.utc).date()   # bugün (yarım gün) hariç
+    sinir = str(bitis - dt.timedelta(days=gun))
+    try:
+        data = gql(token, INSAN_Q, {"z": zone, "s": f"{bitis - dt.timedelta(days=2 * gun)}T00:00:00Z",
+                                    "e": f"{bitis}T00:00:00Z", "l": LIMIT})
+    except SystemExit as e:   # gql() komut satırı için sys.exit eder; içe aktaran (collect.py) çökmesin
+        raise RuntimeError(str(e)) from None
+    gunluk, sayfa = collections.Counter(), collections.Counter()
+    for g in data["viewer"]["zones"][0]["httpRequestsAdaptiveGroups"]:
+        dm = g["dimensions"]
+        ua = dm.get("userAgent") or ""
+        if dm.get("userAgentBrowser") in TARAYICI_DISI or BOT_UA.search(ua) or classify(ua, "")[1] != "?":
+            continue
+        gunluk[dm["date"]] += g["count"]
+        if dm["date"] >= sinir:
+            sayfa[dm["clientRequestPath"]] += g["count"]
+    son = sum(n for d, n in gunluk.items() if d >= sinir)
+    return {"son": son, "onceki": sum(gunluk.values()) - son, "bitis": str(bitis - dt.timedelta(days=1)),
+            "gunluk": dict(sorted(gunluk.items())), "sayfalar": sayfa.most_common(10)}
+
+
+def insan_yazdir(gun):
+    r = insan(gun)
+    print(f"ÇEREZSİZ SAYFA GÖRÜNTÜLEME (Cloudflare; parafomo.com, TR, tarayıcı, doğrulanmış bot değil, HTML) — "
+          f"{gun} gün {r['bitis']}'e kadar: {r['son']} · önceki {gun} gün: {r['onceki']}")
+    print("Günlük: " + " · ".join(f"{d[5:]} {n}" for d, n in r["gunluk"].items()))
+    print("En çok görüntülenen (son dönem): " + " · ".join(f"{p} {n}" for p, n in r["sayfalar"]))
+    print("(eğilim içindir: TR dışı okurlar yok, tarayıcı taklidi yapan botlar olabilir; GA4'ün aksine çerez onayından bağımsız)")
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["pull", "report"])
+    ap.add_argument("cmd", choices=["pull", "report", "insan"])
     ap.add_argument("--days", type=int, default=None)
     a = ap.parse_args()
-    pull(a.days or 1) if a.cmd == "pull" else report(a.days or 7)
+    if a.cmd == "pull":
+        pull(a.days or 1)
+    elif a.cmd == "report":
+        report(a.days or 7)
+    else:
+        insan_yazdir(a.days or 7)
