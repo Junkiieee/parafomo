@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19T06:15+00:00",
+ "updated": "2026-11-19T12:15+00:00",
  "source": "halkarz.com",
  "items": {
   "pronet-guvenlik-hizmetleri-a-s": {
@@ -8712,6 +8712,187 @@
     }
    },
    "first_seen": "2026-11-16"
+  },
+  "burcu-gida-konservecilik-ve-salca-sanayi-a-s": {
+   "company": "Burcu Gıda Konservecilik ve Salça Sanayi A.Ş.",
+   "bist_code": "",
+   "slug": "burcu-gida-konservecilik-ve-salca-sanayi-a-s",
+   "link": "https://halkarz.com/burcu-gida-konservecilik-ve-salca-sanayi-a-s/",
+   "date_text": "",
+   "start": null,
+   "end": null,
+   "status": "Tarih Bekleniyor",
+   "price": "",
+   "distribution": "Eşit Dağıtım **",
+   "lot": "160.000.000 Lot",
+   "broker": "İntegral Yatırım Menkul Değerler A.Ş. Ziraat Yatırım Menkul Değerler A.Ş.",
+   "market": "Yıldız Pazar",
+   "first_trade": "",
+   "float_lot": "",
+   "float_pct": "",
+   "updated_src": "19.11.2026 13:45",
+   "details": {
+    "sekil": {
+     "items": [
+      "Sermaye Artırımı : 112.164.000 Lot",
+      "Ortak Satışı : 47.836.000 Lot"
+     ],
+     "source": "Taslak İzahname, Sayfa 1."
+    },
+    "fon_kullanim": {
+     "items": [
+      "%25-30 Kapasite artışı",
+      "%20-30 Dijital dönüşüm ve modernizasyon yatırımları",
+      "%3-5 Kurumsal gelişim ve uluslararası marka yatırımları",
+      "%2-5 Yeşil dönüşüm ve sürdürülebilirlik yatırımları",
+      "%20-30 İşletme sermayesi",
+      "%10-20 Finansal borçların azaltılması"
+     ],
+     "source": "Taslak İzahname, Sayfa 325."
+    },
+    "satis_yontemi": {
+     "items": [
+      "Sabit Fiyatla Talep Toplama",
+      "En İyi Gayret Aracılığı"
+     ],
+     "source": ""
+    },
+    "fiyat_istikrari": {
+     "items": [
+      "30 gün",
+      "(İntegral Yatırım Menkul Değerler A.Ş.)"
+     ],
+     "source": "Taslak İzahname, Sayfa 321."
+    },
+    "satmama": {
+     "items": [
+      "1 Yıl, İhraççı",
+      "1 Yıl, Ortaklar"
+     ],
+     "source": "Taslak İzahname, Sayfa 323."
+    },
+    "halka_aciklik": {
+     "items": [
+      "%21,33"
+     ],
+     "source": "Taslak İzahname, Sayfa 288."
+    },
+    "finansal": {
+     "periods": [
+      "2026/6",
+      "2025",
+      "2024"
+     ],
+     "rows": [
+      {
+       "label": "Hasılat",
+       "values": [
+        "3,4 Milyar TL",
+        "6,8 Milyar TL",
+        "6,4 Milyar TL"
+       ]
+      },
+      {
+       "label": "Brüt Kâr",
+       "values": [
+        "576,8 Milyon TL",
+        "1,1 Milyar TL",
+        "1,2 Milyar TL"
+       ]
+      }
+     ]
+    }
+   },
+   "first_seen": "2026-11-19"
+  },
+  "tavuk-dunyasi-gida-san-ve-tic-a-s": {
+   "company": "Tavuk Dünyası Gıda San. ve Tic. A.Ş.",
+   "bist_code": "TVKDN",
+   "slug": "tavuk-dunyasi-gida-san-ve-tic-a-s",
+   "link": "https://halkarz.com/tavuk-dunyasi-gida-san-ve-tic-a-s/",
+   "date_text": "",
+   "start": null,
+   "end": null,
+   "status": "Tarih Bekleniyor",
+   "price": "",
+   "distribution": "Eşit Dağıtım **",
+   "lot": "687.500.000 Lot",
+   "broker": "İntegral Yatırım Menkul Değerler A.Ş. Ziraat Yatırım Menkul Değerler A.Ş. Ünlü Menkul Değerler A.Ş.",
+   "market": "Yıldız Pazar",
+   "first_trade": "",
+   "float_lot": "",
+   "float_pct": "",
+   "updated_src": "19.11.2026 10:16",
+   "details": {
+    "sekil": {
+     "items": [
+      "Sermaye Artırımı : 275.000.000 Lot",
+      "Ortak Satışı : 412.500.000 Lot",
+      "Ek Ortak Satışı : 137.500.000 Lot"
+     ],
+     "source": "Taslak İzahname, Sayfa 1."
+    },
+    "fon_kullanim": {
+     "items": [
+      "%65-75 Organik ve inorganik büyüme yatırımları",
+      "%25-35 Finansal borçluluğun azaltılması"
+     ],
+     "source": "Taslak İzahname, 417."
+    },
+    "satis_yontemi": {
+     "items": [
+      "Sabit Fiyatla Talep Toplama",
+      "En İyi Gayret Aracılığı"
+     ],
+     "source": ""
+    },
+    "fiyat_istikrari": {
+     "items": [
+      "* gün",
+      "(İntegral Yatırım Menkul Değerler A.Ş.)"
+     ],
+     "source": "Taslak İzahname, Sayfa 410."
+    },
+    "satmama": {
+     "items": [
+      "1 Yıl, İhraççı",
+      "1 Yıl, Ortaklar"
+     ],
+     "source": "Taslak İzahname, Sayfa 414."
+    },
+    "halka_aciklik": {
+     "items": [
+      "%25,42. Ek satış dahil"
+     ],
+     "source": "Taslak İzahname, Sayfa 365."
+    },
+    "finansal": {
+     "periods": [
+      "2026/6",
+      "2025",
+      "2024"
+     ],
+     "rows": [
+      {
+       "label": "Hasılat",
+       "values": [
+        "8,0 Milyar TL",
+        "11,2 Milyar TL",
+        "9,1 Milyar TL"
+       ]
+      },
+      {
+       "label": "Brüt Kar",
+       "values": [
+        "4,7 Milyar TL",
+        "6,6 Milyar TL",
+        "4,8 Milyar TL"
+       ]
+      }
+     ]
+    }
+   },
+   "first_seen": "2026-11-19"
   }
  }
 }
