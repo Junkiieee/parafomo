@@ -1,0 +1,59 @@
+{
+  "slug": "ikramiye-geldi-sandin-vergi-once-davraniyor",
+  "title": "İkramiye geldi sandın, vergi önce davranıyor",
+  "category": "KAVRAM",
+  "format": "single_concept",
+  "description": "İkramiye maaşın üstüne eklendiği için en yüksek vergi dilimi oranıyla kesilir. Bu yüzden eline geçen net tutar beklediğinden az olur.",
+  "tags": [
+    "ikramiye",
+    "prim",
+    "gelir vergisi",
+    "vergi dilimi",
+    "net maaş",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "KAVRAM",
+      "spoken": "İkramiyenin vergisi, maaşından daha ağır kesilir.",
+      "visual": {
+        "type": "object",
+        "query": "gift box with ribbon"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çünkü ikramiye maaşına eklenir; vergi, yıl içinde ulaştığın en yüksek dilimin oranıyla kesilir.",
+      "visual": {
+        "type": "object",
+        "query": "payslip document"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "İlk liralar düşük oranla vergilenir, ama ikramiye en üste biner ve en pahalı oranı yer.",
+      "visual": {
+        "type": "object",
+        "query": "layered cake slice"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "İkramiyeyi brüt rakamla değil, eline geçecek net tutarla planla; harcamayı ona göre ayarla.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sen maaşının hangi diliminde olduğunu biliyor musun? Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "gift box with ribbon"
+      }
+    }
+  ]
+}
