@@ -92,8 +92,9 @@ const breadcrumbs = [
       <p class="eyebrow">Hesaplayıcı · Memur Zammı</p>
       <h1>Memur Zammı Hesaplama (Ocak 2027)</h1>
       <p class="lede">
-        Ocak 2027 memur zammı tahmini <strong>%{nf(zam * 100)}</strong>: toplu sözleşmedeki %{TS_H1_2027} zam ile
-        2026 ikinci yarısının enflasyon farkı. Maaşınızı girin, Ocak 2027'deki tahmini maaşınızı görün.
+        {/* Aralık TÜFE'si açıklanınca (final) başlık "Belli Oldu" derken giriş "tahmini" diyordu (yıl geçişi provası). */}
+        Ocak 2027 memur zammı {final ? 'kesinleşti:' : 'tahmini'} <strong>%{nf(zam * 100)}</strong>{final ? ' —' : ':'} toplu sözleşmedeki %{TS_H1_2027} zam ile
+        2026 ikinci yarısının enflasyon farkı. Maaşınızı girin, Ocak 2027'deki {final ? 'yeni' : 'tahmini'} maaşınızı görün.
       </p>
     </header>
 
@@ -115,7 +116,7 @@ const breadcrumbs = [
       </form>
       <div class="calc-results" aria-live="polite">
         <div class="result-main">
-          <span class="result-label">Ocak 2027 tahmini maaş</span>
+          <span class="result-label">Ocak 2027 {final ? 'yeni' : 'tahmini'} maaş</span>
           <span class="result-value" id="out-new">₺{fmt(D.salary * (1 + zam))}</span>
         </div>
         <div class="result-split">
@@ -205,7 +206,7 @@ const breadcrumbs = [
         <a href="/en-dusuk-emekli-maasi/">en düşük emekli maaşı</a>).
       </p>
       <p class="cta-line">
-        Zam, kıdem tazminatı tavanını da belirler → <a href="/kidem-tazminati-hesaplama/#tavan-2027">Ocak 2027 kıdem tavanı tahmini</a>.
+        Zam, kıdem tazminatı tavanını da belirler → <a href="/kidem-tazminati-hesaplama/#tavan-2027">Ocak 2027 kıdem tavanı{final ? '' : ' tahmini'}</a>.
         Evde bakım maaşı da memur katsayısına bağlı → <a href="/evde-bakim-maasi/">evde bakım maaşı 2027 tahmini</a>; engelli ve
         65 yaş aylıkları da → <a href="/engelli-maasi/">Ocak 2027 engelli maaşı</a>; bedelli ücreti de aynı katsayıyla
         artar → <a href="/bedelli-askerlik-ucreti/">Ocak 2027 bedelli askerlik ücreti</a>.
