@@ -423,6 +423,24 @@ def hedefler(plan, kpi):
             for h in plan.get("hedefler", [])]
 
 
+def fikirler(plan):
+    """Denemelere gün sayacı (dashboard/panel.py deneme: baslangic/bitis/olcut) — "2 haftada tutmayanı durdur" kuralı
+    panelde görünsün: gün X/14, süresi dolan işaretli."""
+    bugun = simdi().date()
+    out = []
+    for f in plan.get("fikirler", []):
+        f = dict(f)
+        try:
+            bas = dt.date.fromisoformat(f["baslangic"]) if f.get("baslangic") else None
+            bit = dt.date.fromisoformat(f["bitis"]) if f.get("bitis") else (bas + dt.timedelta(days=14) if bas else None)
+        except (TypeError, ValueError):
+            bas = bit = None
+        if bas and bit and f.get("durum") == "deneniyor":
+            f.update({"gun": (bugun - bas).days + 1, "sure": (bit - bas).days, "gecikti": bugun > bit})
+        out.append(f)
+    return out
+
+
 @app.get("/api/durum")
 def durum(req: Request):
     oturum(req)
@@ -447,7 +465,7 @@ def durum(req: Request):
         "gorevler": [{**g, "yaptim": gorev_d.get(g.get("id"), {}).get("zaman")} for g in (plan.get("gorevler") or plan.get("kaan", []))],
         "hedefler": hedefler(plan, kpi),
         "gelir": plan.get("gelir", []),
-        "fikirler": plan.get("fikirler", []),
+        "fikirler": fikirler(plan),
         "harcamalar": [{**h, "karar": oku(dash("harcama-kararlar.json"), {}).get(h.get("id"))} for h in plan.get("harcamalar", [])],
         "istekler": list(reversed(oku(dash("istekler.json"), [])))[:30],
         "claude": claude_durumu(),

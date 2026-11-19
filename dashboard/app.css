@@ -322,6 +322,7 @@ button.satir:active { background: var(--bg); }
 .liste > .gelir-s:first-child, .liste > .fikir-s:first-child { border-top: 0; }
 .gelir-s .ad, .fikir-s .ad { font-weight: 600; font-size: 12px; }
 .gelir-s .ac, .fikir-s .ac { font-size: 10.5px; color: var(--soluk); margin-top: 2px; }
+.fikir-s .cipler { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; flex-shrink: 0; }
 .gorev-git { width: 100%; margin-top: 10px; }
 .gorev .adimlar { margin: 6px 0 0; padding-left: 16px; font-size: 11px; }
 .gorev .adimlar li { margin: 3px 0; }

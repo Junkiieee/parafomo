@@ -255,8 +255,11 @@ function ozetHtml() {
   const DURUM = { hazir: 'Hazır', calisiyor: 'Çalışıyor', deneniyor: 'Deneniyor', sirada: 'Sırada', bekliyor: 'Görev bekliyor', durdu: 'Durduruldu', sonuc: 'Sonuç var' };
   const gelir = (S.gelir || []).map((g) => `<div class="gelir-s"><div><div class="ad">${esc(g.yol)}</div><div class="ac">${esc(g.aciklama || '')}</div></div>
     <span class="cip ${cipDurum(g.durum)}">${esc(DURUM[g.durum] || g.durum || '')}</span></div>`).join('');
-  const fikirler = (S.fikirler || []).map((f) => `<div class="fikir-s"><div><div class="ad">${esc(f.baslik)}</div><div class="ac">${esc(f.sonuc || f.neden || '')}</div></div>
-    <span class="cip ${cipDurum(f.durum)}">${esc(DURUM[f.durum] || f.durum || '')}</span></div>`).join('');
+  // Deneme sayacı (sunucu: gun/sure/gecikti; panel.py deneme ile başlangıç + ölçüt yazılır)
+  const sayac = (f) => (f.gun ? `<span class="cip ${f.gecikti ? 'kotu' : ''}">${f.gecikti ? 'süre doldu' : `gün ${Number(f.gun)}/${Number(f.sure)}`}</span>` : '');
+  const fikirler = (S.fikirler || []).map((f) => `<div class="fikir-s"><div><div class="ad">${esc(f.baslik)}</div><div class="ac">${esc(f.sonuc || f.neden || '')}</div>
+    ${f.olcut && f.durum === 'deneniyor' ? `<div class="ac"><b>Ölçüt:</b> ${esc(f.olcut)}</div>` : ''}</div>
+    <div class="cipler">${sayac(f)}<span class="cip ${cipDurum(f.durum)}">${esc(DURUM[f.durum] || f.durum || '')}</span></div></div>`).join('');
   const nGorev = (S.gorevler || []).filter((g) => !g.yaptim).length + (S.harcamalar || []).filter((h) => !h.karar).length;
   return `${gunlukHtml()}
   ${nGorev ? `<button type="button" class="btn ana gorev-git" data-sekme="gorevler">Senden bekleyen ${nGorev} iş var →</button>` : ''}
