@@ -7,6 +7,10 @@ Kimlik repo DIŞINDA: ~/.config/parafomo/telegram.env  → TELEGRAM_BOT_TOKEN=�
   python3 scripts/telegram-post.py --metin "…" [--foto https://parafomo.com/…jpg] [--dry]
 Kural: kanal resmî rakam alarmıdır, asla al-sat tavsiyesi değildir (SPK/TSPB uyarıları); siyaset yok.
 Yayın kilidi: /root/parafomo-data/PUBLISH_PAUSED varsa yalnız ONAYLI_YAYIN=1 ile.
+
+KANAL KAPALI (Kaan 2026-11-17: "üç kanal: site, Instagram, YouTube — Telegram/WhatsApp kanallarına gerek yok";
+denetim sosyal-5): varsayılan olarak hiçbir şey gönderilmez. Bilerek açmak için TELEGRAM_ENABLED=1 ortam değişkeni
+ya da --etkin bayrağı gerekir (PUBLISH_PAUSED kuralı yine geçerli). --dry her zaman serbest (gönderim yok).
 """
 import argparse
 import json
@@ -34,6 +38,7 @@ def main():
     ap.add_argument("--metin", required=True)
     ap.add_argument("--foto", default="")
     ap.add_argument("--dry", action="store_true")
+    ap.add_argument("--etkin", action="store_true", help="kapalı kanala bilerek gönder (TELEGRAM_ENABLED=1 ile aynı)")
     a = ap.parse_args()
     if len(a.metin) > (1000 if a.foto else 4000):
         sys.exit("metin çok uzun (fotoğraflı 1.000, düz 4.000 karakter)")
@@ -57,6 +62,9 @@ def main():
 
 
 if __name__ == "__main__":
+    if "--dry" not in sys.argv and os.environ.get("TELEGRAM_ENABLED") != "1" and "--etkin" not in sys.argv:
+        print("[telegram] kanal kapalı (Kaan 2026-11-17) — gönderilmedi. Bilerek açmak: TELEGRAM_ENABLED=1 ya da --etkin")
+        sys.exit(0)
     if os.path.exists("/root/parafomo-data/PUBLISH_PAUSED") and "--dry" not in sys.argv and os.environ.get("ONAYLI_YAYIN") != "1":
         print("[durduruldu] PUBLISH_PAUSED var — yalnız ONAYLI_YAYIN=1 ile."); sys.exit(0)
     main()
