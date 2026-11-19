@@ -51,7 +51,7 @@ METIN_YILI = [
 ZAM_MODUL = "src/data/zam2027.ts"
 ZAM_SAYFALAR = ["memur-zammi-hesaplama", "emekli-zammi-hesaplama", "engelli-maasi", "enflasyon-farki-hesaplama",
                 "emekli-refah-payi-seyyanen-zam", "kidem-tazminati-hesaplama", "en-dusuk-emekli-maasi",
-                "2027-zam-hesaplama", "evde-bakim-maasi", "dul-yetim-maasi", "zam-alarmi", "bedelli-askerlik-ucreti"]
+                "2027-zam-hesaplama", "evde-bakim-maasi", "dul-ve-yetim-maasi", "zam-alarmi", "bedelli-askerlik-ucreti"]
 ZAM_ESIK_GUN = 40  # hedef ay başından: Ocak → ~10 Şubat, Temmuz → ~10 Ağustos
 
 
