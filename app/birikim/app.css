@@ -36,6 +36,9 @@ main { flex: 1; width: 100%; max-width: 860px; margin: 0 auto; padding: 0 16px 4
 .chips button[aria-selected="true"] { background: var(--brand-deep); color: var(--brand-deep-ink); }
 
 /* ---- sonuçlar ---- */
+/* veri gelmeden sonuç alanının yerini ayır: altındaki notlar/CTA kaymasın (CLS 0,32 idi) */
+#results:empty { min-height: 54rem; }
+@media (max-width: 620px) { #results:empty { min-height: 61rem; } }
 .sim-lead { margin: 26px 0 4px; font-size: 1.02rem; color: var(--ink-2); }
 .sim-lead b { color: var(--ink); }
 .rows { display: grid; gap: 14px; margin-top: 16px; }

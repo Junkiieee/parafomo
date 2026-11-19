@@ -9,6 +9,8 @@ yormamak + hız). Tüm fiyatlar TL cinsindendir.
 """
 from __future__ import annotations
 
+import math
+import re
 import time
 
 import httpx
@@ -18,22 +20,58 @@ from .models import AssetType
 _TRUNCGIL_URL = "https://finans.truncgil.com/v3/today.json"
 _YAHOO_URL = "https://query1.finance.yahoo.com/v8/finance/chart/{symbol}.IS"
 _UA = "Mozilla/5.0 (ParaFOMO Portfolio)"
+# Kaynak asılırsa istek de asılmasın (özet her pozisyon için sırayla fiyat çeker)
+_TIMEOUT = httpx.Timeout(10.0, connect=5.0)
 
 # Basit TTL cache: {cache_key: (timestamp, (price, change_pct))}
 _CACHE: dict[str, tuple[float, tuple[float, float | None]]] = {}
 _TTL_SECONDS = 120
 
+# Başarısız çekimi kısa süre hatırla: uydurma sembol her özet çağrısında yeniden
+# denenmesin (sembol başına _FAIL_TTL). Kaynak ZAMAN AŞIMINA düşerse (asılı) o kaynağı
+# _DOWN_TTL boyunca hiç deneme — yoksa özet her pozisyon için sırayla 10 sn bekler.
+# Hızlı hatalarda (bağlantı reddi, 5xx) kaynak kapatılmaz: gece cron'ları her sembolü dener.
+_FAIL_TTL = 60
+_DOWN_TTL = 30
+# Yahoo yanıt verdi ama sembol yok (404 / fiyatsız): uydurma kod 10 dk boyunca yeniden sorulmasın
+_MISS_TTL = 600
+_FAILED: dict[str, float] = {}
+
+# BIST kodu URL yoluna girer: yalnız harf/rakam (../, ?, # ile Yahoo'da başka uç çağrılmasın)
+_BIST_RE = re.compile(r"[A-Z0-9]{1,12}")
+
+
+def is_valid_bist_symbol(symbol: str) -> bool:
+    return bool(_BIST_RE.fullmatch(symbol or ""))
+
+
+def _failed_recently(key: str) -> bool:
+    until = _FAILED.get(key)
+    if until is None:
+        return False
+    if until > time.time():
+        return True
+    _FAILED.pop(key, None)
+    return False
+
+
+def _mark_failed(key: str, ttl: float = _FAIL_TTL) -> None:
+    if len(_FAILED) > 10_000:  # uydurma sembollerle şişmesin
+        _FAILED.clear()
+    _FAILED[key] = time.time() + ttl
+
 
 def _num(value) -> float | None:
-    if value is None:
+    if value is None or isinstance(value, bool):
         return None
     if isinstance(value, (int, float)):
-        return float(value)
-    s = str(value).strip().replace(".", "").replace(",", ".")
-    try:
-        return float(s)
-    except ValueError:
-        return None
+        f = float(value)
+    else:
+        try:
+            f = float(str(value).strip().replace(".", "").replace(",", "."))
+        except ValueError:
+            return None
+    return f if math.isfinite(f) else None
 
 
 def _pct(value) -> float | None:
@@ -42,9 +80,10 @@ def _pct(value) -> float | None:
         return None
     s = str(value).strip().replace("%", "").replace(".", "").replace(",", ".")
     try:
-        return float(s)
+        f = float(s)
     except ValueError:
         return None
+    return f if math.isfinite(f) else None
 
 
 def _cache_get(key: str) -> tuple[float, float | None] | None:
@@ -58,11 +97,30 @@ def _cache_set(key: str, quote: tuple[float, float | None]) -> None:
     _CACHE[key] = (time.time(), quote)
 
 
+_TRUNCGIL_DOC: tuple[float, dict] | None = None
+
+
 def _fetch_truncgil() -> dict:
-    with httpx.Client(timeout=20, headers={"User-Agent": _UA}) as client:
-        r = client.get(_TRUNCGIL_URL)
-        r.raise_for_status()
-        return r.json()
+    """today.json — altın/gümüş/döviz aynı belgeden: TTL boyunca tek çekim.
+    Zaman aşımına düştüyse _DOWN_TTL boyunca denemeden ValueError (çağıranlar yakalıyor)."""
+    global _TRUNCGIL_DOC
+    now = time.time()
+    if _TRUNCGIL_DOC is not None and now - _TRUNCGIL_DOC[0] < _TTL_SECONDS:
+        return _TRUNCGIL_DOC[1]
+    if _failed_recently("src:truncgil"):
+        raise ValueError("truncgil geçici olarak erişilemez")
+    try:
+        with httpx.Client(timeout=_TIMEOUT, headers={"User-Agent": _UA}) as client:
+            r = client.get(_TRUNCGIL_URL)
+            r.raise_for_status()
+            data = r.json()
+    except httpx.TimeoutException:
+        _mark_failed("src:truncgil", _DOWN_TTL)
+        raise
+    if not isinstance(data, dict):
+        raise ValueError("beklenmeyen truncgil yanıtı")
+    _TRUNCGIL_DOC = (now, data)
+    return data
 
 
 # Altın türleri (2026-11-17, Kaan: portföy uygulamasına çekme — "Altınlarım"): GOLD varlığında sembol türü seçer.
@@ -87,8 +145,8 @@ def _gold_silver_quote(asset_type: AssetType, symbol: str = "GOLD") -> tuple[flo
         data = _fetch_truncgil()
     except (httpx.HTTPError, ValueError):
         return None
-    entry = data.get(key) or {}
-    price = _num(entry.get("Selling"))
+    entry = data.get(key)
+    price = _num(entry.get("Selling")) if isinstance(entry, dict) else None
     if price is None:
         return None
     quote = (price, _pct(entry.get("Change")))
@@ -106,8 +164,8 @@ def _fx_quote(asset_type: AssetType) -> tuple[float, float | None] | None:
         data = _fetch_truncgil()
     except (httpx.HTTPError, ValueError):
         return None
-    entry = data.get(key) or {}
-    price = _num(entry.get("Selling"))
+    entry = data.get(key)
+    price = _num(entry.get("Selling")) if isinstance(entry, dict) else None
     if price is None:
         return None
     quote = (price, _pct(entry.get("Change")))
@@ -125,19 +183,28 @@ def _crypto_quote(asset_type: AssetType) -> tuple[float, float | None] | None:
     cached = _cache_get("cg:" + coin)
     if cached is not None:
         return cached
+    if _failed_recently("src:coingecko"):
+        return None
     try:
-        with httpx.Client(timeout=20, headers={"User-Agent": _UA}) as client:
+        with httpx.Client(timeout=_TIMEOUT, headers={"User-Agent": _UA}) as client:
             r = client.get(_COINGECKO_URL)
             r.raise_for_status()
             data = r.json()
+        if not isinstance(data, dict):
+            raise ValueError("beklenmeyen coingecko yanıtı")
+    except httpx.TimeoutException:
+        _mark_failed("src:coingecko", _DOWN_TTL)
+        return None
     except (httpx.HTTPError, ValueError):
         return None
     for cid in ("bitcoin", "ethereum"):
-        entry = data.get(cid) or {}
-        price = entry.get("try")
+        entry = data.get(cid)
+        if not isinstance(entry, dict):
+            continue
+        price = _num(entry.get("try"))
         if price is not None:
-            chg = entry.get("try_24h_change")
-            _cache_set("cg:" + cid, (float(price), round(float(chg), 2) if chg is not None else None))
+            chg = _num(entry.get("try_24h_change"))
+            _cache_set("cg:" + cid, (price, round(chg, 2) if chg is not None else None))
     return _cache_get("cg:" + coin)
 
 
@@ -150,7 +217,8 @@ def get_usd_try() -> float | None:
         data = _fetch_truncgil()
     except (httpx.HTTPError, ValueError):
         return None
-    price = _num((data.get("USD") or {}).get("Selling"))
+    entry = data.get("USD")
+    price = _num(entry.get("Selling")) if isinstance(entry, dict) else None
     if price is None:
         return None
     _cache_set("usd-try", (price, None))
@@ -159,21 +227,34 @@ def get_usd_try() -> float | None:
 
 def _bist_quote(ticker: str) -> tuple[float, float | None] | None:
     ticker = ticker.strip().upper()
+    if not is_valid_bist_symbol(ticker):
+        return None
     cache_key = f"bist:{ticker}"
     cached = _cache_get(cache_key)
     if cached is not None:
         return cached
+    if _failed_recently(cache_key) or _failed_recently("src:yahoo"):
+        return None
     try:
-        with httpx.Client(timeout=20, headers={"User-Agent": _UA}) as client:
+        with httpx.Client(timeout=_TIMEOUT, headers={"User-Agent": _UA}) as client:
             r = client.get(_YAHOO_URL.format(symbol=ticker))
             r.raise_for_status()
             data = r.json()
         result = (data.get("chart") or {}).get("result") or []
         meta = result[0].get("meta") if result else None
         price = _num(meta.get("regularMarketPrice")) if meta else None
-    except (httpx.HTTPError, ValueError, KeyError, IndexError, AttributeError):
+    except httpx.TimeoutException:
+        # Yahoo asılı → kısa süre hiç deneme (sıradaki semboller 10'ar sn beklemesin)
+        _mark_failed("src:yahoo", _DOWN_TTL)
+        return None
+    except httpx.HTTPStatusError as exc:
+        _mark_failed(cache_key, _MISS_TTL if exc.response.status_code == 404 else _FAIL_TTL)
+        return None
+    except (httpx.HTTPError, ValueError, KeyError, IndexError, AttributeError, TypeError):
+        _mark_failed(cache_key)
         return None
     if price is None:
+        _mark_failed(cache_key, _MISS_TTL)
         return None
     prev = _num(meta.get("previousClose")) or _num(meta.get("chartPreviousClose"))
     change_pct = ((price - prev) / prev * 100) if prev else None
@@ -182,8 +263,35 @@ def _bist_quote(ticker: str) -> tuple[float, float | None] | None:
     return quote
 
 
-def get_quote(asset_type: AssetType, symbol: str) -> tuple[float, float | None] | None:
-    """Güncel (birim fiyat TL, gün içi değişim %) döndürür; alınamazsa None."""
+# Son başarılı fiyat (süreç içi): kaynak kısa süre düşerse portföy özeti sahte zarar göstermesin.
+_LAST_GOOD: dict[str, tuple[float, tuple[float, float | None]]] = {}
+_LAST_GOOD_TTL = 24 * 3600
+
+
+def get_quote(
+    asset_type: AssetType, symbol: str, allow_stale: bool = False
+) -> tuple[float, float | None] | None:
+    """Güncel (birim fiyat TL, gün içi değişim %) döndürür; alınamazsa None.
+
+    allow_stale=True: kaynak o an yanıt vermezse son 24 saatteki son başarılı fiyat döner
+    (gün içi değişim None — bayat değişim gösterilmesin). Alarm gibi karar veren yerlerde KULLANMA.
+    """
+    quote = _live_quote(asset_type, symbol)
+    key = f"{asset_type.value}:{(symbol or '').strip().upper()}"
+    now = time.time()
+    if quote is not None:
+        if key not in _LAST_GOOD and len(_LAST_GOOD) >= 10_000:  # uydurma sembollerle şişmesin
+            _LAST_GOOD.clear()
+        _LAST_GOOD[key] = (now, quote)
+        return quote
+    if allow_stale:
+        hit = _LAST_GOOD.get(key)
+        if hit and now - hit[0] < _LAST_GOOD_TTL:
+            return (hit[1][0], None)
+    return None
+
+
+def _live_quote(asset_type: AssetType, symbol: str) -> tuple[float, float | None] | None:
     if asset_type is AssetType.BIST:
         return _bist_quote(symbol)
     if asset_type in (AssetType.GOLD, AssetType.SILVER):
@@ -214,27 +322,37 @@ def get_bist_history(ticker: str, rng: str) -> list[dict] | None:
     if rng not in _HIST_RANGES:
         return None
     ticker = ticker.strip().upper()
+    if not is_valid_bist_symbol(ticker):
+        return None
     key = f"hist:{ticker}:{rng}"
     hit = _HIST_CACHE.get(key)
     if hit and (time.time() - hit[0]) < _HIST_TTL:
         return hit[1]
-    url = _YAHOO_URL.format(symbol=ticker) + f"?range={rng}&interval={_HIST_RANGES[rng]}"
+    if _failed_recently(key) or _failed_recently("src:yahoo"):
+        return None
+    url = _YAHOO_URL.format(symbol=ticker)
+    import datetime as _dt
     try:
-        with httpx.Client(timeout=20, headers={"User-Agent": _UA}) as client:
-            r = client.get(url)
+        with httpx.Client(timeout=_TIMEOUT, headers={"User-Agent": _UA}) as client:
+            r = client.get(url, params={"range": rng, "interval": _HIST_RANGES[rng]})
             r.raise_for_status()
             data = r.json()
         res = data["chart"]["result"][0]
         ts = res["timestamp"]
         closes = res["indicators"]["quote"][0]["close"]
-    except (httpx.HTTPError, ValueError, KeyError, IndexError, TypeError):
+        points = []
+        for t, c in zip(ts, closes):
+            p = _num(c)
+            if p is None or not isinstance(t, (int, float)):
+                continue  # bozuk tek nokta tüm seriyi düşürmesin
+            points.append({"t": _dt.datetime.fromtimestamp(t, tz=_dt.timezone.utc).strftime("%Y-%m-%d"),
+                           "p": round(p, 4)})
+    except httpx.TimeoutException:
+        _mark_failed("src:yahoo", _DOWN_TTL)
         return None
-    import datetime as _dt
-    points = [
-        {"t": _dt.datetime.fromtimestamp(t, tz=_dt.timezone.utc).strftime("%Y-%m-%d"),
-         "p": round(float(c), 4)}
-        for t, c in zip(ts, closes) if c is not None
-    ]
+    except (httpx.HTTPError, ValueError, KeyError, IndexError, TypeError, OverflowError, OSError):
+        _mark_failed(key)
+        return None
     if not points:
         return None
     _HIST_CACHE[key] = (time.time(), points)

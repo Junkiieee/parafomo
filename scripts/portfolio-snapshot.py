@@ -33,6 +33,7 @@ def main() -> None:
             if not holdings:
                 continue
             total_value = total_cost = 0.0
+            eksik = False
             for h in holdings:
                 key = (h.asset_type, h.symbol)
                 if key not in quote_cache:
@@ -41,8 +42,10 @@ def main() -> None:
                 total_cost += h.quantity * h.cost_price
                 if q:
                     total_value += h.quantity * q[0]
-            if total_value <= 0 and total_cost > 0:
-                skipped += 1  # fiyat kaynağı çökmüş — yanlış dip yazma
+                else:
+                    eksik = True
+            if eksik:
+                skipped += 1  # bir pozisyonun fiyatı yok — eksik toplam grafikte yanlış dip olur
                 continue
             snap = db.scalar(select(PortfolioSnapshot).where(
                 PortfolioSnapshot.user_id == user.id, PortfolioSnapshot.day == today

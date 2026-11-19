@@ -8,6 +8,14 @@ from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
 from .models import AssetType
 
+# Sayısal alanlar: NaN/Infinity reddedilir (JSON'a yazılamaz → kullanıcının tüm
+# portföy uçları 500 dönüyordu) ve üst sınır konur (çarpım/toplam inf'e taşmasın).
+_MAX_AMOUNT = 1e12
+
+
+def _amount(**kw):
+    return Field(gt=0, le=_MAX_AMOUNT, allow_inf_nan=False, **kw)
+
 
 # ---- Auth ----
 class UserRegister(BaseModel):
@@ -18,16 +26,18 @@ class UserRegister(BaseModel):
 
 class UserLogin(BaseModel):
     email: EmailStr
-    password: str
+    password: str = Field(max_length=128)
 
 
 class Token(BaseModel):
     access_token: str
     token_type: str = "bearer"
+    # Bu istekle yeni hesap açıldı mı (kayıt / ilk Google girişi) — uygulama GA4 sign_up olayı için
+    new_user: bool = False
 
 
 class GoogleLogin(BaseModel):
-    credential: str  # Google Identity Services ID token (JWT)
+    credential: str = Field(max_length=8192)  # Google Identity Services ID token (JWT)
 
 
 class PasswordResetRequest(BaseModel):
@@ -35,7 +45,7 @@ class PasswordResetRequest(BaseModel):
 
 
 class PasswordResetConfirm(BaseModel):
-    token: str
+    token: str = Field(max_length=256)
     new_password: str = Field(min_length=8, max_length=128)
 
 
@@ -64,8 +74,8 @@ class UserUpdate(BaseModel):
 class HoldingCreate(BaseModel):
     asset_type: AssetType
     symbol: str = Field(min_length=1, max_length=32)
-    quantity: float = Field(gt=0)
-    cost_price: float = Field(gt=0)
+    quantity: float = _amount()
+    cost_price: float = _amount()
     purchase_date: date | None = None
     note: str | None = Field(default=None, max_length=280)
 
@@ -73,8 +83,8 @@ class HoldingCreate(BaseModel):
 class HoldingUpdate(BaseModel):
     """Pozisyon düzenleme — yalnız gönderilen alanlar güncellenir."""
 
-    quantity: float | None = Field(default=None, gt=0)
-    cost_price: float | None = Field(default=None, gt=0)
+    quantity: float | None = _amount(default=None)
+    cost_price: float | None = _amount(default=None)
     purchase_date: date | None = None
     note: str | None = Field(default=None, max_length=280)
 
@@ -119,6 +129,9 @@ class PortfolioSummary(BaseModel):
     # Satışlardan realize edilmiş kâr/zarar (işlem defterinden)
     realized_pl_total: float = 0.0
     realized_pl_year: float = 0.0
+    # Fiyatı alınamayan pozisyon sayısı: >0 ise total_value bunları içermez, K/Z yalnız
+    # fiyatı gelenlerle hesaplanır (total_cost tüm pozisyonların maliyeti olarak kalır)
+    unpriced_count: int = 0
 
 
 class SnapshotOut(BaseModel):
@@ -135,7 +148,7 @@ class AlertCreate(BaseModel):
     symbol: str = Field(min_length=1, max_length=32)
     kind: Literal["price", "day_pct"] = "price"
     direction: Literal["above", "below"]
-    threshold: float = Field(gt=0)
+    threshold: float = _amount()
     repeat: bool = False
 
 
@@ -161,8 +174,8 @@ class TxnCreate(BaseModel):
     asset_type: AssetType
     symbol: str = Field(min_length=1, max_length=32)
     side: Literal["buy", "sell"]
-    quantity: float = Field(gt=0)
-    price: float = Field(gt=0)
+    quantity: float = _amount()
+    price: float = _amount()
     trade_date: date | None = None
     note: str | None = Field(default=None, max_length=280)
 
@@ -185,7 +198,7 @@ class TxnOut(BaseModel):
 # ---- Hedefler ----
 class GoalCreate(BaseModel):
     kind: Literal["try", "usd", "gold_g"]
-    target: float = Field(gt=0)
+    target: float = _amount()
     title: str | None = Field(default=None, max_length=80)
 
 

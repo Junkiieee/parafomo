@@ -57,7 +57,10 @@ def send_password_reset(to: str, reset_url: str) -> bool:
     return send_email(to, subject, body)
 
 
-def send_zam_alarm_confirm(to: str, confirm_url: str, unsubscribe_url: str) -> bool:
+# Onay e-postalarında ÇIKIŞ BAĞLANTISI YOK (2026-11-18): onaylanmadan kayıt yok; Outlook Safe Links gibi her
+# bağlantıyı açan tarayıcılar onay + çıkışı birlikte açıp yeni kaydı "ayrıldı"ya düşürebiliyordu. Gerçek
+# bülten/alarm e-postalarında çıkış bağlantısı + List-Unsubscribe (One-Click POST) var.
+def send_zam_alarm_confirm(to: str, confirm_url: str) -> bool:
     """Zam alarmı kaydı (2026-11-17, Kaan: "asıl istediğim kaydolmaları"): haftalık bülten DEĞİL; yalnız açıklama günleri."""
     subject = "Parafomo zam alarmı — kaydını onayla"
     body = (
@@ -68,13 +71,12 @@ def send_zam_alarm_confirm(to: str, confirm_url: str, unsubscribe_url: str) -> b
         "enflasyonuyla kesinleşen emekli ve memur zammı (Ocak başı). Her seferinde tek e-posta: kesin oran ve "
         "kendi maaşınla hesaplayabileceğin bağlantı. Haftalık bülten ya da reklam yok.\n\n"
         "Bu talebi sen yapmadıysan hiçbir şey yapmana gerek yok — onaylamadıkça e-posta gönderilmez.\n\n"
-        f"Kaydını silmek için: {unsubscribe_url}\n\n"
         "Parafomo · parafomo.com"
     )
     return send_email(to, subject, body)
 
 
-def send_newsletter_confirm(to: str, confirm_url: str, unsubscribe_url: str) -> bool:
+def send_newsletter_confirm(to: str, confirm_url: str) -> bool:
     subject = "ParaFOMO bülteni — aboneliğini onayla"
     body = (
         "Merhaba,\n\n"
@@ -84,8 +86,7 @@ def send_newsletter_confirm(to: str, confirm_url: str, unsubscribe_url: str) -> 
         "Her hafta: altın/dolar/borsa getirilerinin kısa özeti, yaklaşan halka arzlar ve "
         "takvim (TCMB, enflasyon), yeni rehberler. Yatırım tavsiyesi değil; veri.\n\n"
         "Bu talebi sen yapmadıysan hiçbir şey yapmana gerek yok — onaylamadıkça "
-        "sana bülten gönderilmez.\n\n"
-        f"Abonelikten çıkmak için: {unsubscribe_url}\n\n"
+        "sana bülten gönderilmez. Her bültenin altında tek tıkla abonelikten çıkma bağlantısı olur.\n\n"
         "ParaFOMO · parafomo.com"
     )
     return send_email(to, subject, body)
