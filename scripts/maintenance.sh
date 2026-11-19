@@ -29,11 +29,13 @@ echo "[*] eski video render'ı silindi: $n"
 n=$(find /root/.cache/parafomo/broll /root/.cache/parafomo/viral-visuals -type f -atime +30 -print -delete 2>/dev/null | wc -l)
 echo "[*] kullanılmayan önbellek dosyası silindi: $n"
 
-# 3) Büyük logları kırp (8 MB üstü → son 2 MB kalır)
+# 3) Büyük logları kırp (8 MB üstü → son 2 MB kalır). YERİNDE kırpılır (aynı dosya): mv ile değiştirince o an
+#    log'a yazan iş (ör. 03:00 ajanı) silinmiş eski dosyaya yazmaya devam ediyor, satırlar kayboluyordu
+#    (health.py başarı satırını göremeyip "GECİKTİ" der). İlk yarım satır atılır (.jsonl bozuk JSON'la başlamasın).
 for f in logs/*.log logs/*.jsonl; do
   [ -f "$f" ] || continue
   if [ "$(stat -c %s "$f")" -gt 8000000 ]; then
-    tail -c 2000000 "$f" > "$f.tmp" && mv "$f.tmp" "$f" && echo "[*] log kırpıldı: $f"
+    tail -c 2000000 "$f" | tail -n +2 > "$f.tmp" && cat "$f.tmp" > "$f" && rm -f "$f.tmp" && echo "[*] log kırpıldı: $f"
   fi
 done
 
