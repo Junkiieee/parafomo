@@ -117,8 +117,8 @@ def kontrol(root, bugun):
             ekle("?", f"{dosya}: okunamadı ({type(e).__name__})")
             continue
         if v > m:
-            ekle("⚑", f"{dosya}: metinler {m} için yazıldı, {veri} [{yol}] = {v} → yıl/dilim metinlerini {v}'e göre "
-                      f"yaz ve metin yılını {v} yap (build de uyarıyor)")
+            ekle("⚑", f"{dosya}: metinler {m} için yazıldı, {veri} [{yol}] = {v} → sayfa {m} verisiyle kaldı; "
+                      f"yıl/dilim metinlerini {v} yılına göre yaz, METIN_YILI = {v} (build de uyarıyor)")
         else:
             ekle("✓", "")
 
