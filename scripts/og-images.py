@@ -251,6 +251,41 @@ def vergi_dilimi_card():
             "sub": "190.000 ₺'ye kadar %15 · dilimini ve vergini hesapla"}
 
 
+def ssk_2027():
+    """src/data/zam2027.ts ile AYNI mantık (sskProj/cumKnown) → (Ocak 2027 SSK zammı, kesinleşen kısım, bilinen ay, kesin mi)."""
+    t = load("tufe-aylik.json")
+    by = {m["ay"]: m["aylik"] for m in t["months"]}
+    keys = ["2026-07", "2026-08", "2026-09", "2026-10", "2026-11", "2026-12"]
+    known = [k for k in keys if k in by]
+    cum = 1.0
+    for k in known:
+        cum *= 1 + by[k] / 100
+    cum -= 1
+    resmi = (t.get("resmiZam") or {}).get("2027-01") or {}
+    if len(known) == len(keys) and resmi.get("ssk") is not None:
+        cum = resmi["ssk"] / 100
+    assume = round(sum(m["aylik"] for m in t["months"][:3]) / 3, 2)
+    proj = (1 + cum) * (1 + assume / 100) ** (len(keys) - len(known)) - 1
+    return proj, cum, len(known), len(known) == len(keys)
+
+
+def zam_2027_card():
+    # /2027-zam-hesaplama/ merkez sayfa: emekli + memur zammı (zam2027.ts) ve kira tavanı (kira-artis-2026.json)
+    proj, _, _, kesin = ssk_2027()
+    memur = (1 + max(0.0, (1 + proj) / 1.07 - 1)) * 1.05 - 1
+    kira = load("kira-artis-2026.json")["guncelOran"]
+    isaret = "%" if kesin else "≈%"
+    return {"kicker": "OCAK 2027 ZAMLARI · EMEKLİ", "stat": isaret + tr_pct(proj * 100, 2),
+            "sub": f"memur {isaret}{tr_pct(memur * 100, 2)} · kira tavanı %{tr_pct(kira, 2)} · tek hesapta"}
+
+
+def refah_payi_card():
+    # /emekli-refah-payi-seyyanen-zam/: yalnız kesinleşen enflasyon farkı (karar yokken oran/tutar yazılmaz)
+    _, cum, n, _ = ssk_2027()
+    return {"kicker": "REFAH PAYI · SEYYANEN ZAM 2027", "stat": f"%{tr_pct(cum * 100, 2)}",
+            "sub": f"kesinleşen enflasyon farkı ({n}/6 ay) · senaryonu hesapla"}
+
+
 CARDS = {
     "kredi-karti-faiz-hesaplama": kk_faiz_card,
     "emeklilik-hesaplama": lambda: {
@@ -366,6 +401,8 @@ CARDS = {
     "euro-getiri": returns_card("euro-getiri.json", "EURO"),
     "bitcoin-getiri": returns_card("bitcoin-getiri.json", "BİTCOİN"),
     "bist-getiri": returns_card("bist-getiri.json", "BIST 100"),
+    "2027-zam-hesaplama": zam_2027_card,
+    "emekli-refah-payi-seyyanen-zam": refah_payi_card,
 }
 
 

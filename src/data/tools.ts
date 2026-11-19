@@ -24,7 +24,9 @@ const GRUPLAR_HAM: Grup[] = [
   { baslik: 'Maaş, zam ve tazminat', araclar: [
     { href: '/net-maas-hesaplama/', ad: 'Net maaş hesaplama', aciklama: 'Brütten nete, vergi ve SGK kesintileri', k: ['maaş', 'net maaş', 'brüt', 'bordro', 'ücret'] },
     { href: '/asgari-ucret-hesaplama/', ad: 'Asgari ücret', aciklama: 'Net-brüt asgari ücret ve işveren maliyeti', k: ['asgari ücret'] },
+    { href: '/2027-zam-hesaplama/', ad: '2027 zam hesaplama', aciklama: 'Ocak 2027 maaş, emekli, memur ve kira zammı tek hesapta', k: ['2027 zam', 'zam hesaplama', 'ocak zammı', 'ocak 2027 zam'] },
     { href: '/emekli-zammi-hesaplama/', ad: 'Emekli zammı hesaplama', aciklama: 'SSK, Bağ-Kur ve memur emeklisi zammı', k: ['emekli', 'emeklilik', 'ssk', 'bağ-kur'] },
+    { href: '/emekli-refah-payi-seyyanen-zam/', ad: 'Refah payı ve seyyanen zam', aciklama: 'Ocak 2027 refah payı / seyyanen zam senaryosunda emekli aylığı', k: ['refah payı', 'seyyanen'] },
     { href: '/memur-zammi-hesaplama/', ad: 'Memur zammı hesaplama', aciklama: 'Ocak 2027 memur zammı tahmini ve katsayılar', k: ['memur'] },
     { href: '/enflasyon-farki-hesaplama/', ad: 'Enflasyon farkı hesaplama', aciklama: 'Ocak 2027 memur enflasyon farkı, ay ay birikim ve senaryolar', k: ['enflasyon farkı', 'toplu sözleşme'] },
     { href: '/en-dusuk-emekli-maasi/', ad: 'En düşük emekli maaşı', aciklama: 'Taban aylık, Ocak 2027 senaryosu, ödeme günleri', k: ['emekli maaşı', 'en düşük emekli'] },
