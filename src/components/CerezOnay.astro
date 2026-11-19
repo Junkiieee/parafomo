@@ -28,6 +28,8 @@
         var v = secim === 'kabul' ? 'granted' : 'denied';
         window.gtag('consent', 'update', { analytics_storage: v, ad_storage: v, ad_user_data: v, ad_personalization: v });
       }
+      // Onaya bağlı yükleyiciler (ör. AdSense, Analytics.astro) aynı sayfada da tepki verebilsin.
+      try { window.dispatchEvent(new CustomEvent('pf-cerez', { detail: secim })); } catch (err) { /* eski tarayıcı */ }
       bant.hidden = true;
     });
     document.addEventListener('click', function (e) {
