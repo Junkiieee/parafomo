@@ -138,19 +138,21 @@ const OLAY_SLUG = new RegExp(`${AY}-20\\d\\d|\\d{1,2}-${AY}|20\\d\\d-${AY}`);
 export type GuidePost = { id: string; data: { title: string; tags: string[]; draft?: boolean; sonuc?: string; pubDate: Date } };
 
 // Elle seçilmiş rehberler: otomatik eşleşmenin kaçırdığı/yanıldığı sayfalar ("şirket" → Russell 2000,
-// "brüt" → döviz rezervleri). Listesi olan sayfada yalnız bunlar gösterilir (otomatik ekleme yok).
+// "brüt" → döviz rezervleri). Listedekiler önce gelir; listeden yazı silinip yönlendirilirse boş kalan yer
+// otomatik eşleşmeyle dolar (2026-11-19: R30/W10'da silinen 10 yazı /faiz-hesaplama/'yı rehbersiz bırakmıştı).
+// scripts/seo-audit.py her slug'ın src/content/blog'da olduğunu denetler (rehber_missing).
 const REHBER: Record<string, string[]> = {
-  '/bist-getiri/': ['borsaya-nasil-baslanir', 'hisse-senedi-nasil-secilir', 'fk-orani-nedir'],
-  '/bilesik-faiz-hesaplama/': ['dca-nedir-maliyet-ortalamasi', 'pasif-gelir-fikirleri', 'finansal-ozgurluk-nedir-fire'],
-  '/faiz-hesaplama/': ['faiz-nedir-ekonomiyi-nasil-etkiler', 'reel-faiz-nedir', 'mevduat-faizi-nedir-vadeli-mevduat'],
-  '/mevduat-faizi-hesaplama/': ['mevduat-faizi-nedir-vadeli-mevduat', 'acil-durum-fonu-nedir', 'para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki'],
-  '/kredi-hesaplama/': ['findeks-kredi-notu-nedir-nasil-yukselir', 'borc-kapatma-yontemi-kartopu-cig', 'kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir'],
-  '/ihtiyac-kredisi-hesaplama/': ['findeks-kredi-notu-nedir-nasil-yukselir', 'kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir', 'borc-kapatma-yontemi-kartopu-cig'],
+  '/bist-getiri/': ['borsa-istanbul-nedir-seans-saatleri-pazarlar-takas', 'fk-orani-nedir', 'temettu-verimi-nedir'],
+  '/bilesik-faiz-hesaplama/': ['turkiyede-en-iyi-yatirim-araclari-2026', 'pasif-gelir-fikirleri', 'finansal-ozgurluk-nedir-fire'],
+  '/faiz-hesaplama/': ['para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki', 'eurobond-fonu-mu-mevduat-mi', 'katilim-hesabi-nedir-kar-payi-nasil-hesaplanir'],
+  '/mevduat-faizi-hesaplama/': ['mevduat-faiz-oranlari-2026-son-1-yil', 'tmsf-nedir-mevduat-guvencesi', 'para-piyasasi-fonu-nedir-getirisi-stopaj-mevduat-farki'],
+  '/kredi-hesaplama/': ['ihtiyac-kredisi-faiz-oranlari-2026-son-1-yil', 'borc-kapatma-yontemi-kartopu-cig', 'kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir'],
+  '/ihtiyac-kredisi-hesaplama/': ['ihtiyac-kredisi-faiz-oranlari-2026-son-1-yil', 'kredi-yapilandirma-2026-kredi-karti-borcu-nasil-yapilandirilir', 'borc-kapatma-yontemi-kartopu-cig'],
   '/kurumlar-vergisi-hesaplama/': ['gecici-vergi-nedir-2026-donemleri-orani-beyan-tarihleri', 'stopaj-nedir-2026-stopaj-oranlari'],
-  '/net-maas-hesaplama/': ['butce-nasil-yapilir-50-30-20', 'nasil-tasarruf-edilir', 'acil-durum-fonu-nedir'],
-  '/fed-faiz-takvimi/': ['fed-faiz-karari-nedir-etkisi', 'fomc-toplanti-tutanaklari-nedir', 'pce-nedir-fed-enflasyon-gostergesi'],
-  '/tcmb-faiz-takvimi/': ['tcmb-faiz-karari-nasil-etkiler', 'merkez-bankasi-nedir-faiz-karari', 'faiz-nedir-ekonomiyi-nasil-etkiler'],
-  '/ekonomik-takvim/': ['gdp-gsyih-nedir-nasil-yorumlanir', 'nfp-nedir-abd-tarim-disi-istihdam', 'pce-nedir-fed-enflasyon-gostergesi'],
+  '/net-maas-hesaplama/': ['butce-nasil-yapilir-50-30-20', 'nasil-tasarruf-edilir', 'enflasyondan-nasil-korunur'],
+  '/fed-faiz-takvimi/': ['fed-faiz-karari-nedir-etkisi', 'cekirdek-cpi-nedir-fed-enflasyon-gostergesi', 'dolar-endeksi-dxy-nedir'],
+  '/tcmb-faiz-takvimi/': ['tcmb-faiz-karari-nasil-etkiler', 'merkez-bankasi-nedir-faiz-karari', 'mevduat-faiz-oranlari-2026-son-1-yil'],
+  '/ekonomik-takvim/': ['gdp-gsyih-nedir-nasil-yorumlanir', 'nfp-nedir-abd-tarim-disi-istihdam', 'cekirdek-cpi-nedir-fed-enflasyon-gostergesi'],
   '/altin-fiyatlari/': ['altin-cesitleri-gram-ceyrek-ons-ziynet', 'altin-hesabi-nedir-mantikli-mi-fiziki-altin-fon-karsilastirma', 'gumus-mi-altin-mi-10-yillik-getiri-karsilastirma'],
 };
 
@@ -162,15 +164,17 @@ const REHBER: Record<string, string[]> = {
 export function relatedGuides(href: string, posts: GuidePost[], n = 3): GuidePost[] {
   const tool = TOOLS.find((t) => t.href === href);
   if (!tool) return [];
-  if (REHBER[href]) {
-    return REHBER[href]
-      .map((id) => posts.find((p) => p.id === id && !p.data.draft))
-      .filter((p): p is GuidePost => !!p)
-      .slice(0, n);
-  }
+  const secili = (REHBER[href] ?? [])
+    .map((id) => posts.find((p) => p.id === id && !p.data.draft))
+    .filter((p): p is GuidePost => !!p)
+    .slice(0, n);
+  // Bilerek kısa tutulan liste (ör. kurumlar vergisi: 2 yazı; "şirket" otomatikte Russell 2000'e gidiyordu) uzatılmaz;
+  // yalnız listeden düşen (silinmiş/taslak) yazıların yeri doldurulur.
+  const hedef = REHBER[href] ? Math.min(n, REHBER[href].length) : n;
+  if (secili.length >= hedef) return secili;
   const puan: [GuidePost, number][] = [];
   for (const p of posts) {
-    if (p.data.draft || p.data.sonuc || OLAY_SLUG.test(p.id)) continue;
+    if (p.data.draft || p.data.sonuc || OLAY_SLUG.test(p.id) || secili.includes(p)) continue;
     const title = lower(p.data.title);
     const tags = p.data.tags.map(lower);
     let s = 0;
@@ -182,5 +186,5 @@ export function relatedGuides(href: string, posts: GuidePost[], n = 3): GuidePos
   }
   // Eşit puanda eski (yerleşik) yazı önce: link seti her yeni yazıda değişmesin.
   puan.sort((a, b) => b[1] - a[1] || a[0].data.pubDate.getTime() - b[0].data.pubDate.getTime());
-  return puan.slice(0, n).map(([p]) => p);
+  return [...secili, ...puan.slice(0, hedef - secili.length).map(([p]) => p)];
 }
