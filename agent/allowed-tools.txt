@@ -1,7 +1,9 @@
-# ParaFOMO Ajanı v2 — izinli araçlar (claude --permission-mode acceptEdits --allowedTools ...)
+# ParaFOMO sabah rutini (agent/sabah.sh) — izinli araçlar (claude --permission-mode acceptEdits --allowedTools ...)
 # Listede OLMAYAN araç/komut headless koşuda otomatik REDDEDİLİR (soru sorulmaz).
-# Dosya düzenleme yalnız repo dizininde otomatik kabul edilir (acceptEdits).
-# Bilerek YOK: rm, sudo, crontab (yazma), npm install, bash -c / env / xargs / timeout / nohup
+# YASAKLAR ayrı dosyada: agent/denied-tools.txt (--disallowedTools; izinden önce gelir — git push/reset/rebase,
+# sır dosyası okuma, pip/astro add, PUBLISH_PAUSED/onay dosyaları).
+# Dosya düzenleme yalnız çalışma dizinlerinde otomatik kabul edilir (acceptEdits): repo + /root/parafomo-data (--add-dir).
+# Bilerek YOK: rm, sudo, crontab (yazma), npm install, bash -c / env / xargs / timeout / nohup / çıplak nice
 # (keyfi komut sarmalayıcıları), alt-ajan (token çarpanı). Gerekirse buraya satır ekle.
 
 Read
@@ -12,10 +14,10 @@ Grep
 WebSearch
 WebFetch
 
-# Görev Masası artık dashboard.parafomo.com → `python3 agent/board.py` (yukarıdaki python3 * kapsar).
+# Panel: dashboard.parafomo.com → `python3 dashboard/panel.py …` (aşağıdaki python3 * kapsar).
 # Claude Docs araçları 2026-10-15'te kaldırıldı: headless setup-token claude.ai bağlayıcılarını taşımıyordu.
 
-# git (yardımcılar: bash scripts/lib/... üzerinden değil, doğrudan git; push için git_push_retry tercih)
+# git: okuma + add/commit (push YASAK — yayın yalnız `bash scripts/deploy-push.sh`; bkz. denied-tools.txt)
 Bash(git *)
 
 # build / site
@@ -79,6 +81,12 @@ Bash(journalctl -u parafomo-api*)
 Bash(crontab -l)
 
 # 2026-11-17 sabah rutini (agent/sabah.sh): render önceliği ve kare kontrolü
-Bash(nice *)
+# 2026-11-18: çıplak `nice *` her komutu sarmalıyordu (başlıktaki "keyfi sarmalayıcı yok" ilkesine aykırı) →
+# yalnız rutinin kullandığı biçimler (11-18 koşusu: nice -n 19 + venv python / npm run build).
+Bash(nice -n 19 /root/.venvs/parafomo/bin/python *)
+Bash(nice -n 19 python3 *)
+Bash(nice -n 19 npm run build)
+Bash(nice -n 19 npm run build *)
+Bash(nice -n 19 ffmpeg *)
 Bash(ffmpeg *)
 Bash(ffprobe *)
