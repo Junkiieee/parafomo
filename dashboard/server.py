@@ -53,7 +53,8 @@ KONTROLLER = [
     ("hikaye_uretim", "Para hikâyeleri (otomatik)", "Her gece bir Para hikâyesi otomatik yazılır, kontrol edilir ve 19:00'da çıkar."),
     ("oto_onay", "Onaysız yayın", "Açıkken hazır videolar senin onayını beklemeden çıkar. Kapalıyken her video burada onayını bekler."),
     ("youtube", "YouTube yayını", "Hazır videolar yayın saatlerinde YouTube'a çıkar."),
-    ("instagram", "Instagram paylaşımı", "Aynı videolar Instagram Reels (ve Facebook) olarak da paylaşılır."),
+    ("instagram", "Instagram paylaşımı", "Günün ilk videosu (19:00 Para hikâyesi) Instagram Reels'e de gider (günde 1 Reel); "
+                                         "videolar Facebook'ta da paylaşılır."),
     ("web_icerik", "Web: yeni içerik", "Hafta içi her sabah siteye yeni yazı/sayfa eklenir."),
 ]
 
@@ -283,24 +284,42 @@ def icerik(kpi):
     defter = oku(DEFTER, {}).get("secimler", {})
     kuyrukta = " ".join(it["slug"] for it in items)
 
-    # kuyruk.py yayinla mantığının birebir benzetimi: tarihi o gün olan önce, sonra onay sırası
+    # scripts/anim/kuyruk.py yayinla seçiminin benzetimi (kuyruk.py'yi değiştirirsen burayı da değiştir):
+    #   ŞERİT (2026-11-17): UTC saati < 17 (19:00 TSİ) → Para hikâyesi (style=hikaye) önce, 21:00 → diğerleri önce;
+    #   şerit içinde tarihi o gün olan önce, sonra onay sırası. Şeritte video yoksa sıradaki diğer video girer.
+    # Instagram: instagram-reel.py TSİ günü başına 1 Reel (IG_REELS_PER_DAY) → günün yayınlanan İLK videosu IG'ye gider.
     onayli = [it for it in items if it.get("status") == "onaylandi"]
+    ig_acik = acik_mi("instagram") and acik_mi("youtube")   # YouTube kapalıyken yayinla hiçbir şey yayınlamaz
+
+    def tr_gunu(iso):
+        try:
+            return (dt.datetime.fromisoformat(iso.replace("Z", "+00:00")) + dt.timedelta(hours=3)).date()
+        except (AttributeError, ValueError):
+            return None
+    bugun_ig = any(it.get("status") == "yayinlandi" and (it.get("ig_media_id") or it.get("ig_permalink"))
+                   and tr_gunu(it.get("published")) == bugun for it in items)
     alinan, yuvalar = set(), []
     for g in range(8):
         gun = bugun + dt.timedelta(days=g)
         gs = gun.isoformat()
-        for i, (h, m) in enumerate(yayin_saatleri()):
+        ig_dolu = bugun_ig if g == 0 else False
+        for h, m in yayin_saatleri():
             t = dt.datetime(gun.year, gun.month, gun.day, h, m, tzinfo=TR)
             if t <= now:
                 continue
+            hikaye_seridi = (h - 3) % 24 < 17   # kuyruk.py: now().hour < 17 (UTC)
             sira = [it for it in onayli if it["no"] not in alinan and (it.get("yayin_tarihi") or "") <= gs]
             if sira:
-                it = sorted(sira, key=lambda x: ((x.get("yayin_tarihi") or "") != gs, x.get("approved", "")))[0]
+                it = sorted(sira, key=lambda x: ((x.get("style") == "hikaye") != hikaye_seridi,
+                                                 (x.get("yayin_tarihi") or "") != gs, x.get("approved", "")))[0]
                 alinan.add(it["no"])
-                yuvalar.append({"zaman": t.isoformat(), "video": video_ozet(it)})
+                ig = ig_acik and not ig_dolu
+                ig_dolu = ig_dolu or ig
+                yuvalar.append({"zaman": t.isoformat(), "video": video_ozet(it), "ig": ig})
                 continue
             plan = defter.get(gs)
-            if i == 0 and plan and plan.get("yuva") == "short" and plan.get("id", "#") not in kuyrukta:
+            # Ekonomi Defteri (style=defter) hikâye dışı şeritte (21:00) çıkar
+            if not hikaye_seridi and plan and plan.get("yuva") == "short" and plan.get("id", "#") not in kuyrukta:
                 yuvalar.append({"zaman": t.isoformat(), "video": None,
                                 "not": f"Ekonomi Defteri: {plan.get('baslik', '')} (hazırlanacak)"})
             elif uretim:

@@ -206,9 +206,11 @@ function planHtml(ad) {
     </div></details>`;
 }
 
-function kanalIkonlari() {
+// igGider=false: bu yuva Instagram'a gitmez (günde 1 Reel: günün ilk yayını; sunucu yuva.ig ile bildirir)
+function kanalIkonlari(igGider = true) {
+  const ig = acikMi('instagram') && igGider;
   return `<span class="kanal yt${acikMi('youtube') ? '' : ' kapali'}" title="YouTube">${IKON.yt}</span>`
-    + `<span class="kanal ig${acikMi('instagram') ? '' : ' kapali'}" title="Instagram">${IKON.ig}</span>`;
+    + `<span class="kanal ig${ig ? '' : ' kapali'}" title="${igGider ? 'Instagram' : "Instagram'a gitmez (günde 1 Reel)"}">${IKON.ig}</span>`;
 }
 
 function durumCipi(v) {
@@ -344,7 +346,7 @@ function yuvaHtml(y) {
   }
   return `<button type="button" class="satir" data-video="${Number(v.no)}"><div class="saat">${saat(y.zaman)}</div>${kapak(v)}
     <div class="govde"><div class="bas">${esc(v.baslik)}</div>
-    <div class="alt">${durumCipi(v)}${kanalIkonlari()}</div></div></button>`;
+    <div class="alt">${durumCipi(v)}${kanalIkonlari(y.ig !== false)}</div></div></button>`;
 }
 
 function videoSatiri(v) {
@@ -379,7 +381,7 @@ function uzunHtml(u) {
 
 function videoBul(no) {
   const ic = S?.icerik || {};
-  for (const y of ic.yuvalar || []) if (y.video && y.video.no === no) return { v: y.video, zaman: y.zaman };
+  for (const y of ic.yuvalar || []) if (y.video && y.video.no === no) return { v: y.video, zaman: y.zaman, ig: y.ig };
   for (const v of [...(ic.bekleyen || []), ...(ic.sorunlu || []), ...(ic.yayinlanan || [])]) if (v.no === no) return { v };
   return null;
 }
@@ -387,12 +389,13 @@ function videoBul(no) {
 function videoAc(no) {
   const b = videoBul(no);
   if (!b) return;
-  const { v, zaman } = b;
+  const { v, zaman, ig } = b;
   let html = v.video
     ? `<video controls playsinline preload="metadata" poster="/api/video/${Number(v.no)}.jpg" src="/api/video/${Number(v.no)}.mp4"></video>`
     : '<p class="bos">Video dosyası yok.</p>';
   html += `<h3>${esc(v.baslik)}</h3><div class="bilgi">
     ${zaman ? `<span>${esc(gunAdi(zaman))}, ${saat(zaman)}</span>` : ''}
+    ${zaman && ig !== undefined ? `<span>${ig ? 'YouTube + Instagram' : "YouTube (Instagram'a gitmez: günde 1 Reel)"}</span>` : ''}
     ${v.yayinlandi ? `<span>${esc(zamanMetni(v.yayinlandi))} yayınlandı</span>` : ''}
     <span>${esc(MOTOR[v.motor] || v.motor || '')}</span><span>#${Number(v.no)}</span></div>`;
   if (v.durum === 'yayinlandi') {
