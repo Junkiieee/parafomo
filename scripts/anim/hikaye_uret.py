@@ -6,13 +6,14 @@ duygu tasarımı kuralları, hikaye motoru şeması) → OTOMATİK KONTROL LİST
 paketteki rakamlar, geçerli karakter/sahne) → hata varsa düzeltme turu → anim_build (hikaye motoru) → kuyruk + panel.
 
   /root/.venvs/parafomo/bin/python scripts/anim/hikaye_uret.py [--paket asgari-altin] [--kuru] [--kuyruk]
-                                    [--max-bekleyen N] [--sadece-yeni-veri]
+                                    [--max-bekleyen N] [--sadece-yeni-veri [--yokla]]
     --kuru    yalnız senaryoyu üret ve kontrol et (render yok)
     --kuyruk  render sonrası kuyruğa ekle (kuyruk.py ekle) ve panele senaryo kartı yaz
     --max-bekleyen N   hikâye şeridinde N+ video yayın bekliyorsa LLM'e gitmeden 0 ile çık (resmî veri yeni geldiyse
                        yine üretir: o video bugüne tarihlenip sırayı atlar). kuyruk.py uret 2 verir (denetim video-3).
     --sadece-yeni-veri yalnız resmî veri yeni geldiyse üret (sec() → "yeni veri"); değilse hiçbir şey yapmadan 0.
                        Gündüz event-short.py çağırır: açıklama günü hikâyesi aynı gün 19:00'a yetişsin (video-7).
+    --yokla   (--sadece-yeni-veri ile) üretmeden yalnız yokla: 'YENI_VERI {"paket": …, "olay": …}' ya da 'YENI_VERI_YOK'
 
 Link (denetim video-2, 2026-11-18): "link" alanı LLM'e bırakılmaz, paketin doğrulanmış linki yazılır; açıklama ve
 sabit yorumdaki parafomo.com/… adresleri sitede açılmıyorsa (scripts/lib/funnel.py) o linke çevrilir; kontrol
@@ -681,7 +682,9 @@ def main():
     ap.add_argument("--model", default="opus")
     ap.add_argument("--max-bekleyen", type=int, default=0)
     ap.add_argument("--sadece-yeni-veri", action="store_true")
+    ap.add_argument("--yokla", action="store_true")
     a = ap.parse_args()
+    a.sadece_yeni_veri = a.sadece_yeni_veri or a.yokla
     gecmis = {}
     try:
         gecmis = json.load(open(GECMIS, encoding="utf-8"))
@@ -693,6 +696,10 @@ def main():
     if a.paket:
         P = [p for p in P if p["id"] == a.paket] or sys.exit(f"paket yok: {a.paket}")
     p, neden = sec(P, gecmis)
+    if a.yokla:   # event-short.py: ağ/LLM yok, yalnız karar satırı
+        print("YENI_VERI " + json.dumps({"paket": p["id"], "olay": p.get("olay", "")}, ensure_ascii=False)
+              if neden == "yeni veri" else "YENI_VERI_YOK")
+        return 0
     if a.sadece_yeni_veri and neden != "yeni veri":
         print("[hikaye] yeni resmî veri yok — üretim yok"); return 0
     if a.max_bekleyen and neden != "yeni veri":
