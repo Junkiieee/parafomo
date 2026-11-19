@@ -5,6 +5,8 @@ import { join } from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
 import Newsletter from '../components/Newsletter.astro';
+import ZamAlarmi from '../components/ZamAlarmi.astro';
+import { ZAM_SEZONU } from '../data/zam-sezonu';
 import { CATEGORIES, SITE } from '../site.config';
 import ipoArchive from '../../data/halka-arz-sirketler.json';
 import ipoReturns from '../../data/halka-arz-getiri.json';
@@ -138,6 +140,8 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
         </a>
       ))}
     </div>
+    {/* Zam sezonu: anasayfanın tek e-posta sorusu zam alarmı (bülten kutusu sezon bitince geri gelir; src/data/zam-sezonu.ts) */}
+    {ZAM_SEZONU && <ZamAlarmi />}
   </section>
 
   <!-- FEATURED -->
@@ -395,9 +399,11 @@ const ZAM: { slug: string; ad: string; deger: string }[] = [
     </section>
   )}
 
-  <div class="container">
-    <Newsletter />
-  </div>
+  {!ZAM_SEZONU && (
+    <div class="container">
+      <Newsletter />
+    </div>
+  )}
   <Fragment slot="end">
 <script>
   const fmt = (n: number, d = 0) =>

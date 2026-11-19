@@ -4,6 +4,8 @@ import { join } from 'node:path';
 import BaseLayout from './BaseLayout.astro';
 import FormatDate from '../components/FormatDate.astro';
 import Newsletter from '../components/Newsletter.astro';
+import ZamAlarmi from '../components/ZamAlarmi.astro';
+import { ZAM_SEZONU, zamKonulu } from '../data/zam-sezonu';
 import AppCTA from '../components/AppCTA.astro';
 import PostCard from '../components/PostCard.astro';
 import EventResult from '../components/EventResult.astro';
@@ -34,6 +36,8 @@ const hasCover = existsSync(join(process.cwd(), 'public', 'covers', `${post.id}.
 const webpSrcset = hasCover ? coverSrcset(post.id) : '';
 const avifSrcset = hasCover ? coverAvifSrcset(post.id) : '';
 const tocHeadings = headings.filter((h: any) => h.depth === 2 || h.depth === 3);
+// Zam sezonunda zam/maaş/emekli/memur/asgari/kira konulu yazıların sonunda bülten yerine zam alarmı (src/data/zam-sezonu.ts).
+const zamAlarmi = ZAM_SEZONU && zamKonulu(post.id, tags ?? []);
 const breadcrumbs = [
   { name: 'Anasayfa', url: '/' },
   { name: category, url: `/kategori/${categorySlug(category)}` },
@@ -131,7 +135,7 @@ const breadcrumbs = [
     </div>
 
     <AppCTA app="portfoy" campaign="blog" />
-    <Newsletter compact />
+    {zamAlarmi ? <ZamAlarmi /> : <Newsletter compact />}
 
     {related.length > 0 && (
       <section class="related">
