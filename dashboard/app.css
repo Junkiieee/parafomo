@@ -317,6 +317,7 @@ button.satir:active { background: var(--bg); }
 .ilerleme { height: 7px; border-radius: 99px; background: var(--cizgi); margin-top: 6px; overflow: hidden; }
 .ilerleme i { display: block; height: 100%; border-radius: 99px; background: var(--marka); min-width: 3px; }
 .hedef-s .not-s { font-size: 10.5px; color: var(--soluk); margin-top: 4px; }
+.hedef-s .not-s.uyari, .uyari-yazi { color: var(--uyari); }
 .gelir-s, .fikir-s { display: flex; justify-content: space-between; align-items: center; gap: 9px; padding: 9px 12px; border-top: 1px solid var(--cizgi); }
 .liste > .gelir-s:first-child, .liste > .fikir-s:first-child { border-top: 0; }
 .gelir-s .ad, .fikir-s .ad { font-weight: 600; font-size: 12px; }

@@ -396,6 +396,14 @@ def web_bolumu(plan):
 
 
 # ---------------------------------------------------------------- durum
+def hedefler(plan, kpi):
+    """GA4'e bağlı hedeflere seri kırılması uyarısı (plan.json'a dokunmadan; metni collect.py yazar).
+    17 Kasım'dan beri GA4 yalnız çerez onaylıları sayıyor: o hedefin çubuğu trafik değil onay oranı gösterir."""
+    notu = (kpi.get("web") or {}).get("ga4_not")
+    return [{**h, "uyari": notu} if notu and str(h.get("kpi", "")).startswith("web.ziyaret") else h
+            for h in plan.get("hedefler", [])]
+
+
 @app.get("/api/durum")
 def durum(req: Request):
     oturum(req)
@@ -410,7 +418,7 @@ def durum(req: Request):
     gorev_d = oku(dash("gorevler.json"), {})
     return {
         "simdi": simdi().isoformat(timespec="seconds"),
-        "kpi": {k: kpi.get(k) for k in ("guncellendi", "hatalar", "web", "youtube", "instagram")},
+        "kpi": {k: kpi.get(k) for k in ("guncellendi", "hatalar", "web", "youtube", "instagram", "kayit")},
         "toplaniyor": _toplaniyor.is_set(),
         "gunluk": plan.get("gunluk"),
         "kanallar": kanallar,
@@ -418,7 +426,7 @@ def durum(req: Request):
         "web": web_bolumu(plan),
         "kontrol": kontrol_durum(),
         "gorevler": [{**g, "yaptim": gorev_d.get(g.get("id"), {}).get("zaman")} for g in (plan.get("gorevler") or plan.get("kaan", []))],
-        "hedefler": plan.get("hedefler", []),
+        "hedefler": hedefler(plan, kpi),
         "gelir": plan.get("gelir", []),
         "fikirler": plan.get("fikirler", []),
         "harcamalar": [{**h, "karar": oku(dash("harcama-kararlar.json"), {}).get(h.get("id"))} for h in plan.get("harcamalar", [])],

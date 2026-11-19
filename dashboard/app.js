@@ -230,14 +230,24 @@ function kpiDegeri(yol) {
   return String(yol || '').split('.').reduce((o, k) => (o == null ? o : o[k]), S.kpi || {});
 }
 
+// Site kayıtları (veritabanından; çerez onayından etkilenmez). Test kayıtları collect.py'de ayıklanır.
+function kayitDetay() {
+  const k = S.kpi?.kayit;
+  if (!k) return '';
+  return `zam alarmı ${sayi(k.zam_onayli)} · bülten ${sayi(k.bulten_onayli)} onaylı · onay bekleyen ${sayi(k.bekleyen)}`
+    + ` · son 7 gün yeni ${sayi(k.yeni_7g)} · portföy üyesi ${sayi(k.uye)}`;
+}
+
 function ozetHtml() {
   const hedefler = (S.hedefler || []).map((h) => {
     const v = h.kpi ? kpiDegeri(h.kpi) : h.simdi;
     const yuzde = h.hedef ? (100 * (Number(v) || 0)) / h.hedef : 0;
+    const ek = String(h.kpi || '').startsWith('kayit.') ? kayitDetay() : '';
     return `<div class="hedef-s"><div class="ust-s"><span class="ad">${esc(h.baslik)}</span>
       <span class="deger">${sayi(v)} <small>/ ${sayi(h.hedef)} ${esc(h.birim || '')}</small></span></div>
       <div class="ilerleme"><i data-w="${yuzde.toFixed(1)}"></i></div>
-      <div class="not-s">${esc(h.not || '')}${h.tarih ? ` · hedef tarihi ${esc(kisaTarih(h.tarih))}` : ''}</div></div>`;
+      <div class="not-s">${esc(h.not || '')}${h.tarih ? ` · hedef tarihi ${esc(kisaTarih(h.tarih))}` : ''}</div>
+      ${ek ? `<div class="not-s">${esc(ek)}</div>` : ''}${h.uyari ? `<div class="not-s uyari">${esc(h.uyari)}</div>` : ''}</div>`;
   }).join('');
   const cipDurum = (d) => ({ hazir: 'iyi', calisiyor: 'iyi', deneniyor: 'marka', sirada: '', bekliyor: 'uyari', durdu: 'kotu', sonuc: 'iyi' }[d] ?? '');
   const DURUM = { hazir: 'Hazır', calisiyor: 'Çalışıyor', deneniyor: 'Deneniyor', sirada: 'Sırada', bekliyor: 'Görev bekliyor', durdu: 'Durduruldu', sonuc: 'Sonuç var' };
@@ -413,12 +423,19 @@ function webHtml() {
   const grafik = hs.length ? `<div class="kart grafik"><div class="gb"><span>Haftalık Google tıkı · son 8 hafta</span></div>
     <div class="cubuklar" role="img" aria-label="Haftalık Google tık sayıları">${hs.map((h, i) => `<div class="cubuk${i === hs.length - 1 ? ' son' : ''}">
       <i data-h="${Math.round(((h.tik || 0) / enCok) * 100)}"></i><span>${sayi(h.tik)}</span></div>`).join('')}</div></div>` : '';
+  const k = S.kpi?.kayit || {};
+  // GA4 17 Kasım'dan beri yalnız çerez onaylıları sayıyor (seri kırık): kıyas yalnız iki pencere aynı taraftaysa
+  const ga4Kiyas = w.ziyaret_kiyas !== false;
+  const ga4 = w.ziyaret_7g == null ? '' : `<p class="oto-not">GA4 ziyaret (7 gün): ${sayi(w.ziyaret_7g)}${ga4Kiyas
+    ? ` · önceki ${sayi(w.ziyaret_onceki)} ${fark(w.ziyaret_7g, w.ziyaret_onceki)}` : ''}${w.ga4_not
+    ? ` · <span class="uyari-yazi">${esc(w.ga4_not)}${ga4Kiyas ? '' : ' Önceki haftayla kıyaslanmaz.'}</span>` : ''}</p>`;
   return `<div class="metrikler uc">
     <div class="kart metrik"><div class="e">Google tık</div><div class="d">${sayi(w.son?.tik)}</div><div class="a">önceki ${sayi(w.onceki?.tik)} ${fark(w.son?.tik, w.onceki?.tik)}</div></div>
     <div class="kart metrik"><div class="e">Gösterim</div><div class="d">${sayi(w.son?.gosterim)}</div><div class="a">önceki ${sayi(w.onceki?.gosterim)} ${fark(w.son?.gosterim, w.onceki?.gosterim)}</div></div>
-    <div class="kart metrik"><div class="e">Ziyaretçi</div><div class="d">${sayi(w.ziyaret_7g)}</div><div class="a">önceki ${sayi(w.ziyaret_onceki)} ${fark(w.ziyaret_7g, w.ziyaret_onceki)}</div></div>
+    <div class="kart metrik"><div class="e">Kayıt (onaylı)</div><div class="d">${sayi(k.onayli)}</div><div class="a">7 günde ${sayi(k.yeni_7g)} yeni ${fark(k.yeni_7g, k.yeni_onceki_7g)}</div></div>
   </div>
-  <p class="oto-not">Son 7 gün. Google verisi 2–3 gün geriden gelir.</p>
+  <p class="oto-not">Google: son 7 gün, veri 2–3 gün geriden gelir. Kayıt: ${esc(kayitDetay() || 'alınamadı')}.</p>
+  ${ga4}
   ${grafik}
   ${planHtml('web')}
   <h2>Yapılacak</h2>

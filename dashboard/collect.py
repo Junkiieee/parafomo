@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Panel metrikleri (dashboard.parafomo.com, 2026-11-16) → /root/parafomo-data/dash/kpi.json
 
-Üç kanal: web (Search Console + GA4), YouTube (kanal + video), Instagram (hesap + reel).
+Üç kanal: web (Search Console + GA4), YouTube (kanal + video), Instagram (hesap + reel) + site kayıtları (DB).
+Trafik ve kayıt için ANA ölçü: Google tıkı (GSC) + veritabanındaki kayıtlar. GA4 2026-11-17'den beri (KVKK çerez onayı,
+Consent Mode v2 varsayılan "denied") yalnız çerez onayı verenleri sayar → seri kırık; GA4 ziyaret sayısı yalnız bilgi
+olarak, "ga4_onayli" etiketiyle tutulur ve kırılmayı aşan haftalık kıyas verilmez.
 Panel sunucusu bunu 3 saatte bir arka planda çalıştırır (parafomo venv'i: Google kütüphaneleri burada).
 Her bölüm bağımsız: biri hata verirse "hatalar" listesine yazılır, gerisi sürer. Anahtar/URL hatalara yazılmaz.
 
@@ -20,6 +23,11 @@ OUT = "/root/parafomo-data/dash"
 KUYRUK = "/root/parafomo-data/onay/kuyruk.json"
 LF_DIR = os.path.join(ROOT, "public", "social", "longform")
 sys.path.insert(0, os.path.join(ROOT, "scripts", "learn"))
+# Çerez onayı bandı (commit 7db2f0b, 2026-11-16 22:12 UTC) 17 Kasım'dan beri yayında: GA4 o günden itibaren eksik sayar.
+GA4_KIRILMA = dt.date(2026, 11, 17)
+GA4_NOT = "GA4 17 Kasım'dan beri yalnız çerez onayı verenleri sayar; trafik için Google tıkına bak."
+# Uçtan uca test kayıtları sayılmaz: kaynak 'rc-e2e-test-…' ya da 'zam-alarmi:/rc-e2e-test/' (önek değil, İÇERİR)
+TEST_DISI = "coalesce(source, '') not like '%rc-e2e%'"
 
 
 def hata(e):
@@ -60,6 +68,10 @@ def web():
         return int(r.rows[0].metric_values[0].value) if r.rows else 0
     out["ziyaret_7g"] = oturum("7daysAgo", "yesterday")
     out["ziyaret_onceki"] = oturum("14daysAgo", "8daysAgo")
+    # Seri kırılması: pencerelerden biri kırılmadan önce, diğeri sonra kalıyorsa yüzde değişim sahte bir "çöküş" olur
+    out["ga4_onayli"] = today > GA4_KIRILMA
+    out["ga4_not"] = GA4_NOT if out["ga4_onayli"] else ""
+    out["ziyaret_kiyas"] = (today - dt.timedelta(days=14) >= GA4_KIRILMA) or (today - dt.timedelta(days=1) < GA4_KIRILMA)
     return out
 
 
@@ -120,22 +132,26 @@ def instagram(media_ids):
 
 def kayit():
     """Site kayıtları (Kaan 2026-11-17: "asıl istediğim kaydolmaları"): zam alarmı + bülten + portföy üyeliği.
-    Veritabanı salt-okunur açılır; kişisel veri çekilmez, yalnız sayılar."""
+    Veritabanı salt-okunur açılır; kişisel veri çekilmez, yalnız sayılar. Çerez onayından etkilenmez → ana KPI."""
     import sqlite3
     con = sqlite3.connect("file:/root/parafomo-data/portfolio.db?mode=ro", uri=True)
     try:
-        rows = con.execute("select status, coalesce(source, '') from newsletter_subscribers "
-                           "where coalesce(source, '') not like 'rc-e2e%'").fetchall()
+        rows = con.execute(f"select status, coalesce(source, '') from newsletter_subscribers where {TEST_DISI}").fetchall()
         uye = con.execute("select count(*) from users").fetchone()[0]
-        hafta = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=7)).strftime("%Y-%m-%d")
-        yeni7 = con.execute("select count(*) from newsletter_subscribers where created_at >= ? "
-                            "and coalesce(source, '') not like 'rc-e2e%'", (hafta,)).fetchone()[0]
+        simdi = dt.datetime.now(dt.timezone.utc)
+        hafta = (simdi - dt.timedelta(days=7)).strftime("%Y-%m-%d")
+        iki_hafta = (simdi - dt.timedelta(days=14)).strftime("%Y-%m-%d")
+        yeni7 = con.execute(f"select count(*) from newsletter_subscribers where created_at >= ? and {TEST_DISI}",
+                            (hafta,)).fetchone()[0]
+        yeni_onceki = con.execute(f"select count(*) from newsletter_subscribers where created_at >= ? and created_at < ? "
+                                  f"and {TEST_DISI}", (iki_hafta, hafta)).fetchone()[0]
     finally:
         con.close()
     zam = lambda s: "zam-alarmi:" in s
     out = {"zam_onayli": sum(1 for st, s in rows if st == "confirmed" and zam(s)),
            "bulten_onayli": sum(1 for st, s in rows if st == "confirmed" and not zam(s)),
-           "bekleyen": sum(1 for st, _ in rows if st == "pending"), "yeni_7g": yeni7, "uye": uye}
+           "bekleyen": sum(1 for st, _ in rows if st == "pending"), "yeni_7g": yeni7, "yeni_onceki_7g": yeni_onceki,
+           "uye": uye}
     out["onayli"] = sum(1 for st, _ in rows if st == "confirmed")
     return out
 
@@ -184,9 +200,13 @@ def main():
     satir = {"gun": dt.date.today().isoformat(),
              "google_tik_7g": kpi.get("web", {}).get("son", {}).get("tik"),
              "ziyaret_7g": kpi.get("web", {}).get("ziyaret_7g"),
+             "kayit_onayli": kpi.get("kayit", {}).get("onayli"),
+             "kayit_yeni_7g": kpi.get("kayit", {}).get("yeni_7g"),
              "yt_abone": kpi.get("youtube", {}).get("abone"),
              "yt_izlenme_7g": kpi.get("youtube", {}).get("son", {}).get("izlenme"),
              "ig_takipci": kpi.get("instagram", {}).get("takipci")}
+    if dt.date.today() > GA4_KIRILMA:   # seri kırılması (penceresi 17 Kasım'ı içeren satırlar) — öncekilerle kıyaslanmaz
+        satir["olcum"] = "ga4-onayli"
     rows = []
     try:
         rows = [json.loads(x) for x in open(h, encoding="utf-8") if x.strip()]
@@ -197,7 +217,8 @@ def main():
         f.write("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows[-400:]))
     os.replace(h + ".tmp", h)
     print(json.dumps({k: kpi.get(k) for k in ("guncellendi", "hatalar")}, ensure_ascii=False))
-    print("web:", kpi.get("web", {}).get("son"), "ziyaret", kpi.get("web", {}).get("ziyaret_7g"))
+    print("web: google", kpi.get("web", {}).get("son"), "· GA4 ziyaret (yalnız çerez onaylı)", kpi.get("web", {}).get("ziyaret_7g"))
+    print("kayıt:", kpi.get("kayit"))
     print("youtube: abone", kpi.get("youtube", {}).get("abone"), "son hafta", kpi.get("youtube", {}).get("son"))
     print("instagram: takipçi", kpi.get("instagram", {}).get("takipci"), "reel sayısı", len(kpi.get("instagram", {}).get("reeller", {})))
 
