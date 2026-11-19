@@ -48,8 +48,7 @@ const items = [
       <a href="/bulten/">bülten</a>.
     </p>
   </section>
-</BaseLayout>
-
+  <Fragment slot="end">
 <script>
   const MSG: Record<string, [string, string]> = {
     onaylandi: ['ok', '✅ Zam alarmın kuruldu! Rakam açıklandığı gün e-postan gelecek.'],
@@ -64,6 +63,8 @@ const items = [
     el.hidden = false;
   }
 </script>
+  </Fragment>
+</BaseLayout>
 
 <style>
   .zam { max-width: 760px; padding-top: 2.5rem; padding-bottom: 1rem; }

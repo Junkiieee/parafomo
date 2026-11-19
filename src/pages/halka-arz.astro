@@ -162,6 +162,19 @@ const datasetLd = {
   </section>
 
   <div class="container"><Newsletter /></div>
+  <Fragment slot="end">
+<script define:vars={{ built: data.updated }}>
+  // Veri (cron ile) değiştiğinde açık sayfa kendini yeniler.
+  async function checkUpdate() {
+    try {
+      const r = await fetch('/halka-arz.json?_=' + Date.now(), { cache: 'no-store' });
+      const d = await r.json();
+      if (d && d.updated && d.updated !== built) location.reload();
+    } catch { /* yoksay */ }
+  }
+  setInterval(() => { if (document.visibilityState === 'visible') checkUpdate(); }, 300000);
+</script>
+  </Fragment>
 </BaseLayout>
 
 <style>
@@ -247,14 +260,3 @@ const datasetLd = {
   }
 </style>
 
-<script define:vars={{ built: data.updated }}>
-  // Veri (cron ile) değiştiğinde açık sayfa kendini yeniler.
-  async function checkUpdate() {
-    try {
-      const r = await fetch('/halka-arz.json?_=' + Date.now(), { cache: 'no-store' });
-      const d = await r.json();
-      if (d && d.updated && d.updated !== built) location.reload();
-    } catch { /* yoksay */ }
-  }
-  setInterval(() => { if (document.visibilityState === 'visible') checkUpdate(); }, 300000);
-</script>

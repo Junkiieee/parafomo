@@ -271,5 +271,8 @@ const shareLabel = typeof share === 'string' ? share : calcLd ? 'Bu hesaplayıc�
         });
       })();
     </script>
+    {/* Sayfa script'leri (slot="end"): body içinde ve sayı normalleştiriciden sonra çalışır. Önceden BaseLayout
+        kapanışının dışına yazılıyor, HTML'de html kapanış etiketinden sonra basılıyordu (144 sayfa, 2026-11-19). */}
+    <slot name="end" />
   </body>
 </html>
