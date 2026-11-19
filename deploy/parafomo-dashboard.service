@@ -7,6 +7,32 @@ WorkingDirectory=/root/parafomo
 ExecStart=/root/.venvs/parafomo-api/bin/uvicorn server:app --app-dir /root/parafomo/dashboard --host 127.0.0.1 --port 8792 --workers 1 --no-access-log
 Restart=always
 RestartSec=3
+# --- Sertleştirme (2026-11 denetimi; HENÜZ UYGULANMADI — açmadan önce aşağıdaki testleri yap) ---
+# Panel internete açık ve root çalışıyor; server.py'deki bir hata (base64 yükleme, kuyruk.py/ffmpeg/crontab alt
+# süreçleri) root yetkisiyle çalışır. Panel v2'nin YAZDIĞI yerler yalnız /root/parafomo-data altında:
+#   dash/ (plan/kpi/kontrol/istekler/oturumlar/kapak/yuklenen), onay/ (kuyruk.json — kuyruk.py onayla/reddet/begen,
+#   oto.json). Okur: repo (git log, GIT_OPTIONAL_LOCKS=0), crontab -l, ~/.config/parafomo (kimlikler; yazmaz).
+# Açmak: aşağıdaki satırların başındaki "#"i kaldır → systemctl daemon-reload && systemctl restart parafomo-dashboard
+# Test (hepsi panelden): giriş · bir videoyu onayla ve çıkar · beğen · kapak .jpg · "Sayıları yenile" (collect.py →
+# kpi.json güncellendi mi) · Bana yaz + görsel · bir anahtarı kapat/aç · İçerik'te yayın saatleri crontab'dakiyle aynı mı
+# (crontab -l okunamazsa sessizce varsayılana düşer). Kontrol: systemd-analyze security parafomo-dashboard
+# Bir şey bozulursa: satırları yeniden yorum yap → daemon-reload && restart.
+#NoNewPrivileges=yes
+#ProtectSystem=strict
+#ReadWritePaths=/root/parafomo-data
+#PrivateTmp=yes
+#PrivateDevices=yes
+#ProtectKernelTunables=yes
+#ProtectKernelModules=yes
+#ProtectKernelLogs=yes
+#ProtectControlGroups=yes
+#ProtectClock=yes
+#RestrictSUIDSGID=yes
+#RestrictRealtime=yes
+#RestrictNamespaces=yes
+#LockPersonality=yes
+#CapabilityBoundingSet=
+#UMask=0077
 
 [Install]
 WantedBy=multi-user.target

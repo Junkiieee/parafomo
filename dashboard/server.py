@@ -31,7 +31,7 @@ import time
 
 from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.responses import FileResponse, JSONResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 ROOT = "/root/parafomo"
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -58,7 +58,33 @@ KONTROLLER = [
     ("web_icerik", "Web: yeni içerik", "Hafta içi her sabah siteye yeni yazı/sayfa eklenir."),
 ]
 
+class GuvenlikBasliklari:
+    """Her yanıta nosniff; /api/ yanıtlarına (kendi Cache-Control'ü olmayan) no-store — veri tarayıcı/ara önbellekte
+    kalmasın. Saf ASGI: video akışını (FileResponse + Range) sarmalamadan yalnız başlıkları ekler."""
+
+    def __init__(self, uygulama):
+        self.uygulama = uygulama
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] != "http":
+            return await self.uygulama(scope, receive, send)
+        api = scope.get("path", "").startswith("/api/")
+
+        async def gonder(msg):
+            if msg["type"] == "http.response.start":
+                h = list(msg.get("headers", []))
+                adlar = {k.lower() for k, _ in h}
+                if b"x-content-type-options" not in adlar:
+                    h.append((b"x-content-type-options", b"nosniff"))
+                if api and b"cache-control" not in adlar:
+                    h.append((b"cache-control", b"no-store"))
+                msg = {**msg, "headers": h}
+            await send(msg)
+        await self.uygulama(scope, receive, gonder)
+
+
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
+app.add_middleware(GuvenlikBasliklari)
 _lock = threading.Lock()
 _cache = {}
 
@@ -154,7 +180,7 @@ def koruma(req: Request):
 
 
 class GirisIn(BaseModel):
-    sifre: str
+    sifre: str = Field(max_length=200)
 
 
 @app.post("/api/giris")
@@ -163,13 +189,18 @@ def giris(body: GirisIn, req: Request, resp: Response):
     with _lock:
         ipde = [x for x in _hatalar.get(ip, []) if t - x < 900]
         hepsi = [x for x in _hatalar.get("*", []) if t - x < 3600]
-    if len(ipde) >= 5 or len(hepsi) >= 30:
+        if len(_hatalar) > 2000:   # çok sayıda IP'den denemede sözlük şişmesin
+            for k in [k for k, v in _hatalar.items() if k != "*" and not any(t - x < 900 for x in v)]:
+                _hatalar.pop(k, None)
+    # Kilit IP başına (15 dk'da 5). Tüm IP'lerin toplamına 429 vermek, herkesin Kaan'ın yeni cihazdan girişini
+    # kilitleyebilmesi demekti; toplam eşik aşılınca yalnız her yanlış deneme yavaşlar (parola 20 karakter rastgele).
+    if len(ipde) >= 5:
         raise HTTPException(429, "Çok fazla deneme. 15 dakika sonra tekrar dene.")
     if not hmac.compare_digest(body.sifre.encode(), _sifre().encode()):
         with _lock:
             _hatalar[ip] = ipde + [t]
             _hatalar["*"] = hepsi + [t]
-        time.sleep(1)
+        time.sleep(3 if len(hepsi) >= 30 else 1)
         raise HTTPException(401, "Şifre yanlış.")
     tok = secrets.token_urlsafe(32)
     with _lock:
@@ -253,7 +284,7 @@ def yayin_saatleri():
                 p = line.split()
                 if p[0].isdigit() and p[1].isdigit():
                     out.append(((int(p[1]) + 3) % 24, int(p[0])))
-        return sorted(out) or [(13, 0), (19, 0)]
+        return sorted(out) or [(19, 0), (21, 0)]   # crontab okunamazsa: 16:00 + 18:00 UTC (2026-11-17'den beri)
     return onbellek("saatler", 600, bul)
 
 
@@ -370,7 +401,9 @@ def uzun_videolar(kpi, defter):
 # ---------------------------------------------------------------- web
 def git(*args):
     try:
-        return subprocess.run(["git", "-C", ROOT, *args], capture_output=True, text=True, timeout=20).stdout
+        # GIT_OPTIONAL_LOCKS=0: panel yalnız okur; cron'ların commit'iyle index.lock yarışına girmesin
+        return subprocess.run(["git", "-C", ROOT, *args], capture_output=True, text=True, timeout=20,
+                              env={**os.environ, "GIT_OPTIONAL_LOCKS": "0"}).stdout
     except Exception:   # noqa: BLE001
         return ""
 
@@ -443,7 +476,8 @@ def fikirler(plan):
 
 @app.get("/api/durum")
 def durum(req: Request):
-    oturum(req)
+    # X-Dash da istenir: başka bir sitenin açtırdığı GET (Lax çerez üst gezinmede gider) arka plan toplamayı tetiklemesin
+    koruma(req)
     kpi_tazele()
     kpi = oku(dash("kpi.json"), {})
     plan = oku(dash("plan.json"), {})
@@ -626,8 +660,9 @@ def gorev_yaptim(gid: str, req: Request):
 
 
 class IstekIn(BaseModel):
-    metin: str
-    gorsel: str | None = None   # data:image/...;base64,...
+    # sınırlar: arayüz 4.000 karakter ve ≤1600 px JPEG yollar; dev gövdeler belleğe/diske gitmesin (422)
+    metin: str = Field(max_length=10_000)
+    gorsel: str | None = Field(default=None, max_length=12_000_000)   # data:image/...;base64,... (8 MB'lik görsel ≈ 11 M)
 
 
 GORSEL_TUR = {"image/jpeg": "jpg", "image/png": "png", "image/webp": "webp"}

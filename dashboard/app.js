@@ -41,7 +41,9 @@ async function api(yol, secenek = {}) {
   }
   let j = {};
   try { j = await r.json(); } catch (e) { /* gövdesiz yanıt */ }
-  if (!r.ok) throw new Error(j.detail || `Bir sorun oldu (${r.status}).`);
+  // 422 (ör. çok uzun metin) detail'i dizi döner → "[object Object]" yerine okunur mesaj
+  const detay = Array.isArray(j.detail) ? (r.status === 422 ? 'Gönderdiğin metin ya da görsel çok büyük.' : '') : j.detail;
+  if (!r.ok) throw new Error(detay || `Bir sorun oldu (${r.status}).`);
   return j;
 }
 const gonder = (yol, govde) => api(yol, { method: 'POST', body: JSON.stringify(govde || {}) });
