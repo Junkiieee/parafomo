@@ -66,9 +66,14 @@ _build_gate() {
   repo="$(git rev-parse --show-toplevel 2>/dev/null)" || return 0
   [ -f "$repo/package.json" ] || return 0
   log="$repo/logs/deploy-build.log"
-  if ( cd "$repo" && PATH="/root/.local/bin:/usr/local/bin:/usr/bin:/bin:$PATH" \
-       flock -w 600 /tmp/parafomo-build.lock nice -n 10 npm run build > "$log" 2>&1 ); then
-    return 0
+  # log kilit alındıktan sonra açılır; kilit zaman aşımı (75) build hatası sayılmaz (sahte "KIRIK" maili yok)
+  ( cd "$repo" && PATH="/root/.local/bin:/usr/local/bin:/usr/bin:/bin:$PATH" \
+       flock -E 75 -w 600 /tmp/parafomo-build.lock sh -c 'nice -n 10 npm run build > "$1" 2>&1' _ "$log" )
+  local rc=$?
+  [ "$rc" -eq 0 ] && return 0
+  if [ "$rc" -eq 75 ]; then
+    echo "    [build-kapısı] build kilidi 600 sn'de boşalmadı (başka build sürüyor) — push sonraki çalışmaya kaldı" >&2
+    return 1
   fi
   echo "    [build-kapısı] npm run build KIRIK — push ENGELLENDİ (canlı site eski sürümde kalır). Son satırlar:" >&2
   tail -12 "$log" | sed 's/^/    [build] /' >&2

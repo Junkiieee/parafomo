@@ -31,7 +31,7 @@ import time
 
 from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.responses import FileResponse, JSONResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 ROOT = "/root/parafomo"
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -53,11 +53,38 @@ KONTROLLER = [
     ("hikaye_uretim", "Para hikâyeleri (otomatik)", "Her gece bir Para hikâyesi otomatik yazılır, kontrol edilir ve 19:00'da çıkar."),
     ("oto_onay", "Onaysız yayın", "Açıkken hazır videolar senin onayını beklemeden çıkar. Kapalıyken her video burada onayını bekler."),
     ("youtube", "YouTube yayını", "Hazır videolar yayın saatlerinde YouTube'a çıkar."),
-    ("instagram", "Instagram paylaşımı", "Aynı videolar Instagram Reels (ve Facebook) olarak da paylaşılır."),
+    ("instagram", "Instagram paylaşımı", "Günün ilk videosu (19:00 Para hikâyesi) Instagram Reels'e de gider (günde 1 Reel); "
+                                         "videolar Facebook'ta da paylaşılır."),
     ("web_icerik", "Web: yeni içerik", "Hafta içi her sabah siteye yeni yazı/sayfa eklenir."),
 ]
 
+class GuvenlikBasliklari:
+    """Her yanıta nosniff; /api/ yanıtlarına (kendi Cache-Control'ü olmayan) no-store — veri tarayıcı/ara önbellekte
+    kalmasın. Saf ASGI: video akışını (FileResponse + Range) sarmalamadan yalnız başlıkları ekler."""
+
+    def __init__(self, uygulama):
+        self.uygulama = uygulama
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] != "http":
+            return await self.uygulama(scope, receive, send)
+        api = scope.get("path", "").startswith("/api/")
+
+        async def gonder(msg):
+            if msg["type"] == "http.response.start":
+                h = list(msg.get("headers", []))
+                adlar = {k.lower() for k, _ in h}
+                if b"x-content-type-options" not in adlar:
+                    h.append((b"x-content-type-options", b"nosniff"))
+                if api and b"cache-control" not in adlar:
+                    h.append((b"cache-control", b"no-store"))
+                msg = {**msg, "headers": h}
+            await send(msg)
+        await self.uygulama(scope, receive, gonder)
+
+
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
+app.add_middleware(GuvenlikBasliklari)
 _lock = threading.Lock()
 _cache = {}
 
@@ -153,7 +180,7 @@ def koruma(req: Request):
 
 
 class GirisIn(BaseModel):
-    sifre: str
+    sifre: str = Field(max_length=200)
 
 
 @app.post("/api/giris")
@@ -162,13 +189,18 @@ def giris(body: GirisIn, req: Request, resp: Response):
     with _lock:
         ipde = [x for x in _hatalar.get(ip, []) if t - x < 900]
         hepsi = [x for x in _hatalar.get("*", []) if t - x < 3600]
-    if len(ipde) >= 5 or len(hepsi) >= 30:
+        if len(_hatalar) > 2000:   # çok sayıda IP'den denemede sözlük şişmesin
+            for k in [k for k, v in _hatalar.items() if k != "*" and not any(t - x < 900 for x in v)]:
+                _hatalar.pop(k, None)
+    # Kilit IP başına (15 dk'da 5). Tüm IP'lerin toplamına 429 vermek, herkesin Kaan'ın yeni cihazdan girişini
+    # kilitleyebilmesi demekti; toplam eşik aşılınca yalnız her yanlış deneme yavaşlar (parola 20 karakter rastgele).
+    if len(ipde) >= 5:
         raise HTTPException(429, "Çok fazla deneme. 15 dakika sonra tekrar dene.")
     if not hmac.compare_digest(body.sifre.encode(), _sifre().encode()):
         with _lock:
             _hatalar[ip] = ipde + [t]
             _hatalar["*"] = hepsi + [t]
-        time.sleep(1)
+        time.sleep(3 if len(hepsi) >= 30 else 1)
         raise HTTPException(401, "Şifre yanlış.")
     tok = secrets.token_urlsafe(32)
     with _lock:
@@ -252,7 +284,7 @@ def yayin_saatleri():
                 p = line.split()
                 if p[0].isdigit() and p[1].isdigit():
                     out.append(((int(p[1]) + 3) % 24, int(p[0])))
-        return sorted(out) or [(13, 0), (19, 0)]
+        return sorted(out) or [(19, 0), (21, 0)]   # crontab okunamazsa: 16:00 + 18:00 UTC (2026-11-17'den beri)
     return onbellek("saatler", 600, bul)
 
 
@@ -283,24 +315,42 @@ def icerik(kpi):
     defter = oku(DEFTER, {}).get("secimler", {})
     kuyrukta = " ".join(it["slug"] for it in items)
 
-    # kuyruk.py yayinla mantığının birebir benzetimi: tarihi o gün olan önce, sonra onay sırası
+    # scripts/anim/kuyruk.py yayinla seçiminin benzetimi (kuyruk.py'yi değiştirirsen burayı da değiştir):
+    #   ŞERİT (2026-11-17): UTC saati < 17 (19:00 TSİ) → Para hikâyesi (style=hikaye) önce, 21:00 → diğerleri önce;
+    #   şerit içinde tarihi o gün olan önce, sonra onay sırası. Şeritte video yoksa sıradaki diğer video girer.
+    # Instagram: instagram-reel.py TSİ günü başına 1 Reel (IG_REELS_PER_DAY) → günün yayınlanan İLK videosu IG'ye gider.
     onayli = [it for it in items if it.get("status") == "onaylandi"]
+    ig_acik = acik_mi("instagram") and acik_mi("youtube")   # YouTube kapalıyken yayinla hiçbir şey yayınlamaz
+
+    def tr_gunu(iso):
+        try:
+            return (dt.datetime.fromisoformat(iso.replace("Z", "+00:00")) + dt.timedelta(hours=3)).date()
+        except (AttributeError, ValueError):
+            return None
+    bugun_ig = any(it.get("status") == "yayinlandi" and (it.get("ig_media_id") or it.get("ig_permalink"))
+                   and tr_gunu(it.get("published")) == bugun for it in items)
     alinan, yuvalar = set(), []
     for g in range(8):
         gun = bugun + dt.timedelta(days=g)
         gs = gun.isoformat()
-        for i, (h, m) in enumerate(yayin_saatleri()):
+        ig_dolu = bugun_ig if g == 0 else False
+        for h, m in yayin_saatleri():
             t = dt.datetime(gun.year, gun.month, gun.day, h, m, tzinfo=TR)
             if t <= now:
                 continue
+            hikaye_seridi = (h - 3) % 24 < 17   # kuyruk.py: now().hour < 17 (UTC)
             sira = [it for it in onayli if it["no"] not in alinan and (it.get("yayin_tarihi") or "") <= gs]
             if sira:
-                it = sorted(sira, key=lambda x: ((x.get("yayin_tarihi") or "") != gs, x.get("approved", "")))[0]
+                it = sorted(sira, key=lambda x: ((x.get("style") == "hikaye") != hikaye_seridi,
+                                                 (x.get("yayin_tarihi") or "") != gs, x.get("approved", "")))[0]
                 alinan.add(it["no"])
-                yuvalar.append({"zaman": t.isoformat(), "video": video_ozet(it)})
+                ig = ig_acik and not ig_dolu
+                ig_dolu = ig_dolu or ig
+                yuvalar.append({"zaman": t.isoformat(), "video": video_ozet(it), "ig": ig})
                 continue
             plan = defter.get(gs)
-            if i == 0 and plan and plan.get("yuva") == "short" and plan.get("id", "#") not in kuyrukta:
+            # Ekonomi Defteri (style=defter) hikâye dışı şeritte (21:00) çıkar
+            if not hikaye_seridi and plan and plan.get("yuva") == "short" and plan.get("id", "#") not in kuyrukta:
                 yuvalar.append({"zaman": t.isoformat(), "video": None,
                                 "not": f"Ekonomi Defteri: {plan.get('baslik', '')} (hazırlanacak)"})
             elif uretim:
@@ -351,7 +401,9 @@ def uzun_videolar(kpi, defter):
 # ---------------------------------------------------------------- web
 def git(*args):
     try:
-        return subprocess.run(["git", "-C", ROOT, *args], capture_output=True, text=True, timeout=20).stdout
+        # GIT_OPTIONAL_LOCKS=0: panel yalnız okur; cron'ların commit'iyle index.lock yarışına girmesin
+        return subprocess.run(["git", "-C", ROOT, *args], capture_output=True, text=True, timeout=20,
+                              env={**os.environ, "GIT_OPTIONAL_LOCKS": "0"}).stdout
     except Exception:   # noqa: BLE001
         return ""
 
@@ -396,9 +448,36 @@ def web_bolumu(plan):
 
 
 # ---------------------------------------------------------------- durum
+def hedefler(plan, kpi):
+    """GA4'e bağlı hedeflere seri kırılması uyarısı (plan.json'a dokunmadan; metni collect.py yazar).
+    17 Kasım'dan beri GA4 yalnız çerez onaylıları sayıyor: o hedefin çubuğu trafik değil onay oranı gösterir."""
+    notu = (kpi.get("web") or {}).get("ga4_not")
+    return [{**h, "uyari": notu} if notu and str(h.get("kpi", "")).startswith("web.ziyaret") else h
+            for h in plan.get("hedefler", [])]
+
+
+def fikirler(plan):
+    """Denemelere gün sayacı (dashboard/panel.py deneme: baslangic/bitis/olcut) — "2 haftada tutmayanı durdur" kuralı
+    panelde görünsün: gün X/14, süresi dolan işaretli."""
+    bugun = simdi().date()
+    out = []
+    for f in plan.get("fikirler", []):
+        f = dict(f)
+        try:
+            bas = dt.date.fromisoformat(f["baslangic"]) if f.get("baslangic") else None
+            bit = dt.date.fromisoformat(f["bitis"]) if f.get("bitis") else (bas + dt.timedelta(days=14) if bas else None)
+        except (TypeError, ValueError):
+            bas = bit = None
+        if bas and bit and f.get("durum") == "deneniyor":
+            f.update({"gun": (bugun - bas).days + 1, "sure": (bit - bas).days, "gecikti": bugun > bit})
+        out.append(f)
+    return out
+
+
 @app.get("/api/durum")
 def durum(req: Request):
-    oturum(req)
+    # X-Dash da istenir: başka bir sitenin açtırdığı GET (Lax çerez üst gezinmede gider) arka plan toplamayı tetiklemesin
+    koruma(req)
     kpi_tazele()
     kpi = oku(dash("kpi.json"), {})
     plan = oku(dash("plan.json"), {})
@@ -410,7 +489,7 @@ def durum(req: Request):
     gorev_d = oku(dash("gorevler.json"), {})
     return {
         "simdi": simdi().isoformat(timespec="seconds"),
-        "kpi": {k: kpi.get(k) for k in ("guncellendi", "hatalar", "web", "youtube", "instagram")},
+        "kpi": {k: kpi.get(k) for k in ("guncellendi", "hatalar", "web", "youtube", "instagram", "kayit")},
         "toplaniyor": _toplaniyor.is_set(),
         "gunluk": plan.get("gunluk"),
         "kanallar": kanallar,
@@ -418,9 +497,9 @@ def durum(req: Request):
         "web": web_bolumu(plan),
         "kontrol": kontrol_durum(),
         "gorevler": [{**g, "yaptim": gorev_d.get(g.get("id"), {}).get("zaman")} for g in (plan.get("gorevler") or plan.get("kaan", []))],
-        "hedefler": plan.get("hedefler", []),
+        "hedefler": hedefler(plan, kpi),
         "gelir": plan.get("gelir", []),
-        "fikirler": plan.get("fikirler", []),
+        "fikirler": fikirler(plan),
         "harcamalar": [{**h, "karar": oku(dash("harcama-kararlar.json"), {}).get(h.get("id"))} for h in plan.get("harcamalar", [])],
         "istekler": list(reversed(oku(dash("istekler.json"), [])))[:30],
         "claude": claude_durumu(),
@@ -581,8 +660,9 @@ def gorev_yaptim(gid: str, req: Request):
 
 
 class IstekIn(BaseModel):
-    metin: str
-    gorsel: str | None = None   # data:image/...;base64,...
+    # sınırlar: arayüz 4.000 karakter ve ≤1600 px JPEG yollar; dev gövdeler belleğe/diske gitmesin (422)
+    metin: str = Field(max_length=10_000)
+    gorsel: str | None = Field(default=None, max_length=12_000_000)   # data:image/...;base64,... (8 MB'lik görsel ≈ 11 M)
 
 
 GORSEL_TUR = {"image/jpeg": "jpg", "image/png": "png", "image/webp": "webp"}

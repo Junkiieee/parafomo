@@ -1,5 +1,5 @@
 // Parafomo Panel — uygulama kabuğu önbelleği. Veri (/api/) asla önbelleğe alınmaz.
-const CACHE = 'pf-panel-v7';
+const CACHE = 'pf-panel-v8';
 const KABUK = ['/', '/app.css', '/app.js', '/manifest.webmanifest', '/logo.png', '/icon-192.png'];
 
 self.addEventListener('install', (e) => {

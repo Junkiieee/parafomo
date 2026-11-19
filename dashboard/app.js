@@ -41,7 +41,9 @@ async function api(yol, secenek = {}) {
   }
   let j = {};
   try { j = await r.json(); } catch (e) { /* gövdesiz yanıt */ }
-  if (!r.ok) throw new Error(j.detail || `Bir sorun oldu (${r.status}).`);
+  // 422 (ör. çok uzun metin) detail'i dizi döner → "[object Object]" yerine okunur mesaj
+  const detay = Array.isArray(j.detail) ? (r.status === 422 ? 'Gönderdiğin metin ya da görsel çok büyük.' : '') : j.detail;
+  if (!r.ok) throw new Error(detay || `Bir sorun oldu (${r.status}).`);
   return j;
 }
 const gonder = (yol, govde) => api(yol, { method: 'POST', body: JSON.stringify(govde || {}) });
@@ -206,9 +208,11 @@ function planHtml(ad) {
     </div></details>`;
 }
 
-function kanalIkonlari() {
+// igGider=false: bu yuva Instagram'a gitmez (günde 1 Reel: günün ilk yayını; sunucu yuva.ig ile bildirir)
+function kanalIkonlari(igGider = true) {
+  const ig = acikMi('instagram') && igGider;
   return `<span class="kanal yt${acikMi('youtube') ? '' : ' kapali'}" title="YouTube">${IKON.yt}</span>`
-    + `<span class="kanal ig${acikMi('instagram') ? '' : ' kapali'}" title="Instagram">${IKON.ig}</span>`;
+    + `<span class="kanal ig${ig ? '' : ' kapali'}" title="${igGider ? 'Instagram' : "Instagram'a gitmez (günde 1 Reel)"}">${IKON.ig}</span>`;
 }
 
 function durumCipi(v) {
@@ -230,21 +234,34 @@ function kpiDegeri(yol) {
   return String(yol || '').split('.').reduce((o, k) => (o == null ? o : o[k]), S.kpi || {});
 }
 
+// Site kayıtları (veritabanından; çerez onayından etkilenmez). Test kayıtları collect.py'de ayıklanır.
+function kayitDetay() {
+  const k = S.kpi?.kayit;
+  if (!k) return '';
+  return `zam alarmı ${sayi(k.zam_onayli)} · bülten ${sayi(k.bulten_onayli)} onaylı · onay bekleyen ${sayi(k.bekleyen)}`
+    + ` · son 7 gün yeni ${sayi(k.yeni_7g)} · portföy üyesi ${sayi(k.uye)}`;
+}
+
 function ozetHtml() {
   const hedefler = (S.hedefler || []).map((h) => {
     const v = h.kpi ? kpiDegeri(h.kpi) : h.simdi;
     const yuzde = h.hedef ? (100 * (Number(v) || 0)) / h.hedef : 0;
+    const ek = String(h.kpi || '').startsWith('kayit.') ? kayitDetay() : '';
     return `<div class="hedef-s"><div class="ust-s"><span class="ad">${esc(h.baslik)}</span>
       <span class="deger">${sayi(v)} <small>/ ${sayi(h.hedef)} ${esc(h.birim || '')}</small></span></div>
       <div class="ilerleme"><i data-w="${yuzde.toFixed(1)}"></i></div>
-      <div class="not-s">${esc(h.not || '')}${h.tarih ? ` · hedef tarihi ${esc(kisaTarih(h.tarih))}` : ''}</div></div>`;
+      <div class="not-s">${esc(h.not || '')}${h.tarih ? ` · hedef tarihi ${esc(kisaTarih(h.tarih))}` : ''}</div>
+      ${ek ? `<div class="not-s">${esc(ek)}</div>` : ''}${h.uyari ? `<div class="not-s uyari">${esc(h.uyari)}</div>` : ''}</div>`;
   }).join('');
   const cipDurum = (d) => ({ hazir: 'iyi', calisiyor: 'iyi', deneniyor: 'marka', sirada: '', bekliyor: 'uyari', durdu: 'kotu', sonuc: 'iyi' }[d] ?? '');
   const DURUM = { hazir: 'Hazır', calisiyor: 'Çalışıyor', deneniyor: 'Deneniyor', sirada: 'Sırada', bekliyor: 'Görev bekliyor', durdu: 'Durduruldu', sonuc: 'Sonuç var' };
   const gelir = (S.gelir || []).map((g) => `<div class="gelir-s"><div><div class="ad">${esc(g.yol)}</div><div class="ac">${esc(g.aciklama || '')}</div></div>
     <span class="cip ${cipDurum(g.durum)}">${esc(DURUM[g.durum] || g.durum || '')}</span></div>`).join('');
-  const fikirler = (S.fikirler || []).map((f) => `<div class="fikir-s"><div><div class="ad">${esc(f.baslik)}</div><div class="ac">${esc(f.sonuc || f.neden || '')}</div></div>
-    <span class="cip ${cipDurum(f.durum)}">${esc(DURUM[f.durum] || f.durum || '')}</span></div>`).join('');
+  // Deneme sayacı (sunucu: gun/sure/gecikti; panel.py deneme ile başlangıç + ölçüt yazılır)
+  const sayac = (f) => (f.gun ? `<span class="cip ${f.gecikti ? 'kotu' : ''}">${f.gecikti ? 'süre doldu' : `gün ${Number(f.gun)}/${Number(f.sure)}`}</span>` : '');
+  const fikirler = (S.fikirler || []).map((f) => `<div class="fikir-s"><div><div class="ad">${esc(f.baslik)}</div><div class="ac">${esc(f.sonuc || f.neden || '')}</div>
+    ${f.olcut && f.durum === 'deneniyor' ? `<div class="ac"><b>Ölçüt:</b> ${esc(f.olcut)}</div>` : ''}</div>
+    <div class="cipler">${sayac(f)}<span class="cip ${cipDurum(f.durum)}">${esc(DURUM[f.durum] || f.durum || '')}</span></div></div>`).join('');
   const nGorev = (S.gorevler || []).filter((g) => !g.yaptim).length + (S.harcamalar || []).filter((h) => !h.karar).length;
   return `${gunlukHtml()}
   ${nGorev ? `<button type="button" class="btn ana gorev-git" data-sekme="gorevler">Senden bekleyen ${nGorev} iş var →</button>` : ''}
@@ -334,7 +351,7 @@ function yuvaHtml(y) {
   }
   return `<button type="button" class="satir" data-video="${Number(v.no)}"><div class="saat">${saat(y.zaman)}</div>${kapak(v)}
     <div class="govde"><div class="bas">${esc(v.baslik)}</div>
-    <div class="alt">${durumCipi(v)}${kanalIkonlari()}</div></div></button>`;
+    <div class="alt">${durumCipi(v)}${kanalIkonlari(y.ig !== false)}</div></div></button>`;
 }
 
 function videoSatiri(v) {
@@ -369,7 +386,7 @@ function uzunHtml(u) {
 
 function videoBul(no) {
   const ic = S?.icerik || {};
-  for (const y of ic.yuvalar || []) if (y.video && y.video.no === no) return { v: y.video, zaman: y.zaman };
+  for (const y of ic.yuvalar || []) if (y.video && y.video.no === no) return { v: y.video, zaman: y.zaman, ig: y.ig };
   for (const v of [...(ic.bekleyen || []), ...(ic.sorunlu || []), ...(ic.yayinlanan || [])]) if (v.no === no) return { v };
   return null;
 }
@@ -377,12 +394,13 @@ function videoBul(no) {
 function videoAc(no) {
   const b = videoBul(no);
   if (!b) return;
-  const { v, zaman } = b;
+  const { v, zaman, ig } = b;
   let html = v.video
     ? `<video controls playsinline preload="metadata" poster="/api/video/${Number(v.no)}.jpg" src="/api/video/${Number(v.no)}.mp4"></video>`
     : '<p class="bos">Video dosyası yok.</p>';
   html += `<h3>${esc(v.baslik)}</h3><div class="bilgi">
     ${zaman ? `<span>${esc(gunAdi(zaman))}, ${saat(zaman)}</span>` : ''}
+    ${zaman && ig !== undefined ? `<span>${ig ? 'YouTube + Instagram' : "YouTube (Instagram'a gitmez: günde 1 Reel)"}</span>` : ''}
     ${v.yayinlandi ? `<span>${esc(zamanMetni(v.yayinlandi))} yayınlandı</span>` : ''}
     <span>${esc(MOTOR[v.motor] || v.motor || '')}</span><span>#${Number(v.no)}</span></div>`;
   if (v.durum === 'yayinlandi') {
@@ -413,12 +431,21 @@ function webHtml() {
   const grafik = hs.length ? `<div class="kart grafik"><div class="gb"><span>Haftalık Google tıkı · son 8 hafta</span></div>
     <div class="cubuklar" role="img" aria-label="Haftalık Google tık sayıları">${hs.map((h, i) => `<div class="cubuk${i === hs.length - 1 ? ' son' : ''}">
       <i data-h="${Math.round(((h.tik || 0) / enCok) * 100)}"></i><span>${sayi(h.tik)}</span></div>`).join('')}</div></div>` : '';
+  const k = S.kpi?.kayit || {};
+  // GA4 17 Kasım'dan beri yalnız çerez onaylıları sayıyor (seri kırık): kıyas yalnız iki pencere aynı taraftaysa
+  const ga4Kiyas = w.ziyaret_kiyas !== false;
+  const ga4 = w.ziyaret_7g == null ? '' : `<p class="oto-not">GA4 ziyaret (7 gün): ${sayi(w.ziyaret_7g)}${ga4Kiyas
+    ? ` · önceki ${sayi(w.ziyaret_onceki)} ${fark(w.ziyaret_7g, w.ziyaret_onceki)}` : ''}${w.ga4_not
+    ? ` · <span class="uyari-yazi">${esc(w.ga4_not)}${ga4Kiyas ? '' : ' Önceki haftayla kıyaslanmaz.'}</span>` : ''}</p>`;
   return `<div class="metrikler uc">
     <div class="kart metrik"><div class="e">Google tık</div><div class="d">${sayi(w.son?.tik)}</div><div class="a">önceki ${sayi(w.onceki?.tik)} ${fark(w.son?.tik, w.onceki?.tik)}</div></div>
     <div class="kart metrik"><div class="e">Gösterim</div><div class="d">${sayi(w.son?.gosterim)}</div><div class="a">önceki ${sayi(w.onceki?.gosterim)} ${fark(w.son?.gosterim, w.onceki?.gosterim)}</div></div>
-    <div class="kart metrik"><div class="e">Ziyaretçi</div><div class="d">${sayi(w.ziyaret_7g)}</div><div class="a">önceki ${sayi(w.ziyaret_onceki)} ${fark(w.ziyaret_7g, w.ziyaret_onceki)}</div></div>
+    <div class="kart metrik"><div class="e">Kayıt (onaylı)</div><div class="d">${sayi(k.onayli)}</div><div class="a">7 günde ${sayi(k.yeni_7g)} yeni ${fark(k.yeni_7g, k.yeni_onceki_7g)}</div></div>
   </div>
-  <p class="oto-not">Son 7 gün. Google verisi 2–3 gün geriden gelir.</p>
+  <p class="oto-not">Google: son 7 gün, veri 2–3 gün geriden gelir. Kayıt: ${esc(kayitDetay() || 'alınamadı')}.</p>
+  ${w.insan_7g != null ? `<p class="oto-not">Sitede görüntülenen sayfa (7 gün, çerezsiz sayım): <b>${sayi(w.insan_7g)}</b> · önceki ${sayi(w.insan_onceki)} ${fark(w.insan_7g, w.insan_onceki)}
+    · Cloudflare, Türkiye'den tarayıcılar; eğilim içindir.</p>` : ''}
+  ${ga4}
   ${grafik}
   ${planHtml('web')}
   <h2>Yapılacak</h2>
