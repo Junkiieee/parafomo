@@ -90,7 +90,7 @@ def test_selects_only_confirmed_zam_subscribers(env):
     assert z.main(["--olay", "asgari-2027"]) == 0
     assert _alicilar() == ["a@example.com", "b@example.com"]
     msg = FakeSMTP.sent[0]
-    assert "34.000,00" in msg["Subject"] and msg["List-Unsubscribe"].startswith("<https://api.parafomo.com/newsletter/unsubscribe?token=")
+    assert "34.000 TL" in msg["Subject"] and msg["List-Unsubscribe"].startswith("<https://api.parafomo.com/newsletter/unsubscribe?token=")
     body = msg.get_body(("plain",)).get_content()
     assert "utm_source=zam-alarmi" in body and "{UNSUB}" not in body
 
@@ -183,7 +183,7 @@ def test_dry_run_writes_preview_and_sends_nothing(env, capsys):
     _abone("a@example.com")
     out = env["tmp"] / "onizleme.html"
     assert z.main(["--olay", "asgari-2027", "--dry-run", "--out", str(out)]) == 0
-    assert FakeSMTP.sent == [] and "34.000,00" in out.read_text(encoding="utf-8")
+    assert FakeSMTP.sent == [] and "34.000 TL" in out.read_text(encoding="utf-8")
     assert "abonesi: 1" in capsys.readouterr().out
 
 

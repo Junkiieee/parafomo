@@ -143,14 +143,19 @@ _BTN = ("style='display:inline-block;background:#0f7a4d;color:#fff;text-decorati
         "border-radius:8px;font-weight:600'")
 
 
+def _tl(x: float) -> str:
+    """TL tutarı: kuruş yoksa ",00" yazma (28.000 TL; 22.104,67 TL)."""
+    return _tr_num(x, 0 if round(float(x), 2).is_integer() else 2)
+
+
 def build(olay: str, v: dict) -> tuple[str, str, str]:
     """(konu, html, düz metin). {UNSUB} yer tutucusu _message'da kişiye özel bağlantıyla değişir."""
     e = html.escape
     if v["tur"] == "asgari":
         y = v["yil"]
-        subject = f"Asgari ücret {y} belli oldu: net {_tr_num(v['net'])} TL"
+        subject = f"Asgari ücret {y} belli oldu: net {_tl(v['net'])} TL"
         artis = f" (geçen yıla göre {_pct(v['artis'])} artış)" if v.get("artis") is not None else ""
-        satirlar = [f"{y} asgari ücreti açıklandı: net {_tr_num(v['net'])} TL, brüt {_tr_num(v['brut'])} TL{artis}."]
+        satirlar = [f"{y} asgari ücreti açıklandı: net {_tl(v['net'])} TL, brüt {_tl(v['brut'])} TL{artis}."]
         link, link_ad = _utm("/asgari-ucret-hesaplama/", olay), "Net, brüt ve işveren maliyetini hesapla"
         ek = f"Yeni tutar 1 Ocak {y} tarihinden itibaren geçerli."
     else:
