@@ -1,5 +1,18 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { TOOLS } from '../data/tools';
+import { ALTIN_SPECS } from '../data/altin-specs';
+
+// "Bunu mu aradın?" — eski/yanlış yazılmış adrese gelen ziyaretçiye, adresteki kelimelere en çok benzeyen
+// yazı ve araçlar önerilir (birleştirilen yazılar, kısaltılmış linkler, sosyal medyada kırpılmış URL'ler).
+// Eşleştirme adres (slug) kelimeleri üzerinden, tarayıcıda yapılır; liste build anında gömülür (~12 KB).
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+const adaylar = [
+  ...TOOLS.map((t) => ({ u: t.href, t: t.ad })),
+  ...ALTIN_SPECS.map((x) => ({ u: `/altin-fiyatlari/${x.slug}/`, t: `${x.ad} fiyatı` })),
+  ...posts.map((p) => ({ u: `/blog/${p.id}/`, t: p.data.title })),
+];
 ---
 <BaseLayout title="Sayfa Bulunamadı" noindex>
   <section class="container nf">
@@ -9,6 +22,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="nf-cta">
       <a href="/" class="btn btn-primary">Anasayfa</a>
       <a href="/blog" class="btn btn-ghost">Yazılara Göz At</a>
+    </div>
+    <div class="nf-guess" id="nfGuess" hidden>
+      <p class="soft nf-pop-title">Bunu mu aradın?</p>
+      <ul class="nf-guess-list" id="nfGuessList"></ul>
     </div>
     <p class="soft nf-pop-title">En çok kullanılanlar</p>
     <ul class="nf-pop">
@@ -23,6 +40,38 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <li><a href="/ekonomik-takvim/">Ekonomik takvim</a></li>
     </ul>
   </section>
+  <Fragment slot="end">
+    <script is:inline define:vars={{ adaylar }}>
+      (function () {
+        // Adres kelimeleri (ör. /blog/abd-faiz-yukseltirse-dolar → abd, faiz, yukseltirse, dolar)
+        var kelime = function (s) {
+          return decodeURIComponent(s).toLowerCase().split(/[^a-z0-9]+/).filter(function (w) { return w.length > 2 && w !== 'blog'; });
+        };
+        var aranan = kelime(location.pathname);
+        if (!aranan.length) return;
+        var sonuc = adaylar.map(function (a) {
+          var k = kelime(a.u);
+          var ortak = aranan.filter(function (w) {
+            return k.some(function (x) { return x === w || (w.length > 4 && x.length > 4 && (x.indexOf(w) === 0 || w.indexOf(x) === 0)); });
+          }).length;
+          return { a: a, puan: ortak / aranan.length };
+        }).filter(function (r) { return r.puan >= 0.34; })
+          .sort(function (x, y) { return y.puan - x.puan; })
+          .slice(0, 3);
+        if (!sonuc.length) return;
+        var ul = document.getElementById('nfGuessList');
+        sonuc.forEach(function (r) {
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          a.href = r.a.u;
+          a.textContent = r.a.t; // textContent: başlıklar HTML olarak yorumlanmaz
+          li.appendChild(a);
+          ul.appendChild(li);
+        });
+        document.getElementById('nfGuess').hidden = false;
+      })();
+    </script>
+  </Fragment>
 </BaseLayout>
 <style>
   .nf { text-align: center; padding: 6rem 0; }
@@ -33,4 +82,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .nf-pop-title { margin: 2.2rem auto .6rem; font-weight: 600; }
   .nf-pop { list-style: none; padding: 0; margin: 0 auto; display: flex; flex-wrap: wrap; gap: .5rem .9rem; justify-content: center; max-width: 640px; }
   .nf-pop a { text-decoration: underline; text-underline-offset: 2px; }
+  .nf-guess-list { list-style: none; padding: 0; margin: 0 auto; max-width: 560px; display: grid; gap: .45rem; }
+  .nf-guess-list a { font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 </style>
