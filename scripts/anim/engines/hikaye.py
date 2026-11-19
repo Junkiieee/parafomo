@@ -229,8 +229,13 @@ class Sahne:
             o = v[taraf]
             self.oyuncu({"id": taraf, "k": o["k"], "ifade": o.get("ifade", "normal"), "x": x, "y": 820, "olcek": 0.6,
                          "giris": "sol" if taraf == "sol" else "sag"}, taraf)
+            dg = str(o.get("deger", ""))
+            # uzun değer (ör. "Nakit, çekmecede") 96px Anton'da 400px kutuya sığmıyor, alt satıra taşıp üst üste biniyordu
+            # (2026-11-19 gece hikâyesi bu yüzden izometriğe düştü) → uzunluğa göre küçült
+            boy = "" if len(dg) <= 7 else (' style="font-size:60px;line-height:1.05"' if len(dg) <= 12
+                                           else ' style="font-size:44px;line-height:1.1"')
             self.parca.append(f'<div class="vs-et" style="left:{x - 200}px">{E(o.get("etiket", ""))}'
-                              f'<b class="vz">{E(o.get("deger", ""))}</b></div>')
+                              f'<b class="vz"{boy}>{E(dg)}</b></div>')
         self.parca.append('<div class="vs-rozet" id="s%dvs">VS</div>' % self.i)
         self.js.append(f"tl.fromTo('#s{self.i}vs', {{ scale: 0, rotation: -20 }}, {{ scale: 1, rotation: 0, duration: 0.35, "
                        f"ease: 'back.out(3)' }}, {self.s + 0.3:.3f});")
