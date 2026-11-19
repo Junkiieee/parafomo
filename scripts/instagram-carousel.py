@@ -5,7 +5,10 @@ Graph API akışı: her görsel için is_carousel_item konteyneri → CAROUSEL k
 Görseller parafomo.com'da yayında olmalı (IG URL'yi kendi çeker): önce commit + deploy.
 Yayın kilidi: /root/parafomo-data/PUBLISH_PAUSED varsa yalnız ONAYLI_YAYIN=1 ile; panelde Instagram kapalıysa atlar.
 
-  ONAYLI_YAYIN=1 /root/.venvs/parafomo/bin/python scripts/instagram-carousel.py <slug> [--dry]
+  ONAYLI_YAYIN=1 /root/.venvs/parafomo/bin/python scripts/instagram-carousel.py <slug> [--dry] [--force]
+
+Çift paylaşım koruması (denetim sosyal-2, 2026-11-18): slug carousel-yayinlar.json'da varsa yeniden paylaşılmaz
+(--force ile bilerek tekrar). Graph sürümü scripts/lib/meta_graph.py'den (sosyal-6).
 """
 import glob
 import json
@@ -17,7 +20,8 @@ import urllib.parse
 import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-API = "https://graph.facebook.com/v21.0"
+sys.path.insert(0, os.path.join(ROOT, "scripts", "lib"))
+from meta_graph import API  # noqa: E402  (Graph sürümü tek yerde)
 SITE = "https://parafomo.com"
 KONTROL = "/root/parafomo-data/dash/kontrol.json"
 SONUC = "/root/parafomo-data/dash/carousel-yayinlar.json"
@@ -47,6 +51,13 @@ def istek(method, path, data=None):
             return {"error": {"message": f"HTTP {e.code}"}}
 
 
+def yayinlar():
+    try:
+        return json.load(open(SONUC, encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
 def bekle_hazir(cid, tok, deneme=20):
     for _ in range(deneme):
         r = istek("GET", cid, {"fields": "status_code", "access_token": tok})
@@ -69,6 +80,11 @@ def main():
     print(f"[carousel] {slug}: {n} slayt\n{caption}\n")
     if not 2 <= n <= 10:
         sys.exit("[carousel] HATA: 2–10 slayt olmalı")
+    onceki = yayinlar().get(slug)
+    if onceki and "--force" not in sys.argv:   # elle tekrar koşunca aynı carousel ikinci kez çıkmasın
+        print(f"[carousel] zaten yayınlandı ({onceki.get('zaman', '?')}): {onceki.get('permalink') or onceki.get('media_id')}"
+              " — tekrar için --force")
+        return
     try:
         if not json.load(open(KONTROL, encoding="utf-8")).get("instagram", True):
             print("[carousel] panelde Instagram kapalı — atlandı"); return
@@ -102,13 +118,11 @@ def main():
     if "id" not in p:
         sys.exit(f"[carousel] HATA (yayın): {json.dumps(p, ensure_ascii=False)[:300]}")
     perma = istek("GET", p["id"], {"fields": "permalink", "access_token": tok}).get("permalink", "")
-    kayit = {}
-    try:
-        kayit = json.load(open(SONUC, encoding="utf-8"))
-    except (OSError, ValueError):
-        pass
+    kayit = yayinlar()
     kayit[slug] = {"media_id": p["id"], "permalink": perma, "zaman": time.strftime("%Y-%m-%dT%H:%M:%S%z")}
-    json.dump(kayit, open(SONUC, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    with open(SONUC + ".tmp", "w", encoding="utf-8") as f:
+        json.dump(kayit, f, ensure_ascii=False, indent=1)
+    os.replace(SONUC + ".tmp", SONUC)
     print(f"[carousel] ✅ yayınlandı: {p['id']} {perma}")
 
 
