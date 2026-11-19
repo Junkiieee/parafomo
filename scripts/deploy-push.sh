@@ -20,7 +20,14 @@ if [ -n "$(git status --porcelain -- src astro.config.mjs package.json 2>/dev/nu
 fi
 echo "[deploy] build..."
 # flock: aynı anda iki build dist/'i bozmasın · nice: sunucudaki diğer işler önce gelsin
-if ! flock -w 600 /tmp/parafomo-build.lock nice -n 10 npm run build > "$REPO/logs/deploy-build.log" 2>&1; then
+# Log kilit ALINDIKTAN sonra açılır (bekleyen iş, çalışan build'in logunu kesmesin); kilit zaman aşımı (75)
+# "build kırık" değildir → sahte alarm maili yok, push sonraki çalışmaya kalır.
+flock -E 75 -w 600 /tmp/parafomo-build.lock sh -c 'nice -n 10 npm run build > "$1" 2>&1' _ "$REPO/logs/deploy-build.log"
+rc=$?
+if [ "$rc" -eq 75 ]; then
+  echo "[deploy] build kilidi 10 dk'da boşalmadı (başka build sürüyor) — push YAPILMADI, sonraki çalışma dener"; exit 1
+fi
+if [ "$rc" -ne 0 ]; then
   echo "[deploy] BUILD KIRIK — push YAPILMADI. Son satırlar:"
   tail -20 "$REPO/logs/deploy-build.log"
   # Kaan'a uyarı (günde bir kez). 2026-11-02: build kırıkken sessiz kalınınca canlı site sabahki sürümde kaldı,
@@ -30,7 +37,8 @@ if ! flock -w 600 /tmp/parafomo-build.lock nice -n 10 npm run build > "$REPO/log
   exit 1
 fi
 # SEO bekçisi: yeni build'de kırık link / yanlış kanonik vb. KRİTİK varsa göster (push'u engellemez)
-python3 "$REPO/scripts/seo-audit.py" 2>/dev/null | sed -n '1,12p' | sed 's/^/[deploy] /' || true
+# (build kilidi altında: başka bir işin build'i dist/'i boşaltırken taranırsa sahte "kırık link" çıkıyordu)
+flock -w 600 /tmp/parafomo-build.lock python3 "$REPO/scripts/seo-audit.py" 2>/dev/null | sed -n '1,12p' | sed 's/^/[deploy] /' || true
 # build az önce geçti → gitsync.sh build kapısı ikinci kez build almasın
 if SKIP_BUILD_GATE=1 git_push_retry main; then
   echo "[deploy] push tamam — Cloudflare 1-3 dk içinde yayınlar ($(git log -1 --format='%h %s'))"
