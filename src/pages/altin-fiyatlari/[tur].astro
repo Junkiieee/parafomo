@@ -1,5 +1,5 @@
 ---
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Newsletter from '../../components/Newsletter.astro';
@@ -95,6 +95,9 @@ const gecmis = Object.entries(gecmisGunler)
     satis: g.fiyat[spec.key][1],
   }));
 const gecmisGoster = gecmis.length >= GECMIS_MIN;
+// Türe özel paylaşım kartı (scripts/og-images.py altin-fiyatlari-<slug>); üretilmemişse genel karta düşer.
+const ogImage = existsSync(join(process.cwd(), 'public', 'og', `altin-fiyatlari-${spec.slug}.png`))
+  ? `/og/altin-fiyatlari-${spec.slug}.png` : undefined;
 
 // Aynı gruptaki ve komşu türler — iç link ağı
 const kardes = ALTIN_SPECS.filter((s) => s.slug !== spec.slug && items.some((i) => i.key === s.key));
@@ -140,7 +143,7 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout title={title} description={description} faq={faq} breadcrumbs={breadcrumbs}>
+<BaseLayout title={title} description={description} faq={faq} breadcrumbs={breadcrumbs} image={ogImage}>
   <div class="calc-wrap">
     <header class="calc-head">
       <p class="eyebrow">Güncel Veri · {spec.ayar}{spec.birim === 'adet' ? ` · ${g3(spec.gram)} gram` : ''}</p>
