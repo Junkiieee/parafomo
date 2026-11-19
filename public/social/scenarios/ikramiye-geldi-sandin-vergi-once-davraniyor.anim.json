@@ -1,0 +1,104 @@
+{
+ "slug": "ikramiye-geldi-sandin-vergi-once-davraniyor",
+ "title": "İkramiye geldi sandın, vergi önce davranıyor",
+ "description": "İkramiye maaşın üstüne eklendiği için en yüksek vergi dilimi oranıyla kesilir. Bu yüzden eline geçen net tutar beklediğinden az olur.",
+ "tags": [
+  "ikramiye",
+  "prim",
+  "gelir vergisi",
+  "vergi dilimi",
+  "net maaş",
+  "ParaFOMO",
+  "parafomo"
+ ],
+ "format": "single_concept",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "İKRAMİYE VERGİSİ",
+  "scenes": [
+   {
+    "type": "icon_text",
+    "head": "Ağır kesinti",
+    "data": {
+     "icon": "cash",
+     "text": "İkramiyenin vergisi *daha ağır* kesilir"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "steps",
+    "head": "Neden daha ağır?",
+    "data": {
+     "items": [
+      "Maaşa eklenir",
+      "Dilim yükselir",
+      "Üst oran uygulanır"
+     ]
+    },
+    "line": "s1"
+   },
+   {
+    "type": "icon_text",
+    "head": "En üste biner",
+    "data": {
+     "icon": "percent",
+     "text": "İkramiye en üste biner, *pahalı* oranı yer"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "steps",
+    "head": "Doğru planlama",
+    "data": {
+     "items": [
+      "Brüt değil net bak",
+      "Net tutarı planla",
+      "Harcamayı ona uydur"
+     ]
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Dilimini biliyor musun?",
+    "data": {
+     "l1": "Dilimin hangisi?",
+     "l2": "Abone ol",
+     "sub": "HER GÜN 60 SANİYEDE NET ANALİZ"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "İkramiyenin vergisi, maaşından daha ağır kesilir.",
+   "cap": "İkramiyenin vergisi, maaşından daha ağır kesilir."
+  },
+  {
+   "id": "s1",
+   "say": "Çünkü ikramiye maaşına eklenir; vergi, yıl içinde ulaştığın en yüksek dilimin oranıyla kesilir.",
+   "cap": "Çünkü ikramiye maaşına eklenir; vergi, yıl içinde ulaştığın en yüksek dilimin oranıyla kesilir."
+  },
+  {
+   "id": "s2",
+   "say": "İlk liralar düşük oranla vergilenir, ama ikramiye en üste biner ve en pahalı oranı yer.",
+   "cap": "İlk liralar düşük oranla vergilenir, ama ikramiye en üste biner ve en pahalı oranı yer."
+  },
+  {
+   "id": "s3",
+   "say": "İkramiyeyi brüt rakamla değil, eline geçecek net tutarla planla; harcamayı ona göre ayarla.",
+   "cap": "İkramiyeyi brüt rakamla değil, eline geçecek net tutarla planla; harcamayı ona göre ayarla."
+  },
+  {
+   "id": "s4",
+   "say": "Sen maaşının hangi diliminde olduğunu biliyor musun? Abone ol, her gün 60 saniyede tek net analiz.",
+   "cap": "Sen maaşının hangi diliminde olduğunu biliyor musun? Abone ol, her gün 60 saniyede tek net analiz."
+  }
+ ],
+ "skin": "iso",
+ "engine": "dossier"
+}

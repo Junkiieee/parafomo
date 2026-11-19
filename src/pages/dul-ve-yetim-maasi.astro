@@ -1,0 +1,235 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ZamAlarmi from '../components/ZamAlarmi.astro';
+import Newsletter from '../components/Newsletter.astro';
+import em from '../../data/emekli-memur.json';
+// Zam tahmini /emekli-zammi-hesaplama ile ORTAK modülde — burada tekrar hesaplanmaz.
+import { sskProj, memurProj, remaining, cumKnown } from '../data/zam2027';
+
+const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const ayYil = (k: string) => `${AYLAR[+k.slice(5) - 1]} ${k.slice(0, 4)}`;
+
+const T = em.enDusukEmekliAyligi;
+const B = em.bayramIkramiyesi;
+const final = remaining === 0;
+const zEt = final ? 'kesinleşen' : 'tahmini';
+// 5510 sayılı Kanun md. 34 — hak sahiplerinin hisse oranları
+const HISSE = [
+  { k: 'es50', ad: 'Eş (aylık alan çocuk varken)', h: 0.5 },
+  { k: 'es75', ad: 'Eş (aylık alan çocuk yok, çalışmıyor, kendi emekli aylığı yok)', h: 0.75 },
+  { k: 'cocuk25', ad: 'Çocuk (yetim)', h: 0.25 },
+  { k: 'cocuk50', ad: 'Anne ve babasını kaybetmiş çocuk', h: 0.5 },
+  { k: 'anne25', ad: 'Anne veya baba (geliri asgari ücretin altında)', h: 0.25 },
+];
+const ornek = 25000; // örnek: ölen kişinin bugünkü aylığı
+const tabanPay = (h: number) => T.tutar * h;
+
+const faq = [
+  {
+    q: 'Dul maaşı Ocak 2027’de ne kadar olacak?',
+    a: `Dul ve yetim aylıkları SSK ve Bağ-Kur emeklileriyle aynı oranda zamlanır. ${final ? 'Kesinleşen' : 'Şu anki tahmin'} %${nf(sskProj * 100)}. Örneğin eşinden %50 hisseyle bugün 12.500 ₺ alan biri, Ocak 2027'de yaklaşık ${fmt(12500 * (1 + sskProj))} ₺ alır. Kesin oran Aralık enflasyonu açıklanınca (Ocak 2027 başı) belli olur.`,
+  },
+  {
+    q: 'Dul maaşı nasıl hesaplanır?',
+    a: 'Önce vefat eden kişinin aylığı bulunur (emekliyse son aylığı, değilse prim gününe göre hesaplanan aylık). Bu tutar hak sahiplerine hisseleriyle paylaştırılır: eşe %50, aylık alan çocuğu olmayan ve çalışmayan eşe %75, her çocuğa %25, ana-babaya %25. Hisselerin toplamı aylığın tamamını aşarsa hepsi oranlı olarak indirilir.',
+  },
+  {
+    q: 'En düşük dul maaşı ne kadar?',
+    a: `En düşük emekli aylığı ${ayYil(T.baslangic)}'dan beri ${fmt(T.tutar)} ₺. Ölüm aylığında bu tutar hak sahiplerine hisseleri oranında paylaştırılır: %75 hisseli eş en az yaklaşık ${fmt(tabanPay(0.75))} ₺, %50 hisseli eş ${fmt(tabanPay(0.5))} ₺, %25 hisseli çocuk ${fmt(tabanPay(0.25))} ₺ alır. Taban Ocak 2027'de kanunla değişirse bu tutarlar da değişir.`,
+  },
+  {
+    q: 'Yetim aylığı kimlere ve ne zamana kadar bağlanır?',
+    a: 'Çocuk 18 yaşına kadar; lise öğrencisiyse 20, yükseköğrenimdeyse 25 yaşına kadar alır. Kız çocuklar evlenmedikçe ve çalışmadıkça yaş sınırı olmadan alabilir. Çalışmaya muhtaç derecede engelli çocuğa yaş sınırı uygulanmaz. Kesin durum için SGK\'ya başvurmak gerekir.',
+  },
+  {
+    q: 'Dul ve yetim aylığı alanlar bayram ikramiyesi alır mı?',
+    a: `Evet, hisseleri oranında. 2026'da bayram ikramiyesi ${fmt(B.tutar)} ₺ idi; %50 hisseli eş ${fmt(B.tutar / 2)} ₺, %25 hisseli çocuk ${fmt(B.tutar / 4)} ₺ aldı.`,
+  },
+  {
+    q: 'Memur emeklisinin dul maaşı ne kadar zamlanır?',
+    a: `Memur emeklisinden (4/c) bağlanan dul ve yetim aylıkları memur emeklileriyle aynı oranda artar; Ocak 2027 için ${zEt} oran %${nf(memurProj.zam * 100)}. Hisse oranları 5434 sayılı Kanun'a göre belirlenir ve SSK'dakinden farklı olabilir; bu sayfadaki hesaplayıcı SSK ve Bağ-Kur içindir.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Emekli Zammı Hesaplama', url: '/emekli-zammi-hesaplama/' },
+  { name: 'Dul ve Yetim Maaşı', url: '/dul-ve-yetim-maasi/' },
+];
+---
+
+<BaseLayout
+  title={`Dul ve Yetim Maaşı Ocak 2027: Ne Kadar Olacak? (%${nf(sskProj * 100)} ${final ? 'zam' : 'tahmin'})`}
+  description={`Dul maaşı ve yetim aylığı Ocak 2027'de %${nf(sskProj * 100)} ${final ? 'zamla' : 'tahmini zamla'} ne kadar olacak? Hisse oranına göre hesapla; en düşük dul maaşı ve yetim aylığı tutarları.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Emekli · Ocak 2027</p>
+      <h1>Dul ve Yetim Maaşı Ocak 2027</h1>
+      <p class="lede">
+        Dul ve yetim aylıkları SSK ve Bağ-Kur emeklileriyle aynı oranda zamlanır: Ocak 2027 için
+        <strong>{zEt} zam %{nf(sskProj * 100)}</strong>. Aşağıda hisse oranınla kendi tutarını hesapla.
+      </p>
+    </header>
+
+    <div class="stats">
+      <div class="stat"><span class="k">Ocak 2027 zammı ({final ? 'kesin' : 'tahmin'})</span><span class="v">%{nf(sskProj * 100)}</span><span class="s">Temmuz–Aralık 2026 enflasyonu · kesinleşen kısım %{nf(cumKnown * 100)}</span></div>
+      <div class="stat"><span class="k">En düşük, %75 hisseli eş</span><span class="v">₺{fmt(tabanPay(0.75))}</span><span class="s">{fmt(T.tutar)} ₺ tabanın %75'i</span></div>
+      <div class="stat"><span class="k">En düşük, %25 hisseli çocuk</span><span class="v">₺{fmt(tabanPay(0.25))}</span><span class="s">{fmt(T.tutar)} ₺ tabanın %25'i</span></div>
+    </div>
+
+    <section class="table-block">
+      <h2>Dul / yetim maaşımı hesapla</h2>
+      <div class="calc-grid">
+        <form class="calc-inputs" autocomplete="off">
+          <label>
+            <span>Hak sahibi</span>
+            <select id="in-hisse">
+              {HISSE.map((x) => <option value={x.h}>{x.ad} · %{x.h * 100}</option>)}
+            </select>
+          </label>
+          <label>
+            <span>Bugün aldığınız dul / yetim aylığı (₺)</span>
+            <input type="number" id="in-pay" value="12500" min="0" step="100" inputmode="numeric" />
+          </label>
+          <p class="hint">Tutarı e-Devlet → SGK "Emekli Aylık Bilgisi" ekranında görebilirsiniz. Hisseniz tabana tamamlanıyorsa zam, tamamlama öncesi tutara uygulanır.</p>
+        </form>
+        <div class="calc-results" aria-live="polite">
+          <div class="result-main">
+            <span class="result-label">Ocak 2027 tahmini aylık</span>
+            <span class="result-value" id="out-new">—</span>
+          </div>
+          <div class="result-split">
+            <div class="split-item"><span class="split-label">Zam ({final ? 'kesin' : 'tahmin'})</span><span class="split-val" id="out-zam">—</span></div>
+            <div class="split-item"><span class="split-label">Aylık artış</span><span class="split-val" id="out-fark">—</span></div>
+            <div class="split-item"><span class="split-label">Hissenize düşen en düşük tutar</span><span class="split-val" id="out-taban">—</span></div>
+          </div>
+          <p class="result-note" id="out-note"></p>
+        </div>
+      </div>
+      <p class="table-note">
+        Zam tahmini <a href="/emekli-zammi-hesaplama/">emekli zammı hesaplama</a> sayfasıyla aynı veriden gelir.
+        {!final && <>Kasım ve Aralık enflasyonu açıklandıkça oran güncellenir; kesin oran Ocak 2027 başında belli olur.</>}
+        Taban tutarı Ocak'ta kanunla değişirse hesap ona göre güncellenir.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Hisse oranları ve Ocak 2027 örneği</h2>
+      <table class="rate-table">
+        <thead><tr><th>Hak sahibi</th><th>Hisse</th><th>Bugün*</th><th>Ocak 2027 ({final ? 'kesin' : 'tahmin'})</th></tr></thead>
+        <tbody>
+          {HISSE.map((x) => (
+            <tr><td>{x.ad}</td><td>%{x.h * 100}</td><td>₺{fmt(ornek * x.h)}</td><td>₺{fmt(ornek * x.h * (1 + sskProj))}</td></tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">*Örnek: vefat eden kişinin aylığı {fmt(ornek)} ₺. Kaynak: 5510 sayılı Kanun md. 34. Hisselerin toplamı %100'ü aşarsa (ör. eş + 3 çocuk) tüm hisseler oranlı olarak indirilir.</p>
+    </section>
+
+    <ZamAlarmi />
+
+    <section class="prose-block">
+      <h2>Dul maaşına zam nasıl yapılır?</h2>
+      <p>
+        Ölüm aylığı, vefat eden sigortalının aylığı üzerinden hesaplanır ve her Ocak ile Temmuz'da emekli aylıklarıyla aynı
+        oranda artar. Bu oran önceki altı ayın enflasyonudur (TÜİK TÜFE). Temmuz–Ekim 2026 enflasyonu açıklandı;
+        Kasım ve Aralık için son üç ayın ortalaması varsayıldı. Bu yüzden Ocak 2027 oranı şimdilik bir tahmindir.
+      </p>
+      <h2>En düşük dul maaşı neden farklı?</h2>
+      <p>
+        En düşük emekli aylığı ({fmt(T.tutar)} ₺) ölüm aylığında tek kişiye değil, <strong>tüm hak sahiplerine</strong>
+        hisseleri oranında paylaştırılır. Bu nedenle tek başına %75 hisse alan eşin en düşük aylığı yaklaşık
+        {fmt(tabanPay(0.75))} ₺'dir. Taban Ocak 2027'de artırılırsa bu tutarlar da aynı oranda değişir.
+      </p>
+      <p class="cta-line">
+        Kendi emekli aylığın için → <a href="/emekli-zammi-hesaplama/">emekli zammı hesaplama</a>.
+        Taban aylık ve ödeme günleri → <a href="/en-dusuk-emekli-maasi/">en düşük emekli maaşı</a>.
+        Refah payı ya da seyyanen zam gelirse → <a href="/emekli-refah-payi-seyyanen-zam/">senaryo hesaplayıcı</a>.
+        Bayram ikramiyesi → <a href="/bayram-ikramiyesi/">bayram ikramiyesi</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
+    </section>
+
+    <Newsletter />
+  </div>
+
+  <script is:inline define:vars={{ Z: sskProj, TABAN: T.tutar }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const p2 = (x) => (x * 100).toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      function update() {
+        const h = +$('in-hisse').value || 0;
+        const p = Math.max(0, +$('in-pay').value || 0);
+        const calc = p * (1 + Z);
+        const taban = TABAN * h;
+        const out = Math.max(calc, taban);
+        $('out-new').textContent = '₺' + nf0.format(Math.round(out));
+        $('out-zam').textContent = '%' + p2(Z);
+        $('out-fark').textContent = '+₺' + nf0.format(Math.round(out - p));
+        $('out-taban').textContent = '₺' + nf0.format(Math.round(taban));
+        $('out-note').textContent = calc < taban
+          ? `Zamlı aylığınız hissenize düşen tabanın altında; taban değişmezse ₺${nf0.format(Math.round(taban))} alırsınız.`
+          : 'Zamlı aylık hissenize düşen tabanın üzerinde.';
+      }
+      ['in-hisse', 'in-pay'].forEach((id) => $(id).addEventListener('input', update));
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+    .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; }
+    .stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; display: flex; flex-direction: column; gap: 0.2rem; box-shadow: var(--shadow-soft); }
+    .stat .k { font-size: 0.8rem; color: var(--text-soft); font-weight: 600; }
+    .stat .v { font-family: var(--font-serif); font-size: 1.9rem; font-weight: 600; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .stat .s { font-size: 0.78rem; color: var(--text-muted); }
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input, .calc-inputs select { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; max-width: 100%; }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .hint { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.45; }
+    .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 1rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.5rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+    .table-block { margin-top: 2.5rem; overflow-x: auto; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.5rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.8rem 0 0; line-height: 1.5; }
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+    @media (max-width: 680px) { .stats, .calc-grid { grid-template-columns: 1fr; } }
+  </style>
+</BaseLayout>

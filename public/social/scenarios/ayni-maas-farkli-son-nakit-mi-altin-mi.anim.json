@@ -1,0 +1,420 @@
+{
+ "slug": "ayni-maas-farkli-son-nakit-mi-altin-mi",
+ "title": "Aynı maaş, farklı son: nakit mi altın mı? 22.115 TL fark",
+ "description": "Aynı maaşı alan iki iş arkadaşı, Ocak 2024'ten beri her ay maaşının %10'unu kenara koyuyor. Biri parayı çekmecede tutuyor, diğeri her yıl sonu altına çeviriyor. Bugün aralarında yaklaşık 22.115 TL fark var ve farkın büyük kısmı tek bir yıldan geliyor. Bu bir örnek hesaptır, yatırım tavsiyesi değildir; geçmiş, geleceğin garantisi değildir.\nKaynak: Asgari ücret: Resmî Gazete; gram altın: ons × USDTRY (Yahoo), yıl sonu; Aralık yıllık TÜFE\nKendi hesabını yap: parafomo.com/altin-getiri/",
+ "tags": [
+  "aynı maaş",
+  "altın mı nakit mi",
+  "gram altın",
+  "asgari ücret birikim",
+  "para hikayeleri",
+  "birikim",
+  "enflasyon"
+ ],
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Aynı maaş, aynı birikim; biri 22.115 lira önde.",
+   "cap": "Aynı maaş, aynı birikim; biri 22.115 TL önde."
+  },
+  {
+   "id": "s1",
+   "say": "Ayşe ile Mert, her ay maaşının yüzde 10'unu ayırıyor.",
+   "cap": "Ayşe ile Mert, her ay maaşının %10'unu ayırıyor."
+  },
+  {
+   "id": "s2",
+   "say": "Ama Ayşe parayı çekmecede tutuyor. Mert her yıl sonu altına çeviriyor.",
+   "cap": "Ama Ayşe parayı çekmecede tutuyor. Mert her yıl sonu altına çeviriyor."
+  },
+  {
+   "id": "s3",
+   "say": "Bu yüzden bugün Ayşe'nin çekmecesinde yaklaşık 77.810 lira var.",
+   "cap": "Bu yüzden bugün Ayşe'nin çekmecesinde yaklaşık 77.810 TL var."
+  },
+  {
+   "id": "s4",
+   "say": "Mert'in altınları ise bugün yaklaşık 99.926 lira ediyor.",
+   "cap": "Mert'in altınları ise bugün yaklaşık 99.926 TL ediyor."
+  },
+  {
+   "id": "s5",
+   "say": "Ama farkın sırrı her ay değil, tek bir yılda.",
+   "cap": "Ama farkın sırrı her ay değil, tek bir yılda."
+  },
+  {
+   "id": "s6",
+   "say": "Asıl şaşırtıcı olan: 2025'te gram altın 2 katına çıktı.",
+   "cap": "Asıl şaşırtıcı olan: 2025'te gram altın 2 katına çıktı."
+  },
+  {
+   "id": "s7",
+   "say": "Ama 2022'de altın enflasyona yenildi. Geçmiş, geleceğin garantisi değil.",
+   "cap": "Ama 2022'de altın enflasyona yenildi. Geçmiş, geleceğin garantisi değil."
+  },
+  {
+   "id": "s8",
+   "say": "Sen hangisisin: çekmececi mi, her yıl bir adım atan mı?",
+   "cap": "Sen hangisisin: çekmececi mi, her yıl bir adım atan mı?"
+  },
+  {
+   "id": "s9",
+   "say": "Aynı maaş, aynı birikim; farkı yazan senin kararın.",
+   "cap": "Aynı maaş, aynı birikim; farkı yazan senin kararın."
+  }
+ ],
+ "data": {
+  "tema": "gece",
+  "kanca": [
+   "AYNI MAAŞ",
+   "22.115 TL FARK"
+  ],
+  "vurgu": [
+   "aynı maaş",
+   "çekmecede",
+   "altına",
+   "altınları",
+   "sırrı",
+   "2 katına",
+   "enflasyona",
+   "garantisi",
+   "kararın"
+  ],
+  "scenes": [
+   {
+    "line": "s0",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "endiseli",
+      "x": 320,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "sol"
+     },
+     {
+      "id": "b",
+      "k": "erkek",
+      "ifade": "mutlu",
+      "x": 760,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "sag",
+      "olaylar": [
+       {
+        "kelime": "önde",
+        "eylem": "zipla",
+        "deger": 0.6
+       }
+      ]
+     }
+    ],
+    "sayi": {
+     "deger": 22115,
+     "birim": "₺",
+     "kelime": "önde",
+     "y": 520,
+     "not": "yaklaşık fark (örnek)",
+     "say": true
+    },
+    "etiket": "Örnek",
+    "kaynak": "Kaynak: Asgari ücret: Resmî Gazete; gram altın: ons × USDTRY (Yahoo), yıl sonu"
+   },
+   {
+    "line": "s1",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 320,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "yok"
+     },
+     {
+      "id": "b",
+      "k": "erkek",
+      "ifade": "normal",
+      "x": 760,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "yok"
+     }
+    ],
+    "sayi": {
+     "deger": 10,
+     "birim": "%",
+     "kelime": "yüzde",
+     "y": 520,
+     "not": "her ay maaştan, Ocak 2024'ten beri",
+     "say": true
+    },
+    "etiket": "Örnek",
+    "kaynak": "Kaynak: Net asgari ücret: Resmî Gazete (2024-2026)"
+   },
+   {
+    "line": "s2",
+    "etiket": "Örnek",
+    "liste": {
+     "sol": {
+      "baslik": "AYŞE",
+      "kalemler": [
+       "Aynı maaş",
+       "%10 kenara",
+       "Çekmecede",
+       "~Altın"
+      ]
+     },
+     "sag": {
+      "baslik": "MERT",
+      "kalemler": [
+       "Aynı maaş",
+       "%10 kenara",
+       "Yıl sonu altın"
+      ]
+     },
+     "kelime": "Mert",
+     "y": 300
+    },
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 300,
+      "y": 1130,
+      "olcek": 0.55,
+      "giris": "yok"
+     },
+     {
+      "id": "m",
+      "k": "erkek",
+      "ifade": "normal",
+      "x": 780,
+      "y": 1130,
+      "olcek": 0.55,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "altına",
+        "ifade": "mutlu"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "line": "s3",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 760,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "çekmecesinde",
+        "ifade": "saskin"
+       }
+      ]
+     }
+    ],
+    "sayi": {
+     "deger": 77810,
+     "bas": 0,
+     "birim": "₺",
+     "kelime": "çekmecesinde",
+     "y": 520,
+     "not": "nakit tutan, toplam yaklaşık",
+     "say": true
+    },
+    "dekor": [
+     {
+      "d": "deste",
+      "adet": 6,
+      "kelime": "çekmecesinde",
+      "x": 300,
+      "y": 1080,
+      "olcek": 0.309
+     }
+    ],
+    "etiket": "Örnek",
+    "kaynak": "Kaynak: Asgari ücret: Resmî Gazete; örnek hesap"
+   },
+   {
+    "line": "s4",
+    "oyuncular": [
+     {
+      "id": "b",
+      "k": "erkek",
+      "ifade": "mutlu",
+      "x": 320,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "ediyor",
+        "eylem": "zipla",
+        "deger": 0.6
+       }
+      ]
+     },
+     {
+      "id": "c",
+      "k": "altin",
+      "ifade": "mutlu",
+      "x": 760,
+      "y": 1050,
+      "olcek": 0.6,
+      "giris": "zipla"
+     }
+    ],
+    "sayi": {
+     "deger": 99926,
+     "bas": 0,
+     "birim": "₺",
+     "kelime": "altınları",
+     "y": 520,
+     "not": "yaklaşık 16,3 gram, bugünkü fiyatla",
+     "say": true
+    },
+    "etiket": "Örnek",
+    "kaynak": "Kaynak: Gram altın: ons × USDTRY (Yahoo); örnek hesap"
+   },
+   {
+    "line": "s5",
+    "cubuk": {
+     "a": {
+      "etiket": "Nakit",
+      "deger": 77810
+     },
+     "b": {
+      "etiket": "Altın",
+      "deger": 99926
+     },
+     "birim": "₺",
+     "not": "Fark yaklaşık 22.115 TL"
+    },
+    "etiket": "Örnek",
+    "kaynak": "Kaynak: Asgari ücret: Resmî Gazete; gram altın: ons × USDTRY (Yahoo), yıl sonu"
+   },
+   {
+    "line": "s6",
+    "oyuncular": [
+     {
+      "id": "c",
+      "k": "altin",
+      "ifade": "saskin",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "alt",
+      "olaylar": [
+       {
+        "kelime": "katına",
+        "ifade": "mutlu",
+        "eylem": "zipla",
+        "deger": 0.7
+       }
+      ]
+     }
+    ],
+    "sayi": {
+     "deger": 5995,
+     "bas": 2998,
+     "birim": "₺",
+     "kelime": "katına",
+     "y": 520,
+     "not": "gram altın, 2024 sonu → 2025 sonu",
+     "say": true
+    },
+    "etiket": "2025",
+    "kaynak": "Kaynak: Gram altın: ons × USDTRY (Yahoo), yıl sonu"
+   },
+   {
+    "line": "s7",
+    "vs": {
+     "sol": {
+      "k": "altin",
+      "etiket": "Altın",
+      "deger": "%40,5"
+     },
+     "sag": {
+      "k": "enflasyon",
+      "etiket": "Fiyatlar",
+      "deger": "%64,3"
+     }
+    },
+    "etiket": "2022",
+    "kaynak": "Kaynak: Aralık 2022 yıllık TÜFE; gram altın: ons × USDTRY (Yahoo), yıl sonu"
+   },
+   {
+    "line": "s8",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "saskin",
+      "x": 300,
+      "y": 1000,
+      "olcek": 0.55,
+      "giris": "yok"
+     },
+     {
+      "id": "b",
+      "k": "erkek",
+      "ifade": "saskin",
+      "x": 780,
+      "y": 1000,
+      "olcek": 0.55,
+      "giris": "yok"
+     }
+    ],
+    "soru": true
+   },
+   {
+    "line": "s9",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "mutlu",
+      "x": 320,
+      "y": 1000,
+      "olcek": 0.667,
+      "giris": "yok"
+     },
+     {
+      "id": "b",
+      "k": "erkek",
+      "ifade": "mutlu",
+      "x": 760,
+      "y": 1000,
+      "olcek": 0.667,
+      "giris": "yok"
+     }
+    ],
+    "baslik": [
+     "Aynı maaş",
+     "farkı yazan senin kararın"
+    ]
+   }
+  ]
+ },
+ "comment": "Sen hangisisin: birikimini çekmecede mi tutarsın, yoksa her yıl bir adım mı atarsın? Kaynak: Asgari ücret: Resmî Gazete; gram altın: ons × USDTRY (Yahoo), yıl sonu; Aralık yıllık TÜFE. Örnek hesaptır, yatırım tavsiyesi değildir. Kendi hesabını yap: parafomo.com/altin-getiri/",
+ "link": "/altin-getiri/",
+ "format": "para_hikayesi",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "engine": "hikaye",
+ "lead": 0.05,
+ "series": "Para Hikâyeleri",
+ "skin": "iso"
+}

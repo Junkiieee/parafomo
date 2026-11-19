@@ -229,8 +229,13 @@ class Sahne:
             o = v[taraf]
             self.oyuncu({"id": taraf, "k": o["k"], "ifade": o.get("ifade", "normal"), "x": x, "y": 820, "olcek": 0.6,
                          "giris": "sol" if taraf == "sol" else "sag"}, taraf)
+            dg = str(o.get("deger", ""))
+            # uzun değer (ör. "Nakit, çekmecede") 96px Anton'da 400px kutuya sığmıyor, alt satıra taşıp üst üste biniyordu
+            # (2026-11-19 gece hikâyesi bu yüzden izometriğe düştü) → uzunluğa göre küçült
+            boy = "" if len(dg) <= 7 else (' style="font-size:60px;line-height:1.05"' if len(dg) <= 12
+                                           else ' style="font-size:44px;line-height:1.1"')
             self.parca.append(f'<div class="vs-et" style="left:{x - 200}px">{E(o.get("etiket", ""))}'
-                              f'<b class="vz">{E(o.get("deger", ""))}</b></div>')
+                              f'<b class="vz"{boy}>{E(dg)}</b></div>')
         self.parca.append('<div class="vs-rozet" id="s%dvs">VS</div>' % self.i)
         self.js.append(f"tl.fromTo('#s{self.i}vs', {{ scale: 0, rotation: -20 }}, {{ scale: 1, rotation: 0, duration: 0.35, "
                        f"ease: 'back.out(3)' }}, {self.s + 0.3:.3f});")
@@ -281,6 +286,41 @@ class Sahne:
             self.js.append(f"tl.fromTo('#s{self.i}t{v}', {{ scale: 1 }}, {{ scale: 1.04, duration: 0.18, yoyo: true, repeat: 1, "
                            f"transformOrigin: '50% 50%' }}, {tv:.3f});")
 
+    def liste(self, ls):
+        """İki sütun liste (biçim kataloğu #8; 2026-11-19 kapak sayfası: Lord Lütfü "Maaş aynı, fark ne?" IG 2,7M + YT 1,7M —
+        karakter defter kâğıdında iki kişinin gider listesini tutuyor, bazı kalemlerin üstü çizili).
+        {"sol": {"baslik": "AYŞE", "kalemler": ["Kira", "~Taksi", …]}, "sag": {…}, "not": "…", "y": 300}
+        Kalem "~" ile başlarsa yazıldıktan sonra üstü kırmızıyla çizilir. Sütun başına en çok 6 kalem."""
+        t0 = self.s + 0.25
+        y = int(ls.get("y", 300))
+        h = [f'<div class="liste" style="top:{y}px"><div class="lk">']
+        sira = []
+        for taraf in ("sol", "sag"):
+            o = ls.get(taraf) or {}
+            h.append(f'<div class="ls"><div class="lb">{E(o.get("baslik", ""))}</div>')
+            for n, k in enumerate((o.get("kalemler") or [])[:6]):
+                k = str(k)
+                cizik = k.startswith("~")
+                kid = f"s{self.i}l{taraf[1]}{n}"
+                h.append(f'<div class="li" id="{kid}"><span>{E(k.lstrip("~").strip())}'
+                         f'{"<i id=" + kid + "c></i>" if cizik else ""}</span></div>')
+                sira.append((n, taraf, kid, cizik))
+            h.append("</div>")
+        h.append("</div>")
+        if ls.get("not"):
+            h.append(f'<div class="lnot">{_vurgula(ls["not"])}</div>')
+        h.append("</div>")
+        self.parca.append("".join(h))
+        # satır satır, iki sütun yan yana yazılır (önce sol, sonra sağ) — el yazısı hissi
+        sira.sort(key=lambda x: (x[0], x[1] != "sol"))
+        for m, (_, _, kid, cizik) in enumerate(sira):
+            tk = t0 + m * 0.22
+            self.js.append(f"tl.fromTo('#{kid}', {{ opacity: 0, x: -24 }}, {{ opacity: 1, x: 0, duration: 0.2, ease: 'power2.out' }}, {tk:.3f});")
+            if cizik:
+                tc = max(t0 + len(sira) * 0.22 + 0.15, self.at(_t(self.line, ls.get("kelime"), 0.6)))
+                self.js.append(f"tl.fromTo('#{kid}c', {{ scaleX: 0 }}, {{ scaleX: 1, duration: 0.25, ease: 'power2.out' }}, {tc:.3f});")
+                self.js.append(f"tl.to('#{kid} span', {{ color: '#8a949b', duration: 0.2 }}, {tc:.3f});")
+
     def gosterge(self, g):
         bas, son = float(g.get("bas", 0)), float(g["son"])
         t = self.at(_t(self.line, g.get("kelime"), 0.25))
@@ -328,6 +368,8 @@ class Sahne:
             self.gosterge(sc["gosterge"])
         if sc.get("tablo"):
             self.tablo(sc["tablo"])
+        if sc.get("liste"):
+            self.liste(sc["liste"])
         if sc.get("kaynak"):
             self.parca.append(f'<div class="kaynak">{E(sc["kaynak"])}</div>')
         if sc.get("zemin"):
@@ -386,6 +428,16 @@ body { font-family: 'InterP', system-ui, sans-serif; color: #fff; }
 .tablo tr td:first-child { border-radius: 14px 0 0 14px; }
 .tablo tr td:last-child { border-radius: 0 14px 14px 0; }
 .tablo tr.vurgu td { background: #f4c26b; color: #3a2606; }
+.liste { position: absolute; left: 70px; right: 70px; }
+.liste .lk { display: grid; grid-template-columns: 1fr 1fr; background: #fbf7ec; color: #23303a; border-radius: 10px; padding: 26px 0 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.35); background-image: repeating-linear-gradient(#fbf7ec 0 88px, #c9d8e8 88px 90px); }
+.liste .ls { padding: 0 28px; min-width: 0; }
+.liste .ls + .ls { border-left: 3px solid #e58b8b; }
+.liste .lb { font-family: 'AntonP', sans-serif; font-size: 68px; letter-spacing: 1px; text-align: center; height: 90px; line-height: 80px; }
+.liste .li { font-size: 54px; font-weight: 700; height: 90px; line-height: 90px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.liste .li span { position: relative; display: inline-block; }
+.liste .li i { position: absolute; left: -8px; right: -8px; top: 47px; height: 8px; background: #d93a3a; border-radius: 4px; transform-origin: 0 50%; transform: scaleX(0); }
+.liste .lnot { font-size: 34px; color: #e9f1ed; text-align: center; margin-top: 18px; line-height: 1.3; }
 .tablo .tnot { font-size: 30px; color: #b8c7c0; text-align: center; margin-top: 12px; line-height: 1.3; }
 .cubuk { position: absolute; top: 470px; width: 300px; height: 680px; display: flex; flex-direction: column; justify-content: flex-end;
   align-items: center; }

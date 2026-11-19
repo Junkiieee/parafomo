@@ -1,0 +1,64 @@
+{
+  "slug": "trafik-cezasi-yuzde-27-83-zamlaniyor-hesap-bu",
+  "title": "Trafik cezası yüzde 27,83 zamlanıyor, hesap bu",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "2027 yeniden değerleme oranı %27,83. Trafik gibi idari para cezaları bu oranla artıyor; 10 bin liralık ceza 12.783 liraya çıkıyor. MTV ve harçta ise daha düşük oran uygulanabiliyor.\nKaynak/hesap: 10.000 TL x 1,2783 = 12.783 TL · 2027 yeniden değerleme oranı (Ekim Yİ-ÜFE verisiyle hesaplandı); Kabahatler Kanunu m.17/7",
+  "tags": [
+    "trafik cezası",
+    "yeniden değerleme oranı",
+    "2027 zam",
+    "MTV",
+    "ParaFOMO",
+    "bütçe",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "Trafik cezası Ocakta yüzde 27,83 artıyor.",
+      "visual": {
+        "type": "object",
+        "query": "new car driving on open scenic road"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Çünkü idari para cezaları, yeniden değerleme oranıyla artıyor. 10 bin liralık ceza, 12.783 liraya çıkıyor.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama MTV ve harçta Cumhurbaşkanı indirebiliyor; 2026'da yüzde 25,49 yerine yüzde 18,95 uygulandı.",
+      "visual": {
+        "type": "object",
+        "query": "tax form paper"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ocaktan sonra kesilen ceza yeni tutardan yazılır. Yılbaşı bütçene bu kalemi ekle, hız limitinde kal.",
+      "visual": {
+        "type": "object",
+        "query": "wall calendar"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Sence Ocakta cüzdanında en çok hangi kalem şişecek? Abone ol, her gün 60 saniyede tek net rakamı çözelim.",
+      "visual": {
+        "type": "object",
+        "query": "new car driving on open scenic road"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "yüzde 27,83",
+    "calc": "10.000 TL x 1,2783 = 12.783 TL",
+    "source": "2027 yeniden değerleme oranı (Ekim Yİ-ÜFE verisiyle hesaplandı); Kabahatler Kanunu m.17/7"
+  }
+}

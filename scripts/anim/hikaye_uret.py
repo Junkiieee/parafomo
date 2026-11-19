@@ -251,6 +251,20 @@ def paketler():
                              f"Son 1 yıl: dolar %{fmt(dp['1 yıl']['return_tl_pct'], 1)}, gram altın %{fmt(ap_['1 yıl']['return_tl_pct'], 1)} kazandırdı; yıllık enflasyon %{fmt(tufe[sorted(tufe)[-1]]['yillik'], 2)} ({sorted(tufe)[-1]})",
                              "Geçmiş getiri, geleceğin garantisi değildir"],
                     "kaynak": f"Yahoo Finance (USDTRY ve ons×USDTRY, aylık kapanış, {tarih}); TÜİK TÜFE"})
+    # 8b) 10 yıl önce alsaydın (2026-11-19 trend: "10 Yıl Önce 10 Bin Liralık … Alsaydın? (2016 → 2026)" 3,9 bin aboneli
+    #     kanalda 3 günde 101 bin izlenme). Aynı aile → 5 yıllıkla sırayla döner. TÜFE dosyası 2020-11'den başladığı için
+    #     10 yıllık enflasyon satırı YOK (uydurma rakam olmasın).
+    bp = {x["label"]: x for x in j("bist-getiri.json")["periods"]}
+    if "10 yıl" in dp and "10 yıl" in ap_ and "10 yıl" in bp:
+        y10 = int(tarih[:4]) - 10
+        out.append({"id": "dolar-altin-10y", "aile": "dolar-altin", "link": "/altin-dolar-borsa/",
+                    "konu": f"10 yıl önce ({y10}) 10 bin lirayı dolara, altına ya da borsaya koysaydın", "kalip": "vs", "tema": "gece",
+                    "veri": [f"{y10}'da dolara konan 10.000 TL bugün yaklaşık {fmt(10000 * (1 + dp['10 yıl']['return_tl_pct'] / 100))} TL",
+                             f"{y10}'da gram altına konan 10.000 TL bugün yaklaşık {fmt(10000 * (1 + ap_['10 yıl']['return_tl_pct'] / 100))} TL",
+                             f"{y10}'da BIST 100 endeksine konan 10.000 TL bugün yaklaşık {fmt(10000 * (1 + bp['10 yıl']['return_tl_pct'] / 100))} TL (endeks, temettü hariç)",
+                             f"Son 1 yıl: dolar %{fmt(dp['1 yıl']['return_tl_pct'], 1)}, gram altın %{fmt(ap_['1 yıl']['return_tl_pct'], 1)}, BIST 100 %{fmt(bp['1 yıl']['return_tl_pct'], 1)}",
+                             "Geçmiş getiri, geleceğin garantisi değildir; bu bir yatırım tavsiyesi değildir"],
+                    "kaynak": f"Yahoo Finance (USDTRY, ons×USDTRY, XU100; aylık kapanış, {tarih})"})
     # 9) evde bakım maaşı (sitenin en güçlü arama nişi: "2027 evde bakım maaşı ne kadar olacak", 28 günde 1.313 gösterim)
     #    Formül src/data/zam2027.ts + evde-bakim-maasi.astro ile AYNI: 10.000 × memur aylık katsayısı; Ocak'ta memur zammı kadar artar.
     em_ = j("emekli-memur.json")
@@ -328,6 +342,9 @@ SAHNE = f"""Sahne alanları (hepsi isteğe bağlı, sahne başına 1-3 öğe; sa
 - "sayi": {{"deger": sayı, "bas": başlangıç (isteğe bağlı), "birim": "₺|%|gram", "kelime": "sayının geçtiği kelime", "y": 450-650, "not": "kısa açıklama", "say": true}}
 - "vs": {{"sol": {{"k": KARAKTER, "etiket": "…", "deger": "…"}}, "sag": {{…}}}}
 - "cubuk": {{"a": {{"etiket": "…", "deger": sayı}}, "b": {{"etiket": "…", "deger": sayı}}, "birim": "…", "not": "…"}}
+- "liste": {{"sol": {{"baslik": "AYŞE", "kalemler": ["Aynı maaş", "~Altın"]}}, "sag": {{"baslik": "MERT", "kalemler": ["…"]}}, "kelime": "çizginin geldiği kelime", "y": 300}}
+   (iki kişiyi karşılaştıran defter listesi; sütun başına 2-5 kısa kalem, her biri en çok 14 harf; "~" ile başlayan kalemin üstü çizilir;
+   iki karakter isteğe bağlı, liste altında y 1100-1150, olcek 0.55; vs yerine kalem kalem farkı anlatırken kullan)
 - "dekor": [{{"d": DEKOR, "adet": 1-24, "kalan": sayı (isteğe bağlı, kelimede soluklaşır), "kelime": "…", "x": 540, "y": 1000-1150, "olcek": 0.3-2}}]
 - "kaynak": "Kaynak: … (rakamlı sahnelerde ZORUNLU)"
 - "soru": true (yalnız soru satırında: yorum balonu)

@@ -1,0 +1,123 @@
+{
+ "slug": "trafik-cezasi-yuzde-27-83-zamlaniyor-hesap-bu",
+ "title": "Trafik cezası yüzde 27,83 zamlanıyor, hesap bu",
+ "description": "2027 yeniden değerleme oranı %27,83. Trafik gibi idari para cezaları bu oranla artıyor; 10 bin liralık ceza 12.783 liraya çıkıyor. MTV ve harçta ise daha düşük oran uygulanabiliyor.\nKaynak/hesap: 10.000 TL x 1,2783 = 12.783 TL · 2027 yeniden değerleme oranı (Ekim Yİ-ÜFE verisiyle hesaplandı); Kabahatler Kanunu m.17/7",
+ "tags": [
+  "trafik cezası",
+  "yeniden değerleme oranı",
+  "2027 zam",
+  "MTV",
+  "ParaFOMO",
+  "bütçe",
+  "parafomo"
+ ],
+ "format": "shock_number",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "TRAFİK CEZASI ZAMMI",
+  "scenes": [
+   {
+    "type": "big_number",
+    "head": "Ocakta ceza zammı",
+    "data": {
+     "icon": "percent",
+     "value": 27.83,
+     "unit": "%",
+     "suffix": "",
+     "label": "Trafik cezası Ocakta artıyor"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "compare",
+    "head": "Yeniden değerleme etkisi",
+    "data": {
+     "a": {
+      "label": "Bugünkü ceza",
+      "value": 10000
+     },
+     "b": {
+      "label": "Ocaktan sonra",
+      "value": 12783
+     },
+     "unit": "₺",
+     "note": "%27,83 ARTIŞ"
+    },
+    "line": "s1"
+   },
+   {
+    "type": "bars",
+    "head": "MTV ve harçta indirim",
+    "data": {
+     "items": [
+      {
+       "label": "Yasal",
+       "value": 25.49
+      },
+      {
+       "label": "Uygulanan",
+       "value": 18.95
+      }
+     ],
+     "unit": "%",
+     "suffix": "",
+     "hl": 1
+    },
+    "line": "s2"
+   },
+   {
+    "type": "steps",
+    "head": "Yılbaşı bütçe hazırlığı",
+    "data": {
+     "items": [
+      "Yeni tutar geçerli",
+      "Bütçeye kalem ekle",
+      "Hız limitinde kal"
+     ]
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Sence hangisi şişecek?",
+    "data": {
+     "l1": "ABONE OL",
+     "l2": "TEK NET RAKAM",
+     "sub": "HER GÜN 60 SANİYEDE"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Trafik cezası Ocakta yüzde 27,83 artıyor.",
+   "cap": "Trafik cezası Ocakta yüzde 27,83 artıyor."
+  },
+  {
+   "id": "s1",
+   "say": "Çünkü idari para cezaları, yeniden değerleme oranıyla artıyor. 10 bin liralık ceza, 12.783 liraya çıkıyor.",
+   "cap": "Çünkü idari para cezaları, yeniden değerleme oranıyla artıyor. 10 bin liralık ceza, 12.783 liraya çıkıyor."
+  },
+  {
+   "id": "s2",
+   "say": "Ama MTV ve harçta Cumhurbaşkanı indirebiliyor; 2026'da yüzde 25,49 yerine yüzde 18,95 uygulandı.",
+   "cap": "Ama MTV ve harçta Cumhurbaşkanı indirebiliyor; 2026'da yüzde 25,49 yerine yüzde 18,95 uygulandı."
+  },
+  {
+   "id": "s3",
+   "say": "Ocaktan sonra kesilen ceza yeni tutardan yazılır. Yılbaşı bütçene bu kalemi ekle, hız limitinde kal.",
+   "cap": "Ocaktan sonra kesilen ceza yeni tutardan yazılır. Yılbaşı bütçene bu kalemi ekle, hız limitinde kal."
+  },
+  {
+   "id": "s4",
+   "say": "Sence Ocakta cüzdanında en çok hangi kalem şişecek? Abone ol, her gün 60 saniyede tek net rakamı çözelim.",
+   "cap": "Sence Ocakta cüzdanında en çok hangi kalem şişecek? Abone ol, her gün 60 saniyede tek net rakamı çözelim."
+  }
+ ],
+ "skin": "iso",
+ "engine": "news"
+}

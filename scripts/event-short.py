@@ -281,7 +281,48 @@ def candidates(now, st, ignore_state=False):
     return sorted(out, key=lambda e: (e["when"], e.get("prio", 1)))
 
 
+def kart_dene(e, st, now):
+    """TÜİK enflasyon günü: önce LLM'SİZ açıklama kartı (scripts/anim/aciklama_karti.py; biçim kataloğu #9).
+    3 Kasım'da LLM kotası dolunca enflasyon günü videosuz geçmişti. Kart yalnız veri dosyalarından kurulur
+    (enflasyon + Ocak 2027 emekli zammı tablosu). Başarısızsa None döner → eski LLM hattı denenir."""
+    if not e["key"].startswith("tuik:") or st.get(e["key"], {}).get("kart") == "denendi" or "--dry" in sys.argv:
+        return None
+    rec = st.setdefault(e["key"], {})
+    rec["kart"] = "denendi"; save_state(st)
+    print(f"[event-short] {e['key']} → LLM'siz açıklama kartı deneniyor")
+    try:
+        p = subprocess.run([sys.executable, os.path.join(REPO, "scripts", "anim", "aciklama_karti.py")], cwd=REPO,
+                           capture_output=True, text=True, timeout=3000)
+    except subprocess.TimeoutExpired:
+        print("[event-short] kart: zaman aşımı → LLM hattı"); return None
+    slug = next((ln.split()[1] for ln in (p.stdout or "").splitlines() if ln.startswith("RENDER_OK ")), "")
+    if p.returncode != 0 or not slug:
+        print("[event-short] kart başarısız → LLM hattı:", (p.stdout or "")[-300:], (p.stderr or "")[-300:]); return None
+    title = json.load(open(os.path.join(REPO, "public", "social", f"short-{slug}.json"), encoding="utf-8")).get("title", e["topic"])
+    if "#Shorts" not in title:
+        title += " #Shorts"
+    gun = (now + dt.timedelta(hours=3)).date().isoformat()
+    k = subprocess.run([sys.executable, os.path.join(REPO, "scripts", "anim", "kuyruk.py"), "ekle", slug, "--title", title,
+                        "--style", "hikaye", "--format", "para_hikayesi", "--tarih", gun], cwd=REPO, capture_output=True, text=True)
+    print(k.stdout.strip(), k.stderr[-300:])
+    m = re.search(r"eklendi:\s*(\d+)", k.stdout or "")
+    oto = os.path.join("/root/parafomo-data", "onay", "oto.json")
+    if m and os.path.exists(oto) and "onaylandı" in (k.stdout or ""):   # otomatik dönem: bekletmeden yayınla
+        y = subprocess.run([sys.executable, os.path.join(REPO, "scripts", "anim", "kuyruk.py"), "yayinla", "--no", m.group(1)],
+                           cwd=REPO, capture_output=True, text=True, timeout=3600)
+        print(y.stdout[-600:], y.stderr[-300:])
+        rec.update({"status": "done" if "✅" in (y.stdout or "") else "onayda", "slug": slug, "topic": title, "yol": "kart"})
+    else:
+        rec.update({"status": "onayda", "slug": slug, "topic": title, "yol": "kart"})
+    rec.pop("error", None); save_state(st)
+    print(f"[event-short] {e['key']}: açıklama kartı → {slug} ({rec['status']})")
+    return 0
+
+
 def run(e, st, now):
+    k = kart_dene(e, st, now)
+    if k is not None:
+        return k
     facts = " ".join(e["facts"])
     cmd = ["bash", os.path.join(REPO, "scripts", "viral-daily.sh"), "--format", "event_result",
            "--topic", e["topic"], "--facts", facts, "--must", "|".join(e["must"]), "--link", e["link"]]
