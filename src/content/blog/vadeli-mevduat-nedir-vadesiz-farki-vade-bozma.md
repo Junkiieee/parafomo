@@ -121,7 +121,7 @@ Döviz mevduatında stopaj oranı TL'den farklı belirlenir; güncel oranı bank
 
 ## Vadeli mevduat güvenli mi?
 
-Vadeli mevduat düşük riskli bir araçtır çünkü getirisi baştan bellidir ve anapara kaybı söz konusu değildir. Ek olarak, Türkiye'deki bankalarda tutulan TL, döviz ve altın mevduatı **TMSF (Tasarruf Mevduatı Sigorta Fonu)** güvencesindedir: banka batarsa, her bankada kişi başına belirlenen limite kadar olan tutar fon tarafından ödenir. Limit her yıl güncellenir; güncel tutarı TMSF'nin sitesinden kontrol et. Ayrıntılar: [TMSF nedir, mevduat güvencesi nasıl işler?](/blog/tmsf-nedir-mevduat-guvencesi)
+Vadeli mevduat düşük riskli bir araçtır çünkü getirisi baştan bellidir ve anapara sözleşme gereği nominal olarak korunur. Ek olarak, Türkiye'deki bankalarda tutulan TL, döviz ve altın mevduatı **TMSF (Tasarruf Mevduatı Sigorta Fonu)** güvencesindedir: banka batarsa, her bankada kişi başına belirlenen limite kadar olan tutar fon tarafından ödenir. Limit genellikle her yıl başında güncellenir; güncel tutarı TMSF'nin sitesinden kontrol et. Ayrıntılar: [TMSF nedir, mevduat güvencesi nasıl işler?](/blog/tmsf-nedir-mevduat-guvencesi)
 
 Asıl risk başka yerde: **enflasyon**. Net faizin enflasyonun altında kalırsa paranın nominal değeri artarken alım gücü erir. Birikiminin alım gücünün geçmişte ne kadar değiştiğini [enflasyon hesaplama](/enflasyon-hesaplama) aracıyla görebilirsin. Bir sonraki TÜFE verisi 3 Aralık 2026'da, TCMB faiz kararı ise 10 Aralık 2026'da açıklanacak; ikisi de mevduat oranlarını doğrudan etkileyebilir ([TCMB faiz takvimi](/tcmb-faiz-takvimi)).
 
