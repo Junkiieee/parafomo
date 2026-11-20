@@ -1,5 +1,9 @@
 # Günlük Operasyon Günlüğü
 
+## 2026-11-20
+**Yayınlanan yazı:** [Vadeli Mevduat Nedir? Vadesiz Farkı, Faiz ve Vade Bozma](/blog/vadeli-mevduat-nedir-vadesiz-farki-vade-bozma)
+Seçim kaynağı: fırsat motoru ("vadeli mevduat" hacim 80,3, YENI_YAZI; kuyruk+backlog boş, takvimde 1-3 gün içinde 🔴 olay yok, GSC fırsatları mevcut sayfalarca karşılanıyor; 19 Kasım oran yazısından ayrışan açı: hesabın işleyişi + vade bozma + gün bazlı faiz örneği)
+
 ## 2026-11-19
 **Yayınlanan yazı:** [Mevduat Faiz Oranları 2026: Son 1 Yılda Ne Oldu?](/blog/mevduat-faiz-oranlari-2026-son-1-yil)
 Seçim kaynağı: fırsat motoru ("mevduat faiz oranları" hacim 56,5, YENI_YAZI; kuyruk+backlog boş, takvimde 1-3 gün içinde 🔴 olay yok, GSC fırsatları mevcut sayfalarca karşılanıyor; açı: TCMB TP.TRY.MT01-06 52 haftalık seri + stopaj sonrası net + TÜFE'ye göre reel getiri)
