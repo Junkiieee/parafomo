@@ -317,13 +317,14 @@ def uret(a):
     # Kalanlar eski hat (karşılaştırma grubu). q bundan SONRA okunur: hikaye_uret kuyruğa kendisi yazar.
     # hikaye_uret, hikâye şeridinde ≥MAX_BEKLEYEN video varsa (resmî veri yeni gelmediyse) LLM'e gitmeden 0 ile çıkar.
     # Zaman aşımı en kötü duruma göre: 3×600 sn LLM + 2×3600 sn render (eskiden 4200 sn, render ortasında kesiyordu).
-    hikaye_ok = 0
+    hikaye_ok = hikaye_dolu = 0
     if not a.dry and a.adet >= 1 and panel_acik("hikaye_uretim"):
         try:
             r = run([PY, os.path.join(ROOT, "scripts", "anim", "hikaye_uret.py"), "--kuyruk",
                      "--max-bekleyen", str(MAX_BEKLEYEN)], timeout=9000)
             print(r.stdout[-800:], r.stderr[-400:])
             hikaye_ok = 1 if r.returncode == 0 else 0
+            hikaye_dolu = hikaye_ok and "bu gece yeni hikâye yok" in r.stdout
         except subprocess.TimeoutExpired:
             print("[üret] Para hikâyesi zaman aşımı (süreç grubu sonlandırıldı) — eski hatla devam")
     q = load()   # anlık görüntü: konu/stil seçimi için; yazma aşağıda kilit altında taze okumayla
@@ -336,6 +337,10 @@ def uret(a):
     if adet < a.adet - hikaye_ok:
         print(f"[üret] eski şeritte {eski} video yayın bekliyor (tavan {MAX_BEKLEYEN}) → "
               f"{a.adet - hikaye_ok} yerine {adet} video üretilecek")
+    if adet == 0 and not a.dry and (hikaye_dolu or not panel_acik("hikaye_uretim")):
+        # Bilerek üretim yok: agent/health.py bu satırı başarı sayar (yoksa 30 sa sonra yanlış "GECİKTİ" alarmı).
+        # Hikâye hattı çöktüyse bu satır basılmaz, alarm yine çalar.
+        print("[üret] ⏸ kuyruk dolu: bu gece bilerek yeni video yok, yayın kuyruktan sürüyor")
     yayin_gunu = day + dt.timedelta(days=eski)   # konu, videonun YAYINLANACAĞI haftanın takviminden
     for k in range(adet):
         topic, w = pick_topic(q, yayin_gunu)

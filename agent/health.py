@@ -45,7 +45,7 @@ DISK_MAX_PCT = 90
 # çalışan işler eklendi. Zaman damgasız loglarda (bots, bülten, portföy) son başarı = dosyanın mtime'ı.
 PIPELINES = [
     ("Video yayını (YT+IG+FB)", "kuyruk.log", r"\[yayın\] ✅", 30, "kuyruk.sh yayinla 16:00+18:00 UTC"),
-    ("Gece video üretimi", "kuyruk.log", r"\[üret\] ✅|\[hikaye\] ✅ video", 30, "kuyruk.sh uret 00:40 UTC"),
+    ("Gece video üretimi", "kuyruk.log", r"\[üret\] (✅|⏸)|\[hikaye\] ✅ video", 30, "kuyruk.sh uret 00:40 UTC"),
     ("Sabah rutini (Claude)", "sabah.log", r"Sabah rutini bitti \(çıkış 0\)", 26, "agent/sabah.sh 04:37 UTC"),
     ("Blog yazısı", "cron.log", r"\] Tamamlandı$", 80, "Pzt-Cum"),
     ("Fiyat tazeleme", "prices.log", r"push tamam|değişiklik yok", 74, "Pzt-Cmt 08:30-16:30 UTC"),
