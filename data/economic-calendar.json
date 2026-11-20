@@ -1,17 +1,8 @@
 {
-  "updated": "2026-11-19",
+  "updated": "2026-11-20",
   "fetch_ok": true,
   "source": "forexfactory+tuik (yedek)",
   "events": [
-    {
-      "date": "2026-11-16",
-      "time": "5:00pm",
-      "region": "USD",
-      "impact": "High",
-      "title": "Fed Chairman Warsh Speaks",
-      "source": "forexfactory",
-      "hook": ""
-    },
     {
       "date": "2026-11-17",
       "time": "1:30pm",
