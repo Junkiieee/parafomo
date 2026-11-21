@@ -1,17 +1,23 @@
 {
-  "fetched_utc": "2026-11-20T08:46:00Z",
+  "fetched_utc": "2026-11-21T08:45:55Z",
   "hold_sec": 3.0,
-  "n": 1,
-  "median_hold_3s": 1.053,
+  "n": 4,
+  "median_hold_3s": 1.096,
   "avd_gate_pct": 65.0,
-  "median_avg_view_pct": 42.3,
-  "gate_pass_share": 0.0,
-  "gate_pass_n": 0,
-  "gate_breakdown_n": 26,
+  "median_avg_view_pct": 46.0,
+  "gate_pass_share": 0.25,
+  "gate_pass_n": 1,
+  "gate_breakdown_n": 27,
   "gate_by_format": {
+    "single_concept": {
+      "n": 6,
+      "median_avd": 28.1,
+      "gate_pass_n": 0,
+      "gate_pass_share": 0.0
+    },
     "ekonomi_defteri": {
       "n": 4,
-      "median_avd": 43.0,
+      "median_avd": 47.2,
       "gate_pass_n": 1,
       "gate_pass_share": 0.25
     },
@@ -22,25 +28,46 @@
       "gate_pass_share": 0.0
     },
     "shock_number": {
-      "n": 8,
-      "median_avd": 16.8,
-      "gate_pass_n": 1,
-      "gate_pass_share": 0.125
-    },
-    "single_concept": {
-      "n": 5,
-      "median_avd": 0.0,
-      "gate_pass_n": 0,
-      "gate_pass_share": 0.0
+      "n": 7,
+      "median_avd": 34.0,
+      "gate_pass_n": 2,
+      "gate_pass_share": 0.286
     },
     "daily-short": {
       "n": 3,
-      "median_avd": 25.3,
+      "median_avd": 13.4,
       "gate_pass_n": 1,
       "gate_pass_share": 0.333
     }
   },
   "videos": [
+    {
+      "id": "youtube:HDL7NC8Xv-c",
+      "video_id": "HDL7NC8Xv-c",
+      "duration_sec": 36,
+      "hold_3s": 1.0,
+      "rel_perf_3s": 0.063,
+      "avg_view_pct": 28.1,
+      "published_utc": "2026-11-18T18:00:50Z"
+    },
+    {
+      "id": "youtube:8yNdlsYvWcs",
+      "video_id": "8yNdlsYvWcs",
+      "duration_sec": 43,
+      "hold_3s": 1.096,
+      "rel_perf_3s": 0.304,
+      "avg_view_pct": 46.0,
+      "published_utc": "2026-11-18T16:01:46Z"
+    },
+    {
+      "id": "youtube:NluEm2THTpU",
+      "video_id": "NluEm2THTpU",
+      "duration_sec": 49,
+      "hold_3s": 1.546,
+      "rel_perf_3s": 0.569,
+      "avg_view_pct": 90.6,
+      "published_utc": "2026-11-17T18:00:45Z"
+    },
     {
       "id": "youtube:tYCdJoCZ9qI",
       "video_id": "tYCdJoCZ9qI",
