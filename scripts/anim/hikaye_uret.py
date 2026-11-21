@@ -90,6 +90,9 @@ YASAK = ["peki ya", "inanamayacaksınız", "sonuna kadar izle", "bu videoda", "m
          "etiketle", "kaydet", "paylaş", "kesin kazandırır", "hemen al", "hemen sat", "yatırım tavsiyesi"]
 
 
+AYLAR_TR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
+
+
 def yil_de(y):
     """Yıl + bulunma eki, okunuşa göre: 2024'te, 2026'da, 2027'de."""
     return f"{y}'" + {0: "de", 1: "de", 2: "de", 3: "te", 4: "te", 5: "te", 6: "da", 7: "de", 8: "de", 9: "da"}[y % 10]
@@ -316,7 +319,8 @@ def paketler():
                              f"ÖRNEK: iki kişi Ocak 2024'ten beri her ay maaşının %10'unu kenara koyuyor ({toplam_ay} ay)",
                              *satirlar,
                              f"Nakit tutan: toplam yaklaşık {fmt(nakit)} TL",
-                             f"Her yıl sonunda altına çeviren: toplam yaklaşık {fmt(gram, 1)} gram, bugün yaklaşık {fmt(deger)} TL",
+                             f"Her yıl sonunda altına çeviren: toplam yaklaşık {fmt(gram, 1)} gram, {int(tarih[8:10])} {AYLAR_TR[ay_simdi - 1]} fiyatıyla yaklaşık {fmt(deger)} TL "
+                             "(video günler sonra yayınlanır, altın oynar: metinde 'bugün' deme, bu tarihi söyle)",
                              f"Aradaki fark yaklaşık {fmt(deger - nakit)} TL",
                              f"Farkın büyük kısmı 2025'ten: gram altın 2025'te {fmt(gram_yil[2024])} TL'den {fmt(gram_yil[2025])} TL'ye çıktı ({fmt(gram_yil[2025] / gram_yil[2024], 2)} katı)",
                              ters],
