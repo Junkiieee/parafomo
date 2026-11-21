@@ -457,9 +457,15 @@ def render(h):
             "- **Veri tazeliği:** " + ("✅ güncel" if not h.get("stale") else "🔴 " + "; ".join(h["stale"]))]
     d = h.get("dist") or {}
     ev, fb = d.get("event"), d.get("fb")
+    try:
+        ev_eski = bool(ev) and age_h(dt.datetime.fromisoformat(ev.get("ts", ""))) > 72
+    except Exception:
+        ev_eski = False
     ev_txt = "henüz yok" if not ev else (
         f"{ev['key']} → " + ("✅ " + (ev.get("youtube_url") or "yayında") if ev.get("status") == "done"
-                             else f"🔴 {ev.get('status')} (deneme {ev.get('attempts')}) — `logs/event-short.log`"))
+                             else (f"⚪ eski {ev.get('status')} ({str(ev.get('ts', ''))[:10]}; bir sonraki olayda LLM'siz kart denenir)"
+                                   if ev_eski else
+                                   f"🔴 {ev.get('status')} (deneme {ev.get('attempts')}) — `logs/event-short.log`")))
     fb_txt = "⚪ hiç çalışmadı" if not fb else ("✅ paylaşıyor" if fb.get("ok") else
                                                   f"⏸ {str(fb.get('reason') or '')[:90]}")
     out.append(f"- **Dağıtım:** olay sonucu Short'u: {ev_txt} · Facebook: {fb_txt}")
@@ -494,7 +500,7 @@ def problems(h, alarm=False):
         except Exception:
             ev_h = None
         # uyarı yalnız taze başarısızlıkta (≤3 gün); eskisi (ör. 3 Kasım weekly_limit) her sabah mail atmasın
-        if not alarm or (ev_h is not None and ev_h <= 72):
+        if ev_h is None or ev_h <= 72:
             p.append(f"olay Short'u başarısız: {ev['key']} (logs/event-short.log)")
     if alarm:
         return p

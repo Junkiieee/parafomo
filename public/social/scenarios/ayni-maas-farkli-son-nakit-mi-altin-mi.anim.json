@@ -1,7 +1,7 @@
 {
  "slug": "ayni-maas-farkli-son-nakit-mi-altin-mi",
- "title": "Aynı maaş, farklı son: nakit mi altın mı? 22.115 TL fark",
- "description": "Aynı maaşı alan iki iş arkadaşı, Ocak 2024'ten beri her ay maaşının %10'unu kenara koyuyor. Biri parayı çekmecede tutuyor, diğeri her yıl sonu altına çeviriyor. Bugün aralarında yaklaşık 22.115 TL fark var ve farkın büyük kısmı tek bir yıldan geliyor. Bu bir örnek hesaptır, yatırım tavsiyesi değildir; geçmiş, geleceğin garantisi değildir.\nKaynak: Asgari ücret: Resmî Gazete; gram altın: ons × USDTRY (Yahoo), yıl sonu; Aralık yıllık TÜFE\nKendi hesabını yap: parafomo.com/altin-getiri/",
+ "title": "Aynı maaş, farklı son: nakit mi altın mı? 17.696 TL fark",
+ "description": "Aynı maaşı alan iki iş arkadaşı, Ocak 2024'ten beri her ay maaşının %10'unu kenara koyuyor. Biri parayı çekmecede tutuyor, diğeri her yıl sonu altına çeviriyor. Bugün aralarında yaklaşık 17.696 TL fark var ve farkın büyük kısmı tek bir yıldan geliyor. Bu bir örnek hesaptır, yatırım tavsiyesi değildir; geçmiş, geleceğin garantisi değildir.\nKaynak: Asgari ücret: Resmî Gazete; gram altın: ons × USDTRY (Yahoo), yıl sonu; Aralık yıllık TÜFE\nKendi hesabını yap: parafomo.com/altin-getiri/",
  "tags": [
   "aynı maaş",
   "altın mı nakit mi",
@@ -14,8 +14,8 @@
  "lines": [
   {
    "id": "s0",
-   "say": "Aynı maaş, aynı birikim; biri 22.115 lira önde.",
-   "cap": "Aynı maaş, aynı birikim; biri 22.115 TL önde."
+   "say": "Aynı maaş, aynı birikim; biri 17.696 lira önde.",
+   "cap": "Aynı maaş, aynı birikim; biri 17.696 TL önde."
   },
   {
    "id": "s1",
@@ -34,8 +34,8 @@
   },
   {
    "id": "s4",
-   "say": "Mert'in altınları ise bugün yaklaşık 99.926 lira ediyor.",
-   "cap": "Mert'in altınları ise bugün yaklaşık 99.926 TL ediyor."
+   "say": "Mert'in altınları ise 20 Kasım fiyatıyla yaklaşık 95.507 lira ediyor.",
+   "cap": "Mert'in altınları ise 20 Kasım fiyatıyla yaklaşık 95.507 TL ediyor."
   },
   {
    "id": "s5",
@@ -67,7 +67,7 @@
   "tema": "gece",
   "kanca": [
    "AYNI MAAŞ",
-   "22.115 TL FARK"
+   "17.696 TL FARK"
   ],
   "vurgu": [
    "aynı maaş",
@@ -111,7 +111,7 @@
      }
     ],
     "sayi": {
-     "deger": 22115,
+     "deger": 17696,
      "birim": "₺",
      "kelime": "önde",
      "y": 520,
@@ -276,12 +276,12 @@
      }
     ],
     "sayi": {
-     "deger": 99926,
+     "deger": 95507,
      "bas": 0,
      "birim": "₺",
      "kelime": "altınları",
      "y": 520,
-     "not": "yaklaşık 16,3 gram, bugünkü fiyatla",
+     "not": "yaklaşık 16,6 gram, 20 Kasım fiyatıyla",
      "say": true
     },
     "etiket": "Örnek",
@@ -296,10 +296,10 @@
      },
      "b": {
       "etiket": "Altın",
-      "deger": 99926
+      "deger": 95507
      },
      "birim": "₺",
-     "not": "Fark yaklaşık 22.115 TL"
+     "not": "Fark yaklaşık 17.696 TL"
     },
     "etiket": "Örnek",
     "kaynak": "Kaynak: Asgari ücret: Resmî Gazete; gram altın: ons × USDTRY (Yahoo), yıl sonu"

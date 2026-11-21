@@ -67,6 +67,10 @@ const faq = [
     a: `Ocak 2027 memur zammı ${final ? '' : 'yaklaşık '}%${nf(zam * 100)} ise 60.000 TL net maaş ${final ? '' : 'yaklaşık '}${fmt(60000 * (1 + zam))} TL’ye, 50.000 TL maaş ${fmt(50000 * (1 + zam))} TL’ye, 80.000 TL maaş ${fmt(80000 * (1 + zam))} TL’ye çıkar. Vergi dilimi ve ek ödemeler kişiye göre değiştiği için gerçek bordro birkaç yüz lira farklı olabilir.`,
   },
   {
+    q: 'Öğretmen, polis ve hemşire maaşı Ocak 2027’de ne kadar olacak?',
+    a: `Kadrolu öğretmen, polis ve kamu hastanesindeki hemşire maaşları memur maaş katsayılarıyla hesaplanır ve Ocak 2027’de tüm memurlarla aynı oranda, ${final ? '' : 'yaklaşık '}%${nf(zam * 100)} artar. Örneğin 60.000 TL alan bir öğretmen, polis ya da hemşirenin maaşı ${final ? '' : 'yaklaşık '}${fmt(60000 * (1 + zam))} TL’ye çıkar. Ücretli öğretmenlerin ek ders ücreti de aylık katsayıyla hesaplandığı için aynı oranda yükselir. Kişiye göre değişen kadro derecesi, nöbet ve ek ödemeler nedeniyle kendi maaşınızı hesaplayıcıya girin.`,
+  },
+  {
     q: 'En düşük memur emeklisi aylığı Ocak 2027’de ne kadar olacak?',
     a: `En düşük memur emeklisi aylığı şu an ${fmt(MEMUR_EMEKLI_TABAN)} TL. Memur emeklileri memurlarla aynı oranda zam alır; Ocak 2027’de ${final ? '' : 'yaklaşık '}%${nf(zam * 100)} zamla ${final ? '' : 'yaklaşık '}${fmt(MEMUR_EMEKLI_TABAN * (1 + zam))} TL olur.`,
   },
@@ -199,6 +203,15 @@ const breadcrumbs = [
         2027 ilk yarısı için %{TS_H1_2027} zam belirlendi. Temmuz–Aralık 2026 enflasyonu %{TS_H2_2026}'yi aşarsa aşan
         kısım Ocak 2027'de fark olarak eklenir. İki oran toplanmaz, çarpılır: (1 + fark) × (1 + %{TS_H1_2027}) − 1.
         Farkın ay ay nasıl biriktiği ve Kasım–Aralık senaryoları → <a href="/enflasyon-farki-hesaplama/">enflasyon farkı hesaplama</a>.
+      </p>
+      <h2 id="ogretmen-polis-hemsire">Öğretmen, polis ve hemşire maaşı Ocak 2027</h2>
+      <p>
+        Kadrolu öğretmen, polis, kamu hastanesinde çalışan hemşire ve diğer devlet memurlarının maaşı aynı katsayılarla
+        hesaplanır; bu yüzden Ocak 2027'de hepsi aynı oranda, {final ? '' : 'yaklaşık '}<strong>%{nf(zam * 100)}</strong> zam alır.
+        Meslekler arasındaki fark zam oranından değil, kadro derecesi, ek gösterge, nöbet ve tazminat gibi kişiye özel kalemlerden gelir.
+        Örnek: bugün 60.000 ₺ alan bir öğretmen, polis ya da hemşire Ocak 2027'de {final ? '' : 'yaklaşık '}<strong>{fmt(60000 * (1 + zam))} ₺</strong> alır.
+        Ücretli öğretmenlerin ek ders ücreti de aylık katsayıyla hesaplandığı için aynı oranda artar.
+        Kendi tutarınız için maaşınızı yukarıdaki hesaplayıcıya girin.
       </p>
       <h2>Memur emeklileri de aynı zammı alır</h2>
       <p>
