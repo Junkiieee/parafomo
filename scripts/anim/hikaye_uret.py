@@ -213,6 +213,32 @@ def paketler():
                              f"Aynı dönemde fiyatlar {fmt(k, 2)} katı (TÜFE, {son}'e kadar): enflasyona yetişmek için {fmt(100 * k)} TL lazım",
                              ters],
                     "kaynak": "Gram altın: ons × USDTRY (Yahoo); TÜFE: TÜİK"})
+    # 4b) "10 yıl önce 10 bin lira X'e koysaydın?" (YouTube radarı 2026-11-21: "10 Yıl Önce 10 Bin Liralık Nvidia Hissesi
+    #     Alsaydın?" 120 bin izlenme, 4,6 bin aboneli kanal). Yalnız sitenin getiri verisi (Yahoo aylık kapanış, 10 yıllık dönem).
+    #     Repoda 10 yıllık TÜFE serisi yok → enflasyon kıyası YAPILMAZ, rakamlar nominal TL olarak etiketlenir.
+    on_yil = []
+    for dosya, ad, then_k, now_k in (("altin-getiri.json", "gram altın", "gram_tl_then", "gram_tl_now"),
+                                     ("dolar-getiri.json", "dolar", "usdtry_then", "usdtry_now"),
+                                     ("euro-getiri.json", "euro", "eurtry_then", "eurtry_now"),
+                                     ("bist-getiri.json", "BIST 100", "bist_then", "bist_now"),
+                                     ("gumus-getiri.json", "gram gümüş", "gram_tl_then", "gram_tl_now")):
+        try:
+            p = next(x for x in j(dosya)["periods"] if x.get("years") == 10)
+            on_yil.append((ad, p[then_k], p[now_k], p[now_k] / p[then_k]))
+        except (OSError, ValueError, KeyError, StopIteration, ZeroDivisionError):
+            continue
+    if len(on_yil) >= 4:
+        on_yil.sort(key=lambda r: -r[3])
+        out.append({"id": "on-yil-10-bin", "aile": "on-yil", "link": "/altin-getiri/",
+                    "konu": "10 yıl önce 10 bin lirayı altına, dolara, euroya ya da borsaya koysaydın bugün ne olurdu",
+                    "kalip": "vs", "tema": "gece",
+                    "veri": [f"10 yıl önce {ad}: {fmt(a, 2)} → {int(tarih[8:10])} {AYLAR_TR[int(tarih[5:7]) - 1]} {tarih[:4]}: {fmt(b, 2)} "
+                             f"→ 10.000 TL o tarihte yaklaşık {fmt(10000 * k)} TL ({fmt(k, 1)} katı; metinde 'bugün' deme, tarihi söyle)" for ad, a, b, k in on_yil]
+                            + [f"Sıralama: " + " > ".join(r[0] for r in on_yil),
+                               "Rakamlar nominal TL; aynı 10 yılda fiyatlar da çok arttı (enflasyon bu hesapta yok, 'kazanç' deme, 'TL karşılığı' de)",
+                               "ÖRNEK karakter: 10 yıl önce elinde 10 bin lira olan biri bugün hangi seçimin ne ettiğini görüyor",
+                               "Geçmiş, geleceğin garantisi değildir; bu bir örnek hesaptır, yatırım tavsiyesi değildir"],
+                    "kaynak": "Yahoo Finance aylık kapanış (sitedeki getiri sayfaları); nominal TL"})
     # 5) para kıssası (veri yok: ders + örnek hesap)
     # 6) kredi kartı asgari ödeme tuzağı (resmî azami oran + BDDK asgari ödeme; örnek hesap burada yapılır)
     kk = j("kredi-karti-faiz.json")
