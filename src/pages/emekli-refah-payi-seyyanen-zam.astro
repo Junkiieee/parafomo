@@ -5,6 +5,7 @@
 // Enflasyon farkı zam2027.ts'ten (TÜİK TÜFE), taban aylık data/emekli-memur.json'dan gelir.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ZamAlarmi from '../components/ZamAlarmi.astro';
+import KisaVideo from '../components/KisaVideo.astro';
 import em from '../../data/emekli-memur.json';
 import tufe from '../../data/tufe-aylik.json';
 import { PERIOD, byMonth, cumKnown, remaining, ASSUME, sskProj } from '../data/zam2027';
@@ -142,6 +143,15 @@ const updatedLabel = new Date(tufe.updated + 'T12:00:00').toLocaleDateString('tr
     </p>
 
     <ZamAlarmi />
+    <KisaVideo
+      id="8yNdlsYvWcs"
+      baslik="Refah payı mı seyyanen zam mı? Emekliye hangisi daha çok kazandırır"
+      aciklama="Ocak 2027 için konuşulan refah payı ve seyyanen zam senaryolarının örnek hesabı: %5 refah payı ile 2.500 TL seyyanen yaklaşık 44.302 TL aylıkta eşitlenir. Resmî karar yoktur; rakamlar örnektir."
+      tarih="2026-11-18T16:00:00+00:00"
+      sure={43}
+      poster="/video/refah-payi-seyyanen.jpg"
+      not="Video 17 Kasım 2026 verisiyle hazırlanmış örnek hesaptır; resmî karar yok. Güncel hesap bu sayfada."
+    />
     <section class="table-block">
       <h2>Senaryo tablosu: hangi aylık ne olur?</h2>
       <p>Yasal zam %{nf(ZAM * 100)} (tahmini) varsayımıyla Ocak 2027 aylığı. Tutarlar TL, yuvarlanmıştır.</p>

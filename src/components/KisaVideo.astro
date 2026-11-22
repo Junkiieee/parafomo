@@ -1,0 +1,68 @@
+---
+// Sayfaya ilgili kısa videoyu gömer (W9). Tıklanana kadar yalnız yerel kapak
+// görseli yüklenir; tıklayınca çerezsiz YouTube oynatıcısı açılır (hız + gizlilik).
+// VideoObject şeması Google sonuçlarında video küçük resmi için.
+interface Props {
+  id: string;          // YouTube video kimliği
+  baslik: string;      // görünen + şema adı
+  aciklama: string;    // şema açıklaması
+  tarih: string;       // yükleme tarihi, ISO (ör. 2026-11-19T16:00:12+00:00)
+  sure: number;        // saniye
+  poster: string;      // /video/<ad>.jpg (yerel, dikey)
+  not?: string;        // videonun altında kısa not (ör. tahmin tarihi)
+}
+const { id, baslik, aciklama, tarih, sure, poster, not } = Astro.props;
+const site = 'https://parafomo.com';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: baslik,
+  description: aciklama,
+  thumbnailUrl: [site + poster, `https://i.ytimg.com/vi/${id}/hqdefault.jpg`],
+  uploadDate: tarih,
+  duration: `PT${Math.round(sure)}S`,
+  contentUrl: `https://www.youtube.com/shorts/${id}`,
+  embedUrl: `https://www.youtube-nocookie.com/embed/${id}`,
+  publisher: { '@type': 'Organization', name: 'Parafomo', url: site },
+};
+---
+<section class="kv" aria-label="Kısa video">
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <div class="kv-row">
+    <button class="kv-play" type="button" data-yt={id} aria-label={`Videoyu oynat: ${baslik}`}>
+      <img src={poster} alt={baslik} width="360" height="640" loading="lazy" decoding="async" />
+      <span class="kv-ico" aria-hidden="true">▶</span>
+    </button>
+    <div class="kv-txt">
+      <p class="kv-eyebrow">60 saniyede · video</p>
+      <h2 class="kv-h">{baslik}</h2>
+      {not && <p class="kv-not">{not}</p>}
+      <a class="kv-yt" href={`https://www.youtube.com/shorts/${id}`} rel="noopener" target="_blank">YouTube'da izle</a>
+    </div>
+  </div>
+</section>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.kv-play').forEach((b) => {
+    b.addEventListener('click', () => {
+      const f = document.createElement('iframe');
+      f.src = `https://www.youtube-nocookie.com/embed/${b.dataset.yt}?autoplay=1&rel=0`;
+      f.title = b.getAttribute('aria-label') || 'Video';
+      f.allow = 'autoplay; encrypted-media; picture-in-picture';
+      f.allowFullscreen = true;
+      f.className = 'kv-frame';
+      b.replaceWith(f);
+    }, { once: true });
+  });
+</script>
+<style>
+  .kv { margin: 1.5rem 0; padding: 1rem; border: 1px solid var(--border, #e5e7eb); border-radius: 12px; }
+  .kv-row { display: flex; gap: 1rem; align-items: center; }
+  .kv-play, :global(.kv-frame) { position: relative; flex: 0 0 auto; width: 160px; aspect-ratio: 9 / 16; border: 0; padding: 0; border-radius: 10px; overflow: hidden; cursor: pointer; background: #111; }
+  .kv-play img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .kv-ico { position: absolute; inset: 0; margin: auto; width: 48px; height: 48px; border-radius: 50%; background: rgba(0,0,0,.65); color: #fff; display: grid; place-items: center; font-size: 1.2rem; }
+  .kv-eyebrow { margin: 0; font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; opacity: .7; }
+  .kv-h { margin: .25rem 0 .5rem; font-size: 1.05rem; line-height: 1.3; }
+  .kv-not { margin: 0 0 .5rem; font-size: .85rem; opacity: .8; }
+  .kv-yt { font-size: .9rem; }
+  @media (max-width: 480px) { .kv-play, :global(.kv-frame) { width: 128px; } .kv-h { font-size: .95rem; } }
+</style>

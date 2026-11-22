@@ -4,6 +4,7 @@ import ZamAlarmi from '../components/ZamAlarmi.astro';
 import Newsletter from '../components/Newsletter.astro';
 import { ZAM_SEZONU } from '../data/zam-sezonu';
 import ZamTutarTablosu from '../components/ZamTutarTablosu.astro';
+import KisaVideo from '../components/KisaVideo.astro';
 import em from '../../data/emekli-memur.json';
 import tufe from '../../data/tufe-aylik.json';
 import { releaseOf as tuikRelease } from '../data/tuik';
@@ -249,6 +250,18 @@ const updatedLabel = new Date(tufe.updated + 'T12:00:00').toLocaleDateString('tr
       hedef="Ocak 2027"
       not={`En düşük aylık satırı yalnız zam oranı uygulanırsa geçerlidir; yeni taban tutarı yasayla belirlenir. Aylığı ${fmt(TABAN)} TL’nin altında kalan emekliye fark tamamlanır.`}
     />
+
+    {!final && (
+      <KisaVideo
+        id="dgO9Yb10SHo"
+        baslik="Emekli maaşı Ocak 2027 tablosu: SSK, Bağ-Kur ve memur emeklisi (tahmin)"
+        aciklama="Ocak 2027 emekli zammı tahmini: bugünkü aylığa göre SSK, Bağ-Kur ve memur emeklisinin Ocak 2027 aylığı. Tahmin TÜİK TÜFE ve 8. Dönem Toplu Sözleşmeye dayanır; kesin oran Aralık enflasyonu açıklanınca belli olur."
+        tarih="2026-11-19T16:00:12+00:00"
+        sure={34}
+        poster="/video/emekli-maasi-ocak-2027.jpg"
+        not="Video 19 Kasım 2026 verisiyle hazırlanmış tahmindir; güncel oran bu sayfadaki hesaplayıcıdadır."
+      />
+    )}
 
     {sskJul != null && (
       <section class="table-block">
