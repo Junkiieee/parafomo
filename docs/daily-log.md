@@ -1,5 +1,9 @@
 # Günlük Operasyon Günlüğü
 
+## 2026-11-23
+**Yayınlanan yazı:** [ABD PCE ve GDP 25 Kasım: Ekim Verisi, Fed Aralık, Altın](/blog/pce-gdp-ekim-2026-fed-aralik-dolar-altin)
+Seçim kaynağı: takvim (🔴 ABD Core PCE + Prelim GDP 25 Kasım 16:30 TSİ; kuyruk boş; Eylül PCE/Q3 öncü GDP rakamları BEA resmî bültenlerinden, konsensüs uydurulmadı)
+
 ## 2026-11-20
 **Yayınlanan yazı:** [Vadeli Mevduat Nedir? Vadesiz Farkı, Faiz ve Vade Bozma](/blog/vadeli-mevduat-nedir-vadesiz-farki-vade-bozma)
 Seçim kaynağı: fırsat motoru ("vadeli mevduat" hacim 80,3, YENI_YAZI; kuyruk+backlog boş, takvimde 1-3 gün içinde 🔴 olay yok, GSC fırsatları mevcut sayfalarca karşılanıyor; 19 Kasım oran yazısından ayrışan açı: hesabın işleyişi + vade bozma + gün bazlı faiz örneği)
