@@ -148,8 +148,8 @@
       "k": "zarf",
       "ifade": "endiseli",
       "x": 540,
-      "y": 980,
-      "olcek": 0.867,
+      "y": 1080,
+      "olcek": 0.4,
       "giris": "yok",
       "olaylar": [
        {
@@ -161,9 +161,15 @@
       ]
      }
     ],
-    "baslik": [
-     "Otomatik zam yok"
-    ]
+    "sohbet": {
+     "baslik": "AİLE",
+     "uyeler": "Annem, Abim, sen",
+     "y": 260,
+     "mesajlar": [
+      {"kim": "Abim", "metin": "Ocakta maaşın kendiliğinden artar mı?", "saat": "21:04", "kelime": "rakam"},
+      {"ben": true, "metin": "Hayır, *otomatik zam yok*", "saat": "21:05", "kelime": "artmıyor"}
+     ]
+    }
    },
    {
     "line": "s3",

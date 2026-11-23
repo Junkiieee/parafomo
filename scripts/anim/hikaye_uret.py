@@ -388,6 +388,9 @@ SAHNE = f"""Sahne alanları (hepsi isteğe bağlı, sahne başına 1-3 öğe; sa
 - "liste": {{"sol": {{"baslik": "AYŞE", "kalemler": ["Aynı maaş", "~Altın"]}}, "sag": {{"baslik": "MERT", "kalemler": ["…"]}}, "kelime": "çizginin geldiği kelime", "y": 300}}
    (iki kişiyi karşılaştıran defter listesi; sütun başına 2-5 kısa kalem, her biri en çok 14 harf; "~" ile başlayan kalemin üstü çizilir;
    iki karakter isteğe bağlı, liste altında y 1100-1150, olcek 0.55; vs yerine kalem kalem farkı anlatırken kullan)
+- "sohbet": {{"baslik": "EV ARKADAŞLARI", "uyeler": "Elif, Mert, sen", "y": 260, "mesajlar": [{{"kim": "Mert", "metin": "Kira *26.246 TL* oldu", "saat": "21:04", "kelime": "kira"}}, {{"ben": true, "metin": "Maaş?", "saat": "21:05"}}]}}
+   (grup mesajı kartı; 2-4 kısa mesaj, her biri en çok 28 harf; "ben": true = izleyicinin kendisi, sağda; "kelime" o kelimede düşer;
+   rakam mesajda da VERİ PAKETİNDEN; marka adı yok; karakter koyacaksan kartın altında y 1150, olcek 0.5; hikâyeyi bir sohbetle açarken ya da tartışmayı gösterirken kullan, videoda en çok 1 sahne)
 - "dekor": [{{"d": DEKOR, "adet": 1-24, "kalan": sayı (isteğe bağlı, kelimede soluklaşır), "kelime": "…", "x": 540, "y": 1000-1150, "olcek": 0.3-2}}]
 - "kaynak": "Kaynak: … (rakamlı sahnelerde ZORUNLU)"
 - "soru": true (yalnız soru satırında: yorum balonu)
@@ -646,10 +649,24 @@ def yerlesim_duzelt(spec):
             for k in ("oyuncular", "dekor", "sayi", "soru"):
                 sc.pop(k, None)
             continue
+        kart_alt = 0
+        if sc.get("sohbet"):   # sohbet kartı (katalog #7, 2026-11-23) üstte; altında en çok 2 küçük karakter
+            for k in ("sayi", "vs", "cubuk", "dekor", "soru", "baslik", "tablo", "liste"):
+                sc.pop(k, None)
+            so = sc["sohbet"]
+            so["mesajlar"] = (so.get("mesajlar") or [])[:4]
+            if i == 0 and d.get("kanca"):   # açılışta kanca kartı üstte: sohbet altına
+                so["y"] = 560
+                so["mesajlar"] = so["mesajlar"][:3]
+            else:
+                so["y"] = min(max(int(so.get("y", 260)), 230), 320)
+            kart_alt = so["y"] + 130 + (50 if so.get("gun") else 0) + 150 * len(so["mesajlar"]) + 30
+            sc["oyuncular"] = (sc.get("oyuncular") or [])[:2] if 1300 - kart_alt >= 200 else []
         if sc.get("sayi"):
             sc["sayi"]["y"] = min(max(int(sc["sayi"].get("y", 470)), 460), 520)
         soru = bool(sc.get("soru"))
         ust = 470 if (sc.get("baslik") or (i == 0 and d.get("kanca"))) else 250
+        ust = max(ust, kart_alt)
         if sc.get("sayi"):
             ust = max(ust, 870)
         oy = (sc.get("oyuncular") or [])[:3]

@@ -124,7 +124,8 @@ const D_Y = Y ? testEt(Y.net, D.gelir, D_N, Y.yil) : null;
 let title: string, h1: string, description: string;
 const sinirMetin = Y ? `${Y.yil} gelir sınırı kişi başı ${fmt0(SINIR_Y)} TL` : `Gelir sınırı kişi başı ${fmt0(SINIR)} TL`;
 if (OCAK_HEDEF && !KESIN_ZAM) {
-  title = `Evde Bakım Maaşı ${HEDEF_YIL} Ne Kadar Olacak? Tahmini ${fmt0(TUTAR_HEDEF)} TL`;
+  // 2026-11-23: GSC "ocak ayında evde bakım maaşı ne kadar olacak" 77 gösterim, sıra 10 → başlıkta dönem adı (Ocak/Temmuz) geçsin
+  title = `Evde Bakım Maaşı ${HEDEF_AD}: Ne Kadar Olacak? Tahmini ${fmt0(TUTAR_HEDEF)} TL`;
   h1 = `Evde Bakım Maaşı ${HEDEF_YIL}: Ne Kadar Olacak?`;
   description = `Evde bakım maaşı ${donemAd(DONEM)} döneminde ${fmt0(TUTAR)} TL; ${HEDEF_AD} tahmini ${fmt0(TUTAR_HEDEF)} TL. ${sinirMetin}: uygunluk testi, şartlar, başvuru.`;
 } else if (OCAK_HEDEF) {

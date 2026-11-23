@@ -321,6 +321,37 @@ class Sahne:
                 self.js.append(f"tl.fromTo('#{kid}c', {{ scaleX: 0 }}, {{ scaleX: 1, duration: 0.25, ease: 'power2.out' }}, {tc:.3f});")
                 self.js.append(f"tl.to('#{kid} span', {{ color: '#8a949b', duration: 0.2 }}, {tc:.3f});")
 
+    def sohbet(self, so):
+        """Sohbet balonu / grup mesajı kartı (biçim kataloğu #7; 23 Kas kapak sayfası #1: @lordlutfu "Sizin grubun şoförü kim?"
+        grup mesajı kartı IG 2,7M). Genel sohbet arayüzü — marka logosu/rengi yok.
+        {"baslik": "EV ARKADAŞLARI", "uyeler": "Elif, Mert, sen", "y": 260,
+         "mesajlar": [{"kim": "Mert", "metin": "Kira 26.246 TL oldu", "saat": "21:04", "ben": false, "kelime": "kira"}, …]}
+        En çok 4 mesaj. "ben": true → sağda yeşil balon (izleyicinin kendisi). Mesaj "kelime" anında düşer; yoksa sırayla."""
+        y = int(so.get("y", 260))
+        msj = (so.get("mesajlar") or [])[:4]
+        sid = f"s{self.i}so"
+        h = [f'<div class="sohbet" id="{sid}" style="top:{y}px"><div class="sh"><span class="geri">‹</span>'
+             f'<span class="av">{E((so.get("baslik") or "G")[:1])}</span><div><b>{E(so.get("baslik", ""))}</b>'
+             f'<small>{E(so.get("uyeler", ""))}</small></div></div><div class="sg">']
+        if so.get("gun"):
+            h.append(f'<div class="sgun">{E(so["gun"])}</div>')
+        t_prev = self.s + 0.2
+        for n, m in enumerate(msj):
+            mid = f"{sid}m{n}"
+            ben = bool(m.get("ben"))
+            h.append(f'<div class="sm{" ben" if ben else ""}" id="{mid}">'
+                     + ("" if ben or not m.get("kim") else f'<em>{E(m["kim"])}</em>')
+                     + f'<span>{_vurgula(str(m.get("metin", "")))}</span>'
+                     f'<i>{E(m.get("saat", ""))}{" ✓✓" if ben else ""}</i></div>')
+            t = self.at(_t(self.line, m.get("kelime"), 0.1)) if m.get("kelime") else t_prev + (0.0 if n == 0 else 0.7)
+            t = max(t, t_prev + (0.0 if n == 0 else 0.35))
+            self.js.append(f"tl.fromTo('#{mid}', {{ opacity: 0, y: 30, scale: 0.92 }}, {{ opacity: 1, y: 0, scale: 1, duration: 0.25, "
+                           f"ease: 'back.out(2)', transformOrigin: '{'100%' if ben else '0%'} 100%' }}, {t:.3f});")
+            t_prev = t
+        h.append("</div></div>")
+        self.parca.append("".join(h))
+        self.js.append(f"tl.fromTo('#{sid}', {{ opacity: 0, y: 40 }}, {{ opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' }}, {self.s + 0.05:.3f});")
+
     def gosterge(self, g):
         bas, son = float(g.get("bas", 0)), float(g["son"])
         t = self.at(_t(self.line, g.get("kelime"), 0.25))
@@ -370,6 +401,8 @@ class Sahne:
             self.tablo(sc["tablo"])
         if sc.get("liste"):
             self.liste(sc["liste"])
+        if sc.get("sohbet"):
+            self.sohbet(sc["sohbet"])
         if sc.get("kaynak"):
             self.parca.append(f'<div class="kaynak">{E(sc["kaynak"])}</div>')
         if sc.get("zemin"):
@@ -438,6 +471,23 @@ body { font-family: 'InterP', system-ui, sans-serif; color: #fff; }
 .liste .li span { position: relative; display: inline-block; }
 .liste .li i { position: absolute; left: -8px; right: -8px; top: 47px; height: 8px; background: #d93a3a; border-radius: 4px; transform-origin: 0 50%; transform: scaleX(0); }
 .liste .lnot { font-size: 34px; color: #e9f1ed; text-align: center; margin-top: 18px; line-height: 1.3; }
+.sohbet { position: absolute; left: 90px; right: 90px; background: #e9e4dc; border-radius: 34px; overflow: hidden;
+  box-shadow: 0 22px 50px rgba(0,0,0,.4); color: #1d2a30; }
+.sohbet .sh { display: flex; align-items: center; gap: 18px; background: #f7f5f1; padding: 22px 28px; border-bottom: 2px solid #d6d0c6; }
+.sohbet .sh b { display: block; font-size: 44px; font-weight: 800; letter-spacing: -0.5px; }
+.sohbet .sh small { display: block; font-size: 28px; color: #6b7479; font-weight: 600; }
+.sohbet .geri { font-size: 64px; color: #3b8f6e; line-height: 1; }
+.sohbet .av { width: 74px; height: 74px; border-radius: 50%; background: #3b8f6e; color: #fff; font-weight: 800; font-size: 40px;
+  display: flex; align-items: center; justify-content: center; }
+.sohbet .sg { padding: 22px 24px 28px; display: flex; flex-direction: column; gap: 16px; }
+.sohbet .sgun { align-self: center; background: #d4ccbf; color: #4a5358; font-size: 26px; font-weight: 700; padding: 6px 18px; border-radius: 12px; }
+.sohbet .sm { align-self: flex-start; max-width: 82%; background: #fff; border-radius: 6px 28px 28px 28px; padding: 14px 24px 12px;
+  box-shadow: 0 2px 0 rgba(0,0,0,.08); }
+.sohbet .sm.ben { align-self: flex-end; background: #cdeec4; border-radius: 28px 6px 28px 28px; }
+.sohbet .sm em { display: block; font-style: normal; font-size: 28px; font-weight: 800; color: #c0612b; }
+.sohbet .sm span { display: block; font-size: 46px; font-weight: 600; line-height: 1.2; }
+.sohbet .sm span .vz { color: #c47a00; }
+.sohbet .sm i { display: block; text-align: right; font-style: normal; font-size: 24px; color: #7d878c; margin-top: 2px; }
 .tablo .tnot { font-size: 30px; color: #b8c7c0; text-align: center; margin-top: 12px; line-height: 1.3; }
 .cubuk { position: absolute; top: 470px; width: 300px; height: 680px; display: flex; flex-direction: column; justify-content: flex-end;
   align-items: center; }
