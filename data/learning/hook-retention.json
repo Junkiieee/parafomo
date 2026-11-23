@@ -1,37 +1,37 @@
 {
-  "fetched_utc": "2026-11-22T08:46:10Z",
+  "fetched_utc": "2026-11-23T08:46:09Z",
   "hold_sec": 3.0,
   "n": 6,
-  "median_hold_3s": 1.086,
+  "median_hold_3s": 1.084,
   "avd_gate_pct": 65.0,
-  "median_avg_view_pct": 45.8,
+  "median_avg_view_pct": 45.9,
   "gate_pass_share": 0.333,
   "gate_pass_n": 2,
-  "gate_breakdown_n": 27,
+  "gate_breakdown_n": 29,
   "gate_by_format": {
+    "ekonomi_defteri": {
+      "n": 5,
+      "median_avd": 43.0,
+      "gate_pass_n": 1,
+      "gate_pass_share": 0.2
+    },
+    "para_hikayesi": {
+      "n": 4,
+      "median_avd": 54.9,
+      "gate_pass_n": 1,
+      "gate_pass_share": 0.25
+    },
     "myth": {
       "n": 5,
       "median_avd": 29.6,
       "gate_pass_n": 0,
       "gate_pass_share": 0.0
     },
-    "para_hikayesi": {
-      "n": 3,
-      "median_avd": 54.9,
-      "gate_pass_n": 1,
-      "gate_pass_share": 0.333
-    },
     "single_concept": {
       "n": 5,
       "median_avd": 28.1,
-      "gate_pass_n": 0,
-      "gate_pass_share": 0.0
-    },
-    "ekonomi_defteri": {
-      "n": 4,
-      "median_avd": 47.2,
       "gate_pass_n": 1,
-      "gate_pass_share": 0.25
+      "gate_pass_share": 0.2
     },
     "shock_number": {
       "n": 7,
@@ -41,7 +41,7 @@
     },
     "daily-short": {
       "n": 3,
-      "median_avd": 48.2,
+      "median_avd": 64.0,
       "gate_pass_n": 1,
       "gate_pass_share": 0.333
     }
@@ -60,9 +60,9 @@
       "id": "youtube:dgO9Yb10SHo",
       "video_id": "dgO9Yb10SHo",
       "duration_sec": 34,
-      "hold_3s": 1.253,
-      "rel_perf_3s": 0.575,
-      "avg_view_pct": 87.2,
+      "hold_3s": 1.259,
+      "rel_perf_3s": 0.584,
+      "avg_view_pct": 87.8,
       "published_utc": "2026-11-19T16:01:38Z"
     },
     {
@@ -78,9 +78,9 @@
       "id": "youtube:8yNdlsYvWcs",
       "video_id": "8yNdlsYvWcs",
       "duration_sec": 43,
-      "hold_3s": 1.086,
-      "rel_perf_3s": 0.278,
-      "avg_view_pct": 45.8,
+      "hold_3s": 1.084,
+      "rel_perf_3s": 0.271,
+      "avg_view_pct": 45.9,
       "published_utc": "2026-11-18T16:01:46Z"
     },
     {
