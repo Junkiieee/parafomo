@@ -51,7 +51,7 @@ BEA'nın 29 Ekim 2026'da açıkladığı Eylül verisi ([BEA](https://www.bea.go
 
 Bu tablodan üç sonuç çıkıyor:
 
-1. **Enflasyon hedefin çok üzerinde.** Çekirdek PCE yıllık %3,1 ile Fed'in %2 hedefinin bir puan üstünde.
+1. **Enflasyon hedefin çok üzerinde.** Çekirdek PCE yıllık %3,1 ile Fed'in %2 hedefinin bir puandan fazla üstünde.
 2. **Manşet enflasyon hızlanıyor.** Aylık %0,5'lik artış, gıda ve enerjinin manşet rakamı yukarı ittiğini gösteriyor (14 Ekim'deki [ABD Eylül CPI verisi](/blog/abd-ekim-2026-cpi-verisi-fed-dolar-altin) de aynı tabloyu çizmişti).
 3. **Hane halkının alım gücü zayıflıyor.** Reel harcanabilir gelir Eylül'de %0,3 geriledi, tasarruf oranı %3,8'e indi. Tüketim sürse de fiyat artışları cebi zorluyor.
 
