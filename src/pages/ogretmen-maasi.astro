@@ -1,0 +1,267 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ZamAlarmi from '../components/ZamAlarmi.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { ZAM_SEZONU } from '../data/zam-sezonu';
+import em from '../../data/emekli-memur.json';
+// Ocak zammı /memur-zammi-hesaplama ile ORTAK modülde (aynı TÜFE, aynı toplu sözleşme) — burada tekrar hesaplanmaz.
+import { memurProj, remaining, cumKnown, knownKeys, PERIOD, TS_H2_2026, TS_H1_2027 } from '../data/zam2027';
+
+// Öğretmen maaşı (2026-11-24, Öğretmenler Günü; talep: Google otomatik tamamlama "öğretmen maaşı 2027", "uzman öğretmen
+// maaşı 2027", "baş öğretmen maaşı 2027", "ücretli öğretmen maaşı 2027", "öğretmen maaşı ocak 2027" — sitede karşılığı yoktu).
+// Rakam yalnız ≥2 kaynakta aynı olan 1/4 kadrolu öğretmen tutarı (data/emekli-memur.json → ogretmen14). Uzman öğretmen ve
+// başöğretmen için kaynaklar zam öncesi tahminden öteye geçmediği için sabit rakam YAZILMAZ; hesaplayıcı kişinin kendi
+// bordrosuyla çalışır (kariyer tazminatı da aylık katsayıyla hesaplandığı için aynı oranda artar).
+const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const fmt = (n: number) => new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 }).format(Math.round(n));
+const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const ayAd = (k: string) => AYLAR[+k.slice(5) - 1];
+const ayYil = (k: string) => `${ayAd(k)} ${k.slice(0, 4)}`;
+
+const O = em.ogretmen14;
+const K = em.memurKatsayi;
+const ZAM = memurProj.zam;
+const final = remaining === 0;
+const zEt = final ? 'kesinleşen' : 'tahmini';
+const yak = final ? '' : 'yaklaşık ';
+const OCAK = O.tutar * (1 + ZAM);
+const kalan = PERIOD.slice(knownKeys.length).map(ayAd);
+const kalanAd = kalan.length <= 2 ? kalan.join(' ve ') : `${kalan[0]}–${kalan[kalan.length - 1]}`;
+const aciklananAd = knownKeys.length ? `${ayAd(PERIOD[0])}–${ayAd(knownKeys[knownKeys.length - 1])} ${PERIOD[0].slice(0, 4)}` : '';
+// Örnek tablo: bordroların sık görülen aralıkları — "örnek" etiketli, unvan rakamı değildir.
+const ORNEK = [70000, 80000, 90000, 100000, 110000];
+
+const faq = [
+  {
+    q: 'Öğretmen maaşı Ocak 2027’de ne kadar olacak?',
+    a: `Öğretmen maaşları memur maaş katsayılarıyla hesaplanır ve Ocak 2027’de tüm memurlarla aynı oranda artar: ${zEt} zam %${nf(ZAM * 100)}. Temmuz 2026’da ${fmt(O.tutar)} TL alan 1/4 dereceli kadrolu öğretmenin maaşı Ocak 2027’de ${yak}${fmt(OCAK)} TL olur.${final ? '' : ' Kesin oran Aralık enflasyonu açıklanınca (Ocak 2027 başı) belli olur.'}`,
+  },
+  {
+    q: 'Uzman öğretmen ve başöğretmen maaşı 2027’de ne kadar olacak?',
+    a: `Uzman öğretmen ve başöğretmenin kariyer basamağı tazminatı da aylık katsayıyla hesaplandığı için maaşın tamamı aynı oranda, ${yak}%${nf(ZAM * 100)} artar. Bugünkü net maaşınızı bu sayfadaki hesaplayıcıya girerek Ocak 2027 tutarınızı görebilirsiniz; derece, kademe ve aile yardımı kişiden kişiye değiştiği için tek bir rakam herkese uymaz.`,
+  },
+  {
+    q: 'Ücretli öğretmen ve ek ders ücreti 2027’de ne kadar artar?',
+    a: `Ek ders ücreti, ek ders göstergesi ile memur aylık katsayısının çarpımıdır. Aylık katsayı Ocak 2027’de memur zammı oranında artacağı için ücretli öğretmenin saat ücreti ve kadrolu öğretmenin ek ders ücreti de ${yak}%${nf(ZAM * 100)} yükselir.`,
+  },
+  {
+    q: 'Öğretmen maaş zammı nasıl hesaplanır?',
+    a: `İki parçadan oluşur: toplu sözleşme zammı ve enflasyon farkı. 8. Dönem Toplu Sözleşme’de 2026’nın ikinci yarısı için %${TS_H2_2026}, 2027’nin ilk yarısı için %${TS_H1_2027} zam var. Temmuz–Aralık 2026 enflasyonu %${TS_H2_2026}’yi aşarsa aşan kısım Ocak’ta enflasyon farkı olarak eklenir. İki oran toplanmaz, çarpılır: Ocak zammı = (1 + fark) × ${nf(1 + TS_H1_2027 / 100)} − 1.`,
+  },
+  {
+    q: 'Öğretmen maaşı Temmuz 2026’da ne kadar oldu?',
+    a: `Temmuz 2026 zammıyla (%${nf(K.zamOrani)}) 1/4 dereceli kadrolu öğretmenin net maaşı ${fmt(O.onceki)} TL’den ${fmt(O.tutar)} TL’ye çıktı (eş için aile yardımı dahil, ek ders hariç).`,
+  },
+  {
+    q: 'Emekli öğretmen maaşı Ocak 2027’de ne kadar artar?',
+    a: `Emekli öğretmenler memur emeklisidir (4/c) ve çalışan öğretmenlerle aynı oranda, ${yak}%${nf(ZAM * 100)} zam alır. Kendi aylığınız için memur zammı hesaplayıcısını kullanabilirsiniz.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', url: '/' },
+  { name: 'Memur Zammı Hesaplama', url: '/memur-zammi-hesaplama/' },
+  { name: 'Öğretmen Maaşı 2027', url: '/ogretmen-maasi/' },
+];
+---
+
+<BaseLayout
+  title={`Öğretmen Maaşı 2027: Ocak'ta Ne Kadar Olacak? ${final ? '' : 'Tahmini '}${fmt(OCAK)} TL`}
+  description={`Öğretmen maaşı Ocak 2027'de %${nf(ZAM * 100)} ${final ? 'zamla' : 'tahmini zamla'} ne kadar olacak? 1/4 öğretmen ${fmt(O.tutar)} TL → ${yak}${fmt(OCAK)} TL. Uzman öğretmen, başöğretmen ve ücretli öğretmen için hesapla.`}
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="calc-wrap">
+    <header class="calc-head">
+      <p class="eyebrow">Memur · Ocak 2027</p>
+      <h1>Öğretmen Maaşı 2027: Ocak'ta Ne Kadar Olacak?</h1>
+      <p class="lede">
+        Öğretmen maaşları memur katsayılarıyla belirlenir; Ocak 2027 için <strong>{zEt} zam %{nf(ZAM * 100)}</strong>.
+        Temmuz 2026'da {fmt(O.tutar)} TL alan 1/4 dereceli öğretmen Ocak'ta {yak}<strong>{fmt(OCAK)} TL</strong> alır.
+      </p>
+    </header>
+
+    <div class="stats">
+      <div class="stat"><span class="k">Ocak 2027 zammı ({final ? 'kesin' : 'tahmin'})</span><span class="v">%{nf(ZAM * 100)}</span><span class="s">toplu sözleşme %{TS_H1_2027} + enflasyon farkı</span></div>
+      <div class="stat"><span class="k">1/4 öğretmen, {ayYil(O.baslangic)}</span><span class="v">₺{fmt(O.tutar)}</span><span class="s">net, eş için aile yardımı dahil</span></div>
+      <div class="stat"><span class="k">1/4 öğretmen, Ocak 2027 ({final ? 'kesin' : 'tahmin'})</span><span class="v">₺{fmt(OCAK)}</span><span class="s">aylık +₺{fmt(OCAK - O.tutar)}</span></div>
+    </div>
+
+    <section class="table-block">
+      <h2>Öğretmen maaşımı hesapla</h2>
+      <div class="calc-grid">
+        <form class="calc-inputs" autocomplete="off">
+          <label>
+            <span>Unvan</span>
+            <select id="in-unvan">
+              <option value="ogretmen">Öğretmen (kadrolu / sözleşmeli)</option>
+              <option value="uzman">Uzman öğretmen</option>
+              <option value="bas">Başöğretmen</option>
+              <option value="emekli">Emekli öğretmen</option>
+            </select>
+          </label>
+          <label>
+            <span>Bugünkü net maaşınız (₺)</span>
+            <input type="number" id="in-maas" value={O.tutar} min="0" step="100" inputmode="numeric" />
+          </label>
+          <label>
+            <span>Aylık ek ders ücreti, varsa (₺)</span>
+            <input type="number" id="in-ek" value="0" min="0" step="100" inputmode="numeric" />
+          </label>
+          <p class="hint">Net maaşınızı e-Devlet → "Maaş Bordrosu" (KBS) ekranında görebilirsiniz. Tüm unvanlar aynı oranda zam alır; fark yalnız bugünkü tutardadır.</p>
+        </form>
+        <div class="calc-results" aria-live="polite">
+          <div class="result-main">
+            <span class="result-label">Ocak 2027 {final ? 'yeni' : 'tahmini'} maaş</span>
+            <span class="result-value" id="out-new">—</span>
+          </div>
+          <div class="result-split">
+            <div class="split-item"><span class="split-label">Zam ({final ? 'kesin' : 'tahmin'})</span><span class="split-val" id="out-zam">—</span></div>
+            <div class="split-item"><span class="split-label">Aylık artış</span><span class="split-val" id="out-fark">—</span></div>
+            <div class="split-item"><span class="split-label">Ek ders dahil toplam</span><span class="split-val" id="out-top">—</span></div>
+          </div>
+          <p class="result-note" id="out-note"></p>
+        </div>
+      </div>
+      <p class="table-note">
+        {final ? 'Zam oranı' : 'Zam tahmini'} <a href="/memur-zammi-hesaplama/">memur zammı hesaplama</a> sayfasıyla aynı veriden gelir.
+        {!final && <>{aciklananAd ? `${aciklananAd} enflasyonu açıklandı (%${nf(cumKnown * 100)}); ` : ''}{kalanAd} için son üç ayın ortalaması varsayıldı. Kesin oran Ocak 2027 başında belli olur.</>}
+        Ocak'ta vergi dilimi başa döndüğü için ilk aylarda net maaş bu hesaptan biraz yüksek olabilir.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Öğretmen maaşı: Ocak 2026 → Temmuz 2026 → Ocak 2027</h2>
+      <table class="rate-table">
+        <thead><tr><th>Dönem</th><th>1/4 kadrolu öğretmen (net)</th><th>Artış</th></tr></thead>
+        <tbody>
+          <tr><td>Ocak 2026</td><td>₺{fmt(O.onceki)}</td><td>—</td></tr>
+          <tr><td>Temmuz 2026</td><td>₺{fmt(O.tutar)}</td><td>memur zammı %{nf(K.zamOrani)}</td></tr>
+          <tr class={final ? '' : 'tahmin'}><td>Ocak 2027 ({final ? 'kesin oranla' : 'tahmin'})</td><td>{final ? '' : '≈ '}₺{fmt(OCAK)}</td><td>{final ? '' : '≈ '}%{nf(ZAM * 100)}</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">
+        1/4 derece, eş için aile yardımı dahil net tutar; çocuk yardımı, ek ders ve vergi dilimi kişiye göre değişir.
+        Kaynak: Temmuz 2026 öğretmen maaş tabloları (İstiklal, Politikam; aynı tutar), HMB Temmuz 2026 memur katsayıları.
+      </p>
+    </section>
+
+    <section class="table-block">
+      <h2>Örnek: bugünkü maaşa göre Ocak 2027</h2>
+      <table class="rate-table">
+        <thead><tr><th>Bugünkü net maaş (örnek)</th><th>Ocak 2027 ({final ? 'kesin' : 'tahmin'})</th><th>Aylık artış</th></tr></thead>
+        <tbody>
+          {ORNEK.map((m) => (<tr><td>₺{fmt(m)}</td><td>{final ? '' : '≈ '}₺{fmt(m * (1 + ZAM))}</td><td>+₺{fmt(m * ZAM)}</td></tr>))}
+        </tbody>
+      </table>
+      <p class="table-note">Tutarlar örnektir; uzman öğretmen ve başöğretmen bordroları genelde üst satırlara denk gelir. Kendi maaşınız için yukarıdaki hesaplayıcıyı kullanın.</p>
+    </section>
+
+    <ZamAlarmi />
+
+    <section class="prose-block">
+      <h2>Öğretmen maaşına Ocak zammı nasıl yapılır?</h2>
+      <p>
+        Kadrolu ve sözleşmeli öğretmenler devlet memurudur; maaşları aylık, taban aylık ve yan ödeme katsayılarıyla
+        hesaplanır. Hazine ve Maliye Bakanlığı her Ocak ve Temmuz'da bu katsayıları zam oranında artırır. Ocak 2027 zammı
+        toplu sözleşmedeki <strong>%{TS_H1_2027}</strong> ile Temmuz–Aralık 2026 enflasyonunun %{TS_H2_2026}'yi aşan
+        kısmının (enflasyon farkı) çarpımıdır.
+        {final
+          ? ` Altı ayın enflasyonu açıklandı: Ocak 2027 zammı %${nf(ZAM * 100)} olarak kesinleşti.`
+          : <> {aciklananAd ? `${aciklananAd} enflasyonu %${nf(cumKnown * 100)} oldu; ` : ''}{kalanAd} için son üç ayın ortalaması varsayıldı. Bu yüzden oran şimdilik tahmindir.</>}
+      </p>
+      <h2>Uzman öğretmen, başöğretmen ve ücretli öğretmen</h2>
+      <p>
+        Uzman öğretmen ve başöğretmenlik kariyer basamağı tazminatı, ek ders ücreti ve ücretli öğretmenin saat ücreti de
+        memur aylık katsayısına bağlıdır. Bu yüzden Ocak 2027'de hepsi aynı oranda artar. Ücretli öğretmenler toplu
+        sözleşme kapsamında maaş almaz; ek ders saat ücretiyle çalışır ve katsayı artınca saat ücretleri yükselir.
+      </p>
+      <p class="cta-line">
+        Tüm memurlar için → <a href="/memur-zammi-hesaplama/">memur zammı hesaplama</a>.
+        Emekli öğretmenler → <a href="/memur-zammi-hesaplama/">memur emeklisi zammı</a> ve <a href="/en-dusuk-emekli-maasi/">en düşük emekli maaşı</a>.
+        Brüt-net farkı ve vergi dilimi → <a href="/vergi-dilimi-hesaplama/">vergi dilimi hesaplama</a>.
+      </p>
+    </section>
+
+    <section class="faq-block">
+      <h2>Sıkça Sorulan Sorular</h2>
+      {faq.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
+    </section>
+
+    {!ZAM_SEZONU && <Newsletter />}
+  </div>
+
+  <script is:inline define:vars={{ Z: ZAM, FINAL: final }}>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const nf0 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 0 });
+      const p2 = (x) => (x * 100).toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const NOT = {
+        ogretmen: 'Kadrolu ve sözleşmeli öğretmen aynı katsayılarla, aynı oranda zam alır.',
+        uzman: 'Uzman öğretmenlik tazminatı da aylık katsayıyla hesaplanır; maaşın tamamı aynı oranda artar.',
+        bas: 'Başöğretmenlik tazminatı da aylık katsayıyla hesaplanır; maaşın tamamı aynı oranda artar.',
+        emekli: 'Emekli öğretmen memur emeklisidir; çalışan öğretmenle aynı oranda zam alır.',
+      };
+      function update() {
+        const m = Math.max(0, +$('in-maas').value || 0);
+        const ek = Math.max(0, +$('in-ek').value || 0);
+        const yeni = m * (1 + Z);
+        $('out-new').textContent = (FINAL ? '' : '≈ ') + '₺' + nf0.format(Math.round(yeni));
+        $('out-zam').textContent = '%' + p2(Z);
+        $('out-fark').textContent = '+₺' + nf0.format(Math.round(yeni - m));
+        $('out-top').textContent = '₺' + nf0.format(Math.round((m + ek) * (1 + Z)));
+        $('out-note').textContent = NOT[$('in-unvan').value] || '';
+      }
+      ['in-unvan', 'in-maas', 'in-ek'].forEach((id) => $(id).addEventListener('input', update));
+      update();
+    })();
+  </script>
+
+  <style>
+    .calc-wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+    .calc-head { text-align: center; margin-bottom: 1.6rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--brand-deep); margin: 0 0 0.4rem; }
+    .calc-head h1 { font-size: var(--step-4); margin: 0 0 0.6rem; line-height: 1.1; }
+    .lede { color: var(--text-soft); font-size: var(--step-1); max-width: 640px; margin: 0 auto; }
+    .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; }
+    .stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; display: flex; flex-direction: column; gap: 0.2rem; box-shadow: var(--shadow-soft); }
+    .stat .k { font-size: 0.8rem; color: var(--text-soft); font-weight: 600; }
+    .stat .v { font-family: var(--font-serif); font-size: 1.9rem; font-weight: 600; color: var(--brand-ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .stat .s { font-size: 0.78rem; color: var(--text-muted); }
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem; box-shadow: var(--shadow-soft); }
+    .calc-inputs { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; }
+    .calc-inputs label { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-inputs span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); }
+    .calc-inputs input, .calc-inputs select { font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: var(--text); padding: 0.6rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); width: 100%; max-width: 100%; }
+    .calc-inputs input:focus, .calc-inputs select:focus { outline: none; border-color: var(--brand-2); box-shadow: 0 0 0 3px var(--brand-soft); }
+    .hint { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.45; }
+    .calc-results { display: flex; flex-direction: column; justify-content: center; gap: 1rem; background: var(--brand-tint); border-radius: var(--radius); padding: 1.2rem; }
+    .result-main { display: flex; flex-direction: column; gap: 0.2rem; }
+    .result-label { font-size: 0.85rem; color: var(--text-soft); font-weight: 600; }
+    .result-value { font-family: var(--font-serif); font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem); font-weight: 600; color: var(--brand-ink); line-height: 1.05; }
+    .result-split { display: flex; flex-direction: column; gap: 0.5rem; }
+    .split-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.5rem; }
+    .split-label { font-size: 0.85rem; color: var(--text-soft); }
+    .split-val { font-weight: 700; font-size: 0.98rem; }
+    .result-note { font-size: 0.8rem; color: var(--brand-ink); margin: 0; font-weight: 500; }
+    .table-block { margin-top: 2.5rem; overflow-x: auto; }
+    .table-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .rate-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+    .rate-table th, .rate-table td { text-align: left; padding: 0.5rem 0.5rem; border-bottom: 1px solid var(--border); }
+    .rate-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+    .rate-table tr.tahmin td { color: var(--text-muted); font-style: italic; }
+    .table-note { font-size: 0.82rem; color: var(--text-muted); margin: 0.8rem 0 0; line-height: 1.5; }
+    .prose-block, .faq-block { margin-top: 2.5rem; }
+    .prose-block h2, .faq-block h2 { font-size: var(--step-2); margin: 0 0 0.8rem; }
+    .prose-block p { color: var(--text-soft); line-height: 1.7; }
+    .prose-block h2:not(:first-child) { margin-top: 1.8rem; }
+    .cta-line { background: var(--surface); padding: 0.9rem 1.1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-2); }
+    .faq-block details { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-block summary { font-weight: 600; cursor: pointer; color: var(--text); list-style: none; }
+    .faq-block summary::-webkit-details-marker { display: none; }
+    .faq-block summary::after { content: '+'; float: right; color: var(--brand-2); font-weight: 700; }
+    .faq-block details[open] summary::after { content: '−'; }
+    .faq-block details p { color: var(--text-soft); line-height: 1.7; margin: 0.7rem 0 0; }
+    @media (max-width: 680px) { .stats, .calc-grid { grid-template-columns: 1fr; } }
+  </style>
+</BaseLayout>

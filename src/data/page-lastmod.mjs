@@ -69,6 +69,7 @@ export const DATA_PAGES = {
   'enflasyon-farki-hesaplama': ['tufe-aylik.json', 'emekli-memur.json'],
   'emekli-refah-payi-seyyanen-zam': ['tufe-aylik.json', 'emekli-memur.json'],
   'dul-ve-yetim-maasi': ['tufe-aylik.json', 'emekli-memur.json'],
+  'ogretmen-maasi': ['tufe-aylik.json', 'emekli-memur.json'],
   'bedelli-askerlik-ucreti': ['tufe-aylik.json', 'emekli-memur.json'],
   'zam-alarmi': TUFE,
   'bayram-ikramiyesi': ['emekli-memur.json'],

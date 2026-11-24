@@ -10,6 +10,13 @@
   "zamOrani": 13.52,
   "kaynak": "HMB 5 Sıra No'lu Mali ve Sosyal Haklar Genelgesi (Temmuz 2026) — Yeni Şafak (A. Ünlü), alomaliye.com, kazimceylan.av.tr aynı katsayılar; zam = katsayı oranı (1,575512 / 1,387871 = 1,1352)"
  },
+ "ogretmen14": {
+  "tutar": 83254,
+  "onceki": 73368,
+  "baslangic": "2026-07",
+  "not": "Kadrolu öğretmen, 1. derece 4. kademe, net, eş için aile yardımı dahil (haber tablolarının varsayımı; çocuk yardımı, ek ders ve vergi dilimi bordroya göre değişir)",
+  "kaynak": "İstiklal (Temmuz 2026 öğretmen maaş tablosu) ve Politikam (10.07.2026) aynı 83.254 TL; Ocak 2026 73.368 TL ayrıca Uzmanpara/Milliyet (03.07.2026) ile aynı. Doğrulama 2026-11-24."
+ },
  "enDusukMemurEmeklisi": {
   "tutar": 31527,
   "onceki": 27772,
