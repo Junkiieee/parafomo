@@ -325,6 +325,20 @@ def paketler():
                          "Kesin tutar Ocak başında memur katsayısı ilan edilince belli olur",
                          "Şartlar ve gelir sınırı sitedeki evde bakım maaşı sayfasında"],
                 "kaynak": "2828 s. Kanun ek md. 7; HMB memur katsayı genelgeleri; TÜİK TÜFE; 2027 1. yarı toplu sözleşme %5"})
+    # 9b) öğretmen maaşı Ocak 2027 (2026-11-24: autocomplete'te 8 varyant, sitede yeni /ogretmen-maasi/; trendde "Ocak zammıyla
+    #     maaşınız kaç lira olacak" 391 B izlenme, bizim en iyi videomuz da Ocak 2027 tablosu). Tutar data/emekli-memur.json ogretmen14.
+    og = em_.get("ogretmen14")
+    if og:
+        out.append({"id": "meslek-ogretmen", "aile": "meslek", "link": "/ogretmen-maasi/",
+                    "konu": "Öğretmen maaşı Ocak 2027'de ne kadar olacak", "kalip": "merak", "tema": "alacakaranlik",
+                    "veri": [f"1/4 dereceli kadrolu öğretmen net maaşı: Ocak 2026 {fmt(og['onceki'])} TL → Temmuz 2026 {fmt(og['tutar'])} TL (eş için aile yardımı dahil)",
+                             f"Ocak 2027 tahmini: yaklaşık {fmt(og['tutar'] * (1 + memur_zam))} TL (memur zammı tahmini %{fmt(memur_zam * 100, 2)})",
+                             f"Memur zammı tahmini = %5 toplu sözleşme × enflasyon farkı %{fmt(fark * 100, 2)} (6 aylık enflasyon tahmini %{fmt(proj * 100, 2)}, %7'yi aşan kısım)",
+                             "Uzman öğretmen, başöğretmen, ek ders ve emekli öğretmen de aynı oranda artar (hepsi memur aylık katsayısına bağlı)",
+                             bekleyen_satir,
+                             "Kesin oran Aralık enflasyonu açıklanınca (Ocak başı) belli olur; kişinin tutarı derece, kademe ve aile yardımına göre değişir",
+                             "Kendi maaşını sitedeki öğretmen maaşı hesaplayıcısına girebilirsin"],
+                    "kaynak": "Temmuz 2026 öğretmen maaş tabloları (İstiklal, Politikam); HMB memur katsayıları; TÜİK TÜFE; 2027 1. yarı toplu sözleşme %5"})
     # 10) "Aynı maaşı alıyoruz…" (Kaan'ın bulduğu tür, 1,46 M izlenme): aynı asgari ücret, biri nakit biri altın. ÖRNEK hesap,
     #     veriden: 2024'ten başlar (2023'te Temmuz ara zammı yıllık veride yok); her yılın birikimi o yılın sonunda altına çevrilir.
     yil_simdi, ay_simdi = int(tarih[:4]), int(tarih[5:7])
@@ -615,7 +629,7 @@ def calistir(cmd, timeout):
     return subprocess.CompletedProcess(cmd, pr.returncode, out, err)
 
 
-ONCELIK = ["altin-enflasyon", "sosyal", "ayni-maas", "kredi-karti", "kira", "dolar-altin", "kissa", "asgari-altin", "yuzluk", "emekli"]
+ONCELIK = ["meslek", "altin-enflasyon", "sosyal", "ayni-maas", "kredi-karti", "kira", "dolar-altin", "kissa", "asgari-altin", "yuzluk", "emekli"]
 
 
 def sec(P, gecmis):
