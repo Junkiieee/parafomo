@@ -2,10 +2,10 @@
 # OTOMATİK ÜRETİLİR — bu dosyayı doğrudan düzenleme (bir sonraki veri güncellemesinde ezilmez, uyarı verir).
 # Şablon: content-templates/blog/2027-zamlari-yeniden-degerleme-orani-rehberi.md.j2
 # Üret: python3 scripts/live-posts.py  (veri: data/yeniden-degerleme.json)
-title: "2027 Zam Listesi: MTV, Harç, Pasaport ve Cezalar Ne Kadar Olacak?"
-description: "2027'de neler zamlanıyor? MTV, pasaport, ehliyet, IMEI, trafik cezası, emlak vergisi: kesinleşen %27,83 yeniden değerleme oranıyla kalem kalem tutarlar."
+title: "2027 Zam Listesi: MTV, Harç, Pasaport ve Cezalar Kalem Kalem"
+description: "2027 yeniden değerleme oranı VUK tebliğiyle %27,83 ilan edildi. MTV, pasaport-ehliyet harcı, IMEI, trafik cezası ve emlak vergisinin 2027 tutarları."
 pubDate: 2026-10-13
-updatedDate: 2026-11-19
+updatedDate: 2026-11-24
 category: "Kişisel Finans"
 tags: ["2027 zamları", "yeniden değerleme oranı 2027", "MTV 2027", "harçlar", "trafik cezaları", "emlak vergisi 2027", "vergi dilimleri"]
 readingTime: 8
@@ -14,7 +14,7 @@ faq:
   - q: "2027'de neler zamlanacak?"
     a: "1 Ocak 2027'de motorlu taşıtlar vergisi (MTV), pasaport-ehliyet-kimlik harçları, IMEI kayıt ücreti, damga vergisi, noter ve tapu gibi maktu harçlar yeniden değerleme oranı kadar artar. Emlak vergisi değeri de 7566 sayılı Kanun'la artık oranın tamamı kadar yükselir. Trafik cezalarında artış beklenir ama 2026'daki 7574 sayılı Kanun nedeniyle belirsizlik var; gelir vergisi dilimleri de bu orana göre güncellenir."
   - q: "2027 yeniden değerleme oranı kaç oldu?"
-    a: "TÜİK'in 3 Kasım'da açıkladığı Ekim 2026 Yİ-ÜFE verisiyle 2027 yeniden değerleme oranı %27,83 olarak kesinleşti. Oran, Kasım sonunda Hazine ve Maliye Bakanlığı'nın VUK tebliğiyle Resmî Gazete'de ilan edilir ve 1 Ocak 2027'de uygulanır."
+    a: "2027 yeniden değerleme oranı VUK tebliğiyle %27,83 olarak Resmî Gazete'de ilan edildi ve 1 Ocak 2027'de uygulanır."
   - q: "Cumhurbaşkanı 2027 zam oranını düşürebilir mi?"
     a: "Evet. MTV, harçlar ve damga vergisi gibi kalemlerde Cumhurbaşkanı'nın oranı farklı belirleme yetkisi var. 2026'da oran %25,49 ilan edilmesine rağmen bu kalemlerde %18,95 artış uygulandı. 2027 için böyle bir karar çıkarsa Aralık'ta Resmî Gazete'de yayımlanır."
   - q: "2027 MTV ne kadar olacak?"
@@ -42,11 +42,11 @@ shorts_visuals:
   - "object|wallet"
 ---
 
-> **Güncelleme (3 Kasım 2026):** TÜİK Ekim 2026 Yİ-ÜFE verisini açıkladı; **2027 yeniden değerleme oranı %27,83** olarak kesinleşti. Aşağıdaki tutarlar bu orana göre güncellendi; canlı hesap için [yeniden değerleme oranı](/yeniden-degerleme-orani/) sayfasına bak.
+> **Güncelleme (3 Kasım 2026):** TÜİK Ekim 2026 Yİ-ÜFE verisini açıkladı; **2027 yeniden değerleme oranı %27,83** olarak kesinleşti ve VUK tebliğiyle Resmî Gazete’de ilan edildi. Aşağıdaki tutarlar bu orana göre güncellendi; canlı hesap için [yeniden değerleme oranı](/yeniden-degerleme-orani/) sayfasına bak.
 
 **2027 zamları** denince akla ilk gelen maaşlar olsa da, 1 Ocak'ta cebinden çıkan paranın büyük kısmını belirleyen tek bir sayı var: [**2027 yeniden değerleme oranı %27,83**](/yeniden-degerleme-orani/). MTV'den pasaport harcına, trafik cezasından IMEI kayıt ücretine kadar onlarca kalem, her yıl bu oran kadar otomatik artar. Bu rehberde 2027'de neyin, ne kadar zamlanacağını gerçek 2026 tutarları ve güncel Yİ-ÜFE verisiyle hesaplıyoruz.
 
-Kısa cevap: **2027 yeniden değerleme oranı %27,83**. Oran, 3 Kasım'da açıklanan Ekim 2026 Yİ-ÜFE verisiyle hesaben kesinleşti; Hazine ve Maliye Bakanlığı tebliği Kasım sonunda Resmî Gazete'de yayımlanacak. Aşağıdaki tutarlar bu orana göre hesaplandı.
+Kısa cevap: **2027 yeniden değerleme oranı %27,83** — VUK tebliğiyle Resmî Gazete'de ilan edildi ve 1 Ocak 2027'de uygulanır. Aşağıdaki tutarlar bu oranlarla hesaplandı.
 
 ## Yeniden değerleme oranı nedir, neden 2027 zamlarını belirler?
 
@@ -78,7 +78,7 @@ Ekim 2026 itibarıyla 12 aylık ortalamalara göre artış **%27,83** — 2027 y
 ### Takvim: Oran ne zaman kesinleşir?
 
 - **3 Kasım 2026:** TÜİK Ekim Yİ-ÜFE'yi açıklar → oran hesaben kesinleşir. ✅
-- **Kasım sonu:** VUK tebliği Resmî Gazete'de yayımlanır.
+- **Kasım sonu:** VUK tebliği Resmî Gazete'de yayımlanır. ✅
 - **Aralık:** MTV, harç gibi kalemlerde Cumhurbaşkanı'nın farklı oran kararları çıkabilir.
 - **1 Ocak 2027:** Yeni tutarlar yürürlüğe girer.
 
@@ -151,7 +151,7 @@ Emekli ve memur zammının güncel tahmini için [emekli zammı hesaplama](/emek
 | 2024 | %58,46 | — |
 | 2025 | %43,93 | — |
 | 2026 | %25,49 | MTV, harç, damga vergisinde %18,95 uygulandı |
-| 2027 | %27,83 | Ekim 2026 Yİ-ÜFE ile kesinleşti; tebliğ Kasım sonu |
+| 2027 | %27,83 | VUK tebliğiyle ilan edildi |
 
 Tablo iki şeyi gösteriyor: Üretici enflasyonu yavaşladıkça oran düşüyor; ancak 2027 oranı, 2026'daki %25,49'un biraz üzerinde. Yani üretici fiyatlarındaki dezenflasyon 2026’da duraksadı. Bu dönemde birikimlerini nasıl koruyacağın konusunda [enflasyondan nasıl korunur](/blog/enflasyondan-nasil-korunur) rehberimiz yol gösterebilir.
 
@@ -166,7 +166,7 @@ Tablo iki şeyi gösteriyor: Üretici enflasyonu yavaşladıkça oran düşüyor
 ## Özet
 
 - **2027 yeniden değerleme oranı %27,83**; MTV, harçlar, trafik cezaları, damga vergisi ve emlak vergisi bu orana bağlı.
-- Oran 3 Kasım'da Ekim Yİ-ÜFE ile kesinleşti (tebliğ Kasım sonunda); tutarlar 1 Ocak 2027'de yürürlüğe girer.
+- Oran 3 Kasım'da Ekim Yİ-ÜFE ile kesinleşti ve VUK tebliğiyle ilan edildi; tutarlar 1 Ocak 2027'de yürürlüğe girer.
 - Cumhurbaşkanı bazı kalemlerde daha düşük oran uygulatabilir — 2026'da %25,49 yerine %18,95 uygulanmıştı.
 - Emlak vergisi değeri 7566 sayılı Kanun'la artık oranın **tamamı** kadar artıyor (eskiden yarısı).
 - Emekli zammı, memur zammı ve asgari ücret bu orana bağlı değil; kendi takvimleri var.

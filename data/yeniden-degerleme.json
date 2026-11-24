@@ -2,7 +2,7 @@
  "_aciklama": "Yİ-ÜFE yıllık/aylık % değişim + yeniden değerleme oranı. hedefYil = oranın uygulanacağı yıl; onikiAyOrt = sonAy itibarıyla 12 aylık ortalamalara göre değişim (sonAy en fazla hedefYil-1 Ekim'idir; Ekim'de kesinleşir). veriSonAy = elimizdeki en yeni Yİ-ÜFE ayı. tebligOrani: VUK tebliğindeki resmî oran; uygulananOrani: MTV/harç/damga vergisinde Cumhurbaşkanı kararıyla uygulanan oran (ikisi de elle/ajan doğrulamasıyla yazılır).",
  "_kaynak": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Enflasyon+Verileri/Uretici+Fiyatlari",
  "_kaynakEvds": "https://evds3.tcmb.gov.tr/igmevdsms-dis/ TP.TUFE1YI.T1",
- "updated": "2026-11-03",
+ "updated": "2026-11-24",
  "hesapKaynagi": "evds-endeks",
  "sonAy": "2026-10",
  "veriSonAy": "2026-10",
@@ -11,7 +11,8 @@
  "onikiAyOrt": 27.83,
  "hedefYil": 2027,
  "ekimVerisiGeldi": true,
- "tebligOrani": null,
+ "tebligOrani": 27.83,
+ "tebligKaynak": "VUK Genel Tebliği Sıra No 599, RG 24.11.2026 sayı 33440 https://www.resmigazete.gov.tr/eskiler/2026/11/20261124-3.htm (EVDS Yİ-ÜFE 12 ay ort. hesabıyla birebir)",
  "uygulananOrani": null,
  "sonrakiAciklama": "2026-12-03",
  "gecmis": [
