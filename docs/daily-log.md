@@ -1,5 +1,9 @@
 # Günlük Operasyon Günlüğü
 
+## 2026-11-24
+**Yayınlanan yazı:** [Doğum ve Askerlik Borçlanması Ücreti 2026: Ne Kadar?](/blog/dogum-askerlik-borclanmasi-ucreti-2026-2027)
+Seçim kaynağı: fırsat motoru / zam sezonu (kuyruk+backlog boş, takvimde 1-3 gün içinde yazılmamış 🔴 yok (PCE dün yazıldı), GSC fırsatları ve motorun YENI_YAZI adayları mevcut/301'li sayfalarca karşılanıyor; sitede karşılığı olmayan "ne kadar?" niyeti, tutar Ocak 2027 asgari ücretine bağlı; askerlik %45 oranı 7566 sayılı Kanun ile doğrulandı)
+
 ## 2026-11-23
 **Yayınlanan yazı:** [ABD PCE ve GDP 25 Kasım: Ekim Verisi, Fed Aralık, Altın](/blog/pce-gdp-ekim-2026-fed-aralik-dolar-altin)
 Seçim kaynağı: takvim (🔴 ABD Core PCE + Prelim GDP 25 Kasım 16:30 TSİ; kuyruk boş; Eylül PCE/Q3 öncü GDP rakamları BEA resmî bültenlerinden, konsensüs uydurulmadı)
