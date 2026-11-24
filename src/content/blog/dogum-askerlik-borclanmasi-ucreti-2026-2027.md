@@ -30,7 +30,7 @@ faq:
 - **Doğum borçlanması:** Sigortalı kadının doğumdan sonraki 2 yıl içinde çalışmadığı süreler; çocuk başına en fazla 720 gün, en fazla 3 doğum (toplam 2.160 gün).
 - **Askerlik borçlanması:** Er ya da yedek subay olarak yapılan askerlik süresi.
 
-Borçlanılan günler **prim gününe eklenir**. Askerlik sigorta girişinden önce yapılmışsa, borçlanılan gün kadar sigortalılık başlangıç tarihi de geriye çekilir; bu, bazı kişilerde emeklilik yaşını ve hangi kurala tabi olunduğunu değiştirebilir. Doğum borçlanması ise yalnızca sigortalılık başladıktan sonraki doğumlar için yapılabildiğinden başlangıç tarihini değiştirmez, sadece gün kazandırır.
+Borçlanılan günler **prim gününe eklenir**. Askerlik sigorta girişinden önce yapılmışsa, borçlanılan gün kadar sigortalılık başlangıç tarihi de geriye çekilir; bu, bazı kişilerde emeklilik yaşını ve hangi kurala tabi olunduğunu değiştirebilir. Doğum borçlanması ise kural olarak sigortalılık başladıktan sonraki doğumlar için yapılabildiğinden başlangıç tarihini değiştirmez, sadece gün kazandırır.
 
 Kaç gün eksiğin olduğunu görmek için önce [SGK hizmet dökümünü nasıl okuyacağını](/blog/sgk-hizmet-dokumu-nasil-alinir-nasil-okunur) kontrol et, ardından [emeklilik hesaplama aracımıza](/emeklilik-hesaplama) prim gününü ve ilk giriş tarihini gir.
 
@@ -106,13 +106,13 @@ Ancak dikkat: Aralık'ta başvurup tutarı **tebliğden sonraki bir ay içinde**
 
 ## Borçlanma mantıklı mı? Kısa bir maliyet bakışı
 
-Borçlanma bir yatırım kararı gibi düşünülebilir: Bugün ödediğin tutarla emekli aylığına **daha erken** başlamış olursun. Örneğin 1 yıl erken emekli olmanı sağlayan 360 günlük doğum borçlanması 2026'da 126.835 ₺ tutuyor; bu, bugünkü [en düşük emekli aylığı](/en-dusuk-emekli-maasi) olan 23.552 ₺ ile yaklaşık 5,5 aylık ödemeye denk gelen bir maliyet. Ama erken emeklilik herkes için uygun değildir: borçlanma için kredi çekmek, yüksek kredi faizi ödemek ya da acil durum fonunu tüketmek hesabı bozabilir. Emeklilik birikimi açısından genel çerçeve için [emeklilik için ne kadar para gerekir](/blog/emeklilik-icin-ne-kadar-para) ve [BES mantıklı mı](/blog/bes-bireysel-emeklilik-mantikli-mi) yazılarımıza da göz atabilirsin.
+Borçlanma bir yatırım kararı gibi düşünülebilir: Bugün ödediğin tutarla emekli aylığına **daha erken** başlamış olursun. Örneğin 1 yıl erken emekli olmanı sağlayan 360 günlük doğum borçlanması 2026'da 126.835 ₺ tutuyor; bu, bugünkü [en düşük emekli aylığı](/en-dusuk-emekli-maasi) olan 23.552 ₺ ile yaklaşık 5,4 aylık ödemeye denk gelen bir maliyet. Ama erken emeklilik herkes için uygun değildir: borçlanma için kredi çekmek, yüksek kredi faizi ödemek ya da acil durum fonunu tüketmek hesabı bozabilir. Emeklilik birikimi açısından genel çerçeve için [emeklilik için ne kadar para gerekir](/blog/emeklilik-icin-ne-kadar-para) ve [BES mantıklı mı](/blog/bes-bireysel-emeklilik-mantikli-mi) yazılarımıza da göz atabilirsin.
 
 ## Özet
 
 - **Doğum borçlanması ücreti 2026:** günlük 352,32 ₺; 720 gün (1 çocuk) 253.670,40 ₺.
 - **Askerlik borçlanması 2026:** 7566 sayılı Kanunla oran %45; günlük 495,45 ₺, 18 ay 267.543 ₺.
-- Tutar **başvuru tarihindeki** asgari ücrete bağlı; Ocak 2027 zammıyla %20-30 arası pahalanması beklenebilir.
+- Tutar **başvuru tarihindeki** asgari ücrete bağlı; Ocak 2027'de asgari ücret zammı oranında pahalanır (senaryolarımız %20-30; resmî oran henüz belli değil).
 - Aralık'ta başvurmak avantajlıdır ama tutar **tebliğden itibaren 1 ay içinde** ödenmezse başvuru düşer.
 
 *Bu yazı bilgilendirme amaçlıdır, yatırım ya da hukuki tavsiye değildir. Borçlanma tutarı ve hak sahipliği kişisel duruma göre değişir; kesin bilgi için SGK'ya veya bir sosyal güvenlik uzmanına başvurun. Rakamlar 2026 brüt asgari ücreti (33.030 ₺) ile hesaplanmıştır; 2027 tabloları senaryodur.*
