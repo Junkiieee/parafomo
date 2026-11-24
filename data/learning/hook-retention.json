@@ -1,25 +1,31 @@
 {
-  "fetched_utc": "2026-11-23T08:46:09Z",
+  "fetched_utc": "2026-11-24T08:46:03Z",
   "hold_sec": 3.0,
   "n": 6,
-  "median_hold_3s": 1.084,
+  "median_hold_3s": 1.081,
   "avd_gate_pct": 65.0,
-  "median_avg_view_pct": 45.9,
+  "median_avg_view_pct": 45.8,
   "gate_pass_share": 0.333,
   "gate_pass_n": 2,
-  "gate_breakdown_n": 29,
+  "gate_breakdown_n": 31,
   "gate_by_format": {
-    "ekonomi_defteri": {
+    "shock_number": {
+      "n": 8,
+      "median_avd": 28.4,
+      "gate_pass_n": 2,
+      "gate_pass_share": 0.25
+    },
+    "para_hikayesi": {
       "n": 5,
-      "median_avd": 43.0,
+      "median_avd": 54.9,
       "gate_pass_n": 1,
       "gate_pass_share": 0.2
     },
-    "para_hikayesi": {
-      "n": 4,
-      "median_avd": 54.9,
+    "ekonomi_defteri": {
+      "n": 5,
+      "median_avd": 32.5,
       "gate_pass_n": 1,
-      "gate_pass_share": 0.25
+      "gate_pass_share": 0.2
     },
     "myth": {
       "n": 5,
@@ -29,21 +35,15 @@
     },
     "single_concept": {
       "n": 5,
-      "median_avd": 28.1,
-      "gate_pass_n": 1,
-      "gate_pass_share": 0.2
-    },
-    "shock_number": {
-      "n": 7,
-      "median_avd": 34.0,
-      "gate_pass_n": 2,
-      "gate_pass_share": 0.286
+      "median_avd": 0.0,
+      "gate_pass_n": 0,
+      "gate_pass_share": 0.0
     },
     "daily-short": {
       "n": 3,
-      "median_avd": 64.0,
-      "gate_pass_n": 1,
-      "gate_pass_share": 0.333
+      "median_avd": 68.4,
+      "gate_pass_n": 2,
+      "gate_pass_share": 0.667
     }
   },
   "videos": [
@@ -60,8 +60,8 @@
       "id": "youtube:dgO9Yb10SHo",
       "video_id": "dgO9Yb10SHo",
       "duration_sec": 34,
-      "hold_3s": 1.259,
-      "rel_perf_3s": 0.584,
+      "hold_3s": 1.269,
+      "rel_perf_3s": 0.583,
       "avg_view_pct": 87.8,
       "published_utc": "2026-11-19T16:01:38Z"
     },
@@ -78,9 +78,9 @@
       "id": "youtube:8yNdlsYvWcs",
       "video_id": "8yNdlsYvWcs",
       "duration_sec": 43,
-      "hold_3s": 1.084,
+      "hold_3s": 1.081,
       "rel_perf_3s": 0.271,
-      "avg_view_pct": 45.9,
+      "avg_view_pct": 45.8,
       "published_utc": "2026-11-18T16:01:46Z"
     },
     {
