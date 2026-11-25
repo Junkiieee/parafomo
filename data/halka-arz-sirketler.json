@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25T06:00+00:00",
+ "updated": "2026-11-25T12:15+00:00",
  "source": "halkarz.com",
  "items": {
   "pronet-guvenlik-hizmetleri-a-s": {
@@ -8893,6 +8893,94 @@
     }
    },
    "first_seen": "2026-11-19"
+  },
+  "saytek-enerji-geri-donusum-saglik-san-ve-tic-a-s": {
+   "company": "Saytek Enerji Geri Dönüşüm Sağlık San. ve Tic. A.Ş.",
+   "bist_code": "",
+   "slug": "saytek-enerji-geri-donusum-saglik-san-ve-tic-a-s",
+   "link": "https://halkarz.com/saytek-enerji-geri-donusum-saglik-san-ve-tic-a-s/",
+   "date_text": "",
+   "start": null,
+   "end": null,
+   "status": "Tarih Bekleniyor",
+   "price": "",
+   "distribution": "Eşit Dağıtım **",
+   "lot": "150.000.000 Lot",
+   "broker": "Ahlatcı Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş.",
+   "market": "Yıldız Pazar",
+   "first_trade": "",
+   "float_lot": "",
+   "float_pct": "",
+   "updated_src": "25.11.2026 13:29",
+   "details": {
+    "sekil": {
+     "items": [
+      "Sermaye Artırımı : 150.000.000 Lot"
+     ],
+     "source": "Taslak İzahname, Sayfa 1."
+    },
+    "fon_kullanim": {
+     "items": [
+      "%35-45 Üretim tesisi yatırımı ve/veya şirket satın alma",
+      "%25-30 İşletme sermayesi",
+      "%15-20 Öztüketime yönelik ges yatırımı",
+      "%15-20 Finansal borçluluğun azaltılması"
+     ],
+     "source": "Taslak İzahname, Sayfa 274."
+    },
+    "satis_yontemi": {
+     "items": [
+      "Sabit Fiyatla Talep Toplama",
+      "En İyi Gayret Aracılığı"
+     ],
+     "source": ""
+    },
+    "fiyat_istikrari": {
+     "items": [
+      "30 gün"
+     ],
+     "source": "Taslak İzahname, Sayfa 272."
+    },
+    "satmama": {
+     "items": [
+      "1 Yıl, İhraççı",
+      "1 Yıl, Ortaklar"
+     ],
+     "source": "Taslak İzahname, Sayfa 273."
+    },
+    "halka_aciklik": {
+     "items": [
+      "%21,43"
+     ],
+     "source": "Taslak İzahname, Sayfa 247."
+    },
+    "finansal": {
+     "periods": [
+      "2025",
+      "2024",
+      "2023"
+     ],
+     "rows": [
+      {
+       "label": "Hasılat",
+       "values": [
+        "10,5 Milyar TL",
+        "3,0 Milyar TL",
+        "2,0 Milyar TL"
+       ]
+      },
+      {
+       "label": "Brüt Kâr",
+       "values": [
+        "783,0 Milyon TL",
+        "698,4 Milyon TL",
+        "402,0 Milyon TL"
+       ]
+      }
+     ]
+    }
+   },
+   "first_seen": "2026-11-25"
   }
  }
 }

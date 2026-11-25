@@ -1,9 +1,96 @@
 {
-  "updated": "2026-11-25T06:00+00:00",
+  "updated": "2026-11-25T12:15+00:00",
   "source": "halkarz.com",
   "source_url": "https://halkarz.com",
   "count": 70,
   "items": [
+    {
+      "company": "Saytek Enerji Geri Dönüşüm Sağlık San. ve Tic. A.Ş.",
+      "bist_code": "",
+      "slug": "saytek-enerji-geri-donusum-saglik-san-ve-tic-a-s",
+      "link": "https://halkarz.com/saytek-enerji-geri-donusum-saglik-san-ve-tic-a-s/",
+      "date_text": "",
+      "start": null,
+      "end": null,
+      "status": "Tarih Bekleniyor",
+      "price": "",
+      "distribution": "Eşit Dağıtım **",
+      "lot": "150.000.000 Lot",
+      "broker": "Ahlatcı Yatırım Menkul Değerler A.Ş. Vakıf Yatırım Menkul Değerler A.Ş.",
+      "market": "Yıldız Pazar",
+      "first_trade": "",
+      "float_lot": "",
+      "float_pct": "",
+      "updated_src": "25.11.2026 13:29",
+      "details": {
+        "sekil": {
+          "items": [
+            "Sermaye Artırımı : 150.000.000 Lot"
+          ],
+          "source": "Taslak İzahname, Sayfa 1."
+        },
+        "fon_kullanim": {
+          "items": [
+            "%35-45 Üretim tesisi yatırımı ve/veya şirket satın alma",
+            "%25-30 İşletme sermayesi",
+            "%15-20 Öztüketime yönelik ges yatırımı",
+            "%15-20 Finansal borçluluğun azaltılması"
+          ],
+          "source": "Taslak İzahname, Sayfa 274."
+        },
+        "satis_yontemi": {
+          "items": [
+            "Sabit Fiyatla Talep Toplama",
+            "En İyi Gayret Aracılığı"
+          ],
+          "source": ""
+        },
+        "fiyat_istikrari": {
+          "items": [
+            "30 gün"
+          ],
+          "source": "Taslak İzahname, Sayfa 272."
+        },
+        "satmama": {
+          "items": [
+            "1 Yıl, İhraççı",
+            "1 Yıl, Ortaklar"
+          ],
+          "source": "Taslak İzahname, Sayfa 273."
+        },
+        "halka_aciklik": {
+          "items": [
+            "%21,43"
+          ],
+          "source": "Taslak İzahname, Sayfa 247."
+        },
+        "finansal": {
+          "periods": [
+            "2025",
+            "2024",
+            "2023"
+          ],
+          "rows": [
+            {
+              "label": "Hasılat",
+              "values": [
+                "10,5 Milyar TL",
+                "3,0 Milyar TL",
+                "2,0 Milyar TL"
+              ]
+            },
+            {
+              "label": "Brüt Kâr",
+              "values": [
+                "783,0 Milyon TL",
+                "698,4 Milyon TL",
+                "402,0 Milyon TL"
+              ]
+            }
+          ]
+        }
+      }
+    },
     {
       "company": "Burcu Gıda Konservecilik ve Salça Sanayi A.Ş.",
       "bist_code": "",
@@ -2359,100 +2446,6 @@
             "%20,56"
           ],
           "source": "Taslak İzahname, Sayfa 230."
-        }
-      }
-    },
-    {
-      "company": "Multikan Sağlık Ürünleri San. ve Dış Tic. A.Ş.",
-      "bist_code": "",
-      "slug": "multikan-saglik-urunleri-san-ve-dis-tic-a-s",
-      "link": "https://halkarz.com/multikan-saglik-urunleri-san-ve-dis-tic-a-s/",
-      "date_text": "",
-      "start": null,
-      "end": null,
-      "status": "Tarih Bekleniyor",
-      "price": "",
-      "distribution": "Eşit Dağıtım **",
-      "lot": "60.000.000 Lot",
-      "broker": "İntegral Yatırım Menkul Değerler A.Ş.",
-      "market": "Ana Pazar",
-      "first_trade": "",
-      "float_lot": "",
-      "float_pct": "",
-      "updated_src": "15.09.2026 09:36",
-      "details": {
-        "sekil": {
-          "items": [
-            "Sermaye Artırımı : 48.000.000 Lot",
-            "Ortak Satışı : 7.200.000 Lot (Hakan Memiş)",
-            "Ortak Satışı : 4.800.000 Lot (Deniz Gür)"
-          ],
-          "source": "Taslak İzahname, Sayfa 1."
-        },
-        "fon_kullanim": {
-          "items": [
-            "%50 İşletme sermayesi",
-            "%40 Depo yapım projesi",
-            "%5 Yurt dışı yatırımları",
-            "%5 Teknoloji ve dijitalleşme yatırımları"
-          ],
-          "source": "Taslak İzahname, Sayfa 185."
-        },
-        "satis_yontemi": {
-          "items": [
-            "Borsa'da Satış - Sabit Fiyatla Talep Toplama"
-          ],
-          "source": "T1-T2 Uygun."
-        },
-        "tahsisat": {
-          "items": [
-            "Yoktur"
-          ],
-          "source": "Tamamen Eşit Dağıtım."
-        },
-        "fiyat_istikrari": {
-          "items": [
-            "30 gün. * Brüt halka arz gelirinin %20'si"
-          ],
-          "source": "Taslak İzahname, Sayfa 182."
-        },
-        "satmama": {
-          "items": [
-            "1 Yıl, İhraççı",
-            "1 Yıl, Ortaklar"
-          ],
-          "source": "Taslak İzahname, Sayfa 183."
-        },
-        "halka_aciklik": {
-          "items": [
-            "%30,30"
-          ],
-          "source": "Taslak İzahname, Sayfa 170."
-        },
-        "finansal": {
-          "periods": [
-            "2025",
-            "2024",
-            "2023"
-          ],
-          "rows": [
-            {
-              "label": "Hasılat",
-              "values": [
-                "1,8 Milyar TL",
-                "2,2 Milyar TL",
-                "2,0 Milyar TL"
-              ]
-            },
-            {
-              "label": "Brüt Kâr",
-              "values": [
-                "621,1 Milyon TL",
-                "690,6 Milyon TL",
-                "534,9 Milyon TL"
-              ]
-            }
-          ]
         }
       }
     },
