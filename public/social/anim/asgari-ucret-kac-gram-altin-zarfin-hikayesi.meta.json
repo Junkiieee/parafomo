@@ -4,7 +4,7 @@
   "file": "/root/parafomo/public/social/short-asgari-ucret-kac-gram-altin-zarfin-hikayesi.mp4",
   "duration": 41.034,
   "music": "Morning - Evening Telecast.mp3",
-  "link": "/asgari-ucret/",
+  "link": "/altin-kac-gram/",
   "lines": [
     {
       "id": "s0",
@@ -98,14 +98,14 @@
       "id": "s6",
       "t0": 23.954,
       "t1": 27.818,
-      "cap": "Ama altın tartısında yalnız 4,52 gram çıkıyorum.",
+      "cap": "Ama altın tartısında yalnız 4,86 gram çıkıyorum.",
       "words": [
         23.954,
-        24.394,
-        24.754,
-        25.394,
-        25.754,
-        26.614,
+        24.534,
+        24.874,
+        25.434,
+        25.734,
+        26.574,
         27.174
       ]
     },
