@@ -375,7 +375,7 @@ def paketler():
         out.append({"id": "borc-enflasyon", "aile": "borc", "link": "/enflasyon-hesaplama/",
                     "konu": "Arkadaşına borç verdin, bir yıl sonra aynı parayı geri aldın: kim kazandı, kim kaybetti?",
                     "kalip": "vs", "tema": "gece",
-                    "veri": [f"ÖRNEK: {AYLAR_TR[int(y_once[5:]) - 1]} {y_once[:4]}'te arkadaşına 10.000 TL borç verdin, {AYLAR_TR[int(son_ay[5:]) - 1]} {son_ay[:4]}'te 10.000 TL olarak geri döndü",
+                    "veri": [f"ÖRNEK: {AYLAR_TR[int(y_once[5:]) - 1]} {y_once[:4]}: arkadaşına 10.000 TL borç verdin. {AYLAR_TR[int(son_ay[5:]) - 1]} {son_ay[:4]}: 10.000 TL olarak geri döndü",
                              f"Bu 12 ayda fiyatlar %{fmt((kb - 1) * 100, 2)} arttı (TÜİK TÜFE, {AYLAR_TR[int(son_ay[5:]) - 1]} {son_ay[:4]} yıllık)",
                              f"Geri dönen 10.000 TL'nin alım gücü yaklaşık {fmt(10000 / kb)} TL; borç veren yaklaşık {fmt(10000 - 10000 / kb)} TL kaybetti",
                              f"Aynı alım gücünü geri vermek için yaklaşık {fmt(10000 * kb)} TL ödemek gerekirdi",
