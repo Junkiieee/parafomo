@@ -142,7 +142,8 @@ def paketler():
     satir = [f"Ocak {y} net asgari ücret {fmt(asg[y])} TL; {y - 1} yıl sonu gram altın {fmt(gram_yil[y - 1])} TL → {fmt(asg[y] / gram_yil[y - 1], 2)} gram"
              for y in sorted(asg) if (y - 1) in gram_yil]
     son_asg = max(asg)
-    satir.append(f"Bugün ({tarih}): net asgari ücret {fmt(asg[son_asg])} TL; gram altın {fmt(gram_simdi, 1)} TL → {fmt(asg[son_asg] / gram_simdi, 2)} gram")
+    satir.append(f"{tarih} fiyatıyla: net asgari ücret {fmt(asg[son_asg])} TL; gram altın {fmt(gram_simdi, 1)} TL → {fmt(asg[son_asg] / gram_simdi, 2)} gram "
+                 "(video günler sonra yayınlanır, altın oynar: kaynak satırına bu tarihi yaz; 2026-11-25 #41'de 4,52 → 4,86 g düzeltildi)")
     out.append({"id": "asgari-altin", "aile": "asgari-altin", "olay": str(son_asg), "link": "/altin-kac-gram/",
                 "konu": "Asgari ücretin gram altın karşılığı yıllar içinde nasıl değişti",
                 "kalip": "dram", "tema": "dram", "veri": satir,
@@ -365,6 +366,23 @@ def paketler():
                              f"Farkın büyük kısmı 2025'ten: gram altın 2025'te {fmt(gram_yil[2024])} TL'den {fmt(gram_yil[2025])} TL'ye çıktı ({fmt(gram_yil[2025] / gram_yil[2024], 2)} katı)",
                              ters],
                     "kaynak": "Asgari ücret: Resmî Gazete; gram altın: ons × USDTRY (Yahoo), yıl sonu; ÖRNEK hesap, yatırım tavsiyesi değildir"})
+    # 11) "Dostuna borç verdin, istemeye utanıyorsun — sence kim haklı?" (YT radarı 2026-11-25: küçük kanalda 67 B izlenme;
+    #     ikilem + soru CTA). Bizim verimizle: aynı tutar 1 yıl sonra geri dönünce alım gücü ne kadar eridi (TÜİK yıllık TÜFE).
+    son_ay = sorted(tufe)[-1]
+    y_once = f"{int(son_ay[:4]) - 1}{son_ay[4:]}"
+    if y_once in tufe:
+        kb = 1 + tufe[son_ay]["yillik"] / 100   # resmî yıllık oran (aylık zincir yuvarlamayla 0,01 kayıyor)
+        out.append({"id": "borc-enflasyon", "aile": "borc", "link": "/enflasyon-hesaplama/",
+                    "konu": "Arkadaşına borç verdin, bir yıl sonra aynı parayı geri aldın: kim kazandı, kim kaybetti?",
+                    "kalip": "vs", "tema": "gece",
+                    "veri": [f"ÖRNEK: {AYLAR_TR[int(y_once[5:]) - 1]} {y_once[:4]}'te arkadaşına 10.000 TL borç verdin, {AYLAR_TR[int(son_ay[5:]) - 1]} {son_ay[:4]}'te 10.000 TL olarak geri döndü",
+                             f"Bu 12 ayda fiyatlar %{fmt((kb - 1) * 100, 2)} arttı (TÜİK TÜFE, {AYLAR_TR[int(son_ay[5:]) - 1]} {son_ay[:4]} yıllık)",
+                             f"Geri dönen 10.000 TL'nin alım gücü yaklaşık {fmt(10000 / kb)} TL; borç veren yaklaşık {fmt(10000 - 10000 / kb)} TL kaybetti",
+                             f"Aynı alım gücünü geri vermek için yaklaşık {fmt(10000 * kb)} TL ödemek gerekirdi",
+                             "Karakterler: borç veren (istemeye utanıyor) ve borç alan (aynı parayı verdim, ödeştik diyor); ikisi de haklı mı?",
+                             "Ahlak dersi verme, siyaset ve faiz/dini tartışmaya girme; sonda izleyiciye sor: 'sen olsan kaç lira isterdin?'",
+                             "Kendi tutarını sitedeki enflasyon hesaplayıcısında hesaplayabilirsin"],
+                    "kaynak": f"TÜİK TÜFE (sitedeki aylık TÜFE verisi, {y_once} → {son_ay}); ÖRNEK hesap"})
     out.append({"id": "kissa-bilesik", "aile": "kissa", "link": "",
                 "konu": "Bileşik faizin gücü: iki kardeşin kumbarası (kıssa)", "kalip": "kissa", "tema": "alacakaranlik",
                 "veri": ["ÖRNEK HESAP: her ay 1.000 TL, aylık %3 getiri: 12 ayda yaklaşık 14.192 TL (12.000 TL yatırım)",
