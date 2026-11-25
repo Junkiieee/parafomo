@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ZamAlarmi from '../components/ZamAlarmi.astro';
 import ZamHubLink from '../components/ZamHubLink.astro';
+import KisaVideo from '../components/KisaVideo.astro';
 import { existsSync as __exists } from 'node:fs';
 import { join as __join } from 'node:path';
 // Engelli maaşı sayfası paralel geliştiriliyordu: dosyası yoksa link verilmez
@@ -236,6 +237,18 @@ const breadcrumbs = [
         <span class="s">{Y ? `1 Ocak ${Y.yil} itibarıyla · ${G.yil}: ₺${fmt0(SINIR)}` : `${G.yil} · net asgari ücretin 2/3’ü`}</span>
       </div>
     </div>
+
+    {TAHMIN_VAR && !KESIN_ZAM && (
+      <KisaVideo
+        id="3uMiRkGPCQM"
+        baslik="Evde bakım maaşı Ocak 2027'de ne kadar olacak? (tahmin)"
+        aciklama="Evde bakım maaşı 10.000 × memur aylık katsayısıdır. Temmuz–Aralık 2026'da 15.755,12 TL; Ocak 2027 tutarı Kasım ve Aralık enflasyonuna bağlı memur zammıyla belli olur. Video tahmindir, kesin tutar Ocak katsayı genelgesiyle açıklanır."
+        tarih="2026-11-24T16:00:05+00:00"
+        sure={40}
+        poster="/video/evde-bakim-maasi-ocak-2027.jpg"
+        not="Video 18 Kasım 2026 verisiyle hazırlanmış tahmindir; güncel tahmin aşağıdaki tablodadır."
+      />
+    )}
 
     {TAHMIN_VAR && (
       <section class="table-block" id="tahmin">

@@ -3,7 +3,7 @@
   "title": "Trafik cezası yüzde 27,83 zamlanıyor, hesap bu",
   "category": "ŞOK VERİ",
   "format": "shock_number",
-  "description": "2027 yeniden değerleme oranı %27,83. Trafik gibi idari para cezaları bu oranla artıyor; 10 bin liralık ceza 12.783 liraya çıkıyor. MTV ve harçta ise daha düşük oran uygulanabiliyor.\nKaynak/hesap: 10.000 TL x 1,2783 = 12.783 TL · 2027 yeniden değerleme oranı (Ekim Yİ-ÜFE verisiyle hesaplandı); Kabahatler Kanunu m.17/7",
+  "description": "2027 yeniden değerleme oranı %27,83. Trafik gibi idari para cezaları bu oranla artıyor; 10 bin liralık ceza 12.783 liraya çıkıyor. MTV ve harçta ise daha düşük oran uygulanabiliyor.\nKaynak/hesap: 10.000 TL x 1,2783 = 12.783 TL · 2027 yeniden değerleme oranı (VUK Genel Tebliği 599, Resmî Gazete 24.11.2026); Kabahatler Kanunu m.17/7",
   "tags": [
     "trafik cezası",
     "yeniden değerleme oranı",
@@ -59,6 +59,6 @@
   "number_source": {
     "number": "yüzde 27,83",
     "calc": "10.000 TL x 1,2783 = 12.783 TL",
-    "source": "2027 yeniden değerleme oranı (Ekim Yİ-ÜFE verisiyle hesaplandı); Kabahatler Kanunu m.17/7"
+    "source": "2027 yeniden değerleme oranı (VUK Genel Tebliği 599, Resmî Gazete 24.11.2026); Kabahatler Kanunu m.17/7"
   }
 }
