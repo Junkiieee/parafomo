@@ -1,6 +1,6 @@
 # ParaFOMO — Öğrenme Raporu
 
-> 2026-11-24T08:52:56Z · pencere: son 45 gün · asgari örnek: 4
+> 2026-11-25T08:54:45Z · pencere: son 45 gün · asgari örnek: 4
 
 ## Sinyal durumu
 
@@ -19,7 +19,7 @@
 
 ### Viral format — **explore** (kollar berabere — fark anlamlı değil, rotasyon sürüyor)
 
-- `shock_number` — skor 419.544, örnek 8
+- `shock_number` — skor 419.655, örnek 8
 - `single_concept` — skor 342.25, örnek 5
 - `event_result` — skor 299.568, örnek 1
 - `news_reaction` — skor 127.079, örnek 8
@@ -29,7 +29,7 @@
 
 - `5` — skor 556.783, örnek 3
 - `1` — skor 480.717, örnek 3
-- `2` — skor 281.45, örnek 4
+- `2` — skor 281.671, örnek 4
 - `0` — skor 187.286, örnek 3
 - `manual` — skor 146.244, örnek 9
 - `4` — skor 105.42, örnek 2
@@ -46,9 +46,10 @@
 - tefas-nedir-fon-nasil-alinir — skor 5
 
 **🎯 Fırsat sorguları** (içerik/başlık iyileştir):
-- `tefas` — gös 159, sıra 18.5
-- `ocak ayında evde bakım maaşı ne kadar olacak` — gös 104, sıra 10.2
-- `2027 evde bakım maaşı ne kadar olacak` — gös 70, sıra 14.8
-- `dolar mı euro mu daha çok kazandırır 2026` — gös 64, sıra 4.8
-- `bakım maaşı ne kadar olacak` — gös 33, sıra 9.6
-- `yeni yılda evde bakım maaşı ne kadar olacak` — gös 30, sıra 9.4
+- `tefas` — gös 171, sıra 17.5
+- `ocak ayında evde bakım maaşı ne kadar olacak` — gös 143, sıra 10.2
+- `evde bakım maaşı ne kadar oldu 2027` — gös 95, sıra 8.4
+- `2027 evde bakım maaşı ne kadar olacak` — gös 79, sıra 14.1
+- `dolar mı euro mu daha çok kazandırır 2026` — gös 66, sıra 4.7
+- `yeni yılda evde bakım maaşı ne kadar olacak` — gös 41, sıra 9.4
+- `bakım maaşı ne kadar olacak` — gös 36, sıra 9.3
