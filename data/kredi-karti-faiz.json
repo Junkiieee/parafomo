@@ -1,33 +1,33 @@
 {
-  "gecerli": "2026-11-01",
-  "referans": 3.11,
+  "gecerli": "2026-12-01",
+  "referans": 2.94,
   "tl": [
     {
       "ust": 30000,
-      "akdi": 3.25,
-      "gecikme": 3.55
+      "akdi": 3.08,
+      "gecikme": 3.38
     },
     {
       "ust": 180000,
-      "akdi": 3.75,
-      "gecikme": 4.05
+      "akdi": 3.58,
+      "gecikme": 3.88
     },
     {
       "ust": null,
-      "akdi": 4.25,
-      "gecikme": 4.55
+      "akdi": 4.08,
+      "gecikme": 4.38
     }
   ],
   "nakit": {
-    "akdi": 4.25,
-    "gecikme": 4.55
+    "akdi": 4.08,
+    "gecikme": 4.38
   },
   "yp": {
-    "akdi": 2.98,
-    "gecikme": 3.28
+    "akdi": 2.86,
+    "gecikme": 3.16
   },
   "kaynak": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Bankacilik+Verileri/Kredi_Karti_Islemlerinde_Uygulanacak_Azami_Faiz_Oranlari",
-  "kontrol": "2026-10-23",
+  "kontrol": "2026-11-26",
   "asgari": {
     "esik": 100000,
     "alt": 20,
