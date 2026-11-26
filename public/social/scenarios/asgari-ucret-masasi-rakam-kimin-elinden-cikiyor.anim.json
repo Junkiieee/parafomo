@@ -1,0 +1,103 @@
+{
+  "slug": "asgari-ucret-masasi-rakam-kimin-elinden-cikiyor",
+  "title": "Asgari ücret masası: rakam kimin elinden çıkıyor",
+  "description": "Asgari ücret tek kişinin kararı değil. Tespit Komisyonu'nda işçi, işveren ve devlet temsilcileri masaya oturur; enflasyon da bu masanın ölçülerinden biridir.",
+  "tags": [
+    "asgari ücret",
+    "asgari ücret tespit komisyonu",
+    "enflasyon",
+    "maaş zammı",
+    "ParaFOMO",
+    "kişisel finans",
+    "parafomo"
+  ],
+  "format": "myth",
+  "style": "isometric",
+  "scene": "generic.js",
+  "short": true,
+  "data": {
+    "eyebrow": "ASGARİ ÜCRET",
+    "scenes": [
+      {
+        "type": "icon_text",
+        "head": "Kararı kim veriyor?",
+        "data": {
+          "icon": "cash",
+          "text": "Asgari ücreti *tek kişi* belirlemiyor"
+        },
+        "line": "s0"
+      },
+      {
+        "type": "steps",
+        "head": "Masadaki üç taraf",
+        "data": {
+          "items": [
+            "İşçi tarafı",
+            "İşveren tarafı",
+            "Devlet tarafı"
+          ]
+        },
+        "line": "s1"
+      },
+      {
+        "type": "icon_text",
+        "head": "Tarafların çekişmesi",
+        "data": {
+          "icon": "coins",
+          "text": "İşçi *artış* ister, işveren *maliyeti* öne sürer"
+        },
+        "line": "s2"
+      },
+      {
+        "type": "big_number",
+        "head": "Ölçülerden biri",
+        "data": {
+          "icon": "percent",
+          "value": 29.77,
+          "unit": "%",
+          "suffix": "",
+          "label": "Ekim ayı yıllık enflasyon"
+        },
+        "line": "s3"
+      },
+      {
+        "type": "cta",
+        "head": "Sıra sende",
+        "data": {
+          "l1": "Zammı neyle",
+          "l2": "kıyaslayacaksın?",
+          "sub": "HER GÜN 60 SANİYEDE TEK NET ANALİZ"
+        },
+        "line": "s4"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "s0",
+      "say": "Asgari ücreti tek bir kişi belirlemiyor.",
+      "cap": "Asgari ücreti tek bir kişi belirlemiyor."
+    },
+    {
+      "id": "s1",
+      "say": "Komisyonda işçi, işveren ve devlet temsilcileri oturur; rakam masada tartışılarak çıkar, bir telefonla değil.",
+      "cap": "Komisyonda işçi, işveren ve devlet temsilcileri oturur; rakam masada tartışılarak çıkar, bir telefonla değil."
+    },
+    {
+      "id": "s2",
+      "say": "Ama üç taraf çoğu zaman aynı fikirde olmaz; işçi artış isterken işveren maliyeti öne sürer.",
+      "cap": "Ama üç taraf çoğu zaman aynı fikirde olmaz; işçi artış isterken işveren maliyeti öne sürer."
+    },
+    {
+      "id": "s3",
+      "say": "Ölçülerden biri enflasyon: Ekim'de yıllık %29,77. Zammı rakamla değil, market ve kira faturanla kıyasla.",
+      "cap": "Ölçülerden biri enflasyon: Ekim'de yıllık %29,77. Zammı rakamla değil, market ve kira faturanla kıyasla."
+    },
+    {
+      "id": "s4",
+      "say": "Bir sonraki zammı hangi harcamanla kıyaslayacaksın? Abone ol, her gün 60 saniyede tek net analiz.",
+      "cap": "Bir sonraki zammı hangi harcamanla kıyaslayacaksın? Abone ol, her gün 60 saniyede tek net analiz."
+    }
+  ],
+  "skin": "cutpaper"
+}

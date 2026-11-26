@@ -1,20 +1,16 @@
 {
  "_aciklama": "Google Autocomplete (tr) önerileri; covered = site slug'larıyla kaba eşleşme. Kapsanmayanlar = potansiyel yeni sayfa/yazı konusu — talebi GSC/rakiple doğrula.",
- "generated_utc": "2026-11-22T08:46:19Z",
+ "generated_utc": "2026-11-25T08:46:17Z",
  "uncovered_top": [
-  "asgari ücret 2027 kaç tl olacak",
-  "asgari ücret 2027 ara zam olacak mı",
   "asgari ücret 2027 ne zaman açıklanacak",
-  "asgari ücret 2027 ne zaman zam gelecek",
   "asgari ücret 2027 zam oranı",
+  "asgari ücret 2027 ne zaman zam gelecek",
   "2027 mtv fiyatları",
-  "2027 mtv vmas",
-  "2027 mtv music awards",
-  "2027 mtv awards",
-  "mtv malta 2027",
-  "mtv movie awards 2027",
-  "2027 mtv video music awards",
-  "mtv vma 2027",
+  "2027 mtv ücretleri",
+  "2027 mtv tablosu",
+  "2027 mtv oranları",
+  "2027 mtv tutarları",
+  "2027 mtv zammı",
   "altın fiyatı ne zaman yükselir",
   "altın fiyatı ne zaman yükselecek",
   "altın fiyatı ne zaman düşecek",
@@ -37,11 +33,15 @@
   "faiz kararı ne zaman açıklanır",
   "faiz kararı ne zaman açıklanıyor",
   "faiz kararı saat kaçta",
-  "enflasyon ne zaman açıklanır",
+  "enflasyon ne zaman açıklanacak",
   "enflasyon ne zaman açıklanıyor",
   "enflasyon ne zaman düşecek",
   "enflasyon ne zaman",
-  "enflasyon ne zaman açıklanacak 2026"
+  "enflasyon ne zaman açıklanacak 2026",
+  "enflasyon ne zaman tek haneye düşecek",
+  "enflasyon ne zaman açıklanacak eylül",
+  "enflasyon ne zaman düşer",
+  "enflasyon ne zaman açık"
  ],
  "seeds": [
   {
@@ -49,6 +49,10 @@
    "suggestions": [
     {
      "q": "yeniden değerleme oranı açıklandı mı",
+     "covered": true
+    },
+    {
+     "q": "2026 3.dönem yeniden değerleme oranı açıklandı mı",
      "covered": true
     }
    ]
@@ -77,6 +81,10 @@
      "covered": true
     },
     {
+     "q": "2027 asgari ücret ne kadar olacak brüt",
+     "covered": true
+    },
+    {
      "q": "asgari ücret ocakta ne kadar olacak 2027",
      "covered": true
     },
@@ -85,16 +93,12 @@
      "covered": true
     },
     {
-     "q": "2027 asgari ücret brüt ne kadar olacak",
+     "q": "2027 asgari ücret maaşı ne kadar olacak",
      "covered": true
     },
     {
-     "q": "asgari ücret 2027 kaç tl olacak",
-     "covered": false
-    },
-    {
-     "q": "asgari ücret 2027 ara zam olacak mı",
-     "covered": false
+     "q": "2027 asgari ücret tahminen ne kadar olacak",
+     "covered": true
     }
    ]
   },
@@ -114,15 +118,11 @@
      "covered": true
     },
     {
-     "q": "asgari ücret 2027 ne kadar",
-     "covered": true
-    },
-    {
      "q": "asgari ücret 2027 ne zaman açıklanacak",
      "covered": false
     },
     {
-     "q": "asgari ücret 2027 yılında ne kadar olacak",
+     "q": "asgari ücret 2027 ne kadar",
      "covered": true
     },
     {
@@ -134,12 +134,16 @@
      "covered": true
     },
     {
+     "q": "asgari ücret 2027 zam oranı",
+     "covered": false
+    },
+    {
      "q": "asgari ücret 2027 ne zaman zam gelecek",
      "covered": false
     },
     {
-     "q": "asgari ücret 2027 zam oranı",
-     "covered": false
+     "q": "asgari ücret 2027 tahminleri",
+     "covered": true
     }
    ]
   },
@@ -151,39 +155,39 @@
      "covered": true
     },
     {
-     "q": "2027 mtv hesaplama",
-     "covered": true
-    },
-    {
      "q": "2027 mtv fiyatları",
      "covered": false
     },
     {
-     "q": "2027 mtv vmas",
+     "q": "2027 mtv hesaplama",
+     "covered": true
+    },
+    {
+     "q": "2027 mtv ücretleri",
      "covered": false
     },
     {
-     "q": "2027 mtv music awards",
+     "q": "2027 mtv tablosu",
      "covered": false
     },
     {
-     "q": "2027 mtv awards",
+     "q": "2027 mtv oranları",
      "covered": false
     },
     {
-     "q": "mtv malta 2027",
+     "q": "2027 mtv ne kadar olacak",
+     "covered": true
+    },
+    {
+     "q": "2027 mtv tutarları",
      "covered": false
     },
     {
-     "q": "mtv movie awards 2027",
-     "covered": false
+     "q": "2027 mtv ne kadar",
+     "covered": true
     },
     {
-     "q": "2027 mtv video music awards",
-     "covered": false
-    },
-    {
-     "q": "mtv vma 2027",
+     "q": "2027 mtv zammı",
      "covered": false
     }
    ]
@@ -278,11 +282,11 @@
    "seed": "mevduat faizi",
    "suggestions": [
     {
-     "q": "mevduat faizi",
+     "q": "mevduat faizi hesaplama",
      "covered": true
     },
     {
-     "q": "mevduat faizi hesaplama",
+     "q": "mevduat faizi",
      "covered": true
     },
     {
@@ -376,27 +380,11 @@
      "covered": true
     },
     {
-     "q": "emekli zammı ne kadar olacak",
-     "covered": true
-    },
-    {
      "q": "emekli zammı son dakika",
      "covered": false
     },
     {
-     "q": "emekli zammı 2027 ocak",
-     "covered": true
-    },
-    {
-     "q": "emekli zammı nasıl olacak",
-     "covered": true
-    },
-    {
-     "q": "emekli zammı ne kadar",
-     "covered": true
-    },
-    {
-     "q": "emekli zammı ne zaman",
+     "q": "emekli zammı ne kadar olacak",
      "covered": true
     },
     {
@@ -404,7 +392,23 @@
      "covered": true
     },
     {
-     "q": "emekli zammı hesaplama",
+     "q": "emekli zammı ne zaman",
+     "covered": true
+    },
+    {
+     "q": "emekli zammı ne kadar",
+     "covered": true
+    },
+    {
+     "q": "emekli zammı belli oldu mu",
+     "covered": true
+    },
+    {
+     "q": "emekli zammı 2026",
+     "covered": true
+    },
+    {
+     "q": "emekli zammı temmuz 2026",
      "covered": true
     }
    ]
@@ -503,7 +507,7 @@
    "seed": "yeniden değerleme",
    "suggestions": [
     {
-     "q": "yeniden değerleme oranı 2026",
+     "q": "yeniden değerleme oranı 2027",
      "covered": true
     },
     {
@@ -511,11 +515,11 @@
      "covered": true
     },
     {
-     "q": "yeniden değerleme hesaplama",
+     "q": "yeniden değerleme oranı 2026",
      "covered": true
     },
     {
-     "q": "yeniden değerleme oranı 2027",
+     "q": "yeniden değerleme oranı nedir",
      "covered": true
     },
     {
@@ -527,19 +531,19 @@
      "covered": true
     },
     {
+     "q": "yeniden değerleme oranı 2027 resmi gazete",
+     "covered": true
+    },
+    {
+     "q": "yeniden değerleme hesaplama",
+     "covered": true
+    },
+    {
      "q": "yeniden değerleme oranları",
      "covered": true
     },
     {
      "q": "yeniden değerleme oranı hesaplama",
-     "covered": true
-    },
-    {
-     "q": "yeniden değerleme oranı 2026 hesaplama",
-     "covered": true
-    },
-    {
-     "q": "yeniden değerleme oranı ne zaman açıklanır",
      "covered": true
     }
    ]
@@ -547,6 +551,10 @@
   {
    "seed": "faiz kararı",
    "suggestions": [
+    {
+     "q": "faiz kararı ne zaman",
+     "covered": true
+    },
     {
      "q": "faiz kararı",
      "covered": true
@@ -582,10 +590,6 @@
     {
      "q": "faiz kararı beklentisi",
      "covered": true
-    },
-    {
-     "q": "faiz kararı açıklandı mı",
-     "covered": true
     }
    ]
   },
@@ -593,7 +597,7 @@
    "seed": "enflasyon ne zaman",
    "suggestions": [
     {
-     "q": "enflasyon ne zaman açıklanır",
+     "q": "enflasyon ne zaman açıklanacak",
      "covered": false
     },
     {
@@ -663,11 +667,11 @@
      "covered": true
     },
     {
-     "q": "kıdem tazminatı tavanı 2026",
+     "q": "kıdem tazminatı",
      "covered": true
     },
     {
-     "q": "kıdem tazminatı",
+     "q": "kıdem tazminatı tavanı 2026",
      "covered": true
     },
     {
@@ -716,7 +720,7 @@
      "covered": false
     },
     {
-     "q": "temettü ne demek",
+     "q": "temettü ödemesi nedir",
      "covered": false
     },
     {
@@ -773,11 +777,11 @@
      "covered": false
     },
     {
-     "q": "borsa haram mı",
+     "q": "borsa restaurant",
      "covered": false
     },
     {
-     "q": "borsa kaçta kapanıyor",
+     "q": "borsa haram mı",
      "covered": false
     }
    ]

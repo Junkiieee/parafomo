@@ -1,0 +1,124 @@
+{
+  "title": "Asgari ücret masası: rakam kimin elinden çıkıyor #Shorts",
+  "description": "Asgari ücret tek kişinin kararı değil. Tespit Komisyonu'nda işçi, işveren ve devlet temsilcileri masaya oturur; enflasyon da bu masanın ölçülerinden biridir.",
+  "tags": [
+    "asgari ücret",
+    "asgari ücret tespit komisyonu",
+    "enflasyon",
+    "maaş zammı",
+    "ParaFOMO",
+    "kişisel finans",
+    "parafomo"
+  ],
+  "file": "/root/parafomo/public/social/short-asgari-ucret-masasi-rakam-kimin-elinden-cikiyor.mp4",
+  "slug": "asgari-ucret-masasi-rakam-kimin-elinden-cikiyor",
+  "format": "myth",
+  "engine": "anim",
+  "teknik": "iso",
+  "timeline": [
+    {
+      "id": "s0",
+      "t0": 0.35,
+      "t1": 2.99,
+      "cap": "Asgari ücreti tek bir kişi belirlemiyor.",
+      "words": [
+        0.35,
+        1.13,
+        1.55,
+        1.71,
+        1.85,
+        2.09
+      ]
+    },
+    {
+      "id": "s1",
+      "t0": 3.27,
+      "t1": 9.822,
+      "cap": "Komisyonda işçi, işveren ve devlet temsilcileri oturur; rakam masada tartışılarak çıkar, bir telefonla değil.",
+      "words": [
+        3.27,
+        4.07,
+        4.59,
+        5.01,
+        5.15,
+        5.41,
+        6.13,
+        6.91,
+        7.17,
+        7.51,
+        8.23,
+        8.79,
+        8.87,
+        9.41
+      ]
+    },
+    {
+      "id": "s2",
+      "t0": 10.102,
+      "t1": 15.982,
+      "cap": "Ama üç taraf çoğu zaman aynı fikirde olmaz; işçi artış isterken işveren maliyeti öne sürer.",
+      "words": [
+        10.102,
+        10.542,
+        10.742,
+        11.082,
+        11.282,
+        11.522,
+        11.822,
+        12.322,
+        13.182,
+        13.482,
+        13.782,
+        14.222,
+        14.782,
+        15.262,
+        15.442
+      ]
+    },
+    {
+      "id": "s3",
+      "t0": 16.262,
+      "t1": 24.158,
+      "cap": "Ölçülerden biri enflasyon: Ekim'de yıllık %29,77. Zammı rakamla değil, market ve kira faturanla kıyasla.",
+      "words": [
+        16.262,
+        17.202,
+        17.402,
+        18.342,
+        18.662,
+        18.982,
+        20.762,
+        21.342,
+        21.742,
+        22.302,
+        22.542,
+        22.782,
+        23.022,
+        23.542
+      ]
+    },
+    {
+      "id": "s4",
+      "t0": 24.438,
+      "t1": 30.87,
+      "cap": "Bir sonraki zammı hangi harcamanla kıyaslayacaksın? Abone ol, her gün 60 saniyede tek net analiz.",
+      "words": [
+        24.438,
+        24.878,
+        25.318,
+        25.678,
+        25.998,
+        26.578,
+        27.798,
+        28.038,
+        28.598,
+        28.718,
+        28.858,
+        29.118,
+        29.738,
+        30.018,
+        30.198
+      ]
+    }
+  ]
+}

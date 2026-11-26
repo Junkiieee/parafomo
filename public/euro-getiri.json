@@ -1,65 +1,65 @@
 {
-  "updated": "2026-11-25T06:01+00:00",
+  "updated": "2026-11-26T06:00+00:00",
   "source": "Yahoo Finance (EURTRY=X ve USDTRY=X kur, aylık kapanış); EUR/USD = EURTRY ÷ USDTRY",
-  "eurtry_now": 55.2663,
-  "usdtry_now": 50.6007,
-  "eurusd_now": 1.0922,
+  "eurtry_now": 55.543,
+  "usdtry_now": 50.6669,
+  "eurusd_now": 1.0962,
   "ytd": {
     "label": "Yıl başından beri",
     "eurtry_then": 50.6006,
-    "eurtry_now": 55.2663,
-    "return_tl_pct": 9.2,
+    "eurtry_now": 55.543,
+    "return_tl_pct": 9.8,
     "usdtry_then": 42.952,
-    "usd_return_tl_pct": 17.8,
+    "usd_return_tl_pct": 18.0,
     "eurusd_then": 1.1781,
-    "eurusd_change_pct": -7.3
+    "eurusd_change_pct": -6.9
   },
   "periods": [
     {
       "label": "1 yıl",
       "eurtry_then": 49.0763,
-      "eurtry_now": 55.2663,
-      "return_tl_pct": 12.6,
+      "eurtry_now": 55.543,
+      "return_tl_pct": 13.2,
       "usdtry_then": 42.493,
-      "usd_return_tl_pct": 19.1,
+      "usd_return_tl_pct": 19.2,
       "eurusd_then": 1.1549,
-      "eurusd_change_pct": -5.4,
+      "eurusd_change_pct": -5.1,
       "years": 1
     },
     {
       "label": "3 yıl",
       "eurtry_then": 31.7557,
-      "eurtry_now": 55.2663,
-      "return_tl_pct": 74.0,
+      "eurtry_now": 55.543,
+      "return_tl_pct": 74.9,
       "usdtry_then": 28.9409,
-      "usd_return_tl_pct": 74.8,
+      "usd_return_tl_pct": 75.1,
       "eurusd_then": 1.0973,
-      "eurusd_change_pct": -0.5,
+      "eurusd_change_pct": -0.1,
       "years": 3
     },
     {
       "label": "5 yıl",
       "eurtry_then": 14.347,
-      "eurtry_now": 55.2663,
-      "return_tl_pct": 285.2,
+      "eurtry_now": 55.543,
+      "return_tl_pct": 287.1,
       "usdtry_then": 12.699,
-      "usd_return_tl_pct": 298.5,
+      "usd_return_tl_pct": 299.0,
       "eurusd_then": 1.1298,
-      "eurusd_change_pct": -3.3,
+      "eurusd_change_pct": -3.0,
       "years": 5
     },
     {
       "label": "10 yıl",
       "eurtry_then": 3.6299,
-      "eurtry_now": 55.2663,
-      "return_tl_pct": 1422.5,
+      "eurtry_now": 55.543,
+      "return_tl_pct": 1430.1,
       "usdtry_then": 3.4094,
-      "usd_return_tl_pct": 1384.2,
+      "usd_return_tl_pct": 1386.1,
       "eurusd_then": 1.0647,
-      "eurusd_change_pct": 2.6,
+      "eurusd_change_pct": 3.0,
       "years": 10
     }
   ],
   "headline_years": 10,
-  "headline_return_tl_pct": 1422.5
+  "headline_return_tl_pct": 1430.1
 }

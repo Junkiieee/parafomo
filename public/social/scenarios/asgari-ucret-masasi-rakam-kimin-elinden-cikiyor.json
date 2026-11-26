@@ -1,0 +1,59 @@
+{
+  "slug": "asgari-ucret-masasi-rakam-kimin-elinden-cikiyor",
+  "title": "Asgari ücret masası: rakam kimin elinden çıkıyor",
+  "category": "MİT",
+  "format": "myth",
+  "description": "Asgari ücret tek kişinin kararı değil. Tespit Komisyonu'nda işçi, işveren ve devlet temsilcileri masaya oturur; enflasyon da bu masanın ölçülerinden biridir.",
+  "tags": [
+    "asgari ücret",
+    "asgari ücret tespit komisyonu",
+    "enflasyon",
+    "maaş zammı",
+    "ParaFOMO",
+    "kişisel finans",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "MİT",
+      "spoken": "Asgari ücreti tek bir kişi belirlemiyor.",
+      "visual": {
+        "type": "object",
+        "query": "wallet"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Komisyonda işçi, işveren ve devlet temsilcileri oturur; rakam masada tartışılarak çıkar, bir telefonla değil.",
+      "visual": {
+        "type": "place",
+        "query": "Ministry of Labor and Social Security Turkey"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama üç taraf çoğu zaman aynı fikirde olmaz; işçi artış isterken işveren maliyeti öne sürer.",
+      "visual": {
+        "type": "object",
+        "query": "meeting room table"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ölçülerden biri enflasyon: Ekim'de yıllık %29,77. Zammı rakamla değil, market ve kira faturanla kıyasla.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Bir sonraki zammı hangi harcamanla kıyaslayacaksın? Abone ol, her gün 60 saniyede tek net analiz.",
+      "visual": {
+        "type": "object",
+        "query": "wallet"
+      }
+    }
+  ]
+}
