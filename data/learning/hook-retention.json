@@ -1,37 +1,37 @@
 {
-  "fetched_utc": "2026-11-25T08:46:08Z",
+  "fetched_utc": "2026-11-26T08:46:10Z",
   "hold_sec": 3.0,
-  "n": 6,
+  "n": 5,
   "median_hold_3s": 1.081,
   "avd_gate_pct": 65.0,
   "median_avg_view_pct": 45.8,
-  "gate_pass_share": 0.333,
+  "gate_pass_share": 0.4,
   "gate_pass_n": 2,
   "gate_breakdown_n": 32,
   "gate_by_format": {
-    "shock_number": {
-      "n": 8,
-      "median_avd": 26.4,
-      "gate_pass_n": 2,
-      "gate_pass_share": 0.25
-    },
-    "para_hikayesi": {
-      "n": 6,
-      "median_avd": 85.0,
-      "gate_pass_n": 3,
-      "gate_pass_share": 0.5
-    },
-    "ekonomi_defteri": {
-      "n": 5,
-      "median_avd": 32.5,
-      "gate_pass_n": 1,
-      "gate_pass_share": 0.2
-    },
     "myth": {
-      "n": 5,
+      "n": 6,
       "median_avd": 29.6,
       "gate_pass_n": 0,
       "gate_pass_share": 0.0
+    },
+    "para_hikayesi": {
+      "n": 7,
+      "median_avd": 53.1,
+      "gate_pass_n": 2,
+      "gate_pass_share": 0.286
+    },
+    "shock_number": {
+      "n": 7,
+      "median_avd": 26.4,
+      "gate_pass_n": 2,
+      "gate_pass_share": 0.286
+    },
+    "ekonomi_defteri": {
+      "n": 4,
+      "median_avd": 47.2,
+      "gate_pass_n": 1,
+      "gate_pass_share": 0.25
     },
     "single_concept": {
       "n": 5,
@@ -60,9 +60,9 @@
       "id": "youtube:dgO9Yb10SHo",
       "video_id": "dgO9Yb10SHo",
       "duration_sec": 34,
-      "hold_3s": 1.267,
+      "hold_3s": 1.265,
       "rel_perf_3s": 0.573,
-      "avg_view_pct": 86.8,
+      "avg_view_pct": 86.7,
       "published_utc": "2026-11-19T16:01:38Z"
     },
     {
@@ -91,15 +91,6 @@
       "rel_perf_3s": 0.528,
       "avg_view_pct": 75.3,
       "published_utc": "2026-11-17T18:00:45Z"
-    },
-    {
-      "id": "youtube:tYCdJoCZ9qI",
-      "video_id": "tYCdJoCZ9qI",
-      "duration_sec": 26,
-      "hold_3s": 1.053,
-      "rel_perf_3s": 0.194,
-      "avg_view_pct": 42.3,
-      "published_utc": "2026-11-15T16:01:52Z"
     }
   ]
 }
