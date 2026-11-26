@@ -1,5 +1,9 @@
 # Günlük Operasyon Günlüğü
 
+## 2026-11-26
+**Yayınlanan yazı:** [Altın Fonu Nedir, Nasıl Alınır? 2026 Stopaj ve Maliyet](/blog/altin-fonu-nedir-nasil-alinir-stopaj-getiri)
+Seçim kaynağı: fırsat motoru (kuyruk+backlog boş, takvimde 1-3 gün içinde 🔴 yok (TÜFE 3 Ara), GSC fırsatları mevcut sayfalarca karşılanıyor; "altın fonu" hacim 26,8 YENI_YAZI, sitede özel yazı yoktu)
+
 ## 2026-11-24
 **Yayınlanan yazı:** [Doğum ve Askerlik Borçlanması Ücreti 2026: Ne Kadar?](/blog/dogum-askerlik-borclanmasi-ucreti-2026-2027)
 Seçim kaynağı: fırsat motoru / zam sezonu (kuyruk+backlog boş, takvimde 1-3 gün içinde yazılmamış 🔴 yok (PCE dün yazıldı), GSC fırsatları ve motorun YENI_YAZI adayları mevcut/301'li sayfalarca karşılanıyor; sitede karşılığı olmayan "ne kadar?" niyeti, tutar Ocak 2027 asgari ücretine bağlı; askerlik %45 oranı 7566 sayılı Kanun ile doğrulandı)
