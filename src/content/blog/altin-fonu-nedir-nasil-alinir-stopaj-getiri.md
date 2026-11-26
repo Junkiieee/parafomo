@@ -45,7 +45,7 @@ Altına yatırım yapmanın üç yaygın yolu aynı fiyata bağlıdır ama maliy
 |---|---|---|---|---|
 | Alış-satış makası | Yok (tek fiyat) | Düşük (borsa kademesi) | Orta–yüksek | Düşük–orta |
 | Alımda vergi | Yok | Yok | Yok | Binde 2 BSMV |
-| Yıllık maliyet | Yönetim ücreti (fiyata yansır) | Yönetim ücreti (genelde daha düşük) | Saklama (varsa kasa) | Genelde yok |
+| Yıllık maliyet | Yönetim ücreti (fiyata yansır) | Yönetim ücreti (fona göre değişir) | Saklama (varsa kasa) | Genelde yok |
 | Kazançta stopaj | %17,5 (9.7.2025 sonrası alım) | Fon türüne göre | Yok | Fiyat farkına yok |
 | İşlem zamanı | Gün içinde emir, günde bir fiyat | Seans içi anlık | Kuyumcu açıkken | Banka işlem saatleri |
 | Paraya dönüş | Genelde 1-2 iş günü | T+2 takas | Anında (nakit) | Anında |
