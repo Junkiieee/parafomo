@@ -1,0 +1,445 @@
+{
+ "slug": "ogretmen-maasi-ocak-2027-ne-kadar-olacak",
+ "title": "Öğretmen maaşı Ocak 2027'de ne kadar olacak? 92.202 TL tahmini",
+ "description": "Kadrolu öğretmenin Ocak 2027 maaşı, memur zammı formülüyle bugünden tahmin edilebiliyor. Altı aylık enflasyon tahmini, toplu sözleşme ve enflasyon farkı birleşince ortaya yaklaşık %10,75'lik bir zam çıkıyor. Kesin oran ise Kasım ve Aralık enflasyonu açıklanınca belli olacak; kişinin tutarı derece, kademe ve aile yardımına göre değişir.\nKaynak: Temmuz 2026 öğretmen maaş tabloları (İstiklal, Politikam); HMB memur katsayıları; TÜİK TÜFE; 2027 1. yarı toplu sözleşme %5\nKendi hesabını yap: parafomo.com/ogretmen-maasi/",
+ "tags": [
+  "öğretmen maaşı",
+  "öğretmen maaşı 2027",
+  "memur zammı",
+  "ocak 2027 zam",
+  "enflasyon farkı",
+  "öğretmen zammı",
+  "maaş hesaplama"
+ ],
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Elif öğretmenin Ocak maaşı şimdiden hesaplanabiliyor.",
+   "cap": "Elif öğretmenin Ocak maaşı şimdiden hesaplanabiliyor."
+  },
+  {
+   "id": "s1",
+   "say": "Temmuz'dan beri seksen üç bin iki yüz elli dört lira alıyor.",
+   "cap": "Temmuz'dan beri 83.254 TL alıyor."
+  },
+  {
+   "id": "s2",
+   "say": "Ama Ocak zammı henüz açıklanmadı.",
+   "cap": "Ama Ocak zammı henüz açıklanmadı."
+  },
+  {
+   "id": "s3",
+   "say": "Zammı altı aylık enflasyon belirler: tahmin yüzde on iki virgül seksen altı.",
+   "cap": "Zammı altı aylık enflasyon belirler: tahmin %12,86."
+  },
+  {
+   "id": "s4",
+   "say": "Yüzde 7'yi aşan kısım, toplu sözleşmeyle çarpılır.",
+   "cap": "%7'yi aşan kısım, toplu sözleşmeyle çarpılır."
+  },
+  {
+   "id": "s5",
+   "say": "Bu yüzden memur zammı tahmini yüzde on virgül yetmiş beş.",
+   "cap": "Bu yüzden memur zammı tahmini %10,75."
+  },
+  {
+   "id": "s6",
+   "say": "Elif'in maaşı yaklaşık doksan iki bin iki yüz iki liraya çıkar.",
+   "cap": "Elif'in maaşı yaklaşık 92.202 TL'ye çıkar."
+  },
+  {
+   "id": "s7",
+   "say": "Uzman, başöğretmen, ek ders, emekli: hepsi aynı oranda artar.",
+   "cap": "Uzman, başöğretmen, ek ders, emekli: hepsi aynı oranda artar."
+  },
+  {
+   "id": "s8",
+   "say": "Ama asıl şaşırtıcı olan: kesin oranı iki ay belirleyecek.",
+   "cap": "Ama asıl şaşırtıcı olan: kesin oranı iki ay belirleyecek."
+  },
+  {
+   "id": "s9",
+   "say": "Sen hangisisin: Ocak'ı bekleyen mi, şimdiden hesaplayan mı?",
+   "cap": "Sen hangisisin: Ocak'ı bekleyen mi, şimdiden hesaplayan mı?"
+  },
+  {
+   "id": "s10",
+   "say": "O zaman Ocak maaşını kendi derecenle şimdiden hesapla.",
+   "cap": "O zaman Ocak maaşını kendi derecenle şimdiden hesapla."
+  }
+ ],
+ "data": {
+  "tema": "alacakaranlik",
+  "kanca": [
+   "OCAK MAAŞI",
+   "ŞİMDİDEN HESAPLANIYOR"
+  ],
+  "vurgu": [
+   "Ocak",
+   "şimdiden",
+   "enflasyon",
+   "toplu sözleşme",
+   "memur zammı",
+   "aynı oranda",
+   "iki ay",
+   "hesapla"
+  ],
+  "scenes": [
+   {
+    "line": "s0",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "saskin",
+      "x": 540,
+      "y": 1000,
+      "olcek": 0.867,
+      "giris": "alt",
+      "olaylar": [
+       {
+        "kelime": "hesaplanabiliyor",
+        "ifade": "mutlu",
+        "eylem": "zipla",
+        "deger": 0.5
+       }
+      ]
+     }
+    ],
+    "etiket": "Ocak 2027"
+   },
+   {
+    "line": "s1",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 320,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "yok"
+     },
+     {
+      "id": "b",
+      "k": "zarf",
+      "ifade": "mutlu",
+      "x": 760,
+      "y": 1050,
+      "olcek": 0.6,
+      "giris": "sag"
+     }
+    ],
+    "sayi": {
+     "deger": 83254,
+     "bas": 73368,
+     "birim": "₺",
+     "kelime": "alıyor",
+     "y": 520,
+     "not": "1/4 derece, eş yardımı dahil",
+     "say": true
+    },
+    "etiket": "Temmuz 2026",
+    "kaynak": "Kaynak: Temmuz 2026 öğretmen maaş tabloları (İstiklal, Politikam)"
+   },
+   {
+    "line": "s2",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "endiseli",
+      "x": 540,
+      "y": 1020,
+      "olcek": 0.85,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "açıklanmadı",
+        "ifade": "saskin",
+        "eylem": "titre",
+        "deger": 0.4
+       }
+      ]
+     }
+    ],
+    "baslik": [
+     "OCAK ZAMMI",
+     "?"
+    ]
+   },
+   {
+    "line": "s3",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "enflasyon",
+      "ifade": "normal",
+      "x": 320,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "sag",
+      "olaylar": [
+       {
+        "kelime": "tahmin",
+        "eylem": "zipla",
+        "deger": 0.6
+       }
+      ]
+     },
+     {
+      "id": "b",
+      "k": "kadin",
+      "ifade": "endiseli",
+      "x": 760,
+      "y": 1065,
+      "olcek": 0.65,
+      "giris": "yok"
+     }
+    ],
+    "sayi": {
+     "deger": 12.86,
+     "birim": "%",
+     "kelime": "virgül",
+     "y": 520,
+     "not": "6 aylık enflasyon tahmini",
+     "say": true
+    },
+    "etiket": "Tahmin",
+    "kaynak": "Kaynak: TÜİK TÜFE; 6 aylık enflasyon tahmini"
+   },
+   {
+    "line": "s4",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "yuzde",
+      "ifade": "normal",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "alt",
+      "olaylar": [
+       {
+        "kelime": "çarpılır",
+        "ifade": "mutlu",
+        "eylem": "zipla",
+        "deger": 0.5
+       }
+      ]
+     }
+    ],
+    "sayi": {
+     "deger": 7,
+     "birim": "%",
+     "kelime": "aşan",
+     "y": 520,
+     "not": "Eşiği aşan kısım = enflasyon farkı",
+     "say": false
+    },
+    "baslik": [
+     "TOPLU SÖZLEŞME",
+     "× ENFLASYON FARKI"
+    ],
+    "kaynak": "Kaynak: 2027 1. yarı toplu sözleşme %5; HMB memur katsayıları"
+   },
+   {
+    "line": "s5",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "yuzde",
+      "ifade": "mutlu",
+      "x": 540,
+      "y": 1080,
+      "olcek": 0.7,
+      "giris": "yok"
+     }
+    ],
+    "sayi": {
+     "deger": 10.75,
+     "bas": 0,
+     "birim": "%",
+     "kelime": "virgül",
+     "y": 520,
+     "not": "Memur zammı tahmini, Ocak 2027",
+     "say": true
+    },
+    "etiket": "Tahmin",
+    "kaynak": "Kaynak: HMB memur katsayıları; TÜİK TÜFE; toplu sözleşme %5"
+   },
+   {
+    "line": "s6",
+    "cubuk": {
+     "a": {
+      "etiket": "Temmuz 2026",
+      "deger": 83254
+     },
+     "b": {
+      "etiket": "Ocak 2027 (tahmin)",
+      "deger": 92202
+     },
+     "birim": "₺",
+     "not": "1/4 derece kadrolu öğretmen, net"
+    },
+    "etiket": "Tahmin",
+    "kaynak": "Kaynak: Temmuz 2026 öğretmen maaş tabloları; Parafomo hesabı (%10,75 tahmini)"
+   },
+   {
+    "line": "s7",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "mutlu",
+      "x": 220,
+      "y": 1050,
+      "olcek": 0.5,
+      "giris": "sol"
+     },
+     {
+      "id": "b",
+      "k": "erkek",
+      "ifade": "mutlu",
+      "x": 540,
+      "y": 1050,
+      "olcek": 0.5,
+      "giris": "alt",
+      "olaylar": [
+       {
+        "kelime": "aynı",
+        "eylem": "zipla",
+        "deger": 0.5
+       }
+      ]
+     },
+     {
+      "id": "c",
+      "k": "emekli",
+      "ifade": "mutlu",
+      "x": 860,
+      "y": 1050,
+      "olcek": 0.5,
+      "giris": "sag"
+     }
+    ],
+    "baslik": [
+     "UZMAN • BAŞÖĞRETMEN",
+     "EK DERS • EMEKLİ"
+    ],
+    "etiket": "Aynı katsayı"
+   },
+   {
+    "line": "s8",
+    "sohbet": {
+     "baslik": "ÖĞRETMENLER ODASI",
+     "uyeler": "Elif, Mert, sen",
+     "y": 260,
+     "mesajlar": [
+      {
+       "kim": "Mert",
+       "metin": "Kasım verisi *3 Aralık*'ta",
+       "saat": "15:10",
+       "kelime": "şaşırtıcı"
+      },
+      {
+       "kim": "Elif",
+       "metin": "Aralık'ınki Ocak başında",
+       "saat": "15:11",
+       "kelime": "kesin"
+      },
+      {
+       "ben": true,
+       "metin": "Kesin oran o zaman belli",
+       "saat": "15:12",
+       "kelime": "iki"
+      }
+     ]
+    },
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "saskin",
+      "x": 540,
+      "y": 1150,
+      "olcek": 0.5,
+      "giris": "alt"
+     }
+    ],
+    "kaynak": "Kaynak: TÜİK TÜFE açıklama takvimi"
+   },
+   {
+    "line": "s9",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 300,
+      "y": 1050,
+      "olcek": 0.55,
+      "giris": "sol"
+     },
+     {
+      "id": "b",
+      "k": "erkek",
+      "ifade": "mutlu",
+      "x": 780,
+      "y": 1050,
+      "olcek": 0.55,
+      "giris": "sag",
+      "olaylar": [
+       {
+        "kelime": "hesaplayan",
+        "eylem": "zipla",
+        "deger": 0.5
+       }
+      ]
+     }
+    ],
+    "baslik": [
+     "BEKLEYEN MİSİN,",
+     "HESAPLAYAN MI?"
+    ],
+    "soru": true
+   },
+   {
+    "line": "s10",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "mutlu",
+      "x": 540,
+      "y": 1020,
+      "olcek": 0.85,
+      "giris": "alt",
+      "olaylar": [
+       {
+        "kelime": "hesapla",
+        "eylem": "zipla",
+        "deger": 0.6
+       }
+      ]
+     }
+    ],
+    "baslik": [
+     "OCAK MAAŞINI",
+     "ŞİMDİDEN HESAPLA"
+    ],
+    "etiket": "parafomo.com"
+   }
+  ]
+ },
+ "comment": "Sen hangisisin: Ocak'ı bekleyen mi, şimdiden hesaplayan mı? Kaynak: Temmuz 2026 öğretmen maaş tabloları (İstiklal, Politikam); HMB memur katsayıları; TÜİK TÜFE; 2027 1. yarı toplu sözleşme %5. Kendi derecenle hesapla: parafomo.com/ogretmen-maasi/",
+ "link": "/ogretmen-maasi/",
+ "format": "para_hikayesi",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "engine": "hikaye",
+ "lead": 0.05,
+ "series": "Para Hikâyeleri",
+ "skin": "iso"
+}

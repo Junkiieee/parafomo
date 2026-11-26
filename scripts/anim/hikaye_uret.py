@@ -421,7 +421,7 @@ SAHNE = f"""Sahne alanları (hepsi isteğe bağlı, sahne başına 1-3 öğe; sa
    (iki kişiyi karşılaştıran defter listesi; sütun başına 2-5 kısa kalem, her biri en çok 14 harf; "~" ile başlayan kalemin üstü çizilir;
    iki karakter isteğe bağlı, liste altında y 1100-1150, olcek 0.55; vs yerine kalem kalem farkı anlatırken kullan)
 - "sohbet": {{"baslik": "EV ARKADAŞLARI", "uyeler": "Elif, Mert, sen", "y": 260, "mesajlar": [{{"kim": "Mert", "metin": "Kira *26.246 TL* oldu", "saat": "21:04", "kelime": "kira"}}, {{"ben": true, "metin": "Maaş?", "saat": "21:05"}}]}}
-   (grup mesajı kartı; 2-4 kısa mesaj, her biri en çok 28 harf; "ben": true = izleyicinin kendisi, sağda; "kelime" o kelimede düşer;
+   (grup mesajı kartı; 2-4 kısa mesaj, her biri en çok 28 harf; "ben": true = izleyicinin kendisi, sağda; "kelime" o kelimede düşer — kelimeleri satırın İLK YARISINDAN seç, son mesaj satır bitmeden ekranda olmalı (son kelimeye bağlanan mesaj sahne kapanırken görünmez);
    rakam mesajda da VERİ PAKETİNDEN; marka adı yok; karakter koyacaksan kartın altında y 1150, olcek 0.5; hikâyeyi bir sohbetle açarken ya da tartışmayı gösterirken kullan, videoda en çok 1 sahne)
 - "dekor": [{{"d": DEKOR, "adet": 1-24, "kalan": sayı (isteğe bağlı, kelimede soluklaşır), "kelime": "…", "x": 540, "y": 1000-1150, "olcek": 0.3-2}}]
 - "kaynak": "Kaynak: … (rakamlı sahnelerde ZORUNLU)"
