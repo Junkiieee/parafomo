@@ -13,6 +13,8 @@ import Newsletter from '../components/Newsletter.astro';
 //   yıl, oran değişikliği sınırları, 2006-2026) kuruşu kuruşuna aynı sonucu verdi (2026-10-19).
 // - Tecil: 6183 md. 48 (7582 s. K., RG 4.6.2026: 72 ay, teminatsız 1 milyon TL; 11414 s. CK, RG 13.6.2026: 10 milyon TL);
 //   tecil faizi yıllık %39 (Seri:C Sıra No:9, RG 13.11.2025); Seri:B Sıra No:20 (RG 16.6.2026): %29, son başvuru 31.8.2026.
+// - 2026-11-27 güncellemesi: 12028 sayılı CK (RG 27.11.2026, sayı 33443) → gecikme zammı aylık %3,2; Tahsilat Genel
+//   Tebliği Seri:C Sıra No:10 (aynı RG) → tecil faizi yıllık %29, yayım günü yürürlükte (alomaliye metni + foreks/akşam/cnbce).
 const RATES: [string, number, string][] = [
   // [yürürlük tarihi, aylık oran × 100, dayanak]
   ['2006-04-21', 250, '2006/10302 sayılı BKK'],
@@ -26,6 +28,7 @@ const RATES: [string, number, string][] = [
   ['2023-11-14', 350, '7782 sayılı CK'],
   ['2024-05-21', 450, '8484 sayılı CK'],
   ['2025-11-13', 370, '10556 sayılı CK'],
+  ['2026-11-27', 320, '12028 sayılı CK'],
 ];
 const RATE_PAIRS = RATES.map(([d, h]) => [d, h]);
 const MIN_DATE = RATES[0][0];
@@ -74,8 +77,10 @@ function calc(amount: number, vade: string, odeme: string) {
   return { months, days, frac, zam: Math.round(amount * frac * 100 + 1e-7) / 100 };
 }
 
-const CUR = RATES[RATES.length - 1][1] / 100; // 3,7
-const CUR_DAILY = dailyMicro(RATES[RATES.length - 1][1]) / 1e6; // 0,001234
+const CUR = RATES[RATES.length - 1][1] / 100; // 3,2
+const CUR_DAILY = dailyMicro(RATES[RATES.length - 1][1]) / 1e6; // 0,001067
+const PREV = RATES[RATES.length - 2][1] / 100; // 3,7
+const TECIL = 29; // yıllık %, Seri:C Sıra No:10 (RG 27.11.2026)
 const nf = (n: number, d = 2) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
 const tl = (n: number) => `₺${nf(n)}`;
 const pct = (h: number) => `%${(h / 100).toLocaleString('tr-TR', { maximumFractionDigits: 2 })}`;
@@ -111,15 +116,15 @@ const faq = [
   },
   {
     q: `${BU_YIL}${yilDa(BU_YIL).replace("'", '’')} gecikme zammı oranı ne kadar?`,
-    a: `Aylık %${nf(CUR, 1)}. Oran, 13 Kasım 2025 tarihli Resmî Gazete’de yayımlanan 10556 sayılı Cumhurbaşkanı Kararı’yla %4,5’ten %3,7’ye indirildi ve o günden beri uygulanıyor. Ay kesirleri günlük hesaplanır; günlük oran ${nf(CUR_DAILY, 6)}’tür. Örneğin 31 Temmuz 2026 vadeli 10.000 TL’lik borç 5 Ekim 2026’da ödenirse gecikme zammı ${nf(EX.zam)} TL olur.`,
+    a: `27 Kasım 2026’dan beri aylık %${nf(CUR, 1)}. Oran, 27 Kasım 2026 tarihli Resmî Gazete’de yayımlanan 12028 sayılı Cumhurbaşkanı Kararı’yla %${nf(PREV, 1)}’den %${nf(CUR, 1)}’ye indirildi; önceki %${nf(PREV, 1)} oranı 13 Kasım 2025’ten (10556 sayılı Karar) 26 Kasım 2026’ya kadar uygulandı. Ay kesirleri günlük hesaplanır; yeni günlük oran ise ${nf(CUR_DAILY, 6)}. Örneğin 31 Temmuz 2026 vadeli 10.000 TL’lik borç 5 Ekim 2026’da ödendiyse (o dönemki %${nf(PREV, 1)} ile) gecikme zammı ${nf(EX.zam)} TL’dir.`,
   },
   {
     q: 'Gecikme zammı ile gecikme faizi arasındaki fark nedir?',
-    a: 'Gecikme zammı, tahakkuk etmiş bir borç vadesinde ödenmediğinde vadeden ödeme gününe kadar işler (6183 sayılı Kanun md. 51) ve ay kesirleri günlük hesaplanır. Gecikme faizi ise sonradan (ikmalen, re’sen veya idarece) tarh edilen vergide, verginin normal vadesinden tahakkuk tarihine kadar geçen süre için alınır (Vergi Usul Kanunu md. 112). Oranı gecikme zammıyla aynıdır (aylık %3,7), ancak ay kesirleri hesaba katılmaz.',
+    a: 'Gecikme zammı, tahakkuk etmiş bir borç vadesinde ödenmediğinde vadeden ödeme gününe kadar işler (6183 sayılı Kanun md. 51) ve ay kesirleri günlük hesaplanır. Gecikme faizi ise sonradan (ikmalen, re’sen veya idarece) tarh edilen vergide, verginin normal vadesinden tahakkuk tarihine kadar geçen süre için alınır (Vergi Usul Kanunu md. 112). Oranı gecikme zammıyla aynıdır (27 Kasım 2026’dan beri aylık %3,2), ancak ay kesirleri hesaba katılmaz.',
   },
   {
     q: '2026’da vergi borcu yapılandırması var mı?',
-    a: 'Ekim 2026 itibarıyla başvurusu açık genel bir vergi borcu yapılandırma kanunu yok; son kapsamlı yapılandırma 2023’teki 7440 sayılı Kanun’du. 2026’da 7582 sayılı Kanun’la tecil (taksitlendirme) süresinin üst sınırı 72 aya çıktı ve 10 milyon TL’ye kadar tecillerde teminat aranmıyor. Yıllık %29 faizli özel tecil imkânının son başvuru günü 31 Ağustos 2026’ydı; sonraki tecil başvurularına genel oran olan yıllık %39 tecil faizi uygulanır.',
+    a: 'Ekim 2026 itibarıyla başvurusu açık genel bir vergi borcu yapılandırma kanunu yok; son kapsamlı yapılandırma 2023’teki 7440 sayılı Kanun’du. 2026’da 7582 sayılı Kanun’la tecil (taksitlendirme) süresinin üst sınırı 72 aya çıktı ve 10 milyon TL’ye kadar tecillerde teminat aranmıyor. Yıllık %29 faizli özel tecil imkânının son başvuru günü 31 Ağustos 2026’ydı. Genel tecil faizi de 27 Kasım 2026’da yayımlanan Tahsilat Genel Tebliği (Seri: C Sıra No: 10) ile yıllık %39’dan %29’a indirildi; bu tarihten sonraki başvurulara %29 uygulanır.',
   },
   {
     q: 'MTV borcu olan araç satılabilir mi, muayeneye girebilir mi?',
@@ -158,7 +163,7 @@ const breadcrumbs = [
       <div class="kpi">
         <span class="kpi-label">Aylık gecikme zammı</span>
         <span class="kpi-val">%{nf(CUR, 1)}</span>
-        <span class="kpi-sub">13 Kasım 2025’ten beri (önceki %4,5)</span>
+        <span class="kpi-sub">27 Kasım 2026’dan beri (önceki %{nf(PREV, 1)})</span>
       </div>
       <div class="kpi">
         <span class="kpi-label">Günlük oran (ay kesri)</span>
@@ -167,8 +172,8 @@ const breadcrumbs = [
       </div>
       <div class="kpi">
         <span class="kpi-label">Tecil faizi</span>
-        <span class="kpi-val">%39</span>
-        <span class="kpi-sub">yıllık · vergi borcu taksitlendirilirse</span>
+        <span class="kpi-val">%{TECIL}</span>
+        <span class="kpi-sub">yıllık · 27.11.2026’dan beri (önceki %39)</span>
       </div>
     </div>
 
@@ -268,8 +273,8 @@ const breadcrumbs = [
         </table>
       </div>
       <p class="table-note">
-        Kaynak: GİB “Gecikme Zammı Oranları” tablosu ve Tahsilat Genel Tebliği (Seri: A Sıra No: 1). Güncel oran 13.11.2025
-        tarihli ve 33076 sayılı Resmî Gazete’de yayımlanan 10556 sayılı Cumhurbaşkanı Kararı’yla belirlendi. BKK: Bakanlar
+        Kaynak: GİB “Gecikme Zammı Oranları” tablosu ve Tahsilat Genel Tebliği (Seri: A Sıra No: 1). Güncel oran 27.11.2026
+        tarihli ve 33443 sayılı Resmî Gazete’de yayımlanan 12028 sayılı Cumhurbaşkanı Kararı’yla belirlendi. BKK: Bakanlar
         Kurulu Kararı, CK: Cumhurbaşkanı Kararı.
       </p>
     </section>
@@ -279,7 +284,7 @@ const breadcrumbs = [
       <ul>
         <li><strong>Süre:</strong> vade günü sayılmaz, ödeme günü sayılır.</li>
         <li><strong>Tam aylar</strong> aylık oranla (bugün %{nf(CUR, 1)}), <strong>kalan günler</strong> günlük oranla hesaplanır.
-          Günlük oran, aylık oranın 30’a bölünüp 6. ondalık haneye yukarı yuvarlanmasıyla bulunur: 3,7 / 100 / 30 = 0,0012333… → {nf(CUR_DAILY, 6)}.</li>
+          Günlük oran, aylık oranın 30’a bölünüp 6. ondalık haneye yukarı yuvarlanmasıyla bulunur: 3,2 / 100 / 30 = 0,0010666… → {nf(CUR_DAILY, 6)} (önceki %3,7 döneminde 0,001234).</li>
         <li><strong>Ay sayımı:</strong> ay, vadeyi izleyen gün başlar ve sonraki ayın vade gününde biter; vade ayın son günüyse
           ay sonlarında biter. Vadesi 31 Temmuz olan borçta 1–31 Ağustos ve 1–30 Eylül birer tam aydır. 30 günlük ay kesri tam ay sayılır.</li>
         <li><strong>Oran değişirse:</strong> bir tam ay içinde oran değiştiyse o aya eski oran uygulanır; kalan günlerde
@@ -290,15 +295,15 @@ const breadcrumbs = [
           Trafik cezasının kendi gecikme kuralı için → <a href="/trafik-cezalari-hesaplama/">trafik cezaları</a>.</li>
       </ul>
       <p class="example">
-        <strong>Örnek:</strong> 31 Temmuz 2026 vadeli 10.000 TL’lik borç 5 Ekim 2026’da ödenirse: 2 tam ay × %{nf(CUR, 1)} = 740,00 TL;
-        1–5 Ekim için 5 gün × {nf(CUR_DAILY, 6)} × 10.000 = 61,70 TL. Gecikme zammı <strong>{nf(EX.zam)} TL</strong>, toplam borç
+        <strong>Örnek:</strong> 31 Temmuz 2026 vadeli 10.000 TL’lik borç 5 Ekim 2026’da ödenirse: o dönemki aylık %3,7 ile 2 tam ay × %3,7 = 740,00 TL;
+        1–5 Ekim için 5 gün × 0,001234 × 10.000 = 61,70 TL. Gecikme zammı <strong>{nf(EX.zam)} TL</strong>, toplam borç
         {nf(10000 + EX.zam)} TL.
       </p>
     </section>
 
     <section class="table-block">
       <h2>10.000 TL vergi borcunda gecikme zammı</h2>
-      <p class="table-intro">31 Temmuz 2026 vadeli borç, vadeden sonra geçen süreye göre (aylık %{nf(CUR, 1)} değişmezse):</p>
+      <p class="table-intro">31 Temmuz 2026 vadeli borç, vadeden sonra geçen süreye göre (26 Kasım 2026’ya kadar aylık %{nf(PREV, 1)}, sonra %{nf(CUR, 1)} değişmezse):</p>
       <table class="rate-table">
         <thead><tr><th>Gecikme süresi</th><th>Gecikme zammı</th><th>Toplam borç</th></tr></thead>
         <tbody>
@@ -313,16 +318,16 @@ const breadcrumbs = [
       <h2>Gecikme zammı, gecikme faizi, pişmanlık zammı ve tecil faizi</h2>
       <div class="table-scroll">
         <table class="rate-table wide">
-          <thead><tr><th>Tür</th><th>Ne zaman uygulanır?</th><th>Oran (Ekim 2026)</th><th>Ay kesri</th></tr></thead>
+          <thead><tr><th>Tür</th><th>Ne zaman uygulanır?</th><th>Oran (27.11.2026’dan)</th><th>Ay kesri</th></tr></thead>
           <tbody>
             <tr><td>Gecikme zammı<span class="row-note">6183 md. 51</span></td><td>Tahakkuk etmiş borç vadesinde ödenmezse, vadeden ödemeye kadar</td><td>aylık %{nf(CUR, 1)}</td><td>günlük hesaplanır</td></tr>
             <tr><td>Gecikme faizi<span class="row-note">VUK md. 112</span></td><td>Sonradan (ikmalen, re’sen, idarece) tarh edilen vergide, normal vadeden tahakkuka kadar</td><td>gecikme zammı oranında</td><td>dikkate alınmaz</td></tr>
             <tr><td>Pişmanlık zammı<span class="row-note">VUK md. 371</span></td><td>Pişmanlıkla bildirilen, ödeme süresi geçmiş vergide</td><td>gecikme zammı oranında</td><td>kesir tam ay sayılır</td></tr>
-            <tr><td>Tecil faizi<span class="row-note">6183 md. 48</span></td><td>Vergi dairesince taksitlendirilen (tecil edilen) borçta</td><td>yıllık %39</td><td>—</td></tr>
+            <tr><td>Tecil faizi<span class="row-note">6183 md. 48</span></td><td>Vergi dairesince taksitlendirilen (tecil edilen) borçta</td><td>yıllık %{TECIL}</td><td>—</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="table-note">Tecil faizi oranı: Tahsilat Genel Tebliği (Seri: C Sıra No: 9), 13.11.2025’ten itibaren.</p>
+      <p class="table-note">Tecil faizi oranı: Tahsilat Genel Tebliği (Seri: C Sıra No: 10), 27.11.2026’dan itibaren (önceki %39, Seri: C Sıra No: 9).</p>
     </section>
 
     <section class="prose-block">
@@ -371,7 +376,7 @@ const breadcrumbs = [
           günü 31 Ağustos 2026’ydı; süresinde yapılmayan başvurular genel hükümlere göre değerlendirilir.</li>
         <li><strong>Bugün tecil:</strong> borcu vadesinde ödemek sizi “çok zor duruma” düşürecekse vergi dairesinden yazılı olarak
           tecil isteyebilirsiniz (Dijital Vergi Dairesi → Ödeme ve Borç İşlemleri → Taksitlendirme/Tecil Talebi Dilekçesi).
-          Genel tecil faizi yıllık %39’dur; taksit sayısını tecile yetkili idare borçlunun mali durumuna göre belirler, kanuni
+          Genel tecil faizi 27 Kasım 2026’dan beri yıllık %{TECIL}’dur (önceki %39; o tarihten önceki başvurularda 26 Kasım’a kadar eski oran işler); taksit sayısını tecile yetkili idare borçlunun mali durumuna göre belirler, kanuni
           üst sınır 72 aydır. Gecikme zammı
           tecil talep tarihine kadar (bu tarih hariç) hesaplanır, sonra taksitlere tecil faizi işler.</li>
       </ul>
