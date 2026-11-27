@@ -25,7 +25,7 @@ faq:
 
 IMEI, her cep telefonuna özel 15 haneli kimlik numarasıdır (telefonda `*#06#` tuşlayarak görebilirsin). Türkiye'de yerli hatla şebekeye bağlanabilmek için cihazın IMEI numarasının Bilgi Teknolojileri ve İletişim Kurumu (BTK) kayıt sisteminde olması gerekir. Türkiye'de resmî yoldan satılan telefonlar zaten kayıtlıdır; **yurt dışından yolcu beraberinde getirilen telefon** ise "cep telefonu kayıt harcı" ödenerek kayda alınır.
 
-Bu harç, 492 sayılı Harçlar Kanunu'na bağlı tarifede yer alır. Harç tutarları her yıl, Vergi Usul Kanunu'na göre ilan edilen **yeniden değerleme oranı** kadar artar. Bu oran, Ekim ayına kadarki 12 aylık Yİ-ÜFE ortalamasına göre hesaplanır. 2027 oranı, 24 Kasım 2026 tarihli Resmî Gazete'de yayımlanan VUK Genel Tebliği (Sıra No: 599) ile **%27,83** olarak ilan edildi. Oranın nasıl hesaplandığını ve diğer kalemlere etkisini [yeniden değerleme oranı sayfamızda](/yeniden-degerleme-orani) görebilirsin.
+Bu harç, 492 sayılı Harçlar Kanunu'na bağlı tarifede yer alır. Harç tutarları her yıl, Vergi Usul Kanunu'na göre ilan edilen **yeniden değerleme oranı** kadar artar. Bu oran, Yİ-ÜFE'nin Ekim ayı itibarıyla 12 aylık ortalamalara göre değişimiyle hesaplanır. 2027 oranı, 24 Kasım 2026 tarihli Resmî Gazete'de yayımlanan VUK Genel Tebliği (Sıra No: 599) ile **%27,83** olarak ilan edildi. Oranın nasıl hesaplandığını ve diğer kalemlere etkisini [yeniden değerleme oranı sayfamızda](/yeniden-degerleme-orani) görebilirsin.
 
 Önemli istisna: Cumhurbaşkanı, harçlar ve bazı vergilerde bu oranı farklı belirleme yetkisine sahip. 2026'da tebliğ oranı %25,49 iken harçlara **%18,95** artış uygulandı. Bu yüzden 2027 rakamı, yıl sonu kararı çıkana kadar bir tahmindir.
 
@@ -58,7 +58,7 @@ Kayıt hakkı yalnızca **yolcu beraberinde** getirilen cihazlar içindir ve sü
 
 Dikkat edilmesi gereken birkaç kural:
 
-- Kayıt hakkı kişiye bağlıdır ve belli bir sürede tek cihazla sınırlıdır (güncel uygulamada bu süre genellikle 2 yılda 1 cihaz olarak aktarılıyor). İşlemden önce güncel kuralı e-Devlet'ten teyit et.
+- Kayıt hakkı kişiye bağlıdır ve belli bir sürede tek cihazla sınırlıdır (uygulamada yolcu başına 3 yılda 1 cihaz hakkı tanınıyor). İşlemden önce güncel kuralı e-Devlet'ten teyit et.
 - Kargo veya posta ile gelen telefon bu kapsama girmez; ithalat vergilerine tabidir.
 - Harcı ödemek tek başına yetmez; kayıt işlemini de süre dolmadan bitirmen gerekir.
 
