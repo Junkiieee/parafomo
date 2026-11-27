@@ -301,6 +301,15 @@ def guncel_veriler():
     k = j("kira-artis-2026.json")
     if k.get("guncelOran"):
         out.append(f"Kira artış tavanı ({k['guncelAy']}): %{str(k['guncelOran']).replace('.', ',')} (12 aylık TÜFE ortalaması)")
+    au = j("asgari-ucret.json")   # 2026-11-27: #57 2025 prim oranlarıyla (%17,75) yazılmıştı → oranları üreticiye ver
+    g, o = au.get("guncel") or {}, au.get("oranlar") or {}
+    if g.get("brut") and o.get("sgkIsveren"):
+        f = lambda x: str(x).replace(".", ",")
+        tl = lambda x: f"{float(x):,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+        out.append(f"{o.get('yil', g.get('yil'))} asgari ücret: brüt {tl(g['brut'])} TL, net {tl(g.get('net', 0))} TL; çalışan kesintisi "
+                   f"SGK %{f(o['sgkIsci'])} + işsizlik %{f(o['issizlikIsci'])} (gelir/damga vergisi istisna); işveren payı SGK "
+                   f"%{f(o['sgkIsveren'])} + işsizlik %{f(o['issizlikIsveren'])} (teşviksiz), Hazine teşviki imalatta "
+                   f"{f(o['tesvikImalat'])} puan, imalat dışı {f(o['tesvikDiger'])} puan")
     m = sorted(j("tufe-aylik.json").get("months", []), key=lambda x: x["ay"])
     if m:
         out.append(f"TÜFE {m[-1]['ay']}: yıllık %{str(m[-1]['yillik']).replace('.', ',')}, aylık %{str(m[-1]['aylik']).replace('.', ',')}")
