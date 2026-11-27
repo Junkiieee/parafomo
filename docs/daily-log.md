@@ -1,5 +1,9 @@
 # Günlük Operasyon Günlüğü
 
+## 2026-11-27
+**Yayınlanan yazı:** [IMEI Kayıt Ücreti 2027: Ne Kadar Olacak, Nasıl Ödenir?](/blog/imei-kayit-ucreti-2027-yurt-disi-telefon-kayit-rehberi)
+Seçim kaynağı: fırsat motoru / mevsimsel zam takvimi (kuyruk+backlog boş, takvimde 1-3 gün içinde 🔴 yok (TÜFE 3 Ara), GSC fırsatları mevcut sayfalarca karşılanıyor; Aralık zam sezonu sorgusu "imei kayıt ücreti 2027", sitede özel yazı yoktu)
+
 ## 2026-11-26
 **Yayınlanan yazı:** [Altın Fonu Nedir, Nasıl Alınır? 2026 Stopaj ve Maliyet](/blog/altin-fonu-nedir-nasil-alinir-stopaj-getiri)
 Seçim kaynağı: fırsat motoru (kuyruk+backlog boş, takvimde 1-3 gün içinde 🔴 yok (TÜFE 3 Ara), GSC fırsatları mevcut sayfalarca karşılanıyor; "altın fonu" hacim 26,8 YENI_YAZI, sitede özel yazı yoktu)
