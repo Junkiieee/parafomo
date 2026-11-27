@@ -1,52 +1,70 @@
 {
-  "fetched_utc": "2026-11-26T08:46:10Z",
+  "fetched_utc": "2026-11-27T08:46:09Z",
   "hold_sec": 3.0,
-  "n": 5,
+  "n": 7,
   "median_hold_3s": 1.081,
   "avd_gate_pct": 65.0,
   "median_avg_view_pct": 45.8,
-  "gate_pass_share": 0.4,
+  "gate_pass_share": 0.286,
   "gate_pass_n": 2,
-  "gate_breakdown_n": 32,
+  "gate_breakdown_n": 34,
   "gate_by_format": {
+    "ekonomi_defteri": {
+      "n": 5,
+      "median_avd": 32.5,
+      "gate_pass_n": 1,
+      "gate_pass_share": 0.2
+    },
+    "para_hikayesi": {
+      "n": 8,
+      "median_avd": 54.9,
+      "gate_pass_n": 2,
+      "gate_pass_share": 0.25
+    },
     "myth": {
       "n": 6,
-      "median_avd": 29.6,
+      "median_avd": 0.0,
       "gate_pass_n": 0,
       "gate_pass_share": 0.0
     },
-    "para_hikayesi": {
-      "n": 7,
-      "median_avd": 53.1,
-      "gate_pass_n": 2,
-      "gate_pass_share": 0.286
-    },
     "shock_number": {
-      "n": 7,
-      "median_avd": 26.4,
-      "gate_pass_n": 2,
-      "gate_pass_share": 0.286
-    },
-    "ekonomi_defteri": {
-      "n": 4,
-      "median_avd": 47.2,
+      "n": 8,
+      "median_avd": 22.0,
       "gate_pass_n": 1,
-      "gate_pass_share": 0.25
+      "gate_pass_share": 0.125
     },
     "single_concept": {
-      "n": 5,
-      "median_avd": 0.0,
+      "n": 4,
+      "median_avd": 24.9,
       "gate_pass_n": 0,
       "gate_pass_share": 0.0
     },
     "daily-short": {
       "n": 3,
-      "median_avd": 62.4,
+      "median_avd": 57.1,
       "gate_pass_n": 1,
       "gate_pass_share": 0.333
     }
   },
   "videos": [
+    {
+      "id": "youtube:3uMiRkGPCQM",
+      "video_id": "3uMiRkGPCQM",
+      "duration_sec": 40,
+      "hold_3s": 1.267,
+      "rel_perf_3s": 0.483,
+      "avg_view_pct": 63.4,
+      "published_utc": "2026-11-24T16:01:43Z"
+    },
+    {
+      "id": "youtube:RrT6FKTTViA",
+      "video_id": "RrT6FKTTViA",
+      "duration_sec": 36,
+      "hold_3s": 1.0,
+      "rel_perf_3s": 0.066,
+      "avg_view_pct": 38.5,
+      "published_utc": "2026-11-22T18:00:46Z"
+    },
     {
       "id": "youtube:99CS7Z9c_UE",
       "video_id": "99CS7Z9c_UE",
@@ -61,7 +79,7 @@
       "video_id": "dgO9Yb10SHo",
       "duration_sec": 34,
       "hold_3s": 1.265,
-      "rel_perf_3s": 0.573,
+      "rel_perf_3s": 0.572,
       "avg_view_pct": 86.7,
       "published_utc": "2026-11-19T16:01:38Z"
     },
