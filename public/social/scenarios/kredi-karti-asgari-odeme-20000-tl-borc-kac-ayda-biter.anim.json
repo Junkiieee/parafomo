@@ -1,0 +1,323 @@
+{
+ "slug": "kredi-karti-asgari-odeme-20000-tl-borc-kac-ayda-biter",
+ "title": "Kredi kartında asgari ödeme: 20.000 TL borç neden bitmez? Cevap 29 ay",
+ "description": "Elif kart borcunu her ay ödedi ama borç bir türlü bitmedi. Yeni harcama yapmadan, yalnız asgari ödemeyle 20.000 TL borç yaklaşık 29 ayda kapanıyor ve toplam yaklaşık 23.796 TL ödeniyor. Dönem borcu tamamen ödenirse faiz 0 TL. Bu bir örnektir; bankanın oranı azami oranın altında olabilir.\nKaynak: TCMB azami kredi kartı faizi (2026-12-01'den, limiti 30.000 TL'ye kadar kartta aylık %3,08); BDDK 11581 sayılı Kurul Kararı (1.10.2026); KKDF/BSMV %15\nKendi hesabını yap: parafomo.com/kredi-karti-faiz-hesaplama/",
+ "tags": [
+  "kredi kartı asgari ödeme",
+  "kredi kartı faizi",
+  "kart borcu",
+  "asgari ödeme hesaplama",
+  "KKDF BSMV",
+  "kişisel finans",
+  "para hikayeleri"
+ ],
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Elif her ay ödedi, borç yine bitmedi.",
+   "cap": "Elif her ay ödedi, borç yine bitmedi."
+  },
+  {
+   "id": "s1",
+   "say": "Kartında örnek 20 bin lira borç vardı. Yeni harcama da yapmadı.",
+   "cap": "Kartında örnek 20.000 TL borç vardı. Yeni harcama da yapmadı."
+  },
+  {
+   "id": "s2",
+   "say": "Ama her ay yalnız asgariyi ödedi: borcun yüzde yirmisi.",
+   "cap": "Ama her ay yalnız asgariyi ödedi: borcun %20'si."
+  },
+  {
+   "id": "s3",
+   "say": "İlk ay rahatladı. Ama kalan borca yaklaşık 641 lira faiz ve vergi işledi.",
+   "cap": "İlk ay rahatladı. Ama kalan borca yaklaşık 641 TL faiz ve vergi işledi."
+  },
+  {
+   "id": "s4",
+   "say": "Bu yüzden borç eridi ama çok yavaş. Kapanması yaklaşık 29 ay sürdü.",
+   "cap": "Bu yüzden borç eridi ama çok yavaş. Kapanması yaklaşık 29 ay sürdü."
+  },
+  {
+   "id": "s5",
+   "say": "Asıl şaşırtıcı olan: Elif toplamda yaklaşık 23.796 lira ödedi.",
+   "cap": "Asıl şaşırtıcı olan: Elif toplamda yaklaşık 23.796 TL ödedi."
+  },
+  {
+   "id": "s6",
+   "say": "Sen hangisisin: asgariyi ödeyen mi, borcun tamamını kapatan mı?",
+   "cap": "Sen hangisisin: asgariyi ödeyen mi, borcun tamamını kapatan mı?"
+  },
+  {
+   "id": "s7",
+   "say": "Dönem borcunu tamamen ödersen faiz işlemez; her ay ödediğin borç gerçekten biter.",
+   "cap": "Dönem borcunu tamamen ödersen faiz işlemez; her ay ödediğin borç gerçekten biter."
+  }
+ ],
+ "data": {
+  "tema": "dram",
+  "kanca": [
+   "ÖDEDİ AMA",
+   "BORÇ BİTMEDİ"
+  ],
+  "vurgu": [
+   "asgariyi",
+   "bitmedi",
+   "faiz",
+   "vergi",
+   "eridi",
+   "şaşırtıcı",
+   "tamamen",
+   "biter"
+  ],
+  "scenes": [
+   {
+    "line": "s0",
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 760,
+      "y": 1000,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "bitmedi",
+        "ifade": "uzgun",
+        "eylem": "titre",
+        "deger": 0.6
+       }
+      ]
+     }
+    ],
+    "dekor": [
+     {
+      "d": "deste",
+      "adet": 6,
+      "kelime": "ödedi",
+      "x": 300,
+      "y": 1120,
+      "olcek": 0.309
+     }
+    ]
+   },
+   {
+    "line": "s1",
+    "etiket": "Örnek",
+    "sayi": {
+     "deger": 20000,
+     "birim": "₺",
+     "kelime": "borç",
+     "y": 520,
+     "not": "kart borcu",
+     "say": true
+    },
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "endiseli",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "yok"
+     }
+    ],
+    "kaynak": "Kaynak: Örnek hesap, TCMB azami kredi kartı faizi"
+   },
+   {
+    "line": "s2",
+    "sayi": {
+     "deger": 20,
+     "birim": "%",
+     "kelime": "asgariyi",
+     "y": 520,
+     "not": "asgari ödeme oranı",
+     "say": true
+    },
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 320,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "yok"
+     },
+     {
+      "id": "b",
+      "k": "zarf",
+      "ifade": "endiseli",
+      "x": 760,
+      "y": 1050,
+      "olcek": 0.6,
+      "giris": "sag"
+     }
+    ],
+    "kaynak": "Kaynak: BDDK 11581 sayılı Kurul Kararı (1.10.2026)"
+   },
+   {
+    "line": "s3",
+    "etiket": "Örnek",
+    "sayi": {
+     "deger": 641,
+     "birim": "₺",
+     "kelime": "faiz",
+     "y": 520,
+     "not": "ilk ay faiz + vergi",
+     "say": true
+    },
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "mutlu",
+      "x": 320,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "Ama",
+        "ifade": "saskin",
+        "eylem": "zipla",
+        "deger": 0.5
+       }
+      ]
+     },
+     {
+      "id": "b",
+      "k": "yuzde",
+      "ifade": "mutlu",
+      "x": 760,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "sag"
+     }
+    ],
+    "kaynak": "Kaynak: TCMB azami faiz; KKDF %15 + BSMV %15"
+   },
+   {
+    "line": "s4",
+    "etiket": "Örnek",
+    "baslik": [
+     "Borcun bitmesi:",
+     "yaklaşık 29 ay"
+    ],
+    "dekor": [
+     {
+      "d": "deste",
+      "adet": 20,
+      "kalan": 3,
+      "kelime": "eridi",
+      "x": 300,
+      "y": 1100,
+      "olcek": 0.309
+     }
+    ],
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "endiseli",
+      "x": 760,
+      "y": 900,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "yavaş",
+        "ifade": "uzgun",
+        "eylem": "kucul",
+        "deger": 0.7
+       }
+      ]
+     }
+    ],
+    "kaynak": "Kaynak: Örnek hesap, TCMB azami faiz; BDDK 11581"
+   },
+   {
+    "line": "s5",
+    "etiket": "Örnek",
+    "cubuk": {
+     "a": {
+      "etiket": "Borç",
+      "deger": 20000
+     },
+     "b": {
+      "etiket": "Ödenen",
+      "deger": 23796
+     },
+     "birim": "₺",
+     "not": "3.796 TL faiz + vergi"
+    },
+    "kaynak": "Kaynak: Örnek hesap, TCMB azami faiz; KKDF/BSMV %15"
+   },
+   {
+    "line": "s6",
+    "etiket": "Örnek",
+    "vs": {
+     "sol": {
+      "k": "kadin",
+      "etiket": "Yalnız asgari",
+      "deger": "yaklaşık 29 ay"
+     },
+     "sag": {
+      "k": "erkek",
+      "etiket": "Tamamını öde",
+      "deger": "Faiz 0 TL"
+     }
+    },
+    "kaynak": "Kaynak: Örnek hesap, TCMB azami faiz; BDDK 11581"
+   },
+   {
+    "line": "s7",
+    "baslik": [
+     "Tamamını öde,",
+     "borç gerçekten biter"
+    ],
+    "oyuncular": [
+     {
+      "id": "a",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 760,
+      "y": 1000,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "biter",
+        "ifade": "mutlu",
+        "eylem": "zipla",
+        "deger": 0.6
+       }
+      ]
+     }
+    ],
+    "dekor": [
+     {
+      "d": "cay",
+      "adet": 1,
+      "kelime": "tamamen",
+      "x": 300,
+      "y": 1120,
+      "olcek": 0.6
+     }
+    ]
+   }
+  ]
+ },
+ "comment": "Sen hangisisin: asgariyi ödeyip rahatlayan mı, dönem borcunu tamamen kapatan mı? Örnek hesap: 20.000 TL borç, yalnız asgari ödemeyle yaklaşık 29 ayda, toplam yaklaşık 23.796 TL. Kaynak: TCMB azami kredi kartı faizi; BDDK 11581 sayılı Kurul Kararı (1.10.2026); KKDF/BSMV %15. Kendi hesabını yap: parafomo.com/kredi-karti-faiz-hesaplama/",
+ "link": "/kredi-karti-faiz-hesaplama/",
+ "format": "para_hikayesi",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "engine": "hikaye",
+ "lead": 0.05,
+ "series": "Para Hikâyeleri",
+ "skin": "iso"
+}

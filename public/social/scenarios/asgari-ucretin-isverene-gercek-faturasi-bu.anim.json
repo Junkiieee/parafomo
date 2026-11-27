@@ -1,0 +1,127 @@
+{
+ "slug": "asgari-ucretin-isverene-gercek-faturasi-bu",
+ "title": "Asgari ücretin işverene gerçek faturası bu",
+ "description": "100 liralık brüt maaş işverene yaklaşık 122 liraya mal oluyor, çalışanın eline ise 85 lira geçiyor. Aradaki fark ve net zammın işverene maliyeti sade hesapla anlatılıyor.\nKaynak/hesap (2026 prim oranları, örnek hesap): işveren SGK payı %21,75 − 2 puan Hazine teşviki (imalat dışı) = %19,75 + işveren işsizlik primi %2 = %21,75; 100 × 1,2175 ≈ 122. Çalışan kesintisi %15 (SGK %14 + işsizlik %1), asgari ücret gelir/damga vergisinden istisna: 100 × 0,85 = 85. Net 100 için brüt 100/0,85 ≈ 117,65; × 1,2175 ≈ 143. İmalatta teşvik 5 puan (toplam %18,75 → ≈119); asgari ücret desteği hariç. Dayanak: 5510 sayılı Kanun prim oranları, parafomo.com/asgari-ucret-hesaplama/.",
+ "tags": [
+  "asgari ücret",
+  "işveren maliyeti",
+  "SGK primi",
+  "brüt net maaş",
+  "maaş hesabı",
+  "ParaFOMO",
+  "parafomo"
+ ],
+ "format": "shock_number",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "MAAŞ MALİYETİ",
+  "scenes": [
+   {
+    "type": "big_number",
+    "head": "Maaşın görünmeyen maliyeti",
+    "data": {
+     "icon": "cash",
+     "value": 122,
+     "unit": "₺",
+     "suffix": "",
+     "label": "100 liralık maaşın işverene maliyeti"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "layers",
+    "head": "İşverenin eklediği primler",
+    "data": {
+     "total": {
+      "label": "Toplam işveren primi",
+      "value": 21.75
+     },
+     "parts": [
+      {
+       "label": "SGK payı (teşvikli)",
+       "value": 19.75,
+       "hl": true
+      },
+      {
+       "label": "İşsizlik primi",
+       "value": 2,
+       "hl": false
+      }
+     ],
+     "unit": "%"
+    },
+    "line": "s1"
+   },
+   {
+    "type": "compare",
+    "head": "Aradaki fark primlerde",
+    "data": {
+     "a": {
+      "label": "Çalışanın eline geçen",
+      "value": 85
+     },
+     "b": {
+      "label": "SGK primlerine",
+      "value": 37
+     },
+     "unit": "₺",
+     "note": "ARADAKİ FARK"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "big_number",
+    "head": "Net 100 için gereken bütçe",
+    "data": {
+     "icon": "coins",
+     "value": 143,
+     "unit": "₺",
+     "suffix": "",
+     "label": "Eline 100 lira geçsin diye ödenen"
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Farkı biliyor muydun?",
+    "data": {
+     "l1": "ZARF İLE FATURA",
+     "l2": "ARASINDAKİ FARK",
+     "sub": "HER GÜN 60 SANİYEDE NET ANALİZ"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "100 liralık maaş işverene yaklaşık 122 lira.",
+   "cap": "100 liralık maaş işverene yaklaşık 122 lira."
+  },
+  {
+   "id": "s1",
+   "say": "Brüt maaşa işveren, teşvikle yüzde 19,75 SGK ve yüzde 2 işsizlik primi ekliyor; toplam yüzde 21,75.",
+   "cap": "Brüt maaşa işveren, teşvikle yüzde 19,75 SGK ve yüzde 2 işsizlik primi ekliyor; toplam yüzde 21,75."
+  },
+  {
+   "id": "s2",
+   "say": "Ama çalışanın eline 85 lira geçiyor; aradaki yaklaşık 37 lira SGK primlerine gidiyor.",
+   "cap": "Ama çalışanın eline 85 lira geçiyor; aradaki yaklaşık 37 lira SGK primlerine gidiyor."
+  },
+  {
+   "id": "s3",
+   "say": "Yani eline 100 lira fazla geçsin diye işveren yaklaşık 143 lira ödüyor.",
+   "cap": "Yani eline 100 lira fazla geçsin diye işveren yaklaşık 143 lira ödüyor."
+  },
+  {
+   "id": "s4",
+   "say": "Maaş zarfı ile işverenin faturası arasındaki farkı biliyor muydun? Her gün 60 saniyede tek net analiz için abone ol.",
+   "cap": "Maaş zarfı ile işverenin faturası arasındaki farkı biliyor muydun? Her gün 60 saniyede tek net analiz için abone ol."
+  }
+ ],
+ "skin": "iso",
+ "engine": "hf"
+}

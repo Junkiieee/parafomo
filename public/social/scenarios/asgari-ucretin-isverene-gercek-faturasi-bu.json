@@ -1,0 +1,64 @@
+{
+  "slug": "asgari-ucretin-isverene-gercek-faturasi-bu",
+  "title": "Asgari ücretin işverene gerçek faturası bu",
+  "category": "ŞOK VERİ",
+  "format": "shock_number",
+  "description": "100 liralık brüt maaş işverene yaklaşık 122 liraya mal oluyor, çalışanın eline ise 85 lira geçiyor. Aradaki fark ve net zammın işverene maliyeti sade hesapla anlatılıyor.\nKaynak/hesap (2026 prim oranları, örnek hesap): işveren SGK payı %21,75 − 2 puan Hazine teşviki (imalat dışı) = %19,75 + işveren işsizlik primi %2 = %21,75; 100 × 1,2175 ≈ 122. Çalışan kesintisi %15 (SGK %14 + işsizlik %1), asgari ücret gelir/damga vergisinden istisna: 100 × 0,85 = 85. Net 100 için brüt 100/0,85 ≈ 117,65; × 1,2175 ≈ 143. İmalatta teşvik 5 puan (toplam %18,75 → ≈119); asgari ücret desteği hariç. Dayanak: 5510 sayılı Kanun prim oranları, parafomo.com/asgari-ucret-hesaplama/.",
+  "tags": [
+    "asgari ücret",
+    "işveren maliyeti",
+    "SGK primi",
+    "brüt net maaş",
+    "maaş hesabı",
+    "ParaFOMO",
+    "parafomo"
+  ],
+  "segments": [
+    {
+      "kind": "hook",
+      "eyebrow": "ŞOK VERİ",
+      "spoken": "100 liralık maaş işverene yaklaşık 122 lira.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank with coins"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Brüt maaşa işveren, teşvikle yüzde 19,75 SGK ve yüzde 2 işsizlik primi ekliyor; toplam yüzde 21,75.",
+      "visual": {
+        "type": "object",
+        "query": "calculator and payslip"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Ama çalışanın eline 85 lira geçiyor; aradaki yaklaşık 37 lira SGK primlerine gidiyor.",
+      "visual": {
+        "type": "object",
+        "query": "payslip paper"
+      }
+    },
+    {
+      "kind": "point",
+      "spoken": "Yani eline 100 lira fazla geçsin diye işveren yaklaşık 143 lira ödüyor.",
+      "visual": {
+        "type": "object",
+        "query": "calculator"
+      }
+    },
+    {
+      "kind": "cta",
+      "spoken": "Maaş zarfı ile işverenin faturası arasındaki farkı biliyor muydun? Her gün 60 saniyede tek net analiz için abone ol.",
+      "visual": {
+        "type": "object",
+        "query": "piggy bank with coins"
+      }
+    }
+  ],
+  "number_source": {
+    "number": "100 liralık maaş işverene yaklaşık 122 lira",
+    "calc": "Kaynak/hesap (2026 prim oranları, örnek hesap): işveren SGK payı %21,75 − 2 puan Hazine teşviki (imalat dışı) = %19,75 + işveren işsizlik primi %2 = %21,75; 100 × 1,2175 ≈ 122. Çalışan kesintisi %15 (SGK %14 + işsizlik %1), asgari ücret gelir/damga vergisinden istisna: 100 × 0,85 = 85. Net 100 için brüt 100/0,85 ≈ 117,65; × 1,2175 ≈ 143. İmalatta teşvik 5 puan (toplam %18,75 → ≈119); asgari ücret desteği hariç. Dayanak: 5510 sayılı Kanun prim oranları, parafomo.com/asgari-ucret-hesaplama/.",
+    "source": "data/asgari-ucret.json (2026: sgkIsveren 21,75, issizlikIsveren 2, tesvikDiger 2, tesvikImalat 5) — sabah rutini 2026-11-27 doğruladı"
+  }
+}
