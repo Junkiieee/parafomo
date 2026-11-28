@@ -1,0 +1,457 @@
+{
+ "slug": "ayni-birikim-farkli-son-kumbara-mi-bilesik-faiz-mi",
+ "title": "Aynı birikim, farklı son: kumbara mı bileşik faiz mi? 34.426 TL",
+ "description": "İki kardeş her ay aynı parayı biriktiriyor. Biri kumbarada bekletiyor, diğeri parasını aylık getiriyle büyütüyor. İkinci yılın sonunda fark, sürenin iki katından fazla büyüyor. Bu bir örnek hesaptır; gerçek getiri ürüne ve döneme göre değişir, yatırım tavsiyesi değildir.\nKaynak: Örnek hesap (aylık bileşik); gerçek ürün getirisi değildir",
+ "tags": [
+  "bileşik faiz",
+  "birikim",
+  "kumbara",
+  "para biriktirme",
+  "aylık getiri",
+  "kişisel finans",
+  "para hikayeleri"
+ ],
+ "lines": [
+  {
+   "id": "s0",
+   "say": "İki kardeş aynı parayı biriktirdi, biri öne geçti.",
+   "cap": "İki kardeş aynı parayı biriktirdi, biri öne geçti."
+  },
+  {
+   "id": "s1",
+   "say": "Ama ikisi de her ay bin lira attı.",
+   "cap": "Ama ikisi de her ay 1.000 TL attı."
+  },
+  {
+   "id": "s2",
+   "say": "Mert parasını kumbarada bekletti, Elif getiriye koydu.",
+   "cap": "Mert parasını kumbarada bekletti, Elif getiriye koydu."
+  },
+  {
+   "id": "s3",
+   "say": "Örnek hesapta Elif'in parası her ay yüzde 3 büyüdü.",
+   "cap": "Örnek hesapta Elif'in parası her ay %3 büyüdü."
+  },
+  {
+   "id": "s4",
+   "say": "Bu yüzden bir yılın sonunda yaklaşık 14.192 lirası oldu.",
+   "cap": "Bu yüzden bir yılın sonunda yaklaşık 14.192 TL'si oldu."
+  },
+  {
+   "id": "s5",
+   "say": "Ama Mert'in kumbarasında yalnız 12.000 lira vardı.",
+   "cap": "Ama Mert'in kumbarasında yalnız 12.000 TL vardı."
+  },
+  {
+   "id": "s6",
+   "say": "Asıl şaşırtıcı olan: süre iki katı, para daha fazlası.",
+   "cap": "Asıl şaşırtıcı olan: süre iki katı, para daha fazlası."
+  },
+  {
+   "id": "s7",
+   "say": "İkinci yılın sonunda Elif'te yaklaşık 34.426 lira birikti.",
+   "cap": "İkinci yılın sonunda Elif'te yaklaşık 34.426 TL birikti."
+  },
+  {
+   "id": "s8",
+   "say": "Sen hangisisin: kumbarada bekleten mi, zamanı çalıştıran mı?",
+   "cap": "Sen hangisisin: kumbarada bekleten mi, zamanı çalıştıran mı?"
+  },
+  {
+   "id": "s9",
+   "say": "Aynı parayla öne geçmenin sırrı, sabırla geçen zaman.",
+   "cap": "Aynı parayla öne geçmenin sırrı, sabırla geçen zaman."
+  }
+ ],
+ "data": {
+  "tema": "alacakaranlik",
+  "kanca": [
+   "AYNI PARA",
+   "BİRİ ÖNE GEÇTİ"
+  ],
+  "vurgu": [
+   "kumbarada",
+   "getiriye",
+   "Örnek",
+   "öne geçti",
+   "iki katı",
+   "şaşırtıcı",
+   "zaman",
+   "sabırla"
+  ],
+  "scenes": [
+   {
+    "line": "s0",
+    "oyuncular": [
+     {
+      "id": "elif",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 320,
+      "y": 950,
+      "olcek": 0.667,
+      "giris": "sol",
+      "olaylar": [
+       {
+        "kelime": "geçti",
+        "ifade": "mutlu",
+        "eylem": "zipla",
+        "deger": 0.6
+       }
+      ]
+     },
+     {
+      "id": "mert",
+      "k": "erkek",
+      "ifade": "normal",
+      "x": 760,
+      "y": 950,
+      "olcek": 0.667,
+      "giris": "sag",
+      "olaylar": [
+       {
+        "kelime": "geçti",
+        "ifade": "saskin",
+        "eylem": "titre",
+        "deger": 0.5
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "line": "s1",
+    "oyuncular": [
+     {
+      "id": "kum",
+      "k": "kumbara",
+      "ifade": "mutlu",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "alt",
+      "olaylar": [
+       {
+        "kelime": "attı",
+        "eylem": "zipla",
+        "deger": 0.5
+       }
+      ]
+     }
+    ],
+    "sayi": {
+     "deger": 1000,
+     "birim": "₺",
+     "kelime": "bin",
+     "y": 520,
+     "not": "Her ay, ikisi de",
+     "say": true
+    },
+    "etiket": "Her ay",
+    "kaynak": "Kaynak: Örnek hesap (aylık bileşik); gerçek ürün getirisi değildir"
+   },
+   {
+    "line": "s2",
+    "liste": {
+     "sol": {
+      "baslik": "MERT",
+      "kalemler": [
+       "Aylık 1.000 TL",
+       "Kumbarada",
+       "Getiri yok"
+      ]
+     },
+     "sag": {
+      "baslik": "ELİF",
+      "kalemler": [
+       "Aylık 1.000 TL",
+       "Getiride",
+       "Ayda %3 örnek"
+      ]
+     },
+     "kelime": "Elif",
+     "y": 300
+    },
+    "oyuncular": [
+     {
+      "id": "mert",
+      "k": "erkek",
+      "ifade": "normal",
+      "x": 320,
+      "y": 1130,
+      "olcek": 0.55,
+      "giris": "yok"
+     },
+     {
+      "id": "elif",
+      "k": "kadin",
+      "ifade": "mutlu",
+      "x": 760,
+      "y": 1130,
+      "olcek": 0.55,
+      "giris": "yok"
+     }
+    ],
+    "etiket": "Örnek",
+    "kaynak": "Kaynak: Örnek hesap (aylık bileşik); gerçek ürün getirisi değildir"
+   },
+   {
+    "line": "s3",
+    "oyuncular": [
+     {
+      "id": "elif",
+      "k": "kadin",
+      "ifade": "mutlu",
+      "x": 320,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "yok"
+     },
+     {
+      "id": "yuzde",
+      "k": "yuzde",
+      "ifade": "mutlu",
+      "x": 760,
+      "y": 1050,
+      "olcek": 0.6,
+      "giris": "sag",
+      "olaylar": [
+       {
+        "kelime": "büyüdü",
+        "eylem": "zipla",
+        "deger": 0.7
+       }
+      ]
+     }
+    ],
+    "sayi": {
+     "deger": 3,
+     "birim": "%",
+     "kelime": "yüzde",
+     "y": 500,
+     "not": "Aylık getiri, örnek",
+     "say": false
+    },
+    "etiket": "Örnek",
+    "kaynak": "Kaynak: Örnek hesap (aylık bileşik); gerçek ürün getirisi değildir"
+   },
+   {
+    "line": "s4",
+    "oyuncular": [
+     {
+      "id": "elif",
+      "k": "kadin",
+      "ifade": "mutlu",
+      "x": 540,
+      "y": 1085,
+      "olcek": 0.717,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "lirası",
+        "ifade": "saskin",
+        "eylem": "zipla",
+        "deger": 0.6
+       }
+      ]
+     }
+    ],
+    "sayi": {
+     "deger": 14192,
+     "bas": 12000,
+     "birim": "₺",
+     "kelime": "yaklaşık",
+     "y": 520,
+     "not": "12 ay, 12.000 TL yatırım",
+     "say": true
+    },
+    "etiket": "Örnek",
+    "kaynak": "Kaynak: Örnek hesap (aylık bileşik); gerçek ürün getirisi değildir"
+   },
+   {
+    "line": "s5",
+    "cubuk": {
+     "a": {
+      "etiket": "Mert (kumbara)",
+      "deger": 12000
+     },
+     "b": {
+      "etiket": "Elif (%3 örnek)",
+      "deger": 14192
+     },
+     "birim": "₺",
+     "not": "12 ay, örnek hesap"
+    },
+    "etiket": "Örnek",
+    "kaynak": "Kaynak: Örnek hesap (aylık bileşik); gerçek ürün getirisi değildir"
+   },
+   {
+    "line": "s6",
+    "baslik": [
+     "SÜRE İKİ KATI",
+     "PARA DAHA FAZLASI"
+    ],
+    "oyuncular": [
+     {
+      "id": "mert",
+      "k": "erkek",
+      "ifade": "saskin",
+      "x": 320,
+      "y": 980,
+      "olcek": 0.667,
+      "giris": "yok"
+     },
+     {
+      "id": "elif",
+      "k": "kadin",
+      "ifade": "normal",
+      "x": 760,
+      "y": 980,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "fazlası",
+        "ifade": "saskin",
+        "eylem": "zipla",
+        "deger": 0.5
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "line": "s7",
+    "oyuncular": [
+     {
+      "id": "elif",
+      "k": "kadin",
+      "ifade": "mutlu",
+      "x": 320,
+      "y": 1070,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "birikti",
+        "eylem": "zipla",
+        "deger": 0.7
+       }
+      ]
+     },
+     {
+      "id": "kum",
+      "k": "kumbara",
+      "ifade": "mutlu",
+      "x": 760,
+      "y": 1050,
+      "olcek": 0.6,
+      "giris": "alt"
+     }
+    ],
+    "sayi": {
+     "deger": 34426,
+     "bas": 14192,
+     "birim": "₺",
+     "kelime": "yaklaşık",
+     "y": 520,
+     "not": "24 ay, 24.000 TL yatırım",
+     "say": true
+    },
+    "etiket": "Örnek",
+    "kaynak": "Kaynak: Örnek hesap (aylık bileşik); gerçek ürün getirisi değildir"
+   },
+   {
+    "line": "s8",
+    "soru": true,
+    "oyuncular": [
+     {
+      "id": "mert",
+      "k": "erkek",
+      "ifade": "normal",
+      "x": 300,
+      "y": 1000,
+      "olcek": 0.55,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "bekleten",
+        "ifade": "saskin",
+        "eylem": "titre",
+        "deger": 0.4
+       }
+      ]
+     },
+     {
+      "id": "elif",
+      "k": "kadin",
+      "ifade": "mutlu",
+      "x": 780,
+      "y": 1000,
+      "olcek": 0.55,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "çalıştıran",
+        "eylem": "zipla",
+        "deger": 0.5
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "line": "s9",
+    "baslik": [
+     "AYNI PARA",
+     "SABIR + ZAMAN"
+    ],
+    "oyuncular": [
+     {
+      "id": "mert",
+      "k": "erkek",
+      "ifade": "mutlu",
+      "x": 320,
+      "y": 980,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "sabırla",
+        "eylem": "zipla",
+        "deger": 0.5
+       }
+      ]
+     },
+     {
+      "id": "elif",
+      "k": "kadin",
+      "ifade": "mutlu",
+      "x": 760,
+      "y": 980,
+      "olcek": 0.667,
+      "giris": "yok",
+      "olaylar": [
+       {
+        "kelime": "zaman",
+        "eylem": "zipla",
+        "deger": 0.6
+       }
+      ]
+     }
+    ],
+    "etiket": "Örnek"
+   }
+  ]
+ },
+ "comment": "Sen hangisisin: kumbarada bekleten mi, zamanı çalıştıran mı? Yorumlara yaz.\nKaynak: Örnek hesap (aylık bileşik); gerçek ürün getirisi değildir. Gerçek getiri ürüne ve döneme göre değişir.",
+ "link": "",
+ "format": "para_hikayesi",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "engine": "hikaye",
+ "lead": 0.05,
+ "series": "Para Hikâyeleri",
+ "skin": "iso"
+}

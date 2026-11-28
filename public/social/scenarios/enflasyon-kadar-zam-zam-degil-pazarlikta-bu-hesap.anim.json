@@ -1,0 +1,104 @@
+{
+ "slug": "enflasyon-kadar-zam-zam-degil-pazarlikta-bu-hesap",
+ "title": "Enflasyon kadar zam, zam değil: pazarlıkta bu hesap",
+ "description": "Yıllık enflasyon %29,77 iken aynı oranda zam almak maaşı artırmaz, sadece yerinde tutar. Pazarlıkta hedef enflasyonun üstü olmalı.",
+ "tags": [
+  "zam pazarlığı",
+  "enflasyon",
+  "maaş zammı",
+  "TÜFE",
+  "reel gelir",
+  "kişisel finans",
+  "parafomo"
+ ],
+ "format": "single_concept",
+ "style": "isometric",
+ "scene": "generic.js",
+ "short": true,
+ "data": {
+  "eyebrow": "ENFLASYON VE ZAM",
+  "scenes": [
+   {
+    "type": "icon_text",
+    "head": "Zam mı, yanılsama mı?",
+    "data": {
+     "icon": "cash",
+     "text": "Enflasyon kadar zam = *zam yok*"
+    },
+    "line": "s0"
+   },
+   {
+    "type": "big_number",
+    "head": "Alım gücü yerinde sayar",
+    "data": {
+     "icon": "percent",
+     "value": 29.77,
+     "unit": "%",
+     "suffix": "",
+     "label": "YILLIK ENFLASYON"
+    },
+    "line": "s1"
+   },
+   {
+    "type": "icon_text",
+    "head": "Koşu bandı tuzağı",
+    "data": {
+     "icon": "chart",
+     "text": "Çok koşuyorsun ama *yerinde sayıyorsun*"
+    },
+    "line": "s2"
+   },
+   {
+    "type": "steps",
+    "head": "Pazarlıkta ne söylemeli?",
+    "data": {
+     "items": [
+      "Enflasyonu öğren",
+      "Hedef: üstüne çık",
+      "Farkı pazarlık et"
+     ]
+    },
+    "line": "s3"
+   },
+   {
+    "type": "cta",
+    "head": "Zammını sorgula",
+    "data": {
+     "l1": "Zam yetmedi mi?",
+     "l2": "Abone ol",
+     "sub": "HER GÜN 60 SANİYE · ANALİZ"
+    },
+    "line": "s4"
+   }
+  ]
+ },
+ "lines": [
+  {
+   "id": "s0",
+   "say": "Enflasyon kadar zam alırsan, aslında zam almadın.",
+   "cap": "Enflasyon kadar zam alırsan, aslında zam almadın."
+  },
+  {
+   "id": "s1",
+   "say": "Yıllık enflasyon yüzde 29,77. Maaşın yüzde 29,77 artarsa market sepetin aynı kalır, alım gücün yerinde sayar.",
+   "cap": "Yıllık enflasyon %29,77. Maaşın %29,77 artarsa market sepetin aynı kalır, alım gücün yerinde sayar."
+  },
+  {
+   "id": "s2",
+   "say": "Ama burada tuzak var: koşu bandında koşmak gibi. Çok yoruluyorsun, ama aynı yerde duruyorsun, hiç ilerlemiyorsun.",
+   "cap": "Ama burada tuzak var: koşu bandında koşmak gibi. Çok yoruluyorsun, ama aynı yerde duruyorsun, hiç ilerlemiyorsun."
+  },
+  {
+   "id": "s3",
+   "say": "Pazarlıkta bunu söyle: hedefim enflasyonun üstü. Fark ne kadar büyükse, cebine giren gerçek artış o kadar fazla.",
+   "cap": "Pazarlıkta bunu söyle: hedefim enflasyonun üstü. Fark ne kadar büyükse, cebine giren gerçek artış o kadar fazla."
+  },
+  {
+   "id": "s4",
+   "say": "Son zammın enflasyonun altında mı kaldı? Düşün. Abone ol, her gün 60 saniyede tek net analiz seni bekliyor.",
+   "cap": "Son zammın enflasyonun altında mı kaldı? Düşün. Abone ol, her gün 60 saniyede tek net analiz seni bekliyor."
+  }
+ ],
+ "skin": "iso",
+ "engine": "dossier"
+}
