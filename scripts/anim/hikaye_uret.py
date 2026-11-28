@@ -647,7 +647,9 @@ def calistir(cmd, timeout):
     return subprocess.CompletedProcess(cmd, pr.returncode, out, err)
 
 
-ONCELIK = ["meslek", "altin-enflasyon", "sosyal", "ayni-maas", "kredi-karti", "kira", "dolar-altin", "kissa", "asgari-altin", "yuzluk", "emekli"]
+# 2026-11-28: izlenme kanıtıyla yeniden sıralandı — emekli (#46 3.047, #40 990) ve sosyal/evde bakım (#49 154) en çok
+# izlenen hikâyeler; 3 Aralık TÜFE'si birden çok aileyi tetikleyince önce bunlar çıksın.
+ONCELIK = ["emekli", "sosyal", "meslek", "altin-enflasyon", "ayni-maas", "kredi-karti", "kira", "dolar-altin", "kissa", "asgari-altin", "yuzluk"]
 
 
 def sec(P, gecmis):
